@@ -1,0 +1,35 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "python.defaultInterpreterPath": ".venv\\Scripts\\python.exe", // Path to the Python interpreter in the virtual environment
+        "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit", // Run fixAll on explicit save
+            "source.organizeImports": "always" // Organize imports every time the file is saved
+        },
+        "editor.formatOnSave": true, // Enable formatting on save
+        "editor.rulers": [
+            {
+                "column": 88,
+                "color": "#295c2b41",
+            },
+            {
+                "column": 120,
+                "color": "#ff0000"
+            }
+        ],
+        "isort.path": [
+            ".venv\\Scripts\\isort.exe" // Path to isort in the virtual environment as an array
+        ],
+        "isort.args": [
+            "--profile",
+            "black" // Use the black profile for isort
+        ],
+        "black-formatter.importStrategy": "fromEnvironment",
+        "isort.importStrategy": "fromEnvironment",
+        "isort.check": true,
+    }
+}

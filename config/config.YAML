@@ -1,0 +1,20 @@
+
+# write to dev build if true, otherwise write to release build
+write_dev: true
+
+directories:
+  # Path to steamapps/common/WARNO/Mods
+  warno_mods: "C:/Program Files (x86)/Steam/steamapps/common/WARNO/Mods"
+  
+  # "{warno_mods}/donor mod"
+  source_mod: "/sourcemod"
+  
+  # "{warno_mods}/your mod dev"
+  dev_mod: "/WARNO ACTUAL dev"
+  
+  # "{warno_mods}/your mod"
+  release_mod: "/WARNO ACTUAL"
+
+  # Path to where you store your custom textures
+  textures: "C:/Users/coleg/OneDrive/Documents/Wargame/WARNO/WARNO Modding/WARNO_ACTUAL/textures"
+
