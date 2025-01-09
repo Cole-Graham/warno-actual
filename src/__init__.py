@@ -4,18 +4,42 @@ import ndf_parse as ndf
 
 from config.config_loader import ConfigLoader
 
-from .utils import get_mod_directories
 
-# Define path to your configuration file (adjust path as necessary)
-config_file_path = os.path.join(os.path.dirname(__file__), "..", "config", "config.yaml")
+class ModConfig:
+    _instance = None
+    
+    def __init__(self):
+        config_file_path = os.path.join(os.path.dirname(__file__), "..", "config", "config.yaml")
+        self.loader = ConfigLoader(config_file_path)
+        self.loader.load()
+        self.config_data = self.loader.config_data
+    
+    @classmethod
+    def get_instance(cls):
+        if cls._instance is None:
+            cls._instance = cls()
+        return cls._instance
 
-# Create a ConfigLoader instance and load the configuration
-config_loader = ConfigLoader(config_file_path)
-config_loader.load()
+    @classmethod
+    def get_mod_paths(cls):
+        """Returns preconfigured source and destination paths"""
+        instance = cls.get_instance()
+        write_dev = instance.config_data.get("write_dev", True)
+        dirs = instance.config_data["directories"]
+        
+        warno_mods = dirs["warno_mods"]
+        source_mod = dirs["source_mod"]
+        dest_mod = dirs["dev_mod" if write_dev else "release_mod"]
+        
+        return {
+            "source": warno_mods + source_mod,
+            "destination": warno_mods + dest_mod,
+            "textures": dirs["textures"]
+        }
 
-# Expose useful configuration globally
-config = config_loader.config_data
-write_dev = config_loader.get_write_dev()
-directories = config_loader.get_directories()
+    @classmethod
+    def reset(cls):
+        """Reset the singleton (useful for testing)"""
+        cls._instance = None
 
-__all__ = ["config", "get_mod_directories", "write_dev", "directories"]
+__all__ = ["ModConfig"]

@@ -26,11 +26,12 @@
         ],
         "isort.args": [
             "--profile",
-            "black" // Use the black profile for isort
+            "black", // Use the black profile for isort
         ],
         "black-formatter.importStrategy": "fromEnvironment",
         "isort.importStrategy": "fromEnvironment",
         "isort.check": true,
+        "aicursor.model": "gpt-3.5-turbo",
     },
     "launch": {
         "version": "0.2.0",
