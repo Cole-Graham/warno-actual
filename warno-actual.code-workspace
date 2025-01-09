@@ -31,5 +31,19 @@
         "black-formatter.importStrategy": "fromEnvironment",
         "isort.importStrategy": "fromEnvironment",
         "isort.check": true,
+    },
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "Debug Any Module in src",
+                "type": "debugpy",
+                "request": "launch",
+                "module": "src.${fileBasenameNoExtension}",
+                "cwd": "${workspaceFolder}",
+                "console": "integratedTerminal",
+                "justMyCode": false
+            }
+        ]
     }
 }
