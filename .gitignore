@@ -1,3 +1,4 @@
 # ignore directories
 .venv/
+.idea/
 __pycache__/
