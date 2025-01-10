@@ -32,6 +32,8 @@
         "isort.importStrategy": "fromEnvironment",
         "isort.check": true,
         "aicursor.model": "gpt-3.5-turbo",
+        "explorer.compactFolders": true,
+        "files.autoSave": "afterDelay",
     },
     "launch": {
         "version": "0.2.0",

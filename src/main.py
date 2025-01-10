@@ -1,11 +1,10 @@
-from src import ModConfig
-from src.utils import process_mod
+from src import ModConfig, ndf
 
 
 def main():
-    # Get paths
+    # Get paths from ModConfig
     paths = ModConfig.get_instance().get_mod_paths()
-
+    
     # Print configuration details
     print("\nConfiguration Details:")
     print("-" * 50)
@@ -16,9 +15,9 @@ def main():
     print(f"Destination Path: {paths['destination']}")
     print(f"Textures Path:    {paths['textures']}")
     print("-" * 50)
-
-    # Process mod
-    process_mod(paths["source"], paths["destination"])
+    
+    mod = ndf.Mod(paths["source"], paths["destination"])
+    mod.check_if_src_is_newer()
 
 if __name__ == "__main__":
     main()
