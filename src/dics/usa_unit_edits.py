@@ -1112,10 +1112,10 @@ usa_unit_edits = {
 
     "Scout_US": {
         "WeaponAssignment": [
-                (0,[1,]),
-                (1,[0,]),
-                (2,[0,]),
-                (3,[0,2,]),
+                (0, [1, ]),
+                (1, [0, ]),
+                (2, [0, ]),
+                (3, [0, 2, ]),
             ],
         "CommandPoints": 20,
         "availability": 8,
@@ -1646,4 +1646,4 @@ usa_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
     
-},
+}

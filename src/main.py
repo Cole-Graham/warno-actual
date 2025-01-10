@@ -19,5 +19,6 @@ def main():
     mod = ndf.Mod(paths["source"], paths["destination"])
     mod.check_if_src_is_newer()
 
+
 if __name__ == "__main__":
     main()
