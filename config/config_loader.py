@@ -22,7 +22,8 @@ class ConfigLoader:
             dict: The loaded configuration data
         """
         if not os.path.isfile(self.config_file_path):
-            raise FileNotFoundError(f"Configuration file not found: {self.config_file_path}")
+            raise FileNotFoundError(f"Configuration file not found: {self.config_file_path}"
+                                    "Please create it from config/config.template.YAML")
 
         try:
             with open(self.config_file_path, "r") as file:
