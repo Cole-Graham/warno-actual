@@ -41,16 +41,39 @@ class ConfigLoader:
         return self.config_data
 
     def _validate_config(self):
-        """Validates required configuration fields exist."""
-        required_fields = ["write_dev", "directories"]
-        required_dirs = ["warno_mods", "source_mod", "dev_mod", "release_mod", "textures"]
+        """Validate the configuration has all required fields."""
+        # Check build_config section exists
+        if 'build_config' not in self.config_data:
+            raise KeyError("Missing required section: build_config")
         
-        for field in required_fields:
-            if field not in self.config_data:
-                raise KeyError(f"Missing required field: {field}")
+        # Check required fields in build_config
+        build_config_fields = [
+            'write_dev',
+            'target',
+            'use_ui_as_base'
+        ]
+        
+        for field in build_config_fields:
+            if field not in self.config_data['build_config']:
+                raise KeyError(f"Missing required field in build_config: {field}")
+            
+        # Check directories section exists
+        if 'directories' not in self.config_data:
+            raise KeyError("Missing required section: directories")
+            
+        # Check required directories exist
+        required_dirs = [
+            'warno_mods',
+            'base_game',
+            'ui_release',
+            'ui_dev',
+            'gameplay_dev',
+            'gameplay_release',
+            'textures'
+        ]
         
         for dir_field in required_dirs:
-            if dir_field not in self.config_data["directories"]:
+            if dir_field not in self.config_data['directories']:
                 raise KeyError(f"Missing required directory: {dir_field}")
 
     def get(self, key, default=None):
@@ -65,4 +88,5 @@ class ConfigLoader:
 
     def get_write_dev(self):
         """Get the write_dev setting."""
-        return self.get("write_dev", False)
+        build_config = self.get("build_config", {})
+        return build_config.get("write_dev", False)
