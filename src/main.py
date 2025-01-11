@@ -50,5 +50,6 @@ def main():
         logger.error(f"Build failed: {str(e)}")
         raise
 
+
 if __name__ == "__main__":
     main()

@@ -1,5 +1,6 @@
 # ignore directories
 .venv/
+.idea/
 __pycache__/
 deprecated/
 logs/*

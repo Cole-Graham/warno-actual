@@ -76,4 +76,5 @@ class ModConfig:
         """Reset the singleton (useful for testing)"""
         cls._instance = None
 
+
 __all__ = ["ModConfig"]

@@ -703,17 +703,6 @@ sov_unit_edits = {
         "availability": 5,
         "XPMultiplier": [0.0, 1.0, 0.8, 0.6],
     },
-
-    "Mortier_2B14_82mm_VDV_SOV": {
-        "CommandPoints": 35,
-        "Divisions": {
-            "default": {
-                "cards": 2,
-            },
-        },
-        "availability": 5,
-        "XPMultiplier": [0.0, 1.0, 0.8, 0.6],
-    },
     
     "Mortier_2B9_Vasilek_nonPara_SOV": {
         "CommandPoints": 45,
