@@ -1,6 +1,6 @@
-# WARNO Mod Patcher
+# WARNO ACTUAL Mod Patcher
 
-This project is a mod patcher for the WARNO game, allowing users to customize and modify game files easily.
+A mod patcher to build WARNO ACTUAL from scratch, using ndf parse.
 
 ## Configuration
 
