@@ -1,4 +1,4 @@
-import os
+from pathlib import Path
 
 import ruamel.yaml
 
@@ -6,13 +6,13 @@ import ruamel.yaml
 class ConfigLoader:
     """Handles loading and validation of YAML configuration files."""
 
-    def __init__(self, yaml_path):
+    def __init__(self, yaml_path: str):
         """Initialize the config loader with path to YAML file.
         
         Args:
             yaml_path (str): Path to the configuration YAML file
         """
-        self.config_file_path = yaml_path
+        self.config_file_path = Path(yaml_path)
         self.config_data = None
 
     def load(self):
@@ -21,9 +21,8 @@ class ConfigLoader:
         Returns:
             dict: The loaded configuration data
         """
-        if not os.path.isfile(self.config_file_path):
-            raise FileNotFoundError(f"Configuration file not found: {self.config_file_path}"
-                                    "Please create it from config/config.template.YAML")
+        if not self.config_file_path.is_file():
+            raise FileNotFoundError(f"Configuration file not found: {self.config_file_path}")
 
         try:
             with open(self.config_file_path, "r") as file:

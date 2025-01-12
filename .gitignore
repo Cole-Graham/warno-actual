@@ -1,10 +1,12 @@
 # ignore directories
-.venv/
 .idea/
+.venv/
 __pycache__/
 config/config.YAML
 deprecated/
 logs/*
+src/data/database/*.json
 
 # don't ignore
 !logs/.gitkeep
+!src/data/database/.gitkeep

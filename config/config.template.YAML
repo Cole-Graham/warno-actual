@@ -4,6 +4,11 @@ build_config:
   target: "gameplay"  # Can be "gameplay" or "ui_only"
   use_ui_as_base: false  # Whether to use UI mod as base for gameplay mod
 
+# Data configuration
+data_config:
+  build_database: true  # Set to false to skip database building
+  database_path: "data/database"  # Path to store database files
+
 directories:
   # Base game and output paths
   warno_mods: "C:/Program Files (x86)/Steam/steamapps/common/WARNO/Mods"
