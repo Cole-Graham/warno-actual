@@ -98,8 +98,8 @@ def extract_production_data(descr_row: Any) -> Dict[str, Any]:
             cmd_points = get_resource_value(resources, "$/GFX/Resources/Resource_CommandPoints")
             if cmd_points:
                 data["command_points"] = int(cmd_points)
-    except Exception:
-        pass
+    except Exception as e:
+        logger.warning(f"Failed to extract production data: {str(e)}")
     return data
 
 def extract_tags_data(descr_row: Any) -> Dict[str, Any]:
@@ -108,8 +108,8 @@ def extract_tags_data(descr_row: Any) -> Dict[str, Any]:
     try:
         tagset = get_module_list(descr_row, "TagSet")
         data["tags"] = [strip_quotes(tag.v) for tag in tagset]
-    except Exception:
-        pass
+    except Exception as e:
+        logger.warning(f"Failed to extract tags data: {str(e)}")
     return data
 
 def extract_ui_data(descr_row: Any) -> Dict[str, Any]:
@@ -119,9 +119,9 @@ def extract_ui_data(descr_row: Any) -> Dict[str, Any]:
         specialties = get_module_list(descr_row, "SpecialtiesList")
         if specialties:
             data["specialties"] = [strip_quotes(spec.v) for spec in specialties]
-    except Exception:
-        pass
-    return data 
+    except Exception as e:
+        logger.warning(f"Failed to extract UI data: {str(e)}")
+    return data
 
 def gather_weapon_data(base_path: Path) -> Dict[str, Any]:
     """Gather weapon data from WeaponDescriptor.ndf."""

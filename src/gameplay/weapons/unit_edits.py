@@ -25,13 +25,17 @@ def _gather_turret_templates(source: Any, weapon_db: Dict[str, Any]) -> List[Tup
             
         weapon_name = f"WeaponDescriptor_{unit}"
         if weapon_name not in weapon_db:
+            logger.warning(f"Weapon {weapon_name} not found in database")
             continue
             
         weapon_data = weapon_db[weapon_name]
         for weapon_descr in source:
-            turret_objects.extend(
-                _find_turret_templates(weapon_descr, equipment_changes["add"], weapons_to_add, weapon_data)
-            )
+            try:
+                turret_objects.extend(
+                    _find_turret_templates(weapon_descr, equipment_changes["add"], weapons_to_add, weapon_data)
+                )
+            except Exception as e:
+                logger.error(f"Failed to find turret templates for {weapon_name}: {str(e)}")
     
     logger.debug(f"Found templates for weapons: {weapons_to_add}")
     return turret_objects
