@@ -1,3 +1,7 @@
+"""Soviet unit edits."""
+
+from typing import Any, Dict
+
 # fmt: off
 sov_unit_edits = {
     #SOV LOG

@@ -4,6 +4,8 @@ from typing import Dict
 
 from src.utils.logging_utils import setup_logger
 
+from .weapon_edits.build_mg_categories import build_mg_categories
+
 logger = setup_logger('dics')
 
 def load_unit_edits() -> Dict:
@@ -40,3 +42,12 @@ def load_unit_edits() -> Dict:
     
     logger.info(f"Loaded edits for {len(merged_edits)} units total")
     return merged_edits 
+
+def build_weapon_db(source_files):
+    """Build weapon database from source files."""
+    ammo_file = source_files["GameData/Generated/Gameplay/Gfx/Ammunition.ndf"]
+    
+    # Build MG categories
+    mg_categories = build_mg_categories(ammo_file)
+    
+    # Build other weapon data... 

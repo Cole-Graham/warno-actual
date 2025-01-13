@@ -1,28 +1,33 @@
-from typing import Any, Callable, Dict, List
+"""Main gameplay modification module."""
 
-from src.data.data_builder import load_data
-from src.gameplay import division_rules, divisions, unit_descriptor, weapons
+from typing import Any, Callable, Dict
+
+from src.data import build_database
+from src.dics import load_unit_edits
 from src.utils.logging_utils import log_time, setup_logger
 
 logger = setup_logger('gameplay_mod')
 
+
 def get_file_editor(file_path: str, config: Dict) -> Callable:
-    """Get the appropriate edit function for gameplay files."""
+    """Get the appropriate edit function for gameplay files.
+    
+    Args:
+        file_path: Path to the file being edited
+        config: Configuration dictionary
+        
+    Returns:
+        Editor function for the specified file, or None if no editor exists
+    """
     logger.info(f"Loading data for {file_path}")
     
-    with log_time(logger, "Loading unit database"):
-        unit_db = load_data(config, "units")
-    
-    editors: Dict[str, List[Callable]] = {
-        "GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf": 
-            unit_descriptor.get_editors(unit_db),
-        "GameData/Generated/Gameplay/DivisionRules.ndf":
-            division_rules.get_editors(unit_db),
-        "GameData/Generated/Gameplay/Divisions.ndf":
-            divisions.get_editors(unit_db),
-        "GameData/Generated/Gameplay/Gfx/WeaponDescriptor.ndf":
-            weapons.get_editors(unit_db),
-    }
+    with log_time(logger, "Loading databases"):
+        # Build complete game database
+        game_db = build_database(config)
+        
+    # Get editors from gameplay module
+    from src.gameplay import get_editors
+    editors = get_editors(game_db)
     
     if file_path in editors:
         def apply_editors(source):

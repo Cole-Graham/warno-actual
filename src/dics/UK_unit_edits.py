@@ -1,3 +1,8 @@
+"""UK unit edits."""
+
+from typing import Any, Dict
+
+# fmt: off
 uk_unit_edits = {
     #UK LOG
     "LandRover_CMD_UK": {

@@ -1,10 +1,19 @@
 """Gameplay modification modules.
 
 Module Structure:
-    unit_descriptor/   - Editors for UniteDescriptor.ndf
-    division_rules/    - Editors for DivisionRules.ndf
-    weapons/          - Editors for WeaponDescriptor.ndf
+    depictions/     - Editors for unit depictions and showroom
+    division_rules/ - Editors for division rules
+    divisions/      - Editors for divisions
+    effects/        - Editors for unit effects and capacities
+    terrains/       - Editors for terrain properties
+    ui/            - Editors for UI elements
+    unit_descriptor/ - Editors for unit descriptors
+    veterancy/      - Editors for veterancy and experience
+    weapons/        - Editors for weapons and ammunition
+"""
 
-Each module provides a get_editors() function that returns a list of editor functions
-for its respective NDF file.
-""" 
+from .editors import get_editors
+
+__all__ = [
+    'get_editors',
+] 

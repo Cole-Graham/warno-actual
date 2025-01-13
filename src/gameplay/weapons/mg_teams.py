@@ -1,0 +1,118 @@
+"""Functions for modifying MG team weapons."""
+
+from src.utils.logging_utils import setup_logger
+
+logger = setup_logger(__name__)
+
+
+def edit_mg_team_weapons(source, ammo_db: dict) -> None:
+    """Modify weapons for MG teams."""
+    logger.info("Adjusting MG Teams")
+    mg_cats = ammo_db["mg_categories"]
+    
+    for weapon_descr in source:
+        name = weapon_descr.n
+        
+        if name in mg_cats["hmg_teams"]:
+            _modify_hmg_team(weapon_descr, name, mg_cats["hmg_exceptions"])
+        elif name in mg_cats["mmg_teams"]:
+            _modify_mmg_team(weapon_descr, name)
+        elif name in mg_cats["hmg_turrets"]:
+            _modify_hmg_turret(weapon_descr, name)
+        elif name in mg_cats["mmg_turrets"]:
+            _modify_mmg_turret(weapon_descr, name)
+
+
+def _modify_hmg_team(weapon_descr, name: str, exceptions: list) -> None:
+    """Apply HMG team modifications."""
+    membr = weapon_descr.v.by_m
+    
+    membr("PorteeMaximaleGRU").v = "1225"
+    logger.info(f"Changed {name} ground range to 1225")
+    
+    if membr("PorteeMaximaleTBAGRU", False) and name not in exceptions:
+        membr("PorteeMaximaleTBAGRU").v = "1050"
+        logger.info(f"Changed {name} helo range to 1050")
+    
+    # Apply other modifications...
+    _apply_common_mods(weapon_descr, name, {
+        "PhysicalDamages": "0.24",
+        "SuppressDamages": "72",
+        "TempsEntreDeuxSalves": "1.0",
+        "NbTirParSalves": "7",
+        "SupplyCost": "2",
+        "AffichageMunitionParSalve": "10"
+    })
+
+
+def _modify_mmg_team(weapon_descr, name: str) -> None:
+    """Apply MMG team modifications."""
+    membr = weapon_descr.v.by_m
+    
+    membr("PorteeMaximaleGRU").v = "1050"
+    logger.info(f"Changed {name} ground range to 1050")
+    
+    if membr("PorteeMaximaleTBAGRU", False):
+        membr("PorteeMaximaleTBAGRU").v = "875"
+        logger.info(f"Changed {name} helo range to 875")
+    
+    _apply_common_mods(weapon_descr, name, {
+        "PhysicalDamages": "0.12",
+        "SuppressDamages": "36",
+        "TempsEntreDeuxSalves": "0.5",
+        "NbTirParSalves": "8",
+        "SupplyCost": "1",
+        "AffichageMunitionParSalve": "10"
+    })
+
+
+def _modify_hmg_turret(weapon_descr, name: str) -> None:
+    """Apply HMG turret modifications."""
+    membr = weapon_descr.v.by_m
+    
+    membr("PorteeMaximaleGRU").v = "1225"
+    membr("PorteeMaximaleTBAGRU").v = "1050"
+    
+    _apply_common_mods(weapon_descr, name, {
+        "PhysicalDamages": "0.12",
+        "SuppressDamages": "36",
+        "TempsEntreDeuxSalves": "1.0",
+        "NbTirParSalves": "7",
+        "SupplyCost": "2",
+        "AffichageMunitionParSalve": "10"
+    })
+
+
+def _modify_mmg_turret(weapon_descr, name: str) -> None:
+    """Apply MMG turret modifications."""
+    membr = weapon_descr.v.by_m
+    
+    membr("PorteeMaximaleGRU").v = "1050"
+    if membr("PorteeMaximaleTBAGRU", False):
+        membr("PorteeMaximaleTBAGRU").v = "875"
+    
+    _apply_common_mods(weapon_descr, name, {
+        "PhysicalDamages": "0.06",
+        "SuppressDamages": "18",
+        "TempsEntreDeuxSalves": "0.5",
+        "NbTirParSalves": "8",
+        "SupplyCost": "1",
+        "AffichageMunitionParSalve": "10"
+    })
+
+
+def _apply_common_mods(weapon_descr, name: str, mods: dict) -> None:
+    """Apply common modifications to a weapon."""
+    membr = weapon_descr.v.by_m
+    
+    for key, value in mods.items():
+        membr(key).v = value
+        logger.info(f"Changed {name} {key} to {value}")
+    
+    # Modify hit roll
+    hitroll_obj = membr("HitRollRuleDescriptor").v
+    hitroll_list = hitroll_obj.by_m("BaseHitValueModifiers").v
+    roll_membr_list = list(hitroll_list[1].v)
+    roll_membr_list[1] = "35"
+    hitroll_list[1].v = tuple(roll_membr_list)
+    logger.info(f"Changed {name} accuracy: {roll_membr_list}") 

@@ -1,3 +1,8 @@
+"""Polish unit edits."""
+
+from typing import Any, Dict
+
+# fmt: off
 pol_unit_edits = {
     #POL ARTILLERY
     "Mortier_2B9_Vasilek_Para_POL": {

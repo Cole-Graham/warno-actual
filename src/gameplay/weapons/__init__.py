@@ -1,12 +1,33 @@
-"""Editors for GameData/Generated/Gameplay/WeaponDescriptor.ndf"""
+"""Weapon modification modules."""
 
-from typing import Any, Callable, Dict, List
-
+from .ammunition import edit_ammunition
+from .damage_families import (
+    add_damage_families_to_impl,
+    add_damage_families_to_list,
+    add_damage_resistance_values,
+    apply_damage_families,
+    apply_damage_family_edits,
+    edit_infantry_armor,
+)
+from .mg_teams import edit_mg_team_weapons
+from .missiles import edit_missiles
+from .mortar_mods import add_corrected_shot_dispersion, add_radio_tag_to_mortars
 from .unit_edits import edit_units
+from .vanilla_modifications import apply_vanilla_renames, remove_vanilla_instances
 
-
-def get_editors(unit_db: Dict[str, Any]) -> List[Callable]:
-    """Get all editors for WeaponDescriptor.ndf."""
-    return [
-        lambda source: edit_units(source),
-    ] 
+__all__ = [
+    'edit_ammunition',
+    'add_damage_families_to_impl',
+    'add_damage_families_to_list',
+    'add_damage_resistance_values',
+    'apply_damage_families',
+    'apply_damage_family_edits',
+    'edit_infantry_armor',
+    'edit_mg_team_weapons',
+    'edit_missiles',
+    'add_corrected_shot_dispersion',
+    'add_radio_tag_to_mortars',
+    'edit_units',
+    'apply_vanilla_renames',
+    'remove_vanilla_instances',
+] 

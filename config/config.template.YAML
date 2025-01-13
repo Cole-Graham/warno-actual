@@ -9,6 +9,10 @@ data_config:
   build_database: true  # Set to false to skip database building
   database_path: "data/database"  # Path to store database files
 
+# Asset configuration  
+asset_config:
+  textures_dir: "assets/textures"
+
 directories:
   # Base game and output paths
   warno_mods: "C:/Program Files (x86)/Steam/steamapps/common/WARNO/Mods"
@@ -25,9 +29,6 @@ directories:
   # Release builds
   gameplay_release: "test gameplay"
   ui_only_release: "test ui"
-
-  # Asset paths
-  textures: "C:/Users/coleg/OneDrive/Documents/Wargame/WARNO/WARNO Modding/WARNO_ACTUAL/textures"
 
 # File configurations  
 files:

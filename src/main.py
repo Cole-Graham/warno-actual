@@ -1,3 +1,5 @@
+"""Main entry point for the mod patcher."""
+
 from src import ModConfig, ndf
 from src.gameplay_mod import get_file_editor as get_gameplay_editor
 from src.ui_mod import get_file_editor as get_ui_editor
@@ -11,6 +13,7 @@ from src.utils.logging_utils import log_time, setup_logger
 logger = setup_logger('main')
 
 def main():
+    """Main function to run the mod patcher."""
     config = ModConfig.get_instance()
     build_config = config.config_data['build_config']
     

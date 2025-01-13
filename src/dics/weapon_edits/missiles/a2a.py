@@ -1,0 +1,200 @@
+"""a2a missile definitions."""
+
+from typing import Dict, List, Optional, Tuple, Union
+
+WeaponData = Dict[str, Union[Dict, List, int, float, str]]
+WeaponKey = Tuple[str, str, Optional[str], bool]  # (weapon, category, donor, is_new)
+
+# fmt: off
+missiles: Dict[WeaponKey, WeaponData] = {
+    ("AA_Skyflash", "A2A", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PorteeMaximaleHAGRU": 8400,
+                "MaximalSpeedGRU": 4946,
+                "MaxAccelerationGRU": 2826,
+                "TempsEntreDeuxSalves": 1.5,
+                "SupplyCost": 120,
+            },
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 4946,
+            "MaxAccelerationGRU": 2826,
+        },
+    },
+
+    ("AA_R73_Vympel", "A2A", None, False): { # 27
+        "Ammunition": {
+            "parent_membr": {
+                "SupplyCost": 100,
+            },
+        },
+    },
+
+    ("AA_R60M_Vympel", "A2A", None, False): { # 27
+        "Ammunition": {
+            "parent_membr": {
+                "SupplyCost": 95,
+            },
+        },
+    },
+
+    ("AA_R40TD1", "A2A", None, False): { # 24
+        "Ammunition": {
+            "parent_membr": {
+                "PorteeMaximaleHAGRU": 8400,
+                "MaximalSpeedGRU": 4946,
+                "MaxAccelerationGRU": 2826,
+                "TempsEntreDeuxSalves": 1.5,
+                "SupplyCost": 100,
+            },
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 4946,
+            "MaxAccelerationGRU": 2826,
+        },
+    },
+
+    ("AA_R37_Vympel", "A2A", None, False): { # 21
+        "Ammunition": {
+            "parent_membr": {
+                "PorteeMaximaleHAGRU": 13300,
+                "MaximalSpeedGRU": 6600,
+                "TempsEntreDeuxTirs": 1.0,
+                "TempsEntreDeuxSalves": 4.0,
+                "NbTirParSalves": 2,
+                "SupplyCost": 240,
+            },
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 6600,
+        },
+    },
+
+    ("AA_R33_Vympel", "A2A", None, False): { # 19
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 30,
+                "Moving": 30,
+            },
+            "parent_membr": {
+                "add": [34, "IsFireAndForget = True"],
+                "TraitsToken": ['MOTION', 'F&F'],
+                "PorteeMaximaleHAGRU": 13300,
+                "PhysicalDamages": 10.0,
+                "MaximalSpeedGRU": 6600,
+                "TempsEntreDeuxTirs": 0.7,
+                "TempsDeVisee": 1.4,
+                "TempsEntreDeuxSalves": 3.0,
+                "NbTirParSalves": 2,
+                "SupplyCost": 280,
+                "AffichageMunitionParSalve": 2,
+            },
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 6600,
+        },
+    },
+
+    ("AA_R27R_Vympel", "A2A", None, False): { # 18
+        "Ammunition": {
+            "parent_membr": {
+                "PorteeMaximaleHAGRU": 9275,
+                "MaximalSpeedGRU": 4946,
+                "MaxAccelerationGRU": 2826,
+                "TempsEntreDeuxSalves": 1.5,
+                "SupplyCost": 140,
+            },
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 4946,
+            "MaxAccelerationGRU": 2826,
+        },
+    },
+
+    ("AA_R24R_Vympel", "A2A", None, False): { # 15
+        "Ammunition": {
+            "hit_roll": {
+                "Moving": 40,
+            },
+            "parent_membr": {
+                "PorteeMaximaleHAGRU": 8400,
+                "MaximalSpeedGRU": 4946,
+                "MaxAccelerationGRU": 2826,
+                "TempsEntreDeuxSalves": 1.5,
+                "SupplyCost": 100,
+            },
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 4946,
+            "MaxAccelerationGRU": 2826,
+        },
+    },
+
+    ("AA_R24MR_Vympel", "A2A", None, False): { # 15
+        "Ammunition": {
+            "parent_membr": {
+                "PorteeMaximaleHAGRU": 8400,
+                "MaximalSpeedGRU": 4946,
+                "MaxAccelerationGRU": 2826,
+                "TempsEntreDeuxSalves": 1.5,
+                "SupplyCost": 120,
+            },
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 4946,
+            "MaxAccelerationGRU": 2826,
+        },
+    },
+
+    ("AA_AIM9M_Sidewinder", "A2A", None, False): { # 7
+        "Ammunition": {
+            "parent_membr": {
+                "SupplyCost": 100,
+            },
+        },
+    },
+
+    ("AA_AIM9L_Sidewinder", "A2A", None, False): { # 6
+        "Ammunition": {
+            "parent_membr": {
+                "SupplyCost": 90,
+            },
+        },
+    },
+
+    ("AA_AIM9J_Sidewinder", "A2A", None, False): { # 5
+        "Ammunition": {
+            "parent_membr": {
+                "SupplyCost": 80,
+            },
+        },
+    },
+
+    ("AA_AIM7M_Sparrow", "A2A", None, False): { # 4
+        "Ammunition": {
+            "parent_membr": {
+                "PorteeMaximaleHAGRU": 8400,
+                "MaximalSpeedGRU": 4946,
+                "MaxAccelerationGRU": 2826,
+                "TempsEntreDeuxSalves": 1.5,
+                "SupplyCost": 120,
+            },
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 4946,
+            "MaxAccelerationGRU": 2826,
+        },
+    },
+
+    ("AA_AIM120A_AMRAAM", "A2A", None, False): { # 1
+        "Ammunition": {
+            "parent_membr": {
+                "PorteeMaximaleHAGRU": 8400,
+                "TempsEntreDeuxSalves": 1.5,
+                "SupplyCost": 140,
+            },
+        },
+    },
+}
+# fmt: on
