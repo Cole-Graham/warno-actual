@@ -1,0 +1,127 @@
+"""Unit trait and specialty constants."""
+
+NEW_TRAITS = {
+    "good_airoptics": {
+        "title": ("QVLGHFHGMX", "Good Air Detection"),
+        "description": ("XFHVTROSUP", (
+            f"This unit has good optics for detecting aircraft, and can spot them from a "
+            f"greater distance than most units. (7200m)"
+        )),
+        "texture": "good_airoptics.png",
+    },
+
+    "verygood_airoptics": {
+        "title": ("LEJTSAZONO", "Very Good Air Detection"),
+        "description": ("CPCAOEUBMO", (
+            f"This unit has a powerful radar for detecting aircraft, and can spot them "
+            f"from a greater distance than most units. (9200m)"
+        )),
+        "texture": "verygood_airoptics.png",
+    },
+
+    "infantry_equip_light": {
+        "title": ("KLFMLCXTLI", "Light Equipment"),
+        "description": ("NQPICCWPZM", (
+            f"These infantry are lightly equipped, allowing them to move quickly and "
+            f"reposition easily on the battlefield."
+        )),
+        "texture": "light_equipment.png",
+    },
+    
+    "infantry_equip_medium": {
+        "title": ("PWXOBNIDQC", "Medium Equipment"),
+        "description": ("GUPAGRZAWI", (
+            f"These infantry are moderately equipped, and while just as mobile, "
+            f"carry less ammunition than their light counterparts."
+        )),
+        "texture": "medium_equipment.png",
+    },
+    
+    "infantry_equip_heavy": {
+        "title": ("CAOTQXVHXH", "Heavy Equipment"),
+        "description": ("XLMSCEWDLB", (
+            f"These infantry are burdened by powerful yet heavy equipment, "
+            f"hampering their mobility on the battlefield."
+        )),
+        "texture": "heavy_equipment.png",
+    },
+    
+    "infantry_equip_veryheavy": {
+        "title": ("AXLDYZOVCJ", "Immobile Weapon Systems"),
+        "description": ("DJTBXQWLVR", (
+            f"These infantry employ heavy weapons meant for defending entrenched "
+            f"positions. Keep a transport nearby if you foresee the need to "
+            f"reposition this unit in a hurry, and be proactive about avoiding "
+            f"enemy artillery if their position is revealed."
+        )),
+        "texture": "veryheavy_equipment.png",
+    },
+    
+    "cmd_small": { # blufor leader text script texture (#LDR)
+        "title": (None, None),
+        "description": (None, (
+            None
+        )),
+        "texture": "cmd_small.png",
+    },
+
+    "leader_sov": { # redfor leader trait texture
+        "title": ("YNKZWZNLDT", None),
+        "description": ("REIDQXMIMJ", (
+            None
+        )),
+        "extended": ("CSUKPTRVAR", (
+            None
+        )),
+        "texture": "cmd_star.png",
+    },
+
+    "cmd_star_small": { # redfor leader text script texture (#SOVLDR)
+        "title": (None, None),
+        "description": (None, (
+            None
+        )),
+        "texture": "cmd_star_small.png",
+    },
+
+    "refundable_unit": {
+        "title": ("WBMGTMRGUA", "Refundable"),
+        "description": ("YYNHOSCAII", (
+            f"This transport can be sold for 100% of its cost, and is priced to a higher "
+            f"standard than IFVs and heavily armed APCs. Its armaments (if any) are not "
+            f"intended to be cost effective when employed offensively, but they can be "
+            f"used sparingly as a defensive tool or as a last resort."
+        )),
+        "texture": "refundable.png",
+    },
+}
+
+TRAIT_EDITS = {
+    "_choc": {
+        "extended": {
+            "token": "NKHDAPIZBR",
+            "text": (
+                f"CQC Bonuses: While stationary, and if within "
+                f"150m of enemies, gain the following bonuses: "
+                f"\n- 15% bonus to aim time, shot reload, and salvo reload. (multiplicative)"
+                f"\n- 15% bonus to physical damage. (flat)"
+                f"\n\nIf within 875m of enemies, Shock units move 33% faster, "
+                f"and while moving receive -50% suppression damage, and -20% "
+                f"physical damage. (multiplicative, percentage, percentage)"
+                f"\nThis bonus has a 10 second duration, 15 second cooldown, and "
+                f"2 second cast time. Due to a technical limitation, GSR shock infantry only "
+                f"get the movement speed bonus."
+            )
+        }
+    },
+    "_sniper": {
+        "extended": {
+            "token": "JUDUFDHTTW",
+            "text": (
+                f"Sniper units gain an extra level of Stealth, plus a 20% Accuracy "
+                f"bonus when not moving (flat). This unit must remain still for at "
+                f"least 10 seconds for this effect to trigger."
+            )
+        }
+    }
+}

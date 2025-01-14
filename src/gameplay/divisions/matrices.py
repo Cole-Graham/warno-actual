@@ -1,6 +1,6 @@
 """Functions for modifying division cost matrices."""
 
-from src.dics.division_edits.matrix_data import DIVISION_MATRICES
+from src.constants.division_edits.matrix_data import DIVISION_MATRICES
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)

@@ -3,79 +3,19 @@
 import ast
 from typing import List, Tuple
 
-from src.dics.effects.capacities import (
+from src import ModConfig
+from src.constants.effects.capacities import (
     CHOC_MOVE_CAPACITY,
+    CHOC_MOVE_EFFECT,
     CHOC_MOVE_GSR_CAPACITY,
+    CHOC_MOVE_GSR_EFFECT,
     NO_CHOC_MOVE_CAPACITY,
+    NO_CHOC_MOVE_EFFECT,
 )
+from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
-
-# Effect definitions
-NO_CHOC_MOVE = (
-    'export UnitEffect_Ajoute_Tag_no_Choc_move is TEffectsPackDescriptor'
-    '('
-    '    DescriptorId       = GUID:{bf1daa2b-1708-4702-80ff-4c7dfd76c2d7}'
-    "    NameForDebug       = 'Ajoute_Tag_no_Choc_move'"
-    '    EffectsDescriptors = ['
-    '        TUnitEffectRaiseTagDescriptor'
-    '        ('
-    '            TagListToRaise = ["RadioJammed"]'
-    '        )'
-    '    ]'
-    ')'
-)
-
-CHOC_MOVE = (
-    'export UnitEffect_Choc_move is TEffectsPackDescriptor'
-    '('
-    '    DescriptorId       = GUID:{c3dbf0eb-c573-47b6-ba19-2d17ad3f9f24}'
-    "    NameForDebug       = 'Choc_move'"
-    '    EffectsDescriptors = ['
-    '        TUnitEffectIncreaseDamageTakenDescriptor'
-    '        ('
-    '            ModifierType        = ~/ModifierType_Pourcentage'
-    '            BonusDamage         = -50'
-    '            DamageType          = EDamageType/Suppress'
-    '        ),'
-    '        TUnitEffectIncreaseDamageTakenDescriptor'
-    '        ('
-    '            ModifierType = ~/ModifierType_Pourcentage'
-    '            BonusDamage = -20'
-    '            DamageType  = EDamageType/Physical'
-    '        ),'
-    '        TUnitEffectIncreaseSpeedDescriptor'
-    '        ('
-    '            ModifierType = ~/ModifierType_Multiplicatif'
-    '            BonusSpeedBaseInPercent   = 1.33'
-    '        ),'
-    '        TUnitEffectShowLabelIconDescriptor'
-    '        ('
-    '            TextureToken = "icone_shock_move"'
-    '        )'
-    '    ]'
-    ')'
-)
-
-CHOC_MOVE_GSR = (
-    'export UnitEffect_Choc_move_GSR is TEffectsPackDescriptor'
-    '('
-    '    DescriptorId       = GUID:{177c48af-2b7d-4d09-bae7-4d2d2628f946}'
-    "    NameForDebug       = 'Choc_move_GSR'"
-    '    EffectsDescriptors = ['
-    '        TUnitEffectIncreaseSpeedDescriptor'
-    '        ('
-    '            ModifierType = ~/ModifierType_Multiplicatif'
-    '            BonusSpeedBaseInPercent   = 1.33'
-    '        ),'
-    '        TUnitEffectShowLabelIconDescriptor'
-    '        ('
-    '            TextureToken = "icone_shock_move"'
-    '        )'
-    '    ]'
-    ')'
-)
 
 
 def edit_shock_effects(source) -> None:
@@ -85,9 +25,9 @@ def edit_shock_effects(source) -> None:
     # Add new shock effects
     for i, row in enumerate(source, start=1):
         if row.namespace == "UnitEffect_Choc":
-            source.insert(i, CHOC_MOVE)
-            source.insert(i, CHOC_MOVE_GSR)
-            source.insert(i, NO_CHOC_MOVE)
+            source.insert(i, CHOC_MOVE_EFFECT)
+            source.insert(i, CHOC_MOVE_GSR_EFFECT)
+            source.insert(i, NO_CHOC_MOVE_EFFECT)
             logger.info("Added shock movement effects")
             break
     

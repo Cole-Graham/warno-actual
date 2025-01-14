@@ -2,7 +2,7 @@
 
 from typing import Any, Dict
 
-from src.dics.weapon_edits.vanilla_inst_modifications import (
+from src.constants.weapons.vanilla_inst_modifications import (
     ammunition_missiles_removals,
     ammunition_missiles_renames,
 )

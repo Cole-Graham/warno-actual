@@ -1,17 +1,17 @@
 """Functions for modifying weapon damage families."""
 
-from src.dics.weapon_edits.damage_edits import (
+from src.constants.weapons.damage_edits import (
     DAMAGE_EDITS,
     FMBALLE_INFANTRY_EDITS,
     FMBALLE_ROWS,
     INFANTRY_ARMOR_EDITS,
 )
-from src.dics.weapon_edits.damage_values import (
+from src.constants.weapons.damage_values import (
     DPICM_DAMAGES,
     FULL_BALL_DAMAGE,
     SNIPER_DAMAGE,
 )
-from src.dics.weapon_edits.weapon_descriptions import weapon_descriptions
+from src.constants.weapons.weapon_descriptions import weapon_descriptions
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)

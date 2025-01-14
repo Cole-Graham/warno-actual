@@ -2,8 +2,8 @@
 
 from typing import Any, Dict
 
-from src.dics.weapon_edits.ammunition import weapons
-from src.dics.weapon_edits.vanilla_inst_modifications import (
+from src.constants.weapons.ammunition import weapons
+from src.constants.weapons.vanilla_inst_modifications import (
     ammunition_removals,
     ammunition_renames,
 )

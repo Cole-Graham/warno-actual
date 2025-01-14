@@ -9,7 +9,7 @@ from .effects import (
     edit_shock_units,
 )
 from .terrains import edit_terrains
-from .ui.info_panel import edit_unit_info_panel
+from .ui.unit_info_panel import edit_unit_info_panel
 from .unit_descriptor import (
     edit_antirad_optics,
     edit_auto_cover,
@@ -17,8 +17,7 @@ from .unit_descriptor import (
     edit_infantry_armor_wa,
     edit_team_supply,
 )
-from .veterancy import edit_plane_veterancy
-from .veterancy.experience import edit_experience_hints
+from .veterancy import edit_experience_hints, edit_plane_veterancy
 from .weapons.ammunition import edit_ammunition
 from .weapons.damage_families import (
     add_damage_families_to_impl,
