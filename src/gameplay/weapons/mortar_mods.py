@@ -1,6 +1,7 @@
-"""Functions for modifying mortar weapon instances."""
+"""Functions for modifying mortar weapons."""
 
 from src.utils.logging_utils import setup_logger
+from src.utils.ndf_utils import ndf
 
 logger = setup_logger(__name__)
 
@@ -66,4 +67,37 @@ def add_radio_tag_to_mortars(source, game_db: dict) -> None:
             if tag.v == '"GroundUnits"':
                 tag_set.insert(i + 1, '"Radio",')
                 logger.info(f"Added 'Radio' tag to {unit.n}")
+                break 
+
+
+def edit_smoke_duration(source) -> None:
+    """Edit smoke duration for mortars in SmokeDescriptor.ndf."""
+    logger.info("------------- editing SmokeDescriptor.ndf -------------")
+    logger.info("           Editing smoke duration for mortars          ")
+    
+    smokes = [  # (name, duration)
+        ("Fumi105mm", 80),
+        ("Fumi107mm", 80),
+        ("Fumi120mm", 80),
+        ("Fumi120mm_mortier", 80),
+        ("Fumi122mm", 80),
+        ("Fumi152mm", 80),
+        ("Fumi155mm", 80),
+        ("Fumi203mm", 80),
+        ("Fumi60mm", 80),
+        ("Fumi81mm", 80),
+    ]
+
+    for descr_row in source:
+        for smoke_name, duration in smokes:
+            if descr_row.namespace == f"Descriptor_Smoke_{smoke_name}":
+                modules_list = descr_row.v.by_m("ModulesDescriptors").v
+                for module in modules_list:
+                    if not isinstance(module.v, ndf.model.Object):
+                        continue
+                    if module.v.type != "TSmokeModuleDescriptor":
+                        continue
+                    module.v.by_m("TimeToLive").v = str(duration)
+                    logger.info(f"Set {smoke_name} duration to {duration} seconds")
+                    break
                 break 

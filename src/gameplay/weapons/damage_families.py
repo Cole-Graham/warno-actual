@@ -1,14 +1,12 @@
 """Functions for modifying weapon damage families."""
 
-from src.constants.weapons.damage_edits import (
+from src.constants.weapons.damage_values import (
     DAMAGE_EDITS,
+    DPICM_DAMAGES,
     FMBALLE_INFANTRY_EDITS,
     FMBALLE_ROWS,
-    INFANTRY_ARMOR_EDITS,
-)
-from src.constants.weapons.damage_values import (
-    DPICM_DAMAGES,
     FULL_BALL_DAMAGE,
+    INFANTRY_ARMOR_EDITS,
     SNIPER_DAMAGE,
 )
 from src.constants.weapons.weapon_descriptions import weapon_descriptions
@@ -148,7 +146,7 @@ def apply_damage_family_edits(source) -> None:
     resistance_list = damage_params_obj.by_m("ResistanceFamilyDefinitionList").v
     resistance_list.add(
         "TResistanceTypeFamilyDefinition(Family=ResistanceFamily_infanterieWA MaxIndex=13)")
-    logger.info("Added infantry resistance family")
+    logger.info("Added infantryWA resistance family")
     
     # Extend damage array with new columns
     damage_array = damage_params_obj.by_m("Values").v
@@ -174,7 +172,8 @@ def edit_infantry_armor(source) -> None:
     for i, row in enumerate(damage_array):
         if i in INFANTRY_ARMOR_EDITS:
             damage_ratio, damage_family = INFANTRY_ARMOR_EDITS[i]
-            for column in range(49, 62):  # WA Infantry columns
+            # WA Infantry columns (49-61): 13 strength levels from 14 to 2
+            for column in range(49, 62):  # range is exclusive of end value
                 row.v.replace(column, str(damage_ratio))
                 logger.info(f"Edited row {i}, family {damage_family}, column {column} to {damage_ratio}")
 
@@ -182,3 +181,20 @@ def edit_infantry_armor(source) -> None:
     for row_index in FMBALLE_ROWS:
         apply_damage_array_edits(damage_array, row_index, FMBALLE_INFANTRY_EDITS)
         logger.info(f"Applied FMballe infantry edits to row {row_index}") 
+
+
+def edit_weapon_constants(source) -> None:
+    """Edit weapon constants in WeaponConstantes.ndf."""
+    logger.info("--------- editing WeaponConstantes.ndf ---------")
+    
+    weapon_constantes_obj = source.by_n("WeaponConstantes").v
+    
+    # Add infantry WA to mimetic resistance map
+    mimetic_res_map = weapon_constantes_obj.by_m("ResistanceToMimeticImpact").v
+    mimetic_res_map.add("(ResistanceFamily_infanterieWA, EImpactSurface/Ground)")
+    logger.info("Added infantryWA to mimetic resistance map")
+    
+    # Add full ball damage to blindages to ignore
+    blindages_to_ignore = weapon_constantes_obj.by_m("BlindagesToIgnoreForDamageFamilies").v
+    blindages_to_ignore.add("(DamageFamily_full_balle, [ResistanceFamily_blindage])")
+    logger.info("Added full_balle to blindages to ignore") 
