@@ -1,6 +1,7 @@
 """Main entry point for the mod patcher."""
 
 from src import ModConfig, ndf
+from src.gameplay.veterancy.vet_bonuses import write_veterancy_tokens
 from src.gameplay_mod import get_file_editor as get_gameplay_editor
 from src.ui_mod import get_file_editor as get_ui_editor
 from src.utils.config_utils import (
@@ -19,6 +20,10 @@ def main():
     
     logger.info("Starting mod build")
     with log_time(logger, "Total build time"):
+        # Write dictionary entries first
+        write_veterancy_tokens()
+        logger.info("Wrote veterancy dictionary tokens")
+        
         # Get paths
         source_paths = get_source_paths(config.config_data)
         dest_path = get_destination_path(config.config_data)

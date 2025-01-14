@@ -32,7 +32,7 @@ def write_trait_texts() -> None:
         if extended_token:
             entries.append((extended_token, extended_text))
     
-    write_dictionary_entries(entries, config, "UNITS.csv")
+    write_dictionary_entries(entries, config, dictionary_type="units")
 
 
 def edit_specialty_icons(source) -> None:

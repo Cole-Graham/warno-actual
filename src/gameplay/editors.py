@@ -19,7 +19,10 @@ from .unit_descriptor import (
     edit_infantry_armor_wa,
     edit_team_supply,
 )
-from .veterancy import edit_experience_hints, edit_plane_veterancy
+from .veterancy import (
+    edit_veterancy_effects,
+    edit_veterancy_hints,
+)
 from .weapons.ammunition import edit_ammunition
 from .weapons.damage_families import (
     add_damage_families_to_impl,
@@ -81,7 +84,7 @@ def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:
         # Effects and veterancy files
         "GameData/Generated/Gameplay/Gfx/EffetsSurUnite.ndf": [
             lambda source: edit_shock_effects(source),
-            lambda source: edit_plane_veterancy(source),
+            lambda source: edit_veterancy_effects(source),
         ],
         "GameData/Generated/Gameplay/Gfx/EffectsPacksList.ndf": [
             lambda source: edit_shock_effects_packs_list(source),
@@ -90,7 +93,7 @@ def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:
             lambda source: edit_capacite_list(source),
         ],
         "GameData/Generated/Gameplay/Gfx/ExperienceLevels.ndf": [
-            lambda source: edit_experience_hints(source),
+            lambda source: edit_veterancy_hints(source),
         ],
         
         # Other game files

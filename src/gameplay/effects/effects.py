@@ -12,7 +12,6 @@ from src.constants.effects.capacities import (
     NO_CHOC_MOVE_CAPACITY,
     NO_CHOC_MOVE_EFFECT,
 )
-from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)

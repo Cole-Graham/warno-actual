@@ -31,7 +31,7 @@ def write_info_panel_hints() -> None:
             if "extended" in attr_data:
                 entries.append((f"{base_token}E", attr_data["extended"]))
     
-    write_dictionary_entries(entries, config)
+    write_dictionary_entries(entries, config, dictionary_type="ingame")
 
 
 def edit_unit_info_panel(source) -> None:

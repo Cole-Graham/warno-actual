@@ -24,7 +24,7 @@ def write_veterancy_tokens() -> None:
                 entries.append((body_token, body))
     
     # Write entries
-    write_dictionary_entries(entries, config) 
+    write_dictionary_entries(entries, config, dictionary_type="ingame") 
     
 def edit_veterancy_effects(source) -> None:
     """Edit veterancy effects in EffetsSurUnite.ndf."""

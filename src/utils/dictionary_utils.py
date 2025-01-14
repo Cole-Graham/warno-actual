@@ -2,7 +2,7 @@
 
 import csv
 from pathlib import Path
-from typing import Dict, List, Set, Tuple
+from typing import Dict, List, Optional, Set, Tuple
 
 from src import ModConfig
 from src.utils.logging_utils import setup_logger
@@ -33,15 +33,34 @@ def get_dictionary_path(config: Dict, filename: str = "INTERFACE_INGAME.csv") ->
 def write_dictionary_entries(
     entries: List[Tuple[str, str]], 
     config: Dict,
-    filename: str = "INTERFACE_INGAME.csv"
+    dictionary_type: str = "ingame"
 ) -> None:
     """Write entries to a dictionary file if they don't already exist.
     
     Args:
         entries: List of (token, text) tuples to write
         config: Configuration dictionary
-        filename: Name of the dictionary file
+        dictionary_type: Type of dictionary to write to. One of:
+            - "ingame": INTERFACE_INGAME.csv
+            - "outgame": INTERFACE_OUTGAME.csv
+            - "companies": COMPANIES.csv
+            - "platoons": PLATOONS.csv
+            - "units": UNITS.csv
     """
+    # Map dictionary types to filenames
+    dict_files = {
+        "ingame": "INTERFACE_INGAME.csv",
+        "outgame": "INTERFACE_OUTGAME.csv",
+        "companies": "COMPANIES.csv",
+        "platoons": "PLATOONS.csv",
+        "units": "UNITS.csv"
+    }
+    
+    if dictionary_type not in dict_files:
+        logger.error(f"Unknown dictionary type: {dictionary_type}")
+        return
+        
+    filename = dict_files[dictionary_type]
     dict_path = get_dictionary_path(config, filename)
     
     # Ensure directory exists
