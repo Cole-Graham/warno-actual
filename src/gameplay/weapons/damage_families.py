@@ -1,6 +1,8 @@
 """Functions for modifying weapon damage families."""
 
-from src.constants.weapons.damage_values import (
+from typing import Any, Dict
+
+from src.constants.weapons import (
     DAMAGE_EDITS,
     DPICM_DAMAGES,
     FMBALLE_INFANTRY_EDITS,
@@ -8,8 +10,8 @@ from src.constants.weapons.damage_values import (
     FULL_BALL_DAMAGE,
     INFANTRY_ARMOR_EDITS,
     SNIPER_DAMAGE,
+    WEAPON_DESCRIPTIONS,
 )
-from src.constants.weapons.weapon_descriptions import weapon_descriptions
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
@@ -69,8 +71,10 @@ def add_damage_families_to_impl(source) -> None:
         logger.info(f"Added damage family: {family}")
 
 
-def apply_damage_families(source, ammo_db: dict) -> None:
+def apply_damage_families(source: Any, game_db: Dict[str, Any]) -> None:
     """Apply damage family modifications to weapons."""
+    ammo_db = game_db["ammunition"]
+    
     for weapon_descr in source:
         if weapon_descr.n in ammo_db["full_ball_weapons"]:
             arme_obj = weapon_descr.v.by_m("Arme").v
@@ -84,7 +88,7 @@ def apply_damage_families(source, ammo_db: dict) -> None:
             
             # Update description token
             type_cat = weapon_descr.v.by_m("TypeCategoryName").v
-            for weapon_type, ((cat_hash, desc_hash), _) in weapon_descriptions.items():
+            for weapon_type, ((cat_hash, desc_hash), _) in WEAPON_DESCRIPTIONS.items():
                 if type_cat == cat_hash:
                     weapon_descr.v.by_m("WeaponDescriptionToken").v = f"'{desc_hash}'"
                     logger.info(f"Changed {weapon_descr.n} description to {weapon_type} ({desc_hash})")

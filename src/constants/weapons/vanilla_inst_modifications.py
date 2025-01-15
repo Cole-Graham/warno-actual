@@ -1,7 +1,7 @@
 """Vanilla weapon renames and removals."""
 
 
-ammunition_renames = [
+AMMUNITION_RENAMES = [
     ("Sniper_M14", "Sniper_M21"),
     ("RocketInf_M72_LAW_66mm", "RocketInf_M72A3_LAW_66mm"),
     ("PM_M4_Carbine", "Commando_733"),
@@ -10,10 +10,11 @@ ammunition_renames = [
     ("Mortier_M40_107mm_SMOKE", "Mortier_M30_107mm_SMOKE"),
     ("Mortier_M40_107mm", "Mortier_M30_107mm"),
     ("MMG_M60_7_62mm", "MMG_WA_M60E3_7_62mm"),
+    ("RocketAir_S13_122mm_x10_avion", "RocketAir_S13_122mm_salvolength10_avion"),
 ]
 
 
-ammunition_missiles_renames = [
+AMMUNITION_MISSILES_RENAMES = [
     ("ATGM_9K115_Metis_M", "ATGM_9K115_Metis"),
     ("ATGM_9M119M_Svir", "ATGM_9K120_Svir"),
     ("ATGM_9M119M_Refleks", "ATGM_9M119_Refleks"),
@@ -25,8 +26,8 @@ ammunition_missiles_renames = [
     ("AGM_Kh28_X28", "AGM_Kh28"),
 ]
 
-ammunition_removals = []
+AMMUNITION_REMOVALS = []
 
-ammunition_missiles_removals = [
+AMMUNITION_MISSILES_REMOVALS = [
     "ATGM_9k111M_Faktoriya"
 ]

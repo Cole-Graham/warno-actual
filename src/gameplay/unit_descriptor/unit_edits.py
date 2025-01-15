@@ -3,7 +3,7 @@
 from typing import Any, Dict
 
 from src import ndf
-from src.dics import load_unit_edits
+from src.constants.unit_edits import load_unit_edits
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import find_namespace
 

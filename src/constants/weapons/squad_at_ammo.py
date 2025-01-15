@@ -1,6 +1,6 @@
 """Squad size to AT ammo quantity mapping."""
 
-squad_at_ammo = {
+SQUAD_AT_AMMO = {
     3: 3,   # 3-man squad gets 3 AT weapons
     4: 4,   # 4-man squad gets 4 AT weapons
     5: 5,

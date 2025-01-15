@@ -1,6 +1,6 @@
 from typing import Any, Dict, List
 
-from src.dics import load_unit_edits
+from src.constants.unit_edits import load_unit_edits
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import get_module_list, is_obj_type
 

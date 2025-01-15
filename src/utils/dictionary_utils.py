@@ -9,16 +9,16 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
 
-def get_dictionary_path(config: Dict, filename: str = "INTERFACE_INGAME.csv") -> Path:
+def get_dictionary_path(filename: str = "INTERFACE_INGAME.csv") -> Path:
     """Get the path to a dictionary file based on config.
     
     Args:
-        config: Configuration dictionary
         filename: Name of the dictionary file
         
     Returns:
         Path to the dictionary file
     """
+    config = ModConfig.get_instance().config_data
     warno_mods = Path(config['directories']['warno_mods'])
     is_dev = config['build_config']['write_dev']
     
@@ -32,20 +32,13 @@ def get_dictionary_path(config: Dict, filename: str = "INTERFACE_INGAME.csv") ->
 
 def write_dictionary_entries(
     entries: List[Tuple[str, str]], 
-    config: Dict,
     dictionary_type: str = "ingame"
 ) -> None:
-    """Write entries to a dictionary file if they don't already exist.
+    """Write entries to dictionary file.
     
     Args:
         entries: List of (token, text) tuples to write
-        config: Configuration dictionary
-        dictionary_type: Type of dictionary to write to. One of:
-            - "ingame": INTERFACE_INGAME.csv
-            - "outgame": INTERFACE_OUTGAME.csv
-            - "companies": COMPANIES.csv
-            - "platoons": PLATOONS.csv
-            - "units": UNITS.csv
+        dictionary_type: Type of dictionary file to write to
     """
     # Map dictionary types to filenames
     dict_files = {
@@ -61,7 +54,7 @@ def write_dictionary_entries(
         return
         
     filename = dict_files[dictionary_type]
-    dict_path = get_dictionary_path(config, filename)
+    dict_path = get_dictionary_path(filename)
     
     # Ensure directory exists
     dict_path.parent.mkdir(parents=True, exist_ok=True)

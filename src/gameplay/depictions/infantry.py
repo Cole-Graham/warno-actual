@@ -2,8 +2,7 @@
 
 from typing import Any, Dict
 
-from src.data.data_builder import load_data
-from src.dics import load_unit_edits
+from src.constants.unit_edits import load_unit_edits
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger('infantry_depictions')
@@ -12,9 +11,9 @@ def edit_infantry_depictions(source: Any, unit_db: Dict[str, Any]) -> None:
     """Edit infantry depictions."""
     logger.info("Editing infantry depictions")
     
-    # Load both unit edits and depiction data
+    # Get depiction data from database
+    depiction_data = unit_db.get("depiction_data", {})
     unit_edits = load_unit_edits()
-    depiction_data = load_data({}, "depictions")
     
     if not depiction_data:
         logger.error("No depiction data found in database")

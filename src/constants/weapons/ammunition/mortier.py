@@ -111,7 +111,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("Mortier_Vasilek_82mm_SMOKE", "mortar", "Mortier_Vasilek_82mm_SMOKE", True): {
+    ("Mortier_Vasilek_82mm_SMOKE", "mortar", "Mortier_Vasilek_82mm", True): {
         "Ammunition": {
             "Arme": {
                 "Family": "DamageFamily_he",

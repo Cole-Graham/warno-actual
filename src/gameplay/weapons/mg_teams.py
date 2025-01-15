@@ -1,24 +1,25 @@
 """Functions for modifying MG team weapons."""
 
+from typing import Any, Dict
+
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
 
-def edit_mg_team_weapons(source, ammo_db: dict) -> None:
-    """Modify weapons for MG teams."""
-    logger.info("Adjusting MG Teams")
-    mg_cats = ammo_db["mg_categories"]
+def edit_mg_team_weapons(source: Any, game_db: Dict[str, Any]) -> None:
+    """Edit MG team weapon properties."""
+    ammo_db = game_db["ammunition"]
     
     for weapon_descr in source:
         name = weapon_descr.n
         
-        if name in mg_cats["hmg_teams"]:
-            _modify_hmg_team(weapon_descr, name, mg_cats["hmg_exceptions"])
-        elif name in mg_cats["mmg_teams"]:
+        if name in ammo_db["mg_categories"]["hmg_teams"]:
+            _modify_hmg_team(weapon_descr, name, ammo_db["mg_categories"]["hmg_exceptions"])
+        elif name in ammo_db["mg_categories"]["mmg_teams"]:
             _modify_mmg_team(weapon_descr, name)
-        elif name in mg_cats["hmg_turrets"]:
+        elif name in ammo_db["mg_categories"]["hmg_turrets"]:
             _modify_hmg_turret(weapon_descr, name)
-        elif name in mg_cats["mmg_turrets"]:
+        elif name in ammo_db["mg_categories"]["mmg_turrets"]:
             _modify_mmg_turret(weapon_descr, name)
 
 

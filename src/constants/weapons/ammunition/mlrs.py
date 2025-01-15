@@ -7,7 +7,7 @@ WeaponKey = Tuple[str, str, Optional[str], bool]  # (weapon, category, donor, is
 
 # fmt: off
 weapons: Dict[WeaponKey, WeaponData] = {
-    ("RocketArt_thermobaric_220mm_x30", "MLRS", None, False): { # 657
+    ("RocketArt_thermobaric_220mm_salvolength30", "MLRS", None, False): { # 657
         "Ammunition": {
             "Arme": {
                 "Family": "DamageFamily_thermobarique",
@@ -67,7 +67,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketArt_M21OF_122mm_x12", "MLRS", None, False): { # 649
+    ("RocketArt_M21OF_122mm_salvolength12", "MLRS", None, False): { # 649
         "Ammunition": {
             "parent_membr": {
                 "PhysicalDamages": 4.2,

@@ -1,18 +1,27 @@
 """Functions for modifying unit cover behavior."""
 
+from typing import Any, List
+
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import ndf
 
 logger = setup_logger(__name__)
 
 
-def _get_unit_tags(tags) -> set:
-    """Extract tags from either string or List format."""
-    if not isinstance(tags, list):
-        str_tags = tags
-        tags = ndf.convert(str_tags)[0].v
-        return {tag.v.strip('"\'') for tag in tags}
-    return {tag.v.strip('"\'') for tag in tags}
+def _get_unit_tags(tags_input: Any) -> List[str]:
+    """Convert tags input into list of tag strings.
+    
+    Args:
+        tags_input: Either a string to parse or an ndf List object
+    """
+    # If input is already a List, use it directly
+    if isinstance(tags_input, ndf.model.List):
+        tags = tags_input
+    else:
+        # Otherwise parse the string input
+        tags = ndf.convert(str(tags_input).encode('utf-8'))[0].v
+    
+    return [tag.v.strip("'") for tag in tags]
 
 
 def edit_auto_cover(source) -> None:

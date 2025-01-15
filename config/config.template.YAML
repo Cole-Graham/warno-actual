@@ -11,7 +11,7 @@ data_config:
 
 # Asset configuration  
 asset_config:
-  textures_dir: "assets/2d"
+  textures_dir: "assets/2d"  # Path to texture files relative to project root
 
 directories:
   # Base game and output paths

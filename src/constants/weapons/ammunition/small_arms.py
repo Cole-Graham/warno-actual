@@ -1284,7 +1284,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("FM_Mpi_AKS_74NK_noreflex", "small_arms", "FM_Mpi_AKS_74NK", False): {
+    ("FM_Mpi_AKS_74NK_noreflex", "small_arms", "FM_Mpi_AKS_74NK", True): {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 40,
@@ -1559,7 +1559,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "BaseSupplyCost": 1,
-        "NbWeapons": [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+        "NbWeapons": [1],
         "WeaponDescriptor": {
             "Salves": 11,
         },

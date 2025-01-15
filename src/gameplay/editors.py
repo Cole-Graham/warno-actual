@@ -2,14 +2,13 @@
 
 from typing import Any, Callable, Dict, List
 
-from gd_constants import edit_game_constants
-
 from .effects import (
     edit_capacite_list,
     edit_shock_effects,
     edit_shock_effects_packs_list,
     edit_shock_units,
 )
+from .gd_constants import edit_game_constants
 from .terrains import edit_terrains
 from .ui.unit_info_panel import edit_unit_info_panel
 from .unit_descriptor import (
@@ -17,12 +16,11 @@ from .unit_descriptor import (
     edit_auto_cover,
     edit_forward_deploy,
     edit_infantry_armor_wa,
+    edit_mg_teams,
     edit_team_supply,
+    edit_units,
 )
-from .veterancy import (
-    edit_veterancy_effects,
-    edit_veterancy_hints,
-)
+from .veterancy import edit_veterancy_effects, edit_veterancy_hints
 from .weapons.ammunition import edit_ammunition
 from .weapons.damage_families import (
     add_damage_families_to_impl,
@@ -34,7 +32,6 @@ from .weapons.damage_families import (
 )
 from .weapons.missiles import edit_missiles
 from .weapons.mortar_mods import add_radio_tag_to_mortars, edit_smoke_duration
-from .weapons.unit_edits import edit_units
 
 
 def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:

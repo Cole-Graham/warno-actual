@@ -31,3 +31,15 @@ def get_salvo_renames(source: Any) -> List[Tuple[str, str]]:
             renames.append((name, new_name))
             
     return renames 
+
+"""Shared utility functions for weapon editing."""
+
+def get_supply_costs(weapons_dict: Dict) -> List[Tuple[str, int]]:
+    """Get base supply costs for weapons."""
+    weapon_costs = []
+    for (weapon, _, _, _), data in weapons_dict.items():
+        if data is None:
+            continue
+        if "BaseSupplyCost" in data:
+            weapon_costs.append((weapon, data["BaseSupplyCost"]))
+    return weapon_costs 

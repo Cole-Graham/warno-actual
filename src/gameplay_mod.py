@@ -3,11 +3,12 @@
 from typing import Any, Callable, Dict
 
 from src.data import build_database
-from src.dics import load_unit_edits
 from src.utils.logging_utils import log_time, setup_logger
 
 logger = setup_logger('gameplay_mod')
 
+# Global cache for database
+_game_db = None
 
 def get_file_editor(file_path: str, config: Dict) -> Callable:
     """Get the appropriate edit function for gameplay files.
@@ -21,13 +22,19 @@ def get_file_editor(file_path: str, config: Dict) -> Callable:
     """
     logger.info(f"Loading data for {file_path}")
     
-    with log_time(logger, "Loading databases"):
-        # Build complete game database
-        game_db = build_database(config)
-        
+    # Build/load database once and store result
+    global _game_db
+    if _game_db is None:
+        with log_time(logger, "Loading databases"):
+            _game_db = build_database(config)
+    
+    if not _game_db:
+        logger.error("Failed to build/load game database")
+        return None
+    
     # Get editors from gameplay module
     from src.gameplay import get_editors
-    editors = get_editors(game_db)
+    editors = get_editors(_game_db)
     
     if file_path in editors:
         def apply_editors(source):

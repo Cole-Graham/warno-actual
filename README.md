@@ -4,8 +4,19 @@ A mod patcher to build WARNO ACTUAL from scratch, using ndf parse.
 
 ## Configuration
 
-To configure the project, copy the template configuration file by running the following command in your terminal:
+To configure the project, copy the template configuration file using one of these commands:
 
+### Windows (Command Prompt)
+```batch
+copy config\config.template.YAML config\config.YAML
+```
+
+### Windows (PowerShell)
+```powershell
+Copy-Item -Path config\config.template.YAML -Destination config\config.YAML
+```
+
+### Linux/macOS
 ```bash
 cp config/config.template.YAML config/config.YAML
 ```

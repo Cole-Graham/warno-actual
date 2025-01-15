@@ -1,23 +1,22 @@
 """Functions for modifying mortar weapons."""
 
+from typing import Any, Dict
+
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import ndf
 
 logger = setup_logger(__name__)
 
 
-def add_corrected_shot_dispersion(source, ammo_db: dict) -> None:
-    """Add corrected shot dispersion multipliers to mortar ammunition.
+def add_corrected_shot_dispersion(source: Any, game_db: Dict[str, Any]) -> None:
+    """Add corrected shot dispersion to mortar weapons."""
+    ammo_db = game_db["ammunition"]
     
-    Args:
-        source: Ammunition.ndf file
-        ammo_db: Ammunition database containing mortar categories
-    """
     logger.info("Adding corrected shot dispersion to mortars")
     mortar_cats = ammo_db["mortar_categories"]
     
-    for ammo_descr in source:
-        name = ammo_descr.n
+    for weapon_descr in source:
+        name = weapon_descr.n
         
         # Check if weapon is a mortar
         if name in mortar_cats["mortars"]:
@@ -28,9 +27,9 @@ def add_corrected_shot_dispersion(source, ammo_db: dict) -> None:
             continue
             
         # Add dispersion multiplier
-        for i, member in enumerate(ammo_descr.v):
+        for i, member in enumerate(weapon_descr.v):
             if member.m == "DispersionWithoutSorting":
-                ammo_descr.v.insert(i + 1, f"CorrectedShotDispersionMultiplier = {dispersion}")
+                weapon_descr.v.insert(i + 1, f"CorrectedShotDispersionMultiplier = {dispersion}")
                 logger.info(f"Added {dispersion} dispersion multiplier for {name}")
                 break
 

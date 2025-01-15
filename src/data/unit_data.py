@@ -15,18 +15,16 @@ from src.utils.ndf_utils import (
 
 logger = setup_logger('unit_data')
 
-def gather_unit_data(source_path: Path, dest_path: Path) -> Dict[str, Any]:
+def gather_unit_data(source_path: Path) -> Dict[str, Any]:
     """Gather unit data from UniteDescriptor.ndf."""
     logger.info("Gathering unit data from UniteDescriptor.ndf")
     logger.info(f"Source path: {source_path}")
-    logger.info(f"Destination path: {dest_path}")
     
     unit_data = {}
     file_path = "GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf"
     
     try:
-        # Create mod instance with configured paths
-        mod = ndf.Mod(source_path, dest_path)
+        mod = ndf.Mod(source_path, source_path)
         source = mod.parse_src(file_path)
         
         for unit_row in source:
@@ -123,17 +121,16 @@ def extract_ui_data(descr_row: Any) -> Dict[str, Any]:
         logger.warning(f"Failed to extract UI data: {str(e)}")
     return data
 
-def gather_weapon_data(base_path: Path) -> Dict[str, Any]:
+def gather_weapon_data(source_path: Path) -> Dict[str, Any]:
     """Gather weapon data from WeaponDescriptor.ndf."""
-    logger.info("Gathering weapon data")
-    weapon_data = {}
+    logger.info("Gathering weapon data from WeaponDescriptor.ndf")
     
+    weapon_data = {}
     file_path = "GameData/Generated/Gameplay/Gfx/WeaponDescriptor.ndf"
-    logger.debug(f"Reading weapon data from: {base_path / file_path}")
+    logger.debug(f"Reading weapon data from: {source_path / file_path}")
     
     try:
-        # Create mod instance with configured paths
-        mod = ndf.Mod(base_path, base_path)  # Use same path for source and dest
+        mod = ndf.Mod(source_path, source_path)
         source = mod.parse_src(file_path)
         
         weapon_count = 0

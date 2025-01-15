@@ -12,7 +12,6 @@ logger = setup_logger(__name__)
 
 def write_veterancy_tokens() -> None:
     """Write experience hint texts to dictionary file."""
-    config = ModConfig.get_instance().config_data
     
     # Gather entries to write
     entries: List[Tuple[str, str]] = []
@@ -24,8 +23,8 @@ def write_veterancy_tokens() -> None:
                 entries.append((body_token, body))
     
     # Write entries
-    write_dictionary_entries(entries, config, dictionary_type="ingame") 
-    
+    write_dictionary_entries(entries, dictionary_type="ingame")
+
 def edit_veterancy_effects(source) -> None:
     """Edit veterancy effects in EffetsSurUnite.ndf."""
     logger.info("Modifying veterancy effects")

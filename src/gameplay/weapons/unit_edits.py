@@ -2,10 +2,9 @@ import re
 from typing import Any, Dict, List, Tuple
 
 from src import ndf
-from src.data.data_builder import load_data
-from src.dics import load_unit_edits
+from src.constants.unit_edits import load_unit_edits
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import get_module_list, is_obj_type, is_valid_turret
+from src.utils.ndf_utils import is_obj_type, is_valid_turret
 
 logger = setup_logger('weapons_unit_edits')
 
@@ -24,7 +23,7 @@ def _gather_turret_templates(source: Any, weapon_db: Dict[str, Any]) -> List[Tup
             continue
             
         weapon_name = f"WeaponDescriptor_{unit}"
-        if weapon_name not in weapon_db:
+        if not weapon_db or weapon_name not in weapon_db:
             logger.warning(f"Weapon {weapon_name} not found in database")
             continue
             
@@ -254,25 +253,6 @@ def _match_weapon_name(ammo_name: str, weapon: str) -> bool:
     match = re.match(pattern, ammo_name)
     return match and match.group(1) == weapon
 
-def _handle_equipment_changes(weapon_descr: Any, edits: Dict, turret_templates: List[Tuple[str, Any]]) -> None:
-    """Handle equipment changes."""
-    if "equipmentchanges" not in edits:
-        return
-        
-    equipment_changes = edits["equipmentchanges"]
-    
-    # Handle weapon replacements
-    if any(key in equipment_changes for key in ["replace", "replace_fixedsalvo"]):
-        _handle_weapon_replacements(weapon_descr, equipment_changes)
-    
-    # Add new weapons
-    if "add" in equipment_changes:
-        _add_new_weapons(weapon_descr, equipment_changes["add"], turret_templates)
-    
-    # Update weapon quantities
-    if "quantity" in equipment_changes:
-        _update_weapon_quantities(weapon_descr, equipment_changes["quantity"])
-
 def _handle_weapon_replacements(weapon_descr: Any, edits: Dict, weapon_data: Dict) -> None:
     """Handle weapon replacements using database data."""
     weapon_locations = weapon_data['weapon_locations']
@@ -356,13 +336,13 @@ def _update_weapon_quantities(weapon_descr: Any, quantity_changes: Dict, weapon_
                         weapon.v.by_m("Ammunition").v = new_ammo
                         weapon.v.by_m("NbWeapons").v = str(quantity)
 
-def edit_units(source: Any) -> None:
+def edit_units(source: Any, database: Dict[str, Any]) -> None:
     """Edit weapon descriptors for units."""
     logger.info("Editing weapon descriptors")
     
     # Get edits and weapon data
     unit_edits = load_unit_edits()
-    weapon_db = load_data({}, "weapons")  # Empty config is fine since we fixed the path
+    weapon_db = database.get("weapon_data", {})
     
     # Gather templates first for equipment changes
     turret_templates = _gather_turret_templates(source, weapon_db)
@@ -383,9 +363,9 @@ def edit_units(source: Any) -> None:
                 continue
                 
             logger.debug(f"Processing {unit}")
-            _apply_weapon_edits(weapon_descr, edits["WeaponDescriptor"], weapon_data)
+            _apply_weapon_edits(weapon_descr, edits["WeaponDescriptor"], weapon_data, turret_templates)
 
-def _apply_weapon_edits(weapon_descr: Any, edits: Dict, weapon_data: Dict) -> None:
+def _apply_weapon_edits(weapon_descr: Any, edits: Dict, weapon_data: Dict, turret_templates: List[Tuple[str, Any]]) -> None:
     """Apply weapon edits using database data."""
     # Handle turret changes
     if "turrets" in edits:
@@ -397,7 +377,7 @@ def _apply_weapon_edits(weapon_descr: Any, edits: Dict, weapon_data: Dict) -> No
     
     # Handle equipment changes
     if "equipmentchanges" in edits:
-        _apply_equipment_changes(weapon_descr, edits["equipmentchanges"], weapon_data)
+        _apply_equipment_changes(weapon_descr, edits["equipmentchanges"], weapon_data, turret_templates)
 
 def _apply_turret_changes(weapon_descr: Any, edits: Dict, weapon_data: Dict) -> None:
     """Apply turret changes using database data."""
@@ -465,14 +445,51 @@ def _apply_salvo_changes(weapon_descr: Any, edits: Dict, weapon_data: Dict) -> N
                 logger.debug(f"Updating salvo for {weapon} at index {index}")
                 salves_list.replace(int(index), str(salvo))
 
-def _apply_equipment_changes(weapon_descr: Any, edits: Dict, weapon_data: Dict) -> None:
-    """Apply equipment changes using database data."""
+def _apply_equipment_changes(weapon_descr: Any, equipment_changes: Dict, weapon_data: Dict, turret_templates: List[Tuple[str, Any]]) -> None:
+    """Apply equipment changes to weapon descriptor."""
     # Handle replacements
-    if any(key in edits for key in ["replace", "replace_fixedsalvo"]):
-        _handle_weapon_replacements(weapon_descr, edits, weapon_data)
+    if any(key in equipment_changes for key in ["replace", "replace_fixedsalvo"]):
+        _apply_weapon_replacements(weapon_descr, equipment_changes)
+    
+    # Handle additions
+    if "add" in equipment_changes:
+        _add_new_weapons(weapon_descr, equipment_changes["add"], turret_templates)
     
     # Handle quantity changes
-    if "quantity" in edits:
-        _update_weapon_quantities(weapon_descr, edits["quantity"], weapon_data)
+    if "quantity" in equipment_changes:
+        _update_weapon_quantities(weapon_descr, equipment_changes["quantity"], weapon_data)
+
+def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict) -> None:
+    """Replace weapons with their replacements."""
+    ammo_pattern = re.compile(r'\$/GFX/Weapon/Ammo_(.*?)(?:_x\d+)?$')
+    turret_list = weapon_descr.v.by_member("TurretDescriptorList").v
+    
+    for descr_row in turret_list:
+        if not _is_valid_turret(descr_row.v):
+            continue
+            
+        mounted_wpns = descr_row.v.by_m("MountedWeaponDescriptorList").v
+        for weapon in mounted_wpns:
+            if not is_obj_type(weapon.v, "TMountedWeaponDescriptor"):
+                continue
+                
+            ammo_val = weapon.v.by_m("Ammunition").v
+            
+            # Handle fixed salvo replacements
+            if "replace_fixedsalvo" in equipment_changes:
+                for current, replacement in equipment_changes["replace_fixedsalvo"]:
+                    if ammo_val == f"$/GFX/Weapon/Ammo_{current}":
+                        weapon.v.by_m("Ammunition").v = f"$/GFX/Weapon/Ammo_{replacement}"
+                        logger.debug(f"Replaced {current} with {replacement}")
+            
+            # Handle regular replacements
+            if "replace" in equipment_changes:
+                match = ammo_pattern.match(ammo_val)
+                if match:
+                    ammo_name = match.group(1)
+                    for current, replacement in equipment_changes["replace"]:
+                        if ammo_name == current:
+                            weapon.v.by_m("Ammunition").v = f"$/GFX/Weapon/Ammo_{replacement}"
+                            logger.debug(f"Replaced {current} with {replacement}")
 
 # ... more helper functions ... 

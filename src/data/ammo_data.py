@@ -1,29 +1,52 @@
 """Functions for building ammunition data from game files."""
 
+import re
+from pathlib import Path
+from typing import Any, Dict
+
+from src import ndf
 from src.utils.logging_utils import setup_logger
 
-logger = setup_logger(__name__)
+logger = setup_logger('ammo_data')
 
 
-def build_ammo_data(source_files: dict) -> dict:
-    """Build ammunition database from source files.
+def build_ammo_data(source_path: Path) -> Dict[str, Any]:
+    """Build ammunition database from source files."""
+    logger.info("Building ammunition database")
     
-    Args:
-        source_files: Dictionary of NDF file paths to their parsed contents
+    ammo_data = {}
+    ammo_path = "GameData/Generated/Gameplay/Gfx/Ammunition.ndf"
+    ammo_missile_path = "GameData/Generated/Gameplay/Gfx/AmmunitionMissiles.ndf"
+    unit_path = "GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf"
+    
+    try:
+        mod = ndf.Mod(source_path, source_path)
+        ammo_file = mod.parse_src(ammo_path)
+        ammo_missile_file = mod.parse_src(ammo_missile_path)
+        unit_file = mod.parse_src(unit_path)
         
-    Returns:
-        Dictionary containing all ammunition-related data
-    """
-    ammo_file = source_files["GameData/Generated/Gameplay/Gfx/Ammunition.ndf"]
-    unit_file = source_files["GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf"]
-    
-    return {
-        "mg_categories": build_mg_categories(ammo_file),
-        "mortar_categories": build_mortar_categories(ammo_file),
-        "unit_categories": build_unit_categories(unit_file),
-        "full_ball_weapons": build_full_ball_weapons(ammo_file),
-        "sniper_weapons": build_sniper_weapons(ammo_file),
-    }
+        return {
+            "mg_categories": build_mg_categories(ammo_file),
+            "mortar_categories": build_mortar_categories(ammo_file),
+            "unit_categories": build_unit_categories(unit_file),
+            "full_ball_weapons": build_full_ball_weapons(ammo_file),
+            "sniper_weapons": build_sniper_weapons(ammo_file),
+            "salvo_weapons": {
+                **build_salvo_weapons(ammo_file),  # Regular ammunition salvo weapons
+                **build_salvo_weapons(ammo_missile_file)  # Missile salvo weapons
+            },
+        }
+        
+    except Exception as e:
+        logger.error(f"Error building ammunition database: {e}", exc_info=True)
+        return {
+            "mg_categories": {},
+            "mortar_categories": {},
+            "unit_categories": {},
+            "full_ball_weapons": [],
+            "sniper_weapons": [],
+            "salvo_weapons": {},
+        }
 
 
 def build_mg_categories(source) -> dict:
@@ -141,3 +164,35 @@ def build_sniper_weapons(source) -> list:
             snipers.append(weapon.n)
     
     return snipers 
+
+
+def build_salvo_weapons(source: Any) -> Dict[str, str]:
+    """Build mapping of vanilla salvo weapons to their new names.
+    
+    Returns:
+        Dict mapping original names to salvolength names
+    """
+    salvo_weapons = {}
+    
+    # Prefixes to exclude from salvo renaming
+    EXCLUDED_PREFIXES = ('Gatling', 'MMG', 'Pod')
+    
+    for weapon_descr in source:
+        if not hasattr(weapon_descr, 'namespace'):
+            continue
+            
+        name = weapon_descr.namespace.removeprefix('Ammo_')
+        
+        # Skip if name starts with any excluded prefix
+        if any(name.startswith(prefix) for prefix in EXCLUDED_PREFIXES):
+            continue
+            
+        match = re.match(r'^(.+)_x(\d+)$', name)
+        if match:
+            base_name = match.group(1)
+            salvo_num = match.group(2)
+            new_name = f"{base_name}_salvolength{salvo_num}"
+            salvo_weapons[name] = new_name
+            
+    logger.info(f"Found {len(salvo_weapons)} vanilla salvo weapons to rename")
+    return salvo_weapons 

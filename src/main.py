@@ -7,7 +7,7 @@ from src.ui_mod import get_file_editor as get_ui_editor
 from src.utils.config_utils import (
     get_destination_path,
     get_files_to_process,
-    get_source_paths,
+    get_source_path,
 )
 from src.utils.logging_utils import log_time, setup_logger
 
@@ -25,17 +25,17 @@ def main():
         logger.info("Wrote veterancy dictionary tokens")
         
         # Get paths
-        source_paths = get_source_paths(config.config_data)
+        source_path = get_source_path(config.config_data)
         dest_path = get_destination_path(config.config_data)
         
         logger.info(f"Build target: {build_config['target']}")
         logger.info(f"Development build: {build_config['write_dev']}")
         logger.info(f"Using UI as base: {build_config.get('use_ui_as_base', False)}")
-        logger.info(f"Source paths: {[str(p) for p in source_paths]}")
+        logger.info(f"Source path: {str(source_path)}")
         
         # Initialize mod with primary source path
         try:
-            mod = ndf.Mod(source_paths[0], dest_path)  # Use first path as primary
+            mod = ndf.Mod(source_path, dest_path)
             
             # Get list of files to process
             files_to_process = get_files_to_process(config.config_data)

@@ -1,5 +1,5 @@
 from config.config_loader import ConfigLoader
-from src.data.data_builder import build_database
+from src.data import build_database
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger('patcher')
