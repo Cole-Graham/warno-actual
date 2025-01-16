@@ -96,26 +96,29 @@ graph TD
     A[Config] --> B[Source Loader]
     B --> C[Parse NDF Files]
     
-    C --> D[Unit Data]
-    C --> E[Weapon Data]
-    C --> F[Ammo Data]
-    C --> G[Depiction Data]
-    
-    D --> H[Database Cache]
-    E --> H
-    F --> H
-    G --> H
-    
-    H --> I[JSON Storage]
-    H --> J[Gameplay Editors]
-    
     subgraph "Data Extraction"
-        D --> |Tags/Specialties| K[Unit Properties]
-        D --> |Weapons| L[Weapon Configs]
-        E --> |Ammunition| M[Ammo Properties]
-        F --> |Effects| N[Combat Effects]
-        G --> |Visual| O[Depiction Info]
+        C --> D[Extract Unit Data]
+        C --> E[Extract Weapon Data]
+        C --> F[Extract Ammo Data]
+        C --> G[Extract Depiction Data]
+        
+        D --> |Tags/Specialties| D1[Unit Properties]
+        D --> |Weapons| D2[Weapon Configs]
+        E --> |Ammunition| E1[Ammo Properties]
+        F --> |Effects| F1[Combat Effects]
+        G --> |Visual| G1[Depiction Info]
+        
+        D1 & D2 & E1 & F1 & G1 --> H[Database JSON Storage]
     end
+    
+    subgraph "Static Data"
+        K[Constants Module] --> |Predefined Values| L[Unit Constants]
+        K --> |Effect Definitions| M[Effect Constants]
+        K --> |Weapon Stats| N[Weapon Constants]
+    end
+    
+    H --> J[Gameplay Editors]
+    L & M & N --> J
 ```
 
 ### Asset Management
