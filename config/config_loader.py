@@ -81,13 +81,8 @@ class ConfigLoader:
         if 'asset_config' not in self.config_data:
             raise KeyError("Missing required section: asset_config")
         
-        if 'textures_dir' not in self.config_data['asset_config']:
-            raise KeyError("Missing required field in asset_config: textures_dir")
-
-        # Validate that textures directory exists
-        textures_dir = Path(self.config_data['asset_config']['textures_dir'])
-        if not textures_dir.is_dir():
-            raise ValueError(f"Textures directory not found: {textures_dir}")
+        if 'target_dir' not in self.config_data['asset_config']:
+            raise KeyError("Missing required field in asset_config: target_dir")
 
     def get(self, key, default=None):
         """Returns the value for the given key, or default if not found."""

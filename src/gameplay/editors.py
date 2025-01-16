@@ -2,14 +2,18 @@
 
 from typing import Any, Callable, Dict, List
 
+from .buildings import edit_fob_attributes, edit_fob_minimap
+from .depictions.infantry import edit_infantry_depictions
+from .depictions.showroom import edit_showroom_units
 from .effects import (
     edit_capacite_list,
     edit_shock_effects,
     edit_shock_effects_packs_list,
     edit_shock_units,
 )
-from .gd_constants import edit_game_constants
+from .game_constants import edit_gd_constantes, edit_orders
 from .terrains import edit_terrains
+from .ui import edit_division_emblems
 from .ui.unit_info_panel import edit_unit_info_panel
 from .unit_descriptor import (
     edit_antirad_optics,
@@ -32,6 +36,7 @@ from .weapons.damage_families import (
 )
 from .weapons.missiles import edit_missiles
 from .weapons.mortar_mods import add_radio_tag_to_mortars, edit_smoke_duration
+from .weapons.weapon_descriptor import edit_weapon_descriptor
 
 
 def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:
@@ -39,13 +44,15 @@ def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:
     return {
         # Game constants
         "GameData/Gameplay/Constantes/GDConstantes.ndf": [
-            lambda source: edit_game_constants(source),
+            lambda source: edit_gd_constantes(source),
+        ],
+        "GameData/Generated/Gameplay/Gfx/OrderAvailability_Tactic.ndf": [
+            lambda source: edit_orders(source),
         ],
         # Weapon-related files
         "GameData/Generated/Gameplay/Gfx/WeaponDescriptor.ndf": [
-            lambda source: edit_units(source),
+            lambda source: edit_weapon_descriptor(source, game_db),
             lambda source: add_radio_tag_to_mortars(source, game_db),
-            lambda source: edit_shock_units(source),
         ],
         "GameData/Generated/Gameplay/Gfx/Ammunition.ndf": [
             lambda source: edit_ammunition(source, game_db),
@@ -72,10 +79,12 @@ def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:
         
         # Unit descriptor files
         "GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf": [
+            lambda source: edit_units(source),
             lambda source: edit_antirad_optics(source),
             lambda source: edit_forward_deploy(source),
             lambda source: edit_infantry_armor_wa(source),
             lambda source: edit_auto_cover(source),
+            lambda source: edit_shock_units(source, game_db),
         ],
         
         # Effects and veterancy files
@@ -93,6 +102,14 @@ def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:
             lambda source: edit_veterancy_hints(source),
         ],
         
+        # Depiction files
+        "GameData/Generated/Gameplay/Gfx/Infanterie/GeneratedDepictionInfantry.ndf": [
+            lambda source: edit_infantry_depictions(source, game_db['depiction_data']),
+        ],
+        "GameData/Generated/Gameplay/Gfx/ShowRoomUnits.ndf": [
+            lambda source: edit_showroom_units(source),
+        ],
+        
         # Other game files
         "GameData/Gameplay/Terrains/Terrains.ndf": [
             lambda source: edit_terrains(source),
@@ -100,7 +117,14 @@ def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:
         "GameData/Gameplay/Unit/Tactic/Team.ndf": [
             lambda source: edit_team_supply(source),
         ],
+        "GameData/Generated/UserInterface/Textures/DivisionTextures.ndf": [
+            lambda source: edit_division_emblems(source),
+        ],
         "GameData/UserInterface/Use/InGame/UISpecificUnitInfoPanelView.ndf": [
             lambda source: edit_unit_info_panel(source),
+        ],
+        "GameData/Generated/Gameplay/Gfx/BuildingDescriptors.ndf": [
+            lambda source: edit_fob_attributes(source),
+            lambda source: edit_fob_minimap(source),
         ],
     } 

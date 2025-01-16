@@ -1,152 +1,111 @@
 """Infantry depiction editing."""
-
 from typing import Any, Dict
 
 from src.constants.unit_edits import load_unit_edits
 from src.utils.logging_utils import setup_logger
+from src.utils.ndf_utils import is_obj_type
 
-logger = setup_logger('infantry_depictions')
+logger = setup_logger(__name__)
 
-def edit_infantry_depictions(source: Any, unit_db: Dict[str, Any]) -> None:
-    """Edit infantry depictions."""
-    logger.info("Editing infantry depictions")
+def edit_infantry_depictions(source: Any, depiction_data: Dict[str, Any]) -> None:
+    """Edit GeneratedDepictionInfantry.ndf.
     
-    # Get depiction data from database
-    depiction_data = unit_db.get("depiction_data", {})
+    Args:
+        source: NDF file containing infantry depictions
+        depiction_data: Depiction data from game database
+    """
+    logger.info("Editing GeneratedDepictionInfantry.ndf")
+    
     unit_edits = load_unit_edits()
     
-    if not depiction_data:
-        logger.error("No depiction data found in database")
-        return
-        
-    weapons_processed = set()
-    units_processed = set()
-    
-    for unit, edits in unit_edits.items():
-        if not "WeaponDescriptor" in edits:
+    for unit_name, edits in unit_edits.items():
+        if "WeaponDescriptor" not in edits:
             continue
             
-        if not "equipmentchanges" in edits["WeaponDescriptor"]:
+        weapon_changes = edits["WeaponDescriptor"].get("equipmentchanges", {})
+        if "add" not in weapon_changes:
             continue
             
-        if "add" in edits["WeaponDescriptor"]["equipmentchanges"]:
-            weapon_changes = edits["WeaponDescriptor"]["equipmentchanges"]["add"]
-            
-            # Track what we're processing
-            units_processed.add(unit)
-            for _, weapon_name in weapon_changes:
-                weapons_processed.add(weapon_name)
-                
-            _add_weapon_depiction(source, unit, weapon_changes, depiction_data)
-    
-    # Log summary statistics
-    logger.info(f"Processed {len(units_processed)} units with weapon changes")
-    logger.info(f"Modified {len(weapons_processed)} unique weapons")
-    
-    # Validate coverage
-    total_weapons = sum(1 for d in depiction_data.values() for _ in d)
-    if total_weapons > len(weapons_processed):
-        logger.warning(
-            f"Only processed {len(weapons_processed)} weapons out of {total_weapons} "
-            "available in depiction data"
-        )
-    
-    # Log any missing data
-    _validate_depiction_data(depiction_data, weapons_processed)
-
-def _validate_depiction_data(depiction_data: Dict, processed_weapons: set) -> None:
-    """Validate completeness of depiction data."""
-    for weapon in processed_weapons:
-        missing_data = []
+        # Get weapon info
+        turret_index = weapon_changes["add"][0][0]
+        weapon_name = weapon_changes["add"][0][1]
         
-        if weapon not in depiction_data['weapon_meshes']:
-            missing_data.append('mesh')
-        if weapon not in depiction_data['fire_effects']:
-            missing_data.append('fire effect')
-        if weapon not in depiction_data['conditional_tags']:
-            missing_data.append('animation tag')
+        # Get depiction data for weapon
+        if weapon_name not in depiction_data["modele"]:
+            logger.warning(f"No depiction data found for weapon: {weapon_name}")
+            continue
             
-        if missing_data:
-            logger.warning(
-                f"Weapon {weapon} is missing {', '.join(missing_data)} data"
-            )
+        weapon_data = {
+            "modele": depiction_data["modele"][weapon_name]["mesh"],
+            "fire_effect": depiction_data["fire_effect"][weapon_name]["effect"],
+            "conditionaltag": depiction_data["conditionaltag"][weapon_name]["tag"]
+        }
+        
+        try:
+            # Add weapon mesh alternative
+            _add_weapon_mesh(source, unit_name, turret_index, weapon_data["modele"])
+            
+            # Add weapon fire effect
+            _add_fire_effect(source, unit_name, turret_index, weapon_data["fire_effect"])
+            
+            # Add conditional animation tag
+            _add_animation_tag(source, unit_name, turret_index, weapon_data["conditionaltag"])
+            
+        except Exception as e:
+            logger.error(f"Failed to edit depictions for {unit_name}: {str(e)}")
 
-def _add_weapon_depiction(source: Any, unit: str, weapon_data: list, depiction_data: Dict) -> None:
-    """Add weapon depiction for a unit."""
-    turret_index = weapon_data[0][0] 
-    weapon_name = weapon_data[0][1]
-    
+def _add_weapon_mesh(source: Any, unit_name: str, turret_index: int, mesh: str) -> None:
+    """Add weapon mesh alternative to unit."""
     try:
-        # Get depiction data for this weapon
-        mesh_info = depiction_data['weapon_meshes'].get(weapon_name, {})
-        effect_info = depiction_data['fire_effects'].get(weapon_name, {})
-        tag_info = depiction_data['conditional_tags'].get(weapon_name, {})
-        
-        if not mesh_info:
-            logger.warning(f"No mesh data found for weapon {weapon_name}")
-            return
-            
-        # Add weapon alternative
-        weapon_alts = source.by_n(f"AllWeaponAlternatives_{unit}").v
+        weapon_alts = source.by_n(f"AllWeaponAlternatives_{unit_name}").v
         new_entry = (
             f"TDepictionDescriptor("
             f"    SelectorId = ['MeshAlternative_{turret_index + 1}']"
-            f"    MeshDescriptor = {mesh_info['mesh']}"
+            f"    MeshDescriptor = {mesh}"
             f")"
         )
         
         for i, obj in enumerate(weapon_alts):
-            if obj.v.type == "TMeshlessDepictionDescriptor":
+            if is_obj_type(obj.v, "TMeshlessDepictionDescriptor"):
                 weapon_alts.insert(i, new_entry)
-                obj.v.by_m("ReferenceMeshForSkeleton").v = mesh_info['mesh']
-                logger.info(f"Added {weapon_name} mesh to {unit}")
+                obj.v.by_m("ReferenceMeshForSkeleton").v = mesh
+                logger.info(f"Added mesh {mesh} to {unit_name}")
                 break
                 
-        # Add weapon subdepiction
-        _add_weapon_subdepiction(source, unit, turret_index, weapon_name, effect_info)
+    except Exception as e:
+        logger.error(f"Failed to add weapon mesh for {unit_name}: {str(e)}")
+
+def _add_fire_effect(source: Any, unit_name: str, turret_index: int, fire_effect: str) -> None:
+    """Add weapon fire effect to unit."""
+    try:
+        weapon_subdepictions = source.by_n(f"AllWeaponSubDepiction_{unit_name}").v
+        operators_list = weapon_subdepictions.by_m("Operators").v
         
-        # Update soldier depiction
-        _update_soldier_depiction(source, unit, turret_index, weapon_name, tag_info)
-        
-        # Log validation info
-        if unit not in mesh_info['units']:
-            logger.warning(f"Unit {unit} not found in existing mesh mappings for {weapon_name}")
+        new_entry = (
+            f'DepictionOperator_WeaponInstantFireInfantry('
+            f'    FireEffectTag = ["{fire_effect}"]'
+            f'    WeaponShootDataPropertyName = "WeaponShootData_0_{turret_index + 1}"'
+            f')'
+        )
+        operators_list.add(new_entry)
+        logger.info(f"Added fire effect for {unit_name} turret {turret_index}")
         
     except Exception as e:
-        logger.error(f"Failed to add weapon depiction for {unit}: {str(e)}")
+        logger.error(f"Failed to add fire effect for {unit_name}: {str(e)}")
 
-def _add_weapon_subdepiction(source: Any, unit: str, turret_index: int, weapon_name: str, effect_info: Dict) -> None:
-    """Add weapon subdepiction operator."""
-    if not effect_info:
-        logger.warning(f"No fire effect data found for weapon {weapon_name}")
-        return
+def _add_animation_tag(source: Any, unit_name: str, turret_index: int, tag: str) -> None:
+    """Add conditional animation tag to unit."""
+    try:
+        soldier_depiction = source.by_n(f"TacticDepiction_{unit_name}_Soldier").v
+        operators_list = soldier_depiction.by_m("Operators").v
         
-    weapon_subdepictions = source.by_n(f"AllWeaponSubDepiction_{unit}").v
-    operators_list = weapon_subdepictions.by_m("Operators").v
-    
-    new_entry = (
-        f'DepictionOperator_WeaponInstantFireInfantry('
-        f'    FireEffectTag = ["{effect_info["effect"]}"]'
-        f'    WeaponShootDataPropertyName = "WeaponShootData_0_{turret_index + 1}"'
-        f')'
-    )
-    
-    operators_list.add(new_entry)
-    logger.debug(f"Added weapon subdepiction for {unit}")
-
-def _update_soldier_depiction(source: Any, unit: str, turret_index: int, weapon_name: str, tag_info: Dict) -> None:
-    """Update soldier depiction with new weapon."""
-    if not tag_info:
-        logger.warning(f"No tag data found for weapon {weapon_name}")
-        return
-        
-    soldier_depiction = source.by_n(f"TacticDepiction_{unit}_Soldier").v
-    operators_list = soldier_depiction.by_m("Operators").v
-    
-    for obj in operators_list:
-        if obj.v.type == "DepictionOperator_SkeletalAnimation2_Default":
-            obj.v.by_m("ConditionalTags").v.add(
-                f"('{tag_info['tag']}', 'MeshAlternative_{turret_index + 1}')"
-            )
-            logger.debug(f"Updated soldier depiction for {unit}")
-            break 
+        for obj in operators_list:
+            if is_obj_type(obj.v, "DepictionOperator_SkeletalAnimation2_Default"):
+                obj.v.by_m("ConditionalTags").v.add(
+                    f"('{tag}', 'MeshAlternative_{turret_index + 1}')"
+                )
+                logger.info(f"Added animation tag for {unit_name} turret {turret_index}")
+                break
+                
+    except Exception as e:
+        logger.error(f"Failed to add animation tag for {unit_name}: {str(e)}") 

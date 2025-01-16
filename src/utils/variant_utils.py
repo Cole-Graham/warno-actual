@@ -1,0 +1,73 @@
+"""Variant validation utilities."""
+
+from pathlib import Path
+from typing import Dict, List
+
+from src.constants.variants import VARIANT_FUNCTIONS
+from src.utils.logging_utils import setup_logger
+
+logger = setup_logger(__name__)
+
+def validate_variant_config(variants: Dict, source_path: Path = None) -> None:
+    """Validate variant configuration.
+    
+    Args:
+        variants: Dictionary of variant configurations
+        source_path: Path to source directory
+        
+    Raises:
+        ValueError: If variant configuration is invalid
+    """
+    if not variants:
+        return
+        
+    for file_path, config in variants.items():
+        # Validate file exists if source path provided
+        if source_path:
+            full_path = source_path / file_path
+            if not full_path.exists():
+                raise ValueError(f"Variant file not found: {full_path}")
+            
+        # Check required keys exist
+        if not isinstance(config, dict):
+            raise ValueError(f"Invalid variant config for {file_path}: must be dictionary")
+            
+        if "ui" not in config or "gameplay" not in config:
+            raise ValueError(f"Missing required keys in variant config for {file_path}")
+            
+        # Validate UI functions
+        _validate_function_list(config["ui"], file_path, "ui")
+        
+        # Validate gameplay functions
+        _validate_function_list(config["gameplay"], file_path, "gameplay")
+        
+        # Ensure UI functions are subset of gameplay functions
+        ui_funcs = set(config["ui"])
+        gameplay_funcs = set(config["gameplay"])
+        if not ui_funcs.issubset(gameplay_funcs):
+            invalid_funcs = ui_funcs - gameplay_funcs
+            raise ValueError(
+                f"UI functions must be subset of gameplay functions. "
+                f"Invalid functions: {invalid_funcs}"
+            )
+
+def _validate_function_list(functions: List[str], file_path: str, mod_type: str) -> None:
+    """Validate list of function names."""
+    if not isinstance(functions, list):
+        raise ValueError(f"Invalid {mod_type} functions for {file_path}: must be list")
+        
+    for func_name in functions:
+        if func_name not in VARIANT_FUNCTIONS:
+            raise ValueError(f"Unknown function '{func_name}' in {file_path} {mod_type} config") 
+
+def validate_source(source) -> bool:
+    """Validate source file structure."""
+    if not source:
+        logger.error("Empty source file")
+        return False
+        
+    if not hasattr(source, '__iter__'):
+        logger.error("Source file not iterable")
+        return False
+        
+    return True 

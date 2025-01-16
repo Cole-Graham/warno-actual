@@ -127,7 +127,7 @@ def _apply_weapon_edits(descr: Any, data: Dict) -> None:
     if "parent_membr" in data:
         for key, value in data["parent_membr"].items():
             logger.debug(f"Setting {key} = {value}")
-            if key == "add":
+            if key == "add": # adding new member, e.g. [16, "PorteeMaximaleTBAGRU = 875"]
                 index = value[0]
                 value = value[1]
                 descr.v.insert(index, value)

@@ -37,4 +37,5 @@ __all__ = [
     'apply_vanilla_renames',
     'remove_vanilla_instances',
     'edit_weapon_constants',
+    'vanilla_renames_weapondescriptor',
 ] 

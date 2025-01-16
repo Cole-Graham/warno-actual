@@ -9,7 +9,7 @@ from src.utils.logging_utils import setup_logger
 logger = setup_logger(__name__)
 
 # Load unit data from database
-DB_PATH = Path(__file__).parent.parent.parent / "data" / "database" / "units.json"
+DB_PATH = Path(__file__).parent.parent.parent / "data" / "database" / "unit_data.json"
 with open(DB_PATH, 'r', encoding='utf-8') as f:
     UNIT_DB = json.load(f)
 

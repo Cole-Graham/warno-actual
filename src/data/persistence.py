@@ -8,6 +8,14 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger('database_utils')
 
+# Map database keys to filenames
+DB_FILENAMES = {
+    "unit_data": "unit_data.json",
+    "weapons": "weapons.json",
+    "ammunition": "ammunition.json",
+    "depiction_data": "depiction_data.json"
+}
+
 def save_database_to_disk(database: Dict[str, Any]) -> None:
     """Save database components to disk."""
     db_dir = Path(__file__).parent / "database"
@@ -18,7 +26,11 @@ def save_database_to_disk(database: Dict[str, Any]) -> None:
         if name == "source_files":  # Skip source files, they're just for immediate use
             continue
             
-        file_path = db_dir / f"{name}.json"
+        if name not in DB_FILENAMES:
+            logger.warning(f"Unknown database component: {name}")
+            continue
+            
+        file_path = db_dir / DB_FILENAMES[name]
         logger.info(f"Saving {name} data ({len(data)} entries)")
         with open(file_path, 'w') as f:
             json.dump(data, f, indent=2)
@@ -32,14 +44,14 @@ def load_database_from_disk() -> Dict[str, Any]:
     db_dir = Path(__file__).parent / "database"
     database = {}
     
-    for file_path in db_dir.glob("*.json"):
-        name = file_path.stem
+    for db_key, filename in DB_FILENAMES.items():
+        file_path = db_dir / filename
         try:
             with open(file_path) as f:
-                database[name] = json.load(f)
-            logger.debug(f"Loaded {name} from disk")
+                database[db_key] = json.load(f)
+            logger.debug(f"Loaded {db_key} from disk")
         except Exception as e:
-            logger.error(f"Error loading {name}: {e}")
+            logger.error(f"Error loading {db_key}: {e}")
             
     return database
     

@@ -1,4 +1,5 @@
 from config.config_loader import ConfigLoader
+from src import ModConfig
 from src.data import build_database
 from src.utils.logging_utils import setup_logger
 
@@ -9,10 +10,10 @@ if __name__ == "__main__":
         logger.info("Starting WARNO mod patcher")
         
         # Load configuration first
-        config = ConfigLoader("config/config.YAML").load()
+        config = ModConfig.get_instance()
         
-        # Build the database if configured to do so
-        build_database(config)
+        # Build the database and add to config
+        config.config_data['game_db'] = build_database(config.config_data)
         
         # Import and run main after database build
         from src.main import main

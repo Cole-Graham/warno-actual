@@ -4,6 +4,7 @@ from src import ModConfig, ndf
 from src.gameplay.veterancy.vet_bonuses import write_veterancy_tokens
 from src.gameplay_mod import get_file_editor as get_gameplay_editor
 from src.ui_mod import get_file_editor as get_ui_editor
+from src.utils.asset_utils import copy_assets
 from src.utils.config_utils import (
     get_destination_path,
     get_files_to_process,
@@ -57,6 +58,9 @@ def main():
         except Exception as e:
             logger.error(f"Build failed: {str(e)}")
             raise
+
+        # Copy assets to mod directory
+        copy_assets(config)
 
 
 if __name__ == "__main__":

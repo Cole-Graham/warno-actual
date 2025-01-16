@@ -6,7 +6,7 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
 
-def edit_game_constants(source) -> None:
+def edit_gd_constantes(source) -> None:
     """Edit game constants in GDConstantes.ndf."""
     logger.info("------------- editing GDConstantes.ndf -------------")
     
@@ -38,4 +38,5 @@ def edit_game_constants(source) -> None:
             
             row.v.by_m("SplashRatioDamage").v = "[0.15, 0.15, 0.01]"
             row.v.by_m("SplashRatioDistance").v = "[0.15, 0.15, 0.1]"
-            logger.info("Set splash ratios: Damage=[0.15, 0.15, 0.01], Distance=[0.15, 0.15, 0.1]") 
+            logger.info("Set splash ratios: Damage=[0.15, 0.15, 0.01], Distance=[0.15, 0.15, 0.1]")
+            

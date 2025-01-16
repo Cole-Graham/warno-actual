@@ -5,9 +5,66 @@ from pathlib import Path
 from typing import Any, Dict
 
 from src import ndf
+from src.gameplay.weapons.ammunition import AMMUNITION_RENAMES
+from src.gameplay.weapons.missiles import AMMUNITION_MISSILES_RENAMES
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger('ammo_data')
+
+
+def get_vanilla_renames(source_path: Path) -> Dict[str, str]:
+    """Get mapping of original weapon names to their new names."""
+    renames = {}
+    
+    try:
+        mod = ndf.Mod(source_path, source_path)
+        
+        # Get renames from both ammunition files
+        ammo_path = "GameData/Generated/Gameplay/Gfx/Ammunition.ndf"
+        missiles_path = "GameData/Generated/Gameplay/Gfx/AmmunitionMissiles.ndf"
+        
+        ammo_source = mod.parse_src(ammo_path)
+        missiles_source = mod.parse_src(missiles_path)
+        
+        # Process regular ammo renames
+        _process_renames(ammo_source, renames)
+        # Process missile renames
+        _process_renames(missiles_source, renames)
+        
+        # Add static renames from ammunition and missiles modules
+        for old_name, new_name in AMMUNITION_RENAMES:
+            renames[old_name] = new_name
+            
+        for old_name, new_name in AMMUNITION_MISSILES_RENAMES:
+            renames[old_name] = new_name
+            
+        return renames
+        
+    except Exception as e:
+        logger.error(f"Error getting vanilla renames: {str(e)}")
+        return {}
+        
+def _process_renames(source: Any, renames: Dict[str, str]) -> None:
+    """Process renames from a source file."""
+    # Build salvo weapon renames using same logic as build_salvo_weapons
+    EXCLUDED_PREFIXES = ('Gatling', 'MMG', 'Pod')
+    
+    for weapon_descr in source:
+        if not hasattr(weapon_descr, 'namespace'):
+            continue
+                
+        name = weapon_descr.namespace.removeprefix('Ammo_')
+        
+        # Skip if name starts with any excluded prefix
+        if any(name.startswith(prefix) for prefix in EXCLUDED_PREFIXES):
+            continue
+                
+        match = re.match(r'^(.+)_x(\d+)$', name)
+        if match:
+            base_name = match.group(1)
+            salvo_num = match.group(2)
+            new_name = f"{base_name}_salvolength{salvo_num}"
+            renames[name] = new_name
 
 
 def build_ammo_data(source_path: Path) -> Dict[str, Any]:

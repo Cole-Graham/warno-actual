@@ -1,14 +1,12 @@
 """Main gameplay modification module."""
 
-from typing import Any, Callable, Dict
+from typing import Any, Callable, Dict, List
 
-from src.data import build_database
+from src.constants.variants import VARIANT_FUNCTIONS
 from src.utils.logging_utils import log_time, setup_logger
+from src.utils.variant_utils import validate_variant_config
 
 logger = setup_logger('gameplay_mod')
-
-# Global cache for database
-_game_db = None
 
 def get_file_editor(file_path: str, config: Dict) -> Callable:
     """Get the appropriate edit function for gameplay files.
@@ -22,19 +20,29 @@ def get_file_editor(file_path: str, config: Dict) -> Callable:
     """
     logger.info(f"Loading data for {file_path}")
     
-    # Build/load database once and store result
-    global _game_db
-    if _game_db is None:
-        with log_time(logger, "Loading databases"):
-            _game_db = build_database(config)
-    
-    if not _game_db:
-        logger.error("Failed to build/load game database")
+    # Check if file is in variants
+    variants = config.get("variants", {})
+    try:
+        validate_variant_config(variants)
+    except ValueError as e:
+        logger.error(f"Invalid variant configuration: {e}")
         return None
+    
+    if file_path in variants:
+        variant_funcs = variants[file_path].get("gameplay", [])
+        logger.debug(f"Found variant functions for {file_path}: {variant_funcs}")
+        
+        def apply_variant_editors(source):
+            with log_time(logger, f"Processing variants for {file_path}"):
+                for func_name in variant_funcs:
+                    logger.debug(f"Applying variant function: {func_name}")
+                    VARIANT_FUNCTIONS[func_name](source)
+        
+        return apply_variant_editors
     
     # Get editors from gameplay module
     from src.gameplay import get_editors
-    editors = get_editors(_game_db)
+    editors = get_editors(config['game_db'])
     
     if file_path in editors:
         def apply_editors(source):

@@ -35,6 +35,38 @@ def apply_vanilla_renames(source: Any, renames: List[Tuple[str, str]], ammo_db: 
                 break
 
 
+def vanilla_renames_weapondescriptor(source: Any, renames: List[Tuple[str, str]], ammo_db: Dict[str, Any], weapon_db: Dict[str, Any]) -> None:
+    """Apply vanilla weapon descriptor renames.
+    
+    Args:
+        source: NDF file containing weapon descriptors
+        renames: List of (old_name, new_name) tuples
+        ammo_db: Ammunition database containing salvo weapon mappings
+        weapon_db: Weapon database containing weapon descriptor data
+    """
+    for descr_namespace, weapon_descr_data in weapon_db.items():
+        for location_data in weapon_descr_data["weapon_locations"].items():
+            if location_data[0] in ammo_db["salvo_weapons"]:
+                new_name = ammo_db["salvo_weapons"][location_data[0]]
+                turret_index = location_data["turret_index"]
+        
+                weapon_descr = source.by_namespace(descr_namespace)
+                if weapon_descr:
+                    turret = weapon_descr.v.by_m("TurretDescriptorList").v[turret_index]
+                    weapon = turret.v.by_m("MountedWeaponDescriptorList").v[location_data["mounted_index"]]
+                    weapon.v.by_m("Ammunition").v = f"$/GFX/Weapon/Ammo_{new_name}"
+                    logger.info(f"Renaming salvo weapon {location_data[0]} to {new_name}")
+            
+            if location_data[0] in renames:
+                new_name = renames[location_data[0]]
+                weapon_descr = source.by_namespace(descr_namespace)
+                if weapon_descr:
+                    turret = weapon_descr.v.by_m("TurretDescriptorList").v[turret_index]
+                    weapon = turret.v.by_m("MountedWeaponDescriptorList").v[location_data["mounted_index"]]
+                    weapon.v.by_m("Ammunition").v = f"$/GFX/Weapon/Ammo_{new_name}"
+                    logger.info(f"Renaming weapon {location_data[0]} to {new_name}")
+        
+                
 def remove_vanilla_instances(source, removals: List[str]) -> None:
     """Remove specified vanilla weapon instances.
     

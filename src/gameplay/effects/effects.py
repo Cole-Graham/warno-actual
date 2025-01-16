@@ -87,85 +87,58 @@ def edit_capacite_list(source) -> None:
             break 
 
 
-def _get_unit_tags(tags) -> List[str]:
-    """Extract tags from either string or List format."""
-    if isinstance(tags, str):
-        return [tag.strip("'\"") for tag in ast.literal_eval(tags)]
-    return [tag.v.strip("'\"") for tag in tags]
 
-
-def _check_unit_properties(modules_list) -> Tuple[bool, bool, bool]:
-    """Check if unit is GSR, infantry, and/or infantry AT."""
-    is_gsr = False
-    infantry = False
-    infantry_at = False
-    
-    for descr_row in modules_list:
-        if not hasattr(descr_row.v, 'type'):
-            continue
-            
-        descr_type = descr_row.v.type
-        
-        # Check for GSR specialty
-        if descr_type == "TUnitUIModuleDescriptor":
-            specialties_list = descr_row.v.by_m("SpecialtiesList").v
-            if isinstance(specialties_list, str):
-                tags = _get_unit_tags(specialties_list)
-                is_gsr = '_gsr' in tags
-            else:
-                is_gsr = any(tag.v == "'_gsr'" for tag in specialties_list)
-                
-        # Check infantry tags
-        elif descr_type == "TTagsModuleDescriptor":
-            tags = descr_row.v.by_m("TagSet").v
-            tags = _get_unit_tags(tags)
-            infantry = 'Infanterie' in tags
-            infantry_at = 'Infanterie_AT' in tags
-            
-            if not infantry or infantry_at:
-                break
-                
-    return is_gsr, infantry, infantry_at
-
-
-def edit_shock_units(source) -> None:
+def edit_shock_units(source, game_db) -> None:
     """Add shock movement capabilities to shock units."""
     logger.info("Adding shock movement capabilities to units")
     
-    for unit_row in source:
-        modules_list = unit_row.v.by_m("ModulesDescriptors").v
-        
-        # Check unit properties
-        is_gsr, infantry, infantry_at = _check_unit_properties(modules_list)
-        
-        if not infantry or infantry_at:
+    units_modified = 0
+    
+    for unit_name, unit_data in game_db['unit_data'].items():
+        if 'skills' not in unit_data:
             continue
-            
-        # Add shock movement capabilities
+        
+        shock_attributes = [
+            'Choc' in unit_data['skills'],
+            '_gsr' not in unit_data['tags'],
+        ]
+        
+        shock_gsr_attributes = [
+            'Choc' in unit_data['skills'],
+            '_gsr' in unit_data['tags'],
+        ]
+        
+        if not any(shock_attributes) and not any(shock_gsr_attributes):
+            continue
+        
+        unit_descr = source.by_n(f"Descriptor_Unit_{unit_name}")
+        modules_list = unit_descr.v.by_m("ModulesDescriptors").v
         for descr_row in modules_list:
             if not hasattr(descr_row.v, 'type'):
                 continue
                 
             if descr_row.v.type != "TModuleSelector":
                 continue
-                
+            
             default_membr = descr_row.v.by_m("Default").v
             if not hasattr(default_membr, 'type'):
                 continue
                 
             if default_membr.type != "TCapaciteModuleDescriptor":
                 continue
-                
+            
             skill_list = default_membr.by_m("DefaultSkillList").v
-            for skill in skill_list:
-                if skill.v != "$/GFX/EffectCapacity/Capacite_Choc":
-                    continue
-                    
-                if not is_gsr:
-                    skill_list.add("$/GFX/EffectCapacity/Capacite_Choc_move")
-                    skill_list.add("$/GFX/EffectCapacity/Capacite_no_Choc_move")
-                    logger.info(f"Added shock movement capacities to {unit_row.namespace}")
-                else:
-                    skill_list.add("$/GFX/EffectCapacity/Capacite_Choc_move_GSR")
-                    logger.info(f"Added GSR shock movement capacity to {unit_row.namespace}")
-                break 
+            
+            if all(shock_attributes):
+                skill_list.add("$/GFX/EffectCapacity/Capacite_Choc_move")
+                skill_list.add("$/GFX/EffectCapacity/Capacite_no_Choc_move")
+                logger.info(f"Added shock movement capacities to {unit_name}")
+                units_modified += 1
+                
+            elif all(shock_gsr_attributes):
+                skill_list.add("$/GFX/EffectCapacity/Capacite_Choc_move_GSR")
+                logger.info(f"Added GSR shock movement capacity to {unit_name}")
+                units_modified += 1
+                break
+            
+    logger.info(f"Total units modified: {units_modified}")

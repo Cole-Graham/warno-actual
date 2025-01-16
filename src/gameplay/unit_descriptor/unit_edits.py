@@ -9,7 +9,7 @@ from src.utils.ndf_utils import find_namespace
 
 logger = setup_logger('unit_descriptor_edits')
 
-def edit_units(source: Any, unit_db: Dict[str, Any]) -> None:
+def edit_units(source: Any) -> None:
     """Edit unit descriptors."""
     logger.info("Starting UniteDescriptor.ndf modifications")
     

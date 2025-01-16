@@ -1,4 +1,4 @@
-"""Data management module."""
+"""Database building and management."""
 
 from typing import Any, Dict
 
@@ -13,20 +13,25 @@ from .unit_data import gather_unit_data, gather_weapon_data
 
 logger = setup_logger(__name__)
 
+# Cache for database
+_database_cache = None
 
 def build_database(config: Dict[str, Any]) -> Dict[str, Any]:
-    """Build or update the database with game data.
+    """Build or update the database with game data."""
+    global _database_cache
     
-    This is the main entry point for database operations.
-    Orchestrates the build process and handles persistence.
-    """
+    if _database_cache is not None:
+        logger.debug("Using cached database")
+        return _database_cache
+        
     logger.info("Starting database build process")
     
     try:
         # Check if we should build/rebuild the database
         if not config.get("data_config", {}).get("build_database", True):
             logger.info("Using existing database")
-            return load_database_from_disk()
+            _database_cache = load_database_from_disk()
+            return _database_cache
             
         # Load source files once and reuse
         source_files = get_source_files(config)
@@ -38,18 +43,23 @@ def build_database(config: Dict[str, Any]) -> Dict[str, Any]:
         source_path = get_source_path(config)
         
         # Build database components
-        database = {
+        _database_cache = {
             "source_files": source_files,
             "ammunition": build_ammo_data(source_path),
             "unit_data": gather_unit_data(source_path),
-            "weapon_data": gather_weapon_data(source_path),
+            "weapons": gather_weapon_data(source_path),
             "depiction_data": gather_depiction_data(source_path)
         }
         
-        # Save to disk for future use
-        save_database_to_disk(database)
+        logger.info(f"Built database with {len(_database_cache['unit_data'])} units")
+        logger.info(f"Built database with {len(_database_cache['weapons'])} weapons")
+        logger.info(f"Built database with {len(_database_cache['ammunition'])} ammunition entries")
+        logger.info(f"Built database with {len(_database_cache['depiction_data'])} depiction entries")
         
-        return database
+        # Save to disk for future use
+        save_database_to_disk(_database_cache)
+        
+        return _database_cache
         
     except Exception as e:
         logger.error(f"Database build failed: {str(e)}")

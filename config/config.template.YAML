@@ -11,7 +11,7 @@ data_config:
 
 # Asset configuration  
 asset_config:
-  textures_dir: "assets/2d"  # Path to texture files relative to project root
+  target_dir: "GameData"    # Target directory in mod where assets/ will be copied
 
 directories:
   # Base game and output paths
@@ -32,6 +32,33 @@ directories:
 
 # File configurations  
 files:
+  # Files that need different handling between UI and gameplay mods
+  variants:
+    # Format:
+    # "file_path": {
+    #    "ui": [list of UI-safe functions to apply],
+    #    "gameplay": [list of all functions to apply]
+    # }
+    #
+    # When use_ui_as_base=true:
+    # - UI mod applies ui functions
+    # - Gameplay mod applies gameplay functions to UI mod files
+    #
+    # When use_ui_as_base=false:
+    # - UI mod applies ui functions to base game
+    # - Gameplay mod applies all functions to base game
+    #
+    # Example:
+    "GameData/Generated/Gameplay/Gfx/BuildingDescriptors.ndf": {
+        "ui": [
+            "edit_fob_minimap"  # UI mod only gets minimap texture
+        ],
+        "gameplay": [
+            "edit_fob_attributes",  # Gameplay mod gets both
+            "edit_fob_minimap"
+        ]
+    }
+
   # Pure UI files (only modified in UI mod)
   ui_only:
     # Style files
@@ -93,11 +120,6 @@ files:
     - "GameData/Generated/UserInterface/WeaponsMinMax.ndf"
     - "GameData/Generated/UserInterface/UnitSpecialties.ndf"
 
-  # Files that need different edits for UI vs gameplay
-  variants:
-    - "GameData/Generated/Gameplay/GFX/OrderAvailability_Tactic.ndf"
-    # Add more files that need different handling
-
   # Pure gameplay files
   gameplay_only:
     # Core gameplay mechanics
@@ -117,10 +139,11 @@ files:
     
     # Unit and weapon mechanics
     - "GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf"
-    - "GameData/Generated/Gameplay/GFX/WeaponDescriptor.ndf"
+    - "GameData/Generated/Gameplay/Gfx/WeaponDescriptor.ndf"
     - "GameData/Generated/Gameplay/Gfx/Ammunition.ndf"
     - "GameData/Generated/Gameplay/Gfx/AmmunitionMissiles.ndf"
     - "GameData/Generated/Gameplay/Gfx/MissileDescriptors.ndf"
+    - "GameData/Generated/Gameplay/Gfx/OrderAvailability_Tactic.ndf"
     - "GameData/Generated/Gameplay/Gfx/SmokeDescriptor.ndf"
     - "GameData/Generated/Gameplay/Gfx/DamageResistance.ndf"
     - "GameData/Generated/Gameplay/Gfx/DamageResistanceFamilyList.ndf"
@@ -134,14 +157,14 @@ files:
     - "GameData/Generated/Gameplay/Gfx/ExperienceLevels.ndf"
 
     # Depiction files
-    - "GameData/Generated/Gameplay/GFX/ShowRoomUnits.ndf"
-    - "GameData/Generated/Gameplay/GFX/UniteCadavreDescriptor.ndf"
-    - "GameData/Generated/Gameplay/GFX/Depictions/DepictionAlternatives.ndf"
-    - "GameData/Generated/Gameplay/GFX/Depictions/GeneratedDepictionSelectors.ndf"
-    - "GameData/Generated/Gameplay/GFX/Depictions/GeneratedDepictionGhosts.ndf"
-    - "GameData/Generated/Gameplay/GFX/Depictions/GeneratedDepictionAerialGhosts.ndf"
-    - "GameData/Generated/Gameplay/GFX/Depictions/GeneratedDepictionHumans.ndf"
-    - "GameData/Generated/Gameplay/GFX/Depictions/DepictionVehicles.ndf"
-    - "GameData/Generated/Gameplay/GFX/Depictions/GeneratedDepictionVehiclesShowRoom.ndf"
+    - "GameData/Generated/Gameplay/Gfx/ShowRoomUnits.ndf"
+    - "GameData/Generated/Gameplay/Gfx/UniteCadavreDescriptor.ndf"
+    - "GameData/Generated/Gameplay/Gfx/Depictions/DepictionAlternatives.ndf"
+    - "GameData/Generated/Gameplay/Gfx/Depictions/GeneratedDepictionSelectors.ndf"
+    - "GameData/Generated/Gameplay/Gfx/Depictions/GeneratedDepictionGhosts.ndf"
+    - "GameData/Generated/Gameplay/Gfx/Depictions/GeneratedDepictionAerialGhosts.ndf"
+    - "GameData/Generated/Gameplay/Gfx/Depictions/GeneratedDepictionHumans.ndf"
+    - "GameData/Generated/Gameplay/Gfx/Depictions/DepictionVehicles.ndf"
+    - "GameData/Generated/Gameplay/Gfx/Depictions/GeneratedDepictionVehiclesShowRoom.ndf"
     - "GameData/Generated/Gameplay/Gfx/Infanterie/GeneratedDepictionInfantry.ndf"
 
