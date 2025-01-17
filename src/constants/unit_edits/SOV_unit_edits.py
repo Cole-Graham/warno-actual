@@ -409,7 +409,7 @@ sov_unit_edits = {
         },
     },
 
-    "VDV_HMG_SOV": { # VDV Pulmetchiki
+    "VDV_HMG_SOV": { # VDV Pulemetchiki
         "CommandPoints": 35,
         "availability": 12,
         "Divisions": {
@@ -1422,6 +1422,17 @@ sov_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
+        },
+    },
+
+    "2K12_KUB_SOV": {
+        "optics": {
+            "OpticalStrengthAltitude": 285,
+        },
+        "CommandPoints": 90,
+        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "SpecialtiesList": {
+            "add_specs": ["'verygood_airoptics'"],
         },
     },
     #SOV HELI
