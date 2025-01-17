@@ -8,23 +8,30 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
 
-# Load unit data from database
-DB_PATH = Path(__file__).parent.parent.parent / "data" / "database" / "unit_data.json"
-with open(DB_PATH, 'r', encoding='utf-8') as f:
-    UNIT_DB = json.load(f)
+def get_unit_db():
+    """Lazy load the unit database when needed."""
+    db_path = Path(__file__).parent.parent.parent / "data" / "database" / "unit_data.json"
+    try:
+        with open(db_path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        logger.error("Unit database not found. Ensure database is built before running modifications.")
+        return {}
 
-
-def edit_infantry_armor_wa(source) -> None:
+def edit_infantry_armor_wa(source_path) -> None:
     """Edit infantry armor in UniteDescriptor.ndf."""
     logger.info("Modifying infantry armor to WA type")
     
-    for unit_row in source:
+    # Load unit data only when function is called
+    unit_db = get_unit_db()
+    
+    for unit_row in source_path:
         # Get unit name from descriptor
         unit_name = unit_row.namespace.split("Descriptor_Unit_")[-1]
-        if unit_name not in UNIT_DB:
+        if unit_name not in unit_db:
             continue
             
-        unit_data = UNIT_DB[unit_name]
+        unit_data = unit_db[unit_name]
         unit_strength = unit_data.get("strength", 0)
         if not unit_strength:
             continue

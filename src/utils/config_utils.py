@@ -2,8 +2,8 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 
-def get_source_path(config: Dict) -> Path:
-    """Get source path based on config."""
+def get_mod_src_path(config: Dict) -> Path:
+    """Get mod source directory path based on config."""
     warno_mods = Path(config['directories']['warno_mods'])
     build_config = config['build_config']
     
@@ -11,16 +11,16 @@ def get_source_path(config: Dict) -> Path:
     if (build_config['target'] == 'gameplay' and 
         build_config.get('use_ui_as_base', False)):
         # Use UI mod as source
-        source_mod = (config['directories']['ui_dev'] 
-                     if build_config['write_dev'] 
-                     else config['directories']['ui_release'])
+        mod_name = (config['directories']['ui_dev'] 
+                   if build_config['write_dev'] 
+                   else config['directories']['ui_release'])
     else:
         # Use base game as source
-        source_mod = config['directories']['base_game']
+        mod_name = config['directories']['base_game']
         
-    return warno_mods / source_mod
+    return warno_mods / mod_name
 
-def get_destination_path(config_data: Dict) -> Path:
+def get_mod_dst_path(config_data: Dict) -> Path:
     """Determine the correct destination path based on build configuration"""
     build_config = config_data['build_config']
     dirs = config_data['directories']

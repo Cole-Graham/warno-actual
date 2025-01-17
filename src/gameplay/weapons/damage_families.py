@@ -17,14 +17,14 @@ from src.utils.logging_utils import setup_logger
 logger = setup_logger(__name__)
 
 
-def add_damage_families_to_list(source) -> None:
+def add_damage_families_to_list(source_path) -> None:
     """Add new damage families to DamageResistanceFamilyList.ndf."""
     logger.info("Adding new damage families to list")
     
     # Count existing families
     i = -1  # Damage families counter
     j = -1  # Resistance families counter
-    for row in source:
+    for row in source_path:
         if row.namespace.startswith("DamageFamily_"):
             i += 1
         elif row.namespace.startswith("ResistanceFamily_"):
@@ -36,15 +36,15 @@ def add_damage_families_to_list(source) -> None:
     full_ball_family = f"DamageFamily_full_balle is {i + 2}"
     dpicm_family = f"DamageFamily_dpicm is {i + 3}"
     
-    source.insert(j + 1, infanterie_wa_family)
-    source.add(sniper_family)
-    source.add(full_ball_family)
-    source.add(dpicm_family)
+    source_path.insert(j + 1, infanterie_wa_family)
+    source_path.add(sniper_family)
+    source_path.add(full_ball_family)
+    source_path.add(dpicm_family)
     
     logger.info(f"Added families: {infanterie_wa_family}, {sniper_family}, {full_ball_family}, {dpicm_family}")
 
 
-def add_damage_families_to_impl(source) -> None:
+def add_damage_families_to_impl(source_path) -> None:
     """Add new damage families to DamageResistanceFamilyListImpl.ndf."""
     logger.info("Adding new damage families to implementation")
     
@@ -59,23 +59,23 @@ def add_damage_families_to_impl(source) -> None:
     }
     
     # Add resistance families
-    resistance_values = source.by_n("Generated_ResistanceFamily_Enum").v.by_m("Values").v
+    resistance_values = source_path.by_n("Generated_ResistanceFamily_Enum").v.by_m("Values").v
     for family in families["resistance"]:
         resistance_values.add(family)
         logger.info(f"Added resistance family: {family}")
     
     # Add damage families
-    damage_values = source.by_n("Generated_DamageFamily_Enum").v.by_m("Values").v
+    damage_values = source_path.by_n("Generated_DamageFamily_Enum").v.by_m("Values").v
     for family in families["damage"]:
         damage_values.add(family)
         logger.info(f"Added damage family: {family}")
 
 
-def apply_damage_families(source: Any, game_db: Dict[str, Any]) -> None:
+def apply_damage_families(source_path: Any, game_db: Dict[str, Any]) -> None:
     """Apply damage family modifications to weapons."""
     ammo_db = game_db["ammunition"]
     
-    for weapon_descr in source:
+    for weapon_descr in source_path:
         if weapon_descr.n in ammo_db["full_ball_weapons"]:
             arme_obj = weapon_descr.v.by_m("Arme").v
             arme_obj.by_m("Family").v = "DamageFamily_full_balle"
@@ -95,12 +95,12 @@ def apply_damage_families(source: Any, game_db: Dict[str, Any]) -> None:
                     break 
 
 
-def add_damage_resistance_values(source) -> None:
+def add_damage_resistance_values(source_path) -> None:
     """Add damage resistance values to DamageResistance.ndf."""
     logger.info("Adding damage resistance values")
     
     # Get resistance params
-    resist_params_obj = source.by_n("DamageResistanceParams").v
+    resist_params_obj = source_path.by_n("DamageResistanceParams").v
     
     # Add family definitions
     damage_family_list = resist_params_obj.by_m("DamageFamilyDefinitionList").v
@@ -139,12 +139,12 @@ def apply_damage_array_edits(damage_array, row: int, column_edits: dict) -> None
                     logger.info(f"Edited row {row}, column {column} to {value}")
 
 
-def apply_damage_family_edits(source) -> None:
+def apply_damage_family_edits(source_path) -> None:
     """Apply damage family edits to DamageResistance.ndf."""
     logger.info("Applying damage family edits")
     
     # Get damage params
-    damage_params_obj = source.by_n("DamageResistanceParams").v
+    damage_params_obj = source_path.by_n("DamageResistanceParams").v
     
     # Add new infantry resistance family
     resistance_list = damage_params_obj.by_m("ResistanceFamilyDefinitionList").v
@@ -165,11 +165,11 @@ def apply_damage_family_edits(source) -> None:
         logger.info(f"Applied damage edits for {weapon_type}") 
 
 
-def edit_infantry_armor(source) -> None:
+def edit_infantry_armor(source_path) -> None:
     """Edit infantry armor values in DamageResistance.ndf."""
     logger.info("Editing infantry armor values")
     
-    damage_params_obj = source.by_n("DamageResistanceParams").v
+    damage_params_obj = source_path.by_n("DamageResistanceParams").v
     damage_array = damage_params_obj.by_m("Values").v
 
     # Apply infantry armor edits
@@ -187,11 +187,11 @@ def edit_infantry_armor(source) -> None:
         logger.info(f"Applied FMballe infantry edits to row {row_index}") 
 
 
-def edit_weapon_constants(source) -> None:
+def edit_weapon_constants(source_path) -> None:
     """Edit weapon constants in WeaponConstantes.ndf."""
     logger.info("--------- editing WeaponConstantes.ndf ---------")
     
-    weapon_constantes_obj = source.by_n("WeaponConstantes").v
+    weapon_constantes_obj = source_path.by_n("WeaponConstantes").v
     
     # Add infantry WA to mimetic resistance map
     mimetic_res_map = weapon_constantes_obj.by_m("ResistanceToMimeticImpact").v

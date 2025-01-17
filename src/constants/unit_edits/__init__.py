@@ -28,7 +28,7 @@ def load_unit_edits() -> Dict:
     # Load dictionaries
     dics_path = Path(__file__).parent
     for file in dics_path.glob("*unit_edits.py"):
-        module_name = f"src.dics.{file.stem}"
+        module_name = f"src.constants.unit_edits.{file.stem}"
         logger.debug(f"Processing {file.stem}")
         
         try:

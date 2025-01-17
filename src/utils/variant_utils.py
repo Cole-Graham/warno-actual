@@ -8,12 +8,12 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
 
-def validate_variant_config(variants: Dict, source_path: Path = None) -> None:
+def validate_variant_config(variants: Dict, mod_src_path: Path = None) -> None:
     """Validate variant configuration.
     
     Args:
         variants: Dictionary of variant configurations
-        source_path: Path to source directory
+        mod_src_path: Path to source directory
         
     Raises:
         ValueError: If variant configuration is invalid
@@ -21,25 +21,25 @@ def validate_variant_config(variants: Dict, source_path: Path = None) -> None:
     if not variants:
         return
         
-    for file_path, config in variants.items():
+    for ndf_path, config in variants.items():
         # Validate file exists if source path provided
-        if source_path:
-            full_path = source_path / file_path
+        if mod_src_path:
+            full_path = mod_src_path / ndf_path
             if not full_path.exists():
                 raise ValueError(f"Variant file not found: {full_path}")
             
         # Check required keys exist
         if not isinstance(config, dict):
-            raise ValueError(f"Invalid variant config for {file_path}: must be dictionary")
+            raise ValueError(f"Invalid variant config for {ndf_path}: must be dictionary")
             
         if "ui" not in config or "gameplay" not in config:
-            raise ValueError(f"Missing required keys in variant config for {file_path}")
+            raise ValueError(f"Missing required keys in variant config for {ndf_path}")
             
         # Validate UI functions
-        _validate_function_list(config["ui"], file_path, "ui")
+        _validate_function_list(config["ui"], ndf_path, "ui")
         
         # Validate gameplay functions
-        _validate_function_list(config["gameplay"], file_path, "gameplay")
+        _validate_function_list(config["gameplay"], ndf_path, "gameplay")
         
         # Ensure UI functions are subset of gameplay functions
         ui_funcs = set(config["ui"])

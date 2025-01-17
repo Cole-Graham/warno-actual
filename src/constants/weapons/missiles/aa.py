@@ -7,7 +7,7 @@ WeaponKey = Tuple[str, str, Optional[str], bool]  # (weapon, category, donor, is
 
 # fmt: off
 missiles: Dict[WeaponKey, WeaponData] = {
-    ("SAM_Strela10M3", "SAM", None, False): { # 214
+    ("SAM_Strela10M3_salvolength4", "SAM", None, False): { # 214
         "Ammunition": {
             "hit_roll": {
                 "Idling": 55,
@@ -31,7 +31,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("SAM_Strela10", "SAM", None, False): { # 213
+    ("SAM_Strela10_salvolength4", "SAM", None, False): { # 213
         "Ammunition": {
             "parent_membr": {
                 "TempsEntreDeuxTirs": 2.5,
@@ -50,7 +50,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("SAM_Strela1", "SAM", None, False): { # 212
+    ("SAM_Strela1_salvolength4", "SAM", None, False): { # 212
         "Ammunition": {
             "hit_roll": {
                 "Idling": 40,
@@ -96,7 +96,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("SAM_RAPIER_FSA", "SAM", None, False): {
+    ("SAM_RAPIER_FSA_salvolength4", "SAM", None, False): {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 55,
@@ -154,7 +154,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("SAM_I_Hawk_x3", "SAM", None, False): { # 193
+    ("SAM_I_Hawk_salvolength3", "SAM", None, False): { # 193
         "Ammunition": {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 3325,
@@ -173,7 +173,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("SAM_FIM92_Stinger", "MANPAD", None, False): { # 187
+    ("SAM_FIM92_Stinger_salvolength8", "MANPAD", None, False): { # 187
         "Ammunition": {
             "displayname": "FIM-92C Stinger",
             "nametoken": "AKFXZOAXUI",
@@ -189,7 +189,27 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
         "BaseSupplyCost": 35,
         "WeaponDescriptor": {
-            "SalvoLengths": [8, 4],
+            "SalvoLengths": [8],
+        },
+    },
+    
+    ("SAM_FIM92_Stinger_salvolength4", "MANPAD", None, False): { # 187
+        "Ammunition": {
+            "displayname": "FIM-92C Stinger",
+            "nametoken": "AKFXZOAXUI",
+            "hit_roll": {
+                "Idling": 65,
+                "Moving": 65,
+            },
+            "parent_membr": {
+                "PorteeMaximaleTBAGRU": 2625,
+                "PorteeMaximaleHAGRU": 2100,
+                "TempsDeVisee": 1.2,
+            }
+        },
+        "BaseSupplyCost": 35,
+        "WeaponDescriptor": {
+            "SalvoLengths": [4],
         },
     },
     
@@ -213,7 +233,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("SAM_9M330_Tor_x8", "SAM", None, False): { # 179
+    ("SAM_9M330_Tor_salvolength8", "SAM", None, False): { # 179
         "Ammunition": {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 3325,
@@ -224,7 +244,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("SAM_9M336_x3", "SAM", None, False): { # 178
+    ("SAM_9M336_salvolength3", "SAM", None, False): { # 178
         "Ammunition": {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 2800,
@@ -233,7 +253,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("SAM_9M311_Tunguska_x8", "SAM", None, False): { # 177
+    ("SAM_9M311_Tunguska_salvolength8", "SAM", None, False): { # 177
         "Ammunition": {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 3150,

@@ -6,12 +6,12 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
 
-def edit_fob_attributes(source) -> None:
+def edit_fob_attributes(source_path) -> None:
     """Edit FOB supply, health and command point cost."""
     logger.info("Editing FOB attributes")
     
     try:
-        for fob_descr in source:
+        for fob_descr in source_path:
             if not hasattr(fob_descr, 'v') or not hasattr(fob_descr.v, 'by_m'):
                 logger.error("Invalid FOB descriptor structure")
                 continue

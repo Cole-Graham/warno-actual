@@ -8,14 +8,14 @@ from src.utils.ndf_utils import ndf
 logger = setup_logger(__name__)
 
 
-def add_corrected_shot_dispersion(source: Any, game_db: Dict[str, Any]) -> None:
+def add_corrected_shot_dispersion(source_path: Any, game_db: Dict[str, Any]) -> None:
     """Add corrected shot dispersion to mortar weapons."""
     ammo_db = game_db["ammunition"]
     
     logger.info("Adding corrected shot dispersion to mortars")
     mortar_cats = ammo_db["mortar_categories"]
     
-    for weapon_descr in source:
+    for weapon_descr in source_path:
         name = weapon_descr.n
         
         # Check if weapon is a mortar
@@ -34,12 +34,12 @@ def add_corrected_shot_dispersion(source: Any, game_db: Dict[str, Any]) -> None:
                 break
 
 
-def add_radio_tag_to_mortars(source, game_db: dict) -> None:
+def add_radio_tag_to_mortars(source_path, game_db: dict) -> None:
     """Add 'Radio' tag to mortar units to enable corrected shot."""
     logger.info("Adding 'Radio' tag to mortar units")
     mortar_units = game_db["ammunition"]["unit_categories"]["mortar_units"]
     
-    for unit in source:
+    for unit in source_path:
         if unit.n not in mortar_units:
             continue
             
@@ -69,7 +69,7 @@ def add_radio_tag_to_mortars(source, game_db: dict) -> None:
                 break 
 
 
-def edit_smoke_duration(source) -> None:
+def edit_smoke_duration(source_path) -> None:
     """Edit smoke duration for mortars in SmokeDescriptor.ndf."""
     logger.info("------------- editing SmokeDescriptor.ndf -------------")
     logger.info("           Editing smoke duration for mortars          ")
@@ -87,7 +87,7 @@ def edit_smoke_duration(source) -> None:
         ("Fumi81mm", 80),
     ]
 
-    for descr_row in source:
+    for descr_row in source_path:
         for smoke_name, duration in smokes:
             if descr_row.namespace == f"Descriptor_Smoke_{smoke_name}":
                 modules_list = descr_row.v.by_m("ModulesDescriptors").v

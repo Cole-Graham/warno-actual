@@ -5,11 +5,11 @@ from src.utils.logging_utils import setup_logger
 logger = setup_logger(__name__)
 
 
-def edit_team_supply(source) -> None:
+def edit_team_supply(source_path) -> None:
     """Edit team supply rates in Team.ndf."""
     logger.info("Modifying team supply rates")
     
-    for descr_row in source:
+    for descr_row in source_path:
         if descr_row.namespace != "Tactic_TeamUnitDescriptor":
             continue
             

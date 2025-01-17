@@ -9,6 +9,15 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
 
+# Dictionary type to filename mapping
+DICT_FILES = {
+    "ingame": "INTERFACE_INGAME.csv",
+    "outgame": "INTERFACE_OUTGAME.csv",
+    "companies": "COMPANIES.csv",
+    "platoons": "PLATOONS.csv",
+    "units": "UNITS.csv"
+}
+
 def get_dictionary_path(filename: str = "INTERFACE_INGAME.csv") -> Path:
     """Get the path to a dictionary file based on config.
     
@@ -30,38 +39,49 @@ def get_dictionary_path(filename: str = "INTERFACE_INGAME.csv") -> Path:
         
     return warno_mods / mod_name / "GameData/Localisation" / mod_name / filename
 
-def write_dictionary_entries(
-    entries: List[Tuple[str, str]], 
-    dictionary_type: str = "ingame"
-) -> None:
+def write_dictionary_entries(entries: List[Tuple[str, str]], dictionary_type: str = "units") -> None:
     """Write entries to dictionary file.
     
     Args:
-        entries: List of (token, text) tuples to write
-        dictionary_type: Type of dictionary file to write to
+        entries: List of (token, text) tuples
+        dictionary_type: Type of dictionary ("units" or "ingame")
     """
-    # Map dictionary types to filenames
-    dict_files = {
-        "ingame": "INTERFACE_INGAME.csv",
-        "outgame": "INTERFACE_OUTGAME.csv",
-        "companies": "COMPANIES.csv",
-        "platoons": "PLATOONS.csv",
-        "units": "UNITS.csv"
-    }
+    logger.info(f"Writing {len(entries)} entries to {dictionary_type} dictionary")
     
-    if dictionary_type not in dict_files:
+    if dictionary_type not in DICT_FILES:
         logger.error(f"Unknown dictionary type: {dictionary_type}")
         return
         
-    filename = dict_files[dictionary_type]
-    dict_path = get_dictionary_path(filename)
+    # Convert to dict to remove duplicates, keeping last occurrence of each token
+    unique_entries = {}
+    for token, text in entries:
+        if token in unique_entries:
+            logger.debug(f"Duplicate token found: {token}")
+        unique_entries[token] = text
     
+    # Convert back to list of tuples
+    deduplicated = [(k, v) for k, v in unique_entries.items()]
+    
+    logger.info(f"Writing {len(deduplicated)} unique entries (removed {len(entries) - len(deduplicated)} duplicates)")
+    
+    # Get dictionary path
+    dict_path = get_dictionary_path(DICT_FILES[dictionary_type])
+    
+    write_csv_entries(deduplicated, dict_path)
+
+def write_csv_entries(entries: List[Tuple[str, str]], dict_path: str) -> None:
+    """Write entries to a CSV dictionary file.
+    
+    Args:
+        entries: List of (token, text) tuples to write
+        dict_path: Path to the dictionary file
+    """
     # Ensure directory exists
-    dict_path.parent.mkdir(parents=True, exist_ok=True)
+    Path(dict_path).parent.mkdir(parents=True, exist_ok=True)
     
     # Read existing entries
     existing_entries: Set[Tuple[str, str]] = set()
-    if dict_path.exists():
+    if Path(dict_path).exists():
         with open(dict_path, 'r', newline='', encoding='utf-8') as csvfile:
             csvreader = csv.reader(csvfile, delimiter=';', quotechar='"')
             existing_entries = {tuple(row) for row in csvreader}
@@ -74,4 +94,4 @@ def write_dictionary_entries(
         for token, text in entries:
             if (token, text) not in existing_entries:
                 csvwriter.writerow([token, text])
-                logger.info(f"Added dictionary entry: {token}") 
+                logger.debug(f"Added dictionary entry: {token}")

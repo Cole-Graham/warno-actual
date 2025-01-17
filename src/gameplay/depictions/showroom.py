@@ -7,13 +7,13 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
 
-def edit_showroom_units(source: Any) -> None:
+def edit_showroom_units(source_path: Any) -> None:
     """Edit showroom units."""
     unit_edits = load_unit_edits()
     
     logger.info("Editing ShowRoomUnits.ndf")
     
-    for unit_descr in source:
+    for unit_descr in source_path:
         if not hasattr(unit_descr, 'namespace'):
             continue
             

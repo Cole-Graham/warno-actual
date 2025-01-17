@@ -25,7 +25,7 @@ def write_veterancy_tokens() -> None:
     # Write entries
     write_dictionary_entries(entries, dictionary_type="ingame")
 
-def edit_veterancy_effects(source) -> None:
+def edit_veterancy_effects(source_path) -> None:
     """Edit veterancy effects in EffetsSurUnite.ndf."""
     logger.info("Modifying veterancy effects")
     
@@ -46,7 +46,7 @@ def edit_veterancy_effects(source) -> None:
         }
     }
     
-    for row in source:
+    for row in source_path:
         if row.namespace not in vet_changes:
             continue
             
@@ -71,7 +71,7 @@ def edit_veterancy_effects(source) -> None:
             logger.info(f"Updated {effect_type} for {row.namespace}")
 
      
-def edit_veterancy_hints(source) -> None:
+def edit_veterancy_hints(source_path) -> None:
     """Edit veterancy hint texts in ExperienceLevels.ndf."""
     logger.info("--------- editing ExperienceLevels.ndf ---------")
     logger.info("          Modifying plane veterancy hints       ")
@@ -100,7 +100,7 @@ def edit_veterancy_hints(source) -> None:
         }
     }
 
-    for row in source:
+    for row in source_path:
         if row.namespace not in xp_packs:
             continue
             

@@ -6,9 +6,9 @@ from src.gameplay_mod import get_file_editor as get_gameplay_editor
 from src.ui_mod import get_file_editor as get_ui_editor
 from src.utils.asset_utils import copy_assets
 from src.utils.config_utils import (
-    get_destination_path,
     get_files_to_process,
-    get_source_path,
+    get_mod_dst_path,
+    get_mod_src_path,
 )
 from src.utils.logging_utils import log_time, setup_logger
 
@@ -26,17 +26,17 @@ def main():
         logger.info("Wrote veterancy dictionary tokens")
         
         # Get paths
-        source_path = get_source_path(config.config_data)
-        dest_path = get_destination_path(config.config_data)
+        mod_src_path = get_mod_src_path(config.config_data)
+        mod_dst_path = get_mod_dst_path(config.config_data)
         
         logger.info(f"Build target: {build_config['target']}")
         logger.info(f"Development build: {build_config['write_dev']}")
         logger.info(f"Using UI as base: {build_config.get('use_ui_as_base', False)}")
-        logger.info(f"Source path: {str(source_path)}")
+        logger.info(f"Source path: {str(mod_src_path)}")
         
         # Initialize mod with primary source path
         try:
-            mod = ndf.Mod(source_path, dest_path)
+            mod = ndf.Mod(mod_src_path, mod_dst_path)
             
             # Get list of files to process
             files_to_process = get_files_to_process(config.config_data)

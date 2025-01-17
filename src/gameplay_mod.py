@@ -8,17 +8,17 @@ from src.utils.variant_utils import validate_variant_config
 
 logger = setup_logger('gameplay_mod')
 
-def get_file_editor(file_path: str, config: Dict) -> Callable:
+def get_file_editor(ndf_path: str, config: Dict) -> Callable:
     """Get the appropriate edit function for gameplay files.
     
     Args:
-        file_path: Path to the file being edited
+        ndf_path: Path to the file being edited
         config: Configuration dictionary
         
     Returns:
         Editor function for the specified file, or None if no editor exists
     """
-    logger.info(f"Loading data for {file_path}")
+    logger.info(f"Loading data for {ndf_path}")
     
     # Check if file is in variants
     variants = config.get("variants", {})
@@ -28,15 +28,15 @@ def get_file_editor(file_path: str, config: Dict) -> Callable:
         logger.error(f"Invalid variant configuration: {e}")
         return None
     
-    if file_path in variants:
-        variant_funcs = variants[file_path].get("gameplay", [])
-        logger.debug(f"Found variant functions for {file_path}: {variant_funcs}")
+    if ndf_path in variants:
+        variant_funcs = variants[ndf_path].get("gameplay", [])
+        logger.debug(f"Found variant functions for {ndf_path}: {variant_funcs}")
         
-        def apply_variant_editors(source):
-            with log_time(logger, f"Processing variants for {file_path}"):
+        def apply_variant_editors(source_path):
+            with log_time(logger, f"Processing variants for {ndf_path}"):
                 for func_name in variant_funcs:
                     logger.debug(f"Applying variant function: {func_name}")
-                    VARIANT_FUNCTIONS[func_name](source)
+                    VARIANT_FUNCTIONS[func_name](source_path)
         
         return apply_variant_editors
     
@@ -44,13 +44,13 @@ def get_file_editor(file_path: str, config: Dict) -> Callable:
     from src.gameplay import get_editors
     editors = get_editors(config['game_db'])
     
-    if file_path in editors:
-        def apply_editors(source):
-            with log_time(logger, f"Processing {file_path}"):
-                logger.debug(f"Starting edits for {file_path}")
-                for i, editor in enumerate(editors[file_path], 1):
+    if ndf_path in editors:
+        def apply_editors(source_path):
+            with log_time(logger, f"Processing {ndf_path}"):
+                logger.debug(f"Starting edits for {ndf_path}")
+                for i, editor in enumerate(editors[ndf_path], 1):
                     with log_time(logger, f"Running editor {i}"):
-                        editor(source)
-                logger.debug(f"Completed edits for {file_path}")
+                        editor(source_path)
+                logger.debug(f"Completed edits for {ndf_path}")
         return apply_editors
     return None 

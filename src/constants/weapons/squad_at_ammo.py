@@ -1,9 +1,9 @@
 """Squad size to AT ammo quantity mapping."""
 
-SQUAD_AT_AMMO = {
+SQUAD_AT_AMMO = { # todo: rename to LIGHT_AT_AMMO
     3: 3,   # 3-man squad gets 3 AT weapons
     4: 4,   # 4-man squad gets 4 AT weapons
-    5: 5,
+    5: 5,   # etc.
     6: 6,
     7: 6,
     8: 7,
@@ -14,5 +14,5 @@ SQUAD_AT_AMMO = {
     13: 9,
     14: 9,
     15: 9,
-    16: 10,  # 16-man squad gets 10 AT weapons
+    16: 10,
 } 

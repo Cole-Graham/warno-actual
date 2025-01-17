@@ -2,7 +2,7 @@
 
 from typing import Any, Dict
 
-from src.utils.config_utils import get_source_path
+from src.utils.config_utils import get_mod_src_path
 from src.utils.logging_utils import setup_logger
 
 from .ammo_data import build_ammo_data
@@ -40,15 +40,15 @@ def build_database(config: Dict[str, Any]) -> Dict[str, Any]:
             return {}
         
         # Get paths for data gathering
-        source_path = get_source_path(config)
+        mod_source_path = get_mod_src_path(config)
         
         # Build database components
         _database_cache = {
             "source_files": source_files,
-            "ammunition": build_ammo_data(source_path),
-            "unit_data": gather_unit_data(source_path),
-            "weapons": gather_weapon_data(source_path),
-            "depiction_data": gather_depiction_data(source_path)
+            "ammunition": build_ammo_data(mod_source_path),
+            "unit_data": gather_unit_data(mod_source_path),
+            "weapons": gather_weapon_data(mod_source_path),
+            "depiction_data": gather_depiction_data(mod_source_path)
         }
         
         logger.info(f"Built database with {len(_database_cache['unit_data'])} units")

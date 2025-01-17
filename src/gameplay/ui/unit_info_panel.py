@@ -34,11 +34,11 @@ def write_info_panel_hints() -> None:
     write_dictionary_entries(entries, config, dictionary_type="ingame")
 
 
-def edit_unit_info_panel(source) -> None:
+def edit_unit_info_panel(source_path) -> None:
     """Edit unit info panel in UISpecificUnitInfoPanelView.ndf."""
     logger.info("Modifying unit info panel")
     
-    for descr_row in source:
+    for descr_row in source_path:
         if not is_obj_type(descr_row.v, "TUISpecificUnitInfoPanelViewDescriptor"):
             continue
             

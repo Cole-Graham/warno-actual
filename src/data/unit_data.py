@@ -16,19 +16,20 @@ from src.utils.ndf_utils import (
 
 logger = setup_logger('unit_data')
 
-def gather_unit_data(source_path: Path) -> Dict[str, Any]:
+def gather_unit_data(mod_src_path: Path) -> Dict[str, Any]:
     """Gather unit data from source files."""
     logger.info("Gathering unit data from UniteDescriptor.ndf")
-    logger.info(f"Source path: {source_path}")
+    logger.info(f"Source path: {mod_src_path}")
     
     unit_data = {}
-    file_path = "GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf"
+    ndf_path = "GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf"
     
     try:
-        mod = ndf.Mod(source_path, source_path)
-        source = mod.parse_src(file_path)
+        # Just parsing input, no output needed
+        mod = ndf.Mod(mod_src_path, "None")
+        parse_source = mod.parse_src(ndf_path)
         
-        for unit_row in source:
+        for unit_row in parse_source:
             # Skip non-unit entries
             if not hasattr(unit_row, 'namespace'):
                 continue
@@ -269,18 +270,20 @@ def extract_optics_data(descr_row: Any, unit_name: str) -> Dict[str, Any]:
         logger.error(f"Error extracting optics data for {unit_name}: {str(e)}")
         return {}
 
-def gather_weapon_data(source_path: Path) -> Dict[str, Any]:
+def gather_weapon_data(mod_src_path: Path) -> Dict[str, Any]:
     """Gather weapon data from WeaponDescriptor.ndf."""
     logger.info("Gathering weapon data from WeaponDescriptor.ndf")
     
     weapon_data = {}
-    weapon_renames = get_vanilla_renames(source_path)
-    file_path = "GameData/Generated/Gameplay/Gfx/WeaponDescriptor.ndf"
-    logger.debug(f"Reading weapon data from: {source_path / file_path}")
     
     try:
-        mod = ndf.Mod(source_path, source_path)
-        source = mod.parse_src(file_path)
+        
+        mod = ndf.Mod(mod_src_path, "None")
+        ammo_ndf_path = "GameData/Generated/Gameplay/Gfx/Ammunition.ndf"
+        ndf_path = "GameData/Generated/Gameplay/Gfx/WeaponDescriptor.ndf"
+        weapon_renames = get_vanilla_renames(mod, ammo_ndf_path)
+        logger.debug(f"Reading weapon data from: {mod_src_path / ndf_path}")         
+        source = mod.parse_src(ndf_path)
         
         weapon_count = 0
         for weapon_descr in source:
@@ -443,15 +446,24 @@ def _gather_salvo_mapping(weapon_descr: Any) -> Dict[str, str]:
     
     return salvo_mapping 
 
-def _gather_weapon_locations(weapon_descr: Any) -> Dict[str, List[Dict[str, Any]]]:
-    """Gather locations of all weapons in the descriptor."""
+def _gather_weapon_locations(weapon_descr: Any) -> Dict[str, Dict[str, Any]]:
+    """Gather locations of all weapons in the descriptor.
+    
+    Returns:
+        Dict mapping weapon names to their location data:
+        {
+            "weapon_name": {
+                "turret_index": int,
+                "mounted_index": int,
+                "salvo_index": int
+            }
+        }
+    """
     weapon_locations = {}
     
-    for turret in weapon_descr.v.by_member("TurretDescriptorList").v:
+    for i, turret in enumerate(weapon_descr.v.by_member("TurretDescriptorList").v):
         if not is_valid_turret(turret.v):
             continue
-            
-        yul_bone = int(turret.v.by_m("YulBoneOrdinal").v)
         
         for weapon in turret.v.by_m("MountedWeaponDescriptorList").v:
             if not is_obj_type(weapon.v, "TMountedWeaponDescriptor"):
@@ -461,13 +473,11 @@ def _gather_weapon_locations(weapon_descr: Any) -> Dict[str, List[Dict[str, Any]
             ammo = weapon.v.by_m("Ammunition").v.split("$/GFX/Weapon/Ammo_", 1)[1]
             base_name = ammo.split('_x', 1)[0]
             
-            if base_name not in weapon_locations:
-                weapon_locations[base_name] = []
-                
-            weapon_locations[base_name].append({
-                'turret_index': yul_bone,
+            # Instead of appending to a list, store as dictionary entry
+            weapon_locations[base_name] = {
+                'turret_index': i + 1,
                 'mounted_index': mounted_index,
                 'salvo_index': int(weapon.v.by_m("SalvoStockIndex").v)
-            })
+            }
     
     return weapon_locations 

@@ -5,11 +5,11 @@ from src.utils.logging_utils import setup_logger
 logger = setup_logger(__name__)
 
 
-def edit_forward_deploy(source) -> None:
+def edit_forward_deploy(source_path) -> None:
     """Edit forward deployment ranges in UniteDescriptor.ndf."""
     logger.info("Modifying forward deployment ranges")
     
-    for unit_descr in source:
+    for unit_descr in source_path:
         is_cmd = False
         modules_list = unit_descr.v.by_m("ModulesDescriptors").v
         

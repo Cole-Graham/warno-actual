@@ -12,25 +12,21 @@ from src.utils.logging_utils import setup_logger
 logger = setup_logger('ammo_data')
 
 
-def get_vanilla_renames(source_path: Path) -> Dict[str, str]:
-    """Get mapping of original weapon names to their new names."""
+def get_vanilla_renames(mod: Any, ndf_path: Any) -> Dict[str, str]:
+    """Get mapping of original weapon names to their new names.
+    
+    Args:
+        parse_source: The parsed NDF data to process
+        
+    Returns:
+        Dictionary mapping original names to renamed versions
+    """
     renames = {}
     
     try:
-        mod = ndf.Mod(source_path, source_path)
-        
-        # Get renames from both ammunition files
-        ammo_path = "GameData/Generated/Gameplay/Gfx/Ammunition.ndf"
-        missiles_path = "GameData/Generated/Gameplay/Gfx/AmmunitionMissiles.ndf"
-        
-        ammo_source = mod.parse_src(ammo_path)
-        missiles_source = mod.parse_src(missiles_path)
-        
-        # Process regular ammo renames
-        _process_renames(ammo_source, renames)
-        # Process missile renames
-        _process_renames(missiles_source, renames)
-        
+        # Process renames from parsed source
+        _process_renames(mod, ndf_path, renames)
+            
         # Add static renames from ammunition and missiles modules
         for old_name, new_name in AMMUNITION_RENAMES:
             renames[old_name] = new_name
@@ -43,17 +39,20 @@ def get_vanilla_renames(source_path: Path) -> Dict[str, str]:
     except Exception as e:
         logger.error(f"Error getting vanilla renames: {str(e)}")
         return {}
-        
-def _process_renames(source: Any, renames: Dict[str, str]) -> None:
-    """Process renames from a source file."""
-    # Build salvo weapon renames using same logic as build_salvo_weapons
+
+
+def _process_renames(mod: Any, ndf_path: Any, renames: Dict[str, str]) -> None:
+    """Process renames from parsed NDF data."""
+    # Build data for salvo weapon renames using same logic as build_salvo_weapons
     EXCLUDED_PREFIXES = ('Gatling', 'MMG', 'Pod')
     
-    for weapon_descr in source:
-        if not hasattr(weapon_descr, 'namespace'):
+    parse_source = mod.parse_src(ndf_path)
+
+    for ammo_descr in parse_source:
+        if not hasattr(ammo_descr, 'namespace'):
             continue
                 
-        name = weapon_descr.namespace.removeprefix('Ammo_')
+        name = ammo_descr.namespace.removeprefix('Ammo_')
         
         # Skip if name starts with any excluded prefix
         if any(name.startswith(prefix) for prefix in EXCLUDED_PREFIXES):
@@ -67,7 +66,7 @@ def _process_renames(source: Any, renames: Dict[str, str]) -> None:
             renames[name] = new_name
 
 
-def build_ammo_data(source_path: Path) -> Dict[str, Any]:
+def build_ammo_data(mod_src_path: Path) -> Dict[str, Any]:
     """Build ammunition database from source files."""
     logger.info("Building ammunition database")
     
@@ -77,10 +76,17 @@ def build_ammo_data(source_path: Path) -> Dict[str, Any]:
     unit_path = "GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf"
     
     try:
-        mod = ndf.Mod(source_path, source_path)
+        mod = ndf.Mod(mod_src_path, "None")
         ammo_file = mod.parse_src(ammo_path)
         ammo_missile_file = mod.parse_src(ammo_missile_path)
         unit_file = mod.parse_src(unit_path)
+        
+        # Merge salvo weapons and renames separately
+        salvo_weapons = build_salvo_weapons(ammo_file)
+        salvo_weapons.update(build_salvo_weapons(ammo_missile_file))
+        
+        renames = build_renames(ammo_file)
+        renames.update(build_renames(ammo_missile_file))
         
         return {
             "mg_categories": build_mg_categories(ammo_file),
@@ -88,10 +94,7 @@ def build_ammo_data(source_path: Path) -> Dict[str, Any]:
             "unit_categories": build_unit_categories(unit_file),
             "full_ball_weapons": build_full_ball_weapons(ammo_file),
             "sniper_weapons": build_sniper_weapons(ammo_file),
-            "salvo_weapons": {
-                **build_salvo_weapons(ammo_file),  # Regular ammunition salvo weapons
-                **build_salvo_weapons(ammo_missile_file)  # Missile salvo weapons
-            },
+            "renames": {**salvo_weapons, **renames}
         }
         
     except Exception as e:
@@ -102,11 +105,11 @@ def build_ammo_data(source_path: Path) -> Dict[str, Any]:
             "unit_categories": {},
             "full_ball_weapons": [],
             "sniper_weapons": [],
-            "salvo_weapons": {},
+            "renames": {}
         }
 
 
-def build_mg_categories(source) -> dict:
+def build_mg_categories(parse_source) -> dict:
     """Build MG weapon categories from ammunition data.
     
     Args:
@@ -120,7 +123,7 @@ def build_mg_categories(source) -> dict:
     hmg_turrets = []
     mmg_turrets = []
     
-    for weapon_descr in source:
+    for weapon_descr in parse_source:
         membr = weapon_descr.v.by_m
         
         # Get weapon characteristics
@@ -161,12 +164,12 @@ def build_mg_categories(source) -> dict:
     } 
 
 
-def build_mortar_categories(source) -> dict:
+def build_mortar_categories(parse_source) -> dict:
     """Build mortar categories from ammunition data."""
     mortars = []
     smoke_mortars = []
     
-    for weapon_descr in source:
+    for weapon_descr in parse_source:
         name = weapon_descr.n
         if name.startswith("Mortier_"):
             if "_SMOKE" in name:
@@ -180,11 +183,11 @@ def build_mortar_categories(source) -> dict:
     } 
 
 
-def build_unit_categories(source) -> dict:
+def build_unit_categories(parse_source) -> dict:
     """Build unit categories from unit descriptors."""
     mortar_units = []
     
-    for unit in source:
+    for unit in parse_source:
         modules = unit.v.by_m("ModulesDescriptors").v
         for module in modules:
             if not hasattr(module.v, 'type'):
@@ -200,11 +203,11 @@ def build_unit_categories(source) -> dict:
     } 
 
 
-def build_full_ball_weapons(source) -> list:
+def build_full_ball_weapons(parse_source) -> list:
     """Build list of weapons that should use full ball damage."""
     full_ball = []
     
-    for weapon in source:
+    for weapon in parse_source:
         if weapon.v.by_m("TypeCategoryName").v != "'GGSLNBFHEX'":
             if weapon.v.by_m("Caliber").v in ["'ARZDNMYCBF'", "'UZKJUPNFLB'"]:
                 full_ball.append(weapon.n)
@@ -212,18 +215,39 @@ def build_full_ball_weapons(source) -> list:
     return full_ball
 
 
-def build_sniper_weapons(source) -> list:
+def build_sniper_weapons(parse_source) -> list:
     """Build list of sniper weapons."""
     snipers = []
     
-    for weapon in source:
+    for weapon in parse_source:
         if weapon.v.by_m("TypeCategoryName").v == "'GGSLNBFHEX'":
             snipers.append(weapon.n)
     
     return snipers 
 
+def build_renames(parse_source) -> Dict[str, str]:
+    """Build mapping of constants renames to their new names.
+    
+    Returns:
+        Dict mapping original names to renamed versions
+    """
+    renames = {}
+    
+    for ammo_descr in parse_source:
+        
+        name = ammo_descr.namespace.removeprefix('Ammo_')
+        
+        for old_name, new_name in AMMUNITION_RENAMES:
+            if old_name == name:
+                renames[old_name] = new_name
+    
+        for old_name, new_name in AMMUNITION_MISSILES_RENAMES:
+            if old_name == name:
+                renames[old_name] = new_name
+    
+    return renames
 
-def build_salvo_weapons(source: Any) -> Dict[str, str]:
+def build_salvo_weapons(parse_source) -> Dict[str, str]:
     """Build mapping of vanilla salvo weapons to their new names.
     
     Returns:
@@ -234,7 +258,7 @@ def build_salvo_weapons(source: Any) -> Dict[str, str]:
     # Prefixes to exclude from salvo renaming
     EXCLUDED_PREFIXES = ('Gatling', 'MMG', 'Pod')
     
-    for weapon_descr in source:
+    for weapon_descr in parse_source:
         if not hasattr(weapon_descr, 'namespace'):
             continue
             

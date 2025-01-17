@@ -6,11 +6,15 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
 
-def edit_gd_constantes(source) -> None:
-    """Edit game constants in GDConstantes.ndf."""
+def edit_gd_constantes(source_path) -> None:
+    """Edit game constants in GDConstantes.ndf.
+    
+    Args:
+        source_path: The NDF file being edited
+    """
     logger.info("------------- editing GDConstantes.ndf -------------")
     
-    for row in source:
+    for row in source_path:
         if row.namespace == "Constantes":
             row.v.by_m("StunEffectDuration").v = "2.5"
             logger.info("Set stun effect duration to 2.5")

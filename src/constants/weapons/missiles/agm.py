@@ -64,7 +64,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("AGM_BGM71C_ITOW", "ATGM", None, False): {
+    ("AGM_BGM71C_ITOW_salvolength8", "ATGM", None, False): {
         "Ammunition": {
             "parent_membr": {
                 "MaximalSpeedGRU": 466,
@@ -79,7 +79,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("AGM_BGM71C_FITOW", "ATGM", None, False): {
+    ("AGM_BGM71C_FITOW_salvolength8", "ATGM", None, False): {
         "Ammunition": {
             "parent_membr": {
                 "MaximalSpeedGRU": 466,
@@ -94,7 +94,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("AGM_BGM71_TOW", "ATGM", None, False): {
+    ("AGM_BGM71_TOW_salvolength8", "ATGM", None, False): {
         "Ammunition": {
             "Arme": {
                 "Index": 17,
@@ -156,7 +156,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("AGM_9M14_MalyutkaP", "ATGM", None, False): { # 43
+    ("AGM_9M14_MalyutkaP_salvolength6", "ATGM", None, False): { # 43
         "Ammunition": {
             "Arme": {
                 "Index": 18,
@@ -168,7 +168,26 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
         "BaseSupplyCost": 60,
         "WeaponDescriptor": {
-            "SalvoLengths": [6, 4],
+            "SalvoLengths": [6],
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 311,
+        },
+    },
+    
+    ("AGM_9M14_MalyutkaP_salvolength4", "ATGM", None, False): { # 43
+        "Ammunition": {
+            "Arme": {
+                "Index": 18,
+            },
+            "parent_membr": {
+                "PorteeMaximaleGRU": 2450,
+                "MaximalSpeedGRU": 311,
+            },
+        },
+        "BaseSupplyCost": 60,
+        "WeaponDescriptor": {
+            "SalvoLengths": [4],
         },
         "MissileDescriptor": {
             "MaxSpeedGRU": 311,
@@ -207,7 +226,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("Bomb_KAB_1500L_x3", "LGB", None, False): { # 152
+    ("Bomb_KAB_1500L_salvolength3", "LGB", None, False): { # 152
         "Ammunition": {
             "parent_membr": {
                 "SupplyCost": 360,
@@ -215,7 +234,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("Bomb_GBU_12_x2", "LGB", None, False): { # 147
+    ("Bomb_GBU_12_salvolength2", "LGB", None, False): { # 147
         "Ammunition": {
             "parent_membr": {
                 "TraitsToken": ['MOTION', 'semiAuto', 'HE'],

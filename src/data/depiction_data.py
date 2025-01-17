@@ -10,7 +10,7 @@ from src.utils.ndf_utils import is_obj_type, strip_quotes
 
 logger = setup_logger(__name__)
 
-def gather_depiction_data(source_path: Path) -> Dict[str, Any]:
+def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
     """Gather depiction data from source files."""
     logger.info("Gathering depiction data")
     
@@ -21,28 +21,27 @@ def gather_depiction_data(source_path: Path) -> Dict[str, Any]:
     }
     
     try:
-        mod = ndf.Mod(source_path, source_path)
+        # Just parsing input, no output needed
+        mod = ndf.Mod(mod_src_path, "None")
         
         # Get weapon renames mapping
-        ammo_path = "GameData/Generated/Gameplay/Gfx/Ammunition.ndf"
-        missiles_path = "GameData/Generated/Gameplay/Gfx/AmmunitionMissiles.ndf"
-        ammo_source = mod.parse_src(ammo_path)
-        missiles_source = mod.parse_src(missiles_path)
+        ammo_ndf_path = "GameData/Generated/Gameplay/Gfx/Ammunition.ndf"
+        missiles_ndf_path = "GameData/Generated/Gameplay/Gfx/AmmunitionMissiles.ndf"
         
         # Get renames from both ammunition files
         weapon_renames = {
-            **get_vanilla_renames(ammo_source),      # Regular ammunition renames
-            **get_vanilla_renames(missiles_source)    # Missile renames
+            **get_vanilla_renames(mod, ammo_ndf_path),
+            **get_vanilla_renames(mod, missiles_ndf_path)
         }
         logger.debug(f"Loaded {len(weapon_renames)} weapon renames")
         
         # Process infantry depictions
-        infantry_path = "GameData/Generated/Gameplay/Gfx/Infanterie/GeneratedDepictionInfantry.ndf"
-        logger.debug(f"Reading infantry depictions from: {infantry_path}")
-        infantry_source = mod.parse_src(infantry_path)
+        infantry_ndf_path = "GameData/Generated/Gameplay/Gfx/Infanterie/GeneratedDepictionInfantry.ndf"
+        logger.debug(f"Reading infantry depictions from: {infantry_ndf_path}")
+        infantry_parse_source = mod.parse_src(infantry_ndf_path)
         
         # Process each weapon's depiction data
-        for entry in infantry_source:
+        for entry in infantry_parse_source:
             if not hasattr(entry, 'namespace') or not entry.namespace:
                 continue
                 

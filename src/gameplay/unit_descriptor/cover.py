@@ -1,53 +1,45 @@
 """Functions for modifying unit cover behavior."""
 
-from typing import Any, List
+from typing import Any, Dict
 
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import ndf
 
 logger = setup_logger(__name__)
 
-
-def _get_unit_tags(tags_input: Any) -> List[str]:
-    """Convert tags input into list of tag strings.
+def edit_auto_cover(source_path: Any, game_db: Dict[str, Any]) -> None:
+    """Edit auto cover ranges in UniteDescriptor.ndf.
     
     Args:
-        tags_input: Either a string to parse or an ndf List object
+        source_path: The NDF file to edit
+        game_db: Game database containing unit data
     """
-    # If input is already a List, use it directly
-    if isinstance(tags_input, ndf.model.List):
-        tags = tags_input
-    else:
-        # Otherwise parse the string input
-        tags = ndf.convert(str(tags_input).encode('utf-8'))[0].v
-    
-    return [tag.v.strip("'") for tag in tags]
-
-
-def edit_auto_cover(source) -> None:
-    """Edit auto cover ranges in UniteDescriptor.ndf."""
     logger.info("Modifying auto cover ranges")
+    unit_db = game_db.get("units", {})
     
-    for unit_descr in source:
-        modules_list = unit_descr.v.by_m("ModulesDescriptors").v
-        is_infantry = False
-        is_ground_unit = False
-        
-        for module in modules_list:
-            if not hasattr(module.v, 'type'):
-                continue
-                
-            module_type = module.v.type
+    for unit_descr in source_path:
+        if not hasattr(unit_descr, 'namespace'):
+            continue
             
-            # Check unit tags
-            if module_type == "TTagsModuleDescriptor":
-                tags = _get_unit_tags(module.v.by_m("TagSet").v)
-                is_infantry = 'Infanterie' in tags
-                is_ground_unit = 'GroundUnits' in tags
-                
-            # Update auto cover range
-            if module_type == "TAutoCoverModuleDescriptor":
-                if is_infantry or is_ground_unit:
+        # Get unit name without prefix
+        unit_name = unit_descr.namespace.replace("Descriptor_Unit_", "")
+        
+        # Skip if unit not in database
+        if unit_name not in unit_db:
+            continue
+            
+        unit_data = unit_db[unit_name]
+        tags = unit_data.get("tags", [])
+        
+        # Check if unit is infantry or ground unit
+        if 'Infanterie' in tags or 'GroundUnits' in tags:
+            modules_list = unit_descr.v.by_m("ModulesDescriptors").v
+            
+            # Find and update auto cover module
+            for module in modules_list:
+                if not hasattr(module.v, 'type'):
+                    continue
+                    
+                if module.v.type == "TAutoCoverModuleDescriptor":
                     module.v.by_m("AutoCoverRangeGRU").v = "70"
-                    logger.info(f"Set auto cover range to 70m for {unit_descr.namespace}")
+                    logger.info(f"Set auto cover range to 70m for {unit_name}")
                     break 

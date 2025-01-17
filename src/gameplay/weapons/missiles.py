@@ -15,18 +15,19 @@ from src.gameplay.weapons.vanilla_modifications import (
 from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.logging_utils import setup_logger
 
+from ..dics import write_missile_dictionary_entries
 from .utils import get_supply_costs
 
 logger = setup_logger(__name__)
 
-def edit_missiles(source: Any, game_db: Dict[str, Any]) -> None:
+def edit_missiles(source_path: Any, game_db: Dict[str, Any]) -> None:
     """Edit AmmunitionMissiles.ndf file."""
     logger.info("Editing missile weapons")
     ammo_db = game_db["ammunition"]
     
     # Handle vanilla modifications
-    apply_vanilla_renames(source, AMMUNITION_MISSILES_RENAMES, ammo_db)
-    remove_vanilla_instances(source, AMMUNITION_MISSILES_REMOVALS)
+    apply_vanilla_renames(source_path, AMMUNITION_MISSILES_RENAMES, ammo_db)
+    remove_vanilla_instances(source_path, AMMUNITION_MISSILES_REMOVALS)
     
     # Track dictionary entries
     ingame_names = []
@@ -43,9 +44,9 @@ def edit_missiles(source: Any, game_db: Dict[str, Any]) -> None:
                 for i, length in enumerate(data["WeaponDescriptor"]["SalvoLengths"]):
                     if i != len(data["WeaponDescriptor"]["SalvoLengths"]) - 1:
                         entry = f"Ammo_{weapon}_x{length}"
-                        for weapon_descr in source:
+                        for weapon_descr in source_path:
                             if weapon_descr.namespace == entry:
-                                source.remove(weapon_descr)
+                                source_path.remove(weapon_descr)
                                 logger.debug(f"Removed existing entry {entry}")
                                 break
     
@@ -57,7 +58,7 @@ def edit_missiles(source: Any, game_db: Dict[str, Any]) -> None:
         try:
             # Get base descriptor
             base_descr = None
-            for weapon_descr in source:
+            for weapon_descr in source_path:
                 if weapon_descr.namespace == f"Ammo_{weapon}":
                     base_descr = weapon_descr.copy()
                     break
@@ -85,8 +86,8 @@ def edit_missiles(source: Any, game_db: Dict[str, Any]) -> None:
                         calibers.append((weapon, caliber_data[1], caliber_data[0]))
             
             # Handle salvo lengths and supply costs
-            if "WeaponDescriptor" in data and "SalvoLengths" in data["WeaponDescriptor"]:
-                _handle_salvo_variants(source, base_descr, weapon, data, is_new)
+            if not is_new and "WeaponDescriptor" in data and "SalvoLengths" in data["WeaponDescriptor"]:
+                _handle_salvo_variants(source_path, base_descr, weapon, data, is_new)
             
             logger.info(f"Processed missile {weapon}")
             
@@ -95,11 +96,16 @@ def edit_missiles(source: Any, game_db: Dict[str, Any]) -> None:
     
     # Write dictionary entries
     if ingame_names or calibers:
-        _write_missile_dictionary_entries(ingame_names, calibers)
+        write_missile_dictionary_entries(ingame_names, calibers)
 
-def _handle_salvo_variants(source: Any, base_descr: Any, weapon: str, 
+def _handle_salvo_variants(source_path: Any, base_descr: Any, weapon: str, 
                          data: Dict, is_new: bool) -> None:
-    """Handle salvo length variants for missile."""
+    """Handle salvo length variants for missile.
+    
+    Edits existing salvo variants rather than creating new ones.
+    Each variant should already exist in source_path with the format:
+    Ammo_<weapon>_x<length> or Ammo_<weapon> for the base variant.
+    """
     salvo_lengths = data["WeaponDescriptor"]["SalvoLengths"]
     
     # Get base supply cost
@@ -110,38 +116,33 @@ def _handle_salvo_variants(source: Any, base_descr: Any, weapon: str,
             base_cost = cost
             break
     
-    for i, length in enumerate(salvo_lengths):
-        descr = base_descr.copy()
+    for length in salvo_lengths:
+        # Find existing descriptor to edit
+        target_name = f"Ammo_{weapon}"
+        target_descr = None
         
-        # Generate new GUIDs for each variant
-        descr.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
-        hitroll_obj = descr.v.by_m("HitRollRuleDescriptor").v
-        hitroll_obj.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
+        for descr in source_path:
+            if descr.namespace == target_name:
+                target_descr = descr
+                break
         
+        if not target_descr:
+            logger.warning(f"Could not find existing descriptor for {target_name}")
+            continue
+            
         # Set supply cost if available
         if base_cost is not None:
-            descr.v.by_m("SupplyCost").v = str(int(base_cost) * length)
-        
-        # Set namespace
-        if length == 1 and i == len(salvo_lengths) - 1:
-            namespace = f"Ammo_{weapon}"
-        else:
-            namespace = f"Ammo_{weapon}_x{length}"
-            
-        descr.namespace = namespace
+            target_descr.v.by_m("SupplyCost").v = str(int(base_cost) * length)
         
         # Apply edits
         if "Ammunition" in data:
-            _apply_missile_edits(descr, data["Ammunition"], is_new)
+            _apply_missile_edits(target_descr, data["Ammunition"], is_new)
         
         # Update salvo-specific values
-        descr.v.by_m("NbTirParSalves").v = str(length)
-        descr.v.by_m("AffichageMunitionParSalve").v = str(length)
+        target_descr.v.by_m("NbTirParSalves").v = str(length)
+        target_descr.v.by_m("AffichageMunitionParSalve").v = str(length)
         
-        # Add to source
-        if i > 0 or is_new:
-            source.add(descr)
-            logger.debug(f"Created variant {namespace}")
+        logger.debug(f"Updated existing variant {target_name}")
 
 def _apply_missile_edits(descr: Any, data: Dict, is_new: bool) -> None:
     """Apply edits to missile descriptor."""
@@ -194,19 +195,4 @@ def _apply_hit_roll_edits(descr: Any, hit_roll_data: Dict) -> None:
         elif roll_type == "Moving":
             roll_membr_list = list(roll_membrs[2].v)
             roll_membr_list[1] = str(hit_chance)
-            roll_membrs[2].v = tuple(roll_membr_list)
-
-def _write_missile_dictionary_entries(ingame_names: List, calibers: List) -> None:
-    """Write missile dictionary entries."""
-    entries = []
-    
-    # Add weapon names
-    for weapon, token, display in ingame_names:
-        entries.append((token, display))
-        
-    # Add caliber entries  
-    for weapon, token, display in calibers:
-        entries.append((token, display))
-        
-    if entries:
-        write_dictionary_entries(entries, dictionary_type="units") 
+            roll_membrs[2].v = tuple(roll_membr_list) 

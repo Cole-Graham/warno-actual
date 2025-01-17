@@ -12,6 +12,7 @@ from src.constants.weapons.vanilla_inst_modifications import (
 from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.logging_utils import setup_logger
 
+from ..dics import write_ammo_dictionary_entries
 from .damage_families import apply_damage_families
 from .mg_teams import edit_mg_team_weapons
 from .mortar_mods import add_corrected_shot_dispersion
@@ -24,22 +25,22 @@ def _generate_guid():
     """Generate a new GUID."""
     return str(uuid4())
 
-def edit_ammunition(source, game_db: Dict[str, Any]) -> None:
+def edit_ammunition(source_path, game_db: Dict[str, Any]) -> None:
     """Edit Ammunition.ndf file."""
     ammo_db = game_db["ammunition"]
     
     # First handle vanilla modifications
-    apply_vanilla_renames(source, AMMUNITION_RENAMES, ammo_db)
-    remove_vanilla_instances(source, AMMUNITION_REMOVALS)
+    apply_vanilla_renames(source_path, AMMUNITION_RENAMES, ammo_db)
+    remove_vanilla_instances(source_path, AMMUNITION_REMOVALS)
     
     # Add mortar corrected shot
-    add_corrected_shot_dispersion(source, game_db)
+    add_corrected_shot_dispersion(source_path, game_db)
     
     # Modify MG team weapons
-    edit_mg_team_weapons(source, game_db)
+    edit_mg_team_weapons(source_path, game_db)
     
     # Apply damage family modifications
-    apply_damage_families(source, game_db)
+    apply_damage_families(source_path, game_db)
     
     # Track dictionary entries
     ingame_names = []
@@ -55,10 +56,10 @@ def edit_ammunition(source, game_db: Dict[str, Any]) -> None:
             
             # Get donor descriptor for new weapons
             if is_new:
-                donor_descr = source.by_n(f"Ammo_{donor}")
+                donor_descr = source_path.by_n(f"Ammo_{donor}")
                 if not donor_descr:
                     # Try without Ammo_ prefix
-                    donor_descr = source.by_n(donor)
+                    donor_descr = source_path.by_n(donor)
                     if not donor_descr:
                         logger.error(f"Could not find donor {donor} for {weapon_name}")
                         continue
@@ -66,10 +67,10 @@ def edit_ammunition(source, game_db: Dict[str, Any]) -> None:
                 # Set namespace immediately for new weapons
                 base_descr.namespace = f"Ammo_{weapon_name}"
             else:
-                base_descr = source.by_n(f"Ammo_{weapon_name}")
+                base_descr = source_path.by_n(f"Ammo_{weapon_name}")
                 if not base_descr:
                     # Try without Ammo_ prefix
-                    base_descr = source.by_n(weapon_name)
+                    base_descr = source_path.by_n(weapon_name)
                     if not base_descr:
                         logger.error(f"Could not find weapon {weapon_name}")
                         continue
@@ -92,10 +93,10 @@ def edit_ammunition(source, game_db: Dict[str, Any]) -> None:
             
             # Handle weapon quantities
             if "NbWeapons" in data:
-                _handle_weapon_quantities(source, base_descr, weapon_name, data["NbWeapons"])
+                _handle_weapon_quantities(source_path, base_descr, weapon_name, data["NbWeapons"])
             elif is_new:
                 # For new single weapons, just append to source
-                source.add(base_descr)
+                source_path.add(base_descr)
                 
             logger.info(f"Processed weapon {weapon_name}")
             
@@ -104,7 +105,7 @@ def edit_ammunition(source, game_db: Dict[str, Any]) -> None:
             
     # Write dictionary entries
     if ingame_names or calibers:
-        _write_ammo_dictionary_entries(ingame_names, calibers)
+        write_ammo_dictionary_entries(ingame_names, calibers)
 
 def _apply_weapon_edits(descr: Any, data: Dict) -> None:
     """Apply edits from ammunition data to descriptor."""
@@ -197,19 +198,4 @@ def _handle_weapon_quantities(source: Any, base_descr: Any, weapon_name: str, qu
         logger.debug(f"Setting namespace to {namespace}")
         descr.namespace = namespace
         logger.debug(f"Adding new descriptor with namespace {namespace}")
-        source.add(descr)
-
-def _write_ammo_dictionary_entries(ingame_names: List, calibers: List) -> None:
-    """Write ammunition dictionary entries."""
-    entries = []
-    
-    # Add weapon names
-    for weapon, token, display in ingame_names:
-        entries.append((token, display))
-        
-    # Add caliber entries
-    for weapon, token, display in calibers:
-        entries.append((token, display))
-        
-    if entries:
-        write_dictionary_entries(entries, dictionary_type="units") 
+        source.add(descr) 

@@ -7,7 +7,7 @@ from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
 
-def edit_infantry_depictions(source: Any, depiction_data: Dict[str, Any]) -> None:
+def edit_infantry_depictions(source_path: Any, depiction_data: Dict[str, Any]) -> None:
     """Edit GeneratedDepictionInfantry.ndf.
     
     Args:
@@ -43,21 +43,21 @@ def edit_infantry_depictions(source: Any, depiction_data: Dict[str, Any]) -> Non
         
         try:
             # Add weapon mesh alternative
-            _add_weapon_mesh(source, unit_name, turret_index, weapon_data["modele"])
+            _add_weapon_mesh(source_path, unit_name, turret_index, weapon_data["modele"])
             
             # Add weapon fire effect
-            _add_fire_effect(source, unit_name, turret_index, weapon_data["fire_effect"])
+            _add_fire_effect(source_path, unit_name, turret_index, weapon_data["fire_effect"])
             
             # Add conditional animation tag
-            _add_animation_tag(source, unit_name, turret_index, weapon_data["conditionaltag"])
+            _add_animation_tag(source_path, unit_name, turret_index, weapon_data["conditionaltag"])
             
         except Exception as e:
             logger.error(f"Failed to edit depictions for {unit_name}: {str(e)}")
 
-def _add_weapon_mesh(source: Any, unit_name: str, turret_index: int, mesh: str) -> None:
+def _add_weapon_mesh(source_path: Any, unit_name: str, turret_index: int, mesh: str) -> None:
     """Add weapon mesh alternative to unit."""
     try:
-        weapon_alts = source.by_n(f"AllWeaponAlternatives_{unit_name}").v
+        weapon_alts = source_path.by_n(f"AllWeaponAlternatives_{unit_name}").v
         new_entry = (
             f"TDepictionDescriptor("
             f"    SelectorId = ['MeshAlternative_{turret_index + 1}']"
@@ -75,10 +75,10 @@ def _add_weapon_mesh(source: Any, unit_name: str, turret_index: int, mesh: str) 
     except Exception as e:
         logger.error(f"Failed to add weapon mesh for {unit_name}: {str(e)}")
 
-def _add_fire_effect(source: Any, unit_name: str, turret_index: int, fire_effect: str) -> None:
+def _add_fire_effect(source_path: Any, unit_name: str, turret_index: int, fire_effect: str) -> None:
     """Add weapon fire effect to unit."""
     try:
-        weapon_subdepictions = source.by_n(f"AllWeaponSubDepiction_{unit_name}").v
+        weapon_subdepictions = source_path.by_n(f"AllWeaponSubDepiction_{unit_name}").v
         operators_list = weapon_subdepictions.by_m("Operators").v
         
         new_entry = (
@@ -93,10 +93,10 @@ def _add_fire_effect(source: Any, unit_name: str, turret_index: int, fire_effect
     except Exception as e:
         logger.error(f"Failed to add fire effect for {unit_name}: {str(e)}")
 
-def _add_animation_tag(source: Any, unit_name: str, turret_index: int, tag: str) -> None:
+def _add_animation_tag(source_path: Any, unit_name: str, turret_index: int, tag: str) -> None:
     """Add conditional animation tag to unit."""
     try:
-        soldier_depiction = source.by_n(f"TacticDepiction_{unit_name}_Soldier").v
+        soldier_depiction = source_path.by_n(f"TacticDepiction_{unit_name}_Soldier").v
         operators_list = soldier_depiction.by_m("Operators").v
         
         for obj in operators_list:

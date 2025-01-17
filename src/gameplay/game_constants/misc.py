@@ -5,8 +5,12 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
 
-def edit_orders(source):
-    """Edit unit order availability."""
+def edit_orders(source_path):
+    """Edit unit order availability.
+    
+    Args:
+        source_path: The NDF file being edited
+    """
     logger.info("Editing OrderAvailability_Tactic.ndf")
     
     unit_edits = load_unit_edits()
@@ -15,7 +19,7 @@ def edit_orders(source):
         if "orders" not in edits:
             continue
             
-        for order_list in source:
+        for order_list in source_path:
             if order_list.namespace != f"Descriptor_OrderAvailability_{unit}":
                 continue
                 

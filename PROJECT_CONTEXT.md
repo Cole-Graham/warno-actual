@@ -1,6 +1,23 @@
 # Project Structure
 
 ## Directory Tree
+
+## Naming Conventions
+
+The project uses specific variable naming for different types of paths and sources:
+
+1. Mod Directory Paths
+   - `mod_src_path` - Source mod directory (e.g. "C:/Program Files (x86)/Steam/steamapps/common/WARNO/Mods/sourcemod")
+   - `mod_dst_path` - Destination mod directory
+
+2. NDF File Paths
+   - `ndf_path` - Relative path to NDF file (e.g. "GameData/Generated/Gameplay/Gfx/BuildingDescriptors.ndf")
+   - `ndf_file` - Just the filename (e.g. "BuildingDescriptors.ndf")
+
+3. NDF Processing
+   - `parse_source` - Parsed NDF data from mod.parse_src()
+   - `source_path` - NDF file being edited with mod.edit()
+
 ```
 warno-actual/
 ├── assets/               # Root directory for mod assets

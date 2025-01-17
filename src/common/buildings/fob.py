@@ -5,11 +5,11 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
 
-def edit_fob_minimap(source) -> None:
+def edit_fob_minimap(source_path) -> None:
     """Add minimap texture module to FOB."""
     logger.info("Adding FOB minimap texture")
     
-    for fob_descr in source:
+    for fob_descr in source_path:
         modules_list = fob_descr.v.by_m("ModulesDescriptors").v
         insert_index = -1
         

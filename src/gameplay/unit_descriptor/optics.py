@@ -24,11 +24,11 @@ SEAD_UNITS: List[Tuple[str, float]] = [
 ]
 
 
-def edit_antirad_optics(source) -> None:
+def edit_antirad_optics(source_path) -> None:
     """Edit anti-radiation optics in UniteDescriptor.ndf."""
     logger.info("Modifying anti-radiation optics")
     
-    for unit_descr in source:
+    for unit_descr in source_path:
         for unit, optics in SEAD_UNITS:
             if unit_descr.namespace.removeprefix("Descriptor_Unit_") != unit:
                 continue
