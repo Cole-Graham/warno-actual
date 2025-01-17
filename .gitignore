@@ -11,3 +11,4 @@ temp_context.txt
 # don't ignore
 !logs/.gitkeep
 !src/data/database/.gitkeep
+*.lnk
