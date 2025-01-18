@@ -49,11 +49,11 @@ files:
     # Example:
     "GameData/Generated/Gameplay/Gfx/BuildingDescriptors.ndf": {
         "ui": [
-            "edit_fob_minimap"  # UI mod only gets minimap texture
+            "add_fob_minimap_module"  # UI mod only gets minimap texture
         ],
         "gameplay": [
+            "add_fob_minimap_module",
             "edit_fob_attributes",  # Gameplay mod gets both
-            "edit_fob_minimap"
         ]
     }
     "GameData/UserInterface/Use/InGame/UISpecificUnitInfoPanelView.ndf": {
@@ -76,10 +76,10 @@ files:
   shared:
     "GameData/Generated/UserInterface/Textures/MinimapIcons.ndf": {
         "gameplay": [
-            "edit_minimap_icons"
-        ]
+            "add_fob_minimap_texture"
+        ],
         "ui": [
-            "edit_minimap_icons"
+            "add_fob_minimap_texture"
         ]
     }
 

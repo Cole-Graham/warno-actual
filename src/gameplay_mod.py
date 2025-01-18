@@ -3,21 +3,15 @@
 from typing import Any, Callable, Dict, List
 
 from src.constants.variants import VARIANT_FUNCTIONS
+from src.gameplay import get_editors
+from src.shared import get_shared_editors
 from src.utils.logging_utils import log_time, setup_logger
 from src.utils.variant_utils import validate_variant_config
 
 logger = setup_logger('gameplay_mod')
 
 def get_file_editor(ndf_path: str, config: Dict) -> Callable:
-    """Get the appropriate edit function for gameplay files.
-    
-    Args:
-        ndf_path: Path to the file being edited
-        config: Configuration dictionary
-        
-    Returns:
-        Editor function for the specified file, or None if no editor exists
-    """
+    """Get the appropriate edit function for gameplay files."""
     logger.info(f"Loading data for {ndf_path}")
     
     # Check variants first
@@ -41,14 +35,12 @@ def get_file_editor(ndf_path: str, config: Dict) -> Callable:
         return apply_shared_editors
         
     # Finally check gameplay editors
-    from src.gameplay import get_editors
-    editors = get_editors(config['game_db'])
-    if ndf_path in editors:
+    gameplay_editors = get_editors(config['game_db'])
+    if ndf_path in gameplay_editors:
         def apply_editors(source_path):
             with log_time(logger, f"Processing {ndf_path}"):
-                for i, editor in enumerate(editors[ndf_path], 1):
-                    with log_time(logger, f"Running editor {i}"):
-                        editor(source_path)
+                for editor in gameplay_editors[ndf_path]:
+                    editor(source_path)
         return apply_editors
 
     return None 

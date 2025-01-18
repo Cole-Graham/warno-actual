@@ -2,7 +2,7 @@
 
 from typing import Callable, Dict, List
 
-from . import add_fob_minimap_module
+from .buildings.fob import add_fob_minimap_module, add_fob_minimap_texture
 
 
 def get_shared_editors() -> Dict[str, List[Callable]]:
@@ -11,4 +11,7 @@ def get_shared_editors() -> Dict[str, List[Callable]]:
         "GameData/Generated/Gameplay/Gfx/BuildingDescriptors.ndf": [
             lambda source: add_fob_minimap_module(source),
         ],
+        "GameData/Generated/UserInterface/Textures/MinimapIcons.ndf": [
+            lambda source: add_fob_minimap_texture(source),
+        ]
     } 

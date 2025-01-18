@@ -16,7 +16,7 @@ from typing import Any, Callable, Dict, List
 
 from src.utils.logging_utils import setup_logger
 
-from .buildings import edit_fob_attributes, edit_fob_minimap
+from .buildings import edit_fob_attributes
 from .depictions.infantry import edit_infantry_depictions
 from .depictions.new_depictions import (
     create_alternatives_depictions,

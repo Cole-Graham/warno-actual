@@ -2,12 +2,17 @@
 
 from typing import Any, Callable, Dict
 
-from src.gameplay.buildings import edit_fob_attributes, edit_fob_minimap
+from src.gameplay.buildings.fob import edit_fob_attributes
+from src.shared.buildings.fob import add_fob_minimap_module, add_fob_minimap_texture
 
 # Validate function types
 VARIANT_FUNCTIONS: Dict[str, Callable] = {
+    # shared
+    "add_fob_minimap_texture": add_fob_minimap_texture,
+    
+    # variants
+    "add_fob_minimap_module": add_fob_minimap_module,
     "edit_fob_attributes": edit_fob_attributes,
-    "edit_fob_minimap": edit_fob_minimap,
 }
 
 def validate_editor_function(func: Callable) -> bool:
