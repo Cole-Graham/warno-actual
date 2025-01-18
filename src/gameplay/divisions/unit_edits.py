@@ -51,7 +51,7 @@ def _update_card_count(pack_list_map: Any, unit: str, div_name: str, edits: Dict
             map_row.v = str(cards)
             break
 
-def edit_units(source: Any) -> None:
+def edit_division_units(source: Any) -> None:
     """Edit unit availability in divisions."""
     logger.info("Editing unit availability in divisions")
     

@@ -1,5 +1,5 @@
 """UI building modification modules."""
 
-from src.common.buildings.fob import edit_fob_minimap
+from .fob_ui import edit_minimapicons
 
-__all__ = ["edit_fob_minimap"] 
+__all__ = ["edit_minimapicons"] 

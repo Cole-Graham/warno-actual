@@ -77,8 +77,9 @@ def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
         modules_list = unit_row.v.by_m("ModulesDescriptors").v
         
         # Initialize default values
-        unit_info["optics"] = {}
-        
+        unit_info = {}
+        unit_info["is_supply_unit"] = False
+        unit_info["is_helo_unit"] = False
         # Get unit name for context
         unit_name = unit_row.namespace.split("Descriptor_Unit_")[-1] if hasattr(unit_row, "namespace") else "Unknown"
         
@@ -88,13 +89,20 @@ def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
                 
             module_type = descr_row.v.type
             
+            
             # Extract data based on module type
-            if module_type == "TProductionModuleDescriptor":
+            if module_type == "HelicopterPositionModuleDescriptor":
+                unit_info["is_helo_unit"] = True
+
+            elif module_type == "TProductionModuleDescriptor":
                 unit_info.update(extract_production_data(descr_row))
+            
             elif module_type == "TTagsModuleDescriptor":
                 unit_info.update(extract_tags_data(descr_row))
+            
             elif module_type == "TUnitUIModuleDescriptor":
                 unit_info.update(extract_ui_data(descr_row))
+            
             elif module_type == "TWeaponManagerModuleDescriptor":
                 weapon_data = {
                     "turrets": _gather_turret_data(descr_row),
@@ -104,17 +112,26 @@ def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
                     "salvo_mapping": _gather_salvo_mapping(descr_row)
                 }
                 unit_info["weapon_data"] = weapon_data
+            
             elif module_type == "TInfantrySquadModuleDescriptor":
                 unit_info["strength"] = int(descr_row.v.by_m("NbSoldatInGroupeCombat").v)
+            
             elif module_type == "TDamageModuleDescriptor":
                 unit_info["armor"] = extract_armor_data(descr_row)
+            
+            elif module_type == "TSupplyModuleDescriptor":
+                unit_info["is_supply_unit"] = True
+            
             elif module_type == "TVisibilityModuleDescriptor":
                 unit_info["visibility"] = extract_stealth_data(descr_row)
+            
             elif module_type == "TScannerConfigurationDescriptor":
-                optics_data = extract_optics_data(descr_row, unit_name)
-                if optics_data:
-                    unit_info["optics"].update(optics_data)
-                    logger.debug(f"Updated optics data for {unit_name}")
+                unit_info["optics"] = extract_optics_data(descr_row, unit_name)
+                # optics_data = extract_optics_data(descr_row, unit_name)
+                # if optics_data:
+                #     unit_info["optics"].update(optics_data)
+                #     logger.debug(f"Updated optics data for {unit_name}")
+            
             elif module_type == "TModuleSelector":
                 skills = extract_skills_data(descr_row)
                 if skills:
@@ -126,6 +143,20 @@ def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
     except Exception as e:
         logger.error(f"Error extracting unit info: {str(e)}")
         return {}
+
+def extract_supply_data(descr_row: Any, module_type: str) -> Dict[str, Any]:
+    """Extract supply data from a unit descriptor."""
+    data = {}
+    try:
+        
+        if module_type == "TSupplyModuleDescriptor":
+            data["is_supply_unit"] = True
+        else:
+            data["is_supply_unit"] = False
+
+    except Exception as e:
+        logger.error(f"Error extracting supply data: {str(e)}")
+    return data
 
 def extract_skills_data(descr_row: Any) -> List[str]:
     """Extract skills data from a module selector."""

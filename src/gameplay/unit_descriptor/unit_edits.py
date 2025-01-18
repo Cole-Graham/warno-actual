@@ -5,17 +5,19 @@ from typing import Any, Dict
 from src import ndf
 from src.constants.unit_edits import load_unit_edits
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import find_namespace
+from src.utils.ndf_utils import find_namespace, get_module_list, is_obj_type
 
 logger = setup_logger('unit_descriptor_edits')
 
-def edit_units(source_path: Any) -> None:
+def edit_units(source_path: Any, game_db: Dict[str, Any]) -> None:
     """Edit unit descriptors."""
     logger.info("Starting UniteDescriptor.ndf modifications")
     
     units_processed = 0
     units_modified = 0
     unit_edits = load_unit_edits()
+    
+    _handle_supply(source_path, game_db, unit_edits)
     
     for unit_row in source_path:
         units_processed += 1
@@ -53,6 +55,7 @@ def modify_module(
         "TVisibilityModuleDescriptor": _handle_visibility,
         "TBaseDamageModuleDescriptor": _handle_base_damage,
         "TDamageModuleDescriptor": _handle_damage,
+        "TSupplyModuleDescriptor": _handle_supply,
         "TScannerConfigurationDescriptor": _handle_scanner,
         "TProductionModuleDescriptor": _handle_production,
         "TTacticalLabelModuleDescriptor": _handle_tactical_label,
@@ -132,23 +135,21 @@ def _handle_scanner(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
 def _handle_production(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
     if "CommandPoints" in edits:
         cmd_points = "$/GFX/Resources/Resource_CommandPoints"
-        descr_row.v.by_m("ProductionRessourcesNeeded").v.by_k(cmd_points).v = (
-            edits["CommandPoints"]
-        )
+        descr_row.v.by_m("ProductionRessourcesNeeded").v.by_k(cmd_points).v = str(edits["CommandPoints"])
     
     if "category" in edits:
         descr_row.v.by_m("Factory").v = f"EDefaultFactories/{edits['category']}"
 
 def _handle_tactical_label(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
     if "SortingOrder" in edits:
-        descr_row.v.by_m("MultiSelectionSortingOrder").v = edits["SortingOrder"]
+        descr_row.v.by_m("MultiSelectionSortingOrder").v = str(edits["SortingOrder"])
     if "Strength" in edits:
         descr_row.v.by_m("NbSoldiers").v = str(edits["Strength"])
 
 def _handle_strategic_data(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
     if "UnitAttackValue" in edits:
-        descr_row.v.by_m("UnitAttackValue").v = edits["UnitAttackValue"]
-        descr_row.v.by_m("UnitDefenseValue").v = edits["UnitDefenseValue"]
+        descr_row.v.by_m("UnitAttackValue").v = str(edits["UnitAttackValue"])
+        descr_row.v.by_m("UnitDefenseValue").v = str(edits["UnitDefenseValue"])
 
 def _handle_icon(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
     if "IdentifiedTextures" in edits:
@@ -183,7 +184,7 @@ def _handle_unit_ui(unit_row: Any, descr_row: Any, edits: dict, index: int, modu
         descr_row.v.by_m("ButtonTexture").v = button_texture
     
     if "TypeStrategicCount" in edits:
-        descr_row.v.by_m("TypeStrategicCount").v = edits["TypeStrategicCount"]
+        descr_row.v.by_m("TypeStrategicCount").v = str(edits["TypeStrategicCount"])
     
     if "orders" in edits and "add_orders" in edits["orders"]:
         if "sell" in edits["orders"]["add_orders"]:
@@ -200,4 +201,82 @@ def _handle_deployment_shift(unit_row: Any, descr_row: Any, edits: dict, index: 
     if "DeploymentShift" in edits and edits["DeploymentShift"] == 0:
         descr_type = descr_row.v.type
         modules_list.remove(index)
-        logger.info(f"Removed {descr_type} from {unit_row.namespace}") 
+        logger.info(f"Removed {descr_type} from {unit_row.namespace}")
+        
+def _handle_supply(source_path, game_db, unit_edits):
+    """Edit supply type for new supply ranges in UniteDescriptor.ndf, as well as
+    supply capacities.
+    
+    Args:
+        source_path: The NDF file being edited
+        game_db: The game database
+    """
+    logger.info("Editing UniteDescriptor.ndf")
+    
+    unit_data = game_db["unit_data"]
+    
+    from src.constants.unit_edits.SUPPLY_unit_edits import supply_unit_edits
+    
+    for unit, data in unit_data.items():        
+        if not data["is_supply_unit"]:
+            continue
+        
+        if not unit in supply_unit_edits:
+            continue
+            
+        is_helo = data["is_helo_unit"]
+        
+        unit_descr = source_path.by_n(f"Descriptor_Unit_{unit}")
+        if not unit_descr:
+            logger.warning(f"Unit descriptor not found for {unit}")
+            continue
+        
+        for dic_unit, edits in unit_edits.items():
+            if dic_unit != unit:
+                continue
+            
+            module_list = get_module_list(unit_descr, "ModulesDescriptors")
+            is_small = edits["is_small"] if "is_small" in edits else False
+            
+            for module in module_list:
+                if isinstance(module.v, ndf.model.Object):
+                    module_type = module.v.type
+                    
+                    if module_type == "TSupplyModuleDescriptor":
+                        supply_descr = module.v.by_member("SupplyDescriptor")
+                        supply_capacity = module.v.by_member("SupplyCapacity")
+                        old_capacity = supply_capacity.v
+                        
+                        if is_helo and is_small:
+                            supply_descr.v = "$/GFX/Weapon/SmallHeloSupply"
+                            logger.info(f"Edited supply type for {unit} to SmallHeloSupply")
+                            
+                            if old_capacity == edits["SupplyCapacity"]:
+                                continue
+                            
+                            supply_capacity.v = edits["SupplyCapacity"]
+                            logger.info(f"Edited supply capacity for {unit} from "
+                                      f"{old_capacity} to {edits['SupplyCapacity']}")
+                        
+                        elif is_helo:
+                            supply_descr.v = "$/GFX/Weapon/HeloSupply"
+                            logger.info(f"Edited supply type for {unit} to HeloSupply")
+                            
+                            if old_capacity == edits["SupplyCapacity"]:
+                                continue
+                            
+                            supply_capacity.v = edits["SupplyCapacity"]
+                            logger.info(f"Edited supply capacity for {unit} from "
+                                      f"{old_capacity} to {edits['SupplyCapacity']}")
+                            
+                        else:
+                            if old_capacity == edits["SupplyCapacity"]:
+                                continue
+                            
+                            supply_capacity.v = edits["SupplyCapacity"]
+                            logger.info(f"Edited supply capacity for {unit} from "
+                                      f"{old_capacity} to {edits['SupplyCapacity']}")
+
+def _handle_supply(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
+    if "SupplyCapacity" in edits:
+        descr_row.v.by_m("SupplyCapacity").v = str(edits["SupplyCapacity"])

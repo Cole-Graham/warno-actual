@@ -32,7 +32,7 @@ directories:
 
 # File configurations  
 files:
-  # Files that need different handling between UI and gameplay mods
+  # Files that are different between UI and gameplay mods
   variants:
     # Format:
     # "file_path": {
@@ -41,12 +41,10 @@ files:
     # }
     #
     # When use_ui_as_base=true:
-    # - UI mod applies ui functions
-    # - Gameplay mod applies gameplay functions to UI mod files
+    # - Gameplay mod uses UI mod files as base, inheriting the UI mod.
     #
     # When use_ui_as_base=false:
-    # - UI mod applies ui functions to base game
-    # - Gameplay mod applies all functions to base game
+    # - Gameplay mod has UI mod written from scratch (slower)
     #
     # Example:
     "GameData/Generated/Gameplay/Gfx/BuildingDescriptors.ndf": {
@@ -56,6 +54,32 @@ files:
         "gameplay": [
             "edit_fob_attributes",  # Gameplay mod gets both
             "edit_fob_minimap"
+        ]
+    }
+    "GameData/UserInterface/Use/InGame/UISpecificUnitInfoPanelView.ndf": {
+        "gameplay": [
+            "edit_unit_info_panel"
+        ]
+    }
+    "GameData/Generated/UserInterface/UnitSpecialties.ndf": {
+        "gameplay": [
+            "edit_specialties"
+        ]
+    }
+    "GameData/Generated/UserInterface/Textures/SpecialityIconTextures.ndf": {
+        "gameplay": [
+            "edit_specialty_icons"
+        ]
+    }
+
+  # Files that are identical/shared between UI and gameplay mods
+  shared:
+    "GameData/Generated/UserInterface/Textures/MinimapIcons.ndf": {
+        "gameplay": [
+            "edit_minimap_icons"
+        ]
+        "ui": [
+            "edit_minimap_icons"
         ]
     }
 
@@ -110,15 +134,6 @@ files:
     - "GameData/UserInterface/Use/ShowRoom/Views/UISpecificShowRoomArmoryComponent.ndf"
     - "GameData/UserInterface/Use/ShowRoom/Views/UISpecificShowRoomDeckCreatorScreenComponent.ndf"
     - "GameData/UserInterface/Use/ShowRoom/Views/UISpecificShowRoomGroupsDeckCreatorScreenView.ndf"
-    
-    # Generated UI files
-    - "GameData/Generated/UserInterface/Textures/ButtonTexturesUnites.ndf"
-    - "GameData/Generated/UserInterface/Textures/WeaponTextures.ndf"
-    - "GameData/Generated/UserInterface/Textures/SpecialityIconTextures.ndf"
-    - "GameData/Generated/UserInterface/Textures/DivisionTextures.ndf"
-    - "GameData/Generated/UserInterface/Textures/MinimapIcons.ndf"
-    - "GameData/Generated/UserInterface/WeaponsMinMax.ndf"
-    - "GameData/Generated/UserInterface/UnitSpecialties.ndf"
 
   # Pure gameplay files
   gameplay_only:
@@ -149,11 +164,10 @@ files:
     - "GameData/Generated/Gameplay/Gfx/DamageResistanceFamilyList.ndf"
     - "GameData/Generated/Gameplay/Gfx/DamageResistanceFamilyListImpl.ndf"
     
-    # Effects and capabilities
+    # Effects and veterancy files
     - "GameData/Generated/Gameplay/Gfx/CapaciteList.ndf"
     - "GameData/Generated/Gameplay/Gfx/EffectsPacksList.ndf"
     - "GameData/Generated/Gameplay/Gfx/EffetsSurUnite.ndf"
-    - "GameData/Generated/Gameplay/Gfx/BuildingDescriptors.ndf"
     - "GameData/Generated/Gameplay/Gfx/ExperienceLevels.ndf"
 
     # Depiction files
@@ -167,4 +181,15 @@ files:
     - "GameData/Generated/Gameplay/Gfx/Depictions/DepictionVehicles.ndf"
     - "GameData/Generated/Gameplay/Gfx/Depictions/GeneratedDepictionVehiclesShowRoom.ndf"
     - "GameData/Generated/Gameplay/Gfx/Infanterie/GeneratedDepictionInfantry.ndf"
+    
+    # UI
+    # Generated UI files
+    - "GameData/Generated/UserInterface/Textures/ButtonTexturesUnites.ndf"
+    - "GameData/Generated/UserInterface/Textures/WeaponTextures.ndf"
+    - "GameData/Generated/UserInterface/Textures/SpecialityIconTextures.ndf"
+    - "GameData/Generated/UserInterface/Textures/DivisionTextures.ndf"
+    - "GameData/Generated/UserInterface/Textures/MinimapIcons.ndf"
+    - "GameData/Generated/UserInterface/WeaponsMinMax.ndf"
+    - "GameData/Generated/UserInterface/UnitSpecialties.ndf"
+    - "GameData/UserInterface/Use/InGame/UseInGameTextures.ndf"
 

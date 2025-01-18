@@ -20,37 +20,35 @@ def get_file_editor(ndf_path: str, config: Dict) -> Callable:
     """
     logger.info(f"Loading data for {ndf_path}")
     
-    # Check if file is in variants
+    # Check variants first
     variants = config.get("variants", {})
-    try:
-        validate_variant_config(variants)
-    except ValueError as e:
-        logger.error(f"Invalid variant configuration: {e}")
-        return None
-    
     if ndf_path in variants:
         variant_funcs = variants[ndf_path].get("gameplay", [])
-        logger.debug(f"Found variant functions for {ndf_path}: {variant_funcs}")
-        
         def apply_variant_editors(source_path):
             with log_time(logger, f"Processing variants for {ndf_path}"):
                 for func_name in variant_funcs:
-                    logger.debug(f"Applying variant function: {func_name}")
                     VARIANT_FUNCTIONS[func_name](source_path)
-        
         return apply_variant_editors
-    
-    # Get editors from gameplay module
+
+    # Check shared files next
+    shared = config.get("shared", {})
+    if ndf_path in shared:
+        shared_funcs = shared[ndf_path].get("gameplay", [])
+        def apply_shared_editors(source_path):
+            with log_time(logger, f"Processing shared file {ndf_path}"):
+                for func_name in shared_funcs:
+                    VARIANT_FUNCTIONS[func_name](source_path)
+        return apply_shared_editors
+        
+    # Finally check gameplay editors
     from src.gameplay import get_editors
     editors = get_editors(config['game_db'])
-    
     if ndf_path in editors:
         def apply_editors(source_path):
             with log_time(logger, f"Processing {ndf_path}"):
-                logger.debug(f"Starting edits for {ndf_path}")
                 for i, editor in enumerate(editors[ndf_path], 1):
                     with log_time(logger, f"Running editor {i}"):
                         editor(source_path)
-                logger.debug(f"Completed edits for {ndf_path}")
         return apply_editors
+
     return None 

@@ -1,13 +1,14 @@
 """Gameplay FOB building modifications."""
 
 from src import ndf
-from src.common.buildings.fob import edit_fob_minimap
+
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
 
 def edit_fob_attributes(source_path) -> None:
-    """Edit FOB supply, health and command point cost."""
+    """GameData/Generated/Gameplay/Gfx/BuildingDescriptors.ndf
+    Edit FOB supply, health and command point cost."""
     logger.info("Editing FOB attributes")
     
     try:

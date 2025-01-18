@@ -4,7 +4,7 @@ from typing import Any, Dict
 
 from src.utils.logging_utils import setup_logger
 
-logger = setup_logger(__name__)
+# logger = setup_logger(__name__)
 
 def edit_auto_cover(source_path: Any, game_db: Dict[str, Any]) -> None:
     """Edit auto cover ranges in UniteDescriptor.ndf.
@@ -13,7 +13,7 @@ def edit_auto_cover(source_path: Any, game_db: Dict[str, Any]) -> None:
         source_path: The NDF file to edit
         game_db: Game database containing unit data
     """
-    logger.info("Modifying auto cover ranges")
+    # logger.info("Modifying auto cover ranges")
     unit_db = game_db.get("units", {})
     
     for unit_descr in source_path:
@@ -41,5 +41,5 @@ def edit_auto_cover(source_path: Any, game_db: Dict[str, Any]) -> None:
                     
                 if module.v.type == "TAutoCoverModuleDescriptor":
                     module.v.by_m("AutoCoverRangeGRU").v = "70"
-                    logger.info(f"Set auto cover range to 70m for {unit_name}")
+                    # logger.info(f"Set auto cover range to 70m for {unit_name}")
                     break 
