@@ -5,6 +5,7 @@ __pycache__/
 config/config.YAML
 deprecated/
 logs/*
+output.txt
 src/data/database/*.json
 temp_context.txt
 

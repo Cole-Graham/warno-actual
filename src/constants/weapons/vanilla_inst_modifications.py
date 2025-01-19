@@ -1,6 +1,5 @@
 """Vanilla weapon renames and removals."""
 
-
 AMMUNITION_RENAMES = [
     ("Sniper_M14", "Sniper_M21"),
     ("RocketInf_M72_LAW_66mm", "RocketInf_M72A3_LAW_66mm"),
@@ -31,3 +30,6 @@ AMMUNITION_REMOVALS = []
 AMMUNITION_MISSILES_REMOVALS = [
     "ATGM_9k111M_Faktoriya"
 ]
+
+MERGED_RENAMES = list(set(AMMUNITION_RENAMES) | set(AMMUNITION_MISSILES_RENAMES))
+

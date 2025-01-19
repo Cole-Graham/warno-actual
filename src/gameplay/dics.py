@@ -41,13 +41,3 @@ def write_missile_dictionary_entries(ingame_names: List[Tuple[str, str, str]],
         
     if entries:
         write_dictionary_entries(entries, dictionary_type="units")
-
-def write_dictionaries() -> None:
-    """Write all dictionary entries."""
-    logger.info("Writing dictionary entries")
-    
-    # Write UI-related dictionary entries
-    write_trait_texts()
-    write_info_panel_hints()
-    
-    logger.info("Finished writing dictionary entries") 

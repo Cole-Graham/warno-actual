@@ -31,7 +31,7 @@ def write_info_panel_hints() -> None:
             if "extended" in attr_data:
                 entries.append((f"{base_token}E", attr_data["extended"]))
     
-    write_dictionary_entries(entries, config, dictionary_type="ingame")
+    write_dictionary_entries(entries, dictionary_type="ingame")
 
 
 def edit_unit_info_panel(source_path) -> None:
@@ -51,3 +51,5 @@ def edit_unit_info_panel(source_path) -> None:
                     new_token = f"{data['AttributeStrength']['token']}B"
                     strength_elements_obj.by_m("HintToken").v = f'"{new_token}"'
                     logger.info(f"Updated Strength hint token to {new_token}") 
+                    
+    write_info_panel_hints()

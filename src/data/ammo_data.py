@@ -88,13 +88,20 @@ def build_ammo_data(mod_src_path: Path) -> Dict[str, Any]:
         renames = build_renames(ammo_file)
         renames.update(build_renames(ammo_missile_file))
         
+        # Combine salvo weapons and renames
+        renames_old_new = {**salvo_weapons, **renames}
+        
+        # Create reversed mapping
+        renames_new_old = {v: k for k, v in renames_old_new.items()}
+        
         return {
             "mg_categories": build_mg_categories(ammo_file),
             "mortar_categories": build_mortar_categories(ammo_file),
             "unit_categories": build_unit_categories(unit_file),
             "full_ball_weapons": build_full_ball_weapons(ammo_file),
             "sniper_weapons": build_sniper_weapons(ammo_file),
-            "renames": {**salvo_weapons, **renames}
+            "renames_old_new": renames_old_new,
+            "renames_new_old": renames_new_old
         }
         
     except Exception as e:
@@ -105,7 +112,8 @@ def build_ammo_data(mod_src_path: Path) -> Dict[str, Any]:
             "unit_categories": {},
             "full_ball_weapons": [],
             "sniper_weapons": [],
-            "renames": {}
+            "renames_old_new": {},
+            "renames_new_old": {}
         }
 
 

@@ -5,6 +5,7 @@ from typing import Any, Dict
 from src import ndf
 from src.constants.new_units import NEW_UNITS
 from src.utils.logging_utils import setup_logger
+from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
 
@@ -295,3 +296,181 @@ def create_alternatives_depictions(source_path: Any) -> None:
         )
         source_path.add(entry)
         logger.info(f"Added alternatives depiction for {unit_name}") 
+
+def create_veh_human_depictions(source_path: Any) -> None:
+    """Create human depiction entries for vehicles in GeneratedDepictionHumans.ndf."""
+    logger.info("Creating human depiction entries for vehicles")
+    
+    for donor, edits in NEW_UNITS.items():
+        if not (edits.get("is_ground_vehicle", False) and edits.get("is_infantry", False)):
+            continue
+            
+        unit_name = edits["NewName"]
+        
+        # Find donor mesh names
+        mesh_names = None
+        for row in source_path:
+            if row.namespace != f"HumanSubDepictions_{donor}":
+                continue
+                
+            left_servant = row.v[0]
+            right_servant = row.v[1]
+            
+            left_mesh = left_servant.v.by_m("MeshDescriptorHigh").v.split(
+                "$/GFX/DepictionResources/MeshDescriptor_")[-1]
+            right_mesh = right_servant.v.by_m("MeshDescriptorHigh").v.split(
+                "$/GFX/DepictionResources/MeshDescriptor_")[-1]
+                
+            mesh_names = (left_mesh, right_mesh)
+            break
+            
+        if not mesh_names:
+            logger.warning(f"Could not find mesh names for {donor}")
+            continue
+            
+        left_mesh, right_mesh = mesh_names
+        
+        # Create human depiction entries
+        human_depiction = (
+            f'HumanSubDepictions_{unit_name} is\n'
+            f'[\n'
+            f'    SubDepiction_ATGMServantLeft\n'
+            f'    (\n'
+            f'        MeshDescriptorHigh = $/GFX/DepictionResources/MeshDescriptor_{left_mesh}\n'
+            f'        MeshDescriptorLow = $/GFX/DepictionResources/MeshDescriptor_{left_mesh}_LOW\n'
+            f'    ),\n'
+            f'    SubDepiction_ATGMServantRight\n'
+            f'    (\n'
+            f'        MeshDescriptorHigh = $/GFX/DepictionResources/MeshDescriptor_{right_mesh}\n'
+            f'        MeshDescriptorLow = $/GFX/DepictionResources/MeshDescriptor_{right_mesh}_LOW\n'
+            f'    )\n'
+            f']\n'
+        )
+        
+        showroom_depiction = (
+            f'HumanSubDepictionsShowroom_{unit_name} is\n'
+            f'[\n'
+            f'    ShowroomSubDepiction_ATGMServantLeft\n'
+            f'    (\n'
+            f'        MeshDescriptor = $/GFX/DepictionResources/MeshDescriptor_{left_mesh}\n'
+            f'    ),\n'
+            f'    ShowroomSubDepiction_ATGMServantRight\n'
+            f'    (\n'
+            f'        MeshDescriptor = $/GFX/DepictionResources/MeshDescriptor_{right_mesh}\n'
+            f'    )\n'
+            f']\n'
+        )
+        
+        # Find insertion point and add entries
+        for row in source_path:
+            if not is_obj_type(row.v, "TTransportedInfantryCatalogEntries"):
+                continue
+                
+            source_path.insert(row.index, showroom_depiction)
+            source_path.insert(row.index, human_depiction)
+            logger.info(f"Added human depictions for {unit_name}")
+            
+            # Add catalog entry
+            catalog_entry = (
+                f'TTransportedInfantryEntry\n'
+                f'(\n'
+                f'    Count = {edits["alternatives_count"]}\n'
+                f'    Identifier = "{unit_name}"\n'
+                f'    Meshes =\n'
+                f'    [\n'
+                f'        $/GFX/DepictionResources/MeshDescriptor_{left_mesh},\n'
+                f'        $/GFX/DepictionResources/MeshDescriptor_{right_mesh}\n'
+                f'    ]\n'
+                f'    UniqueCount = {edits["alternatives_count"]}\n'
+                f')\n'
+            )
+            
+            row.v.by_m("Entries").v.add(catalog_entry)
+            logger.info(f"Added catalog entry for {unit_name}")
+            break
+                
+def create_veh_depictions(source_path: Any) -> None:
+    """Create vehicle depiction entries in GeneratedDepictionVehicles.ndf."""
+    logger.info("Creating vehicle depiction entries")
+    
+    def get_base_namespace(namespace: str, prefix: str) -> str:
+        """Extract the base namespace after the given prefix."""
+        return namespace.split(f"{prefix}_")[-1].split("_")[0]
+
+    def create_new_object(obj_row: Any, unit_name: str, is_weapon: bool, weapon_num: int = 0) -> Any:
+        """Create a new depiction object with updated namespace."""
+        new_obj = obj_row.copy()
+        if is_weapon:
+            new_obj.namespace = f"DepictionOperator_{unit_name}_Weapon{weapon_num}"
+        else:
+            new_obj.namespace = f"Gfx_{unit_name}_Autogen"
+        return new_obj
+
+    for donor, edits in NEW_UNITS.items():
+        if not edits.get("is_ground_vehicle", False):
+            continue
+            
+        unit_name = edits["NewName"]
+        weapon_count = 0
+        new_objects = []
+
+        for obj_row in source_path:
+            namespace = obj_row.namespace
+            
+            if "DepictionOperator_" in namespace:
+                if donor == get_base_namespace(namespace, "DepictionOperator"):
+                    weapon_count += 1
+                    new_objects.append(create_new_object(obj_row, unit_name, True, weapon_count))
+            
+            elif "Gfx_" in namespace:
+                if donor == get_base_namespace(namespace, "Gfx"):
+                    new_objects.append(create_new_object(obj_row, unit_name, False))
+
+        for obj in new_objects:
+            logger.info(f"Adding new object to GeneratedDepictionVehicles.ndf: {obj.namespace}")
+            source_path.add(obj)         
+            
+def create_aerial_ghost_depictions(source_path: Any) -> None:
+    """Create aerial ghost depiction entries in GeneratedDepictionAerialGhosts.ndf."""
+    logger.info("Creating aerial ghost depiction entries")
+    
+    for donor, edits in NEW_UNITS.items():
+        if edits.get("is_aerial", False):
+            unit_name = edits["NewName"]
+            new_object_entry = (
+                f'GhostDepiction_{unit_name} is GhostAerialDepictionTemplate\n'
+                f'(\n'
+                f'    Alternatives = Alternatives_{unit_name}\n'
+                f'    Selector = SpecificAirplaneDepictionSelector\n'
+                f')'
+            )
+            source_path.add(new_object_entry)
+            logger.info(f"Added aerial ghost depiction for {unit_name}")
+            
+def create_veh_depiction_selectors(source_path: Any) -> None:
+    """Create vehicle depiction selector entries in GeneratedDepictionSelectors.ndf."""
+    logger.info("Creating vehicle depiction selector entries")
+    
+    for donor, edits in NEW_UNITS.items():
+        if edits.get("is_ground_vehicle", False):
+            unit_name = edits["NewName"]
+            new_entry = f"Selector_{unit_name} is SpecificVehicleDepictionSelector"
+            source_path.add(new_entry)
+            logger.info(f"Added vehicle depiction selector for {unit_name}")
+
+def create_veh_showroom_depictions(source_path: Any) -> None:
+    """Create vehicle showroom depiction entries in GeneratedDepictionVehiclesShowroom.ndf."""
+    logger.info("Creating vehicle showroom depiction entries")
+    
+    for donor, edits in NEW_UNITS.items():
+        if edits.get("is_ground_vehicle", False):
+            unit_name = edits["NewName"]
+            new_depiction_obj = source_path.by_namespace(f"Gfx_{donor}_Showroom").copy()
+            new_depiction_obj.namespace = f"Gfx_{unit_name}_Showroom"
+            new_depiction_obj.v.by_member("Selector").v = f"Selector_{unit_name}"
+            
+            if edits.get("is_infantry", False):
+                new_depiction_obj.v.by_member("SubDepictions").v = f"HumanSubDepictionsShowroom_{unit_name}"
+                
+            source_path.add(new_depiction_obj)
+            logger.info(f"Added vehicle showroom depiction for {unit_name}")

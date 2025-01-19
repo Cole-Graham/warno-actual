@@ -1,5 +1,5 @@
 """Functions for gathering weapon depiction data."""
-import json
+import re
 from copy import deepcopy
 from pathlib import Path
 from typing import Any, Dict
@@ -35,12 +35,6 @@ def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
     
     # Store complete list of fire effects
     all_fire_effects = {}
-    # Store weapon to mesh mappings 
-    all_weapon_meshes = {}
-    # Store all weapon type to mesh alternative mappings
-    all_animation_tags = {}
-    # Store mapping of weapons to their animation tags
-    animation_weapon_map = {}
 
     try:
         mod = ndf.Mod(mod_src_path, "None")
@@ -65,9 +59,8 @@ def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
 
         for entry in infantry_parse_source:
             try:
-                # Check if we've reached InfantrySelectorTactic_00_01
-                if entry.namespace == "InfantrySelectorTactic_00_01":
-                    break
+                if not hasattr(entry, 'namespace'):
+                    continue
 
                 # Get unit name from Gfx_ entries
                 if entry.namespace.startswith("Gfx_"):
@@ -121,15 +114,6 @@ def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
                                 }
                             all_fire_effects[weapon_name] = fire_tag
                             logger.debug(f"Added weapon subdepiction: {weapon_name} -> {fire_tag}")
-                            
-                            # Map weapon to mesh based on weapon_shoot_data index
-                            mesh_index = int(weapon_shoot_data.split("_")[-1])
-                            mesh_key = f"MeshAlternative_{mesh_index}"
-                            if mesh_key in depiction_data[current_unit]["weapon_alternatives"]["alts"]:
-                                mesh = depiction_data[current_unit]["weapon_alternatives"]["alts"][mesh_key]
-                                all_weapon_meshes[weapon_name] = mesh.split("Modele_")[-1]
-                                logger.debug(f"Mapped weapon '{weapon_name}' to mesh '{all_weapon_meshes[weapon_name]}'")
-                            
                     except Exception as e:
                         logger.error(f"Error processing weapon subdepiction for {current_unit}: {str(e)}")
 
@@ -162,34 +146,15 @@ def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
                         depiction_data[current_unit]["tactic_soldier"]["selector_tactic"] = selector_tactic
                         operators = entry.v.by_m("Operators").v
                         for op in operators:
-                            if op.v.type != "DepictionOperator_SkeletalAnimation2_Default":
-                                logger.debug(f"Skipping non-animation operator: {op.namespace}")
+                            if op.namespace != "DepictionOperator_SkeletalAnimation2_Default":
                                 continue
-                            if op.v.by_m("ConditionalTags", False) != None:
-                                conditional_tags = op.v.by_m("ConditionalTags").v
-                                for tag_tuple in conditional_tags:
-                                    if isinstance(tag_tuple.v, tuple):
-                                        weapon_type = strip_quotes(tag_tuple.v[0])
-                                        mesh_alt = strip_quotes(tag_tuple.v[1])
-                                        depiction_data[current_unit]["tactic_soldier"]["animation_tags"][weapon_type] = mesh_alt
-                                        # Add to global animation tags dictionary
-                                        if weapon_type not in all_animation_tags:
-                                            all_animation_tags[weapon_type] = set()
-                                        all_animation_tags[weapon_type].add(mesh_alt)
-                                        
-                                        # Map weapons to animation tags based on mesh alternative number
-                                        mesh_alt_num = mesh_alt.split("_")[-1]
-                                        for weapon_name, weapon_data in depiction_data[current_unit]["weapon_subdepictions"].items():
-                                            weapon_mesh_num = weapon_data["weapon_shoot_data"].split("_")[-1]
-                                            if weapon_mesh_num == mesh_alt_num:
-                                                animation_weapon_map[weapon_name] = weapon_type
-                                                logger.debug(f"Mapped weapon '{weapon_name}' to animation type '{weapon_type}'")
-                                        
-                                        logger.debug(f"Added animation tag: {weapon_type} -> {mesh_alt}")
-                                    else:
-                                        logger.warning(f"Unexpected format for conditional tag: {tag_tuple}")
-                            else:
-                                logger.debug(f"No conditional tags found for operator: {op.namespace}")
+                            conditional_tags = op.v.by_m("ConditionalTags").v
+                            for tag_tuple in conditional_tags:
+                                # Each tag_tuple is ('weapon_type', 'mesh_alternative')
+                                weapon_type = strip_quotes(tag_tuple.v[0].v)
+                                mesh_alt = strip_quotes(tag_tuple.v[1].v)
+                                depiction_data[current_unit]["tactic_soldier"]["animation_tags"][weapon_type] = mesh_alt
+                                logger.debug(f"Added animation tag: {weapon_type} -> {mesh_alt}")
                     except Exception as e:
                         logger.error(f"Error processing animation tag for {current_unit}: {str(e)}")
 
@@ -197,20 +162,12 @@ def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
                 logger.error(f"Error processing entry: {str(e)}")
                 continue
 
-        # Convert sets to lists for JSON serialization
-        all_animation_tags = {k: list(v) for k, v in all_animation_tags.items()}
-
-        # Add complete lists to output
+        # Add complete fire effects list to output
         depiction_data["all_fire_effects"] = all_fire_effects
-        depiction_data["all_weapon_meshes"] = all_weapon_meshes
-        depiction_data["all_animation_tags"] = all_animation_tags
-        depiction_data["animation_weapon_map"] = animation_weapon_map
 
-        logger.info(f"Gathered depiction data for {len(depiction_data)-4} units")  # -4 for all_fire_effects, all_weapon_meshes, all_animation_tags, animation_weapon_map
+        logger.info(f"Gathered depiction data for {len(depiction_data)-1} units")  # -1 for all_fire_effects
         logger.info(f"Gathered {len(all_fire_effects)} total fire effects")
-        logger.info(f"Gathered {len(all_animation_tags)} unique weapon types")
-        logger.debug(f"Final depiction data: {json.dumps(depiction_data, indent=4)}")
-        
+        logger.debug(f"Final depiction data: {depiction_data}")
         return depiction_data
 
     except Exception as e:

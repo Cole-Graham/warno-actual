@@ -21,8 +21,8 @@ def apply_vanilla_renames(source: Any, renames: List[Tuple[str, str]], ammo_db: 
         old_name = ammo_descr.namespace.split("Ammo_", 1)[1]
         
         # Check if this is a salvo weapon that needs renaming
-        if old_name in ammo_db["renames"]:
-            new_name = ammo_db["renames"][old_name]
+        if old_name in ammo_db["renames_old_new"]:
+            new_name = ammo_db["renames_old_new"][old_name]
             logger.info(f"Renaming salvo weapon {old_name} to {new_name}")
             ammo_descr.namespace = f"Ammo_{new_name}"
             continue
@@ -48,8 +48,8 @@ def vanilla_renames_weapondescriptor(source: Any, renames: List[Tuple[str, str]]
         
         for descr_namespace, weapon_descr_data in weapon_db.items():
             for weapon_name, location_data in weapon_descr_data["weapon_locations"].items():
-                if weapon_name in ammo_db["renames"]:
-                    new_name = ammo_db["renames"][weapon_name]
+                if weapon_name in ammo_db["renames_old_new"]:
+                    new_name = ammo_db["renames_old_new"][weapon_name]
                     turret_index = location_data["turret_index"]
             
                     weapon_descr = source.by_namespace(descr_namespace)

@@ -52,7 +52,8 @@ def _update_card_count(pack_list_map: Any, unit: str, div_name: str, edits: Dict
             break
 
 def edit_division_units(source: Any) -> None:
-    """Edit unit availability in divisions."""
+    """GameData/Generated/Gameplay/Decks/Divisions.ndf
+    Edit Divisions.ndf for unit edits."""
     logger.info("Editing unit availability in divisions")
     
     unit_edits = load_unit_edits()

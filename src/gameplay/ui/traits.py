@@ -32,7 +32,7 @@ def write_trait_texts() -> None:
         if extended_token:
             entries.append((extended_token, extended_text))
     
-    write_dictionary_entries(entries, config, dictionary_type="units")
+    write_dictionary_entries(entries, dictionary_type="units")
 
 
 def edit_specialty_icons(source) -> None:
@@ -105,4 +105,6 @@ def edit_specialties(source) -> None:
         if data["extended"]["token"]:
             trait_map.by_k(f'"{trait}"').v.by_m("SpecialtyHintExtendedToken").v = \
                 f'"{data["extended"]["token"]}"'
-            logger.info(f"Updated extended token for {trait}") 
+            logger.info(f"Updated extended token for {trait}")
+            
+    write_trait_texts()

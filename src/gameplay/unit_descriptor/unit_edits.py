@@ -55,6 +55,7 @@ def modify_module(
         "TVisibilityModuleDescriptor": _handle_visibility,
         "TBaseDamageModuleDescriptor": _handle_base_damage,
         "TDamageModuleDescriptor": _handle_damage,
+        "TWeaponAssignmentModuleDescriptor": _handle_weapon_assignment,
         "TSupplyModuleDescriptor": _handle_supply,
         "TScannerConfigurationDescriptor": _handle_scanner,
         "TProductionModuleDescriptor": _handle_production,
@@ -115,6 +116,10 @@ def _handle_damage(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
     
     if "ECM" in edits:
         descr_row.v.by_m("HitRollECM").v = str(edits["ECM"])
+
+def _handle_weapon_assignment(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
+    if "WeaponAssignment" in edits:
+        descr_row.v.by_m("InitialSoldiersToTurretIndexMap").v = "MAP" + str(edits["WeaponAssignment"])
 
 def _handle_scanner(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
     if "optics" not in edits:

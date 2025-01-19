@@ -17,16 +17,22 @@ from typing import Any, Callable, Dict, List
 from src.utils.logging_utils import setup_logger
 
 from .buildings import edit_fob_attributes
-from .depictions.infantry import edit_infantry_depictions
-from .depictions.new_depictions import (
+
+from .depictions import (
     create_alternatives_depictions,
     create_button_textures,
     create_cadavre_depictions,
     create_ghost_depictions,
     create_infantry_depictions,
     create_showroom_depictions,
+    create_veh_human_depictions,
+    create_veh_depictions,
+    create_veh_depiction_selectors,
+    create_veh_showroom_depictions,
+    create_aerial_ghost_depictions,
+    edit_infantry_depictions,
+    edit_showroom_units,
 )
-from .depictions.showroom import edit_showroom_units
 from .divisions import (
     add_division_rules,
     add_to_divisions,
@@ -103,10 +109,14 @@ def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:
             lambda source_path: create_deck_pack_descriptors(source_path)
         ],
         "GameData/Generated/Gameplay/Decks/Divisions.ndf": [
-            lambda source_path: add_to_divisions(source_path)
+            lambda source_path: add_to_divisions(source_path),
+            lambda source_path: edit_division_units(source_path)
         ],
         "GameData/Generated/Gameplay/Decks/DivisionRules.ndf": [
             lambda source_path: add_division_rules(source_path)
+        ],
+        "GameData/Generated/Gameplay/Decks/DivisionCostMatrix.ndf": [
+            lambda source_path: edit_division_matrices(source_path)
         ],
 
         # Game constants
@@ -126,6 +136,9 @@ def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:
             lambda source_path: edit_auto_cover(source_path, game_db),
             lambda source_path: edit_shock_units(source_path, game_db),
             lambda source_path: create_new_units(source_path, game_db)
+        ],
+        "GameData/Generated/Gameplay/Gfx/BuildingDescriptors.ndf": [
+            lambda source_path: edit_fob_attributes(source_path),
         ],
         "GameData/Generated/Gameplay/Gfx/WeaponDescriptor.ndf": [
             lambda source_path: edit_weapon_descriptor(source_path, game_db),
@@ -190,15 +203,33 @@ def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:
         "GameData/Generated/Gameplay/GFX/Depictions/DepictionAlternatives.ndf": [
             lambda source_path: create_alternatives_depictions(source_path)
         ],
+        "GameData/Generated/Gameplay/GFX/Depictions/GeneratedDepictionSelectors.ndf": [
+            lambda source_path: create_veh_depiction_selectors(source_path)
+        ],
         "GameData/Generated/Gameplay/GFX/Depictions/GeneratedDepictionGhosts.ndf": [
             lambda source_path: create_ghost_depictions(source_path)
         ],
+        "GameData/Generated/Gameplay/Gfx/Depictions/GeneratedDepictionAerialGhosts.ndf": [
+            lambda source_path: create_aerial_ghost_depictions(source_path)
+        ],
+        "GameData/Generated/Gameplay/Gfx/Depictions/GeneratedDepictionHumans.ndf": [
+            lambda source_path: create_veh_human_depictions(source_path)
+        ],
+        "GameData/Generated/Gameplay/Gfx/Depictions/DepictionVehicles.ndf": [
+            lambda source_path: create_veh_depictions(source_path)
+        ],
+        "GameData/Generated/Gameplay/Gfx/Depictions/GeneratedDepictionVehiclesShowRoom.ndf": [
+            lambda source_path: create_veh_showroom_depictions(source_path)
+        ],
         "GameData/Generated/Gameplay/Gfx/Infanterie/GeneratedDepictionInfantry.ndf": [
-            lambda source_path: edit_infantry_depictions(source_path, game_db['depiction_data']),
+            lambda source_path: edit_infantry_depictions(source_path, game_db['ammunition'], game_db['depiction_data']),
             lambda source_path: create_infantry_depictions(source_path)
         ],
         
         # UI
+        "GameData/Generated/UserInterface/Textures/ButtonTexturesUnites.ndf": [
+            lambda source_path: create_button_textures(source_path)
+        ],
         "GameData/UserInterface/Use/InGame/UISpecificUnitInfoPanelView.ndf": [
             lambda source_path: edit_unit_info_panel(source_path),
         ],
@@ -210,9 +241,7 @@ def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:
         ],
         
         # Other game files
-        "GameData/Generated/Gameplay/Gfx/BuildingDescriptors.ndf": [
-            lambda source_path: edit_fob_attributes(source_path),
-        ],
+        
         
         "GameData/Generated/UserInterface/Textures/SpecialityIconTextures.ndf": [
             lambda source_path: edit_specialty_icons(source_path),
