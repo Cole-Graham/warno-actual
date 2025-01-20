@@ -21,11 +21,11 @@ The project uses specific variable naming for different types of paths and sourc
 ```
 warno-actual/
 ├── assets/               # Root directory for mod assets
+│   └── 2d/              # Game textures and UI elements
 ├── config/              # Configuration files
 │   ├── config.YAML
 │   ├── config.template.YAML
 │   └── config_loader.py
-├── deprecated/          # Legacy code
 ├── logs/               
 └── src/
     ├── common/         # Shared functionality
@@ -60,16 +60,32 @@ warno-actual/
     │   ├── unit_descriptor/
     │   ├── veterancy/
     │   └── weapons/
-    ├── ui/             # UI modifications
+    ├── shared/         # Shared components between gameplay and ui
     │   └── buildings/
+    ├── ui/             # UI modifications
+    │   ├── common/
+    │   ├── ingame/
+    │   ├── style/
+    │   └── textures/
     └── utils/          # Utility functions
-        ├── asset_utils.py
-        ├── config_utils.py
-        ├── dictionary_utils.py
-        ├── logging_utils.py
-        ├── ndf_utils.py
-        └── variant_utils.py
+        └── *.py        # Utility modules
 ```
+
+## Naming Conventions
+
+The project uses specific variable naming for different types of paths and sources:
+
+1. Mod Directory Paths
+   - `mod_src_path` - Source mod directory (e.g. "C:/Program Files (x86)/Steam/steamapps/common/WARNO/Mods/sourcemod")
+   - `mod_dst_path` - Destination mod directory
+
+2. NDF File Paths
+   - `ndf_path` - Relative path to NDF file (e.g. "GameData/Generated/Gameplay/Gfx/BuildingDescriptors.ndf")
+   - `ndf_file` - Just the filename (e.g. "BuildingDescriptors.ndf")
+
+3. NDF Processing
+   - `parse_source` - Parsed NDF data from mod.parse_src()
+   - `source_path` - NDF file being edited with mod.edit()
 
 ## Core Files
 - `run_patcher.py` - Main entry point

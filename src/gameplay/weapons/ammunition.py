@@ -27,85 +27,144 @@ def _generate_guid():
 
 def edit_ammunition(source_path, game_db: Dict[str, Any]) -> None:
     """Edit Ammunition.ndf file."""
-    ammo_db = game_db["ammunition"]
+    try:
+        ammo_db = game_db["ammunition"]
+        
+        # Handle vanilla modifications first
+        try:
+            apply_vanilla_renames(source_path, AMMUNITION_RENAMES, ammo_db)
+            remove_vanilla_instances(source_path, AMMUNITION_REMOVALS)
+            logger.debug("Applied vanilla modifications")
+        except Exception as e:
+            logger.error(f"Failed applying vanilla modifications: {str(e)}")
+            raise
+        
+        # Apply global modifications
+        try:
+            add_corrected_shot_dispersion(source_path, game_db)
+            edit_mg_team_weapons(source_path, game_db)
+            apply_damage_families(source_path, game_db)
+            logger.debug("Applied global modifications")
+        except Exception as e:
+            logger.error(f"Failed applying global modifications: {str(e)}")
+            raise
+        
+        # Track dictionary entries
+        ingame_names = []
+        calibers = []
+        
+        # Process each weapon
+        for (weapon_name, category, donor, is_new), data in weapons.items():
+            if "Ammunition" not in data:
+                continue
+                
+            logger.info(f"Processing weapon {weapon_name} (is_new={is_new})")
+            try:
+                ammo_data = data["Ammunition"]
+                
+                # Get or create base descriptor
+                try:
+                    if is_new:
+                        base_descr = _create_new_descriptor(source_path, weapon_name, donor)
+                    else:
+                        base_descr = _get_existing_descriptor(source_path, weapon_name)
+                        
+                    if not base_descr:
+                        logger.error(f"Could not get descriptor for {weapon_name}")
+                        continue
+                        
+                    logger.debug(f"Got base descriptor for {weapon_name}")
+                except Exception as e:
+                    logger.error(f"Failed getting descriptor for {weapon_name}: {str(e)}")
+                    continue
+                
+                # Apply edits
+                try:
+                    _apply_weapon_edits(base_descr, ammo_data)
+                    logger.debug(f"Applied edits to {weapon_name}")
+                except Exception as e:
+                    logger.error(f"Failed applying edits to {weapon_name}: {str(e)}")
+                    continue
+                
+                # Handle new weapons and quantities
+                try:
+                    if is_new:
+                        # For new weapons, only add base descriptor if there are no quantities
+                        if "NbWeapons" not in data:
+                            source_path.add(base_descr)
+                            logger.debug(f"Added new base descriptor for {weapon_name}")
+                    
+                    if "NbWeapons" in data:
+                        base_cost = _get_base_supply_cost(weapon_name)
+                        if len(data["NbWeapons"]) > 1:
+                            _create_quantity_variants(source_path, base_descr, weapon_name, 
+                                                data["NbWeapons"], base_cost, is_new)
+                except Exception as e:
+                    logger.error(f"Failed handling quantities for {weapon_name}: {str(e)}")
+                    continue
+                
+                # Track dictionary entries
+                try:
+                    _track_dictionary_entries(weapon_name, ammo_data, ingame_names, calibers)
+                except Exception as e:
+                    logger.error(f"Failed tracking dictionary entries for {weapon_name}: {str(e)}")
+                    continue
+                
+                logger.info(f"Successfully processed weapon {weapon_name}")
+                
+            except Exception as e:
+                logger.error(f"Failed processing weapon {weapon_name}: {str(e)}")
+                continue
+        
+        # Write dictionary entries
+        if ingame_names or calibers:
+            try:
+                write_ammo_dictionary_entries(ingame_names, calibers)
+            except Exception as e:
+                logger.error(f"Failed writing dictionary entries: {str(e)}")
+                raise
+                
+    except Exception as e:
+        logger.error(f"Fatal error in edit_ammunition: {str(e)}")
+        raise
+
+def _create_quantity_variants(source_path, base_descr, weapon_name, quantities, base_cost, is_new):
+    """Create quantity variants from base descriptor."""
+    logger.info(f"Creating quantity variants for {weapon_name} (is_new={is_new})")
+    logger.info(f"Quantities: {quantities}")
     
-    # First handle vanilla modifications
-    apply_vanilla_renames(source_path, AMMUNITION_RENAMES, ammo_db)
-    remove_vanilla_instances(source_path, AMMUNITION_REMOVALS)
-    
-    # Add mortar corrected shot
-    add_corrected_shot_dispersion(source_path, game_db)
-    
-    # Modify MG team weapons
-    edit_mg_team_weapons(source_path, game_db)
-    
-    # Apply damage family modifications
-    apply_damage_families(source_path, game_db)
-    
-    # Track dictionary entries
-    ingame_names = []
-    calibers = []
-    
-    # Then apply weapon edits
-    for (weapon_name, category, donor, is_new), data in weapons.items():
-        if "Ammunition" not in data:
-            continue
+    for i, quantity in enumerate(quantities):
+        if quantity == 1 and i == len(quantities) - 1:
+            namespace = f"Ammo_{weapon_name}"
+        else:
+            namespace = f"Ammo_{weapon_name}_x{quantity}"
             
         try:
-            ammo_data = data["Ammunition"]
+            existing = source_path.by_n(namespace)
+            exists = True
+        except:
+            exists = False
+            existing = None
             
-            # Get donor descriptor for new weapons
-            if is_new:
-                donor_descr = source_path.by_n(f"Ammo_{donor}")
-                if not donor_descr:
-                    # Try without Ammo_ prefix
-                    donor_descr = source_path.by_n(donor)
-                    if not donor_descr:
-                        logger.error(f"Could not find donor {donor} for {weapon_name}")
-                        continue
-                base_descr = donor_descr.copy()
-                # Set namespace immediately for new weapons
-                base_descr.namespace = f"Ammo_{weapon_name}"
-            else:
-                base_descr = source_path.by_n(f"Ammo_{weapon_name}")
-                if not base_descr:
-                    # Try without Ammo_ prefix
-                    base_descr = source_path.by_n(weapon_name)
-                    if not base_descr:
-                        logger.error(f"Could not find weapon {weapon_name}")
-                        continue
+        logger.debug(f"Checking {namespace} - exists: {exists}")
+        
+        if is_new or not exists:
+            # Create new variant
+            variant = base_descr.copy()
+            variant.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
+            variant.v.by_m("HitRollRuleDescriptor").v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
+            variant.namespace = namespace
             
-            # Track dictionary entries
-            if "displayname" in ammo_data and "nametoken" in ammo_data:
-                ingame_names.append((
-                    weapon_name, 
-                    ammo_data["nametoken"],
-                    ammo_data["displayname"]
-                ))
-            
-            if "parent_membr" in ammo_data and "Caliber" in ammo_data["parent_membr"]:
-                caliber_data = ammo_data["parent_membr"]["Caliber"]
-                if caliber_data[0] != "existing":
-                    calibers.append((weapon_name, caliber_data[1], caliber_data[0]))
-            
-            # Apply edits to base descriptor
-            _apply_weapon_edits(base_descr, ammo_data)
-            
-            # Handle weapon quantities
-            if "NbWeapons" in data:
-                _handle_weapon_quantities(source_path, base_descr, weapon_name, data["NbWeapons"])
-            elif is_new:
-                # For new single weapons, just append to source
-                source_path.add(base_descr)
+            if base_cost is not None:
+                variant.v.by_m("SupplyCost").v = str(int(base_cost) * quantity)
                 
-            logger.info(f"Processed weapon {weapon_name}")
-            
-        except Exception as e:
-            logger.error(f"Failed to edit {weapon_name}: {str(e)}")
-            
-    # Write dictionary entries
-    if ingame_names or calibers:
-        write_ammo_dictionary_entries(ingame_names, calibers)
+            source_path.add(variant)
+            logger.info(f"Created new variant {namespace}")
+        else:
+            # Just update supply cost
+            if base_cost is not None:
+                existing.v.by_m("SupplyCost").v = str(int(base_cost) * quantity)
+            logger.debug(f"Updated existing variant {namespace}")
 
 def _apply_weapon_edits(descr: Any, data: Dict) -> None:
     """Apply edits from ammunition data to descriptor."""
@@ -165,37 +224,59 @@ def _apply_hit_roll_edits(descr: Any, hit_roll_data: Dict) -> None:
     if "Moving" in hit_roll_data:
         modifiers[2].v = (modifiers[2].v[0], str(hit_roll_data["Moving"]))
 
-def _handle_weapon_quantities(source: Any, base_descr: Any, weapon_name: str, quantities: List[int]) -> None:
-    """Handle multiple weapon quantities."""
-    logger.debug(f"Handling quantities for {weapon_name}: {quantities}")
+def _track_dictionary_entries(weapon_name, ammo_data, ingame_names, calibers):
+    """Track dictionary entries for a weapon."""
+    if "displayname" in ammo_data and "nametoken" in ammo_data:
+        ingame_names.append((
+            weapon_name, 
+            ammo_data["nametoken"],
+            ammo_data["displayname"]
+        ))
     
-    # Get base supply cost
+    if "parent_membr" in ammo_data and "Caliber" in ammo_data["parent_membr"]:
+        caliber_data = ammo_data["parent_membr"]["Caliber"]
+        if caliber_data[0] != "existing":
+            calibers.append((weapon_name, caliber_data[1], caliber_data[0]))
+
+def _get_base_supply_cost(weapon_name):
+    """Get the base supply cost for a weapon."""
     supply_costs = get_supply_costs(weapons)
-    base_cost = None
     for weapon, cost in supply_costs:
         if weapon == weapon_name:
-            base_cost = cost
-            break
-    
-    for i, quantity in enumerate(quantities):
-        # Always make a copy to avoid modifying the original
-        descr = base_descr.copy()
-        
-        # Generate new GUIDs for each variant
-        descr.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
-        hitroll_obj = descr.v.by_m("HitRollRuleDescriptor").v
-        hitroll_obj.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
-        
-        # Set supply cost if available
-        if base_cost is not None:
-            descr.v.by_m("SupplyCost").v = str(int(base_cost) * quantity)
-        
-        if quantity == 1 and i == len(quantities) - 1:
-            namespace = f"Ammo_{weapon_name}"
-        else:
-            namespace = f"Ammo_{weapon_name}_x{quantity}"
+            return cost
+    return None
+
+def _create_new_descriptor(source_path, weapon_name, donor):
+    """Create a new descriptor for a weapon."""
+    donor_descr = source_path.by_n(f"Ammo_{donor}")
+    if not donor_descr:
+        # Try without Ammo_ prefix
+        donor_descr = source_path.by_n(donor)
+        if not donor_descr:
+            logger.error(f"Could not find donor {donor} for {weapon_name}")
+            return None
             
-        logger.debug(f"Setting namespace to {namespace}")
-        descr.namespace = namespace
-        logger.debug(f"Adding new descriptor with namespace {namespace}")
-        source.add(descr) 
+    # Create base descriptor
+    base_descr = donor_descr.copy()
+    
+    # Generate new GUIDs
+    base_descr.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
+    hitroll_obj = base_descr.v.by_m("HitRollRuleDescriptor").v
+    hitroll_obj.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
+    
+    # Set namespace
+    base_descr.namespace = f"Ammo_{weapon_name}"
+    
+    logger.debug(f"Created new base descriptor for {weapon_name} from {donor}")
+    return base_descr
+
+def _get_existing_descriptor(source_path, weapon_name):
+    """Get an existing descriptor for a weapon."""
+    base_descr = source_path.by_n(f"Ammo_{weapon_name}")
+    if not base_descr:
+        # Try without Ammo_ prefix
+        base_descr = source_path.by_n(weapon_name)
+        if not base_descr:
+            logger.error(f"Could not find weapon {weapon_name}")
+            return None
+    return base_descr 

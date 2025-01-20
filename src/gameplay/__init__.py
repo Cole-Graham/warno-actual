@@ -17,21 +17,26 @@ from typing import Any, Callable, Dict, List
 from src.utils.logging_utils import setup_logger
 
 from .buildings import edit_fob_attributes
-
+from .depictions import unit_edits_depictionaerial  # DepictionAerialUnits.ndf
+from .depictions import unit_edits_missilecarriage  # MissileCarriage.ndf
 from .depictions import (
+    unit_edits_missilecarriagedepiction,  # MissileCarriageDepiction.ndf
+)
+from .depictions import (
+    create_aerial_ghost_depictions,
     create_alternatives_depictions,
     create_button_textures,
     create_cadavre_depictions,
     create_ghost_depictions,
     create_infantry_depictions,
     create_showroom_depictions,
-    create_veh_human_depictions,
-    create_veh_depictions,
     create_veh_depiction_selectors,
+    create_veh_depictions,
+    create_veh_human_depictions,
     create_veh_showroom_depictions,
-    create_aerial_ghost_depictions,
     edit_infantry_depictions,
     edit_showroom_units,
+    unit_edits_depictionvehicles,
 )
 from .divisions import (
     add_division_rules,
@@ -191,6 +196,15 @@ def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:
         
          # Depiction files
             # /Gfx
+        "GameData/Generated/Gameplay/Gfx/Depictions/DepictionAerialUnits.ndf": [
+            lambda source_path: unit_edits_depictionaerial(source_path),
+        ],
+        "GameData/Generated/Gameplay/Gfx/MissileCarriage.ndf": [
+            lambda source_path: unit_edits_missilecarriage(source_path),
+        ],
+        "GameData/Generated/Gameplay/Gfx/MissileCarriageDepiction.ndf": [
+            lambda source_path: unit_edits_missilecarriagedepiction(source_path),
+        ],
         "GameData/Generated/Gameplay/Gfx/ShowRoomUnits.ndf": [
             lambda source_path: edit_showroom_units(source_path),
             lambda source_path: create_showroom_depictions(source_path)
@@ -216,11 +230,13 @@ def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:
             lambda source_path: create_veh_human_depictions(source_path)
         ],
         "GameData/Generated/Gameplay/Gfx/Depictions/DepictionVehicles.ndf": [
-            lambda source_path: create_veh_depictions(source_path)
+            lambda source_path: create_veh_depictions(source_path),
+            lambda source_path: unit_edits_depictionvehicles(source_path)
         ],
         "GameData/Generated/Gameplay/Gfx/Depictions/GeneratedDepictionVehiclesShowRoom.ndf": [
-            lambda source_path: create_veh_showroom_depictions(source_path)
+            # lambda source_path: create_veh_showroom_depictions(source_path) # Maybe unnecessary
         ],
+            # /Infanterie
         "GameData/Generated/Gameplay/Gfx/Infanterie/GeneratedDepictionInfantry.ndf": [
             lambda source_path: edit_infantry_depictions(source_path, game_db['ammunition'], game_db['depiction_data']),
             lambda source_path: create_infantry_depictions(source_path)

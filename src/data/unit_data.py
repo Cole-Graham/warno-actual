@@ -502,13 +502,16 @@ def _gather_weapon_locations(weapon_descr: Any) -> Dict[str, Dict[str, Any]]:
             
             mounted_index = weapon.index    
             ammo = weapon.v.by_m("Ammunition").v.split("$/GFX/Weapon/Ammo_", 1)[1]
-            base_name = ammo.split('_x', 1)[0]
+            # base_name = ammo.split('_x', 1)[0]
             
-            # Instead of appending to a list, store as dictionary entry
-            weapon_locations[base_name] = {
+            # Instead of overwriting, append to a list for each ammo entry
+            if ammo not in weapon_locations:
+                weapon_locations[ammo] = []  # Initialize a list if it doesn't exist
+            
+            weapon_locations[ammo].append({
                 'turret_index': i + 1,
                 'mounted_index': mounted_index,
                 'salvo_index': int(weapon.v.by_m("SalvoStockIndex").v)
-            }
+            })
     
     return weapon_locations 

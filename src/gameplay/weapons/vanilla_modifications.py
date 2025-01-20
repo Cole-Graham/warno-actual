@@ -1,5 +1,5 @@
 """Functions for modifying vanilla ammunition instances."""
-
+import traceback
 from typing import Any, Dict, List, Tuple
 
 from src.utils.logging_utils import setup_logger
@@ -45,33 +45,47 @@ def vanilla_renames_weapondescriptor(source: Any, renames: List[Tuple[str, str]]
         weapon_db: Weapon database containing weapon descriptor data
     """
     try:
+        # Convert renames list to dict for easier lookup
+        renames_dict = dict(renames)
         
         for descr_namespace, weapon_descr_data in weapon_db.items():
-            for weapon_name, location_data in weapon_descr_data["weapon_locations"].items():
-                if weapon_name in ammo_db["renames_old_new"]:
-                    new_name = ammo_db["renames_old_new"][weapon_name]
-                    turret_index = location_data["turret_index"]
-            
-                    weapon_descr = source.by_namespace(descr_namespace)
-                    if weapon_descr:
-                        logger.info(f"Renaming salvo weapon {weapon_name} to {new_name} on turret {turret_index}")
-                        turret = weapon_descr.v.by_m("TurretDescriptorList").v[turret_index - 1]
-                        weapon = turret.v.by_m("MountedWeaponDescriptorList").v[location_data["mounted_index"]]
-                        weapon.v.by_m("Ammunition").v = f"$/GFX/Weapon/Ammo_{new_name}"
+            for weapon_name, entries in weapon_descr_data["weapon_locations"].items():
+                # try:
+                    for entry in entries:
                 
-                if weapon_name in renames:
-                    new_name = renames[weapon_name]
-                    turret_index = location_data["turret_index"]
+                        logger.debug(f"Checking salvo weapon {weapon_name}")
+                        if weapon_name in ammo_db["renames_old_new"]:
+                            new_name = ammo_db["renames_old_new"][weapon_name]
+                            turret_index = entry["turret_index"]
                     
-                    weapon_descr = source.by_namespace(descr_namespace)
-                    if weapon_descr:
-                        logger.info(f"Renaming weapon {weapon_name} to {new_name} on turret {turret_index}")
-                        turret = weapon_descr.v.by_m("TurretDescriptorList").v[turret_index - 1]
-                        weapon = turret.v.by_m("MountedWeaponDescriptorList").v[location_data["mounted_index"]]
-                        weapon.v.by_m("Ammunition").v = f"$/GFX/Weapon/Ammo_{new_name}"
-    
+                            weapon_descr = source.by_namespace(descr_namespace)
+                            if weapon_descr:
+                                turret = weapon_descr.v.by_m("TurretDescriptorList").v[turret_index - 1]
+                                weapon = turret.v.by_m("MountedWeaponDescriptorList").v[entry["mounted_index"]]
+                                weapon.v.by_m("Ammunition").v = f"$/GFX/Weapon/Ammo_{new_name}"
+                                logger.info(f"Renaming salvo weapon {weapon_name} to {new_name} on turret {turret_index}")
+                        
+                        # Handle regular weapon renames
+                        elif weapon_name in renames_dict:
+                            new_name = renames_dict[weapon_name]
+                            turret_index = entry["turret_index"]
+                            
+                            weapon_descr = source.by_namespace(descr_namespace)
+                            if weapon_descr:
+                                logger.info(f"Renaming weapon {weapon_name} to {new_name} on turret {turret_index}")
+                                turret = weapon_descr.v.by_m("TurretDescriptorList").v[turret_index - 1]
+                                weapon = turret.v.by_m("MountedWeaponDescriptorList").v[entry["mounted_index"]]
+                                weapon.v.by_m("Ammunition").v = f"$/GFX/Weapon/Ammo_{new_name}"
+                                logger.debug(f"Weapon {weapon_name} renamed on turret {turret_index}")
+                        else:
+                            logger.debug(f"No renaming needed for {weapon_name}")
+                
+                # except Exception as e:
+                #     logger.error(f"Error renaming weapon {weapon_name}: {e}")
+                #     logger.error(traceback.format_exc())
+                    
     except Exception as e:
-        logger.error(f"Error applying vanilla renames for {descr_namespace}: {e}")
+        logger.error(f"Error applying vanilla renames: {e}")
         raise
                 
 def remove_vanilla_instances(source, removals: List[str]) -> None:

@@ -194,7 +194,7 @@ USA_NEW_UNITS = {
     "M1A1_Abrams_CMD_US": { # donor unit
         "GUID": "2b1fcb11-8a07-401e-b7a8-bbaa38a4881e",
         "GroupeCombatGUID": "e9f5c7ac-6dd0-45f3-af98-2f0e148b660e",
-        "ShowroomGUID": "l1m2n3o4-p5q6-4r7s-8t9u-0v1w2x3y4z5",
+        "ShowroomGUID": "l1m2n3o4-p5q6-4r7s-8t9u-0v1w2x3y4z5b",
         "CadavreGUID": "c5697d12-0538-41e3-9087-f6a3c0a3f302",
         "NewName": "M1A1_Abrams_CMD2_US",
         "TagSet":  [
@@ -497,7 +497,7 @@ USA_NEW_UNITS = {
     "M577_US": { # donor unit
         "GUID": "40a7809c-a6c1-4af0-ad2c-b17c9250732f",
         "GroupeCombatGUID": "d2b58f7f-12a7-437c-83c1-dd18aaf9ff9e",
-        "ShowroomGUID": "n4o5p6q7-r8s9-4t0u-1v2w-3x4y5z6a7b8",
+        "ShowroomGUID": "n4o5p6q7-r8s9-4t0u-1v2w-3x4y5z6a7b81",
         "CadavreGUID": "a88c4ec3-d343-411e-823b-0e57d3e6e63a",
         "NewName": "M577_CMD2_US",
         "TagSet": [

@@ -52,8 +52,9 @@ def setup_logger(name: str) -> logging.Logger:
     # Remove existing handlers to avoid duplicates
     logger.handlers.clear()
     
-    # File handler - use category instead of module name
-    category = 'gameplay' if name.endswith('_edits') else name
+    # More specific categorization
+    category = name
+    
     file_handler = logging.FileHandler(
         log_dir / f"{category}.log",
         encoding='utf-8',

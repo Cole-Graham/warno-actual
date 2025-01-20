@@ -58,6 +58,7 @@ def strip_quotes(value: str) -> str:
 def is_valid_turret(turret: Any) -> bool:
     """Check if turret is a valid type."""
     return any([
+        is_obj_type(turret, "TTurretBombardierDescriptor"),
         is_obj_type(turret, "TTurretInfanterieDescriptor"),
         is_obj_type(turret, "TTurretTwoAxisDescriptor"),
         is_obj_type(turret, "TTurretUnitDescriptor")

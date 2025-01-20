@@ -48,7 +48,7 @@ def edit_unit_info_panel(source_path) -> None:
                 strength_elements_obj = attribute_descrs_map.by_k('"AttributeStrength"').v
                 
                 if "hint" in data["AttributeStrength"]:
-                    new_token = f"{data['AttributeStrength']['token']}B"
+                    new_token = f"{data['AttributeStrength']['token']}"
                     strength_elements_obj.by_m("HintToken").v = f'"{new_token}"'
                     logger.info(f"Updated Strength hint token to {new_token}") 
                     

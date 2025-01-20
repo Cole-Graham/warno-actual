@@ -6,6 +6,7 @@ config/config.YAML
 deprecated/
 logs/*
 output.txt
+scripts/
 src/data/database/*.json
 temp_context.txt
 
