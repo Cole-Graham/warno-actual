@@ -12,6 +12,7 @@ from src.constants.weapons import (
     SNIPER_DAMAGE,
     WEAPON_DESCRIPTIONS,
 )
+from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
@@ -82,9 +83,10 @@ def add_damage_families_to_impl(source_path) -> None:
 
 
 def apply_damage_families(source_path: Any, game_db: Dict[str, Any]) -> None:
-    """Apply damage family modifications to weapons."""
+    """Apply damage family modifications to weapons in WeaponDescriptor.ndf"""
     ammo_db = game_db["ammunition"]
     
+    dictionary_entries = []
     for weapon_descr in source_path:
         if weapon_descr.n in ammo_db["full_ball_weapons"]:
             arme_obj = weapon_descr.v.by_m("Arme").v
@@ -98,11 +100,19 @@ def apply_damage_families(source_path: Any, game_db: Dict[str, Any]) -> None:
             
             # Update description token
             type_cat = weapon_descr.v.by_m("TypeCategoryName").v
-            for weapon_type, ((cat_hash, desc_hash), _) in WEAPON_DESCRIPTIONS.items():
+            for weapon_type, ((cat_hash, desc_hash), dic_string) in WEAPON_DESCRIPTIONS.items():
                 if type_cat == cat_hash:
                     weapon_descr.v.by_m("WeaponDescriptionToken").v = f"'{desc_hash}'"
                     logger.info(f"Changed {weapon_descr.n} description to {weapon_type} ({desc_hash})")
-                    break 
+                    new_dic_entry = (dic_string, desc_hash)
+                    if new_dic_entry not in dictionary_entries:
+                        dictionary_entries.append(new_dic_entry)
+                    break
+    
+    # Write dictionary entries
+    if dictionary_entries:
+        logger.info(f"Writing {len(dictionary_entries)} dictionary entries")
+        write_dictionary_entries(dictionary_entries, dictionary_type="weapons")
 
 
 def add_damage_resistance_values(source_path) -> None:
