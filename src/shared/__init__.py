@@ -5,7 +5,7 @@ from typing import Callable, Dict, List
 from .buildings.fob import add_fob_minimap_texture
 from src.ui import edit_uicommonflarelabelresources
 
-
+# defunct (for now? I had to simplify config/build pipelines to get the patcher working)
 def get_shared_editors() -> Dict[str, List[Callable]]:
     """Get shared file editors. (for identical files)"""
     return {

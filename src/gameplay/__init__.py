@@ -92,6 +92,7 @@ from .weapons.weapon_descriptor import edit_weapon_descriptor
 
 logger = setup_logger(__name__)
 
+# defunct (for now? I had to simplify config/build pipelines to get the patcher working)
 def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:
     """Get all game file editors."""
     # Get base gameplay editors

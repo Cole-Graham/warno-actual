@@ -47,7 +47,7 @@ from .style import (
     edit_useoutgametextures,
 )
 
-
+# defunct (for now? I had to simplify config/build pipelines to get the patcher working)
 def get_ui_editors() -> Dict[str, List[Callable]]:
     """Get UI file editors."""
     return {
