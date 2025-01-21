@@ -51,6 +51,7 @@ def _update_add_unit_button(source_path) -> None:
     addunitbutton = source_path.by_namespace("AddUnitButton").v
     addunitbutton.by_member("TextSizeToken").v = '"20"'
     addunitbutton.by_member("TextColorToken").v = "'BoutonXP_deck_chevronM81'"
+    # addunitbutton.by_member("TextTypefaceToken").v = "'Bombardier'"
     logger.debug("Updated add unit button text properties")
 
 def _update_unit_info_display(source_path) -> None:
@@ -146,6 +147,8 @@ def _update_unit_name_text(source_path) -> None:
     # Update paragraph style
     paragraphstyle = unitbuttonunitnametext.by_member("ParagraphStyle").v
     paragraphstyle.by_member("VerticalAlignment").v = "UIText_Up"
+
+    # unitbuttonunitnametext.by_member("TypefaceToken").v = '"Bombardier"'
     
     # Add text padding
     unitbuttonunitnametext.insert(9, 'TextPadding = TRTTILength4 ( Magnifiable = [0.0, 2.0, 0.0, 0.0] )')
