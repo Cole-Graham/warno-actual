@@ -17,6 +17,16 @@ from src.utils.logging_utils import setup_logger
 logger = setup_logger(__name__)
 
 
+def edit_weapon_constantes(source_path):
+    logger.info(f"--------- editing WeaponConstantes.ndf ---------")
+    weapon_constantes_obj = source_path.by_n("WeaponConstantes").v
+    mimetic_res_map = weapon_constantes_obj.by_m("ResistanceToMimeticImpact").v
+    mimetic_res_map.add(f"(ResistanceFamily_infanterieWA, EImpactSurface/Ground)")
+
+    blindages_to_ignore = weapon_constantes_obj.by_m("BlindagesToIgnoreForDamageFamilies").v
+    blindages_to_ignore.add(f"(DamageFamily_full_balle, [ResistanceFamily_blindage])")
+
+
 def add_damage_families_to_list(source_path) -> None:
     """Add new damage families to DamageResistanceFamilyList.ndf."""
     logger.info("Adding new damage families to list")

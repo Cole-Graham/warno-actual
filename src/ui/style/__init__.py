@@ -1,4 +1,5 @@
-"""UI style components."""
+"""UI style modules."""
+
 from .common import (
     edit_buckspecificbackgrounds,
     edit_buckspecificbuttons,
@@ -12,26 +13,87 @@ from .common import (
     edit_uiwarningpanel,
 )
 from .default import edit_defaultstyleguides, edit_defaulttextformatscript
-from .ingame import edit_orderdisplay, edit_uiingamebuckcubeaction
+from .ingame import (
+    edit_orderdisplay,
+    edit_uiingamebuckcubeaction,
+    edit_uiingamebuckengagementrules,
+    edit_uiingamedefaultcontainer,
+    edit_uiingamehudreplayresource,
+    edit_uiingamelaunchbattlebuttonresources,
+    edit_uiingameminimap,
+    edit_uiingameresources,
+    edit_uispecifichudalertpanelview,
+    edit_uispecifichudmultiselectionpanelview,
+    edit_uispecifichudscoreview,
+    edit_uispecificingamehudtimepanelview,
+    edit_uispecificingameidleunitview,
+    edit_uispecificingameplayermissionlabelresources,
+    edit_uispecificminimapinfoview,
+    edit_uispecificoffmapairplaneview,
+    edit_uispecificoffmapview,
+    edit_uispecificshortcutsforselectionview,
+    edit_uispecificskirmishproductionmenuview,
+    edit_uispecificunitlabelaggregationview,
+    edit_uispecificunitlabelcommon,
+    edit_uispecificunitlabelmultiselectionview,
+    edit_uispecificunitlabelview,
+    edit_uispecificunitlabelviewnameonly,
+    edit_uispecificunitselectionpanelview,
+    edit_uispecificunitselectionweaponpanelview,
+)
+from .outgame import edit_useoutgametextures
+from .showroom import (
+    edit_uispecificshowroomarmorycomponent,
+    edit_uispecificshowroomdeckcreatorscreencomponent,
+    edit_uispecificshowroomgroupsdeckcreatorscreenview,
+)
 
 __all__ = [
     # Common
     'edit_colors',
+    'edit_commontextures',
+    'edit_textstyles',
+    'edit_uicommonflarelabelresources',
     'edit_buckspecificbackgrounds',
     'edit_buckspecificbuttons',
-    'edit_textstyles',
-    'edit_commontextures',
-    'edit_buckspecifichint',
-    'edit_uicommonflarelabelresources',
     'edit_uispecificchatview',
+    'edit_buckspecifichint',
     'edit_uispecificunitbuttonview',
     'edit_uiwarningpanel',
-    
     # Default
     'edit_defaultstyleguides',
     'edit_defaulttextformatscript',
-    
-    # InGame
+    # Ingame
     'edit_orderdisplay',
-    'edit_uiingamebuckcubeaction'
-] 
+    'edit_uiingamebuckcubeaction',
+    'edit_uiingamebuckengagementrules',
+    'edit_uiingamedefaultcontainer',
+    'edit_uiingamehudreplayresource',
+    'edit_uiingamelaunchbattlebuttonresources',
+    'edit_uiingameminimap',
+    'edit_uispecifichudalertpanelview',
+    'edit_uispecifichudmultiselectionpanelview',
+    'edit_uispecifichudscoreview',
+    'edit_uispecificingamehudtimepanelview',
+    'edit_uispecificingameidleunitview',
+    'edit_uispecificingameplayermissionlabelresources',
+    'edit_uispecificminimapinfoview',
+    'edit_uispecificoffmapairplaneview',
+    'edit_uispecificoffmapview',
+    'edit_uispecificshortcutsforselectionview',
+    'edit_uispecificskirmishproductionmenuview',
+    'edit_uispecificunitlabelaggregationview',
+    'edit_uispecificunitlabelcommon',
+    'edit_uispecificunitlabelmultiselectionview',
+    'edit_uispecificunitlabelviewnameonly',
+    'edit_uispecificunitlabelview',
+    'edit_uispecificunitselectionpanelview',
+    'edit_uispecificunitselectionweaponpanelview',
+    'edit_uiingameresources',
+    # Outgame
+    'edit_useoutgametextures',
+    # Showroom
+    'edit_uispecificshowroomarmorycomponent',
+    'edit_uispecificshowroomdeckcreatorscreencomponent',
+    'edit_uispecificshowroomgroupsdeckcreatorscreenview',
+]

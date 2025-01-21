@@ -8,10 +8,6 @@ def edit_uiingamedefaultcontainer(source_path) -> None:
     """Edit UIInGameDefaultContainer.ndf."""
     logger.info("Editing UIInGameDefaultContainer.ndf")
     
-    # Update container properties
-    defaultcontainerdescriptor = source_path.by_namespace("DefaultContainerDescriptor").v
-    # ... rest of function with source_path ...
-
     # Update panel properties
     panelroundedcorner_template = source_path.by_namespace("PanelRoundedCorner").v
     panelroundedcorner_template.params.by_param("BackgroundBlockColorToken").v = '"M81_DarkCharcoalTransparent"'

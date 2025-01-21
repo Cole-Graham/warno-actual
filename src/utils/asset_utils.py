@@ -20,20 +20,20 @@ def copy_assets(config: Dict) -> None:
         return
         
     # Get target mod path based on config
-    warno_mods = Path(config.config_data['directories']['warno_mods'])
-    build_config = config.config_data['build_config']
+    warno_mods = Path(config['directories']['warno_mods'])
+    build_config = config['build_config']
     
     if build_config['target'] == 'ui_only':
-        target_mod = (config.config_data['directories']['ui_dev'] 
+        target_mod = (config['directories']['ui_dev'] 
                      if build_config['write_dev'] 
-                     else config.config_data['directories']['ui_release'])
+                     else config['directories']['ui_release'])
     else:
-        target_mod = (config.config_data['directories']['gameplay_dev']
+        target_mod = (config['directories']['gameplay_dev']
                      if build_config['write_dev']
-                     else config.config_data['directories']['gameplay_release'])
+                     else config['directories']['gameplay_release'])
     
     # Target is GameData/assets/
-    target_dir = warno_mods / target_mod / config.config_data['asset_config']['target_dir'] / source_dir.name
+    target_dir = warno_mods / target_mod / config['asset_config']['target_dir'] / source_dir.name
     
     with log_time(logger, "Copying assets"):
         # Walk through all files in assets directory

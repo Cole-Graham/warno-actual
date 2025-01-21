@@ -11,9 +11,6 @@ def edit_uiingamebuckcubeaction(source_path) -> None:
     """Edit UIInGameBUCKCubeAction.ndf."""
     logger.info("Editing UIInGameBUCKCubeAction.ndf")
     
-    # Update cube action properties
-    cubeactionpaneldescriptor = source_path.by_namespace("CubeActionPanelDescriptor").v
-    
     # Update cube action buttons
     _update_cube_action_button(source_path)
     _update_cube_action_toggle_button(source_path)
@@ -60,7 +57,7 @@ def _update_cube_action_toggle_button(source_path) -> None:
 
 def _update_panel_cube_action_orders(source_path) -> None:
     """Update panel cube action orders properties."""
-    panelcubeactionorders = source_path.by_namespace("PanelCubeActionOrders").v
+    panelcubeactionorders = source_path.by_namespace("PanelCubeAction_Orders").v
     
     for component in panelcubeactionorders.by_member("BackgroundComponents").v:
         if not isinstance(component.v, ndf.model.Object) or not is_obj_type(component.v, "PanelRoundedCorner"):
@@ -72,10 +69,19 @@ def _update_panel_cube_action_orders(source_path) -> None:
 
 def _update_panel_cube_action_smart_orders(source_path) -> None:
     """Update panel cube action smart orders properties."""
-    panelcubeactionsmartorders = source_path.by_namespace("PanelCubeActionSmartOrders").v
+    panelcubeactionsmartorders = source_path.by_namespace("PanelCubeAction_SmartOrders").v
     
     # Update grid margins
-    _update_smart_orders_grid(panelcubeactionsmartorders.by_member("Elements").v)
+    elements = panelcubeactionsmartorders.by_member("Elements").v
+    for element in elements:
+        if not isinstance(element.v, ndf.model.Object) or not is_obj_type(element.v, "BUCKListElementDescriptor"):
+            continue
+            
+        component_descr = element.v.by_member("ComponentDescriptor").v
+        if component_descr.type != "BUCKGridDescriptor":
+            continue
+            
+        component_descr.by_member("LastElementMargin").v = "TRTTILength2( Magnifiable = [5.0, 0.0] )"
     
     # Update background components
     for component in panelcubeactionsmartorders.by_member("BackgroundComponents").v:
@@ -103,18 +109,6 @@ def _process_panel_components(components: Any) -> None:
                 
             component_descr.add("HasBackground = true")
             component_descr.add('BackgroundBlockColorToken = "M81_Ebony"')
-
-def _update_smart_orders_grid(elements: Any) -> None:
-    """Update smart orders grid properties."""
-    for element in elements:
-        if not isinstance(element.v, ndf.model.Object) or not is_obj_type(element.v, "BUCKListElementDescriptor"):
-            continue
-            
-        component_descr = element.v.by_member("ComponentDescriptor").v
-        if component_descr.type != "BUCKGridDescriptor":
-            continue
-            
-        component_descr.by_member("LastElementMargin").v = "TRTTILength2( Magnifiable = [5.0, 0.0] )"
 
 def _get_cube_action_button_components() -> str:
     """Get cube action button component template."""

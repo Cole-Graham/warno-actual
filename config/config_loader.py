@@ -70,7 +70,9 @@ class ConfigLoader:
             'ui_release',
             'ui_dev',
             'gameplay_dev',
+            'ui_only_dev',
             'gameplay_release',
+            'ui_only_release'
         ]
         
         for dir_field in required_dirs:

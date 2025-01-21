@@ -7,6 +7,7 @@ logger = setup_logger(__name__)
 
 def add_fob_minimap_texture(source_path):    
     """GameData/Generated/UserInterface/Textures/MinimapIcons.ndf"""
+    logger.info("Adding FOB minimap texture")
     for i, obj in enumerate(source_path, start=0):
         if obj.namespace == "MinimapIconAdditionalTextureBank":
             texture_bank = obj.v

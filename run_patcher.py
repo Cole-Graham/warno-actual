@@ -1,6 +1,7 @@
 from config.config_loader import ConfigLoader
 from src import ModConfig
 from src.data import build_database
+from src.utils.dictionary_utils import initialize_dictionary_files
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger('patcher')
@@ -11,6 +12,9 @@ if __name__ == "__main__":
         
         # Load configuration first
         config = ModConfig.get_instance()
+        
+        # Initialize dictionary files
+        initialize_dictionary_files()
         
         # Build the database and add to config
         config.config_data['game_db'] = build_database(config.config_data)

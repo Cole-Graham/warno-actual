@@ -6,6 +6,7 @@ from src import ndf
 from src.constants.new_units import NEW_UNITS
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import is_obj_type
+from src.utils.ndf_utils import _generate_guid
 
 logger = setup_logger(__name__)
 
@@ -142,7 +143,7 @@ def create_showroom_depictions(source_path: Any) -> None:
                 
                 # Update mimetic descriptor
                 mimetic = module.v.by_member("MimeticDescriptor").v
-                mimetic.by_member("DescriptorId").v = f"GUID:{{{edits['GroupeCombatGUID']}}}"
+                mimetic.by_member("DescriptorId").v = f"GUID:{{{_generate_guid()}}}"
                 mimetic.by_member("MimeticName").v = f"'{unit_name}'"
                 
             elif module_type == "TInfantrySquadWeaponAssignmentModuleDescriptor":
@@ -206,10 +207,6 @@ def create_cadavre_depictions(source_path: Any) -> None:
     
     for donor, edits in NEW_UNITS.items():
         if "NewName" not in edits or "CadavreGUID" not in edits:
-            continue
-            
-        # Skip units that don't need cadavre depictions
-        if edits.get("is_unarmed", False):
             continue
             
         unit_name = edits["NewName"]

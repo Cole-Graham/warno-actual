@@ -1,7 +1,6 @@
 """Gameplay FOB building modifications."""
 
 from src import ndf
-
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)

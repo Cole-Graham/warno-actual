@@ -196,7 +196,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("SAM_FIM92_Stinger_salvolength4", "MANPAD", None, False): { # 187
         "Ammunition": {
             "displayname": "FIM-92C Stinger",
-            "nametoken": "AKFXZOAXUI",
+            "nametoken": "PKCEMABZUN",
             "hit_roll": {
                 "Idling": 65,
                 "Moving": 65,

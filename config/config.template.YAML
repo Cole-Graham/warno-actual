@@ -61,27 +61,15 @@ files:
             "edit_unit_info_panel"
         ]
     }
-    "GameData/Generated/UserInterface/UnitSpecialties.ndf": {
-        "gameplay": [
-            "edit_specialties"
-        ]
-    }
-    "GameData/Generated/UserInterface/Textures/SpecialityIconTextures.ndf": {
-        "gameplay": [
-            "edit_specialty_icons"
-        ]
-    }
 
   # Files that are identical/shared between UI and gameplay mods
   shared:
-    "GameData/Generated/UserInterface/Textures/MinimapIcons.ndf": {
-        "gameplay": [
-            "add_fob_minimap_texture"
-        ],
-        "ui": [
-            "add_fob_minimap_texture"
-        ]
-    }
+    "GameData/Generated/UserInterface/Textures/MinimapIcons.ndf": [
+        "add_fob_minimap_texture"
+    ]
+    "GameData/UserInterface/Use/Common/UICommonFlareLabelResources.ndf": [
+        "edit_uicommonflarelabelresources"
+    ]
 
   # Pure UI files (only modified in UI mod)
   ui_only:
@@ -96,7 +84,6 @@ files:
     - "GameData/UserInterface/Use/Common/Templates/BuckSpecificButtons.ndf"
     - "GameData/UserInterface/Use/Common/Views/BUCKSpecificHint.ndf"
     - "GameData/UserInterface/Use/Common/CommonTextures.ndf"
-    - "GameData/UserInterface/Use/Common/UICommonFlareLabelResources.ndf"
     - "GameData/UserInterface/Use/Common/UISpecificChatView.ndf"
     - "GameData/UserInterface/Use/Common/UISpecificUnitButtonView.ndf"
     - "GameData/UserInterface/Use/Common/UIWarningPanel.ndf"
@@ -147,6 +134,7 @@ files:
 
     # Division files
     - "GameData/Generated/Gameplay/Decks/DeckSerializer.ndf"
+    - "GameData/Generated/Gameplay/Decks/DeckPacks.ndf"
     - "GameData/Generated/Gameplay/Decks/DivisionPacks.ndf"
     - "GameData/Generated/Gameplay/Decks/DivisionRules.ndf"
     - "GameData/Generated/Gameplay/Decks/Divisions.ndf"
@@ -173,6 +161,7 @@ files:
     # Depiction files
     - "GameData/Generated/Gameplay/Gfx/ShowRoomUnits.ndf"
     - "GameData/Generated/Gameplay/Gfx/UniteCadavreDescriptor.ndf"
+    - "GameData/Generated/Gameplay/Gfx/Depictions/DepictionAerialUnits.ndf"
     - "GameData/Generated/Gameplay/Gfx/Depictions/DepictionAlternatives.ndf"
     - "GameData/Generated/Gameplay/Gfx/Depictions/GeneratedDepictionSelectors.ndf"
     - "GameData/Generated/Gameplay/Gfx/Depictions/GeneratedDepictionGhosts.ndf"
@@ -181,15 +170,14 @@ files:
     - "GameData/Generated/Gameplay/Gfx/Depictions/DepictionVehicles.ndf"
     - "GameData/Generated/Gameplay/Gfx/Depictions/GeneratedDepictionVehiclesShowRoom.ndf"
     - "GameData/Generated/Gameplay/Gfx/Infanterie/GeneratedDepictionInfantry.ndf"
+    - "GameData/Generated/Gameplay/Gfx/MissileCarriage.ndf"
+    - "GameData/Generated/Gameplay/Gfx/MissileCarriageDepiction.ndf"
     
     # UI
-    # Generated UI files
     - "GameData/Generated/UserInterface/Textures/ButtonTexturesUnites.ndf"
     - "GameData/Generated/UserInterface/Textures/WeaponTextures.ndf"
     - "GameData/Generated/UserInterface/Textures/SpecialityIconTextures.ndf"
     - "GameData/Generated/UserInterface/Textures/DivisionTextures.ndf"
-    - "GameData/Generated/UserInterface/Textures/MinimapIcons.ndf"
     - "GameData/Generated/UserInterface/WeaponsMinMax.ndf"
     - "GameData/Generated/UserInterface/UnitSpecialties.ndf"
     - "GameData/UserInterface/Use/InGame/UseInGameTextures.ndf"
-

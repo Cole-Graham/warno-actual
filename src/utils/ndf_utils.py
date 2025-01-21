@@ -1,4 +1,5 @@
 from typing import Any, List
+from uuid import uuid4
 
 from src import ndf
 from src.utils.logging_utils import setup_logger
@@ -63,3 +64,7 @@ def is_valid_turret(turret: Any) -> bool:
         is_obj_type(turret, "TTurretTwoAxisDescriptor"),
         is_obj_type(turret, "TTurretUnitDescriptor")
     ])
+    
+def _generate_guid():
+    """Generate a new GUID."""
+    return str(uuid4())

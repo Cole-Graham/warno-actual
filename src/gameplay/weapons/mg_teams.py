@@ -6,6 +6,7 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
 
+
 def edit_mg_team_weapons(source: Any, game_db: Dict[str, Any]) -> None:
     """Edit MG team weapon properties."""
     ammo_db = game_db["ammunition"]

@@ -5,6 +5,7 @@ from typing import Any, Dict
 from src import ndf
 from src.constants.new_units import NEW_UNITS
 from src.utils.logging_utils import setup_logger
+from src.utils.ndf_utils import _generate_guid
 
 logger = setup_logger(__name__)
 
@@ -87,7 +88,7 @@ def add_to_divisions(source_path: Any) -> None:
             logger.info(f"Added {unit_name} to division {division}")
 
 def create_deck_pack_descriptors(source_path: Any) -> None:
-    """Create deck pack descriptors in DeckSerializer.ndf."""
+    """Create deck pack descriptors in DeckPacks.ndf."""
     logger.info("Creating deck pack descriptors")
     
     for donor, edits in NEW_UNITS.items():
@@ -107,14 +108,46 @@ def create_deck_pack_descriptors(source_path: Any) -> None:
             descriptor_line = f"    UnitDescriptor = ~/Descriptor_Unit_{unit_name}"
         
         deck_pack = (
-            f"export Descriptor_Deck_Pack_{unit_name} is TDeckPackDescriptor\n"
-            f"(\n"
-            f"    DescriptorId = GUID:{{{edits['GUID']}}}\n"
-            f"{descriptor_line}\n"
-            f"    CommandPoints = {edits['CommandPoints']}\n"
-            f"    Availability = {edits['Availability']}\n"
-            f"    XPMultiplier = {xp_str}\n"
-            f")\n"
+            f'Descriptor_Deck_Pack_{unit_name} is DeckPackDescriptor\n'
+            f'(\n'
+            f'    Unit = $/GFX/Unit/Descriptor_Unit_{unit_name}\n'
+            f')\n'
         )
         source_path.add(deck_pack)
-        logger.info(f"Created deck pack descriptor for {unit_name}") 
+        logger.info(f"Created deck pack descriptor for {unit_name}")
+
+def update_deck_serializer(source_path: Any) -> None:
+    """Update DeckSerializer.ndf for new units."""
+    logger.info("Updating DeckSerializer.ndf for new units")
+    
+    for donor, edits in NEW_UNITS.items():
+        if "NewName" not in edits:
+            continue
+        
+        unit_name = edits["NewName"]
+        deckserializer_obj = source_path.by_n("DeckSerializer")
+        unit_ids_map = deckserializer_obj.v.by_member("UnitIds").v
+        last_row = unit_ids_map[-1]
+        last_row_str = str(last_row)
+        last_row_int = int(last_row_str.split("value='")[-1].split("'")[0])
+        last_row_integer = str(last_row_int + 1)
+        logger.info(f"DeckSerializer.ndf) Adding new entry: $/GFX/Unit/Descriptor_Unit_{unit_name}")
+        unit_ids_map.add(("$/GFX/Unit/Descriptor_Unit_" + unit_name, last_row_integer))
+        
+def create_division_packs(source_path: Any) -> None:
+    """Create division packs in DivisionPacks.ndf."""
+    logger.info("Creating division packs")
+    
+    for donor, edits in NEW_UNITS.items():
+        if "NewName" not in edits:
+            continue
+        
+        unit_name = edits["NewName"]
+        new_entry = (
+            f'Descriptor_Deck_Pack_{unit_name} is DeckPackDescriptor\n'
+            f'(\n'
+            f'    Unit = $/GFX/Unit/Descriptor_Unit_{unit_name}\n'
+            f')\n'
+        )
+        source_path.add(new_entry)
+        logger.info(f"Created division pack for {unit_name}")

@@ -14,6 +14,7 @@ Module Structure:
 
 from typing import Any, Callable, Dict, List
 
+from src.shared import get_shared_editors
 from src.utils.logging_utils import setup_logger
 
 from .buildings import edit_fob_attributes
@@ -42,8 +43,10 @@ from .divisions import (
     add_division_rules,
     add_to_divisions,
     create_deck_pack_descriptors,
+    create_division_packs,
     edit_division_matrices,
     edit_division_units,
+    update_deck_serializer,
 )
 from .effects import (
     edit_capacite_list,
@@ -80,6 +83,7 @@ from .weapons.damage_families import (
     apply_damage_families,
     apply_damage_family_edits,
     edit_infantry_armor,
+    edit_weapon_constantes,
 )
 from .weapons.missiles import edit_missiles
 from .weapons.mortar_mods import add_radio_tag_to_mortars, edit_smoke_duration
@@ -90,7 +94,8 @@ logger = setup_logger(__name__)
 
 def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:
     """Get all game file editors."""
-    return {
+    # Get base gameplay editors
+    editors = {
         # Core gameplay mechanics
         "GameData/Gameplay/Constantes/GDConstantes.ndf": [
             lambda source_path: edit_gd_constantes(source_path),
@@ -98,7 +103,9 @@ def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:
         "GameData/Gameplay/Constantes/Ravitaillement.ndf": [
             lambda source_path: edit_ravitaillement(source_path),
         ],
-        "GameData/Gameplay/Constantes/WeaponConstantes.ndf": [],
+        "GameData/Gameplay/Constantes/WeaponConstantes.ndf": [
+            lambda source_path: edit_weapon_constantes(source_path),
+        ],
         "GameData/Gameplay/Terrains/Terrains.ndf": [
             lambda source_path: edit_terrains(source_path),
         ],
@@ -110,8 +117,11 @@ def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:
         ],
         
         # Division and deck files
+        # "GameData/Generated/Gameplay/Decks/DeckPacks.ndf": [
+        #     lambda source_path: create_deck_pack_descriptors(source_path)
+        # ],
         "GameData/Generated/Gameplay/Decks/DeckSerializer.ndf": [
-            lambda source_path: create_deck_pack_descriptors(source_path)
+            lambda source_path: update_deck_serializer(source_path)
         ],
         "GameData/Generated/Gameplay/Decks/Divisions.ndf": [
             lambda source_path: add_to_divisions(source_path),
@@ -119,6 +129,9 @@ def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:
         ],
         "GameData/Generated/Gameplay/Decks/DivisionRules.ndf": [
             lambda source_path: add_division_rules(source_path)
+        ],
+        "GameData/Generated/Gameplay/Decks/DivisionPacks.ndf": [
+            lambda source_path: create_division_packs(source_path)
         ],
         "GameData/Generated/Gameplay/Decks/DivisionCostMatrix.ndf": [
             lambda source_path: edit_division_matrices(source_path)
@@ -255,14 +268,20 @@ def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:
         "GameData/Generated/UserInterface/Textures/DivisionTextures.ndf": [
             lambda source_path: edit_division_emblems(source_path),
         ],
-        
-        # Other game files
-        
-        
         "GameData/Generated/UserInterface/Textures/SpecialityIconTextures.ndf": [
             lambda source_path: edit_specialty_icons(source_path),
         ],
         "GameData/Generated/UserInterface/UnitSpecialties.ndf": [
             lambda source_path: edit_specialties(source_path),
         ],
-    } 
+    }
+    
+    # Add shared editors
+    shared_editors = get_shared_editors()
+    for path, editor_list in shared_editors.items():
+        if path in editors:
+            editors[path].extend(editor_list)
+        else:
+            editors[path] = editor_list
+            
+    return editors 

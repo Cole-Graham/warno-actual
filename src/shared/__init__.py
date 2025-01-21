@@ -2,16 +2,17 @@
 
 from typing import Callable, Dict, List
 
-from .buildings.fob import add_fob_minimap_module, add_fob_minimap_texture
+from .buildings.fob import add_fob_minimap_texture
+from src.ui import edit_uicommonflarelabelresources
 
 
 def get_shared_editors() -> Dict[str, List[Callable]]:
     """Get shared file editors. (for identical files)"""
     return {
-        "GameData/Generated/Gameplay/Gfx/BuildingDescriptors.ndf": [
-            lambda source: add_fob_minimap_module(source),
-        ],
         "GameData/Generated/UserInterface/Textures/MinimapIcons.ndf": [
-            lambda source: add_fob_minimap_texture(source),
+            add_fob_minimap_texture,  # Direct function reference instead of lambda
+        ],
+        "GameData/UserInterface/Use/Common/UICommonFlareLabelResources.ndf": [
+            edit_uicommonflarelabelresources,  # Direct function reference instead of lambda
         ]
-    } 
+    }   

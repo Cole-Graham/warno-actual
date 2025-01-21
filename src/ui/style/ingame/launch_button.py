@@ -1,27 +1,22 @@
 """Functions for modifying UI launch battle button resources."""
-import csv
-from typing import Any, List
+from typing import Any
 
 from src import ndf
+from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
 
-def edit_uiingamelaunchbattlebuttonresources(source_path, csv_files: List[str]) -> None:
-    """Edit UIInGameLaunchBattleButtonResources.ndf.
-    
-    Args:
-        source: NDF file containing launch button definitions
-        csv_files: List of CSV files to update with new text entries
-    """
+def edit_uiingamelaunchbattlebuttonresources(source_path) -> None:
+    """Edit UIInGameLaunchBattleButtonResources.ndf."""
     logger.info("Editing UIInGameLaunchBattleButtonResources.ndf")
     
     # Update deployment phase panel
     _update_deployment_phase_panel(source_path)
     
     # Add FOB reminder text
-    _add_fob_reminder_text(source_path, csv_files)
+    _add_fob_reminder_text(source_path)
     
     # Update launch button cancel
     _update_launch_button_cancel(source_path)
@@ -53,7 +48,7 @@ def _update_text_properties(component: Any) -> None:
     component.by_member("BackgroundBlockColorToken").v = '"M81_Artichoke191"'
     component.by_member("BorderLineColorToken").v = '"M81_Artichoke"'
 
-def _add_fob_reminder_text(source_path, csv_files: List[str]) -> None:
+def _add_fob_reminder_text(source_path) -> None:
     """Add FOB reminder text component and localization."""
     deploymentphasepanel = source_path.by_namespace("DeploymentPhasePanel").v
     components = deploymentphasepanel.by_member("Components").v
@@ -63,13 +58,10 @@ def _add_fob_reminder_text(source_path, csv_files: List[str]) -> None:
     logger.debug("Added FOB reminder text component")
     
     # Add localization entry
-    for file in csv_files:
-        if "INTERFACE_INGAME" in file:
-            with open(file, 'a', newline='', encoding='utf-8') as csvfile:
-                csvwriter = csv.writer(
-                    csvfile, delimiter=';', quotechar='"', quoting=csv.QUOTE_ALL)
-                csvwriter.writerow(["BUYFOB", "Don't forget to place your FIELD SUPPLY POINT(s) !"])
-            logger.debug(f"Added FOB reminder text to {file}")
+    write_dictionary_entries([
+        ("BUYFOB", "Buy your FOB(s) first, so you don't forget!!!")
+    ], "ingame")
+    logger.debug("Added FOB reminder text to dictionary")
 
 def _update_launch_button_cancel(source_path) -> None:
     """Update launch button cancel properties."""

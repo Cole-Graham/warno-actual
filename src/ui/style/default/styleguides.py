@@ -5,7 +5,7 @@ from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
 
-def edit_componentstate(parent_key, key, componentstate, color):
+def _edit_componentstate(parent_key, key, componentstate, color):
     """Helper function to edit component state colors.
     
     Args:
@@ -109,8 +109,8 @@ def edit_defaultstyleguides(source_path) -> None:
             block_colors_map.insert(index, boutontemps_backgroundm81)
 
             # Update CustomFlareText colors
-            edit_componentstate(block_colors_map, '"CustomFlareText"', 'Normal', 'M81_ArtichokeNearWhite')
-            edit_componentstate(block_colors_map, '"CustomFlareText"', 'Highlighted', 'M81_EbonyVeryDark')
+            _edit_componentstate(block_colors_map, '"CustomFlareText"', 'Normal', 'M81_ArtichokeNearWhite')
+            _edit_componentstate(block_colors_map, '"CustomFlareText"', 'Highlighted', 'M81_EbonyVeryDark')
 
             # Add BoutonTemps pawn block
             boutontemps_pawnblockm81 = (
@@ -202,9 +202,9 @@ def edit_defaultstyleguides(source_path) -> None:
             block_colors_map.insert(index, darkergray30)
 
             # Update DropdownBlanc colors
-            edit_componentstate(block_colors_map, '"DropdownBlanc"', 'Normal', 'M81_ArtichokeVeryLight')
-            edit_componentstate(block_colors_map, '"DropdownBlanc"', 'Highlighted', 'M81_Artichoke')
-            edit_componentstate(block_colors_map, '"DropdownBlanc"', 'Toggled', 'M81_Artichoke')
+            _edit_componentstate(block_colors_map, '"DropdownBlanc"', 'Normal', 'M81_ArtichokeVeryLight')
+            _edit_componentstate(block_colors_map, '"DropdownBlanc"', 'Highlighted', 'M81_Artichoke')
+            _edit_componentstate(block_colors_map, '"DropdownBlanc"', 'Toggled', 'M81_Artichoke')
 
             # Add ButtonHUD BigBorder M81CubeAction
             buttonhudbigborder_m81cubeaction = (
@@ -226,8 +226,8 @@ def edit_defaultstyleguides(source_path) -> None:
             block_colors_map.insert(index, alertpanel_gradient1m81)
 
             # Update DeckOverview colors
-            edit_componentstate(block_colors_map, '"DeckOverview/CaseGrisee/EditableText/Selected"', 'Normal', 'M81_ArtichokeVeryLight62')
-            edit_componentstate(block_colors_map, '"DeckOverview/CaseGrisee/EditableText/Selected"', 'Highlighted', 'M81_ArtichokeVeryLight62')
+            _edit_componentstate(block_colors_map, '"DeckOverview/CaseGrisee/EditableText/Selected"', 'Normal', 'M81_ArtichokeVeryLight62')
+            _edit_componentstate(block_colors_map, '"DeckOverview/CaseGrisee/EditableText/Selected"', 'Highlighted', 'M81_ArtichokeVeryLight62')
 
             # Add PanelScore ScoreBackgroundM81
             panelscore_scorebackgroundm81 = ('"PanelScore/ScoreBackgroundM81"', 'MAP [ ( ~/ComponentState/Normal, TColorRTTI( Color = M81_Artichoke ) ), ]')
@@ -235,8 +235,8 @@ def edit_defaultstyleguides(source_path) -> None:
             block_colors_map.insert(index, panelscore_scorebackgroundm81)
 
             # Update SliderBasic colors
-            edit_componentstate(block_colors_map, '"SliderBasic/ThumbColor"', 'Normal', 'M81_ArtichokeVeryLight')
-            edit_componentstate(block_colors_map, '"SliderBasic/SliderBar"', 'Normal', 'M81_Ebony')
+            _edit_componentstate(block_colors_map, '"SliderBasic/ThumbColor"', 'Normal', 'M81_ArtichokeVeryLight')
+            _edit_componentstate(block_colors_map, '"SliderBasic/SliderBar"', 'Normal', 'M81_Ebony')
 
             # Add BoutonTimePanel colors
             boutontimepanelm81pause = (
@@ -278,13 +278,13 @@ def edit_defaultstyleguides(source_path) -> None:
             block_colors_map.insert(index, boutontimepanelm81pause)
 
             # Update playerHelper colors
-            edit_componentstate(block_colors_map, '"playerHelper/Cover/Otan_line"', 'Normal', 'M81_AppleIIc')
-            edit_componentstate(block_colors_map, '"playerHelper/Cover/Otan_line"', 'Highlighted', 'M81_AppleIIc')
-            edit_componentstate(block_colors_map, '"playerHelper/Cover/Otan_line"', 'Toggled', 'M81_AppleIIc')
+            _edit_componentstate(block_colors_map, '"playerHelper/Cover/Otan_line"', 'Normal', 'M81_AppleIIc')
+            _edit_componentstate(block_colors_map, '"playerHelper/Cover/Otan_line"', 'Highlighted', 'M81_AppleIIc')
+            _edit_componentstate(block_colors_map, '"playerHelper/Cover/Otan_line"', 'Toggled', 'M81_AppleIIc')
 
-            edit_componentstate(block_colors_map, '"playerHelper/Cover/Pact_line"', 'Normal', 'M81_P3AmberOrange')
-            edit_componentstate(block_colors_map, '"playerHelper/Cover/Pact_line"', 'Highlighted', 'M81_P3AmberOrange')
-            edit_componentstate(block_colors_map, '"playerHelper/Cover/Pact_line"', 'Toggled', 'M81_P3AmberOrange')
+            _edit_componentstate(block_colors_map, '"playerHelper/Cover/Pact_line"', 'Normal', 'M81_P3AmberOrange')
+            _edit_componentstate(block_colors_map, '"playerHelper/Cover/Pact_line"', 'Highlighted', 'M81_P3AmberOrange')
+            _edit_componentstate(block_colors_map, '"playerHelper/Cover/Pact_line"', 'Toggled', 'M81_P3AmberOrange')
 
             # Add TacticButton highlightable block
             tacticbutton_highlightableblockm81 = (
@@ -504,20 +504,20 @@ def edit_defaultstyleguides(source_path) -> None:
             line_colors_map.insert(index, boutonvignetteachatarmoryWACTUAL)
 
             # Update DeckCreator colors
-            edit_componentstate(line_colors_map, '"DeckCreator/AddUnitToDeck"', 'Normal', '[188,175,145,240]')
-            edit_componentstate(line_colors_map, '"DeckCreator/AddUnitToDeck"', 'Highlighted', '[219,204,168,220]')
-            edit_componentstate(line_colors_map, '"DeckCreator/AddUnitToDeck"', 'Clicked', '[80,101,77,220]')
-            edit_componentstate(line_colors_map, '"DeckCreator/AddUnitToDeck"', 'Grayed', 'M81_DarkCharcoal')
+            _edit_componentstate(line_colors_map, '"DeckCreator/AddUnitToDeck"', 'Normal', '[188,175,145,240]')
+            _edit_componentstate(line_colors_map, '"DeckCreator/AddUnitToDeck"', 'Highlighted', '[219,204,168,220]')
+            _edit_componentstate(line_colors_map, '"DeckCreator/AddUnitToDeck"', 'Clicked', '[80,101,77,220]')
+            _edit_componentstate(line_colors_map, '"DeckCreator/AddUnitToDeck"', 'Grayed', 'M81_DarkCharcoal')
 
-            edit_componentstate(line_colors_map, '"DeckCreator/SlotLibre"', 'Normal', '[156,145,119,128]')
-            edit_componentstate(line_colors_map, '"DeckCreator/SlotSelectionne"', 'Normal', '[219,204,168,220]')
+            _edit_componentstate(line_colors_map, '"DeckCreator/SlotLibre"', 'Normal', '[156,145,119,128]')
+            _edit_componentstate(line_colors_map, '"DeckCreator/SlotSelectionne"', 'Normal', '[219,204,168,220]')
 
             # Update ConfirmButton border colors
-            edit_componentstate(line_colors_map, '"ConfirmButton/Border"', 'Grayed', 'M81_MonochromeCRT')
-            edit_componentstate(line_colors_map, '"ConfirmButton/Border"', 'Normal', '[36,110,36,255]')
-            edit_componentstate(line_colors_map, '"ConfirmButton/Border"', 'Highlighted', '[43,121,43,255]')
-            edit_componentstate(line_colors_map, '"ConfirmButton/Border"', 'Clicked', '[50,135,50,255]')
-            edit_componentstate(line_colors_map, '"ConfirmButton/Border"', 'Toggled', '[43,121,43,255]')
+            _edit_componentstate(line_colors_map, '"ConfirmButton/Border"', 'Grayed', 'M81_MonochromeCRT')
+            _edit_componentstate(line_colors_map, '"ConfirmButton/Border"', 'Normal', '[36,110,36,255]')
+            _edit_componentstate(line_colors_map, '"ConfirmButton/Border"', 'Highlighted', '[43,121,43,255]')
+            _edit_componentstate(line_colors_map, '"ConfirmButton/Border"', 'Clicked', '[50,135,50,255]')
+            _edit_componentstate(line_colors_map, '"ConfirmButton/Border"', 'Toggled', '[43,121,43,255]')
 
             # Add TimePanel button borders
             timepanel_buttonborderm81pause = (
@@ -566,7 +566,7 @@ def edit_defaultstyleguides(source_path) -> None:
             line_colors_map.insert(index, tacticbutton_highlightablelinem81)
 
             # Update TacticPanel color
-            edit_componentstate(line_colors_map, '"TacticPanel"', 'Normal', '[14,14,14,75]') 
+            _edit_componentstate(line_colors_map, '"TacticPanel"', 'Normal', '[14,14,14,75]') 
             
                         # Handle text colors map
             text_colors_map = row.v.by_m("TextColorsMap").v
@@ -618,7 +618,7 @@ def edit_defaultstyleguides(source_path) -> None:
             text_colors_map.insert(index, m81roe_default)
 
             # Update playerHelper text colors
-            edit_componentstate(text_colors_map, '"playerHelper/texte/Otan_element"', 'ToggleHighlighted', '[255,255,255,255]')
+            _edit_componentstate(text_colors_map, '"playerHelper/texte/Otan_element"', 'ToggleHighlighted', '[255,255,255,255]')
 
             # Add WeaponButton Overblock text
             weaponbutton_overblocktextm81 = (
@@ -698,15 +698,15 @@ def edit_defaultstyleguides(source_path) -> None:
             text_colors_map.insert(index, tacticpaneltextm81)
 
             # Update moral color
-            edit_componentstate(text_colors_map, '"moral_color_bad_1"', 'Normal', '[255,200,0,255]')
+            _edit_componentstate(text_colors_map, '"moral_color_bad_1"', 'Normal', '[255,200,0,255]')
 
             # Update BoutonXP deck colors
-            edit_componentstate(text_colors_map, '"BoutonXP_deck"', 'Grayed', 'M81_DarkCharcoal')
-            edit_componentstate(text_colors_map, '"BoutonXP_deck"', 'Normal', 'M81_Ebony')
-            edit_componentstate(text_colors_map, '"BoutonXP_deck"', 'Highlighted', 'M81_EbonyLight')
-            edit_componentstate(text_colors_map, '"BoutonXP_deck"', 'Clicked', 'M81_EbonyVeryDark')
-            edit_componentstate(text_colors_map, '"BoutonXP_deck"', 'Toggled', 'M81_EbonyVeryDark')
-            edit_componentstate(text_colors_map, '"BoutonXP_deck"', 'ToggleHighlighted', 'M81_EbonyVeryDark')
+            _edit_componentstate(text_colors_map, '"BoutonXP_deck"', 'Grayed', 'M81_DarkCharcoal')
+            _edit_componentstate(text_colors_map, '"BoutonXP_deck"', 'Normal', 'M81_Ebony')
+            _edit_componentstate(text_colors_map, '"BoutonXP_deck"', 'Highlighted', 'M81_EbonyLight')
+            _edit_componentstate(text_colors_map, '"BoutonXP_deck"', 'Clicked', 'M81_EbonyVeryDark')
+            _edit_componentstate(text_colors_map, '"BoutonXP_deck"', 'Toggled', 'M81_EbonyVeryDark')
+            _edit_componentstate(text_colors_map, '"BoutonXP_deck"', 'ToggleHighlighted', 'M81_EbonyVeryDark')
 
             # Add BoutonXP deck chevron
             boutonxpdeck_chevronm81 = (
@@ -737,8 +737,8 @@ def edit_defaultstyleguides(source_path) -> None:
             text_colors_map.insert(index, transportedtextm81)
 
             # Update hint colors
-            edit_componentstate(text_colors_map, '"hint_fond_meilleureLecture"', 'Normal', '[12,55,16,255]')
-            edit_componentstate(text_colors_map, '"hint_titre_meilleureLecture"', 'Normal', '[12,56,16,255]')
+            _edit_componentstate(text_colors_map, '"hint_fond_meilleureLecture"', 'Normal', '[12,55,16,255]')
+            _edit_componentstate(text_colors_map, '"hint_titre_meilleureLecture"', 'Normal', '[12,56,16,255]')
 
             # Add new type colors
             new_lines = [
@@ -753,10 +753,10 @@ def edit_defaultstyleguides(source_path) -> None:
                 text_colors_map.insert(index, line)
 
             # Update CouleurTexture boutonShortcuts colors
-            edit_componentstate(text_colors_map, '"CouleurTexture_boutonShortcuts"', 'Clicked', 'M81_AppleIIc')
-            edit_componentstate(text_colors_map, '"CouleurTexture_boutonShortcuts"', 'Toggled', 'M81_AppleIIc')
-            edit_componentstate(text_colors_map, '"CouleurTexture_boutonShortcuts"', 'ToggleHighlighted', 'M81_AppleIIc')
-            edit_componentstate(text_colors_map, '"CouleurTexture_boutonShortcuts"', 'ToggleClicked', 'M81_AppleIIc')
+            _edit_componentstate(text_colors_map, '"CouleurTexture_boutonShortcuts"', 'Clicked', 'M81_AppleIIc')
+            _edit_componentstate(text_colors_map, '"CouleurTexture_boutonShortcuts"', 'Toggled', 'M81_AppleIIc')
+            _edit_componentstate(text_colors_map, '"CouleurTexture_boutonShortcuts"', 'ToggleHighlighted', 'M81_AppleIIc')
+            _edit_componentstate(text_colors_map, '"CouleurTexture_boutonShortcuts"', 'ToggleClicked', 'M81_AppleIIc')
 
             # Remove and add CouleurBordure boutonShortcuts
             text_colors_map.remove_by_key('"CouleurBordure_boutonShortcuts"')
@@ -815,11 +815,11 @@ def edit_defaultstyleguides(source_path) -> None:
             text_colors_map.insert(index, fulda_turquoisewactual)
 
             # Update ButtonHUD Text2 colors
-            edit_componentstate(text_colors_map, '"ButtonHUD/Text2"', 'Normal', 'BlancEquipe')
-            edit_componentstate(text_colors_map, '"ButtonHUD/Text2"', 'Highlighted', 'BlancEquipe')
-            edit_componentstate(text_colors_map, '"ButtonHUD/Text2"', 'Clicked', 'M81_AppleII')
-            edit_componentstate(text_colors_map, '"ButtonHUD/Text2"', 'Toggled', 'M81_AppleII')
-            edit_componentstate(text_colors_map, '"ButtonHUD/Text2"', 'ToggleHighlighted', 'M81_AppleIIc')
+            _edit_componentstate(text_colors_map, '"ButtonHUD/Text2"', 'Normal', 'BlancEquipe')
+            _edit_componentstate(text_colors_map, '"ButtonHUD/Text2"', 'Highlighted', 'BlancEquipe')
+            _edit_componentstate(text_colors_map, '"ButtonHUD/Text2"', 'Clicked', 'M81_AppleII')
+            _edit_componentstate(text_colors_map, '"ButtonHUD/Text2"', 'Toggled', 'M81_AppleII')
+            _edit_componentstate(text_colors_map, '"ButtonHUD/Text2"', 'ToggleHighlighted', 'M81_AppleIIc')
 
             # Add ButtonHUD Text2 airwing
             buttonhud_text2airwingm81 = (

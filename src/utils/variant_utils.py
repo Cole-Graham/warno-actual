@@ -9,15 +9,7 @@ from src.utils.logging_utils import setup_logger
 logger = setup_logger(__name__)
 
 def validate_variant_config(variants: Dict, mod_src_path: Path = None) -> None:
-    """Validate variant configuration.
-    
-    Args:
-        variants: Dictionary of variant configurations
-        mod_src_path: Path to source directory
-        
-    Raises:
-        ValueError: If variant configuration is invalid
-    """
+    """Validate variant configuration."""
     if not variants:
         return
         
@@ -28,28 +20,35 @@ def validate_variant_config(variants: Dict, mod_src_path: Path = None) -> None:
             if not full_path.exists():
                 raise ValueError(f"Variant file not found: {full_path}")
             
-        # Check required keys exist
+        # Check config format
         if not isinstance(config, dict):
             raise ValueError(f"Invalid variant config for {ndf_path}: must be dictionary")
             
-        if "ui" not in config or "gameplay" not in config:
-            raise ValueError(f"Missing required keys in variant config for {ndf_path}")
+        # For variant files, check UI/gameplay lists
+        if "ui" in config or "gameplay" in config:
+            if "ui" not in config or "gameplay" not in config:
+                raise ValueError(f"Missing required keys in variant config for {ndf_path}")
+                
+            # Validate UI functions
+            _validate_function_list(config["ui"], ndf_path, "ui")
             
-        # Validate UI functions
-        _validate_function_list(config["ui"], ndf_path, "ui")
-        
-        # Validate gameplay functions
-        _validate_function_list(config["gameplay"], ndf_path, "gameplay")
-        
-        # Ensure UI functions are subset of gameplay functions
-        ui_funcs = set(config["ui"])
-        gameplay_funcs = set(config["gameplay"])
-        if not ui_funcs.issubset(gameplay_funcs):
-            invalid_funcs = ui_funcs - gameplay_funcs
-            raise ValueError(
-                f"UI functions must be subset of gameplay functions. "
-                f"Invalid functions: {invalid_funcs}"
-            )
+            # Validate gameplay functions  
+            _validate_function_list(config["gameplay"], ndf_path, "gameplay")
+            
+            # Ensure UI functions are subset of gameplay functions
+            ui_funcs = set(config["ui"])
+            gameplay_funcs = set(config["gameplay"])
+            if not ui_funcs.issubset(gameplay_funcs):
+                invalid_funcs = ui_funcs - gameplay_funcs
+                raise ValueError(
+                    f"UI functions must be subset of gameplay functions. "
+                    f"Invalid functions: {invalid_funcs}"
+                )
+        # For shared files, check single function list
+        else:
+            if not isinstance(config, list):
+                raise ValueError(f"Shared file config must be list for {ndf_path}")
+            _validate_function_list(config, ndf_path, "shared")
 
 def _validate_function_list(functions: List[str], file_path: str, mod_type: str) -> None:
     """Validate list of function names."""

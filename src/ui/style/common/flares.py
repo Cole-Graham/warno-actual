@@ -3,25 +3,21 @@ import csv
 from typing import Any, List
 
 from src import ndf
+from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
 
-def edit_uicommonflarelabelresources(source_path, csv_files: List[str]) -> None:
-    """Edit UICommonFlareLabelResources.ndf.
-    
-    Args:
-        source: NDF file containing flare label definitions
-        csv_files: List of CSV files to update with new text entries
-    """
+def edit_uicommonflarelabelresources(source_path: Any) -> None:
+    """Edit UICommonFlareLabelResources.ndf."""
     logger.info("Editing UICommonFlareLabelResources.ndf")
     
     # Update flare text tokens
     _update_flare_text_tokens(source_path)
     
-    # Add new text entries to CSV files
-    _add_flare_text_entries(csv_files)
+    # Add new text entries
+    _add_flare_text_entries()
     
     # Update flare label template
     _update_flare_label_template(source_path)
@@ -53,23 +49,16 @@ def _update_flare_text_tokens(source_path) -> None:
             row.v.by_member("TextToken").v = token_map[icon_texture_token]
             logger.debug(f"Updated text token for {icon_texture_token}")
 
-def _add_flare_text_entries(csv_files: List[str]) -> None:
-    """Add new text entries to CSV files."""
+def _add_flare_text_entries() -> None:
+    """Add new text entries to dictionary."""
     new_entries = [
-        ["ATKFLARE", "ATTACK!"],
-        ["DEFNDFLARE", "DEFEND"],
-        ["HALPMEEE", "HELP!"],
-        ["FIREFLARE", "FIRE SUPPORT"]
+        ("ATKFLARE", "ATTACK!"),
+        ("DEFNDFLARE", "DEFEND"),
+        ("HALPMEEE", "HELP!"),
+        ("FIREFLARE", "FIRE SUPPORT")
     ]
     
-    for file in csv_files:
-        if "INTERFACE_INGAME" in file:
-            with open(file, 'a', newline='', encoding='utf-8') as csvfile:
-                csvwriter = csv.writer(
-                    csvfile, delimiter=';', quotechar='"', quoting=csv.QUOTE_ALL)
-                for entry in new_entries:
-                    csvwriter.writerow(entry)
-            logger.debug(f"Added flare text entries to {file}")
+    write_dictionary_entries(new_entries, dictionary_type="ingame")
 
 def _update_flare_label_template(source_path) -> None:
     """Update flare label template properties."""

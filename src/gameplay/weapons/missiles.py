@@ -267,4 +267,51 @@ def _track_dictionary_entries(weapon_name, data, ingame_names, calibers):
         if "parent_membr" in ammo_data and "Caliber" in ammo_data["parent_membr"]:
             caliber_data = ammo_data["parent_membr"]["Caliber"]
             if caliber_data[0] != "existing":
-                calibers.append((weapon_name, caliber_data[1], caliber_data[0])) 
+                calibers.append((weapon_name, caliber_data[1], caliber_data[0]))
+
+def sead_missile_speed(source: Any, game_db: Dict[str, Any]) -> None:
+    """Adjust SEAD missile speed and acceleration."""
+    logger.info("Adjusting SEAD missile speed and acceleration")
+    
+    ammo_db = game_db["ammunition"]
+    missile_inst_renames = ammo_db.get("renames_new_old", {})
+    
+    for missile_decr in source:
+        # Strip Ammo_ prefix for comparison
+        stripped_namespace = missile_decr.namespace.replace("Ammo_", "")
+        
+        for (missile, category, donor, is_new), data in missiles.items():
+            if data is None or not "MissileDescriptor" in data:
+                continue
+                
+            # Check for renames
+            if stripped_namespace in missile_inst_renames:
+                stripped_namespace = missile_inst_renames[stripped_namespace]
+                    
+            if missile != stripped_namespace:
+                continue
+            
+            modules_list = missile_decr.v.by_m("ModulesDescriptors").v
+            for module in modules_list:
+                if not isinstance(module.v, ndf.model.Object):
+                    continue
+                    
+                if module.v.type != "TGuidedMissileMovementModuleDescriptor":
+                    continue
+                
+                default_cfg = module.v.by_m("DefaultConfig").v
+                if "MaxSpeedGRU" in data["MissileDescriptor"]:
+                    max_speed = data["MissileDescriptor"]["MaxSpeedGRU"]
+                    default_cfg.by_m("MaxSpeedGRU").v = str(max_speed)
+                    logger.debug(f"Changed {missile_decr.namespace} max speed to {max_speed}")
+                    
+                    uncontrollable_cfg = module.v.by_m("UncontrollableConfig").v
+                    uncontrollable_cfg.by_m("MaxSpeedGRU").v = str(max_speed)
+                    logger.debug(f"Changed {missile_decr.namespace} uncontrollable speed to {max_speed}")
+                    
+                if "MaxAccelerationGRU" in data["MissileDescriptor"]:
+                    max_accel = data["MissileDescriptor"]["MaxAccelerationGRU"]
+                    default_cfg.by_m("MaxAccelerationGRU").v = str(max_accel)
+                    logger.debug(f"Changed {missile_decr.namespace} max acceleration to {max_accel}")
+                
+            break 

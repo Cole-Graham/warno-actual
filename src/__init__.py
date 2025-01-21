@@ -16,8 +16,7 @@ class ModConfig:
         self.config_data: Dict
         
         self.loader = ConfigLoader(yaml_path=config_file_path)
-        self.loader.load()
-        self.config_data = self.loader.config_data
+        self.config_data = self.loader.load()
     
     @classmethod
     def get_instance(cls) -> 'ModConfig':

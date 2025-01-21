@@ -45,5 +45,5 @@ def edit_colors(source_path) -> None:
     # Insert color definitions at start of file
     for line in reversed(color_definitions.split('\n')):
         if line:
-            source_path.insert(0, line)
+            source_path.insert(1, line)
             logger.debug(f"Added color definition: {line}") 

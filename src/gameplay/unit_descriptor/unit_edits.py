@@ -4,6 +4,7 @@ from typing import Any, Dict
 
 from src import ndf
 from src.constants.unit_edits import load_unit_edits
+from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import find_namespace, get_module_list, is_obj_type
 
@@ -16,6 +17,7 @@ def edit_units(source_path: Any, game_db: Dict[str, Any]) -> None:
     units_processed = 0
     units_modified = 0
     unit_edits = load_unit_edits()
+    dictionary_entries = []  # Create list to collect entries
     
     _handle_supply(source_path, game_db, unit_edits)
     
@@ -35,15 +37,20 @@ def edit_units(source_path: Any, game_db: Dict[str, Any]) -> None:
                 if not isinstance(descr_row.v, ndf.model.Object):
                     continue
                     
-                modify_module(unit_row, descr_row, edits, i, modules_list)
+                modify_module(unit_row, descr_row, edits, i, modules_list, dictionary_entries)
         except Exception as e:
             logger.error(f"Error modifying {unit_name}: {str(e)}")
+    
+    # Write all dictionary entries at once
+    if dictionary_entries:
+        logger.info(f"Writing {len(dictionary_entries)} dictionary entries")
+        write_dictionary_entries(dictionary_entries, dictionary_type="units")
     
     logger.info(f"Processed {units_processed} units total")
     logger.info(f"Modified {units_modified} units")
 
 def modify_module(
-    unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list
+    unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list, dictionary_entries: list
 ) -> None:
     """Apply edits to a specific module based on its type."""
     descr_type = descr_row.v.type
@@ -80,7 +87,7 @@ def modify_module(
 
     # Apply module-specific handler if it exists
     if handler := module_handlers.get(descr_type):
-        handler(unit_row, descr_row, edits, index, modules_list)
+        handler(unit_row, descr_row, edits, index, modules_list, dictionary_entries)
 
 def _handle_tags(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
     if "TagSet" not in edits:
@@ -161,7 +168,8 @@ def _handle_icon(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
         descr_row.v.by_m("IdentifiedTextures").v = str(edits["IdentifiedTextures"])
         descr_row.v.by_m("UnidentifiedTextures").v = str(edits["UnidentifiedTextures"])
 
-def _handle_unit_ui(unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list) -> None:
+def _handle_unit_ui(unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list, dictionary_entries: list) -> None:
+    """Handle UI module modifications."""
     if "SpecialtiesList" in edits:
         specialties_list = descr_row.v.by_m("SpecialtiesList").v
         if "add_specs" in edits["SpecialtiesList"]:
@@ -176,8 +184,14 @@ def _handle_unit_ui(unit_row: Any, descr_row: Any, edits: dict, index: int, modu
                         logger.info(f"Removed specialty {spec} from {unit_row.namespace}")
 
     if "GameName" in edits:
+        # Collect the dictionary entry
+        dictionary_entries.append((edits["GameName"]["nametoken"], edits["GameName"]["game_n"]))
+        logger.debug(f"Collected dictionary entry: {edits['GameName']['nametoken']} = {edits['GameName']['game_n']}")
+        
+        # Update the name token in the unit
         descr_row.v.by_m("NameToken").v = "'" + edits["GameName"]["nametoken"] + "'"
-    
+        logger.debug(f"Updated name token for {unit_row.namespace}")
+        
     if "UpgradeFromUnit" in edits and descr_row.v.by_m("UpgradeFromUnit", False) is not None:
         descr_row.v.by_m("UpgradeFromUnit").v = f"Descriptor_Unit_{edits['UpgradeFromUnit']}"
     
@@ -282,6 +296,6 @@ def _handle_supply(source_path, game_db, unit_edits):
                             logger.info(f"Edited supply capacity for {unit} from "
                                       f"{old_capacity} to {edits['SupplyCapacity']}")
 
-def _handle_supply(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
-    if "SupplyCapacity" in edits:
-        descr_row.v.by_m("SupplyCapacity").v = str(edits["SupplyCapacity"])
+# def _handle_supply(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
+#     if "SupplyCapacity" in edits:
+#         descr_row.v.by_m("SupplyCapacity").v = str(edits["SupplyCapacity"])

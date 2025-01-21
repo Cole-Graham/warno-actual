@@ -1,6 +1,9 @@
 from pathlib import Path
 from typing import Any, Dict, List
 
+from src.utils.logging_utils import setup_logger
+
+logger = setup_logger(__name__)
 
 def get_mod_src_path(config: Dict) -> Path:
     """Get mod source directory path based on config."""
@@ -38,18 +41,32 @@ def get_files_to_process(config_data):
     build_config = config_data['build_config']
     files = config_data['files']
     
+    logger.info(f"Getting files to process for target: {build_config['target']}")
+    to_process = []
+    
+    # Add shared files first
+    shared_files = files.get('shared', {}).keys()
+    logger.debug(f"Adding shared files: {list(shared_files)}")
+    to_process.extend(shared_files)
+    
     if build_config['target'] == 'ui_only':
-        return files['ui_only']
+        logger.debug(f"Adding UI-only files: {files['ui_only']}")
+        to_process.extend(files['ui_only'])
+        return to_process
     
     # For gameplay mod, include both gameplay files and variant files
-    to_process = files['gameplay_only'].copy()
+    logger.debug(f"Adding gameplay files: {files['gameplay_only']}")
+    to_process.extend(files['gameplay_only'])
     
-    # Handle variants first to ensure proper overrides
-    to_process.extend(files['variants'])
+    # Handle variants
+    variant_files = list(files['variants'].keys())
+    logger.debug(f"Adding variant files: {variant_files}")
+    to_process.extend(variant_files)
     
     # If not using UI as base, include UI files AFTER gameplay files
-    # This ensures UI changes don't get overwritten by gameplay changes
     if not build_config['use_ui_as_base']:
+        logger.debug(f"Adding UI files: {files['ui_only']}")
         to_process.extend(files['ui_only'])
     
+    logger.info(f"Total files to process: {len(to_process)}")
     return to_process 
