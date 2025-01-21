@@ -1,6 +1,7 @@
 """Functions for modifying weapon damage families."""
 
 from typing import Any, Dict
+from src.utils.dictionary_utils import write_dictionary_entries
 
 from src.constants.weapons import (
     DAMAGE_EDITS,
@@ -84,6 +85,7 @@ def add_damage_families_to_impl(source_path) -> None:
 def apply_damage_families(source_path: Any, game_db: Dict[str, Any]) -> None:
     """Apply damage family modifications to weapons."""
     ammo_db = game_db["ammunition"]
+    dictionary_entries = []  # Create list to collect entries
     
     for weapon_descr in source_path:
         if weapon_descr.n in ammo_db["full_ball_weapons"]:
@@ -98,11 +100,17 @@ def apply_damage_families(source_path: Any, game_db: Dict[str, Any]) -> None:
             
             # Update description token
             type_cat = weapon_descr.v.by_m("TypeCategoryName").v
-            for weapon_type, ((cat_hash, desc_hash), _) in WEAPON_DESCRIPTIONS.items():
+            for weapon_type, ((cat_hash, desc_hash), descr_val) in WEAPON_DESCRIPTIONS.items():
                 if type_cat == cat_hash:
                     weapon_descr.v.by_m("WeaponDescriptionToken").v = f"'{desc_hash}'"
                     logger.info(f"Changed {weapon_descr.n} description to {weapon_type} ({desc_hash})")
-                    break 
+                    dictionary_entries.append((desc_hash, descr_val))
+                    break
+
+    # Write all dictionary entries at once
+    if dictionary_entries:
+        logger.info(f"Writing {len(dictionary_entries)} dictionary entries")
+        write_dictionary_entries(dictionary_entries, dictionary_type="units")
 
 
 def add_damage_resistance_values(source_path) -> None:
@@ -211,4 +219,4 @@ def edit_weapon_constants(source_path) -> None:
     # Add full ball damage to blindages to ignore
     blindages_to_ignore = weapon_constantes_obj.by_m("BlindagesToIgnoreForDamageFamilies").v
     blindages_to_ignore.add("(DamageFamily_full_balle, [ResistanceFamily_blindage])")
-    logger.info("Added full_balle to blindages to ignore") 
+    logger.info("Added full_balle to blindages to ignore")
