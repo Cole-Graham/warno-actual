@@ -1,13 +1,13 @@
-# Build configuration
+  # Build configuration
 build_config:
   write_dev: true
-  target: "gameplay"  # Can be "gameplay" or "ui_only"
-  use_ui_as_base: false  # Whether to use UI mod as base for gameplay mod
+  target: "gameplay"
+  use_ui_as_base: false
 
 # Data configuration
 data_config:
-  build_database: true  # Set to false to skip database building
-  database_path: "data/database"  # Path to store database files
+  build_database: true
+  database_path: "data/database"
 
 # Asset configuration  
 asset_config:
@@ -16,7 +16,7 @@ asset_config:
 directories:
   # Base game and output paths
   warno_mods: "C:/Program Files (x86)/Steam/steamapps/common/WARNO/Mods"
-  base_game: "sourcemod"  # Removed leading slash
+  base_game: "sourcemod"
   
   # UI mod paths (can be used as source for gameplay mod)
   ui_release: "test ui"
@@ -29,155 +29,3 @@ directories:
   # Release builds
   gameplay_release: "test gameplay"
   ui_only_release: "test ui"
-
-# File configurations  
-files:
-  # Files that are different between UI and gameplay mods
-  variants:
-    # Format:
-    # "file_path": {
-    #    "ui": [list of UI-safe functions to apply],
-    #    "gameplay": [list of all functions to apply]
-    # }
-    #
-    # When use_ui_as_base=true:
-    # - Gameplay mod uses UI mod files as base, inheriting the UI mod.
-    #
-    # When use_ui_as_base=false:
-    # - Gameplay mod has UI mod written from scratch (slower)
-    #
-    # Example:
-    "GameData/Generated/Gameplay/Gfx/BuildingDescriptors.ndf": {
-        "ui": [
-            "add_fob_minimap_module"  # UI mod only gets minimap texture
-        ],
-        "gameplay": [
-            "add_fob_minimap_module",
-            "edit_fob_attributes",  # Gameplay mod gets both
-        ]
-    }
-    "GameData/UserInterface/Use/InGame/UISpecificUnitInfoPanelView.ndf": {
-        "gameplay": [
-            "edit_unit_info_panel"
-        ]
-    }
-
-  # Files that are identical/shared between UI and gameplay mods
-  shared:
-    "GameData/Generated/UserInterface/Textures/MinimapIcons.ndf": [
-        "add_fob_minimap_texture"
-    ]
-    "GameData/UserInterface/Use/Common/UICommonFlareLabelResources.ndf": [
-        "edit_uicommonflarelabelresources"
-    ]
-
-  # Pure UI files (only modified in UI mod)
-  ui_only:
-    # Style files
-    - "GameData/UserInterface/Style/Common/Colors.ndf"
-    - "GameData/UserInterface/Style/Common/TextStyles.ndf"
-    - "GameData/UserInterface/Style/DefaultStyle/DefaultStyleGuides.ndf"
-    - "GameData/UserInterface/Style/DefaultStyle/DefaultTextFormatScript.ndf"
-    
-    # Common UI templates and components
-    - "GameData/UserInterface/Use/Common/Templates/BuckSpecificBackgrounds.ndf"
-    - "GameData/UserInterface/Use/Common/Templates/BuckSpecificButtons.ndf"
-    - "GameData/UserInterface/Use/Common/Views/BUCKSpecificHint.ndf"
-    - "GameData/UserInterface/Use/Common/CommonTextures.ndf"
-    - "GameData/UserInterface/Use/Common/UISpecificChatView.ndf"
-    - "GameData/UserInterface/Use/Common/UISpecificUnitButtonView.ndf"
-    - "GameData/UserInterface/Use/Common/UIWarningPanel.ndf"
-    
-    # In-game UI
-    - "GameData/UserInterface/Use/InGame/OrderDisplay.ndf"
-    - "GameData/UserInterface/Use/InGame/UIInGameBUCKCubeAction.ndf"
-    - "GameData/UserInterface/Use/InGame/UIIngameBUCKEngagementRules.ndf"
-    - "GameData/UserInterface/Use/InGame/UIInGameDefaultContainer.ndf"
-    - "GameData/UserInterface/Use/InGame/UIInGameHUDReplayResource.ndf"
-    - "GameData/UserInterface/Use/InGame/UIInGameLaunchBattleButtonResources.ndf"
-    - "GameData/UserInterface/Use/InGame/UIInGameMinimap.ndf"
-    - "GameData/UserInterface/Use/InGame/UIInGameResources.ndf"
-    - "GameData/UserInterface/Use/InGame/UISpecificHUDAlertPanelView.ndf"
-    - "GameData/UserInterface/Use/InGame/UISpecificHUDMultiSelectionPanelView.ndf"
-    - "GameData/UserInterface/Use/InGame/UISpecificHUDScoreView.ndf"
-    - "GameData/UserInterface/Use/InGame/UISpecificInGameHUDTimePanelView.ndf"
-    - "GameData/UserInterface/Use/InGame/UISpecificInGameIdleUnitView.ndf"
-    - "GameData/UserInterface/Use/InGame/UISpecificInGamePlayerMissionLabelResources.ndf"
-    - "GameData/UserInterface/Use/InGame/UISpecificMiniMapInfoView.ndf"
-    - "GameData/UserInterface/Use/InGame/UISpecificOffMapAirplaneView.ndf"
-    - "GameData/UserInterface/Use/InGame/UISpecificOffMapView.ndf"
-    - "GameData/UserInterface/Use/InGame/UISpecificShortcutsForSelectionView.ndf"
-    - "GameData/UserInterface/Use/InGame/UISpecificSkirmishProductionMenuView.ndf"
-    - "GameData/UserInterface/Use/InGame/UISpecificUnitLabelAggregationView.ndf"
-    - "GameData/UserInterface/Use/InGame/UISpecificUnitLabelCommon.ndf"
-    - "GameData/UserInterface/Use/InGame/UISpecificUnitLabelMultiSelectionView.ndf"
-    - "GameData/UserInterface/Use/InGame/UISpecificUnitLabelView.ndf"
-    - "GameData/UserInterface/Use/InGame/UISpecificUnitLabelViewNameOnly.ndf"
-    - "GameData/UserInterface/Use/InGame/UISpecificUnitSelectionPanelView.ndf"
-    - "GameData/UserInterface/Use/InGame/UISpecificUnitSelectionWeaponPanelView.ndf"
-    
-    # Out-game and ShowRoom UI
-    - "GameData/UserInterface/Use/OutGame/UseOutGameTextures.ndf"
-    - "GameData/UserInterface/Use/ShowRoom/Views/UISpecificShowRoomArmoryComponent.ndf"
-    - "GameData/UserInterface/Use/ShowRoom/Views/UISpecificShowRoomDeckCreatorScreenComponent.ndf"
-    - "GameData/UserInterface/Use/ShowRoom/Views/UISpecificShowRoomGroupsDeckCreatorScreenView.ndf"
-
-  # Pure gameplay files
-  gameplay_only:
-    # Core gameplay mechanics
-    - "GameData/Gameplay/Constantes/GDConstantes.ndf"
-    - "GameData/Gameplay/Constantes/Ravitaillement.ndf"
-    - "GameData/Gameplay/Constantes/WeaponConstantes.ndf"
-    - "GameData/Gameplay/Terrains/Terrains.ndf"
-    - "GameData/Gameplay/Unit/Tactic/Team.ndf"
-    - "GameData/Gameplay/Unit/CriticalModules/TemplateCriticalEffectModules.ndf"
-
-    # Division files
-    - "GameData/Generated/Gameplay/Decks/DeckSerializer.ndf"
-    - "GameData/Generated/Gameplay/Decks/DeckPacks.ndf"
-    - "GameData/Generated/Gameplay/Decks/DivisionPacks.ndf"
-    - "GameData/Generated/Gameplay/Decks/DivisionRules.ndf"
-    - "GameData/Generated/Gameplay/Decks/Divisions.ndf"
-    - "GameData/Generated/Gameplay/Decks/DivisionCostMatrix.ndf"
-    
-    # Unit and weapon mechanics
-    - "GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf"
-    - "GameData/Generated/Gameplay/Gfx/WeaponDescriptor.ndf"
-    - "GameData/Generated/Gameplay/Gfx/Ammunition.ndf"
-    - "GameData/Generated/Gameplay/Gfx/AmmunitionMissiles.ndf"
-    - "GameData/Generated/Gameplay/Gfx/MissileDescriptors.ndf"
-    - "GameData/Generated/Gameplay/Gfx/OrderAvailability_Tactic.ndf"
-    - "GameData/Generated/Gameplay/Gfx/SmokeDescriptor.ndf"
-    - "GameData/Generated/Gameplay/Gfx/DamageResistance.ndf"
-    - "GameData/Generated/Gameplay/Gfx/DamageResistanceFamilyList.ndf"
-    - "GameData/Generated/Gameplay/Gfx/DamageResistanceFamilyListImpl.ndf"
-    
-    # Effects and veterancy files
-    - "GameData/Generated/Gameplay/Gfx/CapaciteList.ndf"
-    - "GameData/Generated/Gameplay/Gfx/EffectsPacksList.ndf"
-    - "GameData/Generated/Gameplay/Gfx/EffetsSurUnite.ndf"
-    - "GameData/Generated/Gameplay/Gfx/ExperienceLevels.ndf"
-
-    # Depiction files
-    - "GameData/Generated/Gameplay/Gfx/ShowRoomUnits.ndf"
-    - "GameData/Generated/Gameplay/Gfx/UniteCadavreDescriptor.ndf"
-    - "GameData/Generated/Gameplay/Gfx/Depictions/DepictionAerialUnits.ndf"
-    - "GameData/Generated/Gameplay/Gfx/Depictions/DepictionAlternatives.ndf"
-    - "GameData/Generated/Gameplay/Gfx/Depictions/GeneratedDepictionSelectors.ndf"
-    - "GameData/Generated/Gameplay/Gfx/Depictions/GeneratedDepictionGhosts.ndf"
-    - "GameData/Generated/Gameplay/Gfx/Depictions/GeneratedDepictionAerialGhosts.ndf"
-    - "GameData/Generated/Gameplay/Gfx/Depictions/GeneratedDepictionHumans.ndf"
-    - "GameData/Generated/Gameplay/Gfx/Depictions/DepictionVehicles.ndf"
-    - "GameData/Generated/Gameplay/Gfx/Depictions/GeneratedDepictionVehiclesShowRoom.ndf"
-    - "GameData/Generated/Gameplay/Gfx/Infanterie/GeneratedDepictionInfantry.ndf"
-    - "GameData/Generated/Gameplay/Gfx/MissileCarriage.ndf"
-    - "GameData/Generated/Gameplay/Gfx/MissileCarriageDepiction.ndf"
-    
-    # UI
-    - "GameData/Generated/UserInterface/Textures/ButtonTexturesUnites.ndf"
-    - "GameData/Generated/UserInterface/Textures/WeaponTextures.ndf"
-    - "GameData/Generated/UserInterface/Textures/SpecialityIconTextures.ndf"
-    - "GameData/Generated/UserInterface/Textures/DivisionTextures.ndf"
-    - "GameData/Generated/UserInterface/WeaponsMinMax.ndf"
-    - "GameData/Generated/UserInterface/UnitSpecialties.ndf"
-    - "GameData/UserInterface/Use/InGame/UseInGameTextures.ndf"
