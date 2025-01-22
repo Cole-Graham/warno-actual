@@ -17,8 +17,8 @@ from .mortar_mods import (
     add_radio_tag_to_mortars,
     edit_smoke_duration,
 )
-from .unit_edits import edit_units
-from .vanilla_modifications import apply_vanilla_renames, remove_vanilla_instances
+from .unit_edits import unit_edits_weapondescriptor
+from .vanilla_modifications import vanilla_renames_ammunition, remove_vanilla_instances
 
 __all__ = [
     'edit_ammunition',
@@ -33,8 +33,8 @@ __all__ = [
     'edit_smoke_duration',
     'add_corrected_shot_dispersion',
     'add_radio_tag_to_mortars',
-    'edit_units',
-    'apply_vanilla_renames',
+    'unit_edits_weapondescriptor',
+    'vanilla_renames_ammunition',
     'remove_vanilla_instances',
     'edit_weapon_constants',
     'vanilla_renames_weapondescriptor',

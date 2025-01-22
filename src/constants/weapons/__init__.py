@@ -1,6 +1,6 @@
 """Weapon edit definitions."""
 
-from .ammunition import weapons
+from .ammunition import ammunitions
 from .damage_values import (
     DAMAGE_EDITS,
     DPICM_DAMAGES,
@@ -11,7 +11,7 @@ from .damage_values import (
     SNIPER_DAMAGE,
 )
 from .missiles import missiles
-from .squad_at_ammo import SQUAD_AT_AMMO
+from .salvo_standards import LIGHT_AT_AMMO
 from .weapon_descriptions import WEAPON_DESCRIPTIONS
 from .vanilla_inst_modifications import (
     AMMUNITION_MISSILES_REMOVALS,
@@ -33,7 +33,7 @@ __all__ = [
     'INFANTRY_ARMOR_EDITS',
     'missiles',
     'SNIPER_DAMAGE',
-    'SQUAD_AT_AMMO',
+    'LIGHT_AT_AMMO',
     'WEAPON_DESCRIPTIONS',
-    'weapons'
+    'ammunitions'
 ] 

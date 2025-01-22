@@ -104,7 +104,7 @@ def apply_damage_families(source_path: Any, game_db: Dict[str, Any]) -> None:
                 if type_cat == cat_hash:
                     weapon_descr.v.by_m("WeaponDescriptionToken").v = f"'{desc_hash}'"
                     logger.info(f"Changed {weapon_descr.n} description to {weapon_type} ({desc_hash})")
-                    new_dic_entry = (dic_string, desc_hash)
+                    new_dic_entry = (desc_hash, dic_string)
                     if new_dic_entry not in dictionary_entries:
                         dictionary_entries.append(new_dic_entry)
                     break
@@ -112,7 +112,7 @@ def apply_damage_families(source_path: Any, game_db: Dict[str, Any]) -> None:
     # Write dictionary entries
     if dictionary_entries:
         logger.info(f"Writing {len(dictionary_entries)} dictionary entries")
-        write_dictionary_entries(dictionary_entries, dictionary_type="weapons")
+        write_dictionary_entries(dictionary_entries, dictionary_type="units")
 
 
 def add_damage_resistance_values(source_path) -> None:

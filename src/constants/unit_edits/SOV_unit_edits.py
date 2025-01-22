@@ -752,7 +752,7 @@ sov_unit_edits = {
                 1: {
                     "MountedWeapons": {
                         "add": {
-                            "Mortier_Vasilek_indirect_82mm_towed": {
+                            "Mortier_Vasilek_indirect_82mm_towed": { # donor
                                 "Ammunition": "$/GFX/Weapon/Ammo_Mortier_Vasilek_indirect_82mm_SMOKE_towed",
                                 "DispersionRadiusOffColor": "RGBA[0,0,0,0]",
                                 "DispersionRadiusOffThickness": -0.1,
@@ -784,7 +784,7 @@ sov_unit_edits = {
                 1: {
                     "MountedWeapons": {
                         "add": {
-                            "Mortier_Vasilek_indirect_82mm": {
+                            "Mortier_Vasilek_indirect_82mm": { # donor
                                 "Ammunition": "$/GFX/Weapon/Ammo_Mortier_Vasilek_indirect_82mm_SMOKE",
                                 "DispersionRadiusOffColor": "RGBA[0,0,0,0]",
                                 "DispersionRadiusOffThickness": -0.1,

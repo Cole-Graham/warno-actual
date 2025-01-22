@@ -6,10 +6,9 @@ from src import ndf
 from src.constants.weapons.missiles import missiles
 from src.constants.weapons.vanilla_inst_modifications import (
     AMMUNITION_MISSILES_REMOVALS,
-    AMMUNITION_MISSILES_RENAMES,
 )
 from src.gameplay.weapons.vanilla_modifications import (
-    apply_vanilla_renames,
+    vanilla_renames_ammunition,
     remove_vanilla_instances,
 )
 from src.utils.dictionary_utils import write_dictionary_entries
@@ -27,7 +26,7 @@ def edit_missiles(source_path: Any, game_db: Dict[str, Any]) -> None:
         
         # Handle vanilla modifications
         try:
-            apply_vanilla_renames(source_path, AMMUNITION_MISSILES_RENAMES, ammo_db)
+            vanilla_renames_ammunition(source_path, ammo_db)
             remove_vanilla_instances(source_path, AMMUNITION_MISSILES_REMOVALS)
             logger.debug("Applied vanilla modifications")
         except Exception as e:

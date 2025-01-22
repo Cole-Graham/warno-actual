@@ -34,19 +34,11 @@
         "aicursor.model": "gpt-3.5-turbo",
         "explorer.compactFolders": true,
         "files.autoSave": "afterDelay",
+        "[yaml]": {
+            "editor.autoIndent": "full"
+        },
+        "[dockercompose]": {
+            "editor.autoIndent": "full"
+        },
     },
-    "launch": {
-        "version": "0.2.0",
-        "configurations": [
-            {
-                "name": "Debug Any Module in src",
-                "type": "debugpy",
-                "request": "launch",
-                "module": "src.${fileBasenameNoExtension}",
-                "cwd": "${workspaceFolder}",
-                "console": "integratedTerminal",
-                "justMyCode": false
-            }
-        ]
-    }
 }

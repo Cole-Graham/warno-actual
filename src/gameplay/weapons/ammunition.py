@@ -4,10 +4,9 @@ from typing import Any, Dict, List, Tuple
 from uuid import uuid4
 
 from src import ndf
-from src.constants.weapons.ammunition import weapons
+from src.constants.weapons.ammunition import ammunitions
 from src.constants.weapons.vanilla_inst_modifications import (
     AMMUNITION_REMOVALS,
-    AMMUNITION_RENAMES,
 )
 from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.logging_utils import setup_logger
@@ -17,7 +16,7 @@ from .damage_families import apply_damage_families
 from .mg_teams import edit_mg_team_weapons
 from .mortar_mods import add_corrected_shot_dispersion
 from .utils import get_supply_costs
-from .vanilla_modifications import apply_vanilla_renames, remove_vanilla_instances
+from .vanilla_modifications import vanilla_renames_ammunition, remove_vanilla_instances
 
 logger = setup_logger(__name__)
 
@@ -32,7 +31,7 @@ def edit_ammunition(source_path, game_db: Dict[str, Any]) -> None:
         
         # Handle vanilla modifications first
         try:
-            apply_vanilla_renames(source_path, AMMUNITION_RENAMES, ammo_db)
+            vanilla_renames_ammunition(source_path, ammo_db)
             remove_vanilla_instances(source_path, AMMUNITION_REMOVALS)
             logger.debug("Applied vanilla modifications")
         except Exception as e:
@@ -54,7 +53,7 @@ def edit_ammunition(source_path, game_db: Dict[str, Any]) -> None:
         calibers = []
         
         # Process each weapon
-        for (weapon_name, category, donor, is_new), data in weapons.items():
+        for (weapon_name, category, donor, is_new), data in ammunitions.items():
             if "Ammunition" not in data:
                 continue
                 
@@ -90,7 +89,7 @@ def edit_ammunition(source_path, game_db: Dict[str, Any]) -> None:
                 try:
                     if is_new:
                         # For new weapons, only add base descriptor if there are no quantities
-                        if "NbWeapons" not in data:
+                        if "NbWeapons" not in data or len(data["NbWeapons"]) == 1:
                             source_path.add(base_descr)
                             logger.debug(f"Added new base descriptor for {weapon_name}")
                     
@@ -129,7 +128,7 @@ def edit_ammunition(source_path, game_db: Dict[str, Any]) -> None:
         raise
 
 def _create_quantity_variants(source_path, base_descr, weapon_name, quantities, base_cost, is_new):
-    """Create quantity variants from base descriptor."""
+    """Create quantity variants from base ammunition descriptor."""
     logger.info(f"Creating quantity variants for {weapon_name} (is_new={is_new})")
     logger.info(f"Quantities: {quantities}")
     
@@ -212,7 +211,7 @@ def _apply_weapon_edits(descr: Any, data: Dict) -> None:
         membr("InterfaceWeaponTexture").v = texture_file
 
 def _apply_hit_roll_edits(descr: Any, hit_roll_data: Dict) -> None:
-    """Apply hit roll edits to descriptor."""
+    """Apply hit roll edits to ammunition descriptor."""
     hitroll_obj = descr.v.by_m("HitRollRuleDescriptor").v
     
     if "BaseCriticModifier" in hit_roll_data:
@@ -225,7 +224,7 @@ def _apply_hit_roll_edits(descr: Any, hit_roll_data: Dict) -> None:
         modifiers[2].v = (modifiers[2].v[0], str(hit_roll_data["Moving"]))
 
 def _track_dictionary_entries(weapon_name, ammo_data, ingame_names, calibers):
-    """Track dictionary entries for a weapon."""
+    """Track dictionary entries for ammunition."""
     if "displayname" in ammo_data and "nametoken" in ammo_data:
         ingame_names.append((
             weapon_name, 
@@ -239,15 +238,15 @@ def _track_dictionary_entries(weapon_name, ammo_data, ingame_names, calibers):
             calibers.append((weapon_name, caliber_data[1], caliber_data[0]))
 
 def _get_base_supply_cost(weapon_name):
-    """Get the base supply cost for a weapon."""
-    supply_costs = get_supply_costs(weapons)
+    """Get the base supply cost for ammunition."""
+    supply_costs = get_supply_costs(ammunitions)
     for weapon, cost in supply_costs:
         if weapon == weapon_name:
             return cost
     return None
 
 def _create_new_descriptor(source_path, weapon_name, donor):
-    """Create a new descriptor for a weapon."""
+    """Create a new descriptor for ammunition."""
     donor_descr = source_path.by_n(f"Ammo_{donor}")
     if not donor_descr:
         # Try without Ammo_ prefix
@@ -271,7 +270,7 @@ def _create_new_descriptor(source_path, weapon_name, donor):
     return base_descr
 
 def _get_existing_descriptor(source_path, weapon_name):
-    """Get an existing descriptor for a weapon."""
+    """Get an existing descriptor for ammunition."""
     base_descr = source_path.by_n(f"Ammo_{weapon_name}")
     if not base_descr:
         # Try without Ammo_ prefix

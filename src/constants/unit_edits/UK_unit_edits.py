@@ -565,7 +565,7 @@ uk_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace_fixedsalvo": [("RocketAir_SNEB_68mm_x18", "RocketAir_SNEB_68mm_x36")],
+                "replace_fixedsalvo": [("RocketAir_SNEB_68mm_x18", "RocketAir_SNEB_68mm_salvolength36")],
             },
             "Salves": {
                 "RocketAir_SNEB_68mm": 1,
@@ -579,7 +579,7 @@ uk_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace_fixedsalvo": [("RocketAir_SNEB_68mm_x18", "RocketAir_SNEB_68mm_x36")],
+                "replace_fixedsalvo": [("RocketAir_SNEB_68mm_x18", "RocketAir_SNEB_68mm_salvolength36")],
             },
             "Salves": {
                 "RocketAir_SNEB_68mm": 1,

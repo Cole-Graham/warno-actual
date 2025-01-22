@@ -85,7 +85,7 @@ from src.gameplay.weapons.mortar_mods import (
     edit_smoke_duration,
 )
 from src.gameplay.weapons.new_weapons import create_new_weapons
-from src.gameplay.weapons.weapon_descriptor import edit_weapon_descriptor
+from src.gameplay.weapons.unit_edits import unit_edits_weapondescriptor
 from src.shared import get_shared_editors
 from src.shared.buildings.fob import add_fob_minimap_texture
 
@@ -196,32 +196,32 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
 
         # Unit and weapon files
         "GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf": [
-            lambda source: edit_units(source, game_db),
-            lambda source: edit_auto_cover(source, game_db),
+            lambda source_path: edit_units(source_path, game_db),
+            lambda source_path: edit_auto_cover(source_path, game_db),
             edit_antirad_optics,
             edit_forward_deploy,
             edit_infantry_armor_wa,
-            lambda source: edit_shock_units(source, game_db),
-            lambda source: create_new_units(source, game_db),
-            lambda source: edit_mg_teams(source, game_db),
+            lambda source_path: edit_shock_units(source_path, game_db),
+            lambda source_path: create_new_units(source_path, game_db),
+            lambda source_path: edit_mg_teams(source_path, game_db),
         ],
         "GameData/Generated/Gameplay/Gfx/WeaponDescriptor.ndf": [
-            lambda source: edit_weapon_descriptor(source, game_db),
-            lambda source: add_radio_tag_to_mortars(source, game_db),
-            lambda source: create_new_weapons(source, game_db),
+            lambda source_path: unit_edits_weapondescriptor(source_path, game_db),
+            lambda source_path: add_radio_tag_to_mortars(source_path, game_db),
+            lambda source_path: create_new_weapons(source_path, game_db),
         ],
         "GameData/Generated/Gameplay/Gfx/Ammunition.ndf": [
-            lambda source: edit_ammunition(source, game_db),
-            lambda source: apply_damage_families(source, game_db),
+            lambda source_path: edit_ammunition(source_path, game_db),
+            lambda source_path: apply_damage_families(source_path, game_db),
         ],
         "GameData/Generated/Gameplay/Gfx/AmmunitionMissiles.ndf": [
-            lambda source: edit_missiles(source, game_db),
+            lambda source_path: edit_missiles(source_path, game_db),
         ],
         "GameData/Generated/Gameplay/Gfx/MissileDescriptors.ndf": [
-            lambda source: sead_missile_speed(source, game_db),
+            lambda source_path: sead_missile_speed(source_path, game_db),
         ],
         "GameData/Generated/Gameplay/Gfx/OrderAvailability_Tactic.ndf": [
-            lambda source: edit_orders(source, game_db),
+            lambda source_path: edit_orders(source_path, game_db),
         ],
         "GameData/Generated/Gameplay/Gfx/SmokeDescriptor.ndf": [
             edit_smoke_duration,
@@ -282,7 +282,7 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
             unit_edits_depictionvehicles,
         ],
         "GameData/Generated/Gameplay/Gfx/Infanterie/GeneratedDepictionInfantry.ndf": [
-            lambda source: edit_infantry_depictions(source, game_db['ammunition'], game_db['depiction_data']),
+            lambda source_path: edit_infantry_depictions(source_path, game_db['ammunition'], game_db['depiction_data']),
             create_infantry_depictions,
         ],
 
@@ -454,7 +454,7 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
 
         # Depiction files
         "GameData/Generated/Gameplay/Gfx/Depictions/GeneratedDepictionVehiclesShowRoom.ndf": [
-            # lambda source: create_veh_showroom_depictions(source) # Maybe unnecessary
+            # lambda source_path: create_veh_showroom_depictions(source_path) # Maybe unnecessary
         ],
         
         # UI files

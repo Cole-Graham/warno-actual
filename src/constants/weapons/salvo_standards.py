@@ -1,6 +1,6 @@
 """Squad size to AT ammo quantity mapping."""
 
-SQUAD_AT_AMMO = { # todo: rename to LIGHT_AT_AMMO
+LIGHT_AT_AMMO = { # squad size: ammo quantity
     3: 3,   # 3-man squad gets 3 AT weapons
     4: 4,   # 4-man squad gets 4 AT weapons
     5: 5,   # etc.

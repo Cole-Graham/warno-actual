@@ -2,7 +2,7 @@ import re
 from typing import Any, Dict, List, Tuple
 
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import get_module_list, is_obj_type
+from src.utils.ndf_utils import get_modules_list, is_obj_type
 
 logger = setup_logger('division_mg_teams')
 

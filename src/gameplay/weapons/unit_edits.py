@@ -3,12 +3,62 @@ from typing import Any, Dict, List, Tuple
 
 from src import ndf
 from src.constants.unit_edits import load_unit_edits
+from src.constants.weapons import LIGHT_AT_AMMO
+from src.constants.weapons import ammunitions as ammos
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import is_obj_type, is_valid_turret
+from src.utils.ndf_utils import find_namespace, is_obj_type, is_valid_turret
 
-logger = setup_logger('weapons_unit_edits')
+from .vanilla_modifications import vanilla_renames_weapondescriptor
 
-def _gather_turret_templates(source: Any, weapon_db: Dict[str, Any]) -> List[Tuple[str, Any]]:
+logger = setup_logger(__name__)
+
+def unit_edits_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> None:
+    """Unit Edits for WeaponDescriptor.ndf file.
+    
+    Args:
+        source_path: The NDF file being edited
+        game_db: Game database containing ammunition and weapon data
+    """
+
+    ammo_db = game_db["ammunition"]
+    unit_db = game_db["unit_data"]
+    weapon_db = game_db["weapons"]
+    
+    vanilla_renames_weapondescriptor(source_path, ammo_db, weapon_db)
+    
+    # Get edits and weapon data
+    unit_edits = load_unit_edits()
+    weapon_db = game_db.get("weapons", {})
+    
+    # Gather templates first for equipment changes
+    turret_templates = _gather_turret_templates(source_path, ammo_db, weapon_db)
+    
+    for unit, edits in unit_edits.items():
+        if "WeaponDescriptor" not in edits:
+            continue
+            
+        weapon_descr_name = f"WeaponDescriptor_{unit}"
+        if weapon_descr_name not in weapon_db:
+            logger.warning(f"No weapon data found for {unit}")
+            continue
+            
+        weapon_descr_data = weapon_db[weapon_descr_name]
+        
+        for weapon_descr in source_path:
+            if weapon_descr.namespace != weapon_descr_name:
+                continue
+                
+            logger.debug(f"Processing {unit}")
+            _apply_weapon_edits(weapon_descr, edits["WeaponDescriptor"], weapon_descr_data, turret_templates)
+            
+            # Adjust light AT weapon salvos based on squad size
+            _adjust_light_at_salvos(weapon_descr, unit, ammos, ammo_db, unit_db, weapon_db)
+
+def _gather_turret_templates(
+    source_path: Any,
+    ammo_db: Dict[str, Any],
+    weapon_db: Dict[str, Any],
+) -> List[Tuple[str, Any]]:
     """Gather turret templates for equipment changes using database data."""
     turret_objects = []
     weapons_to_add = []
@@ -22,283 +72,78 @@ def _gather_turret_templates(source: Any, weapon_db: Dict[str, Any]) -> List[Tup
         if not equipment_changes.get("add"):
             continue
             
-        weapon_name = f"WeaponDescriptor_{unit}"
-        if not weapon_db or weapon_name not in weapon_db:
-            logger.warning(f"Weapon {weapon_name} not found in database")
+        weapon_descr_name = f"WeaponDescriptor_{unit}"
+        if not weapon_db or weapon_descr_name not in weapon_db:
+            logger.warning(f"Weapon {weapon_descr_name} not found in database")
             continue
             
-        weapon_data = weapon_db[weapon_name]
-        for weapon_descr in source:
+        weapon_descr_data = weapon_db[weapon_descr_name]
+        for weapon_descr in source_path:
             try:
                 turret_objects.extend(
-                    _find_turret_templates(weapon_descr, equipment_changes["add"], weapons_to_add, weapon_data)
-                )
+                    _find_turret_templates(
+                        weapon_descr,
+                        equipment_changes["add"],
+                        weapons_to_add,
+                        weapon_descr_data,
+                        ammo_db,))
             except Exception as e:
-                logger.error(f"Failed to find turret templates for {weapon_name}: {str(e)}")
+                logger.error(f"Failed to find turret templates for {weapon_descr_name}: {str(e)}")
     
     logger.debug(f"Found templates for weapons: {weapons_to_add}")
     return turret_objects
 
-def _find_turret_templates(weapon_descr: Any, add_list: List, weapons_to_add: List, weapon_data: Dict) -> List[Tuple[str, Any]]:
+def _find_turret_templates(
+    weapon_descr: Any,
+    add_list: List,
+    weapons_to_add: List,
+    weapon_descr_data: Dict,
+    ammo_db: Dict,
+) -> List[Tuple[str, Any]]:
     """Find turret templates matching the add list using database data."""
     templates = []
-    weapon_locations = weapon_data['weapon_locations']
+    weapon_locations = weapon_descr_data['weapon_locations']
+    
+    def add_turret_template(turret, name: str):
+        for location in weapon_locations[name]:
+            if location['turret_index'] == turret.index:
+                new_turret = _prepare_turret_template(turret, name)
+                weapons_to_add.append(name)
+                templates.append((name, new_turret))
+                break
     
     for turret in weapon_descr.v.by_member("TurretDescriptorList").v:
         if not is_valid_turret(turret.v):
             continue
-            
-        yul_bone = int(turret.v.by_m("YulBoneOrdinal").v)
         
-        for weapon_name, _ in add_list:
-            if weapon_name in weapons_to_add:
+        for index_to_insert, ammo_name in add_list:
+            ammo_renames = ammo_db["renames_old_new"]
+            new_name = ammo_renames.get(ammo_name, None)
+            # check if we already have this turret
+            names_to_check = [ammo_name, new_name]
+            if any(name in weapon_locations for name in names_to_check):
                 continue
-                
-            if weapon_name in weapon_locations:
-                for location in weapon_locations[weapon_name]:
-                    if location['turret_index'] == yul_bone:
-                        new_turret = _prepare_turret_template(turret, weapon_name)
-                        weapons_to_add.append(weapon_name)
-                        templates.append((weapon_name, new_turret))
-                        break
+            
+            if new_name and new_name in weapon_locations:
+                add_turret_template(turret, new_name)
+            
+            elif ammo_name in weapon_locations:
+                add_turret_template(turret, ammo_name)
     
     return templates
-
-def _is_valid_turret(turret: Any) -> bool:
-    """Check if turret is a valid type."""
-    return any([
-        is_obj_type(turret, "TTurretInfanterieDescriptor"),
-        is_obj_type(turret, "TTurretTwoAxisDescriptor"),
-        is_obj_type(turret, "TTurretUnitDescriptor")
-    ])
 
 def _prepare_turret_template(turret: Any, index: int) -> Any:
     """Prepare a turret template with updated indices."""
     new_turret = turret.copy()
     
     # Update weapon indices
-    mounted_wpns = new_turret.v.by_m("MountedWeaponDescriptorList").v
-    for weapon in mounted_wpns:
+    mounted_wpns = new_turret.v.by_m("MountedWeaponDescriptorList")
+    for weapon in mounted_wpns.v:
         weapon.v.by_m("SalvoStockIndex").v = str(index)
     
     # Update turret bone index
     new_turret.v.by_m("YulBoneOrdinal").v = str(index + 1)
     return new_turret
-
-def _update_turret_weapons(turret: Any, edits: Dict, weapon_data: Dict) -> None:
-    """Update weapons in a turret based on edits using database data."""
-    if "MountedWeapons" not in edits:
-        return
-        
-    weapon_edits = edits["MountedWeapons"]
-    mounted_wpns = turret.v.by_m("MountedWeaponDescriptorList").v
-    weapon_locations = weapon_data['weapon_locations']
-    yul_bone = int(turret.v.by_m("YulBoneOrdinal").v)
-    
-    # Add new weapons
-    if "add" in weapon_edits:
-        for donor, donor_edits in weapon_edits["add"].items():
-            if donor not in weapon_locations:
-                continue
-                
-            for location in weapon_locations[donor]:
-                if location['turret_index'] != yul_bone:
-                    continue
-                    
-                for weapon in mounted_wpns:
-                    if not is_obj_type(weapon.v, "TMountedWeaponDescriptor"):
-                        continue
-                        
-                    if int(weapon.v.by_m("SalvoStockIndex").v) == location['salvo_index']:
-                        new_weapon = weapon.copy()
-                        for membr, value in donor_edits.items():
-                            new_weapon.v.by_m(membr).v = str(value)
-                        mounted_wpns.add(new_weapon)
-                        break
-    
-    # Update existing weapons
-    for weapon_name, weapon_edits in weapon_edits.items():
-        if weapon_name == "add":
-            continue
-            
-        if weapon_name not in weapon_locations:
-            continue
-            
-        for location in weapon_locations[weapon_name]:
-            if location['turret_index'] != yul_bone:
-                continue
-                
-            for weapon in mounted_wpns:
-                if not is_obj_type(weapon.v, "TMountedWeaponDescriptor"):
-                    continue
-                    
-                if int(weapon.v.by_m("SalvoStockIndex").v) == location['salvo_index']:
-                    for membr, value in weapon_edits.items():
-                        weapon.v.by_m(membr).v = str(value)
-
-def _handle_turret_changes(weapon_descr: Any, edits: Dict) -> None:
-    """Handle turret additions, removals, and updates."""
-    if "turrets" not in edits:
-        return
-        
-    turret_list = weapon_descr.v.by_member("TurretDescriptorList").v
-    turrets_to_remove = []
-    
-    # Handle removals
-    if "remove" in edits["turrets"]:
-        salves_list = weapon_descr.v.by_m("Salves").v
-        for turret in turret_list:
-            if not _is_valid_turret(turret.v):
-                continue
-                
-            yul_bone = int(turret.v.by_m("YulBoneOrdinal").v)
-            if yul_bone in edits["turrets"]["remove"]:
-                turrets_to_remove.append(turret.index)
-                salves_list.remove(yul_bone - 1)
-    
-    # Handle updates
-    for turret in turret_list:
-        if not _is_valid_turret(turret.v):
-            continue
-            
-        yul_bone = int(turret.v.by_m("YulBoneOrdinal").v)
-        if yul_bone not in edits["turrets"]:
-            continue
-            
-        turret_edits = edits["turrets"][yul_bone]
-        _update_turret_weapons(turret, turret_edits)
-        
-        # Update other turret properties
-        for membr, value in turret_edits.items():
-            if membr != "MountedWeapons":
-                turret.v.by_m(membr).v = str(value)
-    
-    # Remove marked turrets
-    for index in reversed(turrets_to_remove):
-        turret_list.remove(index)
-        logger.debug(f"Removed turret {index}")
-
-def _handle_salvo_changes(weapon_descr: Any, edits: Dict) -> None:
-    """Handle salvo list changes."""
-    if "Salves" not in edits:
-        return
-        
-    salvo_edits = edits["Salves"]
-    salves_list = weapon_descr.v.by_m("Salves").v
-    
-    # Add new salvos
-    if "add" in salvo_edits:
-        for index, salvo in salvo_edits["add"]:
-            logger.debug(f"Adding salvo {salvo} at index {index}")
-            salves_list.insert(index, str(salvo))
-    
-    # Remove salvos for specific weapons
-    if "remove" in salvo_edits:
-        weapon_indices = _get_weapon_salvo_indices(weapon_descr, salvo_edits["remove"])
-        for index in sorted(weapon_indices, reverse=True):
-            logger.debug(f"Removing salvo at index {index}")
-            salves_list.remove(index)
-    
-    # Update existing salvos
-    if isinstance(salves_list, ndf.model.List):
-        weapon_indices = _get_weapon_salvo_mapping(weapon_descr)
-        for weapon, salvo in salvo_edits.items():
-            if weapon in ("add", "remove"):
-                continue
-                
-            for ammo_name, index in weapon_indices:
-                if _match_weapon_name(ammo_name, weapon):
-                    logger.debug(f"Updating salvo for {weapon} at index {index}")
-                    salves_list.replace(int(index), str(salvo))
-
-def _get_weapon_salvo_indices(weapon_descr: Any, weapons: List[str]) -> List[int]:
-    """Get salvo indices for specified weapons."""
-    indices = []
-    
-    for turret in weapon_descr.v.by_member("TurretDescriptorList").v:
-        if not _is_valid_turret(turret.v):
-            continue
-            
-        for weapon in turret.v.by_m("MountedWeaponDescriptorList").v:
-            if not is_obj_type(weapon.v, "TMountedWeaponDescriptor"):
-                continue
-                
-            ammo = weapon.v.by_m("Ammunition").v.split("$/GFX/Weapon/Ammo_", 1)[1]
-            if any(ammo.startswith(w) for w in weapons):
-                indices.append(int(weapon.v.by_m("SalvoStockIndex").v))
-                
-    return indices
-
-def _get_weapon_salvo_mapping(weapon_descr: Any) -> List[Tuple[str, str]]:
-    """Get mapping of weapon names to salvo indices."""
-    mapping = []
-    
-    for turret in weapon_descr.v.by_member("TurretDescriptorList").v:
-        if not _is_valid_turret(turret.v):
-            continue
-            
-        for weapon in turret.v.by_m("MountedWeaponDescriptorList").v:
-            if not is_obj_type(weapon.v, "TMountedWeaponDescriptor"):
-                continue
-                
-            ammo = weapon.v.by_m("Ammunition").v.split("$/GFX/Weapon/Ammo_", 1)[1]
-            index = weapon.v.by_m("SalvoStockIndex").v
-            mapping.append((ammo, index))
-                
-    return mapping
-
-def _match_weapon_name(ammo_name: str, weapon: str) -> bool:
-    """Match weapon name accounting for quantity suffix."""
-    pattern = r"^(.*?)(?:_x\d+)?$"
-    match = re.match(pattern, ammo_name)
-    return match and match.group(1) == weapon
-
-def _handle_weapon_replacements(weapon_descr: Any, edits: Dict, weapon_data: Dict) -> None:
-    """Handle weapon replacements using database data."""
-    weapon_locations = weapon_data['weapon_locations']
-    turret_list = weapon_descr.v.by_member("TurretDescriptorList").v
-    
-    # Handle fixed salvo replacements
-    if "replace_fixedsalvo" in edits:
-        for current, replacement in edits["replace_fixedsalvo"]:
-            if current not in weapon_locations:
-                continue
-                
-            for location in weapon_locations[current]:
-                for turret in turret_list:
-                    if int(turret.v.by_m("YulBoneOrdinal").v) != location['turret_index']:
-                        continue
-                        
-                    mounted_wpns = turret.v.by_m("MountedWeaponDescriptorList").v
-                    for weapon in mounted_wpns:
-                        if not is_obj_type(weapon.v, "TMountedWeaponDescriptor"):
-                            continue
-                            
-                        if int(weapon.v.by_m("SalvoStockIndex").v) == location['salvo_index']:
-                            new_ammo = f"$/GFX/Weapon/Ammo_{replacement}"
-                            logger.debug(f"Replacing {current} with {replacement}")
-                            weapon.v.by_m("Ammunition").v = new_ammo
-    
-    # Handle pattern-based replacements
-    if "replace" in edits:
-        for current, replacement in edits["replace"]:
-            if current not in weapon_locations:
-                continue
-                
-            for location in weapon_locations[current]:
-                for turret in turret_list:
-                    if int(turret.v.by_m("YulBoneOrdinal").v) != location['turret_index']:
-                        continue
-                        
-                    mounted_wpns = turret.v.by_m("MountedWeaponDescriptorList").v
-                    for weapon in mounted_wpns:
-                        if not is_obj_type(weapon.v, "TMountedWeaponDescriptor"):
-                            continue
-                            
-                        if int(weapon.v.by_m("SalvoStockIndex").v) == location['salvo_index']:
-                            new_ammo = f"$/GFX/Weapon/Ammo_{replacement}"
-                            logger.debug(f"Replacing {current} with {replacement}")
-                            weapon.v.by_m("Ammunition").v = new_ammo
 
 def _add_new_weapons(weapon_descr: Any, add_list: List, turret_templates: List[Tuple[str, Any]]) -> None:
     """Add new weapons to the descriptor."""
@@ -310,9 +155,9 @@ def _add_new_weapons(weapon_descr: Any, add_list: List, turret_templates: List[T
                 logger.debug(f"Adding {ammo_name} at index {turret_index}")
                 turret_list.insert(turret_index, turret_template)
 
-def _update_weapon_quantities(weapon_descr: Any, quantity_changes: Dict, weapon_data: Dict) -> None:
+def _update_weapon_quantities(weapon_descr: Any, quantity_changes: Dict, weapon_descr_data: Dict) -> None:
     """Update weapon quantities using database data."""
-    weapon_locations = weapon_data['weapon_locations']
+    weapon_locations = weapon_descr_data['weapon_locations']
     turret_list = weapon_descr.v.by_member("TurretDescriptorList").v
     
     for weapon_name, quants in quantity_changes.items():
@@ -325,8 +170,8 @@ def _update_weapon_quantities(weapon_descr: Any, quantity_changes: Dict, weapon_
                 if int(turret.v.by_m("YulBoneOrdinal").v) != location['turret_index']:
                     continue
                     
-                mounted_wpns = turret.v.by_m("MountedWeaponDescriptorList").v
-                for weapon in mounted_wpns:
+                mounted_wpns = turret.v.by_m("MountedWeaponDescriptorList")
+                for weapon in mounted_wpns.v:
                     if not is_obj_type(weapon.v, "TMountedWeaponDescriptor"):
                         continue
                         
@@ -336,116 +181,146 @@ def _update_weapon_quantities(weapon_descr: Any, quantity_changes: Dict, weapon_
                         weapon.v.by_m("Ammunition").v = new_ammo
                         weapon.v.by_m("NbWeapons").v = str(quantity)
 
-def edit_units(source: Any, database: Dict[str, Any]) -> None:
-    """Edit weapon descriptors for units."""
-    logger.info("Editing weapon descriptors")
-    
-    # Get edits and weapon data
-    unit_edits = load_unit_edits()
-    weapon_db = database.get("weapon_data", {})
-    
-    # Gather templates first for equipment changes
-    turret_templates = _gather_turret_templates(source, weapon_db)
-    
-    for unit, edits in unit_edits.items():
-        if "WeaponDescriptor" not in edits:
-            continue
-            
-        weapon_name = f"WeaponDescriptor_{unit}"
-        if weapon_name not in weapon_db:
-            logger.warning(f"No weapon data found for {unit}")
-            continue
-            
-        weapon_data = weapon_db[weapon_name]
-        
-        for weapon_descr in source:
-            if weapon_descr.namespace != weapon_name:
-                continue
-                
-            logger.debug(f"Processing {unit}")
-            _apply_weapon_edits(weapon_descr, edits["WeaponDescriptor"], weapon_data, turret_templates)
-
-def _apply_weapon_edits(weapon_descr: Any, edits: Dict, weapon_data: Dict, turret_templates: List[Tuple[str, Any]]) -> None:
+def _apply_weapon_edits(
+    weapon_descr: Any,
+    edits: Dict,
+    weapon_descr_data: Dict,
+    turret_templates: List[Tuple[str, Any]]
+) -> None:
     """Apply weapon edits using database data."""
+
+    # Handle salvo changes first to prevent index errors when editing salves
+    if "Salves" in edits:
+        _apply_salvo_changes(weapon_descr, edits["Salves"], weapon_descr_data)
+    
     # Handle turret changes
     if "turrets" in edits:
-        _apply_turret_changes(weapon_descr, edits["turrets"], weapon_data["turrets"])
-    
-    # Handle salvo changes
-    if "Salves" in edits:
-        _apply_salvo_changes(weapon_descr, edits["Salves"], weapon_data)
+        _apply_turret_changes(
+            weapon_descr, 
+            edits["turrets"], 
+            weapon_descr_data)
     
     # Handle equipment changes
     if "equipmentchanges" in edits:
-        _apply_equipment_changes(weapon_descr, edits["equipmentchanges"], weapon_data, turret_templates)
+        _apply_equipment_changes(weapon_descr, edits["equipmentchanges"], weapon_descr_data, turret_templates)
 
-def _apply_turret_changes(weapon_descr: Any, edits: Dict, weapon_data: Dict) -> None:
+def _apply_turret_changes(weapon_descr: Any, turrets_edits: Dict, weapon_descr_data: Dict) -> None:
     """Apply turret changes using database data."""
     turret_list = weapon_descr.v.by_member("TurretDescriptorList").v
-    turret_data = weapon_data['turrets']
+    turret_data = weapon_descr_data["turrets"]
     
-    # Handle removals
-    if "remove" in edits:
-        for yul_bone in edits["remove"]:
-            if str(yul_bone) in turret_data:
-                for turret in turret_list:
-                    if int(turret.v.by_m("YulBoneOrdinal").v) == yul_bone:
-                        logger.debug(f"Removing turret {yul_bone}")
-                        turret_list.remove(turret.index)
-                        break
-    
-    # Handle updates
-    for yul_bone, turret_edits in edits.items():
-        if yul_bone == "remove":
+    for turret_number, turret_edits in turrets_edits.items():
+        if not isinstance(turret_number, int):
             continue
-            
-        if str(yul_bone) not in turret_data:
-            logger.warning(f"Turret {yul_bone} not found in database")
+        turret_index = turret_number - 1
+        if str(turret_index) not in turret_data: # json keys are always strings
+            logger.warning(f"Turret {turret_number} not found in database")
             continue
-            
-        for turret in turret_list:
-            if int(turret.v.by_m("YulBoneOrdinal").v) != int(yul_bone):
-                continue
+        turret_list = weapon_descr.v.by_m("TurretDescriptorList")
+        weapon_descr_namespace = weapon_descr.namespace
+        # weapon/ammo edits
+        if "MountedWeapons" in turret_edits:
+            for turret_descr in turret_list.v:
+                if not is_valid_turret(turret_descr.v):
+                    logger.debug(f"Turret {turret_number} is not valid")
+                    continue
                 
-            _update_turret_weapons(turret, turret_edits, weapon_data)
+                prefix = "$/GFX/Weapon/Ammo_"
+                mounted_wpns = turret_descr.v.by_m("MountedWeaponDescriptorList")
+                if "add" in turret_edits["MountedWeapons"]:
+                    for weapon in mounted_wpns.v:
+                        wpn_index = weapon.index
+                        if not is_obj_type(weapon.v, "TMountedWeaponDescriptor"):
+                            logger.debug(f"Mounted weapon {wpn_index} is not valid")
+                            continue
+                        
+                        ammunition = weapon.v.by_m("Ammunition").v.split(prefix)[1]
+                        for donor, donor_edits in turret_edits["MountedWeapons"]["add"].items():
+                            if ammunition != donor:
+                                continue
+                            new_wpn = weapon.copy()
+                            for membr, value in donor_edits.items():
+                                if isinstance(value, list):
+                                    new_list = ndf.model.List()
+                                    for item in value:
+                                        new_list.add(f"'{item}'")
+                                    new_wpn.v.by_m(membr).v = new_list
+                                else:
+                                    new_wpn.v.by_m(membr).v = str(value)
+                            
+                            mounted_wpns.v.add(new_wpn)
+                            
+                for weapon in mounted_wpns.v:
+                    if not is_obj_type(weapon.v, "TMountedWeaponDescriptor"):
+                        logger.debug(f"Mounted weapon {weapon.index} is not valid")
+                        continue
+                    
+                    ammunition = weapon.v.by_m("Ammunition").v.split(prefix)[1]
+                    for ammo_name, ammo_edits in turret_edits["MountedWeapons"].items():
+                        if ammunition != ammo_name:
+                            continue
+                        for ammo_membr, ammo_value in ammo_edits.items():
+                            if isinstance(ammo_value, list):
+                                new_list = ndf.model.List()
+                                for item in ammo_value:
+                                    new_list.add(f"'{item}'")
+                                weapon.v.by_m(ammo_membr).v = new_list
+                            else:
+                                weapon.v.by_m(ammo_membr).v = str(ammo_value)
             
-            # Update other properties
-            for membr, value in turret_edits.items():
-                if membr != "MountedWeapons":
-                    turret.v.by_m(membr).v = str(value)
+        # turret property edits                        
+        for membr, value in turret_edits.items():
+            if membr == "MountedWeapons":
+                continue
+            else:
+                turret_list.v[turret_index].v.by_m(membr).v = str(value)
+                
 
-def _apply_salvo_changes(weapon_descr: Any, edits: Dict, weapon_data: Dict) -> None:
+    if "remove" in turrets_edits:
+        turret_list = weapon_descr.v.by_member("TurretDescriptorList")
+        for turret_number in turrets_edits["remove"]:
+            turret_index = int(turret_number) - 1
+            turret_list.v.remove(turret_index)
+                
+
+def _apply_salvo_changes(weapon_descr: Any, salve_edits: Dict, weapon_db: Dict) -> None:
     """Apply salvo changes using database data."""
-    salves_list = weapon_descr.v.by_m("Salves").v
-    weapon_indices = weapon_data['weapon_indices']
+    salves_list = weapon_descr.v.by_m("Salves")
+    weapon_indices = weapon_db['weapon_indices']
+
     
-    # Add new salvos
-    if "add" in edits:
-        for index, salvo in edits["add"]:
-            logger.debug(f"Adding salvo {salvo} at index {index}")
-            salves_list.insert(index, str(salvo))
-    
-    # Remove salvos for specific weapons
-    if "remove" in edits:
-        for weapon in edits["remove"]:
-            if weapon in weapon_indices:
-                for index in sorted(weapon_indices[weapon], reverse=True):
-                    logger.debug(f"Removing salvo at index {index}")
-                    salves_list.remove(index)
-    
-    # Update existing salvos
-    if isinstance(salves_list, ndf.model.List):
-        salvo_mapping = weapon_data['salvo_mapping']
-        for weapon, salvo in edits.items():
+    # Update salvos first to prevent index errors
+    if isinstance(salves_list.v, ndf.model.List):
+        salvo_mapping = weapon_db['salvo_mapping']
+        for weapon, salvo in salve_edits.items():
             if weapon in ("add", "remove"):
                 continue
                 
             if weapon in salvo_mapping:
                 index = salvo_mapping[weapon]
                 logger.debug(f"Updating salvo for {weapon} at index {index}")
-                salves_list.replace(int(index), str(salvo))
+                salves_list.v.replace(index, str(salvo))
+                
+    # Add new salvos
+    if "add" in salve_edits:
+        for index, salvo in salve_edits["add"]:
+            logger.debug(f"Adding salvo {salvo} at index {index}")
+            salves_list.v.insert(index, str(salvo))
+    
+    # Remove salvos for specific weapons
+    if "remove" in salve_edits:
+        for weapon in salve_edits["remove"]:
+            if weapon in weapon_indices:
+                for index in sorted(weapon_indices[weapon], reverse=True):
+                    logger.debug(f"Removing salvo at index {index}")
+                    salves_list.v.remove(index)
 
-def _apply_equipment_changes(weapon_descr: Any, equipment_changes: Dict, weapon_data: Dict, turret_templates: List[Tuple[str, Any]]) -> None:
+def _apply_equipment_changes(
+    weapon_descr: Any,
+    equipment_changes: Dict,
+    weapon_descr_data: Dict,
+    turret_templates: List[Tuple[str, Any]],
+) -> None:
     """Apply equipment changes to weapon descriptor."""
     # Handle replacements
     if any(key in equipment_changes for key in ["replace", "replace_fixedsalvo"]):
@@ -457,7 +332,7 @@ def _apply_equipment_changes(weapon_descr: Any, equipment_changes: Dict, weapon_
     
     # Handle quantity changes
     if "quantity" in equipment_changes:
-        _update_weapon_quantities(weapon_descr, equipment_changes["quantity"], weapon_data)
+        _update_weapon_quantities(weapon_descr, equipment_changes["quantity"], weapon_descr_data)
 
 def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict) -> None:
     """Replace weapons with their replacements."""
@@ -465,11 +340,11 @@ def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict) -> No
     turret_list = weapon_descr.v.by_member("TurretDescriptorList").v
     
     for descr_row in turret_list:
-        if not _is_valid_turret(descr_row.v):
+        if not is_valid_turret(descr_row.v):
             continue
             
-        mounted_wpns = descr_row.v.by_m("MountedWeaponDescriptorList").v
-        for weapon in mounted_wpns:
+        mounted_wpns = descr_row.v.by_m("MountedWeaponDescriptorList")
+        for weapon in mounted_wpns.v:
             if not is_obj_type(weapon.v, "TMountedWeaponDescriptor"):
                 continue
                 
@@ -492,4 +367,49 @@ def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict) -> No
                             weapon.v.by_m("Ammunition").v = f"$/GFX/Weapon/Ammo_{replacement}"
                             logger.debug(f"Replaced {current} with {replacement}")
 
-# ... more helper functions ... 
+def _adjust_light_at_salvos(
+    weapon_descr: Any,
+    unit_name: str,
+    ammos: Dict,
+    ammo_db: Dict, 
+    unit_db: Dict,
+    weapon_db: Dict,
+) -> None:
+    """Adjust salvo counts for light AT weapons based on squad size."""
+    # Get squad size from unit data 
+    squad_size = unit_db.get(unit_name, {}).get("strength")
+    if not squad_size:
+        logger.warning(f"No strength data found for {unit_name}")
+        return
+    if squad_size not in LIGHT_AT_AMMO:
+        logger.info(f"Invalid squad size {squad_size} for {unit_name}")
+        return
+
+    # Get this unit's weapon data
+    weapon_descr_name = f"WeaponDescriptor_{unit_name}"
+    unit_weapon_data = weapon_db.get(weapon_descr_name)
+    if not unit_weapon_data:
+        logger.warning(f"No weapon data found for {weapon_descr_name}")
+        return
+
+    # Get weapon renames mapping
+    renames = ammo_db.get("renames_old_new", {})
+
+    # Look through turrets for light AT weapons
+    turrets = unit_weapon_data.get("turrets", {})
+    for turret in turrets.values():
+        for ammo_name, weapon_data in turret.get("weapons", {}).items():
+            # Check original name for possible rename, and return the original name if none found
+            ammo_to_check = renames.get(ammo_name, ammo_name)
+            # todo: weapons.keys() is a dictionary that should probably be called ammunitions or ammos, for clarity
+            if any(key[0] == ammo_to_check and key[1] == "light_at" for key in ammos.keys()):
+                salvo_index = weapon_data["salvo_index"]
+                new_ammo_count = LIGHT_AT_AMMO[squad_size]
+                
+                # Update the salvo count
+                salves_list = weapon_descr.v.by_m("Salves").v
+                logger.debug(
+                    f"Updating {ammo_name} salvo count to {new_ammo_count} "
+                    f"for {squad_size}-man squad")
+                salves_list.replace(int(salvo_index), str(new_ammo_count))
+

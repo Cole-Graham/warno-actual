@@ -1,11 +1,11 @@
 """Main entry point for the mod patcher."""
 from typing import Dict
 
-from src import ModConfig, ndf
-from src.editors import get_all_editors
-from src.utils.asset_utils import copy_assets
-from src.utils.config_utils import get_mod_dst_path, get_mod_src_path
-from src.utils.logging_utils import setup_logger
+from . import ModConfig, ndf
+from .editors import get_all_editors
+from .utils.asset_utils import copy_assets
+from .utils.config_utils import get_mod_dst_path, get_mod_src_path
+from .utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
 

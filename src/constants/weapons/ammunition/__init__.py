@@ -16,7 +16,7 @@ WeaponData = Dict[str, Union[Dict, List, int, float, str]]
 WeaponKey = Tuple[str, str, Optional[str], bool]  # (weapon, category, donor, is_new)
 
 # fmt: off
-weapons: Dict[WeaponKey, WeaponData] = {
+ammunitions: Dict[WeaponKey, WeaponData] = {
     **autocanon_weapons,
     **autocanon_dca_weapons,
     **bomb_weapons,

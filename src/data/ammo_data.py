@@ -5,8 +5,10 @@ from pathlib import Path
 from typing import Any, Dict
 
 from src import ndf
-from src.gameplay.weapons.ammunition import AMMUNITION_RENAMES
-from src.gameplay.weapons.missiles import AMMUNITION_MISSILES_RENAMES
+from src.constants.weapons.vanilla_inst_modifications import (
+    AMMUNITION_RENAMES,
+    AMMUNITION_MISSILES_RENAMES,
+)
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger('ammo_data')

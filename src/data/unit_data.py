@@ -6,9 +6,7 @@ from src import ndf
 from src.data.ammo_data import get_vanilla_renames
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import (
-    get_module_list,
-    get_module_value,
-    get_resource_value,
+    get_modules_list,
     is_obj_type,
     is_valid_turret,
     strip_quotes,
@@ -83,11 +81,11 @@ def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
         # Get unit name for context
         unit_name = unit_row.namespace.split("Descriptor_Unit_")[-1] if hasattr(unit_row, "namespace") else "Unknown"
         
-        for descr_row in modules_list:
-            if not isinstance(descr_row.v, ndf.model.Object):
+        for module in modules_list:
+            if not isinstance(module.v, ndf.model.Object):
                 continue
                 
-            module_type = descr_row.v.type
+            module_type = module.v.type
             
             
             # Extract data based on module type
@@ -95,45 +93,45 @@ def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
                 unit_info["is_helo_unit"] = True
 
             elif module_type == "TProductionModuleDescriptor":
-                unit_info.update(extract_production_data(descr_row))
+                unit_info.update(_extract_production_data(module))
             
             elif module_type == "TTagsModuleDescriptor":
-                unit_info.update(extract_tags_data(descr_row))
+                unit_info.update(_extract_tags_data(module))
             
             elif module_type == "TUnitUIModuleDescriptor":
-                unit_info.update(extract_ui_data(descr_row))
+                unit_info.update(_extract_ui_data(module))
             
-            elif module_type == "TWeaponManagerModuleDescriptor":
-                weapon_data = {
-                    "turrets": _gather_turret_data(descr_row),
-                    "salvos": _gather_salvo_data(descr_row),
-                    "weapon_locations": _gather_weapon_locations(descr_row),
-                    "weapon_indices": _gather_weapon_indices(descr_row),
-                    "salvo_mapping": _gather_salvo_mapping(descr_row)
-                }
-                unit_info["weapon_data"] = weapon_data
+            # elif module_type == "TWeaponManagerModuleDescriptor":
+            #     weapon_data = {
+            #         "turrets": _gather_turret_data(module),
+            #         # "salvos": _gather_salvo_data(module),
+            #         "weapon_locations": _gather_weapon_locations(module),
+            #         "weapon_indices": _gather_weapon_indices(module),
+            #         # "salvo_mapping": _gather_salvo_mapping(module)
+            #     }
+            #     unit_info["weapon_data"] = weapon_data
             
-            elif module_type == "TInfantrySquadModuleDescriptor":
-                unit_info["strength"] = int(descr_row.v.by_m("NbSoldatInGroupeCombat").v)
+            elif module_type == "TBaseDamageModuleDescriptor":
+                unit_info["strength"] = _extract_damage_data(module)
             
             elif module_type == "TDamageModuleDescriptor":
-                unit_info["armor"] = extract_armor_data(descr_row)
+                unit_info["armor"] = _extract_armor_data(module)
             
             elif module_type == "TSupplyModuleDescriptor":
                 unit_info["is_supply_unit"] = True
             
             elif module_type == "TVisibilityModuleDescriptor":
-                unit_info["visibility"] = extract_stealth_data(descr_row)
+                unit_info["visibility"] = _extract_stealth_data(module)
             
             elif module_type == "TScannerConfigurationDescriptor":
-                unit_info["optics"] = extract_optics_data(descr_row, unit_name)
-                # optics_data = extract_optics_data(descr_row, unit_name)
+                unit_info["optics"] = _extract_optics_data(module, unit_name)
+                # optics_data = extract_optics_data(module, unit_name)
                 # if optics_data:
                 #     unit_info["optics"].update(optics_data)
                 #     logger.debug(f"Updated optics data for {unit_name}")
             
             elif module_type == "TModuleSelector":
-                skills = extract_skills_data(descr_row)
+                skills = _extract_skills_data(module)
                 if skills:
                     unit_info["skills"] = skills
                     logger.debug(f"Extracted skills: {skills}")
@@ -144,25 +142,11 @@ def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
         logger.error(f"Error extracting unit info: {str(e)}")
         return {}
 
-def extract_supply_data(descr_row: Any, module_type: str) -> Dict[str, Any]:
-    """Extract supply data from a unit descriptor."""
-    data = {}
-    try:
-        
-        if module_type == "TSupplyModuleDescriptor":
-            data["is_supply_unit"] = True
-        else:
-            data["is_supply_unit"] = False
-
-    except Exception as e:
-        logger.error(f"Error extracting supply data: {str(e)}")
-    return data
-
-def extract_skills_data(descr_row: Any) -> List[str]:
+def _extract_skills_data(module: Any) -> List[str]:
     """Extract skills data from a module selector."""
     skills = []
     try:
-        default_membr = descr_row.v.by_m("Default").v
+        default_membr = module.v.by_m("Default").v
         if hasattr(default_membr, 'type') and default_membr.type == "TCapaciteModuleDescriptor":
             skill_list = default_membr.by_m("DefaultSkillList").v
             skills = [skill.v.split("$/GFX/EffectCapacity/Capacite_")[1] for skill in skill_list]
@@ -171,11 +155,11 @@ def extract_skills_data(descr_row: Any) -> List[str]:
         logger.error(f"Error extracting skills data: {str(e)}")
         return []
 
-def extract_production_data(descr_row: Any) -> Dict[str, Any]:
+def _extract_production_data(module: Any) -> Dict[str, Any]:
     """Extract production-related data (command points, etc.)."""
     data = {}
     try:
-        resources = descr_row.v.by_m("ProductionRessourcesNeeded", None)
+        resources = module.v.by_m("ProductionRessourcesNeeded", None)
         if resources is not None:
             for row in resources.v:
                 # Handle key which might be a string or wrapped value
@@ -195,34 +179,43 @@ def extract_production_data(descr_row: Any) -> Dict[str, Any]:
             logger.debug("No production resources found")
             
     except Exception as e:
-        logger.debug(f"Error extracting production data for {descr_row.namespace}: {str(e)}")
+        logger.debug(f"Error extracting production data for {module.namespace}: {str(e)}")
     return data
 
-def extract_tags_data(descr_row: Any) -> Dict[str, Any]:
+def _extract_tags_data(module: Any) -> Dict[str, Any]:
     """Extract unit tags data."""
     data = {}
     try:
-        tagset = get_module_list(descr_row, "TagSet")
+        tagset = module.v.by_m("TagSet").v
         data["tags"] = [strip_quotes(tag.v) for tag in tagset]
     except Exception as e:
         logger.warning(f"Failed to extract tags data: {str(e)}")
     return data
 
-def extract_ui_data(descr_row: Any) -> Dict[str, Any]:
+def _extract_ui_data(module: Any) -> Dict[str, Any]:
     """Extract UI-related data (specialties, etc.)."""
     data = {}
     try:
-        specialties = get_module_list(descr_row, "SpecialtiesList")
+        specialties = module.v.by_m("SpecialtiesList").v
         if specialties:
             data["specialties"] = [strip_quotes(spec.v) for spec in specialties]
     except Exception as e:
         logger.warning(f"Failed to extract UI data: {str(e)}")
     return data
 
-def extract_armor_data(descr_row: Any) -> Dict[str, Any]:
+def _extract_damage_data(module: Any) -> Dict[str, Any]:
+    """Extract damage data from damage module."""
+    data = {}
+    try:
+        data = int(module.v.by_m("MaxPhysicalDamages").v)
+    except Exception as e:
+        logger.warning(f"Failed to extract damage data: {str(e)}")
+    return data
+
+def _extract_armor_data(module: Any) -> Dict[str, Any]:
     """Extract armor data from damage module."""
     try:
-        blindage = descr_row.v.by_m("BlindageProperties").v
+        blindage = module.v.by_m("BlindageProperties").v
         return {
             "front": {
                 "family": blindage.by_m("ResistanceFront").v.by_m("Family").v,
@@ -245,13 +238,13 @@ def extract_armor_data(descr_row: Any) -> Dict[str, Any]:
         logger.error(f"Error extracting armor data: {str(e)}")
         return {}
     
-def extract_stealth_data(descr_row: Any) -> Dict[str, Any]:
+def _extract_stealth_data(module: Any) -> Dict[str, Any]:
     """Extract stealth data."""
     try:
         stealth_data = {}
         
         # Get base module values
-        stealth = descr_row.v.by_m("UnitConcealmentBonus", None)
+        stealth = module.v.by_m("UnitConcealmentBonus", None)
 
         if stealth is not None:
             stealth_data["stealth_bonus"] = float(stealth.v)
@@ -267,19 +260,19 @@ def extract_stealth_data(descr_row: Any) -> Dict[str, Any]:
         logger.debug(f"Error extracting visibility data: {str(e)}")
         return {}
 
-def extract_optics_data(descr_row: Any, unit_name: str) -> Dict[str, Any]:
+def _extract_optics_data(module: Any, unit_name: str) -> Dict[str, Any]:
     """Extract optics configuration data."""
     try:
         optics_data = {}
         
         logger.debug(f"Extracting optics data for unit: {unit_name}")
         
-        ground = descr_row.v.by_m("PorteeVisionGRU", None)
+        ground = module.v.by_m("PorteeVisionGRU", None)
         if ground is not None:
             optics_data["ground_range"] = float(ground.v)
             logger.debug(f"Found ground range: {optics_data['ground_range']}")
         
-        special_optics = descr_row.v.by_m("SpecializedOpticalStrengths", None)
+        special_optics = module.v.by_m("SpecializedOpticalStrengths", None)
         if special_optics is not None:
             optics_data["special_optics"] = {}
             for row in special_optics.v:
@@ -339,7 +332,7 @@ def gather_weapon_data(mod_src_path: Path) -> Dict[str, Any]:
                 if any([turret_data, salvo_data, location_data, index_data, mapping_data]):
                     weapon_data[weapon_name] = {
                         'turrets': turret_data,
-                        'salvos': salvo_data,
+                        # 'salvos': salvo_data,
                         'weapon_locations': location_data,
                         'weapon_indices': index_data,
                         'salvo_mapping': mapping_data
@@ -370,6 +363,9 @@ def _gather_turret_data(weapon_descr: Any) -> Dict[str, Any]:
     """Gather turret and weapon data from a weapon descriptor."""
     turret_data = {}
     
+    salvo_data = _gather_salvo_data(weapon_descr)
+    # turret_data["salvos"] = salvo_data
+    
     try:
         turret_list = weapon_descr.v.by_member("TurretDescriptorList").v
     except Exception:
@@ -382,8 +378,9 @@ def _gather_turret_data(weapon_descr: Any) -> Dict[str, Any]:
             
         try:
             yul_bone = int(turret.v.by_m("YulBoneOrdinal").v)
-            turret_data[yul_bone] = {
-                'weapons': _gather_mounted_weapons(turret)
+            turret_data[str(turret.index)] = {
+                'yul_bone': yul_bone,
+                'weapons': _gather_mounted_weapons(turret, salvo_data),
             }
         except Exception as e:
             logger.warning(f"Failed to gather data for turret in {weapon_descr.namespace}: {str(e)}")
@@ -391,7 +388,7 @@ def _gather_turret_data(weapon_descr: Any) -> Dict[str, Any]:
     
     return turret_data
 
-def _gather_mounted_weapons(turret: Any) -> Dict[str, Any]:
+def _gather_mounted_weapons(turret: Any, salvo_data: Dict[int, int]) -> Dict[str, Any]:
     """Gather mounted weapon data from a turret."""
     weapon_data = {}
     
@@ -411,8 +408,10 @@ def _gather_mounted_weapons(turret: Any) -> Dict[str, Any]:
                 continue
                 
             ammo_name = ammo_val.split("$/GFX/Weapon/Ammo_", 1)[1]
+            salvo_index = int(weapon.v.by_m("SalvoStockIndex").v)
             weapon_data[ammo_name] = {
-                'salvo_index': int(weapon.v.by_m("SalvoStockIndex").v),
+                'salvo_index': salvo_index,
+                'salves': salvo_data[str(salvo_index)],
                 'quantity': _get_weapon_quantity(ammo_name)
             }
         except Exception as e:
@@ -421,14 +420,14 @@ def _gather_mounted_weapons(turret: Any) -> Dict[str, Any]:
     
     return weapon_data
 
-def _gather_salvo_data(weapon_descr: Any) -> List[str]:
+def _gather_salvo_data(weapon_descr: Any) -> Dict[str, int]:
     """Gather salvo data from a weapon descriptor."""
     try:
         salves_list = weapon_descr.v.by_m("Salves").v
-        return [str(salvo.v) for salvo in salves_list]
+        return {str(salvo.index): int(salvo.v) for salvo in salves_list}
     except Exception:
         logger.warning(f"Failed to gather salvo data for {weapon_descr.namespace}")
-        return []
+        return {}
 
 def _get_weapon_quantity(ammo_name: str) -> int:
     """Extract quantity from weapon name if present."""
@@ -449,12 +448,12 @@ def _gather_weapon_indices(weapon_descr: Any) -> Dict[str, List[int]]:
                 continue
                 
             ammo = weapon.v.by_m("Ammunition").v.split("$/GFX/Weapon/Ammo_", 1)[1]
-            base_name = ammo.split('_x', 1)[0]
+            # base_name = ammo.split('_x', 1)[0]
             
-            if base_name not in weapon_indices:
-                weapon_indices[base_name] = []
+            if ammo not in weapon_indices:
+                weapon_indices[ammo] = []
                 
-            weapon_indices[base_name].append(int(weapon.v.by_m("SalvoStockIndex").v))
+            weapon_indices[ammo].append(int(weapon.v.by_m("SalvoStockIndex").v))
     
     return weapon_indices
 
@@ -471,9 +470,9 @@ def _gather_salvo_mapping(weapon_descr: Any) -> Dict[str, str]:
                 continue
                 
             ammo = weapon.v.by_m("Ammunition").v.split("$/GFX/Weapon/Ammo_", 1)[1]
-            base_name = ammo.split('_x', 1)[0]
-            index = weapon.v.by_m("SalvoStockIndex").v
-            salvo_mapping[base_name] = index
+            # base_name = ammo.split('_x', 1)[0]
+            index = int(weapon.v.by_m("SalvoStockIndex").v)
+            salvo_mapping[ammo] = index
     
     return salvo_mapping 
 
@@ -492,7 +491,7 @@ def _gather_weapon_locations(weapon_descr: Any) -> Dict[str, Dict[str, Any]]:
     """
     weapon_locations = {}
     
-    for i, turret in enumerate(weapon_descr.v.by_member("TurretDescriptorList").v):
+    for i, turret in enumerate(weapon_descr.v.by_member("TurretDescriptorList").v, start=0):
         if not is_valid_turret(turret.v):
             continue
         
@@ -509,7 +508,7 @@ def _gather_weapon_locations(weapon_descr: Any) -> Dict[str, Dict[str, Any]]:
                 weapon_locations[ammo] = []  # Initialize a list if it doesn't exist
             
             weapon_locations[ammo].append({
-                'turret_index': i + 1,
+                'turret_index': i,
                 'mounted_index': mounted_index,
                 'salvo_index': int(weapon.v.by_m("SalvoStockIndex").v)
             })

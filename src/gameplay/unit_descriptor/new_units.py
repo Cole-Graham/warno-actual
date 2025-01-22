@@ -6,7 +6,7 @@ from src import ndf
 from src.constants.new_units import NEW_UNITS
 from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import get_module_list, is_obj_type
+from src.utils.ndf_utils import get_modules_list, is_obj_type
 
 logger = setup_logger(__name__)
 

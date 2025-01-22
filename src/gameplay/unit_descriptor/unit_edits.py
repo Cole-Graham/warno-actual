@@ -6,9 +6,9 @@ from src import ndf
 from src.constants.unit_edits import load_unit_edits
 from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import find_namespace, get_module_list, is_obj_type
+from src.utils.ndf_utils import find_namespace, get_modules_list, is_obj_type
 
-logger = setup_logger('unit_descriptor_edits')
+logger = setup_logger(__name__)
 
 def edit_units(source_path: Any, game_db: Dict[str, Any]) -> None:
     """Edit unit descriptors."""
@@ -22,24 +22,43 @@ def edit_units(source_path: Any, game_db: Dict[str, Any]) -> None:
     _handle_supply(source_path, game_db, unit_edits)
     
     for unit_row in source_path:
-        units_processed += 1
-        unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
-        
-        edits = find_namespace(unit_row, "Descriptor_Unit_", unit_edits)
-        if edits is None:
-            continue
-            
-        units_modified += 1
-        
         try:
-            modules_list = unit_row.v.by_m("ModulesDescriptors").v
-            for i, descr_row in enumerate(modules_list, start=0):
+            units_processed += 1
+            
+            # Skip if no namespace
+            if not hasattr(unit_row, 'namespace'):
+                continue
+                
+            unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
+            
+            # Debug logging
+            logger.debug(f"Processing unit: {unit_name}")
+            
+            # Get edits for this unit
+            edits = find_namespace(unit_row, unit_edits, prefix="Descriptor_Unit_")
+            if edits is None:
+                logger.debug(f"No edits found for {unit_name}")
+                continue
+                
+            logger.info(f"Applying edits to {unit_name}")
+            units_modified += 1
+            
+            # Get modules list
+            modules_list = get_modules_list(unit_row.v, "ModulesDescriptors")
+            if not modules_list:
+                logger.warning(f"No ModulesDescriptors found for {unit_name}")
+                continue
+                
+            # Process each module
+            for i, descr_row in enumerate(modules_list.v, start=0):
                 if not isinstance(descr_row.v, ndf.model.Object):
                     continue
                     
                 modify_module(unit_row, descr_row, edits, i, modules_list, dictionary_entries)
+                
         except Exception as e:
-            logger.error(f"Error modifying {unit_name}: {str(e)}")
+            logger.error(f"Error processing {unit_name}: {str(e)}")
+            continue
     
     # Write all dictionary entries at once
     if dictionary_entries:
@@ -54,7 +73,8 @@ def modify_module(
 ) -> None:
     """Apply edits to a specific module based on its type."""
     descr_type = descr_row.v.type
-    namespace = descr_row.namespace
+    if hasattr(descr_row, "namespace"):
+        namespace = descr_row.namespace
 
     # Handle module-specific edits
     module_handlers = {
@@ -63,7 +83,6 @@ def modify_module(
         "TBaseDamageModuleDescriptor": _handle_base_damage,
         "TDamageModuleDescriptor": _handle_damage,
         "TWeaponAssignmentModuleDescriptor": _handle_weapon_assignment,
-        "TSupplyModuleDescriptor": _handle_supply,
         "TScannerConfigurationDescriptor": _handle_scanner,
         "TProductionModuleDescriptor": _handle_production,
         "TTacticalLabelModuleDescriptor": _handle_tactical_label,
@@ -74,16 +93,17 @@ def modify_module(
     }
 
     # Handle special namespace cases
-    if namespace == "GroupeCombat" and "Strength" in edits:
-        descr_row.v.by_m("Default").v.by_m("NbSoldatInGroupeCombat").v = str(edits["Strength"])
-    
-    elif namespace == "GenericMovement" and "max_speed" in edits:
-        descr_row.v.by_m("Default").v.by_m("MaxSpeedInKmph").v = str(edits["max_speed"])
-    
-    elif namespace == "AirplaneMovement" and "AirplaneMovement" in edits:
-        if "parent_membr" in edits["AirplaneMovement"]:
-            for key, value in edits["AirplaneMovement"]["parent_membr"].items():
-                descr_row.v.by_m(key).v = str(value)
+    if namespace:
+        if namespace == "GroupeCombat" and "Strength" in edits:
+            descr_row.v.by_m("Default").v.by_m("NbSoldatInGroupeCombat").v = str(edits["Strength"])
+        
+        elif namespace == "GenericMovement" and "max_speed" in edits:
+            descr_row.v.by_m("Default").v.by_m("MaxSpeedInKmph").v = str(edits["max_speed"])
+        
+        elif namespace == "AirplaneMovement" and "AirplaneMovement" in edits:
+            if "parent_membr" in edits["AirplaneMovement"]:
+                for key, value in edits["AirplaneMovement"]["parent_membr"].items():
+                    descr_row.v.by_m(key).v = str(value)
 
     # Apply module-specific handler if it exists
     if handler := module_handlers.get(descr_type):
@@ -171,16 +191,16 @@ def _handle_icon(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
 def _handle_unit_ui(unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list, dictionary_entries: list) -> None:
     """Handle UI module modifications."""
     if "SpecialtiesList" in edits:
-        specialties_list = descr_row.v.by_m("SpecialtiesList").v
+        specialties_list = descr_row.v.by_m("SpecialtiesList")
         if "add_specs" in edits["SpecialtiesList"]:
             for spec in edits["SpecialtiesList"]["add_specs"]:
-                specialties_list.add(spec)
+                specialties_list.v.add(spec)
                 logger.info(f"Added specialty {spec} to {unit_row.namespace}")
         if "remove_specs" in edits["SpecialtiesList"]:
             for spec in edits["SpecialtiesList"]["remove_specs"]:
-                for tag in specialties_list:
+                for tag in specialties_list.v:
                     if tag.v == spec:
-                        specialties_list.remove(tag.index)
+                        specialties_list.v.remove(tag.index)
                         logger.info(f"Removed specialty {spec} from {unit_row.namespace}")
 
     if "GameName" in edits:
@@ -213,16 +233,16 @@ def _handle_unit_ui(unit_row: Any, descr_row: Any, edits: dict, index: int, modu
                 '    Condition = ~/IfNotCadavreCondition'
                 '),'
             )
-            modules_list.insert(index + 1, sell_module)
+            modules_list.v.insert(index + 1, sell_module)
 
-def _handle_deployment_shift(unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list) -> None:
+def _handle_deployment_shift(unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list, *_) -> None:
     """Handle deployment shift module removal."""
     if "DeploymentShift" in edits and edits["DeploymentShift"] == 0:
         descr_type = descr_row.v.type
-        modules_list.remove(index)
+        modules_list.v.remove(index)
         logger.info(f"Removed {descr_type} from {unit_row.namespace}")
         
-def _handle_supply(source_path, game_db, unit_edits):
+def _handle_supply(source_path, game_db, unit_edits, *_) -> None:
     """Edit supply type for new supply ranges in UniteDescriptor.ndf, as well as
     supply capacities.
     
@@ -240,61 +260,64 @@ def _handle_supply(source_path, game_db, unit_edits):
         if not data["is_supply_unit"]:
             continue
         
-        if not unit in supply_unit_edits:
+        if unit not in supply_unit_edits:
             continue
             
         is_helo = data["is_helo_unit"]
+        edits = supply_unit_edits[unit]
         
-        unit_descr = source_path.by_n(f"Descriptor_Unit_{unit}")
-        if not unit_descr:
-            logger.warning(f"Unit descriptor not found for {unit}")
-            continue
-        
-        for dic_unit, edits in unit_edits.items():
-            if dic_unit != unit:
+        try:
+            # Get unit descriptor
+            unit_descr = source_path.by_n(f"Descriptor_Unit_{unit}")
+            if not unit_descr:
+                logger.warning(f"Unit descriptor not found for {unit}")
                 continue
             
-            module_list = get_module_list(unit_descr, "ModulesDescriptors")
-            is_small = edits["is_small"] if "is_small" in edits else False
-            
-            for module in module_list:
-                if isinstance(module.v, ndf.model.Object):
-                    module_type = module.v.type
+            # Get ModulesDescriptors list
+            modules_list = get_modules_list(unit_descr.v, "ModulesDescriptors")
+            if not modules_list:
+                logger.warning(f"No ModulesDescriptors found for {unit}")
+                continue
+                
+            # Find TSupplyModuleDescriptor
+            for module in modules_list.v:
+                if not hasattr(module.v, 'type'):
+                    continue
                     
-                    if module_type == "TSupplyModuleDescriptor":
-                        supply_descr = module.v.by_member("SupplyDescriptor")
-                        supply_capacity = module.v.by_member("SupplyCapacity")
-                        old_capacity = supply_capacity.v
+                if module.v.type != "TSupplyModuleDescriptor":
+                    continue
+                
+                try:
+                    supply_descr = module.v.by_m("SupplyDescriptor")
+                    supply_capacity = module.v.by_m("SupplyCapacity")
+                    
+                    if not supply_descr or not supply_capacity:
+                        logger.warning(f"Missing supply descriptors for {unit}")
+                        continue
                         
-                        if is_helo and is_small:
+                    old_capacity = supply_capacity.v
+                    
+                    # Update supply type based on unit type
+                    if is_helo:
+                        if edits.get("is_small", False):
                             supply_descr.v = "$/GFX/Weapon/SmallHeloSupply"
-                            logger.info(f"Edited supply type for {unit} to SmallHeloSupply")
-                            
-                            if old_capacity == edits["SupplyCapacity"]:
-                                continue
-                            
-                            supply_capacity.v = edits["SupplyCapacity"]
-                            logger.info(f"Edited supply capacity for {unit} from "
-                                      f"{old_capacity} to {edits['SupplyCapacity']}")
-                        
-                        elif is_helo:
-                            supply_descr.v = "$/GFX/Weapon/HeloSupply"
-                            logger.info(f"Edited supply type for {unit} to HeloSupply")
-                            
-                            if old_capacity == edits["SupplyCapacity"]:
-                                continue
-                            
-                            supply_capacity.v = edits["SupplyCapacity"]
-                            logger.info(f"Edited supply capacity for {unit} from "
-                                      f"{old_capacity} to {edits['SupplyCapacity']}")
-                            
+                            logger.info(f"Set {unit} to SmallHeloSupply")
                         else:
-                            if old_capacity == edits["SupplyCapacity"]:
-                                continue
+                            supply_descr.v = "$/GFX/Weapon/HeloSupply"
+                            logger.info(f"Set {unit} to HeloSupply")
+                    
+                    # Update capacity if specified
+                    if "SupplyCapacity" in edits:
+                        new_capacity = str(edits["SupplyCapacity"])
+                        if old_capacity != new_capacity:
+                            supply_capacity.v = new_capacity
+                            logger.info(f"Updated {unit} supply capacity: {old_capacity} -> {new_capacity}")
                             
-                            supply_capacity.v = edits["SupplyCapacity"]
-                            logger.info(f"Edited supply capacity for {unit} from "
-                                      f"{old_capacity} to {edits['SupplyCapacity']}")
+                except Exception as e:
+                    logger.error(f"Error updating supply module for {unit}: {str(e)}")
+                    
+        except Exception as e:
+            logger.error(f"Error processing {unit}: {str(e)}")
 
 # def _handle_supply(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
 #     if "SupplyCapacity" in edits:

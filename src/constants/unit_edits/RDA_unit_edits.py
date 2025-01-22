@@ -640,6 +640,11 @@ rda_unit_edits = {
     "MiG_21PFM_DDR": { # [RKT1]
         "CommandPoints": 100,
         "availability": 4,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace_fixedsalvo": [("RocketAir_S5_57mm_x32", "RocketAir_S5_57mm_salvolength32_avion")],
+            },
+        },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 

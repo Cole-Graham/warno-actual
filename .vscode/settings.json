@@ -1,4 +1,10 @@
 {
     "files.autoSave": "afterDelay",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "[yaml]": {
+        "editor.autoIndent": "full"
+    },
+    "[dockercompose]": {
+        "editor.autoIndent": "full"
+    }
 }

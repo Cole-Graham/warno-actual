@@ -2,18 +2,49 @@ import re
 from typing import Any, Dict, List, Tuple
 
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import get_module_list, is_obj_type
+from src.utils.ndf_utils import get_modules_list, is_obj_type
 
 logger = setup_logger('mg_teams')
 
-def is_para_unit(unit_name: str, unit_db: Dict[str, Any]) -> bool:
+
+def edit_mg_teams(source: Any, unit_db: Dict[str, Any]) -> None:
+    """Edit machine gun team units in UnitDescriptor.ndf"""
+    logger.info("Editing machine gun teams")
+    
+    mgs: List[Tuple[str, str]] = [
+        ("M2HB", "HMG"), ("NSV", "HMG"), 
+        ("M60", "MMG"), ("MAG", "MMG"),
+        ("AANF1", "MMG"), ("MG3", "MMG"), 
+        ("PKM", "MMG"), ("Mk19", "Mk19")
+    ]
+    
+    for unit_row in source:
+        if not hasattr(unit_row, 'namespace'):
+            continue
+            
+        for name, mg_type in mgs:
+            pattern = re.compile(rf'^Descriptor_Unit_HMGteam_{name}.*')
+            if not pattern.match(unit_row.namespace):
+                continue
+                
+            # Get unit name without prefix for database lookup
+            unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
+            is_para = _is_para_unit(unit_name, unit_db)
+            
+            # Get and apply stats
+            stats = _get_mg_stats(mg_type, is_para)
+            _update_mg_team(unit_row.v, stats)
+            
+            logger.debug(f"Updated {unit_name} (Para: {is_para}, Type: {mg_type})") 
+
+def _is_para_unit(unit_name: str, unit_db: Dict[str, Any]) -> bool:
     """Check if a unit has the para specialty."""
     unit_data = unit_db.get(unit_name)
     if not unit_data or 'specialties' not in unit_data:
         return False
     return any('para' in specialty.lower() for specialty in unit_data['specialties'])
 
-def get_mg_stats(mg_type: str, is_para: bool) -> Dict[str, Any]:
+def _get_mg_stats(mg_type: str, is_para: bool) -> Dict[str, Any]:
     """Get stats for a machine gun team based on type and para status."""
     is_heavy = mg_type in ("HMG", "Mk19")
     
@@ -25,11 +56,11 @@ def get_mg_stats(mg_type: str, is_para: bool) -> Dict[str, Any]:
         'specialty': "'infantry_equip_veryheavy'" if is_heavy else "'infantry_equip_light'"
     }
 
-def update_mg_team(unit_row: Any, stats: Dict[str, Any]) -> None:
+def _update_mg_team(unit_row: Any, stats: Dict[str, Any]) -> None:
     """Update a machine gun team's stats."""
-    modules_list = get_module_list(unit_row, "ModulesDescriptors")
+    modules_list = get_modules_list(unit_row, "ModulesDescriptors")
     
-    for module in modules_list:
+    for module in modules_list.v:
         if not is_obj_type(module.v, None):
             continue
             
@@ -52,35 +83,5 @@ def update_mg_team(unit_row: Any, stats: Dict[str, Any]) -> None:
             module.v.by_m("NbSoldiers").v = stats['soldiers']
             
         elif module_type == "TUnitUIModuleDescriptor":
-            specialties = get_module_list(module, "SpecialtiesList")
-            specialties.add(stats['specialty'])
-
-def edit_mg_teams(source: Any, unit_db: Dict[str, Any]) -> None:
-    """Edit machine gun team units."""
-    logger.info("Editing machine gun teams")
-    
-    mgs: List[Tuple[str, str]] = [
-        ("M2HB", "HMG"), ("NSV", "HMG"), 
-        ("M60", "MMG"), ("MAG", "MMG"),
-        ("AANF1", "MMG"), ("MG3", "MMG"), 
-        ("PKM", "MMG"), ("Mk19", "Mk19")
-    ]
-    
-    for unit_row in source:
-        if not hasattr(unit_row, 'namespace'):
-            continue
-            
-        for name, mg_type in mgs:
-            pattern = re.compile(rf'^Descriptor_Unit_HMGteam_{name}.*')
-            if not pattern.match(unit_row.namespace):
-                continue
-                
-            # Get unit name without prefix for database lookup
-            unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
-            is_para = is_para_unit(unit_name, unit_db)
-            
-            # Get and apply stats
-            stats = get_mg_stats(mg_type, is_para)
-            update_mg_team(unit_row, stats)
-            
-            logger.debug(f"Updated {unit_name} (Para: {is_para}, Type: {mg_type})") 
+            specialties = module.v.by_m("SpecialtiesList")
+            specialties.v.add(stats['specialty'])

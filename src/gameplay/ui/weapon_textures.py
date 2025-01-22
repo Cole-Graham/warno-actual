@@ -1,7 +1,7 @@
 """Functions for editing weapon textures."""
 from typing import Any
 
-from src.constants.weapons.ammunition import weapons
+from src.constants.weapons.ammunition import ammunitions
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
@@ -18,7 +18,7 @@ def edit_weapontextures(source: Any) -> None:
             break
     
     # Add textures for new weapons
-    for (weapon, category, donor, is_new), data in weapons.items():
+    for (weapon, category, donor, is_new), data in ammunitions.items():
         if data is None:
             continue
             

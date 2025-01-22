@@ -88,7 +88,7 @@ from .weapons.damage_families import (
 from .weapons.missiles import edit_missiles
 from .weapons.mortar_mods import add_radio_tag_to_mortars, edit_smoke_duration
 from .weapons.new_weapons import create_new_weapons
-from .weapons.weapon_descriptor import edit_weapon_descriptor
+from .weapons.unit_edits import unit_edits_weapondescriptor
 
 logger = setup_logger(__name__)
 
@@ -160,7 +160,7 @@ def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:
             lambda source_path: edit_fob_attributes(source_path),
         ],
         "GameData/Generated/Gameplay/Gfx/WeaponDescriptor.ndf": [
-            lambda source_path: edit_weapon_descriptor(source_path, game_db),
+            lambda source_path: unit_edits_weapondescriptor(source_path, game_db),
             lambda source_path: add_radio_tag_to_mortars(source_path, game_db),
             lambda source_path: create_new_weapons(source_path, game_db)
         ],
