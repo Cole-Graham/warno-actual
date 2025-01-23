@@ -107,6 +107,11 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm")],
+            },
+        },
     },
 
     "AeroEngineers_US": {
@@ -133,7 +138,7 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("MMG_M60E1_7_62mm", "MMG_WA_M60E3_7_62mm")],
+                "replace": [("MMG_inf_M240B_7_62mm", "MMG_WA_M60E3_7_62mm")],
             },
         },
     },
@@ -176,6 +181,9 @@ usa_unit_edits = {
             "add_specs": ["'infantry_equip_medium'"],
         },
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("MMG_inf_M240B_7_62mm", "MMG_WA_M60E3_7_62mm")],
+            },
             "Salves": {
                 "FM_M16": 9,
                 "MMG_WA_M60E3_7_62mm": 30,
@@ -198,6 +206,9 @@ usa_unit_edits = {
             "add_specs": ["'infantry_equip_heavy'"],
         },
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm")],
+            },
             "Salves": {
                 "PM_GreaseGun": 40,
                 "FM_M16A1": 7,
@@ -424,6 +435,11 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("Commando_733", "M16A1_Carbine")],
+            },
+        },
     },
 
     "Ranger_Dragon_US": {
@@ -434,8 +450,20 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("Commando_733", "M16A1_Carbine")],
+            },
+        },
     },
     
+    "DeltaForce_US": {
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("Commando_733", "M16A1_Carbine")],
+            },
+        },
+    },
 
     "Airborne_US": {
         "CommandPoints": 55,
@@ -602,6 +630,14 @@ usa_unit_edits = {
             },
         }
     },
+    
+    "Rifles_half_LAW_NG_US": {
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm")],
+            },
+        },
+    },
 
     "Rifles_half_Dragon_NG_US": {
         "CommandPoints": 30,
@@ -612,12 +648,39 @@ usa_unit_edits = {
             "add_specs": ["'infantry_equip_heavy'"],
         },
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm")],
+            },
             "Salves": {
                 "FM_M16A1": 10,
                 "MMG_M60E1_7_62mm": 30,
                 "M47_DRAGON": 4,
             },
         }
+    },
+    
+    "NatGuard_M67_US": {
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm")],
+            },
+        },
+    },
+    
+    "NatGuard_LAW_US": {
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm")],
+            },
+        },
+    },
+    
+    "NatGuard_Dragon_US": {
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm")],
+            },
+        },
     },
 
     "Aero_half_Dragon_US": {
@@ -651,6 +714,9 @@ usa_unit_edits = {
             "add_specs": ["'infantry_equip_medium'"],
         },
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("FM_M16", "M16A1_Carbine")],
+            },
             "Salves": {
                 "M16A1_Carbine": 9,
                 "SAW_M249_5_56mm": 30,
@@ -1151,6 +1217,22 @@ usa_unit_edits = {
             },
         },
     },
+    
+    "HvyScout_NG_US": {
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm")],
+            },
+        },
+    },
+    
+    "HvyScout_NG_Dragon_US": {
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm")],
+            },
+        },
+    },
 
     "LRRP_US": {
         "CommandPoints": 60,
@@ -1167,7 +1249,10 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("RocketInf_M72A1_LAW_66mm", "RocketInf_M72A3_LAW_66mm")],
+                "replace": [
+                    ("Commando_733", "M16A1_Carbine"),
+                    ("RocketInf_M72A1_LAW_66mm", "RocketInf_M72A3_LAW_66mm"),
+                ],
             },
         },
         "DeploymentShift": 0,
@@ -1201,9 +1286,20 @@ usa_unit_edits = {
             "add_specs": ["'infantry_equip_heavy'"],
         },
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("FM_M16", "FM_M16_noreflex")],
+            },
             "Salves": {
                 "FM_M16": 7,
                 "MANPAD_FIM92": 6,
+            },
+        },
+    },
+    
+    "MANPAD_Stinger_C_Aero_US": {
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("FM_M16", "FM_M16_noreflex")],
             },
         },
     },
@@ -1221,6 +1317,9 @@ usa_unit_edits = {
             "add_specs": ["'infantry_equip_heavy'"],
         },
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("FM_M16", "FM_M16_noreflex")],
+            },
             "Salves": {
                 "FM_M16": 7,
                 "MANPAD_FIM92": 6,

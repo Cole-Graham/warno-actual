@@ -2,16 +2,16 @@ from typing import Any, Dict, List
 
 from src.constants.unit_edits import load_unit_edits
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import get_modules_list, is_obj_type
+from src.utils.ndf_utils import is_obj_type
 
-logger = setup_logger('division_unit_edits')
+logger = setup_logger(__name__)
 
-def edit_units(source: Any) -> None:
-    """Apply unit edits to divisions."""
+def unit_edits_divisionrules(source_path: Any) -> None:
+    """Apply unit edits to DivisionRules.ndf"""
     logger.info("Applying unit edits to divisions")
     
     unit_edits = load_unit_edits()
-    division_rules = source.by_n("DivisionRules").v.by_member("DivisionRules").v
+    division_rules = source_path.by_n("DivisionRules").v.by_member("DivisionRules").v
     
     for unit, edits in unit_edits.items():
         if "Divisions" in edits:
@@ -36,16 +36,16 @@ def _remove_from_divisions(division_rules: Any, unit: str, divisions: List[str])
             if map_row.k != div_key:
                 continue
                 
-            unit_rule_list = map_row.v.by_m("UnitRuleList").v
+            unit_rule_list = map_row.v.by_m("UnitRuleList")
             unit_descr = f"$/GFX/Unit/Descriptor_Unit_{unit}"
             
-            for rule_obj in unit_rule_list:
+            for rule_obj in unit_rule_list.v:
                 if not is_obj_type(rule_obj.v, None):
                     continue
                     
                 if rule_obj.v.by_m("UnitDescriptor").v == unit_descr:
                     logger.debug(f"Removing {unit} from {division_name}")
-                    unit_rule_list.remove(rule_obj.index)
+                    unit_rule_list.v.remove(rule_obj.index)
                     break
 
 def _add_to_divisions(division_rules: Any, unit: str, edits: Dict) -> None:

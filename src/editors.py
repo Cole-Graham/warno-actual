@@ -3,6 +3,12 @@
 from typing import Callable, Dict, List
 
 # Import all gameplay editors
+from src.gameplay import (
+    unit_edits_divisionrules, 
+    edit_mg_teams,
+    apply_default_salves,
+    ui_gameplay_textscripts,
+)
 from src.gameplay.buildings import edit_fob_attributes
 from src.gameplay.depictions import (
     create_aerial_ghost_depictions,
@@ -79,7 +85,7 @@ from src.gameplay.weapons.damage_families import (
     edit_infantry_armor,
     edit_weapon_constantes,
 )
-from src.gameplay.weapons.missiles import edit_missiles, sead_missile_speed
+from src.gameplay.weapons.missiles import edit_missiles, edit_missile_speed
 from src.gameplay.weapons.mortar_mods import (
     add_radio_tag_to_mortars,
     edit_smoke_duration,
@@ -173,6 +179,7 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         ],
         "GameData/Generated/Gameplay/Decks/DivisionRules.ndf": [
             add_division_rules,
+            unit_edits_divisionrules,
         ],
         "GameData/Generated/Gameplay/Decks/DivisionPacks.ndf": [
             create_division_packs,
@@ -205,11 +212,6 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
             lambda source_path: create_new_units(source_path, game_db),
             lambda source_path: edit_mg_teams(source_path, game_db),
         ],
-        "GameData/Generated/Gameplay/Gfx/WeaponDescriptor.ndf": [
-            lambda source_path: unit_edits_weapondescriptor(source_path, game_db),
-            lambda source_path: add_radio_tag_to_mortars(source_path, game_db),
-            lambda source_path: create_new_weapons(source_path, game_db),
-        ],
         "GameData/Generated/Gameplay/Gfx/Ammunition.ndf": [
             lambda source_path: edit_ammunition(source_path, game_db),
             lambda source_path: apply_damage_families(source_path, game_db),
@@ -217,8 +219,14 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/Generated/Gameplay/Gfx/AmmunitionMissiles.ndf": [
             lambda source_path: edit_missiles(source_path, game_db),
         ],
+        "GameData/Generated/Gameplay/Gfx/WeaponDescriptor.ndf": [
+            lambda source_path: unit_edits_weapondescriptor(source_path, game_db),
+            lambda source_path: add_radio_tag_to_mortars(source_path, game_db),
+            lambda source_path: create_new_weapons(source_path, game_db),
+            lambda source_path: apply_default_salves(source_path, game_db),
+        ],
         "GameData/Generated/Gameplay/Gfx/MissileDescriptors.ndf": [
-            lambda source_path: sead_missile_speed(source_path, game_db),
+            lambda source_path: edit_missile_speed(source_path, game_db),
         ],
         "GameData/Generated/Gameplay/Gfx/OrderAvailability_Tactic.ndf": [
             lambda source_path: edit_orders(source_path, game_db),
@@ -299,6 +307,7 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         ],
         "GameData/UserInterface/Style/DefaultStyle/DefaultTextFormatScript.ndf": [
             edit_defaulttextformatscript,
+            ui_gameplay_textscripts,
         ],
         
         # Texture files

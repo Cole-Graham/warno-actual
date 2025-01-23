@@ -10,6 +10,7 @@ from .howitzer import weapons as howitzer_weapons
 from .mlrs import weapons as mlrs_weapons
 from .mortier import weapons as mortier_weapons
 from .rocket import weapons as rocket_weapons
+from .rocketinf import weapons as rocketinf_weapons
 from .small_arms import weapons as small_arms_weapons
 
 WeaponData = Dict[str, Union[Dict, List, int, float, str]]
@@ -25,6 +26,7 @@ ammunitions: Dict[WeaponKey, WeaponData] = {
     **mlrs_weapons,
     **mortier_weapons,
     **rocket_weapons,
+    **rocketinf_weapons,
     **small_arms_weapons,
 }
 # fmt: on 

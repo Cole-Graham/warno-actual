@@ -409,10 +409,12 @@ def _gather_mounted_weapons(turret: Any, salvo_data: Dict[int, int]) -> Dict[str
                 
             ammo_name = ammo_val.split("$/GFX/Weapon/Ammo_", 1)[1]
             salvo_index = int(weapon.v.by_m("SalvoStockIndex").v)
+            weapon_quantity = int(weapon.v.by_m("NbWeapons").v)
             weapon_data[ammo_name] = {
                 'salvo_index': salvo_index,
                 'salves': salvo_data[str(salvo_index)],
-                'quantity': _get_weapon_quantity(ammo_name)
+                'quantity': weapon_quantity,
+                'regex_quantity': _get_regex_weapon_quantity(ammo_name)
             }
         except Exception as e:
             logger.warning(f"Failed to gather data for weapon: {str(e)}")
@@ -429,7 +431,7 @@ def _gather_salvo_data(weapon_descr: Any) -> Dict[str, int]:
         logger.warning(f"Failed to gather salvo data for {weapon_descr.namespace}")
         return {}
 
-def _get_weapon_quantity(ammo_name: str) -> int:
+def _get_regex_weapon_quantity(ammo_name: str) -> int:
     """Extract quantity from weapon name if present."""
     pattern = r".*?_x(\d+)$"
     match = re.match(pattern, ammo_name)

@@ -577,6 +577,22 @@ sov_unit_edits = {
             "add_specs": ["'infantry_equip_heavy'"],
         },
     },
+    
+    "ATteam_Fagot_SOV": {
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("ATGM_9K111M_Faktoriya", "ATGM_9K111_Fagot")],
+            },
+        },
+    },
+    
+    "Atteam_Fagot_DShV_SOV": {
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("ATGM_9K111M_Faktoriya", "ATGM_9K111_Fagot")],
+            },
+        },
+    },
 
     "Atteam_Fagot_VDV_SOV": {
         "CommandPoints": 30,
@@ -585,6 +601,11 @@ sov_unit_edits = {
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("ATGM_9K111M_Faktoriya", "ATGM_9K111_Fagot")],
+            },
         },
     },
 
@@ -1023,6 +1044,7 @@ sov_unit_edits = {
         "armor": {
             "front": 18,
         },
+        "availability": 6,
         "CommandPoints": 215,
         "Divisions": {
             "default": {
@@ -1032,7 +1054,11 @@ sov_unit_edits = {
                 "cards": 3,
             },
         },
-        "availability": 6,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("ATGM_9M112_Kobra", "ATGM_9M112M2_Kobra")],
+            },
+        },
         "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
     },
     
@@ -1303,6 +1329,11 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("FM_AK_74", "FM_AK_74_noreflex")],
+            },
+        },
     },
 
     "MANPAD_Igla_TTsko_SOV": {
@@ -1313,6 +1344,11 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("FM_AK_74", "FM_AK_74_noreflex")],
+            },
+        },
     },
 
     "MANPAD_Igla_VDV_SOV": {
@@ -1322,6 +1358,11 @@ sov_unit_edits = {
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("FM_AKS_74", "FM_AKS_74_noreflex")],
+            },
         },
     },
 

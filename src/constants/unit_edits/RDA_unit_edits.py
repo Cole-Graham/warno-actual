@@ -484,6 +484,11 @@ rda_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("FM_Mpi_AK_74N", "FM_Mpi_AK_74N_noreflex")],
+            },
+        },
     },
 
     "MANPAD_Igla_DDR": {
@@ -493,6 +498,11 @@ rda_unit_edits = {
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("FM_AK_74", "FM_AK_74_noreflex")],
+            },
         },
     },
 

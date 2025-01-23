@@ -494,7 +494,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "BaseSupplyCost": 1,
-        "NbWeapons": [11, 7, 5, 4, 2],
+        "NbWeapons": [11, 7, 5, 4, 3, 2],
         "Texture": "M16A1_Carbine",
         "WeaponDescriptor": {
             "Salves": 11,

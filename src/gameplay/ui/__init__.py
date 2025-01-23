@@ -6,6 +6,7 @@ from .traits import edit_specialties, edit_specialty_icons, write_trait_texts
 from .unit_info_panel import edit_unit_info_panel, write_info_panel_hints
 from .weapon_textures import edit_weapontextures
 from .weapons_minmax import edit_weaponsminmax
+from .text_scripts import ui_gameplay_textscripts
 
 __all__ = [
     'edit_division_emblems',
@@ -17,4 +18,5 @@ __all__ = [
     'write_trait_texts',
     'edit_weapontextures',
     'edit_weaponsminmax',
+    'ui_gameplay_textscripts',
 ]

@@ -1,6 +1,6 @@
 """Editor for Ammunition.ndf."""
 
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Optional
 from uuid import uuid4
 
 from src import ndf
@@ -64,7 +64,8 @@ def edit_ammunition(source_path, game_db: Dict[str, Any]) -> None:
                 # Get or create base descriptor
                 try:
                     if is_new:
-                        base_descr = _create_new_descriptor(source_path, weapon_name, donor)
+                        base_descr = _create_new_descriptor(source_path, data,
+                                                            weapon_name, donor)
                     else:
                         base_descr = _get_existing_descriptor(source_path, weapon_name)
                         
@@ -79,7 +80,7 @@ def edit_ammunition(source_path, game_db: Dict[str, Any]) -> None:
                 
                 # Apply edits
                 try:
-                    _apply_weapon_edits(base_descr, ammo_data)
+                    _apply_weapon_edits(base_descr, data, ammo_data)
                     logger.debug(f"Applied edits to {weapon_name}")
                 except Exception as e:
                     logger.error(f"Failed applying edits to {weapon_name}: {str(e)}")
@@ -165,15 +166,15 @@ def _create_quantity_variants(source_path, base_descr, weapon_name, quantities, 
                 existing.v.by_m("SupplyCost").v = str(int(base_cost) * quantity)
             logger.debug(f"Updated existing variant {namespace}")
 
-def _apply_weapon_edits(descr: Any, data: Dict) -> None:
+def _apply_weapon_edits(descr: Any, data: Dict, ammo_data: Dict) -> None:
     """Apply edits from ammunition data to descriptor."""
     membr = descr.v.by_m
     
     logger.debug(f"Applying edits to {descr.n}")
     
     # Apply Arme edits
-    if "Arme" in data:
-        arme_data = data["Arme"]
+    if "Arme" in ammo_data:
+        arme_data = ammo_data["Arme"]
         arme_obj = descr.v.by_m("Arme").v
         
         for arme_membr, arme_v in arme_data.items():
@@ -183,8 +184,8 @@ def _apply_weapon_edits(descr: Any, data: Dict) -> None:
                 arme_obj.by_m(arme_membr).v = arme_v
     
     # Apply parent member edits
-    if "parent_membr" in data:
-        for key, value in data["parent_membr"].items():
+    if "parent_membr" in ammo_data:
+        for key, value in ammo_data["parent_membr"].items():
             logger.debug(f"Setting {key} = {value}")
             if key == "add": # adding new member, e.g. [16, "PorteeMaximaleTBAGRU = 875"]
                 index = value[0]
@@ -202,13 +203,14 @@ def _apply_weapon_edits(descr: Any, data: Dict) -> None:
                 membr(key).v = ndf.convert(list_str.encode('utf-8'))[0].v
     
     # Apply hit roll edits
-    if "hit_roll" in data:
-        _apply_hit_roll_edits(descr, data["hit_roll"])
+    if "hit_roll" in ammo_data:
+        _apply_hit_roll_edits(descr, ammo_data["hit_roll"])
         
     # Apply texture
     if "Texture" in data:
         texture_file = f'"Texture_Interface_Weapon_{data["Texture"]}"'
         membr("InterfaceWeaponTexture").v = texture_file
+        logger.debug(f"Applied texture {texture_file}")
 
 def _apply_hit_roll_edits(descr: Any, hit_roll_data: Dict) -> None:
     """Apply hit roll edits to ammunition descriptor."""
@@ -245,7 +247,7 @@ def _get_base_supply_cost(weapon_name):
             return cost
     return None
 
-def _create_new_descriptor(source_path, weapon_name, donor):
+def _create_new_descriptor(source_path, data, weapon_name, donor):
     """Create a new descriptor for ammunition."""
     donor_descr = source_path.by_n(f"Ammo_{donor}")
     if not donor_descr:
@@ -264,7 +266,13 @@ def _create_new_descriptor(source_path, weapon_name, donor):
     hitroll_obj.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
     
     # Set namespace
-    base_descr.namespace = f"Ammo_{weapon_name}"
+    if "NbWeapons" in data and len(data["NbWeapons"]) == 1:
+        if data["NbWeapons"][0] > 1:
+            base_descr.namespace = f"Ammo_{weapon_name}_x{data['NbWeapons'][0]}"
+        else:
+            base_descr.namespace = f"Ammo_{weapon_name}"
+    else:
+        base_descr.namespace = f"Ammo_{weapon_name}"
     
     logger.debug(f"Created new base descriptor for {weapon_name} from {donor}")
     return base_descr
@@ -279,3 +287,41 @@ def _get_existing_descriptor(source_path, weapon_name):
             logger.error(f"Could not find weapon {weapon_name}")
             return None
     return base_descr 
+
+def apply_default_salves(
+    source_path: Any,
+    game_db: Dict[str, Any],
+) -> None:
+    """Apply default salves to WeaponDescriptor.ndf"""
+    
+    def __edit_salves(
+        source_path: Any,
+        weapon_descr_name: str,
+        ammo_name: str,
+        salvo_stock_index: int,
+        default_salves: List[int]
+    ) -> None:
+        weapon_descr = source_path.by_n(weapon_descr_name)
+        salves = weapon_descr.v.by_m("Salves")
+        salves.v[salvo_stock_index].v = str(default_salves)
+        logger.info(f"Applied default salves for {ammo_name} to {weapon_descr_name}")
+    
+    ammo_db = game_db["ammunition"]
+    for (ammo_name, category, donor, is_new), data in ammunitions.items():
+        if not (data.get("WeaponDescriptor") and "Salves" in data["WeaponDescriptor"]):
+            continue
+        
+        old_name = ammo_db["renames_new_old"].get(ammo_name, None)
+        
+        default_salves = data["WeaponDescriptor"]["Salves"]
+        for weapon_descr_name, weapon_descr_data in ammo_db["salves_map"].items():
+            
+            if old_name and old_name in weapon_descr_data["salves"]:
+                salvo_stock_index = weapon_descr_data["salves"][old_name][0]
+                __edit_salves(source_path, weapon_descr_name, old_name,
+                            salvo_stock_index, default_salves)
+           
+            elif ammo_name in weapon_descr_data["salves"]:
+                salvo_stock_index = weapon_descr_data["salves"][ammo_name][0]
+                __edit_salves(source_path, weapon_descr_name, ammo_name,
+                            salvo_stock_index, default_salves)

@@ -10,6 +10,7 @@ from src.constants.weapons.vanilla_inst_modifications import (
     AMMUNITION_MISSILES_RENAMES,
 )
 from src.utils.logging_utils import setup_logger
+from src.utils.ndf_utils import is_valid_turret
 
 logger = setup_logger('ammo_data')
 
@@ -76,13 +77,15 @@ def build_ammo_data(mod_src_path: Path) -> Dict[str, Any]:
     ammo_path = "GameData/Generated/Gameplay/Gfx/Ammunition.ndf"
     ammo_missile_path = "GameData/Generated/Gameplay/Gfx/AmmunitionMissiles.ndf"
     unit_path = "GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf"
-    
+    weapon_descriptor_path = "GameData/Generated/Gameplay/Gfx/WeaponDescriptor.ndf"
+
     try:
         mod = ndf.Mod(mod_src_path, "None")
         ammo_file = mod.parse_src(ammo_path)
         ammo_missile_file = mod.parse_src(ammo_missile_path)
         unit_file = mod.parse_src(unit_path)
-        
+        weapon_descriptor_file = mod.parse_src(weapon_descriptor_path)
+
         # Merge salvo weapons and renames separately
         salvo_weapons = build_salvo_weapons(ammo_file)
         salvo_weapons.update(build_salvo_weapons(ammo_missile_file))
@@ -103,7 +106,8 @@ def build_ammo_data(mod_src_path: Path) -> Dict[str, Any]:
             "full_ball_weapons": build_full_ball_weapons(ammo_file),
             "sniper_weapons": build_sniper_weapons(ammo_file),
             "renames_old_new": renames_old_new,
-            "renames_new_old": renames_new_old
+            "renames_new_old": renames_new_old,
+            "salves_map": build_ammo_salves_map(weapon_descriptor_file)
         }
         
     except Exception as e:
@@ -115,9 +119,41 @@ def build_ammo_data(mod_src_path: Path) -> Dict[str, Any]:
             "full_ball_weapons": [],
             "sniper_weapons": [],
             "renames_old_new": {},
-            "renames_new_old": {}
+            "renames_new_old": {},
+            "salves_map": {},
         }
 
+def build_ammo_salves_map(parse_source) -> dict:
+    """Build mapping of ammunition salves in WeaponDescriptor.ndf
+    for ammunition.json (used for applying default salves during ammunition edits)"""
+    salves_map = {}
+    salves_list = []
+    
+    for weapon_descr in parse_source:
+        salves_map[weapon_descr.n] = {}
+        salves = weapon_descr.v.by_m("Salves")
+        
+        salves_list = []
+        salves_list.extend(int(value.v) for value in salves.v)
+        salves_map[weapon_descr.n]['salves_list'] = salves_list
+        salves_map[weapon_descr.n]['salves'] = {}
+            
+        turret_list = weapon_descr.v.by_m("TurretDescriptorList")
+        for turret in turret_list.v:
+            if not is_valid_turret(turret.v):
+                logger.warning(f"Invalid turret: {turret.v}")
+                continue
+            
+            mounted_weapons = turret.v.by_m("MountedWeaponDescriptorList")
+            for weapon in mounted_weapons.v:
+                ammunition = weapon.v.by_m("Ammunition").v.split('_', 1)[1]
+                salvo_stock_index = weapon.v.by_m("SalvoStockIndex").v
+                salvos = salves.v[int(salvo_stock_index)].v
+                
+                data = [int(salvo_stock_index), int(salvos)]
+                salves_map[weapon_descr.n]['salves'][ammunition] = data
+    
+    return salves_map
 
 def build_mg_categories(parse_source) -> dict:
     """Build MG weapon categories from ammunition data.

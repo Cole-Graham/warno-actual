@@ -49,10 +49,12 @@ def unit_edits_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> No
                 continue
                 
             logger.debug(f"Processing {unit}")
-            _apply_weapon_edits(weapon_descr, edits["WeaponDescriptor"], weapon_descr_data, turret_templates)
+            _apply_weapon_edits(weapon_descr, edits["WeaponDescriptor"],
+                                weapon_descr_data, turret_templates, game_db)
             
             # Adjust light AT weapon salvos based on squad size
-            _adjust_light_at_salvos(weapon_descr, unit, ammos, ammo_db, unit_db, weapon_db)
+            _adjust_light_at_salvos(weapon_descr, unit, ammos,
+                                    ammo_db, unit_db, weapon_db)
 
 def _gather_turret_templates(
     source_path: Any,
@@ -185,7 +187,8 @@ def _apply_weapon_edits(
     weapon_descr: Any,
     edits: Dict,
     weapon_descr_data: Dict,
-    turret_templates: List[Tuple[str, Any]]
+    turret_templates: List[Tuple[str, Any]],
+    game_db: Dict,
 ) -> None:
     """Apply weapon edits using database data."""
 
@@ -202,7 +205,7 @@ def _apply_weapon_edits(
     
     # Handle equipment changes
     if "equipmentchanges" in edits:
-        _apply_equipment_changes(weapon_descr, edits["equipmentchanges"], weapon_descr_data, turret_templates)
+        _apply_equipment_changes(weapon_descr, edits["equipmentchanges"], weapon_descr_data, turret_templates, game_db)
 
 def _apply_turret_changes(weapon_descr: Any, turrets_edits: Dict, weapon_descr_data: Dict) -> None:
     """Apply turret changes using database data."""
@@ -320,11 +323,12 @@ def _apply_equipment_changes(
     equipment_changes: Dict,
     weapon_descr_data: Dict,
     turret_templates: List[Tuple[str, Any]],
+    game_db: Dict,
 ) -> None:
     """Apply equipment changes to weapon descriptor."""
     # Handle replacements
     if any(key in equipment_changes for key in ["replace", "replace_fixedsalvo"]):
-        _apply_weapon_replacements(weapon_descr, equipment_changes)
+        _apply_weapon_replacements(weapon_descr, equipment_changes, game_db)
     
     # Handle additions
     if "add" in equipment_changes:
@@ -334,23 +338,50 @@ def _apply_equipment_changes(
     if "quantity" in equipment_changes:
         _update_weapon_quantities(weapon_descr, equipment_changes["quantity"], weapon_descr_data)
 
-def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict) -> None:
+def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_db: Dict) -> None:
     """Replace weapons with their replacements."""
     ammo_pattern = re.compile(r'\$/GFX/Weapon/Ammo_(.*?)(?:_x\d+)?$')
     turret_list = weapon_descr.v.by_member("TurretDescriptorList").v
+    ammo_db = game_db["ammunition"]
+    weapon_db = game_db["weapons"]
     
-    for descr_row in turret_list:
-        if not is_valid_turret(descr_row.v):
+    def __get_weapon_quantity(
+        weapon_descr: Any,
+        turret_index: str,
+        ammo_name: str,
+        ammo_db: Dict,
+        weapon_db: Dict,
+    ) -> int:
+        """Get the quantity of a weapon from the weapons.json"""
+        weapon_descr_name = weapon_descr.namespace
+        current_turret = weapon_db[weapon_descr_name]['turrets'][turret_index]
+        
+        if ammo_name in ammo_db['renames_new_old']:
+            old_name = ammo_db['renames_new_old'].get(ammo_name, None)
+            if old_name:
+                current_weapon = current_turret['weapons'][old_name]
+            else:
+                current_weapon = current_turret['weapons'][ammo_name]
+        
+        else:
+            current_weapon = current_turret['weapons'][ammo_name]
+        
+        return current_weapon['quantity']
+    
+    for turret in turret_list:
+        if not is_valid_turret(turret.v):
             continue
-            
-        mounted_wpns = descr_row.v.by_m("MountedWeaponDescriptorList")
+        
+        turret_index = str(turret.index)
+        mounted_wpns = turret.v.by_m("MountedWeaponDescriptorList")
         for weapon in mounted_wpns.v:
             if not is_obj_type(weapon.v, "TMountedWeaponDescriptor"):
                 continue
                 
             ammo_val = weapon.v.by_m("Ammunition").v
+            stripped_ammo = ammo_val.split("$/GFX/Weapon/Ammo_", 1)[1]
             
-            # Handle fixed salvo replacements
+            # Handle fixed salvo replacements (todo: not use lazy eval of "replace_fixedsalvo")
             if "replace_fixedsalvo" in equipment_changes:
                 for current, replacement in equipment_changes["replace_fixedsalvo"]:
                     if ammo_val == f"$/GFX/Weapon/Ammo_{current}":
@@ -364,7 +395,13 @@ def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict) -> No
                     ammo_name = match.group(1)
                     for current, replacement in equipment_changes["replace"]:
                         if ammo_name == current:
-                            weapon.v.by_m("Ammunition").v = f"$/GFX/Weapon/Ammo_{replacement}"
+                            quantity = __get_weapon_quantity(weapon_descr, turret_index,
+                                                             ammo_name, ammo_db, weapon_db)
+                            if quantity > 1:
+                                new_ammo = f"$/GFX/Weapon/Ammo_{replacement}_x{quantity}"
+                            else:
+                                new_ammo = f"$/GFX/Weapon/Ammo_{replacement}"
+                            weapon.v.by_m("Ammunition").v = new_ammo
                             logger.debug(f"Replaced {current} with {replacement}")
 
 def _adjust_light_at_salvos(

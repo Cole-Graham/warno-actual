@@ -48,6 +48,10 @@ from .divisions import (
     edit_division_units,
     update_deck_serializer,
 )
+from .division_rules import (
+    edit_mg_teams,
+    unit_edits_divisionrules,
+)
 from .effects import (
     edit_capacite_list,
     edit_critical_effects,
@@ -63,6 +67,7 @@ from .ui import (
     edit_specialties,
     edit_specialty_icons,
     edit_unit_info_panel,
+    ui_gameplay_textscripts,
 )
 from .unit_descriptor import (
     create_new_units,
@@ -75,6 +80,9 @@ from .unit_descriptor import (
     edit_units,
 )
 from .veterancy import edit_veterancy_effects, edit_veterancy_hints
+from .weapons import (
+    apply_default_salves,
+)
 from .weapons.ammunition import edit_ammunition
 from .weapons.damage_families import (
     add_damage_families_to_impl,

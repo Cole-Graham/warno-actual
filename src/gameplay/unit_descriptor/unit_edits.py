@@ -37,7 +37,7 @@ def edit_units(source_path: Any, game_db: Dict[str, Any]) -> None:
             # Get edits for this unit
             edits = find_namespace(unit_row, unit_edits, prefix="Descriptor_Unit_")
             if edits is None:
-                logger.debug(f"No edits found for {unit_name}")
+                logger.info(f"No edits found for {unit_name}")
                 continue
                 
             logger.info(f"Applying edits to {unit_name}")

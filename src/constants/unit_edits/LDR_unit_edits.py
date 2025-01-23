@@ -102,6 +102,14 @@ ldr_unit_edits = {
         "is_infantry": True,
         "is_ground_vehicle": False,
     },
+    
+    "NatGuard_CMD_US": {
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm")],
+            },
+        },
+    },
 
     "Engineer_CMD_US": {
         "GameName": "#LDR ENGINEERS LDR.",
@@ -192,6 +200,9 @@ ldr_unit_edits = {
         "XPMultiplier": [0.0, 0.0, 1.0, 0.75],
         "max_speed": 20,
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("Commando_733", "M16A1_Carbine")],
+            },
             "Salves": {
                 "RocketInf_M67_RCL_90mm": 10,
             },

@@ -403,6 +403,19 @@ pol_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("FM_kbk_AK", "FM_kbk_AK_noreflex")],
+            },
+        },
+    },
+    
+    "MANPAD_Strela_2M_Para_POL": {
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("FM_kbk_AKM", "FM_kbk_AKM_noreflex")],
+            },
+        },
     },
 
     "MTLB_Strela10_POL": {

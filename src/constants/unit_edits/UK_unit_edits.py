@@ -444,6 +444,11 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("PM_Sterling", "PM_Sterling_noreflex")],
+            },
+        },
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
     },
     
@@ -467,6 +472,9 @@ uk_unit_edits = {
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
+        },
+        "equipmentchanges": {
+            "replace": [("PM_Sterling", "PM_Sterling_noreflex")],
         },
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
     },

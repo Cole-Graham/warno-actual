@@ -3,12 +3,9 @@
 from typing import Any, Callable, Dict, List
 
 from .mg_teams import edit_mg_teams
-from .unit_edits import edit_units
+from .unit_edits import unit_edits_divisionrules
 
-
-def get_editors(unit_db: Dict[str, Any]) -> List[Callable]:
-    """Get all editors for DivisionRules.ndf."""
-    return [
-        lambda source: edit_mg_teams(source, unit_db),
-        lambda source: edit_units(source),
-    ] 
+__all__ = (
+    edit_mg_teams,
+    unit_edits_divisionrules,
+)
