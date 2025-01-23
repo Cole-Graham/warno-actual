@@ -9,6 +9,7 @@ output.txt
 scripts/
 src/data/database/*.json
 temp_context.txt
+.VSCodeCounter/
 
 # don't ignore
 !logs/.gitkeep

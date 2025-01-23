@@ -1,6 +1,10 @@
 """Weapon modification modules."""
 
-from .ammunition import edit_ammunition, apply_default_salves
+from .ammunition import (
+    edit_ammunition,
+    apply_default_salves,
+    update_weapondescr_ammoname_quantity
+)
 from .damage_families import (
     add_damage_families_to_impl,
     add_damage_families_to_list,
@@ -23,6 +27,7 @@ from .vanilla_modifications import vanilla_renames_ammunition, remove_vanilla_in
 __all__ = [
     'apply_default_salves',
     'edit_ammunition',
+    'update_weapondescr_ammoname_quantity',
     'add_damage_families_to_impl',
     'add_damage_families_to_list',
     'add_damage_resistance_values',

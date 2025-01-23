@@ -82,6 +82,7 @@ from .unit_descriptor import (
 from .veterancy import edit_veterancy_effects, edit_veterancy_hints
 from .weapons import (
     apply_default_salves,
+    update_weapondescr_ammoname_quantity,
 )
 from .weapons.ammunition import edit_ammunition
 from .weapons.damage_families import (

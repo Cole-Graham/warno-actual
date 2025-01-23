@@ -8,6 +8,7 @@ from src.gameplay import (
     edit_mg_teams,
     apply_default_salves,
     ui_gameplay_textscripts,
+    update_weapondescr_ammoname_quantity,
 )
 from src.gameplay.buildings import edit_fob_attributes
 from src.gameplay.depictions import (
@@ -224,6 +225,7 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
             lambda source_path: add_radio_tag_to_mortars(source_path, game_db),
             lambda source_path: create_new_weapons(source_path, game_db),
             lambda source_path: apply_default_salves(source_path, game_db),
+            lambda source_path: update_weapondescr_ammoname_quantity(source_path, game_db),
         ],
         "GameData/Generated/Gameplay/Gfx/MissileDescriptors.ndf": [
             lambda source_path: edit_missile_speed(source_path, game_db),

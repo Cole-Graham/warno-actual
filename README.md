@@ -24,6 +24,9 @@ cp config/config.template.YAML config/config.YAML
 Then, edit `config/config.YAML` to customize your settings according to your preferences.
 
 ### Important Notes
+- there is an NDF file in the root directory, which fixes a limitation with ndf parse. You will need to
+replace the converter.py file in your ndf parse library installation with this one. It was written by
+Ulibos but he hasn't updated the parser yet.
 - Ensure that you have the necessary permissions to create and edit files in the project directory.
 - Refer to the template configuration file for guidance on the available settings and their expected values.
 

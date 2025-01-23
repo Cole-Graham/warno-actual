@@ -23,7 +23,7 @@ USA_NEW_UNITS = {
             ],
         "weapon1": "$/GFX/Weapon/Ammo_FM_M16",
         "weapon1_quantity": 2,
-        "weapon2": "$/GFX/Weapon/Ammo_PM_M4_Carbine",
+        "weapon2": "$/GFX/Weapon/Ammo_Commando_733",
         "weapon2_quantity": 3,
         "Salves": [7, 7, 5, 3],
         "TransportedTexture": "UseInGame_Transport_COMMAND",

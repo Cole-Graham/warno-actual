@@ -51,7 +51,6 @@ def _modify_weapon(
     ammo_db = game_db["ammunition"]
     # check to see if the ammo has been renamed
     def get_ammo_name(ammo_value: Any,
-                      ammo_val: Any,
                       ammo_db: Dict[str, Any],
                       log_count: int
     ) -> str:
@@ -59,13 +58,12 @@ def _modify_weapon(
         e.g. '$/GFX/Weapon/Ammo_PM_M4_Carbine'"""
         logger.debug(f"Checking weapon key {log_count}")
         stripped_ammo_value = ammo_value.split("_", 1)[1]
-        prefix = ammo_value.split("_", 1)[0]
         if stripped_ammo_value in ammo_db["renames_new_old"]:
             logger.debug(f"Found old ammo name for {stripped_ammo_value}")
-            return prefix + "_" + ammo_db["renames_new_old"][stripped_ammo_value]
+            return ammo_db["renames_new_old"][stripped_ammo_value]
         else:
             logger.debug(f"No old name found for {stripped_ammo_value}")
-            return ammo_val
+            return None
     
     # Handle salvos
     if "Salves" in edits:
@@ -89,17 +87,43 @@ def _modify_weapon(
         ammo_value = weapon_descr_row.v.by_member("Ammunition").v
         ammo_val = edits.get(ammo_key)
         quantity_val = edits.get(quantity_key)
-        if ammo_val is not None:
-            # check to see if the ammo has been renamed
-            ammo_value = get_ammo_name(ammo_value, ammo_val, ammo_db, log_count)
+        old_name = get_ammo_name(ammo_value, ammo_db, log_count)
+        if old_name is not None:
+            old_name_val = "$/GFX/Weapon/Ammo_" + old_name
         if ammo_val is not None and quantity_val is not None and ammo_value == ammo_val:
-            if weapon_descr_row.v.by_member("NbWeapons").v != quantity_val:
-                weapon_descr_row.v.by_member("NbWeapons").v = quantity_val
+            nb_weapons = weapon_descr_row.v.by_member("NbWeapons")
+            
+            # update quantity
+            if int(nb_weapons.v) != quantity_val:
+                if quantity_val > 1: # hijacking this function to change ammo name quantity
+                    new_ammo = ammo_val + "_x" + str(quantity_val)
+                    weapon_descr_row.v.by_m("Ammunition").v = new_ammo
+
+                weapon_descr_row.v.by_m("NbWeapons").v = quantity_val
                 logger.debug(f"Set {ammo_key} ({ammo_val}) quantity to {quantity_val}\n")
                 break 
+           
             else:
+                if quantity_val > 1: # hijacking this function to change ammo name quantity
+                    new_ammo = ammo_val + "_x" + str(quantity_val)
+                    weapon_descr_row.v.by_m("Ammunition").v = new_ammo
+                
                 logger.debug("Weapon already has the correct quantity for "
                              f"{ammo_key} ({ammo_val})")
+                break
+        
+        elif old_name and ammo_val is not None and quantity_val is not None:
+            if old_name_val == ammo_val and quantity_val > 1:
+                new_ammo = old_name_val + "_x" + str(quantity_val)
+                weapon_descr_row.v.by_m("Ammunition").v = new_ammo
+                logger.debug(f"Updated ammo name for {ammo_key} to {new_ammo}")
+                break
+            # split_ammo_value = ammo_value.split("_", 1)
+            # if old_name_val == split_ammo_value[1] and quantity_val > 1:
+            #     new_ammo = split_ammo_value[0] + "_x" + str(quantity_val)
+            #     weapon_descr_row.v.by_m("Ammunition").v = new_ammo
+            #     logger.debug(f"Updated ammo name for {ammo_key} to {new_ammo}")
+            #     break
         else:
             logger.debug(f"No ammo name found for {ammo_val}")
             log_count += 1

@@ -10,6 +10,7 @@ from src.constants.weapons.vanilla_inst_modifications import (
 )
 from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.logging_utils import setup_logger
+from src.utils.ndf_utils import is_valid_turret
 
 from ..dics import write_ammo_dictionary_entries
 from .damage_families import apply_damage_families
@@ -99,6 +100,10 @@ def edit_ammunition(source_path, game_db: Dict[str, Any]) -> None:
                         if len(data["NbWeapons"]) > 1:
                             _create_quantity_variants(source_path, base_descr, weapon_name, 
                                                 data["NbWeapons"], base_cost, is_new)
+                        elif category == "small_arms" and data["NbWeapons"][0] > 1:
+                            base_descr.namespace = f"Ammo_{weapon_name}_x{data['NbWeapons'][0]}"
+                            logger.debug(f"Updated namespace for {weapon_name} to {base_descr.namespace}")
+                            
                 except Exception as e:
                     logger.error(f"Failed handling quantities for {weapon_name}: {str(e)}")
                     continue
@@ -165,6 +170,74 @@ def _create_quantity_variants(source_path, base_descr, weapon_name, quantities, 
             if base_cost is not None:
                 existing.v.by_m("SupplyCost").v = str(int(base_cost) * quantity)
             logger.debug(f"Updated existing variant {namespace}")
+
+def update_weapondescr_ammoname_quantity(source_path, game_db):
+    """Update the quantities in ammo names for WeaponDescriptor.ndf"""
+    logger.info("Updating quantities in ammo namespaces in WeaponDescriptor.ndf")
+    ammo_db = game_db["ammunition"]
+    weapon_db = game_db["weapons"]
+    
+    for weapon_descr_name, weapon_descr_data in weapon_db.items():
+        for (weapon_name, category, donor, is_new), data in ammunitions.items():
+            if category != "small_arms": 
+                continue
+            
+            for turret_index, turret_data in weapon_descr_data["turrets"].items():
+        
+                old_name = ammo_db["renames_new_old"].get(weapon_name, None)
+                    
+                if not old_name and weapon_name in turret_data["weapons"]:
+                    quantity = turret_data["weapons"][weapon_name].get("quantity", None)
+                    if quantity is None:
+                        logger.debug(f"No quantity found for {weapon_name}")
+                        continue
+                
+                elif old_name in turret_data["weapons"]:
+                    quantity = turret_data["weapons"][old_name].get("quantity", None)
+                    if quantity is None:
+                        logger.debug(f"No quantity found for {weapon_name} or {old_name}")
+                        continue
+                
+                else:
+                    continue
+                
+                if quantity and quantity > 1:
+                    weapon_descr = source_path.by_n(weapon_descr_name)
+                    turret_list = weapon_descr.v.by_m("TurretDescriptorList")
+                    turret = turret_list.v[int(turret_index)]
+                    
+                    for mounted_wpn in turret.v.by_m("MountedWeaponDescriptorList").v:
+                        ammo = mounted_wpn.v.by_m("Ammunition").v
+                        ammo_n = ammo.split("_", 1)[1]
+                        prefix = ammo.split("_", 1)[0]
+                        nb_weapons = mounted_wpn.v.by_m("NbWeapons").v
+                        
+                        if old_name and old_name == ammo_n:
+                            if int(nb_weapons) == quantity:
+                                new_ammo = f"{prefix}_{weapon_name}_x{quantity}"
+                                mounted_wpn.v.by_m("Ammunition").v = new_ammo
+                                logger.info(f"Updated ammo {ammo} to {new_ammo}\n")
+                            else:
+                                logger.debug(f"database quantity ({quantity}) differs from "
+                                             f"NbWeapons ({nb_weapons}) for {weapon_name}")
+                                if int(nb_weapons) > 1:
+                                    new_ammo = f"{prefix}_{weapon_name}_x{quantity}"
+                                    mounted_wpn.v.by_m("Ammunition").v = new_ammo
+                                    logger.info(f"Updated ammo {ammo} to {new_ammo}\n")
+                                else:
+                                    logger.debug(f"Quantity is {quantity}, no changes "
+                                                 f"applied for {weapon_name}\n")
+                        
+                        elif ammo_n == weapon_name:
+                            if int(nb_weapons) == quantity:
+                                new_ammo = f"{prefix}_{weapon_name}_x{quantity}"
+                                mounted_wpn.v.by_m("Ammunition").v = new_ammo
+                                logger.info(f"Updated ammo {ammo} to {new_ammo}\n")
+                                
+                        else:
+                            logger.debug(f"No changes applied for {weapon_name}\n")
+        
+        
 
 def _apply_weapon_edits(descr: Any, data: Dict, ammo_data: Dict) -> None:
     """Apply edits from ammunition data to descriptor."""
