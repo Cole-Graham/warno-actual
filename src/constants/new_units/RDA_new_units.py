@@ -8,10 +8,26 @@ RDA_NEW_UNITS = {
         "ShowroomGUID": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
         "CadavreGUID": "79abc88c-d5be-4615-9ed2-4cb87bde9f4b",
         "NewName": "MotRifles_CMD2_DDR",
-        "GameName": "#CMD MOT.-SCHÜTZEN FÜH.",
-        "TagSet": ["AllUnits", "AllowedForMissileRoE", "Commandant", "Crew", "GroundUnits", "Inf_quartier_ok", 
-                   "Infanterie", "Infanterie_CMD", "InfmapCommander", "UNITE_MotRifles_CMD2_DDR", "Unite"],
-        "SquadSize": 5,
+        "GameName": {
+            "display": "#CMD MOT.-SCHÜTZEN FÜH.",
+            "token": "DGZBQXLAYD",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Commandant",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok", 
+                "Infanterie",
+                "Infanterie_CMD",
+                "InfmapCommander",
+                "UNITE_MotRifles_CMD2_DDR",
+                "Unite",
+            ],
+        },
+        "strength": 5,
         # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
         "Dangerousness": 12,
         "WeaponAssignment": [
@@ -36,7 +52,6 @@ RDA_NEW_UNITS = {
                 '_resolute',
                 'infantry_equip_light',
             ],
-        "NameToken": "DGZBQXLAYD",
         "MenuIconTexture": "Texture_RTS_H_CMD_inf",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Inf",
         "Divisions": {
@@ -44,7 +59,7 @@ RDA_NEW_UNITS = {
                 "Transports": ["UAZ_469_trans_DDR", "BTR_70_DDR", "Mi_2_trans_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
             },
         },
-        "Availability": 2,
+        "availability": 2,
         "Cards": {
             "default": 2,
         },
@@ -71,7 +86,8 @@ RDA_NEW_UNITS = {
         "ShowroomGUID": "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b",
         "CadavreGUID": "94711356-5cd2-4d35-b3e6-a25ca820237b",
         "NewName": "BTR_50_CMD2_DDR",
-        "TagSet": [
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Commandant",
@@ -82,6 +98,7 @@ RDA_NEW_UNITS = {
                 "Vehicule",
                 "Vehicule_CMD",
             ],
+        },
         "Factory": "EDefaultFactories/Logistic",
         "CommandPoints": 145,
         "SpecialitiesList": [
@@ -101,7 +118,7 @@ RDA_NEW_UNITS = {
                 "Transports": None,
                 },
         },
-        "Availability": 3,
+        "availability": 3,
         "Cards": {
             "default": 2,
         },
@@ -123,8 +140,12 @@ RDA_NEW_UNITS = {
         "ShowroomGUID": "d7e8f9a0-b1c2-4d3e-4f5g-6h7i8j9k0l1m",
         "CadavreGUID": "a89772b8-0b7f-40bd-8760-edc249b9f5da",
         "NewName": "ATteam_FagotM_DDR",
-        "GameName": "PALR FAGOT-M",
-        "TagSet": [
+        "GameName": {
+            "display": "PALR FAGOT-M",
+            "token": "AUVIBEMJSD",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Crew",
@@ -136,6 +157,7 @@ RDA_NEW_UNITS = {
                 "UNITE_ATteam_FagotM_DDR",
                 "Unite"
             ],
+        },
         "weapon1": "$/GFX/Weapon/Ammo_ATGM_9K111M_Faktoriya",
         "weapon1_quantity": 1,
         "weapon1_type": "missile",
@@ -146,7 +168,6 @@ RDA_NEW_UNITS = {
                 '_resolute',
                 'infantry_equip_heavy',
             ],
-        "NameToken": "AUVIBEMJSD",
         "UpgradeFromUnit": "ATteam_Fagot_DDR",
         "ButtonTexture": "ATteam_Fagot_DDR",
         "Divisions": {
@@ -154,7 +175,7 @@ RDA_NEW_UNITS = {
                 "Transports": ["UAZ_469_trans_DDR", "BTR_50_DDR", "BMP_1_SP1_DDR", "BMP_1_SP2_DDR", "BMP_1P_DDR"],
             },
         },
-        "Availability": 7,
+        "availability": 7,
         "Cards": {
             "default": 1,
         },
@@ -180,7 +201,8 @@ RDA_NEW_UNITS = {
         "ShowroomGUID": "376f5cd3-f3ef-4bd0-80c9-61ffe40e38a6",
         "CadavreGUID": "96ae475b-77da-4775-bb65-6cc436c23015",
         "NewName": "T55A_CMD2_DDR",
-        "TagSet": [
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Char",
@@ -191,6 +213,7 @@ RDA_NEW_UNITS = {
                 "UNITE_T55A_CMD2_DDR",
                 "Unite",
             ],
+        },
         "Factory": "EDefaultFactories/Logistic",
         "CommandPoints": 190,
         "SpecialitiesList": [
@@ -212,7 +235,7 @@ RDA_NEW_UNITS = {
                 "Transports": None,
             },
         },
-        "Availability": 2,
+        "availability": 2,
         "Cards": {
             "default": 1,
             "RDA_7_Panzer_multi": 2,
@@ -238,7 +261,8 @@ RDA_NEW_UNITS = {
         "ShowroomGUID": "f8a9b0c1-d2e3-4f5g-6h7i-8j9k0l1m2n3o",
         "CadavreGUID": "3f275f69-0fdf-4e49-9f14-a3bfc4e0b471",
         "NewName": "T72M_CMD2_DDR",
-        "TagSet": [
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Char",
@@ -249,6 +273,7 @@ RDA_NEW_UNITS = {
                 "UNITE_T72M_CMD2_DDR",
                 "Unite",
             ],
+        },
         "Factory": "EDefaultFactories/Logistic",
         "CommandPoints": 265,
         "SpecialitiesList": [
@@ -271,7 +296,7 @@ RDA_NEW_UNITS = {
                 "Transports": None,
             },
         },
-        "Availability": 2,
+        "availability": 2,
         "Cards": {
             "default": 1,
         },

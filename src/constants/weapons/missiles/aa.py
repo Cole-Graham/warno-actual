@@ -175,8 +175,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("SAM_FIM92_Stinger_salvolength8", "MANPAD", None, False): { # 187
         "Ammunition": {
-            "displayname": "FIM-92C Stinger",
-            "nametoken": "AKFXZOAXUI",
+            "display": "FIM-92C Stinger",
+            "token": "AKFXZOAXUI",
             "hit_roll": {
                 "Idling": 65,
                 "Moving": 65,
@@ -195,8 +195,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("SAM_FIM92_Stinger_salvolength4", "MANPAD", None, False): { # 187
         "Ammunition": {
-            "displayname": "FIM-92C Stinger",
-            "nametoken": "PKCEMABZUN",
+            "display": "FIM-92C Stinger",
+            "token": "PKCEMABZUN",
             "hit_roll": {
                 "Idling": 65,
                 "Moving": 65,
@@ -215,8 +215,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("SAM_FIM92_Stinger_CS", "MANPAD", None, False): { # 185
         "Ammunition": {
-            "displayname": "FIM-92C Stinger",
-            "nametoken": "UHRYBRDGDI",
+            "display": "FIM-92C Stinger",
+            "token": "UHRYBRDGDI",
             "hit_roll": {
                 "Idling": 65,
                 "Moving": 65,
@@ -316,8 +316,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "hit_roll": {
                 "Idling": 65,
             },
-            "displayname": "FIM-92C Stinger",
-            "nametoken": "GPRDGRDYEA",
+            "display": "FIM-92C Stinger",
+            "token": "GPRDGRDYEA",
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 2625,
                 "PorteeMaximaleHAGRU": 1925,

@@ -49,10 +49,10 @@ def _apply_unit_edits(unit_descr: Any, edits: Dict) -> None:
 
 def _update_squad_strength(module: Any, edits: Dict, unit_name: str) -> None:
     """Update infantry squad strength."""
-    if "WeaponAssignment" in edits and "Strength" in edits:
+    if "WeaponAssignment" in edits and "strength" in edits:
         try:
-            module.v.by_m("NbSoldatInGroupeCombat").v = edits["Strength"]
-            logger.info(f"Updated strength for {unit_name} to {edits['Strength']}")
+            module.v.by_m("NbSoldatInGroupeCombat").v = str(edits["strength"])
+            logger.info(f"Updated strength for {unit_name} to {edits['strength']}")
         except Exception as e:
             logger.error(f"Failed to update strength for {unit_name}: {str(e)}")
 

@@ -258,8 +258,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "Arme": {
                 "Index": 19,
             },
-            "displayname": "9K111M Faktoriya",
-            "nametoken": "TDLAGLBIVE",
+            "display": "9K111M Faktoriya",
+            "token": "TDLAGLBIVE",
             "hit_roll": {
                 "Idling": 45,
             },
@@ -281,8 +281,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "Arme": {
                 "Index": 16,
             },
-            "displayname": "9K111 Fagot",
-            "nametoken": "LNPKSXACVZ",
+            "display": "9K111 Fagot",
+            "token": "LNPKSXACVZ",
             "hit_roll": {
                 "Idling": 45,
             },
@@ -341,8 +341,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("ATGM_9K120_Svir", "ATGM", None, False): {
         "Ammunition": {
-            "displayname": "9K120 Svir",
-            "nametoken": "WMOWZEXCQJ",
+            "display": "9K120 Svir",
+            "token": "WMOWZEXCQJ",
             "parent_membr": {
                 "PorteeMaximaleGRU": 2625,
                 "MaximalSpeedGRU": 622,
@@ -359,8 +359,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("ATGM_9M119_Refleks", "ATGM", None, False): {
         "Ammunition": {
-            "displayname": "9M119 Refleks",
-            "nametoken": "ZIAPPNOKJO",
+            "display": "9M119 Refleks",
+            "token": "ZIAPPNOKJO",
             "parent_membr": {
                 "PorteeMaximaleGRU": 2800,
                 "MaximalSpeedGRU": 622,
@@ -380,8 +380,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "Arme": {
                 "Index": 24,
             },
-            "displayname": "9M119M Invar",
-            "nametoken": "YUXMIRHNPX",
+            "display": "9M119M Invar",
+            "token": "YUXMIRHNPX",
             "parent_membr": {
                 "PorteeMaximaleGRU": 2800,
                 "MaximalSpeedGRU": 622,
@@ -401,8 +401,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "Arme": {
                 "Index": 19,
             },
-            "displayname": "9M117 Bastion",
-            "nametoken": "DIHEGBLZRU",
+            "display": "9M117 Bastion",
+            "token": "DIHEGBLZRU",
             "parent_membr": {
                 "MaximalSpeedGRU": 739,
             },
@@ -487,8 +487,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "Arme": {
                 "Index": 20,
             },
-            "displayname": "9M112 Kobra",
-            "nametoken": "ILNHEHTSQR",
+            "display": "9M112 Kobra",
+            "token": "ILNHEHTSQR",
             "hit_roll": {
                 "Idling": 50,
             },
@@ -510,8 +510,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "Arme": {
                 "Index": 22,
             },
-            "displayname": "9M112M2 Kobra",
-            "nametoken": "CUZYCCVUIO",
+            "display": "9M112M2 Kobra",
+            "token": "CUZYCCVUIO",
             "hit_roll": {
                 "Idling": 50,
             },

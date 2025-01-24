@@ -38,7 +38,7 @@ def add_division_rules(source_path: Any) -> None:
                     f'(\n'
                     f'    UnitDescriptor = $/GFX/Unit/Descriptor_Unit_{unit_name}\n'
                     f'    AvailableWithoutTransport = True\n'
-                    f'    NumberOfUnitInPack = {edits["Availability"]}\n'
+                    f'    NumberOfUnitInPack = {edits["availability"]}\n'
                     f'    NumberOfUnitInPackXPMultiplier = {xp_multi_str}\n'
                     f'),'
                 )
@@ -49,7 +49,7 @@ def add_division_rules(source_path: Any) -> None:
                     f'    UnitDescriptor = $/GFX/Unit/Descriptor_Unit_{unit_name}\n'
                     f'    AvailableWithoutTransport = False\n'
                     f'    AvailableTransportList = {transport_str}\n'
-                    f'    NumberOfUnitInPack = {edits["Availability"]}\n'
+                    f'    NumberOfUnitInPack = {edits["availability"]}\n'
                     f'    NumberOfUnitInPackXPMultiplier = {xp_multi_str}\n'
                     f'),'
                 )

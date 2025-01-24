@@ -5,9 +5,7 @@ from uuid import uuid4
 
 from src import ndf
 from src.constants.weapons.ammunition import ammunitions
-from src.constants.weapons.vanilla_inst_modifications import (
-    AMMUNITION_REMOVALS,
-)
+from src.constants.weapons.vanilla_inst_modifications import AMMUNITION_REMOVALS
 from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import is_valid_turret
@@ -17,7 +15,7 @@ from .damage_families import apply_damage_families
 from .mg_teams import edit_mg_team_weapons
 from .mortar_mods import add_corrected_shot_dispersion
 from .utils import get_supply_costs
-from .vanilla_modifications import vanilla_renames_ammunition, remove_vanilla_instances
+from .vanilla_modifications import remove_vanilla_instances, vanilla_renames_ammunition
 
 logger = setup_logger(__name__)
 
@@ -300,11 +298,11 @@ def _apply_hit_roll_edits(descr: Any, hit_roll_data: Dict) -> None:
 
 def _track_dictionary_entries(weapon_name, ammo_data, ingame_names, calibers):
     """Track dictionary entries for ammunition."""
-    if "displayname" in ammo_data and "nametoken" in ammo_data:
+    if "display" in ammo_data and "token" in ammo_data:
         ingame_names.append((
             weapon_name, 
-            ammo_data["nametoken"],
-            ammo_data["displayname"]
+            ammo_data["token"],
+            ammo_data["display"]
         ))
     
     if "parent_membr" in ammo_data and "Caliber" in ammo_data["parent_membr"]:

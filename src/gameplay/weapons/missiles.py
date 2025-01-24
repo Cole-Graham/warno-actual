@@ -8,8 +8,8 @@ from src.constants.weapons.vanilla_inst_modifications import (
     AMMUNITION_MISSILES_REMOVALS,
 )
 from src.gameplay.weapons.vanilla_modifications import (
-    vanilla_renames_ammunition,
     remove_vanilla_instances,
+    vanilla_renames_ammunition,
 )
 from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.logging_utils import setup_logger
@@ -256,11 +256,11 @@ def _track_dictionary_entries(weapon_name, data, ingame_names, calibers):
     """Track dictionary entries for a missile."""
     if "Ammunition" in data:
         ammo_data = data["Ammunition"]
-        if "displayname" in ammo_data and "nametoken" in ammo_data:
+        if "display" in ammo_data and "token" in ammo_data:
             ingame_names.append((
                 weapon_name,
-                ammo_data["nametoken"],
-                ammo_data["displayname"]
+                ammo_data["token"],
+                ammo_data["display"]
             ))
         
         if "parent_membr" in ammo_data and "Caliber" in ammo_data["parent_membr"]:

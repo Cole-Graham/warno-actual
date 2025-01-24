@@ -8,10 +8,26 @@ SOV_NEW_UNITS = {
         "ShowroomGUID": "c7b5a9d8-e4f2-4c16-9d3b-8a2e4f7c6b5d",
         "CadavreGUID": "4a793ae9-5f90-41e1-b8a2-b9203e527de5",
         "NewName": "MotRifles_CMD2_SOV",
-        "GameName": "#CMD KOMANDNOE OTDELENIE",
-        "TagSet": ["AllUnits", "AllowedForMissileRoE", "Commandant", "Crew", "GroundUnits", "Inf_quartier_ok", 
-                   "Infanterie", "Infanterie_CMD", "InfmapCommander", "UNITE_MotRifles_CMD2_SOV", "Unite"],
-        "SquadSize": 5,
+        "GameName": {
+            "display": "#CMD KOMANDNOE OTDELENIE",
+            "token": "FFFKSMMRGR",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Commandant",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok", 
+                "Infanterie",
+                "Infanterie_CMD",
+                "InfmapCommander",
+                "UNITE_MotRifles_CMD2_SOV",
+                "Unite",
+            ],
+        },
+        "strength": 5,
         # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
         "Dangerousness": 12,
         "WeaponAssignment": [
@@ -35,7 +51,6 @@ SOV_NEW_UNITS = {
                 'leader_sov',
                 'infantry_equip_light',
             ],
-        "NameToken": "FFFKSMMRGR",
         "MenuIconTexture": "Texture_RTS_H_CMD_inf",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Inf",
         "Divisions": {
@@ -46,7 +61,7 @@ SOV_NEW_UNITS = {
                 "Transports": ["LUAZ_967M_SOV", "BTR_D_SOV"],
             },
         },
-        "Availability": 2,
+        "availability": 2,
         "Cards": {
             "default": 2,
         },
@@ -73,10 +88,26 @@ SOV_NEW_UNITS = {
         "ShowroomGUID": "b1c2d3e4-f5g6-4h7i-8j9k-l0m1n2o3p4q5",
         "CadavreGUID": "b852d941-cba8-42e6-867a-7ecf24be522b",
         "NewName": "MotRifles_CMD2_TTsko_SOV",
-        "GameName": "#CMD KOMANDNOE OTDELENIE",
-        "TagSet": ["AllUnits", "AllowedForMissileRoE", "Commandant", "Crew", "GroundUnits", "Inf_quartier_ok", 
-                   "Infanterie", "Infanterie_CMD", "InfmapCommander", "UNITE_MotRifles_CMD2_TTsko_SOV", "Unite"],
-        "SquadSize": 5,
+        "GameName": {
+            "display": "#CMD KOMANDNOE OTDELENIE",
+            "token": "PKHNVEPCJL",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Commandant",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok", 
+                "Infanterie",
+                "Infanterie_CMD",
+                "InfmapCommander",
+                "UNITE_MotRifles_CMD2_TTsko_SOV",
+                "Unite",
+            ],
+        },
+        "strength": 5,
         # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
         "Dangerousness": 12,
         "WeaponAssignment": [
@@ -100,7 +131,6 @@ SOV_NEW_UNITS = {
                 'leader_sov',
                 'infantry_equip_light',
             ],
-        "NameToken": "PZVGXYNVWW",
         "MenuIconTexture": "Texture_RTS_H_CMD_inf",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Inf",
         "Divisions": {
@@ -108,7 +138,7 @@ SOV_NEW_UNITS = {
                 "Transports": ["UAZ_469_SOV", "BTR_80_SOV", "Mi_2_trans_SOV", "Mi_8TV_non_arme_SOV", "Mi_8TV_SOV"],
             },
         },
-        "Availability": 2,
+        "availability": 2,
         "Cards": {
             "default": 2,
         },
@@ -135,7 +165,8 @@ SOV_NEW_UNITS = {
         "ShowroomGUID": "e6f7g8h9-i0j1-4k2l-3m4n-5o6p7q8r9s0t",
         "CadavreGUID": "ac22fe6a-7e23-49b8-823d-4f68ad83cf7c",
         "NewName": "T80BV_CMD2_SOV",
-        "TagSet": [
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Char",
@@ -146,6 +177,7 @@ SOV_NEW_UNITS = {
                 "UNITE_T80BV_CMD2_SOV",
                 "Unite",
             ],
+        },
         "Factory": "EDefaultFactories/Logistic",
         "armor": {
             "front": 18,
@@ -170,7 +202,7 @@ SOV_NEW_UNITS = {
                 "Transports": None,
             },
         },
-        "Availability": 2,
+        "availability": 2,
         "Cards": {
             "default": 1,
             "SOV_119IndTkBrig_multi": 2,
@@ -195,7 +227,8 @@ SOV_NEW_UNITS = {
         "ShowroomGUID": "847a7325-445a-44ba-bfcb-24c03dfaad07",
         "CadavreGUID": "fe1ea57b-0847-4688-9618-d0f814126711",
         "NewName": "MTLB_CMD2_SOV",
-        "TagSet": [
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Commandant",
@@ -206,6 +239,7 @@ SOV_NEW_UNITS = {
                 "Vehicule",
                 "Vehicule_CMD",
             ],
+        },
         "Factory": "EDefaultFactories/Logistic",
         "CommandPoints": 145,
         "SpecialitiesList": [
@@ -230,7 +264,7 @@ SOV_NEW_UNITS = {
                 "Transports": None,
                 },
         },
-        "Availability": 3,
+        "availability": 3,
         "Cards": {
             "default": 2,
         },
@@ -252,8 +286,12 @@ SOV_NEW_UNITS = {
         "ShowroomGUID": "c419b0c4-6f4e-435b-8e1f-fb74b33cf884",
         "CadavreGUID": "d0a2edad-e8c8-4073-8b90-cdfadcd3a78e",
         "NewName": "ATteam_Faktoriya_SOV",
-        "GameName": "FAKTORIYA",
-        "TagSet": [
+        "GameName": {
+            "display": "FAKTORIYA",
+            "token": "ZADIQTXXXX",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Crew",
@@ -265,6 +303,7 @@ SOV_NEW_UNITS = {
                 "UNITE_ATteam_Faktoriya_SOV",
                 "Unite"
             ],
+        },
         "weapon1": "$/GFX/Weapon/Ammo_ATGM_9K111M_Faktoriya",
         "weapon1_quantity": 1,
         "weapon1_type": "missile",
@@ -274,7 +313,6 @@ SOV_NEW_UNITS = {
                 'AT',
                 'infantry_equip_heavy',
             ],
-        "NameToken": "ZADIQTXXXX",
         "ButtonTexture": "Atteam_Konkurs_DShV_SOV",
         "Divisions": {
             "SOV_39_Gds_Rifle_multi": {
@@ -284,7 +322,7 @@ SOV_NEW_UNITS = {
                 "Transports": ["UAZ_469_SOV", "BMP_1P_SOV"],
             },
         },
-        "Availability": 7,
+        "availability": 7,
         "Cards": {
             "default": 1,
         },
@@ -310,8 +348,12 @@ SOV_NEW_UNITS = {
         "ShowroomGUID": "d2e3f4g5-h6i7-4j8k-9l0m-n1o2p3q4r5s6",
         "CadavreGUID": "24612725-41c9-4d25-821b-d0e6e9377a11",
         "NewName": "ATteam_Faktoriya_VDV_SOV",
-        "GameName": "DESANT. FAKTORIYA",
-        "TagSet": [
+        "GameName": {
+            "display": "DESANT. FAKTORIYA",
+            "token": "YDMQOTJZVZ",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Crew",
@@ -323,6 +365,7 @@ SOV_NEW_UNITS = {
                 "UNITE_ATteam_Faktoriya_VDV_SOV",
                 "Unite"
             ],
+        },
         "weapon1": "$/GFX/Weapon/Ammo_ATGM_9K111M_Faktoriya",
         "weapon1_quantity": 1,
         "weapon1_type": "missile",
@@ -333,14 +376,13 @@ SOV_NEW_UNITS = {
                 '_para',
                 'infantry_equip_heavy'
             ],
-        "NameToken": "YDMQOTJZVZ",
         "UpgradeFromUnit": "Atteam_Fagot_VDV_SOV",
         "Divisions": {
             "SOV_76_VDV_multi": {
                 "Transports": ["LUAZ_967M_SOV", "BTR_D_Robot_SOV"],
             },
         },
-        "Availability": 7,
+        "availability": 7,
         "Cards": {
             "default": 1,
         },

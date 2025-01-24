@@ -67,20 +67,20 @@ def _update_mg_team(unit_row: Any, stats: Dict[str, Any]) -> None:
         module_type = module.v.type
         
         if module_type == "TBaseDamageModuleDescriptor":
-            module.v.by_m("MaxPhysicalDamages").v = stats['damage']
+            module.v.by_m("MaxPhysicalDamages").v = str(stats['damage'])
             
         elif module.namespace == "GroupeCombat":
-            module.v.by_m("Default").v.by_m("NbSoldatInGroupeCombat").v = stats['soldiers']
+            module.v.by_m("Default").v.by_m("NbSoldatInGroupeCombat").v = str(stats['soldiers'])
             
         elif module.namespace == "GenericMovement":
-            module.v.by_m("Default").v.by_m("MaxSpeedInKmph").v = stats['speed']
+            module.v.by_m("Default").v.by_m("MaxSpeedInKmph").v = str(stats['speed'])
         
         elif module_type == "TProductionModuleDescriptor":
             resources = module.v.by_m("ProductionRessourcesNeeded").v
             resources.by_k("$/GFX/Resources/Resource_CommandPoints").v = str(stats['cost'])
         
         elif module_type == "TTacticalLabelModuleDescriptor":
-            module.v.by_m("NbSoldiers").v = stats['soldiers']
+            module.v.by_m("NbSoldiers").v = str(stats['soldiers'])
             
         elif module_type == "TUnitUIModuleDescriptor":
             specialties = module.v.by_m("SpecialtiesList")

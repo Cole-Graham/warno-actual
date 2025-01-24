@@ -447,12 +447,12 @@ weapons: Dict[WeaponKey, WeaponData] = {
 
     ("M16A2_Carbine", "small_arms", "Commando_733", True): {
         "Ammunition": {
-            "displayname": "M16A2 Carbine",
+            "display": "M16A2 Carbine",
             "hit_roll": {
                 "Idling": 60,
                 "Moving": 45,
             },
-            "nametoken": "SZBMRVNELN",
+            "token": "SZBMRVNELN",
             "parent_membr": {
                 "TempsEntreDeuxTirs": 1.0,
                 "PorteeMaximaleGRU": 700,
@@ -475,12 +475,12 @@ weapons: Dict[WeaponKey, WeaponData] = {
 
     ("M16A1_Carbine", "small_arms", "Commando_733", True): {
         "Ammunition": {
-            "displayname": "M16A1 Carbine",
+            "display": "M16A1 Carbine",
             "hit_roll": {
                 "Idling": 50,
                 "Moving": 35,
             },
-            "nametoken": "VDUNUQCOUY",
+            "token": "VDUNUQCOUY",
             "parent_membr": {
                 "TempsEntreDeuxTirs": 1.0,
                 "PorteeMaximaleGRU": 700,
@@ -581,12 +581,12 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "Arme": {
                 "Family": "DamageFamily_full_balle",
             },
-            "displayname": "M60E3",
+            "display": "M60E3",
             "hit_roll": {
                 "Idling": 40,
                 "Moving": 15,
             },
-            "nametoken": "EILUZEIFXS",
+            "token": "EILUZEIFXS",
             "parent_membr": {
                 "TraitsToken": ['MOTION', 'tripod'],
                 "TempsEntreDeuxTirs": 1.25,
@@ -788,12 +788,12 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "Arme": {
                 "Family": "DamageFamily_full_balle",
             },
-            "displayname": "M60E3",
+            "display": "M60E3",
             "hit_roll": {
                 "Idling": 35,
                 "Moving": 15,
             },
-            "nametoken": "IYUAMGSZZJ", 
+            "token": "IYUAMGSZZJ", 
             "parent_membr": {
                 "TempsEntreDeuxTirs": 1.25,
                 "TempsEntreDeuxFx": 6.0,
@@ -820,12 +820,12 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "Arme": {
                 "Family": "DamageFamily_full_balle",
             },
-            "displayname": "M60E1",
+            "display": "M60E1",
             "hit_roll": {
                 "Idling": 35,
                 "Moving": 10,
             },
-            "nametoken": "GVHHKBBTHW",
+            "token": "GVHHKBBTHW",
             "parent_membr": {
                 "TempsEntreDeuxTirs": 1.5,
                 "TempsEntreDeuxFx": 6.0,

@@ -6,8 +6,13 @@ from typing import Any, Dict
 ldr_unit_edits = {
     
     "Rifles_half_CMD_US": {
-        "GameName": "#LDR FIRE TEAM LDR.",
-        "TagSet": [
+        "CommandPoints": 40,
+        "GameName": {
+            "token": "CPCIJQLHML",
+            "display": "#LDR FIRE TEAM LDR.",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Crew",
@@ -18,7 +23,8 @@ ldr_unit_edits = {
                 "UNITE_Rifles_half_CMD_US",
                 "Unite",
             ],
-        "SquadSize": 6,
+        },
+        "strength": 6,
         "WeaponAssignment": [
                 (0,[0,]),
                 (1,[0,]),
@@ -27,30 +33,32 @@ ldr_unit_edits = {
                 (4,[1,3]),
                 (5,[1,2]),
             ],
-        "weapon1": "FM_M16",
-        "weapon1_quantity": 2,
-        "weapon2": "Commando_733",
-        "weapon2_quantity": 4,
         "TransportedTexture": "UseInGame_Transport_REGINF",
-        "CommandPoints": 40,
         # "SortingOrder": 20075,
         # "UnitAttackValue": 1,
         # "UnitDefenseValue": 16,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'infantry',
                 '_leader',
                 '_ifv',
                 'infantry_equip_light',
             ],
-        "NameToken": "CPCIJQLHML",
+        },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "Availability": 7,
+        "availability": 7,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
         "max_speed": 26,
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_M16": 2,
+                    "Commando_733": 3,
+                },
+            },
             "Salves": {
                 "RocketInf_M72A3_LAW_66mm": 6,
             },
@@ -62,8 +70,13 @@ ldr_unit_edits = {
     },
 
     "Rifles_CMD_US": {
-        "GameName": "#LDR MECH. RIFLES LDR.",
-        "TagSet": [
+        "CommandPoints": 40,
+        "GameName": {
+            "display": "#LDR MECH. RIFLES LDR.",
+            "token": "CPCIJQLHML",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Crew",
@@ -73,22 +86,23 @@ ldr_unit_edits = {
                 "UNITE_Rifles_CMD_US",
                 "Unite",
             ],
+        },
         "TransportedTexture": "UseInGame_Transport_REGINF",
-        "CommandPoints": 40,
         # "SortingOrder": 20075,
         # "UnitAttackValue": 1,
         # "UnitDefenseValue": 16,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'infantry',
                 '_leader',
                 'infantry_equip_light',
             ],
-        "NameToken": "DBEBRUEYSP",
+        },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "Availability": 7,
+        "availability": 7,
         "cards": {
             "default": 1,
         },
@@ -112,8 +126,13 @@ ldr_unit_edits = {
     },
 
     "Engineer_CMD_US": {
-        "GameName": "#LDR ENGINEERS LDR.",
-        "TagSet": [
+        "CommandPoints": 50,
+        "GameName": {
+            "display": "#LDR ENGINEERS LDR.",
+            "token": "DBEBRUEYSP",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Crew",
@@ -124,23 +143,24 @@ ldr_unit_edits = {
                 "UNITE_Engineer_CMD_US",
                 "Unite"
             ],
+        },
         "TransportedTexture": "UseInGame_Transport_assault",
-        "CommandPoints": 50,
         # "SortingOrder": 20040,
         # "UnitAttackValue": 1,
         # "UnitDefenseValue": 16,
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'engineer',
                 '_leader',
                 '_choc',
                 'infantry_equip_light',
             ],
-        "NameToken": "WPUCULQQND",
+        },
         "MenuIconTexture": "Texture_RTS_H_assault",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
-        "Availability": 5,
+        "availability": 5,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.8],
         "max_speed": 26,
         "is_infantry": True,
@@ -148,8 +168,13 @@ ldr_unit_edits = {
     },
 
     "Rangers_CMD_US": {
-        "GameName": "#LDR RANGERS LDR.",
-        "TagSet": [
+        "CommandPoints": 70,
+        "GameName": {
+            "display": "#LDR RANGERS LDR.",
+            "token": "WPUCULQQND",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Crew",
@@ -157,10 +182,11 @@ ldr_unit_edits = {
                 "Inf_quartier_ok",
                 "Infanterie",
                 "UNITE_Rangers_CMD_US",
-                "Unite"
+                "Unite",
                 "noSIGINT",
             ],
-        "SquadSize": 9,
+        },
+        "strength": 9,
         "WeaponAssignment": [
                 (0,[1,]),
                 (1,[0,]),
@@ -172,23 +198,21 @@ ldr_unit_edits = {
                 (7,[0,3]),
                 (8,[0,2]),
             ],
-        "weapon1": "M16A1_Carbine",
-        "weapon1_quantity": 8,
         "TransportedTexture": "UseInGame_Transport_REGINF",
-        "CommandPoints": 70,
         # "SortingOrder": 20075,
         # "UnitAttackValue": 1,
         # "UnitDefenseValue": 16,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry_sf", "Texture_sf"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'infantry',
                 '_leader',
                 '_sf',
                 '_choc',
                 'infantry_equip_heavy',
             ],
-        "NameToken": "LRTQFDCCCB",
+        },
         "MenuIconTexture": "Texture_RTS_H_Infantry_sf",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "Divisions": {
@@ -196,12 +220,15 @@ ldr_unit_edits = {
                 "Transports": ["M1038_Humvee_US", "UH60A_Black_Hawk_US"]
             },
         },
-        "Availability": 4,
+        "availability": 4,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.75],
         "max_speed": 20,
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [("Commando_733", "M16A1_Carbine")],
+                "quantity": {
+                    "M16A1_Carbine": 8,
+                },
             },
             "Salves": {
                 "RocketInf_M67_RCL_90mm": 10,
@@ -216,8 +243,13 @@ ldr_unit_edits = {
     },
 
     "Airborne_Engineer_CMD_US": {
-        "GameName": "#LDR AB ENGINEERS LDR.",
-        "TagSet": [
+        "CommandPoints": 60,
+        "GameName": {
+            "display": "#LDR AB ENGINEERS LDR.",
+            "token": "LRTQFDCCCB",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Crew",
@@ -228,24 +260,25 @@ ldr_unit_edits = {
                 "UNITE_Airborne_Engineer_CMD_US",
                 "Unite"
             ],
+        },
         "TransportedTexture": "UseInGame_Transport_assault",
-        "CommandPoints": 60,
         # "SortingOrder": 20040,
         # "UnitAttackValue": 1,
         # "UnitDefenseValue": 16,
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'engineer',
                 '_leader',
                 '_choc',
                 '_para',
                 'infantry_equip_light',
             ],
-        "NameToken": "JBBMCMRPWK",
+        },
         "MenuIconTexture": "Texture_RTS_H_assault",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
-        "Availability": 5,
+        "availability": 5,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.8],
         "max_speed": 26,
         "is_infantry": True,
@@ -253,8 +286,13 @@ ldr_unit_edits = {
     },
 
     "Airborne_CMD_US": {
-        "GameName": "#LDR AIRBORNE LDR.",
-        "TagSet": [
+        "CommandPoints": 70,
+        "GameName": {
+            "display": "#LDR AIRBORNE LDR.",
+            "token": "ADLDSRBBFX",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Crew",
@@ -265,24 +303,25 @@ ldr_unit_edits = {
                 "UNITE_Airborne_US",
                 "Unite"
             ],
+        },
         "TransportedTexture": "UseInGame_Transport_REGINF",
-        "CommandPoints": 70,
         # "SortingOrder": 20060,
         # "UnitAttackValue": 1,
         # "UnitDefenseValue": 16,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'infantry',
                 '_leader',
                 '_choc',
                 '_para',
                 'infantry_equip_medium',
             ],
-        "NameToken": "TVWIKAOSVP",
+        },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "Availability": 5,
+        "availability": 5,
         "cards": {
             "default": 1,
         },
@@ -299,8 +338,13 @@ ldr_unit_edits = {
     },
 
     "AeroRifles_CMD_US": {
-        "GameName": "#LDR AERO-RIFLES LDR.",
-        "TagSet": [
+        "CommandPoints": 50,
+        "GameName": {
+            "display": "#LDR AERO-RIFLES LDR.",
+            "token": "TVWIKAOSVP",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Crew",
@@ -311,23 +355,24 @@ ldr_unit_edits = {
                 "UNITE_AeroRifles_CMD_US",
                 "Unite"
             ],
+        },
         "TransportedTexture": "UseInGame_Transport_REGINF",
-        "CommandPoints": 50,
         # "SortingOrder": 20060,
         # "UnitAttackValue": 1,
         # "UnitDefenseValue": 16,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'infantry',
                 '_leader',
                 '_choc',
                 'infantry_equip_light',
             ],
-        "NameToken": "MHGSSCNBFO",
+        },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "Availability": 5,
+        "availability": 5,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.8],
         "max_speed": 26,
         "is_infantry": True,
@@ -335,8 +380,13 @@ ldr_unit_edits = {
     },
 
     "Aero_half_CMD_US": {
-        "GameName": "#LDR AERO-FIRE TEAM LDR.",
-        "TagSet": [
+        "CommandPoints": 35,
+        "GameName": {
+            "display": "#LDR AERO-FIRE TEAM LDR.",
+            "token": "MHGSSCNBFO",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Crew",
@@ -347,23 +397,25 @@ ldr_unit_edits = {
                 "UNITE_AeroRifles_CMD_US",
                 "Unite"
             ],
+        },
         "TransportedTexture": "UseInGame_Transport_REGINF",
-        "CommandPoints": 35,
         # "SortingOrder": 20045,
         # "UnitAttackValue": 1,
         # "UnitDefenseValue": 41,
+        # "UnitDefenseValue": 41,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'infantry',
                 '_leader',
                 '_choc',
                 'infantry_equip_light',
             ],
-        "NameToken": "OWQFQTLBJN",
+        },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "Availability": 7,
+        "availability": 7,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
         "max_speed": 26,
         "is_infantry": True,
@@ -371,8 +423,13 @@ ldr_unit_edits = {
     },
 
     "AeroEngineer_CMD_US": {
-        "GameName": "#LDR AERO-ENGINEERS LDR.",
-        "TagSet": [
+        "CommandPoints": 60,
+        "GameName": {
+            "display": "#LDR AERO-ENGINEERS LDR.",
+            "token": "OWQFQTLBJN",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Crew",
@@ -383,23 +440,25 @@ ldr_unit_edits = {
                 "UNITE_AeroEngineer_CMD_US",
                 "Unite"
             ],
+        },
         "TransportedTexture": "UseInGame_Transport_assault",
-        "CommandPoints": 60,
         # "SortingOrder": 20085,
         # "UnitAttackValue": 1,
         # "UnitDefenseValue": 31,
+        # "UnitDefenseValue": 31,
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'engineer',
                 '_leader',
                 '_choc',
                 'infantry_equip_medium',
             ],
-        "NameToken": "KFNXNJOXZS",
+        },
         "MenuIconTexture": "Texture_RTS_H_assault",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
-        "Availability": 4,
+        "availability": 4,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.75],
         "max_speed": 26,
         "is_infantry": True,
@@ -407,8 +466,13 @@ ldr_unit_edits = {
     },
 
     "GreenBerets_CMD_US": {
-        "GameName": "#LDR GREEN BERETS LDR.",
-        "TagSet": [
+        "CommandPoints": 75,
+        "GameName": {
+            "display": "#LDR GREEN BERETS LDR.",
+            "token": "KFNXNJOXZS",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Crew",
@@ -420,23 +484,24 @@ ldr_unit_edits = {
                 "Unite",
                 "noSIGINT",
             ],
+        },
         "TransportedTexture": "UseInGame_Transport_REGINF",
-        "CommandPoints": 75,
         # "SortingOrder": 20100,
         # "UnitAttackValue": 1,
         # "UnitDefenseValue": 41,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'infantry',
                 '_sf',
                 '_choc',
                 'infantry_equip_light',
             ],
-        "NameToken": "ZTSGIUUUVJ",
+        },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "Availability": 2,
+        "availability": 2,
         "XPMultiplier": [0.0, 0.0, 0.0, 1.0],
         "max_speed": 26,
         "is_infantry": True,
@@ -444,8 +509,13 @@ ldr_unit_edits = {
     },
 
     "M577_US": {
-        "GameName": "#LDR M577 TACFIRE FCV",
-        "TagSet": [
+        "CommandPoints": 60,
+        "GameName": {
+            "display": "#LDR M577 TACFIRE FCV",
+            "token": "ZTSGIUUUVJ",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "GroundUnits",
@@ -453,14 +523,15 @@ ldr_unit_edits = {
                 "Unite",
                 "Vehicule",
             ],
+        },
         "Factory": "EDefaultFactories/Art",
-        "CommandPoints": 60,
         "IdentifiedTextures": ["Texture_RTS_H_appui", "Texture_appui"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 '_leader',
             ],
-        "NameToken": "CIOEKZVEAY",
+        },
         "MenuIconTexture": "Texture_RTS_H_appui",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Transport",
         "cards": {
@@ -470,8 +541,13 @@ ldr_unit_edits = {
     },
 
     "M1A1HA_Abrams_CMD_US": {
-        "GameName": "#LDR M1A1(HA) ABRAMS LDR.",
-        "TagSet": [
+        "CommandPoints": 335,
+        "GameName": {
+            "display": "#LDR M1A1(HA) ABRAMS LDR.",
+            "token": "CIOEKZVEAY",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Char",
@@ -479,21 +555,22 @@ ldr_unit_edits = {
                 "UNITE_M1A1HA_Abrams_CMD_US",
                 "Unite",
             ],
-        "CommandPoints": 335,
+        },
         # "SortingOrder": 20340,
         # "UnitAttackValue": 561,
         # "UnitDefenseValue": 561,
         "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'Armor_heavy',
                 '_leader',
                 '_smoke_launcher',
             ],
-        "NameToken": "JARUASHKDH",
+        },
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
-        "Availability": 2,
+        "availability": 2,
         "cards": {
             "default": 1,
         },
@@ -501,8 +578,13 @@ ldr_unit_edits = {
     },
 
     "M1A1_Abrams_CMD_US": {
-        "GameName": "#LDR M1A1 ABRAMS LDR.",
-        "TagSet": [
+        "CommandPoints": 260,
+        "GameName": {
+            "display": "#LDR M1A1 ABRAMS LDR.",
+            "token": "JARUASHKDH",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Char",
@@ -510,21 +592,22 @@ ldr_unit_edits = {
                 "UNITE_M1A1_Abrams_CMD_US",
                 "Unite",
             ],
-        "CommandPoints": 260,
+        },
         # "SortingOrder": 20290,
         # "UnitAttackValue": 461,
         # "UnitDefenseValue": 461,
         "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'Armor_heavy',
                 '_leader',
                 '_smoke_launcher',
             ],
-        "NameToken": "TSLINICZXV",
+        },
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
-        "Availability": 3,
+        "availability": 3,
         "cards": {
             "default": 1,
         },
@@ -532,8 +615,13 @@ ldr_unit_edits = {
     },
 
     "M1IP_Abrams_CMD_US": {
-        "GameName": "#LDR M1IP ABRAMS LDR.",
-        "TagSet": [
+        "CommandPoints": 210,
+        "GameName": {
+            "display": "#LDR M1IP ABRAMS LDR.",
+            "token": "TSLINICZXV",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Char",
@@ -541,23 +629,29 @@ ldr_unit_edits = {
                 "UNITE_M1IP_Abrams_CMD_US",
                 "Unite"
             ],
-        "CommandPoints": 210,
+        },
         "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'Armor_heavy',
                 '_leader',
                 '_smoke_launcher',
             ],
-        "NameToken": "JMIRJBBLPW",
+        },
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
     },
 
     "M1_Abrams_CMD_US": {
-        "GameName": "#LDR M1 ABRAMS LDR.",
-        "TagSet": [
+        "CommandPoints": 185,
+        "GameName": {
+            "display": "#LDR M1 ABRAMS LDR.",
+            "token": "JMIRJBBLPW",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Char",
@@ -565,24 +659,30 @@ ldr_unit_edits = {
                 "UNITE_M1_Abrams_CMD_US",
                 "Unite"
             ],
-        "CommandPoints": 185,
+        },
         "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'Armor_heavy',
                 '_leader',
                 '_smoke_launcher',
             ],
-        "NameToken": "OZPDFIGTWN",
+        },
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
-        "Availability": 3,
+        "availability": 3,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
     },
 
     "M60A3_CMD_US": {
-        "GameName": "#LDR M60A3 (TTS) LDR.",
-        "TagSet": [
+        "CommandPoints": 120,
+        "GameName": {
+            "display": "#LDR M60A3 (TTS) LDR.",
+            "token": "OZPDFIGTWN",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Char",
@@ -590,24 +690,30 @@ ldr_unit_edits = {
                 "UNITE_M60A3_CMD_US",
                 "Unite"
             ],
-        "CommandPoints": 120,
+        },  
         "IdentifiedTextures": ["Texture_RTS_H_Armor", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'armor',
                 '_leader',
                 '_smoke_launcher',
             ],
-        "NameToken": "NBZRAJWZXD",
+        },
         "MenuIconTexture": "Texture_RTS_H_Armor",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
-        "Availability": 4,
+        "availability": 4,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
     },
 
     "M551A1_TTS_Sheridan_CMD_US": {
-        "GameName": "#LDR M551 TTS SHERIDAN LDR.",
-        "TagSet": [
+        "CommandPoints": 65,
+        "GameName": {
+            "display": "#LDR M551 TTS SHERIDAN LDR.",
+            "token": "NBZRAJWZXD",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Char",
@@ -615,24 +721,30 @@ ldr_unit_edits = {
                 "M551A1_TTS_Sheridan_CMD_US",
                 "Unite"
             ],
-        "CommandPoints": 65,
+        },
         "IdentifiedTextures": ["Texture_RTS_H_Armor", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 '_leader',
                 '_amphibie',
                 '_smoke_launcher',
             ],
-        "NameToken": "ZJRMUWLPVH",
+        },
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
-        "Availability": 4,
+        "availability": 4,
         "XPMultiplier": [0.0, 0.0, 0.0, 1.0],
     },
 
     "MotRifles_CMD_TTsko_SOV": {
-        "GameName": "#LDRSOV MOTOSTRELKI LDR.",
-        "TagSet": [
+        "CommandPoints": 40,
+        "GameName": {
+            "display": "#LDRSOV MOTOSTRELKI LDR.",
+            "token": "ZJRMUWLPVH",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Crew",
@@ -643,7 +755,8 @@ ldr_unit_edits = {
                 "UNITE_MotRifles_CMD_TTsko_SOV",
                 "Unite",
             ],
-        "SquadSize": 6,
+        },
+        "strength": 6,
         "WeaponAssignment": [
                 (0,[1,]),
                 (1,[0,]),
@@ -652,19 +765,17 @@ ldr_unit_edits = {
                 (4,[0,3]),
                 (5,[0,2]),
             ],
-        "weapon1": "FM_AK_74",
-        "weapon1_quantity": 5,
         "TransportedTexture": "UseInGame_Transport_REGINF",
-        "CommandPoints": 40,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'infantry',
                 'leader_sov',
                 '_ifv',
                 'infantry_equip_light',
             ],
-        "NameToken": "QCNBGTPZWL",
+        },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "Divisions": {
@@ -672,13 +783,18 @@ ldr_unit_edits = {
                 "Transports": ['GAZ_66_SOV', 'BTR_80_SOV', 'BMP_1P_SOV', 'BMP_2_SOV'],
             },
         },
-        "Availability": 7,
+        "availability": 7,
         "cards": {
             "default": 1,
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
         "max_speed": 26,
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_AK_74": 5,
+                },
+            },
             "Salves": {
                 "RocketInf_RPG22_72_5mm": 6,
             },
@@ -690,8 +806,13 @@ ldr_unit_edits = {
     },
 
     "Engineers_CMD_TTsko_SOV": {
-        "GameName": "#LDRSOV SAPERI LDR.",
-        "TagSet": [
+        "CommandPoints": 40,
+        "GameName": {
+            "display": "#LDRSOV SAPERI LDR.",
+            "token": "QCNBGTPZWL",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Crew",
@@ -702,7 +823,8 @@ ldr_unit_edits = {
                 "UNITE_Engineers_CMD_TTsko_SOV",
                 "Unite"
             ],
-        "SquadSize": 8,
+        },
+        "strength": 8,
         "WeaponAssignment": [
                 (0,[0,]),
                 (1,[0,]),
@@ -713,19 +835,17 @@ ldr_unit_edits = {
                 (6,[0,]),
                 (7,[0,1,]),
             ],
-        "weapon1": "FM_AK_74",
-        "weapon1_quantity": 8,
         "TransportedTexture": "UseInGame_Transport_assault",
-        "CommandPoints": 40,
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'engineer',
                 'leader_sov',
                 '_choc',
                 'infantry_equip_light',
             ],
-        "NameToken": "AGYMPGDUXA",
+        },
         "MenuIconTexture": "Texture_RTS_H_assault",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
         "Divisions": {
@@ -733,10 +853,15 @@ ldr_unit_edits = {
                 "Transports": ["GAZ_66_SOV", "MTLB_transp_SOV"],
             },
         },
-        "Availability": 5,
+        "availability": 5,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.8],
         "max_speed": 26,
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_AK_74": 8,
+                },
+            },
             "Salves": {
                 "RocketInf_RPG18_64mm": 7,
             },
@@ -748,8 +873,13 @@ ldr_unit_edits = {
     },
     
     "Engineers_CMD_SOV": {
-        "GameName": "#LDRSOV SAPERI LDR.",
-        "TagSet": [
+        "CommandPoints": 40,
+        "GameName": {
+            "display": "#LDRSOV SAPERI LDR.",
+            "token": "AGYMPGDUXA",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Crew",
@@ -760,7 +890,8 @@ ldr_unit_edits = {
                 "UNITE_Engineers_CMD_SOV",
                 "Unite"
             ],
-        "SquadSize": 8,
+        },
+        "strength": 8,
         "WeaponAssignment": [
                 (0,[0,]),
                 (1,[0,]),
@@ -771,19 +902,17 @@ ldr_unit_edits = {
                 (6,[0,]),
                 (7,[0,1,]),
             ],
-        "weapon1": "FM_AK_74",
-        "weapon1_quantity": 8,
         "TransportedTexture": "UseInGame_Transport_assault",
-        "CommandPoints": 40,
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'engineer',
                 'leader_sov',
                 '_choc',
                 'infantry_equip_light',
             ],
-        "NameToken": "CKLQCEBSOY",
+        },
         "MenuIconTexture": "Texture_RTS_H_assault",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
         "Divisions": {
@@ -791,7 +920,14 @@ ldr_unit_edits = {
                 "Transports": ["GAZ_66_SOV", "BTR_60_SOV"],
             },
         },
-        "Availability": 5,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_AK_74": 8,
+                },
+            },
+        },
+        "availability": 5,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
         "max_speed": 26,
         "selector_tactic": "(0, 8)",
@@ -801,8 +937,13 @@ ldr_unit_edits = {
     },
     
     "Spetsnaz_CMD_SOV": {
-        "GameName": "#LDRSOV SPETSNAZ LDR.",
-        "TagSet": [
+        "CommandPoints": 40,
+        "GameName": {
+            "display": "#LDRSOV SPETSNAZ LDR.",
+            "token": "CKLQCEBSOY",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Crew",
@@ -814,18 +955,19 @@ ldr_unit_edits = {
                 "Unite",
                 "noSIGINT",
             ],
+        },
         "TransportedTexture": "UseInGame_Transport_REGINF",
-        "CommandPoints": 40,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry_sf", "Texture_sf"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'engineer',
                 'leader_sov',
                 '_sf',
                 '_choc',
                 'infantry_equip_light',
             ],
-        "NameToken": "JSBZIJKKJJ",
+        },
         "MenuIconTexture": "Texture_RTS_H_Infantry_sf",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "Divisions": {
@@ -833,7 +975,7 @@ ldr_unit_edits = {
                 "Transports": ["GAZ_66_SOV", "BTR_60_SOV"],
             },
         },
-        "Availability": 4,
+        "availability": 4,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.75],
         "max_speed": 26,
         "selector_tactic": "(0, 8)",
@@ -843,8 +985,13 @@ ldr_unit_edits = {
     },
 
     "VDV_CMD_SOV": {
-        "GameName": "#LDRSOV DESANTNIKI LDR.",
-        "TagSet": [
+        "CommandPoints": 50,
+        "GameName": {
+            "display": "#LDRSOV DESANTNIKI LDR.",
+            "token": "JSBZIJKKJJ",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Crew",
@@ -855,7 +1002,8 @@ ldr_unit_edits = {
                 "UNITE_VDV_CMD_SOV",
                 "Unite",
             ],
-        "SquadSize": 6,
+        },
+        "strength": 6,
         "WeaponAssignment": [
                 (0,[1,]),
                 (1,[0,]),
@@ -864,13 +1012,11 @@ ldr_unit_edits = {
                 (4,[0,3]),
                 (5,[0,2,]),
             ],
-        "weapon1": "PM_AKSU_74",
-        "weapon1_quantity": 5,
         "TransportedTexture": "UseInGame_Transport_REGINF",
-        "CommandPoints": 50,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'infantry',
                 'leader_sov',
                 '_ifv',
@@ -878,16 +1024,21 @@ ldr_unit_edits = {
                 '_para',
                 'infantry_equip_heavy',
             ],
-        "NameToken": "SWFVKVIZVT",
+        },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "Availability": 5,
+        "availability": 5,
         "cards": {
             "default": 1,
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.8],
         "max_speed": 20,
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_AK_74": 5,
+                },
+            },
             "Salves": {
                 "PM_AKSU_74": 7,
                 "SAW_RPK_74_5_56mm": 10,
@@ -902,8 +1053,13 @@ ldr_unit_edits = {
     },
 
     "Engineers_CMD_VDV_SOV": {
-        "GameName": "#LDRSOV DESANT. SAPERI LDR.",
-        "TagSet": [
+        "CommandPoints": 50,
+        "GameName": {
+            "display": "#LDRSOV DESANT. SAPERI LDR.",
+            "token": "SWFVKVIZVT",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Crew",
@@ -914,7 +1070,8 @@ ldr_unit_edits = {
                 "UNITE_Engineers_CMD_TTsko_SOV",
                 "Unite"
             ],
-        "SquadSize": 8,
+        },
+        "strength": 8,
         "WeaponAssignment": [
                 (0,[0,]),
                 (1,[0,]),
@@ -925,26 +1082,29 @@ ldr_unit_edits = {
                 (6,[0,]),
                 (7,[0,1,]),
             ],
-        "weapon1": "FM_AKS_74",
-        "weapon1_quantity": 8,
         "TransportedTexture": "UseInGame_Transport_assault",
-        "CommandPoints": 50,
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'engineer',
                 'leader_sov',
                 '_choc',
                 '_para',
                 'infantry_equip_medium',
             ],
-        "NameToken": "PUEZYZBZLF",
+        },
         "MenuIconTexture": "Texture_RTS_H_assault",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
-        "Availability": 5,
+        "availability": 5,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.8],
         "max_speed": 26,
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_AKS_74": 8,
+                },
+            },
             "Salves": {
                 "FM_AKS_74": 9,
                 "RocketInf_RPG7": 6,
@@ -957,8 +1117,13 @@ ldr_unit_edits = {
     },
 
     "MTLB_CMD_SOV": {
-        "GameName": "#LDRSOV MT-LBu MASHINA",
-        "TagSet": [
+        "CommandPoints": 60,
+        "GameName": {
+            "display": "#LDRSOV MT-LBu MASHINA",
+            "token": "PUEZYZBZLF",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "GroundUnits",
@@ -966,15 +1131,16 @@ ldr_unit_edits = {
                 "Unite",
                 "Vehicule",
             ],
+        },
         "Factory": "EDefaultFactories/Art",
-        "CommandPoints": 60,
         "IdentifiedTextures": ["Texture_RTS_H_appui", "Texture_appui"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'leader_sov',
                 '_amphibie',
             ],
-        "NameToken": "YWAOJLFAFW",
+        },
         "MenuIconTexture": "Texture_RTS_H_appui",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Transport",
         "cards": {
@@ -984,8 +1150,13 @@ ldr_unit_edits = {
     },
 
     "T80BV_CMD_SOV": {
-        "GameName": "#LDRSOV T-80BVK LDR.",
-        "TagSet": [
+        "CommandPoints": 225,
+        "GameName": {
+            "display": "#LDRSOV T-80BVK LDR.",
+            "token": "YWAOJLFAFW",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Char",
@@ -993,21 +1164,22 @@ ldr_unit_edits = {
                 "UNITE_T80BV_CMD_SOV",
                 "Unite",
             ],
+        },
         "armor": {
             "front": 18,
         },
-        "CommandPoints": 225,
         "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'Armor_heavy',
                 'leader_sov',
                 '_smoke_launcher',
             ],
-        "NameToken": "LJDWEYDMZI",
+        },
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
-        "Availability": 4,
+        "availability": 4,
         "cards": {
             "default": 1,
         },
@@ -1015,8 +1187,13 @@ ldr_unit_edits = {
     },
 
     "MotRifles_CMD_DDR": {
-        "GameName": "#LDRSOV MOT.-SCHUTZEN LDR.",
-        "TagSet": [
+        "CommandPoints": 40,
+        "GameName": {
+            "display": "#LDRSOV MOT.-SCHUTZEN LDR.",
+            "token": "LJDWEYDMZI",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Crew",
@@ -1027,7 +1204,8 @@ ldr_unit_edits = {
                 "UNITE_MotRifles_CMD_DDR",
                 "Unite",
             ],
-        "SquadSize": 6,
+        },
+        "strength": 6,
         "WeaponAssignment": [
                 (0,[1,]),
                 (1,[0,]),
@@ -1036,28 +1214,31 @@ ldr_unit_edits = {
                 (4,[0,3]),
                 (5,[0,2]),
             ],
-        "weapon1": "FM_Mpi_AK_74N",
-        "weapon1_quantity": 5,
         "TransportedTexture": "UseInGame_Transport_REGINF",
-        "CommandPoints": 40,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'infantry',
                 'leader_sov',
                 '_ifv',
                 'infantry_equip_light',
             ],
-        "NameToken": "KYSSUXXTDG",
+        },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "Availability": 7,
+        "availability": 7,
         "cards": {
             "default": 1,
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
         "max_speed": 26,
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_Mpi_AK_74N": 5,
+                },
+            },
             "Salves": {
                 "RocketInf_RPG18_64mm": 6,
             },
@@ -1069,8 +1250,13 @@ ldr_unit_edits = {
     },
 
     "Engineers_CMD_DDR": {
-        "GameName": "#LDRSOV PIONIER LDR.",
-        "TagSet": [
+        "CommandPoints": 50,
+        "GameName": {
+            "display": "#LDRSOV PIONIER LDR.",
+            "token": "KYSSUXXTDG",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Crew",
@@ -1081,7 +1267,8 @@ ldr_unit_edits = {
                 "UNITE_Engineers_CMD_DDR",
                 "Unite"
             ],
-        "SquadSize": 8,
+        },
+        "strength": 8,
         "WeaponAssignment": [
                 (0,[0,]),
                 (1,[0,]),
@@ -1092,26 +1279,29 @@ ldr_unit_edits = {
                 (6,[0,]),
                 (7,[0,1,]),
             ],
-        "weapon1": "FM_Mpi_AK_74N",
-        "weapon1_quantity": 8,
         "TransportedTexture": "UseInGame_Transport_assault",
-        "CommandPoints": 50,
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'engineer',
                 'leader_sov',
                 '_choc',
                 '_resolute',
                 'infantry_equip_medium',
             ],
-        "NameToken": "MXTHDKLGFB",
+        },
         "MenuIconTexture": "Texture_RTS_H_assault",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
-        "Availability": 7,
+        "availability": 7,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
         "max_speed": 26,
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_Mpi_AK_74N": 8,
+                },
+            },
             "Salves": {
                 "FM_Mpi_AK_74N": 9,
                 "RocketInf_RPG7VL": 6,
@@ -1124,8 +1314,13 @@ ldr_unit_edits = {
     },
 
     "BTR_50_CMD_DDR": {
-        "GameName": "#LDRSOV SPW-50PU(A)",
-        "TagSet": [
+        "CommandPoints": 60,
+        "GameName": {
+            "display": "#LDRSOV SPW-50PU(A)",
+            "token": "MXTHDKLGFB",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "GroundUnits",
@@ -1133,19 +1328,20 @@ ldr_unit_edits = {
                 "Unite",
                 "Vehicule",
             ],
+        },
         "Factory": "EDefaultFactories/Art",
-        "CommandPoints": 60,
         "IdentifiedTextures": ["Texture_RTS_H_appui", "Texture_appui"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'leader_sov',
                 '_amphibie',
                 '_resolute',
             ],
-        "NameToken": "VKLRXNSTQE",
+        },
         "MenuIconTexture": "Texture_RTS_H_appui",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Transport",
-        "Availability": 2,
+        "availability": 2,
         "cards": {
             "default": 1,
         },
@@ -1153,8 +1349,13 @@ ldr_unit_edits = {
     },
 
     "T55A_CMD_DDR": {
-        "GameName": "#LDRSOV FUPZ. T-55AK LDR.",
-        "TagSet": [
+        "CommandPoints": 85,
+        "GameName": {
+            "display": "#LDRSOV FUPZ. T-55AK LDR.",
+            "token": "VKLRXNSTQE",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Char",
@@ -1162,19 +1363,20 @@ ldr_unit_edits = {
                 "UNITE_T55A_CMD_DDR",
                 "Unite",
             ],
-        "CommandPoints": 85,
+        },
         "IdentifiedTextures": ["Texture_RTS_H_Armor", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'armor',
                 'leader_sov',
                 '_resolute',
                 '_smoke_launcher',
             ],
-        "NameToken": "XVEZUMJKLL",
+        },
         "MenuIconTexture": "Texture_RTS_H_Armor",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
-        "Availability": 6,
+        "availability": 6,
         "cards": {
             "default": 1,
         },
@@ -1182,8 +1384,13 @@ ldr_unit_edits = {
     },
 
     "T72M_CMD_DDR": {
-        "GameName": "#LDRSOV FUPZ. T-72M LDR.",
-        "TagSet": [
+        "CommandPoints": 170,
+        "GameName": {
+            "display": "#LDRSOV FUPZ. T-72M LDR.",
+            "token": "XVEZUMJKLL",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Char",
@@ -1191,19 +1398,20 @@ ldr_unit_edits = {
                 "UNITE_T72M_CMD_DDR",
                 "Unite",
             ],
-        "CommandPoints": 170,
+        },
         "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'Armor_heavy',
                 'leader_sov',
                 '_resolute',
                 '_smoke_launcher',
             ],
-        "NameToken": "QMPRIAZFYF",
+        },
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
-        "Availability": 4,
+        "availability": 4,
         "cards": {
             "default": 1,
         },
@@ -1211,8 +1419,13 @@ ldr_unit_edits = {
     },
     
     "Territorial_CMD_UK": {
-        "GameName": "#LDR TERRIERS LDR.",
-        "TagSet": [
+        "CommandPoints": 40,
+        "GameName": {
+            "display": "#LDR TERRIERS LDR.",
+            "token": "QMPRIAZFYF",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Crew",
@@ -1222,7 +1435,8 @@ ldr_unit_edits = {
                 "UNITE_Territorial_CMD_UK",
                 "Unite",
             ],
-        "SquadSize": 7,
+        },
+        "strength": 7,
         "WeaponAssignment": [
                 (0,[1,]),
                 (1,[1,]),
@@ -1232,27 +1446,30 @@ ldr_unit_edits = {
                 (5,[0,]),
                 (6,[0,2,]),
             ],
-        "weapon1": "PM_Sterling",
-        "weapon1_quantity": 3,
         "TransportedTexture": "UseInGame_Transport_REGINF",
-        "CommandPoints": 40,
         # "SortingOrder": 20075,
         # "UnitAttackValue": 1,
         # "UnitDefenseValue": 16,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'infantry',
                 '_leader',
                 'infantry_equip_light',
             ],
-        "NameToken": "VZOODKAGWE",
+        },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "Availability": 7,
+        "availability": 7,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
         "max_speed": 26,
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "PM_Sterling": 3,
+                },
+            },
             "Salves": {
                 "PM_Sterling": 12,
             },
@@ -1264,8 +1481,13 @@ ldr_unit_edits = {
     },
     
     "Engineers_CMD_UK": {
-        "GameName": "#LDR ASSAULT PIONEERS LDR.",
-        "TagSet": [
+        "CommandPoints": 40,
+        "GameName": {
+            "display": "#LDR ASSAULT PIONEERS LDR.",
+            "token": "VZOODKAGWE",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Crew",
@@ -1275,7 +1497,8 @@ ldr_unit_edits = {
                 "UNITE_Engineers_CMD_UK",
                 "Unite",
             ],
-        "SquadSize": 8,
+        },
+        "strength": 8,
         "WeaponAssignment": [
                 (0,[0,]),
                 (1,[0,]),
@@ -1286,28 +1509,31 @@ ldr_unit_edits = {
                 (6,[0,]),
                 (7,[0,]),
             ],
-        "weapon1": "PM_Sterling",
-        "weapon1_quantity": 8,
         "TransportedTexture": "UseInGame_Transport_assault",
-        "CommandPoints": 40,
         # "SortingOrder": 20075,
         # "UnitAttackValue": 1,
         # "UnitDefenseValue": 16,
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'engineer',
                 '_leader',
                 '_choc',
                 'infantry_equip_light',
             ],
-        "NameToken": "YGMKZKXXEV",
+        },
         "MenuIconTexture": "Texture_RTS_H_assault",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
-        "Availability": 7,
+        "availability": 7,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
         "max_speed": 26,
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "PM_Sterling": 8,
+                },
+            },
             "Salves": {
                 "PM_Sterling": 12,
             },
@@ -1319,8 +1545,13 @@ ldr_unit_edits = {
     },
     
     "Rifles_CMD_UK": {
-        "GameName": "#LDR RIFLES LDR.",
-        "TagSet": [
+        "CommandPoints": 40,
+        "GameName": {
+            "display": "#LDR RIFLES LDR.",
+            "token": "YGMKZKXXEV",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Crew",
@@ -1331,23 +1562,24 @@ ldr_unit_edits = {
                 "UNITE_Rifles_CMD_UK",
                 "Unite",
             ],
+        },
         "TransportedTexture": "UseInGame_Transport_REGINF",
-        "CommandPoints": 40,
         # "SortingOrder": 20075,
         # "UnitAttackValue": 1,
         # "UnitDefenseValue": 16,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'infantry',
                 '_leader',
                 '_ifv',
                 'infantry_equip_light',
             ],
-        "NameToken": "CFLNZATSET",
+        },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "Availability": 7,
+        "availability": 7,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
         "max_speed": 26,
         "is_infantry": True,
@@ -1355,8 +1587,13 @@ ldr_unit_edits = {
     },
     
     "Airmobile_CMD_UK": {
-        "GameName": "#LDR AIRMOBILE LDR.",
-        "TagSet": [
+        "CommandPoints": 40,
+        "GameName": {
+            "display": "#LDR AIRMOBILE LDR.",
+            "token": "CFLNZATSET",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Crew",
@@ -1366,22 +1603,23 @@ ldr_unit_edits = {
                 "UNITE_Airmobile_CMD_UK",
                 "Unite",
             ],
+        },
         "TransportedTexture": "UseInGame_Transport_REGINF",
-        "CommandPoints": 40,
         # "SortingOrder": 20075,
         # "UnitAttackValue": 1,
         # "UnitDefenseValue": 16,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'infantry',
                 '_leader',
                 'infantry_equip_light',
             ],
-        "NameToken": "STDJMZHFVM",
+        },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "Availability": 7,
+        "availability": 7,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
         "max_speed": 26,
         "is_infantry": True,
@@ -1389,8 +1627,13 @@ ldr_unit_edits = {
     },
     
     "Airmobile_Mot_CMD_UK": {
-        "GameName": "#LDR MOT. AIRMOBILE LDR.",
-        "TagSet": [
+        "CommandPoints": 40,
+        "GameName": {
+            "display": "#LDR MOT. AIRMOBILE LDR.",
+            "token": "DPDYRJPOBS",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Crew",
@@ -1400,22 +1643,23 @@ ldr_unit_edits = {
                 "UNITE_Mot_Airmobile_CMD_UK",
                 "Unite",
             ],
+        },
         "TransportedTexture": "UseInGame_Transport_REGINF",
-        "CommandPoints": 40,
         # "SortingOrder": 20075,
         # "UnitAttackValue": 1,
         # "UnitDefenseValue": 16,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'infantry',
                 '_leader',
                 'infantry_equip_light',
             ],
-        "NameToken": "AXNCJBTALK",
+        },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "Availability": 7,
+        "availability": 7,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
         "max_speed": 26,
         "is_infantry": True,
@@ -1423,8 +1667,13 @@ ldr_unit_edits = {
     },
     
     "Challenger_1_Mk1_CMD_UK": {
-        "GameName": "#LDR CHALLENGER MK.2 LDR.",
-        "TagSet": [
+        "CommandPoints": 205,
+        "GameName": {
+            "display": "#LDR CHALLENGER MK.2 LDR.",
+            "token": "LDRSOVCHAL",
+        },
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Char",
@@ -1432,15 +1681,16 @@ ldr_unit_edits = {
                 "UNITE_Challenger_1_Mk1_CMD_UK",
                 "Unite"
             ],
-        "CommandPoints": 205,
+        },
         "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
-        "SpecialtiesList": [
+        "SpecialtiesList": {
+            "overwrite_all": [
                 'Armor_heavy',
                 '_leader',
                 '_smoke_launcher',
             ],
-        "NameToken": "DPDYRJPOBS",
+        },
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],

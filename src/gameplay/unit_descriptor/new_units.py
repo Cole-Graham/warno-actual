@@ -25,8 +25,8 @@ def write_new_unit_dictionary_entries(unit_edits: Dict[str, Any]) -> None:
     entries = []
     
     for _, edits in unit_edits.items():
-        if "NameToken" in edits:
-            entries.append((edits["NameToken"], edits["GameName"]))
+        if "GameName" in edits and "token" in edits["GameName"]:
+            entries.append((edits["GameName"]["token"], edits["GameName"]["display"]))
     
     if entries:
         write_dictionary_entries(entries, dictionary_type="units")
@@ -79,7 +79,13 @@ def modify_new_unit(unit_row: Any, edits: Dict[str, Any]) -> None:
         # Handle each module type
         if descr_type == "TTagsModuleDescriptor":
             if "TagSet" in edits:
-                descr_row.v.by_member("TagSet").v = str(edits["TagSet"])
+                tagset = descr_row.v.by_member("TagSet").v
+                if "overwrite_all" in edits["TagSet"]:
+                    tagset.v = str(edits["TagSet"]["overwrite_all"])
+                elif "add_tags" in edits["TagSet"]:
+                    for tag in edits["TagSet"]["add_tags"]:
+                        tagset.add(tag)
+                        logger.info(f"Added tag {tag} to {unit_row.namespace}")
                 
         elif descr_type == "TVisibilityModuleDescriptor":
             if "Stealth" in edits:
@@ -94,8 +100,8 @@ def modify_new_unit(unit_row: Any, edits: Dict[str, Any]) -> None:
                 descr_row.v.by_member("Default").v = f"$/GFX/Weapon/WeaponDescriptor_{edits['NewName']}"
                 
         elif descr_type == "TBaseDamageModuleDescriptor":
-            if "SquadSize" in edits:
-                descr_row.v.by_member("MaxPhysicalDamages").v = str(edits["SquadSize"])
+            if "strength" in edits:
+                descr_row.v.by_member("MaxPhysicalDamages").v = str(edits["strength"])
                 
         elif descr_type == "TDamageModuleDescriptor":
             _handle_damage_module(descr_row, edits)
@@ -171,7 +177,7 @@ def _handle_damage_module(descr_row: Any, edits: Dict[str, Any]) -> None:
             blindage_obj.by_member("ExplosiveReactiveArmor").v = str(edits["armor"]["era"])
     
     elif not edits["is_ground_vehicle"] and edits["is_infantry"]:
-        inf_strength = int(edits["SquadSize"])
+        inf_strength = int(edits["strength"])
         armor_level = str(15 - inf_strength)
         blindage_obj = descr_row.v.by_member("BlindageProperties").v
         for side in ["Front", "Sides", "Rear", "Top"]:
@@ -185,8 +191,8 @@ def _handle_groupe_combat(descr_row: Any, edits: Dict[str, Any]) -> None:
     mimetic_descr = default_member.v.by_member("MimeticDescriptor")
     mimetic_descr.v.by_member("DescriptorId").v = f"GUID:{{{edits['GroupeCombatGUID']}}}"
     
-    if "SquadSize" in edits:
-        default_member.v.by_member("NbSoldatInGroupeCombat").v = str(edits["SquadSize"])
+    if "strength" in edits:
+        default_member.v.by_member("NbSoldatInGroupeCombat").v = str(edits["strength"])
         
     if "NewName" in edits:
         default_member.v.by_member("InfantryMimeticName").v = f"'{edits['NewName']}'"
@@ -203,16 +209,16 @@ def _handle_tactical_label(descr_row: Any, edits: Dict[str, Any]) -> None:
     if "UnidentifiedTextures" in edits:
         unid_textures_member = descr_row.v.by_member("UnidentifiedTexture")
         unid_textures_member.v.by_member("Values").v = str(edits["UnidentifiedTextures"])
-    if "SquadSize" in edits:
-        descr_row.v.by_member("NbSoldiers").v = str(edits["SquadSize"])
+    if "strength" in edits:
+        descr_row.v.by_member("NbSoldiers").v = str(edits["strength"])
 
 def _handle_unit_ui(descr_row: Any, edits: Dict[str, Any]) -> None:
     """Handle unit UI module modifications."""
     if "SpecialitiesList" in edits:
         edited_list = ndf.convert(str(edits["SpecialitiesList"]))
         descr_row.v.by_member("SpecialtiesList").v = edited_list
-    if "NameToken" in edits:
-        descr_row.v.by_member("NameToken").v = f"'{edits['NameToken']}'"
+    if "GameName" in edits and "token" in edits["GameName"]:
+        descr_row.v.by_member("NameToken").v = f"'{edits["GameName"]["token"]}'"
     if "UpgradeFromUnit" in edits and descr_row.v.by_member("UpgradeFromUnit", False) is not None:
         descr_row.v.by_member("UpgradeFromUnit").v = f"Descriptor_Unit_{edits['UpgradeFromUnit']}"
     if "MenuIconTexture" in edits:

@@ -55,7 +55,7 @@ pol_unit_edits = {
     },
 
     "BRDM_2_CMD_POL": {
-        "Strength": 8,
+        "strength": 8,
         "CommandPoints": 145,
         "Divisions": {
             "default": {
@@ -277,7 +277,7 @@ pol_unit_edits = {
 
     # POL TANK
     "BRDM_2_Konkurs_POL": {
-        "Strength": 8,
+        "strength": 8,
         "CommandPoints": 50,
         "stealth": 1.5,
         "availability": 8,

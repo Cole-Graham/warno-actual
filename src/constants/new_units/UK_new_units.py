@@ -8,10 +8,17 @@ UK_NEW_UNITS = {
         "ShowroomGUID": "b2e1d9c4-a7f8-4b53-9c6e-d5f4e3a2c1b8",
         "CadavreGUID": "b1352738-64fe-4c41-8505-7fdb44402f6d",
         "NewName": "Rifles_CMD2_UK",
-        "GameName": "#CMD HQ SECTION",
-        "TagSet": ["AllUnits", "AllowedForMissileRoE", "Commandant", "Crew", "GroundUnits", "Inf_quartier_ok", 
-                   "Infanterie", "Infanterie_CMD", "InfmapCommander", "UNITE_Rifles_CMD2_UK", "Unite"],
-        "SquadSize": 5,
+        "GameName": {
+            "display": "#CMD HQ SECTION",
+            "token": "UEBNKKQYYZ",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits", "AllowedForMissileRoE", "Commandant", "Crew", "GroundUnits", "Inf_quartier_ok", 
+                "Infanterie", "Infanterie_CMD", "InfmapCommander", "UNITE_Rifles_CMD2_UK", "Unite",
+            ],
+        },
+        "strength": 5,
         # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
         "Dangerousness": 12,
         "WeaponAssignment": [
@@ -36,7 +43,6 @@ UK_NEW_UNITS = {
                 '_ifv',
                 'infantry_equip_light',
             ],
-        "NameToken": "UEBNKKQYYZ",
         "MenuIconTexture": "Texture_RTS_H_CMD_inf",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Inf",
         "Divisions": {
@@ -44,7 +50,7 @@ UK_NEW_UNITS = {
                 "Transports": ["Bedford_MJ_4t_trans_UK", "MCV_80_Warrior_UK", "Lynx_AH_Mk1_UK"],
             },
         },
-        "Availability": 2,
+        "availability": 2,
         "Cards": {
             "default": 2,
         },
@@ -71,7 +77,8 @@ UK_NEW_UNITS = {
         "ShowroomGUID": "c4d5e6f7-8a9b-4c5d-6e7f-8a9b0c1d2e3f",
         "CadavreGUID": "e8f48e53-2ad0-4d41-ac9f-f6d24a3f2e77",
         "NewName": "Challenger_1_Mk1_CMD2_UK",
-        "TagSet":  [
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Char",
@@ -82,6 +89,7 @@ UK_NEW_UNITS = {
                 "UNITE_Challenger_1_Mk1_CMD2_UK",
                 "Unite",
             ],
+        },
         "Factory": "EDefaultFactories/Logistic",
         "CommandPoints": 290,
         "Divisions": {
@@ -92,7 +100,7 @@ UK_NEW_UNITS = {
                 "Transports": None,
             },
         },
-        "Availability": 2,
+        "availability": 2,
         "Cards": {
             "default": 1,
         },

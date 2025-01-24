@@ -76,6 +76,509 @@ usa_unit_edits = {
         "XPMultiplier": [0.0, 0.0, 0.0, 1.0],
     },
     #US INF
+    "Rifles_half_CMD_US": {
+        "CommandPoints": 40,
+        "GameName": {
+            "token": "CPCIJQLHML",
+            "display": "#LDR FIRE TEAM LDR.",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_IFV",
+                "UNITE_Rifles_half_CMD_US",
+                "Unite",
+            ],
+        },
+        "strength": 6,
+        "WeaponAssignment": [
+                (0,[0,]),
+                (1,[0,]),
+                (2,[1,]),
+                (3,[1,]),
+                (4,[1,3]),
+                (5,[1,2]),
+            ],
+        "TransportedTexture": "UseInGame_Transport_REGINF",
+        # "SortingOrder": 20075,
+        # "UnitAttackValue": 1,
+        # "UnitDefenseValue": 16,
+        "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'infantry',
+                '_leader',
+                '_ifv',
+                'infantry_equip_light',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Infantry",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
+        "availability": 7,
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
+        "max_speed": 26,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_M16": 2,
+                    "Commando_733": 3,
+                },
+            },
+            "Salves": {
+                "RocketInf_M72A3_LAW_66mm": 6,
+            },
+        },
+        "selector_tactic": "(0, 6)",
+        "selector_tactic_obj": "00_06",
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+    },
+
+    "Rifles_CMD_US": {
+        "CommandPoints": 40,
+        "GameName": {
+            "display": "#LDR MECH. RIFLES LDR.",
+            "token": "CPCIJQLHML",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "UNITE_Rifles_CMD_US",
+                "Unite",
+            ],
+        },
+        "TransportedTexture": "UseInGame_Transport_REGINF",
+        # "SortingOrder": 20075,
+        # "UnitAttackValue": 1,
+        # "UnitDefenseValue": 16,
+        "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'infantry',
+                '_leader',
+                'infantry_equip_light',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Infantry",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
+        "availability": 7,
+        "cards": {
+            "default": 1,
+        },
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
+        "max_speed": 26,
+        "WeaponDescriptor": {
+            "Salves": {
+                "RocketInf_M72A3_LAW_66mm": 6,
+            },
+        },
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+    },
+    
+    "NatGuard_CMD_US": {
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm")],
+            },
+        },
+    },
+
+    "Engineer_CMD_US": {
+        "CommandPoints": 50,
+        "GameName": {
+            "display": "#LDR ENGINEERS LDR.",
+            "token": "DBEBRUEYSP",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_Spec_Attaque",
+                "UNITE_Engineer_CMD_US",
+                "Unite"
+            ],
+        },
+        "TransportedTexture": "UseInGame_Transport_assault",
+        # "SortingOrder": 20040,
+        # "UnitAttackValue": 1,
+        # "UnitDefenseValue": 16,
+        "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'engineer',
+                '_leader',
+                '_choc',
+                'infantry_equip_light',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_assault",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
+        "availability": 5,
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.8],
+        "max_speed": 26,
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+    },
+
+    "Rangers_CMD_US": {
+        "CommandPoints": 70,
+        "GameName": {
+            "display": "#LDR RANGERS LDR.",
+            "token": "WPUCULQQND",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "UNITE_Rangers_CMD_US",
+                "Unite",
+                "noSIGINT",
+            ],
+        },
+        "strength": 9,
+        "WeaponAssignment": [
+                (0,[1,]),
+                (1,[0,]),
+                (2,[0,]),
+                (3,[0,]),
+                (4,[0,]),
+                (5,[0,]),
+                (6,[0,]),
+                (7,[0,3]),
+                (8,[0,2]),
+            ],
+        "TransportedTexture": "UseInGame_Transport_REGINF",
+        # "SortingOrder": 20075,
+        # "UnitAttackValue": 1,
+        # "UnitDefenseValue": 16,
+        "IdentifiedTextures": ["Texture_RTS_H_Infantry_sf", "Texture_sf"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'infantry',
+                '_leader',
+                '_sf',
+                '_choc',
+                'infantry_equip_heavy',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Infantry_sf",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
+        "Divisions": {
+            "US_8th_Inf": {
+                "Transports": ["M1038_Humvee_US", "UH60A_Black_Hawk_US"]
+            },
+        },
+        "availability": 4,
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.75],
+        "max_speed": 20,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("Commando_733", "M16A1_Carbine")],
+                "quantity": {
+                    "M16A1_Carbine": 8,
+                },
+            },
+            "Salves": {
+                "RocketInf_M67_RCL_90mm": 10,
+            },
+        },
+        "unique_count": 2,
+        "surrogates": 9,
+        "selector_tactic": "(2, 9)",
+        "selector_tactic_obj": "02_09",
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+    },
+
+    "Airborne_Engineer_CMD_US": {
+        "CommandPoints": 60,
+        "GameName": {
+            "display": "#LDR AB ENGINEERS LDR.",
+            "token": "LRTQFDCCCB",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_Spec_Attaque",
+                "UNITE_Airborne_Engineer_CMD_US",
+                "Unite"
+            ],
+        },
+        "TransportedTexture": "UseInGame_Transport_assault",
+        # "SortingOrder": 20040,
+        # "UnitAttackValue": 1,
+        # "UnitDefenseValue": 16,
+        "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'engineer',
+                '_leader',
+                '_choc',
+                '_para',
+                'infantry_equip_light',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_assault",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
+        "availability": 5,
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.8],
+        "max_speed": 26,
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+    },
+
+    "Airborne_CMD_US": {
+        "CommandPoints": 70,
+        "GameName": {
+            "display": "#LDR AIRBORNE LDR.",
+            "token": "BHVJUDTEVR",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_Standard",
+                "UNITE_Airborne_US",
+                "Unite"
+            ],
+        },
+        "TransportedTexture": "UseInGame_Transport_REGINF",
+        # "SortingOrder": 20060,
+        # "UnitAttackValue": 1,
+        # "UnitDefenseValue": 16,
+        "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'infantry',
+                '_leader',
+                '_choc',
+                '_para',
+                'infantry_equip_medium',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Infantry",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
+        "availability": 5,
+        "cards": {
+            "default": 1,
+        },
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.8],
+        "max_speed": 26,
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_M16": 9,
+                "RocketInf_AT4_83mm": 6,
+            },
+        },
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+    },
+
+    "AeroRifles_CMD_US": {
+        "CommandPoints": 50,
+        "GameName": {
+            "display": "#LDR AERO-RIFLES LDR.",
+            "token": "TVWIKAOSVP",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_Standard",
+                "UNITE_AeroRifles_CMD_US",
+                "Unite"
+            ],
+        },
+        "TransportedTexture": "UseInGame_Transport_REGINF",
+        # "SortingOrder": 20060,
+        # "UnitAttackValue": 1,
+        # "UnitDefenseValue": 16,
+        "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'infantry',
+                '_leader',
+                '_choc',
+                'infantry_equip_light',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Infantry",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
+        "availability": 5,
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.8],
+        "max_speed": 26,
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+    },
+
+    "Aero_half_CMD_US": {
+        "CommandPoints": 35,
+        "GameName": {
+            "display": "#LDR AERO-FIRE TEAM LDR.",
+            "token": "MHGSSCNBFO",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_Standard",
+                "UNITE_AeroRifles_CMD_US",
+                "Unite"
+            ],
+        },
+        "TransportedTexture": "UseInGame_Transport_REGINF",
+        # "SortingOrder": 20045,
+        # "UnitAttackValue": 1,
+        # "UnitDefenseValue": 41,
+        # "UnitDefenseValue": 41,
+        "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'infantry',
+                '_leader',
+                '_choc',
+                'infantry_equip_light',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Infantry",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
+        "availability": 7,
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
+        "max_speed": 26,
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+    },
+
+    "AeroEngineer_CMD_US": {
+        "CommandPoints": 60,
+        "GameName": {
+            "display": "#LDR AERO-ENGINEERS LDR.",
+            "token": "OWQFQTLBJN",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_Spec_Attaque",
+                "UNITE_AeroEngineer_CMD_US",
+                "Unite"
+            ],
+        },
+        "TransportedTexture": "UseInGame_Transport_assault",
+        # "SortingOrder": 20085,
+        # "UnitAttackValue": 1,
+        # "UnitDefenseValue": 31,
+        # "UnitDefenseValue": 31,
+        "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'engineer',
+                '_leader',
+                '_choc',
+                'infantry_equip_medium',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_assault",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
+        "availability": 4,
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.75],
+        "max_speed": 26,
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+    },
+
+    "GreenBerets_CMD_US": {
+        "CommandPoints": 75,
+        "GameName": {
+            "display": "#LDR GREEN BERETS LDR.",
+            "token": "KFNXNJOXZS",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_Standard",
+                "UNITE_GreenBerets_CMD_US",
+                "Unite",
+                "noSIGINT",
+            ],
+        },
+        "TransportedTexture": "UseInGame_Transport_REGINF",
+        # "SortingOrder": 20100,
+        # "UnitAttackValue": 1,
+        # "UnitDefenseValue": 41,
+        "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'infantry',
+                '_sf',
+                '_choc',
+                'infantry_equip_light',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Infantry",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
+        "availability": 2,
+        "XPMultiplier": [0.0, 0.0, 0.0, 1.0],
+        "max_speed": 26,
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+    },
+    
     "Engineers_US": {
         "CommandPoints": 45,
         "availability": 7,
@@ -128,8 +631,8 @@ usa_unit_edits = {
         "CommandPoints": 50,
         "availability": 7,
         # "GameName": {
-        #     "game_n": "AIRBORNE ASSAULT ENG.",
-        #     "nametoken": "TXOZWRNEVU",
+        #     "display": "AIRBORNE ASSAULT ENG.",
+        #     "token": "TXOZWRNEVU",
         # },
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
         "max_speed": 26,
@@ -806,6 +1309,38 @@ usa_unit_edits = {
         },
     },
     #US ARTILLERY
+    "M577_US": {
+        "CommandPoints": 60,
+        "GameName": {
+            "display": "#LDR M577 TACFIRE FCV",
+            "token": "ZTSGIUUUVJ",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "GroundUnits",
+                "UNITE_M577_US",
+                "Unite",
+                "Vehicule",
+            ],
+        },
+        "Factory": "EDefaultFactories/Art",
+        "IdentifiedTextures": ["Texture_RTS_H_appui", "Texture_appui"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                '_leader',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_appui",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Transport",
+        "cards": {
+            "default": 1,
+        },
+        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+    },
+    
     "Mortier_107mm_US": {
         "CommandPoints": 40,
         "availability": 5,
@@ -857,8 +1392,8 @@ usa_unit_edits = {
 
     "M270_MLRS_cluster_US": {
         "GameName": {
-            "game_n": "M270 MLRS",
-            "nametoken": "MYQQNJCCAK",
+            "display": "M270 MLRS",
+            "token": "MYQQNJCCAK",
         },
         "CommandPoints": 280,
         "availability": 1,
@@ -880,6 +1415,203 @@ usa_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
     #US TANK/VEHICLE
+    "M1A1HA_Abrams_CMD_US": {
+        "CommandPoints": 335,
+        "GameName": {
+            "display": "#LDR M1A1(HA) ABRAMS LDR.",
+            "token": "CIOEKZVEAY",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "GroundUnits",
+                "UNITE_M1A1HA_Abrams_CMD_US",
+                "Unite",
+            ],
+        },
+        # "SortingOrder": 20340,
+        # "UnitAttackValue": 561,
+        # "UnitDefenseValue": 561,
+        "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'Armor_heavy',
+                '_leader',
+                '_smoke_launcher',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
+        "availability": 2,
+        "cards": {
+            "default": 1,
+        },
+        "XPMultiplier": [0.0, 0.0, 0.0, 1.0],
+    },
+
+    "M1A1_Abrams_CMD_US": {
+        "CommandPoints": 260,
+        "GameName": {
+            "display": "#LDR M1A1 ABRAMS LDR.",
+            "token": "JARUASHKDH",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "GroundUnits",
+                "UNITE_M1A1_Abrams_CMD_US",
+                "Unite",
+            ],
+        },
+        # "SortingOrder": 20290,
+        # "UnitAttackValue": 461,
+        # "UnitDefenseValue": 461,
+        "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'Armor_heavy',
+                '_leader',
+                '_smoke_launcher',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
+        "availability": 3,
+        "cards": {
+            "default": 1,
+        },
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+    },
+
+    "M1IP_Abrams_CMD_US": {
+        "CommandPoints": 210,
+        "GameName": {
+            "display": "#LDR M1IP ABRAMS LDR.",
+            "token": "TSLINICZXV",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "GroundUnits",
+                "UNITE_M1IP_Abrams_CMD_US",
+                "Unite"
+            ],
+        },
+        "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'Armor_heavy',
+                '_leader',
+                '_smoke_launcher',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+    },
+
+    "M1_Abrams_CMD_US": {
+        "CommandPoints": 185,
+        "GameName": {
+            "display": "#LDR M1 ABRAMS LDR.",
+            "token": "JMIRJBBLPW",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "GroundUnits",
+                "UNITE_M1_Abrams_CMD_US",
+                "Unite"
+            ],
+        },
+        "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'Armor_heavy',
+                '_leader',
+                '_smoke_launcher',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
+        "availability": 3,
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+    },
+
+    "M60A3_CMD_US": {
+        "CommandPoints": 120,
+        "GameName": {
+            "display": "#LDR M60A3 (TTS) LDR.",
+            "token": "OZPDFIGTWN",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "GroundUnits",
+                "UNITE_M60A3_CMD_US",
+                "Unite"
+            ],
+        },  
+        "IdentifiedTextures": ["Texture_RTS_H_Armor", "Texture_Armor"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'armor',
+                '_leader',
+                '_smoke_launcher',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Armor",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
+        "availability": 4,
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+    },
+
+    "M551A1_TTS_Sheridan_CMD_US": {
+        "CommandPoints": 65,
+        "GameName": {
+            "display": "#LDR M551 TTS SHERIDAN LDR.",
+            "token": "NBZRAJWZXD",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "GroundUnits",
+                "M551A1_TTS_Sheridan_CMD_US",
+                "Unite"
+            ],
+        },
+        "IdentifiedTextures": ["Texture_RTS_H_Armor", "Texture_Armor"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                '_leader',
+                '_amphibie',
+                '_smoke_launcher',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
+        "availability": 4,
+        "XPMultiplier": [0.0, 0.0, 0.0, 1.0],
+    },
+    
     "M113A3_US": {
         "orders": {
             "add_orders": ["sell"],
@@ -953,8 +1685,8 @@ usa_unit_edits = {
 
     "M1A1_Abrams_US": {
         "GameName": {
-            "game_n": "#3RDARM M1A1 ABRAMS",
-            "nametoken": "YEMPBPBTNZ",
+            "display": "#3RDARM M1A1 ABRAMS",
+            "token": "YEMPBPBTNZ",
         },
         "CommandPoints": 225,
         "Divisions": {
@@ -1086,8 +1818,8 @@ usa_unit_edits = {
     "M981_FISTV_US": {
         "availability": 8,
         "GameName": {
-            "game_n": "#RECO3 M981 FISTV",
-            "nametoken": "JKFBZFRBYZ",
+            "display": "#RECO3 M981 FISTV",
+            "token": "JKFBZFRBYZ",
         },
         "TagSet": {
             "add_tags": ['"reco_radar"'],
@@ -1260,8 +1992,8 @@ usa_unit_edits = {
     #US AA
     "MANPAD_Stinger_C_US": {
         "GameName": {
-            "game_n": "STINGER C",
-            "nametoken": "XQYDBWCBAP",
+            "display": "STINGER C",
+            "token": "XQYDBWCBAP",
         },
         "CommandPoints": 45,
         "Divisions": {
@@ -1306,8 +2038,8 @@ usa_unit_edits = {
 
     "MANPAD_Stinger_C_para_US": {
         "GameName": {
-            "game_n": "AB STINGER C",
-            "nametoken": "VVEXCPXVQB",
+            "display": "AB STINGER C",
+            "token": "VVEXCPXVQB",
         },
         "CommandPoints": 45,
         "availability": 7,

@@ -27,6 +27,260 @@ uk_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
     #UK INF
+    "Territorial_CMD_UK": {
+        "CommandPoints": 40,
+        "GameName": {
+            "display": "#LDR TERRIERS LDR.",
+            "token": "QMPRIAZFYF",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "UNITE_Territorial_CMD_UK",
+                "Unite",
+            ],
+        },
+        "strength": 7,
+        "WeaponAssignment": [
+                (0,[1,]),
+                (1,[1,]),
+                (2,[1,]),
+                (3,[1,]),
+                (4,[0,]),
+                (5,[0,]),
+                (6,[0,2,]),
+            ],
+        "TransportedTexture": "UseInGame_Transport_REGINF",
+        # "SortingOrder": 20075,
+        # "UnitAttackValue": 1,
+        # "UnitDefenseValue": 16,
+        "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'infantry',
+                '_leader',
+                'infantry_equip_light',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Infantry",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
+        "availability": 7,
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
+        "max_speed": 26,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "PM_Sterling": 3,
+                },
+            },
+            "Salves": {
+                "PM_Sterling": 12,
+            },
+        },
+        "selector_tactic": "(0, 2)",
+        "selector_tactic_obj": "00_02",
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+    },
+    
+    "Engineers_CMD_UK": {
+        "CommandPoints": 40,
+        "GameName": {
+            "display": "#LDR ASSAULT PIONEERS LDR.",
+            "token": "VZOODKAGWE",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "UNITE_Engineers_CMD_UK",
+                "Unite",
+            ],
+        },
+        "strength": 8,
+        "WeaponAssignment": [
+                (0,[0,]),
+                (1,[0,]),
+                (2,[0,]),
+                (3,[0,]),
+                (4,[0,]),
+                (5,[0,]),
+                (6,[0,]),
+                (7,[0,]),
+            ],
+        "TransportedTexture": "UseInGame_Transport_assault",
+        # "SortingOrder": 20075,
+        # "UnitAttackValue": 1,
+        # "UnitDefenseValue": 16,
+        "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'engineer',
+                '_leader',
+                '_choc',
+                'infantry_equip_light',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_assault",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
+        "availability": 7,
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
+        "max_speed": 26,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "PM_Sterling": 8,
+                },
+            },
+            "Salves": {
+                "PM_Sterling": 12,
+            },
+        },
+        "selector_tactic": "(0, 8)",
+        "selector_tactic_obj": "00_08",
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+    },
+    
+    "Rifles_CMD_UK": {
+        "CommandPoints": 40,
+        "GameName": {
+            "display": "#LDR RIFLES LDR.",
+            "token": "YGMKZKXXEV",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_IFV",
+                "UNITE_Rifles_CMD_UK",
+                "Unite",
+            ],
+        },
+        "TransportedTexture": "UseInGame_Transport_REGINF",
+        # "SortingOrder": 20075,
+        # "UnitAttackValue": 1,
+        # "UnitDefenseValue": 16,
+        "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'infantry',
+                '_leader',
+                '_ifv',
+                'infantry_equip_light',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Infantry",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
+        "availability": 7,
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
+        "max_speed": 26,
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+    },
+    
+    "Airmobile_CMD_UK": {
+        "CommandPoints": 40,
+        "GameName": {
+            "display": "#LDR AIRMOBILE LDR.",
+            "token": "CFLNZATSET",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "UNITE_Airmobile_CMD_UK",
+                "Unite",
+            ],
+        },
+        "TransportedTexture": "UseInGame_Transport_REGINF",
+        # "SortingOrder": 20075,
+        # "UnitAttackValue": 1,
+        # "UnitDefenseValue": 16,
+        "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'infantry',
+                '_leader',
+                'infantry_equip_light',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Infantry",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
+        "availability": 7,
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
+        "max_speed": 26,
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+    },
+    
+    "Airmobile_Mot_CMD_UK": {
+        "CommandPoints": 40,
+        "GameName": {
+            "display": "#LDR MOT. AIRMOBILE LDR.",
+            "token": "DPDYRJPOBS",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "UNITE_Mot_Airmobile_CMD_UK",
+                "Unite",
+            ],
+        },
+        "TransportedTexture": "UseInGame_Transport_REGINF",
+        # "SortingOrder": 20075,
+        # "UnitAttackValue": 1,
+        # "UnitDefenseValue": 16,
+        "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'infantry',
+                '_leader',
+                'infantry_equip_light',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Infantry",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
+        "availability": 7,
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
+        "max_speed": 26,
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+    },
+    
+    "Rover_101FC_UK": {
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'"],
+        },
+    },
+    
     "LandRover_UK": {
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
@@ -42,7 +296,7 @@ uk_unit_edits = {
     "Gun_Group_TA_UK": {
         "CommandPoints": 15,
         "availability": 12,
-        "Strength": 5,
+        "strength": 5,
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
         "WeaponAssignment": [
                 (0,[1,]),
@@ -54,7 +308,7 @@ uk_unit_edits = {
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "quantity": {
-                    "FM_L1A1_SLR": (1, 2, 3), # weapon index, current quanity, new quantity
+                    "FM_L1A1_SLR": 3,
                 },
             },
         },
@@ -63,7 +317,7 @@ uk_unit_edits = {
     "RMP_UK": {
         "CommandPoints": 20,
         "availability": 12,
-        "Strength": 5,
+        "strength": 5,
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
         "WeaponAssignment": [
                 (0,[2,]),
@@ -75,7 +329,7 @@ uk_unit_edits = {
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "quantity": {
-                    "PM_Sterling": (1, 1, 2),
+                    "PM_Sterling": 2,
                 },
             },
         },
@@ -296,10 +550,34 @@ uk_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
     #UK TANK
-    "Rover_101FC_UK": {
-        "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+    "Challenger_1_Mk1_CMD_UK": {
+        "CommandPoints": 205,
+        "GameName": {
+            "display": "#LDR CHALLENGER MK.2 LDR.",
+            "token": "LDRSOVCHAL",
         },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "GroundUnits",
+                "UNITE_Challenger_1_Mk1_CMD_UK",
+                "Unite"
+            ],
+        },
+        "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'Armor_heavy',
+                '_leader',
+                '_smoke_launcher',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
     },
 
     "Saxon_UK": {

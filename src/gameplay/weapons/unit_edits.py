@@ -5,6 +5,7 @@ from src import ndf
 from src.constants.unit_edits import load_unit_edits
 from src.constants.weapons import LIGHT_AT_AMMO
 from src.constants.weapons import ammunitions as ammos
+from src.gameplay.weapons.new_weapons import _modify_weapon
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import find_namespace, is_obj_type, is_valid_turret
 
@@ -162,14 +163,13 @@ def _update_weapon_quantities(weapon_descr: Any, quantity_changes: Dict, weapon_
     weapon_locations = weapon_descr_data['weapon_locations']
     turret_list = weapon_descr.v.by_member("TurretDescriptorList").v
     
-    for weapon_name, quants in quantity_changes.items():
+    for weapon_name, quantity in quantity_changes.items():
         if weapon_name not in weapon_locations:
             continue
             
-        quantity = quants[2]  # Using index 2 for quantity
         for location in weapon_locations[weapon_name]:
             for turret in turret_list:
-                if int(turret.v.by_m("YulBoneOrdinal").v) != location['turret_index']:
+                if int(turret.index) != location['turret_index']:
                     continue
                     
                 mounted_wpns = turret.v.by_m("MountedWeaponDescriptorList")

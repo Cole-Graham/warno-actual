@@ -31,8 +31,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
 
     ("RocketArt_M26_227mm_Cluster", "MLRS", None, False): { # 651
         "Ammunition": {
-            "displayname": "M26 'Steel Rain'",
-            "nametoken": "ULWAVTGKUK",
+            "display": "M26 'Steel Rain'",
+            "token": "ULWAVTGKUK",
             "Arme": {
                 "Index": 3,
                 "Family": "DamageFamily_dpicm",

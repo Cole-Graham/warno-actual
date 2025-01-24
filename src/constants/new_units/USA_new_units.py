@@ -8,10 +8,17 @@ USA_NEW_UNITS = {
         "ShowroomGUID": "d4f8e3a2-b6c1-4d95-8e7a-f2c9d1b3e5a7",
         "CadavreGUID": "2b771f4e-f0e0-464e-bafb-caee6bb82079",
         "NewName": "Rifles_half_CMD2_US",
-        "GameName": "#CMD TACOM",
-        "TagSet": ["AllUnits", "AllowedForMissileRoE", "Commandant", "Crew", "GroundUnits", "Inf_quartier_ok", 
-                   "Infanterie", "Infanterie_CMD", "InfmapCommander", "UNITE_Rifles_half_CMD2_US", "Unite"],
-        "SquadSize": 5,
+        "GameName": {
+            "display": "#CMD TACOM",
+            "token": "ZVQUJZFLND",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits", "AllowedForMissileRoE", "Commandant", "Crew", "GroundUnits", "Inf_quartier_ok", 
+                "Infanterie", "Infanterie_CMD", "InfmapCommander", "UNITE_Rifles_half_CMD2_US", "Unite"
+            ],
+        },
+        "strength": 5,
         # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
         "Dangerousness": 12,
         "WeaponAssignment": [
@@ -37,7 +44,6 @@ USA_NEW_UNITS = {
                 '_leader',
                 'infantry_equip_light',
             ],
-        "NameToken": "ZVQUJZFLND",
         "MenuIconTexture": "Texture_RTS_H_CMD_inf",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Inf",
         "Divisions": {
@@ -63,7 +69,7 @@ USA_NEW_UNITS = {
                 "Transports": ["M1038_Humvee_US", "UH60A_Black_Hawk_US"],
                 },
         },
-        "Availability": 2,
+        "availability": 2,
         "Cards": {
             "default": 2,
         },
@@ -90,10 +96,17 @@ USA_NEW_UNITS = {
         "ShowroomGUID": "234345e1-ef60-4fc4-ba7c-9643521ed1dc",
         "CadavreGUID": "7e6528ba-b0b7-4276-9f62-3c7ac39c4aba",
         "NewName": "MANPAD_Stinger_C_Rifles_US",
-        "GameName": "FIRE TEAM (STINGER)",
-        "TagSet": ["AllUnits", "AllowedForMissileRoE", "Crew", "GroundUnits", "Inf_quartier_ok", 
-                   "Infanterie", "Infanterie_AA", "Infanterie_Spec_Defense", "MANPAD_Stinger_C_Rifles_US", "Unite"],
-        "SquadSize": 6,
+        "GameName": {
+            "display": "FIRE TEAM (STINGER)",
+            "token": "CZWRLXUPXA",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits", "AllowedForMissileRoE", "Crew", "GroundUnits", "Inf_quartier_ok", 
+                "Infanterie", "Infanterie_AA", "Infanterie_Spec_Defense", "MANPAD_Stinger_C_Rifles_US", "Unite"
+            ],
+        },
+        "strength": 6,
         "Stealth": 2.0,
         # "Dangerousness": 12,
         "WeaponAssignment": [
@@ -119,7 +132,6 @@ USA_NEW_UNITS = {
                 'AA',
                 'infantry_equip_heavy',
             ],
-        "NameToken": "CZWRLXUPXA",
         "MenuIconTexture": "Texture_RTS_H_manpad",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Manpad",
         "Divisions": {
@@ -127,7 +139,7 @@ USA_NEW_UNITS = {
                 "Transports": ["UH60A_Black_Hawk_US"],
             },
         },
-        "Availability": 7,
+        "availability": 7,
         "Cards": {
             "default": 2,
         },
@@ -154,7 +166,8 @@ USA_NEW_UNITS = {
         "ShowroomGUID": "b059b7ca-be63-4407-9e15-283899bd0a51",
         "CadavreGUID": "5b05cbe1-282e-41fd-b696-18b3112f733a",
         "NewName": "M1A1HA_Abrams_CMD2_US",
-        "TagSet": [
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Char",
@@ -165,14 +178,15 @@ USA_NEW_UNITS = {
                 "UNITE_M1A1HA_Abrams_CMD2_US",
                 "Unite",
             ],
+        },
         "Factory": "EDefaultFactories/Logistic",
         "CommandPoints": 350,
         "Divisions": {
             "US_3rd_Arm_multi": {
                 "Transports": None,
-                },
+            },
         },
-        "Availability": 1,
+        "availability": 1,
         "Cards": {
             "default": 69,
             "US_3rd_Arm_multi": 2,
@@ -197,7 +211,8 @@ USA_NEW_UNITS = {
         "ShowroomGUID": "l1m2n3o4-p5q6-4r7s-8t9u-0v1w2x3y4z5b",
         "CadavreGUID": "c5697d12-0538-41e3-9087-f6a3c0a3f302",
         "NewName": "M1A1_Abrams_CMD2_US",
-        "TagSet":  [
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Char",
@@ -208,6 +223,7 @@ USA_NEW_UNITS = {
                 "UNITE_M1A1_Abrams_CMD2_US",
                 "Unite",
             ],
+        },
         "Factory": "EDefaultFactories/Logistic",
         "CommandPoints": 325,
         "Divisions": {
@@ -221,7 +237,7 @@ USA_NEW_UNITS = {
                 "Transports": None,
                 },
         },
-        "Availability": 2,
+        "availability": 2,
         "Cards": {
             "default": 1,
         },
@@ -245,15 +261,17 @@ USA_NEW_UNITS = {
         "ShowroomGUID": "822614ec-98c7-4078-a82d-8f1bb675920a",
         "CadavreGUID": "d00475c4-04a1-45b5-8eb5-56c7338b74cd",
         "NewName": "8th_M1A1_Abrams_US",
-        "GameName": "#8THINF M1A1 ABRAMS",
+        "GameName": {
+            "display": "#8THINF M1A1 ABRAMS",
+            "token": "JNEJSZOAGF",
+        },
         "CommandPoints": 240,
-        "NameToken": "JNEJSZOAGF",
         "Divisions": {
             "US_8th_Inf_multi": {
                 "Transports": None,
             },
         },
-        "Availability": 4,
+        "availability": 4,
         "Cards": {
             "default": 3,
         },
@@ -278,7 +296,8 @@ USA_NEW_UNITS = {
         "ShowroomGUID": "976dd926-5c33-4c26-836d-77107a0c4fcb",
         "CadavreGUID": "8f2e58ba-c88f-4e86-82e3-149bad45e7e7",
         "NewName": "M1IP_Abrams_CMD2_US",
-        "TagSet":  [
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Char",
@@ -289,6 +308,7 @@ USA_NEW_UNITS = {
                 "UNITE_M1IP_Abrams_CMD2_US",
                 "Unite",
             ],
+        },
         "Factory": "EDefaultFactories/Logistic",
         "CommandPoints": 295,
         "Divisions": {
@@ -302,7 +322,7 @@ USA_NEW_UNITS = {
                 "Transports": None,
             },
         },
-        "Availability": 2,
+        "availability": 2,
         "Cards": {
             "default": 1,
         },
@@ -326,7 +346,8 @@ USA_NEW_UNITS = {
         "ShowroomGUID": "12f471a0-e473-40f3-b23c-534b44864771",
         "CadavreGUID": "5a57b6f3-4978-499d-9291-4817452df13d",
         "NewName": "M1_Abrams_CMD2_US",
-        "TagSet":  [
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Char",
@@ -337,6 +358,7 @@ USA_NEW_UNITS = {
                 "UNITE_M1_Abrams_CMD2_US",
                 "Unite",
             ],
+        },
         "Factory": "EDefaultFactories/Logistic",
         "CommandPoints": 280,
         "Divisions": {
@@ -347,7 +369,7 @@ USA_NEW_UNITS = {
                 "Transports": None,
                 },
         },
-        "Availability": 2,
+        "availability": 2,
         "Cards": {
             "default": 1,
         },
@@ -371,7 +393,8 @@ USA_NEW_UNITS = {
         "ShowroomGUID": "785b5ffe-97af-4a1f-834f-3d45c249618c",
         "CadavreGUID": "32f23257-7290-45a6-be73-7eccf571a367",
         "NewName": "M60A3_CMD2_US",
-        "TagSet":  [
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Char",
@@ -382,6 +405,7 @@ USA_NEW_UNITS = {
                 "UNITE_M60A3_CMD2_US",
                 "Unite",
             ],
+        },
         "Factory": "EDefaultFactories/Logistic",
         "CommandPoints": 225,
         "Divisions": {
@@ -392,7 +416,7 @@ USA_NEW_UNITS = {
                 "Transports": None,
                 },
         },
-        "Availability": 2,
+        "availability": 2,
         "Cards": {
             "default": 1,
         },
@@ -416,7 +440,8 @@ USA_NEW_UNITS = {
         "ShowroomGUID": "c11f7f2b-2de6-4ccd-b688-0364ca95422c",
         "CadavreGUID": "ff5fa067-210e-4e7f-8352-08e3b5bfed68",
         "NewName": "M60A1_RISE_Passive_CMD2_US",
-        "TagSet":  [
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Char",
@@ -427,6 +452,7 @@ USA_NEW_UNITS = {
                 "M60A1_RISE_Passive_CMD2_US",
                 "Unite",
             ],
+        },
         "Factory": "EDefaultFactories/Logistic",
         "CommandPoints": 220,
         "Divisions": {
@@ -434,7 +460,7 @@ USA_NEW_UNITS = {
                 "Transports": None,
                 },
         },
-        "Availability": 3,
+        "availability": 3,
         "Cards": {
             "default": 1,
         },
@@ -458,7 +484,8 @@ USA_NEW_UNITS = {
         "ShowroomGUID": "4d9c0ca3-0791-4c83-ab22-98ba9a8bd480",
         "CadavreGUID": "66211e93-310a-4356-8eab-f97acfabc06b",
         "NewName": "M551A1_TTS_Sheridan_CMD2_US",
-        "TagSet":  [
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Char",
@@ -469,6 +496,7 @@ USA_NEW_UNITS = {
                 "M551A1_TTS_Sheridan_CMD2_US",
                 "Unite",
             ],
+        },
         "Factory": "EDefaultFactories/Logistic",
         "CommandPoints": 150,
         "Divisions": {
@@ -476,7 +504,7 @@ USA_NEW_UNITS = {
                 "Transports": None,
             },
         },
-        "Availability": 3,
+        "availability": 3,
         "Cards": {
             "default": 1,
         },
@@ -500,7 +528,8 @@ USA_NEW_UNITS = {
         "ShowroomGUID": "n4o5p6q7-r8s9-4t0u-1v2w-3x4y5z6a7b81",
         "CadavreGUID": "a88c4ec3-d343-411e-823b-0e57d3e6e63a",
         "NewName": "M577_CMD2_US",
-        "TagSet": [
+        "TagSet": {
+            "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Commandant",
@@ -511,6 +540,7 @@ USA_NEW_UNITS = {
                 "Vehicule",
                 "Vehicule_CMD",
             ],
+        },
         "Factory": "EDefaultFactories/Logistic",
         "CommandPoints": 145,
         "Divisions": {
@@ -533,7 +563,7 @@ USA_NEW_UNITS = {
                 "Transports": None,
                 },
         },
-        "Availability": 3,
+        "availability": 3,
         "Cards": {
             "default": 2,
         },

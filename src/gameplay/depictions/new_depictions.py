@@ -5,8 +5,7 @@ from typing import Any, Dict
 from src import ndf
 from src.constants.new_units import NEW_UNITS
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import is_obj_type
-from src.utils.ndf_utils import _generate_guid
+from src.utils.ndf_utils import _generate_guid, is_obj_type
 
 logger = setup_logger(__name__)
 
@@ -117,7 +116,12 @@ def create_showroom_depictions(source_path: Any) -> None:
             continue
             
         # Clone donor showroom unit
-        new_unit = donor_unit.copy()
+        try:
+            new_unit = donor_unit.copy()
+        except Exception as e:
+            logger.error(f"Failed to copy donor showroom unit {donor}: {str(e)}")
+            raise
+        
         new_unit.namespace = f"Descriptor_ShowRoomUnit_{unit_name}"
         
         # Update basic properties
@@ -136,8 +140,8 @@ def create_showroom_depictions(source_path: Any) -> None:
                     module.v.by_member("Depiction").v = "$/GFX/Depiction/InfantryDepictionSquadShowroom"
                     
             elif module_type == "TInfantrySquadModuleDescriptor":
-                if "SquadSize" in edits:
-                    module.v.by_member("NbSoldatInGroupeCombat").v = str(edits["SquadSize"])
+                if "strength" in edits:
+                    module.v.by_member("NbSoldatInGroupeCombat").v = str(edits["strength"])
                 module.v.by_member("InfantryMimeticName").v = f"'{unit_name}'"
                 module.v.by_member("WeaponUnitFXKey").v = f"'{unit_name}'"
                 

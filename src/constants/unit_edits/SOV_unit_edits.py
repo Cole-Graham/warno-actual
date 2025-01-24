@@ -97,6 +97,385 @@ sov_unit_edits = {
         },
     },
     #SOV INF
+    "MotRifles_CMD_TTsko_SOV": {
+        "CommandPoints": 40,
+        "GameName": {
+            "display": "#LDRSOV MOTOSTRELKI LDR.",
+            "token": "ZJRMUWLPVH",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_IFV",
+                "UNITE_MotRifles_CMD_TTsko_SOV",
+                "Unite",
+            ],
+        },
+        "strength": 6,
+        "WeaponAssignment": [
+                (0,[1,]),
+                (1,[0,]),
+                (2,[0,]),
+                (3,[0,]),
+                (4,[0,3]),
+                (5,[0,2]),
+            ],
+        "TransportedTexture": "UseInGame_Transport_REGINF",
+        "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'infantry',
+                'leader_sov',
+                '_ifv',
+                'infantry_equip_light',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Infantry",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
+        "Divisions": {
+            "SOV_27_Gds_rifle": {
+                "Transports": ['GAZ_66_SOV', 'BTR_80_SOV', 'BMP_1P_SOV', 'BMP_2_SOV'],
+            },
+        },
+        "availability": 7,
+        "cards": {
+            "default": 1,
+        },
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
+        "max_speed": 26,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_AK_74": 5,
+                },
+            },
+            "Salves": {
+                "RocketInf_RPG22_72_5mm": 6,
+            },
+        },
+        "selector_tactic": "(0, 6)",
+        "selector_tactic_obj": "00_06",
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+    },
+
+    "Engineers_CMD_TTsko_SOV": {
+        "CommandPoints": 40,
+        "GameName": {
+            "display": "#LDRSOV SAPERI LDR.",
+            "token": "QCNBGTPZWL",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_Spec_Attaque",
+                "UNITE_Engineers_CMD_TTsko_SOV",
+                "Unite"
+            ],
+        },
+        "strength": 8,
+        "WeaponAssignment": [
+                (0,[0,]),
+                (1,[0,]),
+                (2,[0,]),
+                (3,[0,]),
+                (4,[0,]),
+                (5,[0,]),
+                (6,[0,]),
+                (7,[0,1,]),
+            ],
+        "TransportedTexture": "UseInGame_Transport_assault",
+        "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'engineer',
+                'leader_sov',
+                '_choc',
+                'infantry_equip_light',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_assault",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
+        "Divisions": {
+            "SOV_27_Gds_rifle": {
+                "Transports": ["GAZ_66_SOV", "MTLB_transp_SOV"],
+            },
+        },
+        "availability": 5,
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.8],
+        "max_speed": 26,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_AK_74": 8,
+                },
+            },
+            "Salves": {
+                "RocketInf_RPG18_64mm": 7,
+            },
+        },
+        "selector_tactic": "(0, 8)",
+        "selector_tactic_obj": "00_08",
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+    },
+    
+    "Engineers_CMD_SOV": {
+        "CommandPoints": 40,
+        "GameName": {
+            "display": "#LDRSOV SAPERI LDR.",
+            "token": "AGYMPGDUXA",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_Spec_Attaque",
+                "UNITE_Engineers_CMD_SOV",
+                "Unite"
+            ],
+        },
+        "strength": 8,
+        "WeaponAssignment": [
+                (0,[0,]),
+                (1,[0,]),
+                (2,[0,]),
+                (3,[0,]),
+                (4,[0,]),
+                (5,[0,]),
+                (6,[0,]),
+                (7,[0,1,]),
+            ],
+        "TransportedTexture": "UseInGame_Transport_assault",
+        "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'engineer',
+                'leader_sov',
+                '_choc',
+                'infantry_equip_light',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_assault",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
+        "Divisions": {
+            "SOV_119IndTkBrig": {
+                "Transports": ["GAZ_66_SOV", "BTR_60_SOV"],
+            },
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_AK_74": 8,
+                },
+            },
+        },
+        "availability": 5,
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
+        "max_speed": 26,
+        "selector_tactic": "(0, 8)",
+        "selector_tactic_obj": "00_08",
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+    },
+    
+    "Spetsnaz_CMD_SOV": {
+        "CommandPoints": 40,
+        "GameName": {
+            "display": "#LDRSOV SPETSNAZ LDR.",
+            "token": "CKLQCEBSOY",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_Spec_Attaque",
+                "UNITE_Spetsnaz_CMD_SOV",
+                "Unite",
+                "noSIGINT",
+            ],
+        },
+        "TransportedTexture": "UseInGame_Transport_REGINF",
+        "IdentifiedTextures": ["Texture_RTS_H_Infantry_sf", "Texture_sf"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'engineer',
+                'leader_sov',
+                '_sf',
+                '_choc',
+                'infantry_equip_light',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Infantry_sf",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
+        "Divisions": {
+            "SOV_119IndTkBrig": {
+                "Transports": ["GAZ_66_SOV", "BTR_60_SOV"],
+            },
+        },
+        "availability": 4,
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.75],
+        "max_speed": 26,
+        "selector_tactic": "(0, 8)",
+        "selector_tactic_obj": "00_08",
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+    },
+
+    "VDV_CMD_SOV": {
+        "CommandPoints": 50,
+        "GameName": {
+            "display": "#LDRSOV DESANTNIKI LDR.",
+            "token": "JSBZIJKKJJ",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_IFV",
+                "UNITE_VDV_CMD_SOV",
+                "Unite",
+            ],
+        },
+        "strength": 6,
+        "WeaponAssignment": [
+                (0,[1,]),
+                (1,[0,]),
+                (2,[0,]),
+                (3,[0,]),
+                (4,[0,3]),
+                (5,[0,2,]),
+            ],
+        "TransportedTexture": "UseInGame_Transport_REGINF",
+        "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'infantry',
+                'leader_sov',
+                '_ifv',
+                '_choc',
+                '_para',
+                'infantry_equip_heavy',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Infantry",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
+        "availability": 5,
+        "cards": {
+            "default": 1,
+        },
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.8],
+        "max_speed": 20,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_AK_74": 5,
+                },
+            },
+            "Salves": {
+                "PM_AKSU_74": 7,
+                "SAW_RPK_74_5_56mm": 10,
+                "MANPAD_igla": 4,
+                "Grenade_SMOKE": 3,
+            },
+        },
+        "selector_tactic": "(0, 6)",
+        "selector_tactic_obj": "00_06",
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+    },
+
+    "Engineers_CMD_VDV_SOV": {
+        "CommandPoints": 50,
+        "GameName": {
+            "display": "#LDRSOV DESANT. SAPERI LDR.",
+            "token": "SWFVKVIZVT",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_Spec_Attaque",
+                "UNITE_Engineers_CMD_TTsko_SOV",
+                "Unite"
+            ],
+        },
+        "strength": 8,
+        "WeaponAssignment": [
+                (0,[0,]),
+                (1,[0,]),
+                (2,[0,]),
+                (3,[0,]),
+                (4,[0,]),
+                (5,[0,]),
+                (6,[0,]),
+                (7,[0,1,]),
+            ],
+        "TransportedTexture": "UseInGame_Transport_assault",
+        "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'engineer',
+                'leader_sov',
+                '_choc',
+                '_para',
+                'infantry_equip_medium',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_assault",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
+        "availability": 5,
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.8],
+        "max_speed": 26,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_AKS_74": 8,
+                },
+            },
+            "Salves": {
+                "FM_AKS_74": 9,
+                "RocketInf_RPG7": 6,
+            },
+        },
+        "selector_tactic": "(0, 8)",
+        "selector_tactic_obj": "00_08",
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+    },
+    
     "Engineers_SOV": {
         "CommandPoints": 40,
         "availability": 8,
@@ -536,7 +915,7 @@ sov_unit_edits = {
     },
 
     "HMGteam_AGS17_TTsko_SOV": {
-        "Strength": 5,
+        "strength": 5,
         "CommandPoints": 35,
         "availability": 9,
         "Divisions": {
@@ -552,7 +931,7 @@ sov_unit_edits = {
     },
 
     "HMGteam_AGS17_VDV_SOV": {
-        "Strength": 5,
+        "strength": 5,
         "CommandPoints": 35,
         "availability": 9,
         "Divisions": {
@@ -568,7 +947,7 @@ sov_unit_edits = {
     },
 
     "ATteam_RCL_SPG9_VDV_SOV": {
-        "Strength": 3,
+        "strength": 3,
         "CommandPoints": 30,
         "availability": 10,
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
@@ -667,8 +1046,8 @@ sov_unit_edits = {
     "LUAZ_967M_Fagot_SOV": {
         "CommandPoints": 55,
         "GameName": {
-            "game_n": "LuAZ-967M FAKTORIYA",
-            "nametoken": "KYODTOGRYC",
+            "display": "LuAZ-967M FAKTORIYA",
+            "token": "KYODTOGRYC",
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -718,6 +1097,39 @@ sov_unit_edits = {
         },
     },
     #SOV ARTILLERY
+    "MTLB_CMD_SOV": {
+        "CommandPoints": 60,
+        "GameName": {
+            "display": "#LDRSOV MT-LBu MASHINA",
+            "token": "PUEZYZBZLF",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "GroundUnits",
+                "UNITE_MTLB_CMD_SOV",
+                "Unite",
+                "Vehicule",
+            ],
+        },
+        "Factory": "EDefaultFactories/Art",
+        "IdentifiedTextures": ["Texture_RTS_H_appui", "Texture_appui"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'leader_sov',
+                '_amphibie',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_appui",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Transport",
+        "cards": {
+            "default": 1,
+        },
+        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+    },
+    
     "Mortier_2B14_82mm_VDV_SOV": {
         "CommandPoints": 35,
         "Divisions": {
@@ -943,6 +1355,43 @@ sov_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
     #SOV TANK/VEHICLE
+    "T80BV_CMD_SOV": {
+        "CommandPoints": 225,
+        "GameName": {
+            "display": "#LDRSOV T-80BVK LDR.",
+            "token": "YWAOJLFAFW",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "GroundUnits",
+                "UNITE_T80BV_CMD_SOV",
+                "Unite",
+            ],
+        },
+        "armor": {
+            "front": 18,
+        },
+        "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'Armor_heavy',
+                'leader_sov',
+                '_smoke_launcher',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
+        "availability": 4,
+        "cards": {
+            "default": 1,
+        },
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+    },
+    
     "MTLB_transp_SOV": {
         "orders": {
             "add_orders": ["sell"],
@@ -971,8 +1420,8 @@ sov_unit_edits = {
     "BMP_1P_SOV": {
         "CommandPoints": 35,
         "GameName": {
-            "game_n": "BMP-1P (FAKTORIYA)",
-            "nametoken": "CVRIKDQELZ",
+            "display": "BMP-1P (FAKTORIYA)",
+            "token": "CVRIKDQELZ",
         },
     },
 
@@ -1001,15 +1450,15 @@ sov_unit_edits = {
     "LUAZ_967M_Fagot_VDV_SOV": {
         "CommandPoints": 35,
         "GameName": {
-            "game_n": "DESANT. LuAZ FAKTORIYA",
-            "nametoken": "SXGTONCUAP",
+            "display": "DESANT. LuAZ FAKTORIYA",
+            "token": "SXGTONCUAP",
         },
         "availability": 10,
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
     },
 
     "BRDM_2_Konkurs_SOV": {
-        "Strength": 8,
+        "strength": 8,
         "CommandPoints": 50,
         "stealth": 1.5,
         "availability": 8,
@@ -1017,7 +1466,7 @@ sov_unit_edits = {
     },
 
     "BRDM_2_Konkurs_M_SOV": {
-        "Strength": 8,
+        "strength": 8,
         "CommandPoints": 65,
         "stealth": 1.5,
         "availability": 8,
@@ -1131,7 +1580,7 @@ sov_unit_edits = {
     },
 
     "BRDM_2_SOV": {
-        "Strength": 8,
+        "strength": 8,
         "CommandPoints": 35,
         "availability": 8,
         "Divisions": {
@@ -1384,7 +1833,7 @@ sov_unit_edits = {
     },
 
     "BRDM_Strela_1_SOV": {
-        "Strength": 8,
+        "strength": 8,
         "CommandPoints": 40,
         "Divisions": {
             "default": {

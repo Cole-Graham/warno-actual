@@ -115,7 +115,7 @@ def _update_existing_units(division_rules: Any, unit: str, edits: Dict) -> None:
         rules_list = map_row.v.by_m("UnitRuleList").v
         
         for rule_obj in rules_list:
-            if not is_obj_type(rule_obj.v, None):
+            if not is_obj_type(rule_obj.v, "TDeckUniteRule"):
                 continue
                 
             # Update FOB availability

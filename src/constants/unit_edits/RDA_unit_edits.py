@@ -17,7 +17,7 @@ rda_unit_edits = {
     },
 
     "BRDM_2_CMD_DDR": {
-        "Strength": 8,
+        "strength": 8,
         "CommandPoints": 145,
         "Divisions": {
             "default": {
@@ -39,6 +39,133 @@ rda_unit_edits = {
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
     },
     #RDA INF
+    "MotRifles_CMD_DDR": {
+        "CommandPoints": 40,
+        "GameName": {
+            "display": "#LDRSOV MOT.-SCHUTZEN LDR.",
+            "token": "LJDWEYDMZI",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_IFV",
+                "UNITE_MotRifles_CMD_DDR",
+                "Unite",
+            ],
+        },
+        "strength": 6,
+        "WeaponAssignment": [
+                (0,[1,]),
+                (1,[0,]),
+                (2,[0,]),
+                (3,[0,]),
+                (4,[0,3]),
+                (5,[0,2]),
+            ],
+        "TransportedTexture": "UseInGame_Transport_REGINF",
+        "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'infantry',
+                'leader_sov',
+                '_ifv',
+                'infantry_equip_light',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Infantry",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
+        "availability": 7,
+        "cards": {
+            "default": 1,
+        },
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
+        "max_speed": 26,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_Mpi_AK_74N": 5,
+                },
+            },
+            "Salves": {
+                "RocketInf_RPG18_64mm": 6,
+            },
+        },
+        "selector_tactic": "(0, 6)",
+        "selector_tactic_obj": "00_06",
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+    },
+
+    "Engineers_CMD_DDR": {
+        "CommandPoints": 50,
+        "GameName": {
+            "display": "#LDRSOV PIONIER LDR.",
+            "token": "KYSSUXXTDG",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_Spec_Attaque",
+                "UNITE_Engineers_CMD_DDR",
+                "Unite"
+            ],
+        },
+        "strength": 8,
+        "WeaponAssignment": [
+                (0,[0,]),
+                (1,[0,]),
+                (2,[0,]),
+                (3,[0,]),
+                (4,[0,]),
+                (5,[0,]),
+                (6,[0,]),
+                (7,[0,1,]),
+            ],
+        "TransportedTexture": "UseInGame_Transport_assault",
+        "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'engineer',
+                'leader_sov',
+                '_choc',
+                '_resolute',
+                'infantry_equip_medium',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_assault",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
+        "availability": 7,
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
+        "max_speed": 26,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_Mpi_AK_74N": 8,
+                },
+            },
+            "Salves": {
+                "FM_Mpi_AK_74N": 9,
+                "RocketInf_RPG7VL": 6,
+            },
+        },
+        "selector_tactic": "(0, 8)",
+        "selector_tactic_obj": "00_08",
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+    },
+    
     "MP_DDR": {
         "CommandPoints": 15,
         "availability": 12,
@@ -60,7 +187,7 @@ rda_unit_edits = {
     },
 
     "HMGteam_AGS17_DDR": {
-        "Strength": 5,
+        "strength": 5,
         "CommandPoints": 35,
         "Divisions": {
             "default": {
@@ -275,6 +402,41 @@ rda_unit_edits = {
         },
     },
     #RDA ARTILLERY
+    "BTR_50_CMD_DDR": {
+        "CommandPoints": 60,
+        "GameName": {
+            "display": "#LDRSOV SPW-50PU(A)",
+            "token": "MXTHDKLGFB",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "GroundUnits",
+                "UNITE_BTR_50_CMD_DDR",
+                "Unite",
+                "Vehicule",
+            ],
+        },
+        "Factory": "EDefaultFactories/Art",
+        "IdentifiedTextures": ["Texture_RTS_H_appui", "Texture_appui"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'leader_sov',
+                '_amphibie',
+                '_resolute',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_appui",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Transport",
+        "availability": 2,
+        "cards": {
+            "default": 1,
+        },
+        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+    },
+    
     "Mortier_PM43_120mm_DDR": {
         "CommandPoints": 40,
         "availability": 5,
@@ -303,6 +465,76 @@ rda_unit_edits = {
         },
     },
     #RDA TANK
+    "T55A_CMD_DDR": {
+        "CommandPoints": 85,
+        "GameName": {
+            "display": "#LDRSOV FUPZ. T-55AK LDR.",
+            "token": "VKLRXNSTQE",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "GroundUnits",
+                "UNITE_T55A_CMD_DDR",
+                "Unite",
+            ],
+        },
+        "IdentifiedTextures": ["Texture_RTS_H_Armor", "Texture_Armor"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'armor',
+                'leader_sov',
+                '_resolute',
+                '_smoke_launcher',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Armor",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
+        "availability": 6,
+        "cards": {
+            "default": 1,
+        },
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+    },
+
+    "T72M_CMD_DDR": {
+        "CommandPoints": 170,
+        "GameName": {
+            "display": "#LDRSOV FUPZ. T-72M LDR.",
+            "token": "XVEZUMJKLL",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "GroundUnits",
+                "UNITE_T72M_CMD_DDR",
+                "Unite",
+            ],
+        },
+        "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'Armor_heavy',
+                'leader_sov',
+                '_resolute',
+                '_smoke_launcher',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
+        "availability": 4,
+        "cards": {
+            "default": 1,
+        },
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+    },
+    
     "MTLB_trans_DDR": {
         "orders": {
             "add_orders": ["sell"],
@@ -353,8 +585,8 @@ rda_unit_edits = {
     "UAZ_469_Fagot_DDR": {
         "CommandPoints": 55,
         "GameName": {
-            "game_n": "UAZ-469 FAKTORIYA",
-            "nametoken": "KBMDYNGBOG",
+            "display": "UAZ-469 FAKTORIYA",
+            "token": "KBMDYNGBOG",
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -364,7 +596,7 @@ rda_unit_edits = {
     },
 
     "BRDM_Konkurs_DDR": {
-        "Strength": 8,
+        "strength": 8,
         "CommandPoints": 50,
         "stealth": 1.5,
         "availability": 8,
@@ -403,7 +635,7 @@ rda_unit_edits = {
     },
 
     "BRDM_2_DDR": {
-        "Strength": 8,
+        "strength": 8,
         "CommandPoints": 35,
         "availability": 8,
         "Divisions": {
@@ -520,7 +752,7 @@ rda_unit_edits = {
     },
 
     "BRDM_Strela_1_DDR": {
-        "Strength": 8,
+        "strength": 8,
         "CommandPoints": 40,
         "Divisions": {
             "default": {
