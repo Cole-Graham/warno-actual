@@ -1,5 +1,6 @@
 from typing import Any, Dict, Optional
 
+from src.constants.unit_edits.SUPPLY_unit_edits import supply_unit_edits
 from src.constants.unit_edits import load_unit_edits
 from src.utils.logging_utils import setup_logger
 
@@ -67,3 +68,17 @@ def edit_division_units(source: Any) -> None:
             if "Divisions" in edits:
                 _handle_division_changes(div_descr, unit, div_name, edits)
                 _update_card_count(div_descr.v.by_member("PackList").v, unit, div_name, edits) 
+                
+def supply_divisions(source: Any) -> None:
+    """Apply supply unit edits to DivisionRules.ndf"""
+    logger.info("Applying supply unit edits to divisions")
+    
+    for unit, edits in supply_unit_edits.items():
+        for div_descr in source:
+            div_name = strip_division_name(div_descr.namespace)
+            if div_name is None:
+                continue
+            
+            if "Divisions" in edits:
+                _handle_division_changes(div_descr, unit, div_name, edits)
+                _update_card_count(div_descr.v.by_member("PackList").v, unit, div_name, edits)

@@ -47,10 +47,12 @@ from .divisions import (
     edit_division_matrices,
     edit_division_units,
     update_deck_serializer,
+    supply_divisions,
 )
 from .division_rules import (
     edit_mg_teams,
     unit_edits_divisionrules,
+    supply_divisionrules,
 )
 from .effects import (
     edit_capacite_list,

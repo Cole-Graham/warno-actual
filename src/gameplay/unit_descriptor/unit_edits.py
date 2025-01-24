@@ -90,7 +90,7 @@ def modify_module(
             "TVisibilityModuleDescriptor": _handle_visibility,
             "TBaseDamageModuleDescriptor": _handle_base_damage,
             "TDamageModuleDescriptor": _handle_damage,
-            "TWeaponAssignmentModuleDescriptor": _handle_weapon_assignment,
+            "TInfantrySquadWeaponAssignmentModuleDescriptor": _handle_weapon_assignment,
             "TScannerConfigurationDescriptor": _handle_scanner,
             "TProductionModuleDescriptor": _handle_production,
             "TTacticalLabelModuleDescriptor": _handle_tactical_label,

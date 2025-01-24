@@ -1,5 +1,6 @@
 from typing import Any, Dict, List
 
+from src.constants.unit_edits.SUPPLY_unit_edits import supply_unit_edits
 from src.constants.unit_edits import load_unit_edits
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import is_obj_type
@@ -154,3 +155,15 @@ def _update_transports(rule: Any, unit: str, div_name: str, edits: Dict) -> None
         logger.debug(f"Setting {unit} transports to {transports}")
         rule.by_m("AvailableTransportList").v = transport_str
 
+def supply_divisionrules(source_path: Any) -> None:
+    """Apply supply unit edits to DivisionRules.ndf"""
+
+    logger.info("Applying supply unit edits to divisions")
+    
+    division_rules = source_path.by_n("DivisionRules").v.by_member("DivisionRules").v
+    
+    for unit, edits in supply_unit_edits.items():
+        if "Divisions" in edits:
+            _handle_division_changes(division_rules, unit, edits)
+            
+        _update_existing_units(division_rules, unit, edits)

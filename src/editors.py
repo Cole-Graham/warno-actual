@@ -5,6 +5,8 @@ from typing import Callable, Dict, List
 # Import all gameplay editors
 from src.gameplay import (
     unit_edits_divisionrules, 
+    supply_divisionrules,
+    supply_divisions,
     edit_mg_teams,
     apply_default_salves,
     ui_gameplay_textscripts,
@@ -177,10 +179,12 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/Generated/Gameplay/Decks/Divisions.ndf": [
             add_to_divisions,
             edit_division_units,
+            supply_divisions,
         ],
         "GameData/Generated/Gameplay/Decks/DivisionRules.ndf": [
             add_division_rules,
             unit_edits_divisionrules,
+            supply_divisionrules,
         ],
         "GameData/Generated/Gameplay/Decks/DivisionPacks.ndf": [
             create_division_packs,

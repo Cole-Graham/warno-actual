@@ -8,7 +8,7 @@ from .new_unit_divisions import (
     update_deck_serializer,
     create_division_packs,
 )
-from .unit_edits import edit_division_units
+from .unit_edits import edit_division_units, supply_divisions
 
 __all__ = [
     'add_division_rules',
@@ -18,4 +18,5 @@ __all__ = [
     'edit_division_units',
     'update_deck_serializer',
     'create_division_packs',
+    'supply_divisions',
 ] 
