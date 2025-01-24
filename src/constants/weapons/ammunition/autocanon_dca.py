@@ -56,5 +56,27 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+
+    ("DCA_2_canon_Jod_SP_23mm", "DCA", None, False): { # ???
+        "Ammunition": {
+            "parent_membr": {
+                "PorteeMaximaleGRU": 1225,
+                "PorteeMaximaleTBAGRU": 2450,
+                "PorteeMaximaleHAGRU": 1925,
+                "TempsDeVisee": 1.25,
+            },
+        },
+    },
+
+    ("DCA_2_canon_Jod_towed_23mm", "DCA", None, False): { # ???
+        "Ammunition": {
+            "parent_membr": {
+                "PorteeMaximaleGRU": 1225,
+                "PorteeMaximaleTBAGRU": 2450,
+                "PorteeMaximaleHAGRU": 1925,
+                "TempsDeVisee": 1.25,
+            },
+        },
+    },
 }
 # fmt: on

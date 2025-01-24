@@ -283,13 +283,28 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 2450,
                 "PorteeMaximaleHAGRU": 1750,
-                "TempsEntreDeuxSalves": 7.0,
+                "TempsEntreDeuxSalves": 14.0,
                 "TempsDeVisee": 1.2,
             }
         },
         "BaseSupplyCost": 25,
         "WeaponDescriptor": {
             "SalvoLengths": [1],
+        },
+    },
+
+    ("MANPAD_Strela2M_x2", "MANPAD", None, False): { # 171
+        "Ammunition": {
+            "parent_membr": {
+                "PorteeMaximaleTBAGRU": 2450,
+                "PorteeMaximaleHAGRU": 1750,
+                "TempsEntreDeuxSalves": 7.0,
+                "TempsDeVisee": 1.2,
+            }
+        },
+        "BaseSupplyCost": 25,
+        "WeaponDescriptor": {
+            "SalvoLengths": [2],
         },
     },
     
