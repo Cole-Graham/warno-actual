@@ -1,4 +1,4 @@
-"""SEAD missile definitions."""
+"""Missile edits"""
 
 from typing import Dict, List, Optional, Tuple, Union
 
@@ -28,6 +28,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "MissileDescriptor": {
             "MaxSpeedGRU": 4240,
             "MaxAccelerationGRU": 2474,
+            "AutoGyr": 1.57079633
         },
     },
     
@@ -52,6 +53,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "MissileDescriptor": {
             "MaxSpeedGRU": 4947,
             "MaxAccelerationGRU": 2827,
+            "AutoGyr": 1.57079633,
         },
     },
     
@@ -79,6 +81,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "MissileDescriptor": {
             "MaxSpeedGRU": 3534,
             "MaxAccelerationGRU": 2297,
+            "AutoGyr": 1.57079633,
         },
     },
 
@@ -102,6 +105,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "MissileDescriptor": {
             "MaxSpeedGRU": 3180,
             "MaxAccelerationGRU": 1767,
+            "AutoGyr": 1.57079633,
         },
     },
 
@@ -125,6 +129,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "MissileDescriptor": {
             "MaxSpeedGRU": 3534,
             "MaxAccelerationGRU": 2120,
+            "AutoGyr": 1.57079633,
         },
     },
     
@@ -149,6 +154,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "MissileDescriptor": {
             "MaxSpeedGRU": 4947,
             "MaxAccelerationGRU": 2827,
+            "AutoGyr": 1.57079633,
         },
     },
 
@@ -169,6 +175,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "MissileDescriptor": {
             "MaxSpeedGRU": 3534,
             "MaxAccelerationGRU": 2297,
+            "AutoGyr": 1.57079633
         },
     },
 }

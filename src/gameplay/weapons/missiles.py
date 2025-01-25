@@ -312,5 +312,10 @@ def edit_missile_speed(source: Any, game_db: Dict[str, Any]) -> None:
                     max_accel = data["MissileDescriptor"]["MaxAccelerationGRU"]
                     default_cfg.v.by_m("MaxAccelerationGRU").v = str(max_accel)
                     logger.debug(f"Changed {missile_decr.namespace} max acceleration to {max_accel}")
+                    
+                if "AutoGyr" in data["MissileDescriptor"]:
+                    auto_gyr = data["MissileDescriptor"]["AutoGyr"]
+                    uncontrollable_cfg.v.by_m("AutoGyr").v = str(auto_gyr)
+                    logger.debug(f"Changed {missile_decr.namespace} auto gyr to {auto_gyr} (90 degrees)")
                 
             break 

@@ -143,8 +143,8 @@ usa_unit_edits = {
     "Rifles_CMD_US": {
         "CommandPoints": 40,
         "GameName": {
+            "token": "SVWNZUYPNE",
             "display": "#LDR MECH. RIFLES LDR.",
-            "token": "CPCIJQLHML",
         },
         "TagSet": {
             "overwrite_all": [
@@ -2339,6 +2339,15 @@ usa_unit_edits = {
                 "EVisionUnitType/AntiRadar": 1850.0,
             },
         },
+        "WeaponDescriptor": {
+            "turrets": {
+                1: {
+                    "AngleRotationMax": 2.094395,
+                    "AngleRotationMaxPitch": 1.570796,
+                    "AngleRotationMinPitch": -1.570796,
+                },
+            },
+        },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.49],
     },
 
@@ -2421,6 +2430,15 @@ usa_unit_edits = {
     "F16E_SEAD_US": {
         "CommandPoints": 215,
         "availability": 3,
+        "WeaponDescriptor": {
+            "turrets": {
+                2: {
+                    "AngleRotationMax": 2.094395,
+                    "AngleRotationMaxPitch": 1.570796,
+                    "AngleRotationMinPitch": -1.570796,
+                },
+            },
+        },
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
     },
 

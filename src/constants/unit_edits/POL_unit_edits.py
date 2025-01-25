@@ -746,6 +746,15 @@ pol_unit_edits = {
 
     "Su_22_SEAD_POL": {
         "CommandPoints": 195,
+        "WeaponDescriptor": {
+            "turrets": {
+                2: {
+                    "AngleRotationMax": 2.094395,
+                    "AngleRotationMaxPitch": 1.570796,
+                    "AngleRotationMinPitch": -1.570796,
+                },
+            },
+        },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
     },
 

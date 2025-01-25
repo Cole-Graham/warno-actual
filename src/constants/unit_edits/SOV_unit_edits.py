@@ -2080,19 +2080,37 @@ sov_unit_edits = {
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
     },
     
-    "Su_24MP_SOV": {
+    "Su_24MP_SOV": { # SEAD
         "CommandPoints": 270,
+        "WeaponDescriptor": {
+            "turrets": {
+                2: {
+                    "AngleRotationMax": 2.094395,
+                    "AngleRotationMaxPitch": 1.570796,
+                    "AngleRotationMinPitch": -1.570796,
+                },
+            },
+        },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
     },
 
-    "Su_24MP_SEAD2_SOV": {
+    "Su_24MP_SEAD2_SOV": { # SEAD2
         "CommandPoints": 300,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "availability": 2,
+        "availability": 2,       
+        "WeaponDescriptor": {
+            "turrets": {
+                2: {
+                    "AngleRotationMax": 2.094395,
+                    "AngleRotationMaxPitch": 1.570796,
+                    "AngleRotationMinPitch": -1.570796,
+                },
+            },
+        },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
     },
     

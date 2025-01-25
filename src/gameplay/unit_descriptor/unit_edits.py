@@ -171,9 +171,17 @@ def _handle_scanner(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
         descr_row.v.by_m("OpticalStrength").v = str(edits["optics"]["OpticalStrength"])
     
     if "OpticalStrengthAltitude" in edits["optics"]:
-        descr_row.v.by_m("OpticalStrengthAltitude").v = str(
-            edits["optics"]["OpticalStrengthAltitude"]
-        )
+        # descr_row.v.by_m("OpticalStrengthAltitude").v = str(
+        #     edits["optics"]["OpticalStrengthAltitude"]
+        # )
+        if "SpecialtiesList" in edits and "add_specs" in edits["SpecialtiesList"]:
+            for spec in edits["SpecialtiesList"]["add_specs"]:
+                if spec == "'verygood_airoptics'":
+                    descr_row.v.by_m("OpticalStrengthAltitude").v = "5000.0"
+                    descr_row.v.by_m("SpecializedDetectionsGRU").v.by_k("EVisionUnitType/AlwaysInHighAltitude").v = "9275.0"
+                elif spec == "'good_airoptics'":
+                    descr_row.v.by_m("OpticalStrengthAltitude").v = "5000.0"
+                    descr_row.v.by_m("SpecializedDetectionsGRU").v.by_k("EVisionUnitType/AlwaysInHighAltitude").v = "7350.0"
     
     if "SpecializedOpticalStrengths" in edits["optics"]:
         for key, value in edits["optics"]["SpecializedOpticalStrengths"].items():

@@ -32,15 +32,30 @@ def edit_terrains(source_path) -> None:
     
     # Edit ForetLegere properties
     forest_light = source_path.by_n("ForetLegere").v
-    forest_light.by_m("DissimulationModifierGroundAir").v = "20"
-    forest_light.by_m("DissimulationModifierGroundGround").v = "23"
-    logger.info("Updated ForetLegere dissimulation modifiers")
+    forest_light.by_m("DissimulationModifierGroundAir").v = "16"
+    forest_light.by_m("DissimulationModifierGroundGround").v = "10"
+    logger.info("Updated ForetLegere dissimulation modifiers")   
+    forest_light.by_m("SpeedModifierInfantry").v = "1.0"
+    logger.info("Updated ForetLegere speed modifier")
+    forest_light.by_m("ConcealmentBonus").v = "3.25"
+    logger.info("Updated ForetLegere concealment bonus")
+    
+    # Edit PetitBatiment properties
+    small_building = source_path.by_n("PetitBatiment").v
+    small_building.by_m("ConcealmentBonus").v = "4.25"
+    logger.info("Updated PetitBatiment concealment bonus")
+    
+    # Edit Batiment properties
+    building = source_path.by_n("Batiment").v
+    building.by_m("ConcealmentBonus").v = "4.25"
+    logger.info("Updated Batiment concealment bonus")
     
     # Edit Ruin properties
     ruin = source_path.by_n("Ruin").v
     ruin.by_m("DissimulationModifierGroundAir").v = "48"
+    logger.info("Updated Ruin dissimulation modifier")
     ruin.by_m("SpeedModifierInfantry").v = "0.7"
-    logger.info("Updated Ruin modifiers")
+    logger.info("Updated Ruin speed modifier")
     
     # Add infantry WA resistance to all terrains
     for terrain_obj in source_path:
