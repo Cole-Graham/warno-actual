@@ -28,13 +28,13 @@ def edit_division_emblems(source_path) -> None:
         logger.info(f"Changed {division} texture to {filename.split('/')[-1]}")
         
     for emblem_namespace, data in DIVISION_EMBLEMS.items():
-        dir = data["texture_dir"]
+        _dir = data["texture_dir"]
         texture = data["texture"]
         namespace_prefix = "Texture_Division_Emblem_"
         new_entry = (
             f'{namespace_prefix}{emblem_namespace} is TUIResourceTexture_Common'
             '('
-            f'  FileName = "GameData:{dir}/{texture}"'
+            f'  FileName = "GameData:{_dir}/{texture}"'
             ')'
         )
         

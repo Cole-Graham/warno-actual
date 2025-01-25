@@ -42,22 +42,21 @@ def vanilla_renames_weapondescriptor(source_path: Any, ammo_db: Dict[str, Any], 
         for descr_namespace, weapon_descr_data in weapon_db.items():
             for weapon_name, entries in weapon_descr_data["weapon_locations"].items():
                 # try:
-                    for entry in entries:
+                for entry in entries:
+            
+                    if weapon_name in ammo_db["renames_old_new"]:
+                        new_name = ammo_db["renames_old_new"][weapon_name]
+                        turret_index = entry["turret_index"]
                 
-                        logger.debug(f"Checking salvo weapon {weapon_name}")
-                        if weapon_name in ammo_db["renames_old_new"]:
-                            new_name = ammo_db["renames_old_new"][weapon_name]
-                            turret_index = entry["turret_index"]
+                        weapon_descr = source_path.by_namespace(descr_namespace)
+                        if weapon_descr:
+                            turret = weapon_descr.v.by_m("TurretDescriptorList").v[turret_index]
+                            weapon = turret.v.by_m("MountedWeaponDescriptorList").v[entry["mounted_index"]]
+                            weapon.v.by_m("Ammunition").v = f"$/GFX/Weapon/Ammo_{new_name}"
+                            logger.info(f"Renaming salvo weapon {weapon_name} to {new_name} on turret {turret_index}")
                     
-                            weapon_descr = source_path.by_namespace(descr_namespace)
-                            if weapon_descr:
-                                turret = weapon_descr.v.by_m("TurretDescriptorList").v[turret_index]
-                                weapon = turret.v.by_m("MountedWeaponDescriptorList").v[entry["mounted_index"]]
-                                weapon.v.by_m("Ammunition").v = f"$/GFX/Weapon/Ammo_{new_name}"
-                                logger.info(f"Renaming salvo weapon {weapon_name} to {new_name} on turret {turret_index}")
-                        
-                        else:
-                            logger.debug(f"No renaming needed for {weapon_name}")
+                    else:
+                        logger.debug(f"No renaming needed for {weapon_name}")
                 
                 # except Exception as e:
                 #     logger.error(f"Error renaming weapon {weapon_name}: {e}")
