@@ -5,17 +5,6 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
 
-DIVISION_EMBLEMS = {
-    "3rd_arm_small": {
-        "texture_dir": r"/Assets/2D/Interface/UseOutGame/Division/Emblem",
-        "texture": "3rd_arm_small.png",
-    },
-    "8th_inf_small": {
-        "texture_dir": r"/Assets/2D/Interface/UseOutGame/Division/Emblem",
-        "texture": "8th_inf_small.png",
-    },
-} 
-
 def edit_division_emblems(source_path) -> None:
     """Edit division emblems in DivisionTextures.ndf."""
     logger.info("Modifying/Adding division emblem textures in DivisionTextures.ndf")
@@ -28,13 +17,13 @@ def edit_division_emblems(source_path) -> None:
         logger.info(f"Changed {division} texture to {filename.split('/')[-1]}")
         
     for emblem_namespace, data in DIVISION_EMBLEMS.items():
-        dir = data["texture_dir"]
+        dir_ = data["texture_dir"]
         texture = data["texture"]
         namespace_prefix = "Texture_Division_Emblem_"
         new_entry = (
             f'{namespace_prefix}{emblem_namespace} is TUIResourceTexture_Common'
             '('
-            f'  FileName = "GameData:{dir}/{texture}"'
+            f'  FileName = "GameData:{dir_}/{texture}"'
             ')'
         )
         
