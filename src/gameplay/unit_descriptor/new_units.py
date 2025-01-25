@@ -218,7 +218,7 @@ def _handle_unit_ui(descr_row: Any, edits: Dict[str, Any]) -> None:
         edited_list = ndf.convert(str(edits["SpecialitiesList"]))
         descr_row.v.by_member("SpecialtiesList").v = edited_list
     if "GameName" in edits and "token" in edits["GameName"]:
-        descr_row.v.by_member("NameToken").v = f"'{edits["GameName"]["token"]}'"
+        descr_row.v.by_member("NameToken").v = f'\"{edits["GameName"]["token"]}\"'
     if "UpgradeFromUnit" in edits and descr_row.v.by_member("UpgradeFromUnit", False) is not None:
         descr_row.v.by_member("UpgradeFromUnit").v = f"Descriptor_Unit_{edits['UpgradeFromUnit']}"
     if "MenuIconTexture" in edits:
