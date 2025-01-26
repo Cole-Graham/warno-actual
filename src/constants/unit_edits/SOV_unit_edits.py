@@ -139,14 +139,14 @@ sov_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "Divisions": {
+            "default": {
+                "cards": 1,
+            },
             "SOV_27_Gds_rifle": {
                 "Transports": ['GAZ_66_SOV', 'BTR_80_SOV', 'BMP_1P_SOV', 'BMP_2_SOV'],
             },
         },
         "availability": 7,
-        "cards": {
-            "default": 1,
-        },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
         "max_speed": 26,
         "WeaponDescriptor": {
@@ -388,8 +388,10 @@ sov_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "availability": 5,
-        "cards": {
-            "default": 1,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.8],
         "max_speed": 20,
@@ -1124,8 +1126,10 @@ sov_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_appui",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Transport",
-        "cards": {
-            "default": 1,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
@@ -1386,8 +1390,10 @@ sov_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
         "availability": 4,
-        "cards": {
-            "default": 1,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
     },
@@ -1552,10 +1558,6 @@ sov_unit_edits = {
 
     "BRM_1_SOV": {
         "CommandPoints": 60,
-        "cards": {
-            "default": 2,
-            "SOV_6IndMSBrig": 1,
-        },
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1742,7 +1744,7 @@ sov_unit_edits = {
 
     "DCA_ZU_23_2_TTsko_SOV": {
         "CommandPoints": 20,
-        "category": "Logistic",
+        "Factory": "EDefaultFactories/Logistic",
         "Divisions": {
             "add": ["SOV_119IndTkBrig"],
             "is_transported": True,
@@ -1764,7 +1766,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "category": "Logistic",
+        "Factory": "EDefaultFactories/Logistic",
         "availability": 12,
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
         "max_speed": 4,
@@ -1846,7 +1848,7 @@ sov_unit_edits = {
 
     "Tunguska_2K22_SOV": {
         "optics": {
-            "OpticalStrengthAltitude": 285,
+            "OpticalStrengthAltitude": 300,
         },
         "CommandPoints": 135,
         "Divisions": {
@@ -1866,7 +1868,7 @@ sov_unit_edits = {
 
     "Tor_SOV": {
         "optics": {
-            "OpticalStrengthAltitude": 285,
+            "OpticalStrengthAltitude": 300,
         },
         "CommandPoints": 150,
         "Divisions": {
@@ -1883,7 +1885,7 @@ sov_unit_edits = {
     
     "MTLB_Strela10_SOV": {
         "optics": {
-            "OpticalStrengthAltitude": 225,
+            "OpticalStrengthAltitude": 220,
         },
         "CommandPoints": 65,
         "Divisions": {
@@ -1900,7 +1902,7 @@ sov_unit_edits = {
 
     "MTLB_Strela10M3_SOV": {
         "optics": {
-            "OpticalStrengthAltitude": 225,
+            "OpticalStrengthAltitude": 220,
         },
         "CommandPoints": 100,
         "Divisions": {
@@ -1917,7 +1919,7 @@ sov_unit_edits = {
 
     "2K12_KUB_SOV": {
         "optics": {
-            "OpticalStrengthAltitude": 285,
+            "OpticalStrengthAltitude": 300,
         },
         "CommandPoints": 90,
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],

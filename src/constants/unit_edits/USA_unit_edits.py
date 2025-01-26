@@ -127,7 +127,7 @@ usa_unit_edits = {
             "equipmentchanges": {
                 "quantity": {
                     "FM_M16": 2,
-                    "Commando_733": 3,
+                    "Commando_733": 4,
                 },
             },
             "Salves": {
@@ -174,8 +174,10 @@ usa_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "availability": 7,
-        "cards": {
-            "default": 1,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
         "max_speed": 26,
@@ -393,8 +395,10 @@ usa_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "availability": 5,
-        "cards": {
-            "default": 1,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.8],
         "max_speed": 26,
@@ -1335,8 +1339,10 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_appui",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Transport",
-        "cards": {
-            "default": 1,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
@@ -1446,8 +1452,10 @@ usa_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
         "availability": 2,
-        "cards": {
-            "default": 1,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
         },
         "XPMultiplier": [0.0, 0.0, 0.0, 1.0],
     },
@@ -1483,8 +1491,10 @@ usa_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
         "availability": 3,
-        "cards": {
-            "default": 1,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
     },
@@ -2075,7 +2085,7 @@ usa_unit_edits = {
 
     "DCA_M167_Vulcan_20mm_US": {
         "CommandPoints": 25,
-        "category": "Logistic",
+        "Factory": "EDefaultFactories/Logistic",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -2088,7 +2098,7 @@ usa_unit_edits = {
     
     "DCA_M167A2_Vulcan_20mm_US": {
         "CommandPoints": 25,
-        "category": "Logistic",
+        "Factory": "EDefaultFactories/Logistic",
         "Divisions": {
             "add": ["US_3rd_Arm", "US_8th_Inf"],
             "is_transported": True,
@@ -2111,7 +2121,7 @@ usa_unit_edits = {
 
     "M48_Chaparral_MIM72F_US": {
         "optics": {
-            "OpticalStrengthAltitude": 225,
+            "OpticalStrengthAltitude": 220,
         },
         "CommandPoints": 130,
         "availability": 3,
@@ -2124,7 +2134,7 @@ usa_unit_edits = {
     "DCA_I_Hawk_US": {
         "CommandPoints": 90,
         "optics": {
-            "OpticalStrengthAltitude": 285,
+            "OpticalStrengthAltitude": 300,
         },
         "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
         "SpecialtiesList": {
@@ -2450,10 +2460,6 @@ usa_unit_edits = {
 
     "F16E_AA_US": {
         "CommandPoints": 200,
-        "cards": {
-            "default": 1,
-            "US_8th_Inf": 2,
-        },
         "Divisions": {
             "default": {
                 "cards": 1,

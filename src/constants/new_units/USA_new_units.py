@@ -47,6 +47,9 @@ USA_NEW_UNITS = {
         "MenuIconTexture": "Texture_RTS_H_CMD_inf",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Inf",
         "Divisions": {
+            "default": {
+                "cards": 2,
+            },
             "US_101st_Airmobile_multi": {
                 "Transports": ["M1038_Humvee_US", "UH60A_Black_Hawk_US"],
                 },
@@ -70,9 +73,6 @@ USA_NEW_UNITS = {
                 },
         },
         "availability": 2,
-        "Cards": {
-            "default": 2,
-        },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
         "max_speed": 26,
         "Orders": ['Stop', 'Move', 'FollowFormation', 'SmartMove', 'Attack', 'SmartMoveAndAttack', 'MoveAndAttack', 
@@ -135,14 +135,14 @@ USA_NEW_UNITS = {
         "MenuIconTexture": "Texture_RTS_H_manpad",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Manpad",
         "Divisions": {
+            "default": {
+                "cards": 2,
+            },
             "US_82nd_Airborne_multi": {
                 "Transports": ["UH60A_Black_Hawk_US"],
             },
         },
         "availability": 7,
-        "Cards": {
-            "default": 2,
-        },
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
         "max_speed": 20,
         "UpgradeFromUnit": "MANPAD_Stinger_C_para_US",
@@ -187,9 +187,13 @@ USA_NEW_UNITS = {
             },
         },
         "availability": 1,
-        "Cards": {
-            "default": 69,
-            "US_3rd_Arm_multi": 2,
+        "Divisions": {
+            "default": {
+                "cards": 69,
+            },
+            "US_3rd_Arm_multi": {
+                "cards": 2,
+            },
         },
         "XPMultiplier": [0.0, 0.0, 0.0, 1.0],
         "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack', 
@@ -238,8 +242,10 @@ USA_NEW_UNITS = {
                 },
         },
         "availability": 2,
-        "Cards": {
-            "default": 1,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
         "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack', 
@@ -267,14 +273,14 @@ USA_NEW_UNITS = {
         },
         "CommandPoints": 240,
         "Divisions": {
+            "default": {
+                "cards": 3,
+            },
             "US_8th_Inf_multi": {
                 "Transports": None,
             },
         },
         "availability": 4,
-        "Cards": {
-            "default": 3,
-        },
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
         "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack', 
                    'MoveAndAttack', 'Spread', 'Reverse', 'Shoot', 'ShootOnPosition', 
@@ -312,6 +318,9 @@ USA_NEW_UNITS = {
         "Factory": "EDefaultFactories/Logistic",
         "CommandPoints": 295,
         "Divisions": {
+            "default": {
+                "cards": 1,
+            },
             "US_24th_Inf_multi": {
                 "Transports": None,
             },
@@ -323,9 +332,6 @@ USA_NEW_UNITS = {
             },
         },
         "availability": 2,
-        "Cards": {
-            "default": 1,
-        },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
         "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack', 
                    'MoveAndAttack', 'Spread', 'Reverse', 'Shoot', 'ShootOnPosition', 
@@ -362,6 +368,9 @@ USA_NEW_UNITS = {
         "Factory": "EDefaultFactories/Logistic",
         "CommandPoints": 280,
         "Divisions": {
+            "default": {
+                "cards": 1,
+            },
             "US_8th_Inf_multi": {
                 "Transports": None,
                 },
@@ -370,9 +379,6 @@ USA_NEW_UNITS = {
                 },
         },
         "availability": 2,
-        "Cards": {
-            "default": 1,
-        },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
         "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack', 
                    'MoveAndAttack', 'Spread', 'Reverse', 'Shoot', 'ShootOnPosition', 
@@ -409,6 +415,9 @@ USA_NEW_UNITS = {
         "Factory": "EDefaultFactories/Logistic",
         "CommandPoints": 225,
         "Divisions": {
+            "default": {
+                "cards": 1,
+            },
             "US_8th_Inf_multi": {
                 "Transports": None,
                 },
@@ -417,9 +426,6 @@ USA_NEW_UNITS = {
                 },
         },
         "availability": 2,
-        "Cards": {
-            "default": 1,
-        },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
         "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack', 
                    'MoveAndAttack', 'Spread', 'Reverse', 'Shoot', 'ShootOnPosition', 
@@ -456,14 +462,14 @@ USA_NEW_UNITS = {
         "Factory": "EDefaultFactories/Logistic",
         "CommandPoints": 220,
         "Divisions": {
+            "default": {
+                "cards": 1,
+            },
             "US_35th_Inf_multi": {
                 "Transports": None,
                 },
         },
         "availability": 3,
-        "Cards": {
-            "default": 1,
-        },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
         "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack', 
                    'MoveAndAttack', 'Spread', 'Reverse', 'Shoot', 'ShootOnPosition', 
@@ -500,14 +506,14 @@ USA_NEW_UNITS = {
         "Factory": "EDefaultFactories/Logistic",
         "CommandPoints": 150,
         "Divisions": {
+            "default": {
+                "cards": 1,
+            },
             "US_82nd_Airborne_multi": {
                 "Transports": None,
             },
         },
         "availability": 3,
-        "Cards": {
-            "default": 1,
-        },
         "XPMultiplier": [0.0, 0.0, 0.0, 1.0],
         "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack', 
                    'MoveAndAttack', 'Spread', 'Reverse', 'Shoot', 'ShootOnPosition', 
@@ -544,29 +550,29 @@ USA_NEW_UNITS = {
         "Factory": "EDefaultFactories/Logistic",
         "CommandPoints": 145,
         "Divisions": {
+            "default": {
+                "cards": 2,
+            },
             "US_11ACR_multi": {
                 "Transports": None,
-                },
+            },
             "US_8th_Inf_multi": {
                 "Transports": None,
-                },
+            },
             "US_24th_Inf_multi": {
                 "Transports": None,
-                },
+            },
             "US_35th_Inf_multi": {
                 "Transports": None,
-                },
+            },
             "US_3rd_Arm_multi": {
                 "Transports": None,
-                },
+            },
             "NATO_Garnison_Berlin_multi": {
                 "Transports": None,
-                },
+            },
         },
         "availability": 3,
-        "Cards": {
-            "default": 2,
-        },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
         "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Spread', 'Reverse', 
                    'AskForSupply', 'AIDefend', 'AIAttack', 'AIStop'],

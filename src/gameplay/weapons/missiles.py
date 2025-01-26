@@ -199,15 +199,16 @@ def _apply_missile_edits(descr: Any, data: Dict, is_new: bool) -> None:
     membr = descr.v.by_m
     
     # Apply Arme edits
-    if "Arme" in data:
-        arme_data = data["Arme"]
-        arme_obj = descr.v.by_m("Arme").v
-        
-        for arme_membr, arme_v in arme_data.items():
-            if isinstance(arme_v, (float, int, bool)):
-                arme_obj.by_m(arme_membr).v = str(arme_v)
-            else:
-                arme_obj.by_m(arme_membr).v = arme_v
+    if "Ammunition" in data:
+        arme_data = data["Ammunition"].get("Arme", None)
+        if arme_data:
+            arme_obj = descr.v.by_m("Arme").v
+            
+            for arme_membr, arme_v in arme_data.items():
+                if isinstance(arme_v, (float, int, bool)):
+                    arme_obj.by_m(arme_membr).v = str(arme_v)
+                else:
+                    arme_obj.by_m(arme_membr).v = arme_v
     
     # Apply member edits
     if "parent_membr" in data:
@@ -318,4 +319,13 @@ def edit_missile_speed(source: Any, game_db: Dict[str, Any]) -> None:
                     uncontrollable_cfg.v.by_m("AutoGyr").v = str(auto_gyr)
                     logger.debug(f"Changed {missile_decr.namespace} auto gyr to {auto_gyr} (90 degrees)")
                 
-            break 
+            break
+        
+def remove_stress_on_miss(source_path: Any) -> None:
+    """Remove stress on miss from AmmunitionMissiles.ndf"""
+    for missile_descr in source_path:
+        if missile_descr.v.by_m("WeaponCursorType").v == "Weapon_Cursor_AirMissile":
+            missile_namespace = missile_descr.namespace.replace("Ammo_", "")
+            missile_descr.v.by_m("AllowSuppressDamageWhenNoImpact").v = "False"
+            logger.info(f"Removed stress on miss from {missile_namespace}")
+            

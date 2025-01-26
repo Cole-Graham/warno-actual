@@ -9,7 +9,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Aiming time: normal}'
                 '\n#style1{- Reload time: normal}'
                 '\n#style1{- Stress resistance: normal}'
-                '\n#style1{- Stress recovery: 0.6 per second}'
+                '\n#style1{- Stress recovery: 1.4 per second}'
                 '\n(flat, multiplicative, multiplicative, percentage)'
             ),
         },
@@ -20,7 +20,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Aiming time:} #moral_color_bad_2{-4%}'
                 '\n#style1{- Reload time:} #moral_color_bad_2{-10%}'
                 '\n#style1{- Stress resistance:} #moral_color_bad_2{+14%}'
-                '\n#style1{- Stress recovery:} #moral_color_bad_2{1.9} #style1{per second}'
+                '\n#style1{- Stress recovery:} #moral_color_bad_2{4.0} #style1{per second}'
                 '\n(flat, multiplicative, multiplicative, percentage)'
             ),
         },
@@ -31,7 +31,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Aiming time:} #styleGreen{-8%}'
                 '\n#style1{- Reload time:} #styleGreen{-17%}'
                 '\n#style1{- Stress resistance:} #styleGreen{+22%}'
-                '\n#style1{- Stress recovery:} #styleGreen{2.3} #style1{per second}'
+                '\n#style1{- Stress recovery:} #styleGreen{4.8} #style1{per second}'
                 '\n(flat, multiplicative, multiplicative, percentage)'
             ),
         },
@@ -42,7 +42,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Aiming time:} #styleTurquoise{-12%}'
                 '\n#style1{- Reload time:} #styleTurquoise{-24%}'
                 '\n#style1{- Stress resistance:} #styleTurquoise{+32%}'
-                '\n#style1{- Stress recovery:} #styleTurquoise{2.7} #style1{per second}'
+                '\n#style1{- Stress recovery:} #styleTurquoise{5.4} #style1{per second}'
                 '\n(flat, multiplicative, multiplicative, percentage)'
             ),
         },
@@ -56,7 +56,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Aiming time: normal}'
                 '\n#style1{- Reload Time: normal}'
                 '\n#style1{- Stress resistance: normal}'
-                '\n#style1{- Stress recovery: 0.9 per second}'
+                '\n#style1{- Stress recovery: 2.0 per second}'
             ),
         },
         "SF_v2_1": {
@@ -67,7 +67,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Aiming time:} #moral_color_bad_2{-10%}'
                 '\n#style1{- Reload time:} #moral_color_bad_2{-10%}'
                 '\n#style1{- Stress resistance:} #moral_color_bad_2{+20%}'
-                '\n#style1{- Stress recovery:} #moral_color_bad_2{2.3} #style1{per second}'
+                '\n#style1{- Stress recovery:} #moral_color_bad_2{4.8} #style1{per second}'
                 '\n(percentage, flat, multiplicative, multiplicative, percentage)'
             ),
         },
@@ -79,7 +79,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Aiming time:} #styleGreen{-20%}'
                 '\n#style1{- Reload time:} #styleGreen{-20%}'
                 '\n#style1{- Stress resistance:} #styleGreen{+30%}'
-                '\n#style1{- Stress recovery:} #styleGreen{2.9} #style1{per second}'
+                '\n#style1{- Stress recovery:} #styleGreen{6.0} #style1{per second}'
                 '\n(percentage, flat, multiplicative, multiplicative, percentage)'
             ),
         },
@@ -91,7 +91,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Aiming time:} #styleTurquoise{-30%}'
                 '\n#style1{- Reload time:} #styleTurquoise{-30%}'
                 '\n#style1{- Stress resistance:} #styleTurquoise{+40%}'
-                '\n#style1{- Stress recovery:} #styleTurquoise{3.3} #style1{per second}'
+                '\n#style1{- Stress recovery:} #styleTurquoise{7.8} #style1{per second}'
                 '\n(percentage, flat, multiplicative, multiplicative, percentage)'
             ),
         },
@@ -104,7 +104,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Aiming time: normal}'
                 '\n#style1{- Reload time: normal}'
                 '\n#style1{- Stress resistance: normal}'
-                '\n#style1{- Stress recovery: 0.6 per second}'
+                '\n#style1{- Stress recovery: 1.4 per second}'
             ),
         },
         "artillery_1": {
@@ -114,7 +114,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Aiming time:} #moral_color_bad_2{-15%}'
                 '\n#style1{- Reload time:} #moral_color_bad_2{-20%}'
                 '\n#style1{- Stress resistance:} #moral_color_bad_2{+6%}'
-                '\n#style1{- Stress recovery:} #moral_color_bad_2{1.4} #style1{per second}'
+                '\n#style1{- Stress recovery:} #moral_color_bad_2{3.0} #style1{per second}'
                 '\n(flat, multiplicative, multiplicative, percentage)'
             ),
         },
@@ -125,7 +125,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Aiming time:} #styleGreen{-30%}'
                 '\n#style1{- Reload time:} #styleGreen{-40%}'
                 '\n#style1{- Stress resistance:} #styleGreen{+12%}'
-                '\n#style1{- Stress recovery:} #styleGreen{1.8} #style1{per second}'
+                '\n#style1{- Stress recovery:} #styleGreen{3.8} #style1{per second}'
                 '\n(flat, multiplicative, multiplicative, percentage)'
             ),
         },
@@ -136,7 +136,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Aiming time:} #styleTurquoise{-45%}'
                 '\n#style1{- Reload time:} #styleTurquoise{-60%}'
                 '\n#style1{- Stress resistance:} #styleTurquoise{+24%}'
-                '\n#style1{- Stress recovery:} #styleTurquoise{2.2} #style1{per second}'
+                '\n#style1{- Stress recovery:} #styleTurquoise{4.6} #style1{per second}'
                 '\n(flat, multiplicative, multiplicative, percentage)'
             ),
         },
@@ -148,7 +148,7 @@ VETERANCY_BONUSES = {
                 '#style1{- Precision: normal}'
                 '\n#style1{- Aiming time: normal}'
                 '\n#style1{- Stress resistance: normal}'
-                '\n#style1{- Stress recovery: 0.6 per second}'
+                '\n#style1{- Stress recovery: 1.4 per second}'
             ),
         },
         "helico_1": {
@@ -157,7 +157,7 @@ VETERANCY_BONUSES = {
                 '#style1{- Precision: normal}'
                 '\n#style1{- Aiming time:} #moral_color_bad_2{-20%}'
                 '\n#style1{- Stress resistance: normal}'
-                '\n#style1{- Stress recovery:} #moral_color_bad_2{2} #style1{per second}'
+                '\n#style1{- Stress recovery:} #moral_color_bad_2{4.2} #style1{per second}'
                 '\n(multiplicative)'
             ),
         },
@@ -167,7 +167,7 @@ VETERANCY_BONUSES = {
                 '#style1{- Precision:} #styleGreen{+8%}'
                 '\n#style1{- Aiming time:} #styleGreen{-40%}'
                 '\n#style1{- Stress resistance:} #styleGreen{+25%}'
-                '\n#style1{- Stress recovery:} #styleGreen{3} #style1{per second}'
+                '\n#style1{- Stress recovery:} #styleGreen{6.2} #style1{per second}'
                 '\n(flat, multiplicative, percentage)'
             ),
         },
@@ -177,7 +177,7 @@ VETERANCY_BONUSES = {
                 '#style1{- Precision:} #styleTurquoise{+16%}'
                 '\n#style1{- Aiming time:} #styleTurquoise{-60%}'
                 '\n#style1{- Stress resistance:} #styleTurquoise{+45%}'
-                '\n#style1{- Stress recovery:} #styleTurquoise{4} #style1{per second}'
+                '\n#style1{- Stress recovery:} #styleTurquoise{8.8} #style1{per second}'
                 '\n(flat, multiplicative, percentage)'
             ),
         },
@@ -199,7 +199,7 @@ VETERANCY_BONUSES = {
                 '#style1{- Accuracy: normal}'
                 '\n#style1{- Aiming time: normal}'
                 '\n#style1{- Stress resistance: normal}'
-                '\n#style1{- Stress recovery:} #moral_color_bad_2{1} #style1{per second}'
+                '\n#style1{- Stress recovery:} #moral_color_bad_2{2.2} #style1{per second}'
                 '\n#style1{- Evasive maneuvers: normal}'
             ),
         },
@@ -209,7 +209,7 @@ VETERANCY_BONUSES = {
                 '#style1{- Accuracy:} #styleGreen{+4%}'
                 '\n#style1{- Aiming time:} #styleGreen{-10%}'
                 '\n#style1{- Stress resistance:} #styleGreen{+20%}'
-                '\n#style1{- Stress recovery:} #styleGreen{2} #style1{per second}'
+                '\n#style1{- Stress recovery:} #styleGreen{4.2} #style1{per second}'
                 '\n#style1{- Evasive maneuvers:} #styleGreen{+4%}'
                 '\n(flat, multiplicative, percentage, flat)'
             ),
@@ -220,7 +220,7 @@ VETERANCY_BONUSES = {
                 '#style1{- Accuracy:} #styleTurquoise{+8%}'
                 '\n#style1{- Aiming time:} #styleTurquoise{-20%}'
                 '\n#style1{- Stress resistance:} #styleTurquoise{+40%}'
-                '\n#style1{- Stress recovery:} #styleTurquoise{3} #style1{per second}'
+                '\n#style1{- Stress recovery:} #styleTurquoise{6.2} #style1{per second}'
                 '\n#style1{- Evasive maneuvers:} #styleTurquoise{+8%}'
                 '\n(flat, multiplicative, percentage, flat)'
             ),

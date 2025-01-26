@@ -11,6 +11,7 @@ from src.gameplay import (
     apply_default_salves,
     ui_gameplay_textscripts,
     update_weapondescr_ammoname_quantity,
+    remove_stress_on_miss,
 )
 from src.gameplay.buildings import edit_fob_attributes
 from src.gameplay.depictions import (
@@ -208,13 +209,14 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
 
         # Unit and weapon files
         "GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf": [
+            # Create new units first, before editing donors used to create them.
+            lambda source_path: create_new_units(source_path, game_db),
             lambda source_path: edit_units(source_path, game_db),
             lambda source_path: edit_auto_cover(source_path, game_db),
             edit_antirad_optics,
             edit_forward_deploy,
             edit_infantry_armor_wa,
             lambda source_path: edit_shock_units(source_path, game_db),
-            lambda source_path: create_new_units(source_path, game_db),
             lambda source_path: edit_mg_teams(source_path, game_db),
         ],
         "GameData/Generated/Gameplay/Gfx/Ammunition.ndf": [
@@ -223,6 +225,7 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         ],
         "GameData/Generated/Gameplay/Gfx/AmmunitionMissiles.ndf": [
             lambda source_path: edit_missiles(source_path, game_db),
+            remove_stress_on_miss,
         ],
         "GameData/Generated/Gameplay/Gfx/WeaponDescriptor.ndf": [
             lambda source_path: unit_edits_weapondescriptor(source_path, game_db),

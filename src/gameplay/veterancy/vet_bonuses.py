@@ -30,11 +30,60 @@ def edit_veterancy_effects(source_path) -> None:
     logger.info("Modifying veterancy effects")
     
     vet_changes = {
+        # Default
+        "UnitEffect_xp_rookie": {
+            "TUnitEffectHealOverTimeDescriptor": "1.4"
+        },
+        "UnitEffect_xp_trained": {
+            "TUnitEffectHealOverTimeDescriptor": "4"
+        },
         "UnitEffect_xp_veteran": {
+            "TUnitEffectHealOverTimeDescriptor": "4.8",
             "TUnitEffectAlterWeaponTempsEntreDeuxSalvesDescriptor": "0.83"
         },
         "UnitEffect_xp_elite": {
+            "TUnitEffectHealOverTimeDescriptor": "5.6",
             "TUnitEffectAlterWeaponTempsEntreDeuxSalvesDescriptor": "0.76"
+        },
+        # SF
+        "UnitEffect_xp_trained_SF": {
+            "TUnitEffectHealOverTimeDescriptor": "4.8"
+        },
+        "UnitEffect_xp_veteran_SF": {
+            "TUnitEffectHealOverTimeDescriptor": "6.0"
+        },
+        "UnitEffect_xp_elite_SF": {
+            "TUnitEffectHealOverTimeDescriptor": "6.8"
+        },
+        # Arty
+        "UnitEffect_xp_rookie_arty": {
+            "TUnitEffectHealOverTimeDescriptor": "1.4"
+        },
+        "UnitEffect_xp_trained_arty": {
+            "TUnitEffectHealOverTimeDescriptor": "3.0"
+        },
+        "UnitEffect_xp_veteran_arty": {
+            "TUnitEffectHealOverTimeDescriptor": "3.8"
+        },
+        "UnitEffect_xp_elite_arty": {
+            "TUnitEffectHealOverTimeDescriptor": "4.6"
+        },
+        # Helo
+        "UnitEffect_xp_rookie_helo": {
+            "TUnitEffectHealOverTimeDescriptor": "1.4"
+        },
+        "UnitEffect_xp_trained_helo": {
+            "TUnitEffectHealOverTimeDescriptor": "4.2"
+        },
+        "UnitEffect_xp_veteran_helo": {
+            "TUnitEffectHealOverTimeDescriptor": "6.2"
+        },
+        "UnitEffect_xp_elite_helo": {
+            "TUnitEffectHealOverTimeDescriptor": "8.2"
+        },
+        # Avion
+        "UnitEffect_xp_trained_avion": {
+            "TUnitEffectHealOverTimeDescriptor": "2"
         },
         "UnitEffect_xp_veteran_avion": {
             "TUnitEffectBonusPrecisionWhenTargetedDescriptor": "-4",
@@ -65,6 +114,8 @@ def edit_veterancy_effects(source_path) -> None:
                 effect.v.by_m("BonusPrecisionWhenTargeted").v = changes[effect_type]
             elif effect_type == "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor":
                 effect.v.by_m("ModifierValue").v = changes[effect_type]
+            elif effect_type == "TUnitEffectHealOverTimeDescriptor":
+                effect.v.by_m("HealUnitsPerSecond").v = changes[effect_type]
             else:
                 effect.v.by_m("ModifierValue").v = changes[effect_type]
                 

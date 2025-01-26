@@ -771,7 +771,7 @@ uk_unit_edits = {
     "DCA_Rapier_UK": {
         "CommandPoints": 65,
         "availability": 6,
-        "OpticalStrengthAltitude": 225,
+        "OpticalStrengthAltitude": 220,
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
         },
@@ -781,7 +781,7 @@ uk_unit_edits = {
     "Tracked_Rapier_UK": {
         "CommandPoints": 85,
         "availability": 4,
-        "OpticalStrengthAltitude": 225,
+        "OpticalStrengthAltitude": 220,
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
         },
@@ -791,7 +791,7 @@ uk_unit_edits = {
     "DCA_Rapier_FSA_UK": { # towed FSB1
         "CommandPoints": 85,
         "availability": 6,
-        "OpticalStrengthAltitude": 285,
+        "OpticalStrengthAltitude": 300,
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },

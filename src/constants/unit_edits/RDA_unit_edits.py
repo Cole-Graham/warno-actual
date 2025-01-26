@@ -81,8 +81,10 @@ rda_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "availability": 7,
-        "cards": {
-            "default": 1,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
         "max_speed": 26,
@@ -431,8 +433,10 @@ rda_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_appui",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Transport",
         "availability": 2,
-        "cards": {
-            "default": 1,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
@@ -494,8 +498,10 @@ rda_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_Armor",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
         "availability": 6,
-        "cards": {
-            "default": 1,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
     },
@@ -529,8 +535,10 @@ rda_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
         "availability": 4,
-        "cards": {
-            "default": 1,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
     },
@@ -745,7 +753,7 @@ rda_unit_edits = {
                 "cards": 1,
             },
         },
-        "category": "Logistic",
+        "Factory": "EDefaultFactories/Logistic",
         "availability": 12,
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
         "max_speed": 4,
@@ -765,7 +773,7 @@ rda_unit_edits = {
 
     "MTLB_Strela10_DDR": {
         "optics": {
-            "OpticalStrengthAltitude": 225,
+            "OpticalStrengthAltitude": 220,
         },
         "CommandPoints": 65,
         "Divisions": {
@@ -782,7 +790,7 @@ rda_unit_edits = {
 
     "ZSU_23_Shilka_DDR": {
         "optics": {
-            "OpticalStrengthAltitude": 225,
+            "OpticalStrengthAltitude": 220,
         },
         "CommandPoints": 75,
         "availability": 6,
@@ -794,7 +802,7 @@ rda_unit_edits = {
 
     "2K12_KUB_DDR": {
         "optics": {
-            "OpticalStrengthAltitude": 285,
+            "OpticalStrengthAltitude": 300,
         },
         "CommandPoints": 90,
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],

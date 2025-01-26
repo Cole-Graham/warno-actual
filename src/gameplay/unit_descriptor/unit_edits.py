@@ -171,17 +171,18 @@ def _handle_scanner(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
         descr_row.v.by_m("OpticalStrength").v = str(edits["optics"]["OpticalStrength"])
     
     if "OpticalStrengthAltitude" in edits["optics"]:
-        # descr_row.v.by_m("OpticalStrengthAltitude").v = str(
-        #     edits["optics"]["OpticalStrengthAltitude"]
-        # )
+        descr_row.v.by_m("OpticalStrengthAltitude").v = str(
+            edits["optics"]["OpticalStrengthAltitude"]
+        )
         if "SpecialtiesList" in edits and "add_specs" in edits["SpecialtiesList"]:
             for spec in edits["SpecialtiesList"]["add_specs"]:
                 if spec == "'verygood_airoptics'":
-                    descr_row.v.by_m("OpticalStrengthAltitude").v = "5000.0"
-                    descr_row.v.by_m("SpecializedDetectionsGRU").v.by_k("EVisionUnitType/AlwaysInHighAltitude").v = "9275.0"
+                    # descr_row.v.by_m("OpticalStrengthAltitude").v = "5000.0"
+                    specialized_detections = descr_row.v.by_m("SpecializedDetectionsGRU")
+                    specialized_detections.v.by_k("EVisionUnitType/AlwaysInHighAltitude").v = "12000.0"
                 elif spec == "'good_airoptics'":
-                    descr_row.v.by_m("OpticalStrengthAltitude").v = "5000.0"
-                    descr_row.v.by_m("SpecializedDetectionsGRU").v.by_k("EVisionUnitType/AlwaysInHighAltitude").v = "7350.0"
+                    specialized_detections = descr_row.v.by_m("SpecializedDetectionsGRU")
+                    specialized_detections.v.by_k("EVisionUnitType/AlwaysInHighAltitude").v = "15000.0"
     
     if "SpecializedOpticalStrengths" in edits["optics"]:
         for key, value in edits["optics"]["SpecializedOpticalStrengths"].items():
@@ -192,8 +193,8 @@ def _handle_production(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
         cmd_points = "$/GFX/Resources/Resource_CommandPoints"
         descr_row.v.by_m("ProductionRessourcesNeeded").v.by_k(cmd_points).v = str(edits["CommandPoints"])
     
-    if "category" in edits:
-        descr_row.v.by_m("Factory").v = f"EDefaultFactories/{edits['category']}"
+    if "Factory" in edits:
+        descr_row.v.by_m("Factory").v = edits["Factory"]
 
 def _handle_tactical_label(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
     if "SortingOrder" in edits:

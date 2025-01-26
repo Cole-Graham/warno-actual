@@ -35,13 +35,26 @@ def unit_edits_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> No
     turret_templates = _gather_turret_templates(source_path, ammo_db, weapon_db)
     
     for unit, edits in unit_edits.items():
-        if "WeaponDescriptor" not in edits:
-            continue
-            
+        
         weapon_descr_name = f"WeaponDescriptor_{unit}"
         if weapon_descr_name not in weapon_db:
             logger.warning(f"No weapon data found for {unit}")
             continue
+        
+        for weapon_descr in source_path:
+            if weapon_descr.namespace != weapon_descr_name:
+                continue
+            
+            _adjust_light_at_salvos(weapon_descr, unit, ammos,
+                                    ammo_db, unit_db, weapon_db)
+        
+        if "WeaponDescriptor" not in edits:
+            continue
+            
+        # weapon_descr_name = f"WeaponDescriptor_{unit}"
+        # if weapon_descr_name not in weapon_db:
+        #     logger.warning(f"No weapon data found for {unit}")
+        #     continue
             
         weapon_descr_data = weapon_db[weapon_descr_name]
         
@@ -53,9 +66,9 @@ def unit_edits_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> No
             _apply_weapon_edits(weapon_descr, edits["WeaponDescriptor"],
                                 weapon_descr_data, turret_templates, game_db)
             
-            # Adjust light AT weapon salvos based on squad size
-            _adjust_light_at_salvos(weapon_descr, unit, ammos,
-                                    ammo_db, unit_db, weapon_db)
+            # # Adjust light AT weapon salvos based on squad size
+            # _adjust_light_at_salvos(weapon_descr, unit, ammos,
+            #                         ammo_db, unit_db, weapon_db)
 
 def _gather_turret_templates(
     source_path: Any,
@@ -158,16 +171,24 @@ def _add_new_weapons(weapon_descr: Any, add_list: List, turret_templates: List[T
                 logger.debug(f"Adding {ammo_name} at index {turret_index}")
                 turret_list.insert(turret_index, turret_template)
 
-def _update_weapon_quantities(weapon_descr: Any, quantity_changes: Dict, weapon_descr_data: Dict) -> None:
+def _update_weapon_quantities(weapon_descr: Any, quantity_changes: Dict, weapon_descr_data: Dict, game_db: Dict) -> None:
     """Update weapon quantities using database data."""
     weapon_locations = weapon_descr_data['weapon_locations']
     turret_list = weapon_descr.v.by_member("TurretDescriptorList").v
+    ammo_db = game_db["ammunition"]
+    
     
     for weapon_name, quantity in quantity_changes.items():
         if weapon_name not in weapon_locations:
-            continue
-            
-        for location in weapon_locations[weapon_name]:
+            if weapon_name not in ammo_db["renames_new_old"]:
+                continue
+            else:
+                old_name = ammo_db["renames_new_old"].get(weapon_name, None)
+                if not old_name:
+                    continue    
+        
+        name_match = weapon_name if weapon_name in weapon_locations else old_name
+        for location in weapon_locations[name_match]:
             for turret in turret_list:
                 if int(turret.index) != location['turret_index']:
                     continue
@@ -336,7 +357,7 @@ def _apply_equipment_changes(
     
     # Handle quantity changes
     if "quantity" in equipment_changes:
-        _update_weapon_quantities(weapon_descr, equipment_changes["quantity"], weapon_descr_data)
+        _update_weapon_quantities(weapon_descr, equipment_changes["quantity"], weapon_descr_data, game_db)
 
 def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_db: Dict) -> None:
     """Replace weapons with their replacements."""
@@ -419,6 +440,7 @@ def _adjust_light_at_salvos(
         logger.warning(f"No strength data found for {unit_name}")
         return
     if squad_size not in LIGHT_AT_AMMO:
+        # this is not an error, some unit strengths are just not mapped (intentionally)
         logger.info(f"Invalid squad size {squad_size} for {unit_name}")
         return
 

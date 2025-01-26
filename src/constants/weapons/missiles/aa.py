@@ -293,7 +293,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("MANPAD_Strela2M_x2", "MANPAD", None, False): { # 171
+    ("MANPAD_Strela2M_salvolength2", "MANPAD", None, False): { # 171
         "Ammunition": {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 2450,

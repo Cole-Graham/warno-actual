@@ -103,8 +103,10 @@ ldr_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "availability": 7,
-        "cards": {
-            "default": 1,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
         "max_speed": 26,
@@ -322,8 +324,10 @@ ldr_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "availability": 5,
-        "cards": {
-            "default": 1,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.8],
         "max_speed": 26,
@@ -534,8 +538,10 @@ ldr_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_appui",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Transport",
-        "cards": {
-            "default": 1,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
@@ -571,8 +577,10 @@ ldr_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
         "availability": 2,
-        "cards": {
-            "default": 1,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
         },
         "XPMultiplier": [0.0, 0.0, 0.0, 1.0],
     },
@@ -608,8 +616,10 @@ ldr_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
         "availability": 3,
-        "cards": {
-            "default": 1,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
     },
@@ -784,8 +794,10 @@ ldr_unit_edits = {
             },
         },
         "availability": 7,
-        "cards": {
-            "default": 1,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
         "max_speed": 26,
@@ -1028,8 +1040,10 @@ ldr_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "availability": 5,
-        "cards": {
-            "default": 1,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.8],
         "max_speed": 20,
@@ -1143,8 +1157,10 @@ ldr_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_appui",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Transport",
-        "cards": {
-            "default": 1,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
@@ -1180,8 +1196,10 @@ ldr_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
         "availability": 4,
-        "cards": {
-            "default": 1,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
     },
@@ -1228,8 +1246,10 @@ ldr_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "availability": 7,
-        "cards": {
-            "default": 1,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
         "max_speed": 26,
@@ -1342,8 +1362,10 @@ ldr_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_appui",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Transport",
         "availability": 2,
-        "cards": {
-            "default": 1,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
@@ -1377,8 +1399,10 @@ ldr_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_Armor",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
         "availability": 6,
-        "cards": {
-            "default": 1,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
     },
@@ -1412,8 +1436,10 @@ ldr_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
         "availability": 4,
-        "cards": {
-            "default": 1,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
     },

@@ -21,6 +21,8 @@ def add_division_rules(source_path: Any) -> None:
         division_rules_map = source_path.by_n("DivisionRules").v.by_member("DivisionRules").v
         
         for division, div_data in edits["Divisions"].items():
+            if division == "default":
+                continue
             key = f"~/Descriptor_Deck_Division_{division}"
             transports = div_data.get("Transports")
             
@@ -77,11 +79,14 @@ def add_to_divisions(source_path: Any) -> None:
         unit_name = edits["NewName"]
         
         for division in edits["Divisions"]:
+            if division == "default":
+                continue
             namespace = f"Descriptor_Deck_Division_{division}"
             pack_list = source_path.by_n(namespace).v.by_member("PackList").v
             
             # Get card count for this division
-            cards = edits["Cards"].get(division, edits["Cards"]["default"])
+            cards = edits["Divisions"][division].get("cards",
+                                           edits["Divisions"]["default"]["cards"])
             
             new_entry = f"(~/Descriptor_Deck_Pack_{unit_name}, {cards}),"
             pack_list.add(new_entry)

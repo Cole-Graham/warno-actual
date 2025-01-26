@@ -31,13 +31,13 @@ def edit_terrains(source_path) -> None:
         logger.info(f"Added full_balle damage modifier {value} to {terrain}")
     
     # Edit ForetLegere properties
-    forest_light = source_path.by_n("ForetLegere").v
-    forest_light.by_m("DissimulationModifierGroundAir").v = "16"
-    forest_light.by_m("DissimulationModifierGroundGround").v = "10"
+    forest_light = source_path.by_n("ForetLegere")
+    forest_light.v.by_m("DissimulationModifierGroundAir").v = "10"
+    forest_light.v.by_m("DissimulationModifierGroundGround").v = "10"
     logger.info("Updated ForetLegere dissimulation modifiers")   
-    forest_light.by_m("SpeedModifierInfantry").v = "1.0"
+    forest_light.v.by_m("SpeedModifierInfantry").v = "1.0"
     logger.info("Updated ForetLegere speed modifier")
-    forest_light.by_m("ConcealmentBonus").v = "3.25"
+    forest_light.v.by_m("ConcealmentBonus").v = "3.25"
     logger.info("Updated ForetLegere concealment bonus")
     
     # Edit PetitBatiment properties

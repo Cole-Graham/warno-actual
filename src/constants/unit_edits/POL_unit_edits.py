@@ -7,7 +7,7 @@ pol_unit_edits = {
     #POL LOG
     "DCA_ZU_23_2_POL": {  # ZU-23-2
         "CommandPoints": 20,
-        "category": "Logistic",
+        "Factory": "EDefaultFactories/Logistic",
         "Divisions": {
             "default": {
                 "cards": 69,
@@ -26,7 +26,7 @@ pol_unit_edits = {
 
     "DCA_ZUR_23_2S_JOD_POL": {  # ZUR-23-2S Jod
         "CommandPoints": 30,
-        "category": "Logistic",
+        "Factory": "EDefaultFactories/Logistic",
         # "Divisions": {
         #     "default": {
         #         "cards": 69,
@@ -188,14 +188,14 @@ pol_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "Divisions": {
+            "default": {
+                "cards": 1,
+            },
             "POL_20_Pancerna": {
                 "Transports": ['Star_266_POL', 'BMP_1_SP2_POL', 'BMP_2_POL'],
             },
         },
         "availability": 7,
-        "cards": {
-            "default": 1,
-        },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
         "max_speed": 26,
         "WeaponDescriptor": {
@@ -331,7 +331,7 @@ pol_unit_edits = {
         # },
     },
 
-    "Descriptor_Unit_ATteam_RCL_SPG9_Para_POL": {  # Desant. SPG-9
+    "ATteam_RCL_SPG9_Para_POL": {  # Desant. SPG-9
         "Strength": 3,
         "CommandPoints": 30,
         "availability": 10,
@@ -342,7 +342,7 @@ pol_unit_edits = {
         },
     },
 
-    "Descriptor_Unit_ATteam_RCL_SPG9_POL": {  # SPG-9
+    "ATteam_RCL_SPG9_POL": {  # SPG-9
         "Strength": 3,
         "CommandPoints": 30,
         "availability": 10,
@@ -353,7 +353,7 @@ pol_unit_edits = {
         },
     },
 
-    "Descriptor_Unit_Atteam_Fagot_POL": {  # PPK Fagot
+    "Atteam_Fagot_POL": {  # PPK Fagot
         "CommandPoints": 30,
         "availability": 9,
         "XPMultiplier": [0.0, 1.0, 0.75, 0.6],
@@ -583,7 +583,7 @@ pol_unit_edits = {
         },
     },
 
-    "Descriptor_Unit_Scout_LRRP_POL": {  # Rozp. Specjalne [GSR]
+    "Scout_LRRP_POL": {  # Rozp. Specjalne [GSR]
         "Divisions": {
             "POL_20_Pancerna": {
                 "Transports": ['Honker_4011_POL', 'Honker_RYS_POL', 'OT_65_POL', 'Mi_2_trans_POL'],
@@ -591,10 +591,10 @@ pol_unit_edits = {
         },
     },
 
-    "Descriptor_Unit_Scout_LRRP_Para_POL": {  # Desant. Rozp. Specjalne [GSR]
+    "Scout_LRRP_Para_POL": {  # Desant. Rozp. Specjalne [GSR]
     },
 
-    "Descriptor_Unit_Scout_SF_POL": {  # Rozp. Specjalne
+    "Scout_SF_POL": {  # Rozp. Specjalne
     },
 
     "BRM_1_POL": {  # BWR-1D
@@ -625,7 +625,7 @@ pol_unit_edits = {
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
     },
 
-    "Descriptor_Unit_Mi_2_gunship_POL": {  # Mi-2US
+    "Mi_2_gunship_POL": {  # Mi-2US
         "availability": 4,
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
         "ECM:": -0.1,
@@ -637,15 +637,15 @@ pol_unit_edits = {
         "CommandPoints": 35,
     },
 
-    # "Descriptor_Unit_BRDM_1_POL": {  # BRDM-1
+    # "BRDM_1_POL": {  # BRDM-1
     #     "CommandPoints": 25,
     # },
     #
-    # "Descriptor_Unit_OT_65_POL": {  # OT-65
+    # "OT_65_POL": {  # OT-65
     #     "CommandPoints": 25,
     # },
 
-    "Descriptor_Unit_MTLB_TRI_Hors_POL": {  # Tri Hors
+    "MTLB_TRI_Hors_POL": {  # Tri Hors
         "CommandPoints": 25,
     },
 
@@ -678,7 +678,7 @@ pol_unit_edits = {
 
     "MTLB_Strela10_POL": {  # Strzala-10
         "optics": {
-            "OpticalStrengthAltitude": 225,
+            "OpticalStrengthAltitude": 220,
         },
         "CommandPoints": 65,
         "Divisions": {
@@ -695,7 +695,7 @@ pol_unit_edits = {
 
     "ZSU_23_Shilka_POL": {  # ZSU-23-4 Szylka
         "optics": {
-            "OpticalStrengthAltitude": 225,
+            "OpticalStrengthAltitude": 220,
         },
         "CommandPoints": 75,
         "availability": 6,
@@ -707,7 +707,7 @@ pol_unit_edits = {
 
     "2K12_KUB_POL": {
         "optics": {
-            "OpticalStrengthAltitude": 285,
+            "OpticalStrengthAltitude": 300,
         },
         "CommandPoints": 90,
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],

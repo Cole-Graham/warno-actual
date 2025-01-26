@@ -46,14 +46,14 @@ UK_NEW_UNITS = {
         "MenuIconTexture": "Texture_RTS_H_CMD_inf",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Inf",
         "Divisions": {
+            "default": {
+                "cards": 2,
+            },
             "UK_2nd_Infantry_multi": {
                 "Transports": ["Bedford_MJ_4t_trans_UK", "MCV_80_Warrior_UK", "Lynx_AH_Mk1_UK"],
             },
         },
         "availability": 2,
-        "Cards": {
-            "default": 2,
-        },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
         "max_speed": 26,
         "Orders": ['Stop', 'Move', 'FollowFormation', 'SmartMove', 'Attack', 'SmartMoveAndAttack', 'MoveAndAttack', 
@@ -93,6 +93,9 @@ UK_NEW_UNITS = {
         "Factory": "EDefaultFactories/Logistic",
         "CommandPoints": 290,
         "Divisions": {
+            "default": {
+                "cards": 1,
+            },
             "UK_1st_Armoured_multi": {
                 "Transports": None,
             },
@@ -101,9 +104,6 @@ UK_NEW_UNITS = {
             },
         },
         "availability": 2,
-        "Cards": {
-            "default": 1,
-        },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
         "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack', 
                    'MoveAndAttack', 'Spread', 'Reverse', 'Shoot', 'ShootOnPosition', 

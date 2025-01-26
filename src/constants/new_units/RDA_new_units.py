@@ -55,14 +55,14 @@ RDA_NEW_UNITS = {
         "MenuIconTexture": "Texture_RTS_H_CMD_inf",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Inf",
         "Divisions": {
+            "default": {
+                "cards": 2,
+            },
             "RDA_7_Panzer_multi": {
                 "Transports": ["UAZ_469_trans_DDR", "BTR_70_DDR", "Mi_2_trans_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
             },
         },
         "availability": 2,
-        "Cards": {
-            "default": 2,
-        },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
         "max_speed": 26,
         "Orders": ['Stop', 'Move', 'FollowFormation', 'SmartMove', 'Attack', 'SmartMoveAndAttack', 'MoveAndAttack', 
@@ -108,6 +108,9 @@ RDA_NEW_UNITS = {
                 '_resolute',
             ],
         "Divisions": {
+            "default": {
+                "cards": 2,
+            },
             "RDA_4_MSD_multi": {
                 "Transports": None,
                 },
@@ -119,9 +122,6 @@ RDA_NEW_UNITS = {
                 },
         },
         "availability": 3,
-        "Cards": {
-            "default": 2,
-        },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
         "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Spread', 'Reverse', 
                    'AskForSupply', 'AIDefend', 'AIAttack', 'AIStop'],
@@ -171,14 +171,14 @@ RDA_NEW_UNITS = {
         "UpgradeFromUnit": "ATteam_Fagot_DDR",
         "ButtonTexture": "ATteam_Fagot_DDR",
         "Divisions": {
+            "default": {
+                "cards": 1,
+            },
             "RDA_7_Panzer_multi": {
                 "Transports": ["UAZ_469_trans_DDR", "BTR_50_DDR", "BMP_1_SP1_DDR", "BMP_1_SP2_DDR", "BMP_1P_DDR"],
             },
         },
         "availability": 7,
-        "Cards": {
-            "default": 1,
-        },
         "XPMultiplier": [1.0, 0.75, 0.6, 0.0],
         "max_speed": 20,
         "Orders": ['Stop', 'Move', 'FollowFormation', 'Attack', 'MoveAndAttack', 'Spread', 
@@ -222,25 +222,25 @@ RDA_NEW_UNITS = {
                 '_resolute',
             ],
         "Divisions": {
+            "default": {
+                "cards": 1,
+            },
             "RDA_4_MSD_multi": {
                 "Transports": None,
             },
             "RDA_7_Panzer_multi": {
+                "cards": 2,
                 "Transports": None,
             },
             "RDA_Rugen_Gruppierung": {
                 "Transports": None,
             },
             "WP_Unternehmen_Zentrum_multi": {
+                "cards": 2,
                 "Transports": None,
             },
         },
         "availability": 2,
-        "Cards": {
-            "default": 1,
-            "RDA_7_Panzer_multi": 2,
-            "WP_Unternehmen_Zentrum_multi": 2,
-        },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
         "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack', 
                    'MoveAndAttack', 'Spread', 'Reverse', 'Shoot', 'ShootOnPosition', 
@@ -283,6 +283,9 @@ RDA_NEW_UNITS = {
                 '_smoke_launcher',
             ],
         "Divisions": {
+            "default": {
+                "cards": 1,
+            },
             "RDA_4_MSD_multi": {
                 "Transports": None,
             },
@@ -297,9 +300,6 @@ RDA_NEW_UNITS = {
             },
         },
         "availability": 2,
-        "Cards": {
-            "default": 1,
-        },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
         "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack', 
                    'MoveAndAttack', 'Spread', 'Reverse', 'Shoot', 'ShootOnPosition', 

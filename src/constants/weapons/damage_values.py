@@ -143,7 +143,10 @@ DAMAGE_EDITS = {
         "row": 117,
         "edits": {
             37: 3.3,    # helicopter <1 armor (2.5 is vanilla)
-            49: 1.0,    # WA Infantry 1 (14 strength)
+            38: 2.4,    # helicopter 1 armor (0.8 is vanilla)
+            46: 2.0,    # vehicle 1 armor (0.8 is vanilla)
+            47: 1.0,    # vehicle 2 armor (0.4 is vanilla)
+            49: 1.0,    # WA Infantry 1 (14 strength, not set by other WA inf armor function)
         }
     },
     "howz": {

@@ -62,8 +62,10 @@ SOV_NEW_UNITS = {
             },
         },
         "availability": 2,
-        "Cards": {
-            "default": 2,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
         "max_speed": 26,
@@ -139,8 +141,10 @@ SOV_NEW_UNITS = {
             },
         },
         "availability": 2,
-        "Cards": {
-            "default": 2,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
         "max_speed": 26,
@@ -203,9 +207,13 @@ SOV_NEW_UNITS = {
             },
         },
         "availability": 2,
-        "Cards": {
-            "default": 1,
-            "SOV_119IndTkBrig_multi": 2,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+            "SOV_119IndTkBrig_multi": {
+                "cards": 2,
+            },
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
         "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack', 
@@ -265,8 +273,10 @@ SOV_NEW_UNITS = {
                 },
         },
         "availability": 3,
-        "Cards": {
-            "default": 2,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
         "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Spread', 'Reverse', 
@@ -323,8 +333,10 @@ SOV_NEW_UNITS = {
             },
         },
         "availability": 7,
-        "Cards": {
-            "default": 1,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
         },
         "XPMultiplier": [1.0, 0.75, 0.6, 0.0],
         "max_speed": 20,
@@ -383,8 +395,10 @@ SOV_NEW_UNITS = {
             },
         },
         "availability": 7,
-        "Cards": {
-            "default": 1,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
         },
         "XPMultiplier": [0.0, 1.0, 0.75, 0.6],
         "max_speed": 20,
