@@ -276,18 +276,21 @@ uk_unit_edits = {
     },
     
     "Rover_101FC_UK": {
+        "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
     },
     
     "LandRover_UK": {
+        "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
     },
     
     "Bedford_MJ_4t_trans_UK": {
+        "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
@@ -298,6 +301,7 @@ uk_unit_edits = {
         "availability": 12,
         "strength": 5,
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "max_speed": 26,
         "WeaponAssignment": [
                 (0,[1,]),
                 (1,[1,]),
@@ -326,6 +330,7 @@ uk_unit_edits = {
                 (3,[0,]),
                 (4,[0,]),
             ],
+        "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "quantity": {
@@ -337,6 +342,7 @@ uk_unit_edits = {
     
     "Security_UK": {
         "CommandPoints": 25,
+        "max_speed": 26,
     },
     
     "Territorial_UK": {
@@ -492,6 +498,45 @@ uk_unit_edits = {
         "XPMultiplier": [0.0, 0.0, 1.0, 0.75],
     },
     #UK ARTILLERY
+    "FV432_CMD_UK": {
+        "CommandPoints": 60,
+        "GameName": {
+            "display": "#LDR FV432 BATTERY CP.",
+            "token": "NUDZQLLWOD",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "GroundUnits",
+                "UNITE_FV432_CMD_UK",
+                "Unite",
+                "Vehicule",
+            ],
+        },
+        "Factory": "EDefaultFactories/Art",
+        "IdentifiedTextures": ["Texture_RTS_H_appui", "Texture_appui"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                '_leader',
+                '_smoke_launcher',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_appui",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Transport",
+        "availability": 1,
+        "Divisions": {
+            "add": ["UK_2nd_Infantry"],
+            "is_transported": False,
+            "needs_transport": False,
+            "default": {
+                "cards": 1,
+            },
+        },
+        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+    },
+    
     "81mm_mortar_UK": {
         "CommandPoints": 35,
         "Divisions": {

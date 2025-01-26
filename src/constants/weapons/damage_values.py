@@ -44,6 +44,14 @@ DPICM_DAMAGES = [
      0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05]
 ]
 
+KPVT_DAMAGE = [
+    1.2, 1.1, 1.0, 0.3, 2.0, 1.5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+    0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+    0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 3.3, 2.5,
+    1.7, 1.0, 1.0, 1.0, 8.0, 1.0, 3.3, 2.0, 1.0, 3.3,
+    1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, # 13 WA armor types
+]
+
 # Infantry armor edits
 INFANTRY_ARMOR_EDITS = {
         71: (1.0, "artillerie 1"),
@@ -139,13 +147,14 @@ DAMAGE_EDITS = {
             45: 1.75,   # vehicle <1 armor (1.25 is vanilla)
         }
     },
+    # need to figure out which weapons to seperate from this category or how to balance them with same family ratio
     "HE_autocanon_1": {  # 12.7mm
         "row": 117,
         "edits": {
             37: 3.3,    # helicopter <1 armor (2.5 is vanilla)
-            38: 2.4,    # helicopter 1 armor (0.8 is vanilla)
-            46: 2.0,    # vehicle 1 armor (0.8 is vanilla)
-            47: 1.0,    # vehicle 2 armor (0.4 is vanilla)
+            # 38: 2.4,    # helicopter 1 armor (0.8 is vanilla)
+            # 46: 2.0,    # vehicle 1 armor (0.8 is vanilla)
+            # 47: 1.0,    # vehicle 2 armor (0.4 is vanilla)
             49: 1.0,    # WA Infantry 1 (14 strength, not set by other WA inf armor function)
         }
     },

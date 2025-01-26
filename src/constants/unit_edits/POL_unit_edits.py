@@ -19,7 +19,7 @@ pol_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": 12,
+        "availability": 9,
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
         "max_speed": 4,
     },
@@ -38,8 +38,8 @@ pol_unit_edits = {
         #         "cards": 1,
         #     },
         # },
-        "availability": 12,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "availability": 6,
+        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
         "max_speed": 4,
     },
 
@@ -370,36 +370,42 @@ pol_unit_edits = {
 
     #  infantry tab transports
     "Star_266_POL": {  # Star 266
+        "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
     },
 
     "UAZ_469_trans_POL": {
+        "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
     },
 
     "Honker_4011_POL": {  # Honker 4011
+        "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
     },
 
     "GAZ_66_POL": {
+        "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
     },
 
     "GAZ_66B_POL": {
+        "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
     },
 
     "BAV_485_POL": {  # BAW-485
+        "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },

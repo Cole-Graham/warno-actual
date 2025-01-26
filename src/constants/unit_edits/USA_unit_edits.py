@@ -1290,24 +1290,28 @@ usa_unit_edits = {
     },
 
     "M151_MUTT_trans_US": {
+        "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
     },
 
     "M35_trans_US": {
+        "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
     },
 
     "M998_Humvee_US": {
+        "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
     },
 
     "M1038_Humvee_US": {
+        "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
@@ -2100,16 +2104,20 @@ usa_unit_edits = {
         "CommandPoints": 25,
         "Factory": "EDefaultFactories/Logistic",
         "Divisions": {
-            "add": ["US_3rd_Arm", "US_8th_Inf"],
+            "add": ["US_3rd_Arm", "US_8th_Inf", "UK_2nd_Infantry"],
             "is_transported": True,
             "needs_transport": True,
             "default": {
                 "cards": 1,
                 "Transports": ["M998_Humvee_US"],
             },
+            "UK_2nd_Infantry": {
+                "cards": 1,
+                "Transports": ["LandRover_UK"],
+            },
         },
-        "availability": 8,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "availability": 6,
+        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
         "max_speed": 4,
     },
 

@@ -38,7 +38,7 @@ def unit_edits_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> No
         
         weapon_descr_name = f"WeaponDescriptor_{unit}"
         if weapon_descr_name not in weapon_db:
-            logger.warning(f"No weapon data found for {unit}")
+            logger.debug(f"No weapon data found for {unit}")
             continue
         
         for weapon_descr in source_path:
@@ -448,7 +448,7 @@ def _adjust_light_at_salvos(
     weapon_descr_name = f"WeaponDescriptor_{unit_name}"
     unit_weapon_data = weapon_db.get(weapon_descr_name)
     if not unit_weapon_data:
-        logger.warning(f"No weapon data found for {weapon_descr_name}")
+        logger.debug(f"No weapon data found for {weapon_descr_name}")
         return
 
     # Get weapon renames mapping

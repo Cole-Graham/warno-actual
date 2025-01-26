@@ -547,5 +547,128 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    # note: check if these aren't duplicate entries
+    ("GatlingAir_M61_Vulcan_20mm", "autocannon", None, False): { # 338
+        "Ammunition": {
+            "parent_membr": {
+                "SupplyCost": 6,
+            },
+        },
+    },
+
+    ("Gatling_m134_7_62mm_x2", "autocannon", None, False): { # 321
+        "Ammunition": {
+            "parent_membr": {
+                "DisplaySalveAccuracy": False,
+                "SupplyCost": 5,
+            },
+        },
+    },
+
+    ("Gatling_m134_7_62mm", "autocannon", None, False): { # 320
+        "Ammunition": {
+            "parent_membr": {
+                "DisplaySalveAccuracy": False,
+                "SupplyCost": 5,
+            },
+        },
+    },
+
+    ("Gatling_M61_Vulcan_20mm_noRadar", "autocannon", None, False): { # 319
+        "Ammunition": {
+            "parent_membr": {
+                "PorteeMaximaleTBAGRU": 2275,
+                "PorteeMaximaleHAGRU": 1750,
+                "TempsDeVisee": 1.25,
+                "SupplyCost": 15,
+            },
+        },
+    },
+
+    ("Gatling_M61_Vulcan_20mm_late", "autocannon", None, False): { # 317
+        "Ammunition": {
+            "parent_membr": {
+                "PorteeMaximaleTBAGRU": 2450,
+                "PorteeMaximaleHAGRU": 2100,
+                "TempsDeVisee": 1.25,
+                "SupplyCost": 15,
+            },
+        },
+    },
+
+    ("Gatling_M61_Vulcan_20mm_TOWED", "autocannon", None, False): { # 316
+        "Ammunition": {
+            "parent_membr": {
+                "PorteeMaximaleTBAGRU": 2450,
+                "PorteeMaximaleHAGRU": 2100,
+                "TempsDeVisee": 1.25,
+                "SupplyCost": 15,
+            },
+        },
+    },
+
+    ("Gatling_M197_20mm", "autocannon", None, False): { # 314
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 15,
+            },
+            "parent_membr": {
+                "PhysicalDamages": 0.25,
+                "DisplaySalveAccuracy": False,
+                "TempsDeVisee": 1.25,
+                "TempsEntreDeuxSalves": 1.4,
+                "NbTirParSalves": 30,
+                "SupplyCost": 7,
+                "AffichageMunitionParSalve": 30,
+            },
+        },
+        "WeaponDescriptor": {
+            "Salves": 25,
+        },
+    },
+
+    ("Gatling_JakB_12_7mm", "autocannon", None, False): { # 313
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 15,
+                "Moving": 10,
+            },
+            "parent_membr": {
+                "PorteeMaximaleGRU": 1225,
+                "PorteeMaximaleTBAGRU": 1225,
+                "PhysicalDamages": 0.48,
+                "DisplaySalveAccuracy": False,
+                "TempsDeVisee": 1.25,
+                "TempsEntreDeuxSalves": 1.0,
+                "NbTirParSalves": 30,
+                "SupplyCost": 15,
+                "AffichageMunitionParSalve": 200,
+            },
+        },
+        "WeaponDescriptor": {
+            "Salves": 7,
+        },
+    },
+    
+    ("Gatling_AP_M197_20mm", "autocannon", None, False): { # 311
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 25,
+                "Moving": 15,
+            },
+            "parent_membr": {
+                "DisplaySalveAccuracy": False,
+                "TempsDeVisee": 1.25,
+                "TempsEntreDeuxSalves": 1.4,
+                "NbTirParSalves": 30,
+                "SupplyCost": 7,
+                "AffichageMunitionParSalve": 30,
+            },
+        },
+        "WeaponDescriptor": {
+            "Salves": 25,
+        },
+    },
 }
 # fmt: on

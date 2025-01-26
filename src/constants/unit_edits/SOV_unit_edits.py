@@ -902,7 +902,7 @@ sov_unit_edits = {
     },
     
     "Spetsnaz_FireSupport_SOV": {
-        "CommandPoints": 30,
+        "CommandPoints": 35,
         "availability": 8,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.75],
         "max_speed": 20,
@@ -911,7 +911,7 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_RPG29_105mm": 8,
+                "RocketInf_RPG29_105mm": 6,
             },
         },
     },
@@ -1059,41 +1059,48 @@ sov_unit_edits = {
     },
 
     "LUAZ_967M_VDV_SOV": {
+        "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
     },
 
     "UAZ_469_SOV": {
+        "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
     },
 
     "UAZ_469_MP_SOV": {
+        "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
     },
 
     "Ural_4320_trans_SOV": {
+        "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
     },
     "GAZ_66_SOV": {
+        "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
     },
 
     "GAZ_66B_SOV": {
+        "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
     },
 
     "KrAZ_255B_SOV": {
+        "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
@@ -1408,7 +1415,7 @@ sov_unit_edits = {
     },
 
     "BTR_D_SOV": {
-        "CommandPoints": 20,
+        "CommandPoints": 15,
     },
 
     "BTR_D_Robot_SOV": { # 10x Konkurs, 2x PKT
@@ -1416,11 +1423,11 @@ sov_unit_edits = {
     },
     
     "BTR_60_SOV": {
-        "CommandPoints": 20,
+        "CommandPoints": 25,
     },
 
     "BTR_80_SOV": {
-        "CommandPoints": 25,
+        "CommandPoints": 30,
     },
 
     "BMP_1P_SOV": {
@@ -1754,7 +1761,7 @@ sov_unit_edits = {
                 "Transports": ["GAZ_66_SOV"],
             },
         },
-        "availability": 12,
+        "availability": 9,
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
         "max_speed": 4,
     },
@@ -1767,7 +1774,7 @@ sov_unit_edits = {
             },
         },
         "Factory": "EDefaultFactories/Logistic",
-        "availability": 12,
+        "availability": 9,
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
         "max_speed": 4,
     },

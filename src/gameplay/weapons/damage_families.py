@@ -11,6 +11,7 @@ from src.constants.weapons import (
     INFANTRY_ARMOR_EDITS,
     SNIPER_DAMAGE,
     WEAPON_DESCRIPTIONS,
+    KPVT_DAMAGE,
 )
 from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.logging_utils import setup_logger
@@ -46,13 +47,20 @@ def add_damage_families_to_list(source_path) -> None:
     sniper_family = f"DamageFamily_sniper is {i + 1}"
     full_ball_family = f"DamageFamily_full_balle is {i + 2}"
     dpicm_family = f"DamageFamily_dpicm is {i + 3}"
+    kpvt_family = f"DamageFamily_kpvt is {i + 4}"
     
     source_path.insert(j + 1, infanterie_wa_family)
     source_path.add(sniper_family)
     source_path.add(full_ball_family)
     source_path.add(dpicm_family)
-    
-    logger.info(f"Added families: {infanterie_wa_family}, {sniper_family}, {full_ball_family}, {dpicm_family}")
+    source_path.add(kpvt_family)
+
+    logger.info(f"Added families: \n"
+                f"{infanterie_wa_family}\n"
+                f"{sniper_family}\n"
+                f"{full_ball_family}\n"
+                f"{dpicm_family}\n"
+                f"{kpvt_family}")
 
 
 def add_damage_families_to_impl(source_path) -> None:
@@ -65,7 +73,8 @@ def add_damage_families_to_impl(source_path) -> None:
         "damage": [
             '"DamageFamily_sniper"',
             '"DamageFamily_full_balle"',
-            '"DamageFamily_dpicm"'
+            '"DamageFamily_dpicm"',
+            '"DamageFamily_kpvt"',
         ]
     }
     
@@ -83,19 +92,25 @@ def add_damage_families_to_impl(source_path) -> None:
 
 
 def apply_damage_families(source_path: Any, game_db: Dict[str, Any]) -> None:
-    """Apply damage family modifications to weapons in WeaponDescriptor.ndf"""
+    """Apply damage family modifications to weapons in Ammunition/AmmunitionMissiles.ndf"""
     ammo_db = game_db["ammunition"]
     
     dictionary_entries = []
     for weapon_descr in source_path:
         if weapon_descr.n in ammo_db["full_ball_weapons"]:
-            arme_obj = weapon_descr.v.by_m("Arme").v
-            arme_obj.by_m("Family").v = "DamageFamily_full_balle"
+            arme_obj = weapon_descr.v.by_m("Arme")
+            arme_obj.v.by_m("Family").v = "DamageFamily_full_balle"
             logger.info(f"Changed {weapon_descr.n} to DamageFamily_full_balle")
+        
+        elif "KPVT" in weapon_descr.n or "14_5" in weapon_descr.n:
+            if weapon_descr.v.by_m("WeaponCursorType").v == "Weapon_Cursor_MachineGun":
+                arme_obj = weapon_descr.v.by_m("Arme")
+                arme_obj.v.by_m("Family").v = "DamageFamily_kpvt"
+                logger.info(f"Changed {weapon_descr.n} to DamageFamily_kpvt")
             
         elif weapon_descr.n in ammo_db["sniper_weapons"]:
-            arme_obj = weapon_descr.v.by_m("Arme").v
-            arme_obj.by_m("Family").v = "DamageFamily_sniper"
+            arme_obj = weapon_descr.v.by_m("Arme")
+            arme_obj.v.by_m("Family").v = "DamageFamily_sniper"
             logger.info(f"Changed {weapon_descr.n} to DamageFamily_sniper")
             
             # Update description token
@@ -128,6 +143,7 @@ def add_damage_resistance_values(source_path) -> None:
         "sniper": "TDamageTypeFamilyDefinition(Family=DamageFamily_sniper MaxIndex=1)",
         "full_ball": "TDamageTypeFamilyDefinition(Family=DamageFamily_full_balle MaxIndex=1)",
         "dpicm": "TDamageTypeFamilyDefinition(Family=DamageFamily_dpicm MaxIndex=4)",
+        "kpvt": "TDamageTypeFamilyDefinition(Family=DamageFamily_kpvt MaxIndex=1)",
     }
     
     for family_name, family_def in families.items():
@@ -139,7 +155,8 @@ def add_damage_resistance_values(source_path) -> None:
     values_list.add(
         str(SNIPER_DAMAGE),
         str(FULL_BALL_DAMAGE),
-        *[str(dpicm) for dpicm in DPICM_DAMAGES]
+        *[str(dpicm) for dpicm in DPICM_DAMAGES],
+        str(KPVT_DAMAGE),
     )
     logger.info("Added damage values") 
 

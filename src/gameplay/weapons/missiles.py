@@ -44,6 +44,8 @@ def edit_missiles(source_path: Any, game_db: Dict[str, Any]) -> None:
                 
             logger.info(f"Processing missile {weapon_name} (is_new={is_new})")
             try:
+                ammo_data = data["Ammunition"]
+                
                 # Get or create base descriptor
                 try:
                     if is_new:
@@ -62,9 +64,8 @@ def edit_missiles(source_path: Any, game_db: Dict[str, Any]) -> None:
                 
                 # Apply edits
                 try:
-                    if "Ammunition" in data:
-                        _apply_missile_edits(base_descr, data["Ammunition"], is_new)
-                        logger.debug(f"Applied edits to {weapon_name}")
+                    _apply_missile_edits(base_descr, data, ammo_data, is_new)
+                    logger.debug(f"Applied edits to {weapon_name}")
                 except Exception as e:
                     logger.error(f"Failed applying edits to {weapon_name}: {str(e)}")
                     continue
@@ -194,12 +195,16 @@ def _handle_salvo_variants(source_path: Any, base_descr: Any, weapon_name: str,
             existing.v.by_m("AffichageMunitionParSalve").v = str(length)
             logger.debug(f"Updated existing variant {namespace}")
 
-def _apply_missile_edits(descr: Any, data: Dict, is_new: bool) -> None:
+def _apply_missile_edits(descr: Any, data: Dict, ammo_data: Dict, is_new: bool) -> None:
     """Apply edits to missile descriptor."""
     membr = descr.v.by_m
     
     # Apply Arme edits
     if "Ammunition" in data:
+        
+        if "token" in data["Ammunition"]:
+            descr.v.by_m("Name").v = "'" + data["Ammunition"]["token"] + "'"
+        
         arme_data = data["Ammunition"].get("Arme", None)
         if arme_data:
             arme_obj = descr.v.by_m("Arme").v
@@ -210,28 +215,30 @@ def _apply_missile_edits(descr: Any, data: Dict, is_new: bool) -> None:
                 else:
                     arme_obj.by_m(arme_membr).v = arme_v
     
-    # Apply member edits
-    if "parent_membr" in data:
-        for key, value in data["parent_membr"].items():
-            if key == "add":
-                index = value[0]
-                value = value[1]
-                descr.v.insert(index, value)
-            elif isinstance(value, (float, int, bool)):
-                membr(key).v = str(value)
-            elif isinstance(value, tuple) and key == "Caliber":
-                membr(key).v = f"'{value[1]}'"
-            elif isinstance(value, list):
-                # Convert list to NDF format
-                list_str = "[" + ", ".join(f"'{item}'" for item in value) + "]"
-                logger.debug(f"Converting list {list_str} to NDF")
-                membr(key).v = ndf.convert(list_str.encode('utf-8'))[0].v
-            else:
-                membr(key).v = value
-                
-    # Apply hit roll edits
-    if "hit_roll" in data:
-        _apply_hit_roll_edits(descr, data["hit_roll"])
+        # Apply member edits
+        parent_data = data["Ammunition"].get("parent_membr", None)
+        if parent_data:
+            for key, value in parent_data.items():
+                if key == "add":
+                    index = value[0]
+                    value = value[1]
+                    descr.v.insert(index, value)
+                elif isinstance(value, (float, int, bool)):
+                    membr(key).v = str(value)
+                elif isinstance(value, tuple) and key == "Caliber":
+                    membr(key).v = f"'{value[1]}'"
+                elif isinstance(value, list):
+                    # Convert list to NDF format
+                    list_str = "[" + ", ".join(f"'{item}'" for item in value) + "]"
+                    logger.debug(f"Converting list {list_str} to NDF")
+                    membr(key).v = ndf.convert(list_str.encode('utf-8'))[0].v
+                else:
+                    membr(key).v = value
+                    
+        # Apply hit roll edits
+        hit_roll_data = data["Ammunition"].get("hit_roll", None)
+        if hit_roll_data:
+            _apply_hit_roll_edits(descr, hit_roll_data)
         
     # Apply texture
     if "Texture" in data:

@@ -243,6 +243,9 @@ def _apply_weapon_edits(descr: Any, data: Dict, ammo_data: Dict) -> None:
     
     logger.debug(f"Applying edits to {descr.n}")
     
+    if "token" in ammo_data:
+        descr.v.by_m("Name").v = "'" + ammo_data["token"] + "'"
+
     # Apply Arme edits
     if "Arme" in ammo_data:
         arme_data = ammo_data["Arme"]

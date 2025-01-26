@@ -381,24 +381,28 @@ rda_unit_edits = {
     },
 
     "UAZ_469_trans_DDR": {
+        "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
     },
 
     "W50_LA_A_DDR": {
+        "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
     },
 
     "M35_trans_DDR": {
+        "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
     },
 
     "T813_trans_DDR": {
+        "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
@@ -583,11 +587,11 @@ rda_unit_edits = {
     },
 
     "BTR_60_DDR": {
-        "CommandPoints": 20,
+        "CommandPoints": 25,
     },
 
     "BTR_70_DDR": {
-        "CommandPoints": 25,
+        "CommandPoints": 30,
     },
 
     "UAZ_469_Fagot_DDR": {
@@ -655,7 +659,7 @@ rda_unit_edits = {
     },
 
     "BMP_1P_reco_DDR": {
-        "CommandPoints": 25,
+        "CommandPoints": 35,
     },
 
     "BRM_1_DDR": {
@@ -754,7 +758,7 @@ rda_unit_edits = {
             },
         },
         "Factory": "EDefaultFactories/Logistic",
-        "availability": 12,
+        "availability": 9,
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
         "max_speed": 4,
     },
