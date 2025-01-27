@@ -7,11 +7,12 @@ from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
 
+
 def edit_uispecificunitbuttonview(source_path) -> None:
     """Edit UISpecificUnitButtonView.ndf.
     
     Args:
-        source: NDF file containing unit button view definitions
+        source_path: NDF file containing unit button view definitions
     """
     logger.info("Editing UISpecificUnitButtonView.ndf")
     
@@ -30,9 +31,13 @@ def edit_uispecificunitbuttonview(source_path) -> None:
     
     # Update unit info display
     _update_unit_info_display(source_path)
+
+    # Update unit availability display
+    _update_nb_unit_in_the_pack(source_path)
     
     # Update text components
     _update_text_components(source_path)
+
 
 def _update_main_unit_button(source_path) -> None:
     """Update main unit button properties."""
@@ -40,19 +45,22 @@ def _update_main_unit_button(source_path) -> None:
     mainunitbutton_template.by_member("BorderLineColorToken").v = '"BoutonVignetteAchatArmoryM81"'
     logger.debug("Updated main unit button border color")
 
+
 def _update_corner_button(source_path) -> None:
     """Update corner button properties."""
     unitcornerbutton_template = source_path.by_namespace("UnitCornerButton").v
     unitcornerbutton_template.by_member("ButtonAlignementToAnchor").v = "[-3.35, 0.0]"
     logger.debug("Updated corner button alignment")
 
+
 def _update_add_unit_button(source_path) -> None:
     """Update add unit button properties."""
     addunitbutton = source_path.by_namespace("AddUnitButton").v
     addunitbutton.by_member("TextSizeToken").v = '"20"'
     addunitbutton.by_member("TextColorToken").v = "'BoutonXP_deck_chevronM81'"
-    # addunitbutton.by_member("TextTypefaceToken").v = "'Bombardier'"
+    addunitbutton.by_member("TextTypefaceToken").v = "'Bombardier'"
     logger.debug("Updated add unit button text properties")
+
 
 def _update_unit_info_display(source_path) -> None:
     """Update unit info display properties."""
@@ -65,7 +73,20 @@ def _update_unit_info_display(source_path) -> None:
         _process_info_elements(component.v.by_member("Elements").v)
     logger.debug("Updated unit info display properties")
 
-def _process_info_elements(elements_list: Any) -> None:
+
+def _update_nb_unit_in_the_pack(source_path) -> None:
+    """Update unit info display properties."""
+    nbunitinthepack = source_path.by_namespace("NbUnitInThePack").v
+
+    for component in nbunitinthepack.by_member("Components").v:
+        if not isinstance(component.v, ndf.model.Object) or not is_obj_type(component.v, "BUCKListDescriptor"):
+            continue
+
+        _process_info_elements(component.v.by_member("Elements").v, True)
+    logger.debug("Updated unit info display properties")
+
+
+def _process_info_elements(elements_list: Any, nbunitinthepack=False) -> None:
     """Process unit info display elements."""
     for element in elements_list:
         if not isinstance(element.v, ndf.model.Object) or not is_obj_type(element.v, "BUCKListElementDescriptor"):
@@ -75,9 +96,10 @@ def _process_info_elements(elements_list: Any) -> None:
         if component_descr.type != "BUCKListDescriptor":
             continue
             
-        _update_nested_elements(component_descr.by_member("Elements").v)
+        _update_nested_elements(component_descr.by_member("Elements").v, nbunitinthepack)
 
-def _update_nested_elements(nested_elements_list: Any) -> None:
+
+def _update_nested_elements(nested_elements_list: Any, nbunitinthepack) -> None:
     """Update nested element properties."""
     for nested_element in nested_elements_list:
         if not isinstance(nested_element.v, ndf.model.Object) or not is_obj_type(nested_element.v, "BUCKListElementDescriptor"):
@@ -86,10 +108,14 @@ def _update_nested_elements(nested_elements_list: Any) -> None:
         nested_component_descr = nested_element.v.by_member("ComponentDescriptor").v
         if nested_component_descr.type != "BUCKTextureDescriptor":
             continue
-            
-        _update_component_frames(nested_component_descr)
-        _update_texture_properties(nested_component_descr)
+
+        if nbunitinthepack:
+            nested_component_descr.by_member("TypefaceToken").v = '"Bombardier"'
+        else:
+            _update_component_frames(nested_component_descr)
+            _update_texture_properties(nested_component_descr)
         break
+
 
 def _update_component_frames(component_descr: Any) -> None:
     """Update component frame properties."""
@@ -97,6 +123,7 @@ def _update_component_frames(component_descr: Any) -> None:
     component_frame.by_member("MagnifiableWidthHeight").v = "[20.0, 20.0]"
     component_frame.by_member("AlignementToFather").v = "[0.0, 0.0]"
     component_frame.by_member("AlignementToAnchor").v = "[0.0, 0.0]"
+
 
 def _update_texture_properties(component_descr: Any) -> None:
     """Update texture properties."""
@@ -107,6 +134,7 @@ def _update_texture_properties(component_descr: Any) -> None:
     
     component_descr.by_member("BackgroundBlockColorToken").v = '"ArmoryUnitButtonNameM81Artichoke"'
     component_descr.add('TextureColorToken = "M81_VeryDarkCharcoal"')
+
 
 def _update_text_components(source_path) -> None:
     """Update text component properties."""
@@ -135,6 +163,7 @@ def _update_text_components(source_path) -> None:
     
     logger.debug("Updated text component properties")
 
+
 def _update_unit_name_text(source_path) -> None:
     """Update unit name text properties."""
     unitbuttonunitnametext = source_path.by_namespace("UnitButtonUnitNameText").v
@@ -148,14 +177,18 @@ def _update_unit_name_text(source_path) -> None:
     paragraphstyle = unitbuttonunitnametext.by_member("ParagraphStyle").v
     paragraphstyle.by_member("VerticalAlignment").v = "UIText_Up"
 
-    # unitbuttonunitnametext.by_member("TypefaceToken").v = '"Bombardier"'
+    unitbuttonunitnametext.by_member("TypefaceToken").v = '"Bombardier"'
     
     # Add text padding
     unitbuttonunitnametext.insert(9, 'TextPadding = TRTTILength4 ( Magnifiable = [0.0, 2.0, 0.0, 0.0] )')
     unitbuttonunitnametext.by_member("TextColor").v = '"BoutonXP_deck_chevronM81"'
 
+
 def _update_additional_name_text(source_path) -> None:
     """Update additional unit name text properties."""
     unitbuttonadditionalunitnametext = source_path.by_namespace("UnitButtonAdditionalUnitNameText").v
     unitbuttonadditionalunitnametext.by_member("BackgroundBlockColorToken").v = '"ArmoryUnitButtonNameM81"'
-    unitbuttonadditionalunitnametext.by_member("TextColor").v = '"TransportedText_M81"' 
+    unitbuttonadditionalunitnametext.by_member("TextColor").v = '"TransportedText_M81"'
+
+    prixunit = source_path.by_namespace("PrixUnit").v
+    prixunit.by_member("TypefaceToken").v = '"Bombardier"'

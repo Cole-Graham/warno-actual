@@ -60,12 +60,12 @@ rda_unit_edits = {
         },
         "strength": 6,
         "WeaponAssignment": [
-                (0,[1,]),
-                (1,[0,]),
-                (2,[0,]),
-                (3,[0,]),
-                (4,[0,3]),
-                (5,[0,2]),
+                (0, [1, ]),
+                (1, [0, ]),
+                (2, [0, ]),
+                (3, [0, ]),
+                (4, [0, 3]),
+                (5, [0, 2]),
             ],
         "TransportedTexture": "UseInGame_Transport_REGINF",
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
@@ -125,14 +125,14 @@ rda_unit_edits = {
         },
         "strength": 8,
         "WeaponAssignment": [
-                (0,[0,]),
-                (1,[0,]),
-                (2,[0,]),
-                (3,[0,]),
-                (4,[0,]),
-                (5,[0,]),
-                (6,[0,]),
-                (7,[0,1,]),
+                (0, [0, ]),
+                (1, [0, ]),
+                (2, [0, ]),
+                (3, [0, ]),
+                (4, [0, ]),
+                (5, [0, ]),
+                (6, [0, ]),
+                (7, [0, 1, ]),
             ],
         "TransportedTexture": "UseInGame_Transport_assault",
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
@@ -476,7 +476,7 @@ rda_unit_edits = {
     "T55A_CMD_DDR": {
         "CommandPoints": 85,
         "GameName": {
-            "display": "#LDRSOV FUPZ. T-55AK LDR.",
+            "display": "#LDRSOV FüPz. T-55AK LDR.",
             "token": "VKLRXNSTQE",
         },
         "TagSet": {
@@ -513,7 +513,7 @@ rda_unit_edits = {
     "T72M_CMD_DDR": {
         "CommandPoints": 170,
         "GameName": {
-            "display": "#LDRSOV FUPZ. T-72M LDR.",
+            "display": "#LDRSOV FüPz. T-72M LDR.",
             "token": "XVEZUMJKLL",
         },
         "TagSet": {

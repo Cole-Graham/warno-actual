@@ -130,17 +130,16 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_Kbk_AK", "FM_Kbk_AKM")],
                 "quantity": {
-                    "FM_Kbk_AKM": 8,
+                    "FM_kbk_AK": 8,
                 },
             },
         },
         "availability": 5,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.68], #  5/3 (?)
         "max_speed": 26,
-        "selector_tactic": "(0, 9)",
-        "selector_tactic_obj": "00_09",
+        "selector_tactic": "(2, 4)",
+        "selector_tactic_obj": "02_04",
         "is_infantry": True,
         "is_ground_vehicle": False,
     },
@@ -166,14 +165,14 @@ pol_unit_edits = {
         },
         "strength": 7,
         "WeaponAssignment": [
-                (0, [1, ]),
-                (1, [0, ]),
-                (2, [0, ]),
-                (3, [0, ]),
-                (4, [0, ]),
-                (5, [0, 3]),
-                (6, [0, 2]),
-            ],
+            (0, [1, ]),
+            (1, [0, ]),
+            (2, [0, ]),
+            (3, [0, ]),
+            (4, [0, ]),
+            (5, [0, 3]),
+            (6, [0, 2]),
+        ],
         "TransportedTexture": "UseInGame_Transport_REGINF",
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
@@ -196,15 +195,15 @@ pol_unit_edits = {
             },
         },
         "availability": 7,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.68],  # 7/5
         "max_speed": 26,
         "WeaponDescriptor": {
             "Salves": {
                 "RocketInf_RPG76_Komar": 7,
             },
         },
-        "selector_tactic": "(0, 7)",
-        "selector_tactic_obj": "00_07",
+        "selector_tactic": "(2, 4)",
+        "selector_tactic_obj": "02_04",
         "is_infantry": True,
         "is_ground_vehicle": False,
     },
@@ -217,7 +216,7 @@ pol_unit_edits = {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],  # 8/6
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -229,7 +228,7 @@ pol_unit_edits = {
         #         "Grenade_Satchel_Charge": 5,
         #     },
         # },
-        # 8x Kbk AKM
+        # 8x kbk AKM
         # 1x PKM
         # Satchel
         # RPG-76 Komar x4
@@ -244,19 +243,17 @@ pol_unit_edits = {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],  # 8/6
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
-        # "WeaponDescriptor": {
-        #     "Salves": {
-        #         "FM_Kbk_AKM": 7,
-        #         "MMG_PKM_7_62mm": 30,
-        #         "RocketInf_RPO_A_93mm": 4,
-        #     },
-        # },
-        # 8x Kbk AKM
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_kbk_AK": 7,  # 7 mags per soldier bc heavy
+            },
+        },
+        # 8x kbk AKM
         # 1x PKM
         # RPO Rys x6
     },
@@ -269,8 +266,17 @@ pol_unit_edits = {
             },
         },
         "availability": 12,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
-        # 7x Kbk AKM
+        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],  # 12/9
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_kbk_AK": 9,
+                "RocketInf_RPG7VR_64mm": 5,
+            },
+        },
+        # 7x kbk AKM
         # 2x RPG-7VL x6 (panzerjager with VL instead of VR)
     },
 
@@ -282,12 +288,17 @@ pol_unit_edits = {
                 "cards": 4,
             },
         },
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],  # 12/9
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
-        # 6x Kbk AK(M?)
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_kbk_AK": 9,
+            },
+        },
+        # 6x kbk AK(M?)
         # 1x PKM
         # RPG-7VM x6
     },
@@ -300,12 +311,17 @@ pol_unit_edits = {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],  # 12/9
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
-        # 4x Kbk AKM
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_kbk_AK": 9,
+            },
+        },
+        # 4x kbk AKM
         # 2x PKM
         # 1x SVD
         # RPG-7VM x6
@@ -319,23 +335,18 @@ pol_unit_edits = {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],  # 8/6
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
-        # "WeaponDescriptor": {
-        #     "Salves": {
-        #         "FM_AK_74": 11,
-        #     },
-        # },
     },
 
     "ATteam_RCL_SPG9_Para_POL": {  # Desant. SPG-9
         "Strength": 3,
         "CommandPoints": 30,
         "availability": 10,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "XPMultiplier": [0.0, 1.0, 0.7, 0.0],  # 10/7
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -346,7 +357,7 @@ pol_unit_edits = {
         "Strength": 3,
         "CommandPoints": 30,
         "availability": 10,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "XPMultiplier": [0.0, 1.0, 0.7, 0.0],  # 10/7
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -356,7 +367,7 @@ pol_unit_edits = {
     "Atteam_Fagot_POL": {  # PPK Fagot
         "CommandPoints": 30,
         "availability": 9,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.6],
+        "XPMultiplier": [0.0, 1.0, 0.75, 0.6],  # 9/7/5
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -415,7 +426,7 @@ pol_unit_edits = {
     "Mortier_PM43_120mm_POL": {
         "CommandPoints": 40,
         "availability": 5,
-        "XPMultiplier": [1.0, 0.8, 0.6, 0.0],
+        "XPMultiplier": [1.0, 0.8, 0.6, 0.0],  # 5/4/3
     },
 
     "Mortier_2B9_Vasilek_Para_POL": {  # Desant. 2B9 Wasilok
@@ -424,7 +435,7 @@ pol_unit_edits = {
         "orders": {
             "add_orders": ["ShootOnPositionSmoke", "ShootOnPositionWithoutCorrectionSmoke"],
         },
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.5],
+        "XPMultiplier": [0.0, 1.0, 0.75, 0.5],  # 4/3/2
         "WeaponDescriptor": {
             "turrets": {
                 1: {
@@ -458,7 +469,7 @@ pol_unit_edits = {
             },
         },
         "availability": 3,
-        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
+        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],  # 3/2
     },
 
     "2S1_POL": {
@@ -469,7 +480,7 @@ pol_unit_edits = {
             },
         },
         "availability": 3,
-        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
+        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],  # 3/2
     },
 
     # POL TANK
@@ -478,45 +489,41 @@ pol_unit_edits = {
         "CommandPoints": 50,
         "stealth": 1.5,
         "availability": 8,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],  # 8/6
     },
 
     "T55A_POL": {
         "CommandPoints": 70,
         "availability": 10,
-        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
+        "XPMultiplier": [1.0, 0.7, 0.0, 0.0],  # 10/7
     },
 
     "T55AS_POL": {  # coffin launcher
-        "CommandPoints": 420,
+        # "CommandPoints": 420,
         # FUCK this guy in particular
     },
 
     "T72M_POL": {
-        "CommandPoints": 145,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "CommandPoints": 140,
+        "availability": 8,
+        "XPMultiplier": [0.0, 1.0, 0.75, 0.0], # 8/6, or 0.62 for 8/5
     },
 
     "T72M1_POL": {
         "CommandPoints": 170,
-        "availability": 4,
+        "availability": 6,
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.75],
+        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],  # 6/4
     },
 
     "T72M1_Wilk_POL": {
-        "CommandPoints": 170,
+        "CommandPoints": 200,
         "availability": 4,
-        "Divisions": {
-            "default": {
-                "cards": 2,
-            },
-        },
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.75],
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.75],  # 4/3
     },
 
     #   tank tab transports
@@ -587,32 +594,68 @@ pol_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_kbk_AK": 9,
+                "PM_PM63_RAK": 9,
+            },
+        },
+        "DeploymentShift": 0,
     },
 
     "Scout_LRRP_POL": {  # Rozp. Specjalne [GSR]
+        "CommandPoints": 30,
+        # "strength": 5,
+        # "WeaponAssignment": [
+        #     (0, [0, ]),
+        #     (1, [0, ]),
+        #     (2, [0, 1, ]),
+        # ],
         "Divisions": {
             "POL_20_Pancerna": {
                 "Transports": ['Honker_4011_POL', 'Honker_RYS_POL', 'OT_65_POL', 'Mi_2_trans_POL'],
             },
         },
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
+        },
+        "DeploymentShift": 0,
     },
 
     "Scout_LRRP_Para_POL": {  # Desant. Rozp. Specjalne [GSR]
+        # "CommandPoints": 30,
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
+        },
     },
 
     "Scout_SF_POL": {  # Rozp. Specjalne
+        "CommandPoints": 30,
+        # "strength": 5,
+        # "WeaponAssignment": [
+        #     (0, [2, ]),
+        #     (1, [1, ]),
+        #     (2, [1, ]),
+        #     (3, [1, ]),
+        #     (4, [0, 3, ]),
+        # ],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_Tantal": 9,
+                "PM_PM63_RAK": 9,
+            },
+        },
+        "DeploymentShift": 0,
     },
 
     "BRM_1_POL": {  # BWR-1D
         "CommandPoints": 60,
-        # "cards": {
-        #     "default": 2,
-        # },
-        # "Divisions": {
-        #     "default": {
-        #         "cards": 2,
-        #     },
-        # },
         "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
     },
 
@@ -633,6 +676,13 @@ pol_unit_edits = {
 
     "Mi_2_gunship_POL": {  # Mi-2US
         "availability": 4,
+        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "ECM:": -0.1,
+    },
+
+    "Mi_2Ro_reco_POL": {  # Mi-2Ro
+        "availability": 4,
+        "CommandPoints": 50,
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
         "ECM:": -0.1,
     },
@@ -673,7 +723,7 @@ pol_unit_edits = {
             },
         },
     },
-    
+
     "MANPAD_Strela_2M_Para_POL": {  # Desant. Strzala-2M
         "WeaponDescriptor": {
             "equipmentchanges": {
