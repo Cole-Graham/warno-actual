@@ -76,7 +76,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "ImpactHappening": ['BombeODAB'],
                 "PorteeMaximaleGRU": 700,
                 "RadiusSplashPhysicalDamagesGRU": 93,
-                "PhysicalDamages": 2.0,
+                "PhysicalDamages": 1.6,
                 "RadiusSplashSuppressDamagesGRU": 124,
                 "SuppressDamages": 216,
                 "DisplaySalveAccuracy": False,

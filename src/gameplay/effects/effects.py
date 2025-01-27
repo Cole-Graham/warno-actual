@@ -100,12 +100,12 @@ def edit_shock_units(source_path, game_db) -> None:
         
         shock_attributes = [
             'Choc' in unit_data['skills'],
-            '_gsr' not in unit_data['tags'],
+            '_gsr' not in unit_data['specialties'],
         ]
         
         shock_gsr_attributes = [
             'Choc' in unit_data['skills'],
-            '_gsr' in unit_data['tags'],
+            '_gsr' in unit_data['specialties'],
         ]
         
         if not any(shock_attributes) and not any(shock_gsr_attributes):

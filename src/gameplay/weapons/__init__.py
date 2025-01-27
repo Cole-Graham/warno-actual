@@ -14,6 +14,7 @@ from .damage_families import (
     edit_infantry_armor,
     edit_weapon_constants,
 )
+from .he_adjustments import edit_he_damage
 from .mg_teams import edit_mg_team_weapons
 from .missiles import edit_missiles, remove_stress_on_miss
 from .mortar_mods import (
@@ -21,6 +22,7 @@ from .mortar_mods import (
     add_radio_tag_to_mortars,
     edit_smoke_duration,
 )
+from .standards import edit_aim_times, edit_weapon_ranges
 from .unit_edits import unit_edits_weapondescriptor
 from .vanilla_modifications import vanilla_renames_ammunition, remove_vanilla_instances
 
@@ -45,4 +47,7 @@ __all__ = [
     'edit_weapon_constants',
     'vanilla_renames_weapondescriptor',
     'remove_stress_on_miss',
+    'edit_he_damage',
+    'edit_aim_times',
+    'edit_weapon_ranges',
 ] 

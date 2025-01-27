@@ -206,7 +206,7 @@ def _update_weapon_quantities(weapon_descr: Any, quantity_changes: Dict, weapon_
 
 def _apply_weapon_edits(
     weapon_descr: Any,
-    edits: Dict,
+    wd_edits: Dict,
     weapon_descr_data: Dict,
     turret_templates: List[Tuple[str, Any]],
     game_db: Dict,
@@ -214,24 +214,27 @@ def _apply_weapon_edits(
     """Apply weapon edits using database data."""
 
     # Handle salvo changes first to prevent index errors when editing salves
-    if "Salves" in edits:
-        _apply_salvo_changes(weapon_descr, edits["Salves"], weapon_descr_data)
+    if "Salves" in wd_edits:
+        _apply_salvo_changes(weapon_descr, wd_edits["Salves"], weapon_descr_data)
     
     # Handle turret changes
-    if "turrets" in edits:
+    if "turrets" in wd_edits:
         _apply_turret_changes(
             weapon_descr, 
-            edits["turrets"], 
-            weapon_descr_data)
+            wd_edits["turrets"], 
+            weapon_descr_data,
+            game_db,)
     
     # Handle equipment changes
-    if "equipmentchanges" in edits:
-        _apply_equipment_changes(weapon_descr, edits["equipmentchanges"], weapon_descr_data, turret_templates, game_db)
+    if "equipmentchanges" in wd_edits:
+        _apply_equipment_changes(weapon_descr, wd_edits["equipmentchanges"], weapon_descr_data, turret_templates, game_db)
 
-def _apply_turret_changes(weapon_descr: Any, turrets_edits: Dict, weapon_descr_data: Dict) -> None:
+def _apply_turret_changes(weapon_descr: Any, turrets_edits: Dict, weapon_descr_data: Dict, game_db: Dict) -> None:
     """Apply turret changes using database data."""
     turret_list = weapon_descr.v.by_member("TurretDescriptorList").v
     turret_data = weapon_descr_data["turrets"]
+    
+    ammo_db = game_db["ammunition"]
     
     for turret_number, turret_edits in turrets_edits.items():
         if not isinstance(turret_number, int):
@@ -282,7 +285,11 @@ def _apply_turret_changes(weapon_descr: Any, turrets_edits: Dict, weapon_descr_d
                     ammunition = weapon.v.by_m("Ammunition").v.split(prefix)[1]
                     for ammo_name, ammo_edits in turret_edits["MountedWeapons"].items():
                         if ammunition != ammo_name:
-                            continue
+                            old_name = ammo_db["renames_new_old"].get(ammunition, None)
+                            if not old_name:
+                                continue
+                            if old_name != ammo_name:
+                                continue
                         for ammo_membr, ammo_value in ammo_edits.items():
                             if isinstance(ammo_value, list):
                                 new_list = ndf.model.List()

@@ -54,19 +54,17 @@ SOV_NEW_UNITS = {
         "MenuIconTexture": "Texture_RTS_H_CMD_inf",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Inf",
         "Divisions": {
+            "default": {
+                "cards": 2,
+            },
             "SOV_119IndTkBrig_multi": {
                 "Transports": ["UAZ_469_SOV", "BTR_80_SOV", "Mi_2_trans_SOV", "Mi_8TV_non_arme_SOV", "Mi_8TV_SOV"],
-                },
+            },
             "SOV_76_VDV_multi": {
                 "Transports": ["LUAZ_967M_SOV", "BTR_D_SOV"],
             },
         },
         "availability": 2,
-        "Divisions": {
-            "default": {
-                "cards": 2,
-            },
-        },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
         "max_speed": 26,
         "Orders": ['Stop', 'Move', 'FollowFormation', 'SmartMove', 'Attack', 'SmartMoveAndAttack', 'MoveAndAttack', 
@@ -136,16 +134,14 @@ SOV_NEW_UNITS = {
         "MenuIconTexture": "Texture_RTS_H_CMD_inf",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Inf",
         "Divisions": {
+            "default": {
+                "cards": 2,
+            },
             "SOV_27_Gds_Rifle_multi": {
                 "Transports": ["UAZ_469_SOV", "BTR_80_SOV", "Mi_2_trans_SOV", "Mi_8TV_non_arme_SOV", "Mi_8TV_SOV"],
             },
         },
         "availability": 2,
-        "Divisions": {
-            "default": {
-                "cards": 2,
-            },
-        },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
         "max_speed": 26,
         "Orders": ['Stop', 'Move', 'FollowFormation', 'SmartMove', 'Attack', 'SmartMoveAndAttack', 'MoveAndAttack', 
@@ -193,6 +189,9 @@ SOV_NEW_UNITS = {
                 '_smoke_launcher',
             ],
         "Divisions": {
+            "default": {
+                "cards": 2,
+            },
             "SOV_27_Gds_Rifle_multi": {
                 "Transports": None,
             },
@@ -203,18 +202,11 @@ SOV_NEW_UNITS = {
                 "Transports": None,
             },
             "SOV_119IndTkBrig_multi": {
+                "cards": 2,
                 "Transports": None,
             },
         },
         "availability": 2,
-        "Divisions": {
-            "default": {
-                "cards": 1,
-            },
-            "SOV_119IndTkBrig_multi": {
-                "cards": 2,
-            },
-        },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
         "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack', 
                    'MoveAndAttack', 'Spread', 'Reverse', 'Shoot', 'ShootOnPosition', 
@@ -256,28 +248,26 @@ SOV_NEW_UNITS = {
                 '_amphibie',
             ],
         "Divisions": {
-            "SOV_27_Gds_Rifle_multi": {
-                "Transports": None,
-                },
-            "SOV_39_Gds_Rifle_multi": {
-                "Transports": None,
-                },
-            "SOV_79_Gds_Tank_multi": {
-                "Transports": None,
-                },
-            "SOV_119IndTkBrig_multi": {
-                "Transports": None,
-                },
-            "SOV_6IndMSBrig_multi": {
-                "Transports": None,
-                },
-        },
-        "availability": 3,
-        "Divisions": {
             "default": {
                 "cards": 2,
             },
+            "SOV_27_Gds_Rifle_multi": {
+                "Transports": None,
+            },
+            "SOV_39_Gds_Rifle_multi": {
+                "Transports": None,
+            },
+            "SOV_79_Gds_Tank_multi": {
+                "Transports": None,
+            },
+            "SOV_119IndTkBrig_multi": {
+                "Transports": None,
+            },
+            "SOV_6IndMSBrig_multi": {
+                "Transports": None,
+            },
         },
+        "availability": 3,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
         "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Spread', 'Reverse', 
                    'AskForSupply', 'AIDefend', 'AIAttack', 'AIStop'],
@@ -325,6 +315,9 @@ SOV_NEW_UNITS = {
             ],
         "ButtonTexture": "Atteam_Konkurs_DShV_SOV",
         "Divisions": {
+            "default": {
+                "cards": 1,
+            },
             "SOV_39_Gds_Rifle_multi": {
                 "Transports": ["UAZ_469_SOV", "BTR_60_SOV", "BMP_1P_SOV"],
             },
@@ -333,11 +326,6 @@ SOV_NEW_UNITS = {
             },
         },
         "availability": 7,
-        "Divisions": {
-            "default": {
-                "cards": 1,
-            },
-        },
         "XPMultiplier": [1.0, 0.75, 0.6, 0.0],
         "max_speed": 20,
         "Orders": ['Stop', 'Move', 'FollowFormation', 'Attack', 'MoveAndAttack', 'Spread', 
@@ -390,16 +378,14 @@ SOV_NEW_UNITS = {
             ],
         "UpgradeFromUnit": "Atteam_Fagot_VDV_SOV",
         "Divisions": {
+            "default": {
+                "cards": 1,
+            },
             "SOV_76_VDV_multi": {
                 "Transports": ["LUAZ_967M_SOV", "BTR_D_Robot_SOV"],
             },
         },
         "availability": 7,
-        "Divisions": {
-            "default": {
-                "cards": 1,
-            },
-        },
         "XPMultiplier": [0.0, 1.0, 0.75, 0.6],
         "max_speed": 20,
         "Orders": ['Stop', 'Move', 'FollowFormation', 'Attack', 'MoveAndAttack', 'Spread', 

@@ -12,6 +12,9 @@ from src.gameplay import (
     ui_gameplay_textscripts,
     update_weapondescr_ammoname_quantity,
     remove_stress_on_miss,
+    edit_he_damage,
+    edit_aim_times,
+    edit_weapon_ranges,
 )
 from src.gameplay.buildings import edit_fob_attributes
 from src.gameplay.depictions import (
@@ -70,7 +73,6 @@ from src.gameplay.unit_descriptor import (
     edit_auto_cover,
     edit_forward_deploy,
     edit_infantry_armor_wa,
-    edit_mg_teams,
     edit_team_supply,
     edit_units,
 )
@@ -222,6 +224,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/Generated/Gameplay/Gfx/Ammunition.ndf": [
             lambda source_path: edit_ammunition(source_path, game_db),
             lambda source_path: apply_damage_families(source_path, game_db),
+            lambda source_path: edit_he_damage(source_path, game_db),
+            lambda source_path: edit_aim_times(source_path),
+            lambda source_path: edit_weapon_ranges(source_path),
         ],
         "GameData/Generated/Gameplay/Gfx/AmmunitionMissiles.ndf": [
             lambda source_path: edit_missiles(source_path, game_db),

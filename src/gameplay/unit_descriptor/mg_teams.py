@@ -1,15 +1,19 @@
 import re
 from typing import Any, Dict, List, Tuple
 
+import ndf_parse as ndf
+
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import get_modules_list, is_obj_type
 
 logger = setup_logger('mg_teams')
 
 
-def edit_mg_teams(source: Any, unit_db: Dict[str, Any]) -> None:
-    """Edit machine gun team units in UnitDescriptor.ndf"""
+def edit_mg_teams(source: Any, game_db: Dict[str, Any]) -> None:
+    """Edit machine gun team units in UniteDescriptor.ndf"""
     logger.info("Editing machine gun teams")
+    
+    unit_db = game_db.get("unit_data")
     
     mgs: List[Tuple[str, str]] = [
         ("M2HB", "HMG"), ("NSV", "HMG"), 
@@ -42,14 +46,14 @@ def _is_para_unit(unit_name: str, unit_db: Dict[str, Any]) -> bool:
     unit_data = unit_db.get(unit_name)
     if not unit_data or 'specialties' not in unit_data:
         return False
-    return any('para' in specialty.lower() for specialty in unit_data['specialties'])
+    return any('_para' in specialty.lower() for specialty in unit_data['specialties'])
 
 def _get_mg_stats(mg_type: str, is_para: bool) -> Dict[str, Any]:
     """Get stats for a machine gun team based on type and para status."""
     is_heavy = mg_type in ("HMG", "Mk19")
     
     return {
-        'cost': 35 if (is_heavy and is_para) else 30 if is_heavy else 25 if is_para else 20,
+        'cost': 30 if mg_type == "Mk19" else 25 if is_heavy else 15,
         'damage': "5" if is_heavy else "4",
         'soldiers': "5" if is_heavy else "4",
         'speed': "14" if is_heavy else "26",
@@ -61,7 +65,7 @@ def _update_mg_team(unit_row: Any, stats: Dict[str, Any]) -> None:
     modules_list = get_modules_list(unit_row, "ModulesDescriptors")
     
     for module in modules_list.v:
-        if not is_obj_type(module.v, None):
+        if not isinstance(module.v, ndf.model.Object):
             continue
             
         module_type = module.v.type

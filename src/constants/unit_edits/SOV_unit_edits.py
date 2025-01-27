@@ -1415,7 +1415,7 @@ sov_unit_edits = {
     },
 
     "BTR_D_SOV": {
-        "CommandPoints": 15,
+        "CommandPoints": 20,
     },
 
     "BTR_D_Robot_SOV": { # 10x Konkurs, 2x PKT
@@ -1423,11 +1423,11 @@ sov_unit_edits = {
     },
     
     "BTR_60_SOV": {
-        "CommandPoints": 25,
+        "CommandPoints": 20,
     },
 
     "BTR_80_SOV": {
-        "CommandPoints": 30,
+        "CommandPoints": 25,
     },
 
     "BMP_1P_SOV": {
