@@ -159,7 +159,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AGM_9M14_MalyutkaP_salvolength6", "ATGM", None, False): { # 43
         "Ammunition": {
             "Arme": {
-                "Index": 18,
+                "Index": 17,
             },
             "parent_membr": {
                 "PorteeMaximaleGRU": 2450,
@@ -178,7 +178,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AGM_9M14_MalyutkaP_salvolength4", "ATGM", None, False): { # 43
         "Ammunition": {
             "Arme": {
-                "Index": 18,
+                "Index": 17,
             },
             "parent_membr": {
                 "PorteeMaximaleGRU": 2450,
