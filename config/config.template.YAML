@@ -1,13 +1,14 @@
-  # Build configuration
+# Build configuration
 build_config:
-  write_dev: true
-  target: "gameplay"
-  use_ui_as_base: false
+  write_dev: true          # Set to false for release builds
+  target: "gameplay"       # "gameplay" or "ui_only"
+  use_ui_as_base: false    # Use UI mod as base for gameplay mod
 
 # Data configuration
 data_config:
-  build_database: true
+  build_database: false    # Set to true to rebuild database
   database_path: "data/database"
+  update_master_metadata: false  # Set to true to update master metadata after build
 
 # Asset configuration  
 asset_config:
@@ -23,9 +24,9 @@ directories:
   ui_dev: "test ui dev"
   
   # Development builds
-  gameplay_dev: "test gameplay dev"
+  gameplay_dev: "WARNO ACTUAL dev"
   ui_only_dev: "test ui dev"
   
   # Release builds
-  gameplay_release: "test gameplay"
+  gameplay_release: "WARNO ACTUAL"
   ui_only_release: "test ui"

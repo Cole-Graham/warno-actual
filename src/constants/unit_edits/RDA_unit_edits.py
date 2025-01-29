@@ -896,7 +896,7 @@ rda_unit_edits = {
         "availability": 4,
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace_fixedsalvo": [("RocketAir_S5_57mm_x32", "RocketAir_S5_57mm_salvolength32_avion")],
+                "replace_fixedsalvo": [("RocketAir_S5_57mm_salvolength32", "RocketAir_S5_57mm_avion_salvolength32")],
             },
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
@@ -943,9 +943,9 @@ rda_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 2: {
-                    "AngleRotationMax": 2.094395,
-                    "AngleRotationMaxPitch": 1.570796,
-                    "AngleRotationMinPitch": -1.570796,
+                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMaxPitch": 0.8726646,
+                    "AngleRotationMinPitch": -0.8726646,
                 },
             },
         },

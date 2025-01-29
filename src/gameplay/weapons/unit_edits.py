@@ -412,7 +412,16 @@ def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_
             # Handle fixed salvo replacements (todo: not use lazy eval of "replace_fixedsalvo")
             if "replace_fixedsalvo" in equipment_changes:
                 for current, replacement in equipment_changes["replace_fixedsalvo"]:
-                    if ammo_val == f"$/GFX/Weapon/Ammo_{current}":
+                    
+                    new_name = None
+                    if current in ammo_db["renames_old_new"]:
+                        new_name = ammo_db["renames_old_new"].get(current, None)
+                    
+                    if new_name and ammo_val == f"$/GFX/Weapon/Ammo_{new_name}":
+                        weapon.v.by_m("Ammunition").v = f"$/GFX/Weapon/Ammo_{replacement}"
+                        logger.debug(f"Replaced {current} with {replacement}")
+                    
+                    elif ammo_val == f"$/GFX/Weapon/Ammo_{current}":
                         weapon.v.by_m("Ammunition").v = f"$/GFX/Weapon/Ammo_{replacement}"
                         logger.debug(f"Replaced {current} with {replacement}")
             

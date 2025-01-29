@@ -100,25 +100,37 @@ def bomb_damage_standards(source_path):
         },
     }
     
-    bomb_matching = {
+    he_bomb_matching = {
         "250": ["250kg"],
         "500": ["500kg", "513kg"],
         "1000": ["1000kg"]
     }
     
     for ammo_descr in source_path:
+        
         ammo_name = ammo_descr.namespace
         # name_hash = ammo_descr.v.by_m("Name")
-        if any(bomb in ammo_name for bomb in bomb_matching["250"]):
-            for key, value in bombs["he_250kg"].items():
-                ammo_descr.v.by_m(key).v = str(value)
-                logger.info(f"(Ammunition.ndf) Changed {ammo_descr.namespace} {key} to {value}")
-        elif any(bomb in ammo_name for bomb in bomb_matching["500"]):
-            for key, value in bombs["he_500kg"].items():
-                ammo_descr.v.by_m(key).v = str(value)
-                logger.info(f"(Ammunition.ndf) Changed {ammo_descr.namespace} {key} to {value}")
-        elif any(bomb in ammo_name for bomb in bomb_matching["1000"]):
-            for key, value in bombs["he_1000kg"].items():
-                ammo_descr.v.by_m(key).v = str(value)
-                logger.info(f"(Ammunition.ndf) Changed {ammo_descr.namespace} {key} to {value}")
+        traits_list = ammo_descr.v.by_m("TraitsToken")        
+        if any("'HE'" in trait.v for trait in traits_list.v):
+            
+            if any(bomb in ammo_name for bomb in he_bomb_matching["250"]):
+                for key, value in bombs["he_250kg"].items():
+                    ammo_descr.v.by_m(key).v = str(value)
+                    logger.info(f"(Ammunition.ndf) Changed {ammo_descr.namespace} "
+                                f"{key} to {value}")
+            
+            elif any(bomb in ammo_name for bomb in he_bomb_matching["500"]):
+                for key, value in bombs["he_500kg"].items():
+                    ammo_descr.v.by_m(key).v = str(value)
+                    logger.info(f"(Ammunition.ndf) Changed {ammo_descr.namespace} "
+                                f"{key} to {value}")
+            
+            elif any(bomb in ammo_name for bomb in he_bomb_matching["1000"]):
+                for key, value in bombs["he_1000kg"].items():
+                    ammo_descr.v.by_m(key).v = str(value)
+                    logger.info(f"(Ammunition.ndf) Changed {ammo_descr.namespace} "
+                                f"{key} to {value}")
+        
+        else:
+            continue
 

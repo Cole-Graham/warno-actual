@@ -84,7 +84,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("RocketAir_S5_57mm_salvolength32_avion", "rocket", "RocketAir_S5_57mm", True): {
+    ("RocketAir_S5_57mm_avion_salvolength32", "rocket", "RocketAir_S5_57mm", True): {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 20,
