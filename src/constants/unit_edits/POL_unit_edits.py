@@ -125,7 +125,7 @@ pol_unit_edits = {
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
         "Divisions": {
             "POL_20_Pancerna": {
-                "Transports": ["Star_266_POL", "OT_64_SKOT_2_POL"],
+                "Transports": ["Star_266_POL", "MTLB_trans_POL", "OT_64_SKOT_2_POL"],
             },
         },
         "WeaponDescriptor": {
@@ -213,7 +213,10 @@ pol_unit_edits = {
         "availability": 8,
         "Divisions": {
             "default": {
-                "cards": 1,
+                "cards": 2,
+            },
+            "POL_20_Pancerna": {
+                "Transports": ["Star_266_POL", "MTLB_trans_POL", "OT_64_SKOT_2_POL"],
             },
         },
         "XPMultiplier": [0.0, 8/8, 6/8, 0.0],  # 8/6
@@ -233,7 +236,6 @@ pol_unit_edits = {
         # Satchel
         # RPG-76 Komar x4
     },
-
 
     "Engineers_Flam_POL": {  # Saperzy Szturmowi
         "CommandPoints": 50,
@@ -364,6 +366,29 @@ pol_unit_edits = {
         },
     },
 
+    "HMGteam_NSV_POL": {  # NSW 12,7mm
+        "GameName": {
+            "display": "NSW 12,7mm",
+            "token": "NSVAKANSW",
+        },
+        "availability": 8,
+        "XPMultiplier": [8/8, 5/8, 0.0, 0.0],  # 8/5(/3?)
+        "Divisions": {
+            "add": ['POL_20_Pancerna', 'POL_4_Zmechanizowana'],
+            "is_transported": True,
+            "needs_transport": True,
+            "default": {
+                "cards": 1,
+            },
+            "POL_20_Pancerna": {
+                "Transports": ['UAZ_469_trans_POL'],
+            },
+            "POL_4_Zmechanizowana": {
+                "Transports": ['UAZ_469_trans_POL'],
+            },
+        },
+    },
+
     "Atteam_Fagot_POL": {  # PPK Fagot
         "CommandPoints": 30,
         "availability": 9,
@@ -376,6 +401,24 @@ pol_unit_edits = {
             "equipmentchanges": {
                 "replace": [("ATGM_9K111M_Faktoriya", "ATGM_9K111_Fagot")],
             },
+        },
+    },
+
+    "ATteam_Konkurs_POL": {
+        "CommandPoints": 50,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+            # "add": ['POL_20_Pancerna'],
+            # "is_transported": True,
+            # "needs_transport": True,
+        },
+        "availability": 6,
+        "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
         },
     },
 
@@ -484,12 +527,128 @@ pol_unit_edits = {
     },
 
     # POL TANK
+    "T55A_CMD_POL": {
+        "CommandPoints": 80,
+        "GameName": {
+            "display": "#LDRSOV T-55AD LDR.",
+            "token": "POLTFFAD",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "GroundUnits",
+                "UNITE_T55A_CMD_POL",
+                "Unite",
+            ],
+        },
+        "IdentifiedTextures": ["Texture_RTS_H_Armor", "Texture_Armor"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'armor',
+                'leader_sov',
+                '_resolute',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Armor",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
+        "availability": 6,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "XPMultiplier": [0.0, 0.0, 6/6, 0.0],
+    },
+
+    "T72M_CMD_POL": {
+        "CommandPoints": 160,
+        "GameName": {
+            "display": "#LDRSOV T-72MD LDR.",
+            "token": "POLTSTMLDR",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "GroundUnits",
+                "UNITE_T72M_CMD_POL",
+                "Unite",
+            ],
+        },
+        "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'Armor_heavy',
+                'leader_sov',
+                '_resolute',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
+        "availability": 4,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "XPMultiplier": [0.0, 0.0, 4/4, 0.0],
+    },
+
+    "T72M1_CMD_POL": {
+        "CommandPoints": 195,
+        "GameName": {
+            "display": "#LDRSOV T-72M1D LDR.",
+            "token": "POLTSTMOLD",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "GroundUnits",
+                "UNITE_T72M1_CMD_POL",
+                "Unite",
+            ],
+        },
+        "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'Armor_heavy',
+                'leader_sov',
+                '_resolute',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
+        "availability": 4,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "XPMultiplier": [0.0, 0.0, 4/4, 0.0],
+    },
+
     "BRDM_2_Konkurs_POL": {
         "strength": 8,
         "CommandPoints": 50,
         "stealth": 1.5,
         "availability": 8,
         "XPMultiplier": [8/8, 6/8, 0.0, 0.0],  # 8/6
+    },
+
+    "BRDM_2_Malyu_P_POL": {
+        "strength": 8,
+        "CommandPoints": 40,
+        "stealth": 1.5,
+        "availability": 10,
+        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],  # 10/7
     },
 
     "T55A_POL": {
@@ -506,7 +665,7 @@ pol_unit_edits = {
     "T72M_POL": {
         "CommandPoints": 140,
         "availability": 8,
-        "XPMultiplier": [0.0, 8/8, 6/8, 0.0], # 8/6, or 0.62 for 8/5
+        "XPMultiplier": [0.0, 8/8, 6/8, 0.0], # 8/6
     },
 
     "T72M1_POL": {
@@ -521,7 +680,7 @@ pol_unit_edits = {
     },
 
     "T72M1_Wilk_POL": {
-        "CommandPoints": 200,
+        "CommandPoints": 195,
         "availability": 4,
         "XPMultiplier": [0.0, 0.0, 4/4, 3/4],  # 4/3
     },
@@ -538,6 +697,15 @@ pol_unit_edits = {
     # "OT_64_SKOT_2A_POL": {  # SKOT-2A
     #     "CommandPoints": 25,
     # },
+
+    "MTLB_trans_POL": {
+        "orders": {
+            "add_orders": ["sell"],
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'"],
+        },
+    },
 
     "BMP_1_SP2_POL": {  # BWP-1
         "CommandPoints": 20,
@@ -774,6 +942,23 @@ pol_unit_edits = {
 
     # POL HELI
 
+    "Mi_24D_s5_AT_POL": {
+        "CommandPoints": 145,
+        "availability": 4,
+        "XPMultiplier": [0.0, 4/4, 3/4, 0.0],
+    },
+
+    "Mi_24D_s8_AT_POL": {
+        "CommandPoints": 145,
+        "availability": 4,
+        "XPMultiplier": [0.0, 4/4, 3/4, 0.0],
+    },
+
+    "Mi_2_ATGM_POL": {
+        "CommandPoints": 60,
+        "availability": 4,
+        "XPMultiplier": [0.0, 7/7, 5/7, 0.0],
+    },
 
     # heli tab transports
     "Mi_2_trans_POL": {
@@ -783,9 +968,24 @@ pol_unit_edits = {
         },
     },
 
-    # POL AIR
+    "Mi_8T_non_arme_POL": {
+        "CommandPoints": 50,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'"],
+        },
+    },
 
-    "MiG_21bis_POL": {  # MiG-21bis AA2
+    "Mi_8T_POL": { # 32 S-5M x2
+        "CommandPoints": 50,
+    },
+
+    # POL AIR
+    "MiG_21bis_AA_POL": {  #  4x R-60M, 2x R-3R [AA1]
+        "CommandPoints": 120,
+        "XPMultiplier": [0.0, 4/4, 3/4, 2/4],
+    },
+
+    "MiG_21bis_POL": {  #  4x R-60M, 2x R-13M [AA2]
         "CommandPoints": 120,
         "XPMultiplier": [0.0, 4/4, 3/4, 2/4],
     },
@@ -795,13 +995,35 @@ pol_unit_edits = {
         "XPMultiplier": [0.0, 3/3, 0.0, 0.0],
     },
 
+    "MiG_21bis_RKT2_POL": {  # 4x S-24 [RKT1]
+        "CommandPoints": 100,
+        "availability": 4,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace_fixedsalvo": [("RocketAir_S24_240mm_x2", "RocketAir_S24_240mm_salvolength2_avion")],
+            },
+        },
+        "XPMultiplier": [0.0, 4/4, 0.0, 0.0],
+    },
+
     "Su_22_AT_POL": {  # Su-22M4 Seria 30
         "CommandPoints": 180,
         "XPMultiplier": [0.0, 2/2, 0.0, 0.0],
     },
 
-    "Su_22_SEAD_POL": {
-        "CommandPoints": 195,
+    "Su_22_RKT_POL": { # 4x S-24, 2x R-60M
+        "CommandPoints": 125,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": 3,
+        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+    },
+
+    "Su_22_SEAD_POL": {  #
+        "CommandPoints": 180,
         "WeaponDescriptor": {
             "turrets": {
                 2: {
@@ -812,6 +1034,16 @@ pol_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 2/2, 0.0, 1/2],
+    },
+
+    "MiG_29_AA_SOV": { # 4x R-73, 2x R-27R [AA1]
+        "CommandPoints": 200,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
     },
 
 }

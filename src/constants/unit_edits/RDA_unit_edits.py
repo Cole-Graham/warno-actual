@@ -923,6 +923,16 @@ rda_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
     },
 
+    "MiG_29_AA_DDR": { # 4x R-73, 2x R-27R [AA1]
+        "CommandPoints": 200,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
+    },
+
     "Su_22_AT_DDR": {
         "CommandPoints": 180,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
