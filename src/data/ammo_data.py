@@ -322,4 +322,4 @@ def build_salvo_weapons(parse_source) -> Dict[str, str]:
             salvo_weapons[name] = new_name
             
     logger.info(f"Found {len(salvo_weapons)} vanilla salvo weapons to rename")
-    return salvo_weapons 
+    return salvo_weapons

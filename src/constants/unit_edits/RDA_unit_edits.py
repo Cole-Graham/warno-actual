@@ -587,11 +587,11 @@ rda_unit_edits = {
     },
 
     "BTR_60_DDR": {
-        "CommandPoints": 25,
+        "CommandPoints": 20,
     },
 
     "BTR_70_DDR": {
-        "CommandPoints": 30,
+        "CommandPoints": 25,
     },
 
     "UAZ_469_Fagot_DDR": {

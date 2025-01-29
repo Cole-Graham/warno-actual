@@ -14,7 +14,7 @@ def edit_auto_cover(source_path: Any, game_db: Dict[str, Any]) -> None:
         game_db: Game database containing unit data
     """
     # logger.info("Modifying auto cover ranges")
-    unit_db = game_db.get("units", {})
+    unit_db = game_db.get("unit_data", {})
     
     for unit_descr in source_path:
         if not hasattr(unit_descr, 'namespace'):

@@ -24,7 +24,7 @@ def edit_missiles(source_path: Any, game_db: Dict[str, Any]) -> None:
     try:
         ammo_db = game_db["ammunition"]
         
-        # Handle vanilla modifications
+        # Handle vanilla modifications first
         try:
             vanilla_renames_ammunition(source_path, ammo_db)
             remove_vanilla_instances(source_path, AMMUNITION_MISSILES_REMOVALS)
@@ -62,7 +62,7 @@ def edit_missiles(source_path: Any, game_db: Dict[str, Any]) -> None:
                     logger.error(f"Failed getting descriptor for {weapon_name}: {str(e)}")
                     continue
                 
-                # Apply edits
+                # Apply edits to base descriptor
                 try:
                     _apply_missile_edits(base_descr, data, ammo_data, is_new)
                     logger.debug(f"Applied edits to {weapon_name}")
@@ -70,10 +70,13 @@ def edit_missiles(source_path: Any, game_db: Dict[str, Any]) -> None:
                     logger.error(f"Failed applying edits to {weapon_name}: {str(e)}")
                     continue
                 
-                # Handle salvo variants
+                # Handle salvo variants - pass the fully edited base descriptor
                 try:
                     if "WeaponDescriptor" in data and "SalvoLengths" in data["WeaponDescriptor"]:
                         _handle_salvo_variants(source_path, base_descr, weapon_name, data, is_new)
+                    elif is_new:
+                        # Only add base descriptor if no salvo variants
+                        source_path.add(base_descr)
                 except Exception as e:
                     logger.error(f"Failed handling salvo variants for {weapon_name}: {str(e)}")
                     continue
@@ -144,7 +147,7 @@ def _get_existing_descriptor(source_path, weapon_name):
 def _handle_salvo_variants(source_path: Any, base_descr: Any, weapon_name: str, 
                          data: Dict, is_new: bool) -> None:
     """Handle salvo variants for missile."""
-    logger.info(f"Creating salvo variants for {weapon_name} (is_new={is_new})")
+    logger.info(f"{'Creating' if is_new else 'Editing'} salvo variants for {weapon_name}")
     salvo_lengths = data["WeaponDescriptor"]["SalvoLengths"]
     logger.info(f"Salvo lengths: {salvo_lengths}")
     
@@ -160,40 +163,46 @@ def _handle_salvo_variants(source_path: Any, base_descr: Any, weapon_name: str,
         if length == 1 and i == len(salvo_lengths) - 1:
             namespace = f"Ammo_{weapon_name}"
         else:
-            namespace = f"Ammo_{weapon_name}_x{length}"
+            namespace = f"Ammo_{weapon_name}_salvolength{length}"
             
         try:
-            existing = source_path.by_n(namespace)
-            exists = True
-        except:
-            exists = False
-            existing = None
-            
-        logger.debug(f"Checking {namespace} - exists: {exists}")
-        
-        if is_new or not exists:
-            # Create new variant
-            variant = base_descr.copy()
-            variant.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
-            variant.v.by_m("HitRollRuleDescriptor").v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
-            variant.namespace = namespace
-            
-            if base_cost is not None:
-                variant.v.by_m("SupplyCost").v = str(int(base_cost) * length)
+            if is_new:
+                # For new missiles, copy the already-edited base descriptor
+                variant = base_descr.copy()
+                variant.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
+                variant.v.by_m("HitRollRuleDescriptor").v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
+                variant.namespace = namespace
                 
-            # Set salvo-specific values
-            variant.v.by_m("NbTirParSalves").v = str(length)
-            variant.v.by_m("AffichageMunitionParSalve").v = str(length)
-            
-            source_path.add(variant)
-            logger.info(f"Created new variant {namespace}")
-        else:
-            # Update existing variant
-            if base_cost is not None:
-                existing.v.by_m("SupplyCost").v = str(int(base_cost) * length)
-            existing.v.by_m("NbTirParSalves").v = str(length)
-            existing.v.by_m("AffichageMunitionParSalve").v = str(length)
-            logger.debug(f"Updated existing variant {namespace}")
+                # Only apply salvo-specific values
+                if base_cost is not None:
+                    variant.v.by_m("SupplyCost").v = str(int(base_cost) * length)
+                variant.v.by_m("NbTirParSalves").v = str(length)
+                variant.v.by_m("AffichageMunitionParSalve").v = str(length)
+                
+                source_path.add(variant)
+                logger.info(f"Created new variant {namespace}")
+                
+            else:
+                # For existing missiles, update the variant
+                existing = source_path.by_n(namespace)
+                if existing:
+                    logger.debug(f"Found existing variant {namespace}")
+                    
+                    # Apply all base missile edits first
+                    _apply_missile_edits(existing, data, data["Ammunition"], is_new)
+                    
+                    # Then update salvo-specific values
+                    if base_cost is not None:
+                        existing.v.by_m("SupplyCost").v = str(int(base_cost) * length)
+                    existing.v.by_m("NbTirParSalves").v = str(length)
+                    existing.v.by_m("AffichageMunitionParSalve").v = str(length)
+                    logger.info(f"Updated existing variant {namespace}")
+                else:
+                    logger.warning(f"Salvo variant {namespace} not found")
+                
+        except Exception as e:
+            logger.error(f"Error handling salvo variant {namespace}: {str(e)}")
+            continue
 
 def _apply_missile_edits(descr: Any, data: Dict, ammo_data: Dict, is_new: bool) -> None:
     """Apply edits to missile descriptor."""
@@ -307,12 +316,12 @@ def edit_missile_speed(source: Any, game_db: Dict[str, Any]) -> None:
                     continue
                 
                 default_cfg = module.v.by_m("DefaultConfig")
+                uncontrollable_cfg = module.v.by_m("UncontrollableConfig")
                 if "MaxSpeedGRU" in data["MissileDescriptor"]:
                     max_speed = data["MissileDescriptor"]["MaxSpeedGRU"]
                     default_cfg.v.by_m("MaxSpeedGRU").v = str(max_speed)
                     logger.debug(f"Changed {missile_decr.namespace} max speed to {max_speed}")
                     
-                    uncontrollable_cfg = module.v.by_m("UncontrollableConfig")
                     uncontrollable_cfg.v.by_m("MaxSpeedGRU").v = str(max_speed)
                     logger.debug(f"Changed {missile_decr.namespace} uncontrollable speed to {max_speed}")
                     
@@ -323,7 +332,7 @@ def edit_missile_speed(source: Any, game_db: Dict[str, Any]) -> None:
                     
                 if "AutoGyr" in data["MissileDescriptor"]:
                     auto_gyr = data["MissileDescriptor"]["AutoGyr"]
-                    uncontrollable_cfg.v.by_m("AutoGyr").v = str(auto_gyr)
+                    default_cfg.v.by_m("AutoGyr").v = str(auto_gyr)
                     logger.debug(f"Changed {missile_decr.namespace} auto gyr to {auto_gyr} (90 degrees)")
                 
             break

@@ -86,6 +86,9 @@ from .weapons import (
     apply_default_salves,
     update_weapondescr_ammoname_quantity,
     remove_stress_on_miss,
+    edit_he_damage,
+    edit_aim_times,
+    edit_weapon_ranges,
 )
 from .weapons.ammunition import edit_ammunition
 from .weapons.damage_families import (

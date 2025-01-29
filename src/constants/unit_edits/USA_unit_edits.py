@@ -804,7 +804,7 @@ usa_unit_edits = {
     },
 
     "Airborne_MP_RCL_US": {
-        "CommandPoints": 30,
+        "CommandPoints": 25,
         "availability": 9,
         "XPMultiplier": [0.0, 1.0, 0.8, 0.0],
         "max_speed": 20,
@@ -819,7 +819,7 @@ usa_unit_edits = {
     },
 
     "MP_RCL_US": {
-        "CommandPoints": 30,
+        "CommandPoints": 25,
         "availability": 9,
         "XPMultiplier": [0.0, 1.0, 0.8, 0.0],
         "max_speed": 20,
@@ -1627,6 +1627,7 @@ usa_unit_edits = {
     },
     
     "M113A3_US": {
+        "CommandPoints": 15,
         "orders": {
             "add_orders": ["sell"],
         },
@@ -1636,6 +1637,7 @@ usa_unit_edits = {
     },
 
     "M113A1_NG_US": {
+        "CommandPoints": 15,
         "orders": {
             "add_orders": ["sell"],
         },
@@ -1645,7 +1647,7 @@ usa_unit_edits = {
     },
 
     "M113_Dragon_US": {
-        "CommandPoints": 20,
+        "CommandPoints": 15,
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [("M47_DRAGON", "M47_DRAGON_II")],

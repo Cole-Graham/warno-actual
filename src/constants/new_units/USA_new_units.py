@@ -182,19 +182,15 @@ USA_NEW_UNITS = {
         "Factory": "EDefaultFactories/Logistic",
         "CommandPoints": 350,
         "Divisions": {
-            "US_3rd_Arm_multi": {
-                "Transports": None,
-            },
-        },
-        "availability": 1,
-        "Divisions": {
             "default": {
                 "cards": 69,
             },
             "US_3rd_Arm_multi": {
                 "cards": 2,
+                "Transports": None,
             },
         },
+        "availability": 1,
         "XPMultiplier": [0.0, 0.0, 0.0, 1.0],
         "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack', 
                    'MoveAndAttack', 'Spread', 'Reverse', 'Shoot', 'ShootOnPosition', 
@@ -231,22 +227,20 @@ USA_NEW_UNITS = {
         "Factory": "EDefaultFactories/Logistic",
         "CommandPoints": 325,
         "Divisions": {
-            "US_11ACR_multi": {
-                "Transports": None,
-                },
-            "US_8th_Inf_multi": {
-                "Transports": None,
-                },
-            "US_3rd_Arm_multi": {
-                "Transports": None,
-                },
-        },
-        "availability": 2,
-        "Divisions": {
             "default": {
                 "cards": 1,
             },
+            "US_11ACR_multi": {
+                "Transports": None,
+            },
+            "US_8th_Inf_multi": {
+                "Transports": None,
+            },
+            "US_3rd_Arm_multi": {
+                "Transports": None,
+            },
         },
+        "availability": 2,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
         "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack', 
                    'MoveAndAttack', 'Spread', 'Reverse', 'Shoot', 'ShootOnPosition', 
@@ -373,10 +367,10 @@ USA_NEW_UNITS = {
             },
             "US_8th_Inf_multi": {
                 "Transports": None,
-                },
+            },
             "US_24th_Inf_multi": {
                 "Transports": None,
-                },
+            },
         },
         "availability": 2,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
@@ -420,10 +414,10 @@ USA_NEW_UNITS = {
             },
             "US_8th_Inf_multi": {
                 "Transports": None,
-                },
+            },
             "US_35th_Inf_multi": {
                 "Transports": None,
-                },
+            },
         },
         "availability": 2,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
@@ -467,7 +461,7 @@ USA_NEW_UNITS = {
             },
             "US_35th_Inf_multi": {
                 "Transports": None,
-                },
+            },
         },
         "availability": 3,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],

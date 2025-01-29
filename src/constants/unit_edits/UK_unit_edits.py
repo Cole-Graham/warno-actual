@@ -525,7 +525,7 @@ uk_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_appui",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Transport",
-        "availability": 1,
+        "availability": 2,
         "Divisions": {
             "add": ["UK_2nd_Infantry"],
             "is_transported": False,
@@ -816,7 +816,9 @@ uk_unit_edits = {
     "DCA_Rapier_UK": {
         "CommandPoints": 65,
         "availability": 6,
-        "OpticalStrengthAltitude": 220,
+        "optics": {
+            "OpticalStrengthAltitude": 220,
+        },
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
         },
@@ -826,7 +828,9 @@ uk_unit_edits = {
     "Tracked_Rapier_UK": {
         "CommandPoints": 85,
         "availability": 4,
-        "OpticalStrengthAltitude": 220,
+        "optics": {
+            "OpticalStrengthAltitude": 220,
+        },
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
         },
@@ -835,8 +839,10 @@ uk_unit_edits = {
     
     "DCA_Rapier_FSA_UK": { # towed FSB1
         "CommandPoints": 85,
-        "availability": 6,
-        "OpticalStrengthAltitude": 300,
+        "availability": 6,  
+        "optics": {
+            "OpticalStrengthAltitude": 300,
+        },
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
@@ -859,6 +865,13 @@ uk_unit_edits = {
     
     "Lynx_AH_Mk1_LBH_UK": {
         "CommandPoints": 70,
+    },
+    
+    "Gazelle_trans_UK": {
+        "CommandPoints": 35,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'"],
+        },
     },
     
     "Gazelle_SNEB_UK": {
