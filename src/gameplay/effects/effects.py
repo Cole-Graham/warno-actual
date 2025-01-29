@@ -18,7 +18,7 @@ logger = setup_logger(__name__)
 
 
 def edit_shock_effects(source_path) -> None:
-    """Edit shock effects in EffetsSurUnite.ndf."""
+    """Edit effects in EffetsSurUnite.ndf."""
     logger.info("Modifying Shock Trait effects")
     
     # Add new shock effects
@@ -31,16 +31,38 @@ def edit_shock_effects(source_path) -> None:
             break
     
     # Modify sniper effects
-    sniper_obj = source_path.by_n("UnitEffect_sniper").v
-    effects_list = sniper_obj.by_m("EffectsDescriptors").v
+    sniper_obj = source_path.by_n("UnitEffect_sniper")
+    effects_list = sniper_obj.v.by_m("EffectsDescriptors")
     
-    for effect in effects_list:
+    for effect in effects_list.v:
         if not hasattr(effect.v, 'type'):
             continue
             
         if effect.v.type == "TUnitEffectIncreaseWeaponPhysicalDamagesDescriptor":
-            effects_list.remove(effect.index)
-            logger.info(f"Removed sniper damage bonus from {sniper_obj.parent_row.namespace}") 
+            effects_list.v.remove(effect.index)
+            logger.info(f"Removed sniper damage bonus from {sniper_obj.v.parent_row.namespace}")
+            break
+            
+    # Modify stress on miss
+    stress_on_miss_objects = [
+        ("UnitEffect_stressOnMiss_high", 100),
+        ("UnitEffect_stressOnMiss_low", 50),
+        ("UnitEffect_stressOnMiss_mid", 75),
+    ]
+    
+    # Edit stress on miss effects
+    for effect_name, suppress_damage in stress_on_miss_objects:
+        stress_on_miss_obj = source_path.by_n(effect_name)
+        effects_list = stress_on_miss_obj.v.by_m("EffectsDescriptors")
+        for effect in effects_list.v:
+            if not hasattr(effect.v, 'type'):
+                continue
+        
+            if effect.v.type == "TEffectInflictSuppressDamageDescriptor":
+                effect.v.by_m("SuppressDamageValue").v = str(suppress_damage)
+                logger.info(f"Updated {effect_name.replace('UnitEffect_', '')} effect to "
+                            f"{suppress_damage}")
+                break
 
 
 def edit_shock_effects_packs_list(source_path) -> None:
@@ -68,14 +90,18 @@ def edit_shock_effects_packs_list(source_path) -> None:
 
 def edit_capacite_list(source_path) -> None:
     """Edit capacities in CapaciteList.ndf."""
-    logger.info("Modifying Shock Trait effects in capacite list")
+    logger.info("Modifying Trait effects in capacite list")
     
-    # Edit shock range
+    # Edit capacities
     for capacite_descr in source_path:
         if capacite_descr.n == "Capacite_Choc":
             capacite_descr.v.by_m("RangeGRU").v = "100"
             logger.info("Updated Capacite_Choc range to 100")
-            break
+
+        elif capacite_descr.n == "Capacite_electronic_warfare":
+            capacite_descr.v.by_m("RadiusGRU").v = "5000"
+            capacite_descr.v.by_m("RangeGRU").v = "5000"
+            logger.info("Updated Capacite_electronic_warfare range to 5000")
     
     # Add new capacities
     for i, row in enumerate(source_path, start=1):

@@ -22,7 +22,11 @@ from .mortar_mods import (
     add_radio_tag_to_mortars,
     edit_smoke_duration,
 )
-from .standards import edit_aim_times, edit_weapon_ranges
+from .standards import (
+    edit_aim_times,
+    edit_weapon_ranges,
+    bomb_damage_standards
+)
 from .unit_edits import unit_edits_weapondescriptor
 from .vanilla_modifications import vanilla_renames_ammunition, remove_vanilla_instances
 
@@ -50,4 +54,5 @@ __all__ = [
     'edit_he_damage',
     'edit_aim_times',
     'edit_weapon_ranges',
+    'bomb_damage_standards'
 ] 

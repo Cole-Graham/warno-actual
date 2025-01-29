@@ -15,6 +15,8 @@ from src.gameplay import (
     edit_he_damage,
     edit_aim_times,
     edit_weapon_ranges,
+    global_bomber_edits,
+    bomb_damage_standards
 )
 from src.gameplay.buildings import edit_fob_attributes
 from src.gameplay.depictions import (
@@ -220,17 +222,20 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
             edit_infantry_armor_wa,
             lambda source_path: edit_shock_units(source_path, game_db),
             lambda source_path: edit_mg_teams(source_path, game_db),
+            lambda source_path: global_bomber_edits(source_path, game_db),
         ],
         "GameData/Generated/Gameplay/Gfx/Ammunition.ndf": [
             lambda source_path: edit_ammunition(source_path, game_db),
             lambda source_path: apply_damage_families(source_path, game_db),
             lambda source_path: edit_he_damage(source_path, game_db),
-            lambda source_path: edit_aim_times(source_path),
-            lambda source_path: edit_weapon_ranges(source_path),
+            edit_aim_times,
+            edit_weapon_ranges,
+            bomb_damage_standards,
         ],
         "GameData/Generated/Gameplay/Gfx/AmmunitionMissiles.ndf": [
             lambda source_path: edit_missiles(source_path, game_db),
-            remove_stress_on_miss,
+            # remove_stress_on_miss, # probably not needed anymore (doesn't do anything in game?)
+            bomb_damage_standards,
         ],
         "GameData/Generated/Gameplay/Gfx/WeaponDescriptor.ndf": [
             lambda source_path: unit_edits_weapondescriptor(source_path, game_db),

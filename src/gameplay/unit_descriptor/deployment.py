@@ -36,5 +36,5 @@ def edit_forward_deploy(source_path) -> None:
                 break
             
             elif shift == "3533.56890459":
-                module.v.by_m("DeploymentShiftGRU").v = "2000.0"
-                logger.info(f"Set {unit_descr.namespace} deployment to 2000m") 
+                module.v.by_m("DeploymentShiftGRU").v = "1750.0"
+                logger.info(f"Set {unit_descr.namespace} deployment to 1750m") 

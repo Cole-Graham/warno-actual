@@ -2086,6 +2086,9 @@ sov_unit_edits = {
             },
         },
         "availability": 2,
+        "SpecialtiesList": {
+            "add_specs": ["'terrain_radar'"],
+        },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
     },
     
@@ -2099,6 +2102,9 @@ sov_unit_edits = {
                     "AngleRotationMinPitch": -1.570796,
                 },
             },
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'terrain_radar'"],
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
     },
@@ -2120,6 +2126,9 @@ sov_unit_edits = {
                 },
             },
         },
+        "SpecialtiesList": {
+            "add_specs": ["'terrain_radar'"],
+        },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
     },
     
@@ -2133,6 +2142,9 @@ sov_unit_edits = {
 
     "Su_24M_AT1_SOV": {
         "CommandPoints": 190,
+        "SpecialtiesList": {
+            "add_specs": ["'terrain_radar'"],
+        },
     },
 
     "Su_24M_AT2_SOV": {
@@ -2141,11 +2153,17 @@ sov_unit_edits = {
 
     "Su_24M_SOV": {
         "CommandPoints": 190,
+        "SpecialtiesList": {
+            "add_specs": ["'terrain_radar'"],
+        },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 
     "Su_24M_thermo_SOV": {
         "CommandPoints": 225,
+        "SpecialtiesList": {
+            "add_specs": ["'terrain_radar'"],
+        },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 

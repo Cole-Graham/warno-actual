@@ -94,6 +94,27 @@ NEW_TRAITS = {
         )),
         "texture": "refundable.png",
     },
+    
+    "dive_attack": {
+        "title": ("ZQFMDKRRNG", "Dive Attack"),
+        "description": ("NHDOKPRKOY", (
+            f"This fighter bomber will dive to achieve maximum accuracy, but will be more "
+            f"vulnerable to enemy fire."
+        )),
+        "texture": "dive_strategy.png",
+    },
+    
+    "terrain_radar": {
+        "title": ("USBMIZIYZJ", "Terrain-Following Radar"),
+        "description": ("YVVMJNRCEB", (
+            f"This bomber has a terrain-following radar, enabling it to fly extremely "
+            f"low and avoid detection and targeting for longer, thus giving enemies less "
+            f"time to react. This strategy also has its downsides, as the low altitude "
+            f"makes it an easier target to hit."
+            f"(1.5 stealth bonus)"
+        )),
+        "texture": "terrain_radar.png",
+    },
 }
 
 TRAIT_EDITS = {

@@ -119,6 +119,9 @@ def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
             
             elif module_type == "TSupplyModuleDescriptor":
                 unit_info["is_supply_unit"] = True
+                
+            elif module_type == "AirplaneMovementDescriptor":
+                unit_info["attack_strategies"] = _gather_attack_strategies(module)
             
             elif module_type == "TVisibilityModuleDescriptor":
                 unit_info["visibility"] = _extract_stealth_data(module)
@@ -375,6 +378,9 @@ def _gather_turret_data(weapon_descr: Any) -> Dict[str, Any]:
     for turret in turret_list:
         if not is_valid_turret(turret.v):
             continue
+        # is_dive_bomb = False
+        # if turret.v.type == "TTurretBombardierDescriptor":
+        #     if turret.v.by_m("FlyingAltitude")
             
         try:
             yul_bone = int(turret.v.by_m("YulBoneOrdinal").v)
@@ -515,4 +521,13 @@ def _gather_weapon_locations(weapon_descr: Any) -> Dict[str, Dict[str, Any]]:
                 'salvo_index': int(weapon.v.by_m("SalvoStockIndex").v)
             })
     
-    return weapon_locations 
+    return weapon_locations
+
+def _gather_attack_strategies(module: Any) -> Dict[str, Any]:
+    """Gather attack strategies from a unit descriptor."""
+    attack_strategies = []
+    
+    for strategy in module.v.by_m("OrderedAttackStrategies").v:
+        attack_strategies.append(strategy.v)
+    
+    return attack_strategies

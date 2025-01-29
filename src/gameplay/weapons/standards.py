@@ -79,3 +79,46 @@ def edit_weapon_ranges(source_path):
                     continue
             
             
+def bomb_damage_standards(source_path):
+    """Edit bomb damage standards in Ammunition.ndf"""
+    
+    bombs = {
+        "he_250kg": {
+            "PhysicalDamages": 10,
+            "RadiusSplashPhysicalDamagesGRU": 110,
+            "RadiusSplashSuppressDamagesGRU": 147,
+        },
+        "he_500kg": {
+            "PhysicalDamages": 15,
+            "RadiusSplashPhysicalDamagesGRU": 150,
+            "RadiusSplashSuppressDamagesGRU": 200,
+        },
+        "he_1000kg": {
+            "PhysicalDamages": 20,
+            "RadiusSplashPhysicalDamagesGRU": 170,
+            "RadiusSplashSuppressDamagesGRU": 225,
+        },
+    }
+    
+    bomb_matching = {
+        "250": ["250kg"],
+        "500": ["500kg", "513kg"],
+        "1000": ["1000kg"]
+    }
+    
+    for ammo_descr in source_path:
+        ammo_name = ammo_descr.namespace
+        # name_hash = ammo_descr.v.by_m("Name")
+        if any(bomb in ammo_name for bomb in bomb_matching["250"]):
+            for key, value in bombs["he_250kg"].items():
+                ammo_descr.v.by_m(key).v = str(value)
+                logger.info(f"(Ammunition.ndf) Changed {ammo_descr.namespace} {key} to {value}")
+        elif any(bomb in ammo_name for bomb in bomb_matching["500"]):
+            for key, value in bombs["he_500kg"].items():
+                ammo_descr.v.by_m(key).v = str(value)
+                logger.info(f"(Ammunition.ndf) Changed {ammo_descr.namespace} {key} to {value}")
+        elif any(bomb in ammo_name for bomb in bomb_matching["1000"]):
+            for key, value in bombs["he_1000kg"].items():
+                ammo_descr.v.by_m(key).v = str(value)
+                logger.info(f"(Ammunition.ndf) Changed {ammo_descr.namespace} {key} to {value}")
+

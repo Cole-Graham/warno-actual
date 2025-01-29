@@ -110,10 +110,13 @@ def modify_module(
             elif namespace == "GenericMovement" and "max_speed" in edits:
                 descr_row.v.by_m("Default").v.by_m("MaxSpeedInKmph").v = str(edits["max_speed"])
             
-            elif namespace == "AirplaneMovement" and "AirplaneMovement" in edits:
-                if "parent_membr" in edits["AirplaneMovement"]:
-                    for key, value in edits["AirplaneMovement"]["parent_membr"].items():
-                        descr_row.v.by_m(key).v = str(value)
+            elif namespace == "AirplaneMovement":
+                if "max_speed" in edits:
+                    descr_row.v.by_m("SpeedInKmph").v = str(edits["max_speed"])
+                if "AirplaneMovement" in edits:
+                    if "parent_membr" in edits["AirplaneMovement"]:
+                        for key, value in edits["AirplaneMovement"]["parent_membr"].items():
+                            descr_row.v.by_m(key).v = str(value)
         
         # Apply module-specific handler if it exists
         if handler := module_handlers.get(descr_type):
@@ -162,6 +165,10 @@ def _handle_damage(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
 def _handle_weapon_assignment(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
     if "WeaponAssignment" in edits:
         descr_row.v.by_m("InitialSoldiersToTurretIndexMap").v = "MAP" + str(edits["WeaponAssignment"])
+
+def _handle_airplane_movement(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
+    if "max_speed" in edits:
+        descr_row.v.by_m("SpeedInKmph").v = str(edits["max_speed"])
 
 def _handle_scanner(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
     if "optics" not in edits:

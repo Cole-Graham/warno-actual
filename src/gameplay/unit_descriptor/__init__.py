@@ -1,5 +1,6 @@
 """Unit descriptor modification modules."""
 
+from .bombers import global_bomber_edits
 from .cover import edit_auto_cover
 from .deployment import edit_forward_deploy
 from .infantry import edit_infantry_armor_wa
@@ -18,4 +19,5 @@ __all__ = [
     'edit_antirad_optics',
     'edit_team_supply',
     'edit_units',
+    'global_bomber_edits',
 ] 

@@ -30,7 +30,7 @@ logger = setup_logger(__name__)
 
 SEAD_UNITS: List[Tuple[str, float]] = [
     ("Buccaneer_S2B_SEAD_UK", 10000, 5000.0),  # Martel 5250m
-    ("EF111_Raven_US", 10000, 5000.0),  # EW
+    ("EF111_Raven_US", 12500, 5000.0),  # EW
     ("F16E_SEAD_US", 10000, 5000.0),  # AGM-88 5950m
     ("F4_Wild_Weasel_US", 10000, 5000.0),  # AGM-45 5250m (should be 5000m missile range probably)
     ("Jaguar_SEAD2_FR", 10000, 5000.0),  # Armat 5775mm

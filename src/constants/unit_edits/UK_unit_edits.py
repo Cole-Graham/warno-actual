@@ -954,6 +954,9 @@ uk_unit_edits = {
     
     "Tornado_ADV_HE_UK": {
         "CommandPoints": 220,
+        "SpecialtiesList": {
+            "add_specs": ["'terrain_radar'"],
+        },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
     

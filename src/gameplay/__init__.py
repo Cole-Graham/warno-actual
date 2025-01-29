@@ -80,6 +80,7 @@ from .unit_descriptor import (
     edit_mg_teams,
     edit_team_supply,
     edit_units,
+    global_bomber_edits,
 )
 from .veterancy import edit_veterancy_effects, edit_veterancy_hints
 from .weapons import (
@@ -89,6 +90,7 @@ from .weapons import (
     edit_he_damage,
     edit_aim_times,
     edit_weapon_ranges,
+    bomb_damage_standards
 )
 from .weapons.ammunition import edit_ammunition
 from .weapons.damage_families import (

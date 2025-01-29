@@ -2388,11 +2388,17 @@ usa_unit_edits = {
 
     "F111E_Aardvark_US": { # 12x mk82, 3rd Armored
         "CommandPoints": 190,
+        "SpecialtiesList": {
+            "add_specs": ["'terrain_radar'"],
+        },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 
     "F111F_Aardvark_US": { # 12x mk82, 3rd Armored
         "CommandPoints": 190,
+        "SpecialtiesList": {
+            "add_specs": ["'terrain_radar'"],
+        },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 
@@ -2403,26 +2409,42 @@ usa_unit_edits = {
 
     "F111E_Aardvark_CBU_US": { # 8x Mk-20 Rockeye, 3rd Armored
         "CommandPoints": 190,
+        "SpecialtiesList": {
+            "add_specs": ["'terrain_radar'"],
+        },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 
     "F111F_Aardvark_CBU_US": { # 8x Mk-20 Rockeye, 82nd Airborne
         "CommandPoints": 190,
+        "SpecialtiesList": {
+            "add_specs": ["'terrain_radar'"],
+        },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 
     "F111E_Aardvark_napalm_US": { # 4x Mk-77 napalm, 3rd Armored
         "CommandPoints": 190,
+        "SpecialtiesList": {
+            "add_specs": ["'terrain_radar'"],
+        },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 
     "F111F_Aardvark_napalm_US": { # 4x Mk-77 napalm, 82nd Airborne
         "CommandPoints": 190,
+        "SpecialtiesList": {
+            "add_specs": ["'terrain_radar'"],
+        },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 
     "EF111_Raven_US": {
-        "CommandPoints": 140,
+        "CommandPoints": 180,
+        "max_speed": 1400,
+        "SpecialtiesList": {
+            "add_specs": ["'terrain_radar'"],
+        },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0]
     },
 
