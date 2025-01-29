@@ -526,6 +526,13 @@ pol_unit_edits = {
         "XPMultiplier": [3/3, 2/3, 0.0, 0.0],  # 3/2
     },
 
+    "DANA_POL": {
+        "CommandPoints": 200,
+        "availability": 2,
+        "XPMultiplier": [2/2, 0.0, 1/2, 0.0],  # 2/1
+        # "max_speed": 50,  # need to also set road speed
+    },
+
     # POL TANK
     "T55A_CMD_POL": {
         "CommandPoints": 80,
@@ -845,14 +852,12 @@ pol_unit_edits = {
     "Mi_2_gunship_POL": {  # Mi-2US
         "availability": 4,
         "XPMultiplier": [0.0, 4/4, 3/4, 0.0],
-        "ECM:": -0.1,
     },
 
     "Mi_2Ro_reco_POL": {  # Mi-2Ro
         "availability": 4,
         "CommandPoints": 50,
         "XPMultiplier": [0.0, 4/4, 3/4, 0.0],
-        "ECM:": -0.1,
     },
 
     #   recon tab transports
