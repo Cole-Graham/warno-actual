@@ -2,7 +2,7 @@ import sys
 
 from config.config_loader import ConfigLoader
 from src import ModConfig
-from src.data import build_database
+from src.data import build_database, load_database_from_disk
 from src.utils.database_utils import verify_database
 from src.utils.dictionary_utils import initialize_dictionary_files
 from src.utils.logging_utils import setup_logger
@@ -56,11 +56,13 @@ if __name__ == "__main__":
             else:
                 logger.warning("Continuing with outdated database...")
         
-        # Build the database if needed
+        # Always load or build the database
         if config.config_data['data_config']['build_database']:
             config.config_data['game_db'] = build_database(config.config_data)
+        else:
+            config.config_data['game_db'] = load_database_from_disk(config.config_data)
         
-        # Import and run main after database build
+        # Import and run main after database is loaded
         from src.main import main
         main()
         

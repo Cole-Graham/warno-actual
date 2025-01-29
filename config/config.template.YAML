@@ -7,7 +7,7 @@ build_config:
 # Data configuration
 data_config:
   build_database: false    # Set to true to rebuild database
-  database_path: "data/database"
+  database_path: "src/data/database"  # Database location
   update_master_metadata: false  # Set to true to update master metadata after build
 
 # Asset configuration  

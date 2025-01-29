@@ -896,7 +896,7 @@ rda_unit_edits = {
         "availability": 4,
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace_fixedsalvo": [("RocketAir_S5_57mm_salvolength32", "RocketAir_S5_57mm_avion_salvolength32")],
+                "replace": [("RocketAir_S5_57mm_salvolength32", "RocketAir_S5_57mm_avion_salvolength32")],
             },
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],

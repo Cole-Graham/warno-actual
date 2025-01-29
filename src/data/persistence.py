@@ -17,14 +17,10 @@ DB_FILENAMES = {
     "depiction_data": "depiction_data.json"
 }
 
-def get_database_path() -> Path:
-    """Get the path to the database directory."""
-    return Path(__file__).parent / "database"
-
-def save_database_to_disk(database: Dict[str, Any]) -> None:
+def save_database_to_disk(database: Dict[str, Any], config: Dict) -> None:
     """Save database to disk."""
     try:
-        db_path = get_database_path()
+        db_path = Path(config['data_config']['database_path'])
         ensure_db_directory(str(db_path))
         
         # Save each component
@@ -45,9 +41,9 @@ def save_database_to_disk(database: Dict[str, Any]) -> None:
         logger.error(f"Failed to save database: {e}")
         raise
 
-def load_database_from_disk() -> Dict[str, Any]:
+def load_database_from_disk(config: Dict) -> Dict[str, Any]:
     """Load database components from disk."""
-    db_path = get_database_path()
+    db_path = Path(config['data_config']['database_path'])
     database = {}
     
     for db_key, filename in DB_FILENAMES.items():
