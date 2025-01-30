@@ -10,6 +10,7 @@ from src.utils.ndf_utils import find_namespace, get_modules_list, is_obj_type
 
 logger = setup_logger(__name__)
 
+
 def edit_units(source_path: Any, game_db: Dict[str, Any]) -> None:
     """Edit unit descriptors."""
     logger.info("Starting UniteDescriptor.ndf modifications")
@@ -68,9 +69,9 @@ def edit_units(source_path: Any, game_db: Dict[str, Any]) -> None:
     logger.info(f"Processed {units_processed} units total")
     logger.info(f"Modified {units_modified} units")
 
-def modify_module(
-    unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list, dictionary_entries: list
-) -> None:
+
+def modify_module(unit_row: Any, descr_row: Any, edits: dict, index: int,
+                  modules_list: list, dictionary_entries: list) -> None:
     """Apply edits to a specific module based on its type."""
     try:
         if not hasattr(descr_row.v, 'type'):
@@ -109,6 +110,14 @@ def modify_module(
             
             elif namespace == "GenericMovement" and "max_speed" in edits:
                 descr_row.v.by_m("Default").v.by_m("MaxSpeedInKmph").v = str(edits["max_speed"])
+
+            elif namespace == "LandMovement" and "road_speed" in edits:
+                if "factor" in edits["road_speed"]:
+                    factor = edits["road_speed"]["factor"]
+                    descr_row.v.by_m("Default").v.by_m("SpeedBonusFactorOnRoad").v = "{:0.2f}".format(factor)
+                elif "road_speed" in edits["road_speed"] and "base_speed" in edits["road_speed"]:
+                    factor = edits["road_speed"]["road_speed"] / edits["road_speed"]["base_speed"]
+                    descr_row.v.by_m("Default").v.by_m("SpeedBonusFactorOnRoad").v = "{:0.2f}".format(factor)
             
             elif namespace == "AirplaneMovement":
                 if "max_speed" in edits:
@@ -125,6 +134,7 @@ def modify_module(
     except Exception as e:
         logger.error(f"Error modifying module for {unit_name}: {str(e)}")
 
+
 def _handle_tags(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
     if "TagSet" not in edits:
         return
@@ -136,13 +146,16 @@ def _handle_tags(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
             tagset.add(tag)
             logger.info(f"Added tag {tag} to {unit_row.namespace}")
 
+
 def _handle_visibility(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
     if "stealth" in edits:
         descr_row.v.by_m("UnitConcealmentBonus").v = str(edits["stealth"])
 
+
 def _handle_base_damage(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
     if "strength" in edits:
         descr_row.v.by_m("MaxPhysicalDamages").v = str(edits["strength"])
+
 
 def _handle_damage(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
     if "armor" in edits:
@@ -162,13 +175,16 @@ def _handle_damage(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
     if "ECM" in edits:
         descr_row.v.by_m("HitRollECM").v = str(edits["ECM"])
 
+
 def _handle_weapon_assignment(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
     if "WeaponAssignment" in edits:
         descr_row.v.by_m("InitialSoldiersToTurretIndexMap").v = "MAP" + str(edits["WeaponAssignment"])
 
+
 def _handle_airplane_movement(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
     if "max_speed" in edits:
         descr_row.v.by_m("SpeedInKmph").v = str(edits["max_speed"])
+
 
 def _handle_scanner(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
     if "optics" not in edits:
@@ -194,6 +210,7 @@ def _handle_scanner(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
         for key, value in edits["optics"]["SpecializedOpticalStrengths"].items():
             descr_row.v.by_m("SpecializedOpticalStrengths").v.by_k(key).v = str(value)
 
+
 def _handle_production(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
     if "CommandPoints" in edits:
         cmd_points = "$/GFX/Resources/Resource_CommandPoints"
@@ -202,23 +219,28 @@ def _handle_production(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
     if "Factory" in edits:
         descr_row.v.by_m("Factory").v = edits["Factory"]
 
+
 def _handle_tactical_label(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
     if "SortingOrder" in edits:
         descr_row.v.by_m("MultiSelectionSortingOrder").v = str(edits["SortingOrder"])
     if "strength" in edits:
         descr_row.v.by_m("NbSoldiers").v = str(edits["strength"])
 
+
 def _handle_strategic_data(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
     if "UnitAttackValue" in edits:
         descr_row.v.by_m("UnitAttackValue").v = str(edits["UnitAttackValue"])
         descr_row.v.by_m("UnitDefenseValue").v = str(edits["UnitDefenseValue"])
+
 
 def _handle_icon(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
     if "IdentifiedTextures" in edits:
         descr_row.v.by_m("IdentifiedTextures").v = str(edits["IdentifiedTextures"])
         descr_row.v.by_m("UnidentifiedTextures").v = str(edits["UnidentifiedTextures"])
 
-def _handle_unit_ui(unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list, dictionary_entries: list) -> None:
+
+def _handle_unit_ui(unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list,
+                    dictionary_entries: list) -> None:
     """Handle UI module modifications."""
     if "SpecialtiesList" in edits:
         specialties_list = descr_row.v.by_m("SpecialtiesList")
@@ -243,6 +265,9 @@ def _handle_unit_ui(unit_row: Any, descr_row: Any, edits: dict, index: int, modu
         # Update the name token in the unit
         descr_row.v.by_m("NameToken").v = "'" + edits["GameName"]["token"] + "'"
         logger.debug(f"Updated name token for {unit_row.namespace}")
+
+    if "road_speed" in edits and "road_speed" in edits["road_speed"]:
+        descr_row.v.by_m("DisplayRoadSpeedInKmph").v = str(edits["road_speed"]["road_speed"])
         
     if "UpgradeFromUnit" in edits and descr_row.v.by_m("UpgradeFromUnit", False) is not None:
         descr_row.v.by_m("UpgradeFromUnit").v = f"Descriptor_Unit_{edits['UpgradeFromUnit']}"
@@ -267,13 +292,15 @@ def _handle_unit_ui(unit_row: Any, descr_row: Any, edits: dict, index: int, modu
             )
             modules_list.v.insert(index + 1, sell_module)
 
+
 def _handle_deployment_shift(unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list, *_) -> None:
     """Handle deployment shift module removal."""
     if "DeploymentShift" in edits and edits["DeploymentShift"] == 0:
         descr_type = descr_row.v.type
         modules_list.v.remove(index)
         logger.info(f"Removed {descr_type} from {unit_row.namespace}")
-        
+
+
 def _handle_supply(source_path, game_db, unit_edits, *_) -> None:
     """Edit supply type for new supply ranges in UniteDescriptor.ndf, as well as
     supply capacities.
@@ -351,11 +378,13 @@ def _handle_supply(source_path, game_db, unit_edits, *_) -> None:
         except Exception as e:
             logger.error(f"Error processing {unit}: {str(e)}")
 
+
 def _handle_zone_influence(unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list, *_) -> None:
     """Remove zone capture capability."""
     if "remove_zone_capture" in edits:
         modules_list.v.remove(index)
         logger.info(f"Removed zone capture from {unit_row.namespace}")
+
 
 def _handle_transportable(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
     """Handle transportable module edits."""

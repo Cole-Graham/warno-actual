@@ -532,7 +532,23 @@ pol_unit_edits = {
         "CommandPoints": 200,
         "availability": 2,
         "XPMultiplier": [2/2, 0.0, 1/2, 0.0],  # 2/1
-        # "max_speed": 50,  # need to also set road speed
+        "max_speed": 65,
+        "road_speed": {
+            # requires either base_speed & road_speed, or factor
+            # factor computed from road_speed / base_speed if factor not defined
+            # visual (UI) road_speed unchanged if unspecified
+            "base_speed": 65,
+            "factor": 1.92,
+            "road_speed": 100,
+        },
+        # "Divisions": {  # was temp added to 4 zmech for testing (speed comparison w/ Osa-AKM)
+        #     "add": ['POL_4_Zmechanizowana'],
+        #     "is_transported": False,
+        #     "needs_transport": False,
+        #     "POL_4_Zmechanizowana": {
+        #         "cards": 1,
+        #     },
+        # },
     },
 
     # POL TANK

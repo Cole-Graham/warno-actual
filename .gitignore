@@ -10,9 +10,11 @@ scripts/
 src/data/database/*.json
 temp_context.txt
 .VSCodeCounter/
+*.lnk
+run_patcher_with_bat.py
+run_bat.py
 
 # don't ignore
 !logs/.gitkeep
 !src/data/database/.gitkeep
 !src/data/database/master_db_metadata.json
-*.lnk
