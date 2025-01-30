@@ -13,7 +13,7 @@ def edit_fire_descriptors(source_path) -> None:
         ("NapalmMoyenBomb", "NapalmMoyen", True): {
             "DescriptorId": "5372aa53-0162-4d29-8d96-d52f48c8bb50",
             "TFireModuleDescriptor": {
-                "TimeBetweenBurns": 0.6,
+                "TimeBetweenBurns": 0.5,
             },
         },
     }
@@ -64,5 +64,8 @@ def change_fire_descriptors(source_path) -> None:
             ammo_descr.v.by_m("FireDescriptor").v = "Descriptor_Fire_NapalmMoyenBomb"
             logger.info(f"Changed fire descriptor for {ammo_descr.namespace} to "
                         "Descriptor_Fire_NapalmMoyenBomb")
+            
+            ammo_descr.v.by_m("Arme").v.by_m("Family").v = "DamageFamily_nplm_bomb"
+            logger.info(f"Changed {ammo_descr.namespace} to DamageFamily_nplm_bomb")
 
                 

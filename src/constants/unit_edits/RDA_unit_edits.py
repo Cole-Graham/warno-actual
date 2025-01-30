@@ -102,6 +102,7 @@ rda_unit_edits = {
         "selector_tactic_obj": "00_06",
         "is_infantry": True,
         "is_ground_vehicle": False,
+        "remove_zone_capture": None,
     },
 
     "Engineers_CMD_DDR": {
@@ -166,6 +167,7 @@ rda_unit_edits = {
         "selector_tactic_obj": "00_08",
         "is_infantry": True,
         "is_ground_vehicle": False,
+        "remove_zone_capture": None,
     },
     
     "MP_DDR": {
@@ -443,6 +445,7 @@ rda_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+        "remove_zone_capture": None,
     },
     
     "Mortier_PM43_120mm_DDR": {
@@ -508,6 +511,7 @@ rda_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+        "remove_zone_capture": None,
     },
 
     "T72M_CMD_DDR": {
@@ -545,6 +549,7 @@ rda_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+        "remove_zone_capture": None,
     },
     
     "MTLB_trans_DDR": {

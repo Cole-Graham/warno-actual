@@ -10,6 +10,7 @@ from .damage_values import (
     INFANTRY_ARMOR_EDITS,
     SNIPER_DAMAGE,
     KPVT_DAMAGE,
+    NPLM_BOMB_DAMAGE,
 )
 from .missiles import missiles
 from .salvo_standards import LIGHT_AT_AMMO
@@ -33,6 +34,7 @@ __all__ = [
     'FULL_BALL_DAMAGE',
     'INFANTRY_ARMOR_EDITS',
     'KPVT_DAMAGE',
+    'NPLM_BOMB_DAMAGE',
     'missiles',
     'SNIPER_DAMAGE',
     'LIGHT_AT_AMMO',

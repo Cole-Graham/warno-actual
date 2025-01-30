@@ -87,6 +87,7 @@ uk_unit_edits = {
         "selector_tactic_obj": "00_02",
         "is_infantry": True,
         "is_ground_vehicle": False,
+        "remove_zone_capture": None,
     },
     
     "Engineers_CMD_UK": {
@@ -151,6 +152,7 @@ uk_unit_edits = {
         "selector_tactic_obj": "00_08",
         "is_infantry": True,
         "is_ground_vehicle": False,
+        "remove_zone_capture": None,
     },
     
     "Rifles_CMD_UK": {
@@ -193,6 +195,7 @@ uk_unit_edits = {
         "max_speed": 26,
         "is_infantry": True,
         "is_ground_vehicle": False,
+        "remove_zone_capture": None,
     },
     
     "Airmobile_CMD_UK": {
@@ -233,6 +236,7 @@ uk_unit_edits = {
         "max_speed": 26,
         "is_infantry": True,
         "is_ground_vehicle": False,
+        "remove_zone_capture": None,
     },
     
     "Airmobile_Mot_CMD_UK": {
@@ -273,6 +277,7 @@ uk_unit_edits = {
         "max_speed": 26,
         "is_infantry": True,
         "is_ground_vehicle": False,
+        "remove_zone_capture": None,
     },
     
     "Rover_101FC_UK": {
@@ -535,6 +540,7 @@ uk_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+        "remove_zone_capture": None,
     },
     
     "81mm_mortar_UK": {
@@ -623,6 +629,7 @@ uk_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+        "remove_zone_capture": None,
     },
 
     "Saxon_UK": {
