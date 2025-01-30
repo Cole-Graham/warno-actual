@@ -14,6 +14,7 @@ from .damage_families import (
     edit_infantry_armor,
     edit_weapon_constants,
 )
+from .fire_descriptors import edit_fire_descriptors, change_fire_descriptors
 from .he_adjustments import edit_he_damage
 from .mg_teams import edit_mg_team_weapons
 from .missiles import edit_missiles, remove_stress_on_miss
@@ -54,5 +55,7 @@ __all__ = [
     'edit_he_damage',
     'edit_aim_times',
     'edit_weapon_ranges',
-    'bomb_damage_standards'
+    'bomb_damage_standards',
+    'edit_fire_descriptors',
+    'change_fire_descriptors'
 ] 

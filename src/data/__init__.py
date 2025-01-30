@@ -1,8 +1,10 @@
 """Database building and management."""
 
+from pathlib import Path
 from typing import Any, Dict
 
 from src.utils.config_utils import get_mod_src_path
+from src.utils.database_utils import calculate_db_checksum, save_db_metadata
 from src.utils.logging_utils import setup_logger
 
 from .ammo_data import build_ammo_data
@@ -58,6 +60,15 @@ def build_database(config: Dict[str, Any]) -> Dict[str, Any]:
         
         # Save to disk for future use
         save_database_to_disk(_database_cache)
+        
+        # After building database, save metadata
+        db_data = {
+            "ammunition": _database_cache["ammunition"],
+            "weapons": _database_cache["weapons"],
+            "unit_data": _database_cache["unit_data"]
+        }
+        checksum = calculate_db_checksum(db_data)
+        save_db_metadata(config['data_config']['database_path'], checksum, config)
         
         return _database_cache
         

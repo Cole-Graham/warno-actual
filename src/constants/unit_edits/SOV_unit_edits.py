@@ -2097,9 +2097,9 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 2: {
-                    "AngleRotationMax": 2.094395,
-                    "AngleRotationMaxPitch": 1.570796,
-                    "AngleRotationMinPitch": -1.570796,
+                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMaxPitch": 0.8726646,
+                    "AngleRotationMinPitch": -0.8726646,
                 },
             },
         },
@@ -2120,9 +2120,9 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 2: {
-                    "AngleRotationMax": 2.094395,
-                    "AngleRotationMaxPitch": 1.570796,
-                    "AngleRotationMinPitch": -1.570796,
+                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMaxPitch": 0.8726646,
+                    "AngleRotationMinPitch": -0.8726646,
                 },
             },
         },

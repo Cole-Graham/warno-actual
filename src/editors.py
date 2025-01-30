@@ -16,7 +16,9 @@ from src.gameplay import (
     edit_aim_times,
     edit_weapon_ranges,
     global_bomber_edits,
-    bomb_damage_standards
+    bomb_damage_standards,
+    edit_fire_descriptors,
+    change_fire_descriptors
 )
 from src.gameplay.buildings import edit_fob_attributes
 from src.gameplay.depictions import (
@@ -231,6 +233,7 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
             edit_aim_times,
             edit_weapon_ranges,
             bomb_damage_standards,
+            change_fire_descriptors,
         ],
         "GameData/Generated/Gameplay/Gfx/AmmunitionMissiles.ndf": [
             lambda source_path: edit_missiles(source_path, game_db),
@@ -246,6 +249,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         ],
         "GameData/Generated/Gameplay/Gfx/MissileDescriptors.ndf": [
             lambda source_path: edit_missile_speed(source_path, game_db),
+        ],
+        "GameData/Generated/Gameplay/Gfx/FireDescriptor.ndf": [
+            edit_fire_descriptors,
         ],
         "GameData/Generated/Gameplay/Gfx/OrderAvailability_Tactic.ndf": [
             lambda source_path: edit_orders(source_path, game_db),

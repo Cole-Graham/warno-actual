@@ -14,4 +14,5 @@ temp_context.txt
 # don't ignore
 !logs/.gitkeep
 !src/data/database/.gitkeep
+!src/data/database/master_db_metadata.json
 *.lnk

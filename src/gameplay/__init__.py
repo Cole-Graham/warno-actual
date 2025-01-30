@@ -90,7 +90,9 @@ from .weapons import (
     edit_he_damage,
     edit_aim_times,
     edit_weapon_ranges,
-    bomb_damage_standards
+    bomb_damage_standards,
+    edit_fire_descriptors,
+    change_fire_descriptors
 )
 from .weapons.ammunition import edit_ammunition
 from .weapons.damage_families import (

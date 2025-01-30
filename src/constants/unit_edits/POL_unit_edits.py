@@ -1003,11 +1003,6 @@ pol_unit_edits = {
     "MiG_21bis_RKT2_POL": {  # 4x S-24 [RKT1]
         "CommandPoints": 100,
         "availability": 4,
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                "replace_fixedsalvo": [("RocketAir_S24_240mm_x2", "RocketAir_S24_240mm_salvolength2_avion")],
-            },
-        },
         "XPMultiplier": [0.0, 4/4, 0.0, 0.0],
     },
 
@@ -1032,9 +1027,9 @@ pol_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 2: {
-                    "AngleRotationMax": 2.094395,
-                    "AngleRotationMaxPitch": 1.570796,
-                    "AngleRotationMinPitch": -1.570796,
+                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMaxPitch": 0.8726646,
+                    "AngleRotationMinPitch": -0.8726646,
                 },
             },
         },

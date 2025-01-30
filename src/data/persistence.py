@@ -4,9 +4,10 @@ import json
 from pathlib import Path
 from typing import Any, Dict
 
+from src.utils.database_utils import ensure_db_directory
 from src.utils.logging_utils import setup_logger
 
-logger = setup_logger('database_utils')
+logger = setup_logger(__name__)
 
 # Map database keys to filenames
 DB_FILENAMES = {
@@ -16,36 +17,37 @@ DB_FILENAMES = {
     "depiction_data": "depiction_data.json"
 }
 
-def save_database_to_disk(database: Dict[str, Any]) -> None:
-    """Save database components to disk."""
-    db_dir = Path(__file__).parent / "database"
-    db_dir.mkdir(parents=True, exist_ok=True)
-    
-    # Save each component
-    for name, data in database.items():
-        if name == "source_files":  # Skip source files, they're just for immediate use
-            continue
-            
-        if name not in DB_FILENAMES:
-            logger.warning(f"Unknown database component: {name}")
-            continue
-            
-        file_path = db_dir / DB_FILENAMES[name]
-        logger.info(f"Saving {name} data ({len(data)} entries)")
-        with open(file_path, 'w') as f:
-            json.dump(data, f, indent=2)
-            
-        logger.debug(f"{name} data size: {file_path.stat().st_size} bytes")
-    
-    logger.info("Database saved successfully")
+def save_database_to_disk(database: Dict[str, Any], config: Dict) -> None:
+    """Save database to disk."""
+    try:
+        db_path = Path(config['data_config']['database_path'])
+        ensure_db_directory(str(db_path))
+        
+        # Save each component
+        for key, data in database.items():
+            if key == "source_files":  # Skip source files
+                continue
+                
+            if key not in DB_FILENAMES:
+                logger.warning(f"Unknown database component: {key}")
+                continue
+                
+            file_path = db_path / DB_FILENAMES[key]
+            with open(file_path, 'w') as f:
+                json.dump(data, f, indent=2)
+                
+        logger.info("Database saved to disk")
+    except Exception as e:
+        logger.error(f"Failed to save database: {e}")
+        raise
 
-def load_database_from_disk() -> Dict[str, Any]:
+def load_database_from_disk(config: Dict) -> Dict[str, Any]:
     """Load database components from disk."""
-    db_dir = Path(__file__).parent / "database"
+    db_path = Path(config['data_config']['database_path'])
     database = {}
     
     for db_key, filename in DB_FILENAMES.items():
-        file_path = db_dir / filename
+        file_path = db_path / filename
         try:
             with open(file_path) as f:
                 database[db_key] = json.load(f)
