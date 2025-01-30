@@ -138,6 +138,7 @@ usa_unit_edits = {
         "selector_tactic_obj": "00_06",
         "is_infantry": True,
         "is_ground_vehicle": False,
+        "remove_zone_capture": None,
     },
 
     "Rifles_CMD_US": {
@@ -188,6 +189,7 @@ usa_unit_edits = {
         },
         "is_infantry": True,
         "is_ground_vehicle": False,
+        "remove_zone_capture": None,
     },
     
     "NatGuard_CMD_US": {
@@ -238,6 +240,7 @@ usa_unit_edits = {
         "max_speed": 26,
         "is_infantry": True,
         "is_ground_vehicle": False,
+        "remove_zone_capture": None,
     },
 
     "Rangers_CMD_US": {
@@ -313,6 +316,7 @@ usa_unit_edits = {
         "selector_tactic_obj": "02_09",
         "is_infantry": True,
         "is_ground_vehicle": False,
+        "remove_zone_capture": None,
     },
 
     "Airborne_Engineer_CMD_US": {
@@ -356,6 +360,7 @@ usa_unit_edits = {
         "max_speed": 26,
         "is_infantry": True,
         "is_ground_vehicle": False,
+        "remove_zone_capture": None,
     },
 
     "Airborne_CMD_US": {
@@ -410,6 +415,7 @@ usa_unit_edits = {
         },
         "is_infantry": True,
         "is_ground_vehicle": False,
+        "remove_zone_capture": None,
     },
 
     "AeroRifles_CMD_US": {
@@ -452,6 +458,7 @@ usa_unit_edits = {
         "max_speed": 26,
         "is_infantry": True,
         "is_ground_vehicle": False,
+        "remove_zone_capture": None,
     },
 
     "Aero_half_CMD_US": {
@@ -495,6 +502,7 @@ usa_unit_edits = {
         "max_speed": 26,
         "is_infantry": True,
         "is_ground_vehicle": False,
+        "remove_zone_capture": None,
     },
 
     "AeroEngineer_CMD_US": {
@@ -538,6 +546,7 @@ usa_unit_edits = {
         "max_speed": 26,
         "is_infantry": True,
         "is_ground_vehicle": False,
+        "remove_zone_capture": None,
     },
 
     "GreenBerets_CMD_US": {
@@ -581,6 +590,7 @@ usa_unit_edits = {
         "max_speed": 26,
         "is_infantry": True,
         "is_ground_vehicle": False,
+        "remove_zone_capture": None,
     },
     
     "Engineers_US": {
@@ -1349,6 +1359,7 @@ usa_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+        "remove_zone_capture": None,
     },
     
     "Mortier_107mm_US": {
@@ -1462,6 +1473,7 @@ usa_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 0.0, 0.0, 1.0],
+        "remove_zone_capture": None,
     },
 
     "M1A1_Abrams_CMD_US": {
@@ -1501,6 +1513,7 @@ usa_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+        "remove_zone_capture": None,
     },
 
     "M1IP_Abrams_CMD_US": {
@@ -1531,6 +1544,7 @@ usa_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+        "remove_zone_capture": None,
     },
 
     "M1_Abrams_CMD_US": {
@@ -1562,6 +1576,7 @@ usa_unit_edits = {
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
         "availability": 3,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+        "remove_zone_capture": None,
     },
 
     "M60A3_CMD_US": {
@@ -1593,6 +1608,7 @@ usa_unit_edits = {
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
         "availability": 4,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+        "remove_zone_capture": None,
     },
 
     "M551A1_TTS_Sheridan_CMD_US": {
@@ -1624,6 +1640,7 @@ usa_unit_edits = {
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
         "availability": 4,
         "XPMultiplier": [0.0, 0.0, 0.0, 1.0],
+        "remove_zone_capture": None,
     },
     
     "M113A3_US": {

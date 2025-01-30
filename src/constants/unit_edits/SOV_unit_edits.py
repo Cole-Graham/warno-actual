@@ -163,6 +163,7 @@ sov_unit_edits = {
         "selector_tactic_obj": "00_06",
         "is_infantry": True,
         "is_ground_vehicle": False,
+        "remove_zone_capture": None,
     },
 
     "Engineers_CMD_TTsko_SOV": {
@@ -230,6 +231,7 @@ sov_unit_edits = {
         "selector_tactic_obj": "00_08",
         "is_infantry": True,
         "is_ground_vehicle": False,
+        "remove_zone_capture": None,
     },
     
     "Engineers_CMD_SOV": {
@@ -294,6 +296,7 @@ sov_unit_edits = {
         "selector_tactic_obj": "00_08",
         "is_infantry": True,
         "is_ground_vehicle": False,
+        "remove_zone_capture": None,
     },
     
     "Spetsnaz_CMD_SOV": {
@@ -342,6 +345,7 @@ sov_unit_edits = {
         "selector_tactic_obj": "00_08",
         "is_infantry": True,
         "is_ground_vehicle": False,
+        "remove_zone_capture": None,
     },
 
     "VDV_CMD_SOV": {
@@ -412,6 +416,7 @@ sov_unit_edits = {
         "selector_tactic_obj": "00_06",
         "is_infantry": True,
         "is_ground_vehicle": False,
+        "remove_zone_capture": None,
     },
 
     "Engineers_CMD_VDV_SOV": {
@@ -476,6 +481,7 @@ sov_unit_edits = {
         "selector_tactic_obj": "00_08",
         "is_infantry": True,
         "is_ground_vehicle": False,
+        "remove_zone_capture": None,
     },
     
     "Engineers_SOV": {
@@ -1139,6 +1145,7 @@ sov_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+        "remove_zone_capture": None,
     },
     
     "Mortier_2B14_82mm_VDV_SOV": {
@@ -1403,6 +1410,7 @@ sov_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+        "remove_zone_capture": None,
     },
     
     "MTLB_transp_SOV": {

@@ -142,6 +142,7 @@ pol_unit_edits = {
         "selector_tactic_obj": "02_04",
         "is_infantry": True,
         "is_ground_vehicle": False,
+        "remove_zone_capture": None,
     },
 
     "MotRifles_CMD_POL": {  # Piechota Zmech. Ldr.
@@ -206,6 +207,7 @@ pol_unit_edits = {
         "selector_tactic_obj": "02_04",
         "is_infantry": True,
         "is_ground_vehicle": False,
+        "remove_zone_capture": None,
     },
 
     "Engineers_POL": {  # Saperzy
@@ -568,6 +570,7 @@ pol_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 0.0, 6/6, 0.0],
+        "remove_zone_capture": None,
     },
 
     "T72M_CMD_POL": {
@@ -604,6 +607,7 @@ pol_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 0.0, 4/4, 0.0],
+        "remove_zone_capture": None,
     },
 
     "T72M1_CMD_POL": {
@@ -640,6 +644,7 @@ pol_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 0.0, 4/4, 0.0],
+        "remove_zone_capture": None,
     },
 
     "BRDM_2_Konkurs_POL": {

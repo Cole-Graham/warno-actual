@@ -12,6 +12,7 @@ from src.constants.weapons import (
     SNIPER_DAMAGE,
     WEAPON_DESCRIPTIONS,
     KPVT_DAMAGE,
+    NPLM_BOMB_DAMAGE,
 )
 from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.logging_utils import setup_logger
@@ -48,19 +49,23 @@ def add_damage_families_to_list(source_path) -> None:
     full_ball_family = f"DamageFamily_full_balle is {i + 2}"
     dpicm_family = f"DamageFamily_dpicm is {i + 3}"
     # kpvt_family = f"DamageFamily_kpvt is {i + 4}"
-    
+    nplm_bomb_family = f"DamageFamily_nplm_bomb is {i + 4}"
+
     source_path.insert(j + 1, infanterie_wa_family)
     source_path.add(sniper_family)
     source_path.add(full_ball_family)
     source_path.add(dpicm_family)
     # source_path.add(kpvt_family)
+    source_path.add(nplm_bomb_family)
 
     logger.info(f"Added families: \n"
                 f"{infanterie_wa_family}\n"
                 f"{sniper_family}\n"
                 f"{full_ball_family}\n"
-                f"{dpicm_family}\n")
-                # f"{kpvt_family}")
+                f"{dpicm_family}\n"
+                # f"{kpvt_family}\n")
+                f"{nplm_bomb_family}")
+                
 
 
 def add_damage_families_to_impl(source_path) -> None:
@@ -75,6 +80,7 @@ def add_damage_families_to_impl(source_path) -> None:
             '"DamageFamily_full_balle"',
             '"DamageFamily_dpicm"',
             # '"DamageFamily_kpvt"',
+            '"DamageFamily_nplm_bomb"',
         ]
     }
     
@@ -144,6 +150,7 @@ def add_damage_resistance_values(source_path) -> None:
         "full_ball": "TDamageTypeFamilyDefinition(Family=DamageFamily_full_balle MaxIndex=1)",
         "dpicm": "TDamageTypeFamilyDefinition(Family=DamageFamily_dpicm MaxIndex=4)",
         # "kpvt": "TDamageTypeFamilyDefinition(Family=DamageFamily_kpvt MaxIndex=1)",
+        "nplm_bomb": "TDamageTypeFamilyDefinition(Family=DamageFamily_nplm_bomb MaxIndex=1)",
     }
     
     for family_name, family_def in families.items():
@@ -157,6 +164,7 @@ def add_damage_resistance_values(source_path) -> None:
         str(FULL_BALL_DAMAGE),
         *[str(dpicm) for dpicm in DPICM_DAMAGES],
         # str(KPVT_DAMAGE),
+        str(NPLM_BOMB_DAMAGE),
     )
     logger.info("Added damage values") 
 

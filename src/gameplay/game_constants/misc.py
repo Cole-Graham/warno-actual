@@ -9,7 +9,7 @@ from src.utils.logging_utils import setup_logger
 logger = setup_logger(__name__)
 
 def edit_orders(source_path, game_db: Dict[str, Any]):
-    """Edit unit order availability.
+    """Edit OrderAvailability_Tactic.ndf.
     
     Args:
         source_path: The NDF file being edited

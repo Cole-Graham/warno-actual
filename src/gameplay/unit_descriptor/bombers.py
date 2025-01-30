@@ -21,6 +21,7 @@ def global_bomber_edits(source_path, game_db):
         has_terrain_radar = False
         dive_attack = False
         is_sead = False
+        is_ew = False
         if "SpecialtiesList" in edits:
             if "add_specs" in edits["SpecialtiesList"]:
                 if "'terrain_radar'" in edits["SpecialtiesList"]["add_specs"]:
@@ -33,6 +34,11 @@ def global_bomber_edits(source_path, game_db):
         tags = unit_db[unit_name].get("tags", None)
         if tags and "Avion_SEAD" in tags:
             is_sead = True
+            
+        specialties = unit_db[unit_name].get("specialties", None)
+        if specialties and "_electronic_warfare" in specialties:
+            is_ew = True
+        
                     
         modules_list = get_modules_list(unit_descr.v, "ModulesDescriptors")
         if not modules_list:
@@ -45,15 +51,22 @@ def global_bomber_edits(source_path, game_db):
             module_type = module.v.type
             
             if module_type == "TVisibilityModuleDescriptor" and has_terrain_radar:
-                module.v.by_m("UnitConcealmentBonus").v = "1.5"
-                logger.debug(f"Set {unit_name} concealment bonus to 1.5")
+                
+                # ignore already modified units
+                if module.v.by_m("UnitConcealmentBonus").v != "1.0":
+                    logger.debug(f"{unit_name} stealth already modified")
+                    continue
+                
+                if is_sead and not is_ew:
+                    module.v.by_m("UnitConcealmentBonus").v = "1.5"
+                    logger.debug(f"Set {unit_name} stealthbonus to 1.5")
                 
             elif module_type == "AirplaneMovementDescriptor" and has_terrain_radar:
-                if is_sead:
+                if is_sead and not is_ew:
                     module.v.by_m("AltitudeGRU").v = "300"
-                else:
-                    module.v.by_m("AltitudeGRU").v = "125"
-                logger.debug(f"Set {unit_name} altitude to 125m")
+                elif not is_ew:
+                    module.v.by_m("AltitudeGRU").v = "200"
+                logger.debug(f"Set {unit_name} altitude to 200m")
                     
             elif module_type == "TUnitUIModuleDescriptor":
                 if dive_attack:

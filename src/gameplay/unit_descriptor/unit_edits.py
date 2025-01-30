@@ -354,7 +354,7 @@ def _handle_supply(source_path, game_db, unit_edits, *_) -> None:
 def _handle_zone_influence(unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list, *_) -> None:
     """Remove zone capture capability."""
     if "remove_zone_capture" in edits:
-        modules_list.remove(index)
+        modules_list.v.remove(index)
         logger.info(f"Removed zone capture from {unit_row.namespace}")
 
 def _handle_transportable(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:

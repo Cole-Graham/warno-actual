@@ -59,7 +59,7 @@ def build_database(config: Dict[str, Any]) -> Dict[str, Any]:
         logger.info(f"Built database with {len(_database_cache['depiction_data'])} depiction entries")
         
         # Save to disk for future use
-        save_database_to_disk(_database_cache)
+        save_database_to_disk(_database_cache, config)
         
         # After building database, save metadata
         db_data = {
