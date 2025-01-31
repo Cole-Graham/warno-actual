@@ -1096,59 +1096,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "Salves": 185,
         },
     },
-    
-    ("FM_kbk_AKM", "small_arms", None, False): { # 303
-        "Ammunition": {
-            "hit_roll": {
-                "Idling": 40,
-                "Moving": 20,
-            },
-            "parent_membr": {
-                "TempsEntreDeuxTirs": 1.5,
-                "PorteeMaximaleGRU": 875,
-                "PorteeMaximaleTBAGRU": 700,
-                "PhysicalDamages": 0.05,
-                "SuppressDamages": 5,
-                "DisplaySalveAccuracy": False,
-                "TempsDeVisee": 1.0,
-                "TempsEntreDeuxSalves": 4.5,
-                "NbTirParSalves": 10,
-                "AffichageMunitionParSalve": 30,
-            },
-        },
-        "BaseSupplyCost": 1,
-        "NbWeapons": [8, 7, 6, 2, 1],
-        "WeaponDescriptor": {
-            "Salves": 11,
-        },
-    },
-    
-    ("FM_kbk_AKM_noreflex", "small_arms", "FM_kbk_AKM", True): { # 303
-        "Ammunition": {
-            "hit_roll": {
-                "Idling": 40,
-                "Moving": 20,
-            },
-            "parent_membr": {
-                "TempsEntreDeuxTirs": 1.5,
-                "PorteeMaximaleGRU": 875,
-                "PorteeMaximaleTBAGRU": 700,
-                "PhysicalDamages": 0.05,
-                "SuppressDamages": 5,
-                "DisplaySalveAccuracy": False,
-                "TirReflexe": False,
-                "TempsDeVisee": 1.0,
-                "TempsEntreDeuxSalves": 4.5,
-                "NbTirParSalves": 10,
-                "AffichageMunitionParSalve": 30,
-            },
-        },
-        "BaseSupplyCost": 1,
-        "NbWeapons": [8, 7, 6, 2, 1],
-        "WeaponDescriptor": {
-            "Salves": 11,
-        },
-    },
+
+    # kbk AKM will be deprecated
     
     ("FM_kbk_AK", "small_arms", None, False): {
         "Ammunition": {
@@ -1168,7 +1117,9 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "NbTirParSalves": 5,
                 "AffichageMunitionParSalve": 15,
             },
+            "token": "AYYOIYKCVF",
         },
+        "Texture": "FM_kbk_AKM",
         "BaseSupplyCost": 1,
         "NbWeapons": [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
@@ -1195,7 +1146,9 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "NbTirParSalves": 5,
                 "AffichageMunitionParSalve": 15,
             },
+            "token": "AYYOIYKCVF",
         },
+        "Texture": "FM_kbk_AKM",
         "BaseSupplyCost": 1,
         "NbWeapons": [1],
         "WeaponDescriptor": {
@@ -1599,4 +1552,5 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 }
-# fmt: on 
+
+# fmt: on

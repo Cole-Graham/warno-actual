@@ -10,6 +10,7 @@ AMMUNITION_RENAMES = [
     ("Mortier_M40_107mm", "Mortier_M30_107mm"),
     ("MMG_M60_7_62mm", "MMG_WA_M60E3_7_62mm"),
     ("RocketAir_S13_122mm_x10_avion", "RocketAir_S13_122mm_avion_salvolength10"),
+    ("RocketAir_S24_240mm_x2", "RocketAir_S24_240mm_salvolength2")
 ]
 
 

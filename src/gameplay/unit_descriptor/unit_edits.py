@@ -126,6 +126,15 @@ def modify_module(unit_row: Any, descr_row: Any, edits: dict, index: int,
                     if "parent_membr" in edits["AirplaneMovement"]:
                         for key, value in edits["AirplaneMovement"]["parent_membr"].items():
                             descr_row.v.by_m(key).v = str(value)
+
+            elif namespace == "Transporter":
+                if "is_prime_mover" in edits:
+                    if edits["is_prime_mover"]:
+                        descr_row.v.by_m("Default").v.by_m("TransportableTagSet").v = ndf.convert(str(["Crew", "Unite_transportable"]))
+                        logger.info(f"Updated {unit_row.namespace} to prime mover")
+                    else:
+                        descr_row.v.by_m("Default").v.by_m("TransportableTagSet").v = ndf.convert(str(["Crew"]))
+                        logger.info(f"Updated {unit_row.namespace} to regular transport")
         
         # Apply module-specific handler if it exists
         if handler := module_handlers.get(descr_type):

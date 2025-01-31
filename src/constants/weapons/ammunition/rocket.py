@@ -131,6 +131,21 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
+    ("RocketAir_S24_240mm_avion_salvolength4", "rocket", "RocketAir_S24_240mm_salvolength2", True): { # 619
+        "Ammunition": {
+            "parent_membr": {
+                "RadiusSplashPhysicalDamagesGRU": 60,
+                "RadiusSplashSuppressDamagesGRU": 80,
+                "PhysicalDamages": 6.0,
+                "SuppressDamages": 390,
+                "SupplyCost": 64,
+                "NbTirParSalves": 4,
+                "NbSalvosShootOnPosition": 1,
+                "AffichageMunitionParSalve": 4,
+            },
+        },
+    },
+
     ("RocketAir_S13_122mm_salvolength20", "rocket", None, False): { # 618
         "Ammunition": {
             "parent_membr": {

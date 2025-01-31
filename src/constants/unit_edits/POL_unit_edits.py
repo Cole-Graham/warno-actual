@@ -246,6 +246,9 @@ pol_unit_edits = {
             "default": {
                 "cards": 1,
             },
+            "POL_20_Pancerna": {
+                "Transports": ["Star_266_POL", "MTLB_trans_POL", "OT_64_SKOT_2_POL"],
+            },
         },
         "XPMultiplier": [0.0, 8/8, 6/8, 0.0],  # 8/6
         "max_speed": 20,
@@ -368,6 +371,15 @@ pol_unit_edits = {
         },
     },
 
+    "HMGteam_PKM_POL": {  # PKM 12,7mm
+        "Divisions": {
+            "POL_20_Pancerna": {
+                "Transports": ['UAZ_469_trans_POL', 'MTLB_trans_POL'],
+            },
+        },
+    },
+
+
     "HMGteam_NSV_POL": {  # NSW 12,7mm
         "GameName": {
             "display": "NSW 12,7mm",
@@ -383,7 +395,7 @@ pol_unit_edits = {
                 "cards": 1,
             },
             "POL_20_Pancerna": {
-                "Transports": ['UAZ_469_trans_POL'],
+                "Transports": ['UAZ_469_trans_POL', 'MTLB_trans_POL'],
             },
             "POL_4_Zmechanizowana": {
                 "Transports": ['UAZ_469_trans_POL'],
@@ -574,7 +586,6 @@ pol_unit_edits = {
             "overwrite_all": [
                 'armor',
                 'leader_sov',
-                '_resolute',
             ],
         },
         "MenuIconTexture": "Texture_RTS_H_Armor",
@@ -611,7 +622,6 @@ pol_unit_edits = {
             "overwrite_all": [
                 'Armor_heavy',
                 'leader_sov',
-                '_resolute',
             ],
         },
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
@@ -648,7 +658,6 @@ pol_unit_edits = {
             "overwrite_all": [
                 'Armor_heavy',
                 'leader_sov',
-                '_resolute',
             ],
         },
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
@@ -722,9 +731,38 @@ pol_unit_edits = {
     #     },
     # },
 
-    # "OT_64_SKOT_2A_POL": {  # SKOT-2A
-    #     "CommandPoints": 25,
-    # },
+    "OT_64_SKOT_2A_POL": {  # SKOT-2A
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'transport',
+                '_transport2',
+                '_amphibie',
+            ],
+        },
+        "is_prime_mover": True,
+    },
+
+    "OT_64_SKOT_2AM_POL": {  # SKOT-2AM
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'transport',
+                '_transport2',
+                '_amphibie',
+            ],
+        },
+        "is_prime_mover": True,
+    },
+
+    "OT_64_SKOT_2P_POL": {  # SKOT-2AP
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'transport',
+                '_transport2',
+                '_amphibie',
+            ],
+        },
+        "is_prime_mover": True,
+    },
 
     "MTLB_trans_POL": {
         "orders": {
@@ -744,7 +782,11 @@ pol_unit_edits = {
     },
 
     # POL RECON
-    "HvyScout_POL": {  # Zmot. Zwiad. -> Zwiadowcy Zmot.
+    "HvyScout_POL": {  # Zmot. Zwiad.
+        "GameName": {
+            "display": "#RECO2 ZWIADOWCY ZMOT.",
+            "token": "ZMOTZWIAD",
+        },
         "CommandPoints": 40,
         "availability": 7,
         "XPMultiplier": [7/7, 5/7, 0.0, 0.0],
@@ -863,9 +905,6 @@ pol_unit_edits = {
             "default": {
                 "cards": 2,
             },
-            "SOV_6IndMSBrig": {
-                "cards": 1,
-            },
         },
         "XPMultiplier": [8/8, 6/8, 0.0, 0.0],
     },
@@ -968,63 +1007,72 @@ pol_unit_edits = {
 
     # POL HELI
 
-    "Mi_24D_s5_AT_POL": {
+    "Mi_24D_POL": {  # 128x S-5, 4x Falanga - Mi-24D [AT]
         "CommandPoints": 145,
         "availability": 4,
         "XPMultiplier": [0.0, 4/4, 3/4, 0.0],
     },
 
-    "Mi_24D_s8_AT_POL": {
+    "Mi_24D_s8_AT_POL": {  # 80x S-8, 4x Falanga - Mi-24D [AT2]
         "CommandPoints": 145,
         "availability": 4,
         "XPMultiplier": [0.0, 4/4, 3/4, 0.0],
     },
 
-    "Mi_2_ATGM_POL": {
+    "Mi_2_ATGM_POL": {  # Mi-2URP Salamandra
         "CommandPoints": 60,
         "availability": 4,
         "XPMultiplier": [0.0, 7/7, 5/7, 0.0],
     },
 
     # heli tab transports
-    "Mi_2_trans_POL": {
+    "Mi_2_trans_POL": {  # Mi-2P
         "CommandPoints": 35,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
     },
 
-    "Mi_8T_non_arme_POL": {
+    "Mi_8T_non_arme_POL": {  # Mi-8T
         "CommandPoints": 50,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
     },
 
-    "Mi_8T_POL": { # 32 S-5M x2
+    "Mi_8T_POL": { # twin S-5 x32 - Mi-8T [RKT]
         "CommandPoints": 50,
     },
 
     # POL AIR
-    "MiG_21bis_AA_POL": {  #  4x R-60M, 2x R-3R [AA1]
+    "MiG_21bis_AA_POL": {  #  4x R-60M, 2x R-3R MiG-21bis [AA1]
         "CommandPoints": 120,
         "XPMultiplier": [0.0, 4/4, 3/4, 2/4],
     },
 
-    "MiG_21bis_POL": {  #  4x R-60M, 2x R-13M [AA2]
+    "MiG_21bis_POL": {  #  4x R-60M, 2x R-13M - MiG-21bis [AA2]
         "CommandPoints": 120,
         "XPMultiplier": [0.0, 4/4, 3/4, 2/4],
     },
 
-    "MiG_21bis_HE_POL": {
+    "MiG_21bis_HE_POL": {  # MiG-21bis [HE]
         "CommandPoints": 135,
         "XPMultiplier": [0.0, 3/3, 0.0, 0.0],
     },
 
-    "MiG_21bis_RKT2_POL": {  # 4x S-24 [RKT1]
+    "MiG_21bis_RKT2_POL": {  # 4x S-24 [RKT2]
+        # TODO: adjust evac winchester behavior (does not evac after expending rockets)
         "CommandPoints": 100,
         "availability": 4,
         "XPMultiplier": [0.0, 4/4, 0.0, 0.0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "RocketAir_S24_240mm_salvolength2": 1,
+            },
+            "equipmentchanges": {
+                "replace": [("RocketAir_S24_240mm_salvolength2", "RocketAir_S24_240mm_avion_salvolength4")],
+            },
+        },
     },
 
     "Su_22_AT_POL": {  # Su-22M4 Seria 30
@@ -1041,6 +1089,14 @@ pol_unit_edits = {
         },
         "availability": 3,
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "RocketAir_S24_240mm_salvolength2": 1,
+            },
+            "equipmentchanges": {
+                "replace": [("RocketAir_S24_240mm_salvolength2", "RocketAir_S24_240mm_avion_salvolength4")],
+            },
+        },
     },
 
     "Su_22_SEAD_POL": {  #
@@ -1057,7 +1113,7 @@ pol_unit_edits = {
         "XPMultiplier": [0.0, 2/2, 0.0, 1/2],
     },
 
-    "MiG_29_AA_SOV": { # 4x R-73, 2x R-27R [AA1]
+    "MiG_29_AA_POL": { # 4x R-73, 2x R-27R [AA1]
         "CommandPoints": 200,
         "Divisions": {
             "default": {
@@ -1066,5 +1122,4 @@ pol_unit_edits = {
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
     },
-
 }
