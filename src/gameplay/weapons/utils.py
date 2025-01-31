@@ -40,6 +40,8 @@ def get_supply_costs(weapons_dict: Dict) -> List[Tuple[str, int]]:
     for (weapon, _, _, _), data in weapons_dict.items():
         if data is None:
             continue
-        if "BaseSupplyCost" in data:
-            weapon_costs.append((weapon, data["BaseSupplyCost"]))
+        if supply_cost := data.get("Ammunition", {}).get("parent_membr", {}).get("SupplyCost", None):
+            weapon_costs.append((weapon, supply_cost))
+        elif base_supply_cost := data.get("BaseSupplyCost", None):
+            weapon_costs.append((weapon, base_supply_cost))
     return weapon_costs 

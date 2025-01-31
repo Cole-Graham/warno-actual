@@ -44,7 +44,7 @@ def edit_missiles(source_path: Any, game_db: Dict[str, Any]) -> None:
                 
             logger.info(f"Processing missile {weapon_name} (is_new={is_new})")
             try:
-                ammo_data = data["Ammunition"]
+                ammo_data = data.get("Ammunition", None)
                 
                 # Get or create base descriptor
                 try:
@@ -64,8 +64,9 @@ def edit_missiles(source_path: Any, game_db: Dict[str, Any]) -> None:
                 
                 # Apply edits to base descriptor
                 try:
-                    _apply_missile_edits(base_descr, data, ammo_data, is_new)
-                    logger.debug(f"Applied edits to {weapon_name}")
+                    if ammo_data:
+                        _apply_missile_edits(base_descr, data, ammo_data, is_new)
+                        logger.debug(f"Applied edits to {weapon_name}")
                 except Exception as e:
                     logger.error(f"Failed applying edits to {weapon_name}: {str(e)}")
                     continue
@@ -132,17 +133,41 @@ def _create_new_descriptor(source_path, weapon_name, donor):
 
 def _get_existing_descriptor(source_path, weapon_name):
     """Get an existing descriptor for a missile."""
+    # Find the missile data from the tuples
+    missile_data = None
+    for (name, category, donor, is_new), data in missiles.items():
+        if name == weapon_name:
+            missile_data = data
+            break
+            
+    if not missile_data:
+        logger.error(f"No missile data found for {weapon_name}")
+        return None
+    
+    # First try to find any salvo length variant
+    if "WeaponDescriptor" in missile_data and "SalvoLengths" in missile_data["WeaponDescriptor"]:
+        # Get the lowest salvo length
+        salvo_lengths = sorted(missile_data["WeaponDescriptor"]["SalvoLengths"])
+        lowest_salvo = salvo_lengths[0]
+        
+        try:
+            # Try with salvo length suffix first
+            existing = source_path.by_n(f"Ammo_{weapon_name}_salvolength{lowest_salvo}")
+            if existing:
+                return existing
+        except:
+            pass
+    
+    # Fall back to base name if no salvo variants found
     try:
         existing = source_path.by_n(f"Ammo_{weapon_name}")
-        exists = True
+        if existing:
+            return existing
     except:
-        exists = False
-        existing = None
-        
-    if not exists:
         logger.error(f"Could not find missile {weapon_name}")
         return None
-    return existing
+    
+    return None
 
 def _handle_salvo_variants(source_path: Any, base_descr: Any, weapon_name: str, 
                          data: Dict, is_new: bool) -> None:
@@ -161,6 +186,8 @@ def _handle_salvo_variants(source_path: Any, base_descr: Any, weapon_name: str,
     
     for i, length in enumerate(salvo_lengths):
         if length == 1 and i == len(salvo_lengths) - 1:
+            namespace = f"Ammo_{weapon_name}"
+        elif "salvolength" in weapon_name:
             namespace = f"Ammo_{weapon_name}"
         else:
             namespace = f"Ammo_{weapon_name}_salvolength{length}"
@@ -189,7 +216,8 @@ def _handle_salvo_variants(source_path: Any, base_descr: Any, weapon_name: str,
                     logger.debug(f"Found existing variant {namespace}")
                     
                     # Apply all base missile edits first
-                    _apply_missile_edits(existing, data, data["Ammunition"], is_new)
+                    if "Ammunition" in data:
+                        _apply_missile_edits(existing, data, data["Ammunition"], is_new)
                     
                     # Then update salvo-specific values
                     if base_cost is not None:
@@ -345,3 +373,4 @@ def remove_stress_on_miss(source_path: Any) -> None:
             missile_descr.v.by_m("AllowSuppressDamageWhenNoImpact").v = "False"
             logger.info(f"Removed stress on miss from {missile_namespace}")
             
+

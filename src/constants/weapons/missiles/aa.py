@@ -7,7 +7,7 @@ WeaponKey = Tuple[str, str, Optional[str], bool]  # (weapon, category, donor, is
 
 # fmt: off
 missiles: Dict[WeaponKey, WeaponData] = {
-    ("SAM_Strela10M3_salvolength4", "SAM", None, False): { # 214
+    ("SAM_Strela10M3", "SAM", None, False): { # 214
         "Ammunition": {
             "hit_roll": {
                 "Idling": 55,
@@ -31,7 +31,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("SAM_Strela10_salvolength4", "SAM", None, False): { # 213
+    ("SAM_Strela10", "SAM", None, False): { # 213
         "Ammunition": {
             "parent_membr": {
                 "TempsEntreDeuxTirs": 2.5,
@@ -45,12 +45,12 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "WeaponDescriptor": {
             "SalvoLengths": [4],
             "units": {
-                4: ["MTLB_Strela10_DDR", "MTLB_Strela10_SOV"]
+                4: ["MTLB_Strela10_DDR", "MTLB_Strela10_SOV", "MTLB_Strela10_POL"]
             },
         },
     },
 
-    ("SAM_Strela1_salvolength4", "SAM", None, False): { # 212
+    ("SAM_Strela1", "SAM", None, False): { # 212
         "Ammunition": {
             "hit_roll": {
                 "Idling": 40,
@@ -67,7 +67,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "WeaponDescriptor": {
             "SalvoLengths": [4],
             "units": {
-                4: ["BRDM_Strela_1_DDR", "BRDM_Strela_1_SOV"]
+                4: ["BRDM_Strela_1_DDR", "BRDM_Strela_1_SOV", "BRDM_Strela_1_POL"]
             },
         },
     },
@@ -96,7 +96,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("SAM_RAPIER_FSA_salvolength4", "SAM", None, False): {
+    ("SAM_RAPIER_FSA", "SAM", None, False): {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 55,
@@ -150,16 +150,31 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
         "BaseSupplyCost": 35,
         "WeaponDescriptor": {
-            "SalvoLengths": [4, 1],
+            "SalvoLengths": [4],
+            "units": {
+                4: ["Ka_50_AA_SOV", "Mi_24V_AA_SOV", "Mi_24V_SOV"],
+            },
         },
     },
 
-    ("SAM_I_Hawk_salvolength3", "SAM", None, False): { # 193
+    ("SAM_I_Hawk", "SAM", None, False): { # 193
         "Ammunition": {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 3325,
-                "SupplyCost": 450,
             }
+        },
+        "BaseSupplyCost": 150,
+        "WeaponDescriptor": {
+            "SalvoLengths": [3],
+            "units": {
+                3: [
+                    "DCA_I_Hawk_BEL",
+                    "DCA_I_Hawk_NL",
+                    "DCA_I_Hawk_RFA",
+                    "DCA_I_Hawk_US",
+                    "DCA_I_Hawk_capture_DDR",
+                ],
+            },
         },
     },
 
@@ -167,13 +182,14 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "PorteeMaximaleHAGRU": 1925,
+                "TempsEntreDeuxSalves": 7.0,
                 "TempsDeVisee": 1.2,
                 "SupplyCost": 35,
             },
         },
     },
 
-    ("SAM_FIM92_Stinger_salvolength8", "MANPAD", None, False): { # 187
+    ("SAM_FIM92_Stinger", "MANPAD", None, False): { # 187
         "Ammunition": {
             "display": "FIM-92C Stinger",
             "token": "AKFXZOAXUI",
@@ -190,26 +206,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "BaseSupplyCost": 35,
         "WeaponDescriptor": {
             "SalvoLengths": [8],
-        },
-    },
-    
-    ("SAM_FIM92_Stinger_salvolength4", "MANPAD", None, False): { # 187
-        "Ammunition": {
-            "display": "FIM-92C Stinger",
-            "token": "PKCEMABZUN",
-            "hit_roll": {
-                "Idling": 65,
-                "Moving": 65,
+            "units": {
+                8: ["M998_Avenger_US", "M998_Avenger_nonPara_US"],
             },
-            "parent_membr": {
-                "PorteeMaximaleTBAGRU": 2625,
-                "PorteeMaximaleHAGRU": 2100,
-                "TempsDeVisee": 1.2,
-            }
-        },
-        "BaseSupplyCost": 35,
-        "WeaponDescriptor": {
-            "SalvoLengths": [4],
         },
     },
     
@@ -229,18 +228,27 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
         "BaseSupplyCost": 35,
         "WeaponDescriptor": {
-            "SalvoLengths": [4, 1],
+            "SalvoLengths": [4],
+            "units": {
+                4: ["AH1F_ATAS_US", "AH64_Apache_ATAS_US", "OH58_CS_US"]
+            },
         },
     },
 
-    ("SAM_9M330_Tor_salvolength8", "SAM", None, False): { # 179
+    ("SAM_9M330_Tor", "SAM", None, False): { # 179
         "Ammunition": {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 3325,
                 "PorteeMaximaleHAGRU": 3675,
                 "TempsDeVisee": 1.2,
-                "SupplyCost": 640,
             }
+        },
+        "BaseSupplyCost": 80,
+        "WeaponDescriptor": {
+            "SalvoLengths": [8],
+            "units": {
+                8: ["Tor_SOV"],
+            },
         },
     },
 
@@ -251,16 +259,29 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "PorteeMaximaleHAGRU": 5250,
             }
         },
+        "BaseSupplyCost": 130,
+        "WeaponDescriptor": {
+            "SalvoLengths": [3],
+            "units": {
+                3: ["2K12_KUB_DDR", "2K12_KUB_SOV", "2K12_KUB_POL"],
+            },
+        },
     },
 
-    ("SAM_9M311_Tunguska_salvolength8", "SAM", None, False): { # 177
+    ("SAM_9M311_Tunguska", "SAM", None, False): { # 177
         "Ammunition": {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 3150,
                 "PorteeMaximaleHAGRU": 2800,
                 "TempsDeVisee": 1.2,
-                "SupplyCost": 480,
             }
+        },
+        "BaseSupplyCost": 75,
+        "WeaponDescriptor": {
+            "SalvoLengths": [8],
+            "units": {
+                8: ["SAM_9M311_Tunguska_SOV"],
+            },
         },
     },
 
@@ -270,11 +291,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "PorteeMaximaleHAGRU": 1925,
                 "TempsEntreDeuxSalves": 7.0,
                 "TempsDeVisee": 1.2,
+                "SupplyCost": 35,
             }
-        },
-        "BaseSupplyCost": 35,
-        "WeaponDescriptor": {
-            "SalvoLengths": [1],
         },
     },
 
@@ -285,15 +303,12 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "PorteeMaximaleHAGRU": 1750,
                 "TempsEntreDeuxSalves": 14.0,
                 "TempsDeVisee": 1.2,
+                "SupplyCost": 25,
             }
-        },
-        "BaseSupplyCost": 25,
-        "WeaponDescriptor": {
-            "SalvoLengths": [1],
         },
     },
 
-    ("SAM_Strela2M_salvolength2", "MANPAD", None, False): { # 171
+    ("SAM_Strela2M", "MANPAD", None, False): { # 171
         "Ammunition": {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 2450,
@@ -305,6 +320,14 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "BaseSupplyCost": 25,
         "WeaponDescriptor": {
             "SalvoLengths": [2],
+            "units": {
+                2: [
+                    "DCA_ZUR_23_2S_JOD_POL",
+                    "DCA_ZUR_23_2S_JOD_Para_POL",
+                    "Hibneryt_KG_POL",
+                    "OT_62_TOPAS_JOD_POL",
+                ],
+            },
         },
     },
     
@@ -318,11 +341,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "PorteeMaximaleHAGRU": 1925,
                 "TempsEntreDeuxSalves": 7.0,
                 "TempsDeVisee": 1.2,
+                "SupplyCost": 25,
             }
-        },
-        "BaseSupplyCost": 25,
-        "WeaponDescriptor": {
-            "SalvoLengths": [1],
         },
     },
     
@@ -338,11 +358,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "PorteeMaximaleHAGRU": 1925,
                 "TempsEntreDeuxSalves": 7.0,
                 "TempsDeVisee": 1.2,
+                "SupplyCost": 35,
             }
-        },
-        "BaseSupplyCost": 35,
-        "WeaponDescriptor": {
-            "SalvoLengths": [1],
         },
     },
     
@@ -356,11 +373,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "PorteeMaximaleHAGRU": 1750,
                 "TempsEntreDeuxSalves": 7.0,
                 "TempsDeVisee": 1.2,
+                "SupplyCost": 20,
             }
-        },
-        "BaseSupplyCost": 20,
-        "WeaponDescriptor": {
-            "SalvoLengths": [1],
         },
     },
     

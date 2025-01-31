@@ -1959,6 +1959,7 @@ usa_unit_edits = {
             "is_transported": True,
             "needs_transport": False,
             "default": {
+                "cards": 3,
                 "Transports": [
                     "M151_MUTT_trans_US",
                     "M151A2_scout_US",
