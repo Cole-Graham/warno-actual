@@ -108,7 +108,7 @@ pol_unit_edits = {
                 (5, [0, ]),
                 (6, [0, ]),
                 (7, [0, ]),
-                (8, [0, 1, ]),
+                (8, [1, ]),
             ],
         "TransportedTexture": "UseInGame_Transport_assault",
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
@@ -129,7 +129,12 @@ pol_unit_edits = {
             },
         },
         "WeaponDescriptor": {
+            "Salves": {
+                "MMG_PKM_7_62mm": 30,
+            },
             "equipmentchanges": {
+                "replace": [("RocketInf_RPG76_Komar", "MMG_PKM_7_62mm")],
+                "fire_effect": [("RocketInf_RPG76_Komar", "MMG_PKM_7_62mm")],
                 "quantity": {
                     "FM_kbk_AK": 8,
                 },

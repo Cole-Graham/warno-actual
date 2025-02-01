@@ -21,7 +21,7 @@ def load_unit_edits() -> Dict:
         'RDA_unit_edits': 'rda_unit_edits',
         'RFA_unit_edits': 'rfa_unit_edits',
         'SOV_unit_edits': 'sov_unit_edits',
-        # 'SUPPLY_unit_edits': 'supply_unit_edits',
+        # 'SUPPLY_unit_edits': 'supply_unit_edits', decided not to merge supply edits for now
         'UK_unit_edits': 'uk_unit_edits',
         'USA_unit_edits': 'usa_unit_edits'
     }
@@ -42,4 +42,49 @@ def load_unit_edits() -> Dict:
             logger.error(f"Failed to load {file.stem}: {str(e)}")
     
     logger.info(f"Loaded edits for {len(merged_edits)} units total")
-    return merged_edits 
+    return merged_edits
+
+def load_depiction_edits() -> Dict:
+    """Load and merge all depiction edit dictionaries."""
+    merged_edits = {}
+    
+    logger.info("Loading depiction edit dictionaries...")
+
+    # Dictionary of faction modules to import
+    faction_modules = {
+        'POL': 'src.constants.unit_edits.depiction_edits.POL_depiction_edits',
+        'SOV': 'src.constants.unit_edits.depiction_edits.SOV_depiction_edits',
+        'UK': 'src.constants.unit_edits.depiction_edits.UK_depiction_edits',
+        'USA': 'src.constants.unit_edits.depiction_edits.USA_depiction_edits',
+        'FR': 'src.constants.unit_edits.depiction_edits.FR_depiction_edits',
+        'RDA': 'src.constants.unit_edits.depiction_edits.RDA_depiction_edits',
+        'RFA': 'src.constants.unit_edits.depiction_edits.RFA_depiction_edits',
+    }
+    
+    # Import each faction's edits
+    for faction, module_path in faction_modules.items():
+        try:
+            module = importlib.import_module(module_path)
+            
+            # Get all exported variables from __all__
+            if hasattr(module, '__all__'):
+                for var_name in module.__all__:
+                    if hasattr(module, var_name):
+                        unit_edits = getattr(module, var_name)
+                        if "unit_name" in unit_edits:
+                            unit_name = unit_edits["unit_name"]
+                            merged_edits[unit_name] = unit_edits
+                            logger.debug(f"Loaded depiction edits for {unit_name}")
+                        else:
+                            logger.warning(f"No unit_name found in {var_name} from {faction}")
+            else:
+                logger.debug(f"No __all__ defined in {faction} depiction edits")
+                
+        except ImportError:
+            # Skip if faction module doesn't exist yet
+            logger.debug(f"No depiction edits found for {faction}")
+        except Exception as e:
+            logger.error(f"Failed to load {faction} depiction edits: {str(e)}")
+    
+    logger.info(f"Loaded depiction edits for {len(merged_edits)} units total")
+    return merged_edits

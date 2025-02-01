@@ -1,95 +1,170 @@
 import re
 import traceback
-from typing import Any
+from typing import Any, Dict
 
+from src import ndf
+from src.constants.unit_edits import load_depiction_edits
 from src.utils.logging_utils import setup_logger
-
-from .POL_depiction_edits import mortier_2b9_vasilek_para_pol
-from .SOV_depiction_edits import (
-    mi_8tv_gunship_sov,
-    mortier_2b9_vasilek_nonpara_sov,
-    mortier_2b9_vasilek_sov,
-    mtlb_vasilek_sov,
-)
+from src.utils.ndf_utils import strip_quotes
 
 logger = setup_logger(__name__)
 
-# fmt: off
-dics_list = [
-    mi_8tv_gunship_sov, 
-    mtlb_vasilek_sov,
-    mortier_2b9_vasilek_sov,
-    mortier_2b9_vasilek_nonpara_sov,
-    mortier_2b9_vasilek_para_pol
-]
-# fmt: on
-
-def unit_edits_depictionaerial(source_path) -> None:
-    """Edit unit depictions in DepictionAerialUnits.ndf"""
+def unit_edits_depictioninfantry(source_path: Any) -> None:
+    """Edit unit depictions in GeneratedDepictionInfantry.ndf"""
+    ndf_file = "GeneratedDepictionInfantry.ndf"
     
-    ndf_file = "DepictionAerialUnits.ndf"
-    dic_length = len(dics_list)
+    # Load all depiction edits
+    depiction_edits = load_depiction_edits()
     
-    unit_list_index = 0
-    while unit_list_index < dic_length:
-        
-        valid_files = dics_list[unit_list_index]["valid_files"]
-        if ndf_file not in valid_files:
-            unit_list_index += 1
+    # Process each unit's edits
+    for unit_name, unit_data in depiction_edits.items():
+        # Skip if this file isn't relevant for this unit
+        if ndf_file not in unit_data["valid_files"]:
             continue
         
-        unit_name = dics_list[unit_list_index]["unit_name"]
-        unit_edits = dics_list[unit_list_index]["DepictionAerialUnits_ndf"]
-        logger.debug(f"Unit edits: {unit_edits}")
+        if "GeneratedDepictionInfantry_ndf" not in unit_data:
+            logger.error(f"{ndf_file} is valid for {unit_name} but no edits found")
+            continue
+        
+        unit_edits = unit_data["GeneratedDepictionInfantry_ndf"]
+        logger.debug(f"Processing infantry edits for {unit_name}")
+        
+        for (namespace, obj_type), edits in unit_edits.items():
+            if namespace and namespace.startswith("AllWeaponAlternatives_"):
+                weapon_alternatives = source_path.by_n(namespace)
+                if not weapon_alternatives:
+                    logger.error(f"Could not find weapon alternatives {namespace} for {unit_name}")
+                    continue
+                
+                for row_index, (edit_type, edit_list) in edits.items():
+                    if edit_type == "edit":
+                        for member, value in edit_list:
+                            if member == "MeshDescriptor" or member == "ReferenceMeshForSkeleton":
+                                new_mesh = f"$/GFX/DepictionResources/Modele_{value}"
+                                weapon_alternatives.v[row_index].v.by_m(member).v = new_mesh
+                                logger.info(f"Changed {member} for {unit_name} to {new_mesh}")
+
+            elif namespace and namespace.startswith("AllWeaponSubDepiction_"):
+                weapon_subdepictions = source_path.by_n(namespace)
+                if not weapon_subdepictions:
+                    logger.error(f"Could not find weapon subdepictions {namespace} for {unit_name}")
+                    continue
+                
+                for member, member_edits in edits.items():
+                    if member == "Operators":
+                        operators_member = weapon_subdepictions.v.by_m(member)
+                        for index, (edit_type, edit_list) in member_edits.items():
+                            if edit_type == "edit":
+                                for submember, value in edit_list:
+                                    if submember == "FireEffectTag":
+                                        # Remove quotes if present
+                                        value = value.strip('"').strip("'")
+                                        new_value = ndf.convert(f'["FireEffect_{value}"]')
+                                        operators_member.v[index].v.by_m(submember).v = new_value
+                                        logger.info(f"Changed FireEffectTag for {unit_name} to {value}")
+
+            elif namespace and namespace.startswith("TacticDepiction_"):
+                tacticdepiction_soldier = source_path.by_n(namespace)
+                if not tacticdepiction_soldier:
+                    logger.error(f"Could not find tactic depiction {namespace} for {unit_name}")
+                    continue
+                
+                for member, member_edits in edits.items():
+                    if member == "Operators":
+                        operators_member = tacticdepiction_soldier.v.by_m(member)
+                        for index, (edit_type, edit_list) in member_edits.items():
+                            if edit_type == "replace":
+                                # need to check if ConditionalTags object exists, else create it
+                                conditional_tags = operators_member.v[index].v.by_m("ConditionalTags", False)
+                                if conditional_tags is None:
+                                    operators_member.v[index].v.add(ndf.convert("ConditionalTags = []"))
+                                    conditional_tags = operators_member.v[index].v.by_m("ConditionalTags")
+                                
+                                for new_tag, mesh_alternative in edit_list:
+                                    # Remove quotes if present
+                                    # old_tag = old_tag.strip("'")
+                                    # mesh_alternative = mesh_alternative.strip("'")
+                                    
+                                    for tag_tuple in conditional_tags.v:
+                                        weapon_type = strip_quotes(tag_tuple.v[0])
+                                        mesh_alt = strip_quotes(tag_tuple.v[1])
+                                        
+                                        if mesh_alt == mesh_alternative:
+                                            tag_tuple.v = f"('{new_tag}', '{mesh_alternative}')"
+                                            logger.info(f"Replaced tag with {new_tag} for mesh "
+                                                        f"{mesh_alternative} in {unit_name}")
+                                        
+
+def unit_edits_depictionaerial(source_path: Any) -> None:
+    """Edit unit depictions in DepictionAerialUnits.ndf"""
+    ndf_file = "DepictionAerialUnits.ndf"
+    
+    # Load all depiction edits
+    depiction_edits = load_depiction_edits()
+    
+    # Process each unit's edits
+    for unit_name, unit_data in depiction_edits.items():
+        # Skip if this file isn't relevant for this unit
+        if ndf_file not in unit_data["valid_files"]:
+            continue
+            
+        # Get edits for this file
+        if "DepictionAerialUnits_ndf" not in unit_data:
+            logger.error(f"{ndf_file} is valid for {unit_name} but no edits found")
+            continue
+            
+        unit_edits = unit_data["DepictionAerialUnits_ndf"]
+        logger.debug(f"Processing aerial edits for {unit_name}")
+        
         for key, edits in unit_edits.items():
-            if isinstance(key, tuple):
-                namespace, obj_type = key
-            else:
+            if not isinstance(key, tuple):
                 logger.error(f"Key is not a tuple: {key}")
                 continue
-            
-            if namespace != None and namespace.startswith("Gfx_"):
+                
+            namespace, obj_type = key
+            if namespace and namespace.startswith("Gfx_"):
                 aerial_template = source_path.by_n(namespace)
                 
                 for row_name_or_type, value in edits.items():
                     # SubDepictions and SubDepictionGenerators are not modified, but
                     # ndf parse screws them up so I just fix them by replacing the values
                     possible_rows = ["Operators", "Actions", "SubDepictions",
-                                    "SubDepictionGenerators"]
+                                   "SubDepictionGenerators"]
                     if row_name_or_type in possible_rows:
                         aerial_template.v.by_m(row_name_or_type).v = value
                         logger.info(f"Edited {row_name_or_type} for {unit_name}")
-                        
-            else:
-                pass # expand if we need to look for row by type
-            
-        unit_list_index += 1
 
-def unit_edits_missilecarriage(source_path) -> None:
+def unit_edits_missilecarriage(source_path: Any) -> None:
     """Edit unit missile carriage in MissileCarriage.ndf"""
-    
     ndf_file = "MissileCarriage.ndf"
-    dic_length = len(dics_list)
     
-    unit_list_index = 0
-    while unit_list_index < dic_length:
-        
-        valid_files = dics_list[unit_list_index]["valid_files"]
-        if ndf_file not in valid_files:
-            unit_list_index += 1
+    # Load all depiction edits
+    depiction_edits = load_depiction_edits()
+    
+    # Process each unit's edits
+    for unit_name, unit_data in depiction_edits.items():
+        # Skip if this file isn't relevant for this unit
+        if ndf_file not in unit_data["valid_files"]:
             continue
+            
+        # Get edits for this file
+        if "MissileCarriage_ndf" not in unit_data:
+            logger.error(f"{ndf_file} is valid for {unit_name} but no edits found")
+            continue
+            
+        unit_edits = unit_data["MissileCarriage_ndf"]
         
-        unit_name = dics_list[unit_list_index]["unit_name"]
-        unit_edits = dics_list[unit_list_index]["MissileCarriage_ndf"]
         for key, edits in unit_edits.items():
-            if isinstance(key, tuple):
-                namespace, obj_type = key
-            else:
+            if not isinstance(key, tuple):
                 logger.error(f"Key is not a tuple: {key}")
                 continue
-            
-            if namespace != None and namespace.endswith(unit_name):
+                
+            namespace, obj_type = key
+            if namespace and namespace.endswith(unit_name):
                 missile_carriage = source_path.by_n(namespace)
+                if not missile_carriage:
+                    logger.error(f"Could not find missile carriage {namespace} for {unit_name}")
+                    continue
                 
                 for row_name_or_type, value in edits.items():
                     if row_name_or_type == "WeaponInfos":
@@ -105,7 +180,7 @@ def unit_edits_missilecarriage(source_path) -> None:
                                     carriage_list.v.replace(carriage_index, carriage_edits[1])
                                     logger.info(f"Replaced row {carriage_index} with {carriage_edits[1]} for {unit_name}")
                             
-                            elif "remove" in carriage_edits:
+                            elif carriage_edits == "remove":
                                 rows_to_remove.append(carriage_index)
                             else:
                                 for member, new_value in carriage_edits.items():
@@ -120,9 +195,12 @@ def unit_edits_missilecarriage(source_path) -> None:
                                 carriage_list.v.remove(row_index)
                                 logger.info(f"Removed row {row_index} for {unit_name}")
             
-            elif namespace != None and namespace.endswith("_Showroom"):
+            elif namespace and namespace.endswith("_Showroom"):
                 missile_carriage = source_path.by_n(namespace)
-                
+                if not missile_carriage:
+                    logger.error(f"Could not find showroom missile carriage {namespace} for {unit_name}")
+                    continue
+                    
                 for row_name_or_type, value in edits.items():
                     if row_name_or_type == "WeaponInfos":
                         carriage_list = missile_carriage.v.by_m(row_name_or_type)
@@ -155,31 +233,32 @@ def unit_edits_missilecarriage(source_path) -> None:
             else:
                 pass # expand if we need to look for row by type
             
-        unit_list_index += 1
-
-def unit_edits_missilecarriagedepiction(source_path) -> None:
+def unit_edits_missilecarriagedepiction(source_path: Any) -> None:
     """Edit unit missile carriage depiction in MissileCarriageDepiction.ndf"""
-    
     ndf_file = "MissileCarriageDepiction.ndf"
-    dic_length = len(dics_list)
     
-    unit_list_index = 0
-    while unit_list_index < dic_length:
-        
-        valid_files = dics_list[unit_list_index]["valid_files"]
-        if ndf_file not in valid_files:
-            unit_list_index += 1
+    # Load all depiction edits
+    depiction_edits = load_depiction_edits()
+    
+    # Process each unit's edits
+    for unit_name, unit_data in depiction_edits.items():
+        # Skip if this file isn't relevant for this unit
+        if ndf_file not in unit_data["valid_files"]:
             continue
+            
+        # Get edits for this file
+        if "MissileCarriageDepiction_ndf" not in unit_data:
+            logger.error(f"{ndf_file} is valid for {unit_name} but no edits found")
+            continue
+            
+        unit_edits = unit_data["MissileCarriageDepiction_ndf"]
         
-        unit_name = dics_list[unit_list_index]["unit_name"]
-        unit_edits = dics_list[unit_list_index]["MissileCarriageDepiction_ndf"]
         for key, edits in unit_edits.items():
-            if isinstance(key, tuple):
-                namespace, obj_type = key
-            else:
+            if not isinstance(key, tuple):
                 logger.error(f"Key is not a tuple: {key}")
                 continue
-
+                
+            namespace, obj_type = key
             if namespace != None and namespace.endswith(unit_name):
                 missile_carriage = source_path.by_n(namespace)
                 
@@ -247,74 +326,78 @@ def unit_edits_missilecarriagedepiction(source_path) -> None:
             else:
                 pass # expand if we need to look for row by type
             
-        unit_list_index += 1
-
-def unit_edits_depictionvehicles(source_path) -> None:
+def unit_edits_depictionvehicles(source_path: Any) -> None:
     """Edit unit vehicle depictions in DepictionVehicles.ndf"""
-    
     ndf_file = "DepictionVehicles.ndf"
-    dic_length = len(dics_list)
     
-    unit_list_index = 0
-    while unit_list_index < dic_length:
-        
-        valid_files = dics_list[unit_list_index]["valid_files"]
-        if ndf_file not in valid_files:
-            unit_list_index += 1
+    # Load all depiction edits
+    depiction_edits = load_depiction_edits()
+    
+    # Process each unit's edits
+    for unit_name, unit_data in depiction_edits.items():
+        # Skip if this file isn't relevant for this unit
+        if ndf_file not in unit_data["valid_files"]:
             continue
-        
-        unit_name = dics_list[unit_list_index]["unit_name"]
-        unit_edits = dics_list[unit_list_index]["DepictionVehicles_ndf"]
+            
+        # Get edits for this file
+        if "DepictionVehicles_ndf" not in unit_data:
+            logger.error(f"{ndf_file} is valid for {unit_name} but no edits found")
+            continue
+            
+        unit_edits = unit_data["DepictionVehicles_ndf"]
         
         for key, edits in unit_edits.items():
-            if isinstance(key, tuple):
-                namespace, obj_type = key
-                if "copy" in edits:
-                    
-                    if namespace.startswith("DepictionOperator_"):
-                        new_entry = source_path.by_n(namespace).copy()
-                        new_entry.namespace = edits["copy"]
-                        new_entry = _handle_weapon_operator(unit_name, new_entry, edits, True)
-                        match = re.search(r'(\d+)$', edits["copy"])
-                        if match:
-                            index_addition = int(match.group(1))
-                            row_index = source_path.by_n(namespace).index + (index_addition - 1)
-                            source_path.insert(row_index, new_entry)
-                            logger.info(f"Inserted new weapon operator for {unit_name} at index {row_index}")
-                            unit_list_index += 1
-                    
-                    elif namespace.startswith("Gfx_"):
-                        new_entry = source_path.by_n(namespace).copy()
-                        new_entry.namespace = edits["copy"]
-                        new_entry = _handle_vehicle_depiction(unit_name, new_entry, edits, True)
-                        unit_list_index += 1
-            else:
+            if not isinstance(key, tuple):
                 logger.error(f"Key is not a tuple: {key}")
                 continue
-            
-            if "copy" not in edits:
-                if namespace != None and namespace.startswith("DepictionOperator_"):
-                    logger.debug(f"Editing weapon operator for {unit_name}")
-                    weapon_operator = source_path.by_n(namespace)
-                    weapon_operator = _handle_weapon_operator(unit_name, weapon_operator, edits)
-                    unit_list_index += 1
-                    
-                elif namespace != None and namespace.startswith("Gfx_"):
-                    logger.debug(f"Editing vehicle depiction for {unit_name}")
-                    vehicle_depiction = source_path.by_n(namespace)
-                    _handle_vehicle_depiction(unit_name, vehicle_depiction, edits)
-                    unit_list_index += 1
                 
-                else:
-                    logger.warning(f"Skipping {unit_name} because {namespace} is not a valid namespace")
+            namespace, obj_type = key
+            if "copy" in edits:
+                if namespace.startswith("DepictionOperator_"):
+                    # Handle weapon operator copy
+                    donor = source_path.by_n(namespace)
+                    if not donor:
+                        logger.error(f"Could not find donor {namespace} for {unit_name}")
+                        continue
+                        
+                    new_entry = donor.copy()
+                    new_entry.namespace = edits["copy"]
+                    new_entry = _handle_weapon_operator(unit_name, new_entry, edits)
+                    
+                    # Calculate insertion index
+                    match = re.search(r'(\d+)$', edits["copy"])
+                    if match:
+                        index_addition = int(match.group(1))
+                        row_index = donor.index + (index_addition - 1)
+                        source_path.insert(row_index, new_entry)
+                        logger.info(f"Inserted new weapon operator for {unit_name} at index {row_index}")
+                
+                elif namespace.startswith("Gfx_"):
+                    # Handle vehicle depiction copy
+                    donor = source_path.by_n(namespace)
+                    if not donor:
+                        logger.error(f"Could not find donor {namespace} for {unit_name}")
+                        continue
+                        
+                    new_entry = donor.copy()
+                    new_entry.namespace = edits["copy"]
+                    new_entry = _handle_vehicle_depiction(unit_name, new_entry, edits)
+                    source_path.insert(donor.index + 1, new_entry)
+                    logger.info(f"Inserted new vehicle depiction for {unit_name}")
             
-        # if "copy" in edits:
-        #     source_path.insert(row_index, weapon_operator)
-        #     logger.info(f"Inserted new vehicle depiction for {unit_name} at index {row_index}")
-        #     unit_list_index += 1
-        
-        # else:
-            # unit_list_index += 1
+            else:
+                # Handle direct edits
+                if namespace.startswith("DepictionOperator_"):
+                    weapon_operator = source_path.by_n(namespace)
+                    if weapon_operator:
+                        _handle_weapon_operator(unit_name, weapon_operator, edits)
+                        logger.info(f"Updated weapon operator for {unit_name}")
+                
+                elif namespace.startswith("Gfx_"):
+                    vehicle_depiction = source_path.by_n(namespace)
+                    if vehicle_depiction:
+                        _handle_vehicle_depiction(unit_name, vehicle_depiction, edits)
+                        logger.info(f"Updated vehicle depiction for {unit_name}")
 
 def _handle_weapon_operator(unit_name, weapon_operator, edits, is_new_entry=False):
     for row_name_or_type, value in edits.items():

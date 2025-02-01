@@ -38,9 +38,11 @@ from .depictions import (
     edit_infantry_depictions,
     edit_showroom_units,
     unit_edits_depictionvehicles,
+    unit_edits_depictioninfantry,
 )
 from .divisions import (
     add_division_rules,
+
     add_to_divisions,
     create_deck_pack_descriptors,
     create_division_packs,

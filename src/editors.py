@@ -18,7 +18,8 @@ from src.gameplay import (
     global_bomber_edits,
     bomb_damage_standards,
     edit_fire_descriptors,
-    change_fire_descriptors
+    change_fire_descriptors,
+    
 )
 from src.gameplay.buildings import edit_fob_attributes
 from src.gameplay.depictions import (
@@ -38,6 +39,7 @@ from src.gameplay.depictions import (
     unit_edits_depictionvehicles,
     unit_edits_missilecarriage,
     unit_edits_missilecarriagedepiction,
+    unit_edits_depictioninfantry,
 )
 from src.gameplay.divisions import (
     add_division_rules,
@@ -317,6 +319,7 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/Generated/Gameplay/Gfx/Infanterie/GeneratedDepictionInfantry.ndf": [
             lambda source_path: edit_infantry_depictions(source_path, game_db['ammunition'], game_db['depiction_data']),
             create_infantry_depictions,
+            unit_edits_depictioninfantry,
         ],
 
         # UI files

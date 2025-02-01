@@ -476,6 +476,13 @@ def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_
                                 new_ammo = f"$/GFX/Weapon/Ammo_{replacement}"
                             weapon.v.by_m("Ammunition").v = new_ammo
                             logger.debug(f"Replaced {current} with {replacement}")
+                            
+                            if "fire_effect" in equipment_changes:
+                                for old_fire_effect, new_fire_effect in equipment_changes["fire_effect"]:
+                                    if old_fire_effect == ammo_name:
+                                        weapon.v.by_m("EffectTag").v = "'" + f"FireEffect_{new_fire_effect}" + "'"
+                                        logger.debug(f"Replaced {old_fire_effect} with {new_fire_effect}")
+
 
 
 def _adjust_light_at_salvos(weapon_descr: Any, unit_name: str, ammos_: Dict, ammo_db: Dict,
