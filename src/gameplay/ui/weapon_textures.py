@@ -23,7 +23,7 @@ def edit_weapontextures(source: Any) -> None:
             continue
             
         for data_root, data_value in data.items():
-            if data_root == "Texture":
+            if data_root == "NewTexture":
                 texture_file = f'"GameData:/Assets/2D/Interface/Common/UnitsIcons/Armes/Panel_Info/{weapon}.png"'
                 
                 # Add texture resource

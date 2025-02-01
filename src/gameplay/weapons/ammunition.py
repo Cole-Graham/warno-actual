@@ -281,13 +281,19 @@ def _apply_weapon_edits(descr: Any, data: Dict, ammo_data: Dict) -> None:
         _apply_hit_roll_edits(descr, ammo_data["hit_roll"])
         
     # Apply texture
+    if "NewTexture" in data:
+        texture_file = '"' + f"Texture_Interface_Weapon_{data['NewTexture']}" + '"'
+        membr("InterfaceWeaponTexture").v = texture_file
+        logger.debug(f"Applied texture {texture_file}")
+        
     if "Texture" in data:
-        texture_file = f'"Texture_Interface_Weapon_{data["Texture"]}"'
+        texture_file = '"' + f"Texture_Interface_Weapon_{data['Texture']}" + '"'
         membr("InterfaceWeaponTexture").v = texture_file
         logger.debug(f"Applied texture {texture_file}")
 
 def _apply_hit_roll_edits(descr: Any, hit_roll_data: Dict) -> None:
     """Apply hit roll edits to ammunition descriptor."""
+
     hitroll_obj = descr.v.by_m("HitRollRuleDescriptor").v
     
     if "BaseCriticModifier" in hit_roll_data:

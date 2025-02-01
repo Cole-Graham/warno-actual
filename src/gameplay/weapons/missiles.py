@@ -278,9 +278,16 @@ def _apply_missile_edits(descr: Any, data: Dict, ammo_data: Dict, is_new: bool) 
             _apply_hit_roll_edits(descr, hit_roll_data)
         
     # Apply texture
-    if "Texture" in data:
-        texture_file = f'"Texture_Interface_Weapon_{data["Texture"]}"'
+    if "NewTexture" in data:
+        texture_file = '"' + f"Texture_Interface_Weapon_{data['NewTexture']}" + '"'
         membr("InterfaceWeaponTexture").v = texture_file
+        logger.debug(f"Applied texture {texture_file}")
+        
+    if "Texture" in data:
+        texture_file = '"' + f"Texture_Interface_Weapon_{data['Texture']}" + '"'
+        membr("InterfaceWeaponTexture").v = texture_file
+        logger.debug(f"Applied texture {texture_file}")
+
 
 def _apply_hit_roll_edits(descr: Any, hit_roll_data: Dict) -> None:
     """Apply hit roll edits to descriptor."""
