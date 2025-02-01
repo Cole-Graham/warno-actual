@@ -136,7 +136,7 @@ pol_unit_edits = {
             },
         },
         "availability": 5,
-        "XPMultiplier": [0.0, 0.0, 5/5, 4/5], #  5/3 (?)
+        "XPMultiplier": [0.0, 0.0, 7/7, 5/7], #  7/5
         "max_speed": 26,
         "selector_tactic": "(2, 4)",
         "selector_tactic_obj": "02_04",
@@ -225,6 +225,11 @@ pol_unit_edits = {
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("FM_kbk_AK", "FM_kbk_AKMS")],
+            },
         },
         # "WeaponDescriptor": {
         #     "Salves": {
@@ -334,6 +339,70 @@ pol_unit_edits = {
         # RPG-7VM x6
     },
 
+    "Para_POL": {  # Spadochroniarze
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("FM_kbk_AKM", "FM_kbk_AKMS")],
+            },
+        },
+    },
+
+    "Para_Metis_POL": {  # Spadochroniarze [Metis]
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("FM_kbk_AKM", "FM_kbk_AKMS")],
+            },
+        },
+    },
+
+    "Groupe_AT_Para_POL": {  # Desant./Spado. Druzyna Ppanc.
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("FM_kbk_AK", "FM_kbk_AKMS")],
+            },
+        },
+    },
+
+    "Para_Security_POL": {  # Desant./Spado. Ochrona
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("FM_kbk_AKM", "FM_kbk_AKMS")],
+            },
+        },
+    },
+
+    "Para_HMG_POL": {  # Spadochroniarze [PKM]
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("FM_kbk_AKM", "FM_kbk_AKMS")],
+            },
+        },
+    },
+
+    "Engineers_paras_POL": {  # Desant./Spado. Saperzy
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("FM_kbk_AKM", "FM_kbk_AKMS")],
+            },
+        },
+    },
+
+    "Engineers_paras_Flam_POL": {  # Desant./Spado. Saperzy (LPO-50)
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("FM_kbk_AKM", "FM_kbk_AKMS")],
+            },
+        },
+    },
+
+    "Engineers_paras_CMD_POL": {  # Desant./Spado. Saperzy Dow./LDR.
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("FM_kbk_AKM", "FM_kbk_AKMS")],
+            },
+        },
+    },
+
     "WSW_POL": {  # WSW
         "CommandPoints": 35,
         "availability": 8,
@@ -378,7 +447,6 @@ pol_unit_edits = {
             },
         },
     },
-
 
     "HMGteam_NSV_POL": {  # NSW 12,7mm
         "GameName": {
@@ -841,6 +909,14 @@ pol_unit_edits = {
         "DeploymentShift": 0,
     },
 
+    "Scout_para_POL": {  # Desant./Spado. Zwiadowcy
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("FM_kbk_AKM", "FM_kbk_AKMS")],
+            },
+        },
+    },
+
     "Scout_LRRP_POL": {  # Rozp. Specjalne [GSR]
         "CommandPoints": 30,
         # "strength": 5,
@@ -945,7 +1021,7 @@ pol_unit_edits = {
     # POL AA
     "MANPAD_Strela_2M_POL": {  # Strzala-2M
         "CommandPoints": 20,
-        "XPMultiplier": [9/9, 7/9, 0.0, 0.0],
+        "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -960,9 +1036,16 @@ pol_unit_edits = {
     "MANPAD_Strela_2M_Para_POL": {  # Desant. Strzala-2M
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_kbk_AKM", "FM_kbk_AK_noreflex")],
+                "replace": [("FM_kbk_AKM", "FM_kbk_AKMS_noreflex")],
             },
         },
+    },
+
+    "BRDM_Strela_1_POL": {
+        "strength": 8,
+        "CommandPoints": 40,
+        "availability": 7,
+        "XPMultiplier": [7/7, 5/7, 0.0, 0.0],
     },
 
     "MTLB_Strela10_POL": {  # Strzala-10
@@ -1061,13 +1144,13 @@ pol_unit_edits = {
     },
 
     "MiG_21bis_RKT2_POL": {  # 4x S-24 [RKT2]
-        # TODO: adjust evac winchester behavior (does not evac after expending rockets)
         "CommandPoints": 100,
         "availability": 4,
         "XPMultiplier": [0.0, 4/4, 0.0, 0.0],
         "WeaponDescriptor": {
             "Salves": {
-                "RocketAir_S24_240mm_avion_salvolength4": 1,
+                "RocketAir_S24_240mm_avion_salvolength4": (1, True),
+                # set salvo count to 1 and corresponding SalvoIsMainSalvo to True
             },
             "equipmentchanges": {
                 "replace": [("RocketAir_S24_240mm_salvolength2", "RocketAir_S24_240mm_avion_salvolength4")],
@@ -1088,7 +1171,7 @@ pol_unit_edits = {
             },
         },
         "availability": 3,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "XPMultiplier": [0.0, 3/3, 2/3, 0.0],
         "WeaponDescriptor": {
             "Salves": {
                 "RocketAir_S24_240mm_avion_salvolength4": 1,

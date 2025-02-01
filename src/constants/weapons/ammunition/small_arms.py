@@ -1097,7 +1097,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    # kbk AKM will be deprecated
+    # FM_kbk_AKM is now deprecated
     
     ("FM_kbk_AK", "small_arms", None, False): {
         "Ammunition": {
@@ -1128,6 +1128,63 @@ weapons: Dict[WeaponKey, WeaponData] = {
     },
     
     ("FM_kbk_AK_noreflex", "small_arms", "FM_kbk_AK", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 45,
+                "Moving": 15,
+            },
+            "parent_membr": {
+                "TempsEntreDeuxTirs": 1.5,
+                "PorteeMaximaleGRU": 875,
+                "PorteeMaximaleTBAGRU": 700,
+                "PhysicalDamages": 0.06,
+                "SuppressDamages": 6,
+                "DisplaySalveAccuracy": False,
+                "TirReflexe": False,
+                "TempsDeVisee": 1.0,
+                "TempsEntreDeuxSalves": 5.5,
+                "NbTirParSalves": 5,
+                "AffichageMunitionParSalve": 15,
+            },
+            "token": "AYYOIYKCVF",
+        },
+        "Texture": "FM_kbk_AKM",
+        "BaseSupplyCost": 1,
+        "NbWeapons": [1],
+        "WeaponDescriptor": {
+            "Salves": 22,
+        },
+    },
+
+    ("FM_kbk_AKMS", "small_arms", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 45,
+                "Moving": 15,
+            },
+            "parent_membr": {
+                "TempsEntreDeuxTirs": 2.0,
+                "PorteeMaximaleGRU": 875,
+                "PorteeMaximaleTBAGRU": 700,
+                "PhysicalDamages": 0.06,
+                "SuppressDamages": 6,
+                "DisplaySalveAccuracy": False,
+                "TempsDeVisee": 1.0,
+                "TempsEntreDeuxSalves": 5.5,
+                "NbTirParSalves": 5,
+                "AffichageMunitionParSalve": 15,
+            },
+            # "token": "AYYOIYKCVF",
+        },
+        # "NewTexture": "kbk_akm",
+        "BaseSupplyCost": 1,
+        "NbWeapons": [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+        "WeaponDescriptor": {
+            "Salves": 22,
+        },
+    },
+
+    ("FM_kbk_AKMS_noreflex", "small_arms", "FM_kbk_AKMS", True): {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 45,
