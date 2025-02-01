@@ -226,11 +226,6 @@ pol_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                "replace": [("FM_kbk_AK", "FM_kbk_AKMS")],
-            },
-        },
         # "WeaponDescriptor": {
         #     "Salves": {
         #         "FM_AK_74": 11,
