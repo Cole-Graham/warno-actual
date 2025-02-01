@@ -233,10 +233,8 @@ def update_weapondescr_ammoname_quantity(source_path, game_db):
                                 logger.info(f"Updated ammo {ammo} to {new_ammo}\n")
                                 
                         else:
-                            logger.debug(f"No changes applied for {weapon_name}\n")
+                            logger.debug(f"No changes applied for {weapon_name}\n")      
         
-        
-
 def _apply_weapon_edits(descr: Any, data: Dict, ammo_data: Dict) -> None:
     """Apply edits from ammunition data to descriptor."""
     membr = descr.v.by_m

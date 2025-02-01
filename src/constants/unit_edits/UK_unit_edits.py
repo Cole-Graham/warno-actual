@@ -803,12 +803,15 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
-        "equipmentchanges": {
-            "replace": [("PM_Sterling", "PM_Sterling_noreflex")],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("PM_Sterling", "PM_Sterling_noreflex")],
+            },
         },
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
     },
     
+
     "DCA_Javelin_LML_UK": {
         "CommandPoints": 35,
         "availability": 6,

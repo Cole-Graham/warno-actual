@@ -1067,7 +1067,7 @@ pol_unit_edits = {
         "XPMultiplier": [0.0, 4/4, 0.0, 0.0],
         "WeaponDescriptor": {
             "Salves": {
-                "RocketAir_S24_240mm_salvolength2": 1,
+                "RocketAir_S24_240mm_avion_salvolength4": 1,
             },
             "equipmentchanges": {
                 "replace": [("RocketAir_S24_240mm_salvolength2", "RocketAir_S24_240mm_avion_salvolength4")],
@@ -1091,7 +1091,7 @@ pol_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
         "WeaponDescriptor": {
             "Salves": {
-                "RocketAir_S24_240mm_salvolength2": 1,
+                "RocketAir_S24_240mm_avion_salvolength4": 1,
             },
             "equipmentchanges": {
                 "replace": [("RocketAir_S24_240mm_salvolength2", "RocketAir_S24_240mm_avion_salvolength4")],

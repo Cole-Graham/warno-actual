@@ -134,11 +134,12 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketAir_S24_240mm_avion_salvolength4", "rocket", "RocketAir_S24_240mm_salvolength2", True): { # 619
         "Ammunition": {
             "parent_membr": {
+                "PorteeMaximaleGRU": 2625,
                 "RadiusSplashPhysicalDamagesGRU": 60,
                 "RadiusSplashSuppressDamagesGRU": 80,
                 "PhysicalDamages": 6.0,
                 "SuppressDamages": 390,
-                "SupplyCost": 64,
+                "SupplyCost": 128,
                 "NbTirParSalves": 4,
                 "NbSalvosShootOnPosition": 1,
                 "AffichageMunitionParSalve": 4,

@@ -20,6 +20,8 @@ def edit_team_supply(source_path) -> None:
                 
             if module.v.type != "TTeamAirportModuleDescriptor":
                 continue
-                
+            
+            module.v.by_m("FuelSupplyAmountBySecond").v = "14"
+            logger.info("Set airport fuel supply rate to 14/second")
             module.v.by_m("AmmunitionSupplyAmountBySecond").v = "2"
             logger.info("Set airport ammunition supply rate to 2/second") 

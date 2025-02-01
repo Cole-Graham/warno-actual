@@ -239,7 +239,7 @@ def _apply_weapon_edits(
 
     # Handle salvo changes first to prevent index errors when editing salves
     if "Salves" in wd_edits:
-        _apply_salvo_changes(weapon_descr, wd_edits["Salves"], weapon_descr_data)
+        _apply_salvo_changes(weapon_descr, wd_edits, weapon_descr_data, game_db)
     
     # Handle turret changes
     if "turrets" in wd_edits:
@@ -338,26 +338,53 @@ def _apply_turret_changes(weapon_descr: Any, turrets_edits: Dict, weapon_descr_d
             turret_list.v.remove(turret_index)
                 
 
-def _apply_salvo_changes(weapon_descr: Any, salve_edits: Dict, weapon_db: Dict) -> None:
+def _apply_salvo_changes(
+    weapon_descr: Any,
+    wd_edits: Dict,
+    weapon_descr_data: Dict,
+    game_db: Dict,
+) -> None:
     """Apply salvo changes using database data."""
+    wd_name = weapon_descr.namespace
     salves_list = weapon_descr.v.by_m("Salves")
-    weapon_indices = weapon_db['weapon_indices']
-
-    
+    weapon_indices = weapon_descr_data['weapon_indices']
+    renames_new_old = game_db["ammunition"]["renames_new_old"]
+    salve_edits = wd_edits["Salves"]
     # Update salvos first to prevent index errors
     if isinstance(salves_list.v, ndf.model.List):
-        salvo_mapping = weapon_db['salvo_mapping']
+
+        salvo_mapping = weapon_descr_data['salvo_mapping']
         for weapon, salvo in salve_edits.items():
-            if weapon in ("add", "remove"):
-                continue
-                
+            
             if weapon in salvo_mapping:
                 index = salvo_mapping[weapon]
                 logger.debug(f"Updating salvo for {weapon} at index {index}")
                 salves_list.v.replace(index, str(salvo))
-                
+
+            elif "equipmentchanges" in wd_edits:
+                if "replace" in wd_edits["equipmentchanges"]:
+                    for old_weapon, new_weapon in wd_edits["equipmentchanges"]["replace"]:
+                        # check if the new weapon is the same as the one in salve_edits
+                        if new_weapon != weapon:
+                            continue
+                        # check if the old weapon is a renamed version of the weapon in salvo_mapping
+                        old_weapon_old_name = renames_new_old.get(old_weapon, None)
+                        if old_weapon_old_name:
+                            index = salvo_mapping[old_weapon_old_name]
+
+                            logger.debug(f"Updating salvo for {weapon} at index {index}")
+                            salves_list.v.replace(index, str(salvo))
+                        else:
+                            index = salvo_mapping[old_weapon]
+                            logger.debug(f"Updating salvo for {weapon} at index {index}")
+                            salves_list.v.replace(index, str(salvo))
+            
+            else:
+                logger.error(f"No salvo edits found for {weapon}")
+             
     # Add new salvos
     if "add" in salve_edits:
+
         for index, salvo in salve_edits["add"]:
             logger.debug(f"Adding salvo {salvo} at index {index}")
             salves_list.v.insert(index, str(salvo))
