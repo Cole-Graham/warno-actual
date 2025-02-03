@@ -10,6 +10,7 @@ from src.utils.ndf_utils import get_modules_list, is_obj_type
 
 logger = setup_logger(__name__)
 
+
 def create_new_units(source_path: Any, game_db: Dict[str, Any]) -> None:
     """Create new units based on donor units."""
     logger.info("Creating new units")
@@ -19,6 +20,7 @@ def create_new_units(source_path: Any, game_db: Dict[str, Any]) -> None:
     
     # Create unit descriptors
     create_unit_descriptors(source_path)
+
 
 def write_new_unit_dictionary_entries(unit_edits: Dict[str, Any]) -> None:
     """Write dictionary entries for new units."""
@@ -30,6 +32,7 @@ def write_new_unit_dictionary_entries(unit_edits: Dict[str, Any]) -> None:
     
     if entries:
         write_dictionary_entries(entries, dictionary_type="units")
+
 
 def create_unit_descriptors(source_path: Any) -> None:
     """Create unit descriptors for new units."""
@@ -57,6 +60,7 @@ def create_unit_descriptors(source_path: Any) -> None:
         # Add the new unit to the source
         source_path.add(new_unit_row)
         logger.info(f"Added new unit: {unit_name}")
+
 
 def modify_new_unit(unit_row: Any, edits: Dict[str, Any]) -> None:
     """Modify a new unit based on edit specifications.
@@ -160,6 +164,7 @@ def modify_new_unit(unit_row: Any, edits: Dict[str, Any]) -> None:
         elif descr_type == "TShowRoomEquivalenceModuleDescriptor":
             descr_row.v.by_member("ShowRoomDescriptor").v = f"~/Descriptor_ShowRoomUnit_{edits['NewName']}"
 
+
 def _handle_damage_module(descr_row: Any, edits: Dict[str, Any]) -> None:
     """Handle damage module modifications."""
     if "armor" in edits:
@@ -185,6 +190,7 @@ def _handle_damage_module(descr_row: Any, edits: Dict[str, Any]) -> None:
             side_blindage_obj.by_member("Family").v = "ResistanceFamily_infanterieWA"
             side_blindage_obj.by_member("Index").v = armor_level
 
+
 def _handle_groupe_combat(descr_row: Any, edits: Dict[str, Any]) -> None:
     """Handle groupe combat module modifications."""
     default_member = descr_row.v.by_member("Default")
@@ -199,6 +205,7 @@ def _handle_groupe_combat(descr_row: Any, edits: Dict[str, Any]) -> None:
         default_member.v.by_member("WeaponUnitFXKey").v = f"'{edits['NewName']}'"
         mimetic_descr.v.by_member("MimeticName").v = f"'{edits['NewName']}'"
 
+
 def _handle_tactical_label(descr_row: Any, edits: Dict[str, Any]) -> None:
     """Handle tactical label module modifications."""
     if "SortingOrder" in edits:
@@ -212,6 +219,7 @@ def _handle_tactical_label(descr_row: Any, edits: Dict[str, Any]) -> None:
     if "strength" in edits:
         descr_row.v.by_member("NbSoldiers").v = str(edits["strength"])
 
+
 def _handle_unit_ui(descr_row: Any, edits: Dict[str, Any]) -> None:
     """Handle unit UI module modifications."""
     if "SpecialitiesList" in edits:
@@ -220,11 +228,14 @@ def _handle_unit_ui(descr_row: Any, edits: Dict[str, Any]) -> None:
     if "GameName" in edits and "token" in edits["GameName"]:
         descr_row.v.by_member("NameToken").v = f'\"{edits["GameName"]["token"]}\"'
     if "UpgradeFromUnit" in edits and descr_row.v.by_member("UpgradeFromUnit", False) is not None:
-        descr_row.v.by_member("UpgradeFromUnit").v = f"Descriptor_Unit_{edits['UpgradeFromUnit']}"
+        if edits["UpgradeFromUnit"] is None:
+            descr_row.v.remove_by_m("UpgradeFromUnit", strict=False)
+        else:
+            descr_row.v.by_m("UpgradeFromUnit").v = f"Descriptor_Unit_{edits['UpgradeFromUnit']}"
     if "MenuIconTexture" in edits:
         descr_row.v.by_member("MenuIconTexture").v = f"'{edits['MenuIconTexture']}'"
     if "ButtonTexture" in edits:
         descr_row.v.by_member("ButtonTexture").v = f"'Texture_Button_Unit_{edits['ButtonTexture']}'"
     if "TypeStrategicCount" in edits:
         descr_row.v.by_member("TypeStrategicCount").v = edits["TypeStrategicCount"]
-    descr_row.v.by_member("ButtonTexture").v = f"'Texture_Button_Unit_{edits['NewName']}'" 
+    descr_row.v.by_member("ButtonTexture").v = f"'Texture_Button_Unit_{edits['NewName']}'"

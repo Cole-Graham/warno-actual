@@ -2,7 +2,6 @@
 
 # from typing import Any, Dict
 
-# fmt: off
 pol_unit_edits = {
     #POL LOG
     "DCA_ZU_23_2_POL": {  # ZU-23-2
@@ -77,6 +76,17 @@ pol_unit_edits = {
         "XPMultiplier": [0.0, 0.0, 3/3, 0.0],
     },
 
+    "OT_64_SKOT_CMD_POL": {  # SKOT R-2M
+        "CommandPoints": 160,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "availability": 3,
+        "XPMultiplier": [0.0, 0.0, 3/3, 0.0],
+    },
+
 
     #POL INFANTRY
     "Engineers_CMD_POL": {  # Saperzy Ldr.
@@ -140,7 +150,7 @@ pol_unit_edits = {
                 },
             },
         },
-        "availability": 5,
+        "availability": 7,
         "XPMultiplier": [0.0, 0.0, 7/7, 5/7], #  7/5
         "max_speed": 26,
         "selector_tactic": "(2, 4)",
@@ -216,14 +226,14 @@ pol_unit_edits = {
     },
 
     "Engineers_POL": {  # Saperzy
-        "CommandPoints": 40,
+        "CommandPoints": 50,
         "availability": 8,
         "Divisions": {
             "default": {
                 "cards": 2,
             },
             "POL_20_Pancerna": {
-                "Transports": ["Star_266_POL", "MTLB_trans_POL", "OT_64_SKOT_2_POL"],
+                "Transports": ["Star_266_POL", "MTLB_trans_POL", "OT_64_SKOT_2_POL", "OT_64_SKOT_2A_POL"],
             },
         },
         "XPMultiplier": [0.0, 8/8, 6/8, 0.0],  # 8/6
@@ -245,14 +255,14 @@ pol_unit_edits = {
     },
 
     "Engineers_Flam_POL": {  # Saperzy Szturmowi
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "availability": 8,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
             "POL_20_Pancerna": {
-                "Transports": ["Star_266_POL", "MTLB_trans_POL", "OT_64_SKOT_2_POL"],
+                "Transports": ["Star_266_POL", "MTLB_trans_POL", "OT_64_SKOT_2_POL", "OT_64_SKOT_2A_POL"],
             },
         },
         "XPMultiplier": [0.0, 8/8, 6/8, 0.0],  # 8/6
@@ -316,7 +326,7 @@ pol_unit_edits = {
     },
 
     "MotRifles_SVD_POL": {  # Piechota Zmech (SVD)
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "availability": 12,
         "Divisions": {
             "default": {
@@ -339,72 +349,72 @@ pol_unit_edits = {
         # RPG-7VM x6
     },
 
-    "Para_POL": {  # Spadochroniarze
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                "replace": [("FM_kbk_AKM", "FM_kbk_AKMS")],
-            },
-        },
-    },
-
-    "Para_Metis_POL": {  # Spadochroniarze [Metis]
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                "replace": [("FM_kbk_AKM", "FM_kbk_AKMS")],
-            },
-        },
-    },
-
-    "Groupe_AT_Para_POL": {  # Desant./Spado. Druzyna Ppanc.
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                "replace": [("FM_kbk_AK", "FM_kbk_AKMS")],
-            },
-        },
-    },
-
-    "Para_Security_POL": {  # Desant./Spado. Ochrona
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                "replace": [("FM_kbk_AKM", "FM_kbk_AKMS")],
-            },
-        },
-    },
-
-    "Para_HMG_POL": {  # Spadochroniarze [PKM]
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                "replace": [("FM_kbk_AKM", "FM_kbk_AKMS")],
-            },
-        },
-    },
-
-    "Engineers_paras_POL": {  # Desant./Spado. Saperzy
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                "replace": [("FM_kbk_AKM", "FM_kbk_AKMS")],
-            },
-        },
-    },
-
-    "Engineers_paras_Flam_POL": {  # Desant./Spado. Saperzy (LPO-50)
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                "replace": [("FM_kbk_AKM", "FM_kbk_AKMS")],
-            },
-        },
-    },
-
-    "Engineers_paras_CMD_POL": {  # Desant./Spado. Saperzy Dow./LDR.
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                "replace": [("FM_kbk_AKM", "FM_kbk_AKMS")],
-            },
-        },
-    },
+    # "Para_POL": {  # Spadochroniarze
+    #     "WeaponDescriptor": {
+    #         "equipmentchanges": {
+    #             "replace": [("FM_kbk_AKM", "FM_kbk_AKMS")],
+    #         },
+    #     },
+    # },
+    #
+    # "Para_Metis_POL": {  # Spadochroniarze [Metis]
+    #     "WeaponDescriptor": {
+    #         "equipmentchanges": {
+    #             "replace": [("FM_kbk_AKM", "FM_kbk_AKMS")],
+    #         },
+    #     },
+    # },
+    #
+    # "Groupe_AT_Para_POL": {  # Desant./Spado. Druzyna Ppanc.
+    #     "WeaponDescriptor": {
+    #         "equipmentchanges": {
+    #             "replace": [("FM_kbk_AK", "FM_kbk_AKMS")],
+    #         },
+    #     },
+    # },
+    #
+    # "Para_Security_POL": {  # Desant./Spado. Ochrona
+    #     "WeaponDescriptor": {
+    #         "equipmentchanges": {
+    #             "replace": [("FM_kbk_AKM", "FM_kbk_AKMS")],
+    #         },
+    #     },
+    # },
+    #
+    # "Para_HMG_POL": {  # Spadochroniarze [PKM]
+    #     "WeaponDescriptor": {
+    #         "equipmentchanges": {
+    #             "replace": [("FM_kbk_AKM", "FM_kbk_AKMS")],
+    #         },
+    #     },
+    # },
+    #
+    # "Engineers_paras_POL": {  # Desant./Spado. Saperzy
+    #     "WeaponDescriptor": {
+    #         "equipmentchanges": {
+    #             "replace": [("FM_kbk_AKM", "FM_kbk_AKMS")],
+    #         },
+    #     },
+    # },
+    #
+    # "Engineers_paras_Flam_POL": {  # Desant./Spado. Saperzy (LPO-50)
+    #     "WeaponDescriptor": {
+    #         "equipmentchanges": {
+    #             "replace": [("FM_kbk_AKM", "FM_kbk_AKMS")],
+    #         },
+    #     },
+    # },
+    #
+    # "Engineers_paras_CMD_POL": {  # Desant./Spado. Saperzy Dow./LDR.
+    #     "WeaponDescriptor": {
+    #         "equipmentchanges": {
+    #             "replace": [("FM_kbk_AKM", "FM_kbk_AKMS")],
+    #         },
+    #     },
+    # },
 
     "WSW_POL": {  # WSW
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "availability": 8,
         "Divisions": {
             "default": {
@@ -705,7 +715,7 @@ pol_unit_edits = {
     },
 
     "T72M1_CMD_POL": {
-        "CommandPoints": 195,
+        "CommandPoints": 190,
         "GameName": {
             "display": "#LDRSOV T-72M1D LDR.",
             "token": "POLTSTMOLD",
@@ -726,6 +736,7 @@ pol_unit_edits = {
             "overwrite_all": [
                 'Armor_heavy',
                 'leader_sov',
+                '_smoke_launcher',
             ],
         },
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
@@ -757,7 +768,7 @@ pol_unit_edits = {
     },
 
     "T55A_POL": {
-        "CommandPoints": 70,
+        "CommandPoints": 65,
         "availability": 10,
         "XPMultiplier": [10/10, 7/10, 0.0, 0.0],  # 10/7
     },
@@ -788,6 +799,11 @@ pol_unit_edits = {
         "CommandPoints": 195,
         "availability": 4,
         "XPMultiplier": [0.0, 0.0, 4/4, 3/4],  # 4/3
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
     },
 
     #   tank tab transports
@@ -843,6 +859,7 @@ pol_unit_edits = {
 
     "BMP_1_SP2_POL": {  # BWP-1
         "CommandPoints": 20,
+        "UpgradeFromUnit": "MTLB_trans_POL",
     },
 
     "BMP_2_POL": {  # BWP-2
@@ -890,9 +907,9 @@ pol_unit_edits = {
             "POL_20_Pancerna": {
                 "Transports": ['UAZ_469_trans_POL', 'OT_65_POL', 'Mi_2_trans_POL'],
             },
-            "POL_4_Zmechanizowana": {
-                "Transports": ['UAZ_469_trans_POL', 'BRDM_1_POL', 'Mi_2_trans_POL'],
-            },
+            # "POL_4_Zmechanizowana": {
+            #     "Transports": ['UAZ_469_trans_POL', 'BRDM_1_POL', 'Mi_2_trans_POL'],
+            # },
         },
         "availability": 8,
         "XPMultiplier": [8/8, 6/8, 0.0, 0.0],
@@ -919,12 +936,13 @@ pol_unit_edits = {
 
     "Scout_LRRP_POL": {  # Rozp. Specjalne [GSR]
         "CommandPoints": 30,
-        # "strength": 5,
-        # "WeaponAssignment": [
-        #     (0, [0, ]),
-        #     (1, [0, ]),
-        #     (2, [0, 1, ]),
-        # ],
+        "strength": 4,
+        "WeaponAssignment": [
+            (0, [0, ]),
+            (1, [0, ]),
+            (2, [0, ]),
+            (3, [0, 1, ]),
+        ],
         "Divisions": {
             "POL_20_Pancerna": {
                 "Transports": ['Honker_4011_POL', 'Honker_RYS_POL', 'OT_65_POL', 'Mi_2_trans_POL'],
@@ -1005,13 +1023,17 @@ pol_unit_edits = {
     # "BRDM_1_POL": {  # BRDM-1
     #     "CommandPoints": 25,
     # },
-    #
-    # "OT_65_POL": {  # OT-65
-    #     "CommandPoints": 25,
-    # },
+
+    "OT_65_POL": {  # OT-65
+        "GameName": {
+            "display": "#RECO1 OT-65",
+            "token": "OTSFRECOPL",
+        },
+    },
 
     "MTLB_TRI_Hors_POL": {  # Tri Hors
         "CommandPoints": 25,
+        "UpgradeFromUnit": None,
     },
 
     "Honker_RYS_POL": {  # Honker Rys
@@ -1097,14 +1119,14 @@ pol_unit_edits = {
     },
 
     "Mi_24D_s8_AT_POL": {  # 80x S-8, 4x Falanga - Mi-24D [AT2]
-        "CommandPoints": 145,
+        "CommandPoints": 150,
         "availability": 4,
         "XPMultiplier": [0.0, 4/4, 3/4, 0.0],
     },
 
     "Mi_2_ATGM_POL": {  # Mi-2URP Salamandra
         "CommandPoints": 60,
-        "availability": 4,
+        "availability": 7,
         "XPMultiplier": [0.0, 7/7, 5/7, 0.0],
     },
 
@@ -1206,3 +1228,4 @@ pol_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
     },
 }
+# fmt: off

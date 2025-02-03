@@ -23,15 +23,15 @@ def edit_units(source_path: Any, game_db: Dict[str, Any]) -> None:
     _handle_supply(source_path, game_db, unit_edits)
     
     for unit_row in source_path:
+        units_processed += 1
+
+        # Skip if no namespace
+        if not hasattr(unit_row, 'namespace'):
+            continue
+
+        unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
+
         try:
-            units_processed += 1
-            
-            # Skip if no namespace
-            if not hasattr(unit_row, 'namespace'):
-                continue
-                
-            unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
-            
             # Debug logging
             logger.debug(f"Processing unit: {unit_name}")
             
@@ -73,18 +73,18 @@ def edit_units(source_path: Any, game_db: Dict[str, Any]) -> None:
 def modify_module(unit_row: Any, descr_row: Any, edits: dict, index: int,
                   modules_list: list, dictionary_entries: list) -> None:
     """Apply edits to a specific module based on its type."""
+    if not hasattr(descr_row.v, 'type'):
+        return
+
+    descr_type = descr_row.v.type
+    namespace = None
+    if hasattr(descr_row, "namespace"):
+        namespace = descr_row.namespace
+
+    # Get unit name for logging
+    unit_name = unit_row.namespace.replace("Descriptor_Unit_", "") if hasattr(unit_row, 'namespace') else "Unknown"
+
     try:
-        if not hasattr(descr_row.v, 'type'):
-            return
-            
-        descr_type = descr_row.v.type
-        namespace = None
-        if hasattr(descr_row, "namespace"):
-            namespace = descr_row.namespace
-        
-        # Get unit name for logging
-        unit_name = unit_row.namespace.replace("Descriptor_Unit_", "") if hasattr(unit_row, 'namespace') else "Unknown"
-        
         # Map module types to their handlers
         module_handlers = {
             "TTagsModuleDescriptor": _handle_tags,
@@ -139,7 +139,6 @@ def modify_module(unit_row: Any, descr_row: Any, edits: dict, index: int,
                     else:
                         transport_tags.v = ndf.convert(str(["Crew"]))
                         logger.info(f"Updated {unit_row.namespace} to regular transport")
-        
 
         # Apply module-specific handler if it exists
         if handler := module_handlers.get(descr_type):
@@ -284,7 +283,10 @@ def _handle_unit_ui(unit_row: Any, descr_row: Any, edits: dict, index: int, modu
         descr_row.v.by_m("DisplayRoadSpeedInKmph").v = str(edits["road_speed"]["road_speed"])
         
     if "UpgradeFromUnit" in edits and descr_row.v.by_m("UpgradeFromUnit", False) is not None:
-        descr_row.v.by_m("UpgradeFromUnit").v = f"Descriptor_Unit_{edits['UpgradeFromUnit']}"
+        if edits["UpgradeFromUnit"] is None:
+            descr_row.v.remove_by_m("UpgradeFromUnit", strict=False)
+        else:
+            descr_row.v.by_m("UpgradeFromUnit").v = f"Descriptor_Unit_{edits['UpgradeFromUnit']}"
     
     if "MenuIconTexture" in edits:
         descr_row.v.by_m("MenuIconTexture").v = "'" + edits["MenuIconTexture"] + "'"
@@ -368,7 +370,6 @@ def _handle_supply(source_path, game_db, unit_edits, *_) -> None:
                             logger.warning(f"Missing supply descriptors for {unit}")
                             continue
 
-                            
                         old_capacity = supply_capacity.v
                         
                         # Update supply type based on unit type
@@ -396,7 +397,6 @@ def _handle_supply(source_path, game_db, unit_edits, *_) -> None:
                         production_resources = membr("ProductionRessourcesNeeded").v.by_k(key)
                         production_resources.v = str(edits["CommandPoints"])
                         logger.info(f"Updated {unit} command points to: {edits['CommandPoints']}")
-
 
         except Exception as e:
             logger.error(f"Error processing {unit}: {str(e)}")

@@ -3,14 +3,14 @@
 # fmt: off
 POL_NEW_UNITS = {
     "Rifles_CMD_POL": { # donor unit
-        "GUID": "847f8c3c-52c8-4a5b-8955-6dc3334ac281",
-        "GroupeCombatGUID": "5bed0d57-83b0-46d7-99e6-f69138e38a84",
-        "ShowroomGUID": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
-        "CadavreGUID": "79abc88c-d5be-4615-9ed2-4cb87bde9f4b",
+        "GUID": "420dc280-c718-45a3-8edd-a022767e7773",
+        "GroupeCombatGUID": "ff07058f-392e-477f-8eea-ec8ef042d0c6",
+        "ShowroomGUID": "3585f744-fa44-4b2c-99af-2a50f4220b11",
+        "CadavreGUID": "39caafd5-cb26-4aaf-8d9c-d3a0db6c23ec",
         "NewName": "Rifles_CMD2_POL",
         "GameName": {
             "display": "#CMD SZTAB DOWODZENIA",
-            "token": "DGZBQXLAYD",
+            "token": "SZTABDOWPL",
         },
         "TagSet": {
             "overwrite_all": [
@@ -25,17 +25,17 @@ POL_NEW_UNITS = {
                 "InfmapCommander",
                 "UNITE_Rifles_CMD2_POL",
                 "Unite",
-
             ],
         },
         "strength": 5,
+        # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
         # "Dangerousness": 12,
         "WeaponAssignment": [
-                (0,[1]),
-                (1,[0]),
-                (2,[0]),
-                (3,[0,3]),
-                (4,[0,2]),
+                (0, [1]),
+                (1, [0]),
+                (2, [0]),
+                (3, [0, 3]),
+                (4, [0, 2]),
             ],
         "WeaponDescriptor": {
             "Salves": {
@@ -52,27 +52,25 @@ POL_NEW_UNITS = {
         "TransportedSoldier": "Rifles_CMD_POL",
         "Factory": "EDefaultFactories/Logistic",
         "CommandPoints": 145,
-        # "UnitAttackValue": 1,
-        # "UnitDefenseValue": 16,
-
+        "UnitAttackValue": 1,
+        "UnitDefenseValue": 16,
         "SpecialitiesList": [
-                'hq_inf',
-                'leader_sov',
-                '_resolute',
-                'infantry_equip_light',
-            ],
+            'hq_inf',
+            'leader_sov',
+            'infantry_equip_light',
+        ],
         "MenuIconTexture": "Texture_RTS_H_CMD_inf",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Inf",
         "Divisions": {
             "default": {
                 "cards": 2,
             },
-            "RDA_7_Panzer_multi": {
-                "Transports": ["UAZ_469_trans_DDR", "BTR_70_DDR", "Mi_2_trans_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
+            "POL_20_Pancerna_multi": {
+                "Transports": ["UAZ_469_trans_POL", "MTLB_trans_POL", "BMP_1_SP2_POL", "BMP_2_POL", "Mi_2_trans_POL"],
             },
         },
         "availability": 2,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+        "XPMultiplier": [0.0, 0.0, 2/2, 0.0],
         "max_speed": 26,
         "Orders": ['Stop', 'Move', 'FollowFormation', 'SmartMove', 'Attack', 'SmartMoveAndAttack', 'MoveAndAttack', 
                    'Spread', 'Shoot', 'ShootOnPosition', 'ShootOnPositionWithoutCorrection', 'ShootOnPositionSmoke',
@@ -84,136 +82,17 @@ POL_NEW_UNITS = {
         "is_aerial": False,
         "is_unarmed": False,
         "Faction": "PACT",
-        "Nation": "DDR",
+        "Nation": "POL",
         "alternatives_count": 5,
         "selector_tactic": "2, 5",
     },
 
-    "BTR_50_CMD_DDR": { # donor unit
-        "GUID": "eb482c98-ddae-45cb-b62e-f50ad4c79d99",
-        "GroupeCombatGUID": "1d1735b6-a0e6-49be-994e-f1bf7480872b",
-        "ShowroomGUID": "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b",
-        "CadavreGUID": "94711356-5cd2-4d35-b3e6-a25ca820237b",
-        "NewName": "BTR_50_CMD2_DDR",
-        "TagSet": {
-            "overwrite_all": [
-                "AllUnits",
-                "AllowedForMissileRoE",
-                "Commandant",
-                "GroundUnits",
-                "InfmapCommander",
-                "UNITE_BTR_50_CMD2_DDR",
-                "Unite",
-                "Vehicule",
-                "Vehicule_CMD",
-            ],
-        },
-        "Factory": "EDefaultFactories/Logistic",
-        "CommandPoints": 145,
-        "SpecialitiesList": [
-                'hq_veh',
-                'leader_sov',
-                '_amphibie',
-                '_resolute',
-            ],
-        "Divisions": {
-            "default": {
-                "cards": 2,
-            },
-            "RDA_4_MSD_multi": {
-                "Transports": None,
-                },
-            "RDA_7_Panzer_multi": {
-                "Transports": None,
-                },
-            "RDA_KdA_Bezirk_Erfurt_multi": {
-                "Transports": None,
-                },
-        },
-        "availability": 3,
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
-        "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Spread', 'Reverse', 
-                   'AskForSupply', 'AIDefend', 'AIAttack', 'AIStop'],
-        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
-        "is_heavy_equipment": False,
-        "is_ground_vehicle": True,
-        "is_aerial": False,
-        "is_unarmed": True,
-        "Faction": "PACT",
-        "Nation": "DDR",
-    },
-
-    "ATteam_Fagot_DDR": { # donor unit
-        "GUID": "87782b09-1378-4507-8e87-45139ae746eb",
-        "GroupeCombatGUID": "1def4c80-26b9-47d0-b601-cfb485394ff9",
-        "ShowroomGUID": "d7e8f9a0-b1c2-4d3e-4f5g-6h7i8j9k0l1m",
-        "CadavreGUID": "a89772b8-0b7f-40bd-8760-edc249b9f5da",
-        "NewName": "ATteam_FagotM_DDR",
-        "GameName": {
-            "display": "PALR FAGOT-M",
-            "token": "AUVIBEMJSD",
-        },
-        "TagSet": {
-            "overwrite_all": [
-                "AllUnits",
-                "AllowedForMissileRoE",
-                "Crew",
-                "GroundUnits",
-                "Inf_quartier_ok",
-                "Infanterie",
-                "Infanterie_AT",
-                "Infanterie_Spec_Defense",
-                "UNITE_ATteam_FagotM_DDR",
-                "Unite"
-            ],
-        },
-        "WeaponDescriptor": {
-            "Salves": {
-                "ATGM_9K111M_Faktoriya": 6,
-            },
-            "equipmentchanges": {
-                "replace": [("ATGM_9K111_Fagot", "ATGM_9K111M_Faktoriya")]
-            },
-        },
-        "CommandPoints": 40,
-        "SpecialitiesList": [
-                'AT',
-                '_resolute',
-                'infantry_equip_heavy',
-            ],
-        "UpgradeFromUnit": "ATteam_Fagot_DDR",
-        "ButtonTexture": "ATteam_Fagot_DDR",
-        "Divisions": {
-            "default": {
-                "cards": 1,
-            },
-            "RDA_7_Panzer_multi": {
-                "Transports": ["UAZ_469_trans_DDR", "BTR_50_DDR", "BMP_1_SP1_DDR", "BMP_1_SP2_DDR", "BMP_1P_DDR"],
-            },
-        },
-        "availability": 7,
-        "XPMultiplier": [1.0, 0.75, 0.6, 0.0],
-        "max_speed": 20,
-        "Orders": ['Stop', 'Move', 'FollowFormation', 'Attack', 'MoveAndAttack', 'Spread', 
-                   'Shoot', 'AskForSupply', 'EnterDistrict', 'LoadIntoTransport', 'Load', 
-                   'AIDefend', 'AIAttack', 'AIStop'],
-        "is_infantry": True, # False for Javelin LML (unique exception), towed units.
-        "is_heavy_equipment": False,
-        "is_ground_vehicle": True,
-        "is_aerial": False,
-        "is_unarmed": False,
-        "Faction": "PACT",
-        "Nation": "DDR",
-        "depiction_type": "Towed",
-        "alternatives_count": 2,
-    },
-
-    "T55A_CMD_DDR": { # donor unit
-        "GUID": "257bde27-dc1e-4899-ab2f-c6edf9c4af76",
-        "GroupeCombatGUID": "e7a7acba-d937-427a-9035-7e4f957cf778",
-        "ShowroomGUID": "376f5cd3-f3ef-4bd0-80c9-61ffe40e38a6",
-        "CadavreGUID": "96ae475b-77da-4775-bb65-6cc436c23015",
-        "NewName": "T55A_CMD2_DDR",
+    "T55A_CMD_POL": {  # donor unit
+        "GUID": "f85c67f5-5738-43ff-bae2-a92bfa88d83d",
+        "GroupeCombatGUID": "6773a9af-c9e6-4d3f-a41c-953be75f966e",
+        "ShowroomGUID": "2cf23742-85b4-4b75-a280-133aff0a63b6",
+        "CadavreGUID": "1b246f95-d334-4219-bbe2-630ed38b013b",
+        "NewName": "T55A_CMD2_POL",
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
@@ -223,57 +102,52 @@ POL_NEW_UNITS = {
                 "Commandant",
                 "GroundUnits",
                 "InfmapCommander",
-                "UNITE_T55A_CMD2_DDR",
+                "UNITE_T55A_CMD2_POL",
                 "Unite",
             ],
         },
         "Factory": "EDefaultFactories/Logistic",
         "CommandPoints": 190,
         "SpecialitiesList": [
-                'hq_tank',
-                'leader_sov',
-                '_resolute',
-            ],
+            'hq_tank',
+            'leader_sov',
+        ],
         "Divisions": {
             "default": {
                 "cards": 1,
             },
-            "RDA_4_MSD_multi": {
+            "POL_20_Pancerna_multi": {
                 "Transports": None,
             },
-            "RDA_7_Panzer_multi": {
+            "POL_4_Zmechanizowana_multi": {
+                "Transports": None,
                 "cards": 2,
-                "Transports": None,
             },
-            "RDA_Rugen_Gruppierung": {
-                "Transports": None,
-            },
-            "WP_Unternehmen_Zentrum_multi": {
-                "cards": 2,
+            "POL_Korpus_Desantowy_multi": {
                 "Transports": None,
             },
         },
         "availability": 2,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
-        "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack', 
-                   'MoveAndAttack', 'Spread', 'Reverse', 'Shoot', 'ShootOnPosition', 
-                   'ShootOnPositionWithoutCorrection', 'AskForSupply', 
+        "XPMultiplier": [0.0, 0.0, 2/2, 0.0],
+        "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack',
+                   'MoveAndAttack', 'Spread', 'Reverse', 'Shoot', 'ShootOnPosition',
+                   'ShootOnPositionWithoutCorrection', 'AskForSupply',
                    'AIDefend', 'AIAttack', 'AIStop'],
-        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
+        "is_infantry": False,  # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,
         "is_ground_vehicle": True,
         "is_aerial": False,
         "is_unarmed": False,
         "Faction": "PACT",
-        "Nation": "DDR",
+        "Nation": "POL",
     },
 
-    "T72M_CMD_DDR": { # donor unit
-        "GUID": "983055d0-fd20-4e45-bd7c-aa49fa29ca02",
-        "GroupeCombatGUID": "da74e4f0-2b89-4ddf-8dc7-e866bf171845",
-        "ShowroomGUID": "f8a9b0c1-d2e3-4f5g-6h7i-8j9k0l1m2n3o",
-        "CadavreGUID": "3f275f69-0fdf-4e49-9f14-a3bfc4e0b471",
-        "NewName": "T72M_CMD2_DDR",
+    "T72M_CMD_POL": {  # donor unit
+        "GUID": "dd59b59a-5698-4a72-b16c-71ec2bdc9064",
+        "GroupeCombatGUID": "56fecca1-ce12-4cfb-9675-2ef6bb48e033",
+        "ShowroomGUID": "65e63a59-27d9-4978-b3ba-93e44f91379c",
+        "CadavreGUID": "a3f4a792-bdd7-48c8-a70f-dfe28ec0b129",
+        "NewName": "T72M_CMD2_POL",
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
@@ -283,48 +157,88 @@ POL_NEW_UNITS = {
                 "Commandant",
                 "GroundUnits",
                 "InfmapCommander",
-                "UNITE_T72M_CMD2_DDR",
+                "UNITE_T72M_CMD2_POL",
                 "Unite",
             ],
         },
         "Factory": "EDefaultFactories/Logistic",
-        "CommandPoints": 265,
+        "CommandPoints": 255,
         "SpecialitiesList": [
-                'hq_tank',
-                'leader_sov',
-                '_resolute',
-                '_smoke_launcher',
-            ],
+            'hq_tank',
+            'leader_sov',
+        ],
         "Divisions": {
             "default": {
                 "cards": 1,
             },
-            "RDA_4_MSD_multi": {
-                "Transports": None,
-            },
-            "RDA_7_Panzer_multi": {
-                "Transports": None,
-            },
-            "RDA_Rugen_Gruppierung": {
-                "Transports": None,
-            },
-            "WP_Unternehmen_Zentrum_multi": {
+            "POL_20_Pancerna_multi": {
                 "Transports": None,
             },
         },
         "availability": 2,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
-        "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack', 
-                   'MoveAndAttack', 'Spread', 'Reverse', 'Shoot', 'ShootOnPosition', 
-                   'ShootOnPositionWithoutCorrection', 'ShootDefensiveSmoke', 'AskForSupply', 
+        "XPMultiplier": [0.0, 0.0, 2/2, 0.0],
+        "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack',
+                   'MoveAndAttack', 'Spread', 'Reverse', 'Shoot', 'ShootOnPosition',
+                   'ShootOnPositionWithoutCorrection', 'ShootDefensiveSmoke', 'AskForSupply',
                    'AIDefend', 'AIAttack', 'AIStop'],
-        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
+        "is_infantry": False,  # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,
         "is_ground_vehicle": True,
         "is_aerial": False,
         "is_unarmed": False,
         "Faction": "PACT",
-        "Nation": "DDR",
+        "Nation": "POL",
+        "UpgradeFromUnit": "T55A_CMD2_POL",
+    },
+
+    "T72M1_CMD_POL": {  # donor unit
+        "GUID": "c292163d-73b2-47dd-9f39-ad607bd75a14",
+        "GroupeCombatGUID": "f71b3c68-eb90-46ec-8ac3-5c75273b0212",
+        "ShowroomGUID": "217706ae-a44b-4d9a-9b89-a516bf04207b",
+        "CadavreGUID": "1b9dae2d-80ce-4331-be82-311b2ed53b29",
+        "NewName": "T72M1_CMD2_POL",
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "Char_CMD",
+                "Commandant",
+                "GroundUnits",
+                "InfmapCommander",
+                "UNITE_T72M1_CMD2_POL",
+                "Unite",
+            ],
+        },
+        "Factory": "EDefaultFactories/Logistic",
+        "CommandPoints": 285,
+        "SpecialitiesList": [
+            'hq_tank',
+            'leader_sov',
+            '_smoke_launcher',
+        ],
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+            "POL_20_Pancerna_multi": {
+                "Transports": None,
+            },
+        },
+        "availability": 2,
+        "XPMultiplier": [0.0, 0.0, 2/2, 0.0],
+        "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack',
+                   'MoveAndAttack', 'Spread', 'Reverse', 'Shoot', 'ShootOnPosition',
+                   'ShootOnPositionWithoutCorrection', 'ShootDefensiveSmoke', 'AskForSupply',
+                   'AIDefend', 'AIAttack', 'AIStop'],
+        "is_infantry": False,  # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "POL",
+        "UpgradeFromUnit": "T72M_CMD2_POL",
     },
 }
 # fmt: on

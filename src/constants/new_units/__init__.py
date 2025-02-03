@@ -11,6 +11,6 @@ NEW_UNITS = {
     **USA_NEW_UNITS,
     **SOV_NEW_UNITS, 
     **RDA_NEW_UNITS,
-    # **POL_NEW_UNITS,
+    **POL_NEW_UNITS,
     **UK_NEW_UNITS
-} 
+}
