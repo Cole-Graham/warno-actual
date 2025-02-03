@@ -28,11 +28,19 @@ USA_NEW_UNITS = {
                 (3,[0,3]),
                 (4,[0,2,]),
             ],
-        "weapon1": "$/GFX/Weapon/Ammo_FM_M16",
-        "weapon1_quantity": 2,
-        "weapon2": "$/GFX/Weapon/Ammo_Commando_733",
-        "weapon2_quantity": 3,
-        "Salves": [7, 7, 5, 3],
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_M16": 7,
+                "Commando_733": 7,
+                "M72A3_LAW_66mm": 5,
+            },
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_M16": 2,
+                    "Commando_733": 3,
+                },
+            },
+        },
         "TransportedTexture": "UseInGame_Transport_COMMAND",
         "TransportedSoldier": "Rifles_half_LAW_US",
         "Factory": "EDefaultFactories/Logistic",
@@ -117,11 +125,23 @@ USA_NEW_UNITS = {
                 (4,[0,]),
                 (5,[0,]),
             ],
-        "weapon1": "$/GFX/Weapon/Ammo_FM_M16",
-        "weapon1_quantity": 5,
-        "weapon2": "$/GFX/Weapon/Ammo_MANPAD_FIM92",
-        "weapon2_quantity": 1,
-        "Salves": [11, 8],
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_M16": 7,
+                "MANPAD_FIM92": 8,
+            },
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_M16": 5,
+                    "MANPAD_FIM92": 1,
+                },
+            },
+        },
+        # "weapon1": "FM_M16",
+        # "weapon1_quantity": 5,
+        # "weapon2": "MANPAD_FIM92",
+        # "weapon2_quantity": 1,
+        # "Salves": [11, 8],
         "TransportedTexture": "UseInGame_Transport_LAAD",
         "TransportedSoldier": "MANPAD_Stinger_C_US",
         "Factory": "EDefaultFactories/DCA",

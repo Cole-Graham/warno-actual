@@ -2,14 +2,14 @@
 
 # fmt: off
 POL_NEW_UNITS = {
-    "MotRifles_CMD_DDR": { # donor unit
+    "Rifles_CMD_POL": { # donor unit
         "GUID": "847f8c3c-52c8-4a5b-8955-6dc3334ac281",
         "GroupeCombatGUID": "5bed0d57-83b0-46d7-99e6-f69138e38a84",
         "ShowroomGUID": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
         "CadavreGUID": "79abc88c-d5be-4615-9ed2-4cb87bde9f4b",
-        "NewName": "MotRifles_CMD2_DDR",
+        "NewName": "Rifles_CMD2_POL",
         "GameName": {
-            "display": "#CMD MOT.-SCHÜTZEN FÜH.",
+            "display": "#CMD SZTAB DOWODZENIA",
             "token": "DGZBQXLAYD",
         },
         "TagSet": {
@@ -23,13 +23,13 @@ POL_NEW_UNITS = {
                 "Infanterie",
                 "Infanterie_CMD",
                 "InfmapCommander",
-                "UNITE_MotRifles_CMD2_DDR",
+                "UNITE_Rifles_CMD2_POL",
                 "Unite",
+
             ],
         },
         "strength": 5,
-        # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
-        "Dangerousness": 12,
+        # "Dangerousness": 12,
         "WeaponAssignment": [
                 (0,[1]),
                 (1,[0]),
@@ -37,15 +37,24 @@ POL_NEW_UNITS = {
                 (3,[0,3]),
                 (4,[0,2]),
             ],
-        "weapon1": "$/GFX/Weapon/Ammo_FM_Mpi_AK_74N",
-        "weapon1_quantity": 4,
-        "Salves": [7, 100, 5, 3],
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_kbk_AK": 7,
+                "RocketInf_RPG76_Komar": 5,
+            },
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_kbk_AK": 4,
+                },
+            },
+        },
         "TransportedTexture": "UseInGame_Transport_COMMAND",
-        "TransportedSoldier": "MotRifles_CMD_DDR",
+        "TransportedSoldier": "Rifles_CMD_POL",
         "Factory": "EDefaultFactories/Logistic",
         "CommandPoints": 145,
-        "UnitAttackValue": 1,
-        "UnitDefenseValue": 16,
+        # "UnitAttackValue": 1,
+        # "UnitDefenseValue": 16,
+
         "SpecialitiesList": [
                 'hq_inf',
                 'leader_sov',
@@ -158,10 +167,14 @@ POL_NEW_UNITS = {
                 "Unite"
             ],
         },
-        "weapon1": "$/GFX/Weapon/Ammo_ATGM_9K111M_Faktoriya",
-        "weapon1_quantity": 1,
-        "weapon1_type": "missile",
-        "Salves": [6],
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_9K111M_Faktoriya": 6,
+            },
+            "equipmentchanges": {
+                "replace": [("ATGM_9K111_Fagot", "ATGM_9K111M_Faktoriya")]
+            },
+        },
         "CommandPoints": 40,
         "SpecialitiesList": [
                 'AT',

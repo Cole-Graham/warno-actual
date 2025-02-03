@@ -14,7 +14,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 4946,
                 "MaxAccelerationGRU": 2826,
                 "TempsEntreDeuxSalves": 1.5,
-                "SupplyCost": 120,
+                "SupplyCost": 50,
             },
         },
         "MissileDescriptor": {
@@ -26,7 +26,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_R73_Vympel", "A2A", None, False): { # 27
         "Ammunition": {
             "parent_membr": {
-                "SupplyCost": 100,
+                "SupplyCost": 40,
             },
         },
     },
@@ -34,7 +34,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_R60M_Vympel", "A2A", None, False): { # 27
         "Ammunition": {
             "parent_membr": {
-                "SupplyCost": 95,
+                "SupplyCost": 30,
             },
         },
     },
@@ -46,7 +46,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 4946,
                 "MaxAccelerationGRU": 2826,
                 "TempsEntreDeuxSalves": 1.5,
-                "SupplyCost": 100,
+                "SupplyCost": 60,
             },
         },
         "MissileDescriptor": {
@@ -63,7 +63,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TempsEntreDeuxTirs": 1.0,
                 "TempsEntreDeuxSalves": 4.0,
                 "NbTirParSalves": 2,
-                "SupplyCost": 240,
+                "SupplyCost": 140,
             },
         },
         "MissileDescriptor": {
@@ -87,7 +87,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TempsDeVisee": 1.4,
                 "TempsEntreDeuxSalves": 3.0,
                 "NbTirParSalves": 2,
-                "SupplyCost": 280,
+                "SupplyCost": 140,
                 "AffichageMunitionParSalve": 2,
             },
         },
@@ -103,7 +103,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 4946,
                 "MaxAccelerationGRU": 2826,
                 "TempsEntreDeuxSalves": 1.5,
-                "SupplyCost": 140,
+                "SupplyCost": 50,
             },
         },
         "MissileDescriptor": {
@@ -122,7 +122,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 4946,
                 "MaxAccelerationGRU": 2826,
                 "TempsEntreDeuxSalves": 1.5,
-                "SupplyCost": 100,
+                "SupplyCost": 50,
             },
         },
         "MissileDescriptor": {
@@ -138,7 +138,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 4946,
                 "MaxAccelerationGRU": 2826,
                 "TempsEntreDeuxSalves": 1.5,
-                "SupplyCost": 120,
+                "SupplyCost": 50,
             },
         },
         "MissileDescriptor": {
@@ -150,7 +150,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_AIM9M_Sidewinder", "A2A", None, False): { # 7
         "Ammunition": {
             "parent_membr": {
-                "SupplyCost": 100,
+                "SupplyCost": 40,
             },
         },
     },
@@ -158,7 +158,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_AIM9L_Sidewinder", "A2A", None, False): { # 6
         "Ammunition": {
             "parent_membr": {
-                "SupplyCost": 90,
+                "SupplyCost": 30,
             },
         },
     },
@@ -166,7 +166,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_AIM9J_Sidewinder", "A2A", None, False): { # 5
         "Ammunition": {
             "parent_membr": {
-                "SupplyCost": 80,
+                "SupplyCost": 25,
             },
         },
     },
@@ -178,7 +178,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 4946,
                 "MaxAccelerationGRU": 2826,
                 "TempsEntreDeuxSalves": 1.5,
-                "SupplyCost": 120,
+                "SupplyCost": 50,
             },
         },
         "MissileDescriptor": {
@@ -192,7 +192,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PorteeMaximaleHAGRU": 8400,
                 "TempsEntreDeuxSalves": 1.5,
-                "SupplyCost": 140,
+                "SupplyCost": 60,
             },
         },
     },

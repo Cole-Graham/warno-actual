@@ -244,9 +244,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         ],
         "GameData/Generated/Gameplay/Gfx/WeaponDescriptor.ndf": [
             lambda source_path: unit_edits_weapondescriptor(source_path, game_db),
+            lambda source_path: apply_default_salves(source_path, game_db),
             lambda source_path: add_radio_tag_to_mortars(source_path, game_db),
             lambda source_path: create_new_weapons(source_path, game_db),
-            lambda source_path: apply_default_salves(source_path, game_db),
             lambda source_path: update_weapondescr_ammoname_quantity(source_path, game_db),
         ],
         "GameData/Generated/Gameplay/Gfx/MissileDescriptors.ndf": [

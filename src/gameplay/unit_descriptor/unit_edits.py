@@ -356,39 +356,48 @@ def _handle_supply(source_path, game_db, unit_edits, *_) -> None:
             for module in modules_list.v:
                 if not hasattr(module.v, 'type'):
                     continue
+                membr = module.v.by_m
                     
-                if module.v.type != "TSupplyModuleDescriptor":
-                    continue
+                if module.v.type == "TSupplyModuleDescriptor":
                 
-                try:
-                    supply_descr = module.v.by_m("SupplyDescriptor")
-                    supply_capacity = module.v.by_m("SupplyCapacity")
-                    
-                    if not supply_descr or not supply_capacity:
-                        logger.warning(f"Missing supply descriptors for {unit}")
-                        continue
+                    try:
+                        supply_descr = membr("SupplyDescriptor")
+                        supply_capacity = membr("SupplyCapacity")
                         
-                    old_capacity = supply_capacity.v
-                    
-                    # Update supply type based on unit type
-                    if is_helo:
-                        if edits.get("is_small", False):
-                            supply_descr.v = "$/GFX/Weapon/SmallHeloSupply"
-                            logger.info(f"Set {unit} to SmallHeloSupply")
-                        else:
-                            supply_descr.v = "$/GFX/Weapon/HeloSupply"
-                            logger.info(f"Set {unit} to HeloSupply")
-                    
-                    # Update capacity if specified
-                    if "SupplyCapacity" in edits:
-                        new_capacity = str(edits["SupplyCapacity"])
-                        if old_capacity != new_capacity:
-                            supply_capacity.v = new_capacity
-                            logger.info(f"Updated {unit} supply capacity: {old_capacity} -> {new_capacity}")
+                        if not supply_descr or not supply_capacity:
+                            logger.warning(f"Missing supply descriptors for {unit}")
+                            continue
+
                             
-                except Exception as e:
-                    logger.error(f"Error updating supply module for {unit}: {str(e)}")
-                    
+                        old_capacity = supply_capacity.v
+                        
+                        # Update supply type based on unit type
+                        if is_helo:
+                            if edits.get("is_small", False):
+                                supply_descr.v = "$/GFX/Weapon/SmallHeloSupply"
+                                logger.info(f"Set {unit} to SmallHeloSupply")
+                            else:
+                                supply_descr.v = "$/GFX/Weapon/HeloSupply"
+                                logger.info(f"Set {unit} to HeloSupply")
+                        
+                        # Update capacity if specified
+                        if "SupplyCapacity" in edits:
+                            new_capacity = str(edits["SupplyCapacity"])
+                            if old_capacity != new_capacity:
+                                supply_capacity.v = new_capacity
+                                logger.info(f"Updated {unit} supply capacity: {old_capacity} -> {new_capacity}")
+                                
+                    except Exception as e:
+                        logger.error(f"Error updating supply module for {unit}: {str(e)}")
+                
+                elif module.v.type == "TProductionModuleDescriptor":
+                    if "CommandPoints" in edits:
+                        key = "$/GFX/Resources/Resource_CommandPoints"
+                        production_resources = membr("ProductionRessourcesNeeded").v.by_k(key)
+                        production_resources.v = str(edits["CommandPoints"])
+                        logger.info(f"Updated {unit} command points to: {edits['CommandPoints']}")
+
+
         except Exception as e:
             logger.error(f"Error processing {unit}: {str(e)}")
 

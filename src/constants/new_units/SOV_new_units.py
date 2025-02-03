@@ -37,12 +37,26 @@ SOV_NEW_UNITS = {
                 (3,[0,3]),
                 (4,[0,2]),
             ],
-        "weapon1": "$/GFX/Weapon/Ammo_FM_AK_74",
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_AK_74": 7,
+                "Sniper_SVD_Dragunov": 100,
+                "RocketInf_RPG22_72_5mm": 5
+            },
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_AK_74": 4,
+                },
+            },
+        },
+        "weapon1": "FM_AK_74",
         "weapon1_quantity": 4,
         "Salves": [7, 100, 5, 3],
         "TransportedTexture": "UseInGame_Transport_COMMAND",
+
         "TransportedSoldier": "MotRifles_SOV",
         "Factory": "EDefaultFactories/Logistic",
+
         "CommandPoints": 145,
         "UnitAttackValue": 1,
         "UnitDefenseValue": 16,
@@ -117,9 +131,18 @@ SOV_NEW_UNITS = {
                 (3,[0,3]),
                 (4,[0,2]),
             ],
-        "weapon1": "$/GFX/Weapon/Ammo_FM_AK_74",
-        "weapon1_quantity": 4,
-        "Salves": [7, 100, 5, 3],
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_AK_74": 7,
+                "Sniper_SVD_Dragunov": 100,
+                "RocketInf_RPG22_72_5mm": 5
+            },
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_AK_74": 4,
+                },
+            },
+        },
         "TransportedTexture": "UseInGame_Transport_COMMAND",
         "TransportedSoldier": "MotRifles_TTsko_SOV",
         "Factory": "EDefaultFactories/Logistic",
@@ -304,10 +327,14 @@ SOV_NEW_UNITS = {
                 "Unite"
             ],
         },
-        "weapon1": "$/GFX/Weapon/Ammo_ATGM_9K111M_Faktoriya",
-        "weapon1_quantity": 1,
-        "weapon1_type": "missile",
-        "Salves": [6],
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_9K111M_Faktoriya": 6,
+            },
+            "equipmentchanges": {
+                "replace": [("ATGM_9K111_Fagot", "ATGM_9K111M_Faktoriya")]
+            },
+        },
         "CommandPoints": 40,
         "SpecialitiesList": [
                 'AT',
@@ -366,10 +393,14 @@ SOV_NEW_UNITS = {
                 "Unite"
             ],
         },
-        "weapon1": "$/GFX/Weapon/Ammo_ATGM_9K111M_Faktoriya",
-        "weapon1_quantity": 1,
-        "weapon1_type": "missile",
-        "Salves": [6],
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_9K111M_Faktoriya": 6,
+            },
+            "equipmentchanges": {
+                "replace": [("ATGM_9K111_Fagot", "ATGM_9K111M_Faktoriya")]
+            },
+        },
         "CommandPoints": 40,
         "SpecialitiesList": [
                 'AT',

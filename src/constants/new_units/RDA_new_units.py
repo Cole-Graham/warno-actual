@@ -37,9 +37,17 @@ RDA_NEW_UNITS = {
                 (3,[0,3]),
                 (4,[0,2]),
             ],
-        "weapon1": "$/GFX/Weapon/Ammo_FM_Mpi_AK_74N",
-        "weapon1_quantity": 4,
-        "Salves": [7, 100, 5, 3],
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_Mpi_AK_74N": 7,
+                "RocketInf_RPG18_64mm": 5,
+            },
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_Mpi_AK_74N": 4,
+                },
+            },
+        },
         "TransportedTexture": "UseInGame_Transport_COMMAND",
         "TransportedSoldier": "MotRifles_CMD_DDR",
         "Factory": "EDefaultFactories/Logistic",
@@ -158,10 +166,14 @@ RDA_NEW_UNITS = {
                 "Unite"
             ],
         },
-        "weapon1": "$/GFX/Weapon/Ammo_ATGM_9K111M_Faktoriya",
-        "weapon1_quantity": 1,
-        "weapon1_type": "missile",
-        "Salves": [6],
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_9K111M_Faktoriya": 6,
+            },
+            "equipmentchanges": {
+                "replace": [("ATGM_9K111_Fagot", "ATGM_9K111M_Faktoriya")]
+            },
+        },
         "CommandPoints": 40,
         "SpecialitiesList": [
                 'AT',

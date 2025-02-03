@@ -28,12 +28,22 @@ UK_NEW_UNITS = {
                 (3,[0,3]),
                 (4,[0,2,]),
             ],
-        "weapon1": "$/GFX/Weapon/Ammo_FM_L85A1",
-        "weapon1_quantity": 4,
-        "Salves": [11, 11, 6, 3],
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_L85A1": 11,
+                "L7A2_7_62mm": 30,
+                "RocketInf_M72A3_LAW_66mm": 5,
+            },
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_L85A1": 4,
+                },
+            },
+        },
         "TransportedTexture": "UseInGame_Transport_COMMAND",
         "TransportedSoldier": "Rifles_UK",
         "Factory": "EDefaultFactories/Logistic",
+
         "CommandPoints": 145,
         "UnitAttackValue": 1,
         "UnitDefenseValue": 16,

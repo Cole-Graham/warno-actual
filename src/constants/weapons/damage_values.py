@@ -148,6 +148,12 @@ FMBALLE_ROWS = [108, 109, 110, 111]
 
 # Damage array edits for different weapon types
 DAMAGE_EDITS = {
+    "clu_sol_ap": {
+        "row": 100,
+        "edits": {
+            6: 6.0,    # 3 top armor (4.25 is vanilla)
+        }
+    },
     "FMballe_1": {  # 5.56mm
         "row": 108,
         "edits": {
