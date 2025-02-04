@@ -2094,9 +2094,6 @@ sov_unit_edits = {
             },
         },
         "availability": 2,
-        "SpecialtiesList": {
-            "add_specs": ["'terrain_radar'"],
-        },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
     },
     

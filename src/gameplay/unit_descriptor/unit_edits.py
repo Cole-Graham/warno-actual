@@ -150,8 +150,10 @@ def modify_module(unit_row: Any, descr_row: Any, edits: dict, index: int,
 
 
 def _handle_tags(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
+    
     if "TagSet" not in edits:
         return
+    
     tagset = descr_row.v.by_m("TagSet").v
     if "overwrite_all" in edits["TagSet"]:
         tagset.v = ndf.convert(str(edits["TagSet"]["overwrite_all"]))
@@ -414,3 +416,56 @@ def _handle_transportable(unit_row: Any, descr_row: Any, edits: dict, *_) -> Non
     if "TransportedTexture" in edits:
         descr_row.v.by_m("TransportedTexture").v = f'"{edits["TransportedTexture"]}"'
         logger.debug(f"Updated transported texture for {unit_row.namespace}")
+
+
+def temp_fix_reco_radar(source_path: Any, game_db: Dict[str, Any]) -> None:
+    """2025/02/3 temp fix to Eugen's mistake of adding reco_radar to units that don't have it"""
+    unit_db = game_db["unit_data"]
+    
+    exceptions = [
+        "AIFV_B_Radar_NL"
+        "BMD_1_Reostat"
+        "BRDM_1_PSNR1_POL"
+        "BRM_1_DDR",
+        "BRM_1_SOV",
+        "BRM_1_POL",
+        "FV103_Spartan_GSR_UK",
+        "M113_GreenArcher_RFA"
+        "M113A1B_Radar_BEL",
+        "M981_FISTV_US",
+        "TPZ_Fuchs_RASIT_RFA",
+        "VAB_RASIT_FR",
+        "ZSU_23_Shilka_reco_SOV",
+    ]
+    
+    for unit_descr in source_path:
+        if not hasattr(unit_descr, "namespace"):
+            continue
+        
+        unit_name = unit_descr.namespace.replace("Descriptor_Unit_", "")
+        
+        if unit_name in exceptions:
+            logger.info(f"{unit_name} is in the exceptions list, skipping")
+            continue
+        
+        tag_list_data = unit_db[unit_name].get("tags", [])
+        specialties_list_data = unit_db[unit_name].get("specialties", [])
+        
+
+        if "reco_radar" in tag_list_data and "_gsr" not in specialties_list_data:
+            modules_list = get_modules_list(unit_descr.v, "ModulesDescriptors")
+            
+            for module in modules_list.v:
+                if not hasattr(module.v, 'type'):
+                    continue
+                
+                if module.v.type == "TTagsModuleDescriptor":
+                    tagset = module.v.by_m("TagSet")
+                    for tag in tagset.v:
+                        if tag.v == '"reco_radar"':
+                            tagset.v.remove(tag)
+                            logger.info(f"Removed 'reco_radar' tag from {unit_name}")
+                            break
+        
+        elif "reco_radar" in tag_list_data and "_gsr" in specialties_list_data:
+            logger.info(f"{unit_name} has reco_radar and _gsr, skipping")

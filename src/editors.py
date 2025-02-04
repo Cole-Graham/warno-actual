@@ -11,7 +11,6 @@ from src.gameplay import (
     apply_default_salves,
     ui_gameplay_textscripts,
     update_weapondescr_ammoname_quantity,
-    remove_stress_on_miss,
     edit_he_damage,
     edit_aim_times,
     edit_weapon_ranges,
@@ -19,9 +18,14 @@ from src.gameplay import (
     bomb_damage_standards,
     edit_fire_descriptors,
     change_fire_descriptors,
-    
+    mg_team_division_rules,
+    add_corrected_shot_dispersion,
+    add_radio_tag_to_mortars,
+    edit_smoke_duration,
+    temp_fix_reco_radar,
 )
 from src.gameplay.buildings import edit_fob_attributes
+
 from src.gameplay.depictions import (
     create_aerial_ghost_depictions,
     create_alternatives_depictions,
@@ -98,10 +102,6 @@ from src.gameplay.weapons.damage_families import (
     edit_weapon_constantes,
 )
 from src.gameplay.weapons.missiles import edit_missiles, edit_missile_speed
-from src.gameplay.weapons.mortar_mods import (
-    add_radio_tag_to_mortars,
-    edit_smoke_duration,
-)
 from src.gameplay.weapons.new_weapons import create_new_weapons
 from src.gameplay.weapons.unit_edits import unit_edits_weapondescriptor
 from src.shared import get_shared_editors
@@ -194,10 +194,12 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
             add_division_rules,
             unit_edits_divisionrules,
             supply_divisionrules,
+            lambda source_path: mg_team_division_rules(source_path, game_db),
         ],
         "GameData/Generated/Gameplay/Decks/DivisionPacks.ndf": [
             create_division_packs,
         ],
+
         "GameData/Generated/Gameplay/Decks/DivisionCostMatrix.ndf": [
             edit_division_matrices,
         ],
@@ -218,6 +220,7 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         # Unit and weapon files
         "GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf": [
             # Create new units first, before editing donors used to create them.
+            lambda source_path: temp_fix_reco_radar(source_path, game_db),
             lambda source_path: create_new_units(source_path, game_db),
             lambda source_path: edit_units(source_path, game_db),
             lambda source_path: edit_auto_cover(source_path, game_db),
@@ -227,6 +230,7 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
             lambda source_path: edit_shock_units(source_path, game_db),
             lambda source_path: edit_mg_teams(source_path, game_db),
             lambda source_path: global_bomber_edits(source_path, game_db),
+            lambda source_path: add_radio_tag_to_mortars(source_path, game_db),
         ],
         "GameData/Generated/Gameplay/Gfx/Ammunition.ndf": [
             lambda source_path: edit_ammunition(source_path, game_db),
@@ -239,13 +243,11 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         ],
         "GameData/Generated/Gameplay/Gfx/AmmunitionMissiles.ndf": [
             lambda source_path: edit_missiles(source_path, game_db),
-            # remove_stress_on_miss, # probably not needed anymore (doesn't do anything in game?)
             bomb_damage_standards,
         ],
         "GameData/Generated/Gameplay/Gfx/WeaponDescriptor.ndf": [
             lambda source_path: unit_edits_weapondescriptor(source_path, game_db),
             lambda source_path: apply_default_salves(source_path, game_db),
-            lambda source_path: add_radio_tag_to_mortars(source_path, game_db),
             lambda source_path: create_new_weapons(source_path, game_db),
             lambda source_path: update_weapondescr_ammoname_quantity(source_path, game_db),
         ],

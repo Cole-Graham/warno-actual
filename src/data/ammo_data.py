@@ -2,12 +2,12 @@
 
 import re
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any, Dict, List
 
 from src import ndf
 from src.constants.weapons.vanilla_inst_modifications import (
-    AMMUNITION_RENAMES,
     AMMUNITION_MISSILES_RENAMES,
+    AMMUNITION_RENAMES,
 )
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import is_valid_turret
@@ -76,14 +76,12 @@ def build_ammo_data(mod_src_path: Path) -> Dict[str, Any]:
     ammo_data = {}
     ammo_path = "GameData/Generated/Gameplay/Gfx/Ammunition.ndf"
     ammo_missile_path = "GameData/Generated/Gameplay/Gfx/AmmunitionMissiles.ndf"
-    unit_path = "GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf"
     weapon_descriptor_path = "GameData/Generated/Gameplay/Gfx/WeaponDescriptor.ndf"
 
     try:
         mod = ndf.Mod(mod_src_path, "None")
         ammo_file = mod.parse_src(ammo_path)
         ammo_missile_file = mod.parse_src(ammo_missile_path)
-        unit_file = mod.parse_src(unit_path)
         weapon_descriptor_file = mod.parse_src(weapon_descriptor_path)
 
         # Merge salvo weapons and renames separately
@@ -101,26 +99,24 @@ def build_ammo_data(mod_src_path: Path) -> Dict[str, Any]:
         
         return {
             "mg_categories": build_mg_categories(ammo_file),
-            "mortar_categories": build_mortar_categories(ammo_file),
-            "unit_categories": build_unit_categories(unit_file),
             "full_ball_weapons": build_full_ball_weapons(ammo_file),
             "sniper_weapons": build_sniper_weapons(ammo_file),
             "renames_old_new": renames_old_new,
             "renames_new_old": renames_new_old,
-            "salves_map": build_ammo_salves_map(weapon_descriptor_file)
+            "salves_map": build_ammo_salves_map(weapon_descriptor_file),
+            "mortar_weapons": build_mortar_weapons(ammo_file),
         }
         
     except Exception as e:
         logger.error(f"Error building ammunition database: {e}", exc_info=True)
         return {
             "mg_categories": {},
-            "mortar_categories": {},
-            "unit_categories": {},
             "full_ball_weapons": [],
             "sniper_weapons": [],
             "renames_old_new": {},
             "renames_new_old": {},
             "salves_map": {},
+            "mortar_weapons": {},
         }
 
 def build_ammo_salves_map(parse_source) -> dict:
@@ -210,45 +206,6 @@ def build_mg_categories(parse_source) -> dict:
     } 
 
 
-def build_mortar_categories(parse_source) -> dict:
-    """Build mortar categories from ammunition data."""
-    mortars = []
-    smoke_mortars = []
-    
-    for weapon_descr in parse_source:
-        name = weapon_descr.n
-        if name.startswith("Mortier_"):
-            if "_SMOKE" in name:
-                smoke_mortars.append(name)
-            else:
-                mortars.append(name)
-    
-    return {
-        "mortars": mortars,
-        "smoke_mortars": smoke_mortars
-    } 
-
-
-def build_unit_categories(parse_source) -> dict:
-    """Build unit categories from unit descriptors."""
-    mortar_units = []
-    
-    for unit in parse_source:
-        modules = unit.v.by_m("ModulesDescriptors").v
-        for module in modules:
-            if not hasattr(module.v, 'type'):
-                continue
-                
-            if module.v.type == "TUnitUIModuleDescriptor":
-                if module.v.by_m("MenuIconTexture").v == "'Texture_RTS_H_mortar'":
-                    mortar_units.append(unit.n)
-                    break
-    
-    return {
-        "mortar_units": mortar_units
-    } 
-
-
 def build_full_ball_weapons(parse_source) -> list:
     """Build list of weapons that should use full ball damage."""
     full_ball = []
@@ -323,3 +280,25 @@ def build_salvo_weapons(parse_source) -> Dict[str, str]:
             
     logger.info(f"Found {len(salvo_weapons)} vanilla salvo weapons to rename")
     return salvo_weapons
+
+def build_mortar_weapons(parse_source) -> Dict[str, List[str]]:
+    """Build lists of mortar weapons from ammunition data."""
+    mortars = []
+    smoke_mortars = []
+    
+    for ammo_descr in parse_source:
+        if not hasattr(ammo_descr, 'namespace'):
+            continue
+
+        name = ammo_descr.namespace.removeprefix('Ammo_')
+        if name.startswith('Mortier_'):
+            if '_SMOKE' in name:
+                smoke_mortars.append(name)
+
+            else:
+                mortars.append(name)
+    
+    return {
+        "mortars": mortars,
+        "smoke_mortars": smoke_mortars
+    }

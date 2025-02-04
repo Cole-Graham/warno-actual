@@ -2460,14 +2460,20 @@ usa_unit_edits = {
     "EF111_Raven_US": {
         "CommandPoints": 180,
         "max_speed": 1400,
-        "SpecialtiesList": {
-            "add_specs": ["'terrain_radar'"],
-        },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0]
     },
 
     "F16C_LGB_US": {
         "CommandPoints": 220,
+        "WeaponDescriptor": {
+            "Salves": {
+                "Bomb_GBU_12_salvolength2": 1,
+            },
+            "equipmentchanges": {
+                "replace": [("Bomb_GBU_12", "Bomb_GBU_12_salvolength2")],
+                "fire_effect": [("Bomb_GBU_12_x1", "Bomb_GBU_12_x2")]
+            },
+        },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 

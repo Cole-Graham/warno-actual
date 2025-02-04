@@ -17,7 +17,7 @@ from .damage_families import (
 from .fire_descriptors import edit_fire_descriptors, change_fire_descriptors
 from .he_adjustments import edit_he_damage
 from .mg_teams import edit_mg_team_weapons
-from .missiles import edit_missiles, remove_stress_on_miss
+from .missiles import edit_missiles
 from .mortar_mods import (
     add_corrected_shot_dispersion,
     add_radio_tag_to_mortars,
@@ -51,7 +51,6 @@ __all__ = [
     'remove_vanilla_instances',
     'edit_weapon_constants',
     'vanilla_renames_weapondescriptor',
-    'remove_stress_on_miss',
     'edit_he_damage',
     'edit_aim_times',
     'edit_weapon_ranges',

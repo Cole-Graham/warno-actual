@@ -13,36 +13,53 @@ def add_corrected_shot_dispersion(source_path: Any, game_db: Dict[str, Any]) -> 
     ammo_db = game_db["ammunition"]
     
     logger.info("Adding corrected shot dispersion to mortars")
-    mortar_cats = ammo_db["mortar_categories"]
+    mortar_categories = ammo_db["mortar_weapons"]
     
     for weapon_descr in source_path:
-        name = weapon_descr.n
+        name = weapon_descr.n.replace("Ammo_", "")
         
         # Check if weapon is a mortar
-        if name in mortar_cats["mortars"]:
+        if name in mortar_categories["mortars"]:
             dispersion = 0.7
-        elif name in mortar_cats["smoke_mortars"]:
+        elif name in mortar_categories["smoke_mortars"]:
             dispersion = 0.9
         else:
             continue
             
         # Add dispersion multiplier
+        has_multiplier = False
         for i, member in enumerate(weapon_descr.v):
             if member.m == "DispersionWithoutSorting":
-                weapon_descr.v.insert(i + 1, f"CorrectedShotDispersionMultiplier = {dispersion}")
-                logger.info(f"Added {dispersion} dispersion multiplier for {name}")
-                break
+                insert_index = i + 1
+
+            elif member.m == "CorrectedShotDispersionMultiplier":
+                existing_multiplier = member.v
+                has_multiplier = True
+        
+        if has_multiplier:
+            logger.info(f"Corrected shot dispersion multiplier already exists for {name}, "
+                        f"with value {existing_multiplier}")
+        else:
+            weapon_descr.v.insert(insert_index, f"CorrectedShotDispersionMultiplier = {dispersion}")
+            logger.info(f"Added {dispersion} dispersion multiplier for {name}")
+
 
 
 def add_radio_tag_to_mortars(source_path, game_db: dict) -> None:
     """Add 'Radio' tag to mortar units to enable corrected shot."""
     logger.info("Adding 'Radio' tag to mortar units")
-    mortar_units = game_db["ammunition"]["unit_categories"]["mortar_units"]
     
     for unit in source_path:
-        if unit.n not in mortar_units:
+        # Check if unit exists in database and has mortar texture
+        unit_name = unit.namespace.replace("Descriptor_Unit_", "")
+        if (unit_name not in game_db["unit_data"] or 
+            game_db["unit_data"][unit_name].get("menu_icon") != "Texture_RTS_H_mortar"):
             continue
-            
+        
+        if "Radio" in game_db["unit_data"][unit_name].get("tags", []):
+            logger.info(f"{unit_name} already has 'Radio' tag")
+            continue
+
         modules = unit.v.by_m("ModulesDescriptors").v
         tags_module = None
         
@@ -55,17 +72,12 @@ def add_radio_tag_to_mortars(source_path, game_db: dict) -> None:
         if not tags_module:
             continue
             
-        # Check if Radio tag already exists
-        tag_set = tags_module.v.by_m("TagSet").v
-        if '"Radio"' in [tag.v for tag in tag_set]:
-            logger.info(f"{unit.n} already has 'Radio' tag")
-            continue
-            
         # Add Radio tag after GroundUnits
+        tag_set = tags_module.v.by_m("TagSet").v
         for i, tag in enumerate(tag_set):
             if tag.v == '"GroundUnits"':
                 tag_set.insert(i + 1, '"Radio",')
-                logger.info(f"Added 'Radio' tag to {unit.n}")
+                logger.info(f"Added 'Radio' tag to {unit_name}")
                 break 
 
 

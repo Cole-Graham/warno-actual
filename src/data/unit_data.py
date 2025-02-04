@@ -54,30 +54,18 @@ def gather_unit_data(mod_src_path: Path) -> Dict[str, Any]:
     return unit_data
 
 def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
-    """Extract relevant information from a unit row.
-    
-    Returns:
-        Dict with:
-            command_points (int): Cost in command points
-            tags (List[str]): List of unit tags
-            specialties (List[str]): List of unit specialties
-            strength (int): Unit strength/size
-            weapon_data (Dict): Weapon configuration data including:
-                - turrets: Mapping of turret indices to weapons
-                - salvos: List of salvo lengths
-                - weapon_locations: Mapping of weapons to their locations
-                - weapon_indices: Mapping of weapons to their salvo indices
-                - salvo_mapping: Mapping of weapons to salvo indices
-    """
+    """Extract relevant information from a unit row."""
     unit_info = {}
     
     try:
         modules_list = unit_row.v.by_m("ModulesDescriptors").v
         
         # Initialize default values
-        unit_info = {}
-        unit_info["is_supply_unit"] = False
-        unit_info["is_helo_unit"] = False
+        unit_info = {
+            "is_supply_unit": False,
+            "is_helo_unit": False,
+        }
+        
         # Get unit name for context
         unit_name = unit_row.namespace.split("Descriptor_Unit_")[-1] if hasattr(unit_row, "namespace") else "Unknown"
         
@@ -86,7 +74,6 @@ def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
                 continue
                 
             module_type = module.v.type
-            
             
             # Extract data based on module type
             if module_type == "HelicopterPositionModuleDescriptor":
@@ -100,16 +87,6 @@ def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
             
             elif module_type == "TUnitUIModuleDescriptor":
                 unit_info.update(_extract_ui_data(module))
-            
-            # elif module_type == "TWeaponManagerModuleDescriptor":
-            #     weapon_data = {
-            #         "turrets": _gather_turret_data(module),
-            #         # "salvos": _gather_salvo_data(module),
-            #         "weapon_locations": _gather_weapon_locations(module),
-            #         "weapon_indices": _gather_weapon_indices(module),
-            #         # "salvo_mapping": _gather_salvo_mapping(module)
-            #     }
-            #     unit_info["weapon_data"] = weapon_data
             
             elif module_type == "TBaseDamageModuleDescriptor":
                 unit_info["strength"] = _extract_damage_data(module)
@@ -128,10 +105,6 @@ def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
             
             elif module_type == "TScannerConfigurationDescriptor":
                 unit_info["optics"] = _extract_optics_data(module, unit_name)
-                # optics_data = extract_optics_data(module, unit_name)
-                # if optics_data:
-                #     unit_info["optics"].update(optics_data)
-                #     logger.debug(f"Updated optics data for {unit_name}")
             
             elif module_type == "TModuleSelector":
                 skills = _extract_skills_data(module)
@@ -196,12 +169,19 @@ def _extract_tags_data(module: Any) -> Dict[str, Any]:
     return data
 
 def _extract_ui_data(module: Any) -> Dict[str, Any]:
-    """Extract UI-related data (specialties, etc.)."""
+    """Extract UI-related data (specialties, textures, etc.)."""
     data = {}
     try:
+        # Get specialties
         specialties = module.v.by_m("SpecialtiesList").v
         if specialties:
             data["specialties"] = [strip_quotes(spec.v) for spec in specialties]
+            
+        # Get menu icon texture
+        texture = module.v.by_m("MenuIconTexture").v
+        if texture:
+            data["menu_icon"] = strip_quotes(texture)
+            
     except Exception as e:
         logger.warning(f"Failed to extract UI data: {str(e)}")
     return data

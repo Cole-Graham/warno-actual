@@ -7,7 +7,7 @@ from src.constants.weapons import LIGHT_AT_AMMO
 from src.constants.weapons import ammunitions as ammos
 # from src.gameplay.weapons.new_weapons import _modify_weapon
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import find_namespace, is_obj_type, is_valid_turret
+from src.utils.ndf_utils import find_namespace, is_obj_type, is_valid_turret, strip_quotes
 
 from .vanilla_modifications import vanilla_renames_weapondescriptor
 
@@ -478,10 +478,11 @@ def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_
                             logger.debug(f"Replaced {current} with {replacement}")
                             
                 if "fire_effect" in equipment_changes:
+                    fire_effect_val = strip_quotes(weapon.v.by_m("EffectTag").v)
                     for old_fire_effect, new_fire_effect in equipment_changes["fire_effect"]:
-                        if old_fire_effect == ammo_name:
+                        if old_fire_effect == fire_effect_val.replace("FireEffect_", ""):
                             weapon.v.by_m("EffectTag").v = "'" + f"FireEffect_{new_fire_effect}" + "'"
-                            logger.debug(f"Replaced {old_fire_effect} with {new_fire_effect}")
+                            logger.debug(f"Replaced fire effect{old_fire_effect} with {new_fire_effect}")
 
 
 def _adjust_light_at_salvos(weapon_descr: Any, unit_name: str, ammos_: Dict, ammo_db: Dict,
