@@ -19,10 +19,6 @@ from .vanilla_modifications import remove_vanilla_instances, vanilla_renames_amm
 
 logger = setup_logger(__name__)
 
-def _generate_guid():
-    """Generate a new GUID."""
-    return str(uuid4())
-
 def edit_ammunition(source_path, game_db: Dict[str, Any]) -> None:
     """Edit Ammunition.ndf file."""
     try:
@@ -273,6 +269,10 @@ def _apply_weapon_edits(descr: Any, data: Dict, ammo_data: Dict) -> None:
                 list_str = "[" + ", ".join(f"'{item}'" for item in value) + "]"
                 logger.debug(f"Converting list {list_str} to NDF")
                 membr(key).v = ndf.convert(list_str.encode('utf-8'))[0].v
+            elif isinstance(value, str):
+                membr(key).v = str(value)
+            else:
+                logger.error(f"Unknown type for {key}: {type(value)}")
     
     # Apply hit roll edits
     if "hit_roll" in ammo_data:

@@ -52,10 +52,11 @@ from .divisions import (
     supply_divisions,
 )
 from .division_rules import (
-    edit_mg_teams,
+    mg_team_division_rules,
     unit_edits_divisionrules,
     supply_divisionrules,
 )
+
 from .effects import (
     edit_capacite_list,
     edit_critical_effects,
@@ -83,20 +84,26 @@ from .unit_descriptor import (
     edit_team_supply,
     edit_units,
     global_bomber_edits,
+    temp_fix_reco_radar,
 )
 from .veterancy import edit_veterancy_effects, edit_veterancy_hints
+
 from .weapons import (
     apply_default_salves,
     update_weapondescr_ammoname_quantity,
-    remove_stress_on_miss,
     edit_he_damage,
     edit_aim_times,
     edit_weapon_ranges,
     bomb_damage_standards,
     edit_fire_descriptors,
-    change_fire_descriptors
+    change_fire_descriptors,
+    add_corrected_shot_dispersion,
+    add_radio_tag_to_mortars,
+    edit_smoke_duration,
 )
 from .weapons.ammunition import edit_ammunition
+
+
 from .weapons.damage_families import (
     add_damage_families_to_impl,
     add_damage_families_to_list,
@@ -107,7 +114,6 @@ from .weapons.damage_families import (
     edit_weapon_constantes,
 )
 from .weapons.missiles import edit_missiles
-from .weapons.mortar_mods import add_radio_tag_to_mortars, edit_smoke_duration
 from .weapons.new_weapons import create_new_weapons
 from .weapons.unit_edits import unit_edits_weapondescriptor
 

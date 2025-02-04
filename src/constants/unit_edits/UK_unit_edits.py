@@ -383,14 +383,14 @@ uk_unit_edits = {
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
     },
     
-    "Airmobile_MILAN_UK": {
+    "Airmobile_MILAN_UK": { # 7x L85, 2x L86A1 lmg, 1x LAW 80
         "CommandPoints": 50,
         "availability": 12,
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
-        "XPMultiplier": [1.0, 0.75, 0.6, 0.0],
+        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
         "WeaponDescriptor": {
             "Salves": {
                 "RocketInf_LAW_80": 6,

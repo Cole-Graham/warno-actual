@@ -28,10 +28,11 @@ def get_mg_availability(mg_type: str, is_para: bool) -> Dict[str, Any]:
         'xp_multiplier': str(xp_multi)
     }
 
-def edit_mg_teams(source: Any, unit_db: Dict[str, Any]) -> None:
+def mg_team_division_rules(source: Any, game_db: Dict[str, Any]) -> None:
     """Edit machine gun team availability in divisions."""
     logger.info("Editing MG team availability")
     
+    unit_db = game_db["unit_data"]
     mgs: List[Tuple[str, str]] = [
         ("M2HB", "HMG"), ("NSV", "HMG"), 
         ("M60", "MMG"), ("MAG", "MMG"),
@@ -46,7 +47,7 @@ def edit_mg_teams(source: Any, unit_db: Dict[str, Any]) -> None:
         rules_list = map_row.v.by_m("UnitRuleList").v
         
         for rule_obj in rules_list:
-            if not is_obj_type(rule_obj.v, None):
+            if not is_obj_type(rule_obj.v, "TDeckUniteRule"):
                 continue
                 
             # Skip solo units
@@ -56,12 +57,12 @@ def edit_mg_teams(source: Any, unit_db: Dict[str, Any]) -> None:
             unit_descr = rule_obj.v.by_m("UnitDescriptor").v
             
             for name, mg_type in mgs:
-                pattern = re.compile(rf'^\$/GFX/Unit/Descriptor_Unit_HMGteam_{name}.*')
-                if not pattern.match(unit_descr):
+                unit_descr_name = unit_descr.split("$/GFX/Unit/", 1)[1]
+                if not unit_descr_name.startswith(f"Descriptor_Unit_HMGteam_{name}"):
                     continue
                     
                 # Get unit name without prefix for database lookup
-                unit_name = unit_descr.split("$/GFX/Unit/", 1)[1]
+                unit_name = unit_descr_name.replace("Descriptor_Unit_", "")
                 is_para = is_para_unit(unit_name, unit_db)
                 
                 # Get and apply availability settings

@@ -20,7 +20,7 @@ USA_NEW_UNITS = {
         },
         "strength": 5,
         # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
-        "Dangerousness": 12,
+        # "Dangerousness": 12,
         "WeaponAssignment": [
                 (0,[1,]),
                 (1,[1,]),
@@ -60,25 +60,25 @@ USA_NEW_UNITS = {
             },
             "US_101st_Airmobile_multi": {
                 "Transports": ["M1038_Humvee_US", "UH60A_Black_Hawk_US"],
-                },
+            },
             "US_11ACR_multi": {
                 "Transports": ["M1038_Humvee_US", "UH60A_Black_Hawk_US"],
-                },
+            },
             "US_24th_Inf_multi": {
                 "Transports": ["M1038_Humvee_US", "UH60A_Black_Hawk_US"],
-                },
+            },
             "US_35th_Inf_multi": {
                 "Transports": ["M1038_Humvee_US", "UH60A_Black_Hawk_US"],
-                },
+            },
             "US_3rd_Arm_multi": {
                 "Transports": ["M1038_Humvee_US", "UH60A_Black_Hawk_US"],
-                },
+            },
             "US_82nd_Airborne_multi": {
                 "Transports": ["M1038_Humvee_US", "UH60A_Black_Hawk_US"],
-                },
+            },
             "US_8th_Inf_multi": {
                 "Transports": ["M1038_Humvee_US", "UH60A_Black_Hawk_US"],
-                },
+            },
         },
         "availability": 2,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
@@ -131,17 +131,12 @@ USA_NEW_UNITS = {
                 "MANPAD_FIM92": 8,
             },
             "equipmentchanges": {
+                "replace": [("FM_M16_noreflex", "FM_M16_x5")],
                 "quantity": {
                     "FM_M16": 5,
-                    "MANPAD_FIM92": 1,
                 },
             },
         },
-        # "weapon1": "FM_M16",
-        # "weapon1_quantity": 5,
-        # "weapon2": "MANPAD_FIM92",
-        # "weapon2_quantity": 1,
-        # "Salves": [11, 8],
         "TransportedTexture": "UseInGame_Transport_LAAD",
         "TransportedSoldier": "MANPAD_Stinger_C_US",
         "Factory": "EDefaultFactories/DCA",
