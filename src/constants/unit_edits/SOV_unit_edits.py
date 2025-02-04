@@ -1045,6 +1045,18 @@ sov_unit_edits = {
         },
     },
 
+    "UAZ_469_SPG9_VDV_SOV": {
+        "CommandPoints": 25,
+        # "availability": 12,
+        # "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+    },
+
+    "LUAZ_967M_SPG9_SOV": {
+        "CommandPoints": 25,
+        # "availability": 12,
+        # "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+    },
+
     "LUAZ_967M_SPG9_VDV_SOV": {
         "CommandPoints": 25,
         "availability": 12,
@@ -1052,7 +1064,7 @@ sov_unit_edits = {
     },
 
     "LUAZ_967M_Fagot_SOV": {
-        "CommandPoints": 55,
+        "CommandPoints": 35,
         "GameName": {
             "display": "LuAZ-967M FAKTORIYA",
             "token": "KYODTOGRYC",

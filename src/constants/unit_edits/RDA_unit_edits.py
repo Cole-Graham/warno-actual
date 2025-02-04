@@ -600,7 +600,7 @@ rda_unit_edits = {
     },
 
     "UAZ_469_Fagot_DDR": {
-        "CommandPoints": 55,
+        "CommandPoints": 35,
         "GameName": {
             "display": "UAZ-469 FAKTORIYA",
             "token": "KBMDYNGBOG",

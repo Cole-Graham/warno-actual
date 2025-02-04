@@ -8,13 +8,9 @@ from src.utils.logging_utils import setup_logger
 # Set up logger
 logger = setup_logger('ndf_utils')
 
-def find_namespace(
-    row: Any, 
-    edits: Dict,
-    prefix: str = "",
-    suffix: str = "",
-    pattern: Optional[Union[str, Pattern]] = None
-) -> Optional[Dict]:
+
+def find_namespace(row: Any, edits: Dict, prefix: str = "", suffix: str = "",
+                   pattern: Optional[Union[str, Pattern]] = None) -> Optional[Dict]:
     """Find edits for a given namespace.
     
     Args:
@@ -79,12 +75,14 @@ def is_obj_type(item: Any, item_type: str) -> bool:
     """
     return isinstance(item, ndf.model.Object) and item.type == item_type
 
+
 def get_module_value(obj: Any, module_name: str, field_name: str) -> Any:
     """Get a value from a module's field."""
     try:
         return obj.v.by_m(module_name).v.by_m(field_name).v
-    except Exception:
+    except Exception:  # noqa
         return None
+
 
 def get_modules_list(obj: Any, module_name: str) -> List[Any]:
     """Get a list from a module.
@@ -108,6 +106,7 @@ def get_modules_list(obj: Any, module_name: str) -> List[Any]:
         logger.error(f"Error getting module list for {obj.namespace}: {e}")
         return []
 
+
 def get_key_value(obj: Any, resource_key: str) -> Any:
     """Get a value from a resource dictionary."""
     try:
@@ -116,9 +115,11 @@ def get_key_value(obj: Any, resource_key: str) -> Any:
         logger.error(f"Error getting key value for {obj.namespace}: {e}")
         return None
 
+
 def strip_quotes(value: str) -> str:
     """Strip both single and double quotes from a string value."""
     return value.strip("'").strip('"')
+
 
 def is_valid_turret(turret: Any) -> bool:
     """Check if turret is a valid type."""
@@ -128,7 +129,8 @@ def is_valid_turret(turret: Any) -> bool:
         is_obj_type(turret, "TTurretTwoAxisDescriptor"),
         is_obj_type(turret, "TTurretUnitDescriptor")
     ])
-    
-def _generate_guid():
+
+
+def generate_guid():
     """Generate a new GUID."""
     return str(uuid4())

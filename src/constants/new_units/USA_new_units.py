@@ -1,4 +1,4 @@
-"""New unit definitions for USA."""
+"""New unit definitions for US."""
 
 # fmt: off
 USA_NEW_UNITS = {

@@ -1,13 +1,14 @@
 """Functions for adding new units to divisions."""
 
-from typing import Any, Dict
+from typing import Any
 
-from src import ndf
+# from src import ndf
 from src.constants.new_units import NEW_UNITS
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import _generate_guid
+# from src.utils.ndf_utils import generate_guid
 
 logger = setup_logger(__name__)
+
 
 def add_division_rules(source_path: Any) -> None:
     """Add unit rules to DivisionRules.ndf."""
@@ -50,7 +51,7 @@ def add_division_rules(source_path: Any) -> None:
                     f'(\n'
                     f'    UnitDescriptor = $/GFX/Unit/Descriptor_Unit_{unit_name}\n'
                     f'    AvailableWithoutTransport = False\n'
-                    f'    AvailableTransportList = {transport_str}\n'
+                    f'    AvailableTransportList = {transport_str}\n'  # noqa
                     f'    NumberOfUnitInPack = {edits["availability"]}\n'
                     f'    NumberOfUnitInPackXPMultiplier = {xp_multi_str}\n'
                     f'),'
@@ -67,6 +68,7 @@ def add_division_rules(source_path: Any) -> None:
                     if unit_rule.v.by_m("UnitDescriptor").v == f"$/GFX/Unit/Descriptor_Unit_{donor}":
                         deck_content.by_m("UnitRuleList").v.remove(i)
                         logger.info(f"Removed old entry for {donor} from {division}")
+
 
 def add_to_divisions(source_path: Any) -> None:
     """Add units to Divisions.ndf."""
@@ -92,6 +94,7 @@ def add_to_divisions(source_path: Any) -> None:
             pack_list.add(new_entry)
             logger.info(f"Added {unit_name} to division {division}")
 
+
 def create_deck_pack_descriptors(source_path: Any) -> None:
     """Create deck pack descriptors in DeckPacks.ndf."""
     logger.info("Creating deck pack descriptors")
@@ -104,13 +107,13 @@ def create_deck_pack_descriptors(source_path: Any) -> None:
         
         # Handle XP multipliers
         xp_values = edits.get("XPMultiplier", [1.0, 1.0, 1.0, 1.0])
-        xp_str = f"[{', '.join(str(x) for x in xp_values)}]"
+        xp_str = f"[{', '.join(str(x) for x in xp_values)}]"  # noqa
         
         # Different descriptor type for vehicles
         if edits.get("is_ground_vehicle", False):
-            descriptor_line = f"    VehicleDescriptor = ~/Descriptor_Unit_{unit_name}"
+            descriptor_line = f"    VehicleDescriptor = ~/Descriptor_Unit_{unit_name}"  # noqa
         else:
-            descriptor_line = f"    UnitDescriptor = ~/Descriptor_Unit_{unit_name}"
+            descriptor_line = f"    UnitDescriptor = ~/Descriptor_Unit_{unit_name}"  # noqa
         
         deck_pack = (
             f'Descriptor_Deck_Pack_{unit_name} is DeckPackDescriptor\n'
@@ -120,6 +123,7 @@ def create_deck_pack_descriptors(source_path: Any) -> None:
         )
         source_path.add(deck_pack)
         logger.info(f"Created deck pack descriptor for {unit_name}")
+
 
 def update_deck_serializer(source_path: Any) -> None:
     """Update DeckSerializer.ndf for new units."""
@@ -138,7 +142,8 @@ def update_deck_serializer(source_path: Any) -> None:
         last_row_integer = str(last_row_int + 1)
         logger.info(f"DeckSerializer.ndf) Adding new entry: $/GFX/Unit/Descriptor_Unit_{unit_name}")
         unit_ids_map.add(("$/GFX/Unit/Descriptor_Unit_" + unit_name, last_row_integer))
-        
+
+
 def create_division_packs(source_path: Any) -> None:
     """Create division packs in DivisionPacks.ndf."""
     logger.info("Creating division packs")

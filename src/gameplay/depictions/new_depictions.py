@@ -1,11 +1,11 @@
 """Functions for creating depictions for new units."""
 
-from typing import Any, Dict
+from typing import Any
 
 from src import ndf
 from src.constants.new_units import NEW_UNITS
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import _generate_guid, is_obj_type
+from src.utils.ndf_utils import generate_guid, is_obj_type
 
 logger = setup_logger(__name__)
 
@@ -153,8 +153,8 @@ def create_showroom_depictions(source_path: Any) -> None:
                 
                 # Update mimetic descriptor
                 mimetic = module.v.by_member("MimeticDescriptor").v
-                mimetic.by_member("DescriptorId").v = f"GUID:{{{_generate_guid()}}}"
-                mimetic.by_member("MimeticName").v = f"'{unit_name}'"
+                mimetic.by_member("DescriptorId").v = f"GUID:{{{generate_guid()}}}"  # noqa
+                mimetic.by_member("MimeticName").v = f"'{unit_name}'"  # noqa
                 
             elif module_type == "TInfantrySquadWeaponAssignmentModuleDescriptor":
                 if "WeaponAssignment" in edits:

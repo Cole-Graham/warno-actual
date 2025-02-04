@@ -6,12 +6,12 @@ from src import ndf
 from src.constants.new_units import NEW_UNITS
 from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import get_modules_list, is_obj_type
+# from src.utils.ndf_utils import get_modules_list, is_obj_type
 
 logger = setup_logger(__name__)
 
 
-def create_new_units(source_path: Any, game_db: Dict[str, Any]) -> None:
+def create_new_units(source_path: Any, game_db: Dict[str, Any]) -> None:  # noqa
     """Create new units based on donor units."""
     logger.info("Creating new units")
     
@@ -126,7 +126,7 @@ def modify_new_unit(unit_row: Any, edits: Dict[str, Any]) -> None:
                 
         elif descr_row.namespace == "GenericMovement":
             if "max_speed" in edits:
-                descr_row.v.by_member("Default").v.by_member("MaxSpeedInKmph").v = str(edits["max_speed"])
+                descr_row.v.by_member("Default").v.by_member("MaxSpeedInKmph").v = str(edits["max_speed"])  # noqa
                 
         elif descr_type == "TTransportableModuleDescriptor":
             if "TransportedTexture" in edits:
@@ -142,7 +142,7 @@ def modify_new_unit(unit_row: Any, edits: Dict[str, Any]) -> None:
                 descr_row.v.by_member("Factory").v = edits["Factory"]
             if "CommandPoints" in edits:
                 cmd_points = "$/GFX/Resources/Resource_CommandPoints"
-                descr_row.v.by_member("ProductionRessourcesNeeded").v.by_key(cmd_points).v = str(edits["CommandPoints"])
+                descr_row.v.by_member("ProductionRessourcesNeeded").v.by_key(cmd_points).v = str(edits["CommandPoints"])  # noqa
                 
         elif descr_type == "TOrderConfigModuleDescriptor":
             if "NewName" in edits:

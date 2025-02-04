@@ -531,6 +531,12 @@ pol_unit_edits = {
         "UpgradeFromUnit": "Atteam_Fagot_POL",
     },
 
+    "UAZ_469_SPG9_Para_POL": {
+        "CommandPoints": 25,
+        "availability": 12,
+        "XPMultiplier": [0.0, 12/12, 9/12, 0.0],
+    },
+
     # infantry tab transports
     "Star_266_POL": {  # Star 266
         "CommandPoints": 15,
@@ -801,22 +807,6 @@ pol_unit_edits = {
         "remove_zone_capture": None,
     },
 
-    "BRDM_2_Konkurs_POL": {
-        "strength": 8,
-        "CommandPoints": 50,
-        "stealth": 1.5,
-        "availability": 8,
-        "XPMultiplier": [8/8, 6/8, 0.0, 0.0],  # 8/6
-    },
-
-    "BRDM_2_Malyu_P_POL": {
-        "strength": 8,
-        "CommandPoints": 40,
-        "stealth": 1.5,
-        "availability": 10,
-        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],  # 10/7
-    },
-
     "T55A_POL": {
         "CommandPoints": 65,
         "availability": 10,
@@ -854,6 +844,48 @@ pol_unit_edits = {
                 "cards": 2,
             },
         },
+    },
+
+    "UAZ_469_Fagot_POL": {
+        "CommandPoints": 35,
+        "GameName": {
+            "display": "UAZ-469 FAKTORIA",
+            "token": "UAZFKTOPL",
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_9K111M_Faktoriya": 6,
+            },
+        },
+    },
+
+    "UAZ_469_Fagot_Para_POL": {
+        "CommandPoints": 35,
+        "GameName": {
+            "display": "DESANT. UAZ-469 FAKTORIA",
+            "token": "SPADOUAZFK",
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_9K111M_Faktoriya": 6,
+            },
+        },
+    },
+
+    "BRDM_2_Konkurs_POL": {
+        "strength": 8,
+        "CommandPoints": 50,
+        "stealth": 1.5,
+        "availability": 8,
+        "XPMultiplier": [8/8, 6/8, 0.0, 0.0],  # 8/6
+    },
+
+    "BRDM_2_Malyu_P_POL": {
+        "strength": 8,
+        "CommandPoints": 40,
+        "stealth": 1.5,
+        "availability": 10,
+        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],  # 10/7
     },
 
     #   tank tab transports
@@ -1206,6 +1238,12 @@ pol_unit_edits = {
         },
     },
 
+    "W3_Sokol_POL": {  # Mi-8T
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'"],
+        },
+    },
+
     "Mi_8T_POL": {  # twin S-5 x32 - Mi-8T [RKT]
         "CommandPoints": 50,
     },
@@ -1286,7 +1324,7 @@ pol_unit_edits = {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
+        "XPMultiplier": [0.0, 2/2, 0.0, 1/2],
     },
 }
 # fmt: off
