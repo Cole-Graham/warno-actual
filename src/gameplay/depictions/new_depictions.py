@@ -9,45 +9,48 @@ from src.utils.ndf_utils import _generate_guid, is_obj_type
 
 logger = setup_logger(__name__)
 
+
 def create_infantry_depictions(source_path: Any) -> None:
     """Create infantry depiction entries in GeneratedDepictionInfantry.ndf."""
     logger.info("Creating infantry depiction entries")
     
     for donor, edits in NEW_UNITS.items():
+        donor_name = donor[0]
         if not edits.get("is_infantry", False) or edits.get("is_ground_vehicle", False):
             continue
             
         unit_name = edits["NewName"]
         
         # Clone all required objects
-        depictionsquad_obj = source_path.by_namespace(f"Gfx_{donor}").copy()
+        depictionsquad_obj = source_path.by_namespace(f"Gfx_{donor_name}").copy()
         depictionsquad_obj.namespace = f"Gfx_{unit_name}"
         
-        weaponalternatives_obj = source_path.by_namespace(f"AllWeaponAlternatives_{donor}").copy()
+        weaponalternatives_obj = source_path.by_namespace(f"AllWeaponAlternatives_{donor_name}").copy()
         weaponalternatives_obj.namespace = f"AllWeaponAlternatives_{unit_name}"
         
-        weaponsubdepictions_obj = source_path.by_namespace(f"AllWeaponSubDepiction_{donor}").copy()
+        weaponsubdepictions_obj = source_path.by_namespace(f"AllWeaponSubDepiction_{donor_name}").copy()
         weaponsubdepictions_obj.namespace = f"AllWeaponSubDepiction_{unit_name}"
         weaponsubdepictions_obj.v.by_member("Alternatives").v = f"AllWeaponAlternatives_{unit_name}"
         
-        weaponbackpack_obj = source_path.by_namespace(f"AllWeaponSubDepictionBackpack_{donor}").copy()
+        weaponbackpack_obj = source_path.by_namespace(f"AllWeaponSubDepictionBackpack_{donor_name}").copy()
         weaponbackpack_obj.namespace = f"AllWeaponSubDepictionBackpack_{unit_name}"
         weaponbackpack_obj.v.by_member("Alternatives").v = f"AllWeaponAlternatives_{unit_name}"
         
-        depictionalternatives_list = source_path.by_namespace(f"TacticDepiction_{donor}_Alternatives").copy()
+        depictionalternatives_list = source_path.by_namespace(f"TacticDepiction_{donor_name}_Alternatives").copy()
         depictionalternatives_list.namespace = f"TacticDepiction_{unit_name}_Alternatives"
         
-        soldierdepiction_obj = source_path.by_namespace(f"TacticDepiction_{donor}_Soldier").copy()
+        soldierdepiction_obj = source_path.by_namespace(f"TacticDepiction_{donor_name}_Soldier").copy()
         soldierdepiction_obj.namespace = f"TacticDepiction_{unit_name}_Soldier"
         soldierdepiction_obj.v.by_member("Alternatives").v = f"TacticDepiction_{unit_name}_Alternatives"
         soldierdepiction_obj.v.by_member("SubDepictions").v = (
             f"[AllWeaponSubDepiction_{unit_name}, AllWeaponSubDepictionBackpack_{unit_name}]")
         
-        ghostdepiction_obj = source_path.by_namespace(f"TacticDepiction_{donor}_Ghost").copy()
+        ghostdepiction_obj = source_path.by_namespace(f"TacticDepiction_{donor_name}_Ghost").copy()
         ghostdepiction_obj.namespace = f"TacticDepiction_{unit_name}_Ghost"
         ghostdepiction_obj.v.by_member("Alternatives").v = f"TacticDepiction_{unit_name}_Alternatives"
         
         # Find insertion point
+        append_row = None
         for row_count, row in enumerate(source_path, start=0):
             if row.namespace == "InfantrySelectorTactic_00_01":
                 append_row = row_count
@@ -80,15 +83,16 @@ def create_infantry_depictions(source_path: Any) -> None:
                 continue
                 
             entry_list = row.v.by_member("Entries").v
+            new_catalog_entry = None
             for entry in entry_list:
-                if entry.v.by_member("Identifier").v == f'"{donor}"':
+                if entry.v.by_member("Identifier").v == f'"{donor_name}"':
                     new_catalog_entry = entry.copy()
                     break
                     
             # Update meshes list
-            new_mesh_list = [f"$/GFX/DepictionResources/Modele_{donor}"]
+            new_mesh_list = [f"$/GFX/DepictionResources/Modele_{donor_name}"]
             for i in range(2, edits.get("alternatives_count", 1) + 1):
-                new_mesh_list.append(f"$/GFX/DepictionResources/Modele_{donor}_{i:02}")
+                new_mesh_list.append(f"$/GFX/DepictionResources/Modele_{donor_name}_{i:02}")
                 
             new_meshes = ndf.model.List()
             for mesh in new_mesh_list:
@@ -101,25 +105,27 @@ def create_infantry_depictions(source_path: Any) -> None:
             entry_list.add(new_catalog_entry)
             logger.info(f"Added transported infantry catalog entry for {unit_name}")
 
+
 def create_showroom_depictions(source_path: Any) -> None:
     """Create showroom entries in ShowRoomUnits.ndf."""
     logger.info("Creating showroom depiction entries")
     
     for donor, edits in NEW_UNITS.items():
+        donor_name = donor[0]
         if "NewName" not in edits:
             continue
             
         unit_name = edits["NewName"]
-        donor_unit = source_path.by_n(f"Descriptor_ShowRoomUnit_{donor}")
+        donor_unit = source_path.by_n(f"Descriptor_ShowRoomUnit_{donor_name}")
         if not donor_unit:
-            logger.warning(f"Donor showroom unit {donor} not found")
+            logger.warning(f"Donor showroom unit {donor_name} not found")
             continue
             
         # Clone donor showroom unit
         try:
             new_unit = donor_unit.copy()
         except Exception as e:
-            logger.error(f"Failed to copy donor showroom unit {donor}: {str(e)}")
+            logger.error(f"Failed to copy donor showroom unit {donor_name}: {str(e)}")
             raise
         
         new_unit.namespace = f"Descriptor_ShowRoomUnit_{unit_name}"
@@ -170,6 +176,7 @@ def create_showroom_depictions(source_path: Any) -> None:
         source_path.add(new_unit)
         logger.info(f"Added showroom entry for {unit_name}")
 
+
 def create_button_textures(source_path: Any) -> None:
     """Create button texture entries in ButtonTexturesUnites.ndf."""
     logger.info("Creating button texture entries")
@@ -177,11 +184,12 @@ def create_button_textures(source_path: Any) -> None:
     textures_map = source_path.by_n("UnitButtonTextureAdditionalBank").v.by_member("Textures").v
     
     for donor, edits in NEW_UNITS.items():
+        donor_name = donor[0]
         if "NewName" not in edits:
             continue
             
         unit_name = edits["NewName"]
-        donor_texture_map = textures_map.by_key(f'"Texture_Button_Unit_{donor}"').v
+        donor_texture_map = textures_map.by_key(f'"Texture_Button_Unit_{donor_name}"').v
         
         # Get the texture filename either from ButtonTexture override or donor unit
         if "ButtonTexture" in edits:
@@ -205,20 +213,22 @@ def create_button_textures(source_path: Any) -> None:
         textures_map.add((new_entry_key, new_entry_value))
         logger.info(f"Added button texture for {unit_name} using texture {button_texture}")
 
+
 def create_cadavre_depictions(source_path: Any) -> None:
     """Create cadavre depiction entries in UniteCadavreDescriptor.ndf."""
     logger.info("Creating cadavre depiction entries")
     
     for donor, edits in NEW_UNITS.items():
+        donor_name = donor[0]
         if "NewName" not in edits or "CadavreGUID" not in edits:
             continue
             
         unit_name = edits["NewName"]
         
         # Clone the donor's cadavre descriptor
-        donor_cadavre = source_path.by_namespace(f"Descriptor_UnitCadavre_{donor}")
+        donor_cadavre = source_path.by_namespace(f"Descriptor_UnitCadavre_{donor_name}")
         if not donor_cadavre:
-            logger.warning(f"Donor cadavre descriptor for {donor} not found")
+            logger.warning(f"Donor cadavre descriptor for {donor_name} not found")
             continue
             
         new_cadavre = donor_cadavre.copy()
@@ -231,6 +241,7 @@ def create_cadavre_depictions(source_path: Any) -> None:
         # Add the new cadavre descriptor
         source_path.add(new_cadavre)
         logger.info(f"Added cadavre descriptor for {unit_name}")
+
 
 def create_mimetic_depictions(source_path: Any) -> None:
     """Create mimetic depiction entries in MimeticDescriptor.ndf."""
@@ -256,6 +267,7 @@ def create_mimetic_depictions(source_path: Any) -> None:
         source_path.add(entry)
         logger.info(f"Added mimetic depiction for {unit_name}")
 
+
 def create_ghost_depictions(source_path: Any) -> None:
     """Create ghost depiction entries in GeneratedDepictionGhosts.ndf."""
     logger.info("Creating ghost depiction entries")
@@ -277,11 +289,13 @@ def create_ghost_depictions(source_path: Any) -> None:
         source_path.add(entry)
         logger.info(f"Added ghost depiction for {unit_name}")
 
+
 def create_alternatives_depictions(source_path: Any) -> None:
     """Create alternatives depiction entries in GeneratedDepictionAlternatives.ndf."""
     logger.info("Creating alternatives depiction entries")
     
     for donor, edits in NEW_UNITS.items():
+        donor_name = donor[0]
         if not edits.get("is_ground_vehicle", False):
             continue
             
@@ -290,19 +304,21 @@ def create_alternatives_depictions(source_path: Any) -> None:
         # Create alternatives entry using donor's models
         entry = (
             f'Alternatives_{unit_name} is ['
-            f'    DepictionDescriptor_LOD_High( MeshDescriptor = $/GFX/DepictionResources/Modele_{donor} ),'
-            f'    DepictionDescriptor_LOD_Mid( MeshDescriptor = $/GFX/DepictionResources/Modele_{donor}_MID ),'
-            f'    DepictionDescriptor_LOD_Low( MeshDescriptor = $/GFX/DepictionResources/Modele_{donor}_LOW ),'
+            f'    DepictionDescriptor_LOD_High( MeshDescriptor = $/GFX/DepictionResources/Modele_{donor_name} ),'
+            f'    DepictionDescriptor_LOD_Mid( MeshDescriptor = $/GFX/DepictionResources/Modele_{donor_name}_MID ),'
+            f'    DepictionDescriptor_LOD_Low( MeshDescriptor = $/GFX/DepictionResources/Modele_{donor_name}_LOW ),'
             f']'
         )
         source_path.add(entry)
         logger.info(f"Added alternatives depiction for {unit_name}") 
+
 
 def create_veh_human_depictions(source_path: Any) -> None:
     """Create human depiction entries for vehicles in GeneratedDepictionHumans.ndf."""
     logger.info("Creating human depiction entries for vehicles")
     
     for donor, edits in NEW_UNITS.items():
+        donor_name = donor[0]
         if not (edits.get("is_ground_vehicle", False) and edits.get("is_infantry", False)):
             continue
             
@@ -311,7 +327,7 @@ def create_veh_human_depictions(source_path: Any) -> None:
         # Find donor mesh names
         mesh_names = None
         for row in source_path:
-            if row.namespace != f"HumanSubDepictions_{donor}":
+            if row.namespace != f"HumanSubDepictions_{donor_name}":
                 continue
                 
             left_servant = row.v[0]
@@ -326,7 +342,7 @@ def create_veh_human_depictions(source_path: Any) -> None:
             break
             
         if not mesh_names:
-            logger.warning(f"Could not find mesh names for {donor}")
+            logger.warning(f"Could not find mesh names for {donor_name}")
             continue
             
         left_mesh, right_mesh = mesh_names
@@ -389,25 +405,27 @@ def create_veh_human_depictions(source_path: Any) -> None:
             row.v.by_m("Entries").v.add(catalog_entry)
             logger.info(f"Added catalog entry for {unit_name}")
             break
-                
+
+
 def create_veh_depictions(source_path: Any) -> None:
     """Create vehicle depiction entries in GeneratedDepictionVehicles.ndf."""
     logger.info("Creating vehicle depiction entries")
     
-    def get_base_namespace(namespace: str, prefix: str) -> str:
+    def get_base_namespace(namespace_: str, prefix: str) -> str:
         """Extract the base namespace after the given prefix."""
-        return namespace.split(f"{prefix}_")[-1].split("_")[0]
+        return namespace_.split(f"{prefix}_")[-1].split("_")[0]
 
-    def create_new_object(obj_row: Any, unit_name: str, is_weapon: bool, weapon_num: int = 0) -> Any:
+    def create_new_object(obj_row_: Any, unit_name_: str, is_weapon: bool, weapon_num: int = 0) -> Any:
         """Create a new depiction object with updated namespace."""
-        new_obj = obj_row.copy()
+        new_obj = obj_row_.copy()
         if is_weapon:
-            new_obj.namespace = f"DepictionOperator_{unit_name}_Weapon{weapon_num}"
+            new_obj.namespace = f"DepictionOperator_{unit_name_}_Weapon{weapon_num}"
         else:
-            new_obj.namespace = f"Gfx_{unit_name}_Autogen"
+            new_obj.namespace = f"Gfx_{unit_name_}_Autogen"
         return new_obj
 
     for donor, edits in NEW_UNITS.items():
+        donor_name = donor[0]
         if not edits.get("is_ground_vehicle", False):
             continue
             
@@ -419,18 +437,19 @@ def create_veh_depictions(source_path: Any) -> None:
             namespace = obj_row.namespace
             
             if "DepictionOperator_" in namespace:
-                if donor == get_base_namespace(namespace, "DepictionOperator"):
+                if donor_name == get_base_namespace(namespace, "DepictionOperator"):
                     weapon_count += 1
                     new_objects.append(create_new_object(obj_row, unit_name, True, weapon_count))
             
             elif "Gfx_" in namespace:
-                if donor == get_base_namespace(namespace, "Gfx"):
+                if donor_name == get_base_namespace(namespace, "Gfx"):
                     new_objects.append(create_new_object(obj_row, unit_name, False))
 
         for obj in new_objects:
             logger.info(f"Adding new object to GeneratedDepictionVehicles.ndf: {obj.namespace}")
             source_path.add(obj)         
-            
+
+
 def create_aerial_ghost_depictions(source_path: Any) -> None:
     """Create aerial ghost depiction entries in GeneratedDepictionAerialGhosts.ndf."""
     logger.info("Creating aerial ghost depiction entries")
@@ -447,7 +466,8 @@ def create_aerial_ghost_depictions(source_path: Any) -> None:
             )
             source_path.add(new_object_entry)
             logger.info(f"Added aerial ghost depiction for {unit_name}")
-            
+
+
 def create_veh_depiction_selectors(source_path: Any) -> None:
     """Create vehicle depiction selector entries in GeneratedDepictionSelectors.ndf."""
     logger.info("Creating vehicle depiction selector entries")
@@ -459,14 +479,16 @@ def create_veh_depiction_selectors(source_path: Any) -> None:
             source_path.add(new_entry)
             logger.info(f"Added vehicle depiction selector for {unit_name}")
 
+
 def create_veh_showroom_depictions(source_path: Any) -> None:
     """Create vehicle showroom depiction entries in GeneratedDepictionVehiclesShowroom.ndf."""
     logger.info("Creating vehicle showroom depiction entries")
     
     for donor, edits in NEW_UNITS.items():
+        donor_name = donor[0]
         if edits.get("is_ground_vehicle", False):
             unit_name = edits["NewName"]
-            new_depiction_obj = source_path.by_namespace(f"Gfx_{donor}_Showroom").copy()
+            new_depiction_obj = source_path.by_namespace(f"Gfx_{donor_name}_Showroom").copy()
             new_depiction_obj.namespace = f"Gfx_{unit_name}_Showroom"
             new_depiction_obj.v.by_member("Selector").v = f"Selector_{unit_name}"
             

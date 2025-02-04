@@ -87,6 +87,17 @@ pol_unit_edits = {
         "XPMultiplier": [0.0, 0.0, 3/3, 0.0],
     },
 
+    "Star_266_supply_POL": {
+        "UpgradeFromUnit": "GAZ_66B_supply_POL",
+    },
+
+    "BAV_485_Supply_POL": {
+        "UpgradeFromUnit": None,
+    },
+
+    "PTS_M_supply_POL": {
+        "UpgradeFromUnit": "BAV_485_Supply_POL",
+    },
 
     #POL INFANTRY
     "Engineers_CMD_POL": {  # Saperzy Ldr.
@@ -151,7 +162,7 @@ pol_unit_edits = {
             },
         },
         "availability": 7,
-        "XPMultiplier": [0.0, 0.0, 7/7, 5/7], #  7/5
+        "XPMultiplier": [0.0, 0.0, 7/7, 5/7],  # 7/5
         "max_speed": 26,
         "selector_tactic": "(2, 4)",
         "selector_tactic_obj": "02_04",
@@ -489,6 +500,11 @@ pol_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
+        "Divisions": {
+            "POL_20_Pancerna": {
+                "Transports": ['UAZ_469_trans_POL', 'MTLB_trans_POL', 'BMP_1_SP2_POL'],
+            },
+        },
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [("ATGM_9K111M_Faktoriya", "ATGM_9K111_Fagot")],
@@ -496,7 +512,7 @@ pol_unit_edits = {
         },
     },
 
-    "ATteam_Konkurs_POL": {
+    "ATteam_Konkurs_POL": {  # PPK Konkurs (campaign only)
         "CommandPoints": 50,
         "Divisions": {
             "default": {
@@ -512,14 +528,23 @@ pol_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
+        "UpgradeFromUnit": "Atteam_Fagot_POL",
     },
 
-    #  infantry tab transports
+    # infantry tab transports
     "Star_266_POL": {  # Star 266
         "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
+    },
+
+    "KrAZ_255B_POL": {  # KraZ-255 trsp
+        "CommandPoints": 15,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'"],
+        },
+        "UpgradeFromUnit": "Star_266_POL",
     },
 
     "UAZ_469_trans_POL": {
@@ -534,6 +559,7 @@ pol_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
+        "UpgradeFromUnit": "UAZ_469_trans_POL",
     },
 
     "GAZ_66_POL": {
@@ -555,6 +581,15 @@ pol_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
+        "UpgradeFromUnit": "GAZ_46_POL",
+    },
+
+    "GAZ_46_POL": {  # MAW
+        "CommandPoints": 15,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'"],
+        },
+        "UpgradeFromUnit": None,
     },
 
     #POL ARTILLERY
@@ -596,6 +631,10 @@ pol_unit_edits = {
         },
     },
 
+    "Howz_ML20_152mm_POL": {
+        "UpgradeFromUnit": "Howz_M30_122mm_POL"
+    },
+
     "BM21_Grad_POL": {
         "CommandPoints": 175,
         "Divisions": {
@@ -616,6 +655,17 @@ pol_unit_edits = {
         },
         "availability": 3,
         "XPMultiplier": [3/3, 2/3, 0.0, 0.0],  # 3/2
+    },
+
+    "2S1M_POL": {
+        # "CommandPoints": 100,
+        # "Divisions": {
+        #     "default": {
+        #         "cards": 2,
+        #     },
+        # },
+        # "availability": 3,
+        # "XPMultiplier": [3/3, 2/3, 0.0, 0.0],  # 3/2
     },
 
     "DANA_POL": {
@@ -907,9 +957,9 @@ pol_unit_edits = {
             "POL_20_Pancerna": {
                 "Transports": ['UAZ_469_trans_POL', 'OT_65_POL', 'Mi_2_trans_POL'],
             },
-            # "POL_4_Zmechanizowana": {
-            #     "Transports": ['UAZ_469_trans_POL', 'BRDM_1_POL', 'Mi_2_trans_POL'],
-            # },
+            "POL_4_Zmechanizowana": {
+                "Transports": ['UAZ_469_trans_POL', 'BRDM_1_POL', 'Mi_2_trans_POL'],
+            },
         },
         "availability": 8,
         "XPMultiplier": [8/8, 6/8, 0.0, 0.0],
@@ -943,6 +993,13 @@ pol_unit_edits = {
             (2, [0, ]),
             (3, [0, 1, ]),
         ],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "PM_PM63_RAK": 4,
+                },
+            },
+        },
         "Divisions": {
             "POL_20_Pancerna": {
                 "Transports": ['Honker_4011_POL', 'Honker_RYS_POL', 'OT_65_POL', 'Mi_2_trans_POL'],
@@ -1001,6 +1058,7 @@ pol_unit_edits = {
             },
         },
         "XPMultiplier": [8/8, 6/8, 0.0, 0.0],
+        "UpgradeFromUnit": "OT_65_POL",
     },
 
     "Mi_2_gunship_POL": {  # Mi-2US
@@ -1020,15 +1078,17 @@ pol_unit_edits = {
         "CommandPoints": 35,
     },
 
-    # "BRDM_1_POL": {  # BRDM-1
-    #     "CommandPoints": 25,
-    # },
+    "BRDM_1_POL": {  # BRDM-1
+        "CommandPoints": 25,
+        "UpgradeFromUnit": None,
+    },
 
     "OT_65_POL": {  # OT-65
         "GameName": {
             "display": "#RECO1 OT-65",
             "token": "OTSFRECOPL",
         },
+        "UpgradeFromUnit": "BRDM_1_POL",
     },
 
     "MTLB_TRI_Hors_POL": {  # Tri Hors
@@ -1038,6 +1098,7 @@ pol_unit_edits = {
 
     "Honker_RYS_POL": {  # Honker Rys
         "CommandPoints": 25,
+        "UpgradeFromUnit": "Honker_4011_POL",
     },
 
     # POL AA
@@ -1058,7 +1119,7 @@ pol_unit_edits = {
     "MANPAD_Strela_2M_Para_POL": {  # Desant. Strzala-2M
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_kbk_AKM", "FM_kbk_AKMS_noreflex")],
+                "replace": [("FM_kbk_AKM", "FM_kbk_AK_noreflex")],
             },
         },
     },
@@ -1145,17 +1206,17 @@ pol_unit_edits = {
         },
     },
 
-    "Mi_8T_POL": { # twin S-5 x32 - Mi-8T [RKT]
+    "Mi_8T_POL": {  # twin S-5 x32 - Mi-8T [RKT]
         "CommandPoints": 50,
     },
 
     # POL AIR
-    "MiG_21bis_AA_POL": {  #  4x R-60M, 2x R-3R MiG-21bis [AA1]
+    "MiG_21bis_AA_POL": {  # 4x R-60M, 2x R-3R MiG-21bis [AA1]
         "CommandPoints": 120,
         "XPMultiplier": [0.0, 4/4, 3/4, 2/4],
     },
 
-    "MiG_21bis_POL": {  #  4x R-60M, 2x R-13M - MiG-21bis [AA2]
+    "MiG_21bis_POL": {  # 4x R-60M, 2x R-13M - MiG-21bis [AA2]
         "CommandPoints": 120,
         "XPMultiplier": [0.0, 4/4, 3/4, 2/4],
     },
@@ -1185,7 +1246,7 @@ pol_unit_edits = {
         "XPMultiplier": [0.0, 2/2, 0.0, 0.0],
     },
 
-    "Su_22_RKT_POL": { # 4x S-24, 2x R-60M
+    "Su_22_RKT_POL": {  # 4x S-24, 2x R-60M
         "CommandPoints": 125,
         "Divisions": {
             "default": {
@@ -1218,7 +1279,7 @@ pol_unit_edits = {
         "XPMultiplier": [0.0, 2/2, 0.0, 1/2],
     },
 
-    "MiG_29_AA_POL": { # 4x R-73, 2x R-27R [AA1]
+    "MiG_29_AA_POL": {  # 4x R-73, 2x R-27R [AA1]
         "CommandPoints": 200,
         "Divisions": {
             "default": {

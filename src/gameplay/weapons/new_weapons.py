@@ -10,11 +10,13 @@ from src.utils.ndf_utils import is_valid_turret
 
 logger = setup_logger(__name__)
 
+
 def create_new_weapons(source_path: Any, game_db: Dict[str, Any]) -> None:
     """Create weapon descriptors for new units."""
     logger.info("Creating weapon descriptors for new units")
     
-    for donor_name, edits in NEW_UNITS.items():
+    for donor, edits in NEW_UNITS.items():
+        donor_name = donor[0]
         if edits.get("is_unarmed", False):
             continue
             
@@ -58,6 +60,7 @@ def create_new_weapons(source_path: Any, game_db: Dict[str, Any]) -> None:
         source_path.add(new_weap_row)
         logger.info(f"Added weapon descriptor for {edits['NewName']}")
 
+
 def _replace_weapon(new_weap_row: Any, old_ammo: str, new_ammo: str, game_db: Dict[str, Any]) -> None:
     """Replace a weapon in the weapon descriptor."""
     ammo_db = game_db["ammunition"]
@@ -77,6 +80,7 @@ def _replace_weapon(new_weap_row: Any, old_ammo: str, new_ammo: str, game_db: Di
                 weapon_descr_row.v.by_m("Ammunition").v = f"{prefix}_{new_ammo}"
                 logger.debug(f"Replaced weapon {old_ammo} with {new_ammo}")
                 break
+
 
 def _update_weapon_quantity(new_weap_row: Any, ammo: str, quantity: int, game_db: Dict[str, Any]) -> None:
     """Update the quantity of a weapon in the weapon descriptor."""
@@ -112,6 +116,7 @@ def _update_weapon_quantity(new_weap_row: Any, ammo: str, quantity: int, game_db
                 else:
                     logger.debug(f"Updated quantity for {ammo} to {quantity}")
                 break
+
 
 def _update_weapon_salvo(new_weap_row: Any, ammo: str, salvo: int, game_db: Dict[str, Any]) -> None:
     """Update the salvo of a weapon in the weapon descriptor."""

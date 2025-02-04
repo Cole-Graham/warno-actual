@@ -39,16 +39,19 @@ def create_unit_descriptors(source_path: Any) -> None:
     logger.info("Creating unit descriptors")
     
     for donor, edits in NEW_UNITS.items():
+        donor_name = donor[0]
         if "NewName" not in edits:
             continue
             
         unit_name = edits["NewName"]
-        logger.info(f"Creating new unit {unit_name} from donor {donor}")
-        
+        logger.info(f"Creating new unit {unit_name} from donor {donor_name}")
+        # donor is now a tuple to allow repeated use of a donor
+        # former donor values now located at donor[0], rest of tuple is irrelevant
+
         # Clone donor unit
-        donor_unit = source_path.by_n(f"Descriptor_Unit_{donor}")
+        donor_unit = source_path.by_n(f"Descriptor_Unit_{donor_name}")
         if not donor_unit:
-            logger.error(f"Donor unit {donor} not found")
+            logger.error(f"Donor unit {donor_name} not found")
             continue
             
         new_unit_row = donor_unit.copy()
@@ -227,11 +230,14 @@ def _handle_unit_ui(descr_row: Any, edits: Dict[str, Any]) -> None:
         descr_row.v.by_member("SpecialtiesList").v = edited_list
     if "GameName" in edits and "token" in edits["GameName"]:
         descr_row.v.by_member("NameToken").v = f'\"{edits["GameName"]["token"]}\"'
-    if "UpgradeFromUnit" in edits and descr_row.v.by_member("UpgradeFromUnit", False) is not None:
-        if edits["UpgradeFromUnit"] is None:
-            descr_row.v.remove_by_m("UpgradeFromUnit", strict=False)
-        else:
-            descr_row.v.by_m("UpgradeFromUnit").v = f"Descriptor_Unit_{edits['UpgradeFromUnit']}"
+    if "UpgradeFromUnit" in edits:
+        if descr_row.v.by_m("UpgradeFromUnit", False) is not None:
+            if edits["UpgradeFromUnit"] is None:
+                descr_row.v.remove_by_member("UpgradeFromUnit")
+            else:
+                descr_row.v.by_m("UpgradeFromUnit").v = f"Descriptor_Unit_{edits['UpgradeFromUnit']}"
+        elif edits["UpgradeFromUnit"] is not None:
+            descr_row.v.add(f"UpgradeFromUnit = Descriptor_Unit_{edits['UpgradeFromUnit']}")
     if "MenuIconTexture" in edits:
         descr_row.v.by_member("MenuIconTexture").v = f"'{edits['MenuIconTexture']}'"
     if "ButtonTexture" in edits:

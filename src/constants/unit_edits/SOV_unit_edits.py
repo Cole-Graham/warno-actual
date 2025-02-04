@@ -2233,6 +2233,7 @@ sov_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
+        "UpgradeFromUnit": None,
     },
 
     "MiG_29_AA2_SOV": { # 2x R-60M, 2x R-27R
@@ -2247,6 +2248,12 @@ sov_unit_edits = {
         },
         "availability": 2,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
+        "UpgradeFromUnit": "MiG_29_AA_SOV",
+    },
+
+    "MiG_29_AA3_SOV": { # 4x R-73, 2x R-27T
+        "UpgradeFromUnit": "MiG_29_AA2_SOV",
+        "ButtonTexture": "MiG_29_AA_SOV",  # match icon to model (regular icon has wrong camo)
     },
     
     "Su_27S_SOV": { # 6x R-73, 4x R-27R

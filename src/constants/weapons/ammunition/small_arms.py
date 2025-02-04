@@ -399,7 +399,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "BaseSupplyCost": 1,
-        "NbWeapons": [6, 3, 1],
+        "NbWeapons": [7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 12,               
         },

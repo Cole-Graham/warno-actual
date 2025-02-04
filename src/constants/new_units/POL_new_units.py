@@ -2,7 +2,7 @@
 
 # fmt: off
 POL_NEW_UNITS = {
-    "Rifles_CMD_POL": { # donor unit
+    ("Rifles_CMD_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "420dc280-c718-45a3-8edd-a022767e7773",
         "GroupeCombatGUID": "ff07058f-392e-477f-8eea-ec8ef042d0c6",
         "ShowroomGUID": "3585f744-fa44-4b2c-99af-2a50f4220b11",
@@ -87,7 +87,7 @@ POL_NEW_UNITS = {
         "selector_tactic": "2, 5",
     },
 
-    "T55A_CMD_POL": {  # donor unit
+    ("T55A_CMD_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "f85c67f5-5738-43ff-bae2-a92bfa88d83d",
         "GroupeCombatGUID": "6773a9af-c9e6-4d3f-a41c-953be75f966e",
         "ShowroomGUID": "2cf23742-85b4-4b75-a280-133aff0a63b6",
@@ -142,7 +142,7 @@ POL_NEW_UNITS = {
         "Nation": "POL",
     },
 
-    "T72M_CMD_POL": {  # donor unit
+    ("T72M_CMD_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "dd59b59a-5698-4a72-b16c-71ec2bdc9064",
         "GroupeCombatGUID": "56fecca1-ce12-4cfb-9675-2ef6bb48e033",
         "ShowroomGUID": "65e63a59-27d9-4978-b3ba-93e44f91379c",
@@ -191,7 +191,7 @@ POL_NEW_UNITS = {
         "UpgradeFromUnit": "T55A_CMD2_POL",
     },
 
-    "T72M1_CMD_POL": {  # donor unit
+    ("T72M1_CMD_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "c292163d-73b2-47dd-9f39-ad607bd75a14",
         "GroupeCombatGUID": "f71b3c68-eb90-46ec-8ac3-5c75273b0212",
         "ShowroomGUID": "217706ae-a44b-4d9a-9b89-a516bf04207b",
@@ -239,6 +239,134 @@ POL_NEW_UNITS = {
         "Faction": "PACT",
         "Nation": "POL",
         "UpgradeFromUnit": "T72M_CMD2_POL",
+    },
+
+    ("Atteam_Fagot_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "a4f73e0b-8b70-4c8d-bcee-440a4c79fb6e",
+        "GroupeCombatGUID": "37d0eb0b-25b4-4351-bd94-db17bfccfce5",
+        "ShowroomGUID": "24fd6fc3-aaff-4f8b-b46e-63a5188edcab",
+        "CadavreGUID": "2a3d92a7-1ab7-4bc1-94be-916ac8b06ab4",
+        "NewName": "ATteam_FagotM_POL",
+        "GameName": {
+            "display": "PPK FAKTORIA",
+            "token": "FAKTORIAPL",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_AT",
+                "Infanterie_Spec_Defense",
+                "UNITE_ATteam_FagotM_DDR",
+                "Unite"
+            ],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_9K111M_Faktoriya": 6,
+            },
+            "equipmentchanges": {
+                "replace": [("ATGM_9K111_Fagot", "ATGM_9K111M_Faktoriya")]
+            },
+        },
+        "CommandPoints": 40,
+        "SpecialitiesList": [
+            'AT',
+            'infantry_equip_heavy',
+        ],
+        "UpgradeFromUnit": "Atteam_Fagot_POL",
+        "ButtonTexture": "Atteam_Fagot_POL",
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+            "POL_20_Pancerna_multi": {
+                "Transports": ['UAZ_469_trans_POL', 'MTLB_trans_POL', 'BMP_1_SP2_POL'],
+            },
+        },
+        "availability": 7,
+        "XPMultiplier": [7/7, 5/7, 4/7, 0.0],
+        "max_speed": 20,
+        "Orders": ['Stop', 'Move', 'FollowFormation', 'Attack', 'MoveAndAttack', 'Spread',
+                   'Shoot', 'AskForSupply', 'EnterDistrict', 'LoadIntoTransport', 'Load',
+                   'AIDefend', 'AIAttack', 'AIStop'],
+        "is_infantry": True,  # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "POL",
+        "depiction_type": "Towed",
+        "alternatives_count": 2,
+    },
+
+    ("Atteam_Fagot_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "a4f73e0b-8b70-4c8d-bcee-440a4c79fb6e",
+        "GroupeCombatGUID": "37d0eb0b-25b4-4351-bd94-db17bfccfce5",
+        "ShowroomGUID": "24fd6fc3-aaff-4f8b-b46e-63a5188edcab",
+        "CadavreGUID": "2a3d92a7-1ab7-4bc1-94be-916ac8b06ab4",
+        "NewName": "ATteam_FagotM_POL",
+        "GameName": {
+            "display": "PPK FAKTORIA",
+            "token": "FAKTORIAPL",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_AT",
+                "Infanterie_Spec_Defense",
+                "UNITE_ATteam_FagotM_DDR",
+                "Unite"
+            ],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_9K111M_Faktoriya": 6,
+            },
+            "equipmentchanges": {
+                "replace": [("ATGM_9K111_Fagot", "ATGM_9K111M_Faktoriya")]
+            },
+        },
+        "CommandPoints": 40,
+        "SpecialitiesList": [
+            'AT',
+            'infantry_equip_heavy',
+        ],
+        "UpgradeFromUnit": "Atteam_Fagot_POL",
+        "ButtonTexture": "Atteam_Fagot_POL",
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+            "POL_20_Pancerna_multi": {
+                "Transports": ['UAZ_469_trans_POL', 'MTLB_trans_POL', 'BMP_1_SP2_POL'],
+            },
+        },
+        "availability": 7,
+        "XPMultiplier": [7/7, 5/7, 4/7, 0.0],
+        "max_speed": 20,
+        "Orders": ['Stop', 'Move', 'FollowFormation', 'Attack', 'MoveAndAttack', 'Spread',
+                   'Shoot', 'AskForSupply', 'EnterDistrict', 'LoadIntoTransport', 'Load',
+                   'AIDefend', 'AIAttack', 'AIStop'],
+        "is_infantry": True,  # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "POL",
+        "depiction_type": "Towed",
+        "alternatives_count": 2,
     },
 }
 # fmt: on

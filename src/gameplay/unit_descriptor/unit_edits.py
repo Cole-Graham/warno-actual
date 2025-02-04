@@ -284,11 +284,14 @@ def _handle_unit_ui(unit_row: Any, descr_row: Any, edits: dict, index: int, modu
     if "road_speed" in edits and "road_speed" in edits["road_speed"]:
         descr_row.v.by_m("DisplayRoadSpeedInKmph").v = str(edits["road_speed"]["road_speed"])
         
-    if "UpgradeFromUnit" in edits and descr_row.v.by_m("UpgradeFromUnit", False) is not None:
-        if edits["UpgradeFromUnit"] is None:
-            descr_row.v.remove_by_m("UpgradeFromUnit", strict=False)
-        else:
-            descr_row.v.by_m("UpgradeFromUnit").v = f"Descriptor_Unit_{edits['UpgradeFromUnit']}"
+    if "UpgradeFromUnit" in edits:
+        if descr_row.v.by_m("UpgradeFromUnit", False) is not None:
+            if edits["UpgradeFromUnit"] is None:
+                descr_row.v.remove_by_member("UpgradeFromUnit")
+            else:
+                descr_row.v.by_m("UpgradeFromUnit").v = f"Descriptor_Unit_{edits['UpgradeFromUnit']}"
+        elif edits["UpgradeFromUnit"] is not None:
+            descr_row.v.add(f"UpgradeFromUnit = Descriptor_Unit_{edits['UpgradeFromUnit']}")
     
     if "MenuIconTexture" in edits:
         descr_row.v.by_m("MenuIconTexture").v = "'" + edits["MenuIconTexture"] + "'"

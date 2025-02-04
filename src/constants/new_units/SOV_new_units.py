@@ -2,7 +2,7 @@
 
 # fmt: off
 SOV_NEW_UNITS = {
-    "MotRifles_CMD_SOV": { # donor unit
+    ("MotRifles_CMD_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "ae9979f0-0bb1-47f3-b4f6-c4e820ad2a06",
         "GroupeCombatGUID": "e9462050-a89d-456b-915d-a68d7edafd17",
         "ShowroomGUID": "c7b5a9d8-e4f2-4c16-9d3b-8a2e4f7c6b5d",
@@ -31,11 +31,11 @@ SOV_NEW_UNITS = {
         # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
         "Dangerousness": 12,
         "WeaponAssignment": [
-                (0,[1]),
-                (1,[0]),
-                (2,[0]),
-                (3,[0,3]),
-                (4,[0,2]),
+                (0, [1]),
+                (1, [0]),
+                (2, [0]),
+                (3, [0, 3]),
+                (4, [0, 2]),
             ],
         "WeaponDescriptor": {
             "Salves": {
@@ -95,8 +95,8 @@ SOV_NEW_UNITS = {
         "alternatives_count": 4,
         "selector_tactic": "2, 4",
     },
-    
-    "MotRifles_CMD_TTsko_SOV": { # donor unit
+
+    ("MotRifles_CMD_TTsko_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "e3e48926-a5ee-492a-b6f9-c772b8a90924",
         "GroupeCombatGUID": "9a2f1fad-0e56-4f46-8345-b125fda7314a",
         "ShowroomGUID": "b1c2d3e4-f5g6-4h7i-8j9k-l0m1n2o3p4q5",
@@ -125,11 +125,11 @@ SOV_NEW_UNITS = {
         # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
         "Dangerousness": 12,
         "WeaponAssignment": [
-                (0,[1]),
-                (1,[0]),
-                (2,[0]),
-                (3,[0,3]),
-                (4,[0,2]),
+                (0, [1]),
+                (1, [0]),
+                (2, [0]),
+                (3, [0, 3]),
+                (4, [0, 2]),
             ],
         "WeaponDescriptor": {
             "Salves": {
@@ -182,7 +182,7 @@ SOV_NEW_UNITS = {
         "selector_tactic": "2, 4",
     },
 
-    "T80BV_CMD_SOV": { # donor unit
+    ("T80BV_CMD_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "7885fe97-44c5-4ec9-92ea-dea7d1335a23",
         "GroupeCombatGUID": "993eaf28-65c8-4c9d-bbf0-37c296fe5466",
         "ShowroomGUID": "e6f7g8h9-i0j1-4k2l-3m4n-5o6p7q8r9s0t",
@@ -244,7 +244,7 @@ SOV_NEW_UNITS = {
         "Nation": "SOV",
     },
 
-    "MTLB_CMD_SOV": { # donor unit
+    ("MTLB_CMD_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "ddc1a5b9-cc08-494a-a9dc-7d8b35591505",
         "GroupeCombatGUID": "41959c7e-e732-453f-91d5-000729d068e5",
         "ShowroomGUID": "847a7325-445a-44ba-bfcb-24c03dfaad07",
@@ -303,7 +303,7 @@ SOV_NEW_UNITS = {
         "Nation": "SOV",
     },
 
-    "ATteam_Fagot_SOV": { # donor unit
+    ("ATteam_Fagot_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "22caa472-c587-4816-b3b4-913e7c2316f4",
         "GroupeCombatGUID": "674ce341-9c4a-4da2-9f3e-4b4e6f6c2358",
         "ShowroomGUID": "c419b0c4-6f4e-435b-8e1f-fb74b33cf884",
@@ -369,7 +369,7 @@ SOV_NEW_UNITS = {
         "alternatives_count": 2,
     },
 
-    "Atteam_Fagot_VDV_SOV": { # donor unit
+    ("Atteam_Fagot_VDV_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "60fff50e-03da-402c-bbec-15424522f06d",
         "GroupeCombatGUID": "bcd261dd-e99e-4f6c-9f0e-4ffa0e470bb4",
         "ShowroomGUID": "d2e3f4g5-h6i7-4j8k-9l0m-n1o2p3q4r5s6",

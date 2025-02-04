@@ -2,7 +2,7 @@
 
 # fmt: off
 RDA_NEW_UNITS = {
-    "MotRifles_CMD_DDR": { # donor unit
+    ("MotRifles_CMD_DDR", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "847f8c3c-52c8-4a5b-8955-6dc3334ac281",
         "GroupeCombatGUID": "5bed0d57-83b0-46d7-99e6-f69138e38a84",
         "ShowroomGUID": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
@@ -31,11 +31,11 @@ RDA_NEW_UNITS = {
         # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
         "Dangerousness": 12,
         "WeaponAssignment": [
-                (0,[1]),
-                (1,[0]),
-                (2,[0]),
-                (3,[0,3]),
-                (4,[0,2]),
+                (0, [1]),
+                (1, [0]),
+                (2, [0]),
+                (3, [0, 3]),
+                (4, [0, 2]),
             ],
         "WeaponDescriptor": {
             "Salves": {
@@ -88,7 +88,7 @@ RDA_NEW_UNITS = {
         "selector_tactic": "2, 5",
     },
 
-    "BTR_50_CMD_DDR": { # donor unit
+    ("BTR_50_CMD_DDR", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "eb482c98-ddae-45cb-b62e-f50ad4c79d99",
         "GroupeCombatGUID": "1d1735b6-a0e6-49be-994e-f1bf7480872b",
         "ShowroomGUID": "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b",
@@ -142,7 +142,7 @@ RDA_NEW_UNITS = {
         "Nation": "DDR",
     },
 
-    "ATteam_Fagot_DDR": { # donor unit
+    ("ATteam_Fagot_DDR", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "87782b09-1378-4507-8e87-45139ae746eb",
         "GroupeCombatGUID": "1def4c80-26b9-47d0-b601-cfb485394ff9",
         "ShowroomGUID": "d7e8f9a0-b1c2-4d3e-4f5g-6h7i8j9k0l1m",
@@ -207,7 +207,7 @@ RDA_NEW_UNITS = {
         "alternatives_count": 2,
     },
 
-    "T55A_CMD_DDR": { # donor unit
+    ("T55A_CMD_DDR", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "257bde27-dc1e-4899-ab2f-c6edf9c4af76",
         "GroupeCombatGUID": "e7a7acba-d937-427a-9035-7e4f957cf778",
         "ShowroomGUID": "376f5cd3-f3ef-4bd0-80c9-61ffe40e38a6",
@@ -267,7 +267,7 @@ RDA_NEW_UNITS = {
         "Nation": "DDR",
     },
 
-    "T72M_CMD_DDR": { # donor unit
+    ("T72M_CMD_DDR", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "983055d0-fd20-4e45-bd7c-aa49fa29ca02",
         "GroupeCombatGUID": "da74e4f0-2b89-4ddf-8dc7-e866bf171845",
         "ShowroomGUID": "f8a9b0c1-d2e3-4f5g-6h7i-8j9k0l1m2n3o",
