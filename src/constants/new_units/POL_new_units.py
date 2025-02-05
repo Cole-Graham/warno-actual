@@ -52,8 +52,8 @@ POL_NEW_UNITS = {
         "TransportedSoldier": "Rifles_CMD_POL",
         "Factory": "EDefaultFactories/Logistic",
         "CommandPoints": 145,
-        "UnitAttackValue": 1,
-        "UnitDefenseValue": 16,
+        # "UnitAttackValue": 1,
+        # "UnitDefenseValue": 16,
         "SpecialitiesList": [
             'hq_inf',
             'leader_sov',
@@ -83,8 +83,8 @@ POL_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "PACT",
         "Nation": "POL",
-        "alternatives_count": 5,
-        "selector_tactic": "2, 5",
+        "alternatives_count": 4,
+        "selector_tactic": "2, 4",
     },
 
     ("T55A_CMD_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -239,6 +239,72 @@ POL_NEW_UNITS = {
         "Faction": "PACT",
         "Nation": "POL",
         "UpgradeFromUnit": "T72M_CMD2_POL",
+    },
+    
+    ("OT_64_SKOT_2_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "35b514f1-55d8-4c63-86c0-ff0604547fb4",
+        "GroupeCombatGUID": "fb1db3c4-ed80-4a3a-b8f8-1eab529da04e",
+        "ShowroomGUID": "6211126c-6458-4edc-8e7e-a7d17338c60a",
+        "CadavreGUID": "8f3685da-a277-41c1-8870-3d60c6acc84f",
+        "modules_add": ["TCommanderModuleDescriptor()"],
+        "modules_remove": ["WeaponDescriptor", "WeaponManager", "Transporter"],
+        "depictions": {
+            "custom": {
+                "DepictionVehicles.ndf": ["TacticVehicleDepictionTemplate"],
+            },
+            "cadavre": {
+                "remove_modules": ["WeaponManager", "Transporter"],
+            },
+        },
+        "NewName": "OT_64_SKOT_2_CMD_POL",
+        "GameName": {
+            "display": "#LDRSOV SKOT R-2AM",
+            "token": "RTBIJFPDGK",
+        },
+        "TypeUnit": {
+            "AcknowUnitType": "~/TAcknowUnitType_Command",
+            "TypeUnitFormation": "'Supply'",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Commandant",
+                "GroundUnits",
+                "InfmapCommander",
+                "UNITE_OT_64_SKOT_2_CMD_POL",
+                "Unite",
+                "Vehicule",
+                "Vehicule_CMD",
+            ],
+        },
+        "IdentifiedTextures": ["Texture_RTS_H_CMD_veh", "Texture_CMD_veh"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "Factory": "EDefaultFactories/Art",
+        "CommandPoints": 60,
+        "SpecialitiesList": [
+            'leader_sov',
+        ],
+        "InfoPanelConfig": "Default",
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+            "POL_20_Pancerna_multi": {
+                "Transports": None,
+            },
+        },
+        "availability": 2,
+        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+        "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Spread', 'Reverse', 
+                   'AskForSupply', 'AIDefend', 'AIAttack', 'AIStop'],
+        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": True,
+        "Faction": "PACT",
+        "Nation": "POL",
     },
 
     ("Atteam_Fagot_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys

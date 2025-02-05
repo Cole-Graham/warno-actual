@@ -23,6 +23,7 @@ from src.gameplay import (
     add_radio_tag_to_mortars,
     edit_smoke_duration,
     temp_fix_reco_radar,
+    create_veh_showroom_depictions,
 )
 from src.gameplay.buildings import edit_fob_attributes
 
@@ -493,7 +494,7 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
 
         # Depiction files
         "GameData/Generated/Gameplay/Gfx/Depictions/GeneratedDepictionVehiclesShowRoom.ndf": [
-            # lambda source_path: create_veh_showroom_depictions(source_path) # Maybe unnecessary
+            lambda source_path: create_veh_showroom_depictions(source_path) # Maybe unnecessary
         ],
         
         # UI files

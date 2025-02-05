@@ -3,7 +3,7 @@
 from typing import Any
 
 from src import ndf
-from src.constants.new_units import NEW_UNITS
+from src.constants.new_units import NEW_DEPICTIONS, NEW_UNITS
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import generate_guid, is_obj_type
 
@@ -135,15 +135,31 @@ def create_showroom_depictions(source_path: Any) -> None:
         new_unit.v.by_member("ClassNameForDebug").v = f"'ShowRoomUnit_{unit_name}'"
         
         # Update modules
-        for module in new_unit.v.by_member("ModulesDescriptors").v:
+        modules_list = new_unit.v.by_member("ModulesDescriptors")
+        for module in modules_list.v:
+            
+            if "modules_remove" in edits:
+                if "WeaponDescriptor" in edits["modules_remove"]:
+                    if not isinstance(module.v, ndf.model.Object):
+                        if module.v == "$/GFX/Weapon/WeaponDescriptor_" + donor_name:
+                            modules_list.v.remove(module.index)
+                            continue
+
             if not isinstance(module.v, ndf.model.Object):
                 continue
                 
             module_type = module.v.type
             
-            if module_type == "TApparenceModuleDescriptor":
+            if module_type == "TTypeUnitModuleDescriptor":
+                if "TypeUnit" in edits:
+                    for member, value in edits["TypeUnit"].items():
+                        module.v.by_member(member).v = value
+
+            elif module_type == "TApparenceModuleDescriptor":
                 if not edits.get("is_ground_vehicle", False):
                     module.v.by_member("Depiction").v = "$/GFX/Depiction/InfantryDepictionSquadShowroom"
+                else:
+                    module.v.by_member("Depiction").v = f"$/GFX/Depiction/Gfx_{unit_name}_Showroom"
                     
             elif module_type == "TInfantrySquadModuleDescriptor":
                 if "strength" in edits:
@@ -233,10 +249,69 @@ def create_cadavre_depictions(source_path: Any) -> None:
             
         new_cadavre = donor_cadavre.copy()
         
-        # Only update these three fields
+        # Update basic properties
         new_cadavre.namespace = f"Descriptor_UnitCadavre_{unit_name}"
         new_cadavre.v.by_member("DescriptorId").v = f"GUID:{{{edits['CadavreGUID']}}}"
         new_cadavre.v.by_member("ClassNameForDebug").v = f"'Unit_Cadavre{unit_name}'"
+        
+        # Get modules list
+        modules_list = new_cadavre.v.by_m("ModulesDescriptors")
+        
+        # First pass - update unit references and find cadavre module
+        cadavre_modules = None
+        modules_to_remove = []
+        
+        for module in modules_list.v:
+            if isinstance(module.v, str) and "~/Descriptor_Unit_" in module.v:
+                # Mark modules for removal if they match the remove list
+                if ("depictions" in edits and "cadavre" in edits["depictions"] and 
+                    "remove_modules" in edits["depictions"]["cadavre"]):
+                    module_name = module.v.split("/")[-1]
+                    if module_name in edits["depictions"]["cadavre"]["remove_modules"]:
+                        modules_to_remove.append(module)
+                        continue
+                
+                # Update unit reference
+                old_path = f"~/Descriptor_Unit_{donor_name}"
+                new_path = f"~/Descriptor_Unit_{unit_name}"
+                module.v = module.v.replace(old_path, new_path)
+            
+            elif isinstance(module.v, ndf.model.Object):
+                if module.v.type == "TTypeUnitModuleDescriptor" and "TypeUnit" in edits:
+                    for member, value in edits["TypeUnit"].items():
+                        module.v.by_member(member).v = value
+
+                elif module.v.type == "UnitCadavreModuleDescriptor":
+                    cadavre_modules = module.v.by_m("ModuleDescriptorsToSteal")
+        
+        # Remove marked modules
+        for module in modules_to_remove:
+            modules_list.v.remove(module)
+            logger.info(f"Removed module {module.v} from {unit_name}")
+            
+        # Update references in cadavre module and remove unwanted modules
+        if cadavre_modules:
+            modules_to_remove = []
+            for module in cadavre_modules.v:
+                if isinstance(module.v, str):
+                    if "~/Descriptor_Unit_" in module.v:
+                        # Check if module should be removed
+                        if ("depictions" in edits and "cadavre" in edits["depictions"] and 
+                            "remove_modules" in edits["depictions"]["cadavre"]):
+                            module_name = module.v.split("/")[-1]
+                            if module_name in edits["depictions"]["cadavre"]["remove_modules"]:
+                                modules_to_remove.append(module)
+                                continue
+                        
+                        # Update unit reference
+                        old_path = f"~/Descriptor_Unit_{donor_name}"
+                        new_path = f"~/Descriptor_Unit_{unit_name}"
+                        module.v = module.v.replace(old_path, new_path)
+            
+            # Remove marked modules from ModuleDescriptorsToSteal
+            for module in modules_to_remove:
+                cadavre_modules.v.remove(module)
+                logger.info(f"Removed module {module.v} from {unit_name} ModuleDescriptorsToSteal")
         
         # Add the new cadavre descriptor
         source_path.add(new_cadavre)
@@ -291,7 +366,7 @@ def create_ghost_depictions(source_path: Any) -> None:
 
 
 def create_alternatives_depictions(source_path: Any) -> None:
-    """Create alternatives depiction entries in GeneratedDepictionAlternatives.ndf."""
+    """Create alternatives depiction entries in DepictionAlternatives.ndf."""
     logger.info("Creating alternatives depiction entries")
     
     for donor, edits in NEW_UNITS.items():
@@ -408,7 +483,7 @@ def create_veh_human_depictions(source_path: Any) -> None:
 
 
 def create_veh_depictions(source_path: Any) -> None:
-    """Create vehicle depiction entries in GeneratedDepictionVehicles.ndf."""
+    """Create vehicle depiction entries in DepictionVehicles.ndf."""
     logger.info("Creating vehicle depiction entries")
     
     def get_base_namespace(namespace_: str, prefix: str) -> str:
@@ -430,24 +505,36 @@ def create_veh_depictions(source_path: Any) -> None:
             continue
             
         unit_name = edits["NewName"]
-        weapon_count = 0
-        new_objects = []
+        
+        custom_depictions = edits.get("depictions", {}).get("custom", {}).get("DepictionVehicles.ndf", [])
+        if "TacticVehicleDepictionTemplate" in custom_depictions:
+            depiction_key = unit_name.lower()
+            if depiction_key in NEW_DEPICTIONS:
+                custom_veh_depiction = NEW_DEPICTIONS[depiction_key]["DepictionVehicles_ndf"]["TacticVehicleDepictionTemplate"]
+                source_path.add(custom_veh_depiction)
+                logger.info(f"Added custom vehicle depiction for {unit_name}")
+            else:
+                logger.warning(f"No custom depiction found for {unit_name} (key: {depiction_key})")
+        
+        else:
+            weapon_count = 0
+            new_objects = []
 
-        for obj_row in source_path:
-            namespace = obj_row.namespace
-            
-            if "DepictionOperator_" in namespace:
-                if donor_name == get_base_namespace(namespace, "DepictionOperator"):
-                    weapon_count += 1
-                    new_objects.append(create_new_object(obj_row, unit_name, True, weapon_count))
-            
-            elif "Gfx_" in namespace:
-                if donor_name == get_base_namespace(namespace, "Gfx"):
-                    new_objects.append(create_new_object(obj_row, unit_name, False))
+            for obj_row in source_path:
+                namespace = obj_row.namespace
+                
+                if "DepictionOperator_" in namespace:
+                    if donor_name == get_base_namespace(namespace, "DepictionOperator"):
+                        weapon_count += 1
+                        new_objects.append(create_new_object(obj_row, unit_name, True, weapon_count))
+                
+                elif "Gfx_" in namespace:
+                    if donor_name == get_base_namespace(namespace, "Gfx"):
+                        new_objects.append(create_new_object(obj_row, unit_name, False))
 
-        for obj in new_objects:
-            logger.info(f"Adding new object to GeneratedDepictionVehicles.ndf: {obj.namespace}")
-            source_path.add(obj)         
+            for obj in new_objects:
+                logger.info(f"Adding new object to GeneratedDepictionVehicles.ndf: {obj.namespace}")
+                source_path.add(obj)         
 
 
 def create_aerial_ghost_depictions(source_path: Any) -> None:
@@ -490,6 +577,7 @@ def create_veh_showroom_depictions(source_path: Any) -> None:
             unit_name = edits["NewName"]
             new_depiction_obj = source_path.by_namespace(f"Gfx_{donor_name}_Showroom").copy()
             new_depiction_obj.namespace = f"Gfx_{unit_name}_Showroom"
+            new_depiction_obj.v.by_member("Alternatives").v = f"Alternatives_{unit_name}"
             new_depiction_obj.v.by_member("Selector").v = f"Selector_{unit_name}"
             
             if edits.get("is_infantry", False):

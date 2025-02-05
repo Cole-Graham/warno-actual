@@ -6,6 +6,7 @@ from src import ndf
 from src.constants.new_units import NEW_UNITS
 from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.logging_utils import setup_logger
+
 # from src.utils.ndf_utils import get_modules_list, is_obj_type
 
 logger = setup_logger(__name__)
@@ -66,106 +67,140 @@ def create_unit_descriptors(source_path: Any) -> None:
 
 
 def modify_new_unit(unit_row: Any, edits: Dict[str, Any]) -> None:
-    """Modify a new unit based on edit specifications.
-    
-    Args:
-        unit_row: The unit row to modify
-        edits: Dictionary of edits to apply
-    """
+    """Modify a new unit based on edit specifications."""
     # Update basic unit properties
     unit_row.v.by_member("DescriptorId").v = f"GUID:{{{edits['GUID']}}}"
     unit_row.v.by_member("ClassNameForDebug").v = f"'Unite_{edits['NewName']}'"
     
     # Process each module
-    for descr_row in unit_row.v.by_member("ModulesDescriptors").v:
-        if not isinstance(descr_row.v, ndf.model.Object):
-            continue
+    modules_list = unit_row.v.by_member("ModulesDescriptors")
+    
+    # First add any new modules
+    if "modules_add" in edits:
+        for module in edits["modules_add"]:
+            modules_list.v.add(module)
+            logger.info(f"Added {module} to {unit_row.namespace}")
+    
+    # Then handle module removal and modifications
+    modules_to_remove = []
+    for descr_row in modules_list.v:
+        # Check if module should be removed
+        if "modules_remove" in edits:
+            should_remove = False
+            if isinstance(descr_row.v, ndf.model.Object):
+                # Handle object modules
+                if descr_row.v.type in edits["modules_remove"]:
+                    should_remove = True
+                elif hasattr(descr_row, "namespace") and descr_row.namespace in edits["modules_remove"]:
+                    should_remove = True
+            else:
+                # Handle string modules
+                if hasattr(descr_row, "namespace") and descr_row.namespace in edits["modules_remove"]:
+                    should_remove = True
+                elif any(descr_row.v == module for module in edits["modules_remove"]):
+                    should_remove = True
             
-        descr_type = descr_row.v.type
+            if should_remove:
+                modules_to_remove.append(descr_row)
+                logger.info(f"Marked for removal: {getattr(descr_row, 'namespace', descr_row.v)}")
+                continue
         
-        # Handle each module type
-        if descr_type == "TTagsModuleDescriptor":
-            if "TagSet" in edits:
-                tagset = descr_row.v.by_member("TagSet").v
-                if "overwrite_all" in edits["TagSet"]:
-                    tagset.v = str(edits["TagSet"]["overwrite_all"])
-                elif "add_tags" in edits["TagSet"]:
-                    for tag in edits["TagSet"]["add_tags"]:
-                        tagset.add(tag)
-                        logger.info(f"Added tag {tag} to {unit_row.namespace}")
-                
-        elif descr_type == "TVisibilityModuleDescriptor":
-            if "Stealth" in edits:
-                descr_row.v.by_member("UnitConcealmentBonus").v = str(edits["Stealth"])
-                
-        elif descr_row.namespace == "ApparenceModel":
-            if "NewName" in edits and not edits["is_ground_vehicle"]:
-                descr_row.v.by_member("Depiction").v = f"$/GFX/Depiction/Gfx_{edits['NewName']}"
-                
-        elif descr_row.namespace == "WeaponManager":
-            if "NewName" in edits:
-                descr_row.v.by_member("Default").v = f"$/GFX/Weapon/WeaponDescriptor_{edits['NewName']}"
-                
-        elif descr_type == "TBaseDamageModuleDescriptor":
-            if "strength" in edits:
-                descr_row.v.by_member("MaxPhysicalDamages").v = str(edits["strength"])
-                
-        elif descr_type == "TDamageModuleDescriptor":
-            _handle_damage_module(descr_row, edits)
-                
-        elif descr_type == "TDangerousnessModuleDescriptor":
-            if "Dangerousness" in edits:
-                descr_row.v.by_member("Dangerousness").v = str(edits["Dangerousness"])
-                
-        elif descr_row.namespace == "GroupeCombat":
-            _handle_groupe_combat(descr_row, edits)
-                
-        elif descr_type == "TInfantrySquadWeaponAssignmentModuleDescriptor":
-            if "WeaponAssignment" in edits:
-                descr_row.v.by_member("InitialSoldiersToTurretIndexMap").v = f"MAP {str(edits['WeaponAssignment'])}"
-                
-        elif descr_row.namespace == "GenericMovement":
-            if "max_speed" in edits:
-                descr_row.v.by_member("Default").v.by_member("MaxSpeedInKmph").v = str(edits["max_speed"])  # noqa
-                
-        elif descr_type == "TTransportableModuleDescriptor":
-            if "TransportedTexture" in edits:
-                descr_row.v.by_member("TransportedTexture").v = f"'{edits['TransportedTexture']}'"
-            if "TransportedSoldier" in edits:
-                descr_row.v.by_member("TransportedSoldier").v = f"'{edits['TransportedSoldier']}'"
+        # If not being removed, handle module modifications
+        if isinstance(descr_row.v, ndf.model.Object):
+            descr_type = descr_row.v.type
             
-        elif descr_type == "TCadavreGeneratorModuleDescriptor":
-            descr_row.v.by_member("CadavreDescriptor").v = f"~/Descriptor_UnitCadavre_{edits['NewName']}"
-            
-        elif descr_type == "TProductionModuleDescriptor":
-            if "Factory" in edits:
-                descr_row.v.by_member("Factory").v = edits["Factory"]
-            if "CommandPoints" in edits:
-                cmd_points = "$/GFX/Resources/Resource_CommandPoints"
-                descr_row.v.by_member("ProductionRessourcesNeeded").v.by_key(cmd_points).v = str(edits["CommandPoints"])  # noqa
+            if descr_type == "TTypeUnitModuleDescriptor":
+                if "TypeUnit" in edits:
+                    for member, value in edits["TypeUnit"].items():
+                        descr_row.v.by_member(member).v = value
+                        
+            elif descr_type == "TTagsModuleDescriptor":
+                if not "TagSet" in edits:
+                    logger.warning(f"No TagSet found for {unit_row.namespace}")
+                else:
+                    _handle_tags_module(descr_row, edits)
                 
-        elif descr_type == "TOrderConfigModuleDescriptor":
-            if "NewName" in edits:
-                descr_row.v.by_member("ValidOrders").v = f"~/Descriptor_OrderAvailability_{edits['NewName']}"
+            elif descr_type == "TVisibilityModuleDescriptor":
+                if "Stealth" in edits:
+                    descr_row.v.by_member("UnitConcealmentBonus").v = str(edits["Stealth"])
+                    
+            elif descr_type == "TAutoCoverModuleDescriptor":
+                descr_row.v.by_member("AutoCoverRangeGRU").v = "70"
                 
-        elif descr_type == "TOrderableModuleDescriptor":
-            if "NewName" in edits:
-                descr_row.v.by_member("UnlockableOrders").v = f"~/Descriptor_OrderAvailability_{edits['NewName']}"
+            elif descr_type == "TBaseDamageModuleDescriptor":
+                if "strength" in edits:
+                    descr_row.v.by_member("MaxPhysicalDamages").v = str(edits["strength"])
+                    
+            elif descr_type == "TDamageModuleDescriptor":
+                _handle_damage_module(descr_row, edits)
                 
-        elif descr_type == "TTacticalLabelModuleDescriptor":
-            _handle_tactical_label(descr_row, edits)
+            elif descr_type == "TDangerousnessModuleDescriptor":
+                if "Dangerousness" in edits:
+                    descr_row.v.by_member("Dangerousness").v = str(edits["Dangerousness"])
+                    
+            elif descr_type == "TInfantrySquadWeaponAssignmentModuleDescriptor":
+                if "WeaponAssignment" in edits:
+                    descr_row.v.by_member("InitialSoldiersToTurretIndexMap").v = f"MAP {str(edits['WeaponAssignment'])}"
+                    
+            elif descr_type == "TTransportableModuleDescriptor":
+                if "TransportedTexture" in edits:
+                    descr_row.v.by_member("TransportedTexture").v = f"'{edits['TransportedTexture']}'"
+                if "TransportedSoldier" in edits:
+                    descr_row.v.by_member("TransportedSoldier").v = f"'{edits['TransportedSoldier']}'"
+                    
+            elif descr_type == "TCadavreGeneratorModuleDescriptor":
+                descr_row.v.by_member("CadavreDescriptor").v = f"~/Descriptor_UnitCadavre_{edits['NewName']}"
+                    
+            elif descr_type == "TProductionModuleDescriptor":
+                if "Factory" in edits:
+                    descr_row.v.by_member("Factory").v = edits["Factory"]
+                if "CommandPoints" in edits:
+                    cmd_points = "$/GFX/Resources/Resource_CommandPoints"
+                    descr_row.v.by_member("ProductionRessourcesNeeded").v.by_key(cmd_points).v = str(edits["CommandPoints"])
+                    
+            elif descr_type == "TOrderConfigModuleDescriptor":
+                if "NewName" in edits:
+                    descr_row.v.by_member("ValidOrders").v = f"~/Descriptor_OrderAvailability_{edits['NewName']}"
+                    
+            elif descr_type == "TOrderableModuleDescriptor":
+                if "NewName" in edits:
+                    descr_row.v.by_member("UnlockableOrders").v = f"~/Descriptor_OrderAvailability_{edits['NewName']}"
+                    
+            elif descr_type == "TTacticalLabelModuleDescriptor":
+                _handle_tactical_label(descr_row, edits)
+                    
+            elif descr_type == "TStrategicDataModuleDescriptor":
+                if "UnitAttackValue" in edits:
+                    descr_row.v.by_member("UnitAttackValue").v = str(edits["UnitAttackValue"])
+                if "UnitDefenseValue" in edits:
+                    descr_row.v.by_member("UnitDefenseValue").v = str(edits["UnitDefenseValue"])
+                    
+            elif descr_type == "TUnitUIModuleDescriptor":
+                _handle_unit_ui(descr_row, edits)
+                    
+            elif descr_type == "TShowRoomEquivalenceModuleDescriptor":
+                descr_row.v.by_member("ShowRoomDescriptor").v = f"~/Descriptor_ShowRoomUnit_{edits['NewName']}"
+        
+        # Handle special namespace cases
+        if hasattr(descr_row, "namespace"):
+            if descr_row.namespace == "ApparenceModel":
+                if "NewName" in edits and "depictions" in edits:
+                    descr_row.v.by_member("Depiction").v = f"$/GFX/Depiction/Gfx_{edits['NewName']}"
+                    
+            elif descr_row.namespace == "WeaponManager":
+                if "NewName" in edits:
+                    descr_row.v.by_member("Default").v = f"$/GFX/Weapon/WeaponDescriptor_{edits['NewName']}"
+                    
+            elif descr_row.namespace == "GroupeCombat":
+                _handle_groupe_combat(descr_row, edits)
                 
-        elif descr_type == "TStrategicDataModuleDescriptor":
-            if "UnitAttackValue" in edits:
-                descr_row.v.by_member("UnitAttackValue").v = str(edits["UnitAttackValue"])
-            if "UnitDefenseValue" in edits:
-                descr_row.v.by_member("UnitDefenseValue").v = str(edits["UnitDefenseValue"])
-                
-        elif descr_type == "TUnitUIModuleDescriptor":
-            _handle_unit_ui(descr_row, edits)
-                
-        elif descr_type == "TShowRoomEquivalenceModuleDescriptor":
-            descr_row.v.by_member("ShowRoomDescriptor").v = f"~/Descriptor_ShowRoomUnit_{edits['NewName']}"
+            elif descr_row.namespace == "GenericMovement":
+                if "max_speed" in edits:
+                    descr_row.v.by_member("Default").v.by_member("MaxSpeedInKmph").v = str(edits["max_speed"])
+    
+    # Remove all marked modules at the end
+    for module in modules_to_remove:
+        modules_list.v.remove(module)
 
 
 def _handle_damage_module(descr_row: Any, edits: Dict[str, Any]) -> None:
@@ -221,13 +256,28 @@ def _handle_tactical_label(descr_row: Any, edits: Dict[str, Any]) -> None:
         unid_textures_member.v.by_member("Values").v = str(edits["UnidentifiedTextures"])
     if "strength" in edits:
         descr_row.v.by_member("NbSoldiers").v = str(edits["strength"])
-
+        
+def _handle_tags_module(descr_row: Any, edits: Dict[str, Any]) -> None:
+    """Handle tags module modifications."""
+    tagset = descr_row.v.by_member("TagSet")
+    if "overwrite_all" in edits["TagSet"]:
+        new_tags = []
+        for tag in edits["TagSet"]["overwrite_all"]:
+            new_tags.append(tag)
+        tagset.v = ndf.convert(str(new_tags))
+    elif "add_tags" in edits["TagSet"]:
+        for tag in edits["TagSet"]["add_tags"]:
+            formatted_tag = '"' + tag + '"'
+            tagset.v.add(formatted_tag)
+            logger.info(f"Added tag {formatted_tag} to {descr_row.namespace}")
 
 def _handle_unit_ui(descr_row: Any, edits: Dict[str, Any]) -> None:
     """Handle unit UI module modifications."""
     if "SpecialitiesList" in edits:
         edited_list = ndf.convert(str(edits["SpecialitiesList"]))
         descr_row.v.by_member("SpecialtiesList").v = edited_list
+    if "InfoPanelConfig" in edits:
+        descr_row.v.by_member("InfoPanelConfigurationToken").v = "'" + edits["InfoPanelConfig"] + "'"
     if "GameName" in edits and "token" in edits["GameName"]:
         descr_row.v.by_member("NameToken").v = f'\"{edits["GameName"]["token"]}\"'
     if "UpgradeFromUnit" in edits:

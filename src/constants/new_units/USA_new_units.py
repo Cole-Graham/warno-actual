@@ -276,10 +276,23 @@ USA_NEW_UNITS = {
         "ShowroomGUID": "822614ec-98c7-4078-a82d-8f1bb675920a",
         "CadavreGUID": "d00475c4-04a1-45b5-8eb5-56c7338b74cd",
         "NewName": "8th_M1A1_Abrams_US",
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "Char_Standard",
+                "GroundUnits",
+                "SM_charLourd",
+                "UNITE_8th_M1A1_Abrams_US",
+                "Unite",
+            ],
+        },
         "GameName": {
             "display": "#8THINF M1A1 ABRAMS",
             "token": "JNEJSZOAGF",
         },
+
         "CommandPoints": 240,
         "Divisions": {
             "default": {
