@@ -87,7 +87,7 @@ POL_NEW_UNITS = {
         "selector_tactic": "2, 4",
     },
 
-    ("T55A_CMD_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+    ("T55A_CMD_POL", 0): {  # T-55AD CV
         "GUID": "f85c67f5-5738-43ff-bae2-a92bfa88d83d",
         "GroupeCombatGUID": "6773a9af-c9e6-4d3f-a41c-953be75f966e",
         "ShowroomGUID": "2cf23742-85b4-4b75-a280-133aff0a63b6",
@@ -142,7 +142,7 @@ POL_NEW_UNITS = {
         "Nation": "POL",
     },
 
-    ("T72M_CMD_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+    ("T72M_CMD_POL", 0): {  # T-72MD CV
         "GUID": "dd59b59a-5698-4a72-b16c-71ec2bdc9064",
         "GroupeCombatGUID": "56fecca1-ce12-4cfb-9675-2ef6bb48e033",
         "ShowroomGUID": "65e63a59-27d9-4978-b3ba-93e44f91379c",
@@ -191,7 +191,7 @@ POL_NEW_UNITS = {
         "UpgradeFromUnit": "T55A_CMD2_POL",
     },
 
-    ("T72M1_CMD_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+    ("T72M1_CMD_POL", 0): {  # T-72M1D CV
         "GUID": "c292163d-73b2-47dd-9f39-ad607bd75a14",
         "GroupeCombatGUID": "f71b3c68-eb90-46ec-8ac3-5c75273b0212",
         "ShowroomGUID": "217706ae-a44b-4d9a-9b89-a516bf04207b",
@@ -241,7 +241,7 @@ POL_NEW_UNITS = {
         "UpgradeFromUnit": "T72M_CMD2_POL",
     },
     
-    ("OT_64_SKOT_2_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+    ("OT_64_SKOT_2_POL", 0): {  # SKOT R-2AM LDR
         "GUID": "35b514f1-55d8-4c63-86c0-ff0604547fb4",
         "GroupeCombatGUID": "fb1db3c4-ed80-4a3a-b8f8-1eab529da04e",
         "ShowroomGUID": "6211126c-6458-4edc-8e7e-a7d17338c60a",
@@ -293,6 +293,9 @@ POL_NEW_UNITS = {
             "POL_20_Pancerna_multi": {
                 "Transports": None,
             },
+            "POL_4_Zmechanizowana_multi": {
+                "Transports": None,
+            },
         },
         "availability": 2,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
@@ -307,7 +310,7 @@ POL_NEW_UNITS = {
         "Nation": "POL",
     },
 
-    ("Atteam_Fagot_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+    ("Atteam_Fagot_POL", 0): {  # PPK Faktoria
         "GUID": "a4f73e0b-8b70-4c8d-bcee-440a4c79fb6e",
         "GroupeCombatGUID": "37d0eb0b-25b4-4351-bd94-db17bfccfce5",
         "ShowroomGUID": "24fd6fc3-aaff-4f8b-b46e-63a5188edcab",
@@ -371,68 +374,51 @@ POL_NEW_UNITS = {
         "alternatives_count": 2,
     },
 
-    ("Atteam_Fagot_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
-        "GUID": "a4f73e0b-8b70-4c8d-bcee-440a4c79fb6e",
-        "GroupeCombatGUID": "37d0eb0b-25b4-4351-bd94-db17bfccfce5",
-        "ShowroomGUID": "24fd6fc3-aaff-4f8b-b46e-63a5188edcab",
-        "CadavreGUID": "2a3d92a7-1ab7-4bc1-94be-916ac8b06ab4",
-        "NewName": "ATteam_FagotM_POL",
-        "GameName": {
-            "display": "PPK FAKTORIA",
-            "token": "FAKTORIAPL",
-        },
+    ("OT_62_TOPAS_R3M_CMD_POL", 0): {  # TOPAS R-3M
+        "GUID": "a40a0809-44e9-4f2d-a85b-c2927c736712",
+        "GroupeCombatGUID": "5b78e35d-682b-47a4-b0e0-5d5059825b57",
+        "ShowroomGUID": "871cf1cb-8457-4f8e-a3db-115ad7a2f8e9",
+        "CadavreGUID": "aa84aa16-69c0-4145-9b88-fd27dbfc94a6",
+        "NewName": "OT_62_TOPAS_R3M_CMD2_POL",
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
-                "Crew",
+                "Commandant",
                 "GroundUnits",
-                "Inf_quartier_ok",
-                "Infanterie",
-                "Infanterie_AT",
-                "Infanterie_Spec_Defense",
-                "UNITE_ATteam_FagotM_DDR",
-                "Unite"
+                "InfmapCommander",
+                "UNITE_OT_62_TOPAS_R3M_CMD2_POL",
+                "Unite",
+                "Vehicule",
+                "Vehicule_CMD",
             ],
         },
-        "WeaponDescriptor": {
-            "Salves": {
-                "ATGM_9K111M_Faktoriya": 6,
-            },
-            "equipmentchanges": {
-                "replace": [("ATGM_9K111_Fagot", "ATGM_9K111M_Faktoriya")]
-            },
-        },
-        "CommandPoints": 40,
+        "Factory": "EDefaultFactories/Logistic",
+        "CommandPoints": 150,
         "SpecialitiesList": [
-            'AT',
-            'infantry_equip_heavy',
-        ],
-        "UpgradeFromUnit": "Atteam_Fagot_POL",
-        "ButtonTexture": "Atteam_Fagot_POL",
+                'hq_veh',
+                'leader_sov',
+                '_amphibie',
+            ],
         "Divisions": {
             "default": {
-                "cards": 1,
+                "cards": 2,
             },
-            "POL_20_Pancerna_multi": {
-                "Transports": ['UAZ_469_trans_POL', 'MTLB_trans_POL', 'BMP_1_SP2_POL'],
+            "POL_Korpus_Desantowy_multi": {
+                "Transports": None,
             },
         },
-        "availability": 7,
-        "XPMultiplier": [7/7, 5/7, 4/7, 0.0],
-        "max_speed": 20,
-        "Orders": ['Stop', 'Move', 'FollowFormation', 'Attack', 'MoveAndAttack', 'Spread',
-                   'Shoot', 'AskForSupply', 'EnterDistrict', 'LoadIntoTransport', 'Load',
-                   'AIDefend', 'AIAttack', 'AIStop'],
-        "is_infantry": True,  # False for Javelin LML (unique exception), towed units.
+        "availability": 3,
+        "XPMultiplier": [0.0, 3/3, 0.0, 0.0],
+        "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Spread', 'Reverse',
+                   'AskForSupply', 'AIDefend', 'AIAttack', 'AIStop'],
+        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,
         "is_ground_vehicle": True,
         "is_aerial": False,
-        "is_unarmed": False,
+        "is_unarmed": True,
         "Faction": "PACT",
         "Nation": "POL",
-        "depiction_type": "Towed",
-        "alternatives_count": 2,
     },
 }
 # fmt: on

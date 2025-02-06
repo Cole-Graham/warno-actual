@@ -265,7 +265,7 @@ def create_cadavre_depictions(source_path: Any) -> None:
             if isinstance(module.v, str) and "~/Descriptor_Unit_" in module.v:
                 # Mark modules for removal if they match the remove list
                 if ("depictions" in edits and "cadavre" in edits["depictions"] and 
-                    "remove_modules" in edits["depictions"]["cadavre"]):
+                        "remove_modules" in edits["depictions"]["cadavre"]):
                     module_name = module.v.split("/")[-1]
                     if module_name in edits["depictions"]["cadavre"]["remove_modules"]:
                         modules_to_remove.append(module)
@@ -297,7 +297,7 @@ def create_cadavre_depictions(source_path: Any) -> None:
                     if "~/Descriptor_Unit_" in module.v:
                         # Check if module should be removed
                         if ("depictions" in edits and "cadavre" in edits["depictions"] and 
-                            "remove_modules" in edits["depictions"]["cadavre"]):
+                                "remove_modules" in edits["depictions"]["cadavre"]):
                             module_name = module.v.split("/")[-1]
                             if module_name in edits["depictions"]["cadavre"]["remove_modules"]:
                                 modules_to_remove.append(module)
