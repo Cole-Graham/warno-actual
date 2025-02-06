@@ -18,7 +18,7 @@ def edit_units(source_path: Any, game_db: Dict[str, Any]) -> None:
     units_processed = 0
     units_modified = 0
     unit_edits = load_unit_edits()
-    dictionary_entries = []  # Create list to collect entries
+    dict_entries = dict()  # Create dict to collect entries
 
     _handle_supply(source_path, game_db, unit_edits)
 
@@ -55,23 +55,23 @@ def edit_units(source_path: Any, game_db: Dict[str, Any]) -> None:
                 if not isinstance(descr_row.v, ndf.model.Object):
                     continue
 
-                modify_module(unit_row, descr_row, edits, i, modules_list, dictionary_entries)
+                modify_module(unit_row, descr_row, edits, i, modules_list, dict_entries)
 
         except Exception as e:
             logger.error(f"Error processing {unit_name}: {str(e)}")
             continue
 
     # Write all dictionary entries at once
-    if dictionary_entries:
-        logger.info(f"Writing {len(dictionary_entries)} dictionary entries")
-        write_dictionary_entries(dictionary_entries, dictionary_type="units")
+    if dict_entries:
+        logger.info(f"Writing {len(dict_entries)} dictionary entries")
+        write_dictionary_entries(dict_entries, dictionary_type="units")
 
     logger.info(f"Processed {units_processed} units total")
     logger.info(f"Modified {units_modified} units")
 
 
 def modify_module(unit_row: Any, descr_row: Any, edits: dict, index: int,
-                  modules_list: list, dictionary_entries: list) -> None:
+                  modules_list: list, dict_entries: dict) -> None:
     """Apply edits to a specific module based on its type."""
     if not hasattr(descr_row.v, 'type'):
         return
@@ -142,7 +142,7 @@ def modify_module(unit_row: Any, descr_row: Any, edits: dict, index: int,
 
         # Apply module-specific handler if it exists
         if handler := module_handlers.get(descr_type):
-            handler(unit_row, descr_row, edits, index, modules_list, dictionary_entries)
+            handler(unit_row, descr_row, edits, index, modules_list, dict_entries)
 
     except Exception as e:
         logger.error(f"Error modifying module for {unit_name}: {str(e)}")
@@ -255,7 +255,7 @@ def _handle_icon(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:  # noq
 
 
 def _handle_unit_ui(unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list,
-                    dictionary_entries: list) -> None:
+                    dict_entries: dict) -> None:
     """Handle UI module modifications."""
     if "SpecialtiesList" in edits:
         specialties_list = descr_row.v.by_m("SpecialtiesList")
@@ -283,7 +283,7 @@ def _handle_unit_ui(unit_row: Any, descr_row: Any, edits: dict, index: int, modu
             token = descr_row.v.by_m("NameToken").v[1:-1]
 
         # Collect the dictionary entry
-        dictionary_entries.append((token, rename))
+        dict_entries.update({token: rename})
         logger.debug(f"Collected dictionary entry: {token} = {rename}")
 
     if "road_speed" in edits and "road_speed" in edits["road_speed"]:

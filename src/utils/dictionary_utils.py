@@ -2,7 +2,7 @@
 
 import csv
 from pathlib import Path
-from typing import Dict, List, Optional, Set, Tuple  # noqa
+# from typing import Dict, List, Optional, Set, Tuple
 
 from src import ModConfig
 from src.utils.logging_utils import setup_logger
@@ -73,33 +73,15 @@ def _initialize_dictionary_file(dict_path: Path) -> None:
         logger.debug(f"Created new dictionary file with header at {dict_path}")
 
 
-def write_dictionary_entries(entries: List[Tuple[str, str]], dictionary_type: str = "units") -> None:
-    """Write entries to dictionary file."""
+def write_dictionary_entries(entries: dict, dictionary_type: str = "units") -> None:
+    """Write entries to a CSV dictionary file."""
     logger.info(f"Writing {len(entries)} entries to {dictionary_type} dictionary")
-    
+    dict_path = get_dictionary_path(DICT_FILES[dictionary_type])
+
     if dictionary_type not in DICT_FILES:
         logger.error(f"Unknown dictionary type: {dictionary_type}")
         return
-        
-    # Convert to dict to remove duplicates, keeping last occurrence of each token
-    unique_entries = {}
-    for token, text in entries:
-        if token in unique_entries:
-            logger.debug(f"Duplicate token found: {token}")
-        unique_entries[token] = text
-    
-    # Convert back to list of tuples
-    deduplicated = [(k, v) for k, v in unique_entries.items()]
-    
-    logger.info(f"Writing {len(deduplicated)} unique entries (removed {len(entries) - len(deduplicated)} duplicates)")
-    
-    # Get dictionary path and write entries
-    dict_path = get_dictionary_path(DICT_FILES[dictionary_type])
-    write_csv_entries(deduplicated, dict_path)
 
-
-def write_csv_entries(entries: List[Tuple[str, str]], dict_path: Path) -> None:
-    """Write entries to a CSV dictionary file."""
     logger.info(f"Attempting to write to: {dict_path}")
     
     # Read existing entries into a set for faster lookup
@@ -126,7 +108,7 @@ def write_csv_entries(entries: List[Tuple[str, str]], dict_path: Path) -> None:
             logger.debug(f"Opened {dict_path} for writing")
             csvwriter = csv.writer(csvfile, delimiter=';', quotechar='"', quoting=csv.QUOTE_ALL)
             
-            for token, text in entries:
+            for token, text in list(entries.items()):
                 if (token, text) not in existing_entries:
                     try:
                         csvwriter.writerow([token, text])

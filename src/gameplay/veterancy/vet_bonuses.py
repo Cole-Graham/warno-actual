@@ -1,8 +1,8 @@
 """Functions for modifying experience levels."""
 
-from typing import List, Tuple
+# from typing import List, Tuple
 
-from src import ModConfig
+# from src import ModConfig
 from src.dics.veterancy.vet_bonuses import VETERANCY_BONUSES
 from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.logging_utils import setup_logger
@@ -10,20 +10,22 @@ from src.utils.ndf_utils import ndf
 
 logger = setup_logger(__name__)
 
+
 def write_veterancy_tokens() -> None:
     """Write experience hint texts to dictionary file."""
     
     # Gather entries to write
-    entries: List[Tuple[str, str]] = []
+    entries = dict()
     for xp_type, data in VETERANCY_BONUSES.items():
         for xp_level, xp_data in data.items():
             body_token = xp_data["body_token"]
             body = xp_data["body"]
             if body_token:
-                entries.append((body_token, body))
+                entries.update({body_token: body})
     
     # Write entries
     write_dictionary_entries(entries, dictionary_type="ingame")
+
 
 def edit_veterancy_effects(source_path) -> None:
     """Edit veterancy effects in EffetsSurUnite.ndf."""

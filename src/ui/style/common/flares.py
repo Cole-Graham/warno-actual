@@ -1,6 +1,6 @@
 """Functions for modifying UI flare labels."""
-import csv
-from typing import Any, List
+# import csv
+from typing import Any, List  # noqa
 
 from src import ndf
 from src.utils.dictionary_utils import write_dictionary_entries
@@ -8,6 +8,7 @@ from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
+
 
 def edit_uicommonflarelabelresources(source_path: Any) -> None:
     """Edit UICommonFlareLabelResources.ndf."""
@@ -26,6 +27,7 @@ def edit_uicommonflarelabelresources(source_path: Any) -> None:
     flaretext_template = source_path.by_namespace("FlareLabelText").v
     flaretext_template.params.by_param("TypefaceToken").v = '"Eurostyle"'
     logger.debug("Updated flare text typeface")
+
 
 def _update_flare_text_tokens(source_path) -> None:
     """Update flare text tokens."""
@@ -49,16 +51,18 @@ def _update_flare_text_tokens(source_path) -> None:
             row.v.by_member("TextToken").v = token_map[icon_texture_token]
             logger.debug(f"Updated text token for {icon_texture_token}")
 
+
 def _add_flare_text_entries() -> None:
     """Add new text entries to dictionary."""
-    new_entries = [
-        ("ATKFLARE", "ATTACK!"),
-        ("DEFNDFLARE", "DEFEND"),
-        ("HALPMEEE", "HELP!"),
-        ("FIREFLARE", "FIRE SUPPORT")
-    ]
+    new_entries = {
+        "ATKFLARE": "ATTACK!",
+        "DEFNDFLARE": "DEFEND",
+        "HALPMEEE": "HELP!",
+        "FIREFLARE": "FIRE SUPPORT",
+    }
     
     write_dictionary_entries(new_entries, dictionary_type="ingame")
+
 
 def _update_flare_label_template(source_path) -> None:
     """Update flare label template properties."""
@@ -78,6 +82,7 @@ def _update_flare_label_template(source_path) -> None:
     # Update background components
     _update_background_components(flare_label_template)
 
+
 def _update_element_colors(template: Any) -> None:
     """Update flare label element colors."""
     for element in template.by_member("Elements").v:
@@ -89,12 +94,13 @@ def _update_element_colors(template: Any) -> None:
             
         component_descr = element.v.by_member("ComponentDescriptor").v
         
-        if component_descr.type == "BUCKTextureDescriptor":
-            component_descr.by_member("TextureColorToken").v = '"M81_VeryDarkCharcoal"'
-        elif component_descr.type == "FlareLabelText":
-            component_descr.by_member("TextColor").v = '"M81_DarkCharcoal"'
+        if component_descr.type == "BUCKTextureDescriptor":  # noqa
+            component_descr.by_member("TextureColorToken").v = '"M81_VeryDarkCharcoal"'  # noqa
+        elif component_descr.type == "FlareLabelText":  # noqa
+            component_descr.by_member("TextColor").v = '"M81_DarkCharcoal"'  # noqa
     
     logger.debug("Updated flare label element colors")
+
 
 def _update_foreground_components(template: Any) -> None:
     """Update flare label foreground components."""
@@ -109,6 +115,7 @@ def _update_foreground_components(template: Any) -> None:
     
     logger.debug("Updated flare label foreground colors")
 
+
 def _update_background_components(template: Any) -> None:
     """Update flare label background components."""
     for component in template.by_member("BackgroundComponents").v:
@@ -122,4 +129,4 @@ def _update_background_components(template: Any) -> None:
         component.v.add('BackgroundBlockColorToken = "M81_ArtichokeVeryLight62"')
         component.v.add('BorderLineColorToken = "M81_VeryDarkCharcoal"')
     
-    logger.debug("Updated flare label background properties") 
+    logger.debug("Updated flare label background properties")

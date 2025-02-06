@@ -69,8 +69,6 @@ def add_damage_families_to_list(source_path) -> None:
                 # f"{kpvt_family}\n")
                 f"{nplm_bomb_family}\n"
                 f"{pgb_bomb_family}")
-                
-
 
 
 def add_damage_families_to_impl(source_path) -> None:
@@ -89,7 +87,6 @@ def add_damage_families_to_impl(source_path) -> None:
             '"DamageFamily_pgb_bomb"',
         ]
     }
-    
 
     # Add resistance families
     resistance_values = source_path.by_n("Generated_ResistanceFamily_Enum").v.by_m("Values").v
@@ -108,7 +105,7 @@ def apply_damage_families(source_path: Any, game_db: Dict[str, Any]) -> None:
     """Apply damage family modifications to weapons in Ammunition/AmmunitionMissiles.ndf"""
     ammo_db = game_db["ammunition"]
     
-    dictionary_entries = []
+    dict_entries = dict()
     for weapon_descr in source_path:
         if weapon_descr.n in ammo_db["full_ball_weapons"]:
             arme_obj = weapon_descr.v.by_m("Arme")
@@ -132,15 +129,14 @@ def apply_damage_families(source_path: Any, game_db: Dict[str, Any]) -> None:
                 if type_cat == cat_hash:
                     weapon_descr.v.by_m("WeaponDescriptionToken").v = f"'{desc_hash}'"
                     logger.info(f"Changed {weapon_descr.n} description to {weapon_type} ({desc_hash})")
-                    new_dic_entry = (desc_hash, dic_string)
-                    if new_dic_entry not in dictionary_entries:
-                        dictionary_entries.append(new_dic_entry)
+                    if desc_hash not in dict_entries:
+                        dict_entries.update({desc_hash: dic_string})
                     break
     
     # Write dictionary entries
-    if dictionary_entries:
-        logger.info(f"Writing {len(dictionary_entries)} dictionary entries")
-        write_dictionary_entries(dictionary_entries, dictionary_type="units")
+    if dict_entries:
+        logger.info(f"Writing {len(dict_entries)} dictionary entries")
+        write_dictionary_entries(dict_entries, dictionary_type="units")
 
 
 def add_damage_resistance_values(source_path) -> None:
@@ -160,7 +156,6 @@ def add_damage_resistance_values(source_path) -> None:
         "nplm_bomb": "TDamageTypeFamilyDefinition(Family=DamageFamily_nplm_bomb MaxIndex=1)",   
         "pgb_bomb": "TDamageTypeFamilyDefinition(Family=DamageFamily_pgb_bomb MaxIndex=1)",
     }
-    
 
     for family_name, family_def in families.items():
         damage_family_list.add(family_def)
@@ -176,8 +171,7 @@ def add_damage_resistance_values(source_path) -> None:
         str(NPLM_BOMB_DAMAGE),
         str(PGB_BOMB_DAMAGE),
     )
-    logger.info("Added damage values") 
-
+    logger.info("Added damage values")
 
 
 def apply_damage_array_edits(damage_array, row: int, column_edits: dict) -> None:
@@ -257,4 +251,4 @@ def edit_weapon_constants(source_path) -> None:
     # Add full ball damage to blindages to ignore
     blindages_to_ignore = weapon_constantes_obj.by_m("BlindagesToIgnoreForDamageFamilies").v
     blindages_to_ignore.add("(DamageFamily_full_balle, [ResistanceFamily_blindage])")
-    logger.info("Added full_balle to blindages to ignore") 
+    logger.info("Added full_balle to blindages to ignore")

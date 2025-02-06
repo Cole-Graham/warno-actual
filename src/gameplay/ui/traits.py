@@ -13,24 +13,24 @@ logger = setup_logger(__name__)
 def write_trait_texts() -> None:
     """Write trait texts to UNITS.csv dictionary file."""
     config = ModConfig.get_instance().config_data
-    entries: List[Tuple[str, str]] = []
+    entries = dict()
     
     # Add trait entries
     for trait, data in NEW_TRAITS.items():
         title_token, title = data["title"]
         if title_token and title:
-            entries.append((title_token, title))
+            entries.update({title_token: title})
             
         description_token, description = data["description"]
         if description_token and description:
-            entries.append((description_token, description))
+            entries.update({description_token: description})
             
     # Add specialty entries
     for trait, data in TRAIT_EDITS.items():
         extended_token = data["extended"]["token"]
         extended_text = data["extended"]["text"]
         if extended_token:
-            entries.append((extended_token, extended_text))
+            entries.update({extended_token: extended_text})
     
     write_dictionary_entries(entries, dictionary_type="units")
 

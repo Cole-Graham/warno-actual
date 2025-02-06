@@ -25,11 +25,11 @@ def create_new_units(source_path: Any, game_db: Dict[str, Any]) -> None:  # noqa
 
 def write_new_unit_dictionary_entries(unit_edits: Dict[str, Any]) -> None:
     """Write dictionary entries for new units."""
-    entries = []
+    entries = dict()
     
     for _, edits in unit_edits.items():
         if "GameName" in edits and "token" in edits["GameName"]:
-            entries.append((edits["GameName"]["token"], edits["GameName"]["display"]))
+            entries.update({edits["GameName"]["token"]: edits["GameName"]["display"]})
     
     if entries:
         write_dictionary_entries(entries, dictionary_type="units")

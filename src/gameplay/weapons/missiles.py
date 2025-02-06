@@ -1,5 +1,5 @@
 """Functions for editing missile weapons."""
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Tuple  # noqa
 from uuid import uuid4
 
 from src import ndf
@@ -14,10 +14,10 @@ from src.gameplay.weapons.vanilla_modifications import (
 from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.logging_utils import setup_logger
 
-from ..dics import write_missile_dictionary_entries
 from .utils import get_supply_costs
 
 logger = setup_logger(__name__)
+
 
 def edit_missiles(source_path: Any, game_db: Dict[str, Any]) -> None:
     """Edit AmmunitionMissiles.ndf file."""
@@ -34,8 +34,8 @@ def edit_missiles(source_path: Any, game_db: Dict[str, Any]) -> None:
             raise
         
         # Track dictionary entries
-        ingame_names = []
-        calibers = []
+        ingame_names = dict()
+        calibers = dict()
         
         # Process each missile
         for (weapon_name, category, donor, is_new), data in missiles.items():
@@ -84,7 +84,7 @@ def edit_missiles(source_path: Any, game_db: Dict[str, Any]) -> None:
                 
                 # Track dictionary entries
                 try:
-                    _track_dictionary_entries(weapon_name, data, ingame_names, calibers)
+                    _track_dictionary_entries(ammo_data, ingame_names, calibers)
                 except Exception as e:
                     logger.error(f"Failed tracking dictionary entries for {weapon_name}: {str(e)}")
                     continue
@@ -96,9 +96,10 @@ def edit_missiles(source_path: Any, game_db: Dict[str, Any]) -> None:
                 continue
         
         # Write dictionary entries
-        if ingame_names or calibers:
+        ingame_names |= calibers
+        if ingame_names:
             try:
-                write_missile_dictionary_entries(ingame_names, calibers)
+                write_dictionary_entries(ingame_names)
             except Exception as e:
                 logger.error(f"Failed writing dictionary entries: {str(e)}")
                 raise
@@ -106,6 +107,7 @@ def edit_missiles(source_path: Any, game_db: Dict[str, Any]) -> None:
     except Exception as e:
         logger.error(f"Fatal error in edit_missiles: {str(e)}")
         raise
+
 
 def _create_new_descriptor(source_path, weapon_name, donor):
     """Create a new descriptor for a missile."""
@@ -131,6 +133,7 @@ def _create_new_descriptor(source_path, weapon_name, donor):
     logger.debug(f"Created new base descriptor for {weapon_name} from {donor}")
     return base_descr
 
+
 def _get_existing_descriptor(source_path, weapon_name):
     """Get an existing descriptor for a missile."""
     # Find the missile data from the tuples
@@ -149,25 +152,19 @@ def _get_existing_descriptor(source_path, weapon_name):
         # Get the lowest salvo length
         salvo_lengths = sorted(missile_data["WeaponDescriptor"]["SalvoLengths"])
         lowest_salvo = salvo_lengths[0]
-        
-        try:
-            # Try with salvo length suffix first
-            existing = source_path.by_n(f"Ammo_{weapon_name}_salvolength{lowest_salvo}")
-            if existing:
-                return existing
-        except:
-            pass
-    
-    # Fall back to base name if no salvo variants found
-    try:
-        existing = source_path.by_n(f"Ammo_{weapon_name}")
+
+        existing = source_path.by_n(f"Ammo_{weapon_name}_salvolength{lowest_salvo}", strict=False)
         if existing:
             return existing
-    except:
+    
+    # Fall back to base name if no salvo variants found
+    existing = source_path.by_n(f"Ammo_{weapon_name}", strict=False)
+    if existing:
+        return existing
+    else:
         logger.error(f"Could not find missile {weapon_name}")
         return None
-    
-    return None
+
 
 def _handle_salvo_variants(source_path: Any, base_descr: Any, weapon_name: str, 
                          data: Dict, is_new: bool) -> None:
@@ -232,7 +229,8 @@ def _handle_salvo_variants(source_path: Any, base_descr: Any, weapon_name: str,
             logger.error(f"Error handling salvo variant {namespace}: {str(e)}")
             continue
 
-def _apply_missile_edits(descr: Any, data: Dict, ammo_data: Dict, is_new: bool) -> None:
+
+def _apply_missile_edits(descr: Any, data: Dict, ammo_data: Dict, is_new: bool) -> None:  # noqa
     """Apply edits to missile descriptor."""
     membr = descr.v.by_m
     
@@ -304,21 +302,16 @@ def _apply_hit_roll_edits(descr: Any, hit_roll_data: Dict) -> None:
             roll_membr_list[1] = str(hit_chance)
             roll_membrs[2].v = tuple(roll_membr_list)
 
-def _track_dictionary_entries(weapon_name, data, ingame_names, calibers):
+
+def _track_dictionary_entries(ammo_data, ingame_names, calibers):
     """Track dictionary entries for a missile."""
-    if "Ammunition" in data:
-        ammo_data = data["Ammunition"]
-        if "display" in ammo_data and "token" in ammo_data:
-            ingame_names.append((
-                weapon_name,
-                ammo_data["token"],
-                ammo_data["display"]
-            ))
-        
-        if "parent_membr" in ammo_data and "Caliber" in ammo_data["parent_membr"]:
-            caliber_data = ammo_data["parent_membr"]["Caliber"]
-            if caliber_data[0] != "existing":
-                calibers.append((weapon_name, caliber_data[1], caliber_data[0]))
+    if "display" in ammo_data and "token" in ammo_data:
+        ingame_names.update({ammo_data["token"]: ammo_data["display"]})
+    if "parent_membr" in ammo_data and "Caliber" in ammo_data["parent_membr"]:
+        caliber_data = ammo_data["parent_membr"]["Caliber"]
+        if caliber_data[0] != "existing":
+            calibers.update({caliber_data[1]: caliber_data[0]})
+
 
 def edit_missile_speed(source: Any, game_db: Dict[str, Any]) -> None:
     """Adjust missile speed and acceleration."""
@@ -332,7 +325,7 @@ def edit_missile_speed(source: Any, game_db: Dict[str, Any]) -> None:
         stripped_namespace = missile_decr.namespace.replace("Descriptor_Missile_", "")
         
         for (missile, category, donor, is_new), data in missiles.items():
-            if data is None or not "MissileDescriptor" in data:
+            if data is None or "MissileDescriptor" not in data:
                 continue
                 
             # Check for renames
@@ -354,22 +347,20 @@ def edit_missile_speed(source: Any, game_db: Dict[str, Any]) -> None:
                 uncontrollable_cfg = module.v.by_m("UncontrollableConfig")
                 if "MaxSpeedGRU" in data["MissileDescriptor"]:
                     max_speed = data["MissileDescriptor"]["MaxSpeedGRU"]
-                    default_cfg.v.by_m("MaxSpeedGRU").v = str(max_speed)
+                    default_cfg.v.by_m("MaxSpeedGRU").v = str(max_speed)  # noqa
                     logger.debug(f"Changed {missile_decr.namespace} max speed to {max_speed}")
                     
-                    uncontrollable_cfg.v.by_m("MaxSpeedGRU").v = str(max_speed)
+                    uncontrollable_cfg.v.by_m("MaxSpeedGRU").v = str(max_speed)  # noqa
                     logger.debug(f"Changed {missile_decr.namespace} uncontrollable speed to {max_speed}")
                     
                 if "MaxAccelerationGRU" in data["MissileDescriptor"]:
                     max_accel = data["MissileDescriptor"]["MaxAccelerationGRU"]
-                    default_cfg.v.by_m("MaxAccelerationGRU").v = str(max_accel)
+                    default_cfg.v.by_m("MaxAccelerationGRU").v = str(max_accel)  # noqa
                     logger.debug(f"Changed {missile_decr.namespace} max acceleration to {max_accel}")
                     
                 if "AutoGyr" in data["MissileDescriptor"]:
                     auto_gyr = data["MissileDescriptor"]["AutoGyr"]
-                    default_cfg.v.by_m("AutoGyr").v = str(auto_gyr)
+                    default_cfg.v.by_m("AutoGyr").v = str(auto_gyr)  # noqa
                     logger.debug(f"Changed {missile_decr.namespace} auto gyr to {auto_gyr} (90 degrees)")
                 
             break
-            
-

@@ -14,7 +14,7 @@ logger = setup_logger(__name__)
 def write_info_panel_hints() -> None:
     """Write info panel hint texts to dictionary file."""
     config = ModConfig.get_instance().config_data
-    entries: List[Tuple[str, str]] = []
+    entries = dict()
     
     for root_obj, data in UNIT_INFO_PANEL_DATA.items():
         for attr, attr_data in data.items():
@@ -25,11 +25,11 @@ def write_info_panel_hints() -> None:
             
             # Add body hint
             if "hint" in attr_data:
-                entries.append((f"{base_token}B", attr_data["hint"]))
+                entries.update({f"{base_token}B": attr_data["hint"]})
                 
             # Add extended hint
             if "extended" in attr_data:
-                entries.append((f"{base_token}E", attr_data["extended"]))
+                entries.update({f"{base_token}E": attr_data["extended"]})
     
     write_dictionary_entries(entries, dictionary_type="ingame")
 
