@@ -522,8 +522,7 @@ pol_unit_edits = {
             "add_specs": ["'infantry_equip_heavy'"],
         },
         "GameName": {
-            "display": "SPADO. PPK FAKTORIA",
-            "token": "FAKTORIAPL",
+            "display": "DESANT. PPK FAKTORIA",  # SPADO not DESANT
         },
     },
 
@@ -662,10 +661,9 @@ pol_unit_edits = {
         "orders": {
             "add_orders": ["ShootOnPositionSmoke", "ShootOnPositionWithoutCorrectionSmoke"],
         },
-        "GameName": {
-            "display": "SPADO. PPK FAKTORIA",
-            "token": "FAKTORIAPL",
-        },
+        # "GameName": {
+        #     "display": "SPADO. 2B9 WASILOK",
+        # },
         "XPMultiplier": [0.0, 4/4, 3/4, 2/4],
         "WeaponDescriptor": {
             "turrets": {

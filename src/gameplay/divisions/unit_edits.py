@@ -6,6 +6,7 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger('divisions_unit_edits')
 
+
 def strip_division_name(division_name: str) -> Optional[str]:
     """Extract core division name from full descriptor name."""
     prefix = 'Descriptor_Deck_Division_'
@@ -14,6 +15,7 @@ def strip_division_name(division_name: str) -> Optional[str]:
     if division_name.startswith(prefix) and division_name.endswith(suffix):
         return division_name[len(prefix):-len(suffix)]
     return None
+
 
 def _handle_division_changes(div_descr: Any, unit: str, div_name: str, edits: Dict) -> None:
     """Handle adding/removing units from a division."""
@@ -33,6 +35,7 @@ def _handle_division_changes(div_descr: Any, unit: str, div_name: str, edits: Di
         logger.debug(f"Adding {cards} cards of {unit} to {div_name}")
         return
 
+
 def _update_card_count(pack_list_map: Any, unit: str, div_name: str, edits: Dict) -> None:
     """Update card count for a unit in a division."""
     for map_row in pack_list_map:
@@ -40,7 +43,7 @@ def _update_card_count(pack_list_map: Any, unit: str, div_name: str, edits: Dict
         if unit_key != f"~/Descriptor_Deck_Pack_{unit}":
             continue
             
-        if not "Divisions" in edits:
+        if "Divisions" not in edits:
             break
             
         # Get card count from division-specific or default settings
@@ -51,6 +54,7 @@ def _update_card_count(pack_list_map: Any, unit: str, div_name: str, edits: Dict
             logger.debug(f"Setting {unit} cards to {cards} in {div_name}")
             map_row.v = str(cards)
             break
+
 
 def edit_division_units(source: Any) -> None:
     """GameData/Generated/Gameplay/Decks/Divisions.ndf
@@ -68,7 +72,8 @@ def edit_division_units(source: Any) -> None:
             if "Divisions" in edits:
                 _handle_division_changes(div_descr, unit, div_name, edits)
                 _update_card_count(div_descr.v.by_member("PackList").v, unit, div_name, edits) 
-                
+
+
 def supply_divisions(source: Any) -> None:
     """Apply supply unit edits to DivisionRules.ndf"""
     logger.info("Applying supply unit edits to divisions")

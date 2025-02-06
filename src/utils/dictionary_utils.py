@@ -2,7 +2,7 @@
 
 import csv
 from pathlib import Path
-from typing import Dict, List, Optional, Set, Tuple
+from typing import Dict, List, Optional, Set, Tuple  # noqa
 
 from src import ModConfig
 from src.utils.logging_utils import setup_logger
@@ -21,6 +21,7 @@ DICT_FILES = {
 # Track which files have been initialized this session
 _initialized_files = set()
 
+
 def initialize_dictionary_files() -> None:
     """Initialize all dictionary files at start of patcher run."""
     logger.info("Initializing all dictionary files")
@@ -30,6 +31,7 @@ def initialize_dictionary_files() -> None:
         dict_path = get_dictionary_path(DICT_FILES[dict_type])
         _initialize_dictionary_file(dict_path)
         _initialized_files.add(str(dict_path))
+
 
 def get_dictionary_path(filename: str = "INTERFACE_INGAME.csv") -> Path:
     """Get the path to a dictionary file based on config.
@@ -52,7 +54,8 @@ def get_dictionary_path(filename: str = "INTERFACE_INGAME.csv") -> Path:
         
     return warno_mods / mod_name / "GameData/Localisation" / mod_name / filename
 
-def _initialize_dictionary_file(dict_path: str) -> None:
+
+def _initialize_dictionary_file(dict_path: Path) -> None:
     """Initialize dictionary file with header."""
     # Skip if already initialized this session
     if str(dict_path) in _initialized_files:
@@ -68,6 +71,7 @@ def _initialize_dictionary_file(dict_path: str) -> None:
         csvwriter = csv.writer(csvfile, delimiter=';', quotechar='"', quoting=csv.QUOTE_ALL)
         csvwriter.writerow(["TOKEN", "REFTEXT"])
         logger.debug(f"Created new dictionary file with header at {dict_path}")
+
 
 def write_dictionary_entries(entries: List[Tuple[str, str]], dictionary_type: str = "units") -> None:
     """Write entries to dictionary file."""
@@ -93,7 +97,8 @@ def write_dictionary_entries(entries: List[Tuple[str, str]], dictionary_type: st
     dict_path = get_dictionary_path(DICT_FILES[dictionary_type])
     write_csv_entries(deduplicated, dict_path)
 
-def write_csv_entries(entries: List[Tuple[str, str]], dict_path: str) -> None:
+
+def write_csv_entries(entries: List[Tuple[str, str]], dict_path: Path) -> None:
     """Write entries to a CSV dictionary file."""
     logger.info(f"Attempting to write to: {dict_path}")
     
