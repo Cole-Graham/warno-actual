@@ -7,48 +7,7 @@ WeaponKey = Tuple[str, str, Optional[str], bool]  # (weapon, category, donor, is
 
 # fmt: off
 weapons: Dict[WeaponKey, WeaponData] = {
-    ("RocketInf_WOMBAT_RCL_120mm_TOWED", "recoilless", None, False): { # 707
-        "Ammunition": {
-            "Arme": {
-                "Index": 17,
-            },
-            "hit_roll": {
-                "Idling": 40,
-            },
-            "parent_membr": {
-                "PorteeMaximaleGRU": 1750,
-                "DisplaySalveAccuracy": False,
-            },
-        },
-    },
-    
-    ("RocketInf_WOMBAT_RCL_120mm_HE_TOWED", "recoilless", None, False): { # 706
-        "Ammunition": {
-            "hit_roll": {
-                "Idling": 40,
-            },
-            "parent_membr": {
-                "PorteeMaximaleGRU": 1750,
-                "PhysicalDamages": 1.5,
-                "DisplaySalveAccuracy": False,
-            },
-        },
-    },
-    
-    ("RocketInf_WOMBAT_RCL_120mm_HE", "recoilless", None, False): { # 705
-        "Ammunition": {
-            "hit_roll": {
-                "Idling": 40,
-            },
-            "parent_membr": {
-                "PorteeMaximaleGRU": 1750,
-                "PhysicalDamages": 1.5,
-                "DisplaySalveAccuracy": False,
-            },
-        },
-    },
-    
-    ("RocketInf_WOMBAT_RCL_120mm", "recoilless", None, False): { # 704
+    ("RocketInf_WOMBAT_RCL_120mm_TOWED", "recoilless", None, False): {  # 707
         "Ammunition": {
             "Arme": {
                 "Index": 17,
@@ -63,7 +22,48 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketInf_RPO_A_93mm", "napalm", None, False): { # 702
+    ("RocketInf_WOMBAT_RCL_120mm_HE_TOWED", "recoilless", None, False): {  # 706
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 40,
+            },
+            "parent_membr": {
+                "PorteeMaximaleGRU": 1750,
+                "PhysicalDamages": 1.5,
+                "DisplaySalveAccuracy": False,
+            },
+        },
+    },
+    
+    ("RocketInf_WOMBAT_RCL_120mm_HE", "recoilless", None, False): {  # 705
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 40,
+            },
+            "parent_membr": {
+                "PorteeMaximaleGRU": 1750,
+                "PhysicalDamages": 1.5,
+                "DisplaySalveAccuracy": False,
+            },
+        },
+    },
+    
+    ("RocketInf_WOMBAT_RCL_120mm", "recoilless", None, False): {  # 704
+        "Ammunition": {
+            "Arme": {
+                "Index": 17,
+            },
+            "hit_roll": {
+                "Idling": 40,
+            },
+            "parent_membr": {
+                "PorteeMaximaleGRU": 1750,
+                "DisplaySalveAccuracy": False,
+            },
+        },
+    },
+
+    ("RocketInf_RPO_A_93mm", "napalm", None, False): {  # 702
         "Ammunition": {
             "Arme": {
                 "Family": "DamageFamily_thermobarique",
@@ -85,7 +85,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketInf_RPG7VR_64mm", "medium_at", None, False): { # 698
+    ("RocketInf_RPG7VR_64mm", "medium_at", None, False): {  # 698
         "Ammunition": {
             "Arme": {
                 "Index": 22,
@@ -100,7 +100,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketInf_RPG7VL", "medium_at", None, False): { # 697
+    ("RocketInf_RPG7VL", "medium_at", None, False): {  # 697
         "Ammunition": {
             "Arme": {
                 "Index": 18,
@@ -115,7 +115,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("RocketInf_RPG76_Komar", "light_at", None, False): { # 697
+    ("RocketInf_RPG76_Komar", "light_at", None, False): {  # 697
         "Ammunition": {
             "parent_membr": {
                 "PorteeMaximaleGRU": 450,
@@ -125,7 +125,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketInf_RPG7", "medium_at", None, False): { # 694 (RPG-7VM)
+    ("RocketInf_RPG7", "medium_at", None, False): {  # 694 (RPG-7VM)
         "Ammunition": {
             "Arme": {
                 "Index": 15,
@@ -140,7 +140,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketInf_RPG29_105mm", "heavy_at", None, False): { # 690
+    ("RocketInf_RPG29_105mm", "heavy_at", None, False): {  # 690
         "Ammunition": {
             "Arme": {
                 "Index": 22,
@@ -155,7 +155,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketInf_RPG27_105mm", "medium_at", None, False): { # 689
+    ("RocketInf_RPG27_105mm", "medium_at", None, False): {  # 689
         "Ammunition": {
             "Arme": {
                 "Index": 22,
@@ -170,7 +170,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketInf_RPG26_72_5mm", "light_at", None, False): { # 688
+    ("RocketInf_RPG26_72_5mm", "light_at", None, False): {  # 688
         "Ammunition": {
             "Arme": {
                 "Index": 18,
@@ -185,7 +185,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketInf_RPG22_72_5mm", "light_at", None, False): { # 687
+    ("RocketInf_RPG22_72_5mm", "light_at", None, False): {  # 687
         "Ammunition": {
             "Arme": {
                 "Index": 17,
@@ -201,7 +201,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketInf_RPG18_64mm", "light_at", None, False): { # 685
+    ("RocketInf_RPG18_64mm", "light_at", None, False): {  # 685
         "Ammunition": {
             "Arme": {
                 "Index": 15,
@@ -217,7 +217,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("RocketInf_RPG16", "light_at", None, False): { # 684
+    ("RocketInf_RPG16", "light_at", None, False): {  # 684
         "Ammunition": {
             "parent_membr": {
                 "DisplaySalveAccuracy": False,
@@ -226,7 +226,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketInf_M72A1_LAW_66mm", "light_at", None, False): { # 681
+    ("RocketInf_M72A1_LAW_66mm", "light_at", None, False): {  # 681
         "Ammunition": {
             "Arme": {
                 "Index": 12,
@@ -242,7 +242,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketInf_M72A3_LAW_66mm", "light_at", None, False): { # 680
+    ("RocketInf_M72A3_LAW_66mm", "light_at", None, False): {  # 680
         "Ammunition": {
             "Arme": {
                 "Index": 14,
@@ -258,7 +258,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketInf_M67_RCL_90mm_HE", "recoilless", None, False): { # 679
+    ("RocketInf_M67_RCL_90mm_HE", "recoilless", None, False): {  # 679
         "Ammunition": {
             "hit_roll": {
                 "Idling": 40,
@@ -272,7 +272,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketInf_M67_RCL_90mm", "recoilless", None, False): { # 678
+    ("RocketInf_M67_RCL_90mm", "recoilless", None, False): {  # 678
         "Ammunition": {
             "Arme": {
                 "Index": 14,
@@ -289,7 +289,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketInf_M40A1_RCL_106mm_TOWED", "recoilless", None, False): { # 677
+    ("RocketInf_M40A1_RCL_106mm_TOWED", "recoilless", None, False): {  # 677
         "Ammunition": {
             "Arme": {
                 "Index": 16,
@@ -305,7 +305,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketInf_M40A1_RCL_106mm_HE_TOWED", "recoilless", None, False): { # 676
+    ("RocketInf_M40A1_RCL_106mm_HE_TOWED", "recoilless", None, False): {  # 676
         "Ammunition": {
             "hit_roll": {
                 "Idling": 40,
@@ -319,7 +319,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketInf_M40A1_RCL_106mm_HE", "recoilless", None, False): { # 675
+    ("RocketInf_M40A1_RCL_106mm_HE", "recoilless", None, False): {  # 675
         "Ammunition": {
             "hit_roll": {
                 "Idling": 40,
@@ -333,7 +333,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketInf_M40A1_RCL_106mm", "recoilless", None, False): { # 674
+    ("RocketInf_M40A1_RCL_106mm", "recoilless", None, False): {  # 674
         "Ammunition": {
             "Arme": {
                 "Index": 16,
@@ -349,7 +349,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketInf_M202_Flash_66mm", "napalm", None, False): { # 673
+    ("RocketInf_M202_Flash_66mm", "napalm", None, False): {  # 673
         "Ammunition": {
             "hit_roll": {
                 "Idling": 50,
@@ -362,7 +362,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("RocketInf_LAW_80", "medium_at", None, False): { # 669
+    ("RocketInf_LAW_80", "medium_at", None, False): {  # 669
         "Ammunition": {
             "Arme": {
                 "Index": 21,
@@ -376,7 +376,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("RocketInf_Carl_Gustav", "medium_at", None, False): { # 667
+    ("RocketInf_Carl_Gustav", "medium_at", None, False): {  # 667
         "Ammunition": {
             "Arme": {
                 "Index": 18,
@@ -390,7 +390,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("RocketInf_Carl_Gustav", "medium_at", None, False): { # 667
+    ("RocketInf_Carl_Gustav", "medium_at", None, False): {  # 667
         "Ammunition": {
             "Arme": {
                 "Index": 18,
@@ -404,7 +404,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketInf_AT4_83mm", "medium_at", None, False): { # 661
+    ("RocketInf_AT4_83mm", "medium_at", None, False): {  # 661
         "Ammunition": {
             "Arme": {
                 "Index": 18,
@@ -415,6 +415,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PorteeMaximaleGRU": 700,
             },
+        },
+    },
+
+    ("Ammo_Canon_HEAT_73_mm_SPG9D_TOWED", "recoilless", "Ammo_Canon_HEAT_73_mm_SPG9_TOWED", False): {  # 707
+        "Ammunition": {
+            "display": "SPG-9D",
+            "token": "SPGNDPARA",
         },
     },
 }
