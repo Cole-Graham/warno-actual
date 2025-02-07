@@ -1,6 +1,9 @@
 """Division modification modules."""
 
-from .matrices import edit_division_matrices
+from .matrices import (
+    edit_division_matrices,
+    deck_ap_points,
+)
 from .new_unit_divisions import (
     add_division_rules,
     add_to_divisions,
@@ -19,4 +22,5 @@ __all__ = [
     'update_deck_serializer',
     'create_division_packs',
     'supply_divisions',
+    'deck_ap_points',
 ] 

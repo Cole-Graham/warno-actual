@@ -9,7 +9,7 @@ ot_64_skot_2_cmd_pol: Dict[str, Dict[str, Any]] = {
             f'export Gfx_OT_64_SKOT_2_CMD_POL is TacticVehicleDepictionTemplate'
             f'('
             f"    CoatingName = 'OT_64_SKOT_2_POL'"
-            f'    Selector = Selector_OT_64_SKOT_2_CMD_POL'
+            f'    Selector = SpecificVehicleDepictionSelector'
             f'    Alternatives = Alternatives_OT_64_SKOT_2_CMD_POL'
             f'    Operators = '
             f'    ['

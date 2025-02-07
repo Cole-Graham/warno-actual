@@ -2,6 +2,8 @@
 
 from .ammunition import ammunitions
 from .damage_values import (
+    VANILLA_LAST_ROW,
+    VANILLA_LAST_COLUMN,
     DAMAGE_EDITS,
     DPICM_DAMAGES,
     FMBALLE_INFANTRY_EDITS,
@@ -24,6 +26,8 @@ from .vanilla_inst_modifications import (
 )
 
 __all__ = [
+    'VANILLA_LAST_ROW',
+    'VANILLA_LAST_COLUMN',
     'AMMUNITION_MISSILES_REMOVALS',
     'AMMUNITION_MISSILES_RENAMES', 
     'AMMUNITION_REMOVALS',

@@ -42,7 +42,7 @@ from .depictions import (
 )
 from .divisions import (
     add_division_rules,
-
+    deck_ap_points,
     add_to_divisions,
     create_deck_pack_descriptors,
     create_division_packs,

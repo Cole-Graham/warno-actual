@@ -254,8 +254,8 @@ def _handle_tactical_label(descr_row: Any, edits: Dict[str, Any]) -> None:
     if "UnidentifiedTextures" in edits:
         unid_textures_member = descr_row.v.by_member("UnidentifiedTexture")
         unid_textures_member.v.by_member("Values").v = str(edits["UnidentifiedTextures"])
-    if "strength" in edits:
-        descr_row.v.by_member("NbSoldiers").v = str(edits["strength"])
+    # if "strength" in edits:
+    #     descr_row.v.by_member("NbSoldiers").v = str(edits["strength"])
         
 def _handle_tags_module(descr_row: Any, edits: Dict[str, Any]) -> None:
     """Handle tags module modifications."""

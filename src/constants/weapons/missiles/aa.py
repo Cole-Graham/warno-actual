@@ -163,7 +163,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "PorteeMaximaleTBAGRU": 3325,
             }
         },
-        "BaseSupplyCost": 150,
+        # "BaseSupplyCost": 150,
+        "BaseSupplyCost": 100,
         "WeaponDescriptor": {
             "SalvoLengths": [3],
             "units": {
@@ -259,7 +260,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "PorteeMaximaleHAGRU": 5250,
             }
         },
-        "BaseSupplyCost": 130,
+        # "BaseSupplyCost": 130,
+        "BaseSupplyCost": 100,
         "WeaponDescriptor": {
             "SalvoLengths": [3],
             "units": {

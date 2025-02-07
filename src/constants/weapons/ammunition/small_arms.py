@@ -24,6 +24,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "PorteeMaximaleGRU": 1050,
                 "PorteeMaximaleTBAGRU": 875,
                 "DisplaySalveAccuracy": False,
+                "TempsEntreDeuxSalves": 6.0,
                 "TempsDeVisee": 6.0,
                 "NbTirParSalves": 10,
                 "AffichageMunitionParSalve": 10
@@ -52,6 +53,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "SuppressDamages": 100.0,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 6.0,
+                "TempsEntreDeuxSalves": 7.5,
                 "NbTirParSalves": 5,
                 "AffichageMunitionParSalve": 5,
             },
@@ -80,6 +82,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "PorteeMaximaleGRU": 1050,
                 "PorteeMaximaleTBAGRU": 875,
                 "DisplaySalveAccuracy": False,
+                "TempsEntreDeuxSalves": 6.0,
                 "TempsDeVisee": 6.0,
                 "NbTirParSalves": 10,
                 "AffichageMunitionParSalve": 10
@@ -107,6 +110,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "PhysicalDamages": 1.0,
                 "SuppressDamages": 100.0,
                 "DisplaySalveAccuracy": False,
+                "TempsEntreDeuxSalves": 7.5,
                 "TempsDeVisee": 6.0,
                 "NbTirParSalves": 5,
                 "AffichageMunitionParSalve": 5,
@@ -607,7 +611,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "token": "EILUZEIFXS",
             "parent_membr": {
                 "TraitsToken": ['MOTION', 'tripod'],
-                "TempsEntreDeuxTirs": 1.25,
+                "TempsEntreDeuxTirs": 1.30, # was 1.25 but Eugen said it has to be multiple of game tick rate (10hz)
                 "TempsEntreDeuxFx": 6.0,
                 "PorteeMaximaleGRU": 1050,
                 "add": [16, "PorteeMaximaleTBAGRU = 875"],
@@ -781,7 +785,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 20,
             },
             "parent_membr": {
-                "TempsEntreDeuxTirs": 1.25,
+                "TempsEntreDeuxTirs": 1.30, # was 1.25 but Eugen said it has to be multiple of game tick rate (10hz)
                 "TempsEntreDeuxFx": 6.0,
                 "PorteeMaximaleGRU": 875,
                 "PorteeMaximaleTBAGRU": 700,
@@ -813,7 +817,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "token": "IYUAMGSZZJ", 
             "parent_membr": {
-                "TempsEntreDeuxTirs": 1.25,
+                "TempsEntreDeuxTirs": 1.30, # was 1.25 but Eugen said it has to be multiple of game tick rate (10hz)
                 "TempsEntreDeuxFx": 6.0,
                 "PorteeMaximaleGRU": 875,
                 "PorteeMaximaleTBAGRU": 700,
@@ -1049,11 +1053,11 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 15,
             },
             "parent_membr": {
-                "TempsEntreDeuxTirs": 0.17,
+                "TempsEntreDeuxTirs": 0.2,
                 "PorteeMaximaleGRU": 1225,
                 "DispersionAtMaxRangeGRU": 60,
                 "RadiusSplashPhysicalDamagesGRU": 22,
-                "PhysicalDamages": 0.2,
+                "PhysicalDamages": 0.25,
                 "RadiusSplashSuppressDamagesGRU": 42,
                 "SuppressDamages": 10.0,
                 "DisplaySalveAccuracy": False,
