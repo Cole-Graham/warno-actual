@@ -19,11 +19,11 @@ from src.gameplay import (
     edit_fire_descriptors,
     change_fire_descriptors,
     mg_team_division_rules,
-    add_corrected_shot_dispersion,
     add_radio_tag_to_mortars,
     edit_smoke_duration,
     temp_fix_reco_radar,
     create_veh_showroom_depictions,
+    deck_ap_points,
 )
 from src.gameplay.buildings import edit_fob_attributes
 
@@ -187,9 +187,10 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
             update_deck_serializer,
         ],
         "GameData/Generated/Gameplay/Decks/Divisions.ndf": [
-            add_to_divisions,
-            edit_division_units,
-            supply_divisions,
+            # add_to_divisions, 
+            # edit_division_units,
+            # supply_divisions,
+            deck_ap_points,
         ],
         "GameData/Generated/Gameplay/Decks/DivisionRules.ndf": [
             add_division_rules,
@@ -197,9 +198,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
             supply_divisionrules,
             lambda source_path: mg_team_division_rules(source_path, game_db),
         ],
-        "GameData/Generated/Gameplay/Decks/DivisionPacks.ndf": [
-            create_division_packs,
-        ],
+        # "GameData/Generated/Gameplay/Decks/DivisionPacks.ndf": [
+        #     create_division_packs,
+        # ],
 
         "GameData/Generated/Gameplay/Decks/DivisionCostMatrix.ndf": [
             edit_division_matrices,
@@ -272,9 +273,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/Generated/Gameplay/Gfx/CapaciteList.ndf": [
             edit_capacite_list,
         ],
-        "GameData/Generated/Gameplay/Gfx/EffectsPacksList.ndf": [
-            edit_shock_effects_packs_list,
-        ],
+        # "GameData/Generated/Gameplay/Gfx/EffectsPacksList.ndf": [
+        #     edit_shock_effects_packs_list,
+        # ],
         "GameData/Generated/Gameplay/Gfx/EffetsSurUnite.ndf": [
             edit_shock_effects,
             edit_veterancy_effects,
@@ -303,9 +304,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/Generated/Gameplay/Gfx/Depictions/DepictionAlternatives.ndf": [
             create_alternatives_depictions,
         ],
-        "GameData/Generated/Gameplay/Gfx/Depictions/GeneratedDepictionSelectors.ndf": [
-            create_veh_depiction_selectors,
-        ],
+        # "GameData/Generated/Gameplay/Gfx/Depictions/GeneratedDepictionSelectors.ndf": [
+        #     create_veh_depiction_selectors,
+        # ],
         "GameData/Generated/Gameplay/Gfx/Depictions/GeneratedDepictionGhosts.ndf": [
             create_ghost_depictions,
         ],
@@ -324,7 +325,6 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
             create_infantry_depictions,
             unit_edits_depictioninfantry,
         ],
-
         # UI files
         # Style files
         "GameData/UserInterface/Style/Common/Colors.ndf": [

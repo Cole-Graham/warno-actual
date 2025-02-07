@@ -12,6 +12,6 @@ def edit_uiingamedefaultcontainer(source_path) -> None:
     panelroundedcorner_template = source_path.by_namespace("PanelRoundedCorner").v
     panelroundedcorner_template.params.by_param("BackgroundBlockColorToken").v = '"M81_DarkCharcoalTransparent"'
     panelroundedcorner_template.params.by_param("BorderLineColorToken").v = '"M81_DarkCharcoalSelection"'
-    panelroundedcorner_template.params.by_param("RoundedVertexes").v = "[false, false, false, false]"
+    panelroundedcorner_template.params.by_param("RoundedVertexes").v = "[true, true, true, true]"
     
     logger.debug("Updated panel properties") 

@@ -1,5 +1,8 @@
 """Damage value constants."""
 
+VANILLA_LAST_ROW = 139 # used for log warning if Eugen changed the damage array
+VANILLA_LAST_COLUMN = 48
+
 # Base damage values
 SNIPER_DAMAGE = [
     0.8, 0.4, 0.2, 0.01, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
@@ -70,68 +73,71 @@ PGB_BOMB_DAMAGE = [
 
 # Infantry armor edits
 INFANTRY_ARMOR_EDITS = {
-        71: (1.0, "artillerie 1"),
-        72: (1.0, "assaut 1"),
-        73: (1.0, "balle 1"),
-        74: (0.2, "balleaa 1"),
-        75: (1.0, "balledca 1"),
-        76: (1.02, "balledca 2"),
-        77: (1.36, "balledca 3"),
-        78: (1.36, "balledca 4"),
-        79: (1.0, "balle_mg 1"),
-        80: (1.0, "bombe 1"),
-        81: (1.0, "cac 1"),
-        82: (1.0, "cac 2"),
-        83: (1.0, "cac 3"),
-        84: (1.0, "cac 4"),
-        85: (0.5, "clu_sol_ap 1"),
-        86: (0.5, "clu_sol_ap 2"),
-        87: (0.5, "clu_sol_ap 3"),
-        88: (0.5, "clu_sol_ap 4"),
-        89: (0.5, "clu_sol_ap 5"),
-        90: (0.5, "clu_sol_ap 6"),
-        91: (0.5, "clu_sol_ap 7"),
-        92: (0.5, "clu_sol_ap 8"),
-        93: (0.5, "clu_sol_ap 9"),
-        94: (0.5, "clu_sol_ap 10"),
-        95: (0.5, "clu_sol_ap 11"),
-        96: (0.5, "clu_sol_ap 12"),
-        97: (0.5, "clu_sol_ap 13"),
-        98: (0.5, "clu_sol_ap 14"),
-        99: (0.5, "clu_sol_ap 15"),
-        100: (0.0, "clu_sol_ap 16"),
-        101: (4.0, "cluster 1"),
-        102: (0.5, "cluster_ap 1"),
-        103: (0.5, "cluster_ap 2"),
-        104: (0.5, "cluster_ap 3"),
-        105: (0.5, "cluster_ap 4"),
-        106: (0.5, "cluster_ap 5"),
-        107: (0.5, "cluster_ap 6"),
-        112: (1.0, "flamme 1"),
-        113: (1.0, "frag 1"),
-        114: (0.85, "grenades 1"),
-        115: (1.0, "he 1"),
-        116: (1.0, "he_dca 1"),
-        117: (1.0, "he_autocanon 1"),
-        118: (1.0, "he_autocanon 2"),
-        119: (1.0, "howz 1"),
-        120: (1.0, "howz_bombe 1"),
-        121: (1.0, "mmgballe 1"),
-        122: (1.0, "mmgballe 2"),
-        123: (1.0, "mmgballe 3"),
-        124: (1.0, "missile_he 1"),
-        125: (0.1, "pmballe 1"),
-        126: (0.5, "pmballe 2"),
-        127: (1.0, "pmballe 3"),
-        128: (1.0, "roquette"),
-        129: (1.0, "smoke"),
-        130: (1.0, "superhe 1"),
-        131: (1.0, "superhe_sol 1"),
-        132: (1.0, "suppress 1"),
-        133: (1.0, "suppressap 0.75"),
-        134: (1.0, "thermobarique 1"),
-        135: (1.0, "roquette_ap 1"),
-        136: (1.0, "suppresdca 1"),
+        71: (5.0, "ap_missile_sead 1"),
+        72: (5.0, "ap_missile_sead 2"),
+        73: (5.0, "ap_missile_sead 3"),
+        74: (1.0, "artillerie 1"),
+        75: (1.0, "assaut 1"),
+        76: (1.0, "balle 1"),
+        77: (0.2, "balleaa 1"),
+        78: (1.0, "balledca 1"),
+        79: (1.02, "balledca 2"),
+        80: (1.36, "balledca 3"),
+        81: (1.36, "balledca 4"),
+        82: (1.0, "balle_mg 1"),
+        83: (1.0, "bombe 1"),
+        84: (1.0, "cac 1"),
+        85: (1.0, "cac 2"),
+        86: (1.0, "cac 3"),
+        87: (1.0, "cac 4"),
+        88: (0.5, "clu_sol_ap 1"),
+        89: (0.5, "clu_sol_ap 2"),
+        90: (0.5, "clu_sol_ap 3"),
+        91: (0.5, "clu_sol_ap 4"),
+        92: (0.5, "clu_sol_ap 5"),
+        93: (0.5, "clu_sol_ap 6"),
+        94: (0.5, "clu_sol_ap 7"),
+        95: (0.5, "clu_sol_ap 8"),
+        96: (0.5, "clu_sol_ap 9"),
+        97: (0.5, "clu_sol_ap 10"),
+        98: (0.5, "clu_sol_ap 11"),
+        99: (0.5, "clu_sol_ap 12"),
+        100: (0.5, "clu_sol_ap 13"),
+        101: (0.5, "clu_sol_ap 14"),
+        102: (0.5, "clu_sol_ap 15"),
+        103: (0.0, "clu_sol_ap 16"),
+        104: (4.0, "cluster 1"),
+        105: (0.5, "cluster_ap 1"),
+        106: (0.5, "cluster_ap 2"),
+        107: (0.5, "cluster_ap 3"),
+        108: (0.5, "cluster_ap 4"),
+        109: (0.5, "cluster_ap 5"),
+        110: (0.5, "cluster_ap 6"),
+        115: (1.0, "flamme 1"),
+        116: (1.0, "frag 1"),
+        117: (0.85, "grenades 1"),
+        118: (1.0, "he 1"),
+        119: (1.0, "he_dca 1"),
+        120: (1.0, "he_autocanon 1"),
+        121: (1.0, "he_autocanon 2"),
+        122: (1.0, "howz 1"),
+        123: (1.0, "howz_bombe 1"),
+        124: (1.0, "mmgballe 1"),
+        125: (1.0, "mmgballe 2"),
+        126: (1.0, "mmgballe 3"),
+        127: (1.0, "missile_he 1"),
+        128: (0.1, "pmballe 1"),
+        129: (0.5, "pmballe 2"),
+        130: (1.0, "pmballe 3"),
+        131: (1.0, "roquette"),
+        132: (1.0, "smoke"),
+        133: (1.0, "superhe 1"),
+        134: (1.0, "superhe_sol 1"),
+        135: (1.0, "suppress 1"),
+        136: (1.0, "suppressap 0.75"),
+        137: (1.0, "thermobarique 1"),
+        138: (1.0, "roquette_ap 1"),
+        139: (1.0, "suppresdca 1"),
     }
 
 # FMballe infantry damage edits
@@ -152,18 +158,18 @@ FMBALLE_INFANTRY_EDITS = {
 }
 
 # FMballe row indices
-FMBALLE_ROWS = [108, 109, 110, 111]
+FMBALLE_ROWS = [111, 112, 113, 114]
 
 # Damage array edits for different weapon types
 DAMAGE_EDITS = {
-    "clu_sol_ap": {
-        "row": 100,
+    "clu_sol_ap_16": {
+        "row": 103,
         "edits": {
             6: 7.0,    # 3 top armor (4.25 is vanilla)
         }
     },
     "FMballe_1": {  # 5.56mm
-        "row": 108,
+        "row": 111,
         "edits": {
             37: 2.5,    # helicopter <1 armor (1.0 is vanilla)
             38: 1.25,    # helicopter 1 armor (0.5 is vanilla)
@@ -172,7 +178,7 @@ DAMAGE_EDITS = {
     },
     # need to figure out which weapons to seperate from this category or how to balance them with same family ratio
     "HE_autocanon_1": {  # 12.7mm
-        "row": 117,
+        "row": 120,
         "edits": {
             37: 3.3,    # helicopter <1 armor (2.5 is vanilla)
             # 38: 2.4,    # helicopter 1 armor (0.8 is vanilla)
@@ -182,7 +188,7 @@ DAMAGE_EDITS = {
         }
     },
     "howz": {
-        "row": 119,
+        "row": 122,
         "edits": {
             4: 0.33,
             5: 0.29,
@@ -198,7 +204,7 @@ DAMAGE_EDITS = {
         }
     },
     "howz_bombe": {
-        "row": 120,
+        "row": 123,
         "edits": {
             4: 0.66,
             5: 0.41,
@@ -214,14 +220,14 @@ DAMAGE_EDITS = {
         }
     },
     "Missile_HE": {  # avion
-        "row": 124,
+        "row": 127,
         "edits": {
             1: 0.7,    # avion 1 armor (0.9 is vanilla)
             2: 0.6,    # avion 2 armor (0.8 is vanilla)
         }
     },
     "thermobarique": {
-        "row": 134,
+        "row": 137,
         "edits": {
             4: 0.25,
             5: 0.21,
@@ -237,7 +243,7 @@ DAMAGE_EDITS = {
         }
     },
     "Roquette_AP_1": {  # blindage
-        "row": 135,
+        "row": 138,
         "edits": {
             7: 0.7,    # blindage 4 armor (0.5 is vanilla)
             8: 0.6,    # blindage 5 armor (0.5 is vanilla)

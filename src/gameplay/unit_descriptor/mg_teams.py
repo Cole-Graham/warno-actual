@@ -83,8 +83,8 @@ def _update_mg_team(unit_row: Any, stats: Dict[str, Any]) -> None:
             resources = module.v.by_m("ProductionRessourcesNeeded").v
             resources.by_k("$/GFX/Resources/Resource_CommandPoints").v = str(stats['cost'])
         
-        elif module_type == "TTacticalLabelModuleDescriptor":
-            module.v.by_m("NbSoldiers").v = str(stats['soldiers'])
+        # elif module_type == "TTacticalLabelModuleDescriptor":
+        #     module.v.by_m("NbSoldiers").v = str(stats['soldiers'])
             
         elif module_type == "TUnitUIModuleDescriptor":
             specialties = module.v.by_m("SpecialtiesList")

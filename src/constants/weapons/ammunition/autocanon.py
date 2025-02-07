@@ -158,8 +158,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 10,
             },
             "parent_membr": {
-                "TempsEntreDeuxTirs": 0.35,
-                "TempsEntreDeuxFx": 0.35,
+                "TempsEntreDeuxTirs": 0.40, # was 0.35 but Eugen said it has to be multiple of game tick rate (10hz)
+                "TempsEntreDeuxFx": 0.40,
                 "PhysicalDamages": 0.25,
                 "SuppressDamages": 15,
                 "DisplaySalveAccuracy": False,
@@ -179,8 +179,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 10,
             },
             "parent_membr": {
-                "TempsEntreDeuxTirs": 0.12,
-                "TempsEntreDeuxFx": 0.12,
+                "TempsEntreDeuxTirs": 0.10, # was 0.12 but Eugen said it has to be multiple of game tick rate (10hz)
+                "TempsEntreDeuxFx": 0.10,
                 "PhysicalDamages": 0.20,
                 "SuppressDamages": 10,
                 "DisplaySalveAccuracy": False,
@@ -434,8 +434,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 25,
             },
             "parent_membr": {
-                "TempsEntreDeuxTirs": 0.35,
-                "TempsEntreDeuxFx": 0.35,
+                "TempsEntreDeuxTirs": 0.40, # was 0.35 but Eugen said it has to be multiple of game tick rate (10hz)
+                "TempsEntreDeuxFx": 0.40,
                 "PhysicalDamages": 0.334,
                 "SuppressDamages": 15,
                 "DisplaySalveAccuracy": False,
@@ -455,8 +455,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 10,
             },
             "parent_membr": {
-                "TempsEntreDeuxTirs": 0.12,
-                "TempsEntreDeuxFx": 0.12,
+                "TempsEntreDeuxTirs": 0.10, # was 0.12 but Eugen said it has to be multiple of game tick rate (10hz)
+                "TempsEntreDeuxFx": 0.10,
                 "PhysicalDamages": 0.334,
                 "SuppressDamages": 10,
                 "DisplaySalveAccuracy": False,

@@ -28,7 +28,7 @@ def get_mg_availability(mg_type: str, is_para: bool) -> Dict[str, Any]:
         'xp_multiplier': str(xp_multi)
     }
 
-def mg_team_division_rules(source: Any, game_db: Dict[str, Any]) -> None:
+def mg_team_division_rules(source_path: Any, game_db: Dict[str, Any]) -> None:
     """Edit machine gun team availability in divisions."""
     logger.info("Editing MG team availability")
     
@@ -40,11 +40,9 @@ def mg_team_division_rules(source: Any, game_db: Dict[str, Any]) -> None:
         ("PKM", "MMG")
     ]
     
-    division_rules = source.by_n("DivisionRules").v.by_member("DivisionRules").v
-    
-    for map_row in division_rules:
-        div_key = map_row.k
-        rules_list = map_row.v.by_m("UnitRuleList").v
+    for deck_descr in source_path:
+        rules_list = deck_descr.v.by_m("UnitRuleList").v
+        div_name = deck_descr.n[len("Descriptor_Deck_Division_"):-len("_Rule")]
         
         for rule_obj in rules_list:
             if not is_obj_type(rule_obj.v, "TDeckUniteRule"):
@@ -70,4 +68,4 @@ def mg_team_division_rules(source: Any, game_db: Dict[str, Any]) -> None:
                 rule_obj.v.by_m("NumberOfUnitInPack").v = settings['availability']
                 rule_obj.v.by_m("NumberOfUnitInPackXPMultiplier").v = settings['xp_multiplier']
                 
-                logger.debug(f"Updated {unit_name} in {div_key} (Para: {is_para}, Type: {mg_type})") 
+                logger.debug(f"Updated {unit_name} in {div_name} (Para: {is_para}, Type: {mg_type})") 
