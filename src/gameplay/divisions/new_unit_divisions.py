@@ -145,7 +145,13 @@ def update_deck_serializer(source_path: Any) -> None:
     source_path.add(ndf_serializer_entries)
     logger.info("Created Warno Actual TDeckSerializerEntries object")
 
-    unit_id = 1
+    vanilla_serializer = source_path.find_by_cond(lambda serializer_obj: serializer_obj.index == 0)
+    unit_ids_map = vanilla_serializer.v.by_member("UnitIds")
+    last_row = unit_ids_map.v[-1]
+    last_row_str = str(last_row)
+    last_row_int = int(last_row_str.split("value='")[-1].split("'")[0])
+    
+    new_unit_id = last_row_int + 1        
     for donor, edits in NEW_UNITS.items():
         if "NewName" not in edits:
             continue
@@ -153,13 +159,9 @@ def update_deck_serializer(source_path: Any) -> None:
         unit_name = edits["NewName"]
         deckserializer_obj = source_path.by_n("wa_entries")
         unit_ids_map = deckserializer_obj.v.by_member("UnitIds")
-        # last_row = unit_ids_map.v[-1]
-        # last_row_str = str(last_row)
-        # last_row_int = int(last_row_str.split("value='")[-1].split("'")[0])
-        # last_row_integer = str(last_row_int + 1)
         logger.info(f"DeckSerializer.ndf) Adding new entry: $/GFX/Unit/Descriptor_Unit_{unit_name}")
-        unit_ids_map.v.add(("$/GFX/Unit/Descriptor_Unit_" + unit_name, str(unit_id)))
-        unit_id += 1
+        unit_ids_map.v.add(("$/GFX/Unit/Descriptor_Unit_" + unit_name, str(new_unit_id)))
+        new_unit_id += 1
 
 def create_division_packs(source_path: Any) -> None:
     """Create division packs in DivisionPacks.ndf."""

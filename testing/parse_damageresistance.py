@@ -90,9 +90,9 @@ def write_csv_data(damage_levels: List, armor_levels: List, damage_array: Any, o
     csv_data = []
     
     # Create headers
-    index_row = ["", "", ""]  # Empty cells for row headers
-    family_row = ["Row Index", "Damage Family", "Damage Level"]  # Column header labels
-    level_row = ["", "", ""]  # Empty cells for row headers
+    index_row = ["", "", "Column Index"]
+    family_row = ["", "", "Resistance Family"]
+    level_row = ["Row Index", "Damage Family", "Levels"] 
     
     # Add column indices, families and levels
     for col_index, resistance_family, armor_level in armor_levels:

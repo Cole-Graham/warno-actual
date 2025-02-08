@@ -5,6 +5,10 @@ from typing import Callable, Dict, List
 # Import all gameplay editors
 from src.gameplay import (
     unit_edits_divisionrules, 
+    modify_deck_packs,
+    update_deck_pack_references,
+    modify_decks,
+    new_deck_packs,
     supply_divisionrules,
     supply_divisions,
     edit_mg_teams,
@@ -198,10 +202,17 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
             supply_divisionrules,
             lambda source_path: mg_team_division_rules(source_path, game_db),
         ],
+        "GameData/Generated/Gameplay/Decks/DeckPacks.ndf": [
+            lambda source_path: modify_deck_packs(source_path, game_db),
+            lambda source_path: new_deck_packs(source_path),
+        ],
+        "GameData/Generated/Gameplay/Decks/Decks.ndf": [
+            lambda source_path: update_deck_pack_references(source_path, game_db),
+            lambda source_path: modify_decks(source_path, game_db),
+        ],
         # "GameData/Generated/Gameplay/Decks/DivisionPacks.ndf": [
         #     create_division_packs,
         # ],
-
         "GameData/Generated/Gameplay/Decks/DivisionCostMatrix.ndf": [
             edit_division_matrices,
         ],
