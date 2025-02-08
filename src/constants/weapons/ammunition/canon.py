@@ -102,9 +102,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
 
     ("Canon_HE_152mm_Sheridan", "canon", None, False): { # 216
         "Ammunition": {
-            "Arme": {
-                "Index": 17,
-            },
             "hit_roll": {
                 "Idling": 40,
             },

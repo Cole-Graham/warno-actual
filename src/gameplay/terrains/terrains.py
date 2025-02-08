@@ -30,6 +30,12 @@ def edit_terrains(source_path) -> None:
             f"(DamageFamily_full_balle, MAP [(ResistanceFamily_infanterie,{value})])")
         logger.info(f"Added full_balle damage modifier {value} to {terrain}")
     
+    # Edit DefaultTerrain properties
+    default_terrain = source_path.by_n("DefaultTerrain")
+    default_terrain.v.by_m("SpeedModifierInfantry").v = "1.1"
+    logger.info("Updated DefaultTerrain speed modifier")
+    
+    
     # Edit ForetLegere properties
     forest_light = source_path.by_n("ForetLegere")
     forest_light.v.by_m("DissimulationModifierGroundAir").v = "12"
@@ -41,20 +47,25 @@ def edit_terrains(source_path) -> None:
     # logger.info("Updated ForetLegere concealment bonus")
     
     # Edit PetitBatiment properties
-    # small_building = source_path.by_n("PetitBatiment").v
+    small_building = source_path.by_n("PetitBatiment")
+    small_building.v.by_m("SpeedModifierInfantry").v = "1.0"
+    logger.info("Updated PetitBatiment speed modifier")
     # small_building.by_m("ConcealmentBonus").v = "3.75"
     # logger.info("Updated PetitBatiment concealment bonus")
-    
+
     # Edit Batiment properties
-    # building = source_path.by_n("Batiment").v
+    building = source_path.by_n("Batiment")
+    building.v.by_m("SpeedModifierInfantry").v = "1.0"
+    logger.info("Updated Batiment speed modifier")
     # building.by_m("ConcealmentBonus").v = "3.75"
     # logger.info("Updated Batiment concealment bonus")
     
+
     # Edit Ruin properties
-    ruin = source_path.by_n("Ruin").v
-    ruin.by_m("DissimulationModifierGroundAir").v = "48"
+    ruin = source_path.by_n("Ruin")
+    ruin.v.by_m("DissimulationModifierGroundAir").v = "48"
     logger.info("Updated Ruin dissimulation modifier")
-    ruin.by_m("SpeedModifierInfantry").v = "0.7"
+    ruin.v.by_m("SpeedModifierInfantry").v = "0.7"
     logger.info("Updated Ruin speed modifier")
     # ruin.by_m("ConcealmentBonus").v = "3.25"
     # logger.info("Updated Ruin concealment bonus")

@@ -360,7 +360,7 @@ def create_ghost_depictions(source_path: Any) -> None:
             f'GhostDepiction_{unit_name} is GhostVehicleDepictionTemplate'
             f'('
             f'    Alternatives = Alternatives_{unit_name}'
-            f'    Selector = Selector_{unit_name}'
+            f'    Selector = SpecificVehicleDepictionSelector'
             f')'
         )
         source_path.add(entry)

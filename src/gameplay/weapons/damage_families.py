@@ -73,8 +73,6 @@ def add_damage_families_to_list(source_path) -> None:
                 f"{pgb_bomb_family}")
                 
 
-
-
 def add_damage_families_to_impl(source_path) -> None:
     """Add new damage families to DamageResistanceFamilyListImpl.ndf."""
     logger.info("Adding new damage families to implementation")
@@ -155,7 +153,7 @@ def add_damage_resistance_values(source_path) -> None:
     # Add family definitions
     damage_family_list = resist_params_obj.by_m("DamageFamilyDefinitionList").v
     families = {
-        "sniper": "TDamageTypeFamilyDefinition(Family=DamageFamily_sniper MaxIndex=1)",
+        "sniper": "TDamageTypeFamilyDefinition(Family=DamageFamily_sniper MaxIndex=2)",
         "full_ball": "TDamageTypeFamilyDefinition(Family=DamageFamily_full_balle MaxIndex=1)",
         "dpicm": "TDamageTypeFamilyDefinition(Family=DamageFamily_dpicm MaxIndex=4)",
         # "kpvt": "TDamageTypeFamilyDefinition(Family=DamageFamily_kpvt MaxIndex=1)",
@@ -180,7 +178,7 @@ def add_damage_resistance_values(source_path) -> None:
 
     # Add damage values
     values_list.add(
-        str(SNIPER_DAMAGE),
+        *[str(sniper) for sniper in SNIPER_DAMAGE],
         str(FULL_BALL_DAMAGE),
         *[str(dpicm) for dpicm in DPICM_DAMAGES],
         # str(KPVT_DAMAGE),
