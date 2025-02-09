@@ -14,7 +14,8 @@ def edit_uiingameresources(source_path: Any) -> None:
     uiingameresource = source_path.by_n("UIInGameResource").v
     viewdescriptors_map = uiingameresource.by_m("ViewDescriptors").v
     ingamechatviewdescriptor = viewdescriptors_map.by_k('"UISpecificIngameChatViewDescriptor"').v
-    ingamechatviewdescriptor.by_m("ButtonColorStyle").v = '"TacticButton_highlightableLineM81"'
+    ingamechatviewdescriptor.by_m("PanelColorStyle").v = '"ChatPANELColorStyleM81"'
+    ingamechatviewdescriptor.by_m("ButtonColorStyle").v = '"ChatBUTTONColorStyleM81"'
     
     # Update frame width
     source_path.by_n("IngameHUDRightFramesWidth").v = "385.0"
@@ -28,13 +29,21 @@ def edit_uiingameresources(source_path: Any) -> None:
     for component in components:
         if not isinstance(component.v, ndf.model.Object):
             continue
+        
+        if component.v.type == "BUCKContainerDescriptor":
+            unique_name = component.v.by_m("UniqueName", False)
+            if unique_name is not None and unique_name.v == '"SpecificLaunchBattleMainComponentDescriptor"':
+                component_frame = component.v.by_m("ComponentFrame").v
+                component_frame.by_m("MagnifiableOffset").v = "[0.0, 138.0]"
             
-        if component.v.by_m("UniqueName", False) is not None:
+        elif component.v.by_m("UniqueName", False) is not None:
             if component.v.by_m("UniqueName").v == '"barre_du_haut"':
                 components.remove(component)
+
         else:
             elements = component.v.by_m("Elements").v
             for element in elements:
+
                 if not isinstance(element.v, ndf.model.Object):
                     continue
                     

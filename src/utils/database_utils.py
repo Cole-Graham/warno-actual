@@ -4,7 +4,7 @@ import json
 import os
 import subprocess
 from pathlib import Path
-from typing import Dict
+from typing import Any, Dict
 
 from src.utils.logging_utils import setup_logger
 
@@ -15,11 +15,37 @@ def ensure_db_directory(db_path: str) -> None:
     """Create database directory if it doesn't exist."""
     Path(db_path).mkdir(parents=True, exist_ok=True)
 
+def _sort_dict_recursively(d: Any) -> Any:
+    """Sort dictionary recursively to ensure consistent ordering."""
+    if isinstance(d, dict):
+        return {k: _sort_dict_recursively(v) for k, v in sorted(d.items())}
+    elif isinstance(d, list):
+        return [_sort_dict_recursively(x) for x in d]
+    return d
+
 def calculate_db_checksum(db_data: Dict) -> str:
     """Calculate checksum of database content."""
-    # Sort the data to ensure consistent checksums
-    serialized = json.dumps(db_data, sort_keys=True)
-    return hashlib.sha256(serialized.encode()).hexdigest()
+    # Sort data recursively to ensure consistent ordering
+    sorted_data = _sort_dict_recursively(db_data)
+    
+    # Log each component's data for debugging
+    for key in sorted(sorted_data.keys()):
+        component_json = json.dumps(sorted_data[key], sort_keys=True, ensure_ascii=True, separators=(',', ':'))
+        component_hash = hashlib.sha256(component_json.encode('utf-8')).hexdigest()
+        logger.debug(f"Component {key} hash: {component_hash}")
+    
+    # Use dumps with sort_keys and ensure_ascii for consistent serialization
+    serialized = json.dumps(
+        sorted_data,
+        sort_keys=True,
+        ensure_ascii=True,
+        separators=(',', ':')
+    )
+    
+    # Log first 100 chars of serialized data for debugging
+    logger.debug(f"First 100 chars of serialized data: {serialized[:100]}")
+    
+    return hashlib.sha256(serialized.encode('utf-8')).hexdigest()
 
 def get_database_path(db_path: str) -> Path:
     """Get the path to the database directory."""

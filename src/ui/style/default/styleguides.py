@@ -286,9 +286,9 @@ def edit_defaultstyleguides(source_path) -> None:
             _edit_componentstate(block_colors_map, '"playerHelper/Cover/Pact_line"', 'Highlighted', 'M81_P3AmberOrange')
             _edit_componentstate(block_colors_map, '"playerHelper/Cover/Pact_line"', 'Toggled', 'M81_P3AmberOrange')
 
-            # Add TacticButton highlightable block
-            tacticbutton_highlightableblockm81 = (
-                f'("TacticButton_highlightableBlockM81",          MAP ['
+            # Add chat button color style (block)
+            button_chatcolorstylem81 = (
+                f'("ChatBUTTONColorStyleM81",          MAP ['
                 f'                                   ( ~/ComponentState/Normal,                TColorRTTI( Color = M81_DarkCharcoal  ) ),'
                 f'                                   ( ~/ComponentState/Highlighted,           TColorRTTI( Color = Blanc184 ) ),'
                 f'                                   ( ~/ComponentState/Clicked,               TColorRTTI( Color = M81_DarkCharcoal ) ),'
@@ -299,12 +299,12 @@ def edit_defaultstyleguides(source_path) -> None:
                 f'                               ])'
             )
             index = block_colors_map.by_k('"TacticButton_highlightable"').index + 1
-            block_colors_map.insert(index, tacticbutton_highlightableblockm81)
+            block_colors_map.insert(index, button_chatcolorstylem81)
 
-            # Add TacticPanel block
-            tacticpanelblockm81 = ('"TacticPanelBlockM81"', 'MAP [ ( ~/ComponentState/Normal, TColorRTTI( Color = M81_DarkCharcoalTransparent ) ), ]')
+            # Add chat panel color style (block)
+            panel_chatcolorstylem81 = ('"ChatPANELColorStyleM81"', 'MAP [ ( ~/ComponentState/Normal, TColorRTTI( Color = M81_DarkCharcoalTransparent ) ), ]')
             index = block_colors_map.by_k('"TacticPanel"').index + 1
-            block_colors_map.insert(index, tacticpanelblockm81)
+            block_colors_map.insert(index, panel_chatcolorstylem81)
 
             # Handle line colors map
             line_colors_map = row.v.by_m("LineColorsMap").v
@@ -550,9 +550,9 @@ def edit_defaultstyleguides(source_path) -> None:
             line_colors_map.insert(index, timepanel_buttonborderm81slow)
             line_colors_map.insert(index, timepanel_buttonborderm81pause)
 
-            # Add TacticButton highlightable line
-            tacticbutton_highlightablelinem81 = (
-                f'("TacticButton_highlightableLineM81",          MAP ['
+            # Add chat button color style (line)
+            button_chatcolorstylem81 = (
+                f'("ChatBUTTONColorStyleM81",          MAP ['
                 f'                                        ( ~/ComponentState/Normal,                TColorRTTI( Color = M81_DarkCharcoal ) ),'
                 f'                                        ( ~/ComponentState/Highlighted,           TColorRTTI( Color = M81_DarkCharcoalSelection ) ),'
                 f'                                        ( ~/ComponentState/Clicked,               TColorRTTI( Color = M81_DarkCharcoalClicked ) ),'
@@ -563,14 +563,19 @@ def edit_defaultstyleguides(source_path) -> None:
                 f'                                   ])'
             )
             index = line_colors_map.by_k('"TacticButton_highlightable"').index + 1
-            line_colors_map.insert(index, tacticbutton_highlightablelinem81)
+            line_colors_map.insert(index, button_chatcolorstylem81)
 
-            # Update TacticPanel color
-            _edit_componentstate(line_colors_map, '"TacticPanel"', 'Normal', '[14,14,14,75]') 
+            # Add chat panel color style (line)
+            panel_chatcolorstylem81 = (
+                f'("ChatPANELColorStyleM81",          MAP ['
+                f'                                        ( ~/ComponentState/Normal,                TColorRTTI( Color = M81_DarkCharcoalSelection ) ),'
+                f'                                   ])'
+            )
+            index = line_colors_map.by_k('"TacticPanel"').index + 1
+            line_colors_map.insert(index, panel_chatcolorstylem81)
             
-                        # Handle text colors map
+            # Handle text colors map
             text_colors_map = row.v.by_m("TextColorsMap").v
-            
             # Add M81 Woodland UI Colors
             new_lines = [
                 ('"M81_Artichoke"',          'MAP [ ( ~/ComponentState/Normal, TColorRTTI( Color = [156,145,119,255] ) ), ]'),
@@ -678,9 +683,9 @@ def edit_defaultstyleguides(source_path) -> None:
             index = text_colors_map.by_k('"SM_Feldgrau"').index + 1
             text_colors_map.insert(index, sm_feldgrauwactual)
 
-            # Add TacticButton highlightable text
-            tacticbutton_highlightabletextm81 = (
-                f'("TacticButton_highlightableTextM81",              MAP ['
+            # Add chat button color style (text)
+            button_chatcolorstylem81 = (
+                f'("ChatBUTTONColorStyleM81",              MAP ['
                 f'                                        ( ~/ComponentState/Grayed,                TColorRTTI( Color = [120,120,120,128] ) ),'
                 f'                                        ( ~/ComponentState/Normal,                TColorRTTI( Color = Blanc184 ) ),'
                 f'                                        ( ~/ComponentState/Highlighted,           TColorRTTI( Color = Blanc7 ) ),'
@@ -690,12 +695,16 @@ def edit_defaultstyleguides(source_path) -> None:
                 f'                                    ])'
             )
             index = text_colors_map.by_k('"TacticButton_highlightable"').index + 1
-            text_colors_map.insert(index, tacticbutton_highlightabletextm81)
+            text_colors_map.insert(index, button_chatcolorstylem81)
 
-            # Add TacticPanel text
-            tacticpaneltextm81 = ('"TacticPanelTextM81"', 'MAP [ ( ~/ComponentState/Normal, TColorRTTI( Color = BlancEquipe ) ), ]')
+            # Add chat panel color style (text)
+            panel_chatcolorstylem81 = (
+                f'("ChatPANELColorStyleM81",              MAP ['
+                f'                                        ( ~/ComponentState/Normal,                TColorRTTI( Color = BlancEquipe ) ),'
+                f'                                   ])'
+            )
             index = text_colors_map.by_k('"TacticPanel"').index + 1
-            text_colors_map.insert(index, tacticpaneltextm81)
+            text_colors_map.insert(index, panel_chatcolorstylem81)
 
             # Update moral color
             _edit_componentstate(text_colors_map, '"moral_color_bad_1"', 'Normal', '[255,200,0,255]')

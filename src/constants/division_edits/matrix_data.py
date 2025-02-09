@@ -1,67 +1,67 @@
 """Division matrix constants for DivisionCostMatrix.ndf"""
 
 DIVISION_MATRICES = {
-    # Total points: 172
+
     "MatrixCostName_US_3rd_Arm_multi": (
         'MatrixCostName_US_3rd_Arm_multi is MAP'
         '['
-        '    (EDefaultFactories/Art, [2, 4, 4, 6, 6]),'
-        '    (EDefaultFactories/DCA, [2, 2, 4, 4, 6]),'
+        '    (EDefaultFactories/Art, [2, 3, 4, 5, 6]),'
+        '    (EDefaultFactories/DCA, [2, 2, 4, 4, 5]),'
         '    (EDefaultFactories/Defense, [0]),'
-        '    (EDefaultFactories/Helis, [2, 2, 4, 4, 6]),'
-        '    (EDefaultFactories/Infantry, [2, 2, 2, 2, 4, 4, 6]),'
-        '    (EDefaultFactories/Logistic, [2, 2, 2, 2, 2, 2, 2, 4, 4]),'
+        '    (EDefaultFactories/Helis, [2, 2, 3, 4, 5]),'
+        '    (EDefaultFactories/Infantry, [2, 2, 2, 3, 4, 5, 6]),'
+        '    (EDefaultFactories/Logistic, [2, 2, 2, 2, 2, 2, 2, 3, 3]),'
         '    (EDefaultFactories/Planes, [2, 2, 4, 4, 6, 8]),'
-        '    (EDefaultFactories/Recons, [2, 2, 2, 4, 4, 4, 6]),'
-        '    (EDefaultFactories/Tanks, [2, 2, 2, 2, 2, 2, 4, 4]),'
+        '    (EDefaultFactories/Recons, [2, 2, 2, 4, 4, 4, 5]),'
+        '    (EDefaultFactories/Tanks, [2, 2, 2, 2, 2, 2, 3, 3]),'
         ']'
     ),
-    # Total points: 166
+
     "MatrixCostName_US_8th_Inf_multi": (
         'MatrixCostName_US_8th_Inf_multi is MAP'
         '['
         '    (EDefaultFactories/Art, [2, 2, 4, 4, 6]),'
         '    (EDefaultFactories/DCA, [2, 2, 4, 4, 4]),'
         '    (EDefaultFactories/Defense, [0]),'
-        '    (EDefaultFactories/Helis, [2, 2, 4, 6]),'
-        '    (EDefaultFactories/Infantry, [2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4]),'
-        '    (EDefaultFactories/Logistic, [2, 2, 2, 2, 2, 2, 2, 2, 4, 4]),'
-        '    (EDefaultFactories/Planes, [2, 2, 4, 6, 6, 8]),'
-        '    (EDefaultFactories/Recons, [2, 2, 2, 4, 4, 6]),'
-        '    (EDefaultFactories/Tanks, [2, 2, 4, 4, 4]),'
+        '    (EDefaultFactories/Helis, [2, 3, 4, 4]),'
+        '    (EDefaultFactories/Infantry, [2, 2, 2, 2, 3, 3, 3, 4, 4, 4, 4]),'
+        '    (EDefaultFactories/Logistic, [2, 2, 2, 2, 2, 2, 2, 2, 3, 3]),'
+        '    (EDefaultFactories/Planes, [2, 2, 4, 5, 6, 8]),'
+        '    (EDefaultFactories/Recons, [2, 2, 2, 4, 4, 5]),'
+        '    (EDefaultFactories/Tanks, [2, 2, 3, 4, 4]),'
         ']'
     ),
-    # Total points: 168
+
     "MatrixCostName_US_82nd_Airborne_multi": (
         'MatrixCostName_US_82nd_Airborne_multi is MAP'
         '['
         '    (EDefaultFactories/Art, [2, 2, 4, 4, 6]),'
         '    (EDefaultFactories/DCA, [2, 2, 2, 4, 6]),'
         '    (EDefaultFactories/Defense, []),'
-        '    (EDefaultFactories/Helis, [2, 2, 4, 4, 4, 4]),'
-        '    (EDefaultFactories/Infantry, [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4]),'
-        '    (EDefaultFactories/Logistic, [2, 2, 2, 2, 2, 2, 4, 4]),'
-        '    (EDefaultFactories/Planes, [2, 2, 2, 4, 4, 6, 6, 8]),'
-        '    (EDefaultFactories/Recons, [2, 2, 2, 4, 4, 4, 6]),'
-        '    (EDefaultFactories/Tanks, [2, 2, 4, 4]),'
+        '    (EDefaultFactories/Helis, [2, 2, 3, 4, 4, 5]),'
+        '    (EDefaultFactories/Infantry, [2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4]),'
+        '    (EDefaultFactories/Logistic, [2, 2, 2, 2, 2, 2, 3, 3]),'
+        '    (EDefaultFactories/Planes, [2, 2, 2, 4, 4, 5, 6, 8]),'
+        '    (EDefaultFactories/Recons, [2, 2, 2, 3, 4, 4, 6]),'
+        '    (EDefaultFactories/Tanks, [2, 2, 3, 4]),'
         ']'
     ),
-    # Total points: 154
+
     "MatrixCostName_UK_2nd_Infantry_multi": (
         'MatrixCostName_UK_2nd_Infantry_multi is MAP'
         '['
         '    (EDefaultFactories/Art, [2, 2, 4, 4, 6]),'
         '    (EDefaultFactories/DCA, [2, 2, 3, 4, 4]),'
         '    (EDefaultFactories/Defense, []),'
-        '    (EDefaultFactories/Helis, [2, 3, 3, 4]),'
+        '    (EDefaultFactories/Helis, [2, 2, 4, 5]),'
         '    (EDefaultFactories/Infantry, [2, 2, 2, 2, 2, 2, 3, 3, 3, 4, 4]),'
-        '    (EDefaultFactories/Logistic, [2, 2, 2, 2, 2, 2, 3, 3]),'
+        '    (EDefaultFactories/Logistic, [2, 2, 2, 2, 2, 2, 2, 3]),'
         '    (EDefaultFactories/Planes, [2, 2, 4, 5, 6, 8]),'
-        '    (EDefaultFactories/Recons, [2, 2, 2, 4, 4, 5, 6]),'
+        '    (EDefaultFactories/Recons, [2, 2, 2, 4, 4, 5, 5]),'
         '    (EDefaultFactories/Tanks, [2, 2, 3, 4]),'
         ']'
     ),
-    # Total points: 196
+
     "MatrixCostName_US_101st_Airmobile_multi": (
         'MatrixCostName_US_101st_Airmobile_multi is MAP'
         '['
@@ -76,67 +76,67 @@ DIVISION_MATRICES = {
         '    (EDefaultFactories/Tanks, [4, 4, 6, 6]),'
         ']'
     ),
-    # Total points: 178
-    "MatrixCostName_SOV_119IndTkBrig_multi": (
+
+    "MatrixCostName_SOV_119IndTkBrig_multi": (                           
         'MatrixCostName_SOV_119IndTkBrig_multi is MAP'
         '['
         '    (EDefaultFactories/Art, [2, 2, 4, 4, 6]),'
-        '    (EDefaultFactories/DCA, [2, 2, 4, 4]),'
+        '    (EDefaultFactories/DCA, [2, 2, 3, 4]),'
         '    (EDefaultFactories/Defense, []),'
-        '    (EDefaultFactories/Helis, [2, 2, 4, 4, 4, 6]),'
-        '    (EDefaultFactories/Infantry, [2, 2, 2, 4, 4, 6]),'
-        '    (EDefaultFactories/Logistic, [2, 2, 2, 2, 2, 2, 2, 4]),'
-        '    (EDefaultFactories/Planes, [2, 2, 4, 4, 4, 6, 8, 8]),'
-        '    (EDefaultFactories/Recons, [2, 2, 2, 4, 4, 4, 4, 6]),'
-        '    (EDefaultFactories/Tanks, [2, 2, 2, 2, 2, 4, 4, 4]),'
+        '    (EDefaultFactories/Helis, [2, 2, 4, 4, 5, 5]),'
+        '    (EDefaultFactories/Infantry, [2, 2, 3, 4, 5, 6]),'
+        '    (EDefaultFactories/Logistic, [2, 2, 2, 2, 2, 2, 2, 3]),'
+        '    (EDefaultFactories/Planes, [2, 2, 3, 4, 4, 6, 7, 8]),'
+        '    (EDefaultFactories/Recons, [2, 2, 2, 3, 4, 4, 4, 6]),'
+        '    (EDefaultFactories/Tanks, [2, 2, 2, 2, 2, 3, 3, 3]),'
         ']'
     ),
-    # Total points: 166
+
     "MatrixCostName_SOV_27_Gds_Rifle_multi": (
         'MatrixCostName_SOV_27_Gds_Rifle_multi is MAP'
         '['
         '    (EDefaultFactories/Art, [2, 2, 4, 4, 4, 6]),'
-        '    (EDefaultFactories/DCA, [2, 2, 2, 4, 4, 6]),'
+        '    (EDefaultFactories/DCA, [2, 2, 2, 4, 4, 5]),'
         '    (EDefaultFactories/Defense, []),'
-        '    (EDefaultFactories/Helis, [2, 4, 6]),'
-        '    (EDefaultFactories/Infantry, [2, 2, 2, 2, 2, 2, 2, 4, 6]),'
-        '    (EDefaultFactories/Logistic, [2, 2, 2, 2, 2, 2, 2, 4, 4, 4]),'
-        '    (EDefaultFactories/Planes, [2, 2, 4, 4, 6, 8]),'
-        '    (EDefaultFactories/Recons, [2, 2, 2, 4, 4, 6]),'
-        '    (EDefaultFactories/Tanks, [2, 2, 4, 4, 4]),'
+        '    (EDefaultFactories/Helis, [2, 4, 5]),'
+        '    (EDefaultFactories/Infantry, [2, 2, 2, 2, 3, 3, 3, 4, 6]),'
+        '    (EDefaultFactories/Logistic, [2, 2, 2, 2, 2, 2, 2, 3, 3, 3]),'
+        '    (EDefaultFactories/Planes, [2, 2, 3, 4, 6, 8]),'
+        '    (EDefaultFactories/Recons, [2, 2, 2, 3, 4, 5]),'
+        '    (EDefaultFactories/Tanks, [2, 2, 3, 4, 4]),'
         ']'
     ),
-    # Total points: 162
+
     "MatrixCostName_SOV_76_VDV_multi": (
         'MatrixCostName_SOV_76_VDV_multi is MAP'
         '['
         '    (EDefaultFactories/Art, [2, 2, 4, 4, 6]),'
-        '    (EDefaultFactories/DCA, [2, 2, 4, 4, 4]),'
+        '    (EDefaultFactories/DCA, [2, 2, 3, 4, 4]),'
         '    (EDefaultFactories/Defense, []),'
         '    (EDefaultFactories/Helis, []),'
-        '    (EDefaultFactories/Infantry, [2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4]),'
-        '    (EDefaultFactories/Logistic, [2, 2, 2, 2, 2, 2, 4, 4]),'
-        '    (EDefaultFactories/Planes, [2, 2, 2, 4, 4, 4, 6, 8]),'
-        '    (EDefaultFactories/Recons, [2, 2, 2, 2, 4, 4, 4, 4, 6]),'
-        '    (EDefaultFactories/Tanks, [2, 2, 2, 4, 4, 4]),'
+        '    (EDefaultFactories/Infantry, [2, 2, 2, 2, 2, 3, 3, 3, 4, 4, 4]),'
+        '    (EDefaultFactories/Logistic, [2, 2, 2, 2, 2, 2, 3, 3]),'
+        '    (EDefaultFactories/Planes, [2, 2, 2, 3, 4, 4, 6, 8]),'
+        '    (EDefaultFactories/Recons, [2, 2, 2, 2, 3, 4, 4, 4, 4]),'
+        '    (EDefaultFactories/Tanks, [2, 2, 2, 3, 3, 3]),'
         ']'
     ),
-    # Total points: 172
+
     "MatrixCostName_RDA_7_Panzer_multi": (
         'MatrixCostName_RDA_7_Panzer_multi is MAP'
         '['
-        '    (EDefaultFactories/Art, [2, 2, 4, 4, 6, 6]),'
-        '    (EDefaultFactories/DCA, [2, 2, 4, 4, 6]),'
+        '    (EDefaultFactories/Art, [2, 2, 4, 4, 5, 6]),'
+        '    (EDefaultFactories/DCA, [2, 2, 3, 4, 6]),'
         '    (EDefaultFactories/Defense, []),'
-        '    (EDefaultFactories/Helis, [2, 2, 4, 6]),'
-        '    (EDefaultFactories/Infantry, [2, 2, 2, 2, 4, 4, 6]),'
-        '    (EDefaultFactories/Logistic, [2, 2, 2, 2, 2, 2, 2, 4, 4]),'
-        '    (EDefaultFactories/Planes, [2, 2, 4, 4, 6, 8]),'
-        '    (EDefaultFactories/Recons, [2, 2, 2, 4, 4, 4, 6]),'
-        '    (EDefaultFactories/Tanks, [2, 2, 2, 2, 2, 4, 4, 4]),'
+        '    (EDefaultFactories/Helis, [2, 2, 4, 5]),'
+        '    (EDefaultFactories/Infantry, [2, 2, 3, 3, 4, 4, 6]),'
+        '    (EDefaultFactories/Logistic, [2, 2, 2, 2, 2, 2, 2, 3, 3]),'
+        '    (EDefaultFactories/Planes, [2, 2, 3, 4, 6, 8]),'
+        '    (EDefaultFactories/Recons, [2, 2, 2, 4, 4, 4, 5]),'
+        '    (EDefaultFactories/Tanks, [2, 2, 2, 2, 2, 3, 3, 3]),'
         ']'
     ),
-    # Total points: 168
+
     "MatrixCostName_POL_20_Pancerna_multi": (
         'MatrixCostName_POL_20_Pancerna_multi is MAP'
         '['

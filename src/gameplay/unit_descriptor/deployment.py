@@ -37,4 +37,7 @@ def edit_forward_deploy(source_path) -> None:
             
             elif shift == "3533.56890459":
                 module.v.by_m("DeploymentShiftGRU").v = "1750.0"
-                logger.info(f"Set {unit_descr.namespace} deployment to 1750m") 
+                logger.info(f"Set {unit_descr.namespace} deployment to 1750m")
+            
+            else:
+                logger.warning(f"Unknown deployment shift for {unit_descr.namespace}: {shift}")

@@ -197,8 +197,8 @@ def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
                 logger.error(f"Error processing entry: {str(e)}")
                 continue
 
-        # Convert sets to lists for JSON serialization
-        all_animation_tags = {k: list(v) for k, v in all_animation_tags.items()}
+        # Convert sets to sorted lists for consistent JSON serialization
+        all_animation_tags = {k: sorted(list(v)) for k, v in all_animation_tags.items()}
 
         # Add complete lists to output
         depiction_data["all_fire_effects"] = all_fire_effects

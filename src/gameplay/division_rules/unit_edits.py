@@ -1,7 +1,7 @@
 from typing import Any, Dict, List
 
-from src.constants.unit_edits.SUPPLY_unit_edits import supply_unit_edits
 from src.constants.unit_edits import load_unit_edits
+from src.constants.unit_edits.SUPPLY_unit_edits import supply_unit_edits
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import is_obj_type
 
@@ -135,10 +135,27 @@ def _apply_unit_updates(rule: Any, unit: str, div_name: str, edits: Dict) -> Non
         rule.by_m("NumberOfUnitInPackXPMultiplier").v = str(edits["XPMultiplier"])
         
     if "Divisions" in edits:
+        _update_cards(rule, unit, div_name, edits)
         _update_transports(rule, unit, div_name, edits)
+
+def _update_cards(rule: Any, unit: str, div_name: str, edits: Dict) -> None:
+    """Update card count for a unit."""
+    # First check for division-specific cards
+    div_cards = edits["Divisions"].get(div_name, {}).get("cards")
+    if div_cards is not None:
+        logger.debug(f"Setting {unit} cards to {div_cards} (division-specific)")
+        rule.by_m("MaxPackNumber").v = str(div_cards)
+        return
+        
+    # Fall back to default cards if they exist
+    if "default" in edits["Divisions"] and "cards" in edits["Divisions"]["default"]:
+        default_cards = edits["Divisions"]["default"]["cards"]
+        logger.debug(f"Setting {unit} cards to {default_cards} (default)")
+        rule.by_m("MaxPackNumber").v = str(default_cards)
 
 def _update_transports(rule: Any, unit: str, div_name: str, edits: Dict) -> None:
     """Update transport list for a unit."""
+
     # Check division-specific transports first, then fall back to default
     transports = (edits["Divisions"].get(div_name, {}).get("Transports") or 
                  edits["Divisions"].get("default", {}).get("Transports"))

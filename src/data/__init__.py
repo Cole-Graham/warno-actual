@@ -1,5 +1,6 @@
 """Database building and management."""
 
+import json
 from pathlib import Path
 from typing import Any, Dict
 
@@ -65,13 +66,17 @@ def build_database(config: Dict[str, Any]) -> Dict[str, Any]:
         save_database_to_disk(_database_cache, config)
         
         # After building database, save metadata
-        db_data = {
-            "ammunition": _database_cache["ammunition"],
-            "weapons": _database_cache["weapons"],
-            "depiction_data": _database_cache["depiction_data"],
-            "unit_data": _database_cache["unit_data"],
-            "decks": _database_cache["decks"]
-        }
+        # Get all JSON files in database directory except metadata files
+        db_path = Path(config['data_config']['database_path'])
+        excluded_files = {'db_metadata.json', 'master_db_metadata.json'}
+        db_files = [f for f in db_path.glob('*.json') if f.name not in excluded_files]
+        
+        # Combine all database files into single dict for checksum
+        db_data = {}
+        for file in db_files:
+            with open(file) as f:
+                db_data[file.stem] = json.load(f)
+                
         checksum = calculate_db_checksum(db_data)
         save_db_metadata(config['data_config']['database_path'], checksum, config)
         

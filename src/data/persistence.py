@@ -1,5 +1,4 @@
 """Database persistence utilities."""
-
 import json
 from pathlib import Path
 from typing import Any, Dict
@@ -9,13 +8,13 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
 
-# Map database keys to filenames
+# Map database keys to filenames in a sorted dictionary to ensure consistent ordering
 DB_FILENAMES = {
+    "ammunition": "ammunition.json",
+    "decks": "decks.json", 
+    "depiction_data": "depiction_data.json",
     "unit_data": "unit_data.json",
     "weapons": "weapons.json",
-    "ammunition": "ammunition.json",
-    "depiction_data": "depiction_data.json",
-    "decks": "decks.json"
 }
 
 def save_database_to_disk(database: Dict[str, Any], config: Dict) -> None:
@@ -24,8 +23,8 @@ def save_database_to_disk(database: Dict[str, Any], config: Dict) -> None:
         db_path = Path(config['data_config']['database_path'])
         ensure_db_directory(str(db_path))
         
-        # Save each component
-        for key, data in database.items():
+        # Save each component in sorted order
+        for key in sorted(database.keys()):
             if key == "source_files":  # Skip source files
                 continue
                 
@@ -35,7 +34,8 @@ def save_database_to_disk(database: Dict[str, Any], config: Dict) -> None:
                 
             file_path = db_path / DB_FILENAMES[key]
             with open(file_path, 'w') as f:
-                json.dump(data, f, indent=2)
+                # Use sort_keys to ensure consistent JSON output
+                json.dump(database[key], f, indent=2, sort_keys=True)
                 
         logger.info("Database saved to disk")
     except Exception as e:

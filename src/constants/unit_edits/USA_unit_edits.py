@@ -292,6 +292,9 @@ usa_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_Infantry_sf",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "Divisions": {
+            "default": {
+                "cards": 1,
+            },
             "US_8th_Inf": {
                 "Transports": ["M1038_Humvee_US", "UH60A_Black_Hawk_US"]
             },
@@ -2360,7 +2363,8 @@ usa_unit_edits = {
     },
 
     "F15C_Eagle_AA_US": {
-        "CommandPoints": 280,
+        "CommandPoints": 290,
+        "ECM": -0.45,
         "AirplaneMovement": {
             "parent_membr": {
                 "AgilityRadiusGRU": 1375,
@@ -2399,20 +2403,23 @@ usa_unit_edits = {
     },
 
     "F4E_Phantom_II_napalm_US": {
-        "CommandPoints": 150,
+        "CommandPoints": 165,
+        "availability": 3,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 
     "F111E_Aardvark_US": { # 12x mk82, 3rd Armored
         "CommandPoints": 190,
+        "availability": 2,
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 
-    "F111F_Aardvark_US": { # 12x mk82, 3rd Armored
+    "F111F_Aardvark_US": {
         "CommandPoints": 190,
+        "availability": 2,
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
@@ -2463,7 +2470,8 @@ usa_unit_edits = {
     },
 
     "F16C_LGB_US": {
-        "CommandPoints": 220,
+        "CommandPoints": 225,
+        "ECM": -0.35,
         "WeaponDescriptor": {
             "Salves": {
                 "Bomb_GBU_12_salvolength2": 1,
@@ -2477,24 +2485,28 @@ usa_unit_edits = {
     },
 
     "F16E_AGM_US": { # 4x AGM-65D, 2x AIM-9M
-        "CommandPoints": 195,
+        "CommandPoints": 200,
+        "ECM": -0.35,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 
     "F16E_HE_US": {
-        "CommandPoints": 195,
+        "CommandPoints": 200,
+        "ECM": -0.35,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 
     "F16E_napalm_US": {
-        "CommandPoints": 195,
+        "CommandPoints": 200,
         "availability": 3,
+        "ECM": -0.35,
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
     },
 
     "F16E_SEAD_US": {
-        "CommandPoints": 215,
+        "CommandPoints": 220,
         "availability": 3,
+        "ECM": -0.35,
         "WeaponDescriptor": {
             "turrets": {
                 2: {
@@ -2508,13 +2520,15 @@ usa_unit_edits = {
     },
 
     "F16E_CBU_US": {
-        "CommandPoints": 180,
+        "CommandPoints": 185,
+        "ECM": -0.35,
         "availability": 3,
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
     },
 
     "F16E_AA_US": {
-        "CommandPoints": 200,
+        "CommandPoints": 205,
+        "ECM": -0.35,
         "Divisions": {
             "default": {
                 "cards": 1,
