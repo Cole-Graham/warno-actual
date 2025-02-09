@@ -3,6 +3,8 @@
 from typing import Any, Dict
 
 from src.constants.weapons import (
+    VANILLA_LAST_ROW,
+    VANILLA_LAST_COLUMN,
     DAMAGE_EDITS,
     DPICM_DAMAGES,
     FMBALLE_INFANTRY_EDITS,
@@ -69,7 +71,6 @@ def add_damage_families_to_list(source_path) -> None:
                 # f"{kpvt_family}\n")
                 f"{nplm_bomb_family}\n"
                 f"{pgb_bomb_family}")
-
 
 def add_damage_families_to_impl(source_path) -> None:
     """Add new damage families to DamageResistanceFamilyListImpl.ndf."""
@@ -149,7 +150,7 @@ def add_damage_resistance_values(source_path) -> None:
     # Add family definitions
     damage_family_list = resist_params_obj.by_m("DamageFamilyDefinitionList").v
     families = {
-        "sniper": "TDamageTypeFamilyDefinition(Family=DamageFamily_sniper MaxIndex=1)",
+        "sniper": "TDamageTypeFamilyDefinition(Family=DamageFamily_sniper MaxIndex=2)",
         "full_ball": "TDamageTypeFamilyDefinition(Family=DamageFamily_full_balle MaxIndex=1)",
         "dpicm": "TDamageTypeFamilyDefinition(Family=DamageFamily_dpicm MaxIndex=4)",
         # "kpvt": "TDamageTypeFamilyDefinition(Family=DamageFamily_kpvt MaxIndex=1)",
@@ -160,11 +161,21 @@ def add_damage_resistance_values(source_path) -> None:
     for family_name, family_def in families.items():
         damage_family_list.add(family_def)
         logger.info(f"Added {family_name} family definition")
-    
-    # Add damage values
+
     values_list = resist_params_obj.by_m("Values").v
+    
+    # Check array dimensions match expected constants
+    last_row_index = len(values_list) - 1
+    last_column_index = len(values_list[0].v) - 1
+
+    if last_row_index != VANILLA_LAST_ROW or last_column_index != VANILLA_LAST_COLUMN:
+        logger.warning(f"DAMAGE ARRAY DIMENSIONS DIFFER FROM EXPECTED!!! Expected "
+                       f"{VANILLA_LAST_ROW + 1} rows, {VANILLA_LAST_COLUMN + 1} columns, "
+                       f"got {last_row_index + 1} rows, {last_column_index + 1} columns")
+
+    # Add damage values
     values_list.add(
-        str(SNIPER_DAMAGE),
+        *[str(sniper) for sniper in SNIPER_DAMAGE],
         str(FULL_BALL_DAMAGE),
         *[str(dpicm) for dpicm in DPICM_DAMAGES],
         # str(KPVT_DAMAGE),
@@ -202,8 +213,11 @@ def apply_damage_family_edits(source_path) -> None:
         "TResistanceTypeFamilyDefinition(Family=ResistanceFamily_infanterieWA MaxIndex=13)")
     logger.info("Added infantryWA resistance family")
     
-    # Extend damage array with new columns
     damage_array = damage_params_obj.by_m("Values").v
+    
+    
+    
+    # Extend damage array with new columns
     for row in damage_array:
         for _ in range(13):
             row.v.add("0.0")

@@ -1878,7 +1878,6 @@ usa_unit_edits = {
                 "replace": [("MMG_team_7_62mm_M60", "MMG_turret_7_62mm_M60")],
             },
         },
-
     },
 
     "M3A1_Bradley_CFV_US": {

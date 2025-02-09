@@ -102,9 +102,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
 
     ("Canon_HE_152mm_Sheridan", "canon", None, False): { # 216
         "Ammunition": {
-            "Arme": {
-                "Index": 17,
-            },
             "hit_roll": {
                 "Idling": 40,
             },
@@ -123,6 +120,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "TempsEntreDeuxTirs": 6.6,
+                "TempsEntreDeuxSalves": 6.6,
             },
         },
     },
@@ -135,6 +133,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "TempsEntreDeuxTirs": 6.6,
+                "TempsEntreDeuxSalves": 6.6,
             },
         },
     },
@@ -147,6 +146,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "TempsEntreDeuxTirs": 6.6,
+                "TempsEntreDeuxSalves": 6.6,
             },
         },
     },
@@ -172,14 +172,17 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "TempsEntreDeuxTirs": 6.6,
+                "TempsEntreDeuxSalves": 6.6,
             },
         },
     },
+
 
     ("Canon_HE_125_mm_2A46_T64A", "canon", None, False): { # 204
         "Ammunition": {
             "parent_membr": {
                 "TempsEntreDeuxTirs": 6.6,
+                "TempsEntreDeuxSalves": 6.6,
             },
         },
     },
@@ -236,6 +239,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "TempsEntreDeuxTirs": 6.6,
+                "TempsEntreDeuxSalves": 6.6,
             },
         },
     },
@@ -248,6 +252,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "TempsEntreDeuxTirs": 6.6,
+                "TempsEntreDeuxSalves": 6.6,
             },
         },
     },
@@ -260,6 +265,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "TempsEntreDeuxTirs": 6.6,
+                "TempsEntreDeuxSalves": 6.6,
             },
         },
     },
@@ -288,6 +294,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "TempsEntreDeuxTirs": 6.6,
+                "TempsEntreDeuxSalves": 6.6,
             },
         },
     },
@@ -296,6 +303,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "TempsEntreDeuxTirs": 6.6,
+                "TempsEntreDeuxSalves": 6.6,
             },
         },
     },

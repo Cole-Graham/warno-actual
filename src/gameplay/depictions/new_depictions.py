@@ -74,8 +74,8 @@ def create_infantry_depictions(source_path: Any) -> None:
         logger.info(f"Added depiction entries for {unit_name}")
         
         # Add mimetic map entries
-        source_path.by_n("InfantryMimetic").v.add((f"'{unit_name}'", f"TacticDepiction_{unit_name}_Soldier"))
-        source_path.by_n("InfantryMimeticGhost").v.add((f"'{unit_name}'", f"TacticDepiction_{unit_name}_Ghost"))
+        # source_path.by_n("InfantryMimetic").v.add((f"'{unit_name}'", f"TacticDepiction_{unit_name}_Soldier"))
+        # source_path.by_n("InfantryMimeticGhost").v.add((f"'{unit_name}'", f"TacticDepiction_{unit_name}_Ghost"))
         
         # Add transported infantry catalog entry
         for row in source_path:
@@ -101,6 +101,8 @@ def create_infantry_depictions(source_path: Any) -> None:
             new_catalog_entry.v.by_member("Meshes").v = new_meshes
             new_catalog_entry.v.by_member("Count").v = str(edits.get("alternatives_count", 1))
             new_catalog_entry.v.by_member("Identifier").v = f'"{unit_name}"'
+            new_catalog_entry.v.by_m("UnitMimetic").v = f"TacticDepiction_{unit_name}_Soldier"
+            new_catalog_entry.v.by_m("UnitMimeticGhost").v = f"TacticDepiction_{unit_name}_Ghost"
             
             entry_list.add(new_catalog_entry)
             logger.info(f"Added transported infantry catalog entry for {unit_name}")
@@ -358,7 +360,7 @@ def create_ghost_depictions(source_path: Any) -> None:
             f'GhostDepiction_{unit_name} is GhostVehicleDepictionTemplate'
             f'('
             f'    Alternatives = Alternatives_{unit_name}'
-            f'    Selector = Selector_{unit_name}'
+            f'    Selector = SpecificVehicleDepictionSelector'
             f')'
         )
         source_path.add(entry)
@@ -578,7 +580,7 @@ def create_veh_showroom_depictions(source_path: Any) -> None:
             new_depiction_obj = source_path.by_namespace(f"Gfx_{donor_name}_Showroom").copy()
             new_depiction_obj.namespace = f"Gfx_{unit_name}_Showroom"
             new_depiction_obj.v.by_member("Alternatives").v = f"Alternatives_{unit_name}"
-            new_depiction_obj.v.by_member("Selector").v = f"Selector_{unit_name}"
+            # new_depiction_obj.v.by_member("Selector").v = f"Selector_{unit_name}"
             
             if edits.get("is_infantry", False):
                 new_depiction_obj.v.by_member("SubDepictions").v = f"HumanSubDepictionsShowroom_{unit_name}"

@@ -36,9 +36,9 @@ def _update_components(components: Any) -> None:
     for component in components:
         if not isinstance(component.v, ndf.model.Object):
             continue
-            
         if is_obj_type(component.v, "PanelRoundedCorner"):
-            _update_panel_properties(component.v)
+            components.remove(component)
+            # _update_panel_properties(component.v)
         elif is_obj_type(component.v, "BUCKListDescriptor"):
             _update_list_elements(component.v.by_member("Elements").v)
 

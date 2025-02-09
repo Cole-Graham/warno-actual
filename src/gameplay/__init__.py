@@ -42,7 +42,7 @@ from .depictions import (
 )
 from .divisions import (
     add_division_rules,
-
+    deck_ap_points,
     add_to_divisions,
     create_deck_pack_descriptors,
     create_division_packs,
@@ -52,9 +52,13 @@ from .divisions import (
     supply_divisions,
 )
 from .division_rules import (
+    modify_deck_packs,
+    update_deck_pack_references,
     mg_team_division_rules,
     unit_edits_divisionrules,
     supply_divisionrules,
+    modify_decks,
+    new_deck_packs,
 )
 
 from .effects import (

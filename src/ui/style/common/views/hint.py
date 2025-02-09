@@ -27,5 +27,5 @@ def edit_buckspecifichint(source_path) -> None:
             
         if is_obj_type(component.v, "PanelRoundedCorner"):
             roundedpanel = component.v
-            roundedpanel.by_member("RoundedVertexes").v = "[false, false, false, false]"
+            roundedpanel.by_member("RoundedVertexes").v = "[true, true, true, true]"
             logger.debug("Updated hint panel rounded vertices") 

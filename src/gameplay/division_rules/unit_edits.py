@@ -12,65 +12,60 @@ def unit_edits_divisionrules(source_path: Any) -> None:
     logger.info("Applying unit edits to divisions")
     
     unit_edits = load_unit_edits()
-    division_rules = source_path.by_n("DivisionRules").v.by_member("DivisionRules").v
     
     for unit, edits in unit_edits.items():
         if "Divisions" in edits:
-            _handle_division_changes(division_rules, unit, edits)
+            _handle_division_changes(source_path, unit, edits)
             
-        _update_existing_units(division_rules, unit, edits)
+        _update_existing_units(source_path, unit, edits)
 
-def _handle_division_changes(division_rules: Any, unit: str, edits: Dict) -> None:
+def _handle_division_changes(source_path: Any, unit: str, edits: Dict) -> None:
     """Handle adding/removing units from divisions."""
     if "remove" in edits["Divisions"]:
-        _remove_from_divisions(division_rules, unit, edits["Divisions"]["remove"])
+        _remove_from_divisions(source_path, unit, edits["Divisions"]["remove"])
         
     if "add" in edits["Divisions"]:
-        _add_to_divisions(division_rules, unit, edits)
+        _add_to_divisions(source_path, unit, edits)
 
-def _remove_from_divisions(division_rules: Any, unit: str, divisions: List[str]) -> None:
+def _remove_from_divisions(source_path: Any, unit: str, divisions: List[str]) -> None:
     """Remove a unit from specified divisions."""
-    for division_name in divisions:
-        div_key = f"~/Descriptor_Deck_Division_{division_name}_multi"
-        
-        for map_row in division_rules:
-            if map_row.k != div_key:
+    for deck_descr in source_path:
+        for division in divisions:
+            if deck_descr.n != f"Descriptor_Deck_Division_{division}_multi_Rule":
                 continue
-                
-            unit_rule_list = map_row.v.by_m("UnitRuleList")
+            unit_rule_list = deck_descr.v.by_m("UnitRuleList")
             unit_descr = f"$/GFX/Unit/Descriptor_Unit_{unit}"
             
-            for rule_obj in unit_rule_list.v:
-                if not is_obj_type(rule_obj.v, None):
-                    continue
-                    
+            for rule_obj in unit_rule_list.v:  
                 if rule_obj.v.by_m("UnitDescriptor").v == unit_descr:
-                    logger.debug(f"Removing {unit} from {division_name}")
+                    logger.debug(f"Removing {unit} from {division}")
                     unit_rule_list.v.remove(rule_obj.index)
                     break
 
-def _add_to_divisions(division_rules: Any, unit: str, edits: Dict) -> None:
-    """Add a unit to specified divisions."""
-    for division_name in edits["Divisions"]["add"]:
-        div_key = f"~/Descriptor_Deck_Division_{division_name}_multi"
-        
-        for map_row in division_rules:
-            if map_row.k != div_key:
+def _add_to_divisions(source_path: Any, unit: str, edits: Dict) -> None:
+    """Add a unit to specified divisions.""" 
+    for deck_descr in source_path:
+        for division in edits["Divisions"]["add"]:
+            if deck_descr.n != f"Descriptor_Deck_Division_{division}_multi_Rule":
                 continue
                 
             # Build transport list if needed
-            transport_str = _build_transport_list(division_name, edits)
+            transport_str = _build_transport_list(division, edits)
             
+            # get cards for division or default card count
+            cards = edits["Divisions"].get(
+                division, {}).get("cards", edits["Divisions"]["default"]["cards"])
+
             # Create new rule entry
             new_entry = _create_rule_entry(
                 unit=unit,
                 edits=edits,
-                transport_str=transport_str
+                transport_str=transport_str,
+                cards=cards
             )
-            
             # Add to division
-            logger.debug(f"Adding {unit} to {division_name}")
-            map_row.v.by_m("UnitRuleList").v.add(new_entry)
+            logger.debug(f"Adding {unit} to {division}")
+            deck_descr.v.by_m("UnitRuleList").v.add(new_entry)
 
 def _build_transport_list(division_name: str, edits: Dict) -> str:
     """Build transport list string for a unit."""
@@ -85,8 +80,9 @@ def _build_transport_list(division_name: str, edits: Dict) -> str:
     prefixed = [f"$/GFX/Unit/Descriptor_Unit_{t}" for t in transports]
     return "[" + ", ".join(prefixed) + "]"
 
-def _create_rule_entry(unit: str, edits: Dict, transport_str: str = "") -> str:
+def _create_rule_entry(unit: str, edits: Dict, transport_str: str = "", cards: int = 0) -> str:
     """Create a division rule entry string."""
+
     base_entry = (
         f"TDeckUniteRule("
         f"    UnitDescriptor = $/GFX/Unit/Descriptor_Unit_{unit}"
@@ -97,6 +93,7 @@ def _create_rule_entry(unit: str, edits: Dict, transport_str: str = "") -> str:
         base_entry += f"\n    AvailableTransportList = {transport_str}"
         
     base_entry += (
+        f"\n    MaxPackNumber = {cards}"
         f"\n    NumberOfUnitInPack = {edits['availability']}"
         f"\n    NumberOfUnitInPackXPMultiplier = {edits['XPMultiplier']}"
         f"\n),"
@@ -104,21 +101,17 @@ def _create_rule_entry(unit: str, edits: Dict, transport_str: str = "") -> str:
     
     return base_entry
 
-def _update_existing_units(division_rules: Any, unit: str, edits: Dict) -> None:
+def _update_existing_units(source_path: Any, unit: str, edits: Dict) -> None:
     """Update existing unit entries in divisions."""
     unit_descr = f"$/GFX/Unit/Descriptor_Unit_{unit}"
     
-    for map_row in division_rules:
-        if not map_row.k.endswith("_multi"):
+    for deck_descr in source_path:
+        if not deck_descr.n.endswith("multi_Rule"):
             continue
-            
-        div_name = map_row.k[len("~/Descriptor_Deck_Division_"):-len("_multi")]
-        rules_list = map_row.v.by_m("UnitRuleList").v
-        
-        for rule_obj in rules_list:
-            if not is_obj_type(rule_obj.v, "TDeckUniteRule"):
-                continue
-                
+        div_name = deck_descr.n[len("Descriptor_Deck_Division_"):-len("_multi_Rule")]
+        unit_rule_list = deck_descr.v.by_m("UnitRuleList").v
+    
+        for rule_obj in unit_rule_list:                    
             # Update FOB availability
             if rule_obj.v.by_m("UnitDescriptor").v.startswith("$/GFX/Unit/Descriptor_Unit_FOB"):
                 rule_obj.v.by_m("NumberOfUnitInPack").v = "2"
@@ -157,13 +150,8 @@ def _update_transports(rule: Any, unit: str, div_name: str, edits: Dict) -> None
 
 def supply_divisionrules(source_path: Any) -> None:
     """Apply supply unit edits to DivisionRules.ndf"""
-
-    logger.info("Applying supply unit edits to divisions")
-    
-    division_rules = source_path.by_n("DivisionRules").v.by_member("DivisionRules").v
-    
     for unit, edits in supply_unit_edits.items():
         if "Divisions" in edits:
-            _handle_division_changes(division_rules, unit, edits)
+            _handle_division_changes(source_path, unit, edits)
             
-        _update_existing_units(division_rules, unit, edits)
+        _update_existing_units(source_path, unit, edits)

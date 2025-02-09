@@ -255,7 +255,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "RadiusSplashPhysicalDamagesGRU": 15,
                 "RadiusSplashSuppressDamagesGRU": 28,
-                "TempsEntreDeuxTirs": 0.25,
+                "TempsEntreDeuxTirs": 0.3,
                 "PhysicalDamages": 0.9,
                 "SuppressDamages": 90,
                 "SupplyCost": 120,
@@ -268,7 +268,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "RadiusSplashPhysicalDamagesGRU": 15,
                 "RadiusSplashSuppressDamagesGRU": 28,
-                "TempsEntreDeuxTirs": 0.25,
+                "TempsEntreDeuxTirs": 0.3,
                 "PhysicalDamages": 0.9,
                 "SuppressDamages": 90,
                 "SupplyCost": 60,

@@ -117,7 +117,7 @@ def _update_stress_text(component: Any) -> None:
             if not isinstance(nested.v, ndf.model.Object) or not is_obj_type(nested.v, "PanelRoundedCorner"):
                 continue
                 
-            nested.v.by_member("RoundedVertexes").v = "[false, false, false, false]"
+            nested.v.by_member("RoundedVertexes").v = "[true, true, true, true]"
             nested.v.add('BackgroundBlockColorToken = "M81_Quincy"')
             nested.v.add('HasBackground = true')
     

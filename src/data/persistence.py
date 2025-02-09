@@ -14,7 +14,8 @@ DB_FILENAMES = {
     "unit_data": "unit_data.json",
     "weapons": "weapons.json",
     "ammunition": "ammunition.json",
-    "depiction_data": "depiction_data.json"
+    "depiction_data": "depiction_data.json",
+    "decks": "decks.json"
 }
 
 def save_database_to_disk(database: Dict[str, Any], config: Dict) -> None:

@@ -77,7 +77,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 350,
             },
         },
-        "BaseSupplyCost": 120,
+        # "BaseSupplyCost": 120,
+        "BaseSupplyCost": 100,
         "WeaponDescriptor": {
             "SalvoLengths": [5, 2, 1],
         },
@@ -159,7 +160,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 466,
             },
         },
-        "BaseSupplyCost": 160,
+        # "BaseSupplyCost": 160,
+        "BaseSupplyCost": 100,
         "WeaponDescriptor": {
             "SalvoLengths": [6, 4, 3, 2, 1],
         },
@@ -174,10 +176,12 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 466,
             },
         },
-        "BaseSupplyCost": 150,
+        # "BaseSupplyCost": 150,
+        "BaseSupplyCost": 100,
         "WeaponDescriptor": {
             "SalvoLengths": [6, 4, 1],
         },
+
         "MissileDescriptor": {
             "MaxSpeedGRU": 466,
         },
@@ -192,10 +196,12 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 466,
             }
         },
-        "BaseSupplyCost": 115,
+        # "BaseSupplyCost": 115,
+        "BaseSupplyCost": 100,
         "WeaponDescriptor": {
             "SalvoLengths": [2],
         },
+
         "MissileDescriptor": {
             "MaxSpeedGRU": 466,
         },
@@ -330,7 +336,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 544,
             },
         },
-        "BaseSupplyCost": 115,
+        # "BaseSupplyCost": 115,
+        "BaseSupplyCost": 100,
         "WeaponDescriptor": {
             "SalvoLengths": [1],
         },
@@ -387,7 +394,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 622,
             },
         },
-        "BaseSupplyCost": 120,
+        # "BaseSupplyCost": 120,
+        "BaseSupplyCost": 100,
         "WeaponDescriptor": {
             "SalvoLengths": [1],
         },
@@ -519,7 +527,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 739,
             },
         },
-        "BaseSupplyCost": 105,
+        # "BaseSupplyCost": 105,
+        "BaseSupplyCost": 100,
         "WeaponDescriptor": {
             "SalvoLengths": [1],
         },

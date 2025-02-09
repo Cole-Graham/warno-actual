@@ -238,8 +238,8 @@ def _handle_production(unit_row: Any, descr_row: Any, edits: dict, *_) -> None: 
 def _handle_tactical_label(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:  # noqa
     if "SortingOrder" in edits:
         descr_row.v.by_m("MultiSelectionSortingOrder").v = str(edits["SortingOrder"])
-    if "strength" in edits:
-        descr_row.v.by_m("NbSoldiers").v = str(edits["strength"])
+    # if "strength" in edits:
+    #     descr_row.v.by_m("NbSoldiers").v = str(edits["strength"])
 
 
 def _handle_strategic_data(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:  # noqa

@@ -8,6 +8,7 @@ from src.utils.database_utils import calculate_db_checksum, save_db_metadata
 from src.utils.logging_utils import setup_logger
 
 from .ammo_data import build_ammo_data
+from .decks import gather_deck_data
 from .depiction_data import gather_depiction_data
 from .persistence import load_database_from_disk, save_database_to_disk
 from .source_loader import get_source_files
@@ -50,13 +51,15 @@ def build_database(config: Dict[str, Any]) -> Dict[str, Any]:
             "ammunition": build_ammo_data(mod_source_path),
             "unit_data": gather_unit_data(mod_source_path),
             "weapons": gather_weapon_data(mod_source_path),
-            "depiction_data": gather_depiction_data(mod_source_path)
+            "depiction_data": gather_depiction_data(mod_source_path),
+            "decks": gather_deck_data(mod_source_path)
         }
         
         logger.info(f"Built database with {len(_database_cache['unit_data'])} units")
         logger.info(f"Built database with {len(_database_cache['weapons'])} weapons")
         logger.info(f"Built database with {len(_database_cache['ammunition'])} ammunition entries")
         logger.info(f"Built database with {len(_database_cache['depiction_data'])} depiction entries")
+        logger.info(f"Built database with {len(_database_cache['decks'])} deck entries")
         
         # Save to disk for future use
         save_database_to_disk(_database_cache, config)
@@ -65,7 +68,9 @@ def build_database(config: Dict[str, Any]) -> Dict[str, Any]:
         db_data = {
             "ammunition": _database_cache["ammunition"],
             "weapons": _database_cache["weapons"],
-            "unit_data": _database_cache["unit_data"]
+            "depiction_data": _database_cache["depiction_data"],
+            "unit_data": _database_cache["unit_data"],
+            "decks": _database_cache["decks"]
         }
         checksum = calculate_db_checksum(db_data)
         save_db_metadata(config['data_config']['database_path'], checksum, config)

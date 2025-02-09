@@ -18,7 +18,7 @@ GRAY_EMBLEMS = [
         "FR_5eDB",
         "Berlin_Command",
         "NL_4e_Divisie",
-        "POL_20_Pc",
+        # "POL_20_Pc",
         "POL_4_ZMech",
         "POL_Korpus_Desantowy",
         "4_MSD_DDR",
