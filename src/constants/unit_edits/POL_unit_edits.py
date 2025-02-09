@@ -23,6 +23,28 @@ pol_unit_edits = {
         "max_speed": 4,
     },
 
+    "DCA_ZU_23_2_Para_POL": {  # Desant. ZU-23-2
+        "CommandPoints": 20,
+        "Factory": "EDefaultFactories/Logistic",
+        "Divisions": {
+            "default": {
+                "cards": 69,
+            },
+            "POL_4_Zmechanizowana": {
+                "cards": 2,
+            },
+            "POL_20_Pancerna": {
+                "cards": 1,
+            },
+        },
+        # "availability": 9,
+        # "XPMultiplier": [9/9, 7/9, 0.0, 0.0],
+        "max_speed": 4,
+        "GameName": {
+            "display": "SPADO. ZU-23-2",
+        },
+    },
+
     "DCA_ZUR_23_2S_JOD_POL": {  # ZUR-23-2S Jod
         "CommandPoints": 30,
         "Factory": "EDefaultFactories/Logistic",
@@ -40,6 +62,34 @@ pol_unit_edits = {
         "availability": 6,
         "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
         "max_speed": 4,
+    },
+
+    "DCA_ZUR_23_2S_JOD_Para_POL": {  # Desant. ZUR-23-2S Jod
+        "CommandPoints": 30,
+        "Factory": "EDefaultFactories/Logistic",
+        # "Divisions": {
+        #     "default": {
+        #         "cards": 69,
+        #     },
+        #     "POL_4_Zmechanizowana": {
+        #         "cards": 2,
+        #     },
+        #     "POL_20_Pancerna": {
+        #         "cards": 1,
+        #     },
+        # },
+        # "availability": 6,
+        # "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
+        "max_speed": 4,
+        "GameName": {
+            "display": "SPADO. ZUR-23-2S JOD",
+        },
+    },
+
+    "UAZ_469_CMD_Para_POL": {  # Desant. WD-43
+        "GameName": {
+            "display": "#CMD SPADO. WD-43",
+        },
     },
 
     "BMP_1_CMD_POL": {  # BWP-1K3
@@ -88,6 +138,18 @@ pol_unit_edits = {
         "XPMultiplier": [0.0, 0.0, 3/3, 0.0],
     },
 
+    "GAZ_66B_supply_POL": {  # GAZ-66B Zaop.
+        "GameName": {
+            "display": "SPADO. GAZ-66B ZAOP.",
+        },
+    },
+
+    "UAZ_469_supply_Para_POL": {  # Desant. UAZ-469 Zaop.
+        "GameName": {
+            "display": "SPADO. UAZ-469 ZAOP.",
+        },
+    },
+
     "Star_266_supply_POL": {  # Star 266 Zaop.
         "UpgradeFromUnit": "GAZ_66B_supply_POL",
     },
@@ -105,7 +167,6 @@ pol_unit_edits = {
         "CommandPoints": 40,
         "GameName": {
             "display": "#LDRSOV SAPERZY LDR.",
-            "token": "SAPERZYLDR",
         },
         "TagSet": {
             "overwrite_all": [
@@ -176,7 +237,6 @@ pol_unit_edits = {
         "CommandPoints": 40,
         "GameName": {
             "display": "#LDRSOV PIECHOTA ZMECH. LDR.",
-            "token": "PCZMECHLDR",
         },
         "TagSet": {
             "overwrite_all": [
@@ -310,8 +370,27 @@ pol_unit_edits = {
                 "RocketInf_RPG7VR_64mm": 5,
             },
         },
+        "GameName": {
+            "display": "DRUŻYNA PPANC.",
+        },
         # 7x kbk AKM
         # 2x RPG-7VL x6 (panzerjager with VL instead of VR)
+    },
+
+    "Groupe_AT_Para_POL": {  # Desant. Druzyna Ppanc.
+        "GameName": {
+            "display": "SPADO. DRUŻYNA PPANC.",
+        },
+    },
+
+    # "Rifles_POL": {  # Piechota
+    #
+    # },
+
+    "Rifles_HMG_POL": {  # Piechota (SVD)
+        "GameName": {
+            "display": "PIECHOTA [SWD]",
+        },
     },
 
     "MotRifles_POL": {  # Piechota Zmech
@@ -355,6 +434,9 @@ pol_unit_edits = {
                 "FM_kbk_AK": 9,
             },
         },
+        "GameName": {
+            "display": "PIECHOTA ZMECH [SWD]",
+        },
         # 4x kbk AKM
         # 2x PKM
         # 1x SVD
@@ -377,22 +459,6 @@ pol_unit_edits = {
     #     },
     # },
     #
-    # "Groupe_AT_Para_POL": {  # Desant./Spado. Druzyna Ppanc.
-    #     "WeaponDescriptor": {
-    #         "equipmentchanges": {
-    #             "replace": [("FM_kbk_AK", "FM_kbk_AKMS")],
-    #         },
-    #     },
-    # },
-    #
-    # "Para_Security_POL": {  # Desant./Spado. Ochrona
-    #     "WeaponDescriptor": {
-    #         "equipmentchanges": {
-    #             "replace": [("FM_kbk_AKM", "FM_kbk_AKMS")],
-    #         },
-    #     },
-    # },
-    #
     # "Para_HMG_POL": {  # Spadochroniarze [PKM]
     #     "WeaponDescriptor": {
     #         "equipmentchanges": {
@@ -401,27 +467,33 @@ pol_unit_edits = {
     #     },
     # },
     #
-    # "Engineers_paras_POL": {  # Desant./Spado. Saperzy
-    #     "WeaponDescriptor": {
-    #         "equipmentchanges": {
-    #             "replace": [("FM_kbk_AKM", "FM_kbk_AKMS")],
-    #         },
-    #     },
-    # },
-    #
-    # "Engineers_paras_Flam_POL": {  # Desant./Spado. Saperzy (LPO-50)
-    #     "WeaponDescriptor": {
-    #         "equipmentchanges": {
-    #             "replace": [("FM_kbk_AKM", "FM_kbk_AKMS")],
-    #         },
-    #     },
-    # },
-    #
-    # "Engineers_paras_CMD_POL": {  # Desant./Spado. Saperzy Dow./LDR.
-    #     "WeaponDescriptor": {
-    #         "equipmentchanges": {
-    #             "replace": [("FM_kbk_AKM", "FM_kbk_AKMS")],
-    #         },
+    "Engineers_paras_POL": {  # Desant. Saperzy
+        "GameName": {
+            "display": "SPADO. SAPERZY",
+        },
+    },
+
+    "Engineers_paras_Flam_POL": {  # Desant. Saperzy (LPO-50)
+        "GameName": {
+            "display": "SPADO. SAPERZY [FLAM]",
+        },
+    },
+
+    "Engineers_paras_CMD_POL": {  # Desant. Saperzy Dow.
+        "GameName": {
+            "display": "SPADO. SAPERZY LDR.",
+        },
+    },
+
+    "Commandos_Para_POL": {  # Desant. Komandosi
+        "GameName": {
+            "display": "SPADO. KOMANDOSI",
+        },
+    },
+
+    # "Commandos_Para_CMD_POL": {  # Desant. Komandosi Dow. (sp only)
+    #     "GameName": {
+    #         "display": "SPADO. KOMANDOSI DOW.",
     #     },
     # },
 
@@ -438,6 +510,24 @@ pol_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
+    },
+
+    "Para_Security_POL": {  # Desant. Ochrona
+        "GameName": {
+            "display": "SPADO. OCHRONA",
+        },
+    },
+
+    "Reserve_CMD_POL": {
+        "GameName": {
+            "display": "#CMD REZERWIŚCI DOW."
+        }
+    },
+
+    "Reserve_POL": {
+        "GameName": {
+            "display": "REZERWIŚCI"
+        }
     },
 
     "ATteam_RCL_SPG9_POL": {  # SPG-9
@@ -460,6 +550,14 @@ pol_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
+        "GameName": {
+            "display": "SPADO. SPG-9D",
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("Ammo_Canon_HEAT_73_mm_SPG9_TOWED", "Ammo_Canon_HEAT_73_mm_SPG9D_TOWED")],
+            },
+        },
     },
 
     "HMGteam_PKM_POL": {  # PKM 12,7mm
@@ -467,6 +565,15 @@ pol_unit_edits = {
             "POL_20_Pancerna": {
                 "Transports": ['UAZ_469_trans_POL', 'MTLB_trans_POL'],
             },
+        },
+        "GameName": {
+            "display": "PKM 7.62mm",
+        },
+    },
+
+    "HMGteam_PKM_para_POL": {  # Desant. PKM 12,7mm
+        "GameName": {
+            "display": "SPADO. PKM 7.62mm",
         },
     },
 
@@ -522,7 +629,7 @@ pol_unit_edits = {
             "add_specs": ["'infantry_equip_heavy'"],
         },
         "GameName": {
-            "display": "DESANT. PPK FAKTORIA",  # SPADO not DESANT
+            "display": "SPADO. PPK FAKTORIA",
         },
     },
 
@@ -545,7 +652,10 @@ pol_unit_edits = {
         "UpgradeFromUnit": "Atteam_Fagot_POL",
     },
 
-    "UAZ_469_SPG9_Para_POL": {  # Desant./Spado. UAZ-469 SPG-9
+    "UAZ_469_SPG9_Para_POL": {  # Desant. UAZ-469 SPG-9
+        "GameName": {
+            "display": "SPADO. UAZ-469 SPG-9",
+        },
         "CommandPoints": 25,
         "availability": 12,
         "XPMultiplier": [0.0, 12/12, 9/12, 0.0],
@@ -655,15 +765,36 @@ pol_unit_edits = {
         "XPMultiplier": [5/5, 4/5, 3/5, 0.0],
     },
 
+    "Mortier_2S12_120mm_Para_POL": {  # Desant. 2S12 120mm
+        # "CommandPoints": 40,
+        # "availability": 5,
+        # "XPMultiplier": [5/5, 4/5, 3/5, 0.0],
+        "GameName": {
+            "display": "SPADO. 2S12 120mm",
+        },
+    },
+
+    "Mortier_M43_82mm_Para_POL": {  # Desant. M43 82mm
+        "GameName": {
+            "display": "SPADO. M wz. 43 82mm",
+        },
+    },
+
+    "Mortier_M43_82mm_POL": {  # Desant. M43 82mm
+        "GameName": {
+            "display": "M wz. 43 82mm",
+        },
+    },
+
     "Mortier_2B9_Vasilek_Para_POL": {  # Desant. 2B9 Wasilok
         "CommandPoints": 45,
         "availability": 4,
         "orders": {
             "add_orders": ["ShootOnPositionSmoke", "ShootOnPositionWithoutCorrectionSmoke"],
         },
-        # "GameName": {
-        #     "display": "SPADO. 2B9 WASILOK",
-        # },
+        "GameName": {
+            "display": "SPADO. 2B9 WASILOK",
+        },
         "XPMultiplier": [0.0, 4/4, 3/4, 2/4],
         "WeaponDescriptor": {
             "turrets": {
@@ -690,6 +821,12 @@ pol_unit_edits = {
         },
     },
 
+    "MLRS_WP_8z_POL": {  # Desant. M43 82mm
+        "GameName": {
+            "display": "WP-8z 140mm",
+        },
+    },
+
     "Howz_M30_122mm_POL": {  # H wz. 1938/85 122mm
         "CommandPoints": 60,
         "availability": 5,
@@ -712,6 +849,12 @@ pol_unit_edits = {
         },
         "availability": 3,
         "XPMultiplier": [3/3, 2/3, 0.0, 0.0],
+    },
+
+    "RM70_85_POL": {  # RM wz. 70/85
+        "GameName": {
+            "display": "RM wz. 70/85"
+        }
     },
 
     "2S1_POL": {  # 2S1 Gozdzik
@@ -904,7 +1047,6 @@ pol_unit_edits = {
         "CommandPoints": 35,
         "GameName": {
             "display": "UAZ-469 FAKTORIA",
-            "token": "UAZFKTOPL",
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -916,8 +1058,7 @@ pol_unit_edits = {
     "UAZ_469_Fagot_Para_POL": {  # Desant./Spado. UAZ-469 Fagot/Faktoria
         "CommandPoints": 35,
         "GameName": {
-            "display": "DESANT. UAZ-469 FAKTORIA",
-            "token": "SPADOUAZFK",
+            "display": "SPADO. UAZ-469 FAKTORIA",
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -1006,7 +1147,6 @@ pol_unit_edits = {
     "HvyScout_POL": {  # Zmot. Zwiad.
         "GameName": {
             "display": "#RECO2 ZWIADOWCY ZMOT.",
-            "token": "ZMOTZWIAD",
         },
         "CommandPoints": 40,
         "availability": 7,
@@ -1062,11 +1202,9 @@ pol_unit_edits = {
         "DeploymentShift": 0,
     },
 
-    "Scout_para_POL": {  # Desant./Spado. Zwiadowcy
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                "replace": [("FM_kbk_AKM", "FM_kbk_AKMS")],
-            },
+    "Scout_para_POL": {  # Desant. Zwiadowcy
+        "GameName": {
+            "display": "#RECO2 SPADO. ZWIADOWCY",
         },
     },
 
@@ -1096,6 +1234,9 @@ pol_unit_edits = {
             "add_specs": ["'infantry_equip_light'"],
         },
         "DeploymentShift": 0,
+        "GameName": {
+            "display": "#RECO2 ROZP. SPECJALNE [GSR]",
+        },
     },
 
     "Scout_LRRP_Para_POL": {  # Desant. Rozp. Specjalne [GSR]
@@ -1103,6 +1244,15 @@ pol_unit_edits = {
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
+        },
+        "GameName": {
+            "display": "#RECO2 SPADO. ROZP. [GSR]",
+        },
+    },
+
+    "Sniper_paras_POL": {  # Desant. Snajper
+        "GameName": {
+            "display": "#RECO2 SPADO. SNAJPER",
         },
     },
 
@@ -1127,6 +1277,12 @@ pol_unit_edits = {
             },
         },
         "DeploymentShift": 0,
+    },
+
+    "Scout_SF_Para_POL": {  # Desant. Rozp. Specjalne
+        "GameName": {
+            "display": "#RECO2 SPADO. ROZP. SPECJALNE",
+        },
     },
 
     "BRM_1_POL": {  # BWR-1D
@@ -1172,7 +1328,6 @@ pol_unit_edits = {
     "OT_65_POL": {  # OT-65
         "GameName": {
             "display": "#RECO1 OT-65",
-            "token": "OTSFRECOPL",
         },
         "UpgradeFromUnit": "BRDM_1_POL",
     },
@@ -1202,11 +1357,33 @@ pol_unit_edits = {
         },
     },
 
+    "MANPAD_Strela_2M_Naval_POL": {  # Desant. Strzala-2M
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("FM_kbk_AK", "FM_kbk_AK_noreflex")],
+            },
+        },
+        "GameName": {
+            "display": "SPADO. STRZAŁA-2M",
+        },
+    },
+
     "MANPAD_Strela_2M_Para_POL": {  # Desant. Strzala-2M
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [("FM_kbk_AKM", "FM_kbk_AK_noreflex")],
             },
+        },
+        "GameName": {
+            "display": "SPADO. STRZAŁA-2M",
         },
     },
 
@@ -1246,6 +1423,18 @@ pol_unit_edits = {
         },
     },
 
+    "Osa_9K33M3_POL": {  # PWRB Osa-AKM
+        "optics": {
+            "OpticalStrengthAltitude": 300,
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'verygood_airoptics'"],
+        },
+        "GameName": {
+            "display": "9K33M3 ROMB"  # wargame reference
+        }
+    },
+
     "2K12_KUB_POL": {  # 2K12 Kub
         "optics": {
             "OpticalStrengthAltitude": 300,
@@ -1269,6 +1458,18 @@ pol_unit_edits = {
         "CommandPoints": 150,
         "availability": 4,
         "XPMultiplier": [0.0, 4/4, 3/4, 0.0],
+    },
+
+    "W3W_Sokol_RKT_POL": {  # W-3 Sokol [RKT
+        "GameName": {
+            "display": "W-3 SOKÓŁ [RKT]"
+        }
+    },
+
+    "W3W_Sokol_AA_POL": {  # W-3 Sokol [AA]
+        "GameName": {
+            "display": "W-3 SOKÓŁ [AA]"
+        }
     },
 
     "Mi_2_ATGM_POL": {  # Mi-2URP Salamandra
@@ -1296,6 +1497,9 @@ pol_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
+        "GameName": {
+            "display": "W-3 SOKÓŁ"
+        }
     },
 
     "Mi_8T_POL": {  # twin S-5 x32 - Mi-8T [RKT]
@@ -1380,5 +1584,12 @@ pol_unit_edits = {
         },
         "XPMultiplier": [0.0, 2/2, 0.0, 1/2],
     },
+
+    "MiG_17PF_POL": {
+        "GameName": {
+            "display": "Lim-6M [RKT]"
+        }
+    }
+
 }
 # fmt: off

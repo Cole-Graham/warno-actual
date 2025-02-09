@@ -298,7 +298,7 @@ POL_NEW_UNITS = {
             },
         },
         "availability": 2,
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+        "XPMultiplier": [0.0, 2/2, 0.0, 0.0],
         "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Spread', 'Reverse', 
                    'AskForSupply', 'AIDefend', 'AIAttack', 'AIStop'],
         "is_infantry": False, # False for Javelin LML (unique exception), towed units.
@@ -374,7 +374,11 @@ POL_NEW_UNITS = {
         "alternatives_count": 2,
     },
 
-    ("OT_62_TOPAS_R3M_CMD_POL", 0): {  # TOPAS R-3M
+    ("OT_62_TOPAS_R3M_CMD_POL", 0): {  # NIEB. BERETY TOPAS R-3M
+        "GameName": {
+            "display": "#CMD TOPAS R-3M",
+            "token": "MUGMPUTSYS",
+        },
         "GUID": "a40a0809-44e9-4f2d-a85b-c2927c736712",
         "GroupeCombatGUID": "5b78e35d-682b-47a4-b0e0-5d5059825b57",
         "ShowroomGUID": "871cf1cb-8457-4f8e-a3db-115ad7a2f8e9",
@@ -394,7 +398,7 @@ POL_NEW_UNITS = {
             ],
         },
         "Factory": "EDefaultFactories/Logistic",
-        "CommandPoints": 150,
+        "CommandPoints": 145,
         "SpecialitiesList": [
                 'hq_veh',
                 'leader_sov',

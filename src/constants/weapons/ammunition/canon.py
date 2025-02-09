@@ -35,6 +35,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
+    ("Canon_HEAT_73_mm_SPG9D_TOWED", "recoilless", "Canon_HEAT_73_mm_SPG9_TOWED", True): {  # 707
+        "Ammunition": {
+            "display": "SPG-9D",
+            "token": "SPG9D_PARA",
+        },
+    },
+
     ("Canon_HEAT_152mm_Sheridan", "canon", None, False): { # 239
         "Ammunition": {
             "Arme": {
