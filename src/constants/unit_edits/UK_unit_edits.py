@@ -896,15 +896,15 @@ uk_unit_edits = {
     },
     
     "Lynx_AH_Mk1_TOW_UK": {
-        "CommandPoints": 90,
+        "CommandPoints": 75,
         "availability": 6,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
     },
     
     "Lynx_AH_Mk7_I_TOW_UK": { # 8x ITOW
-        "CommandPoints": 100,
-        "availability": 5,
-        "XPMultiplier": [0.0, 1.0, 0.8, 0.0],
+        "CommandPoints": 95,
+        "availability": 4,
+        "XPMultiplier": [0.0, 4/4, 3/4, 0.0],
     },
     
     "Lynx_AH_Mk7_I_TOW2_UK": { # 8x FITOW
