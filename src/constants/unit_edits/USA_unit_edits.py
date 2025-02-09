@@ -1,10 +1,10 @@
 """USA unit edits."""
 
-from typing import Any, Dict
+# from typing import Any, Dict
 
 # fmt: off
 usa_unit_edits = {
-    #US LOG
+    # US LOG
     "OH58C_CMD_US": {
         "CommandPoints": 115,
         "availability": 3,
@@ -75,7 +75,8 @@ usa_unit_edits = {
         },
         "XPMultiplier": [0.0, 0.0, 0.0, 1.0],
     },
-    #US INF
+
+    # US INF
     "Rifles_half_CMD_US": {
         "CommandPoints": 40,
         "GameName": {
@@ -97,12 +98,12 @@ usa_unit_edits = {
         },
         "strength": 6,
         "WeaponAssignment": [
-                (0,[0,]),
-                (1,[0,]),
-                (2,[1,]),
-                (3,[1,]),
-                (4,[1,3]),
-                (5,[1,2]),
+                (0, [0, ]),
+                (1, [0, ]),
+                (2, [1, ]),
+                (3, [1, ]),
+                (4, [1, 3]),
+                (5, [1, 2]),
             ],
         "TransportedTexture": "UseInGame_Transport_REGINF",
         # "SortingOrder": 20075,
@@ -264,15 +265,15 @@ usa_unit_edits = {
         },
         "strength": 9,
         "WeaponAssignment": [
-                (0,[1,]),
-                (1,[0,]),
-                (2,[0,]),
-                (3,[0,]),
-                (4,[0,]),
-                (5,[0,]),
-                (6,[0,]),
-                (7,[0,3]),
-                (8,[0,2]),
+                (0, [1, ]),
+                (1, [0, ]),
+                (2, [0, ]),
+                (3, [0, ]),
+                (4, [0, ]),
+                (5, [0, ]),
+                (6, [0, ]),
+                (7, [0, 3]),
+                (8, [0, 2]),
             ],
         "TransportedTexture": "UseInGame_Transport_REGINF",
         # "SortingOrder": 20075,
@@ -664,6 +665,9 @@ usa_unit_edits = {
     },
 
     "Engineers_Flash_US": {
+        "GameName": {
+            "display": "ENGINEERS [FLASH]",
+        },
         "CommandPoints": 30,
         "Divisions": {
             "default": {
@@ -688,6 +692,9 @@ usa_unit_edits = {
     },
 
     "Airborne_Engineers_Flash_US": {
+        "GameName": {
+            "display": "AB ENGINEERS [FLASH]",
+        },
         "CommandPoints": 35,
         "Divisions": {
             "default": {
@@ -713,6 +720,9 @@ usa_unit_edits = {
     },
 
     "NatGuard_Engineers_Flam_US": {
+        "GameName": {
+            "display": "N.G. ENGINEERS [FLAM]",
+        },
         "CommandPoints": 40,
         "Divisions": {
             "default": {
@@ -739,6 +749,9 @@ usa_unit_edits = {
     },
 
     "NatGuard_Engineers_M67_US": {
+        "GameName": {
+            "display": "N.G. ENGINEERS [M67]",
+        },
         "CommandPoints": 40,
         "Divisions": {
             "default": {
@@ -760,6 +773,9 @@ usa_unit_edits = {
     },
 
     "Engineers_Dragon_US": {
+        "GameName": {
+            "display": "ENGINEERS [DRAGON]",
+        },
         "CommandPoints": 45,
         "Divisions": {
             "default": {
@@ -787,6 +803,9 @@ usa_unit_edits = {
     },
 
     "Airborne_Dragon_US": {
+        "GameName": {
+            "display": "AIRBORNE [DRAGON]",
+        },
         "CommandPoints": 45,
         "availability": 7,
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
@@ -817,6 +836,9 @@ usa_unit_edits = {
     },
 
     "Airborne_MP_RCL_US": {
+        "GameName": {
+            "display": "AB MP PATROL [M67]",
+        },
         "CommandPoints": 25,
         "availability": 9,
         "XPMultiplier": [0.0, 1.0, 0.8, 0.0],
@@ -832,6 +854,9 @@ usa_unit_edits = {
     },
 
     "MP_RCL_US": {
+        "GameName": {
+            "display": "MP PATROL [M67]",
+        },
         "CommandPoints": 25,
         "availability": 9,
         "XPMultiplier": [0.0, 1.0, 0.8, 0.0],
@@ -878,6 +903,9 @@ usa_unit_edits = {
     },
 
     "Rifles_US": { # MECH. RIFLES (DRAGON)
+        "GameName": {
+            "display": "MECH. RIFLES [DRAGON]",
+        },
         "CommandPoints": 45,
         "availability": 12,
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
@@ -888,6 +916,9 @@ usa_unit_edits = {
     },
 
     "Rifles_LAW_US": { # MECH. RIFLES (LAW)
+        "GameName": {
+            "display": "MECH. RIFLES [LAW]",
+        },
         "CommandPoints": 35,
         "availability": 12,
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
@@ -898,6 +929,9 @@ usa_unit_edits = {
     },
 
     "Rifles_half_LAW_US": {
+        "GameName": {
+            "display": "FIRE-TEAM [LAW]",
+        },
         "CommandPoints": 25,
         "Divisions": {
             "default": {
@@ -922,6 +956,9 @@ usa_unit_edits = {
     },
 
     "Rifles_half_AT4_US": {
+        "GameName": {
+            "display": "FIRE TEAM [AT4]",
+        },
         "CommandPoints": 30,
         "Divisions": {
             "default": {
@@ -963,6 +1000,9 @@ usa_unit_edits = {
     },
 
     "Ranger_Dragon_US": {
+        "GameName": {
+            "display": "RANGERS [DRAGON]",
+        },
         "CommandPoints": 65,
         "availability": 5,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.8],
@@ -1008,6 +1048,9 @@ usa_unit_edits = {
     },
 
     "Airborne_half_LAW_US": { # AB FIRE TEAM (AT-4)
+        "GameName": {
+            "display": "AB FIRE TEAM [AT4]",
+        },
         "CommandPoints": 30,
         "Divisions": {
             "default": {
@@ -1030,6 +1073,9 @@ usa_unit_edits = {
     },
 
     "Airborne_half_Dragon_US": {
+        "GameName": {
+            "display": "AB FIRE TEAM [DRAGON]",
+        },
         "CommandPoints": 30,
         "Divisions": {
             "default": {
@@ -1067,6 +1113,9 @@ usa_unit_edits = {
     },
 
     "AeroRifles_Dragon_US": {
+        "GameName": {
+            "display": "AERO-RIFLES [DRAGON]",
+        },
         "CommandPoints": 40,
         "availability": 6,
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
@@ -1084,6 +1133,9 @@ usa_unit_edits = {
     },
 
     "Aero_half_AT4_US": {
+        "GameName": {
+            "display": "AERO-FIRE TEAM [AT4]",
+        },
         "CommandPoints": 30,
         "Divisions": {
             "default": {
@@ -1106,6 +1158,9 @@ usa_unit_edits = {
     },
 
     "AeroRifles_AT4_US": {
+        "GameName": {
+            "display": "AERO-RIFLES [AT4]",
+        },
         "CommandPoints": 65,
         "availability": 5,
         "XPMultiplier": [0.0, 1.0, 0.8, 0.0],
@@ -1123,6 +1178,9 @@ usa_unit_edits = {
     },
 
     "Rifles_half_Dragon_US": {
+        "GameName": {
+            "display": "FIRE TEAM [DRAGON]",
+        },
         "CommandPoints": 30,
         "Divisions": {
             "default": {
@@ -1152,6 +1210,9 @@ usa_unit_edits = {
     },
     
     "Rifles_half_LAW_NG_US": {
+        "GameName": {
+            "display": "N.G. FIRE TEAM [LAW]",
+        },
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm")],
@@ -1160,6 +1221,9 @@ usa_unit_edits = {
     },
 
     "Rifles_half_Dragon_NG_US": {
+        "GameName": {
+            "display": "N.G. FIRE TEAM [DRAGON]",
+        },
         "CommandPoints": 30,
         "availability": 15,
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
@@ -1180,6 +1244,9 @@ usa_unit_edits = {
     },
     
     "NatGuard_M67_US": {
+        "GameName": {
+            "display": "N.G. RIFLES [M67]",
+        },
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm")],
@@ -1188,6 +1255,9 @@ usa_unit_edits = {
     },
     
     "NatGuard_LAW_US": {
+        "GameName": {
+            "display": "N.G. RIFLES [LAW]",
+        },
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm")],
@@ -1196,6 +1266,9 @@ usa_unit_edits = {
     },
     
     "NatGuard_Dragon_US": {
+        "GameName": {
+            "display": "N.G. RIFLES [DRAGON]",
+        },
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm")],
@@ -1204,6 +1277,9 @@ usa_unit_edits = {
     },
 
     "Aero_half_Dragon_US": {
+        "GameName": {
+            "display": "AERO-FIRE TEAM [DRAGON]",
+        },
         "CommandPoints": 30,
         "Divisions": {
             "default": {
@@ -1226,6 +1302,9 @@ usa_unit_edits = {
     },
 
     "GreenBerets_ODA_US": {
+        "GameName": {
+            "display": "GREEN BERETS [ODA]",
+        },
         "CommandPoints": 85,
         "availability": 3,
         "XPMultiplier": [0.0, 0.0, 0.0, 1.0],
@@ -1244,6 +1323,30 @@ usa_unit_edits = {
                 "RocketInf_AT4_83mm": 9,
             },
         }
+    },
+
+    "HMGteam_M60_Aero_US": {
+        "GameName": {
+            "display": "AERO-M60 7.62mm",
+        },
+    },
+
+    "HMGteam_M60_AB_US": {
+        "GameName": {
+            "display": "AB M60 7.62mm",
+        },
+    },
+
+    "HMGteam_M60_NG_US": {
+        "GameName": {
+            "display": "N.G. M60 7.62mm",
+        },
+    },
+
+    "HMGteam_M60_US": {
+        "GameName": {
+            "display": "M60 7.62mm",
+        },
     },
 
     "ATteam_ITOW_US": {
@@ -1329,7 +1432,8 @@ usa_unit_edits = {
             "add_specs": ["'refundable_unit'"],
         },
     },
-    #US ARTILLERY
+
+    # US ARTILLERY
     "M577_US": {
         "CommandPoints": 60,
         "GameName": {
@@ -1417,7 +1521,7 @@ usa_unit_edits = {
     "M270_MLRS_cluster_US": {
         "GameName": {
             "display": "M270 MLRS",
-            "token": "MYQQNJCCAK",
+            # "token": "MYQQNJCCAK",
         },
         "CommandPoints": 280,
         "availability": 1,
@@ -1438,7 +1542,8 @@ usa_unit_edits = {
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
-    #US TANK/VEHICLE
+
+    # US TANK
     "M1A1HA_Abrams_CMD_US": {
         "CommandPoints": 335,
         "GameName": {
@@ -1676,6 +1781,9 @@ usa_unit_edits = {
     },
 
     "M1025_Humvee_TOW_para_US": {
+        "GameName": {
+            "display": "AB M1025 HUMVEE TOW-2",
+        },
         "CommandPoints": 65,
         "stealth": 1.5,
         "availability": 6,
@@ -1830,7 +1938,8 @@ usa_unit_edits = {
         },
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],   
     },
-    #US RECON
+
+    # US RECON
     "M151A2_scout_US": {
         "CommandPoints": 25,
     },
@@ -1902,6 +2011,9 @@ usa_unit_edits = {
     },
 
     "OH58C_Scout_US": {
+        "GameName": {
+            "display": "#RECO2 OH-58C SCOUT",
+        },
         "CommandPoints": 40,
         "availability": 4,
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
@@ -1914,6 +2026,9 @@ usa_unit_edits = {
     },
 
     "OH58D_Kiowa_Warrior_US": {
+        "GameName": {
+            "display": "#RECO3 OH-58D KIOWA WR.",
+        },
         "availability": 3,
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
         "ECM": -0.1,
@@ -2025,7 +2140,14 @@ usa_unit_edits = {
         },
         "DeploymentShift": 0,
     },
-    #US AA
+
+    "Sniper_US": {
+        "GameName": {
+            "display": "#RECO2 SNIPERS",
+        },
+    },
+
+    # US AA
     "MANPAD_Stinger_C_US": {
         "GameName": {
             "display": "STINGER C",
@@ -2171,7 +2293,8 @@ usa_unit_edits = {
             "add_specs": ["'verygood_airoptics'"],
         },
     },
-    #US HELI
+
+    # US HELI
     "UH60A_Black_Hawk_US": {
         "CommandPoints": 60,
         "SpecialtiesList": {
@@ -2318,6 +2441,9 @@ usa_unit_edits = {
     },
 
     "AH64_Apache_emp1_US": { # 16x Hellfire
+        "GameName": {
+            "display": "AH-64A APACHE [AT]",
+        },
         "CommandPoints": 215,
         "Divisions": {
             "default": {
@@ -2355,7 +2481,8 @@ usa_unit_edits = {
         "availability": 2,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.49],
     },
-    #US Air
+
+    # US AIR
     "F4E_Phantom_II_AA_US": {
         "CommandPoints": 165,
         "availability": 3,

@@ -1,10 +1,10 @@
 """UK unit edits."""
 
-from typing import Any, Dict
+# from typing import Any, Dict
 
 # fmt: off
 uk_unit_edits = {
-    #UK LOG
+    # UK LOG
     "LandRover_CMD_UK": {
         "CommandPoints": 145,
         "availability": 4,
@@ -26,7 +26,8 @@ uk_unit_edits = {
         "CommandPoints": 115,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
-    #UK INF
+
+    # UK INF
     "Territorial_CMD_UK": {
         "CommandPoints": 40,
         "GameName": {
@@ -47,13 +48,13 @@ uk_unit_edits = {
         },
         "strength": 7,
         "WeaponAssignment": [
-                (0,[1,]),
-                (1,[1,]),
-                (2,[1,]),
-                (3,[1,]),
-                (4,[0,]),
-                (5,[0,]),
-                (6,[0,2,]),
+                (0, [1, ]),
+                (1, [1, ]),
+                (2, [1, ]),
+                (3, [1, ]),
+                (4, [0, ]),
+                (5, [0, ]),
+                (6, [0, 2, ]),
             ],
         "TransportedTexture": "UseInGame_Transport_REGINF",
         # "SortingOrder": 20075,
@@ -110,14 +111,14 @@ uk_unit_edits = {
         },
         "strength": 8,
         "WeaponAssignment": [
-                (0,[0,]),
-                (1,[0,]),
-                (2,[0,]),
-                (3,[0,]),
-                (4,[0,]),
-                (5,[0,]),
-                (6,[0,]),
-                (7,[0,]),
+                (0, [0, ]),
+                (1, [0, ]),
+                (2, [0, ]),
+                (3, [0, ]),
+                (4, [0, ]),
+                (5, [0, ]),
+                (6, [0, ]),
+                (7, [0, ]),
             ],
         "TransportedTexture": "UseInGame_Transport_assault",
         # "SortingOrder": 20075,
@@ -308,11 +309,11 @@ uk_unit_edits = {
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
         "max_speed": 26,
         "WeaponAssignment": [
-                (0,[1,]),
-                (1,[1,]),
-                (2,[0,]),
-                (3,[0,]),
-                (4,[0,]),
+                (0, [1, ]),
+                (1, [1, ]),
+                (2, [0, ]),
+                (3, [0, ]),
+                (4, [0, ]),
             ],
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -329,11 +330,11 @@ uk_unit_edits = {
         "strength": 5,
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
         "WeaponAssignment": [
-                (0,[2,]),
-                (1,[1,]),
-                (2,[1,]),
-                (3,[0,]),
-                (4,[0,]),
+                (0, [2, ]),
+                (1, [1, ]),
+                (2, [1, ]),
+                (3, [0, ]),
+                (4, [0, ]),
             ],
         "max_speed": 26,
         "WeaponDescriptor": {
@@ -502,11 +503,12 @@ uk_unit_edits = {
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.75],
     },
-    #UK ARTILLERY
+
+    # UK ARTILLERY
     "FV432_CMD_UK": {
         "CommandPoints": 60,
         "GameName": {
-            "display": "#LDR FV432 BATTERY CP.",
+            "display": "#LDR FV432 BATTERY CP",
             "token": "NUDZQLLWOD",
         },
         "TagSet": {
@@ -600,11 +602,12 @@ uk_unit_edits = {
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
-    #UK TANK
+
+    # UK TANK
     "Challenger_1_Mk1_CMD_UK": {
         "CommandPoints": 205,
         "GameName": {
-            "display": "#LDR CHALLENGER MK.2 LDR.",
+            "display": "#LDR CHALLENGER Mk.2 LDR.",
             "token": "LDRSOVCHAL",
         },
         "TagSet": {
@@ -677,6 +680,9 @@ uk_unit_edits = {
     },
     
     "Challenger_1_Mk1_UK": {
+        "GameName": {
+            "display": "CHALLENGER Mk.2",
+        },
         "CommandPoints": 185,
         "availability": 4,
         "Divisions": {
@@ -692,7 +698,8 @@ uk_unit_edits = {
         },
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
     },
-    #UK RECON
+
+    # UK RECON
     "Ferret_Mk2_UK": {
         "CommandPoints": 20,
         "availability": 10,
@@ -755,6 +762,9 @@ uk_unit_edits = {
     },
     
     "Sniper_UK": {
+        "GameName": {
+            "display": "#RECO2 SNIPERS",
+        },
         "CommandPoints": 30,
         "max_speed": 26,
         "SpecialtiesList": {
@@ -766,7 +776,8 @@ uk_unit_edits = {
         "CommandPoints": 30,
         "availability": 4,
     },
-    #UK DCA
+
+    # UK AA
     "MANPAD_Blowpipe_UK": {
         "CommandPoints": 15,
         "availability": 12,
@@ -858,7 +869,8 @@ uk_unit_edits = {
         },
         "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
     },
-    #UK HELI
+
+    # UK HELI
     "CH47_Chinook_UK": {
         "CommandPoints": 60,
         "SpecialtiesList": {
@@ -912,7 +924,8 @@ uk_unit_edits = {
         "availability": 4,
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
     },
-    #UK AIR
+
+    # UK AIR
     "Harrier_RKT1_UK": { # 36x SNEB, 2x AIM-9L
         "CommandPoints": 110,
         "availability": 3,
@@ -925,6 +938,7 @@ uk_unit_edits = {
                 "RocketAir_SNEB_68mm": 1,
             },
         },
+        "UpgradeFromUnit": None,
     },
     
     "Harrier_RKT2_UK": { # 36x SNEB, 36x SNEB
@@ -939,9 +953,13 @@ uk_unit_edits = {
                 "RocketAir_SNEB_68mm": 1,
             },
         },
+        "UpgradeFromUnit": "Harrier_RKT1_UK"
     },
     
     "Harrier_HE1_UK": { # 2x mk83 450kg
+        "GameName": {
+            "display": "HARRIER GR.3 [HE]",
+        },
         "CommandPoints": 130,
         "availability": 3,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
@@ -953,6 +971,9 @@ uk_unit_edits = {
     },
     
     "Jaguar_HE1_UK": { # 8x mk82 227kg
+        "GameName": {
+            "display": "JAGUAR GR.1 [HE]",
+        },
         "CommandPoints": 190,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },

@@ -4,7 +4,14 @@ from typing import Any, Dict
 
 # fmt: off
 fr_unit_edits = {
-    #FR INF
+    # FR LOG
+    "TRM_10000_supply_FR": {
+        "GameName": {
+            "display": "TRM-10000 LOG.",
+        },
+    },
+
+    # FR INF
     "VLTT_P4_FR": {
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
@@ -22,13 +29,14 @@ fr_unit_edits = {
             "add_specs": ["'refundable_unit'"],
         },
     },
-    #FR ARTILLERY
+
     "TRM_10000_FR": {
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
     },
-    #FR TANK/VEHICLE
+
+    # FR TANK
     "VAB_FR": {
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],

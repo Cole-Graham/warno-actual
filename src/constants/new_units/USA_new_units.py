@@ -105,7 +105,7 @@ USA_NEW_UNITS = {
         "CadavreGUID": "7e6528ba-b0b7-4276-9f62-3c7ac39c4aba",
         "NewName": "MANPAD_Stinger_C_Rifles_US",
         "GameName": {
-            "display": "FIRE TEAM (STINGER)",
+            "display": "FIRE TEAM [STINGER]",
             "token": "CZWRLXUPXA",
         },
         "TagSet": {

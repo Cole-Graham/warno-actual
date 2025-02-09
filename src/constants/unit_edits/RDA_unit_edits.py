@@ -4,7 +4,7 @@ from typing import Any, Dict
 
 # fmt: off
 rda_unit_edits = {
-    #RDA LOG
+    # RDA LOG
     "BMP_1_CMD_DDR": {
         "CommandPoints": 145,
         "Divisions": {
@@ -38,7 +38,14 @@ rda_unit_edits = {
         "availability": 3,
         "XPMultiplier": [0.0, 0.0, 3/3, 0.0],
     },
-    #RDA INF
+
+    "MTLB_supply_DDR": {
+        "GameName": {
+            "display": "MT-LB MUN.",
+        },
+    },
+
+    # RDA INF
     "MotRifles_CMD_DDR": {
         "CommandPoints": 40,
         "GameName": {
@@ -240,6 +247,9 @@ rda_unit_edits = {
     },
 
     "MotRifles_SVD_DDR": {
+        "GameName": {
+            "display": "MOT.-SCHÜTZEN [SVD]",
+        },
         "CommandPoints": 40,
         "Divisions": {
             "default": {
@@ -255,6 +265,9 @@ rda_unit_edits = {
     },
 
     "MotRifles_BTR_DDR": {
+        "GameName": {
+            "display": "MOT.-SCHÜTZEN [BTR]",
+        },
         "CommandPoints": 45,
         "Divisions": {
             "default": {
@@ -321,6 +334,9 @@ rda_unit_edits = {
     },
 
     "Engineers_Flam_DDR": {
+        "GameName": {
+            "display": "PIONIER [FLAM]",
+        },
         "CommandPoints": 50,
         "Divisions": {
             "default": {
@@ -337,6 +353,18 @@ rda_unit_edits = {
             "Salves": {
                 "FM_Mpi_AK_74N": 7,
             },
+        },
+    },
+
+    "HMGteam_PKM_DDR": {
+        "GameName": {
+            "display": "PKM 7.62mm",
+        },
+    },
+
+    "HMGteam_PKM_FJ_DDR": {
+        "GameName": {
+            "display": "Fs-PKM 7.62mm",
         },
     },
 
@@ -409,7 +437,8 @@ rda_unit_edits = {
             "add_specs": ["'refundable_unit'"],
         },
     },
-    #RDA ARTILLERY
+
+    # RDA ARTILLERY
     "BTR_50_CMD_DDR": {
         "CommandPoints": 60,
         "GameName": {
@@ -475,11 +504,12 @@ rda_unit_edits = {
             },
         },
     },
-    #RDA TANK
+
+    # RDA TANK
     "T55A_CMD_DDR": {
         "CommandPoints": 85,
         "GameName": {
-            "display": "#LDRSOV FüPz. T-55AK LDR.",
+            "display": "#LDRSOV FüPz T-55AK LDR.",
             "token": "VKLRXNSTQE",
         },
         "TagSet": {
@@ -517,7 +547,7 @@ rda_unit_edits = {
     "T72M_CMD_DDR": {
         "CommandPoints": 170,
         "GameName": {
-            "display": "#LDRSOV FüPz. T-72M LDR.",
+            "display": "#LDRSOV FüPz T-72M LDR.",
             "token": "XVEZUMJKLL",
         },
         "TagSet": {
@@ -621,22 +651,34 @@ rda_unit_edits = {
     },
 
     "T55A_DDR": {
+        "GameName": {
+            "display": "KPz T-55A",
+        },
         "CommandPoints": 70,
         "availability": 10,
         "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
     },
 
     "T72_DDR": {
+        "GameName": {
+            "display": "KPz T-72",
+        },
         "CommandPoints": 100,
         "XPMultiplier": [8/8, 6/8, 0.0, 0.0],
     },
 
     "T72M_DDR": {
+        "GameName": {
+            "display": "KPz T-72M",
+        },
         "CommandPoints": 145,
         "XPMultiplier": [0.0, 7/7, 5/7, 0.0],
     },
 
     "T72M1_DDR": {
+        "GameName": {
+            "display": "KPz T-72M1",
+        },
         "CommandPoints": 170,
         "availability": 4,
         "Divisions": {
@@ -646,7 +688,8 @@ rda_unit_edits = {
         },
         "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
     },
-    #RDA RECON
+
+    # RDA RECON
     "UAZ_469_Reco_DDR": {
         "CommandPoints": 25,
     },
@@ -664,10 +707,16 @@ rda_unit_edits = {
     },
 
     "BMP_1P_reco_DDR": {
+        "GameName": {
+            "display": "#RECO1 AufKl BMP-1P",
+        },
         "CommandPoints": 35,
     },
 
     "BRM_1_DDR": {
+        "GameName": {
+            "display": "#RECO3 AufKl BRM-1K",
+        },
         "CommandPoints": 60,
         "availability": 6,
         "Divisions": {
@@ -725,8 +774,12 @@ rda_unit_edits = {
             "add_specs": ["'infantry_equip_light'"],
         },
     },
-    #RDA AA
+
+    # RDA AA
     "MANPAD_Strela_2M_DDR": {
+        "GameName": {
+            "display": "Fla-RAK STRELA-2M",
+        },
         "CommandPoints": 20,
         "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
         "max_speed": 20,
@@ -741,6 +794,9 @@ rda_unit_edits = {
     },
 
     "MANPAD_Igla_DDR": {
+        "GameName": {
+            "display": "Fla-RAK IGLA",
+        },
         "CommandPoints": 35,
         "availability": 7,
         "XPMultiplier": [7/7, 5/7, 0.0, 0.0],
@@ -756,6 +812,9 @@ rda_unit_edits = {
     },
 
     "DCA_ZU_23_2_DDR": {
+        "GameName": {
+            "display": "FlaK ZU-23-2 23mm",
+        },
         "CommandPoints": 20,
         "Divisions": {
             "default": {
@@ -769,6 +828,9 @@ rda_unit_edits = {
     },
 
     "BRDM_Strela_1_DDR": {
+        "GameName": {
+            "display": "Fla-RAK STRELA-1",
+        },
         "strength": 8,
         "CommandPoints": 40,
         "Divisions": {
@@ -781,6 +843,9 @@ rda_unit_edits = {
     },
 
     "MTLB_Strela10_DDR": {
+        "GameName": {
+            "display": "Fla-RAK STRELA-10M",
+        },
         "optics": {
             "OpticalStrengthAltitude": 220,
         },
@@ -819,7 +884,8 @@ rda_unit_edits = {
             "add_specs": ["'verygood_airoptics'"],
         },
     },
-    #RDA HELI
+
+    # RDA HELI
     "Mi_2_trans_DDR": {
         "CommandPoints": 35,
         "SpecialtiesList": {
@@ -849,12 +915,18 @@ rda_unit_edits = {
     },
 
     "Mi_8TV_DDR": { # [RKT 1]
+        "GameName": {
+            "display": "Mi-8TV [RKT]",
+        },
         "CommandPoints": 70,
         "availability": 6,
         "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
     },
 
     "Mi_8TV_s57_32_DDR": { # [RKT 2]
+        "GameName": {
+            "display": "Mi-8TV [RKT2]",
+        },
         "CommandPoints": 85,
         "availability": 6,
         "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
@@ -873,6 +945,9 @@ rda_unit_edits = {
     },
 
     "Mi_24P_s8_AT_DDR": {
+        "GameName": {
+            "display": "Mi-24P [AT]",
+        },
         "CommandPoints": 160,
         "Divisions": {
             "default": {
@@ -885,7 +960,8 @@ rda_unit_edits = {
         "availability": 3,
         "XPMultiplier": [0.0, 3/3, 2/3, 0.0],
     },
-    #RDA AIR
+
+    # RDA AIR
     "MiG_21PFM_AA_DDR": {
         "CommandPoints": 100,
         "XPMultiplier": [0.0, 4/4, 3/4, 2/4],
@@ -897,6 +973,9 @@ rda_unit_edits = {
     },
 
     "MiG_21PFM_DDR": { # [RKT1]
+        "GameName": {
+            "display": "MiG-21bis [RKT]",
+        },
         "CommandPoints": 100,
         "availability": 4,
         "WeaponDescriptor": {

@@ -213,6 +213,10 @@ RDA_NEW_UNITS = {
         "ShowroomGUID": "376f5cd3-f3ef-4bd0-80c9-61ffe40e38a6",
         "CadavreGUID": "96ae475b-77da-4775-bb65-6cc436c23015",
         "NewName": "T55A_CMD2_DDR",
+        "GameName": {
+            "display": "#CMD FüPz T-55AK",
+            "token": "LSXHWRLFEM",
+        },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
@@ -273,6 +277,10 @@ RDA_NEW_UNITS = {
         "ShowroomGUID": "f8a9b0c1-d2e3-4f5g-6h7i-8j9k0l1m2n3o",
         "CadavreGUID": "3f275f69-0fdf-4e49-9f14-a3bfc4e0b471",
         "NewName": "T72M_CMD2_DDR",
+        "GameName": {
+            "display": "#CMD FüPz T-72MK",
+            "token": "DBXQVRQECV",
+        },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
