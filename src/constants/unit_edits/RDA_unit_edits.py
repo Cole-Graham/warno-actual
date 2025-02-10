@@ -297,7 +297,7 @@ rda_unit_edits = {
         },
     },
 
-    "MotSchutzen_DDR": { # Panzerjager 2x RPG-7VR
+    "MotSchutzen_DDR": {  # Panzerjager 2x RPG-7VR
         "CommandPoints": 40,
         "Divisions": {
             "default": {
@@ -484,12 +484,18 @@ rda_unit_edits = {
     },
 
     "2S1_DDR": {
+        "GameName": {
+            "display": "SFL-H 2S1",
+        },
         "CommandPoints": 100,
         "availability": 3,
         "XPMultiplier": [3/3, 2/3, 0.0, 0.0],
     },
 
     "2S3_DDR": {
+        "GameName": {
+            "display": "SFL-H 2S3M",
+        },
         "CommandPoints": 165,
         "availability": 3,
         "XPMultiplier": [3/3, 2/3, 0.0, 0.0],
@@ -507,7 +513,7 @@ rda_unit_edits = {
 
     # RDA TANK
     "T55A_CMD_DDR": {
-        "CommandPoints": 85,
+        "CommandPoints": 80,
         "GameName": {
             "display": "#LDRSOV FüPz T-55AK LDR.",
             "token": "VKLRXNSTQE",
@@ -529,7 +535,7 @@ rda_unit_edits = {
                 'armor',
                 'leader_sov',
                 '_resolute',
-                '_smoke_launcher',
+                # '_smoke_launcher',  # do not smoke
             ],
         },
         "MenuIconTexture": "Texture_RTS_H_Armor",
@@ -910,11 +916,11 @@ rda_unit_edits = {
         },
     },
     
-    "Mi_8T_DDR": { # 32 S-5M x2
+    "Mi_8T_DDR": {  # 32 S-5M x2
         "CommandPoints": 50,
     },
 
-    "Mi_8TV_DDR": { # [RKT 1]
+    "Mi_8TV_DDR": {  # [RKT 1]
         "GameName": {
             "display": "Mi-8TV [RKT]",
         },
@@ -923,7 +929,7 @@ rda_unit_edits = {
         "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
     },
 
-    "Mi_8TV_s57_32_DDR": { # [RKT 2]
+    "Mi_8TV_s57_32_DDR": {  # [RKT 2]
         "GameName": {
             "display": "Mi-8TV [RKT2]",
         },
@@ -972,7 +978,7 @@ rda_unit_edits = {
         "XPMultiplier": [0.0, 4/4, 3/4, 2/4],
     },
 
-    "MiG_21PFM_DDR": { # [RKT1]
+    "MiG_21PFM_DDR": {  # [RKT1]
         "GameName": {
             "display": "MiG-21bis [RKT]",
         },
@@ -1005,12 +1011,12 @@ rda_unit_edits = {
         },
     },
 
-    "MiG_23BN_AT_DDR": { # MiG-23MF [AT]
+    "MiG_23BN_AT_DDR": {  # MiG-23MF [AT]
         "CommandPoints": 125,
         "XPMultiplier": [0.0, 3/3, 0.0, 0.0],
     },
 
-    "MiG_23BN_RKT_DDR": { # MiG-23MF [AT]
+    "MiG_23BN_RKT_DDR": {  # MiG-23MF [AT]
         "WeaponDescriptor": {
             "Salves": {
                 "RocketAir_S24_240mm_avion_salvolength4": 1,
@@ -1021,18 +1027,18 @@ rda_unit_edits = {
         },
     },
 
-    "MiG_23MF_DDR": { # [HE]
+    "MiG_23MF_DDR": {  # [HE]
         "CommandPoints": 220,
         "availability": 3,
         "XPMultiplier": [0.0, 3/3, 0.0, 0.0],
     },
 
-    "MiG_23ML_DDR": { # [AA]
+    "MiG_23ML_DDR": {  # [AA]
         "CommandPoints": 135,
         "XPMultiplier": [0.0, 3/3, 2/3, 0.0],
     },
 
-    "MiG_29_AA_DDR": { # 4x R-73, 2x R-27R [AA1]
+    "MiG_29_AA_DDR": {  # 4x R-73, 2x R-27R [AA1]
         "CommandPoints": 200,
         "Divisions": {
             "default": {
@@ -1072,13 +1078,13 @@ rda_unit_edits = {
         "XPMultiplier": [0.0, 3/3, 0.0, 0.0],
     },
 
-    "Su_22_DDR": { # [HE]
+    "Su_22_DDR": {  # [HE]
         "CommandPoints": 215,
         "availability": 2,
         "XPMultiplier": [0.0, 2/2, 0.0, 0.0],
     },
 
-    "Su_22_RKT_DDR": { # 4x S-24
+    "Su_22_RKT_DDR": {  # 4x S-24
         "CommandPoints": 125,
         "Divisions": {
             "default": {

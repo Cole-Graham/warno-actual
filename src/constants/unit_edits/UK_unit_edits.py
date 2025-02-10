@@ -374,7 +374,7 @@ uk_unit_edits = {
         },
     },
     
-    "Airmobile_UK": { # 3x FN Mag
+    "Airmobile_UK": {  # 3x FN Mag
         "CommandPoints": 40,
         "availability": 12,
         "max_speed": 26,
@@ -384,7 +384,7 @@ uk_unit_edits = {
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
     },
     
-    "Airmobile_MILAN_UK": { # 7x L85, 2x L86A1 lmg, 1x LAW 80
+    "Airmobile_MILAN_UK": {  # 7x L85, 2x L86A1 lmg, 1x LAW 80
         "CommandPoints": 50,
         "availability": 12,
         "max_speed": 26,
@@ -457,6 +457,11 @@ uk_unit_edits = {
             "add_specs": ["'infantry_equip_light'"],
         },
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+    },
+    "HMGteam_MAG_UK": {
+        "GameName": {
+            "display": "MAG 7.62mm"
+        }
     },
     
     "RCL_L6_Wombat_UK": {
@@ -577,6 +582,9 @@ uk_unit_edits = {
     },
     
     "M107A2_175mm_UK": {
+        "GameName": {
+            "display": "M107A2",
+        },
         "CommandPoints": 170,
         "availability": 2,
         "XPMultiplier": [1.0, 0.0, 0.5, 0.0],
@@ -858,7 +866,7 @@ uk_unit_edits = {
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
     },
     
-    "DCA_Rapier_FSA_UK": { # towed FSB1
+    "DCA_Rapier_FSA_UK": {  # towed FSB1
         "CommandPoints": 85,
         "availability": 6,  
         "optics": {
@@ -913,20 +921,23 @@ uk_unit_edits = {
         "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
     },
     
-    "Lynx_AH_Mk7_I_TOW_UK": { # 8x ITOW
+    "Lynx_AH_Mk7_I_TOW_UK": {  # 8x ITOW
         "CommandPoints": 95,
         "availability": 4,
         "XPMultiplier": [0.0, 4/4, 3/4, 0.0],
     },
     
-    "Lynx_AH_Mk7_I_TOW2_UK": { # 8x FITOW
+    "Lynx_AH_Mk7_I_TOW2_UK": {  # 8x FITOW
         "CommandPoints": 130,
         "availability": 4,
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
     },
 
     # UK AIR
-    "Harrier_RKT1_UK": { # 36x SNEB, 2x AIM-9L
+    "Harrier_RKT1_UK": {  # 36x SNEB, 2x AIM-9L
+        "GameName": {
+            "display": "HARRIER GR.3 [RKT]",
+        },
         "CommandPoints": 110,
         "availability": 3,
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
@@ -941,7 +952,7 @@ uk_unit_edits = {
         "UpgradeFromUnit": None,
     },
     
-    "Harrier_RKT2_UK": { # 36x SNEB, 36x SNEB
+    "Harrier_RKT2_UK": {  # 36x SNEB, 36x SNEB
         "CommandPoints": 100,
         "availability": 4,
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
@@ -956,7 +967,7 @@ uk_unit_edits = {
         "UpgradeFromUnit": "Harrier_RKT1_UK"
     },
     
-    "Harrier_HE1_UK": { # 2x mk83 450kg
+    "Harrier_HE1_UK": {  # 2x mk83 450kg
         "GameName": {
             "display": "HARRIER GR.3 [HE]",
         },
@@ -965,12 +976,12 @@ uk_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
     
-    "Jaguar_CLU_UK": { # 4x BL755 CLU
+    "Jaguar_CLU_UK": {  # 4x BL755 CLU
         "CommandPoints": 205,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
     
-    "Jaguar_HE1_UK": { # 8x mk82 227kg
+    "Jaguar_HE1_UK": {  # 8x mk82 227kg
         "GameName": {
             "display": "JAGUAR GR.1 [HE]",
         },
@@ -978,7 +989,7 @@ uk_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
     
-    "Jaguar_HE2_UK": { # 4x Mk18 513kg
+    "Jaguar_HE2_UK": {  # 4x Mk18 513kg
         "CommandPoints": 190,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
@@ -991,13 +1002,13 @@ uk_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
     
-    "Harrier_UK": { # 4x AIM-9L
+    "Harrier_UK": {  # 4x AIM-9L
         "CommandPoints": 100,
         "availability": 4,
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
     },
     
-    "F4_Phantom_AA_F3_UK": { # 4x Skyflash, 4x AIM-9L
+    "F4_Phantom_AA_F3_UK": {  # 4x Skyflash, 4x AIM-9L
         "CommandPoints": 145,
         "availability": 3,
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],

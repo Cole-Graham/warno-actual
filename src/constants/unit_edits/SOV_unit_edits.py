@@ -1,6 +1,6 @@
 """Soviet unit edits."""
 
-from typing import Any, Dict
+# from typing import Any, Dict
 
 # fmt: off
 sov_unit_edits = {
@@ -96,12 +96,13 @@ sov_unit_edits = {
             },
         },
     },
-    #SOV INF
+
+    # SOV INF
     "MotRifles_CMD_TTsko_SOV": {
         "CommandPoints": 40,
         "GameName": {
             "display": "#LDRSOV MOTOSTRELKI LDR.",
-            "token": "ZJRMUWLPVH",
+            # "token": "ZJRMUWLPVH",
         },
         "TagSet": {
             "overwrite_all": [
@@ -169,8 +170,8 @@ sov_unit_edits = {
     "Engineers_CMD_TTsko_SOV": {
         "CommandPoints": 40,
         "GameName": {
-            "display": "#LDRSOV SAPERI LDR.",
-            "token": "QCNBGTPZWL",
+            "display": "#LDRSOV SAPERY LDR.",
+            # "token": "QCNBGTPZWL",
         },
         "TagSet": {
             "overwrite_all": [
@@ -237,8 +238,8 @@ sov_unit_edits = {
     "Engineers_CMD_SOV": {
         "CommandPoints": 40,
         "GameName": {
-            "display": "#LDRSOV SAPERI LDR.",
-            "token": "AGYMPGDUXA",
+            "display": "#LDRSOV SAPERY LDR.",
+            # "token": "AGYMPGDUXA",
         },
         "TagSet": {
             "overwrite_all": [
@@ -303,7 +304,7 @@ sov_unit_edits = {
         "CommandPoints": 40,
         "GameName": {
             "display": "#LDRSOV SPETSNAZ LDR.",
-            "token": "CKLQCEBSOY",
+            # "token": "CKLQCEBSOY",
         },
         "TagSet": {
             "overwrite_all": [
@@ -352,7 +353,7 @@ sov_unit_edits = {
         "CommandPoints": 50,
         "GameName": {
             "display": "#LDRSOV DESANTNIKI LDR.",
-            "token": "JSBZIJKKJJ",
+            # "token": "JSBZIJKKJJ",
         },
         "TagSet": {
             "overwrite_all": [
@@ -422,8 +423,8 @@ sov_unit_edits = {
     "Engineers_CMD_VDV_SOV": {
         "CommandPoints": 50,
         "GameName": {
-            "display": "#LDRSOV DESANT. SAPERI LDR.",
-            "token": "SWFVKVIZVT",
+            "display": "#LDRSOV DESANT. SAPERY LDR.",
+            # "token": "SWFVKVIZVT",
         },
         "TagSet": {
             "overwrite_all": [
@@ -485,6 +486,9 @@ sov_unit_edits = {
     },
     
     "Engineers_SOV": {
+        "GameName": {
+            "display": "SAPERY",
+        },
         "CommandPoints": 40,
         "availability": 8,
         "Divisions": {
@@ -507,9 +511,13 @@ sov_unit_edits = {
                 "Grenade_Satchel_Charge": 5,
             },
         },
+        "UpgradeFromUnit": "Engineers_CMD_SOV"
     },
         
     "Engineers_TTsko_SOV": {
+        "GameName": {
+            "display": "SAPERY",
+        },
         "CommandPoints": 40,
         "availability": 8,
         "Divisions": {
@@ -532,6 +540,9 @@ sov_unit_edits = {
     },
 
     "Engineers_VDV_SOV": {
+        "GameName": {
+            "display": "DESANT. SAPERY",
+        },
         "CommandPoints": 30,
         "availability": 10,
         "Divisions": {
@@ -547,6 +558,9 @@ sov_unit_edits = {
     },
     
     "Engineers_Flam_SOV": {
+        "GameName": {
+            "display": "SAPERY [RPO]",
+        },
         "CommandPoints": 50,
         "availability": 8,
         "Divisions": {
@@ -572,6 +586,9 @@ sov_unit_edits = {
     },
 
     "Engineers_Flam_TTsko_SOV": {
+        "GameName": {
+            "display": "SAPERY [RPO]",
+        },
         "CommandPoints": 50,
         "availability": 8,
         "Divisions": {
@@ -594,6 +611,9 @@ sov_unit_edits = {
     },
 
     "Engineers_Flam_VDV_SOV": {
+        "GameName": {
+            "display": "DESANT. SAPERY [RPO]",
+        },
         "CommandPoints": 35,
         "availability": 10,
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
@@ -609,6 +629,9 @@ sov_unit_edits = {
     },
     
     "MotRifles_SOV": {
+        "GameName": {
+            "display": "MOTOSTRELKI [BMP]",
+        },
         "CommandPoints": 30,
         "availability": 12,
         "Divisions": {
@@ -626,7 +649,10 @@ sov_unit_edits = {
         },
     },
 
-    "MotRifles_TTsko_SOV": { # RPG-27
+    "MotRifles_TTsko_SOV": {  # RPG-27
+        "GameName": {
+            "display": "MOTOSTRELKI [RPG-27]",
+        },
         "CommandPoints": 30,
         "availability": 12,
         "Divisions": {
@@ -648,7 +674,10 @@ sov_unit_edits = {
         },
     },
 
-    "MotRifles_BTR_TTsko_SOV": { # RPG-26
+    "MotRifles_BTR_TTsko_SOV": {  # RPG-26
+        "GameName": {
+            "display": "MOTOSTRELKI [RPG-26]",
+        },
         "CommandPoints": 30,
         "availability": 12,
         "Divisions": {
@@ -671,6 +700,9 @@ sov_unit_edits = {
     },
 
     "MotRifles_Metis_TTsko_SOV": {
+        "GameName": {
+            "display": "MOTOSTRELKI [METIS]",
+        },
         "CommandPoints": 40,
         "availability": 12,
         "Divisions": {
@@ -692,7 +724,10 @@ sov_unit_edits = {
         },
     },
 
-    "VDV_Mech_SOV": { # RPK, SVD, RPG-7VL
+    "VDV_Mech_SOV": {  # RPK, SVD, RPG-7VL
+        "GameName": {
+            "display": "DESANTNIKI [BMD]",
+        },
         "CommandPoints": 40,
         "availability": 8,
         "Divisions": {
@@ -718,7 +753,7 @@ sov_unit_edits = {
         },
     },
 
-    "VDV_SOV": { # RPK, SVD, RPG-7VL
+    "VDV_SOV": {  # RPK, SVD, RPG-7VL
         "CommandPoints": 40,
         "availability": 8,
         "Divisions": {
@@ -744,7 +779,7 @@ sov_unit_edits = {
         },
     },
 
-    "VDV_Combine_SOV": { # RPK, SVD, RPG-7VL
+    "VDV_Combine_SOV": {  # RPK, SVD, RPG-7VL
         "CommandPoints": 50,
         "availability": 8,
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
@@ -761,6 +796,9 @@ sov_unit_edits = {
     },
 
     "VDV_Metis_SOV": {
+        "GameName": {
+            "display": "DESANTNIKI [METIS]",
+        },
         "CommandPoints": 50,
         "availability": 8,
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
@@ -796,7 +834,7 @@ sov_unit_edits = {
         },
     },
 
-    "VDV_HMG_SOV": { # VDV Pulemetchiki
+    "VDV_HMG_SOV": {  # VDV Pulemetchiki
         "CommandPoints": 35,
         "availability": 12,
         "Divisions": {
@@ -811,7 +849,7 @@ sov_unit_edits = {
         },
     },
     
-    "MotRifles_HMG_SOV": { # Pulmetchiki
+    "MotRifles_HMG_SOV": {  # Pulmetchiki
         "CommandPoints": 35,
         "availability": 12,
         "Divisions": {
@@ -833,7 +871,7 @@ sov_unit_edits = {
         },
     },
 
-    "MotRifles_HMG_TTsko_SOV": { # Pulmetchiki
+    "MotRifles_HMG_TTsko_SOV": {  # Pulmetchiki
         "CommandPoints": 35,
         "availability": 12,
         "Divisions": {
@@ -891,7 +929,7 @@ sov_unit_edits = {
         },
     },
 
-    "Spetsnaz_Vympel_SOV": { # Spetsgruppa Vympel
+    "Spetsnaz_Vympel_SOV": {  # Spetsgruppa Vympel
         "CommandPoints": 70,
         "availability": 5,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.8],
@@ -920,6 +958,77 @@ sov_unit_edits = {
                 "RocketInf_RPG29_105mm": 6,
             },
         },
+    },
+
+    "HMGteam_PKM_SOV": {
+        "GameName": {
+            "display": "PKM 7.62mm",
+        },
+    },
+
+    "HMGteam_PKM_TTsko_SOV": {
+        "GameName": {
+            "display": "PKM 7.62mm",
+        },
+    },
+
+    "HMGteam_PKM_VDV_SOV": {
+        "GameName": {
+            "display": "DESANT. PKM 7.62mm",
+        },
+    },
+
+    "HMGteam_PKM_DShV_SOV": {
+        "GameName": {
+            "display": "DSh PKM 7.62mm",
+        },
+    },
+
+    "HMGteam_NSV_SOV": {
+        "GameName": {
+            "display": "NSV 12.7mm",
+        },
+    },
+
+    "HMGteam_NSV_TTsko_SOV": {
+        "GameName": {
+            "display": "NSV 12.7mm",
+        },
+    },
+
+    "HMGteam_NSV_DShV_SOV": {
+        "GameName": {
+            "display": "DSh NSV 12.7mm",
+        },
+    },
+
+    "HMGteam_NSV_VDV_SOV": {
+        "GameName": {
+            "display": "DESANT. NSV 12.7mm",
+        },
+    },
+
+    "HMGteam_NSV_6U6_VDV_SOV": {
+        "GameName": {
+            "display": "DESANT. 6U6 12.7mm",
+        },
+    },
+
+    "HMGteam_AGS17_SOV": {
+        "strength": 5,
+        "CommandPoints": 35,
+        "availability": 9,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "max_speed": 14,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_veryheavy'"],
+        },
+        "UpgradeFromUnit": "HMGteam_NSV_SOV",
     },
 
     "HMGteam_AGS17_TTsko_SOV": {
@@ -1123,7 +1232,8 @@ sov_unit_edits = {
             "add_specs": ["'refundable_unit'"],
         },
     },
-    #SOV ARTILLERY
+
+    # SOV ARTILLERY
     "MTLB_CMD_SOV": {
         "CommandPoints": 60,
         "GameName": {
@@ -1215,7 +1325,7 @@ sov_unit_edits = {
                 1: {
                     "MountedWeapons": {
                         "add": {
-                            "Mortier_Vasilek_indirect_82mm_towed": { # donor
+                            "Mortier_Vasilek_indirect_82mm_towed": {  # donor
                                 "Ammunition": "$/GFX/Weapon/Ammo_Mortier_Vasilek_indirect_82mm_SMOKE_towed",
                                 "DispersionRadiusOffColor": "RGBA[0,0,0,0]",
                                 "DispersionRadiusOffThickness": -0.1,
@@ -1247,7 +1357,7 @@ sov_unit_edits = {
                 1: {
                     "MountedWeapons": {
                         "add": {
-                            "Mortier_Vasilek_indirect_82mm": { # donor
+                            "Mortier_Vasilek_indirect_82mm": {  # donor
                                 "Ammunition": "$/GFX/Weapon/Ammo_Mortier_Vasilek_indirect_82mm_SMOKE",
                                 "DispersionRadiusOffColor": "RGBA[0,0,0,0]",
                                 "DispersionRadiusOffThickness": -0.1,
@@ -1291,6 +1401,9 @@ sov_unit_edits = {
     },
 
     "Howz_2A36_Giatsint_B_SOV": {
+        "GameName": {
+            "display": "2A36 GIATSINT-B 152mm",
+        },
         "CommandPoints": 100,
         "Divisions": {
             "default": {
@@ -1299,9 +1412,13 @@ sov_unit_edits = {
         },
         "availability": 3,
         "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
+        "UpgradeFromUnit": None,
     },
     
     "Howz_MstaB_150mm_SOV": {
+        "GameName": {
+            "display": "2A65 MSTA-B 152mm",
+        },
         "CommandPoints": 100,
         "Divisions": {
             "default": {
@@ -1310,6 +1427,7 @@ sov_unit_edits = {
         },
         "availability": 3,
         "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
+        "UpgradeFromUnit": "Howz_2A36_Giatsint_B_SOV",
     },
 
     "2S1_Gvozdika_SOV": {
@@ -1384,7 +1502,8 @@ sov_unit_edits = {
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
-    #SOV TANK/VEHICLE
+
+    # SOV TANK
     "T80BV_CMD_SOV": {
         "CommandPoints": 225,
         "GameName": {
@@ -1438,7 +1557,7 @@ sov_unit_edits = {
         "CommandPoints": 20,
     },
 
-    "BTR_D_Robot_SOV": { # 10x Konkurs, 2x PKT
+    "BTR_D_Robot_SOV": {  # 10x Konkurs, 2x PKT
         "CommandPoints": 30,
     },
     
@@ -1453,8 +1572,8 @@ sov_unit_edits = {
     "BMP_1P_SOV": {
         "CommandPoints": 35,
         "GameName": {
-            "display": "BMP-1P (FAKTORIYA)",
-            "token": "CVRIKDQELZ",
+            "display": "BMP-1P [FAKTORIYA]",
+            # "token": "CVRIKDQELZ",
         },
     },
 
@@ -1478,6 +1597,7 @@ sov_unit_edits = {
         "CommandPoints": 80,
         "availability": 8,
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "UpgradeFromUnit": "BMD_2_SOV",
     },
 
     "LUAZ_967M_Fagot_VDV_SOV": {
@@ -1507,11 +1627,18 @@ sov_unit_edits = {
     },
 
     "AT_T12_Rapira_SOV": {
+        "GameName": {
+            "display": "MT-12 RAPIRA 100mm",
+        },
         "CommandPoints": 55,
         "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
     },
     
     "AT_2A45_SprutB_SOV": {
+        "GameName": {
+            # "display": "2A45M SPRUT-B",
+            "display": "2A45 SPRUT-A",
+        },
         "CommandPoints": 55,
         "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
     },
@@ -1566,7 +1693,7 @@ sov_unit_edits = {
       "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
     },
     
-    #SOV RECON
+    # SOV RECON
     "UAZ_469_Reco_SOV": {
         "CommandPoints": 25,
     },
@@ -1666,6 +1793,10 @@ sov_unit_edits = {
     },
     
     "Engineers_Scout_SOV": {
+        "GameName": {
+            # "display": "#RECO2 RAZVEDKA SAPERY",
+            "display": "#RECO2 RAZV. SAPERY",
+        },
         "CommandPoints": 40,
         "Divisions": {
             "default": {
@@ -1682,6 +1813,10 @@ sov_unit_edits = {
     },
 
     "Engineers_Scout_TTsko_SOV": {
+        "GameName": {
+            # "display": "#RECO2 RAZVEDKA SAPERY",
+            "display": "#RECO2 RAZV. SAPERY",
+        },
         "CommandPoints": 40,
         "Divisions": {
             "default": {
@@ -1718,7 +1853,7 @@ sov_unit_edits = {
         "DeploymentShift": 0,
     },
 
-    "Scout_LRRP_SOV": { # Spetsnaz GRU
+    "Scout_LRRP_SOV": {  # Spetsnaz GRU
         "CommandPoints": 45,
         "availability": 4,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.75],
@@ -1759,7 +1894,8 @@ sov_unit_edits = {
         "availability": 3,
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
     },
-    #SOV AA
+
+    # SOV AA
     "BTR_ZD_Skrezhet_SOV": {
         "CommandPoints": 30,
     },
@@ -1786,7 +1922,7 @@ sov_unit_edits = {
         "max_speed": 4,
     },
 
-    "DCA_ZU_23_2_SOV": { # Airborne
+    "DCA_ZU_23_2_SOV": {  # Airborne
         "CommandPoints": 20,
         "Divisions": {
             "default": {
@@ -1954,7 +2090,8 @@ sov_unit_edits = {
             "add_specs": ["'verygood_airoptics'"],
         },
     },
-    #SOV HELI
+
+    # SOV HELI
     "Mi_2_trans_SOV": {
         "CommandPoints": 35,
         "SpecialtiesList": {
@@ -1969,11 +2106,11 @@ sov_unit_edits = {
         },
     },
 
-    "Mi_8TV_SOV": { # 32 S-5M x2
+    "Mi_8TV_SOV": {  # 32 S-5M x2
         "CommandPoints": 50,
     },
     
-    "Mi_8TV_Gunship_SOV": { # 4x Molniya, 2x S-24
+    "Mi_8TV_Gunship_SOV": {  # 4x Molniya, 2x S-24
         "CommandPoints": 110,
         "availability": 4,
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
@@ -2007,8 +2144,23 @@ sov_unit_edits = {
             },
         },
     },
+
+    "Mi_8TV_s57_16_SOV": {
+        "GameName": {
+            "display": "Mi-8MT [RKT]",
+        },
+    },
     
+    "Mi_8TV_s57_32_SOV": {
+        "GameName": {
+            "display": "Mi-8MT [RKT2]",
+        },
+    },
+
     "Mi_8TV_s80_SOV": {
+        "GameName": {
+            "display": "Mi-8MT [RKT3]",
+        },
         "CommandPoints": 95,
         "availability": 4,
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
@@ -2028,7 +2180,7 @@ sov_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
     },
 
-    "Mi_24V_RKT_SOV": { # 4x Kokon, 20x S-13
+    "Mi_24V_RKT_SOV": {  # 4x Kokon, 20x S-13
         "CommandPoints": 160,
         "Divisions": {
             "default": {
@@ -2042,7 +2194,7 @@ sov_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
     },
 
-    "Mi_24V_AT_SOV": { # 8x Kokon, 40x S-80
+    "Mi_24V_AT_SOV": {  # 8x Kokon, 40x S-80
         "CommandPoints": 160,
         "Divisions": {
             "default": {
@@ -2060,6 +2212,9 @@ sov_unit_edits = {
     },
     
     "Mi_24P_SOV": {
+        "GameName": {
+            "display": "Mi-24P [AT]",
+        },
         "CommandPoints": 160,
         "availability": 2,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
@@ -2075,8 +2230,9 @@ sov_unit_edits = {
             },
         },
     },
-    #SOV AIR
-    "Su_17M4_SOV": { # 20x S-13, 2x R-60M
+
+    # SOV AIR
+    "Su_17M4_SOV": {  # 20x S-13, 2x R-60M
         "CommandPoints": 125,
         "Divisions": {
             "default": {
@@ -2087,7 +2243,7 @@ sov_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
     },
 
-    "Su_22_AT_SOV": { # 2x Kh-29T, 2x R-60M
+    "Su_22_AT_SOV": {  # 2x Kh-29T, 2x R-60M
         "CommandPoints": 195,
         "Divisions": {
             "default": {
@@ -2109,7 +2265,7 @@ sov_unit_edits = {
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
     },
     
-    "Su_24MP_SOV": { # SEAD
+    "Su_24MP_SOV": {  # SEAD
         "CommandPoints": 270,
         "WeaponDescriptor": {
             "turrets": {
@@ -2126,7 +2282,7 @@ sov_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
     },
 
-    "Su_24MP_SEAD2_SOV": { # SEAD2
+    "Su_24MP_SEAD2_SOV": {  # SEAD2
         "CommandPoints": 300,
         "Divisions": {
             "default": {
@@ -2150,7 +2306,11 @@ sov_unit_edits = {
     },
     
     "Su_24M_LGB_SOV": {
+        "GameName": {
+            "display": "Su-24M [LGB]",
+        },
         "CommandPoints": 245,
+        "UpgradeFromUnit": None,
     },
 
     "Su_24M_LGB2_SOV": {
@@ -2158,6 +2318,9 @@ sov_unit_edits = {
     },
 
     "Su_24M_AT1_SOV": {
+        "GameName": {
+            "display": "Su-24M [AT]",
+        },
         "CommandPoints": 190,
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
@@ -2184,7 +2347,7 @@ sov_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 
-    "MiG_27M_bombe_SOV": { # 4x FAB-500
+    "MiG_27M_bombe_SOV": {  # 4x FAB-500
         "CommandPoints": 145,
         "Divisions": {
             "default": {
@@ -2195,7 +2358,7 @@ sov_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 
-    "MiG_27M_napalm_SOV": { # 4x ZB-500
+    "MiG_27M_napalm_SOV": {  # 4x ZB-500
         "CommandPoints": 145,
         "Divisions": {
             "default": {
@@ -2206,7 +2369,7 @@ sov_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 
-    "MiG_23MLD_SOV": { # 2x R-24MR, 2x R-73
+    "MiG_23MLD_SOV": {  # 2x R-24MR, 2x R-73
         "CommandPoints": 175,
         "Divisions": {
             "default": {
@@ -2217,7 +2380,7 @@ sov_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
     },
 
-    "Su_25T_SOV": { # 16x Vikhr, 2x R-73
+    "Su_25T_SOV": {  # 16x Vikhr, 2x R-73
         "CommandPoints": 260,
         "Divisions": {
             "default": {
@@ -2234,7 +2397,10 @@ sov_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
     },
     
-    "MiG_29_AA_SOV": { # 4x R-73, 2x R-27R
+    "MiG_29_AA_SOV": {  # 4x R-73, 2x R-27R
+        "GameName": {
+            "display": "MiG-29 [AA]",
+        },
         "CommandPoints": 200,
         "Divisions": {
             "default": {
@@ -2248,7 +2414,7 @@ sov_unit_edits = {
         "UpgradeFromUnit": None,
     },
 
-    "MiG_29_AA2_SOV": { # 2x R-60M, 2x R-27R
+    "MiG_29_AA2_SOV": {  # 2x R-60M, 2x R-27R
         "CommandPoints": 185,
         "Divisions": {
             "default": {
@@ -2263,17 +2429,20 @@ sov_unit_edits = {
         "UpgradeFromUnit": "MiG_29_AA_SOV",
     },
 
-    "MiG_29_AA3_SOV": { # 4x R-73, 2x R-27T
+    "MiG_29_AA3_SOV": {  # 4x R-73, 2x R-27T
         "UpgradeFromUnit": "MiG_29_AA2_SOV",
         "ButtonTexture": "MiG_29_AA_SOV",  # match icon to model (regular icon has wrong camo)
     },
     
-    "Su_27S_SOV": { # 6x R-73, 4x R-27R
+    "Su_27S_SOV": {  # 6x R-73, 4x R-27R
         "CommandPoints": 240,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
     },
 
-    "MiG_31_AA1_SOV": { # 4x R-33, 2x R-40TD1
+    "MiG_31_AA1_SOV": {  # 4x R-33, 2x R-40TD1
+        "GameName": {
+            "display": "MiG-31 [AA]",
+        },
         "AirplaneMovement": {
             "parent_membr": {
                 "AgilityRadiusGRU": 1650,
@@ -2289,7 +2458,7 @@ sov_unit_edits = {
         },
     },
 
-    "MiG_31_AA2_SOV": { # 4x R-33, 4x R-60M
+    "MiG_31_AA2_SOV": {  # 4x R-33, 4x R-60M
         "AirplaneMovement": {
             "parent_membr": {
                 "AgilityRadiusGRU": 1650,

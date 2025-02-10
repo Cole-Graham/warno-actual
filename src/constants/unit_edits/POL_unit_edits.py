@@ -93,14 +93,14 @@ pol_unit_edits = {
     },
 
     "BMP_1_CMD_POL": {  # BWP-1K3
-        "CommandPoints": 145,
+        "CommandPoints": 155,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "availability": 2,
-        "XPMultiplier": [0.0, 0.0, 2/2, 0.0],
+        "availability": 3,
+        "XPMultiplier": [0.0, 0.0, 3/3, 0.0],
         "UpgradeFromUnit": None,
     },
 
@@ -879,19 +879,23 @@ pol_unit_edits = {
         "XPMultiplier": [3/3, 2/3, 0.0, 0.0],
     },
 
-    "DANA_POL": {  # AHS wz.77 DANA
+    "DANA_POL": {  # AHS wz. 77 DANA
+        "GameName": {
+            "display": "AHS wz. 77 DANA",
+        },
         "CommandPoints": 200,
         "availability": 2,
         "XPMultiplier": [2/2, 0.0, 1/2, 0.0],
-        "max_speed": 65,
-        "road_speed": {
-            # requires either factor, or base_speed & road_speed
-            # factor computed from road_speed / base_speed if factor not defined
-            # visual (UI) road_speed unchanged if unspecified
-            "base_speed": 65,
-            "factor": 1.92,
-            "road_speed": 100,
-        },
+        # "max_speed": 65,
+        # # speed corrected in vanilla - keeping this here for reference
+        # "road_speed": {
+        #     # requires either factor, or base_speed & road_speed
+        #     # factor computed from road_speed / base_speed if factor not defined
+        #     # visual (UI) road_speed unchanged if unspecified
+        #     "base_speed": 65,
+        #     "factor": 1.92,
+        #     "road_speed": 100,
+        # },
     },
 
     # POL TANK
@@ -1159,6 +1163,9 @@ pol_unit_edits = {
     },
 
     "Engineers_Scout_POL": {  # Saperzy Zwiadowcy
+        "GameName": {
+            "display": "#RECO2 SAPERZY ZWIAD.",
+        },
         "CommandPoints": 40,
         "Divisions": {
             "default": {
@@ -1286,7 +1293,7 @@ pol_unit_edits = {
     },
 
     "BRM_1_POL": {  # BWR-1D
-        "CommandPoints": 60,
+        "CommandPoints": 55,
         "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
     },
 
@@ -1315,7 +1322,6 @@ pol_unit_edits = {
     },
 
     #   recon tab transports
-
     "BMP_1_SP2_reco_POL": {  # Rozp. BWP-1
         "CommandPoints": 35,
     },
@@ -1368,7 +1374,7 @@ pol_unit_edits = {
             },
         },
         "GameName": {
-            "display": "SPADO. STRZAŁA-2M",
+            "display": "NIEB. BERETY STRZAŁA-2M",
         },
     },
 
@@ -1575,7 +1581,10 @@ pol_unit_edits = {
         "XPMultiplier": [0.0, 2/2, 0.0, 1/2],
     },
 
-    "MiG_29_AA_POL": {  # 4x R-73, 2x R-27R [AA1]
+    "MiG_29_AA_POL": {  # 4x R-73, 2x R-27R [AA]
+        "GameName": {
+            "display": "MiG-29A [AA]",
+        },
         "CommandPoints": 200,
         "Divisions": {
             "default": {

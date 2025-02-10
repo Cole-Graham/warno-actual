@@ -9,7 +9,8 @@ RDA_NEW_UNITS = {
         "CadavreGUID": "79abc88c-d5be-4615-9ed2-4cb87bde9f4b",
         "NewName": "MotRifles_CMD2_DDR",
         "GameName": {
-            "display": "#CMD MOT.-SCHÜTZEN FÜH.",
+            "display": "#CMD FÜHRUNGSTRUPP.",
+            # "display": "#CMD MOT.-SCHÜTZEN FÜH.",
             "token": "DGZBQXLAYD",
         },
         "TagSet": {

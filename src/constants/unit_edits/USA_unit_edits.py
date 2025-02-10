@@ -81,7 +81,7 @@ usa_unit_edits = {
         "CommandPoints": 40,
         "GameName": {
             "token": "CPCIJQLHML",
-            "display": "#LDR FIRE TEAM LDR.",
+            "display": "#LDR FIRETEAM LDR.",
         },
         "TagSet": {
             "overwrite_all": [
@@ -468,7 +468,7 @@ usa_unit_edits = {
     "Aero_half_CMD_US": {
         "CommandPoints": 35,
         "GameName": {
-            "display": "#LDR AERO-FIRE TEAM LDR.",
+            "display": "#LDR AERO-FIRETEAM LDR.",
             "token": "MHGSSCNBFO",
         },
         "TagSet": {
@@ -882,7 +882,7 @@ usa_unit_edits = {
         },
     },
 
-    "Airborne_HMG_US": { # AIRBORNE GUNNERS
+    "Airborne_HMG_US": {  # AIRBORNE GUNNERS
         "CommandPoints": 35,
         "availability": 8,
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
@@ -892,7 +892,7 @@ usa_unit_edits = {
         },
     },
 
-    "AeroRifles_US": { # AIR CAV TROOPERS
+    "AeroRifles_US": {  # AIR CAV TROOPERS
         "CommandPoints": 40,
         "availability": 12,
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
@@ -902,7 +902,7 @@ usa_unit_edits = {
         },
     },
 
-    "Rifles_US": { # MECH. RIFLES (DRAGON)
+    "Rifles_US": {  # MECH. RIFLES (DRAGON)
         "GameName": {
             "display": "MECH. RIFLES [DRAGON]",
         },
@@ -915,7 +915,7 @@ usa_unit_edits = {
         },
     },
 
-    "Rifles_LAW_US": { # MECH. RIFLES (LAW)
+    "Rifles_LAW_US": {  # MECH. RIFLES (LAW)
         "GameName": {
             "display": "MECH. RIFLES [LAW]",
         },
@@ -930,7 +930,7 @@ usa_unit_edits = {
 
     "Rifles_half_LAW_US": {
         "GameName": {
-            "display": "FIRE-TEAM [LAW]",
+            "display": "FIRETEAM [LAW]",
         },
         "CommandPoints": 25,
         "Divisions": {
@@ -957,7 +957,7 @@ usa_unit_edits = {
 
     "Rifles_half_AT4_US": {
         "GameName": {
-            "display": "FIRE TEAM [AT4]",
+            "display": "FIRETEAM [AT4]",
         },
         "CommandPoints": 30,
         "Divisions": {
@@ -1047,9 +1047,9 @@ usa_unit_edits = {
         },
     },
 
-    "Airborne_half_LAW_US": { # AB FIRE TEAM (AT-4)
+    "Airborne_half_LAW_US": {  # AB FIRETEAM (AT-4)
         "GameName": {
-            "display": "AB FIRE TEAM [AT4]",
+            "display": "AB FIRETEAM [AT4]",
         },
         "CommandPoints": 30,
         "Divisions": {
@@ -1074,7 +1074,7 @@ usa_unit_edits = {
 
     "Airborne_half_Dragon_US": {
         "GameName": {
-            "display": "AB FIRE TEAM [DRAGON]",
+            "display": "AB FIRETEAM [DRAGON]",
         },
         "CommandPoints": 30,
         "Divisions": {
@@ -1134,7 +1134,7 @@ usa_unit_edits = {
 
     "Aero_half_AT4_US": {
         "GameName": {
-            "display": "AERO-FIRE TEAM [AT4]",
+            "display": "AERO-FIRETEAM [AT4]",
         },
         "CommandPoints": 30,
         "Divisions": {
@@ -1179,7 +1179,7 @@ usa_unit_edits = {
 
     "Rifles_half_Dragon_US": {
         "GameName": {
-            "display": "FIRE TEAM [DRAGON]",
+            "display": "FIRETEAM [DRAGON]",
         },
         "CommandPoints": 30,
         "Divisions": {
@@ -1211,7 +1211,7 @@ usa_unit_edits = {
     
     "Rifles_half_LAW_NG_US": {
         "GameName": {
-            "display": "N.G. FIRE TEAM [LAW]",
+            "display": "N.G. FIRETEAM [LAW]",
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -1222,7 +1222,7 @@ usa_unit_edits = {
 
     "Rifles_half_Dragon_NG_US": {
         "GameName": {
-            "display": "N.G. FIRE TEAM [DRAGON]",
+            "display": "N.G. FIRETEAM [DRAGON]",
         },
         "CommandPoints": 30,
         "availability": 15,
@@ -1278,7 +1278,7 @@ usa_unit_edits = {
 
     "Aero_half_Dragon_US": {
         "GameName": {
-            "display": "AERO-FIRE TEAM [DRAGON]",
+            "display": "AERO-FIRETEAM [DRAGON]",
         },
         "CommandPoints": 30,
         "Divisions": {
@@ -1346,6 +1346,24 @@ usa_unit_edits = {
     "HMGteam_M60_US": {
         "GameName": {
             "display": "M60 7.62mm",
+        },
+    },
+
+    "HMGteam_M2HB_US": {
+        "GameName": {
+            "display": "M2HB 12.7mm",
+        },
+    },
+
+    "HMGteam_M2HB_AB_US": {
+        "GameName": {
+            "display": "AB M2HB 12.7mm",
+        },
+    },
+
+    "HMGteam_M2HB_Aero_US": {
+        "GameName": {
+            "display": "AB M2HB 12.7mm",
         },
     },
 
@@ -1481,7 +1499,7 @@ usa_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.8, 0.6],
     },
 
-    "M125_HOWZ_US": { # M125 mortar carrier, M29A1 81mm Mortar
+    "M125_HOWZ_US": {  # M125 mortar carrier, M29A1 81mm Mortar
         "CommandPoints": 45,
         "availability": 4,
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
@@ -1790,13 +1808,13 @@ usa_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
     },
 
-    "M901A1_ITW_US": { # TOW 2
+    "M901A1_ITW_US": {  # TOW 2
         "CommandPoints": 65,
         "availability": 8,
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
     },
 
-    "M901_TOW_US": { # ITOW
+    "M901_TOW_US": {  # ITOW
         "CommandPoints": 50,
         "availability": 8,
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
@@ -2429,7 +2447,7 @@ usa_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
     },
 
-    "AH64_Apache_US": { # 8x Hellfire / Hydra
+    "AH64_Apache_US": {  # 8x Hellfire / Hydra
         "CommandPoints": 200,
         "Divisions": {
             "default": {
@@ -2440,7 +2458,7 @@ usa_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.0, 0.49],
     },
 
-    "AH64_Apache_emp1_US": { # 16x Hellfire
+    "AH64_Apache_emp1_US": {  # 16x Hellfire
         "GameName": {
             "display": "AH-64A APACHE [AT]",
         },
@@ -2535,7 +2553,7 @@ usa_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 
-    "F111E_Aardvark_US": { # 12x mk82, 3rd Armored
+    "F111E_Aardvark_US": {  # 12x mk82, 3rd Armored
         "CommandPoints": 190,
         "availability": 2,
         "SpecialtiesList": {
@@ -2553,12 +2571,12 @@ usa_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 
-    "F111F_Aardvark_LGB_US": { # 4x GBU-12
+    "F111F_Aardvark_LGB_US": {  # 4x GBU-12
         "CommandPoints": 210,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 
-    "F111E_Aardvark_CBU_US": { # 8x Mk-20 Rockeye, 3rd Armored
+    "F111E_Aardvark_CBU_US": {  # 8x Mk-20 Rockeye, 3rd Armored
         "CommandPoints": 190,
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
@@ -2566,7 +2584,7 @@ usa_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 
-    "F111F_Aardvark_CBU_US": { # 8x Mk-20 Rockeye, 82nd Airborne
+    "F111F_Aardvark_CBU_US": {  # 8x Mk-20 Rockeye, 82nd Airborne
         "CommandPoints": 190,
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
@@ -2574,7 +2592,7 @@ usa_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 
-    "F111E_Aardvark_napalm_US": { # 4x Mk-77 napalm, 3rd Armored
+    "F111E_Aardvark_napalm_US": {  # 4x Mk-77 napalm, 3rd Armored
         "CommandPoints": 190,
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
@@ -2582,7 +2600,7 @@ usa_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 
-    "F111F_Aardvark_napalm_US": { # 4x Mk-77 napalm, 82nd Airborne
+    "F111F_Aardvark_napalm_US": {  # 4x Mk-77 napalm, 82nd Airborne
         "CommandPoints": 190,
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
@@ -2611,7 +2629,7 @@ usa_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 
-    "F16E_AGM_US": { # 4x AGM-65D, 2x AIM-9M
+    "F16E_AGM_US": {  # 4x AGM-65D, 2x AIM-9M
         "CommandPoints": 200,
         "ECM": -0.35,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
@@ -2668,7 +2686,7 @@ usa_unit_edits = {
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
     },
 
-    "A10_Thunderbolt_II_US": { # 8x mk.82, 2x AIM-9M
+    "A10_Thunderbolt_II_US": {  # 8x mk.82, 2x AIM-9M
         "CommandPoints": 220,
         "AirplaneMovement": {
             "parent_membr": {
@@ -2679,7 +2697,7 @@ usa_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 
-    "A10_Thunderbolt_II_Rkt_US": { # 76x Hydra, 2x AIM-9M
+    "A10_Thunderbolt_II_Rkt_US": {  # 76x Hydra, 2x AIM-9M
         "CommandPoints": 220,
         "AirplaneMovement": {
             "parent_membr": {
@@ -2690,7 +2708,7 @@ usa_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 
-    "A10_Thunderbolt_II_ATGM_US": { # 76x Hydra, 2x AIM-9M
+    "A10_Thunderbolt_II_ATGM_US": {  # 76x Hydra, 2x AIM-9M
         "CommandPoints": 240,
         "AirplaneMovement": {
             "parent_membr": {

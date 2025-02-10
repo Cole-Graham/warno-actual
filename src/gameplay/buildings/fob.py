@@ -59,7 +59,7 @@ def edit_fob_attributes(source_path) -> None:
             "FOBDDR": "FELDDEPOT",
             "FOBESP": "tbd",  # spain
             "FOBFR": "DÉPÔT DE MUNITION",
-            "FOBNL": "MUNITIEDUMP",  # supposedly preferred over munitie stoortplats
+            "FOBNL": "MUNITIEDEPOT",  # supposedly preferred over munitie stoortplats
             "FOBPOL": "PUNKT ZAOPATRZENIA",
             "FOBRFA": "FELDDEPOT",
             "FOBSOV": "SKLAD SNABZHENIYA",
