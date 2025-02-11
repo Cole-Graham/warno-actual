@@ -49,7 +49,7 @@ def edit_missiles(source_path: Any, game_db: Dict[str, Any]) -> None:
                 # Get or create base descriptor
                 try:
                     if is_new:
-                        base_descr = _create_new_descriptor(source_path, weapon_name, donor)
+                        base_descr = _create_new_descriptor(source_path, weapon_name, donor, data)
                     else:
                         base_descr = _get_existing_descriptor(source_path, weapon_name)
                         
@@ -107,15 +107,34 @@ def edit_missiles(source_path: Any, game_db: Dict[str, Any]) -> None:
         logger.error(f"Fatal error in edit_missiles: {str(e)}")
         raise
 
-def _create_new_descriptor(source_path, weapon_name, donor):
+def _create_new_descriptor(source_path, weapon_name, donor, data):
     """Create a new descriptor for a missile."""
-    donor_descr = source_path.by_n(f"Ammo_{donor}")
+    # For missiles with salvo variants, find any salvo length variant of donor
+    donor_descr = None
+    if "WeaponDescriptor" in data and "SalvoLengths" in data["WeaponDescriptor"]:
+        # Look up donor's salvo lengths from missiles dictionary
+        for (name, _, _, _), missile_data in missiles.items():
+            if name == donor and "WeaponDescriptor" in missile_data:
+                if "SalvoLengths" in missile_data["WeaponDescriptor"]:
+                    # Try each salvo length variant of donor
+                    for salvo_length in missile_data["WeaponDescriptor"]["SalvoLengths"]:
+                        if salvo_length == 1:
+                            donor_descr = source_path.by_n(f"Ammo_{donor}")
+                        else:
+                            donor_descr = source_path.by_n(f"Ammo_{donor}_salvolength{salvo_length}")
+                        if donor_descr:
+                            break
+                break
+            
     if not donor_descr:
-        # Try without Ammo_ prefix
-        donor_descr = source_path.by_n(donor)
+        # Try without salvo length suffix
+        donor_descr = source_path.by_n(f"Ammo_{donor}")
         if not donor_descr:
-            logger.error(f"Could not find donor {donor} for {weapon_name}")
-            return None
+            # Try without Ammo_ prefix
+            donor_descr = source_path.by_n(donor)
+            if not donor_descr:
+                logger.error(f"Could not find donor {donor} for {weapon_name}")
+                return None
             
     # Create base descriptor
     base_descr = donor_descr.copy()
@@ -238,6 +257,9 @@ def _apply_missile_edits(descr: Any, data: Dict, ammo_data: Dict, is_new: bool) 
     
     # Apply Arme edits
     if "Ammunition" in data:
+        
+        if "arme" in data["Ammunition"] and "DamageFamily" in data["Ammunition"]["arme"]:
+            descr.v.by_m("Arme").v.by_m("Family").v = data["Ammunition"]["arme"]["DamageFamily"]
         
         if "token" in data["Ammunition"]:
             descr.v.by_m("Name").v = "'" + data["Ammunition"]["token"] + "'"

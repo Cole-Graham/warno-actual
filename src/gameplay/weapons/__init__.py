@@ -12,7 +12,6 @@ from .damage_families import (
     apply_damage_families,
     apply_damage_family_edits,
     edit_infantry_armor,
-    edit_weapon_constants,
 )
 from .fire_descriptors import edit_fire_descriptors, change_fire_descriptors
 from .he_adjustments import edit_he_damage
@@ -49,7 +48,6 @@ __all__ = [
     'unit_edits_weapondescriptor',
     'vanilla_renames_ammunition',
     'remove_vanilla_instances',
-    'edit_weapon_constants',
     'vanilla_renames_weapondescriptor',
     'edit_he_damage',
     'edit_aim_times',

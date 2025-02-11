@@ -122,7 +122,44 @@ def unit_edits_depictionaerial(source_path: Any) -> None:
                 continue
                 
             namespace, obj_type = key
-            if namespace and namespace.startswith("Gfx_"):
+            if namespace and namespace.startswith("Op_"):
+                operator = source_path.by_n(namespace)
+                
+                if operator.v.type != obj_type:
+                    operator.v.type = obj_type
+                    logger.info(f"Changed type of {key} to {obj_type}")
+
+                for row_name_or_type, value in edits.items():
+                    
+                    if row_name_or_type == "add_members":
+                        for (member, value) in value:
+                            operator.v.add(f"{member} = {value}")
+                            logger.info(f"Added {member} for {unit_name}")
+                    
+                    elif row_name_or_type == "replace_members":
+                        for (member, replacement, new_value) in value:
+                            
+                            if new_value == None:
+                                new_value = operator.v.by_m(member).v
+                            member_index = operator.v.by_m(member).index
+                            operator.v.replace(member_index, f"{replacement} = {new_value}")
+                            logger.info(f"Replaced {member} with "
+                                        f"{replacement} = {new_value} for {unit_name}")
+                    
+                    elif row_name_or_type == "WeaponShootDataPropertyName":
+                        if isinstance(value, list):
+                            value = "[" + ",".join(value) + "]"
+                            operator.v.by_m(row_name_or_type).v = value
+                            logger.info(f"Edited {row_name_or_type} for {unit_name}")
+                        else:
+                            operator.v.by_m(row_name_or_type).v = value
+                            logger.info(f"Edited {row_name_or_type} for {unit_name}")
+                    
+                    else:
+                        operator.v.by_m(row_name_or_type).v = value
+                        logger.info(f"Edited {row_name_or_type} for {unit_name}")
+                    
+            elif namespace and namespace.startswith("Gfx_"):
                 aerial_template = source_path.by_n(namespace)
                 
                 for row_name_or_type, value in edits.items():

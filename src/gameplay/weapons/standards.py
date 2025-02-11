@@ -19,7 +19,7 @@ def edit_aim_times(source_path):
             ammo_type = ammo_descr.v.by_m("TypeCategoryName").v
             aim_time = ammo_descr.v.by_m("TempsDeVisee").v
             if ammo_type == "'FIQMEQMUTK'": # Tank Gun
-                if aim_time == "3.0":
+                if aim_time == "3.0" or aim_time == "2.0":
                     ammo_descr.v.by_m("TempsDeVisee").v = "1.5"
                     logger.info(f"(Ammunition.ndf) Changed {ammo_descr.namespace} aim time to 1.5")
                     continue

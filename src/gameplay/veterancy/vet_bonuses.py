@@ -29,69 +29,80 @@ def edit_veterancy_effects(source_path) -> None:
     """Edit veterancy effects in EffetsSurUnite.ndf."""
     logger.info("Modifying veterancy effects")
     
+    def add_evasion(value: int) -> str:
+        effect_template = (
+            f'TUnitEffectBonusPrecisionWhenTargetedDescriptor'
+            f'('
+            f'    ModifierType = ~/ModifierType_Additionnel'
+            f'    BonusPrecisionWhenTargeted = {value}'
+            f')'
+        )
+        return effect_template
+    
     vet_changes = {
         # Default
         "UnitEffect_xp_rookie": {
-            "TUnitEffectHealOverTimeDescriptor": "1.4"
+            "TUnitEffectHealOverTimeDescriptor": 1.6
         },
         "UnitEffect_xp_trained": {
-            "TUnitEffectHealOverTimeDescriptor": "4"
+            "TUnitEffectHealOverTimeDescriptor": 4
         },
         "UnitEffect_xp_veteran": {
-            "TUnitEffectHealOverTimeDescriptor": "4.8",
-            "TUnitEffectAlterWeaponTempsEntreDeuxSalvesDescriptor": "0.83"
+            "TUnitEffectHealOverTimeDescriptor": 4.8,
+            "TUnitEffectAlterWeaponTempsEntreDeuxSalvesDescriptor": 0.83
         },
         "UnitEffect_xp_elite": {
-            "TUnitEffectHealOverTimeDescriptor": "5.6",
-            "TUnitEffectAlterWeaponTempsEntreDeuxSalvesDescriptor": "0.76"
+            "TUnitEffectHealOverTimeDescriptor": 5.6,
+            "TUnitEffectAlterWeaponTempsEntreDeuxSalvesDescriptor": 0.76
         },
         # SF
         "UnitEffect_xp_trained_SF": {
-            "TUnitEffectHealOverTimeDescriptor": "4.8"
+            "TUnitEffectHealOverTimeDescriptor": 4.8
         },
         "UnitEffect_xp_veteran_SF": {
-            "TUnitEffectHealOverTimeDescriptor": "6.0"
+            "TUnitEffectHealOverTimeDescriptor": 6.0
         },
         "UnitEffect_xp_elite_SF": {
-            "TUnitEffectHealOverTimeDescriptor": "6.8"
+            "TUnitEffectHealOverTimeDescriptor": 6.8
         },
         # Arty
         "UnitEffect_xp_rookie_arty": {
-            "TUnitEffectHealOverTimeDescriptor": "1.4"
+            "TUnitEffectHealOverTimeDescriptor": 1.6
         },
         "UnitEffect_xp_trained_arty": {
-            "TUnitEffectHealOverTimeDescriptor": "3.0"
+            "TUnitEffectHealOverTimeDescriptor": 3.0
         },
         "UnitEffect_xp_veteran_arty": {
-            "TUnitEffectHealOverTimeDescriptor": "3.8"
+            "TUnitEffectHealOverTimeDescriptor": 3.8
         },
         "UnitEffect_xp_elite_arty": {
-            "TUnitEffectHealOverTimeDescriptor": "4.6"
+            "TUnitEffectHealOverTimeDescriptor": 4.6
         },
         # Helo
         "UnitEffect_xp_rookie_helo": {
-            "TUnitEffectHealOverTimeDescriptor": "1.4"
+            "TUnitEffectHealOverTimeDescriptor": 1.6
         },
         "UnitEffect_xp_trained_helo": {
-            "TUnitEffectHealOverTimeDescriptor": "4.2"
+            "TUnitEffectHealOverTimeDescriptor": 4.2
         },
         "UnitEffect_xp_veteran_helo": {
-            "TUnitEffectHealOverTimeDescriptor": "6.2"
+            "TUnitEffectHealOverTimeDescriptor": 6.2
         },
         "UnitEffect_xp_elite_helo": {
-            "TUnitEffectHealOverTimeDescriptor": "8.2"
+            "TUnitEffectHealOverTimeDescriptor": 8.4,
+            "add": [(add_evasion, (-5,))]
         },
         # Avion
         "UnitEffect_xp_trained_avion": {
-            "TUnitEffectHealOverTimeDescriptor": "2"
+            "TUnitEffectHealOverTimeDescriptor": 2
         },
         "UnitEffect_xp_veteran_avion": {
-            "TUnitEffectBonusPrecisionWhenTargetedDescriptor": "-4",
-            "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor": "4"
+            "TUnitEffectBonusPrecisionWhenTargetedDescriptor": -4,
+            "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor": 4
         },
         "UnitEffect_xp_elite_avion": {
-            "TUnitEffectBonusPrecisionWhenTargetedDescriptor": "-8",
-            "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor": "8"
+            "TUnitEffectBonusPrecisionWhenTargetedDescriptor": -8,
+            "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor": 8
         }
     }
     
@@ -99,10 +110,10 @@ def edit_veterancy_effects(source_path) -> None:
         if row.namespace not in vet_changes:
             continue
             
-        effects_list = row.v.by_m("EffectsDescriptors").v
+        effects_list = row.v.by_m("EffectsDescriptors")
         changes = vet_changes[row.namespace]
         
-        for effect in effects_list:
+        for effect in effects_list.v:
             if not hasattr(effect.v, 'type'):
                 continue
                 
@@ -111,17 +122,21 @@ def edit_veterancy_effects(source_path) -> None:
                 continue
                 
             if effect_type == "TUnitEffectBonusPrecisionWhenTargetedDescriptor":
-                effect.v.by_m("BonusPrecisionWhenTargeted").v = changes[effect_type]
-            elif effect_type == "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor":
-                effect.v.by_m("ModifierValue").v = changes[effect_type]
+                effect.v.by_m("BonusPrecisionWhenTargeted").v = str(changes[effect_type])
+            
             elif effect_type == "TUnitEffectHealOverTimeDescriptor":
-                effect.v.by_m("HealUnitsPerSecond").v = changes[effect_type]
+                effect.v.by_m("HealUnitsPerSecond").v = str(changes[effect_type])
+            
             else:
-                effect.v.by_m("ModifierValue").v = changes[effect_type]
-                
-            logger.info(f"Updated {effect_type} for {row.namespace}")
+                effect.v.by_m("ModifierValue").v = str(changes[effect_type])
 
-     
+            logger.info(f"Updated {effect_type} for {row.namespace}")
+        
+        if "add" in changes:
+            for effect_fn, args in changes["add"]:
+                effect_str = effect_fn(*args)
+                effects_list.v.add(effect_str)
+
 def edit_veterancy_hints(source_path) -> None:
     """Edit veterancy hint texts in ExperienceLevels.ndf."""
     logger.info("--------- editing ExperienceLevels.ndf ---------")

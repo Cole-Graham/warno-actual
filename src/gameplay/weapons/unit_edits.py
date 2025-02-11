@@ -5,9 +5,16 @@ from src import ndf
 from src.constants.unit_edits import load_unit_edits
 from src.constants.weapons import LIGHT_AT_AMMO
 from src.constants.weapons import ammunitions as ammos
+from src.constants.weapons.missiles.aa import missiles
+
 # from src.gameplay.weapons.new_weapons import _modify_weapon
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import find_namespace, is_obj_type, is_valid_turret, strip_quotes
+from src.utils.ndf_utils import (
+    find_namespace,
+    is_obj_type,
+    is_valid_turret,
+    strip_quotes,
+)
 
 from .vanilla_modifications import vanilla_renames_weapondescriptor
 
@@ -23,6 +30,68 @@ def unit_edits_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> No
     ammo_db = game_db["ammunition"]
     unit_db = game_db["unit_data"]
     weapon_db = game_db["weapons"]
+    
+    # Add HAGRU missiles to MANPAD turrets
+    for weapon_descr in source_path:
+        if not weapon_descr.namespace.startswith("WeaponDescriptor_"):
+            continue
+            
+        if weapon_descr.namespace not in weapon_db:
+            continue
+            
+        weapon_data = weapon_db[weapon_descr.namespace]
+        
+        # Process each turret
+        for turret_idx, turret_data in weapon_data["turrets"].items():
+            turret = weapon_descr.v.by_m("TurretDescriptorList").v[int(turret_idx)]
+            if not is_valid_turret(turret.v):
+                continue
+                
+            mounted_wpns = turret.v.by_m("MountedWeaponDescriptorList")
+            wpns_to_add = []
+            
+            # Check each weapon in the turret
+            for ammo_name, weapon_info in turret_data["weapons"].items():
+                # Strip _x{number} suffix for dictionary lookup
+                base_ammo_name = re.sub(r'_x\d+$', '', ammo_name)
+                
+                # since Eugen used same formatting for quantity and salvo length,
+                # we can use the same regex data to get the salvo length
+                salvo_length = weapon_info.get('regex_quantity')
+
+                # Check if this is a TBAGRU missile
+                for (missile_name, _, _, _), missile_data in missiles.items():
+                    if (missile_name == base_ammo_name and
+                        "Ammunition" in missile_data and
+                        "arme" in missile_data["Ammunition"] and
+                        missile_data["Ammunition"]["arme"].get(
+                            "DamageFamily") == "DamageFamily_manpad_tbagru"):
+                        
+                        # Find and copy the weapon
+                        for weapon in mounted_wpns.v:
+                            if not is_obj_type(weapon.v, "TMountedWeaponDescriptor"):
+                                continue
+                            
+                            ammo_path = f"$/GFX/Weapon/Ammo_{ammo_name}"
+                            if weapon.v.by_m("Ammunition").v == ammo_path:
+                                new_wpn = weapon.copy()
+                                # Only add salvo length suffix if length > 1
+                                if salvo_length == 1:
+                                    new_ammo = f"$/GFX/Weapon/Ammo_{base_ammo_name}_HAGRU"
+                                else:
+                                    new_ammo = (f"$/GFX/Weapon/Ammo_{base_ammo_name}_HAGRU"
+                                                f"_salvolength{salvo_length}")
+                                new_wpn.v.by_m("Ammunition").v = new_ammo
+                                wpns_to_add.append(new_wpn)
+                                logger.debug(
+                                    f"Adding HAGRU missile {base_ammo_name}_HAGRU to "
+                                    f"{weapon_descr.namespace}"
+                                )
+                                break
+            
+            # Add all new weapons after iteration
+            for new_wpn in wpns_to_add:
+                mounted_wpns.v.add(new_wpn)
     
     vanilla_renames_weapondescriptor(source_path, ammo_db, weapon_db)
     
@@ -299,11 +368,20 @@ def _apply_turret_changes(weapon_descr: Any, turrets_edits: Dict, weapon_descr_d
                             if old_name != ammo_name:
                                 continue
                         for ammo_membr, ammo_value in ammo_edits.items():
-                            if isinstance(ammo_value, list):
+                            
+                            if ammo_membr == "add_members":
+                                for (member, value) in ammo_value:
+                                    weapon.v.add(f"{member} = {value}")
+                            
+                            elif ammo_membr == "Ammunition":
+                                weapon.v.by_m(ammo_membr).v = f"$/GFX/Weapon/Ammo_{ammo_value}"
+                            
+                            elif isinstance(ammo_value, list):
                                 new_list = ndf.model.List()
                                 for item in ammo_value:
                                     new_list.add(f"'{item}'")
                                 weapon.v.by_m(ammo_membr).v = new_list
+                            
                             else:
                                 weapon.v.by_m(ammo_membr).v = str(ammo_value)
             

@@ -1530,6 +1530,7 @@ sov_unit_edits = {
                 'Armor_heavy',
                 'leader_sov',
                 '_smoke_launcher',
+                '_era',
             ],
         },
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
@@ -1711,7 +1712,7 @@ sov_unit_edits = {
     },
 
     "BRM_1_SOV": {
-        "CommandPoints": 60,
+        "CommandPoints": 55,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1999,14 +2000,19 @@ sov_unit_edits = {
 
     "BRDM_Strela_1_SOV": {
         "strength": 8,
-        "CommandPoints": 40,
+        "CommandPoints": 50,
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "availability": 7,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "availability": 6,
+        "WeaponDescriptor": {
+            "Salves": {
+                "SAM_Strela1": 2,
+            },
+        },
+        "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
     },
 
     "Tunguska_2K22_SOV": {
@@ -2217,6 +2223,27 @@ sov_unit_edits = {
         },
         "CommandPoints": 160,
         "availability": 2,
+        "WeaponDescriptor": {
+            "Salves": {
+                "AutoCanon_AP_30mm_Bitube_Gsh30k": 5,
+            },
+            "turrets": {
+                1: {
+                    "MountedWeapons": {
+                        "AutoCanon_AP_30mm_Bitube_Gsh30k": {
+                            "add_members": [("TirContinu", True),],
+                            "Ammunition": "AutoCanon_AP_30mm_Bitube_Gsh30k_burst",
+                            "EffectTag": "'FireEffect_GatlingAir_Gsh_30_2_30mm_x2'",
+                        },
+                        "AutoCanon_HE_30mm_Bitube_Gsh30k": {
+                            "add_members": [("TirContinu", True),],
+                            "Ammunition": "AutoCanon_HE_30mm_Bitube_Gsh30k_burst",
+                            "EffectTag": "'FireEffect_GatlingAir_Gsh_30_2_30mm_x2'",
+                        },
+                    },
+                },
+            },
+        },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
     },
     

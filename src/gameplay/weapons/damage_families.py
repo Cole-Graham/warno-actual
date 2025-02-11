@@ -16,6 +16,8 @@ from src.constants.weapons import (
     KPVT_DAMAGE,
     NPLM_BOMB_DAMAGE,
     PGB_BOMB_DAMAGE,
+    MANPAD_HAGRU_DAMAGE,
+    MANPAD_TBAGRU_DAMAGE,
 )
 from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.logging_utils import setup_logger
@@ -26,11 +28,22 @@ logger = setup_logger(__name__)
 def edit_weapon_constantes(source_path):
     logger.info(f"--------- editing WeaponConstantes.ndf ---------")
     weapon_constantes_obj = source_path.by_n("WeaponConstantes").v
+    
+    # Add infantry WA to mimetic resistance map
     mimetic_res_map = weapon_constantes_obj.by_m("ResistanceToMimeticImpact").v
     mimetic_res_map.add(f"(ResistanceFamily_infanterieWA, EImpactSurface/Ground)")
 
+    # Add full ball damage to blindages to ignore
     blindages_to_ignore = weapon_constantes_obj.by_m("BlindagesToIgnoreForDamageFamilies").v
     blindages_to_ignore.add(f"(DamageFamily_full_balle, [ResistanceFamily_blindage])")
+    
+    # Add manpad_hagru damage to blindages to ignore
+    blindages_to_ignore.add("(DamageFamily_manpad_hagru, [ResistanceFamily_helico])")
+    logger.info("Added manpad_hagru to blindages to ignore")
+    
+    # Add manpad_tbagru damage to blindages to ignore
+    blindages_to_ignore.add("(DamageFamily_manpad_tbagru, [ResistanceFamily_avion])")
+    logger.info("Added manpad_tbagru to blindages to ignore")
 
 
 def add_damage_families_to_list(source_path) -> None:
@@ -54,6 +67,8 @@ def add_damage_families_to_list(source_path) -> None:
     # kpvt_family = f"DamageFamily_kpvt is {i + 4}"
     nplm_bomb_family = f"DamageFamily_nplm_bomb is {i + 4}"
     pgb_bomb_family = f"DamageFamily_pgb_bomb is {i + 5}"
+    manpad_hagru_family = f"DamageFamily_manpad_hagru is {i + 6}"
+    manpad_tbagru_family = f"DamageFamily_manpad_tbagru is {i + 7}"
 
     source_path.insert(j + 1, infanterie_wa_family)
     source_path.add(sniper_family)
@@ -62,6 +77,8 @@ def add_damage_families_to_list(source_path) -> None:
     # source_path.add(kpvt_family)
     source_path.add(nplm_bomb_family)
     source_path.add(pgb_bomb_family)
+    source_path.add(manpad_hagru_family)
+    source_path.add(manpad_tbagru_family)
     
     logger.info(f"Added families: \n"
                 f"{infanterie_wa_family}\n"
@@ -70,7 +87,9 @@ def add_damage_families_to_list(source_path) -> None:
                 f"{dpicm_family}\n"
                 # f"{kpvt_family}\n")
                 f"{nplm_bomb_family}\n"
-                f"{pgb_bomb_family}")
+                f"{pgb_bomb_family}\n"
+                f"{manpad_hagru_family}\n"
+                f"{manpad_tbagru_family}")
                 
 
 def add_damage_families_to_impl(source_path) -> None:
@@ -87,10 +106,11 @@ def add_damage_families_to_impl(source_path) -> None:
             # '"DamageFamily_kpvt"',
             '"DamageFamily_nplm_bomb"',
             '"DamageFamily_pgb_bomb"',
+            '"DamageFamily_manpad_hagru"',
+            '"DamageFamily_manpad_tbagru"',
         ]
     }
     
-
     # Add resistance families
     resistance_values = source_path.by_n("Generated_ResistanceFamily_Enum").v.by_m("Values").v
     for family in families["resistance"]:
@@ -159,6 +179,8 @@ def add_damage_resistance_values(source_path) -> None:
         # "kpvt": "TDamageTypeFamilyDefinition(Family=DamageFamily_kpvt MaxIndex=1)",
         "nplm_bomb": "TDamageTypeFamilyDefinition(Family=DamageFamily_nplm_bomb MaxIndex=1)",   
         "pgb_bomb": "TDamageTypeFamilyDefinition(Family=DamageFamily_pgb_bomb MaxIndex=1)",
+        "manpad_hagru": "TDamageTypeFamilyDefinition(Family=DamageFamily_manpad_hagru MaxIndex=1)",
+        "manpad_tbagru": "TDamageTypeFamilyDefinition(Family=DamageFamily_manpad_tbagru MaxIndex=1)",
     }
 
     for family_name, family_def in families.items():
@@ -184,9 +206,10 @@ def add_damage_resistance_values(source_path) -> None:
         # str(KPVT_DAMAGE),
         str(NPLM_BOMB_DAMAGE),
         str(PGB_BOMB_DAMAGE),
+        str(MANPAD_HAGRU_DAMAGE),
+        str(MANPAD_TBAGRU_DAMAGE),
     )
     logger.info("Added damage values") 
-
 
 
 def apply_damage_array_edits(damage_array, row: int, column_edits: dict) -> None:
@@ -218,8 +241,6 @@ def apply_damage_family_edits(source_path) -> None:
     logger.info("Added infantryWA resistance family")
     
     damage_array = damage_params_obj.by_m("Values").v
-    
-    
     
     # Extend damage array with new columns
     for row in damage_array:
@@ -255,18 +276,26 @@ def edit_infantry_armor(source_path) -> None:
         logger.info(f"Applied FMballe infantry edits to row {row_index}") 
 
 
-def edit_weapon_constants(source_path) -> None:
-    """Edit weapon constants in WeaponConstantes.ndf."""
-    logger.info("--------- editing WeaponConstantes.ndf ---------")
+# def edit_weapon_constants(source_path) -> None:
+#     """Edit weapon constants in WeaponConstantes.ndf."""
+#     logger.info("--------- editing WeaponConstantes.ndf ---------")
     
-    weapon_constantes_obj = source_path.by_n("WeaponConstantes").v
+#     weapon_constantes_obj = source_path.by_n("WeaponConstantes").v
     
-    # Add infantry WA to mimetic resistance map
-    mimetic_res_map = weapon_constantes_obj.by_m("ResistanceToMimeticImpact").v
-    mimetic_res_map.add("(ResistanceFamily_infanterieWA, EImpactSurface/Ground)")
-    logger.info("Added infantryWA to mimetic resistance map")
+#     # Add infantry WA to mimetic resistance map
+#     mimetic_res_map = weapon_constantes_obj.by_m("ResistanceToMimeticImpact").v
+#     mimetic_res_map.add("(ResistanceFamily_infanterieWA, EImpactSurface/Ground)")
+#     logger.info("Added infantryWA to mimetic resistance map")
     
-    # Add full ball damage to blindages to ignore
-    blindages_to_ignore = weapon_constantes_obj.by_m("BlindagesToIgnoreForDamageFamilies").v
-    blindages_to_ignore.add("(DamageFamily_full_balle, [ResistanceFamily_blindage])")
-    logger.info("Added full_balle to blindages to ignore") 
+#     # Add full ball damage to blindages to ignore
+#     blindages_to_ignore = weapon_constantes_obj.by_m("BlindagesToIgnoreForDamageFamilies").v
+#     blindages_to_ignore.add("(DamageFamily_full_balle, [ResistanceFamily_blindage])")
+#     logger.info("Added full_balle to blindages to ignore") 
+    
+#     # Add manpad_hagru damage to blindages to ignore
+#     blindages_to_ignore.add("(DamageFamily_manpad_hagru, [ResistanceFamily_helico])")
+#     logger.info("Added manpad_hagru to blindages to ignore")
+    
+#     # Add manpad_tbagru damage to blindages to ignore
+#     blindages_to_ignore.add("(DamageFamily_manpad_tbagru, [ResistanceFamily_avion])")
+#     logger.info("Added manpad_tbagru to blindages to ignore")

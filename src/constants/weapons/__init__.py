@@ -14,6 +14,8 @@ from .damage_values import (
     KPVT_DAMAGE,
     NPLM_BOMB_DAMAGE,
     PGB_BOMB_DAMAGE,
+    MANPAD_HAGRU_DAMAGE,
+    MANPAD_TBAGRU_DAMAGE,
 )
 from .missiles import missiles
 from .salvo_standards import LIGHT_AT_AMMO
@@ -46,4 +48,5 @@ __all__ = [
     'WEAPON_DESCRIPTIONS',
     'ammunitions',
     'PGB_BOMB_DAMAGE',
+    'MANPAD_HAGRU_DAMAGE',
 ] 

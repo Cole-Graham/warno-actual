@@ -723,7 +723,7 @@ rda_unit_edits = {
         "GameName": {
             "display": "#RECO3 AufKl BRM-1K",
         },
-        "CommandPoints": 60,
+        "CommandPoints": 55,
         "availability": 6,
         "Divisions": {
             "default": {
@@ -838,14 +838,19 @@ rda_unit_edits = {
             "display": "Fla-RAK STRELA-1",
         },
         "strength": 8,
-        "CommandPoints": 40,
+        "CommandPoints": 50,
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "availability": 7,
-        "XPMultiplier": [7/7, 5/7, 0.0, 0.0],
+        "availability": 6,
+        "WeaponDescriptor": {
+            "Salves": {
+                "SAM_Strela1": 2,
+            },
+        },
+        "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
     },
 
     "MTLB_Strela10_DDR": {
@@ -955,6 +960,7 @@ rda_unit_edits = {
             "display": "Mi-24P [AT]",
         },
         "CommandPoints": 160,
+        "availability": 3,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -963,7 +969,27 @@ rda_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 3,
+        "WeaponDescriptor": {
+            "Salves": {
+                "AutoCanon_AP_30mm_Bitube_Gsh30k": 5,
+            },
+            "turrets": {
+                1: {
+                    "MountedWeapons": {
+                        "AutoCanon_AP_30mm_Bitube_Gsh30k": {
+                            "add_members": [("TirContinu", True),],
+                            "Ammunition": "AutoCanon_AP_30mm_Bitube_Gsh30k_burst",
+                            "EffectTag": "'FireEffect_GatlingAir_Gsh_30_2_30mm_x2'",
+                        },
+                        "AutoCanon_HE_30mm_Bitube_Gsh30k": {
+                            "add_members": [("TirContinu", True),],
+                            "Ammunition": "AutoCanon_HE_30mm_Bitube_Gsh30k_burst",
+                            "EffectTag": "'FireEffect_GatlingAir_Gsh_30_2_30mm_x2'",
+                        },
+                    },
+                },
+            },
+        },
         "XPMultiplier": [0.0, 3/3, 2/3, 0.0],
     },
 

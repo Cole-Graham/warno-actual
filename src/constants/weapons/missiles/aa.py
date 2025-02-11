@@ -52,6 +52,35 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("SAM_Strela1", "SAM", None, False): { # 212
         "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_tbagru",
+            },
+            "hit_roll": {
+                "Idling": 40,
+                "Moving": 40,
+            },
+            "parent_membr": {
+                "TempsEntreDeuxTirs": 2.5,
+                "PorteeMaximaleTBAGRU": 2450,
+                "PorteeMaximaleHAGRU": 1750,
+                "TempsEntreDeuxSalves": 25.0,
+                "TempsDeVisee": 1.2,
+            }
+        },
+        "BaseSupplyCost": 25,
+        "WeaponDescriptor": {
+            "SalvoLengths": [4],
+            "units": {
+                4: ["BRDM_Strela_1_DDR", "BRDM_Strela_1_SOV", "BRDM_Strela_1_POL"]
+            },
+        },
+    },
+    
+    ("SAM_Strela1_HAGRU", "SAM", "SAM_Strela1", True): {
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_hagru",
+            },
             "hit_roll": {
                 "Idling": 40,
                 "Moving": 40,
@@ -60,7 +89,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "PorteeMaximaleTBAGRU": 2450,
                 "PorteeMaximaleHAGRU": 1750,
                 "TempsEntreDeuxSalves": 7.0,
-                "TempsDeVisee": 1.2,
+                "TempsDeVisee": 3.5,
             }
         },
         "BaseSupplyCost": 25,
@@ -81,8 +110,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TempsEntreDeuxTirs": 2.5,
                 "TempsEntreDeuxFx": 2.5,
                 "PhysicalDamages": 5.0,
-                "PorteeMaximaleTBAGRU": 3500,
-                "PorteeMaximaleHAGRU": 2800,
+                "PorteeMaximaleTBAGRU": 2800,
+                "PorteeMaximaleHAGRU": 3500,
                 "TempsDeVisee": 1.2,
             },
         },
@@ -143,9 +172,32 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("SAM_IglaV", "MANPAD", None, False): { # 196
         "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_tbagru",
+            },
             "parent_membr": {
                 "PorteeMaximaleHAGRU": 1925,
                 "TempsDeVisee": 1.2,
+
+            }
+        },
+        "BaseSupplyCost": 35,
+        "WeaponDescriptor": {
+            "SalvoLengths": [4],
+            "units": {
+                4: ["Ka_50_AA_SOV", "Mi_24V_AA_SOV", "Mi_24V_SOV"],
+            },
+        },
+    },
+    
+    ("SAM_IglaV_HAGRU", "MANPAD", "SAM_IglaV", True): { # 196
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_hagru",
+            },
+            "parent_membr": {
+                "PorteeMaximaleHAGRU": 1925,
+                "TempsDeVisee": 3.5,
             }
         },
         "BaseSupplyCost": 35,
@@ -181,6 +233,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("SAM_Igla", "MANPAD", None, False): { # 192
         "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_tbagru",
+            },
             "parent_membr": {
                 "PorteeMaximaleHAGRU": 1925,
                 "TempsEntreDeuxSalves": 7.0,
@@ -189,9 +244,26 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("SAM_Igla_HAGRU", "MANPAD", "SAM_Igla", True): { # 192
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_hagru",
+            },
+            "parent_membr": {
+                "PorteeMaximaleHAGRU": 1925,
+                "TempsEntreDeuxSalves": 7.0,
+                "TempsDeVisee": 3.5,
+                "SupplyCost": 35,
+            },
+        },
+    },
 
     ("SAM_FIM92_Stinger", "MANPAD", None, False): { # 187
         "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_tbagru",
+            },
             "display": "FIM-92C Stinger",
             "token": "AKFXZOAXUI",
             "hit_roll": {
@@ -213,8 +285,34 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("SAM_FIM92_Stinger_HAGRU", "MANPAD", "SAM_FIM92_Stinger", True): { # 187
+        "Ammunition": {
+            "display": "FIM-92C Stinger",
+            "token": "AKFXZOAXUI",
+            "hit_roll": {
+                "Idling": 65,
+                "Moving": 65,
+            },
+            "parent_membr": {
+                "PorteeMaximaleTBAGRU": 2625,
+                "PorteeMaximaleHAGRU": 2100,
+                "TempsDeVisee": 3.5,
+            }
+        },
+        "BaseSupplyCost": 35,
+        "WeaponDescriptor": {
+            "SalvoLengths": [8],
+            "units": {
+                8: ["M998_Avenger_US", "M998_Avenger_nonPara_US"],
+            },
+        },
+    },
+    
     ("SAM_FIM92_Stinger_CS", "MANPAD", None, False): { # 185
         "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_tbagru",
+            },
             "display": "FIM-92C Stinger",
             "token": "UHRYBRDGDI",
             "hit_roll": {
@@ -225,6 +323,32 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "PorteeMaximaleTBAGRU": 2625,
                 "PorteeMaximaleHAGRU": 2100,
                 "TempsDeVisee": 1.2,
+            }
+        },
+        "BaseSupplyCost": 35,
+        "WeaponDescriptor": {
+            "SalvoLengths": [4],
+            "units": {
+                4: ["AH1F_ATAS_US", "AH64_Apache_ATAS_US", "OH58_CS_US"]
+            },
+        },
+    },
+    
+    ("SAM_FIM92_Stinger_CS_HAGRU", "MANPAD", "SAM_FIM92_Stinger_CS", True): { # 185
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_hagru",
+            },
+            "display": "FIM-92C Stinger",
+            "token": "UHRYBRDGDI",
+            "hit_roll": {
+                "Idling": 65,
+                "Moving": 65,
+            },
+            "parent_membr": {
+                "PorteeMaximaleTBAGRU": 2625,
+                "PorteeMaximaleHAGRU": 2100,
+                "TempsDeVisee": 3.5,
             }
         },
         "BaseSupplyCost": 35,
@@ -289,6 +413,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("MANPAD_igla", "MANPAD", None, False): { # 174
         "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_tbagru",
+            },
             "parent_membr": {
                 "PorteeMaximaleHAGRU": 1925,
                 "TempsEntreDeuxSalves": 7.0,
@@ -297,9 +424,27 @@ missiles: Dict[WeaponKey, WeaponData] = {
             }
         },
     },
+    
+    ("MANPAD_igla_HAGRU", "MANPAD", "MANPAD_igla", True): { # 174
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_hagru",
+            },
+            "parent_membr": {
+                "PorteeMaximaleHAGRU": 1925,
+                "TempsEntreDeuxSalves": 7.0,
+                "TempsDeVisee": 3.5,
+                "SupplyCost": 35,
+
+            }
+        },
+    },
 
     ("MANPAD_Strela2M", "MANPAD", None, False): { # 171
         "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_tbagru",
+            },
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 2450,
                 "PorteeMaximaleHAGRU": 1750,
@@ -309,9 +454,27 @@ missiles: Dict[WeaponKey, WeaponData] = {
             }
         },
     },
+    
+    ("MANPAD_Strela2M_HAGRU", "MANPAD", "MANPAD_Strela2M", True): { # 171
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_hagru",
+            },
+            "parent_membr": {
+                "PorteeMaximaleTBAGRU": 2450,
+                "PorteeMaximaleHAGRU": 1750,
+                "TempsEntreDeuxSalves": 14.0,
+                "TempsDeVisee": 3.5,
+                "SupplyCost": 25,
+            }
+        },
+    },
 
     ("SAM_Strela2M", "MANPAD", None, False): { # 171
         "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_tbagru",
+            },
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 2450,
                 "PorteeMaximaleHAGRU": 1750,
@@ -333,8 +496,37 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("SAM_Strela2M_HAGRU", "MANPAD", "SAM_Strela2M", True): { # 171
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_hagru",
+            },
+            "parent_membr": {
+                "PorteeMaximaleTBAGRU": 2450,
+                "PorteeMaximaleHAGRU": 1750,
+                "TempsEntreDeuxSalves": 7.0,
+                "TempsDeVisee": 3.5,
+            }
+        },
+        "BaseSupplyCost": 25,
+        "WeaponDescriptor": {
+            "SalvoLengths": [2],
+            "units": {
+                2: [
+                    "DCA_ZUR_23_2S_JOD_POL",
+                    "DCA_ZUR_23_2S_JOD_Para_POL",
+                    "Hibneryt_KG_POL",
+                    "OT_62_TOPAS_JOD_POL",
+                ],
+            },
+        },
+    },
+    
     ("Javelin", "MANPAD", None, False): {
         "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_tbagru",
+            },
             "hit_roll": {
                 "Idling": 50,
             },
@@ -348,8 +540,29 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("Javelin_HAGRU", "MANPAD", "Javelin", True): {
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_hagru",
+            },
+            "hit_roll": {
+                "Idling": 50,
+            },
+            "parent_membr": {
+                "PorteeMaximaleTBAGRU": 2625,
+                "PorteeMaximaleHAGRU": 1925,
+                "TempsEntreDeuxSalves": 7.0,
+                "TempsDeVisee": 3.5,
+                "SupplyCost": 25,
+            }
+        },
+    },
+    
     ("MANPAD_FIM92", "MANPAD", None, False): { # 170
         "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_tbagru",
+            },
             "hit_roll": {
                 "Idling": 65,
             },
@@ -365,8 +578,31 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("MANPAD_FIM92_HAGRU", "MANPAD", "MANPAD_FIM92", True): { # 170
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_hagru",
+            },
+            "hit_roll": {
+                "Idling": 65,
+            },
+            "display": "FIM-92C Stinger",
+            "token": "GPRDGRDYEA",
+            "parent_membr": {
+                "PorteeMaximaleTBAGRU": 2625,
+                "PorteeMaximaleHAGRU": 1925,
+                "TempsEntreDeuxSalves": 7.0,
+                "TempsDeVisee": 3.5,
+                "SupplyCost": 35,
+            }
+        },
+    },
+    
     ("MANPAD_Blowpipe", "MANPAD", None, False): {
         "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_tbagru",
+            },
             "hit_roll": {
                 "Idling": 40,
             },
@@ -375,6 +611,24 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "PorteeMaximaleHAGRU": 1750,
                 "TempsEntreDeuxSalves": 7.0,
                 "TempsDeVisee": 1.2,
+                "SupplyCost": 20,
+            }
+        },
+    },
+    
+    ("MANPAD_Blowpipe_HAGRU", "MANPAD", "MANPAD_Blowpipe", True): {
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_hagru",
+            },
+            "hit_roll": {
+                "Idling": 40,
+            },
+            "parent_membr": {
+                "PorteeMaximaleTBAGRU": 2100,
+                "PorteeMaximaleHAGRU": 1750,
+                "TempsEntreDeuxSalves": 7.0,
+                "TempsDeVisee": 3.5,
                 "SupplyCost": 20,
             }
         },
@@ -392,6 +646,32 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "PorteeMaximaleHAGRU": 1925,
                 "TempsEntreDeuxSalves": 12.0,
                 "TempsDeVisee": 1.2,
+            }
+        },
+        "BaseSupplyCost": 25,
+        "WeaponDescriptor": {
+            "SalvoLengths": [3],
+            "units": {
+                3: ["DCA_Javelin_LML_UK", "Supacat_ATMP_Javelin_LML_UK"],
+            },
+        },
+    },
+    
+    ("Javelin_LML_HAGRU", "SAM", "Javelin_LML", True): {
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_hagru",
+            },
+            "hit_roll": {
+                "Idling": 50,
+            },
+            "parent_membr": {
+                "TempsEntreDeuxTirs": 1.2,
+                "TempsEntreDeuxFx": 1.2,
+                "PorteeMaximaleTBAGRU": 2625,
+                "PorteeMaximaleHAGRU": 1925,
+                "TempsEntreDeuxSalves": 12.0,
+                "TempsDeVisee": 3.5,
             }
         },
         "BaseSupplyCost": 25,

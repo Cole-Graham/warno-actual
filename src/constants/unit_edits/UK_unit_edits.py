@@ -671,9 +671,15 @@ uk_unit_edits = {
                 "cards": 2,
             },
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_MILAN_2": 6,
+            },
+        },
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
     },
     
+
     "MCV_80_Warrior_UK": {
         "CommandPoints": 30,
     },
@@ -1008,9 +1014,21 @@ uk_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
     },
     
-    "F4_Phantom_AA_F3_UK": {  # 4x Skyflash, 4x AIM-9L
-        "CommandPoints": 145,
+    "F4_Phantom_AA_F3_UK": { # 4x Skyflash, 4x AIM-9L
+        "CommandPoints": 175,
         "availability": 3,
+        "GameName": {
+            "display": "F-4J(UK) PHANTOM II [AA]",
+            "token": "BTFXWDBFCS",
+        },
+        "optics": {
+            "OpticalStrengthAltitude": 375,
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("AA_AIM9L_Sidewinder", "AA_AIM9M_Sidewinder")],
+            },
+        },
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
     },
 }

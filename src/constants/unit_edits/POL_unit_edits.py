@@ -1395,9 +1395,14 @@ pol_unit_edits = {
 
     "BRDM_Strela_1_POL": {  # (BRDM-2) Strzala-1
         "strength": 8,
-        "CommandPoints": 40,
-        "availability": 7,
-        "XPMultiplier": [7/7, 5/7, 0.0, 0.0],
+        "CommandPoints": 50,
+        "availability": 6,
+        "WeaponDescriptor": {
+            "Salves": {
+                "SAM_Strela1": 2,
+            },
+        },
+        "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
     },
 
     "MTLB_Strela10_POL": {  # (MT-LB) Strzala-10

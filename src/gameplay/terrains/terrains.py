@@ -32,7 +32,7 @@ def edit_terrains(source_path) -> None:
     
     # Edit DefaultTerrain properties
     default_terrain = source_path.by_n("DefaultTerrain")
-    default_terrain.v.by_m("SpeedModifierInfantry").v = "1.1"
+    default_terrain.v.by_m("SpeedModifierInfantry").v = "1.0"
     logger.info("Updated DefaultTerrain speed modifier")
     
     
@@ -43,23 +43,22 @@ def edit_terrains(source_path) -> None:
     logger.info("Updated ForetLegere dissimulation modifiers")   
     forest_light.v.by_m("SpeedModifierInfantry").v = "1.0"
     logger.info("Updated ForetLegere speed modifier")
-    # forest_light.v.by_m("ConcealmentBonus").v = "3.25"
-    # logger.info("Updated ForetLegere concealment bonus")
+    forest_light.v.by_m("ConcealmentBonus").v = "2.5"
+    logger.info("Updated ForetLegere concealment bonus")
     
     # Edit PetitBatiment properties
     small_building = source_path.by_n("PetitBatiment")
     small_building.v.by_m("SpeedModifierInfantry").v = "1.0"
     logger.info("Updated PetitBatiment speed modifier")
-    # small_building.by_m("ConcealmentBonus").v = "3.75"
-    # logger.info("Updated PetitBatiment concealment bonus")
+    small_building.v.by_m("ConcealmentBonus").v = "3.25"
+    logger.info("Updated PetitBatiment concealment bonus")
 
     # Edit Batiment properties
     building = source_path.by_n("Batiment")
     building.v.by_m("SpeedModifierInfantry").v = "1.0"
     logger.info("Updated Batiment speed modifier")
-    # building.by_m("ConcealmentBonus").v = "3.75"
-    # logger.info("Updated Batiment concealment bonus")
-    
+    building.v.by_m("ConcealmentBonus").v = "3.25"
+    logger.info("Updated Batiment concealment bonus")
 
     # Edit Ruin properties
     ruin = source_path.by_n("Ruin")
@@ -67,8 +66,8 @@ def edit_terrains(source_path) -> None:
     logger.info("Updated Ruin dissimulation modifier")
     ruin.v.by_m("SpeedModifierInfantry").v = "0.7"
     logger.info("Updated Ruin speed modifier")
-    # ruin.by_m("ConcealmentBonus").v = "3.25"
-    # logger.info("Updated Ruin concealment bonus")
+    ruin.v.by_m("ConcealmentBonus").v = "2.5"
+    logger.info("Updated Ruin concealment bonus")
     
     # Add infantry WA resistance to all terrains
     for terrain_obj in source_path:

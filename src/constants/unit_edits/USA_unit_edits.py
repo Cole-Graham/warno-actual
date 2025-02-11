@@ -2504,6 +2504,9 @@ usa_unit_edits = {
     "F4E_Phantom_II_AA_US": {
         "CommandPoints": 165,
         "availability": 3,
+        "optics": {
+            "OpticalStrengthAltitude": 375,
+        },
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
     },
 
@@ -2539,17 +2542,27 @@ usa_unit_edits = {
 
     "F4E_Phantom_II_HE_US": {
         "CommandPoints": 165,
+        "optics": {
+            "OpticalStrengthAltitude": 375,
+        },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 
+
     "F4E_Phantom_II_CBU_US": {
         "CommandPoints": 165,
+        "optics": {
+            "OpticalStrengthAltitude": 375,
+        },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 
     "F4E_Phantom_II_napalm_US": {
         "CommandPoints": 165,
         "availability": 3,
+        "optics": {
+            "OpticalStrengthAltitude": 375,
+        },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 

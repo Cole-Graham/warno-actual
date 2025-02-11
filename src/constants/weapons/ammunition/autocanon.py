@@ -30,6 +30,27 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "Salves": 40,
         },
     },
+    
+    ("AutoCanon_HE_30mm_Bitube_Gsh30k_burst", "autocannon", "AutoCanon_HE_30mm_Bitube_Gsh30k", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 15,
+                "Moving": 10,
+            },
+            "parent_membr": {
+                "ImpactHappening": ['Gsh301'],
+                "TempsEntreDeuxTirs": 0.1,
+                "TempsEntreDeuxFx": 0.1,
+                "PhysicalDamages": 1.2,
+                "SuppressDamages": 125,
+                "DisplaySalveAccuracy": False,
+                "TempsEntreDeuxSalves": 5.0,
+                "NbTirParSalves": 10,
+                "SupplyCost": 30,
+                "AffichageMunitionParSalve": 50,
+            },
+        },
+    },
 
     ("AutoCanon_HE_30mm_L21A1_RARDEN", "autocannon", None, False): { # 27
         "Ammunition": {
@@ -292,6 +313,27 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
         "WeaponDescriptor": {
             "Salves": 40,
+        },
+    },
+    
+    ("AutoCanon_AP_30mm_Bitube_Gsh30k_burst", "autocannon", "AutoCanon_AP_30mm_Bitube_Gsh30k", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 15,
+                "Moving": 10,
+            },
+            "parent_membr": {
+                "ImpactHappening": ['Gsh301'],
+                "TempsEntreDeuxTirs": 0.1,
+                "TempsEntreDeuxFx": 0.1,
+                "PhysicalDamages": 1.337,
+                "SuppressDamages": 125,
+                "DisplaySalveAccuracy": False,
+                "TempsEntreDeuxSalves": 5.0,
+                "NbTirParSalves": 10,
+                "SupplyCost": 30,
+                "AffichageMunitionParSalve": 50,
+            },
         },
     },
 

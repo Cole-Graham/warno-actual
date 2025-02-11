@@ -219,8 +219,8 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
 
         # Damage system
         "GameData/Generated/Gameplay/Gfx/DamageResistance.ndf": [
+            apply_damage_family_edits, # todo: this needs to be applied first, but it should be written better not to (or at least give a warning in logs)
             add_damage_resistance_values,
-            apply_damage_family_edits,
             edit_infantry_armor,
         ],
         "GameData/Generated/Gameplay/Gfx/DamageResistanceFamilyList.ndf": [
