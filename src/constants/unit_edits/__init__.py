@@ -8,6 +8,7 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger('dics')
 
+
 def load_unit_edits() -> Dict:
     """Load and merge all unit edit dictionaries."""
     merged_edits = {}
@@ -42,7 +43,20 @@ def load_unit_edits() -> Dict:
             logger.error(f"Failed to load {file.stem}: {str(e)}")
     
     logger.info(f"Loaded edits for {len(merged_edits)} units total")
+
+    # parse dictionary for shared/borrowed values in specific fields
+    for unit in merged_edits:
+        for field in ("CommandPoints",):
+            if field in merged_edits[unit] and type(merged_edits[unit][field]) == str:
+                ref_unit = merged_edits[unit].get(field, None)
+                if ref_unit in merged_edits and field in merged_edits[ref_unit]:
+                    merged_edits[unit][field] = merged_edits[ref_unit][field]
+                    logger.info(f"Retrieved referenced \"{field}\" value for unit {unit} from unit {ref_unit}")
+                else:
+                    merged_edits[unit].pop(field)
+
     return merged_edits
+
 
 def load_depiction_edits() -> Dict:
     """Load and merge all depiction edit dictionaries."""

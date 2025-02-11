@@ -841,7 +841,8 @@ pol_unit_edits = {
     },
 
     "BM21_Grad_POL": {  # BM-21 Grad
-        "CommandPoints": 175,
+        # "CommandPoints": 175,
+        "CommandPoints": "BM21_Grad_SOV",
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1293,13 +1294,15 @@ pol_unit_edits = {
     },
 
     "BRM_1_POL": {  # BWR-1D
-        "CommandPoints": 55,
+        "CommandPoints": "BRM_1_SOV",
+        # "CommandPoints": 55,
         "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
     },
 
     "BRDM_2_POL": {  # BRDM-2
         "strength": 8,
-        "CommandPoints": 35,
+        # "CommandPoints": 35,
+        "CommandPoints": "BRDM_2_SOV",
         "availability": 8,
         "Divisions": {
             "default": {
