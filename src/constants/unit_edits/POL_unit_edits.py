@@ -1467,8 +1467,7 @@ pol_unit_edits = {
     },
 
     # POL HELI
-
-    "Mi_24D_POL": {  # 128x S-5, 4x Falanga - Mi-24D [AT]
+    "Mi_24D_POL": {  # 128x S-5, 4x Falanga - Mi-24D [AT] -> transport
         "CommandPoints": 145,
         "TagSet": {
             "overwrite_all": [
@@ -1489,12 +1488,18 @@ pol_unit_edits = {
             "remove": ["POL_20_Pancerna"],
         },
         "XPMultiplier": [0.0, 4/4, 3/4, 0.0],
+        "GameName": {
+            "display": "Mi-24D DESANT."  # wargame reference
+        }
     },
 
     "Mi_24D_s8_AT_POL": {  # 80x S-8, 4x Falanga - Mi-24D [AT2]
         "CommandPoints": 150,
         "availability": 4,
         "XPMultiplier": [0.0, 4/4, 3/4, 0.0],
+        "GameName": {
+            "display": "Mi-24D [AT]"  # wargame reference
+        }
     },
 
     "W3W_Sokol_RKT_POL": {  # W-3 Sokol [RKT
