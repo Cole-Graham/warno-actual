@@ -425,9 +425,10 @@ def _apply_salvo_changes(weapon_descr: Any, wd_edits: Dict, weapon_descr_data: D
                 salves_winchester.v.replace(index, winchester)
         elif "equipmentchanges" in wd_edits:
             if "replace" in wd_edits["equipmentchanges"]:
-                for old_weapon, new_weapon in wd_edits["equipmentchanges"]["replace"]:
+                for (old_weapon, new_weapon) in wd_edits["equipmentchanges"]["replace"]:
                     # check if the new weapon is the same as the one in salve_edits
                     if new_weapon != weapon:
+                        logger.debug(f"New weapon {new_weapon} is not the same as {weapon}")
                         continue
                     # check if the old weapon is a renamed version of the weapon in salvo_mapping
                     old_weapon_old_name = renames_new_old.get(old_weapon, None)
@@ -435,6 +436,8 @@ def _apply_salvo_changes(weapon_descr: Any, wd_edits: Dict, weapon_descr_data: D
                     if salvo:  # is not None:
                         logger.debug(f"Updating salvo for {weapon} at index {index}")
                         salves_list.v.replace(index, str(salvo))
+                        print(f"salves_list: {salves_list.v}")
+                        print(f"salves_list...")
                     if salves_winchester and winchester:
                         logger.debug(f"Updating index {index} of SalvoIsMainSalvo to {winchester}")
                         salves_winchester.v.replace(index, winchester)

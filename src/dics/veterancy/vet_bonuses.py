@@ -178,7 +178,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Aiming time:} #styleTurquoise{-60%}'
                 '\n#style1{- Stress resistance:} #styleTurquoise{+45%}'
                 '\n#style1{- Stress recovery:} #styleTurquoise{8.4} #style1{per second}'
-                '\n#style1{- Evasive maneuvers:} #styleTurquoise{+5%}'
+                '\n#style1{- Evasion:} #styleTurquoise{+5%}'
                 '\n(flat, multiplicative, percentage)'
             ),
         },

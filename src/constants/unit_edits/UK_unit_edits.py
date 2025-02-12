@@ -741,7 +741,7 @@ uk_unit_edits = {
         },
         "max_speed": 26,
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_light'"],
+            "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
     },
     
@@ -759,7 +759,7 @@ uk_unit_edits = {
         },
         "max_speed": 26,
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_light'"],
+            "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
     },
@@ -782,7 +782,7 @@ uk_unit_edits = {
         "CommandPoints": 30,
         "max_speed": 26,
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_light'"],
+            "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
     },
     

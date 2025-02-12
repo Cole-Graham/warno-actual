@@ -17,7 +17,9 @@ from .SOV_depiction_edits import (
     mtlb_vasilek_sov,
 )
 # from .UK_depiction_edits import ()
-# from .USA_depiction_edits import ()
+from .USA_depiction_edits import (
+    scout_us,
+)
 
 __all__ = [
     # POL
@@ -33,4 +35,7 @@ __all__ = [
     "mortier_2b9_vasilek_nonpara_sov",
     "mortier_2b9_vasilek_sov",
     "mtlb_vasilek_sov",
+    
+    # USA
+    "scout_us",
 ]

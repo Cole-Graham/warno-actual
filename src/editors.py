@@ -4,33 +4,35 @@ from typing import Callable, Dict, List
 
 # Import all gameplay editors
 from src.gameplay import (
-    unit_edits_divisionrules, 
+    add_radio_tag_to_mortars,
+    add_swift_capacity,
+    apply_default_salves,
+    bomb_damage_standards,
+    change_fire_descriptors,
+    create_veh_showroom_depictions,
+    deck_ap_points,
+    edit_aim_times,
+    edit_conditions,
+    edit_damage_levels,
+    edit_fire_descriptors,
+    edit_he_damage,
+    edit_mg_teams,
+    edit_smoke_duration,
+    edit_weapon_ranges,
+    global_bomber_edits,
+    mg_team_division_rules,
     modify_deck_packs,
-    update_deck_pack_references,
     modify_decks,
     new_deck_packs,
     supply_divisionrules,
     supply_divisions,
-    edit_mg_teams,
-    apply_default_salves,
-    ui_gameplay_textscripts,
-    update_weapondescr_ammoname_quantity,
-    edit_he_damage,
-    edit_aim_times,
-    edit_weapon_ranges,
-    global_bomber_edits,
-    bomb_damage_standards,
-    edit_fire_descriptors,
-    change_fire_descriptors,
-    mg_team_division_rules,
-    add_radio_tag_to_mortars,
-    edit_smoke_duration,
     temp_fix_reco_radar,
-    create_veh_showroom_depictions,
-    deck_ap_points,
+    ui_gameplay_textscripts,
+    unit_edits_divisionrules,
+    update_deck_pack_references,
+    update_weapondescr_ammoname_quantity,
 )
 from src.gameplay.buildings import edit_fob_attributes
-
 from src.gameplay.depictions import (
     create_aerial_ghost_depictions,
     create_alternatives_depictions,
@@ -45,10 +47,10 @@ from src.gameplay.depictions import (
     edit_infantry_depictions,
     edit_showroom_units,
     unit_edits_depictionaerial,
+    unit_edits_depictioninfantry,
     unit_edits_depictionvehicles,
     unit_edits_missilecarriage,
     unit_edits_missilecarriagedepiction,
-    unit_edits_depictioninfantry,
 )
 from src.gameplay.divisions import (
     add_division_rules,
@@ -62,7 +64,6 @@ from src.gameplay.effects import (
     edit_capacite_list,
     edit_critical_effects,
     edit_shock_effects,
-    edit_shock_effects_packs_list,
     edit_shock_units,
 )
 from src.gameplay.game_constants import (
@@ -106,7 +107,7 @@ from src.gameplay.weapons.damage_families import (
     edit_infantry_armor,
     edit_weapon_constantes,
 )
-from src.gameplay.weapons.missiles import edit_missiles, edit_missile_speed
+from src.gameplay.weapons.missiles import edit_missile_speed, edit_missiles
 from src.gameplay.weapons.new_weapons import create_new_weapons
 from src.gameplay.weapons.unit_edits import unit_edits_weapondescriptor
 from src.shared import get_shared_editors
@@ -244,6 +245,7 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
             lambda source_path: edit_mg_teams(source_path, game_db),
             lambda source_path: global_bomber_edits(source_path, game_db),
             lambda source_path: add_radio_tag_to_mortars(source_path, game_db),
+            add_swift_capacity,
         ],
         "GameData/Generated/Gameplay/Gfx/Ammunition.ndf": [
             lambda source_path: edit_ammunition(source_path, game_db),
@@ -279,17 +281,20 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/Generated/Gameplay/Gfx/BuildingDescriptors.ndf": [
             edit_fob_attributes,
         ],
+        "GameData/Generated/Gameplay/Gfx/DamageLevels.ndf": [
+            edit_damage_levels,
+        ],
 
         # Effects and veterancy
         "GameData/Generated/Gameplay/Gfx/CapaciteList.ndf": [
             edit_capacite_list,
         ],
-        # "GameData/Generated/Gameplay/Gfx/EffectsPacksList.ndf": [
-        #     edit_shock_effects_packs_list,
-        # ],
         "GameData/Generated/Gameplay/Gfx/EffetsSurUnite.ndf": [
-            edit_shock_effects,
+            edit_shock_effects, # todo: this should be renamed to more generic effects editing function
             edit_veterancy_effects,
+        ],
+        "GameData/Generated/Gameplay/Gfx/ConditionsDescriptor.ndf": [
+            edit_conditions,
         ],
         "GameData/Generated/Gameplay/Gfx/ExperienceLevels.ndf": [
             edit_veterancy_hints,

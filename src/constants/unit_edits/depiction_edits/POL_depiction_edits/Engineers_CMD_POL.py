@@ -16,7 +16,7 @@ engineers_cmd_pol: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
 
         ("AllWeaponSubDepiction_Engineers_CMD_POL", "TemplateAllSubWeaponDepiction"): {
             "Operators": {
-                1: ("edit", [("FireEffectTag", '"MMG_PKM_7_62mm"')]),
+                1: ("edit", [("FireEffectTag", "MMG_PKM_7_62mm")]),
             },
         },
 

@@ -55,7 +55,9 @@ def edit_units(source_path: Any, game_db: Dict[str, Any]) -> None:
                 if not isinstance(descr_row.v, ndf.model.Object):
                     continue
 
-                modify_module(unit_row, descr_row, edits, i, modules_list, dictionary_entries)
+                modify_module(unit_row, descr_row, edits, i, modules_list, dictionary_entries, game_db)
+                
+            _add_modules(unit_row, descr_row, edits, modules_list, dictionary_entries, game_db)
 
         except Exception as e:
             logger.error(f"Error processing {unit_name}: {str(e)}")
@@ -71,7 +73,7 @@ def edit_units(source_path: Any, game_db: Dict[str, Any]) -> None:
 
 
 def modify_module(unit_row: Any, descr_row: Any, edits: dict, index: int,
-                  modules_list: list, dictionary_entries: list) -> None:
+                  modules_list: list, dictionary_entries: list, game_db: Dict[str, Any]) -> None:
     """Apply edits to a specific module based on its type."""
     if not hasattr(descr_row.v, 'type'):
         return
@@ -101,6 +103,7 @@ def modify_module(unit_row: Any, descr_row: Any, edits: dict, index: int,
             "TDeploymentShiftModuleDescriptor": _handle_deployment_shift,
             "TZoneInfluenceMapModuleDescriptor": _handle_zone_influence,
             "TTransportableModuleDescriptor": _handle_transportable,
+            # "TTransporterModuleDescriptor": _handle_transporter,
         }
 
         # Handle special namespace cases
@@ -142,23 +145,64 @@ def modify_module(unit_row: Any, descr_row: Any, edits: dict, index: int,
 
         # Apply module-specific handler if it exists
         if handler := module_handlers.get(descr_type):
-            handler(unit_row, descr_row, edits, index, modules_list, dictionary_entries)
+            handler(unit_row, descr_row, edits, index, modules_list, dictionary_entries, game_db)
 
     except Exception as e:
         logger.error(f"Error modifying module for {unit_name}: {str(e)}")
 
+def _add_modules(unit_row: Any, descr_row: Any, edits: dict,
+                 modules_list: list, dictionary_entries: list, game_db: Dict[str, Any]) -> None:
+    """Add modules to the unit."""
+    unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
+    unit_db = game_db["unit_data"]
+    
+    heli_transporter_module = (
+        f'Transporter is'
+        f'    TModuleSelector'
+        f'    ('
+        f'        Default        = TTransporterModuleDescriptor'
+        f'        ('
+        f'           TransportableTagSet            = ['
+        f'                                "Crew",'
+        f'                                            ]'
+        f'           NbSeatsAvailable               = 1'
+        f'           WreckUnloadPhysicalDamageBonus = WreckUnloadDamageBonus_Chopper_Physical'
+        f'           WreckUnloadSuppressDamageBonus = WreckUnloadDamageBonus_Chopper_Suppress'
+        f'           WreckUnloadStunDamageBonus     = WreckUnloadDamageBonus_Chopper_Stun'
+        f'           LoadRadiusGRU                     = 70'
+        f'         )'
+        f'        Condition      = ~/IfNotCadavreCondition'
+        f'     )'
+    )
+    
+    is_helo = False
+    if unit_name in unit_db:
+        if unit_db[unit_name]["is_helo_unit"]:
+            is_helo = True
+            
+    add_transport_module = "UnloadFromTransport" in edits.get("orders", {}).get("add_orders", [])
+    if is_helo and add_transport_module:
+        modules_list.v.add(heli_transporter_module)
+        logger.info(f"Added heli transporter module to {unit_name}")
+
+def _handle_transporter(unit_row: Any, descr_row: Any, edits: dict, index: int, 
+                       modules_list: list, dictionary_entries: list, game_db: Dict[str, Any]) -> None:
+    """Handle transporter module edits."""
+    unit_db = game_db["unit_data"]
+
 
 def _handle_tags(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
 
+    unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
     if "TagSet" not in edits:
         return
 
-    tagset = descr_row.v.by_m("TagSet").v
+    tagset = descr_row.v.by_m("TagSet")
     if "overwrite_all" in edits["TagSet"]:
         tagset.v = ndf.convert(str(edits["TagSet"]["overwrite_all"]))
     elif "add_tags" in edits["TagSet"]:
         for tag in edits["TagSet"]["add_tags"]:
-            tagset.add(tag)
+            tagset.v.add(tag)
             logger.info(f"Added tag {tag} to {unit_row.namespace}")
 
 
@@ -255,7 +299,7 @@ def _handle_icon(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:  # noq
 
 
 def _handle_unit_ui(unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list,
-                    dictionary_entries: list) -> None:
+                    dictionary_entries: list, game_db: Dict[str, Any]) -> None:
     """Handle UI module modifications."""
     if "SpecialtiesList" in edits:
         specialties_list = descr_row.v.by_m("SpecialtiesList")

@@ -1979,6 +1979,7 @@ usa_unit_edits = {
     },
 
     "M981_FISTV_US": {
+        "CommandPoints": 25,
         "availability": 8,
         "GameName": {
             "display": "#RECO3 M981 FISTV",
@@ -2105,16 +2106,18 @@ usa_unit_edits = {
         },
         "max_speed": 26,
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_light'"],
+            "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
         "WeaponDescriptor": {
             "Salves": {
                 "FM_M16": 11,
-                "MMG_inf_M240B_7_62mm": 30,
+                "SAW_M249_5_56mm": 45,
                 "add": [(2, 4)],
             },
             "equipmentchanges": {
-                "add": [(2, "RocketInf_M72A3_LAW_66mm")] # (turret, salves, weapon)
+                "add": [(2, "RocketInf_M72A3_LAW_66mm")], # (turret, salves, weapon)
+                "replace": [("MMG_inf_M240B_7_62mm", "SAW_M249_5_56mm")],
+                "fire_effect": [("MMG_inf_M240B_7_62mm", "SAW_M249_5_56mm")],
             },
         },
     },
@@ -2136,7 +2139,7 @@ usa_unit_edits = {
     },
 
     "LRRP_US": {
-        "CommandPoints": 60,
+        "CommandPoints": 75,
         "availability": 4,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.75],
         "Divisions": {
@@ -2162,6 +2165,10 @@ usa_unit_edits = {
     "Sniper_US": {
         "GameName": {
             "display": "#RECO2 SNIPERS",
+        },
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
     },
 

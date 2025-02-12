@@ -757,7 +757,7 @@ rda_unit_edits = {
         "XPMultiplier": [8/8, 6/8, 0.0, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_light'"],
+            "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
     },
 
@@ -772,7 +772,7 @@ rda_unit_edits = {
     },
 
     "Scout_LRRP_DDR": {
-        "CommandPoints": 60,
+        "CommandPoints": 70,
         "availability": 4,
         "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
         "max_speed": 26,

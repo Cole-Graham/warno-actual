@@ -65,8 +65,10 @@ from .effects import (
     edit_capacite_list,
     edit_critical_effects,
     edit_shock_effects,
-    edit_shock_effects_packs_list,
     edit_shock_units,
+    add_swift_capacity,
+    edit_conditions,
+    edit_damage_levels,
 )
 from .game_constants import edit_gd_constantes, edit_orders, edit_ravitaillement
 from .terrains import edit_terrains
@@ -224,9 +226,6 @@ def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:
         # Effects and veterancy files
         "GameData/Generated/Gameplay/Gfx/CapaciteList.ndf": [
             lambda source_path: edit_capacite_list(source_path),
-        ],
-        "GameData/Generated/Gameplay/Gfx/EffectsPacksList.ndf": [
-            lambda source_path: edit_shock_effects_packs_list(source_path),
         ],
         "GameData/Generated/Gameplay/Gfx/EffetsSurUnite.ndf": [
             lambda source_path: edit_shock_effects(source_path),

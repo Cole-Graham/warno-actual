@@ -4,6 +4,7 @@ from typing import Any, Dict, List, Optional
 from uuid import uuid4
 
 from src import ndf
+from src.constants.unit_edits import load_unit_edits
 from src.constants.weapons.ammunition import ammunitions
 from src.constants.weapons.vanilla_inst_modifications import AMMUNITION_REMOVALS
 from src.utils.dictionary_utils import write_dictionary_entries
@@ -372,6 +373,8 @@ def apply_default_salves(
 ) -> None:
     """Apply default salves to WeaponDescriptor.ndf"""
     
+    unit_edits = load_unit_edits()
+    
     def __edit_salves(
         source_path: Any,
         weapon_descr_name: str,
@@ -394,6 +397,20 @@ def apply_default_salves(
         default_salves = data["WeaponDescriptor"]["Salves"]
         for weapon_descr_name, weapon_descr_data in ammo_db["salves_map"].items():
             
+            skip_weapon_descr_ammo_name = False
+            unit_name = weapon_descr_name.replace("WeaponDescriptor_", "")
+            for unit, edits in unit_edits.items():
+                if unit == unit_name and "WeaponDescriptor" in edits:
+                    replacements = edits["WeaponDescriptor"].get("equipmentchanges", {}).get("replace", [])
+                    if replacements:
+                        for (current, replacement) in replacements:
+                            if current == ammo_name:
+                                skip_weapon_descr_ammo_name = True
+            
+            if skip_weapon_descr_ammo_name:
+                logger.debug(f"Skipping {ammo_name} for {weapon_descr_name} because it is replaced.")
+                continue
+                
             if old_name and old_name in weapon_descr_data["salves"]:
                 salvo_stock_index = weapon_descr_data["salves"][old_name][0]
                 __edit_salves(source_path, weapon_descr_name, old_name,

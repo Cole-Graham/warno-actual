@@ -1725,7 +1725,7 @@ sov_unit_edits = {
     },
 
     "BMD_1_Reostat_SOV": {
-        "CommandPoints": 20,
+        "CommandPoints": 30,
         "availability": 8,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
@@ -1766,7 +1766,7 @@ sov_unit_edits = {
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_light'"],
+            "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
     },
 
@@ -1781,7 +1781,7 @@ sov_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_light'"],
+            "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
     },
 
@@ -1789,7 +1789,7 @@ sov_unit_edits = {
         "CommandPoints": 30,
         "max_speed": 26,
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_light'"],
+            "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
     },
     
@@ -1865,7 +1865,7 @@ sov_unit_edits = {
     },
 
     "Scout_Spetsnaz_SOV": {
-        "CommandPoints": 60,
+        "CommandPoints": 65,
         "availability": 4,
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
         "max_speed": 26,

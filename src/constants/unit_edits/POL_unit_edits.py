@@ -1234,12 +1234,18 @@ pol_unit_edits = {
         },
         "Divisions": {
             "POL_20_Pancerna": {
-                "Transports": ['Honker_4011_POL', 'Honker_RYS_POL', 'OT_65_POL', 'Mi_2_trans_POL'],
+                "Transports": [
+                    'Honker_4011_POL',
+                    'Honker_RYS_POL',
+                    'OT_65_POL',
+                    'Mi_2_trans_POL',
+                    'Mi_24D_POL',
+                ],
             },
         },
         "max_speed": 26,
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_light'"],
+            "add_specs": ["'infantry_equip_medium'"],
         },
         "DeploymentShift": 0,
         "GameName": {
@@ -1464,7 +1470,24 @@ pol_unit_edits = {
 
     "Mi_24D_POL": {  # 128x S-5, 4x Falanga - Mi-24D [AT]
         "CommandPoints": 145,
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Helo",
+                "Helo_Gunship",
+                "Helo_Transport",
+                "UNITE_Mi_24D_POL",
+                "Unite"
+            ],
+        },
+        "orders": {
+            "add_orders": ["UnloadFromTransport", "UnloadAtPosition", "LoadUnit"]
+        },
         "availability": 4,
+        "Divisions": {
+            "remove": ["POL_20_Pancerna"],
+        },
         "XPMultiplier": [0.0, 4/4, 3/4, 0.0],
     },
 

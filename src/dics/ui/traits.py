@@ -115,6 +115,17 @@ NEW_TRAITS = {
         )),
         "texture": "terrain_radar.png",
     },
+    
+    "_swift": {
+        "title": ("VVLHQSOXCW", "Swift"),
+        "description": ("ULULIILHXH", (
+            f"Fewer soldiers and light equipment allow this unit to maintain cohesion "
+            "while marching at a faster pace.\n"
+            f"\n"
+            f"33% movement speed bonus while above 90% morale."
+        )),
+        "texture": "swift.png",
+    },
 }
 
 TRAIT_EDITS = {
@@ -126,12 +137,11 @@ TRAIT_EDITS = {
                 f"150m of enemies, gain the following bonuses: "
                 f"\n- 15% bonus to aim time, shot reload, and salvo reload. (multiplicative)"
                 f"\n- 15% bonus to physical damage. (flat)"
-                f"\n\nIf within 875m of enemies, Shock units move 33% faster, "
-                f"and while moving receive -50% suppression damage, and -20% "
-                f"physical damage. (multiplicative, percentage, percentage)"
-                f"\nThis bonus has a 10 second duration, 15 second cooldown, and "
-                f"2 second cast time. Due to a technical limitation, GSR shock infantry only "
-                f"get the movement speed bonus."
+                f"\n\nFor 10 seconds if below 90% cohesion and within 875m of enemies, "
+                f"Shock units will activate a sprint ability. They will move 50% faster, "
+                f"receive -50% suppression damage, and -20% physical damage. "
+                f"(multiplicative, percentage, percentage)"
+                f"\nThis bonus has a 10 second duration, 35 second cooldown."
             )
         }
     },

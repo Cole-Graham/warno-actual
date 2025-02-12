@@ -120,6 +120,12 @@ def _update_existing_units(source_path: Any, unit: str, edits: Dict) -> None:
             # Skip if not our target unit
             if rule_obj.v.by_m("UnitDescriptor").v != unit_descr:
                 continue
+            
+            add_transport_module = "UnloadFromTransport" in edits.get("orders", {}).get("add_orders", [])
+            if add_transport_module:
+                unit_rule_list.remove(rule_obj.index)
+                logger.debug(f"Removing {unit} from {div_name} because its now a transport unit")
+                break
                 
             logger.debug(f"Updating {unit} in {div_name}")
             _apply_unit_updates(rule_obj.v, unit, div_name, edits)

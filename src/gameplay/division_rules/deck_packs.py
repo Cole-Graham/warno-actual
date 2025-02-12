@@ -260,3 +260,13 @@ def new_deck_packs(source_path: Any) -> None:
     )
     source_path.add(new_deck_pack)
     
+    new_deck_pack = (
+        'Descriptor_Deck_Pack_Scout_LRRP_POL_Mi_24D_POL_2_1 is DeckPackDescriptor'
+        '('
+        '    Xp = 2'
+        '    Transport = $/GFX/Unit/Descriptor_Unit_Mi_24D_POL'
+        '    Unit = $/GFX/Unit/Descriptor_Unit_Mi_24D_POL'
+        '    Number = 1'
+        ')'
+    )
+    source_path.add(new_deck_pack)

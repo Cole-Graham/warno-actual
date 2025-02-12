@@ -66,7 +66,14 @@ POL_NEW_UNITS = {
                 "cards": 2,
             },
             "POL_20_Pancerna_multi": {
-                "Transports": ["UAZ_469_trans_POL", "MTLB_trans_POL", "BMP_1_SP2_POL", "BMP_2_POL", "Mi_2_trans_POL"],
+                "Transports": [
+                    "UAZ_469_trans_POL",
+                    "MTLB_trans_POL",
+                    "BMP_1_SP2_POL",
+                    "BMP_2_POL",
+                    "Mi_2_trans_POL",
+                    "Mi_24D_POL",
+                ],
             },
         },
         "availability": 2,
