@@ -407,10 +407,10 @@ POL_NEW_UNITS = {
         "Factory": "EDefaultFactories/Logistic",
         "CommandPoints": 145,
         "SpecialitiesList": [
-                'hq_veh',
-                'leader_sov',
-                '_amphibie',
-            ],
+            'hq_veh',
+            'leader_sov',
+            '_amphibie',
+        ],
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -431,5 +431,57 @@ POL_NEW_UNITS = {
         "Faction": "PACT",
         "Nation": "POL",
     },
+
+    # ("MiG_23MF_AA_POL", 0): {  # MiG-23MF [AA3]
+    #     "GameName": {
+    #         "display": "MiG-23MF [AA3]",
+    #         "token": "MIG23MFAA3",
+    #     },
+    #     "GUID": "1b34c5cf-ed1f-48ce-9db3-f227dfa3cce7",
+    #     "GroupeCombatGUID": "701c25c0-7522-46b3-b2bf-d3614701d7c5",
+    #     "ShowroomGUID": "ec350db0-6b05-428c-8659-5fc40fff3820",
+    #     "CadavreGUID": "d7249c56-d85b-41b6-8bc1-f1d8e2ba6fd8",
+    #     "NewName": "MiG_23MF_AA3_POL",
+    #     # "TagSet": {
+    #     #     "overwrite_all": [
+    #     #         "AllUnits",
+    #     #         "AllowedForMissileRoE",
+    #     #         "Commandant",
+    #     #         "GroundUnits",
+    #     #         "InfmapCommander",
+    #     #         "UNITE_OT_62_TOPAS_R3M_CMD2_POL",
+    #     #         "Unite",
+    #     #         "Vehicule",
+    #     #         "Vehicule_CMD",
+    #     #     ],
+    #     # },
+    #     # "Factory": "EDefaultFactories/Logistic",
+    #     # "CommandPoints": 145,
+    #     "Divisions": {
+    #         "default": {
+    #             "cards": 2,
+    #         },
+    #         "POL_4_Zmechanizowana_multi": {
+    #             "Transports": None,
+    #         },
+    #     },
+    #     "WeaponDescriptor": {
+    #         "equipmentchanges": {
+    #             "replace": [("AA_R23R_Vympel", "AA_R60M_Vympel")],
+    #         },
+    #     },
+    #     "Orders": ['Stop', 'Move', 'FollowFormation', 'Shoot', 'ShootOnPosition', 'ShootOnPositionWithoutCorrection',
+    #                'AirplanePatrol', 'AirplaneAttack', 'AirplaneMoveAndEngage', 'AirplaneEvacuate', 'AirplaneShoot',
+    #                'AIAirplaneAutoManage', 'AIStop'],
+    #     "availability": 3,
+    #     "XPMultiplier": [0.0, 3/3, 0.0, 0.0],
+    #     "is_infantry": False, # False for Javelin LML (unique exception), towed units.
+    #     "is_heavy_equipment": False,
+    #     "is_ground_vehicle": False,
+    #     "is_aerial": True,
+    #     "is_unarmed": False,
+    #     "Faction": "PACT",
+    #     "Nation": "POL",
+    # },
 }
 # fmt: on

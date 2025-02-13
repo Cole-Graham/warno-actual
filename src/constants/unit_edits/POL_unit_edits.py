@@ -47,7 +47,7 @@ pol_unit_edits = {
 
     "DCA_ZUR_23_2S_JOD_POL": {  # ZUR-23-2S Jod
         "CommandPoints": 30,
-        "Factory": "EDefaultFactories/Logistic",
+        # "Factory": "EDefaultFactories/Logistic",  # keep in AA tab
         # "Divisions": {
         #     "default": {
         #         "cards": 69,
@@ -128,7 +128,7 @@ pol_unit_edits = {
     },
 
     "OT_64_SKOT_CMD_POL": {  # SKOT R-2M
-        "CommandPoints": 160,
+        "CommandPoints": 165,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1528,14 +1528,7 @@ pol_unit_edits = {
         },
     },
 
-    "Mi_8T_non_arme_POL": {  # Mi-8T
-        "CommandPoints": 50,
-        "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
-        },
-    },
-
-    "W3_Sokol_POL": {  # Mi-8T
+    "W3_Sokol_POL": {  # W-3 Sokol
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
@@ -1544,11 +1537,25 @@ pol_unit_edits = {
         }
     },
 
+    "Mi_8T_non_arme_POL": {  # Mi-8T
+        "CommandPoints": 50,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'"],
+        },
+        "UpgradeFromUnit": "W3_Sokol_POL",
+    },
+
     "Mi_8T_POL": {  # twin S-5 x32 - Mi-8T [RKT]
         "CommandPoints": 50,
     },
 
     # POL AIR
+    "MiG_17PF_POL": {
+        "GameName": {
+            "display": "Lim-6M [RKT]"
+        }
+    },
+
     "MiG_21bis_AA_POL": {  # 4x R-60M, 2x R-3R MiG-21bis [AA1]
         "CommandPoints": 120,
         "XPMultiplier": [0.0, 4/4, 3/4, 2/4],
@@ -1577,6 +1584,29 @@ pol_unit_edits = {
                 "replace": [("RocketAir_S24_240mm_salvolength2", "RocketAir_S24_240mm_avion_salvolength4")],
             },
         },
+    },
+
+    # "MiG_23MF_AA_POL": {  # MiG-23MF [AA]
+    #     "CommandPoints": 180,
+    #     "XPMultiplier": [0.0, 2/2, 0.0, 0.0],
+    # },
+
+    # "MiG_23MF_AA2_POL": {  # MiG-23MF [AA2]
+    #     "CommandPoints": 180,
+    #     "XPMultiplier": [0.0, 2/2, 0.0, 0.0],
+    # },
+
+    "MiG_29_AA_POL": {  # 4x R-73, 2x R-27R [AA]
+        "GameName": {
+            "display": "MiG-29A [AA]",
+        },
+        "CommandPoints": 200,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "XPMultiplier": [0.0, 2/2, 0.0, 1/2],
     },
 
     "Su_22_AT_POL": {  # Su-22M4 Seria 30
@@ -1616,25 +1646,6 @@ pol_unit_edits = {
         },
         "XPMultiplier": [0.0, 2/2, 0.0, 1/2],
     },
-
-    "MiG_29_AA_POL": {  # 4x R-73, 2x R-27R [AA]
-        "GameName": {
-            "display": "MiG-29A [AA]",
-        },
-        "CommandPoints": 200,
-        "Divisions": {
-            "default": {
-                "cards": 2,
-            },
-        },
-        "XPMultiplier": [0.0, 2/2, 0.0, 1/2],
-    },
-
-    "MiG_17PF_POL": {
-        "GameName": {
-            "display": "Lim-6M [RKT]"
-        }
-    }
 
 }
 # fmt: off

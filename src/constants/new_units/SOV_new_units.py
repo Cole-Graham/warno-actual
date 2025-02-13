@@ -9,7 +9,8 @@ SOV_NEW_UNITS = {
         "CadavreGUID": "4a793ae9-5f90-41e1-b8a2-b9203e527de5",
         "NewName": "MotRifles_CMD2_SOV",
         "GameName": {
-            "display": "#CMD KOMANDNOE OTDELENIE",
+            # "display": "#CMD KOMANDNOE OTDELENIE",
+            "display": "#CMD KOM. OTDELENIE",
             "token": "FFFKSMMRGR",
         },
         "TagSet": {
@@ -103,7 +104,8 @@ SOV_NEW_UNITS = {
         "CadavreGUID": "b852d941-cba8-42e6-867a-7ecf24be522b",
         "NewName": "MotRifles_CMD2_TTsko_SOV",
         "GameName": {
-            "display": "#CMD KOMANDNOE OTDELENIE",
+            # "display": "#CMD KOMANDNOE OTDELENIE",
+            "display": "#CMD KOM. OTDELENIE",
             "token": "PKHNVEPCJL",
         },
         "TagSet": {

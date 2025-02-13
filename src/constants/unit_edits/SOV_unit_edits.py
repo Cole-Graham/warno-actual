@@ -97,6 +97,24 @@ sov_unit_edits = {
         },
     },
 
+    "Mi_8TZ_SOV": {  # Mi-8MT Gruzovoi
+        "GameName": {
+            "display": "Mi-8MT GRUZ.",
+        },
+    },
+
+    "Mi_6_SOV": {  # Mi-6A Gruzovoi
+        "GameName": {
+            "display": "Mi-6A GRUZ.",
+        },
+    },
+
+    "Mi_26_SOV": {  # Mi-26 Gruzovoi
+        "GameName": {
+            "display": "Mi-26 GRUZ.",
+        },
+    },
+
     # SOV INF
     "MotRifles_CMD_TTsko_SOV": {
         "CommandPoints": 40,
@@ -1389,12 +1407,18 @@ sov_unit_edits = {
     },
 
     "2S9_Nona_SOV": {
+        "GameName": {
+            "display": "2S9 NONA-S",
+        },
         "CommandPoints": 85,
         "availability": 3,
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
     },
 
     "2S23_Nona_SVK_SOV": {
+        "GameName": {
+            "display": "2S23 NONA-SVK",
+        },
         "CommandPoints": 95,
         "availability": 3,
         "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
@@ -2231,12 +2255,12 @@ sov_unit_edits = {
                 1: {
                     "MountedWeapons": {
                         "AutoCanon_AP_30mm_Bitube_Gsh30k": {
-                            "add_members": [("TirContinu", True),],
+                            "add_members": [("TirContinu", True), ],
                             "Ammunition": "AutoCanon_AP_30mm_Bitube_Gsh30k_burst",
                             "EffectTag": "'FireEffect_GatlingAir_Gsh_30_2_30mm_x2'",
                         },
                         "AutoCanon_HE_30mm_Bitube_Gsh30k": {
-                            "add_members": [("TirContinu", True),],
+                            "add_members": [("TirContinu", True), ],
                             "Ammunition": "AutoCanon_HE_30mm_Bitube_Gsh30k_burst",
                             "EffectTag": "'FireEffect_GatlingAir_Gsh_30_2_30mm_x2'",
                         },

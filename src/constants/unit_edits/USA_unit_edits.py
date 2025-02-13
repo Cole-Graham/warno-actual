@@ -721,7 +721,7 @@ usa_unit_edits = {
 
     "NatGuard_Engineers_Flam_US": {
         "GameName": {
-            "display": "N.G. ENGINEERS [FLAM]",
+            "display": "NG ENGINEERS [FLAM]",
         },
         "CommandPoints": 40,
         "Divisions": {
@@ -750,7 +750,7 @@ usa_unit_edits = {
 
     "NatGuard_Engineers_M67_US": {
         "GameName": {
-            "display": "N.G. ENGINEERS [M67]",
+            "display": "NG ENGINEERS [M67]",
         },
         "CommandPoints": 40,
         "Divisions": {
@@ -1211,7 +1211,7 @@ usa_unit_edits = {
     
     "Rifles_half_LAW_NG_US": {
         "GameName": {
-            "display": "N.G. FIRETEAM [LAW]",
+            "display": "NG FIRETEAM [LAW]",
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -1222,7 +1222,7 @@ usa_unit_edits = {
 
     "Rifles_half_Dragon_NG_US": {
         "GameName": {
-            "display": "N.G. FIRETEAM [DRAGON]",
+            "display": "NG FIRETEAM [DRAGON]",
         },
         "CommandPoints": 30,
         "availability": 15,
@@ -1245,7 +1245,7 @@ usa_unit_edits = {
     
     "NatGuard_M67_US": {
         "GameName": {
-            "display": "N.G. RIFLES [M67]",
+            "display": "NG RIFLES [M67]",
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -1256,7 +1256,7 @@ usa_unit_edits = {
     
     "NatGuard_LAW_US": {
         "GameName": {
-            "display": "N.G. RIFLES [LAW]",
+            "display": "NG RIFLES [LAW]",
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -1267,7 +1267,7 @@ usa_unit_edits = {
     
     "NatGuard_Dragon_US": {
         "GameName": {
-            "display": "N.G. RIFLES [DRAGON]",
+            "display": "NG RIFLES [DRAGON]",
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -1339,7 +1339,7 @@ usa_unit_edits = {
 
     "HMGteam_M60_NG_US": {
         "GameName": {
-            "display": "N.G. M60 7.62mm",
+            "display": "NG M60 7.62mm",
         },
     },
 
@@ -2738,5 +2738,4 @@ usa_unit_edits = {
         "max_speed": 500,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
-    
 }
