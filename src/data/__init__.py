@@ -20,6 +20,7 @@ logger = setup_logger(__name__)
 # Cache for database
 _database_cache = None
 
+
 def build_database(config: Dict[str, Any]) -> Dict[str, Any]:
     """Build or update the database with game data."""
     global _database_cache
@@ -34,7 +35,7 @@ def build_database(config: Dict[str, Any]) -> Dict[str, Any]:
         # Check if we should build/rebuild the database
         if not config.get("data_config", {}).get("build_database", True):
             logger.info("Using existing database")
-            _database_cache = load_database_from_disk()
+            _database_cache = load_database_from_disk(config=config)
             return _database_cache
             
         # Load source files once and reuse
