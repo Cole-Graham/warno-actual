@@ -5,6 +5,7 @@ from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
 
+
 def edit_uispecificminimapinfoview(source_path) -> None:
     """Edit UISpecificMiniMapInfoView.ndf."""
     logger.info("Editing UISpecificMiniMapInfoView.ndf")

@@ -93,10 +93,10 @@ def _process_info_elements(elements_list: Any, nbunitinthepack=False) -> None:
             continue
             
         component_descr = element.v.by_member("ComponentDescriptor").v
-        if component_descr.type != "BUCKListDescriptor":
+        if component_descr.type != "BUCKListDescriptor":  # noqa
             continue
             
-        _update_nested_elements(component_descr.by_member("Elements").v, nbunitinthepack)
+        _update_nested_elements(component_descr.by_member("Elements").v, nbunitinthepack)  # noqa
 
 
 def _update_nested_elements(nested_elements_list: Any, nbunitinthepack) -> None:
@@ -106,11 +106,11 @@ def _update_nested_elements(nested_elements_list: Any, nbunitinthepack) -> None:
             continue
             
         nested_component_descr = nested_element.v.by_member("ComponentDescriptor").v
-        if nested_component_descr.type != "BUCKTextureDescriptor":
+        if nested_component_descr.type != "BUCKTextureDescriptor":  # noqa
             continue
 
         if nbunitinthepack:
-            nested_component_descr.by_member("TypefaceToken").v = '"Bombardier"'
+            nested_component_descr.by_member("TypefaceToken").v = '"Bombardier"'  # noqa
         else:
             _update_component_frames(nested_component_descr)
             _update_texture_properties(nested_component_descr)

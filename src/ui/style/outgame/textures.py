@@ -7,11 +7,12 @@ from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
 
+
 def edit_useoutgametextures(source_path) -> None:
     """Edit UseOutGameTextures.ndf.
     
     Args:
-        source: NDF file containing out-game texture definitions
+        source_path: NDF file containing out-game texture definitions
     """
     logger.info("Editing UseOutGameTextures.ndf")
     
@@ -39,6 +40,7 @@ def edit_useoutgametextures(source_path) -> None:
     
     logger.debug("Added new textures")
 
+
 def _get_new_textures() -> Dict[str, Dict[str, Any]]:
     """Get new texture definitions."""
     return {
@@ -55,6 +57,7 @@ def _get_new_textures() -> Dict[str, Dict[str, Any]]:
             "texture": "wa_logo_small.png",
         },
     }
+
 
 def _add_new_textures(source_path, index: int, textures_map: Any, new_textures: Dict[str, Dict[str, Any]]) -> None:
     """Add new textures to source_path."""
@@ -73,4 +76,4 @@ OutgameTexture_Mod_{texture} is TUIResourceTexture_Common
         map_entry = f'''\
 ("OutgameTexture_Mod_{texture}", MAP [
 (~/ComponentState/Normal, ~/OutgameTexture_Mod_{texture})])'''
-        textures_map.add(map_entry) 
+        textures_map.add(map_entry)

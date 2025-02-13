@@ -7,24 +7,23 @@ mi_24p_sov: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
     "unit_name": "Mi_24P_SOV",
     "valid_files": ["DepictionAerialUnits.ndf"],
     "DepictionAerialUnits_ndf": {
-
         ("Op_Mi_24P_SOV_Weapon1", "DepictionOperator_WeaponContinuousFire"): {
             "add_members": [
                 ("WeaponActiveAndCanShootPropertyName", "'WeaponActiveAndCanShoot_1'"),
-                ],
+            ],
             "replace_members": [
                 ("NbProj", "NbFX", None), # member, replacement, new value (None if old value should be used)
-                ],
+            ],
             "WeaponShootDataPropertyName": "'WeaponShootData_0_1'",
         },
         
         ("Op_Mi_24P_SOV_Weapon2", "DepictionOperator_WeaponContinuousFire"): {
             "add_members": [
                 ("WeaponActiveAndCanShootPropertyName", "'WeaponActiveAndCanShoot_2'"),
-                ],
+            ],
             "replace_members": [
                 ("NbProj", "NbFX", None),
-                ],
+            ],
             "WeaponShootDataPropertyName": "'WeaponShootData_0_2'",
         },
         

@@ -6,4 +6,4 @@ WEAPON_DESCRIPTIONS = {
         f"defensive bonus for enemies in cover. The precision of Sniper Rifles also has a "
         f"dramatic psychological effect on the enemy, causing a large amount of suppression."
     ))
-} 
+}

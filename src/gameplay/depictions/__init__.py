@@ -42,4 +42,4 @@ __all__ = [
     'unit_edits_missilecarriagedepiction',
     'unit_edits_depictionvehicles',
     'unit_edits_depictioninfantry',
-] 
+]

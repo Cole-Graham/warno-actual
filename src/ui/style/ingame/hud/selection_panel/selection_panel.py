@@ -7,11 +7,12 @@ from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
 
+
 def edit_uispecificunitselectionpanelview(source_path) -> None:
     """Edit UISpecificUnitSelectionPanelView.ndf.
     
     Args:
-        source: NDF file containing HUD unit selection panel view definitions
+        source_path: NDF file containing HUD unit selection panel view definitions
     """
     logger.info("Editing UISpecificUnitSelectionPanelView.ndf")
     
@@ -36,6 +37,7 @@ def edit_uispecificunitselectionpanelview(source_path) -> None:
     # Update ROE shortcuts panel
     _update_roe_shortcuts_panel(source_path)
 
+
 def _update_deselection_panel(source_path) -> None:
     """Update deselection panel properties."""
     paneldeselectionunique = source_path.by_namespace("PanelDeSelectionUnique").v
@@ -47,6 +49,7 @@ def _update_deselection_panel(source_path) -> None:
         component.v.by_member("BackgroundBlockColorToken").v = '"M81_Artichoke"'
     
     logger.debug("Updated deselection panel colors")
+
 
 def _update_selection_panel_name(source_path) -> None:
     """Update selection panel name properties."""
@@ -60,6 +63,7 @@ def _update_selection_panel_name(source_path) -> None:
     
     logger.debug("Updated selection panel name properties")
 
+
 def _update_panel_properties(panel: Any) -> None:
     """Update panel properties."""
     panel.by_member("BorderLineColorToken").v = '"BoutonTempsLineM81"'
@@ -67,6 +71,7 @@ def _update_panel_properties(panel: Any) -> None:
     panel.add('HasBackground = true')
     panel.add('BackgroundBlockColorToken = "M81_DarkCharcoal"')
     panel.add('BorderThicknessToken = "1"')
+
 
 def _update_selection_panel_components(source_path) -> None:
     """Update selection panel component properties."""
@@ -79,6 +84,7 @@ def _update_selection_panel_components(source_path) -> None:
     
     logger.debug("Updated selection panel components")
 
+
 def _update_stress_status(source_path) -> None:
     """Update stress status properties."""
     selectionpanelstressstatus = source_path.by_namespace("SelectionPanelStressStatus").v
@@ -90,6 +96,7 @@ def _update_stress_status(source_path) -> None:
             
         _update_stress_list(component.v)
 
+
 def _update_stress_list(component: Any) -> None:
     """Update stress list properties."""
     component.by_member("HasBackground").v = "false"
@@ -98,6 +105,7 @@ def _update_stress_list(component: Any) -> None:
     
     _update_stress_elements(component.by_member("Elements").v)
 
+
 def _update_stress_elements(elements: Any) -> None:
     """Update stress elements properties."""
     for element in elements:
@@ -105,10 +113,11 @@ def _update_stress_elements(elements: Any) -> None:
             continue
             
         component_descr = element.v.by_member("ComponentDescriptor").v
-        if component_descr.type != "BUCKTextDescriptor":
+        if component_descr.type != "BUCKTextDescriptor":  # noqa
             continue
             
         _update_stress_text(component_descr)
+
 
 def _update_stress_text(component: Any) -> None:
     """Update stress text properties."""
@@ -132,6 +141,7 @@ def _update_stress_text(component: Any) -> None:
             nested.v.add('HasBorder = true')
             nested.v.add('BorderLineColorToken = "M81_P3AmberOrange"')
 
+
 def _update_fuel_supply_display(source_path) -> None:
     """Update fuel/supply display properties."""
     affichagefuelorsupply = source_path.by_namespace("AffichageFuelOrSupply").v
@@ -144,6 +154,7 @@ def _update_fuel_supply_display(source_path) -> None:
     
     logger.debug("Updated fuel/supply display properties")
 
+
 def _update_fuel_supply_list(component: Any) -> None:
     """Update fuel/supply list properties."""
     component.by_member("InterItemMargin").v = "TRTTILength(Magnifiable = 2.0)"
@@ -153,12 +164,13 @@ def _update_fuel_supply_list(component: Any) -> None:
             continue
             
         component_descr = element.v.by_member("ComponentDescriptor").v
-        if component_descr.type != "BUCKTextDescriptor":
+        if component_descr.type != "BUCKTextDescriptor":  # noqa
             continue
             
-        if component_descr.by_member("ElementName", False) is not None:
-            if component_descr.by_member("ElementName").v == "'RemainingFuelOrSupply'":
-                component_descr.by_member("TextColor").v = '"M81_ArtichokeNearWhite"'
+        if component_descr.by_member("ElementName", False) is not None:  # noqa
+            if component_descr.by_member("ElementName").v == "'RemainingFuelOrSupply'":  # noqa
+                component_descr.by_member("TextColor").v = '"M81_ArtichokeNearWhite"'  # noqa
+
 
 def _update_unit_name_and_type(source_path) -> None:
     """Update unit name and type properties."""
@@ -175,6 +187,7 @@ def _update_unit_name_and_type(source_path) -> None:
     
     logger.debug("Updated unit name and type properties")
 
+
 def _update_hp_display(source_path) -> None:
     """Update HP display properties."""
     affichagepv = source_path.by_namespace("AffichagePV").v
@@ -188,6 +201,7 @@ def _update_hp_display(source_path) -> None:
             
         component.v.by_member("BackgroundBlockColorToken").v = '"TypeG"'
 
+
 def _update_shortcut_button(source_path) -> None:
     """Update shortcut button properties."""
     shortcutbuttondescriptor_template = source_path.by_namespace("ShortcutButtonDescriptor").v
@@ -200,6 +214,7 @@ def _update_shortcut_button(source_path) -> None:
     
     logger.debug("Updated shortcut button properties")
 
+
 def _update_shortcut_container(container: Any) -> None:
     """Update shortcut container properties."""
     for component in container.by_member("Components").v:
@@ -208,6 +223,7 @@ def _update_shortcut_container(container: Any) -> None:
             
         component.v.by_member("BackgroundBlockColorToken").v = '"BoutonTempsBlockM81"'
         component.v.by_member("BorderLineColorToken").v = '"BoutonTempsLineM81"'
+
 
 def _update_roe_shortcuts_panel(source_path) -> None:
     """Update ROE shortcuts panel properties."""
@@ -221,4 +237,4 @@ def _update_roe_shortcuts_panel(source_path) -> None:
             
         component.v.by_member("TextColor").v = '"M81_DarkCharcoal"'
     
-    logger.debug("Updated ROE shortcuts panel properties") 
+    logger.debug("Updated ROE shortcuts panel properties")

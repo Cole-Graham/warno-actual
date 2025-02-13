@@ -1,7 +1,7 @@
 import os
 from typing import Dict, Optional
 
-import ndf_parse as ndf
+import ndf_parse as ndf  # noqa
 
 from config.config_loader import ConfigLoader
 

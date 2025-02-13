@@ -125,8 +125,9 @@ from .weapons.unit_edits import unit_edits_weapondescriptor
 
 logger = setup_logger(__name__)
 
-# defunct (for now? I had to simplify config/build pipelines to get the patcher working)
+
 def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:
+    # defunct (for now? I had to simplify config/build pipelines to get the patcher working)
     """Get all game file editors."""
     # Get base gameplay editors
     editors = {
@@ -145,9 +146,6 @@ def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:
         ],
         "GameData/Gameplay/Unit/Tactic/Team.ndf": [
             lambda source_path: edit_team_supply(source_path),
-        ],
-        "GameData/Gameplay/Unit/CriticalModules/TemplateCriticalEffectModules.ndf": [
-            lambda source_path: edit_critical_effects(source_path),
         ],
         
         # Division and deck files
@@ -172,12 +170,12 @@ def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:
         ],
 
         # Game constants
-        "GameData/Gameplay/Constantes/GDConstantes.ndf": [
-            lambda source_path: edit_gd_constantes(source_path),
-        ],
-        "GameData/Gameplay/Constantes/Ravitaillement.ndf": [
-            lambda source_path: edit_ravitaillement(source_path),
-        ],
+        # "GameData/Gameplay/Constantes/GDConstantes.ndf": [
+        #     lambda source_path: edit_gd_constantes(source_path),
+        # ],
+        # "GameData/Gameplay/Constantes/Ravitaillement.ndf": [
+        #     lambda source_path: edit_ravitaillement(source_path),
+        # ],
         
         # Unit and weapon mechanics
         "GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf": [
@@ -238,8 +236,8 @@ def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:
             lambda source_path: edit_critical_effects(source_path),
         ],
         
-         # Depiction files
-            # /Gfx
+        # Depiction files
+        # /Gfx
         "GameData/Generated/Gameplay/Gfx/Depictions/DepictionAerialUnits.ndf": [
             lambda source_path: unit_edits_depictionaerial(source_path),
         ],
@@ -257,7 +255,7 @@ def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:
             lambda source_path: create_cadavre_depictions(source_path)
         ],
         
-            # /Depictions
+        # /Depictions
         "GameData/Generated/Gameplay/GFX/Depictions/DepictionAlternatives.ndf": [
             lambda source_path: create_alternatives_depictions(source_path)
         ],
@@ -280,7 +278,7 @@ def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:
         "GameData/Generated/Gameplay/Gfx/Depictions/GeneratedDepictionVehiclesShowRoom.ndf": [
             # lambda source_path: create_veh_showroom_depictions(source_path) # Maybe unnecessary
         ],
-            # /Infanterie
+        # /Infanterie
         "GameData/Generated/Gameplay/Gfx/Infanterie/GeneratedDepictionInfantry.ndf": [
             lambda source_path: edit_infantry_depictions(source_path, game_db['ammunition'], game_db['depiction_data']),
             lambda source_path: create_infantry_depictions(source_path)
@@ -315,4 +313,4 @@ def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:
         else:
             editors[path] = editor_list
             
-    return editors 
+    return editors

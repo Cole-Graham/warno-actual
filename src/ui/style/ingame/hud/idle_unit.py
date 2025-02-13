@@ -1,14 +1,15 @@
 """Functions for modifying UI HUD idle unit view."""
-from src import ndf
+# from src import ndf
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
+
 
 def edit_uispecificingameidleunitview(source_path) -> None:
     """Edit UISpecificInGameIdleUnitView.ndf.
     
     Args:
-        source: NDF file containing HUD idle unit view definitions
+        source_path: NDF file containing HUD idle unit view definitions
     """
     logger.info("Editing UISpecificInGameIdleUnitView.ndf")
     
@@ -22,4 +23,4 @@ def edit_uispecificingameidleunitview(source_path) -> None:
     # Update idle unit number text
     idleunitnumbertext = source_path.by_namespace("IdleUnitNumberText").v
     idleunitnumbertext.by_member("TextColor").v = '"DeploymentPhase/IdleUnitM81"'
-    logger.debug("Updated idle unit number text color") 
+    logger.debug("Updated idle unit number text color")

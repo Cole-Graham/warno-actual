@@ -70,4 +70,4 @@ def edit_antirad_optics(source_path) -> None:
                 logger.info(
                     f"Updated {unit} optics: ground={ground_range}m, anti-radar=5000m"
                 )
-                break 
+                break

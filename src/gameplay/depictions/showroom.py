@@ -7,6 +7,7 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
 
+
 def edit_showroom_units(source_path: Any) -> None:
     """Edit showroom units."""
     unit_edits = load_unit_edits()
@@ -28,6 +29,7 @@ def edit_showroom_units(source_path: Any) -> None:
         except Exception as e:
             logger.error(f"Failed to edit showroom unit {unit_name}: {str(e)}")
 
+
 def _apply_unit_edits(unit_descr: Any, edits: Dict) -> None:
     """Apply edits to a showroom unit descriptor."""
     modules_list = unit_descr.v.by_m("ModulesDescriptors").v
@@ -47,6 +49,7 @@ def _apply_unit_edits(unit_descr: Any, edits: Dict) -> None:
         except Exception as e:
             logger.error(f"Failed to update module {module.v.type} for {unit_name}: {str(e)}")
 
+
 def _update_squad_strength(module: Any, edits: Dict, unit_name: str) -> None:
     """Update infantry squad strength."""
     if "WeaponAssignment" in edits and "strength" in edits:
@@ -55,6 +58,7 @@ def _update_squad_strength(module: Any, edits: Dict, unit_name: str) -> None:
             logger.info(f"Updated strength for {unit_name} to {edits['strength']}")
         except Exception as e:
             logger.error(f"Failed to update strength for {unit_name}: {str(e)}")
+
 
 def _update_weapon_assignment(module: Any, edits: Dict, unit_name: str) -> None:
     """Update infantry weapon assignments."""
@@ -65,4 +69,4 @@ def _update_weapon_assignment(module: Any, edits: Dict, unit_name: str) -> None:
         module.v.by_m("InitialSoldiersToTurretIndexMap").v = f"MAP{edits['WeaponAssignment']}"
         logger.info(f"Updated weapon assignment for {unit_name}")
     except Exception as e:
-        logger.error(f"Failed to update weapon assignment for {unit_name}: {str(e)}") 
+        logger.error(f"Failed to update weapon assignment for {unit_name}: {str(e)}")

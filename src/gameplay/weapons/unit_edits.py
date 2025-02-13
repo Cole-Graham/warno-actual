@@ -436,8 +436,8 @@ def _apply_salvo_changes(weapon_descr: Any, wd_edits: Dict, weapon_descr_data: D
                     if salvo:  # is not None:
                         logger.debug(f"Updating salvo for {weapon} at index {index}")
                         salves_list.v.replace(index, str(salvo))
-                        print(f"salves_list: {salves_list.v}")
-                        print(f"salves_list...")
+                        # print(f"salves_list: {salves_list.v}")
+                        # print(f"salves_list...")
                     if salves_winchester and winchester:
                         logger.debug(f"Updating index {index} of SalvoIsMainSalvo to {winchester}")
                         salves_winchester.v.replace(index, winchester)

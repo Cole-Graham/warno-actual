@@ -8,6 +8,7 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
 
+
 def edit_orders(source_path, game_db: Dict[str, Any]):
     """Edit OrderAvailability_Tactic.ndf.
     
@@ -66,6 +67,7 @@ def edit_orders(source_path, game_db: Dict[str, Any]):
         source_path.add(new_entry)
         logger.info(f"Added new order entry for {unit_name}")
 
+
 def edit_ravitaillement(source_path) -> None:
     """Edit supply values in Ravitaillement.ndf."""
     logger.info("Editing Ravitaillement.ndf")
@@ -101,4 +103,3 @@ def edit_ravitaillement(source_path) -> None:
         
         source_path.add(variant_descr)
         logger.info(f"Added {variant_name} descriptor")
-

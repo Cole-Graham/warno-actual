@@ -14,7 +14,9 @@ def add_corrected_shot_dispersion(source_path: Any, game_db: Dict[str, Any]) -> 
     
     logger.info("Adding corrected shot dispersion to mortars")
     mortar_categories = ammo_db["mortar_weapons"]
-    
+
+    insert_index = 0
+
     for weapon_descr in source_path:
         name = weapon_descr.n.replace("Ammo_", "")
         
@@ -27,22 +29,18 @@ def add_corrected_shot_dispersion(source_path: Any, game_db: Dict[str, Any]) -> 
             continue
             
         # Add dispersion multiplier
-        has_multiplier = False
+        existing_multiplier = None
         for i, member in enumerate(weapon_descr.v):
             if member.m == "DispersionWithoutSorting":
                 insert_index = i + 1
-
             elif member.m == "CorrectedShotDispersionMultiplier":
                 existing_multiplier = member.v
-                has_multiplier = True
         
-        if has_multiplier:
-            logger.info(f"Corrected shot dispersion multiplier already exists for {name}, "
-                        f"with value {existing_multiplier}")
+        if existing_multiplier is not None:
+            logger.info(f"Corrected shot dispersion multiplier already exists for {name}, with value {existing_multiplier}")
         else:
             weapon_descr.v.insert(insert_index, f"CorrectedShotDispersionMultiplier = {dispersion}")
             logger.info(f"Added {dispersion} dispersion multiplier for {name}")
-
 
 
 def add_radio_tag_to_mortars(source_path, game_db: dict) -> None:
@@ -52,8 +50,7 @@ def add_radio_tag_to_mortars(source_path, game_db: dict) -> None:
     for unit in source_path:
         # Check if unit exists in database and has mortar texture
         unit_name = unit.namespace.replace("Descriptor_Unit_", "")
-        if (unit_name not in game_db["unit_data"] or 
-            game_db["unit_data"][unit_name].get("menu_icon") != "Texture_RTS_H_mortar"):
+        if unit_name not in game_db["unit_data"] or game_db["unit_data"][unit_name].get("menu_icon") != "Texture_RTS_H_mortar":
             continue
         
         if "Radio" in game_db["unit_data"][unit_name].get("tags", []):
@@ -111,4 +108,4 @@ def edit_smoke_duration(source_path) -> None:
                     module.v.by_m("TimeToLive").v = str(duration)
                     logger.info(f"Set {smoke_name} duration to {duration} seconds")
                     break
-                break 
+                break

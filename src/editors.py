@@ -162,6 +162,7 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
 
+
 def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
     """Get all file editors."""
     game_db = config.get('game_db', {})
@@ -530,4 +531,4 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
     # Write dictionary entries for veterancy bonuses
     write_veterancy_tokens()
 
-    return editors 
+    return editors

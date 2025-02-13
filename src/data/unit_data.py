@@ -6,13 +6,14 @@ from src import ndf
 from src.data.ammo_data import get_vanilla_renames
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import (
-    get_modules_list,
+    get_modules_list,  # noqa
     is_obj_type,
     is_valid_turret,
     strip_quotes,
 )
 
 logger = setup_logger('unit_data')
+
 
 def gather_unit_data(mod_src_path: Path) -> Dict[str, Any]:
     """Gather unit data from source files."""
@@ -24,7 +25,7 @@ def gather_unit_data(mod_src_path: Path) -> Dict[str, Any]:
     
     try:
         # Just parsing input, no output needed
-        mod = ndf.Mod(mod_src_path, "None")
+        mod = ndf.Mod(str(mod_src_path), "None")
         parse_source = mod.parse_src(ndf_path)
         
         for unit_row in parse_source:
@@ -53,10 +54,9 @@ def gather_unit_data(mod_src_path: Path) -> Dict[str, Any]:
     
     return unit_data
 
+
 def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
     """Extract relevant information from a unit row."""
-    unit_info = {}
-    
     try:
         modules_list = unit_row.v.by_m("ModulesDescriptors").v
         
@@ -113,23 +113,22 @@ def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
                     logger.debug(f"Extracted skills: {skills}")
         
         return unit_info
-        
     except Exception as e:
         logger.error(f"Error extracting unit info: {str(e)}")
         return {}
 
+
 def _extract_skills_data(module: Any) -> List[str]:
     """Extract skills data from a module selector."""
-    skills = []
     try:
         default_membr = module.v.by_m("Default").v
         if hasattr(default_membr, 'type') and default_membr.type == "TCapaciteModuleDescriptor":
             skill_list = default_membr.by_m("DefaultSkillList").v
-            skills = [skill.v.split("$/GFX/EffectCapacity/Capacite_")[1] for skill in skill_list]
-            return skills
+            return [skill.v.split("$/GFX/EffectCapacity/Capacite_")[1] for skill in skill_list]
     except Exception as e:
         logger.error(f"Error extracting skills data: {str(e)}")
         return []
+
 
 def _extract_production_data(module: Any) -> Dict[str, Any]:
     """Extract production-related data (command points, etc.)."""
@@ -158,6 +157,7 @@ def _extract_production_data(module: Any) -> Dict[str, Any]:
         logger.debug(f"Error extracting production data for {module.namespace}: {str(e)}")
     return data
 
+
 def _extract_tags_data(module: Any) -> Dict[str, Any]:
     """Extract unit tags data."""
     data = {}
@@ -167,6 +167,7 @@ def _extract_tags_data(module: Any) -> Dict[str, Any]:
     except Exception as e:
         logger.warning(f"Failed to extract tags data: {str(e)}")
     return data
+
 
 def _extract_ui_data(module: Any) -> Dict[str, Any]:
     """Extract UI-related data (specialties, textures, etc.)."""
@@ -186,6 +187,7 @@ def _extract_ui_data(module: Any) -> Dict[str, Any]:
         logger.warning(f"Failed to extract UI data: {str(e)}")
     return data
 
+
 def _extract_damage_data(module: Any) -> Dict[str, Any]:
     """Extract damage data from damage module."""
     data = {}
@@ -194,6 +196,7 @@ def _extract_damage_data(module: Any) -> Dict[str, Any]:
     except Exception as e:
         logger.warning(f"Failed to extract damage data: {str(e)}")
     return data
+
 
 def _extract_armor_data(module: Any) -> Dict[str, Any]:
     """Extract armor data from damage module."""
@@ -220,7 +223,8 @@ def _extract_armor_data(module: Any) -> Dict[str, Any]:
     except Exception as e:
         logger.error(f"Error extracting armor data: {str(e)}")
         return {}
-    
+
+
 def _extract_stealth_data(module: Any) -> Dict[str, Any]:
     """Extract stealth data."""
     try:
@@ -242,6 +246,7 @@ def _extract_stealth_data(module: Any) -> Dict[str, Any]:
     except Exception as e:
         logger.debug(f"Error extracting visibility data: {str(e)}")
         return {}
+
 
 def _extract_optics_data(module: Any, unit_name: str) -> Dict[str, Any]:
     """Extract optics configuration data."""
@@ -277,6 +282,7 @@ def _extract_optics_data(module: Any, unit_name: str) -> Dict[str, Any]:
         logger.error(f"Error extracting optics data for {unit_name}: {str(e)}")
         return {}
 
+
 def gather_weapon_data(mod_src_path: Path) -> Dict[str, Any]:
     """Gather weapon data from WeaponDescriptor.ndf."""
     logger.info("Gathering weapon data from WeaponDescriptor.ndf")
@@ -284,8 +290,7 @@ def gather_weapon_data(mod_src_path: Path) -> Dict[str, Any]:
     weapon_data = {}
     
     try:
-        
-        mod = ndf.Mod(mod_src_path, "None")
+        mod = ndf.Mod(str(mod_src_path), "None")
         ammo_ndf_path = "GameData/Generated/Gameplay/Gfx/Ammunition.ndf"
         ndf_path = "GameData/Generated/Gameplay/Gfx/WeaponDescriptor.ndf"
         weapon_renames = get_vanilla_renames(mod, ammo_ndf_path)
@@ -323,7 +328,7 @@ def gather_weapon_data(mod_src_path: Path) -> Dict[str, Any]:
                     # Add rename information if this weapon gets renamed
                     base_name = weapon_name.replace("WeaponDescriptor_", "")
                     if base_name in weapon_renames:
-                        weapon_data[weapon_name]['rename'] = weapon_renames[base_name]
+                        weapon_data[weapon_name]['rename'] = weapon_renames[base_name]  # noqa
                         logger.debug(f"Added rename info for {weapon_name}: {weapon_renames[base_name]}")
                     logger.debug(f"Added data for {weapon_name}")
                 else:
@@ -342,6 +347,7 @@ def gather_weapon_data(mod_src_path: Path) -> Dict[str, Any]:
     logger.info(f"Gathered data for {len(weapon_data)} weapons")
     return weapon_data
 
+
 def _gather_turret_data(weapon_descr: Any) -> Dict[str, Any]:
     """Gather turret and weapon data from a weapon descriptor."""
     turret_data = {}
@@ -351,7 +357,7 @@ def _gather_turret_data(weapon_descr: Any) -> Dict[str, Any]:
     
     try:
         turret_list = weapon_descr.v.by_member("TurretDescriptorList").v
-    except Exception:
+    except Exception:  # noqa
         logger.warning(f"No TurretDescriptorList found in {weapon_descr.namespace}")
         return turret_data
         
@@ -371,16 +377,16 @@ def _gather_turret_data(weapon_descr: Any) -> Dict[str, Any]:
         except Exception as e:
             logger.warning(f"Failed to gather data for turret in {weapon_descr.namespace}: {str(e)}")
             continue
-    
     return turret_data
 
-def _gather_mounted_weapons(turret: Any, salvo_data: Dict[int, int]) -> Dict[str, Any]:
+
+def _gather_mounted_weapons(turret: Any, salvo_data: Dict[str, int]) -> Dict[str, Any]:
     """Gather mounted weapon data from a turret."""
     weapon_data = {}
     
     try:
         mounted_wpns = turret.v.by_m("MountedWeaponDescriptorList").v
-    except Exception:
+    except Exception:  # noqa
         logger.warning("No MountedWeaponDescriptorList found")
         return weapon_data
         
@@ -405,23 +411,25 @@ def _gather_mounted_weapons(turret: Any, salvo_data: Dict[int, int]) -> Dict[str
         except Exception as e:
             logger.warning(f"Failed to gather data for weapon: {str(e)}")
             continue
-    
     return weapon_data
+
 
 def _gather_salvo_data(weapon_descr: Any) -> Dict[str, int]:
     """Gather salvo data from a weapon descriptor."""
     try:
         salves_list = weapon_descr.v.by_m("Salves").v
         return {str(salvo.index): int(salvo.v) for salvo in salves_list}
-    except Exception:
+    except Exception:  # noqa
         logger.warning(f"Failed to gather salvo data for {weapon_descr.namespace}")
         return {}
+
 
 def _get_regex_weapon_quantity(ammo_name: str) -> int:
     """Extract quantity from weapon name if present."""
     pattern = r".*?_x(\d+)$"
     match = re.match(pattern, ammo_name)
     return int(match.group(1)) if match else 1 
+
 
 def _gather_weapon_indices(weapon_descr: Any) -> Dict[str, List[int]]:
     """Pre-compute weapon to salvo index mapping."""
@@ -445,7 +453,8 @@ def _gather_weapon_indices(weapon_descr: Any) -> Dict[str, List[int]]:
     
     return weapon_indices
 
-def _gather_salvo_mapping(weapon_descr: Any) -> Dict[str, str]:
+
+def _gather_salvo_mapping(weapon_descr: Any) -> Dict[Any, Any]:
     """Pre-compute weapon to salvo mapping."""
     salvo_mapping = {}
     
@@ -464,7 +473,8 @@ def _gather_salvo_mapping(weapon_descr: Any) -> Dict[str, str]:
     
     return salvo_mapping 
 
-def _gather_weapon_locations(weapon_descr: Any) -> Dict[str, Dict[str, Any]]:
+
+def _gather_weapon_locations(weapon_descr: Any) -> Dict[Any, Any]:
     """Gather locations of all weapons in the descriptor.
     
     Returns:
@@ -503,7 +513,8 @@ def _gather_weapon_locations(weapon_descr: Any) -> Dict[str, Dict[str, Any]]:
     
     return weapon_locations
 
-def _gather_attack_strategies(module: Any) -> Dict[str, Any]:
+
+def _gather_attack_strategies(module: Any) -> List:
     """Gather attack strategies from a unit descriptor."""
     attack_strategies = []
     

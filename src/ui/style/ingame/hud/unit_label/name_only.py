@@ -7,11 +7,12 @@ from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
 
+
 def edit_uispecificunitlabelviewnameonly(source_path) -> None:
     """Edit UISpecificUnitLabelViewNameOnly.ndf.
     
     Args:
-        source: NDF file containing HUD unit label view name only definitions
+        source_path: NDF file containing HUD unit label view name only definitions
     """
     logger.info("Editing UISpecificUnitLabelViewNameOnly.ndf")
     
@@ -20,6 +21,7 @@ def edit_uispecificunitlabelviewnameonly(source_path) -> None:
     
     # Update upper label
     _update_upper_label(source_path)
+
 
 def _update_unit_name_and_right_list(source_path) -> None:
     """Update unit name and right list properties."""
@@ -39,6 +41,7 @@ def _update_unit_name_and_right_list(source_path) -> None:
     
     logger.debug("Updated unit name and right list properties")
 
+
 def _update_list_components(components: Any) -> None:
     """Update list component properties."""
     for component in components:
@@ -51,6 +54,7 @@ def _update_list_components(components: Any) -> None:
             componentframe = component.v.by_member("ComponentFrame").v
             componentframe.add('MagnifiableOffset = [0.0, ~/ReticleMagnifiableSize * -5.5]')
 
+
 def _update_current_unit_label(component: Any) -> None:
     """Update current unit label properties."""
     component_frame = '''\
@@ -61,6 +65,7 @@ ComponentFrame = TUIFramePropertyRTTI
     AlignementToAnchor = [0.5, 0.0]
 )'''
     component.replace(0, component_frame)
+
 
 def _update_upper_label(source_path) -> None:
     """Update upper label properties."""
@@ -75,6 +80,7 @@ def _update_upper_label(source_path) -> None:
     _update_upper_label_elements(upperlabelnameonly.by_member("Elements").v)
     
     logger.debug("Updated upper label properties")
+
 
 def _update_upper_label_elements(elements: Any) -> None:
     """Update upper label element properties."""
@@ -99,6 +105,7 @@ BUCKListElementDescriptor
 )'''
     elements.insert(2, new_entry)
 
+
 def _add_carried_unit_frame(component: Any) -> None:
     """Add carried unit frame properties."""
     component_frame = '''\
@@ -108,4 +115,4 @@ ComponentFrame = TUIFramePropertyRTTI
     AlignementToFather = [0.5, 0.0]
     AlignementToAnchor = [0.5, 0.0]
 )'''
-    component.add(component_frame) 
+    component.add(component_frame)

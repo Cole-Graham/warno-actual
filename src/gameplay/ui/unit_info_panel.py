@@ -2,7 +2,7 @@
 
 from typing import List, Tuple
 
-from src import ModConfig
+from src import ModConfig  # noqa
 from src.dics.ui.unit_info_panel import UNIT_INFO_PANEL_DATA
 from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.logging_utils import setup_logger
@@ -13,7 +13,7 @@ logger = setup_logger(__name__)
 
 def write_info_panel_hints() -> None:
     """Write info panel hint texts to dictionary file."""
-    config = ModConfig.get_instance().config_data
+    # config = ModConfig.get_instance().config_data
     entries: List[Tuple[str, str]] = []
     
     for root_obj, data in UNIT_INFO_PANEL_DATA.items():

@@ -4,8 +4,11 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
 
+
 def ui_gameplay_textscripts(source):
     logger.info("Adding gameplay text scripts to DefaultTextFormatScript.ndf")
+    append_end = 0
+    append_row = 0
     commands_map = source.by_n("DefaultTextFormatScript").v.by_m("Commands").v
     ldr_tag = 'LDR'
     ldr_entry = (

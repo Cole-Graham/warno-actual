@@ -1,9 +1,9 @@
 """Functions for modifying unit effects."""
 
-import ast
-from typing import List, Tuple
+import ast  # noqa
+from typing import List, Tuple  # noqa
 
-from src import ModConfig
+from src import ModConfig  # noqa
 from src.constants.effects.capacities import (
     CHOC_MOVE_CAPACITY,
     CHOC_MOVE_EFFECT,
@@ -25,6 +25,7 @@ from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import strip_quotes
 
 logger = setup_logger(__name__)
+
 
 def edit_damage_levels(source_path) -> None:
     """Edit damage levels in DamageLevels.ndf."""
@@ -80,12 +81,14 @@ def edit_damage_levels(source_path) -> None:
     # )
     # damage_levels.v.insert(1,new_entry)
 
+
 def edit_conditions(source_path) -> None:
     """Edit conditions in ConditionsList.ndf."""
     logger.info("Modifying conditions")
     
     for condition in CONDITIONS:
         source_path.add(condition)
+
 
 def edit_shock_effects(source_path) -> None:
     """Edit effects in EffetsSurUnite.ndf."""
@@ -189,6 +192,7 @@ def edit_capacite_list(source_path) -> None:
             logger.info("Added shock movement capacities")
             break 
 
+
 def edit_shock_units(source_path, game_db) -> None:
     """Add shock movement capabilities to shock units in UniteDescriptor.ndf."""
     logger.info("Adding shock movement capabilities to units")
@@ -245,7 +249,8 @@ def edit_shock_units(source_path, game_db) -> None:
                 break
             
     logger.info(f"Total units modified: {units_modified}")
-    
+
+
 def add_swift_capacity(source_path) -> None:
     """Add swift capacity to units in UniteDescriptor.ndf"""
     logger.info("Adding swift capacity to units")
@@ -310,11 +315,3 @@ def add_swift_capacity(source_path) -> None:
             modules_list.v.add(new_entry)
             logger.info("Added capacity module to unit")
             logger.info(f"Added swift capacity to {unit}")
-            
-            
-            
-            
-        
-        
-                    
-                    

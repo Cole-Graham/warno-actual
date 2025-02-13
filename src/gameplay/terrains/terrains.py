@@ -34,8 +34,7 @@ def edit_terrains(source_path) -> None:
     default_terrain = source_path.by_n("DefaultTerrain")
     default_terrain.v.by_m("SpeedModifierInfantry").v = "1.0"
     logger.info("Updated DefaultTerrain speed modifier")
-    
-    
+
     # Edit ForetLegere properties
     forest_light = source_path.by_n("ForetLegere")
     forest_light.v.by_m("DissimulationModifierGroundAir").v = "12"
@@ -90,4 +89,4 @@ def edit_terrains(source_path) -> None:
                     f"(ResistanceFamily_infanterieWA, {inf_resistance.v})")
                 logger.info(
                     f"Added ResistanceFamily_infanterieWA to {family_key} "
-                    f"with value {inf_resistance.v}") 
+                    f"with value {inf_resistance.v}")

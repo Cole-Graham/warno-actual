@@ -13,7 +13,7 @@ from src.constants.weapons import (
     INFANTRY_ARMOR_EDITS,
     SNIPER_DAMAGE,
     WEAPON_DESCRIPTIONS,
-    KPVT_DAMAGE,
+    # KPVT_DAMAGE,
     NPLM_BOMB_DAMAGE,
     PGB_BOMB_DAMAGE,
     MANPAD_HAGRU_DAMAGE,

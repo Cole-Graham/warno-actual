@@ -12,6 +12,7 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger('damage_parser')
 
+
 def get_desktop_path() -> Path:
     """Get the actual Desktop path from Windows Registry."""
     try:
@@ -24,6 +25,7 @@ def get_desktop_path() -> Path:
         logger.error(f"Failed to get Desktop path from registry: {e}")
         # Fallback to environment variable
         return Path(os.path.expanduser("~/Desktop"))
+
 
 def get_resistance_families(damage_params: Any) -> List[Tuple[str, int]]:
     """Get list of resistance families and their max indices."""
@@ -38,6 +40,7 @@ def get_resistance_families(damage_params: Any) -> List[Tuple[str, int]]:
         
     return resistance_families
 
+
 def get_damage_families(damage_params: Any) -> List[Tuple[str, int]]:
     """Get list of damage families and their max indices."""
     damage_families = []
@@ -50,6 +53,7 @@ def get_damage_families(damage_params: Any) -> List[Tuple[str, int]]:
         logger.debug(f"Found damage family: {family_name} with max index {max_index}")
         
     return damage_families
+
 
 def get_damage_levels(damage_families: List[Tuple[str, int]]) -> List[Tuple[int, str, int]]:
     """Generate list of damage levels with array indices."""
@@ -67,6 +71,7 @@ def get_damage_levels(damage_families: List[Tuple[str, int]]) -> List[Tuple[int,
             
     return damage_levels
 
+
 def get_armor_levels(resistance_families: List[Tuple[str, int]]) -> List[Tuple[int, str, int]]:
     """Generate list of armor levels with array indices."""
     armor_levels = []
@@ -82,6 +87,7 @@ def get_armor_levels(resistance_families: List[Tuple[str, int]]) -> List[Tuple[i
             array_column_index += 1
             
     return armor_levels
+
 
 def write_csv_data(damage_levels: List, armor_levels: List, damage_array: Any, output_path: Path) -> None:
     """Write damage resistance data to CSV file."""
@@ -138,6 +144,7 @@ def write_csv_data(damage_levels: List, armor_levels: List, damage_array: Any, o
         logger.error(f"Failed to write CSV file: {str(e)}")
         raise
 
+
 def main() -> None:
     """Main entry point for damage resistance parser."""
     try:
@@ -152,10 +159,9 @@ def main() -> None:
             MOD_DST = Path(r"C:\Program Files (x86)\Steam\steamapps\common\WARNO\Mods\WARNO ACTUAL dev")
         
         # Initialize mod
-        mod = ndf.Mod(MOD_SRC, MOD_DST)
+        mod = ndf.Mod(str(MOD_SRC), str(MOD_DST))
         
         logger.info("Parsing damage resistance data")
-        
 
         # Parse source directly without context manager
         source = mod.parse_src(r"GameData\Generated\Gameplay\Gfx\DamageResistance.ndf")
@@ -168,7 +174,7 @@ def main() -> None:
         armor_levels = get_armor_levels(resistance_families)
         
         # Get damage array
-        damage_array = damage_params.by_m("Values").v
+        damage_array = damage_params.by_m("Values").v  # noqa
         
         # Write CSV output
         desktop_path = get_desktop_path() / "csv"
@@ -185,13 +191,9 @@ def main() -> None:
         last_damage_family = None
         last_damage_level = None
         
-        for (row_index, damage_family, damage_level, column_index, resistance_family,
-             armor_level, value) in [
-                (row_index, family, d_level, col_index, r_family, a_level, 
-                 damage_array[row_index].v[col_index].v)
-                for row_index, family, d_level in damage_levels
-                for col_index, r_family, a_level in armor_levels
-            ]:
+        for (row_index, damage_family, damage_level, column_index, resistance_family, armor_level, value) in [(
+            row_index, family, d_level, col_index, r_family, a_level, damage_array[row_index].v[col_index].v
+        ) for row_index, family, d_level in damage_levels for col_index, r_family, a_level in armor_levels]:
             # rewrite this if statement for whatever armor types and levels you want to read
             if (0 <= column_index <= 48) or (column_index > 39):
                 if damage_family != last_damage_family:
@@ -210,5 +212,6 @@ def main() -> None:
     except Exception as e:
         logger.error(f"Error parsing damage resistance data: {str(e)}")
         raise
+
 
 main()

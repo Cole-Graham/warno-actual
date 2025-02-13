@@ -3,7 +3,7 @@ import os
 import stat
 import time
 from contextlib import contextmanager
-from datetime import datetime
+# from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
@@ -18,6 +18,7 @@ def log_time(logger: logging.Logger, operation: str):
         elapsed = time.time() - start
         logger.info(f"{operation} completed in {elapsed:.2f} seconds")
 
+
 def ensure_file_permissions(file_path: Path) -> None:
     """Ensure the file has the correct permissions for writing.
     
@@ -31,6 +32,7 @@ def ensure_file_permissions(file_path: Path) -> None:
             os.chmod(file_path, current | stat.S_IWRITE)
     except (OSError, PermissionError) as e:
         print(f"Warning: Could not set permissions for {file_path}: {e}")
+
 
 def get_writable_path(base_path: Path, name: str, max_attempts: int = 3) -> Optional[Path]:
     """Get a writable log file path, with fallback options.
@@ -56,12 +58,13 @@ def get_writable_path(base_path: Path, name: str, max_attempts: int = 3) -> Opti
                 path.parent.mkdir(parents=True, exist_ok=True)
             if path.exists():
                 ensure_file_permissions(path)
-            with open(path, 'a'): pass
+            with open(path, 'a'):
+                pass
             return path
         except (OSError, PermissionError):
             continue
-            
     return None
+
 
 def cleanup_old_logs(log_dir: Path, keep_count: int = 5):
     """Delete old log files, keeping only the most recent ones.
@@ -79,7 +82,7 @@ def cleanup_old_logs(log_dir: Path, keep_count: int = 5):
                 if category not in log_groups:
                     log_groups[category] = []
                 log_groups[category].append(log_file)
-            except Exception:
+            except Exception:  # noqa
                 continue
         
         # For each group, sort by modification time and delete old ones
@@ -93,6 +96,7 @@ def cleanup_old_logs(log_dir: Path, keep_count: int = 5):
                     continue
     except Exception as e:
         print(f"Warning: Error during log cleanup: {e}")
+
 
 def setup_logger(name: str) -> logging.Logger:
     """Set up and return a logger with fallback options for file handling.
@@ -143,4 +147,4 @@ def setup_logger(name: str) -> logging.Logger:
     )
     logger.addHandler(console_handler)
     
-    return logger 
+    return logger

@@ -7,7 +7,6 @@ engineers_cmd_pol: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
     "unit_name": "Engineers_CMD_POL",
     "valid_files": ["GeneratedDepictionInfantry.ndf", "WeaponDescriptor.ndf"],
     "GeneratedDepictionInfantry_ndf": {
-        
         ("AllWeaponAlternatives_Engineers_CMD_POL", None): { # (namespace, object type)
             # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "add", "remove", "replace")
             1: ("edit", [("MeshDescriptor", "PKM")]), # (selector_id or mesh)

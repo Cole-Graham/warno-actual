@@ -45,4 +45,4 @@ def edit_team_supply(source_path) -> None:
             # Roughly equivalent to 1:1 ammo supply rate, comparing the time to resupply 4 AMRAAMs
             new_ammo_rate = "2"
             module.v.by_m("AmmunitionSupplyAmountBySecond").v = new_ammo_rate
-            logger.info(f"Set airport ammunition supply rate to {new_ammo_rate}/second") 
+            logger.info(f"Set airport ammunition supply rate to {new_ammo_rate}/second")

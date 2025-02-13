@@ -1,8 +1,8 @@
 """Database utilities for versioning and validation."""
 import hashlib
 import json
-import os
-import subprocess
+# import os
+# import subprocess
 from pathlib import Path
 from typing import Any, Dict
 
@@ -15,6 +15,7 @@ def ensure_db_directory(db_path: str) -> None:
     """Create database directory if it doesn't exist."""
     Path(db_path).mkdir(parents=True, exist_ok=True)
 
+
 def _sort_dict_recursively(d: Any) -> Any:
     """Sort dictionary recursively to ensure consistent ordering."""
     if isinstance(d, dict):
@@ -22,6 +23,7 @@ def _sort_dict_recursively(d: Any) -> Any:
     elif isinstance(d, list):
         return [_sort_dict_recursively(x) for x in d]
     return d
+
 
 def calculate_db_checksum(db_data: Dict) -> str:
     """Calculate checksum of database content."""
@@ -47,9 +49,11 @@ def calculate_db_checksum(db_data: Dict) -> str:
     
     return hashlib.sha256(serialized.encode('utf-8')).hexdigest()
 
+
 def get_database_path(db_path: str) -> Path:
     """Get the path to the database directory."""
     return Path(db_path)
+
 
 def save_db_metadata(db_path: str, checksum: str, config: Dict):
     """Save database metadata including version and checksum."""
@@ -72,6 +76,7 @@ def save_db_metadata(db_path: str, checksum: str, config: Dict):
         with open(master_meta_path, 'w') as f:
             json.dump(metadata, f, indent=2)
         logger.info("Updated master database metadata")
+
 
 def verify_database(config: Dict) -> bool:
     """Verify database exists and matches current version."""
@@ -105,4 +110,4 @@ def verify_database(config: Dict) -> bool:
         
     except Exception as e:
         logger.error(f"Error verifying database: {e}")
-        return False 
+        return False

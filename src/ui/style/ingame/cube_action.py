@@ -7,6 +7,7 @@ from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
 
+
 def edit_uiingamebuckcubeaction(source_path) -> None:
     """Edit UIInGameBUCKCubeAction.ndf."""
     logger.info("Editing UIInGameBUCKCubeAction.ndf")
@@ -18,6 +19,7 @@ def edit_uiingamebuckcubeaction(source_path) -> None:
     # Update cube action panels
     _update_panel_cube_action_orders(source_path)
     _update_panel_cube_action_smart_orders(source_path)
+
 
 def _update_cube_action_button(source_path) -> None:
     """Update cube action button properties."""
@@ -37,6 +39,7 @@ def _update_cube_action_button(source_path) -> None:
     cubeactionbutton_template.by_member("Components").v = _get_cube_action_button_components()
     logger.debug("Updated cube action button properties")
 
+
 def _update_cube_action_toggle_button(source_path) -> None:
     """Update cube action toggle button properties."""
     cubeactiontogglebutton_template = source_path.by_namespace("CubeActionToggleButton").v
@@ -55,6 +58,7 @@ def _update_cube_action_toggle_button(source_path) -> None:
     
     logger.debug("Updated cube action toggle button properties")
 
+
 def _update_panel_cube_action_orders(source_path) -> None:
     """Update panel cube action orders properties."""
     panelcubeactionorders = source_path.by_namespace("PanelCubeAction_Orders").v
@@ -67,6 +71,7 @@ def _update_panel_cube_action_orders(source_path) -> None:
     
     logger.debug("Updated panel cube action orders properties")
 
+
 def _update_panel_cube_action_smart_orders(source_path) -> None:
     """Update panel cube action smart orders properties."""
     panelcubeactionsmartorders = source_path.by_namespace("PanelCubeAction_SmartOrders").v
@@ -78,10 +83,10 @@ def _update_panel_cube_action_smart_orders(source_path) -> None:
             continue
             
         component_descr = element.v.by_member("ComponentDescriptor").v
-        if component_descr.type != "BUCKGridDescriptor":
+        if component_descr.type != "BUCKGridDescriptor":  # noqa
             continue
             
-        component_descr.by_member("LastElementMargin").v = "TRTTILength2( Magnifiable = [5.0, 0.0] )"
+        component_descr.by_member("LastElementMargin").v = "TRTTILength2( Magnifiable = [5.0, 0.0] )"  # noqa
     
     # Update background components
     for component in panelcubeactionsmartorders.by_member("BackgroundComponents").v:
@@ -92,6 +97,7 @@ def _update_panel_cube_action_smart_orders(source_path) -> None:
         component.v.add('BackgroundBlockColorToken = "M81_Ebony"')
     
     logger.debug("Updated panel cube action smart orders properties")
+
 
 def _process_panel_components(components: Any) -> None:
     """Process panel components to update nested elements."""
@@ -104,11 +110,12 @@ def _process_panel_components(components: Any) -> None:
                 continue
                 
             component_descr = element.v.by_member("ComponentDescriptor").v
-            if component_descr.type != "PanelRoundedCorner":
+            if component_descr.type != "PanelRoundedCorner":  # noqa
                 continue
                 
             component_descr.add("HasBackground = true")
             component_descr.add('BackgroundBlockColorToken = "M81_Ebony"')
+
 
 def _get_cube_action_button_components() -> str:
     """Get cube action button component template."""
@@ -166,4 +173,4 @@ def _get_cube_action_button_components() -> str:
         ),
     ] +
 
-    (<HintableAreaComponent> != nil ? [<HintableAreaComponent>] : [])''' 
+    (<HintableAreaComponent> != nil ? [<HintableAreaComponent>] : [])'''

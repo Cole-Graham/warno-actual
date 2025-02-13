@@ -1,8 +1,9 @@
 """Functions for modifying UI default container."""
-from src import ndf
+# from src import ndf
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
+
 
 def edit_uiingamedefaultcontainer(source_path) -> None:
     """Edit UIInGameDefaultContainer.ndf."""
@@ -15,4 +16,4 @@ def edit_uiingamedefaultcontainer(source_path) -> None:
     panelroundedcorner_template.params.by_param("Radius").v = "4"
     panelroundedcorner_template.params.by_param("RoundedVertexes").v = "[true, true, true, true]"
     
-    logger.debug("Updated panel properties") 
+    logger.debug("Updated panel properties")

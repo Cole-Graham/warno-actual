@@ -8,12 +8,13 @@ from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
 
-# this function is so limited and could easily break if the unit edits are not formatted correctly
+
 def edit_infantry_depictions(source_path: Any, ammo_db: Dict[str, Any], depiction_data: Dict[str, Any]) -> None:
+    # this function is so limited and could easily break if the unit edits are not formatted correctly
     """Edit GeneratedDepictionInfantry.ndf.
     
     Args:
-        source: NDF file containing infantry depictions
+        source_path: NDF file containing infantry depictions
         ammo_db: Ammunition database
         depiction_data: Depiction data from game database
     """
@@ -48,8 +49,8 @@ def edit_infantry_depictions(source_path: Any, ammo_db: Dict[str, Any], depictio
                     "animation_tag": depiction_data["animation_weapon_map"][old_name]
                 }
             else:
+                weapon_data = {}
                 logger.warning(f"No animation tag found for {old_name}")
-        
         else:
             weapon_data = {
                 "weapon_alt_mesh": depiction_data["all_weapon_meshes"][weapon_name],
@@ -70,6 +71,7 @@ def edit_infantry_depictions(source_path: Any, ammo_db: Dict[str, Any], depictio
             
         except Exception as e:
             logger.error(f"Failed to edit depictions for {unit_name}: {str(e)}")
+
 
 def _add_weapon_mesh(source_path: Any, unit_name: str, turret_index: int, mesh: str) -> None:
     """Add weapon mesh alternative to unit."""
@@ -92,6 +94,7 @@ def _add_weapon_mesh(source_path: Any, unit_name: str, turret_index: int, mesh: 
     except Exception as e:
         logger.error(f"Failed to add weapon mesh for {unit_name}: {str(e)}")
 
+
 def _add_fire_effect(source_path: Any, unit_name: str, turret_index: int, fire_effect: str) -> None:
     """Add weapon fire effect to unit."""
     try:
@@ -110,6 +113,7 @@ def _add_fire_effect(source_path: Any, unit_name: str, turret_index: int, fire_e
     except Exception as e:
         logger.error(f"Failed to add fire effect for {unit_name}: {str(e)}")
 
+
 def _add_animation_tag(source_path: Any, unit_name: str, turret_index: int, tag: str) -> None:
     """Add conditional animation tag to unit."""
     try:
@@ -119,7 +123,7 @@ def _add_animation_tag(source_path: Any, unit_name: str, turret_index: int, tag:
         for obj in operators_list:
             if is_obj_type(obj.v, "DepictionOperator_SkeletalAnimation2_Default"):
                 # Check if ConditionalTags exists
-                if obj.v.by_m("ConditionalTags", False) != None:
+                if obj.v.by_m("ConditionalTags", False) is not None:
                     conditional_tags = obj.v.by_m("ConditionalTags")
                 else:
                     # Create ConditionalTags if it doesn't exist using ndf.convert

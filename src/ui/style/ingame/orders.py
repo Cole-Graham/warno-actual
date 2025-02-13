@@ -5,11 +5,12 @@ from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
 
+
 def edit_orderdisplay(source_path) -> None:
     """Edit OrderDisplay.ndf.
     
     Args:
-        source: NDF file containing order display definitions
+        source_path: NDF file containing order display definitions
     """
     logger.info("Editing OrderDisplay.ndf")
     
@@ -22,4 +23,4 @@ def edit_orderdisplay(source_path) -> None:
             continue
             
         row.v.by_member("LineThickness").v = "1200.0"
-        logger.debug("Updated order display line thickness") 
+        logger.debug("Updated order display line thickness")

@@ -1,6 +1,6 @@
 import sys
 
-from config.config_loader import ConfigLoader
+# from config.config_loader import ConfigLoader
 from src import ModConfig
 from src.data import build_database, load_database_from_disk
 from src.utils.database_utils import verify_database
@@ -8,6 +8,7 @@ from src.utils.dictionary_utils import initialize_dictionary_files
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger('patcher')
+
 
 def confirm_release_build() -> bool:
     """Prompt user to confirm release build."""
@@ -19,6 +20,7 @@ def confirm_release_build() -> bool:
             return False
         print("Please enter 'y' or 'n'")
 
+
 def confirm_database_rebuild() -> bool:
     """Prompt user to confirm database rebuild."""
     while True:
@@ -28,6 +30,7 @@ def confirm_database_rebuild() -> bool:
         elif response == 'n':
             return False
         print("Please enter 'y' or 'n'")
+
 
 if __name__ == "__main__":
     try:
@@ -69,4 +72,4 @@ if __name__ == "__main__":
         logger.info("Patcher completed successfully")
     except Exception as e:
         logger.error(f"Patcher failed: {str(e)}")
-        raise 
+        raise

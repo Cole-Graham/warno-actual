@@ -29,4 +29,4 @@ ammunitions: Dict[WeaponKey, WeaponData] = {
     **rocketinf_weapons,
     **small_arms_weapons,
 }
-# fmt: on 
+# fmt: on

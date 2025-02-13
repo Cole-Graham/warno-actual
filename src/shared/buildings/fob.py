@@ -5,9 +5,11 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
 
+
 def add_fob_minimap_texture(source_path):    
     """GameData/Generated/UserInterface/Textures/MinimapIcons.ndf"""
     logger.info("Adding FOB minimap texture")
+    texture_bank, append_texture = None, 0
     for i, obj in enumerate(source_path, start=0):
         if obj.namespace == "MinimapIconAdditionalTextureBank":
             texture_bank = obj.v
@@ -30,6 +32,7 @@ def add_fob_minimap_texture(source_path):
         )
         textures_map.add(new_entry)
         logger.info(f"Added {texture} texture to MinimapIcons.ndf")
+
 
 def add_fob_minimap_module(source_path) -> None:
     """GameData/Generated/Gameplay/Gfx/BuildingDescriptors.ndf"""
@@ -56,4 +59,4 @@ def add_fob_minimap_module(source_path) -> None:
                 ')'
             )
             modules_list.insert(insert_index, minimap_module)
-            logger.info("Added FOB minimap texture module") 
+            logger.info("Added FOB minimap texture module")

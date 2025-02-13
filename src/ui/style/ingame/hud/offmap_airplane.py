@@ -1,11 +1,12 @@
 """Functions for modifying UI HUD offmap airplane view."""
-from typing import Any
+# from typing import Any
 
 from src import ndf
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
+
 
 def edit_uispecificoffmapairplaneview(source_path) -> None:
     """Edit UISpecificOffMapAirplaneView.ndf."""
@@ -59,4 +60,4 @@ def edit_uispecificoffmapairplaneview(source_path) -> None:
         if is_obj_type(component.v, "BUCKGaugeValueDescriptor"):
             component.v.by_member("BackgroundBlockColorToken").v = '"M81_AppleIIcTransparent"'
     
-    logger.debug("Updated offmap airplane view properties") 
+    logger.debug("Updated offmap airplane view properties")

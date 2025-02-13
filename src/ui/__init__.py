@@ -1,6 +1,6 @@
 """UI modification module."""
 
-from typing import Any, Callable, Dict, List
+from typing import Any, Callable, Dict, List  # noqa
 
 from .style import (
     edit_buckspecificbackgrounds,
@@ -47,8 +47,9 @@ from .style import (
     edit_useoutgametextures,
 )
 
-# defunct (for now? I had to simplify config/build pipelines to get the patcher working)
+
 def get_ui_editors() -> Dict[str, List[Callable]]:
+    # defunct (for now? I had to simplify config/build pipelines to get the patcher working)
     """Get UI file editors."""
     return {
         # Style files
@@ -181,4 +182,4 @@ def get_ui_editors() -> Dict[str, List[Callable]]:
         "GameData/UserInterface/Use/ShowRoom/Views/UISpecificShowRoomGroupsDeckCreatorScreenView.ndf": [
             lambda source_path: edit_uispecificshowroomgroupsdeckcreatorscreenview(source_path)
         ],
-    }   
+    }

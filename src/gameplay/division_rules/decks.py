@@ -16,11 +16,11 @@ eighth_inf_deck = {
     "add": ["8th_M1A1_Abrams_US_1_1"],
 }
 
-def modify_decks(source_path: Any, game_db: Dict[str, Any]) -> None:
+
+def modify_decks(source_path: Any, game_db: Dict[str, Any]) -> None:  # noqa
     """Modify decks in Decks.ndf"""
     
     for pack in eighth_inf_deck["add"]:
         deck = source_path.by_n("Descriptor_Deck_US_8th_Inf_multi")
         pack_ref = f"~/Descriptor_Deck_Pack_{pack}"
         deck.v.by_m("DeckPackList").v.add(pack_ref)
-

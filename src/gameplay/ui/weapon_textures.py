@@ -6,11 +6,13 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
 
+
 def edit_weapontextures(source: Any) -> None:
     """Edit WeaponTextures.ndf to add new weapon textures."""
     logger.info("Editing weapon textures")
     
     # Find texture bank
+    append_index, texture_bank = 0, ""
     for i, row in enumerate(source, start=0):
         if row.namespace == "WeaponAdditionalTextureBank":
             append_index = i
@@ -41,5 +43,5 @@ def edit_weapontextures(source: Any) -> None:
                     f'    (~/ComponentState/Normal, ~/Texture_Interface_Weapon_{weapon})'
                     f']),'
                 )
-                texture_bank.v.by_m("Textures").v.add(new_map_entry)
-                logger.debug(f"Added texture and map entry for {weapon}") 
+                texture_bank.v.by_m("Textures").v.add(new_map_entry)  # noqa
+                logger.debug(f"Added texture and map entry for {weapon}")

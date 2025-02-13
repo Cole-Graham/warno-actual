@@ -7,6 +7,7 @@ from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
 
+
 def edit_uispecificshowroomdeckcreatorscreencomponent(source_path) -> None:
     """Edit UISpecificShowroomDeckCreatorScreenComponent.ndf."""
     logger.info("Editing UISpecificShowroomDeckCreatorScreenComponent.ndf")
@@ -35,6 +36,7 @@ def edit_uispecificshowroomdeckcreatorscreencomponent(source_path) -> None:
     # Update transport button
     _update_transport_button(source_path)
 
+
 def _update_xp_button(source_path) -> None:
     """Update XP button properties."""
     boutonxp_template = source_path.by_namespace("BoutonXp").v
@@ -50,12 +52,14 @@ def _update_xp_button(source_path) -> None:
     
     logger.debug("Updated XP button colors")
 
+
 def edit_uispecificshowroomgroupsdeckcreatorscreenview(source_path) -> None:
     """Edit UISpecificShowRoomGroupsDeckCreatorScreenView.ndf."""
     logger.info("Editing UISpecificShowRoomGroupsDeckCreatorScreenView.ndf")
     
     # Update smart group container
     _update_smart_group_container(source_path)
+
 
 def _update_smart_group_container(source_path) -> None:
     """Update smart group container properties."""
@@ -88,12 +92,14 @@ def _update_smart_group_container(source_path) -> None:
     smartgroupinfoscontainer_template.by_member("ForegroundComponents").v = new_value
     logger.debug("Updated smart group container components")
 
+
 def _update_deck_list(source_path) -> None:
     """Update deck list properties."""
     listedesunitesdudeck = source_path.by_namespace("ListeDesUnitesDuDeck").v
     componentframe = listedesunitesdudeck.by_member("ComponentFrame").v
     componentframe.by_member("MagnifiableOffset").v = "[25.0, 8.0]"
     logger.debug("Updated deck list offset")
+
 
 def _update_deck_name_display(source_path) -> None:
     """Update deck name display properties."""
@@ -109,18 +115,20 @@ def _update_deck_name_display(source_path) -> None:
             continue
             
         component_descr = element.v.by_member("ComponentDescriptor").v
-        if component_descr.type == "BUCKTextDescriptor":
+        if component_descr.type == "BUCKTextDescriptor":  # noqa
             _update_text_alignment(component_descr)
-        elif component_descr.type == "BUCKEditableTextDescriptor":
+        elif component_descr.type == "BUCKEditableTextDescriptor":  # noqa
             _update_editable_text(component_descr)
     
     logger.debug("Updated deck name display properties")
+
 
 def _update_text_alignment(component: Any) -> None:
     """Update text component alignment."""
     componentframe = component.by_member("ComponentFrame").v
     componentframe.add("AlignementToAnchor = [0.0, 0.0]")
     componentframe.add("AlignementToFather = [0.0, 0.0]")
+
 
 def _update_editable_text(component: Any) -> None:
     """Update editable text properties."""
@@ -129,6 +137,7 @@ def _update_editable_text(component: Any) -> None:
     clippingcontainerframeproperty.by_member("AlignementToAnchor").v = "[0.0, 0.5]"
     component.by_member("BackgroundBlockColorToken").v = '"M81_EbonyVeryDark"'
 
+
 def _update_save_buttons(source_path) -> None:
     """Update save buttons properties."""
     deckeditorsaveandcobuttons = source_path.by_namespace("DeckEditorSaveAndCoButtons").v
@@ -136,6 +145,7 @@ def _update_save_buttons(source_path) -> None:
     componentframe.by_member("AlignementToAnchor").v = "[0.90, 0.5]"
     componentframe.by_member("AlignementToFather").v = "[0.90, 0.5]"
     logger.debug("Updated save buttons alignment")
+
 
 def _update_navigation_button(source_path) -> None:
     """Update navigation button properties."""
@@ -150,6 +160,7 @@ def _update_navigation_button(source_path) -> None:
     
     logger.debug("Updated navigation button colors")
 
+
 def _update_top_bar(source_path) -> None:
     """Update top bar properties."""
     deckeditortopbargreenbackground = source_path.by_namespace("DeckEditorTopBarGreenBackground").v
@@ -157,8 +168,9 @@ def _update_top_bar(source_path) -> None:
     deckeditortopbargreenbackground.by_member("BorderLineColorToken").v = '"M81_DarkCharcoal"'
     logger.debug("Updated top bar colors")
 
+
 def _update_transport_button(source_path) -> None:
     """Update transport button properties."""
     notransportbuttondescriptor = source_path.by_namespace("NoTransportButtonDescriptor").v
     notransportbuttondescriptor.by_member("BorderLineColorToken").v = '"BoutonVignetteAchatArmoryM81"'
-    logger.debug("Updated transport button border color") 
+    logger.debug("Updated transport button border color")

@@ -1,6 +1,6 @@
 import re
 import traceback
-from typing import Any, Dict
+from typing import Any, Dict  # noqa
 
 from src import ndf
 from src.constants.unit_edits import load_depiction_edits
@@ -8,6 +8,7 @@ from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import strip_quotes
 
 logger = setup_logger(__name__)
+
 
 def unit_edits_depictioninfantry(source_path: Any) -> None:
     """Edit unit depictions in GeneratedDepictionInfantry.ndf"""
@@ -86,7 +87,7 @@ def unit_edits_depictioninfantry(source_path: Any) -> None:
                                     # mesh_alternative = mesh_alternative.strip("'")
                                     
                                     for tag_tuple in conditional_tags.v:
-                                        weapon_type = strip_quotes(tag_tuple.v[0])
+                                        # weapon_type = strip_quotes(tag_tuple.v[0])
                                         mesh_alt = strip_quotes(tag_tuple.v[1])
                                         
                                         if mesh_alt == mesh_alternative:
@@ -120,32 +121,24 @@ def unit_edits_depictionaerial(source_path: Any) -> None:
             if not isinstance(key, tuple):
                 logger.error(f"Key is not a tuple: {key}")
                 continue
-                
             namespace, obj_type = key
             if namespace and namespace.startswith("Op_"):
                 operator = source_path.by_n(namespace)
-                
                 if operator.v.type != obj_type:
                     operator.v.type = obj_type
                     logger.info(f"Changed type of {key} to {obj_type}")
-
                 for row_name_or_type, value in edits.items():
-                    
                     if row_name_or_type == "add_members":
-                        for (member, value) in value:
-                            operator.v.add(f"{member} = {value}")
+                        for (member, val2) in value:
+                            operator.v.add(f"{member} = {val2}")
                             logger.info(f"Added {member} for {unit_name}")
-                    
                     elif row_name_or_type == "replace_members":
                         for (member, replacement, new_value) in value:
-                            
-                            if new_value == None:
+                            if new_value is None:
                                 new_value = operator.v.by_m(member).v
                             member_index = operator.v.by_m(member).index
                             operator.v.replace(member_index, f"{replacement} = {new_value}")
-                            logger.info(f"Replaced {member} with "
-                                        f"{replacement} = {new_value} for {unit_name}")
-                    
+                            logger.info(f"Replaced {member} with {replacement} = {new_value} for {unit_name}")
                     elif row_name_or_type == "WeaponShootDataPropertyName":
                         if isinstance(value, list):
                             value = "[" + ",".join(value) + "]"
@@ -154,7 +147,6 @@ def unit_edits_depictionaerial(source_path: Any) -> None:
                         else:
                             operator.v.by_m(row_name_or_type).v = value
                             logger.info(f"Edited {row_name_or_type} for {unit_name}")
-                    
                     else:
                         operator.v.by_m(row_name_or_type).v = value
                         logger.info(f"Edited {row_name_or_type} for {unit_name}")
@@ -164,12 +156,12 @@ def unit_edits_depictionaerial(source_path: Any) -> None:
                 
                 for row_name_or_type, value in edits.items():
                     # SubDepictions and SubDepictionGenerators are not modified, but
-                    # ndf parse screws them up so I just fix them by replacing the values
-                    possible_rows = ["Operators", "Actions", "SubDepictions",
-                                   "SubDepictionGenerators"]
+                    # ndf parse screws them up, so I just fix them by replacing the values
+                    possible_rows = ["Operators", "Actions", "SubDepictions", "SubDepictionGenerators"]
                     if row_name_or_type in possible_rows:
                         aerial_template.v.by_m(row_name_or_type).v = value
                         logger.info(f"Edited {row_name_or_type} for {unit_name}")
+
 
 def unit_edits_missilecarriage(source_path: Any) -> None:
     """Edit unit missile carriage in MissileCarriage.ndf"""
@@ -260,7 +252,7 @@ def unit_edits_missilecarriage(source_path: Any) -> None:
                                     logger.info(f"Edited {member} for {unit_name}")
                         
                         if rows_to_add:
-                            for row in rows_to_add:
+                            for row_index in rows_to_add:
                                 carriage_list.v.add(row_index)
                         if rows_to_remove:
                             for row_index in rows_to_remove:
@@ -269,7 +261,8 @@ def unit_edits_missilecarriage(source_path: Any) -> None:
             
             else:
                 pass # expand if we need to look for row by type
-            
+
+
 def unit_edits_missilecarriagedepiction(source_path: Any) -> None:
     """Edit unit missile carriage depiction in MissileCarriageDepiction.ndf"""
     ndf_file = "MissileCarriageDepiction.ndf"
@@ -296,7 +289,7 @@ def unit_edits_missilecarriagedepiction(source_path: Any) -> None:
                 continue
                 
             namespace, obj_type = key
-            if namespace != None and namespace.endswith(unit_name):
+            if namespace is not None and namespace.endswith(unit_name):
                 missile_carriage = source_path.by_n(namespace)
                 
                 for row_name_or_type, value in edits.items():
@@ -327,7 +320,7 @@ def unit_edits_missilecarriagedepiction(source_path: Any) -> None:
                                 missile_list.v.remove(row_index)
                                 logger.info(f"Removed missile {row_index} for {unit_name}")
             
-            elif namespace != None and namespace.startswith("SubGenerators_Showroom_"):
+            elif namespace is not None and namespace.startswith("SubGenerators_Showroom_"):
                 missile_carriage = source_path.by_n(namespace)
                 
                 for row_name_or_type, value in edits.items():
@@ -343,8 +336,7 @@ def unit_edits_missilecarriagedepiction(source_path: Any) -> None:
                                 elif missile_edits[0] == "replace":
                                     missile_list.v.replace(missile_index, missile_edits[1])
                                     logger.info(f"Replaced row {missile_index} for {unit_name}")
-                                
-                            
+
                             elif "remove" in missile_edits:
                                 rows_to_remove.append(missile_index)
                                 logger.info(f"Removed missile {missile_index} {missile_edits[1]} for {unit_name}")
@@ -362,7 +354,8 @@ def unit_edits_missilecarriagedepiction(source_path: Any) -> None:
             
             else:
                 pass # expand if we need to look for row by type
-            
+
+
 def unit_edits_depictionvehicles(source_path: Any) -> None:
     """Edit unit vehicle depictions in DepictionVehicles.ndf"""
     ndf_file = "DepictionVehicles.ndf"
@@ -436,7 +429,8 @@ def unit_edits_depictionvehicles(source_path: Any) -> None:
                         _handle_vehicle_depiction(unit_name, vehicle_depiction, edits)
                         logger.info(f"Updated vehicle depiction for {unit_name}")
 
-def _handle_weapon_operator(unit_name, weapon_operator, edits, is_new_entry=False):
+
+def _handle_weapon_operator(unit_name, weapon_operator, edits, is_new_entry=False):  # noqa
     for row_name_or_type, value in edits.items():
         if row_name_or_type == "copy":
             continue
@@ -448,8 +442,9 @@ def _handle_weapon_operator(unit_name, weapon_operator, edits, is_new_entry=Fals
             member_access.v = "[" + ",".join(value) + "]"
         
     return weapon_operator
-                
-def _handle_vehicle_depiction(unit_name, vehicle_depiction, edits, is_new_entry=False):
+
+
+def _handle_vehicle_depiction(unit_name, vehicle_depiction, edits, is_new_entry=False):  # noqa
     for row_name_or_type, value in edits.items():
         if row_name_or_type == "copy":
             continue
@@ -513,5 +508,3 @@ def _handle_vehicle_depiction(unit_name, vehicle_depiction, edits, is_new_entry=
             pass
     
     return vehicle_depiction
-
-

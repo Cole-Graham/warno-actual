@@ -5,11 +5,12 @@ from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
 
+
 def edit_uispecifichudalertpanelview(source_path) -> None:
     """Edit UISpecificHUDAlertPanelView.ndf.
     
     Args:
-        source: NDF file containing HUD alert panel definitions
+        source_path: NDF file containing HUD alert panel definitions
     """
     logger.info("Editing UISpecificHUDAlertPanelView.ndf")
     
@@ -21,4 +22,4 @@ def edit_uispecifichudalertpanelview(source_path) -> None:
             
         if is_obj_type(component.v, "BUCKGradientDescriptor"):
             component.v.by_member("TransitionColor1").v = '"AlertPanel/Gradient1M81"'
-            logger.debug("Updated alert line gradient color") 
+            logger.debug("Updated alert line gradient color")

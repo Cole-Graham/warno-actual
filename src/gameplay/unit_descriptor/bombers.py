@@ -6,6 +6,7 @@ from src.utils.ndf_utils import find_namespace, get_modules_list, ndf
 
 logger = setup_logger("bombers")
 
+
 def global_bomber_edits(source_path, game_db):
     """add terrain radar to bombers and adjust stealth"""
     unit_db = game_db["unit_data"]
@@ -38,13 +39,12 @@ def global_bomber_edits(source_path, game_db):
         specialties = unit_db[unit_name].get("specialties", None)
         if specialties and "_electronic_warfare" in specialties:
             is_ew = True
-        
-                    
+
         modules_list = get_modules_list(unit_descr.v, "ModulesDescriptors")
         if not modules_list:
             continue
         
-        for module in modules_list.v:
+        for module in modules_list.v:  # noqa
             if not isinstance(module.v, ndf.model.Object):
                 continue
             

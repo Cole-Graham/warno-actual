@@ -9,4 +9,4 @@ __all__ = [
     'edit_buckspecifichint',
     'edit_uispecificunitbuttonview',
     'edit_uiwarningpanel',
-] 
+]

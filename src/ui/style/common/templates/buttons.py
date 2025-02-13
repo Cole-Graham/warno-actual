@@ -5,11 +5,12 @@ from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
 
+
 def edit_buckspecificbuttons(source_path) -> None:
     """Edit BuckSpecificButtons.ndf.
     
     Args:
-        source: NDF file containing button template definitions
+        source_path: NDF file containing button template definitions
     """
     logger.info("Editing BuckSpecificButtons.ndf")
     
@@ -62,4 +63,4 @@ def edit_buckspecificbuttons(source_path) -> None:
     hudbutton.params.by_param("BackgroundColorToken").v = '""'
     hudbutton.params.by_param("ForegroundTexture").v = '""'
     hudbutton.params.by_param("BackgroundTexture").v = '""'
-    logger.debug("Updated HUDButton properties") 
+    logger.debug("Updated HUDButton properties")

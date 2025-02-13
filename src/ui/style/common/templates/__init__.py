@@ -5,4 +5,4 @@ from .buttons import edit_buckspecificbuttons
 __all__ = [
     'edit_buckspecificbackgrounds',
     'edit_buckspecificbuttons'
-] 
+]

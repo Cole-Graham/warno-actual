@@ -7,7 +7,7 @@ mi_8tv_gunship_sov: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
     "unit_name": "Mi_8TV_Gunship_SOV",
     "valid_files": ["DepictionAerialUnits.ndf", "MissileCarriage.ndf", "MissileCarriageDepiction.ndf"],
     "DepictionAerialUnits_ndf": {
-        ("Gfx_Mi_8TV_Gunship_SOV", "TacticAerialDepictionTemplate"): { # (Namespace (can be None), Object type)
+        ("Gfx_Mi_8TV_Gunship_SOV", "TacticAerialDepictionTemplate"): {  # (Namespace (can be None), Object type)
             "Operators": (
                 f'\n    ['
                 f'\n        $/GFX/Sound/DepictionOperator_MovementSound_SM_Helico_Mi17,'
@@ -119,34 +119,32 @@ mi_8tv_gunship_sov: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
         ("SubGenerators_Mi_8TV_Gunship_SOV", "TStaticMissileCarriageSubDepictionGenerator"): {
             "Missiles": {
                 0: ("replace", (
-                        f'TStaticMissileCarriageSubDepictionMissileInfo'
-                        f'('
-                        f'    Depiction = TemplateDepictionStaticMissiles'
-                        f'    ('
-                        f'        PhysicalProperty = "Tourelle1_MissileCount"'
-                        f'        ProjectileModelResource = $/GFX/DepictionResources/Modele_Missile_Vympel_R60'
-                        f'    )'
-                        f'    MissileCount = 4'
-                        f'    WeaponIndex = 1'
-                        f')'
-                    ),
-                ),
+                    f'TStaticMissileCarriageSubDepictionMissileInfo'
+                    f'('
+                    f'    Depiction = TemplateDepictionStaticMissiles'
+                    f'    ('
+                    f'        PhysicalProperty = "Tourelle1_MissileCount"'
+                    f'        ProjectileModelResource = $/GFX/DepictionResources/Modele_Missile_Vympel_R60'
+                    f'    )'
+                    f'    MissileCount = 4'
+                    f'    WeaponIndex = 1'
+                    f')'
+                )),
             },
         },
         ("SubGenerators_Showroom_Mi_8TV_Gunship_SOV", "TStaticMissileCarriageSubDepictionGenerator"): {
             "Missiles": {
                 0: ("replace", (
-                        f'TStaticMissileCarriageSubDepictionMissileInfo'
-                        f'('
-                        f'    Depiction = TemplateDepictionMissileShowroom'
-                        f'    ('
-                        f'        ProjectileModelResource = $/GFX/DepictionResources/Modele_Missile_Vympel_R60'
-                        f'    )'
-                        f'    MissileCount = 4'
-                        f'    WeaponIndex = 1'
-                        f')'
-                    ),
-                ),
+                    f'TStaticMissileCarriageSubDepictionMissileInfo'
+                    f'('
+                    f'    Depiction = TemplateDepictionMissileShowroom'
+                    f'    ('
+                    f'        ProjectileModelResource = $/GFX/DepictionResources/Modele_Missile_Vympel_R60'
+                    f'    )'
+                    f'    MissileCount = 4'
+                    f'    WeaponIndex = 1'
+                    f')'
+                )),
             },
         },
     },

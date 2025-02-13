@@ -17,10 +17,7 @@ logger = setup_logger('ammo_data')
 
 def get_vanilla_renames(mod: Any, ndf_path: Any) -> Dict[str, str]:
     """Get mapping of original weapon names to their new names.
-    
-    Args:
-        parse_source: The parsed NDF data to process
-        
+
     Returns:
         Dictionary mapping original names to renamed versions
     """
@@ -73,13 +70,13 @@ def build_ammo_data(mod_src_path: Path) -> Dict[str, Any]:
     """Build ammunition database from source files."""
     logger.info("Building ammunition database")
     
-    ammo_data = {}
+    # ammo_data = {}
     ammo_path = "GameData/Generated/Gameplay/Gfx/Ammunition.ndf"
     ammo_missile_path = "GameData/Generated/Gameplay/Gfx/AmmunitionMissiles.ndf"
     weapon_descriptor_path = "GameData/Generated/Gameplay/Gfx/WeaponDescriptor.ndf"
 
     try:
-        mod = ndf.Mod(mod_src_path, "None")
+        mod = ndf.Mod(str(mod_src_path), "None")
         ammo_file = mod.parse_src(ammo_path)
         ammo_missile_file = mod.parse_src(ammo_missile_path)
         weapon_descriptor_file = mod.parse_src(weapon_descriptor_path)
@@ -119,11 +116,12 @@ def build_ammo_data(mod_src_path: Path) -> Dict[str, Any]:
             "mortar_weapons": {},
         }
 
+
 def build_ammo_salves_map(parse_source) -> dict:
     """Build mapping of ammunition salves in WeaponDescriptor.ndf
     for ammunition.json (used for applying default salves during ammunition edits)"""
     salves_map = {}
-    salves_list = []
+    # salves_list = []
     
     for weapon_descr in parse_source:
         salves_map[weapon_descr.n] = {}
@@ -151,11 +149,12 @@ def build_ammo_salves_map(parse_source) -> dict:
     
     return salves_map
 
+
 def build_mg_categories(parse_source) -> dict:
     """Build MG weapon categories from ammunition data.
     
     Args:
-        source: Ammunition.ndf file
+        parse_source: Ammunition.ndf file
     
     Returns:
         Dictionary of MG weapon categories
@@ -228,6 +227,7 @@ def build_sniper_weapons(parse_source) -> list:
     
     return snipers 
 
+
 def build_renames(parse_source) -> Dict[str, str]:
     """Build mapping of constants renames to their new names.
     
@@ -249,6 +249,7 @@ def build_renames(parse_source) -> Dict[str, str]:
                 renames[old_name] = new_name
     
     return renames
+
 
 def build_salvo_weapons(parse_source) -> Dict[str, str]:
     """Build mapping of vanilla salvo weapons to their new names.
@@ -280,6 +281,7 @@ def build_salvo_weapons(parse_source) -> Dict[str, str]:
             
     logger.info(f"Found {len(salvo_weapons)} vanilla salvo weapons to rename")
     return salvo_weapons
+
 
 def build_mortar_weapons(parse_source) -> Dict[str, List[str]]:
     """Build lists of mortar weapons from ammunition data."""

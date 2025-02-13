@@ -272,4 +272,4 @@ DAMAGE_EDITS = {
             8: 0.6,    # blindage 5 armor (0.5 is vanilla)
         }
     }
-} 
+}

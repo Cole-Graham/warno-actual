@@ -1,15 +1,16 @@
 """Functions for modifying deck packs and their references."""
 
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Tuple  # noqa
 
-from src import ndf
+from src import ndf  # noqa
 from src.constants.unit_edits import load_unit_edits
 from src.constants.unit_edits.SUPPLY_unit_edits import supply_unit_edits
-from src.data import decks
+from src.data import decks  # noqa
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import is_obj_type
+from src.utils.ndf_utils import is_obj_type  # noqa
 
 logger = setup_logger(__name__)
+
 
 def modify_deck_packs(source_path: Any, game_db: Dict[str, Any]) -> None:
     """Modify deck packs in DeckPacks.ndf"""
@@ -23,6 +24,7 @@ def modify_deck_packs(source_path: Any, game_db: Dict[str, Any]) -> None:
         if "Divisions" in edits or "XPMultiplier" in edits:
             _handle_deck_packs(source_path, unit, edits, deck_data)
 
+
 def _remove_duplicate_deck_packs(source_path: Any) -> None:
     """Remove duplicate deck packs from source_path."""
     seen_namespaces = {}
@@ -31,6 +33,7 @@ def _remove_duplicate_deck_packs(source_path: Any) -> None:
             source_path.remove(deck_pack)
         else:
             seen_namespaces[deck_pack.namespace] = deck_pack
+
 
 def _handle_deck_packs(
     source_path: Any,
@@ -72,7 +75,7 @@ def _handle_deck_packs(
         updated_xp = new_xp if new_xp is not None else current_xp
 
         # Track namespaces we've already seen to detect duplicates
-        seen_namespaces = {}
+        # seen_namespaces = {}
 
         # Update each deck pack in the group
         for deck_pack in deck_packs:
@@ -122,6 +125,7 @@ def _handle_deck_packs(
                     deck_pack.v.by_m("Number").v = updated_cards
                     
     _remove_duplicate_deck_packs(source_path)
+
 
 def update_deck_pack_references(source_path: Any, game_db: Dict[str, Any]) -> None:
     """Update deck pack references in Decks.ndf."""
@@ -225,26 +229,26 @@ def update_deck_pack_references(source_path: Any, game_db: Dict[str, Any]) -> No
                     
                     # Track namespace change
                     namespace_changes[old_ref.replace("~/", "")] = new_ref.replace("~/", "")
-    
-    def _update_non_multi_decks(source_path: Any, namespace_changes: Dict[str, str]) -> None:
+
+    def _update_non_multi_decks(source_path_: Any, namespace_changes_: Dict[str, str]) -> None:
         """Update deck pack references in non-multi decks."""
-        for deck_obj in source_path:
-            if not (deck_obj.namespace.startswith("Descriptor_Deck_") and 
-                   not deck_obj.namespace.endswith("_multi")):
+        for deck_obj_ in source_path_:
+            if not (deck_obj_.namespace.startswith("Descriptor_Deck_") and
+                   not deck_obj_.namespace.endswith("_multi")):
                 continue
                 
-            deck_pack_list = deck_obj.v.by_m("DeckPackList").v
+            deck_pack_list_ = deck_obj_.v.by_m("DeckPackList").v
             
-            for pack_ref in deck_pack_list:
-                old_ref = pack_ref.v.replace("~/", "")
-                if old_ref in namespace_changes:
-                    new_ref = f"~/{namespace_changes[old_ref]}"
-                    logger.info(f"Updating non-multi deck reference {pack_ref.v} to {new_ref}")
-                    pack_ref.v = new_ref
+            for pack_ref_ in deck_pack_list_:
+                old_ref_ = pack_ref_.v.replace("~/", "")
+                if old_ref_ in namespace_changes_:
+                    new_ref_ = f"~/{namespace_changes_[old_ref_]}"
+                    logger.info(f"Updating non-multi deck reference {pack_ref_.v} to {new_ref_}")
+                    pack_ref_.v = new_ref_
     
     # Update non-multi decks
     _update_non_multi_decks(source_path, namespace_changes)
-        
+
 def new_deck_packs(source_path: Any) -> None:
     """Create new deck packs in DeckPacks.ndf."""
     logger.info("Creating new deck packs")

@@ -1,9 +1,10 @@
 """Functions for modifying UI style guides."""
-from src import ndf
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import is_obj_type
+# from src import ndf
+# from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
+
 
 def _edit_componentstate(parent_key, key, componentstate, color):
     """Helper function to edit component state colors.
@@ -18,12 +19,13 @@ def _edit_componentstate(parent_key, key, componentstate, color):
     componentstate_row = map_row.by_k(f"~/ComponentState/{componentstate}").v
     componentstate_row.by_m("Color").v = color
 
+
 # fmt: off
 def edit_defaultstyleguides(source_path) -> None:
     """Edit DefaultStyleGuides.ndf.
     
     Args:
-        source: NDF file containing style guide definitions
+        source_path: NDF file containing style guide definitions
     """
     logger.info("Editing DefaultStyleGuides.ndf")
     

@@ -8,6 +8,7 @@ from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
 
+
 def edit_uiingamelaunchbattlebuttonresources(source_path) -> None:
     """Edit UIInGameLaunchBattleButtonResources.ndf."""
     logger.info("Editing UIInGameLaunchBattleButtonResources.ndf")
@@ -20,6 +21,7 @@ def edit_uiingamelaunchbattlebuttonresources(source_path) -> None:
     
     # Update launch button cancel
     _update_launch_button_cancel(source_path)
+
 
 def _update_deployment_phase_panel(source_path) -> None:
     """Update deployment phase panel properties."""
@@ -38,15 +40,17 @@ def _update_deployment_phase_panel(source_path) -> None:
             _update_text_properties(component.v)
         elif is_obj_type(component.v, "BUCKListDescriptor"):
             componentframe = component.v.by_member("ComponentFrame").v
-            componentframe.by_member("MagnifiableOffset").v = "[0.0, 35.0]"
+            componentframe.by_member("MagnifiableOffset").v = "[0.0, 35.0]"  # noqa
     
     logger.debug("Updated deployment phase panel properties")
+
 
 def _update_text_properties(component: Any) -> None:
     """Update text component properties."""
     component.by_member("TextColor").v = '"M81_DarkCharcoal"'
     component.by_member("BackgroundBlockColorToken").v = '"M81_Artichoke191"'
     component.by_member("BorderLineColorToken").v = '"M81_Artichoke"'
+
 
 def _add_fob_reminder_text(source_path) -> None:
     """Add FOB reminder text component and localization."""
@@ -63,11 +67,13 @@ def _add_fob_reminder_text(source_path) -> None:
     ], "ingame")
     logger.debug("Added FOB reminder text to dictionary")
 
+
 def _update_launch_button_cancel(source_path) -> None:
     """Update launch button cancel properties."""
     launchbuttoncanceldescriptor = source_path.by_namespace("LaunchButtonCancelDescriptor").v
     launchbuttoncanceldescriptor.by_member("TextColor").v = '"DeploymentPhase/CancelTimerM81"'
     logger.debug("Updated launch button cancel color")
+
 
 def _get_fob_reminder_template() -> str:
     """Get FOB reminder text component template."""
@@ -100,4 +106,4 @@ BUCKTextDescriptor
     BorderLineColorToken = 'M81_Artichoke'
     BorderThicknessToken = '3'
     BordersToDraw = ~/TBorderSide/Top
-)''' 
+)'''

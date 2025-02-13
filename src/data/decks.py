@@ -1,13 +1,14 @@
 """Functions for gathering deck data from game files."""
 
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, List  # noqa
 
 from src import ndf
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import strip_quotes
 
 logger = setup_logger('deck_data')
+
 
 def gather_deck_data(mod_src_path: Path) -> Dict[str, Any]:
     """Gather deck data from Decks.ndf.
@@ -30,11 +31,11 @@ def gather_deck_data(mod_src_path: Path) -> Dict[str, Any]:
     deck_data = {
         "multi": {}  # Only multi decks for now
     }
-    ndf_path = "GameData\Generated\Gameplay\Decks\Decks.ndf"
+    ndf_path = r"GameData\Generated\Gameplay\Decks\Decks.ndf"
     
     try:
         # Just parsing input, no output needed
-        mod = ndf.Mod(mod_src_path, "None")
+        mod = ndf.Mod(str(mod_src_path), "None")
         parse_source = mod.parse_src(ndf_path)
         
         multi_decks = 0  # Counter for multi decks
@@ -53,11 +54,11 @@ def gather_deck_data(mod_src_path: Path) -> Dict[str, Any]:
                 
                 try:
                     # Get deck token name
-                    deck_token = strip_quotes(deck_row.v.by_m("DeckName").v)
+                    deck_token = strip_quotes(deck_row.v.by_m("DeckName").v)  # noqa
                     
                     # Get pack list
                     pack_list = []
-                    for pack in deck_row.v.by_m("DeckPackList").v:
+                    for pack in deck_row.v.by_m("DeckPackList").v:  # noqa
                         # Remove ~/ prefix from pack names
                         pack_name = pack.v.replace("~/", "")
                         pack_list.append(pack_name)
@@ -80,4 +81,4 @@ def gather_deck_data(mod_src_path: Path) -> Dict[str, Any]:
         raise
     
     logger.info(f"Gathered data for {multi_decks} multiplayer decks")
-    return deck_data 
+    return deck_data

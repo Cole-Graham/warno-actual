@@ -24,7 +24,7 @@ def add_division_rules(source_path: Any) -> None:
             if division == "default":
                 continue
             
-            division_obj_namespace =  f"Descriptor_Deck_Division_{division}_Rule"
+            division_obj_namespace = f"Descriptor_Deck_Division_{division}_Rule"
             transports = div_data.get("Transports")
             
             # Create transport list if available
@@ -37,7 +37,7 @@ def add_division_rules(source_path: Any) -> None:
             cards = div_data.get("cards", default_cards)
 
             # Different entries for vehicles vs infantry/towed
-            if edits["is_ground_vehicle"] and not edits["is_infantry"]:
+            if edits.get("is_ground_vehicle", False) and not edits.get("is_infantry", False):
                 new_entry = (
                     f'TDeckUniteRule\n'
                     f'(\n'
@@ -73,8 +73,8 @@ def add_division_rules(source_path: Any) -> None:
                         div_rules.v.remove(i)
                         logger.info(f"Removed old entry for {donor} from {division}")
 
-# don't need anymore
-def add_to_divisions(source_path: Any) -> None:
+
+def add_to_divisions(source_path: Any) -> None:  # don't need anymore
     """Add units to Divisions.ndf."""
     logger.info("Adding units to division packs")
     
@@ -98,8 +98,8 @@ def add_to_divisions(source_path: Any) -> None:
             pack_list.add(new_entry)
             logger.info(f"Added {unit_name} to division {division}")
 
-# not used currently
-def create_deck_pack_descriptors(source_path: Any) -> None:
+
+def create_deck_pack_descriptors(source_path: Any) -> None:  # not used currently
     """Create deck pack descriptors in DeckPacks.ndf."""
     logger.info("Creating deck pack descriptors")
     
@@ -162,6 +162,7 @@ def update_deck_serializer(source_path: Any) -> None:
         logger.info(f"DeckSerializer.ndf) Adding new entry: $/GFX/Unit/Descriptor_Unit_{unit_name}")
         unit_ids_map.v.add(("$/GFX/Unit/Descriptor_Unit_" + unit_name, str(new_unit_id)))
         new_unit_id += 1
+
 
 def create_division_packs(source_path: Any) -> None:
     """Create division packs in DivisionPacks.ndf."""

@@ -1,9 +1,10 @@
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, List  # noqa
 
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
+
 
 def get_mod_src_path(config: Dict) -> Path:
     """Get mod source directory path based on config."""
@@ -11,17 +12,14 @@ def get_mod_src_path(config: Dict) -> Path:
     build_config = config['build_config']
     
     # If building gameplay mod and using UI as base
-    if (build_config['target'] == 'gameplay' and 
-        build_config.get('use_ui_as_base', False)):
+    if build_config['target'] == 'gameplay' and build_config.get('use_ui_as_base', False):
         # Use UI mod as source
-        mod_name = (config['directories']['ui_dev'] 
-                   if build_config['write_dev'] 
-                   else config['directories']['ui_release'])
+        mod_name = (config['directories']['ui_dev'] if build_config['write_dev'] else config['directories']['ui_release'])
     else:
         # Use base game as source
         mod_name = config['directories']['base_game']
-        
     return warno_mods / mod_name
+
 
 def get_mod_dst_path(config_data: Dict) -> Path:
     """Determine the correct destination path based on build configuration"""
@@ -33,8 +31,8 @@ def get_mod_dst_path(config_data: Dict) -> Path:
         dest = dirs['gameplay_dev'] if build_config['write_dev'] else dirs['gameplay_release']
     else:  # ui_only
         dest = dirs['ui_only_dev'] if build_config['write_dev'] else dirs['ui_only_release']
-        
     return warno_mods / dest
+
 
 def get_files_to_process(config_data):
     """Get list of files to process based on build target"""
@@ -69,4 +67,4 @@ def get_files_to_process(config_data):
         to_process.extend(files['ui_only'])
     
     logger.info(f"Total files to process: {len(to_process)}")
-    return to_process 
+    return to_process

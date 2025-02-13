@@ -2,9 +2,11 @@ import random
 import string
 import uuid
 
+
 def generate_random_string(length=10):
     letters = string.ascii_uppercase
-    return ''.join(random.choice(letters) for i in range(length))
+    return ''.join(random.choice(letters) for i in range(length))  # noqa
+
 
 print(generate_random_string())
 print(generate_random_string(), '\n')
@@ -14,9 +16,11 @@ print(generate_random_string(), '\n')
 
 print(generate_random_string())
 print(generate_random_string())
+
 
 def generate_guid():
     return str(uuid.uuid4())
+
 
 print('1')
 print(f'"GUID": "{generate_guid()}",')

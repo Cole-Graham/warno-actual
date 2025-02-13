@@ -1,6 +1,6 @@
 """French unit edits."""
 
-from typing import Any, Dict
+# from typing import Any, Dict
 
 # fmt: off
 fr_unit_edits = {

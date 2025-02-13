@@ -1,10 +1,11 @@
-import re
+# import re
 from typing import Any, Dict, List, Tuple
 
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import get_modules_list, is_obj_type
+from src.utils.ndf_utils import get_modules_list, is_obj_type  # noqa
 
 logger = setup_logger('division_mg_teams')
+
 
 def is_para_unit(unit_name: str, unit_db: Dict[str, Any]) -> bool:
     """Check if a unit has the para specialty."""
@@ -12,6 +13,7 @@ def is_para_unit(unit_name: str, unit_db: Dict[str, Any]) -> bool:
     if not unit_data or 'specialties' not in unit_data:
         return False
     return any('para' in specialty.lower() for specialty in unit_data['specialties'])
+
 
 def get_mg_availability(mg_type: str, is_para: bool) -> Dict[str, Any]:
     """Get availability settings for a machine gun team."""
@@ -27,6 +29,7 @@ def get_mg_availability(mg_type: str, is_para: bool) -> Dict[str, Any]:
         'availability': str(availability),
         'xp_multiplier': str(xp_multi)
     }
+
 
 def mg_team_division_rules(source_path: Any, game_db: Dict[str, Any]) -> None:
     """Edit machine gun team availability in divisions."""
@@ -68,4 +71,4 @@ def mg_team_division_rules(source_path: Any, game_db: Dict[str, Any]) -> None:
                 rule_obj.v.by_m("NumberOfUnitInPack").v = settings['availability']
                 rule_obj.v.by_m("NumberOfUnitInPackXPMultiplier").v = settings['xp_multiplier']
                 
-                logger.debug(f"Updated {unit_name} in {div_name} (Para: {is_para}, Type: {mg_type})") 
+                logger.debug(f"Updated {unit_name} in {div_name} (Para: {is_para}, Type: {mg_type})")

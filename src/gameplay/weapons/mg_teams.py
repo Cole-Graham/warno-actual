@@ -23,6 +23,7 @@ def edit_mg_team_weapons(source: Any, game_db: Dict[str, Any]) -> None:
         elif name in ammo_db["mg_categories"]["mmg_turrets"]:
             _modify_mmg_turret(weapon_descr, name)
 
+
 def _modify_hmg_team(weapon_descr, name: str, exceptions: list) -> None:
     """Apply HMG team modifications."""
     membr = weapon_descr.v.by_m
@@ -44,6 +45,7 @@ def _modify_hmg_team(weapon_descr, name: str, exceptions: list) -> None:
         "AffichageMunitionParSalve": "10"
     })
 
+
 def _modify_mmg_team(weapon_descr, name: str) -> None:
     """Apply MMG team modifications."""
     membr = weapon_descr.v.by_m
@@ -64,6 +66,7 @@ def _modify_mmg_team(weapon_descr, name: str) -> None:
         "AffichageMunitionParSalve": "10"
     })
 
+
 def _modify_hmg_turret(weapon_descr, name: str) -> None:
     """Apply HMG turret modifications."""
     membr = weapon_descr.v.by_m
@@ -79,6 +82,7 @@ def _modify_hmg_turret(weapon_descr, name: str) -> None:
         "SupplyCost": "2",
         "AffichageMunitionParSalve": "10"
     })
+
 
 def _modify_mmg_turret(weapon_descr, name: str) -> None:
     """Apply MMG turret modifications."""
@@ -97,6 +101,7 @@ def _modify_mmg_turret(weapon_descr, name: str) -> None:
         "AffichageMunitionParSalve": "10"
     })
 
+
 def _apply_common_mods(weapon_descr, name: str, mods: dict) -> None:
     """Apply common modifications to a weapon."""
     membr = weapon_descr.v.by_m
@@ -111,4 +116,4 @@ def _apply_common_mods(weapon_descr, name: str, mods: dict) -> None:
     roll_membr_list = list(hitroll_list[1].v)
     roll_membr_list[1] = "35"
     hitroll_list[1].v = tuple(roll_membr_list)
-    logger.info(f"Changed {name} accuracy: {roll_membr_list}") 
+    logger.info(f"Changed {name} accuracy: {roll_membr_list}")

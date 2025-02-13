@@ -25,4 +25,4 @@ def edit_critical_effects(source) -> None:
             if effect.v.type == "CriticalEffect_BailedOut":
                 effects_list.remove(effect.index)
                 logger.info(f"Removed BailedOut effect from {description}")
-                break 
+                break

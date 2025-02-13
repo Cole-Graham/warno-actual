@@ -1,5 +1,5 @@
 """Functions for gathering weapon depiction data."""
-import re
+# import re
 from copy import deepcopy
 from pathlib import Path
 from typing import Any, Dict
@@ -11,6 +11,7 @@ from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import is_obj_type, strip_quotes
 
 logger = setup_logger(__name__)
+
 
 def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
     """Gather depiction data from GeneratedDepictionInfantry.ndf."""
@@ -37,7 +38,7 @@ def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
     all_fire_effects = {}
 
     try:
-        mod = ndf.Mod(mod_src_path, "None")
+        mod = ndf.Mod(str(mod_src_path), "None")
         logger.debug(f"Created NDF mod for path: {mod_src_path}")
         
         ammo_ndf_path = "GameData/Generated/Gameplay/Gfx/Ammunition.ndf"
@@ -94,7 +95,7 @@ def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
                 elif entry.namespace == f"AllWeaponSubDepiction_{current_unit}":
                     logger.debug(f"Processing weapon subdepictions for {current_unit}")
                     try:
-                        operators = entry.v.by_m("Operators").v
+                        operators = entry.v.by_m("Operators").v  # noqa
                         for op in operators:
                             if not is_obj_type(op.v, "DepictionOperator_WeaponInstantFireInfantry"):
                                 continue
@@ -142,9 +143,9 @@ def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
                 elif entry.namespace == f"TacticDepiction_{current_unit}_Soldier":
                     logger.debug(f"Processing SelectorTactic and animation tags for {current_unit}")
                     try:
-                        selector_tactic = entry.v.by_m("Selector").v.split("InfantrySelectorTactic_")[-1]
+                        selector_tactic = entry.v.by_m("Selector").v.split("InfantrySelectorTactic_")[-1]  # noqa
                         depiction_data[current_unit]["tactic_soldier"]["selector_tactic"] = selector_tactic
-                        operators = entry.v.by_m("Operators").v
+                        operators = entry.v.by_m("Operators").v  # noqa
                         for op in operators:
                             if op.namespace != "DepictionOperator_SkeletalAnimation2_Default":
                                 continue
@@ -173,6 +174,7 @@ def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
     except Exception as e:
         logger.error(f"Error gathering depiction data: {str(e)}")
         return depiction_data 
+
 
 def _build_all_renames(mod, ammo_ndf_path, missiles_ndf_path):
     try:

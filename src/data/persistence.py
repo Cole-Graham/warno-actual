@@ -17,6 +17,7 @@ DB_FILENAMES = {
     "weapons": "weapons.json",
 }
 
+
 def save_database_to_disk(database: Dict[str, Any], config: Dict) -> None:
     """Save database to disk."""
     try:
@@ -42,6 +43,7 @@ def save_database_to_disk(database: Dict[str, Any], config: Dict) -> None:
         logger.error(f"Failed to save database: {e}")
         raise
 
+
 def load_database_from_disk(config: Dict) -> Dict[str, Any]:
     """Load database components from disk."""
     db_path = Path(config['data_config']['database_path'])
@@ -57,5 +59,3 @@ def load_database_from_disk(config: Dict) -> Dict[str, Any]:
             logger.error(f"Error loading {db_key}: {e}")
             
     return database
-    
-

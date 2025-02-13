@@ -11,4 +11,4 @@ INGAME_ICONS = {
         "texture": "swift_28x24.png",
         "insert_after": "icone_shock_move"
     }
-} 
+}

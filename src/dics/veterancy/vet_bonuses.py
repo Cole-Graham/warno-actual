@@ -227,4 +227,4 @@ VETERANCY_BONUSES = {
             ),
         },
     },
-} 
+}

@@ -7,7 +7,6 @@ mortier_2b9_vasilek_sov: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
     "unit_name": "Mortier_2B9_Vasilek_SOV",
     "valid_files": ["DepictionVehicles.ndf"],
     "DepictionVehicles_ndf": {
-        
         ("DepictionOperator_Mortier_2B9_Vasilek_SOV_Weapon1", "DepictionOperator_WeaponInstantFire"): {
             "copy": "DepictionOperator_Mortier_2B9_Vasilek_SOV_Weapon3",
             "FireEffectTag": "'weapon_effet_tag3'",
@@ -18,8 +17,7 @@ mortier_2b9_vasilek_sov: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
             "Operators": {
                 7: ("add", (
                     "DepictionOperator_Mortier_2B9_Vasilek_SOV_Weapon3"
-                    )
-                ),
+                )),
             },
             "Actions": (
                 'MAP['

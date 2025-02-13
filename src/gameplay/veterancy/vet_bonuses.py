@@ -2,7 +2,7 @@
 
 from typing import List, Tuple
 
-from src import ModConfig
+from src import ModConfig  # noqa
 from src.dics.veterancy.vet_bonuses import VETERANCY_BONUSES
 from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.logging_utils import setup_logger
@@ -10,9 +10,9 @@ from src.utils.ndf_utils import ndf
 
 logger = setup_logger(__name__)
 
+
 def write_veterancy_tokens() -> None:
     """Write experience hint texts to dictionary file."""
-    
     # Gather entries to write
     entries: List[Tuple[str, str]] = []
     for xp_type, data in VETERANCY_BONUSES.items():
@@ -24,6 +24,7 @@ def write_veterancy_tokens() -> None:
     
     # Write entries
     write_dictionary_entries(entries, dictionary_type="ingame")
+
 
 def edit_veterancy_effects(source_path) -> None:
     """Edit veterancy effects in EffetsSurUnite.ndf."""
@@ -133,9 +134,10 @@ def edit_veterancy_effects(source_path) -> None:
             logger.info(f"Updated {effect_type} for {row.namespace}")
         
         if "add" in changes:
-            for effect_fn, args in changes["add"]:
+            for effect_fn, args in changes["add"]:  # noqa
                 effect_str = effect_fn(*args)
                 effects_list.v.add(effect_str)
+
 
 def edit_veterancy_hints(source_path) -> None:
     """Edit veterancy hint texts in ExperienceLevels.ndf."""
@@ -189,9 +191,7 @@ def edit_veterancy_hints(source_path) -> None:
                 level_key = pack_info["level_format"].format(level=level)
                 
                 if level_key not in VETERANCY_BONUSES[pack_type]:
-                    logger.warning(
-                        f"Missing veterancy data for {level_key} in {pack_type}"
-                    )
+                    logger.warning(f"Missing veterancy data for {level_key} in {pack_type}")
                     continue
                     
                 body_token = VETERANCY_BONUSES[pack_type][level_key]["body_token"]
@@ -199,6 +199,4 @@ def edit_veterancy_hints(source_path) -> None:
                 logger.info(f"Modified {descr_namespace} for {row.namespace}")
                 
         except Exception as e:
-            logger.error(
-                f"Failed to process {row.namespace}: {str(e)}"
-            )
+            logger.error(f"Failed to process {row.namespace}: {str(e)}")

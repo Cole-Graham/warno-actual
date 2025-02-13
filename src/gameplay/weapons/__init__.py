@@ -28,7 +28,7 @@ from .standards import (
     bomb_damage_standards
 )
 from .unit_edits import unit_edits_weapondescriptor
-from .vanilla_modifications import vanilla_renames_ammunition, remove_vanilla_instances
+from .vanilla_modifications import vanilla_renames_ammunition, remove_vanilla_instances, vanilla_renames_weapondescriptor
 
 __all__ = [
     'apply_default_salves',
@@ -55,4 +55,4 @@ __all__ = [
     'bomb_damage_standards',
     'edit_fire_descriptors',
     'change_fire_descriptors'
-] 
+]

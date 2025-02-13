@@ -5,6 +5,7 @@ from src import ndf
 
 logger = setup_logger(__name__)
 
+
 def edit_fire_descriptors(source_path) -> None:
     """Edit FireDescriptors.ndf"""
     logger.info("Editing FireDescriptors.ndf")
@@ -35,7 +36,7 @@ def edit_fire_descriptors(source_path) -> None:
                 if not isinstance(module.v, ndf.model.Object):
                     continue
                 module_type = module.v.type
-                if not module_type in data:
+                if module_type not in data:
                     continue
                 
                 for key, value in data["TFireModuleDescriptor"].items():
@@ -43,7 +44,8 @@ def edit_fire_descriptors(source_path) -> None:
                     
                 source_path.add(new_entry)
                 logger.info(f"Added Descriptor_Fire_{new_name} to FireDescriptors.ndf")
-                
+
+
 def change_fire_descriptors(source_path) -> None:
     """Change fire descriptors in Ammunition.ndf"""
     
@@ -67,5 +69,3 @@ def change_fire_descriptors(source_path) -> None:
             
             ammo_descr.v.by_m("Arme").v.by_m("Family").v = "DamageFamily_nplm_bomb"
             logger.info(f"Changed {ammo_descr.namespace} to DamageFamily_nplm_bomb")
-
-                

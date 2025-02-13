@@ -1,8 +1,9 @@
 """Functions for modifying UI text format scripts."""
-from src import ndf
+# from src import ndf
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
+
 
 def edit_defaulttextformatscript(source_path) -> None:
     """Edit DefaultTextFormatScript.ndf.
@@ -10,7 +11,7 @@ def edit_defaulttextformatscript(source_path) -> None:
     Adds new text format commands for mod-specific textures.
     
     Args:
-        source: NDF file containing text format script definitions
+        source_path: NDF file containing text format script definitions
     """
     logger.info("Editing DefaultTextFormatScript.ndf")
 
@@ -38,4 +39,4 @@ def edit_defaulttextformatscript(source_path) -> None:
         # Insert before "defense" entry
         index = commands_map.by_k('"defense"').index
         commands_map.insert(index, new_entry)
-        logger.debug(f"Added text format command for {tag}") 
+        logger.debug(f"Added text format command for {tag}")

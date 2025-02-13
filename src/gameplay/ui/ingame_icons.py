@@ -33,4 +33,4 @@ def edit_ingame_icons(source) -> None:
         else:
             textures_map.add(icon_entry)
             
-        logger.info(f"Added icon: icone_{icon_id}") 
+        logger.info(f"Added icon: icone_{icon_id}")

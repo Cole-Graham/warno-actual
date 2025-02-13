@@ -7,11 +7,12 @@ from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
 
+
 def edit_uiingamebuckengagementrules(source_path) -> None:
     """Edit UIInGameBUCKEngagementRules.ndf.
     
     Args:
-        source: NDF file containing engagement rules definitions
+        source_path: NDF file containing engagement rules definitions
     """
     logger.info("Editing UIInGameBUCKEngagementRules.ndf")
     
@@ -20,6 +21,7 @@ def edit_uiingamebuckengagementrules(source_path) -> None:
     
     # Update engagement rules view
     _update_engagement_rules_view(source_path)
+
 
 def _update_engagement_button(source_path) -> None:
     """Update engagement button properties."""
@@ -34,6 +36,7 @@ def _update_engagement_button(source_path) -> None:
     
     logger.debug("Updated engagement button colors")
 
+
 def _update_engagement_rules_view(source_path) -> None:
     """Update engagement rules view properties."""
     tacticengagementrulesview_descr = source_path.by_namespace("UISpecificTacticEngagementRulesViewDescriptor").v
@@ -46,6 +49,7 @@ def _update_engagement_rules_view(source_path) -> None:
     _update_engagement_buttons(tacticengagementrulesview_descr.by_member("CategoryToButtons").v)
     
     logger.debug("Updated engagement rules view properties")
+
 
 def _update_engagement_buttons(categorytobuttons_map: Any) -> None:
     """Update engagement button colors."""
@@ -70,4 +74,4 @@ def _update_engagement_buttons(categorytobuttons_map: Any) -> None:
                 
             if row.v.by_member("ElementName").v == f'"{elementname}"':
                 row.v.by_member("TextColor").v = '"M81_RoE_Default"'
-                logger.debug(f"Updated text color for {elementname}") 
+                logger.debug(f"Updated text color for {elementname}")

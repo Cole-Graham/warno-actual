@@ -10,6 +10,7 @@ from src.utils.variant_utils import validate_variant_config
 
 logger = setup_logger('gameplay_mod')
 
+
 def get_file_editor(ndf_path: str, config: Dict) -> Optional[Callable]:
     """Get the appropriate edit function for gameplay files."""
     editors_to_apply: Set[Callable] = set()  # Use set to deduplicate editors
@@ -67,4 +68,4 @@ def get_file_editor(ndf_path: str, config: Dict) -> Optional[Callable]:
                 logger.debug(f"Applying editor: {editor.__name__}")
                 editor(source_path)
                 
-    return apply_all_editors 
+    return apply_all_editors

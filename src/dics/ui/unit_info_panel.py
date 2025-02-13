@@ -18,4 +18,4 @@ UNIT_INFO_PANEL_DATA = {
             ),
         },
     },
-} 
+}

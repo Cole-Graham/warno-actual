@@ -2,7 +2,7 @@
 
 from typing import List, Tuple
 
-from src import ModConfig
+from src import ModConfig  # noqa
 from src.dics.ui.traits import NEW_TRAITS, TRAIT_EDITS
 from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.logging_utils import setup_logger
@@ -12,7 +12,7 @@ logger = setup_logger(__name__)
 
 def write_trait_texts() -> None:
     """Write trait texts to UNITS.csv dictionary file."""
-    config = ModConfig.get_instance().config_data
+    # config = ModConfig.get_instance().config_data
     entries: List[Tuple[str, str]] = []
     
     # Add trait entries

@@ -19,4 +19,4 @@ missiles: Dict[MissileKey, MissileData] = {
     **atgm_missiles,
     **sead_missiles,
 }
-# fmt: on 
+# fmt: on

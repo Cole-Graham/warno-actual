@@ -5,11 +5,12 @@ from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
 
+
 def edit_buckspecifichint(source_path) -> None:
     """Edit BuckSpecificHint.ndf.
     
     Args:
-        source: NDF file containing hint view definitions
+        source_path: NDF file containing hint view definitions
     """
     logger.info("Editing BuckSpecificHint.ndf")
     
@@ -28,4 +29,4 @@ def edit_buckspecifichint(source_path) -> None:
         if is_obj_type(component.v, "PanelRoundedCorner"):
             roundedpanel = component.v
             roundedpanel.by_member("RoundedVertexes").v = "[true, true, true, true]"
-            logger.debug("Updated hint panel rounded vertices") 
+            logger.debug("Updated hint panel rounded vertices")

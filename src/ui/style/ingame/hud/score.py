@@ -7,6 +7,7 @@ from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
 
+
 def edit_uispecifichudscoreview(source_path) -> None:
     """Edit UISpecificHUDScoreView.ndf."""
     logger.info("Editing UISpecificHUDScoreView.ndf")
@@ -14,6 +15,7 @@ def edit_uispecifichudscoreview(source_path) -> None:
     _update_alliance_score_line(source_path)
     _update_player_score_line(source_path)
     _update_player_score_panel_button(source_path)
+
 
 def _update_alliance_score_line(source_path) -> None:
     """Update alliance score line properties."""
@@ -27,10 +29,11 @@ def _update_alliance_score_line(source_path) -> None:
                 continue
                 
             container = element.v.by_member("ComponentDescriptor").v
-            if container.type != "BUCKContainerDescriptor":
+            if container.type != "BUCKContainerDescriptor":  # noqa
                 continue
                 
             _update_score_container(container)
+
 
 def _update_score_container(container: Any) -> None:
     """Update score container and its nested components."""
@@ -60,6 +63,7 @@ def _update_score_container(container: Any) -> None:
             elif is_obj_type(component.v, "BUCKListDescriptor"):
                 _update_text_elements(component.v.by_member("Elements").v)
 
+
 def _update_text_elements(elements: Any) -> None:
     """Update text element colors."""
     for element in elements:
@@ -67,12 +71,13 @@ def _update_text_elements(elements: Any) -> None:
             continue
             
         text_descr = element.v.by_member("ComponentDescriptor").v
-        if text_descr.type != "BUCKTextDescriptor":
+        if text_descr.type != "BUCKTextDescriptor":  # noqa
             continue
             
-        elementname = text_descr.by_member("ElementName").v
+        elementname = text_descr.by_member("ElementName").v  # noqa
         if elementname in ['<ElementName> + "Text"', '<ElementName> + "IncomeText"', '<ElementName> + "VictoryTimer"']:
-            text_descr.by_member("TextColor").v = '"M81_WhiteText95"'
+            text_descr.by_member("TextColor").v = '"M81_WhiteText95"'  # noqa
+
 
 def _update_player_score_line(source_path) -> None:
     """Update player score line properties."""
@@ -82,17 +87,18 @@ def _update_player_score_line(source_path) -> None:
             continue
             
         component = element.v.by_member("ComponentDescriptor").v
-        if component.type == "BUCKSpecificTextWithHint":
-            component.by_member("TextColor").v = '"BlancEquipe"'
-            component.by_member("TypefaceToken").v = '"Bombardier"'
-        elif component.type == "BUCKTextDescriptor" and component.by_member("ElementName", False) is not None:
-            if component.by_member("ElementName").v == '"Points"':
-                component.by_member("TextColor").v = '"M81_ArtichokeVeryLight"'
-        elif component.type == "BUCKButtonDescriptor":
-            for nested in component.by_member("Components").v:
+        if component.type == "BUCKSpecificTextWithHint":  # noqa
+            component.by_member("TextColor").v = '"BlancEquipe"'  # noqa
+            component.by_member("TypefaceToken").v = '"Bombardier"'  # noqa
+        elif component.type == "BUCKTextDescriptor" and component.by_member("ElementName", False) is not None:  # noqa
+            if component.by_member("ElementName").v == '"Points"':  # noqa
+                component.by_member("TextColor").v = '"M81_ArtichokeVeryLight"'  # noqa
+        elif component.type == "BUCKButtonDescriptor":  # noqa
+            for nested in component.by_member("Components").v:  # noqa
                 if not isinstance(nested.v, ndf.model.Object) or not is_obj_type(nested.v, "BUCKTextureDescriptor"):
                     continue
                 nested.v.by_member("TextureColorToken").v = '"CouleurTexture_boutonShortcutsTextM81"'
+
 
 def _update_player_score_panel_button(source_path) -> None:
     """Update player score panel button properties."""
@@ -113,4 +119,4 @@ def _update_player_score_panel_button(source_path) -> None:
                     panel.v.by_member("BackgroundBlockColorToken").v = '"BoutonTemps_BackgroundM81"'
                     panel.v.by_member("BorderLineColorToken").v = '"CouleurBordure_boutonShortcutsTextM81"'
             elif is_obj_type(nested.v, "BUCKTextureDescriptor"):
-                nested.v.by_member("TextureColorToken").v = '"CouleurTexture_boutonShortcutsTextM81"' 
+                nested.v.by_member("TextureColorToken").v = '"CouleurTexture_boutonShortcutsTextM81"'

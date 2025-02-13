@@ -19,7 +19,8 @@ def edit_division_matrices(source) -> None:
             logger.info(f"Updated matrix for {matrix_name}")
         except Exception as e:
             logger.error(f"Failed to update matrix {matrix_name}: {str(e)}")
-            
+
+
 def deck_ap_points(source_path: Any) -> None:
     """Edit deck AP points in Divisions.ndf."""
     logger.info("Editing deck AP points")

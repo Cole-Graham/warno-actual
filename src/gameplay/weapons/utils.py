@@ -5,6 +5,7 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger('weapons')
 
+
 def rename_descriptor(source: Any, old_name: str, new_name: str) -> None:
     """Rename a descriptor in the source."""
     try:
@@ -16,6 +17,7 @@ def rename_descriptor(source: Any, old_name: str, new_name: str) -> None:
             logger.warning(f"Could not find descriptor {old_name} to rename")
     except Exception as e:
         logger.error(f"Failed to rename {old_name}: {str(e)}")
+
 
 def get_salvo_renames(source: Any) -> List[Tuple[str, str]]:
     """Get list of renames from _x{n} to _salvoLen{n}."""
@@ -32,7 +34,8 @@ def get_salvo_renames(source: Any) -> List[Tuple[str, str]]:
             
     return renames 
 
-"""Shared utility functions for weapon editing."""
+# Shared utility functions for weapon editing
+
 
 def get_supply_costs(weapons_dict: Dict) -> List[Tuple[str, int]]:
     """Get base supply costs for weapons."""
@@ -44,4 +47,4 @@ def get_supply_costs(weapons_dict: Dict) -> List[Tuple[str, int]]:
             weapon_costs.append((weapon, supply_cost))
         elif base_supply_cost := data.get("BaseSupplyCost", None):
             weapon_costs.append((weapon, base_supply_cost))
-    return weapon_costs 
+    return weapon_costs

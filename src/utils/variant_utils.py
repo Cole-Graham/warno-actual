@@ -8,6 +8,7 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
 
+
 def validate_variant_config(variants: Dict, mod_src_path: Path = None) -> None:
     """Validate variant configuration."""
     if not variants:
@@ -50,6 +51,7 @@ def validate_variant_config(variants: Dict, mod_src_path: Path = None) -> None:
                 raise ValueError(f"Shared file config must be list for {ndf_path}")
             _validate_function_list(config, ndf_path, "shared")
 
+
 def _validate_function_list(functions: List[str], file_path: str, mod_type: str) -> None:
     """Validate list of function names."""
     if not isinstance(functions, list):
@@ -58,6 +60,7 @@ def _validate_function_list(functions: List[str], file_path: str, mod_type: str)
     for func_name in functions:
         if func_name not in VARIANT_FUNCTIONS:
             raise ValueError(f"Unknown function '{func_name}' in {file_path} {mod_type} config") 
+
 
 def validate_source(source) -> bool:
     """Validate source file structure."""
@@ -69,4 +72,4 @@ def validate_source(source) -> bool:
         logger.error("Source file not iterable")
         return False
         
-    return True 
+    return True

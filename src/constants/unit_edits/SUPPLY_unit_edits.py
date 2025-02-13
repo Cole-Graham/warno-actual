@@ -1,6 +1,6 @@
 """supply unit edits."""
 
-from typing import Any, Dict
+# from typing import Any, Dict
 
 # fmt: off
 supply_unit_edits = {

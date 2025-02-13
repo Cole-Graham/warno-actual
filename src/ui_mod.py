@@ -1,6 +1,5 @@
 """Main UI modification module."""
-
-from typing import Any, Callable, Dict, List, Optional, Set
+from typing import Any, Callable, Dict, List, Optional, Set  # noqa
 
 from src.constants.variants import VARIANT_FUNCTIONS
 from src.shared import get_shared_editors
@@ -9,6 +8,7 @@ from src.utils.logging_utils import log_time, setup_logger
 from src.utils.variant_utils import validate_variant_config
 
 logger = setup_logger('ui_mod')
+
 
 def get_file_editor(ndf_path: str, config: Dict) -> Optional[Callable]:
     """Get the appropriate edit function for UI files."""
@@ -67,4 +67,4 @@ def get_file_editor(ndf_path: str, config: Dict) -> Optional[Callable]:
                 logger.debug(f"Applying editor: {editor.__name__}")
                 editor(source_path)
                 
-    return apply_all_editors 
+    return apply_all_editors

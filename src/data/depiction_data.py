@@ -12,6 +12,7 @@ from src.utils.ndf_utils import is_obj_type, strip_quotes
 
 logger = setup_logger(__name__)
 
+
 def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
     """Gather depiction data from GeneratedDepictionInfantry.ndf."""
     logger.info("Gathering depiction data from GeneratedDepictionInfantry.ndf")
@@ -43,7 +44,7 @@ def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
     animation_weapon_map = {}
 
     try:
-        mod = ndf.Mod(mod_src_path, "None")
+        mod = ndf.Mod(str(mod_src_path), "None")
         logger.debug(f"Created NDF mod for path: {mod_src_path}")
         
         ammo_ndf_path = "GameData/Generated/Gameplay/Gfx/Ammunition.ndf"
@@ -101,7 +102,7 @@ def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
                 elif entry.namespace == f"AllWeaponSubDepiction_{current_unit}":
                     logger.debug(f"Processing weapon subdepictions for {current_unit}")
                     try:
-                        operators = entry.v.by_m("Operators").v
+                        operators = entry.v.by_m("Operators").v  # noqa
                         for op in operators:
                             if not is_obj_type(op.v, "DepictionOperator_WeaponInstantFireInfantry"):
                                 continue
@@ -126,7 +127,7 @@ def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
                             mesh_index = int(weapon_shoot_data.split("_")[-1])
                             mesh_key = f"MeshAlternative_{mesh_index}"
                             if mesh_key in depiction_data[current_unit]["weapon_alternatives"]["alts"]:
-                                mesh = depiction_data[current_unit]["weapon_alternatives"]["alts"][mesh_key]
+                                mesh = depiction_data[current_unit]["weapon_alternatives"]["alts"][mesh_key]  # noqa
                                 all_weapon_meshes[weapon_name] = mesh.split("Modele_")[-1]
                                 logger.debug(f"Mapped weapon '{weapon_name}' to mesh '{all_weapon_meshes[weapon_name]}'")
                             
@@ -146,7 +147,7 @@ def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
                                 else:
                                     selector_id = [selector_id_lod]
                                 mesh = alt.v.by_m("MeshDescriptor").v.split("Modele_")[-1]
-                                depiction_data[current_unit]["tactic_alternatives"] = {
+                                depiction_data[current_unit]["tactic_alternatives"] = {  # noqa
                                     "selector_id": selector_id,
                                     "mesh": mesh
                                 }
@@ -158,14 +159,14 @@ def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
                 elif entry.namespace == f"TacticDepiction_{current_unit}_Soldier":
                     logger.debug(f"Processing SelectorTactic and animation tags for {current_unit}")
                     try:
-                        selector_tactic = entry.v.by_m("Selector").v.split("InfantrySelectorTactic_")[-1]
-                        depiction_data[current_unit]["tactic_soldier"]["selector_tactic"] = selector_tactic
-                        operators = entry.v.by_m("Operators").v
+                        selector_tactic = entry.v.by_m("Selector").v.split("InfantrySelectorTactic_")[-1]  # noqa
+                        depiction_data[current_unit]["tactic_soldier"]["selector_tactic"] = selector_tactic  # noqa
+                        operators = entry.v.by_m("Operators").v  # noqa
                         for op in operators:
                             if op.v.type != "DepictionOperator_SkeletalAnimation2_Default":
                                 logger.debug(f"Skipping non-animation operator: {op.namespace}")
                                 continue
-                            if op.v.by_m("ConditionalTags", False) != None:
+                            if op.v.by_m("ConditionalTags", False) is not None:
                                 conditional_tags = op.v.by_m("ConditionalTags").v
                                 for tag_tuple in conditional_tags:
                                     if isinstance(tag_tuple.v, tuple):
@@ -179,7 +180,7 @@ def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
                                         
                                         # Map weapons to animation tags based on mesh alternative number
                                         mesh_alt_num = mesh_alt.split("_")[-1]
-                                        for weapon_name, weapon_data in depiction_data[current_unit]["weapon_subdepictions"].items():
+                                        for weapon_name, weapon_data in depiction_data[current_unit]["weapon_subdepictions"].items():  # noqa
                                             weapon_mesh_num = weapon_data["weapon_shoot_data"].split("_")[-1]
                                             if weapon_mesh_num == mesh_alt_num:
                                                 animation_weapon_map[weapon_name] = weapon_type
@@ -216,6 +217,7 @@ def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
     except Exception as e:
         logger.error(f"Error gathering depiction data: {str(e)}")
         return depiction_data 
+
 
 def _build_all_renames(mod, ammo_ndf_path, missiles_ndf_path):
     try:

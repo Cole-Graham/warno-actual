@@ -5,11 +5,12 @@ from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
 
+
 def edit_uispecifichudmultiselectionpanelview(source_path) -> None:
     """Edit UISpecificHUDMultiSelectionPanelView.ndf.
     
     Args:
-        source: NDF file containing HUD multiselection panel definitions
+        source_path: NDF file containing HUD multiselection panel definitions
     """
     logger.info("Editing UISpecificHUDMultiSelectionPanelView.ndf")
     
@@ -19,11 +20,13 @@ def edit_uispecifichudmultiselectionpanelview(source_path) -> None:
     # Update main component properties
     _update_main_component(source_path)
 
+
 def _update_horizontal_list(source_path) -> None:
     """Update horizontal list properties."""
     hudmultiselectionhorizontallistdescriptor = source_path.by_namespace("HUDMultiSelectionHorizontalListDescriptor").v
     hudmultiselectionhorizontallistdescriptor.by_member("BackgroundBlockColorToken").v = '"M81_Ebony"'
     logger.debug("Updated horizontal list background color")
+
 
 def _update_main_component(source_path) -> None:
     """Update main component properties."""
@@ -36,4 +39,4 @@ def _update_main_component(source_path) -> None:
         if is_obj_type(component.v, "BUCKSpecificScrollingContainerDescriptor"):
             component.v.by_member("ScrollBarBackgroundToken").v = '"M81_Artichoke64"'
             component.v.by_member("ScrollBarElevatorBackgroundToken").v = '"M81_Quincy"'
-            logger.debug("Updated scrollbar colors") 
+            logger.debug("Updated scrollbar colors")

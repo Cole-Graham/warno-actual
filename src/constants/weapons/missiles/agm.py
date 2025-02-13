@@ -230,7 +230,6 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-
     ("Bomb_GBU_12", "LGB", None, False): { # 147
         "Ammunition": {
             "parent_membr": {

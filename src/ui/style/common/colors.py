@@ -1,15 +1,16 @@
 """Functions for modifying UI colors."""
-from src import ndf
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import is_obj_type
+# from src import ndf
+# from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
+
 
 def edit_colors(source_path) -> None:
     """Edit Colors.ndf.
     
     Args:
-        source: NDF file containing color definitions
+        source_path: NDF file containing color definitions
     """
     logger.info("Editing Colors.ndf")
 
@@ -46,4 +47,4 @@ def edit_colors(source_path) -> None:
     for line in reversed(color_definitions.split('\n')):
         if line:
             source_path.insert(1, line)
-            logger.debug(f"Added color definition: {line}") 
+            logger.debug(f"Added color definition: {line}")

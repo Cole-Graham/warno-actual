@@ -1,15 +1,15 @@
 """Editor for Ammunition.ndf."""
 
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional  # noqa
 from uuid import uuid4
 
 from src import ndf
 from src.constants.unit_edits import load_unit_edits
 from src.constants.weapons.ammunition import ammunitions
 from src.constants.weapons.vanilla_inst_modifications import AMMUNITION_REMOVALS
-from src.utils.dictionary_utils import write_dictionary_entries
+from src.utils.dictionary_utils import write_dictionary_entries  # noqa
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import is_valid_turret
+from src.utils.ndf_utils import is_valid_turret  # noqa
 
 from ..dics import write_ammo_dictionary_entries
 from .damage_families import apply_damage_families
@@ -19,6 +19,7 @@ from .utils import get_supply_costs
 from .vanilla_modifications import remove_vanilla_instances, vanilla_renames_ammunition
 
 logger = setup_logger(__name__)
+
 
 def edit_ammunition(source_path, game_db: Dict[str, Any]) -> None:
     """Edit Ammunition.ndf file."""
@@ -128,6 +129,7 @@ def edit_ammunition(source_path, game_db: Dict[str, Any]) -> None:
         logger.error(f"Fatal error in edit_ammunition: {str(e)}")
         raise
 
+
 def _create_quantity_variants(source_path, base_descr, weapon_name, quantities, base_cost, is_new):
     """Create quantity variants from base ammunition descriptor."""
     logger.info(f"Creating quantity variants for {weapon_name} (is_new={is_new})")
@@ -138,17 +140,12 @@ def _create_quantity_variants(source_path, base_descr, weapon_name, quantities, 
             namespace = f"Ammo_{weapon_name}"
         else:
             namespace = f"Ammo_{weapon_name}_x{quantity}"
+
+        existing = source_path.by_n(namespace, strict=False)
             
-        try:
-            existing = source_path.by_n(namespace)
-            exists = True
-        except:
-            exists = False
-            existing = None
-            
-        logger.debug(f"Checking {namespace} - exists: {exists}")
+        logger.debug(f"Checking {namespace} - exists: {existing is not None}")
         
-        if is_new or not exists:
+        if is_new or (existing is None):
             # Create new variant
             variant = base_descr.copy()
             variant.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
@@ -165,6 +162,7 @@ def _create_quantity_variants(source_path, base_descr, weapon_name, quantities, 
             if base_cost is not None:
                 existing.v.by_m("SupplyCost").v = str(int(base_cost) * quantity)
             logger.debug(f"Updated existing variant {namespace}")
+
 
 def update_weapondescr_ammoname_quantity(source_path, game_db):
     """Update the quantities in ammo names for WeaponDescriptor.ndf"""
@@ -231,7 +229,8 @@ def update_weapondescr_ammoname_quantity(source_path, game_db):
                                 
                         else:
                             logger.debug(f"No changes applied for {weapon_name}\n")      
-        
+
+
 def _apply_weapon_edits(descr: Any, data: Dict, ammo_data: Dict) -> None:
     """Apply edits from ammunition data to descriptor."""
     membr = descr.v.by_m
@@ -290,6 +289,7 @@ def _apply_weapon_edits(descr: Any, data: Dict, ammo_data: Dict) -> None:
         membr("InterfaceWeaponTexture").v = texture_file
         logger.debug(f"Applied texture {texture_file}")
 
+
 def _apply_hit_roll_edits(descr: Any, hit_roll_data: Dict) -> None:
     """Apply hit roll edits to ammunition descriptor."""
 
@@ -303,6 +303,7 @@ def _apply_hit_roll_edits(descr: Any, hit_roll_data: Dict) -> None:
         modifiers[1].v = (modifiers[1].v[0], str(hit_roll_data["Idling"]))
     if "Moving" in hit_roll_data:
         modifiers[2].v = (modifiers[2].v[0], str(hit_roll_data["Moving"]))
+
 
 def _track_dictionary_entries(weapon_name, ammo_data, ingame_names, calibers):
     """Track dictionary entries for ammunition."""
@@ -318,6 +319,7 @@ def _track_dictionary_entries(weapon_name, ammo_data, ingame_names, calibers):
         if caliber_data[0] != "existing":
             calibers.append((weapon_name, caliber_data[1], caliber_data[0]))
 
+
 def _get_base_supply_cost(weapon_name):
     """Get the base supply cost for ammunition."""
     supply_costs = get_supply_costs(ammunitions)
@@ -325,6 +327,7 @@ def _get_base_supply_cost(weapon_name):
         if weapon == weapon_name:
             return cost
     return None
+
 
 def _create_new_descriptor(source_path, data, weapon_name, donor):
     """Create a new descriptor for ammunition."""
@@ -356,6 +359,7 @@ def _create_new_descriptor(source_path, data, weapon_name, donor):
     logger.debug(f"Created new base descriptor for {weapon_name} from {donor}")
     return base_descr
 
+
 def _get_existing_descriptor(source_path, weapon_name):
     """Get an existing descriptor for ammunition."""
     base_descr = source_path.by_n(f"Ammo_{weapon_name}")
@@ -365,27 +369,18 @@ def _get_existing_descriptor(source_path, weapon_name):
         if not base_descr:
             logger.error(f"Could not find weapon {weapon_name}")
             return None
-    return base_descr 
+    return base_descr
 
-def apply_default_salves(
-    source_path: Any,
-    game_db: Dict[str, Any],
-) -> None:
+
+def apply_default_salves(source_path: Any, game_db: Dict[str, Any]) -> None:
     """Apply default salves to WeaponDescriptor.ndf"""
-    
     unit_edits = load_unit_edits()
     
-    def __edit_salves(
-        source_path: Any,
-        weapon_descr_name: str,
-        ammo_name: str,
-        salvo_stock_index: int,
-        default_salves: List[int]
-    ) -> None:
-        weapon_descr = source_path.by_n(weapon_descr_name)
-        salves = weapon_descr.v.by_m("Salves")
-        salves.v[salvo_stock_index].v = str(default_salves)
-        logger.info(f"Applied default salves for {ammo_name} to {weapon_descr_name}")
+    # def __edit_salves(source_path: Any, weapon_descr_name: str, ammo_name: str, salvo_stock_index: int, default_salves: List[int]) -> None:
+    #     weapon_descr = source_path.by_n(weapon_descr_name)
+    #     salves = weapon_descr.v.by_m("Salves")
+    #     salves.v[salvo_stock_index].v = str(default_salves)
+    #     logger.info(f"Applied default salves for {ammo_name} to {weapon_descr_name}")
     
     ammo_db = game_db["ammunition"]
     for (ammo_name, category, donor, is_new), data in ammunitions.items():
@@ -413,10 +408,16 @@ def apply_default_salves(
                 
             if old_name and old_name in weapon_descr_data["salves"]:
                 salvo_stock_index = weapon_descr_data["salves"][old_name][0]
-                __edit_salves(source_path, weapon_descr_name, old_name,
-                            salvo_stock_index, default_salves)
+                weapon_descr = source_path.by_n(weapon_descr_name)
+                salves = weapon_descr.v.by_m("Salves")
+                salves.v[salvo_stock_index].v = str(default_salves)
+                logger.info(f"Applied default salves for {old_name} to {weapon_descr_name}")
+                # __edit_salves(source_path, weapon_descr_name, old_name, salvo_stock_index, default_salves)
            
             elif ammo_name in weapon_descr_data["salves"]:
                 salvo_stock_index = weapon_descr_data["salves"][ammo_name][0]
-                __edit_salves(source_path, weapon_descr_name, ammo_name,
-                            salvo_stock_index, default_salves)
+                weapon_descr = source_path.by_n(weapon_descr_name)
+                salves = weapon_descr.v.by_m("Salves")
+                salves.v[salvo_stock_index].v = str(default_salves)
+                logger.info(f"Applied default salves for {ammo_name} to {weapon_descr_name}")
+                # __edit_salves(source_path, weapon_descr_name, ammo_name, salvo_stock_index, default_salves)

@@ -1,14 +1,15 @@
 """Functions for modifying UI HUD shortcuts for selection view."""
-from src import ndf
+# from src import ndf
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
+
 
 def edit_uispecificshortcutsforselectionview(source_path) -> None:
     """Edit UISpecificShortcutsForSelectionView.ndf.
     
     Args:
-        source: NDF file containing HUD shortcuts view definitions
+        source_path: NDF file containing HUD shortcuts view definitions
     """
     logger.info("Editing UISpecificShortcutsForSelectionView.ndf")
     
@@ -17,6 +18,7 @@ def edit_uispecificshortcutsforselectionview(source_path) -> None:
     
     # Update main component
     _update_main_component(source_path)
+
 
 def _update_shortcut_button_templates(source_path) -> None:
     """Update shortcut button template properties."""
@@ -35,6 +37,7 @@ def _update_shortcut_button_templates(source_path) -> None:
     
     logger.debug("Updated shortcut button templates")
 
+
 def _update_main_component(source_path) -> None:
     """Update main component properties."""
     maincomponent = source_path.by_namespace("BUCKSpecificShortcutsForSelectionMainComponentDescriptor").v
@@ -49,4 +52,4 @@ def _update_main_component(source_path) -> None:
     maincomponent.insert(7, 'RoundedVertexes = [false, false, false, true]')
     maincomponent.insert(8, 'Radius = 20')
     
-    logger.debug("Updated main component properties") 
+    logger.debug("Updated main component properties")

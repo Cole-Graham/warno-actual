@@ -8,6 +8,7 @@ from src.utils.logging_utils import log_time, setup_logger
 
 logger = setup_logger(__name__)
 
+
 def copy_assets(config: Dict) -> None:
     """Copy assets to mod directory.
     
@@ -55,4 +56,4 @@ def copy_assets(config: Dict) -> None:
                     shutil.copy2(source_file, target_path)
                     logger.debug(f"Copied {rel_path} to {target_path}")
                 except Exception as e:
-                    logger.error(f"Failed to copy {rel_path}: {e}") 
+                    logger.error(f"Failed to copy {rel_path}: {e}")

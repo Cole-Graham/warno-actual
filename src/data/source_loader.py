@@ -1,6 +1,6 @@
 """Functions for loading source NDF files."""
 
-from pathlib import Path
+# from pathlib import Path
 from typing import Any, Dict
 
 from src import ndf
@@ -9,7 +9,8 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger('source_loader')
 
-def get_source_files(config: Dict[str, Any]) -> Dict[str, str]:
+
+def get_source_files(config: Dict[str, Any]) -> Dict[Any, Any]:
     """Get NDF source files from configured source path.
     
     Args:
@@ -42,4 +43,4 @@ def get_source_files(config: Dict[str, Any]) -> Dict[str, str]:
         logger.error("No NDF files found in source paths")
         return {}
 
-    return source_files 
+    return source_files

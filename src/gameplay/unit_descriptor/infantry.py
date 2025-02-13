@@ -2,11 +2,12 @@
 
 import json
 from pathlib import Path
-from typing import Dict
+from typing import Dict  # noqa
 
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
+
 
 def get_unit_db():
     """Lazy load the unit database when needed."""
@@ -17,6 +18,7 @@ def get_unit_db():
     except FileNotFoundError:
         logger.error("Unit database not found. Ensure database is built before running modifications.")
         return {}
+
 
 def edit_infantry_armor_wa(source_path) -> None:
     """Edit infantry armor in UniteDescriptor.ndf."""
@@ -63,4 +65,4 @@ def edit_infantry_armor_wa(source_path) -> None:
             logger.info(
                 f"Updated {unit_name} infantry armor to WA type "
                 f"with armor level {armor_level}"
-            ) 
+            )

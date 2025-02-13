@@ -7,11 +7,12 @@ from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
 
+
 def edit_uispecificskirmishproductionmenuview(source_path) -> None:
     """Edit UISpecificSkirmishProductionMenuView.ndf.
     
     Args:
-        source: NDF file containing HUD production menu view definitions
+        source_path: NDF file containing HUD production menu view definitions
     """
     logger.info("Editing UISpecificSkirmishProductionMenuView.ndf")
     
@@ -33,6 +34,7 @@ def edit_uispecificskirmishproductionmenuview(source_path) -> None:
     # Update production buttons
     _update_production_buttons(source_path)
 
+
 def _update_main_component(source_path) -> None:
     """Update main component properties."""
     maincomponent = source_path.by_namespace("BUCKSpecificSkirmishProductionMenuMainComponentDescriptor").v
@@ -48,6 +50,7 @@ def _update_main_component(source_path) -> None:
             component.v.by_member("InterItemMargin").v = "TRTTILength(Magnifiable = 15.0)"
     
     logger.debug("Updated main component properties")
+
 
 def _update_game_info_panel(source_path) -> None:
     """Update game info panel properties."""
@@ -69,6 +72,7 @@ def _update_game_info_panel(source_path) -> None:
     
     logger.debug("Updated game info panel properties")
 
+
 def _update_command_points(source_path) -> None:
     """Update command points display properties."""
     pointscommandement = source_path.by_namespace("PointsCommandement").v
@@ -87,6 +91,7 @@ def _update_command_points(source_path) -> None:
     
     logger.debug("Updated command points display properties")
 
+
 def _update_command_points_elements(elements: Any) -> None:
     """Update command points element properties."""
     for element in elements:
@@ -94,10 +99,11 @@ def _update_command_points_elements(elements: Any) -> None:
             continue
             
         component_descr = element.v.by_member("ComponentDescriptor").v
-        if component_descr.type == "BUCKTextureDescriptor":
+        if component_descr.type == "BUCKTextureDescriptor":  # noqa
             _update_command_points_texture(component_descr)
-        elif component_descr.type == "BUCKTextDescriptor":
+        elif component_descr.type == "BUCKTextDescriptor":  # noqa
             _update_command_points_text(component_descr)
+
 
 def _update_command_points_texture(component: Any) -> None:
     """Update command points texture properties."""
@@ -107,6 +113,7 @@ def _update_command_points_texture(component: Any) -> None:
     if component.by_member("ElementName").v == '"CommandPoints"':
         componentframe = component.by_member("ComponentFrame").v
         componentframe.by_member("AlignementToAnchor").v = "[4.0, 0.5]"
+
 
 def _update_command_points_text(component: Any) -> None:
     """Update command points text properties."""
@@ -120,6 +127,7 @@ def _update_command_points_text(component: Any) -> None:
         componentframe = component.by_member("ComponentFrame").v
         componentframe.by_member("AlignementToAnchor").v = "[-0.25, 0.5]"
 
+
 def _get_command_points_background() -> str:
     """Get command points background template."""
     return '''\
@@ -131,12 +139,14 @@ BackgroundComponents = [
     )
 ]'''
 
+
 def _update_command_points_timer(source_path) -> None:
     """Update command points timer properties."""
     chronopointcommandement = source_path.by_namespace("ChronoPointCommandement").v
     chronopointcommandement.by_member("BorderLineColorToken").v = '"M81_ArtichokeVeryLight"'
     chronopointcommandement.add(_get_command_points_background())
     logger.debug("Updated command points timer properties")
+
 
 def _update_sector_display(source_path) -> None:
     """Update sector display properties."""
@@ -148,13 +158,14 @@ def _update_sector_display(source_path) -> None:
             continue
             
         component_descr = element.v.by_member("ComponentDescriptor").v
-        if component_descr.by_member("UniqueName", False) is None:
+        if component_descr.by_member("UniqueName", False) is None:  # noqa
             continue
             
-        if component_descr.by_member("UniqueName").v == '"SectorPointsGauge"':
-            component_descr.by_member("BorderLineColorToken").v = '"M81_ArtichokeVeryLight"'
+        if component_descr.by_member("UniqueName").v == '"SectorPointsGauge"':  # noqa
+            component_descr.by_member("BorderLineColorToken").v = '"M81_ArtichokeVeryLight"'  # noqa
     
     logger.debug("Updated sector display properties")
+
 
 def _update_production_buttons(source_path) -> None:
     """Update production button properties."""
@@ -176,4 +187,4 @@ def _update_production_buttons(source_path) -> None:
             
         component.v.by_member("RoundedVertexes").v = "[false, false, false, true]"
     
-    logger.debug("Updated production button properties") 
+    logger.debug("Updated production button properties")

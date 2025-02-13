@@ -1,5 +1,5 @@
 """Main entry point for the mod patcher."""
-from typing import Dict
+# from typing import Dict
 
 from . import ModConfig, ndf
 from .editors import get_all_editors
@@ -9,6 +9,7 @@ from .utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
 
+
 def main() -> None:
     """Run the mod patcher."""
     try:
@@ -17,7 +18,7 @@ def main() -> None:
         # Get paths and initialize mod
         mod_src_path = get_mod_src_path(config)
         mod_dst_path = get_mod_dst_path(config)
-        mod = ndf.Mod(mod_src_path, mod_dst_path)
+        mod = ndf.Mod(str(mod_src_path), str(mod_dst_path))
         # mod.check_if_src_is_newer()
         
         # Get all file editors based on build target
@@ -50,6 +51,7 @@ def main() -> None:
     except Exception as e:
         logger.error(f"Build failed: {str(e)}")
         raise
+
 
 if __name__ == "__main__":
     main()

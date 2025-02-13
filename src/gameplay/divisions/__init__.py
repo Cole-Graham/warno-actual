@@ -23,4 +23,4 @@ __all__ = [
     'create_division_packs',
     'supply_divisions',
     'deck_ap_points',
-] 
+]

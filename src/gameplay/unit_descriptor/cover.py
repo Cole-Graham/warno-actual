@@ -2,9 +2,10 @@
 
 from typing import Any, Dict
 
-from src.utils.logging_utils import setup_logger
+from src.utils.logging_utils import setup_logger  # noqa
 
 # logger = setup_logger(__name__)
+
 
 def edit_auto_cover(source_path: Any, game_db: Dict[str, Any]) -> None:
     """Edit auto cover ranges in UniteDescriptor.ndf.
@@ -42,4 +43,4 @@ def edit_auto_cover(source_path: Any, game_db: Dict[str, Any]) -> None:
                 if module.v.type == "TAutoCoverModuleDescriptor":
                     module.v.by_m("AutoCoverRangeGRU").v = "70"
                     # logger.info(f"Set auto cover range to 70m for {unit_name}")
-                    break 
+                    break

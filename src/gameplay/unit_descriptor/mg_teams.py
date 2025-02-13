@@ -4,7 +4,7 @@ from typing import Any, Dict, List, Tuple
 import ndf_parse as ndf
 
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import get_modules_list, is_obj_type
+from src.utils.ndf_utils import get_modules_list, is_obj_type  # noqa
 
 logger = setup_logger('mg_teams')
 
@@ -41,12 +41,14 @@ def edit_mg_teams(source: Any, game_db: Dict[str, Any]) -> None:
             
             logger.debug(f"Updated {unit_name} (Para: {is_para}, Type: {mg_type})") 
 
+
 def _is_para_unit(unit_name: str, unit_db: Dict[str, Any]) -> bool:
     """Check if a unit has the para specialty."""
     unit_data = unit_db.get(unit_name)
     if not unit_data or 'specialties' not in unit_data:
         return False
     return any('_para' in specialty.lower() for specialty in unit_data['specialties'])
+
 
 def _get_mg_stats(mg_type: str, is_para: bool) -> Dict[str, Any]:
     """Get stats for a machine gun team based on type and para status."""
@@ -60,11 +62,12 @@ def _get_mg_stats(mg_type: str, is_para: bool) -> Dict[str, Any]:
         'specialty': "'infantry_equip_veryheavy'" if is_heavy else "'infantry_equip_light'"
     }
 
+
 def _update_mg_team(unit_row: Any, stats: Dict[str, Any]) -> None:
     """Update a machine gun team's stats."""
     modules_list = get_modules_list(unit_row, "ModulesDescriptors")
     
-    for module in modules_list.v:
+    for module in modules_list.v:  # noqa
         if not isinstance(module.v, ndf.model.Object):
             continue
             
@@ -74,14 +77,14 @@ def _update_mg_team(unit_row: Any, stats: Dict[str, Any]) -> None:
             module.v.by_m("MaxPhysicalDamages").v = str(stats['damage'])
             
         elif module.namespace == "GroupeCombat":
-            module.v.by_m("Default").v.by_m("NbSoldatInGroupeCombat").v = str(stats['soldiers'])
+            module.v.by_m("Default").v.by_m("NbSoldatInGroupeCombat").v = str(stats['soldiers'])  # noqa
             
         elif module.namespace == "GenericMovement":
-            module.v.by_m("Default").v.by_m("MaxSpeedInKmph").v = str(stats['speed'])
+            module.v.by_m("Default").v.by_m("MaxSpeedInKmph").v = str(stats['speed'])  # noqa
         
         elif module_type == "TProductionModuleDescriptor":
             resources = module.v.by_m("ProductionRessourcesNeeded").v
-            resources.by_k("$/GFX/Resources/Resource_CommandPoints").v = str(stats['cost'])
+            resources.by_k("$/GFX/Resources/Resource_CommandPoints").v = str(stats['cost'])  # noqa
         
         # elif module_type == "TTacticalLabelModuleDescriptor":
         #     module.v.by_m("NbSoldiers").v = str(stats['soldiers'])

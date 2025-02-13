@@ -115,7 +115,7 @@ def modify_new_unit(unit_row: Any, edits: Dict[str, Any]) -> None:
                         descr_row.v.by_member(member).v = value
                         
             elif descr_type == "TTagsModuleDescriptor":
-                if not "TagSet" in edits:
+                if "TagSet" not in edits:
                     logger.warning(f"No TagSet found for {unit_row.namespace}")
                 else:
                     _handle_tags_module(descr_row, edits)
@@ -156,7 +156,7 @@ def modify_new_unit(unit_row: Any, edits: Dict[str, Any]) -> None:
                     descr_row.v.by_member("Factory").v = edits["Factory"]
                 if "CommandPoints" in edits:
                     cmd_points = "$/GFX/Resources/Resource_CommandPoints"
-                    descr_row.v.by_member("ProductionRessourcesNeeded").v.by_key(cmd_points).v = str(edits["CommandPoints"])
+                    descr_row.v.by_member("ProductionRessourcesNeeded").v.by_key(cmd_points).v = str(edits["CommandPoints"])  # noqa
                     
             elif descr_type == "TOrderConfigModuleDescriptor":
                 if "NewName" in edits:
@@ -196,7 +196,7 @@ def modify_new_unit(unit_row: Any, edits: Dict[str, Any]) -> None:
                 
             elif descr_row.namespace == "GenericMovement":
                 if "max_speed" in edits:
-                    descr_row.v.by_member("Default").v.by_member("MaxSpeedInKmph").v = str(edits["max_speed"])
+                    descr_row.v.by_member("Default").v.by_member("MaxSpeedInKmph").v = str(edits["max_speed"])  # noqa
     
     # Remove all marked modules at the end
     for module in modules_to_remove:
@@ -219,7 +219,7 @@ def _handle_damage_module(descr_row: Any, edits: Dict[str, Any]) -> None:
         if "era" in edits["armor"]:
             blindage_obj.by_member("ExplosiveReactiveArmor").v = str(edits["armor"]["era"])
     
-    elif not edits["is_ground_vehicle"] and edits["is_infantry"]:
+    elif not edits.get("is_ground_vehicle", False) and edits.get("is_infantry", False):
         inf_strength = int(edits["strength"])
         armor_level = str(15 - inf_strength)
         blindage_obj = descr_row.v.by_member("BlindageProperties").v
@@ -256,7 +256,8 @@ def _handle_tactical_label(descr_row: Any, edits: Dict[str, Any]) -> None:
         unid_textures_member.v.by_member("Values").v = str(edits["UnidentifiedTextures"])
     # if "strength" in edits:
     #     descr_row.v.by_member("NbSoldiers").v = str(edits["strength"])
-        
+
+
 def _handle_tags_module(descr_row: Any, edits: Dict[str, Any]) -> None:
     """Handle tags module modifications."""
     tagset = descr_row.v.by_member("TagSet")
@@ -270,6 +271,7 @@ def _handle_tags_module(descr_row: Any, edits: Dict[str, Any]) -> None:
             formatted_tag = '"' + tag + '"'
             tagset.v.add(formatted_tag)
             logger.info(f"Added tag {formatted_tag} to {descr_row.namespace}")
+
 
 def _handle_unit_ui(descr_row: Any, edits: Dict[str, Any]) -> None:
     """Handle unit UI module modifications."""

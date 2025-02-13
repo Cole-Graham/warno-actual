@@ -34,6 +34,7 @@ def edit_units(source_path: Any, game_db: Dict[str, Any]) -> None:
         try:
             # Debug logging
             logger.debug(f"Processing unit: {unit_name}")
+            descr_row = None
 
             # Get edits for this unit
             edits = find_namespace(unit_row, unit_edits, prefix="Descriptor_Unit_")
@@ -150,8 +151,9 @@ def modify_module(unit_row: Any, descr_row: Any, edits: dict, index: int,
     except Exception as e:
         logger.error(f"Error modifying module for {unit_name}: {str(e)}")
 
-def _add_modules(unit_row: Any, descr_row: Any, edits: dict,
-                 modules_list: list, dictionary_entries: list, game_db: Dict[str, Any]) -> None:
+
+def _add_modules(unit_row: Any, descr_row: Any, edits: dict, modules_list: list,   # noqa
+                 dictionary_entries: list, game_db: Dict[str, Any]) -> None:  # noqa
     """Add modules to the unit."""
     unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
     unit_db = game_db["unit_data"]
@@ -182,18 +184,17 @@ def _add_modules(unit_row: Any, descr_row: Any, edits: dict,
             
     add_transport_module = "UnloadFromTransport" in edits.get("orders", {}).get("add_orders", [])
     if is_helo and add_transport_module:
-        modules_list.v.add(heli_transporter_module)
+        modules_list.v.add(heli_transporter_module)  # noqa
         logger.info(f"Added heli transporter module to {unit_name}")
 
-def _handle_transporter(unit_row: Any, descr_row: Any, edits: dict, index: int, 
-                       modules_list: list, dictionary_entries: list, game_db: Dict[str, Any]) -> None:
-    """Handle transporter module edits."""
-    unit_db = game_db["unit_data"]
+# def _handle_transporter(unit_row: Any, descr_row: Any, edits: dict, index: int,
+#                        modules_list: list, dictionary_entries: list, game_db: Dict[str, Any]) -> None:
+#     """Handle transporter module edits."""
+#     unit_db = game_db["unit_data"]
 
 
 def _handle_tags(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
-
-    unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
+    # unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
     if "TagSet" not in edits:
         return
 
@@ -299,7 +300,7 @@ def _handle_icon(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:  # noq
 
 
 def _handle_unit_ui(unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list,
-                    dictionary_entries: list, game_db: Dict[str, Any]) -> None:
+                    dictionary_entries: list, game_db: Dict[str, Any]) -> None:  # noqa
     """Handle UI module modifications."""
     if "SpecialtiesList" in edits:
         specialties_list = descr_row.v.by_m("SpecialtiesList")

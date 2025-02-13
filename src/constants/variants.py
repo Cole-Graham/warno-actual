@@ -21,14 +21,15 @@ VARIANT_FUNCTIONS: Dict[str, Callable] = {
 
 logger.debug(f"Registered variant functions: {list(VARIANT_FUNCTIONS.keys())}")
 
-def validate_editor_function(func: Callable) -> bool:
+
+def validate_editor_function(func_: Callable) -> bool:
     """Validate editor function signature."""
     import inspect
-    sig = inspect.signature(func)
+    sig = inspect.signature(func_)
     
     # Check param count
     if len(sig.parameters) != 1:
-        raise TypeError(f"Editor function {func.__name__} must take exactly one parameter")
+        raise TypeError(f"Editor function {func_.__name__} must take exactly one parameter")
         
     # Check param type hints
     params = list(sig.parameters.values())
@@ -38,8 +39,9 @@ def validate_editor_function(func: Callable) -> bool:
             
     return True
 
+
 # Validate all functions have correct signature
 for func in VARIANT_FUNCTIONS.values():
     if not callable(func):
         raise TypeError(f"Invalid variant function: {func.__name__} is not callable")
-    validate_editor_function(func) 
+    validate_editor_function(func)

@@ -1,7 +1,6 @@
 """Division matrix constants for DivisionCostMatrix.ndf"""
 
 DIVISION_MATRICES = {
-
     "MatrixCostName_US_3rd_Arm_multi": (
         'MatrixCostName_US_3rd_Arm_multi is MAP'
         '['
@@ -295,4 +294,4 @@ DIVISION_MATRICES = {
 #         '    (EDefaultFactories/Tanks, [1, 1, 1, 1, 1, 2, 2, 2]),'
 #         ']'
 #     ),
-# } 
+# }

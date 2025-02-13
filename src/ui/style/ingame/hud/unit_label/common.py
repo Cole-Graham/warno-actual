@@ -1,14 +1,15 @@
 """Functions for modifying UI HUD unit label common components."""
-from src import ndf
+# from src import ndf
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
+
 
 def edit_uispecificunitlabelcommon(source_path) -> None:
     """Edit UISpecificUnitLabelCommon.ndf.
     
     Args:
-        source: NDF file containing HUD unit label common definitions
+        source_path: NDF file containing HUD unit label common definitions
     """
     logger.info("Editing UISpecificUnitLabelCommon.ndf")
     
@@ -31,6 +32,7 @@ def edit_uispecificunitlabelcommon(source_path) -> None:
     # Update current unit label upper list
     _update_current_unit_label_upper_list(source_path)
 
+
 def _update_upper_name_and_unit_count(source_path) -> None:
     """Update upper name and unit count properties."""
     uppernameandunitcountdescription = source_path.by_namespace("UpperNameAndUnitCountDescription").v
@@ -39,6 +41,7 @@ def _update_upper_name_and_unit_count(source_path) -> None:
     uppernameandunitcountdescription.by_member("UnitNameHPadding").v = "TRTTILength2(Magnifiable = [6.0, 6.0])"
     uppernameandunitcountdescription.by_member("UnitNumberHPadding").v = "TRTTILength2(Magnifiable = [4.0, 4.0])"
     logger.debug("Updated upper name and unit count properties")
+
 
 def _update_carried_name_and_unit_count(source_path) -> None:
     """Update carried name and unit count properties."""
@@ -49,11 +52,13 @@ def _update_carried_name_and_unit_count(source_path) -> None:
     carriednameandunitcountdescription.by_member("UnitNumberHPadding").v = "TRTTILength2(Magnifiable = [4.0, 4.0])"
     logger.debug("Updated carried name and unit count properties")
 
+
 def _update_leaving_district_chrono(source_path) -> None:
     """Update leaving district chrono properties."""
     leavingdistrictchronodescription = source_path.by_namespace("LeavingDistrictChronoDescription").v
     leavingdistrictchronodescription.by_member("ChronoForegroundColor").v = '"M81_AppleIIc"'
     logger.debug("Updated leaving district chrono color")
+
 
 def _update_carried_unit_name_list(source_path) -> None:
     """Update carried unit name list properties."""
@@ -61,6 +66,7 @@ def _update_carried_unit_name_list(source_path) -> None:
     componentframe_param = carriedunitnamelist_template.params.by_param("ComponentFrame").v
     componentframe_param.add("MagnifiableOffset = [0.0, 0.0]")
     logger.debug("Updated carried unit name list offset")
+
 
 def _update_current_unit_label_upper_list(source_path) -> None:
     """Update current unit label upper list properties."""
@@ -80,4 +86,4 @@ def _update_current_unit_label_upper_list(source_path) -> None:
     # Update fit style
     currentunitlabelupperlist_template.insert(13, 'FitStyle = ~/ContainerFitStyle/FitToContent')
     
-    logger.debug("Updated current unit label upper list properties") 
+    logger.debug("Updated current unit label upper list properties")

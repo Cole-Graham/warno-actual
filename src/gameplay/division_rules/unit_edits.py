@@ -3,9 +3,10 @@ from typing import Any, Dict, List
 from src.constants.unit_edits import load_unit_edits
 from src.constants.unit_edits.SUPPLY_unit_edits import supply_unit_edits
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import is_obj_type
+from src.utils.ndf_utils import is_obj_type  # noqa
 
 logger = setup_logger(__name__)
+
 
 def unit_edits_divisionrules(source_path: Any) -> None:
     """Apply unit edits to DivisionRules.ndf"""
@@ -19,6 +20,7 @@ def unit_edits_divisionrules(source_path: Any) -> None:
             
         _update_existing_units(source_path, unit, edits)
 
+
 def _handle_division_changes(source_path: Any, unit: str, edits: Dict) -> None:
     """Handle adding/removing units from divisions."""
     if "remove" in edits["Divisions"]:
@@ -26,6 +28,7 @@ def _handle_division_changes(source_path: Any, unit: str, edits: Dict) -> None:
         
     if "add" in edits["Divisions"]:
         _add_to_divisions(source_path, unit, edits)
+
 
 def _remove_from_divisions(source_path: Any, unit: str, divisions: List[str]) -> None:
     """Remove a unit from specified divisions."""
@@ -41,6 +44,7 @@ def _remove_from_divisions(source_path: Any, unit: str, divisions: List[str]) ->
                     logger.debug(f"Removing {unit} from {division}")
                     unit_rule_list.v.remove(rule_obj.index)
                     break
+
 
 def _add_to_divisions(source_path: Any, unit: str, edits: Dict) -> None:
     """Add a unit to specified divisions.""" 
@@ -67,6 +71,7 @@ def _add_to_divisions(source_path: Any, unit: str, edits: Dict) -> None:
             logger.debug(f"Adding {unit} to {division}")
             deck_descr.v.by_m("UnitRuleList").v.add(new_entry)
 
+
 def _build_transport_list(division_name: str, edits: Dict) -> str:
     """Build transport list string for a unit."""
     if not edits["Divisions"]["is_transported"]:
@@ -79,6 +84,7 @@ def _build_transport_list(division_name: str, edits: Dict) -> str:
     # Add prefix to each transport
     prefixed = [f"$/GFX/Unit/Descriptor_Unit_{t}" for t in transports]
     return "[" + ", ".join(prefixed) + "]"
+
 
 def _create_rule_entry(unit: str, edits: Dict, transport_str: str = "", cards: int = 0) -> str:
     """Create a division rule entry string."""
@@ -100,6 +106,7 @@ def _create_rule_entry(unit: str, edits: Dict, transport_str: str = "", cards: i
     )
     
     return base_entry
+
 
 def _update_existing_units(source_path: Any, unit: str, edits: Dict) -> None:
     """Update existing unit entries in divisions."""
@@ -130,6 +137,7 @@ def _update_existing_units(source_path: Any, unit: str, edits: Dict) -> None:
             logger.debug(f"Updating {unit} in {div_name}")
             _apply_unit_updates(rule_obj.v, unit, div_name, edits)
 
+
 def _apply_unit_updates(rule: Any, unit: str, div_name: str, edits: Dict) -> None:
     """Apply updates to a unit rule."""
     if "availability" in edits:
@@ -143,6 +151,7 @@ def _apply_unit_updates(rule: Any, unit: str, div_name: str, edits: Dict) -> Non
     if "Divisions" in edits:
         _update_cards(rule, unit, div_name, edits)
         _update_transports(rule, unit, div_name, edits)
+
 
 def _update_cards(rule: Any, unit: str, div_name: str, edits: Dict) -> None:
     """Update card count for a unit."""
@@ -159,6 +168,7 @@ def _update_cards(rule: Any, unit: str, div_name: str, edits: Dict) -> None:
         logger.debug(f"Setting {unit} cards to {default_cards} (default)")
         rule.by_m("MaxPackNumber").v = str(default_cards)
 
+
 def _update_transports(rule: Any, unit: str, div_name: str, edits: Dict) -> None:
     """Update transport list for a unit."""
 
@@ -170,6 +180,7 @@ def _update_transports(rule: Any, unit: str, div_name: str, edits: Dict) -> None
         transport_str = "[" + ", ".join(f"$/GFX/Unit/Descriptor_Unit_{t}" for t in transports) + "]"
         logger.debug(f"Setting {unit} transports to {transports}")
         rule.by_m("AvailableTransportList").v = transport_str
+
 
 def supply_divisionrules(source_path: Any) -> None:
     """Apply supply unit edits to DivisionRules.ndf"""

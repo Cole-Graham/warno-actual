@@ -9,4 +9,4 @@ __all__ = [
     'edit_uispecificshowroomarmorycomponent',
     'edit_uispecificshowroomdeckcreatorscreencomponent',
     'edit_uispecificshowroomgroupsdeckcreatorscreenview'
-] 
+]

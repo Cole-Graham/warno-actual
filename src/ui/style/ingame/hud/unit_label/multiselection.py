@@ -7,16 +7,18 @@ from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
 
+
 def edit_uispecificunitlabelmultiselectionview(source_path) -> None:
     """Edit UISpecificUnitLabelMultiSelectionView.ndf.
     
     Args:
-        source: NDF file containing HUD unit label multiselection view definitions
+        source_path: NDF file containing HUD unit label multiselection view definitions
     """
     logger.info("Editing UISpecificUnitLabelMultiSelectionView.ndf")
     
     # Update unit label component
     _update_unit_label_component(source_path)
+
 
 def _update_unit_label_component(source_path) -> None:
     """Update unit label component properties."""
@@ -30,6 +32,7 @@ def _update_unit_label_component(source_path) -> None:
     
     logger.debug("Updated unit label component properties")
 
+
 def _update_container_components(components: Any) -> None:
     """Update container component properties."""
     for component in components:
@@ -37,6 +40,7 @@ def _update_container_components(components: Any) -> None:
             continue
             
         _update_sensible_area_components(component.v.by_member("Components").v)
+
 
 def _update_sensible_area_components(components: Any) -> None:
     """Update sensible area component properties."""
@@ -48,4 +52,4 @@ def _update_sensible_area_components(components: Any) -> None:
         component.v.by_member("BackgroundBlockColorToken").v = '"BoutonTempsBlockM81"'
         component.v.by_member("BorderLineColorToken").v = '"BoutonTempsLineMultiM81"'
     
-    logger.debug("Updated panel properties") 
+    logger.debug("Updated panel properties")

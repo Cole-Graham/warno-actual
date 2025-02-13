@@ -15,4 +15,4 @@ LIGHT_AT_AMMO = { # squad size: ammo quantity
     14: 9,
     15: 9,
     16: 10,
-} 
+}
