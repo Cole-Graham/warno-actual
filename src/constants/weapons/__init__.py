@@ -49,4 +49,5 @@ __all__ = [
     'ammunitions',
     'PGB_BOMB_DAMAGE',
     'MANPAD_HAGRU_DAMAGE',
+    'MANPAD_TBAGRU_DAMAGE',
 ] 
