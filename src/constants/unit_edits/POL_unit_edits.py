@@ -142,6 +142,20 @@ pol_unit_edits = {
         "XPMultiplier": [0.0, 0.0, 3/3, 0.0],
     },
 
+    "Mi_2_CMD_POL": {  # Mi-2D PRZETACZNIK
+        "GameName": {
+            "display": "#CMD Mi-2D PRZEŁĄCZNIK"
+        },
+        "CommandPoints": 145,
+        "availability": 3,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+    },
+
     "GAZ_66B_supply_POL": {  # GAZ-66B Zaop.
         "GameName": {
             "display": "SPADO. GAZ-66B ZAOP.",

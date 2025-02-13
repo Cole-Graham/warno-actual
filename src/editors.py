@@ -76,6 +76,7 @@ from src.gameplay.terrains import edit_terrains
 # Add new import
 from src.gameplay.ui import (
     edit_division_emblems,
+    hide_divisions,
     edit_ingame_icons,
     edit_specialties,
     edit_specialty_icons,
@@ -197,6 +198,7 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
             # edit_division_units,
             # supply_divisions,
             deck_ap_points,
+            hide_divisions,
         ],
         "GameData/Generated/Gameplay/Decks/DivisionRules.ndf": [
             add_division_rules,

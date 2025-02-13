@@ -57,8 +57,7 @@ def _add_to_divisions(source_path: Any, unit: str, edits: Dict) -> None:
             transport_str = _build_transport_list(division, edits)
             
             # get cards for division or default card count
-            cards = edits["Divisions"].get(
-                division, {}).get("cards", edits["Divisions"]["default"]["cards"])
+            cards = edits["Divisions"].get(division, {}).get("cards", edits["Divisions"]["default"]["cards"])
 
             # Create new rule entry
             new_entry = _create_rule_entry(
@@ -79,7 +78,7 @@ def _build_transport_list(division_name: str, edits: Dict) -> str:
         
     # Get transports for specific division or use default
     transports = (edits["Divisions"].get(division_name, {}).get("Transports") or 
-                 edits["Divisions"]["default"]["Transports"])
+                 edits["Divisions"]["default"].get("Transports"))
     
     # Add prefix to each transport
     prefixed = [f"$/GFX/Unit/Descriptor_Unit_{t}" for t in transports]
