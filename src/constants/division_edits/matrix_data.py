@@ -115,9 +115,9 @@ DIVISION_MATRICES = {
         '    (EDefaultFactories/Helis, []),'
         '    (EDefaultFactories/Infantry, [2, 2, 2, 2, 2, 3, 3, 3, 4, 4, 4]),'
         '    (EDefaultFactories/Logistic, [2, 2, 2, 2, 2, 2, 3, 3]),'
-        '    (EDefaultFactories/Planes, [2, 2, 2, 3, 4, 4, 6, 8]),'
+        '    (EDefaultFactories/Planes, [2, 2, 3, 3, 4, 5, 7, 8]),'
         '    (EDefaultFactories/Recons, [2, 2, 2, 2, 3, 3, 3, 3, 3]),'
-        '    (EDefaultFactories/Tanks, [2, 2, 2, 3, 3, 3]),'
+        '    (EDefaultFactories/Tanks, [2, 2, 3, 3, 3, 3]),'
         ']'
     ),
 
@@ -142,7 +142,7 @@ DIVISION_MATRICES = {
         '    (EDefaultFactories/Art, [2, 2, 4, 4, 5, 6]),'
         '    (EDefaultFactories/DCA, [2, 2, 4, 4, 4]),'
         '    (EDefaultFactories/Defense, [0]),'
-        '    (EDefaultFactories/Helis, [2, 3, 4, 4]),'
+        '    (EDefaultFactories/Helis, [2, 4, 4]),'
         '    (EDefaultFactories/Infantry, [2, 2, 2, 2, 3, 3, 4, 4]),'
         '    (EDefaultFactories/Logistic, [2, 2, 2, 2, 2, 2, 2, 2, 3, 3]),'
         '    (EDefaultFactories/Planes, [2, 3, 4, 5, 5, 7]),'

@@ -1,7 +1,7 @@
 """Damage value constants."""
 
 VANILLA_LAST_ROW = 139 # used for log warning if Eugen changed the damage array
-VANILLA_LAST_COLUMN = 48
+VANILLA_LAST_COLUMN = 48 + 13 # 13 is the number of WA armor levels, we add them before this check (yeah...not optimal)
 
 # formatting is usually 13 values per row, except WA infantry armor has a dedicated row
 SNIPER_DAMAGE = [

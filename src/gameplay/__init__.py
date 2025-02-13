@@ -79,7 +79,9 @@ from .ui import (
     edit_specialty_icons,
     edit_unit_info_panel,
     ui_gameplay_textscripts,
-    hide_divisions,
+    hide_divisions_divisions_ndf,
+    hide_divisions_decks_ndf,
+    hide_divisions_deckserializer_ndf,
 )
 from .unit_descriptor import (
     create_new_units,
@@ -159,7 +161,6 @@ def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:
         "GameData/Generated/Gameplay/Decks/Divisions.ndf": [
             lambda source_path: add_to_divisions(source_path),
             lambda source_path: edit_division_units(source_path),
-            lambda source_path: hide_divisions(source_path)
         ],
         "GameData/Generated/Gameplay/Decks/DivisionRules.ndf": [
             lambda source_path: add_division_rules(source_path)

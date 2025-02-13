@@ -1879,7 +1879,7 @@ sov_unit_edits = {
     },
 
     "Scout_LRRP_SOV": {  # Spetsnaz GRU
-        "CommandPoints": 45,
+        "CommandPoints": 55,
         "availability": 4,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.75],
         "max_speed": 26,
@@ -2035,7 +2035,7 @@ sov_unit_edits = {
         "availability": 6,
         "WeaponDescriptor": {
             "Salves": {
-                "SAM_Strela1": 2,
+                "SAM_Strela1_salvolength4": 2,
             },
         },
         "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
@@ -2278,8 +2278,8 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "AutoCanon_AP_23mm_Bitube_Gsh23L": 28,
-                "RocketAir_B8_80mm": 4,
-                "AGM_9M114M_KokonM": 1,
+                "RocketAir_B8_80mm_salvolength10": 4,
+                "AGM_9M114M_KokonM_salvolength16": 1,
             },
         },
     },
@@ -2382,6 +2382,9 @@ sov_unit_edits = {
 
     "Su_24M_AT2_SOV": {
         "CommandPoints": 190,
+        "SpecialtiesList": {
+            "add_specs": ["'terrain_radar'"],
+        },
     },
 
     "Su_24M_SOV": {
@@ -2425,6 +2428,9 @@ sov_unit_edits = {
     "MiG_23MLD_SOV": {  # 2x R-24MR, 2x R-73
         "CommandPoints": 175,
         "Divisions": {
+            "add": ["SOV_76_VDV"],
+            "is_transported": False,
+            "needs_transport": False,
             "default": {
                 "cards": 1,
             },

@@ -621,7 +621,7 @@ pol_unit_edits = {
     "Atteam_Fagot_POL": {  # PPK Fagot
         "CommandPoints": 30,
         "availability": 9,
-        "XPMultiplier": [0.0, 9/9, 7/9, 5/9],  # 9/7/5
+        "XPMultiplier": [9/9, 7/9, 5/9, 0.0],  # 9/7/5
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -708,13 +708,6 @@ pol_unit_edits = {
             "add_specs": ["'refundable_unit'"],
         },
         "UpgradeFromUnit": "UAZ_469_trans_POL",
-    },
-
-    "GAZ_66_POL": {  # GAZ-66
-        "CommandPoints": 15,
-        "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
-        },
     },
 
     "GAZ_66B_POL": {  # GAZ-66B (para)
@@ -905,6 +898,11 @@ pol_unit_edits = {
         "CommandPoints": 200,
         "availability": 2,
         "XPMultiplier": [2/2, 0.0, 1/2, 0.0],
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
         # "max_speed": 65,
         # # speed corrected in vanilla - keeping this here for reference
         # "road_speed": {
@@ -1034,8 +1032,9 @@ pol_unit_edits = {
     },
 
     "T55AS_POL": {  # coffin launcher
-        # "CommandPoints": 420,
-        # FUCK this guy in particular
+        "CommandPoints": 85,
+        "availability": 4,
+        "XPMultiplier": [4/4, 3/4, 0.0, 0.0],
     },
 
     "T72M_POL": {  # T-72M
@@ -1108,14 +1107,12 @@ pol_unit_edits = {
 
     #   tank tab transports
 
-    # "OT_64_SKOT_2_POL": {  # SKOT-2
-    #     "CommandPoints": 20,
-    #     "SpecialtiesList": {
-    #         "add_specs": ["'refundable_unit'"],
-    #     },
-    # },
+    "OT_64_SKOT_2_POL": {  # SKOT-2
+        "CommandPoints": 20,
+    },
 
     "OT_64_SKOT_2A_POL": {  # SKOT-2A
+        "CommandPoints": 25,
         "SpecialtiesList": {
             "overwrite_all": [
                 'transport',
@@ -1235,7 +1232,7 @@ pol_unit_edits = {
     },
 
     "Scout_LRRP_POL": {  # Rozp. Specjalne [GSR]
-        "CommandPoints": 30,
+        "CommandPoints": 40,
         "strength": 4,
         "WeaponAssignment": [
             (0, [0, ]),
@@ -1269,6 +1266,7 @@ pol_unit_edits = {
         "GameName": {
             "display": "#RECO2 ROZP. SPECJALNE [GSR]",
         },
+        "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
     },
 
     "Scout_LRRP_Para_POL": {  # Desant. Rozp. Specjalne [GSR]
@@ -1426,7 +1424,7 @@ pol_unit_edits = {
         "availability": 6,
         "WeaponDescriptor": {
             "Salves": {
-                "SAM_Strela1": 2,
+                "SAM_Strela1_salvolength4": 2,
             },
         },
         "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
@@ -1667,7 +1665,7 @@ pol_unit_edits = {
     },
 
     "Su_22_AT_POL": {  # Su-22M4 Seria 30
-        "CommandPoints": 180,
+        "CommandPoints": "Su_22_AT_SOV",
         "XPMultiplier": [0.0, 2/2, 0.0, 0.0],
     },
 

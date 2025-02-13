@@ -62,6 +62,19 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("RocketInf_RPO_RYS", "napalm", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 50,
+            },
+            "parent_membr": {
+                "PorteeMaximaleGRU": 525,
+                "DisplaySalveAccuracy": False,
+                "PhysicalDamages": 1.3,
+            },
+        },
+    },
 
     ("RocketInf_RPO_A_93mm", "napalm", None, False): { # 702
         "Ammunition": {

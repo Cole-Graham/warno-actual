@@ -17,6 +17,9 @@ UK_NEW_UNITS = {
             "display": "M167A2 VADS (UK)",
             "token": "XWWJJTOTON",
         },
+        "TypeUnit": {
+            "MotherCountry": "'UK'",
+        },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",

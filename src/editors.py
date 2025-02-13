@@ -76,7 +76,9 @@ from src.gameplay.terrains import edit_terrains
 # Add new import
 from src.gameplay.ui import (
     edit_division_emblems,
-    hide_divisions,
+    hide_divisions_divisions_ndf,
+    hide_divisions_decks_ndf,
+    hide_divisions_deckserializer_ndf,
     edit_ingame_icons,
     edit_specialties,
     edit_specialty_icons,
@@ -112,7 +114,7 @@ from src.gameplay.weapons.missiles import edit_missile_speed, edit_missiles
 from src.gameplay.weapons.new_weapons import create_new_weapons
 from src.gameplay.weapons.unit_edits import unit_edits_weapondescriptor
 from src.shared import get_shared_editors
-from src.shared.buildings.fob import add_fob_minimap_texture
+from src.shared.buildings.fob import add_fob_minimap_texture, add_fob_minimap_module
 
 # Import all UI editors
 from src.ui.style import (
@@ -192,13 +194,15 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         # Division and deck files
         "GameData/Generated/Gameplay/Decks/DeckSerializer.ndf": [
             update_deck_serializer,
+            hide_divisions_deckserializer_ndf,
         ],
         "GameData/Generated/Gameplay/Decks/Divisions.ndf": [
             # add_to_divisions, 
             # edit_division_units,
             # supply_divisions,
             deck_ap_points,
-            hide_divisions,
+            hide_divisions_divisions_ndf,
+
         ],
         "GameData/Generated/Gameplay/Decks/DivisionRules.ndf": [
             add_division_rules,
@@ -213,6 +217,7 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/Generated/Gameplay/Decks/Decks.ndf": [
             lambda source_path: update_deck_pack_references(source_path, game_db),
             lambda source_path: modify_decks(source_path, game_db),
+            hide_divisions_decks_ndf,
         ],
         # "GameData/Generated/Gameplay/Decks/DivisionPacks.ndf": [
         #     create_division_packs,
@@ -283,6 +288,7 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         ],
         "GameData/Generated/Gameplay/Gfx/BuildingDescriptors.ndf": [
             edit_fob_attributes,
+            add_fob_minimap_module,
         ],
         "GameData/Generated/Gameplay/Gfx/DamageLevels.ndf": [
             edit_damage_levels,

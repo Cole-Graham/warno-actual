@@ -71,8 +71,10 @@ def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
         # Get unit name for context
         unit_name = unit_row.namespace.split("Descriptor_Unit_")[-1] if hasattr(unit_row, "namespace") else "Unknown"
         
-        unit_info["is_hmg_team"] = "hmgteam" in unit_name.lower()
-        unit_info["is_at_team"] = "atteam" in unit_name.lower()
+        if "hmgteam" in unit_name.lower():
+            unit_info["is_hmg_team"] = True
+        elif "atteam" in unit_name.lower():
+            unit_info["is_at_team"] = True
 
         for module in modules_list:
             if not isinstance(module.v, ndf.model.Object):

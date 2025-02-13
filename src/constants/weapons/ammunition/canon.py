@@ -93,7 +93,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "PhysicalDamages": 0.85,
                 "RadiusSplashSuppressDamagesGRU": 66,
                 "SuppressDamages": 115,
-                "FlightTimeForSpeed": 5.0,
+                "FlightTimeForSpeed": 4.0,
             },
         },
     },

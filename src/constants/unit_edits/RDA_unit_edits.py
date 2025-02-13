@@ -314,6 +314,9 @@ rda_unit_edits = {
             "Salves": {
                 "FM_Mpi_AK_74N": 9,
                 "RocketInf_RPG7VR_64mm": 4,
+                "special": {
+                    "RocketInf_RPG7VR_64mm": (1, 4),
+                },
             },
         },
     },
@@ -848,7 +851,7 @@ rda_unit_edits = {
         "availability": 6,
         "WeaponDescriptor": {
             "Salves": {
-                "SAM_Strela1": 2,
+                "SAM_Strela1_salvolength4": 2,
             },
         },
         "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
@@ -910,7 +913,7 @@ rda_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "AutoCanon_AP_23mm_NS23": 20,
-                "RocketAir_S5_57mm": 1,
+                "RocketAir_S5_57mm_salvolength32": 1,
             },
         },
     },
@@ -1076,7 +1079,7 @@ rda_unit_edits = {
     },
 
     "Su_22_AT_DDR": {
-        "CommandPoints": 180,
+        "CommandPoints": "Su_22_AT_SOV",
         "XPMultiplier": [0.0, 2/2, 0.0, 0.0],
     },
 

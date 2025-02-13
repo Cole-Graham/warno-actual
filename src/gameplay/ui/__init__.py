@@ -1,6 +1,6 @@
 """UI modification modules."""
 
-from .divisions import edit_division_emblems, hide_divisions
+from .divisions import edit_division_emblems, hide_divisions_divisions_ndf, hide_divisions_decks_ndf, hide_divisions_deckserializer_ndf
 from .ingame_icons import edit_ingame_icons
 from .traits import edit_specialties, edit_specialty_icons, write_trait_texts
 from .unit_info_panel import edit_unit_info_panel, write_info_panel_hints
@@ -19,5 +19,7 @@ __all__ = [
     'edit_weapontextures',
     'edit_weaponsminmax',
     'ui_gameplay_textscripts',
-    'hide_divisions',
+    'hide_divisions_divisions_ndf',
+    'hide_divisions_decks_ndf',
+    'hide_divisions_deckserializer_ndf',
 ]

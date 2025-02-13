@@ -43,13 +43,13 @@ def edit_aim_times(source_path):
                     continue
 
             if ammo_type == "'BBQBDWUTJX'": # MMG
-                if aim_time == "2.2":
+                if aim_time == "2.2" or aim_time == "2.0":
                     unit_type = "MMG Vehicle"
                     ammo_descr.v.by_m("TempsDeVisee").v = "1.0"
                     logger.info(f"(Ammunition.ndf) Changed {ammo_descr.namespace} aim time to 1.0 ({unit_type})")
                     continue
                 else:
-                    logger.warning(f"(Ammunition.ndf) {ammo_descr.namespace} aim time is not 2.2, likely changed by Eugen")
+                    logger.warning(f"(Ammunition.ndf) {ammo_descr.namespace} aim time is not 2.2 or 2.0, likely changed by Eugen")
                     continue
 
 

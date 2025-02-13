@@ -217,7 +217,7 @@ NEW_TRAITS = {
             '\n#style1{- Fuel Supply: }' + f'#style1{{{runner_fuel}}}' + '#style1{ per second}' + f' #style1{{{runner_fuel_percentage}}}'
             '\n#style1{- Health Supply: }' + f'#style1{{{runner_health}}}' + '#style1{ per second}' + f' #style1{{{runner_health_percentage}}}'
             '\n#style1{- Ammunition Supply: }' + f'#styleTurquoise{{{runner_ammo}}}' + '#style1{ per second}' + f' #styleTurquoise{{{runner_ammo_percentage}}}'
-            '\n#style1{- Critics Supply: }' + f'#moral_color_bad_2{{{runner_critics}}}' + '#style1{ per second}' + f' #moral_color_bad_2{{{runner_critics_percentage}}}'
+            '\n#style1{- Crit Repair Rate:: }' + f'#moral_color_bad_2{{{runner_critics}}}' + '#style1{ per second}' + f' #moral_color_bad_2{{{runner_critics_percentage}}}'
         )),
         "texture": "runner_supply.png",
     },
@@ -229,7 +229,7 @@ NEW_TRAITS = {
             '\n#style1{- Fuel Supply: }' + f'#styleGreen{{{squad_fuel}}}' + '#style1{ per second}' + f' #styleGreen{{{squad_fuel_percentage}}}'
             '\n#style1{- Health Supply: }' + f'#style1{{{squad_health}}}' + '#style1{ per second}' + f' #style1{{{squad_health_percentage}}}'
             '\n#style1{- Ammunition Supply: }' + f'#styleGreen{{{squad_ammo}}}' + '#style1{ per second}' + f' #styleGreen{{{squad_ammo_percentage}}}'
-            '\n#style1{- Critics Supply: }' + f'#style1{{{squad_critics}}}' + '#style1{ per second}' + f' #style1{{{squad_critics_percentage}}}'
+            '\n#style1{- Crit Repair Rate:: }' + f'#style1{{{squad_critics}}}' + '#style1{ per second}' + f' #style1{{{squad_critics_percentage}}}'
         )),
         "texture": "squad_supply.png",
     },
@@ -241,7 +241,7 @@ NEW_TRAITS = {
             '\n#style1{- Fuel Supply: }' + f'#style1{{{primary_fuel}}}' + '#style1{ per second}' + f' #style1{{{primary_fuel_percentage}}}'
             '\n#style1{- Health Supply: }' + f'#style1{{{primary_health}}}' + '#style1{ per second}' + f' #style1{{{primary_health_percentage}}}'
             '\n#style1{- Ammunition Supply: }' + f'#style1{{{primary_ammo}}}' + '#style1{ per second}' + f' #style1{{{primary_ammo_percentage}}}'
-            '\n#style1{- Critics Supply: }' + f'#style1{{{primary_critics}}}' + '#style1{ per second}' + f' #style1{{{primary_critics_percentage}}}'
+            '\n#style1{- Crit Repair Rate:: }' + f'#style1{{{primary_critics}}}' + '#style1{ per second}' + f' #style1{{{primary_critics_percentage}}}'
         )),
         "texture": "primary_supply.png",
     },
@@ -253,7 +253,7 @@ NEW_TRAITS = {
             '\n#style1{- Fuel Supply: }' + f'#style1{{{divisional_fuel}}}' + '#style1{ per second}' + f' #style1{{{divisional_fuel_percentage}}}'
             '\n#style1{- Health Supply: }' + f'#moral_color_bad_2{{{divisional_health}}}' + '#style1{ per second}' + f' #moral_color_bad_2{{{divisional_health_percentage}}}'
             '\n#style1{- Ammunition Supply: }' + f'#moral_color_bad_2{{{divisional_ammo}}}' + '#style1{ per second}' + f' #moral_color_bad_2{{{divisional_ammo_percentage}}}'
-            '\n#style1{- Critics Supply: }' + f'#styleTurquoise{{{divisional_critics}}}' + '#style1{ per second}' + f' #styleTurquoise{{{divisional_critics_percentage}}}'
+            '\n#style1{- Crit Repair Rate:: }' + f'#styleTurquoise{{{divisional_critics}}}' + '#style1{ per second}' + f' #styleTurquoise{{{divisional_critics_percentage}}}'
         )),
         "texture": "divisional_supply.png",
     },

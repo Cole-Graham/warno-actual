@@ -82,27 +82,27 @@ def edit_ravitaillement(source_path) -> None:
     # standard_supply_descr.v.by_m("HealthSupplyCostBySecond").v = "3"
     # standard_supply_descr.v.by_m("AmmunitionSupplyBySecond").v = "120"
     # standard_supply_descr.v.by_m("CriticsSupplyBySecond").v = "20"
-    vanilla_supply_by_second = float(standard_supply_descr.v.by_m("FuelSupplyBySecond").v)
-    vanilla_supply_cost_by_second = float(standard_supply_descr.v.by_m("FuelSupplyCostBySecond").v)
+    vanilla_fuel_supply_by_second = float(standard_supply_descr.v.by_m("FuelSupplyBySecond").v)
+    vanilla_fuel_supply_cost_by_second = float(standard_supply_descr.v.by_m("FuelSupplyCostBySecond").v)
     vanilla_health_supply_by_second = float(standard_supply_descr.v.by_m("HealthSupplyBySecond").v)
     vanilla_health_supply_cost_by_second = float(standard_supply_descr.v.by_m("HealthSupplyCostBySecond").v)
     vanilla_ammo_supply_by_second = float(standard_supply_descr.v.by_m("AmmunitionSupplyBySecond").v)
     vanilla_critics_supply_by_second = float(standard_supply_descr.v.by_m("CriticsSupplyBySecond").v)
     vanilla_critics_supply_cost_by_second = float(standard_supply_descr.v.by_m("CriticsSupplyCostBySecond").v)
     
-    vanilla_values_to_compare = [
-        30.0, # FuelSupplyBySecond
-        1.5,  # FuelSupplyCostBySecond
-        0.10, # HealthSupplyBySecond
-        3.0,  # HealthSupplyCostBySecond
-        60,   # AmmunitionSupplyBySecond
-        10,   # CriticsSupplyBySecond
-        20,   # CriticsSupplyCostBySecond
-    ]
+    expected_vanilla_values = {
+        "vanilla_fuel_supply_by_second": 30.0,
+        "vanilla_fuel_supply_cost_by_second": 1.5,
+        "vanilla_health_supply_by_second": 0.10,
+        "vanilla_health_supply_cost_by_second": 3.0,
+        "vanilla_ammo_supply_by_second": 60,
+        "vanilla_critics_supply_by_second": 10,
+        "vanilla_critics_supply_cost_by_second": 20,
+    }
     
     vanilla_values = {
-        'vanilla_supply_by_second': vanilla_supply_by_second,
-        'vanilla_supply_cost_by_second': vanilla_supply_cost_by_second,
+        'vanilla_fuel_supply_by_second': vanilla_fuel_supply_by_second,
+        'vanilla_fuel_supply_cost_by_second': vanilla_fuel_supply_cost_by_second,
         'vanilla_health_supply_by_second': vanilla_health_supply_by_second,
         'vanilla_health_supply_cost_by_second': vanilla_health_supply_cost_by_second,
         'vanilla_ammo_supply_by_second': vanilla_ammo_supply_by_second,
@@ -111,12 +111,14 @@ def edit_ravitaillement(source_path) -> None:
     }
     
     for var_name, vanilla_value in vanilla_values.items():
-        for value in vanilla_values_to_compare:
-            if vanilla_value == value:
-                continue
-            else:
-                logger.warning(f"{var_name} value {vanilla_value} is not expected value ({value}), "
-                               f"Eugen has likely changed this value")
+        value_match = False
+        for expected_value_key, expected_value in expected_vanilla_values.items():
+            if var_name == expected_value_key and vanilla_value == expected_value:
+                value_match = True
+                break
+        if not value_match:
+            logger.warning(f"{var_name} value {vanilla_value} is not expected value ({expected_value}), "
+                            f"Eugen has likely changed this value")
     
     # create and add new supply descriptors
     for variant_name, settings in new_supply_constants.items():
@@ -128,11 +130,11 @@ def edit_ravitaillement(source_path) -> None:
         descr_membr("DefaultSupplyRangeGRU").v = str(settings["DefaultSupplyRangeGRU"])
         
         descr_membr("FuelSupplyBySecond").v = str(
-            vanilla_supply_by_second * settings["FuelSupplyBySecond"])
+            vanilla_fuel_supply_by_second * settings["FuelSupplyBySecond"])
         logger.info(f"FuelSupplyBySecond: {descr_membr('FuelSupplyBySecond').v}")
         
         descr_membr("FuelSupplyCostBySecond").v = str(float(
-            vanilla_supply_cost_by_second * settings["FuelSupplyCostBySecond"]))
+            vanilla_fuel_supply_cost_by_second * settings["FuelSupplyCostBySecond"]))
         logger.info(f"FuelSupplyCostBySecond: {descr_membr('FuelSupplyCostBySecond').v}")
         
         descr_membr("HealthSupplyBySecond").v = str(

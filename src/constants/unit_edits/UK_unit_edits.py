@@ -748,7 +748,6 @@ uk_unit_edits = {
     "Scout_UK": {
         "CommandPoints": 20,
         "availability": 8,
-        "DeploymentShift": 0,
         "Divisions": {
             "default": {
                 "cards": 1,

@@ -60,7 +60,7 @@ NEW_SUPPLY_CONSTANTS = {
             "CriticsSupplyCostBySecond": 1.0,  # 100%
         },
         "DvisionalSupply": { # Dvisional because 'Div' is reserved in NDF
-            "DefaultSupplyRangeGRU": 600,
+            "DefaultSupplyRangeGRU": 550,
             "FuelSupplyBySecond": 1.0,         # 100%
             "FuelSupplyCostBySecond": 1.0,     # 100%
             "HealthSupplyBySecond": 1.0,       # 50%
