@@ -14,10 +14,10 @@ def edit_uispecificminimapinfoview(source_path) -> None:
     source_path.by_namespace("MinimapMagnifiableSize").v = "380.0"
     logger.debug("Updated minimap size") 
     
-    main_component = source_path.by_namespace("BUCKSpecificMiniMapInfoMainComponentDescriptor").v
-    components = main_component.by_member("Components")
-    for component in components.v:
-        if not isinstance(component.v, ndf.model.Object):
-            continue
-        if is_obj_type(component.v, "PanelRoundedCorner"):
-            components.v.remove(component)
+    # main_component = source_path.by_namespace("BUCKSpecificMiniMapInfoMainComponentDescriptor").v
+    # components = main_component.by_member("Components")
+    # for component in components.v:
+    #     if not isinstance(component.v, ndf.model.Object):
+    #         continue
+    #     if is_obj_type(component.v, "PanelRoundedCorner"):
+    #         components.v.remove(component)

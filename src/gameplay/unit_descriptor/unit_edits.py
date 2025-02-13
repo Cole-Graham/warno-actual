@@ -435,6 +435,10 @@ def _handle_supply(source_path, game_db, unit_edits, *_) -> None:  # noqa
                             else:
                                 supply_descr.v = "$/GFX/Weapon/HeloSupply"
                                 logger.info(f"Set {unit} to HeloSupply")
+                                
+                        elif "SupplyDescriptor" in edits:
+                            supply_descr.v = f"$/GFX/Weapon/{edits['SupplyDescriptor']}"
+                            logger.info(f"Set {unit} supply descriptor to {edits['SupplyDescriptor']}")
 
                         # Update capacity if specified
                         if "SupplyCapacity" in edits:
@@ -452,6 +456,17 @@ def _handle_supply(source_path, game_db, unit_edits, *_) -> None:  # noqa
                         production_resources = membr("ProductionRessourcesNeeded").v.by_k(key)
                         production_resources.v = str(edits["CommandPoints"])
                         logger.info(f"Updated {unit} command points to: {edits['CommandPoints']}")
+                        
+                elif module.v.type == "TUnitUIModuleDescriptor" and "SupplyDescriptor" in edits:
+                    specialties_list = membr("SpecialtiesList")
+                    if "RunnerSupply" in edits["SupplyDescriptor"]:
+                        specialties_list.v.add("'_supply_runner'")
+                    elif "SquadSupply" in edits["SupplyDescriptor"]:
+                        specialties_list.v.add("'_supply_squad'")
+                    elif "PrimarySupply" in edits["SupplyDescriptor"]:
+                        specialties_list.v.add("'_supply_primary'")
+                    elif "DvisionalSupply" in edits["SupplyDescriptor"]:
+                        specialties_list.v.add("'_supply_divisional'")
 
         except Exception as e:
             logger.error(f"Error processing {unit}: {str(e)}")

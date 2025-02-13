@@ -21,10 +21,14 @@ pol_unit_edits = {
         "availability": 9,
         "XPMultiplier": [9/9, 7/9, 0.0, 0.0],
         "max_speed": 4,
+        "UpgradeFromUnit": "FOB_POL",
     },
 
     "DCA_ZU_23_2_Para_POL": {  # Desant. ZU-23-2
         "CommandPoints": 20,
+        "GameName": {
+            "display": "SPADO. ZU-23-2",
+        },
         "Factory": "EDefaultFactories/Logistic",
         "Divisions": {
             "default": {
@@ -40,9 +44,7 @@ pol_unit_edits = {
         # "availability": 9,
         # "XPMultiplier": [9/9, 7/9, 0.0, 0.0],
         "max_speed": 4,
-        "GameName": {
-            "display": "SPADO. ZU-23-2",
-        },
+        "UpgradeFromUnit": "FOB_POL",
     },
 
     "DCA_ZUR_23_2S_JOD_POL": {  # ZUR-23-2S Jod
@@ -60,12 +62,16 @@ pol_unit_edits = {
         #     },
         # },
         "availability": 6,
-        "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
         "max_speed": 4,
+        "UpgradeFromUnit": "FOB_POL",
+        "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
     },
 
     "DCA_ZUR_23_2S_JOD_Para_POL": {  # Desant. ZUR-23-2S Jod
         "CommandPoints": 30,
+        "GameName": {
+            "display": "SPADO. ZUR-23-2S JOD",
+        },
         "Factory": "EDefaultFactories/Logistic",
         # "Divisions": {
         #     "default": {
@@ -81,9 +87,7 @@ pol_unit_edits = {
         # "availability": 6,
         # "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
         "max_speed": 4,
-        "GameName": {
-            "display": "SPADO. ZUR-23-2S JOD",
-        },
+        "UpgradeFromUnit": "FOB_POL",
     },
 
     "UAZ_469_CMD_Para_POL": {  # Desant. WD-43

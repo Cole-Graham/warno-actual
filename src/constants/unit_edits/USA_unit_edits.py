@@ -994,7 +994,14 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("Commando_733", "M16A1_Carbine")],
+                "Salves": {
+                    "RocketInf_AT4_83mm": 6,
+                },
+                "replace": [
+                    ("Commando_733", "M16A1_Carbine"),
+                    ("RocketInf_M72A3_LAW_66mm", "RocketInf_AT4_83mm"),
+                ],
+                "fire_effect": [("RocketInf_M72A3_LAW_66mm", "RocketInf_AT4_83mm")]
             },
         },
     },
@@ -2267,27 +2274,29 @@ usa_unit_edits = {
         "availability": 8,
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
         "max_speed": 4,
+        "UpgradeFromUnit": "FOB_US",
     },
     
     "DCA_M167A2_Vulcan_20mm_US": {
         "CommandPoints": 25,
         "Factory": "EDefaultFactories/Logistic",
         "Divisions": {
-            "add": ["US_3rd_Arm", "US_8th_Inf", "UK_2nd_Infantry"],
+            "add": ["US_3rd_Arm", "US_8th_Inf"],
             "is_transported": True,
             "needs_transport": True,
             "default": {
                 "cards": 1,
                 "Transports": ["M998_Humvee_US"],
             },
-            "UK_2nd_Infantry": {
-                "cards": 1,
-                "Transports": ["LandRover_UK"],
-            },
+            # "UK_2nd_Infantry": {
+            #     "cards": 1,
+            #     "Transports": ["LandRover_UK"],
+            # },
         },
         "availability": 6,
         "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
         "max_speed": 4,
+        "UpgradeFromUnit": "FOB_US",
     },
 
     "M998_Avenger_US": {

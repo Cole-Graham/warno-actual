@@ -397,26 +397,30 @@ def create_veh_human_depictions(source_path: Any) -> None:
     for donor, edits in NEW_UNITS.items():
         donor_name = donor[0]
         if not (edits.get("is_ground_vehicle", False) and edits.get("is_infantry", False)):
+            logger.info(f"Skipping {donor_name} because it's not a vehicle or infantry")
             continue
             
         unit_name = edits["NewName"]
         
         # Find donor mesh names
         mesh_names = None
-        for row in source_path:
-            if row.namespace != f"HumanSubDepictions_{donor_name}":
-                continue
+        if "servants" in edits:
+            mesh_names = edits["servants"]
+        else:
+            for row in source_path:
+                if row.namespace != f"HumanSubDepictions_{donor_name}":
+                    continue
+                    
+                left_servant = row.v[0]
+                right_servant = row.v[1]
                 
-            left_servant = row.v[0]
-            right_servant = row.v[1]
-            
-            left_mesh = left_servant.v.by_m("MeshDescriptorHigh").v.split(
-                "$/GFX/DepictionResources/MeshDescriptor_")[-1]
-            right_mesh = right_servant.v.by_m("MeshDescriptorHigh").v.split(
-                "$/GFX/DepictionResources/MeshDescriptor_")[-1]
-                
-            mesh_names = (left_mesh, right_mesh)
-            break
+                left_mesh = left_servant.v.by_m("MeshDescriptorHigh").v.split(
+                    "$/GFX/DepictionResources/MeshDescriptor_Servant_")[-1]
+                right_mesh = right_servant.v.by_m("MeshDescriptorHigh").v.split(
+                    "$/GFX/DepictionResources/MeshDescriptor_Servant_")[-1]
+                    
+                mesh_names = (left_mesh, right_mesh)
+                break
             
         if not mesh_names:
             logger.warning(f"Could not find mesh names for {donor_name}")
@@ -424,36 +428,72 @@ def create_veh_human_depictions(source_path: Any) -> None:
             
         left_mesh, right_mesh = mesh_names
         
-        # Create human depiction entries
-        human_depiction = (
-            f'HumanSubDepictions_{unit_name} is\n'
-            f'[\n'
-            f'    SubDepiction_ATGMServantLeft\n'
-            f'    (\n'
-            f'        MeshDescriptorHigh = $/GFX/DepictionResources/MeshDescriptor_{left_mesh}\n'
-            f'        MeshDescriptorLow = $/GFX/DepictionResources/MeshDescriptor_{left_mesh}_LOW\n'
-            f'    ),\n'
-            f'    SubDepiction_ATGMServantRight\n'
-            f'    (\n'
-            f'        MeshDescriptorHigh = $/GFX/DepictionResources/MeshDescriptor_{right_mesh}\n'
-            f'        MeshDescriptorLow = $/GFX/DepictionResources/MeshDescriptor_{right_mesh}_LOW\n'
-            f'    )\n'
-            f']\n'
-        )
-        
-        showroom_depiction = (
-            f'HumanSubDepictionsShowroom_{unit_name} is\n'
-            f'[\n'
-            f'    ShowroomSubDepiction_ATGMServantLeft\n'
-            f'    (\n'
-            f'        MeshDescriptor = $/GFX/DepictionResources/MeshDescriptor_{left_mesh}\n'
-            f'    ),\n'
-            f'    ShowroomSubDepiction_ATGMServantRight\n'
-            f'    (\n'
-            f'        MeshDescriptor = $/GFX/DepictionResources/MeshDescriptor_{right_mesh}\n'
-            f'    )\n'
-            f']\n'
-        )
+        if edits.get("is_heavy_equipment", False):
+            # Create heavy equipment human depiction entries
+            human_depiction = (
+                f'HumanSubDepictions_{unit_name} is '
+                f'['
+                f'    SubDepiction_ServantWalkOnlyLeft'
+                f'    ('
+                f'        MeshDescriptorHigh = $/GFX/DepictionResources/MeshDescriptor_Servant_{left_mesh}'
+                f'        MeshDescriptorLow = $/GFX/DepictionResources/MeshDescriptor_Servant_{left_mesh}_LOW'
+                f'    ),'
+                f'    SubDepiction_GunnerIdleOnlyLeft'
+                f'    ('
+                f'        MeshDescriptorHigh = $/GFX/DepictionResources/MeshDescriptor_Servant_{left_mesh}'
+                f'        MeshDescriptorLow = $/GFX/DepictionResources/MeshDescriptor_Servant_{left_mesh}_LOW'
+                f'    ),'
+                f'    SubDepiction_ServantRight'
+                f'    ('
+                f'        MeshDescriptorHigh = $/GFX/DepictionResources/MeshDescriptor_Servant_{right_mesh}'
+                f'        MeshDescriptorLow = $/GFX/DepictionResources/MeshDescriptor_Servant_{right_mesh}_LOW'
+                f'    )'
+                f']'
+            )
+            showroom_depiction = (
+                f'HumanSubDepictionsShowroom_{unit_name} is'
+                f'['
+                f'    ShowroomSubDepiction_GunnerLeft'
+                f'    ('
+                f'        MeshDescriptor = $/GFX/DepictionResources/MeshDescriptor_Servant_{left_mesh}'
+                f'    ),'
+                f'    ShowroomSubDepiction_ServantRight'
+                f'    ('
+                f'        MeshDescriptor = $/GFX/DepictionResources/MeshDescriptor_Servant_{right_mesh}'
+                f'    )'
+                f']'
+            )
+        else:
+            # Create human depiction entries
+            human_depiction = (
+                f'HumanSubDepictions_{unit_name} is\n'
+                f'[\n'
+                f'    SubDepiction_ATGMServantLeft\n'
+                f'    (\n'
+                f'        MeshDescriptorHigh = $/GFX/DepictionResources/MeshDescriptor_Servant_{left_mesh}\n'
+                f'        MeshDescriptorLow = $/GFX/DepictionResources/MeshDescriptor_Servant_{left_mesh}_LOW\n'
+                f'    ),\n'
+                f'    SubDepiction_ATGMServantRight\n'
+                f'    (\n'
+                f'        MeshDescriptorHigh = $/GFX/DepictionResources/MeshDescriptor_Servant_{right_mesh}\n'
+                f'        MeshDescriptorLow = $/GFX/DepictionResources/MeshDescriptor_Servant_{right_mesh}_LOW\n'
+                f'    )\n'
+                f']\n'
+            )
+            
+            showroom_depiction = (
+                f'HumanSubDepictionsShowroom_{unit_name} is\n'
+                f'[\n'
+                f'    ShowroomSubDepiction_ATGMServantLeft\n'
+                f'    (\n'
+                f'        MeshDescriptor = $/GFX/DepictionResources/MeshDescriptor_Servant_{left_mesh}\n'
+                f'    ),\n'
+                f'    ShowroomSubDepiction_ATGMServantRight\n'
+                f'    (\n'
+                f'        MeshDescriptor = $/GFX/DepictionResources/MeshDescriptor_Servant_{right_mesh}\n'
+                f'    )\n'
+                f']\n'
+            )
         
         # Find insertion point and add entries
         for row in source_path:
@@ -472,8 +512,8 @@ def create_veh_human_depictions(source_path: Any) -> None:
                 f'    Identifier = "{unit_name}"\n'
                 f'    Meshes =\n'
                 f'    [\n'
-                f'        $/GFX/DepictionResources/MeshDescriptor_{left_mesh},\n'
-                f'        $/GFX/DepictionResources/MeshDescriptor_{right_mesh}\n'
+                f'        $/GFX/DepictionResources/MeshDescriptor_Servant_{left_mesh},\n'
+                f'        $/GFX/DepictionResources/MeshDescriptor_Servant_{right_mesh}\n'
                 f'    ]\n'
                 f'    UniqueCount = {edits["alternatives_count"]}\n'
                 f')\n'
@@ -509,34 +549,49 @@ def create_veh_depictions(source_path: Any) -> None:
         unit_name = edits["NewName"]
         
         custom_depictions = edits.get("depictions", {}).get("custom", {}).get("DepictionVehicles.ndf", [])
-        if "TacticVehicleDepictionTemplate" in custom_depictions:
-            depiction_key = unit_name.lower()
-            if depiction_key in NEW_DEPICTIONS:
+        custom_veh_added = False
+        custom_operator_added = False
+
+        # Handle custom depictions first
+        depiction_key = unit_name.lower()
+        if depiction_key in NEW_DEPICTIONS:
+            # Add TacticVehicleDepictionTemplate if present
+            if "TacticVehicleDepictionTemplate" in custom_depictions:
+                custom_veh_added = True
                 custom_veh_depiction = NEW_DEPICTIONS[depiction_key]["DepictionVehicles_ndf"]["TacticVehicleDepictionTemplate"]
                 source_path.add(custom_veh_depiction)
                 logger.info(f"Added custom vehicle depiction for {unit_name}")
-            else:
-                logger.warning(f"No custom depiction found for {unit_name} (key: {depiction_key})")
-        
+
+            # Add DepictionOperator if present
+            if "DepictionOperator_WeaponContinuousFire" in custom_depictions:
+                custom_operator_added = True
+                custom_operator = NEW_DEPICTIONS[depiction_key]["DepictionVehicles_ndf"]["DepictionOperator_WeaponContinuousFire"]
+                source_path.add(custom_operator)
+                logger.info(f"Added custom operator depiction for {unit_name}")
         else:
+            if "TacticVehicleDepictionTemplate" in custom_depictions or "DepictionOperator_WeaponContinuousFire" in custom_depictions:
+                logger.warning(f"No custom depiction found for {unit_name} (key: {depiction_key})")
+
+        # Handle default depictions if no customs were added
+        if not custom_veh_added or not custom_operator_added:
             weapon_count = 0
             new_objects = []
 
             for obj_row in source_path:
                 namespace = obj_row.namespace
                 
-                if "DepictionOperator_" in namespace:
+                if "DepictionOperator_" in namespace and not custom_operator_added:
                     if donor_name == get_base_namespace(namespace, "DepictionOperator"):
                         weapon_count += 1
                         new_objects.append(create_new_object(obj_row, unit_name, True, weapon_count))
                 
-                elif "Gfx_" in namespace:
+                elif "Gfx_" in namespace and not custom_veh_added:
                     if donor_name == get_base_namespace(namespace, "Gfx"):
                         new_objects.append(create_new_object(obj_row, unit_name, False))
 
             for obj in new_objects:
                 logger.info(f"Adding new object to GeneratedDepictionVehicles.ndf: {obj.namespace}")
-                source_path.add(obj)         
+                source_path.add(obj)
 
 
 def create_aerial_ghost_depictions(source_path: Any) -> None:

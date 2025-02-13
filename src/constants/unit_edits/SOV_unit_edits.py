@@ -1945,6 +1945,7 @@ sov_unit_edits = {
         "availability": 9,
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
         "max_speed": 4,
+        "UpgradeFromUnit": "FOB_SOV",
     },
 
     "DCA_ZU_23_2_SOV": {  # Airborne
@@ -1958,6 +1959,7 @@ sov_unit_edits = {
         "availability": 9,
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
         "max_speed": 4,
+        "UpgradeFromUnit": "FOB_SOV",
     },
     
     "MANPAD_Igla_SOV": {

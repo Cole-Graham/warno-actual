@@ -18,6 +18,7 @@ from .SOV_depiction_edits import (
 )
 # from .UK_depiction_edits import ()
 from .USA_depiction_edits import (
+    ranger_us,
     scout_us,
 )
 
@@ -37,5 +38,6 @@ __all__ = [
     "mtlb_vasilek_sov",
     
     # USA
+    "ranger_us",
     "scout_us",
 ]
