@@ -155,5 +155,5 @@ def edit_ravitaillement(source_path) -> None:
             vanilla_critics_supply_cost_by_second * settings["CriticsSupplyCostBySecond"])
         logger.info(f"CriticsSupplyCostBySecond: {descr_membr('CriticsSupplyCostBySecond').v}")
 
-        source_path.add(variant_descr)
+        source_path.add(variant_descriptor)
         logger.info(f"Added {variant_name} descriptor")
