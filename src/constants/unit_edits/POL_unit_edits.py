@@ -1480,8 +1480,19 @@ pol_unit_edits = {
                 "Unite"
             ],
         },
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'transport',
+                '_transport1',
+            ],
+        },
         "orders": {
             "add_orders": ["UnloadFromTransport", "UnloadAtPosition", "LoadUnit"]
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "RocketAir_S5_57mm_salvolength64": 1,
+            },
         },
         "availability": 4,
         "Divisions": {
@@ -1489,7 +1500,7 @@ pol_unit_edits = {
         },
         "XPMultiplier": [0.0, 4/4, 3/4, 0.0],
         "GameName": {
-            "display": "Mi-24D DESANT."  # wargame reference
+            "display": "Mi-24D DESANT"  # wargame reference
         }
     },
 
@@ -1518,6 +1529,11 @@ pol_unit_edits = {
         "CommandPoints": 60,
         "availability": 7,
         "XPMultiplier": [0.0, 7/7, 5/7, 0.0],
+        "Divisions": {
+            "POL_20_Pancerna": {
+                "cards": 2,
+            },
+        },
     },
 
     # heli tab transports
@@ -1557,13 +1573,23 @@ pol_unit_edits = {
     },
 
     "MiG_21bis_AA_POL": {  # 4x R-60M, 2x R-3R MiG-21bis [AA1]
+        # effectively deleted - replaced with mig23 AA2
+        "Divisions": {
+            "remove": ["POL_20_Pancerna"],
+        },
         "CommandPoints": 120,
         "XPMultiplier": [0.0, 4/4, 3/4, 2/4],
+        "GameName": {
+            "display": "MiG-21bis [AA2]"
+        }
     },
 
     "MiG_21bis_POL": {  # 4x R-60M, 2x R-13M - MiG-21bis [AA2]
         "CommandPoints": 120,
         "XPMultiplier": [0.0, 4/4, 3/4, 2/4],
+        "GameName": {
+            "display": "MiG-21bis [AA]"
+        }
     },
 
     "MiG_21bis_HE_POL": {  # MiG-21bis [HE]
@@ -1591,10 +1617,23 @@ pol_unit_edits = {
     #     "XPMultiplier": [0.0, 2/2, 0.0, 0.0],
     # },
 
-    # "MiG_23MF_AA2_POL": {  # MiG-23MF [AA2]
-    #     "CommandPoints": 180,
-    #     "XPMultiplier": [0.0, 2/2, 0.0, 0.0],
-    # },
+    "MiG_23MF_AA2_POL": {  # MiG-23MF [AA2]
+        "CommandPoints": 130,
+        "availability": 4,
+        "XPMultiplier": [0.0, 4/4, 3/4, 2/4],
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+            "add": ['POL_20_Pancerna'],
+            "is_transported": False,
+            "needs_transport": False,
+            "POL_20_Pancerna": {
+                "cards": 1,
+                "Transports": None,
+            },
+        },
+    },
 
     "MiG_29_AA_POL": {  # 4x R-73, 2x R-27R [AA]
         "GameName": {

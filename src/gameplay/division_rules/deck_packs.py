@@ -35,12 +35,7 @@ def _remove_duplicate_deck_packs(source_path: Any) -> None:
             seen_namespaces[deck_pack.namespace] = deck_pack
 
 
-def _handle_deck_packs(
-    source_path: Any,
-    unit: str,
-    edits: Dict[str, Any],
-    deck_data: Dict[str, Any]
-) -> None:
+def _handle_deck_packs(source_path: Any, unit: str, edits: Dict[str, Any], deck_data: Dict[str, Any]) -> None:
     """Handle modifying deck packs."""
     # First find all deck packs for this unit that exist in deck_data
     deck_packs_in_use = set()
@@ -248,6 +243,7 @@ def update_deck_pack_references(source_path: Any, game_db: Dict[str, Any]) -> No
     
     # Update non-multi decks
     _update_non_multi_decks(source_path, namespace_changes)
+
 
 def new_deck_packs(source_path: Any) -> None:
     """Create new deck packs in DeckPacks.ndf."""
