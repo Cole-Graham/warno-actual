@@ -831,6 +831,7 @@ rda_unit_edits = {
         "availability": 9,
         "XPMultiplier": [9/9, 7/9, 0.0, 0.0],
         "max_speed": 4,
+        "UpgradeFromUnit": "FOB_DDR",
     },
 
     "BRDM_Strela_1_DDR": {

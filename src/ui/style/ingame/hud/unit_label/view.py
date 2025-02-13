@@ -22,6 +22,9 @@ def edit_uispecificunitlabelview(source_path) -> None:
     # Update supply gauge
     _update_supply_gauge(source_path)
     
+    # Update morale and HP gauges color tokens
+    _update_morale_hp_gauges_color_tokens(source_path)
+    
     # Add morale and HP gauges name only description
     _add_morale_hp_gauges_name_only(source_path)
     
@@ -73,6 +76,13 @@ def _update_supply_gauge(source_path) -> None:
     description.by_member("MagnifiableExtraVOffset").v = "-4.0"
     logger.debug("Updated supply gauge offset")
 
+def _update_morale_hp_gauges_color_tokens(source_path) -> None:
+    """Update morale and HP gauges color tokens."""
+    moraleandhpgaugesdescription = source_path.by_namespace("MoraleAndHPGaugesDescription")
+    moraleandhpgaugesdescription.v.by_member("MoraleGaugeColorTokens").v = str(
+        ["moral_color_bad_1", "moral_color_bad_2", "moral_color_bad_3", "magenta_morale_color"])
+    logger.debug("Updated morale and HP gauges color tokens")
+
 def _add_morale_hp_gauges_name_only(source_path) -> None:
     """Add morale and HP gauges name only description."""
     index = source_path.by_namespace("MoraleAndHPGaugesDescription").index + 1
@@ -84,7 +94,7 @@ def _get_morale_hp_gauges_name_only() -> str:
     return '''\
 MoraleAndHPGaugesNameOnlyDescription is TMoraleAndHPGaugesDescription
 (
-    MoraleGaugeColorTokens = ["moral_color_bad_1", "moral_color_bad_2", "moral_color_bad_3", "moral_color_bad_4"]
+    MoraleGaugeColorTokens = ["moral_color_bad_1", "moral_color_bad_2", "moral_color_bad_3", "magenta_morale_color"]
     HPElementHealthValue = 2
     MagnifiableWidthOneHPLabelBlock = 6.0
     MoraleMagnifiableWidthHeight = [32.0, 3.0]

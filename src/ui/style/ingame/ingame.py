@@ -23,10 +23,10 @@ def edit_uiingameresources(source_path: Any) -> None:
     # Modify main container layout
     ingamehudmaintcontainer = source_path.by_n("InGameMainContainerResource").v
     foreground_components = ingamehudmaintcontainer.by_m("ForegroundComponents").v
-    components = foreground_components.by_m("Components").v
+    components = foreground_components.by_m("Components")
     
     # Remove/update existing components
-    for component in components:
+    for component in components.v:
         if not isinstance(component.v, ndf.model.Object):
             continue
         
@@ -36,10 +36,10 @@ def edit_uiingameresources(source_path: Any) -> None:
                 component_frame = component.v.by_m("ComponentFrame").v
                 component_frame.by_m("MagnifiableOffset").v = "[0.0, 138.0]"
             
-        elif component.v.by_m("UniqueName", False) is not None:
-            if component.v.by_m("UniqueName").v == '"barre_du_haut"':
-                components.remove(component)
+            elif unique_name is not None and unique_name.v == '"barre_du_haut"':
+                components.v.remove(component)
 
+        
         else:
             elements = component.v.by_m("Elements").v
             for element in elements:
@@ -125,4 +125,4 @@ def edit_uiingameresources(source_path: Any) -> None:
         f'    ]'
         f')'
     )
-    components.insert(1, new_entry) 
+    components.v.insert(1, new_entry) 

@@ -2,6 +2,62 @@
 
 # fmt: off
 UK_NEW_UNITS = {
+    ("DCA_M167A2_Vulcan_20mm_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "016266d7-5576-4c95-8885-a9cd0277079a",
+        "GroupeCombatGUID": "852cb4c1-67fd-4039-89d9-df1c2ba6c46c",
+        "ShowroomGUID": "967df281-0e6b-40af-8c42-65ccb81ca47d",
+        "CadavreGUID": "e1eeca97-647d-4296-a631-9ea45800fae9",
+        "depictions": {
+            "custom": {
+                "DepictionVehicles.ndf": ["TacticVehicleDepictionTemplate", "DepictionOperator_WeaponContinuousFire"],
+            },
+        },
+        "NewName": "DCA_M167A2_Vulcan_20mm_UK",
+        "GameName": {
+            "display": "M167A2 VADS (UK)",
+            "token": "XWWJJTOTON",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Canon_AA",
+                "Canon_AA_Porte",
+                "GroundUnits",
+                "UNITE_DCA_M167A2_Vulcan_20mm_UK",
+                "Unite",
+                "Unite_transportable",
+            ],
+        },
+        "TransportedSoldier": "DCA_M167A2_Vulcan_20mm_UK",
+        "Factory": "EDefaultFactories/Logistic",
+        "CommandPoints": 25,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+            "UK_2nd_Infantry_multi": {
+                "Transports": ["LandRover_UK"],
+            },
+        },
+        "availability": 2,
+        "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
+        "max_speed": 4,
+        "UpgradeFromUnit": "FOB_UK",
+        "Orders": ['Stop', 'Move', 'FollowFormation', 'SmartMove', 'Attack', 'SmartMoveAndAttack', 'MoveAndAttack', 
+                   'Spread', 'Shoot', 'ShootOnPosition', 'ShootOnPositionWithoutCorrection', 'AskForSupply', 
+                   'EnterDistrict', 'LoadIntoTransport', 'Load', 'AIDefend', 'AIAttack', 'AIStop'],
+        "is_infantry": True, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": True,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "NATO",
+        "Nation": "UK",
+        "alternatives_count": 2,
+        "servants": ("G_UK", "D_UK")
+    },
+    
     ("Rifles_CMD_UK", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "1f764bcc-3c0f-4a39-90b3-43d97e749441",
         "GroupeCombatGUID": "f89e6ee3-40ac-4ef8-a6eb-5c1373cb51d7",

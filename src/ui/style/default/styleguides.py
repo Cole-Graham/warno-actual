@@ -708,6 +708,15 @@ def edit_defaultstyleguides(source_path) -> None:
 
             # Update moral color
             _edit_componentstate(text_colors_map, '"moral_color_bad_1"', 'Normal', '[255,200,0,255]')
+            
+            # Add magenta moral color
+            magenta_morale_color = (
+                f'("magenta_morale_color", MAP ['
+                f'                                        ( ~/ComponentState/Normal,                TColorRTTI( Color = [200,0,255,255] ) ),'
+                f'                                   ])'
+            )
+            index = text_colors_map.by_k('"moral_color_bad_4"').index + 1
+            text_colors_map.insert(index, magenta_morale_color)
 
             # Update BoutonXP deck colors
             _edit_componentstate(text_colors_map, '"BoutonXP_deck"', 'Grayed', 'M81_DarkCharcoal')

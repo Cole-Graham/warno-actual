@@ -14,6 +14,7 @@ supply_unit_edits = {
             },
         },
         "availability": 12,
+        "SupplyDescriptor": "RunnerSupply",
         "XPMultiplier": [1.0, 0.0, 0.0, 0.0],
     },
     "UAZ_469_supply_SOV": {
@@ -25,6 +26,7 @@ supply_unit_edits = {
             },
         },
         "availability": 12,
+        "SupplyDescriptor": "RunnerSupply",
         "XPMultiplier": [1.0, 0.0, 0.0, 0.0],
     },
     "UAZ_469_supply_VDV_SOV": {
@@ -36,6 +38,7 @@ supply_unit_edits = {
             },
         },
         "availability": 12,
+        "SupplyDescriptor": "RunnerSupply",
         "XPMultiplier": [1.0, 0.0, 0.0, 0.0],
     },
     "LUAZ_967M_supply_SOV": {
@@ -47,6 +50,7 @@ supply_unit_edits = {
             },
         },
         "availability": 12,
+        "SupplyDescriptor": "RunnerSupply",
         "XPMultiplier": [1.0, 0.0, 0.0, 0.0],
     },
     "Gama_Goat_supply_US": {
@@ -58,6 +62,7 @@ supply_unit_edits = {
             },
         },
         "availability": 10,
+        "SupplyDescriptor": "SquadSupply",
         "XPMultiplier": [1.0, 0.0, 0.0, 0.0],
     },
     "Rover_101FC_supply_UK": {
@@ -69,6 +74,7 @@ supply_unit_edits = {
             },
         },
         "availability": 10,
+        "SupplyDescriptor": "SquadSupply",
         "XPMultiplier": [1.0, 0.0, 0.0, 0.0],
     },
     "Unimog_S_404_RFA": {
@@ -80,17 +86,7 @@ supply_unit_edits = {
             },
         },
         "availability": 9,
-        "XPMultiplier": [1.0, 0.0, 0.0, 0.0],
-    },
-    "VLRA_supply_FR": {
-        "SupplyCapacity": 400.0,
-        "CommandPoints": 20,
-        "Divisions": {
-            "default": {
-                "cards": 2,
-            },
-        },
-        "availability": 9,
+        "SupplyDescriptor": "SquadSupply",
         "XPMultiplier": [1.0, 0.0, 0.0, 0.0],
     },
     "GAZ_66_supply_SOV": {
@@ -102,6 +98,7 @@ supply_unit_edits = {
             },
         },
         "availability": 9,
+        "SupplyDescriptor": "SquadSupply",
         "XPMultiplier": [1.0, 0.0, 0.0, 0.0],
     },
     "GAZ_66_POL": {
@@ -113,6 +110,19 @@ supply_unit_edits = {
             },
         },
         "availability": 9,
+        "SupplyDescriptor": "SquadSupply",
+        "XPMultiplier": [1.0, 0.0, 0.0, 0.0],
+    },
+    "VLRA_supply_FR": {
+        "SupplyCapacity": 500.0,
+        "CommandPoints": 25,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "availability": 9,
+        "SupplyDescriptor": "SquadSupply",
         "XPMultiplier": [1.0, 0.0, 0.0, 0.0],
     },
     "TRM_2000_supply_FR": {
@@ -124,6 +134,7 @@ supply_unit_edits = {
             },
         },
         "availability": 6,
+        "SupplyDescriptor": "SquadSupply",
         "XPMultiplier": [1.0, 0.0, 0.0, 0.0],
     },
     "M35_supply_US": {
@@ -135,6 +146,7 @@ supply_unit_edits = {
             },
         },
         "availability": 6,
+        "SupplyDescriptor": "PrimarySupply",
         "XPMultiplier": [1.0, 0.0, 0.0, 0.0],
     },
     "Ural_4320_DDR": {
@@ -146,6 +158,7 @@ supply_unit_edits = {
             },
         },
         "availability": 5,
+        "SupplyDescriptor": "PrimarySupply",
         "XPMultiplier": [1.0, 0.0, 0.0, 0.0],
     },
     "Ural_4320_SOV": {
@@ -157,6 +170,7 @@ supply_unit_edits = {
             },
         },
         "availability": 5,
+        "SupplyDescriptor": "PrimarySupply",
         "XPMultiplier": [1.0, 0.0, 0.0, 0.0],
     },
     "Star_266_supply_POL": {
@@ -168,6 +182,7 @@ supply_unit_edits = {
             },
         },
         "availability": 5,
+        "SupplyDescriptor": "PrimarySupply",
         "XPMultiplier": [1.0, 0.0, 0.0, 0.0],
     },
     "Bedford_MJ_4t_UK": {
@@ -179,6 +194,7 @@ supply_unit_edits = {
             },
         },
         "availability": 5,
+        "SupplyDescriptor": "PrimarySupply",
         "XPMultiplier": [1.0, 0.0, 0.0, 0.0],
     },
     "T813_DDR": {
@@ -190,6 +206,7 @@ supply_unit_edits = {
             },
         },
         "availability": 4,
+        "SupplyDescriptor": "PrimarySupply",
         "XPMultiplier": [1.0, 0.0, 0.0, 0.0],
     },
     "Alvis_Stalwart_UK": {
@@ -201,6 +218,7 @@ supply_unit_edits = {
             },
         },
         "availability": 4,
+        "SupplyDescriptor": "PrimarySupply",
         "XPMultiplier": [1.0, 0.0, 0.0, 0.0],
     },
     "M812_Supply_US": {
@@ -212,6 +230,7 @@ supply_unit_edits = {
             },
         },
         "availability": 3,
+        "SupplyDescriptor": "DvisionalSupply",
         "XPMultiplier": [1.0, 0.0, 0.0, 0.0],
     },
     "KrAZ_255B_supply_SOV": {
@@ -223,6 +242,7 @@ supply_unit_edits = {
             },
         },
         "availability": 3,
+        "SupplyDescriptor": "DvisionalSupply",
         "XPMultiplier": [1.0, 0.0, 0.0, 0.0],
     },
     "MAN_Kat_6x6_RFA": {
@@ -234,6 +254,7 @@ supply_unit_edits = {
             },
         },
         "availability": 3,
+        "SupplyDescriptor": "DvisionalSupply",
         "XPMultiplier": [1.0, 0.0, 0.0, 0.0],
     },
     "HEMTT_US": {
@@ -245,6 +266,7 @@ supply_unit_edits = {
             },
         },
         "availability": 3,
+        "SupplyDescriptor": "DvisionalSupply",
         "XPMultiplier": [1.0, 0.0, 0.0, 0.0],
     },
     # mechanized supply
@@ -257,6 +279,7 @@ supply_unit_edits = {
             },
         },
         "availability": 10,
+        "SupplyDescriptor": "SquadSupply",
         "XPMultiplier": [1.0, 0.0, 0.0, 0.0],
     },
     "M113A2_supply_US": {
@@ -268,6 +291,7 @@ supply_unit_edits = {
             },
         },
         "availability": 10,
+        "SupplyDescriptor": "SquadSupply",
         "XPMultiplier": [1.0, 0.0, 0.0, 0.0],
     },
     "MTLB_supply_DDR": {
@@ -279,6 +303,7 @@ supply_unit_edits = {
             },
         },
         "availability": 10,
+        "SupplyDescriptor": "SquadSupply",
         "XPMultiplier": [1.0, 0.0, 0.0, 0.0],
     },
     "MTLB_supply_SOV": {
@@ -290,6 +315,7 @@ supply_unit_edits = {
             },
         },
         "availability": 10,
+        "SupplyDescriptor": "SquadSupply",
         "XPMultiplier": [1.0, 0.0, 0.0, 0.0],
     },
     "M548A2_supply_US": {
@@ -301,6 +327,7 @@ supply_unit_edits = {
             },
         },
         "availability": 5,
+        "SupplyDescriptor": "PrimarySupply",
         "XPMultiplier": [1.0, 0.0, 0.0, 0.0],
     },
     # helo supply

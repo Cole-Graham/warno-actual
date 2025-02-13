@@ -33,14 +33,17 @@ def _add_background_properties(component: Any) -> None:
 
 def _update_components(components: Any) -> None:
     """Update component properties."""
+    components_to_remove = []
     for component in components:
         if not isinstance(component.v, ndf.model.Object):
             continue
         if is_obj_type(component.v, "PanelRoundedCorner"):
-            components.remove(component)
+            components_to_remove.append(component.index)
             # _update_panel_properties(component.v)
         elif is_obj_type(component.v, "BUCKListDescriptor"):
             _update_list_elements(component.v.by_member("Elements").v)
+    for component in components_to_remove:
+        components.remove(component)
 
 def _update_panel_properties(panel: Any) -> None:
     """Update panel properties."""

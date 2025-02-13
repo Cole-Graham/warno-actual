@@ -35,6 +35,8 @@ def edit_infantry_armor_wa(source_path) -> None:
         unit_strength = unit_data.get("strength", 0)
         if not unit_strength:
             continue
+        if unit_data.get("is_hmg_team") or unit_data.get("is_at_team"):
+            continue
             
         modules_list = unit_row.v.by_m("ModulesDescriptors").v
         

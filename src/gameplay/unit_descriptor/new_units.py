@@ -277,7 +277,7 @@ def _handle_unit_ui(descr_row: Any, edits: Dict[str, Any]) -> None:
         edited_list = ndf.convert(str(edits["SpecialitiesList"]))
         descr_row.v.by_member("SpecialtiesList").v = edited_list
     if "InfoPanelConfig" in edits:
-        descr_row.v.by_member("InfoPanelConfigurationToken").v = "'" + edits["InfoPanelConfig"] + "'"
+        descr_row.v.by_member("InfoPanelConfigurationToken").v = f"'{edits['InfoPanelConfig']}'"
     if "GameName" in edits and "token" in edits["GameName"]:
         descr_row.v.by_member("NameToken").v = f'\"{edits["GameName"]["token"]}\"'
     if "UpgradeFromUnit" in edits:
@@ -292,6 +292,8 @@ def _handle_unit_ui(descr_row: Any, edits: Dict[str, Any]) -> None:
         descr_row.v.by_member("MenuIconTexture").v = f"'{edits['MenuIconTexture']}'"
     if "ButtonTexture" in edits:
         descr_row.v.by_member("ButtonTexture").v = f"'Texture_Button_Unit_{edits['ButtonTexture']}'"
+    if "Nation" in edits:
+        descr_row.v.by_member("CountryTexture").v = f"'CommonTexture_MotherCountryFlag_{edits['Nation']}'"
     if "TypeStrategicCount" in edits:
         descr_row.v.by_member("TypeStrategicCount").v = edits["TypeStrategicCount"]
     descr_row.v.by_member("ButtonTexture").v = f"'Texture_Button_Unit_{edits['NewName']}'"
