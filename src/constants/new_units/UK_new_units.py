@@ -146,6 +146,10 @@ UK_NEW_UNITS = {
         "ShowroomGUID": "c4d5e6f7-8a9b-4c5d-6e7f-8a9b0c1d2e3f",
         "CadavreGUID": "e8f48e53-2ad0-4d41-ac9f-f6d24a3f2e77",
         "NewName": "Challenger_1_Mk1_CMD2_UK",
+        "GameName": {
+            "display": "#CMD CHALLENGER Mk.2",
+            "token": "RLYOMURBXH",
+        },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
