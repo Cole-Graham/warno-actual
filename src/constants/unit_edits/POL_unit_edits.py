@@ -606,14 +606,13 @@ pol_unit_edits = {
             "add": ['POL_20_Pancerna', 'POL_4_Zmechanizowana'],
             "is_transported": True,
             "needs_transport": True,
-            "default": {
-                "cards": 1,
-            },
             "POL_20_Pancerna": {
                 "Transports": ['UAZ_469_trans_POL', 'MTLB_trans_POL'],
+                "cards": 1,
             },
             "POL_4_Zmechanizowana": {
                 "Transports": ['UAZ_469_trans_POL'],
+                "cards": 1,
             },
         },
     },
@@ -1638,9 +1637,6 @@ pol_unit_edits = {
         "availability": 4,
         "XPMultiplier": [0.0, 4/4, 3/4, 2/4],
         "Divisions": {
-            "default": {
-                "cards": 1,
-            },
             "add": ['POL_20_Pancerna'],
             "is_transported": False,
             "needs_transport": False,
@@ -1699,8 +1695,17 @@ pol_unit_edits = {
                 },
             },
         },
+        "availability": 2,
         "XPMultiplier": [0.0, 2/2, 0.0, 1/2],
+        "Divisions": {
+            "add": ['POL_20_Pancerna'],
+            "is_transported": False,
+            "needs_transport": False,
+            "POL_20_Pancerna": {
+                "cards": 1,
+                "Transports": None,
+            },
+        },
     },
-
 }
 # fmt: off
