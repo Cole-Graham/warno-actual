@@ -47,7 +47,7 @@ def _remove_from_divisions(source_path: Any, unit: str, divisions: List[str]) ->
 
 
 def _add_to_divisions(source_path: Any, unit: str, edits: Dict) -> None:
-    """Add a unit to specified divisions.""" 
+    """Add a unit to specified divisions."""
     for deck_descr in source_path:
         for division in edits["Divisions"]["add"]:
             if deck_descr.n != f"Descriptor_Deck_Division_{division}_multi_Rule":
@@ -57,7 +57,7 @@ def _add_to_divisions(source_path: Any, unit: str, edits: Dict) -> None:
             transport_str = _build_transport_list(division, edits)
             
             # get cards for division or default card count
-            cards = edits["Divisions"].get(division, {}).get("cards", edits["Divisions"]["default"]["cards"])
+            cards = edits["Divisions"].get(division, {}).get("cards", edits["Divisions"].get("default", {}).get("cards"))
 
             # Create new rule entry
             new_entry = _create_rule_entry(
