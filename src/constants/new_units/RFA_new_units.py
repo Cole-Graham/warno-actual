@@ -3,10 +3,10 @@
 # fmt: off
 RFA_NEW_UNITS = {
     ("Engineers_CMD_RFA", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
-        "GUID": "588f60ff-9ec8-4b7a-8120-420261a07249",
-        "GroupeCombatGUID": "578b6227-7369-4cd9-9bbc-278e7723f972",
-        "ShowroomGUID": "5130c30c-9bf2-4cdd-8b72-cd4cef0dd6b2",
-        "CadavreGUID": "f224d57e-a53f-40bc-88dd-c96ecb026e64",
+        "GUID": "8c7f95ed-4fce-491e-9151-29ed2a49fc6a",
+        "GroupeCombatGUID": "64e00b37-e760-4493-89ab-28caa9c825d2",
+        "ShowroomGUID": "410ea2b1-7671-4061-ad6d-0228d39c973c",
+        "CadavreGUID": "c95f3f05-66f0-4a2a-b66f-1396d103d186",
         "NewName": "InfCV_CMD_RFA",
         "GameName": {
             "display": "#CMD FÜHRUNGSGRUPPE",

@@ -598,7 +598,7 @@ pol_unit_edits = {
 
     "HMGteam_NSV_POL": {  # NSW 12,7mm
         "GameName": {
-            "display": "NSW 12,7mm",
+            "display": "NSW 12.7mm",
             "token": "NSVAKANSW",
         },
         "availability": 8,

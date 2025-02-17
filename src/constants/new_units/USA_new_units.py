@@ -22,12 +22,12 @@ USA_NEW_UNITS = {
         # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
         # "Dangerousness": 12,
         "WeaponAssignment": [
-                (0, [1, ]),
-                (1, [1, ]),
-                (2, [1, ]),
-                (3, [0, 3]),
-                (4, [0, 2, ]),
-            ],
+            (0, [1, ]),
+            (1, [1, ]),
+            (2, [1, ]),
+            (3, [0, 3]),
+            (4, [0, 2, ]),
+        ],
         "WeaponDescriptor": {
             "Salves": {
                 "FM_M16": 7,
@@ -48,40 +48,41 @@ USA_NEW_UNITS = {
         "UnitAttackValue": 1,
         "UnitDefenseValue": 16,
         "SpecialitiesList": [
-                'hq_inf',
-                '_leader',
-                'infantry_equip_light',
-            ],
+            'hq_inf',
+            '_leader',
+            'infantry_equip_light',
+        ],
         "MenuIconTexture": "Texture_RTS_H_CMD_inf",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Inf",
         "Divisions": {
             "default": {
                 "cards": 2,
             },
-            "US_101st_Airmobile_multi": {
-                "Transports": ["M1038_Humvee_US", "UH60A_Black_Hawk_US"],
+            "US_101st_Airmobile_multi": {  # all M1038 changed to M998 - revert if u want
+                "Transports": ["M998_Humvee_US", "UH60A_Black_Hawk_US"],
             },
             "US_11ACR_multi": {
-                "Transports": ["M1038_Humvee_US", "UH60A_Black_Hawk_US"],
+                "Transports": ["M998_Humvee_US", "UH60A_Black_Hawk_US"],
+                "cards": 1,  # + 1 card RFA cmd inf
             },
             "US_24th_Inf_multi": {
-                "Transports": ["M1038_Humvee_US", "UH60A_Black_Hawk_US"],
+                "Transports": ["M998_Humvee_US", "UH60A_Black_Hawk_US"],
             },
             "US_35th_Inf_multi": {
-                "Transports": ["M1038_Humvee_US", "UH60A_Black_Hawk_US"],
+                "Transports": ["M998_Humvee_US", "UH60A_Black_Hawk_US"],
             },
             "US_3rd_Arm_multi": {
-                "Transports": ["M1038_Humvee_US", "UH60A_Black_Hawk_US"],
+                "Transports": ["M998_Humvee_US", "UH60A_Black_Hawk_US"],
             },
             "US_82nd_Airborne_multi": {
-                "Transports": ["M1038_Humvee_US", "UH60A_Black_Hawk_US"],
+                "Transports": ["M998_Humvee_US", "UH60A_Black_Hawk_US"],
             },
             "US_8th_Inf_multi": {
-                "Transports": ["M1038_Humvee_US", "UH60A_Black_Hawk_US"],
+                "Transports": ["M998_Humvee_US", "UH60A_Black_Hawk_US"],
             },
         },
         "availability": 2,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+        "XPMultiplier": [0.0, 0.0, 2/2, 0.0],
         "max_speed": 26,
         "Orders": ['Stop', 'Move', 'FollowFormation', 'SmartMove', 'Attack', 'SmartMoveAndAttack', 'MoveAndAttack', 
                    'Spread', 'Shoot', 'ShootOnPosition', 'ShootOnPositionWithoutCorrection', 'ShootOnPositionSmoke',
@@ -118,13 +119,13 @@ USA_NEW_UNITS = {
         "Stealth": 2.0,
         # "Dangerousness": 12,
         "WeaponAssignment": [
-                (0, [1, ]),
-                (1, [0, ]),
-                (2, [0, ]),
-                (3, [0, ]),
-                (4, [0, ]),
-                (5, [0, ]),
-            ],
+            (0, [1, ]),
+            (1, [0, ]),
+            (2, [0, ]),
+            (3, [0, ]),
+            (4, [0, ]),
+            (5, [0, ]),
+        ],
         "WeaponDescriptor": {
             "Salves": {
                 "FM_M16": 7,
@@ -218,6 +219,7 @@ USA_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "NATO",
         "Nation": "US",
+        "UpgradeFromUnit": "M1A1_Abrams_CMD2_US",
     },
 
     ("M1A1_Abrams_CMD_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -268,6 +270,7 @@ USA_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "NATO",
         "Nation": "US",
+        "UpgradeFromUnit": "M1IP_Abrams_CMD2_US",
     },
 
     ("M1A1_Abrams_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -366,6 +369,7 @@ USA_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "NATO",
         "Nation": "US",
+        "UpgradeFromUnit": "M1_Abrams_CMD2_US",
     },
 
     ("M1_Abrams_CMD_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys

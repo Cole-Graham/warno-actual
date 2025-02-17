@@ -333,6 +333,62 @@ RDA_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "PACT",
         "Nation": "DDR",
+        "UpgradeFromUnit": "T55A_CMD2_DDR",
+    },
+
+    ("T72M1_CMD_DDR", 0): {  # T-72M1K CV - stats copied from T-72M1D POL
+        "GUID": "1f959432-d175-45bd-8016-e97a918227e0",
+        "GroupeCombatGUID": "3253ab9a-0c2d-4d3a-b0b8-92bfc824b381",
+        "ShowroomGUID": "6ff34493-d566-430c-a501-2b1fb7c980fd",
+        "CadavreGUID": "63454739-09a9-4377-bddd-4125e18c2425",
+        "GameName": {
+            "display": "#CMD FüPz T-72M1K",
+            "token": "FUPZTSTMOK",
+        },
+        "NewName": "T72M1_CMD2_DDR",
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "Char_CMD",
+                "Commandant",
+                "GroundUnits",
+                "InfmapCommander",
+                "UNITE_T72M1_CMD2_DDR",
+                "Unite",
+            ],
+        },
+        "Factory": "EDefaultFactories/Logistic",
+        "CommandPoints": 285,
+        "SpecialitiesList": [
+            'hq_tank',
+            'leader_sov',
+            '_resolute',
+            '_smoke_launcher',
+        ],
+        # "Divisions": {
+        #     "default": {
+        #         "cards": 1,
+        #     },
+        #     "POL_20_Pancerna_multi": {
+        #         "Transports": None,
+        #     },
+        # },
+        "availability": 2,
+        "XPMultiplier": [0.0, 0.0, 2/2, 0.0],
+        "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack',
+                   'MoveAndAttack', 'Spread', 'Reverse', 'Shoot', 'ShootOnPosition',
+                   'ShootOnPositionWithoutCorrection', 'ShootDefensiveSmoke', 'AskForSupply',
+                   'AIDefend', 'AIAttack', 'AIStop'],
+        "is_infantry": False,  # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "POL",
+        "UpgradeFromUnit": "T72M_CMD2_DDR",
     },
 }
 # fmt: on

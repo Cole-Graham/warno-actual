@@ -25,6 +25,7 @@ usa_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+        "UpgradeFromUnit": "OH58C_CMD_US",
     },
 
     "M151_MUTT_CMD_US": {
@@ -45,13 +46,30 @@ usa_unit_edits = {
             "default": {
                 "cards": 2,
             },
+            "remove": ["US_82nd_Airborne"],
+            # airborne humvee redundant with regular after FWD deploy changes, just give regular one to 82ab imo
+            # TODO: revert if u disagree
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+        "XPMultiplier": [0.0, 3/3, 0.0, 0.0],
         "SpecialtiesList": {
             "remove_specs": ["'_para'"],
         },
-        "ButtonTexture": "M1038_Humvee_US",
+        "ButtonTexture": "M1025_Humvee_CMD_US",
         "DeploymentShift": 0,
+    },
+
+    "M1025_Humvee_CMD_US": {
+        "CommandPoints": 145,
+        "availability": 3,
+        "XPMultiplier": [0.0, 3/3, 0.0, 0.0],
+        "Divisions": {
+            "add": ['US_82nd_Airborne'],
+            # airborne humvee redundant with regular after FWD deploy changes, just give regular one to 82ab imo
+            # TODO: revert if u disagree
+            "US_82nd_Airborne": {
+                "cards": 2,
+            },
+        },
     },
 
     "M2A1_Bradley_Leader_US": {
@@ -63,6 +81,7 @@ usa_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+        "UpgradeFromUnit": "M577_CMD2_US",
     },
 
     "M2A2_Bradley_Leader_US": {
@@ -74,6 +93,10 @@ usa_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 0.0, 0.0, 1.0],
+    },
+
+    "CH47_Super_Chinook_US": {
+        "UpgradeFromUnit": "UH60A_Supply_US",
     },
 
     # US INF
@@ -233,6 +256,11 @@ usa_unit_edits = {
                 '_choc',
                 'infantry_equip_light',
             ],
+        },
+        "Divisions": {
+            "US_11ACR": {
+                "Transports": ["M1038_Humvee_US", "M113A3_US"],
+            }
         },
         "MenuIconTexture": "Texture_RTS_H_assault",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
@@ -608,6 +636,9 @@ usa_unit_edits = {
             "US_11ACR": {
                 "cards": 2,
             },
+            "US_8th_Inf": {
+                "Transports": ["M35_trans_US", "M113A3_US"],  # no change, just reversed display order
+            },
         },
         "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "max_speed": 26,
@@ -676,6 +707,9 @@ usa_unit_edits = {
             },
             "US_11ACR": {
                 "cards": 2,
+            },
+            "US_8th_Inf": {
+                "Transports": ["M151_MUTT_trans_US", "M113A3_US"],  # no change, just reversed display order
             },
         },
         "availability": 10,
@@ -784,6 +818,9 @@ usa_unit_edits = {
             },
             "US_11ACR": {
                 "cards": 2,
+            },
+            "US_8th_Inf": {
+                "Transports": ["M35_trans_US", "M113A3_US"],  # no change, just reversed display order
             },
         },
         "availability": 6,
@@ -900,6 +937,21 @@ usa_unit_edits = {
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
+        },
+    },
+
+    "Cavalry_US": {  # DISMOUNT TROOPERS WIP
+        "CommandPoints": 35,
+        "availability": 12,
+        "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "Salves": {
+            "FM_M16": 9,
+            "SAW_M249_5_56mm": 30,
+            "RocketInf_AT4_83mm": 4,
         },
     },
 
@@ -1982,6 +2034,8 @@ usa_unit_edits = {
 
     "M1025_Humvee_scout_US": {
         "CommandPoints": 25,
+        "ButtonTexture": "M1025_Humvee_HMG_LUX",
+        "UpgradeFromUnit": None,
     },
 
     "M1025_Humvee_AGL_US": {
@@ -1992,6 +2046,10 @@ usa_unit_edits = {
         "CommandPoints": 30,
     },
 
+    "M998_Humvee_Delta_US": {
+        "UpgradeFromUnit": "M1025_Humvee_AGL_US",
+    },
+
     "M981_FISTV_US": {
         "CommandPoints": 25,
         "availability": 8,
@@ -1999,13 +2057,13 @@ usa_unit_edits = {
             "display": "#RECO3 M981 FISTV",
             "token": "JKFBZFRBYZ",
         },
-        "TagSet": {
-            "add_tags": ['"reco_radar"'],
-        },
+        # "TagSet": {  # already added - this makes it show twice in the NDF
+        #     "add_tags": ['"reco_radar"'],
+        # },
         "optics": {
             "OpticalStrength": 233.475
         },
-        "XPMultiplier": [1.0, 0.0, 0.0, 0.0],  
+        "XPMultiplier": [8/8, 0.0, 0.0, 0.0],
     },
 
     "M113A1_TOW_US": {
@@ -2028,13 +2086,13 @@ usa_unit_edits = {
     "M3A1_Bradley_CFV_US": {
         "CommandPoints": 105,
         "availability": 4,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "XPMultiplier": [4/4, 3/4, 0.0, 0.0],
     },
 
     "M3A2_Bradley_CFV_US": {
         "CommandPoints": 135,
         "availability": 3,
-        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
+        "XPMultiplier": [3/3, 2/3, 0.0, 0.0],
     },
 
     "M551A1_ACAV_Sheridan_US": {
@@ -2113,8 +2171,18 @@ usa_unit_edits = {
                 "Transports": [
                     "M151_MUTT_trans_US",
                     "M151A2_scout_US",
-                    "M113_ACAV_US",
                     "M113A3_US",
+                    "M113_ACAV_US",
+                ],
+            },
+            "US_11ACR": {
+                "cards": 2,
+                "Transports": [
+                    "M998_Humvee_US",
+                    "M1025_Humvee_scout_US",
+                    "M1025_Humvee_AGL_nonPara_US",
+                    "M113A3_US",
+                    "M113_ACAV_US",
                 ],
             },
         },
@@ -2742,6 +2810,18 @@ usa_unit_edits = {
             "OpticalStrengthAltitude": 375,
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+        "UpgradeFromUnit": None,
+    },
+
+    "F16E_AA2_US": {  # 3x + 3x AIM-9M
+        "CommandPoints": 220,
+        "ECM": -0.35,
+        "availability": 2,
+        "optics": {
+            "OpticalStrengthAltitude": 375,
+        },
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+        "UpgradeFromUnit": "F16E_AA_US",
     },
 
     "A10_Thunderbolt_II_US": {  # 8x mk.82, 2x AIM-9M

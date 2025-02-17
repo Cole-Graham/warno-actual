@@ -161,6 +161,14 @@ rfa_unit_edits = {
         },
     },
 
+    "M113_GreenArcher_RFA": {
+        "availability": 8,
+        # "optics": {
+        #     "OpticalStrength": 233.475
+        # },
+        "XPMultiplier": [8/8, 0.0, 0.0, 0.0],
+    },
+
     # RFA AA
     "MANPAD_Redeye_RFA": {  # Fliegerfaust
         "CommandPoints": 20,

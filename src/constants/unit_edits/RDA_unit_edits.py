@@ -591,7 +591,45 @@ rda_unit_edits = {
         "XPMultiplier": [0.0, 0.0, 4/4, 0.0],
         "remove_zone_capture": None,
     },
-    
+
+    "T72M1_CMD_POL": {  # FüPz T-72M1K LDR
+        "CommandPoints": 190,
+        "GameName": {
+            "display": "#LDRSOV FüPz T-72M1K LDR.",
+            "token": "FUPZTSTMOL",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "GroundUnits",
+                "UNITE_T72M1_CMD_DDR",
+                "Unite",
+            ],
+        },
+        "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'Armor_heavy',
+                'leader_sov',
+                '_resolute'
+                '_smoke_launcher',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
+        "availability": 4,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "XPMultiplier": [0.0, 0.0, 4/4, 0.0],
+        "remove_zone_capture": None,
+    },
+
     "MTLB_trans_DDR": {
         "orders": {
             "add_orders": ["sell"],
