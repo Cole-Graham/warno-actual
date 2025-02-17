@@ -32,12 +32,12 @@ RDA_NEW_UNITS = {
         # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
         "Dangerousness": 12,
         "WeaponAssignment": [
-                (0, [1]),
-                (1, [0]),
-                (2, [0]),
-                (3, [0, 3]),
-                (4, [0, 2]),
-            ],
+            (0, [1]),
+            (1, [0]),
+            (2, [0]),
+            (3, [0, 3]),
+            (4, [0, 2]),
+        ],
         "WeaponDescriptor": {
             "Salves": {
                 "FM_Mpi_AK_74N": 7,
@@ -56,11 +56,11 @@ RDA_NEW_UNITS = {
         "UnitAttackValue": 1,
         "UnitDefenseValue": 16,
         "SpecialitiesList": [
-                'hq_inf',
-                'leader_sov',
-                '_resolute',
-                'infantry_equip_light',
-            ],
+            'hq_inf',
+            'leader_sov',
+            '_resolute',
+            'infantry_equip_light',
+        ],
         "MenuIconTexture": "Texture_RTS_H_CMD_inf",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Inf",
         "Divisions": {
@@ -111,11 +111,11 @@ RDA_NEW_UNITS = {
         "Factory": "EDefaultFactories/Logistic",
         "CommandPoints": 145,
         "SpecialitiesList": [
-                'hq_veh',
-                'leader_sov',
-                '_amphibie',
-                '_resolute',
-            ],
+            'hq_veh',
+            'leader_sov',
+            '_amphibie',
+            '_resolute',
+        ],
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -177,10 +177,10 @@ RDA_NEW_UNITS = {
         },
         "CommandPoints": 40,
         "SpecialitiesList": [
-                'AT',
-                '_resolute',
-                'infantry_equip_heavy',
-            ],
+            'AT',
+            '_resolute',
+            'infantry_equip_heavy',
+        ],
         "UpgradeFromUnit": "ATteam_Fagot_DDR",
         "ButtonTexture": "ATteam_Fagot_DDR",
         "Divisions": {

@@ -81,12 +81,12 @@ UK_NEW_UNITS = {
         # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
         "Dangerousness": 12,
         "WeaponAssignment": [
-                (0, [1, ]),
-                (1, [0, ]),
-                (2, [0, ]),
-                (3, [0, 3]),
-                (4, [0, 2, ]),
-            ],
+            (0, [1, ]),
+            (1, [0, ]),
+            (2, [0, ]),
+            (3, [0, 3]),
+            (4, [0, 2, ]),
+        ],
         "WeaponDescriptor": {
             "Salves": {
                 "FM_L85A1": 11,

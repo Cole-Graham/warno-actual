@@ -379,6 +379,7 @@ pol_unit_edits = {
         },
         "availability": 12,
         "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
+        "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
@@ -435,6 +436,9 @@ pol_unit_edits = {
     },
 
     "MotRifles_SVD_POL": {  # Piechota Zmech (SVD)
+        "GameName": {
+            "display": "PIECHOTA ZMECH [SWD]",
+        },
         "CommandPoints": 40,
         "availability": 12,
         "Divisions": {
@@ -451,9 +455,6 @@ pol_unit_edits = {
             "Salves": {
                 "FM_kbk_AK": 9,
             },
-        },
-        "GameName": {
-            "display": "PIECHOTA ZMECH [SWD]",
         },
         # 4x kbk AKM
         # 2x PKM
@@ -1248,13 +1249,7 @@ pol_unit_edits = {
         },
         "Divisions": {
             "POL_20_Pancerna": {
-                "Transports": [
-                    'Honker_4011_POL',
-                    'Honker_RYS_POL',
-                    'OT_65_POL',
-                    'Mi_2_trans_POL',
-                    'Mi_24D_POL',
-                ],
+                "Transports": ['Honker_4011_POL', 'Honker_RYS_POL', 'OT_65_POL', 'Mi_2_trans_POL', 'Mi_24D_POL'],
             },
         },
         "max_speed": 26,
@@ -1638,11 +1633,8 @@ pol_unit_edits = {
         "XPMultiplier": [0.0, 4/4, 3/4, 2/4],
         "Divisions": {
             "add": ['POL_20_Pancerna'],
-            "is_transported": False,
-            "needs_transport": False,
             "POL_20_Pancerna": {
                 "cards": 1,
-                "Transports": None,
             },
         },
     },
@@ -1699,11 +1691,8 @@ pol_unit_edits = {
         "XPMultiplier": [0.0, 2/2, 0.0, 1/2],
         "Divisions": {
             "add": ['POL_20_Pancerna'],
-            "is_transported": False,
-            "needs_transport": False,
             "POL_20_Pancerna": {
                 "cards": 1,
-                "Transports": None,
             },
         },
     },

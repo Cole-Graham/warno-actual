@@ -7,7 +7,7 @@ WeaponKey = Tuple[str, str, Optional[str], bool]  # (weapon, category, donor, is
 
 # fmt: off
 weapons: Dict[WeaponKey, WeaponData] = {
-    ("Sniper_SVD_Dragunov", "small_arms", None, False): { #735
+    ("Sniper_SVD_Dragunov", "small_arms", None, False): {  #735
         "Ammunition": {
             "Arme": {
                 "Family": "DamageFamily_sniper",
@@ -37,7 +37,37 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("Sniper_M24", "small_arms", None, False): { # 732
+    ("Sniper_G3A3ZF", "small_arms", None, False): {  #735
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_sniper",
+            },
+            "hit_roll": {
+                "BaseCriticModifier": 0,
+                "Idling": 65,
+            },
+            "parent_membr": {
+                "TempsEntreDeuxTirs": 6.0,
+                "TempsEntreDeuxFx": 6.0,
+                "PhysicalDamages": 1.0,
+                "SuppressDamages": 100.0,
+                "PorteeMaximaleGRU": 1050,
+                "PorteeMaximaleTBAGRU": 875,
+                "DisplaySalveAccuracy": False,
+                "TempsEntreDeuxSalves": 6.0,
+                "TempsDeVisee": 6.0,
+                "NbTirParSalves": 10,
+                "AffichageMunitionParSalve": 10
+            },
+        },
+        "BaseSupplyCost": 2,
+        "NbWeapons": [1],
+        "WeaponDescriptor": {
+            "Salves": 10,
+        },
+    },
+
+    ("Sniper_M24", "small_arms", None, False): {  # 732
         "Ammunition": {
             "Arme": {
                 "Family": "DamageFamily_sniper",
@@ -65,7 +95,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("Sniper_M21", "small_arms", None, False): { #731
+    ("Sniper_M21", "small_arms", None, False): {  #731
         "Ammunition": {
             "Arme": {
                 "Family": "DamageFamily_sniper",
@@ -123,7 +153,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("SAW_lMG_K_7_62mm", "small_arms", None, False): { #720
+    ("SAW_lMG_K_7_62mm", "small_arms", None, False): {  #720
         # todo: rename this, its 5.45mm... stupid eugen
         "Ammunition": {
             "hit_roll": {
@@ -150,7 +180,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("SAW_RPK_74_5_56mm", "small_arms", None, False): { #719
+    ("SAW_RPK_74_5_56mm", "small_arms", None, False): {  #719
         "Ammunition": {
             "hit_roll": {
                 "Moving": 15,
@@ -199,7 +229,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("SAW_Minimi_5_56mm", "small_arms", None, False): { #717
+    ("SAW_Minimi_5_56mm", "small_arms", None, False): {  #717
         "Ammunition": {
             "hit_roll": {
                 "Idling": 30,
@@ -225,7 +255,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("SAW_M249_5_56mm", "small_arms", None, False): { #716
+    ("SAW_M249_5_56mm", "small_arms", None, False): {  #716
         "Ammunition": {
             "hit_roll": {
                 "Idling": 30,
@@ -251,7 +281,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("SAW_L86A1_5_56mm", "small_arms", None, False): { #715
+    ("SAW_L86A1_5_56mm", "small_arms", None, False): {  #715
         "Ammunition": {
             "hit_roll": {
                 "Moving": 15,
@@ -275,7 +305,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("SAW_Bren_L4A4", "small_arms", None, False): { # 712
+    ("SAW_Bren_L4A4", "small_arms", None, False): {  # 712
         "Ammunition": {
             "Arme": {
                 "Family": "DamageFamily_full_balle",
@@ -304,7 +334,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("PM_Sterling", "small_arms", None, False): { # 572
+    ("PM_Sterling", "small_arms", None, False): {  # 572
         "Ammunition": {
             "hit_roll": {
                 "Idling": 40,
@@ -357,7 +387,60 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("PM_Skorpion", "small_arms", None, False): { # 571
+    ("PM_uzi", "small_arms", None, False): {  # 572
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 40,
+                "Moving": 30,
+            },
+            "parent_membr": {
+                "TempsEntreDeuxTirs": 0.5,
+                "PorteeMaximaleGRU": 450,
+                "PorteeMaximaleTBAGRU": 400,
+                "PhysicalDamages": 0.05,
+                "SuppressDamages": 5,
+                "DisplaySalveAccuracy": False,
+                "TempsDeVisee": 0.5,
+                "TempsEntreDeuxSalves": 3.5,
+                "NbTirParSalves": 7,
+                "AffichageMunitionParSalve": 20,
+            },
+        },
+        "BaseSupplyCost": 1,
+        "NbWeapons": [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+        "WeaponDescriptor": {
+            "Salves": 12,
+        },
+    },
+
+    ("PM_uzi_noreflex", "small_arms", "PM_uzi", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 40,
+                "Moving": 30,
+            },
+            "parent_membr": {
+                "TempsEntreDeuxTirs": 0.5,
+                "PorteeMaximaleGRU": 450,
+                "PorteeMaximaleTBAGRU": 400,
+                "PhysicalDamages": 0.05,
+                "SuppressDamages": 5,
+                "DisplaySalveAccuracy": False,
+                "TirReflexe": False,
+                "TempsDeVisee": 0.5,
+                "TempsEntreDeuxSalves": 3.5,
+                "NbTirParSalves": 7,
+                "AffichageMunitionParSalve": 20,
+            },
+        },
+        "BaseSupplyCost": 1,
+        "NbWeapons": [1],
+        "WeaponDescriptor": {
+            "Salves": 12,
+        },
+    },
+
+    ("PM_Skorpion", "small_arms", None, False): {  # 571
         "Ammunition": {
             "hit_roll": {
                 "Idling": 40,
@@ -409,7 +492,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("PM_MPi_AKSU_74NK", "small_arms", None, False): { # 568
+    ("PM_MPi_AKSU_74NK", "small_arms", None, False): {  # 568
         "Ammunition": {
             "hit_roll": {
                 "Idling": 60,
@@ -435,7 +518,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("Commando_733", "small_arms", None, False): { # renamed from PM_M4_Carbine 564
+    ("Commando_733", "small_arms", None, False): {  # renamed from PM_M4_Carbine 564
         "Ammunition": {
             "hit_roll": {
                 "Idling": 60,
@@ -520,7 +603,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("PM_C8_Carbine", "small_arms", None, False): { # 562
+    ("PM_C8_Carbine", "small_arms", None, False): {  # 562
         "Ammunition": {
             "hit_roll": {
                 "Idling": 60,
@@ -546,7 +629,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("PM_AS_Val", "small_arms", None, False): { # 560
+    ("PM_AS_Val", "small_arms", None, False): {  # 560
         "Ammunition": {
             "hit_roll": {
                 "Idling": 60,
@@ -572,7 +655,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("PM_AKSU_74", "small_arms", None, False): { # 559
+    ("PM_AKSU_74", "small_arms", None, False): {  # 559
         "Ammunition": {
             "hit_roll": {
                 "Idling": 60,
@@ -632,7 +715,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("MMG_inf_L7A2_7_62mm", "small_arms", None, False): { # 485
+    ("MMG_inf_L7A2_7_62mm", "small_arms", None, False): {  # 485
         "Ammunition": {
             "Arme": {
                 "Family": "DamageFamily_full_balle",
@@ -661,7 +744,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("MMG_inf_MAG_7_62mm", "small_arms", None, False): { # 485
+    ("MMG_inf_MAG_7_62mm", "small_arms", None, False): {  # 485
         "Ammunition": {
             "Arme": {
                 "Family": "DamageFamily_full_balle",
@@ -690,7 +773,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("MMG_inf_M240B_7_62mm", "small_arms", None, False): { # 484
+    ("MMG_inf_M240B_7_62mm", "small_arms", None, False): {  # 484
         "Ammunition": {
             "Arme": {
                 "Family": "DamageFamily_full_balle",
@@ -719,7 +802,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("MMG_PKT_7_62mm_x2", "small_arms", None, False): { # 476
+    ("MMG_PKT_7_62mm_x2", "small_arms", None, False): {  # 476
         "Ammunition": {
             "Arme": {
                 "Family": "DamageFamily_full_balle",
@@ -747,7 +830,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("MMG_PKT_7_62mm", "small_arms", None, False): { # 475
+    ("MMG_PKT_7_62mm", "small_arms", None, False): {  # 475
         "Ammunition": {
             "Arme": {
                 "Family": "DamageFamily_full_balle",
@@ -775,7 +858,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("MMG_PKM_7_62mm", "small_arms", None, False): { # 474
+    ("MMG_PKM_7_62mm", "small_arms", None, False): {  # 474
         "Ammunition": {
             "Arme": {
                 "Family": "DamageFamily_full_balle",
@@ -805,7 +888,36 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("MMG_WA_M60E3_7_62mm", "small_arms", None, False): { # 469
+    ("MMG_inf__MG3_7_62mm", "small_arms", None, False): {  # unchanged from L7A2 - needs change
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_full_balle",
+            },
+            "hit_roll": {
+                "Idling": 35,
+            },
+            "parent_membr": {
+                "TempsEntreDeuxTirs": 1.0,
+                "TempsEntreDeuxFx": 4.0,
+                "PorteeMaximaleGRU": 875,
+                "PorteeMaximaleTBAGRU": 700,
+                "PhysicalDamages": 0.07,
+                "SuppressDamages": 21,
+                "DisplaySalveAccuracy": False,
+                "TempsDeVisee": 2.0,
+                "TempsEntreDeuxSalves": 1.0,
+                "NbTirParSalves": 4,
+                "AffichageMunitionParSalve": 20,
+            },
+        },
+        "BaseSupplyCost": 1,
+        "NbWeapons": [4, 3, 2, 1],
+        "WeaponDescriptor": {
+            "Salves": 30,
+        },
+    },
+
+    ("MMG_WA_M60E3_7_62mm", "small_arms", None, False): {  # 469
         "Ammunition": {
             "Arme": {
                 "Family": "DamageFamily_full_balle",
@@ -869,7 +981,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("MMG_M240_7_62mm", "small_arms", None, False): { # 466
+    ("MMG_M240_7_62mm", "small_arms", None, False): {  # 466
         "Ammunition": {
             "Arme": {
                 "Family": "DamageFamily_full_balle",
@@ -1019,7 +1131,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("Lance_grenade_Mk19_40mm", "AGL", None, False): { # 451
+    ("Lance_grenade_Mk19_40mm", "AGL", None, False): {  # 451
         "Ammunition": {
             "hit_roll": {
                 "Idling": 25,
@@ -1046,7 +1158,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("Lance_grenade_AGS17", "AGL", None, False): { # 449
+    ("Lance_grenade_AGS17", "AGL", None, False): {  # 449
         "Ammunition": {
             "hit_roll": {
                 "Idling": 25,
@@ -1073,7 +1185,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("HMG_team_12_7_mm_NSV_6U6", "small_arms", None, False): { # 356
+    ("HMG_team_12_7_mm_NSV_6U6", "small_arms", None, False): {  # 356
         "Ammunition": {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 1225,
@@ -1081,7 +1193,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("HMG_14_5_mm_KPVT", "small_arms", None, False): { # 353
+    ("HMG_14_5_mm_KPVT", "small_arms", None, False): {  # 353
         "Ammunition": {
             "hit_roll": {
                 "Idling": 35,
@@ -1243,7 +1355,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("FM_Mpi_AK_74N", "small_arms", None, False): { # 303
+    ("FM_Mpi_AK_74N", "small_arms", None, False): {  # 303
         "Ammunition": {
             "hit_roll": {
                 "Idling": 40,
@@ -1296,7 +1408,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("FM_Mpi_AKS_74NK", "small_arms", None, False): { # 302
+    ("FM_Mpi_AKS_74NK", "small_arms", None, False): {  # 302
         "Ammunition": {
             "hit_roll": {
                 "Idling": 40,
@@ -1349,7 +1461,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("FM_M16A1", "small_arms", None, False): { # 300
+    ("FM_M16A1", "small_arms", None, False): {  # 300
         "Ammunition": {
             "hit_roll": {
                 "Idling": 40,
@@ -1375,7 +1487,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("FM_M16", "small_arms", None, False): { # 299
+    ("FM_M16", "small_arms", None, False): {  # 299
         "Ammunition": {
             "hit_roll": {
                 "Idling": 40,
@@ -1401,7 +1513,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("FM_M16_noreflex", "small_arms", "FM_M16", True): { # 299
+    ("FM_M16_noreflex", "small_arms", "FM_M16", True): {  # 299
         "Ammunition": {
             "hit_roll": {
                 "Idling": 40,
@@ -1428,7 +1540,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("FM_L85A1", "small_arms", None, False): { # 297
+    ("FM_L85A1", "small_arms", None, False): {  # 297
         "Ammunition": {
             "hit_roll": {
                 "Idling": 40,
@@ -1481,7 +1593,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("FM_L1A1_SLR", "small_arms", None, False): { # 296
+    ("FM_L1A1_SLR", "small_arms", None, False): {  # 296
         "Ammunition": {
             "hit_roll": {
                 "Idling": 50,
@@ -1507,7 +1619,33 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("FM_AK_74", "small_arms", None, False): { # 287
+    ("FM_G3KA4", "small_arms", None, False): {  # 296
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 50,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "TempsEntreDeuxTirs": 2.0,
+                "PorteeMaximaleGRU": 875,
+                "PorteeMaximaleTBAGRU": 700,
+                "PhysicalDamages": 0.07,
+                "SuppressDamages": 21,
+                "DisplaySalveAccuracy": False,
+                "TempsDeVisee": 1.0,
+                "TempsEntreDeuxSalves": 6.0,
+                "NbTirParSalves": 3,
+                "AffichageMunitionParSalve": 10,
+            },
+        },
+        "BaseSupplyCost": 1,
+        "NbWeapons": [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+        "WeaponDescriptor": {
+            "Salves": 22,
+        },
+    },
+
+    ("FM_AK_74", "small_arms", None, False): {  # 287
         "Ammunition": {
             "hit_roll": {
                 "Idling": 40,
@@ -1560,7 +1698,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("FM_AKS_74", "small_arms", None, False): { # 286
+    ("FM_AKS_74", "small_arms", None, False): {  # 286
         "Ammunition": {
             "hit_roll": {
                 "Idling": 40,
@@ -1586,7 +1724,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("FM_AKS_74_noreflex", "small_arms", "FM_AKS_74", True): { # 286
+    ("FM_AKS_74_noreflex", "small_arms", "FM_AKS_74", True): {  # 286
         "Ammunition": {
             "hit_roll": {
                 "Idling": 40,
