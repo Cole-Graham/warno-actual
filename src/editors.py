@@ -347,7 +347,7 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         ],
         "GameData/Generated/Gameplay/Gfx/Infanterie/GeneratedDepictionInfantry.ndf": [
             lambda source_path: edit_infantry_depictions(source_path, game_db['ammunition'], game_db['depiction_data']),
-            create_infantry_depictions,
+            lambda source_path: create_infantry_depictions(source_path, game_db),
             unit_edits_depictioninfantry,
         ],
         # UI files

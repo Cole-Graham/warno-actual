@@ -353,6 +353,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "PhysicalDamages": 0.334,
                 "SuppressDamages": 25,
                 "DisplaySalveAccuracy": False,
+                "TempsDeVisee": 1.25,
                 "TempsEntreDeuxSalves": 1.8,
                 "NbTirParSalves": 6,
                 "SupplyCost": 2,

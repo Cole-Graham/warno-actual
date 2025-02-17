@@ -304,6 +304,85 @@ SOV_NEW_UNITS = {
         "Faction": "PACT",
         "Nation": "SOV",
     },
+    
+    ("MotRifles_TTsko_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "21a5481c-bf7f-45b8-9c22-bb6885850521",
+        "GroupeCombatGUID": "f41497ec-862f-4321-b628-0b6fb0b80b27",
+        "ShowroomGUID": "a4ac9eac-d74d-4da1-91d6-f2c08dd11ad3",
+        "CadavreGUID": "9d790fe8-5668-4757-b532-6d70f411d232",
+        "NewName": "MotRifles_RPG7V_TTsko_SOV",
+        "GameName": {
+            "display": "MOTOSTRELKI [RPG-7V]",
+            "token": "UQYYVBRKGT",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_IFV",
+                "Infanterie_Standard",
+                "Steelman_infanterie_autoresolve",
+                "UNITE_MotRifles_RPG7_TTsko_SOV",
+                "Unite",
+            ],
+        },
+        "strength": 7,
+        "WeaponAssignment": [
+                (0, [1]),
+                (1, [0]),
+                (2, [0]),
+                (3, [0]),
+                (4, [0]),
+                (5, [0]),
+                (6, [0, 2]),
+            ],
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_AK_74": 9,
+                "SAW_RPK_74_5_56mm": 10,
+                "RocketInf_RPG7VL": 6,
+            },
+            "equipmentchanges": {
+                "replace": [("RocketInf_RPG27_105mm", "RocketInf_RPG7VL")],
+                "fire_effect": [("RocketInf_RPG27_105mm", "RocketInf_RPG7VL")],
+            },
+        },
+        "TransportedSoldier": "MotRifles_RPG7V_TTsko_SOV",
+        "CommandPoints": 30,
+        "SpecialitiesList": [
+                'infantry',
+                '_ifv',
+                'infantry_equip_medium',
+            ],
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+            "SOV_27_Gds_Rifle_multi": {
+                "Transports": ["GAZ_66_SOV", "BMP_1P_SOV", "BMP_2_SOV", "BMP_2AG_SOV", "BMP_3_SOV"],
+            },
+        },
+        "availability": 12,
+        "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
+        "max_speed": 26,
+        "Orders": ['Stop', 'Move', 'FollowFormation', 'SmartMove', 'Attack', 'SmartMoveAndAttack', 'MoveAndAttack', 
+                   'Spread', 'Shoot', 'ShootOnPosition', 'ShootOnPositionWithoutCorrection', 'AskForSupply', 
+                   'EnterDistrict', 'LoadIntoTransport', 'Load', 'AIDefend', 'AIAttack', 'AIStop'],
+        "is_infantry": True, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": False,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "SOV",
+        "UpgradeFromUnit": "MotRifles_TTsko_SOV",
+        "alternatives_count": 6,
+        "selector_tactic": "0, 6",
+    },
 
     ("ATteam_Fagot_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "22caa472-c587-4816-b3b4-913e7c2316f4",

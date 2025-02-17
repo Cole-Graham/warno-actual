@@ -29,7 +29,7 @@ uk_unit_edits = {
 
     # UK INF
     "Territorial_CMD_UK": {
-        "CommandPoints": 40,
+        "CommandPoints": 30,
         "GameName": {
             "display": "#LDR TERRIERS LDR.",
             "token": "QMPRIAZFYF",
@@ -92,7 +92,7 @@ uk_unit_edits = {
     },
     
     "Engineers_CMD_UK": {
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "GameName": {
             "display": "#LDR ASSAULT PIONEERS LDR.",
             "token": "VZOODKAGWE",
@@ -157,7 +157,7 @@ uk_unit_edits = {
     },
     
     "Rifles_CMD_UK": {
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "GameName": {
             "display": "#LDR RIFLES LDR.",
             "token": "YGMKZKXXEV",
@@ -200,7 +200,7 @@ uk_unit_edits = {
     },
     
     "Airmobile_CMD_UK": {
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "GameName": {
             "display": "#LDR AIRMOBILE LDR.",
             "token": "CFLNZATSET",
@@ -241,7 +241,7 @@ uk_unit_edits = {
     },
     
     "Airmobile_Mot_CMD_UK": {
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "GameName": {
             "display": "#LDR MOT. AIRMOBILE LDR.",
             "token": "DPDYRJPOBS",
@@ -565,13 +565,13 @@ uk_unit_edits = {
     },
     
     "Howz_L118_105mm_UK": {
-        "CommandPoints": 55,
+        "CommandPoints": 60,
         "availability": 4,
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
     },
     
     "FH70_155mm_UK": {
-        "CommandPoints": 100,
+        "CommandPoints": 110,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -585,13 +585,13 @@ uk_unit_edits = {
         "GameName": {
             "display": "M107A2",
         },
-        "CommandPoints": 170,
+        "CommandPoints": 185,
         "availability": 2,
         "XPMultiplier": [1.0, 0.0, 0.5, 0.0],
     },
     
     "M270_MLRS_cluster_UK": {
-        "CommandPoints": 280,
+        "CommandPoints": 300,
         "availability": 1,
         "Divisions": {
             # "add": ["US_8th_Inf"],

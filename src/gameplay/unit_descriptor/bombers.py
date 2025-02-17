@@ -58,15 +58,15 @@ def global_bomber_edits(source_path, game_db):
                     continue
                 
                 if is_sead and not is_ew:
-                    module.v.by_m("UnitConcealmentBonus").v = "1.5"
-                    logger.debug(f"Set {unit_name} stealthbonus to 1.5")
+                    module.v.by_m("UnitConcealmentBonus").v = "1.75"
+                    logger.debug(f"Set {unit_name} stealthbonus to 1.75")
                 
             elif module_type == "AirplaneMovementDescriptor" and has_terrain_radar:
                 if is_sead and not is_ew:
                     module.v.by_m("AltitudeGRU").v = "300"
                 elif not is_ew:
-                    module.v.by_m("AltitudeGRU").v = "200"
-                logger.debug(f"Set {unit_name} altitude to 200m")
+                    module.v.by_m("AltitudeGRU").v = "300"
+                logger.debug(f"Set {unit_name} altitude to 300m")
                     
             elif module_type == "TUnitUIModuleDescriptor":
                 if dive_attack:

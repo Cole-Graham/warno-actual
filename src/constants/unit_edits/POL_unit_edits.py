@@ -552,7 +552,7 @@ pol_unit_edits = {
         "Strength": 3,
         "CommandPoints": 30,
         "availability": 10,
-        "XPMultiplier": [0.0, 10/10, 7/10, 0.0],
+        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -838,13 +838,13 @@ pol_unit_edits = {
     },
 
     "Howz_M30_122mm_POL": {  # H wz. 1938/85 122mm
-        "CommandPoints": 60,
+        "CommandPoints": 65,
         "availability": 5,
         "XPMultiplier": [5/5, 4/5, 3/5, 0.0],
     },
 
     "Howz_ML20_152mm_POL": {  # AH wz. 1937/85 152mm
-        "CommandPoints": 100,
+        "CommandPoints": 110,
         "availability": 3,
         "XPMultiplier": [3/3, 2/3, 0.0, 0.0],
         "UpgradeFromUnit": "Howz_M30_122mm_POL",
@@ -869,7 +869,7 @@ pol_unit_edits = {
     },
 
     "2S1_POL": {  # 2S1 Gozdzik
-        "CommandPoints": 100,
+        "CommandPoints": 110,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -880,7 +880,7 @@ pol_unit_edits = {
     },
 
     "2S1M_POL": {  # 2S1M Morski Gozdzik
-        "CommandPoints": 100,
+        "CommandPoints": 110,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -894,7 +894,7 @@ pol_unit_edits = {
         "GameName": {
             "display": "AHS wz. 77 DANA",
         },
-        "CommandPoints": 200,
+        "CommandPoints": 210,
         "availability": 2,
         "XPMultiplier": [2/2, 0.0, 1/2, 0.0],
         "Divisions": {

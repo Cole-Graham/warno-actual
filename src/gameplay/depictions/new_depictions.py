@@ -5,14 +5,16 @@ from typing import Any
 from src import ndf
 from src.constants.new_units import NEW_DEPICTIONS, NEW_UNITS
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import generate_guid, is_obj_type
+from src.utils.ndf_utils import generate_guid, is_obj_type, strip_quotes
 
 logger = setup_logger(__name__)
 
 
-def create_infantry_depictions(source_path: Any) -> None:
+def create_infantry_depictions(source_path: Any, game_db: Any) -> None:
     """Create infantry depiction entries in GeneratedDepictionInfantry.ndf."""
     logger.info("Creating infantry depiction entries")
+    
+    depiction_db = game_db["depiction_data"]
     
     for donor, edits in NEW_UNITS.items():
         donor_name = donor[0]
@@ -20,6 +22,7 @@ def create_infantry_depictions(source_path: Any) -> None:
             continue
             
         unit_name = edits["NewName"]
+        depiction_key = unit_name.lower()
         
         # Clone all required objects
         depictionsquad_obj = source_path.by_namespace(f"Gfx_{donor_name}").copy()
@@ -27,10 +30,34 @@ def create_infantry_depictions(source_path: Any) -> None:
         
         weaponalternatives_obj = source_path.by_namespace(f"AllWeaponAlternatives_{donor_name}").copy()
         weaponalternatives_obj.namespace = f"AllWeaponAlternatives_{unit_name}"
+        if depiction_key in NEW_DEPICTIONS:
+            infantry_depiction_edits = NEW_DEPICTIONS[depiction_key].get("GeneratedDepictionInfantry_ndf", {})
+            if not infantry_depiction_edits:
+                continue
+            for (namespace, obj_type), depiction_edits in infantry_depiction_edits.items():
+                if namespace.startswith("AllWeaponAlternatives_"):
+                    for row_index, (edit_type, edit_list) in depiction_edits.items():
+                        if edit_type == "edit":
+                            for member, value in edit_list:
+                                if member == "MeshDescriptor" or member == "ReferenceMeshForSkeleton":
+                                    new_mesh = f"$/GFX/DepictionResources/Modele_{value}"
+                                    weaponalternatives_obj.v[row_index].v.by_m(member).v = new_mesh
+                                    logger.info(f"Changed {member} for {unit_name} to {new_mesh}")
         
         weaponsubdepictions_obj = source_path.by_namespace(f"AllWeaponSubDepiction_{donor_name}").copy()
         weaponsubdepictions_obj.namespace = f"AllWeaponSubDepiction_{unit_name}"
         weaponsubdepictions_obj.v.by_member("Alternatives").v = f"AllWeaponAlternatives_{unit_name}"
+        f_effect_changes = edits.get("WeaponDescriptor", {}).get("equipmentchanges", {}).get("fire_effect", [])
+        if f_effect_changes:
+            operators = weaponsubdepictions_obj.v.by_member("Operators")
+            for operator in operators.v:
+                fire_effect_val = operator.v.by_m("FireEffectTag")
+                for old_fire_effect, new_fire_effect in f_effect_changes:
+                    for fire_effect in fire_effect_val.v:
+                        fire_effect = strip_quotes(fire_effect.v)
+                        if old_fire_effect == fire_effect.replace("FireEffect_", ""):
+                            operator.v.by_m("FireEffectTag").v = "['" + f"FireEffect_{new_fire_effect}" + "']"
+                            logger.debug(f"Replaced fire effect{old_fire_effect} with {new_fire_effect}")
         
         weaponbackpack_obj = source_path.by_namespace(f"AllWeaponSubDepictionBackpack_{donor_name}").copy()
         weaponbackpack_obj.namespace = f"AllWeaponSubDepictionBackpack_{unit_name}"

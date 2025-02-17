@@ -20,7 +20,9 @@ def edit_aim_times(source_path):
                     logger.info(f"(Ammunition.ndf) Changed {ammo_descr.namespace} aim time to 1.5")
                     continue
                 else:
-                    logger.warning(f"(Ammunition.ndf) {ammo_descr.namespace} aim time is not 3.0, likely changed by Eugen")
+                    logger.warning(f"""(Ammunition.ndf) {ammo_descr.namespace} aim time is not 3.0, likely
+                                   an ammo edit changed this (in which case ignore this warning) or it was
+                                   changed by Eugen""")
                     continue
 
             if ammo_type == "'NZWXQNJFDX'": # Rocket Launcher
@@ -29,7 +31,9 @@ def edit_aim_times(source_path):
                     logger.info(f"(Ammunition.ndf) Changed {ammo_descr.namespace} aim time to 1.0")
                     continue
                 else:
-                    logger.warning(f"(Ammunition.ndf) {ammo_descr.namespace} aim time is not 1.5, likely changed by Eugen")
+                    logger.warning(f"""(Ammunition.ndf) {ammo_descr.namespace} aim time is not 1.5, likely
+                                   an ammo edit changed this (in which case ignore this warning) or it was
+                                   changed by Eugen""")
                     continue
             
             if ammo_type == "'GUQUYPXNMN'": # HMG
@@ -39,7 +43,9 @@ def edit_aim_times(source_path):
                     logger.info(f"(Ammunition.ndf) Changed {ammo_descr.namespace} aim time to 1.0 ({unit_type})")
                     continue
                 else:
-                    logger.warning(f"(Ammunition.ndf) {ammo_descr.namespace} aim time is not 2.5, likely changed by Eugen")
+                    logger.warning(f"""(Ammunition.ndf) {ammo_descr.namespace} aim time is not 2.5, likely
+                                   an ammo edit changed this (in which case ignore this warning) or it was
+                                   changed by Eugen""")
                     continue
 
             if ammo_type == "'BBQBDWUTJX'": # MMG
@@ -49,7 +55,9 @@ def edit_aim_times(source_path):
                     logger.info(f"(Ammunition.ndf) Changed {ammo_descr.namespace} aim time to 1.0 ({unit_type})")
                     continue
                 else:
-                    logger.warning(f"(Ammunition.ndf) {ammo_descr.namespace} aim time is not 2.2 or 2.0, likely changed by Eugen")
+                    logger.warning(f"""(Ammunition.ndf) {ammo_descr.namespace} aim time is not 2.2 or 2.0, likely
+                                   an ammo edit changed this (in which case ignore this warning) or it was
+                                   changed by Eugen""")
                     continue
 
 

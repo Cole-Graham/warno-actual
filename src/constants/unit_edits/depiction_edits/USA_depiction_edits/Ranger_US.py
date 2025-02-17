@@ -15,7 +15,7 @@ ranger_us: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
 
         ("AllWeaponSubDepiction_Ranger_US", "TemplateAllSubWeaponDepiction"): {
             "Operators": {
-                1: ("edit", [("FireEffectTag", "RocketInf_AT4_83mm")]),
+                2: ("edit", [("FireEffectTag", "RocketInf_AT4_83mm")]),
             },
         },
     }

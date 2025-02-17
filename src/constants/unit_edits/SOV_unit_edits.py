@@ -117,7 +117,7 @@ sov_unit_edits = {
 
     # SOV INF
     "MotRifles_CMD_TTsko_SOV": {
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "GameName": {
             "display": "#LDRSOV MOTOSTRELKI LDR.",
             # "token": "ZJRMUWLPVH",
@@ -166,7 +166,7 @@ sov_unit_edits = {
             },
         },
         "availability": 7,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
+        "XPMultiplier": [0.0, 0.0, 7/7, 5/7],
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -234,7 +234,7 @@ sov_unit_edits = {
             },
         },
         "availability": 5,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.8],
+        "XPMultiplier": [0.0, 0.0, 5/5, 4/5],
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -309,7 +309,7 @@ sov_unit_edits = {
             },
         },
         "availability": 5,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
+        "XPMultiplier": [0.0, 0.0, 5/5, 4/5],
         "max_speed": 26,
         "selector_tactic": "(0, 8)",
         "selector_tactic_obj": "00_08",
@@ -358,7 +358,7 @@ sov_unit_edits = {
             },
         },
         "availability": 4,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.75],
+        "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
         "max_speed": 26,
         "selector_tactic": "(0, 8)",
         "selector_tactic_obj": "00_08",
@@ -368,7 +368,7 @@ sov_unit_edits = {
     },
 
     "VDV_CMD_SOV": {
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "GameName": {
             "display": "#LDRSOV DESANTNIKI LDR.",
             # "token": "JSBZIJKKJJ",
@@ -410,13 +410,13 @@ sov_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "availability": 5,
+        "availability": 4,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.8],
+        "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
         "max_speed": 20,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -439,7 +439,7 @@ sov_unit_edits = {
     },
 
     "Engineers_CMD_VDV_SOV": {
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "GameName": {
             "display": "#LDRSOV DESANT. SAPERY LDR.",
             # "token": "SWFVKVIZVT",
@@ -483,7 +483,7 @@ sov_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_assault",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
         "availability": 5,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.8],
+        "XPMultiplier": [0.0, 0.0, 5/5, 4/5],
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -508,7 +508,7 @@ sov_unit_edits = {
             "display": "SAPERY",
         },
         "CommandPoints": 40,
-        "availability": 8,
+        "availability": 7,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -517,7 +517,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "XPMultiplier": [0.0, 7/7, 5/7, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -537,13 +537,13 @@ sov_unit_edits = {
             "display": "SAPERY",
         },
         "CommandPoints": 40,
-        "availability": 8,
+        "availability": 7,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "XPMultiplier": [0.0, 7/7, 5/7, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -568,7 +568,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "XPMultiplier": [0.0, 10/10, 7/10, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -580,7 +580,7 @@ sov_unit_edits = {
             "display": "SAPERY [RPO]",
         },
         "CommandPoints": 50,
-        "availability": 8,
+        "availability": 6,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -589,7 +589,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -608,13 +608,13 @@ sov_unit_edits = {
             "display": "SAPERY [RPO]",
         },
         "CommandPoints": 50,
-        "availability": 8,
+        "availability": 6,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -634,7 +634,7 @@ sov_unit_edits = {
         },
         "CommandPoints": 35,
         "availability": 10,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "XPMultiplier": [0.0, 10/10, 7/10, 0.0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -648,7 +648,7 @@ sov_unit_edits = {
     
     "MotRifles_SOV": {
         "GameName": {
-            "display": "MOTOSTRELKI [BMP]",
+            "display": "MOTOSTRELKI [RPG-7V]",
         },
         "CommandPoints": 30,
         "availability": 12,
@@ -660,7 +660,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -675,7 +675,7 @@ sov_unit_edits = {
         "availability": 12,
         "Divisions": {
             "default": {
-                "cards": 3,
+                "cards": 2,
             },
         },
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
@@ -708,6 +708,7 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
+        "UpgradeFromUnit": "MotRifles_RPG7V_TTsko_SOV",
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 11,
@@ -1396,7 +1397,7 @@ sov_unit_edits = {
     },
 
     "Howz_D30_122mm_SOV": {
-        "CommandPoints": 75,
+        "CommandPoints": 85,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1428,7 +1429,7 @@ sov_unit_edits = {
         "GameName": {
             "display": "2A36 GIATSINT-B 152mm",
         },
-        "CommandPoints": 100,
+        "CommandPoints": 110,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1443,7 +1444,7 @@ sov_unit_edits = {
         "GameName": {
             "display": "2A65 MSTA-B 152mm",
         },
-        "CommandPoints": 100,
+        "CommandPoints": 110,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1455,7 +1456,7 @@ sov_unit_edits = {
     },
 
     "2S1_Gvozdika_SOV": {
-        "CommandPoints": 100,
+        "CommandPoints": 110,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1472,7 +1473,7 @@ sov_unit_edits = {
     },
 
     "2S3M_Akatsiya_SOV": {
-        "CommandPoints": 165,
+        "CommandPoints": 180,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1483,7 +1484,7 @@ sov_unit_edits = {
     },
 
     "2S3M1_Akatsiya_SOV": {
-        "CommandPoints": 200,
+        "CommandPoints": 220,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1500,13 +1501,13 @@ sov_unit_edits = {
     },
 
     "BM21V_GradV_SOV": {
-        "CommandPoints": 85,
+        "CommandPoints": 95,
         "availability": 3,
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
     },
 
     "BM21_Grad_SOV": {
-        "CommandPoints": 175,
+        "CommandPoints": 195,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1517,7 +1518,7 @@ sov_unit_edits = {
     },
 
     "TOS1_Buratino_SOV": {
-        "CommandPoints": 230,
+        "CommandPoints": 250,
         "availability": 2,
         "Divisions": {
             "default": {
