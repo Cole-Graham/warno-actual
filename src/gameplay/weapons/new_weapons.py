@@ -6,7 +6,7 @@ from src import ndf
 from src.constants.new_units import NEW_UNITS
 from src.constants.weapons.ammunition.small_arms import weapons as small_arms_weapons
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import is_valid_turret
+from src.utils.ndf_utils import is_valid_turret, strip_quotes
 
 logger = setup_logger(__name__)
 
@@ -45,7 +45,7 @@ def create_new_weapons(source_path: Any, game_db: Dict[str, Any]) -> None:
                 # Handle replacements
                 if "replace" in changes:
                     for old_ammo, new_ammo in changes["replace"]:
-                        _replace_weapon(new_weap_row, old_ammo, new_ammo, game_db)
+                        _replace_weapon(changes, new_weap_row, old_ammo, new_ammo, game_db)
                         
                 # Handle quantities
                 if "quantity" in changes:
@@ -61,7 +61,13 @@ def create_new_weapons(source_path: Any, game_db: Dict[str, Any]) -> None:
         logger.info(f"Added weapon descriptor for {edits['NewName']}")
 
 
-def _replace_weapon(new_weap_row: Any, old_ammo: str, new_ammo: str, game_db: Dict[str, Any]) -> None:
+def _replace_weapon(
+    changes: Dict[str, Any],   
+    new_weap_row: Any,
+    old_ammo: str,
+    new_ammo: str,
+    game_db: Dict[str, Any]
+) -> None:
     """Replace a weapon in the weapon descriptor."""
     ammo_db = game_db["ammunition"]
     old_ammo_db = ammo_db["renames_new_old"].get(old_ammo, None)
@@ -79,6 +85,12 @@ def _replace_weapon(new_weap_row: Any, old_ammo: str, new_ammo: str, game_db: Di
                 prefix = current_ammo.split("_", 1)[0]
                 weapon_descr_row.v.by_m("Ammunition").v = f"{prefix}_{new_ammo}"
                 logger.debug(f"Replaced weapon {old_ammo} with {new_ammo}")
+                if "fire_effect" in changes:
+                    fire_effect_val = strip_quotes(weapon_descr_row.v.by_m("EffectTag").v)
+                    for old_fire_effect, new_fire_effect in changes["fire_effect"]:
+                        if old_fire_effect == fire_effect_val.replace("FireEffect_", ""):
+                            weapon_descr_row.v.by_m("EffectTag").v = "'" + f"FireEffect_{new_fire_effect}" + "'"
+                            logger.debug(f"Replaced fire effect{old_fire_effect} with {new_fire_effect}")
                 break
 
 

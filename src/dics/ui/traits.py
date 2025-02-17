@@ -11,16 +11,16 @@ for key, value in runner_configs.items():
             runner_range = value
     elif key == "FuelSupplyBySecond":
         runner_fuel = value * 30
-        runner_fuel_percentage = f"(+{int(value * 100)}%)" if value != 1.0 else ""
+        runner_fuel_percentage = f"({int(value * 100)}%)" if value != 1.0 else ""
     elif key == "HealthSupplyBySecond":
         runner_health = float(value/10)
-        runner_health_percentage = f"(-{int(value * 100/2)}%)" if value != 2.0 else ""
+        runner_health_percentage = f"({int(value * 100/2)}%)" if value != 2.0 else ""
     elif key == "AmmunitionSupplyBySecond":
         runner_ammo = value * 60
-        runner_ammo_percentage = f"(+{int(value * 100)}%)" if value != 1.0 else ""
+        runner_ammo_percentage = f"({int(value * 100)}%)" if value != 1.0 else ""
     elif key == "CriticsSupplyBySecond":
         runner_critics = value * 10
-        runner_critics_percentage = f"(-{int(value * 100)}%)" if value != 1.0 else ""
+        runner_critics_percentage = f"({int(value * 100)}%)" if value != 1.0 else ""
 
 squad_configs = NEW_SUPPLY_CONSTANTS["SquadSupply"]
 for key, value in squad_configs.items():
@@ -31,16 +31,16 @@ for key, value in squad_configs.items():
             squad_range = value
     elif key == "FuelSupplyBySecond":
         squad_fuel = value * 30
-        squad_fuel_percentage = f"(+{int(value * 100)}%)" if value != 1.0 else ""
+        squad_fuel_percentage = f"({int(value * 100)}%)" if value != 1.0 else ""
     elif key == "HealthSupplyBySecond":
         squad_health = float(value/10)
-        squad_health_percentage = f"(-{int(value * 100/2)}%)" if value != 2.0 else ""
+        squad_health_percentage = f"({int(value * 100/2)}%)" if value != 2.0 else ""
     elif key == "AmmunitionSupplyBySecond":
         squad_ammo = value * 60
-        squad_ammo_percentage = f"(+{int(value * 100)}%)" if value != 1.0 else ""
+        squad_ammo_percentage = f"({int(value * 100)}%)" if value != 1.0 else ""
     elif key == "CriticsSupplyBySecond":
         squad_critics = value * 10
-        squad_critics_percentage = f"(+{int(value * 100)}%)" if value != 1.0 else ""
+        squad_critics_percentage = f"({int(value * 100)}%)" if value != 1.0 else ""
 
 primary_configs = NEW_SUPPLY_CONSTANTS["PrimarySupply"]
 for key, value in primary_configs.items():
@@ -51,16 +51,16 @@ for key, value in primary_configs.items():
             primary_range = value
     elif key == "FuelSupplyBySecond":
         primary_fuel = value * 30
-        primary_fuel_percentage = f"(+{int(value * 100)}%)" if value != 1.0 else ""
+        primary_fuel_percentage = f"({int(value * 100)}%)" if value != 1.0 else ""
     elif key == "HealthSupplyBySecond":
         primary_health = float(value/10)
-        primary_health_percentage = f"(-{int(value * 100/2)}%)" if value != 2.0 else ""
+        primary_health_percentage = f"({int(value * 100/2)}%)" if value != 2.0 else ""
     elif key == "AmmunitionSupplyBySecond":
         primary_ammo = value * 60
-        primary_ammo_percentage = f"(+{int(value * 100)}%)" if value != 1.0 else ""
+        primary_ammo_percentage = f"({int(value * 100)}%)" if value != 1.0 else ""
     elif key == "CriticsSupplyBySecond":
         primary_critics = value * 10
-        primary_critics_percentage = f"(+{int(value * 100)}%)" if value != 1.0 else ""
+        primary_critics_percentage = f"({int(value * 100)}%)" if value != 1.0 else ""
 
 divisional_configs = NEW_SUPPLY_CONSTANTS["DvisionalSupply"] # Dvisional because 'Div' is reserved in NDF
 for key, value in divisional_configs.items():
@@ -71,16 +71,16 @@ for key, value in divisional_configs.items():
             divisional_range = value
     elif key == "FuelSupplyBySecond":
         divisional_fuel = value * 30
-        divisional_fuel_percentage = f"(+{int(value * 100)}%)" if value != 1.0 else ""
+        divisional_fuel_percentage = f"({int(value * 100)}%)" if value != 1.0 else ""
     elif key == "HealthSupplyBySecond":
         divisional_health = float(value/10)
-        divisional_health_percentage = f"(-{int(value * 100/2)}%)" if value != 2.0 else ""
+        divisional_health_percentage = f"({int(value * 100/2)}%)" if value != 2.0 else ""
     elif key == "AmmunitionSupplyBySecond":
         divisional_ammo = value * 60
-        divisional_ammo_percentage = f"(-{int(value * 100)}%)" if value != 1.0 else ""
+        divisional_ammo_percentage = f"({int(value * 100)}%)" if value != 1.0 else ""
     elif key == "CriticsSupplyBySecond":
         divisional_critics = value * 10
-        divisional_critics_percentage = f"(+{int(value * 100)}%)" if value != 1.0 else ""   
+        divisional_critics_percentage = f"({int(value * 100)}%)" if value != 1.0 else ""   
 
 
 NEW_TRAITS = {

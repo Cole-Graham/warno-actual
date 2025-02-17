@@ -272,7 +272,7 @@ supply_unit_edits = {
     # mechanized supply
     "M113A1G_supply_RFA": {
         "SupplyCapacity": 850.0,
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -284,7 +284,7 @@ supply_unit_edits = {
     },
     "M113A2_supply_US": {
         "SupplyCapacity": 850.0,
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -296,7 +296,7 @@ supply_unit_edits = {
     },
     "MTLB_supply_DDR": {
         "SupplyCapacity": 850.0,
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -308,7 +308,7 @@ supply_unit_edits = {
     },
     "MTLB_supply_SOV": {
         "SupplyCapacity": 850.0,
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "Divisions": {
             "default": {
                 "cards": 2,

@@ -66,6 +66,7 @@ POL_NEW_UNITS = {
                 "cards": 2,
             },
             "POL_20_Pancerna_multi": {
+                "cards": 1,
                 "Transports": [
                     "UAZ_469_trans_POL",
                     "MTLB_trans_POL",

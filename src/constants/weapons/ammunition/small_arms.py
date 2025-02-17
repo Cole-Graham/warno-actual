@@ -596,7 +596,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "BaseSupplyCost": 1,
-        "NbWeapons": [11, 7, 5, 4, 3, 2],
+        "NbWeapons": [11, 8, 7, 5, 4, 3, 2],
         "NewTexture": "M16A1_Carbine",
         "WeaponDescriptor": {
             "Salves": 11,
@@ -946,6 +946,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "NbWeapons": [3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 30,
+        },
+    },
+    
+    ("MMG_team_7_62mm_M60", "small_arms", None, False): { # 469
+        "Ammunition": {
+            "display": "M60E3",
+            "token": "IYUAMGSZZJ", 
         },
     },
 

@@ -99,7 +99,6 @@ def modify_module(unit_row: Any, descr_row: Any, edits: dict, index: int,
             "TProductionModuleDescriptor": _handle_production,
             "TTacticalLabelModuleDescriptor": _handle_tactical_label,
             "TStrategicDataModuleDescriptor": _handle_strategic_data,
-            "TIconModuleDescriptor": _handle_icon,
             "TUnitUIModuleDescriptor": _handle_unit_ui,
             "TDeploymentShiftModuleDescriptor": _handle_deployment_shift,
             "TZoneInfluenceMapModuleDescriptor": _handle_zone_influence,
@@ -192,9 +191,33 @@ def _add_modules(unit_row: Any, descr_row: Any, edits: dict, modules_list: list,
 #     """Handle transporter module edits."""
 #     unit_db = game_db["unit_data"]
 
+def _handle_tags(unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list,
+                 dictionary_entries: list, game_db: Dict[str, Any]) -> None:
+    
+    ammo_db = game_db["ammunition"]
+    unit_db = game_db["unit_data"]
+    weapon_db = game_db["weapons"]
+    
+    unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
+    is_radar_unit = False
+    if "AA_radar" in unit_db[unit_name]["tags"]:
+        unit_turrets = weapon_db[f"WeaponDescriptor_{unit_name}"]["turrets"]
+        for turret in unit_turrets:
+            turret_ammos = unit_turrets[turret]["weapons"]
+            for ammo in turret_ammos:
+                if f"Ammo_{ammo}" in ammo_db["radar_weapons"]:
+                    is_radar_unit = True
+                    break
+            if is_radar_unit:
+                break
+    
+        if not is_radar_unit:
+            tagset = descr_row.v.by_m("TagSet")
+            for tag in tagset.v:
+                if tag.v == '"AA_radar"':
+                    tagset.v.remove(tag)
+                    logger.info(f'Removed "AA_Radar" tag from {unit_name}')
 
-def _handle_tags(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:
-    # unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
     if "TagSet" not in edits:
         return
 
@@ -283,21 +306,18 @@ def _handle_production(unit_row: Any, descr_row: Any, edits: dict, *_) -> None: 
 def _handle_tactical_label(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:  # noqa
     if "SortingOrder" in edits:
         descr_row.v.by_m("MultiSelectionSortingOrder").v = str(edits["SortingOrder"])
-    # if "strength" in edits:
-    #     descr_row.v.by_m("NbSoldiers").v = str(edits["strength"])
+    if "IdentifiedTextures" in edits:
+        id_textures_member = descr_row.v.by_m("IdentifiedTexture")
+        id_textures_member.v.by_m("Values").v = str(edits["IdentifiedTextures"])
+    if "UnidentifiedTextures" in edits:
+        unid_textures_member = descr_row.v.by_m("UnidentifiedTexture")
+        unid_textures_member.v.by_m("Values").v = str(edits["UnidentifiedTextures"])
 
 
 def _handle_strategic_data(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:  # noqa
     if "UnitAttackValue" in edits:
         descr_row.v.by_m("UnitAttackValue").v = str(edits["UnitAttackValue"])
         descr_row.v.by_m("UnitDefenseValue").v = str(edits["UnitDefenseValue"])
-
-
-def _handle_icon(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:  # noqa
-    if "IdentifiedTextures" in edits:
-        descr_row.v.by_m("IdentifiedTextures").v = str(edits["IdentifiedTextures"])
-        descr_row.v.by_m("UnidentifiedTextures").v = str(edits["UnidentifiedTextures"])
-
 
 def _handle_unit_ui(unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list,
                     dictionary_entries: list, game_db: Dict[str, Any]) -> None:  # noqa

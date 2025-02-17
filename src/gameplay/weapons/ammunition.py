@@ -397,13 +397,19 @@ def apply_default_salves(source_path: Any, game_db: Dict[str, Any]) -> None:
             for unit, edits in unit_edits.items():
                 if unit == unit_name and "WeaponDescriptor" in edits:
                     replacements = edits["WeaponDescriptor"].get("equipmentchanges", {}).get("replace", [])
+                    salve_changes = edits["WeaponDescriptor"].get("Salves", {})
                     if replacements:
                         for (current, replacement) in replacements:
                             if current == ammo_name:
                                 skip_weapon_descr_ammo_name = True
+                    if salve_changes:
+                        for ammo, salve in salve_changes.items():
+                            if ammo == ammo_name:
+                                skip_weapon_descr_ammo_name = True
             
             if skip_weapon_descr_ammo_name:
-                logger.debug(f"Skipping {ammo_name} for {weapon_descr_name} because it is replaced.")
+                logger.debug(f"Skipping {ammo_name} for {weapon_descr_name} because it is replaced or "
+                             f"has custom salves.")
                 continue
                 
             if old_name and old_name in weapon_descr_data["salves"]:

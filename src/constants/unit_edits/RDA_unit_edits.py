@@ -47,7 +47,7 @@ rda_unit_edits = {
 
     # RDA INF
     "MotRifles_CMD_DDR": {
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "GameName": {
             "display": "#LDRSOV MOT.-SCHUTZEN LDR.",
             "token": "LJDWEYDMZI",
@@ -113,7 +113,7 @@ rda_unit_edits = {
     },
 
     "Engineers_CMD_DDR": {
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "GameName": {
             "display": "#LDRSOV PIONIER LDR.",
             "token": "KYSSUXXTDG",
@@ -490,7 +490,7 @@ rda_unit_edits = {
         "GameName": {
             "display": "SFL-H 2S1",
         },
-        "CommandPoints": 100,
+        "CommandPoints": 110,
         "availability": 3,
         "XPMultiplier": [3/3, 2/3, 0.0, 0.0],
     },
@@ -499,13 +499,14 @@ rda_unit_edits = {
         "GameName": {
             "display": "SFL-H 2S3M",
         },
-        "CommandPoints": 165,
+        "CommandPoints": 180,
         "availability": 3,
         "XPMultiplier": [3/3, 2/3, 0.0, 0.0],
     },
 
     "MFRW_RM70_DDR": {
-        "CommandPoints": 220,
+        "CommandPoints": 240,
+        "availability": 2,
         "XPMultiplier": [2/2, 0.0, 1/2, 0.0],
         "WeaponDescriptor": {
             "equipmentchanges": {

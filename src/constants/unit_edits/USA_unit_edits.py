@@ -78,7 +78,7 @@ usa_unit_edits = {
 
     # US INF
     "Rifles_half_CMD_US": {
-        "CommandPoints": 40,
+        "CommandPoints": 30,
         "GameName": {
             "token": "CPCIJQLHML",
             "display": "#LDR FIRETEAM LDR.",
@@ -122,7 +122,7 @@ usa_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "availability": 7,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
+        "XPMultiplier": [0.0, 0.0, 7/7, 5/7],
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -143,7 +143,7 @@ usa_unit_edits = {
     },
 
     "Rifles_CMD_US": {
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "GameName": {
             "token": "SVWNZUYPNE",
             "display": "#LDR MECH. RIFLES LDR.",
@@ -181,7 +181,7 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
+        "XPMultiplier": [0.0, 0.0, 7/7, 5/7],
         "max_speed": 26,
         "WeaponDescriptor": {
             "Salves": {
@@ -202,7 +202,7 @@ usa_unit_edits = {
     },
 
     "Engineer_CMD_US": {
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "GameName": {
             "display": "#LDR ENGINEERS LDR.",
             "token": "DBEBRUEYSP",
@@ -236,8 +236,8 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_assault",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
-        "availability": 5,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.8],
+        "availability": 4,
+        "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
         "max_speed": 26,
         "is_infantry": True,
         "is_ground_vehicle": False,
@@ -300,17 +300,18 @@ usa_unit_edits = {
                 "Transports": ["M1038_Humvee_US", "UH60A_Black_Hawk_US"]
             },
         },
-        "availability": 4,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.75],
+        "availability": 3,
+        "XPMultiplier": [0.0, 0.0, 0.0, 3/3],
         "max_speed": 20,
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [("Commando_733", "M16A1_Carbine")],
                 "quantity": {
-                    "M16A1_Carbine": 8,
+                    "M16A1_Carbine": 7,
                 },
             },
             "Salves": {
+                "M16A1_Carbine": 7,
                 "RocketInf_M67_RCL_90mm": 10,
             },
         },
@@ -324,7 +325,7 @@ usa_unit_edits = {
     },
 
     "Airborne_Engineer_CMD_US": {
-        "CommandPoints": 60,
+        "CommandPoints": 55,
         "GameName": {
             "display": "#LDR AB ENGINEERS LDR.",
             "token": "LRTQFDCCCB",
@@ -359,8 +360,8 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_assault",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
-        "availability": 5,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.8],
+        "availability": 4,
+        "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
         "max_speed": 26,
         "is_infantry": True,
         "is_ground_vehicle": False,
@@ -368,7 +369,7 @@ usa_unit_edits = {
     },
 
     "Airborne_CMD_US": {
-        "CommandPoints": 70,
+        "CommandPoints": 65,
         "GameName": {
             "display": "#LDR AIRBORNE LDR.",
             "token": "BHVJUDTEVR",
@@ -403,13 +404,13 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "availability": 5,
+        "availability": 4,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.8],
+        "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
         "max_speed": 26,
         "WeaponDescriptor": {
             "Salves": {
@@ -423,7 +424,7 @@ usa_unit_edits = {
     },
 
     "AeroRifles_CMD_US": {
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "GameName": {
             "display": "#LDR AERO-RIFLES LDR.",
             "token": "TVWIKAOSVP",
@@ -457,8 +458,8 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "availability": 5,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.8],
+        "availability": 4,
+        "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
         "max_speed": 26,
         "is_infantry": True,
         "is_ground_vehicle": False,
@@ -501,8 +502,8 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "availability": 7,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
+        "availability": 6,
+        "XPMultiplier": [0.0, 0.0, 6/6, 4/6],
         "max_speed": 26,
         "is_infantry": True,
         "is_ground_vehicle": False,
@@ -510,7 +511,7 @@ usa_unit_edits = {
     },
 
     "AeroEngineer_CMD_US": {
-        "CommandPoints": 60,
+        "CommandPoints": 55,
         "GameName": {
             "display": "#LDR AERO-ENGINEERS LDR.",
             "token": "OWQFQTLBJN",
@@ -546,7 +547,7 @@ usa_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_assault",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
         "availability": 4,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.75],
+        "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
         "max_speed": 26,
         "is_infantry": True,
         "is_ground_vehicle": False,
@@ -599,7 +600,7 @@ usa_unit_edits = {
     
     "Engineers_US": {
         "CommandPoints": 45,
-        "availability": 7,
+        "availability": 6,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -608,7 +609,7 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -617,13 +618,13 @@ usa_unit_edits = {
 
     "NatGuard_Engineers_US": {
         "CommandPoints": 35,
-        "availability": 7,
+        "availability": 6,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -637,8 +638,8 @@ usa_unit_edits = {
 
     "AeroEngineers_US": {
         "CommandPoints": 45,
-        "availability": 7,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "availability": 6,
+        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -646,13 +647,13 @@ usa_unit_edits = {
     },
 
     "Airborne_Engineers_US": {
-        "CommandPoints": 50,
-        "availability": 7,
+        "CommandPoints": 45,
+        "availability": 6,
         # "GameName": {
         #     "display": "AIRBORNE ASSAULT ENG.",
         #     "token": "TXOZWRNEVU",
         # },
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -678,7 +679,7 @@ usa_unit_edits = {
             },
         },
         "availability": 10,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "XPMultiplier": [0.0, 10/10, 7/10, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -702,7 +703,7 @@ usa_unit_edits = {
             },
         },
         "availability": 10,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "XPMultiplier": [0.0, 10/10, 7/10, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -729,8 +730,8 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 7,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "availability": 6,
+        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -758,8 +759,8 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 7,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "availability": 6,
+        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -776,7 +777,7 @@ usa_unit_edits = {
         "GameName": {
             "display": "ENGINEERS [DRAGON]",
         },
-        "CommandPoints": 45,
+        "CommandPoints": 40,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -785,8 +786,8 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 7,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "availability": 6,
+        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -807,8 +808,8 @@ usa_unit_edits = {
             "display": "AIRBORNE [DRAGON]",
         },
         "CommandPoints": 45,
-        "availability": 7,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "availability": 6,
+        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -818,7 +819,7 @@ usa_unit_edits = {
     "Airborne_MP_US": {
         "CommandPoints": 20,
         "availability": 12,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "XPMultiplier": [0.0, 12/12, 9/12, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -828,7 +829,7 @@ usa_unit_edits = {
     "MP_US": {
         "CommandPoints": 20,
         "availability": 12,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "XPMultiplier": [0.0, 12/12, 9/12, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -841,7 +842,7 @@ usa_unit_edits = {
         },
         "CommandPoints": 25,
         "availability": 9,
-        "XPMultiplier": [0.0, 1.0, 0.8, 0.0],
+        "XPMultiplier": [0.0, 9/9, 7/9, 0.0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -859,7 +860,7 @@ usa_unit_edits = {
         },
         "CommandPoints": 25,
         "availability": 9,
-        "XPMultiplier": [0.0, 1.0, 0.8, 0.0],
+        "XPMultiplier": [0.0, 9/9, 7/9, 0.0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -875,7 +876,7 @@ usa_unit_edits = {
     "Rifles_HMG_US": {
         "CommandPoints": 35,
         "availability": 12,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -885,7 +886,7 @@ usa_unit_edits = {
     "Airborne_HMG_US": {  # AIRBORNE GUNNERS
         "CommandPoints": 35,
         "availability": 8,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "XPMultiplier": [0.0, 8/8, 6/8, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -894,8 +895,8 @@ usa_unit_edits = {
 
     "AeroRifles_US": {  # AIR CAV TROOPERS
         "CommandPoints": 40,
-        "availability": 12,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "availability": 10,
+        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -907,8 +908,8 @@ usa_unit_edits = {
             "display": "MECH. RIFLES [DRAGON]",
         },
         "CommandPoints": 45,
-        "availability": 12,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "availability": 10,
+        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -920,8 +921,8 @@ usa_unit_edits = {
             "display": "MECH. RIFLES [LAW]",
         },
         "CommandPoints": 35,
-        "availability": 12,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "availability": 10,
+        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -942,13 +943,14 @@ usa_unit_edits = {
             },
             "US_3rd_Arm": {
                 "cards": 3,
+                "Transports": ["M1038_Humvee_US", "M2A1_Bradley_IFV_US", "M2A2_Bradley_IFV_US"],
             },
             "US_8th_Inf": {
                 "cards": 2,
             },
         },
         "availability": 12,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -966,10 +968,11 @@ usa_unit_edits = {
             },
             "US_3rd_Arm": {
                 "cards": 2,
+                "Transports": ["M1038_Humvee_US", "M2A1_Bradley_IFV_US", "M2A2_Bradley_IFV_US"],
             },
         },
         "availability": 12,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -985,23 +988,24 @@ usa_unit_edits = {
     },
 
     "Ranger_US": {
-        "CommandPoints": 55,
-        "availability": 5,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.8],
+        "CommandPoints": 60,
+        "availability": 4,
+        "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "Salves": {
-                    "RocketInf_AT4_83mm": 6,
-                },
                 "replace": [
                     ("Commando_733", "M16A1_Carbine"),
                     ("RocketInf_M72A3_LAW_66mm", "RocketInf_AT4_83mm"),
                 ],
-                "fire_effect": [("RocketInf_M72A3_LAW_66mm", "RocketInf_AT4_83mm")]
+                "fire_effect": [("RocketInf_M72_LAW_66mm", "RocketInf_AT4_83mm")]
+            },
+            "Salves": {
+                "M16A1_Carbine": 11,
+                "RocketInf_AT4_83mm": 6,
             },
         },
     },
@@ -1011,8 +1015,8 @@ usa_unit_edits = {
             "display": "RANGERS [DRAGON]",
         },
         "CommandPoints": 65,
-        "availability": 5,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.8],
+        "availability": 4,
+        "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1021,13 +1025,16 @@ usa_unit_edits = {
             "equipmentchanges": {
                 "replace": [("Commando_733", "M16A1_Carbine")],
             },
+            "Salves": {
+                "M16A1_Carbine": 7,
+            },
         },
     },
     
     "DeltaForce_US": {
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("Commando_733", "M16A1_Carbine")],
+                "replace": [("Commando_733", "M16A2_Carbine")],
             },
         },
     },
@@ -1039,8 +1046,8 @@ usa_unit_edits = {
                 "cards": 3,
             },
         },
-        "availability": 7,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "availability": 6,
+        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -1065,7 +1072,7 @@ usa_unit_edits = {
             },
         },
         "availability": 8,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "XPMultiplier": [0.0, 8/8, 6/8, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -1090,7 +1097,7 @@ usa_unit_edits = {
             },
         },
         "availability": 8,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "XPMultiplier": [0.0, 8/8, 6/8, 0.0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1112,7 +1119,7 @@ usa_unit_edits = {
             },
         },
         "availability": 6,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -1125,7 +1132,7 @@ usa_unit_edits = {
         },
         "CommandPoints": 40,
         "availability": 6,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1150,7 +1157,7 @@ usa_unit_edits = {
             },
         },
         "availability": 8,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "XPMultiplier": [0.0, 8/8, 6/8, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -1169,8 +1176,8 @@ usa_unit_edits = {
             "display": "AERO-RIFLES [AT4]",
         },
         "CommandPoints": 65,
-        "availability": 5,
-        "XPMultiplier": [0.0, 1.0, 0.8, 0.0],
+        "availability": 6,
+        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -1201,7 +1208,7 @@ usa_unit_edits = {
             },
         },
         "availability": 12,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1233,7 +1240,7 @@ usa_unit_edits = {
         },
         "CommandPoints": 30,
         "availability": 15,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "XPMultiplier": [15/15, 12/15, 0.0, 0.0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1294,7 +1301,7 @@ usa_unit_edits = {
             },
         },
         "availability": 8,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "XPMultiplier": [0.0, 8/8, 6/8, 0.0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1314,7 +1321,7 @@ usa_unit_edits = {
         },
         "CommandPoints": 85,
         "availability": 3,
-        "XPMultiplier": [0.0, 0.0, 0.0, 1.0],
+        "XPMultiplier": [0.0, 0.0, 0.0, 3/3],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -1377,7 +1384,7 @@ usa_unit_edits = {
     "ATteam_ITOW_US": {
         "CommandPoints": 60,
         "availability": 6,
-        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
+        "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
         "max_speed": 14,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_veryheavy'"],
@@ -1387,7 +1394,7 @@ usa_unit_edits = {
     "ATteam_TOW2_US": {
         "CommandPoints": 75,
         "availability": 4,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "XPMultiplier": [4/4, 3/4, 0.0, 0.0],
         "max_speed": 14,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_veryheavy'"],
@@ -1402,7 +1409,7 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "XPMultiplier": [0.0, 4/4, 3/4, 0.0],
         "max_speed": 14,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_veryheavy'"],
@@ -1417,7 +1424,7 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "XPMultiplier": [0.0, 4/4, 3/4, 0.0],
         "max_speed": 14,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_veryheavy'"],
@@ -1427,7 +1434,7 @@ usa_unit_edits = {
     "M274_Mule_RCL_US": {
         "CommandPoints": 30,
         "availability": 9,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "XPMultiplier": [0.0, 9/9, 7/9, 0.0],
     },
 
     "M151_MUTT_trans_US": {
@@ -1512,7 +1519,7 @@ usa_unit_edits = {
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
     },
     "Howz_M102_105mm_US": {
-        "CommandPoints": 55,
+        "CommandPoints": 60,
         "availability": 4,
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
     },
@@ -1524,13 +1531,13 @@ usa_unit_edits = {
     },
 
     "M109A2_HOWZ_US": {
-        "CommandPoints": 165,
+        "CommandPoints": 180,
         "availability": 3,
         "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
     },
 
     "M110A2_HOWZ_US": {
-        "CommandPoints": 200,
+        "CommandPoints": 220,
         "availability": 2,
         "XPMultiplier": [1.0, 0.0, 0.5, 0.0],
     },
@@ -1548,7 +1555,7 @@ usa_unit_edits = {
             "display": "M270 MLRS",
             # "token": "MYQQNJCCAK",
         },
-        "CommandPoints": 280,
+        "CommandPoints": 300,
         "availability": 1,
         "Divisions": {
             "add": ["US_8th_Inf"],
@@ -2322,7 +2329,8 @@ usa_unit_edits = {
         "optics": {
             "OpticalStrengthAltitude": 300,
         },
-        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
+        "availability": 4,
+        "XPMultiplier": [4/4, 3/4, 0.0, 0.0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
@@ -2655,18 +2663,27 @@ usa_unit_edits = {
                 "fire_effect": [("Bomb_GBU_12_x1", "Bomb_GBU_12_x2")]
             },
         },
+        "optics": {
+            "OpticalStrengthAltitude": 375,
+        },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 
     "F16E_AGM_US": {  # 4x AGM-65D, 2x AIM-9M
         "CommandPoints": 200,
         "ECM": -0.35,
+        "optics": {
+            "OpticalStrengthAltitude": 375,
+        },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 
     "F16E_HE_US": {
         "CommandPoints": 200,
         "ECM": -0.35,
+        "optics": {
+            "OpticalStrengthAltitude": 375,
+        },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 
@@ -2674,6 +2691,9 @@ usa_unit_edits = {
         "CommandPoints": 200,
         "availability": 3,
         "ECM": -0.35,
+        "optics": {
+            "OpticalStrengthAltitude": 375,
+        },
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
     },
 
@@ -2681,6 +2701,9 @@ usa_unit_edits = {
         "CommandPoints": 220,
         "availability": 3,
         "ECM": -0.35,
+        "optics": {
+            "OpticalStrengthAltitude": 375,
+        },
         "WeaponDescriptor": {
             "turrets": {
                 2: {
@@ -2697,11 +2720,14 @@ usa_unit_edits = {
         "CommandPoints": 185,
         "ECM": -0.35,
         "availability": 3,
+        "optics": {
+            "OpticalStrengthAltitude": 375,
+        },
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
     },
 
     "F16E_AA_US": {
-        "CommandPoints": 205,
+        "CommandPoints": 220,
         "ECM": -0.35,
         "Divisions": {
             "default": {
@@ -2712,6 +2738,9 @@ usa_unit_edits = {
             },
         },
         "availability": 2,
+        "optics": {
+            "OpticalStrengthAltitude": 375,
+        },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
     },
 

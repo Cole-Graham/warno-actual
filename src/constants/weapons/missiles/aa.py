@@ -377,7 +377,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("SAM_9M336_salvolength3", "SAM", None, False): { # 178
+    ("SAM_9M336", "SAM", None, False): { # 178
         "Ammunition": {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 2800,

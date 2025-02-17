@@ -251,23 +251,42 @@ def _add_new_weapons(weapon_descr: Any, add_list: List, turret_templates: List[T
                 turret_list.insert(turret_index, turret_template)
 
 
-def _update_weapon_quantities(weapon_descr: Any, qty_changes: Dict, weapon_descr_data: Dict, game_db: Dict) -> None:
+def _update_weapon_quantities(weapon_descr: Any, equipment_changes: Dict, weapon_descr_data: Dict, game_db: Dict) -> None:
     """Update weapon quantities using database data."""
     weapon_locations = weapon_descr_data['weapon_locations']
     turret_list = weapon_descr.v.by_member("TurretDescriptorList").v
     ammo_db = game_db["ammunition"]
+    qty_changes = equipment_changes["quantity"]
 
     for weapon_name, quantity in qty_changes.items():
         old_name = None
+        replaced_weapon = None
+        is_replacement = False
         if weapon_name not in weapon_locations:
             if weapon_name not in ammo_db["renames_new_old"]:
-                continue
+                replacements = equipment_changes.get("replace", None)
+                if replacements:
+                    for old_weapon, new_weapon in replacements:
+                        if new_weapon == weapon_name:
+                            is_replacement = True
+                            old_name = ammo_db["renames_new_old"].get(old_weapon, None)
+                            if not old_name:
+                                replaced_weapon = old_weapon
+                                break
+                            else:
+                                replaced_weapon = old_name
+                                break
+                if not is_replacement:
+                    continue
             else:
                 old_name = ammo_db["renames_new_old"].get(weapon_name, None)
                 if not old_name:
                     continue    
         
-        name_match = weapon_name if weapon_name in weapon_locations else old_name
+        if is_replacement:
+            name_match = replaced_weapon
+        else:
+            name_match = weapon_name if weapon_name in weapon_locations else old_name
         for location in weapon_locations[name_match]:
             for turret in turret_list:
                 if int(turret.index) != location['turret_index']:
@@ -401,7 +420,7 @@ def _apply_turret_changes(weapon_descr: Any, turrets_edits: Dict, weapon_descr_d
 
 def _apply_salvo_changes(weapon_descr: Any, wd_edits: Dict, weapon_descr_data: Dict, game_db: Dict) -> None:
     """Apply salvo changes using database data."""
-    # wd_name = weapon_descr.namespace
+    wd_name = weapon_descr.namespace
     salves_list = weapon_descr.v.by_m("Salves")
     salves_winchester = weapon_descr.v.by_m("SalvoIsMainSalvo", strict=False)
     weapon_indices = weapon_descr_data['weapon_indices']
@@ -504,7 +523,7 @@ def _apply_equipment_changes(
     
     # Handle quantity changes
     if "quantity" in equipment_changes:
-        _update_weapon_quantities(weapon_descr, equipment_changes["quantity"], weapon_descr_data, game_db)
+        _update_weapon_quantities(weapon_descr, equipment_changes, weapon_descr_data, game_db)
 
 
 def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_db: Dict) -> None:

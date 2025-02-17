@@ -174,7 +174,10 @@ def _get_existing_descriptor(source_path, weapon_name):
         
         try:
             # Try with salvo length suffix first
-            existing = source_path.by_n(f"Ammo_{weapon_name}_salvolength{lowest_salvo}")
+            if lowest_salvo > 1:
+                existing = source_path.by_n(f"Ammo_{weapon_name}_salvolength{lowest_salvo}")
+            else:
+                existing = source_path.by_n(f"Ammo_{weapon_name}")
             if existing:
                 return existing
         except Exception:  # noqa

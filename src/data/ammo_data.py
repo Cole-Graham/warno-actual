@@ -98,6 +98,7 @@ def build_ammo_data(mod_src_path: Path) -> Dict[str, Any]:
             "mg_categories": build_mg_categories(ammo_file),
             "full_ball_weapons": build_full_ball_weapons(ammo_file),
             "sniper_weapons": build_sniper_weapons(ammo_file),
+            "radar_weapons": build_radar_weapons(ammo_file, ammo_missile_file),
             "renames_old_new": renames_old_new,
             "renames_new_old": renames_new_old,
             "salves_map": build_ammo_salves_map(weapon_descriptor_file),
@@ -110,11 +111,28 @@ def build_ammo_data(mod_src_path: Path) -> Dict[str, Any]:
             "mg_categories": {},
             "full_ball_weapons": [],
             "sniper_weapons": [],
+            "radar_weapons": [],
             "renames_old_new": {},
             "renames_new_old": {},
             "salves_map": {},
             "mortar_weapons": {},
         }
+
+def build_radar_weapons(parse_ammo_source, parse_ammo_missile_source) -> List[str]:
+    """Build list of radar weapons from Ammunition.ndf and AmmunitionMissiles.ndf"""
+    radar_weapons = []
+    
+    for ammo_descr in parse_ammo_source:
+        traits_list = ammo_descr.v.by_m("TraitsToken")
+        if "'RADAR'" in [t.v for t in traits_list.v]:
+            radar_weapons.append(ammo_descr.n)
+            
+    for ammo_descr in parse_ammo_missile_source:
+        traits_list = ammo_descr.v.by_m("TraitsToken")
+        if "'RADAR'" in [t.v for t in traits_list.v]:
+            radar_weapons.append(ammo_descr.n)
+
+    return radar_weapons
 
 
 def build_ammo_salves_map(parse_source) -> dict:
