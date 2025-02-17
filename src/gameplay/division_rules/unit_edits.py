@@ -73,12 +73,14 @@ def _add_to_divisions(source_path: Any, unit: str, edits: Dict) -> None:
 
 def _build_transport_list(division_name: str, edits: Dict) -> str:
     """Build transport list string for a unit."""
-    if not edits["Divisions"]["is_transported"]:
+    if not edits["Divisions"].get("is_transported", False):
         return ""
         
     # Get transports for specific division or use default
     transports = (edits["Divisions"].get(division_name, {}).get("Transports") or 
-                 edits["Divisions"]["default"].get("Transports"))
+                 edits["Divisions"].get("default", {}).get("Transports", None))
+    if transports is None:
+        raise ValueError("Failed to retrieve transport list")
     
     # Add prefix to each transport
     prefixed = [f"$/GFX/Unit/Descriptor_Unit_{t}" for t in transports]
@@ -91,7 +93,7 @@ def _create_rule_entry(unit: str, edits: Dict, transport_str: str = "", cards: i
     base_entry = (
         f"TDeckUniteRule("
         f"    UnitDescriptor = $/GFX/Unit/Descriptor_Unit_{unit}"
-        f"    AvailableWithoutTransport = {not edits['Divisions']['needs_transport']}"
+        f"    AvailableWithoutTransport = {not edits['Divisions'].get('needs_transport', False)}"
     )
     
     if transport_str:
