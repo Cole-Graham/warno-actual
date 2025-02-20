@@ -11,8 +11,6 @@ src/data/database/*.json
 temp_context.txt
 .VSCodeCounter/
 *.lnk
-run_patcher_with_bat.py
-run_bat.py
 
 # don't ignore
 !logs/.gitkeep
