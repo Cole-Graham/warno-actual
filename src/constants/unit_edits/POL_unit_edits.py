@@ -44,7 +44,7 @@ pol_unit_edits = {
         # "availability": 9,
         # "XPMultiplier": [9/9, 7/9, 0.0, 0.0],
         "max_speed": 4,
-        "UpgradeFromUnit": "FOB_POL",
+        # "UpgradeFromUnit": "FOB_POL",  # no fob in korpus
     },
 
     "DCA_ZUR_23_2S_JOD_POL": {  # ZUR-23-2S Jod
@@ -63,7 +63,7 @@ pol_unit_edits = {
         # },
         "availability": 6,
         "max_speed": 4,
-        "UpgradeFromUnit": "FOB_POL",
+        "UpgradeFromUnit": "DCA_AZP_S60_POL",
         "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
     },
 
@@ -87,7 +87,7 @@ pol_unit_edits = {
         # "availability": 6,
         # "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
         "max_speed": 4,
-        "UpgradeFromUnit": "FOB_POL",
+        "UpgradeFromUnit": "DCA_ZU_23_2_Para_POL",
     },
 
     "UAZ_469_CMD_Para_POL": {  # Desant. WD-43
@@ -373,8 +373,12 @@ pol_unit_edits = {
     "Groupe_AT_POL": {  # Druzyna PPanc
         "CommandPoints": 40,
         "Divisions": {
-            "default": {
-                "cards": 1,
+            "add": ['POL_20_Pancerna'],
+            "is_transported": True,
+            "needs_transport": True,
+            "POL_20_Pancerna": {
+                "Transports": ["Star_266_POL", "MTLB_trans_POL", "BMP_1_SP2_POL", "BMP_2_POL"],
+                "cards": 2,
             },
         },
         "availability": 12,
@@ -408,7 +412,7 @@ pol_unit_edits = {
 
     "Rifles_HMG_POL": {  # Piechota (SVD)
         "GameName": {
-            "display": "PIECHOTA [SWD]",
+            "display": "PIECHOTA [SVD]",
         },
     },
 
@@ -437,7 +441,7 @@ pol_unit_edits = {
 
     "MotRifles_SVD_POL": {  # Piechota Zmech (SVD)
         "GameName": {
-            "display": "PIECHOTA ZMECH [SWD]",
+            "display": "PIECHOTA ZMECH [SVD]",
         },
         "CommandPoints": 35,
         "availability": 10,
