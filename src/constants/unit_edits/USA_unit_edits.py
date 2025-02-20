@@ -46,9 +46,9 @@ usa_unit_edits = {
             "default": {
                 "cards": 2,
             },
-            "remove": ["US_82nd_Airborne"],
-            # airborne humvee redundant with regular after FWD deploy changes, just give regular one to 82ab imo
-            # TODO: revert if u disagree
+            # "remove": ["US_82nd_Airborne"],
+            # airborne humvee becomes redundant with regular after FWD deploy changes, just give regular one to 82ab
+            # but not in the same patch as changing tacom transports, to avoid potential deckwipes
         },
         "XPMultiplier": [0.0, 3/3, 0.0, 0.0],
         "SpecialtiesList": {
@@ -63,9 +63,9 @@ usa_unit_edits = {
         "availability": 3,
         "XPMultiplier": [0.0, 3/3, 0.0, 0.0],
         "Divisions": {
-            "add": ['US_82nd_Airborne'],
+            # "add": ['US_82nd_Airborne'],
             # airborne humvee redundant with regular after FWD deploy changes, just give regular one to 82ab imo
-            # TODO: revert if u disagree
+            # but not in the same patch as changing tacom transports, to avoid potential deckwipes
             "US_82nd_Airborne": {
                 "cards": 2,
             },
