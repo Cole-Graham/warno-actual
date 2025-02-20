@@ -72,8 +72,13 @@ def unit_edits_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> No
                             if not is_obj_type(weapon.v, "TMountedWeaponDescriptor"):
                                 continue
                             
-                            ammo_path = f"$/GFX/Weapon/Ammo_{ammo_name}"
-                            if weapon.v.by_m("Ammunition").v == ammo_path:
+                            new_name = ammo_db["renames_old_new"].get(ammo_name, None)
+                            if new_name:
+                                ammo_path = f"$/GFX/Weapon/Ammo_{new_name}"
+                            else:
+                                ammo_path = f"$/GFX/Weapon/Ammo_{ammo_name}"
+                            weapon_ammo = weapon.v.by_m("Ammunition").v
+                            if weapon_ammo == ammo_path:
                                 new_wpn = weapon.copy()
                                 # Only add salvo length suffix if length > 1
                                 if salvo_length == 1:
@@ -93,7 +98,7 @@ def unit_edits_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> No
             for new_wpn in wpns_to_add:
                 mounted_wpns.v.add(new_wpn)
     
-    vanilla_renames_weapondescriptor(source_path, ammo_db, weapon_db)
+    # vanilla_renames_weapondescriptor(source_path, ammo_db, weapon_db)
     
     # Get edits and weapon data
     unit_edits = load_unit_edits()

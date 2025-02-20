@@ -66,6 +66,7 @@ def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
             "is_helo_unit": False,
             "is_hmg_team": False,
             "is_at_team": False,
+            "is_towable": False,
         }
         
         # Get unit name for context
@@ -100,6 +101,10 @@ def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
             
             elif module_type == "TDamageModuleDescriptor":
                 unit_info["armor"] = _extract_armor_data(module)
+            
+            elif module_type == "TTransportableModuleDescriptor":
+                if module.v.by_m("IsTowable", False).v:
+                    unit_info["is_towable"] = True
             
             elif module_type == "TSupplyModuleDescriptor":
                 unit_info["is_supply_unit"] = True

@@ -109,6 +109,7 @@ from .weapons import (
     add_corrected_shot_dispersion,
     add_radio_tag_to_mortars,
     edit_smoke_duration,
+    vanilla_renames_weapondescriptor,
 )
 from .weapons.ammunition import edit_ammunition
 

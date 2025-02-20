@@ -467,6 +467,7 @@ uk_unit_edits = {
     "RCL_L6_Wombat_UK": {
         "CommandPoints": 35,
         "availability": 8,
+        "strength": 5,
         "Divisions": {
             "default": {
                 "cards": 2,

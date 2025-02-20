@@ -25,7 +25,7 @@ def vanilla_renames_ammunition(source_path: Any, ammo_db: Dict[str, Any]) -> Non
             continue
 
 
-def vanilla_renames_weapondescriptor(source_path: Any, ammo_db: Dict[str, Any], weapon_db: Dict[str, Any]) -> None:
+def vanilla_renames_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> None:
     """Apply vanilla renames to WeaponDescriptor.ndf
     
     Args:
@@ -33,6 +33,8 @@ def vanilla_renames_weapondescriptor(source_path: Any, ammo_db: Dict[str, Any], 
         ammo_db: Ammunition database containing salvo weapon mappings
         weapon_db: Weapon database containing weapon descriptor data
     """
+    ammo_db = game_db["ammunition"]
+    weapon_db = game_db["weapons"]
     # renames: List of (old_name, new_name) tuples
     try:
         for descr_namespace, weapon_descr_data in weapon_db.items():

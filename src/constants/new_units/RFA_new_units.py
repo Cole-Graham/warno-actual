@@ -80,7 +80,7 @@ RFA_NEW_UNITS = {
         "Faction": "NATO",
         "Nation": "RFA",
         "alternatives_count": 5,
-        "selector_tactic": "2, 5",
+        "selector_tactic": "02_05",
     },
 }
 # fmt: on

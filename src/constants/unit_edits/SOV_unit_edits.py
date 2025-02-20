@@ -161,8 +161,14 @@ sov_unit_edits = {
             "default": {
                 "cards": 1,
             },
-            "SOV_27_Gds_rifle": {
-                "Transports": ['GAZ_66_SOV', 'BTR_80_SOV', 'BMP_1P_SOV', 'BMP_2_SOV'],
+            "SOV_27_Gds_Rifle": {
+                "Transports": [
+                    'GAZ_66_SOV',
+                    'BTR_80_SOV',
+                    'BMP_1P_SOV',
+                    'BMP_2AG_SOV',
+                    'BMP_3_SOV',
+                ],
             },
         },
         "availability": 7,
@@ -229,7 +235,7 @@ sov_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_assault",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
         "Divisions": {
-            "SOV_27_Gds_rifle": {
+            "SOV_27_Gds_Rifle": {
                 "Transports": ["GAZ_66_SOV", "MTLB_transp_SOV"],
             },
         },
@@ -562,13 +568,13 @@ sov_unit_edits = {
             "display": "DESANT. SAPERY",
         },
         "CommandPoints": 30,
-        "availability": 10,
+        "availability": 9,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 10/10, 7/10, 0.0],
+        "XPMultiplier": [0.0, 9/9, 7/9, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -633,8 +639,8 @@ sov_unit_edits = {
             "display": "DESANT. SAPERY [RPO]",
         },
         "CommandPoints": 35,
-        "availability": 10,
-        "XPMultiplier": [0.0, 10/10, 7/10, 0.0],
+        "availability": 9,
+        "XPMultiplier": [0.0, 9/9, 7/9, 0.0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -648,23 +654,42 @@ sov_unit_edits = {
     
     "MotRifles_SOV": {
         "GameName": {
-            "display": "MOTOSTRELKI [RPG-7V]",
+            "display": "MOTOSTRELKI [RPG-7]",
         },
         "CommandPoints": 30,
-        "availability": 12,
+        "availability": 10,
         "Divisions": {
             "default": {
                 "cards": 3,
             },
             "SOV_119IndTkBrig": {
-                "cards": 1,
+                "cards": 2,
             },
         },
-        "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
         "max_speed": 26,
+        # not sure if I want to change the strength of this unit, might delete these changes.
+        # "strength": 8,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
+        # "WeaponAssignment": [
+        #     (0, [1, ]),
+        #     (1, [0, ]),
+        #     (2, [0, ]),
+        #     (3, [0, ]),
+        #     (4, [0, ]),
+        #     (5, [0, ]),
+        #     (6, [0, ]),
+        #     (7, [0, 2]),
+        # ],
+        # "WeaponDescriptor": {
+        #     "equipmentchanges": {
+        #         "quantity": {
+        #             "FM_AK_74": 7,
+        #         },
+        #     },
+        # },
+        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
     },
 
     "MotRifles_TTsko_SOV": {  # RPG-27
@@ -672,17 +697,18 @@ sov_unit_edits = {
             "display": "MOTOSTRELKI [RPG-27]",
         },
         "CommandPoints": 30,
-        "availability": 12,
+        "availability": 12, # 12 because they are the worst 7-strength motostrelki squad
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
+        "UpgradeFromUnit": "MotRifles_BTR_TTsko_SOV",
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 9,
@@ -697,18 +723,22 @@ sov_unit_edits = {
             "display": "MOTOSTRELKI [RPG-26]",
         },
         "CommandPoints": 30,
-        "availability": 12,
+        "availability": 10,
         "Divisions": {
             "default": {
-                "cards": 1,
+                "cards": 2,
+            },
+            "SOV_27_Gds_Rifle": {
+                "cards": 2,
+                "Transports": ["GAZ_66_SOV", "BMP_1P_SOV"],
             },
         },
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
-        "UpgradeFromUnit": "MotRifles_RPG7V_TTsko_SOV",
+        "UpgradeFromUnit": "MotRifles_CMD_TTsko_SOV",
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 11,
@@ -723,17 +753,27 @@ sov_unit_edits = {
             "display": "MOTOSTRELKI [METIS]",
         },
         "CommandPoints": 40,
-        "availability": 12,
+        "availability": 10,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
+            "SOV_27_Gds_Rifle": {
+                "Transports": [
+                    "GAZ_66_SOV",
+                    "BTR_80_SOV",
+                    "BMP_2_SOV",
+                    "BMP_2AG_SOV",
+                    "BMP_3_SOV",
+                ],
+            },
         },
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
+        "UpgradeFromUnit": "MotRifles_RPG7V_TTsko_SOV",
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 7,
@@ -748,7 +788,7 @@ sov_unit_edits = {
             "display": "DESANTNIKI [BMD]",
         },
         "CommandPoints": 40,
-        "availability": 8,
+        "availability": 9,
         "Divisions": {
             "default": {
                 "cards": 69,
@@ -760,7 +800,7 @@ sov_unit_edits = {
                 "cards": 3,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "XPMultiplier": [0.0, 9/9, 7/9, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -772,9 +812,9 @@ sov_unit_edits = {
         },
     },
 
-    "VDV_SOV": {  # RPK, SVD, RPG-7VL
+    "VDV_SOV": {  # RPK, SVD, RPG-7VR
         "CommandPoints": 40,
-        "availability": 8,
+        "availability": 7,
         "Divisions": {
             "default": {
                 "cards": 69,
@@ -786,7 +826,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "XPMultiplier": [0.0, 7/7, 5/7, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -798,10 +838,10 @@ sov_unit_edits = {
         },
     },
 
-    "VDV_Combine_SOV": {  # RPK, SVD, RPG-7VL
+    "VDV_Combine_SOV": {  # RPK, RPG-22, RPG-7VL
         "CommandPoints": 50,
-        "availability": 8,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "availability": 6,
+        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -819,8 +859,8 @@ sov_unit_edits = {
             "display": "DESANTNIKI [METIS]",
         },
         "CommandPoints": 50,
-        "availability": 8,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "availability": 7,
+        "XPMultiplier": [0.0, 7/7, 5/7, 0.0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -841,7 +881,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "XPMultiplier": [0.0, 12/12, 9/12, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -855,13 +895,13 @@ sov_unit_edits = {
 
     "VDV_HMG_SOV": {  # VDV Pulemetchiki
         "CommandPoints": 35,
-        "availability": 12,
+        "availability": 7,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "XPMultiplier": [0.0, 7/7, 5/7, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -870,13 +910,13 @@ sov_unit_edits = {
     
     "MotRifles_HMG_SOV": {  # Pulmetchiki
         "CommandPoints": 35,
-        "availability": 12,
+        "availability": 10,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -892,13 +932,13 @@ sov_unit_edits = {
 
     "MotRifles_HMG_TTsko_SOV": {  # Pulmetchiki
         "CommandPoints": 35,
-        "availability": 12,
+        "availability": 10,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -920,7 +960,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -935,8 +975,8 @@ sov_unit_edits = {
     
     "Spetsnaz_SOV": {
         "CommandPoints": 70,
-        "availability": 5,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.8],
+        "availability": 4,
+        "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -950,8 +990,8 @@ sov_unit_edits = {
 
     "Spetsnaz_Vympel_SOV": {  # Spetsgruppa Vympel
         "CommandPoints": 70,
-        "availability": 5,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.8],
+        "availability": 4,
+        "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -967,7 +1007,7 @@ sov_unit_edits = {
     "Spetsnaz_FireSupport_SOV": {
         "CommandPoints": 35,
         "availability": 8,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.75],
+        "XPMultiplier": [0.0, 0.0, 8/8, 6/8],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1083,10 +1123,10 @@ sov_unit_edits = {
     },
 
     "ATteam_RCL_SPG9_VDV_SOV": {
-        "strength": 3,
+        "strength": 5,
         "CommandPoints": 30,
-        "availability": 10,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "availability": 9,
+        "XPMultiplier": [0.0, 9/9, 7/9, 0.0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1201,6 +1241,13 @@ sov_unit_edits = {
             "Salves": {
                 "ATGM_9K111M_Faktoriya": 6,
             },
+        },
+    },
+    
+    "LUAZ_967M_SOV": {
+        "CommandPoints": 15,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'"],
         },
     },
 
@@ -1362,6 +1409,18 @@ sov_unit_edits = {
                 },
             },
         },
+    },
+    
+    "Mortier_2S12_120mm_SOV": {
+        "CommandPoints": 40,
+        "availability": 5,
+        "XPMultiplier": [5/5, 4/5, 3/5, 0.0],
+    },
+    
+    "Mortier_2S12_120mm_VDV_SOV": {
+        "CommandPoints": 40,
+        "availability": 5,
+        "XPMultiplier": [5/5, 4/5, 3/5, 0.0],
     },
     
     "MTLB_Vasilek_SOV": {
@@ -1966,7 +2025,23 @@ sov_unit_edits = {
     "MANPAD_Igla_SOV": {
         "CommandPoints": 35,
         "availability": 7,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+            "SOV_119IndTkBrig": {
+                "cards": 2,
+            },
+            "SOV_27_Gds_Rifle": {
+                "cards": 4,
+            },
+            "SOV_6IndMSBrig": {
+                "cards": 3,
+            },
+            "SOV_79_Gds_Tank": {
+                "cards": 3,
+            },
+        },
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1976,6 +2051,7 @@ sov_unit_edits = {
                 "replace": [("FM_AK_74", "FM_AK_74_noreflex")],
             },
         },
+        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
     },
 
     "MANPAD_Igla_TTsko_SOV": {

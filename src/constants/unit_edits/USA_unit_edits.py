@@ -225,7 +225,7 @@ usa_unit_edits = {
     },
 
     "Engineer_CMD_US": {
-        "CommandPoints": 45,
+        "CommandPoints": 50,
         "GameName": {
             "display": "#LDR ENGINEERS LDR.",
             "token": "DBEBRUEYSP",
@@ -261,6 +261,27 @@ usa_unit_edits = {
             "US_11ACR": {
                 "Transports": ["M1038_Humvee_US", "M113A3_US"],
             }
+        },
+        "WeaponAssignment": [
+                (0, [1, ]),
+                (1, [1, ]),
+                (2, [0, ]),
+                (3, [0, ]),
+                (4, [0, ]),
+                (5, [0, ]),
+                (6, [0, ]),
+                (7, [0, ]),
+                (8, [0, ]),
+                (9, [0, ]),
+                (10, [0, 2, ]),
+            ],
+        "WeaponDescriptor": {
+            "Salves": {
+                "add": [(2, 8)], # (turret, salves)
+            },
+            "equipmentchanges": {
+                "add": [(2, "RocketInf_M72A3_LAW_66mm")], # (turret, weapon)
+            },
         },
         "MenuIconTexture": "Texture_RTS_H_assault",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
@@ -712,8 +733,8 @@ usa_unit_edits = {
                 "Transports": ["M151_MUTT_trans_US", "M113A3_US"],  # no change, just reversed display order
             },
         },
-        "availability": 10,
-        "XPMultiplier": [0.0, 10/10, 7/10, 0.0],
+        "availability": 9,
+        "XPMultiplier": [0.0, 9/9, 7/9, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -736,8 +757,8 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 10,
-        "XPMultiplier": [0.0, 10/10, 7/10, 0.0],
+        "availability": 9,
+        "XPMultiplier": [0.0, 9/9, 7/9, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -910,10 +931,10 @@ usa_unit_edits = {
         },
     },
 
-    "Rifles_HMG_US": {
+    "Rifles_HMG_US": { # GUNNERS
         "CommandPoints": 35,
-        "availability": 12,
-        "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
+        "availability": 10,
+        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -922,8 +943,8 @@ usa_unit_edits = {
 
     "Airborne_HMG_US": {  # AIRBORNE GUNNERS
         "CommandPoints": 35,
-        "availability": 8,
-        "XPMultiplier": [0.0, 8/8, 6/8, 0.0],
+        "availability": 7,
+        "XPMultiplier": [0.0, 7/7, 5/7, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -965,6 +986,11 @@ usa_unit_edits = {
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_M16": 7,
+            },
         },
     },
 
@@ -2086,6 +2112,14 @@ usa_unit_edits = {
     "M3A1_Bradley_CFV_US": {
         "CommandPoints": 105,
         "availability": 4,
+        "Divisions": {
+            "US_3rd_Arm": {
+                "cards": 1,
+            },
+            "US_8th_Inf": {
+                "cards": 1,
+            },
+        },
         "XPMultiplier": [4/4, 3/4, 0.0, 0.0],
     },
 
@@ -2154,12 +2188,6 @@ usa_unit_edits = {
     },
 
     "Scout_US": {
-        "WeaponAssignment": [
-                (0, [1, ]),
-                (1, [0, ]),
-                (2, [0, ]),
-                (3, [0, 2, ]),
-            ],
         "CommandPoints": 20,
         "availability": 8,
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
@@ -2190,14 +2218,20 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
+        "WeaponAssignment": [
+                (0, [1, ]),
+                (1, [0, ]),
+                (2, [0, ]),
+                (3, [0, 2, ]),
+            ],
         "WeaponDescriptor": {
             "Salves": {
                 "FM_M16": 11,
                 "SAW_M249_5_56mm": 45,
-                "add": [(2, 4)],
+                "add": [(2, 4)], # (salves_index, salves)
             },
             "equipmentchanges": {
-                "add": [(2, "RocketInf_M72A3_LAW_66mm")], # (turret, salves, weapon)
+                "add": [(2, "RocketInf_M72A3_LAW_66mm")], # (turret, weapon)
                 "replace": [("MMG_inf_M240B_7_62mm", "SAW_M249_5_56mm")],
                 "fire_effect": [("MMG_inf_M240B_7_62mm", "SAW_M249_5_56mm")],
             },
@@ -2252,6 +2286,11 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
+        "Divisions": {
+            "US_3rd_Arm": {
+                "cards": 1,
+            },
+        },
     },
 
     # US AA
@@ -2271,6 +2310,7 @@ usa_unit_edits = {
             },
             "US_3rd_Arm": {
                 "cards": 3,
+                # "Transports": ["M151_MUTT_trans_US", "M2A1_Bradley_IFV_US"],
             },
             "US_8th_Inf": {
                 "cards": 3,

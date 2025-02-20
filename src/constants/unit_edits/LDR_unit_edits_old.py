@@ -789,7 +789,7 @@ ldr_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "Divisions": {
-            "SOV_27_Gds_rifle": {
+            "SOV_27_Gds_Rifle": {
                 "Transports": ['GAZ_66_SOV', 'BTR_80_SOV', 'BMP_1P_SOV', 'BMP_2_SOV'],
             },
         },
@@ -861,7 +861,7 @@ ldr_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_assault",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
         "Divisions": {
-            "SOV_27_Gds_rifle": {
+            "SOV_27_Gds_Rifle": {
                 "Transports": ["GAZ_66_SOV", "MTLB_transp_SOV"],
             },
         },

@@ -197,7 +197,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "PorteeMaximaleHAGRU": 1925,
-                "TempsDeVisee": 3.5,
+                "TempsDeVisee": 2.4,
             }
         },
         "BaseSupplyCost": 35,
@@ -272,7 +272,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 2625,
-                "PorteeMaximaleHAGRU": 2100,
+                "PorteeMaximaleHAGRU": 1925,
                 "TempsDeVisee": 1.2,
             }
         },
@@ -287,6 +287,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("SAM_FIM92_Stinger_HAGRU", "MANPAD", "SAM_FIM92_Stinger", True): { # 187
         "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_hagru",
+            },
             "display": "FIM-92C Stinger",
             "token": "AKFXZOAXUI",
             "hit_roll": {
@@ -295,8 +298,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 2625,
-                "PorteeMaximaleHAGRU": 2100,
-                "TempsDeVisee": 3.5,
+                "PorteeMaximaleHAGRU": 1925,
+                "TempsDeVisee": 2.4,
             }
         },
         "BaseSupplyCost": 35,
@@ -348,7 +351,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 2625,
                 "PorteeMaximaleHAGRU": 2100,
-                "TempsDeVisee": 3.5,
+                "TempsDeVisee": 2.4,
             }
         },
         "BaseSupplyCost": 35,
@@ -505,7 +508,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "PorteeMaximaleTBAGRU": 2450,
                 "PorteeMaximaleHAGRU": 1750,
                 "TempsEntreDeuxSalves": 7.0,
-                "TempsDeVisee": 3.5,
+                "TempsDeVisee": 3.0,
             }
         },
         "BaseSupplyCost": 25,
@@ -671,7 +674,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "PorteeMaximaleTBAGRU": 2625,
                 "PorteeMaximaleHAGRU": 1925,
                 "TempsEntreDeuxSalves": 12.0,
-                "TempsDeVisee": 3.5,
+                "TempsDeVisee": 3.0,
             }
         },
         "BaseSupplyCost": 25,

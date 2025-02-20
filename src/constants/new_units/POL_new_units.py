@@ -92,7 +92,7 @@ POL_NEW_UNITS = {
         "Faction": "PACT",
         "Nation": "POL",
         "alternatives_count": 4,
-        "selector_tactic": "2, 4",
+        "selector_tactic": "02_04",
     },
 
     ("T55A_CMD_POL", 0): {  # T-55AD CV

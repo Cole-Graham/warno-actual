@@ -86,7 +86,7 @@ RDA_NEW_UNITS = {
         "Faction": "PACT",
         "Nation": "DDR",
         "alternatives_count": 5,
-        "selector_tactic": "2, 5",
+        "selector_tactic": "02_05",
     },
 
     ("BTR_50_CMD_DDR", 0): {  # donor unit - increment integer as needed to avoid duplicate keys

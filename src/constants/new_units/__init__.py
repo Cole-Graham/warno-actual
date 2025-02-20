@@ -10,12 +10,12 @@ from .USA_new_units import USA_NEW_UNITS
 
 # Combine all new unit definitions
 NEW_UNITS = {
-    **USA_NEW_UNITS,
     **SOV_NEW_UNITS, 
     **RDA_NEW_UNITS,
     **RFA_NEW_UNITS,
     **POL_NEW_UNITS,
-    **UK_NEW_UNITS
+    **UK_NEW_UNITS,
+    **USA_NEW_UNITS,
 }
 
 __all__ = [

@@ -550,7 +550,7 @@ pol_unit_edits = {
     },
 
     "ATteam_RCL_SPG9_POL": {  # SPG-9
-        "Strength": 3,
+        "strength": 5,
         "CommandPoints": 30,
         "availability": 10,
         "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
@@ -561,7 +561,7 @@ pol_unit_edits = {
     },
 
     "ATteam_RCL_SPG9_Para_POL": {  # Desant. SPG-9(D)
-        "Strength": 3,
+        "strength": 5,
         "CommandPoints": 30,
         "availability": 10,
         "XPMultiplier": [0.0, 10/10, 7/10, 0.0],

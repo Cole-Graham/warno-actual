@@ -27,50 +27,49 @@ def edit_infantry_depictions(source_path: Any, ammo_db: Dict[str, Any], depictio
             continue
             
         weapon_changes = edits["WeaponDescriptor"].get("equipmentchanges", {})
-        if "add" not in weapon_changes:
-            continue
+        if "add" in weapon_changes:
             
-        # Get weapon info (salvo_index, weapon_name), e.g:
-        # "add": [
-        #     (2, "MMG_inf_M240B_7_62mm"),
-        #     (3, "RocketInf_M72A3_LAW_66mm"),
-        # ]
-        # todo: handle multiple changes for a single unit (example dosn't work right now xD trolololol)
-        turret_index = weapon_changes["add"][0][0] # [change_1][salvo_index] turret index?? not sure trololol
-        weapon_name = weapon_changes["add"][0][1] # [change_1][weapon_name]
-        
-        # Get depiction data for weapon
-        if weapon_name in ammo_db["renames_new_old"]:
-            old_name = ammo_db["renames_new_old"][weapon_name] 
-            if old_name in depiction_data["animation_weapon_map"]:
-                weapon_data = {
-                    "weapon_alt_mesh": depiction_data["all_weapon_meshes"][old_name],
-                    "fire_effect": depiction_data["all_fire_effects"][old_name],
-                    "animation_tag": depiction_data["animation_weapon_map"][old_name]
-                }
+            # Get weapon info (salvo_index, weapon_name), e.g:
+            # "add": [
+            #     (2, "MMG_inf_M240B_7_62mm"),
+            #     (3, "RocketInf_M72A3_LAW_66mm"),
+            # ]
+            # todo: handle multiple changes for a single unit (example dosn't work right now xD trolololol)
+            turret_index = weapon_changes["add"][0][0] # [change_1][salvo_index] turret index?? not sure trololol
+            weapon_name = weapon_changes["add"][0][1] # [change_1][weapon_name]
+            
+            # Get depiction data for weapon
+            if weapon_name in ammo_db["renames_new_old"]:
+                old_name = ammo_db["renames_new_old"][weapon_name] 
+                if old_name in depiction_data["animation_weapon_map"]:
+                    weapon_data = {
+                        "weapon_alt_mesh": depiction_data["all_weapon_meshes"][old_name],
+                        "fire_effect": depiction_data["all_fire_effects"][old_name],
+                        "animation_tag": depiction_data["animation_weapon_map"][old_name]
+                    }
+                else:
+                    weapon_data = {}
+                    logger.warning(f"No animation tag found for {old_name}")
             else:
-                weapon_data = {}
-                logger.warning(f"No animation tag found for {old_name}")
-        else:
-            weapon_data = {
-                "weapon_alt_mesh": depiction_data["all_weapon_meshes"][weapon_name],
-                "fire_effect": depiction_data["all_fire_effects"][weapon_name],
-                "animation_tag": depiction_data["animation_weapon_map"][weapon_name]
-            }
-        
-        try:
-            # Add weapon mesh alternative
-            _add_weapon_mesh(source_path, unit_name, turret_index, weapon_data["weapon_alt_mesh"])
+                weapon_data = {
+                    "weapon_alt_mesh": depiction_data["all_weapon_meshes"][weapon_name],
+                    "fire_effect": depiction_data["all_fire_effects"][weapon_name],
+                    "animation_tag": depiction_data["animation_weapon_map"][weapon_name]
+                }
             
-            # Add weapon fire effect
-            _add_fire_effect(source_path, unit_name, turret_index, weapon_data["fire_effect"])
-            
-            # Add conditional animation tag if it exists
-            if "animation_tag" in weapon_data:
-                _add_animation_tag(source_path, unit_name, turret_index, weapon_data["animation_tag"])
-            
-        except Exception as e:
-            logger.error(f"Failed to edit depictions for {unit_name}: {str(e)}")
+            try:
+                # Add weapon mesh alternative
+                _add_weapon_mesh(source_path, unit_name, turret_index, weapon_data["weapon_alt_mesh"])
+                
+                # Add weapon fire effect
+                _add_fire_effect(source_path, unit_name, turret_index, weapon_data["fire_effect"])
+                
+                # Add conditional animation tag if it exists
+                if "animation_tag" in weapon_data:
+                    _add_animation_tag(source_path, unit_name, turret_index, weapon_data["animation_tag"])
+                
+            except Exception as e:
+                logger.error(f"Failed to edit depictions for {unit_name}: {str(e)}")
 
 
 def _add_weapon_mesh(source_path: Any, unit_name: str, turret_index: int, mesh: str) -> None:

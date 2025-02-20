@@ -116,7 +116,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketInf_RPG7VL", "medium_at", None, False): { # 697
         "Ammunition": {
             "Arme": {
-                "Index": 18,
+                "Index": 19,
             },
             "hit_roll": {
                 "Idling": 50,

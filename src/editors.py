@@ -31,6 +31,7 @@ from src.gameplay import (
     unit_edits_divisionrules,
     update_deck_pack_references,
     update_weapondescr_ammoname_quantity,
+    vanilla_renames_weapondescriptor,
 )
 from src.gameplay.buildings import edit_fob_attributes
 from src.gameplay.depictions import (
@@ -269,9 +270,10 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
             bomb_damage_standards,
         ],
         "GameData/Generated/Gameplay/Gfx/WeaponDescriptor.ndf": [
+            lambda source_path: vanilla_renames_weapondescriptor(source_path, game_db),
+            lambda source_path: create_new_weapons(source_path, game_db),
             lambda source_path: unit_edits_weapondescriptor(source_path, game_db),
             lambda source_path: apply_default_salves(source_path, game_db),
-            lambda source_path: create_new_weapons(source_path, game_db),
             lambda source_path: update_weapondescr_ammoname_quantity(source_path, game_db),
         ],
         "GameData/Generated/Gameplay/Gfx/MissileDescriptors.ndf": [

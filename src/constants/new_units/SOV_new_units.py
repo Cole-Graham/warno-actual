@@ -50,8 +50,8 @@ SOV_NEW_UNITS = {
                 },
             },
         },
-        "weapon1": "FM_AK_74",
-        "weapon1_quantity": 4,
+        # "weapon1": "FM_AK_74",
+        # "weapon1_quantity": 4,
         "Salves": [7, 100, 5, 3],
         "TransportedTexture": "UseInGame_Transport_COMMAND",
 
@@ -94,7 +94,7 @@ SOV_NEW_UNITS = {
         "Faction": "PACT",
         "Nation": "SOV",
         "alternatives_count": 4,
-        "selector_tactic": "2, 4",
+        "selector_tactic": "02_04",
     },
 
     ("MotRifles_CMD_TTsko_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -181,7 +181,7 @@ SOV_NEW_UNITS = {
         "Faction": "PACT",
         "Nation": "SOV",
         "alternatives_count": 4,
-        "selector_tactic": "2, 4",
+        "selector_tactic": "02_04",
     },
 
     ("T80BV_CMD_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -312,7 +312,7 @@ SOV_NEW_UNITS = {
         "CadavreGUID": "9d790fe8-5668-4757-b532-6d70f411d232",
         "NewName": "MotRifles_RPG7V_TTsko_SOV",
         "GameName": {
-            "display": "MOTOSTRELKI [RPG-7V]",
+            "display": "MOTOSTRELKI [RPG-7]",
             "token": "UQYYVBRKGT",
         },
         "TagSet": {
@@ -347,6 +347,9 @@ SOV_NEW_UNITS = {
                 "RocketInf_RPG7VL": 6,
             },
             "equipmentchanges": {
+                "quantity": {
+                    "FM_AK_74": 6,
+                },
                 "replace": [("RocketInf_RPG27_105mm", "RocketInf_RPG7VL")],
                 "fire_effect": [("RocketInf_RPG27_105mm", "RocketInf_RPG7VL")],
             },
@@ -366,8 +369,8 @@ SOV_NEW_UNITS = {
                 "Transports": ["GAZ_66_SOV", "BMP_1P_SOV", "BMP_2_SOV", "BMP_2AG_SOV", "BMP_3_SOV"],
             },
         },
-        "availability": 12,
-        "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
+        "availability": 10,
+        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
         "max_speed": 26,
         "Orders": ['Stop', 'Move', 'FollowFormation', 'SmartMove', 'Attack', 'SmartMoveAndAttack', 'MoveAndAttack', 
                    'Spread', 'Shoot', 'ShootOnPosition', 'ShootOnPositionWithoutCorrection', 'AskForSupply', 
@@ -381,7 +384,7 @@ SOV_NEW_UNITS = {
         "Nation": "SOV",
         "UpgradeFromUnit": "MotRifles_TTsko_SOV",
         "alternatives_count": 6,
-        "selector_tactic": "0, 6",
+        "selector_tactic": "00_06",
     },
 
     ("ATteam_Fagot_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys

@@ -76,10 +76,27 @@ def modify_new_unit(unit_row: Any, edits: Dict[str, Any]) -> None:
     modules_list = unit_row.v.by_member("ModulesDescriptors")
     
     # First add any new modules
-    if "modules_add" in edits:
-        for module in edits["modules_add"]:
-            modules_list.v.add(module)
-            logger.info(f"Added {module} to {unit_row.namespace}")
+    modules_to_add = edits.get("Modules_add", [])
+    if modules_to_add:  
+        transport_module = """Transporter is TModuleSelector
+            (
+                Default = TTransporterModuleDescriptor
+                (
+                    TransportableTagSet = ["Crew"]
+                    NbSeatsAvailable = 1
+                    WreckUnloadPhysicalDamageBonus = WreckUnloadDamageBonus_Default_Physical
+                    WreckUnloadSuppressDamageBonus = WreckUnloadDamageBonus_Default_Suppress
+                    WreckUnloadStunDamageBonus = WreckUnloadDamageBonus_Default_Stun
+                    LoadRadiusGRU = 70
+                )
+                Condition = ~/IfNotCadavreCondition
+            )"""
+        for module in modules_to_add:
+            if module == "Transporter":
+                modules_list.v.add(transport_module)
+                logger.info(f"Added Transporter module to {unit_row.namespace}")
+            else:
+                modules_list.v.add(module)
     
     # Then handle module removal and modifications
     modules_to_remove = []

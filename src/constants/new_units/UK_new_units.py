@@ -43,7 +43,7 @@ UK_NEW_UNITS = {
                 "Transports": ["LandRover_UK"],
             },
         },
-        "availability": 2,
+        "availability": 6,
         "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
         "max_speed": 4,
         "UpgradeFromUnit": "FOB_UK",
@@ -137,7 +137,7 @@ UK_NEW_UNITS = {
         "Faction": "NATO",
         "Nation": "UK",
         "alternatives_count": 5,
-        "selector_tactic": "2, 5",
+        "selector_tactic": "02_05",
     },
 
     ("Challenger_1_Mk1_CMD_UK", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
