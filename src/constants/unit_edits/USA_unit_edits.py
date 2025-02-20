@@ -1149,8 +1149,8 @@ usa_unit_edits = {
                 "cards": 3,
             },
         },
-        "availability": 8,
-        "XPMultiplier": [0.0, 8/8, 6/8, 0.0],
+        "availability": 9,
+        "XPMultiplier": [0.0, 9/9, 7/9, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -1174,8 +1174,8 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 8,
-        "XPMultiplier": [0.0, 8/8, 6/8, 0.0],
+        "availability": 9,
+        "XPMultiplier": [0.0, 9/9, 7/9, 0.0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1234,8 +1234,8 @@ usa_unit_edits = {
                 "cards": 3,
             },
         },
-        "availability": 8,
-        "XPMultiplier": [0.0, 8/8, 6/8, 0.0],
+        "availability": 9,
+        "XPMultiplier": [0.0, 9/9, 7/9, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -1378,8 +1378,8 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 8,
-        "XPMultiplier": [0.0, 8/8, 6/8, 0.0],
+        "availability": 9,
+        "XPMultiplier": [0.0, 9/9, 7/9, 0.0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1735,7 +1735,7 @@ usa_unit_edits = {
     },
 
     "M1IP_Abrams_CMD_US": {
-        "CommandPoints": 210,
+        "CommandPoints": 220,
         "GameName": {
             "display": "#LDR M1IP ABRAMS LDR.",
             "token": "TSLINICZXV",
@@ -1942,7 +1942,7 @@ usa_unit_edits = {
             "display": "#3RDARM M1A1 ABRAMS",
             "token": "YEMPBPBTNZ",
         },
-        "CommandPoints": 225,
+        "CommandPoints": 220,
         "Divisions": {
             "remove": ["US_8th_Inf"],
             "default": {

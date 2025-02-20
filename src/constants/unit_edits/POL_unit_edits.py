@@ -241,8 +241,8 @@ pol_unit_edits = {
                 },
             },
         },
-        "availability": 7,
-        "XPMultiplier": [0.0, 0.0, 7/7, 5/7],
+        "availability": 5,
+        "XPMultiplier": [0.0, 0.0, 5/5, 4/5],
         "max_speed": 26,
         "selector_tactic": "(2, 4)",
         "selector_tactic_obj": "02_04",
@@ -317,7 +317,7 @@ pol_unit_edits = {
 
     "Engineers_POL": {  # Saperzy
         "CommandPoints": 50,
-        "availability": 8,
+        "availability": 6,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -326,7 +326,7 @@ pol_unit_edits = {
                 "Transports": ["Star_266_POL", "MTLB_trans_POL", "OT_64_SKOT_2_POL", "OT_64_SKOT_2A_POL"],
             },
         },
-        "XPMultiplier": [0.0, 8/8, 6/8, 0.0],
+        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -346,7 +346,7 @@ pol_unit_edits = {
 
     "Engineers_Flam_POL": {  # Saperzy Szturmowi
         "CommandPoints": 45,
-        "availability": 8,
+        "availability": 6,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -355,7 +355,7 @@ pol_unit_edits = {
                 "Transports": ["Star_266_POL", "MTLB_trans_POL", "OT_64_SKOT_2_POL", "OT_64_SKOT_2A_POL"],
             },
         },
-        "XPMultiplier": [0.0, 8/8, 6/8, 0.0],
+        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -414,13 +414,13 @@ pol_unit_edits = {
 
     "MotRifles_POL": {  # Piechota Zmech
         "CommandPoints": 30,
-        "availability": 12,
+        "availability": 10,
         "Divisions": {
             "default": {
                 "cards": 4,
             },
         },
-        "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
+        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -439,14 +439,14 @@ pol_unit_edits = {
         "GameName": {
             "display": "PIECHOTA ZMECH [SWD]",
         },
-        "CommandPoints": 40,
-        "availability": 12,
+        "CommandPoints": 35,
+        "availability": 10,
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
+        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -518,13 +518,13 @@ pol_unit_edits = {
 
     "WSW_POL": {  # WSW
         "CommandPoints": 30,
-        "availability": 8,
+        "availability": 7,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 8/8, 6/8, 0.0],
+        "XPMultiplier": [0.0, 7/7, 5/7, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -1055,7 +1055,7 @@ pol_unit_edits = {
     },
 
     "T72M1_Wilk_POL": {  # T-72M2 Wilk
-        "CommandPoints": 195,
+        "CommandPoints": 190,
         "availability": 4,
         "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
         "Divisions": {
@@ -1220,6 +1220,7 @@ pol_unit_edits = {
             "Salves": {
                 "FM_kbk_AK": 9,
                 "PM_PM63_RAK": 9,
+                "RocketInf_RPG7": 4,
             },
         },
         "DeploymentShift": 0,
@@ -1245,6 +1246,9 @@ pol_unit_edits = {
                 "quantity": {
                     "PM_PM63_RAK": 4,
                 },
+            },
+            "Salves": {
+                "RocketInf_RPG76_Komar": 4,
             },
         },
         "Divisions": {
@@ -1298,6 +1302,7 @@ pol_unit_edits = {
             "Salves": {
                 "FM_Tantal": 9,
                 "PM_PM63_RAK": 9,
+                "RocketInf_RPG7VL": 4,
             },
         },
         "DeploymentShift": 0,

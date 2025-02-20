@@ -814,7 +814,7 @@ sov_unit_edits = {
 
     "VDV_SOV": {  # RPK, SVD, RPG-7VR
         "CommandPoints": 40,
-        "availability": 7,
+        "availability": 9,
         "Divisions": {
             "default": {
                 "cards": 69,
@@ -826,7 +826,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [0.0, 7/7, 5/7, 0.0],
+        "XPMultiplier": [0.0, 9/9, 7/9, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -1589,7 +1589,7 @@ sov_unit_edits = {
 
     # SOV TANK
     "T80BV_CMD_SOV": {
-        "CommandPoints": 225,
+        "CommandPoints": 220,
         "GameName": {
             "display": "#LDRSOV T-80BVK LDR.",
             "token": "YWAOJLFAFW",
@@ -1739,7 +1739,7 @@ sov_unit_edits = {
             "front": 18,
         },
         "availability": 6,
-        "CommandPoints": 215,
+        "CommandPoints": 210,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1757,14 +1757,14 @@ sov_unit_edits = {
     },
     
     "T80U_SOV": {
-        "CommandPoints": 260,
+        "CommandPoints": 255,
         "Divisions": {
             "default": {
-                "cards": 3,
+                "cards": 2,
             },
         },
-        "availability": 3,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "availability": 4,
+        "XPMultiplier": [0.0, 4/4, 3/4, 0.0],
     },
     
     "T80UD_SOV": {

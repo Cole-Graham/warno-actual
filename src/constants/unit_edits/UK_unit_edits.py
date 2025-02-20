@@ -72,7 +72,7 @@ uk_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "availability": 7,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
+        "XPMultiplier": [0.0, 0.0, 7/7, 5/7],
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -137,7 +137,7 @@ uk_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_assault",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
         "availability": 7,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
+        "XPMultiplier": [0.0, 0.0, 7/7, 5/7],
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -176,9 +176,6 @@ uk_unit_edits = {
             ],
         },
         "TransportedTexture": "UseInGame_Transport_REGINF",
-        # "SortingOrder": 20075,
-        # "UnitAttackValue": 1,
-        # "UnitDefenseValue": 16,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
         "SpecialtiesList": {
@@ -192,8 +189,17 @@ uk_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "availability": 7,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
+        "XPMultiplier": [0.0, 0.0, 7/7, 5/7],
         "max_speed": 26,
+        "Divisions": {
+            "UK_2nd_Infantry": {
+                "Transports": [
+                    "Bedford_MJ_4t_trans_UK",
+                    "MCV_80_Warrior_UK",
+                    "MCV_80_Warrior_MILAN_UK",
+                ],
+            },
+        },
         "is_infantry": True,
         "is_ground_vehicle": False,
         "remove_zone_capture": None,
@@ -232,8 +238,8 @@ uk_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "availability": 7,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
+        "availability": 6,
+        "XPMultiplier": [0.0, 0.0, 6/6, 4/6],
         "max_speed": 26,
         "is_infantry": True,
         "is_ground_vehicle": False,
@@ -306,7 +312,7 @@ uk_unit_edits = {
         "CommandPoints": 15,
         "availability": 12,
         "strength": 5,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "XPMultiplier": [12/12, 0.0, 0.0, 0.0],
         "max_speed": 26,
         "WeaponAssignment": [
                 (0, [1, ]),
@@ -353,7 +359,7 @@ uk_unit_edits = {
     
     "Territorial_UK": {
         "CommandPoints": 30,
-        "availability": 12,
+        "availability": 10,
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -376,22 +382,22 @@ uk_unit_edits = {
     
     "Airmobile_UK": {  # 3x FN Mag
         "CommandPoints": 40,
-        "availability": 12,
+        "availability": 10,
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
     },
     
     "Airmobile_MILAN_UK": {  # 7x L85, 2x L86A1 lmg, 1x LAW 80
         "CommandPoints": 50,
-        "availability": 12,
+        "availability": 10,
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
         "WeaponDescriptor": {
             "Salves": {
                 "RocketInf_LAW_80": 6,
@@ -401,12 +407,12 @@ uk_unit_edits = {
     
     "Engineers_Airmobile_UK": {
         "CommandPoints": 45,
-        "availability": 8,
+        "availability": 6,
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "WeaponDescriptor": {
             "Salves": {
                 "RocketInf_Carl_Gustav": 8,
@@ -416,7 +422,7 @@ uk_unit_edits = {
     
     "Engineers_TA_UK": {
         "CommandPoints": 35,
-        "availability": 10,
+        "availability": 8,
         "max_speed": 26,
         "Divisions": {
             "default": {
@@ -436,12 +442,12 @@ uk_unit_edits = {
     
     "Airmobile_Mot_UK": {
         "CommandPoints": 35,
-        "availability": 12,
+        "availability": 10,
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
         "WeaponDescriptor": {
             "Salves": {
                 "RocketInf_Carl_Gustav": 8,
@@ -451,12 +457,12 @@ uk_unit_edits = {
     
     "Rifles_UK": {
         "CommandPoints": 25,
-        "availability": 12,
+        "availability": 10,
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
     },
     "HMGteam_MAG_UK": {
         "GameName": {

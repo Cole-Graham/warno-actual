@@ -92,6 +92,15 @@ rda_unit_edits = {
             "default": {
                 "cards": 1,
             },
+            "RDA_7_Panzer": {
+                "Transports": [
+                    "W50_LA_A_DDR",
+                    "BTR_70_DDR",
+                    "BMP_1_SP1_DDR",
+                    "BMP_1_SP2_DDR",
+                    "BMP_1P_DDR",
+                ],
+            },
         },
         "XPMultiplier": [0.0, 0.0, 7/7, 5/7],
         "max_speed": 26,
@@ -156,8 +165,8 @@ rda_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_assault",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
-        "availability": 7,
-        "XPMultiplier": [0.0, 0.0, 7/7, 5/7],
+        "availability": 5,
+        "XPMultiplier": [0.0, 0.0, 5/5, 4/5],
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -189,8 +198,8 @@ rda_unit_edits = {
 
     "Security_DDR": {
         "CommandPoints": 30,
-        "availability": 12,
-        "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
+        "availability": 10,
+        "XPMultiplier": [10/10, 0.0, 0.0, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -232,8 +241,8 @@ rda_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": 12,
-        "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
+        "availability": 10,
+        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -256,8 +265,8 @@ rda_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": 12,
-        "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
+        "availability": 10,
+        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -283,8 +292,8 @@ rda_unit_edits = {
                 "cards": 3,
             },
         },
-        "availability": 12,
-        "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
+        "availability": 10,
+        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -304,8 +313,8 @@ rda_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": 12,
-        "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
+        "availability": 10,
+        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -328,8 +337,8 @@ rda_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": 8,
-        "XPMultiplier": [0.0, 8/8, 6/8, 0.0],
+        "availability": 7,
+        "XPMultiplier": [0.0, 7/7, 5/7, 0.0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -346,8 +355,8 @@ rda_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": 8,
-        "XPMultiplier": [0.0, 8/8, 6/8, 0.0],
+        "availability": 6,
+        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],

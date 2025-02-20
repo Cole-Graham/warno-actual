@@ -48,6 +48,11 @@ def create_new_weapons(source_path: Any, game_db: Dict[str, Any]) -> None:
                     for ammo in changes["add"]:
                         _add_weapon(source_path, changes, new_weap_row, ammo, game_db)
                 
+                # Handle HAGRU MANPADS
+                if "HAGRU_MANPADS" in changes:
+                    for (turret_index, donor_weapon_index, hagru_ammo) in changes["HAGRU_MANPADS"]:
+                        _add_hagru_manpads(new_weap_row, turret_index, donor_weapon_index, hagru_ammo)
+                
                 # Handle replacements
                 if "replace" in changes:
                     for old_ammo, new_ammo in changes["replace"]:
@@ -144,6 +149,22 @@ def _add_weapon(
     
     if not template_found:
         logger.warning(f"Could not find template for weapon {weapon_name}")
+
+
+def _add_hagru_manpads(
+    new_weap_row: Any,
+    turret_index: int,
+    donor_weapon_index: int,
+    hagru_ammo: str,
+) -> None:
+    """Add a HAGRU MANPADS to the weapon descriptor."""
+    turret_list = new_weap_row.v.by_member("TurretDescriptorList")
+    turret = turret_list.v[turret_index]
+    mounted_weapons = turret.v.by_member("MountedWeaponDescriptorList")
+    donor_weapon = mounted_weapons.v[donor_weapon_index]
+    new_weapon = donor_weapon.copy()
+    new_weapon.v.by_m("Ammunition").v = f"$/GFX/Weapon/Ammo_{hagru_ammo}"
+    mounted_weapons.v.add(new_weapon)
 
 def _replace_weapon(
     changes: Dict[str, Any],   

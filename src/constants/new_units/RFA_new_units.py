@@ -28,8 +28,6 @@ RFA_NEW_UNITS = {
             ],
         },
         "strength": 5,
-        # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
-        "Dangerousness": 12,
         "WeaponAssignment": [
             (0, [0]),
             (1, [0]),
@@ -47,8 +45,6 @@ RFA_NEW_UNITS = {
         "TransportedSoldier": "Engineers_CMD_RFA",
         "Factory": "EDefaultFactories/Logistic",
         "CommandPoints": 145,
-        "UnitAttackValue": 1,
-        "UnitDefenseValue": 16,
         "SpecialitiesList": [
             'hq_inf',
             '_leader',
@@ -79,8 +75,8 @@ RFA_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "NATO",
         "Nation": "RFA",
-        "alternatives_count": 5,
-        "selector_tactic": "02_05",
+        "alternatives_count": 1,
+        "selector_tactic": "00_01",
     },
 }
 # fmt: on

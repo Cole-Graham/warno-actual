@@ -258,7 +258,8 @@ USA_NEW_UNITS = {
                 "MANPAD_FIM92": 8,
             },
             "equipmentchanges": {
-                "replace": [("FM_M16_noreflex", "FM_M16_x5")],
+                "HAGRU_MANPADS": [(1, 0, "MANPAD_FIM92_HAGRU"),], # turret_index, donor_weapon_index, ammo_name
+                "replace": [("FM_M16_noreflex", "FM_M16_x5"),],
                 "quantity": {
                     "FM_M16": 5,
                 },
@@ -421,7 +422,7 @@ USA_NEW_UNITS = {
             "display": "#8THINF M1A1 ABRAMS",
             "token": "JNEJSZOAGF",
         },
-        "CommandPoints": 240,
+        "CommandPoints": 235,
         "Divisions": {
             "default": {
                 "cards": 3,

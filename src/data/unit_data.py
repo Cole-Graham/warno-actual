@@ -103,8 +103,9 @@ def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
                 unit_info["armor"] = _extract_armor_data(module)
             
             elif module_type == "TTransportableModuleDescriptor":
-                if module.v.by_m("IsTowable", False).v:
-                    unit_info["is_towable"] = True
+                if module.v.by_m("IsTowable", False) is not None:
+                    if module.v.by_m("IsTowable").v == "True":
+                        unit_info["is_towable"] = True
             
             elif module_type == "TSupplyModuleDescriptor":
                 unit_info["is_supply_unit"] = True
