@@ -79,8 +79,9 @@ POL_NEW_UNITS = {
         },
         "availability": 2,
         "XPMultiplier": [0.0, 0.0, 2/2, 0.0],
+        "TrueAvail": [0, 0, 2, 0],
         "max_speed": 26,
-        "Orders": ['Stop', 'Move', 'FollowFormation', 'SmartMove', 'Attack', 'SmartMoveAndAttack', 'MoveAndAttack', 
+        "Orders": ['Stop', 'Move', 'FollowFormation', 'SmartMove', 'Attack', 'SmartMoveAndAttack', 'MoveAndAttack',
                    'Spread', 'Shoot', 'ShootOnPosition', 'ShootOnPositionWithoutCorrection', 'ShootOnPositionSmoke',
                    'ShootOnPositionWithoutCorrectionSmoke', 'AskForSupply', 'EnterDistrict', 'LoadIntoTransport', 'Load',
                    'AIDefend', 'AIAttack', 'AIStop'],
@@ -137,6 +138,7 @@ POL_NEW_UNITS = {
         },
         "availability": 2,
         "XPMultiplier": [0.0, 0.0, 2/2, 0.0],
+        "TrueAvail": [0, 0, 2, 0],
         "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack',
                    'MoveAndAttack', 'Spread', 'Reverse', 'Shoot', 'ShootOnPosition',
                    'ShootOnPositionWithoutCorrection', 'AskForSupply',
@@ -185,6 +187,7 @@ POL_NEW_UNITS = {
         },
         "availability": 2,
         "XPMultiplier": [0.0, 0.0, 2/2, 0.0],
+        "TrueAvail": [0, 0, 2, 0],
         "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack',
                    'MoveAndAttack', 'Spread', 'Reverse', 'Shoot', 'ShootOnPosition',
                    'ShootOnPositionWithoutCorrection', 'ShootDefensiveSmoke', 'AskForSupply',
@@ -235,6 +238,7 @@ POL_NEW_UNITS = {
         },
         "availability": 2,
         "XPMultiplier": [0.0, 0.0, 2/2, 0.0],
+        "TrueAvail": [0, 0, 2, 0],
         "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack',
                    'MoveAndAttack', 'Spread', 'Reverse', 'Shoot', 'ShootOnPosition',
                    'ShootOnPositionWithoutCorrection', 'ShootDefensiveSmoke', 'AskForSupply',
@@ -248,7 +252,7 @@ POL_NEW_UNITS = {
         "Nation": "POL",
         "UpgradeFromUnit": "T72M_CMD2_POL",
     },
-    
+
     ("OT_64_SKOT_2_POL", 0): {  # SKOT R-2AM LDR
         "GUID": "35b514f1-55d8-4c63-86c0-ff0604547fb4",
         "GroupeCombatGUID": "fb1db3c4-ed80-4a3a-b8f8-1eab529da04e",
@@ -307,7 +311,8 @@ POL_NEW_UNITS = {
         },
         "availability": 2,
         "XPMultiplier": [0.0, 2/2, 0.0, 0.0],
-        "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Spread', 'Reverse', 
+        "TrueAvail": [0, 2, 0, 0],
+        "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Spread', 'Reverse',
                    'AskForSupply', 'AIDefend', 'AIAttack', 'AIStop'],
         "is_infantry": False, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,
@@ -367,6 +372,7 @@ POL_NEW_UNITS = {
         },
         "availability": 7,
         "XPMultiplier": [7/7, 5/7, 4/7, 0.0],
+        "TrueAvail": [7, 5, 4, 0],
         "max_speed": 20,
         "Orders": ['Stop', 'Move', 'FollowFormation', 'Attack', 'MoveAndAttack', 'Spread',
                    'Shoot', 'AskForSupply', 'EnterDistrict', 'LoadIntoTransport', 'Load',
@@ -422,6 +428,7 @@ POL_NEW_UNITS = {
         },
         "availability": 3,
         "XPMultiplier": [0.0, 3/3, 0.0, 0.0],
+        "TrueAvail": [0, 3, 0, 0],
         "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Spread', 'Reverse',
                    'AskForSupply', 'AIDefend', 'AIAttack', 'AIStop'],
         "is_infantry": False, # False for Javelin LML (unique exception), towed units.
@@ -476,6 +483,7 @@ POL_NEW_UNITS = {
     #                'AIAirplaneAutoManage', 'AIStop'],
     #     "availability": 3,
     #     "XPMultiplier": [0.0, 3/3, 0.0, 0.0],
+    #     "TrueAvail": [0, 3, 0, 0],
     #     "is_infantry": False, # False for Javelin LML (unique exception), towed units.
     #     "is_heavy_equipment": False,
     #     "is_ground_vehicle": False,

@@ -45,10 +45,11 @@ UK_NEW_UNITS = {
         },
         "availability": 6,
         "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
+        "TrueAvail": [6, 4, 0, 0],
         "max_speed": 4,
         "UpgradeFromUnit": "FOB_UK",
-        "Orders": ['Stop', 'Move', 'FollowFormation', 'SmartMove', 'Attack', 'SmartMoveAndAttack', 'MoveAndAttack', 
-                   'Spread', 'Shoot', 'ShootOnPosition', 'ShootOnPositionWithoutCorrection', 'AskForSupply', 
+        "Orders": ['Stop', 'Move', 'FollowFormation', 'SmartMove', 'Attack', 'SmartMoveAndAttack', 'MoveAndAttack',
+                   'Spread', 'Shoot', 'ShootOnPosition', 'ShootOnPositionWithoutCorrection', 'AskForSupply',
                    'EnterDistrict', 'LoadIntoTransport', 'Load', 'AIDefend', 'AIAttack', 'AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": True,
@@ -60,7 +61,7 @@ UK_NEW_UNITS = {
         "alternatives_count": 2,
         "servants": ("G_UK", "D_UK")
     },
-    
+
     ("Rifles_CMD_UK", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "1f764bcc-3c0f-4a39-90b3-43d97e749441",
         "GroupeCombatGUID": "f89e6ee3-40ac-4ef8-a6eb-5c1373cb51d7",
@@ -73,7 +74,7 @@ UK_NEW_UNITS = {
         },
         "TagSet": {
             "overwrite_all": [
-                "AllUnits", "AllowedForMissileRoE", "Commandant", "Crew", "GroundUnits", "Inf_quartier_ok", 
+                "AllUnits", "AllowedForMissileRoE", "Commandant", "Crew", "GroundUnits", "Inf_quartier_ok",
                 "Infanterie", "Infanterie_CMD", "InfmapCommander", "UNITE_Rifles_CMD2_UK", "Unite",
             ],
         },
@@ -124,8 +125,9 @@ UK_NEW_UNITS = {
         },
         "availability": 2,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+        "TrueAvail": [0, 0, 2, 0],
         "max_speed": 26,
-        "Orders": ['Stop', 'Move', 'FollowFormation', 'SmartMove', 'Attack', 'SmartMoveAndAttack', 'MoveAndAttack', 
+        "Orders": ['Stop', 'Move', 'FollowFormation', 'SmartMove', 'Attack', 'SmartMoveAndAttack', 'MoveAndAttack',
                    'Spread', 'Shoot', 'ShootOnPosition', 'ShootOnPositionWithoutCorrection', 'ShootOnPositionSmoke',
                    'ShootOnPositionWithoutCorrectionSmoke', 'AskForSupply', 'EnterDistrict', 'LoadIntoTransport', 'Load',
                    'AIDefend', 'AIAttack', 'AIStop'],
@@ -178,6 +180,7 @@ UK_NEW_UNITS = {
         },
         "availability": 2,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+        "TrueAvail": [0, 0, 2, 0],
         "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack', 
                    'MoveAndAttack', 'Spread', 'Reverse', 'Shoot', 'ShootOnPosition', 
                    'ShootOnPositionWithoutCorrection', 'ShootDefensiveSmoke', 'AskForSupply', 

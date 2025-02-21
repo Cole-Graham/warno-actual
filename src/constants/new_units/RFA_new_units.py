@@ -63,6 +63,7 @@ RFA_NEW_UNITS = {
         },
         "availability": 2,
         "XPMultiplier": [0.0, 0.0, 2/2, 0.0],
+        "TrueAvail": [0, 0, 2, 0],
         "max_speed": 26,
         "Orders": ['Stop', 'Move', 'FollowFormation', 'SmartMove', 'Attack', 'SmartMoveAndAttack', 'MoveAndAttack',
                    'Spread', 'Shoot', 'ShootOnPosition', 'ShootOnPositionWithoutCorrection', 'ShootOnPositionSmoke',
