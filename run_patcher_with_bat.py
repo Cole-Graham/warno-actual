@@ -1,5 +1,5 @@
 import sys
-import webbrowser
+import webbrowser  # noqa
 
 from src import ModConfig
 from src.data import build_database, load_database_from_disk
@@ -36,7 +36,7 @@ def confirm_database_rebuild() -> bool:
 
 if __name__ == "__main__":
 	run_bat = input("Run GenerateMod.bat automatically after patcher? (y/n): ").lower() == "y"
-	run_game = input("Run WARNO automatically after GenerateMod.bat? (y/n): ").lower() == "y" if run_bat else False
+	# run_game = input("Run WARNO automatically after GenerateMod.bat? (y/n): ").lower() == "y" if run_bat else False
 
 	try:
 		logger.info("Starting WARNO mod patcher")
@@ -92,9 +92,9 @@ if __name__ == "__main__":
 		except Exception as e:
 			logger.error(f"Failed to run GenerateMod.bat: {str(e)}")
 			run_game = False
-		if run_game:
-			try:
-				logger.info("Starting WARNO through Steam")
-				webbrowser.open("steam://rungameid/1611600", new=0, autoraise=True)
-			except Exception as e:
-				logger.error(f"Failed to start game: {str(e)}")
+		# if run_game:
+		# 	try:
+		# 		logger.info("Starting WARNO through Steam")
+		# 		webbrowser.open("steam://rungameid/1611600", new=0, autoraise=True)
+		# 	except Exception as e:
+		# 		logger.error(f"Failed to start game: {str(e)}")

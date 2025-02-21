@@ -43,7 +43,7 @@ GRAY_EMBLEMS = [
     "UK_4th_Armoured",
     "UK_5th_Airborne",
     "US_101st_Airmobile",
-    "11ACR",
+    # "11ACR",
     "24th_infantry_division",
     "US_35th_infantry_division",
     # "3rd_Armored_Division",

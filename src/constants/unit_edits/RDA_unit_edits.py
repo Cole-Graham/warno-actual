@@ -601,7 +601,7 @@ rda_unit_edits = {
         "remove_zone_capture": None,
     },
 
-    "T72M1_CMD_POL": {  # FüPz T-72M1K LDR
+    "T72M1_CMD_DDR": {  # FüPz T-72M1K LDR
         "CommandPoints": 190,
         "GameName": {
             "display": "#LDRSOV FüPz T-72M1K LDR.",

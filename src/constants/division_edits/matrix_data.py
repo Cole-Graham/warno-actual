@@ -150,6 +150,21 @@ DIVISION_MATRICES = {
         '    (EDefaultFactories/Tanks, [2, 2, 2, 2, 2, 3, 3, 3]),'
         ']'
     ),
+
+    "MatrixCostName_US_11ACR_multi": (
+        'MatrixCostName_US_11ACR_multi is MAP'
+        '['
+        '    (EDefaultFactories/Art, [2, 3, 3, 4, 5]),'
+        '    (EDefaultFactories/DCA, [2, 3, 3, 4, 5]),'
+        '    (EDefaultFactories/Defense, []),'
+        '    (EDefaultFactories/Helis, [2, 3, 4, 5]),'
+        '    (EDefaultFactories/Infantry, [2, 2, 3, 4, 5, 5]),'
+        '    (EDefaultFactories/Logistic, [2, 2, 2, 3, 4, 5]),'
+        '    (EDefaultFactories/Planes, [2, 2, 3, 4, 4, 5, 6, 8]),'
+        '    (EDefaultFactories/Recons, [2, 2, 2, 3, 3, 4, 4, 5, 5]),'
+        '    (EDefaultFactories/Tanks, [2, 2, 3, 3, 4, 4, 5]),'
+        ']'
+    ),
 }
 
 # old

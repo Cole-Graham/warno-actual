@@ -197,6 +197,28 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
+    ("Mortier_Tampella_120mm", "mortar", None, False): { # 510
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 3.6,
+                "SuppressDamages": 265,
+                "RadiusSplashPhysicalDamagesGRU": 120,
+                "RadiusSplashSuppressDamagesGRU": 160,
+            },
+        },
+    },
+
+    ("Mortier_Tampella_towed_120mm", "mortar", None, False): { # 510
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 3.6,
+                "SuppressDamages": 265,
+                "RadiusSplashPhysicalDamagesGRU": 120,
+                "RadiusSplashSuppressDamagesGRU": 160,
+            },
+        },
+    },
+
     ("Mortier_2B14_82mm_TOWED", "mortar", None, False): { # 509
         "Ammunition": {
             "parent_membr": {

@@ -40,7 +40,7 @@ divs_not_released = [
     "UK_4th_Armoured_multi",
     "UK_5th_Airborne_Brigade_multi",
     "US_101st_Airmobile_multi",
-    "US_11ACR_multi",
+    # "US_11ACR_multi",
     "US_24th_Inf_multi",
     "US_35th_Inf_multi",
     # "US_3rd_Arm_multi",

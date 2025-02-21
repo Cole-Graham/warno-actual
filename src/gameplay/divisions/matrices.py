@@ -28,6 +28,7 @@ def deck_ap_points(source_path: Any) -> None:
     divisions = [
         "US_3rd_Arm",
         "US_8th_Inf",
+        "US_11ACR",
         "US_82nd_Airborne",
         "UK_2nd_Infantry",
         "SOV_27_Gds_Rifle",

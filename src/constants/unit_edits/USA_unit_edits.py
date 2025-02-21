@@ -1729,6 +1729,9 @@ usa_unit_edits = {
             "default": {
                 "cards": 1,
             },
+            "US_11ACR": {
+                "cards": 2,  # no other ldr tanks in the div
+            },
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
         "remove_zone_capture": None,
@@ -1948,6 +1951,9 @@ usa_unit_edits = {
             "default": {
                 "cards": 5,
             },
+            "US_11ACR": {
+                "cards": 4,
+            },
         },
         "availability": 5,
         "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
@@ -2112,6 +2118,21 @@ usa_unit_edits = {
     "M3A1_Bradley_CFV_US": {
         "CommandPoints": 105,
         "availability": 4,
+        "XPMultiplier": [4/4, 3/4, 0.0, 0.0],
+        "TagSet": {
+            "add_tags": ['"Vehicule_Transport_Arme"'],
+        },
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'reco',
+                '_transport1',
+                '_ifv',
+                '_smoke_launcher',
+            ],
+        },
+        "orders": {
+            "add_orders": ["UnloadFromTransport", "UnloadAtPosition", "LoadUnit"]
+        },
         "Divisions": {
             "US_3rd_Arm": {
                 "cards": 1,
@@ -2119,14 +2140,37 @@ usa_unit_edits = {
             "US_8th_Inf": {
                 "cards": 1,
             },
+            "US_11ACR": {
+                "cards": 1,
+            },
         },
-        "XPMultiplier": [4/4, 3/4, 0.0, 0.0],
+        "UpgradeFromUnit": "Cav_Scout_Dragon_M3A1_US",
     },
 
     "M3A2_Bradley_CFV_US": {
         "CommandPoints": 135,
         "availability": 3,
         "XPMultiplier": [3/3, 2/3, 0.0, 0.0],
+        "TagSet": {
+            "add_tags": ['"Vehicule_Transport_Arme"'],
+        },
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'reco',
+                '_transport1',
+                '_ifv',
+                '_smoke_launcher',
+            ],
+        },
+        "orders": {
+            "add_orders": ["UnloadFromTransport", "UnloadAtPosition", "LoadUnit"]
+        },
+        "Divisions": {
+            "US_11ACR": {
+                "cards": 1,
+            },
+        },
+        "UpgradeFromUnit": "Cav_Scout_Dragon_M3A2_US",
     },
 
     "M551A1_ACAV_Sheridan_US": {
@@ -2795,6 +2839,16 @@ usa_unit_edits = {
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 
+    "F16E_HE2_US": {  # 12x mk82 + , 11 ACR
+        "CommandPoints": 225,
+        "ECM": -0.35,
+        "availability": 2,
+        "optics": {
+            "OpticalStrengthAltitude": 375,
+        },
+        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+    },
+
     "F16E_napalm_US": {
         "CommandPoints": 200,
         "availability": 3,
@@ -2854,13 +2908,13 @@ usa_unit_edits = {
     },
 
     "F16E_AA2_US": {  # 3x + 3x AIM-9M
-        "CommandPoints": 220,
+        "CommandPoints": 190,
         "ECM": -0.35,
         "availability": 2,
         "optics": {
             "OpticalStrengthAltitude": 375,
         },
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+        "XPMultiplier": [0.0, 0.0, 2/2, 0.0],
         "UpgradeFromUnit": "F16E_AA_US",
     },
 

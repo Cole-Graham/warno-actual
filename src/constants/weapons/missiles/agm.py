@@ -65,6 +65,25 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+
+    ("AGM_BGM71D_TOW_2", "AGM", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 23,
+            },
+            "parent_membr": {
+                # "Caliber": ("6.1kg HYBRID", "SVJNWQPYKO"),
+                "MaximalSpeedGRU": 466,
+            }
+        },
+        "BaseSupplyCost": 100,
+        "WeaponDescriptor": {
+            "SalvoLengths": [8, 4, 2, 1],
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 466,
+        },
+    },
     
     ("AGM_BGM71C_ITOW", "ATGM", None, False): {
         "Ammunition": {

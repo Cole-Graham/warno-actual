@@ -98,15 +98,15 @@ USA_NEW_UNITS = {
         "alternatives_count": 10,
         "selector_tactic": "00_10",
     },
-    
-    ("Scout_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
-        "GUID": "f1cd2505-5d6a-436f-b678-c82be2e65918",
-        "GroupeCombatGUID": "0e948acc-c379-4498-946b-21b5b3b13314",
-        "ShowroomGUID": "87b3d52f-1703-494c-a3ee-b25dc6095136",
-        "CadavreGUID": "b47e0795-709b-4377-9f5c-f42df25e7aac",
-        "NewName": "Cav_Scout_Dragon_US",
+
+    ("Scout_US", 1): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "6f07c62b-c344-4c79-a72b-c1a80ce3375b",
+        "GroupeCombatGUID": "375817f4-441d-4030-a902-b22f0103552d",
+        "ShowroomGUID": "7c0ba2f2-804f-4550-8161-e687c1305a10",
+        "CadavreGUID": "eab4f242-c8fd-4868-b009-a6a86f934dd8",
+        "NewName": "Cav_Scout_Dragon_M3A1_US",
         "GameName": {
-            "display": "CAVALRY SCOUTS",
+            "display": "#RECO2 CAVALRY SCOUTS [M3A1]",
             "token": "VKPPUUNVBK",
         },
         "TagSet": {
@@ -120,7 +120,7 @@ USA_NEW_UNITS = {
                 "Infanterie_Reco",
                 "Radio",
                 "Reco",
-                "UNITE_Cav_Scout_Dragon_US",
+                "UNITE_Cav_Scout_Dragon_M3A1_US",
                 "Unite"
             ],
         },
@@ -135,21 +135,21 @@ USA_NEW_UNITS = {
             "Salves": {
                 "FM_M16": 7,
                 "M47_DRAGON_II": 2,
-                "add": [(2, 10),],
+                "add": [(2, 10), ],
             },
             "equipmentchanges": {
-                "add": [(2, "Sniper_M21"),],
-                "replace": [("MMG_inf_M240B_7_62mm", "M47_DRAGON_II"),],
+                "add": [(2, "Sniper_M21")],
+                "replace": [("MMG_inf_M240B_7_62mm", "M47_DRAGON_II")],
                 "quantity": {
                     "FM_M16": 1,
                     "Sniper_M21": 1,
                     "M47_DRAGON_II": 1,
                 },
-                "fire_effect": [("MMG_inf_M240B_7_62mm", "M47_DRAGON_II"),],
+                "fire_effect": [("MMG_inf_M240B_7_62mm", "M47_DRAGON_II")],
             },
         },
-        "TransportedSoldier": "Cav_Scout_Dragon_US",
-        "CommandPoints": 25,
+        "TransportedSoldier": "Cav_Scout_Dragon_M3A1_US",
+        "CommandPoints": 20,
         "SpecialitiesList": [
             'reco',
             'infantry_equip_heavy',
@@ -160,14 +160,99 @@ USA_NEW_UNITS = {
                 "cards": 1,
             },
             "US_3rd_Arm_multi": {
-                "Transports": ["M3A1_Bradley_CFV_trans_US",],
+                "Transports": ["M3A1_Bradley_CFV_US"],
             },
             "US_8th_Inf_multi": {
-                "Transports": ["M3A1_Bradley_CFV_trans_US",],
+                "Transports": ["M3A1_Bradley_CFV_US"],
+            },
+            "US_11ACR_multi": {
+                "Transports": ["M3A1_Bradley_CFV_US"],
             },
         },
         "availability": 4,
         "XPMultiplier": [4/4, 3/4, 0.0, 0.0],
+        "max_speed": 20,
+        "Orders": ['Stop', 'Move', 'FollowFormation', 'SmartMove', 'Attack', 'SmartMoveAndAttack', 'MoveAndAttack',
+                   'Spread', 'Shoot', 'ShootOnPosition', 'ShootOnPositionWithoutCorrection', 'AskForSupply',
+                   'EnterDistrict', 'LoadIntoTransport', 'Load', 'AIDefend', 'AIAttack', 'AIStop'],
+        "is_infantry": True, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": False,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "NATO",
+        "Nation": "US",
+        "alternatives_count": 2,
+        "selector_tactic": "02_02",
+        "unique_count": 2,
+    },
+    
+    ("Scout_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "f1cd2505-5d6a-436f-b678-c82be2e65918",
+        "GroupeCombatGUID": "0e948acc-c379-4498-946b-21b5b3b13314",
+        "ShowroomGUID": "87b3d52f-1703-494c-a3ee-b25dc6095136",
+        "CadavreGUID": "b47e0795-709b-4377-9f5c-f42df25e7aac",
+        "NewName": "Cav_Scout_Dragon_M3A2_US",
+        "GameName": {
+            "display": "#RECO2 CAVALRY SCOUTS [M3A2]",
+            "token": "VKPPUUNVBJ",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_Reco",
+                "Radio",
+                "Reco",
+                "UNITE_Cav_Scout_Dragon_M3A2_US",
+                "Unite"
+            ],
+        },
+        "strength": 2,
+        # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
+        # "Dangerousness": 12,
+        "WeaponAssignment": [
+            (0, [2, ]),
+            (1, [0, 1]),
+        ],
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_M16": 7,
+                "M47_DRAGON_II": 2,
+                "add": [(2, 10), ],
+            },
+            "equipmentchanges": {
+                "add": [(2, "Sniper_M21")],
+                "replace": [("MMG_inf_M240B_7_62mm", "M47_DRAGON_II")],
+                "quantity": {
+                    "FM_M16": 1,
+                    "Sniper_M21": 1,
+                    "M47_DRAGON_II": 1,
+                },
+                "fire_effect": [("MMG_inf_M240B_7_62mm", "M47_DRAGON_II")],
+            },
+        },
+        "TransportedSoldier": "Cav_Scout_Dragon_M3A2_US",
+        "CommandPoints": 20,
+        "SpecialitiesList": [
+            'reco',
+            'infantry_equip_heavy',
+        ],
+        "ButtonTexture": "Scout_Aero_US",
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+            "US_11ACR_multi": {
+                "Transports": ["M3A2_Bradley_CFV_US"],
+            },
+        },
+        "availability": 3,
+        "XPMultiplier": [3/3, 2/3, 0.0, 0.0],
         "max_speed": 20,
         "Orders": ['Stop', 'Move', 'FollowFormation', 'SmartMove', 'Attack', 'SmartMoveAndAttack', 'MoveAndAttack', 
                    'Spread', 'Shoot', 'ShootOnPosition', 'ShootOnPositionWithoutCorrection', 'AskForSupply',
@@ -184,46 +269,46 @@ USA_NEW_UNITS = {
         "unique_count": 2,
     },
     
-    ("M3A1_Bradley_CFV_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
-        "GUID": "e34ee9a5-9090-4b17-b917-430adc1b6ca9",
-        "GroupeCombatGUID": "4e620fd4-7d88-4cee-9a21-c3f0f03203cd",
-        "ShowroomGUID": "9a773c3f-110b-48b0-9c03-e490e3e3fd6a",
-        "CadavreGUID": "77650abe-7421-4feb-b52b-7aa4342966ea",
-        "Modules_add": ["Transporter"],
-        "NewName": "M3A1_Bradley_CFV_trans_US",
-        "TagSet": {
-            "overwrite_all": [
-                "AllUnits",
-                "AllowedForMissileRoE",
-                "Char",
-                "Char_Reco",
-                "ChasseurDeChar",
-                "GroundUnits",
-                "Radio",
-                "Reco",
-                "UNITE_M3A1_Bradley_CFV_trans_US",
-                "Unite",
-                "Vehicule_Transport_Arme"
-            ],
-        },
-        "CommandPoints": 100,
-        "SpecialitiesList": [
-                'reco',
-                '_transport1',
-                '_ifv',
-                '_smoke_launcher',
-            ],
-        "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack', 'MoveAndAttack', 
-                   'Spread', 'Reverse', 'Shoot', 'ShootOnPosition', 'ShootOnPositionWithoutCorrection', 'ShootDefensiveSmoke',
-                   'AskForSupply', 'UnloadFromTransport', 'UnloadAtPosition', 'LoadUnit', 'AIDefend', 'AIAttack', 'AIStop'],
-        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
-        "is_heavy_equipment": False,
-        "is_ground_vehicle": True,
-        "is_aerial": False,
-        "is_unarmed": False,
-        "Faction": "NATO",
-        "Nation": "US",
-    },
+    # ("M3A1_Bradley_CFV_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+    #     "GUID": "e34ee9a5-9090-4b17-b917-430adc1b6ca9",
+    #     "GroupeCombatGUID": "4e620fd4-7d88-4cee-9a21-c3f0f03203cd",
+    #     "ShowroomGUID": "9a773c3f-110b-48b0-9c03-e490e3e3fd6a",
+    #     "CadavreGUID": "77650abe-7421-4feb-b52b-7aa4342966ea",
+    #     "Modules_add": ["Transporter"],
+    #     "NewName": "M3A1_Bradley_CFV_trans_US",
+    #     "TagSet": {
+    #         "overwrite_all": [
+    #             "AllUnits",
+    #             "AllowedForMissileRoE",
+    #             "Char",
+    #             "Char_Reco",
+    #             "ChasseurDeChar",
+    #             "GroundUnits",
+    #             "Radio",
+    #             "Reco",
+    #             "UNITE_M3A1_Bradley_CFV_trans_US",
+    #             "Unite",
+    #             "Vehicule_Transport_Arme"
+    #         ],
+    #     },
+    #     "CommandPoints": 100,
+    #     "SpecialitiesList": [
+    #             'reco',
+    #             '_transport1',
+    #             '_ifv',
+    #             '_smoke_launcher',
+    #         ],
+    #     "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack', 'MoveAndAttack',
+    #                'Spread', 'Reverse', 'Shoot', 'ShootOnPosition', 'ShootOnPositionWithoutCorrection', 'ShootDefensiveSmoke',
+    #                'AskForSupply', 'UnloadFromTransport', 'UnloadAtPosition', 'LoadUnit', 'AIDefend', 'AIAttack', 'AIStop'],
+    #     "is_infantry": False, # False for Javelin LML (unique exception), towed units.
+    #     "is_heavy_equipment": False,
+    #     "is_ground_vehicle": True,
+    #     "is_aerial": False,
+    #     "is_unarmed": False,
+    #     "Faction": "NATO",
+    #     "Nation": "US",
+    # },
 
     ("MANPAD_Stinger_C_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "569c934b-4a8e-4f2e-83e5-06640fa620a4",
@@ -258,8 +343,8 @@ USA_NEW_UNITS = {
                 "MANPAD_FIM92": 8,
             },
             "equipmentchanges": {
-                "HAGRU_MANPADS": [(1, 0, "MANPAD_FIM92_HAGRU"),], # turret_index, donor_weapon_index, ammo_name
-                "replace": [("FM_M16_noreflex", "FM_M16_x5"),],
+                "HAGRU_MANPADS": [(1, 0, "MANPAD_FIM92_HAGRU")], # turret_index, donor_weapon_index, ammo_name
+                "replace": [("FM_M16_noreflex", "FM_M16_x5")],
                 "quantity": {
                     "FM_M16": 5,
                 },
