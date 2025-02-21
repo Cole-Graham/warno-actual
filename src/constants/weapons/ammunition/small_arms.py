@@ -337,8 +337,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("PM_Sterling", "small_arms", None, False): {  # 572
         "Ammunition": {
             "hit_roll": {
-                "Idling": 40,
-                "Moving": 30,
+                "Idling": 50,
+                "Moving": 40,
             },
             "parent_membr": {
                 "TempsEntreDeuxTirs": 0.5,
@@ -354,17 +354,17 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "BaseSupplyCost": 1,
-        "NbWeapons": [8, 7, 6, 4, 3, 2, 1],
+        "NbWeapons": [8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
-            "Salves": 12,               
+            "Salves": 18,               
         },
     },
     
     ("PM_Sterling_noreflex", "small_arms", "PM_Sterling", True): {
         "Ammunition": {
             "hit_roll": {
-                "Idling": 40,
-                "Moving": 30,
+                "Idling": 50,
+                "Moving": 40,
             },
             "parent_membr": {
                 "TempsEntreDeuxTirs": 0.5,
@@ -383,15 +383,15 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "BaseSupplyCost": 1,
         "NbWeapons": [2],
         "WeaponDescriptor": {
-            "Salves": 12,               
+            "Salves": 18,               
         },
     },
 
     ("PM_uzi", "small_arms", None, False): {  # 572
         "Ammunition": {
             "hit_roll": {
-                "Idling": 40,
-                "Moving": 30,
+                "Idling": 50,
+                "Moving": 40,
             },
             "parent_membr": {
                 "TempsEntreDeuxTirs": 0.5,
@@ -409,15 +409,15 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "BaseSupplyCost": 1,
         "NbWeapons": [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
-            "Salves": 12,
+            "Salves": 18,
         },
     },
 
     ("PM_uzi_noreflex", "small_arms", "PM_uzi", True): {
         "Ammunition": {
             "hit_roll": {
-                "Idling": 40,
-                "Moving": 30,
+                "Idling": 50,
+                "Moving": 40,
             },
             "parent_membr": {
                 "TempsEntreDeuxTirs": 0.5,
@@ -436,15 +436,15 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "BaseSupplyCost": 1,
         "NbWeapons": [1],
         "WeaponDescriptor": {
-            "Salves": 12,
+            "Salves": 18,
         },
     },
 
     ("PM_Skorpion", "small_arms", None, False): {  # 571
         "Ammunition": {
             "hit_roll": {
-                "Idling": 40,
-                "Moving": 30,
+                "Idling": 50,
+                "Moving": 40,
             },
             "parent_membr": {
                 "TempsEntreDeuxTirs": 0.5,
@@ -462,15 +462,15 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "BaseSupplyCost": 1,
         "NbWeapons": [10, 9, 6, 4, 3, 1],
         "WeaponDescriptor": {
-            "Salves": 12,               
+            "Salves": 18,               
         },
     },
     
     ("PM_PM63_RAK", "small_arms", None, False): {
         "Ammunition": {
             "hit_roll": {
-                "Idling": 40,
-                "Moving": 30,
+                "Idling": 50,
+                "Moving": 40,
             },
             "parent_membr": {
                 "TempsEntreDeuxTirs": 0.5,
@@ -488,7 +488,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "BaseSupplyCost": 1,
         "NbWeapons": [7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
-            "Salves": 12,               
+            "Salves": 18,               
         },
     },
     
@@ -632,8 +632,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("PM_AS_Val", "small_arms", None, False): {  # 560
         "Ammunition": {
             "hit_roll": {
-                "Idling": 60,
-                "Moving": 40,
+                "Idling": 70,
+                "Moving": 50,
             },
             "parent_membr": {
                 "TempsEntreDeuxTirs": 1.0,
@@ -651,7 +651,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "BaseSupplyCost": 1,
         "NbWeapons": [5, 4],
         "WeaponDescriptor": {
-            "Salves": 12,               
+            "Salves": 18,               
         },
     },
     

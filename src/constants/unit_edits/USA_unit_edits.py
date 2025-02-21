@@ -2861,7 +2861,7 @@ usa_unit_edits = {
 
     "F16E_SEAD_US": {
         "CommandPoints": 220,
-        "availability": 3,
+        "availability": 2,
         "ECM": -0.35,
         "optics": {
             "OpticalStrengthAltitude": 375,
@@ -2875,17 +2875,17 @@ usa_unit_edits = {
                 },
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
     },
 
     "F16E_CBU_US": {
-        "CommandPoints": 185,
+        "CommandPoints": 200,
         "ECM": -0.35,
-        "availability": 3,
+        "availability": 2,
         "optics": {
             "OpticalStrengthAltitude": 375,
         },
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
     },
 
     "F16E_AA_US": {
