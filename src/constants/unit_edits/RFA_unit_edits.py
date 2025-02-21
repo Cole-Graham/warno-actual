@@ -4,6 +4,7 @@ rfa_unit_edits = {
         "CommandPoints": 145,
         "availability": 3,
         "XPMultiplier": [0.0, 3/3, 0.0, 0.0],
+        "TrueAvail": [0, 3, 0, 0],
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -60,6 +61,7 @@ rfa_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 0.0, 7/7, 5/7],
+        # TODO: Define "availability" to calculate "TrueAvail"
         "max_speed": 20,
         "WeaponDescriptor": {
             "Salves": {
@@ -83,6 +85,7 @@ rfa_unit_edits = {
             },
         },
         "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -97,6 +100,7 @@ rfa_unit_edits = {
             "add_specs": ["'infantry_equip_heavy'"],
         },
         "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
 
     "Unimog_trans_RFA": {
@@ -121,12 +125,14 @@ rfa_unit_edits = {
         "CommandPoints": 75,
         "availability": 4,
         "XPMultiplier": [4/4, 3/4, 0.0, 0.0],
+        "TrueAvail": [4, 3, 0, 0],
     },
 
     "M109A3G_HOWZ_RFA": {
         "CommandPoints": 170,
         "availability": 3,
         "XPMultiplier": [3/3, 2/3, 0.0, 0.0],
+        "TrueAvail": [3, 2, 0, 0],
     },
 
     # RFA TANK
@@ -167,12 +173,14 @@ rfa_unit_edits = {
         #     "OpticalStrength": 233.475
         # },
         "XPMultiplier": [8/8, 0.0, 0.0, 0.0],
+        "TrueAvail": [8, 0, 0, 0],
     },
 
     # RFA AA
     "MANPAD_Redeye_RFA": {  # Fliegerfaust
         "CommandPoints": 20,
         "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],

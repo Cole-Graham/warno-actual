@@ -31,8 +31,14 @@ def add_division_rules(source_path: Any) -> None:
             if transports:
                 transport_list = [f"$/GFX/Unit/Descriptor_Unit_{t}" for t in transports]
                 transport_str = f"[{', '.join(transport_list)}]"
-            
-            xp_multi_str = str(edits["XPMultiplier"])
+
+            if edits.get("TrueAvail", False):
+                # parse availability & XPMultiplier from raw defined availability, if present
+                avail = max(edits["TrueAvail"])
+                xp_multi_str = str([i / avail for i in edits["TrueAvail"]])
+            else:
+                avail = edits["availability"]
+                xp_multi_str = str(edits["XPMultiplier"])
             default_cards = edits["Divisions"]["default"]["cards"]
             cards = div_data.get("cards", default_cards)
 
@@ -44,7 +50,7 @@ def add_division_rules(source_path: Any) -> None:
                     f'    UnitDescriptor = $/GFX/Unit/Descriptor_Unit_{unit_name}\n'
                     f'    AvailableWithoutTransport = True\n'
                     f'    MaxPackNumber = {cards}\n'
-                    f'    NumberOfUnitInPack = {edits["availability"]}\n'
+                    f'    NumberOfUnitInPack = {avail}\n'
                     f'    NumberOfUnitInPackXPMultiplier = {xp_multi_str}\n'
                     f'),'
                 )
@@ -56,7 +62,7 @@ def add_division_rules(source_path: Any) -> None:
                     f'    AvailableWithoutTransport = False\n'
                     f'    AvailableTransportList = {transport_str}\n'  # noqa
                     f'    MaxPackNumber = {cards}\n'
-                    f'    NumberOfUnitInPack = {edits["availability"]}\n'
+                    f'    NumberOfUnitInPack = {avail}\n'
                     f'    NumberOfUnitInPackXPMultiplier = {xp_multi_str}\n'
                     f'),'
                 )
@@ -109,9 +115,9 @@ def create_deck_pack_descriptors(source_path: Any) -> None:  # not used currentl
             
         unit_name = edits["NewName"]
         
-        # Handle XP multipliers
-        xp_values = edits.get("XPMultiplier", [1.0, 1.0, 1.0, 1.0])
-        xp_str = f"[{', '.join(str(x) for x in xp_values)}]"  # noqa
+        # Handle XP multipliers - unused
+        # xp_values = edits.get("XPMultiplier", [1.0, 1.0, 1.0, 1.0])
+        # xp_str = f"[{', '.join(str(x) for x in xp_values)}]"
         
         # Different descriptor type for vehicles
         if edits.get("is_ground_vehicle", False):

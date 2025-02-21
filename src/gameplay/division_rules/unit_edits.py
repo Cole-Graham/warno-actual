@@ -141,13 +141,21 @@ def _update_existing_units(source_path: Any, unit: str, edits: Dict) -> None:
 
 def _apply_unit_updates(rule: Any, unit: str, div_name: str, edits: Dict) -> None:
     """Apply updates to a unit rule."""
-    if "availability" in edits:
-        logger.debug(f"Setting {unit} availability to {edits['availability']}")
-        rule.by_m("NumberOfUnitInPack").v = edits["availability"]
-        
-    if "XPMultiplier" in edits:
-        logger.debug(f"Setting {unit} XP multiplier to {edits['XPMultiplier']}")
-        rule.by_m("NumberOfUnitInPackXPMultiplier").v = str(edits["XPMultiplier"])
+
+    if "TrueAvail" in edits:
+        avail = max(edits["TrueAvail"])
+        xp_multi_str = str([i / avail for i in edits["TrueAvail"]])
+        logger.debug(f"Setting {unit} availability to {avail}")
+        rule.by_m("NumberOfUnitInPack").v = avail
+        logger.debug(f"Setting {unit} XP multiplier to {xp_multi_str}")
+        rule.by_m("NumberOfUnitInPackXPMultiplier").v = xp_multi_str
+    else:
+        if "availability" in edits:
+            logger.debug(f"Setting {unit} availability to {edits['availability']}")
+            rule.by_m("NumberOfUnitInPack").v = edits["availability"]
+        if "XPMultiplier" in edits:
+            logger.debug(f"Setting {unit} XP multiplier to {edits['XPMultiplier']}")
+            rule.by_m("NumberOfUnitInPackXPMultiplier").v = str(edits["XPMultiplier"])
         
     if "Divisions" in edits:
         _update_cards(rule, unit, div_name, edits)

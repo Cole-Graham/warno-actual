@@ -14,17 +14,20 @@ uk_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
-    
+
     "Saxon_CMD_UK": {
         "CommandPoints": 155,
         "availability": 3,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+        "TrueAvail": [0, 3, 0, 0],
     },
-    
+
     "Gazelle_CMD_UK": {
         "CommandPoints": 115,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
 
     # UK INF
@@ -73,6 +76,7 @@ uk_unit_edits = {
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "availability": 7,
         "XPMultiplier": [0.0, 0.0, 7/7, 5/7],
+        "TrueAvail": [0, 0, 7, 5],
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -90,7 +94,7 @@ uk_unit_edits = {
         "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
-    
+
     "Engineers_CMD_UK": {
         "CommandPoints": 35,
         "GameName": {
@@ -138,6 +142,7 @@ uk_unit_edits = {
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
         "availability": 7,
         "XPMultiplier": [0.0, 0.0, 7/7, 5/7],
+        "TrueAvail": [0, 0, 7, 5],
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -155,7 +160,7 @@ uk_unit_edits = {
         "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
-    
+
     "Rifles_CMD_UK": {
         "CommandPoints": 35,
         "GameName": {
@@ -190,6 +195,7 @@ uk_unit_edits = {
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "availability": 7,
         "XPMultiplier": [0.0, 0.0, 7/7, 5/7],
+        "TrueAvail": [0, 0, 7, 5],
         "max_speed": 26,
         "Divisions": {
             "UK_2nd_Infantry": {
@@ -204,7 +210,7 @@ uk_unit_edits = {
         "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
-    
+
     "Airmobile_CMD_UK": {
         "CommandPoints": 35,
         "GameName": {
@@ -240,12 +246,13 @@ uk_unit_edits = {
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "availability": 6,
         "XPMultiplier": [0.0, 0.0, 6/6, 4/6],
+        "TrueAvail": [0, 0, 6, 4],
         "max_speed": 26,
         "is_infantry": True,
         "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
-    
+
     "Airmobile_Mot_CMD_UK": {
         "CommandPoints": 35,
         "GameName": {
@@ -281,38 +288,40 @@ uk_unit_edits = {
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "availability": 7,
         "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
+        "TrueAvail": [0, 0, 7, 5],
         "max_speed": 26,
         "is_infantry": True,
         "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
-    
+
     "Rover_101FC_UK": {
         "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
     },
-    
+
     "LandRover_UK": {
         "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
     },
-    
+
     "Bedford_MJ_4t_trans_UK": {
         "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
     },
-    
+
     "Gun_Group_TA_UK": {
         "CommandPoints": 15,
         "availability": 12,
         "strength": 5,
         "XPMultiplier": [12/12, 0.0, 0.0, 0.0],
+        "TrueAvail": [12, 0, 0, 0],
         "max_speed": 26,
         "WeaponAssignment": [
                 (0, [1, ]),
@@ -329,12 +338,13 @@ uk_unit_edits = {
             },
         },
     },
-    
+
     "RMP_UK": {
         "CommandPoints": 20,
         "availability": 12,
         "strength": 5,
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "TrueAvail": [0, 12, 9, 0],
         "WeaponAssignment": [
                 (0, [2, ]),
                 (1, [1, ]),
@@ -351,12 +361,12 @@ uk_unit_edits = {
             },
         },
     },
-    
+
     "Security_UK": {
         "CommandPoints": 25,
         "max_speed": 26,
     },
-    
+
     "Territorial_UK": {
         "CommandPoints": 30,
         "availability": 10,
@@ -365,7 +375,7 @@ uk_unit_edits = {
             "add_specs": ["'infantry_equip_light'"],
         },
     },
-    
+
     "AT_Group_TA_UK": {
         "CommandPoints": 25,
         "availability": 12,
@@ -379,7 +389,7 @@ uk_unit_edits = {
             },
         },
     },
-    
+
     "Airmobile_UK": {  # 3x FN Mag
         "CommandPoints": 40,
         "availability": 10,
@@ -388,8 +398,9 @@ uk_unit_edits = {
             "add_specs": ["'infantry_equip_light'"],
         },
         "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
-    
+
     "Airmobile_MILAN_UK": {  # 7x L85, 2x L86A1 lmg, 1x LAW 80
         "CommandPoints": 50,
         "availability": 10,
@@ -398,13 +409,14 @@ uk_unit_edits = {
             "add_specs": ["'infantry_equip_medium'"],
         },
         "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
         "WeaponDescriptor": {
             "Salves": {
                 "RocketInf_LAW_80": 6,
             },
         },
     },
-    
+
     "Engineers_Airmobile_UK": {
         "CommandPoints": 45,
         "availability": 6,
@@ -413,13 +425,14 @@ uk_unit_edits = {
             "add_specs": ["'infantry_equip_medium'"],
         },
         "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
         "WeaponDescriptor": {
             "Salves": {
                 "RocketInf_Carl_Gustav": 8,
             },
         },
     },
-    
+
     "Engineers_TA_UK": {
         "CommandPoints": 35,
         "availability": 8,
@@ -439,7 +452,7 @@ uk_unit_edits = {
             "add_specs": ["'infantry_equip_light'"],
         },
     },
-    
+
     "Airmobile_Mot_UK": {
         "CommandPoints": 35,
         "availability": 10,
@@ -448,13 +461,14 @@ uk_unit_edits = {
             "add_specs": ["'infantry_equip_medium'"],
         },
         "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
         "WeaponDescriptor": {
             "Salves": {
                 "RocketInf_Carl_Gustav": 8,
             },
         },
     },
-    
+
     "Rifles_UK": {
         "CommandPoints": 25,
         "availability": 10,
@@ -463,13 +477,14 @@ uk_unit_edits = {
             "add_specs": ["'infantry_equip_light'"],
         },
         "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
     "HMGteam_MAG_UK": {
         "GameName": {
             "display": "MAG 7.62mm"
         }
     },
-    
+
     "RCL_L6_Wombat_UK": {
         "CommandPoints": 35,
         "availability": 8,
@@ -482,10 +497,11 @@ uk_unit_edits = {
         "max_speed": 9,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_veryheavy'"],
-        }, 
+        },
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
-    
+
     "ATteam_Milan_1_UK": {
         "CommandPoints": 30,
         "availability": 9,
@@ -494,8 +510,9 @@ uk_unit_edits = {
             "add_specs": ["'infantry_equip_heavy'"],
         },
         "XPMultiplier": [1.0, 0.8, 0.6, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
-    
+
     "ATteam_Milan_2_UK": {
         "CommandPoints": 45,
         "availability": 6,
@@ -504,8 +521,9 @@ uk_unit_edits = {
             "add_specs": ["'infantry_equip_heavy'"],
         },
         "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
-    
+
     "SAS_UK": {
         "CommandPoints": 70,
         "availability": 4,
@@ -514,6 +532,7 @@ uk_unit_edits = {
             "add_specs": ["'infantry_equip_heavy'"],
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.75],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
 
     # UK ARTILLERY
@@ -554,9 +573,10 @@ uk_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
         "remove_zone_capture": None,
     },
-    
+
     "81mm_mortar_UK": {
         "CommandPoints": 35,
         "Divisions": {
@@ -569,14 +589,16 @@ uk_unit_edits = {
         },
         "availability": 5,
         "XPMultiplier": [0.0, 1.0, 0.8, 0.6],
+        "TrueAvail": [0, 5, 4, 3],
     },
-    
+
     "Howz_L118_105mm_UK": {
         "CommandPoints": 60,
         "availability": 4,
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "TrueAvail": [4, 3, 0, 0],
     },
-    
+
     "FH70_155mm_UK": {
         "CommandPoints": 110,
         "Divisions": {
@@ -586,8 +608,9 @@ uk_unit_edits = {
         },
         "availability": 3,
         "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
+        "TrueAvail": [3, 2, 0, 0],
     },
-    
+
     "M107A2_175mm_UK": {
         "GameName": {
             "display": "M107A2",
@@ -595,8 +618,9 @@ uk_unit_edits = {
         "CommandPoints": 185,
         "availability": 2,
         "XPMultiplier": [1.0, 0.0, 0.5, 0.0],
+        "TrueAvail": [2, 0, 1, 0],
     },
-    
+
     "M270_MLRS_cluster_UK": {
         "CommandPoints": 300,
         "availability": 1,
@@ -616,6 +640,7 @@ uk_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
 
     # UK TANK
@@ -647,6 +672,7 @@ uk_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
         "remove_zone_capture": None,
     },
 
@@ -656,14 +682,14 @@ uk_unit_edits = {
             "remove_orders": ["'sell'"],
         },
     },
-    
+
     "FV603_Saracen_UK": {
         "CommandPoints": 15,
         "orders": {
             "remove_orders": ["'sell'"],
         },
     },
-    
+
     "LandRover_MILAN_UK": {
         "CommandPoints": 40,
         "availability": 8,
@@ -684,13 +710,14 @@ uk_unit_edits = {
             },
         },
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
-    
+
 
     "MCV_80_Warrior_UK": {
         "CommandPoints": 30,
     },
-    
+
     "MCV_80_Warrior_MILAN_UK": {
         "CommandPoints": 40,
         "WeaponDescriptor": {
@@ -699,7 +726,7 @@ uk_unit_edits = {
             },
         },
     },
-    
+
     "Challenger_1_Mk1_UK": {
         "GameName": {
             "display": "CHALLENGER Mk.2",
@@ -718,6 +745,7 @@ uk_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
 
     # UK RECON
@@ -725,19 +753,21 @@ uk_unit_edits = {
         "CommandPoints": 20,
         "availability": 10,
         "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
+        "TrueAvail": [10, 7, 0, 0],
     },
-    
+
     "FV601_Saladin_UK": {
         "CommandPoints": 35,
         "availability": 8,
     },
-    
+
     "FV721_Fox_UK": {
         "CommandPoints": 35,
         "availability": 8,
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "TrueAvail": [8, 6, 0, 0],
     },
-    
+
     "Scout_TA_UK": {
         "CommandPoints": 15,
         "availability": 10,
@@ -751,7 +781,7 @@ uk_unit_edits = {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
     },
-    
+
     "Scout_UK": {
         "CommandPoints": 20,
         "availability": 8,
@@ -768,8 +798,9 @@ uk_unit_edits = {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
-    
+
     "Scout_Airmobile_UK": {
         "CommandPoints": 35,
         "availability": 6,
@@ -779,8 +810,9 @@ uk_unit_edits = {
             "add_specs": ["'infantry_equip_light'"],
         },
         "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
-    
+
     "Sniper_UK": {
         "GameName": {
             "display": "#RECO2 SNIPERS",
@@ -791,7 +823,7 @@ uk_unit_edits = {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
     },
-    
+
     "Gazelle_UK": {
         "CommandPoints": 30,
         "availability": 4,
@@ -811,8 +843,9 @@ uk_unit_edits = {
             },
         },
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
-    
+
     "MANPAD_Javelin_UK": {
         "CommandPoints": 35,
         "availability": 9,
@@ -840,8 +873,9 @@ uk_unit_edits = {
             },
         },
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
-    
+
 
     "DCA_Javelin_LML_UK": {
         "CommandPoints": 35,
@@ -852,8 +886,9 @@ uk_unit_edits = {
         },
         "stealth": 2.5,
         "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
-    
+
     "DCA_Rapier_UK": {
         "CommandPoints": 65,
         "availability": 6,
@@ -864,8 +899,9 @@ uk_unit_edits = {
             "add_specs": ["'good_airoptics'"],
         },
         "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
-    
+
     "Tracked_Rapier_UK": {
         "CommandPoints": 85,
         "availability": 4,
@@ -876,11 +912,12 @@ uk_unit_edits = {
             "add_specs": ["'good_airoptics'"],
         },
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
-    
+
     "DCA_Rapier_FSA_UK": {  # towed FSB1
         "CommandPoints": 85,
-        "availability": 6,  
+        "availability": 6,
         "optics": {
             "OpticalStrengthAltitude": 300,
         },
@@ -888,6 +925,7 @@ uk_unit_edits = {
             "add_specs": ["'verygood_airoptics'"],
         },
         "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
 
     # UK HELI
@@ -897,25 +935,25 @@ uk_unit_edits = {
             "add_specs": ["'refundable_unit'"],
         },
     },
-    
+
     "Lynx_AH_Mk1_UK": {
         "CommandPoints": 50,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
     },
-    
+
     "Lynx_AH_Mk1_LBH_UK": {
         "CommandPoints": 70,
     },
-    
+
     "Gazelle_trans_UK": {
         "CommandPoints": 35,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
     },
-    
+
     "Gazelle_SNEB_UK": {
         "CommandPoints": 40,
         "availability": 8,
@@ -925,24 +963,28 @@ uk_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
-    
+
     "Lynx_AH_Mk1_TOW_UK": {
         "CommandPoints": 75,
         "availability": 6,
         "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
+        "TrueAvail": [0, 6, 4, 0],
     },
-    
+
     "Lynx_AH_Mk7_I_TOW_UK": {  # 8x ITOW
         "CommandPoints": 95,
         "availability": 4,
         "XPMultiplier": [0.0, 4/4, 3/4, 0.0],
+        "TrueAvail": [0, 4, 3, 0],
     },
-    
+
     "Lynx_AH_Mk7_I_TOW2_UK": {  # 8x FITOW
         "CommandPoints": 130,
         "availability": 4,
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "TrueAvail": [0, 4, 3, 0],
     },
 
     # UK AIR
@@ -953,6 +995,7 @@ uk_unit_edits = {
         "CommandPoints": 110,
         "availability": 3,
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "TrueAvail": [0, 3, 2, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [("RocketAir_SNEB_68mm_salvolength18", "RocketAir_SNEB_68mm_salvolength36")],
@@ -963,11 +1006,12 @@ uk_unit_edits = {
         },
         "UpgradeFromUnit": None,
     },
-    
+
     "Harrier_RKT2_UK": {  # 36x SNEB, 36x SNEB
         "CommandPoints": 100,
         "availability": 4,
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "TrueAvail": [0, 4, 3, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [("RocketAir_SNEB_68mm_salvolength18", "RocketAir_SNEB_68mm_salvolength36")],
@@ -978,7 +1022,7 @@ uk_unit_edits = {
         },
         "UpgradeFromUnit": "Harrier_RKT1_UK"
     },
-    
+
     "Harrier_HE1_UK": {  # 2x mk83 450kg
         "GameName": {
             "display": "HARRIER GR.3 [HE]",
@@ -986,40 +1030,46 @@ uk_unit_edits = {
         "CommandPoints": 130,
         "availability": 3,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+        "TrueAvail": [0, 3, 0, 0],
     },
-    
+
     "Jaguar_CLU_UK": {  # 4x BL755 CLU
         "CommandPoints": 205,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
-    
+
     "Jaguar_HE1_UK": {  # 8x mk82 227kg
         "GameName": {
             "display": "JAGUAR GR.1 [HE]",
         },
         "CommandPoints": 190,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
-    
+
     "Jaguar_HE2_UK": {  # 4x Mk18 513kg
         "CommandPoints": 190,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
-    
+
     "Tornado_ADV_HE_UK": {
         "CommandPoints": 220,
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
-    
+
     "Harrier_UK": {  # 4x AIM-9L
         "CommandPoints": 100,
         "availability": 4,
         "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "TrueAvail": [0, 4, 3, 0],
     },
-    
+
     "F4_Phantom_AA_F3_UK": { # 4x Skyflash, 4x AIM-9L
         "CommandPoints": 175,
         "availability": 3,
@@ -1036,5 +1086,6 @@ uk_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
 }

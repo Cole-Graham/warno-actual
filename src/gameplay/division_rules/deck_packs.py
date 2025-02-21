@@ -21,7 +21,7 @@ def modify_deck_packs(source_path: Any, game_db: Dict[str, Any]) -> None:
     deck_data = game_db["decks"]["multi"]  # Get multi deck data
 
     for unit, edits in unit_edits.items():
-        if "Divisions" in edits or "XPMultiplier" in edits:
+        if "Divisions" in edits or "XPMultiplier" in edits or "TrueAvail" in edits:
             _handle_deck_packs(source_path, unit, edits, deck_data)
 
 
@@ -152,9 +152,14 @@ def update_deck_pack_references(source_path: Any, game_db: Dict[str, Any]) -> No
         # Skip if no divisions contain this unit
         if not unit_divisions and not divisions_to_remove:
             continue
-            
+
         # Get new XP value if specified
-        xp_list = edits.get("XPMultiplier", None)
+        if edits.get("TrueAvail", False):
+            avail_list = edits.get("TrueAvail")
+            xp_list = [val / max(avail_list) for val in avail_list]
+        else:
+            xp_list = edits.get("XPMultiplier", None)
+
         new_xp = None
         if xp_list:
             new_xp = next((i for i, x in enumerate(xp_list) if x not in (0, None)), None)

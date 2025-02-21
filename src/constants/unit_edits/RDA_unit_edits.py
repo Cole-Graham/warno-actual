@@ -14,6 +14,7 @@ rda_unit_edits = {
         },
         "availability": 2,
         "XPMultiplier": [0.0, 0.0, 2/2, 0.0],
+        "TrueAvail": [0, 0, 2, 0],
     },
 
     "BRDM_2_CMD_DDR": {
@@ -26,6 +27,7 @@ rda_unit_edits = {
         },
         "availability": 3,
         "XPMultiplier": [0.0, 3/3, 0.0, 0.0],
+        "TrueAvail": [0, 3, 0, 0],
     },
 
     "BTR_60_CMD_DDR": {
@@ -37,6 +39,7 @@ rda_unit_edits = {
         },
         "availability": 3,
         "XPMultiplier": [0.0, 0.0, 3/3, 0.0],
+        "TrueAvail": [0, 0, 3, 0],
     },
 
     "MTLB_supply_DDR": {
@@ -103,6 +106,7 @@ rda_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 0.0, 7/7, 5/7],
+        # TODO: Define "availability" to calculate "TrueAvail"
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -167,6 +171,7 @@ rda_unit_edits = {
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
         "availability": 5,
         "XPMultiplier": [0.0, 0.0, 5/5, 4/5],
+        "TrueAvail": [0, 0, 5, 4],
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -185,11 +190,12 @@ rda_unit_edits = {
         "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
-    
+
     "MP_DDR": {
         "CommandPoints": 15,
         "availability": 12,
         "XPMultiplier": [0.0, 12/12, 9/12, 0.0],
+        "TrueAvail": [0, 12, 9, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -200,6 +206,7 @@ rda_unit_edits = {
         "CommandPoints": 30,
         "availability": 10,
         "XPMultiplier": [10/10, 0.0, 0.0, 0.0],
+        "TrueAvail": [10, 0, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -219,6 +226,7 @@ rda_unit_edits = {
         },
         "availability": 9,
         "XPMultiplier": [0.0, 9/9, 7/9, 0.0],
+        "TrueAvail": [0, 9, 7, 0],
         "max_speed": 14,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_veryheavy'"],
@@ -243,6 +251,7 @@ rda_unit_edits = {
         },
         "availability": 10,
         "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
+        "TrueAvail": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -267,6 +276,7 @@ rda_unit_edits = {
         },
         "availability": 10,
         "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
+        "TrueAvail": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -294,6 +304,7 @@ rda_unit_edits = {
         },
         "availability": 10,
         "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
+        "TrueAvail": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -315,6 +326,7 @@ rda_unit_edits = {
         },
         "availability": 10,
         "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
+        "TrueAvail": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -339,6 +351,7 @@ rda_unit_edits = {
         },
         "availability": 7,
         "XPMultiplier": [0.0, 7/7, 5/7, 0.0],
+        "TrueAvail": [0, 7, 5, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -357,6 +370,7 @@ rda_unit_edits = {
         },
         "availability": 6,
         "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
+        "TrueAvail": [0, 6, 4, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -389,6 +403,7 @@ rda_unit_edits = {
         },
         "availability": 12,
         "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
+        "TrueAvail": [12, 9, 0, 0],
     },
 
     "ATteam_Fagot_DDR": {
@@ -400,6 +415,7 @@ rda_unit_edits = {
         },
         "availability": 9,
         "XPMultiplier": [9/9, 7/9, 5/9, 0.0],
+        "TrueAvail": [9, 7, 5, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -415,6 +431,7 @@ rda_unit_edits = {
         "CommandPoints": 50,
         "availability": 6,
         "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
+        "TrueAvail": [6, 4, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -486,13 +503,15 @@ rda_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 2/2, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
         "remove_zone_capture": None,
     },
-    
+
     "Mortier_PM43_120mm_DDR": {
         "CommandPoints": 40,
         "availability": 5,
         "XPMultiplier": [5/5, 4/5, 3/5, 0.0],
+        "TrueAvail": [5, 4, 3, 0],
     },
 
     "2S1_DDR": {
@@ -502,6 +521,7 @@ rda_unit_edits = {
         "CommandPoints": 110,
         "availability": 3,
         "XPMultiplier": [3/3, 2/3, 0.0, 0.0],
+        "TrueAvail": [3, 2, 0, 0],
     },
 
     "2S3_DDR": {
@@ -511,12 +531,14 @@ rda_unit_edits = {
         "CommandPoints": 180,
         "availability": 3,
         "XPMultiplier": [3/3, 2/3, 0.0, 0.0],
+        "TrueAvail": [3, 2, 0, 0],
     },
 
     "MFRW_RM70_DDR": {
         "CommandPoints": 240,
         "availability": 2,
         "XPMultiplier": [2/2, 0.0, 1/2, 0.0],
+        "TrueAvail": [2, 0, 1, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [("RocketArt_M21OF_122mm", "RocketArt_M21OF_122mm_RM70")],
@@ -560,6 +582,7 @@ rda_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 0.0, 6/6, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
         "remove_zone_capture": None,
     },
 
@@ -598,6 +621,7 @@ rda_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 0.0, 4/4, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
         "remove_zone_capture": None,
     },
 
@@ -636,6 +660,7 @@ rda_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 0.0, 4/4, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
         "remove_zone_capture": None,
     },
 
@@ -705,6 +730,7 @@ rda_unit_edits = {
         "stealth": 1.5,
         "availability": 8,
         "XPMultiplier": [8/8, 6/8, 0.0, 0.0],
+        "TrueAvail": [8, 6, 0, 0],
     },
 
     "T55A_DDR": {
@@ -714,6 +740,7 @@ rda_unit_edits = {
         "CommandPoints": 70,
         "availability": 10,
         "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
+        "TrueAvail": [10, 7, 0, 0],
     },
 
     "T72_DDR": {
@@ -722,6 +749,7 @@ rda_unit_edits = {
         },
         "CommandPoints": 100,
         "XPMultiplier": [8/8, 6/8, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
 
     "T72M_DDR": {
@@ -730,6 +758,7 @@ rda_unit_edits = {
         },
         "CommandPoints": 145,
         "XPMultiplier": [0.0, 7/7, 5/7, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
 
     "T72M1_DDR": {
@@ -744,6 +773,7 @@ rda_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
 
     # RDA RECON
@@ -761,6 +791,7 @@ rda_unit_edits = {
             },
         },
         "XPMultiplier": [8/8, 6/8, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
 
     "BMP_1P_reco_DDR": {
@@ -788,10 +819,12 @@ rda_unit_edits = {
             },
         },
         "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
 
     "Mi_2_reco_DDR": {
         "XPMultiplier": [0.0, 4/4, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
 
     "Scout_DDR": {
@@ -806,6 +839,7 @@ rda_unit_edits = {
             },
         },
         "XPMultiplier": [8/8, 6/8, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
@@ -815,6 +849,7 @@ rda_unit_edits = {
     "HvyScout_DDR": {
         "CommandPoints": 30,
         "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -826,6 +861,7 @@ rda_unit_edits = {
         "CommandPoints": 70,
         "availability": 4,
         "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
+        "TrueAvail": [0, 0, 4, 3],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -839,6 +875,7 @@ rda_unit_edits = {
         },
         "CommandPoints": 20,
         "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -857,6 +894,7 @@ rda_unit_edits = {
         "CommandPoints": 35,
         "availability": 7,
         "XPMultiplier": [7/7, 5/7, 0.0, 0.0],
+        "TrueAvail": [7, 5, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -881,6 +919,7 @@ rda_unit_edits = {
         "Factory": "EDefaultFactories/Logistic",
         "availability": 9,
         "XPMultiplier": [9/9, 7/9, 0.0, 0.0],
+        "TrueAvail": [9, 7, 0, 0],
         "max_speed": 4,
         "UpgradeFromUnit": "FOB_DDR",
     },
@@ -903,6 +942,7 @@ rda_unit_edits = {
             },
         },
         "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
 
     "MTLB_Strela10_DDR": {
@@ -920,6 +960,7 @@ rda_unit_edits = {
         },
         "availability": 6,
         "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
+        "TrueAvail": [6, 4, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
         },
@@ -932,6 +973,7 @@ rda_unit_edits = {
         "CommandPoints": 75,
         "availability": 6,
         "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
+        "TrueAvail": [6, 4, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
         },
@@ -943,6 +985,7 @@ rda_unit_edits = {
         },
         "CommandPoints": 90,
         "XPMultiplier": [4/4, 3/4, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
@@ -955,7 +998,7 @@ rda_unit_edits = {
             "add_specs": ["'refundable_unit'"],
         },
     },
-    
+
     "Mi_2_rocket_DDR": {
         "CommandPoints": 50,
         "WeaponDescriptor": {
@@ -965,14 +1008,14 @@ rda_unit_edits = {
             },
         },
     },
-    
+
     "Mi_8T_non_arme_DDR": {
         "CommandPoints": 50,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
         },
     },
-    
+
     "Mi_8T_DDR": {  # 32 S-5M x2
         "CommandPoints": 50,
     },
@@ -984,6 +1027,7 @@ rda_unit_edits = {
         "CommandPoints": 70,
         "availability": 6,
         "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
+        "TrueAvail": [0, 6, 4, 0],
     },
 
     "Mi_8TV_s57_32_DDR": {  # [RKT 2]
@@ -993,18 +1037,21 @@ rda_unit_edits = {
         "CommandPoints": 85,
         "availability": 6,
         "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
+        "TrueAvail": [0, 6, 4, 0],
     },
 
     "Mi_8TV_UPK_DDR": {
         "CommandPoints": 85,
         "availability": 6,
         "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
+        "TrueAvail": [0, 6, 4, 0],
     },
 
     "Mi_24D_s5_AT_DDR": {
         "CommandPoints": 135,
         "availability": 4,
         "XPMultiplier": [0.0, 4/4, 3/4, 0.0],
+        "TrueAvail": [0, 4, 3, 0],
     },
 
     "Mi_24P_s8_AT_DDR": {
@@ -1043,17 +1090,20 @@ rda_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 3/3, 2/3, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
 
     # RDA AIR
     "MiG_21PFM_AA_DDR": {
         "CommandPoints": 100,
         "XPMultiplier": [0.0, 4/4, 3/4, 2/4],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
 
     "MiG_21bis_AA2_DDR": {
         "CommandPoints": 120,
         "XPMultiplier": [0.0, 4/4, 3/4, 2/4],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
 
     "MiG_21PFM_DDR": {  # [RKT1]
@@ -1068,17 +1118,20 @@ rda_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 4/4, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
 
     "MiG_21bis_HE_DDR": {
         "CommandPoints": 135,
         "XPMultiplier": [0.0, 3/3, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
 
     "MiG_21bis_RKT2_DDR": {  # 4x S-24 [RKT2]
         "CommandPoints": 100,
         "availability": 4,
         "XPMultiplier": [0.0, 4/4, 0.0, 0.0],
+        "TrueAvail": [0, 4, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
                 "RocketAir_S24_240mm_avion_salvolength4": (1, True),
@@ -1092,6 +1145,7 @@ rda_unit_edits = {
     "MiG_23BN_AT_DDR": {  # MiG-23MF [AT]
         "CommandPoints": 125,
         "XPMultiplier": [0.0, 3/3, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
 
     "MiG_23BN_RKT_DDR": {  # MiG-23MF [AT]
@@ -1109,11 +1163,13 @@ rda_unit_edits = {
         "CommandPoints": 220,
         "availability": 3,
         "XPMultiplier": [0.0, 3/3, 0.0, 0.0],
+        "TrueAvail": [0, 3, 0, 0],
     },
 
     "MiG_23ML_DDR": {  # [AA]
         "CommandPoints": 135,
         "XPMultiplier": [0.0, 3/3, 2/3, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
 
     "MiG_29_AA_DDR": {  # 4x R-73, 2x R-27R [AA1]
@@ -1124,11 +1180,13 @@ rda_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 2/2, 0.0, 1/2],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
 
     "Su_22_AT_DDR": {
         "CommandPoints": "Su_22_AT_SOV",
         "XPMultiplier": [0.0, 2/2, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
 
     "Su_22_SEAD_DDR": {
@@ -1143,23 +1201,27 @@ rda_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 2/2, 0.0, 1/2],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
 
     "Su_22_clu_DDR": {
         "CommandPoints": 215,
         "XPMultiplier": [0.0, 2/2, 0.0, 0.0],
+        # TODO: Define "availability" to calculate "TrueAvail"
     },
 
     "Su_22_nplm_DDR": {
         "CommandPoints": 215,
         "availability": 3,
         "XPMultiplier": [0.0, 3/3, 0.0, 0.0],
+        "TrueAvail": [0, 3, 0, 0],
     },
 
     "Su_22_DDR": {  # [HE]
         "CommandPoints": 215,
         "availability": 2,
         "XPMultiplier": [0.0, 2/2, 0.0, 0.0],
+        "TrueAvail": [0, 2, 0, 0],
     },
 
     "Su_22_RKT_DDR": {  # 4x S-24
@@ -1171,6 +1233,7 @@ rda_unit_edits = {
         },
         "availability": 3,
         "XPMultiplier": [0.0, 3/3, 2/3, 0.0],
+        "TrueAvail": [0, 3, 2, 0],
         "WeaponDescriptor": {
             "Salves": {
                 "RocketAir_S24_240mm_avion_salvolength4": 1,
