@@ -2,8 +2,6 @@ rfa_unit_edits = {
     # RFA LOG
     "Iltis_RFA": {
         "CommandPoints": 145,
-        "availability": 3,
-        "XPMultiplier": [0.0, 3/3, 0.0, 0.0],
         "TrueAvail": [0, 3, 0, 0],
         "Divisions": {
             "default": {
@@ -54,13 +52,11 @@ rfa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "availability": 7,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 0.0, 7/7, 5/7],
         "TrueAvail": [0, 0, 7, 5],
         "max_speed": 20,
         "WeaponDescriptor": {
@@ -78,13 +74,11 @@ rfa_unit_edits = {
             "display": "PANZERGRENADIER"
         },
         "CommandPoints": 30,
-        "availability": 12,
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
         "TrueAvail": [12, 9, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -94,12 +88,10 @@ rfa_unit_edits = {
 
     "ATteam_Milan_2_RFA": {
         "CommandPoints": 45,
-        "availability": 6,
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
-        "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
         "TrueAvail": [6, 4, 0, 0],
     },
 
@@ -123,15 +115,11 @@ rfa_unit_edits = {
             "display": "PzMrs M113A1G"
         },
         "CommandPoints": 75,
-        "availability": 4,
-        "XPMultiplier": [4/4, 3/4, 0.0, 0.0],
         "TrueAvail": [4, 3, 0, 0],
     },
 
     "M109A3G_HOWZ_RFA": {
         "CommandPoints": 170,
-        "availability": 3,
-        "XPMultiplier": [3/3, 2/3, 0.0, 0.0],
         "TrueAvail": [3, 2, 0, 0],
     },
 
@@ -160,7 +148,6 @@ rfa_unit_edits = {
             "display": "#RECO2 BGS STREIFE"
         },
         "CommandPoints": 15,
-        "availability": 10,
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
@@ -168,18 +155,15 @@ rfa_unit_edits = {
     },
 
     "M113_GreenArcher_RFA": {
-        "availability": 8,
         # "optics": {
         #     "OpticalStrength": 233.475
         # },
-        "XPMultiplier": [8/8, 0.0, 0.0, 0.0],
         "TrueAvail": [8, 0, 0, 0],
     },
 
     # RFA AA
     "MANPAD_Redeye_RFA": {  # Fliegerfaust
         "CommandPoints": 20,
-        "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
         "TrueAvail": [12, 9, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {

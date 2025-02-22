@@ -7,44 +7,37 @@ usa_unit_edits = {
     # US LOG
     "OH58C_CMD_US": {
         "CommandPoints": 115,
-        "availability": 3,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
         "TrueAvail": [0, 3, 0, 0],
     },
 
     "UH60A_CO_US": {
         "CommandPoints": 145,
-        "availability": 3,
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
         "TrueAvail": [0, 3, 0, 0],
         "UpgradeFromUnit": "OH58C_CMD_US",
     },
 
     "M151_MUTT_CMD_US": {
         "CommandPoints": 145,
-        "availability": 4,
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
         "TrueAvail": [0, 4, 0, 0],
     },
 
     "M1025_Humvee_CMD_para_US": {
         "CommandPoints": 145,
-        "availability": 3,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -53,7 +46,6 @@ usa_unit_edits = {
             # airborne humvee becomes redundant with regular after FWD deploy changes, just give regular one to 82ab
             # but not in the same patch as changing tacom transports, to avoid potential deckwipes
         },
-        "XPMultiplier": [0.0, 3/3, 0.0, 0.0],
         "TrueAvail": [0, 3, 0, 0],
         "SpecialtiesList": {
             "remove_specs": ["'_para'"],
@@ -64,8 +56,6 @@ usa_unit_edits = {
 
     "M1025_Humvee_CMD_US": {
         "CommandPoints": 145,
-        "availability": 3,
-        "XPMultiplier": [0.0, 3/3, 0.0, 0.0],
         "TrueAvail": [0, 3, 0, 0],
         "Divisions": {
             # "add": ['US_82nd_Airborne'],
@@ -79,26 +69,22 @@ usa_unit_edits = {
 
     "M2A1_Bradley_Leader_US": {
         "CommandPoints": 180,
-        "availability": 3,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
         "TrueAvail": [0, 0, 3, 0],
         "UpgradeFromUnit": "M577_CMD2_US",
     },
 
     "M2A2_Bradley_Leader_US": {
         "CommandPoints": 180,
-        "availability": 2,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 0.0, 0.0, 1.0],
         "TrueAvail": [0, 0, 0, 2],
     },
 
@@ -151,8 +137,6 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "availability": 7,
-        "XPMultiplier": [0.0, 0.0, 7/7, 5/7],
         "TrueAvail": [0, 0, 7, 5],
         "max_speed": 26,
         "WeaponDescriptor": {
@@ -206,13 +190,11 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "availability": 7,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 0.0, 7/7, 5/7],
         "TrueAvail": [0, 0, 7, 5],
         "max_speed": 26,
         "WeaponDescriptor": {
@@ -294,8 +276,6 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_assault",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
-        "availability": 4,
-        "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
         "TrueAvail": [0, 0, 4, 3],
         "max_speed": 26,
         "is_infantry": True,
@@ -359,8 +339,6 @@ usa_unit_edits = {
                 "Transports": ["M1038_Humvee_US", "UH60A_Black_Hawk_US"]
             },
         },
-        "availability": 3,
-        "XPMultiplier": [0.0, 0.0, 0.0, 3/3],
         "TrueAvail": [0, 0, 0, 3],
         "max_speed": 20,
         "WeaponDescriptor": {
@@ -420,8 +398,6 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_assault",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
-        "availability": 4,
-        "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
         "TrueAvail": [0, 0, 4, 3],
         "max_speed": 26,
         "is_infantry": True,
@@ -465,13 +441,11 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "availability": 4,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
         "TrueAvail": [0, 0, 4, 3],
         "max_speed": 26,
         "WeaponDescriptor": {
@@ -520,8 +494,6 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "availability": 4,
-        "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
         "TrueAvail": [0, 0, 4, 3],
         "max_speed": 26,
         "is_infantry": True,
@@ -565,8 +537,6 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "availability": 6,
-        "XPMultiplier": [0.0, 0.0, 6/6, 4/6],
         "TrueAvail": [0, 0, 6, 4],
         "max_speed": 26,
         "is_infantry": True,
@@ -610,8 +580,6 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_assault",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
-        "availability": 4,
-        "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
         "TrueAvail": [0, 0, 4, 3],
         "max_speed": 26,
         "is_infantry": True,
@@ -655,8 +623,6 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "availability": 2,
-        "XPMultiplier": [0.0, 0.0, 0.0, 1.0],
         "TrueAvail": [0, 0, 0, 2],
         "max_speed": 26,
         "is_infantry": True,
@@ -666,7 +632,6 @@ usa_unit_edits = {
 
     "Engineers_US": {
         "CommandPoints": 45,
-        "availability": 6,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -678,7 +643,6 @@ usa_unit_edits = {
                 "Transports": ["M35_trans_US", "M113A3_US"],  # no change, just reversed display order
             },
         },
-        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "TrueAvail": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -688,13 +652,11 @@ usa_unit_edits = {
 
     "NatGuard_Engineers_US": {
         "CommandPoints": 35,
-        "availability": 6,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "TrueAvail": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -709,8 +671,6 @@ usa_unit_edits = {
 
     "AeroEngineers_US": {
         "CommandPoints": 45,
-        "availability": 6,
-        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "TrueAvail": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -720,12 +680,10 @@ usa_unit_edits = {
 
     "Airborne_Engineers_US": {
         "CommandPoints": 45,
-        "availability": 6,
         # "GameName": {
         #     "display": "AIRBORNE ASSAULT ENG.",
         #     "token": "TXOZWRNEVU",
         # },
-        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "TrueAvail": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -754,8 +712,6 @@ usa_unit_edits = {
                 "Transports": ["M151_MUTT_trans_US", "M113A3_US"],  # no change, just reversed display order
             },
         },
-        "availability": 9,
-        "XPMultiplier": [0.0, 9/9, 7/9, 0.0],
         "TrueAvail": [0, 9, 7, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -779,8 +735,6 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 9,
-        "XPMultiplier": [0.0, 9/9, 7/9, 0.0],
         "TrueAvail": [0, 9, 7, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -808,8 +762,6 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 6,
-        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "TrueAvail": [0, 6, 4, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -838,8 +790,6 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 6,
-        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "TrueAvail": [0, 6, 4, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -869,8 +819,6 @@ usa_unit_edits = {
                 "Transports": ["M35_trans_US", "M113A3_US"],  # no change, just reversed display order
             },
         },
-        "availability": 6,
-        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "TrueAvail": [0, 6, 4, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -892,8 +840,6 @@ usa_unit_edits = {
             "display": "AIRBORNE [DRAGON]",
         },
         "CommandPoints": 45,
-        "availability": 6,
-        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "TrueAvail": [0, 6, 4, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -903,8 +849,6 @@ usa_unit_edits = {
 
     "Airborne_MP_US": {
         "CommandPoints": 20,
-        "availability": 12,
-        "XPMultiplier": [0.0, 12/12, 9/12, 0.0],
         "TrueAvail": [0, 12, 9, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -914,8 +858,6 @@ usa_unit_edits = {
 
     "MP_US": {
         "CommandPoints": 20,
-        "availability": 12,
-        "XPMultiplier": [0.0, 12/12, 9/12, 0.0],
         "TrueAvail": [0, 12, 9, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -928,8 +870,6 @@ usa_unit_edits = {
             "display": "AB MP PATROL [M67]",
         },
         "CommandPoints": 25,
-        "availability": 9,
-        "XPMultiplier": [0.0, 9/9, 7/9, 0.0],
         "TrueAvail": [0, 9, 7, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -947,8 +887,6 @@ usa_unit_edits = {
             "display": "MP PATROL [M67]",
         },
         "CommandPoints": 25,
-        "availability": 9,
-        "XPMultiplier": [0.0, 9/9, 7/9, 0.0],
         "TrueAvail": [0, 9, 7, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -964,8 +902,6 @@ usa_unit_edits = {
 
     "Rifles_HMG_US": { # GUNNERS
         "CommandPoints": 35,
-        "availability": 10,
-        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
         "TrueAvail": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -975,8 +911,6 @@ usa_unit_edits = {
 
     "Airborne_HMG_US": {  # AIRBORNE GUNNERS
         "CommandPoints": 35,
-        "availability": 7,
-        "XPMultiplier": [0.0, 7/7, 5/7, 0.0],
         "TrueAvail": [0, 7, 5, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -986,8 +920,6 @@ usa_unit_edits = {
 
     "AeroRifles_US": {  # AIR CAV TROOPERS
         "CommandPoints": 40,
-        "availability": 10,
-        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
         "TrueAvail": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -997,8 +929,6 @@ usa_unit_edits = {
 
     "Cavalry_US": {  # DISMOUNT TROOPERS WIP
         "CommandPoints": 35,
-        "availability": 12,
-        "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
         "TrueAvail": [12, 9, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1016,8 +946,6 @@ usa_unit_edits = {
             "display": "MECH. RIFLES [DRAGON]",
         },
         "CommandPoints": 45,
-        "availability": 10,
-        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
         "TrueAvail": [10, 7, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -1035,8 +963,6 @@ usa_unit_edits = {
             "display": "MECH. RIFLES [LAW]",
         },
         "CommandPoints": 35,
-        "availability": 10,
-        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
         "TrueAvail": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1064,8 +990,6 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 12,
-        "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
         "TrueAvail": [12, 9, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1087,8 +1011,6 @@ usa_unit_edits = {
                 "Transports": ["M1038_Humvee_US", "M2A1_Bradley_IFV_US", "M2A2_Bradley_IFV_US"],
             },
         },
-        "availability": 12,
-        "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
         "TrueAvail": [12, 9, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1106,8 +1028,6 @@ usa_unit_edits = {
 
     "Ranger_US": {
         "CommandPoints": 60,
-        "availability": 4,
-        "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
         "TrueAvail": [0, 0, 4, 3],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1133,8 +1053,6 @@ usa_unit_edits = {
             "display": "RANGERS [DRAGON]",
         },
         "CommandPoints": 65,
-        "availability": 4,
-        "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
         "TrueAvail": [0, 0, 4, 3],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -1165,8 +1083,6 @@ usa_unit_edits = {
                 "cards": 3,
             },
         },
-        "availability": 6,
-        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "TrueAvail": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1191,8 +1107,6 @@ usa_unit_edits = {
                 "cards": 3,
             },
         },
-        "availability": 9,
-        "XPMultiplier": [0.0, 9/9, 7/9, 0.0],
         "TrueAvail": [0, 9, 7, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1217,8 +1131,6 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 9,
-        "XPMultiplier": [0.0, 9/9, 7/9, 0.0],
         "TrueAvail": [0, 9, 7, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -1240,8 +1152,6 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 6,
-        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "TrueAvail": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1254,8 +1164,6 @@ usa_unit_edits = {
             "display": "AERO-RIFLES [DRAGON]",
         },
         "CommandPoints": 40,
-        "availability": 6,
-        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "TrueAvail": [0, 6, 4, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -1280,8 +1188,6 @@ usa_unit_edits = {
                 "cards": 3,
             },
         },
-        "availability": 9,
-        "XPMultiplier": [0.0, 9/9, 7/9, 0.0],
         "TrueAvail": [0, 9, 7, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1301,8 +1207,6 @@ usa_unit_edits = {
             "display": "AERO-RIFLES [AT4]",
         },
         "CommandPoints": 65,
-        "availability": 6,
-        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
         "TrueAvail": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1333,8 +1237,6 @@ usa_unit_edits = {
                 "cards": 3,
             },
         },
-        "availability": 12,
-        "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
         "TrueAvail": [12, 9, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -1366,8 +1268,6 @@ usa_unit_edits = {
             "display": "NG FIRETEAM [DRAGON]",
         },
         "CommandPoints": 30,
-        "availability": 15,
-        "XPMultiplier": [15/15, 12/15, 0.0, 0.0],
         "TrueAvail": [15, 12, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -1428,8 +1328,6 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 9,
-        "XPMultiplier": [0.0, 9/9, 7/9, 0.0],
         "TrueAvail": [0, 9, 7, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -1449,8 +1347,6 @@ usa_unit_edits = {
             "display": "GREEN BERETS [ODA]",
         },
         "CommandPoints": 85,
-        "availability": 3,
-        "XPMultiplier": [0.0, 0.0, 0.0, 3/3],
         "TrueAvail": [0, 0, 0, 3],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1513,8 +1409,6 @@ usa_unit_edits = {
 
     "ATteam_ITOW_US": {
         "CommandPoints": 60,
-        "availability": 6,
-        "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
         "TrueAvail": [6, 4, 0, 0],
         "max_speed": 14,
         "SpecialtiesList": {
@@ -1524,8 +1418,6 @@ usa_unit_edits = {
 
     "ATteam_TOW2_US": {
         "CommandPoints": 75,
-        "availability": 4,
-        "XPMultiplier": [4/4, 3/4, 0.0, 0.0],
         "TrueAvail": [4, 3, 0, 0],
         "max_speed": 14,
         "SpecialtiesList": {
@@ -1535,13 +1427,11 @@ usa_unit_edits = {
 
     "ATteam_TOW2_Aero_US": {
         "CommandPoints": 75,
-        "availability": 4,
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [0.0, 4/4, 3/4, 0.0],
         "TrueAvail": [0, 4, 3, 0],
         "max_speed": 14,
         "SpecialtiesList": {
@@ -1551,13 +1441,11 @@ usa_unit_edits = {
 
     "ATteam_TOW2_para_US": {
         "CommandPoints": 75,
-        "availability": 4,
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [0.0, 4/4, 3/4, 0.0],
         "TrueAvail": [0, 4, 3, 0],
         "max_speed": 14,
         "SpecialtiesList": {
@@ -1567,8 +1455,6 @@ usa_unit_edits = {
 
     "M274_Mule_RCL_US": {
         "CommandPoints": 30,
-        "availability": 9,
-        "XPMultiplier": [0.0, 9/9, 7/9, 0.0],
         "TrueAvail": [0, 9, 7, 0],
     },
 
@@ -1632,62 +1518,46 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
         "TrueAvail": [0, 2, 0, 0],
         "remove_zone_capture": None,
     },
 
     "Mortier_107mm_US": {
         "CommandPoints": 40,
-        "availability": 5,
-        "XPMultiplier": [1.0, 0.8, 0.6, 0.0],
         "TrueAvail": [5, 4, 3, 0],
     },
 
     "Mortier_107mm_Airborne_US": {
         "CommandPoints": 40,
-        "availability": 5,
-        "XPMultiplier": [0.0, 1.0, 0.8, 0.6],
         "TrueAvail": [0, 5, 4, 3],
     },
 
     "M125_HOWZ_US": {  # M125 mortar carrier, M29A1 81mm Mortar
         "CommandPoints": 45,
-        "availability": 4,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
         "TrueAvail": [4, 3, 0, 0],
     },
     "Howz_M102_105mm_US": {
         "CommandPoints": 60,
-        "availability": 4,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
         "TrueAvail": [0, 4, 3, 0],
     },
 
     "M106A2_HOWZ_US": {
         "CommandPoints": 60,
-        "availability": 4,
-        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
         "TrueAvail": [4, 3, 0, 0],
     },
 
     "M109A2_HOWZ_US": {
         "CommandPoints": 180,
-        "availability": 3,
-        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
         "TrueAvail": [3, 2, 0, 0],
     },
 
     "M110A2_HOWZ_US": {
         "CommandPoints": 220,
-        "availability": 2,
-        "XPMultiplier": [1.0, 0.0, 0.5, 0.0],
         "TrueAvail": [2, 0, 1, 0],
     },
 
     "M270_MLRS_US": {
         "CommandPoints": 240,
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
         "TrueAvail": [0, 1, 0, 0],
         "Divisions": {
             "remove": ["US_8th_Inf"]
@@ -1700,7 +1570,6 @@ usa_unit_edits = {
             # "token": "MYQQNJCCAK",
         },
         "CommandPoints": 300,
-        "availability": 1,
         "Divisions": {
             "add": ["US_8th_Inf"],
             "is_transported": False,
@@ -1716,7 +1585,6 @@ usa_unit_edits = {
                 },
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
         "TrueAvail": [0, 1, 0, 0],
     },
 
@@ -1751,13 +1619,11 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
-        "availability": 2,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 0.0, 0.0, 1.0],
         "TrueAvail": [0, 0, 0, 2],
         "remove_zone_capture": None,
     },
@@ -1792,7 +1658,6 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
-        "availability": 3,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -1801,7 +1666,6 @@ usa_unit_edits = {
                 "cards": 2,  # no other ldr tanks in the div
             },
         },
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
         "TrueAvail": [0, 0, 3, 0],
         "remove_zone_capture": None,
     },
@@ -1833,7 +1697,6 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
         "TrueAvail": [0, 0, 2, 0],
         "remove_zone_capture": None,
     },
@@ -1865,8 +1728,6 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
-        "availability": 3,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
         "TrueAvail": [0, 0, 3, 0],
         "remove_zone_capture": None,
     },
@@ -1898,8 +1759,6 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Armor",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
-        "availability": 4,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
         "TrueAvail": [0, 0, 4, 0],
         "remove_zone_capture": None,
     },
@@ -1931,8 +1790,6 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
-        "availability": 4,
-        "XPMultiplier": [0.0, 0.0, 0.0, 1.0],
         "TrueAvail": [0, 0, 0, 4],
         "remove_zone_capture": None,
     },
@@ -1972,29 +1829,21 @@ usa_unit_edits = {
         },
         "CommandPoints": 65,
         "stealth": 1.5,
-        "availability": 6,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
         "TrueAvail": [0, 6, 4, 0],
     },
 
     "M901A1_ITW_US": {  # TOW 2
         "CommandPoints": 65,
-        "availability": 8,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
         "TrueAvail": [8, 6, 0, 0],
     },
 
     "M901_TOW_US": {  # ITOW
         "CommandPoints": 50,
-        "availability": 8,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
         "TrueAvail": [8, 6, 0, 0],
     },
 
     "M728_CEV_US": {
         "CommandPoints": 65,
-        "availability": 8,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
         "TrueAvail": [8, 6, 0, 0],
     },
 
@@ -2013,8 +1862,6 @@ usa_unit_edits = {
                 "cards": 3,
             },
         },
-        "availability": 3,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
         "TrueAvail": [0, 0, 3, 2],
     },
 
@@ -2033,8 +1880,6 @@ usa_unit_edits = {
                 "cards": 4,
             },
         },
-        "availability": 5,
-        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
         "TrueAvail": [5, 3, 0, 0],
     },
 
@@ -2054,91 +1899,76 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.75],
         "TrueAvail": [0, 0, 4, 3],
     },
 
     "M1_Abrams_US": {
         "CommandPoints": 160,
-        "availability": 6,
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
         "TrueAvail": [6, 4, 0, 0],
     },
 
     "M1_Abrams_NG_US": {
         "CommandPoints": 150,
-        "availability": 6,
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [1.0, 0.0, 0.0, 0.0],
         "TrueAvail": [6, 0, 0, 0],
     },
 
     "M60A3_Patton_US": {
         "CommandPoints": 105,
-        "availability": 8,
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
         "TrueAvail": [8, 6, 0, 0],
     },
 
     "M60A3_ERA_Patton_US": {
         "CommandPoints": 110,
-        "availability": 6,
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
         "TrueAvail": [6, 4, 0, 0],
     },
 
     "M60A3_Patton_NG_US": {
         "CommandPoints": 110,
-        "availability": 10,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
         "TrueAvail": [10, 7, 0, 0],
     },
 
     "M60A1_RISE_Passive_US": {
         "CommandPoints": 80,
-        "availability": 10,
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
         "TrueAvail": [10, 8, 0, 0],
     },
 
     "M551A1_TTS_Sheridan_US": {
         "CommandPoints": 50,
-        "availability": 10,
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
         "TrueAvail": [0, 10, 8, 0],
     },
 
@@ -2171,7 +2001,6 @@ usa_unit_edits = {
 
     "M981_FISTV_US": {
         "CommandPoints": 25,
-        "availability": 8,
         "GameName": {
             "display": "#RECO3 M981 FISTV",
             "token": "JKFBZFRBYZ",
@@ -2182,21 +2011,16 @@ usa_unit_edits = {
         "optics": {
             "OpticalStrength": 233.475
         },
-        "XPMultiplier": [8/8, 0.0, 0.0, 0.0],
         "TrueAvail": [8, 0, 0, 0],
     },
 
     "M113A1_TOW_US": {
         "CommandPoints": 55,
-        "availability": 8,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
         "TrueAvail": [8, 6, 0, 0],
     },
 
     "LAV_25_M1047_US_US": {
         "CommandPoints": 70,
-        "availability": 4,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
         "TrueAvail": [0, 4, 3, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -2207,8 +2031,6 @@ usa_unit_edits = {
 
     "M3A1_Bradley_CFV_US": {
         "CommandPoints": 105,
-        "availability": 4,
-        "XPMultiplier": [4/4, 3/4, 0.0, 0.0],
         "TrueAvail": [4, 3, 0, 0],
         "TagSet": {
             "add_tags": ['"Vehicule_Transport_Arme"'],
@@ -2240,8 +2062,6 @@ usa_unit_edits = {
 
     "M3A2_Bradley_CFV_US": {
         "CommandPoints": 135,
-        "availability": 3,
-        "XPMultiplier": [3/3, 2/3, 0.0, 0.0],
         "TrueAvail": [3, 2, 0, 0],
         "TagSet": {
             "add_tags": ['"Vehicule_Transport_Arme"'],
@@ -2267,8 +2087,6 @@ usa_unit_edits = {
 
     "M551A1_ACAV_Sheridan_US": {
         "CommandPoints": 55,
-        "availability": 4,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
         "TrueAvail": [0, 4, 3, 0],
     },
 
@@ -2277,14 +2095,10 @@ usa_unit_edits = {
             "display": "#RECO2 OH-58C SCOUT",
         },
         "CommandPoints": 40,
-        "availability": 4,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
         "TrueAvail": [0, 4, 3, 0],
     },
 
     "OH58D_Combat_Scout_US": {
-        "availability": 4,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
         "TrueAvail": [0, 4, 3, 0],
         "ECM:": -0.1,
     },
@@ -2293,14 +2107,11 @@ usa_unit_edits = {
         "GameName": {
             "display": "#RECO3 OH-58D KIOWA WR.",
         },
-        "availability": 3,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
         "TrueAvail": [0, 3, 2, 0],
         "ECM": -0.1,
     },
 
     "EH60A_EW_US": {
-        "availability": 3,
         "Divisions": {
             "add": ["US_3rd_Arm"],
             "is_transported": False,
@@ -2309,14 +2120,11 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
         "TrueAvail": [0, 3, 0, 0],
     },
 
     "Airborne_Scout_US": {
         "CommandPoints": 25,
-        "availability": 7,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
         "TrueAvail": [0, 7, 5, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -2331,8 +2139,6 @@ usa_unit_edits = {
 
     "Scout_US": {
         "CommandPoints": 20,
-        "availability": 8,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
         "TrueAvail": [8, 6, 0, 0],
         "Divisions": {
             "is_transported": True,
@@ -2399,8 +2205,6 @@ usa_unit_edits = {
 
     "LRRP_US": {
         "CommandPoints": 75,
-        "availability": 4,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.75],
         "TrueAvail": [0, 0, 4, 3],
         "Divisions": {
             "default": {
@@ -2460,8 +2264,6 @@ usa_unit_edits = {
                 "cards": 3,
             },
         },
-        "availability": 7,
-        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
         "TrueAvail": [7, 5, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -2492,8 +2294,6 @@ usa_unit_edits = {
             "token": "VVEXCPXVQB",
         },
         "CommandPoints": 45,
-        "availability": 7,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
         "TrueAvail": [0, 7, 5, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -2512,14 +2312,11 @@ usa_unit_edits = {
 
     "M163_CS_US": {
         "CommandPoints": 40,
-        "availability": 8,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
         "TrueAvail": [8, 6, 0, 0],
     },
 
     "M163_PIVADS_US": {
         "CommandPoints": 65,
-        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
         "TrueAvail": [7, 5, 0, 0],
         # "SpecialtiesList": {
         #     "add_specs": ["'normal_airoptics'"],
@@ -2534,8 +2331,6 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": 8,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
         "TrueAvail": [0, 8, 6, 0],
         "max_speed": 4,
         "UpgradeFromUnit": "FOB_US",
@@ -2557,8 +2352,6 @@ usa_unit_edits = {
             #     "Transports": ["LandRover_UK"],
             # },
         },
-        "availability": 6,
-        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
         "TrueAvail": [6, 4, 0, 0],
         "max_speed": 4,
         "UpgradeFromUnit": "FOB_US",
@@ -2566,8 +2359,6 @@ usa_unit_edits = {
 
     "M998_Avenger_US": {
         "CommandPoints": 100,
-        "availability": 5,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
         "TrueAvail": [0, 5, 3, 0],
     },
 
@@ -2576,8 +2367,6 @@ usa_unit_edits = {
             "OpticalStrengthAltitude": 220,
         },
         "CommandPoints": 130,
-        "availability": 3,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
         "TrueAvail": [0, 3, 2, 0],
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
@@ -2589,8 +2378,6 @@ usa_unit_edits = {
         "optics": {
             "OpticalStrengthAltitude": 300,
         },
-        "availability": 4,
-        "XPMultiplier": [4/4, 3/4, 0.0, 0.0],
         "TrueAvail": [4, 3, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
@@ -2624,8 +2411,6 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": 6,
-        "XPMultiplier": [0.0, 0.0, 0.0, 1.0],
         "TrueAvail": [0, 0, 0, 6],
     },
 
@@ -2636,15 +2421,11 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": 4,
-        "XPMultiplier": [0.0, 0.0, 0.0, 1.0],
         "TrueAvail": [0, 0, 0, 4],
     },
 
     "OH58_CS_US": {
         "CommandPoints": 75,
-        "availability": 4,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
         "TrueAvail": [0, 4, 3, 0],
     },
 
@@ -2655,8 +2436,6 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": 3,
-        "XPMultiplier": [0.0, 0.0, 0.0, 1.0],
         "TrueAvail": [0, 0, 0, 3],
     },
 
@@ -2667,8 +2446,6 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 3,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
         "TrueAvail": [0, 3, 2, 0],
     },
 
@@ -2685,8 +2462,6 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": 4,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
         "TrueAvail": [0, 4, 3, 0],
     },
 
@@ -2706,8 +2481,6 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": 4,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
         "TrueAvail": [0, 4, 3, 0],
     },
 
@@ -2724,8 +2497,6 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 4,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
         "TrueAvail": [0, 4, 3, 0],
     },
 
@@ -2736,8 +2507,6 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": 4,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
         "TrueAvail": [0, 4, 3, 0],
     },
 
@@ -2748,8 +2517,6 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": 2,
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.49],
         "TrueAvail": [0, 2, 0, 1],
     },
 
@@ -2766,8 +2533,6 @@ usa_unit_edits = {
                 "cards": 3,
             },
         },
-        "availability": 2,
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.49],
         "TrueAvail": [0, 2, 0, 1],
     },
 
@@ -2781,8 +2546,6 @@ usa_unit_edits = {
                 "cards": 3,
             },
         },
-        "availability": 2,
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.49],
         "TrueAvail": [0, 2, 0, 1],
     },
 
@@ -2793,19 +2556,15 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": 2,
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.49],
         "TrueAvail": [0, 2, 0, 1],
     },
 
     # US AIR
     "F4E_Phantom_II_AA_US": {
         "CommandPoints": 165,
-        "availability": 3,
         "optics": {
             "OpticalStrengthAltitude": 375,
         },
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
         "TrueAvail": [0, 3, 2, 0],
     },
 
@@ -2817,7 +2576,6 @@ usa_unit_edits = {
                 "AgilityRadiusGRU": 1375,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.49],
         "TrueAvail": [0, 2, 0, 1],
     },
 
@@ -2837,7 +2595,6 @@ usa_unit_edits = {
                 },
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.49],
         "TrueAvail": [0, 2, 0, 1],
     },
 
@@ -2846,7 +2603,6 @@ usa_unit_edits = {
         "optics": {
             "OpticalStrengthAltitude": 375,
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
         "TrueAvail": [0, 2, 0, 0],
     },
 
@@ -2856,44 +2612,35 @@ usa_unit_edits = {
         "optics": {
             "OpticalStrengthAltitude": 375,
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
         "TrueAvail": [0, 2, 0, 0],
     },
 
     "F4E_Phantom_II_napalm_US": {
         "CommandPoints": 165,
-        "availability": 3,
         "optics": {
             "OpticalStrengthAltitude": 375,
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
         "TrueAvail": [0, 3, 0, 0],
     },
 
     "F111E_Aardvark_US": {  # 12x mk82, 3rd Armored
         "CommandPoints": 190,
-        "availability": 2,
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
         "TrueAvail": [0, 2, 0, 0],
     },
 
     "F111F_Aardvark_US": {
         "CommandPoints": 190,
-        "availability": 2,
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
         "TrueAvail": [0, 2, 0, 0],
     },
 
     "F111F_Aardvark_LGB_US": {  # 4x GBU-12
         "CommandPoints": 210,
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
     },
 
     "F111E_Aardvark_CBU_US": {  # 8x Mk-20 Rockeye, 3rd Armored
@@ -2901,7 +2648,6 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
         "TrueAvail": [0, 2, 0, 0],
     },
 
@@ -2910,7 +2656,6 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
         "TrueAvail": [0, 2, 0, 0],
     },
 
@@ -2919,7 +2664,6 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
         "TrueAvail": [0, 3, 0, 0],
     },
 
@@ -2928,14 +2672,12 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
         "TrueAvail": [0, 3, 0, 0],
     },
 
     "EF111_Raven_US": {
         "CommandPoints": 180,
         "max_speed": 1400,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
         "TrueAvail": [0, 0, 2, 0],
     },
 
@@ -2954,7 +2696,6 @@ usa_unit_edits = {
         "optics": {
             "OpticalStrengthAltitude": 375,
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
         "TrueAvail": [0, 1, 0, 0],
     },
 
@@ -2964,7 +2705,6 @@ usa_unit_edits = {
         "optics": {
             "OpticalStrengthAltitude": 375,
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
         "TrueAvail": [0, 2, 0, 0],
     },
 
@@ -2974,35 +2714,29 @@ usa_unit_edits = {
         "optics": {
             "OpticalStrengthAltitude": 375,
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
         "TrueAvail": [0, 2, 0, 0],
     },
 
     "F16E_HE2_US": {  # 12x mk82 + , 11 ACR
         "CommandPoints": 225,
         "ECM": -0.35,
-        "availability": 2,
         "optics": {
             "OpticalStrengthAltitude": 375,
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
         "TrueAvail": [0, 2, 0, 0],
     },
 
     "F16E_napalm_US": {
         "CommandPoints": 200,
-        "availability": 3,
         "ECM": -0.35,
         "optics": {
             "OpticalStrengthAltitude": 375,
         },
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
         "TrueAvail": [0, 3, 2, 0],
     },
 
     "F16E_SEAD_US": {
         "CommandPoints": 220,
-        "availability": 3,
         "ECM": -0.35,
         "optics": {
             "OpticalStrengthAltitude": 375,
@@ -3016,18 +2750,15 @@ usa_unit_edits = {
                 },
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
         "TrueAvail": [0, 3, 2, 0],
     },
 
     "F16E_CBU_US": {
         "CommandPoints": 185,
         "ECM": -0.35,
-        "availability": 3,
         "optics": {
             "OpticalStrengthAltitude": 375,
         },
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
         "TrueAvail": [0, 3, 2, 0],
     },
 
@@ -3042,11 +2773,9 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 2,
         "optics": {
             "OpticalStrengthAltitude": 375,
         },
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
         "TrueAvail": [0, 0, 2, 0],
         "UpgradeFromUnit": None,
     },
@@ -3054,11 +2783,9 @@ usa_unit_edits = {
     "F16E_AA2_US": {  # 3x + 3x AIM-9M
         "CommandPoints": 190,
         "ECM": -0.35,
-        "availability": 2,
         "optics": {
             "OpticalStrengthAltitude": 375,
         },
-        "XPMultiplier": [0.0, 0.0, 2/2, 0.0],
         "TrueAvail": [0, 0, 2, 0],
         "UpgradeFromUnit": "F16E_AA_US",
     },
@@ -3071,7 +2798,6 @@ usa_unit_edits = {
             },
         },
         "max_speed": 500,
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
         "TrueAvail": [0, 2, 0, 0],
     },
 
@@ -3083,7 +2809,6 @@ usa_unit_edits = {
             },
         },
         "max_speed": 500,
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
         "TrueAvail": [0, 2, 0, 0],
     },
 
@@ -3095,7 +2820,6 @@ usa_unit_edits = {
             },
         },
         "max_speed": 500,
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
         "TrueAvail": [0, 2, 0, 0],
     },
 }
