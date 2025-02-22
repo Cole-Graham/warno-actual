@@ -107,8 +107,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 50,
             },
             "parent_membr": {
-                "TempsEntreDeuxTirs": 2.5,
-                "TempsEntreDeuxFx": 2.5,
+                "TempsEntreDeuxTirs": 3.0,
+                "TempsEntreDeuxFx": 3.0,
                 "PhysicalDamages": 5.0,
                 "PorteeMaximaleTBAGRU": 2800,
                 "PorteeMaximaleHAGRU": 3500,
@@ -131,8 +131,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 55,
             },
             "parent_membr": {
-                "TempsEntreDeuxTirs": 2.5,
-                "TempsEntreDeuxFx": 2.5,
+                "TempsEntreDeuxTirs": 3.0,
+                "TempsEntreDeuxFx": 3.0,
                 "PhysicalDamages": 5.0,
                 "PorteeMaximaleTBAGRU": 3150,
                 "PorteeMaximaleHAGRU": 3850,
@@ -213,7 +213,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 3325,
-            }
+                "TempsEntreDeuxTirs": 3.0,
+                "TempsEntreDeuxFx": 3.0,
+            },
         },
         # "BaseSupplyCost": 150,
         "BaseSupplyCost": 100,
@@ -368,6 +370,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 3325,
                 "PorteeMaximaleHAGRU": 3675,
+                "TempsEntreDeuxTirs": 2.5,
+                "TempsEntreDeuxFx": 2.5,
                 "TempsDeVisee": 1.2,
             }
         },
@@ -385,6 +389,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 2800,
                 "PorteeMaximaleHAGRU": 5250,
+                "TempsEntreDeuxTirs": 3.0,
+                "TempsEntreDeuxFx": 3.0,
             }
         },
         # "BaseSupplyCost": 130,
@@ -402,6 +408,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 3150,
                 "PorteeMaximaleHAGRU": 2800,
+                "TempsEntreDeuxTirs": 3.0,
+                "TempsEntreDeuxFx": 3.0,
                 "TempsDeVisee": 1.2,
             }
         },

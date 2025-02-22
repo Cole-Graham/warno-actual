@@ -362,7 +362,7 @@ SOV_NEW_UNITS = {
                 "cards": 2,
             },
             "SOV_27_Gds_Rifle_multi": {
-                "Transports": ["GAZ_66_SOV", "BMP_1P_SOV", "BMP_2_SOV", "BMP_2AG_SOV", "BMP_3_SOV"],
+                "Transports": ["GAZ_66_SOV", "BTR_80_SOV", "BMP_1P_SOV", "BMP_2AG_SOV", "BMP_3_SOV"],
             },
         },
         "TrueAvail": [10, 7, 0, 0],

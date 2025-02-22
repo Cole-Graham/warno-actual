@@ -89,7 +89,7 @@ uk_unit_edits = {
     },
 
     "Engineers_CMD_UK": {
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "GameName": {
             "display": "#LDR ASSAULT PIONEERS LDR.",
             "token": "VZOODKAGWE",
@@ -114,8 +114,8 @@ uk_unit_edits = {
                 (3, [0, ]),
                 (4, [0, ]),
                 (5, [0, ]),
-                (6, [0, ]),
-                (7, [0, ]),
+                (6, [0, 1]),
+                (7, [0, 2]),
             ],
         "TransportedTexture": "UseInGame_Transport_assault",
         # "SortingOrder": 20075,
@@ -133,15 +133,26 @@ uk_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_assault",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
-        "TrueAvail": [0, 0, 7, 5],
+        "TrueAvail": [0, 0, 5, 4],
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
+                "add": [(1, "RocketInf_M72A3_LAW_66mm")],
+                "add_edits": {
+                    1: {
+                        "SalvoStockIndex": 1,
+                        "HandheldEquipmentKey": "'MeshAlternative_2'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_2"],
+                    },
+                },
                 "quantity": {
                     "PM_Sterling": 8,
                 },
             },
             "Salves": {
+                "add": [(1, 7)], # (salve_index, salves)
                 "PM_Sterling": 12,
             },
         },
@@ -273,8 +284,26 @@ uk_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "TrueAvail": [0, 0, 7, 5],
+        "TrueAvail": [0, 0, 5, 4],
         "max_speed": 26,
+        "WeaponAssignment": [
+                (0, [0, ]),
+                (1, [0, ]),
+                (2, [0, ]),
+                (3, [0, ]),
+                (4, [0, ]),
+                (5, [0, ]),
+                (6, [0, 1]),
+                (7, [0, 2]),
+            ],
+        "WeaponDescriptor": {
+            "Salves": {
+                "add": [(2, 7)], # (turret, salves)
+            },
+            "equipmentchanges": {
+                "add": [(2, "RocketInf_M72A3_LAW_66mm")],
+            },
+        },
         "is_infantry": True,
         "is_ground_vehicle": False,
         "remove_zone_capture": None,
@@ -359,10 +388,23 @@ uk_unit_edits = {
     "AT_Group_TA_UK": {
         "CommandPoints": 25,
         "max_speed": 26,
+        "strength": 5,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
+        "WeaponAssignment": [
+                (0, [0, ]),
+                (1, [0, ]),
+                (2, [0, ]),
+                (3, [0, ]),
+                (4, [0, 1]),
+            ],
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "PM_Sterling": 5,
+                },
+            },
             "Salves": {
                 "RocketInf_Carl_Gustav": 6,
             },
@@ -865,7 +907,7 @@ uk_unit_edits = {
     },
 
     "Lynx_AH_Mk1_LBH_UK": {
-        "CommandPoints": 70,
+        "CommandPoints": 65,
     },
 
     "Gazelle_trans_UK": {

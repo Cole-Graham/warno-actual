@@ -238,20 +238,32 @@ def _prepare_turret_template(turret: Any, index: int) -> Any:
     return new_turret
 
 
-def _add_new_weapons(weapon_descr: Any, add_list: List, turret_templates: List[Tuple[str, Any]], game_db: Dict) -> None:
+def _add_new_weapons(weapon_descr: Any, wd_edits: Dict, turret_templates: List[Tuple[str, Any]], game_db: Dict) -> None:
     """Add new weapons to the descriptor."""
+    equipment_changes = wd_edits["equipmentchanges"]
     ammo_db = game_db["ammunition"]
     turret_list = weapon_descr.v.by_member("TurretDescriptorList").v
+    add_list = equipment_changes["add"]
+    
+    def _apply_add_edits(turret_template, turret_index):
+        if "add_edits" in equipment_changes:
+            add_edits = equipment_changes["add_edits"][turret_index]
+            mounted_weapons = turret_template.v.by_m("MountedWeaponDescriptorList")
+            for mounted_weapon in mounted_weapons.v:
+                for membr, value in add_edits.items():
+                    if isinstance(value, (bool, int, float, str)):
+                        mounted_weapon.v.by_m(membr).v = str(value)
+                    elif isinstance(value, list):
+                        ndf_list = ndf.model.List()
+                        for item in value:
+                            ndf_list.add(f"'{item}'")
+                        mounted_weapon.v.by_m(membr).v = ndf_list
     
     for ammo_name, turret_template in turret_templates:
-        for turret_index, weapon_name in add_list:
-            
+        for turret_index, weapon_name in add_list:                
             old_name = ammo_db["renames_new_old"].get(weapon_name, None)
-            if old_name and old_name == ammo_name:
-                logger.debug(f"Adding {ammo_name} at index {turret_index}")
-                turret_list.insert(turret_index, turret_template)
-            
-            elif weapon_name == ammo_name:
+            if (old_name and old_name == ammo_name) or weapon_name == ammo_name:
+                _apply_add_edits(turret_template, turret_index)
                 logger.debug(f"Adding {ammo_name} at index {turret_index}")
                 turret_list.insert(turret_index, turret_template)
 
@@ -327,7 +339,7 @@ def _apply_weapon_edits(weapon_descr: Any, wd_edits: Dict, weapon_descr_data: Di
     
     # Handle equipment changes
     if "equipmentchanges" in wd_edits:
-        _apply_equipment_changes(weapon_descr, wd_edits["equipmentchanges"], weapon_descr_data, turret_templates, game_db)
+        _apply_equipment_changes(weapon_descr, wd_edits, weapon_descr_data, turret_templates, game_db)
 
 
 def _apply_turret_changes(weapon_descr: Any, turrets_edits: Dict, weapon_descr_data: Dict, game_db: Dict) -> None:
@@ -512,19 +524,20 @@ def _apply_salvo_changes(weapon_descr: Any, wd_edits: Dict, weapon_descr_data: D
 
 def _apply_equipment_changes(
     weapon_descr: Any,
-    equipment_changes: Dict,
+    wd_edits: Dict,
     weapon_descr_data: Dict,
     turret_templates: List[Tuple[str, Any]],
     game_db: Dict,
 ) -> None:
     """Apply equipment changes to weapon descriptor."""
+    equipment_changes = wd_edits["equipmentchanges"]
     # Handle replacements
     if any(key in equipment_changes for key in ["replace", "replace_fixedsalvo"]):
         _apply_weapon_replacements(weapon_descr, equipment_changes, game_db)
     
     # Handle additions
     if "add" in equipment_changes:
-        _add_new_weapons(weapon_descr, equipment_changes["add"], turret_templates, game_db)
+        _add_new_weapons(weapon_descr, wd_edits, turret_templates, game_db)
     
     # Handle quantity changes
     if "quantity" in equipment_changes:

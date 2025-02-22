@@ -2750,16 +2750,16 @@ usa_unit_edits = {
                 },
             },
         },
-        "TrueAvail": [0, 3, 2, 0],
+        "TrueAvail": [0, 2, 0, 1],
     },
 
     "F16E_CBU_US": {
-        "CommandPoints": 185,
+        "CommandPoints": 200,
         "ECM": -0.35,
         "optics": {
             "OpticalStrengthAltitude": 375,
         },
-        "TrueAvail": [0, 3, 2, 0],
+        "TrueAvail": [0, 2, 0, 0],
     },
 
     "F16E_AA_US": {

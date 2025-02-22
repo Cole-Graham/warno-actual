@@ -3,18 +3,18 @@
 from typing import Dict, Tuple, Union
 
 # fmt: off
-cav_scout_dragon_us: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
-    "unit_name": "Cav_Scout_Dragon_US",
+cav_scout_dragon_m3a2_us: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
+    "unit_name": "Cav_Scout_Dragon_M3A2_US",
     "valid_files": ["GeneratedDepictionInfantry.ndf"],
     "GeneratedDepictionInfantry_ndf": {
-        ("AllWeaponAlternatives_Cav_Scout_Dragon_US", None): { # (namespace, object type)
+        ("AllWeaponAlternatives_Cav_Scout_Dragon_M3A2_US", None): { # (namespace, object type)
             # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "add", "remove")
             1: ("edit", [("MeshDescriptor", "M47_DRAGON_II")]), # (selector_id or mesh)
             2: ("edit", [("MeshDescriptor", "M14_Sniper")]),
             3: ("edit", [("ReferenceMeshForSkeleton", "M47_DRAGON_II")]),
         },
         
-        ("AllWeaponSubDepiction_Cav_Scout_Dragon_US", "TemplateAllSubWeaponDepiction"): {
+        ("AllWeaponSubDepiction_Cav_Scout_Dragon_M3A2_US", "TemplateAllSubWeaponDepiction"): {
             # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "add", "remove")
             "Operators": {
                 1: ("edit", [("FireEffectTag", "M47_DRAGON_II")]), # (selector_id or mesh)
@@ -22,7 +22,7 @@ cav_scout_dragon_us: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
             }
         },
         
-        ("TacticDepiction_Cav_Scout_Dragon_US_Alternatives", None): {
+        ("TacticDepiction_Cav_Scout_Dragon_M3A2_US_Alternatives", None): {
             # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "add", "remove")
             0: ("edit", [("MeshDescriptor", "LRRP_US_05")]), # (selector_id or mesh)
             1: ("edit", [("MeshDescriptor", "LRRP_US_04")]),
@@ -38,7 +38,7 @@ cav_scout_dragon_us: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
             11: ("edit", [("ReferenceMeshForSkeleton", "LRRP_US")]),
         },
         
-        ("TacticDepiction_Cav_Scout_Dragon_US_Soldier", "TemplateInfantryDepictionFactoryTactic"): {
+        ("TacticDepiction_Cav_Scout_Dragon_M3A2_US_Soldier", "TemplateInfantryDepictionFactoryTactic"): {
             "Operators": {
                 0: ("remove", None),
                 1: ("edit", [("bazooka", "MeshAlternative_2")]),
