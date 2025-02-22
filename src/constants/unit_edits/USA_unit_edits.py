@@ -1848,11 +1848,11 @@ usa_unit_edits = {
     },
 
     "M2A1_Bradley_IFV_US": {
-        "CommandPoints": 65,
+        "CommandPoints": 70,
     },
 
     "M2A2_Bradley_IFV_US": {
-        "CommandPoints": 80,
+        "CommandPoints": 85,
     },
 
     "M1A1HA_Abrams_US": {
@@ -2015,7 +2015,7 @@ usa_unit_edits = {
     },
 
     "M113A1_TOW_US": {
-        "CommandPoints": 55,
+        "CommandPoints": 50,
         "availability": [8, 6, 0, 0],
     },
 
@@ -2030,7 +2030,7 @@ usa_unit_edits = {
     },
 
     "M3A1_Bradley_CFV_US": {
-        "CommandPoints": 105,
+        "CommandPoints": 115,
         "availability": [4, 3, 0, 0],
         "TagSet": {
             "add_tags": ['"Vehicule_Transport_Arme"'],
@@ -2061,7 +2061,7 @@ usa_unit_edits = {
     },
 
     "M3A2_Bradley_CFV_US": {
-        "CommandPoints": 135,
+        "CommandPoints": 145,
         "availability": [3, 2, 0, 0],
         "TagSet": {
             "add_tags": ['"Vehicule_Transport_Arme"'],
@@ -2086,7 +2086,7 @@ usa_unit_edits = {
     },
 
     "M551A1_ACAV_Sheridan_US": {
-        "CommandPoints": 55,
+        "CommandPoints": 50,
         "availability": [0, 4, 3, 0],
     },
 

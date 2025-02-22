@@ -1,0 +1,20 @@
+"""M3A2 Bradley CFV depiction edits."""
+
+from typing import Dict, Tuple, Union
+
+# fmt: off
+m3a2_bradley_cfv_us: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
+    "unit_name": "M3A2_Bradley_CFV_US",
+    "valid_files": ["DepictionVehicles.ndf"],
+    "DepictionVehicles_ndf": {
+        
+        ("Gfx_M3A2_Bradley_CFV_US", "TacticVehicleDepictionTemplate"): {
+            "SubDepictionGenerators": {
+                "TransportedInfantrySubGenerator": {
+                    "add": None,
+                },
+            },
+        },
+    },
+}
+# fmt: on

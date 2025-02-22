@@ -1604,15 +1604,15 @@ sov_unit_edits = {
     },
 
     "BMP_2_SOV": {
-        "CommandPoints": 50,
+        "CommandPoints": 55,
     },
 
     "BMP_2AG_SOV": {
-        "CommandPoints": 60,
+        "CommandPoints": 65,
     },
 
     "BMP_3_SOV": {
-        "CommandPoints": 80,
+        "CommandPoints": 85,
     },
 
     "BMD_3_SOV": {
@@ -1721,7 +1721,7 @@ sov_unit_edits = {
     },
 
     "BMP_2_reco_SOV": {
-        "CommandPoints": 75,
+        "CommandPoints": 80,
     },
 
     "BRM_1_SOV": {

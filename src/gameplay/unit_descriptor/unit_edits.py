@@ -279,15 +279,15 @@ def _handle_scanner(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:  # 
     if "OpticalStrengthAltitude" in edits["optics"]:
         descr_row.v.by_m("OpticalStrengthAltitude").v = str(
             edits["optics"]["OpticalStrengthAltitude"])
-        if "SpecialtiesList" in edits and "add_specs" in edits["SpecialtiesList"]:
-            for spec in edits["SpecialtiesList"]["add_specs"]:
-                if spec == "'verygood_airoptics'":
-                    # descr_row.v.by_m("OpticalStrengthAltitude").v = "5000.0"
-                    specialized_detections = descr_row.v.by_m("SpecializedDetectionsGRU")
-                    specialized_detections.v.by_k("EVisionUnitType/AlwaysInHighAltitude").v = "12000.0"
-                elif spec == "'good_airoptics'":
-                    specialized_detections = descr_row.v.by_m("SpecializedDetectionsGRU")
-                    specialized_detections.v.by_k("EVisionUnitType/AlwaysInHighAltitude").v = "15000.0"
+    if "SpecialtiesList" in edits and "add_specs" in edits["SpecialtiesList"]:
+        for spec in edits["SpecialtiesList"]["add_specs"]:
+            if spec == "'verygood_airoptics'":
+                # descr_row.v.by_m("OpticalStrengthAltitude").v = "5000.0"
+                specialized_detections = descr_row.v.by_m("SpecializedDetectionsGRU")
+                specialized_detections.v.by_k("EVisionUnitType/AlwaysInHighAltitude").v = "12000.0"
+            elif spec == "'good_airoptics'":
+                specialized_detections = descr_row.v.by_m("SpecializedDetectionsGRU")
+                specialized_detections.v.by_k("EVisionUnitType/AlwaysInHighAltitude").v = "12000.0"
 
     if "SpecializedOpticalStrengths" in edits["optics"]:
         for key, value in edits["optics"]["SpecializedOpticalStrengths"].items():

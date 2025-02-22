@@ -18,6 +18,8 @@ from .SOV_depiction_edits import (
 )
 # from .UK_depiction_edits import ()
 from .USA_depiction_edits import (
+    m3a1_bradley_cfv_us,
+    m3a2_bradley_cfv_us,
     ranger_us,
     scout_us,
 )
@@ -38,6 +40,8 @@ __all__ = [
     "mtlb_vasilek_sov",
     
     # USA
+    "m3a1_bradley_cfv_us",
+    "m3a2_bradley_cfv_us",
     "ranger_us",
     "scout_us",
 ]

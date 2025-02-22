@@ -1118,7 +1118,7 @@ pol_unit_edits = {
     },
 
     "BMP_2_POL": {  # BWP-2
-        "CommandPoints": 50,
+        "CommandPoints": 55,
     },
 
     # POL RECON

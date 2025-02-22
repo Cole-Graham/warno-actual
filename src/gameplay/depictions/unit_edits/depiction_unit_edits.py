@@ -449,7 +449,7 @@ def _handle_vehicle_depiction(unit_name, vehicle_depiction, edits, is_new_entry=
         if row_name_or_type == "copy":
             continue
         
-        member_access = vehicle_depiction.v.by_m(row_name_or_type)
+        member_access = vehicle_depiction.v.by_m(row_name_or_type, False)
         if row_name_or_type == "Operators":
             operators = member_access
             
@@ -497,12 +497,28 @@ def _handle_vehicle_depiction(unit_name, vehicle_depiction, edits, is_new_entry=
                                         else:
                                             logger.error(f"Unknown action edit: {action_edits}")
                                             pass
-            
             except Exception as e:
                 logger.error(f"Unknown subdepiction edit: {row_name_or_type}")
                 logger.error(f"Exception: {str(e)}")
                 logger.error(f"Traceback: {traceback.format_exc()}")
-
+        
+        elif row_name_or_type == "SubDepictionGenerators":
+            if vehicle_depiction.v.by_m("SubDepictionGenerators", False) is None:
+                sub_dep_generators = ndf.model.MemberRow(member="SubDepictionGenerators", value=ndf.model.List())
+            else:
+                sub_dep_generators = member_access
+            
+            for sub_dep_type, sub_dep_value in value.items():
+                if sub_dep_type == "TransportedInfantrySubGenerator":
+                    for edit_type, edit_value in sub_dep_value.items():
+                        if edit_type == "add":
+                            new_entry = f"""TransportedInfantrySubGenerator
+                                (
+                                    Mesh = $/GFX/DepictionResources/Modele_{unit_name}
+                                )"""
+                            sub_dep_generators.v.add(new_entry)
+                            vehicle_depiction.v.add(sub_dep_generators)
+                        
         else:
             logger.error(f"Unknown row name or type: {row_name_or_type}")
             pass
