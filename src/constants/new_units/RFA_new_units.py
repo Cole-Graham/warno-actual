@@ -61,7 +61,7 @@ RFA_NEW_UNITS = {
                 "cards": 1,  # + 1 card TACOM
             },
         },
-        "TrueAvail": [0, 0, 2, 0],
+        "availability": [0, 0, 2, 0],
         "max_speed": 26,
         "Orders": ['Stop', 'Move', 'FollowFormation', 'SmartMove', 'Attack', 'SmartMoveAndAttack', 'MoveAndAttack',
                    'Spread', 'Shoot', 'ShootOnPosition', 'ShootOnPositionWithoutCorrection', 'ShootOnPositionSmoke',

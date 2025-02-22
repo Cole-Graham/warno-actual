@@ -21,7 +21,7 @@ def modify_deck_packs(source_path: Any, game_db: Dict[str, Any]) -> None:
     deck_data = game_db["decks"]["multi"]  # Get multi deck data
 
     for unit, edits in unit_edits.items():
-        if "Divisions" in edits or "XPMultiplier" in edits or "TrueAvail" in edits:
+        if "Divisions" in edits or "availability" in edits:
             _handle_deck_packs(source_path, unit, edits, deck_data)
 
 
@@ -59,14 +59,14 @@ def _handle_deck_packs(source_path: Any, unit: str, edits: Dict[str, Any], deck_
         current_xp = int(deck_packs[0].n.split("_")[-2])
         
         # Get new XP value if specified
-        xp_list = edits.get("XPMultiplier", None)
+        xp_list = edits.get("availability", None)
         new_xp = None
         if xp_list and current_xp < len(xp_list) and xp_list[current_xp] in (0, None):
             # Only update XP if current_xp matches index of 0/None in xp_list
             new_xp = next((i for i, x in enumerate(xp_list) if x not in (0, None)), None)
         else:
             if xp_list and not xp_list[current_xp] in (0, None):
-                logger.info(f"No XP multiplier specified for {unit} {current_xp}")
+                logger.info(f"No availability specified for {unit} {current_xp}")
         updated_xp = new_xp if new_xp is not None else current_xp
 
         # Track namespaces we've already seen to detect duplicates
@@ -154,14 +154,10 @@ def update_deck_pack_references(source_path: Any, game_db: Dict[str, Any]) -> No
             continue
 
         # Get new XP value if specified
-        if edits.get("TrueAvail", False):
-            avail_list = edits.get("TrueAvail")
+        xp_list, new_xp = None, None
+        avail_list = edits.get("availability", False)
+        if avail_list:
             xp_list = [val / max(avail_list) for val in avail_list]
-        else:
-            xp_list = edits.get("XPMultiplier", None)
-
-        new_xp = None
-        if xp_list:
             new_xp = next((i for i, x in enumerate(xp_list) if x not in (0, None)), None)
         
         # Cache division card counts

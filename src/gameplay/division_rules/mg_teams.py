@@ -15,22 +15,6 @@ def is_para_unit(unit_name: str, unit_db: Dict[str, Any]) -> bool:
     return any('para' in specialty.lower() for specialty in unit_data['specialties'])
 
 
-def get_mg_availability(mg_type: str, is_para: bool) -> Dict[str, Any]:
-    """Get availability settings for a machine gun team."""
-    is_heavy = mg_type == "HMG"
-    availability = 9 if is_heavy else 12
-    
-    if is_para:
-        xp_multi = [0.0, 1.0, 0.75, 0.0]
-    else:
-        xp_multi = [1.0, 0.75, 0.0, 0.0]
-    
-    return {
-        'availability': str(availability),
-        'xp_multiplier': str(xp_multi)
-    }
-
-
 def mg_team_division_rules(source_path: Any, game_db: Dict[str, Any]) -> None:
     """Edit machine gun team availability in divisions."""
     logger.info("Editing MG team availability")
@@ -66,9 +50,10 @@ def mg_team_division_rules(source_path: Any, game_db: Dict[str, Any]) -> None:
                 unit_name = unit_descr_name.replace("Descriptor_Unit_", "")
                 is_para = is_para_unit(unit_name, unit_db)
                 
-                # Get and apply availability settings
-                settings = get_mg_availability(mg_type, is_para)
-                rule_obj.v.by_m("NumberOfUnitInPack").v = settings['availability']
-                rule_obj.v.by_m("NumberOfUnitInPackXPMultiplier").v = settings['xp_multiplier']
+                # apply availability settings
+                xp_multi = str([0.0, 1.0, 0.75, 0.0] if is_para else [1.0, 0.75, 0.0, 0.0])
+
+                rule_obj.v.by_m("NumberOfUnitInPack").v = '9' if mg_type == "HMG" else '12'
+                rule_obj.v.by_m("NumberOfUnitInPackXPMultiplier").v = xp_multi
                 
                 logger.debug(f"Updated {unit_name} in {div_name} (Para: {is_para}, Type: {mg_type})")

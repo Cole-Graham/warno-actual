@@ -12,7 +12,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 3, 0, 0],
+        "availability": [0, 3, 0, 0],
     },
 
     "BMP_1_CMD_SOV": {
@@ -22,7 +22,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 0, 3, 0],
+        "availability": [0, 0, 3, 0],
     },
 
     "BMD_2_CMD_SOV": {
@@ -32,7 +32,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 0, 3, 0],
+        "availability": [0, 0, 3, 0],
     },
 
     "LUAZ_967M_CMD_VDV_SOV": {
@@ -42,7 +42,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 4, 0, 0],
+        "availability": [0, 4, 0, 0],
         "SpecialtiesList": {
             "remove_specs": ["'_para'"],
         },
@@ -57,7 +57,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 0, 3, 0],
+        "availability": [0, 0, 3, 0],
     },
 
     "BTR_60_CMD_SOV": {
@@ -67,7 +67,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 0, 3, 0],
+        "availability": [0, 0, 3, 0],
     },
 
     "BTR_80_CMD_SOV": {
@@ -77,7 +77,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 0, 3, 0],
+        "availability": [0, 0, 3, 0],
     },
 
     "Mi_8K_CMD_SOV": {
@@ -163,7 +163,7 @@ sov_unit_edits = {
                 ],
             },
         },
-        "TrueAvail": [0, 0, 7, 5],
+        "availability": [0, 0, 7, 5],
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -230,7 +230,7 @@ sov_unit_edits = {
                 "Transports": ["GAZ_66_SOV", "MTLB_transp_SOV"],
             },
         },
-        "TrueAvail": [0, 0, 5, 4],
+        "availability": [0, 0, 5, 4],
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -304,7 +304,7 @@ sov_unit_edits = {
                 },
             },
         },
-        "TrueAvail": [0, 0, 5, 4],
+        "availability": [0, 0, 5, 4],
         "max_speed": 26,
         "selector_tactic": "(0, 8)",
         "selector_tactic_obj": "00_08",
@@ -352,7 +352,7 @@ sov_unit_edits = {
                 "Transports": ["GAZ_66_SOV", "BTR_60_SOV"],
             },
         },
-        "TrueAvail": [0, 0, 4, 3],
+        "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "selector_tactic": "(0, 8)",
         "selector_tactic_obj": "00_08",
@@ -409,7 +409,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 0, 4, 3],
+        "availability": [0, 0, 4, 3],
         "max_speed": 20,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -475,7 +475,7 @@ sov_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_assault",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
-        "TrueAvail": [0, 0, 5, 4],
+        "availability": [0, 0, 5, 4],
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -508,7 +508,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 7, 5, 0],
+        "availability": [0, 7, 5, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -533,7 +533,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 7, 5, 0],
+        "availability": [0, 7, 5, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -557,7 +557,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 9, 7, 0],
+        "availability": [0, 9, 7, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -577,7 +577,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 6, 4, 0],
+        "availability": [0, 6, 4, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -601,7 +601,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 6, 4, 0],
+        "availability": [0, 6, 4, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -620,7 +620,7 @@ sov_unit_edits = {
             "display": "DESANT. SAPERY [RPO]",
         },
         "CommandPoints": 35,
-        "TrueAvail": [0, 9, 7, 0],
+        "availability": [0, 9, 7, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -668,7 +668,7 @@ sov_unit_edits = {
         #         },
         #     },
         # },
-        "TrueAvail": [10, 7, 0, 0],
+        "availability": [10, 7, 0, 0],
     },
 
     "MotRifles_TTsko_SOV": {  # RPG-27
@@ -681,7 +681,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [12, 9, 0, 0],
+        "availability": [12, 9, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -710,7 +710,7 @@ sov_unit_edits = {
                 "Transports": ["GAZ_66_SOV", "BMP_1P_SOV"],
             },
         },
-        "TrueAvail": [10, 7, 0, 0],
+        "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -744,7 +744,7 @@ sov_unit_edits = {
                 ],
             },
         },
-        "TrueAvail": [10, 7, 0, 0],
+        "availability": [10, 7, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -775,7 +775,7 @@ sov_unit_edits = {
                 "cards": 3,
             },
         },
-        "TrueAvail": [0, 9, 7, 0],
+        "availability": [0, 9, 7, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -800,7 +800,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 9, 7, 0],
+        "availability": [0, 9, 7, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -814,7 +814,7 @@ sov_unit_edits = {
 
     "VDV_Combine_SOV": {  # RPK, RPG-22, RPG-7VL
         "CommandPoints": 50,
-        "TrueAvail": [0, 6, 4, 0],
+        "availability": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -832,7 +832,7 @@ sov_unit_edits = {
             "display": "DESANTNIKI [METIS]",
         },
         "CommandPoints": 50,
-        "TrueAvail": [0, 7, 5, 0],
+        "availability": [0, 7, 5, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -852,7 +852,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 12, 9, 0],
+        "availability": [0, 12, 9, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -871,7 +871,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 7, 5, 0],
+        "availability": [0, 7, 5, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -885,7 +885,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [10, 7, 0, 0],
+        "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -906,7 +906,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [10, 7, 0, 0],
+        "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -927,7 +927,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [12, 9, 0, 0],
+        "availability": [12, 9, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -942,7 +942,7 @@ sov_unit_edits = {
 
     "Spetsnaz_SOV": {
         "CommandPoints": 70,
-        "TrueAvail": [0, 0, 4, 3],
+        "availability": [0, 0, 4, 3],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -956,7 +956,7 @@ sov_unit_edits = {
 
     "Spetsnaz_Vympel_SOV": {  # Spetsgruppa Vympel
         "CommandPoints": 70,
-        "TrueAvail": [0, 0, 4, 3],
+        "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -971,7 +971,7 @@ sov_unit_edits = {
 
     "Spetsnaz_FireSupport_SOV": {
         "CommandPoints": 35,
-        "TrueAvail": [0, 0, 8, 6],
+        "availability": [0, 0, 8, 6],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1045,7 +1045,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 9, 7, 0],
+        "availability": [0, 9, 7, 0],
         "max_speed": 14,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_veryheavy'"],
@@ -1061,7 +1061,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 9, 7, 0],
+        "availability": [0, 9, 7, 0],
         "max_speed": 14,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_veryheavy'"],
@@ -1076,7 +1076,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 9, 7, 0],
+        "availability": [0, 9, 7, 0],
         "max_speed": 14,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_veryheavy'"],
@@ -1086,7 +1086,7 @@ sov_unit_edits = {
     "ATteam_RCL_SPG9_VDV_SOV": {
         "strength": 5,
         "CommandPoints": 30,
-        "TrueAvail": [0, 9, 7, 0],
+        "availability": [0, 9, 7, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1111,7 +1111,7 @@ sov_unit_edits = {
 
     "Atteam_Fagot_VDV_SOV": {
         "CommandPoints": 30,
-        "TrueAvail": [0, 9, 7, 5],
+        "availability": [0, 9, 7, 5],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1130,7 +1130,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 6, 4, 0],
+        "availability": [0, 6, 4, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1145,7 +1145,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [6, 4, 0, 0],
+        "availability": [6, 4, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1159,7 +1159,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [4, 3, 0, 0],
+        "availability": [4, 3, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1173,17 +1173,17 @@ sov_unit_edits = {
 
     "UAZ_469_SPG9_VDV_SOV": {
         "CommandPoints": 25,
-        "TrueAvail": [0, 12, 9, 0],
+        "availability": [0, 12, 9, 0],
     },
 
     "LUAZ_967M_SPG9_SOV": {
         "CommandPoints": 25,
-        "TrueAvail": [0, 12, 9, 0],
+        "availability": [0, 12, 9, 0],
     },
 
     "LUAZ_967M_SPG9_VDV_SOV": {
         "CommandPoints": 25,
-        "TrueAvail": [0, 12, 9, 0],
+        "availability": [0, 12, 9, 0],
     },
 
     "LUAZ_967M_Fagot_SOV": {
@@ -1287,7 +1287,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 0],
         "remove_zone_capture": None,
     },
 
@@ -1298,7 +1298,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 5, 4, 3],
+        "availability": [0, 5, 4, 3],
     },
 
     "Mortier_2B9_Vasilek_nonPara_SOV": {
@@ -1306,7 +1306,7 @@ sov_unit_edits = {
         "orders": {
             "add_orders": ["ShootOnPositionSmoke", "ShootOnPositionWithoutCorrectionSmoke"],
         },
-        "TrueAvail": [4, 3, 2, 0],
+        "availability": [4, 3, 2, 0],
         "WeaponDescriptor": {
             "turrets": {
                 1: {
@@ -1337,7 +1337,7 @@ sov_unit_edits = {
         "orders": {
             "add_orders": ["ShootOnPositionSmoke", "ShootOnPositionWithoutCorrectionSmoke"],
         },
-        "TrueAvail": [0, 4, 3, 2],
+        "availability": [0, 4, 3, 2],
         "WeaponDescriptor": {
             "turrets": {
                 1: {
@@ -1365,12 +1365,12 @@ sov_unit_edits = {
 
     "Mortier_2S12_120mm_SOV": {
         "CommandPoints": 40,
-        "TrueAvail": [5, 4, 3, 0],
+        "availability": [5, 4, 3, 0],
     },
 
     "Mortier_2S12_120mm_VDV_SOV": {
         "CommandPoints": 40,
-        "TrueAvail": [5, 4, 3, 0],
+        "availability": [5, 4, 3, 0],
     },
 
     "MTLB_Vasilek_SOV": {
@@ -1378,7 +1378,7 @@ sov_unit_edits = {
         "orders": {
             "add_orders": ["ShootOnPositionSmoke", "ShootOnPositionWithoutCorrectionSmoke"],
         },
-        "TrueAvail": [4, 3, 2, 0],
+        "availability": [4, 3, 2, 0],
         "WeaponDescriptor": {
             "turrets": {
                 1: {
@@ -1411,7 +1411,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [5, 4, 3, 0],
+        "availability": [5, 4, 3, 0],
     },
 
     "2S9_Nona_SOV": {
@@ -1419,7 +1419,7 @@ sov_unit_edits = {
             "display": "2S9 NONA-S",
         },
         "CommandPoints": 85,
-        "TrueAvail": [0, 3, 2, 0],
+        "availability": [0, 3, 2, 0],
     },
 
     "2S23_Nona_SVK_SOV": {
@@ -1427,7 +1427,7 @@ sov_unit_edits = {
             "display": "2S23 NONA-SVK",
         },
         "CommandPoints": 95,
-        "TrueAvail": [3, 2, 0, 0],
+        "availability": [3, 2, 0, 0],
     },
 
     "Howz_2A36_Giatsint_B_SOV": {
@@ -1440,7 +1440,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [3, 2, 0, 0],
+        "availability": [3, 2, 0, 0],
         "UpgradeFromUnit": None,
     },
 
@@ -1454,7 +1454,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [3, 2, 0, 0],
+        "availability": [3, 2, 0, 0],
         "UpgradeFromUnit": "Howz_2A36_Giatsint_B_SOV",
     },
 
@@ -1471,7 +1471,7 @@ sov_unit_edits = {
                 "cards": 3,
             },
         },
-        "TrueAvail": [3, 2, 0, 0],
+        "availability": [3, 2, 0, 0],
     },
 
     "2S3M_Akatsiya_SOV": {
@@ -1481,7 +1481,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [3, 2, 0, 0],
+        "availability": [3, 2, 0, 0],
     },
 
     "2S3M1_Akatsiya_SOV": {
@@ -1497,12 +1497,12 @@ sov_unit_edits = {
                 "cards": 3,
             },
         },
-        "TrueAvail": [2, 0, 1, 0],
+        "availability": [2, 0, 1, 0],
     },
 
     "BM21V_GradV_SOV": {
         "CommandPoints": 95,
-        "TrueAvail": [0, 3, 2, 0],
+        "availability": [0, 3, 2, 0],
     },
 
     "BM21_Grad_SOV": {
@@ -1512,7 +1512,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [3, 2, 0, 0],
+        "availability": [3, 2, 0, 0],
     },
 
     "TOS1_Buratino_SOV": {
@@ -1522,7 +1522,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 0],
     },
 
     # SOV TANK
@@ -1562,7 +1562,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 0, 4, 0],
+        "availability": [0, 0, 4, 0],
         "remove_zone_capture": None,
     },
 
@@ -1617,7 +1617,7 @@ sov_unit_edits = {
 
     "BMD_3_SOV": {
         "CommandPoints": 80,
-        "TrueAvail": [0, 8, 6, 0],
+        "availability": [0, 8, 6, 0],
         "UpgradeFromUnit": "BMD_2_SOV",
     },
 
@@ -1627,21 +1627,21 @@ sov_unit_edits = {
             "display": "DESANT. LuAZ FAKTORIYA",
             "token": "SXGTONCUAP",
         },
-        "TrueAvail": [0, 10, 7, 0],
+        "availability": [0, 10, 7, 0],
     },
 
     "BRDM_2_Konkurs_SOV": {
         "strength": 8,
         "CommandPoints": 50,
         "stealth": 1.5,
-        "TrueAvail": [8, 6, 0, 0],
+        "availability": [8, 6, 0, 0],
     },
 
     "BRDM_2_Konkurs_M_SOV": {
         "strength": 8,
         "CommandPoints": 65,
         "stealth": 1.5,
-        "TrueAvail": [8, 6, 0, 0],
+        "availability": [8, 6, 0, 0],
     },
 
     "AT_T12_Rapira_SOV": {
@@ -1649,7 +1649,7 @@ sov_unit_edits = {
             "display": "MT-12 RAPIRA 100mm",
         },
         "CommandPoints": 55,
-        "TrueAvail": [6, 4, 0, 0],
+        "availability": [6, 4, 0, 0],
     },
 
     "AT_2A45_SprutB_SOV": {
@@ -1658,12 +1658,12 @@ sov_unit_edits = {
             "display": "2A45 SPRUT-A",
         },
         "CommandPoints": 55,
-        "TrueAvail": [7, 5, 0, 0],
+        "availability": [7, 5, 0, 0],
     },
 
     "TO_55_SOV": {
         "CommandPoints": 60,
-        "TrueAvail": [8, 6, 0, 0],
+        "availability": [8, 6, 0, 0],
     },
 
     "T80BV_SOV": {
@@ -1684,7 +1684,7 @@ sov_unit_edits = {
                 "replace": [("ATGM_9M112_Kobra", "ATGM_9M112M2_Kobra")],
             },
         },
-        "TrueAvail": [6, 4, 0, 0],
+        "availability": [6, 4, 0, 0],
     },
 
     "T80U_SOV": {
@@ -1694,7 +1694,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 4, 3, 0],
+        "availability": [0, 4, 3, 0],
     },
 
     "T80UD_SOV": {
@@ -1704,7 +1704,7 @@ sov_unit_edits = {
                 "cards": 4,
             },
         },
-        "TrueAvail": [0, 0, 3, 2],
+        "availability": [0, 0, 3, 2],
     },
 
     # SOV RECON
@@ -1734,17 +1734,17 @@ sov_unit_edits = {
                 "cards": 3,
             },
         },
-        "TrueAvail": [6, 4, 0, 0],
+        "availability": [6, 4, 0, 0],
     },
 
     "BMD_1_Reostat_SOV": {
         "CommandPoints": 30,
-        "TrueAvail": [0, 8, 0, 0],
+        "availability": [0, 8, 0, 0],
     },
 
     "BMD_3_reco_SOV": {
         "CommandPoints": 105,
-        "TrueAvail": [0, 4, 3, 0],
+        "availability": [0, 4, 3, 0],
     },
 
     "BRDM_2_SOV": {
@@ -1758,7 +1758,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [8, 6, 0, 0],
+        "availability": [8, 6, 0, 0],
     },
 
     "Pchela_1T_SOV": {
@@ -1772,7 +1772,7 @@ sov_unit_edits = {
                 "cards": 3,
             },
         },
-        "TrueAvail": [8, 6, 0, 0],
+        "availability": [8, 6, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
@@ -1786,7 +1786,7 @@ sov_unit_edits = {
                 "cards": 3,
             },
         },
-        "TrueAvail": [0, 8, 6, 0],
+        "availability": [0, 8, 6, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
@@ -1812,7 +1812,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 4, 3, 0],
+        "availability": [0, 4, 3, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -1831,7 +1831,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 4, 3, 0],
+        "availability": [0, 4, 3, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -1840,7 +1840,7 @@ sov_unit_edits = {
 
     "HvyScout_SOV": {
         "CommandPoints": 40,
-        "TrueAvail": [7, 5, 0, 0],
+        "availability": [7, 5, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -1850,7 +1850,7 @@ sov_unit_edits = {
 
     "HvyScout_TTsko_SOV": {
         "CommandPoints": 40,
-        "TrueAvail": [7, 5, 0, 0],
+        "availability": [7, 5, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -1860,7 +1860,7 @@ sov_unit_edits = {
 
     "Scout_LRRP_SOV": {  # Spetsnaz GRU
         "CommandPoints": 55,
-        "TrueAvail": [0, 0, 4, 3],
+        "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -1869,7 +1869,7 @@ sov_unit_edits = {
 
     "Scout_Spetsnaz_SOV": {
         "CommandPoints": 65,
-        "TrueAvail": [0, 4, 3, 0],
+        "availability": [0, 4, 3, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -1879,7 +1879,7 @@ sov_unit_edits = {
 
     "Scout_Spetsnaz_VDV_SOV": {
         "CommandPoints": 70,
-        "TrueAvail": [0, 4, 3, 0],
+        "availability": [0, 4, 3, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1893,7 +1893,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 3, 2, 0],
+        "availability": [0, 3, 2, 0],
     },
 
     # SOV AA
@@ -1918,7 +1918,7 @@ sov_unit_edits = {
                 "Transports": ["GAZ_66_SOV"],
             },
         },
-        "TrueAvail": [9, 7, 0, 0],
+        "availability": [9, 7, 0, 0],
         "max_speed": 4,
         "UpgradeFromUnit": "FOB_SOV",
     },
@@ -1931,7 +1931,7 @@ sov_unit_edits = {
             },
         },
         "Factory": "EDefaultFactories/Logistic",
-        "TrueAvail": [0, 9, 7, 0],
+        "availability": [0, 9, 7, 0],
         "max_speed": 4,
         "UpgradeFromUnit": "FOB_SOV",
     },
@@ -1964,12 +1964,12 @@ sov_unit_edits = {
                 "replace": [("FM_AK_74", "FM_AK_74_noreflex")],
             },
         },
-        "TrueAvail": [7, 5, 0, 0],
+        "availability": [7, 5, 0, 0],
     },
 
     "MANPAD_Igla_TTsko_SOV": {
         "CommandPoints": 35,
-        "TrueAvail": [7, 5, 0, 0],
+        "availability": [7, 5, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1983,7 +1983,7 @@ sov_unit_edits = {
 
     "MANPAD_Igla_VDV_SOV": {
         "CommandPoints": 35,
-        "TrueAvail": [0, 7, 5, 0],
+        "availability": [0, 7, 5, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -2008,7 +2008,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 10, 7, 0],
+        "availability": [0, 10, 7, 0],
     },
 
     "BRDM_Strela_1_SOV": {
@@ -2024,7 +2024,7 @@ sov_unit_edits = {
                 "SAM_Strela1_salvolength4": 2,
             },
         },
-        "TrueAvail": [6, 4, 0, 0],
+        "availability": [6, 4, 0, 0],
     },
 
     "Tunguska_2K22_SOV": {
@@ -2040,7 +2040,7 @@ sov_unit_edits = {
                 "cards": 4,
             },
         },
-        "TrueAvail": [0, 3, 2, 0],
+        "availability": [0, 3, 2, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
@@ -2056,7 +2056,7 @@ sov_unit_edits = {
                 "cards": 3,
             },
         },
-        "TrueAvail": [0, 3, 2, 0],
+        "availability": [0, 3, 2, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
@@ -2072,7 +2072,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [6, 4, 0, 0],
+        "availability": [6, 4, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
         },
@@ -2088,7 +2088,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 4, 3, 0],
+        "availability": [0, 4, 3, 0],
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
         },
@@ -2099,7 +2099,7 @@ sov_unit_edits = {
             "OpticalStrengthAltitude": 300,
         },
         "CommandPoints": 90,
-        "TrueAvail": [4, 3, 0, 0],
+        "availability": [4, 3, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
@@ -2126,7 +2126,7 @@ sov_unit_edits = {
 
     "Mi_8TV_Gunship_SOV": {  # 4x Molniya, 2x S-24
         "CommandPoints": 110,
-        "TrueAvail": [0, 4, 3, 0],
+        "availability": [0, 4, 3, 0],
         "WeaponDescriptor": {
             "Salves": {
                 "remove": ["RocketAir_B8_80mm_x20"],
@@ -2175,7 +2175,7 @@ sov_unit_edits = {
             "display": "Mi-8MT [RKT3]",
         },
         "CommandPoints": 95,
-        "TrueAvail": [0, 4, 3, 0],
+        "availability": [0, 4, 3, 0],
     },
 
     "Mi_24V_AA_SOV": {
@@ -2188,7 +2188,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 3, 2, 0],
+        "availability": [0, 3, 2, 0],
     },
 
     "Mi_24V_RKT_SOV": {  # 4x Kokon, 20x S-13
@@ -2201,7 +2201,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 3, 2, 0],
+        "availability": [0, 3, 2, 0],
     },
 
     "Mi_24V_AT_SOV": {  # 8x Kokon, 40x S-80
@@ -2217,7 +2217,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 3, 2, 0],
+        "availability": [0, 3, 2, 0],
     },
 
     "Mi_24P_SOV": {
@@ -2246,7 +2246,7 @@ sov_unit_edits = {
                 },
             },
         },
-        "TrueAvail": [0, 2, 0, 1],
+        "availability": [0, 2, 0, 1],
     },
 
     "Mi_24VP_SOV": {
@@ -2268,7 +2268,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 3, 2, 0],
+        "availability": [0, 3, 2, 0],
     },
 
     "Su_22_AT_SOV": {  # 2x Kh-29T, 2x R-60M
@@ -2278,7 +2278,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 2, 0, 1],
+        "availability": [0, 2, 0, 1],
     },
 
     "Su_24MP_EW_SOV": {
@@ -2288,7 +2288,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 0, 2, 0],
+        "availability": [0, 0, 2, 0],
     },
 
     "Su_24MP_SOV": {  # SEAD
@@ -2305,7 +2305,7 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
-        "TrueAvail": [0, 2, 0, 1],
+        "availability": [0, 2, 0, 1],
     },
 
     "Su_24MP_SEAD2_SOV": {  # SEAD2
@@ -2327,7 +2327,7 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
-        "TrueAvail": [0, 2, 0, 1],
+        "availability": [0, 2, 0, 1],
     },
 
     "Su_24M_LGB_SOV": {
@@ -2364,7 +2364,7 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
-        "TrueAvail": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 0],
     },
 
     "Su_24M_thermo_SOV": {
@@ -2372,7 +2372,7 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
-        "TrueAvail": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 0],
     },
 
     "MiG_27M_bombe_SOV": {  # 4x FAB-500
@@ -2382,7 +2382,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 0],
     },
 
     "MiG_27M_napalm_SOV": {  # 4x ZB-500
@@ -2392,7 +2392,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 3, 0, 0],
+        "availability": [0, 3, 0, 0],
     },
 
     "MiG_23MLD_SOV": {  # 2x R-24MR, 2x R-73
@@ -2405,7 +2405,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 3, 2, 0],
+        "availability": [0, 3, 2, 0],
     },
 
     "Su_25T_SOV": {  # 16x Vikhr, 2x R-73
@@ -2421,7 +2421,7 @@ sov_unit_edits = {
             },
         },
         "max_speed": 750,
-        "TrueAvail": [0, 2, 0, 1],
+        "availability": [0, 2, 0, 1],
     },
 
     "MiG_29_AA_SOV": {  # 4x R-73, 2x R-27R
@@ -2437,7 +2437,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 2, 0, 1],
+        "availability": [0, 2, 0, 1],
         "UpgradeFromUnit": None,
     },
 
@@ -2451,7 +2451,7 @@ sov_unit_edits = {
                 "cards": 3,
             },
         },
-        "TrueAvail": [0, 2, 0, 1],
+        "availability": [0, 2, 0, 1],
         "UpgradeFromUnit": "MiG_29_AA_SOV",
     },
 
@@ -2462,7 +2462,7 @@ sov_unit_edits = {
 
     "Su_27S_SOV": {  # 6x R-73, 4x R-27R
         "CommandPoints": 240,
-        "TrueAvail": [0, 2, 0, 1],
+        "availability": [0, 2, 0, 1],
     },
 
     "MiG_31_AA1_SOV": {  # 4x R-33, 2x R-40TD1
@@ -2475,7 +2475,7 @@ sov_unit_edits = {
             },
         },
         "CommandPoints": 310,
-        "TrueAvail": [0, 2, 0, 1],
+        "availability": [0, 2, 0, 1],
         "WeaponDescriptor": {
             "Salves": {
                 "AA_R33_Vympel": 2,
@@ -2490,7 +2490,7 @@ sov_unit_edits = {
             },
         },
         "CommandPoints": 290,
-        "TrueAvail": [0, 2, 0, 1],
+        "availability": [0, 2, 0, 1],
         "WeaponDescriptor": {
             "Salves": {
                 "AA_R33_Vympel": 2,

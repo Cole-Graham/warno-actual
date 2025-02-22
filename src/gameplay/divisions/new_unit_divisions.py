@@ -32,13 +32,9 @@ def add_division_rules(source_path: Any) -> None:
                 transport_list = [f"$/GFX/Unit/Descriptor_Unit_{t}" for t in transports]
                 transport_str = f"[{', '.join(transport_list)}]"
 
-            if edits.get("TrueAvail", False):
-                # parse availability & XPMultiplier from raw defined availability, if present
-                avail = max(edits["TrueAvail"])
-                xp_multi_str = str([i / avail for i in edits["TrueAvail"]])
-            else:
-                avail = edits["availability"]
-                xp_multi_str = str(edits["XPMultiplier"])
+            base_avail = max(edits["availability"])
+            xp_multi = str([i / base_avail for i in edits["availability"]])
+
             default_cards = edits["Divisions"]["default"]["cards"]
             cards = div_data.get("cards", default_cards)
 
@@ -50,8 +46,8 @@ def add_division_rules(source_path: Any) -> None:
                     f'    UnitDescriptor = $/GFX/Unit/Descriptor_Unit_{unit_name}\n'
                     f'    AvailableWithoutTransport = True\n'
                     f'    MaxPackNumber = {cards}\n'
-                    f'    NumberOfUnitInPack = {avail}\n'
-                    f'    NumberOfUnitInPackXPMultiplier = {xp_multi_str}\n'
+                    f'    NumberOfUnitInPack = {base_avail}\n'
+                    f'    NumberOfUnitInPackXPMultiplier = {xp_multi}\n'
                     f'),'
                 )
             else:
@@ -62,8 +58,8 @@ def add_division_rules(source_path: Any) -> None:
                     f'    AvailableWithoutTransport = False\n'
                     f'    AvailableTransportList = {transport_str}\n'  # noqa
                     f'    MaxPackNumber = {cards}\n'
-                    f'    NumberOfUnitInPack = {avail}\n'
-                    f'    NumberOfUnitInPackXPMultiplier = {xp_multi_str}\n'
+                    f'    NumberOfUnitInPack = {base_avail}\n'
+                    f'    NumberOfUnitInPackXPMultiplier = {xp_multi}\n'
                     f'),'
                 )
             

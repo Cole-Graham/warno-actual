@@ -2,7 +2,7 @@ rfa_unit_edits = {
     # RFA LOG
     "Iltis_RFA": {
         "CommandPoints": 145,
-        "TrueAvail": [0, 3, 0, 0],
+        "availability": [0, 3, 0, 0],
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -57,7 +57,7 @@ rfa_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 0, 7, 5],
+        "availability": [0, 0, 7, 5],
         "max_speed": 20,
         "WeaponDescriptor": {
             "Salves": {
@@ -79,7 +79,7 @@ rfa_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [12, 9, 0, 0],
+        "availability": [12, 9, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -92,7 +92,7 @@ rfa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
-        "TrueAvail": [6, 4, 0, 0],
+        "availability": [6, 4, 0, 0],
     },
 
     "Unimog_trans_RFA": {
@@ -115,12 +115,12 @@ rfa_unit_edits = {
             "display": "PzMrs M113A1G"
         },
         "CommandPoints": 75,
-        "TrueAvail": [4, 3, 0, 0],
+        "availability": [4, 3, 0, 0],
     },
 
     "M109A3G_HOWZ_RFA": {
         "CommandPoints": 170,
-        "TrueAvail": [3, 2, 0, 0],
+        "availability": [3, 2, 0, 0],
     },
 
     # RFA TANK
@@ -158,13 +158,13 @@ rfa_unit_edits = {
         # "optics": {
         #     "OpticalStrength": 233.475
         # },
-        "TrueAvail": [8, 0, 0, 0],
+        "availability": [8, 0, 0, 0],
     },
 
     # RFA AA
     "MANPAD_Redeye_RFA": {  # Fliegerfaust
         "CommandPoints": 20,
-        "TrueAvail": [12, 9, 0, 0],
+        "availability": [12, 9, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],

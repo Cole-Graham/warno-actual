@@ -12,7 +12,7 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 3, 0, 0],
+        "availability": [0, 3, 0, 0],
     },
 
     "UH60A_CO_US": {
@@ -22,7 +22,7 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 3, 0, 0],
+        "availability": [0, 3, 0, 0],
         "UpgradeFromUnit": "OH58C_CMD_US",
     },
 
@@ -33,7 +33,7 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 4, 0, 0],
+        "availability": [0, 4, 0, 0],
     },
 
     "M1025_Humvee_CMD_para_US": {
@@ -46,7 +46,7 @@ usa_unit_edits = {
             # airborne humvee becomes redundant with regular after FWD deploy changes, just give regular one to 82ab
             # but not in the same patch as changing tacom transports, to avoid potential deckwipes
         },
-        "TrueAvail": [0, 3, 0, 0],
+        "availability": [0, 3, 0, 0],
         "SpecialtiesList": {
             "remove_specs": ["'_para'"],
         },
@@ -56,7 +56,7 @@ usa_unit_edits = {
 
     "M1025_Humvee_CMD_US": {
         "CommandPoints": 145,
-        "TrueAvail": [0, 3, 0, 0],
+        "availability": [0, 3, 0, 0],
         "Divisions": {
             # "add": ['US_82nd_Airborne'],
             # airborne humvee redundant with regular after FWD deploy changes, just give regular one to 82ab imo
@@ -74,7 +74,7 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 0, 3, 0],
+        "availability": [0, 0, 3, 0],
         "UpgradeFromUnit": "M577_CMD2_US",
     },
 
@@ -85,7 +85,7 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 0, 0, 2],
+        "availability": [0, 0, 0, 2],
     },
 
     "CH47_Super_Chinook_US": {
@@ -137,7 +137,7 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "TrueAvail": [0, 0, 7, 5],
+        "availability": [0, 0, 7, 5],
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -195,7 +195,7 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 0, 7, 5],
+        "availability": [0, 0, 7, 5],
         "max_speed": 26,
         "WeaponDescriptor": {
             "Salves": {
@@ -276,7 +276,7 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_assault",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
-        "TrueAvail": [0, 0, 4, 3],
+        "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "is_infantry": True,
         "is_ground_vehicle": False,
@@ -339,7 +339,7 @@ usa_unit_edits = {
                 "Transports": ["M1038_Humvee_US", "UH60A_Black_Hawk_US"]
             },
         },
-        "TrueAvail": [0, 0, 0, 3],
+        "availability": [0, 0, 0, 3],
         "max_speed": 20,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -398,7 +398,7 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_assault",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
-        "TrueAvail": [0, 0, 4, 3],
+        "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "is_infantry": True,
         "is_ground_vehicle": False,
@@ -446,7 +446,7 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 0, 4, 3],
+        "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "WeaponDescriptor": {
             "Salves": {
@@ -494,7 +494,7 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "TrueAvail": [0, 0, 4, 3],
+        "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "is_infantry": True,
         "is_ground_vehicle": False,
@@ -537,7 +537,7 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "TrueAvail": [0, 0, 6, 4],
+        "availability": [0, 0, 6, 4],
         "max_speed": 26,
         "is_infantry": True,
         "is_ground_vehicle": False,
@@ -580,7 +580,7 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_assault",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
-        "TrueAvail": [0, 0, 4, 3],
+        "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "is_infantry": True,
         "is_ground_vehicle": False,
@@ -623,7 +623,7 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "TrueAvail": [0, 0, 0, 2],
+        "availability": [0, 0, 0, 2],
         "max_speed": 26,
         "is_infantry": True,
         "is_ground_vehicle": False,
@@ -643,7 +643,7 @@ usa_unit_edits = {
                 "Transports": ["M35_trans_US", "M113A3_US"],  # no change, just reversed display order
             },
         },
-        "TrueAvail": [0, 6, 4, 0],
+        "availability": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -657,7 +657,7 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 6, 4, 0],
+        "availability": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -671,7 +671,7 @@ usa_unit_edits = {
 
     "AeroEngineers_US": {
         "CommandPoints": 45,
-        "TrueAvail": [0, 6, 4, 0],
+        "availability": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -684,7 +684,7 @@ usa_unit_edits = {
         #     "display": "AIRBORNE ASSAULT ENG.",
         #     "token": "TXOZWRNEVU",
         # },
-        "TrueAvail": [0, 6, 4, 0],
+        "availability": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -712,7 +712,7 @@ usa_unit_edits = {
                 "Transports": ["M151_MUTT_trans_US", "M113A3_US"],  # no change, just reversed display order
             },
         },
-        "TrueAvail": [0, 9, 7, 0],
+        "availability": [0, 9, 7, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -735,7 +735,7 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 9, 7, 0],
+        "availability": [0, 9, 7, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -762,7 +762,7 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 6, 4, 0],
+        "availability": [0, 6, 4, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -790,7 +790,7 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 6, 4, 0],
+        "availability": [0, 6, 4, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -819,7 +819,7 @@ usa_unit_edits = {
                 "Transports": ["M35_trans_US", "M113A3_US"],  # no change, just reversed display order
             },
         },
-        "TrueAvail": [0, 6, 4, 0],
+        "availability": [0, 6, 4, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -840,7 +840,7 @@ usa_unit_edits = {
             "display": "AIRBORNE [DRAGON]",
         },
         "CommandPoints": 45,
-        "TrueAvail": [0, 6, 4, 0],
+        "availability": [0, 6, 4, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -849,7 +849,7 @@ usa_unit_edits = {
 
     "Airborne_MP_US": {
         "CommandPoints": 20,
-        "TrueAvail": [0, 12, 9, 0],
+        "availability": [0, 12, 9, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -858,7 +858,7 @@ usa_unit_edits = {
 
     "MP_US": {
         "CommandPoints": 20,
-        "TrueAvail": [0, 12, 9, 0],
+        "availability": [0, 12, 9, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -870,7 +870,7 @@ usa_unit_edits = {
             "display": "AB MP PATROL [M67]",
         },
         "CommandPoints": 25,
-        "TrueAvail": [0, 9, 7, 0],
+        "availability": [0, 9, 7, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -887,7 +887,7 @@ usa_unit_edits = {
             "display": "MP PATROL [M67]",
         },
         "CommandPoints": 25,
-        "TrueAvail": [0, 9, 7, 0],
+        "availability": [0, 9, 7, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -902,7 +902,7 @@ usa_unit_edits = {
 
     "Rifles_HMG_US": { # GUNNERS
         "CommandPoints": 35,
-        "TrueAvail": [10, 7, 0, 0],
+        "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -911,7 +911,7 @@ usa_unit_edits = {
 
     "Airborne_HMG_US": {  # AIRBORNE GUNNERS
         "CommandPoints": 35,
-        "TrueAvail": [0, 7, 5, 0],
+        "availability": [0, 7, 5, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -920,7 +920,7 @@ usa_unit_edits = {
 
     "AeroRifles_US": {  # AIR CAV TROOPERS
         "CommandPoints": 40,
-        "TrueAvail": [10, 7, 0, 0],
+        "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -929,7 +929,7 @@ usa_unit_edits = {
 
     "Cavalry_US": {  # DISMOUNT TROOPERS WIP
         "CommandPoints": 35,
-        "TrueAvail": [12, 9, 0, 0],
+        "availability": [12, 9, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -946,7 +946,7 @@ usa_unit_edits = {
             "display": "MECH. RIFLES [DRAGON]",
         },
         "CommandPoints": 45,
-        "TrueAvail": [10, 7, 0, 0],
+        "availability": [10, 7, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -963,7 +963,7 @@ usa_unit_edits = {
             "display": "MECH. RIFLES [LAW]",
         },
         "CommandPoints": 35,
-        "TrueAvail": [10, 7, 0, 0],
+        "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -990,7 +990,7 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [12, 9, 0, 0],
+        "availability": [12, 9, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -1011,7 +1011,7 @@ usa_unit_edits = {
                 "Transports": ["M1038_Humvee_US", "M2A1_Bradley_IFV_US", "M2A2_Bradley_IFV_US"],
             },
         },
-        "TrueAvail": [12, 9, 0, 0],
+        "availability": [12, 9, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -1028,7 +1028,7 @@ usa_unit_edits = {
 
     "Ranger_US": {
         "CommandPoints": 60,
-        "TrueAvail": [0, 0, 4, 3],
+        "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -1053,7 +1053,7 @@ usa_unit_edits = {
             "display": "RANGERS [DRAGON]",
         },
         "CommandPoints": 65,
-        "TrueAvail": [0, 0, 4, 3],
+        "availability": [0, 0, 4, 3],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1083,7 +1083,7 @@ usa_unit_edits = {
                 "cards": 3,
             },
         },
-        "TrueAvail": [0, 6, 4, 0],
+        "availability": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -1107,7 +1107,7 @@ usa_unit_edits = {
                 "cards": 3,
             },
         },
-        "TrueAvail": [0, 9, 7, 0],
+        "availability": [0, 9, 7, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -1131,7 +1131,7 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 9, 7, 0],
+        "availability": [0, 9, 7, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1152,7 +1152,7 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 6, 4, 0],
+        "availability": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -1164,7 +1164,7 @@ usa_unit_edits = {
             "display": "AERO-RIFLES [DRAGON]",
         },
         "CommandPoints": 40,
-        "TrueAvail": [0, 6, 4, 0],
+        "availability": [0, 6, 4, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1188,7 +1188,7 @@ usa_unit_edits = {
                 "cards": 3,
             },
         },
-        "TrueAvail": [0, 9, 7, 0],
+        "availability": [0, 9, 7, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -1207,7 +1207,7 @@ usa_unit_edits = {
             "display": "AERO-RIFLES [AT4]",
         },
         "CommandPoints": 65,
-        "TrueAvail": [0, 6, 4, 0],
+        "availability": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -1237,7 +1237,7 @@ usa_unit_edits = {
                 "cards": 3,
             },
         },
-        "TrueAvail": [12, 9, 0, 0],
+        "availability": [12, 9, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1268,7 +1268,7 @@ usa_unit_edits = {
             "display": "NG FIRETEAM [DRAGON]",
         },
         "CommandPoints": 30,
-        "TrueAvail": [15, 12, 0, 0],
+        "availability": [15, 12, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1328,7 +1328,7 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 9, 7, 0],
+        "availability": [0, 9, 7, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1347,7 +1347,7 @@ usa_unit_edits = {
             "display": "GREEN BERETS [ODA]",
         },
         "CommandPoints": 85,
-        "TrueAvail": [0, 0, 0, 3],
+        "availability": [0, 0, 0, 3],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -1409,7 +1409,7 @@ usa_unit_edits = {
 
     "ATteam_ITOW_US": {
         "CommandPoints": 60,
-        "TrueAvail": [6, 4, 0, 0],
+        "availability": [6, 4, 0, 0],
         "max_speed": 14,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_veryheavy'"],
@@ -1418,7 +1418,7 @@ usa_unit_edits = {
 
     "ATteam_TOW2_US": {
         "CommandPoints": 75,
-        "TrueAvail": [4, 3, 0, 0],
+        "availability": [4, 3, 0, 0],
         "max_speed": 14,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_veryheavy'"],
@@ -1432,7 +1432,7 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 4, 3, 0],
+        "availability": [0, 4, 3, 0],
         "max_speed": 14,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_veryheavy'"],
@@ -1446,7 +1446,7 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 4, 3, 0],
+        "availability": [0, 4, 3, 0],
         "max_speed": 14,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_veryheavy'"],
@@ -1455,7 +1455,7 @@ usa_unit_edits = {
 
     "M274_Mule_RCL_US": {
         "CommandPoints": 30,
-        "TrueAvail": [0, 9, 7, 0],
+        "availability": [0, 9, 7, 0],
     },
 
     "M151_MUTT_trans_US": {
@@ -1518,47 +1518,47 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 0],
         "remove_zone_capture": None,
     },
 
     "Mortier_107mm_US": {
         "CommandPoints": 40,
-        "TrueAvail": [5, 4, 3, 0],
+        "availability": [5, 4, 3, 0],
     },
 
     "Mortier_107mm_Airborne_US": {
         "CommandPoints": 40,
-        "TrueAvail": [0, 5, 4, 3],
+        "availability": [0, 5, 4, 3],
     },
 
     "M125_HOWZ_US": {  # M125 mortar carrier, M29A1 81mm Mortar
         "CommandPoints": 45,
-        "TrueAvail": [4, 3, 0, 0],
+        "availability": [4, 3, 0, 0],
     },
     "Howz_M102_105mm_US": {
         "CommandPoints": 60,
-        "TrueAvail": [0, 4, 3, 0],
+        "availability": [0, 4, 3, 0],
     },
 
     "M106A2_HOWZ_US": {
         "CommandPoints": 60,
-        "TrueAvail": [4, 3, 0, 0],
+        "availability": [4, 3, 0, 0],
     },
 
     "M109A2_HOWZ_US": {
         "CommandPoints": 180,
-        "TrueAvail": [3, 2, 0, 0],
+        "availability": [3, 2, 0, 0],
     },
 
     "M110A2_HOWZ_US": {
         "CommandPoints": 220,
-        "TrueAvail": [2, 0, 1, 0],
+        "availability": [2, 0, 1, 0],
     },
 
     "M270_MLRS_US": {
         "CommandPoints": 240,
-        "TrueAvail": [0, 1, 0, 0],
+        "availability": [0, 1, 0, 0],
         "Divisions": {
             "remove": ["US_8th_Inf"]
         },
@@ -1585,7 +1585,7 @@ usa_unit_edits = {
                 },
             },
         },
-        "TrueAvail": [0, 1, 0, 0],
+        "availability": [0, 1, 0, 0],
     },
 
     # US TANK
@@ -1624,7 +1624,7 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 0, 0, 2],
+        "availability": [0, 0, 0, 2],
         "remove_zone_capture": None,
     },
 
@@ -1666,7 +1666,7 @@ usa_unit_edits = {
                 "cards": 2,  # no other ldr tanks in the div
             },
         },
-        "TrueAvail": [0, 0, 3, 0],
+        "availability": [0, 0, 3, 0],
         "remove_zone_capture": None,
     },
 
@@ -1697,7 +1697,7 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
-        "TrueAvail": [0, 0, 2, 0],
+        "availability": [0, 0, 2, 0],
         "remove_zone_capture": None,
     },
 
@@ -1728,7 +1728,7 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
-        "TrueAvail": [0, 0, 3, 0],
+        "availability": [0, 0, 3, 0],
         "remove_zone_capture": None,
     },
 
@@ -1759,7 +1759,7 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Armor",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
-        "TrueAvail": [0, 0, 4, 0],
+        "availability": [0, 0, 4, 0],
         "remove_zone_capture": None,
     },
 
@@ -1790,7 +1790,7 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
-        "TrueAvail": [0, 0, 0, 4],
+        "availability": [0, 0, 0, 4],
         "remove_zone_capture": None,
     },
 
@@ -1829,22 +1829,22 @@ usa_unit_edits = {
         },
         "CommandPoints": 65,
         "stealth": 1.5,
-        "TrueAvail": [0, 6, 4, 0],
+        "availability": [0, 6, 4, 0],
     },
 
     "M901A1_ITW_US": {  # TOW 2
         "CommandPoints": 65,
-        "TrueAvail": [8, 6, 0, 0],
+        "availability": [8, 6, 0, 0],
     },
 
     "M901_TOW_US": {  # ITOW
         "CommandPoints": 50,
-        "TrueAvail": [8, 6, 0, 0],
+        "availability": [8, 6, 0, 0],
     },
 
     "M728_CEV_US": {
         "CommandPoints": 65,
-        "TrueAvail": [8, 6, 0, 0],
+        "availability": [8, 6, 0, 0],
     },
 
     "M2A1_Bradley_IFV_US": {
@@ -1862,7 +1862,7 @@ usa_unit_edits = {
                 "cards": 3,
             },
         },
-        "TrueAvail": [0, 0, 3, 2],
+        "availability": [0, 0, 3, 2],
     },
 
     "M1A1_Abrams_US": {
@@ -1880,7 +1880,7 @@ usa_unit_edits = {
                 "cards": 4,
             },
         },
-        "TrueAvail": [5, 3, 0, 0],
+        "availability": [5, 3, 0, 0],
     },
 
     "M1IP_Abrams_US": {
@@ -1899,7 +1899,7 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 0, 4, 3],
+        "availability": [0, 0, 4, 3],
     },
 
     "M1_Abrams_US": {
@@ -1909,7 +1909,7 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [6, 4, 0, 0],
+        "availability": [6, 4, 0, 0],
     },
 
     "M1_Abrams_NG_US": {
@@ -1919,7 +1919,7 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [6, 0, 0, 0],
+        "availability": [6, 0, 0, 0],
     },
 
     "M60A3_Patton_US": {
@@ -1929,7 +1929,7 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [8, 6, 0, 0],
+        "availability": [8, 6, 0, 0],
     },
 
     "M60A3_ERA_Patton_US": {
@@ -1939,7 +1939,7 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [6, 4, 0, 0],
+        "availability": [6, 4, 0, 0],
     },
 
     "M60A3_Patton_NG_US": {
@@ -1949,7 +1949,7 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [10, 7, 0, 0],
+        "availability": [10, 7, 0, 0],
     },
 
     "M60A1_RISE_Passive_US": {
@@ -1959,7 +1959,7 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [10, 8, 0, 0],
+        "availability": [10, 8, 0, 0],
     },
 
     "M551A1_TTS_Sheridan_US": {
@@ -1969,7 +1969,7 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 10, 8, 0],
+        "availability": [0, 10, 8, 0],
     },
 
     # US RECON
@@ -2011,17 +2011,17 @@ usa_unit_edits = {
         "optics": {
             "OpticalStrength": 233.475
         },
-        "TrueAvail": [8, 0, 0, 0],
+        "availability": [8, 0, 0, 0],
     },
 
     "M113A1_TOW_US": {
         "CommandPoints": 55,
-        "TrueAvail": [8, 6, 0, 0],
+        "availability": [8, 6, 0, 0],
     },
 
     "LAV_25_M1047_US_US": {
         "CommandPoints": 70,
-        "TrueAvail": [0, 4, 3, 0],
+        "availability": [0, 4, 3, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [("MMG_team_7_62mm_M60", "MMG_turret_7_62mm_M60")],
@@ -2031,7 +2031,7 @@ usa_unit_edits = {
 
     "M3A1_Bradley_CFV_US": {
         "CommandPoints": 105,
-        "TrueAvail": [4, 3, 0, 0],
+        "availability": [4, 3, 0, 0],
         "TagSet": {
             "add_tags": ['"Vehicule_Transport_Arme"'],
         },
@@ -2062,7 +2062,7 @@ usa_unit_edits = {
 
     "M3A2_Bradley_CFV_US": {
         "CommandPoints": 135,
-        "TrueAvail": [3, 2, 0, 0],
+        "availability": [3, 2, 0, 0],
         "TagSet": {
             "add_tags": ['"Vehicule_Transport_Arme"'],
         },
@@ -2087,7 +2087,7 @@ usa_unit_edits = {
 
     "M551A1_ACAV_Sheridan_US": {
         "CommandPoints": 55,
-        "TrueAvail": [0, 4, 3, 0],
+        "availability": [0, 4, 3, 0],
     },
 
     "OH58C_Scout_US": {
@@ -2095,11 +2095,11 @@ usa_unit_edits = {
             "display": "#RECO2 OH-58C SCOUT",
         },
         "CommandPoints": 40,
-        "TrueAvail": [0, 4, 3, 0],
+        "availability": [0, 4, 3, 0],
     },
 
     "OH58D_Combat_Scout_US": {
-        "TrueAvail": [0, 4, 3, 0],
+        "availability": [0, 4, 3, 0],
         "ECM:": -0.1,
     },
 
@@ -2107,7 +2107,7 @@ usa_unit_edits = {
         "GameName": {
             "display": "#RECO3 OH-58D KIOWA WR.",
         },
-        "TrueAvail": [0, 3, 2, 0],
+        "availability": [0, 3, 2, 0],
         "ECM": -0.1,
     },
 
@@ -2120,12 +2120,12 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 3, 0, 0],
+        "availability": [0, 3, 0, 0],
     },
 
     "Airborne_Scout_US": {
         "CommandPoints": 25,
-        "TrueAvail": [0, 7, 5, 0],
+        "availability": [0, 7, 5, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -2139,7 +2139,7 @@ usa_unit_edits = {
 
     "Scout_US": {
         "CommandPoints": 20,
-        "TrueAvail": [8, 6, 0, 0],
+        "availability": [8, 6, 0, 0],
         "Divisions": {
             "is_transported": True,
             "needs_transport": False,
@@ -2205,7 +2205,7 @@ usa_unit_edits = {
 
     "LRRP_US": {
         "CommandPoints": 75,
-        "TrueAvail": [0, 0, 4, 3],
+        "availability": [0, 0, 4, 3],
         "Divisions": {
             "default": {
                 "Transports": ["M998_Humvee_US", "UH60A_Black_Hawk_US"],
@@ -2264,7 +2264,7 @@ usa_unit_edits = {
                 "cards": 3,
             },
         },
-        "TrueAvail": [7, 5, 0, 0],
+        "availability": [7, 5, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -2294,7 +2294,7 @@ usa_unit_edits = {
             "token": "VVEXCPXVQB",
         },
         "CommandPoints": 45,
-        "TrueAvail": [0, 7, 5, 0],
+        "availability": [0, 7, 5, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -2312,12 +2312,12 @@ usa_unit_edits = {
 
     "M163_CS_US": {
         "CommandPoints": 40,
-        "TrueAvail": [8, 6, 0, 0],
+        "availability": [8, 6, 0, 0],
     },
 
     "M163_PIVADS_US": {
         "CommandPoints": 65,
-        "TrueAvail": [7, 5, 0, 0],
+        "availability": [7, 5, 0, 0],
         # "SpecialtiesList": {
         #     "add_specs": ["'normal_airoptics'"],
         # },
@@ -2331,7 +2331,7 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 8, 6, 0],
+        "availability": [0, 8, 6, 0],
         "max_speed": 4,
         "UpgradeFromUnit": "FOB_US",
     },
@@ -2352,14 +2352,14 @@ usa_unit_edits = {
             #     "Transports": ["LandRover_UK"],
             # },
         },
-        "TrueAvail": [6, 4, 0, 0],
+        "availability": [6, 4, 0, 0],
         "max_speed": 4,
         "UpgradeFromUnit": "FOB_US",
     },
 
     "M998_Avenger_US": {
         "CommandPoints": 100,
-        "TrueAvail": [0, 5, 3, 0],
+        "availability": [0, 5, 3, 0],
     },
 
     "M48_Chaparral_MIM72F_US": {
@@ -2367,7 +2367,7 @@ usa_unit_edits = {
             "OpticalStrengthAltitude": 220,
         },
         "CommandPoints": 130,
-        "TrueAvail": [0, 3, 2, 0],
+        "availability": [0, 3, 2, 0],
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
         },
@@ -2378,7 +2378,7 @@ usa_unit_edits = {
         "optics": {
             "OpticalStrengthAltitude": 300,
         },
-        "TrueAvail": [4, 3, 0, 0],
+        "availability": [4, 3, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
@@ -2411,7 +2411,7 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 0, 0, 6],
+        "availability": [0, 0, 0, 6],
     },
 
     "AH6G_Little_Bird_US": {
@@ -2421,12 +2421,12 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 0, 0, 4],
+        "availability": [0, 0, 0, 4],
     },
 
     "OH58_CS_US": {
         "CommandPoints": 75,
-        "TrueAvail": [0, 4, 3, 0],
+        "availability": [0, 4, 3, 0],
     },
 
     "MH_60A_DAP_US": {
@@ -2436,7 +2436,7 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 0, 0, 3],
+        "availability": [0, 0, 0, 3],
     },
 
     "AH1F_ATAS_US": {
@@ -2446,7 +2446,7 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 3, 2, 0],
+        "availability": [0, 3, 2, 0],
     },
 
     "AH1F_Cobra_US": {
@@ -2462,7 +2462,7 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 4, 3, 0],
+        "availability": [0, 4, 3, 0],
     },
 
     "AH1S_Cobra_US": {
@@ -2481,7 +2481,7 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 4, 3, 0],
+        "availability": [0, 4, 3, 0],
     },
 
     "AH1F_Hog_US": {
@@ -2497,7 +2497,7 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 4, 3, 0],
+        "availability": [0, 4, 3, 0],
     },
 
     "AH1F_HeavyHog_US": {
@@ -2507,7 +2507,7 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 4, 3, 0],
+        "availability": [0, 4, 3, 0],
     },
 
     "AH64_Apache_US": {  # 8x Hellfire / Hydra
@@ -2517,7 +2517,7 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 2, 0, 1],
+        "availability": [0, 2, 0, 1],
     },
 
     "AH64_Apache_emp1_US": {  # 16x Hellfire
@@ -2533,7 +2533,7 @@ usa_unit_edits = {
                 "cards": 3,
             },
         },
-        "TrueAvail": [0, 2, 0, 1],
+        "availability": [0, 2, 0, 1],
     },
 
     "AH64_Apache_emp2_US": {
@@ -2546,7 +2546,7 @@ usa_unit_edits = {
                 "cards": 3,
             },
         },
-        "TrueAvail": [0, 2, 0, 1],
+        "availability": [0, 2, 0, 1],
     },
 
     "AH64_Apache_ATAS_US": {
@@ -2556,7 +2556,7 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 2, 0, 1],
+        "availability": [0, 2, 0, 1],
     },
 
     # US AIR
@@ -2565,7 +2565,7 @@ usa_unit_edits = {
         "optics": {
             "OpticalStrengthAltitude": 375,
         },
-        "TrueAvail": [0, 3, 2, 0],
+        "availability": [0, 3, 2, 0],
     },
 
     "F15C_Eagle_AA_US": {
@@ -2576,7 +2576,7 @@ usa_unit_edits = {
                 "AgilityRadiusGRU": 1375,
             },
         },
-        "TrueAvail": [0, 2, 0, 1],
+        "availability": [0, 2, 0, 1],
     },
 
     "F4_Wild_Weasel_US": {
@@ -2595,7 +2595,7 @@ usa_unit_edits = {
                 },
             },
         },
-        "TrueAvail": [0, 2, 0, 1],
+        "availability": [0, 2, 0, 1],
     },
 
     "F4E_Phantom_II_HE_US": {
@@ -2603,7 +2603,7 @@ usa_unit_edits = {
         "optics": {
             "OpticalStrengthAltitude": 375,
         },
-        "TrueAvail": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 0],
     },
 
 
@@ -2612,7 +2612,7 @@ usa_unit_edits = {
         "optics": {
             "OpticalStrengthAltitude": 375,
         },
-        "TrueAvail": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 0],
     },
 
     "F4E_Phantom_II_napalm_US": {
@@ -2620,7 +2620,7 @@ usa_unit_edits = {
         "optics": {
             "OpticalStrengthAltitude": 375,
         },
-        "TrueAvail": [0, 3, 0, 0],
+        "availability": [0, 3, 0, 0],
     },
 
     "F111E_Aardvark_US": {  # 12x mk82, 3rd Armored
@@ -2628,7 +2628,7 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
-        "TrueAvail": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 0],
     },
 
     "F111F_Aardvark_US": {
@@ -2636,7 +2636,7 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
-        "TrueAvail": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 0],
     },
 
     "F111F_Aardvark_LGB_US": {  # 4x GBU-12
@@ -2648,7 +2648,7 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
-        "TrueAvail": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 0],
     },
 
     "F111F_Aardvark_CBU_US": {  # 8x Mk-20 Rockeye, 82nd Airborne
@@ -2656,7 +2656,7 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
-        "TrueAvail": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 0],
     },
 
     "F111E_Aardvark_napalm_US": {  # 4x Mk-77 napalm, 3rd Armored
@@ -2664,7 +2664,7 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
-        "TrueAvail": [0, 3, 0, 0],
+        "availability": [0, 3, 0, 0],
     },
 
     "F111F_Aardvark_napalm_US": {  # 4x Mk-77 napalm, 82nd Airborne
@@ -2672,13 +2672,13 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
-        "TrueAvail": [0, 3, 0, 0],
+        "availability": [0, 3, 0, 0],
     },
 
     "EF111_Raven_US": {
         "CommandPoints": 180,
         "max_speed": 1400,
-        "TrueAvail": [0, 0, 2, 0],
+        "availability": [0, 0, 2, 0],
     },
 
     "F16C_LGB_US": {
@@ -2696,7 +2696,7 @@ usa_unit_edits = {
         "optics": {
             "OpticalStrengthAltitude": 375,
         },
-        "TrueAvail": [0, 1, 0, 0],
+        "availability": [0, 1, 0, 0],
     },
 
     "F16E_AGM_US": {  # 4x AGM-65D, 2x AIM-9M
@@ -2705,7 +2705,7 @@ usa_unit_edits = {
         "optics": {
             "OpticalStrengthAltitude": 375,
         },
-        "TrueAvail": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 0],
     },
 
     "F16E_HE_US": {
@@ -2714,7 +2714,7 @@ usa_unit_edits = {
         "optics": {
             "OpticalStrengthAltitude": 375,
         },
-        "TrueAvail": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 0],
     },
 
     "F16E_HE2_US": {  # 12x mk82 + , 11 ACR
@@ -2723,7 +2723,7 @@ usa_unit_edits = {
         "optics": {
             "OpticalStrengthAltitude": 375,
         },
-        "TrueAvail": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 0],
     },
 
     "F16E_napalm_US": {
@@ -2732,7 +2732,7 @@ usa_unit_edits = {
         "optics": {
             "OpticalStrengthAltitude": 375,
         },
-        "TrueAvail": [0, 3, 2, 0],
+        "availability": [0, 3, 2, 0],
     },
 
     "F16E_SEAD_US": {
@@ -2750,7 +2750,7 @@ usa_unit_edits = {
                 },
             },
         },
-        "TrueAvail": [0, 2, 0, 1],
+        "availability": [0, 2, 0, 1],
     },
 
     "F16E_CBU_US": {
@@ -2759,7 +2759,7 @@ usa_unit_edits = {
         "optics": {
             "OpticalStrengthAltitude": 375,
         },
-        "TrueAvail": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 0],
     },
 
     "F16E_AA_US": {
@@ -2776,7 +2776,7 @@ usa_unit_edits = {
         "optics": {
             "OpticalStrengthAltitude": 375,
         },
-        "TrueAvail": [0, 0, 2, 0],
+        "availability": [0, 0, 2, 0],
         "UpgradeFromUnit": None,
     },
 
@@ -2786,7 +2786,7 @@ usa_unit_edits = {
         "optics": {
             "OpticalStrengthAltitude": 375,
         },
-        "TrueAvail": [0, 0, 2, 0],
+        "availability": [0, 0, 2, 0],
         "UpgradeFromUnit": "F16E_AA_US",
     },
 
@@ -2798,7 +2798,7 @@ usa_unit_edits = {
             },
         },
         "max_speed": 500,
-        "TrueAvail": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 0],
     },
 
     "A10_Thunderbolt_II_Rkt_US": {  # 76x Hydra, 2x AIM-9M
@@ -2809,7 +2809,7 @@ usa_unit_edits = {
             },
         },
         "max_speed": 500,
-        "TrueAvail": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 0],
     },
 
     "A10_Thunderbolt_II_ATGM_US": {  # 76x Hydra, 2x AIM-9M
@@ -2820,6 +2820,6 @@ usa_unit_edits = {
             },
         },
         "max_speed": 500,
-        "TrueAvail": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 0],
     },
 }

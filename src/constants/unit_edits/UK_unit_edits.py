@@ -12,17 +12,17 @@ uk_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 4, 0, 0],
+        "availability": [0, 4, 0, 0],
     },
 
     "Saxon_CMD_UK": {
         "CommandPoints": 155,
-        "TrueAvail": [0, 3, 0, 0],
+        "availability": [0, 3, 0, 0],
     },
 
     "Gazelle_CMD_UK": {
         "CommandPoints": 115,
-        "TrueAvail": [0, 3, 0, 0],
+        "availability": [0, 3, 0, 0],
     },
 
     # UK INF
@@ -69,7 +69,7 @@ uk_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "TrueAvail": [0, 0, 7, 5],
+        "availability": [0, 0, 7, 5],
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -133,7 +133,7 @@ uk_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_assault",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
-        "TrueAvail": [0, 0, 5, 4],
+        "availability": [0, 0, 5, 4],
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -195,7 +195,7 @@ uk_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "TrueAvail": [0, 0, 7, 5],
+        "availability": [0, 0, 7, 5],
         "max_speed": 26,
         "Divisions": {
             "UK_2nd_Infantry": {
@@ -244,7 +244,7 @@ uk_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "TrueAvail": [0, 0, 6, 4],
+        "availability": [0, 0, 6, 4],
         "max_speed": 26,
         "is_infantry": True,
         "is_ground_vehicle": False,
@@ -284,7 +284,7 @@ uk_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "TrueAvail": [0, 0, 5, 4],
+        "availability": [0, 0, 5, 4],
         "max_speed": 26,
         "WeaponAssignment": [
                 (0, [0, ]),
@@ -333,7 +333,7 @@ uk_unit_edits = {
     "Gun_Group_TA_UK": {
         "CommandPoints": 15,
         "strength": 5,
-        "TrueAvail": [12, 0, 0, 0],
+        "availability": [12, 0, 0, 0],
         "max_speed": 26,
         "WeaponAssignment": [
                 (0, [1, ]),
@@ -354,7 +354,7 @@ uk_unit_edits = {
     "RMP_UK": {
         "CommandPoints": 20,
         "strength": 5,
-        "TrueAvail": [0, 12, 9, 0],
+        "availability": [0, 12, 9, 0],
         "WeaponAssignment": [
                 (0, [2, ]),
                 (1, [1, ]),
@@ -417,7 +417,7 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
-        "TrueAvail": [10, 7, 0, 0],
+        "availability": [10, 7, 0, 0],
     },
 
     "Airmobile_MILAN_UK": {  # 7x L85, 2x L86A1 lmg, 1x LAW 80
@@ -426,7 +426,7 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
-        "TrueAvail": [10, 7, 0, 0],
+        "availability": [10, 7, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
                 "RocketInf_LAW_80": 6,
@@ -440,7 +440,7 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
-        "TrueAvail": [0, 6, 4, 0],
+        "availability": [0, 6, 4, 0],
         "WeaponDescriptor": {
             "Salves": {
                 "RocketInf_Carl_Gustav": 8,
@@ -473,7 +473,7 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
-        "TrueAvail": [10, 7, 0, 0],
+        "availability": [10, 7, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
                 "RocketInf_Carl_Gustav": 8,
@@ -487,7 +487,7 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
-        "TrueAvail": [10, 7, 0, 0],
+        "availability": [10, 7, 0, 0],
     },
     "HMGteam_MAG_UK": {
         "GameName": {
@@ -507,7 +507,7 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_veryheavy'"],
         },
-        "TrueAvail": [8, 6, 0, 0],
+        "availability": [8, 6, 0, 0],
     },
 
     "ATteam_Milan_1_UK": {
@@ -516,7 +516,7 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
-        "TrueAvail": [9, 7, 5, 0],
+        "availability": [9, 7, 5, 0],
     },
 
     "ATteam_Milan_2_UK": {
@@ -525,7 +525,7 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
-        "TrueAvail": [6, 4, 0, 0],
+        "availability": [6, 4, 0, 0],
     },
 
     "SAS_UK": {
@@ -534,7 +534,7 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
-        "TrueAvail": [0, 0, 4, 3],
+        "availability": [0, 0, 4, 3],
     },
 
     # UK ARTILLERY
@@ -573,7 +573,7 @@ uk_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 0],
         "remove_zone_capture": None,
     },
 
@@ -587,12 +587,12 @@ uk_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 5, 4, 3],
+        "availability": [0, 5, 4, 3],
     },
 
     "Howz_L118_105mm_UK": {
         "CommandPoints": 60,
-        "TrueAvail": [4, 3, 0, 0],
+        "availability": [4, 3, 0, 0],
     },
 
     "FH70_155mm_UK": {
@@ -602,7 +602,7 @@ uk_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [3, 2, 0, 0],
+        "availability": [3, 2, 0, 0],
     },
 
     "M107A2_175mm_UK": {
@@ -610,7 +610,7 @@ uk_unit_edits = {
             "display": "M107A2",
         },
         "CommandPoints": 185,
-        "TrueAvail": [2, 0, 1, 0],
+        "availability": [2, 0, 1, 0],
     },
 
     "M270_MLRS_cluster_UK": {
@@ -630,7 +630,7 @@ uk_unit_edits = {
                 },
             },
         },
-        "TrueAvail": [0, 1, 0, 0],
+        "availability": [0, 1, 0, 0],
     },
 
     # UK TANK
@@ -661,7 +661,7 @@ uk_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
-        "TrueAvail": [0, 0, 2, 0],
+        "availability": [0, 0, 2, 0],
         "remove_zone_capture": None,
     },
 
@@ -697,7 +697,7 @@ uk_unit_edits = {
                 "ATGM_MILAN_2": 6,
             },
         },
-        "TrueAvail": [8, 6, 0, 0],
+        "availability": [8, 6, 0, 0],
     },
 
 
@@ -730,13 +730,13 @@ uk_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 4, 3, 0],
+        "availability": [0, 4, 3, 0],
     },
 
     # UK RECON
     "Ferret_Mk2_UK": {
         "CommandPoints": 20,
-        "TrueAvail": [10, 7, 0, 0],
+        "availability": [10, 7, 0, 0],
     },
 
     "FV601_Saladin_UK": {
@@ -745,7 +745,7 @@ uk_unit_edits = {
 
     "FV721_Fox_UK": {
         "CommandPoints": 35,
-        "TrueAvail": [8, 6, 0, 0],
+        "availability": [8, 6, 0, 0],
     },
 
     "Scout_TA_UK": {
@@ -759,7 +759,7 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
-        "TrueAvail": [10, 0, 0, 0],
+        "availability": [10, 0, 0, 0],
     },
 
     "Scout_UK": {
@@ -776,7 +776,7 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
-        "TrueAvail": [8, 6, 0, 0],
+        "availability": [8, 6, 0, 0],
     },
 
     "Scout_Airmobile_UK": {
@@ -786,7 +786,7 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
-        "TrueAvail": [6, 4, 0, 0],
+        "availability": [6, 4, 0, 0],
     },
 
     "Sniper_UK": {
@@ -816,7 +816,7 @@ uk_unit_edits = {
                 "replace": [("PM_Sterling", "PM_Sterling_noreflex")],
             },
         },
-        "TrueAvail": [12, 9, 0, 0],
+        "availability": [12, 9, 0, 0],
     },
 
     "MANPAD_Javelin_UK": {
@@ -844,7 +844,7 @@ uk_unit_edits = {
                 "replace": [("PM_Sterling", "PM_Sterling_noreflex")],
             },
         },
-        "TrueAvail": [9, 7, 0, 0],
+        "availability": [9, 7, 0, 0],
     },
 
 
@@ -855,7 +855,7 @@ uk_unit_edits = {
             "add_specs": ["'infantry_equip_veryheavy'"],
         },
         "stealth": 2.5,
-        "TrueAvail": [6, 4, 0, 0],
+        "availability": [6, 4, 0, 0],
     },
 
     "DCA_Rapier_UK": {
@@ -866,7 +866,7 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
         },
-        "TrueAvail": [6, 4, 0, 0],
+        "availability": [6, 4, 0, 0],
     },
 
     "Tracked_Rapier_UK": {
@@ -877,7 +877,7 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
         },
-        "TrueAvail": [4, 3, 0, 0],
+        "availability": [4, 3, 0, 0],
     },
 
     "DCA_Rapier_FSA_UK": {  # towed FSB1
@@ -888,7 +888,7 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
-        "TrueAvail": [6, 4, 0, 0],
+        "availability": [6, 4, 0, 0],
     },
 
     # UK HELI
@@ -924,22 +924,22 @@ uk_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 8, 6, 0],
+        "availability": [0, 8, 6, 0],
     },
 
     "Lynx_AH_Mk1_TOW_UK": {
         "CommandPoints": 75,
-        "TrueAvail": [0, 6, 4, 0],
+        "availability": [0, 6, 4, 0],
     },
 
     "Lynx_AH_Mk7_I_TOW_UK": {  # 8x ITOW
         "CommandPoints": 95,
-        "TrueAvail": [0, 4, 3, 0],
+        "availability": [0, 4, 3, 0],
     },
 
     "Lynx_AH_Mk7_I_TOW2_UK": {  # 8x FITOW
         "CommandPoints": 130,
-        "TrueAvail": [0, 4, 3, 0],
+        "availability": [0, 4, 3, 0],
     },
 
     # UK AIR
@@ -948,7 +948,7 @@ uk_unit_edits = {
             "display": "HARRIER GR.3 [RKT]",
         },
         "CommandPoints": 110,
-        "TrueAvail": [0, 3, 2, 0],
+        "availability": [0, 3, 2, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [("RocketAir_SNEB_68mm_salvolength18", "RocketAir_SNEB_68mm_salvolength36")],
@@ -962,7 +962,7 @@ uk_unit_edits = {
 
     "Harrier_RKT2_UK": {  # 36x SNEB, 36x SNEB
         "CommandPoints": 100,
-        "TrueAvail": [0, 4, 3, 0],
+        "availability": [0, 4, 3, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [("RocketAir_SNEB_68mm_salvolength18", "RocketAir_SNEB_68mm_salvolength36")],
@@ -979,12 +979,12 @@ uk_unit_edits = {
             "display": "HARRIER GR.3 [HE]",
         },
         "CommandPoints": 130,
-        "TrueAvail": [0, 3, 0, 0],
+        "availability": [0, 3, 0, 0],
     },
 
     "Jaguar_CLU_UK": {  # 4x BL755 CLU
         "CommandPoints": 205,
-        "TrueAvail": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 0],
     },
 
     "Jaguar_HE1_UK": {  # 8x mk82 227kg
@@ -992,12 +992,12 @@ uk_unit_edits = {
             "display": "JAGUAR GR.1 [HE]",
         },
         "CommandPoints": 190,
-        "TrueAvail": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 0],
     },
 
     "Jaguar_HE2_UK": {  # 4x Mk18 513kg
         "CommandPoints": 190,
-        "TrueAvail": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 0],
     },
 
     "Tornado_ADV_HE_UK": {
@@ -1005,12 +1005,12 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
-        "TrueAvail": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 0],
     },
 
     "Harrier_UK": {  # 4x AIM-9L
         "CommandPoints": 100,
-        "TrueAvail": [0, 4, 3, 0],
+        "availability": [0, 4, 3, 0],
     },
 
     "F4_Phantom_AA_F3_UK": { # 4x Skyflash, 4x AIM-9L
@@ -1027,6 +1027,6 @@ uk_unit_edits = {
                 "replace": [("AA_AIM9L_Sidewinder", "AA_AIM9M_Sidewinder")],
             },
         },
-        "TrueAvail": [0, 3, 2, 0],
+        "availability": [0, 3, 2, 0],
     },
 }

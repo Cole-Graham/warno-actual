@@ -12,7 +12,7 @@ rda_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 0, 2, 0],
+        "availability": [0, 0, 2, 0],
     },
 
     "BRDM_2_CMD_DDR": {
@@ -23,7 +23,7 @@ rda_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 3, 0, 0],
+        "availability": [0, 3, 0, 0],
     },
 
     "BTR_60_CMD_DDR": {
@@ -33,7 +33,7 @@ rda_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 0, 3, 0],
+        "availability": [0, 0, 3, 0],
     },
 
     "MTLB_supply_DDR": {
@@ -98,7 +98,7 @@ rda_unit_edits = {
                 ],
             },
         },
-        "TrueAvail": [0, 0, 7, 5],
+        "availability": [0, 0, 7, 5],
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -161,7 +161,7 @@ rda_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_assault",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
-        "TrueAvail": [0, 0, 5, 4],
+        "availability": [0, 0, 5, 4],
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -183,7 +183,7 @@ rda_unit_edits = {
 
     "MP_DDR": {
         "CommandPoints": 15,
-        "TrueAvail": [0, 12, 9, 0],
+        "availability": [0, 12, 9, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -192,7 +192,7 @@ rda_unit_edits = {
 
     "Security_DDR": {
         "CommandPoints": 30,
-        "TrueAvail": [10, 0, 0, 0],
+        "availability": [10, 0, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -210,7 +210,7 @@ rda_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 9, 7, 0],
+        "availability": [0, 9, 7, 0],
         "max_speed": 14,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_veryheavy'"],
@@ -233,7 +233,7 @@ rda_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [10, 7, 0, 0],
+        "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -256,7 +256,7 @@ rda_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [10, 7, 0, 0],
+        "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -282,7 +282,7 @@ rda_unit_edits = {
                 "cards": 3,
             },
         },
-        "TrueAvail": [10, 7, 0, 0],
+        "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -302,7 +302,7 @@ rda_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [10, 7, 0, 0],
+        "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -325,7 +325,7 @@ rda_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 7, 5, 0],
+        "availability": [0, 7, 5, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -342,7 +342,7 @@ rda_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 6, 4, 0],
+        "availability": [0, 6, 4, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -373,7 +373,7 @@ rda_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [12, 9, 0, 0],
+        "availability": [12, 9, 0, 0],
     },
 
     "ATteam_Fagot_DDR": {
@@ -383,7 +383,7 @@ rda_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [9, 7, 5, 0],
+        "availability": [9, 7, 5, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -397,7 +397,7 @@ rda_unit_edits = {
 
     "ATteam_Konkurs_DDR": {
         "CommandPoints": 50,
-        "TrueAvail": [6, 4, 0, 0],
+        "availability": [6, 4, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -467,13 +467,13 @@ rda_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 0],
         "remove_zone_capture": None,
     },
 
     "Mortier_PM43_120mm_DDR": {
         "CommandPoints": 40,
-        "TrueAvail": [5, 4, 3, 0],
+        "availability": [5, 4, 3, 0],
     },
 
     "2S1_DDR": {
@@ -481,7 +481,7 @@ rda_unit_edits = {
             "display": "SFL-H 2S1",
         },
         "CommandPoints": 110,
-        "TrueAvail": [3, 2, 0, 0],
+        "availability": [3, 2, 0, 0],
     },
 
     "2S3_DDR": {
@@ -489,12 +489,12 @@ rda_unit_edits = {
             "display": "SFL-H 2S3M",
         },
         "CommandPoints": 180,
-        "TrueAvail": [3, 2, 0, 0],
+        "availability": [3, 2, 0, 0],
     },
 
     "MFRW_RM70_DDR": {
         "CommandPoints": 240,
-        "TrueAvail": [2, 0, 1, 0],
+        "availability": [2, 0, 1, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [("RocketArt_M21OF_122mm", "RocketArt_M21OF_122mm_RM70")],
@@ -536,7 +536,7 @@ rda_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 0, 6, 0],
+        "availability": [0, 0, 6, 0],
         "remove_zone_capture": None,
     },
 
@@ -573,7 +573,7 @@ rda_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 0, 4, 0],
+        "availability": [0, 0, 4, 0],
         "remove_zone_capture": None,
     },
 
@@ -610,7 +610,7 @@ rda_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 0, 4, 0],
+        "availability": [0, 0, 4, 0],
         "remove_zone_capture": None,
     },
 
@@ -678,7 +678,7 @@ rda_unit_edits = {
         "strength": 8,
         "CommandPoints": 50,
         "stealth": 1.5,
-        "TrueAvail": [8, 6, 0, 0],
+        "availability": [8, 6, 0, 0],
     },
 
     "T55A_DDR": {
@@ -686,7 +686,7 @@ rda_unit_edits = {
             "display": "KPz T-55A",
         },
         "CommandPoints": 70,
-        "TrueAvail": [10, 7, 0, 0],
+        "availability": [10, 7, 0, 0],
     },
 
     "T72_DDR": {
@@ -694,7 +694,7 @@ rda_unit_edits = {
             "display": "KPz T-72",
         },
         "CommandPoints": 100,
-        "TrueAvail": [8, 6, 0, 0],
+        "availability": [8, 6, 0, 0],
     },
 
     "T72M_DDR": {
@@ -702,7 +702,7 @@ rda_unit_edits = {
             "display": "KPz T-72M",
         },
         "CommandPoints": 145,
-        "TrueAvail": [0, 7, 5, 0],
+        "availability": [0, 7, 5, 0],
     },
 
     "T72M1_DDR": {
@@ -715,7 +715,7 @@ rda_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 0, 4, 3],
+        "availability": [0, 0, 4, 3],
     },
 
     # RDA RECON
@@ -731,7 +731,7 @@ rda_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [8, 6, 0, 0],
+        "availability": [8, 6, 0, 0],
     },
 
     "BMP_1P_reco_DDR": {
@@ -757,11 +757,11 @@ rda_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [6, 4, 0, 0],
+        "availability": [6, 4, 0, 0],
     },
 
     "Mi_2_reco_DDR": {
-        "TrueAvail": [0, 4, 0, 0],
+        "availability": [0, 4, 0, 0],
     },
 
     "Scout_DDR": {
@@ -774,7 +774,7 @@ rda_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [8, 6, 0, 0],
+        "availability": [8, 6, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
@@ -783,7 +783,7 @@ rda_unit_edits = {
 
     "HvyScout_DDR": {
         "CommandPoints": 30,
-        "TrueAvail": [6, 4, 0, 0],
+        "availability": [6, 4, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -793,7 +793,7 @@ rda_unit_edits = {
 
     "Scout_LRRP_DDR": {
         "CommandPoints": 70,
-        "TrueAvail": [0, 0, 4, 3],
+        "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -806,7 +806,7 @@ rda_unit_edits = {
             "display": "Fla-RAK STRELA-2M",
         },
         "CommandPoints": 20,
-        "TrueAvail": [12, 9, 0, 0],
+        "availability": [12, 9, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -823,7 +823,7 @@ rda_unit_edits = {
             "display": "Fla-RAK IGLA",
         },
         "CommandPoints": 35,
-        "TrueAvail": [7, 5, 0, 0],
+        "availability": [7, 5, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -846,7 +846,7 @@ rda_unit_edits = {
             },
         },
         "Factory": "EDefaultFactories/Logistic",
-        "TrueAvail": [9, 7, 0, 0],
+        "availability": [9, 7, 0, 0],
         "max_speed": 4,
         "UpgradeFromUnit": "FOB_DDR",
     },
@@ -867,7 +867,7 @@ rda_unit_edits = {
                 "SAM_Strela1_salvolength4": 2,
             },
         },
-        "TrueAvail": [6, 4, 0, 0],
+        "availability": [6, 4, 0, 0],
     },
 
     "MTLB_Strela10_DDR": {
@@ -883,7 +883,7 @@ rda_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [6, 4, 0, 0],
+        "availability": [6, 4, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
         },
@@ -894,7 +894,7 @@ rda_unit_edits = {
             "OpticalStrengthAltitude": 220,
         },
         "CommandPoints": 75,
-        "TrueAvail": [6, 4, 0, 0],
+        "availability": [6, 4, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
         },
@@ -905,7 +905,7 @@ rda_unit_edits = {
             "OpticalStrengthAltitude": 300,
         },
         "CommandPoints": 90,
-        "TrueAvail": [4, 3, 0, 0],
+        "availability": [4, 3, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
@@ -945,7 +945,7 @@ rda_unit_edits = {
             "display": "Mi-8TV [RKT]",
         },
         "CommandPoints": 70,
-        "TrueAvail": [0, 6, 4, 0],
+        "availability": [0, 6, 4, 0],
     },
 
     "Mi_8TV_s57_32_DDR": {  # [RKT 2]
@@ -953,17 +953,17 @@ rda_unit_edits = {
             "display": "Mi-8TV [RKT2]",
         },
         "CommandPoints": 85,
-        "TrueAvail": [0, 6, 4, 0],
+        "availability": [0, 6, 4, 0],
     },
 
     "Mi_8TV_UPK_DDR": {
         "CommandPoints": 85,
-        "TrueAvail": [0, 6, 4, 0],
+        "availability": [0, 6, 4, 0],
     },
 
     "Mi_24D_s5_AT_DDR": {
         "CommandPoints": 135,
-        "TrueAvail": [0, 4, 3, 0],
+        "availability": [0, 4, 3, 0],
     },
 
     "Mi_24P_s8_AT_DDR": {
@@ -1000,18 +1000,18 @@ rda_unit_edits = {
                 },
             },
         },
-        "TrueAvail": [0, 3, 2, 0],
+        "availability": [0, 3, 2, 0],
     },
 
     # RDA AIR
     "MiG_21PFM_AA_DDR": {
         "CommandPoints": 100,
-        "TrueAvail": [0, 4, 3, 2],
+        "availability": [0, 4, 3, 2],
     },
 
     "MiG_21bis_AA2_DDR": {
         "CommandPoints": 120,
-        "TrueAvail": [0, 4, 3, 2],
+        "availability": [0, 4, 3, 2],
     },
 
     "MiG_21PFM_DDR": {  # [RKT1]
@@ -1024,17 +1024,17 @@ rda_unit_edits = {
                 "replace": [("RocketAir_S5_57mm_salvolength32", "RocketAir_S5_57mm_avion_salvolength32")],
             },
         },
-        "TrueAvail": [0, 4, 0, 0],
+        "availability": [0, 4, 0, 0],
     },
 
     "MiG_21bis_HE_DDR": {
         "CommandPoints": 135,
-        "TrueAvail": [0, 3, 0, 0],
+        "availability": [0, 3, 0, 0],
     },
 
     "MiG_21bis_RKT2_DDR": {  # 4x S-24 [RKT2]
         "CommandPoints": 100,
-        "TrueAvail": [0, 4, 0, 0],
+        "availability": [0, 4, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
                 "RocketAir_S24_240mm_avion_salvolength4": (1, True),
@@ -1047,7 +1047,7 @@ rda_unit_edits = {
 
     "MiG_23BN_AT_DDR": {  # MiG-23MF [AT]
         "CommandPoints": 125,
-        "TrueAvail": [0, 3, 0, 0],
+        "availability": [0, 3, 0, 0],
     },
 
     "MiG_23BN_RKT_DDR": {  # MiG-23MF [AT]
@@ -1063,12 +1063,12 @@ rda_unit_edits = {
 
     "MiG_23MF_DDR": {  # [HE]
         "CommandPoints": 220,
-        "TrueAvail": [0, 3, 0, 0],
+        "availability": [0, 3, 0, 0],
     },
 
     "MiG_23ML_DDR": {  # [AA]
         "CommandPoints": 135,
-        "TrueAvail": [0, 3, 2, 0],
+        "availability": [0, 3, 2, 0],
     },
 
     "MiG_29_AA_DDR": {  # 4x R-73, 2x R-27R [AA1]
@@ -1078,12 +1078,12 @@ rda_unit_edits = {
                 "cards": 2,
             },
         },
-        "TrueAvail": [0, 2, 0, 1],
+        "availability": [0, 2, 0, 1],
     },
 
     "Su_22_AT_DDR": {
         "CommandPoints": "Su_22_AT_SOV",
-        "TrueAvail": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 0],
     },
 
     "Su_22_SEAD_DDR": {
@@ -1097,22 +1097,22 @@ rda_unit_edits = {
                 },
             },
         },
-        "TrueAvail": [0, 2, 0, 1],
+        "availability": [0, 2, 0, 1],
     },
 
     "Su_22_clu_DDR": {
         "CommandPoints": 215,
-        "TrueAvail": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 0],
     },
 
     "Su_22_nplm_DDR": {
         "CommandPoints": 215,
-        "TrueAvail": [0, 3, 0, 0],
+        "availability": [0, 3, 0, 0],
     },
 
     "Su_22_DDR": {  # [HE]
         "CommandPoints": 215,
-        "TrueAvail": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 0],
     },
 
     "Su_22_RKT_DDR": {  # 4x S-24
@@ -1122,7 +1122,7 @@ rda_unit_edits = {
                 "cards": 1,
             },
         },
-        "TrueAvail": [0, 3, 2, 0],
+        "availability": [0, 3, 2, 0],
         "WeaponDescriptor": {
             "Salves": {
                 "RocketAir_S24_240mm_avion_salvolength4": 1,
