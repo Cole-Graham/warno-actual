@@ -18,8 +18,7 @@ pol_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": 9,
-        "XPMultiplier": [9/9, 7/9, 0.0, 0.0],
+        "availability": [9, 7, 0, 0],
         "max_speed": 4,
         "UpgradeFromUnit": "FOB_POL",
     },
@@ -41,8 +40,7 @@ pol_unit_edits = {
                 "cards": 1,
             },
         },
-        # "availability": 9,
-        # "XPMultiplier": [9/9, 7/9, 0.0, 0.0],
+        "availability": [9, 7, 0, 0],
         "max_speed": 4,
         # "UpgradeFromUnit": "FOB_POL",  # no fob in korpus
     },
@@ -61,10 +59,9 @@ pol_unit_edits = {
         #         "cards": 1,
         #     },
         # },
-        "availability": 6,
         "max_speed": 4,
         "UpgradeFromUnit": "DCA_AZP_S60_POL",
-        "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
+        "availability": [6, 4, 0, 0],
     },
 
     "DCA_ZUR_23_2S_JOD_Para_POL": {  # Desant. ZUR-23-2S Jod
@@ -84,8 +81,7 @@ pol_unit_edits = {
         #         "cards": 1,
         #     },
         # },
-        # "availability": 6,
-        # "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
+        "availability": [6, 4, 0, 0],
         "max_speed": 4,
         "UpgradeFromUnit": "DCA_ZU_23_2_Para_POL",
     },
@@ -103,8 +99,7 @@ pol_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": 3,
-        "XPMultiplier": [0.0, 0.0, 3/3, 0.0],
+        "availability": [0, 0, 3, 0],
         "UpgradeFromUnit": None,
     },
 
@@ -116,8 +111,7 @@ pol_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 3,
-        "XPMultiplier": [0.0, 3/3, 0.0, 0.0],
+        "availability": [0, 3, 0, 0],
     },
 
     "BRDM_2_CMD_R5_POL": {  # BRDM-2 R-5
@@ -127,8 +121,7 @@ pol_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 3,
-        "XPMultiplier": [0.0, 0.0, 3/3, 0.0],
+        "availability": [0, 0, 3, 0],
     },
 
     "OT_64_SKOT_CMD_POL": {  # SKOT R-2M
@@ -138,8 +131,7 @@ pol_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 3,
-        "XPMultiplier": [0.0, 0.0, 3/3, 0.0],
+        "availability": [0, 0, 3, 0],
     },
 
     "Mi_2_CMD_POL": {  # Mi-2D PRZETACZNIK
@@ -147,13 +139,12 @@ pol_unit_edits = {
             "display": "#CMD Mi-2D PRZEŁĄCZNIK"
         },
         "CommandPoints": 145,
-        "availability": 3,
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+        "availability": [0, 3, 0, 0],
     },
 
     "GAZ_66B_supply_POL": {  # GAZ-66B Zaop.
@@ -241,8 +232,7 @@ pol_unit_edits = {
                 },
             },
         },
-        "availability": 5,
-        "XPMultiplier": [0.0, 0.0, 5/5, 4/5],
+        "availability": [0, 0, 5, 4],
         "max_speed": 26,
         "selector_tactic": "(2, 4)",
         "selector_tactic_obj": "02_04",
@@ -300,8 +290,7 @@ pol_unit_edits = {
                 "Transports": ['Star_266_POL', 'BMP_1_SP2_POL', 'BMP_2_POL'],
             },
         },
-        "availability": 7,
-        "XPMultiplier": [0.0, 0.0, 7/7, 5/7],
+        "availability": [0, 0, 7, 5],
         "max_speed": 26,
         "WeaponDescriptor": {
             "Salves": {
@@ -317,7 +306,6 @@ pol_unit_edits = {
 
     "Engineers_POL": {  # Saperzy
         "CommandPoints": 50,
-        "availability": 6,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -326,7 +314,7 @@ pol_unit_edits = {
                 "Transports": ["Star_266_POL", "MTLB_trans_POL", "OT_64_SKOT_2_POL", "OT_64_SKOT_2A_POL"],
             },
         },
-        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
+        "availability": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -346,7 +334,6 @@ pol_unit_edits = {
 
     "Engineers_Flam_POL": {  # Saperzy Szturmowi
         "CommandPoints": 45,
-        "availability": 6,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -355,7 +342,7 @@ pol_unit_edits = {
                 "Transports": ["Star_266_POL", "MTLB_trans_POL", "OT_64_SKOT_2_POL", "OT_64_SKOT_2A_POL"],
             },
         },
-        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
+        "availability": [0, 6, 4, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -381,8 +368,7 @@ pol_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 12,
-        "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
+        "availability": [12, 9, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -418,13 +404,12 @@ pol_unit_edits = {
 
     "MotRifles_POL": {  # Piechota Zmech
         "CommandPoints": 30,
-        "availability": 10,
         "Divisions": {
             "default": {
                 "cards": 4,
             },
         },
-        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
+        "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -444,13 +429,12 @@ pol_unit_edits = {
             "display": "PIECHOTA ZMECH [SVD]",
         },
         "CommandPoints": 35,
-        "availability": 10,
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
+        "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -522,13 +506,12 @@ pol_unit_edits = {
 
     "WSW_POL": {  # WSW
         "CommandPoints": 30,
-        "availability": 7,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 7/7, 5/7, 0.0],
+        "availability": [0, 7, 5, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -556,8 +539,7 @@ pol_unit_edits = {
     "ATteam_RCL_SPG9_POL": {  # SPG-9
         "strength": 5,
         "CommandPoints": 30,
-        "availability": 10,
-        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
+        "availability": [10, 7, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -567,8 +549,7 @@ pol_unit_edits = {
     "ATteam_RCL_SPG9_Para_POL": {  # Desant. SPG-9(D)
         "strength": 5,
         "CommandPoints": 30,
-        "availability": 10,
-        "XPMultiplier": [0.0, 10/10, 7/10, 0.0],
+        "availability": [0, 10, 7, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -605,8 +586,7 @@ pol_unit_edits = {
             "display": "NSW 12.7mm",
             "token": "NSVAKANSW",
         },
-        "availability": 8,
-        "XPMultiplier": [8/8, 5/8, 0.0, 0.0],
+        "availability": [8, 5, 0, 0],
         "Divisions": {
             "add": ['POL_20_Pancerna', 'POL_4_Zmechanizowana'],
             "is_transported": True,
@@ -624,8 +604,6 @@ pol_unit_edits = {
 
     "Atteam_Fagot_POL": {  # PPK Fagot
         "CommandPoints": 30,
-        "availability": 9,
-        "XPMultiplier": [9/9, 7/9, 5/9, 0.0],  # 9/7/5
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -644,8 +622,7 @@ pol_unit_edits = {
 
     "Atteam_Fagot_Para_POL": {  # Desant. PPK Faktoria
         "CommandPoints": 40,
-        "availability": 7,
-        "XPMultiplier": [7/7, 5/7, 4/7, 0.0],
+        "availability": [7, 5, 4, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -665,8 +642,7 @@ pol_unit_edits = {
             # "is_transported": True,
             # "needs_transport": True,
         },
-        "availability": 6,
-        "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
+        "availability": [6, 4, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -679,8 +655,7 @@ pol_unit_edits = {
             "display": "SPADO. UAZ-469 SPG-9",
         },
         "CommandPoints": 25,
-        "availability": 12,
-        "XPMultiplier": [0.0, 12/12, 9/12, 0.0],
+        "availability": [0, 12, 9, 0],
     },
 
     # infantry tab transports
@@ -770,20 +745,18 @@ pol_unit_edits = {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 2/2, 0.0, 0.0],
+        "availability": [0, 2, 0, 0],
         "remove_zone_capture": None,
     },
 
     "Mortier_PM43_120mm_POL": {  # M wz.43 120mm
         "CommandPoints": 40,
-        "availability": 5,
-        "XPMultiplier": [5/5, 4/5, 3/5, 0.0],
+        "availability": [5, 4, 3, 0],
     },
 
     "Mortier_2S12_120mm_Para_POL": {  # Desant. 2S12 120mm
         # "CommandPoints": 40,
-        # "availability": 5,
-        # "XPMultiplier": [5/5, 4/5, 3/5, 0.0],
+        "availability": [5, 4, 3, 0],
         "GameName": {
             "display": "SPADO. 2S12 120mm",
         },
@@ -803,14 +776,13 @@ pol_unit_edits = {
 
     "Mortier_2B9_Vasilek_Para_POL": {  # Desant. 2B9 Wasilok
         "CommandPoints": 45,
-        "availability": 4,
         "orders": {
             "add_orders": ["ShootOnPositionSmoke", "ShootOnPositionWithoutCorrectionSmoke"],
         },
         "GameName": {
             "display": "SPADO. 2B9 WASILOK",
         },
-        "XPMultiplier": [0.0, 4/4, 3/4, 2/4],
+        "availability": [0, 4, 3, 2],
         "WeaponDescriptor": {
             "turrets": {
                 1: {
@@ -844,14 +816,12 @@ pol_unit_edits = {
 
     "Howz_M30_122mm_POL": {  # H wz. 1938/85 122mm
         "CommandPoints": 65,
-        "availability": 5,
-        "XPMultiplier": [5/5, 4/5, 3/5, 0.0],
+        "availability": [5, 4, 3, 0],
     },
 
     "Howz_ML20_152mm_POL": {  # AH wz. 1937/85 152mm
         "CommandPoints": 110,
-        "availability": 3,
-        "XPMultiplier": [3/3, 2/3, 0.0, 0.0],
+        "availability": [3, 2, 0, 0],
         "UpgradeFromUnit": "Howz_M30_122mm_POL",
     },
 
@@ -863,8 +833,7 @@ pol_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 3,
-        "XPMultiplier": [3/3, 2/3, 0.0, 0.0],
+        "availability": [3, 2, 0, 0],
     },
 
     "RM70_85_POL": {  # RM wz. 70/85
@@ -880,8 +849,7 @@ pol_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 3,
-        "XPMultiplier": [3/3, 2/3, 0.0, 0.0],
+        "availability": [3, 2, 0, 0],
     },
 
     "2S1M_POL": {  # 2S1M Morski Gozdzik
@@ -891,8 +859,7 @@ pol_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 3,
-        "XPMultiplier": [3/3, 2/3, 0.0, 0.0],
+        "availability": [3, 2, 0, 0],
     },
 
     "DANA_POL": {  # AHS wz. 77 DANA
@@ -900,8 +867,7 @@ pol_unit_edits = {
             "display": "AHS wz. 77 DANA",
         },
         "CommandPoints": 210,
-        "availability": 2,
-        "XPMultiplier": [2/2, 0.0, 1/2, 0.0],
+        "availability": [2, 0, 1, 0],
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -946,13 +912,12 @@ pol_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Armor",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
-        "availability": 6,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 0.0, 6/6, 0.0],
+        "availability": [0, 0, 6, 0],
         "remove_zone_capture": None,
     },
 
@@ -982,13 +947,12 @@ pol_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
-        "availability": 4,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 0.0, 4/4, 0.0],
+        "availability": [0, 0, 4, 0],
         "remove_zone_capture": None,
     },
 
@@ -1019,49 +983,43 @@ pol_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
-        "availability": 4,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 0.0, 4/4, 0.0],
+        "availability": [0, 0, 4, 0],
         "remove_zone_capture": None,
     },
 
     "T55A_POL": {  # T-55A
         "CommandPoints": 65,
-        "availability": 10,
-        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
+        "availability": [10, 7, 0, 0],
     },
 
-    "T55AS_POL": {  # coffin launcher
+    "T55AS_POL": {  # T-55AS coffin launcher
         "CommandPoints": 85,
-        "availability": 4,
-        "XPMultiplier": [4/4, 3/4, 0.0, 0.0],
+        "availability": [4, 3, 0, 0],
     },
 
     "T72M_POL": {  # T-72M
         "CommandPoints": 140,
-        "availability": 8,
-        "XPMultiplier": [0.0, 8/8, 6/8, 0.0],
+        "availability": [0, 8, 6, 0],
     },
 
     "T72M1_POL": {  # T-72M1
         "CommandPoints": 170,
-        "availability": 6,
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
+        "availability": [0, 6, 4, 0],
     },
 
     "T72M1_Wilk_POL": {  # T-72M2 Wilk
         "CommandPoints": 190,
-        "availability": 4,
-        "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
+        "availability": [0, 0, 4, 3],
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1097,16 +1055,12 @@ pol_unit_edits = {
         "strength": 8,
         "CommandPoints": 50,
         "stealth": 1.5,
-        "availability": 8,
-        "XPMultiplier": [8/8, 6/8, 0.0, 0.0],  # 8/6
     },
 
     "BRDM_2_Malyu_P_POL": {  # BRDM-2 Malutka-P
         "strength": 8,
         "CommandPoints": 40,
         "stealth": 1.5,
-        "availability": 10,
-        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],  # 10/7
     },
 
     #   tank tab transports
@@ -1173,8 +1127,7 @@ pol_unit_edits = {
             "display": "#RECO2 ZWIADOWCY ZMOT.",
         },
         "CommandPoints": 40,
-        "availability": 7,
-        "XPMultiplier": [7/7, 5/7, 0.0, 0.0],
+        "availability": [7, 5, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -1192,8 +1145,7 @@ pol_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 4,
-        "XPMultiplier": [0.0, 4/4, 3/4, 0.0],
+        "availability": [0, 4, 3, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -1214,8 +1166,7 @@ pol_unit_edits = {
                 "Transports": ['UAZ_469_trans_POL', 'BRDM_1_POL', 'Mi_2_trans_POL'],
             },
         },
-        "availability": 8,
-        "XPMultiplier": [8/8, 6/8, 0.0, 0.0],
+        "availability": [8, 6, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -1268,7 +1219,7 @@ pol_unit_edits = {
         "GameName": {
             "display": "#RECO2 ROZP. SPECJALNE [GSR]",
         },
-        "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
+        "availability": [0, 0, 4, 3],
     },
 
     "Scout_LRRP_Para_POL": {  # Desant. Rozp. Specjalne [GSR]
@@ -1321,32 +1272,29 @@ pol_unit_edits = {
     "BRM_1_POL": {  # BWR-1D
         "CommandPoints": "BRM_1_SOV",
         # "CommandPoints": 55,
-        "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
+        "availability": [6, 4, 0, 0],
     },
 
     "BRDM_2_POL": {  # BRDM-2
         "strength": 8,
         # "CommandPoints": 35,
         "CommandPoints": "BRDM_2_SOV",
-        "availability": 8,
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [8/8, 6/8, 0.0, 0.0],
+        "availability": [8, 6, 0, 0],
         "UpgradeFromUnit": "OT_65_POL",
     },
 
     "Mi_2_gunship_POL": {  # Mi-2US
-        "availability": 4,
-        "XPMultiplier": [0.0, 4/4, 3/4, 0.0],
+        "availability": [0, 4, 3, 0],
     },
 
     "Mi_2Ro_reco_POL": {  # Mi-2Ro
-        "availability": 4,
         "CommandPoints": 50,
-        "XPMultiplier": [0.0, 4/4, 3/4, 0.0],
+        "availability": [0, 4, 3, 0],
     },
 
     #   recon tab transports
@@ -1379,7 +1327,7 @@ pol_unit_edits = {
     # POL AA
     "MANPAD_Strela_2M_POL": {  # Strzala-2M
         "CommandPoints": 20,
-        "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
+        "availability": [12, 9, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1424,13 +1372,12 @@ pol_unit_edits = {
     "BRDM_Strela_1_POL": {  # (BRDM-2) Strzala-1
         "strength": 8,
         "CommandPoints": 50,
-        "availability": 6,
         "WeaponDescriptor": {
             "Salves": {
                 "SAM_Strela1_salvolength4": 2,
             },
         },
-        "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
+        "availability": [6, 4, 0, 0],
     },
 
     "MTLB_Strela10_POL": {  # (MT-LB) Strzala-10
@@ -1443,8 +1390,7 @@ pol_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 6,
-        "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
+        "availability": [6, 4, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
         },
@@ -1455,8 +1401,7 @@ pol_unit_edits = {
             "OpticalStrengthAltitude": 220,
         },
         "CommandPoints": 75,
-        "availability": 6,
-        "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
+        "availability": [6, 4, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
         },
@@ -1479,7 +1424,7 @@ pol_unit_edits = {
             "OpticalStrengthAltitude": 300,
         },
         "CommandPoints": 90,
-        "XPMultiplier": [4/4, 3/4, 0.0, 0.0],
+        "availability": [4, 3, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
@@ -1513,22 +1458,20 @@ pol_unit_edits = {
                 "RocketAir_S5_57mm_salvolength64": 1,
             },
         },
-        "availability": 4,
         "Divisions": {
             "remove": ["POL_20_Pancerna"],
         },
-        "XPMultiplier": [0.0, 4/4, 3/4, 0.0],
+        "availability": [0, 4, 3, 0],
         "GameName": {
-            "display": "Mi-24D DESANT"  # wargame reference
+            "display": "Mi-24D DESANT"
         }
     },
 
     "Mi_24D_s8_AT_POL": {  # 80x S-8, 4x Falanga - Mi-24D [AT2]
         "CommandPoints": 150,
-        "availability": 4,
-        "XPMultiplier": [0.0, 4/4, 3/4, 0.0],
+        "availability": [0, 4, 3, 0],
         "GameName": {
-            "display": "Mi-24D [AT]"  # wargame reference
+            "display": "Mi-24D [AT]"
         }
     },
 
@@ -1546,8 +1489,7 @@ pol_unit_edits = {
 
     "Mi_2_ATGM_POL": {  # Mi-2URP Salamandra
         "CommandPoints": 60,
-        "availability": 7,
-        "XPMultiplier": [0.0, 7/7, 5/7, 0.0],
+        "availability": [0, 7, 5, 0],
         "Divisions": {
             "POL_20_Pancerna": {
                 "cards": 2,
@@ -1597,7 +1539,7 @@ pol_unit_edits = {
             "remove": ["POL_20_Pancerna"],
         },
         "CommandPoints": 120,
-        "XPMultiplier": [0.0, 4/4, 3/4, 2/4],
+        "availability": [0, 4, 3, 2],
         "GameName": {
             "display": "MiG-21bis [AA2]"
         }
@@ -1605,7 +1547,7 @@ pol_unit_edits = {
 
     "MiG_21bis_POL": {  # 4x R-60M, 2x R-13M - MiG-21bis [AA2]
         "CommandPoints": 120,
-        "XPMultiplier": [0.0, 4/4, 3/4, 2/4],
+        "availability": [0, 4, 3, 2],
         "GameName": {
             "display": "MiG-21bis [AA]"
         }
@@ -1613,13 +1555,12 @@ pol_unit_edits = {
 
     "MiG_21bis_HE_POL": {  # MiG-21bis [HE]
         "CommandPoints": 135,
-        "XPMultiplier": [0.0, 3/3, 0.0, 0.0],
+        "availability": [0, 3, 0, 0],
     },
 
     "MiG_21bis_RKT2_POL": {  # 4x S-24 [RKT2]
         "CommandPoints": 100,
-        "availability": 4,
-        "XPMultiplier": [0.0, 4/4, 0.0, 0.0],
+        "availability": [0, 4, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
                 "RocketAir_S24_240mm_avion_salvolength4": (1, True),
@@ -1632,14 +1573,11 @@ pol_unit_edits = {
     },
 
     # "MiG_23MF_AA_POL": {  # MiG-23MF [AA]
-    #     "CommandPoints": 180,
-    #     "XPMultiplier": [0.0, 2/2, 0.0, 0.0],
     # },
 
     "MiG_23MF_AA2_POL": {  # MiG-23MF [AA2]
         "CommandPoints": 130,
-        "availability": 4,
-        "XPMultiplier": [0.0, 4/4, 3/4, 2/4],
+        "availability": [0, 4, 3, 2],
         "Divisions": {
             "add": ['POL_20_Pancerna'],
             "POL_20_Pancerna": {
@@ -1658,12 +1596,12 @@ pol_unit_edits = {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [0.0, 2/2, 0.0, 1/2],
+        "availability": [0, 2, 0, 1],
     },
 
     "Su_22_AT_POL": {  # Su-22M4 Seria 30
         "CommandPoints": "Su_22_AT_SOV",
-        "XPMultiplier": [0.0, 2/2, 0.0, 0.0],
+        "availability": [0, 2, 0, 0],
     },
 
     "Su_22_RKT_POL": {  # 4x S-24, 2x R-60M
@@ -1673,8 +1611,7 @@ pol_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": 3,
-        "XPMultiplier": [0.0, 3/3, 2/3, 0.0],
+        "availability": [0, 3, 2, 0],
         "WeaponDescriptor": {
             "Salves": {
                 "RocketAir_S24_240mm_avion_salvolength4": 1,
@@ -1696,8 +1633,7 @@ pol_unit_edits = {
                 },
             },
         },
-        "availability": 2,
-        "XPMultiplier": [0.0, 2/2, 0.0, 1/2],
+        "availability": [0, 2, 0, 1],
         "Divisions": {
             "add": ['POL_20_Pancerna'],
             "POL_20_Pancerna": {

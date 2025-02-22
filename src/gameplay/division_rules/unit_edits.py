@@ -98,11 +98,14 @@ def _create_rule_entry(unit: str, edits: Dict, transport_str: str = "", cards: i
     
     if transport_str:
         base_entry += f"\n    AvailableTransportList = {transport_str}"
-        
+
+    base_avail = max(edits["availability"])
+    xp_multi_str = str([i / base_avail for i in edits["availability"]])
+
     base_entry += (
         f"\n    MaxPackNumber = {cards}"
-        f"\n    NumberOfUnitInPack = {edits['availability']}"
-        f"\n    NumberOfUnitInPackXPMultiplier = {edits['XPMultiplier']}"
+        f"\n    NumberOfUnitInPack = {base_avail}"
+        f"\n    NumberOfUnitInPackXPMultiplier = {xp_multi_str}"
         f"\n),"
     )
     
@@ -141,13 +144,14 @@ def _update_existing_units(source_path: Any, unit: str, edits: Dict) -> None:
 
 def _apply_unit_updates(rule: Any, unit: str, div_name: str, edits: Dict) -> None:
     """Apply updates to a unit rule."""
+
     if "availability" in edits:
-        logger.debug(f"Setting {unit} availability to {edits['availability']}")
-        rule.by_m("NumberOfUnitInPack").v = edits["availability"]
-        
-    if "XPMultiplier" in edits:
-        logger.debug(f"Setting {unit} XP multiplier to {edits['XPMultiplier']}")
-        rule.by_m("NumberOfUnitInPackXPMultiplier").v = str(edits["XPMultiplier"])
+        base_avail = max(edits["availability"])
+        xp_multi = str([i / base_avail for i in edits["availability"]])
+        logger.debug(f"Setting {unit} availability to {base_avail}")
+        rule.by_m("NumberOfUnitInPack").v = base_avail
+        logger.debug(f"Setting {unit} XP multiplier to {xp_multi}")
+        rule.by_m("NumberOfUnitInPackXPMultiplier").v = xp_multi
         
     if "Divisions" in edits:
         _update_cards(rule, unit, div_name, edits)

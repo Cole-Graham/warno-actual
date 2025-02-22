@@ -7,46 +7,42 @@ sov_unit_edits = {
     #SOV LOG
     "BMD_1_CMD_SOV": {
         "CommandPoints": 145,
-        "availability": 3,
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+        "availability": [0, 3, 0, 0],
     },
 
     "BMP_1_CMD_SOV": {
         "CommandPoints": 155,
-        "availability": 3,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+        "availability": [0, 0, 3, 0],
     },
 
     "BMD_2_CMD_SOV": {
         "CommandPoints": 160,
-        "availability": 3,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+        "availability": [0, 0, 3, 0],
     },
 
     "LUAZ_967M_CMD_VDV_SOV": {
         "CommandPoints": 145,
-        "availability": 4,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+        "availability": [0, 4, 0, 0],
         "SpecialtiesList": {
             "remove_specs": ["'_para'"],
         },
@@ -56,15 +52,14 @@ sov_unit_edits = {
 
     "BMP_2_CMD_SOV": {
         "CommandPoints": 170,
-        "availability": 3,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+        "availability": [0, 0, 3, 0],
     },
-    
+
     "BTR_60_CMD_SOV": {
         "CommandPoints": 160,
         "Divisions": {
@@ -72,24 +67,21 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 3,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+        "availability": [0, 0, 3, 0],
     },
 
     "BTR_80_CMD_SOV": {
         "CommandPoints": 170,
-        "availability": 3,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+        "availability": [0, 0, 3, 0],
     },
 
     "Mi_8K_CMD_SOV": {
         "CommandPoints": 145,
-        "availability": 3,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -171,8 +163,7 @@ sov_unit_edits = {
                 ],
             },
         },
-        "availability": 7,
-        "XPMultiplier": [0.0, 0.0, 7/7, 5/7],
+        "availability": [0, 0, 7, 5],
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -239,8 +230,7 @@ sov_unit_edits = {
                 "Transports": ["GAZ_66_SOV", "MTLB_transp_SOV"],
             },
         },
-        "availability": 5,
-        "XPMultiplier": [0.0, 0.0, 5/5, 4/5],
+        "availability": [0, 0, 5, 4],
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -258,7 +248,7 @@ sov_unit_edits = {
         "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
-    
+
     "Engineers_CMD_SOV": {
         "CommandPoints": 40,
         "GameName": {
@@ -314,8 +304,7 @@ sov_unit_edits = {
                 },
             },
         },
-        "availability": 5,
-        "XPMultiplier": [0.0, 0.0, 5/5, 4/5],
+        "availability": [0, 0, 5, 4],
         "max_speed": 26,
         "selector_tactic": "(0, 8)",
         "selector_tactic_obj": "00_08",
@@ -323,7 +312,7 @@ sov_unit_edits = {
         "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
-    
+
     "Spetsnaz_CMD_SOV": {
         "CommandPoints": 40,
         "GameName": {
@@ -363,8 +352,7 @@ sov_unit_edits = {
                 "Transports": ["GAZ_66_SOV", "BTR_60_SOV"],
             },
         },
-        "availability": 4,
-        "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
+        "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "selector_tactic": "(0, 8)",
         "selector_tactic_obj": "00_08",
@@ -416,13 +404,12 @@ sov_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "availability": 4,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
+        "availability": [0, 0, 4, 3],
         "max_speed": 20,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -488,8 +475,7 @@ sov_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_assault",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
-        "availability": 5,
-        "XPMultiplier": [0.0, 0.0, 5/5, 4/5],
+        "availability": [0, 0, 5, 4],
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -508,13 +494,12 @@ sov_unit_edits = {
         "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
-    
+
     "Engineers_SOV": {
         "GameName": {
             "display": "SAPERY",
         },
         "CommandPoints": 40,
-        "availability": 7,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -523,7 +508,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [0.0, 7/7, 5/7, 0.0],
+        "availability": [0, 7, 5, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -537,19 +522,18 @@ sov_unit_edits = {
         },
         "UpgradeFromUnit": "Engineers_CMD_SOV"
     },
-        
+
     "Engineers_TTsko_SOV": {
         "GameName": {
             "display": "SAPERY",
         },
         "CommandPoints": 40,
-        "availability": 7,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 7/7, 5/7, 0.0],
+        "availability": [0, 7, 5, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -568,25 +552,23 @@ sov_unit_edits = {
             "display": "DESANT. SAPERY",
         },
         "CommandPoints": 30,
-        "availability": 9,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 9/9, 7/9, 0.0],
+        "availability": [0, 9, 7, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
     },
-    
+
     "Engineers_Flam_SOV": {
         "GameName": {
             "display": "SAPERY [RPO]",
         },
         "CommandPoints": 50,
-        "availability": 6,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -595,7 +577,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
+        "availability": [0, 6, 4, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -614,13 +596,12 @@ sov_unit_edits = {
             "display": "SAPERY [RPO]",
         },
         "CommandPoints": 50,
-        "availability": 6,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
+        "availability": [0, 6, 4, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -639,8 +620,7 @@ sov_unit_edits = {
             "display": "DESANT. SAPERY [RPO]",
         },
         "CommandPoints": 35,
-        "availability": 9,
-        "XPMultiplier": [0.0, 9/9, 7/9, 0.0],
+        "availability": [0, 9, 7, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -651,13 +631,12 @@ sov_unit_edits = {
             },
         },
     },
-    
+
     "MotRifles_SOV": {
         "GameName": {
             "display": "MOTOSTRELKI [RPG-7]",
         },
         "CommandPoints": 30,
-        "availability": 10,
         "Divisions": {
             "default": {
                 "cards": 3,
@@ -689,7 +668,7 @@ sov_unit_edits = {
         #         },
         #     },
         # },
-        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
+        "availability": [10, 7, 0, 0],
     },
 
     "MotRifles_TTsko_SOV": {  # RPG-27
@@ -697,13 +676,12 @@ sov_unit_edits = {
             "display": "MOTOSTRELKI [RPG-27]",
         },
         "CommandPoints": 30,
-        "availability": 12, # 12 because they are the worst 7-strength motostrelki squad
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
+        "availability": [12, 9, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -723,7 +701,6 @@ sov_unit_edits = {
             "display": "MOTOSTRELKI [RPG-26]",
         },
         "CommandPoints": 30,
-        "availability": 10,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -733,7 +710,7 @@ sov_unit_edits = {
                 "Transports": ["GAZ_66_SOV", "BMP_1P_SOV"],
             },
         },
-        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
+        "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -753,7 +730,6 @@ sov_unit_edits = {
             "display": "MOTOSTRELKI [METIS]",
         },
         "CommandPoints": 40,
-        "availability": 10,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -768,7 +744,7 @@ sov_unit_edits = {
                 ],
             },
         },
-        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
+        "availability": [10, 7, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -788,7 +764,6 @@ sov_unit_edits = {
             "display": "DESANTNIKI [BMD]",
         },
         "CommandPoints": 40,
-        "availability": 9,
         "Divisions": {
             "default": {
                 "cards": 69,
@@ -800,7 +775,7 @@ sov_unit_edits = {
                 "cards": 3,
             },
         },
-        "XPMultiplier": [0.0, 9/9, 7/9, 0.0],
+        "availability": [0, 9, 7, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -814,7 +789,6 @@ sov_unit_edits = {
 
     "VDV_SOV": {  # RPK, SVD, RPG-7VR
         "CommandPoints": 40,
-        "availability": 9,
         "Divisions": {
             "default": {
                 "cards": 69,
@@ -826,7 +800,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [0.0, 9/9, 7/9, 0.0],
+        "availability": [0, 9, 7, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -840,8 +814,7 @@ sov_unit_edits = {
 
     "VDV_Combine_SOV": {  # RPK, RPG-22, RPG-7VL
         "CommandPoints": 50,
-        "availability": 6,
-        "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
+        "availability": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -859,8 +832,7 @@ sov_unit_edits = {
             "display": "DESANTNIKI [METIS]",
         },
         "CommandPoints": 50,
-        "availability": 7,
-        "XPMultiplier": [0.0, 7/7, 5/7, 0.0],
+        "availability": [0, 7, 5, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -875,13 +847,12 @@ sov_unit_edits = {
 
     "MP_SOV": {
         "CommandPoints": 15,
-        "availability": 12,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 12/12, 9/12, 0.0],
+        "availability": [0, 12, 9, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -895,28 +866,26 @@ sov_unit_edits = {
 
     "VDV_HMG_SOV": {  # VDV Pulemetchiki
         "CommandPoints": 35,
-        "availability": 7,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 7/7, 5/7, 0.0],
+        "availability": [0, 7, 5, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
     },
-    
+
     "MotRifles_HMG_SOV": {  # Pulmetchiki
         "CommandPoints": 35,
-        "availability": 10,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
+        "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -932,13 +901,12 @@ sov_unit_edits = {
 
     "MotRifles_HMG_TTsko_SOV": {  # Pulmetchiki
         "CommandPoints": 35,
-        "availability": 10,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
+        "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -954,13 +922,12 @@ sov_unit_edits = {
 
     "FireSupport_TTsko_SOV": {
         "CommandPoints": 25,
-        "availability": 12,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
+        "availability": [12, 9, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -970,13 +937,12 @@ sov_unit_edits = {
                 "FM_AK_74": 7,
                 "RocketInf_RPG29_105mm": 6,
             },
-        },  
+        },
     },
-    
+
     "Spetsnaz_SOV": {
         "CommandPoints": 70,
-        "availability": 4,
-        "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
+        "availability": [0, 0, 4, 3],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -990,8 +956,7 @@ sov_unit_edits = {
 
     "Spetsnaz_Vympel_SOV": {  # Spetsgruppa Vympel
         "CommandPoints": 70,
-        "availability": 4,
-        "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
+        "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -1003,11 +968,10 @@ sov_unit_edits = {
             },
         },
     },
-    
+
     "Spetsnaz_FireSupport_SOV": {
         "CommandPoints": 35,
-        "availability": 8,
-        "XPMultiplier": [0.0, 0.0, 8/8, 6/8],
+        "availability": [0, 0, 8, 6],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1076,13 +1040,12 @@ sov_unit_edits = {
     "HMGteam_AGS17_SOV": {
         "strength": 5,
         "CommandPoints": 35,
-        "availability": 9,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "availability": [0, 9, 7, 0],
         "max_speed": 14,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_veryheavy'"],
@@ -1093,13 +1056,12 @@ sov_unit_edits = {
     "HMGteam_AGS17_TTsko_SOV": {
         "strength": 5,
         "CommandPoints": 35,
-        "availability": 9,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "availability": [0, 9, 7, 0],
         "max_speed": 14,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_veryheavy'"],
@@ -1109,13 +1071,12 @@ sov_unit_edits = {
     "HMGteam_AGS17_VDV_SOV": {
         "strength": 5,
         "CommandPoints": 35,
-        "availability": 9,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "availability": [0, 9, 7, 0],
         "max_speed": 14,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_veryheavy'"],
@@ -1125,14 +1086,13 @@ sov_unit_edits = {
     "ATteam_RCL_SPG9_VDV_SOV": {
         "strength": 5,
         "CommandPoints": 30,
-        "availability": 9,
-        "XPMultiplier": [0.0, 9/9, 7/9, 0.0],
+        "availability": [0, 9, 7, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
     },
-    
+
     "ATteam_Fagot_SOV": {
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -1140,7 +1100,7 @@ sov_unit_edits = {
             },
         },
     },
-    
+
     "Atteam_Fagot_DShV_SOV": {
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -1151,8 +1111,7 @@ sov_unit_edits = {
 
     "Atteam_Fagot_VDV_SOV": {
         "CommandPoints": 30,
-        "availability": 9,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.6],
+        "availability": [0, 9, 7, 5],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1171,7 +1130,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "availability": [0, 6, 4, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1186,7 +1145,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
+        "availability": [6, 4, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1195,13 +1154,12 @@ sov_unit_edits = {
 
     "ATteam_KonkursM_TTsko_SOV": {
         "CommandPoints": 65,
-        "availability": 4,
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "availability": [4, 3, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1215,20 +1173,17 @@ sov_unit_edits = {
 
     "UAZ_469_SPG9_VDV_SOV": {
         "CommandPoints": 25,
-        # "availability": 12,
-        # "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "availability": [0, 12, 9, 0],
     },
 
     "LUAZ_967M_SPG9_SOV": {
         "CommandPoints": 25,
-        # "availability": 12,
-        # "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "availability": [0, 12, 9, 0],
     },
 
     "LUAZ_967M_SPG9_VDV_SOV": {
         "CommandPoints": 25,
-        "availability": 12,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "availability": [0, 12, 9, 0],
     },
 
     "LUAZ_967M_Fagot_SOV": {
@@ -1243,7 +1198,7 @@ sov_unit_edits = {
             },
         },
     },
-    
+
     "LUAZ_967M_SOV": {
         "CommandPoints": 15,
         "SpecialtiesList": {
@@ -1332,10 +1287,10 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+        "availability": [0, 2, 0, 0],
         "remove_zone_capture": None,
     },
-    
+
     "Mortier_2B14_82mm_VDV_SOV": {
         "CommandPoints": 35,
         "Divisions": {
@@ -1343,17 +1298,15 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 5,
-        "XPMultiplier": [0.0, 1.0, 0.8, 0.6],
+        "availability": [0, 5, 4, 3],
     },
-    
+
     "Mortier_2B9_Vasilek_nonPara_SOV": {
         "CommandPoints": 45,
-        "availability": 4,
         "orders": {
             "add_orders": ["ShootOnPositionSmoke", "ShootOnPositionWithoutCorrectionSmoke"],
         },
-        "XPMultiplier": [1.0, 0.75, 0.5, 0.0],
+        "availability": [4, 3, 2, 0],
         "WeaponDescriptor": {
             "turrets": {
                 1: {
@@ -1381,11 +1334,10 @@ sov_unit_edits = {
 
     "Mortier_2B9_Vasilek_SOV": {
         "CommandPoints": 45,
-        "availability": 4,
         "orders": {
             "add_orders": ["ShootOnPositionSmoke", "ShootOnPositionWithoutCorrectionSmoke"],
         },
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.5],
+        "availability": [0, 4, 3, 2],
         "WeaponDescriptor": {
             "turrets": {
                 1: {
@@ -1410,26 +1362,23 @@ sov_unit_edits = {
             },
         },
     },
-    
+
     "Mortier_2S12_120mm_SOV": {
         "CommandPoints": 40,
-        "availability": 5,
-        "XPMultiplier": [5/5, 4/5, 3/5, 0.0],
+        "availability": [5, 4, 3, 0],
     },
-    
+
     "Mortier_2S12_120mm_VDV_SOV": {
         "CommandPoints": 40,
-        "availability": 5,
-        "XPMultiplier": [5/5, 4/5, 3/5, 0.0],
+        "availability": [5, 4, 3, 0],
     },
-    
+
     "MTLB_Vasilek_SOV": {
         "CommandPoints": 60,
-        "availability": 4,
         "orders": {
             "add_orders": ["ShootOnPositionSmoke", "ShootOnPositionWithoutCorrectionSmoke"],
         },
-        "XPMultiplier": [1.0, 0.75, 0.5, 0.0],
+        "availability": [4, 3, 2, 0],
         "WeaponDescriptor": {
             "turrets": {
                 1: {
@@ -1462,8 +1411,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 5,
-        "XPMultiplier": [1.0, 0.8, 0.6, 0.0],
+        "availability": [5, 4, 3, 0],
     },
 
     "2S9_Nona_SOV": {
@@ -1471,8 +1419,7 @@ sov_unit_edits = {
             "display": "2S9 NONA-S",
         },
         "CommandPoints": 85,
-        "availability": 3,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "availability": [0, 3, 2, 0],
     },
 
     "2S23_Nona_SVK_SOV": {
@@ -1480,8 +1427,7 @@ sov_unit_edits = {
             "display": "2S23 NONA-SVK",
         },
         "CommandPoints": 95,
-        "availability": 3,
-        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
+        "availability": [3, 2, 0, 0],
     },
 
     "Howz_2A36_Giatsint_B_SOV": {
@@ -1494,11 +1440,10 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 3,
-        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
+        "availability": [3, 2, 0, 0],
         "UpgradeFromUnit": None,
     },
-    
+
     "Howz_MstaB_150mm_SOV": {
         "GameName": {
             "display": "2A65 MSTA-B 152mm",
@@ -1509,8 +1454,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 3,
-        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
+        "availability": [3, 2, 0, 0],
         "UpgradeFromUnit": "Howz_2A36_Giatsint_B_SOV",
     },
 
@@ -1527,8 +1471,7 @@ sov_unit_edits = {
                 "cards": 3,
             },
         },
-        "availability": 3,
-        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
+        "availability": [3, 2, 0, 0],
     },
 
     "2S3M_Akatsiya_SOV": {
@@ -1538,8 +1481,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 3,
-        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
+        "availability": [3, 2, 0, 0],
     },
 
     "2S3M1_Akatsiya_SOV": {
@@ -1555,14 +1497,12 @@ sov_unit_edits = {
                 "cards": 3,
             },
         },
-        "availability": 2,
-        "XPMultiplier": [1.0, 0.0, 0.5, 0.0],
+        "availability": [2, 0, 1, 0],
     },
 
     "BM21V_GradV_SOV": {
         "CommandPoints": 95,
-        "availability": 3,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "availability": [0, 3, 2, 0],
     },
 
     "BM21_Grad_SOV": {
@@ -1572,19 +1512,17 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 3,
-        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
+        "availability": [3, 2, 0, 0],
     },
 
     "TOS1_Buratino_SOV": {
         "CommandPoints": 250,
-        "availability": 2,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+        "availability": [0, 2, 0, 0],
     },
 
     # SOV TANK
@@ -1619,16 +1557,15 @@ sov_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
-        "availability": 4,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+        "availability": [0, 0, 4, 0],
         "remove_zone_capture": None,
     },
-    
+
     "MTLB_transp_SOV": {
         "orders": {
             "add_orders": ["sell"],
@@ -1645,7 +1582,7 @@ sov_unit_edits = {
     "BTR_D_Robot_SOV": {  # 10x Konkurs, 2x PKT
         "CommandPoints": 30,
     },
-    
+
     "BTR_60_SOV": {
         "CommandPoints": 20,
     },
@@ -1680,8 +1617,7 @@ sov_unit_edits = {
 
     "BMD_3_SOV": {
         "CommandPoints": 80,
-        "availability": 8,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "availability": [0, 8, 6, 0],
         "UpgradeFromUnit": "BMD_2_SOV",
     },
 
@@ -1691,24 +1627,21 @@ sov_unit_edits = {
             "display": "DESANT. LuAZ FAKTORIYA",
             "token": "SXGTONCUAP",
         },
-        "availability": 10,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "availability": [0, 10, 7, 0],
     },
 
     "BRDM_2_Konkurs_SOV": {
         "strength": 8,
         "CommandPoints": 50,
         "stealth": 1.5,
-        "availability": 8,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "availability": [8, 6, 0, 0],
     },
 
     "BRDM_2_Konkurs_M_SOV": {
         "strength": 8,
         "CommandPoints": 65,
         "stealth": 1.5,
-        "availability": 8,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "availability": [8, 6, 0, 0],
     },
 
     "AT_T12_Rapira_SOV": {
@@ -1716,29 +1649,27 @@ sov_unit_edits = {
             "display": "MT-12 RAPIRA 100mm",
         },
         "CommandPoints": 55,
-        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
+        "availability": [6, 4, 0, 0],
     },
-    
+
     "AT_2A45_SprutB_SOV": {
         "GameName": {
             # "display": "2A45M SPRUT-B",
             "display": "2A45 SPRUT-A",
         },
         "CommandPoints": 55,
-        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
+        "availability": [7, 5, 0, 0],
     },
-    
+
     "TO_55_SOV": {
         "CommandPoints": 60,
-        "availability": 8,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "availability": [8, 6, 0, 0],
     },
 
     "T80BV_SOV": {
         "armor": {
             "front": 18,
         },
-        "availability": 6,
         "CommandPoints": 210,
         "Divisions": {
             "default": {
@@ -1753,9 +1684,9 @@ sov_unit_edits = {
                 "replace": [("ATGM_9M112_Kobra", "ATGM_9M112M2_Kobra")],
             },
         },
-        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
+        "availability": [6, 4, 0, 0],
     },
-    
+
     "T80U_SOV": {
         "CommandPoints": 255,
         "Divisions": {
@@ -1763,21 +1694,19 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 4,
-        "XPMultiplier": [0.0, 4/4, 3/4, 0.0],
+        "availability": [0, 4, 3, 0],
     },
-    
+
     "T80UD_SOV": {
-      "CommandPoints": 290, 
-      "Divisions": {
+        "CommandPoints": 290,
+        "Divisions": {
             "default": {
                 "cards": 4,
             },
         },
-      "availability": 3,
-      "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
+        "availability": [0, 0, 3, 2],
     },
-    
+
     # SOV RECON
     "UAZ_469_Reco_SOV": {
         "CommandPoints": 25,
@@ -1805,25 +1734,22 @@ sov_unit_edits = {
                 "cards": 3,
             },
         },
-        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
+        "availability": [6, 4, 0, 0],
     },
 
     "BMD_1_Reostat_SOV": {
         "CommandPoints": 30,
-        "availability": 8,
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+        "availability": [0, 8, 0, 0],
     },
 
     "BMD_3_reco_SOV": {
         "CommandPoints": 105,
-        "availability": 4,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "availability": [0, 4, 3, 0],
     },
 
     "BRDM_2_SOV": {
         "strength": 8,
         "CommandPoints": 35,
-        "availability": 8,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1832,7 +1758,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "availability": [8, 6, 0, 0],
     },
 
     "Pchela_1T_SOV": {
@@ -1846,8 +1772,7 @@ sov_unit_edits = {
                 "cards": 3,
             },
         },
-        "availability": 8,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "availability": [8, 6, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
@@ -1861,8 +1786,7 @@ sov_unit_edits = {
                 "cards": 3,
             },
         },
-        "availability": 8,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "availability": [0, 8, 6, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
@@ -1876,7 +1800,7 @@ sov_unit_edits = {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
     },
-    
+
     "Engineers_Scout_SOV": {
         "GameName": {
             # "display": "#RECO2 RAZVEDKA SAPERY",
@@ -1888,8 +1812,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 4,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "availability": [0, 4, 3, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -1908,18 +1831,16 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 4,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "availability": [0, 4, 3, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
     },
-    
+
     "HvyScout_SOV": {
         "CommandPoints": 40,
-        "availability": 7,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "availability": [7, 5, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -1929,8 +1850,7 @@ sov_unit_edits = {
 
     "HvyScout_TTsko_SOV": {
         "CommandPoints": 40,
-        "availability": 7,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "availability": [7, 5, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -1940,8 +1860,7 @@ sov_unit_edits = {
 
     "Scout_LRRP_SOV": {  # Spetsnaz GRU
         "CommandPoints": 55,
-        "availability": 4,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.75],
+        "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -1950,8 +1869,7 @@ sov_unit_edits = {
 
     "Scout_Spetsnaz_SOV": {
         "CommandPoints": 65,
-        "availability": 4,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "availability": [0, 4, 3, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -1961,8 +1879,7 @@ sov_unit_edits = {
 
     "Scout_Spetsnaz_VDV_SOV": {
         "CommandPoints": 70,
-        "availability": 4,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "availability": [0, 4, 3, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1976,8 +1893,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": 3,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "availability": [0, 3, 2, 0],
     },
 
     # SOV AA
@@ -2002,8 +1918,7 @@ sov_unit_edits = {
                 "Transports": ["GAZ_66_SOV"],
             },
         },
-        "availability": 9,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "availability": [9, 7, 0, 0],
         "max_speed": 4,
         "UpgradeFromUnit": "FOB_SOV",
     },
@@ -2016,15 +1931,13 @@ sov_unit_edits = {
             },
         },
         "Factory": "EDefaultFactories/Logistic",
-        "availability": 9,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "availability": [0, 9, 7, 0],
         "max_speed": 4,
         "UpgradeFromUnit": "FOB_SOV",
     },
-    
+
     "MANPAD_Igla_SOV": {
         "CommandPoints": 35,
-        "availability": 7,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -2051,13 +1964,12 @@ sov_unit_edits = {
                 "replace": [("FM_AK_74", "FM_AK_74_noreflex")],
             },
         },
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "availability": [7, 5, 0, 0],
     },
 
     "MANPAD_Igla_TTsko_SOV": {
         "CommandPoints": 35,
-        "availability": 7,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "availability": [7, 5, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -2071,8 +1983,7 @@ sov_unit_edits = {
 
     "MANPAD_Igla_VDV_SOV": {
         "CommandPoints": 35,
-        "availability": 7,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "availability": [0, 7, 5, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -2097,8 +2008,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 10,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "availability": [0, 10, 7, 0],
     },
 
     "BRDM_Strela_1_SOV": {
@@ -2109,13 +2019,12 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 6,
         "WeaponDescriptor": {
             "Salves": {
                 "SAM_Strela1_salvolength4": 2,
             },
         },
-        "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
+        "availability": [6, 4, 0, 0],
     },
 
     "Tunguska_2K22_SOV": {
@@ -2131,8 +2040,7 @@ sov_unit_edits = {
                 "cards": 4,
             },
         },
-        "availability": 3,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "availability": [0, 3, 2, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
@@ -2148,13 +2056,12 @@ sov_unit_edits = {
                 "cards": 3,
             },
         },
-        "availability": 3,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "availability": [0, 3, 2, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
     },
-    
+
     "MTLB_Strela10_SOV": {
         "optics": {
             "OpticalStrengthAltitude": 220,
@@ -2165,8 +2072,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 6,
-        "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
+        "availability": [6, 4, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
         },
@@ -2182,8 +2088,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": 4,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "availability": [0, 4, 3, 0],
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
         },
@@ -2194,7 +2099,7 @@ sov_unit_edits = {
             "OpticalStrengthAltitude": 300,
         },
         "CommandPoints": 90,
-        "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
+        "availability": [4, 3, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
@@ -2218,11 +2123,10 @@ sov_unit_edits = {
     "Mi_8TV_SOV": {  # 32 S-5M x2
         "CommandPoints": 50,
     },
-    
+
     "Mi_8TV_Gunship_SOV": {  # 4x Molniya, 2x S-24
         "CommandPoints": 110,
-        "availability": 4,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "availability": [0, 4, 3, 0],
         "WeaponDescriptor": {
             "Salves": {
                 "remove": ["RocketAir_B8_80mm_x20"],
@@ -2259,7 +2163,7 @@ sov_unit_edits = {
             "display": "Mi-8MT [RKT]",
         },
     },
-    
+
     "Mi_8TV_s57_32_SOV": {
         "GameName": {
             "display": "Mi-8MT [RKT2]",
@@ -2271,8 +2175,7 @@ sov_unit_edits = {
             "display": "Mi-8MT [RKT3]",
         },
         "CommandPoints": 95,
-        "availability": 4,
-        "XPMultiplier": [0.0, 1.0, 0.75, 0.0],
+        "availability": [0, 4, 3, 0],
     },
 
     "Mi_24V_AA_SOV": {
@@ -2285,8 +2188,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": 3,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "availability": [0, 3, 2, 0],
     },
 
     "Mi_24V_RKT_SOV": {  # 4x Kokon, 20x S-13
@@ -2299,8 +2201,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": 3,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "availability": [0, 3, 2, 0],
     },
 
     "Mi_24V_AT_SOV": {  # 8x Kokon, 40x S-80
@@ -2316,16 +2217,14 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": 3,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "availability": [0, 3, 2, 0],
     },
-    
+
     "Mi_24P_SOV": {
         "GameName": {
             "display": "Mi-24P [AT]",
         },
         "CommandPoints": 160,
-        "availability": 2,
         "WeaponDescriptor": {
             "Salves": {
                 "AutoCanon_AP_30mm_Bitube_Gsh30k": 5,
@@ -2347,9 +2246,9 @@ sov_unit_edits = {
                 },
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
+        "availability": [0, 2, 0, 1],
     },
-    
+
     "Mi_24VP_SOV": {
         "CommandPoints": 200,
         "WeaponDescriptor": {
@@ -2369,8 +2268,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": 3,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "availability": [0, 3, 2, 0],
     },
 
     "Su_22_AT_SOV": {  # 2x Kh-29T, 2x R-60M
@@ -2380,8 +2278,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": 2,
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
+        "availability": [0, 2, 0, 1],
     },
 
     "Su_24MP_EW_SOV": {
@@ -2391,10 +2288,9 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": 2,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+        "availability": [0, 0, 2, 0],
     },
-    
+
     "Su_24MP_SOV": {  # SEAD
         "CommandPoints": 270,
         "WeaponDescriptor": {
@@ -2409,7 +2305,7 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
+        "availability": [0, 2, 0, 1],
     },
 
     "Su_24MP_SEAD2_SOV": {  # SEAD2
@@ -2419,7 +2315,6 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": 2,       
         "WeaponDescriptor": {
             "turrets": {
                 2: {
@@ -2432,9 +2327,9 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
+        "availability": [0, 2, 0, 1],
     },
-    
+
     "Su_24M_LGB_SOV": {
         "GameName": {
             "display": "Su-24M [LGB]",
@@ -2469,7 +2364,7 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+        "availability": [0, 2, 0, 0],
     },
 
     "Su_24M_thermo_SOV": {
@@ -2477,7 +2372,7 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+        "availability": [0, 2, 0, 0],
     },
 
     "MiG_27M_bombe_SOV": {  # 4x FAB-500
@@ -2487,8 +2382,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": 2,
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+        "availability": [0, 2, 0, 0],
     },
 
     "MiG_27M_napalm_SOV": {  # 4x ZB-500
@@ -2498,8 +2392,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": 3,
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
+        "availability": [0, 3, 0, 0],
     },
 
     "MiG_23MLD_SOV": {  # 2x R-24MR, 2x R-73
@@ -2512,8 +2405,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": 3,
-        "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
+        "availability": [0, 3, 2, 0],
     },
 
     "Su_25T_SOV": {  # 16x Vikhr, 2x R-73
@@ -2529,10 +2421,9 @@ sov_unit_edits = {
             },
         },
         "max_speed": 750,
-        "availability": 2,
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
+        "availability": [0, 2, 0, 1],
     },
-    
+
     "MiG_29_AA_SOV": {  # 4x R-73, 2x R-27R
         "GameName": {
             "display": "MiG-29 [AA]",
@@ -2546,7 +2437,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
+        "availability": [0, 2, 0, 1],
         "UpgradeFromUnit": None,
     },
 
@@ -2560,8 +2451,7 @@ sov_unit_edits = {
                 "cards": 3,
             },
         },
-        "availability": 2,
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
+        "availability": [0, 2, 0, 1],
         "UpgradeFromUnit": "MiG_29_AA_SOV",
     },
 
@@ -2569,10 +2459,10 @@ sov_unit_edits = {
         "UpgradeFromUnit": "MiG_29_AA2_SOV",
         "ButtonTexture": "MiG_29_AA_SOV",  # match icon to model (regular icon has wrong camo)
     },
-    
+
     "Su_27S_SOV": {  # 6x R-73, 4x R-27R
         "CommandPoints": 240,
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
+        "availability": [0, 2, 0, 1],
     },
 
     "MiG_31_AA1_SOV": {  # 4x R-33, 2x R-40TD1
@@ -2585,8 +2475,7 @@ sov_unit_edits = {
             },
         },
         "CommandPoints": 310,
-        "availability": 2,
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
+        "availability": [0, 2, 0, 1],
         "WeaponDescriptor": {
             "Salves": {
                 "AA_R33_Vympel": 2,
@@ -2601,8 +2490,7 @@ sov_unit_edits = {
             },
         },
         "CommandPoints": 290,
-        "availability": 2,
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
+        "availability": [0, 2, 0, 1],
         "WeaponDescriptor": {
             "Salves": {
                 "AA_R33_Vympel": 2,
