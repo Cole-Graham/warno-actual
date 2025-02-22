@@ -100,7 +100,7 @@ USA_NEW_UNITS = {
         "selector_tactic": "00_10",
     },
 
-    ("Scout_US", 1): {  # donor unit - increment integer as needed to avoid duplicate keys
+    ("Scout_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "6f07c62b-c344-4c79-a72b-c1a80ce3375b",
         "GroupeCombatGUID": "375817f4-441d-4030-a902-b22f0103552d",
         "ShowroomGUID": "7c0ba2f2-804f-4550-8161-e687c1305a10",
@@ -189,7 +189,7 @@ USA_NEW_UNITS = {
         "unique_count": 2,
     },
 
-    ("Scout_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+    ("Scout_US", 1): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "f1cd2505-5d6a-436f-b678-c82be2e65918",
         "GroupeCombatGUID": "0e948acc-c379-4498-946b-21b5b3b13314",
         "ShowroomGUID": "87b3d52f-1703-494c-a3ee-b25dc6095136",
@@ -824,8 +824,8 @@ USA_NEW_UNITS = {
         "availability": 3,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
         "TrueAvail": [0, 3, 0, 0],
-        "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Spread', 'Reverse', 
-                   'AskForSupply', 'AIDefend', 'AIAttack', 'AIStop'],
+        "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Spread',
+                   'Reverse', 'AskForSupply', 'AIDefend', 'AIAttack', 'AIStop'],
         "is_infantry": False, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,
         "is_ground_vehicle": True,

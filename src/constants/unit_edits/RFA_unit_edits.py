@@ -61,7 +61,7 @@ rfa_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 0.0, 7/7, 5/7],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 0, 7, 5],
         "max_speed": 20,
         "WeaponDescriptor": {
             "Salves": {
@@ -85,7 +85,7 @@ rfa_unit_edits = {
             },
         },
         "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [12, 9, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -100,7 +100,7 @@ rfa_unit_edits = {
             "add_specs": ["'infantry_equip_heavy'"],
         },
         "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [6, 4, 0, 0],
     },
 
     "Unimog_trans_RFA": {
@@ -180,7 +180,7 @@ rfa_unit_edits = {
     "MANPAD_Redeye_RFA": {  # Fliegerfaust
         "CommandPoints": 20,
         "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [12, 9, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],

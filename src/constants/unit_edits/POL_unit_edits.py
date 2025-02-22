@@ -161,8 +161,8 @@ pol_unit_edits = {
                 "cards": 2,
             },
         },
-        "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "XPMultiplier": [0.0, 3/3, 0.0, 0.0],
+        "TrueAvail": [0, 3, 0, 0],
     },
 
     "GAZ_66B_supply_POL": {  # GAZ-66B Zaop.
@@ -338,7 +338,7 @@ pol_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -368,7 +368,7 @@ pol_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 6, 4, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -439,7 +439,7 @@ pol_unit_edits = {
             },
         },
         "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -466,7 +466,7 @@ pol_unit_edits = {
             },
         },
         "XPMultiplier": [10/10, 7/10, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -545,7 +545,7 @@ pol_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 7/7, 5/7, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 7, 5, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -794,7 +794,7 @@ pol_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 2/2, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 2, 0, 0],
         "remove_zone_capture": None,
     },
 
@@ -837,7 +837,7 @@ pol_unit_edits = {
             "display": "SPADO. 2B9 WASILOK",
         },
         "XPMultiplier": [0.0, 4/4, 3/4, 2/4],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 4, 3, 2],
         "WeaponDescriptor": {
             "turrets": {
                 1: {
@@ -986,7 +986,7 @@ pol_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 0.0, 6/6, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 0, 6, 0],
         "remove_zone_capture": None,
     },
 
@@ -1023,7 +1023,7 @@ pol_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 0.0, 4/4, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 0, 4, 0],
         "remove_zone_capture": None,
     },
 
@@ -1061,7 +1061,7 @@ pol_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 0.0, 4/4, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 0, 4, 0],
         "remove_zone_capture": None,
     },
 
@@ -1072,7 +1072,7 @@ pol_unit_edits = {
         "TrueAvail": [10, 7, 0, 0],
     },
 
-    "T55AS_POL": {  # coffin launcher
+    "T55AS_POL": {  # T-55AS coffin launcher
         "CommandPoints": 85,
         "availability": 4,
         "XPMultiplier": [4/4, 3/4, 0.0, 0.0],
@@ -1095,7 +1095,7 @@ pol_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 6/6, 4/6, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 6, 4, 0],
     },
 
     "T72M1_Wilk_POL": {  # T-72M2 Wilk
@@ -1313,7 +1313,7 @@ pol_unit_edits = {
             "display": "#RECO2 ROZP. SPECJALNE [GSR]",
         },
         "XPMultiplier": [0.0, 0.0, 4/4, 3/4],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 0, 4, 3],
     },
 
     "Scout_LRRP_Para_POL": {  # Desant. Rozp. Specjalne [GSR]
@@ -1367,7 +1367,7 @@ pol_unit_edits = {
         "CommandPoints": "BRM_1_SOV",
         # "CommandPoints": 55,
         "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [6, 4, 0, 0],
     },
 
     "BRDM_2_POL": {  # BRDM-2
@@ -1381,7 +1381,7 @@ pol_unit_edits = {
             },
         },
         "XPMultiplier": [8/8, 6/8, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [8, 6, 0, 0],
         "UpgradeFromUnit": "OT_65_POL",
     },
 
@@ -1429,7 +1429,7 @@ pol_unit_edits = {
     "MANPAD_Strela_2M_POL": {  # Strzala-2M
         "CommandPoints": 20,
         "XPMultiplier": [12/12, 9/12, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [12, 9, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1481,7 +1481,7 @@ pol_unit_edits = {
             },
         },
         "XPMultiplier": [6/6, 4/6, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [6, 4, 0, 0],
     },
 
     "MTLB_Strela10_POL": {  # (MT-LB) Strzala-10
@@ -1533,7 +1533,7 @@ pol_unit_edits = {
         },
         "CommandPoints": 90,
         "XPMultiplier": [4/4, 3/4, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [4, 3, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
@@ -1572,7 +1572,7 @@ pol_unit_edits = {
             "remove": ["POL_20_Pancerna"],
         },
         "XPMultiplier": [0.0, 4/4, 3/4, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 4, 3, 0],
         "GameName": {
             "display": "Mi-24D DESANT"
         }
@@ -1655,7 +1655,7 @@ pol_unit_edits = {
         },
         "CommandPoints": 120,
         "XPMultiplier": [0.0, 4/4, 3/4, 2/4],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 4, 3, 2],
         "GameName": {
             "display": "MiG-21bis [AA2]"
         }
@@ -1664,7 +1664,7 @@ pol_unit_edits = {
     "MiG_21bis_POL": {  # 4x R-60M, 2x R-13M - MiG-21bis [AA2]
         "CommandPoints": 120,
         "XPMultiplier": [0.0, 4/4, 3/4, 2/4],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 4, 3, 2],
         "GameName": {
             "display": "MiG-21bis [AA]"
         }
@@ -1673,7 +1673,7 @@ pol_unit_edits = {
     "MiG_21bis_HE_POL": {  # MiG-21bis [HE]
         "CommandPoints": 135,
         "XPMultiplier": [0.0, 3/3, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 3, 0, 0],
     },
 
     "MiG_21bis_RKT2_POL": {  # 4x S-24 [RKT2]
@@ -1693,9 +1693,6 @@ pol_unit_edits = {
     },
 
     # "MiG_23MF_AA_POL": {  # MiG-23MF [AA]
-    #     "CommandPoints": 180,
-    #     "XPMultiplier": [0.0, 2/2, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
     # },
 
     "MiG_23MF_AA2_POL": {  # MiG-23MF [AA2]
@@ -1722,13 +1719,13 @@ pol_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 2/2, 0.0, 1/2],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 2, 0, 1],
     },
 
     "Su_22_AT_POL": {  # Su-22M4 Seria 30
         "CommandPoints": "Su_22_AT_SOV",
         "XPMultiplier": [0.0, 2/2, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 2, 0, 0],
     },
 
     "Su_22_RKT_POL": {  # 4x S-24, 2x R-60M

@@ -1633,7 +1633,7 @@ usa_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 2, 0, 0],
         "remove_zone_capture": None,
     },
 
@@ -1688,7 +1688,7 @@ usa_unit_edits = {
     "M270_MLRS_US": {
         "CommandPoints": 240,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 1, 0, 0],
         "Divisions": {
             "remove": ["US_8th_Inf"]
         },
@@ -1834,7 +1834,7 @@ usa_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
         "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 0, 2, 0],
         "remove_zone_capture": None,
     },
 
@@ -2055,7 +2055,7 @@ usa_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 0.0, 1.0, 0.75],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 0, 4, 3],
     },
 
     "M1_Abrams_US": {
@@ -2520,7 +2520,7 @@ usa_unit_edits = {
     "M163_PIVADS_US": {
         "CommandPoints": 65,
         "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [7, 5, 0, 0],
         # "SpecialtiesList": {
         #     "add_specs": ["'normal_airoptics'"],
         # },
@@ -2818,7 +2818,7 @@ usa_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.49],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 2, 0, 1],
     },
 
     "F4_Wild_Weasel_US": {
@@ -2838,7 +2838,7 @@ usa_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.49],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 2, 0, 1],
     },
 
     "F4E_Phantom_II_HE_US": {
@@ -2847,7 +2847,7 @@ usa_unit_edits = {
             "OpticalStrengthAltitude": 375,
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 2, 0, 0],
     },
 
 
@@ -2857,7 +2857,7 @@ usa_unit_edits = {
             "OpticalStrengthAltitude": 375,
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 2, 0, 0],
     },
 
     "F4E_Phantom_II_napalm_US": {
@@ -2902,7 +2902,7 @@ usa_unit_edits = {
             "add_specs": ["'terrain_radar'"],
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 2, 0, 0],
     },
 
     "F111F_Aardvark_CBU_US": {  # 8x Mk-20 Rockeye, 82nd Airborne
@@ -2911,7 +2911,7 @@ usa_unit_edits = {
             "add_specs": ["'terrain_radar'"],
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 2, 0, 0],
     },
 
     "F111E_Aardvark_napalm_US": {  # 4x Mk-77 napalm, 3rd Armored
@@ -2920,7 +2920,7 @@ usa_unit_edits = {
             "add_specs": ["'terrain_radar'"],
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 3, 0, 0],
     },
 
     "F111F_Aardvark_napalm_US": {  # 4x Mk-77 napalm, 82nd Airborne
@@ -2929,14 +2929,14 @@ usa_unit_edits = {
             "add_specs": ["'terrain_radar'"],
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 3, 0, 0],
     },
 
     "EF111_Raven_US": {
         "CommandPoints": 180,
         "max_speed": 1400,
-        "XPMultiplier": [0.0, 0.0, 1.0, 0.0]
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.0],
+        "TrueAvail": [0, 0, 2, 0],
     },
 
     "F16C_LGB_US": {
@@ -2955,7 +2955,7 @@ usa_unit_edits = {
             "OpticalStrengthAltitude": 375,
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 1, 0, 0],
     },
 
     "F16E_AGM_US": {  # 4x AGM-65D, 2x AIM-9M
@@ -2965,7 +2965,7 @@ usa_unit_edits = {
             "OpticalStrengthAltitude": 375,
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 2, 0, 0],
     },
 
     "F16E_HE_US": {
@@ -2975,7 +2975,7 @@ usa_unit_edits = {
             "OpticalStrengthAltitude": 375,
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 2, 0, 0],
     },
 
     "F16E_HE2_US": {  # 12x mk82 + , 11 ACR
@@ -3072,7 +3072,7 @@ usa_unit_edits = {
         },
         "max_speed": 500,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 2, 0, 0],
     },
 
     "A10_Thunderbolt_II_Rkt_US": {  # 76x Hydra, 2x AIM-9M
@@ -3084,7 +3084,7 @@ usa_unit_edits = {
         },
         "max_speed": 500,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 2, 0, 0],
     },
 
     "A10_Thunderbolt_II_ATGM_US": {  # 76x Hydra, 2x AIM-9M
@@ -3096,6 +3096,6 @@ usa_unit_edits = {
         },
         "max_speed": 500,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 2, 0, 0],
     },
 }

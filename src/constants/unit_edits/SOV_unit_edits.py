@@ -1212,7 +1212,7 @@ sov_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 1.0, 0.68, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 6, 4, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1228,7 +1228,7 @@ sov_unit_edits = {
             },
         },
         "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [6, 4, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1379,7 +1379,7 @@ sov_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 2, 0, 0],
         "remove_zone_capture": None,
     },
 
@@ -1786,7 +1786,7 @@ sov_unit_edits = {
         },
         "CommandPoints": 55,
         "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [6, 4, 0, 0],
     },
 
     "AT_2A45_SprutB_SOV": {
@@ -1796,7 +1796,7 @@ sov_unit_edits = {
         },
         "CommandPoints": 55,
         "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [7, 5, 0, 0],
     },
 
     "TO_55_SOV": {
@@ -1842,14 +1842,14 @@ sov_unit_edits = {
     },
 
     "T80UD_SOV": {
-      "CommandPoints": 290,
-      "Divisions": {
+        "CommandPoints": 290,
+        "Divisions": {
             "default": {
                 "cards": 4,
             },
         },
-      "availability": 3,
-      "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
+        "availability": 3,
+        "XPMultiplier": [0.0, 0.0, 1.0, 0.68],
         "TrueAvail": [0, 0, 3, 2],
     },
 
@@ -1881,7 +1881,7 @@ sov_unit_edits = {
             },
         },
         "XPMultiplier": [1.0, 0.68, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [6, 4, 0, 0],
     },
 
     "BMD_1_Reostat_SOV": {
@@ -2295,7 +2295,7 @@ sov_unit_edits = {
         },
         "CommandPoints": 90,
         "XPMultiplier": [1.0, 0.75, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [4, 3, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
@@ -2520,7 +2520,7 @@ sov_unit_edits = {
             "add_specs": ["'terrain_radar'"],
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 2, 0, 1],
     },
 
     "Su_24MP_SEAD2_SOV": {  # SEAD2
@@ -2582,7 +2582,7 @@ sov_unit_edits = {
             "add_specs": ["'terrain_radar'"],
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 2, 0, 0],
     },
 
     "Su_24M_thermo_SOV": {
@@ -2591,7 +2591,7 @@ sov_unit_edits = {
             "add_specs": ["'terrain_radar'"],
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.0],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 2, 0, 0],
     },
 
     "MiG_27M_bombe_SOV": {  # 4x FAB-500
@@ -2665,7 +2665,7 @@ sov_unit_edits = {
             },
         },
         "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 2, 0, 1],
         "UpgradeFromUnit": None,
     },
 
@@ -2693,7 +2693,7 @@ sov_unit_edits = {
     "Su_27S_SOV": {  # 6x R-73, 4x R-27R
         "CommandPoints": 240,
         "XPMultiplier": [0.0, 1.0, 0.0, 0.5],
-        # TODO: Define "availability" to calculate "TrueAvail"
+        "TrueAvail": [0, 2, 0, 1],
     },
 
     "MiG_31_AA1_SOV": {  # 4x R-33, 2x R-40TD1
