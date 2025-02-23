@@ -368,7 +368,7 @@ pol_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": [12, 9, 0, 0],
+        "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],

@@ -28,6 +28,7 @@ from src.gameplay import (
     supply_divisions,
     temp_fix_reco_radar,
     ui_gameplay_textscripts,
+    unit_edits_cadavre_descriptor,
     unit_edits_divisionrules,
     update_deck_pack_references,
     update_weapondescr_ammoname_quantity,
@@ -326,6 +327,7 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
             create_showroom_depictions,
         ],
         "GameData/Generated/Gameplay/Gfx/UniteCadavreDescriptor.ndf": [
+            unit_edits_cadavre_descriptor,
             create_cadavre_depictions,
         ],
         "GameData/Generated/Gameplay/Gfx/Depictions/DepictionAlternatives.ndf": [

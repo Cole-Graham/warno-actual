@@ -16,6 +16,7 @@ from .new_depictions import (
 )
 from .showroom import edit_showroom_units
 from .unit_edits import (
+    unit_edits_cadavre_descriptor,
     unit_edits_depictionaerial,
     unit_edits_missilecarriage,
     unit_edits_missilecarriagedepiction,
@@ -37,6 +38,7 @@ __all__ = [
     'create_veh_depiction_selectors',
     'create_veh_showroom_depictions',
     'create_aerial_ghost_depictions',
+    'unit_edits_cadavre_descriptor',
     'unit_edits_depictionaerial',
     'unit_edits_missilecarriage',
     'unit_edits_missilecarriagedepiction',

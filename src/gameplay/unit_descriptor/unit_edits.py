@@ -176,6 +176,23 @@ def _add_modules(unit_row: Any, descr_row: Any, edits: dict, modules_list: list,
         f'     )'
     )
     
+    vehicle_transporter_module = (
+        'Transporter is'
+        '    TModuleSelector'
+        '    ('
+        '        Default = TTransporterModuleDescriptor'
+        '        ('
+        '            TransportableTagSet = ["Crew"]'
+        '            NbSeatsAvailable = 1'
+        '            WreckUnloadPhysicalDamageBonus = WreckUnloadDamageBonus_Default_Physical'
+        '            WreckUnloadSuppressDamageBonus = WreckUnloadDamageBonus_Default_Suppress'
+        '            WreckUnloadStunDamageBonus = WreckUnloadDamageBonus_Default_Stun'
+        '            LoadRadiusGRU = 70'
+        '        )'
+        '        Condition = ~/IfNotCadavreCondition'
+        '    )'
+    )
+    
     is_helo = False
     if unit_name in unit_db:
         if unit_db[unit_name]["is_helo_unit"]:
@@ -185,6 +202,10 @@ def _add_modules(unit_row: Any, descr_row: Any, edits: dict, modules_list: list,
     if is_helo and add_transport_module:
         modules_list.v.add(heli_transporter_module)  # noqa
         logger.info(f"Added heli transporter module to {unit_name}")
+    elif not is_helo and add_transport_module:
+        modules_list.v.add(vehicle_transporter_module)  # noqa
+        logger.info(f"Added vehicle transporter module to {unit_name}")
+
 
 # def _handle_transporter(unit_row: Any, descr_row: Any, edits: dict, index: int,
 #                        modules_list: list, dictionary_entries: list, game_db: Dict[str, Any]) -> None:

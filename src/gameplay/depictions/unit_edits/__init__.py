@@ -1,5 +1,6 @@
 """Unit edits for depiction files."""
 
+from .cadavre_descriptor import unit_edits_cadavre_descriptor
 from .depiction_unit_edits import (
     unit_edits_depictionaerial,
     unit_edits_missilecarriage,
@@ -10,6 +11,7 @@ from .depiction_unit_edits import (
 
 
 __all__ = [
+    "unit_edits_cadavre_descriptor",
     "unit_edits_depictionaerial",
     "unit_edits_missilecarriage",
     "unit_edits_missilecarriagedepiction",

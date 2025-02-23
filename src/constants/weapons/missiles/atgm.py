@@ -114,7 +114,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Index": 16,
             },
             "hit_roll": {
-                "Idling": 40,
+                "Idling": 45,
             },
             "parent_membr": {
                 "MaximalSpeedGRU": 350,

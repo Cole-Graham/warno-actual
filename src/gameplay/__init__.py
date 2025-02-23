@@ -37,6 +37,7 @@ from .depictions import (
     create_veh_showroom_depictions,
     edit_infantry_depictions,
     edit_showroom_units,
+    unit_edits_cadavre_descriptor,
     unit_edits_depictionvehicles,
     unit_edits_depictioninfantry,
 )
