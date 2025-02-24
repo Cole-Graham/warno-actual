@@ -29,6 +29,7 @@ from .standards import (
 )
 from .unit_edits import unit_edits_weapondescriptor
 from .vanilla_modifications import vanilla_renames_ammunition, remove_vanilla_instances, vanilla_renames_weapondescriptor
+from .weapon_traits import edit_weapon_traits
 
 __all__ = [
     'apply_default_salves',
@@ -54,5 +55,6 @@ __all__ = [
     'edit_weapon_ranges',
     'bomb_damage_standards',
     'edit_fire_descriptors',
-    'change_fire_descriptors'
+    'change_fire_descriptors',
+    'edit_weapon_traits',
 ]

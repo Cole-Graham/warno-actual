@@ -6,6 +6,7 @@ from .autocanon import weapons as autocanon_weapons
 from .autocanon_dca import weapons as autocanon_dca_weapons
 from .bomb import weapons as bomb_weapons
 from .canon import weapons as canon_weapons
+from .fire import weapons as fire_weapons
 from .howitzer import weapons as howitzer_weapons
 from .mlrs import weapons as mlrs_weapons
 from .mortier import weapons as mortier_weapons
@@ -22,6 +23,7 @@ ammunitions: Dict[WeaponKey, WeaponData] = {
     **autocanon_dca_weapons,
     **bomb_weapons,
     **canon_weapons,
+    **fire_weapons,
     **howitzer_weapons,
     **mlrs_weapons,
     **mortier_weapons,

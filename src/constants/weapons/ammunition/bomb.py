@@ -63,10 +63,40 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("Bomb_Mk77_340kg_Napalm_salvolength8", "napalm_bomb", "Bomb_Mk77_340kg_Napalm_salvolength4", True): { # 71
+        "Ammunition": {
+            "parent_membr": {
+                "NbTirParSalves": 8,
+                "SupplyCost": 260,
+                "AffichageMunitionParSalve": 8,
+            },
+        },
+    },
+    
+    ("Bomb_Mk77_340kg_Napalm_salvolength5", "napalm_bomb", "Bomb_Mk77_340kg_Napalm_salvolength4", True): { # 71
+        "Ammunition": {
+            "parent_membr": {
+                "NbTirParSalves": 5,
+                "SupplyCost": 200,
+                "AffichageMunitionParSalve": 5,
+            },
+        },
+    },
+    
     ("Bomb_Mk77_340kg_Napalm_salvolength4", "napalm_bomb", None, False): { # 71
         "Ammunition": {
             "parent_membr": {
                 "SupplyCost": 180,
+            },
+        },
+    },
+    
+    ("Bomb_Mk77_340kg_Napalm_salvolength3", "napalm_bomb", "Bomb_Mk77_340kg_Napalm_salvolength4", True): { # 71
+        "Ammunition": {
+            "parent_membr": {
+                "NbTirParSalves": 3,
+                "SupplyCost": 150,
+                "AffichageMunitionParSalve": 3,
             },
         },
     },
@@ -75,6 +105,42 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "SupplyCost": 120,
+            },
+        },
+    },
+    
+    ("Bomb_ODAB_500PM_500kg_Thermobaric_salvolength2", "thermo_bomb", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 20.0,
+                "SupplyCost": 160,
+            },
+        },
+    },
+    
+    ("Bomb_ODAB_500PM_500kg_Thermobaric_salvolength4", "thermo_bomb", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 20.0,
+                "SupplyCost": 240,
+            },
+        },
+    },
+    
+    ("Bomb_ODAB_500PM_500kg_Thermobaric_salvolength6", "thermo_bomb", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 20.0,
+                "SupplyCost": 300,
+            },
+        },
+    },
+    
+    ("Bomb_ODAB_500PM_500kg_Thermobaric_salvolength8", "thermo_bomb", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 20.0,
+                "SupplyCost": 360,
             },
         },
     },

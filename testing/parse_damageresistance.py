@@ -3,9 +3,9 @@
 import csv
 import os
 import winreg
+from datetime import datetime
 from pathlib import Path
 from typing import Any, List, Tuple
-from datetime import datetime
 
 from src import ndf
 from src.utils.logging_utils import setup_logger
@@ -55,20 +55,22 @@ def get_damage_families(damage_params: Any) -> List[Tuple[str, int]]:
     return damage_families
 
 
-def get_damage_levels(damage_families: List[Tuple[str, int]]) -> List[Tuple[int, str, int]]:
+def get_damage_levels(damage_families: List[Tuple[str, int]], damage_array: Any) -> List[Tuple[int, str, int]]:
     """Generate list of damage levels with array indices."""
     damage_levels = []
     array_row_index = 0
+    array_size = len(damage_array)
     
     for family, max_index in damage_families:
         damage_indices_left = int(max_index)
         damage_level = 1
-        while damage_indices_left > 0:
+        while damage_indices_left > 0 and array_row_index < array_size:
             damage_levels.append((array_row_index, family, damage_level))
             damage_level += 1
             damage_indices_left -= 1
             array_row_index += 1
             
+    logger.debug(f"Generated {len(damage_levels)} damage levels from array of size {array_size}")
     return damage_levels
 
 
@@ -167,14 +169,14 @@ def main() -> None:
         source = mod.parse_src(r"GameData\Generated\Gameplay\Gfx\DamageResistance.ndf")
         damage_params = source.by_n("DamageResistanceParams").v
         
+        # Get damage array first
+        damage_array = damage_params.by_m("Values").v
+
         # Get families and levels
         resistance_families = get_resistance_families(damage_params)
         damage_families = get_damage_families(damage_params)
-        damage_levels = get_damage_levels(damage_families)
+        damage_levels = get_damage_levels(damage_families, damage_array)  # Pass damage_array
         armor_levels = get_armor_levels(resistance_families)
-        
-        # Get damage array
-        damage_array = damage_params.by_m("Values").v  # noqa
         
         # Write CSV output
         desktop_path = get_desktop_path() / "csv"

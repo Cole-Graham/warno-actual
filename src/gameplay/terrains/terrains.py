@@ -14,7 +14,7 @@ def edit_terrains(source_path) -> None:
     """Edit terrain properties in Terrains.ndf."""
     logger.info("Editing terrain properties")
     
-    # Add full_balle damage modifiers
+    # Add damage modifiers
     terrain_modifiers = [
         ("ForetDense", "0.5"),
         ("ForetLegere", "0.65"),
@@ -26,9 +26,18 @@ def edit_terrains(source_path) -> None:
     for terrain, value in terrain_modifiers:
         terrain_obj = source_path.by_n(terrain).v
         damage_modifier_map = terrain_obj.by_m("DamageModifierPerFamilyAndResistance").v
+        
         damage_modifier_map.add(
-            f"(DamageFamily_full_balle, MAP [(ResistanceFamily_infanterie,{value})])")
-        logger.info(f"Added full_balle damage modifier {value} to {terrain}")
+            f"(DamageFamily_sa_intermediate, MAP [(ResistanceFamily_infanterie,{value})])")
+        logger.info(f"Added sa_intermediate damage modifier {value} to {terrain}")
+        
+        damage_modifier_map.add(
+            f"(DamageFamily_sa_full, MAP [(ResistanceFamily_infanterie,{value})])")
+        logger.info(f"Added sa_full damage modifier {value} to {terrain}")
+        
+        damage_modifier_map.add(
+            f"(DamageFamily_thermobarique, MAP [(ResistanceFamily_infanterie,{value})])")
+        logger.info(f"Added thermobarique damage modifier {value} to {terrain}")
     
     # Edit DefaultTerrain properties
     default_terrain = source_path.by_n("DefaultTerrain")
@@ -85,6 +94,7 @@ def edit_terrains(source_path) -> None:
             
             inf_resistance = res_map.by_k("ResistanceFamily_infanterie", False)
             if inf_resistance is not None:
+                
                 res_map.add(
                     f"(ResistanceFamily_infanterieWA, {inf_resistance.v})")
                 logger.info(

@@ -76,7 +76,7 @@ def modify_new_unit(unit_row: Any, edits: Dict[str, Any]) -> None:
     modules_list = unit_row.v.by_member("ModulesDescriptors")
     
     # First add any new modules
-    modules_to_add = edits.get("Modules_add", [])
+    modules_to_add = edits.get("modules_add", [])
     if modules_to_add:  
         transport_module = """Transporter is TModuleSelector
             (

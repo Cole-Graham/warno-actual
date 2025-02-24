@@ -5,9 +5,7 @@ from src import ndf
 
 def unit_edits_cadavre_descriptor(source_path: Any) -> None:
     """Edit unit cadavre descriptor in UnitCadavreDescriptor.ndf"""
-    ndf_file = "UnitCadavreDescriptor.ndf"
-    
-    # Load all depiction edits
+
     unit_edits = load_unit_edits()
 
     for unit_name, edits in unit_edits.items():

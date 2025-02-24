@@ -807,7 +807,7 @@ usa_unit_edits = {
         "GameName": {
             "display": "ENGINEERS [DRAGON]",
         },
-        "CommandPoints": 40,
+        "CommandPoints": 45,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -2328,7 +2328,11 @@ usa_unit_edits = {
         "Factory": "EDefaultFactories/Logistic",
         "Divisions": {
             "default": {
+                "Transports": ["M113A3_US"],
                 "cards": 1,
+            },
+            "US_82nd_Airborne": {
+                "Transports": ["M1038_Humvee_US"],
             },
         },
         "availability": [0, 8, 6, 0],
@@ -2345,7 +2349,7 @@ usa_unit_edits = {
             "needs_transport": True,
             "default": {
                 "cards": 1,
-                "Transports": ["M998_Humvee_US"],
+                "Transports": ["M113A3_US"],
             },
             # "UK_2nd_Infantry": {
             #     "cards": 1,
@@ -2621,6 +2625,12 @@ usa_unit_edits = {
             "OpticalStrengthAltitude": 375,
         },
         "availability": [0, 3, 0, 0],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("Bomb_Mk77_340kg_Napalm_salvolength2", "Bomb_Mk77_340kg_Napalm_salvolength5")],
+                "fire_effect": [("Bomb_Mk77_340kg_Napalm_x2", "Bomb_Mk77_340kg_Napalm_x4")]
+            },
+        },
     },
 
     "F111E_Aardvark_US": {  # 12x mk82, 3rd Armored
@@ -2665,6 +2675,12 @@ usa_unit_edits = {
             "add_specs": ["'terrain_radar'"],
         },
         "availability": [0, 3, 0, 0],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("Bomb_Mk77_340kg_Napalm_salvolength4", "Bomb_Mk77_340kg_Napalm_salvolength8")],
+                "fire_effect": [("Bomb_Mk77_340kg_Napalm_x4", "Bomb_Mk77_340kg_Napalm_x6")]
+            },
+        },
     },
 
     "F111F_Aardvark_napalm_US": {  # 4x Mk-77 napalm, 82nd Airborne
@@ -2673,6 +2689,12 @@ usa_unit_edits = {
             "add_specs": ["'terrain_radar'"],
         },
         "availability": [0, 3, 0, 0],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("Bomb_Mk77_340kg_Napalm_salvolength4", "Bomb_Mk77_340kg_Napalm_salvolength8")],
+                "fire_effect": [("Bomb_Mk77_340kg_Napalm_x4", "Bomb_Mk77_340kg_Napalm_x6")]
+            },
+        },
     },
 
     "EF111_Raven_US": {
@@ -2733,11 +2755,16 @@ usa_unit_edits = {
             "OpticalStrengthAltitude": 375,
         },
         "availability": [0, 3, 2, 0],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("Bomb_Mk77_340kg_Napalm_salvolength2", "Bomb_Mk77_340kg_Napalm_salvolength4")],
+                "fire_effect": [("Bomb_Mk77_340kg_Napalm_x2", "Bomb_Mk77_340kg_Napalm_x4")]
+            },
+        },
     },
 
     "F16E_SEAD_US": {
         "CommandPoints": 220,
-        "ECM": -0.35,
         "optics": {
             "OpticalStrengthAltitude": 375,
         },

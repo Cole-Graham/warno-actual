@@ -842,6 +842,7 @@ rda_unit_edits = {
         "CommandPoints": 20,
         "Divisions": {
             "default": {
+                "Transports": ["MTLB_trans_DDR"],
                 "cards": 1,
             },
         },

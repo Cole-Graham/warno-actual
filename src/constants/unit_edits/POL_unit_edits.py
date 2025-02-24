@@ -9,6 +9,7 @@ pol_unit_edits = {
         "Factory": "EDefaultFactories/Logistic",
         "Divisions": {
             "default": {
+                "Transports": ["MTLB_trans_POL"],
                 "cards": 69,
             },
             "POL_4_Zmechanizowana": {
@@ -31,6 +32,7 @@ pol_unit_edits = {
         "Factory": "EDefaultFactories/Logistic",
         "Divisions": {
             "default": {
+                "Transports": ["MTLB_trans_POL"],
                 "cards": 69,
             },
             "POL_4_Zmechanizowana": {

@@ -56,7 +56,7 @@ def create_new_weapons(source_path: Any, game_db: Dict[str, Any]) -> None:
                 # Handle replacements
                 if "replace" in changes:
                     for old_ammo, new_ammo in changes["replace"]:
-                        _replace_weapon(changes, new_weap_row, old_ammo, new_ammo, game_db)
+                        _replace_weapon(source_path, changes, new_weap_row, new_ammo, game_db)
                         
                 # Handle quantities
                 if "quantity" in changes:
@@ -67,6 +67,9 @@ def create_new_weapons(source_path: Any, game_db: Dict[str, Any]) -> None:
             if "Salves" in weapon_edits:
                 for ammo, salvo in weapon_edits["Salves"].items():
                     _update_weapon_salvo(new_weap_row, ammo, salvo, game_db)
+        
+        # Update any unmodified weapons that should use strength variants
+        _update_unmodified_weapons(new_weap_row, game_db)
         
         source_path.add(new_weap_row)
         logger.info(f"Added weapon descriptor for {edits['NewName']}")
@@ -93,6 +96,18 @@ def _add_weapon(
     # Get turret index and weapon name from changes
     turret_index = changes["add"][0][0]  # First element's turret index
     weapon_name = changes["add"][0][1]   # First element's weapon name
+    
+    # Get unit strength from NEW_UNITS
+    unit_name = new_weap_row.namespace.replace("WeaponDescriptor_", "")
+    unit_strength = None
+    for donor, edits in NEW_UNITS.items():
+        if edits.get("NewName") == unit_name:
+            unit_strength = edits.get("strength")
+            break
+    
+    if not unit_strength:
+        logger.warning(f"No strength found for new unit {unit_name}")
+        return
     
     # check if weapon is renamed
     old_name = ammo_db["renames_new_old"].get(weapon_name, None)
@@ -126,7 +141,7 @@ def _add_weapon(
         # Create new turret by copying template
         new_turret = donor_turret.copy()
         
-        # Update weapon indices
+        # Update weapon indices and add strength to ammo path
         mounted_wpns = new_turret.v.by_m("MountedWeaponDescriptorList")
         for weapon in mounted_wpns.v:
             weapon.v.by_m("SalvoStockIndex").v = str(turret_index)
@@ -134,6 +149,23 @@ def _add_weapon(
             weapon.v.by_m("WeaponActiveAndCanShootPropertyName").v = f"'WeaponActiveAndCanShoot_{turret_index + 1}'"
             weapon.v.by_m("WeaponIgnoredPropertyName").v = f"'WeaponIgnored_{turret_index + 1}'"
             weapon.v.by_m("WeaponShootDataPropertyName").v = f"['WeaponShootData_0_{turret_index + 1}']"
+            
+            # Update ammo path to include strength
+            current_ammo = weapon.v.by_m("Ammunition").v
+            prefix = current_ammo.split("_", 1)[0]  # Get $/GFX/Weapon/Ammo part
+            quantity = int(weapon.v.by_m("NbWeapons").v)
+            
+            if _should_use_strength_variant(weapon_name, game_db):
+                if quantity > 1:
+                    new_ammo = f"{prefix}_{weapon_name}_strength{unit_strength}_x{quantity}"
+                else:
+                    new_ammo = f"{prefix}_{weapon_name}_strength{unit_strength}"
+            else:
+                if quantity > 1:
+                    new_ammo = f"{prefix}_{weapon_name}_x{quantity}"
+                else:
+                    new_ammo = f"{prefix}_{weapon_name}"
+            weapon.v.by_m("Ammunition").v = new_ammo
         
         # Update turret bone index
         new_yul_bone = turret_index + 1
@@ -167,16 +199,37 @@ def _add_hagru_manpads(
     mounted_weapons.v.add(new_weapon)
 
 def _replace_weapon(
-    changes: Dict[str, Any],   
+    source_path: Any,
+    changes: Dict[str, Any],
     new_weap_row: Any,
-    old_ammo: str,
     new_ammo: str,
     game_db: Dict[str, Any]
 ) -> None:
-    """Replace a weapon in the weapon descriptor."""
+    """Replace a weapon with a new one."""
     ammo_db = game_db["ammunition"]
-    old_ammo_db = ammo_db["renames_new_old"].get(old_ammo, None)
+    old_ammo = ammo_db["renames_new_old"].get(new_ammo, None)
     
+    # Get unit strength from NEW_UNITS
+    unit_name = new_weap_row.namespace.replace("WeaponDescriptor_", "")
+    unit_strength = None
+    for donor, edits in NEW_UNITS.items():
+        if edits.get("NewName") == unit_name:
+            unit_strength = edits.get("strength")
+            break
+    
+    if not unit_strength:
+        logger.warning(f"No strength found for new unit {unit_name}")
+        return
+    
+    # Check if this weapon should use strength variants
+    use_strength = False
+    for (weapon_name, category, _, _), data in small_arms_weapons.items():
+        if weapon_name == new_ammo and category == "small_arms":
+            damage_family = data.get("Ammunition", {}).get("Arme", {}).get("Family")
+            use_strength = damage_family in ["DamageFamily_sa_full", "DamageFamily_sa_intermediate"]
+            break
+
+    # Iterate through turrets and weapons to find the one to replace
     for descr_row in new_weap_row.v.by_member("TurretDescriptorList").v:
         if not is_valid_turret(descr_row.v):
             continue
@@ -184,18 +237,37 @@ def _replace_weapon(
         for weapon_descr_row in descr_row.v.by_member("MountedWeaponDescriptorList").v:
             if not isinstance(weapon_descr_row.v, ndf.model.Object):
                 continue
-            
+                
             current_ammo = weapon_descr_row.v.by_member("Ammunition").v
-            if current_ammo.split("_", 1)[1] == old_ammo or (old_ammo_db and current_ammo.split("_", 1)[1] == old_ammo_db):
-                prefix = current_ammo.split("_", 1)[0]
-                weapon_descr_row.v.by_m("Ammunition").v = f"{prefix}_{new_ammo}"
-                logger.debug(f"Replaced weapon {old_ammo} with {new_ammo}")
+            current_base_ammo = current_ammo.split("_", 1)[1]  # Just get the base name after $/GFX/Weapon/Ammo_
+            
+            # Check if this is the weapon to replace
+            if current_base_ammo == old_ammo:
+                # Update ammo path with quantity and strength if needed
+                prefix = current_ammo.split("_", 1)[0]  # Get $/GFX/Weapon/Ammo part
+                quantity = int(weapon_descr_row.v.by_m("NbWeapons").v)
+                
+                if quantity > 1:
+                    if use_strength:
+                        new_ammo_path = f"{prefix}_{new_ammo}_strength{unit_strength}_x{quantity}"
+                    else:
+                        new_ammo_path = f"{prefix}_{new_ammo}_x{quantity}"
+                else:
+                    if use_strength:
+                        new_ammo_path = f"{prefix}_{new_ammo}_strength{unit_strength}"
+                    else:
+                        new_ammo_path = f"{prefix}_{new_ammo}"
+                        
+                weapon_descr_row.v.by_m("Ammunition").v = new_ammo_path
+                logger.debug(f"Replaced weapon with {new_ammo} using ammo path {new_ammo_path}")
+                
+                # Handle fire effect changes
                 if "fire_effect" in changes:
                     fire_effect_val = strip_quotes(weapon_descr_row.v.by_m("EffectTag").v)
                     for old_fire_effect, new_fire_effect in changes["fire_effect"]:
                         if old_fire_effect == fire_effect_val.replace("FireEffect_", ""):
                             weapon_descr_row.v.by_m("EffectTag").v = "'" + f"FireEffect_{new_fire_effect}" + "'"
-                            logger.debug(f"Replaced fire effect{old_fire_effect} with {new_fire_effect}")
+                            logger.debug(f"Replaced fire effect {old_fire_effect} with {new_fire_effect}")
                 break
 
 
@@ -204,6 +276,18 @@ def _update_weapon_quantity(new_weap_row: Any, ammo: str, quantity: int, game_db
     ammo_db = game_db["ammunition"]
     old_ammo = ammo_db["renames_new_old"].get(ammo, None)
     
+    # Get unit strength from NEW_UNITS
+    unit_name = new_weap_row.namespace.replace("WeaponDescriptor_", "")
+    unit_strength = None
+    for donor, edits in NEW_UNITS.items():
+        if edits.get("NewName") == unit_name:
+            unit_strength = edits.get("strength")
+            break
+    
+    if not unit_strength:
+        logger.warning(f"No strength found for new unit {unit_name}")
+        return
+    
     for descr_row in new_weap_row.v.by_member("TurretDescriptorList").v:
         if not is_valid_turret(descr_row.v):
             continue
@@ -213,21 +297,28 @@ def _update_weapon_quantity(new_weap_row: Any, ammo: str, quantity: int, game_db
                 continue
                 
             current_ammo = weapon_descr_row.v.by_member("Ammunition").v
-            current_ammo_base = current_ammo.split("_x")[0].split("_", 1)[1]  # Remove prefix and any _x{number} suffix
+            current_base_ammo = current_ammo.split("_", 1)[1]  # Just get the base name after $/GFX/Weapon/Ammo_
             
             # Check both current name and old name
-            if current_ammo_base == ammo or (old_ammo and current_ammo_base == old_ammo):
+            if current_base_ammo == ammo or (old_ammo and current_base_ammo == old_ammo):
                 # Update NbWeapons
-                weapon_descr_row.v.by_m("NbWeapons").v = quantity
+                weapon_descr_row.v.by_m("NbWeapons").v = str(quantity)
                 
                 # Update ammo name with quantity only for small arms
-                is_small_arm = any(ammo == weapon_name 
-                                 for (weapon_name, category, _, _) in small_arms_weapons.keys() 
-                                 if category == "small_arms")
+                is_small_arm = _should_use_strength_variant(ammo, game_db)
                 
-                if quantity > 1 and is_small_arm:
-                    prefix = current_ammo.split("_", 1)[0]  # Get the $/GFX/Weapon/Ammo part
-                    new_ammo = f"{prefix}_{ammo}_x{quantity}"  # Always use new name
+                if is_small_arm:
+                    prefix = current_ammo.split("_", 1)[0]
+                    if _should_use_strength_variant(ammo, game_db):
+                        if quantity > 1:
+                            new_ammo = f"{prefix}_{ammo}_strength{unit_strength}_x{quantity}"
+                        else:
+                            new_ammo = f"{prefix}_{ammo}_strength{unit_strength}"
+                    else:
+                        if quantity > 1:
+                            new_ammo = f"{prefix}_{ammo}_x{quantity}"
+                        else:
+                            new_ammo = f"{prefix}_{ammo}"
                     weapon_descr_row.v.by_m("Ammunition").v = new_ammo
                     logger.debug(f"Updated quantity and name for small arm {ammo} to {new_ammo} (x{quantity})")
                 else:
@@ -239,7 +330,18 @@ def _update_weapon_salvo(new_weap_row: Any, ammo: str, salvo: int, game_db: Dict
     """Update the salvo of a weapon in the weapon descriptor."""
     ammo_db = game_db["ammunition"]
     old_ammo = ammo_db["renames_new_old"].get(ammo, None)
-    quantity_pattern = re.compile(r'\$/GFX/Weapon/Ammo_(.+?)(?:_x\d{1,2})?$')
+    
+    # Get unit strength from NEW_UNITS
+    unit_name = new_weap_row.namespace.replace("WeaponDescriptor_", "")
+    unit_strength = None
+    for donor, edits in NEW_UNITS.items():
+        if edits.get("NewName") == unit_name:
+            unit_strength = edits.get("strength")
+            break
+    
+    if not unit_strength:
+        logger.warning(f"No strength found for new unit {unit_name}")
+        return
     
     if ammo == "add":
         salves_list = new_weap_row.v.by_member("Salves").v
@@ -256,15 +358,74 @@ def _update_weapon_salvo(new_weap_row: Any, ammo: str, salvo: int, game_db: Dict
                     continue
                 
                 current_ammo = weapon_descr_row.v.by_member("Ammunition").v
-                # Extract base ammo name without quantity suffix
-                base_ammo_match = quantity_pattern.match(current_ammo)
-                if not base_ammo_match:
-                    continue
-                    
-                base_ammo = base_ammo_match.group(1)
-                if base_ammo == ammo or (old_ammo and base_ammo == old_ammo):
+                current_base_ammo = current_ammo.split("_", 1)[1]  # Just get the base name after $/GFX/Weapon/Ammo_
+                current_base_ammo = re.sub(r'_strength\d+', '', current_base_ammo)  # Remove strength identifier
+                current_base_ammo = re.sub(r'_x\d+$', '', current_base_ammo)  # Remove quantity identifier if present
+                
+                if current_base_ammo == ammo or (old_ammo and current_base_ammo == old_ammo):
                     salves_list = new_weap_row.v.by_member("Salves").v
                     if isinstance(salves_list, ndf.model.List):
                         salves_list.replace(int(weapon_descr_row.v.by_member("SalvoStockIndex").v), str(salvo))
                         logger.debug(f"Updated salvo for {ammo} to {salvo}")
                     break
+
+def _should_use_strength_variant(weapon_name: str, game_db: Dict[str, Any]) -> bool:
+    """Check if a weapon should use strength variants based on its damage family.
+    
+    Args:
+        weapon_name: Name of the weapon to check
+        game_db: Game database containing ammunition data
+        
+    Returns:
+        bool: True if weapon should use strength variants
+    """
+    for (ammo_name, category, _, _), data in small_arms_weapons.items():
+        if ammo_name == weapon_name and category == "small_arms":
+            damage_family = data.get("Ammunition", {}).get("Arme", {}).get("Family")
+            return damage_family in ["DamageFamily_sa_full", "DamageFamily_sa_intermediate"]
+    return False
+
+def _update_unmodified_weapons(new_weap_row: Any, game_db: Dict[str, Any]) -> None:
+    """Update unmodified weapons to ensure correct strength variants."""
+    # Get unit strength from NEW_UNITS
+    unit_name = new_weap_row.namespace.replace("WeaponDescriptor_", "")
+    unit_strength = None
+    for donor, edits in NEW_UNITS.items():
+        if edits.get("NewName") == unit_name:
+            unit_strength = edits.get("strength")
+            break
+    
+    if not unit_strength:
+        logger.warning(f"No strength found for new unit {unit_name}")
+        return
+    
+    for descr_row in new_weap_row.v.by_member("TurretDescriptorList").v:
+        if not is_valid_turret(descr_row.v):
+            continue
+            
+        for weapon_descr_row in descr_row.v.by_member("MountedWeaponDescriptorList").v:
+            if not isinstance(weapon_descr_row.v, ndf.model.Object):
+                continue
+            
+            current_ammo = weapon_descr_row.v.by_member("Ammunition").v
+            current_base_ammo = current_ammo.split("_", 1)[1]  # Just get base name after $/GFX/Weapon/Ammo_
+            
+            # Check if this weapon should use strength variants
+            use_strength = False
+            for (weapon_name, category, _, _), data in small_arms_weapons.items():
+                if weapon_name == current_base_ammo and category == "small_arms":
+                    damage_family = data.get("Ammunition", {}).get("Arme", {}).get("Family")
+                    use_strength = damage_family in ["DamageFamily_sa_full", "DamageFamily_sa_intermediate"]
+                    break
+            
+            if use_strength:
+                prefix = current_ammo.split("_", 1)[0]
+                quantity = int(weapon_descr_row.v.by_m("NbWeapons").v)
+                
+                if quantity > 1:
+                    new_ammo = f"{prefix}_{current_base_ammo}_strength{unit_strength}_x{quantity}"
+                else:
+                    new_ammo = f"{prefix}_{current_base_ammo}_strength{unit_strength}"
+                    
+                weapon_descr_row.v.by_m("Ammunition").v = new_ammo
+                logger.debug(f"Updated unmodified weapon {current_base_ammo} to use strength variant: {new_ammo}")

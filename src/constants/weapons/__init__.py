@@ -8,7 +8,9 @@ from .damage_values import (
     DPICM_DAMAGES,
     FMBALLE_INFANTRY_EDITS,
     FMBALLE_ROWS,
-    FULL_BALL_DAMAGE,
+    SA_FULL_DAMAGE_RATIOS,
+    SA_INTERMEDIATE_DAMAGE_RATIOS,
+    SA_INF_ARMOR_DAMAGE_RATIOS,
     INFANTRY_ARMOR_EDITS,
     SNIPER_DAMAGE,
     KPVT_DAMAGE,
@@ -19,7 +21,7 @@ from .damage_values import (
 )
 from .missiles import missiles
 from .salvo_standards import LIGHT_AT_AMMO
-from .weapon_descriptions import WEAPON_DESCRIPTIONS
+from .weapon_descriptions import WEAPON_DESCRIPTIONS, WEAPON_TRAITS
 from .vanilla_inst_modifications import (
     AMMUNITION_MISSILES_REMOVALS,
     AMMUNITION_MISSILES_RENAMES,
@@ -38,7 +40,9 @@ __all__ = [
     'DPICM_DAMAGES',
     'FMBALLE_INFANTRY_EDITS',
     'FMBALLE_ROWS',
-    'FULL_BALL_DAMAGE',
+    'SA_FULL_DAMAGE_RATIOS',
+    'SA_INTERMEDIATE_DAMAGE_RATIOS',
+    'SA_INF_ARMOR_DAMAGE_RATIOS',
     'INFANTRY_ARMOR_EDITS',
     'KPVT_DAMAGE',
     'NPLM_BOMB_DAMAGE',
@@ -46,6 +50,7 @@ __all__ = [
     'SNIPER_DAMAGE',
     'LIGHT_AT_AMMO',
     'WEAPON_DESCRIPTIONS',
+    'WEAPON_TRAITS',
     'ammunitions',
     'PGB_BOMB_DAMAGE',
     'MANPAD_HAGRU_DAMAGE',

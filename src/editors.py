@@ -33,6 +33,7 @@ from src.gameplay import (
     update_deck_pack_references,
     update_weapondescr_ammoname_quantity,
     vanilla_renames_weapondescriptor,
+    edit_weapon_traits,
 )
 from src.gameplay.buildings import edit_fob_attributes
 from src.gameplay.depictions import (
@@ -519,7 +520,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/Generated/UserInterface/UnitSpecialties.ndf": [
             edit_specialties,
         ],
-
+        "GameData/Generated/UserInterface/UnitTraits.ndf": [
+            edit_weapon_traits,
+        ],
 
         # Depiction files
         "GameData/Generated/Gameplay/Gfx/Depictions/GeneratedDepictionVehiclesShowRoom.ndf": [

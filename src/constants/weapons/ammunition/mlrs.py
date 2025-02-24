@@ -17,7 +17,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "PorteeMaximaleGRU": 3000,
                 "DispersionAtMaxRangeGRU": 700,
                 "DispersionAtMinRangeGRU": 350,
-                "PhysicalDamages": 7.2,
+                "PhysicalDamages": 10.0,
                 "SuppressDamages": 467,
                 "RadiusSplashPhysicalDamagesGRU": 220,
                 "RadiusSplashSuppressDamagesGRU": 293,

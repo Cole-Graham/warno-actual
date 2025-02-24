@@ -1914,8 +1914,8 @@ sov_unit_edits = {
             "is_transported": True,
             "needs_transport": True,
             "default": {
+                "Transports": ["MTLB_transp_SOV"],
                 "cards": 1,
-                "Transports": ["GAZ_66_SOV"],
             },
         },
         "availability": [9, 7, 0, 0],

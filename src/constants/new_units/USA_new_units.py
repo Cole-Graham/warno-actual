@@ -133,6 +133,7 @@ USA_NEW_UNITS = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_M16": 7,
+                "MMG_inf_M240B_7_62mm": 30,
                 "M47_DRAGON_II": 2,
                 "add": [(2, 10), ],
             },
@@ -220,6 +221,7 @@ USA_NEW_UNITS = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_M16": 7,
+                "MMG_inf_M240B_7_62mm": 30,
                 "M47_DRAGON_II": 2,
                 "add": [(2, 10), ],
             },
@@ -271,7 +273,7 @@ USA_NEW_UNITS = {
     #     "GroupeCombatGUID": "4e620fd4-7d88-4cee-9a21-c3f0f03203cd",
     #     "ShowroomGUID": "9a773c3f-110b-48b0-9c03-e490e3e3fd6a",
     #     "CadavreGUID": "77650abe-7421-4feb-b52b-7aa4342966ea",
-    #     "Modules_add": ["Transporter"],
+    #     "modules_add": ["Transporter"],
     #     "NewName": "M3A1_Bradley_CFV_trans_US",
     #     "TagSet": {
     #         "overwrite_all": [

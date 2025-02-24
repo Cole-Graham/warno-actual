@@ -1,9 +1,11 @@
 """Editor for Ammunition.ndf."""
 
+import re
 from typing import Any, Dict, List, Optional  # noqa
 from uuid import uuid4
 
 from src import ndf
+from src.constants.new_units import NEW_UNITS
 from src.constants.unit_edits import load_unit_edits
 from src.constants.weapons.ammunition import ammunitions
 from src.constants.weapons.vanilla_inst_modifications import AMMUNITION_REMOVALS
@@ -58,6 +60,12 @@ def edit_ammunition(source_path, game_db: Dict[str, Any]) -> None:
             try:
                 ammo_data = data["Ammunition"]
                 
+                # Determine if weapon should use strength variants
+                use_strength = False
+                if category == "small_arms":
+                    damage_family = ammo_data.get("Arme", {}).get("Family")
+                    use_strength = damage_family in ["DamageFamily_sa_full", "DamageFamily_sa_intermediate"]
+                
                 # Get or create base descriptor
                 try:
                     if is_new:
@@ -77,7 +85,7 @@ def edit_ammunition(source_path, game_db: Dict[str, Any]) -> None:
                 
                 # Apply edits
                 try:
-                    _apply_weapon_edits(base_descr, data, ammo_data)
+                    _apply_weapon_edits(base_descr, category, data, ammo_data)
                     logger.debug(f"Applied edits to {weapon_name}")
                 except Exception as e:
                     logger.error(f"Failed applying edits to {weapon_name}: {str(e)}")
@@ -86,19 +94,54 @@ def edit_ammunition(source_path, game_db: Dict[str, Any]) -> None:
                 # Handle new weapons and quantities
                 try:
                     if is_new:
-                        # For new weapons, only add base descriptor if there are no quantities
                         if "NbWeapons" not in data or len(data["NbWeapons"]) == 1:
+                            # Add strength to base namespace if needed
+                            if use_strength:
+                                base_descr.namespace = f"Ammo_{weapon_name}_strength2"  # Start at strength2
+                                base_descr.v.by_m("Arme").v.by_m("Index").v = "1"  # Index starts at 1
                             source_path.add(base_descr)
-                            logger.debug(f"Added new base descriptor for {weapon_name}")
+                            logger.debug(f"Added new base descriptor for {weapon_name} "
+                                         f"(is_new={is_new}, {base_descr.namespace})")
                     
                     if "NbWeapons" in data:
                         base_cost = _get_base_supply_cost(weapon_name)
                         if len(data["NbWeapons"]) > 1:
                             _create_quantity_variants(source_path, base_descr, weapon_name, 
-                                                data["NbWeapons"], base_cost, is_new)
+                                                   data["NbWeapons"], base_cost, is_new, use_strength)
                         elif category == "small_arms" and data["NbWeapons"][0] > 1:
-                            base_descr.namespace = f"Ammo_{weapon_name}_x{data['NbWeapons'][0]}"
-                            logger.debug(f"Updated namespace for {weapon_name} to {base_descr.namespace}")
+                            # Set base namespace first with strength if needed
+                            if use_strength:
+                                for strength in range(2, 15):
+                                    strength_descr = base_descr.copy()
+                                    strength_descr.namespace = f"Ammo_{weapon_name}_strength{strength}_x{data['NbWeapons'][0]}"
+                                    strength_descr.v.by_m("Arme").v.by_m("Index").v = str(strength - 1)  # Index starts at 1
+                                    
+                                    # Generate unique GUIDs for descriptor IDs
+                                    strength_descr.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
+                                    hitroll_obj = strength_descr.v.by_m("HitRollRuleDescriptor")
+                                    hitroll_obj.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
+                                        
+                                    source_path.add(strength_descr)
+                                    logger.debug(f"Added strength {strength} variant for {weapon_name}")
+                            else:
+                                base_descr.namespace = f"Ammo_{weapon_name}_x{data['NbWeapons'][0]}"
+                        
+                        elif category == "small_arms" and data["NbWeapons"][0] == 1:
+                            if use_strength and not is_new:
+                                for strength in range(2, 15):
+                                    strength_descr = base_descr.copy()
+                                    strength_descr.namespace = f"Ammo_{weapon_name}_strength{strength}"
+                                    strength_descr.v.by_m("Arme").v.by_m("Index").v = str(strength - 1)
+                                    
+                                    # Generate unique GUIDs for descriptor IDs
+                                    strength_descr.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
+                                    hitroll_obj = strength_descr.v.by_m("HitRollRuleDescriptor")
+                                    hitroll_obj.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
+                                        
+                                    source_path.add(strength_descr)
+                                    logger.debug(f"Added strength {strength} variant for {weapon_name}")
+                            # else:
+                            #     base_descr.namespace = f"Ammo_{weapon_name}"
                             
                 except Exception as e:
                     logger.error(f"Failed handling quantities for {weapon_name}: {str(e)}")
@@ -130,38 +173,99 @@ def edit_ammunition(source_path, game_db: Dict[str, Any]) -> None:
         raise
 
 
-def _create_quantity_variants(source_path, base_descr, weapon_name, quantities, base_cost, is_new):
-    """Create quantity variants from base ammunition descriptor."""
-    logger.info(f"Creating quantity variants for {weapon_name} (is_new={is_new})")
+def _should_use_strength_variant(weapon_name: str) -> bool:
+    """Check if a weapon should use strength variants based on its damage family.
+    
+    Args:
+        weapon_name: Name of the weapon to check
+        
+    Returns:
+        bool: True if weapon should use strength variants
+    """
+    for (ammo_name, category, _, _), data in ammunitions.items():
+        if ammo_name == weapon_name and category == "small_arms":
+            damage_family = data.get("Ammunition", {}).get("Arme", {}).get("Family")
+            return damage_family in ["DamageFamily_sa_full", "DamageFamily_sa_intermediate"]
+    return False
+
+
+def _create_quantity_variants(source_path, base_descr, weapon_name, quantities, base_cost, is_new, use_strength):
+    """Create quantity and strength variants from base ammunition descriptor."""
+    logger.info(f"Creating quantity and strength variants for {weapon_name} (is_new={is_new})")
     logger.info(f"Quantities: {quantities}")
     
+    # Track created variants to avoid duplicates
+    created_variants = set()
+    
+    # Create variants for each quantity
     for i, quantity in enumerate(quantities):
-        if quantity == 1 and i == len(quantities) - 1:
-            namespace = f"Ammo_{weapon_name}"
-        else:
-            namespace = f"Ammo_{weapon_name}_x{quantity}"
-
-        existing = source_path.by_n(namespace, strict=False)
-            
-        logger.debug(f"Checking {namespace} - exists: {existing is not None}")
-        
-        if is_new or (existing is None):
-            # Create new variant
-            variant = base_descr.copy()
-            variant.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
-            variant.v.by_m("HitRollRuleDescriptor").v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
-            variant.namespace = namespace
-            
-            if base_cost is not None:
-                variant.v.by_m("SupplyCost").v = str(int(base_cost) * quantity)
+        if use_strength:
+            # Create strength variants for each quantity
+            for strength in range(2, 15):  # 2 to 14 inclusive
+                # Only create quantity variants up to the strength value
+                effective_quantity = min(quantity, strength)
                 
-            source_path.add(variant)
-            logger.info(f"Created new variant {namespace}")
+                if effective_quantity == 1 and i == len(quantities) - 1:
+                    namespace = f"Ammo_{weapon_name}_strength{strength}"
+                else:
+                    namespace = f"Ammo_{weapon_name}_strength{strength}_x{effective_quantity}"
+
+                # Skip if we've already created this variant
+                if namespace in created_variants:
+                    logger.debug(f"Skipping duplicate variant {namespace}")
+                    continue
+                
+                existing = source_path.by_n(namespace, strict=False)
+                logger.debug(f"Checking {namespace} - exists: {existing is not None}")
+                
+                if is_new or (existing is None):
+                    # Create new variant
+                    variant = base_descr.copy()
+                    variant.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
+                    variant.v.by_m("HitRollRuleDescriptor").v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
+                    variant.namespace = namespace
+                    
+                    # Set Arme Index based on strength
+                    arme_obj = variant.v.by_m("Arme").v
+                    arme_obj.by_m("Index").v = str(strength - 1)
+                    
+                    if base_cost is not None:
+                        # Scale supply cost by effective quantity
+                        variant.v.by_m("SupplyCost").v = str(int(base_cost) * effective_quantity)
+                        
+                    source_path.add(variant)
+                    created_variants.add(namespace)
+                    logger.info(f"Created new variant {namespace}")
+                else:
+                    # Update both supply cost and Arme Index
+                    if base_cost is not None:
+                        existing.v.by_m("SupplyCost").v = str(int(base_cost) * effective_quantity)
+                    existing.v.by_m("Arme").v.by_m("Index").v = str(strength - 1)
+                    created_variants.add(namespace)
+                    logger.debug(f"Updated existing variant {namespace}")
         else:
-            # Just update supply cost
-            if base_cost is not None:
-                existing.v.by_m("SupplyCost").v = str(int(base_cost) * quantity)
-            logger.debug(f"Updated existing variant {namespace}")
+            # Create regular quantity variant without strength
+            if quantity == 1 and i == len(quantities) - 1:
+                namespace = f"Ammo_{weapon_name}"
+            else:
+                namespace = f"Ammo_{weapon_name}_x{quantity}"
+                
+            existing = source_path.by_n(namespace, strict=False)
+            if is_new or (existing is None):
+                variant = base_descr.copy()
+                variant.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
+                variant.v.by_m("HitRollRuleDescriptor").v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
+                variant.namespace = namespace
+                
+                if base_cost is not None:
+                    variant.v.by_m("SupplyCost").v = str(int(base_cost) * quantity)
+                    
+                source_path.add(variant)
+                logger.info(f"Created new variant {namespace}")
+            else:
+                if base_cost is not None:
+                    existing.v.by_m("SupplyCost").v = str(int(base_cost) * quantity)
+                logger.debug(f"Updated existing variant {namespace}")
 
 
 def update_weapondescr_ammoname_quantity(source_path, game_db):
@@ -169,14 +273,41 @@ def update_weapondescr_ammoname_quantity(source_path, game_db):
     logger.info("Updating quantities in ammo namespaces in WeaponDescriptor.ndf")
     ammo_db = game_db["ammunition"]
     weapon_db = game_db["weapons"]
+    unit_db = game_db["unit_data"]
+    
+    unit_edits = load_unit_edits()
     
     for weapon_descr_name, weapon_descr_data in weapon_db.items():
+        # Get unit name and strength
+        unit_name = weapon_descr_name.replace("WeaponDescriptor_", "")
+        
+        # Check for edited strength in unit_edits first
+        unit_strength = None
+        if unit_name in unit_edits and "strength" in unit_edits[unit_name]:
+            unit_strength = unit_edits[unit_name]["strength"]
+        # Fall back to unit_db if no edit exists
+        if unit_strength is None and unit_name in unit_db:
+            unit_strength = unit_db[unit_name].get("strength")
+        
+        if not unit_strength:
+            if unit_name in NEW_UNITS:
+                logger.debug(f"{unit_name} is a new unit, skipping")
+                continue
+            else:
+                logger.warning(f"No strength found for unit {unit_name}")
+                continue
+            
         for (weapon_name, category, donor, is_new), data in ammunitions.items():
             if category != "small_arms": 
                 continue
+                
+            # Check if this weapon should use strength variants
+            use_strength = False
+            damage_family = data.get("Ammunition", {}).get("Arme", {}).get("Family")
+            if damage_family in ["DamageFamily_sa_full", "DamageFamily_sa_intermediate"]:
+                use_strength = True
             
             for turret_index, turret_data in weapon_descr_data["turrets"].items():
-        
                 old_name = ammo_db["renames_new_old"].get(weapon_name, None)
                     
                 if not old_name and weapon_name in turret_data["weapons"]:
@@ -194,44 +325,57 @@ def update_weapondescr_ammoname_quantity(source_path, game_db):
                 else:
                     continue
                 
-                if quantity and quantity > 1:
-                    weapon_descr = source_path.by_n(weapon_descr_name)
-                    turret_list = weapon_descr.v.by_m("TurretDescriptorList")
-                    turret = turret_list.v[int(turret_index)]
+                weapon_descr = source_path.by_n(weapon_descr_name)
+                turret_list = weapon_descr.v.by_m("TurretDescriptorList")
+                turret = turret_list.v[int(turret_index)]
+                
+                for mounted_wpn in turret.v.by_m("MountedWeaponDescriptorList").v:
+                    ammo = mounted_wpn.v.by_m("Ammunition").v
+                    ammo_n = ammo.split("_", 1)[1]
+                    prefix = ammo.split("_", 1)[0]
+                    nb_weapons = mounted_wpn.v.by_m("NbWeapons").v
                     
-                    for mounted_wpn in turret.v.by_m("MountedWeaponDescriptorList").v:
-                        ammo = mounted_wpn.v.by_m("Ammunition").v
-                        ammo_n = ammo.split("_", 1)[1]
-                        prefix = ammo.split("_", 1)[0]
-                        nb_weapons = mounted_wpn.v.by_m("NbWeapons").v
-                        
-                        if old_name and old_name == ammo_n:
-                            if int(nb_weapons) == quantity:
+                    if old_name and old_name == ammo_n:
+                        if int(nb_weapons) == quantity:
+                            if quantity > 1:
                                 new_ammo = f"{prefix}_{weapon_name}_x{quantity}"
-                                mounted_wpn.v.by_m("Ammunition").v = new_ammo
-                                logger.info(f"Updated ammo {ammo} to {new_ammo}\n")
+                                if use_strength:
+                                    new_ammo = f"{prefix}_{weapon_name}_strength{unit_strength}_x{quantity}"
                             else:
-                                logger.debug(f"database quantity ({quantity}) differs from "
-                                             f"NbWeapons ({nb_weapons}) for {weapon_name}")
-                                if int(nb_weapons) > 1:
-                                    new_ammo = f"{prefix}_{weapon_name}_x{quantity}"
-                                    mounted_wpn.v.by_m("Ammunition").v = new_ammo
-                                    logger.info(f"Updated ammo {ammo} to {new_ammo}\n")
-                                else:
-                                    logger.debug(f"Quantity is {quantity}, no changes "
-                                                 f"applied for {weapon_name}\n")
-                        
-                        elif ammo_n == weapon_name:
-                            if int(nb_weapons) == quantity:
-                                new_ammo = f"{prefix}_{weapon_name}_x{quantity}"
-                                mounted_wpn.v.by_m("Ammunition").v = new_ammo
-                                logger.info(f"Updated ammo {ammo} to {new_ammo}\n")
-                                
+                                new_ammo = f"{prefix}_{weapon_name}"
+                                if use_strength:
+                                    new_ammo = f"{prefix}_{weapon_name}_strength{unit_strength}"
+                            mounted_wpn.v.by_m("Ammunition").v = new_ammo
+                            logger.info(f"Updated ammo {ammo} to {new_ammo}")
                         else:
-                            logger.debug(f"No changes applied for {weapon_name}\n")      
+                            logger.debug(f"database quantity ({quantity}) differs from "
+                                         f"NbWeapons ({nb_weapons}) for {weapon_name}")
+                            if int(nb_weapons) > 1:
+                                new_ammo = f"{prefix}_{weapon_name}_x{quantity}"
+                                if use_strength:
+                                    new_ammo = f"{prefix}_{weapon_name}_strength{unit_strength}_x{quantity}"
+                            else:
+                                new_ammo = f"{prefix}_{weapon_name}"
+                                if use_strength:
+                                    new_ammo = f"{prefix}_{weapon_name}_strength{unit_strength}"
+                            mounted_wpn.v.by_m("Ammunition").v = new_ammo
+                            logger.info(f"Updated ammo {ammo} to {new_ammo}")
+                    
+                    elif ammo_n == weapon_name:
+                        if int(nb_weapons) == quantity:
+                            if quantity > 1:
+                                new_ammo = f"{prefix}_{weapon_name}_x{quantity}"
+                                if use_strength:
+                                    new_ammo = f"{prefix}_{weapon_name}_strength{unit_strength}_x{quantity}"
+                            else:
+                                new_ammo = f"{prefix}_{weapon_name}"
+                                if use_strength:
+                                    new_ammo = f"{prefix}_{weapon_name}_strength{unit_strength}"
+                            mounted_wpn.v.by_m("Ammunition").v = new_ammo
+                            logger.info(f"Updated ammo {ammo} to {new_ammo}")
 
 
-def _apply_weapon_edits(descr: Any, data: Dict, ammo_data: Dict) -> None:
+def _apply_weapon_edits(descr: Any, category: str, data: Dict, ammo_data: Dict) -> None:
     """Apply edits from ammunition data to descriptor."""
     membr = descr.v.by_m
     
@@ -350,11 +494,20 @@ def _create_new_descriptor(source_path, data, weapon_name, donor):
     # Set namespace
     if "NbWeapons" in data and len(data["NbWeapons"]) == 1:
         if data["NbWeapons"][0] > 1:
-            base_descr.namespace = f"Ammo_{weapon_name}_x{data['NbWeapons'][0]}"
+            if _should_use_strength_variant(weapon_name):
+                base_descr.namespace = f"Ammo_{weapon_name}_strength2_x{data['NbWeapons'][0]}"
+            else:
+                base_descr.namespace = f"Ammo_{weapon_name}_x{data['NbWeapons'][0]}"
+        else:
+            if _should_use_strength_variant(weapon_name):
+                base_descr.namespace = f"Ammo_{weapon_name}_strength2"
+            else:
+                base_descr.namespace = f"Ammo_{weapon_name}"
+    else:
+        if _should_use_strength_variant(weapon_name):
+            base_descr.namespace = f"Ammo_{weapon_name}_strength2"
         else:
             base_descr.namespace = f"Ammo_{weapon_name}"
-    else:
-        base_descr.namespace = f"Ammo_{weapon_name}"
     
     logger.debug(f"Created new base descriptor for {weapon_name} from {donor}")
     return base_descr
@@ -375,25 +528,24 @@ def _get_existing_descriptor(source_path, weapon_name):
 def apply_default_salves(source_path: Any, game_db: Dict[str, Any]) -> None:
     """Apply default salves to WeaponDescriptor.ndf"""
     unit_edits = load_unit_edits()
-    
-    # def __edit_salves(source_path: Any, weapon_descr_name: str, ammo_name: str, salvo_stock_index: int, default_salves: List[int]) -> None:
-    #     weapon_descr = source_path.by_n(weapon_descr_name)
-    #     salves = weapon_descr.v.by_m("Salves")
-    #     salves.v[salvo_stock_index].v = str(default_salves)
-    #     logger.info(f"Applied default salves for {ammo_name} to {weapon_descr_name}")
-    
     ammo_db = game_db["ammunition"]
+    
+    def _strip_strength_identifier(ammo_name: str) -> str:
+        """Remove strength{N} from ammo name if present."""
+        return re.sub(r'_strength\d+', '', ammo_name)
+    
     for (ammo_name, category, donor, is_new), data in ammunitions.items():
         if not (data.get("WeaponDescriptor") and "Salves" in data["WeaponDescriptor"]):
             continue
         
         old_name = ammo_db["renames_new_old"].get(ammo_name, None)
-        
         default_salves = data["WeaponDescriptor"]["Salves"]
+        
         for weapon_descr_name, weapon_descr_data in ammo_db["salves_map"].items():
-            
             skip_weapon_descr_ammo_name = False
             unit_name = weapon_descr_name.replace("WeaponDescriptor_", "")
+            
+            # Check if this weapon should be skipped due to unit edits
             for unit, edits in unit_edits.items():
                 if unit == unit_name and "WeaponDescriptor" in edits:
                     replacements = edits["WeaponDescriptor"].get("equipmentchanges", {}).get("replace", [])
@@ -411,19 +563,21 @@ def apply_default_salves(source_path: Any, game_db: Dict[str, Any]) -> None:
                 logger.debug(f"Skipping {ammo_name} for {weapon_descr_name} because it is replaced or "
                              f"has custom salves.")
                 continue
+            
+            # Check weapon salves, stripping strength identifiers for comparison
+            for weapon_ammo, salvo_indices in weapon_descr_data["salves"].items():
+                base_weapon_ammo = _strip_strength_identifier(weapon_ammo)
+                # Remove quantity suffixes like _x2
+                base_weapon_ammo = re.sub(r'_x\d+$', '', base_weapon_ammo)
                 
-            if old_name and old_name in weapon_descr_data["salves"]:
-                salvo_stock_index = weapon_descr_data["salves"][old_name][0]
-                weapon_descr = source_path.by_n(weapon_descr_name)
-                salves = weapon_descr.v.by_m("Salves")
-                salves.v[salvo_stock_index].v = str(default_salves)
-                logger.info(f"Applied default salves for {old_name} to {weapon_descr_name}")
-                # __edit_salves(source_path, weapon_descr_name, old_name, salvo_stock_index, default_salves)
-           
-            elif ammo_name in weapon_descr_data["salves"]:
-                salvo_stock_index = weapon_descr_data["salves"][ammo_name][0]
-                weapon_descr = source_path.by_n(weapon_descr_name)
-                salves = weapon_descr.v.by_m("Salves")
-                salves.v[salvo_stock_index].v = str(default_salves)
-                logger.info(f"Applied default salves for {ammo_name} to {weapon_descr_name}")
-                # __edit_salves(source_path, weapon_descr_name, ammo_name, salvo_stock_index, default_salves)
+                if old_name and base_weapon_ammo == old_name:
+                    weapon_descr = source_path.by_n(weapon_descr_name)
+                    salves = weapon_descr.v.by_m("Salves")
+                    salves.v[salvo_indices[0]].v = str(default_salves)
+                    logger.info(f"Applied default salves for {old_name} to {weapon_descr_name}")
+                
+                elif base_weapon_ammo == ammo_name:
+                    weapon_descr = source_path.by_n(weapon_descr_name)
+                    salves = weapon_descr.v.by_m("Salves")
+                    salves.v[salvo_indices[0]].v = str(default_salves)
+                    logger.info(f"Applied default salves for {ammo_name} to {weapon_descr_name}")

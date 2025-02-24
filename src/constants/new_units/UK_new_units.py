@@ -40,7 +40,7 @@ UK_NEW_UNITS = {
                 "cards": 1,
             },
             "UK_2nd_Infantry_multi": {
-                "Transports": ["LandRover_UK"],
+                "Transports": ["FV432_UK"],
             },
         },
         "availability": [6, 4, 0, 0],

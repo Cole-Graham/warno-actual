@@ -7,3 +7,14 @@ WEAPON_DESCRIPTIONS = {
         f"dramatic psychological effect on the enemy, causing a large amount of suppression."
     ))
 }
+
+WEAPON_TRAITS = {
+    "thermobaric": {
+        "body_token": "NXIZYXLVUH",
+        "body": (
+            f"Thermobaric weapons are specialized at destroying infantry and soft targets. "
+            f"They are relatively ineffective against armored units compared to conventional "
+            f"high explosive weapons, and do not damage buildings."
+        )
+    }
+}

@@ -78,7 +78,7 @@ uk_unit_edits = {
                 },
             },
             "Salves": {
-                "PM_Sterling": 12,
+                "PM_Sterling": 18,
             },
         },
         "selector_tactic": "(0, 2)",
@@ -153,7 +153,7 @@ uk_unit_edits = {
             },
             "Salves": {
                 "add": [(1, 7)], # (salve_index, salves)
-                "PM_Sterling": 12,
+                "PM_Sterling": 18,
             },
         },
         "selector_tactic": "(0, 8)",

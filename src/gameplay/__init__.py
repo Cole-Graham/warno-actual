@@ -111,6 +111,7 @@ from .weapons import (
     add_radio_tag_to_mortars,
     edit_smoke_duration,
     vanilla_renames_weapondescriptor,
+    edit_weapon_traits,
 )
 from .weapons.ammunition import edit_ammunition
 

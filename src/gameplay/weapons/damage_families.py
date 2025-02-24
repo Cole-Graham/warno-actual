@@ -9,7 +9,9 @@ from src.constants.weapons import (
     DPICM_DAMAGES,
     FMBALLE_INFANTRY_EDITS,
     FMBALLE_ROWS,
-    FULL_BALL_DAMAGE,
+    SA_FULL_DAMAGE_RATIOS,
+    SA_INTERMEDIATE_DAMAGE_RATIOS,
+    SA_INF_ARMOR_DAMAGE_RATIOS,
     INFANTRY_ARMOR_EDITS,
     SNIPER_DAMAGE,
     WEAPON_DESCRIPTIONS,
@@ -35,7 +37,9 @@ def edit_weapon_constantes(source_path):
 
     # Add full ball damage to blindages to ignore
     blindages_to_ignore = weapon_constantes_obj.by_m("BlindagesToIgnoreForDamageFamilies").v
-    blindages_to_ignore.add(f"(DamageFamily_full_balle, [ResistanceFamily_blindage])")
+    blindages_to_ignore.add(f"(DamageFamily_sa_full, [ResistanceFamily_blindage])")
+    blindages_to_ignore.add(f"(DamageFamily_sa_intermediate, [ResistanceFamily_blindage])")
+    blindages_to_ignore.add(f"(DamageFamily_thermobarique, [ResistanceFamily_blindage])")
     
     # Add manpad_hagru damage to blindages to ignore
     blindages_to_ignore.add("(DamageFamily_manpad_hagru, [ResistanceFamily_helico])")
@@ -62,35 +66,41 @@ def add_damage_families_to_list(source_path) -> None:
     # Add new families
     infanterie_wa_family = f"ResistanceFamily_infanterieWA is {j + 1}"
     sniper_family = f"DamageFamily_sniper is {i + 1}"
-    full_ball_family = f"DamageFamily_full_balle is {i + 2}"
-    dpicm_family = f"DamageFamily_dpicm is {i + 3}"
+    # full_ball_family = f"DamageFamily_full_balle is {i + 2}"
+    dpicm_family = f"DamageFamily_dpicm is {i + 2}"
     # kpvt_family = f"DamageFamily_kpvt is {i + 4}"
-    nplm_bomb_family = f"DamageFamily_nplm_bomb is {i + 4}"
-    pgb_bomb_family = f"DamageFamily_pgb_bomb is {i + 5}"
-    manpad_hagru_family = f"DamageFamily_manpad_hagru is {i + 6}"
-    manpad_tbagru_family = f"DamageFamily_manpad_tbagru is {i + 7}"
+    nplm_bomb_family = f"DamageFamily_nplm_bomb is {i + 3}"
+    pgb_bomb_family = f"DamageFamily_pgb_bomb is {i + 4}"
+    manpad_hagru_family = f"DamageFamily_manpad_hagru is {i + 5}"
+    manpad_tbagru_family = f"DamageFamily_manpad_tbagru is {i + 6}"
+    sa_intermediate_family = f"DamageFamily_sa_intermediate is {i + 7}"
+    sa_full_family = f"DamageFamily_sa_full is {i + 8}"
+    
 
     source_path.insert(j + 1, infanterie_wa_family)
     source_path.add(sniper_family)
-    source_path.add(full_ball_family)
+    # source_path.add(full_ball_family)
     source_path.add(dpicm_family)
     # source_path.add(kpvt_family)
     source_path.add(nplm_bomb_family)
     source_path.add(pgb_bomb_family)
     source_path.add(manpad_hagru_family)
     source_path.add(manpad_tbagru_family)
+    source_path.add(sa_intermediate_family)
+    source_path.add(sa_full_family)
     
     logger.info(f"Added families: \n"
                 f"{infanterie_wa_family}\n"
                 f"{sniper_family}\n"
-                f"{full_ball_family}\n"
+                # f"{full_ball_family}\n"
                 f"{dpicm_family}\n"
                 # f"{kpvt_family}\n")
                 f"{nplm_bomb_family}\n"
                 f"{pgb_bomb_family}\n"
                 f"{manpad_hagru_family}\n"
-                f"{manpad_tbagru_family}")
-                
+                f"{manpad_tbagru_family}\n"
+                f"{sa_intermediate_family}\n"
+                f"{sa_full_family}\n")
 
 def add_damage_families_to_impl(source_path) -> None:
     """Add new damage families to DamageResistanceFamilyListImpl.ndf."""
@@ -101,13 +111,15 @@ def add_damage_families_to_impl(source_path) -> None:
         "resistance": ['"ResistanceFamily_infanterieWA"'],
         "damage": [
             '"DamageFamily_sniper"',
-            '"DamageFamily_full_balle"',
+            # '"DamageFamily_full_balle"',
             '"DamageFamily_dpicm"',
             # '"DamageFamily_kpvt"',
             '"DamageFamily_nplm_bomb"',
             '"DamageFamily_pgb_bomb"',
             '"DamageFamily_manpad_hagru"',
             '"DamageFamily_manpad_tbagru"',
+            '"DamageFamily_sa_intermediate"',
+            '"DamageFamily_sa_full"',
         ]
     }
     
@@ -130,10 +142,10 @@ def apply_damage_families(source_path: Any, game_db: Dict[str, Any]) -> None:
     
     dictionary_entries = []
     for weapon_descr in source_path:
-        if weapon_descr.n in ammo_db["full_ball_weapons"]:
-            arme_obj = weapon_descr.v.by_m("Arme")
-            arme_obj.v.by_m("Family").v = "DamageFamily_full_balle"
-            logger.info(f"Changed {weapon_descr.n} to DamageFamily_full_balle")
+        # if weapon_descr.n in ammo_db["full_ball_weapons"]:
+        #     arme_obj = weapon_descr.v.by_m("Arme")
+        #     arme_obj.v.by_m("Family").v = "DamageFamily_sa_full"
+        #     logger.info(f"Changed {weapon_descr.n} to DamageFamily_sa_full")
         
         # elif "KPVT" in weapon_descr.n or "14_5" in weapon_descr.n:
         #     if weapon_descr.v.by_m("WeaponCursorType").v == "Weapon_Cursor_MachineGun":
@@ -141,7 +153,7 @@ def apply_damage_families(source_path: Any, game_db: Dict[str, Any]) -> None:
         #         arme_obj.v.by_m("Family").v = "DamageFamily_kpvt"
         #         logger.info(f"Changed {weapon_descr.n} to DamageFamily_kpvt")
             
-        elif weapon_descr.n in ammo_db["sniper_weapons"]:
+        if weapon_descr.n in ammo_db["sniper_weapons"]:
             arme_obj = weapon_descr.v.by_m("Arme")
             arme_obj.v.by_m("Family").v = "DamageFamily_sniper"
             logger.info(f"Changed {weapon_descr.n} to DamageFamily_sniper")
@@ -174,13 +186,15 @@ def add_damage_resistance_values(source_path) -> None:
     damage_family_list = resist_params_obj.by_m("DamageFamilyDefinitionList").v
     families = {
         "sniper": "TDamageTypeFamilyDefinition(Family=DamageFamily_sniper MaxIndex=2)",
-        "full_ball": "TDamageTypeFamilyDefinition(Family=DamageFamily_full_balle MaxIndex=1)",
+        # "full_ball": "TDamageTypeFamilyDefinition(Family=DamageFamily_full_balle MaxIndex=1)",
         "dpicm": "TDamageTypeFamilyDefinition(Family=DamageFamily_dpicm MaxIndex=4)",
         # "kpvt": "TDamageTypeFamilyDefinition(Family=DamageFamily_kpvt MaxIndex=1)",
         "nplm_bomb": "TDamageTypeFamilyDefinition(Family=DamageFamily_nplm_bomb MaxIndex=1)",   
         "pgb_bomb": "TDamageTypeFamilyDefinition(Family=DamageFamily_pgb_bomb MaxIndex=1)",
         "manpad_hagru": "TDamageTypeFamilyDefinition(Family=DamageFamily_manpad_hagru MaxIndex=1)",
         "manpad_tbagru": "TDamageTypeFamilyDefinition(Family=DamageFamily_manpad_tbagru MaxIndex=1)",
+        "sa_intermediate": "TDamageTypeFamilyDefinition(Family=DamageFamily_sa_intermediate MaxIndex=13)",
+        "sa_full": "TDamageTypeFamilyDefinition(Family=DamageFamily_sa_full MaxIndex=13)",
     }
 
     for family_name, family_def in families.items():
@@ -201,13 +215,14 @@ def add_damage_resistance_values(source_path) -> None:
     # Add damage values
     values_list.add(
         *[str(sniper) for sniper in SNIPER_DAMAGE],
-        str(FULL_BALL_DAMAGE),
         *[str(dpicm) for dpicm in DPICM_DAMAGES],
         # str(KPVT_DAMAGE),
         str(NPLM_BOMB_DAMAGE),
         str(PGB_BOMB_DAMAGE),
         str(MANPAD_HAGRU_DAMAGE),
         str(MANPAD_TBAGRU_DAMAGE),
+        *[str(SA_INTERMEDIATE_DAMAGE_RATIOS + list(sa_damage)) for sa_damage in SA_INF_ARMOR_DAMAGE_RATIOS],
+        *[str(SA_FULL_DAMAGE_RATIOS + list(sa_damage)) for sa_damage in SA_INF_ARMOR_DAMAGE_RATIOS],
     )
     logger.info("Added damage values") 
 
@@ -271,9 +286,9 @@ def edit_infantry_armor(source_path) -> None:
                 logger.info(f"Edited row {i}, family {damage_family}, column {column} to {damage_ratio}")
 
     # Apply FMballe infantry damage edits
-    for row_index in FMBALLE_ROWS:
-        apply_damage_array_edits(damage_array, row_index, FMBALLE_INFANTRY_EDITS)
-        logger.info(f"Applied FMballe infantry edits to row {row_index}") 
+    # for row_index in FMBALLE_ROWS:
+    #     apply_damage_array_edits(damage_array, row_index, FMBALLE_INFANTRY_EDITS)
+    #     logger.info(f"Applied FMballe infantry edits to row {row_index}") 
 
 
 # def edit_weapon_constants(source_path) -> None:

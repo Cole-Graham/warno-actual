@@ -7,6 +7,24 @@ WeaponKey = Tuple[str, str, Optional[str], bool]  # (weapon, category, donor, is
 
 # fmt: off
 missiles: Dict[WeaponKey, WeaponData] = {
+    ("AGM_Kh25MP", "AntiRadiation", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PorteeMaximaleGRU": 5250,
+                "MaximalSpeedGRU": 3534,
+                "MaxAccelerationGRU": 2120,
+                "TempsEntreDeuxSalves": 2.35,
+                # "SupplyCost": 120,
+                "SupplyCost": 100,
+            },
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 3534,
+            "MaxAccelerationGRU": 2297,
+            "AutoGyr": 1.57079633
+        },
+    },
+    
     ("AGM_Kh28", "AntiRadiation", None, False): { # renamed from AGM_Kh28_X28
         "Ammunition": {
             "hit_roll": {
@@ -134,7 +152,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Moving": 65,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 6126,
+                "PorteeMaximaleGRU": 6125,
                 "MaximalSpeedGRU": 4947,
                 "MaxAccelerationGRU": 2827,
                 "TempsEntreDeuxSalves": 2.3,

@@ -43,10 +43,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_M118_Howitzer_105mm", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "TempsEntreDeuxTirs": 5.0,
                 "PhysicalDamages": 3.0,
                 "SuppressDamages": 187,
                 "RadiusSplashPhysicalDamagesGRU": 105,
                 "RadiusSplashSuppressDamagesGRU": 140,
+                "NbTirParSalves": 5,
+                "SupplyCost": 100,
+                "AffichageMunitionParSalve": 5,
             },
         },
     },
@@ -65,10 +69,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_M102_Howitzer_105mm", "howitzer", None, False): { # 409
         "Ammunition": {
             "parent_membr": {
+                "TempsEntreDeuxTirs": 5.0,
                 "PhysicalDamages": 3.0,
                 "SuppressDamages": 187,
                 "RadiusSplashPhysicalDamagesGRU": 105,
                 "RadiusSplashSuppressDamagesGRU": 140,
+                "NbTirParSalves": 5,
+                "SupplyCost": 100,
+                "AffichageMunitionParSalve": 5,
             },
         },
     },

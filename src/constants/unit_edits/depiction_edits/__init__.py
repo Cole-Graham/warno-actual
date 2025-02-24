@@ -18,6 +18,10 @@ from .SOV_depiction_edits import (
 )
 # from .UK_depiction_edits import ()
 from .USA_depiction_edits import (
+    f111e_aardvark_napalm_us,
+    f111f_aardvark_napalm_us,
+    f16e_napalm_us,
+    f4e_phantom_ii_napalm_us,
     m3a1_bradley_cfv_us,
     m3a2_bradley_cfv_us,
     ranger_us,
@@ -40,6 +44,10 @@ __all__ = [
     "mtlb_vasilek_sov",
     
     # USA
+    "f111e_aardvark_napalm_us",
+    "f111f_aardvark_napalm_us",
+    "f16e_napalm_us",
+    "f4e_phantom_ii_napalm_us",
     "m3a1_bradley_cfv_us",
     "m3a2_bradley_cfv_us",
     "ranger_us",

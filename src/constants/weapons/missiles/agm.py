@@ -78,7 +78,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
         "BaseSupplyCost": 100,
         "WeaponDescriptor": {
-            "SalvoLengths": [8, 4, 2, 1],
+            "SalvoLengths": [8, 4],
         },
         "MissileDescriptor": {
             "MaxSpeedGRU": 466,
