@@ -879,7 +879,7 @@ sov_unit_edits = {
     },
 
     "MotRifles_HMG_SOV": {  # Pulmetchiki
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -900,7 +900,7 @@ sov_unit_edits = {
     },
 
     "MotRifles_HMG_TTsko_SOV": {  # Pulmetchiki
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "Divisions": {
             "default": {
                 "cards": 1,

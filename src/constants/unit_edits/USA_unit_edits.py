@@ -901,7 +901,7 @@ usa_unit_edits = {
     },
 
     "Rifles_HMG_US": { # GUNNERS
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1077,7 +1077,7 @@ usa_unit_edits = {
     },
 
     "Airborne_US": {
-        "CommandPoints": 55,
+        "CommandPoints": 50,
         "Divisions": {
             "default": {
                 "cards": 3,

@@ -55,6 +55,16 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("Howz_Canon_M118_Howitzer_105mm_SMOKE", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "TempsEntreDeuxTirs": 5.0,
+                "NbTirParSalves": 5,
+                "AffichageMunitionParSalve": 5,
+            },
+        },
+    },
+    
     ("Howz_Canon_M113A1_Howitzer_175mm_late", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
@@ -76,6 +86,16 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "RadiusSplashSuppressDamagesGRU": 140,
                 "NbTirParSalves": 5,
                 "SupplyCost": 100,
+                "AffichageMunitionParSalve": 5,
+            },
+        },
+    },
+    
+    ("Howz_Canon_M102_Howitzer_105mm_SMOKE", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "TempsEntreDeuxTirs": 5.0,
+                "NbTirParSalves": 5,
                 "AffichageMunitionParSalve": 5,
             },
         },

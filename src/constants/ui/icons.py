@@ -8,7 +8,7 @@ INGAME_ICONS = {
     },
     "swift": {
         "texture_dir": "/Assets/2D/Interface/UseInGame/Icones",
-        "texture": "swift_28x24.png",
+        "texture": "swift.png",
         "insert_after": "icone_shock_move"
     }
 }

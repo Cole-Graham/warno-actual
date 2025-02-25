@@ -56,7 +56,7 @@ def create_new_weapons(source_path: Any, game_db: Dict[str, Any]) -> None:
                 # Handle replacements
                 if "replace" in changes:
                     for old_ammo, new_ammo in changes["replace"]:
-                        _replace_weapon(source_path, changes, new_weap_row, new_ammo, game_db)
+                        _replace_weapon(source_path, changes, new_weap_row, old_ammo, new_ammo, game_db)
                         
                 # Handle quantities
                 if "quantity" in changes:
@@ -202,12 +202,12 @@ def _replace_weapon(
     source_path: Any,
     changes: Dict[str, Any],
     new_weap_row: Any,
+    old_ammo: str,
     new_ammo: str,
     game_db: Dict[str, Any]
 ) -> None:
     """Replace a weapon with a new one."""
     ammo_db = game_db["ammunition"]
-    old_ammo = ammo_db["renames_new_old"].get(new_ammo, None)
     
     # Get unit strength from NEW_UNITS
     unit_name = new_weap_row.namespace.replace("WeaponDescriptor_", "")
@@ -240,9 +240,12 @@ def _replace_weapon(
                 
             current_ammo = weapon_descr_row.v.by_member("Ammunition").v
             current_base_ammo = current_ammo.split("_", 1)[1]  # Just get the base name after $/GFX/Weapon/Ammo_
+            current_base_ammo = re.sub(r'_strength\d+', '', current_base_ammo)  # Remove strength identifier
+            current_base_ammo = re.sub(r'_x\d+$', '', current_base_ammo)  # Remove quantity identifier if present
+            new_name = ammo_db["renames_old_new"].get(current_base_ammo, None)
             
             # Check if this is the weapon to replace
-            if current_base_ammo == old_ammo:
+            if current_base_ammo == old_ammo or new_name == old_ammo:
                 # Update ammo path with quantity and strength if needed
                 prefix = current_ammo.split("_", 1)[0]  # Get $/GFX/Weapon/Ammo part
                 quantity = int(weapon_descr_row.v.by_m("NbWeapons").v)

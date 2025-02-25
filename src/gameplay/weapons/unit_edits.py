@@ -124,6 +124,7 @@ def unit_edits_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> No
         if weapon_descr:
             _apply_weapon_edits(
                 weapon_descr,
+                edits,
                 edits["WeaponDescriptor"],
                 weapon_descr_data,
                 turret_templates,
@@ -274,7 +275,7 @@ def _add_new_weapons(weapon_descr: Any, wd_edits: Dict, turret_templates: List[T
                 turret_list.insert(turret_index, turret_template)
 
 
-def _update_weapon_quantities(source_path: Any, unit_name: str, unit_edits: Dict[str, Any], game_db: Dict[str, Any]) -> None:
+def _update_weapon_quantities(source_path: Any, unit_name: str, unit_edits: Dict[str, Any], equipment_changes: Dict[str, Any], game_db: Dict[str, Any]) -> None:
     """Update weapon quantities for a unit."""
     weapon_db = game_db["weapons"]
     ammo_db = game_db["ammunition"]
@@ -310,8 +311,9 @@ def _update_weapon_quantities(source_path: Any, unit_name: str, unit_edits: Dict
             base_ammo = re.sub(r'(?:_strength\d+)?(?:_x\d{1,2})?$', '', ammo_name)
             
             # Check if this weapon has quantity changes
-            if base_ammo in unit_edits.get("WeaponDescriptor", {}).get("quantity", {}):
-                quantity = unit_edits["WeaponDescriptor"]["quantity"][base_ammo]
+            quantity_edits = equipment_changes.get("quantity", {})
+            if base_ammo in quantity_edits:
+                quantity = quantity_edits[base_ammo]
                 weapon_descr_row.v.by_m("NbWeapons").v = str(quantity)
                 
                 # Update ammo name with quantity and strength if needed
@@ -333,7 +335,10 @@ def _update_weapon_quantities(source_path: Any, unit_name: str, unit_edits: Dict
                 logger.debug(f"Updated quantity for {base_ammo} to {quantity} in {unit_name}")
 
 
-def _apply_weapon_edits(weapon_descr: Any, wd_edits: Dict, weapon_descr_data: Dict,
+def _apply_weapon_edits(weapon_descr: Any, 
+                        unit_edits: Dict, 
+                        wd_edits: Dict, 
+                        weapon_descr_data: Dict,
                         turret_templates: List[Tuple[str, Any]], game_db: Dict,
                         source_path: Any) -> None:
     """Apply weapon edits using database data."""
@@ -354,6 +359,7 @@ def _apply_weapon_edits(weapon_descr: Any, wd_edits: Dict, weapon_descr_data: Di
     if "equipmentchanges" in wd_edits:
         _apply_equipment_changes(
             weapon_descr, 
+            unit_edits,
             wd_edits, 
             weapon_descr_data, 
             turret_templates, 
@@ -544,6 +550,7 @@ def _apply_salvo_changes(weapon_descr: Any, wd_edits: Dict, weapon_descr_data: D
 
 def _apply_equipment_changes(
     weapon_descr: Any,
+    unit_edits: Dict,
     wd_edits: Dict,
     weapon_descr_data: Dict,
     turret_templates: List[Tuple[str, Any]],
@@ -564,7 +571,7 @@ def _apply_equipment_changes(
     
     # Handle quantity changes
     if "quantity" in equipment_changes:
-        _update_weapon_quantities(source_path, unit_name, equipment_changes, game_db)
+        _update_weapon_quantities(source_path, unit_name, unit_edits, equipment_changes, game_db)
 
 
 def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_db: Dict) -> None:

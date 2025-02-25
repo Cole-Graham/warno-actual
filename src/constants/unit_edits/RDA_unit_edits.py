@@ -191,7 +191,7 @@ rda_unit_edits = {
     },
 
     "Security_DDR": {
-        "CommandPoints": 30,
+        "CommandPoints": 25,
         "availability": [10, 0, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -218,7 +218,7 @@ rda_unit_edits = {
     },
 
     "MotRifles_DDR": {
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "Divisions": {
             "default": {
                 "cards": 69,
@@ -250,7 +250,7 @@ rda_unit_edits = {
         "GameName": {
             "display": "MOT.-SCHÜTZEN [SVD]",
         },
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -267,7 +267,7 @@ rda_unit_edits = {
         "GameName": {
             "display": "MOT.-SCHÜTZEN [BTR]",
         },
-        "CommandPoints": 45,
+        "CommandPoints": 40,
         "Divisions": {
             "default": {
                 "cards": 1,

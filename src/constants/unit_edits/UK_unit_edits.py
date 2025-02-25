@@ -412,7 +412,7 @@ uk_unit_edits = {
     },
 
     "Airmobile_UK": {  # 3x FN Mag
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -421,7 +421,7 @@ uk_unit_edits = {
     },
 
     "Airmobile_MILAN_UK": {  # 7x L85, 2x L86A1 lmg, 1x LAW 80
-        "CommandPoints": 50,
+        "CommandPoints": 40,
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
