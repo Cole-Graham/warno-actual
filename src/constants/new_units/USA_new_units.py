@@ -329,23 +329,26 @@ USA_NEW_UNITS = {
         "Stealth": 2.0,
         # "Dangerousness": 12,
         "WeaponAssignment": [
-            (0, [1, ]),
+            (0, [0, ]),
             (1, [0, ]),
             (2, [0, ]),
             (3, [0, ]),
             (4, [0, ]),
-            (5, [0, ]),
+            (5, [1, 2]),
         ],
         "WeaponDescriptor": {
             "Salves": {
                 "FM_M16": 7,
                 "MANPAD_FIM92": 8,
+                "add": [(2, 10), ],
             },
             "equipmentchanges": {
                 "HAGRU_MANPADS": [(1, 0, "MANPAD_FIM92_HAGRU")], # turret_index, donor_weapon_index, ammo_name
+                "add": [(2, "Sniper_M21")],
                 "replace": [("FM_M16_noreflex", "FM_M16_x5")],
                 "quantity": {
                     "FM_M16": 5,
+                    "Sniper_M21": 1,
                 },
             },
         },

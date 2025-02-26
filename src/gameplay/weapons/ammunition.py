@@ -530,9 +530,11 @@ def apply_default_salves(source_path: Any, game_db: Dict[str, Any]) -> None:
     unit_edits = load_unit_edits()
     ammo_db = game_db["ammunition"]
     
-    def _strip_strength_identifier(ammo_name: str) -> str:
-        """Remove strength{N} from ammo name if present."""
-        return re.sub(r'_strength\d+', '', ammo_name)
+    def _strip_identifiers(ammo_name: str) -> str:
+        """Remove strength{N}, _xN, _salvolengthN from ammo name if present."""
+        ammo_name = re.sub(r'_strength\d+', '', ammo_name)
+        
+        return ammo_name
     
     for (ammo_name, category, donor, is_new), data in ammunitions.items():
         if not (data.get("WeaponDescriptor") and "Salves" in data["WeaponDescriptor"]):
@@ -564,20 +566,20 @@ def apply_default_salves(source_path: Any, game_db: Dict[str, Any]) -> None:
                              f"has custom salves.")
                 continue
             
-            # Check weapon salves, stripping strength identifiers for comparison
             for weapon_ammo, salvo_indices in weapon_descr_data["salves"].items():
-                base_weapon_ammo = _strip_strength_identifier(weapon_ammo)
-                # Remove quantity suffixes like _x2
-                base_weapon_ammo = re.sub(r'_x\d+$', '', base_weapon_ammo)
-                
-                if old_name and base_weapon_ammo == old_name:
+
+                if old_name and weapon_ammo == old_name:
+                    logger.debug(f"ammo_name: {ammo_name}, old_name: {old_name}")
                     weapon_descr = source_path.by_n(weapon_descr_name)
                     salves = weapon_descr.v.by_m("Salves")
                     salves.v[salvo_indices[0]].v = str(default_salves)
-                    logger.info(f"Applied default salves for {old_name} to {weapon_descr_name}")
+                    logger.info(f"Applied default salves ({default_salves}) for {old_name} to {weapon_descr_name}")
+                    break
                 
-                elif base_weapon_ammo == ammo_name:
+                elif weapon_ammo == ammo_name:
+                    logger.debug(f"ammo_name: {ammo_name}, old_name: {old_name}")
                     weapon_descr = source_path.by_n(weapon_descr_name)
                     salves = weapon_descr.v.by_m("Salves")
                     salves.v[salvo_indices[0]].v = str(default_salves)
-                    logger.info(f"Applied default salves for {ammo_name} to {weapon_descr_name}")
+                    logger.info(f"Applied default salves ({default_salves}) for {ammo_name} to {weapon_descr_name}")
+                    break

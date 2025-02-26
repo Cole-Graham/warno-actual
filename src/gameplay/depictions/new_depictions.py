@@ -46,6 +46,24 @@ def create_infantry_depictions(source_path: Any, game_db: Any) -> None:
                                     new_mesh = f"$/GFX/DepictionResources/Modele_{value}"
                                     weaponalternatives_obj.v[row_index].v.by_m(member).v = new_mesh
                                     logger.info(f"Changed {member} for {unit_name} to {new_mesh}")
+                        elif edit_type == "add":
+                            for member, value in edit_list:
+                                if member == "SelectorId":
+                                    selector_id = "['" + f"{value}" + "']"
+                                elif member == "MeshDescriptor":
+                                    mesh_member = "MeshDescriptor"
+                                    mesh_descriptor = f"$/GFX/DepictionResources/Modele_{value}"
+                                elif member == "ReferenceMeshForSkeleton":
+                                    mesh_member = "ReferenceMeshForSkeleton"
+                                    mesh_descriptor = f"$/GFX/DepictionResources/Modele_{value}"
+                            new_entry = (
+                                f"TDepictionDescriptor"
+                                f"("
+                                f"    SelectorId = {selector_id}"
+                                f"    {mesh_member} = {mesh_descriptor}"
+                                f")"
+                            )
+                            weaponalternatives_obj.v.add(new_entry)
         
         # AllWeaponSubDepiction_
         weaponsubdepictions_obj = source_path.by_namespace(f"AllWeaponSubDepiction_{donor_name}").copy()
@@ -61,7 +79,7 @@ def create_infantry_depictions(source_path: Any, game_db: Any) -> None:
                         fire_effect = strip_quotes(fire_effect.v)
                         if old_fire_effect == fire_effect.replace("FireEffect_", ""):
                             operator.v.by_m("FireEffectTag").v = "['" + f"FireEffect_{new_fire_effect}" + "']"
-                            logger.debug(f"Replaced fire effect{old_fire_effect} with {new_fire_effect}")
+                            logger.debug(f"Replaced fire effect {old_fire_effect} with {new_fire_effect}")
         if depiction_key in NEW_DEPICTIONS:
             infantry_depiction_edits = NEW_DEPICTIONS[depiction_key].get("GeneratedDepictionInfantry_ndf", {})
             if not infantry_depiction_edits:
@@ -79,6 +97,20 @@ def create_infantry_depictions(source_path: Any, game_db: Any) -> None:
                                     operator.v.by_m(member).v = "['" + f"FireEffect_{value}" + "']"
                         elif edit_type == "remove":
                             rows_to_remove.append(operator_index)
+                        elif edit_type == "add":
+                            for member, value in edit_list:
+                                if member == "FireEffectTag":
+                                    effect_tag = '[' + f'"FireEffect_{value}"' + ']'
+                                elif member == "WeaponShootDataPropertyName":
+                                    shoot_data_property = f'"WeaponShootData_{value}"'
+                            new_entry = (
+                                f'DepictionOperator_WeaponInstantFireInfantry'
+                                f'('
+                                f'    FireEffectTag = {effect_tag}'
+                                f'    WeaponShootDataPropertyName = {shoot_data_property}'
+                                f')'
+                            )
+                            operators.v.add(new_entry)
                     for row_index in reversed(rows_to_remove):
                         operators.v.remove(row_index)
                                     
@@ -137,14 +169,16 @@ def create_infantry_depictions(source_path: Any, game_db: Any) -> None:
                             else:
                                 obj.v.add(ndf.convert("ConditionalTags = []"))
                                 conditional_tags = obj.v.by_m("ConditionalTags")
-
                     for operator_index, (edit_type, edit_list) in operator_edits.items():
                         if edit_type == "edit":
                             for (conditional_tag, mesh_alternative) in edit_list:
                                 conditional_tags.v.replace(
                                     operator_index, f"('{conditional_tag}', '{mesh_alternative}')")
-                                
-                        if edit_type == "remove":
+                        elif edit_type == "add":
+                            for (conditional_tag, mesh_alternative) in edit_list:
+                                conditional_tags.v.add(
+                                    f"('{conditional_tag}', '{mesh_alternative}')")
+                        elif edit_type == "remove":
                             rows_to_remove.append(operator_index)
                     for operator_index in reversed(rows_to_remove):
                         conditional_tags.v.remove(operator_index)

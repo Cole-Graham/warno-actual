@@ -451,7 +451,7 @@ usa_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_M16": 9,
-                "RocketInf_AT4_83mm": 6,
+                "RocketInf_AT4_83mm": 8,
             },
         },
         "is_infantry": True,

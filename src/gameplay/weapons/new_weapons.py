@@ -153,7 +153,7 @@ def _add_weapon(
             # Update ammo path to include strength
             current_ammo = weapon.v.by_m("Ammunition").v
             prefix = current_ammo.split("_", 1)[0]  # Get $/GFX/Weapon/Ammo part
-            quantity = int(weapon.v.by_m("NbWeapons").v)
+            quantity = changes["quantity"].get(weapon_name, int(weapon.v.by_m("NbWeapons").v))
             
             if _should_use_strength_variant(weapon_name, game_db):
                 if quantity > 1:
@@ -166,6 +166,7 @@ def _add_weapon(
                 else:
                     new_ammo = f"{prefix}_{weapon_name}"
             weapon.v.by_m("Ammunition").v = new_ammo
+            weapon.v.by_m("NbWeapons").v = str(quantity)
         
         # Update turret bone index
         new_yul_bone = turret_index + 1

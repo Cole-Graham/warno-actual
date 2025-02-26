@@ -154,10 +154,11 @@ weapons: Dict[WeaponKey, WeaponData] = {
     },
 
     ("SAW_lMG_K_7_62mm", "small_arms", None, False): {  #720
+        # THIS IS NOT 7.62mm!!!!!!!!!!
         # todo: rename this, its 5.45mm... stupid eugen
         "Ammunition": {
             "Arme": {
-                "Family": "DamageFamily_sa_full",
+                "Family": "DamageFamily_sa_intermediate",
             },
             "hit_roll": {
                 "Idling": 30,
@@ -171,8 +172,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "SuppressDamages": 15,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 1.0,
-                "TempsEntreDeuxSalves": 5.0,
-                "NbTirParSalves": 10,
+                "TempsEntreDeuxSalves": 7.0,
+                "NbTirParSalves": 15,
                 "AffichageMunitionParSalve": 75
             },
         },
