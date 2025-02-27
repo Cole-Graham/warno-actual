@@ -255,9 +255,12 @@ def _add_new_weapons(weapon_descr: Any, wd_edits: Dict, turret_templates: List[T
     def _apply_add_edits(turret_template, turret_index):
         if "add_edits" in equipment_changes:
             add_edits = equipment_changes["add_edits"][turret_index]
+            if "turret_edits" in add_edits:
+                for membr, value in add_edits["turret_edits"].items():
+                    turret_template.v.by_m(membr).v = str(value)
             mounted_weapons = turret_template.v.by_m("MountedWeaponDescriptorList")
             for mounted_weapon in mounted_weapons.v:
-                for membr, value in add_edits.items():
+                for membr, value in add_edits.items():                    
                     if isinstance(value, (bool, int, float, str)):
                         mounted_weapon.v.by_m(membr).v = str(value)
                     elif isinstance(value, list):
@@ -267,7 +270,7 @@ def _add_new_weapons(weapon_descr: Any, wd_edits: Dict, turret_templates: List[T
                         mounted_weapon.v.by_m(membr).v = ndf_list
     
     for ammo_name, turret_template in turret_templates:
-        for turret_index, weapon_name in add_list:                
+        for turret_index, weapon_name in add_list:          
             old_name = ammo_db["renames_new_old"].get(weapon_name, None)
             if (old_name and old_name == ammo_name) or weapon_name == ammo_name:
                 _apply_add_edits(turret_template, turret_index)
@@ -561,6 +564,10 @@ def _apply_equipment_changes(
     equipment_changes = wd_edits["equipmentchanges"]
     unit_name = weapon_descr.namespace.replace("WeaponDescriptor_", "")
     
+    # Handle custom weapon swaps
+    if any(key in equipment_changes for key in ["replace_custom", "add_custom"]):
+        _apply_custom_weapon_swaps(weapon_descr, wd_edits, game_db)
+    
     # Handle replacements
     if any(key in equipment_changes for key in ["replace", "replace_fixedsalvo"]):
         _apply_weapon_replacements(weapon_descr, equipment_changes, game_db)
@@ -573,6 +580,34 @@ def _apply_equipment_changes(
     if "quantity" in equipment_changes:
         _update_weapon_quantities(source_path, unit_name, unit_edits, equipment_changes, game_db)
 
+def _apply_custom_weapon_swaps(weapon_descr: Any, wd_edits: Dict, game_db: Dict) -> None:
+    """Apply custom weapon swaps."""  
+    from src.constants.weapons import mounted_weapons
+    
+    equipment_changes = wd_edits["equipmentchanges"]
+    turret_list = weapon_descr.v.by_member("TurretDescriptorList")
+    
+    if "add_custom" in equipment_changes:
+        for (turret_index, mesh_alt_number, ammunition) in equipment_changes["add_custom"]:
+            turret = turret_list.v[turret_index]
+            mounted_wpns = turret.v.by_m("MountedWeaponDescriptorList")
+            new_wpn = ndf.convert(mounted_weapons[ammunition])
+            new_wpn[0].v.by_m("HandheldEquipmentKey").v = f"'MeshAlternative_{mesh_alt_number}'"
+            new_wpn[0].v.by_m("WeaponActiveAndCanShootPropertyName").v = f"'WeaponActiveAndCanShoot_{mesh_alt_number}'"
+            new_wpn[0].v.by_m("WeaponIgnoredPropertyName").v = f"'WeaponIgnored_{mesh_alt_number}'"
+            new_wpn[0].v.by_m("WeaponShootDataPropertyName").v = f"['WeaponShootData_0_{mesh_alt_number}']"
+            mounted_wpns.v.add(new_wpn)
+    
+    if "replace_custom" in equipment_changes:
+        for (turret_index, weapon_index, mesh_alt_number, ammunition) in equipment_changes["replace_custom"]:
+            turret = turret_list.v[turret_index]
+            mounted_wpns = turret.v.by_m("MountedWeaponDescriptorList")
+            new_wpn = ndf.convert(mounted_weapons[ammunition])
+            new_wpn[0].v.by_m("HandheldEquipmentKey").v = f"'MeshAlternative_{mesh_alt_number}'"
+            new_wpn[0].v.by_m("WeaponActiveAndCanShootPropertyName").v = f"'WeaponActiveAndCanShoot_{mesh_alt_number}'"
+            new_wpn[0].v.by_m("WeaponIgnoredPropertyName").v = f"'WeaponIgnored_{mesh_alt_number}'"
+            new_wpn[0].v.by_m("WeaponShootDataPropertyName").v = f"['WeaponShootData_0_{mesh_alt_number}']"
+            mounted_wpns.v.replace(weapon_index, new_wpn)
 
 def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_db: Dict) -> None:
     """Replace weapons with their replacements."""

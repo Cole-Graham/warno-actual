@@ -1866,10 +1866,10 @@ usa_unit_edits = {
     },
 
     "M1A1_Abrams_US": {
-        "GameName": {
-            "display": "#3RDARM M1A1 ABRAMS",
-            "token": "YEMPBPBTNZ",
-        },
+        # "GameName": {
+        #     "display": "#3RDARM M1A1 ABRAMS",
+        #     "token": "YEMPBPBTNZ",
+        # },
         "CommandPoints": 220,
         "Divisions": {
             "remove": ["US_8th_Inf"],
@@ -2452,6 +2452,19 @@ usa_unit_edits = {
         },
         "availability": [0, 3, 2, 0],
     },
+    
+    "AH1F_CNITE_US": { # 10% ECM, 4x TOW-2, 38x Hydra
+        "CommandPoints": 135,
+        "Divisions": {
+            "default": {
+                "cards": 69,
+            },
+            "US_11ACR": {
+                "cards": 3,
+            },
+        },
+        "availability": [0, 2, 0, 1],
+    },
 
     "AH1F_Cobra_US": {
         "CommandPoints": 120,
@@ -2488,7 +2501,7 @@ usa_unit_edits = {
         "availability": [0, 4, 3, 0],
     },
 
-    "AH1F_Hog_US": {
+    "AH1F_Hog_US": { # 76x Hydra
         "CommandPoints": 100,
         "Divisions": {
             "default": {
@@ -2498,6 +2511,9 @@ usa_unit_edits = {
                 "cards": 2,
             },
             "US_8th_Inf": {
+                "cards": 2,
+            },
+            "US_11ACR": {
                 "cards": 2,
             },
         },

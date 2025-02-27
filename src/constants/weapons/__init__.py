@@ -20,6 +20,7 @@ from .damage_values import (
     MANPAD_TBAGRU_DAMAGE,
 )
 from .missiles import missiles
+from .mounted_weapons import mounted_weapons
 from .salvo_standards import LIGHT_AT_AMMO
 from .weapon_descriptions import WEAPON_DESCRIPTIONS, WEAPON_TRAITS
 from .vanilla_inst_modifications import (
@@ -47,6 +48,7 @@ __all__ = [
     'KPVT_DAMAGE',
     'NPLM_BOMB_DAMAGE',
     'missiles',
+    'mounted_weapons',
     'SNIPER_DAMAGE',
     'LIGHT_AT_AMMO',
     'WEAPON_DESCRIPTIONS',

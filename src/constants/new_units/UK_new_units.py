@@ -39,9 +39,9 @@ UK_NEW_UNITS = {
             "default": {
                 "cards": 1,
             },
-            # "UK_2nd_Infantry_multi": {
-            #     "Transports": ["FV432_UK"],
-            # },
+            "UK_2nd_Infantry_multi": {
+                "Transports": ["Bedford_MJ_4t_trans_UK"],
+            },
         },
         "availability": [6, 4, 0, 0],
         "max_speed": 4,

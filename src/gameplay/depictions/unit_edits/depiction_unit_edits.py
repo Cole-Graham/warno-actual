@@ -392,15 +392,13 @@ def unit_edits_depictionvehicles(source_path: Any) -> None:
                         
                     new_entry = donor.copy()
                     new_entry.namespace = edits["copy"]
+                    new_entry.type = obj_type
                     new_entry = _handle_weapon_operator(unit_name, new_entry, edits)
                     
                     # Calculate insertion index
-                    match = re.search(r'(\d+)$', edits["copy"])
-                    if match:
-                        index_addition = int(match.group(1))
-                        row_index = donor.index + (index_addition - 1)
-                        source_path.insert(row_index, new_entry)
-                        logger.info(f"Inserted new weapon operator for {unit_name} at index {row_index}")
+                    row_index = source_path.by_n(f"Gfx_{unit_name}").index
+                    source_path.insert(row_index, new_entry)
+                    logger.info(f"Inserted new weapon operator for {unit_name} at index {row_index}")
                 
                 elif namespace.startswith("Gfx_"):
                     # Handle vehicle depiction copy

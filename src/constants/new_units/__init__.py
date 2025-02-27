@@ -1,5 +1,6 @@
 """New unit definitions."""
 
+from .FR_new_units import FR_NEW_UNITS
 from .new_depictions import NEW_DEPICTIONS
 from .POL_new_units import POL_NEW_UNITS
 from .RDA_new_units import RDA_NEW_UNITS
@@ -16,6 +17,7 @@ NEW_UNITS = {
     **POL_NEW_UNITS,
     **UK_NEW_UNITS,
     **USA_NEW_UNITS,
+    **FR_NEW_UNITS,
 }
 
 __all__ = [

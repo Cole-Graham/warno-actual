@@ -238,6 +238,51 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("RocketInf_LRAC_73", "medium_at", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 15,
+            },
+            "hit_roll": {
+                "Idling": 50,
+            },
+            "parent_membr": {
+                "PorteeMaximaleGRU": 525,
+                "DisplaySalveAccuracy": False,
+                "SupplyCost": 10,
+            },
+        },
+    },
+    
+    ("RocketInf_LRAC_F1", "medium_at", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 17,
+            },
+            "hit_roll": {
+                "Idling": 60,
+            },
+            "parent_membr": {
+                "PorteeMaximaleGRU": 875,
+                "DisplaySalveAccuracy": False,
+                "SupplyCost": 15,
+            },
+        },
+    },
+    
+    ("RocketInf_APILAS", "heavy_at", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 50,
+            },
+            "parent_membr": {
+                "PorteeMaximaleGRU": 875,
+                "DisplaySalveAccuracy": False,
+                "SupplyCost": 20,
+            },
+        },
+    },
 
     ("RocketInf_M72A1_LAW_66mm", "light_at", None, False): { # 681
         "Ammunition": {
@@ -422,6 +467,20 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "Arme": {
                 "Index": 18,
+            },
+            "hit_roll": {
+                "Idling": 50,
+            },
+            "parent_membr": {
+                "PorteeMaximaleGRU": 700,
+            },
+        },
+    },
+    
+    ("RocketInf_PzF_44", "medium_at", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 16,
             },
             "hit_roll": {
                 "Idling": 50,

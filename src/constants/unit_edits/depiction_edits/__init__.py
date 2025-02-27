@@ -1,6 +1,8 @@
 """Unit edits for depiction files."""
 
-# from .FR_depiction_edits import ()
+from .FR_depiction_edits import (
+    vab_t20_fr,
+)
 from .POL_depiction_edits import (
     engineers_cmd_pol,
     mortier_2b9_vasilek_para_pol,
@@ -29,6 +31,9 @@ from .USA_depiction_edits import (
 )
 
 __all__ = [
+    # FR
+    "vab_t20_fr",
+    
     # POL
     "engineers_cmd_pol",
     "mortier_2b9_vasilek_para_pol",

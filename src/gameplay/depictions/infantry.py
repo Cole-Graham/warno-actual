@@ -45,7 +45,7 @@ def edit_infantry_depictions(source_path: Any, ammo_db: Dict[str, Any], depictio
                     weapon_data = {
                         "weapon_alt_mesh": depiction_data["all_weapon_meshes"][old_name],
                         "fire_effect": depiction_data["all_fire_effects"][old_name],
-                        "animation_tag": depiction_data["animation_weapon_map"][old_name]
+                        "animation_tag": depiction_data["animation_weapon_map"].get(old_name, None)
                     }
                 else:
                     weapon_data = {}
@@ -54,7 +54,7 @@ def edit_infantry_depictions(source_path: Any, ammo_db: Dict[str, Any], depictio
                 weapon_data = {
                     "weapon_alt_mesh": depiction_data["all_weapon_meshes"][weapon_name],
                     "fire_effect": depiction_data["all_fire_effects"][weapon_name],
-                    "animation_tag": depiction_data["animation_weapon_map"][weapon_name]
+                    "animation_tag": depiction_data["animation_weapon_map"].get(weapon_name, None)
                 }
             
             try:
@@ -65,7 +65,7 @@ def edit_infantry_depictions(source_path: Any, ammo_db: Dict[str, Any], depictio
                 _add_fire_effect(source_path, unit_name, turret_index, weapon_data["fire_effect"])
                 
                 # Add conditional animation tag if it exists
-                if "animation_tag" in weapon_data:
+                if "animation_tag" in weapon_data and weapon_data["animation_tag"] is not None:
                     _add_animation_tag(source_path, unit_name, turret_index, weapon_data["animation_tag"])
                 
             except Exception as e:

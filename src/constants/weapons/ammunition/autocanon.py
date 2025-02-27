@@ -17,7 +17,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TempsEntreDeuxTirs": 0.1,
                 "TempsEntreDeuxFx": 0.1,
                 "PhysicalDamages": 0.3,
-                "SuppressDamages": 25,
+                "SuppressDamages": 30,
+                "DispersionWithoutSorting": False,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 0.0,
                 "TempsEntreDeuxSalves": 1.5,
@@ -63,7 +64,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TempsEntreDeuxTirs": 0.7,
                 "TempsEntreDeuxFx": 0.7,
                 "PhysicalDamages": 0.40,
-                "SuppressDamages": 25,
+                "SuppressDamages": 30,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 1.25,
                 "TempsEntreDeuxSalves": 1.8,
@@ -88,7 +89,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TempsEntreDeuxTirs": 0.20,
                 "TempsEntreDeuxFx": 0.20,
                 "PhysicalDamages": 0.30,
-                "SuppressDamages": 18,
+                "SuppressDamages": 25,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 1.25,
                 "TempsEntreDeuxSalves": 1.6,
@@ -112,7 +113,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TempsEntreDeuxTirs": 0.20,
                 "TempsEntreDeuxFx": 0.20,
                 "PhysicalDamages": 0.30,
-                "SuppressDamages": 18,
+                "SuppressDamages": 25,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 1.25,
                 "TempsEntreDeuxSalves": 1.6,
@@ -136,7 +137,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TempsEntreDeuxTirs": 0.20,
                 "TempsEntreDeuxFx": 0.20,
                 "PhysicalDamages": 0.30,
-                "SuppressDamages": 18,
+                "SuppressDamages": 25,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 1.25,
                 "TempsEntreDeuxSalves": 1.6,
@@ -158,7 +159,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "PhysicalDamages": 0.25,
-                "SuppressDamages": 15,
+                "SuppressDamages": 25,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 1.25,
                 "TempsEntreDeuxSalves": 1.6,
@@ -182,7 +183,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TempsEntreDeuxTirs": 0.40, # was 0.35 but Eugen said it has to be multiple of game tick rate (10hz)
                 "TempsEntreDeuxFx": 0.40,
                 "PhysicalDamages": 0.25,
-                "SuppressDamages": 15,
+                "SuppressDamages": 25,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 1.25,
                 "TempsEntreDeuxSalves": 1.6,
@@ -203,7 +204,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TempsEntreDeuxTirs": 0.10, # was 0.12 but Eugen said it has to be multiple of game tick rate (10hz)
                 "TempsEntreDeuxFx": 0.10,
                 "PhysicalDamages": 0.20,
-                "SuppressDamages": 10,
+                "SuppressDamages": 25,
                 "DisplaySalveAccuracy": False,
                 "TempsEntreDeuxSalves": 1.0,
                 "NbTirParSalves": 8,
@@ -221,8 +222,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "Caliber": ("Dual 23mm", "LNXURRBEMR"),
-                "PhysicalDamages": 0.5,
-                "SuppressDamages": 20,
+                "PhysicalDamages": 0.4,
+                "SuppressDamages": 25,
                 "DisplaySalveAccuracy": False,
                 "TempsEntreDeuxSalves": 0.6,
                 "NbTirParSalves": 8,
@@ -240,15 +241,36 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "PhysicalDamages": 0.2,
-                "SuppressDamages": 10,
+                "SuppressDamages": 20,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 1.25,
-                "TempsEntreDeuxSalves": 0.6,
+                "TempsEntreDeuxTirs": 0.1,
+                "TempsEntreDeuxSalves": 1.0,
                 "NbTirParSalves": 8,
                 "AffichageMunitionParSalve": 8,
             },
         },
         "BaseSupplyCost": 2,
+    },
+    
+    ("AutoCanon_HE_M693_F1_20mm", "autocannon", None, False): { # 17
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 10,
+            },
+            "parent_membr": {
+                "PhysicalDamages": 0.2,
+                "SuppressDamages": 20,
+                "DisplaySalveAccuracy": False,
+                "TempsDeVisee": 1.25,
+                "TempsEntreDeuxTirs": 0.1,
+                "TempsEntreDeuxSalves": 1.0,
+                "NbTirParSalves": 15,
+                "AffichageMunitionParSalve": 30,
+            },
+        },
+        "BaseSupplyCost": 5,
     },
 
     ("AutoCanon_HE_20mm_M621_GIAT_AMX30", "autocannon", None, False): { # 17
@@ -259,15 +281,16 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "PhysicalDamages": 0.2,
-                "SuppressDamages": 10,
+                "SuppressDamages": 20,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 1.25,
-                "TempsEntreDeuxSalves": 0.6,
-                "NbTirParSalves": 8,
-                "AffichageMunitionParSalve": 8,
+                "TempsEntreDeuxTirs": 0.1,
+                "TempsEntreDeuxSalves": 1.0,
+                "NbTirParSalves": 15,
+                "AffichageMunitionParSalve": 30,
             },
         },
-        "BaseSupplyCost": 2,
+        "BaseSupplyCost": 5,
     },
 
     ("AutoCanon_HE_20mm_M621_GIAT", "autocannon", None, False): { # 16
@@ -278,15 +301,43 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "PhysicalDamages": 0.2,
-                "SuppressDamages": 10,
+                "SuppressDamages": 20,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 1.25,
-                "TempsEntreDeuxSalves": 0.6,
-                "NbTirParSalves": 8,
-                "AffichageMunitionParSalve": 8,
+                "TempsEntreDeuxTirs": 0.1,
+                "TempsEntreDeuxSalves": 1.0,
+                "NbTirParSalves": 15,
+                "AffichageMunitionParSalve": 30,
             },
         },
-        "BaseSupplyCost": 2,
+        "BaseSupplyCost": 5,
+    },
+    
+    ("AutoCanon_HE_T20_20mm", "autocannon", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "BaseCriticModifier": 68,
+                "Idling": 20,
+                "Moving": 10,
+            },
+            "parent_membr": {
+                "add": [
+                    (17, "PorteeMaximaleHAGRU = 1575"),
+                    (17, "PorteeMinimaleHAGRU = 35"),
+                    (17, "PorteeMinimaleTBAGRU = 35"),
+                ],
+                "PorteeMaximaleTBAGRU": 2100,
+                "TempsEntreDeuxTirs": 0.1,
+                "TempsEntreDeuxSalves": 1.0,
+                "PhysicalDamages": 0.2,
+                "SuppressDamages": 20,
+                "DisplaySalveAccuracy": False,
+                "TempsDeVisee": 1.25,
+                "NbTirParSalves": 15,
+                "AffichageMunitionParSalve": 30,
+            },
+        },
+        "BaseSupplyCost": 5,
     },
     
     ("AutoCanon_AP_30mm_M230", "autocannon", None, False): { # 13
@@ -303,6 +354,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TempsEntreDeuxFx": 0.1,
                 "PhysicalDamages": 0.334,
                 "SuppressDamages": 25,
+                "DispersionWithoutSorting": False,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 0.0,
                 "TempsEntreDeuxSalves": 1.5,
@@ -351,12 +403,11 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TempsEntreDeuxTirs": 0.7,
                 "TempsEntreDeuxFx": 0.7,
                 "PhysicalDamages": 0.334,
-                "SuppressDamages": 25,
+                "SuppressDamages": 30,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 1.25,
                 "TempsEntreDeuxSalves": 1.8,
                 "NbTirParSalves": 6,
-                "SupplyCost": 2,
                 "CanShootWhileMoving": False,
                 "AffichageMunitionParSalve": 6,
             },
@@ -364,6 +415,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "WeaponDescriptor": {
             "Salves": 38,
         },
+        "BaseSupplyCost": 2,
     },
 
     ("AutoCanon_AP_30mm_2A72_BMP3", "autocannon", None, False): { # 10
@@ -379,18 +431,18 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TempsEntreDeuxTirs": 0.20,
                 "TempsEntreDeuxFx": 0.20,
                 "PhysicalDamages": 0.334,
-                "SuppressDamages": 18,
+                "SuppressDamages": 25,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 1.25,
                 "TempsEntreDeuxSalves": 1.6,
                 "NbTirParSalves": 8,
-                "SupplyCost": 2,
                 "AffichageMunitionParSalve": 8,
             },
         },
         "WeaponDescriptor": {
             "Salves": 37,
         },
+        "BaseSupplyCost": 2,
     },
 
     ("AutoCanon_AP_30mm_24A2_BMP2", "autocannon", None, False): { # 9
@@ -406,18 +458,18 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TempsEntreDeuxTirs": 0.20,
                 "TempsEntreDeuxFx": 0.20,
                 "PhysicalDamages": 0.334,
-                "SuppressDamages": 18,
+                "SuppressDamages": 25,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 1.25,
                 "TempsEntreDeuxSalves": 1.6,
                 "NbTirParSalves": 8,
-                "SupplyCost": 2,
                 "AffichageMunitionParSalve": 8,
             },
         },
         "WeaponDescriptor": {
             "Salves": 62,
         },
+        "BaseSupplyCost": 2,
     },
 
     ("AutoCanon_AP_30mm_24A2", "autocannon", None, False): { # 8
@@ -433,18 +485,18 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TempsEntreDeuxTirs": 0.20,
                 "TempsEntreDeuxFx": 0.20,
                 "PhysicalDamages": 0.334,
-                "SuppressDamages": 18,
+                "SuppressDamages": 25,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 1.25,
                 "TempsEntreDeuxSalves": 1.6,
                 "NbTirParSalves": 8,
-                "SupplyCost": 2,
                 "AffichageMunitionParSalve": 8,
             },
         },
         "WeaponDescriptor": {
             "Salves": 62,
         },
+        "BaseSupplyCost": 2,
     },
 
     ("AutoCanon_AP_25mm_M242_Bushmaster_Late", "autocannon", None, False): { # 7
@@ -456,18 +508,18 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "Caliber": ("25mm APFSDS", "IQRYAPQHPQ"),
                 "PhysicalDamages": 0.334,
-                "SuppressDamages": 15,
+                "SuppressDamages": 25,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 1.25,
                 "TempsEntreDeuxSalves": 1.6,
                 "NbTirParSalves": 8,
-                "SupplyCost": 2,
                 "AffichageMunitionParSalve": 8,
             },
         },
         "WeaponDescriptor": {
             "Salves": 60,
         },
+        "BaseSupplyCost": 2,
     },
 
     ("AutoCanon_AP_25mm_KBA", "autocannon", None, False): { # 6
@@ -480,15 +532,15 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TempsEntreDeuxTirs": 0.40, # was 0.35 but Eugen said it has to be multiple of game tick rate (10hz)
                 "TempsEntreDeuxFx": 0.40,
                 "PhysicalDamages": 0.334,
-                "SuppressDamages": 15,
+                "SuppressDamages": 25,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 1.25,
                 "TempsEntreDeuxSalves": 1.6,
                 "NbTirParSalves": 8,
-                "SupplyCost": 2,
                 "AffichageMunitionParSalve": 8,
             },
         },
+        "BaseSupplyCost": 2,
     },
 
     ("AutoCanon_AP_23mm_NS23", "autocannon", None, False): { # 5
@@ -501,7 +553,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TempsEntreDeuxTirs": 0.10, # was 0.12 but Eugen said it has to be multiple of game tick rate (10hz)
                 "TempsEntreDeuxFx": 0.10,
                 "PhysicalDamages": 0.334,
-                "SuppressDamages": 10,
+                "SuppressDamages": 25,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 1.25,
                 "TempsEntreDeuxSalves": 1.0,
@@ -510,6 +562,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 8,
             },
         },
+        "BaseSupplyCost": 2,
     },
 
     ("AutoCanon_AP_23mm_Bitube_Gsh23L", "autocannon", None, False): { # 4
@@ -536,59 +589,118 @@ weapons: Dict[WeaponKey, WeaponData] = {
 
     ("AutoCanon_AP_20mm_MK_20_Rh_202", "autocannon", None, False): { # 3
         "Ammunition": {
+            "Arme": {
+                "Index": 10,
+            },
             "hit_roll": {
                 "Idling": 20,
                 "Moving": 10,
             },
             "parent_membr": {
                 "PhysicalDamages": 0.334,
-                "SuppressDamages": 10,
+                "SuppressDamages": 20,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 1.25,
-                "TempsEntreDeuxSalves": 0.6,
+                "TempsEntreDeuxTirs": 0.1,
+                "TempsEntreDeuxSalves": 1.0,
                 "NbTirParSalves": 8,
-                "SupplyCost": 2,
                 "AffichageMunitionParSalve": 8,
             },
         },
+        "BaseSupplyCost": 5,
+    },
+    
+    ("AutoCanon_AP_M693_F1_20mm", "autocannon", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 10,
+            },
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 10,
+            },
+            "parent_membr": {
+                "PhysicalDamages": 0.334,
+                "SuppressDamages": 20,
+                "DisplaySalveAccuracy": False,
+                "TempsDeVisee": 1.25,
+                "TempsEntreDeuxTirs": 0.1,
+                "TempsEntreDeuxSalves": 1.0,
+                "NbTirParSalves": 15,
+                "AffichageMunitionParSalve": 30,
+            },
+        },
+        "BaseSupplyCost": 5,
     },
 
     ("AutoCanon_AP_20mm_M621_GIAT_AMX30", "autocannon", None, False): { # 2
         "Ammunition": {
+            "Arme": {
+                "Index": 10,
+            },
             "hit_roll": {
                 "Idling": 20,
                 "Moving": 10,
             },
             "parent_membr": {
                 "PhysicalDamages": 0.334,
-                "SuppressDamages": 10,
+                "SuppressDamages": 20,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 1.25,
-                "TempsEntreDeuxSalves": 0.6,
-                "NbTirParSalves": 8,
-                "SupplyCost": 2,
-                "AffichageMunitionParSalve": 8,
+                "TempsEntreDeuxTirs": 0.1,
+                "TempsEntreDeuxSalves": 1.0,
+                "NbTirParSalves": 15,
+                "AffichageMunitionParSalve": 30,
             },
         },
+        "BaseSupplyCost": 5,
     },
 
     ("AutoCanon_AP_20mm_M621_GIAT", "autocannon", None, False): { # 1
         "Ammunition": {
+            "Arme": {
+                "Index": 10,
+            },
             "hit_roll": {
                 "Idling": 20,
                 "Moving": 10,
             },
             "parent_membr": {
                 "PhysicalDamages": 0.334,
-                "SuppressDamages": 10,
+                "SuppressDamages": 20,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 1.25,
-                "TempsEntreDeuxSalves": 0.6,
-                "NbTirParSalves": 8,
-                "SupplyCost": 2,
-                "AffichageMunitionParSalve": 8,
+                "TempsEntreDeuxTirs": 0.1,
+                "TempsEntreDeuxSalves": 1.0,
+                "NbTirParSalves": 15,
+                "AffichageMunitionParSalve": 30,
             },
         },
+        "BaseSupplyCost": 5,
+    },
+    
+    ("AutoCanon_AP_T20_20mm", "autocannon", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_ap",
+                "Index": 10,
+            },
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 10,
+            },
+            "parent_membr": {
+                "TempsEntreDeuxTirs": 0.1,
+                "TempsEntreDeuxSalves": 1.0,
+                "PhysicalDamages": 0.334,
+                "SuppressDamages": 20,
+                "DisplaySalveAccuracy": False,
+                "TempsDeVisee": 1.25,
+                "NbTirParSalves": 15,
+                "AffichageMunitionParSalve": 30,
+            },
+        },
+        "BaseSupplyCost": 5,
     },
     # note: check if these aren't duplicate entries
     ("GatlingAir_M61_Vulcan_20mm", "autocannon", None, False): { # 338

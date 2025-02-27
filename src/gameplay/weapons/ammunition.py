@@ -400,10 +400,8 @@ def _apply_weapon_edits(descr: Any, category: str, data: Dict, ammo_data: Dict) 
         for key, value in ammo_data["parent_membr"].items():
             logger.debug(f"Setting {key} = {value}")
             if key == "add": # adding new member, e.g. [16, "PorteeMaximaleTBAGRU = 875"]
-                index = value[0]
-                value = value[1]
-                descr.v.insert(index, value)
-                continue
+                for (index, new_member) in value:
+                    descr.v.insert(index, new_member)
             elif isinstance(value, (float, int, bool)):
                 membr(key).v = str(value)
             elif isinstance(value, tuple) and key == "Caliber":

@@ -58,7 +58,8 @@ def edit_units(source_path: Any, game_db: Dict[str, Any]) -> None:
 
                 modify_module(unit_row, descr_row, edits, i, modules_list, dictionary_entries, game_db)
                 
-            _add_modules(unit_row, descr_row, edits, modules_list, dictionary_entries, game_db)
+            _add_modules(unit_row, edits, modules_list, dictionary_entries, game_db)
+            _remove_modules(unit_row, edits, modules_list, game_db)
 
         except Exception as e:
             logger.error(f"Error processing {unit_name}: {str(e)}")
@@ -151,7 +152,7 @@ def modify_module(unit_row: Any, descr_row: Any, edits: dict, index: int,
         logger.error(f"Error modifying module for {unit_name}: {str(e)}")
 
 
-def _add_modules(unit_row: Any, descr_row: Any, edits: dict, modules_list: list,   # noqa
+def _add_modules(unit_row: Any, edits: dict, modules_list: list,   # noqa
                  dictionary_entries: list, game_db: Dict[str, Any]) -> None:  # noqa
     """Add modules to the unit."""
     unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
@@ -205,6 +206,25 @@ def _add_modules(unit_row: Any, descr_row: Any, edits: dict, modules_list: list,
     elif not is_helo and add_transport_module:
         modules_list.v.add(vehicle_transporter_module)  # noqa
         logger.info(f"Added vehicle transporter module to {unit_name}")
+
+def _remove_modules(
+    unit_row: Any,
+    edits: dict,
+    modules_list: list,
+    game_db: Dict[str, Any]
+) -> None:
+    """Remove modules from the unit."""
+    unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
+    
+    if "modules_remove" in edits:
+        for module_to_remove in edits["modules_remove"]:
+            for module in modules_list.v:
+                if isinstance(module.v, ndf.model.Object):
+                    module_type = module.v.type
+                    if module_to_remove == "Transporter":
+                        if module.namespace == "Transporter":
+                            modules_list.v.remove(module)
+                            logger.info(f"Removed Transporter module from {unit_name}")
 
 
 # def _handle_transporter(unit_row: Any, descr_row: Any, edits: dict, index: int,

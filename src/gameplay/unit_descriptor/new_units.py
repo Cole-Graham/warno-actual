@@ -67,7 +67,7 @@ def create_unit_descriptors(source_path: Any) -> None:
 
 
 def modify_new_unit(unit_row: Any, edits: Dict[str, Any]) -> None:
-    """Modify a new unit based on edit specifications."""
+    """New unit modifications in UniteDescriptor.ndf"""
     # Update basic unit properties
     unit_row.v.by_member("DescriptorId").v = f"GUID:{{{edits['GUID']}}}"
     unit_row.v.by_member("ClassNameForDebug").v = f"'Unite_{edits['NewName']}'"
