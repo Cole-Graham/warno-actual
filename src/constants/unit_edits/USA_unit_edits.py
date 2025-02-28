@@ -2090,6 +2090,11 @@ usa_unit_edits = {
         "availability": [0, 4, 3, 0],
     },
 
+    "M1A1_Abrams_reco_US": {
+        "availability": [0, 3, 2, 0],
+        "CommandPoints": 250,
+    },
+
     "OH58C_Scout_US": {
         "GameName": {
             "display": "#RECO2 OH-58C SCOUT",

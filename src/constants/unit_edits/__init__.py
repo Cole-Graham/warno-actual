@@ -46,9 +46,14 @@ def load_unit_edits() -> Dict:
 
     # parse dictionary for shared/borrowed values in specific fields
     for unit in merged_edits:
-        for field in ("CommandPoints",):
-            if field in merged_edits[unit] and type(merged_edits[unit][field]) == str:
-                ref_unit = merged_edits[unit].get(field, None)
+        # if "import_base" in unit:
+        #     src_unit = merged_edits[merged_edits[unit].get("import_base")]
+        #     src_unit = {i: src_unit[i] for i in src_unit if i not in ("Divisions", "UpgradeFromUnit", "GameName")}
+        #     merged_edits[unit] = src_unit | merged_edits[unit]
+        for field in ("CommandPoints", "availability"):
+            ref_unit = merged_edits[unit].get(field, False)
+            if type(ref_unit) == str:
+                # if field in merged_edits[unit] and type(merged_edits[unit][field]) == str:
                 if ref_unit in merged_edits and field in merged_edits[ref_unit]:
                     merged_edits[unit][field] = merged_edits[ref_unit][field]
                     logger.info(f"Retrieved referenced \"{field}\" value for unit {unit} from unit {ref_unit}")

@@ -129,13 +129,13 @@ sov_unit_edits = {
         },
         "strength": 6,
         "WeaponAssignment": [
-                (0, [1, ]),
-                (1, [0, ]),
-                (2, [0, ]),
-                (3, [0, ]),
-                (4, [0, 3]),
-                (5, [0, 2]),
-            ],
+            (0, [1, ]),
+            (1, [0, ]),
+            (2, [0, ]),
+            (3, [0, ]),
+            (4, [0, 3]),
+            (5, [0, 2]),
+        ],
         "TransportedTexture": "UseInGame_Transport_REGINF",
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
@@ -203,15 +203,15 @@ sov_unit_edits = {
         },
         "strength": 8,
         "WeaponAssignment": [
-                (0, [0, ]),
-                (1, [0, ]),
-                (2, [0, ]),
-                (3, [0, ]),
-                (4, [0, ]),
-                (5, [0, ]),
-                (6, [0, ]),
-                (7, [0, 1, ]),
-            ],
+            (0, [0, ]),
+            (1, [0, ]),
+            (2, [0, ]),
+            (3, [0, ]),
+            (4, [0, ]),
+            (5, [0, ]),
+            (6, [0, ]),
+            (7, [0, 1, ]),
+        ],
         "TransportedTexture": "UseInGame_Transport_assault",
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
@@ -270,15 +270,15 @@ sov_unit_edits = {
         },
         "strength": 8,
         "WeaponAssignment": [
-                (0, [0, ]),
-                (1, [0, ]),
-                (2, [0, ]),
-                (3, [0, ]),
-                (4, [0, ]),
-                (5, [0, ]),
-                (6, [0, ]),
-                (7, [0, 1, ]),
-            ],
+            (0, [0, ]),
+            (1, [0, ]),
+            (2, [0, ]),
+            (3, [0, ]),
+            (4, [0, ]),
+            (5, [0, ]),
+            (6, [0, ]),
+            (7, [0, 1, ]),
+        ],
         "TransportedTexture": "UseInGame_Transport_assault",
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
@@ -382,13 +382,13 @@ sov_unit_edits = {
         },
         "strength": 6,
         "WeaponAssignment": [
-                (0, [1, ]),
-                (1, [0, ]),
-                (2, [0, ]),
-                (3, [0, ]),
-                (4, [0, 3, ]),
-                (5, [0, 2, ]),
-            ],
+            (0, [1, ]),
+            (1, [0, ]),
+            (2, [0, ]),
+            (3, [0, ]),
+            (4, [0, 3, ]),
+            (5, [0, 2, ]),
+        ],
         "TransportedTexture": "UseInGame_Transport_REGINF",
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
@@ -713,7 +713,7 @@ sov_unit_edits = {
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_light'"],
+            "add_specs": ["'infantry_equip_light'", "'_ifv'"],
         },
         "UpgradeFromUnit": "MotRifles_CMD_TTsko_SOV",
         "WeaponDescriptor": {
@@ -1726,6 +1726,7 @@ sov_unit_edits = {
 
     "BRM_1_SOV": {
         "CommandPoints": 55,
+        "availability": [6, 4, 0, 0],
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1734,7 +1735,6 @@ sov_unit_edits = {
                 "cards": 3,
             },
         },
-        "availability": [6, 4, 0, 0],
     },
 
     "BMD_1_Reostat_SOV": {
@@ -2012,8 +2012,9 @@ sov_unit_edits = {
     },
 
     "BRDM_Strela_1_SOV": {
-        "strength": 8,
         "CommandPoints": 50,
+        "availability": [6, 4, 0, 0],
+        "strength": 8,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -2024,7 +2025,6 @@ sov_unit_edits = {
                 "SAM_Strela1_salvolength4": 2,
             },
         },
-        "availability": [6, 4, 0, 0],
     },
 
     "Tunguska_2K22_SOV": {

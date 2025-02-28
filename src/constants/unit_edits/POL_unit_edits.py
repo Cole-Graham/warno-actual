@@ -194,16 +194,16 @@ pol_unit_edits = {
         },
         "strength": 9,
         "WeaponAssignment": [
-                (0, [0, ]),
-                (1, [0, ]),
-                (2, [0, ]),
-                (3, [0, ]),
-                (4, [0, ]),
-                (5, [0, ]),
-                (6, [0, ]),
-                (7, [0, ]),
-                (8, [1, ]),
-            ],
+            (0, [0, ]),
+            (1, [0, ]),
+            (2, [0, ]),
+            (3, [0, ]),
+            (4, [0, ]),
+            (5, [0, ]),
+            (6, [0, ]),
+            (7, [0, ]),
+            (8, [1, ]),
+        ],
         "TransportedTexture": "UseInGame_Transport_assault",
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
@@ -845,23 +845,27 @@ pol_unit_edits = {
     },
 
     "2S1_POL": {  # 2S1 Gozdzik
-        "CommandPoints": 110,
+        "CommandPoints": "2S1_Gvozdika_SOV",
+        "availability": "2S1_Gvozdika_SOV",
+        # "CommandPoints": 110,
+        # "availability": [3, 2, 0, 0],
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "availability": [3, 2, 0, 0],
     },
 
     "2S1M_POL": {  # 2S1M Morski Gozdzik
-        "CommandPoints": 110,
+        "CommandPoints": "2S1_Gvozdika_SOV",
+        "availability": "2S1_Gvozdika_SOV",
+        # "CommandPoints": 110,
+        # "availability": [3, 2, 0, 0],
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "availability": [3, 2, 0, 0],
     },
 
     "DANA_POL": {  # AHS wz. 77 DANA
@@ -1011,12 +1015,12 @@ pol_unit_edits = {
 
     "T72M1_POL": {  # T-72M1
         "CommandPoints": 170,
+        "availability": [0, 6, 4, 0],
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "availability": [0, 6, 4, 0],
     },
 
     "T72M1_Wilk_POL": {  # T-72M2 Wilk
@@ -1054,14 +1058,14 @@ pol_unit_edits = {
     },
 
     "BRDM_2_Konkurs_POL": {  # BRDM-2 Konkurs
+        "CommandPoints": "BRDM_2_Konkurs_SOV",
         "strength": 8,
-        "CommandPoints": 50,
         "stealth": 1.5,
     },
 
     "BRDM_2_Malyu_P_POL": {  # BRDM-2 Malutka-P
-        "strength": 8,
         "CommandPoints": 40,
+        "strength": 8,
         "stealth": 1.5,
     },
 
@@ -1120,7 +1124,7 @@ pol_unit_edits = {
     },
 
     "BMP_2_POL": {  # BWP-2
-        "CommandPoints": 55,
+        "CommandPoints": "BMP_2_SOV",
     },
 
     # POL RECON
@@ -1273,20 +1277,22 @@ pol_unit_edits = {
 
     "BRM_1_POL": {  # BWR-1D
         "CommandPoints": "BRM_1_SOV",
+        "availability": "BRM_1_SOV",
         # "CommandPoints": 55,
-        "availability": [6, 4, 0, 0],
+        # "availability": [6, 4, 0, 0],
     },
 
     "BRDM_2_POL": {  # BRDM-2
-        "strength": 8,
-        # "CommandPoints": 35,
         "CommandPoints": "BRDM_2_SOV",
+        "availability": "BRDM_2_SOV",
+        # "CommandPoints": 35,
+        # "availability": [8, 6, 0, 0],
+        "strength": 8,
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "availability": [8, 6, 0, 0],
         "UpgradeFromUnit": "OT_65_POL",
     },
 
@@ -1372,38 +1378,42 @@ pol_unit_edits = {
     },
 
     "BRDM_Strela_1_POL": {  # (BRDM-2) Strzala-1
+        "CommandPoints": "BRDM_Strela_1_SOV",
+        "availability": "BRDM_Strela_1_SOV",
+        # "CommandPoints": 50,
+        # "availability": [6, 4, 0, 0],
         "strength": 8,
-        "CommandPoints": 50,
         "WeaponDescriptor": {
             "Salves": {
                 "SAM_Strela1_salvolength4": 2,
             },
         },
-        "availability": [6, 4, 0, 0],
     },
 
     "MTLB_Strela10_POL": {  # (MT-LB) Strzala-10
-        "optics": {
-            "OpticalStrengthAltitude": 220,
-        },
-        "CommandPoints": 65,
+        "CommandPoints": "MTLB_Strela10_SOV",
+        "availability": "MTLB_Strela10_SOV",
+        # "CommandPoints": 65,
+        # "availability": [6, 4, 0, 0],
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "availability": [6, 4, 0, 0],
+        "optics": {
+            "OpticalStrengthAltitude": 220,
+        },
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
         },
     },
 
     "ZSU_23_Shilka_POL": {  # ZSU-23-4 Szylka
+        "CommandPoints": 75,
+        "availability": [6, 4, 0, 0],
         "optics": {
             "OpticalStrengthAltitude": 220,
         },
-        "CommandPoints": 75,
-        "availability": [6, 4, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
         },
@@ -1422,11 +1432,13 @@ pol_unit_edits = {
     },
 
     "2K12_KUB_POL": {  # 2K12 Kub
+        "CommandPoints": "2K12_KUB_SOV",
+        "availability": "2K12_KUB_SOV",
+        # "CommandPoints": 90,
+        # "availability": [4, 3, 0, 0],
         "optics": {
             "OpticalStrengthAltitude": 300,
         },
-        "CommandPoints": 90,
-        "availability": [4, 3, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
