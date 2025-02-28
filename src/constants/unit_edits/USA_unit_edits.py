@@ -2674,6 +2674,7 @@ usa_unit_edits = {
             "add_specs": ["'terrain_radar'"],
         },
         "availability": [0, 2, 0, 0],
+        "UpgradeFromUnit": "F111F_Aardvark_LGB2_US",
     },
 
     "F111F_Aardvark_LGB_US": {  # 4x GBU-12
@@ -2682,6 +2683,12 @@ usa_unit_edits = {
 
     "F111E_Aardvark_CBU_US": {  # 8x Mk-20 Rockeye, 3rd Armored
         "CommandPoints": 190,
+        "Divisions": {
+            "add": ["US_11ACR"],
+            "default": {
+                "cards": 1,
+            },
+        },
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
@@ -2698,6 +2705,12 @@ usa_unit_edits = {
 
     "F111E_Aardvark_napalm_US": {  # 4x Mk-77 napalm, 3rd Armored
         "CommandPoints": 190,
+        "Divisions": {
+            "add": ["US_11ACR"],
+            "default": {
+                "cards": 1,
+            },
+        },
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
@@ -2746,6 +2759,7 @@ usa_unit_edits = {
             "OpticalStrengthAltitude": 375,
         },
         "availability": [0, 1, 0, 0],
+        "UpgradeFromUnit": "F16E_TER_HE_US",
     },
 
     "F16E_AGM_US": {  # 4x AGM-65D, 2x AIM-9M
@@ -2766,7 +2780,7 @@ usa_unit_edits = {
         "availability": [0, 2, 0, 0],
     },
 
-    "F16E_HE2_US": {  # 12x mk82 + , 11 ACR
+    "F16E_TER_HE_US": {  # 12x mk82 + , 11 ACR
         "CommandPoints": 225,
         "ECM": -0.35,
         "optics": {
@@ -2809,6 +2823,15 @@ usa_unit_edits = {
 
     "F16E_CBU_US": {
         "CommandPoints": 200,
+        "Divisions": {
+            "remove": ["US_11ACR"],
+            "default": {
+                "cards": 1,
+            },
+            "US_8th_Inf": {
+                "cards": 2,
+            },
+        },
         "ECM": -0.35,
         "optics": {
             "OpticalStrengthAltitude": 375,
@@ -2824,6 +2847,9 @@ usa_unit_edits = {
                 "cards": 1,
             },
             "US_8th_Inf": {
+                "cards": 1,
+            },
+            "US_11ACR": {
                 "cards": 2,
             },
         },
@@ -2836,6 +2862,13 @@ usa_unit_edits = {
 
     "F16E_AA2_US": {  # 3x + 3x AIM-9M
         "CommandPoints": 190,
+        "Divisions": {
+            "remove": ["US_11ACR"],
+            "add": ["US_8th_Inf"],
+            "default": {
+                "cards": 1,
+            },
+        },
         "ECM": -0.35,
         "optics": {
             "OpticalStrengthAltitude": 375,
