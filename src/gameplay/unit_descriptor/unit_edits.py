@@ -286,7 +286,7 @@ def _handle_damage(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:  # n
         blindage_obj = descr_row.v.by_m("BlindageProperties").v
         armor_parts = {
             "front": "ResistanceFront",
-            "sides": "ResistanceSide",
+            "sides": "ResistanceSides",
             "rear": "ResistanceRear",
             "top": "ResistanceTop"
         }

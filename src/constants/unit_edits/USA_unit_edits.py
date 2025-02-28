@@ -693,6 +693,9 @@ usa_unit_edits = {
             "equipmentchanges": {
                 "replace": [("MMG_inf_M240B_7_62mm", "MMG_WA_M60E3_7_62mm")],
             },
+            "Salves": {
+                "MMG_WA_M60E3_7_62mm": 18,
+            },
         },
     },
 
@@ -746,7 +749,7 @@ usa_unit_edits = {
             },
             "Salves": {
                 "FM_M16": 9,
-                "MMG_WA_M60E3_7_62mm": 30,
+                "MMG_WA_M60E3_7_62mm": 18,
                 "RocketInf_M202_Flash_66mm": 2,
             },
         },
@@ -774,7 +777,7 @@ usa_unit_edits = {
             "Salves": {
                 "PM_GreaseGun": 40,
                 "FM_M16A1": 7,
-                "MMG_M60E1_7_62mm": 30,
+                "MMG_M60E1_7_62mm": 18,
                 "flamethrower_M2": 15,
             },
         },
@@ -1020,7 +1023,7 @@ usa_unit_edits = {
             "Salves": {
                 "FM_M16": 9,
                 "SAW_M249_5_56mm": 30,
-                "MMG_WA_M60E3_7_62mm": 30,
+                "MMG_WA_M60E3_7_62mm": 18,
                 "RocketInf_AT4_83mm": 4,
             },
         },
@@ -1091,7 +1094,7 @@ usa_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_M16": 9,
-                "MMG_inf_M240B_7_62mm": 30,
+                "MMG_inf_M240B_7_62mm": 36,
                 "RocketInf_AT4_83mm": 6,
             },
         },
@@ -1246,7 +1249,7 @@ usa_unit_edits = {
             "Salves": {
                 "FM_M16": 7,
                 "SAW_M249_5_56mm": 30,
-                "MMG_WA_M60E3_7_62mm": 30,
+                "MMG_WA_M60E3_7_62mm": 18,
                 "M47_DRAGON_II": 4,
             },
         }
@@ -1279,7 +1282,7 @@ usa_unit_edits = {
             },
             "Salves": {
                 "FM_M16A1": 10,
-                "MMG_M60E1_7_62mm": 30,
+                "MMG_M60E1_7_62mm": 18,
                 "M47_DRAGON": 4,
             },
         }
@@ -2402,6 +2405,9 @@ usa_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "MMG_M240d_7_62mm": 60,
+                "special": {
+                    "MMG_M240d_7_62mm": (0, 60),
+                },
             },
         },
     },

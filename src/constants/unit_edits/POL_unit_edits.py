@@ -224,7 +224,7 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "MMG_PKM_7_62mm": 30,
+                "MMG_PKM_7_62mm": 18,
             },
             "equipmentchanges": {
                 "replace": [("RocketInf_RPG76_Komar", "MMG_PKM_7_62mm")],
@@ -324,7 +324,7 @@ pol_unit_edits = {
         # "WeaponDescriptor": {
         #     "Salves": {
         #         "FM_AK_74": 11,
-        #         "MMG_PKM_7_62mm": 30,
+        #         "MMG_PKM_7_62mm": 18,
         #         "Grenade_Satchel_Charge": 5,
         #     },
         # },

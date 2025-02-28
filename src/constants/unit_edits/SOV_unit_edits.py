@@ -516,7 +516,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 11,
-                "MMG_PKM_7_62mm": 30,
+                "MMG_PKM_7_62mm": 18,
                 "Grenade_Satchel_Charge": 5,
             },
         },
@@ -541,7 +541,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 11,
-                "MMG_PKM_7_62mm": 30,
+                "MMG_PKM_7_62mm": 18,
                 "Grenade_Satchel_Charge": 5,
             },
         },
@@ -585,7 +585,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 7,
-                "MMG_PKM_7_62mm": 30,
+                "MMG_PKM_7_62mm": 18,
                 "RocketInf_RPO_A_93mm": 4,
             },
         },
@@ -609,7 +609,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 7,
-                "MMG_PKM_7_62mm": 30,
+                "MMG_PKM_7_62mm": 18,
                 "RocketInf_RPO_A_93mm": 4,
             },
         },
@@ -893,7 +893,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 11,
-                "MMG_PKM_7_62mm": 30,
+                "MMG_PKM_7_62mm": 18,
                 "RocketInf_RPG22_72_5mm": 6,
             },
         },
@@ -914,7 +914,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 11,
-                "MMG_PKM_7_62mm": 30,
+                "MMG_PKM_7_62mm": 18,
                 "RocketInf_RPG22_72_5mm": 6,
             },
         },

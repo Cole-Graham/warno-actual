@@ -37,12 +37,12 @@ def _modify_hmg_team(weapon_descr, name: str, exceptions: list) -> None:
     
     # Apply other modifications...
     _apply_common_mods(weapon_descr, name, {
-        "PhysicalDamages": "0.24",
-        "SuppressDamages": "72",
-        "TempsEntreDeuxSalves": "1.0",
-        "NbTirParSalves": "7",
-        "SupplyCost": "2",
-        "AffichageMunitionParSalve": "10"
+        "PhysicalDamages": "0.28",
+        "SuppressDamages": "84",
+        "TempsEntreDeuxSalves": "5.0",
+        "NbTirParSalves": "5",
+        "SupplyCost": "3",
+        "AffichageMunitionParSalve": "25"
     })
 
 
@@ -58,12 +58,12 @@ def _modify_mmg_team(weapon_descr, name: str) -> None:
         logger.info(f"Changed {name} helo range to 875")
     
     _apply_common_mods(weapon_descr, name, {
-        "PhysicalDamages": "0.12",
-        "SuppressDamages": "36",
-        "TempsEntreDeuxSalves": "1.3",
-        "NbTirParSalves": "8",
-        "SupplyCost": "1",
-        "AffichageMunitionParSalve": "10"
+        "PhysicalDamages": "0.16",
+        "SuppressDamages": "48",
+        "TempsEntreDeuxSalves": "5.0",
+        "NbTirParSalves": "6",
+        "SupplyCost": "3",
+        "AffichageMunitionParSalve": "30"
     })
 
 
@@ -75,12 +75,12 @@ def _modify_hmg_turret(weapon_descr, name: str) -> None:
     membr("PorteeMaximaleTBAGRU").v = "1050"
     
     _apply_common_mods(weapon_descr, name, {
-        "PhysicalDamages": "0.12",
-        "SuppressDamages": "36",
-        "TempsEntreDeuxSalves": "1.0",
-        "NbTirParSalves": "7",
+        "PhysicalDamages": "0.14",
+        "SuppressDamages": "42",
+        "TempsEntreDeuxSalves": "5.0",
+        "NbTirParSalves": "5",
         "SupplyCost": "2",
-        "AffichageMunitionParSalve": "10"
+        "AffichageMunitionParSalve": "25"
     })
 
 
@@ -93,12 +93,12 @@ def _modify_mmg_turret(weapon_descr, name: str) -> None:
         membr("PorteeMaximaleTBAGRU").v = "875"
     
     _apply_common_mods(weapon_descr, name, {
-        "PhysicalDamages": "0.06",
-        "SuppressDamages": "18",
-        "TempsEntreDeuxSalves": "1.3",
-        "NbTirParSalves": "8",
+        "PhysicalDamages": "0.08",
+        "SuppressDamages": "24",
+        "TempsEntreDeuxSalves": "5.0",
+        "NbTirParSalves": "6",
         "SupplyCost": "1",
-        "AffichageMunitionParSalve": "10"
+        "AffichageMunitionParSalve": "30"
     })
 
 

@@ -293,6 +293,50 @@ fr_unit_edits = {
         },
     },
     
+    "Rifles_FR": {
+        "CommandPoints": 40,
+        "availability": [10, 7, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_FAMAS": 9,
+                "RocketInf_LRAC_F1": 7,
+            },
+        },
+    },
+    
+    "Rifles_DMR_FR": {
+        "CommandPoints": 45,
+        "availability": [8, 6, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_FAMAS": 9,
+                "RocketInf_LRAC_F1": 6,
+            },
+        },
+    },
+    
+    "Rifles_APILAS_FR": {   
+        "CommandPoints": 45,
+        "availability": [8, 6, 0, 0],
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_FAMAS": 9,
+                "RocketInf_APILAS": 6,
+            },
+        },
+    },
+    
+    
     "Sapeurs_FR": {
         "CommandPoints": 40,
         "availability": [0, 7, 5, 0],

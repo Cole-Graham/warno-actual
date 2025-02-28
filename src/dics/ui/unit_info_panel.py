@@ -12,9 +12,14 @@ UNIT_INFO_PANEL_DATA = {
                 "soldiers in a squad means more resillience. Each damage point "
                 "eliminates one soldier."
                 "\n\nWith the exceptions of ATGM, Recoilless rifle, and Machine Gun teams, the "
-                "smaller the infantry squad, the less damage they take from small arms fire. "
-                "The value is between 0% at 14 Strength, and a maximum of 48% for 2 "
-                "strength squads. Losing a soldier does NOT increase level of damage reduction."
+                "smaller the infantry squad relative to the enemy targeting it, the less damage "
+                "they take from small arms fire. The value is 4% per strength difference in squad "
+                "size, up to a maximum of 48%."
+                "\n\nLosing a soldier does NOT dynamically increase the level of damage reduction, "
+                "In other words, a 12 strength squad at half health is still treated as if it "
+                "had full health. This means sending in severely damaged squads in to help fight "
+                "can be very inefficient, as opposed to pulling them back and reinforcing them "
+                "supply."
             ),
         },
     },
