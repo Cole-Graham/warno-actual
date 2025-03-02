@@ -383,6 +383,24 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
+        "WeaponAssignment": [
+                (0, [2, ]),
+                (1, [2, ]),
+                (2, [2, ]),
+                (3, [1, ]),
+                (4, [1, ]),
+                (5, [1, ]),
+                (6, [1, ]),
+                (7, [0, 3,]),
+            ],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_L1A1_SLR": 4,
+                    "SAW_Bren_L4A4": 3,
+                },
+            },
+        },
     },
 
     "AT_Group_TA_UK": {
@@ -421,7 +439,7 @@ uk_unit_edits = {
     },
 
     "Airmobile_MILAN_UK": {  # 7x L85, 2x L86A1 lmg, 1x LAW 80
-        "CommandPoints": 40,
+        "CommandPoints": 45,
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -443,13 +461,13 @@ uk_unit_edits = {
         "availability": [0, 6, 4, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_Carl_Gustav": 8,
+                "RocketInf_Carl_Gustav": 7,
             },
         },
     },
 
     "Engineers_TA_UK": {
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "max_speed": 26,
         "Divisions": {
             "default": {
@@ -476,7 +494,7 @@ uk_unit_edits = {
         "availability": [10, 7, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_Carl_Gustav": 8,
+                "RocketInf_Carl_Gustav": 7,
             },
         },
     },
@@ -702,11 +720,11 @@ uk_unit_edits = {
 
 
     "MCV_80_Warrior_UK": {
-        "CommandPoints": 30,
+        "CommandPoints": 35,
     },
 
     "MCV_80_Warrior_MILAN_UK": {
-        "CommandPoints": 40,
+        "CommandPoints": 45,
         "WeaponDescriptor": {
             "Salves": {
                 "ATGM_MILAN": 6,
@@ -780,7 +798,7 @@ uk_unit_edits = {
     },
 
     "Scout_Airmobile_UK": {
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "DeploymentShift": 0,
         "max_speed": 26,
         "SpecialtiesList": {

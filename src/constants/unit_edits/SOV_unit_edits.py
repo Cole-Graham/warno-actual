@@ -183,7 +183,7 @@ sov_unit_edits = {
     },
 
     "Engineers_CMD_TTsko_SOV": {
-        "CommandPoints": 40,
+        "CommandPoints": 45,
         "GameName": {
             "display": "#LDRSOV SAPERY LDR.",
             # "token": "QCNBGTPZWL",
@@ -250,7 +250,7 @@ sov_unit_edits = {
     },
 
     "Engineers_CMD_SOV": {
-        "CommandPoints": 40,
+        "CommandPoints": 50,
         "GameName": {
             "display": "#LDRSOV SAPERY LDR.",
             # "token": "AGYMPGDUXA",
@@ -314,7 +314,7 @@ sov_unit_edits = {
     },
 
     "Spetsnaz_CMD_SOV": {
-        "CommandPoints": 40,
+        "CommandPoints": 55,
         "GameName": {
             "display": "#LDRSOV SPETSNAZ LDR.",
             # "token": "CKLQCEBSOY",
@@ -432,7 +432,7 @@ sov_unit_edits = {
     },
 
     "Engineers_CMD_VDV_SOV": {
-        "CommandPoints": 45,
+        "CommandPoints": 50,
         "GameName": {
             "display": "#LDRSOV DESANT. SAPERY LDR.",
             # "token": "SWFVKVIZVT",
@@ -562,13 +562,18 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "Grenade_Satchel_Charge": 4,
+            },
+        },
     },
 
     "Engineers_Flam_SOV": {
         "GameName": {
             "display": "SAPERY [RPO]",
         },
-        "CommandPoints": 50,
+        "CommandPoints": 55,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -619,7 +624,7 @@ sov_unit_edits = {
         "GameName": {
             "display": "DESANT. SAPERY [RPO]",
         },
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "availability": [0, 9, 7, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -763,7 +768,7 @@ sov_unit_edits = {
         "GameName": {
             "display": "DESANTNIKI [BMD]",
         },
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "Divisions": {
             "default": {
                 "cards": 69,
@@ -775,7 +780,7 @@ sov_unit_edits = {
                 "cards": 3,
             },
         },
-        "availability": [0, 9, 7, 0],
+        "availability": [0, 8, 6, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -788,7 +793,7 @@ sov_unit_edits = {
     },
 
     "VDV_SOV": {  # RPK, SVD, RPG-7VR
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "Divisions": {
             "default": {
                 "cards": 69,
@@ -813,7 +818,7 @@ sov_unit_edits = {
     },
 
     "VDV_Combine_SOV": {  # RPK, RPG-22, RPG-7VL
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "availability": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -941,7 +946,7 @@ sov_unit_edits = {
     },
 
     "Spetsnaz_SOV": {
-        "CommandPoints": 70,
+        "CommandPoints": 75,
         "availability": [0, 0, 4, 3],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -955,7 +960,7 @@ sov_unit_edits = {
     },
 
     "Spetsnaz_Vympel_SOV": {  # Spetsgruppa Vympel
-        "CommandPoints": 70,
+        "CommandPoints": 75,
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1806,7 +1811,7 @@ sov_unit_edits = {
             # "display": "#RECO2 RAZVEDKA SAPERY",
             "display": "#RECO2 RAZV. SAPERY",
         },
-        "CommandPoints": 40,
+        "CommandPoints": 45,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1825,7 +1830,7 @@ sov_unit_edits = {
             # "display": "#RECO2 RAZVEDKA SAPERY",
             "display": "#RECO2 RAZV. SAPERY",
         },
-        "CommandPoints": 40,
+        "CommandPoints": 45,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1839,7 +1844,7 @@ sov_unit_edits = {
     },
 
     "HvyScout_SOV": {
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "availability": [7, 5, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1849,7 +1854,7 @@ sov_unit_edits = {
     },
 
     "HvyScout_TTsko_SOV": {
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "availability": [7, 5, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1859,7 +1864,7 @@ sov_unit_edits = {
     },
 
     "Scout_LRRP_SOV": {  # Spetsnaz GRU
-        "CommandPoints": 55,
+        "CommandPoints": 65,
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1878,7 +1883,7 @@ sov_unit_edits = {
     },
 
     "Scout_Spetsnaz_VDV_SOV": {
-        "CommandPoints": 70,
+        "CommandPoints": 65,
         "availability": [0, 4, 3, 0],
         "max_speed": 20,
         "SpecialtiesList": {

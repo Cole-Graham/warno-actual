@@ -296,7 +296,7 @@ rda_unit_edits = {
     },
 
     "MotSchutzen_DDR": {  # Panzerjager 2x RPG-7VR
-        "CommandPoints": 40,
+        "CommandPoints": 30,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -329,6 +329,26 @@ rda_unit_edits = {
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
+        },
+        "WeaponAssignment": [
+            (0, [1, ]),
+            (1, [1, ]),
+            (2, [0, ]),
+            (3, [0, ]),
+            (4, [0, ]),
+            (5, [0, ]),
+            (6, [0, ]),
+            (7, [0, 2, ]),
+        ],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "MMG_PKM_7_62mm": 2,
+                },
+            },
+            "Salves": {
+                "Grenade_Satchel_Charge": 6,
+            },
         },
     },
 
@@ -782,7 +802,7 @@ rda_unit_edits = {
     },
 
     "HvyScout_DDR": {
-        "CommandPoints": 30,
+        "CommandPoints": 35,
         "availability": [6, 4, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -792,7 +812,7 @@ rda_unit_edits = {
     },
 
     "Scout_LRRP_DDR": {
-        "CommandPoints": 70,
+        "CommandPoints": 60,
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "SpecialtiesList": {

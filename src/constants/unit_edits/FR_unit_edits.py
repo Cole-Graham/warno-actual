@@ -33,7 +33,7 @@ fr_unit_edits = {
     },
     # FR INF
     "Chasseurs_CMD_FR": {
-        "CommandPoints": 40,
+        "CommandPoints": 45,
         "GameName": {
             "display": "#LDR CHASSEURS LDR.",
         },
@@ -294,11 +294,12 @@ fr_unit_edits = {
     },
     
     "Rifles_FR": {
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "availability": [10, 7, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
+        "max_speed": 26,
         "WeaponDescriptor": {
             "Salves": {
                 "FM_FAMAS": 9,
@@ -308,11 +309,12 @@ fr_unit_edits = {
     },
     
     "Rifles_DMR_FR": {
-        "CommandPoints": 45,
+        "CommandPoints": 40,
         "availability": [8, 6, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
+        "max_speed": 26,
         "WeaponDescriptor": {
             "Salves": {
                 "FM_FAMAS": 9,
@@ -330,15 +332,41 @@ fr_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_FAMAS": 9,
+                "FM_FAMAS": 7,
                 "RocketInf_APILAS": 6,
             },
         },
     },
     
+    "Escorte_FR": {
+        "CommandPoints": 25,
+        "availability": [10, 7, 0, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
+        },
+    },
+    
+    "Chasseurs_FR": {
+        "CommandPoints": 35,
+        "availability": [10, 7, 0, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+    },
+    
+    "Reserviste_FR": {
+        "CommandPoints": 30,
+        "availability": [12, 0, 0, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+    },
     
     "Sapeurs_FR": {
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "availability": [0, 7, 5, 0],
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -357,20 +385,42 @@ fr_unit_edits = {
         "UpgradeFromUnit": "Sapeurs_FR",
     },
     
+    "Groupe_AT_FR": {
+        "CommandPoints": 35,
+        "availability": [10, 7, 0, 0],
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_FAMAS": 7,
+            },
+        },
+    },
+    
+    "Commandos_FR": {
+        "CommandPoints": 65,
+        "availability": [0, 0, 4, 3],
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_FAMAS": 7,
+            },
+        },
+    },
+    
     # FR TANK
     "VAB_FR": {
         "CommandPoints": 20,
         "strength": 10,
-        "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
-        },
     },
 
     "VAB_Reserve_FR": {
         "strength": 10,
-        "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
-        },
     },
     
     "VAB_MILAN_FR": {
@@ -414,7 +464,7 @@ fr_unit_edits = {
     },
     
     "AMX_10_P_FR": {
-        "CommandPoints": 35,
+        "CommandPoints": 40,
     },
     
     "AMX_10_P_MILAN_FR": {
@@ -438,16 +488,48 @@ fr_unit_edits = {
     },
     
     "AMX_13_VCI_20mm_FR": {
-        "CommandPoints": 30,
+        "CommandPoints": 35,
         "armor": {
             "front": 2,
             "sides": 1,
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [
+                    ("AutoCanon_AP_M693_F1_20mm", "AutoCanon_AP_M693_F1_20mm_15acc"),
+                    ("AutoCanon_HE_M693_F1_20mm", "AutoCanon_HE_M693_F1_20mm_15acc"),
+                ],
+            },
         },
     },
     # FR RECON
     "VLRA_HMG_FR": {
         "CommandPoints": 25,
     },
+    
+    "Scout_FR": {
+        "CommandPoints": 25,
+        "availability": [8, 6, 0, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "RocketInf_LRAC_F1": 4,
+            },
+        },
+    },
+    
+    "LRRP_FR": {
+        "CommandPoints": 60,
+        "availability": [0, 0, 4, 3],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
+        },
+    },
+    
     "Alouette_III_FR": {
         "CommandPoints": 35,
         "SpecialtiesList": {

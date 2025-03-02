@@ -158,7 +158,7 @@ usa_unit_edits = {
     },
 
     "Rifles_CMD_US": {
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "GameName": {
             "token": "SVWNZUYPNE",
             "display": "#LDR MECH. RIFLES LDR.",
@@ -216,7 +216,7 @@ usa_unit_edits = {
     },
 
     "Engineer_CMD_US": {
-        "CommandPoints": 50,
+        "CommandPoints": 55,
         "GameName": {
             "display": "#LDR ENGINEERS LDR.",
             "token": "DBEBRUEYSP",
@@ -648,6 +648,28 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
+        "WeaponAssignment": [
+                (0, [1, ]),
+                (1, [1, ]),
+                (2, [0, ]),
+                (3, [0, ]),
+                (4, [0, ]),
+                (5, [0, ]),
+                (6, [0, ]),
+                (7, [0, ]),
+                (8, [0, ]),
+                (9, [0, 2]),
+            ],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "MMG_WA_M60E3_7_62mm": 2,
+                },
+            },
+            "Salves": {
+                "Grenade_Satchel_Charge": 6,
+            },
+        },
     },
 
     "NatGuard_Engineers_US": {
@@ -676,6 +698,28 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
+        "WeaponAssignment": [
+                (0, [1, ]),
+                (1, [1, ]),
+                (2, [0, ]),
+                (3, [0, ]),
+                (4, [0, ]),
+                (5, [0, ]),
+                (6, [0, ]),
+                (7, [0, ]),
+                (8, [0, ]),
+                (9, [0, 2]),
+            ],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "MMG_WA_M60E3_7_62mm": 2,
+                },
+            },
+            "Salves": {
+                "Grenade_Satchel_Charge": 6,
+            },
+        },
     },
 
     "Airborne_Engineers_US": {
@@ -690,11 +734,8 @@ usa_unit_edits = {
             "add_specs": ["'infantry_equip_light'"],
         },
         "WeaponDescriptor": {
-            "equipmentchanges": {
-                "replace": [("MMG_inf_M240B_7_62mm", "MMG_WA_M60E3_7_62mm")],
-            },
             "Salves": {
-                "MMG_WA_M60E3_7_62mm": 18,
+                "Grenade_Satchel_Charge": 6,
             },
         },
     },
@@ -703,7 +744,7 @@ usa_unit_edits = {
         "GameName": {
             "display": "ENGINEERS [FLASH]",
         },
-        "CommandPoints": 30,
+        "CommandPoints": 35,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -866,6 +907,23 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
+        "WeaponAssignment": [
+                (0, [1, ]),
+                (1, [1, ]),
+                (2, [0, ]),
+                (3, [0, ]),
+                (4, [0, ]),
+            ],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "MMG_WA_M60E3_7_62mm": 2,
+                },
+            },
+            "Salves": {
+                "FM_M16": 7,
+            },
+        },
     },
 
     "Airborne_MP_RCL_US": {
@@ -922,7 +980,7 @@ usa_unit_edits = {
     },
 
     "AeroRifles_US": {  # AIR CAV TROOPERS
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1030,7 +1088,7 @@ usa_unit_edits = {
     },
 
     "Ranger_US": {
-        "CommandPoints": 60,
+        "CommandPoints": 65,
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1055,7 +1113,7 @@ usa_unit_edits = {
         "GameName": {
             "display": "RANGERS [DRAGON]",
         },
-        "CommandPoints": 65,
+        "CommandPoints": 70,
         "availability": [0, 0, 4, 3],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -1115,7 +1173,20 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
+        "WeaponAssignment": [
+            (0, [1, ]),
+            (1, [1, ]),
+            (2, [0, ]),
+            (3, [0, ]),
+            (4, [0, 2,]),
+        ],
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_M16": 3,
+                    "SAW_M249_5_56mm": 2,
+                },
+            },
             "Salves": {
                 "FM_M16": 9,
                 "SAW_M249_5_56mm": 30,
@@ -1167,6 +1238,15 @@ usa_unit_edits = {
             "display": "AERO-RIFLES [DRAGON]",
         },
         "CommandPoints": 40,
+        "Divisions": {
+            "add": ["US_82nd_Airborne"],
+            "is_transported": True,
+            "needs_transport": True,
+            "US_82nd_Airborne": {
+                "cards": 1,
+                "Transports": ["UH60A_Black_Hawk_US"],
+            },
+        },
         "availability": [0, 6, 4, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -1593,7 +1673,7 @@ usa_unit_edits = {
 
     # US TANK
     "M1A1HA_Abrams_CMD_US": {
-        "CommandPoints": 335,
+        "CommandPoints": 330,
         "GameName": {
             "display": "#LDR M1A1(HA) ABRAMS LDR.",
             "token": "CIOEKZVEAY",
@@ -1632,7 +1712,7 @@ usa_unit_edits = {
     },
 
     "M1A1_Abrams_CMD_US": {
-        "CommandPoints": 260,
+        "CommandPoints": 255,
         "GameName": {
             "display": "#LDR M1A1 ABRAMS LDR.",
             "token": "JARUASHKDH",
@@ -1674,7 +1754,7 @@ usa_unit_edits = {
     },
 
     "M1IP_Abrams_CMD_US": {
-        "CommandPoints": 220,
+        "CommandPoints": 215,
         "GameName": {
             "display": "#LDR M1IP ABRAMS LDR.",
             "token": "TSLINICZXV",
@@ -2212,7 +2292,7 @@ usa_unit_edits = {
     },
 
     "LRRP_US": {
-        "CommandPoints": 75,
+        "CommandPoints": 70,
         "availability": [0, 0, 4, 3],
         "Divisions": {
             "default": {
@@ -2861,7 +2941,7 @@ usa_unit_edits = {
     },
 
     "F16E_AA2_US": {  # 3x + 3x AIM-9M
-        "CommandPoints": 190,
+        "CommandPoints": 180,
         "Divisions": {
             "remove": ["US_11ACR"],
             "add": ["US_8th_Inf"],
@@ -2873,7 +2953,7 @@ usa_unit_edits = {
         "optics": {
             "OpticalStrengthAltitude": 375,
         },
-        "availability": [0, 0, 2, 0],
+        "availability": [0, 3, 2, 0],
         "UpgradeFromUnit": "F16E_AA_US",
     },
 
