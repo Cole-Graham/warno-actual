@@ -12,7 +12,7 @@ rfa_unit_edits = {
 
     # RFA INF
     "Panzergrenadier_CMD_RFA": {
-        "CommandPoints": 40,
+        "CommandPoints": 45,
         "GameName": {
             "display": "#LDR PANZERGRENADIER LDR.",
         },
@@ -47,6 +47,7 @@ rfa_unit_edits = {
             "overwrite_all": [
                 'infantry',
                 '_leader',
+                '_ifv',
                 'infantry_equip_heavy',
             ],
         },
@@ -56,8 +57,11 @@ rfa_unit_edits = {
             "default": {
                 "cards": 1,
             },
+            "US_11ACR": {
+                "Transports": ["Marder_1A3_RFA", "Marder_1A3_MILAN_RFA"],
+            },
         },
-        "availability": [0, 0, 7, 5],
+        "availability": [0, 0, 5, 4],
         "max_speed": 20,
         "WeaponDescriptor": {
             "Salves": {
@@ -78,8 +82,28 @@ rfa_unit_edits = {
             "default": {
                 "cards": 2,
             },
+            "US_11ACR": {
+                "cards": 1,
+            },
         },
         "availability": [12, 9, 0, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+    },
+
+    "HeimatschutzJager_RFA": {  # PZ.GRENADIER
+        "GameName": {
+            "display": "HEIMATJÄGER"
+        },
+        "CommandPoints": 30,
+        "Divisions": {
+            "default": {
+                "cards": 1,  # or 2
+            },
+        },
+        "availability": [10, 0, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -95,6 +119,7 @@ rfa_unit_edits = {
         "availability": [6, 4, 0, 0],
     },
 
+    # trsp
     "Unimog_trans_RFA": {
         "CommandPoints": 15,
         "SpecialtiesList": {
@@ -119,11 +144,17 @@ rfa_unit_edits = {
     },
 
     "M109A3G_HOWZ_RFA": {
-        "CommandPoints": 170,
+        "CommandPoints": 190,
         "availability": [3, 2, 0, 0],
     },
 
     # RFA TANK
+    "Jaguar_2_RFA": {
+        "CommandPoints": 75,
+        "availability": [6, 4, 0, 0],
+    },
+
+    # trsp
     "TPZ_Fuchs_1_RFA": {
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
@@ -132,14 +163,21 @@ rfa_unit_edits = {
 
     "Marder_1A3_RFA": {
         "CommandPoints": 40,
-    },
-
-    "Jaguar_2_RFA": {
-        "CommandPoints": 75,
+        "WeaponDescriptor": {
+            "Salves": {
+                "AutoCanon_AP_20mm_MK_20_Rh_202": 48,
+            },
+        },
     },
 
     "Marder_1A3_MILAN_RFA": {
         "CommandPoints": 50,
+        "WeaponDescriptor": {
+            "Salves": {
+                "AutoCanon_AP_20mm_MK_20_Rh_202": 48,
+                "ATGM_MILAN": 6,
+            },
+        },
     },
 
     # RFA REC
@@ -149,6 +187,7 @@ rfa_unit_edits = {
         },
         "CommandPoints": 15,
         "max_speed": 26,
+        "availability": [10, 0, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },

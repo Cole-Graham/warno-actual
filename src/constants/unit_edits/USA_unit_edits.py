@@ -988,13 +988,16 @@ usa_unit_edits = {
         },
     },
 
-    "Cavalry_US": {  # DISMOUNT TROOPERS WIP
+    "Rifles_Cavalry_US": {  # DISMOUNT TROOPERS WIP
         "CommandPoints": 35,
         "availability": [12, 9, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
+        # "Divisions": {
+        #     "remove": ["US_11ACR"],
+        # },
         "Salves": {
             "FM_M16": 9,
             "SAW_M249_5_56mm": 30,
@@ -1178,7 +1181,7 @@ usa_unit_edits = {
             (1, [1, ]),
             (2, [0, ]),
             (3, [0, ]),
-            (4, [0, 2,]),
+            (4, [0, 2, ]),
         ],
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -2246,8 +2249,8 @@ usa_unit_edits = {
                     "M998_Humvee_US",
                     "M1025_Humvee_scout_US",
                     "M1025_Humvee_AGL_nonPara_US",
-                    "M113A3_US",
-                    "M113_ACAV_US",
+                    # "M113A3_US",
+                    # "M113_ACAV_US",
                 ],
             },
         },
@@ -2297,6 +2300,13 @@ usa_unit_edits = {
         "Divisions": {
             "default": {
                 "Transports": ["M998_Humvee_US", "UH60A_Black_Hawk_US"],
+            },
+            "US_11ACR": {
+                "Transports": [
+                    "M998_Humvee_US",
+                    "M1025_Humvee_scout_US",
+                    "M1025_Humvee_AGL_nonPara_US",
+                ],
             },
         },
         "max_speed": 26,

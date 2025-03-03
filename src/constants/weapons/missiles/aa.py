@@ -693,5 +693,35 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+
+    ("MANPAD_FIM43", "MANPAD", None, False): { # 171
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_tbagru",
+            },
+            "parent_membr": {
+                "PorteeMaximaleTBAGRU": 2625,
+                "PorteeMaximaleHAGRU": 1750,
+                "TempsEntreDeuxSalves": 14.0,
+                "TempsDeVisee": 1.2,
+                "SupplyCost": 25,
+            }
+        },
+    },
+
+    ("MANPAD_FIM43_HAGRU", "MANPAD", "MANPAD_FIM43", True): { # 171
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_hagru",
+            },
+            "parent_membr": {
+                "PorteeMaximaleTBAGRU": 2625,
+                "PorteeMaximaleHAGRU": 1750,
+                "TempsEntreDeuxSalves": 14.0,
+                "TempsDeVisee": 3.5,
+                "SupplyCost": 25,
+            }
+        },
+    },
 }
 # fmt: on
