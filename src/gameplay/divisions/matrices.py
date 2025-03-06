@@ -26,6 +26,7 @@ def deck_ap_points(source_path: Any) -> None:
     logger.info("Editing deck AP points")
     
     divisions = [
+        "FR_5e_Blindee",
         "US_3rd_Arm",
         "US_8th_Inf",
         "US_11ACR",
@@ -36,6 +37,9 @@ def deck_ap_points(source_path: Any) -> None:
         "SOV_119IndTkBrig",
         "RDA_7_Panzer",
         "POL_20_Pancerna",
+        "POL_4_Zmechanizowana",
+        "RDA_KdA_Bezirk_Erfurt",
+        "RFA_TerrKdo_Sud",
     ]
     
     for deck_descr in source_path:

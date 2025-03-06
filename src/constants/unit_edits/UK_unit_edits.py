@@ -375,6 +375,7 @@ uk_unit_edits = {
     "Security_UK": {
         "CommandPoints": 25,
         "max_speed": 26,
+        "availability": [14, 0, 0, 0],
     },
 
     "Territorial_UK": {
@@ -698,7 +699,7 @@ uk_unit_edits = {
     },
 
     "LandRover_MILAN_UK": {
-        "CommandPoints": 40,
+        "CommandPoints": 45,
         "Divisions": {
             "default": {
                 "cards": 69,
@@ -753,7 +754,7 @@ uk_unit_edits = {
 
     # UK RECON
     "Ferret_Mk2_UK": {
-        "CommandPoints": 20,
+        "CommandPoints": 15,
         "availability": [10, 7, 0, 0],
     },
 
@@ -880,6 +881,7 @@ uk_unit_edits = {
         "CommandPoints": 65,
         "optics": {
             "OpticalStrengthAltitude": 220,
+            "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
@@ -891,6 +893,7 @@ uk_unit_edits = {
         "CommandPoints": 85,
         "optics": {
             "OpticalStrengthAltitude": 220,
+            "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
@@ -902,6 +905,7 @@ uk_unit_edits = {
         "CommandPoints": 85,
         "optics": {
             "OpticalStrengthAltitude": 300,
+            "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],

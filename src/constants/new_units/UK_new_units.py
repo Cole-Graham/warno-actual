@@ -45,6 +45,9 @@ UK_NEW_UNITS = {
         },
         "availability": [6, 4, 0, 0],
         "max_speed": 4,
+        "capacities": {
+            "add_capacities": ["Deploy", "Deploy_ok"],
+        },
         "UpgradeFromUnit": "FOB_UK",
         "Orders": ['Stop', 'Move', 'FollowFormation', 'SmartMove', 'Attack', 'SmartMoveAndAttack', 'MoveAndAttack',
                    'Spread', 'Shoot', 'ShootOnPosition', 'ShootOnPositionWithoutCorrection', 'AskForSupply',

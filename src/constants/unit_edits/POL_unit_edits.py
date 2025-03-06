@@ -21,6 +21,9 @@ pol_unit_edits = {
         },
         "availability": [9, 7, 0, 0],
         "max_speed": 4,
+        "capacities": {
+            "add_capacities": ["Deploy", "Deploy_ok"],
+        },
         "UpgradeFromUnit": "FOB_POL",
     },
 
@@ -44,6 +47,9 @@ pol_unit_edits = {
         },
         "availability": [9, 7, 0, 0],
         "max_speed": 4,
+        "capacities": {
+            "add_capacities": ["Deploy", "Deploy_ok"],
+        },
         # "UpgradeFromUnit": "FOB_POL",  # no fob in korpus
     },
 
@@ -85,6 +91,9 @@ pol_unit_edits = {
         # },
         "availability": [6, 4, 0, 0],
         "max_speed": 4,
+        "capacities": {
+            "add_capacities": ["Deploy", "Deploy_ok"],
+        },
         "UpgradeFromUnit": "DCA_ZU_23_2_Para_POL",
     },
 
@@ -128,6 +137,7 @@ pol_unit_edits = {
 
     "OT_64_SKOT_CMD_POL": {  # SKOT R-2M
         "CommandPoints": 165,
+        "strength": 10,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -175,7 +185,7 @@ pol_unit_edits = {
 
     #POL INFANTRY
     "Engineers_CMD_POL": {  # Saperzy Ldr.
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "GameName": {
             "display": "#LDRSOV SAPERZY LDR.",
         },
@@ -244,7 +254,7 @@ pol_unit_edits = {
     },
 
     "MotRifles_CMD_POL": {  # Piechota Zmech. Ldr.
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "GameName": {
             "display": "#LDRSOV PIECHOTA ZMECH. LDR.",
         },
@@ -413,10 +423,26 @@ pol_unit_edits = {
         },
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
+        "strength": 8,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
+        "WeaponAssignment": [
+            (0, [1, ]),
+            (1, [0, ]),
+            (2, [0, ]),
+            (3, [0, ]),
+            (4, [0, ]),
+            (5, [0, ]),
+            (6, [0, ]),
+            (7, [0, 2]),
+        ],
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_kbk_AK": 7,
+                },
+            },
             "Salves": {
                 "FM_kbk_AK": 9,
             },
@@ -1073,10 +1099,12 @@ pol_unit_edits = {
 
     "OT_64_SKOT_2_POL": {  # SKOT-2
         "CommandPoints": 20,
+        "strength": 10,
     },
 
     "OT_64_SKOT_2A_POL": {  # SKOT-2A
         "CommandPoints": 25,
+        "strength": 10,
         "SpecialtiesList": {
             "overwrite_all": [
                 'transport',
@@ -1088,6 +1116,7 @@ pol_unit_edits = {
     },
 
     "OT_64_SKOT_2AM_POL": {  # SKOT-2AM
+        "strength": 10,
         "SpecialtiesList": {
             "overwrite_all": [
                 'transport',
@@ -1099,6 +1128,7 @@ pol_unit_edits = {
     },
 
     "OT_64_SKOT_2P_POL": {  # SKOT-2AP
+        "strength": 10,
         "SpecialtiesList": {
             "overwrite_all": [
                 'transport',
@@ -1133,19 +1163,36 @@ pol_unit_edits = {
             "display": "#RECO2 ZWIADOWCY ZMOT.",
         },
         "CommandPoints": 40,
-        "availability": [7, 5, 0, 0],
+        "availability": [6, 4, 0, 0],
         "max_speed": 26,
+        "strength": 8,
+        "WeaponAssignment": [
+            (0, [1, ]),
+            (1, [0, ]),
+            (2, [0, ]),
+            (3, [0, ]),
+            (4, [0, ]),
+            (5, [0, ]),
+            (6, [0, ]),
+            (7, [0, 2]),
+        ],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_kbk_AK": 7,
+                },
+            },
+        },
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
-        "DeploymentShift": 0,
     },
 
     "Engineers_Scout_POL": {  # Saperzy Zwiadowcy
         "GameName": {
             "display": "#RECO2 SAPERZY ZWIAD.",
         },
-        "CommandPoints": 40,
+        "CommandPoints": 50,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1316,6 +1363,7 @@ pol_unit_edits = {
     },
 
     "OT_65_POL": {  # OT-65
+        "CommandPoints": 15,
         "GameName": {
             "display": "#RECO1 OT-65",
         },
@@ -1323,7 +1371,7 @@ pol_unit_edits = {
     },
 
     "MTLB_TRI_Hors_POL": {  # TRI Hors
-        "CommandPoints": 25,
+        "CommandPoints": 20,
         "UpgradeFromUnit": None,
     },
 
@@ -1402,6 +1450,7 @@ pol_unit_edits = {
         },
         "optics": {
             "OpticalStrengthAltitude": 220,
+            "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
@@ -1413,6 +1462,7 @@ pol_unit_edits = {
         "availability": [6, 4, 0, 0],
         "optics": {
             "OpticalStrengthAltitude": 220,
+            "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
@@ -1422,6 +1472,7 @@ pol_unit_edits = {
     "Osa_9K33M3_POL": {  # PWRB Osa-AKM
         "optics": {
             "OpticalStrengthAltitude": 300,
+            "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
@@ -1438,6 +1489,7 @@ pol_unit_edits = {
         # "availability": [4, 3, 0, 0],
         "optics": {
             "OpticalStrengthAltitude": 300,
+            "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],

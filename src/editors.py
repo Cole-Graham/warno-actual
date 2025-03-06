@@ -34,6 +34,8 @@ from src.gameplay import (
     update_weapondescr_ammoname_quantity,
     vanilla_renames_weapondescriptor,
     edit_weapon_traits,
+    edit_capacities,
+    edit_identify_rules,
 )
 from src.gameplay.buildings import edit_fob_attributes
 from src.gameplay.depictions import (
@@ -257,6 +259,8 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
             lambda source_path: global_bomber_edits(source_path, game_db),
             lambda source_path: add_radio_tag_to_mortars(source_path, game_db),
             add_swift_capacity,
+            edit_capacities,
+            edit_identify_rules,
         ],
         "GameData/Generated/Gameplay/Gfx/Ammunition.ndf": [
             lambda source_path: edit_ammunition(source_path, game_db),

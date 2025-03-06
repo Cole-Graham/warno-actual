@@ -162,7 +162,7 @@ rfa_unit_edits = {
     },
 
     "Marder_1A3_RFA": {
-        "CommandPoints": 40,
+        "CommandPoints": 50,
         "WeaponDescriptor": {
             "Salves": {
                 "AutoCanon_AP_20mm_MK_20_Rh_202": 48,
@@ -171,11 +171,14 @@ rfa_unit_edits = {
     },
 
     "Marder_1A3_MILAN_RFA": {
-        "CommandPoints": 50,
+        "CommandPoints": 60,
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("ATGM_MILAN", "ATGM_MILAN_2")]
+            },
             "Salves": {
                 "AutoCanon_AP_20mm_MK_20_Rh_202": 48,
-                "ATGM_MILAN": 6,
+                "ATGM_MILAN_2": 6,
             },
         },
     },
@@ -194,6 +197,7 @@ rfa_unit_edits = {
     },
 
     "M113_GreenArcher_RFA": {
+        "CommandPoints": 30,
         # "optics": {
         #     "OpticalStrength": 233.475
         # },

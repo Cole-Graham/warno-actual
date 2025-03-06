@@ -125,7 +125,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "SalvoLengths": [1],
         },
         "MissileDescriptor": {
-            "MaxSpeedGRU": 990,
+            "MaxSpeedGRU": 350,
         },
     },
 
@@ -154,7 +154,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("ATGM_HOT2", "ATGM", None, False): {
         "Ammunition": {
             "Arme": {
-                "Index": 24,
+                "Index": 23,
             },
             "parent_membr": {
                 "MaximalSpeedGRU": 466,

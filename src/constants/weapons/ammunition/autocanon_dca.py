@@ -30,11 +30,24 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 2625,
                 "PorteeMaximaleHAGRU": 2450,
+                "SuppressDamages": 60,
+                "TempsDeVisee": 1.25,
+                "NbTirParSalves": 16,
+                "AffichageMunitionParSalve": 128,
+            },
+        },
+    },
+    
+    ("DCA_2_canons_HS_831_30mm", "DCA", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PorteeMaximaleTBAGRU": 2625,
+                "PorteeMaximaleHAGRU": 2450,
                 "TempsDeVisee": 1.25,
             },
         },
     },
-
+    
     ("DCA_2_canon_ZU23_2_23mm_TOWED", "DCA", None, False): { # 261
         "Ammunition": {
             "parent_membr": {
@@ -75,6 +88,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "PorteeMaximaleTBAGRU": 2450,
                 "PorteeMaximaleHAGRU": 1925,
                 "TempsDeVisee": 1.25,
+            },
+        },
+    },
+    
+    ("DCA_1_canon_53T2_20mm", "DCA", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 15,
             },
         },
     },

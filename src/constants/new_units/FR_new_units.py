@@ -77,5 +77,48 @@ FR_NEW_UNITS = {
         "selector_tactic": "04_05",
         "unique_count": 4,
     },
+    
+    ("AMX_30_B2_CMD_FR", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "e1b9b77e-ed05-4415-951f-cbc291d8e3df",
+        "GroupeCombatGUID": "21eaa0d7-8acd-4431-a7fd-47329780bb11",
+        "ShowroomGUID": "dccaeb21-3a70-4fea-9f4d-bc05f53fd011",
+        "CadavreGUID": "86fa429c-aa00-4a30-95e0-9deb1ab09e43",
+        "NewName": "AMX_30_B2_CMD2_FR",
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "Char_CMD",
+                "Commandant",
+                "GroundUnits",
+                "InfmapCommander",
+                "UNITE_AMX_30_B2_CMD2_US",
+                "Unite",
+            ],
+        },
+        "Factory": "EDefaultFactories/Logistic",
+        "CommandPoints": 245,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+            "FR_5e_Blindee_multi": {
+                "Transports": None,
+            },
+        },
+        "availability": [0, 0, 2, 0],
+        "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack',
+                   'MoveAndAttack', 'Spread', 'Reverse', 'Shoot', 'ShootOnPosition',
+                   'ShootOnPositionWithoutCorrection', 'ShootDefensiveSmoke', 'AskForSupply',
+                   'AIDefend', 'AIAttack', 'AIStop'],
+        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "NATO",
+        "Nation": "FR",
+    },
 }
 # fmt: on

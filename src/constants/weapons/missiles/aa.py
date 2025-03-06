@@ -383,6 +383,44 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("SAM_ROLAND_2", "SAM", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PorteeMaximaleTBAGRU": 2800,
+                "PorteeMaximaleHAGRU": 3500,
+                "TempsDeVisee": 1.2,
+                "TempsEntreDeuxTirs": 2.5,
+                "TempsEntreDeuxFx": 2.5,
+            },
+        },
+        "BaseSupplyCost": 60,
+        "WeaponDescriptor": {
+            "SalvoLengths": [2],
+            "units": {
+                2: ["Roland_2_FR"],
+            },
+        },
+    },
+    
+    ("SAM_ROLAND_3", "SAM", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PorteeMaximaleTBAGRU": 3150,
+                "PorteeMaximaleHAGRU": 4375,
+                "TempsDeVisee": 1.2,
+                "TempsEntreDeuxTirs": 2.5,
+                "TempsEntreDeuxFx": 2.5,
+            },
+        },
+        "BaseSupplyCost": 80,
+        "WeaponDescriptor": {
+            "SalvoLengths": [2],
+            "units": {
+                2: ["Roland_3_FR"],
+            },
+        },
+    },
 
     ("SAM_9M336", "SAM", None, False): { # 178
         "Ammunition": {
@@ -565,6 +603,36 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TempsEntreDeuxSalves": 7.0,
                 "TempsDeVisee": 3.5,
                 "SupplyCost": 25,
+            }
+        },
+    },
+    
+    ("Mistral", "MANPAD", None, False): {
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_tbagru",
+            },
+            "parent_membr": {
+                "PorteeMaximaleTBAGRU": 2800,
+                "PorteeMaximaleHAGRU": 2100,
+                "TempsEntreDeuxSalves": 7.0,
+                "TempsDeVisee": 1.2,
+                "SupplyCost": 35,
+            }
+        },
+    },
+    
+    ("Mistral_HAGRU", "MANPAD", "Mistral", True): {
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_hagru",
+            },
+            "parent_membr": {
+                "PorteeMaximaleTBAGRU": 2800,
+                "PorteeMaximaleHAGRU": 2100,
+                "TempsEntreDeuxSalves": 7.0,
+                "TempsDeVisee": 3.5,
+                "SupplyCost": 35,
             }
         },
     },

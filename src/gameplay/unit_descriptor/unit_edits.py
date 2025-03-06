@@ -206,6 +206,10 @@ def _add_modules(unit_row: Any, edits: dict, modules_list: list,   # noqa
     elif not is_helo and add_transport_module:
         modules_list.v.add(vehicle_transporter_module)  # noqa
         logger.info(f"Added vehicle transporter module to {unit_name}")
+        
+    if "modules_add" in edits:
+        for module in edits["modules_add"]:
+            modules_list.v.add(module)
 
 def _remove_modules(
     unit_row: Any,
@@ -334,7 +338,31 @@ def _handle_scanner(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:  # 
         for key, value in edits["optics"]["SpecializedOpticalStrengths"].items():
             descr_row.v.by_m("SpecializedOpticalStrengths").v.by_k(key).v = str(value)
 
-
+def edit_identify_rules(source_path: Any) -> None:  # noqa
+    
+    unit_edits = load_unit_edits()
+    
+    for unit_row in source_path:
+        unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
+        edits = unit_edits.get(unit_name, {})
+        modules_list = unit_row.v.by_m("ModulesDescriptors")
+        for module in modules_list.v:
+            if hasattr(module.v, "type") and module.v.type == "TReverseScannerWithIdentificationDescriptor":
+                visibility_rolls_obj = module.v.by_m("VisibilityRollRule")
+                
+                current_base_prob = float(visibility_rolls_obj.v.by_m("IdentifyBaseProbability").v)
+                new_base_prob = current_base_prob*1.25
+                if new_base_prob > 1.0:
+                    new_base_prob = 1.0
+                visibility_rolls_obj.v.by_m("IdentifyBaseProbability").v = str(new_base_prob)
+                
+                custom_roll_freq = edits.get("optics", {}).get("TimeBetweenEachIdentifyRoll", None)
+                if custom_roll_freq:
+                    visibility_rolls_obj.v.by_m("TimeBetweenEachIdentifyRoll").v = str(custom_roll_freq)
+                else:
+                    current_roll_freq = float(visibility_rolls_obj.v.by_m("TimeBetweenEachIdentifyRoll").v)
+                    visibility_rolls_obj.v.by_m("TimeBetweenEachIdentifyRoll").v = str(current_roll_freq/2)
+    
 def _handle_production(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:  # noqa
     if "CommandPoints" in edits:
         cmd_points = "$/GFX/Resources/Resource_CommandPoints"

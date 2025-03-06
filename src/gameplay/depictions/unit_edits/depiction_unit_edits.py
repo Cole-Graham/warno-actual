@@ -4,6 +4,7 @@ from typing import Any, Dict  # noqa
 
 from src import ndf
 from src.constants.unit_edits import load_depiction_edits
+from src.constants.unit_edits import load_unit_edits
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import strip_quotes
 
@@ -358,7 +359,7 @@ def unit_edits_missilecarriagedepiction(source_path: Any) -> None:
 
 def unit_edits_depictionvehicles(source_path: Any) -> None:
     """Edit unit vehicle depictions in DepictionVehicles.ndf"""
-    ndf_file = "DepictionVehicles.ndf"
+    ndf_file = "DepictionVehicles.ndf" 
     
     # Load all depiction edits
     depiction_edits = load_depiction_edits()

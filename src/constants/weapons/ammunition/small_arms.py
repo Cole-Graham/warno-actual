@@ -1077,7 +1077,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("MMG_inf__MG3_7_62mm", "small_arms", None, False): {  # unchanged from L7A2 - needs change
+    ("MMG_inf__MG3_7_62mm", "small_arms", None, False): {
         "Ammunition": {
             "Arme": {
                 "Family": "DamageFamily_sa_full",
@@ -1086,23 +1086,77 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 35,
             },
             "parent_membr": {
-                "TempsEntreDeuxTirs": 1.0,
-                "TempsEntreDeuxFx": 1.0,
+                "TempsEntreDeuxTirs": 0.8,
+                "TempsEntreDeuxFx": 0.8,
                 "PorteeMaximaleGRU": 875,
                 "PorteeMaximaleTBAGRU": 700,
                 "PhysicalDamages": 0.08,
                 "SuppressDamages": 24,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 2.0,
-                "TempsEntreDeuxSalves": 1.0,
-                "NbTirParSalves": 4,
-                "AffichageMunitionParSalve": 20,
+                "TempsEntreDeuxSalves": 2.6,
+                "NbTirParSalves": 8,
+                "AffichageMunitionParSalve": 40,
             },
         },
         "BaseSupplyCost": 1,
         "NbWeapons": [4, 3, 2, 1],
         "WeaponDescriptor": {
-            "Salves": 36,
+            "Salves": 18,
+        },
+    },
+    
+    ("Ammo_MMG_team_7_62mm_MG3", "small_arms", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "TempsEntreDeuxTirs": 0.1,
+                "PhysicalDamages": 0.16,
+                "SuppressDamages": 48,
+                "DisplaySalveAccuracy": False,
+                "TempsEntreDeuxSalves": 3.6,
+                "NbTirParSalves": 10,
+                "AffichageMunitionParSalve": 50,
+                "SupplyCost": 4,
+            },
+        },
+        "WeaponDescriptor": {
+            "Salves": 40,
+        },
+    },
+    
+    ("MMG_MG3_7_62mm", "small_arms", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "TempsEntreDeuxTirs": 0.1,
+                "PhysicalDamages": 0.08,
+                "SuppressDamages": 24,
+                "DisplaySalveAccuracy": False,
+                "TempsEntreDeuxSalves": 3.6,
+                "NbTirParSalves": 10,
+                "AffichageMunitionParSalve": 50,
+                "SupplyCost": 4,
+            },
+        },
+        "WeaponDescriptor": {
+            "Salves": 28,
+        },
+    },
+    
+    ("MMG_MG3_7_62mm_helo", "small_arms", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "TempsEntreDeuxTirs": 0.1,
+                "PhysicalDamages": 0.08,
+                "SuppressDamages": 24,
+                "DisplaySalveAccuracy": False,
+                "TempsEntreDeuxSalves": 3.6,
+                "NbTirParSalves": 10,
+                "AffichageMunitionParSalve": 50,
+                "SupplyCost": 4,
+            },
+        },
+        "WeaponDescriptor": {
+            "Salves": 28,
         },
     },
 
@@ -1396,6 +1450,9 @@ weapons: Dict[WeaponKey, WeaponData] = {
     
     ("HMG_team_12_7_mm_NSV_6U6", "small_arms", None, False): {  # 356
         "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_12_7",
+            },
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 1225,
             },
@@ -1404,6 +1461,9 @@ weapons: Dict[WeaponKey, WeaponData] = {
 
     ("HMG_14_5_mm_KPVT", "small_arms", None, False): {  # 353
         "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_14_5",
+            },
             "hit_roll": {
                 "Idling": 35,
             },
@@ -1412,7 +1472,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "SuppressDamages": 48,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 1.5,
-                "TempsEntreDeuxSalves": 5.0,
+                "TempsEntreDeuxSalves": 2.9,
                 "SupplyCost": 2,
                 "NbTirParSalves": 5,
                 "AffichageMunitionParSalve": 25,
@@ -1420,6 +1480,54 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
         "WeaponDescriptor": { 
             "Salves": 48,
+        },
+    },
+    
+    ("HMG_12_7_mm_M2HB", "small_arms", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_12_7",
+            },
+        },
+    },
+    
+    ("HMG_12_7_mm_M85", "small_arms", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_12_7",
+            },
+        },
+    },
+    
+    ("HMG_12_7_mm_avenger_M3P", "small_arms", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_12_7",
+            },
+        },
+    },
+    
+    ("HMG_12_7_mm_NSVT", "small_arms", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_12_7",
+            },
+        },
+    },
+    
+    ("HMG_12_7_mm_DShKM", "small_arms", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_12_7",
+            },
+        },
+    },
+    
+    ("HMG_12_7_mm_Afanasyev", "small_arms", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_12_7",
+            },
         },
     },
 
@@ -1751,6 +1859,36 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
         "BaseSupplyCost": 1,
         "NbWeapons": [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+        "WeaponDescriptor": {
+            "Salves": 11,
+        },
+    },
+    
+    ("FM_FAMAS_noreflex", "small_arms", "FM_FAMAS", True): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_sa_intermediate",
+            },
+            "hit_roll": {
+                "Idling": 40,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "TempsEntreDeuxTirs": 1.5,
+                "PorteeMaximaleGRU": 875,
+                "PorteeMaximaleTBAGRU": 700,
+                "PhysicalDamages": 0.06,
+                "SuppressDamages": 6,
+                "DisplaySalveAccuracy": False,
+                "TirReflexe": False,
+                "TempsDeVisee": 1.0,
+                "TempsEntreDeuxSalves": 4.5,
+                "NbTirParSalves": 6,
+                "AffichageMunitionParSalve": 30,
+            },
+        },
+        "BaseSupplyCost": 1,
+        "NbWeapons": [1],
         "WeaponDescriptor": {
             "Salves": 11,
         },

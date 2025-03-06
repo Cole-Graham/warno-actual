@@ -120,7 +120,7 @@ supply_unit_edits = {
         "CommandPoints": 40,
         "Divisions": {
             "default": {
-                "cards": 2,
+                "cards": 3,
             },
         },
         "SupplyDescriptor": "SquadSupply",

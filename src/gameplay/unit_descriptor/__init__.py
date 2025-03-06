@@ -8,7 +8,7 @@ from .mg_teams import edit_mg_teams
 from .new_units import create_new_units
 from .optics import edit_antirad_optics
 from .team import edit_team_supply
-from .unit_edits import edit_units, temp_fix_reco_radar
+from .unit_edits import edit_units, temp_fix_reco_radar, edit_identify_rules
 
 __all__ = [
     'create_new_units',
@@ -21,4 +21,5 @@ __all__ = [
     'edit_units',
     'global_bomber_edits',
     'temp_fix_reco_radar',
+    'edit_identify_rules',
 ] 

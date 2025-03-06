@@ -181,6 +181,7 @@ def build_mg_categories(parse_source) -> dict:
     mmg_teams = []
     hmg_turrets = []
     mmg_turrets = []
+    coax_mmgs = []
     
     for weapon_descr in parse_source:
         membr = weapon_descr.v.by_m
@@ -213,12 +214,15 @@ def build_mg_categories(parse_source) -> dict:
                 is_coax, is_rifle, is_inf_mmg, is_battle_rifle
             ]) and is_stabilized:
                 mmg_turrets.append(weapon_descr.n)
-    
+            elif caliber in ["'UZKJUPNFLB'", "'ARZDNMYCBF'"] and is_coax:
+                coax_mmgs.append(weapon_descr.n)
+
     return {
         "hmg_teams": hmg_teams,
         "mmg_teams": mmg_teams,
         "hmg_turrets": hmg_turrets,
         "mmg_turrets": mmg_turrets,
+        "coax_mmgs": coax_mmgs,
         "hmg_exceptions": ["Ammo_HMG_team_12_7_mm_NSV_6U6"]
     } 
 

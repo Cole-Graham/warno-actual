@@ -118,6 +118,16 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("Canon_HE_142mm_AVRE", "canon", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PorteeMaximaleGRU": 875,
+                "PhysicalDamages": 3,
+                "TempsDeVisee": 2.0,
+            },
+        },
+    },
 
     ("Canon_HE_125_mm_2A46M_late_T80UD", "canon", None, False): { # 211
         "Ammunition": {

@@ -70,6 +70,7 @@ from .effects import (
     add_swift_capacity,
     edit_conditions,
     edit_damage_levels,
+    edit_capacities,
 )
 from .game_constants import edit_gd_constantes, edit_orders, edit_ravitaillement
 from .terrains import edit_terrains
@@ -95,6 +96,7 @@ from .unit_descriptor import (
     edit_units,
     global_bomber_edits,
     temp_fix_reco_radar,
+    edit_identify_rules,
 )
 from .veterancy import edit_veterancy_effects, edit_veterancy_hints
 

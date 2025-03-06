@@ -15,6 +15,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("Bomb_Matra_400kg_salvolength4", "he_bomb", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "SupplyCost": 315,
+            },
+        },
+    },
+    
     ("Bomb_Mk83_450kg_salvolength2", "he_bomb", None, False): {
         "Ammunition": {
             "parent_membr": {
@@ -59,6 +67,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "SupplyCost": 400,
+            },
+        },
+    },
+    
+    ("Bomb_Bidons_Speciaux_Napalm_salvolength4", "napalm_bomb", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "SupplyCost": 120,
             },
         },
     },
@@ -230,6 +246,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "SupplyCost": 315,
+            },
+        },
+    },
+    
+    ("Bomb_BLG66_Belouga_cluster_305kg_salvolength4", "clu_bomb", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "SupplyCost": 360,
             },
         },
     },

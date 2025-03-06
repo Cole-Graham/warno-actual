@@ -67,6 +67,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
+        "strength": 10,
         "availability": [0, 0, 3, 0],
     },
 
@@ -77,6 +78,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
+        "strength": 10,
         "availability": [0, 0, 3, 0],
     },
 
@@ -600,7 +602,7 @@ sov_unit_edits = {
         "GameName": {
             "display": "SAPERY [RPO]",
         },
-        "CommandPoints": 50,
+        "CommandPoints": 55,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -845,7 +847,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AKS_74": 7,
-                "ATGM_9K115_Metis": 5,
+                "ATGM_9K115_Metis": 6,
             },
         },
     },
@@ -1590,10 +1592,12 @@ sov_unit_edits = {
 
     "BTR_60_SOV": {
         "CommandPoints": 20,
+        "strength": 10,
     },
 
     "BTR_80_SOV": {
         "CommandPoints": 25,
+        "strength": 10,
     },
 
     "BMP_1P_SOV": {
@@ -1811,7 +1815,7 @@ sov_unit_edits = {
             # "display": "#RECO2 RAZVEDKA SAPERY",
             "display": "#RECO2 RAZV. SAPERY",
         },
-        "CommandPoints": 45,
+        "CommandPoints": 50,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1830,7 +1834,7 @@ sov_unit_edits = {
             # "display": "#RECO2 RAZVEDKA SAPERY",
             "display": "#RECO2 RAZV. SAPERY",
         },
-        "CommandPoints": 45,
+        "CommandPoints": 50,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1925,6 +1929,9 @@ sov_unit_edits = {
         },
         "availability": [9, 7, 0, 0],
         "max_speed": 4,
+        "capacities": {
+            "add_capacities": ["Deploy", "Deploy_ok"],
+        },
         "UpgradeFromUnit": "FOB_SOV",
     },
 
@@ -1938,6 +1945,9 @@ sov_unit_edits = {
         "Factory": "EDefaultFactories/Logistic",
         "availability": [0, 9, 7, 0],
         "max_speed": 4,
+        "capacities": {
+            "add_capacities": ["Deploy", "Deploy_ok"],
+        },
         "UpgradeFromUnit": "FOB_SOV",
     },
 
@@ -2035,6 +2045,7 @@ sov_unit_edits = {
     "Tunguska_2K22_SOV": {
         "optics": {
             "OpticalStrengthAltitude": 300,
+            "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "CommandPoints": 135,
         "Divisions": {
@@ -2049,11 +2060,17 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canons_2A38M_30mm": 12,
+            },
+        },
     },
 
     "Tor_SOV": {
         "optics": {
             "OpticalStrengthAltitude": 300,
+            "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "CommandPoints": 150,
         "Divisions": {
@@ -2070,6 +2087,7 @@ sov_unit_edits = {
     "MTLB_Strela10_SOV": {
         "optics": {
             "OpticalStrengthAltitude": 220,
+            "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "CommandPoints": 65,
         "Divisions": {
@@ -2086,6 +2104,7 @@ sov_unit_edits = {
     "MTLB_Strela10M3_SOV": {
         "optics": {
             "OpticalStrengthAltitude": 220,
+            "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "CommandPoints": 100,
         "Divisions": {
@@ -2102,6 +2121,7 @@ sov_unit_edits = {
     "2K12_KUB_SOV": {
         "optics": {
             "OpticalStrengthAltitude": 300,
+            "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "CommandPoints": 90,
         "availability": [4, 3, 0, 0],
@@ -2480,7 +2500,7 @@ sov_unit_edits = {
             },
         },
         "CommandPoints": 310,
-        "availability": [0, 2, 0, 1],
+        "availability": [0, 2, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
                 "AA_R33_Vympel": 2,
@@ -2495,7 +2515,7 @@ sov_unit_edits = {
             },
         },
         "CommandPoints": 290,
-        "availability": [0, 2, 0, 1],
+        "availability": [0, 2, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
                 "AA_R33_Vympel": 2,

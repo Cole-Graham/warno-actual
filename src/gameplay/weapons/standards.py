@@ -20,7 +20,7 @@ def edit_aim_times(source_path):
                     logger.info(f"(Ammunition.ndf) Changed {ammo_descr.namespace} aim time to 1.5")
                     continue
                 else:
-                    logger.warning(f"""(Ammunition.ndf) {ammo_descr.namespace} aim time is not 3.0, likely
+                    logger.debug(f"""(Ammunition.ndf) {ammo_descr.namespace} aim time is not 3.0, likely
                                    an ammo edit changed this (in which case ignore this warning) or it was
                                    changed by Eugen""")
                     continue
@@ -31,7 +31,7 @@ def edit_aim_times(source_path):
                     logger.info(f"(Ammunition.ndf) Changed {ammo_descr.namespace} aim time to 1.0")
                     continue
                 else:
-                    logger.warning(f"""(Ammunition.ndf) {ammo_descr.namespace} aim time is not 1.5, likely
+                    logger.debug(f"""(Ammunition.ndf) {ammo_descr.namespace} aim time is not 1.5, likely
                                    an ammo edit changed this (in which case ignore this warning) or it was
                                    changed by Eugen""")
                     continue
@@ -43,7 +43,7 @@ def edit_aim_times(source_path):
                     logger.info(f"(Ammunition.ndf) Changed {ammo_descr.namespace} aim time to 1.0 ({unit_type})")
                     continue
                 else:
-                    logger.warning(f"""(Ammunition.ndf) {ammo_descr.namespace} aim time is not 2.5, likely
+                    logger.debug(f"""(Ammunition.ndf) {ammo_descr.namespace} aim time is not 2.5, likely
                                    an ammo edit changed this (in which case ignore this warning) or it was
                                    changed by Eugen""")
                     continue
@@ -55,7 +55,7 @@ def edit_aim_times(source_path):
                     logger.info(f"(Ammunition.ndf) Changed {ammo_descr.namespace} aim time to 1.0 ({unit_type})")
                     continue
                 else:
-                    logger.warning(f"""(Ammunition.ndf) {ammo_descr.namespace} aim time is not 2.2 or 2.0, likely
+                    logger.debug(f"""(Ammunition.ndf) {ammo_descr.namespace} aim time is not 2.2 or 2.0, likely
                                    an ammo edit changed this (in which case ignore this warning) or it was
                                    changed by Eugen""")
                     continue
@@ -120,7 +120,7 @@ def bomb_damage_standards(source_path):
 
     he_bomb_matching = {
         "250": ["250kg", "GBU_12"],
-        "500": ["450kg", "500kg", "513kg"],
+        "500": ["400kg", "450kg", "500kg", "513kg"],
         "1000": ["1000kg", "GBU_10", "GBU_27"],
         "1250": ["KAB_1500"],
     }

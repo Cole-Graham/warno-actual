@@ -8,6 +8,7 @@ from .effects import (
     add_swift_capacity,
     edit_conditions,
     edit_damage_levels,
+    edit_capacities,
 )
 
 __all__ = [
@@ -18,4 +19,5 @@ __all__ = [
     'add_swift_capacity',
     'edit_conditions',
     'edit_damage_levels',
+    'edit_capacities',
 ]

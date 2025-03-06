@@ -688,15 +688,23 @@ def create_veh_depictions(source_path: Any) -> None:
     
     def get_base_namespace(namespace_: str, prefix: str) -> str:
         """Extract the base namespace after the given prefix."""
-        return namespace_.split(f"{prefix}_")[-1].split("_")[0]
+        if namespace_.startswith("Gfx"):
+            return namespace_.split(f"{prefix}_")[-1]
+        elif namespace_.startswith("DepictionOperator"):
+            parts = namespace_.split(f"{prefix}_")[-1].rsplit("_", 1)[0]
+            return parts  # Return parts directly
 
-    def create_new_object(obj_row_: Any, unit_name_: str, is_weapon: bool, weapon_num: int = 0) -> Any:
+    def create_new_object(obj_row_: Any, unit_name_: str, is_weapon: bool, weapon_num: int = 0, edits: dict = None) -> Any:
         """Create a new depiction object with updated namespace."""
         new_obj = obj_row_.copy()
         if is_weapon:
             new_obj.namespace = f"DepictionOperator_{unit_name_}_Weapon{weapon_num}"
         else:
-            new_obj.namespace = f"Gfx_{unit_name_}_Autogen"
+            new_obj.namespace = f"Gfx_{unit_name_}"
+            depiction_veh_edits = edits.get("depictions", {}).get("remove", {}).get("DepictionVehicles_ndf", {})
+            if "remove_members" in depiction_veh_edits:
+                for member in depiction_veh_edits["remove_members"]:
+                    new_obj.v.remove_by_member(member)
         return new_obj
 
     for donor, edits in NEW_UNITS.items():
@@ -739,13 +747,15 @@ def create_veh_depictions(source_path: Any) -> None:
                 namespace = obj_row.namespace
                 
                 if "DepictionOperator_" in namespace and not custom_operator_added:
-                    if donor_name == get_base_namespace(namespace, "DepictionOperator"):
+                    base_namespace = get_base_namespace(namespace, "DepictionOperator")
+                    if donor_name == base_namespace:
                         weapon_count += 1
-                        new_objects.append(create_new_object(obj_row, unit_name, True, weapon_count))
+                        new_objects.append(create_new_object(obj_row, unit_name, True, weapon_count, edits))
                 
                 elif "Gfx_" in namespace and not custom_veh_added:
-                    if donor_name == get_base_namespace(namespace, "Gfx"):
-                        new_objects.append(create_new_object(obj_row, unit_name, False))
+                    base_namespace = get_base_namespace(namespace, "Gfx")
+                    if donor_name == base_namespace:
+                        new_objects.append(create_new_object(obj_row, unit_name, False, weapon_count, edits))
 
             for obj in new_objects:
                 logger.info(f"Adding new object to GeneratedDepictionVehicles.ndf: {obj.namespace}")

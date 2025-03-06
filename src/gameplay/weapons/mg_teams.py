@@ -14,7 +14,9 @@ def edit_mg_team_weapons(source: Any, game_db: Dict[str, Any]) -> None:
     for weapon_descr in source:
         name = weapon_descr.n
         
-        if name in ammo_db["mg_categories"]["hmg_teams"]:
+        if name in ammo_db["mg_categories"]["coax_mmgs"]:
+            _modify_coax_mmg(weapon_descr, name)
+        elif name in ammo_db["mg_categories"]["hmg_teams"]:
             _modify_hmg_team(weapon_descr, name, ammo_db["mg_categories"]["hmg_exceptions"])
         elif name in ammo_db["mg_categories"]["mmg_teams"]:
             _modify_mmg_team(weapon_descr, name)
@@ -24,27 +26,25 @@ def edit_mg_team_weapons(source: Any, game_db: Dict[str, Any]) -> None:
             _modify_mmg_turret(weapon_descr, name)
 
 
-def _modify_hmg_team(weapon_descr, name: str, exceptions: list) -> None:
-    """Apply HMG team modifications."""
+def _modify_coax_mmg(weapon_descr, name: str) -> None:
+    """Apply coax MMG modifications."""
     membr = weapon_descr.v.by_m
     
-    membr("PorteeMaximaleGRU").v = "1225"
-    logger.info(f"Changed {name} ground range to 1225")
+    membr("PorteeMaximaleGRU").v = "1050"
+    logger.info(f"Changed {name} ground range to 1050")
     
-    if membr("PorteeMaximaleTBAGRU", False) and name not in exceptions:
-        membr("PorteeMaximaleTBAGRU").v = "1050"
-        logger.info(f"Changed {name} helo range to 1050")
-    
-    # Apply other modifications...
     _apply_common_mods(weapon_descr, name, {
-        "PhysicalDamages": "0.28",
-        "SuppressDamages": "84",
-        "TempsEntreDeuxSalves": "5.0",
+        "hit_roll": {
+            "Idling": 45,
+            "Moving": 30,
+        },
+        "PhysicalDamages": "0.08",
+        "SuppressDamages": "24",
+        "TempsEntreDeuxSalves": "2.0",
         "NbTirParSalves": "5",
-        "SupplyCost": "3",
+        "SupplyCost": "1",
         "AffichageMunitionParSalve": "25"
     })
-
 
 def _modify_mmg_team(weapon_descr, name: str) -> None:
     """Apply MMG team modifications."""
@@ -58,28 +58,11 @@ def _modify_mmg_team(weapon_descr, name: str) -> None:
         logger.info(f"Changed {name} helo range to 875")
     
     _apply_common_mods(weapon_descr, name, {
-        "PhysicalDamages": "0.16",
-        "SuppressDamages": "48",
-        "TempsEntreDeuxSalves": "5.0",
-        "NbTirParSalves": "6",
-        "SupplyCost": "3",
-        "AffichageMunitionParSalve": "30"
-    })
-
-
-def _modify_hmg_turret(weapon_descr, name: str) -> None:
-    """Apply HMG turret modifications."""
-    membr = weapon_descr.v.by_m
-    
-    membr("PorteeMaximaleGRU").v = "1225"
-    membr("PorteeMaximaleTBAGRU").v = "1050"
-    
-    _apply_common_mods(weapon_descr, name, {
-        "PhysicalDamages": "0.14",
-        "SuppressDamages": "42",
-        "TempsEntreDeuxSalves": "5.0",
+        "PhysicalDamages": "0.08",
+        "SuppressDamages": "24",
+        "TempsEntreDeuxSalves": "2.0",
         "NbTirParSalves": "5",
-        "SupplyCost": "2",
+        "SupplyCost": "1",
         "AffichageMunitionParSalve": "25"
     })
 
@@ -95,10 +78,55 @@ def _modify_mmg_turret(weapon_descr, name: str) -> None:
     _apply_common_mods(weapon_descr, name, {
         "PhysicalDamages": "0.08",
         "SuppressDamages": "24",
-        "TempsEntreDeuxSalves": "5.0",
-        "NbTirParSalves": "6",
+        "TempsEntreDeuxSalves": "2.0",
+        "NbTirParSalves": "5",
         "SupplyCost": "1",
-        "AffichageMunitionParSalve": "30"
+        "AffichageMunitionParSalve": "25"
+    })
+
+
+def _modify_hmg_team(weapon_descr, name: str, exceptions: list) -> None:
+    """Apply HMG team modifications."""
+    membr = weapon_descr.v.by_m
+    
+    membr("PorteeMaximaleGRU").v = "1225"
+    logger.info(f"Changed {name} ground range to 1225")
+    
+    if membr("PorteeMaximaleTBAGRU", False) and name not in exceptions:
+        membr("PorteeMaximaleTBAGRU").v = "1050"
+        logger.info(f"Changed {name} helo range to 1050")
+    
+    # Apply other modifications...
+    _apply_common_mods(weapon_descr, name, {
+        "Arme": {
+            "Family": "DamageFamily_12_7",
+        },
+        "PhysicalDamages": "0.28",
+        "SuppressDamages": "84",
+        "TempsEntreDeuxSalves": "2.4",
+        "NbTirParSalves": "5",
+        "SupplyCost": "3",
+        "AffichageMunitionParSalve": "25"
+    })
+
+
+def _modify_hmg_turret(weapon_descr, name: str) -> None:
+    """Apply HMG turret modifications."""
+    membr = weapon_descr.v.by_m
+    
+    membr("PorteeMaximaleGRU").v = "1225"
+    membr("PorteeMaximaleTBAGRU").v = "1050"
+    
+    _apply_common_mods(weapon_descr, name, {
+        "Arme": {
+            "Family": "DamageFamily_12_7",
+        },
+        "PhysicalDamages": "0.14",
+        "SuppressDamages": "42",
+        "TempsEntreDeuxSalves": "2.4",
+        "NbTirParSalves": "5",
+        "SupplyCost": "2",
+        "AffichageMunitionParSalve": "25"
     })
 
 
@@ -107,13 +135,24 @@ def _apply_common_mods(weapon_descr, name: str, mods: dict) -> None:
     membr = weapon_descr.v.by_m
     
     for key, value in mods.items():
-        membr(key).v = value
-        logger.info(f"Changed {name} {key} to {value}")
+        if key == "Arme":
+            arme_membr = membr("Arme")
+            arme_membr.v.by_m("Family").v = value["Family"]
+        elif key == "hit_roll":
+            hitroll_obj = membr("HitRollRuleDescriptor").v
+            hitroll_list = hitroll_obj.by_m("BaseHitValueModifiers").v
+            roll_membr_list = list(hitroll_list[1].v)
+            roll_membr_list[1] = value["Idling"]
+            hitroll_list[1].v = tuple(roll_membr_list)
+        else:     
+            membr(key).v = value
+            logger.info(f"Changed {name} {key} to {value}")
     
-    # Modify hit roll
-    hitroll_obj = membr("HitRollRuleDescriptor").v
-    hitroll_list = hitroll_obj.by_m("BaseHitValueModifiers").v
-    roll_membr_list = list(hitroll_list[1].v)
-    roll_membr_list[1] = "35"
-    hitroll_list[1].v = tuple(roll_membr_list)
-    logger.info(f"Changed {name} accuracy: {roll_membr_list}")
+    # Apply standard hit roll
+    if "hit_roll" not in mods:
+        hitroll_obj = membr("HitRollRuleDescriptor").v
+        hitroll_list = hitroll_obj.by_m("BaseHitValueModifiers").v
+        roll_membr_list = list(hitroll_list[1].v)
+        roll_membr_list[1] = "35"
+        hitroll_list[1].v = tuple(roll_membr_list)
+        logger.info(f"Changed {name} accuracy: {roll_membr_list}")

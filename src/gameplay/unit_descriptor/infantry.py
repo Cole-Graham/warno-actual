@@ -39,6 +39,8 @@ def edit_infantry_armor_wa(source_path) -> None:
             continue
         if any(unit_data.get(key) for key in ["is_hmg_team", "is_at_team", "is_towable"]):
             continue
+        if unit_name == "RCL_L6_Wombat_UK":
+            continue
             
         modules_list = unit_row.v.by_m("ModulesDescriptors").v
         

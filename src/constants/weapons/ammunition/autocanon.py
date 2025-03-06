@@ -236,10 +236,11 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("AutoCanon_HE_20mm_MK_20_Rh_202", "autocannon", None, False): { # 18
         "Ammunition": {
             "hit_roll": {
-                "Idling": 20,
-                "Moving": 10,
+                "Idling": 25,
+                "Moving": 15,
             },
             "parent_membr": {
+                "ImpactHappening": ['CanonPetitFK20HEFI'],
                 "PhysicalDamages": 0.2,
                 "SuppressDamages": 20,
                 "DisplaySalveAccuracy": False,
@@ -260,6 +261,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 10,
             },
             "parent_membr": {
+                "ImpactHappening": ['CanonPetitFK20HEFI'],
                 "PhysicalDamages": 0.2,
                 "SuppressDamages": 20,
                 "DisplaySalveAccuracy": False,
@@ -280,6 +282,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 10,
             },
             "parent_membr": {
+                "ImpactHappening": ['CanonPetitFK20HEFI'],
                 "PhysicalDamages": 0.2,
                 "SuppressDamages": 20,
                 "DisplaySalveAccuracy": False,
@@ -300,6 +303,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 10,
             },
             "parent_membr": {
+                "ImpactHappening": ['CanonPetitFK20HEFI'],
                 "PhysicalDamages": 0.2,
                 "SuppressDamages": 20,
                 "DisplaySalveAccuracy": False,
@@ -320,6 +324,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 10,
             },
             "parent_membr": {
+                "ImpactHappening": ['CanonPetitFK20HEFI'],
                 "PhysicalDamages": 0.2,
                 "SuppressDamages": 20,
                 "DisplaySalveAccuracy": False,
@@ -345,6 +350,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                     (17, "PorteeMinimaleHAGRU = 35"),
                     (17, "PorteeMinimaleTBAGRU = 35"),
                 ],
+                "ImpactHappening": ['CanonPetitFK20HEFI'],
                 "PorteeMaximaleTBAGRU": 2100,
                 "TempsEntreDeuxTirs": 0.1,
                 "TempsEntreDeuxSalves": 0.8,
@@ -613,8 +619,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "hit_roll": {
                 "BaseCriticModifier": 68,
-                "Idling": 20,
-                "Moving": 10,
+                "Idling": 25,
+                "Moving": 15,
             },
             "parent_membr": {
                 "PhysicalDamages": 0.334,

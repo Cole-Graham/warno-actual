@@ -15,11 +15,12 @@ from src.constants.weapons import (
     INFANTRY_ARMOR_EDITS,
     SNIPER_DAMAGE,
     WEAPON_DESCRIPTIONS,
-    # KPVT_DAMAGE,
     NPLM_BOMB_DAMAGE,
     PGB_BOMB_DAMAGE,
     MANPAD_HAGRU_DAMAGE,
     MANPAD_TBAGRU_DAMAGE,
+    TWELVE_SEVEN_MM_DAMAGE,
+    FOURTEEN_FIVE_MM_DAMAGE,
 )
 from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.logging_utils import setup_logger
@@ -75,6 +76,8 @@ def add_damage_families_to_list(source_path) -> None:
     manpad_tbagru_family = f"DamageFamily_manpad_tbagru is {i + 6}"
     sa_intermediate_family = f"DamageFamily_sa_intermediate is {i + 7}"
     sa_full_family = f"DamageFamily_sa_full is {i + 8}"
+    twelve_seven_mm_family = f"DamageFamily_12_7 is {i + 9}"
+    fourteen_five_mm_family = f"DamageFamily_14_5 is {i + 10}"
     
 
     source_path.insert(j + 1, infanterie_wa_family)
@@ -88,6 +91,8 @@ def add_damage_families_to_list(source_path) -> None:
     source_path.add(manpad_tbagru_family)
     source_path.add(sa_intermediate_family)
     source_path.add(sa_full_family)
+    source_path.add(twelve_seven_mm_family)
+    source_path.add(fourteen_five_mm_family)
     
     logger.info(f"Added families: \n"
                 f"{infanterie_wa_family}\n"
@@ -100,7 +105,9 @@ def add_damage_families_to_list(source_path) -> None:
                 f"{manpad_hagru_family}\n"
                 f"{manpad_tbagru_family}\n"
                 f"{sa_intermediate_family}\n"
-                f"{sa_full_family}\n")
+                f"{sa_full_family}\n"
+                f"{twelve_seven_mm_family}\n"
+                f"{fourteen_five_mm_family}\n")
 
 def add_damage_families_to_impl(source_path) -> None:
     """Add new damage families to DamageResistanceFamilyListImpl.ndf."""
@@ -120,6 +127,8 @@ def add_damage_families_to_impl(source_path) -> None:
             '"DamageFamily_manpad_tbagru"',
             '"DamageFamily_sa_intermediate"',
             '"DamageFamily_sa_full"',
+            '"DamageFamily_12_7"',
+            '"DamageFamily_14_5"',
         ]
     }
     
@@ -195,6 +204,8 @@ def add_damage_resistance_values(source_path) -> None:
         "manpad_tbagru": "TDamageTypeFamilyDefinition(Family=DamageFamily_manpad_tbagru MaxIndex=1)",
         "sa_intermediate": "TDamageTypeFamilyDefinition(Family=DamageFamily_sa_intermediate MaxIndex=13)",
         "sa_full": "TDamageTypeFamilyDefinition(Family=DamageFamily_sa_full MaxIndex=13)",
+        "12_7": "TDamageTypeFamilyDefinition(Family=DamageFamily_12_7 MaxIndex=1)",
+        "14_5": "TDamageTypeFamilyDefinition(Family=DamageFamily_14_5 MaxIndex=1)",
     }
 
     for family_name, family_def in families.items():
@@ -216,13 +227,14 @@ def add_damage_resistance_values(source_path) -> None:
     values_list.add(
         *[str(sniper) for sniper in SNIPER_DAMAGE],
         *[str(dpicm) for dpicm in DPICM_DAMAGES],
-        # str(KPVT_DAMAGE),
         str(NPLM_BOMB_DAMAGE),
         str(PGB_BOMB_DAMAGE),
         str(MANPAD_HAGRU_DAMAGE),
         str(MANPAD_TBAGRU_DAMAGE),
         *[str(SA_INTERMEDIATE_DAMAGE_RATIOS + list(sa_damage)) for sa_damage in SA_INF_ARMOR_DAMAGE_RATIOS],
         *[str(SA_FULL_DAMAGE_RATIOS + list(sa_damage)) for sa_damage in SA_INF_ARMOR_DAMAGE_RATIOS],
+        str(TWELVE_SEVEN_MM_DAMAGE),
+        str(FOURTEEN_FIVE_MM_DAMAGE),
     )
     logger.info("Added damage values") 
 

@@ -10,7 +10,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AGM_HOT2", "ATGM", None, False): { # 74
         "Ammunition": {
             "Arme": {
-                "Index": 24,
+                "Index": 23,
             },
             "parent_membr": {
                 "MaximalSpeedGRU": 466,
@@ -261,7 +261,14 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "WeaponDescriptor": {
             "SalvoLengths": [2, 1],
         },
-
+    },
+    
+    ("AGM_AS30L", "AGM", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "SupplyCost": 70,
+            },
+        },
     },
 }
 # fmt: on

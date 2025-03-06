@@ -631,7 +631,7 @@ usa_unit_edits = {
     },
 
     "Engineers_US": {
-        "CommandPoints": 45,
+        "CommandPoints": 50,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -673,7 +673,7 @@ usa_unit_edits = {
     },
 
     "NatGuard_Engineers_US": {
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -692,7 +692,7 @@ usa_unit_edits = {
     },
 
     "AeroEngineers_US": {
-        "CommandPoints": 45,
+        "CommandPoints": 50,
         "availability": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -723,7 +723,7 @@ usa_unit_edits = {
     },
 
     "Airborne_Engineers_US": {
-        "CommandPoints": 45,
+        "CommandPoints": 50,
         # "GameName": {
         #     "display": "AIRBORNE ASSAULT ENG.",
         #     "token": "TXOZWRNEVU",
@@ -851,7 +851,7 @@ usa_unit_edits = {
         "GameName": {
             "display": "ENGINEERS [DRAGON]",
         },
-        "CommandPoints": 45,
+        "CommandPoints": 50,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -883,7 +883,7 @@ usa_unit_edits = {
         "GameName": {
             "display": "AIRBORNE [DRAGON]",
         },
-        "CommandPoints": 45,
+        "CommandPoints": 50,
         "availability": [0, 6, 4, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -2435,6 +2435,9 @@ usa_unit_edits = {
         },
         "availability": [0, 8, 6, 0],
         "max_speed": 4,
+        "capacities": {
+            "add_capacities": ["Deploy", "Deploy_ok"],
+        },
         "UpgradeFromUnit": "FOB_US",
     },
 
@@ -2456,6 +2459,9 @@ usa_unit_edits = {
         },
         "availability": [6, 4, 0, 0],
         "max_speed": 4,
+        "capacities": {
+            "add_capacities": ["Deploy", "Deploy_ok"],
+        },
         "UpgradeFromUnit": "FOB_US",
     },
 
@@ -2467,6 +2473,7 @@ usa_unit_edits = {
     "M48_Chaparral_MIM72F_US": {
         "optics": {
             "OpticalStrengthAltitude": 220,
+            "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "CommandPoints": 130,
         "availability": [0, 3, 2, 0],
@@ -2479,6 +2486,7 @@ usa_unit_edits = {
         "CommandPoints": 90,
         "optics": {
             "OpticalStrengthAltitude": 300,
+            "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "availability": [4, 3, 0, 0],
         "SpecialtiesList": {

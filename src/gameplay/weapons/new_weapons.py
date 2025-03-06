@@ -101,11 +101,12 @@ def _add_weapon(
     unit_name = new_weap_row.namespace.replace("WeaponDescriptor_", "")
     unit_strength = None
     for donor, edits in NEW_UNITS.items():
+        is_ground_vehicle = edits.get("is_ground_vehicle", False)
         if edits.get("NewName") == unit_name:
             unit_strength = edits.get("strength")
             break
     
-    if not unit_strength:
+    if not unit_strength and not is_ground_vehicle:
         logger.warning(f"No strength found for new unit {unit_name}")
         return
     

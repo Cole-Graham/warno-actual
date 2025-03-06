@@ -71,6 +71,7 @@ def modify_new_unit(unit_row: Any, edits: Dict[str, Any]) -> None:
     # Update basic unit properties
     unit_row.v.by_member("DescriptorId").v = f"GUID:{{{edits['GUID']}}}"
     unit_row.v.by_member("ClassNameForDebug").v = f"'Unite_{edits['NewName']}'"
+    found_capacite_module = False
     
     # Process each module
     modules_list = unit_row.v.by_member("ModulesDescriptors")
@@ -91,10 +92,32 @@ def modify_new_unit(unit_row: Any, edits: Dict[str, Any]) -> None:
                 )
                 Condition = ~/IfNotCadavreCondition
             )"""
+            
+        heli_transporter_module = (
+            f'Transporter is'
+            f'    TModuleSelector'
+            f'    ('
+            f'        Default        = TTransporterModuleDescriptor'
+            f'        ('
+            f'           TransportableTagSet            = ['
+            f'                                "Crew",'
+            f'                                            ]'
+            f'           NbSeatsAvailable               = 1'
+            f'           WreckUnloadPhysicalDamageBonus = WreckUnloadDamageBonus_Chopper_Physical'
+            f'           WreckUnloadSuppressDamageBonus = WreckUnloadDamageBonus_Chopper_Suppress'
+            f'           WreckUnloadStunDamageBonus     = WreckUnloadDamageBonus_Chopper_Stun'
+            f'           LoadRadiusGRU                     = 70'
+            f'         )'
+            f'        Condition      = ~/IfNotCadavreCondition'
+            f'     )'
+        )
         for module in modules_to_add:
             if module == "Transporter":
                 modules_list.v.add(transport_module)
                 logger.info(f"Added Transporter module to {unit_row.namespace}")
+            elif module == "HeliTransporter":
+                modules_list.v.add(heli_transporter_module)
+                logger.info(f"Added HeliTransporter module to {unit_row.namespace}")
             else:
                 modules_list.v.add(module)
     
@@ -164,6 +187,13 @@ def modify_new_unit(unit_row: Any, edits: Dict[str, Any]) -> None:
                     descr_row.v.by_member("TransportedTexture").v = f"'{edits['TransportedTexture']}'"
                 if "TransportedSoldier" in edits:
                     descr_row.v.by_member("TransportedSoldier").v = f"'{edits['TransportedSoldier']}'"
+            
+            elif descr_type == "TModuleSelector":
+                if "capacities" in edits:
+                    default_membr = descr_row.v.by_m("Default")
+                    if hasattr(default_membr.v, 'type') and default_membr.v.type == "TCapaciteModuleDescriptor":
+                        found_capacite_module = True
+                        _handle_capacities_module(default_membr, edits)
                     
             elif descr_type == "TCadavreGeneratorModuleDescriptor":
                 descr_row.v.by_member("CadavreDescriptor").v = f"~/Descriptor_UnitCadavre_{edits['NewName']}"
@@ -174,6 +204,11 @@ def modify_new_unit(unit_row: Any, edits: Dict[str, Any]) -> None:
                 if "CommandPoints" in edits:
                     cmd_points = "$/GFX/Resources/Resource_CommandPoints"
                     descr_row.v.by_member("ProductionRessourcesNeeded").v.by_key(cmd_points).v = str(edits["CommandPoints"])  # noqa
+            
+            elif descr_type == "TCubeActionModuleDescriptor":
+                if "CubeActionDescriptor" in edits:
+                    new_value = f"$/GFX/UI/CubeAction_Menu_Ordres_{edits['CubeActionDescriptor']}"
+                    descr_row.v.by_member("CubeActionDescriptor").v = new_value
                     
             elif descr_type == "TOrderConfigModuleDescriptor":
                 if "NewName" in edits:
@@ -214,6 +249,25 @@ def modify_new_unit(unit_row: Any, edits: Dict[str, Any]) -> None:
             elif descr_row.namespace == "GenericMovement":
                 if "max_speed" in edits:
                     descr_row.v.by_member("Default").v.by_member("MaxSpeedInKmph").v = str(edits["max_speed"])  # noqa
+    
+    if not found_capacite_module:
+        capacities_to_add = edits.get("capacities", {}).get("add_capacities", [])
+        if capacities_to_add:
+            skill_prefix = "$/GFX/EffectCapacity/Capacite_"
+            new_entry = (
+                f'TModuleSelector'
+                f'('
+                f'    Default = TCapaciteModuleDescriptor'
+                f'    ('
+                f'        DefaultSkillList = ['
+                f'            {", ".join(skill_prefix + skill for skill in capacities_to_add)}'
+                f'        ]'
+                f'    )'
+                f'    Condition = ~/IfNotCadavreCondition'
+                f')'
+            )
+            modules_list.v.add(new_entry)
+            logger.info(f"Added capacity module to {unit_row.namespace}")
     
     # Remove all marked modules at the end
     for module in modules_to_remove:
@@ -316,3 +370,18 @@ def _handle_unit_ui(descr_row: Any, edits: Dict[str, Any]) -> None:
     if "TypeStrategicCount" in edits:
         descr_row.v.by_member("TypeStrategicCount").v = edits["TypeStrategicCount"]
     descr_row.v.by_member("ButtonTexture").v = f"'Texture_Button_Unit_{edits['NewName']}'"
+
+
+def _handle_capacities_module(default_membr: Any, edits: Dict[str, Any]) -> None:
+    """Handle capacities module modifications."""
+        
+    capacities_to_add = edits["capacities"].get("add_capacities", [])
+    capacities_to_remove = edits["capacities"].get("remove_capacities", [])
+        
+    skill_list = default_membr.v.by_m("DefaultSkillList")
+    skill_prefix = "$/GFX/EffectCapacity/Capacite_"
+    for skill in skill_list.v:
+        if skill.v.replace(skill_prefix, "") in capacities_to_remove:
+            skill_list.v.remove(skill.index)
+    for skill in capacities_to_add:
+        skill_list.v.add(skill_prefix + skill)

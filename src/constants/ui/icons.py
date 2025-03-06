@@ -10,5 +10,10 @@ INGAME_ICONS = {
         "texture_dir": "/Assets/2D/Interface/UseInGame/Icones",
         "texture": "swift.png",
         "insert_after": "icone_shock_move"
-    }
+    },
+    "deploy": {
+        "texture_dir": "/Assets/2D/Interface/UseInGame/Icones",
+        "texture": "deploy.png",
+        "insert_after": "icone_swift"
+    },
 }

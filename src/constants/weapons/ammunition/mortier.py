@@ -130,6 +130,17 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "BaseSupplyCost": 5.0,
         "NbWeapons": [1],
     },
+    
+    ("Mortier_RT61_120mm", "mortar", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 3.6,
+                "SuppressDamages": 265,
+                "RadiusSplashPhysicalDamagesGRU": 120,
+                "RadiusSplashSuppressDamagesGRU": 160,
+            },
+        },
+    },
 
     ("Mortier_PM43_120mm", "mortar", None, False): { # 543
         "Ammunition": {
@@ -176,6 +187,17 @@ weapons: Dict[WeaponKey, WeaponData] = {
     },
     
     ("Mortier_81mm_TOWED", "mortar", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 1.8,
+                "SuppressDamages": 189,
+                "RadiusSplashPhysicalDamagesGRU": 81,
+                "RadiusSplashSuppressDamagesGRU": 108,
+            },
+        },
+    },
+    
+    ("Mortier_81mm", "mortar", None, False): { # 532
         "Ammunition": {
             "parent_membr": {
                 "PhysicalDamages": 1.8,

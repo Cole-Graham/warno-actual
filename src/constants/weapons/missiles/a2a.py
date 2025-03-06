@@ -212,5 +212,41 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("AA_Matra_R530", "A2A", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "TempsEntreDeuxTirs": 1.5,
+                "TempsEntreDeuxFx": 1.5,
+                "PorteeMaximaleHAGRU": 6300,
+                "TempsEntreDeuxSalves": 1.5,
+                "SupplyCost": 40,
+            },
+        },
+    },
+    
+    ("AA_Matra_Super_530F", "A2A", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "TempsEntreDeuxTirs": 1.5,
+                "TempsEntreDeuxFx": 1.5,
+                "PorteeMaximaleHAGRU": 6825,
+                "TempsEntreDeuxSalves": 1.5,
+                "SupplyCost": 50,
+            },
+        },
+    },
+    
+    ("AA_Matra_Super_530D", "A2A", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "TempsEntreDeuxTirs": 1.5,
+                "TempsEntreDeuxFx": 1.5,
+                "PorteeMaximaleHAGRU": 7700,
+                "TempsEntreDeuxSalves": 1.5,
+                "SupplyCost": 50,
+            },
+        },
+    },
 }
 # fmt: on

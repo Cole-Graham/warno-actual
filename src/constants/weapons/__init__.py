@@ -13,11 +13,12 @@ from .damage_values import (
     SA_INF_ARMOR_DAMAGE_RATIOS,
     INFANTRY_ARMOR_EDITS,
     SNIPER_DAMAGE,
-    KPVT_DAMAGE,
     NPLM_BOMB_DAMAGE,
     PGB_BOMB_DAMAGE,
     MANPAD_HAGRU_DAMAGE,
     MANPAD_TBAGRU_DAMAGE,
+    TWELVE_SEVEN_MM_DAMAGE,
+    FOURTEEN_FIVE_MM_DAMAGE,
 )
 from .missiles import missiles
 from .mounted_weapons import mounted_weapons
@@ -45,7 +46,6 @@ __all__ = [
     'SA_INTERMEDIATE_DAMAGE_RATIOS',
     'SA_INF_ARMOR_DAMAGE_RATIOS',
     'INFANTRY_ARMOR_EDITS',
-    'KPVT_DAMAGE',
     'NPLM_BOMB_DAMAGE',
     'missiles',
     'mounted_weapons',
@@ -57,4 +57,6 @@ __all__ = [
     'PGB_BOMB_DAMAGE',
     'MANPAD_HAGRU_DAMAGE',
     'MANPAD_TBAGRU_DAMAGE',
+    'TWELVE_SEVEN_MM_DAMAGE',
+    'FOURTEEN_FIVE_MM_DAMAGE',
 ] 

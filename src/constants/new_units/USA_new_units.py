@@ -97,6 +97,81 @@ USA_NEW_UNITS = {
         "alternatives_count": 10,
         "selector_tactic": "00_10",
     },
+    
+    ("M1038_Humvee_US", 0): {
+        "GUID": "e1db01b4-f48e-4c46-a9b3-284668573864",
+        "GroupeCombatGUID": "7941cf9e-4bb2-4fe2-a9f4-d301c3a14000",
+        "ShowroomGUID": "c6fc6686-20f2-4a61-8873-c5fd90ad23d1",
+        "CadavreGUID": "cd105858-c974-493d-b327-5c68849f3833",
+        "modules_add": [
+                """TSupplyModuleDescriptor
+                (
+                    SupplyDescriptor = $/GFX/Weapon/SquadSupply
+                    SupplyCapacity = 675.0
+                    SupplyPriority = -1
+                )""",
+            ],
+        "modules_remove": ["Transporter"],
+        "TypeUnit": {
+            "AcknowUnitType": "~/TAcknowUnitType_Logistic",
+            "TypeUnitFormation": "'Supply'",
+        },
+        "depictions": {
+            "remove": {
+                "DepictionVehicles_ndf": {
+                    "remove_members": ["SubDepictionGenerators"]
+                },
+            },
+            "cadavre": {
+                "remove_modules": ["Transporter"],
+            },
+        },
+        "NewName": "M1038_Humvee_supply_US",
+        "GameName": {
+            "display": "M1038 HUMVEE CARGO",
+            "token": "LKQDXAWXPE",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "GroundUnits",
+                "UNITE_M1038_Humvee_supply_US",
+                "Unite",
+                "Vehicule",
+                "Vehicule_Logistique",
+            ],
+        },
+        "IdentifiedTextures": ["Texture_RTS_H_supply", "Texture_supply"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "MenuIconTexture": "Texture_RTS_H_supply",
+        "CubeActionDescriptor": "vehiculeSol_supply",
+        "Factory": "EDefaultFactories/Logistic",
+        "CommandPoints": 30,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+            "US_82nd_Airborne_multi": {
+                "Transports": None,
+            },
+        },
+        "availability": [4, 0, 0, 0],
+        "SpecialitiesList": [
+            'supply',
+            '_supply_squad',
+        ],
+        "InfoPanelConfig": "VehiculeSupplier",
+        "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Spread', 'Reverse',
+                   'SupplyUnit', 'AskForSupply', 'AIStop', 'AISupply'],
+        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": True,
+        "Faction": "NATO",
+        "Nation": "US",
+    },
 
     ("Scout_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "6f07c62b-c344-4c79-a72b-c1a80ce3375b",

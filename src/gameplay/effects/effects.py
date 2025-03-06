@@ -9,15 +9,19 @@ from src.constants.effects.capacities import (
     CHOC_MOVE_EFFECT,
     CHOC_MOVE_GSR_CAPACITY,
     CHOC_MOVE_GSR_EFFECT,
+    CHOC_MOVE_OK_EFFECT,
+    CONDITIONS,
+    DEPLOY_CAPACITY,
+    DEPLOY_EFFECT,
+    DEPLOY_OK_CAPACITY,
+    DEPLOY_OK_EFFECT,
     NO_CHOC_MOVE_CAPACITY,
     NO_CHOC_MOVE_EFFECT,
     NO_CHOC_MOVE_MORALE_EFFECT,
+    NO_SWIFT_CAPACITY,
+    NO_SWIFT_EFFECT,
     SWIFT_CAPACITY,
     SWIFT_EFFECT,
-    NO_SWIFT_EFFECT,
-    NO_SWIFT_CAPACITY,
-    CONDITIONS,
-    CHOC_MOVE_OK_EFFECT,
     SWIFT_OK_EFFECT,
 )
 from src.constants.unit_edits import load_unit_edits
@@ -105,6 +109,8 @@ def edit_shock_effects(source_path) -> None:
             source_path.insert(i, NO_SWIFT_EFFECT)
             source_path.insert(i, CHOC_MOVE_OK_EFFECT)
             source_path.insert(i, SWIFT_OK_EFFECT)
+            source_path.insert(i, DEPLOY_OK_EFFECT)
+            source_path.insert(i, DEPLOY_EFFECT)
             logger.info("Added shock movement effects")
             break
     
@@ -189,6 +195,8 @@ def edit_capacite_list(source_path) -> None:
             source_path.insert(i, NO_CHOC_MOVE_CAPACITY)
             source_path.insert(i, SWIFT_CAPACITY)
             source_path.insert(i, NO_SWIFT_CAPACITY)
+            source_path.insert(i, DEPLOY_OK_CAPACITY)
+            source_path.insert(i, DEPLOY_CAPACITY)
             logger.info("Added shock movement capacities")
             break 
 
@@ -315,3 +323,56 @@ def add_swift_capacity(source_path) -> None:
             modules_list.v.add(new_entry)
             logger.info("Added capacity module to unit")
             logger.info(f"Added swift capacity to {unit}")
+
+
+def edit_capacities(source_path) -> None:
+    """Edit capacities in CapaciteList.ndf."""
+    logger.info("Modifying unit capacities in UniteDescriptor.ndf")
+    
+    unit_edits = load_unit_edits()
+    
+    # Edit capacities
+    for unit, data in unit_edits.items():
+        if "capacities" not in data:
+            continue
+        
+        found_capacite_module = False
+        capacities_to_add = data["capacities"].get("add_capacities", [])
+        capacities_to_remove = data["capacities"].get("remove_capacities", [])
+        
+        unit_descr = source_path.by_n(f"Descriptor_Unit_{unit}")
+        modules_list = unit_descr.v.by_m("ModulesDescriptors")
+        
+        for module in modules_list.v:
+            if not hasattr(module.v, 'type'):
+                continue
+            if module.v.type != "TModuleSelector":
+                continue
+            
+            default_membr = module.v.by_m("Default")
+            if hasattr(default_membr.v, 'type') and default_membr.v.type == "TCapaciteModuleDescriptor":
+                found_capacite_module = True
+                skill_list = default_membr.v.by_m("DefaultSkillList")
+                skill_prefix = "$/GFX/EffectCapacity/Capacite_"
+                for skill in skill_list.v:
+                    if skill.v.replace(skill_prefix, "") in capacities_to_remove:
+                        skill_list.v.remove(skill.index)
+                for skill in capacities_to_add:
+                    skill_list.v.add(skill_prefix + skill)
+                    
+        if not found_capacite_module:
+            skill_prefix = "$/GFX/EffectCapacity/Capacite_"
+            new_entry = (
+                f'TModuleSelector'
+                f'('
+                f'    Default = TCapaciteModuleDescriptor'
+                f'    ('
+                f'        DefaultSkillList = ['
+                f'            {", ".join(skill_prefix + skill for skill in capacities_to_add)}'
+                f'        ]'
+                f'    )'
+                f'    Condition = ~/IfNotCadavreCondition'
+                f')'
+            )
+            modules_list.v.add(new_entry)
+            logger.info(f"Added capacity module to {unit}")

@@ -28,6 +28,7 @@ rda_unit_edits = {
 
     "BTR_60_CMD_DDR": {
         "CommandPoints": 160,
+        "strength": 10,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -78,6 +79,7 @@ rda_unit_edits = {
             "overwrite_all": [
                 'infantry',
                 'leader_sov',
+                '_resolute',
                 '_ifv',
                 'infantry_equip_light',
             ],
@@ -675,10 +677,12 @@ rda_unit_edits = {
 
     "BTR_60_DDR": {
         "CommandPoints": 20,
+        "strength": 10,
     },
 
     "BTR_70_DDR": {
         "CommandPoints": 25,
+        "strength": 10,
     },
 
     "UAZ_469_Fagot_DDR": {
@@ -869,6 +873,9 @@ rda_unit_edits = {
         "Factory": "EDefaultFactories/Logistic",
         "availability": [9, 7, 0, 0],
         "max_speed": 4,
+        "capacities": {
+            "add_capacities": ["Deploy", "Deploy_ok"],
+        },
         "UpgradeFromUnit": "FOB_DDR",
     },
 
@@ -897,6 +904,7 @@ rda_unit_edits = {
         },
         "optics": {
             "OpticalStrengthAltitude": 220,
+            "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "CommandPoints": 65,
         "Divisions": {
@@ -913,6 +921,7 @@ rda_unit_edits = {
     "ZSU_23_Shilka_DDR": {
         "optics": {
             "OpticalStrengthAltitude": 220,
+            "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "CommandPoints": 75,
         "availability": [6, 4, 0, 0],
@@ -924,6 +933,7 @@ rda_unit_edits = {
     "2K12_KUB_DDR": {
         "optics": {
             "OpticalStrengthAltitude": 300,
+            "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "CommandPoints": 90,
         "availability": [4, 3, 0, 0],
