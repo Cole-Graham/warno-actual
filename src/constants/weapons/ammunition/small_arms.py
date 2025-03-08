@@ -886,30 +886,30 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "display": "M60E3",
             "hit_roll": {
-                "Idling": 40,
+                "Idling": 35,
                 "Moving": 15,
             },
             "token": "EILUZEIFXS",
             "parent_membr": {
                 "TraitsToken": ['MOTION', 'tripod'],
-                "TempsEntreDeuxTirs": 1.30, # was 1.25 but Eugen said it has to be multiple of game tick rate (10hz)
-                "TempsEntreDeuxFx": 6.0,
+                "TempsEntreDeuxTirs": 0.2, # was 1.25 but Eugen said it has to be multiple of game tick rate (10hz)
+                "TempsEntreDeuxFx": 0.2,
                 "PorteeMaximaleGRU": 1050,
                 "add": [(16, "PorteeMaximaleTBAGRU = 875"),],
                 "PhysicalDamages": 0.08,
                 "SuppressDamages": 24,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 1.5,
-                "TempsEntreDeuxSalves": 1.3,
-                "NbTirParSalves": 4,
+                "TempsEntreDeuxSalves": 2.0,
+                "NbTirParSalves": 5,
                 "CanShootWhileMoving": "True",
-                "AffichageMunitionParSalve": 20,
+                "AffichageMunitionParSalve": 25,
             },
         },
         "NbWeapons": [1],
         "BaseSupplyCost": 1,
         "WeaponDescriptor": {
-            "Salves": 45,
+            "Salves": 48,
         },
     },
     
@@ -1000,25 +1000,27 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("MMG_PKT_7_62mm_x2", "small_arms", None, False): {  # 476
         "Ammunition": {
             "hit_roll": {
-                "Idling": 40,
-                "Moving": 20,
+                "Idling": 35,
+                "Moving": 15,
             },
             "parent_membr": {
                 "PorteeMaximaleGRU": 1050,
                 "PorteeMaximaleTBAGRU": 875,
+                "TempsEntreDeuxTirs": 0.1,
+                "TempsEntreDeuxFx": 0.1,
                 "PhysicalDamages": 0.16,
                 "SuppressDamages": 48.0,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 1.25,
-                "TempsEntreDeuxSalves": 5.0,
-                "NbTirParSalves": 6,
+                "TempsEntreDeuxSalves": 2.0,
+                "NbTirParSalves": 10,
                 "SupplyCost": 2,
                 "CanShootWhileMoving": "True",
-                "AffichageMunitionParSalve": 60,
+                "AffichageMunitionParSalve": 50,
             },
         },
         "WeaponDescriptor": {
-            "Salves": 30,
+            "Salves": 32,
         },
     },
 
@@ -1054,26 +1056,26 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "hit_roll": {
                 "Idling": 35,
-                "Moving": 20,
+                "Moving": 15,
             },
             "parent_membr": {
-                "TempsEntreDeuxTirs": 1.0, # was 1.25 but Eugen said it has to be multiple of game tick rate (10hz)
-                "TempsEntreDeuxFx": 1.0,
+                "TempsEntreDeuxTirs": 0.2, # was 1.25 but Eugen said it has to be multiple of game tick rate (10hz)
+                "TempsEntreDeuxFx": 0.2,
                 "PorteeMaximaleGRU": 875,
                 "PorteeMaximaleTBAGRU": 700,
                 "PhysicalDamages": 0.08,
                 "SuppressDamages": 24,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 1.5,
-                "TempsEntreDeuxSalves": 2.5,
-                "NbTirParSalves": 8,
-                "AffichageMunitionParSalve": 40,
+                "TempsEntreDeuxSalves": 2.0,
+                "NbTirParSalves": 5,
+                "AffichageMunitionParSalve": 25,
             },
         },
         "BaseSupplyCost": 1,
         "NbWeapons": [3, 2, 1],
         "WeaponDescriptor": {
-            "Salves": 18,
+            "Salves": 48,
         },
     },
 
@@ -1259,6 +1261,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("MMG_M240_abrams_7_62mm", "small_arms", None, False): { # coax sheridan, coax abrams, abrams turret
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 45,
+                "Moving": 30,
+            },
+        },
+    },
     # ("MMG_M240_7_62mm", "small_arms", None, False): {  # 466
     #     "Ammunition": {
     #         "hit_roll": {
@@ -1293,98 +1303,98 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 25,
             },
             "parent_membr": {
-                "TempsEntreDeuxTirs": 1.5,
-                "TempsEntreDeuxFx": 1.5,
+                "TempsEntreDeuxTirs": 0.2,
+                "TempsEntreDeuxFx": 0.2,
                 "PorteeMaximaleGRU": 1050,
                 "PorteeMaximaleTBAGRU": 875,
                 "PhysicalDamages": 0.08,
                 "SuppressDamages": 24,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 2.0,
-                "TempsEntreDeuxSalves": 3.0,
-                "NbTirParSalves": 8,
-                "AffichageMunitionParSalve": 40,
+                "TempsEntreDeuxSalves": 2.0,
+                "NbTirParSalves": 5,
+                "AffichageMunitionParSalve": 25,
             },
         },
         "BaseSupplyCost": 1,
         "NbWeapons": [1],
         "WeaponDescriptor": {
-            "Salves": 23,
+            "Salves": 20,
         },
     },
     
-    ("MMG_L94A1_7_62mm", "small_arms", None, False): {
+    ("MMG_L94A1_7_62mm", "small_arms", None, False): { # Warrior coax
         "Ammunition": {
             "hit_roll": {
-                "Idling": 40,
-                "Moving": 25,
+                "Idling": 45,
+                "Moving": 15,
             },
             "parent_membr": {
-                "TempsEntreDeuxTirs": 1.0,
-                "TempsEntreDeuxFx": 1.0,
+                "TempsEntreDeuxTirs": 0.2,
+                "TempsEntreDeuxFx": 0.2,
                 "PorteeMaximaleGRU": 1050,
                 "PorteeMaximaleTBAGRU": 875,
                 "PhysicalDamages": 0.08,
                 "SuppressDamages": 24,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 2.0,
-                "TempsEntreDeuxSalves": 1.5,
-                "NbTirParSalves": 4,
-                "AffichageMunitionParSalve": 20,
+                "TempsEntreDeuxSalves": 2.0,
+                "NbTirParSalves": 5,
+                "AffichageMunitionParSalve": 25,
             },
         },
         "BaseSupplyCost": 1,
         "NbWeapons": [1],
         "WeaponDescriptor": {
-            "Salves": 45,
+            "Salves": 48,
         },
     },
     
-    ("MMG_L8A2_7_62mm", "small_arms", None, False): {
+    ("MMG_L8A2_7_62mm", "small_arms", None, False): { # challenger coax
         "Ammunition": {
             "hit_roll": {
-                "Idling": 40,
-                "Moving": 25,
+                "Idling": 45,
+                "Moving": 30,
             },
             "parent_membr": {
-                "TempsEntreDeuxTirs": 1.0,
-                "TempsEntreDeuxFx": 1.0,
+                "TempsEntreDeuxTirs": 0.2,
+                "TempsEntreDeuxFx": 0.2,
                 "PorteeMaximaleGRU": 1050,
                 "PorteeMaximaleTBAGRU": 875,
                 "PhysicalDamages": 0.08,
                 "SuppressDamages": 24,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 2.0,
-                "TempsEntreDeuxSalves": 1.5,
-                "NbTirParSalves": 4,
-                "AffichageMunitionParSalve": 20,
+                "TempsEntreDeuxSalves": 2.0,
+                "NbTirParSalves": 5,
+                "AffichageMunitionParSalve": 25,
             },
         },
         "BaseSupplyCost": 1,
         "NbWeapons": [1],
         "WeaponDescriptor": {
-            "Salves": 45,
+            "Salves": 48,
         },
     },
     
-    ("MMG_L37A2_7_62mm", "small_arms", None, False): {
+    ("MMG_L37A2_7_62mm", "small_arms", None, False): { # Saxon, chieftain turret
         "Ammunition": {
             "hit_roll": {
-                "Idling": 40,
-                "Moving": 25,
+                "Idling": 35,
+                "Moving": 15,
             },
             "parent_membr": {
-                "TempsEntreDeuxTirs": 1.0,
-                "TempsEntreDeuxFx": 1.0,
+                "TempsEntreDeuxTirs": 0.2,
+                "TempsEntreDeuxFx": 0.2,
                 "PorteeMaximaleGRU": 1050,
                 "PorteeMaximaleTBAGRU": 875,
                 "PhysicalDamages": 0.08,
                 "SuppressDamages": 24,
                 "DisplaySalveAccuracy": False,
                 "TempsDeVisee": 2.0,
-                "TempsEntreDeuxSalves": 1.5,
-                "NbTirParSalves": 4,
-                "AffichageMunitionParSalve": 20,
+                "TempsEntreDeuxSalves": 2.0,
+                "NbTirParSalves": 5,
+                "AffichageMunitionParSalve": 25,
             },
         },
         "BaseSupplyCost": 1,

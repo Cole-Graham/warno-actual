@@ -140,10 +140,11 @@ def _apply_common_mods(weapon_descr, name: str, mods: dict) -> None:
             arme_membr.v.by_m("Family").v = value["Family"]
         elif key == "hit_roll":
             hitroll_obj = membr("HitRollRuleDescriptor").v
-            hitroll_list = hitroll_obj.by_m("BaseHitValueModifiers").v
-            roll_membr_list = list(hitroll_list[1].v)
-            roll_membr_list[1] = value["Idling"]
-            hitroll_list[1].v = tuple(roll_membr_list)
+            modifiers = hitroll_obj.by_m("BaseHitValueModifiers").v
+            if "Idling" in value:
+                modifiers[1].v = (modifiers[1].v[0], str(value["Idling"]))
+            if "Moving" in value:
+                modifiers[2].v = (modifiers[2].v[0], str(value["Moving"]))
         else:     
             membr(key).v = value
             logger.info(f"Changed {name} {key} to {value}")

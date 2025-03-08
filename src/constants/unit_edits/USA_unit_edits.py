@@ -2109,6 +2109,10 @@ usa_unit_edits = {
         "CommandPoints": 70,
         "availability": [0, 4, 3, 0],
         "WeaponDescriptor": {
+            "Salves": {
+                "MMG_turret_7_62mm_M60": 60,
+                "MMG_M240_7_62mm": 48,
+            },
             "equipmentchanges": {
                 "replace": [("MMG_team_7_62mm_M60", "MMG_turret_7_62mm_M60")],
             },

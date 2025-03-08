@@ -2496,14 +2496,14 @@ sov_unit_edits = {
         },
         "AirplaneMovement": {
             "parent_membr": {
-                "AgilityRadiusGRU": 1650,
+                "AgilityRadiusGRU": 1800,
             },
         },
         "CommandPoints": 310,
         "availability": [0, 2, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "AA_R33_Vympel": 2,
+                "AA_R33_Vympel": 4,
             },
         },
     },
@@ -2511,14 +2511,14 @@ sov_unit_edits = {
     "MiG_31_AA2_SOV": {  # 4x R-33, 4x R-60M
         "AirplaneMovement": {
             "parent_membr": {
-                "AgilityRadiusGRU": 1650,
+                "AgilityRadiusGRU": 1800,
             },
         },
         "CommandPoints": 290,
         "availability": [0, 2, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "AA_R33_Vympel": 2,
+                "AA_R33_Vympel": 4,
             },
         },
     },
