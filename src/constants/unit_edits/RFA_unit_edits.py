@@ -10,8 +10,28 @@ rfa_unit_edits = {
         },
     },
 
+    "DCA_FK20_2_20mm_Zwillinge_RFA": {  # FK-20-2 Zwillinge
+        "CommandPoints": 20,
+        "Factory": "EDefaultFactories/Logistic",
+        "Divisions": {
+            "default": {
+                "Transports": ["Iltis_trans_RFA"],
+                "cards": 69,
+            },
+            "RFA_2_PzGrenadier": {
+                "cards": 2,
+            },
+        },
+        "availability": [9, 7, 0, 0],
+        "max_speed": 4,
+        "capacities": {
+            "add_capacities": ["Deploy", "Deploy_ok"],
+        },
+        "UpgradeFromUnit": "FOB_RFA",
+    },
+
     # RFA INF
-    "Panzergrenadier_CMD_RFA": {
+    "Panzergrenadier_CMD_RFA": {  # #CMD Fs-JÄGER FÜH.
         "CommandPoints": 45,
         "GameName": {
             "display": "#LDR PANZERGRENADIER LDR.",
@@ -24,7 +44,7 @@ rfa_unit_edits = {
                 "GroundUnits",
                 "Inf_quartier_ok",
                 "Infanterie",
-                "UNITE_Rifles_CMD_US",
+                "UNITE_Panzergrenadier_CMD_RFA",
                 "Unite",
             ],
         },
@@ -63,11 +83,130 @@ rfa_unit_edits = {
         },
         "availability": [0, 0, 5, 4],
         "max_speed": 20,
-        "WeaponDescriptor": {
-            "Salves": {
-                "RocketInf_M72A3_LAW_66mm": 6,
-            },
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+        "remove_zone_capture": None,
+    },
+
+    "Fallschirmjager_CMD_RFA": {  # #CMD Fs-JÄGER FÜH.
+        "CommandPoints": 40,
+        "GameName": {
+            "display": "#LDR FALLSCHIRMJÄGER LDR."
         },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_Spec_Attaque",
+                "UNITE_Fallschirmjager_CMD_RFA",
+                "Unite"
+            ],
+        },
+        "TransportedTexture": "UseInGame_Transport_assault",
+        # "SortingOrder": 20085,
+        # "UnitAttackValue": 1,
+        # "UnitDefenseValue": 31,
+        # "UnitDefenseValue": 31,
+        "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'infantry',
+                '_leader',
+                '_choc',
+                'infantry_equip_light',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_assault",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
+        "availability": [0, 0, 7, 5],
+        "max_speed": 26,
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+        "remove_zone_capture": None,
+    },
+
+    "Jager_CMD_RFA": {  # #CMD JÄGER FÜH.
+        "CommandPoints": 40,
+        "GameName": {
+            "display": "#LDR JÄGER LDR."
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "UNITE_Jager_CMD_RFA",
+                "Unite"
+            ],
+        },
+        "TransportedTexture": "UseInGame_Transport_assault",
+        # "SortingOrder": 20085,
+        # "UnitAttackValue": 1,
+        # "UnitDefenseValue": 31,
+        # "UnitDefenseValue": 31,
+        "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'infantry',
+                '_leader',
+                'infantry_equip_light',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_assault",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
+        "availability": [0, 0, 7, 5],
+        "max_speed": 26,
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+        "remove_zone_capture": None,
+    },
+
+    "Engineers_CMD_RFA": {  # #CMD PIONIER FÜH.
+        "CommandPoints": 40,
+        "GameName": {
+            "display": "#LDR PIONIER LDR."
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_Spec_Attaque",
+                "UNITE_Engineers_CMD_RFA",
+                "Unite"
+            ],
+        },
+        "TransportedTexture": "UseInGame_Transport_assault",
+        # "SortingOrder": 20085,
+        # "UnitAttackValue": 1,
+        # "UnitDefenseValue": 31,
+        # "UnitDefenseValue": 31,
+        "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'engineer',
+                '_leader',
+                '_choc',
+                'infantry_equip_medium',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_assault",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
+        "availability": [0, 0, 7, 5],
+        "max_speed": 26,
         "is_infantry": True,
         "is_ground_vehicle": False,
         "remove_zone_capture": None,
@@ -93,7 +232,7 @@ rfa_unit_edits = {
         },
     },
 
-    "HeimatschutzJager_RFA": {  # PZ.GRENADIER
+    "HeimatschutzJager_RFA": {  # HEIMAT-JAGER
         "GameName": {
             "display": "HEIMATJÄGER"
         },
@@ -110,6 +249,46 @@ rfa_unit_edits = {
         },
     },
 
+    "Engineers_AT_RFA": {  # PIONIER (CarlG)
+        "GameName": {
+            "display": "PIONIER [CG]"
+        },
+    },
+
+    "Panzergrenadier_APC_RFA": {  # PZ.GRENADIER (M113)
+        "GameName": {
+            "display": "PANZERGRENADIER [M113]"
+        },
+    },
+
+    "Fallschirm_RFA": {  # Fs-JÄGER
+        "GameName": {
+            "display": "FALLSCHIRMJÄGER"
+        },
+        "UpgradeFromUnit": "Fallschirmjager_CMD_RFA",
+    },
+
+    "Jager_RFA": {  # JÄGER (PzF)
+        "GameName": {
+            "display": "JÄGER [PzF]"
+        },
+    },
+
+    "PzGrenadier_RFA": {  # PZ.GRENADIER (CarlG)
+        "GameName": {
+            "display": "PANZERGRENADIER [CG]"
+        },
+    },
+
+    "ATteam_Milan_1_RFA": {
+        "CommandPoints": 30,
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
+        "availability": [9, 7, 5, 0],
+    },
+
     "ATteam_Milan_2_RFA": {
         "CommandPoints": 45,
         "max_speed": 20,
@@ -117,6 +296,27 @@ rfa_unit_edits = {
             "add_specs": ["'infantry_equip_heavy'"],
         },
         "availability": [6, 4, 0, 0],
+    },
+
+    "ATteam_Milan_2_para_RFA": {
+        "CommandPoints": 45,
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
+        "availability": [6, 4, 0, 0],
+    },
+
+    "HMGteam_MG3_RFA": {  # MG-3 7,62mm
+        "GameName": {
+            "display": "MG3 7.62mm",
+        },
+    },
+
+    "HMGteam_MG3_FJ_RFA": {  # Fs-MG-3 7,62mm
+        "GameName": {
+            "display": "FJ MG3 7.62mm",
+        },
     },
 
     # trsp
@@ -134,13 +334,61 @@ rfa_unit_edits = {
         },
     },
 
-    # RFA ART
+    "MAN_Kat_6x6_trans_RFA": {
+        "CommandPoints": 15,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'"],
+        },
+    },
+
+    # RFA ARTY
+    "M577_RFA": {
+        "CommandPoints": 60,
+        "GameName": {
+            "display": "#LDR M577GA2 TACFIRE",
+            "token": "M577GA2LDR",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "GroundUnits",
+                "UNITE_M577_RFA",
+                "Unite",
+                "Vehicule",
+            ],
+        },
+        "Factory": "EDefaultFactories/Art",
+        "IdentifiedTextures": ["Texture_RTS_H_appui", "Texture_appui"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                '_leader',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_appui",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Transport",
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 2, 0, 0],
+        "remove_zone_capture": None,
+    },
+
     "M113_PzMorser_RFA": {
         "GameName": {
             "display": "PzMrs M113A1G"
         },
         "CommandPoints": 75,
         "availability": [4, 3, 0, 0],
+    },
+
+    "Mortier_Tampella_120mm_RFA": {
+        "GameName": {
+            "display": "TAMPELLA 120mm"
+        },
     },
 
     "M109A3G_HOWZ_RFA": {
@@ -196,12 +444,35 @@ rfa_unit_edits = {
         },
     },
 
+    "Fallschirmjager_Scout_RFA": {  # Fs-Jager aufk
+        "GameName": {
+            "display": "#RECO2 FJ AUFKLÄRER"
+        },
+    },
+
+    "Jager_Aufk_RFA": {  # JAGER AUFKL.
+        "GameName": {
+            "display": "#RECO2 JÄGER AUFKLÄRER"
+        },
+    },
+
+    "M113A1G_reco_RFA": {  # M113A1G AUFKL.
+        "GameName": {
+            "display": "#RECO1 M113A1G AufKl"
+        },
+    },
+
     "M113_GreenArcher_RFA": {
         "CommandPoints": 30,
         # "optics": {
         #     "OpticalStrength": 233.475
         # },
         "availability": [8, 0, 0, 0],
+    },
+
+    "Bo_105_reco_RFA": {
+        "CommandPoints": 30,
+        "availability": [0, 4, 0, 0],
     },
 
     # RFA AA

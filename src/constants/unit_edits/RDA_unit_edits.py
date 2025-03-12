@@ -202,6 +202,9 @@ rda_unit_edits = {
     },
 
     "HMGteam_AGS17_DDR": {
+        "GameName": {
+            "display": "Gr-MG 30mm",
+        },
         "strength": 5,
         "CommandPoints": 35,
         "Divisions": {

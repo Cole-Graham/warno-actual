@@ -415,11 +415,19 @@ fr_unit_edits = {
     
     "ATteam_Milan_1_FR": {
         "CommandPoints": 30,
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
         "availability": [9, 7, 5, 0],
     },
     
     "ATteam_Milan_2_FR": {
         "CommandPoints": 45,
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
         "availability": [6, 4, 0, 0],
     },
     
@@ -583,7 +591,7 @@ fr_unit_edits = {
     },
     
     "AMX_10_HOT_FR": {
-        "availability": [6, 4, 0 ,0],
+        "availability": [6, 4, 0, 0],
     },
     
     "AMX_30_EBG_FR": {
@@ -681,13 +689,6 @@ fr_unit_edits = {
         "availability": [0, 4, 3, 0],
     },
     
-    "Alouette_III_FR": {
-        "CommandPoints": 35,
-        "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
-        },
-    },
-    
     "AMX_10_RC_FR": {
         "CommandPoints": 135,
         "availability": [0, 4, 3, 0],
@@ -769,6 +770,13 @@ fr_unit_edits = {
     "Gazelle_HOT_2_FR": {
         "CommandPoints": 85,
         "availability": [0, 0, 4, 3],
+    },
+
+    "Alouette_III_FR": {
+        "CommandPoints": 35,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'"],
+        },
     },
     #FR AIR
     "Mirage_5_F_nplm_FR": {

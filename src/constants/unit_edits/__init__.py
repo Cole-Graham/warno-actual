@@ -17,6 +17,7 @@ def load_unit_edits() -> Dict:
     
     # Dictionary name mapping
     dict_names = {
+        'BEL_unit_edits': 'bel_unit_edits',
         'FR_unit_edits': 'fr_unit_edits',
         'POL_unit_edits': 'pol_unit_edits',
         'RDA_unit_edits': 'rda_unit_edits',

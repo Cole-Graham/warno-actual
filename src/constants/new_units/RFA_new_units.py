@@ -77,5 +77,52 @@ RFA_NEW_UNITS = {
         "alternatives_count": 1,
         "selector_tactic": "00_01",
     },
+
+    ("M577_RFA", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "712fd59c-3baa-434d-b904-b07c5e9c4003",
+        "GroupeCombatGUID": "d1157c11-5816-4ff9-897b-fd49e0fad863",
+        "ShowroomGUID": "432efe92-ddce-40da-af72-6508b094186b",
+        "CadavreGUID": "ade35527-8206-4c07-a8b3-38da179b3629",
+        "NewName": "M577_CMD2_RFA",
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Commandant",
+                "GroundUnits",
+                "InfmapCommander",
+                "UNITE_M577_CMD2_US",
+                "Unite",
+                "Vehicule",
+                "Vehicule_CMD",
+            ],
+        },
+        "Factory": "EDefaultFactories/Logistic",
+        "CommandPoints": 145,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+            "RFA_2_PzGrenadier_multi": {
+                "Transports": None,
+            },
+            "RFA_5_Panzer_multi": {
+                "Transports": None,
+            },
+            "RFA_TerrKdo_Sud_multi": {
+                "Transports": None,
+            },
+        },
+        "availability": [0, 3, 0, 0],
+        "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Spread',
+                   'Reverse', 'AskForSupply', 'AIDefend', 'AIAttack', 'AIStop'],
+        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": True,
+        "Faction": "NATO",
+        "Nation": "RFA",
+    },
 }
 # fmt: on

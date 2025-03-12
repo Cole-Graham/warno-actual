@@ -895,7 +895,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TempsEntreDeuxTirs": 0.2, # was 1.25 but Eugen said it has to be multiple of game tick rate (10hz)
                 "TempsEntreDeuxFx": 0.2,
                 "PorteeMaximaleGRU": 1050,
-                "add": [(16, "PorteeMaximaleTBAGRU = 875"),],
+                "add": [(16, "PorteeMaximaleTBAGRU = 875"), ],
                 "PhysicalDamages": 0.08,
                 "SuppressDamages": 24,
                 "DisplaySalveAccuracy": False,
@@ -2222,6 +2222,35 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
         "BaseSupplyCost": 1,
         "NbWeapons": [1],
+        "WeaponDescriptor": {
+            "Salves": 11,
+        },
+    },
+
+    ("FM_FNC", "small_arms", None, False): {  # 299
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_sa_intermediate",
+            },
+            "hit_roll": {
+                "Idling": 40,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "TempsEntreDeuxTirs": 1.5,
+                "PorteeMaximaleGRU": 875,
+                "PorteeMaximaleTBAGRU": 700,
+                "PhysicalDamages": 0.06,
+                "SuppressDamages": 6,
+                "DisplaySalveAccuracy": False,
+                "TempsDeVisee": 1.0,
+                "TempsEntreDeuxSalves": 4.5,
+                "NbTirParSalves": 6,
+                "AffichageMunitionParSalve": 30,
+            },
+        },
+        "BaseSupplyCost": 1,
+        "NbWeapons": [9, 8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 11,
         },
