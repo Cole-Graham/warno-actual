@@ -448,7 +448,7 @@ fr_unit_edits = {
     "AMX_30_B2_CMD_FR": {
         "CommandPoints": 145,
         "GameName": {
-            "display": "#LDR AMX-30 B2 PC LDR.",
+            "display": "#LDR AMX-30 B2 LDR.",
             "token": "WFTGAGEENP",
         },
         "TagSet": {

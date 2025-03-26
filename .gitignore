@@ -16,3 +16,4 @@ temp_context.txt
 !logs/.gitkeep
 !src/data/database/.gitkeep
 !src/data/database/master_db_metadata.json
+*.txt

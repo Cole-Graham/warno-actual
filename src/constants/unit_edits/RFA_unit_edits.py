@@ -402,6 +402,26 @@ rfa_unit_edits = {
         "availability": [6, 4, 0, 0],
     },
 
+    "Leopard_1A1_RFA": {
+        "CommandPoints": 80,
+        "availability": [10, 7, 0, 0],
+        # "WeaponDescriptor": {
+        #     "Salves": {
+        #         "MMG_AANF1_7_62mm": 44,
+        #     },
+        # },
+    },
+
+    "Leopard_1A5_RFA": {
+        "CommandPoints": 105,
+        "availability": [10, 7, 0, 0],
+        # "WeaponDescriptor": {
+        #     "Salves": {
+        #         "MMG_AANF1_7_62mm": 44,
+        #     },
+        # },
+    },
+
     # trsp
     "TPZ_Fuchs_1_RFA": {
         "SpecialtiesList": {
