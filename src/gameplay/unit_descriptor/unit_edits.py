@@ -95,7 +95,7 @@ def modify_module(unit_row: Any, descr_row: Any, edits: dict, index: int,
             "TVisibilityModuleDescriptor": _handle_visibility,
             "TBaseDamageModuleDescriptor": _handle_base_damage,
             "TDamageModuleDescriptor": _handle_damage,
-            "TInfantrySquadWeaponAssignmentModuleDescriptor": _handle_weapon_assignment,
+            # "TInfantrySquadWeaponAssignmentModuleDescriptor": _handle_weapon_assignment,
             "TScannerConfigurationDescriptor": _handle_scanner,
             "TProductionModuleDescriptor": _handle_production,
             "TTacticalLabelModuleDescriptor": _handle_tactical_label,
@@ -304,9 +304,9 @@ def _handle_damage(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:  # n
         descr_row.v.by_m("HitRollECM").v = str(edits["ECM"])
 
 
-def _handle_weapon_assignment(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:  # noqa
-    if "WeaponAssignment" in edits:
-        descr_row.v.by_m("InitialSoldiersToTurretIndexMap").v = "MAP" + str(edits["WeaponAssignment"])
+# def _handle_weapon_assignment(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:  # noqa
+#     if "WeaponAssignment" in edits:
+#         descr_row.v.by_m("InitialSoldiersToTurretIndexMap").v = "MAP" + str(edits["WeaponAssignment"])
 
 
 def _handle_airplane_movement(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:  # noqa

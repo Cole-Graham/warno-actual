@@ -1101,9 +1101,8 @@ usa_unit_edits = {
             "equipmentchanges": {
                 "replace": [
                     ("Commando_733", "M16A1_Carbine"),
-                    ("RocketInf_M72A3_LAW_66mm", "RocketInf_AT4_83mm"),
+                    ("RocketInf_M72A3_LAW_66mm", "RocketInf_AT4_83mm", "RocketInf_M72_LAW_66mm", "RocketInf_AT4_83mm"),
                 ],
-                "fire_effect": [("RocketInf_M72_LAW_66mm", "RocketInf_AT4_83mm")]
             },
             "Salves": {
                 "M16A1_Carbine": 11,
@@ -1698,7 +1697,7 @@ usa_unit_edits = {
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "SpecialtiesList": {
             "overwrite_all": [
-                'Armor_heavy',
+                
                 '_leader',
                 '_smoke_launcher',
             ],
@@ -1737,7 +1736,7 @@ usa_unit_edits = {
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "SpecialtiesList": {
             "overwrite_all": [
-                'Armor_heavy',
+                
                 '_leader',
                 '_smoke_launcher',
             ],
@@ -1776,7 +1775,7 @@ usa_unit_edits = {
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "SpecialtiesList": {
             "overwrite_all": [
-                'Armor_heavy',
+                
                 '_leader',
                 '_smoke_launcher',
             ],
@@ -1807,7 +1806,7 @@ usa_unit_edits = {
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "SpecialtiesList": {
             "overwrite_all": [
-                'Armor_heavy',
+                
                 '_leader',
                 '_smoke_launcher',
             ],
@@ -2276,8 +2275,9 @@ usa_unit_edits = {
             },
             "equipmentchanges": {
                 "add": [(2, "RocketInf_M72A3_LAW_66mm")], # (turret, weapon)
-                "replace": [("MMG_inf_M240B_7_62mm", "SAW_M249_5_56mm")],
-                "fire_effect": [("MMG_inf_M240B_7_62mm", "SAW_M249_5_56mm")],
+                "replace": [
+                    ("MMG_inf_M240B_7_62mm", "SAW_M249_5_56mm", "MMG_inf_M240B_7_62mm", "SAW_M249_5_56mm")
+                ],
             },
         },
     },
@@ -2756,8 +2756,12 @@ usa_unit_edits = {
         "availability": [0, 3, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("Bomb_Mk77_340kg_Napalm_salvolength2", "Bomb_Mk77_340kg_Napalm_salvolength5")],
-                "fire_effect": [("Bomb_Mk77_340kg_Napalm_x2", "Bomb_Mk77_340kg_Napalm_x4")]
+                "replace": [
+                    (
+                        "Bomb_Mk77_340kg_Napalm_salvolength2", "Bomb_Mk77_340kg_Napalm_salvolength5",
+                        "Bomb_Mk77_340kg_Napalm_x2", "Bomb_Mk77_340kg_Napalm_x4"
+                    ),
+                ],
             },
         },
     },
@@ -2819,8 +2823,12 @@ usa_unit_edits = {
         "availability": [0, 3, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("Bomb_Mk77_340kg_Napalm_salvolength4", "Bomb_Mk77_340kg_Napalm_salvolength8")],
-                "fire_effect": [("Bomb_Mk77_340kg_Napalm_x4", "Bomb_Mk77_340kg_Napalm_x6")]
+                "replace": [
+                    (
+                        "Bomb_Mk77_340kg_Napalm_salvolength4", "Bomb_Mk77_340kg_Napalm_salvolength8",
+                        "Bomb_Mk77_340kg_Napalm_x4", "Bomb_Mk77_340kg_Napalm_x6"
+                    ),
+                ],
             },
         },
     },
@@ -2833,8 +2841,12 @@ usa_unit_edits = {
         "availability": [0, 3, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("Bomb_Mk77_340kg_Napalm_salvolength4", "Bomb_Mk77_340kg_Napalm_salvolength8")],
-                "fire_effect": [("Bomb_Mk77_340kg_Napalm_x4", "Bomb_Mk77_340kg_Napalm_x6")]
+                "replace": [
+                    (
+                        "Bomb_Mk77_340kg_Napalm_salvolength4", "Bomb_Mk77_340kg_Napalm_salvolength8",
+                        "Bomb_Mk77_340kg_Napalm_x4", "Bomb_Mk77_340kg_Napalm_x6"
+                    ),
+                ],
             },
         },
     },
@@ -2853,8 +2865,7 @@ usa_unit_edits = {
                 "Bomb_GBU_12_salvolength2": 1,
             },
             "equipmentchanges": {
-                "replace": [("Bomb_GBU_12", "Bomb_GBU_12_salvolength2")],
-                "fire_effect": [("Bomb_GBU_12_x1", "Bomb_GBU_12_x2")]
+                "replace": [("Bomb_GBU_12", "Bomb_GBU_12_salvolength2", "Bomb_GBU_12_x1", "Bomb_GBU_12_x2")],
             },
         },
         "optics": {
@@ -2900,8 +2911,12 @@ usa_unit_edits = {
         "availability": [0, 3, 2, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("Bomb_Mk77_340kg_Napalm_salvolength2", "Bomb_Mk77_340kg_Napalm_salvolength4")],
-                "fire_effect": [("Bomb_Mk77_340kg_Napalm_x2", "Bomb_Mk77_340kg_Napalm_x4")]
+                "replace": [
+                    (
+                        "Bomb_Mk77_340kg_Napalm_salvolength2", "Bomb_Mk77_340kg_Napalm_salvolength4",
+                        "Bomb_Mk77_340kg_Napalm_x2", "Bomb_Mk77_340kg_Napalm_x4"
+                    ),
+                ],
             },
         },
     },

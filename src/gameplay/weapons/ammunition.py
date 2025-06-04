@@ -551,7 +551,11 @@ def apply_default_salves(source_path: Any, game_db: Dict[str, Any]) -> None:
                     replacements = edits["WeaponDescriptor"].get("equipmentchanges", {}).get("replace", [])
                     salve_changes = edits["WeaponDescriptor"].get("Salves", {})
                     if replacements:
-                        for (current, replacement) in replacements:
+                        for replacement in replacements:
+                            if len(replacement) == 4:
+                                current, new, old_fire_effect, new_fire_effect = replacement
+                            else:
+                                current, new = replacement
                             if current == ammo_name:
                                 skip_weapon_descr_ammo_name = True
                     if salve_changes:

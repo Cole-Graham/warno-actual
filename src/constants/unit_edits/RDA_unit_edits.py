@@ -5,6 +5,16 @@
 # fmt: off
 rda_unit_edits = {
     # RDA LOG
+    "UAZ_469_CMD_DDR": {
+        "CommandPoints": 145,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "availability": [0, 4, 0, 0],
+    },
+    
     "BMP_1_CMD_DDR": {
         "CommandPoints": 145,
         "Divisions": {
@@ -221,6 +231,15 @@ rda_unit_edits = {
             "add_specs": ["'infantry_equip_veryheavy'"],
         },
     },
+    
+    "KdA_DDR": {
+        "CommandPoints": 35,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+    },
 
     "MotRifles_DDR": {
         "CommandPoints": 35,
@@ -399,6 +418,16 @@ rda_unit_edits = {
             },
         },
         "availability": [12, 9, 0, 0],
+    },
+    
+    "ATteam_RCL_SPG9_DDR": {
+        "strength": 5,
+        "CommandPoints": 30,
+        "availability": [9, 7, 0, 0],
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
     },
 
     "ATteam_Fagot_DDR": {
@@ -585,7 +614,7 @@ rda_unit_edits = {
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "SpecialtiesList": {
             "overwrite_all": [
-                'Armor_heavy',
+                
                 'leader_sov',
                 '_resolute',
                 '_smoke_launcher',
@@ -622,7 +651,7 @@ rda_unit_edits = {
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "SpecialtiesList": {
             "overwrite_all": [
-                'Armor_heavy',
+                
                 'leader_sov',
                 '_resolute'
                 '_smoke_launcher',

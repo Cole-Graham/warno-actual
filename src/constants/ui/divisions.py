@@ -26,7 +26,7 @@ GRAY_EMBLEMS = [
     "RDA__9_Panzer",
     # "RDA_KDA_Erfurt",
     "RDA_Rugen_Gruppierung",
-    "2_PzGrenDivision_RFA",
+    # "2_PzGrenDivision_RFA",
     "5_Panzerdivision_RFA",
     # "RFA_TerrKdo_Sud",
     # "SOV_119OdtTP",

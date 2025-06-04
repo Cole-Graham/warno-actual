@@ -93,7 +93,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "RadiusSplashSuppressDamagesGRU": 124,
                 "SuppressDamages": 216,
                 "DisplaySalveAccuracy": False,
-                "TempsEntreDeuxSalves": 5.0,
+                "TimeBetweenTwoSalvos": 5.0,
             },
         },
     },
@@ -133,7 +133,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PorteeMaximaleGRU": 450,
                 "DisplaySalveAccuracy": False,
-                "TempsEntreDeuxSalves": 3.0,
+                "TimeBetweenTwoSalvos": 3.0,
             },
         },
     },
@@ -322,7 +322,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 40,
             },
             "parent_membr": {
-                "TempsEntreDeuxFx": 6.6,
+                "TimeBetweenTwoFx": 6.6,
                 "PorteeMaximaleGRU": 875,
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 10,
@@ -339,7 +339,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 40,
             },
             "parent_membr": {
-                "TempsEntreDeuxFx": 6.6,
+                "TimeBetweenTwoFx": 6.6,
                 "PorteeMaximaleGRU": 875,
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 10,

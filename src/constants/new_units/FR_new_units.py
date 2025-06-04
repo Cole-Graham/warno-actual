@@ -34,7 +34,7 @@ FR_NEW_UNITS = {
                 "FM_FAMAS": 9,
             },
             "equipmentchanges": {
-                "add": [(2, "RocketInf_LRAC_F1"),],
+                "add": [(2, "RocketInf_LRAC_F1", "RocketInf_LRAC_F1")],
                 "quantity": {
                     "RocketInf_LRAC_F1": 1,
                 },

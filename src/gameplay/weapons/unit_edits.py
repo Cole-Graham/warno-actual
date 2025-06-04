@@ -511,7 +511,11 @@ def _apply_salvo_changes(weapon_descr: Any, wd_edits: Dict, weapon_descr_data: D
         
         elif "equipmentchanges" in wd_edits:
             if "replace" in wd_edits["equipmentchanges"]:
-                for (old_weapon, new_weapon) in wd_edits["equipmentchanges"]["replace"]:
+                for replacement in wd_edits["equipmentchanges"]["replace"]:
+                    if len(replacement) == 4:
+                        old_weapon, new_weapon, old_fire_effect, new_fire_effect = replacement
+                    else:
+                        old_weapon, new_weapon = replacement
                     # check if the new weapon is the same as the one in salve_edits
                     if new_weapon != weapon:
                         logger.debug(f"New weapon {new_weapon} is not the same as {weapon}")
@@ -681,7 +685,14 @@ def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_
             if match:
                 ammo_name = match.group(1)
                 if "replace" in equipment_changes:
-                    for current, replacement in equipment_changes["replace"]:
+                    for replacement in equipment_changes["replace"]:
+                        if len(replacement) == 4:
+                            replace_fire_effect = True
+                            current, replacement, old_fire_effect, new_fire_effect = replacement
+                        else:
+                            replace_fire_effect = False
+                            current, replacement = replacement
+
                         if ammo_name == current:
                             quantity = __get_weapon_quantity(weapon_descr, turret_index,
                                                           ammo_name, ammo_db, weapon_db)
@@ -706,13 +717,12 @@ def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_
                                     new_ammo = f"$/GFX/Weapon/Ammo_{replacement}"
                             weapon.v.by_m("Ammunition").v = new_ammo
                             logger.debug(f"Replaced {current} with {replacement}")
-                            
-                if "fire_effect" in equipment_changes:
-                    fire_effect_val = strip_quotes(weapon.v.by_m("EffectTag").v)
-                    for old_fire_effect, new_fire_effect in equipment_changes["fire_effect"]:
-                        if old_fire_effect == fire_effect_val.replace("FireEffect_", ""):
-                            weapon.v.by_m("EffectTag").v = "'" + f"FireEffect_{new_fire_effect}" + "'"
-                            logger.debug(f"Replaced fire effect{old_fire_effect} with {new_fire_effect}")
+                        
+                        if replace_fire_effect:
+                            fire_effect_val = strip_quotes(weapon.v.by_m("EffectTag").v).replace("FireEffect_", "")
+                            if old_fire_effect == fire_effect_val:
+                                weapon.v.by_m("EffectTag").v = "'" + f"FireEffect_{new_fire_effect}" + "'"
+                                logger.debug(f"Replaced fire effect{old_fire_effect} with {new_fire_effect}")
 
 
 def _adjust_light_at_salvos(weapon_descr: Any, unit_name: str, ammos_: Dict, ammo_db: Dict,

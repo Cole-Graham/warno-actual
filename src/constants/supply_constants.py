@@ -50,7 +50,7 @@ NEW_SUPPLY_CONSTANTS = {
             "CriticsSupplyCostBySecond": 1.0,  # 100%
         },
         "PrimarySupply": {
-            "DefaultSupplyRangeGRU": "SpecificDefaultSupplyRangeGRU",
+            "DefaultSupplyRangeGRU": 450,
             "FuelSupplyBySecond": 1.0,         # 100%
             "FuelSupplyCostBySecond": 1.0,     # 100%
             "HealthSupplyBySecond": 2.0,       # 100%

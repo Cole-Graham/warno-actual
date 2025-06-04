@@ -27,6 +27,7 @@ divs_not_released = [
     "RFA_5_Panzer_multi",
     "RFA_TerrKdo_Sud_multi",
     # "SOV_119IndTkBrig_multi",
+    "SOV_157_Rifle_multi",
     "SOV_25_Tank_multi",
     # "SOV_27_Gds_Rifle_multi",
     "SOV_35_AirAslt_Brig_multi",
@@ -44,6 +45,7 @@ divs_not_released = [
     "US_24th_Inf_multi",
     "US_35th_Inf_multi",
     # "US_3rd_Arm_multi",
+    "US_6th_Light_multi",
     # "US_82nd_Airborne_multi",
     # "US_8th_Inf_multi",
     "US_9th_Mot_multi",
@@ -52,9 +54,8 @@ divs_not_released = [
 ]
 
 def hide_divisions_divisions_ndf(source_path) -> None:
-    """GameData/Generated/Gameplay/Decks/Divisions.ndf
-    Hide divisions from the UI by setting InterfaceOrder to -1 in Divisions.ndf."""
-    logger.info("Modifying InterfaceOrder for hidden divisions in Divisions.ndf ")
+    """GameData/Generated/Gameplay/Decks/Divisions.ndf"""
+    logger.info("Modifying hidden divisions in Divisions.ndf ")
 
     config = ModConfig.get_instance()
 

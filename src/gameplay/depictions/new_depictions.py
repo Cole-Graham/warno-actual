@@ -42,6 +42,8 @@ def create_infantry_depictions(source_path: Any, game_db: Any) -> None:
                     for row_index, (edit_type, edit_list) in depiction_edits.items():
                         if edit_type == "edit":
                             for member, value in edit_list:
+                                if member == "SelectorId":
+                                    weaponalternatives_obj.v[row_index].v.by_m(member).v = f"['{value}']"
                                 if member == "MeshDescriptor" or member == "ReferenceMeshForSkeleton":
                                     new_mesh = f"$/GFX/DepictionResources/Modele_{value}"
                                     weaponalternatives_obj.v[row_index].v.by_m(member).v = new_mesh
@@ -63,27 +65,34 @@ def create_infantry_depictions(source_path: Any, game_db: Any) -> None:
                                 f"    {mesh_member} = {mesh_descriptor}"
                                 f")"
                             )
-                            weaponalternatives_obj.v.add(new_entry)
+                            weaponalternatives_obj.v.insert(row_index, new_entry)
         
         # AllWeaponSubDepiction_
         weaponsubdepictions_obj = source_path.by_namespace(f"AllWeaponSubDepiction_{donor_name}").copy()
         weaponsubdepictions_obj.namespace = f"AllWeaponSubDepiction_{unit_name}"
         weaponsubdepictions_obj.v.by_member("Alternatives").v = f"AllWeaponAlternatives_{unit_name}"
         operators = weaponsubdepictions_obj.v.by_member("Operators")
-        f_effect_changes = edits.get("WeaponDescriptor", {}).get("equipmentchanges", {}).get("fire_effect", [])
-        if f_effect_changes:
-            for operator in operators.v:
-                fire_effect_val = operator.v.by_m("FireEffectTag")
-                for old_fire_effect, new_fire_effect in f_effect_changes:
-                    for fire_effect in fire_effect_val.v:
-                        fire_effect = strip_quotes(fire_effect.v)
-                        if old_fire_effect == fire_effect.replace("FireEffect_", ""):
-                            operator.v.by_m("FireEffectTag").v = "['" + f"FireEffect_{new_fire_effect}" + "']"
-                            logger.debug(f"Replaced fire effect {old_fire_effect} with {new_fire_effect}")
+        weapon_replacements = edits.get("WeaponDescriptor", {}).get("equipmentchanges", {}).get("replace", [])
+        for replacement in weapon_replacements:
+            # tuples with 4 values: old_ammo, new_ammo, old_fire_effect, new_fire_effect
+            if len(replacement) == 4:
+                old_fire_effect = replacement[2]
+                new_fire_effect = replacement[3]
+                for operator in operators.v:
+                    fire_effect_val = operator.v.by_m("FireEffectTag")
+                    # access with [0] because Eugen made it a list, but its only ever 1 value.
+                    fire_effect = fire_effect_val.v[0]
+                    current_fire_effect = strip_quotes(fire_effect.v).replace("FireEffect_", "")
+                    if current_fire_effect == old_fire_effect:
+                        operator.v.by_m("FireEffectTag").v = "['" + f"FireEffect_{new_fire_effect}" + "']"
+                        logger.debug(f"Replaced fire effect {old_fire_effect} with {new_fire_effect}")
         if depiction_key in NEW_DEPICTIONS:
             infantry_depiction_edits = NEW_DEPICTIONS[depiction_key].get("GeneratedDepictionInfantry_ndf", {})
             if not infantry_depiction_edits:
                 continue
+            # prevent variable shadowing from weapon_replacements loop
+            if 'operator' in locals():
+                del operator
             for (namespace, obj_type), depiction_edits in infantry_depiction_edits.items():
                 if namespace is None:
                     continue
@@ -94,6 +103,7 @@ def create_infantry_depictions(source_path: Any, game_db: Any) -> None:
                         if edit_type == "edit":
                             for member, value in edit_list:
                                 if member == "FireEffectTag":
+                                    operator = operators.v[operator_index]
                                     operator.v.by_m(member).v = "['" + f"FireEffect_{value}" + "']"
                         elif edit_type == "remove":
                             rows_to_remove.append(operator_index)
@@ -110,7 +120,7 @@ def create_infantry_depictions(source_path: Any, game_db: Any) -> None:
                                 f'    WeaponShootDataPropertyName = {shoot_data_property}'
                                 f')'
                             )
-                            operators.v.add(new_entry)
+                            operators.v.insert(operator_index, new_entry)
                     for row_index in reversed(rows_to_remove):
                         operators.v.remove(row_index)
                                     
@@ -306,7 +316,11 @@ def create_showroom_depictions(source_path: Any) -> None:
                             continue
 
             if not isinstance(module.v, ndf.model.Object):
-                continue
+                if module.v == "$/GFX/Weapon/WeaponDescriptor_" + donor_name:
+                    modules_list.v.replace(module, f"$/GFX/Weapon/WeaponDescriptor_{edits['NewName']}")
+                    continue
+                else:
+                    continue
                 
             module_type = module.v.type
             
@@ -332,9 +346,9 @@ def create_showroom_depictions(source_path: Any) -> None:
                 mimetic.by_member("DescriptorId").v = f"GUID:{{{generate_guid()}}}"  # noqa
                 mimetic.by_member("MimeticName").v = f"'{unit_name}'"  # noqa
                 
-            elif module_type == "TInfantrySquadWeaponAssignmentModuleDescriptor":
-                if "WeaponAssignment" in edits:
-                    module.v.by_member("InitialSoldiersToTurretIndexMap").v = f"MAP {str(edits['WeaponAssignment'])}"
+            # elif module_type == "TInfantrySquadWeaponAssignmentModuleDescriptor":
+            #     if "WeaponAssignment" in edits:
+            #         module.v.by_member("InitialSoldiersToTurretIndexMap").v = f"MAP {str(edits['WeaponAssignment'])}"
                     
             elif module_type == "TCameraShowroomModuleDescriptor":
                 if edits.get("is_infantry", False):

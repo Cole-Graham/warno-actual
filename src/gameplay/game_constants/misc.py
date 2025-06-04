@@ -73,8 +73,6 @@ def edit_ravitaillement(source_path) -> None:
     """Edit supply values in Ravitaillement.ndf."""
     logger.info("Editing Ravitaillement.ndf")
     
-    source_path.by_n("SpecificDefaultSupplyRangeGRU").v = "450" # vanilla = 442
-    
     # Edit standard supply
     standard_supply_descr = source_path.by_n("StandardSupply")
     # standard_supply_descr.v.by_m("FuelSupplyCostBySecond").v = "0.5"

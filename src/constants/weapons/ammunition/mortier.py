@@ -256,7 +256,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "TempsDeVisee": 12,
-                "TempsEntreDeuxSalves": 20.0,
+                "TimeBetweenTwoSalvos": 20.0,
             },
         },
     },
@@ -267,7 +267,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "PhysicalDamages": 3.6,
                 "SuppressDamages": 265,
                 "TempsDeVisee": 12,
-                "TempsEntreDeuxSalves": 20.0,
+                "TimeBetweenTwoSalvos": 20.0,
                 "RadiusSplashPhysicalDamagesGRU": 120,
                 "RadiusSplashSuppressDamagesGRU": 160,
                 "SupplyCost": 90,
@@ -279,7 +279,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "TempsDeVisee": 12,
-                "TempsEntreDeuxSalves": 20.0,
+                "TimeBetweenTwoSalvos": 20.0,
             },
         },
     },
@@ -292,7 +292,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "RadiusSplashPhysicalDamagesGRU": 120,
                 "RadiusSplashSuppressDamagesGRU": 160,
                 "TempsDeVisee": 12,
-                "TempsEntreDeuxSalves": 20.0,
+                "TimeBetweenTwoSalvos": 20.0,
                 "SupplyCost": 90,
             },
         },

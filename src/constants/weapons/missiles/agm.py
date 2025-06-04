@@ -253,7 +253,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "TraitsToken": ['MOTION', 'semiAuto', 'HE'],
-                "TempsEntreDeuxSalves": 5,
+                "TimeBetweenTwoSalvos": 5,
             },
         },
         # "BaseSupplyCost": 140,

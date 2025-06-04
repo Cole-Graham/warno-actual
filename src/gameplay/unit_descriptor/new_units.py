@@ -178,9 +178,9 @@ def modify_new_unit(unit_row: Any, edits: Dict[str, Any]) -> None:
                 if "Dangerousness" in edits:
                     descr_row.v.by_member("Dangerousness").v = str(edits["Dangerousness"])
                     
-            elif descr_type == "TInfantrySquadWeaponAssignmentModuleDescriptor":
-                if "WeaponAssignment" in edits:
-                    descr_row.v.by_member("InitialSoldiersToTurretIndexMap").v = f"MAP {str(edits['WeaponAssignment'])}"
+            # elif descr_type == "TInfantrySquadWeaponAssignmentModuleDescriptor":
+            #     if "WeaponAssignment" in edits:
+            #         descr_row.v.by_member("InitialSoldiersToTurretIndexMap").v = f"MAP {str(edits['WeaponAssignment'])}"
                     
             elif descr_type == "TTransportableModuleDescriptor":
                 if "TransportedTexture" in edits:

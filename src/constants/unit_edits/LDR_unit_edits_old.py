@@ -569,7 +569,6 @@ ldr_unit_edits = {
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "SpecialtiesList": {
             "overwrite_all": [
-                'Armor_heavy',
                 '_leader',
                 '_smoke_launcher',
             ],
@@ -607,8 +606,7 @@ ldr_unit_edits = {
         "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "SpecialtiesList": {
-            "overwrite_all": [
-                'Armor_heavy',
+            "overwrite_all": [              
                 '_leader',
                 '_smoke_launcher',
             ],
@@ -643,8 +641,7 @@ ldr_unit_edits = {
         "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "SpecialtiesList": {
-            "overwrite_all": [
-                'Armor_heavy',
+            "overwrite_all": [                
                 '_leader',
                 '_smoke_launcher',
             ],
@@ -674,7 +671,6 @@ ldr_unit_edits = {
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "SpecialtiesList": {
             "overwrite_all": [
-                'Armor_heavy',
                 '_leader',
                 '_smoke_launcher',
             ],
@@ -1188,7 +1184,6 @@ ldr_unit_edits = {
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "SpecialtiesList": {
             "overwrite_all": [
-                'Armor_heavy',
                 'leader_sov',
                 '_smoke_launcher',
             ],
@@ -1427,7 +1422,6 @@ ldr_unit_edits = {
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "SpecialtiesList": {
             "overwrite_all": [
-                'Armor_heavy',
                 'leader_sov',
                 '_resolute',
                 '_smoke_launcher',
@@ -1712,7 +1706,6 @@ ldr_unit_edits = {
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "SpecialtiesList": {
             "overwrite_all": [
-                'Armor_heavy',
                 '_leader',
                 '_smoke_launcher',
             ],

@@ -207,20 +207,22 @@ USA_NEW_UNITS = {
         ],
         "WeaponDescriptor": {
             "Salves": {
+                "add": [(1, 10), ],
                 "FM_M16": 7,
                 "MMG_inf_M240B_7_62mm": 30,
                 "M47_DRAGON_II": 2,
-                "add": [(2, 10), ],
             },
             "equipmentchanges": {
-                "add": [(2, "Sniper_M21")],
-                "replace": [("MMG_inf_M240B_7_62mm", "M47_DRAGON_II")],
+                "add": [(1, "Sniper_M21", "Sniper_M14")],
+                "update": [2],
+                "replace": [
+                    ("MMG_inf_M240B_7_62mm", "M47_DRAGON_II", "MMG_inf_M240B_7_62mm", "M47_DRAGON_II"),
+                ],
                 "quantity": {
                     "FM_M16": 1,
                     "Sniper_M21": 1,
                     "M47_DRAGON_II": 1,
                 },
-                "fire_effect": [("MMG_inf_M240B_7_62mm", "M47_DRAGON_II")],
             },
         },
         "TransportedSoldier": "Cav_Scout_Dragon_M3A1_US",
@@ -295,20 +297,22 @@ USA_NEW_UNITS = {
         ],
         "WeaponDescriptor": {
             "Salves": {
+                "add": [(1, 10), ],
                 "FM_M16": 7,
                 "MMG_inf_M240B_7_62mm": 30,
                 "M47_DRAGON_II": 2,
-                "add": [(2, 10), ],
             },
             "equipmentchanges": {
-                "add": [(2, "Sniper_M21")],
-                "replace": [("MMG_inf_M240B_7_62mm", "M47_DRAGON_II")],
+                "add": [(1, "Sniper_M21", "Sniper_M14")],
+                "update": [2],
+                "replace": [
+                    ("MMG_inf_M240B_7_62mm", "M47_DRAGON_II", "MMG_inf_M240B_7_62mm", "M47_DRAGON_II"),
+                ],
                 "quantity": {
                     "FM_M16": 1,
                     "Sniper_M21": 1,
                     "M47_DRAGON_II": 1,
                 },
-                "fire_effect": [("MMG_inf_M240B_7_62mm", "M47_DRAGON_II")],
             },
         },
         "TransportedSoldier": "Cav_Scout_Dragon_M3A2_US",
@@ -403,26 +407,19 @@ USA_NEW_UNITS = {
         "strength": 6,
         "Stealth": 2.0,
         # "Dangerousness": 12,
-        "WeaponAssignment": [
-            (0, [0, ]),
-            (1, [0, ]),
-            (2, [0, ]),
-            (3, [0, ]),
-            (4, [0, ]),
-            (5, [1, 2]),
-        ],
         "WeaponDescriptor": {
             "Salves": {
+                "add": [(1, 10), ],
                 "FM_M16": 7,
                 "MANPAD_FIM92": 8,
-                "add": [(2, 10), ],
             },
             "equipmentchanges": {
-                "HAGRU_MANPADS": [(1, 0, "MANPAD_FIM92_HAGRU")], # turret_index, donor_weapon_index, ammo_name
-                "add": [(2, "Sniper_M21")],
+                "HAGRU_MANPADS": [(2, 0, "MANPAD_FIM92_HAGRU")], # turret_index, donor_weapon_index, ammo_name
+                "add": [(1, "Sniper_M21", "Sniper_M14")],
+                "update": [2],
                 "replace": [("FM_M16_noreflex", "FM_M16_x5")],
                 "quantity": {
-                    "FM_M16": 5,
+                    "FM_M16": 4,
                     "Sniper_M21": 1,
                 },
             },

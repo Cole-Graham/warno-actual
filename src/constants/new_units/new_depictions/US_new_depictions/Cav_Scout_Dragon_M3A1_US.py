@@ -9,16 +9,16 @@ cav_scout_dragon_m3a1_us: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
     "GeneratedDepictionInfantry_ndf": {
         ("AllWeaponAlternatives_Cav_Scout_Dragon_M3A1_US", None): { # (namespace, object type)
             # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "add", "remove")
-            1: ("edit", [("MeshDescriptor", "M47_DRAGON_II")]), # (selector_id or mesh)
-            2: ("edit", [("MeshDescriptor", "M14_Sniper")]),
+            1: ("edit", [("MeshDescriptor", "M14_Sniper")]), # (selector_id or mesh)
+            2: ("edit", [("MeshDescriptor", "M47_DRAGON_II")]),
             3: ("edit", [("ReferenceMeshForSkeleton", "M47_DRAGON_II")]),
         },
         
         ("AllWeaponSubDepiction_Cav_Scout_Dragon_M3A1_US", "TemplateAllSubWeaponDepiction"): {
             # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "add", "remove")
             "Operators": {
-                1: ("edit", [("FireEffectTag", "M47_DRAGON_II")]), # (selector_id or mesh)
-                2: ("edit", [("FireEffectTag", "Sniper_M14")]),
+                1: ("edit", [("FireEffectTag", "Sniper_M14")]), # (selector_id or mesh)
+                2: ("edit", [("FireEffectTag", "M47_DRAGON_II")]),
             }
         },
         
@@ -41,7 +41,7 @@ cav_scout_dragon_m3a1_us: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
         ("TacticDepiction_Cav_Scout_Dragon_M3A1_US_Soldier", "TemplateInfantryDepictionFactoryTactic"): {
             "Operators": {
                 0: ("remove", None),
-                1: ("edit", [("bazooka", "MeshAlternative_2")]),
+                1: ("edit", [("bazooka", "MeshAlternative_3")]),
             }
         },
         

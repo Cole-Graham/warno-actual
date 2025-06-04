@@ -14,8 +14,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Moving": 55,
             },
             "parent_membr": {
-                "TempsEntreDeuxTirs": 2.5,
-                "TempsEntreDeuxFx": 2.5,
+                "TimeBetweenTwoShots": 2.5,
+                "TimeBetweenTwoFx": 2.5,
                 "PorteeMaximaleTBAGRU": 2800,
                 "PorteeMaximaleHAGRU": 2625,
                 "PhysicalDamages": 5.0,
@@ -34,8 +34,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("SAM_Strela10", "SAM", None, False): { # 213
         "Ammunition": {
             "parent_membr": {
-                "TempsEntreDeuxTirs": 2.5,
-                "TempsEntreDeuxFx": 2.5,
+                "TimeBetweenTwoShots": 2.5,
+                "TimeBetweenTwoFx": 2.5,
                 "PorteeMaximaleTBAGRU": 2625,
                 "PorteeMaximaleHAGRU": 2450,
                 "TempsDeVisee": 1.2,
@@ -60,10 +60,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Moving": 40,
             },
             "parent_membr": {
-                "TempsEntreDeuxTirs": 2.5,
+                "TimeBetweenTwoShots": 2.5,
                 "PorteeMaximaleTBAGRU": 2450,
                 "PorteeMaximaleHAGRU": 1750,
-                "TempsEntreDeuxSalves": 25.0,
+                "TimeBetweenTwoSalvos": 25.0,
                 "TempsDeVisee": 1.2,
             }
         },
@@ -88,7 +88,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 2450,
                 "PorteeMaximaleHAGRU": 1750,
-                "TempsEntreDeuxSalves": 7.0,
+                "TimeBetweenTwoSalvos": 7.0,
                 "TempsDeVisee": 3.5,
             }
         },
@@ -107,8 +107,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 50,
             },
             "parent_membr": {
-                "TempsEntreDeuxTirs": 3.0,
-                "TempsEntreDeuxFx": 3.0,
+                "TimeBetweenTwoShots": 3.0,
+                "TimeBetweenTwoFx": 3.0,
                 "PhysicalDamages": 5.0,
                 "PorteeMaximaleTBAGRU": 2800,
                 "PorteeMaximaleHAGRU": 3500,
@@ -131,8 +131,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 55,
             },
             "parent_membr": {
-                "TempsEntreDeuxTirs": 3.0,
-                "TempsEntreDeuxFx": 3.0,
+                "TimeBetweenTwoShots": 3.0,
+                "TimeBetweenTwoFx": 3.0,
                 "PhysicalDamages": 5.0,
                 "PorteeMaximaleTBAGRU": 3150,
                 "PorteeMaximaleHAGRU": 3850,
@@ -154,8 +154,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 60,
             },
             "parent_membr": {
-                "TempsEntreDeuxTirs": 2.5,
-                "TempsEntreDeuxFx": 2.5,
+                "TimeBetweenTwoShots": 2.5,
+                "TimeBetweenTwoFx": 2.5,
                 "PorteeMaximaleTBAGRU": 3150,
                 "PorteeMaximaleHAGRU": 2800,
                 "TempsDeVisee": 1.2,
@@ -213,8 +213,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 3325,
-                "TempsEntreDeuxTirs": 3.0,
-                "TempsEntreDeuxFx": 3.0,
+                "TimeBetweenTwoShots": 3.0,
+                "TimeBetweenTwoFx": 3.0,
             },
         },
         # "BaseSupplyCost": 150,
@@ -240,7 +240,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "PorteeMaximaleHAGRU": 1925,
-                "TempsEntreDeuxSalves": 7.0,
+                "TimeBetweenTwoSalvos": 7.0,
                 "TempsDeVisee": 1.2,
                 "SupplyCost": 35,
             },
@@ -254,7 +254,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "PorteeMaximaleHAGRU": 1925,
-                "TempsEntreDeuxSalves": 7.0,
+                "TimeBetweenTwoSalvos": 7.0,
                 "TempsDeVisee": 3.5,
                 "SupplyCost": 35,
             },
@@ -370,8 +370,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 3325,
                 "PorteeMaximaleHAGRU": 3675,
-                "TempsEntreDeuxTirs": 2.5,
-                "TempsEntreDeuxFx": 2.5,
+                "TimeBetweenTwoShots": 2.5,
+                "TimeBetweenTwoFx": 2.5,
                 "TempsDeVisee": 1.2,
             }
         },
@@ -390,8 +390,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "PorteeMaximaleTBAGRU": 2800,
                 "PorteeMaximaleHAGRU": 3500,
                 "TempsDeVisee": 1.2,
-                "TempsEntreDeuxTirs": 2.5,
-                "TempsEntreDeuxFx": 2.5,
+                "TimeBetweenTwoShots": 2.5,
+                "TimeBetweenTwoFx": 2.5,
             },
         },
         "BaseSupplyCost": 60,
@@ -409,8 +409,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "PorteeMaximaleTBAGRU": 3150,
                 "PorteeMaximaleHAGRU": 4375,
                 "TempsDeVisee": 1.2,
-                "TempsEntreDeuxTirs": 2.5,
-                "TempsEntreDeuxFx": 2.5,
+                "TimeBetweenTwoShots": 2.5,
+                "TimeBetweenTwoFx": 2.5,
             },
         },
         "BaseSupplyCost": 80,
@@ -427,8 +427,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 2800,
                 "PorteeMaximaleHAGRU": 5250,
-                "TempsEntreDeuxTirs": 3.0,
-                "TempsEntreDeuxFx": 3.0,
+                "TimeBetweenTwoShots": 3.0,
+                "TimeBetweenTwoFx": 3.0,
             }
         },
         # "BaseSupplyCost": 130,
@@ -446,8 +446,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 3150,
                 "PorteeMaximaleHAGRU": 2800,
-                "TempsEntreDeuxTirs": 3.0,
-                "TempsEntreDeuxFx": 3.0,
+                "TimeBetweenTwoShots": 3.0,
+                "TimeBetweenTwoFx": 3.0,
                 "TempsDeVisee": 1.2,
             }
         },
@@ -467,7 +467,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "PorteeMaximaleHAGRU": 1925,
-                "TempsEntreDeuxSalves": 7.0,
+                "TimeBetweenTwoSalvos": 7.0,
                 "TempsDeVisee": 1.2,
                 "SupplyCost": 35,
             }
@@ -481,7 +481,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "PorteeMaximaleHAGRU": 1925,
-                "TempsEntreDeuxSalves": 7.0,
+                "TimeBetweenTwoSalvos": 7.0,
                 "TempsDeVisee": 3.5,
                 "SupplyCost": 35,
 
@@ -497,7 +497,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 2450,
                 "PorteeMaximaleHAGRU": 1750,
-                "TempsEntreDeuxSalves": 14.0,
+                "TimeBetweenTwoSalvos": 14.0,
                 "TempsDeVisee": 1.2,
                 "SupplyCost": 25,
             }
@@ -512,7 +512,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 2450,
                 "PorteeMaximaleHAGRU": 1750,
-                "TempsEntreDeuxSalves": 14.0,
+                "TimeBetweenTwoSalvos": 14.0,
                 "TempsDeVisee": 3.5,
                 "SupplyCost": 25,
             }
@@ -527,7 +527,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 2450,
                 "PorteeMaximaleHAGRU": 1750,
-                "TempsEntreDeuxSalves": 7.0,
+                "TimeBetweenTwoSalvos": 7.0,
                 "TempsDeVisee": 1.2,
             }
         },
@@ -553,7 +553,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 2450,
                 "PorteeMaximaleHAGRU": 1750,
-                "TempsEntreDeuxSalves": 7.0,
+                "TimeBetweenTwoSalvos": 7.0,
                 "TempsDeVisee": 3.0,
             }
         },
@@ -582,7 +582,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 2625,
                 "PorteeMaximaleHAGRU": 1925,
-                "TempsEntreDeuxSalves": 7.0,
+                "TimeBetweenTwoSalvos": 7.0,
                 "TempsDeVisee": 1.2,
                 "SupplyCost": 25,
             }
@@ -600,7 +600,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 2625,
                 "PorteeMaximaleHAGRU": 1925,
-                "TempsEntreDeuxSalves": 7.0,
+                "TimeBetweenTwoSalvos": 7.0,
                 "TempsDeVisee": 3.5,
                 "SupplyCost": 25,
             }
@@ -615,7 +615,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 2800,
                 "PorteeMaximaleHAGRU": 2100,
-                "TempsEntreDeuxSalves": 7.0,
+                "TimeBetweenTwoSalvos": 7.0,
                 "TempsDeVisee": 1.2,
                 "SupplyCost": 35,
             }
@@ -630,7 +630,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 2800,
                 "PorteeMaximaleHAGRU": 2100,
-                "TempsEntreDeuxSalves": 7.0,
+                "TimeBetweenTwoSalvos": 7.0,
                 "TempsDeVisee": 3.5,
                 "SupplyCost": 35,
             }
@@ -650,7 +650,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 2625,
                 "PorteeMaximaleHAGRU": 1925,
-                "TempsEntreDeuxSalves": 7.0,
+                "TimeBetweenTwoSalvos": 7.0,
                 "TempsDeVisee": 1.2,
                 "SupplyCost": 35,
             }
@@ -670,7 +670,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 2625,
                 "PorteeMaximaleHAGRU": 1925,
-                "TempsEntreDeuxSalves": 7.0,
+                "TimeBetweenTwoSalvos": 7.0,
                 "TempsDeVisee": 3.5,
                 "SupplyCost": 35,
             }
@@ -688,7 +688,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 2100,
                 "PorteeMaximaleHAGRU": 1750,
-                "TempsEntreDeuxSalves": 7.0,
+                "TimeBetweenTwoSalvos": 7.0,
                 "TempsDeVisee": 1.2,
                 "SupplyCost": 20,
             }
@@ -706,7 +706,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 2100,
                 "PorteeMaximaleHAGRU": 1750,
-                "TempsEntreDeuxSalves": 7.0,
+                "TimeBetweenTwoSalvos": 7.0,
                 "TempsDeVisee": 3.5,
                 "SupplyCost": 20,
             }
@@ -719,11 +719,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 50,
             },
             "parent_membr": {
-                "TempsEntreDeuxTirs": 1.2,
-                "TempsEntreDeuxFx": 1.2,
+                "TimeBetweenTwoShots": 1.2,
+                "TimeBetweenTwoFx": 1.2,
                 "PorteeMaximaleTBAGRU": 2625,
                 "PorteeMaximaleHAGRU": 1925,
-                "TempsEntreDeuxSalves": 12.0,
+                "TimeBetweenTwoSalvos": 12.0,
                 "TempsDeVisee": 1.2,
             }
         },
@@ -745,11 +745,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 50,
             },
             "parent_membr": {
-                "TempsEntreDeuxTirs": 1.2,
-                "TempsEntreDeuxFx": 1.2,
+                "TimeBetweenTwoShots": 1.2,
+                "TimeBetweenTwoFx": 1.2,
                 "PorteeMaximaleTBAGRU": 2625,
                 "PorteeMaximaleHAGRU": 1925,
-                "TempsEntreDeuxSalves": 12.0,
+                "TimeBetweenTwoSalvos": 12.0,
                 "TempsDeVisee": 3.0,
             }
         },
@@ -770,7 +770,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 2625,
                 "PorteeMaximaleHAGRU": 1750,
-                "TempsEntreDeuxSalves": 14.0,
+                "TimeBetweenTwoSalvos": 14.0,
                 "TempsDeVisee": 1.2,
                 "SupplyCost": 25,
             }
@@ -785,7 +785,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PorteeMaximaleTBAGRU": 2625,
                 "PorteeMaximaleHAGRU": 1750,
-                "TempsEntreDeuxSalves": 14.0,
+                "TimeBetweenTwoSalvos": 14.0,
                 "TempsDeVisee": 3.5,
                 "SupplyCost": 25,
             }

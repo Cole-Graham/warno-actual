@@ -13,7 +13,7 @@ logger = setup_logger(__name__)
 
 
 def create_new_weapons(source_path: Any, game_db: Dict[str, Any]) -> None:
-    """Create weapon descriptors for new units."""
+    """Create weapon descriptors for new units in WeaponDescriptor.ndf"""
     logger.info("Creating weapon descriptors for new units")
     
     for donor, edits in NEW_UNITS.items():
@@ -43,21 +43,32 @@ def create_new_weapons(source_path: Any, game_db: Dict[str, Any]) -> None:
             if "equipmentchanges" in weapon_edits:
                 changes = weapon_edits["equipmentchanges"]
                 
+                # Handle replacements
+                if "replace" in changes:
+                    for replacement in changes["replace"]:
+                        if len(replacement) == 4:
+                            old_ammo, new_ammo, old_fire_effect, new_fire_effect = replacement
+                            _replace_weapon(source_path, changes, new_weap_row, old_ammo, new_ammo, 
+                                            old_fire_effect, new_fire_effect, game_db)
+                        else:
+                            old_ammo, new_ammo = replacement
+                            _replace_weapon(source_path, changes, new_weap_row, old_ammo, new_ammo,
+                                            None, None, game_db)
+                        
                 # Handle additions
                 if "add" in changes:
                     for ammo in changes["add"]:
                         _add_weapon(source_path, changes, new_weap_row, ammo, game_db)
+                
+                # Handle index adjustments for bumped weapons in turret and mounted weapon lists
+                if "update" in changes:
+                    _update_weapon(changes, new_weap_row)
                 
                 # Handle HAGRU MANPADS
                 if "HAGRU_MANPADS" in changes:
                     for (turret_index, donor_weapon_index, hagru_ammo) in changes["HAGRU_MANPADS"]:
                         _add_hagru_manpads(new_weap_row, turret_index, donor_weapon_index, hagru_ammo)
                 
-                # Handle replacements
-                if "replace" in changes:
-                    for old_ammo, new_ammo in changes["replace"]:
-                        _replace_weapon(source_path, changes, new_weap_row, old_ammo, new_ammo, game_db)
-                        
                 # Handle quantities
                 if "quantity" in changes:
                     for ammo, quantity in changes["quantity"].items():
@@ -94,8 +105,10 @@ def _add_weapon(
     weapon_db = game_db["weapons"]
     
     # Get turret index and weapon name from changes
+    # TODO: handle multiple weapon additions, currently hardcoded to access the first tuple '[0]'
     turret_index = changes["add"][0][0]  # First element's turret index
     weapon_name = changes["add"][0][1]   # First element's weapon name
+    fire_effect = changes["add"][0][2]   # First element's fire effect
     
     # Get unit strength from NEW_UNITS
     unit_name = new_weap_row.namespace.replace("WeaponDescriptor_", "")
@@ -145,6 +158,7 @@ def _add_weapon(
         # Update weapon indices and add strength to ammo path
         mounted_wpns = new_turret.v.by_m("MountedWeaponDescriptorList")
         for weapon in mounted_wpns.v:
+            weapon.v.by_m("EffectTag").v = f"'FireEffect_{fire_effect}'"
             weapon.v.by_m("SalvoStockIndex").v = str(turret_index)
             weapon.v.by_m("HandheldEquipmentKey").v = f"'MeshAlternative_{turret_index + 1}'"
             weapon.v.by_m("WeaponActiveAndCanShootPropertyName").v = f"'WeaponActiveAndCanShoot_{turret_index + 1}'"
@@ -170,13 +184,14 @@ def _add_weapon(
             weapon.v.by_m("NbWeapons").v = str(quantity)
         
         # Update turret bone index
+        # TODO: turret bone might not always be the same as turret index
         new_yul_bone = turret_index + 1
         new_turret.v.by_m("YulBoneOrdinal").v = str(new_yul_bone)
         
         # Add to target turret list
         turret_list = new_weap_row.v.by_member("TurretDescriptorList")
         turret_list.v.insert(turret_index, new_turret)
-        
+                
         logger.debug(f"Added turret with {weapon_name} at index {turret_index}")
         template_found = True
         break
@@ -184,6 +199,23 @@ def _add_weapon(
     if not template_found:
         logger.warning(f"Could not find template for weapon {weapon_name}")
 
+def _update_weapon(
+    changes: Dict[str, Any],
+    new_weap_row: Any,
+) -> None:
+    """Update index values for bumped weapons in turret and mounted weapon lists."""
+    updates = changes["update"]
+    turret_list = new_weap_row.v.by_member("TurretDescriptorList")
+    for turret_index in updates:
+        turret = turret_list.v[turret_index]
+        turret.v.by_m("YulBoneOrdinal").v = str(turret_index + 1)
+        mounted_weapons = turret.v.by_member("MountedWeaponDescriptorList")
+        for weapon in mounted_weapons.v:
+            weapon.v.by_m("SalvoStockIndex").v = str(turret_index)
+            weapon.v.by_m("HandheldEquipmentKey").v = f"'MeshAlternative_{turret_index + 1}'"
+            weapon.v.by_m("WeaponActiveAndCanShootPropertyName").v = f"'WeaponActiveAndCanShoot_{turret_index + 1}'"
+            weapon.v.by_m("WeaponIgnoredPropertyName").v = f"'WeaponIgnored_{turret_index + 1}'"
+            weapon.v.by_m("WeaponShootDataPropertyName").v = f"['WeaponShootData_0_{turret_index + 1}']"
 
 def _add_hagru_manpads(
     new_weap_row: Any,
@@ -206,6 +238,8 @@ def _replace_weapon(
     new_weap_row: Any,
     old_ammo: str,
     new_ammo: str,
+    old_fire_effect: str,
+    new_fire_effect: str,
     game_db: Dict[str, Any]
 ) -> None:
     """Replace a weapon with a new one."""
@@ -266,13 +300,11 @@ def _replace_weapon(
                 weapon_descr_row.v.by_m("Ammunition").v = new_ammo_path
                 logger.debug(f"Replaced weapon with {new_ammo} using ammo path {new_ammo_path}")
                 
-                # Handle fire effect changes
-                if "fire_effect" in changes:
+                if old_fire_effect and new_fire_effect:
                     fire_effect_val = strip_quotes(weapon_descr_row.v.by_m("EffectTag").v)
-                    for old_fire_effect, new_fire_effect in changes["fire_effect"]:
-                        if old_fire_effect == fire_effect_val.replace("FireEffect_", ""):
-                            weapon_descr_row.v.by_m("EffectTag").v = "'" + f"FireEffect_{new_fire_effect}" + "'"
-                            logger.debug(f"Replaced fire effect {old_fire_effect} with {new_fire_effect}")
+                    current_fire_effect = fire_effect_val.replace("FireEffect_", "")
+                    weapon_descr_row.v.by_m("EffectTag").v = f"'FireEffect_{new_fire_effect}'"
+                    logger.debug(f"Replaced fire effect {current_fire_effect} with {new_fire_effect}")
                 break
 
 
@@ -347,13 +379,8 @@ def _update_weapon_salvo(new_weap_row: Any, ammo: str, salvo: int, game_db: Dict
     if not unit_strength:
         logger.warning(f"No strength found for new unit {unit_name}")
         return
-    
-    if ammo == "add":
-        salves_list = new_weap_row.v.by_member("Salves").v
-        for addition in salvo:
-            index, salvo = addition[0], addition[1]
-            salves_list.insert(index, str(salvo))
-    else:
+
+    if ammo != "add":
         for descr_row in new_weap_row.v.by_member("TurretDescriptorList").v:
             if not is_valid_turret(descr_row.v):
                 continue
@@ -370,9 +397,16 @@ def _update_weapon_salvo(new_weap_row: Any, ammo: str, salvo: int, game_db: Dict
                 if current_base_ammo == ammo or (old_ammo and current_base_ammo == old_ammo):
                     salves_list = new_weap_row.v.by_member("Salves").v
                     if isinstance(salves_list, ndf.model.List):
-                        salves_list.replace(int(weapon_descr_row.v.by_member("SalvoStockIndex").v), str(salvo))
-                        logger.debug(f"Updated salvo for {ammo} to {salvo}")
+                        salvo_to_replace = int(weapon_descr_row.v.by_member("SalvoStockIndex").v)
+                        logger.debug(f"Updating salvo for {ammo} to {salvo} at index {salvo_to_replace}")
+                        salves_list.replace(salvo_to_replace, str(salvo))
                     break
+    else:
+        # handle additions first to prevent errors trying to update a salvo index out of range.
+        salves_list = new_weap_row.v.by_member("Salves").v
+        for addition in salvo:
+            index, salvo = addition[0], addition[1]
+            salves_list.insert(index, str(salvo))
 
 def _should_use_strength_variant(weapon_name: str, game_db: Dict[str, Any]) -> bool:
     """Check if a weapon should use strength variants based on its damage family.

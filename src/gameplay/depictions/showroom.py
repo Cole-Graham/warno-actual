@@ -36,15 +36,19 @@ def _apply_unit_edits(unit_descr: Any, edits: Dict) -> None:
     unit_name = unit_descr.namespace.removeprefix("Descriptor_ShowRoomUnit_")
     
     for module in modules_list:
-        if not isinstance(module.v, ndf.model.Object):
-            continue
+        if not isinstance( module.v, ndf.model.Object):
+            new_name = edits.get("NewName", None)
+            if new_name and module.startswith("$/GFX/Weapon/WeaponDescriptor_"):
+                modules_list.replace(module, f"$/GFX/Weapon/WeaponDescriptor_{new_name}")
+            else:
+                continue
             
         try:
             if module.v.type == "TInfantrySquadModuleDescriptor":
                 _update_squad_strength(module, edits, unit_name)
                     
-            elif module.v.type == "TInfantrySquadWeaponAssignmentModuleDescriptor":
-                _update_weapon_assignment(module, edits, unit_name)
+            # elif module.v.type == "TInfantrySquadWeaponAssignmentModuleDescriptor":
+            #     _update_weapon_assignment(module, edits, unit_name)
                 
         except Exception as e:
             logger.error(f"Failed to update module {module.v.type} for {unit_name}: {str(e)}")
@@ -60,13 +64,13 @@ def _update_squad_strength(module: Any, edits: Dict, unit_name: str) -> None:
             logger.error(f"Failed to update strength for {unit_name}: {str(e)}")
 
 
-def _update_weapon_assignment(module: Any, edits: Dict, unit_name: str) -> None:
-    """Update infantry weapon assignments."""
-    if "WeaponAssignment" not in edits:
-        return
+# def _update_weapon_assignment(module: Any, edits: Dict, unit_name: str) -> None:
+#     """Update infantry weapon assignments."""
+#     if "WeaponAssignment" not in edits:
+#         return
         
-    try:
-        module.v.by_m("InitialSoldiersToTurretIndexMap").v = f"MAP{edits['WeaponAssignment']}"
-        logger.info(f"Updated weapon assignment for {unit_name}")
-    except Exception as e:
-        logger.error(f"Failed to update weapon assignment for {unit_name}: {str(e)}")
+#     try:
+#         module.v.by_m("InitialSoldiersToTurretIndexMap").v = f"MAP{edits['WeaponAssignment']}"
+#         logger.info(f"Updated weapon assignment for {unit_name}")
+#     except Exception as e:
+#         logger.error(f"Failed to update weapon assignment for {unit_name}: {str(e)}")

@@ -346,8 +346,9 @@ SOV_NEW_UNITS = {
                 "quantity": {
                     "FM_AK_74": 6,
                 },
-                "replace": [("RocketInf_RPG27_105mm", "RocketInf_RPG7VL")],
-                "fire_effect": [("RocketInf_RPG27_105mm", "RocketInf_RPG7VL")],
+                "replace": [
+                    ("RocketInf_RPG27_105mm", "RocketInf_RPG7VL", "RocketInf_RPG27_105mm", "RocketInf_RPG7VL"),
+                ],
             },
         },
         "TransportedSoldier": "MotRifles_RPG7V_TTsko_SOV",

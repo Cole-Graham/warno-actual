@@ -23,8 +23,8 @@ def edit_gd_constantes(source_path) -> None:
         elif row.namespace == "WargameConstantes":
             edits: List[Tuple[str, str, Union[str, int], Union[str, None]]] = [
                 ("value", "ConquestPossibleScores", "[2000, 3000, 4000]", None),
-                ("map", "BaseIncome", 21, "CombatRule/Conquest"),
-                ("map", "TimeBeforeEarningCommandPoints", 6, "CombatRule/Conquest"),
+                ("map", "BaseIncome", 21, "ECombatRule/Conquest"),
+                ("map", "TimeBeforeEarningCommandPoints", 6, "ECombatRule/Conquest"),
                 ("value", "DefaultArgentInitial", 2000, None),
             ]
             

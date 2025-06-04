@@ -135,6 +135,21 @@ DIVISION_MATRICES = {
         '    (EDefaultFactories/Tanks, [2, 2, 2, 2, 2, 2, 2, 3]),'
         ']'
     ),
+    
+    "MatrixCostName_RDA_KdA_Bezirk_Erfurt_multi": ( #############################
+        'MatrixCostName_RDA_KdA_Bezirk_Erfurt_multi is MAP'
+        '['
+            '(EDefaultFactories/Art, [2, 2, 2, 4, 6, 6, 6]),'
+            '(EDefaultFactories/DCA, [2, 2, 3, 4, 5]),'
+            '(EDefaultFactories/Defense, []),'
+            '(EDefaultFactories/Helis, [2, 2, 3, 3, 4]),'
+            '(EDefaultFactories/Infantry, [2, 2, 2, 2, 2, 2, 2, 2, 2, 2]),'
+            '(EDefaultFactories/Logistic, [2, 2, 2, 2, 2, 2, 2, 2, 3, 3]),'
+            '(EDefaultFactories/Planes, [2, 2, 3, 4, 4, 5, 6]),'
+            '(EDefaultFactories/Recons, [2, 2, 3, 4, 4]),'
+            '(EDefaultFactories/Tanks, [2, 2, 3, 3, 3, 3]),'
+        ']'
+    ),
 
     "MatrixCostName_POL_20_Pancerna_multi": (
         'MatrixCostName_POL_20_Pancerna_multi is MAP'

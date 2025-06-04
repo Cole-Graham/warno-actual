@@ -1556,7 +1556,7 @@ sov_unit_edits = {
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "SpecialtiesList": {
             "overwrite_all": [
-                'Armor_heavy',
+                
                 'leader_sov',
                 '_smoke_launcher',
                 '_era',

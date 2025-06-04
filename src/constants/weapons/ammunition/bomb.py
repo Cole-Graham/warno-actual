@@ -79,7 +79,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("Bomb_Mk77_340kg_Napalm_salvolength8", "napalm_bomb", "Bomb_Mk77_340kg_Napalm_salvolength4", True): { # 71
+    ("Bomb_Mk77_340kg_Napalm_salvolength8", "napalm_bomb", None, False): {
         "Ammunition": {
             "parent_membr": {
                 "NbTirParSalves": 8,

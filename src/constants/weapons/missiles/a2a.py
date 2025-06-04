@@ -10,12 +10,12 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_Skyflash", "A2A", None, False): {
         "Ammunition": {
             "parent_membr": {
-                "TempsEntreDeuxTirs": 1.5,
-                "TempsEntreDeuxFx": 1.5,
+                "TimeBetweenTwoShots": 1.5,
+                "TimeBetweenTwoFx": 1.5,
                 "PorteeMaximaleHAGRU": 8400,
                 "MaximalSpeedGRU": 4946,
                 "MaxAccelerationGRU": 2826,
-                "TempsEntreDeuxSalves": 1.5,
+                "TimeBetweenTwoSalvos": 1.5,
                 "SupplyCost": 50,
             },
         },
@@ -44,12 +44,12 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_R40TD1", "A2A", None, False): { # 24
         "Ammunition": {
             "parent_membr": {
-                "TempsEntreDeuxTirs": 1.5,
-                "TempsEntreDeuxFx": 1.5,
+                "TimeBetweenTwoShots": 1.5,
+                "TimeBetweenTwoFx": 1.5,
                 "PorteeMaximaleHAGRU": 8400,
                 "MaximalSpeedGRU": 4946,
                 "MaxAccelerationGRU": 2826,
-                "TempsEntreDeuxSalves": 1.5,
+                "TimeBetweenTwoSalvos": 1.5,
                 "SupplyCost": 60,
             },
         },
@@ -64,8 +64,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PorteeMaximaleHAGRU": 13300,
                 "MaximalSpeedGRU": 6600,
-                "TempsEntreDeuxTirs": 1.0,
-                "TempsEntreDeuxSalves": 1.4,
+                "TimeBetweenTwoShots": 1.0,
+                "TimeBetweenTwoSalvos": 1.4,
                 "TempsDeVisee": 1.0,
                 "NbTirParSalves": 1,
                 # "SupplyCost": 140,
@@ -80,20 +80,20 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_R33_Vympel", "A2A", None, False): { # 19
         "Ammunition": {
             "hit_roll": {
-                "Idling": 30,
-                "Moving": 30,
+                "Idling": 40,
+                "Moving": 40,
             },
             "parent_membr": {
                 "add": [34, "IsFireAndForget = True"],
                 "TraitsToken": ['MOTION', 'F&F'],
                 "PorteeMaximaleHAGRU": 13300,
-                "PhysicalDamages": 10.0,
+                "PhysicalDamages": 9.0,
                 "TirReflexe": False,
                 "InterdireTirReflexe": False,
                 "MaximalSpeedGRU": 6600,
-                "TempsEntreDeuxTirs": 1.0,
+                "TimeBetweenTwoShots": 1.0,
                 "TempsDeVisee": 1.0,
-                "TempsEntreDeuxSalves": 1.4,
+                "TimeBetweenTwoSalvos": 1.4,
                 "NbTirParSalves": 1,
                 # "SupplyCost": 140,
                 "SupplyCost": 80,
@@ -108,12 +108,12 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_R27R_Vympel", "A2A", None, False): { # 18
         "Ammunition": {
             "parent_membr": {
-                "TempsEntreDeuxTirs": 1.5,
-                "TempsEntreDeuxFx": 1.5,
+                "TimeBetweenTwoShots": 1.5,
+                "TimeBetweenTwoFx": 1.5,
                 "PorteeMaximaleHAGRU": 9275,
                 "MaximalSpeedGRU": 4946,
                 "MaxAccelerationGRU": 2826,
-                "TempsEntreDeuxSalves": 1.5,
+                "TimeBetweenTwoSalvos": 1.5,
                 "SupplyCost": 50,
             },
         },
@@ -129,12 +129,12 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Moving": 40,
             },
             "parent_membr": {
-                "TempsEntreDeuxTirs": 1.5,
-                "TempsEntreDeuxFx": 1.5,
+                "TimeBetweenTwoShots": 1.5,
+                "TimeBetweenTwoFx": 1.5,
                 "PorteeMaximaleHAGRU": 8400,
                 "MaximalSpeedGRU": 4946,
                 "MaxAccelerationGRU": 2826,
-                "TempsEntreDeuxSalves": 1.5,
+                "TimeBetweenTwoSalvos": 1.5,
                 "SupplyCost": 50,
             },
         },
@@ -147,12 +147,12 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_R24MR_Vympel", "A2A", None, False): { # 15
         "Ammunition": {
             "parent_membr": {
-                "TempsEntreDeuxTirs": 1.5,
-                "TempsEntreDeuxFx": 1.5,
+                "TimeBetweenTwoShots": 1.5,
+                "TimeBetweenTwoFx": 1.5,
                 "PorteeMaximaleHAGRU": 8400,
                 "MaximalSpeedGRU": 4946,
                 "MaxAccelerationGRU": 2826,
-                "TempsEntreDeuxSalves": 1.5,
+                "TimeBetweenTwoSalvos": 1.5,
                 "SupplyCost": 50,
             },
         },
@@ -189,12 +189,12 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_AIM7M_Sparrow", "A2A", None, False): { # 4
         "Ammunition": {
             "parent_membr": {
-                "TempsEntreDeuxTirs": 1.5,
-                "TempsEntreDeuxFx": 1.5,
+                "TimeBetweenTwoShots": 1.5,
+                "TimeBetweenTwoFx": 1.5,
                 "PorteeMaximaleHAGRU": 8400,
                 "MaximalSpeedGRU": 4946,
                 "MaxAccelerationGRU": 2826,
-                "TempsEntreDeuxSalves": 1.5,
+                "TimeBetweenTwoSalvos": 1.5,
                 "SupplyCost": 50,
             },
         },
@@ -207,10 +207,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_AIM120A_AMRAAM", "A2A", None, False): { # 1
         "Ammunition": {
             "parent_membr": {
-                "TempsEntreDeuxTirs": 1.5,
-                "TempsEntreDeuxFx": 1.5,
+                "TimeBetweenTwoShots": 1.5,
+                "TimeBetweenTwoFx": 1.5,
                 "PorteeMaximaleHAGRU": 8400,
-                "TempsEntreDeuxSalves": 1.5,
+                "TimeBetweenTwoSalvos": 1.5,
                 "SupplyCost": 60,
             },
         },
@@ -219,10 +219,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_Matra_R530", "A2A", None, False): {
         "Ammunition": {
             "parent_membr": {
-                "TempsEntreDeuxTirs": 1.5,
-                "TempsEntreDeuxFx": 1.5,
+                "TimeBetweenTwoShots": 1.5,
+                "TimeBetweenTwoFx": 1.5,
                 "PorteeMaximaleHAGRU": 6300,
-                "TempsEntreDeuxSalves": 1.5,
+                "TimeBetweenTwoSalvos": 1.5,
                 "SupplyCost": 40,
             },
         },
@@ -231,10 +231,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_Matra_Super_530F", "A2A", None, False): {
         "Ammunition": {
             "parent_membr": {
-                "TempsEntreDeuxTirs": 1.5,
-                "TempsEntreDeuxFx": 1.5,
+                "TimeBetweenTwoShots": 1.5,
+                "TimeBetweenTwoFx": 1.5,
                 "PorteeMaximaleHAGRU": 6825,
-                "TempsEntreDeuxSalves": 1.5,
+                "TimeBetweenTwoSalvos": 1.5,
                 "SupplyCost": 50,
             },
         },
@@ -243,10 +243,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_Matra_Super_530D", "A2A", None, False): {
         "Ammunition": {
             "parent_membr": {
-                "TempsEntreDeuxTirs": 1.5,
-                "TempsEntreDeuxFx": 1.5,
+                "TimeBetweenTwoShots": 1.5,
+                "TimeBetweenTwoFx": 1.5,
                 "PorteeMaximaleHAGRU": 7700,
-                "TempsEntreDeuxSalves": 1.5,
+                "TimeBetweenTwoSalvos": 1.5,
                 "SupplyCost": 50,
             },
         },

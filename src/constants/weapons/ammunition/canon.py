@@ -136,8 +136,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 50,
             },
             "parent_membr": {
-                "TempsEntreDeuxTirs": 6.6,
-                "TempsEntreDeuxSalves": 6.6,
+                "TimeBetweenTwoShots": 6.6,
+                "TimeBetweenTwoSalvos": 6.6,
             },
         },
     },
@@ -149,8 +149,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 50,
             },
             "parent_membr": {
-                "TempsEntreDeuxTirs": 6.6,
-                "TempsEntreDeuxSalves": 6.6,
+                "TimeBetweenTwoShots": 6.6,
+                "TimeBetweenTwoSalvos": 6.6,
             },
         },
     },
@@ -162,8 +162,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 45,
             },
             "parent_membr": {
-                "TempsEntreDeuxTirs": 6.6,
-                "TempsEntreDeuxSalves": 6.6,
+                "TimeBetweenTwoShots": 6.6,
+                "TimeBetweenTwoSalvos": 6.6,
             },
         },
     },
@@ -188,8 +188,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 45,
             },
             "parent_membr": {
-                "TempsEntreDeuxTirs": 6.6,
-                "TempsEntreDeuxSalves": 6.6,
+                "TimeBetweenTwoShots": 6.6,
+                "TimeBetweenTwoSalvos": 6.6,
             },
         },
     },
@@ -198,8 +198,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Canon_HE_125_mm_2A46_T64A", "canon", None, False): { # 204
         "Ammunition": {
             "parent_membr": {
-                "TempsEntreDeuxTirs": 6.6,
-                "TempsEntreDeuxSalves": 6.6,
+                "TimeBetweenTwoShots": 6.6,
+                "TimeBetweenTwoSalvos": 6.6,
             },
         },
     },
@@ -255,8 +255,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 50,
             },
             "parent_membr": {
-                "TempsEntreDeuxTirs": 6.6,
-                "TempsEntreDeuxSalves": 6.6,
+                "TimeBetweenTwoShots": 6.6,
+                "TimeBetweenTwoSalvos": 6.6,
             },
         },
     },
@@ -268,8 +268,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 50,
             },
             "parent_membr": {
-                "TempsEntreDeuxTirs": 6.6,
-                "TempsEntreDeuxSalves": 6.6,
+                "TimeBetweenTwoShots": 6.6,
+                "TimeBetweenTwoSalvos": 6.6,
             },
         },
     },
@@ -281,8 +281,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 45,
             },
             "parent_membr": {
-                "TempsEntreDeuxTirs": 6.6,
-                "TempsEntreDeuxSalves": 6.6,
+                "TimeBetweenTwoShots": 6.6,
+                "TimeBetweenTwoSalvos": 6.6,
             },
         },
     },
@@ -310,8 +310,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 45,
             },
             "parent_membr": {
-                "TempsEntreDeuxTirs": 6.6,
-                "TempsEntreDeuxSalves": 6.6,
+                "TimeBetweenTwoShots": 6.6,
+                "TimeBetweenTwoSalvos": 6.6,
             },
         },
     },
@@ -319,8 +319,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Canon_AP_125_mm_2A46_T64A", "canon", None, False): { # 132
         "Ammunition": {
             "parent_membr": {
-                "TempsEntreDeuxTirs": 6.6,
-                "TempsEntreDeuxSalves": 6.6,
+                "TimeBetweenTwoShots": 6.6,
+                "TimeBetweenTwoSalvos": 6.6,
             },
         },
     },

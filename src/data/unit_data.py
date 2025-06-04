@@ -268,24 +268,23 @@ def _extract_optics_data(module: Any, unit_name: str) -> Dict[str, Any]:
         
         logger.debug(f"Extracting optics data for unit: {unit_name}")
         
-        ground = module.v.by_m("PorteeVisionGRU", None)
+        ranges_map = module.v.by_m("VisionRangesGRU", None)
+        ground = ranges_map.v.by_k("EVisionUnitType/Standard", None)
         if ground is not None:
             optics_data["ground_range"] = float(ground.v)
             logger.debug(f"Found ground range: {optics_data['ground_range']}")
         
-        special_optics = module.v.by_m("SpecializedOpticalStrengths", None)
-        if special_optics is not None:
-            optics_data["special_optics"] = {}
-            for row in special_optics.v:
-                try:
-                    # Handle both wrapped and unwrapped values
-                    key = row.key.v if hasattr(row.key, 'v') else row.key
-                    value = float(row.value.v if hasattr(row.value, 'v') else row.value)
-                    optics_data["special_optics"][key] = value
-                    logger.debug(f"Found special optics: {key}={value}")
-                except Exception as e:
-                    logger.debug(f"Error processing special optics row for {unit_name}: {str(e)}")
-                    continue
+        strengths_map = module.v.by_m("OpticalStrengths", None)
+        optics_data["strengths"] = {}
+        for row in strengths_map.v:
+            try:
+                key = row.key.v if hasattr(row.key, 'v') else row.key
+                value = float(row.value.v if hasattr(row.value, 'v') else row.value)
+                optics_data["strengths"][key] = value
+                logger.debug(f"Found strength: {key}={value}")
+            except Exception as e:
+                logger.debug(f"Error processing strength row for {unit_name}: {str(e)}")
+                continue
         
         # Always return at least an empty dict
         logger.debug(f"Final optics data: {optics_data}")

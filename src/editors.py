@@ -12,13 +12,16 @@ from src.gameplay import (
     create_veh_showroom_depictions,
     deck_ap_points,
     edit_aim_times,
+    edit_capacities,
     edit_conditions,
     edit_damage_levels,
     edit_fire_descriptors,
     edit_he_damage,
+    edit_identify_rules,
     edit_mg_teams,
     edit_smoke_duration,
     edit_weapon_ranges,
+    edit_weapon_traits,
     global_bomber_edits,
     mg_team_division_rules,
     modify_deck_packs,
@@ -33,9 +36,6 @@ from src.gameplay import (
     update_deck_pack_references,
     update_weapondescr_ammoname_quantity,
     vanilla_renames_weapondescriptor,
-    edit_weapon_traits,
-    edit_capacities,
-    edit_identify_rules,
 )
 from src.gameplay.buildings import edit_fob_attributes
 from src.gameplay.depictions import (
@@ -81,15 +81,15 @@ from src.gameplay.terrains import edit_terrains
 # Add new import
 from src.gameplay.ui import (
     edit_division_emblems,
-    hide_divisions_divisions_ndf,
-    hide_divisions_decks_ndf,
-    hide_divisions_deckserializer_ndf,
     edit_ingame_icons,
     edit_specialties,
     edit_specialty_icons,
     edit_unit_info_panel,
     edit_weaponsminmax,
     edit_weapontextures,
+    hide_divisions_decks_ndf,
+    hide_divisions_deckserializer_ndf,
+    hide_divisions_divisions_ndf,
 )
 from src.gameplay.unit_descriptor import (
     create_new_units,
@@ -119,7 +119,7 @@ from src.gameplay.weapons.missiles import edit_missile_speed, edit_missiles
 from src.gameplay.weapons.new_weapons import create_new_weapons
 from src.gameplay.weapons.unit_edits import unit_edits_weapondescriptor
 from src.shared import get_shared_editors
-from src.shared.buildings.fob import add_fob_minimap_texture, add_fob_minimap_module
+from src.shared.buildings.fob import add_fob_minimap_module, add_fob_minimap_texture
 
 # Import all UI editors
 from src.ui.style import (
@@ -524,7 +524,7 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/Generated/UserInterface/UnitSpecialties.ndf": [
             edit_specialties,
         ],
-        "GameData/Generated/UserInterface/UnitTraits.ndf": [
+        "GameData/Generated/UserInterface/WeaponTraits.ndf": [
             edit_weapon_traits,
         ],
 

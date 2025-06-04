@@ -183,7 +183,6 @@ def edit_capacite_list(source_path) -> None:
             logger.info("Updated Capacite_Choc range to 100")
 
         elif capacite_descr.n == "Capacite_electronic_warfare":
-            capacite_descr.v.by_m("RadiusGRU").v = "5000"
             capacite_descr.v.by_m("RangeGRU").v = "5000"
             logger.info("Updated Capacite_electronic_warfare range to 5000")
     
@@ -208,7 +207,7 @@ def edit_shock_units(source_path, game_db) -> None:
     units_modified = 0
     
     for unit_name, unit_data in game_db['unit_data'].items():
-        if 'skills' not in unit_data:
+        if 'skills' not in unit_data or 'specialties' not in unit_data:
             continue
         
         shock_attributes = [
