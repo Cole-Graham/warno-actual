@@ -40,6 +40,7 @@ from .ingame import (
     edit_uispecificunitlabelviewnameonly,
     edit_uispecificunitselectionpanelview,
     edit_uispecificunitselectionweaponpanelview,
+    edit_uispecificsmartgroupselectionpanelview,
 )
 from .outgame import edit_useoutgametextures
 from .showroom import (

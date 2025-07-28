@@ -10,6 +10,7 @@ from .score import edit_uispecifichudscoreview
 from .selection_panel import (
     edit_uispecificunitselectionpanelview,
     edit_uispecificunitselectionweaponpanelview,
+    edit_uispecificsmartgroupselectionpanelview,
 )
 from .shortcuts import edit_uispecificshortcutsforselectionview
 from .time_panel import edit_uispecificingamehudtimepanelview

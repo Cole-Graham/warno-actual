@@ -33,7 +33,25 @@ def edit_uispecificskirmishproductionmenuview(source_path) -> None:
     
     # Update production buttons
     _update_production_buttons(source_path)
+    
+    # Update skirmish production menu pawn button
+    _update_skirmish_production_menu_pawn_button(source_path)
 
+
+def _update_skirmish_production_menu_pawn_button(source_path) -> None:
+    """SkirmishProductionMenuPawnButton.
+    UISpecificSkirmishProductionMenuView.ndf
+    """
+    skirmishproductionmenupawnbutton = source_path.by_namespace("SkirmishProductionMenuPawnButton").v
+    for component in skirmishproductionmenupawnbutton.by_member("Components").v:
+        if isinstance(component.v, ndf.model.Object):
+            if is_obj_type(component.v, "PanelRoundedCorner"):
+                component.v.by_member("BackgroundBlockColorToken").v = '"BoutonTemps_BackgroundM81"'
+                component.v.by_member("BorderLineColorToken").v = '"BoutonTempsLineM81"'
+            # handle other object components here with elif statements
+        # handle other components here with elif statements
+            
+    logger.debug("Updated SkirmishProductionMenuPawnButton properties")
 
 def _update_main_component(source_path) -> None:
     """Update main component properties."""
@@ -178,6 +196,12 @@ def _update_production_buttons(source_path) -> None:
     decktypeproductionbutton = source_path.by_namespace("DeckTypeProductionButton").v
     decktypeproductionbutton.by_member("BackgroundBlockColorToken").v = '"BoutonTemps"'
     decktypeproductionbutton.by_member("TextColorToken").v = '"ButtonHUD/Text2"'
+    
+    # Combat group button
+    combatgroupproductionbutton = source_path.by_namespace("SkirmishProductionMenuCombatGroupButton").v
+    combatgroupproductionbutton.by_member("PanelRoundedCorner_BackgroundBlockColorToken").v = '"BoutonTemps_BackgroundM81"'
+    combatgroupproductionbutton.by_member("TextColorToken").v = '"ButtonHUD/Text2"'
+    combatgroupproductionbutton.by_member("ButtonMagnifiableWidthHeight").v = "[105, 30.0]"
     
     # Pawn button
     skirmishproductionmenupawnbutton = source_path.by_namespace("SkirmishProductionMenuPawnButton").v

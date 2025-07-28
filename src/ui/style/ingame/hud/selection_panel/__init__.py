@@ -4,4 +4,5 @@ from .weapon import edit_uispecificunitselectionweaponpanelview
 __all__ = [
     'edit_uispecificunitselectionpanelview',
     'edit_uispecificunitselectionweaponpanelview',
+    'edit_uispecificsmartgroupselectionpanelview',
 ]

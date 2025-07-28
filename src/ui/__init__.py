@@ -43,6 +43,7 @@ from .style import (
     edit_uispecificunitlabelview,
     edit_uispecificunitselectionpanelview,
     edit_uispecificunitselectionweaponpanelview,
+    edit_uispecificsmartgroupselectionpanelview,
     edit_uiwarningpanel,
     edit_useoutgametextures,
 )

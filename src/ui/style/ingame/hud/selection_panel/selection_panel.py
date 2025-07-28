@@ -38,6 +38,78 @@ def edit_uispecificunitselectionpanelview(source_path) -> None:
     _update_roe_shortcuts_panel(source_path)
 
 
+def edit_uispecificsmartgroupselectionpanelview(source_path) -> None:
+    """Edit UISpecificSmartGroupSelectionPanelView.ndf"""
+    logger.info("Editing UISpecificSmartGroupSelectionPanelView.ndf")
+    
+    # Update smart group selection panel header
+    _update_smartgrouppanelheadlist(source_path)
+    
+    # Update smart group selection main panel
+    _update_smartgroupselectionpanelmainpanel(source_path)
+    
+    # Update smart group action button template
+    _update_smartgroupactionbuttontemplate(source_path)
+    
+    # Update smart group label container
+    _update_smartgrouplabelcontainer(source_path)
+    
+    logger.debug("Updated UISpecificSmartGroupSelectionPanelView.ndf")
+    
+def _update_smartgrouppanelheadlist(source_path) -> None:
+    """SmartGroupPanelHeadList"""
+    smartgrouppanelheadlist = source_path.by_namespace("SmartGroupPanelHeadList").v
+    for element in smartgrouppanelheadlist.by_member("Elements").v:
+        if isinstance(element.v, ndf.model.Object) and is_obj_type(element.v, "BUCKListElementDescriptor"):
+            element_name = element.v.by_member("ElementName", False)
+            if element_name is not None:
+                if element_name.v == 'GroupName':
+                    pass # placeholder for any future edits of GroupName element
+                elif element_name.v == 'NbUnits':
+                    element.v.by_member("TextColor").v = '"M81_AppleIIc"'
+
+def _update_smartgroupselectionpanelmainpanel(source_path) -> None:
+    """SmartGroupSelectionPanelMainPanel"""
+    smartgroupselectionpanelmainpanel = source_path.by_namespace("SmartGroupSelectionPanelMainPanel").v
+    backgroundcomponents = smartgroupselectionpanelmainpanel.by_member("BackgroundComponents").v
+    for component in backgroundcomponents:
+        if isinstance(component.v, ndf.model.Object) and is_obj_type(component.v, "PanelRoundedCorner"):
+            component.v.by_member("BorderLineColorToken").v = '"M81_DarkCharcoalSelection"'
+            component.v.by_member("BackgroundBlockColorToken").v = '"M81_DarkCharcoalTransparent"'
+    
+    logger.debug("Updated SmartGroupSelectionPanelMainPanel properties")
+    
+def _update_smartgroupactionbuttontemplate(source_path) -> None:
+    """template SmartGroupActionButton"""
+    smartgroupactionbuttontemplate = source_path.by_namespace("SmartGroupActionButton").v
+    
+    # edit template params
+    template_params = smartgroupactionbuttontemplate.params
+    template_params.by_param("ReinforceBackgroundBlockColorToken").v = '"BoutonTemps_BackgroundM81"'
+    template_params.by_param("ReinforceBorderLineColorToken").v = '"BoutonTempsLineM81"'
+    
+    # edit template members
+    components = smartgroupactionbuttontemplate.by_member("Components").v
+    for component in components:
+        if isinstance(component.v, ndf.model.Object):
+            if is_obj_type(component.v, "BUCKContainerDescriptor"):
+                pass # placeholder for any future edits of BUCKContainerDescriptor
+            elif is_obj_type(component.v, "BUCKTextDescriptor"):
+                component.v.by_member("TextColor").v = '"ButtonHUD/Text2"'
+
+def _update_smartgrouplabelcontainer(source_path) -> None:
+    """SmartGroupLabelContainer"""
+    smartgrouplabelcontainer = source_path.by_namespace("SmartGroupLabelContainer").v
+    for component in smartgrouplabelcontainer.by_member("Components").v:
+        if isinstance(component.v, ndf.model.Object):
+            if is_obj_type(component.v, "SmartGroupActionButton"):
+                component.v.by_member("ReinforceBackgroundBlockColorToken").v = '"BoutonTemps_BackgroundM81"'
+                component.v.by_member("ReinforceBorderLineColorToken").v = '"BoutonTempsLineM81"'
+            elif is_obj_type(component.v, "BUCKContainerDescriptor"):
+                pass # placeholder for any future edits of BUCKContainerDescriptor
+    
+    logger.debug("Updated SmartGroupActionButton template properties")
+
 def _update_deselection_panel(source_path) -> None:
     """Update deselection panel properties."""
     paneldeselectionunique = source_path.by_namespace("PanelDeSelectionUnique").v

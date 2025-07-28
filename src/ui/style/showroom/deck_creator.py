@@ -7,7 +7,6 @@ from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
 
-
 def edit_uispecificshowroomdeckcreatorscreencomponent(source_path) -> None:
     """Edit UISpecificShowroomDeckCreatorScreenComponent.ndf."""
     logger.info("Editing UISpecificShowroomDeckCreatorScreenComponent.ndf")
@@ -35,7 +34,26 @@ def edit_uispecificshowroomdeckcreatorscreencomponent(source_path) -> None:
     
     # Update transport button
     _update_transport_button(source_path)
+    
+    # Update factory name descriptor
+    _update_factorynamedescriptor(source_path)
 
+def edit_uispecificshowroomgroupsdeckcreatorscreenview(source_path) -> None:
+    """Edit UISpecificShowRoomGroupsDeckCreatorScreenView.ndf."""
+    logger.info("Editing UISpecificShowRoomGroupsDeckCreatorScreenView.ndf")
+    
+    # Update smart group container
+    _update_smart_group_container(source_path)
+    
+    # Update unit amount button
+    _update_unitamountbutton(source_path)
+
+def _update_factorynamedescriptor(source_path) -> None:
+    """Update FactoryNameDescriptor template.
+    UISpe"""
+    factorynamedescriptor_template = source_path.by_namespace("FactoryNameDescriptor").v
+    factorynamedescriptor_template.by_member("BackgroundBlockColorToken").v = '"M81_Ebony128"'
+    logger.debug("Updated FactoryNameDescriptor template")
 
 def _update_xp_button(source_path) -> None:
     """Update XP button properties."""
@@ -52,20 +70,25 @@ def _update_xp_button(source_path) -> None:
     
     logger.debug("Updated XP button colors")
 
-
-def edit_uispecificshowroomgroupsdeckcreatorscreenview(source_path) -> None:
-    """Edit UISpecificShowRoomGroupsDeckCreatorScreenView.ndf."""
-    logger.info("Editing UISpecificShowRoomGroupsDeckCreatorScreenView.ndf")
-    
-    # Update smart group container
-    _update_smart_group_container(source_path)
-
-
 def _update_smart_group_container(source_path) -> None:
     """Update smart group container properties."""
     smartgroupinfoscontainer_template = source_path.by_namespace("SmartGroupInfosContainer").v
     
-    new_value = '''\
+    # Update elements
+    elements = smartgroupinfoscontainer_template.by_member("Elements").v
+    for element in elements:
+        if not isinstance(element.v, ndf.model.Object) or not is_obj_type(element.v, "BUCKListElementDescriptor"):
+            continue
+        
+        if element.v.by_member("ElementName", False) is not None:
+            if element.v.by_member("ElementName").v == '"SmartGroupNameEditableText"':
+                element.v.by_member("TextColorToken").v = '"ButtonHUD/Text2"'
+                
+        else:
+            continue
+    
+    # Update foreground components
+    new_foreground_value = '''\
 (<IsEditable> ?
     []
     : [
@@ -83,15 +106,26 @@ def _update_smart_group_container(source_path) -> None:
             HidePointerEvents = true
             PointerEventsToAllow = ~/EAllowablePointerEventType/Move
             HasBorder = true
-            BorderLineColorToken = "BoutonVignetteAchatM81"
-            BorderThicknessToken = "2"
+            BorderLineColorToken = "ButtonHUD/Text2"
+            BorderThicknessToken = "1"
         ),
     ]
 )
 '''
     smartgroupinfoscontainer_template.by_member("ForegroundComponents").v = new_value
     logger.debug("Updated smart group container components")
-
+    
+def _update_unitamountbutton(source_path) -> None:
+    """Update UnitAmountButton"""
+    unitamountbutton = source_path.by_namespace("UnitAmountButton").v
+    unitamountbutton.by_member("BorderLineColorToken").v = '"BoutonTempsLineM81"'
+    unitamountbutton.by_member("BackgroundBlockColorToken").v = '"BoutonTemps_BackgroundM81"'
+    components = unitamountbutton.by_member("Components").v
+    for component in components:
+        if not isinstance(component.v, ndf.model.Object) or not is_obj_type(component.v, "BUCKTextDescriptor"):
+            continue
+        component.v.by_member("TextColor").v = '"UnitAmountButtonM81"'
+    logger.debug("Updated UnitAmountButton")
 
 def _update_deck_list(source_path) -> None:
     """Update deck list properties."""

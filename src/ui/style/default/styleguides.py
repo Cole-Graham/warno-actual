@@ -910,6 +910,17 @@ def edit_defaultstyleguides(source_path) -> None:
             )
             index = text_colors_map.by_k('"ButtonHUD/Text2_pawn"').index + 1
             text_colors_map.insert(index, buttonhud_text2pawnwactual)
+            
+            # Add UnitAmountButtonM81
+            unitamountbuttonm81 = (
+                f'("UnitAmountButtonM81",                              MAP ['
+                f'                                            ( ~/ComponentState/Normal,                TColorRTTI( Color = [0, 0, 0, 255] ) ),'
+                f'                                            ( ~/ComponentState/Highlighted,           TColorRTTI( Color = [180, 180, 180, 255] ) ),'
+                f'                                            ( ~/ComponentState/Grayed,                TColorRTTI( Color = [80, 80, 80, 255] ) ),'
+                f'                                        ])'
+            )
+            index = text_colors_map.by_k('"Noir_Grise"').index + 1
+            text_colors_map.insert(index, unitamountbuttonm81)
 
             # Add DeploymentPhase CancelTimer M81
             deploymentphase_canceltimerm81 = (

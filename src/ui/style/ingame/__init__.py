@@ -16,6 +16,7 @@ from .hud import (
     edit_uispecificingamehudtimepanelview,
     edit_uispecificunitselectionpanelview,
     edit_uispecificunitselectionweaponpanelview,
+    edit_uispecificsmartgroupselectionpanelview,
     edit_uispecificunitlabelaggregationview,
     edit_uispecificunitlabelcommon,
     edit_uispecificunitlabelmultiselectionview,

@@ -163,6 +163,7 @@ from src.ui.style import (
     edit_uispecificunitlabelviewnameonly,
     edit_uispecificunitselectionpanelview,
     edit_uispecificunitselectionweaponpanelview,
+    edit_uispecificsmartgroupselectionpanelview,
     edit_uiwarningpanel,
     edit_useoutgametextures,
 )
@@ -493,6 +494,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         ],
         "GameData/UserInterface/Use/InGame/UISpecificUnitSelectionWeaponPanelView.ndf": [
             edit_uispecificunitselectionweaponpanelview,
+        ],
+        "GameData/UserInterface/Use/InGame/UISpecificSmartGroupSelectionPanelView.ndf": [
+            edit_uispecificsmartgroupselectionpanelview,
         ],
 
         # Out-game and ShowRoom UI
