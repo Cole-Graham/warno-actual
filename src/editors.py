@@ -72,7 +72,7 @@ from src.gameplay.effects import (
     edit_shock_units,
 )
 from src.gameplay.game_constants import (
-    edit_gd_constantes,
+    edit_gd_constants,
     edit_orders,
     edit_ravitaillement,
 )
@@ -166,6 +166,9 @@ from src.ui.style import (
     edit_uispecificsmartgroupselectionpanelview,
     edit_uiwarningpanel,
     edit_useoutgametextures,
+    edit_uispecificloginview,
+    edit_uispecificoutgamerecoverloginview,
+    edit_uispecificoutgamerecoverpasswordview,
 )
 from src.utils.logging_utils import setup_logger
 
@@ -178,8 +181,8 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
     
     editors = {
         # Core gameplay mechanics
-        "GameData/Gameplay/Constantes/GDConstantes.ndf": [
-            edit_gd_constantes,
+        "GameData/Gameplay/Constantes/GDConstants.ndf": [
+            edit_gd_constants,
         ],
         "GameData/Gameplay/Constantes/Ravitaillement.ndf": [
             edit_ravitaillement,
@@ -394,9 +397,11 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         ],
         
         # Common UI templates and components
-        "GameData/UserInterface/Use/Common/Templates/BuckSpecificBackgrounds.ndf": [
-            edit_buckspecificbackgrounds,
-        ],
+        
+        # Not sure if this is needed or was ever needed, temporarily disabled.
+        # "GameData/UserInterface/Use/Common/Templates/BuckSpecificBackgrounds.ndf": [
+        #     edit_buckspecificbackgrounds,
+        # ],
         "GameData/UserInterface/Use/Common/Templates/BuckSpecificButtons.ndf": [
             edit_buckspecificbuttons,
         ],
@@ -500,6 +505,15 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         ],
 
         # Out-game and ShowRoom UI
+        "GameData/UserInterface/Use/OutGame/UISpecificLoginView.ndf": [
+            edit_uispecificloginview,
+        ],
+        "GameData/UserInterface/Use/OutGame/UISpecificOutGameRecoverLoginView.ndf": [
+            edit_uispecificoutgamerecoverloginview,
+        ],
+        "GameData/UserInterface/Use/OutGame/UISpecificOutGameRecoverPasswordView.ndf": [
+            edit_uispecificoutgamerecoverpasswordview,
+        ],
         "GameData/UserInterface/Use/OutGame/UseOutGameTextures.ndf": [
             edit_useoutgametextures,
         ],

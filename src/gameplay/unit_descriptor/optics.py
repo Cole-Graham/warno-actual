@@ -64,9 +64,9 @@ def edit_antirad_optics(source_path) -> None:
                 
                 # Update optics ranges
                 ranges_map = module.v.by_m("VisionRangesGRU").v
-                ranges_map.by_k("EVisionUnitType/Standard").v = str(ground_range)
+                ranges_map.by_k("EVisionRange/Standard").v = str(ground_range)
                 strengths_map = module.v.by_m("OpticalStrengths").v
-                strengths_map.by_k("EVisionUnitType/AntiRadar").v = "5000.0"
+                strengths_map.by_k("EOpticalStrength/AntiRadar").v = "5000.0"
                 
                 logger.info(
                     f"Updated {unit} optics: ground={ground_range}m, anti-radar=5000m"

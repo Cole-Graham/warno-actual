@@ -31,7 +31,7 @@ def add_corrected_shot_dispersion(source_path: Any, game_db: Dict[str, Any]) -> 
         # Add dispersion multiplier
         existing_multiplier = None
         for i, member in enumerate(weapon_descr.v):
-            if member.m == "DispersionWithoutSorting":
+            if member.m == "SalvoShotsSorted":
                 insert_index = i + 1
             elif member.m == "CorrectedShotDispersionMultiplier":
                 existing_multiplier = member.v

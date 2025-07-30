@@ -39,10 +39,15 @@ from .ingame import (
     edit_uispecificunitlabelview,
     edit_uispecificunitlabelviewnameonly,
     edit_uispecificunitselectionpanelview,
-    edit_uispecificunitselectionweaponpanelview,
     edit_uispecificsmartgroupselectionpanelview,
+    edit_uispecificunitselectionweaponpanelview,
 )
-from .outgame import edit_useoutgametextures
+from .outgame import (
+    edit_useoutgametextures,
+    edit_uispecificloginview,
+    edit_uispecificoutgamerecoverloginview,
+    edit_uispecificoutgamerecoverpasswordview,
+)
 from .showroom import (
     edit_uispecificshowroomarmorycomponent,
     edit_uispecificshowroomdeckcreatorscreencomponent,
@@ -91,8 +96,12 @@ __all__ = [
     'edit_uispecificunitselectionpanelview',
     'edit_uispecificunitselectionweaponpanelview',
     'edit_uiingameresources',
+    'edit_uispecificsmartgroupselectionpanelview',
     # Outgame
     'edit_useoutgametextures',
+    'edit_uispecificloginview',
+    'edit_uispecificoutgamerecoverloginview',
+    'edit_uispecificoutgamerecoverpasswordview',
     # Showroom
     'edit_uispecificshowroomarmorycomponent',
     'edit_uispecificshowroomdeckcreatorscreencomponent',

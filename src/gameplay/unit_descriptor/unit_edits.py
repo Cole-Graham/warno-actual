@@ -318,25 +318,18 @@ def _handle_scanner(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:  # 
     if "optics" not in edits:
         return
 
-    if "OpticalStrength" in edits["optics"]:
-        descr_row.v.by_m("OpticalStrength").v = str(edits["optics"]["OpticalStrength"])
+    if "OpticalStrengths" in edits["optics"]:
+        for key, value in edits["optics"]["OpticalStrengths"].items():
+            descr_row.v.by_m("OpticalStrengths").v.by_k(key).v = str(value)
 
-    if "OpticalStrengthAltitude" in edits["optics"]:
-        descr_row.v.by_m("OpticalStrengthAltitude").v = str(
-            edits["optics"]["OpticalStrengthAltitude"])
     if "SpecialtiesList" in edits and "add_specs" in edits["SpecialtiesList"]:
         for spec in edits["SpecialtiesList"]["add_specs"]:
             if spec == "'verygood_airoptics'":
-                # descr_row.v.by_m("OpticalStrengthAltitude").v = "5000.0"
-                specialized_detections = descr_row.v.by_m("SpecializedDetectionsGRU")
-                specialized_detections.v.by_k("EVisionUnitType/AlwaysInHighAltitude").v = "12000.0"
+                vision_ranges = descr_row.v.by_m("VisionRangesGRU")
+                vision_ranges.v.by_k("EVisionRange/HighAltitude").v = "12000.0"
             elif spec == "'good_airoptics'":
-                specialized_detections = descr_row.v.by_m("SpecializedDetectionsGRU")
-                specialized_detections.v.by_k("EVisionUnitType/AlwaysInHighAltitude").v = "12000.0"
-
-    if "SpecializedOpticalStrengths" in edits["optics"]:
-        for key, value in edits["optics"]["SpecializedOpticalStrengths"].items():
-            descr_row.v.by_m("SpecializedOpticalStrengths").v.by_k(key).v = str(value)
+                vision_ranges = descr_row.v.by_m("VisionRangesGRU")
+                vision_ranges.v.by_k("EVisionRange/HighAltitude").v = "12000.0"
 
 def edit_identify_rules(source_path: Any) -> None:  # noqa
     
@@ -369,7 +362,7 @@ def _handle_production(unit_row: Any, descr_row: Any, edits: dict, *_) -> None: 
         descr_row.v.by_m("ProductionRessourcesNeeded").v.by_k(cmd_points).v = str(edits["CommandPoints"])
 
     if "Factory" in edits:
-        descr_row.v.by_m("Factory").v = edits["Factory"]
+        descr_row.v.by_m("FactoryType").v = edits["Factory"]
 
 
 def _handle_tactical_label(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:  # noqa

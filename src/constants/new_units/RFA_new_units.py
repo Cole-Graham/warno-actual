@@ -43,7 +43,7 @@ RFA_NEW_UNITS = {
         },
         "TransportedTexture": "UseInGame_Transport_COMMAND",
         "TransportedSoldier": "Engineers_CMD_RFA",
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "CommandPoints": 145,
         "SpecialitiesList": [
             'hq_inf',
@@ -97,7 +97,7 @@ RFA_NEW_UNITS = {
                 "Vehicule_CMD",
             ],
         },
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "CommandPoints": 145,
         "Divisions": {
             "default": {

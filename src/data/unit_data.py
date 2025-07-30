@@ -530,7 +530,7 @@ def _gather_attack_strategies(module: Any) -> List:
     """Gather attack strategies from a unit descriptor."""
     attack_strategies = []
     
-    for strategy in module.v.by_m("OrderedAttackStrategies").v:
+    for strategy in module.v.by_m("AttackStrategiesDescriptorsSortedByPriority").v:
         attack_strategies.append(strategy.v)
     
     return attack_strategies

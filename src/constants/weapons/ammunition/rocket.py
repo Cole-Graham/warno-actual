@@ -48,7 +48,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 20,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 2625,
+                "MaximumRangeGRU": 2625,
                 "RadiusSplashPhysicalDamagesGRU": 14,
                 "RadiusSplashSuppressDamagesGRU": 21,
                 "TimeBetweenTwoShots": 0.1,
@@ -105,7 +105,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 20,
             },                
             "parent_membr": {
-                "PorteeMaximaleGRU": 2450,
+                "MaximumRangeGRU": 2450,
                 "RadiusSplashPhysicalDamagesGRU": 9,
                 "RadiusSplashSuppressDamagesGRU": 15,  
                 "TimeBetweenTwoShots": 0.1,
@@ -134,7 +134,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketAir_S24_240mm_avion_salvolength4", "rocket", "RocketAir_S24_240mm_salvolength2", True): { # 619
         "Ammunition": {
             "parent_membr": {
-                "PorteeMaximaleGRU": 2625,
+                "MaximumRangeGRU": 2625,
                 "RadiusSplashPhysicalDamagesGRU": 60,
                 "RadiusSplashSuppressDamagesGRU": 80,
                 "PhysicalDamages": 6.0,
@@ -166,7 +166,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 30,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 2625,
+                "MaximumRangeGRU": 2625,
                 "RadiusSplashPhysicalDamagesGRU": 18,
                 "RadiusSplashSuppressDamagesGRU": 36,
                 "PhysicalDamages": 1.25,
@@ -199,7 +199,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 20,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 2625,
+                "MaximumRangeGRU": 2625,
                 "RadiusSplashPhysicalDamagesGRU": 14,
                 "RadiusSplashSuppressDamagesGRU": 21,
                 "TimeBetweenTwoShots": 0.1,

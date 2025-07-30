@@ -16,7 +16,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 40,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 1750,
+                "MaximumRangeGRU": 1750,
                 "DisplaySalveAccuracy": False,
             },
         },
@@ -28,7 +28,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 40,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 1750,
+                "MaximumRangeGRU": 1750,
                 "PhysicalDamages": 1.5,
                 "DisplaySalveAccuracy": False,
             },
@@ -41,7 +41,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 40,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 1750,
+                "MaximumRangeGRU": 1750,
                 "PhysicalDamages": 1.5,
                 "DisplaySalveAccuracy": False,
             },
@@ -57,7 +57,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 40,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 1750,
+                "MaximumRangeGRU": 1750,
                 "DisplaySalveAccuracy": False,
             },
         },
@@ -69,7 +69,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 50,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 525,
+                "MaximumRangeGRU": 525,
                 "DisplaySalveAccuracy": False,
                 "PhysicalDamages": 1.3,
             },
@@ -87,7 +87,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "TraitsToken": ['STAT', 'thermobaric'],
                 "ImpactHappening": ['BombeODAB'],
-                "PorteeMaximaleGRU": 700,
+                "MaximumRangeGRU": 700,
                 "RadiusSplashPhysicalDamagesGRU": 93,
                 "PhysicalDamages": 2.0,
                 "RadiusSplashSuppressDamagesGRU": 124,
@@ -107,7 +107,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 45,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 525,
+                "MaximumRangeGRU": 525,
                 "DisplaySalveAccuracy": False,
             },
         },
@@ -122,7 +122,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 50,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 700,
+                "MaximumRangeGRU": 700,
                 "DisplaySalveAccuracy": False,
             },
         },
@@ -131,7 +131,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketInf_RPG76_Komar", "light_at", None, False): { # 697
         "Ammunition": {
             "parent_membr": {
-                "PorteeMaximaleGRU": 450,
+                "MaximumRangeGRU": 450,
                 "DisplaySalveAccuracy": False,
                 "TimeBetweenTwoSalvos": 3.0,
             },
@@ -147,7 +147,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 60,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 875,
+                "MaximumRangeGRU": 875,
                 "DisplaySalveAccuracy": False,
             },
         },
@@ -162,7 +162,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 60,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 875,
+                "MaximumRangeGRU": 875,
                 "DisplaySalveAccuracy": False,
             },
         },
@@ -177,7 +177,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 45,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 450,
+                "MaximumRangeGRU": 450,
                 "DisplaySalveAccuracy": False,
             },
         },
@@ -192,7 +192,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 50,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 525,
+                "MaximumRangeGRU": 525,
                 "DisplaySalveAccuracy": False,
             },
         },
@@ -207,7 +207,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 45,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 450,
+                "MaximumRangeGRU": 450,
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 10,
             },
@@ -223,7 +223,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 40,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 450,
+                "MaximumRangeGRU": 450,
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 10,
             },
@@ -248,7 +248,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 50,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 525,
+                "MaximumRangeGRU": 525,
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 10,
             },
@@ -264,7 +264,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 60,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 875,
+                "MaximumRangeGRU": 875,
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 15,
             },
@@ -277,7 +277,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 50,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 875,
+                "MaximumRangeGRU": 875,
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 20,
             },
@@ -293,7 +293,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 45,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 525,
+                "MaximumRangeGRU": 525,
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 10,
             },
@@ -309,7 +309,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 50,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 525,
+                "MaximumRangeGRU": 525,
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 10,
             },
@@ -323,7 +323,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "TimeBetweenTwoFx": 6.6,
-                "PorteeMaximaleGRU": 875,
+                "MaximumRangeGRU": 875,
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 10,
             },
@@ -340,7 +340,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "TimeBetweenTwoFx": 6.6,
-                "PorteeMaximaleGRU": 875,
+                "MaximumRangeGRU": 875,
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 10,
             },
@@ -356,7 +356,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 40,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 1750,
+                "MaximumRangeGRU": 1750,
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 10,
             },
@@ -369,7 +369,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 40,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 1750,
+                "MaximumRangeGRU": 1750,
                 "PhysicalDamages": 1.25,
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 10,
@@ -383,7 +383,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 40,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 1750,
+                "MaximumRangeGRU": 1750,
                 "PhysicalDamages": 1.25,
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 10,
@@ -400,7 +400,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 40,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 1750,
+                "MaximumRangeGRU": 1750,
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 10,
             },
@@ -413,7 +413,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 50,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 450,
+                "MaximumRangeGRU": 450,
                 "PhysicalDamages": 0.8,
                 "DisplaySalveAccuracy": False,
                 "FireDescriptor": "$/GFX/Weapon/Descriptor_Fire_NapalmLeger_53m",
@@ -430,7 +430,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 60,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 875,
+                "MaximumRangeGRU": 875,
             },
         },
     },
@@ -444,7 +444,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 65,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 875,
+                "MaximumRangeGRU": 875,
             },
         },
     },
@@ -458,7 +458,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 65,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 875,
+                "MaximumRangeGRU": 875,
             },
         },
     },
@@ -472,7 +472,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 50,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 700,
+                "MaximumRangeGRU": 700,
             },
         },
     },
@@ -486,7 +486,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 50,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 700,
+                "MaximumRangeGRU": 700,
             },
         },
     },

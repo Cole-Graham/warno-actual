@@ -55,5 +55,6 @@ __all__ = [
     'edit_uispecificunitlabelviewnameonly',
     'edit_uispecificunitlabelview',
     'edit_uispecificunitselectionpanelview',
+    'edit_uispecificsmartgroupselectionpanelview',
     'edit_uispecificunitselectionweaponpanelview'
 ]

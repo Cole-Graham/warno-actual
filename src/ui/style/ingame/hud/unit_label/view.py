@@ -83,7 +83,7 @@ def _update_morale_hp_gauges_color_tokens(source_path) -> None:
     """Update morale and HP gauges color tokens."""
     moraleandhpgaugesdescription = source_path.by_namespace("MoraleAndHPGaugesDescription")
     moraleandhpgaugesdescription.v.by_member("MoraleGaugeColorTokens").v = str(
-        ["moral_color_bad_1", "moral_color_bad_2", "moral_color_bad_3", "magenta_morale_color"])
+        ["moral_color_bad_1_M81", "moral_color_bad_2", "moral_color_bad_3", "moral_color_bad_4_M81"])
     logger.debug("Updated morale and HP gauges color tokens")
 
 def _add_morale_hp_gauges_name_only(source_path) -> None:
@@ -98,7 +98,7 @@ def _get_morale_hp_gauges_name_only() -> str:
     return '''\
 MoraleAndHPGaugesNameOnlyDescription is TMoraleAndHPGaugesDescription
 (
-    MoraleGaugeColorTokens = ["moral_color_bad_1", "moral_color_bad_2", "moral_color_bad_3", "magenta_morale_color"]
+    MoraleGaugeColorTokens = ["moral_color_bad_1_M81", "moral_color_bad_2", "moral_color_bad_3", "moral_color_bad_4_M81"]
     HPElementHealthValue = 2
     MagnifiableWidthOneHPLabelBlock = 6.0
     MoraleMagnifiableWidthHeight = [32.0, 3.0]

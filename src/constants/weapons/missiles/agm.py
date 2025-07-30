@@ -168,7 +168,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 45,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 2625,
+                "MaximumRangeGRU": 2625,
                 "MaximalSpeedGRU": 350,
             },
         },
@@ -184,7 +184,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Index": 17,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 2450,
+                "MaximumRangeGRU": 2450,
                 "MaximalSpeedGRU": 311,
             },
         },
@@ -224,7 +224,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TypeCategoryName": "'" + "JTOYRAARTS" + "'",
                 "WeaponDescriptionToken": "'" + "CRYXRQVTBJ" + "'",
                 "MinMaxCategory": "MinMax_ATGM",
-                "TempsDeVisee": 0.0,
+                "AimingTime": 0.0,
             },
         },
         "BaseSupplyCost": 60,

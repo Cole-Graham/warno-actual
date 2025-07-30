@@ -36,7 +36,7 @@ def _update_weapon_information(source_path) -> None:
 def _update_weapon_button_overblock(source_path) -> None:
     """Update weapon button overblock properties."""
     weaponpanelweaponbuttonoverblock = source_path.by_namespace("WeaponPanelWeaponButtonOverblock").v
-    weaponpanelweaponbuttonoverblock.by_member("BackgroundBlockColorToken").v = '"WeaponButton/OverblockTextM81"'
+    weaponpanelweaponbuttonoverblock.by_member("BackgroundBlockColorToken").v = '"WeaponButton/Overblock_M81"'
     logger.debug("Updated weapon button overblock color")
 
 

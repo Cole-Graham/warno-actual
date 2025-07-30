@@ -14,7 +14,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "TraitsToken": ['STAT', 'thermobaric'],
-                "PorteeMaximaleGRU": 3000,
+                "MaximumRangeGRU": 3000,
                 "DispersionAtMaxRangeGRU": 700,
                 "DispersionAtMinRangeGRU": 350,
                 "PhysicalDamages": 10.0,

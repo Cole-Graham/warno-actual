@@ -25,15 +25,15 @@ def _update_shortcut_button_templates(source_path) -> None:
     # Basic shortcut button
     shortcutbutton_template = source_path.by_namespace("ShortcutButton").v
     shortcutbutton_template.params.by_param("BackgroundBlockColorToken").v = '"Transparent"'
-    shortcutbutton_template.params.by_param("BorderLineColorToken").v = '"CouleurBordure_boutonShortcutsTextM81"'
+    shortcutbutton_template.params.by_param("BorderLineColorToken").v = '"CouleurBordure_boutonShortcuts_M81"'
     
     # Base hint button
     shortcutbuttonwithbasehint_template = source_path.by_namespace("ShortcutButtonWithBaseHint").v
-    shortcutbuttonwithbasehint_template.by_member("TextureColorToken").v = '"CouleurTexture_boutonShortcutsTextM81"'
+    shortcutbuttonwithbasehint_template.by_member("TextureColorToken").v = '"CouleurTexture_boutonShortcuts_M81"'
     
     # Strategic hint button
     shortcutbuttonwithstrategichint_template = source_path.by_namespace("ShortcutButtonWithStrategicHint").v
-    shortcutbuttonwithstrategichint_template.params.by_param("BorderLineColorToken").v = '"CouleurBordure_boutonShortcutsTextM81"'
+    shortcutbuttonwithstrategichint_template.params.by_param("BorderLineColorToken").v = '"CouleurBordure_boutonShortcuts_M81"'
     
     logger.debug("Updated shortcut button templates")
 
@@ -46,7 +46,7 @@ def _update_main_component(source_path) -> None:
     maincomponent.by_member("BackgroundBlockColorToken").v = '"M81_MonochromeCRT"'
     maincomponent.by_member("HasBorder").v = "true"
     maincomponent.insert(5, 'BorderThicknessToken = "2"')
-    maincomponent.insert(6, 'BorderLineColorToken = "TypeG"')
+    maincomponent.insert(6, 'BorderLineColorToken = "M81_TypeG"')
     
     # Update corner properties
     maincomponent.insert(7, 'RoundedVertexes = [false, false, false, true]')

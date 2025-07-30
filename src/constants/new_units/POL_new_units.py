@@ -50,7 +50,7 @@ POL_NEW_UNITS = {
         },
         "TransportedTexture": "UseInGame_Transport_COMMAND",
         "TransportedSoldier": "Rifles_CMD_POL",
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "CommandPoints": 145,
         # "UnitAttackValue": 1,
         # "UnitDefenseValue": 16,
@@ -113,7 +113,7 @@ POL_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "CommandPoints": 190,
         "SpecialitiesList": [
             'hq_tank',
@@ -167,7 +167,7 @@ POL_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "CommandPoints": 255,
         "SpecialitiesList": [
             'hq_tank',
@@ -215,7 +215,7 @@ POL_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "CommandPoints": 285,
         "SpecialitiesList": [
             'hq_tank',
@@ -284,7 +284,7 @@ POL_NEW_UNITS = {
         },
         "IdentifiedTextures": ["Texture_RTS_H_CMD_veh", "Texture_CMD_veh"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
-        "Factory": "EDefaultFactories/Art",
+        "Factory": "EFactory/Art",
         "CommandPoints": 60,
         "SpecialitiesList": [
             'leader_sov',
@@ -399,7 +399,7 @@ POL_NEW_UNITS = {
                 "Vehicule_CMD",
             ],
         },
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "CommandPoints": 145,
         "SpecialitiesList": [
             'hq_veh',
@@ -449,7 +449,7 @@ POL_NEW_UNITS = {
     #     #         "Vehicule_CMD",
     #     #     ],
     #     # },
-    #     # "Factory": "EDefaultFactories/Logistic",
+    #     # "Factory": "EFactory/Logistic",
     #     # "CommandPoints": 145,
     #     "Divisions": {
     #         "default": {

@@ -543,7 +543,7 @@ fr_unit_edits = {
         "CommandPoints": 45,
         "WeaponDescriptor": {
             "Salves": {
-                "ATGM_MILAN": 4,
+                "ATGM_MILAN_IFV": 4,
             }
         },
     },
@@ -722,7 +722,9 @@ fr_unit_edits = {
     "Roland_2_FR": {
         "CommandPoints": 120,
         "optics": {
-            "OpticalStrengthAltitude": 220,
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 220,
+            },
             "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "availability": [4, 3, 0, 0],
@@ -734,7 +736,9 @@ fr_unit_edits = {
     "Roland_3_FR": {
         "CommandPoints": 150,
         "optics": {
-            "OpticalStrengthAltitude": 300,
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 300,
+            },
             "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "availability": [0, 3, 2, 0],

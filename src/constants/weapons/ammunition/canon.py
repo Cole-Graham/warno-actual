@@ -51,7 +51,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 40,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 1575,
+                "MaximumRangeGRU": 1575,
             },
         },
     },
@@ -88,7 +88,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 45,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 1400,
+                "MaximumRangeGRU": 1400,
                 "RadiusSplashPhysicalDamagesGRU": 33,
                 "PhysicalDamages": 0.85,
                 "RadiusSplashSuppressDamagesGRU": 66,
@@ -101,7 +101,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Canon_HE_165mm_AVRE", "canon", None, False): { # 217
         "Ammunition": {
             "parent_membr": {
-                "PorteeMaximaleGRU": 1400,
+                "MaximumRangeGRU": 1400,
                 "PhysicalDamages": 4.0,
             },
         },
@@ -113,7 +113,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 40,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 1575,
+                "MaximumRangeGRU": 1575,
                 "PhysicalDamages": 1.75,
             },
         },
@@ -122,9 +122,9 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Canon_HE_142mm_AVRE", "canon", None, False): {
         "Ammunition": {
             "parent_membr": {
-                "PorteeMaximaleGRU": 875,
+                "MaximumRangeGRU": 875,
                 "PhysicalDamages": 3,
-                "TempsDeVisee": 2.0,
+                "AimingTime": 2.0,
             },
         },
     },
@@ -175,7 +175,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 40,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 2275,
+                "MaximumRangeGRU": 2275,
                 "SupplyCost": 220,
             },
         },
@@ -243,7 +243,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 45,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 1400,
+                "MaximumRangeGRU": 1400,
             },
         },
     },
@@ -297,7 +297,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 40,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 2275,
+                "MaximumRangeGRU": 2275,
                 "SupplyCost": 220,
             },
         },

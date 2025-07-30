@@ -34,6 +34,9 @@
         "aicursor.model": "gpt-3.5-turbo",
         "explorer.compactFolders": true,
         "files.autoSave": "afterDelay",
+        // Disable Black formatter
+        "black-formatter.enabled": false,
+        "python.formatting.provider": "none",
         "[yaml]": {
             "editor.autoIndent": "full"
         },

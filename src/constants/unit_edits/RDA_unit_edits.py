@@ -504,7 +504,7 @@ rda_unit_edits = {
                 "Vehicule",
             ],
         },
-        "Factory": "EDefaultFactories/Art",
+        "Factory": "EFactory/Art",
         "IdentifiedTextures": ["Texture_RTS_H_appui", "Texture_appui"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "SpecialtiesList": {
@@ -902,7 +902,7 @@ rda_unit_edits = {
                 "cards": 1,
             },
         },
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "availability": [9, 7, 0, 0],
         "max_speed": 4,
         "capacities": {
@@ -935,7 +935,9 @@ rda_unit_edits = {
             "display": "Fla-RAK STRELA-10M",
         },
         "optics": {
-            "OpticalStrengthAltitude": 220,
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 220,
+            },
             "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "CommandPoints": 65,
@@ -952,7 +954,9 @@ rda_unit_edits = {
 
     "ZSU_23_Shilka_DDR": {
         "optics": {
-            "OpticalStrengthAltitude": 220,
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 220,
+            },
             "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "CommandPoints": 75,
@@ -964,7 +968,9 @@ rda_unit_edits = {
 
     "2K12_KUB_DDR": {
         "optics": {
-            "OpticalStrengthAltitude": 300,
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 300,
+            },
             "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "CommandPoints": 90,

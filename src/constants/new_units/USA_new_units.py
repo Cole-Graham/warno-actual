@@ -43,7 +43,7 @@ USA_NEW_UNITS = {
         },
         "TransportedTexture": "UseInGame_Transport_COMMAND",
         "TransportedSoldier": "Rifles_half_LAW_US",
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "CommandPoints": 145,
         "UnitAttackValue": 1,
         "UnitDefenseValue": 16,
@@ -146,7 +146,7 @@ USA_NEW_UNITS = {
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "MenuIconTexture": "Texture_RTS_H_supply",
         "CubeActionDescriptor": "vehiculeSol_supply",
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "CommandPoints": 30,
         "Divisions": {
             "default": {
@@ -426,7 +426,7 @@ USA_NEW_UNITS = {
         },
         "TransportedTexture": "UseInGame_Transport_LAAD",
         "TransportedSoldier": "MANPAD_Stinger_C_US",
-        "Factory": "EDefaultFactories/DCA",
+        "Factory": "EFactory/DCA",
         "CommandPoints": 60,
         # "UnitAttackValue": 1,
         # "UnitDefenseValue": 16,
@@ -480,7 +480,7 @@ USA_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "CommandPoints": 350,
         "Divisions": {
             "default": {
@@ -525,7 +525,7 @@ USA_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "CommandPoints": 325,
         "Divisions": {
             "default": {
@@ -621,7 +621,7 @@ USA_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "CommandPoints": 295,
         "Divisions": {
             "default": {
@@ -671,7 +671,7 @@ USA_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "CommandPoints": 280,
         "Divisions": {
             "default": {
@@ -717,7 +717,7 @@ USA_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "CommandPoints": 225,
         "Divisions": {
             "default": {
@@ -763,7 +763,7 @@ USA_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "CommandPoints": 220,
         "Divisions": {
             "default": {
@@ -806,7 +806,7 @@ USA_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "CommandPoints": 150,
         "Divisions": {
             "default": {
@@ -849,7 +849,7 @@ USA_NEW_UNITS = {
                 "Vehicule_CMD",
             ],
         },
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "CommandPoints": 145,
         "Divisions": {
             "default": {

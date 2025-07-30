@@ -24,6 +24,10 @@ def edit_he_damage(source_path, game_db):  # noqa
         if namespace in exceptions:
             continue
         
+        if ammo_descr.v.by_m("Name", False) is None:
+            logger.debug(f"No name found for {namespace}")
+            continue
+        
         name_membr = ammo_descr.v.by_m("Name").v
         if name_membr == "'None'":
             continue

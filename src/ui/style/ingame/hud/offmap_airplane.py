@@ -14,7 +14,7 @@ def edit_uispecificoffmapairplaneview(source_path) -> None:
     
     # Update main component
     maincomponent = source_path.by_namespace("BUCKSpecificOffMapAirplaneMainComponentDescriptor").v
-    maincomponent.by_member("BorderLineColorToken").v = '"BoutonTempsLineAirwingM81"'
+    maincomponent.by_member("BorderLineColorToken").v = '"BoutonTemps_Line_Airwing_M81"'
     
     for component in maincomponent.by_member("Components").v:
         if not isinstance(component.v, ndf.model.Object):
@@ -23,9 +23,9 @@ def edit_uispecificoffmapairplaneview(source_path) -> None:
             if component.v.by_member("ElementName", False) is not None:
                 elementname = component.v.by_member("ElementName").v
                 if elementname == "'SelectionButton'":
-                    component.v.by_member("BorderLineColorToken").v = '"BoutonTempsLineAirwingM81"'
-                    component.v.by_member("BigBorderBackgroundColorToken").v = '"BoutonTempsLineAirwingM81"'
-                    component.v.by_member("TextColorToken").v = '"ButtonHUD/Text2AirwingM81"'
+                    component.v.by_member("BorderLineColorToken").v = '"BoutonTemps_Line_Airwing_M81"'
+                    component.v.by_member("BigBorderBackgroundColorToken").v = '"BoutonTemps_Line_Airwing_M81"'
+                    component.v.by_member("TextColorToken").v = '"ButtonHUD/Text2_Airwing_M81"'
                     component.v.insert(10, 'BorderThicknessToken = "2"')
     
     # Update airplane XP display
@@ -48,8 +48,8 @@ def edit_uispecificoffmapairplaneview(source_path) -> None:
     # Update unit name
     nomunite = source_path.by_namespace("NomUnite").v
     nomunite.insert(3, 'HasBorder = true')
-    nomunite.by_member("BackgroundBlockColorToken").v = '"OffMapUnitButtonNameM81"'
-    nomunite.insert(5, 'BorderLineColorToken = "OffMapUnitButtonNameM81"')
+    nomunite.by_member("BackgroundBlockColorToken").v = '"OffMapUnitButtonName_M81"'
+    nomunite.insert(5, 'BorderLineColorToken = "OffMapUnitButtonName_Line_M81"')
     
     # Update state gauge
     stategauge = source_path.by_namespace("StateGauge").v

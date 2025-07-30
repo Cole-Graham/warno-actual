@@ -15,12 +15,12 @@ def edit_uispecificingameidleunitview(source_path) -> None:
     
     # Update idle unit button
     idleunitbutton = source_path.by_namespace("IdleUnitButton").v
-    idleunitbutton.insert(6, 'BorderLineColorToken = "DeploymentPhase/IdleUnitM81"')
-    idleunitbutton.insert(7, 'ExternalBorderLineColorToken = "DeploymentPhase/IdleUnitM81"')
-    idleunitbutton.insert(8, 'PanelRoundedCorner_BorderLineColorToken = "DeploymentPhase/IdleUnitM81"')
+    idleunitbutton.insert(6, 'BorderLineColorToken = "DeploymentPhase/IdleUnit_M81"')
+    idleunitbutton.insert(7, 'ExternalBorderLineColorToken = "DeploymentPhase/IdleUnit_M81"')
+    idleunitbutton.insert(8, 'PanelRoundedCorner_BorderLineColorToken = "DeploymentPhase/IdleUnit_M81"')
     logger.debug("Updated idle unit button borders")
     
     # Update idle unit number text
     idleunitnumbertext = source_path.by_namespace("IdleUnitNumberText").v
-    idleunitnumbertext.by_member("TextColor").v = '"DeploymentPhase/IdleUnitM81"'
+    idleunitnumbertext.by_member("TextColor").v = '"DeploymentPhase/IdleUnit_M81"'
     logger.debug("Updated idle unit number text color")

@@ -8,9 +8,9 @@ from .offmap_airplane import edit_uispecificoffmapairplaneview
 from .production_menu import edit_uispecificskirmishproductionmenuview
 from .score import edit_uispecifichudscoreview
 from .selection_panel import (
+    edit_uispecificsmartgroupselectionpanelview,
     edit_uispecificunitselectionpanelview,
     edit_uispecificunitselectionweaponpanelview,
-    edit_uispecificsmartgroupselectionpanelview,
 )
 from .shortcuts import edit_uispecificshortcutsforselectionview
 from .time_panel import edit_uispecificingamehudtimepanelview
@@ -32,6 +32,7 @@ __all__ = [
     'edit_uispecificoffmapairplaneview',
     'edit_uispecificskirmishproductionmenuview',
     'edit_uispecifichudscoreview',
+    'edit_uispecificsmartgroupselectionpanelview',
     'edit_uispecificshortcutsforselectionview',
     'edit_uispecificingamehudtimepanelview',
     'edit_uispecificunitselectionpanelview',

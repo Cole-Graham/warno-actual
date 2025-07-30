@@ -16,10 +16,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "TimeBetweenTwoShots": 2.5,
                 "TimeBetweenTwoFx": 2.5,
-                "PorteeMaximaleTBAGRU": 2800,
-                "PorteeMaximaleHAGRU": 2625,
+                "MaximumRangeHelicopterGRU": 2800,
+                "MaximumRangeAirplaneGRU": 2625,
                 "PhysicalDamages": 5.0,
-                "TempsDeVisee": 1.2,
+                "AimingTime": 1.2,
             },
         },
         "BaseSupplyCost": 50,
@@ -36,9 +36,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "TimeBetweenTwoShots": 2.5,
                 "TimeBetweenTwoFx": 2.5,
-                "PorteeMaximaleTBAGRU": 2625,
-                "PorteeMaximaleHAGRU": 2450,
-                "TempsDeVisee": 1.2,
+                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 2450,
+                "AimingTime": 1.2,
             },
         },
         "BaseSupplyCost": 40,
@@ -61,10 +61,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 2.5,
-                "PorteeMaximaleTBAGRU": 2450,
-                "PorteeMaximaleHAGRU": 1750,
+                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeAirplaneGRU": 1750,
                 "TimeBetweenTwoSalvos": 25.0,
-                "TempsDeVisee": 1.2,
+                "AimingTime": 1.2,
             }
         },
         "BaseSupplyCost": 25,
@@ -86,10 +86,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Moving": 40,
             },
             "parent_membr": {
-                "PorteeMaximaleTBAGRU": 2450,
-                "PorteeMaximaleHAGRU": 1750,
+                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeAirplaneGRU": 1750,
                 "TimeBetweenTwoSalvos": 7.0,
-                "TempsDeVisee": 3.5,
+                "AimingTime": 3.5,
             }
         },
         "BaseSupplyCost": 25,
@@ -110,9 +110,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoShots": 3.0,
                 "TimeBetweenTwoFx": 3.0,
                 "PhysicalDamages": 5.0,
-                "PorteeMaximaleTBAGRU": 2800,
-                "PorteeMaximaleHAGRU": 3500,
-                "TempsDeVisee": 1.2,
+                "MaximumRangeHelicopterGRU": 2800,
+                "MaximumRangeAirplaneGRU": 3500,
+                "AimingTime": 1.2,
             },
         },
         "BaseSupplyCost": 60,
@@ -134,9 +134,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoShots": 3.0,
                 "TimeBetweenTwoFx": 3.0,
                 "PhysicalDamages": 5.0,
-                "PorteeMaximaleTBAGRU": 3150,
-                "PorteeMaximaleHAGRU": 3850,
-                "TempsDeVisee": 1.2,
+                "MaximumRangeHelicopterGRU": 3150,
+                "MaximumRangeAirplaneGRU": 3850,
+                "AimingTime": 1.2,
             },
         },
         "BaseSupplyCost": 60,
@@ -156,9 +156,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "TimeBetweenTwoShots": 2.5,
                 "TimeBetweenTwoFx": 2.5,
-                "PorteeMaximaleTBAGRU": 3150,
-                "PorteeMaximaleHAGRU": 2800,
-                "TempsDeVisee": 1.2,
+                "MaximumRangeHelicopterGRU": 3150,
+                "MaximumRangeAirplaneGRU": 2800,
+                "AimingTime": 1.2,
             },
         },
         "BaseSupplyCost": 60,
@@ -176,8 +176,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_tbagru",
             },
             "parent_membr": {
-                "PorteeMaximaleHAGRU": 1925,
-                "TempsDeVisee": 1.2,
+                "MaximumRangeAirplaneGRU": 1925,
+                "AimingTime": 1.2,
 
             }
         },
@@ -196,8 +196,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_hagru",
             },
             "parent_membr": {
-                "PorteeMaximaleHAGRU": 1925,
-                "TempsDeVisee": 2.4,
+                "MaximumRangeAirplaneGRU": 1925,
+                "AimingTime": 2.4,
             }
         },
         "BaseSupplyCost": 35,
@@ -212,7 +212,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("SAM_I_Hawk", "SAM", None, False): { # 193
         "Ammunition": {
             "parent_membr": {
-                "PorteeMaximaleTBAGRU": 3325,
+                "MaximumRangeHelicopterGRU": 3325,
                 "TimeBetweenTwoShots": 3.0,
                 "TimeBetweenTwoFx": 3.0,
             },
@@ -239,9 +239,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_tbagru",
             },
             "parent_membr": {
-                "PorteeMaximaleHAGRU": 1925,
+                "MaximumRangeAirplaneGRU": 1925,
                 "TimeBetweenTwoSalvos": 7.0,
-                "TempsDeVisee": 1.2,
+                "AimingTime": 1.2,
                 "SupplyCost": 35,
             },
         },
@@ -253,9 +253,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_hagru",
             },
             "parent_membr": {
-                "PorteeMaximaleHAGRU": 1925,
+                "MaximumRangeAirplaneGRU": 1925,
                 "TimeBetweenTwoSalvos": 7.0,
-                "TempsDeVisee": 3.5,
+                "AimingTime": 3.5,
                 "SupplyCost": 35,
             },
         },
@@ -273,9 +273,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Moving": 65,
             },
             "parent_membr": {
-                "PorteeMaximaleTBAGRU": 2625,
-                "PorteeMaximaleHAGRU": 1925,
-                "TempsDeVisee": 1.2,
+                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 1925,
+                "AimingTime": 1.2,
             }
         },
         "BaseSupplyCost": 35,
@@ -299,9 +299,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Moving": 65,
             },
             "parent_membr": {
-                "PorteeMaximaleTBAGRU": 2625,
-                "PorteeMaximaleHAGRU": 1925,
-                "TempsDeVisee": 2.4,
+                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 1925,
+                "AimingTime": 2.4,
             }
         },
         "BaseSupplyCost": 35,
@@ -325,9 +325,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Moving": 65,
             },
             "parent_membr": {
-                "PorteeMaximaleTBAGRU": 2625,
-                "PorteeMaximaleHAGRU": 2100,
-                "TempsDeVisee": 1.2,
+                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 2100,
+                "AimingTime": 1.2,
             }
         },
         "BaseSupplyCost": 35,
@@ -351,9 +351,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Moving": 65,
             },
             "parent_membr": {
-                "PorteeMaximaleTBAGRU": 2625,
-                "PorteeMaximaleHAGRU": 2100,
-                "TempsDeVisee": 2.4,
+                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 2100,
+                "AimingTime": 2.4,
             }
         },
         "BaseSupplyCost": 35,
@@ -368,11 +368,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("SAM_9M330_Tor", "SAM", None, False): { # 179
         "Ammunition": {
             "parent_membr": {
-                "PorteeMaximaleTBAGRU": 3325,
-                "PorteeMaximaleHAGRU": 3675,
+                "MaximumRangeHelicopterGRU": 3325,
+                "MaximumRangeAirplaneGRU": 3675,
                 "TimeBetweenTwoShots": 2.5,
                 "TimeBetweenTwoFx": 2.5,
-                "TempsDeVisee": 1.2,
+                "AimingTime": 1.2,
             }
         },
         "BaseSupplyCost": 80,
@@ -387,9 +387,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("SAM_ROLAND_2", "SAM", None, False): {
         "Ammunition": {
             "parent_membr": {
-                "PorteeMaximaleTBAGRU": 2800,
-                "PorteeMaximaleHAGRU": 3500,
-                "TempsDeVisee": 1.2,
+                "MaximumRangeHelicopterGRU": 2800,
+                "MaximumRangeAirplaneGRU": 3500,
+                "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 2.5,
                 "TimeBetweenTwoFx": 2.5,
             },
@@ -406,9 +406,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("SAM_ROLAND_3", "SAM", None, False): {
         "Ammunition": {
             "parent_membr": {
-                "PorteeMaximaleTBAGRU": 3150,
-                "PorteeMaximaleHAGRU": 4375,
-                "TempsDeVisee": 1.2,
+                "MaximumRangeHelicopterGRU": 3150,
+                "MaximumRangeAirplaneGRU": 4375,
+                "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 2.5,
                 "TimeBetweenTwoFx": 2.5,
             },
@@ -425,8 +425,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("SAM_9M336", "SAM", None, False): { # 178
         "Ammunition": {
             "parent_membr": {
-                "PorteeMaximaleTBAGRU": 2800,
-                "PorteeMaximaleHAGRU": 5250,
+                "MaximumRangeHelicopterGRU": 2800,
+                "MaximumRangeAirplaneGRU": 5250,
                 "TimeBetweenTwoShots": 3.0,
                 "TimeBetweenTwoFx": 3.0,
             }
@@ -444,11 +444,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("SAM_9M311_Tunguska", "SAM", None, False): { # 177
         "Ammunition": {
             "parent_membr": {
-                "PorteeMaximaleTBAGRU": 3150,
-                "PorteeMaximaleHAGRU": 2800,
+                "MaximumRangeHelicopterGRU": 3150,
+                "MaximumRangeAirplaneGRU": 2800,
                 "TimeBetweenTwoShots": 3.0,
                 "TimeBetweenTwoFx": 3.0,
-                "TempsDeVisee": 1.2,
+                "AimingTime": 1.2,
             }
         },
         "BaseSupplyCost": 75,
@@ -466,9 +466,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_tbagru",
             },
             "parent_membr": {
-                "PorteeMaximaleHAGRU": 1925,
+                "MaximumRangeAirplaneGRU": 1925,
                 "TimeBetweenTwoSalvos": 7.0,
-                "TempsDeVisee": 1.2,
+                "AimingTime": 1.2,
                 "SupplyCost": 35,
             }
         },
@@ -480,9 +480,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_hagru",
             },
             "parent_membr": {
-                "PorteeMaximaleHAGRU": 1925,
+                "MaximumRangeAirplaneGRU": 1925,
                 "TimeBetweenTwoSalvos": 7.0,
-                "TempsDeVisee": 3.5,
+                "AimingTime": 3.5,
                 "SupplyCost": 35,
 
             }
@@ -495,10 +495,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_tbagru",
             },
             "parent_membr": {
-                "PorteeMaximaleTBAGRU": 2450,
-                "PorteeMaximaleHAGRU": 1750,
+                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeAirplaneGRU": 1750,
                 "TimeBetweenTwoSalvos": 14.0,
-                "TempsDeVisee": 1.2,
+                "AimingTime": 1.2,
                 "SupplyCost": 25,
             }
         },
@@ -510,10 +510,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_hagru",
             },
             "parent_membr": {
-                "PorteeMaximaleTBAGRU": 2450,
-                "PorteeMaximaleHAGRU": 1750,
+                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeAirplaneGRU": 1750,
                 "TimeBetweenTwoSalvos": 14.0,
-                "TempsDeVisee": 3.5,
+                "AimingTime": 3.5,
                 "SupplyCost": 25,
             }
         },
@@ -525,10 +525,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_tbagru",
             },
             "parent_membr": {
-                "PorteeMaximaleTBAGRU": 2450,
-                "PorteeMaximaleHAGRU": 1750,
+                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeAirplaneGRU": 1750,
                 "TimeBetweenTwoSalvos": 7.0,
-                "TempsDeVisee": 1.2,
+                "AimingTime": 1.2,
             }
         },
         "BaseSupplyCost": 25,
@@ -551,10 +551,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_hagru",
             },
             "parent_membr": {
-                "PorteeMaximaleTBAGRU": 2450,
-                "PorteeMaximaleHAGRU": 1750,
+                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeAirplaneGRU": 1750,
                 "TimeBetweenTwoSalvos": 7.0,
-                "TempsDeVisee": 3.0,
+                "AimingTime": 3.0,
             }
         },
         "BaseSupplyCost": 25,
@@ -580,10 +580,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 50,
             },
             "parent_membr": {
-                "PorteeMaximaleTBAGRU": 2625,
-                "PorteeMaximaleHAGRU": 1925,
+                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 1925,
                 "TimeBetweenTwoSalvos": 7.0,
-                "TempsDeVisee": 1.2,
+                "AimingTime": 1.2,
                 "SupplyCost": 25,
             }
         },
@@ -598,10 +598,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 50,
             },
             "parent_membr": {
-                "PorteeMaximaleTBAGRU": 2625,
-                "PorteeMaximaleHAGRU": 1925,
+                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 1925,
                 "TimeBetweenTwoSalvos": 7.0,
-                "TempsDeVisee": 3.5,
+                "AimingTime": 3.5,
                 "SupplyCost": 25,
             }
         },
@@ -613,10 +613,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_tbagru",
             },
             "parent_membr": {
-                "PorteeMaximaleTBAGRU": 2800,
-                "PorteeMaximaleHAGRU": 2100,
+                "MaximumRangeHelicopterGRU": 2800,
+                "MaximumRangeAirplaneGRU": 2100,
                 "TimeBetweenTwoSalvos": 7.0,
-                "TempsDeVisee": 1.2,
+                "AimingTime": 1.2,
                 "SupplyCost": 35,
             }
         },
@@ -628,10 +628,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_hagru",
             },
             "parent_membr": {
-                "PorteeMaximaleTBAGRU": 2800,
-                "PorteeMaximaleHAGRU": 2100,
+                "MaximumRangeHelicopterGRU": 2800,
+                "MaximumRangeAirplaneGRU": 2100,
                 "TimeBetweenTwoSalvos": 7.0,
-                "TempsDeVisee": 3.5,
+                "AimingTime": 3.5,
                 "SupplyCost": 35,
             }
         },
@@ -648,10 +648,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "display": "FIM-92C Stinger",
             "token": "GPRDGRDYEA",
             "parent_membr": {
-                "PorteeMaximaleTBAGRU": 2625,
-                "PorteeMaximaleHAGRU": 1925,
+                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 1925,
                 "TimeBetweenTwoSalvos": 7.0,
-                "TempsDeVisee": 1.2,
+                "AimingTime": 1.2,
                 "SupplyCost": 35,
             }
         },
@@ -668,10 +668,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "display": "FIM-92C Stinger",
             "token": "GPRDGRDYEA",
             "parent_membr": {
-                "PorteeMaximaleTBAGRU": 2625,
-                "PorteeMaximaleHAGRU": 1925,
+                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 1925,
                 "TimeBetweenTwoSalvos": 7.0,
-                "TempsDeVisee": 3.5,
+                "AimingTime": 3.5,
                 "SupplyCost": 35,
             }
         },
@@ -686,10 +686,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 40,
             },
             "parent_membr": {
-                "PorteeMaximaleTBAGRU": 2100,
-                "PorteeMaximaleHAGRU": 1750,
+                "MaximumRangeHelicopterGRU": 2100,
+                "MaximumRangeAirplaneGRU": 1750,
                 "TimeBetweenTwoSalvos": 7.0,
-                "TempsDeVisee": 1.2,
+                "AimingTime": 1.2,
                 "SupplyCost": 20,
             }
         },
@@ -704,10 +704,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 40,
             },
             "parent_membr": {
-                "PorteeMaximaleTBAGRU": 2100,
-                "PorteeMaximaleHAGRU": 1750,
+                "MaximumRangeHelicopterGRU": 2100,
+                "MaximumRangeAirplaneGRU": 1750,
                 "TimeBetweenTwoSalvos": 7.0,
-                "TempsDeVisee": 3.5,
+                "AimingTime": 3.5,
                 "SupplyCost": 20,
             }
         },
@@ -721,10 +721,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "TimeBetweenTwoShots": 1.2,
                 "TimeBetweenTwoFx": 1.2,
-                "PorteeMaximaleTBAGRU": 2625,
-                "PorteeMaximaleHAGRU": 1925,
+                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 1925,
                 "TimeBetweenTwoSalvos": 12.0,
-                "TempsDeVisee": 1.2,
+                "AimingTime": 1.2,
             }
         },
         "BaseSupplyCost": 25,
@@ -747,10 +747,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "TimeBetweenTwoShots": 1.2,
                 "TimeBetweenTwoFx": 1.2,
-                "PorteeMaximaleTBAGRU": 2625,
-                "PorteeMaximaleHAGRU": 1925,
+                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 1925,
                 "TimeBetweenTwoSalvos": 12.0,
-                "TempsDeVisee": 3.0,
+                "AimingTime": 3.0,
             }
         },
         "BaseSupplyCost": 25,
@@ -768,10 +768,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_tbagru",
             },
             "parent_membr": {
-                "PorteeMaximaleTBAGRU": 2625,
-                "PorteeMaximaleHAGRU": 1750,
+                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 1750,
                 "TimeBetweenTwoSalvos": 14.0,
-                "TempsDeVisee": 1.2,
+                "AimingTime": 1.2,
                 "SupplyCost": 25,
             }
         },
@@ -783,10 +783,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_hagru",
             },
             "parent_membr": {
-                "PorteeMaximaleTBAGRU": 2625,
-                "PorteeMaximaleHAGRU": 1750,
+                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 1750,
                 "TimeBetweenTwoSalvos": 14.0,
-                "TempsDeVisee": 3.5,
+                "AimingTime": 3.5,
                 "SupplyCost": 25,
             }
         },

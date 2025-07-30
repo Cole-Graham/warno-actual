@@ -37,6 +37,9 @@ def edit_uispecificshowroomdeckcreatorscreencomponent(source_path) -> None:
     
     # Update factory name descriptor
     _update_factorynamedescriptor(source_path)
+    
+    # Update FreeCaseDescriptor
+    _update_freecasedescriptor(source_path)
 
 def edit_uispecificshowroomgroupsdeckcreatorscreenview(source_path) -> None:
     """Edit UISpecificShowRoomGroupsDeckCreatorScreenView.ndf."""
@@ -47,6 +50,33 @@ def edit_uispecificshowroomgroupsdeckcreatorscreenview(source_path) -> None:
     
     # Update unit amount button
     _update_unitamountbutton(source_path)
+    
+    # Update activation points component
+    _update_activationpointscomponent(source_path)
+
+def _update_activationpointscomponent(source_path) -> None:
+    """Update ActivationPointsComponent"""
+    activationpointscomponent = source_path.by_namespace("ActivationPointsComponent")
+    elements = activationpointscomponent.v.by_member("Elements")
+    for element in elements.v:
+        if isinstance(element.v, ndf.model.Object):
+            if is_obj_type(element.v, "BUCKListElementDescriptor"):
+                
+                if element.v.by_member("ElementName").v == '"ActivationPointsCurrent"':
+                    pass # for future edits of current activation points
+                
+                elif element.v.by_member("ElementName").v == '"ActivationPointsTemp"':
+                    element.v.by_member("TextStyle").v = '"ActivationPointTemp_M81"'
+                
+                elif element.v.by_member("ElementName").v == '"ActivationPointsMax"':
+                    pass # for future edits of max activation points
+                
+                elif element.v.by_member("ElementName").v == '"ActivationPointsTitre"':
+                    pass # for future edits of title
+                
+                    
+    activationpointscomponent.by_member("BackgroundBlockColorToken").v = '"M81_Ebony128"'
+    logger.debug("Updated ActivationPointsComponent template")
 
 def _update_factorynamedescriptor(source_path) -> None:
     """Update FactoryNameDescriptor template.
@@ -60,13 +90,16 @@ def _update_xp_button(source_path) -> None:
     boutonxp_template = source_path.by_namespace("BoutonXp").v
     component_descr = boutonxp_template.by_member("ComponentDescriptor").v
     
+    component_descr.by_member("BorderLineColorToken").v = '"BoutonXP_deck_border_M81"'
+    component_descr.by_member("BackgroundBlockColorToken").v = '"BoutonXP_deck_M81"'
+    
     for component in component_descr.by_member("Components").v:
         if not isinstance(component.v, ndf.model.Object) or not is_obj_type(component.v, "BUCKTextureDescriptor"):
             continue
             
         if component.v.by_member("TextureColorToken", False) is not None:
             if component.v.by_member("TextureColorToken").v == '"BoutonXP_deck_chevron"':
-                component.v.by_member("TextureColorToken").v = '"BoutonXP_deck_chevronM81"'
+                component.v.by_member("TextureColorToken").v = '"BoutonXP_deck_chevron_M81"'
     
     logger.debug("Updated XP button colors")
 
@@ -82,7 +115,7 @@ def _update_smart_group_container(source_path) -> None:
         
         if element.v.by_member("ElementName", False) is not None:
             if element.v.by_member("ElementName").v == '"SmartGroupNameEditableText"':
-                element.v.by_member("TextColorToken").v = '"ButtonHUD/Text2"'
+                element.v.by_member("TextColorToken").v = '"ButtonHUD/Text2_M81"'
                 
         else:
             continue
@@ -106,25 +139,25 @@ def _update_smart_group_container(source_path) -> None:
             HidePointerEvents = true
             PointerEventsToAllow = ~/EAllowablePointerEventType/Move
             HasBorder = true
-            BorderLineColorToken = "ButtonHUD/Text2"
+            BorderLineColorToken = "ButtonHUD/Text2_ALL_M81"
             BorderThicknessToken = "1"
         ),
     ]
 )
 '''
-    smartgroupinfoscontainer_template.by_member("ForegroundComponents").v = new_value
+    smartgroupinfoscontainer_template.by_member("ForegroundComponents").v = new_foreground_value
     logger.debug("Updated smart group container components")
     
 def _update_unitamountbutton(source_path) -> None:
     """Update UnitAmountButton"""
     unitamountbutton = source_path.by_namespace("UnitAmountButton").v
-    unitamountbutton.by_member("BorderLineColorToken").v = '"BoutonTempsLineM81"'
-    unitamountbutton.by_member("BackgroundBlockColorToken").v = '"BoutonTemps_BackgroundM81"'
+    unitamountbutton.by_member("BorderLineColorToken").v = '"BoutonTemps_Line_M81"'
+    unitamountbutton.by_member("BackgroundBlockColorToken").v = '"BoutonTemps_Background_M81"'
     components = unitamountbutton.by_member("Components").v
     for component in components:
         if not isinstance(component.v, ndf.model.Object) or not is_obj_type(component.v, "BUCKTextDescriptor"):
             continue
-        component.v.by_member("TextColor").v = '"UnitAmountButtonM81"'
+        component.v.by_member("TextColor").v = '"UnitAmountButton_M81"'
     logger.debug("Updated UnitAmountButton")
 
 def _update_deck_list(source_path) -> None:
@@ -190,7 +223,7 @@ def _update_navigation_button(source_path) -> None:
         if not isinstance(component.v, ndf.model.Object) or not is_obj_type(component.v, "BUCKTextDescriptor"):
             continue
             
-        component.v.by_member("TextColor").v = '<IsToggled> ? "BoutonXP_deck_chevronM81" : "BoutonXP_deck_chevronM81"'
+        component.v.by_member("TextColor").v = '<IsToggled> ? "BoutonXP_deck_chevron_M81" : "BoutonXP_deck_chevron_M81"'
     
     logger.debug("Updated navigation button colors")
 
@@ -206,5 +239,15 @@ def _update_top_bar(source_path) -> None:
 def _update_transport_button(source_path) -> None:
     """Update transport button properties."""
     notransportbuttondescriptor = source_path.by_namespace("NoTransportButtonDescriptor").v
-    notransportbuttondescriptor.by_member("BorderLineColorToken").v = '"BoutonVignetteAchatArmoryM81"'
+    notransportbuttondescriptor.by_member("BorderLineColorToken").v = '"BoutonVignetteAchatArmory_M81"'
     logger.debug("Updated transport button border color")
+
+def _update_freecasedescriptor(source_path) -> None:
+    """Update FreeCaseDescriptor"""
+    freecasedescriptor = source_path.by_namespace("FreeCaseDescriptor").v
+    components = freecasedescriptor.by_member("Components").v
+    for component in components:
+        if not isinstance(component.v, ndf.model.Object) or not is_obj_type(component.v, "BUCKTextureDescriptor"):
+            continue
+        component.v.by_member("TextureColorToken").v = '"DeckCreator/SlotLibre_M81"'
+    logger.debug("Updated FreeCaseDescriptor")

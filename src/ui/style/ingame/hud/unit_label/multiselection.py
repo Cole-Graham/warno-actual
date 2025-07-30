@@ -49,7 +49,7 @@ def _update_sensible_area_components(components: Any) -> None:
             continue
             
         component.v.by_member("Radius").v = "4"
-        component.v.by_member("BackgroundBlockColorToken").v = '"BoutonTempsBlockM81"'
-        component.v.by_member("BorderLineColorToken").v = '"BoutonTempsLineMultiM81"'
+        component.v.by_member("BackgroundBlockColorToken").v = '"BoutonTemps_ROE_M81"'
+        component.v.by_member("BorderLineColorToken").v = '"BoutonTemps_ROE_Border_M81"'
     
     logger.debug("Updated panel properties")

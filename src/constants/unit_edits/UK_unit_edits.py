@@ -573,7 +573,7 @@ uk_unit_edits = {
                 "Vehicule",
             ],
         },
-        "Factory": "EDefaultFactories/Art",
+        "Factory": "EFactory/Art",
         "IdentifiedTextures": ["Texture_RTS_H_appui", "Texture_appui"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "SpecialtiesList": {
@@ -728,7 +728,7 @@ uk_unit_edits = {
         "CommandPoints": 45,
         "WeaponDescriptor": {
             "Salves": {
-                "ATGM_MILAN": 6,
+                "ATGM_MILAN_IFV": 6,
             },
         },
     },
@@ -880,7 +880,9 @@ uk_unit_edits = {
     "DCA_Rapier_UK": {
         "CommandPoints": 65,
         "optics": {
-            "OpticalStrengthAltitude": 220,
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 220,
+            },
             "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "SpecialtiesList": {
@@ -892,7 +894,9 @@ uk_unit_edits = {
     "Tracked_Rapier_UK": {
         "CommandPoints": 85,
         "optics": {
-            "OpticalStrengthAltitude": 220,
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 220,
+            },
             "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "SpecialtiesList": {
@@ -904,7 +908,9 @@ uk_unit_edits = {
     "DCA_Rapier_FSA_UK": {  # towed FSB1
         "CommandPoints": 85,
         "optics": {
-            "OpticalStrengthAltitude": 300,
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 300,
+            },
             "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "SpecialtiesList": {
@@ -1042,7 +1048,9 @@ uk_unit_edits = {
             "token": "BTFXWDBFCS",
         },
         "optics": {
-            "OpticalStrengthAltitude": 375,
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 375,
+            },
         },
         "WeaponDescriptor": {
             "equipmentchanges": {

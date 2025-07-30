@@ -56,7 +56,7 @@ SOV_NEW_UNITS = {
         "TransportedTexture": "UseInGame_Transport_COMMAND",
 
         "TransportedSoldier": "MotRifles_SOV",
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
 
         "CommandPoints": 145,
         "UnitAttackValue": 1,
@@ -146,7 +146,7 @@ SOV_NEW_UNITS = {
         },
         "TransportedTexture": "UseInGame_Transport_COMMAND",
         "TransportedSoldier": "MotRifles_TTsko_SOV",
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "CommandPoints": 145,
         "UnitAttackValue": 1,
         "UnitDefenseValue": 16,
@@ -201,7 +201,7 @@ SOV_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "armor": {
             "front": 18,
         },
@@ -262,7 +262,7 @@ SOV_NEW_UNITS = {
                 "Vehicule_CMD",
             ],
         },
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "CommandPoints": 145,
         "SpecialitiesList": [
                 'hq_veh',

@@ -29,6 +29,7 @@ logger = setup_logger(__name__)
 
 
 def edit_weapon_constantes(source_path):
+    """Edit WeaponConstantes.ndf."""
     logger.info(f"--------- editing WeaponConstantes.ndf ---------")
     weapon_constantes_obj = source_path.by_n("WeaponConstantes").v
     

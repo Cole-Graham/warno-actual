@@ -16,6 +16,11 @@ def edit_textstyles(source_path) -> None:
 
     for row in source_path:
         if row.namespace == "TextStyleActivationPointTemp":
-            row.v.by_m("ColorBottom").v = "M81_EbonyLight"
-            row.v.by_m("ColorUp").v = "M81_EbonyLight"
-            logger.debug("Updated TextStyleActivationPointTemp colors")
+            new_entry = row.copy()
+            new_entry.namespace = "TextStyleActivationPointTemp_M81"
+            new_entry.v.by_m("ColorBottom").v = "M81_EbonyLight"
+            new_entry.v.by_m("ColorUp").v = "M81_EbonyLight"
+            source_path.insert(row.index, new_entry)
+            logger.debug("Updated TextStyleActivationPointTemp text style")
+            
+            break

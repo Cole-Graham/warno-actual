@@ -9,55 +9,63 @@ def edit_aim_times(source_path):
     """Edit aim times for weapons."""
     for ammo_descr in source_path:
         has_category = ammo_descr.v.by_m("TypeCategoryName", False) is not None
-        has_aim_time = ammo_descr.v.by_m("TempsDeVisee", False) is not None
+        has_aim_time = ammo_descr.v.by_m("AimingTime", False) is not None
 
         if has_aim_time and has_category:
             ammo_type = ammo_descr.v.by_m("TypeCategoryName").v
-            aim_time = ammo_descr.v.by_m("TempsDeVisee").v
-            if ammo_type == "'FIQMEQMUTK'": # Tank Gun
+            aim_time = ammo_descr.v.by_m("AimingTime").v
+            if ammo_type == "'FIQMEQMUTK'":  # Tank Gun
                 if aim_time == "3.0" or aim_time == "2.0":
-                    ammo_descr.v.by_m("TempsDeVisee").v = "1.5"
+                    ammo_descr.v.by_m("AimingTime").v = "1.5"
                     logger.info(f"(Ammunition.ndf) Changed {ammo_descr.namespace} aim time to 1.5")
                     continue
                 else:
-                    logger.debug(f"""(Ammunition.ndf) {ammo_descr.namespace} aim time is not 3.0, likely
+                    logger.debug(
+                        f"""(Ammunition.ndf) {ammo_descr.namespace} aim time is not 3.0, likely
                                    an ammo edit changed this (in which case ignore this warning) or it was
-                                   changed by Eugen""")
+                                   changed by Eugen"""
+                    )
                     continue
 
-            if ammo_type == "'NZWXQNJFDX'": # Rocket Launcher
+            if ammo_type == "'NZWXQNJFDX'":  # Rocket Launcher
                 if aim_time == "1.5":
-                    ammo_descr.v.by_m("TempsDeVisee").v = "1.0"
+                    ammo_descr.v.by_m("AimingTime").v = "1.0"
                     logger.info(f"(Ammunition.ndf) Changed {ammo_descr.namespace} aim time to 1.0")
                     continue
                 else:
-                    logger.debug(f"""(Ammunition.ndf) {ammo_descr.namespace} aim time is not 1.5, likely
+                    logger.debug(
+                        f"""(Ammunition.ndf) {ammo_descr.namespace} aim time is not 1.5, likely
                                    an ammo edit changed this (in which case ignore this warning) or it was
-                                   changed by Eugen""")
-                    continue
-            
-            if ammo_type == "'GUQUYPXNMN'": # HMG
-                if aim_time == "2.5":
-                    unit_type = "HMG Vehicle"
-                    ammo_descr.v.by_m("TempsDeVisee").v = "1.0"
-                    logger.info(f"(Ammunition.ndf) Changed {ammo_descr.namespace} aim time to 1.0 ({unit_type})")
-                    continue
-                else:
-                    logger.debug(f"""(Ammunition.ndf) {ammo_descr.namespace} aim time is not 2.5, likely
-                                   an ammo edit changed this (in which case ignore this warning) or it was
-                                   changed by Eugen""")
+                                   changed by Eugen"""
+                    )
                     continue
 
-            if ammo_type == "'BBQBDWUTJX'": # MMG
-                if aim_time == "2.2" or aim_time == "2.0":
-                    unit_type = "MMG Vehicle"
-                    ammo_descr.v.by_m("TempsDeVisee").v = "1.0"
+            if ammo_type == "'GUQUYPXNMN'":  # HMG
+                if aim_time == "2.5":
+                    unit_type = "HMG Vehicle"
+                    ammo_descr.v.by_m("AimingTime").v = "1.0"
                     logger.info(f"(Ammunition.ndf) Changed {ammo_descr.namespace} aim time to 1.0 ({unit_type})")
                     continue
                 else:
-                    logger.debug(f"""(Ammunition.ndf) {ammo_descr.namespace} aim time is not 2.2 or 2.0, likely
+                    logger.debug(
+                        f"""(Ammunition.ndf) {ammo_descr.namespace} aim time is not 2.5, likely
                                    an ammo edit changed this (in which case ignore this warning) or it was
-                                   changed by Eugen""")
+                                   changed by Eugen"""
+                    )
+                    continue
+
+            if ammo_type == "'BBQBDWUTJX'":  # MMG
+                if aim_time == "2.2" or aim_time == "2.0":
+                    unit_type = "MMG Vehicle"
+                    ammo_descr.v.by_m("AimingTime").v = "1.0"
+                    logger.info(f"(Ammunition.ndf) Changed {ammo_descr.namespace} aim time to 1.0 ({unit_type})")
+                    continue
+                else:
+                    logger.debug(
+                        f"""(Ammunition.ndf) {ammo_descr.namespace} aim time is not 2.2 or 2.0, likely
+                                   an ammo edit changed this (in which case ignore this warning) or it was
+                                   changed by Eugen"""
+                    )
                     continue
 
 
@@ -65,34 +73,36 @@ def edit_weapon_ranges(source_path):
     """Edit weapon ranges."""
 
     members_to_check = {
-        "PorteeMaximaleGRU": {
+        "MaximumRangeGRU": {
             1200: 1225,
         },
-        "PorteeMaximaleTBAGRU": {
+        "MaximumRangeHelicopterGRU": {
             2475: 2450,
         },
-        "PorteeMaximaleHAGRU": {
+        "MaximumRangeAirplaneGRU": {
             1950: 1925,
         },
     }
-    
+
     for weapon_descr in source_path:
         member = weapon_descr.v.by_m
         for range_type, data in members_to_check.items():
             if member(range_type, False) is None:
                 continue
-            
+
             for old_range, new_range in data.items():
                 if member(range_type).v == str(old_range):
                     member(range_type).v = str(new_range)
-                    logger.info(f"(Ammunition.ndf) Changed {weapon_descr.namespace} "
-                                f"{range_type} from {old_range} to {new_range}")
+                    logger.info(
+                        f"(Ammunition.ndf) Changed {weapon_descr.namespace} "
+                        f"{range_type} from {old_range} to {new_range}"
+                    )
                     continue
 
 
 def bomb_damage_standards(source_path):
     """Edit bomb damage standards in Ammunition.ndf"""
-    
+
     bombs = {
         "he_250kg": {
             "PhysicalDamages": 10,
@@ -128,7 +138,7 @@ def bomb_damage_standards(source_path):
     for ammo_descr in source_path:
         ammo_name = ammo_descr.namespace
         # name_hash = ammo_descr.v.by_m("Name")
-        traits_list = ammo_descr.v.by_m("TraitsToken")        
+        traits_list = ammo_descr.v.by_m("TraitsToken")
         if any("'HE'" in trait.v for trait in traits_list.v):
             if any(bomb in ammo_name for bomb in he_bomb_matching["250"]):
                 for key, value in bombs["he_250kg"].items():

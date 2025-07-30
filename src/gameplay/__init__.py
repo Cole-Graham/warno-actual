@@ -72,7 +72,7 @@ from .effects import (
     edit_damage_levels,
     edit_capacities,
 )
-from .game_constants import edit_gd_constantes, edit_orders, edit_ravitaillement
+from .game_constants import edit_gd_constants, edit_orders, edit_ravitaillement
 from .terrains import edit_terrains
 from .ui import (
     edit_division_emblems,
@@ -140,8 +140,8 @@ def get_editors(game_db: Dict[str, Any]) -> Dict[str, List[Callable]]:
     # Get base gameplay editors
     editors = {
         # Core gameplay mechanics
-        "GameData/Gameplay/Constantes/GDConstantes.ndf": [
-            lambda source_path: edit_gd_constantes(source_path),
+        "GameData/Gameplay/Constantes/GDConstants.ndf": [
+            lambda source_path: edit_gd_constants(source_path),
         ],
         "GameData/Gameplay/Constantes/Ravitaillement.ndf": [
             lambda source_path: edit_ravitaillement(source_path),

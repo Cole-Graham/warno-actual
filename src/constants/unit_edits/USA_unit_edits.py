@@ -1588,7 +1588,7 @@ usa_unit_edits = {
                 "Vehicule",
             ],
         },
-        "Factory": "EDefaultFactories/Art",
+        "Factory": "EFactory/Art",
         "IdentifiedTextures": ["Texture_RTS_H_appui", "Texture_appui"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "SpecialtiesList": {
@@ -2094,7 +2094,10 @@ usa_unit_edits = {
         #     "add_tags": ['"reco_radar"'],
         # },
         "optics": {
-            "OpticalStrength": 233.475
+            "OpticalStrengths": {
+                "EOpticalStrength/Standard": 233.475,
+                "EOpticalStrength/LowAltitude": 233.475,
+            },
         },
         "availability": [8, 0, 0, 0],
     },
@@ -2427,7 +2430,7 @@ usa_unit_edits = {
 
     "DCA_M167_Vulcan_20mm_US": {
         "CommandPoints": 25,
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "Divisions": {
             "default": {
                 "Transports": ["M113A3_US"],
@@ -2447,7 +2450,7 @@ usa_unit_edits = {
 
     "DCA_M167A2_Vulcan_20mm_US": {
         "CommandPoints": 25,
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "Divisions": {
             "add": ["US_3rd_Arm", "US_8th_Inf"],
             "is_transported": True,
@@ -2476,7 +2479,9 @@ usa_unit_edits = {
 
     "M48_Chaparral_MIM72F_US": {
         "optics": {
-            "OpticalStrengthAltitude": 220,
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 220,
+            },
             "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "CommandPoints": 130,
@@ -2489,7 +2494,9 @@ usa_unit_edits = {
     "DCA_I_Hawk_US": {
         "CommandPoints": 90,
         "optics": {
-            "OpticalStrengthAltitude": 300,
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 300,
+            },
             "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "availability": [4, 3, 0, 0],
@@ -2696,7 +2703,9 @@ usa_unit_edits = {
     "F4E_Phantom_II_AA_US": {
         "CommandPoints": 165,
         "optics": {
-            "OpticalStrengthAltitude": 375,
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 375,
+            },
         },
         "availability": [0, 3, 2, 0],
     },
@@ -2715,8 +2724,8 @@ usa_unit_edits = {
     "F4_Wild_Weasel_US": {
         "CommandPoints": 190,
         "optics": {
-            "SpecializedOpticalStrengths": {
-                "EVisionUnitType/AntiRadar": 1850.0,
+            "OpticalStrengths": {
+                "EOpticalStrength/AntiRadar": 1850.0,
             },
         },
         "WeaponDescriptor": {
@@ -2734,7 +2743,9 @@ usa_unit_edits = {
     "F4E_Phantom_II_HE_US": {
         "CommandPoints": 165,
         "optics": {
-            "OpticalStrengthAltitude": 375,
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 375,
+            },
         },
         "availability": [0, 2, 0, 0],
     },
@@ -2743,7 +2754,9 @@ usa_unit_edits = {
     "F4E_Phantom_II_CBU_US": {
         "CommandPoints": 165,
         "optics": {
-            "OpticalStrengthAltitude": 375,
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 375,
+            },
         },
         "availability": [0, 2, 0, 0],
     },
@@ -2751,7 +2764,9 @@ usa_unit_edits = {
     "F4E_Phantom_II_napalm_US": {
         "CommandPoints": 165,
         "optics": {
-            "OpticalStrengthAltitude": 375,
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 375,
+            },
         },
         "availability": [0, 3, 0, 0],
         "WeaponDescriptor": {
@@ -2869,7 +2884,9 @@ usa_unit_edits = {
             },
         },
         "optics": {
-            "OpticalStrengthAltitude": 375,
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 375,
+            },
         },
         "availability": [0, 1, 0, 0],
         "UpgradeFromUnit": "F16E_TER_HE_US",
@@ -2879,7 +2896,9 @@ usa_unit_edits = {
         "CommandPoints": 200,
         "ECM": -0.35,
         "optics": {
-            "OpticalStrengthAltitude": 375,
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 375,
+            },
         },
         "availability": [0, 2, 0, 0],
     },
@@ -2888,7 +2907,9 @@ usa_unit_edits = {
         "CommandPoints": 200,
         "ECM": -0.35,
         "optics": {
-            "OpticalStrengthAltitude": 375,
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 375,
+            },
         },
         "availability": [0, 2, 0, 0],
     },
@@ -2897,7 +2918,9 @@ usa_unit_edits = {
         "CommandPoints": 225,
         "ECM": -0.35,
         "optics": {
-            "OpticalStrengthAltitude": 375,
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 375,
+            },
         },
         "availability": [0, 2, 0, 0],
     },
@@ -2906,7 +2929,9 @@ usa_unit_edits = {
         "CommandPoints": 200,
         "ECM": -0.35,
         "optics": {
-            "OpticalStrengthAltitude": 375,
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 375,
+            },
         },
         "availability": [0, 3, 2, 0],
         "WeaponDescriptor": {
@@ -2924,7 +2949,9 @@ usa_unit_edits = {
     "F16E_SEAD_US": {
         "CommandPoints": 220,
         "optics": {
-            "OpticalStrengthAltitude": 375,
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 375,
+            },
         },
         "WeaponDescriptor": {
             "turrets": {
@@ -2951,7 +2978,9 @@ usa_unit_edits = {
         },
         "ECM": -0.35,
         "optics": {
-            "OpticalStrengthAltitude": 375,
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 375,
+            },
         },
         "availability": [0, 2, 0, 0],
     },
@@ -2971,7 +3000,9 @@ usa_unit_edits = {
             },
         },
         "optics": {
-            "OpticalStrengthAltitude": 375,
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 375,
+            },
         },
         "availability": [0, 0, 2, 0],
         "UpgradeFromUnit": None,
@@ -2988,7 +3019,9 @@ usa_unit_edits = {
         },
         "ECM": -0.35,
         "optics": {
-            "OpticalStrengthAltitude": 375,
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 375,
+            },
         },
         "availability": [0, 3, 2, 0],
         "UpgradeFromUnit": "F16E_AA_US",

@@ -46,6 +46,9 @@ from .style import (
     edit_uispecificsmartgroupselectionpanelview,
     edit_uiwarningpanel,
     edit_useoutgametextures,
+    edit_uispecificloginview,
+    edit_uispecificoutgamerecoverloginview,
+    edit_uispecificoutgamerecoverpasswordview,
 )
 
 

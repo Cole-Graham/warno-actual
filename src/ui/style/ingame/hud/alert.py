@@ -21,5 +21,5 @@ def edit_uispecifichudalertpanelview(source_path) -> None:
             continue
             
         if is_obj_type(component.v, "BUCKGradientDescriptor"):
-            component.v.by_member("TransitionColor1").v = '"AlertPanel/Gradient1M81"'
+            component.v.by_member("TransitionColor1").v = '"AlertPanel/Gradient1_M81"'
             logger.debug("Updated alert line gradient color")

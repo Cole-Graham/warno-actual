@@ -42,7 +42,7 @@ FR_NEW_UNITS = {
         },
         "TransportedTexture": "UseInGame_Transport_COMMAND",
         "TransportedSoldier": "Chasseurs_CMD2_FR",
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "CommandPoints": 145,
         "SpecialitiesList": [
             'hq_inf',
@@ -97,7 +97,7 @@ FR_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "CommandPoints": 245,
         "Divisions": {
             "default": {

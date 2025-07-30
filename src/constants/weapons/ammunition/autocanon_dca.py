@@ -14,9 +14,9 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 25,
             },
             "parent_membr": {
-                "PorteeMaximaleTBAGRU": 2450,
-                "PorteeMaximaleHAGRU": 2275,
-                "TempsDeVisee": 1.25,
+                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeAirplaneGRU": 2275,
+                "AimingTime": 1.25,
             },
         },
     },
@@ -28,10 +28,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 30,
             },
             "parent_membr": {
-                "PorteeMaximaleTBAGRU": 2625,
-                "PorteeMaximaleHAGRU": 2450,
+                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 2450,
                 "SuppressDamages": 60,
-                "TempsDeVisee": 1.25,
+                "AimingTime": 1.25,
                 "NbTirParSalves": 16,
                 "AffichageMunitionParSalve": 128,
             },
@@ -41,9 +41,9 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_2_canons_HS_831_30mm", "DCA", None, False): {
         "Ammunition": {
             "parent_membr": {
-                "PorteeMaximaleTBAGRU": 2625,
-                "PorteeMaximaleHAGRU": 2450,
-                "TempsDeVisee": 1.25,
+                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 2450,
+                "AimingTime": 1.25,
             },
         },
     },
@@ -51,10 +51,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_2_canon_ZU23_2_23mm_TOWED", "DCA", None, False): { # 261
         "Ammunition": {
             "parent_membr": {
-                "PorteeMaximaleGRU": 1225,
-                "PorteeMaximaleTBAGRU": 2450,
-                "PorteeMaximaleHAGRU": 1925,
-                "TempsDeVisee": 1.25,
+                "MaximumRangeGRU": 1225,
+                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeAirplaneGRU": 1925,
+                "AimingTime": 1.25,
             },
         },
     },
@@ -62,10 +62,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_2_canon_ZU23_2_23mm", "DCA", None, False): { # 260
         "Ammunition": {
             "parent_membr": {
-                "PorteeMaximaleGRU": 1225,
-                "PorteeMaximaleTBAGRU": 2450,
-                "PorteeMaximaleHAGRU": 1925,
-                "TempsDeVisee": 1.25,
+                "MaximumRangeGRU": 1225,
+                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeAirplaneGRU": 1925,
+                "AimingTime": 1.25,
             },
         },
     },
@@ -73,10 +73,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_2_canon_Jod_SP_23mm", "DCA", None, False): { # ???
         "Ammunition": {
             "parent_membr": {
-                "PorteeMaximaleGRU": 1225,
-                "PorteeMaximaleTBAGRU": 2450,
-                "PorteeMaximaleHAGRU": 1925,
-                "TempsDeVisee": 1.25,
+                "MaximumRangeGRU": 1225,
+                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeAirplaneGRU": 1925,
+                "AimingTime": 1.25,
             },
         },
     },
@@ -84,10 +84,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_2_canon_Jod_towed_23mm", "DCA", None, False): { # ???
         "Ammunition": {
             "parent_membr": {
-                "PorteeMaximaleGRU": 1225,
-                "PorteeMaximaleTBAGRU": 2450,
-                "PorteeMaximaleHAGRU": 1925,
-                "TempsDeVisee": 1.25,
+                "MaximumRangeGRU": 1225,
+                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeAirplaneGRU": 1925,
+                "AimingTime": 1.25,
             },
         },
     },

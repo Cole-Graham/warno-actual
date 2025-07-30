@@ -7,7 +7,7 @@ logger = setup_logger(__name__)
 
 def edit_buckspecificbackgrounds(source_path) -> None:
     """Edit BuckSpecificBackgrounds.ndf.
-    
+    NOT SURE IF THIS IS NEEDED OR WAS EVER NEEDED, TEMPORARILY DISABLED.
     Args:
         source_path: NDF file containing background template definitions
     """

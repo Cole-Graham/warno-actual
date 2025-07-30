@@ -51,7 +51,7 @@ RDA_NEW_UNITS = {
         },
         "TransportedTexture": "UseInGame_Transport_COMMAND",
         "TransportedSoldier": "MotRifles_CMD_DDR",
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "CommandPoints": 145,
         "UnitAttackValue": 1,
         "UnitDefenseValue": 16,
@@ -107,7 +107,7 @@ RDA_NEW_UNITS = {
                 "Vehicule_CMD",
             ],
         },
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "CommandPoints": 145,
         "SpecialitiesList": [
             'hq_veh',
@@ -228,7 +228,7 @@ RDA_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "CommandPoints": 190,
         "SpecialitiesList": [
                 'hq_tank',
@@ -291,7 +291,7 @@ RDA_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "CommandPoints": 265,
         "SpecialitiesList": [
                 'hq_tank',
@@ -354,7 +354,7 @@ RDA_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "CommandPoints": 285,
         "SpecialitiesList": [
             'hq_tank',

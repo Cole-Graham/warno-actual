@@ -42,7 +42,7 @@ def edit_uispecificunitbuttonview(source_path) -> None:
 def _update_main_unit_button(source_path) -> None:
     """Update main unit button properties."""
     mainunitbutton_template = source_path.by_namespace("MainUnitButton").v
-    mainunitbutton_template.by_member("BorderLineColorToken").v = '"BoutonVignetteAchatArmoryM81"'
+    mainunitbutton_template.by_member("BorderLineColorToken").v = '"BoutonVignetteAchatArmory_M81"'
     logger.debug("Updated main unit button border color")
 
 
@@ -57,7 +57,7 @@ def _update_add_unit_button(source_path) -> None:
     """Update add unit button properties."""
     addunitbutton = source_path.by_namespace("AddUnitButton").v
     addunitbutton.by_member("TextSizeToken").v = '"20"'
-    addunitbutton.by_member("TextColorToken").v = "'BoutonXP_deck_chevronM81'"
+    addunitbutton.by_member("TextColorToken").v = "'BoutonXP_deck_chevron_M81'"
     addunitbutton.by_member("TextTypefaceToken").v = "'Bombardier'"
     logger.debug("Updated add unit button text properties")
 
@@ -132,7 +132,7 @@ def _update_texture_properties(component_descr: Any) -> None:
     texture_frame.add("AlignementToFather = [0.50, 0.50]")
     texture_frame.add("AlignementToAnchor = [0.50, 0.50]")
     
-    component_descr.by_member("BackgroundBlockColorToken").v = '"ArmoryUnitButtonNameM81Artichoke"'
+    component_descr.by_member("BackgroundBlockColorToken").v = '"ArmoryUnitButtonName_M81_Artichoke"'
     component_descr.add('TextureColorToken = "M81_VeryDarkCharcoal"')
 
 
@@ -143,7 +143,7 @@ def _update_text_components(source_path) -> None:
     
     # Update pack and unit name list
     packandunitnamelist = source_path.by_namespace("PackAndUnitNameList").v
-    packandunitnamelist.by_member("BackgroundBlockColorToken").v = '"ArmoryUnitButtonNameM81Artichoke"'
+    packandunitnamelist.by_member("BackgroundBlockColorToken").v = '"ArmoryUnitButtonName_M81_Artichoke"'
     
     # Update additional unit name text
     _update_additional_name_text(source_path)
@@ -181,13 +181,13 @@ def _update_unit_name_text(source_path) -> None:
     
     # Add text padding
     unitbuttonunitnametext.insert(9, 'TextPadding = TRTTILength4 ( Magnifiable = [0.0, 2.0, 0.0, 0.0] )')
-    unitbuttonunitnametext.by_member("TextColor").v = '"BoutonXP_deck_chevronM81"'
+    unitbuttonunitnametext.by_member("TextColor").v = '"BoutonXP_deck_chevron_M81"'
 
 
 def _update_additional_name_text(source_path) -> None:
     """Update additional unit name text properties."""
     unitbuttonadditionalunitnametext = source_path.by_namespace("UnitButtonAdditionalUnitNameText").v
-    unitbuttonadditionalunitnametext.by_member("BackgroundBlockColorToken").v = '"ArmoryUnitButtonNameM81"'
+    unitbuttonadditionalunitnametext.by_member("BackgroundBlockColorToken").v = '"ArmoryUnitButtonName_M81"'
     unitbuttonadditionalunitnametext.by_member("TextColor").v = '"TransportedText_M81"'
 
     prixunit = source_path.by_namespace("PrixUnit").v

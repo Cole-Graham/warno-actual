@@ -55,7 +55,7 @@ def _update_panel_elements(elements: Any) -> None:
 
 
 def _update_slider_components(elements: Any) -> None:
-    """Update slider component properties."""
+    """Update ReplayPanelSliderHorizontalList."""
     for element in elements:
         if not isinstance(element.v, ndf.model.Object) or not is_obj_type(element.v, "BUCKListElementDescriptor"):
             continue
@@ -69,24 +69,44 @@ def _update_slider_components(elements: Any) -> None:
                 continue
                 
             component.v.by_member("BorderLineColorToken").v = '"M81_DarkCharcoalSelection"'
+            subcomponents = component.v.by_member("Components").v
+            for subcomponent in subcomponents:
+                if not isinstance(subcomponent.v, ndf.model.Object):
+                    continue
+                
+                elif is_obj_type(subcomponent.v, "BUCKGaugeValueDescriptor"):
+                    subcomponent.v.by_member("BackgroundBlockColorToken").v = '"SliderBasic/SliderBar_M81"'
+                    
+                    nested_subcomponents = subcomponent.v.by_member("Components").v
+                    for nested_component in nested_subcomponents:
+                        if not isinstance(nested_component.v, ndf.model.Object):
+                            continue
+                        
+                        if is_obj_type(nested_component.v, "BUCKContainerDescriptor"):
+                            nested_component.v.by_m("BackgroundBlockColorToken").v = '"SliderBasic/ThumbColor_M81"'
+                        
     
     logger.debug("Updated slider component colors")
 
 
 def _update_button_components(elements: Any) -> None:
-    """Update button component properties."""
+    """Update ReplayPanelMainButtonsContainerList."""
     for element in elements:
         if not isinstance(element.v, ndf.model.Object) or not is_obj_type(element.v, "BUCKListElementDescriptor"):
             continue
             
         component_descr = element.v.by_member("ComponentDescriptor").v
-        if not isinstance(component_descr, ndf.model.Object) or component_descr.type != "BUCKContainerDescriptor":
+        if not isinstance(component_descr, ndf.model.Object):
             continue
-            
-        for component in component_descr.by_member("Components").v:
-            if not isinstance(component.v, ndf.model.Object) or not is_obj_type(component.v, "BUCKTextDescriptor"):
-                continue
-                
-            component.v.by_member("TextColor").v = '"M81_ArtichokeVeryLight"'
+        
+        if component_descr.type == "BUCKContainerDescriptor":  # noqa
+            for component in component_descr.by_member("Components").v:
+                if not isinstance(component.v, ndf.model.Object) or not is_obj_type(component.v, "BUCKTextDescriptor"):
+                    continue
+                    
+                component.v.by_member("TextColor").v = '"M81_ArtichokeVeryLight"'
+        
+        elif component_descr.type == "BUCKSpecificDropdownDescriptor":  # noqa
+            component_descr.by_member("ItemComponentBackgroundColor").v = '"DropdownBlanc_M81"'
     
     logger.debug("Updated button text colors")

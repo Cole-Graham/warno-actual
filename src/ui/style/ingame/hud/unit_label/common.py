@@ -80,7 +80,7 @@ def _update_current_unit_label_upper_list(source_path) -> None:
     currentunitlabelupperlist_template.insert(5, 'HasBorder = true')
     currentunitlabelupperlist_template.insert(6, 'BorderThicknessToken = "2"')
     currentunitlabelupperlist_template.insert(7, 'BordersToDraw = ~/TBorderSide/Bottom')
-    currentunitlabelupperlist_template.insert(8, 'BorderLineColorToken = "UnitLabelBorder_M81_Otan"')
+    currentunitlabelupperlist_template.insert(8, 'BorderLineColorToken = "UnitLabelBorder_M81"')
     currentunitlabelupperlist_template.insert(9, 'BorderLocalRenderLayer = 5')
     
     # Update fit style

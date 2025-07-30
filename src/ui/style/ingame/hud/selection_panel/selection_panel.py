@@ -85,8 +85,8 @@ def _update_smartgroupactionbuttontemplate(source_path) -> None:
     
     # edit template params
     template_params = smartgroupactionbuttontemplate.params
-    template_params.by_param("ReinforceBackgroundBlockColorToken").v = '"BoutonTemps_BackgroundM81"'
-    template_params.by_param("ReinforceBorderLineColorToken").v = '"BoutonTempsLineM81"'
+    template_params.by_param("ReinforceBackgroundBlockColorToken").v = '"BoutonTemps_Background_M81"'
+    template_params.by_param("ReinforceBorderLineColorToken").v = '"BoutonTemps_Line_M81"'
     
     # edit template members
     components = smartgroupactionbuttontemplate.by_member("Components").v
@@ -95,7 +95,7 @@ def _update_smartgroupactionbuttontemplate(source_path) -> None:
             if is_obj_type(component.v, "BUCKContainerDescriptor"):
                 pass # placeholder for any future edits of BUCKContainerDescriptor
             elif is_obj_type(component.v, "BUCKTextDescriptor"):
-                component.v.by_member("TextColor").v = '"ButtonHUD/Text2"'
+                component.v.by_member("TextColor").v = '"ButtonHUD/Text2_M81"'
 
 def _update_smartgrouplabelcontainer(source_path) -> None:
     """SmartGroupLabelContainer"""
@@ -103,8 +103,8 @@ def _update_smartgrouplabelcontainer(source_path) -> None:
     for component in smartgrouplabelcontainer.by_member("Components").v:
         if isinstance(component.v, ndf.model.Object):
             if is_obj_type(component.v, "SmartGroupActionButton"):
-                component.v.by_member("ReinforceBackgroundBlockColorToken").v = '"BoutonTemps_BackgroundM81"'
-                component.v.by_member("ReinforceBorderLineColorToken").v = '"BoutonTempsLineM81"'
+                component.v.by_member("ReinforceBackgroundBlockColorToken").v = '"BoutonTemps_Background_M81"'
+                component.v.by_member("ReinforceBorderLineColorToken").v = '"BoutonTemps_Line_M81"'
             elif is_obj_type(component.v, "BUCKContainerDescriptor"):
                 pass # placeholder for any future edits of BUCKContainerDescriptor
     
@@ -138,7 +138,7 @@ def _update_selection_panel_name(source_path) -> None:
 
 def _update_panel_properties(panel: Any) -> None:
     """Update panel properties."""
-    panel.by_member("BorderLineColorToken").v = '"BoutonTempsLineM81"'
+    panel.by_member("BorderLineColorToken").v = '"BoutonTemps_Line_M81"'
     panel.by_member("RoundedVertexes").v = "[false, false, false, true]"
     panel.add('HasBackground = true')
     panel.add('BackgroundBlockColorToken = "M81_DarkCharcoal"')
@@ -293,15 +293,15 @@ def _update_shortcut_container(container: Any) -> None:
         if not isinstance(component.v, ndf.model.Object) or not is_obj_type(component.v, "PanelRoundedCorner"):
             continue
             
-        component.v.by_member("BackgroundBlockColorToken").v = '"BoutonTempsBlockM81"'
-        component.v.by_member("BorderLineColorToken").v = '"BoutonTempsLineM81"'
+        component.v.by_member("BackgroundBlockColorToken").v = '"BoutonTemps_Background_M81"'
+        component.v.by_member("BorderLineColorToken").v = '"BoutonTemps_Line_M81"'
 
 
 def _update_roe_shortcuts_panel(source_path) -> None:
     """Update ROE shortcuts panel properties."""
     panelselectionunique_roeshortcuts = source_path.by_namespace("PanelSelectionUnique_RoeShortcuts").v
     panelselectionunique_roeshortcuts.by_member("BackgroundBlockColorToken").v = '"M81_Artichoke"'
-    panelselectionunique_roeshortcuts.by_member("BorderLineColorToken").v = '"BoutonTempsM81Line"'
+    panelselectionunique_roeshortcuts.by_member("BorderLineColorToken").v = '"BoutonTemps_Line_M81"'
     
     for component in panelselectionunique_roeshortcuts.by_member("Components").v:
         if not isinstance(component.v, ndf.model.Object) or not is_obj_type(component.v, "BUCKTextDescriptor"):

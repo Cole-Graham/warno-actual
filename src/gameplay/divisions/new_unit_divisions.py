@@ -76,8 +76,8 @@ def add_division_rules(source_path: Any) -> None:
                         logger.info(f"Removed old entry for {donor} from {division}")
 
 
-def add_to_divisions(source_path: Any) -> None:  # don't need anymore
-    """Add units to Divisions.ndf."""
+def add_to_divisions(source_path: Any) -> None:
+    """Add units to Divisions.ndf (Don't need this function anymore)."""
     logger.info("Adding units to division packs")
     
     for donor, edits in NEW_UNITS.items():

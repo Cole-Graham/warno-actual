@@ -15,8 +15,8 @@ def edit_uiingameresources(source_path: Any) -> None:
     uiingameresource = source_path.by_n("UIInGameResource").v
     viewdescriptors_map = uiingameresource.by_m("ViewDescriptors").v
     ingamechatviewdescriptor = viewdescriptors_map.by_k('"UISpecificIngameChatViewDescriptor"').v
-    ingamechatviewdescriptor.by_m("PanelColorStyle").v = '"ChatPANELColorStyleM81"'
-    ingamechatviewdescriptor.by_m("ButtonColorStyle").v = '"ChatBUTTONColorStyleM81"'
+    ingamechatviewdescriptor.by_m("PanelColorStyle").v = '"ChatPANELColorStyle_All_M81"'
+    ingamechatviewdescriptor.by_m("ButtonColorStyle").v = '"ChatBUTTONColorStyle_All_M81"'
     
     # Update frame width
     source_path.by_n("IngameHUDRightFramesWidth").v = "385.0"

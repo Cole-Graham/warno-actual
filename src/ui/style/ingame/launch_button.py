@@ -71,7 +71,7 @@ def _add_fob_reminder_text(source_path) -> None:
 def _update_launch_button_cancel(source_path) -> None:
     """Update launch button cancel properties."""
     launchbuttoncanceldescriptor = source_path.by_namespace("LaunchButtonCancelDescriptor").v
-    launchbuttoncanceldescriptor.by_member("TextColor").v = '"DeploymentPhase/CancelTimerM81"'
+    launchbuttoncanceldescriptor.by_member("TextColor").v = '"DeploymentPhase/CancelTimer_M81"'
     logger.debug("Updated launch button cancel color")
 
 

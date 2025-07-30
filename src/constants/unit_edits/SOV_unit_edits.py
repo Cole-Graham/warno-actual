@@ -1278,7 +1278,7 @@ sov_unit_edits = {
                 "Vehicule",
             ],
         },
-        "Factory": "EDefaultFactories/Art",
+        "Factory": "EFactory/Art",
         "IdentifiedTextures": ["Texture_RTS_H_appui", "Texture_appui"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "SpecialtiesList": {
@@ -1917,7 +1917,7 @@ sov_unit_edits = {
 
     "DCA_ZU_23_2_TTsko_SOV": {
         "CommandPoints": 20,
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "Divisions": {
             "add": ["SOV_119IndTkBrig"],
             "is_transported": True,
@@ -1942,7 +1942,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "availability": [0, 9, 7, 0],
         "max_speed": 4,
         "capacities": {
@@ -2044,7 +2044,9 @@ sov_unit_edits = {
 
     "Tunguska_2K22_SOV": {
         "optics": {
-            "OpticalStrengthAltitude": 300,
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 300,
+            },
             "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "CommandPoints": 135,
@@ -2069,7 +2071,9 @@ sov_unit_edits = {
 
     "Tor_SOV": {
         "optics": {
-            "OpticalStrengthAltitude": 300,
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 300,
+            },
             "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "CommandPoints": 150,
@@ -2086,7 +2090,9 @@ sov_unit_edits = {
 
     "MTLB_Strela10_SOV": {
         "optics": {
-            "OpticalStrengthAltitude": 220,
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 220,
+            },
             "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "CommandPoints": 65,
@@ -2103,7 +2109,9 @@ sov_unit_edits = {
 
     "MTLB_Strela10M3_SOV": {
         "optics": {
-            "OpticalStrengthAltitude": 220,
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 220,
+            },
             "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "CommandPoints": 100,
@@ -2120,7 +2128,9 @@ sov_unit_edits = {
 
     "2K12_KUB_SOV": {
         "optics": {
-            "OpticalStrengthAltitude": 300,
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 300,
+            },
             "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "CommandPoints": 90,

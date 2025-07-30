@@ -42,40 +42,40 @@ def edit_uispecificingamehudtimepanelview(source_path) -> None:
                 
                 if elementname == '"SpeedPauseButton"':
                     component_descr.by_member("BackgroundColorToken").v = '"Transparent"'  # noqa
-                    component_descr.by_member("BorderLineColorToken").v = '"TimePanel/ButtonBorderM81Pause"'  # noqa
-                    component_descr.add('TextureColorToken = "BoutonTimePanelM81Pause"')
+                    component_descr.by_member("BorderLineColorToken").v = '"TimePanel/ButtonBorder_M81Pause"'  # noqa
+                    component_descr.add('TextureColorToken = "BoutonTimePanel_M81Pause"')
                 
                 elif elementname == '"SpeedSlowButton"':
                     componentframe = component_descr.by_member("ComponentFrame").v  # noqa
                     componentframe.by_member("MagnifiableWidthHeight").v = "[GameSpeedPanelButtonWidth, 0.0]"
                     componentframe.add("RelativeWidthHeight = [0.0, 1.0]")
                     component_descr.add('BackgroundColorToken = "Transparent"')
-                    component_descr.add('BorderLineColorToken = "TimePanel/ButtonBorderM81Slow"')
+                    component_descr.add('BorderLineColorToken = "TimePanel/ButtonBorder_M81Slow"')
                     component_descr.add('BorderThickness = "1"')
-                    component_descr.add('TextureColorToken = "BoutonTimePanelM81Slow"')
+                    component_descr.add('TextureColorToken = "BoutonTimePanel_M81Slow"')
                     component_descr.by_member("BackgroundTexture").v = '"vitesse03"'  # noqa
                 
                 elif elementname == '"SpeedPlayButton"':
                     componentframe = component_descr.by_member("ComponentFrame").v  # noqa
                     componentframe.remove_by_member("RelativeWidthHeight")
                     componentframe.by_member("MagnifiableWidthHeight").v = "[25.0, 25.0]"
-                    component_descr.add('BackgroundColorToken = "BoutonTimePanelM81Play"')
+                    component_descr.add('BackgroundColorToken = "BoutonTimePanel_M81Play"')
                     component_descr.add('DefaultToggleValue = true')
-                    component_descr.add('BorderLineColorToken = "TimePanel/ButtonBorderM81Play"')
+                    component_descr.add('BorderLineColorToken = "TimePanel/ButtonBorder_M81Play"')
                     component_descr.add('BorderThickness = "1"')
-                    component_descr.add('TextureColorToken = "BoutonTimePanelM81Play"')
+                    component_descr.add('TextureColorToken = "BoutonTimePanel_M81Play"')
                     component_descr.by_member("BackgroundTexture").v = '"vitesse02"'  # noqa
                 
                 elif elementname == '"SpeedFastButton"':
-                    component_descr.add('BackgroundColorToken = "BoutonTimePanelM81Fast"')
-                    component_descr.add('BorderLineColorToken = "TimePanel/ButtonBorderM81Fast"')
+                    component_descr.add('BackgroundColorToken = "BoutonTimePanel_M81Fast"')
+                    component_descr.add('BorderLineColorToken = "TimePanel/ButtonBorder_M81Fast"')
                     component_descr.add('BorderThickness = "1"')
-                    component_descr.add('TextureColorToken = "BoutonTimePanelM81Fast"')
+                    component_descr.add('TextureColorToken = "BoutonTimePanel_M81Fast"')
                 
                 elif elementname == '"SpeedVeryFastButton"':
-                    component_descr.add('BackgroundColorToken = "BoutonTimePanelM81Fast"')
-                    component_descr.add('BorderLineColorToken = "TimePanel/ButtonBorderM81Fast"')
+                    component_descr.add('BackgroundColorToken = "BoutonTimePanel_M81Fast"')
+                    component_descr.add('BorderLineColorToken = "TimePanel/ButtonBorder_M81Fast"')
                     component_descr.add('BorderThickness = "1"')
-                    component_descr.add('TextureColorToken = "BoutonTimePanelM81Fast"')
+                    component_descr.add('TextureColorToken = "BoutonTimePanel_M81Fast"')
     
     logger.debug("Updated time panel properties")

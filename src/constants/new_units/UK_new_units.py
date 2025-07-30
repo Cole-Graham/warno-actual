@@ -33,7 +33,7 @@ UK_NEW_UNITS = {
             ],
         },
         "TransportedSoldier": "DCA_M167A2_Vulcan_20mm_UK",
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "CommandPoints": 25,
         "Divisions": {
             "default": {
@@ -103,7 +103,7 @@ UK_NEW_UNITS = {
         },
         "TransportedTexture": "UseInGame_Transport_COMMAND",
         "TransportedSoldier": "Rifles_UK",
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
 
         "CommandPoints": 145,
         "UnitAttackValue": 1,
@@ -164,7 +164,7 @@ UK_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EDefaultFactories/Logistic",
+        "Factory": "EFactory/Logistic",
         "CommandPoints": 290,
         "Divisions": {
             "default": {

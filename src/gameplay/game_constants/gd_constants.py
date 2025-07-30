@@ -7,13 +7,13 @@ from src.utils.logging_utils import setup_logger
 logger = setup_logger(__name__)
 
 
-def edit_gd_constantes(source_path) -> None:
-    """Edit game constants in GDConstantes.ndf.
+def edit_gd_constants(source_path) -> None:
+    """Edit game constants in GDConstants.ndf.
     
     Args:
         source_path: The NDF file being edited
     """
-    logger.info("------------- editing GDConstantes.ndf -------------")
+    logger.info("------------- editing GDConstants.ndf -------------")
     
     for row in source_path:
         if row.namespace == "Constantes":

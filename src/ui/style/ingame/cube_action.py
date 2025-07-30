@@ -26,14 +26,14 @@ def _update_cube_action_button(source_path) -> None:
     cubeactionbutton_template = source_path.by_namespace("CubeActionButton").v
     
     # Update text and colors
-    cubeactionbutton_template.params.by_param("TextColor").v = '"ButtonHUD/Text2_M81CubeAction"'
-    cubeactionbutton_template.params.by_param("BackgroundBlockColorToken").v = '"BoutonTemps"'
-    cubeactionbutton_template.params.by_param("BorderLineColorToken").v = '"BoutonTempsM81CubeActionLine"'
+    cubeactionbutton_template.params.by_param("TextColor").v = '"ButtonHUD/Text2_CubeAction_M81"'
+    cubeactionbutton_template.params.by_param("BackgroundBlockColorToken").v = '"BoutonTemps_Background_M81"'
+    cubeactionbutton_template.params.by_param("BorderLineColorToken").v = '"BoutonTemps_Line_CubeAction_M81"'
     
     # Add new color parameters
     index = cubeactionbutton_template.params.by_param("BigLineAction").index + 1
     cubeactionbutton_template.params.insert(index, 'BackgroundColor : string = "Fulda2_BoutonCubeAction"')
-    cubeactionbutton_template.params.insert(index + 1, 'BorderColor : string = "ButtonHUD/BigBorder_M81CubeAction"')
+    cubeactionbutton_template.params.insert(index + 1, 'BorderColor : string = "ButtonHUD/BigBorder_CubeAction_M81"')
     
     # Update components
     cubeactionbutton_template.by_member("Components").v = _get_cube_action_button_components()
@@ -43,18 +43,18 @@ def _update_cube_action_button(source_path) -> None:
 def _update_cube_action_toggle_button(source_path) -> None:
     """Update cube action toggle button properties."""
     cubeactiontogglebutton_template = source_path.by_namespace("CubeActionToggleButton").v
-    cubeactiontogglebutton_template.by_member("BackgroundBlockColorToken").v = '"BoutonTemps"'
-    cubeactiontogglebutton_template.by_member("BorderLineColorToken").v = '"BoutonTemps"'
+    cubeactiontogglebutton_template.by_member("BackgroundBlockColorToken").v = '"BoutonTemps_Background_M81"'
+    cubeactiontogglebutton_template.by_member("BorderLineColorToken").v = '"BoutonTemps_Line_M81"'
     
     for component in cubeactiontogglebutton_template.by_member("Components").v:
         if not isinstance(component.v, ndf.model.Object):
             continue
             
         if is_obj_type(component.v, "PanelRoundedCorner"):
-            component.v.by_member("BackgroundBlockColorToken").v = '"BoutonTemps"'
-            component.v.by_member("BorderLineColorToken").v = '"BoutonTemps"'
+            component.v.by_member("BackgroundBlockColorToken").v = '"BoutonTemps_Background_M81"'
+            component.v.by_member("BorderLineColorToken").v = '"BoutonTemps_Line_M81"'
         elif is_obj_type(component.v, "BUCKTextDescriptor"):
-            component.v.by_member("TextColor").v = '"ButtonHUD/Text2_toggle"'
+            component.v.by_member("TextColor").v = '"ButtonHUD/Text2_toggle_M81"'
     
     logger.debug("Updated cube action toggle button properties")
 

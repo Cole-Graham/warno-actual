@@ -16,8 +16,8 @@ def edit_buckspecificbuttons(source_path) -> None:
     
     # Update BoutonFulda colors
     boutonfulda = source_path.by_namespace("BoutonFulda").v
-    boutonfulda.params.by_param("BackgroundColor").v = '"BoutonTemps_BackgroundM81"'
-    boutonfulda.params.by_param("LineBorderColor").v = '"BoutonTemps"'
+    boutonfulda.params.by_param("BackgroundColor").v = '"BoutonTemps_Background_M81"'
+    boutonfulda.params.by_param("LineBorderColor").v = '"BoutonTemps_Text_M81"'
     logger.debug("Updated BoutonFulda colors")
     
     # Update BoutonFulda_AvecIcone colors
@@ -33,20 +33,25 @@ def edit_buckspecificbuttons(source_path) -> None:
                     roundedpanel = row.v
                     
                     # Set background color based on strategic mode
-                    bg_colortoken = '(<IsFromStrategic> == true ? "SM_RifleGreen_75" : "BoutonFlaresBlockM81")'
+                    bg_colortoken = '(<IsFromStrategic> == true ? "SM_RifleGreen_75" : "BoutonFlares_M81")'
                     roundedpanel.by_member("BackgroundBlockColorToken").v = bg_colortoken
                     
                     # Set border color based on strategic mode
-                    border_colortoken = '(<IsFromStrategic> == true ? "SM_Grullo" : "BoutonTemps")'
+                    border_colortoken = '(<IsFromStrategic> == true ? "SM_Grullo" : "BoutonTemps_Line_M81")'
                     roundedpanel.by_member("BorderLineColorToken").v = border_colortoken
                     
                     logger.debug("Updated BoutonFulda_AvecIcone panel colors")
     
     # Update BUCKSpecificButton colors
     buckspecificbutton = source_path.by_namespace("BUCKSpecificButton").v
-    buckspecificbutton.params.by_param("PanelRoundedCorner_BorderLineColorToken").v = '"BoutonTemps"'
-    buckspecificbutton.params.by_param("PanelRoundedCorner_BackgroundBlockColorToken").v = '"BoutonTemps_BackgroundM81"'
+    buckspecificbutton.params.by_param("PanelRoundedCorner_BorderLineColorToken").v = '"BoutonTemps_Line_M81"'
+    buckspecificbutton.params.by_param("PanelRoundedCorner_BackgroundBlockColorToken").v = '"BoutonTemps_Background_M81"'
     logger.debug("Updated BUCKSpecificButton colors")
+    
+    # Update ConfirmButton colors
+    confirmbutton = source_path.by_namespace("ConfirmButton").v
+    confirmbutton.params.by_param("BorderLineColorToken").v = '"ConfirmButton/Border_M81"'
+    logger.debug("Updated ConfirmButton colors")
     
     # Update HUDButton properties
     hudbutton = source_path.by_namespace("HUDButton").v

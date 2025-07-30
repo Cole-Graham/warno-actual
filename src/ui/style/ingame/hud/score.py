@@ -40,7 +40,7 @@ def _update_score_container(container: Any) -> None:
     if container.by_member("ElementName", False) is not None:
         elementname = container.by_member("ElementName").v
         if elementname == '<ElementName> + "PreGaugeContainer"':
-            container.by_member("BackgroundBlockColorToken").v = '"PanelScore/ScoreBackgroundM81"'
+            container.by_member("BackgroundBlockColorToken").v = '"PanelScore/ScoreBackground_M81"'
             container.add("HasBorder = true")
             container.add('BorderLineColorToken = "M81_ArtichokeVeryLight"')
             
@@ -56,7 +56,7 @@ def _update_score_container(container: Any) -> None:
             if is_obj_type(component.v, "BUCKGaugeDescriptor"):
                 elementname = component.v.by_member("ElementName").v
                 if elementname == '<ElementName> + "Gauge"':
-                    component.v.by_member("BackgroundBlockColorToken").v = '"PanelScore/ScoreBackgroundM81"'
+                    component.v.by_member("BackgroundBlockColorToken").v = '"PanelScore/ScoreBackground_M81"'
                     component.v.add("HasBorder = true")
                     component.v.add('BorderLineColorToken = "M81_ArtichokeVeryLight"')
             
@@ -87,17 +87,23 @@ def _update_player_score_line(source_path) -> None:
             continue
             
         component = element.v.by_member("ComponentDescriptor").v
+        
+        # Player name ?
         if component.type == "BUCKSpecificTextWithHint":  # noqa
             component.by_member("TextColor").v = '"BlancEquipe"'  # noqa
             component.by_member("TypefaceToken").v = '"Bombardier"'  # noqa
+        
+        # Points text
         elif component.type == "BUCKTextDescriptor" and component.by_member("ElementName", False) is not None:  # noqa
             if component.by_member("ElementName").v == '"Points"':  # noqa
                 component.by_member("TextColor").v = '"M81_ArtichokeVeryLight"'  # noqa
+        
+        # Mute button
         elif component.type == "BUCKButtonDescriptor":  # noqa
             for nested in component.by_member("Components").v:  # noqa
                 if not isinstance(nested.v, ndf.model.Object) or not is_obj_type(nested.v, "BUCKTextureDescriptor"):
                     continue
-                nested.v.by_member("TextureColorToken").v = '"CouleurTexture_boutonShortcutsTextM81"'
+                nested.v.by_member("TextureColorToken").v = '"CouleurTexture_boutonShortcuts_M81"'
 
 
 def _update_player_score_panel_button(source_path) -> None:
@@ -111,12 +117,15 @@ def _update_player_score_panel_button(source_path) -> None:
         for nested in component.v.by_member("Components").v:
             if not isinstance(nested.v, ndf.model.Object):
                 continue
-                
+            
+            # Button  
             if is_obj_type(nested.v, "BUCKContainerDescriptor"):
                 for panel in nested.v.by_member("Components").v:
                     if not isinstance(panel.v, ndf.model.Object) or not is_obj_type(panel.v, "PanelRoundedCorner"):
                         continue
-                    panel.v.by_member("BackgroundBlockColorToken").v = '"BoutonTemps_BackgroundM81"'
-                    panel.v.by_member("BorderLineColorToken").v = '"CouleurBordure_boutonShortcutsTextM81"'
+                    panel.v.by_member("BackgroundBlockColorToken").v = '"BoutonTemps_Background_M81"'
+                    panel.v.by_member("BorderLineColorToken").v = '"CouleurBordure_boutonShortcuts_M81"'
+            
+            # Score icon on button
             elif is_obj_type(nested.v, "BUCKTextureDescriptor"):
-                nested.v.by_member("TextureColorToken").v = '"CouleurTexture_boutonShortcutsTextM81"'
+                nested.v.by_member("TextureColorToken").v = '"CouleurTexture_boutonShortcuts_M81"'

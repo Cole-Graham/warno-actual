@@ -149,12 +149,17 @@ def modify_new_unit(unit_row: Any, edits: Dict[str, Any]) -> None:
         if isinstance(descr_row.v, ndf.model.Object):
             descr_type = descr_row.v.type
             
+
             if descr_type == "TTypeUnitModuleDescriptor":
                 if "TypeUnit" in edits:
                     for member, value in edits["TypeUnit"].items():
-                        descr_row.v.by_member(member).v = value
+                        if member == "TypeUnitFormation":
+                            # TODO: Confirm if Eugen removed this or if they moved it somewhere else
+                            continue
+                        else:
+                            descr_row.v.by_member(member).v = value
                         
-            elif descr_type == "TTagsModuleDescriptor":
+            if descr_type == "TTagsModuleDescriptor":
                 if "TagSet" not in edits:
                     logger.warning(f"No TagSet found for {unit_row.namespace}")
                 else:
@@ -200,7 +205,7 @@ def modify_new_unit(unit_row: Any, edits: Dict[str, Any]) -> None:
                     
             elif descr_type == "TProductionModuleDescriptor":
                 if "Factory" in edits:
-                    descr_row.v.by_member("Factory").v = edits["Factory"]
+                    descr_row.v.by_member("FactoryType").v = edits["Factory"]
                 if "CommandPoints" in edits:
                     cmd_points = "$/GFX/Resources/Resource_CommandPoints"
                     descr_row.v.by_member("ProductionRessourcesNeeded").v.by_key(cmd_points).v = str(edits["CommandPoints"])  # noqa

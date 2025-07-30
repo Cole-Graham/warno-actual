@@ -10,7 +10,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AGM_Kh25MP", "AntiRadiation", None, False): {
         "Ammunition": {
             "parent_membr": {
-                "PorteeMaximaleGRU": 5250,
+                "MaximumRangeGRU": 5250,
                 "MaximalSpeedGRU": 3534,
                 "MaxAccelerationGRU": 2120,
                 "TimeBetweenTwoSalvos": 2.35,
@@ -32,7 +32,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Moving": 50,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 5600,
+                "MaximumRangeGRU": 5600,
                 "MaximalSpeedGRU": 4240,
                 "MaxAccelerationGRU": 2474,
                 # "SupplyCost": 120,
@@ -54,7 +54,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Moving": 55,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 6475,
+                "MaximumRangeGRU": 6475,
                 "MaximalSpeedGRU": 4947,
                 "MaxAccelerationGRU": 2827,
                 "TimeBetweenTwoSalvos": 2.45,
@@ -77,7 +77,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Moving": 65,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 5425,
+                "MaximumRangeGRU": 5425,
                 "MaximalSpeedGRU": 3534,
                 "MaxAccelerationGRU": 2297,
                 "TimeBetweenTwoSalvos": 2.3,
@@ -106,7 +106,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Moving": 60,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 5950,
+                "MaximumRangeGRU": 5950,
                 "MaximalSpeedGRU": 3180,
                 "MaxAccelerationGRU": 1767,
                 "TimeBetweenTwoSalvos": 2.5,
@@ -129,7 +129,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Moving": 75,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 5775,
+                "MaximumRangeGRU": 5775,
                 "MaximalSpeedGRU": 3534,
                 "MaxAccelerationGRU": 2120,
                 "TimeBetweenTwoSalvos": 2.45,
@@ -152,7 +152,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Moving": 65,
             },
             "parent_membr": {
-                "PorteeMaximaleGRU": 6125,
+                "MaximumRangeGRU": 6125,
                 "MaximalSpeedGRU": 4947,
                 "MaxAccelerationGRU": 2827,
                 "TimeBetweenTwoSalvos": 2.3,
@@ -170,7 +170,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AGM_AGM45_Shrike", "AntiRadiation", None, False): {
         "Ammunition": {
             "parent_membr": {
-                "PorteeMaximaleGRU": 5250,
+                "MaximumRangeGRU": 5250,
                 "MaximalSpeedGRU": 3534,
                 "MaxAccelerationGRU": 2120,
                 "TimeBetweenTwoSalvos": 2.35,

@@ -28,11 +28,14 @@ def _update_engagement_button(source_path) -> None:
     engagementbuttondescriptor_template = source_path.by_namespace("EngagementButtonDescriptor").v
     
     for component in engagementbuttondescriptor_template.by_member("Components").v:
-        if not isinstance(component.v, ndf.model.Object) or not is_obj_type(component.v, "PanelRoundedCorner"):
+        if not isinstance(component.v, ndf.model.Object):
+            continue
+        
+        if not is_obj_type(component.v, "PanelRoundedCorner"):
             continue
             
-        component.v.by_member("BackgroundBlockColorToken").v = '"BoutonTempsBlockM81"'
-        component.v.by_member("BorderLineColorToken").v = '"BoutonTempsTextM81"'
+        component.v.by_member("BackgroundBlockColorToken").v = '"BoutonTemps_ROE_M81"'
+        component.v.by_member("BorderLineColorToken").v = '"BoutonTemps_ROE_Border_M81"'
     
     logger.debug("Updated engagement button colors")
 
