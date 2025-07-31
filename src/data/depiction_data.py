@@ -1,4 +1,5 @@
 """Functions for gathering weapon depiction data."""
+
 import json
 from copy import deepcopy
 from pathlib import Path
@@ -14,29 +15,23 @@ logger = setup_logger(__name__)
 
 
 def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
-    """Gather depiction data from GeneratedDepictionInfantry.ndf."""
-    logger.info("Gathering depiction data from GeneratedDepictionInfantry.ndf")
-    
+    """Gather depiction data from DepictionInfantry.ndf."""
+    logger.info("Gathering depiction data from DepictionInfantry.ndf")
+
     # Initialize the depiction_data dictionary
     depiction_data = {}
 
     # Template for each unit's depiction data
     template_data_entry = {
-        "weapon_alternatives": {
-            "alts": {},
-            "reference": {}  # Changed to dict to store by selector_id
-        },
+        "weapon_alternatives": {"alts": {}, "reference": {}},  # Changed to dict to store by selector_id
         "weapon_subdepictions": {},
         "tactic_alternatives": {},
-        "tactic_soldier": {
-            "selector_tactic": "",
-            "animation_tags": {}
-        },
+        "tactic_soldier": {"selector_tactic": "", "animation_tags": {}},
     }
-    
+
     # Store complete list of fire effects
     all_fire_effects = {}
-    # Store weapon to mesh mappings 
+    # Store weapon to mesh mappings
     all_weapon_meshes = {}
     # Store all weapon type to mesh alternative mappings
     all_animation_tags = {}
@@ -46,14 +41,14 @@ def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
     try:
         mod = ndf.Mod(str(mod_src_path), "None")
         logger.debug(f"Created NDF mod for path: {mod_src_path}")
-        
+
         ammo_ndf_path = "GameData/Generated/Gameplay/Gfx/Ammunition.ndf"
         missiles_ndf_path = "GameData/Generated/Gameplay/Gfx/AmmunitionMissiles.ndf"
         all_renames = _build_all_renames(mod, ammo_ndf_path, missiles_ndf_path)
-        
-        infantry_ndf_path = "GameData/Generated/Gameplay/Gfx/Infanterie/GeneratedDepictionInfantry.ndf"
+
+        infantry_ndf_path = "GameData/Generated/Gameplay/Gfx/Infanterie/DepictionInfantry.ndf"
         logger.debug(f"Attempting to parse: {infantry_ndf_path}")
-        
+
         try:
             infantry_parse_source = mod.parse_src(infantry_ndf_path)
             logger.debug("Successfully parsed infantry NDF file")
@@ -85,7 +80,7 @@ def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
                     logger.debug(f"Processing weapon alternatives for {current_unit}")
                     try:
                         for alt in entry.v:
-                            if is_obj_type(alt.v, "TDepictionDescriptor"):
+                            if is_obj_type(alt.v, "TDepictionVisual"):
                                 selector_id = strip_quotes(alt.v.by_m("SelectorId").v[0].v)
                                 mesh = alt.v.by_m("MeshDescriptor").v
                                 depiction_data[current_unit]["weapon_alternatives"]["alts"][selector_id] = mesh
@@ -106,31 +101,33 @@ def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
                         for op in operators:
                             if not is_obj_type(op.v, "DepictionOperator_WeaponInstantFireInfantry"):
                                 continue
-                            fire_tag = strip_quotes(op.v.by_m("FireEffectTag").v[0].v)
+                            fire_tag = strip_quotes(op.v.by_m("FireEffectTag").v)
                             weapon_shoot_data = strip_quotes(op.v.by_m("WeaponShootDataPropertyName").v)
                             weapon_name = fire_tag.replace("FireEffect_", "")
                             if weapon_name in all_renames:
                                 depiction_data[current_unit]["weapon_subdepictions"][weapon_name] = {
                                     "fire_tag": fire_tag,
                                     "rename": all_renames[weapon_name],
-                                    "weapon_shoot_data": weapon_shoot_data
+                                    "weapon_shoot_data": weapon_shoot_data,
                                 }
                             else:
                                 depiction_data[current_unit]["weapon_subdepictions"][weapon_name] = {
                                     "fire_tag": fire_tag,
-                                    "weapon_shoot_data": weapon_shoot_data
+                                    "weapon_shoot_data": weapon_shoot_data,
                                 }
                             all_fire_effects[weapon_name] = fire_tag
                             logger.debug(f"Added weapon subdepiction: {weapon_name} -> {fire_tag}")
-                            
+
                             # Map weapon to mesh based on weapon_shoot_data index
                             mesh_index = int(weapon_shoot_data.split("_")[-1])
                             mesh_key = f"MeshAlternative_{mesh_index}"
                             if mesh_key in depiction_data[current_unit]["weapon_alternatives"]["alts"]:
                                 mesh = depiction_data[current_unit]["weapon_alternatives"]["alts"][mesh_key]  # noqa
                                 all_weapon_meshes[weapon_name] = mesh.split("Modele_")[-1]
-                                logger.debug(f"Mapped weapon '{weapon_name}' to mesh '{all_weapon_meshes[weapon_name]}'")
-                            
+                                logger.debug(
+                                    f"Mapped weapon '{weapon_name}' to mesh '{all_weapon_meshes[weapon_name]}'"
+                                )
+
                     except Exception as e:
                         logger.error(f"Error processing weapon subdepiction for {current_unit}: {str(e)}")
 
@@ -139,7 +136,7 @@ def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
                     logger.debug(f"Processing tactic alternatives for {current_unit}")
                     try:
                         for alt in entry.v:
-                            if is_obj_type(alt.v, "TDepictionDescriptor"):
+                            if is_obj_type(alt.v, "TDepictionVisual"):
                                 selector_id_lod = alt.v.by_m("SelectorId").v[0].v
                                 if selector_id_lod == "LOD_High":
                                     selector_id_number = strip_quotes(alt.v.by_m("SelectorId").v[1].v)
@@ -149,12 +146,12 @@ def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
                                 mesh = alt.v.by_m("MeshDescriptor").v.split("Modele_")[-1]
                                 depiction_data[current_unit]["tactic_alternatives"] = {  # noqa
                                     "selector_id": selector_id,
-                                    "mesh": mesh
+                                    "mesh": mesh,
                                 }
                                 logger.debug(f"Added tactic alternative: {selector_id} -> {mesh}")
                     except Exception as e:
                         logger.error(f"Error processing tactic alternative for {current_unit}: {str(e)}")
-                
+
                 # Process tactic soldier
                 elif entry.namespace == f"TacticDepiction_{current_unit}_Soldier":
                     logger.debug(f"Processing SelectorTactic and animation tags for {current_unit}")
@@ -172,20 +169,26 @@ def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
                                     if isinstance(tag_tuple.v, tuple):
                                         weapon_type = strip_quotes(tag_tuple.v[0])
                                         mesh_alt = strip_quotes(tag_tuple.v[1])
-                                        depiction_data[current_unit]["tactic_soldier"]["animation_tags"][weapon_type] = mesh_alt
+                                        depiction_data[current_unit]["tactic_soldier"]["animation_tags"][
+                                            weapon_type
+                                        ] = mesh_alt
                                         # Add to global animation tags dictionary
                                         if weapon_type not in all_animation_tags:
                                             all_animation_tags[weapon_type] = set()
                                         all_animation_tags[weapon_type].add(mesh_alt)
-                                        
+
                                         # Map weapons to animation tags based on mesh alternative number
                                         mesh_alt_num = mesh_alt.split("_")[-1]
-                                        for weapon_name, weapon_data in depiction_data[current_unit]["weapon_subdepictions"].items():  # noqa
+                                        for weapon_name, weapon_data in depiction_data[current_unit][
+                                            "weapon_subdepictions"
+                                        ].items():  # noqa
                                             weapon_mesh_num = weapon_data["weapon_shoot_data"].split("_")[-1]
                                             if weapon_mesh_num == mesh_alt_num:
                                                 animation_weapon_map[weapon_name] = weapon_type
-                                                logger.debug(f"Mapped weapon '{weapon_name}' to animation type '{weapon_type}'")
-                                        
+                                                logger.debug(
+                                                    f"Mapped weapon '{weapon_name}' to animation type '{weapon_type}'"
+                                                )
+
                                         logger.debug(f"Added animation tag: {weapon_type} -> {mesh_alt}")
                                     else:
                                         logger.warning(f"Unexpected format for conditional tag: {tag_tuple}")
@@ -207,16 +210,18 @@ def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
         depiction_data["all_animation_tags"] = all_animation_tags
         depiction_data["animation_weapon_map"] = animation_weapon_map
 
-        logger.info(f"Gathered depiction data for {len(depiction_data)-4} units")  # -4 for all_fire_effects, all_weapon_meshes, all_animation_tags, animation_weapon_map
+        logger.info(
+            f"Gathered depiction data for {len(depiction_data)-4} units"
+        )  # -4 for all_fire_effects, all_weapon_meshes, all_animation_tags, animation_weapon_map
         logger.info(f"Gathered {len(all_fire_effects)} total fire effects")
         logger.info(f"Gathered {len(all_animation_tags)} unique weapon types")
         logger.debug(f"Final depiction data: {json.dumps(depiction_data, indent=4)}")
-        
+
         return depiction_data
 
     except Exception as e:
         logger.error(f"Error gathering depiction data: {str(e)}")
-        return depiction_data 
+        return depiction_data
 
 
 def _build_all_renames(mod, ammo_ndf_path, missiles_ndf_path):

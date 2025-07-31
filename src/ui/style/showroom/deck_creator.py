@@ -40,6 +40,9 @@ def edit_uispecificshowroomdeckcreatorscreencomponent(source_path) -> None:
     
     # Update FreeCaseDescriptor
     _update_freecasedescriptor(source_path)
+    
+    # Update activation points component
+    _update_activationpointscomponent(source_path)
 
 def edit_uispecificshowroomgroupsdeckcreatorscreenview(source_path) -> None:
     """Edit UISpecificShowRoomGroupsDeckCreatorScreenView.ndf."""
@@ -50,9 +53,6 @@ def edit_uispecificshowroomgroupsdeckcreatorscreenview(source_path) -> None:
     
     # Update unit amount button
     _update_unitamountbutton(source_path)
-    
-    # Update activation points component
-    _update_activationpointscomponent(source_path)
 
 def _update_activationpointscomponent(source_path) -> None:
     """Update ActivationPointsComponent"""
@@ -61,28 +61,27 @@ def _update_activationpointscomponent(source_path) -> None:
     for element in elements.v:
         if isinstance(element.v, ndf.model.Object):
             if is_obj_type(element.v, "BUCKListElementDescriptor"):
+                component_descr = element.v.by_member("ComponentDescriptor")
                 
-                if element.v.by_member("ElementName").v == '"ActivationPointsCurrent"':
+                if component_descr.v.by_member("ElementName").v == '"ActivationPointsCurrent"':
                     pass # for future edits of current activation points
                 
-                elif element.v.by_member("ElementName").v == '"ActivationPointsTemp"':
-                    element.v.by_member("TextStyle").v = '"ActivationPointTemp_M81"'
+                elif component_descr.v.by_member("ElementName").v == '"ActivationPointsTemp"':
+                    component_descr.v.by_member("TextStyle").v = '"ActivationPointTemp_M81"'
                 
-                elif element.v.by_member("ElementName").v == '"ActivationPointsMax"':
+                elif component_descr.v.by_member("ElementName").v == '"ActivationPointsMax"':
                     pass # for future edits of max activation points
                 
-                elif element.v.by_member("ElementName").v == '"ActivationPointsTitre"':
+                elif component_descr.v.by_member("ElementName").v == '"ActivationPointsTitre"':
                     pass # for future edits of title
                 
-                    
-    activationpointscomponent.by_member("BackgroundBlockColorToken").v = '"M81_Ebony128"'
     logger.debug("Updated ActivationPointsComponent template")
 
 def _update_factorynamedescriptor(source_path) -> None:
     """Update FactoryNameDescriptor template.
     UISpe"""
-    factorynamedescriptor_template = source_path.by_namespace("FactoryNameDescriptor").v
-    factorynamedescriptor_template.by_member("BackgroundBlockColorToken").v = '"M81_Ebony128"'
+    factorynamedescriptor_template = source_path.by_namespace("FactoryNameDescriptor")
+    factorynamedescriptor_template.v.by_member("BackgroundBlockColorToken").v = '"M81_Ebony128"'
     logger.debug("Updated FactoryNameDescriptor template")
 
 def _update_xp_button(source_path) -> None:

@@ -10,7 +10,6 @@ from .new_depictions import (
     create_showroom_depictions,
     create_veh_human_depictions,
     create_veh_depictions,
-    create_veh_depiction_selectors,
     create_veh_showroom_depictions,
     create_aerial_ghost_depictions,
 )
@@ -35,7 +34,6 @@ __all__ = [
     'edit_showroom_units',
     'create_veh_human_depictions',
     'create_veh_depictions',
-    'create_veh_depiction_selectors',
     'create_veh_showroom_depictions',
     'create_aerial_ghost_depictions',
     'unit_edits_cadavre_descriptor',

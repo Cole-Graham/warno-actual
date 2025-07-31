@@ -104,45 +104,12 @@ def modify_module(unit_row: Any, descr_row: Any, edits: dict, index: int,
             "TDeploymentShiftModuleDescriptor": _handle_deployment_shift,
             "TZoneInfluenceMapModuleDescriptor": _handle_zone_influence,
             "TTransportableModuleDescriptor": _handle_transportable,
-            # "TTransporterModuleDescriptor": _handle_transporter,
+            "TTransporterModuleDescriptor": _handle_transporter,
+            "TInfantrySquadModuleDescriptor": _handle_infantry_squad,
+            "TGenericMovementModuleDescriptor": _handle_generic_movement,
+            "TLandMovementModuleDescriptor": _handle_land_movement,
+            "AirplaneMovementDescriptor": _handle_airplane_movement,
         }
-
-        # Handle special namespace cases
-        if namespace:
-            if namespace == "GroupeCombat" and "strength" in edits:
-                descr_row.v.by_m("Default").v.by_m("NbSoldatInGroupeCombat").v = str(edits["strength"])
-
-            elif namespace == "GenericMovement" and "max_speed" in edits:
-                descr_row.v.by_m("Default").v.by_m("MaxSpeedInKmph").v = str(edits["max_speed"])
-
-            elif namespace == "LandMovement" and "road_speed" in edits:
-                if "factor" in edits["road_speed"]:
-                    factor = edits["road_speed"]["factor"]
-                    descr_row.v.by_m("Default").v.by_m("SpeedBonusFactorOnRoad").v = "{:0.2f}".format(factor)
-                elif "road_speed" in edits["road_speed"] and "base_speed" in edits["road_speed"]:
-                    factor = edits["road_speed"]["road_speed"] / edits["road_speed"]["base_speed"]
-                    descr_row.v.by_m("Default").v.by_m("SpeedBonusFactorOnRoad").v = "{:0.2f}".format(factor)
-
-            elif namespace == "AirplaneMovement":
-                if "max_speed" in edits:
-                    descr_row.v.by_m("SpeedInKmph").v = str(edits["max_speed"])
-                if "AirplaneMovement" in edits:
-                    if "parent_membr" in edits["AirplaneMovement"]:
-                        for key, value in edits["AirplaneMovement"]["parent_membr"].items():
-                            descr_row.v.by_m(key).v = str(value)
-
-            elif namespace == "Transporter":
-                if "is_prime_mover" in edits:
-
-                    transport_tags = descr_row.v.by_m("Default").v.by_m("TransportableTagSet")
-
-                    if edits["is_prime_mover"]:
-                        transport_tags.v = ndf.convert(str(["Crew", "Unite_transportable"]))
-                        logger.info(f"Updated {unit_row.namespace} to prime mover")
-
-                    else:
-                        transport_tags.v = ndf.convert(str(["Crew"]))
-                        logger.info(f"Updated {unit_row.namespace} to regular transport")
 
         # Apply module-specific handler if it exists
         if handler := module_handlers.get(descr_type):
@@ -151,6 +118,52 @@ def modify_module(unit_row: Any, descr_row: Any, edits: dict, index: int,
     except Exception as e:
         logger.error(f"Error modifying module for {unit_name}: {str(e)}")
 
+def _handle_infantry_squad(unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list,
+                        dictionary_entries: list, game_db: Dict[str, Any]) -> None:
+    """Handle infantry squad module edits."""
+    unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
+    if "strength" in edits:
+        descr_row.v.by_m("NbSoldatInGroupeCombat").v = str(edits["strength"])
+        logger.info(f"Updated {unit_name} strength to {edits['strength']}")
+
+def _handle_generic_movement(unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list,
+                        dictionary_entries: list, game_db: Dict[str, Any]) -> None:
+    """Handle generic movement module edits."""
+    unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
+    if "max_speed" in edits:
+        descr_row.v.by_m("MaxSpeedInKmph").v = str(edits["max_speed"])
+        logger.info(f"Updated {unit_name} max speed to {edits['max_speed']}")
+        
+def _handle_land_movement(unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list,
+                        dictionary_entries: list, game_db: Dict[str, Any]) -> None:
+    """Handle land movement module edits."""
+    unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
+    if "factor" in edits.get("road_speed", {}):
+        factor = edits["road_speed"]["factor"]
+        descr_row.v.by_m("SpeedBonusFactorOnRoad").v = "{:0.2f}".format(factor)
+        logger.info(f"Updated {unit_name} road speed factor to {factor}")
+        
+    elif "road_speed" in edits.get("road_speed", {}) and "base_speed" in edits.get("road_speed", {}):
+        factor = edits["road_speed"]["road_speed"] / edits["road_speed"]["base_speed"]
+        descr_row.v.by_m("SpeedBonusFactorOnRoad").v = "{:0.2f}".format(factor)
+        logger.info(f"Updated {unit_name} road speed factor to {factor}")
+        
+def _handle_airplane_movement(unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list,
+                        dictionary_entries: list, game_db: Dict[str, Any]) -> None:
+    """Handle airplane movement module edits."""
+    unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
+    if "max_speed" in edits:
+        old_value = descr_row.v.by_m("SpeedInKmph").v
+        descr_row.v.by_m("SpeedInKmph").v = str(edits["max_speed"])
+        logger.info(f"Updated {unit_name} max speed from {old_value} to {edits['max_speed']}")
+        
+    if "AirplaneMovement" in edits:
+        if "parent_membr" in edits["AirplaneMovement"]:
+            for key, value in edits["AirplaneMovement"]["parent_membr"].items():
+                old_value = descr_row.v.by_m(key).v
+                descr_row.v.by_m(key).v = str(value)
+                logger.info(f"Updated {unit_name} {key} from {old_value} to {value}")
+
 
 def _add_modules(unit_row: Any, edits: dict, modules_list: list,   # noqa
                  dictionary_entries: list, game_db: Dict[str, Any]) -> None:  # noqa
@@ -158,54 +171,17 @@ def _add_modules(unit_row: Any, edits: dict, modules_list: list,   # noqa
     unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
     unit_db = game_db["unit_data"]
     
-    heli_transporter_module = (
-        f'Transporter is'
-        f'    TModuleSelector'
-        f'    ('
-        f'        Default        = TTransporterModuleDescriptor'
-        f'        ('
-        f'           TransportableTagSet            = ['
-        f'                                "Crew",'
-        f'                                            ]'
-        f'           NbSeatsAvailable               = 1'
-        f'           WreckUnloadPhysicalDamageBonus = WreckUnloadDamageBonus_Chopper_Physical'
-        f'           WreckUnloadSuppressDamageBonus = WreckUnloadDamageBonus_Chopper_Suppress'
-        f'           WreckUnloadStunDamageBonus     = WreckUnloadDamageBonus_Chopper_Stun'
-        f'           LoadRadiusGRU                     = 70'
-        f'         )'
-        f'        Condition      = ~/IfNotCadavreCondition'
-        f'     )'
-    )
-    
-    vehicle_transporter_module = (
-        'Transporter is'
-        '    TModuleSelector'
-        '    ('
-        '        Default = TTransporterModuleDescriptor'
-        '        ('
-        '            TransportableTagSet = ["Crew"]'
-        '            NbSeatsAvailable = 1'
-        '            WreckUnloadPhysicalDamageBonus = WreckUnloadDamageBonus_Default_Physical'
-        '            WreckUnloadSuppressDamageBonus = WreckUnloadDamageBonus_Default_Suppress'
-        '            WreckUnloadStunDamageBonus = WreckUnloadDamageBonus_Default_Stun'
-        '            LoadRadiusGRU = 70'
-        '        )'
-        '        Condition = ~/IfNotCadavreCondition'
-        '    )'
-    )
-    
     is_helo = False
     if unit_name in unit_db:
         if unit_db[unit_name]["is_helo_unit"]:
             is_helo = True
             
-    add_transport_module = "UnloadFromTransport" in edits.get("orders", {}).get("add_orders", [])
-    if is_helo and add_transport_module:
-        modules_list.v.add(heli_transporter_module)  # noqa
-        logger.info(f"Added heli transporter module to {unit_name}")
-    elif not is_helo and add_transport_module:
-        modules_list.v.add(vehicle_transporter_module)  # noqa
-        logger.info(f"Added vehicle transporter module to {unit_name}")
+    add_unit_transport = "UnloadFromTransport" in edits.get("orders", {}).get("add_orders", [])
+    if add_unit_transport:
+        transport_tags = '["Crew", "Unite_transportable"]'
+        for module in modules_list.v:
+            if isinstance(module.v, ndf.model.Object) and module.v.type == "TTransporterModuleDescriptor":
+                module.v.by_m("TransportableTagSet").v = transport_tags
         
     if "modules_add" in edits:
         for module in edits["modules_add"]:
@@ -225,16 +201,26 @@ def _remove_modules(
             for module in modules_list.v:
                 if isinstance(module.v, ndf.model.Object):
                     module_type = module.v.type
-                    if module_to_remove == "Transporter":
-                        if module.namespace == "Transporter":
-                            modules_list.v.remove(module)
-                            logger.info(f"Removed Transporter module from {unit_name}")
+                    if module_type == module_to_remove:
+                        modules_list.v.remove(module)
+                        logger.info(f"Removed {module_type} module from {unit_name}")
 
+def _handle_transporter(unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list,
+                        dictionary_entries: list, game_db: Dict[str, Any]) -> None:
+    """Handle transporter module edits."""
+    unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
+    if "is_prime_mover" in edits:
 
-# def _handle_transporter(unit_row: Any, descr_row: Any, edits: dict, index: int,
-#                        modules_list: list, dictionary_entries: list, game_db: Dict[str, Any]) -> None:
-#     """Handle transporter module edits."""
-#     unit_db = game_db["unit_data"]
+        transport_tags = descr_row.v.by_m("TransportableTagSet")
+        can_transport_unit = edits.get("is_prime_mover", False)
+
+        if can_transport_unit:
+            transport_tags.v = '["Crew", "Unite_transportable"]'
+            logger.info(f"Updated {unit_row.namespace} to prime mover")
+
+        else:
+            transport_tags.v = '["Crew"]'
+            logger.info(f"Updated {unit_name} to regular transport")
 
 def _handle_tags(unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list,
                  dictionary_entries: list, game_db: Dict[str, Any]) -> None:

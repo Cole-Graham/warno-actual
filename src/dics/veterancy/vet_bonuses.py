@@ -184,7 +184,7 @@ VETERANCY_BONUSES = {
         },
     },
     "avion": {
-        "avion0": {
+        "avion_0": {
             "body_token": "LNZBFCYAIE",
             "body": (
                 '#style1{- Accuracy: normal}'
@@ -194,7 +194,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Evasive maneuvers: normal}'
             ),
         },
-        "avion1": {
+        "avion_1": {
             "body_token": "NMDXSJVEMU",
             "body": (
                 '#style1{- Accuracy: normal}'
@@ -204,7 +204,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Evasive maneuvers: normal}'
             ),
         },
-        "avion2": {
+        "avion_2": {
             "body_token": "ZCKHBWOUCJ",
             "body": (
                 '#style1{- Accuracy:} #styleGreen{+4%}'
@@ -215,7 +215,7 @@ VETERANCY_BONUSES = {
                 '\n(flat, multiplicative, percentage, flat)'
             ),
         },
-        "avion3": {
+        "avion_3": {
             "body_token": "KRMIXGZVQU",
             "body": (
                 '#style1{- Accuracy:} #styleTurquoise{+8%}'

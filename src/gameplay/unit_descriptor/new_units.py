@@ -20,7 +20,7 @@ def create_new_units(source_path: Any, game_db: Dict[str, Any]) -> None:  # noqa
     write_new_unit_dictionary_entries(NEW_UNITS)
     
     # Create unit descriptors
-    create_unit_descriptors(source_path)
+    create_unit_descriptors(source_path, game_db)
 
 
 def write_new_unit_dictionary_entries(unit_edits: Dict[str, Any]) -> None:
@@ -35,7 +35,7 @@ def write_new_unit_dictionary_entries(unit_edits: Dict[str, Any]) -> None:
         write_dictionary_entries(entries, dictionary_type="units")
 
 
-def create_unit_descriptors(source_path: Any) -> None:
+def create_unit_descriptors(source_path: Any, game_db: Dict[str, Any]) -> None:
     """Create unit descriptors for new units."""
     logger.info("Creating unit descriptors")
     
@@ -59,14 +59,14 @@ def create_unit_descriptors(source_path: Any) -> None:
         new_unit_row.namespace = f"Descriptor_Unit_{unit_name}"
         
         # Modify the new unit based on edits
-        modify_new_unit(new_unit_row, edits)
+        modify_new_unit(donor_name,new_unit_row, edits, game_db)
         
         # Add the new unit to the source
         source_path.add(new_unit_row)
         logger.info(f"Added new unit: {unit_name}")
 
 
-def modify_new_unit(unit_row: Any, edits: Dict[str, Any]) -> None:
+def modify_new_unit(donor_name: str, unit_row: Any, edits: Dict[str, Any], game_db: Dict[str, Any]) -> None:
     """New unit modifications in UniteDescriptor.ndf"""
     # Update basic unit properties
     unit_row.v.by_member("DescriptorId").v = f"GUID:{{{edits['GUID']}}}"
@@ -78,48 +78,9 @@ def modify_new_unit(unit_row: Any, edits: Dict[str, Any]) -> None:
     
     # First add any new modules
     modules_to_add = edits.get("modules_add", [])
-    if modules_to_add:  
-        transport_module = """Transporter is TModuleSelector
-            (
-                Default = TTransporterModuleDescriptor
-                (
-                    TransportableTagSet = ["Crew"]
-                    NbSeatsAvailable = 1
-                    WreckUnloadPhysicalDamageBonus = WreckUnloadDamageBonus_Default_Physical
-                    WreckUnloadSuppressDamageBonus = WreckUnloadDamageBonus_Default_Suppress
-                    WreckUnloadStunDamageBonus = WreckUnloadDamageBonus_Default_Stun
-                    LoadRadiusGRU = 70
-                )
-                Condition = ~/IfNotCadavreCondition
-            )"""
-            
-        heli_transporter_module = (
-            f'Transporter is'
-            f'    TModuleSelector'
-            f'    ('
-            f'        Default        = TTransporterModuleDescriptor'
-            f'        ('
-            f'           TransportableTagSet            = ['
-            f'                                "Crew",'
-            f'                                            ]'
-            f'           NbSeatsAvailable               = 1'
-            f'           WreckUnloadPhysicalDamageBonus = WreckUnloadDamageBonus_Chopper_Physical'
-            f'           WreckUnloadSuppressDamageBonus = WreckUnloadDamageBonus_Chopper_Suppress'
-            f'           WreckUnloadStunDamageBonus     = WreckUnloadDamageBonus_Chopper_Stun'
-            f'           LoadRadiusGRU                     = 70'
-            f'         )'
-            f'        Condition      = ~/IfNotCadavreCondition'
-            f'     )'
-        )
+    if modules_to_add:
         for module in modules_to_add:
-            if module == "Transporter":
-                modules_list.v.add(transport_module)
-                logger.info(f"Added Transporter module to {unit_row.namespace}")
-            elif module == "HeliTransporter":
-                modules_list.v.add(heli_transporter_module)
-                logger.info(f"Added HeliTransporter module to {unit_row.namespace}")
-            else:
-                modules_list.v.add(module)
+            modules_list.v.add(module)
     
     # Then handle module removal and modifications
     modules_to_remove = []

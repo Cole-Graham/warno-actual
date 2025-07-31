@@ -68,7 +68,8 @@ def edit_fire_descriptors(source_path) -> None:
                     RadiusGRU = data.get("TFireModuleDescriptor", {}).get("RadiusGRU", None)
                     if RadiusGRU is not None:
                         depiction_obj = module.v.by_m("Depiction")
-                        depiction_obj.v.by_m("Radius").v = f"{RadiusGRU} * 26 * 2.83"
+                        depiction_descriptor = depiction_obj.v.by_m("DepictionDescriptor")
+                        depiction_descriptor.v.by_m("Radius").v = f"{RadiusGRU} * 26 * 2.83"
                 elif module_type == "TFireModuleDescriptor":
                     for key, value in data["TFireModuleDescriptor"].items():
                         module.v.by_m(key).v = str(value)

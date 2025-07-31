@@ -49,41 +49,12 @@ def edit_damage_levels(source_path) -> None:
     guid_index = 0
     for level in damage_levels.v:
         
-        old_namespace = level.namespace
-        level.namespace = f"{old_namespace}B"
-        level.v.by_m("DescriptorId").v = new_guids[guid_index]
-        guid_index += 1
-        old_name_for_debug = strip_quotes(level.v.by_m("NameForDebug").v)
-        level.v.by_m("NameForDebug").v = f'"{old_name_for_debug}B"'
-        
         value = level.v.by_m("Value")
         effects_packs = level.v.by_m("EffectsPacks")
         if value.v == "0":
             effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_Ajoute_Tag_no_Choc_Move_Morale") 
             effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_Ajoute_Tag_Swift_ok")
-        # else:
-            # effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_Ajoute_Tag_Choc_Move_ok")
-            # effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_Ajoute_Tag_no_Swift")
-    
-    # new_entry = (
-    #     'DamageLevelDescriptor_GroundUnits_packSupp_palier_1B_2 is TDamageLevelDescriptor'
-    #     '('
-    #     '    DescriptorId = GUID:{8bb828d8-51b4-4151-ba5f-611b8229c497}'
-    #     '    Value = 0.01'
-    #     '    LocalizationToken = "mrl_4"'
-    #     '    MoralModifier = 99'
-    #     '    HitRollModifier = 0'
-    #     '    TextColor = RGBA[208,191,166,255]'
-    #     '    AnimationType = ESoldierSuppressStatus/Operational'
-    #     '    EffectsPacks = ['
-    #     '        $/GFX/EffectCapacity/UnitEffect_GroundUnit_Cohesion_High,'
-    #     '        $/GFX/EffectCapacity/UnitEffect_Ajoute_Tag_no_Swift,'
-    #     '        $/GFX/EffectCapacity/UnitEffect_Ajoute_Tag_Choc_Move_ok,'
-    #     '    ]'
-    #     '    NameForDebug = "GroundUnits_packSupp_palier_1B_2"'
-    #     ')'
-    # )
-    # damage_levels.v.insert(1,new_entry)
+            break
 
 
 def edit_conditions(source_path) -> None:

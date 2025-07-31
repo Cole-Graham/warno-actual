@@ -46,7 +46,6 @@ from src.gameplay.depictions import (
     create_ghost_depictions,
     create_infantry_depictions,
     create_showroom_depictions,
-    create_veh_depiction_selectors,
     create_veh_depictions,
     create_veh_human_depictions,
     edit_infantry_depictions,
@@ -177,8 +176,8 @@ logger = setup_logger(__name__)
 
 def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
     """Get all file editors."""
-    game_db = config.get('game_db', {})
-    
+    game_db = config.get("game_db", {})
+
     editors = {
         # Core gameplay mechanics
         "GameData/Gameplay/Constantes/GDConstants.ndf": [
@@ -199,19 +198,17 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/Gameplay/Unit/CriticalModules/TemplateCriticalEffectModules.ndf": [
             edit_critical_effects,
         ],
-
         # Division and deck files
         "GameData/Generated/Gameplay/Decks/DeckSerializer.ndf": [
             update_deck_serializer,
             hide_divisions_deckserializer_ndf,
         ],
         "GameData/Generated/Gameplay/Decks/Divisions.ndf": [
-            # add_to_divisions, 
+            # add_to_divisions,
             # edit_division_units,
             # supply_divisions,
             deck_ap_points,
             hide_divisions_divisions_ndf,
-
         ],
         "GameData/Generated/Gameplay/Decks/DivisionRules.ndf": [
             add_division_rules,
@@ -234,10 +231,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/Generated/Gameplay/Decks/DivisionCostMatrix.ndf": [
             edit_division_matrices,
         ],
-
         # Damage system
         "GameData/Generated/Gameplay/Gfx/DamageResistance.ndf": [
-            apply_damage_family_edits, # todo: this needs to be applied first, but it should be written better not to (or at least give a warning in logs)
+            apply_damage_family_edits,  # todo: this needs to be applied first, but it should be written better not to (or at least give a warning in logs)
             add_damage_resistance_values,
             edit_infantry_armor,
         ],
@@ -247,7 +243,6 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/Generated/Gameplay/Gfx/DamageResistanceFamilyListImpl.ndf": [
             add_damage_families_to_impl,
         ],
-
         # Unit and weapon files
         "GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf": [
             # Create new units first, before editing donors used to create them.
@@ -305,13 +300,12 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/Generated/Gameplay/Gfx/DamageLevels.ndf": [
             edit_damage_levels,
         ],
-
         # Effects and veterancy
         "GameData/Generated/Gameplay/Gfx/CapaciteList.ndf": [
             edit_capacite_list,
         ],
         "GameData/Generated/Gameplay/Gfx/EffetsSurUnite.ndf": [
-            edit_shock_effects, # todo: this should be renamed to more generic effects editing function
+            edit_shock_effects,  # todo: this should be renamed to more generic effects editing function
             edit_veterancy_effects,
         ],
         "GameData/Generated/Gameplay/Gfx/ConditionsDescriptor.ndf": [
@@ -320,7 +314,6 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/Generated/Gameplay/Gfx/ExperienceLevels.ndf": [
             edit_veterancy_hints,
         ],
-
         # Depiction files
         "GameData/Generated/Gameplay/Gfx/Depictions/DepictionAerialUnits.ndf": [
             unit_edits_depictionaerial,
@@ -335,31 +328,28 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
             edit_showroom_units,
             create_showroom_depictions,
         ],
-        "GameData/Generated/Gameplay/Gfx/UniteCadavreDescriptor.ndf": [
-            unit_edits_cadavre_descriptor,
-            create_cadavre_depictions,
-        ],
+        # "GameData/Generated/Gameplay/Gfx/UniteCadavreDescriptor.ndf": [
+        #     unit_edits_cadavre_descriptor,
+        #     create_cadavre_depictions,
+        # ],
         "GameData/Generated/Gameplay/Gfx/Depictions/DepictionAlternatives.ndf": [
             create_alternatives_depictions,
         ],
-        # "GameData/Generated/Gameplay/Gfx/Depictions/GeneratedDepictionSelectors.ndf": [
-        #     create_veh_depiction_selectors,
-        # ],
-        "GameData/Generated/Gameplay/Gfx/Depictions/GeneratedDepictionGhosts.ndf": [
+        "GameData/Generated/Gameplay/Gfx/Depictions/DepictionGhosts.ndf": [
             create_ghost_depictions,
         ],
-        "GameData/Generated/Gameplay/Gfx/Depictions/GeneratedDepictionAerialGhosts.ndf": [
+        "GameData/Generated/Gameplay/Gfx/Depictions/DepictionAerialGhosts.ndf": [
             create_aerial_ghost_depictions,
         ],
-        "GameData/Generated/Gameplay/Gfx/Depictions/GeneratedDepictionHumans.ndf": [
+        "GameData/Generated/Gameplay/Gfx/Depictions/DepictionHumans.ndf": [
             create_veh_human_depictions,
         ],
         "GameData/Generated/Gameplay/Gfx/Depictions/DepictionVehicles.ndf": [
             create_veh_depictions,
             unit_edits_depictionvehicles,
         ],
-        "GameData/Generated/Gameplay/Gfx/Infanterie/GeneratedDepictionInfantry.ndf": [
-            lambda source_path: edit_infantry_depictions(source_path, game_db['ammunition'], game_db['depiction_data']),
+        "GameData/Generated/Gameplay/Gfx/Infanterie/DepictionInfantry.ndf": [
+            lambda source_path: edit_infantry_depictions(source_path, game_db["ammunition"], game_db["depiction_data"]),
             lambda source_path: create_infantry_depictions(source_path, game_db),
             unit_edits_depictioninfantry,
         ],
@@ -378,7 +368,6 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
             edit_defaulttextformatscript,
             ui_gameplay_textscripts,
         ],
-        
         # Texture files
         "GameData/Generated/UserInterface/Textures/ButtonTexturesUnites.ndf": [
             create_button_textures,
@@ -395,9 +384,7 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/Generated/UserInterface/Textures/MinimapIcons.ndf": [
             add_fob_minimap_texture,  # Direct function reference instead of lambda
         ],
-        
         # Common UI templates and components
-        
         # Not sure if this is needed or was ever needed, temporarily disabled.
         # "GameData/UserInterface/Use/Common/Templates/BuckSpecificBackgrounds.ndf": [
         #     edit_buckspecificbackgrounds,
@@ -420,7 +407,6 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/UserInterface/Use/Common/UIWarningPanel.ndf": [
             edit_uiwarningpanel,
         ],
-
         # In-game UI
         "GameData/UserInterface/Use/InGame/OrderDisplay.ndf": [
             edit_orderdisplay,
@@ -503,7 +489,6 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/UserInterface/Use/InGame/UISpecificSmartGroupSelectionPanelView.ndf": [
             edit_uispecificsmartgroupselectionpanelview,
         ],
-
         # Out-game and ShowRoom UI
         "GameData/UserInterface/Use/OutGame/UISpecificLoginView.ndf": [
             edit_uispecificloginview,
@@ -526,12 +511,10 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/UserInterface/Use/ShowRoom/Views/UISpecificShowRoomGroupsDeckCreatorScreenView.ndf": [
             edit_uispecificshowroomgroupsdeckcreatorscreenview,
         ],
-
         # Common UI templates and components
         "GameData/UserInterface/Use/Common/UICommonFlareLabelResources.ndf": [
             edit_uicommonflarelabelresources,
         ],
-
         # Generated UI files
         "GameData/Generated/UserInterface/Textures/WeaponTextures.ndf": [
             edit_weapontextures,
@@ -545,18 +528,16 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/Generated/UserInterface/WeaponTraits.ndf": [
             edit_weapon_traits,
         ],
-
         # Depiction files
-        "GameData/Generated/Gameplay/Gfx/Depictions/GeneratedDepictionVehiclesShowRoom.ndf": [
-            lambda source_path: create_veh_showroom_depictions(source_path) # Maybe unnecessary
+        "GameData/Generated/Gameplay/Gfx/Depictions/DepictionVehiclesShowRoom.ndf": [
+            lambda source_path: create_veh_showroom_depictions(source_path)  # Maybe unnecessary
         ],
-        
         # UI files
         "GameData/UserInterface/Use/InGame/UIInGameResources.ndf": [
             edit_uiingameresources,
         ],
     }
-    
+
     # We can leave the shared editors commented out for now if they're causing duplicates
     # shared_editors = get_shared_editors()
     # for path, editor_list in shared_editors.items():
@@ -564,7 +545,7 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
     #         editors[path].extend(editor_list)
     #     else:
     #         editors[path] = editor_list
-            
+
     # Write dictionary entries for veterancy bonuses
     write_veterancy_tokens()
 

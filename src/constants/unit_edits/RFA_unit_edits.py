@@ -380,10 +380,17 @@ rfa_unit_edits = {
     "Marder_1A3_MILAN_RFA": {
         "CommandPoints": 60,
         "WeaponDescriptor": {
-            "equipmentchanges": {"replace": [("ATGM_MILAN", "ATGM_MILAN_2")]},
+            "equipmentchanges": {
+                "replace": [
+                    (
+                        "ATGM_MILAN_IFV", "ATGM_MILAN_2_IFV",
+                        "ATGM_MILAN_2_IFV", "ATGM_MILAN_2_IFV"
+                    ),
+                ],
+            },
             "Salves": {
                 "AutoCanon_AP_20mm_MK_20_Rh_202": 48,
-                "ATGM_MILAN_2": 6,
+                "ATGM_MILAN_2_IFV": 6,
             },
         },
     },

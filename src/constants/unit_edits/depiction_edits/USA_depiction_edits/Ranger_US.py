@@ -5,8 +5,8 @@ from typing import Dict, Tuple, Union
 # fmt: off
 ranger_us: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
     "unit_name": "Ranger_US",
-    "valid_files": ["GeneratedDepictionInfantry.ndf", "WeaponDescriptor.ndf"],
-    "GeneratedDepictionInfantry_ndf": {
+    "valid_files": ["DepictionInfantry.ndf", "WeaponDescriptor.ndf"],
+    "DepictionInfantry_ndf": {
         
         ("AllWeaponAlternatives_Ranger_US", None): { # (namespace, object type)
             # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "add", "remove", "replace")

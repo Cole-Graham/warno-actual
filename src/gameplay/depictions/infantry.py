@@ -11,14 +11,14 @@ logger = setup_logger(__name__)
 
 def edit_infantry_depictions(source_path: Any, ammo_db: Dict[str, Any], depiction_data: Dict[str, Any]) -> None:
     # this function is so limited and could easily break if the unit edits are not formatted correctly
-    """Edit GeneratedDepictionInfantry.ndf.
+    """Edit DepictionInfantry.ndf.
     
     Args:
         source_path: NDF file containing infantry depictions
         ammo_db: Ammunition database
         depiction_data: Depiction data from game database
     """
-    logger.info("Editing GeneratedDepictionInfantry.ndf")
+    logger.info("Editing DepictionInfantry.ndf")
     
     unit_edits = load_unit_edits()
     
@@ -77,7 +77,7 @@ def _add_weapon_mesh(source_path: Any, unit_name: str, turret_index: int, mesh: 
     try:
         weapon_alts = source_path.by_n(f"AllWeaponAlternatives_{unit_name}").v
         new_entry = (
-            f"TDepictionDescriptor("
+            f"TDepictionVisual("
             f"    SelectorId = ['MeshAlternative_{turret_index + 1}']"
             f"    MeshDescriptor = $/GFX/DepictionResources/Modele_{mesh}"
             f")"
@@ -102,7 +102,7 @@ def _add_fire_effect(source_path: Any, unit_name: str, turret_index: int, fire_e
         
         new_entry = (
             f'DepictionOperator_WeaponInstantFireInfantry('
-            f'    FireEffectTag = ["{fire_effect}"]'
+            f'    FireEffectTag = "{fire_effect}"'
             f'    WeaponShootDataPropertyName = "WeaponShootData_0_{turret_index + 1}"'
             f')'
         )

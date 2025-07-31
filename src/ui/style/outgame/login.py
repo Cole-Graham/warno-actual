@@ -50,9 +50,9 @@ def edit_uispecificoutgamerecoverloginview(source_path) -> None:
                     continue
                     
                 if is_obj_type(element.v, "BUCKListElementDescriptor"):
-                    component_descr = element.v.by_member("ComponentDescriptor").v
-                    if component_descr.type == "BUCKEditableTextDescriptor":  # noqa
-                        component.v.by_member("SelectionColorToken").v = '"DeckOverview/CaseGrisee/EditableText/Selected_M81"'
+                    component_descr = element.v.by_member("ComponentDescriptor")
+                    if component_descr.v.type == "BUCKEditableTextDescriptor":  # noqa
+                        component_descr.v.by_member("SelectionColorToken").v = '"DeckOverview/CaseGrisee/EditableText/Selected_M81"'
                         
 def edit_uispecificoutgamerecoverpasswordview(source_path) -> None:
     """Edit UISpecificOutGameRecoverPasswordView.ndf."""
@@ -65,7 +65,7 @@ def edit_uispecificoutgamerecoverpasswordview(source_path) -> None:
         if not isinstance(element.v, ndf.model.Object) or not is_obj_type(element.v, "BUCKListElementDescriptor"):
             continue
             
-        component_descr = element.v.by_member("ComponentDescriptor").v
-        if component_descr.type == "BUCKEditableTextDescriptor":  # noqa
+        component_descr = element.v.by_member("ComponentDescriptor")
+        if component_descr.v.type == "BUCKEditableTextDescriptor":  # noqa
             component_descr.v.by_member("SelectionColorToken").v = '"DeckOverview/CaseGrisee/EditableText/Selected_M81"'
             

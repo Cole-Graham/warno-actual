@@ -10,14 +10,7 @@ f16e_napalm_us: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
         ("MissileCarriage_F16E_napalm_US", "TMissileCarriageConnoisseur"): { # (Namespace, Object type)
             "WeaponInfos": {
                 0: {
-                    "Count": 4,
-                },
-            },
-        },
-        ("MissileCarriage_F16E_napalm_US_Showroom", "TMissileCarriageConnoisseur"): {
-            "WeaponInfos": {
-                0: {
-                    "Count": 4,
+                    "MissileCount": 4,
                 },
             },
         },

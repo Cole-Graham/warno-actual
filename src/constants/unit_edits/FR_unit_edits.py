@@ -508,7 +508,7 @@ fr_unit_edits = {
     "VAB_T20_FR": {
         "CommandPoints": 50,
         "strength": 10,
-        # "modules_remove": ["Transporter"],
+        # "modules_remove": ["TTransporterModuleDescriptor"],
         # "SpecialtiesList": {
         #     "remove_specs": ["'_transport1'"],
         # },

@@ -267,7 +267,6 @@ POL_NEW_UNITS = {
         },
         "TypeUnit": {
             "AcknowUnitType": "~/TAcknowUnitType_Command",
-            "TypeUnitFormation": "'Supply'",
         },
         "TagSet": {
             "overwrite_all": [

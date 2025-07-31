@@ -374,21 +374,6 @@ def edit_defaultstyleguides(source_path) -> None:
             index = line_colors_map.by_k('"CyanFonceFulda"').index + 1
             line_colors_map.insert(index, unitlabelborder_m81)
 
-            # Add BoutonTemps line M81
-            boutontemps_line_m81 = (
-                f'("BoutonTemps_Line_M81",                                        MAP ['
-                f'                                                        ( ~/ComponentState/Normal,                TColorRTTI( Color = [153,190,201,102] ) ),'
-                f'                                                        ( ~/ComponentState/Highlighted,           TColorRTTI( Color = Blanc184 ) ),'
-                f'                                                        ( ~/ComponentState/Clicked,               TColorRTTI( Color = M81_AppleIIc ) ),'
-                f'                                                        ( ~/ComponentState/Toggled,               TColorRTTI( Color = M81_AppleIIc ) ),'
-                f'                                                        ( ~/ComponentState/ToggleHighlighted,     TColorRTTI( Color = [153,190,201,102] ) ),'
-                f'                                                        ( ~/ComponentState/ToggleClicked,         TColorRTTI( Color = M81_AppleIIc ) ),'
-                f'                                                        ( ~/ComponentState/Grayed,                TColorRTTI( Color = [128,128,128,128] ) ),'
-                f'                                                   ])'
-            )
-            index = line_colors_map.by_k('"Test"').index + 1
-            line_colors_map.insert(index, boutontemps_line_m81)
-
             # Add BoutonTemps line chat
             # TODO: confirm no longer needed
             # boutontemps_line_chat_m81 = (
@@ -405,20 +390,7 @@ def edit_defaultstyleguides(source_path) -> None:
             # index = line_colors_map.by_k('"BoutonTemps_Line_M81"').index + 1
             # line_colors_map.insert(index, boutontemps_line_chat_m81)
 
-            # Add BoutonTemps M81 cube action line
-            boutontemps_line_cubeaction_m81 = (
-                f'("BoutonTemps_Line_CubeAction_M81",                                        MAP ['
-                f'                                                        ( ~/ComponentState/Normal,                TColorRTTI( Color = [153,190,201,102] ) ),'
-                f'                                                        ( ~/ComponentState/Highlighted,           TColorRTTI( Color = Blanc184 ) ),'
-                f'                                                        ( ~/ComponentState/Clicked,               TColorRTTI( Color = M81_AppleIIc ) ),'
-                f'                                                        ( ~/ComponentState/Toggled,               TColorRTTI( Color = M81_AppleIIc ) ),'
-                f'                                                        ( ~/ComponentState/ToggleHighlighted,     TColorRTTI( Color = [153,190,201,102] ) ),'
-                f'                                                        ( ~/ComponentState/ToggleClicked,         TColorRTTI( Color = M81_AppleIIc ) ),'
-                f'                                                        ( ~/ComponentState/Grayed,                TColorRTTI( Color = M81_RedPhosphor ) ),'
-                f'                                                   ])'
-            )
-            index = line_colors_map.by_k('"BoutonTemps_Line_Chat_M81"').index + 1
-            line_colors_map.insert(index, boutontemps_line_cubeaction_m81)
+            
 
             # Add BoutonTemps line M81
             boutontemps_line_m81 = (
@@ -432,8 +404,23 @@ def edit_defaultstyleguides(source_path) -> None:
                 f'                                                        ( ~/ComponentState/Grayed,                TColorRTTI( Color = [128,128,128,128] ) ),'
                 f'                                                   ])'
             )
-            index = line_colors_map.by_k('"BoutonTemps_Line_CubeAction_M81"').index + 1
+            index = line_colors_map.by_k('"Test"').index + 1
             line_colors_map.insert(index, boutontemps_line_m81)
+            
+            # Add BoutonTemps M81 cube action line
+            boutontemps_line_cubeaction_m81 = (
+                f'("BoutonTemps_Line_CubeAction_M81",                                        MAP ['
+                f'                                                        ( ~/ComponentState/Normal,                TColorRTTI( Color = [153,190,201,102] ) ),'
+                f'                                                        ( ~/ComponentState/Highlighted,           TColorRTTI( Color = Blanc184 ) ),'
+                f'                                                        ( ~/ComponentState/Clicked,               TColorRTTI( Color = M81_AppleIIc ) ),'
+                f'                                                        ( ~/ComponentState/Toggled,               TColorRTTI( Color = M81_AppleIIc ) ),'
+                f'                                                        ( ~/ComponentState/ToggleHighlighted,     TColorRTTI( Color = [153,190,201,102] ) ),'
+                f'                                                        ( ~/ComponentState/ToggleClicked,         TColorRTTI( Color = M81_AppleIIc ) ),'
+                f'                                                        ( ~/ComponentState/Grayed,                TColorRTTI( Color = M81_RedPhosphor ) ),'
+                f'                                                   ])'
+            )
+            index = line_colors_map.by_k('"BoutonTemps_Line_M81"').index + 1
+            line_colors_map.insert(index, boutontemps_line_cubeaction_m81)
             
             # Add BoutonTemps roe border M81
             boutontemps_roe_border_m81 = (
@@ -503,7 +490,7 @@ def edit_defaultstyleguides(source_path) -> None:
                 f'                                   ( ~/ComponentState/Grayed,                TColorRTTI( Color = [25,25,25,150] ) ),'
                 f'                               ])'
             )
-            index = line_colors_map.by_k('"ArmoryUnitButtonNameM81"').index + 1
+            index = line_colors_map.by_k('"ArmoryUnitButtonName_M81"').index + 1
             line_colors_map.insert(index, armoryunitbuttonname_m81_artichoke)
 
             # Add BoutonVignetteAchatArmory M81

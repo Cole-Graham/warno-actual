@@ -11,15 +11,15 @@
 - [x] new_units_showroomunits (ShowroomUnits.ndf)
 - ~~[ ] new_units_showroomequivalence (ShowroomEquivalence.ndf)~~ <sup>patched out by eugen</sup>
 - [x] new_units_unitecadavredescriptor (UnitCadavreDescriptor.ndf)
-- [x] new_units_depictionghosts (GeneratedDepictionGhosts.ndf)
+- [x] new_units_depictionghosts (DepictionGhosts.ndf)
 - [x] new_units_depictionalternatives (DepictionAlternatives.ndf) <sup>using donor's models</sup>
 - [x] new_units_depictionselectors (GeneratedDepictionSelectors.ndf)
 - [x] new_units_depictionvehicles (GeneratedDepictionVehicles.ndf)
-- [x] new_units_depictionhumans (GeneratedDepictionHumans.ndf)
-- [x] new_units_depictionvehiclesshowroom (GeneratedDepictionVehiclesShowroom.ndf)
-- [x] new_units_depictionaerialghosts (GeneratedDepictionAerialGhosts.ndf)
+- [x] new_units_depictionhumans (DepictionHumans.ndf)
+- [x] new_units_depictionvehiclesshowroom (DepictionVehiclesShowRoom.ndf)
+- [x] new_units_depictionaerialghosts (DepictionAerialGhosts.ndf)
 - [x] new_units_buttontexturesunites (ButtonTexturesUnites.ndf)
-- [x] new_units_depictioninfantry (GeneratedDepictionInfantry.ndf)
+- [x] new_units_depictioninfantry (DepictionInfantry.ndf)
 - [x] new_units_weapondescriptor (WeaponDescriptor.ndf)
 - [x] new_units_unitdescriptor (UniteDescriptor.ndf)
 
