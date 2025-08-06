@@ -2268,12 +2268,12 @@ sov_unit_edits = {
                 1: {
                     "MountedWeapons": {
                         "AutoCanon_AP_30mm_Bitube_Gsh30k": {
-                            "add_members": [("TirContinu", True), ],
+                            # "add_members": [("TirContinu", True), ],
                             "Ammunition": "AutoCanon_AP_30mm_Bitube_Gsh30k_burst",
                             "EffectTag": "'FireEffect_GatlingAir_Gsh_30_2_30mm_x2'",
                         },
                         "AutoCanon_HE_30mm_Bitube_Gsh30k": {
-                            "add_members": [("TirContinu", True), ],
+                            # "add_members": [("TirContinu", True), ],
                             "Ammunition": "AutoCanon_HE_30mm_Bitube_Gsh30k_burst",
                             "EffectTag": "'FireEffect_GatlingAir_Gsh_30_2_30mm_x2'",
                         },
@@ -2509,7 +2509,7 @@ sov_unit_edits = {
                 "AgilityRadiusGRU": 1800,
             },
         },
-        "CommandPoints": 310,
+        "CommandPoints": 280,
         "availability": [0, 2, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
@@ -2524,7 +2524,7 @@ sov_unit_edits = {
                 "AgilityRadiusGRU": 1800,
             },
         },
-        "CommandPoints": 290,
+        "CommandPoints": 260,
         "availability": [0, 2, 0, 0],
         "WeaponDescriptor": {
             "Salves": {

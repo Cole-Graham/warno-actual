@@ -13,7 +13,7 @@ vab_t20_fr: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
             "WeaponShootDataPropertyName": ["'WeaponShootData_0_3'"],
         },
         
-        ("Gfx_VAB_T20_FR", "TacticVehicleDepictionTemplate"): {
+        ("Gfx_VAB_T20_FR", "TacticVehicleDepictionDesc"): {
             "Operators": {
                 7: ("add", (
                     "DepictionOperator_VAB_T20_FR_Weapon3"
@@ -21,10 +21,10 @@ vab_t20_fr: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
             },
             "Actions": (
                 'MAP['
-                '            ( [ "weapon_effet_tag1" ], Weapon_AutoCanon_AP_M693_F1_20mm ),'
-                '            ( [ "weapon_effet_tag2" ], Weapon_MMG_AANF1_7_62mm ),'
-                '            ( [ "weapon_effet_tag3" ], Weapon_AutoCanon_HE_M693_F1_20mm ),'
-                '            ( [ "weapon_effet_tag5" ], Weapon_SMOKE_Vehicle_Grenadex8 ),'
+                '            ( "weapon_effet_tag1", Weapon_AutoCanon_AP_M693_F1_20mm ),'
+                '            ( "weapon_effet_tag2", Weapon_MMG_AANF1_7_62mm ),'
+                '            ( "weapon_effet_tag3", Weapon_AutoCanon_HE_M693_F1_20mm ),'
+                '            ( "weapon_effet_tag5", Weapon_SMOKE_Vehicle_Grenadex8 ),'
                 '        ]'
                 '        + DepictionAction_Stress_And_Wrecked'
                 '        + DepictionAction_MovementFX_Wheeled'

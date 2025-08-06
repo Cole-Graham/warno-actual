@@ -16,8 +16,8 @@ dca_m167a2_vulcan_20mm_uk: Dict[str, Dict[str, Any]] = {
             f'    NbFX = 1'
             f')'
         ),
-        "TacticVehicleDepictionTemplate": (
-            f'export Gfx_DCA_M167A2_Vulcan_20mm_UK is TacticVehicleDepictionTemplate'
+        "TacticVehicleDepictionDesc": (
+            f'export Gfx_DCA_M167A2_Vulcan_20mm_UK is TacticVehicleDepictionDesc'
             f'('
             f"    CoatingName = 'DCA_M167A2_Vulcan_20mm_UK'"
             f'    Selector = SpecificVehicleDepictionSelector'
@@ -37,7 +37,7 @@ dca_m167a2_vulcan_20mm_uk: Dict[str, Dict[str, Any]] = {
             f'        DepictionOperator_EjectableProps_Vehicle'
             f'    ]'
             f'    Actions = MAP[\n'
-            f'               ( [ "weapon_effet_tag1" ], Weapon_Gatling_M61_Vulcan_20mm_late_TOWED ),\n'
+            f'               ( "weapon_effet_tag1", Weapon_Gatling_M61_Vulcan_20mm_late_TOWED ),\n'
             f'            ]\n'
             f'            + DepictionAction_CriticalFX_Towed'
             f'    SubDepictions = [\n'

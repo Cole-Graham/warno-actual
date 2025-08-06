@@ -7,6 +7,18 @@ WeaponKey = Tuple[str, str, Optional[str], bool]  # (weapon, category, donor, is
 
 # fmt: off
 weapons: Dict[WeaponKey, WeaponData] = {
+    ("DCA_4_canons_AZP_23_Amur_23mm_late", "DCA", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 40,
+                "Moving": 25,
+            },
+            "parent_membr": {
+                "AimingTime": 1.2,
+            },
+        },
+    },
+    
     ("DCA_4_canons_APZ23_23mm", "DCA", None, False): { # 274
         "Ammunition": {
             "hit_roll": {
@@ -14,9 +26,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 25,
             },
             "parent_membr": {
-                "MaximumRangeHelicopterGRU": 2450,
-                "MaximumRangeAirplaneGRU": 2275,
-                "AimingTime": 1.25,
+                "AimingTime": 1.2,
             },
         },
     },
@@ -31,7 +41,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeHelicopterGRU": 2625,
                 "MaximumRangeAirplaneGRU": 2450,
                 "SuppressDamages": 60,
-                "AimingTime": 1.25,
+                "AimingTime": 1.2,
                 "NbTirParSalves": 16,
                 "AffichageMunitionParSalve": 128,
             },
@@ -43,7 +53,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2625,
                 "MaximumRangeAirplaneGRU": 2450,
-                "AimingTime": 1.25,
+                "AimingTime": 1.2,
             },
         },
     },
@@ -54,7 +64,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeGRU": 1225,
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 1925,
-                "AimingTime": 1.25,
+                "AimingTime": 1.2,
             },
         },
     },
@@ -65,7 +75,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeGRU": 1225,
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 1925,
-                "AimingTime": 1.25,
+                "AimingTime": 1.2,
             },
         },
     },
@@ -76,7 +86,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeGRU": 1225,
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 1925,
-                "AimingTime": 1.25,
+                "AimingTime": 1.2,
             },
         },
     },
@@ -87,7 +97,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeGRU": 1225,
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 1925,
-                "AimingTime": 1.25,
+                "AimingTime": 1.2,
             },
         },
     },

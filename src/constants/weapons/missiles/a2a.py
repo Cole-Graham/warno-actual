@@ -16,7 +16,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 4946,
                 "MaxAccelerationGRU": 2826,
                 "TimeBetweenTwoSalvos": 1.5,
-                "SupplyCost": 50,
+                "SupplyCost": 50.0,
             },
         },
         "MissileDescriptor": {
@@ -28,7 +28,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_R73_Vympel", "A2A", None, False): { # 27
         "Ammunition": {
             "parent_membr": {
-                "SupplyCost": 40,
+                "SupplyCost": 40.0,
             },
         },
     },
@@ -36,7 +36,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_R60M_Vympel", "A2A", None, False): { # 27
         "Ammunition": {
             "parent_membr": {
-                "SupplyCost": 30,
+                "SupplyCost": 30.0,
             },
         },
     },
@@ -50,7 +50,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 4946,
                 "MaxAccelerationGRU": 2826,
                 "TimeBetweenTwoSalvos": 1.5,
-                "SupplyCost": 60,
+                "SupplyCost": 60.0,
             },
         },
         "MissileDescriptor": {
@@ -68,8 +68,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoSalvos": 1.4,
                 "AimingTime": 1.0,
                 "NbTirParSalves": 1,
-                # "SupplyCost": 140,
-                "SupplyCost": 80,
+                # "SupplyCost": 140.0,
+                "SupplyCost": 80.0,
             },
         },
         "MissileDescriptor": {
@@ -95,8 +95,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 1.0,
                 "TimeBetweenTwoSalvos": 1.4,
                 "NbTirParSalves": 1,
-                # "SupplyCost": 140,
-                "SupplyCost": 80,
+                # "SupplyCost": 140.0,
+                "SupplyCost": 80.0,
                 "AffichageMunitionParSalve": 1,
             },
         },
@@ -114,7 +114,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 4946,
                 "MaxAccelerationGRU": 2826,
                 "TimeBetweenTwoSalvos": 1.5,
-                "SupplyCost": 50,
+                "SupplyCost": 50.0,
             },
         },
         "MissileDescriptor": {
@@ -135,7 +135,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 4946,
                 "MaxAccelerationGRU": 2826,
                 "TimeBetweenTwoSalvos": 1.5,
-                "SupplyCost": 50,
+                "SupplyCost": 50.0,
             },
         },
         "MissileDescriptor": {
@@ -153,7 +153,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 4946,
                 "MaxAccelerationGRU": 2826,
                 "TimeBetweenTwoSalvos": 1.5,
-                "SupplyCost": 50,
+                "SupplyCost": 50.0,
             },
         },
         "MissileDescriptor": {
@@ -165,7 +165,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_AIM9M_Sidewinder", "A2A", None, False): { # 7
         "Ammunition": {
             "parent_membr": {
-                "SupplyCost": 40,
+                "SupplyCost": 40.0,
             },
         },
     },
@@ -173,7 +173,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_AIM9L_Sidewinder", "A2A", None, False): { # 6
         "Ammunition": {
             "parent_membr": {
-                "SupplyCost": 30,
+                "SupplyCost": 30.0,
             },
         },
     },
@@ -181,7 +181,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_AIM9J_Sidewinder", "A2A", None, False): { # 5
         "Ammunition": {
             "parent_membr": {
-                "SupplyCost": 25,
+                "SupplyCost": 25.0,
             },
         },
     },
@@ -195,7 +195,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 4946,
                 "MaxAccelerationGRU": 2826,
                 "TimeBetweenTwoSalvos": 1.5,
-                "SupplyCost": 50,
+                "SupplyCost": 50.0,
             },
         },
         "MissileDescriptor": {
@@ -211,7 +211,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoFx": 1.5,
                 "MaximumRangeAirplaneGRU": 8400,
                 "TimeBetweenTwoSalvos": 1.5,
-                "SupplyCost": 60,
+                "SupplyCost": 60.0,
             },
         },
     },
@@ -223,7 +223,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoFx": 1.5,
                 "MaximumRangeAirplaneGRU": 6300,
                 "TimeBetweenTwoSalvos": 1.5,
-                "SupplyCost": 40,
+                "SupplyCost": 40.0,
             },
         },
     },
@@ -235,7 +235,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoFx": 1.5,
                 "MaximumRangeAirplaneGRU": 6825,
                 "TimeBetweenTwoSalvos": 1.5,
-                "SupplyCost": 50,
+                "SupplyCost": 50.0,
             },
         },
     },
@@ -247,7 +247,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoFx": 1.5,
                 "MaximumRangeAirplaneGRU": 7700,
                 "TimeBetweenTwoSalvos": 1.5,
-                "SupplyCost": 50,
+                "SupplyCost": 50.0,
             },
         },
     },

@@ -228,7 +228,7 @@ def _handle_salvo_variants(source_path: Any, base_descr: Any, weapon_name: str,
                 
                 # Only apply salvo-specific values
                 if base_cost is not None:
-                    variant.v.by_m("SupplyCost").v = str(int(base_cost) * length)
+                    variant.v.by_m("SupplyCost").v = str(base_cost * length)
                 variant.v.by_m("NbTirParSalves").v = str(length)
                 variant.v.by_m("AffichageMunitionParSalve").v = str(length)
                 
@@ -247,7 +247,7 @@ def _handle_salvo_variants(source_path: Any, base_descr: Any, weapon_name: str,
                     
                     # Then update salvo-specific values
                     if base_cost is not None:
-                        existing.v.by_m("SupplyCost").v = str(int(base_cost) * length)
+                        existing.v.by_m("SupplyCost").v = str(base_cost * length)
                     existing.v.by_m("NbTirParSalves").v = str(length)
                     existing.v.by_m("AffichageMunitionParSalve").v = str(length)
                     logger.info(f"Updated existing variant {namespace}")

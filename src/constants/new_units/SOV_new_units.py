@@ -82,7 +82,7 @@ SOV_NEW_UNITS = {
         "availability": [0, 0, 2, 0],
         "max_speed": 26,
         "Orders": ['Stop', 'Move', 'FollowFormation', 'SmartMove', 'Attack', 'SmartMoveAndAttack', 'MoveAndAttack',
-                   'Spread', 'Shoot', 'ShootOnPosition', 'ShootOnPositionWithoutCorrection', 'ShootOnPositionSmoke',
+                   'Shoot', 'ShootOnPosition', 'ShootOnPositionWithoutCorrection', 'ShootOnPositionSmoke',
                    'ShootOnPositionWithoutCorrectionSmoke', 'AskForSupply', 'EnterDistrict', 'LoadIntoTransport', 'Load',
                    'AIDefend', 'AIAttack', 'AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
@@ -168,7 +168,7 @@ SOV_NEW_UNITS = {
         "availability": [0, 0, 2, 0],
         "max_speed": 26,
         "Orders": ['Stop', 'Move', 'FollowFormation', 'SmartMove', 'Attack', 'SmartMoveAndAttack', 'MoveAndAttack',
-                   'Spread', 'Shoot', 'ShootOnPosition', 'ShootOnPositionWithoutCorrection', 'ShootOnPositionSmoke',
+                   'Shoot', 'ShootOnPosition', 'ShootOnPositionWithoutCorrection', 'ShootOnPositionSmoke',
                    'ShootOnPositionWithoutCorrectionSmoke', 'AskForSupply', 'EnterDistrict', 'LoadIntoTransport', 'Load',
                    'AIDefend', 'AIAttack', 'AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
@@ -231,7 +231,7 @@ SOV_NEW_UNITS = {
         },
         "availability": [0, 0, 2, 0],
         "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack',
-                   'MoveAndAttack', 'Spread', 'Reverse', 'Shoot', 'ShootOnPosition',
+                   'MoveAndAttack', 'Reverse', 'Shoot', 'ShootOnPosition',
                    'ShootOnPositionWithoutCorrection', 'ShootDefensiveSmoke', 'AskForSupply',
                    'AIDefend', 'AIAttack', 'AIStop'],
         "is_infantry": False, # False for Javelin LML (unique exception), towed units.
@@ -290,7 +290,7 @@ SOV_NEW_UNITS = {
             },
         },
         "availability": [0, 3, 0, 0],
-        "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Spread', 'Reverse',
+        "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Reverse',
                    'AskForSupply', 'AIDefend', 'AIAttack', 'AIStop'],
         "is_infantry": False, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,
@@ -369,7 +369,7 @@ SOV_NEW_UNITS = {
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "Orders": ['Stop', 'Move', 'FollowFormation', 'SmartMove', 'Attack', 'SmartMoveAndAttack', 'MoveAndAttack',
-                   'Spread', 'Shoot', 'ShootOnPosition', 'ShootOnPositionWithoutCorrection', 'AskForSupply',
+                   'Shoot', 'ShootOnPosition', 'ShootOnPositionWithoutCorrection', 'AskForSupply',
                    'EnterDistrict', 'LoadIntoTransport', 'Load', 'AIDefend', 'AIAttack', 'AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,

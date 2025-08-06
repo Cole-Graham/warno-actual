@@ -313,6 +313,10 @@ def build_mortar_weapons(parse_source) -> Dict[str, List[str]]:
     for ammo_descr in parse_source:
         if not hasattr(ammo_descr, 'namespace'):
             continue
+        
+        projectile_type = ammo_descr.v.by_m("ProjectileType").v
+        if projectile_type != "EProjectileType/Artillerie":
+            continue
 
         name = ammo_descr.namespace.removeprefix('Ammo_')
         if name.startswith('Mortier_'):

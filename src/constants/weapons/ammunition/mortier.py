@@ -24,7 +24,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_he",
             },
             "parent_membr": {
-                "ImpactHappening": ['MortierM30107MmSmoke'],
+                "ImpactHappening": "'MortierM30107MmSmoke'",
                 "PhysicalDamages": 0.12,
                 "SuppressDamages": 7.0,
                 "RadiusSplashPhysicalDamagesGRU": 2,
@@ -34,7 +34,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "FireTriggeringProbability": 0.05,
             },
         },
-        "BaseSupplyCost": 5.0,
+        "SupplyCost": 5.0,
         "NbWeapons": [1],
     },
     
@@ -55,7 +55,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_he",
             },
             "parent_membr": {
-                "ImpactHappening": ['MortierM30107MmSmoke'],
+                "ImpactHappening": "'MortierM30107MmSmoke'",
                 "PhysicalDamages": 0.12,
                 "SuppressDamages": 7.0,
                 "RadiusSplashPhysicalDamagesGRU": 2,
@@ -65,7 +65,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "FireTriggeringProbability": 0.05,
             },
         },
-        "BaseSupplyCost": 5.0,
+        "SupplyCost": 5.0,
         "NbWeapons": [1],
     },
 
@@ -86,7 +86,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_he",
             },
             "parent_membr": {
-                "ImpactHappening": ['MortierM30107MmSmoke'],
+                "ImpactHappening": "'MortierM30107MmSmoke'",
                 "PhysicalDamages": 0.12,
                 "SuppressDamages": 7.0,
                 "RadiusSplashPhysicalDamagesGRU": 2,
@@ -96,7 +96,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "FireTriggeringProbability": 0.05,
             },
         },
-        "BaseSupplyCost": 5.0,
+        "SupplyCost": 5.0,
         "NbWeapons": [1],
     },
 
@@ -117,7 +117,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_he",
             },
             "parent_membr": {
-                "ImpactHappening": ['MortierM30107MmSmoke'],
+                "ImpactHappening": "'MortierM30107MmSmoke'",
                 "PhysicalDamages": 0.12,
                 "SuppressDamages": 7.0,
                 "RadiusSplashPhysicalDamagesGRU": 2,
@@ -127,7 +127,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "FireTriggeringProbability": 0.05,
             },
         },
-        "BaseSupplyCost": 5.0,
+        "SupplyCost": 5.0,
         "NbWeapons": [1],
     },
     
@@ -270,7 +270,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoSalvos": 20.0,
                 "RadiusSplashPhysicalDamagesGRU": 120,
                 "RadiusSplashSuppressDamagesGRU": 160,
-                "SupplyCost": 90,
+                "SupplyCost": 90.0,
             },
         },
     },
@@ -293,7 +293,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "RadiusSplashSuppressDamagesGRU": 160,
                 "AimingTime": 12,
                 "TimeBetweenTwoSalvos": 20.0,
-                "SupplyCost": 90,
+                "SupplyCost": 90.0,
             },
         },
     },

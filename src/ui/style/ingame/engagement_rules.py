@@ -26,6 +26,7 @@ def edit_uiingamebuckengagementrules(source_path) -> None:
 def _update_engagement_button(source_path) -> None:
     """Update engagement button properties."""
     engagementbuttondescriptor_template = source_path.by_namespace("EngagementButtonDescriptor").v
+    engagementbuttondescriptor_template.params.by_param("TextColor").v = '"ButtonHUD/Text2_M81"'
     
     for component in engagementbuttondescriptor_template.by_member("Components").v:
         if not isinstance(component.v, ndf.model.Object):

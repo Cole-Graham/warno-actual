@@ -30,7 +30,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 10
             },
         },
-        "BaseSupplyCost": 2,
+        "SupplyCost": 2.0,
         "NbWeapons": [1],
         "WeaponDescriptor": {
             "Salves": 10,
@@ -58,7 +58,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 5,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [1],
         "WeaponDescriptor": {
             "Salves": 12,
@@ -88,7 +88,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 10
             },
         },
-        "BaseSupplyCost": 2,
+        "SupplyCost": 2.0,
         "NbWeapons": [1],
         "WeaponDescriptor": {
             "Salves": 10,
@@ -118,7 +118,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 10
             },
         },
-        "BaseSupplyCost": 2,
+        "SupplyCost": 2.0,
         "NbWeapons": [1],
         "WeaponDescriptor": {
             "Salves": 10,
@@ -146,7 +146,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 5,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [1],
         "WeaponDescriptor": {
             "Salves": 12,
@@ -176,7 +176,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 10
             },
         },
-        "BaseSupplyCost": 2,
+        "SupplyCost": 2.0,
         "NbWeapons": [1],
         "WeaponDescriptor": {
             "Salves": 10,
@@ -204,7 +204,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 5,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [1],
         "WeaponDescriptor": {
             "Salves": 12,
@@ -235,7 +235,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 75
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [2, 1],
         "WeaponDescriptor": {
             "Salves": 8,
@@ -262,7 +262,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 50
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [2, 1],
         "WeaponDescriptor": {
             "Salves": 9,
@@ -290,7 +290,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 30
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [1],
         "WeaponDescriptor": {
             "Salves": 15,
@@ -318,7 +318,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 20
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 45,
@@ -346,7 +346,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 20
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 45,
@@ -373,7 +373,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 50
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 9,
@@ -402,7 +402,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 30,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 25,
@@ -431,7 +431,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 20,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 18,               
@@ -460,7 +460,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 30,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 12,               
@@ -489,7 +489,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 20,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 18,               
@@ -519,7 +519,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 20,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [2],
         "WeaponDescriptor": {
             "Salves": 18,               
@@ -548,7 +548,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 20,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 18,
@@ -578,7 +578,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 20,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [1],
         "WeaponDescriptor": {
             "Salves": 18,
@@ -607,7 +607,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 20,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [10, 9, 6, 4, 3, 1],
         "WeaponDescriptor": {
             "Salves": 18,               
@@ -636,7 +636,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 20,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 18,               
@@ -665,7 +665,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 30,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [5],
         "WeaponDescriptor": {
             "Salves": 11,               
@@ -694,7 +694,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 30,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [8, 6, 1],
         "WeaponDescriptor": {
             "Salves": 11,               
@@ -723,7 +723,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 30,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [9, 7, 5, 4, 3, 2],
         "NewTexture": "Commando_733",
         "WeaponDescriptor": {
@@ -755,7 +755,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 30,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [3],
         "NewTexture": "M16A1_Carbine",
         "WeaponDescriptor": {
@@ -787,7 +787,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 30,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [11, 8, 7, 5, 4, 3, 2],
         "NewTexture": "M16A1_Carbine",
         "WeaponDescriptor": {
@@ -817,7 +817,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 30,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [6],
         "WeaponDescriptor": {
             "Salves": 11,               
@@ -846,7 +846,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 20,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [5, 4],
         "WeaponDescriptor": {
             "Salves": 18,               
@@ -875,7 +875,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 30,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [10, 8, 6, 5, 4],
         "WeaponDescriptor": {
             "Salves": 11,               
@@ -895,7 +895,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoShots": 0.2, # was 1.25 but Eugen said it has to be multiple of game tick rate (10hz)
                 "TimeBetweenTwoFx": 0.2,
                 "MaximumRangeGRU": 1050,
-                "add": [(16, "MaximumRangeHelicopterGRU = 875"), ],
+                # "add": [(16, "MaximumRangeHelicopterGRU = 875"), ],
+                "MaximumRangeHelicopterGRU": 875,
                 "PhysicalDamages": 0.08,
                 "SuppressDamages": 24,
                 "DisplaySalveAccuracy": False,
@@ -907,7 +908,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "NbWeapons": [1],
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "WeaponDescriptor": {
             "Salves": 48,
         },
@@ -934,7 +935,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 20,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 36,
@@ -962,7 +963,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 20,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [2, 1],
         "WeaponDescriptor": {
             "Salves": 36,
@@ -990,7 +991,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 20,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 36,
@@ -1011,10 +1012,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "PhysicalDamages": 0.16,
                 "SuppressDamages": 48.0,
                 "DisplaySalveAccuracy": False,
-                "AimingTime": 1.25,
+                "AimingTime": 1.2,
                 "TimeBetweenTwoSalvos": 2.0,
                 "NbTirParSalves": 10,
-                "SupplyCost": 2,
+                "SupplyCost": 2.0,
                 "CanShootWhileMoving": "True",
                 "AffichageMunitionParSalve": 50,
             },
@@ -1039,7 +1040,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     #             "AimingTime": 2.0,
     #             "TimeBetweenTwoSalvos": 0.5,
     #             "NbTirParSalves": 7,
-    #             "SupplyCost": 1,
+    #             "SupplyCost": 1.0,
     #             "CanShootWhileMoving": "True",
     #             "AffichageMunitionParSalve": 10,
     #         },
@@ -1072,7 +1073,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 25,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 48,
@@ -1101,7 +1102,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 40,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 18,
@@ -1118,7 +1119,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoSalvos": 3.6,
                 "NbTirParSalves": 10,
                 "AffichageMunitionParSalve": 50,
-                "SupplyCost": 4,
+                "SupplyCost": 4.0,
             },
         },
         "WeaponDescriptor": {
@@ -1136,7 +1137,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoSalvos": 3.6,
                 "NbTirParSalves": 10,
                 "AffichageMunitionParSalve": 50,
-                "SupplyCost": 4,
+                "SupplyCost": 4.0,
             },
         },
         "WeaponDescriptor": {
@@ -1154,7 +1155,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoSalvos": 3.6,
                 "NbTirParSalves": 10,
                 "AffichageMunitionParSalve": 50,
-                "SupplyCost": 4,
+                "SupplyCost": 4.0,
             },
         },
         "WeaponDescriptor": {
@@ -1187,7 +1188,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 40,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 18,
@@ -1223,7 +1224,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 40,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 18,
@@ -1254,7 +1255,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 40,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [2, 1],
         "WeaponDescriptor": {
             "Salves": 18,
@@ -1289,7 +1290,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     #             "AffichageMunitionParSalve": 20,
     #         },
     #     },
-    #     "BaseSupplyCost": 1,
+    #     "SupplyCost": 1.0,
     #     "NbWeapons": [1],
     #     "WeaponDescriptor": {
     #         "Salves": 45,
@@ -1316,7 +1317,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 25,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [1],
         "WeaponDescriptor": {
             "Salves": 20,
@@ -1343,7 +1344,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 25,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [1],
         "WeaponDescriptor": {
             "Salves": 48,
@@ -1370,7 +1371,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 25,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [1],
         "WeaponDescriptor": {
             "Salves": 48,
@@ -1397,7 +1398,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 25,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [1],
         "WeaponDescriptor": {
             "Salves": 45,
@@ -1422,7 +1423,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 2.5,
                 "TimeBetweenTwoSalvos": 4.0,
                 "NbTirParSalves": 8,
-                "SupplyCost": 5,
+                "SupplyCost": 5.0,
                 "AffichageMunitionParSalve": 8,
             },
         },
@@ -1449,7 +1450,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 2.5,
                 "TimeBetweenTwoSalvos": 4.0,
                 "NbTirParSalves": 10,
-                "SupplyCost": 5,
+                "SupplyCost": 5.0,
                 "AffichageMunitionParSalve": 10,
             },
         },
@@ -1483,7 +1484,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.5,
                 "TimeBetweenTwoSalvos": 2.9,
-                "SupplyCost": 2,
+                "SupplyCost": 2.0,
                 "NbTirParSalves": 5,
                 "AffichageMunitionParSalve": 25,
             },
@@ -1553,7 +1554,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 15,
             },
             "parent_membr": {
-                "TimeBetweenTwoShots": 2.20,
+                "TimeBetweenTwoShots": 2.2,
                 "MaximumRangeGRU": 875,
                 "MaximumRangeHelicopterGRU": 700,
                 "PhysicalDamages": 0.08,
@@ -1567,7 +1568,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "token": "AYYOIYKCVF",
         },
         "Texture": "FM_kbk_AKM",
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 22,
@@ -1584,7 +1585,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 15,
             },
             "parent_membr": {
-                "TimeBetweenTwoShots": 2.20,
+                "TimeBetweenTwoShots": 2.2,
                 "MaximumRangeGRU": 875,
                 "MaximumRangeHelicopterGRU": 700,
                 "PhysicalDamages": 0.08,
@@ -1599,7 +1600,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "token": "AYYOIYKCVF",
         },
         "Texture": "FM_kbk_AKM",
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [1],
         "WeaponDescriptor": {
             "Salves": 22,
@@ -1616,7 +1617,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 15,
             },
             "parent_membr": {
-                "TimeBetweenTwoShots": 2.20,
+                "TimeBetweenTwoShots": 2.2,
                 "MaximumRangeGRU": 875,
                 "MaximumRangeHelicopterGRU": 700,
                 "PhysicalDamages": 0.08,
@@ -1630,7 +1631,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             # "token": "AYYOIYKCVF",
         },
         # "NewTexture": "kbk_akm",
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 22,
@@ -1647,7 +1648,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 15,
             },
             "parent_membr": {
-                "TimeBetweenTwoShots": 2.20,
+                "TimeBetweenTwoShots": 2.2,
                 "MaximumRangeGRU": 875,
                 "MaximumRangeHelicopterGRU": 700,
                 "PhysicalDamages": 0.08,
@@ -1662,7 +1663,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "token": "AYYOIYKCVF",
         },
         "Texture": "FM_kbk_AKM",
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [1],
         "WeaponDescriptor": {
             "Salves": 22,
@@ -1691,7 +1692,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 30,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [5, 4, 2],
         "WeaponDescriptor": {
             "Salves": 11,
@@ -1720,7 +1721,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 30,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 11,
@@ -1750,7 +1751,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 30,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [1],
         "WeaponDescriptor": {
             "Salves": 11,
@@ -1779,7 +1780,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 30,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 11,
@@ -1809,7 +1810,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 30,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [1],
         "WeaponDescriptor": {
             "Salves": 11,
@@ -1838,7 +1839,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 10,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [9, 8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 22,
@@ -1867,7 +1868,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 30,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 11,
@@ -1897,7 +1898,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 30,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [1],
         "WeaponDescriptor": {
             "Salves": 11,
@@ -1914,7 +1915,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 20,
             },
             "parent_membr": {
-                "TimeBetweenTwoShots": 1.70,
+                "TimeBetweenTwoShots": 1.7,
                 "MaximumRangeGRU": 875,
                 "MaximumRangeHelicopterGRU": 700,
                 "PhysicalDamages": 0.06,
@@ -1926,7 +1927,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 20,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [10, 9, 8, 7, 6, 5, 4, 3, 1],
         "WeaponDescriptor": {
             "Salves": 12,
@@ -1955,7 +1956,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 30,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 11,
@@ -1985,7 +1986,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 30,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [1],
         "WeaponDescriptor": {
             "Salves": 11,
@@ -2014,7 +2015,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 30,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 11,
@@ -2044,7 +2045,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 30,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [2],
         "WeaponDescriptor": {
             "Salves": 11,
@@ -2073,7 +2074,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 20,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [9, 8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 22,
@@ -2102,7 +2103,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 20,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 22,
@@ -2131,7 +2132,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 30,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 11,
@@ -2161,7 +2162,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 30,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [1],
         "WeaponDescriptor": {
             "Salves": 11,
@@ -2190,7 +2191,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 30,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 11,
@@ -2220,7 +2221,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 30,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [1],
         "WeaponDescriptor": {
             "Salves": 11,
@@ -2249,7 +2250,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 30,
             },
         },
-        "BaseSupplyCost": 1,
+        "SupplyCost": 1.0,
         "NbWeapons": [9, 8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 11,

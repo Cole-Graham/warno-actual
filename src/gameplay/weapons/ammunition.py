@@ -237,7 +237,7 @@ def _create_quantity_variants(source_path, base_descr, weapon_name, quantities, 
 
                     if base_cost is not None:
                         # Scale supply cost by effective quantity
-                        variant.v.by_m("SupplyCost").v = str(int(base_cost) * effective_quantity)
+                        variant.v.by_m("SupplyCost").v = str(base_cost * effective_quantity)
 
                     source_path.add(variant)
                     created_variants.add(namespace)
@@ -245,7 +245,7 @@ def _create_quantity_variants(source_path, base_descr, weapon_name, quantities, 
                 else:
                     # Update both supply cost and Arme Index
                     if base_cost is not None:
-                        existing.v.by_m("SupplyCost").v = str(int(base_cost) * effective_quantity)
+                        existing.v.by_m("SupplyCost").v = str(base_cost * effective_quantity)
                     existing.v.by_m("Arme").v.by_m("Index").v = str(strength - 1)
                     created_variants.add(namespace)
                     logger.debug(f"Updated existing variant {namespace}")
@@ -264,13 +264,13 @@ def _create_quantity_variants(source_path, base_descr, weapon_name, quantities, 
                 variant.namespace = namespace
 
                 if base_cost is not None:
-                    variant.v.by_m("SupplyCost").v = str(int(base_cost) * quantity)
+                    variant.v.by_m("SupplyCost").v = str(base_cost * quantity)
 
                 source_path.add(variant)
                 logger.info(f"Created new variant {namespace}")
             else:
                 if base_cost is not None:
-                    existing.v.by_m("SupplyCost").v = str(int(base_cost) * quantity)
+                    existing.v.by_m("SupplyCost").v = str(base_cost * quantity)
                 logger.debug(f"Updated existing variant {namespace}")
 
 

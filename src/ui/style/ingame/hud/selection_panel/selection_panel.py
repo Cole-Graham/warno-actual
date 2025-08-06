@@ -300,7 +300,7 @@ def _update_hp_display(source_path) -> None:
         if not isinstance(component.v, ndf.model.Object) or not is_obj_type(component.v, "BUCKGaugeValueDescriptor"):
             continue
 
-        component.v.by_member("BackgroundBlockColorToken").v = '"TypeG"'
+        component.v.by_member("BackgroundBlockColorToken").v = '"M81_TypeG"'
 
 
 def _update_shortcut_button(source_path) -> None:
@@ -311,19 +311,19 @@ def _update_shortcut_button(source_path) -> None:
         if not isinstance(component.v, ndf.model.Object) or not is_obj_type(component.v, "BUCKContainerDescriptor"):
             continue
 
-        _update_shortcut_container(component.v)
+        _update_shortcut_button_container(component.v)
 
     logger.debug("Updated shortcut button properties")
 
 
-def _update_shortcut_container(container: Any) -> None:
+def _update_shortcut_button_container(container: Any) -> None:
     """Update shortcut container properties."""
     for component in container.by_member("Components").v:
         if not isinstance(component.v, ndf.model.Object) or not is_obj_type(component.v, "PanelRoundedCorner"):
             continue
 
-        component.v.by_member("BackgroundBlockColorToken").v = '"BoutonTemps_Background_M81"'
-        component.v.by_member("BorderLineColorToken").v = '"BoutonTemps_Line_M81"'
+        component.v.by_member("BackgroundBlockColorToken").v = '"BoutonTemps_ROE_shortcuts_M81"'
+        component.v.by_member("BorderLineColorToken").v = '"M81_QuincyLight"'
 
 
 def _update_roe_shortcuts_panel(source_path) -> None:

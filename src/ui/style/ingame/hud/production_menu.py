@@ -50,7 +50,10 @@ def _update_skirmish_production_menu_pawn_button(source_path) -> None:
                 component.v.by_member("BorderLineColorToken").v = '"BoutonTemps_Line_M81"'
             # handle other object components here with elif statements
         # handle other components here with elif statements
-            
+    
+    skirmishproductionmenucategorybutton = source_path.by_namespace("SkirmishProductionMenuCategoryButton").v
+    skirmishproductionmenucategorybutton.by_member("TextColorToken").v = '"ButtonHUD/Text2_M81"'
+
     logger.debug("Updated SkirmishProductionMenuPawnButton properties")
 
 def _update_main_component(source_path) -> None:

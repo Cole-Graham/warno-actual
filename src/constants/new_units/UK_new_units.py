@@ -9,7 +9,7 @@ UK_NEW_UNITS = {
         "CadavreGUID": "e1eeca97-647d-4296-a631-9ea45800fae9",
         "depictions": {
             "custom": {
-                "DepictionVehicles.ndf": ["TacticVehicleDepictionTemplate", "DepictionOperator_WeaponContinuousFire"],
+                "DepictionVehicles.ndf": ["TacticVehicleDepictionDesc", "DepictionOperator_WeaponContinuousFire"],
             },
         },
         "NewName": "DCA_M167A2_Vulcan_20mm_UK",
@@ -49,9 +49,9 @@ UK_NEW_UNITS = {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
         "UpgradeFromUnit": "FOB_UK",
-        "Orders": ['Stop', 'Move', 'FollowFormation', 'SmartMove', 'Attack', 'SmartMoveAndAttack', 'MoveAndAttack',
-                   'Spread', 'Shoot', 'ShootOnPosition', 'ShootOnPositionWithoutCorrection', 'AskForSupply',
-                   'EnterDistrict', 'LoadIntoTransport', 'Load', 'AIDefend', 'AIAttack', 'AIStop'],
+        "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack', 'MoveAndAttack',
+                   'Shoot', 'ShootOnPosition', 'ShootOnPositionWithoutCorrection', 'AskForSupply',
+                   'LoadIntoTransport', 'Load', 'AIDefend', 'AIAttack', 'AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": True,
         "is_ground_vehicle": True,
@@ -127,7 +127,7 @@ UK_NEW_UNITS = {
         "availability": [0, 0, 2, 0],
         "max_speed": 26,
         "Orders": ['Stop', 'Move', 'FollowFormation', 'SmartMove', 'Attack', 'SmartMoveAndAttack', 'MoveAndAttack',
-                   'Spread', 'Shoot', 'ShootOnPosition', 'ShootOnPositionWithoutCorrection', 'ShootOnPositionSmoke',
+                   'Shoot', 'ShootOnPosition', 'ShootOnPositionWithoutCorrection', 'ShootOnPositionSmoke',
                    'ShootOnPositionWithoutCorrectionSmoke', 'AskForSupply', 'EnterDistrict', 'LoadIntoTransport', 'Load',
                    'AIDefend', 'AIAttack', 'AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
@@ -179,7 +179,7 @@ UK_NEW_UNITS = {
         },
         "availability": [0, 0, 2, 0],
         "Orders": ['Stop', 'Move', 'FollowFormation', 'QuickMove', 'Attack', 'FastMoveAndAttack', 
-                   'MoveAndAttack', 'Spread', 'Reverse', 'Shoot', 'ShootOnPosition', 
+                   'MoveAndAttack', 'Reverse', 'Shoot', 'ShootOnPosition', 
                    'ShootOnPositionWithoutCorrection', 'ShootDefensiveSmoke', 'AskForSupply', 
                    'AIDefend', 'AIAttack', 'AIStop'],
         "is_infantry": False, # False for Javelin LML (unique exception), towed units.

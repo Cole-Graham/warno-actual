@@ -1,6 +1,6 @@
 """Damage value constants."""
 
-VANILLA_LAST_ROW = 139 # used for log warning if Eugen changed the damage array
+VANILLA_LAST_ROW = 140 # used for log warning if Eugen changed the damage array
 VANILLA_LAST_COLUMN = 48 + 13 # 13 is the number of WA armor levels, we add them before this check (yeah...not optimal)
 
 # formatting is usually 13 values per row, except WA infantry armor has a dedicated row
@@ -174,24 +174,25 @@ INFANTRY_ARMOR_EDITS = {
         119: (1.0, "he_dca 1"),
         120: (1.0, "he_autocanon 1"),
         121: (1.0, "he_autocanon 2"),
-        122: (1.0, "howz 1"),
-        123: (1.0, "howz_bombe 1"),
-        124: (1.0, "mmgballe 1"),
-        125: (1.0, "mmgballe 2"),
-        126: (1.0, "mmgballe 3"),
-        127: (1.0, "missile_he 1"),
-        128: (0.1, "pmballe 1"),
-        129: (0.5, "pmballe 2"),
-        130: (1.0, "pmballe 3"),
-        131: (1.0, "roquette"),
-        132: (1.0, "smoke"),
-        133: (1.0, "superhe 1"),
-        134: (1.0, "superhe_sol 1"),
-        135: (1.0, "suppress 1"),
-        136: (1.0, "suppressap 0.75"),
-        137: (1.0, "thermobarique 1"),
-        138: (1.0, "roquette_ap 1"),
-        139: (1.0, "suppresdca 1"),
+        122: (1.0, "he_cluster 1"),
+        123: (1.0, "howz 1"),
+        124: (1.0, "howz_bombe 1"),
+        125: (1.0, "mmgballe 1"),
+        126: (1.0, "mmgballe 2"),
+        127: (1.0, "mmgballe 3"),
+        128: (1.0, "missile_he 1"),
+        129: (0.1, "pmballe 1"),
+        130: (0.5, "pmballe 2"),
+        131: (1.0, "pmballe 3"),
+        132: (1.0, "roquette"),
+        133: (1.0, "smoke"),
+        134: (1.0, "superhe 1"),
+        135: (1.0, "superhe_sol 1"),
+        136: (1.0, "suppress 1"),
+        137: (1.0, "suppressap 0.75"),
+        138: (1.0, "thermobarique 1"),
+        139: (1.0, "roquette_ap 1"),
+        140: (1.0, "suppresdca 1"),
     }
 
 # FMballe infantry damage edits
@@ -249,7 +250,7 @@ DAMAGE_EDITS = {
         }
     },
     "howz": {
-        "row": 122,
+        "row": 123,
         "edits": {
             4: 0.33,
             5: 0.29,
@@ -265,7 +266,7 @@ DAMAGE_EDITS = {
         }
     },
     "howz_bombe": {
-        "row": 123,
+        "row": 124,
         "edits": {
             4: 0.66,
             5: 0.41,
@@ -281,14 +282,14 @@ DAMAGE_EDITS = {
         }
     },
     "Missile_HE": {  # avion
-        "row": 127,
+        "row": 128,
         "edits": {
             1: 0.7,    # avion 1 armor (0.9 is vanilla)
             2: 0.6,    # avion 2 armor (0.8 is vanilla)
         }
     },
     "thermobarique": {
-        "row": 137,
+        "row": 138,
         "edits": {
             4: 0.25,
             5: 0.21,
@@ -305,7 +306,7 @@ DAMAGE_EDITS = {
         }
     },
     "Roquette_AP_1": {  # blindage
-        "row": 138,
+        "row": 139,
         "edits": {
             7: 0.7,    # blindage 4 armor (0.5 is vanilla)
             8: 0.6,    # blindage 5 armor (0.5 is vanilla)

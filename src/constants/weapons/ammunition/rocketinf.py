@@ -86,7 +86,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "TraitsToken": ['STAT', 'thermobaric'],
-                "ImpactHappening": ['BombeODAB'],
+                "ImpactHappening": "'BombeODAB'",
                 "MaximumRangeGRU": 700,
                 "RadiusSplashPhysicalDamagesGRU": 93,
                 "PhysicalDamages": 2.0,
@@ -209,7 +209,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeGRU": 450,
                 "DisplaySalveAccuracy": False,
-                "SupplyCost": 10,
+                "SupplyCost": 10.0,
             },
         },
     },
@@ -225,7 +225,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeGRU": 450,
                 "DisplaySalveAccuracy": False,
-                "SupplyCost": 10,
+                "SupplyCost": 10.0,
             },
         },
     },
@@ -234,7 +234,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "DisplaySalveAccuracy": False,
-                "SupplyCost": 10,
+                "SupplyCost": 10.0,
             },
         },
     },
@@ -250,7 +250,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeGRU": 525,
                 "DisplaySalveAccuracy": False,
-                "SupplyCost": 10,
+                "SupplyCost": 10.0,
             },
         },
     },
@@ -266,7 +266,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeGRU": 875,
                 "DisplaySalveAccuracy": False,
-                "SupplyCost": 15,
+                "SupplyCost": 15.0,
             },
         },
     },
@@ -279,7 +279,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeGRU": 875,
                 "DisplaySalveAccuracy": False,
-                "SupplyCost": 20,
+                "SupplyCost": 20.0,
             },
         },
     },
@@ -295,7 +295,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeGRU": 525,
                 "DisplaySalveAccuracy": False,
-                "SupplyCost": 10,
+                "SupplyCost": 10.0,
             },
         },
     },
@@ -311,7 +311,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeGRU": 525,
                 "DisplaySalveAccuracy": False,
-                "SupplyCost": 10,
+                "SupplyCost": 10.0,
             },
         },
     },
@@ -325,7 +325,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoFx": 6.6,
                 "MaximumRangeGRU": 875,
                 "DisplaySalveAccuracy": False,
-                "SupplyCost": 10,
+                "SupplyCost": 10.0,
             },
         },
     },
@@ -342,7 +342,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoFx": 6.6,
                 "MaximumRangeGRU": 875,
                 "DisplaySalveAccuracy": False,
-                "SupplyCost": 10,
+                "SupplyCost": 10.0,
             },
         },
     },
@@ -358,7 +358,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeGRU": 1750,
                 "DisplaySalveAccuracy": False,
-                "SupplyCost": 10,
+                "SupplyCost": 10.0,
             },
         },
     },
@@ -372,7 +372,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeGRU": 1750,
                 "PhysicalDamages": 1.25,
                 "DisplaySalveAccuracy": False,
-                "SupplyCost": 10,
+                "SupplyCost": 10.0,
             },
         },
     },
@@ -386,7 +386,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeGRU": 1750,
                 "PhysicalDamages": 1.25,
                 "DisplaySalveAccuracy": False,
-                "SupplyCost": 10,
+                "SupplyCost": 10.0,
             },
         },
     },
@@ -402,7 +402,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeGRU": 1750,
                 "DisplaySalveAccuracy": False,
-                "SupplyCost": 10,
+                "SupplyCost": 10.0,
             },
         },
     },

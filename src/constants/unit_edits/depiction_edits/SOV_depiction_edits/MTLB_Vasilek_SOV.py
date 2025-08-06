@@ -13,7 +13,7 @@ mtlb_vasilek_sov: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
             "WeaponShootDataPropertyName": ["'WeaponShootData_0_4'"]
         },
         
-        ("Gfx_MTLB_Vasilek_SOV", "TacticVehicleDepictionTemplate"): {
+        ("Gfx_MTLB_Vasilek_SOV", "TacticVehicleDepictionDesc"): {
             "SubDepictions": {
                 0: {
                     "Depiction": {
@@ -25,7 +25,7 @@ mtlb_vasilek_sov: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
                         "Actions": {
                             3: ("add", (
                                 '('
-                                '    ["weapon_effet_tag4"],'
+                                '    "weapon_effet_tag4",'
                                 '    Weapon_Mortier_Vasilek_indirect_82mm'
                                 ')'
                             )),

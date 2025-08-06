@@ -18,11 +18,13 @@ def edit_buckspecificbuttons(source_path) -> None:
     boutonfulda = source_path.by_namespace("BoutonFulda").v
     boutonfulda.params.by_param("BackgroundColor").v = '"BoutonTemps_Background_M81"'
     boutonfulda.params.by_param("LineBorderColor").v = '"BoutonTemps_Text_M81"'
+    boutonfulda.params.by_param("TextColor").v = '"ButtonHUD/Text2_M81"'
     logger.debug("Updated BoutonFulda colors")
     
     # Update BoutonFulda_AvecIcone colors
-    boutonfulda_avecicone = source_path.by_namespace("BoutonFulda_AvecIcone").v
-    for component in boutonfulda_avecicone.by_member("Components").v:
+    boutonfulda_avecicone_template = source_path.by_namespace("BoutonFulda_AvecIcone").v
+    boutonfulda_avecicone_template.params.by_param("TextureColorToken").v = '"ButtonHUD/Text2_M81"'
+    for component in boutonfulda_avecicone_template.by_member("Components").v:
         if not isinstance(component.v, ndf.model.Object):
             continue
             

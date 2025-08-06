@@ -172,16 +172,34 @@ def _add_modules(unit_row: Any, edits: dict, modules_list: list,   # noqa
     unit_db = game_db["unit_data"]
     
     is_helo = False
+    found_transport_module = False
     if unit_name in unit_db:
         if unit_db[unit_name]["is_helo_unit"]:
             is_helo = True
-            
-    add_unit_transport = "UnloadFromTransport" in edits.get("orders", {}).get("add_orders", [])
-    if add_unit_transport:
-        transport_tags = '["Crew", "Unite_transportable"]'
-        for module in modules_list.v:
-            if isinstance(module.v, ndf.model.Object) and module.v.type == "TTransporterModuleDescriptor":
-                module.v.by_m("TransportableTagSet").v = transport_tags
+    
+    if is_helo:
+        wreck_type = "Chopper"
+    else:
+        wreck_type = "Default"
+        
+    transport_module = (
+        f'TTransporterModuleDescriptor'
+        f'('
+        f'    TransportableTagSet = ["Crew", "Unite_transportable"]'
+        f'    NbSeatsAvailable = 1'
+        f'    WreckUnloadPhysicalDamageBonus = WreckUnloadDamageBonus_{wreck_type}_Physical'
+        f'    WreckUnloadSuppressDamageBonus = WreckUnloadDamageBonus_{wreck_type}_Suppress'
+        f'    WreckUnloadStunDamageBonus = WreckUnloadDamageBonus_{wreck_type}_Stun'
+        f'    LoadRadiusGRU = 70'
+        f')'
+    )
+    
+    # check if transport module is already present
+    for module in modules_list.v:
+        if isinstance(module.v, ndf.model.Object) and module.v.type == "TTransporterModuleDescriptor":
+            found_transport_module = True
+    if not found_transport_module and "UnloadFromTransport" in edits.get("orders", {}).get("add_orders", []):
+        modules_list.v.add(transport_module)
         
     if "modules_add" in edits:
         for module in edits["modules_add"]:
@@ -221,6 +239,13 @@ def _handle_transporter(unit_row: Any, descr_row: Any, edits: dict, index: int, 
         else:
             transport_tags.v = '["Crew"]'
             logger.info(f"Updated {unit_name} to regular transport")
+            
+    add_unit_transport = "UnloadFromTransport" in edits.get("orders", {}).get("add_orders", [])
+    
+    if add_unit_transport:
+        transport_tags = '["Crew", "Unite_transportable"]'
+        descr_row.v.by_m("TransportableTagSet").v = transport_tags
+        logger.info(f"Updated {unit_name} to prime mover")
 
 def _handle_tags(unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list,
                  dictionary_entries: list, game_db: Dict[str, Any]) -> None:
@@ -423,12 +448,7 @@ def _handle_unit_ui(unit_row: Any, descr_row: Any, edits: dict, index: int, modu
 
     if "orders" in edits and "add_orders" in edits["orders"]:
         if "sell" in edits["orders"]["add_orders"]:
-            sell_module = (
-                'TModuleSelector('
-                '    Default = TSellModuleDescriptor()'
-                '    Condition = ~/IfNotCadavreCondition'
-                '),'
-            )
+            sell_module = "~/SellModuleDescriptor"
             modules_list.v.insert(index + 1, sell_module)  # noqa
 
 
@@ -556,6 +576,7 @@ def _handle_transportable(unit_row: Any, descr_row: Any, edits: dict, *_) -> Non
 
 def temp_fix_reco_radar(source_path: Any, game_db: Dict[str, Any]) -> None:
     """2025/02/3 temp fix to Eugen's mistake of adding reco_radar to units that don't have it"""
+    # TODO: remove this once Eugen's mistake is fixed
     unit_db = game_db["unit_data"]
 
     exceptions = [

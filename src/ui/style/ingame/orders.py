@@ -22,5 +22,5 @@ def edit_orderdisplay(source_path) -> None:
         if not is_obj_type(row.v, "TOrderDisplayDrawInfo"):
             continue
             
-        row.v.by_member("LineThickness").v = "1200.0"
+        row.v.by_member("LineThickness").v = "1400.0"
         logger.debug("Updated order display line thickness")

@@ -246,7 +246,8 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         # Unit and weapon files
         "GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf": [
             # Create new units first, before editing donors used to create them.
-            lambda source_path: temp_fix_reco_radar(source_path, game_db),
+            # TODO: Confirm Eugen properly fixed this
+            # lambda source_path: temp_fix_reco_radar(source_path, game_db),
             lambda source_path: create_new_units(source_path, game_db),
             lambda source_path: edit_units(source_path, game_db),
             lambda source_path: edit_auto_cover(source_path, game_db),

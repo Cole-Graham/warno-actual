@@ -176,7 +176,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MaximumRangeGRU": 2275,
-                "SupplyCost": 220,
+                "SupplyCost": 220.0,
             },
         },
     },
@@ -218,7 +218,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "RadiusSplashPhysicalDamagesGRU": 43,
                 "PhysicalDamages": 1.15,
                 "RadiusSplashSuppressDamagesGRU": 86,
-                "SupplyCost": 100,
+                "SupplyCost": 100.0,
             },
         },
     },
@@ -298,7 +298,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MaximumRangeGRU": 2275,
-                "SupplyCost": 220,
+                "SupplyCost": 220.0,
             },
         },
     },

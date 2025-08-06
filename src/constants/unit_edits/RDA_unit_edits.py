@@ -959,7 +959,7 @@ rda_unit_edits = {
             },
             "TimeBetweenEachIdentifyRoll": 1.0,
         },
-        "CommandPoints": 75,
+        "CommandPoints": 85,
         "availability": [6, 4, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
@@ -1056,12 +1056,12 @@ rda_unit_edits = {
                 1: {
                     "MountedWeapons": {
                         "AutoCanon_AP_30mm_Bitube_Gsh30k": {
-                            "add_members": [("TirContinu", True), ],
+                            # "add_members": [("TirContinu", True), ],
                             "Ammunition": "AutoCanon_AP_30mm_Bitube_Gsh30k_burst",
                             "EffectTag": "'FireEffect_GatlingAir_Gsh_30_2_30mm_x2'",
                         },
                         "AutoCanon_HE_30mm_Bitube_Gsh30k": {
-                            "add_members": [("TirContinu", True), ],
+                            # "add_members": [("TirContinu", True), ],
                             "Ammunition": "AutoCanon_HE_30mm_Bitube_Gsh30k_burst",
                             "EffectTag": "'FireEffect_GatlingAir_Gsh_30_2_30mm_x2'",
                         },

@@ -408,7 +408,7 @@ fr_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_FAMAS": 7,
+                "FM_SIG_543": 7,
             },
         },
     },

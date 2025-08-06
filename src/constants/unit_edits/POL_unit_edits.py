@@ -436,7 +436,10 @@ pol_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_kbk_AK": 9,
-                "RocketInf_RPG7VR_64mm": 5,
+                "RocketInf_RPG7VL": 5,
+                "special": {
+                    "RocketInf_RPG7VL": (1, 5),
+                },
             },
         },
         "GameName": {
@@ -1497,7 +1500,7 @@ pol_unit_edits = {
         },
     },
     "ZSU_23_Shilka_POL": {  # ZSU-23-4 Szylka
-        "CommandPoints": 75,
+        "CommandPoints": 85,
         "availability": [6, 4, 0, 0],
         "optics": {
             "OpticalStrengths": {

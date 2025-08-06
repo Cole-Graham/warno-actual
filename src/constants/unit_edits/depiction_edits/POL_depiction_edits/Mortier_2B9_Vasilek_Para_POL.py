@@ -13,7 +13,7 @@ mortier_2b9_vasilek_para_pol: Dict[str, Dict[Union[str, Tuple[str, str]], dict]]
             "WeaponShootDataPropertyName": ["'WeaponShootData_0_3'"],
         },
         
-        ("Gfx_Mortier_2B9_Vasilek_Para_POL", "TacticVehicleDepictionTemplate"): {
+        ("Gfx_Mortier_2B9_Vasilek_Para_POL", "TacticVehicleDepictionDesc"): {
             "Operators": {
                 7: ("add", (
                     "DepictionOperator_Mortier_2B9_Vasilek_Para_POL_Weapon3"
@@ -21,9 +21,9 @@ mortier_2b9_vasilek_para_pol: Dict[str, Dict[Union[str, Tuple[str, str]], dict]]
             },
             "Actions": (
                 'MAP['
-                '            ( [ "weapon_effet_tag1" ], Weapon_Mortier_Vasilek_82mm_towed ),'
-                '            ( [ "weapon_effet_tag2" ], Weapon_Mortier_Vasilek_indirect_82mm_towed ),'
-                '            ( [ "weapon_effet_tag3" ], Weapon_Mortier_Vasilek_indirect_82mm_towed )'
+                '            ( "weapon_effet_tag1", Weapon_Mortier_Vasilek_82mm_towed ),'
+                '            ( "weapon_effet_tag2", Weapon_Mortier_Vasilek_indirect_82mm_towed ),'
+                '            ( "weapon_effet_tag3", Weapon_Mortier_Vasilek_indirect_82mm_towed )'
                 '        ]'
                 '        + DepictionAction_CriticalFX_Towed'
             ),

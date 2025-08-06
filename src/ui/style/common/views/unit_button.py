@@ -56,8 +56,9 @@ def _update_corner_button(source_path) -> None:
 def _update_add_unit_button(source_path) -> None:
     """Update add unit button properties."""
     addunitbutton = source_path.by_namespace("AddUnitButton").v
+    addunitbutton.by_member("BackgroundBlockColorToken").v = '"DeckCreator/AddUnitToDeck_M81"'
     addunitbutton.by_member("TextSizeToken").v = '"20"'
-    addunitbutton.by_member("TextColorToken").v = "'BoutonXP_deck_chevron_M81'"
+    addunitbutton.by_member("TextColorToken").v = "'BoutonUnit_deck_M81'"
     addunitbutton.by_member("TextTypefaceToken").v = "'Bombardier'"
     logger.debug("Updated add unit button text properties")
 
@@ -181,7 +182,7 @@ def _update_unit_name_text(source_path) -> None:
     
     # Add text padding
     unitbuttonunitnametext.insert(9, 'TextPadding = TRTTILength4 ( Magnifiable = [0.0, 2.0, 0.0, 0.0] )')
-    unitbuttonunitnametext.by_member("TextColor").v = '"BoutonXP_deck_chevron_M81"'
+    unitbuttonunitnametext.by_member("TextColor").v = '"BoutonUnit_deck_M81"'
 
 
 def _update_additional_name_text(source_path) -> None:

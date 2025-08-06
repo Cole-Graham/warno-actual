@@ -5,8 +5,8 @@ ot_64_skot_2_cmd_pol: Dict[str, Dict[str, Any]] = {
     "unit_name": "OT_64_SKOT_2_CMD_POL",
     "valid_files": ["DepictionVehicles.ndf", "ShowRoomUnits.ndf", "UnitCadavreDescriptor.ndf"],
     "DepictionVehicles_ndf": {
-        "TacticVehicleDepictionTemplate": {
-            f'export Gfx_OT_64_SKOT_2_CMD_POL is TacticVehicleDepictionTemplate'
+        "TacticVehicleDepictionDesc": {
+            f'export Gfx_OT_64_SKOT_2_CMD_POL is TacticVehicleDepictionDesc'
             f'('
             f"    CoatingName = 'OT_64_SKOT_2_POL'"
             f'    Selector = SpecificVehicleDepictionSelector'

@@ -22,7 +22,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 1.2,
             },
         },
-        "BaseSupplyCost": 50,
+        "SupplyCost": 50.0,
         "WeaponDescriptor": {
             "SalvoLengths": [4],
             "units": {
@@ -41,7 +41,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 1.2,
             },
         },
-        "BaseSupplyCost": 40,
+        "SupplyCost": 40.0,
         "WeaponDescriptor": {
             "SalvoLengths": [4],
             "units": {
@@ -67,7 +67,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 1.2,
             }
         },
-        "BaseSupplyCost": 25,
+        "SupplyCost": 25.0,
         "WeaponDescriptor": {
             "SalvoLengths": [4],
             "units": {
@@ -92,7 +92,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 3.5,
             }
         },
-        "BaseSupplyCost": 25,
+        "SupplyCost": 25.0,
         "WeaponDescriptor": {
             "SalvoLengths": [4],
             "units": {
@@ -115,7 +115,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 1.2,
             },
         },
-        "BaseSupplyCost": 60,
+        "SupplyCost": 60.0,
         "WeaponDescriptor": {
             "SalvoLengths": [8, 4],
             "units": {
@@ -139,7 +139,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 1.2,
             },
         },
-        "BaseSupplyCost": 60,
+        "SupplyCost": 60.0,
         "WeaponDescriptor": {
             "SalvoLengths": [4],
             "units": {
@@ -161,7 +161,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 1.2,
             },
         },
-        "BaseSupplyCost": 60,
+        "SupplyCost": 60.0,
         "WeaponDescriptor": {
             "SalvoLengths": [4],
             "units": {
@@ -181,7 +181,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
             }
         },
-        "BaseSupplyCost": 35,
+        "SupplyCost": 35.0,
         "WeaponDescriptor": {
             "SalvoLengths": [4],
             "units": {
@@ -200,7 +200,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 2.4,
             }
         },
-        "BaseSupplyCost": 35,
+        "SupplyCost": 35.0,
         "WeaponDescriptor": {
             "SalvoLengths": [4],
             "units": {
@@ -217,8 +217,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoFx": 3.0,
             },
         },
-        # "BaseSupplyCost": 150,
-        "BaseSupplyCost": 100,
+        # "SupplyCost": 150.0,
+        "SupplyCost": 100.0,
         "WeaponDescriptor": {
             "SalvoLengths": [3],
             "units": {
@@ -242,7 +242,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeAirplaneGRU": 1925,
                 "TimeBetweenTwoSalvos": 7.0,
                 "AimingTime": 1.2,
-                "SupplyCost": 35,
+                "SupplyCost": 35.0,
             },
         },
     },
@@ -256,7 +256,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeAirplaneGRU": 1925,
                 "TimeBetweenTwoSalvos": 7.0,
                 "AimingTime": 3.5,
-                "SupplyCost": 35,
+                "SupplyCost": 35.0,
             },
         },
     },
@@ -278,7 +278,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 1.2,
             }
         },
-        "BaseSupplyCost": 35,
+        "SupplyCost": 35.0,
         "WeaponDescriptor": {
             "SalvoLengths": [8],
             "units": {
@@ -304,7 +304,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 2.4,
             }
         },
-        "BaseSupplyCost": 35,
+        "SupplyCost": 35.0,
         "WeaponDescriptor": {
             "SalvoLengths": [8],
             "units": {
@@ -330,7 +330,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 1.2,
             }
         },
-        "BaseSupplyCost": 35,
+        "SupplyCost": 35.0,
         "WeaponDescriptor": {
             "SalvoLengths": [4],
             "units": {
@@ -356,7 +356,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 2.4,
             }
         },
-        "BaseSupplyCost": 35,
+        "SupplyCost": 35.0,
         "WeaponDescriptor": {
             "SalvoLengths": [4],
             "units": {
@@ -375,7 +375,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 1.2,
             }
         },
-        "BaseSupplyCost": 80,
+        "SupplyCost": 80.0,
         "WeaponDescriptor": {
             "SalvoLengths": [8],
             "units": {
@@ -394,7 +394,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoFx": 2.5,
             },
         },
-        "BaseSupplyCost": 60,
+        "SupplyCost": 60.0,
         "WeaponDescriptor": {
             "SalvoLengths": [2],
             "units": {
@@ -413,7 +413,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoFx": 2.5,
             },
         },
-        "BaseSupplyCost": 80,
+        "SupplyCost": 80.0,
         "WeaponDescriptor": {
             "SalvoLengths": [2],
             "units": {
@@ -431,8 +431,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoFx": 3.0,
             }
         },
-        # "BaseSupplyCost": 130,
-        "BaseSupplyCost": 100,
+        # "SupplyCost": 130.0,
+        "SupplyCost": 100.0,
         "WeaponDescriptor": {
             "SalvoLengths": [3],
             "units": {
@@ -451,7 +451,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 1.2,
             }
         },
-        "BaseSupplyCost": 75,
+        "SupplyCost": 75.0,
         "WeaponDescriptor": {
             "SalvoLengths": [8],
             "units": {
@@ -469,7 +469,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeAirplaneGRU": 1925,
                 "TimeBetweenTwoSalvos": 7.0,
                 "AimingTime": 1.2,
-                "SupplyCost": 35,
+                "SupplyCost": 35.0,
             }
         },
     },
@@ -483,7 +483,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeAirplaneGRU": 1925,
                 "TimeBetweenTwoSalvos": 7.0,
                 "AimingTime": 3.5,
-                "SupplyCost": 35,
+                "SupplyCost": 35.0,
 
             }
         },
@@ -499,7 +499,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeAirplaneGRU": 1750,
                 "TimeBetweenTwoSalvos": 14.0,
                 "AimingTime": 1.2,
-                "SupplyCost": 25,
+                "SupplyCost": 25.0,
             }
         },
     },
@@ -514,7 +514,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeAirplaneGRU": 1750,
                 "TimeBetweenTwoSalvos": 14.0,
                 "AimingTime": 3.5,
-                "SupplyCost": 25,
+                "SupplyCost": 25.0,
             }
         },
     },
@@ -531,7 +531,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 1.2,
             }
         },
-        "BaseSupplyCost": 25,
+        "SupplyCost": 25.0,
         "WeaponDescriptor": {
             "SalvoLengths": [2],
             "units": {
@@ -557,7 +557,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 3.0,
             }
         },
-        "BaseSupplyCost": 25,
+        "SupplyCost": 25.0,
         "WeaponDescriptor": {
             "SalvoLengths": [2],
             "units": {
@@ -584,7 +584,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeAirplaneGRU": 1925,
                 "TimeBetweenTwoSalvos": 7.0,
                 "AimingTime": 1.2,
-                "SupplyCost": 25,
+                "SupplyCost": 25.0,
             }
         },
     },
@@ -602,7 +602,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeAirplaneGRU": 1925,
                 "TimeBetweenTwoSalvos": 7.0,
                 "AimingTime": 3.5,
-                "SupplyCost": 25,
+                "SupplyCost": 25.0,
             }
         },
     },
@@ -617,7 +617,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeAirplaneGRU": 2100,
                 "TimeBetweenTwoSalvos": 7.0,
                 "AimingTime": 1.2,
-                "SupplyCost": 35,
+                "SupplyCost": 35.0,
             }
         },
     },
@@ -632,7 +632,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeAirplaneGRU": 2100,
                 "TimeBetweenTwoSalvos": 7.0,
                 "AimingTime": 3.5,
-                "SupplyCost": 35,
+                "SupplyCost": 35.0,
             }
         },
     },
@@ -652,7 +652,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeAirplaneGRU": 1925,
                 "TimeBetweenTwoSalvos": 7.0,
                 "AimingTime": 1.2,
-                "SupplyCost": 35,
+                "SupplyCost": 35.0,
             }
         },
     },
@@ -672,7 +672,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeAirplaneGRU": 1925,
                 "TimeBetweenTwoSalvos": 7.0,
                 "AimingTime": 3.5,
-                "SupplyCost": 35,
+                "SupplyCost": 35.0,
             }
         },
     },
@@ -690,7 +690,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeAirplaneGRU": 1750,
                 "TimeBetweenTwoSalvos": 7.0,
                 "AimingTime": 1.2,
-                "SupplyCost": 20,
+                "SupplyCost": 20.0,
             }
         },
     },
@@ -708,7 +708,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeAirplaneGRU": 1750,
                 "TimeBetweenTwoSalvos": 7.0,
                 "AimingTime": 3.5,
-                "SupplyCost": 20,
+                "SupplyCost": 20.0,
             }
         },
     },
@@ -727,7 +727,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 1.2,
             }
         },
-        "BaseSupplyCost": 25,
+        "SupplyCost": 25.0,
         "WeaponDescriptor": {
             "SalvoLengths": [3],
             "units": {
@@ -753,7 +753,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 3.0,
             }
         },
-        "BaseSupplyCost": 25,
+        "SupplyCost": 25.0,
         "WeaponDescriptor": {
             "SalvoLengths": [3],
             "units": {
@@ -772,7 +772,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeAirplaneGRU": 1750,
                 "TimeBetweenTwoSalvos": 14.0,
                 "AimingTime": 1.2,
-                "SupplyCost": 25,
+                "SupplyCost": 25.0,
             }
         },
     },
@@ -787,7 +787,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeAirplaneGRU": 1750,
                 "TimeBetweenTwoSalvos": 14.0,
                 "AimingTime": 3.5,
-                "SupplyCost": 25,
+                "SupplyCost": 25.0,
             }
         },
     },

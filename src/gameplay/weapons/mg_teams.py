@@ -45,7 +45,7 @@ def _modify_coax_mmg(weapon_descr, name: str) -> None:
             "SuppressDamages": "24",
             "TimeBetweenTwoSalvos": "2.0",
             "NbTirParSalves": "5",
-            "SupplyCost": "1",
+            "SupplyCost": "1.0",
             "AffichageMunitionParSalve": "25",
         },
     )
@@ -70,7 +70,7 @@ def _modify_mmg_team(weapon_descr, name: str) -> None:
             "SuppressDamages": "24",
             "TimeBetweenTwoSalvos": "2.0",
             "NbTirParSalves": "5",
-            "SupplyCost": "1",
+            "SupplyCost": "1.0",
             "AffichageMunitionParSalve": "25",
         },
     )
@@ -92,7 +92,7 @@ def _modify_mmg_turret(weapon_descr, name: str) -> None:
             "SuppressDamages": "24",
             "TimeBetweenTwoSalvos": "2.0",
             "NbTirParSalves": "5",
-            "SupplyCost": "1",
+            "SupplyCost": "1.0",
             "AffichageMunitionParSalve": "25",
         },
     )
@@ -121,7 +121,7 @@ def _modify_hmg_team(weapon_descr, name: str, exceptions: list) -> None:
             "SuppressDamages": "84",
             "TimeBetweenTwoSalvos": "2.4",
             "NbTirParSalves": "5",
-            "SupplyCost": "3",
+            "SupplyCost": "3.0",
             "AffichageMunitionParSalve": "25",
         },
     )
@@ -145,7 +145,7 @@ def _modify_hmg_turret(weapon_descr, name: str) -> None:
             "SuppressDamages": "42",
             "TimeBetweenTwoSalvos": "2.4",
             "NbTirParSalves": "5",
-            "SupplyCost": "2",
+            "SupplyCost": "2.0",
             "AffichageMunitionParSalve": "25",
         },
     )

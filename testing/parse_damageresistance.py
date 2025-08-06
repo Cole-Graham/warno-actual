@@ -157,8 +157,8 @@ def main() -> None:
             MOD_SRC = Path(r"C:\Program Files (x86)\Steam\steamapps\common\WARNO\Mods\sourcemod")
             MOD_DST = Path(r"C:\Program Files (x86)\Steam\steamapps\common\WARNO\Mods\sourcemod")
         else:   
-            MOD_SRC = Path(r"C:\Program Files (x86)\Steam\steamapps\common\WARNO\Mods\WARNO ACTUAL dev")
-            MOD_DST = Path(r"C:\Program Files (x86)\Steam\steamapps\common\WARNO\Mods\WARNO ACTUAL dev")
+            MOD_SRC = Path(r"C:\Program Files (x86)\Steam\steamapps\common\WARNO\Mods\WARNO ACTUAL test dev")
+            MOD_DST = Path(r"C:\Program Files (x86)\Steam\steamapps\common\WARNO\Mods\WARNO ACTUAL test dev")
         
         # Initialize mod
         mod = ndf.Mod(str(MOD_SRC), str(MOD_DST))

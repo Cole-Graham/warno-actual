@@ -66,6 +66,7 @@ def edit_defaultstyleguides(source_path) -> None:
                 ('"M81_EbonyLight"',      'MAP [ ( ~/ComponentState/Normal, TColorRTTI( Color = [98,122,94,255] ) ), ]'),
                 ('"M81_EbonyVeryDark"',   'MAP [ ( ~/ComponentState/Normal, TColorRTTI( Color = [67,84,64,255] ) ), ]'),
                 ('"M81_Quincy"',          'MAP [ ( ~/ComponentState/Normal, TColorRTTI( Color = [101,89,73,255] ) ), ]'),
+                ('"M81_QuincyLight"',          'MAP [ ( ~/ComponentState/Normal, TColorRTTI( Color = [121,104,86,255] ) ), ]'),
                 ('"M81_VeryDarkCharcoal"',    'MAP [ ( ~/ComponentState/Normal, TColorRTTI( Color = [31,35,31,255] ) ), ]'),
                 ('"M81_MonochromeCRT"',       'MAP [ ( ~/ComponentState/Normal, TColorRTTI( Color = [40,40,40,255] ) ), ]'),
                 ('"M81_AppleII"',             'MAP [ ( ~/ComponentState/Normal, TColorRTTI( Color = [51,255,51,255] ) ), ]'),
@@ -105,6 +106,19 @@ def edit_defaultstyleguides(source_path) -> None:
             )
             index = block_colors_map.by_k('"BoutonTemps_Background_M81"').index + 1
             block_colors_map.insert(index, boutontemps_roe_m81)
+            
+            boutontemps_roe_shortcuts_m81 = (
+                f'("BoutonTemps_ROE_shortcuts_M81",                    MAP ['
+                f'                                   ( ~/ComponentState/Normal,                TColorRTTI( Color = M81_Quincy  ) ),'
+                f'                                   ( ~/ComponentState/Highlighted,           TColorRTTI( Color = M81_QuincyLight ) ),'
+                f'                                   ( ~/ComponentState/Clicked,               TColorRTTI( Color = M81_QuincyLight ) ),'
+                f'                                   ( ~/ComponentState/Toggled,               TColorRTTI( Color = M81_Quincy ) ), '
+                f'                                   ( ~/ComponentState/ToggleClicked,         TColorRTTI( Color = M81_Quincy ) ),'
+                f'                                   ( ~/ComponentState/Grayed,                TColorRTTI( Color = [122,190,167,78] ) ),'
+                f'                               ])'
+            )
+            index = block_colors_map.by_k('"BoutonTemps_ROE_M81"').index + 1
+            block_colors_map.insert(index, boutontemps_roe_shortcuts_m81)
 
             # Update CustomFlareText colors
             _edit_componentstate(block_colors_map, '"CustomFlareText"', 'Normal', 'M81_ArtichokeNearWhite')
@@ -126,8 +140,8 @@ def edit_defaultstyleguides(source_path) -> None:
             block_colors_map.insert(index, boutontemps_pawn_background_m81)
 
             # Add BoutonFlares background
-            boutonflares_background_m81 = (
-                f'("BoutonFlares_Background_M81",            MAP ['
+            boutonflares_m81 = (
+                f'("BoutonFlares_M81",            MAP ['
                 f'                                   ( ~/ComponentState/Normal,                TColorRTTI( Color = M81_Quincy ) ),'
                 f'                                   ( ~/ComponentState/Highlighted,           TColorRTTI( Color = M81_Artichoke ) ),'
                 f'                                   ( ~/ComponentState/Clicked,               TColorRTTI( Color = M81_VeryDarkCharcoal ) ),'
@@ -138,7 +152,7 @@ def edit_defaultstyleguides(source_path) -> None:
                 f'                               ])'
             )
             index = block_colors_map.by_k('"BoutonFlares"').index + 1
-            block_colors_map.insert(index, boutonflares_background_m81)
+            block_colors_map.insert(index, boutonflares_m81)
 
             # Add BoutonSelectionMultiple background
             boutonselectionmultiple_background_m81 = (
@@ -297,13 +311,39 @@ def edit_defaultstyleguides(source_path) -> None:
 
             # Update playerHelper colors
             # TODO: confirm no longer needed
-            # _edit_componentstate(block_colors_map, '"playerHelper/Cover/Otan_line"', 'Normal', 'M81_AppleIIc')
-            # _edit_componentstate(block_colors_map, '"playerHelper/Cover/Otan_line"', 'Highlighted', 'M81_AppleIIc')
-            # _edit_componentstate(block_colors_map, '"playerHelper/Cover/Otan_line"', 'Toggled', 'M81_AppleIIc')
+            _edit_componentstate(block_colors_map, '"playerHelper/Cover/Otan_line"', 'Normal', 'M81_AppleIIc')
+            _edit_componentstate(block_colors_map, '"playerHelper/Cover/Otan_line"', 'Highlighted', 'M81_AppleIIc')
+            _edit_componentstate(block_colors_map, '"playerHelper/Cover/Otan_line"', 'Toggled', 'M81_AppleIIc')
+            
+            # playerhelper_cover_otan_line_m81 = (
+            #     f'("playerHelper/Cover/Otan_line_M81", MAP [
+            #                                                 ( ~/ComponentState/Grayed,                TColorRTTI( Color = [120,120,120,128] ) ),
+            #                                                 ( ~/ComponentState/Normal,                TColorRTTI( Color = M81_AppleIIc ) ),
+            #                                                 ( ~/ComponentState/Highlighted,           TColorRTTI( Color = M81_AppleIIc ) ),
+            #                                                 ( ~/ComponentState/Clicked,               TColorRTTI( Color = [220,220,220,255] ) ),
+            #                                                 ( ~/ComponentState/Toggled,               TColorRTTI( Color = M81_AppleIIc ) ),
+            #                                                 ( ~/ComponentState/ToggleHighlighted,     TColorRTTI( Color = [220,220,220,255] ) ),
+            #                                             ])'
+            # )
+            # index = block_colors_map.by_k('"playerHelper/Cover/Otan_line"').index + 1
+            # block_colors_map.insert(index, playerhelper_cover_otan_line_m81)
+            
+            # playerhelper_cover_pact_line_m81 = (
+            #     f'("playerHelper/Cover/Pact_line_M81", MAP [
+            #                                                 ( ~/ComponentState/Grayed,                TColorRTTI( Color = [120,120,120,128] ) ),
+            #                                                 ( ~/ComponentState/Normal,                TColorRTTI( Color = M81_P3AmberOrange ) ),
+            #                                                 ( ~/ComponentState/Highlighted,           TColorRTTI( Color = M81_P3AmberOrange ) ),
+            #                                                 ( ~/ComponentState/Clicked,               TColorRTTI( Color = [220,220,220,255] ) ),
+            #                                                 ( ~/ComponentState/Toggled,               TColorRTTI( Color = M81_P3AmberOrange ) ),
+            #                                                 ( ~/ComponentState/ToggleHighlighted,     TColorRTTI( Color = [220,220,220,255] ) ),
+            #                                             ])'
+            # )
+            # index = block_colors_map.by_k('"playerHelper/Cover/Pact_line"').index + 1
+            # block_colors_map.insert(index, playerhelper_cover_pact_line_m81)
 
-            # _edit_componentstate(block_colors_map, '"playerHelper/Cover/Pact_line"', 'Normal', 'M81_P3AmberOrange')
-            # _edit_componentstate(block_colors_map, '"playerHelper/Cover/Pact_line"', 'Highlighted', 'M81_P3AmberOrange')
-            # _edit_componentstate(block_colors_map, '"playerHelper/Cover/Pact_line"', 'Toggled', 'M81_P3AmberOrange')
+            _edit_componentstate(block_colors_map, '"playerHelper/Cover/Pact_line"', 'Normal', 'M81_P3AmberOrange')
+            _edit_componentstate(block_colors_map, '"playerHelper/Cover/Pact_line"', 'Highlighted', 'M81_P3AmberOrange')
+            _edit_componentstate(block_colors_map, '"playerHelper/Cover/Pact_line"', 'Toggled', 'M81_P3AmberOrange')
 
             # Add chat button color style (block)
             button_chatcolorstyle_all_m81 = (
@@ -347,6 +387,7 @@ def edit_defaultstyleguides(source_path) -> None:
                 ('"M81_EbonyLight"',      'MAP [ ( ~/ComponentState/Normal, TColorRTTI( Color = [98,122,94,255] ) ), ]'),
                 ('"M81_EbonyVeryDark"',   'MAP [ ( ~/ComponentState/Normal, TColorRTTI( Color = [67,84,64,255] ) ), ]'),
                 ('"M81_Quincy"',          'MAP [ ( ~/ComponentState/Normal, TColorRTTI( Color = [101,89,73,255] ) ), ]'),
+                ('"M81_QuincyLight"',          'MAP [ ( ~/ComponentState/Normal, TColorRTTI( Color = [121,104,86,255] ) ), ]'),
                 ('"M81_VeryDarkCharcoal"',    'MAP [ ( ~/ComponentState/Normal, TColorRTTI( Color = [31,35,31,255] ) ), ]'),
                 ('"M81_MonochromeCRT"',       'MAP [ ( ~/ComponentState/Normal, TColorRTTI( Color = [40,40,40,255] ) ), ]'),
                 ('"M81_AppleII"',             'MAP [ ( ~/ComponentState/Normal, TColorRTTI( Color = [51,255,51,255] ) ), ]'),
@@ -395,14 +436,14 @@ def edit_defaultstyleguides(source_path) -> None:
             # Add BoutonTemps line M81
             boutontemps_line_m81 = (
                 f'("BoutonTemps_Line_M81",                                        MAP ['
-                f'                                                        ( ~/ComponentState/Normal,                TColorRTTI( Color = M81_Ebony ) ),'
-                f'                                                        ( ~/ComponentState/Highlighted,           TColorRTTI( Color = M81_EbonyLight ) ),'
-                f'                                                        ( ~/ComponentState/Clicked,               TColorRTTI( Color = M81_EbonyVeryDark ) ),'
-                f'                                                        ( ~/ComponentState/Toggled,               TColorRTTI( Color = M81_EbonyVeryDark ) ),'
-                f'                                                        ( ~/ComponentState/ToggleHighlighted,     TColorRTTI( Color = M81_EbonyDark ) ),'
-                f'                                                        ( ~/ComponentState/ToggleClicked,         TColorRTTI( Color = M81_Ebony ) ),'
-                f'                                                        ( ~/ComponentState/Grayed,                TColorRTTI( Color = [128,128,128,128] ) ),'
-                f'                                                   ])'
+                f'                                            ( ~/ComponentState/Normal,                TColorRTTI( Color = [153,190,153,102] ) ),'
+                f'                                            ( ~/ComponentState/Highlighted,           TColorRTTI( Color = [153,190,153,102] ) ),'
+                f'                                            ( ~/ComponentState/Clicked,               TColorRTTI( Color = M81_AppleII ) ),'
+                f'                                            ( ~/ComponentState/Toggled,               TColorRTTI( Color = M81_AppleII ) ),'
+                f'                                            ( ~/ComponentState/ToggleHighlighted,     TColorRTTI( Color = M81_AppleIIc ) ),'
+                f'                                            ( ~/ComponentState/ToggleClicked,         TColorRTTI( Color = M81_AppleIIc ) ),'
+                f'                                            ( ~/ComponentState/Grayed,                TColorRTTI( Color = [120,120,120,128] ) ),'
+                f'                                        ])'
             )
             index = line_colors_map.by_k('"Test"').index + 1
             line_colors_map.insert(index, boutontemps_line_m81)
@@ -551,6 +592,8 @@ def edit_defaultstyleguides(source_path) -> None:
             # index = line_colors_map.by_k('"DeckCreator/SlotSelectionne"').index + 1
             # line_colors_map.insert(index, deckcreator_slotselectionne_m81)
             
+            _edit_componentstate(line_colors_map, '"DeckCreator/SlotSelectionne"', 'Normal', '[219,204,168,220]') 
+            
             # Add confirmbutton/border m81
             confirmbutton_border_m81 = (
                 f'("ConfirmButton/Border_M81",                                    MAP ['
@@ -641,6 +684,7 @@ def edit_defaultstyleguides(source_path) -> None:
                 ('"M81_EbonyLight"',      'MAP [ ( ~/ComponentState/Normal, TColorRTTI( Color = [98,122,94,255] ) ), ]'),
                 ('"M81_EbonyVeryDark"',   'MAP [ ( ~/ComponentState/Normal, TColorRTTI( Color = [67,84,64,255] ) ), ]'),
                 ('"M81_Quincy"',          'MAP [ ( ~/ComponentState/Normal, TColorRTTI( Color = [101,89,73,255] ) ), ]'),
+                ('"M81_QuincyLight"',          'MAP [ ( ~/ComponentState/Normal, TColorRTTI( Color = [121,104,86,255] ) ), ]'),
                 ('"M81_VeryDarkCharcoal"',    'MAP [ ( ~/ComponentState/Normal, TColorRTTI( Color = [31,35,31,255] ) ), ]'),
                 ('"M81_MonochromeCRT"',       'MAP [ ( ~/ComponentState/Normal, TColorRTTI( Color = [40,40,40,255] ) ), ]'),
                 ('"M81_AppleII"',             'MAP [ ( ~/ComponentState/Normal, TColorRTTI( Color = [51,255,51,255] ) ), ]'),
@@ -758,6 +802,20 @@ def edit_defaultstyleguides(source_path) -> None:
             text_colors_map.insert(index1, moral_color_bad_1_m81)
             text_colors_map.insert(index2, moral_color_bad_4_m81)
             
+            # Add BoutonUnit deck m81
+            boutonunit_deck_m81 = (
+                f'("BoutonUnit_deck_M81",                              MAP ['
+                f'                                            ( ~/ComponentState/Grayed,                TColorRTTI( Color = M81_VeryDarkCharcoal ) ),'
+                f'                                            ( ~/ComponentState/Normal,                TColorRTTI( Color = M81_DarkCharcoal ) ),'
+                f'                                            ( ~/ComponentState/Highlighted,           TColorRTTI( Color = BlancPur ) ),'
+                f'                                            ( ~/ComponentState/Clicked,               TColorRTTI( Color = M81_ArtichokeNearWhite ) ),'
+                f'                                            ( ~/ComponentState/Toggled,               TColorRTTI( Color = BlancPur ) ),'
+                f'                                            ( ~/ComponentState/ToggleHighlighted,     TColorRTTI( Color = BlancPur ) ),'
+                f'                                        ])'
+            )
+            index = text_colors_map.by_k('"bouton_strategic_choice"').index + 1
+            text_colors_map.insert(index, boutonunit_deck_m81)
+            
             # Add BoutonXP deck m81
             boutonxp_deck_m81 = (
                 f'("BoutonXP_deck_M81",                              MAP ['
@@ -778,10 +836,10 @@ def edit_defaultstyleguides(source_path) -> None:
                 f'("BoutonXP_deck_border_M81",                              MAP ['
                 f'                                            ( ~/ComponentState/Grayed,                TColorRTTI( Color = M81_VeryDarkCharcoal ) ),'
                 f'                                            ( ~/ComponentState/Normal,                TColorRTTI( Color = M81_DarkCharcoal ) ),'
-                f'                                            ( ~/ComponentState/Highlighted,           TColorRTTI( Color = BlancPur ) ),'
-                f'                                            ( ~/ComponentState/Clicked,               TColorRTTI( Color = M81_ArtichokeNearWhite ) ),'
-                f'                                            ( ~/ComponentState/Toggled,               TColorRTTI( Color = BlancPur ) ),'
-                f'                                            ( ~/ComponentState/ToggleHighlighted,     TColorRTTI( Color = BlancPur ) ),'
+                f'                                            ( ~/ComponentState/Highlighted,           TColorRTTI( Color = M81_ArtichokeVeryLight ) ),'
+                f'                                            ( ~/ComponentState/Clicked,               TColorRTTI( Color = M81_Artichoke ) ),'
+                f'                                            ( ~/ComponentState/Toggled,               TColorRTTI( Color = M81_ArtichokeVeryLight ) ),'
+                f'                                            ( ~/ComponentState/ToggleHighlighted,     TColorRTTI( Color = M81_ArtichokeVeryLight ) ),'
                 f'                                        ])'
             )
             index = text_colors_map.by_k('"BoutonXP_deck_border"').index + 1
@@ -792,10 +850,10 @@ def edit_defaultstyleguides(source_path) -> None:
                 f'("BoutonXP_deck_chevron_M81",                              MAP ['
                 f'                                            ( ~/ComponentState/Grayed,                TColorRTTI( Color = M81_VeryDarkCharcoal ) ),'
                 f'                                            ( ~/ComponentState/Normal,                TColorRTTI( Color = M81_DarkCharcoal ) ),'
-                f'                                            ( ~/ComponentState/Highlighted,           TColorRTTI( Color = BlancPur ) ),'
-                f'                                            ( ~/ComponentState/Clicked,               TColorRTTI( Color = M81_ArtichokeNearWhite ) ),'
-                f'                                            ( ~/ComponentState/Toggled,               TColorRTTI( Color = BlancPur ) ),'
-                f'                                            ( ~/ComponentState/ToggleHighlighted,     TColorRTTI( Color = BlancPur ) ),'
+                f'                                            ( ~/ComponentState/Highlighted,           TColorRTTI( Color = M81_ArtichokeVeryLight ) ),'
+                f'                                            ( ~/ComponentState/Clicked,               TColorRTTI( Color = M81_Artichoke ) ),'
+                f'                                            ( ~/ComponentState/Toggled,               TColorRTTI( Color = M81_ArtichokeVeryLight ) ),'
+                f'                                            ( ~/ComponentState/ToggleHighlighted,     TColorRTTI( Color = M81_ArtichokeVeryLight ) ),'
                 f'                                        ])'
             )
             index = text_colors_map.by_k('"BoutonXP_deck_chevron"').index + 1
@@ -838,7 +896,6 @@ def edit_defaultstyleguides(source_path) -> None:
                 f'("CouleurTexture_boutonShortcuts_M81", MAP ['
                 f'                    ( ~/ComponentState/Grayed,            TColorRTTI( Color = [255,255,255,80] ) ),'
                 f'                    ( ~/ComponentState/Normal,            TColorRTTI( Color = M81_ArtichokeNearWhite ) ),'
-                f'                    ( ~/ComponentState/Highlighted,       TColorRTTI( Color = Blanc2 ) ),'
                 f'                    ( ~/ComponentState/Clicked,           TColorRTTI( Color = M81_AppleIIc ) ),'
                 f'                    ( ~/ComponentState/Toggled,           TColorRTTI( Color = M81_AppleIIc ) ),'
                 f'                    ( ~/ComponentState/ToggleHighlighted, TColorRTTI( Color = M81_AppleIIc ) ),'
@@ -848,10 +905,24 @@ def edit_defaultstyleguides(source_path) -> None:
             index = text_colors_map.by_k('"CouleurTexture_boutonShortcuts"').index + 1
             text_colors_map.insert(index, couleurtexture_boutonshortcuts_m81)
             
+            couleurtexture_boutonshortcuts_toggle_m81 = (
+                f'("CouleurTexture_boutonShortcuts_toggle_M81", MAP ['
+                f'                    ( ~/ComponentState/Grayed,            TColorRTTI( Color = [255,255,255,80] ) ),'
+                f'                    ( ~/ComponentState/Normal,            TColorRTTI( Color = M81_P3AmberOrange ) ),'
+                f'                    ( ~/ComponentState/Highlighted,       TColorRTTI( Color = M81_P3AmberOrange ) ),'
+                f'                    ( ~/ComponentState/Clicked,           TColorRTTI( Color = M81_AppleIIc ) ),'
+                f'                    ( ~/ComponentState/Toggled,           TColorRTTI( Color = M81_AppleIIc ) ),'
+                f'                    ( ~/ComponentState/ToggleHighlighted, TColorRTTI( Color = M81_AppleIIc ) ),'
+                f'                    ( ~/ComponentState/ToggleClicked,     TColorRTTI( Color = M81_AppleIIc ) ),'
+                f'                ])'
+            )
+            index = text_colors_map.by_k('"CouleurTexture_boutonShortcuts_M81"').index + 1
+            text_colors_map.insert(index, couleurtexture_boutonshortcuts_toggle_m81)
+            
             # Add CouleurBordure boutonShortcuts m81
             couleurbordure_boutonshortcuts_m81 = (
                 f'("CouleurBordure_boutonShortcuts_M81", MAP ['
-                f'                    ( ~/ComponentState/Normal,            TColorRTTI( Color = M81_P3AmberOrange ) ),'
+                f'                    ( ~/ComponentState/Normal,            TColorRTTI( Color = [153,190,153,102] ) ),'
                 f'                    ( ~/ComponentState/Clicked,           TColorRTTI( Color = M81_AppleIIc ) ),'
                 f'                    ( ~/ComponentState/Toggled,           TColorRTTI( Color = M81_AppleIIc ) ),'
                 f'                    ( ~/ComponentState/ToggleHighlighted, TColorRTTI( Color = M81_AppleIIc ) ),'
@@ -860,6 +931,19 @@ def edit_defaultstyleguides(source_path) -> None:
             )
             index = text_colors_map.by_k('"CouleurBordure_boutonShortcuts"').index + 1
             text_colors_map.insert(index, couleurbordure_boutonshortcuts_m81)
+            
+            couleurbordure_boutonshortcuts_toggle_m81 = (
+                f'("CouleurBordure_boutonShortcuts_toggle_M81", MAP ['
+                f'                    ( ~/ComponentState/Normal,            TColorRTTI( Color = [153,190,153,102] ) ),'
+                f'                    ( ~/ComponentState/Highlighted,       TColorRTTI( Color = [153,190,153,102] ) ),'
+                f'                    ( ~/ComponentState/Clicked,           TColorRTTI( Color = M81_AppleIIc ) ),'
+                f'                    ( ~/ComponentState/Toggled,           TColorRTTI( Color = M81_AppleIIc ) ),'
+                f'                    ( ~/ComponentState/ToggleHighlighted, TColorRTTI( Color = M81_AppleIIc ) ),'
+                f'                    ( ~/ComponentState/ToggleClicked,     TColorRTTI( Color = M81_AppleIIc ) ),'
+                f'                ])'
+            )
+            index = text_colors_map.by_k('"CouleurBordure_boutonShortcuts_M81"').index + 1
+            text_colors_map.insert(index, couleurbordure_boutonshortcuts_toggle_m81)
 
             # Add CouleurBordure boutonShortcuts m81
             # couleurbordure_boutonshortcuts_m81 = (
@@ -892,8 +976,8 @@ def edit_defaultstyleguides(source_path) -> None:
             buttonhudtext2_m81 = (
                 f'("ButtonHUD/Text2_M81",                              MAP ['
                 f'                                            ( ~/ComponentState/Grayed,                TColorRTTI( Color = [120,120,120,128] ) ),'
-                f'                                            ( ~/ComponentState/Normal,                TColorRTTI( Color = BlancEquipe ) ),'
-                f'                                            ( ~/ComponentState/Highlighted,           TColorRTTI( Color = BlancEquipe ) ),'
+                f'                                            ( ~/ComponentState/Normal,                TColorRTTI( Color = Blanc184 ) ),'
+                f'                                            ( ~/ComponentState/Highlighted,           TColorRTTI( Color = Blanc184 ) ),'
                 f'                                            ( ~/ComponentState/Clicked,               TColorRTTI( Color = M81_AppleII ) ),'
                 f'                                            ( ~/ComponentState/Toggled,               TColorRTTI( Color = M81_AppleII ) ),'
                 f'                                            ( ~/ComponentState/ToggleHighlighted,     TColorRTTI( Color = M81_AppleIIc ) ),'

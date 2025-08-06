@@ -64,7 +64,7 @@ RFA_NEW_UNITS = {
         "availability": [0, 0, 2, 0],
         "max_speed": 26,
         "Orders": ['Stop', 'Move', 'FollowFormation', 'SmartMove', 'Attack', 'SmartMoveAndAttack', 'MoveAndAttack',
-                   'Spread', 'Shoot', 'ShootOnPosition', 'ShootOnPositionWithoutCorrection', 'ShootOnPositionSmoke',
+                   'Shoot', 'ShootOnPosition', 'ShootOnPositionWithoutCorrection', 'ShootOnPositionSmoke',
                    'ShootOnPositionWithoutCorrectionSmoke', 'AskForSupply', 'EnterDistrict', 'LoadIntoTransport',
                    'Load', 'AIDefend', 'AIAttack', 'AIStop'],
         "is_infantry": True,  # False for Javelin LML (unique exception), towed units.

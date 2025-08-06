@@ -16,8 +16,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 466,
             },
         },
-        # "BaseSupplyCost": 115,
-        "BaseSupplyCost": 100,
+        # "SupplyCost": 115.0,
+        "SupplyCost": 100.0,
         "WeaponDescriptor": {
             "SalvoLengths": [6, 4, 1],
         },
@@ -32,7 +32,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 466,
             },
         },
-        "BaseSupplyCost": 90,
+        "SupplyCost": 90.0,
         "WeaponDescriptor": {
             "SalvoLengths": [6, 4, 1],
         },
@@ -44,8 +44,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AGM_Kh29T", "ATGM", None, False): { # 85
         "Ammunition": {
             "parent_membr": {
-                # "SupplyCost": 105,
-                "SupplyCost": 100,
+                # "SupplyCost": 105.0,
+                "SupplyCost": 100.0,
             },
         },
     },
@@ -53,7 +53,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AGM_Kh29L", "ATGM", None, False): { # 84
         "Ammunition": {
             "parent_membr": {
-                "SupplyCost": 90
+                "SupplyCost": 90.0
             },
         },
     },
@@ -61,7 +61,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AGM_Kh23M", "ATGM", None, False): { # 77
         "Ammunition": {
             "parent_membr": {
-                "SupplyCost": 60
+                "SupplyCost": 60.0
             },
         },
     },
@@ -76,7 +76,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 466,
             }
         },
-        "BaseSupplyCost": 100,
+        "SupplyCost": 100.0,
         "WeaponDescriptor": {
             "SalvoLengths": [8, 4],
         },
@@ -91,7 +91,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 466,
             }
         },
-        "BaseSupplyCost": 80,
+        "SupplyCost": 80.0,
         "WeaponDescriptor": {
             "SalvoLengths": [8],
         },
@@ -106,7 +106,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 466,
             }
         },
-        "BaseSupplyCost": 90,
+        "SupplyCost": 90.0,
         "WeaponDescriptor": {
             "SalvoLengths": [8],
         },
@@ -124,7 +124,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 466,
             }
         },
-        "BaseSupplyCost": 60,
+        "SupplyCost": 60.0,
         "WeaponDescriptor": {
             "SalvoLengths": [8],
         },
@@ -136,7 +136,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AGM_AGM65D_Maverick", "ATGM", None, False): { # 56
         "Ammunition": {
             "parent_membr": {
-                "SupplyCost": 80
+                "SupplyCost": 80.0
             },
         },
     },
@@ -152,8 +152,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MinMaxCategory": "MinMax_ATGM",
             },
         },
-        # "BaseSupplyCost": 115,
-        "BaseSupplyCost": 100,
+        # "SupplyCost": 115.0,
+        "SupplyCost": 100.0,
         "WeaponDescriptor": {
             "SalvoLengths": [16, 8, 4],
         },
@@ -172,7 +172,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 350,
             },
         },
-        "BaseSupplyCost": 75,
+        "SupplyCost": 75.0,
         "WeaponDescriptor": {
             "SalvoLengths": [6, 4, 1],
         },
@@ -188,7 +188,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 311,
             },
         },
-        "BaseSupplyCost": 60,
+        "SupplyCost": 60.0,
         "WeaponDescriptor": {
             "SalvoLengths": [6, 4],
         },
@@ -203,7 +203,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 466,
             },
         },
-        "BaseSupplyCost": 80,
+        "SupplyCost": 80.0,
         "WeaponDescriptor": {
             "SalvoLengths": [16, 8, 6, 4, 2, 1],
         },
@@ -227,23 +227,23 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 0.0,
             },
         },
-        "BaseSupplyCost": 60,
+        "SupplyCost": 60.0,
         "WeaponDescriptor": {
             "SalvoLengths": [2],
         },
     },
     
     ("Bomb_KAB_1500L", "LGB", None, False): { # 152
-        # "BaseSupplyCost": 120,
-        "BaseSupplyCost": 100,
+        # "SupplyCost": 120.0,
+        "SupplyCost": 100.0,
         "WeaponDescriptor": {
             "SalvoLengths": [3, 2, 1],
         },
     },
     
     ("Bomb_KAB_1500Kr", "LGB", None, False): {
-        # "BaseSupplyCost": 120,
-        "BaseSupplyCost": 100,
+        # "SupplyCost": 120.0,
+        "SupplyCost": 100.0,
         "WeaponDescriptor": {
             "SalvoLengths": [2, 1],
         },
@@ -256,8 +256,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoSalvos": 5,
             },
         },
-        # "BaseSupplyCost": 140,
-        "BaseSupplyCost": 100,
+        # "SupplyCost": 140.0,
+        "SupplyCost": 100.0,
         "WeaponDescriptor": {
             "SalvoLengths": [2, 1],
         },
@@ -266,7 +266,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AGM_AS30L", "AGM", None, False): {
         "Ammunition": {
             "parent_membr": {
-                "SupplyCost": 70,
+                "SupplyCost": 70.0,
             },
         },
     },

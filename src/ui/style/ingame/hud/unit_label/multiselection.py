@@ -35,16 +35,16 @@ def _update_unit_label_component(source_path) -> None:
 
 def _update_container_components(components: Any) -> None:
     """Update container component properties."""
-    for component in components:
-        if not isinstance(component.v, ndf.model.Object) or not is_obj_type(component.v, "BUCKSensibleAreaDescriptor"):
+    for sub_component in components:
+        if not isinstance(sub_component.v, ndf.model.Object) or not is_obj_type(sub_component.v, "BUCKSensitiveAreaDescriptor"):
             continue
             
-        _update_sensible_area_components(component.v.by_member("Components").v)
+        _update_sensible_area_components(sub_component.v.by_member("Components").v)
 
 
-def _update_sensible_area_components(components: Any) -> None:
+def _update_sensible_area_components(nested_components: Any) -> None:
     """Update sensible area component properties."""
-    for component in components:
+    for component in nested_components:
         if not isinstance(component.v, ndf.model.Object) or not is_obj_type(component.v, "PanelRoundedCorner"):
             continue
             

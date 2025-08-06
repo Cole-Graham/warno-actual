@@ -330,7 +330,7 @@ def create_showroom_depictions(source_path: Any) -> None:
 
             elif module_type == "TApparenceModuleDescriptor":
                 if not edits.get("is_ground_vehicle", False):
-                    module.v.by_member("Depiction").v = "$/GFX/Depiction/InfantryDepictionSquadShowroom"
+                    module.v.by_member("Depiction").v = "$/DepictionCore/InfantryDepictionSquadShowroom"
                 else:
                     module.v.by_member("Depiction").v = f"$/GFX/Depiction/Gfx_{unit_name}_Showroom"
 
@@ -555,9 +555,9 @@ def create_alternatives_depictions(source_path: Any) -> None:
         # Create alternatives entry using donor's models
         entry = (
             f"Alternatives_{unit_name} is ["
-            f"    DepictionDescriptor_LOD_High( MeshDescriptor = $/GFX/DepictionResources/Modele_{donor_name} ),"
-            f"    DepictionDescriptor_LOD_Mid( MeshDescriptor = $/GFX/DepictionResources/Modele_{donor_name}_MID ),"
-            f"    DepictionDescriptor_LOD_Low( MeshDescriptor = $/GFX/DepictionResources/Modele_{donor_name}_LOW ),"
+            f"    DepictionVisual_LOD_High( MeshDescriptor = $/GFX/DepictionResources/Modele_{donor_name} ),"
+            f"    DepictionVisual_LOD_Mid( MeshDescriptor = $/GFX/DepictionResources/Modele_{donor_name}_MID ),"
+            f"    DepictionVisual_LOD_Low( MeshDescriptor = $/GFX/DepictionResources/Modele_{donor_name}_LOW ),"
             f"]"
         )
         source_path.add(entry)
@@ -741,11 +741,11 @@ def create_veh_depictions(source_path: Any) -> None:
         # Handle custom depictions first
         depiction_key = unit_name.lower()
         if depiction_key in NEW_DEPICTIONS:
-            # Add TacticVehicleDepictionTemplate if present
-            if "TacticVehicleDepictionTemplate" in custom_depictions:
+            # Add TacticVehicleDepictionDesc if present
+            if "TacticVehicleDepictionDesc" in custom_depictions:
                 custom_veh_added = True
                 custom_veh_depiction = NEW_DEPICTIONS[depiction_key]["DepictionVehicles_ndf"][
-                    "TacticVehicleDepictionTemplate"
+                    "TacticVehicleDepictionDesc"
                 ]
                 source_path.add(custom_veh_depiction)
                 logger.info(f"Added custom vehicle depiction for {unit_name}")
@@ -760,7 +760,7 @@ def create_veh_depictions(source_path: Any) -> None:
                 logger.info(f"Added custom operator depiction for {unit_name}")
         else:
             if (
-                "TacticVehicleDepictionTemplate" in custom_depictions
+                "TacticVehicleDepictionDesc" in custom_depictions
                 or "DepictionOperator_WeaponContinuousFire" in custom_depictions
             ):
                 logger.warning(f"No custom depiction found for {unit_name} (key: {depiction_key})")

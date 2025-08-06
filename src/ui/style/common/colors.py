@@ -31,6 +31,7 @@ def edit_colors(source_path) -> None:
         f'M81_EbonyLight      is [98,122,94,255]'          # BoutonTempsM81
         f'M81_EbonyVeryDark   is [67,84,64,255]'           # BoutonTempsM81
         f'M81_Quincy          is [101,89,73,255]'          # Panel / unit card color
+        f'M81_QuincyLight     is [121,104,86,255]'         # ROE Shortcut
         f'M81_VeryDarkCharcoal is [31,35,31,255]'          # Button color
         f'M81_MonochromeCRT   is [40,40,40,255]'           # Used for black screen of 1980s style monochrome computer displays
         f'M81_AppleII         is [51,255,51,255]'          # P1 GE phosphor green text for monochrome displays
