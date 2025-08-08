@@ -25,9 +25,9 @@ def copy_assets(config: Dict) -> None:
     build_config = config['build_config']
     
     if build_config['target'] == 'ui_only':
-        target_mod = (config['directories']['ui_dev'] 
+        target_mod = (config['directories']['ui_only_dev'] 
                      if build_config['write_dev'] 
-                     else config['directories']['ui_release'])
+                     else config['directories']['ui_only_release'])
     else:
         target_mod = (config['directories']['gameplay_dev']
                      if build_config['write_dev']

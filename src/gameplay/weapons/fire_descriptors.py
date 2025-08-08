@@ -7,8 +7,8 @@ logger = setup_logger(__name__)
 
 
 def edit_fire_descriptors(source_path) -> None:
-    """Edit FireDescriptors.ndf"""
-    logger.info("Editing FireDescriptors.ndf")
+    """GameData/Generated/Gameplay/Gfx/FireDescriptor.ndf"""
+    logger.info("Editing FireDescriptor.ndf")
 
     fire_descriptors = {
         ("NapalmLeger_53m", "NapalmLeger", True): {
@@ -30,7 +30,7 @@ def edit_fire_descriptors(source_path) -> None:
             },
         },
     }
-    
+
     for (name, donor, is_new), data in fire_descriptors.items():
         if is_new:
             new_entry = source_path.by_name(f"Descriptor_Fire_{donor}").copy()
@@ -44,16 +44,16 @@ def edit_fire_descriptors(source_path) -> None:
 
             modules_list = new_entry.v.by_m("ModulesDescriptors")
             for module in modules_list.v:
-                
+
                 if not isinstance(module.v, ndf.model.Object):
                     continue
                 module_type = module.v.type
                 if module_type not in data:
                     continue
-                
+
                 for key, value in data["TFireModuleDescriptor"].items():
                     module.v.by_m(key).v = str(value)
-                    
+
                 source_path.add(new_entry)
                 logger.info(f"Added Descriptor_Fire_{name} to FireDescriptors.ndf")
         else:
@@ -62,7 +62,7 @@ def edit_fire_descriptors(source_path) -> None:
             for module in modules_list.v:
                 if not isinstance(module.v, ndf.model.Object):
                     continue
-                
+
                 module_type = module.v.type
                 if module_type == "TApparenceModuleDescriptor":
                     RadiusGRU = data.get("TFireModuleDescriptor", {}).get("RadiusGRU", None)
@@ -77,24 +77,23 @@ def edit_fire_descriptors(source_path) -> None:
 
 def change_fire_descriptors(source_path) -> None:
     """Change fire descriptors in Ammunition.ndf"""
-    
+
     for ammo_descr in source_path:
-        
+
         is_napalm = False
         is_bomb = False
-        
+
         traits_list = ammo_descr.v.by_m("TraitsToken")
         if any("'napalm'" in trait.v for trait in traits_list.v):
             is_napalm = True
-            
+
         minmax_category = ammo_descr.v.by_m("MinMaxCategory", None)
         if minmax_category and minmax_category.v == "MinMax_Bombe":
             is_bomb = True
-        
+
         if is_napalm and is_bomb:
             ammo_descr.v.by_m("FireDescriptor").v = "Descriptor_Fire_NapalmMoyenBomb"
-            logger.info(f"Changed fire descriptor for {ammo_descr.namespace} to "
-                        "Descriptor_Fire_NapalmMoyenBomb")
-            
+            logger.info(f"Changed fire descriptor for {ammo_descr.namespace} to " "Descriptor_Fire_NapalmMoyenBomb")
+
             ammo_descr.v.by_m("Arme").v.by_m("Family").v = "DamageFamily_nplm_bomb"
             logger.info(f"Changed {ammo_descr.namespace} to DamageFamily_nplm_bomb")

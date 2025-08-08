@@ -45,12 +45,23 @@ def get_dictionary_path(filename: str = "INTERFACE_INGAME.csv") -> Path:
     config = ModConfig.get_instance().config_data
     warno_mods = Path(config['directories']['warno_mods'])
     is_dev = config['build_config']['write_dev']
+    build_target_cfg = config['build_config']['target']
     
     # Determine mod folder name
-    if is_dev:
+    if is_dev and build_target_cfg == "gameplay":
         mod_name = config['directories']['gameplay_dev']
-    else:
+    
+    elif is_dev and build_target_cfg == "ui_only":
+        mod_name = config['directories']['ui_only_dev']
+    
+    elif not is_dev and build_target_cfg == "gameplay":
         mod_name = config['directories']['gameplay_release']
+    
+    elif not is_dev and build_target_cfg == "ui_only":
+        mod_name = config['directories']['ui_only_release']
+    
+    else:
+        raise ValueError(f"Invalid build target: {build_target_cfg}")
         
     return warno_mods / mod_name / "GameData/Localisation" / mod_name / filename
 

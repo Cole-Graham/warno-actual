@@ -24,7 +24,7 @@ logger = setup_logger(__name__)
 
 
 def edit_ammunition(source_path, game_db: Dict[str, Any]) -> None:
-    """Edit Ammunition.ndf file."""
+    """GameData/Generated/Gameplay/Gfx/Ammunition.ndf"""
     try:
         ammo_db = game_db["ammunition"]
 
@@ -517,7 +517,7 @@ def _create_new_descriptor(source_path, data, weapon_name, donor):
 
 def _get_existing_descriptor(source_path, weapon_name):
     """Get an existing descriptor for ammunition."""
-    # TODO: Somehow this broke? Its defining 
+    # TODO: Somehow this broke? Its defining
     base_descr = source_path.by_n(f"Ammo_{weapon_name}")
     if not base_descr:
         # Try without Ammo_ prefix

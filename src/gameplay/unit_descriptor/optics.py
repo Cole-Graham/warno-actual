@@ -11,7 +11,7 @@ logger = setup_logger(__name__)
 # ground optic ranges are basically their missile range + 1000m, but I
 # want to model them more accurately in the future (e.g. like the Weasel).
 # SEAD_UNITS: List[Tuple[str, float]] = [
-    # unit, ground_range, radar_optic_strength
+# unit, ground_range, radar_optic_strength
 #     ("Buccaneer_S2B_SEAD_UK", 6300, 1700.0),  # Martel 5250m
 #     ("EF111_Raven_US", 8000, 2150.0),  # EW
 #     ("F16E_SEAD_US", 7000,2150.0),  # AGM-88 5950m
@@ -46,29 +46,30 @@ SEAD_UNITS: List[Tuple[str, float]] = [
 
 
 def edit_antirad_optics(source_path) -> None:
-    """Edit anti-radiation optics in UniteDescriptor.ndf."""
+    """GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf
+
+    Edit anti-radiation optics in UniteDescriptor.ndf.
+    """
     logger.info("Modifying anti-radiation optics")
-    
+
     for unit_descr in source_path:
         for unit, ground_range, radar_optic_strength in SEAD_UNITS:
             if unit_descr.namespace.removeprefix("Descriptor_Unit_") != unit:
                 continue
-                
+
             modules_list = unit_descr.v.by_m("ModulesDescriptors").v
             for module in modules_list:
-                if not hasattr(module.v, 'type'):
+                if not hasattr(module.v, "type"):
                     continue
-                    
+
                 if module.v.type != "TScannerConfigurationDescriptor":
                     continue
-                
+
                 # Update optics ranges
                 ranges_map = module.v.by_m("VisionRangesGRU").v
                 ranges_map.by_k("EVisionRange/Standard").v = str(ground_range)
                 strengths_map = module.v.by_m("OpticalStrengths").v
                 strengths_map.by_k("EOpticalStrength/AntiRadar").v = "5000.0"
-                
-                logger.info(
-                    f"Updated {unit} optics: ground={ground_range}m, anti-radar=5000m"
-                )
+
+                logger.info(f"Updated {unit} optics: ground={ground_range}m, anti-radar=5000m")
                 break

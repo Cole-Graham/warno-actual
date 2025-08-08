@@ -31,7 +31,7 @@ logger = setup_logger(__name__)
 
 
 def edit_damage_levels(source_path) -> None:
-    """Edit damage levels in DamageLevels.ndf."""
+    """GameData/Generated/Gameplay/Gfx/DamageLevels.ndf"""
     logger.info("Modifying damage levels")
 
     # edit GroundUnits_packSupp
@@ -71,7 +71,7 @@ def edit_damage_levels(source_path) -> None:
 
 
 def edit_conditions(source_path) -> None:
-    """Edit conditions in ConditionsList.ndf."""
+    """GameData/Generated/Gameplay/Gfx/ConditionsDescriptor.ndf"""
     logger.info("Modifying conditions")
 
     for condition in CONDITIONS:
@@ -79,7 +79,7 @@ def edit_conditions(source_path) -> None:
 
 
 def edit_shock_effects(source_path) -> None:
-    """Edit effects in EffetsSurUnite.ndf."""
+    """GameData/Generated/Gameplay/Gfx/EffetsSurUnite.ndf"""
     logger.info("Modifying Shock Trait effects")
 
     # Add new shock effects
@@ -156,7 +156,7 @@ def edit_shock_effects(source_path) -> None:
 
 
 def edit_capacite_list(source_path) -> None:
-    """Edit capacities in CapaciteList.ndf."""
+    """GameData/Generated/Gameplay/Gfx/CapaciteList.ndf"""
     logger.info("Modifying Trait effects in capacite list")
 
     # Edit capacities
@@ -183,7 +183,10 @@ def edit_capacite_list(source_path) -> None:
 
 
 def edit_shock_units(source_path, game_db) -> None:
-    """Add shock movement capabilities to shock units in UniteDescriptor.ndf."""
+    """GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf
+
+    Add shock movement capabilities to shock units in UniteDescriptor.ndf.
+    """
     logger.info("Adding shock movement capabilities to units")
 
     units_modified = 0
@@ -237,7 +240,7 @@ def edit_shock_units(source_path, game_db) -> None:
 
 
 def add_swift_capacity(source_path) -> None:
-    """Add swift capacity to units in UniteDescriptor.ndf"""
+    """GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf"""
     logger.info("Adding swift capacity to units")
 
     unit_edits = load_unit_edits()
@@ -298,7 +301,7 @@ def add_swift_capacity(source_path) -> None:
 
 
 def edit_capacities(source_path) -> None:
-    """Edit capacities in CapaciteList.ndf."""
+    """GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf"""
     logger.info("Modifying unit capacities in UniteDescriptor.ndf")
 
     unit_edits = load_unit_edits()

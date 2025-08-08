@@ -12,7 +12,10 @@ logger = setup_logger(__name__)
 
 
 def edit_units(source_path: Any, game_db: Dict[str, Any]) -> None:
-    """Edit unit descriptors."""
+    """GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf
+
+    Edit unit descriptors.
+    """
     logger.info("Starting UniteDescriptor.ndf modifications")
 
     units_processed = 0
@@ -26,7 +29,7 @@ def edit_units(source_path: Any, game_db: Dict[str, Any]) -> None:
         units_processed += 1
 
         # Skip if no namespace
-        if not hasattr(unit_row, 'namespace'):
+        if not hasattr(unit_row, "namespace"):
             continue
 
         unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
@@ -57,7 +60,7 @@ def edit_units(source_path: Any, game_db: Dict[str, Any]) -> None:
                     continue
 
                 modify_module(unit_row, descr_row, edits, i, modules_list, dictionary_entries, game_db)
-                
+
             _add_modules(unit_row, edits, modules_list, dictionary_entries, game_db)
             _remove_modules(unit_row, edits, modules_list, game_db)
 
@@ -74,10 +77,17 @@ def edit_units(source_path: Any, game_db: Dict[str, Any]) -> None:
     logger.info(f"Modified {units_modified} units")
 
 
-def modify_module(unit_row: Any, descr_row: Any, edits: dict, index: int,
-                  modules_list: list, dictionary_entries: list, game_db: Dict[str, Any]) -> None:
+def modify_module(
+    unit_row: Any,
+    descr_row: Any,
+    edits: dict,
+    index: int,
+    modules_list: list,
+    dictionary_entries: list,
+    game_db: Dict[str, Any],
+) -> None:
     """Apply edits to a specific module based on its type."""
-    if not hasattr(descr_row.v, 'type'):
+    if not hasattr(descr_row.v, "type"):
         return
 
     descr_type = descr_row.v.type
@@ -86,7 +96,7 @@ def modify_module(unit_row: Any, descr_row: Any, edits: dict, index: int,
         namespace = descr_row.namespace
 
     # Get unit name for logging
-    unit_name = unit_row.namespace.replace("Descriptor_Unit_", "") if hasattr(unit_row, 'namespace') else "Unknown"
+    unit_name = unit_row.namespace.replace("Descriptor_Unit_", "") if hasattr(unit_row, "namespace") else "Unknown"
 
     try:
         # Map module types to their handlers
@@ -118,45 +128,77 @@ def modify_module(unit_row: Any, descr_row: Any, edits: dict, index: int,
     except Exception as e:
         logger.error(f"Error modifying module for {unit_name}: {str(e)}")
 
-def _handle_infantry_squad(unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list,
-                        dictionary_entries: list, game_db: Dict[str, Any]) -> None:
+
+def _handle_infantry_squad(
+    unit_row: Any,
+    descr_row: Any,
+    edits: dict,
+    index: int,
+    modules_list: list,
+    dictionary_entries: list,
+    game_db: Dict[str, Any],
+) -> None:
     """Handle infantry squad module edits."""
     unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
     if "strength" in edits:
         descr_row.v.by_m("NbSoldatInGroupeCombat").v = str(edits["strength"])
         logger.info(f"Updated {unit_name} strength to {edits['strength']}")
 
-def _handle_generic_movement(unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list,
-                        dictionary_entries: list, game_db: Dict[str, Any]) -> None:
+
+def _handle_generic_movement(
+    unit_row: Any,
+    descr_row: Any,
+    edits: dict,
+    index: int,
+    modules_list: list,
+    dictionary_entries: list,
+    game_db: Dict[str, Any],
+) -> None:
     """Handle generic movement module edits."""
     unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
     if "max_speed" in edits:
         descr_row.v.by_m("MaxSpeedInKmph").v = str(edits["max_speed"])
         logger.info(f"Updated {unit_name} max speed to {edits['max_speed']}")
-        
-def _handle_land_movement(unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list,
-                        dictionary_entries: list, game_db: Dict[str, Any]) -> None:
+
+
+def _handle_land_movement(
+    unit_row: Any,
+    descr_row: Any,
+    edits: dict,
+    index: int,
+    modules_list: list,
+    dictionary_entries: list,
+    game_db: Dict[str, Any],
+) -> None:
     """Handle land movement module edits."""
     unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
     if "factor" in edits.get("road_speed", {}):
         factor = edits["road_speed"]["factor"]
         descr_row.v.by_m("SpeedBonusFactorOnRoad").v = "{:0.2f}".format(factor)
         logger.info(f"Updated {unit_name} road speed factor to {factor}")
-        
+
     elif "road_speed" in edits.get("road_speed", {}) and "base_speed" in edits.get("road_speed", {}):
         factor = edits["road_speed"]["road_speed"] / edits["road_speed"]["base_speed"]
         descr_row.v.by_m("SpeedBonusFactorOnRoad").v = "{:0.2f}".format(factor)
         logger.info(f"Updated {unit_name} road speed factor to {factor}")
-        
-def _handle_airplane_movement(unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list,
-                        dictionary_entries: list, game_db: Dict[str, Any]) -> None:
+
+
+def _handle_airplane_movement(
+    unit_row: Any,
+    descr_row: Any,
+    edits: dict,
+    index: int,
+    modules_list: list,
+    dictionary_entries: list,
+    game_db: Dict[str, Any],
+) -> None:
     """Handle airplane movement module edits."""
     unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
     if "max_speed" in edits:
         old_value = descr_row.v.by_m("SpeedInKmph").v
         descr_row.v.by_m("SpeedInKmph").v = str(edits["max_speed"])
         logger.info(f"Updated {unit_name} max speed from {old_value} to {edits['max_speed']}")
-        
+
     if "AirplaneMovement" in edits:
         if "parent_membr" in edits["AirplaneMovement"]:
             for key, value in edits["AirplaneMovement"]["parent_membr"].items():
@@ -165,55 +207,52 @@ def _handle_airplane_movement(unit_row: Any, descr_row: Any, edits: dict, index:
                 logger.info(f"Updated {unit_name} {key} from {old_value} to {value}")
 
 
-def _add_modules(unit_row: Any, edits: dict, modules_list: list,   # noqa
-                 dictionary_entries: list, game_db: Dict[str, Any]) -> None:  # noqa
+def _add_modules(
+    unit_row: Any, edits: dict, modules_list: list, dictionary_entries: list, game_db: Dict[str, Any]  # noqa
+) -> None:  # noqa
     """Add modules to the unit."""
     unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
     unit_db = game_db["unit_data"]
-    
+
     is_helo = False
     found_transport_module = False
     if unit_name in unit_db:
         if unit_db[unit_name]["is_helo_unit"]:
             is_helo = True
-    
+
     if is_helo:
         wreck_type = "Chopper"
     else:
         wreck_type = "Default"
-        
+
     transport_module = (
-        f'TTransporterModuleDescriptor'
-        f'('
+        f"TTransporterModuleDescriptor"
+        f"("
         f'    TransportableTagSet = ["Crew", "Unite_transportable"]'
-        f'    NbSeatsAvailable = 1'
-        f'    WreckUnloadPhysicalDamageBonus = WreckUnloadDamageBonus_{wreck_type}_Physical'
-        f'    WreckUnloadSuppressDamageBonus = WreckUnloadDamageBonus_{wreck_type}_Suppress'
-        f'    WreckUnloadStunDamageBonus = WreckUnloadDamageBonus_{wreck_type}_Stun'
-        f'    LoadRadiusGRU = 70'
-        f')'
+        f"    NbSeatsAvailable = 1"
+        f"    WreckUnloadPhysicalDamageBonus = WreckUnloadDamageBonus_{wreck_type}_Physical"
+        f"    WreckUnloadSuppressDamageBonus = WreckUnloadDamageBonus_{wreck_type}_Suppress"
+        f"    WreckUnloadStunDamageBonus = WreckUnloadDamageBonus_{wreck_type}_Stun"
+        f"    LoadRadiusGRU = 70"
+        f")"
     )
-    
+
     # check if transport module is already present
     for module in modules_list.v:
         if isinstance(module.v, ndf.model.Object) and module.v.type == "TTransporterModuleDescriptor":
             found_transport_module = True
     if not found_transport_module and "UnloadFromTransport" in edits.get("orders", {}).get("add_orders", []):
         modules_list.v.add(transport_module)
-        
+
     if "modules_add" in edits:
         for module in edits["modules_add"]:
             modules_list.v.add(module)
 
-def _remove_modules(
-    unit_row: Any,
-    edits: dict,
-    modules_list: list,
-    game_db: Dict[str, Any]
-) -> None:
+
+def _remove_modules(unit_row: Any, edits: dict, modules_list: list, game_db: Dict[str, Any]) -> None:
     """Remove modules from the unit."""
     unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
-    
+
     if "modules_remove" in edits:
         for module_to_remove in edits["modules_remove"]:
             for module in modules_list.v:
@@ -223,8 +262,16 @@ def _remove_modules(
                         modules_list.v.remove(module)
                         logger.info(f"Removed {module_type} module from {unit_name}")
 
-def _handle_transporter(unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list,
-                        dictionary_entries: list, game_db: Dict[str, Any]) -> None:
+
+def _handle_transporter(
+    unit_row: Any,
+    descr_row: Any,
+    edits: dict,
+    index: int,
+    modules_list: list,
+    dictionary_entries: list,
+    game_db: Dict[str, Any],
+) -> None:
     """Handle transporter module edits."""
     unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
     if "is_prime_mover" in edits:
@@ -239,21 +286,29 @@ def _handle_transporter(unit_row: Any, descr_row: Any, edits: dict, index: int, 
         else:
             transport_tags.v = '["Crew"]'
             logger.info(f"Updated {unit_name} to regular transport")
-            
+
     add_unit_transport = "UnloadFromTransport" in edits.get("orders", {}).get("add_orders", [])
-    
+
     if add_unit_transport:
         transport_tags = '["Crew", "Unite_transportable"]'
         descr_row.v.by_m("TransportableTagSet").v = transport_tags
         logger.info(f"Updated {unit_name} to prime mover")
 
-def _handle_tags(unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list,
-                 dictionary_entries: list, game_db: Dict[str, Any]) -> None:
-    
+
+def _handle_tags(
+    unit_row: Any,
+    descr_row: Any,
+    edits: dict,
+    index: int,
+    modules_list: list,
+    dictionary_entries: list,
+    game_db: Dict[str, Any],
+) -> None:
+
     ammo_db = game_db["ammunition"]
     unit_db = game_db["unit_data"]
     weapon_db = game_db["weapons"]
-    
+
     unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
     is_radar_unit = False
     if "AA_radar" in unit_db[unit_name]["tags"]:
@@ -266,7 +321,7 @@ def _handle_tags(unit_row: Any, descr_row: Any, edits: dict, index: int, modules
                     break
             if is_radar_unit:
                 break
-    
+
         if not is_radar_unit:
             tagset = descr_row.v.by_m("TagSet")
             for tag in tagset.v:
@@ -303,7 +358,7 @@ def _handle_damage(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:  # n
             "front": "ResistanceFront",
             "sides": "ResistanceSides",
             "rear": "ResistanceRear",
-            "top": "ResistanceTop"
+            "top": "ResistanceTop",
         }
         for part, resistance in armor_parts.items():
             if part in edits["armor"]:
@@ -342,10 +397,15 @@ def _handle_scanner(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:  # 
                 vision_ranges = descr_row.v.by_m("VisionRangesGRU")
                 vision_ranges.v.by_k("EVisionRange/HighAltitude").v = "12000.0"
 
+
 def edit_identify_rules(source_path: Any) -> None:  # noqa
-    
+    """GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf
+
+    Edit unit identification rules.
+    """
+
     unit_edits = load_unit_edits()
-    
+
     for unit_row in source_path:
         unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
         edits = unit_edits.get(unit_name, {})
@@ -353,20 +413,21 @@ def edit_identify_rules(source_path: Any) -> None:  # noqa
         for module in modules_list.v:
             if hasattr(module.v, "type") and module.v.type == "TReverseScannerWithIdentificationDescriptor":
                 visibility_rolls_obj = module.v.by_m("VisibilityRollRule")
-                
+
                 current_base_prob = float(visibility_rolls_obj.v.by_m("IdentifyBaseProbability").v)
-                new_base_prob = current_base_prob*1.25
+                new_base_prob = current_base_prob * 1.25
                 if new_base_prob > 1.0:
                     new_base_prob = 1.0
                 visibility_rolls_obj.v.by_m("IdentifyBaseProbability").v = str(new_base_prob)
-                
+
                 custom_roll_freq = edits.get("optics", {}).get("TimeBetweenEachIdentifyRoll", None)
                 if custom_roll_freq:
                     visibility_rolls_obj.v.by_m("TimeBetweenEachIdentifyRoll").v = str(custom_roll_freq)
                 else:
                     current_roll_freq = float(visibility_rolls_obj.v.by_m("TimeBetweenEachIdentifyRoll").v)
-                    visibility_rolls_obj.v.by_m("TimeBetweenEachIdentifyRoll").v = str(current_roll_freq/2)
-    
+                    visibility_rolls_obj.v.by_m("TimeBetweenEachIdentifyRoll").v = str(current_roll_freq / 2)
+
+
 def _handle_production(unit_row: Any, descr_row: Any, edits: dict, *_) -> None:  # noqa
     if "CommandPoints" in edits:
         cmd_points = "$/GFX/Resources/Resource_CommandPoints"
@@ -392,8 +453,16 @@ def _handle_strategic_data(unit_row: Any, descr_row: Any, edits: dict, *_) -> No
         descr_row.v.by_m("UnitAttackValue").v = str(edits["UnitAttackValue"])
         descr_row.v.by_m("UnitDefenseValue").v = str(edits["UnitDefenseValue"])
 
-def _handle_unit_ui(unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list,
-                    dictionary_entries: list, game_db: Dict[str, Any]) -> None:  # noqa
+
+def _handle_unit_ui(
+    unit_row: Any,
+    descr_row: Any,
+    edits: dict,
+    index: int,
+    modules_list: list,
+    dictionary_entries: list,
+    game_db: Dict[str, Any],
+) -> None:  # noqa
     """Handle UI module modifications."""
     if "SpecialtiesList" in edits:
         specialties_list = descr_row.v.by_m("SpecialtiesList")
@@ -499,7 +568,7 @@ def _handle_supply(source_path, game_db, unit_edits, *_) -> None:  # noqa
 
             # Find TSupplyModuleDescriptor
             for module in modules_list.v:  # noqa
-                if not hasattr(module.v, 'type'):
+                if not hasattr(module.v, "type"):
                     continue
                 membr = module.v.by_m
 
@@ -523,7 +592,7 @@ def _handle_supply(source_path, game_db, unit_edits, *_) -> None:  # noqa
                             else:
                                 supply_descr.v = "$/GFX/Weapon/HeloSupply"
                                 logger.info(f"Set {unit} to HeloSupply")
-                                
+
                         elif "SupplyDescriptor" in edits:
                             supply_descr.v = f"$/GFX/Weapon/{edits['SupplyDescriptor']}"
                             logger.info(f"Set {unit} supply descriptor to {edits['SupplyDescriptor']}")
@@ -544,7 +613,7 @@ def _handle_supply(source_path, game_db, unit_edits, *_) -> None:  # noqa
                         production_resources = membr("ProductionRessourcesNeeded").v.by_k(key)
                         production_resources.v = str(edits["CommandPoints"])
                         logger.info(f"Updated {unit} command points to: {edits['CommandPoints']}")
-                        
+
                 elif module.v.type == "TUnitUIModuleDescriptor" and "SupplyDescriptor" in edits:
                     specialties_list = membr("SpecialtiesList")
                     if "RunnerSupply" in edits["SupplyDescriptor"]:
@@ -560,7 +629,9 @@ def _handle_supply(source_path, game_db, unit_edits, *_) -> None:  # noqa
             logger.error(f"Error processing {unit}: {str(e)}")
 
 
-def _handle_zone_influence(unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list, *_) -> None:  # noqa
+def _handle_zone_influence(
+    unit_row: Any, descr_row: Any, edits: dict, index: int, modules_list: list, *_
+) -> None:  # noqa
     """Remove zone capture capability."""
     if "remove_zone_capture" in edits:
         modules_list.v.remove(index)  # noqa
@@ -580,15 +651,11 @@ def temp_fix_reco_radar(source_path: Any, game_db: Dict[str, Any]) -> None:
     unit_db = game_db["unit_data"]
 
     exceptions = [
-        "AIFV_B_Radar_NL"
-        "BMD_1_Reostat"
-        "BRDM_1_PSNR1_POL"
-        "BRM_1_DDR",
+        "AIFV_B_Radar_NL" "BMD_1_Reostat" "BRDM_1_PSNR1_POL" "BRM_1_DDR",
         "BRM_1_SOV",
         "BRM_1_POL",
         "FV103_Spartan_GSR_UK",
-        "M113_GreenArcher_RFA"
-        "M113A1B_Radar_BEL",
+        "M113_GreenArcher_RFA" "M113A1B_Radar_BEL",
         "M981_FISTV_US",
         "TPZ_Fuchs_RASIT_RFA",
         "VAB_RASIT_FR",
@@ -612,9 +679,9 @@ def temp_fix_reco_radar(source_path: Any, game_db: Dict[str, Any]) -> None:
             modules_list = get_modules_list(unit_descr.v, "ModulesDescriptors")
 
             for module in modules_list.v:  # noqa
-                if not hasattr(module.v, 'type'):
+                if not hasattr(module.v, "type"):
                     continue
-                
+
                 if module.v.type == "TTagsModuleDescriptor":
                     tagset = module.v.by_m("TagSet")
                     for tag in tagset.v:
@@ -622,6 +689,6 @@ def temp_fix_reco_radar(source_path: Any, game_db: Dict[str, Any]) -> None:
                             tagset.v.remove(tag)
                             logger.info(f"Removed 'reco_radar' tag from {unit_name}")
                             break
-        
+
         elif "reco_radar" in tag_list_data and "_gsr" in specialties_list_data:
             logger.info(f"{unit_name} has reco_radar and _gsr, skipping")

@@ -11,7 +11,7 @@ logger = setup_logger(__name__)
 def add_corrected_shot_dispersion(source_path: Any, game_db: Dict[str, Any]) -> None:
     """Add corrected shot dispersion to mortar weapons."""
     ammo_db = game_db["ammunition"]
-    
+
     logger.info("Adding corrected shot dispersion to mortars")
     mortar_categories = ammo_db["mortar_weapons"]
 
@@ -19,7 +19,7 @@ def add_corrected_shot_dispersion(source_path: Any, game_db: Dict[str, Any]) -> 
 
     for weapon_descr in source_path:
         name = weapon_descr.n.replace("Ammo_", "")
-        
+
         # Check if weapon is a mortar
         if name in mortar_categories["mortars"]:
             dispersion = 0.7
@@ -27,7 +27,7 @@ def add_corrected_shot_dispersion(source_path: Any, game_db: Dict[str, Any]) -> 
             dispersion = 0.9
         else:
             continue
-            
+
         # Add dispersion multiplier
         existing_multiplier = None
         for i, member in enumerate(weapon_descr.v):
@@ -35,54 +35,62 @@ def add_corrected_shot_dispersion(source_path: Any, game_db: Dict[str, Any]) -> 
                 insert_index = i + 1
             elif member.m == "CorrectedShotDispersionMultiplier":
                 existing_multiplier = member.v
-        
+
         if existing_multiplier is not None:
-            logger.info(f"Corrected shot dispersion multiplier already exists for {name}, with value {existing_multiplier}")
+            logger.info(
+                f"Corrected shot dispersion multiplier already exists for {name}, with value {existing_multiplier}"
+            )
         else:
             weapon_descr.v.insert(insert_index, f"CorrectedShotDispersionMultiplier = {dispersion}")
             logger.info(f"Added {dispersion} dispersion multiplier for {name}")
 
 
 def add_radio_tag_to_mortars(source_path, game_db: dict) -> None:
-    """Add 'Radio' tag to mortar units to enable corrected shot."""
+    """GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf
+
+    Add 'Radio' tag to mortar units to enable corrected shot.
+    """
     logger.info("Adding 'Radio' tag to mortar units")
-    
+
     for unit in source_path:
         # Check if unit exists in database and has mortar texture
         unit_name = unit.namespace.replace("Descriptor_Unit_", "")
-        if unit_name not in game_db["unit_data"] or game_db["unit_data"][unit_name].get("menu_icon") != "Texture_RTS_H_mortar":
+        if (
+            unit_name not in game_db["unit_data"]
+            or game_db["unit_data"][unit_name].get("menu_icon") != "Texture_RTS_H_mortar"
+        ):
             continue
-        
+
         if "Radio" in game_db["unit_data"][unit_name].get("tags", []):
             logger.info(f"{unit_name} already has 'Radio' tag")
             continue
 
         modules = unit.v.by_m("ModulesDescriptors").v
         tags_module = None
-        
+
         # Find tags module
         for module in modules:
-            if hasattr(module.v, 'type') and module.v.type == "TTagsModuleDescriptor":
+            if hasattr(module.v, "type") and module.v.type == "TTagsModuleDescriptor":
                 tags_module = module
                 break
-        
+
         if not tags_module:
             continue
-            
+
         # Add Radio tag after GroundUnits
         tag_set = tags_module.v.by_m("TagSet").v
         for i, tag in enumerate(tag_set):
             if tag.v == '"GroundUnits"':
                 tag_set.insert(i + 1, '"Radio",')
                 logger.info(f"Added 'Radio' tag to {unit_name}")
-                break 
+                break
 
 
 def edit_smoke_duration(source_path) -> None:
-    """Edit smoke duration for mortars in SmokeDescriptor.ndf."""
+    """GameData/Generated/Gameplay/Gfx/SmokeDescriptor.ndf"""
     logger.info("------------- editing SmokeDescriptor.ndf -------------")
     logger.info("           Editing smoke duration for mortars          ")
-    
+
     smokes = [  # (name, duration)
         ("Fumi105mm", 80),
         ("Fumi107mm", 80),

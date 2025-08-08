@@ -11,23 +11,23 @@ logger = setup_logger(__name__)
 
 
 def edit_orders(source_path, game_db: Dict[str, Any]):
-    """Edit OrderAvailability_Tactic.ndf.
-    
+    """GameData/Generated/Gameplay/Gfx/OrderAvailability_Tactic.ndf
+
     Args:
         source_path: The NDF file being edited
         game_db: Game database containing unit data
     """
     logger.info("Editing OrderAvailability_Tactic.ndf")
-    
+
     unit_edits = load_unit_edits()
-    
+
     for order_list in source_path:
-        if not hasattr(order_list, 'namespace'):
+        if not hasattr(order_list, "namespace"):
             continue
-            
+
         # Get unit name from descriptor
         unit_name = order_list.namespace.replace("Descriptor_OrderAvailability_", "")
-        
+
         # Handle existing unit edits
         if unit_name in unit_edits and "orders" in unit_edits[unit_name]:
             if "add_orders" in unit_edits[unit_name]["orders"]:
@@ -38,13 +38,13 @@ def edit_orders(source_path, game_db: Dict[str, Any]):
                     else:
                         order_list.v.add(f"'{order}'")
                         logger.info(f"Added '{order}' order to {unit_name}")
-                        
+
             if "remove_orders" in unit_edits[unit_name]["orders"]:
                 for order in order_list.v:
                     if order in unit_edits[unit_name]["orders"]["remove_orders"]:
                         order_list.v.remove(order.index)
                         logger.info(f"Removed {order} order from {unit_name}")
-        
+
         # Remove sell order from supply units
         if unit_name in game_db["unit_data"]:
             unit_data = game_db["unit_data"][unit_name]
@@ -55,13 +55,13 @@ def edit_orders(source_path, game_db: Dict[str, Any]):
                         order_list.v.remove(i)
                         logger.info(f"Removed 'Sell' order from supply unit {unit_name}")
                         break
-        
+
     # Create new order entries for new units
     for donor, edits in NEW_UNITS.items():
         if "NewName" not in edits or "Orders" not in edits:
             logger.warning(f"No orders found for {donor}")
             continue
-            
+
         unit_name = edits["NewName"]
         orders_str = str(edits["Orders"])
         new_entry = f"Descriptor_OrderAvailability_{unit_name} is {orders_str}"
@@ -70,9 +70,9 @@ def edit_orders(source_path, game_db: Dict[str, Any]):
 
 
 def edit_ravitaillement(source_path) -> None:
-    """Edit supply values in Ravitaillement.ndf."""
+    """GameData/Gameplay/Constantes/Ravitaillement.ndf"""
     logger.info("Editing Ravitaillement.ndf")
-    
+
     # Edit standard supply
     standard_supply_descr = source_path.by_n("StandardSupply")
     # standard_supply_descr.v.by_m("FuelSupplyCostBySecond").v = "0.5"
@@ -87,7 +87,7 @@ def edit_ravitaillement(source_path) -> None:
     vanilla_ammo_supply_by_second = float(standard_supply_descr.v.by_m("AmmunitionSupplyBySecond").v)
     vanilla_critics_supply_by_second = float(standard_supply_descr.v.by_m("CriticsSupplyBySecond").v)
     vanilla_critics_supply_cost_by_second = float(standard_supply_descr.v.by_m("CriticsSupplyCostBySecond").v)
-    
+
     expected_vanilla_values = {
         "vanilla_fuel_supply_by_second": 30.0,
         "vanilla_fuel_supply_cost_by_second": 1.5,
@@ -97,17 +97,17 @@ def edit_ravitaillement(source_path) -> None:
         "vanilla_critics_supply_by_second": 10,
         "vanilla_critics_supply_cost_by_second": 20,
     }
-    
+
     vanilla_values = {
-        'vanilla_fuel_supply_by_second': vanilla_fuel_supply_by_second,
-        'vanilla_fuel_supply_cost_by_second': vanilla_fuel_supply_cost_by_second,
-        'vanilla_health_supply_by_second': vanilla_health_supply_by_second,
-        'vanilla_health_supply_cost_by_second': vanilla_health_supply_cost_by_second,
-        'vanilla_ammo_supply_by_second': vanilla_ammo_supply_by_second,
-        'vanilla_critics_supply_by_second': vanilla_critics_supply_by_second,
-        'vanilla_critics_supply_cost_by_second': vanilla_critics_supply_cost_by_second
+        "vanilla_fuel_supply_by_second": vanilla_fuel_supply_by_second,
+        "vanilla_fuel_supply_cost_by_second": vanilla_fuel_supply_cost_by_second,
+        "vanilla_health_supply_by_second": vanilla_health_supply_by_second,
+        "vanilla_health_supply_cost_by_second": vanilla_health_supply_cost_by_second,
+        "vanilla_ammo_supply_by_second": vanilla_ammo_supply_by_second,
+        "vanilla_critics_supply_by_second": vanilla_critics_supply_by_second,
+        "vanilla_critics_supply_cost_by_second": vanilla_critics_supply_cost_by_second,
     }
-    
+
     for var_name, vanilla_value in vanilla_values.items():
         value_match = False
         for expected_value_key, expected_value in expected_vanilla_values.items():
@@ -115,9 +115,11 @@ def edit_ravitaillement(source_path) -> None:
                 value_match = True
                 break
         if not value_match:
-            logger.warning(f"{var_name} value {vanilla_value} is not expected value ({expected_value}), "
-                            f"Eugen has likely changed this value")
-    
+            logger.warning(
+                f"{var_name} value {vanilla_value} is not expected value ({expected_value}), "
+                f"Eugen has likely changed this value"
+            )
+
     # create and add new supply descriptors
     for variant_name, settings in new_supply_constants.items():
         variant_descriptor = source_path.by_n("StandardSupply").copy()
@@ -126,33 +128,36 @@ def edit_ravitaillement(source_path) -> None:
         # Set common values
         descr_membr = variant_descriptor.v.by_m
         descr_membr("DefaultSupplyRangeGRU").v = str(settings["DefaultSupplyRangeGRU"])
-        
-        descr_membr("FuelSupplyBySecond").v = str(
-            vanilla_fuel_supply_by_second * settings["FuelSupplyBySecond"])
+
+        descr_membr("FuelSupplyBySecond").v = str(vanilla_fuel_supply_by_second * settings["FuelSupplyBySecond"])
         logger.info(f"FuelSupplyBySecond: {descr_membr('FuelSupplyBySecond').v}")
-        
-        descr_membr("FuelSupplyCostBySecond").v = str(float(
-            vanilla_fuel_supply_cost_by_second * settings["FuelSupplyCostBySecond"]))
+
+        descr_membr("FuelSupplyCostBySecond").v = str(
+            float(vanilla_fuel_supply_cost_by_second * settings["FuelSupplyCostBySecond"])
+        )
         logger.info(f"FuelSupplyCostBySecond: {descr_membr('FuelSupplyCostBySecond').v}")
-        
-        descr_membr("HealthSupplyBySecond").v = str(
-            vanilla_health_supply_by_second * settings["HealthSupplyBySecond"])
+
+        descr_membr("HealthSupplyBySecond").v = str(vanilla_health_supply_by_second * settings["HealthSupplyBySecond"])
         logger.info(f"HealthSupplyBySecond: {descr_membr('HealthSupplyBySecond').v}")
-        
+
         descr_membr("HealthSupplyCostBySecond").v = str(
-            vanilla_health_supply_cost_by_second * settings["HealthSupplyCostBySecond"])
+            vanilla_health_supply_cost_by_second * settings["HealthSupplyCostBySecond"]
+        )
         logger.info(f"HealthSupplyCostBySecond: {descr_membr('HealthSupplyCostBySecond').v}")
-        
-        descr_membr("AmmunitionSupplyBySecond").v = str(int( # must be int
-            vanilla_ammo_supply_by_second * settings["AmmunitionSupplyBySecond"]))
+
+        descr_membr("AmmunitionSupplyBySecond").v = str(
+            int(vanilla_ammo_supply_by_second * settings["AmmunitionSupplyBySecond"])  # must be int
+        )
         logger.info(f"AmmunitionSupplyBySecond: {descr_membr('AmmunitionSupplyBySecond').v}")
-        
+
         descr_membr("CriticsSupplyBySecond").v = str(
-            vanilla_critics_supply_by_second * settings["CriticsSupplyBySecond"])
+            vanilla_critics_supply_by_second * settings["CriticsSupplyBySecond"]
+        )
         logger.info(f"CriticsSupplyBySecond: {descr_membr('CriticsSupplyBySecond').v}")
-        
+
         descr_membr("CriticsSupplyCostBySecond").v = str(
-            vanilla_critics_supply_cost_by_second * settings["CriticsSupplyCostBySecond"])
+            vanilla_critics_supply_cost_by_second * settings["CriticsSupplyCostBySecond"]
+        )
         logger.info(f"CriticsSupplyCostBySecond: {descr_membr('CriticsSupplyCostBySecond').v}")
 
         source_path.add(variant_descriptor)

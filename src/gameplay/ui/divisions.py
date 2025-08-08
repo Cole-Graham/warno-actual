@@ -53,14 +53,16 @@ divs_not_released = [
     # "UK_BAOR_multi",
 ]
 
+
 def hide_divisions_divisions_ndf(source_path) -> None:
     """GameData/Generated/Gameplay/Decks/Divisions.ndf"""
     logger.info("Modifying hidden divisions in Divisions.ndf ")
 
     config = ModConfig.get_instance()
 
-    divs_to_hide = divs_not_released if not config.config_data['build_config']['write_dev'] \
-        else config.config_data['hide_divs']
+    divs_to_hide = (
+        divs_not_released if not config.config_data["build_config"]["write_dev"] else config.config_data["hide_divs"]
+    )
 
     indices_to_remove = []
     for division in divs_to_hide:
@@ -70,6 +72,7 @@ def hide_divisions_divisions_ndf(source_path) -> None:
     for index in sorted(indices_to_remove, reverse=True):
         source_path.remove(index)
 
+
 def hide_divisions_decks_ndf(source_path) -> None:
     """GameData/Generated/Gameplay/Decks/Decks.ndf
     Remove decks for hidden divisions in Decks.ndf."""
@@ -77,8 +80,9 @@ def hide_divisions_decks_ndf(source_path) -> None:
 
     config = ModConfig.get_instance()
 
-    divs_to_hide = divs_not_released if not config.config_data['build_config']['write_dev'] \
-        else config.config_data['hide_divs']
+    divs_to_hide = (
+        divs_not_released if not config.config_data["build_config"]["write_dev"] else config.config_data["hide_divs"]
+    )
 
     indices_to_remove = []
     for division in divs_to_hide:
@@ -87,7 +91,8 @@ def hide_divisions_decks_ndf(source_path) -> None:
 
     for index in sorted(indices_to_remove, reverse=True):
         source_path.remove(index)
-        
+
+
 def hide_divisions_deckserializer_ndf(source_path) -> None:
     """GameData/Generated/Gameplay/Decks/DecksSerializer.ndf
     Remove division map rows in DecksSerializer.ndf for hidden divisions."""
@@ -95,46 +100,48 @@ def hide_divisions_deckserializer_ndf(source_path) -> None:
 
     config = ModConfig.get_instance()
 
-    divs_to_hide = divs_not_released if not config.config_data['build_config']['write_dev'] \
-        else config.config_data['hide_divs']
-    
+    divs_to_hide = (
+        divs_not_released if not config.config_data["build_config"]["write_dev"] else config.config_data["hide_divs"]
+    )
+
     vanilla_serializer = source_path.find_by_cond(lambda serializer_obj: serializer_obj.index == 0)
     division_ids_map = vanilla_serializer.v.by_member("DivisionIds")
     for division in divs_to_hide:
         division_ids_map.v.remove_by_key(f"Descriptor_Deck_Division_{division}")
 
+
 def edit_division_emblems(source_path) -> None:
-    """Edit division emblems in DivisionTextures.ndf."""
+    """GameData/Generated/UserInterface/Textures/DivisionTextures.ndf"""
     logger.info("Modifying/Adding division emblem textures in DivisionTextures.ndf")
-    
+
     for division in GRAY_EMBLEMS:
         namespace_prefix = "Texture_Division_Emblem_"
         texture_obj = source_path.by_n(namespace_prefix + division).v
         filename = f'"GameData:/Assets/2D/Interface/UseOutGame/Division/Emblem/{division}_gray.png"'
         texture_obj.by_m("FileName").v = filename
         logger.info(f"Changed {division} texture to {filename.split('/')[-1]}")
-        
+
     for emblem_namespace, data in DIVISION_EMBLEMS.items():
         _dir = data["texture_dir"]
         texture = data["texture"]
         namespace_prefix = "Texture_Division_Emblem_"
         new_entry = (
             f'{namespace_prefix}{emblem_namespace} is TUIResourceTexture_Common'
-            '('
-            f'  FileName = "GameData:{_dir}/{texture}"'
-            ')'
+            f'('
+            f'    FileName = "GameData:{_dir}/{texture}"'
+            f')'
         )
-        
+
         texturebank_obj = source_path.by_n("DivisionAdditionalTextureBank")
         texturebank_index = texturebank_obj.index
         source_path.insert(texturebank_index, new_entry)
-        
+
         textures_map = texturebank_obj.v.by_m("Textures")
         new_entry = (
-            '('
-            f'"{namespace_prefix}{emblem_namespace}",'
-            f'MAP[(~/ComponentState/Normal, ~/{namespace_prefix}{emblem_namespace})]'
-            ')'
+            f'('
+            f'    "{namespace_prefix}{emblem_namespace}",'
+            f'    MAP[(~/ComponentState/Normal, ~/{namespace_prefix}{emblem_namespace})]'
+            f')'
         )
         textures_map.v.add(new_entry)
         logger.info(f"Added new texture: {namespace_prefix}{emblem_namespace}")

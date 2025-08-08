@@ -553,10 +553,10 @@ def _apply_salvo_changes(weapon_descr: Any, wd_edits: Dict, weapon_descr_data: D
                             if salves_winchester and winchester:
                                 logger.debug(f"Updating index {index} of SalvoIsMainSalvo to {winchester}")
                                 salves_winchester.v.replace(index, winchester)
-        
+
         elif weapon == "remove":
             continue
-        
+
         else:
             logger.error(f"No salvo edits found for {weapon}")
 

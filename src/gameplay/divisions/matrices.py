@@ -9,9 +9,9 @@ logger = setup_logger(__name__)
 
 
 def edit_division_matrices(source) -> None:
-    """Edit division cost matrices in DivisionCostMatrix.ndf."""
+    """GameData/Generated/Gameplay/Decks/DivisionCostMatrix.ndf"""
     logger.info("Editing division cost matrices")
-    
+
     for matrix_name, matrix_data in DIVISION_MATRICES.items():
         try:
             index = source.by_n(matrix_name).index
@@ -24,7 +24,7 @@ def edit_division_matrices(source) -> None:
 def deck_ap_points(source_path: Any) -> None:
     """Edit deck AP points in Divisions.ndf."""
     logger.info("Editing deck AP points")
-    
+
     divisions = [
         "FR_5e_Blindee",
         "US_3rd_Arm",
@@ -41,7 +41,7 @@ def deck_ap_points(source_path: Any) -> None:
         "RDA_KdA_Bezirk_Erfurt",
         "RFA_TerrKdo_Sud",
     ]
-    
+
     for deck_descr in source_path:
         for division in divisions:
             if deck_descr.namespace == f"Descriptor_Deck_Division_{division}_multi":

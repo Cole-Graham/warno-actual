@@ -8,18 +8,18 @@ logger = setup_logger(__name__)
 
 
 def edit_gd_constants(source_path) -> None:
-    """Edit game constants in GDConstants.ndf.
-    
+    """GameData/Gameplay/Constantes/GDConstants.ndf
+
     Args:
         source_path: The NDF file being edited
     """
     logger.info("------------- editing GDConstants.ndf -------------")
-    
+
     for row in source_path:
         if row.namespace == "Constantes":
             row.v.by_m("StunEffectDuration").v = "2.5"
             logger.info("Set stun effect duration to 2.5")
-        
+
         elif row.namespace == "WargameConstantes":
             edits: List[Tuple[str, str, Union[str, int], Union[str, None]]] = [
                 ("value", "ConquestPossibleScores", "[2000, 3000, 4000]", None),
@@ -27,7 +27,7 @@ def edit_gd_constants(source_path) -> None:
                 ("map", "TimeBeforeEarningCommandPoints", 6, "ECombatRule/Conquest"),
                 ("value", "DefaultArgentInitial", 2000, None),
             ]
-            
+
             membr = row.v.by_m
             for membr_type, var, edit, key in edits:
                 if membr_type == "map":
@@ -36,11 +36,11 @@ def edit_gd_constants(source_path) -> None:
                 elif membr_type == "value":
                     membr(var).v = str(edit)
                     logger.info(f"Set {var} to {edit}")
-        
+
         elif row.namespace == "ModernWarfareConstantes":
             row.v.by_m("FrontSideAngleInDeg").v = "75"
             logger.info("Set FrontSideAngleInDeg to 75")
-            
+
             row.v.by_m("SplashRatioDamage").v = "[0.15, 0.15, 0.01]"
             row.v.by_m("SplashRatioDistance").v = "[0.15, 0.15, 0.1]"
             logger.info("Set splash ratios: Damage=[0.15, 0.15, 0.01], Distance=[0.15, 0.15, 0.1]")

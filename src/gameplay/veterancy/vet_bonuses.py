@@ -27,7 +27,7 @@ def write_veterancy_tokens() -> None:
 
 
 def edit_veterancy_effects(source_path) -> None:
-    """Edit veterancy effects in EffetsSurUnite.ndf."""
+    """GameData/Generated/Gameplay/Gfx/EffetsSurUnite.ndf"""
     logger.info("Modifying veterancy effects")
 
     def add_evasion(value: int) -> str:
@@ -111,7 +111,7 @@ def edit_veterancy_effects(source_path) -> None:
 
 
 def edit_veterancy_hints(source_path) -> None:
-    """Edit veterancy hint texts in ExperienceLevels.ndf."""
+    """GameData/Generated/Gameplay/Gfx/ExperienceLevels.ndf"""
     logger.info("--------- editing ExperienceLevels.ndf ---------")
     logger.info("          Modifying plane veterancy hints       ")
 

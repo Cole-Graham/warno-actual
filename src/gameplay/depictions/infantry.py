@@ -9,18 +9,19 @@ from src.utils.ndf_utils import is_obj_type
 logger = setup_logger(__name__)
 
 
-def edit_infantry_depictions(source_path: Any, ammo_db: Dict[str, Any], depiction_data: Dict[str, Any]) -> None:
+def edit_infantry_depictions(source_path: Any, game_db: Dict[str, Any]) -> None:
     # this function is so limited and could easily break if the unit edits are not formatted correctly
     """Edit DepictionInfantry.ndf.
     
     Args:
         source_path: NDF file containing infantry depictions
-        ammo_db: Ammunition database
-        depiction_data: Depiction data from game database
+        game_db: Game database
     """
     logger.info("Editing DepictionInfantry.ndf")
     
     unit_edits = load_unit_edits()
+    ammo_db = game_db["ammunition"]
+    depiction_data = game_db["depiction_data"]
     
     for unit_name, edits in unit_edits.items():
         if "WeaponDescriptor" not in edits:

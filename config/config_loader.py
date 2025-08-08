@@ -52,7 +52,6 @@ class ConfigLoader:
         build_config_fields = [
             'write_dev',
             'target',
-            'use_ui_as_base'
         ]
         
         for field in build_config_fields:
@@ -67,8 +66,6 @@ class ConfigLoader:
         required_dirs = [
             'warno_mods',
             'base_game',
-            'ui_release',
-            'ui_dev',
             'gameplay_dev',
             'ui_only_dev',
             'gameplay_release',

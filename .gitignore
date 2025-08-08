@@ -8,10 +8,11 @@ logs/*
 output.txt
 scripts/
 src/data/database/*.json
-temp_context.txt
 .VSCodeCounter/
 *.lnk
 LDR_unit_edits_old.py
+notes
+.cursor
 
 # don't ignore
 !logs/.gitkeep
