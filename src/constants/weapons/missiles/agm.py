@@ -10,26 +10,31 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AGM_HOT2", "ATGM", None, False): { # 74
         "Ammunition": {
             "Arme": {
-                "Index": 23,
+                "Index": 24,
             },
             "parent_membr": {
-                "MaximalSpeedGRU": 466,
+                "MaximalSpeedGRU": 739,
+                "hit_roll": {
+                    "Idling": 70,
+                },
             },
         },
-        # "SupplyCost": 115.0,
-        "SupplyCost": 100.0,
+        "SupplyCost": 115.0,
         "WeaponDescriptor": {
             "SalvoLengths": [6, 4, 1],
         },
         "MissileDescriptor": {
-            "MaxSpeedGRU": 466,
+            "MaxSpeedGRU": 739,
         },
     },
 
     ("AGM_HOT1", "ATGM", None, False): {
         "Ammunition": {
             "parent_membr": {
-                "MaximalSpeedGRU": 466,
+                "MaximalSpeedGRU": 739,
+                "hit_roll": {
+                    "Idling": 65,
+                },
             },
         },
         "SupplyCost": 90.0,
@@ -37,15 +42,14 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "SalvoLengths": [6, 4, 1],
         },
         "MissileDescriptor": {
-            "MaxSpeedGRU": 466,
+            "MaxSpeedGRU": 739,
         },
     },
     
     ("AGM_Kh29T", "ATGM", None, False): { # 85
         "Ammunition": {
             "parent_membr": {
-                # "SupplyCost": 105.0,
-                "SupplyCost": 100.0,
+                "SupplyCost": 105.0,
             },
         },
     },
@@ -152,8 +156,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MinMaxCategory": "MinMax_ATGM",
             },
         },
-        # "SupplyCost": 115.0,
-        "SupplyCost": 100.0,
+        "SupplyCost": 115.0,
         "WeaponDescriptor": {
             "SalvoLengths": [16, 8, 4],
         },
@@ -234,16 +237,14 @@ missiles: Dict[WeaponKey, WeaponData] = {
     },
     
     ("Bomb_KAB_1500L", "LGB", None, False): { # 152
-        # "SupplyCost": 120.0,
-        "SupplyCost": 100.0,
+        "SupplyCost": 120.0,
         "WeaponDescriptor": {
             "SalvoLengths": [3, 2, 1],
         },
     },
     
     ("Bomb_KAB_1500Kr", "LGB", None, False): {
-        # "SupplyCost": 120.0,
-        "SupplyCost": 100.0,
+        "SupplyCost": 120.0,
         "WeaponDescriptor": {
             "SalvoLengths": [2, 1],
         },
@@ -256,8 +257,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoSalvos": 5,
             },
         },
-        # "SupplyCost": 140.0,
-        "SupplyCost": 100.0,
+        "SupplyCost": 140.0,
         "WeaponDescriptor": {
             "SalvoLengths": [2, 1],
         },

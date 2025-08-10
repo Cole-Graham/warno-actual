@@ -110,6 +110,86 @@ sov_unit_edits = {
     },
 
     # SOV INF
+    "MotRifles_CMD_SOV": {
+        "CommandPoints": 35,
+        "GameName": {
+            "display": "#LDRSOV MOTOSTRELKI LDR.",
+            # "token": "ZJRMUWLPVH",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_IFV",
+                "UNITE_MotRifles_CMD_SOV",
+                "Unite",
+            ],
+        },
+        "strength": 6,
+        "WeaponAssignment": [
+            (0, [1, ]),
+            (1, [0, ]),
+            (2, [0, ]),
+            (3, [0, ]),
+            (4, [0, 3]),
+            (5, [0, 2]),
+        ],
+        "TransportedTexture": "UseInGame_Transport_REGINF",
+        "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'infantry',
+                'leader_sov',
+                '_ifv',
+                'infantry_equip_light',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Infantry",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+            "SOV_157_Rifle": {
+                "cards": 1,
+            },
+            "SOV_25_Tank": {
+                "cards": 2,
+            },
+            "SOV_39_Gds_Rifle": {
+                "cards": 3,
+            },
+            "SOV_6IndMSBrig": {
+                "cards": 1,
+            },
+            "SOV_79_Gds_Tank": {
+                "cards": 2,
+            },
+        },
+        "availability": [0, 0, 7, 5],
+        "max_speed": 26,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_AK_74": 5,
+                },
+            },
+            "Salves": {
+                "RocketInf_RPG22_72_5mm": 6,
+            },
+        },
+        "selector_tactic": "(0, 6)",
+        "selector_tactic_obj": "00_06",
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+        "remove_zone_capture": None,
+    },
+    
     "MotRifles_CMD_TTsko_SOV": {
         "CommandPoints": 35,
         "GameName": {

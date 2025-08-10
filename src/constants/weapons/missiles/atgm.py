@@ -77,8 +77,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 350,
             },
         },
-        # "SupplyCost": 120.0,
-        "SupplyCost": 100.0,
+        "SupplyCost": 120.0,
         "WeaponDescriptor": {
             "SalvoLengths": [5, 2, 1],
         },
@@ -202,8 +201,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 466,
             },
         },
-        # "SupplyCost": 160.0,
-        "SupplyCost": 100.0,
+        "SupplyCost": 160.0,
         "WeaponDescriptor": {
             "SalvoLengths": [6, 4, 3, 2, 1],
         },
@@ -218,8 +216,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 466,
             },
         },
-        # "SupplyCost": 150.0,
-        "SupplyCost": 100.0,
+        "SupplyCost": 150.0,
         "WeaponDescriptor": {
             "SalvoLengths": [6, 4, 1],
         },
@@ -238,8 +235,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 466,
             }
         },
-        # "SupplyCost": 115.0,
-        "SupplyCost": 100.0,
+        "SupplyCost": 115.0,
         "WeaponDescriptor": {
             "SalvoLengths": [2],
         },
@@ -400,8 +396,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 544,
             },
         },
-        # "SupplyCost": 115.0,
-        "SupplyCost": 100.0,
+        "SupplyCost": 115.0,
         "WeaponDescriptor": {
             "SalvoLengths": [1],
         },
@@ -458,8 +453,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 622,
             },
         },
-        # "SupplyCost": 120.0,
-        "SupplyCost": 100.0,
+        "SupplyCost": 120.0,
         "WeaponDescriptor": {
             "SalvoLengths": [1],
         },
@@ -591,8 +585,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 739,
             },
         },
-        # "SupplyCost": 105.0,
-        "SupplyCost": 100.0,
+        "SupplyCost": 105.0,
         "WeaponDescriptor": {
             "SalvoLengths": [1],
         },

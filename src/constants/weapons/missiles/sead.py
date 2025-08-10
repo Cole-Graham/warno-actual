@@ -14,8 +14,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 3534,
                 "MaxAccelerationGRU": 2120,
                 "TimeBetweenTwoSalvos": 2.3,
-                # "SupplyCost": 120.0,
-                "SupplyCost": 100.0,
+                "SupplyCost": 120.0,
             },
         },
         "MissileDescriptor": {
@@ -35,8 +34,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeGRU": 5600,
                 "MaximalSpeedGRU": 4240,
                 "MaxAccelerationGRU": 2474,
-                # "SupplyCost": 120.0,
-                "SupplyCost": 100.0,
+                "SupplyCost": 120.0,
                 "TimeBetweenTwoSalvos": 2.3,
             },
         },
@@ -58,8 +56,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 4947,
                 "MaxAccelerationGRU": 2827,
                 "TimeBetweenTwoSalvos": 2.4,
-                # "SupplyCost": 150.0,
-                "SupplyCost": 100.0,
+                "SupplyCost": 150.0,
             },
         },
 
@@ -83,8 +80,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoSalvos": 2.3,
             },
         },
-        # "SupplyCost": 130.0,
-        "SupplyCost": 100.0,
+        "SupplyCost": 130.0,
         "WeaponDescriptor": {
             "SalvoLengths": [2, 1],
             "units": {
@@ -110,8 +106,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 3180,
                 "MaxAccelerationGRU": 1767,
                 "TimeBetweenTwoSalvos": 2.5,
-                # "SupplyCost": 130.0,
-                "SupplyCost": 100.0,
+                "SupplyCost": 130.0,
             },
         },
 
@@ -133,8 +128,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 3534,
                 "MaxAccelerationGRU": 2120,
                 "TimeBetweenTwoSalvos": 2.4,
-                # "SupplyCost": 140.0,
-                "SupplyCost": 100.0,
+                "SupplyCost": 140.0,
             },
         },
 
@@ -156,8 +150,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 4947,
                 "MaxAccelerationGRU": 2827,
                 "TimeBetweenTwoSalvos": 2.3,
-                # "SupplyCost": 150.0,
-                "SupplyCost": 100.0,
+                "SupplyCost": 150.0,
             },
         },
         "MissileDescriptor": {
@@ -174,8 +167,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximalSpeedGRU": 3534,
                 "MaxAccelerationGRU": 2120,
                 "TimeBetweenTwoSalvos": 2.3,
-                # "SupplyCost": 120.0,
-                "SupplyCost": 100.0,
+                "SupplyCost": 120.0,
             },
         },
         "MissileDescriptor": {

@@ -68,6 +68,11 @@ SOV_NEW_UNITS = {
             ],
         "MenuIconTexture": "Texture_RTS_H_CMD_inf",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Inf",
+        "Decks": {
+            "packs": {
+                "rename": True, 
+            },
+        },
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -211,6 +216,11 @@ SOV_NEW_UNITS = {
                 'leader_sov',
                 '_smoke_launcher',
             ],
+        "Decks": {
+            "packs": {
+                "rename": True, 
+            },
+        },
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -269,6 +279,11 @@ SOV_NEW_UNITS = {
                 'leader_sov',
                 '_amphibie',
             ],
+        "Decks": {
+            "packs": {
+                "rename": True, 
+            },
+        },
         "Divisions": {
             "default": {
                 "cards": 2,

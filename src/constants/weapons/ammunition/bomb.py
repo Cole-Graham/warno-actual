@@ -204,8 +204,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Bomb_CLU_RBK_500kg_salvolength2", "clu_bomb", None, False): { # 56
         "Ammunition": {
             "parent_membr": {
-                # "SupplyCost": 240.0,
-                "SupplyCost": 200.0,
+                "SupplyCost": 240.0,
             },
         },
     },

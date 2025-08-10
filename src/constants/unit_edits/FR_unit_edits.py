@@ -768,11 +768,11 @@ fr_unit_edits = {
     
     "Gazelle_HOT_FR": {
         "CommandPoints": 70,   
-        "availability": [0, 6, 4, 0],
+        "availability": [0, 6, 0, 0],
     },
     
     "Gazelle_HOT_2_FR": {
-        "CommandPoints": 85,
+        "CommandPoints": 90,
         "availability": [0, 0, 4, 3],
     },
 

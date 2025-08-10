@@ -23,7 +23,7 @@ def load_unit_edits() -> Dict:
         'RDA_unit_edits': 'rda_unit_edits',
         'RFA_unit_edits': 'rfa_unit_edits',
         'SOV_unit_edits': 'sov_unit_edits',
-        # 'SUPPLY_unit_edits': 'supply_unit_edits', decided not to merge supply edits for now
+        'SUPPLY_unit_edits': 'supply_unit_edits',
         'UK_unit_edits': 'uk_unit_edits',
         'USA_unit_edits': 'usa_unit_edits'
     }

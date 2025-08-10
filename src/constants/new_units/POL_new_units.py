@@ -61,6 +61,11 @@ POL_NEW_UNITS = {
         ],
         "MenuIconTexture": "Texture_RTS_H_CMD_inf",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Inf",
+        "Decks": {
+            "packs": {
+                "rename": True, 
+            },
+        },
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -119,6 +124,11 @@ POL_NEW_UNITS = {
             'hq_tank',
             'leader_sov',
         ],
+        "Decks": {
+            "packs": {
+                "rename": True, 
+            },
+        },
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -173,6 +183,11 @@ POL_NEW_UNITS = {
             'hq_tank',
             'leader_sov',
         ],
+        "Decks": {
+            "packs": {
+                "rename": True, 
+            },
+        },
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -222,6 +237,11 @@ POL_NEW_UNITS = {
             'leader_sov',
             '_smoke_launcher',
         ],
+        "Decks": {
+            "packs": {
+                "rename": True, 
+            },
+        },
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -405,6 +425,11 @@ POL_NEW_UNITS = {
             'leader_sov',
             '_amphibie',
         ],
+        "Decks": {
+            "packs": {
+                "rename": True, 
+            },
+        },
         "Divisions": {
             "default": {
                 "cards": 2,

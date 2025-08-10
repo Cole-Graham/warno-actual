@@ -217,8 +217,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoFx": 3.0,
             },
         },
-        # "SupplyCost": 150.0,
-        "SupplyCost": 100.0,
+        "SupplyCost": 150.0,
         "WeaponDescriptor": {
             "SalvoLengths": [3],
             "units": {
@@ -431,8 +430,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoFx": 3.0,
             }
         },
-        # "SupplyCost": 130.0,
-        "SupplyCost": 100.0,
+        "SupplyCost": 130.0,
         "WeaponDescriptor": {
             "SalvoLengths": [3],
             "units": {

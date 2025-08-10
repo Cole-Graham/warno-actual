@@ -1,0 +1,68 @@
+"""Edit TCapaciteModuleDescriptor for existing and new units"""
+
+def handle_capacite_module(
+    logger,
+    game_db,
+    unit_data,
+    edit_type,
+    unit_name,
+    edits,
+    module,
+    *args,
+) -> None:
+    """Handle TCapaciteModuleDescriptor for existing and new units"""
+    found_capacite_module = args[0]
+    default_skill_list = module.v.by_m("DefaultSkillList")
+    
+    if not found_capacite_module:
+        _add_capacite_module(logger, unit_data, edit_type, unit_name, edits, module)
+    
+    else:
+        _add_capacities(logger, unit_data, edit_type, unit_name, edits, default_skill_list)
+    
+
+def _add_capacite_module(logger, unit_data, edit_type, unit_name, edits, module) -> None:
+    """Add a TCapaciteModuleDescriptor to a unit"""
+    
+    capacities_to_add = edits.get("capacities", {}).get("add_capacities", [])
+    
+    if capacities_to_add:
+        skill_prefix = "$/GFX/EffectCapacity/Capacite_"
+        capacities_module = (
+            f"TCapaciteModuleDescriptor"
+            f"("
+            f"        DefaultSkillList = ["
+            f'            {", ".join(skill_prefix + skill for skill in capacities_to_add)}'
+            f"        ]"
+            f")"
+        )
+        module.v.add(capacities_module)
+        logger.info(f"Added capacities module to {unit_name}")
+
+
+def _add_capacities(logger, unit_data, edit_type, unit_name, edits, default_skill_list) -> None:
+    """Add shock sprint capacities to a unit"""
+    
+    # Shock sprint
+    if "Choc" in unit_data.get("skills", []):
+        default_skill_list.v.add("$/GFX/EffectCapacity/Capacite_Choc_Move")
+        default_skill_list.v.add("$/GFX/EffectCapacity/Capacite_no_Choc_Move")
+        logger.info(f"Added shock sprint capacities to {unit_name}")
+    
+    # Swift    
+    if "'_swift'" in edits.get("SpecialtiesList", {}).get("add_specs", []):
+        default_skill_list.v.add("$/GFX/EffectCapacity/Capacite_Swift")
+        default_skill_list.v.add("$/GFX/EffectCapacity/Capacite_no_Swift")
+        logger.info(f"Added swift capacities to {unit_name}")
+    
+    # capacitie_to_add
+    capacities_to_add = edits.get("capacities", {}).get("add_capacities", [])
+    for capacity in capacities_to_add:
+        default_skill_list.v.add(f"$/GFX/EffectCapacity/Capacite_{capacity}")
+        logger.info(f"Added {capacity} capacities to {unit_name}")
+    
+    # capacities_to_remove
+    capacities_to_remove = edits.get("capacities", {}).get("remove_capacities", [])
+    for capacity in capacities_to_remove:
+        default_skill_list.v.remove(f"$/GFX/EffectCapacity/Capacite_{capacity}")
+        logger.info(f"Removed {capacity} capacities from {unit_name}")
