@@ -63,6 +63,18 @@ def find_namespace(row: Any, edits: Dict, prefix: str = "", suffix: str = "",
         return None
 
 
+def find_obj_by_type(ndf_list: ndf.model.List, obj_type: str) -> Any:
+    """Find an object by type."""
+    return ndf_list.find_by_cond(lambda o: is_obj_type(o.v, obj_type))
+
+
+def find_obj_by_namespace(ndf_list: ndf.model.List, namespace: str) -> Any:
+    """Find an object by namespace."""
+    return ndf_list.find_by_cond(
+        lambda o: hasattr(o, "namespace") and o.namespace == namespace
+    )
+
+
 def is_obj_type(item: Any, item_type: str) -> bool:
     """Check if an NDF object is of a specific type.
     

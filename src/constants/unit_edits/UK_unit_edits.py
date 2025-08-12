@@ -508,10 +508,38 @@ uk_unit_edits = {
         },
         "availability": [10, 7, 0, 0],
     },
+    
     "HMGteam_MAG_UK": {
+        "CommandPoints": "HMGteam_M60_US",
         "GameName": {
             "display": "MAG 7.62mm"
-        }
+        },
+        "strength": "HMGteam_M60_US",
+        "max_speed": "HMGteam_M60_US",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_M60_US",
+        },
+    },
+    
+    "HMGteam_MAG_para_UK": {
+        "CommandPoints": "HMGteam_M60_AB_US",
+        "GameName": {
+            "display": "MAG 7.62mm"
+        },
+        "strength": "HMGteam_M60_AB_US",
+        "max_speed": "HMGteam_M60_AB_US",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_M60_AB_US",
+        },
+    },
+    
+    "HMGteam_M2HB_para_UK": {
+        "CommandPoints": "HMGteam_M2HB_AB_US",
+        "strength": "HMGteam_M2HB_AB_US",
+        "max_speed": "HMGteam_M2HB_AB_US",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_M2HB_AB_US",
+        },
     },
 
     "RCL_L6_Wombat_UK": {
@@ -971,6 +999,28 @@ uk_unit_edits = {
     },
 
     # UK AIR
+    "Buccaneer_S2B_SEAD_UK": { # Martel 5250m
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 10000,
+            },
+            "OpticalStrengths": {
+                "EOpticalStrength/AntiRadar": 5000,
+            },
+        },
+    },
+    
+    "Tornado_ADV_SEAD_UK" : { # ALARM 5600m
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 10000.0,
+            },
+            "OpticalStrengths": {
+                "EOpticalStrength/AntiRadar": 5000.0,
+            },
+        },
+    },
+
     "Harrier_RKT1_UK": {  # 36x SNEB, 2x AIM-9L
         "GameName": {
             "display": "HARRIER GR.3 [RKT]",

@@ -7,7 +7,7 @@ from src.utils.logging_utils import setup_logger
 logger = setup_logger(__name__)
 
 
-def edit_gdconstants(source_path) -> None:
+def edit_constantes_gdconstants(source_path) -> None:
     """GameData/Gameplay/Constantes/GDConstants.ndf
 
     Args:

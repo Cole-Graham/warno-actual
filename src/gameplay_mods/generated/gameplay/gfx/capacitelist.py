@@ -13,7 +13,7 @@ from src.utils.logging_utils import setup_logger
 logger = setup_logger(__name__)
 
 
-def edit_capacitelist(source_path) -> None:
+def edit_gfx_capacitelist(source_path) -> None:
     """GameData/Generated/Gameplay/Gfx/CapaciteList.ndf"""
     logger.info("Modifying capacities")
 

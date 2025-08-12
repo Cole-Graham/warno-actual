@@ -43,17 +43,49 @@ def _add_capacite_module(logger, unit_data, edit_type, unit_name, edits, module)
 def _add_capacities(logger, unit_data, edit_type, unit_name, edits, default_skill_list) -> None:
     """Add shock sprint capacities to a unit"""
     
-    # Shock sprint
-    if "Choc" in unit_data.get("skills", []):
-        default_skill_list.v.add("$/GFX/EffectCapacity/Capacite_Choc_Move")
-        default_skill_list.v.add("$/GFX/EffectCapacity/Capacite_no_Choc_Move")
-        logger.info(f"Added shock sprint capacities to {unit_name}")
+    skills_to_add = {
+        "skills": {
+            "Choc": [
+                "$/GFX/EffectCapacity/Capacite_Choc_Move",
+                "$/GFX/EffectCapacity/Capacite_no_Choc_Move",
+            ],
+        },
+        "specialties": {
+            "'_swift'": [
+                "$/GFX/EffectCapacity/Capacite_Swift",
+                "$/GFX/EffectCapacity/Capacite_no_Swift",
+            ],
+        },
+    }
     
-    # Swift    
-    if "'_swift'" in edits.get("SpecialtiesList", {}).get("add_specs", []):
-        default_skill_list.v.add("$/GFX/EffectCapacity/Capacite_Swift")
-        default_skill_list.v.add("$/GFX/EffectCapacity/Capacite_no_Swift")
-        logger.info(f"Added swift capacities to {unit_name}")
+    for condition_type, condition in skills_to_add.items():
+        # Skills in database condition
+        if condition_type == "skills":
+            for skill, capacities in condition.items():
+                if not skill in unit_data.get("skills", []):
+                    continue
+                
+                for capacity in capacities:
+                    duplicate_safety = default_skill_list.find_by_cond(
+                        lambda x: x.v == capacity
+                    )
+                    if not duplicate_safety:
+                        default_skill_list.v.add(capacity)
+                        logger.info(f"Added {capacity} to {unit_name}")
+        
+        # Specialties tags in database condition
+        elif condition_type == "specialties":
+            for specialty, capacities in condition.items():
+                if not specialty in unit_data.get("specialties", []):
+                    continue
+                
+                for capacity in capacities:
+                    duplicate_safety = default_skill_list.find_by_cond(
+                        lambda x: x.v == capacity
+                    )
+                    if not duplicate_safety:
+                        default_skill_list.v.add(capacity)
+                        logger.info(f"Added {capacity} to {unit_name}")
     
     # capacitie_to_add
     capacities_to_add = edits.get("capacities", {}).get("add_capacities", [])

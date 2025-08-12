@@ -5,7 +5,7 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
 
-def edit_division_emblems(source_path) -> None:
+def edit_userinterface_divisiontextures(source_path) -> None:
     """GameData/Generated/UserInterface/Textures/DivisionTextures.ndf"""
     logger.info("Modifying/Adding division emblem textures in DivisionTextures.ndf")
 

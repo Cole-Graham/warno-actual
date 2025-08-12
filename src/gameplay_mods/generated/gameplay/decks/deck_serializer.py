@@ -8,7 +8,12 @@ from src.utils.ndf_utils import ModConfig, ndf
 logger = setup_logger(__name__)
 
 
-def update_deck_serializer(source_path: Any) -> None:
+def edit_decks_deckserializer(source_path: Any) -> None:
+    """GameData/Generated/Gameplay/Decks/DeckSerializer.ndf"""
+    _update_deck_serializer(source_path)
+    _hide_divisions_deckserializer_ndf(source_path)
+
+def _update_deck_serializer(source_path: Any) -> None:
     """Update DeckSerializer.ndf for new units."""
     logger.info("Updating DeckSerializer.ndf for new units")
 
@@ -37,7 +42,7 @@ def update_deck_serializer(source_path: Any) -> None:
         new_unit_id += 1
 
 
-def hide_divisions_deckserializer_ndf(source_path) -> None:
+def _hide_divisions_deckserializer_ndf(source_path) -> None:
     """GameData/Generated/Gameplay/Decks/DecksSerializer.ndf
     Remove division map rows in DecksSerializer.ndf for hidden divisions."""
     logger.info("Removing division map rows for hidden divisions in DecksSerializer.ndf")

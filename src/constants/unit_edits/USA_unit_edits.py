@@ -4,6 +4,16 @@
 
 # fmt: off
 usa_unit_edits = {
+    # Infantry armor reference
+    "Infantry_armor_reference": {
+        "armor": {
+            "front": (None, "ResistanceFamily_infanterieWA"),
+            "sides": (None, "ResistanceFamily_infanterieWA"),
+            "rear": (None, "ResistanceFamily_infanterieWA"),
+            "top": (None, "ResistanceFamily_infanterieWA"),
+        },
+    },
+    
     # US LOG
     "OH58C_CMD_US": {
         "CommandPoints": 115,
@@ -1027,6 +1037,7 @@ usa_unit_edits = {
             "display": "MECH. RIFLES [LAW]",
         },
         "CommandPoints": 35,
+        "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1039,6 +1050,7 @@ usa_unit_edits = {
             "display": "FIRETEAM [LAW]",
         },
         "CommandPoints": 25,
+        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 69,
@@ -1066,6 +1078,7 @@ usa_unit_edits = {
             "display": "FIRETEAM [AT4]",
         },
         "CommandPoints": 30,
+        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -1451,44 +1464,121 @@ usa_unit_edits = {
     },
 
     "HMGteam_M60_Aero_US": {
+        "CommandPoints": "HMGteam_M60_US",
         "GameName": {
             "display": "AERO-M60 7.62mm",
+        },
+        "strength": "HMGteam_M60_US",
+        "max_speed": "HMGteam_M60_US",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_M60_US",
         },
     },
 
     "HMGteam_M60_AB_US": {
+        "is_standard": (True, "Para_7_62mm_MMG_Team"), 
+        "CommandPoints": 15,
         "GameName": {
             "display": "AB M60 7.62mm",
+        },
+        "strength": 4,
+        "max_speed": 26, 
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
         },
     },
 
     "HMGteam_M60_NG_US": {
+        "is_standard": (True, "Reservist_7_62mm_MMG_Team"), 
+        "CommandPoints": 15,
         "GameName": {
             "display": "NG M60 7.62mm",
+        },
+        "strength": 4,
+        "max_speed": 26, 
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
         },
     },
 
     "HMGteam_M60_US": {
+        "is_standard": (True, "7_62mm_MMG_Team"), 
+        "CommandPoints": 15,
         "GameName": {
             "display": "M60 7.62mm",
+        },
+        "strength": 4,
+        "max_speed": 26, 
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
         },
     },
 
     "HMGteam_M2HB_US": {
+        "is_standard": (True, "12_7mm_HMG_Team"), 
+        "CommandPoints": 25,
         "GameName": {
             "display": "M2HB 12.7mm",
         },
+        "strength": 5,
+        "max_speed": 14, 
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_veryheavy'"],
+        },
     },
-
-    "HMGteam_M2HB_AB_US": {
-        "GameName": {
-            "display": "AB M2HB 12.7mm",
+    
+    "HMGteam_M2HB_NG_US": {
+        "is_standard": (True, "Reservist_12_7mm_HMG_Team"), 
+        "CommandPoints": 25,
+        "strength": 5,
+        "max_speed": 14, 
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_veryheavy'"],
         },
     },
 
     "HMGteam_M2HB_Aero_US": {
+        "CommandPoints": "HMGteam_M2HB_US",
         "GameName": {
             "display": "AB M2HB 12.7mm",
+        },
+        "strength": "HMGteam_M2HB_US",
+        "max_speed": "HMGteam_M2HB_US",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_M2HB_US",
+        },
+    },
+    
+    "HMGteam_M2HB_AB_US": {
+        "is_standard": (True, "Para_12_7mm_HMG_Team"), 
+        "CommandPoints": 25,
+        "GameName": {
+            "display": "AB M2HB 12.7mm",
+        },
+        "strength": 5,
+        "max_speed": 14, 
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_veryheavy'"],
+        },
+    },
+    
+    "HMGteam_Mk19_US": {
+        "is_standard": (True, "40mm_Mk19_Team"), 
+        "CommandPoints": 30,
+        "strength": 5,
+        "max_speed": 14, 
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_veryheavy'"],
+        },
+    },
+    
+    "HMGteam_Mk19_AB_US": {
+        "is_standard": (True, "Para_40mm_Mk19_Team"), 
+        "CommandPoints": 30,
+        "strength": 5,
+        "max_speed": 14, 
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_veryheavy'"],
         },
     },
 
@@ -2721,11 +2811,14 @@ usa_unit_edits = {
         "availability": [0, 2, 0, 1],
     },
 
-    "F4_Wild_Weasel_US": {
+    "F4_Wild_Weasel_US": { # AGM-45 5250m (should be 5000m missile range probably)
         "CommandPoints": 190,
         "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 10000.0,
+            },
             "OpticalStrengths": {
-                "EOpticalStrength/AntiRadar": 1850.0,
+                "EOpticalStrength/AntiRadar": 5000.0,
             },
         },
         "WeaponDescriptor": {
@@ -2866,9 +2959,17 @@ usa_unit_edits = {
         },
     },
 
-    "EF111_Raven_US": {
+    "EF111_Raven_US": { # EW
         "CommandPoints": 180,
         "max_speed": 1400,
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 12500.0,
+            },
+            "OpticalStrengths": {
+                "EOpticalStrength/AntiRadar": 5000.0,
+            },
+        },
         "availability": [0, 0, 2, 0],
     },
 
@@ -2946,10 +3047,14 @@ usa_unit_edits = {
         },
     },
 
-    "F16E_SEAD_US": {
+    "F16E_SEAD_US": { # AGM-88 5950m
         "CommandPoints": 220,
         "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 10000.0,
+            },
             "OpticalStrengths": {
+                "EOpticalStrength/AntiRadar": 5000.0,
                 "EOpticalStrength/HighAltitude": 375,
             },
         },

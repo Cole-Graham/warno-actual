@@ -1,29 +1,29 @@
 from .constantes import (
-    # .gdconstants
-    edit_gd_constants,
-    # .ravitaillement
-    edit_ravitaillement,
+    edit_constantes_gdconstants,
+    edit_constantes_ravitaillement,
+    edit_constantes_weaponconstantes,
 )
 from .unit import (
-    # .criticalmodules
-    edit_airplane_critical,
-    edit_groundunit_critical,
-    edit_helico_critical,
-    edit_infanterie_critical,
-    edit_template_critical,
-    edit_testunits_critical,
+    edit_unit_team,
+    edit_unit_airplane_critical,
+    edit_unit_groundunit_critical,
+    edit_unit_helico_critical,
+    edit_unit_infanterie_critical,
+    edit_unit_template_critical,
+    edit_unit_testunits_critical,
 )
 
 __all__ = [
-    # .constantes.gdconstants
-    'edit_gd_constants',
-    # .constantes.ravitaillement
-    'edit_ravitaillement',
-    # .unit.criticalmodules
-    'edit_airplane_critical',
-    'edit_groundunit_critical',
-    'edit_helico_critical',
-    'edit_infanterie_critical',
-    'edit_template_critical',
-    'edit_testunits_critical',
+    # .constantes
+    'edit_constantes_gdconstants',
+    'edit_constantes_ravitaillement',
+    'edit_constantes_weaponconstantes',
+    # .unit
+    'edit_unit_team',
+    'edit_unit_airplane_critical',
+    'edit_unit_groundunit_critical',
+    'edit_unit_helico_critical',
+    'edit_unit_infanterie_critical',
+    'edit_unit_template_critical',
+    'edit_unit_testunits_critical',
 ]

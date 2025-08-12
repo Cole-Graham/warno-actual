@@ -2,7 +2,7 @@
 
 from typing import Any
 
-from src.constants.weapons.ammunition import ammunitions
+from src.constants.weapons import ammunitions
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)

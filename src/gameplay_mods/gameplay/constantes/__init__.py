@@ -1,9 +1,9 @@
-from .gdconstants import edit_gdconstants
-from .ravitaillement import edit_ravitaillement
+from .gdconstants import edit_constantes_gdconstants
+from .ravitaillement import edit_constantes_ravitaillement
+from .weaponconstantes import edit_constantes_weaponconstantes
 
 __all__ = [
-    # .gdconstants
-    'edit_gdconstants',
-    # .ravitaillement
-    'edit_ravitaillement',
+    'edit_constantes_gdconstants',
+    'edit_constantes_ravitaillement',
+    'edit_constantes_weaponconstantes',
 ]

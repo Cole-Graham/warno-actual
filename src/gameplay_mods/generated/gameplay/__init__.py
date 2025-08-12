@@ -1,60 +1,41 @@
 from .decks import (
-    # .deck_serializer
-    hide_divisions_deckserializer_ndf,
-    update_deck_serializer,
-    # .decks
-    edit_deck_packs,
-    edit_deck_pack_lists,
-    hide_divisions_decks_ndf,
-    update_deck_pack_references,
-    new_deck_packs,
-    # .division_rules
-    new_unit_division_rules,
-    supply_divisionrules,
-    unit_edits_divisionrules,
-    # .divisioncostmatrix
-    edit_divisioncostmatrix,
-    # .divisions
-    edit_divisions,
-    # .mg_teams
-    mg_team_division_rules,
+    edit_decks,
+    edit_decks_deckserializer,
+    edit_decks_divisionrules,
+    edit_decks_divisioncostmatrix,
+    edit_decks_divisions,
+    edit_decks_deckpacks,
 )
 from .gfx import (
-    # .capacitelist
-    edit_capacitelist,
-    # .conditionsdescriptor
-    edit_conditionsdescriptor,
-    # .damagelevels
-    edit_damagelevels,
-    # .effetssurunite
-    edit_effetssurunite,
-    # .orderavailabilitytactic
-    edit_orderavailabilitytactic,
-    # .unit_descriptor.unitedescriptor
-    edit_unitedescriptor,
+    edit_gfx_ammunition,
+    edit_gfx_ammunitionmissiles,
+    edit_gfx_capacitelist,
+    edit_gfx_conditionsdescriptor,
+    edit_gfx_damagelevels,
+    edit_gfx_effetssurunite,
+    edit_gfx_orderavailabilitytactic,
+    edit_gfx_smokedescriptor,
+    edit_gfx_unitedescriptor,
+    edit_gfx_weapondescriptor,
 )
 
 __all__ = [
     # .decks
-    'hide_divisions_deckserializer_ndf',
-    'update_deck_serializer',
-    'edit_deck_packs',
-    'edit_deck_pack_lists',
-    'hide_divisions_decks_ndf',
-    'update_deck_pack_references',
-    'new_deck_packs',
-    'new_unit_division_rules',
-    'supply_divisionrules',
-    'unit_edits_divisionrules',
-    'edit_divisioncostmatrix',
-    'edit_divisions',
-    'mg_team_division_rules',
+    'edit_decks',
+    'edit_decks_deckserializer',
+    'edit_decks_divisionrules',
+    'edit_decks_divisioncostmatrix',
+    'edit_decks_divisions',
+    'edit_decks_deckpacks',
     # .gfx
-    'edit_capacitelist',
-    'edit_conditionsdescriptor',
-    'edit_damagelevels',
-    'edit_effetssurunite',
-    'edit_orderavailabilitytactic',
-    # .gfx.unite_descriptor
-    'edit_unitedescriptor',
+    'edit_gfx_ammunition',
+    'edit_gfx_ammunitionmissiles',
+    'edit_gfx_capacitelist',
+    'edit_gfx_conditionsdescriptor',
+    'edit_gfx_damagelevels',
+    'edit_gfx_effetssurunite',
+    'edit_gfx_orderavailabilitytactic',
+    'edit_gfx_smokedescriptor',
+    'edit_gfx_unitedescriptor',
+    'edit_gfx_weapondescriptor',
 ]

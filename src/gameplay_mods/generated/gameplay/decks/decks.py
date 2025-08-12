@@ -13,7 +13,7 @@ from src.utils.ndf_utils import ModConfig
 logger = setup_logger(__name__)
 
 # Edit deck packs ------------------------------------------------------------------------
-def edit_deck_packs(source_path: Any, game_db: Dict[str, Any]) -> None:
+def edit_decks_deckpacks(source_path: Any, game_db: Dict[str, Any]) -> None:
     """GameData\Generated\Gameplay\Decks\DeckPacks.ndf"""
     logger.info("Modifying deck packs using precomputed database mappings")
     
@@ -31,6 +31,9 @@ def edit_deck_packs(source_path: Any, game_db: Dict[str, Any]) -> None:
 
     # Clean up any duplicate deck packs that may have been created
     _remove_duplicate_deck_packs(source_path)
+    
+    # TODO: Needs proper implementation
+    _new_deck_packs(source_path)
     
     
 def _determine_deck_pack_edits(source_path: Any, game_db: Dict[str, Any], unit_edits: Dict[str, Any]) -> Dict[str, str]:
@@ -378,7 +381,7 @@ def _find_best_target_xp(current_xp: int, available_xp_levels: list, missing_xp_
     return closest_available
         
 # Update deck pack references ------------------------------------------------------------
-def update_deck_pack_references(source_path: Any, game_db: Dict[str, Any]) -> None:
+def edit_decks(source_path: Any, game_db: Dict[str, Any]) -> None:
     """GameData\Generated\Gameplay\Decks\Decks.ndf."""
     unit_edits = load_unit_edits()
     unit_edits.update(supply_unit_edits)
@@ -422,6 +425,8 @@ def update_deck_pack_references(source_path: Any, game_db: Dict[str, Any]) -> No
         deck = source_path.by_n("Descriptor_Deck_US_8th_Inf_multi")
         pack_ref = f"~/Descriptor_Deck_Pack_{pack}"
         deck.v.by_m("DeckPackList").v.add(pack_ref)
+        
+    _hide_divisions_decks_ndf(source_path)
 
 
 def _remove_deck_packs_from_multi_decks(source_path: Any) -> None:
@@ -488,7 +493,7 @@ def _remove_deck_packs_from_multi_decks(source_path: Any) -> None:
     logger.info(f"Processed {removals_processed} deck pack removals from multi decks")
 
 
-def hide_divisions_decks_ndf(source_path) -> None:
+def _hide_divisions_decks_ndf(source_path) -> None:
     """GameData/Generated/Gameplay/Decks/Decks.ndf
     Remove decks for hidden divisions in Decks.ndf"""
     logger.info("Removing decks for hidden divisions in Decks.ndf")
@@ -508,8 +513,8 @@ def hide_divisions_decks_ndf(source_path) -> None:
         source_path.remove(index)
 
 
-def new_deck_packs(source_path: Any) -> None:
-    """Create new deck packs in DeckPacks.ndf."""
+def _new_deck_packs(source_path: Any) -> None:
+    """Create new deck packs in DeckPacks.ndf"""
     logger.info("Creating new deck packs")
 
     # Create new deck pack for 8th Infantry Division (temp until we create constants for editing decks)

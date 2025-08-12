@@ -9,7 +9,7 @@ from src.utils.logging_utils import setup_logger
 logger = setup_logger(__name__)
 
 
-def edit_orderavailabilitytactic(source_path, game_db: Dict[str, Any]):
+def edit_gfx_orderavailabilitytactic(source_path, game_db: Dict[str, Any]):
     """GameData/Generated/Gameplay/Gfx/OrderAvailability_Tactic.ndf
 
     Args:

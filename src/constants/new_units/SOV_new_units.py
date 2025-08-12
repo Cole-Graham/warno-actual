@@ -208,7 +208,7 @@ SOV_NEW_UNITS = {
         },
         "Factory": "EFactory/Logistic",
         "armor": {
-            "front": 18,
+            "front": (18, None),
         },
         "CommandPoints": 335,
         "SpecialitiesList": [

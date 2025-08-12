@@ -16,7 +16,7 @@ from src.utils.logging_utils import setup_logger
 logger = setup_logger(__name__)
 
 
-def edit_effetssurunite(source_path) -> None:
+def edit_gfx_effetssurunite(source_path) -> None:
     """GameData/Generated/Gameplay/Gfx/EffetsSurUnite.ndf"""
     logger.info("Modifying unit effects")
 

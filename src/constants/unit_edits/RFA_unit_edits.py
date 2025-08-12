@@ -265,13 +265,25 @@ rfa_unit_edits = {
         "availability": [6, 4, 0, 0],
     },
     "HMGteam_MG3_RFA": {  # MG-3 7,62mm
+        "CommandPoints": "HMGteam_M60_US",
         "GameName": {
             "display": "MG3 7.62mm",
         },
+        "strength": "HMGteam_M60_US",
+        "max_speed": "HMGteam_M60_US",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_M60_US",
+        },
     },
     "HMGteam_MG3_FJ_RFA": {  # Fs-MG-3 7,62mm
+        "CommandPoints": "HMGteam_M60_AB_US",
         "GameName": {
             "display": "FJ MG3 7.62mm",
+        },
+        "strength": "HMGteam_M60_AB_US",
+        "max_speed": "HMGteam_M60_AB_US",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_M60_AB_US",
         },
     },
     # trsp

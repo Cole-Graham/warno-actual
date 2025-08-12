@@ -1,4 +1,4 @@
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 
 from src.constants.unit_edits import load_unit_edits
 from src.constants.new_units import NEW_UNITS
@@ -9,7 +9,14 @@ from src.utils.ndf_utils import is_obj_type  # noqa
 logger = setup_logger(__name__)
 
 
-def unit_edits_divisionrules(source_path: Any) -> None:
+def edit_decks_divisionrules(source_path: Any, game_db: Dict[str, Any]) -> None:
+    """GameData/Generated/Gameplay/Decks/DivisionRules.ndf"""
+    _new_unit_division_rules(source_path)
+    _unit_edits_divisionrules(source_path)
+    _supply_divisionrules(source_path)
+    _mg_team_division_rules(source_path, game_db)
+
+def _unit_edits_divisionrules(source_path: Any) -> None:
     """Apply unit edits to DivisionRules.ndf"""
     logger.info("Applying unit edits to divisions")
 
@@ -188,7 +195,7 @@ def _update_transports(rule: Any, unit: str, div_name: str, edits: Dict) -> None
         rule.by_m("AvailableTransportList").v = transport_str
 
 
-def new_unit_division_rules(source_path: Any) -> None:
+def _new_unit_division_rules(source_path: Any) -> None:
     """Add unit rules to DivisionRules.ndf."""
     logger.info("Adding unit rules to divisions")
 
@@ -254,10 +261,62 @@ def new_unit_division_rules(source_path: Any) -> None:
                         logger.info(f"Removed old entry for {donor} from {division}")
 
 
-def supply_divisionrules(source_path: Any) -> None:
+def _supply_divisionrules(source_path: Any) -> None:
     """Apply supply unit edits to DivisionRules.ndf"""
     for unit, edits in supply_unit_edits.items():
         if "Divisions" in edits:
             _handle_division_changes(source_path, unit, edits)
 
         _update_existing_units(source_path, unit, edits)            
+        
+
+def _is_para_unit(unit_name: str, unit_db: Dict[str, Any]) -> bool:
+    """Check if a unit has the para specialty."""
+    unit_data = unit_db.get(unit_name)
+    if not unit_data or 'specialties' not in unit_data:
+        return False
+    return any('para' in specialty.lower() for specialty in unit_data['specialties'])
+
+
+def _mg_team_division_rules(source_path: Any, game_db: Dict[str, Any]) -> None:
+    """Edit machine gun team availability in DivisionRules.ndf"""
+    logger.info("Editing MG team availability")
+    
+    unit_db = game_db["unit_data"]
+    mgs: List[Tuple[str, str]] = [
+        ("M2HB", "HMG"), ("NSV", "HMG"), 
+        ("M60", "MMG"), ("MAG", "MMG"),
+        ("AANF1", "MMG"), ("MG3", "MMG"), 
+        ("PKM", "MMG")
+    ]
+    
+    for deck_descr in source_path:
+        rules_list = deck_descr.v.by_m("UnitRuleList").v
+        div_name = deck_descr.n[len("Descriptor_Deck_Division_"):-len("_Rule")]
+        
+        for rule_obj in rules_list:
+            if not is_obj_type(rule_obj.v, "TDeckUniteRule"):
+                continue
+                
+            # Skip solo units
+            if rule_obj.v.by_m("NumberOfUnitInPackXPMultiplier").v == "[1.0, 1.0, 1.0, 1.0]":
+                continue
+                
+            unit_descr = rule_obj.v.by_m("UnitDescriptor").v
+            
+            for name, mg_type in mgs:
+                unit_descr_name = unit_descr.split("$/GFX/Unit/", 1)[1]
+                if not unit_descr_name.startswith(f"Descriptor_Unit_HMGteam_{name}"):
+                    continue
+                    
+                # Get unit name without prefix for database lookup
+                unit_name = unit_descr_name.replace("Descriptor_Unit_", "")
+                is_para = _is_para_unit(unit_name, unit_db)
+                
+                # apply availability settings
+                xp_multi = str([0.0, 1.0, 0.75, 0.0] if is_para else [1.0, 0.75, 0.0, 0.0])
+
+                rule_obj.v.by_m("NumberOfUnitInPack").v = '9' if mg_type == "HMG" else '12'
+                rule_obj.v.by_m("NumberOfUnitInPackXPMultiplier").v = xp_multi
+                
+                logger.debug(f"Updated {unit_name} in {div_name} (Para: {is_para}, Type: {mg_type})")

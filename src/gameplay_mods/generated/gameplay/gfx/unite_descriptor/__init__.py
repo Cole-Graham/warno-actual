@@ -1,6 +1,5 @@
-from .unitedescriptor import edit_unitedescriptor
+from .unitedescriptor import edit_gfx_unitedescriptor
 
 __all__ = [
-    # .unitedescriptor
-    'edit_unitedescriptor',
+    'edit_gfx_unitedescriptor',
 ]

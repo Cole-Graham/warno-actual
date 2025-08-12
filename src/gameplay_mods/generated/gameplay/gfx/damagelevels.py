@@ -3,7 +3,7 @@ from src.utils.logging_utils import setup_logger
 logger = setup_logger(__name__)
 
 
-def edit_damagelevels(source_path) -> None:
+def edit_gfx_damagelevels(source_path) -> None:
     """GameData/Generated/Gameplay/Gfx/DamageLevels.ndf"""
     logger.info("Modifying damage levels")
 

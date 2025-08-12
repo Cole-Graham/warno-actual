@@ -14,11 +14,12 @@ def handle_tags_module(
     *args,
 ) -> None:
     """Edit TTagsModuleDescriptor for existing and new units"""
-
-    if edit_type == "new_units":
-        pass
-
+    
     if edit_type == "unit_edits":
+        _add_radio_tag_to_mortars(logger, game_db, unit_data, unit_name, module)
+        
+        # Not sure if this radar tag removal is still needed.
+        # I think it was a temp fix to Eugen's mistake
         ammo_db = game_db["ammunition"]
         unit_db = game_db["unit_data"]
         weapon_db = game_db["weapons"]
@@ -42,13 +43,38 @@ def handle_tags_module(
                         tagset.v.remove(tag)
                         logger.info(f'Removed "AA_Radar" tag from {unit_name}')
 
-        if "TagSet" not in edits:
-            return
+    if "TagSet" not in edits:
+        return
 
-        tagset = module.v.by_m("TagSet")
-        if "overwrite_all" in edits["TagSet"]:
-            tagset.v = ndf.convert(str(edits["TagSet"]["overwrite_all"]))
-        elif "add_tags" in edits["TagSet"]:
-            for tag in edits["TagSet"]["add_tags"]:
-                tagset.v.add(tag)
-                logger.info(f"Added tag {tag} to {unit_name}")
+    tagset = module.v.by_m("TagSet")
+    if "overwrite_all" in edits["TagSet"]:
+        tagset.v = ndf.convert(str(edits["TagSet"]["overwrite_all"]))
+    elif "add_tags" in edits["TagSet"]:
+        for tag in edits["TagSet"]["add_tags"]:
+            tagset.v.add(tag)
+            logger.info(f"Added tag {tag} to {unit_name}")
+            
+
+def _add_radio_tag_to_mortars(logger, game_db, unit_data, unit_name, module) -> None:
+    """Add 'Radio' tag to mortar units to enable corrected shot."""
+    
+    logger.info("Adding 'Radio' tag to mortar units")
+
+    # Check if unit exists in database and has mortar texture
+    if (
+        unit_name not in game_db["unit_data"]
+        or game_db["unit_data"][unit_name].get("menu_icon") != "Texture_RTS_H_mortar"
+    ):
+        return
+
+    if "Radio" in game_db["unit_data"][unit_name].get("tags", []):
+        logger.info(f"{unit_name} already has 'Radio' tag")
+        return
+
+    # Add Radio tag after GroundUnits
+    tag_set = module.v.by_m("TagSet").v
+    for i, tag in enumerate(tag_set):
+        if tag.v == '"GroundUnits"':
+            tag_set.insert(i + 1, '"Radio",')
+            logger.info(f"Added 'Radio' tag to {unit_name}")
+            break

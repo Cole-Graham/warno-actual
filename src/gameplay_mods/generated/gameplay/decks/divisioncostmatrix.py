@@ -8,7 +8,7 @@ from src.utils.logging_utils import setup_logger
 logger = setup_logger(__name__)
 
 
-def edit_divisioncostmatrix(source) -> None:
+def edit_decks_divisioncostmatrix(source) -> None:
     """GameData/Generated/Gameplay/Decks/DivisionCostMatrix.ndf"""
     logger.info("Editing division cost matrices")
     matrix_names = []

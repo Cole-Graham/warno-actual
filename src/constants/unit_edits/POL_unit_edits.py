@@ -598,25 +598,51 @@ pol_unit_edits = {
             },
         },
     },
-    "HMGteam_PKM_POL": {  # PKM 12,7mm
+    "HMGteam_PKM_POL": {
+        "CommandPoints": "HMGteam_M60_US",
+        "GameName": {
+            "display": "PKM 7.62mm",
+        },
+        "strength": "HMGteam_M60_US",
+        "max_speed": "HMGteam_M60_US",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_M60_US",
+        },
         "Divisions": {
             "POL_20_Pancerna": {
                 "Transports": ["UAZ_469_trans_POL", "MTLB_trans_POL"],
             },
         },
-        "GameName": {
-            "display": "PKM 7.62mm",
+    },
+    "HMGteam_PKM_Naval_POL": {
+        "CommandPoints": "HMGteam_M60_US",
+        "strength": "HMGteam_M60_US",
+        "max_speed": "HMGteam_M60_US",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_M60_US",
         },
     },
-    "HMGteam_PKM_para_POL": {  # Desant. PKM 12,7mm
+    "HMGteam_PKM_para_POL": {
+        "CommandPoints": "HMGteam_M60_AB_US",
         "GameName": {
             "display": "SPADO. PKM 7.62mm",
         },
+        "strength": "HMGteam_M60_AB_US",
+        "max_speed": "HMGteam_M60_AB_US",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_M60_AB_US",
+        },
     },
     "HMGteam_NSV_POL": {  # NSW 12,7mm
+        "CommandPoints": "HMGteam_M2HB_US",
         "GameName": {
             "display": "NSW 12.7mm",
             "token": "NSVAKANSW",
+        },
+        "strength": "HMGteam_M2HB_US",
+        "max_speed": "HMGteam_M2HB_US",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_M2HB_US",
         },
         "availability": [8, 5, 0, 0],
         "Divisions": {
@@ -633,6 +659,16 @@ pol_unit_edits = {
             },
         },
     },
+    
+    "HMGteam_AGS17_POL": {
+        "CommandPoints": "HMGteam_AGS17_SOV",
+        "strength": "HMGteam_AGS17_SOV",
+        "max_speed": "HMGteam_AGS17_SOV",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_AGS17_SOV",
+        },
+    },
+    
     "Atteam_Fagot_POL": {  # PPK Fagot
         "CommandPoints": 30,
         "max_speed": 20,

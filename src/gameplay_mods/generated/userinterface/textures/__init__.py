@@ -1,6 +1,5 @@
-from .divisiontextures import edit_division_emblems
+from .divisiontextures import edit_userinterface_divisiontextures
 
 __all__ = [
-    # .divisiontextures
-    'edit_division_emblems',
+    'edit_userinterface_divisiontextures',
 ]

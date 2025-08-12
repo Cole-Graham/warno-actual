@@ -7,7 +7,7 @@ from src.utils.ndf_utils import ModConfig
 logger = setup_logger(__name__)
 
 
-def edit_divisions(source_path) -> None:
+def edit_decks_divisions(source_path) -> None:
     """GameData/Generated/Gameplay/Decks/Divisions.ndf"""
 
     config = ModConfig.get_instance()
