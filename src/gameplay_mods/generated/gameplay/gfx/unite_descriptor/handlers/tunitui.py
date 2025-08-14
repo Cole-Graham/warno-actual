@@ -1,6 +1,7 @@
 from typing import Any, Dict
 
 from src import ndf
+from src.utils.ndf_utils import determine_characteristics
 
 
 def handle_unitui_module(
@@ -16,8 +17,17 @@ def handle_unitui_module(
     """Handle TUnitUIModuleDescriptor for existing and new units"""
     dictionary_entries = args[0]
         
+    # Global bomber edits TODO: Use dic references instead for standardization
+    if edit_type == "unit_edits":
+        search_conditions = [
+            ("uses_dive_bomb", "DiveBombAttackStrategyDescriptor", unit_data.get("attack_strategies", {})),
+        ]
+        uses_dive_bomb, = determine_characteristics(search_conditions)
+        if uses_dive_bomb:
+            module.v.by_m("SpecialtiesList").v.add("'dive_attack'")
+            logger.info(f"Added dive_attack specialty to {unit_name}")
+
     specialties_list = module.v.by_m("SpecialtiesList")
-    
     if "SpecialtiesList" in edits:
         if edit_type == "unit_edits":
             if "overwrite_all" in edits["SpecialtiesList"]:

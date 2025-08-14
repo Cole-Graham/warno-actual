@@ -8,12 +8,12 @@ from src.constants.new_units import NEW_UNITS
 from src.constants.unit_edits import load_unit_edits
 from src.constants.unit_edits.SUPPLY_unit_edits import supply_unit_edits
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import ModConfig
+from src import ModConfig
 
 logger = setup_logger(__name__)
 
 # Edit deck packs ------------------------------------------------------------------------
-def edit_decks_deckpacks(source_path: Any, game_db: Dict[str, Any]) -> None:
+def edit_gen_gp_decks_deckpacks(source_path: Any, game_db: Dict[str, Any]) -> None:
     """GameData\Generated\Gameplay\Decks\DeckPacks.ndf"""
     logger.info("Modifying deck packs using precomputed database mappings")
     
@@ -24,7 +24,10 @@ def edit_decks_deckpacks(source_path: Any, game_db: Dict[str, Any]) -> None:
     deck_pack_edits = _determine_deck_pack_edits(source_path, game_db, unit_edits)
 
     # IMPORTANT: Create new command unit deck packs FIRST before modifying existing ones
-    _create_new_command_unit_deck_packs(source_path, deck_pack_edits, deck_pack_data)
+    new_command_unit_mappings = _create_new_command_unit_deck_packs(source_path, NEW_UNITS, deck_pack_data)
+    
+    # Add the new command unit mappings to deck_pack_edits for reference updates
+    deck_pack_edits["new_command_unit_deck_packs"].update(new_command_unit_mappings)
 
     # Apply ONLY deck pack modifications (never unit name changes)
     _edit_existing_deck_packs(source_path, deck_pack_edits)
@@ -119,69 +122,16 @@ def _determine_deck_pack_edits(source_path: Any, game_db: Dict[str, Any], unit_e
                             
             logger.debug(f"Processed mappings for {base_unit}: {len(all_unit_packs)} packs")
             
-    # Process new command unit deck packs
-    for donor, edits in NEW_UNITS.items():
-        donor_name = donor[0]
-        
-        if "NewName" not in edits or "availability" not in edits:
-            continue
-        
-        new_unit_name = edits["NewName"]
-        if "_CMD2_" not in new_unit_name:
-            continue
-        
-        if donor_name not in deck_pack_data["base_units"]:
-            continue
-        
-        availability = edits["availability"]
-        available_xp_levels = []
-        for i, avail in enumerate(availability):
-            if avail > 0:
-                available_xp_levels.append(i)
-        
-        if not available_xp_levels:
-            continue
-        
-        donor_data = deck_pack_data["base_units"][donor_name]
-        all_donor_packs = donor_data["simple_packs"] + donor_data["transport_packs"]
-        
-        for donor_namespace in all_donor_packs:
-            parts = donor_namespace.split("_")
-            if len(parts) < 4:
-                continue
-            
-            try:
-                number = int(parts[-1])
-                donor_xp = int(parts[-2])
-                
-                if donor_xp in available_xp_levels:
-                    target_xp = donor_xp
-                elif available_xp_levels:
-                    target_xp = min(available_xp_levels, key=lambda x: abs(x - donor_xp))
-                else:
-                    continue
-                
-                donor_unit_part = "_".join(parts[3:-2])
-                new_unit_part = donor_unit_part.replace(donor_name, new_unit_name, 1)
-                new_namespace = f"Descriptor_Deck_Pack_{new_unit_part}_{target_xp}_{number}"
-                
-                deck_pack_edit_mappings["new_command_unit_deck_packs"][donor_namespace] = new_namespace
-                
-                logger.debug(f"Created mapping: {donor_namespace} -> {new_namespace}")
-                
-            except (ValueError, IndexError):
-                continue
-    
     return deck_pack_edit_mappings
 
 
-def _create_new_command_unit_deck_packs(source_path: Any, deck_pack_edits: Dict[str, str], deck_pack_data: Dict[str, Any]) -> None:
+def _create_new_command_unit_deck_packs(source_path: Any, new_units: Dict[str, Any], deck_pack_data: Dict[str, Any]) -> Dict[str, str]:
     """Create new deck packs for new command units using database data."""
-    new_command_unit_deck_packs = deck_pack_edits.get("new_command_unit_deck_packs", {})
+    new_command_unit_deck_packs = {}
 
     command_units_created = 0
 
-    for donor, edits in new_command_unit_deck_packs.items():
+    for donor, edits in new_units.items():
         donor_name = donor[0]
 
         # Verify required fields
@@ -190,6 +140,7 @@ def _create_new_command_unit_deck_packs(source_path: Any, deck_pack_edits: Dict[
 
         # Only process command units - identified by _CMD2_ in NewName
         new_unit_name = edits["NewName"]
+        logger.debug(f"New command unit name name: {new_unit_name}")
         if "_CMD2_" not in new_unit_name:
             continue
 
@@ -241,27 +192,40 @@ def _create_new_command_unit_deck_packs(source_path: Any, deck_pack_edits: Dict[
                 donor_unit_part = "_".join(parts[3:-2])  # Everything between prefix and _XP_Number
                 new_unit_part = donor_unit_part.replace(donor_name, new_unit_name, 1)
 
-                for target_xp in available_xp_levels:
-                    # Create new namespace preserving transport information
-                    new_namespace = f"Descriptor_Deck_Pack_{new_unit_part}_{target_xp}_{number}"
+                # Determine target XP for this donor namespace
+                if donor_xp in available_xp_levels:
+                    target_xp = donor_xp
+                elif available_xp_levels:
+                    target_xp = min(available_xp_levels, key=lambda x: abs(x - donor_xp))
+                else:
+                    continue
 
-                    logger.info(f"Creating new deck pack {new_namespace}")
+                # Create the mapping from donor namespace to new namespace
+                new_namespace = f"Descriptor_Deck_Pack_{new_unit_part}_{target_xp}_{number}"
+                new_command_unit_deck_packs[donor_namespace] = new_namespace
+
+                # Create deck packs for all available XP levels
+                for create_xp in available_xp_levels:
+                    # Create new namespace preserving transport information
+                    create_namespace = f"Descriptor_Deck_Pack_{new_unit_part}_{create_xp}_{number}"
+
+                    logger.info(f"Creating new deck pack {create_namespace}")
 
                     # Clone the template pack
                     new_deck_pack = template_pack.copy()
-                    new_deck_pack.namespace = new_namespace
-                    new_deck_pack.n = new_namespace
+                    new_deck_pack.namespace = create_namespace
+                    new_deck_pack.n = create_namespace
 
                     # Update Unit reference
                     new_deck_pack.v.by_m("Unit").v = f"$/GFX/Unit/Descriptor_Unit_{new_unit_name}"
 
                     # Update XP value (ensure string value)
-                    if target_xp > 0:
+                    if create_xp > 0:
                         xp_member = new_deck_pack.v.by_m("Xp", False)
                         if xp_member:
-                            xp_member.v = str(target_xp)
+                            xp_member.v = str(create_xp)
                         else:
-                            new_deck_pack.v.insert(1, f"Xp = {target_xp}")
+                            new_deck_pack.v.insert(1, f"Xp = {create_xp}")
                     else:
                         # Remove Xp parameter for XP level 0
                         xp_member = new_deck_pack.v.by_m("Xp", False)
@@ -277,6 +241,7 @@ def _create_new_command_unit_deck_packs(source_path: Any, deck_pack_edits: Dict[
                 continue
 
     logger.info(f"Created {command_units_created} new command unit deck packs")
+    return new_command_unit_deck_packs
 
 
 def _edit_existing_deck_packs(source_path: Any, deck_pack_edits: Dict[str, str]) -> None:
@@ -381,7 +346,7 @@ def _find_best_target_xp(current_xp: int, available_xp_levels: list, missing_xp_
     return closest_available
         
 # Update deck pack references ------------------------------------------------------------
-def edit_decks(source_path: Any, game_db: Dict[str, Any]) -> None:
+def edit_gen_gp_decks(source_path: Any, game_db: Dict[str, Any]) -> None:
     """GameData\Generated\Gameplay\Decks\Decks.ndf."""
     unit_edits = load_unit_edits()
     unit_edits.update(supply_unit_edits)
@@ -541,7 +506,7 @@ def _new_deck_packs(source_path: Any) -> None:
 
 
 def edit_deck_pack_lists(source_path: Any) -> None:
-    """GameData\Generated\Gameplay\Decks\Decks.ndf (POSSIBLY DEPRECATED)"""
+    """GameData/Generated/Gameplay/Decks/Decks.ndf (POSSIBLY DEPRECATED)"""
     logger.info("Editing deck packs for new units")
 
     for donor, edits in NEW_UNITS.items():

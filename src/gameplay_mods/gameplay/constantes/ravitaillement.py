@@ -8,7 +8,7 @@ from src.constants import NEW_SUPPLY_CONSTANTS as new_supply_constants
 logger = setup_logger(__name__)
 
 
-def edit_constantes_ravitaillement(source_path) -> None:
+def edit_gameplay_constantes_ravitaillement(source_path) -> None:
     """GameData/Gameplay/Constantes/Ravitaillement.ndf"""
     logger.info("Editing Ravitaillement.ndf")
 

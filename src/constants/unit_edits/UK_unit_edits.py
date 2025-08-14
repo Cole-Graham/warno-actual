@@ -312,21 +312,21 @@ uk_unit_edits = {
     "Rover_101FC_UK": {
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
     "LandRover_UK": {
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
     "Bedford_MJ_4t_trans_UK": {
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
@@ -951,14 +951,14 @@ uk_unit_edits = {
     "CH47_Chinook_UK": {
         "CommandPoints": 60,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
     "Lynx_AH_Mk1_UK": {
         "CommandPoints": 50,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
@@ -969,7 +969,7 @@ uk_unit_edits = {
     "Gazelle_trans_UK": {
         "CommandPoints": 35,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 

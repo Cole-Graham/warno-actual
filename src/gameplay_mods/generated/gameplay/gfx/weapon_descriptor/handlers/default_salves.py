@@ -1,7 +1,7 @@
 from typing import Any, Dict
 import re
 
-from src.constants.weapons.ammunition import ammunitions
+from src.constants.weapons import ammunitions
 
 def apply_default_salves(source_path: Any, logger, game_db: Dict[str, Any], unit_edits: Dict[str, Any]) -> None:
     """Apply default salves to WeaponDescriptor.ndf"""

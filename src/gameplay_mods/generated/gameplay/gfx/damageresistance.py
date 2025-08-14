@@ -25,7 +25,8 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
 
-def edit_gfx_damageresistance(source_path) -> None:
+
+def edit_gen_gp_gfx_damageresistance(source_path) -> None:
     """GameData/Generated/Gameplay/Gfx/DamageResistance.ndf"""
     logger.info("Editing DamageResistance.ndf")
     
@@ -34,7 +35,7 @@ def edit_gfx_damageresistance(source_path) -> None:
     _edit_infantry_armor(source_path)
 
 
-def edit_gfx_damageresistancefamilylist(source_path) -> None:
+def edit_gen_gp_gfx_damageresistancefamilylist(source_path) -> None:
     """GameData/Generated/Gameplay/Gfx/DamageResistanceFamilyList.ndf"""
     
     logger.info("Adding new damage families to list")
@@ -94,7 +95,7 @@ def edit_gfx_damageresistancefamilylist(source_path) -> None:
     )
 
 
-def edit_gfx_damageresistancefamilylistimpl(source_path) -> None:
+def edit_gen_gp_gfx_damageresistancefamilylistimpl(source_path) -> None:
     """Add new damage families to DamageResistanceFamilyListImpl.ndf."""
     
     logger.info("Adding new damage families to implementation")

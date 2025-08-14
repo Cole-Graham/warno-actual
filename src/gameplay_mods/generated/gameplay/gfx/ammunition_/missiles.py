@@ -21,15 +21,15 @@ from .handlers import (
 logger = setup_logger(__name__)
 
 
-def edit_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]) -> None:
+def edit_gen_gp_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]) -> None:
     """Edit AmmunitionMissiles.ndf file."""
     try:
         ammo_db = game_db["ammunition"]
 
         # Handle vanilla modifications first
         try:
-            vanilla_renames_ammunition(source_path, ammo_db)
-            remove_vanilla_instances(source_path, AMMUNITION_MISSILES_REMOVALS)
+            vanilla_renames_ammunition(source_path, logger, ammo_db)
+            remove_vanilla_instances(source_path, logger, AMMUNITION_MISSILES_REMOVALS)
             logger.debug("Applied vanilla modifications")
         except Exception as e:
             logger.error(f"Failed applying vanilla modifications: {str(e)}")
@@ -38,6 +38,7 @@ def edit_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]) -> No
         # Apply global modifications
         try:
             apply_bomb_damage_standards(source_path, logger)
+            edit_missile_speed(source_path, game_db)
             logger.debug("Applied global modifications")
         except Exception as e:
             logger.error(f"Failed applying global modifications: {str(e)}")

@@ -3,7 +3,7 @@ from src.utils.logging_utils import setup_logger
 logger = setup_logger(__name__)
 
 
-def edit_constantes_weaponconstantes(source_path) -> None:
+def edit_gameplay_constantes_weaponconstantes(source_path) -> None:
     """GameData/Gameplay/Constantes/WeaponConstantes.ndf"""
     logger.info("Editing WeaponConstantes.ndf")
 

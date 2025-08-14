@@ -6,7 +6,7 @@ from src import ndf
 logger = setup_logger(__name__)
 
 
-def edit_gfx_firedescriptor(source_path) -> None:
+def edit_gen_gp_gfx_firedescriptor(source_path) -> None:
     """GameData/Generated/Gameplay/Gfx/FireDescriptor.ndf"""
     logger.info("Editing FireDescriptor.ndf")
 

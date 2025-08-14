@@ -246,26 +246,26 @@ fr_unit_edits = {
     "VLTT_P4_FR": {
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
     
     "TRM_2000_FR": {
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
     
     "VLRA_trans_FR": {
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
     "TRM_10000_FR": {
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
     
@@ -600,7 +600,7 @@ fr_unit_edits = {
             "sides": (1, None),
         },
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
     
@@ -803,7 +803,7 @@ fr_unit_edits = {
     "Super_Puma_FR": {
         "CommandPoints": 50,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
     
@@ -824,7 +824,7 @@ fr_unit_edits = {
     "Alouette_III_FR": {
         "CommandPoints": 35,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
     #FR AIR

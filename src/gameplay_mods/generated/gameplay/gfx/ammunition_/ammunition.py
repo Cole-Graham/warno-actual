@@ -24,7 +24,7 @@ from .handlers import (
 logger = setup_logger(__name__)
 
 
-def edit_gfx_ammunition(source_path, game_db: Dict[str, Any]) -> None:
+def edit_gen_gp_gfx_ammunition(source_path, game_db: Dict[str, Any]) -> None:
     """GameData/Generated/Gameplay/Gfx/Ammunition.ndf"""
     try:
         ammo_db = game_db["ammunition"]

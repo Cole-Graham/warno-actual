@@ -65,13 +65,16 @@ def find_namespace(row: Any, edits: Dict, prefix: str = "", suffix: str = "",
 
 def find_obj_by_type(ndf_list: ndf.model.List, obj_type: str) -> Any:
     """Find an object by type."""
-    return ndf_list.find_by_cond(lambda o: is_obj_type(o.v, obj_type))
+    return ndf_list.find_by_cond(
+        lambda o: is_obj_type(o.v, obj_type), strict=False
+    )
 
 
 def find_obj_by_namespace(ndf_list: ndf.model.List, namespace: str) -> Any:
     """Find an object by namespace."""
     return ndf_list.find_by_cond(
-        lambda o: hasattr(o, "namespace") and o.namespace == namespace
+        lambda o: hasattr(o, "namespace") and o.namespace == namespace,
+        strict=False
     )
 
 
@@ -141,6 +144,19 @@ def is_valid_turret(turret: Any) -> bool:
         is_obj_type(turret, "TTurretTwoAxisDescriptor"),
         is_obj_type(turret, "TTurretUnitDescriptor")
     ])
+
+
+def determine_characteristics(conditions) -> tuple[bool, bool, bool]:
+    """
+    conditions should be a list of tuples: (variable_name, search_key, search_dict)
+    """
+    results = {}
+    
+    for var_name, search_key, search_dict in conditions:
+        results[var_name] = search_key in search_dict
+    
+    # Return values in the same order as the conditions list
+    return tuple(results[var_name] for var_name, _, _ in conditions)
 
 
 def generate_guid():

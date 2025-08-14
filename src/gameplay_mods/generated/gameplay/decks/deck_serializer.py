@@ -3,12 +3,12 @@ from typing import Any
 from src.constants.generated.gameplay.decks import divs_not_released
 from src.constants.new_units import NEW_UNITS
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import ModConfig, ndf
+from src import ModConfig, ndf
 
 logger = setup_logger(__name__)
 
 
-def edit_decks_deckserializer(source_path: Any) -> None:
+def edit_gen_gp_decks_deckserializer(source_path: Any) -> None:
     """GameData/Generated/Gameplay/Decks/DeckSerializer.ndf"""
     _update_deck_serializer(source_path)
     _hide_divisions_deckserializer_ndf(source_path)

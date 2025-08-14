@@ -290,19 +290,19 @@ rfa_unit_edits = {
     "Unimog_trans_RFA": {
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
     "Iltis_trans_RFA": {
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
     "MAN_Kat_6x6_trans_RFA": {
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
     # RFA ARTY
@@ -378,7 +378,7 @@ rfa_unit_edits = {
     # trsp
     "TPZ_Fuchs_1_RFA": {
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
     "Marder_1A3_RFA": {

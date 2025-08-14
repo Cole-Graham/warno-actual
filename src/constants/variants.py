@@ -2,8 +2,8 @@
 
 from typing import Any, Callable, Dict
 
-from src.gameplay_mods.buildings.fob import edit_fob_attributes
-from src.shared_mods.buildings.fob import add_fob_minimap_module, add_fob_minimap_texture
+# from src.gameplay_mods.buildings.fob import edit_fob_attributes
+# from src.shared_mods.buildings.fob import add_fob_minimap_module, add_fob_minimap_texture
 from src.ui_mods.style.common.flares import edit_uicommonflarelabelresources
 from src.utils.logging_utils import setup_logger
 
@@ -12,11 +12,11 @@ logger = setup_logger(__name__)
 # Validate function types
 VARIANT_FUNCTIONS: Dict[str, Callable] = {
     # shared
-    "add_fob_minimap_texture": add_fob_minimap_texture,
-    "add_fob_minimap_module": add_fob_minimap_module,
+    # "add_fob_minimap_texture": add_fob_minimap_texture,
+    # "add_fob_minimap_module": add_fob_minimap_module,
     "edit_uicommonflarelabelresources": edit_uicommonflarelabelresources,
     # variants
-    "edit_fob_attributes": edit_fob_attributes,
+    # "edit_fob_attributes": edit_fob_attributes,
 }
 
 logger.debug(f"Registered variant functions: {list(VARIANT_FUNCTIONS.keys())}")

@@ -5,9 +5,12 @@ from typing import Any, Dict
 
 from src import ndf
 from src.constants.new_units import NEW_UNITS
-from src.constants.weapons.ammunition.small_arms import weapons as small_arms_weapons
+# from src.constants.weapons.ammunition.small_arms import weapons as small_arms_weapons
+from src.constants.weapons import ammunitions
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import is_valid_turret, strip_quotes
+
+small_arms_weapons = ammunitions
 
 logger = setup_logger(__name__)
 

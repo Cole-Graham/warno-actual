@@ -1,29 +1,31 @@
 from .constantes import (
-    edit_constantes_gdconstants,
-    edit_constantes_ravitaillement,
-    edit_constantes_weaponconstantes,
+    edit_gameplay_constantes_gdconstants,
+    edit_gameplay_constantes_ravitaillement,
+    edit_gameplay_constantes_weaponconstantes,
+)
+from .terrains import (
+    edit_gameplay_terrains,
 )
 from .unit import (
-    edit_unit_team,
-    edit_unit_airplane_critical,
-    edit_unit_groundunit_critical,
-    edit_unit_helico_critical,
-    edit_unit_infanterie_critical,
-    edit_unit_template_critical,
-    edit_unit_testunits_critical,
+    edit_gameplay_unit_airplanecritical,
+    edit_gameplay_unit_groundunitcritical,
+    edit_gameplay_unit_helicocritical,
+    edit_gameplay_unit_infanteriecritical,
+    edit_gameplay_unit_team,
+    edit_gameplay_unit_templatecritical,
+    edit_gameplay_unit_testunitscritical,
 )
 
 __all__ = [
-    # .constantes
-    'edit_constantes_gdconstants',
-    'edit_constantes_ravitaillement',
-    'edit_constantes_weaponconstantes',
-    # .unit
-    'edit_unit_team',
-    'edit_unit_airplane_critical',
-    'edit_unit_groundunit_critical',
-    'edit_unit_helico_critical',
-    'edit_unit_infanterie_critical',
-    'edit_unit_template_critical',
-    'edit_unit_testunits_critical',
+    'edit_gameplay_constantes_gdconstants',
+    'edit_gameplay_constantes_ravitaillement',
+    'edit_gameplay_constantes_weaponconstantes',
+    'edit_gameplay_terrains',
+    'edit_gameplay_unit_airplanecritical',
+    'edit_gameplay_unit_groundunitcritical',
+    'edit_gameplay_unit_helicocritical',
+    'edit_gameplay_unit_infanteriecritical',
+    'edit_gameplay_unit_team',
+    'edit_gameplay_unit_templatecritical',
+    'edit_gameplay_unit_testunitscritical',
 ]

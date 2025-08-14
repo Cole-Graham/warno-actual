@@ -5,7 +5,7 @@ from src.utils.ndf_utils import find_obj_by_namespace
 
 logger = setup_logger(__name__)
 
-def edit_gfx_smokedescriptor(source_path: Any):
+def edit_gen_gp_gfx_smokedescriptor(source_path: Any):
     """GameData/Generated/Gameplay/Gfx/SmokeDescriptor.ndf"""
     
     _smoke_duration(source_path)

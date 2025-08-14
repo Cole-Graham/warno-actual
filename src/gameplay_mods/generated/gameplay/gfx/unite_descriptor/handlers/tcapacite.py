@@ -62,12 +62,12 @@ def _add_capacities(logger, unit_data, edit_type, unit_name, edits, default_skil
         # Skills in database condition
         if condition_type == "skills":
             for skill, capacities in condition.items():
-                if not skill in unit_data.get("skills", []):
+                if unit_data == None or not skill in unit_data.get("skills", []):
                     continue
                 
                 for capacity in capacities:
-                    duplicate_safety = default_skill_list.find_by_cond(
-                        lambda x: x.v == capacity
+                    duplicate_safety = default_skill_list.v.find_by_cond(
+                        lambda x: x.v == capacity, strict=False
                     )
                     if not duplicate_safety:
                         default_skill_list.v.add(capacity)
@@ -76,12 +76,12 @@ def _add_capacities(logger, unit_data, edit_type, unit_name, edits, default_skil
         # Specialties tags in database condition
         elif condition_type == "specialties":
             for specialty, capacities in condition.items():
-                if not specialty in unit_data.get("specialties", []):
+                if unit_data == None or not specialty in unit_data.get("specialties", []):
                     continue
                 
                 for capacity in capacities:
-                    duplicate_safety = default_skill_list.find_by_cond(
-                        lambda x: x.v == capacity
+                    duplicate_safety = default_skill_list.v.find_by_cond(
+                        lambda x: x.v == capacity, strict=False
                     )
                     if not duplicate_safety:
                         default_skill_list.v.add(capacity)

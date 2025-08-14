@@ -9,7 +9,7 @@ from src.utils.ndf_utils import is_obj_type  # noqa
 logger = setup_logger(__name__)
 
 
-def edit_decks_divisionrules(source_path: Any, game_db: Dict[str, Any]) -> None:
+def edit_gen_gp_decks_divisionrules(source_path: Any, game_db: Dict[str, Any]) -> None:
     """GameData/Generated/Gameplay/Decks/DivisionRules.ndf"""
     _new_unit_division_rules(source_path)
     _unit_edits_divisionrules(source_path)

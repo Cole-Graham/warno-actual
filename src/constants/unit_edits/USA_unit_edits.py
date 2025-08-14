@@ -1636,28 +1636,28 @@ usa_unit_edits = {
     "M151_MUTT_trans_US": {
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
     "M35_trans_US": {
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
     "M998_Humvee_US": {
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
     "M1038_Humvee_US": {
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
@@ -1950,7 +1950,7 @@ usa_unit_edits = {
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
-                "M551A1_TTS_Sheridan_CMD_US",
+                "UNITE_M551A1_TTS_Sheridan_CMD_US",
                 "Unite"
             ],
         },
@@ -1975,7 +1975,7 @@ usa_unit_edits = {
             "add_orders": ["sell"],
         },
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
@@ -2599,7 +2599,7 @@ usa_unit_edits = {
     "UH60A_Black_Hawk_US": {
         "CommandPoints": 60,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -2614,7 +2614,7 @@ usa_unit_edits = {
     "CH47_Chinook_US": {
         "CommandPoints": 60,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 

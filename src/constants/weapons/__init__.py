@@ -2,7 +2,7 @@
 
 from typing import Dict, Any, Union, List, Tuple, Set
 from src.utils.logging_utils import setup_logger
-
+import json, os
 from .ammunition import raw_ammunitions
 from .damage_values import (
     VANILLA_LAST_ROW,
@@ -230,27 +230,37 @@ def _resolve_weapon_with_cache(weapon_data: Any, weapon_name: str, field_cache: 
             # Recursively resolve lists
             return [resolve_value(item, f"{current_path}[{i}]") for i, item in enumerate(value)]
         elif isinstance(value, str):
+            # Special exception: NewTexture field should not be resolved as references
+            if current_path.endswith("NewTexture"):
+                return value
+            
             # Check if this string references a weapon name
             if value in weapon_name_to_data:
                 # Check if we have a precomputed field value
                 if weapon_name in field_cache and current_path in field_cache[weapon_name]:
                     logger.debug(f"Using cached field reference '{value}.{current_path.split('.')[-1]}' for path '{current_path}'")
-                    return field_cache[weapon_name][current_path]
+                    cached_value = field_cache[weapon_name][current_path]
+                    # Convert numeric values to strings for NDF compatibility
+                    if isinstance(cached_value, (int, float)):
+                        return str(cached_value)
+                    return cached_value
                 
                 referenced_value = weapon_name_to_data[value]
                 
-                # Get the current field name from the path
-                current_field = current_path.split(".")[-1] if "." in current_path else current_path
+                # Strict field resolution: extract the specific field from the referenced weapon
+                if isinstance(referenced_value, dict):
+                    # Extract the field using the current path
+                    extracted_value = _extract_field_value(referenced_value, current_path)
+                    if extracted_value is not None:
+                        logger.debug(f"Resolving field reference '{value}.{current_path}' for path '{current_path}'")
+                        # Convert numeric values to strings for NDF compatibility
+                        if isinstance(extracted_value, (int, float)):
+                            return str(extracted_value)
+                        return extracted_value
                 
-                # If the referenced value is a dict and contains the same field name,
-                # extract just that field value instead of the entire dict
-                if isinstance(referenced_value, dict) and current_field in referenced_value:
-                    logger.debug(f"Resolving field reference '{value}.{current_field}' for path '{current_path}'")
-                    return referenced_value[current_field]
-                else:
-                    # Fallback to returning the entire referenced value
-                    logger.debug(f"Resolving reference '{value}' for path '{current_path}'")
-                    return referenced_value
+                # No fallback - if we can't find the field, raise an error
+                logger.error(f"Failed to resolve field reference '{value}' for path '{current_path}' - field not found in referenced weapon")
+                raise ValueError(f"Field '{current_path}' not found in referenced weapon '{value}'")
             else:
                 # String doesn't reference a weapon, return as-is
                 return value
@@ -258,84 +268,10 @@ def _resolve_weapon_with_cache(weapon_data: Any, weapon_name: str, field_cache: 
             # Non-string value, return as-is
             return value
     
-    return resolve_value(weapon_data, weapon_name)
+    return resolve_value(weapon_data, "")
 
 
-def resolve_ammunition_shared_values(ammunition_dict: Dict) -> Dict:
-    """
-    Recursively resolve shared/borrowed values in ammunition dictionary.
-    
-    This function traverses the ammunition dictionary and replaces any string values
-    that reference weapon names (first element of tuple keys) with the actual values
-    from those weapons.
-    
-    Args:
-        ammunition_dict: Dictionary with tuple keys (weapon_name, category, donor, is_new)
-        
-    Returns:
-        Dictionary with all string references resolved to actual values
-        
-    Example:
-        Input:
-        {
-            ("HMG_M2HB", "small_arms", None, False): {"damage": 100, "range": 500},
-            ("HMG_DSh", "small_arms", None, False): {"damage": "HMG_M2HB", "range": 600},
-        }
-        
-        Output:
-        {
-            ("HMG_M2HB", "small_arms", None, False): {"damage": 100, "range": 500},
-            ("HMG_DSh", "small_arms", None, False): {"damage": 100, "range": 600},
-        }
-    """
-    # Create a mapping of weapon names to their data for quick lookup
-    weapon_name_to_data = {}
-    for key, value in ammunition_dict.items():
-        if isinstance(key, tuple) and len(key) > 0:
-            weapon_name = key[0]
-            weapon_name_to_data[weapon_name] = value
-    
-    def resolve_value(value: Any, current_path: str = "") -> Any:
-        """Recursively resolve a value, handling nested dictionaries and lists."""
-        if isinstance(value, dict):
-            # Recursively resolve nested dictionaries
-            resolved = {}
-            for k, v in value.items():
-                resolved[k] = resolve_value(v, f"{current_path}.{k}" if current_path else k)
-            return resolved
-        elif isinstance(value, list):
-            # Recursively resolve lists
-            return [resolve_value(item, f"{current_path}[{i}]") for i, item in enumerate(value)]
-        elif isinstance(value, str):
-            # Check if this string references a weapon name
-            if value in weapon_name_to_data:
-                referenced_value = weapon_name_to_data[value]
-                
-                # Get the current field name from the path
-                current_field = current_path.split(".")[-1] if "." in current_path else current_path
-                
-                # If the referenced value is a dict and contains the same field name,
-                # extract just that field value instead of the entire dict
-                if isinstance(referenced_value, dict) and current_field in referenced_value:
-                    logger.debug(f"Resolving field reference '{value}.{current_field}' for path '{current_path}'")
-                    return referenced_value[current_field]
-                else:
-                    # Fallback to returning the entire referenced value
-                    logger.debug(f"Resolving reference '{value}' for path '{current_path}'")
-                    return referenced_value
-            else:
-                # String doesn't reference a weapon, return as-is
-                return value
-        else:
-            # Non-string value, return as-is
-            return value
-    
-    # Process each entry in the dictionary
-    resolved_dict = {}
-    for key, value in ammunition_dict.items():
-        resolved_dict[key] = resolve_value(value, str(key[0]) if isinstance(key, tuple) and len(key) > 0 else str(key))
-    
-    return resolved_dict
+
 
 
 def resolve_ammunition_shared_values_optimized(ammunition_dict: Dict) -> Dict:
@@ -386,26 +322,18 @@ def resolve_ammunition_shared_values_optimized(ammunition_dict: Dict) -> Dict:
 
 # Resolve shared values in ammunition dictionary
 logger.info("Resolving shared values in ammunition dictionaries...")
-try:
-    # Try optimized version first
-    ammunitions = resolve_ammunition_shared_values_optimized(raw_ammunitions)
-    logger.info("Used optimized resolution for ammunition")
-except Exception as e:
-    logger.warning(f"Optimized resolution failed, falling back to original: {e}")
-    ammunitions = resolve_ammunition_shared_values(raw_ammunitions)
-    logger.info("Used fallback resolution for ammunition")
-
+ammunitions = resolve_ammunition_shared_values_optimized(raw_ammunitions)
+# Convert tuple keys to strings for JSON serialization
+ammunitions_for_json = {str(k): v for k, v in ammunitions.items()}
+with open("ammunitions.json", "w") as f:
+    json.dump(ammunitions_for_json, f, indent=4)
 logger.info(f"Resolved shared values for {len(ammunitions)} ammunition entries")
 
 # Resolve shared values in missile dictionary
 logger.info("Resolving shared values in missile dictionaries...")
-try:
-    # Try optimized version first
-    missiles = resolve_ammunition_shared_values_optimized(raw_missiles)
-    logger.info("Used optimized resolution for missiles")
-except Exception as e:
-    logger.warning(f"Optimized resolution failed, falling back to original: {e}")
-    missiles = resolve_ammunition_shared_values(raw_missiles)
-    logger.info("Used fallback resolution for missiles")
-
+missiles = resolve_ammunition_shared_values_optimized(raw_missiles)
+# Convert tuple keys to strings for JSON serialization
+missiles_for_json = {str(k): v for k, v in missiles.items()}
+with open("missiles.json", "w") as f:
+    json.dump(missiles_for_json, f, indent=4)
 logger.info(f"Resolved shared values for {len(missiles)} missile entries")

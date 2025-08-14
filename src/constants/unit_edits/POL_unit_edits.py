@@ -697,7 +697,7 @@ pol_unit_edits = {
             "display": "SPADO. PPK FAKTORIA",
         },
     },
-    "ATteam_Konkurs_POL": {  # PPK Konkurs (campaign only)
+    "Atteam_Konkurs_POL": {  # PPK Konkurs (campaign only)
         "CommandPoints": 50,
         "Divisions": {
             "default": {
@@ -725,46 +725,46 @@ pol_unit_edits = {
     "Star_266_POL": {  # Star 266
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
     "KrAZ_255B_POL": {  # KraZ-255 trsp
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
         "UpgradeFromUnit": "Star_266_POL",
     },
     "UAZ_469_trans_POL": {  # UAZ-469
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
     "Honker_4011_POL": {  # Honker 4011
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
         "UpgradeFromUnit": "UAZ_469_trans_POL",
     },
     "GAZ_66B_POL": {  # GAZ-66B (para)
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
     "BAV_485_POL": {  # BAW-485
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
         "UpgradeFromUnit": "GAZ_46_POL",
     },
     "GAZ_46_POL": {  # MAW
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
         "UpgradeFromUnit": None,
     },
@@ -1135,7 +1135,7 @@ pol_unit_edits = {
             "add_orders": ["sell"],
         },
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
     "BMP_1_SP2_POL": {  # BWP-1
@@ -1296,11 +1296,12 @@ pol_unit_edits = {
         },
         "DeploymentShift": 0,
     },
-    "Scout_SF_Para_POL": {  # Desant. Rozp. Specjalne
-        "GameName": {
-            "display": "#RECO2 SPADO. ROZP. SPECJALNE",
-        },
-    },
+    # TODO: Find out what happened to this unit
+    # "Scout_SF_Para_POL": {  # Desant. Rozp. Specjalne
+    #     "GameName": {
+    #         "display": "#RECO2 SPADO. ROZP. SPECJALNE",
+    #     },
+    # },
     "BRM_1_POL": {  # BWR-1D
         "CommandPoints": "BRM_1_SOV",
         "availability": "BRM_1_SOV",
@@ -1529,12 +1530,12 @@ pol_unit_edits = {
     "Mi_2_trans_POL": {  # Mi-2P
         "CommandPoints": 35,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
     "W3_Sokol_POL": {  # W-3 Sokol
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
         "GameName": {
             "display": "W-3 SOKÓŁ"
@@ -1543,7 +1544,7 @@ pol_unit_edits = {
     "Mi_8T_non_arme_POL": {  # Mi-8T
         "CommandPoints": 50,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
         "UpgradeFromUnit": "W3_Sokol_POL",
     },

@@ -12,7 +12,7 @@ from .handlers import (
     update_weapondescr_ammoname_quantity,
 )
 
-def edit_gfx_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> None:
+def edit_gen_gp_gfx_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> None:
     """GameData/Generated/Gameplay/Gfx/WeaponDescriptor.ndf"""
     
     unit_edits = load_unit_edits()

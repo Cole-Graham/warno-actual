@@ -1,5 +1,5 @@
-from .unitedescriptor import edit_gfx_unitedescriptor
+from .unitedescriptor import edit_gen_gp_gfx_unitedescriptor
 
 __all__ = [
-    'edit_gfx_unitedescriptor',
+    'edit_gen_gp_gfx_unitedescriptor',
 ]

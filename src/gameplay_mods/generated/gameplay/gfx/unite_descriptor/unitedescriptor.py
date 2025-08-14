@@ -5,7 +5,7 @@ from src.constants.unit_edits import load_unit_edits
 from src.constants.new_units import NEW_UNITS
 from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import is_obj_type, find_obj_by_type, find_obj_by_namespace
+from src.utils.ndf_utils import find_obj_by_type, find_obj_by_namespace, determine_characteristics
 
 from .handlers import (
     handle_capacite_module,
@@ -19,7 +19,7 @@ logger = setup_logger(__name__)
 forward_deploy_old_values = []
 forward_deploy_new_values = [750.0, 1750.0]
 
-def edit_gfx_unitedescriptor(source_path, game_db) -> None:
+def edit_gen_gp_gfx_unitedescriptor(source_path, game_db) -> None:
     """GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf"""
 
     unit_edits = load_unit_edits()
@@ -75,8 +75,8 @@ def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_nam
 
     unit_data = game_db["unit_data"].get(unit_name, None)
 
-    found_capacite_module = find_obj_by_type(modules_list, "TCapaciteModuleDescriptor") is not None
-    found_zoneinfluence_module = find_obj_by_type(modules_list, "TZoneInfluenceMapModuleDescriptor") is not None
+    found_capacite_module = find_obj_by_type(modules_list.v, "TCapaciteModuleDescriptor") is not None
+    found_zoneinfluence_module = find_obj_by_type(modules_list.v, "TZoneInfluenceMapModuleDescriptor") is not None
 
     module_handlers = {
         "TTypeUnitModuleDescriptor": { "handler": _handle_typeunit_module, "args": [] },
@@ -122,7 +122,7 @@ def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_nam
     }
     # Iterate over module handlers
     for module_type, handling_data in module_handlers.items():
-        module = find_obj_by_type(modules_list, module_type)
+        module = find_obj_by_type(modules_list.v, module_type)
         if not module:
             continue
 
@@ -131,7 +131,9 @@ def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_nam
     
     # Handle weapon descriptor for new units
     if edit_type == "new_units":
-        weapon_descr = modules_list.find_by_cond(lambda m: m.v.startswith("$/GFX/Weapon/WeaponDescriptor_"))
+        weapon_descr = modules_list.v.find_by_cond(
+            lambda m: not isinstance(m.v, ndf.model.Object) and
+            m.v.startswith("$/GFX/Weapon/WeaponDescriptor_"), strict=False)
         if weapon_descr:
             if not edits.get("is_unarmed", False):
                 modules_list.v.replace(weapon_descr, f"$/GFX/Weapon/WeaponDescriptor_{unit_name}")
@@ -154,7 +156,7 @@ def _add_modules(game_db, edit_type, unit_name, edits, modules_list) -> None:
         unit_db = game_db["unit_data"]
         
         found_transporter_module = find_obj_by_type(
-            modules_list, "TTransporterModuleDescriptor") is not None
+            modules_list.v, "TTransporterModuleDescriptor") is not None
         
         wreck_type = "Default" if not unit_db.get(
             unit_name, {}).get("is_helo_unit", False) else "Chopper"
@@ -188,8 +190,13 @@ def _remove_modules(game_db, edit_type, unit_name, edits, modules_list) -> None:
     """Remove modules from new and existing units"""
     
     for module_to_remove in edits.get("modules_remove", []):
-        modules_list.v.remove(find_obj_by_type(modules_list, module_to_remove))
-        modules_list.v.remove(find_obj_by_namespace(modules_list, module_to_remove))
+        module = find_obj_by_type(modules_list.v, module_to_remove)
+        if module:
+            modules_list.v.remove(module.index)
+        else:
+            module = find_obj_by_namespace(modules_list.v, module_to_remove)
+            if module:
+                modules_list.v.remove(module.index)
 
 
 # TTypeUnitModuleDescriptor
@@ -268,6 +275,19 @@ def _handle_airplanemovement_module(logger, game_db, unit_data, edit_type, unit_
             old_value = module.v.by_m(key).v
             module.v.by_m(key).v = str(value)
             logger.info(f"Updated {unit_name} {key} from {old_value} to {value}")
+            
+    # Global bomber edits TODO: Use dic references instead for standardization
+    search_conditions = [
+        ("has_terrain_radar", "'terrain_radar'", edits.get("specialties", {})),
+        ("is_sead", "Avion_SEAD", unit_data.get("tags", {})),
+        ("is_ew", "_electronic_warfare", unit_data.get("specialties", {})),
+    ]
+    has_terrain_radar, is_sead, is_ew = determine_characteristics(search_conditions)
+    
+    if has_terrain_radar and is_sead and not is_ew:
+        new_value = "300"
+        module.v.by_m("AltitudeGRU").v = new_value
+        logger.info(f"Updated {unit_name} altitude to {new_value}")
 
 
 # TTransportableModuleDescriptor
@@ -321,7 +341,18 @@ def _handle_visibility_module(logger, game_db, unit_data, edit_type, unit_name,
         if "stealth" in edits:
             module.v.by_m("UnitConcealmentBonus").v = str(edits["stealth"])
             logger.info(f"Updated {unit_name} stealth to {edits['stealth']}")
-            
+        
+        # global bomber edits TODO: Use dic references instead for standardization
+        conditions_search = [
+            ("has_terrain_radar", "'terrain_radar'", edits.get("specialties", {})),
+            ("is_sead", "Avion_SEAD", unit_data.get("tags", {})),
+            ("is_ew", "_electronic_warfare", unit_data.get("specialties", {})),
+        ]
+        has_terrain_radar, is_sead, is_ew = determine_characteristics(conditions_search)
+
+        if has_terrain_radar and is_sead and not is_ew:
+            module.v.by_m("UnitConcealmentBonus").v = "1.75"
+            logger.info(f"Updated {unit_name} stealth to 1.75")
 
 # InfantryApparenceModuleDescriptor
 def _handle_infantryapparence_module(logger, game_db, unit_data, edit_type, unit_name,
@@ -530,18 +561,19 @@ def _handle_deploymentshift_module(logger, game_db, unit_data, edit_type, unit_n
     
     # Remove forward deploy for command units
     if found_zoneinfluence_module:
-        module.v.remove(module.index)
         logger.info(f"Removed {module.v.type} from {unit_name}")
+        module.parent.remove(module.index)
         
-    # Nerf forward deploy
-    shift_val = float(module.v.by_m("DeploymentShiftGRU").v)
-    if shift_val not in forward_deploy_old_values:
-        forward_deploy_old_values.append(shift_val)
-        
-    if shift_val >= 2501:
-        module.v.by_m("DeploymentShiftGRU").v = forward_deploy_new_values[1]
     else:
-        module.v.by_m("DeploymentShiftGRU").v = forward_deploy_new_values[0]
+        # Nerf forward deploy
+        shift_val = float(module.v.by_m("DeploymentShiftGRU").v)
+        if shift_val not in forward_deploy_old_values:
+            forward_deploy_old_values.append(shift_val)
+            
+        if shift_val >= 2501:
+            module.v.by_m("DeploymentShiftGRU").v = str(forward_deploy_new_values[1])
+        else:
+            module.v.by_m("DeploymentShiftGRU").v = str(forward_deploy_new_values[0])
 
 # TZoneInfluenceMapModuleDescriptor
 def _handle_zoneinfluencemap_module(logger, game_db, unit_data, edit_type, unit_name,

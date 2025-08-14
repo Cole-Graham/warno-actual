@@ -1,21 +1,21 @@
 from .tactic import (
-    edit_unit_team,
+    edit_gameplay_unit_team,
 )
 from .criticalmodules import (
-    edit_unit_airplane_critical,
-    edit_unit_groundunit_critical,
-    edit_unit_helico_critical,
-    edit_unit_infanterie_critical,
-    edit_unit_template_critical,
-    edit_unit_testunits_critical,
+    edit_gameplay_unit_airplanecritical,
+    edit_gameplay_unit_groundunitcritical,
+    edit_gameplay_unit_helicocritical,
+    edit_gameplay_unit_infanteriecritical,
+    edit_gameplay_unit_templatecritical,
+    edit_gameplay_unit_testunitscritical,
 )
 
 __all__ = [
-    'edit_unit_team',
-    'edit_unit_airplane_critical',
-    'edit_unit_groundunit_critical',
-    'edit_unit_helico_critical',
-    'edit_unit_infanterie_critical',
-    'edit_unit_template_critical',
-    'edit_unit_testunits_critical',
+    'edit_gameplay_unit_team',
+    'edit_gameplay_unit_airplanecritical',
+    'edit_gameplay_unit_groundunitcritical',
+    'edit_gameplay_unit_helicocritical',
+    'edit_gameplay_unit_infanteriecritical',
+    'edit_gameplay_unit_templatecritical',
+    'edit_gameplay_unit_testunitscritical',
 ]

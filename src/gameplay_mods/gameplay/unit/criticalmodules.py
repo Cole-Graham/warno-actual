@@ -5,7 +5,7 @@ from src.utils.logging_utils import setup_logger
 logger = setup_logger(__name__)
 
 
-def edit_unit_template_critical(source) -> None:
+def edit_gameplay_unit_templatecritical(source) -> None:
     """GameData/Gameplay/Unit/CriticalModules/TemplateCriticalEffectModules.ndf"""
     logger.info("Modifying critical effect template")
 
@@ -25,35 +25,35 @@ def edit_unit_template_critical(source) -> None:
                 break
 
 
-def edit_unit_airplane_critical(source) -> None:
+def edit_gameplay_unit_airplanecritical(source) -> None:
     """ ______________________________PLACEHOLDER_______________________________
     GameData/Gameplay/Unit/CriticalModules/CriticalEffectModule_Airplane.ndf"""
     # logger.info("Modifying airplane critical effect modules")
     pass
 
 
-def edit_unit_groundunit_critical(source) -> None:
+def edit_gameplay_unit_groundunitcritical(source) -> None:
     """ ______________________________PLACEHOLDER_______________________________
     GameData/Gameplay/Unit/CriticalModules/CriticalEffectModule_GroundUnit.ndf"""
     # logger.info("Modifying ground unit critical effect modules")
     pass
 
 
-def edit_unit_helico_critical(source) -> None:
+def edit_gameplay_unit_helicocritical(source) -> None:
     """ ______________________________PLACEHOLDER_______________________________
     GameData/Gameplay/Unit/CriticalModules/CriticalEffectModule_Helico.ndf"""
     # logger.info("Modifying helicopter critical effect modules")
     pass
 
 
-def edit_unit_infanterie_critical(source) -> None:
+def edit_gameplay_unit_infanteriecritical(source) -> None:
     """ ______________________________PLACEHOLDER_______________________________
     GameData/Gameplay/Unit/CriticalModules/CriticalEffectModule_Infanterie.ndf"""
     # logger.info("Modifying infantry critical effect modules")
     pass
 
 
-def edit_unit_testunits_critical(source) -> None:
+def edit_gameplay_unit_testunitscritical(source) -> None:
     """ ______________________________PLACEHOLDER_______________________________
     GameData/Gameplay/Unit/CriticalModules/CriticalEffectModule_TestUnits.ndf"""
     # logger.info("Modifying critical effect test units")

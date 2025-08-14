@@ -6,7 +6,7 @@ from src.utils.ndf_utils import find_obj_by_type, find_obj_by_namespace
 logger = setup_logger(__name__)
 
 
-def edit_unit_team(source_path) -> None:
+def edit_gameplay_unit_team(source_path) -> None:
     """GameData/Gameplay/Unit/Tactic/Team.ndf
 
     Edit Airport supply rates.
@@ -22,7 +22,7 @@ def edit_unit_team(source_path) -> None:
     modules_list = tactict_teamunit_descr.v.by_m("ModulesDescriptors")
     
     # Airport module
-    team_airport_module = find_obj_by_type(modules_list, "TTeamAirportModuleDescriptor")
+    team_airport_module = find_obj_by_type(modules_list.v, "TTeamAirportModuleDescriptor")
     _handle_team_airport_module(team_airport_module)
 
 

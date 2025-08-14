@@ -1228,6 +1228,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 25,
             },
         },
+        "NbWeapons": [1],
     },
     
     ("MMG_team_7_62mm_AANF1", "small_arms", None, False): {
@@ -1236,6 +1237,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "hit_roll": "MMG_team_7_62mm_FN_MAG",
             "parent_membr": "MMG_team_7_62mm_FN_MAG",
         },
+        "NbWeapons": "MMG_team_7_62mm_FN_MAG",
     },
     
     ("MMG_team_7_62mm_M1919", "small_arms", None, False): {
@@ -1244,6 +1246,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "hit_roll": "MMG_team_7_62mm_FN_MAG",
             "parent_membr": "MMG_team_7_62mm_FN_MAG",
         },
+        "NbWeapons": "MMG_team_7_62mm_FN_MAG",
     },
     
     ("MMG_team_7_62mm_M60", "small_arms", None, False): { # 469
@@ -1254,6 +1257,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "hit_roll": "MMG_team_7_62mm_FN_MAG",
             "parent_membr": "MMG_team_7_62mm_FN_MAG",
         },
+        "NbWeapons": "MMG_team_7_62mm_FN_MAG",
     },
     
     ("MMG_team_7_62mm_MG3", "small_arms", None, False): {
@@ -1262,6 +1266,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "hit_roll": "MMG_team_7_62mm_FN_MAG",
             "parent_membr": "MMG_team_7_62mm_FN_MAG",
         },
+        "NbWeapons": "MMG_team_7_62mm_FN_MAG",
     },
     
     ("MMG_team_7_62mm_MG42_59", "small_arms", None, False): {
@@ -1270,6 +1275,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "hit_roll": "MMG_team_7_62mm_FN_MAG",
             "parent_membr": "MMG_team_7_62mm_FN_MAG",
         },
+        "NbWeapons": "MMG_team_7_62mm_FN_MAG",
     },
     
     ("MMG_team_7_62mm_PKM", "small_arms", None, False): {
@@ -1278,6 +1284,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "hit_roll": "MMG_team_7_62mm_FN_MAG",
             "parent_membr": "MMG_team_7_62mm_FN_MAG",
         },
+        "NbWeapons": "MMG_team_7_62mm_FN_MAG",
     },
     
     ("MMG_inf_AANF1_7_62mm", "small_arms", None, False): {
@@ -1356,6 +1363,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 25, 
             },
         },
+        "NbWeapons": [1],
         "SupplyCost": 1.0,
     },
     
@@ -1365,6 +1373,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": "MMG_M240_7_62mm",
         },
         "SupplyCost": "MMG_M240_7_62mm",
+        "NbWeapons": "MMG_M240_7_62mm"
     },
     
     ("MMG_L94A1_7_62mm", "small_arms", None, False): { # Warrior coax
@@ -1373,6 +1382,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": "MMG_M240_7_62mm",
         },
         "SupplyCost": "MMG_M240_7_62mm",
+        "NbWeapons": "MMG_M240_7_62mm",
     },
     
     ("MMG_L43A1_7_62mm", "small_arms", None, False): {
@@ -1381,6 +1391,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": "MMG_M240_7_62mm",
         },
         "SupplyCost": "MMG_M240_7_62mm",
+        "NbWeapons": "MMG_M240_7_62mm",
     },
     
     ("MMG_DTM_7_62mm", "small_arms", None, False): {
@@ -1389,6 +1400,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": "MMG_M240_7_62mm",
         },
         "SupplyCost": "MMG_M240_7_62mm",
+        "NbWeapons": "MMG_M240_7_62mm",
     },
     
     ("MMG_M60_7_62mm_coax", "small_arms", None, False): {
@@ -1397,6 +1409,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": "MMG_M240_7_62mm",
         },
         "SupplyCost": "MMG_M240_7_62mm",
+        "NbWeapons": "MMG_M240_7_62mm",
     },
     
     ("MMG_M240_abrams_7_62mm", "small_arms", None, False): {
@@ -1416,6 +1429,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             }
         },
         "SupplyCost": 1.0,
+        "NbWeapons": [1],
     },
     
     ("MMG_PKT_7_62mm", "small_arms", None, False): {
@@ -1424,6 +1438,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": "MMG_M240_abrams_7_62mm",
         },
         "SupplyCost": "MMG_M240_abrams_7_62mm",
+        "NbWeapons": "MMG_M240_abrams_7_62mm",
     },
     
     ("MMG_SGMB_7_62mm", "small_arms", None, False): {
@@ -1432,6 +1447,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": "MMG_M240_abrams_7_62mm",
         },
         "SupplyCost": "MMG_M240_abrams_7_62mm",
+        "NbWeapons": "MMG_M240_abrams_7_62mm",
     },
     
     
@@ -1442,6 +1458,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": "MMG_M240_abrams_7_62mm",
         },
         "SupplyCost": "MMG_M240_abrams_7_62mm",
+        "NbWeapons": "MMG_M240_abrams_7_62mm",
     },
     
     ("MMG_M60D_7_62mm", "small_arms", None, False): {
@@ -1450,6 +1467,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": "MMG_M240_abrams_7_62mm",
         },
         "SupplyCost": "MMG_M240_abrams_7_62mm",
+        "NbWeapons": "MMG_M240_abrams_7_62mm",
     },
     
     ("MMG_FN_MAG_7_62mm", "small_arms", None, False): { # Eugen using this as turret and coax
@@ -1458,6 +1476,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": "MMG_M240_abrams_7_62mm",
         },
         "SupplyCost": "MMG_M240_abrams_7_62mm",
+        "NbWeapons": "MMG_M240_abrams_7_62mm",
     },
     
     ("MMG_L37A2_7_62mm", "small_arms", None, False): { # Saxon, chieftain turret
@@ -1466,6 +1485,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": "MMG_M240_abrams_7_62mm",
         },
         "SupplyCost": "MMG_M240_abrams_7_62mm",
+        "NbWeapons": "MMG_M240_abrams_7_62mm",
     },
     
     ("MMG_MG3_7_62mm", "small_arms", None, False): {
@@ -1474,6 +1494,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": "MMG_M240_abrams_7_62mm",
         },
         "SupplyCost": "MMG_M240_abrams_7_62mm",
+        "NbWeapons": "MMG_M240_abrams_7_62mm",
     },
     
     ("MMG_AANF1_7_62mm", "small_arms", None, False): {
@@ -1482,6 +1503,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": "MMG_M240_abrams_7_62mm",
         },
         "SupplyCost": "MMG_M240_abrams_7_62mm",
+        "NbWeapons": "MMG_M240_abrams_7_62mm",
     },
     
     ("MMG_M1919", "small_arms", None, False): {
@@ -1490,6 +1512,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": "MMG_M240_abrams_7_62mm",
         },
         "SupplyCost": "MMG_M240_abrams_7_62mm",
+        "NbWeapons": "MMG_M240_abrams_7_62mm",
     },
     
     ("Lance_grenade_Mk19_40mm", "AGL", None, False): {  # 451
@@ -1556,6 +1579,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeHelicopterGRU": 1225,
             },
         },
+        "NbWeapons": [1],
     },
     
     ("HMG_team_12_7_mm_M2HB_M63", "small_arms", None, False): {
@@ -1563,6 +1587,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "Arme": "HMG_team_12_7_mm_NSV_6U6",
             "parent_membr": "HMG_team_12_7_mm_NSV_6U6",
         },
+        "NbWeapons": "HMG_team_12_7_mm_NSV_6U6",
     },
     
     ("HMG_team_12_7_mm_DSh_AA", "small_arms", None, False): {
@@ -1570,6 +1595,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "Arme": "HMG_team_12_7_mm_NSV_6U6",
             "parent_membr": "HMG_team_12_7_mm_NSV_6U6",
         },
+        "NbWeapons": "HMG_team_12_7_mm_NSV_6U6",
     },
     
     ("HMG_team_12_7_mm_M2HB", "small_arms", None, False): {
@@ -1592,6 +1618,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 25,
             },
         },
+        "NbWeapons": [1],
     },
     
     ("HMG_team_12_7_mm_DSh", "small_arms", None, False): {
@@ -1600,6 +1627,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "hit_roll": "HMG_team_12_7_mm_M2HB",
             "parent_membr": "HMG_team_12_7_mm_M2HB",
         },
+        "NbWeapons": "HMG_team_12_7_mm_M2HB",
     },
     
     ("HMG_team_12_7_mm_NSV", "small_arms", None, False): {
@@ -1608,6 +1636,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "hit_roll": "HMG_team_12_7_mm_M2HB",
             "parent_membr": "HMG_team_12_7_mm_M2HB",
         },
+        "NbWeapons": "HMG_team_12_7_mm_M2HB",
     },
 
     ("HMG_14_5_mm_KPVT", "small_arms", None, False): {  # 353
@@ -1654,6 +1683,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 25,
             },
         },
+        "NbWeapons": [1],
     },
     
     ("HMG_12_7_mm_M85", "small_arms", None, False): {
@@ -1678,6 +1708,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "hit_roll": "HMG_12_7_mm_M2HB",
             "parent_membr": "HMG_12_7_mm_M2HB",
         },
+        "NbWeapons": "HMG_12_7_mm_M2HB",
     },
     
     ("HMG_12_7_mm_DShKM", "small_arms", None, False): {
@@ -1686,6 +1717,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "hit_roll": "HMG_12_7_mm_M2HB",
             "parent_membr": "HMG_12_7_mm_M2HB",
         },
+        "NbWeapons": "HMG_12_7_mm_M2HB",
     },
     
     ("HMG_12_7_mm_Afanasyev", "small_arms", None, False): {

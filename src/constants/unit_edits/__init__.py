@@ -1,6 +1,8 @@
 """Unit edit constants."""
 
 import importlib
+import os
+import json
 from pathlib import Path
 from typing import Dict, Any, List, Tuple, Set
 
@@ -56,13 +58,18 @@ def precompute_dependency_graph(unit_edits_dict: Dict) -> Dict[str, Set[str]]:
     dependencies = {}
     unit_names = set()
     
-    # First pass: collect all unit names
+    # First pass: collect all unit names (excluding reference entries)
     for unit_name in unit_edits_dict:
-        unit_names.add(unit_name)
-        dependencies[unit_name] = set()
+        if not unit_name.endswith("_reference"):
+            unit_names.add(unit_name)
+            dependencies[unit_name] = set()
     
     # Second pass: find dependencies
     for unit_name, unit_data in unit_edits_dict.items():
+        # Skip reference entries
+        if unit_name.endswith("_reference"):
+            continue
+            
         # Find all unit references in this unit's data
         for field_path, field_value in _flatten_dict(unit_data):
             if isinstance(field_value, str) and field_value in unit_names:
@@ -133,6 +140,10 @@ def precompute_field_resolution_cache(unit_edits_dict: Dict) -> Dict[str, Dict[s
     # Precompute resolved field values for each unit
     field_cache = {}
     for unit_name, unit_data in unit_edits_dict.items():
+        # Skip reference entries
+        if unit_name.endswith("_reference"):
+            continue
+            
         field_cache[unit_name] = {}
         # Pre-resolve all potential field references
         for field_path, field_value in _flatten_dict(unit_data):
@@ -161,6 +172,14 @@ def _resolve_unit_with_cache(unit_data: Any, unit_name: str, field_cache: Dict[s
             # Recursively resolve lists
             return [resolve_value(item, f"{current_path}[{i}]") for i, item in enumerate(value)]
         elif isinstance(value, str):
+            # Special exception: UpgradeFromUnit field should not be resolved as references
+            if current_path.endswith("UpgradeFromUnit") or current_path.endswith("ButtonTexture"):
+                return value
+            
+            # Special exception: if we're inside a list (like Transports), these are unit names, not references
+            if "[" in current_path:
+                return value
+            
             # Check if this string references a unit name
             if value in unit_edits_dict:
                 # Check if we have a precomputed field value
@@ -170,18 +189,17 @@ def _resolve_unit_with_cache(unit_data: Any, unit_name: str, field_cache: Dict[s
                 
                 referenced_value = unit_edits_dict[value]
                 
-                # Get the current field name from the path
-                current_field = current_path.split(".")[-1] if "." in current_path else current_path
+                # Strict field resolution: extract the specific field from the referenced unit
+                if isinstance(referenced_value, dict):
+                    # Extract the field using the current path
+                    extracted_value = _extract_field_value(referenced_value, current_path)
+                    if extracted_value is not None:
+                        logger.debug(f"Resolving field reference '{value}.{current_path}' for path '{current_path}'")
+                        return extracted_value
                 
-                # If the referenced value is a dict and contains the same field name,
-                # extract just that field value instead of the entire dict
-                if isinstance(referenced_value, dict) and current_field in referenced_value:
-                    logger.debug(f"Resolving field reference '{value}.{current_field}' for path '{current_path}'")
-                    return referenced_value[current_field]
-                else:
-                    # Fallback to returning the entire referenced value
-                    logger.debug(f"Resolving reference '{value}' for path '{current_path}'")
-                    return referenced_value
+                # No fallback - if we can't find the field, raise an error
+                logger.error(f"Failed to resolve field reference '{value}' for path '{current_path}' - field not found in referenced unit")
+                raise ValueError(f"Field '{current_path}' not found in referenced unit '{value}'")
             else:
                 # String doesn't reference a unit, return as-is
                 return value
@@ -189,81 +207,10 @@ def _resolve_unit_with_cache(unit_data: Any, unit_name: str, field_cache: Dict[s
             # Non-string value, return as-is
             return value
     
-    return resolve_value(unit_data, unit_name)
+    return resolve_value(unit_data, "")
 
 
-def resolve_unit_edit_references(unit_edits_dict: Dict) -> Dict:
-    """
-    Recursively resolve shared/borrowed values in unit edits dictionary.
-    
-    This function traverses the unit edits dictionary and replaces any string values
-    that reference unit names with the actual values from those units.
-    
-    Args:
-        unit_edits_dict: Dictionary with unit names as keys
-        
-    Returns:
-        Dictionary with all string references resolved to actual values
-        
-    Example:
-        Input:
-        {
-            "Infantry_armor_reference": {"armor": {"front": (None, "ResistanceFamily_infanterieWA")}},
-            "Rifles_LAW_US": {"armor": "Infantry_armor_reference"},
-        }
-        
-        Output:
-        {
-            "Infantry_armor_reference": {"armor": {"front": (None, "ResistanceFamily_infanterieWA")}},
-            "Rifles_LAW_US": {"armor": {"front": (None, "ResistanceFamily_infanterieWA")}},
-        }
-    """
-    # Create a mapping of unit names to their data for quick lookup
-    unit_name_to_data = {}
-    for unit_name, unit_data in unit_edits_dict.items():
-        unit_name_to_data[unit_name] = unit_data
-    
-    def resolve_value(value: Any, current_path: str = "") -> Any:
-        """Recursively resolve a value, handling nested dictionaries and lists."""
-        if isinstance(value, dict):
-            # Recursively resolve nested dictionaries
-            resolved = {}
-            for k, v in value.items():
-                resolved[k] = resolve_value(v, f"{current_path}.{k}" if current_path else k)
-            return resolved
-        elif isinstance(value, list):
-            # Recursively resolve lists
-            return [resolve_value(item, f"{current_path}[{i}]") for i, item in enumerate(value)]
-        elif isinstance(value, str):
-            # Check if this string references a unit name
-            if value in unit_name_to_data:
-                referenced_value = unit_name_to_data[value]
-                
-                # Get the current field name from the path
-                current_field = current_path.split(".")[-1] if "." in current_path else current_path
-                
-                # If the referenced value is a dict and contains the same field name,
-                # extract just that field value instead of the entire dict
-                if isinstance(referenced_value, dict) and current_field in referenced_value:
-                    logger.debug(f"Resolving field reference '{value}.{current_field}' for path '{current_path}'")
-                    return referenced_value[current_field]
-                else:
-                    # Fallback to returning the entire referenced value
-                    logger.debug(f"Resolving reference '{value}' for path '{current_path}'")
-                    return referenced_value
-            else:
-                # String doesn't reference a unit, return as-is
-                return value
-        else:
-            # Non-string value, return as-is
-            return value
-    
-    # Process each entry in the dictionary
-    resolved_dict = {}
-    for unit_name, unit_data in unit_edits_dict.items():
-        resolved_dict[unit_name] = resolve_value(unit_data, unit_name)
-    
-    return resolved_dict
+
 
 
 def resolve_unit_edit_references_optimized(unit_edits_dict: Dict) -> Dict:
@@ -341,6 +288,8 @@ def load_unit_edits() -> Dict:
     logger.info("Resolving shared values in unit edits dictionaries...")
     merged_edits = resolve_unit_edit_references_optimized(merged_edits)
     logger.info("Successfully resolved unit edit references")
+    with open("merged_edits.json", "w") as f:
+        json.dump(merged_edits, f, indent=4)
 
     return merged_edits
 

@@ -7,7 +7,7 @@ from src.utils.logging_utils import setup_logger
 logger = setup_logger(__name__)
 
 
-def edit_userinterface_weapontraits(source_path) -> None:
+def edit_gen_ui_weapontraits(source_path) -> None:
     """GameData/Generated/UserInterface/WeaponTraits.ndf"""
     logger.info("Editing weapon traits")
 

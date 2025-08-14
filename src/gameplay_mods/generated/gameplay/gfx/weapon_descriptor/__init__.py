@@ -1,5 +1,5 @@
-from .weapondescriptor import edit_gfx_weapondescriptor
+from .weapondescriptor import edit_gen_gp_gfx_weapondescriptor
 
 __all__ = [
-    'edit_gfx_weapondescriptor',
+    'edit_gen_gp_gfx_weapondescriptor',
 ]

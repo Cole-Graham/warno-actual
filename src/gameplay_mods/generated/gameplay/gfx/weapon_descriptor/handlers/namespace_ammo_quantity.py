@@ -1,6 +1,6 @@
 from typing import Any, Dict
 
-from src.constants.weapons.ammunition import ammunitions
+from src.constants.weapons import ammunitions
 from src.constants.new_units import NEW_UNITS
 from src.constants.unit_edits import load_unit_edits
 

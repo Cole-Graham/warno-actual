@@ -12,11 +12,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "Arme": {
                 "Index": 24,
             },
+            "hit_roll": {
+                "Idling": 70,
+            },
             "parent_membr": {
                 "MaximalSpeedGRU": 739,
-                "hit_roll": {
-                    "Idling": 70,
-                },
             },
         },
         "SupplyCost": 115.0,
@@ -30,11 +30,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("AGM_HOT1", "ATGM", None, False): {
         "Ammunition": {
+            "hit_roll": {
+                "Idling": 65,
+            },
             "parent_membr": {
                 "MaximalSpeedGRU": 739,
-                "hit_roll": {
-                    "Idling": 65,
-                },
             },
         },
         "SupplyCost": 90.0,

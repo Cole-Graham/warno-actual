@@ -2,12 +2,12 @@
 
 from src.constants.generated.gameplay.decks import divs_not_released
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import ModConfig
+from src import ModConfig
 
 logger = setup_logger(__name__)
 
 
-def edit_decks_divisions(source_path) -> None:
+def edit_gen_gp_decks_divisions(source_path) -> None:
     """GameData/Generated/Gameplay/Decks/Divisions.ndf"""
 
     config = ModConfig.get_instance()

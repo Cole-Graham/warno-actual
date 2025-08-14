@@ -1,7 +1,6 @@
 """UI style modules."""
 
 from .common import (
-    edit_buckspecificbackgrounds,
     edit_buckspecificbuttons,
     edit_buckspecifichint,
     edit_colors,
@@ -12,7 +11,7 @@ from .common import (
     edit_uispecificunitbuttonview,
     edit_uiwarningpanel,
 )
-from .default import edit_defaultstyleguides, edit_defaulttextformatscript
+from .default import edit_defaultstyleguides
 from .ingame import (
     edit_orderdisplay,
     edit_uiingamebuckcubeaction,
@@ -60,7 +59,6 @@ __all__ = [
     'edit_commontextures',
     'edit_textstyles',
     'edit_uicommonflarelabelresources',
-    'edit_buckspecificbackgrounds',
     'edit_buckspecificbuttons',
     'edit_uispecificchatview',
     'edit_buckspecifichint',
@@ -68,7 +66,6 @@ __all__ = [
     'edit_uiwarningpanel',
     # Default
     'edit_defaultstyleguides',
-    'edit_defaulttextformatscript',
     # Ingame
     'edit_orderdisplay',
     'edit_uiingamebuckcubeaction',
