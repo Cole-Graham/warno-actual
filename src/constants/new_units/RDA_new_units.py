@@ -63,6 +63,11 @@ RDA_NEW_UNITS = {
         ],
         "MenuIconTexture": "Texture_RTS_H_CMD_inf",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Inf",
+        "Decks": {
+            "packs": {
+                "rename": True, 
+            },
+        },
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -115,6 +120,11 @@ RDA_NEW_UNITS = {
             '_amphibie',
             '_resolute',
         ],
+        "Decks": {
+            "packs": {
+                "rename": True, 
+            },
+        },
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -235,6 +245,11 @@ RDA_NEW_UNITS = {
                 'leader_sov',
                 '_resolute',
             ],
+        "Decks": {
+            "packs": {
+                "rename": True, 
+            },
+        },
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -299,6 +314,11 @@ RDA_NEW_UNITS = {
                 '_resolute',
                 '_smoke_launcher',
             ],
+        "Decks": {
+            "packs": {
+                "rename": True, 
+            },
+        },
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -362,6 +382,11 @@ RDA_NEW_UNITS = {
             '_resolute',
             '_smoke_launcher',
         ],
+        # "Decks": {
+        #     "packs": {
+        #         "rename": True, 
+        #     },
+        # },
         # "Divisions": {
         #     "default": {
         #         "cards": 1,

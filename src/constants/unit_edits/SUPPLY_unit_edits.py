@@ -203,7 +203,7 @@ supply_unit_edits = {
         "SupplyDescriptor": "PrimarySupply",
         "availability": [2, 0, 0, 0],
     },
-    "M812_Supply_US": {
+    "M812_supply_US": {
         "SupplyCapacity": 2000.0,
         "CommandPoints": 65,
         "Divisions": {

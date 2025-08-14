@@ -2,133 +2,76 @@
 
 from typing import Callable, Dict, List
 
-# Import all gameplay editors
-from src.gameplay import (
-    add_radio_tag_to_mortars,
-    add_swift_capacity,
-    apply_default_salves,
-    bomb_damage_standards,
-    change_fire_descriptors,
-    create_veh_showroom_depictions,
-    deck_ap_points,
-    edit_aim_times,
-    edit_capacities,
-    edit_conditions,
-    edit_damage_levels,
-    edit_fire_descriptors,
-    edit_he_damage,
-    edit_identify_rules,
-    edit_mg_teams,
-    edit_smoke_duration,
-    edit_weapon_ranges,
-    edit_weapon_traits,
-    global_bomber_edits,
-    mg_team_division_rules,
-    modify_deck_packs,
-    modify_decks,
-    new_deck_packs,
-    supply_divisionrules,
-    supply_divisions,
-    temp_fix_reco_radar,
-    ui_gameplay_textscripts,
-    unit_edits_cadavre_descriptor,
-    unit_edits_divisionrules,
-    update_deck_pack_references,
-    update_weapondescr_ammoname_quantity,
-    vanilla_renames_weapondescriptor,
+# New import structure
+from .gameplay_mods import (
+    # .gameplay
+    edit_gameplay_constantes_gdconstants,
+    edit_gameplay_constantes_ravitaillement,
+    edit_gameplay_constantes_weaponconstantes,
+    edit_gameplay_terrains,
+    edit_gameplay_unit_airplanecritical,
+    edit_gameplay_unit_groundunitcritical,
+    edit_gameplay_unit_helicocritical,
+    edit_gameplay_unit_infanteriecritical,
+    edit_gameplay_unit_team,
+    edit_gameplay_unit_templatecritical,
+    edit_gameplay_unit_testunitscritical,
+    # .generated
+    edit_gen_gp_decks,
+    edit_gen_gp_decks_deckpacks,
+    edit_gen_gp_decks_deckserializer,
+    edit_gen_gp_decks_divisioncostmatrix,
+    edit_gen_gp_decks_divisionrules,
+    edit_gen_gp_decks_divisions,
+    edit_gen_gp_gfx_ammunition,
+    edit_gen_gp_gfx_ammunitionmissiles,
+    edit_gen_gp_gfx_missiledescriptors,
+    edit_gen_gp_gfx_buildingdescriptors,
+    edit_gen_gp_gfx_capacitelist,
+    edit_gen_gp_gfx_conditionsdescriptor,
+    edit_gen_gp_gfx_damagelevels,
+    edit_gen_gp_gfx_damageresistance,
+    edit_gen_gp_gfx_damageresistancefamilylist,
+    edit_gen_gp_gfx_damageresistancefamilylistimpl,
+    edit_gen_gp_gfx_depictionaerialghosts,
+    edit_gen_gp_gfx_depictionaerialunits,
+    edit_gen_gp_gfx_depictionalternatives,
+    edit_gen_gp_gfx_depictionghosts,
+    edit_gen_gp_gfx_depictionhumans,
+    edit_gen_gp_gfx_depictioninfantry,
+    edit_gen_gp_gfx_depictionvehicles,
+    edit_gen_gp_gfx_depictionvehiclesshowroom,
+    edit_gen_gp_gfx_missilecarriage,
+    edit_gen_gp_gfx_missilecarriagedepiction,
+    edit_gen_gp_gfx_effetssurunite,
+    edit_gen_gp_gfx_experiencelevels,
+    edit_gen_gp_gfx_firedescriptor,
+    edit_gen_gp_gfx_orderavailabilitytactic,
+    edit_gen_gp_gfx_showroomunits,
+    edit_gen_gp_gfx_smokedescriptor,
+    edit_gen_gp_gfx_unitedescriptor,
+    edit_gen_gp_gfx_weapondescriptor,
+    edit_gen_ui_buttontexturesunites,
+    edit_gen_ui_divisiontextures,
+    edit_gen_ui_minimapicons,
+    edit_gen_ui_specialityicontextures,
+    edit_gen_ui_unitspecialties,
+    edit_gen_ui_weapontextures,
+    edit_gen_ui_weapontraits,
+    edit_gen_ui_weaponsminmax,
+    # .userinterface
+    edit_ui_ingame_useingametextures,
+    edit_ui_ingame_uispecificunitinfopanelview,
+    edit_ui_style_defaulttextformatscript,
 )
-from src.gameplay.buildings import edit_fob_attributes
-from src.gameplay.depictions import (
-    create_aerial_ghost_depictions,
-    create_alternatives_depictions,
-    create_button_textures,
-    create_cadavre_depictions,
-    create_ghost_depictions,
-    create_infantry_depictions,
-    create_showroom_depictions,
-    create_veh_depictions,
-    create_veh_human_depictions,
-    edit_infantry_depictions,
-    edit_showroom_units,
-    unit_edits_depictionaerial,
-    unit_edits_depictioninfantry,
-    unit_edits_depictionvehicles,
-    unit_edits_missilecarriage,
-    unit_edits_missilecarriagedepiction,
-)
-from src.gameplay.divisions import (
-    add_division_rules,
-    add_to_divisions,
-    create_division_packs,
-    edit_division_matrices,
-    edit_division_units,
-    update_deck_serializer,
-)
-from src.gameplay.effects import (
-    edit_capacite_list,
-    edit_critical_effects,
-    edit_shock_effects,
-    edit_shock_units,
-)
-from src.gameplay.game_constants import (
-    edit_gd_constants,
-    edit_orders,
-    edit_ravitaillement,
-)
-from src.gameplay.terrains import edit_terrains
-
-# Add new import
-from src.gameplay.ui import (
-    edit_division_emblems,
-    edit_ingame_icons,
-    edit_specialties,
-    edit_specialty_icons,
-    edit_unit_info_panel,
-    edit_weaponsminmax,
-    edit_weapontextures,
-    hide_divisions_decks_ndf,
-    hide_divisions_deckserializer_ndf,
-    hide_divisions_divisions_ndf,
-)
-from src.gameplay.unit_descriptor import (
-    create_new_units,
-    edit_antirad_optics,
-    edit_auto_cover,
-    edit_forward_deploy,
-    edit_infantry_armor_wa,
-    edit_team_supply,
-    edit_units,
-)
-from src.gameplay.veterancy.vet_bonuses import (
-    edit_veterancy_effects,
-    edit_veterancy_hints,
-    write_veterancy_tokens,
-)
-from src.gameplay.weapons.ammunition import edit_ammunition
-from src.gameplay.weapons.damage_families import (
-    add_damage_families_to_impl,
-    add_damage_families_to_list,
-    add_damage_resistance_values,
-    apply_damage_families,
-    apply_damage_family_edits,
-    edit_infantry_armor,
-    edit_weapon_constantes,
-)
-from src.gameplay.weapons.missiles import edit_missile_speed, edit_missiles
-from src.gameplay.weapons.new_weapons import create_new_weapons
-from src.gameplay.weapons.unit_edits import unit_edits_weapondescriptor
-from src.shared import get_shared_editors
-from src.shared.buildings.fob import add_fob_minimap_module, add_fob_minimap_texture
 
 # Import all UI editors
-from src.ui.style import (
-    edit_buckspecificbackgrounds,
+from src.ui_mods.style import (
     edit_buckspecificbuttons,
     edit_buckspecifichint,
     edit_colors,
     edit_commontextures,
     edit_defaultstyleguides,
-    edit_defaulttextformatscript,
     edit_orderdisplay,
     edit_textstyles,
     edit_uicommonflarelabelresources,
@@ -169,6 +112,113 @@ from src.ui.style import (
     edit_uispecificoutgamerecoverloginview,
     edit_uispecificoutgamerecoverpasswordview,
 )
+__all__ = [
+    # gameplay_mods.gameplay
+    'edit_gameplay_constantes_gdconstants',
+    'edit_gameplay_constantes_ravitaillement',
+    'edit_gameplay_constantes_weaponconstantes',
+    'edit_gameplay_terrains',
+    'edit_gameplay_unit_airplanecritical',
+    'edit_gameplay_unit_groundunitcritical',
+    'edit_gameplay_unit_helicocritical',
+    'edit_gameplay_unit_infanteriecritical',
+    'edit_gameplay_unit_team',
+    'edit_gameplay_unit_templatecritical',
+    'edit_gameplay_unit_testunitscritical',
+    # gameplay_mods.generated
+    'edit_gen_gp_decks',
+    'edit_gen_gp_decks_deckpacks',
+    'edit_gen_gp_decks_deckserializer',
+    'edit_gen_gp_decks_divisioncostmatrix',
+    'edit_gen_gp_decks_divisionrules',
+    'edit_gen_gp_decks_divisions',
+    'edit_gen_gp_gfx_ammunition',
+    'edit_gen_gp_gfx_ammunitionmissiles',
+    'edit_gen_gp_gfx_missiledescriptors',
+    'edit_gen_gp_gfx_buildingdescriptors',
+    'edit_gen_gp_gfx_capacitelist',
+    'edit_gen_gp_gfx_conditionsdescriptor',
+    'edit_gen_gp_gfx_damagelevels',
+    'edit_gen_gp_gfx_damageresistance',
+    'edit_gen_gp_gfx_damageresistancefamilylist',
+    'edit_gen_gp_gfx_damageresistancefamilylistimpl',
+    'edit_gen_gp_gfx_depictionaerialghosts',
+    'edit_gen_gp_gfx_depictionaerialunits',
+    'edit_gen_gp_gfx_depictionalternatives',
+    'edit_gen_gp_gfx_depictionghosts',
+    'edit_gen_gp_gfx_depictionhumans',
+    'edit_gen_gp_gfx_depictioninfantry',
+    'edit_gen_gp_gfx_depictionvehicles',
+    'edit_gen_gp_gfx_depictionvehiclesshowroom',
+    'edit_gen_gp_gfx_missilecarriage',
+    'edit_gen_gp_gfx_missilecarriagedepiction',
+    'edit_gen_gp_gfx_effetssurunite',
+    'edit_gen_gp_gfx_experiencelevels',
+    'edit_gen_gp_gfx_firedescriptor',
+    'edit_gen_gp_gfx_orderavailabilitytactic',
+    'edit_gen_gp_gfx_showroomunits',
+    'edit_gen_gp_gfx_smokedescriptor',
+    'edit_gen_gp_gfx_unitedescriptor',
+    'edit_gen_gp_gfx_weapondescriptor',
+    'edit_gen_ui_buttontexturesunites',
+    'edit_gen_ui_divisiontextures',
+    'edit_gen_ui_minimapicons',
+    'edit_gen_ui_specialityicontextures',
+    'edit_gen_ui_unitspecialties',
+    'edit_gen_ui_weapontextures',
+    'edit_gen_ui_weapontraits',
+    'edit_gen_ui_weaponsminmax',
+    # gameplay_mods.userinterface
+    'edit_ui_ingame_useingametextures',
+    'edit_ui_ingame_uispecificunitinfopanelview',
+    'edit_ui_style_defaulttextformatscript',
+    # .ui_mods
+    'edit_buckspecificbuttons',
+    'edit_buckspecifichint',
+    'edit_colors',
+    'edit_commontextures',
+    'edit_defaultstyleguides',
+    'edit_orderdisplay',
+    'edit_textstyles',
+    'edit_uicommonflarelabelresources',
+    'edit_uiingamebuckcubeaction',
+    'edit_uiingamebuckengagementrules',
+    'edit_uiingamedefaultcontainer',
+    'edit_uiingamehudreplayresource',
+    'edit_uiingamelaunchbattlebuttonresources',
+    'edit_uiingameminimap',
+    'edit_uiingameresources',
+    'edit_uispecificchatview',
+    'edit_uispecifichudalertpanelview',
+    'edit_uispecifichudmultiselectionpanelview',
+    'edit_uispecifichudscoreview',
+    'edit_uispecificingamehudtimepanelview',
+    'edit_uispecificingameidleunitview',
+    'edit_uispecificingameplayermissionlabelresources',
+    'edit_uispecificminimapinfoview',
+    'edit_uispecificoffmapairplaneview',
+    'edit_uispecificoffmapview',
+    'edit_uispecificshortcutsforselectionview',
+    'edit_uispecificshowroomarmorycomponent',
+    'edit_uispecificshowroomdeckcreatorscreencomponent',
+    'edit_uispecificshowroomgroupsdeckcreatorscreenview',
+    'edit_uispecificskirmishproductionmenuview',
+    'edit_uispecificunitbuttonview',
+    'edit_uispecificunitlabelaggregationview',
+    'edit_uispecificunitlabelcommon',
+    'edit_uispecificunitlabelmultiselectionview',
+    'edit_uispecificunitlabelview',
+    'edit_uispecificunitlabelviewnameonly',
+    'edit_uispecificunitselectionpanelview',
+    'edit_uispecificunitselectionweaponpanelview',
+    'edit_uispecificsmartgroupselectionpanelview',
+    'edit_uiwarningpanel',
+    'edit_useoutgametextures',
+    'edit_uispecificloginview',
+    'edit_uispecificoutgamerecoverloginview',
+    'edit_uispecificoutgamerecoverpasswordview',
+]
+
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
@@ -182,184 +232,155 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
     editors = {
         # Core gameplay mechanics
         "GameData/Gameplay/Constantes/GDConstants.ndf": [
-            (edit_gd_constants, "gameplay"),
+            (edit_gameplay_constantes_gdconstants, "gameplay"),
         ],
         "GameData/Gameplay/Constantes/Ravitaillement.ndf": [
-            (edit_ravitaillement, "gameplay"),
+            (edit_gameplay_constantes_ravitaillement, "gameplay"),
         ],
         "GameData/Gameplay/Constantes/WeaponConstantes.ndf": [
-            (edit_weapon_constantes, "gameplay"),
+            (edit_gameplay_constantes_weaponconstantes, "gameplay"),
         ],
         "GameData/Gameplay/Terrains/Terrains.ndf": [
-            (edit_terrains, "gameplay"),
+            (edit_gameplay_terrains, "gameplay"),
         ],
         "GameData/Gameplay/Unit/Tactic/Team.ndf": [
-            (edit_team_supply, "gameplay"),
+            (edit_gameplay_unit_team, "gameplay"),
+        ],
+        # Critical effect modules
+        "GameData/Gameplay/Unit/CriticalModules/CriticalEffectModule_Airplane.ndf": [
+            (edit_gameplay_unit_airplanecritical, "gameplay"),
+        ],
+        "GameData/Gameplay/Unit/CriticalModules/CriticalEffectModule_GroundUnit.ndf": [
+            (edit_gameplay_unit_groundunitcritical, "gameplay"),
+        ],
+        "GameData/Gameplay/Unit/CriticalModules/CriticalEffectModule_Helico.ndf": [
+            (edit_gameplay_unit_helicocritical, "gameplay"),
+        ],
+        "GameData/Gameplay/Unit/CriticalModules/CriticalEffectModule_Infanterie.ndf": [
+            (edit_gameplay_unit_infanteriecritical, "gameplay"),
         ],
         "GameData/Gameplay/Unit/CriticalModules/TemplateCriticalEffectModules.ndf": [
-            (edit_critical_effects, "gameplay"),
+            (edit_gameplay_unit_templatecritical, "gameplay"),
+        ],
+        "GameData/Gameplay/Unit/CriticalModules/CriticalEffectModule_TestUnits.ndf": [
+            (edit_gameplay_unit_testunitscritical, "gameplay"),
         ],
         # Division and deck files
         "GameData/Generated/Gameplay/Decks/DeckSerializer.ndf": [
-            (update_deck_serializer, "gameplay"),
-            (hide_divisions_deckserializer_ndf, "gameplay"),
+            (edit_gen_gp_decks_deckserializer, "gameplay"),
         ],
         "GameData/Generated/Gameplay/Decks/Divisions.ndf": [
-            # add_to_divisions,
-            # edit_division_units,
-            # supply_divisions,
-            (deck_ap_points, "gameplay"),
-            (hide_divisions_divisions_ndf, "gameplay"),
+            (edit_gen_gp_decks_divisions, "gameplay"),
         ],
         "GameData/Generated/Gameplay/Decks/DivisionRules.ndf": [
-            (add_division_rules, "gameplay"),
-            (unit_edits_divisionrules, "gameplay"),
-            (supply_divisionrules, "gameplay"),
-            (lambda source_path: mg_team_division_rules(source_path, game_db), "gameplay"),
+            (lambda source_path: edit_gen_gp_decks_divisionrules(source_path, game_db), "gameplay"),
         ],
         "GameData/Generated/Gameplay/Decks/DeckPacks.ndf": [
-            (lambda source_path: modify_deck_packs(source_path, game_db), "gameplay"),
-            (new_deck_packs, "gameplay"),
+            (lambda source_path: edit_gen_gp_decks_deckpacks(source_path, game_db), "gameplay"),
         ],
         "GameData/Generated/Gameplay/Decks/Decks.ndf": [
-            (lambda source_path: update_deck_pack_references(source_path, game_db), "gameplay"),
-            (lambda source_path: modify_decks(source_path, game_db), "gameplay"),
-            (hide_divisions_decks_ndf, "gameplay"),
+            (lambda source_path: edit_gen_gp_decks(source_path, game_db), "gameplay"),
+            # TODO: Confirm if this is deprecated, not from main refactor but from a previous refactor of this specific task
+            # (edit_deck_pack_lists, "gameplay"),
         ],
-        # "GameData/Generated/Gameplay/Decks/DivisionPacks.ndf": [
-        #     create_division_packs,
-        # ],
         "GameData/Generated/Gameplay/Decks/DivisionCostMatrix.ndf": [
-            (edit_division_matrices, "gameplay"),
+            (lambda source_path: edit_gen_gp_decks_divisioncostmatrix(source_path), "gameplay"),
         ],
         # Damage system
         "GameData/Generated/Gameplay/Gfx/DamageResistance.ndf": [
-            (apply_damage_family_edits, "gameplay"),  # todo: this needs to be applied first, but it should be written better not to (or at least give a warning in logs)
-            (add_damage_resistance_values, "gameplay"),
-            (edit_infantry_armor, "gameplay"),
+            # TODO: Make sure damage family edits are applied first, but it should be written better not to (or at least give a warning in logs)
+            (edit_gen_gp_gfx_damageresistance, "gameplay"),
         ],
         "GameData/Generated/Gameplay/Gfx/DamageResistanceFamilyList.ndf": [
-            (add_damage_families_to_list, "gameplay"),
+            (edit_gen_gp_gfx_damageresistancefamilylist, "gameplay"),
         ],
         "GameData/Generated/Gameplay/Gfx/DamageResistanceFamilyListImpl.ndf": [
-            (add_damage_families_to_impl, "gameplay"),
+            (edit_gen_gp_gfx_damageresistancefamilylistimpl, "gameplay"),
         ],
         # Unit and weapon files
         "GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf": [
             # Create new units first, before editing donors used to create them.
-            
             # TODO: Confirm Eugen properly fixed this
             # lambda source_path: temp_fix_reco_radar(source_path, game_db),
-            
             # TODO: Add back TypeUnitFormation to constants for new units and/or unit edits. Eugen removed it from
             # the TTypeUnitModuleDescriptor module and I thought it was just completely removed. But its now in its own
             # TFormationModuleDescriptor module, so we have to find out what the constants were that I removed.
-            (lambda source_path: create_new_units(source_path, game_db), "gameplay"),
-            (lambda source_path: edit_units(source_path, game_db), "gameplay"),
-            (lambda source_path: edit_auto_cover(source_path, game_db), "gameplay"),
-            (edit_antirad_optics, "gameplay"),
-            (edit_forward_deploy, "gameplay"),
-            (edit_infantry_armor_wa, "gameplay"),
-            (lambda source_path: edit_shock_units(source_path, game_db), "gameplay"),
-            (lambda source_path: edit_mg_teams(source_path, game_db), "gameplay"),
-            (lambda source_path: global_bomber_edits(source_path, game_db), "gameplay"),
-            (lambda source_path: add_radio_tag_to_mortars(source_path, game_db), "gameplay"),
-            (add_swift_capacity, "gameplay"),
-            (edit_capacities, "gameplay"),
-            (edit_identify_rules, "gameplay"),
+            (lambda source_path: edit_gen_gp_gfx_unitedescriptor(source_path, game_db), "gameplay"),
         ],
         "GameData/Generated/Gameplay/Gfx/Ammunition.ndf": [
-            (lambda source_path: edit_ammunition(source_path, game_db), "gameplay"),
-            (lambda source_path: apply_damage_families(source_path, game_db), "gameplay"),
-            (lambda source_path: edit_he_damage(source_path, game_db), "gameplay"),
-            (edit_aim_times, "gameplay"),
-            (edit_weapon_ranges, "gameplay"),
-            (bomb_damage_standards, "gameplay"),
-            (change_fire_descriptors, "gameplay"),
+            (lambda source_path: edit_gen_gp_gfx_ammunition(source_path, game_db), "gameplay"),
         ],
         "GameData/Generated/Gameplay/Gfx/AmmunitionMissiles.ndf": [
-            (lambda source_path: edit_missiles(source_path, game_db), "gameplay"),
-            (bomb_damage_standards, "gameplay"),
+            (lambda source_path: edit_gen_gp_gfx_ammunitionmissiles(source_path, game_db), "gameplay"),
         ],
         "GameData/Generated/Gameplay/Gfx/WeaponDescriptor.ndf": [
-            (lambda source_path: vanilla_renames_weapondescriptor(source_path, game_db), "gameplay"),
-            (lambda source_path: create_new_weapons(source_path, game_db), "gameplay"),
-            (lambda source_path: unit_edits_weapondescriptor(source_path, game_db), "gameplay"),
-            (lambda source_path: apply_default_salves(source_path, game_db), "gameplay"),
-            (lambda source_path: update_weapondescr_ammoname_quantity(source_path, game_db), "gameplay"),
+            (lambda source_path: edit_gen_gp_gfx_weapondescriptor(source_path, game_db), "gameplay"),
         ],
         "GameData/Generated/Gameplay/Gfx/MissileDescriptors.ndf": [
-            (lambda source_path: edit_missile_speed(source_path, game_db), "gameplay"),
+            (lambda source_path: edit_gen_gp_gfx_missiledescriptors(source_path, game_db), "gameplay"),
         ],
         "GameData/Generated/Gameplay/Gfx/FireDescriptor.ndf": [
-            (edit_fire_descriptors, "gameplay"),
+            (edit_gen_gp_gfx_firedescriptor, "gameplay"),
         ],
         "GameData/Generated/Gameplay/Gfx/OrderAvailability_Tactic.ndf": [
-            (lambda source_path: edit_orders(source_path, game_db), "gameplay"),
+            (lambda source_path: edit_gen_gp_gfx_orderavailabilitytactic(source_path, game_db), "gameplay"),
         ],
         "GameData/Generated/Gameplay/Gfx/SmokeDescriptor.ndf": [
-            (edit_smoke_duration, "gameplay"),
+            (edit_gen_gp_gfx_smokedescriptor, "gameplay"),
         ],
         "GameData/Generated/Gameplay/Gfx/BuildingDescriptors.ndf": [
-            (edit_fob_attributes, "gameplay"),
-            # TODO: Ask Eugen to add this to vanilla or allow for some texture editing exceptions for UI mods
-            (add_fob_minimap_module, "gameplay"),
+            (edit_gen_gp_gfx_buildingdescriptors, "gameplay"),
         ],
         "GameData/Generated/Gameplay/Gfx/DamageLevels.ndf": [
-            (edit_damage_levels, "gameplay"),
+            (edit_gen_gp_gfx_damagelevels, "gameplay"),
         ],
         # Effects and veterancy
         "GameData/Generated/Gameplay/Gfx/CapaciteList.ndf": [
-            (edit_capacite_list, "gameplay"),
+            (edit_gen_gp_gfx_capacitelist, "gameplay"),
         ],
         "GameData/Generated/Gameplay/Gfx/EffetsSurUnite.ndf": [
-            (edit_shock_effects, "gameplay"),  # todo: this should be renamed to more generic effects editing function
-            (edit_veterancy_effects, "gameplay"),
+            (edit_gen_gp_gfx_effetssurunite, "gameplay"),
         ],
         "GameData/Generated/Gameplay/Gfx/ConditionsDescriptor.ndf": [
-            (edit_conditions, "gameplay"),
+            (edit_gen_gp_gfx_conditionsdescriptor, "gameplay"),
         ],
         "GameData/Generated/Gameplay/Gfx/ExperienceLevels.ndf": [
-            (edit_veterancy_hints, "gameplay"),
+            (edit_gen_gp_gfx_experiencelevels, "gameplay"),
         ],
         # Depiction files
         "GameData/Generated/Gameplay/Gfx/Depictions/DepictionAerialUnits.ndf": [
-            (unit_edits_depictionaerial, "gameplay"),
+            (edit_gen_gp_gfx_depictionaerialunits, "gameplay"),
         ],
         "GameData/Generated/Gameplay/Gfx/MissileCarriage.ndf": [
-            (unit_edits_missilecarriage, "gameplay"),
+            (edit_gen_gp_gfx_missilecarriage, "gameplay"),
         ],
         "GameData/Generated/Gameplay/Gfx/MissileCarriageDepiction.ndf": [
-            (unit_edits_missilecarriagedepiction, "gameplay"),
+            (edit_gen_gp_gfx_missilecarriagedepiction, "gameplay"),
         ],
         "GameData/Generated/Gameplay/Gfx/ShowRoomUnits.ndf": [
-            (edit_showroom_units, "gameplay"),
-            (create_showroom_depictions, "gameplay"),
+            (edit_gen_gp_gfx_showroomunits, "gameplay"),
         ],
         # "GameData/Generated/Gameplay/Gfx/UniteCadavreDescriptor.ndf": [
         #     unit_edits_cadavre_descriptor,
         #     create_cadavre_depictions,
         # ],
         "GameData/Generated/Gameplay/Gfx/Depictions/DepictionAlternatives.ndf": [
-            (create_alternatives_depictions, "gameplay"),
+            (edit_gen_gp_gfx_depictionalternatives, "gameplay"),
         ],
         "GameData/Generated/Gameplay/Gfx/Depictions/DepictionGhosts.ndf": [
-            (create_ghost_depictions, "gameplay"),
+            (edit_gen_gp_gfx_depictionghosts, "gameplay"),
         ],
         "GameData/Generated/Gameplay/Gfx/Depictions/DepictionAerialGhosts.ndf": [
-            (create_aerial_ghost_depictions, "gameplay"),
+            (edit_gen_gp_gfx_depictionaerialghosts, "gameplay"),
         ],
         "GameData/Generated/Gameplay/Gfx/Depictions/DepictionHumans.ndf": [
-            (create_veh_human_depictions, "gameplay"),
+            (edit_gen_gp_gfx_depictionhumans, "gameplay"),
         ],
         "GameData/Generated/Gameplay/Gfx/Depictions/DepictionVehicles.ndf": [
-            (create_veh_depictions, "gameplay"),
-            (unit_edits_depictionvehicles, "gameplay"),
+            (edit_gen_gp_gfx_depictionvehicles, "gameplay"),
         ],
         "GameData/Generated/Gameplay/Gfx/Infanterie/DepictionInfantry.ndf": [
-            (lambda source_path: edit_infantry_depictions(source_path, game_db), "gameplay"),
-            (lambda source_path: create_infantry_depictions(source_path, game_db), "gameplay"),
-            (unit_edits_depictioninfantry, "gameplay"),
+            (lambda source_path: edit_gen_gp_gfx_depictioninfantry(source_path, game_db), "gameplay"),
         ],
         # UI files
         # Style files
@@ -373,24 +394,23 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
             (edit_defaultstyleguides, "ui"),
         ],
         "GameData/UserInterface/Style/DefaultStyle/DefaultTextFormatScript.ndf": [
-            (edit_defaulttextformatscript, "ui"),
-            (ui_gameplay_textscripts, "gameplay"),
+            (edit_ui_style_defaulttextformatscript, "gameplay"),
         ],
         # Texture files
         "GameData/Generated/UserInterface/Textures/ButtonTexturesUnites.ndf": [
-            (create_button_textures, "gameplay"),
+            (edit_gen_ui_buttontexturesunites, "gameplay"),
         ],
         "GameData/Generated/UserInterface/Textures/SpecialityIconTextures.ndf": [
-            (edit_specialty_icons, "gameplay"),
+            (edit_gen_ui_specialityicontextures, "gameplay"),
         ],
         "GameData/Generated/UserInterface/Textures/DivisionTextures.ndf": [
-            (edit_division_emblems, "gameplay"),
+            (edit_gen_ui_divisiontextures, "gameplay"),
         ],
         "GameData/UserInterface/Use/InGame/UseInGameTextures.ndf": [
-            (edit_ingame_icons, "gameplay"),
+            (edit_ui_ingame_useingametextures, "gameplay"),
         ],
         "GameData/Generated/UserInterface/Textures/MinimapIcons.ndf": [
-            (add_fob_minimap_texture, "gameplay"),
+            (edit_gen_ui_minimapicons, "gameplay"),
         ],
         # Common UI templates and components
         # Not sure if this is needed or was ever needed, temporarily disabled.
@@ -471,7 +491,7 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
             (edit_uispecificskirmishproductionmenuview, "ui"),
         ],
         "GameData/UserInterface/Use/InGame/UISpecificUnitInfoPanelView.ndf": [
-            (edit_unit_info_panel, "gameplay"),
+            (edit_ui_ingame_uispecificunitinfopanelview, "gameplay"),
         ],
         "GameData/UserInterface/Use/InGame/UISpecificUnitLabelAggregationView.ndf": [
             (edit_uispecificunitlabelaggregationview, "ui"),
@@ -525,37 +545,25 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         ],
         # Generated UI files
         "GameData/Generated/UserInterface/Textures/WeaponTextures.ndf": [
-            (edit_weapontextures, "gameplay"),
+            (edit_gen_ui_weapontextures, "gameplay"),
         ],
         "GameData/Generated/UserInterface/WeaponsMinMax.ndf": [
-            (edit_weaponsminmax, "gameplay"),
+            (edit_gen_ui_weaponsminmax, "gameplay"),
         ],
         "GameData/Generated/UserInterface/UnitSpecialties.ndf": [
-            (edit_specialties, "gameplay"),
+            (edit_gen_ui_unitspecialties, "gameplay"),
         ],
         "GameData/Generated/UserInterface/WeaponTraits.ndf": [
-            (edit_weapon_traits, "gameplay"),
+            (edit_gen_ui_weapontraits, "gameplay"),
         ],
         # Depiction files
         "GameData/Generated/Gameplay/Gfx/Depictions/DepictionVehiclesShowRoom.ndf": [
-            (lambda source_path: create_veh_showroom_depictions(source_path), "gameplay"),  # Maybe unnecessary
+            (edit_gen_gp_gfx_depictionvehiclesshowroom, "gameplay"),
         ],
         # UI files
         "GameData/UserInterface/Use/InGame/UIInGameResources.ndf": [
             (edit_uiingameresources, "ui"),
         ],
     }
-
-    # We can leave the shared editors commented out for now if they're causing duplicates
-    # shared_editors = get_shared_editors()
-    # for path, editor_list in shared_editors.items():
-    #     if path in editors:
-    #         editors[path].extend(editor_list)
-    #     else:
-    #         editors[path] = editor_list
-
-    # Write dictionary entries for veterancy bonuses
-    if build_target == "gameplay":
-        write_veterancy_tokens()
 
     return editors

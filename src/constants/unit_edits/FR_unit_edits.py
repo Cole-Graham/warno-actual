@@ -246,26 +246,26 @@ fr_unit_edits = {
     "VLTT_P4_FR": {
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
     
     "TRM_2000_FR": {
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
     
     "VLRA_trans_FR": {
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
     "TRM_10000_FR": {
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
     
@@ -413,6 +413,51 @@ fr_unit_edits = {
         },
     },
     
+    "HMGteam_AANF1_FR": {
+        "CommandPoints": "HMGteam_M60_US",
+        "strength": "HMGteam_M60_US",
+        "max_speed": "HMGteam_M60_US",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_M60_US",
+        },
+    },
+    
+    "HMGteam_AANF1_Reserve_FR": {
+        "CommandPoints": "HMGteam_M60_NG_US",
+        "strength": "HMGteam_M60_NG_US",
+        "max_speed": "HMGteam_M60_NG_US",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_M60_NG_US",
+        },
+    },
+    
+    "HMGteam_AANF1_para_FR": {
+        "CommandPoints": "HMGteam_M60_AB_US",
+        "strength": "HMGteam_M60_AB_US",
+        "max_speed": "HMGteam_M60_AB_US",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_M60_AB_US",
+        },
+    },
+    
+    "HMGteam_M2HB_RIMa_FR": {
+        "CommandPoints": "HMGteam_M2HB_US",
+        "strength": "HMGteam_M2HB_US",
+        "max_speed": "HMGteam_M2HB_US",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_M2HB_US",
+        },
+    },
+    
+    "HMGteam_M2HB_para_FR": {
+        "CommandPoints": "HMGteam_M2HB_AB_US",
+        "strength": "HMGteam_M2HB_AB_US",
+        "max_speed": "HMGteam_M2HB_AB_US",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_M2HB_AB_US",
+        },
+    },
+    
     "ATteam_Milan_1_FR": {
         "CommandPoints": 30,
         "max_speed": 20,
@@ -551,19 +596,19 @@ fr_unit_edits = {
     "AMX_13_VCI_12_7mm_FR": {
         "CommandPoints": 15,
         "armor": {
-            "front": 2,
-            "sides": 1,
+            "front": (2, None),
+            "sides": (1, None),
         },
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
     
     "AMX_13_VCI_20mm_FR": {
         "CommandPoints": 30,
         "armor": {
-            "front": 2,
-            "sides": 1,
+            "front": (2, None),
+            "sides": (1, None),
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -758,7 +803,7 @@ fr_unit_edits = {
     "Super_Puma_FR": {
         "CommandPoints": 50,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
     
@@ -768,18 +813,18 @@ fr_unit_edits = {
     
     "Gazelle_HOT_FR": {
         "CommandPoints": 70,   
-        "availability": [0, 6, 4, 0],
+        "availability": [0, 6, 0, 0],
     },
     
     "Gazelle_HOT_2_FR": {
-        "CommandPoints": 85,
+        "CommandPoints": 90,
         "availability": [0, 0, 4, 3],
     },
 
     "Alouette_III_FR": {
         "CommandPoints": 35,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
     #FR AIR
@@ -803,7 +848,7 @@ fr_unit_edits = {
         "availability": [0, 3, 2, 0],
     },
     
-    "Jaguar_SEAD_FR": {
+    "Jaguar_SEAD_FR": { # Martel 5250m
         "CommandPoints": 150,
         "Divisions": {
             "default": {
@@ -813,9 +858,38 @@ fr_unit_edits = {
                 "cards": 2,
             },
         },
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 10000.0,
+            },
+            "OpticalStrengths": {
+                "EOpticalStrength/AntiRadar": 5000.0,
+            },
+        },
         "availability": [0, 2, 0, 1],
     },
     
+    "Jaguar_SEAD2_FR": { # Armat 5775mm
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 10000.0,
+            },
+            "OpticalStrengths": {
+                "EOpticalStrength/AntiRadar": 5000.0,
+            },
+        },
+    },
+    
+    "Mirage_IV_SEAD_FR": { # Martel 5250m
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 10000.0,
+            },
+            "OpticalStrengths": {
+                "EOpticalStrength/AntiRadar": 5000.0,
+            },
+        },
+    },
     "Mirage_III_E_FR": {
         "CommandPoints": 115,
         "strength": 10,

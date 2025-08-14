@@ -56,6 +56,15 @@ RFA_NEW_UNITS = {
             "default": {
                 "cards": 2,
             },
+            "RFA_2_PzGrenadier_multi": {
+                "Transports": ["Iltis_trans_RFA", "TPZ_Fuchs_1_RFA", "TPZ_Fuchs_MILAN_RFA"],
+            },
+            "RFA_5_Panzer_multi": {
+                "Transports": ["Iltis_trans_RFA", "TPZ_Fuchs_1_RFA", "TPZ_Fuchs_MILAN_RFA"],
+            },
+            "RFA_TerrKdo_Sud_multi": {
+                "Transports": ["Iltis_trans_RFA"],
+            },
             "US_11ACR_multi": {
                 "Transports": ["Iltis_trans_RFA", "Marder_1A3_RFA", "Marder_1A3_MILAN_RFA"],
                 "cards": 1,  # + 1 card TACOM

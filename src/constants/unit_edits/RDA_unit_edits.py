@@ -212,11 +212,12 @@ rda_unit_edits = {
     },
 
     "HMGteam_AGS17_DDR": {
+        "CommandPoints": "HMGteam_AGS17_SOV",
         "GameName": {
             "display": "Gr-MG 30mm",
         },
-        "strength": 5,
-        "CommandPoints": 35,
+        "strength": "HMGteam_AGS17_SOV",
+        "max_speed": "HMGteam_AGS17_SOV",
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -226,9 +227,8 @@ rda_unit_edits = {
             },
         },
         "availability": [0, 9, 7, 0],
-        "max_speed": 14,
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_veryheavy'"],
+            "add_specs": "HMGteam_AGS17_SOV",
         },
     },
     
@@ -399,14 +399,35 @@ rda_unit_edits = {
     },
 
     "HMGteam_PKM_DDR": {
+        "CommandPoints": "HMGteam_M60_US",
         "GameName": {
             "display": "PKM 7.62mm",
+        },
+        "strength": "HMGteam_M60_US",
+        "max_speed": "HMGteam_M60_US",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_M60_US",
         },
     },
 
     "HMGteam_PKM_FJ_DDR": {
+        "CommandPoints": "HMGteam_M60_AB_US",
         "GameName": {
             "display": "Fs-PKM 7.62mm",
+        },
+        "strength": "HMGteam_M60_AB_US",
+        "max_speed": "HMGteam_M60_AB_US",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_M60_AB_US",
+        },
+    },
+    
+    "HMGteam_NSV_DDR": {
+        "CommandPoints": "HMGteam_M2HB_US",
+        "strength": "HMGteam_M2HB_US",
+        "max_speed": "HMGteam_M2HB_US",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_M2HB_US",
         },
     },
 
@@ -462,28 +483,28 @@ rda_unit_edits = {
     "UAZ_469_trans_DDR": {
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
     "W50_LA_A_DDR": {
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
     "M35_trans_DDR": {
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
     "T813_trans_DDR": {
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
@@ -673,7 +694,7 @@ rda_unit_edits = {
             "add_orders": ["sell"],
         },
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
@@ -682,7 +703,7 @@ rda_unit_edits = {
             "add_orders": ["sell"],
         },
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
@@ -691,7 +712,7 @@ rda_unit_edits = {
             "add_orders": ["sell"],
         },
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
@@ -984,7 +1005,7 @@ rda_unit_edits = {
     "Mi_2_trans_DDR": {
         "CommandPoints": 35,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
@@ -1001,7 +1022,7 @@ rda_unit_edits = {
     "Mi_8T_non_arme_DDR": {
         "CommandPoints": 50,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
@@ -1155,7 +1176,7 @@ rda_unit_edits = {
         "availability": [0, 2, 0, 0],
     },
 
-    "Su_22_SEAD_DDR": {
+    "Su_22_SEAD_DDR": { # Kh-28 5425m
         "CommandPoints": 195,
         "WeaponDescriptor": {
             "turrets": {
@@ -1164,6 +1185,14 @@ rda_unit_edits = {
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },
+            },
+        },
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 10000.0,
+            },
+            "OpticalStrengths": {
+                "EOpticalStrength/AntiRadar": 5000.0,
             },
         },
         "availability": [0, 2, 0, 1],

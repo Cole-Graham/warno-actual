@@ -97,3 +97,31 @@ class ConfigLoader:
         """Get the write_dev setting."""
         build_config = self.get("build_config", {})
         return build_config.get("write_dev", False)
+
+
+def load_config(config_path: str = None) -> dict:
+    """Load configuration from the specified path or default location.
+    
+    Args:
+        config_path (str, optional): Path to config file. If None, uses default location.
+        
+    Returns:
+        dict: The loaded configuration data
+    """
+    if config_path is None:
+        # Look for config file in common locations
+        possible_paths = [
+            "config/config.YAML",
+            "config/config.yaml", 
+            "config/config.yml"
+        ]
+        
+        for path in possible_paths:
+            if Path(path).exists():
+                config_path = path
+                break
+        else:
+            raise FileNotFoundError("No configuration file found. Please create config/config.YAML")
+    
+    loader = ConfigLoader(config_path)
+    return loader.load()

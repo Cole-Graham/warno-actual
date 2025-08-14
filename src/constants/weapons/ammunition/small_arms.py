@@ -1109,58 +1109,72 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("MMG_team_7_62mm_MG3", "small_arms", None, False): {
+    ("MMG_M240d_7_62mm", "small_arms", None, False): {
+        "is_standard": (True, "7_62mm_MMG_Helo"),
         "Ammunition": {
-            "parent_membr": {
-                "TimeBetweenTwoShots": 0.1,
-                "PhysicalDamages": 0.16,
-                "SuppressDamages": 48,
-                "DisplaySalveAccuracy": False,
-                "TimeBetweenTwoSalvos": 3.6,
-                "NbTirParSalves": 10,
-                "AffichageMunitionParSalve": 50,
-                "SupplyCost": 4.0,
+            "hit_roll": {
+                "Idling": 30,
             },
-        },
-        "WeaponDescriptor": {
-            "Salves": 40,
-        },
-    },
-    
-    ("MMG_MG3_7_62mm", "small_arms", None, False): {
-        "Ammunition": {
             "parent_membr": {
-                "TimeBetweenTwoShots": 0.1,
+                "MaximumRangeGRU": 1050,
+                "MaximumRangeHelicopterGRU": 875,
                 "PhysicalDamages": 0.08,
                 "SuppressDamages": 24,
-                "DisplaySalveAccuracy": False,
-                "TimeBetweenTwoSalvos": 3.6,
-                "NbTirParSalves": 10,
-                "AffichageMunitionParSalve": 50,
-                "SupplyCost": 4.0,
-            },
+                "AimingTime": 1.0,
+                "TimeBetweenTwoSalvos": 2.0,
+                "NbTirParSalves": 7,
+                "AffichageMunitionParSalve": 35,
+            }
         },
-        "WeaponDescriptor": {
-            "Salves": 28,
-        },
+        "SupplyCost": 1.0,
     },
     
+    ("MMG_FN_MAG_7_62mm_Helo", "small_arms", None, False): {
+        "Ammunition": {
+            "hit_roll": "MMG_M240d_7_62mm",
+            "parent_membr": "MMG_M240d_7_62mm",
+        },
+        "SupplyCost": "MMG_M240d_7_62mm",
+    },
+        
     ("MMG_MG3_7_62mm_helo", "small_arms", None, False): {
         "Ammunition": {
-            "parent_membr": {
-                "TimeBetweenTwoShots": 0.1,
-                "PhysicalDamages": 0.08,
-                "SuppressDamages": 24,
-                "DisplaySalveAccuracy": False,
-                "TimeBetweenTwoSalvos": 3.6,
-                "NbTirParSalves": 10,
-                "AffichageMunitionParSalve": 50,
-                "SupplyCost": 4.0,
-            },
+            "hit_roll": "MMG_M240d_7_62mm",
+            "parent_membr": "MMG_M240d_7_62mm",
         },
-        "WeaponDescriptor": {
-            "Salves": 28,
+        "SupplyCost": "MMG_M240d_7_62mm",
+    },
+    
+    ("MMG_MG3S_7_62mm", "small_arms", None, False): {
+        "Ammunition": {
+            "hit_roll": "MMG_M240d_7_62mm",
+            "parent_membr": "MMG_M240d_7_62mm",
         },
+        "SupplyCost": "MMG_M240d_7_62mm",
+    },
+    
+    ("MMG_HK21_7_62mm", "small_arms", None, False): {
+        "Ammunition": {
+            "hit_roll": "MMG_M240d_7_62mm",
+            "parent_membr": "MMG_M240d_7_62mm",
+        },
+        "SupplyCost": "MMG_M240d_7_62mm",
+    },
+    
+    ("MMG_M60_7_62mm_helo", "small_arms", None, False): {
+        "Ammunition": {
+            "hit_roll": "MMG_M240d_7_62mm",
+            "parent_membr": "MMG_M240d_7_62mm",
+        },
+        "SupplyCost": "MMG_M240d_7_62mm",
+    },
+    
+    ("MMG_MG42_7_62mm_helo", "small_arms", None, False): {
+        "Ammunition": {
+            "hit_roll": "MMG_M240d_7_62mm",
+            "parent_membr": "MMG_M240d_7_62mm",
+        },
+        "SupplyCost": "MMG_M240d_7_62mm",
     },
 
     ("MMG_WA_M60E3_7_62mm", "small_arms", None, False): {  # 469
@@ -1195,11 +1209,82 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("MMG_team_7_62mm_FN_MAG", "small_arms", None, False): {
+        "Ammunition": {
+            "is_standard": (True, "7_62mm_MMG_Team"),
+            "Arme": {
+                "Family": "DamageFamily_sa_full",
+            },
+            "hit_roll": {
+                "Idling": 35,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 1050,
+                "PhysicalDamages": 0.16,
+                "SuppressDamages": 48,
+                "TimeBetweenTwoSalvos": 2.0,
+                "NbTirParSalves": 5,
+                "SupplyCost": 2.0,
+                "AffichageMunitionParSalve": 25,
+            },
+        },
+        "NbWeapons": [1],
+    },
+    
+    ("MMG_team_7_62mm_AANF1", "small_arms", None, False): {
+        "Ammunition": {
+            "Arme": "MMG_team_7_62mm_FN_MAG",
+            "hit_roll": "MMG_team_7_62mm_FN_MAG",
+            "parent_membr": "MMG_team_7_62mm_FN_MAG",
+        },
+        "NbWeapons": "MMG_team_7_62mm_FN_MAG",
+    },
+    
+    ("MMG_team_7_62mm_M1919", "small_arms", None, False): {
+        "Ammunition": {
+            "Arme": "MMG_team_7_62mm_FN_MAG",
+            "hit_roll": "MMG_team_7_62mm_FN_MAG",
+            "parent_membr": "MMG_team_7_62mm_FN_MAG",
+        },
+        "NbWeapons": "MMG_team_7_62mm_FN_MAG",
+    },
+    
     ("MMG_team_7_62mm_M60", "small_arms", None, False): { # 469
         "Ammunition": {
             "display": "M60E3",
             "token": "IYUAMGSZZJ", 
+            "Arme": "MMG_team_7_62mm_FN_MAG",
+            "hit_roll": "MMG_team_7_62mm_FN_MAG",
+            "parent_membr": "MMG_team_7_62mm_FN_MAG",
         },
+        "NbWeapons": "MMG_team_7_62mm_FN_MAG",
+    },
+    
+    ("MMG_team_7_62mm_MG3", "small_arms", None, False): {
+        "Ammunition": {
+            "Arme": "MMG_team_7_62mm_FN_MAG",
+            "hit_roll": "MMG_team_7_62mm_FN_MAG",
+            "parent_membr": "MMG_team_7_62mm_FN_MAG",
+        },
+        "NbWeapons": "MMG_team_7_62mm_FN_MAG",
+    },
+    
+    ("MMG_team_7_62mm_MG42_59", "small_arms", None, False): {
+        "Ammunition": {
+            "Arme": "MMG_team_7_62mm_FN_MAG",
+            "hit_roll": "MMG_team_7_62mm_FN_MAG",
+            "parent_membr": "MMG_team_7_62mm_FN_MAG",
+        },
+        "NbWeapons": "MMG_team_7_62mm_FN_MAG",
+    },
+    
+    ("MMG_team_7_62mm_PKM", "small_arms", None, False): {
+        "Ammunition": {
+            "Arme": "MMG_team_7_62mm_FN_MAG",
+            "hit_roll": "MMG_team_7_62mm_FN_MAG",
+            "parent_membr": "MMG_team_7_62mm_FN_MAG",
+        },
+        "NbWeapons": "MMG_team_7_62mm_FN_MAG",
     },
     
     ("MMG_inf_AANF1_7_62mm", "small_arms", None, False): {
@@ -1262,147 +1347,172 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("MMG_M240_abrams_7_62mm", "small_arms", None, False): { # coax sheridan, coax abrams, abrams turret
+    ("MMG_M240_7_62mm", "small_arms", None, False): {
+        "is_standard": (True, "7_62mm_MMG_Coax"), 
         "Ammunition": {
             "hit_roll": {
                 "Idling": 45,
                 "Moving": 30,
             },
-        },
-    },
-    # ("MMG_M240_7_62mm", "small_arms", None, False): {  # 466
-    #     "Ammunition": {
-    #         "hit_roll": {
-    #             "Idling": 40,
-    #             "Moving": 25,
-    #         },
-    #         "parent_membr": {
-    #             "TimeBetweenTwoShots": 1.0,
-    #             "TimeBetweenTwoFx": 1.0,
-    #             "MaximumRangeGRU": 1050,
-    #             "MaximumRangeHelicopterGRU": 875,
-    #             "PhysicalDamages": 0.08,
-    #             "SuppressDamages": 24,
-    #             "DisplaySalveAccuracy": False,
-    #             "AimingTime": 2.0,
-    #             "TimeBetweenTwoSalvos": 1.4,
-    #             "NbTirParSalves": 4,
-    #             "AffichageMunitionParSalve": 20,
-    #         },
-    #     },
-    #     "SupplyCost": 1.0,
-    #     "NbWeapons": [1],
-    #     "WeaponDescriptor": {
-    #         "Salves": 45,
-    #     },
-    # },
-    
-    ("MMG_M1919", "small_arms", None, False): {
-        "Ammunition": {
-            "hit_roll": {
-                "Idling": 40,
-                "Moving": 25,
-            },
             "parent_membr": {
-                "TimeBetweenTwoShots": 0.2,
-                "TimeBetweenTwoFx": 0.2,
                 "MaximumRangeGRU": 1050,
-                "MaximumRangeHelicopterGRU": 875,
                 "PhysicalDamages": 0.08,
                 "SuppressDamages": 24,
-                "DisplaySalveAccuracy": False,
-                "AimingTime": 2.0,
                 "TimeBetweenTwoSalvos": 2.0,
                 "NbTirParSalves": 5,
-                "AffichageMunitionParSalve": 25,
+                "AffichageMunitionParSalve": 25, 
             },
         },
-        "SupplyCost": 1.0,
         "NbWeapons": [1],
-        "WeaponDescriptor": {
-            "Salves": 20,
-        },
-    },
-    
-    ("MMG_L94A1_7_62mm", "small_arms", None, False): { # Warrior coax
-        "Ammunition": {
-            "hit_roll": {
-                "Idling": 45,
-                "Moving": 15,
-            },
-            "parent_membr": {
-                "TimeBetweenTwoShots": 0.2,
-                "TimeBetweenTwoFx": 0.2,
-                "MaximumRangeGRU": 1050,
-                "MaximumRangeHelicopterGRU": 875,
-                "PhysicalDamages": 0.08,
-                "SuppressDamages": 24,
-                "DisplaySalveAccuracy": False,
-                "AimingTime": 2.0,
-                "TimeBetweenTwoSalvos": 2.0,
-                "NbTirParSalves": 5,
-                "AffichageMunitionParSalve": 25,
-            },
-        },
         "SupplyCost": 1.0,
-        "NbWeapons": [1],
-        "WeaponDescriptor": {
-            "Salves": 48,
-        },
     },
     
     ("MMG_L8A2_7_62mm", "small_arms", None, False): { # challenger coax
         "Ammunition": {
+            "hit_roll": "MMG_M240_7_62mm",
+            "parent_membr": "MMG_M240_7_62mm",
+        },
+        "SupplyCost": "MMG_M240_7_62mm",
+        "NbWeapons": "MMG_M240_7_62mm"
+    },
+    
+    ("MMG_L94A1_7_62mm", "small_arms", None, False): { # Warrior coax
+        "Ammunition": {
+            "hit_roll": "MMG_M240_7_62mm",
+            "parent_membr": "MMG_M240_7_62mm",
+        },
+        "SupplyCost": "MMG_M240_7_62mm",
+        "NbWeapons": "MMG_M240_7_62mm",
+    },
+    
+    ("MMG_L43A1_7_62mm", "small_arms", None, False): {
+        "Ammunition": {
+            "hit_roll": "MMG_M240_7_62mm",
+            "parent_membr": "MMG_M240_7_62mm",
+        },
+        "SupplyCost": "MMG_M240_7_62mm",
+        "NbWeapons": "MMG_M240_7_62mm",
+    },
+    
+    ("MMG_DTM_7_62mm", "small_arms", None, False): {
+        "Ammunition": {
+            "hit_roll": "MMG_M240_7_62mm",
+            "parent_membr": "MMG_M240_7_62mm",
+        },
+        "SupplyCost": "MMG_M240_7_62mm",
+        "NbWeapons": "MMG_M240_7_62mm",
+    },
+    
+    ("MMG_M60_7_62mm_coax", "small_arms", None, False): {
+        "Ammunition": {
+            "hit_roll": "MMG_M240_7_62mm",
+            "parent_membr": "MMG_M240_7_62mm",
+        },
+        "SupplyCost": "MMG_M240_7_62mm",
+        "NbWeapons": "MMG_M240_7_62mm",
+    },
+    
+    ("MMG_M240_abrams_7_62mm", "small_arms", None, False): {
+        "is_standard": (True, "7_62mm_MMG_Turret"),
+        "Ammunition": {
             "hit_roll": {
-                "Idling": 45,
-                "Moving": 30,
+                "Idling": 35,
             },
             "parent_membr": {
-                "TimeBetweenTwoShots": 0.2,
-                "TimeBetweenTwoFx": 0.2,
                 "MaximumRangeGRU": 1050,
                 "MaximumRangeHelicopterGRU": 875,
                 "PhysicalDamages": 0.08,
                 "SuppressDamages": 24,
-                "DisplaySalveAccuracy": False,
-                "AimingTime": 2.0,
                 "TimeBetweenTwoSalvos": 2.0,
                 "NbTirParSalves": 5,
                 "AffichageMunitionParSalve": 25,
-            },
+            }
         },
         "SupplyCost": 1.0,
         "NbWeapons": [1],
-        "WeaponDescriptor": {
-            "Salves": 48,
+    },
+    
+    ("MMG_PKT_7_62mm", "small_arms", None, False): {
+        "Ammunition": {
+            "hit_roll": "MMG_M240_abrams_7_62mm",
+            "parent_membr": "MMG_M240_abrams_7_62mm",
         },
+        "SupplyCost": "MMG_M240_abrams_7_62mm",
+        "NbWeapons": "MMG_M240_abrams_7_62mm",
+    },
+    
+    ("MMG_SGMB_7_62mm", "small_arms", None, False): {
+        "Ammunition": {
+            "hit_roll": "MMG_M240_abrams_7_62mm",
+            "parent_membr": "MMG_M240_abrams_7_62mm",
+        },
+        "SupplyCost": "MMG_M240_abrams_7_62mm",
+        "NbWeapons": "MMG_M240_abrams_7_62mm",
+    },
+    
+    
+    
+    ("MMG_M60_7_62mm_veh", "small_arms", None, False): {
+        "Ammunition": {
+            "hit_roll": "MMG_M240_abrams_7_62mm",
+            "parent_membr": "MMG_M240_abrams_7_62mm",
+        },
+        "SupplyCost": "MMG_M240_abrams_7_62mm",
+        "NbWeapons": "MMG_M240_abrams_7_62mm",
+    },
+    
+    ("MMG_M60D_7_62mm", "small_arms", None, False): {
+        "Ammunition": {
+            "hit_roll": "MMG_M240_abrams_7_62mm",
+            "parent_membr": "MMG_M240_abrams_7_62mm",
+        },
+        "SupplyCost": "MMG_M240_abrams_7_62mm",
+        "NbWeapons": "MMG_M240_abrams_7_62mm",
+    },
+    
+    ("MMG_FN_MAG_7_62mm", "small_arms", None, False): { # Eugen using this as turret and coax
+        "Ammunition": {
+            "hit_roll": "MMG_M240_abrams_7_62mm",
+            "parent_membr": "MMG_M240_abrams_7_62mm",
+        },
+        "SupplyCost": "MMG_M240_abrams_7_62mm",
+        "NbWeapons": "MMG_M240_abrams_7_62mm",
     },
     
     ("MMG_L37A2_7_62mm", "small_arms", None, False): { # Saxon, chieftain turret
         "Ammunition": {
-            "hit_roll": {
-                "Idling": 35,
-                "Moving": 15,
-            },
-            "parent_membr": {
-                "TimeBetweenTwoShots": 0.2,
-                "TimeBetweenTwoFx": 0.2,
-                "MaximumRangeGRU": 1050,
-                "MaximumRangeHelicopterGRU": 875,
-                "PhysicalDamages": 0.08,
-                "SuppressDamages": 24,
-                "DisplaySalveAccuracy": False,
-                "AimingTime": 2.0,
-                "TimeBetweenTwoSalvos": 2.0,
-                "NbTirParSalves": 5,
-                "AffichageMunitionParSalve": 25,
-            },
+            "hit_roll": "MMG_M240_abrams_7_62mm",
+            "parent_membr": "MMG_M240_abrams_7_62mm",
         },
-        "SupplyCost": 1.0,
-        "NbWeapons": [1],
-        "WeaponDescriptor": {
-            "Salves": 45,
+        "SupplyCost": "MMG_M240_abrams_7_62mm",
+        "NbWeapons": "MMG_M240_abrams_7_62mm",
+    },
+    
+    ("MMG_MG3_7_62mm", "small_arms", None, False): {
+        "Ammunition": {
+            "hit_roll": "MMG_M240_abrams_7_62mm",
+            "parent_membr": "MMG_M240_abrams_7_62mm",
         },
+        "SupplyCost": "MMG_M240_abrams_7_62mm",
+        "NbWeapons": "MMG_M240_abrams_7_62mm",
+    },
+    
+    ("MMG_AANF1_7_62mm", "small_arms", None, False): {
+        "Ammunition": {
+            "hit_roll": "MMG_M240_abrams_7_62mm",
+            "parent_membr": "MMG_M240_abrams_7_62mm",
+        },
+        "SupplyCost": "MMG_M240_abrams_7_62mm",
+        "NbWeapons": "MMG_M240_abrams_7_62mm",
+    },
+    
+    ("MMG_M1919", "small_arms", None, False): {
+        "Ammunition": {
+            "hit_roll": "MMG_M240_abrams_7_62mm",
+            "parent_membr": "MMG_M240_abrams_7_62mm",
+        },
+        "SupplyCost": "MMG_M240_abrams_7_62mm",
+        "NbWeapons": "MMG_M240_abrams_7_62mm",
     },
     
     ("Lance_grenade_Mk19_40mm", "AGL", None, False): {  # 451
@@ -1459,7 +1569,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("HMG_team_12_7_mm_NSV_6U6", "small_arms", None, False): {  # 356
+    ("HMG_team_12_7_mm_NSV_6U6", "small_arms", None, False): {
+        "is_standard": (True, "DCA_12_7mm_HMG_Team"),
         "Ammunition": {
             "Arme": {
                 "Family": "DamageFamily_12_7",
@@ -1468,6 +1579,64 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeHelicopterGRU": 1225,
             },
         },
+        "NbWeapons": [1],
+    },
+    
+    ("HMG_team_12_7_mm_M2HB_M63", "small_arms", None, False): {
+        "Ammunition": {
+            "Arme": "HMG_team_12_7_mm_NSV_6U6",
+            "parent_membr": "HMG_team_12_7_mm_NSV_6U6",
+        },
+        "NbWeapons": "HMG_team_12_7_mm_NSV_6U6",
+    },
+    
+    ("HMG_team_12_7_mm_DSh_AA", "small_arms", None, False): {
+        "Ammunition": {
+            "Arme": "HMG_team_12_7_mm_NSV_6U6",
+            "parent_membr": "HMG_team_12_7_mm_NSV_6U6",
+        },
+        "NbWeapons": "HMG_team_12_7_mm_NSV_6U6",
+    },
+    
+    ("HMG_team_12_7_mm_M2HB", "small_arms", None, False): {
+        "is_standard": (True, "12_7mm_HMG_Team"), 
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_12_7",
+            },
+            "hit_roll": {
+                "Idling": 35,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 1225,
+                "MaximumRangeHelicopterGRU": 1050,
+                "PhysicalDamages": 0.28,
+                "SuppressDamages": 84,
+                "TimeBetweenTwoSalvos": 2.4,
+                "NbTirParSalves": 5,
+                "SupplyCost": 3.0,
+                "AffichageMunitionParSalve": 25,
+            },
+        },
+        "NbWeapons": [1],
+    },
+    
+    ("HMG_team_12_7_mm_DSh", "small_arms", None, False): {
+        "Ammunition": {
+            "Arme": "HMG_team_12_7_mm_M2HB",
+            "hit_roll": "HMG_team_12_7_mm_M2HB",
+            "parent_membr": "HMG_team_12_7_mm_M2HB",
+        },
+        "NbWeapons": "HMG_team_12_7_mm_M2HB",
+    },
+    
+    ("HMG_team_12_7_mm_NSV", "small_arms", None, False): {
+        "Ammunition": {
+            "Arme": "HMG_team_12_7_mm_M2HB",
+            "hit_roll": "HMG_team_12_7_mm_M2HB",
+            "parent_membr": "HMG_team_12_7_mm_M2HB",
+        },
+        "NbWeapons": "HMG_team_12_7_mm_M2HB",
     },
 
     ("HMG_14_5_mm_KPVT", "small_arms", None, False): {  # 353
@@ -1495,11 +1664,26 @@ weapons: Dict[WeaponKey, WeaponData] = {
     },
     
     ("HMG_12_7_mm_M2HB", "small_arms", None, False): {
+        "is_standard": (True, "12_7mm_HMG_Turret"),
         "Ammunition": {
             "Arme": {
                 "Family": "DamageFamily_12_7",
             },
+            "hit_roll": {
+                "Idling": 35,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 1225,
+                "MaximumRangeHelicopterGRU": 1050,
+                "PhysicalDamages": 0.14,
+                "SuppressDamages": 42,
+                "TimeBetweenTwoSalvos": 2.4,
+                "NbTirParSalves": 5,
+                "SupplyCost": 2.0,
+                "AffichageMunitionParSalve": 25,
+            },
         },
+        "NbWeapons": [1],
     },
     
     ("HMG_12_7_mm_M85", "small_arms", None, False): {
@@ -1520,18 +1704,20 @@ weapons: Dict[WeaponKey, WeaponData] = {
     
     ("HMG_12_7_mm_NSVT", "small_arms", None, False): {
         "Ammunition": {
-            "Arme": {
-                "Family": "DamageFamily_12_7",
-            },
+            "Arme": "HMG_12_7_mm_M2HB",
+            "hit_roll": "HMG_12_7_mm_M2HB",
+            "parent_membr": "HMG_12_7_mm_M2HB",
         },
+        "NbWeapons": "HMG_12_7_mm_M2HB",
     },
     
     ("HMG_12_7_mm_DShKM", "small_arms", None, False): {
         "Ammunition": {
-            "Arme": {
-                "Family": "DamageFamily_12_7",
-            },
+            "Arme": "HMG_12_7_mm_M2HB",
+            "hit_roll": "HMG_12_7_mm_M2HB",
+            "parent_membr": "HMG_12_7_mm_M2HB",
         },
+        "NbWeapons": "HMG_12_7_mm_M2HB",
     },
     
     ("HMG_12_7_mm_Afanasyev", "small_arms", None, False): {

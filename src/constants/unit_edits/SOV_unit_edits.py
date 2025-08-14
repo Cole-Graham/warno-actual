@@ -110,6 +110,86 @@ sov_unit_edits = {
     },
 
     # SOV INF
+    "MotRifles_CMD_SOV": {
+        "CommandPoints": 35,
+        "GameName": {
+            "display": "#LDRSOV MOTOSTRELKI LDR.",
+            # "token": "ZJRMUWLPVH",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_IFV",
+                "UNITE_MotRifles_CMD_SOV",
+                "Unite",
+            ],
+        },
+        "strength": 6,
+        "WeaponAssignment": [
+            (0, [1, ]),
+            (1, [0, ]),
+            (2, [0, ]),
+            (3, [0, ]),
+            (4, [0, 3]),
+            (5, [0, 2]),
+        ],
+        "TransportedTexture": "UseInGame_Transport_REGINF",
+        "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'infantry',
+                'leader_sov',
+                '_ifv',
+                'infantry_equip_light',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Infantry",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+            "SOV_157_Rifle": {
+                "cards": 1,
+            },
+            "SOV_25_Tank": {
+                "cards": 2,
+            },
+            "SOV_39_Gds_Rifle": {
+                "cards": 3,
+            },
+            "SOV_6IndMSBrig": {
+                "cards": 1,
+            },
+            "SOV_79_Gds_Tank": {
+                "cards": 2,
+            },
+        },
+        "availability": [0, 0, 7, 5],
+        "max_speed": 26,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_AK_74": 5,
+                },
+            },
+            "Salves": {
+                "RocketInf_RPG22_72_5mm": 6,
+            },
+        },
+        "selector_tactic": "(0, 6)",
+        "selector_tactic_obj": "00_06",
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+        "remove_zone_capture": None,
+    },
+    
     "MotRifles_CMD_TTsko_SOV": {
         "CommandPoints": 35,
         "GameName": {
@@ -989,22 +1069,49 @@ sov_unit_edits = {
             },
         },
     },
-
-    "HMGteam_PKM_SOV": {
-        "GameName": {
-            "display": "PKM 7.62mm",
+    
+    "HMGteam_Maxim_Reserve_SOV": {
+        "CommandPoints": "HMGteam_M60_NG_US",
+        "strength": "HMGteam_M60_NG_US",
+        "max_speed": "HMGteam_M60_NG_US",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_M60_NG_US",
         },
     },
 
-    "HMGteam_PKM_TTsko_SOV": {
+    "HMGteam_PKM_SOV": {
+        "CommandPoints": "HMGteam_M60_US",
         "GameName": {
             "display": "PKM 7.62mm",
+        },
+        "strength": "HMGteam_M60_US",
+        "max_speed": "HMGteam_M60_US",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_M60_US",
+        },    
+    },
+
+    "HMGteam_PKM_TTsko_SOV": {
+        "CommandPoints": "HMGteam_M60_US",
+        "GameName": {
+            "display": "PKM 7.62mm",
+        },    
+        "strength": "HMGteam_M60_US",
+        "max_speed": "HMGteam_M60_US",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_M60_US",
         },
     },
 
     "HMGteam_PKM_VDV_SOV": {
+        "CommandPoints": "HMGteam_M60_AB_US",
         "GameName": {
             "display": "DESANT. PKM 7.62mm",
+        },
+        "strength": "HMGteam_M60_AB_US",
+        "max_speed": "HMGteam_M60_AB_US",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_M60_AB_US",
         },
     },
 
@@ -1015,45 +1122,77 @@ sov_unit_edits = {
     },
 
     "HMGteam_NSV_SOV": {
+        "CommandPoints": "HMGteam_M2HB_US",
         "GameName": {
             "display": "NSV 12.7mm",
+        },
+        "strength": "HMGteam_M2HB_US",
+        "max_speed": "HMGteam_M2HB_US",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_M2HB_US",
         },
     },
 
     "HMGteam_NSV_TTsko_SOV": {
+        "CommandPoints": "HMGteam_M2HB_US",
         "GameName": {
             "display": "NSV 12.7mm",
+        },
+        "strength": "HMGteam_M2HB_US",
+        "max_speed": "HMGteam_M2HB_US",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_M2HB_US",
         },
     },
 
     "HMGteam_NSV_DShV_SOV": {
+        "CommandPoints": "HMGteam_M2HB_US",
         "GameName": {
             "display": "DSh NSV 12.7mm",
+        },
+        "strength": "HMGteam_M2HB_US",
+        "max_speed": "HMGteam_M2HB_US",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_M2HB_US",
         },
     },
 
     "HMGteam_NSV_VDV_SOV": {
+        "CommandPoints": "HMGteam_M2HB_AB_US",
         "GameName": {
             "display": "DESANT. NSV 12.7mm",
         },
+        "strength": "HMGteam_M2HB_AB_US",
+        "max_speed": "HMGteam_M2HB_AB_US",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_M2HB_AB_US",
+        },
     },
 
-    "HMGteam_NSV_6U6_VDV_SOV": {
+    "HMGteam_NSV_6U6_VDV_SOV": { # Défense Contre Avions
+        "is_standard": (True, "Para_DCA_12_7_HMG_Team"), 
+        "CommandPoints": 25,
         "GameName": {
             "display": "DESANT. 6U6 12.7mm",
+        },
+        "strength": 5,
+        "max_speed": 14,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_veryheavy'"],
         },
     },
 
     "HMGteam_AGS17_SOV": {
-        "strength": 5,
-        "CommandPoints": 35,
+        "is_standard": (True, "30mm_AGS17_Team"), 
+        "CommandPoints": 30,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "availability": [0, 9, 7, 0],
+        "strength": 5,
         "max_speed": 14,
+        "availability": [0, 9, 7, 0],
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_veryheavy'"],
         },
@@ -1061,30 +1200,40 @@ sov_unit_edits = {
     },
 
     "HMGteam_AGS17_TTsko_SOV": {
-        "strength": 5,
-        "CommandPoints": 35,
+        "CommandPoints": "HMGteam_AGS17_SOV",
+        "strength": "HMGteam_AGS17_SOV",
+        "max_speed": "HMGteam_AGS17_SOV",
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
         "availability": [0, 9, 7, 0],
-        "max_speed": 14,
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_veryheavy'"],
+            "add_specs": "HMGteam_AGS17_SOV",
+        },
+    },
+    
+    "HMGteam_AGS17_DShV_SOV": {
+        "CommandPoints": "HMGteam_AGS17_SOV",
+        "strength": "HMGteam_AGS17_SOV",
+        "max_speed": "HMGteam_AGS17_SOV",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_AGS17_SOV",
         },
     },
 
     "HMGteam_AGS17_VDV_SOV": {
+        "is_standard": (True, "Para_30mm_AGS17_Team"), 
+        "CommandPoints": 30,
         "strength": 5,
-        "CommandPoints": 35,
+        "max_speed": 14,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
         "availability": [0, 9, 7, 0],
-        "max_speed": 14,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_veryheavy'"],
         },
@@ -1209,55 +1358,55 @@ sov_unit_edits = {
     "LUAZ_967M_SOV": {
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
     "LUAZ_967M_VDV_SOV": {
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
     "UAZ_469_SOV": {
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
     "UAZ_469_MP_SOV": {
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
     "Ural_4320_trans_SOV": {
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
     "GAZ_66_SOV": {
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
     "GAZ_66B_SOV": {
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
     "KrAZ_255B_SOV": {
         "CommandPoints": 15,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
@@ -1550,7 +1699,7 @@ sov_unit_edits = {
             ],
         },
         "armor": {
-            "front": 18,
+            "front": (18, None),
         },
         "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
@@ -1578,7 +1727,7 @@ sov_unit_edits = {
             "add_orders": ["sell"],
         },
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
@@ -1677,7 +1826,7 @@ sov_unit_edits = {
 
     "T80BV_SOV": {
         "armor": {
-            "front": 18,
+            "front": (18, None),
         },
         "CommandPoints": 210,
         "Divisions": {
@@ -2144,14 +2293,14 @@ sov_unit_edits = {
     "Mi_2_trans_SOV": {
         "CommandPoints": 35,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
     "Mi_8TV_non_arme_SOV": {
         "CommandPoints": 50,
         "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'"],
+            "add_specs": ["'refundable_unit'",],
         },
     },
 
@@ -2316,7 +2465,7 @@ sov_unit_edits = {
         "availability": [0, 2, 0, 1],
     },
 
-    "Su_24MP_EW_SOV": {
+    "Su_24MP_EW_SOV": { # EW
         "CommandPoints": 145,
         "Divisions": {
             "default": {
@@ -2326,8 +2475,16 @@ sov_unit_edits = {
         "availability": [0, 0, 2, 0],
     },
 
-    "Su_24MP_SOV": {  # SEAD
+    "Su_24MP_SOV": {  # Kh-28 5425m
         "CommandPoints": 270,
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 10000.0,
+            },
+            "OpticalStrengths": {
+                "EOpticalStrength/AntiRadar": 5000.0,
+            },
+        },
         "WeaponDescriptor": {
             "turrets": {
                 2: {
@@ -2348,6 +2505,14 @@ sov_unit_edits = {
         "Divisions": {
             "default": {
                 "cards": 1,
+            },
+        },
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 10000.0,
+            },
+            "OpticalStrengths": {
+                "EOpticalStrength/AntiRadar": 5000.0,
             },
         },
         "WeaponDescriptor": {
@@ -2408,6 +2573,28 @@ sov_unit_edits = {
             "add_specs": ["'terrain_radar'"],
         },
         "availability": [0, 2, 0, 0],
+    },
+    
+    "MiG_25BM_SOV": {  # Kh-58U 6300m
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 10000.0,
+            },
+            "OpticalStrengths": {
+                "EOpticalStrength/AntiRadar": 5000.0,
+            },
+        },
+    },
+    
+    "MiG_27M_sead_SOV": {  # Kh-28 5425m
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 10000.0,
+            },
+            "OpticalStrengths": {
+                "EOpticalStrength/AntiRadar": 5000.0,
+            },
+        },
     },
 
     "MiG_27M_bombe_SOV": {  # 4x FAB-500

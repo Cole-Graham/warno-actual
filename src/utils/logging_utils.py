@@ -91,7 +91,7 @@ def cleanup_old_logs(log_dir: Path, keep_count: int = 5):
             for old_log in logs[keep_count:]:
                 try:
                     ensure_file_permissions(old_log)
-                    old_log.unlink()
+                    # old_log.unlink()
                 except (OSError, PermissionError):
                     continue
     except Exception as e:

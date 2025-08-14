@@ -52,6 +52,11 @@ FR_NEW_UNITS = {
         ],
         "MenuIconTexture": "Texture_RTS_H_CMD_inf",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Inf",
+        "Decks": {
+            "packs": {
+                "rename": True, 
+            },
+        },
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -99,6 +104,11 @@ FR_NEW_UNITS = {
         },
         "Factory": "EFactory/Logistic",
         "CommandPoints": 245,
+        "Decks": {
+            "packs": {
+                "rename": True, 
+            },
+        },
         "Divisions": {
             "default": {
                 "cards": 1,
