@@ -23,6 +23,8 @@ AMMUNITION_MISSILES_RENAMES = [
     ("ATGM_9M113_KonkursM", "ATGM_9M113_Konkurs"),
     ("ATGM_9K111M_Fagot_M", "ATGM_9K111M_Faktoriya"),
     ("ATGM_9K111M_Fagot_M_IFV", "ATGM_9K111M_Faktoriya_IFV"),
+    ("ATGM_BGM71D_TOW_2_x2_IFV", "ATGM_BGM71D_TOW_2_IFV_salvolength2"),
+    ("ATGM_BGM71D_TOW_2A_x2_IFV", "ATGM_BGM71D_TOW_2A_IFV_salvolength2"),
     ("AGM_Kh28_X28", "AGM_Kh28"),
     ("SAM_MIM72G", "SAM_MIM72G_salvolength4"),
     ("Javelin_LML", "Javelin_LML_salvolength3"),

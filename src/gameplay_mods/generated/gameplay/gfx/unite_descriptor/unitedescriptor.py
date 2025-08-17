@@ -22,11 +22,12 @@ forward_deploy_new_values = [750.0, 1750.0]
 def edit_gen_gp_gfx_unitedescriptor(source_path, game_db) -> None:
     """GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf"""
 
+    new_units_dic_entries = []
+    _handle_new_units(source_path, game_db, new_units_dic_entries)
+    
     unit_edits = load_unit_edits()
     unit_edits_dic_entries = []
-    new_units_dic_entries = []
     _handle_unit_edits(source_path, game_db, unit_edits, unit_edits_dic_entries)
-    _handle_new_units(source_path, game_db, new_units_dic_entries)
 
     merged_dic_entries = unit_edits_dic_entries + new_units_dic_entries
     write_dictionary_entries(merged_dic_entries, dictionary_type="units")
@@ -64,7 +65,7 @@ def _handle_new_units(source_path, game_db, new_units_dic_entries) -> None:
         new_unit_descr.v.by_m("ClassNameForDebug").v = f"'Unite_{edits['NewName']}'"
 
         modules_list = new_unit_descr.v.by_m("ModulesDescriptors")
-        _handle_modules_list(game_db, new_units_dic_entries, "new_units", donor, unit_name, edits, modules_list)
+        _handle_modules_list(game_db, new_units_dic_entries, "new_units", donor[0], unit_name, edits, modules_list)
         
         source_path.add(new_unit_descr)
         logger.info(f"- Processed new unit {unit_name}")
@@ -106,8 +107,8 @@ def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_nam
         # "TIAStratModuleDescriptor": { "handler": handle_iastrat_module, "args": [] },
         "TCapaciteModuleDescriptor": { "handler": handle_capacite_module, "args": [found_capacite_module] },
         "TProductionModuleDescriptor": { "handler": _handle_production_module, "args": [] },
-        "TZoneInfluenceMapModuleDescriptor": { "handler": _handle_zoneinfluencemap_module, "args": [modules_list] },
-        "TInfluenceScoutModuleDescriptor": { "handler": _handle_influencescout_module, "args": [modules_list] },
+        "TZoneInfluenceMapModuleDescriptor": { "handler": _handle_zoneinfluencemap_module, "args": [] },
+        "TInfluenceScoutModuleDescriptor": { "handler": _handle_influencescout_module, "args": [] },
         # "TAutomaticBehaviorModuleDescriptor": { "handler": handle_automaticbehavior_module, "args": [] },
         "TCubeActionModuleDescriptor": { "handler": _handle_cubeaction_module, "args": [] },
         # "TMinimapDisplayModuleDescriptor": { "handler": handle_minimapdisplay_module, "args": [] },
@@ -115,7 +116,7 @@ def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_nam
         "TOrderableModuleDescriptor": { "handler": _handle_orderable_module, "args": [] },
         "TTacticalLabelModuleDescriptor": { "handler": _handle_tacticallabel_module, "args": [] },
         "TStrategicDataModuleDescriptor": { "handler": _handle_strategicdata_module, "args": [] },
-        "TUnitUIModuleDescriptor": { "handler": handle_unitui_module, "args": [dictionary_entries] },
+        "TUnitUIModuleDescriptor": { "handler": handle_unitui_module, "args": [dictionary_entries, donor] },
         "TShowRoomEquivalenceModuleDescriptor": { "handler": _handle_showroomequivalence_module, "args": [] },
         # "TUnitUpkeepModuleDescriptor": { "handler": handle_unitupkeep_module, "args": [] },
         "TDeploymentShiftModuleDescriptor": { "handler": _handle_deploymentshift_module, "args": [found_zoneinfluence_module] },
@@ -579,26 +580,26 @@ def _handle_deploymentshift_module(logger, game_db, unit_data, edit_type, unit_n
 def _handle_zoneinfluencemap_module(logger, game_db, unit_data, edit_type, unit_name,
                                     edits, module, *args) -> None:
     """Handle TZoneInfluenceMapModuleDescriptor for existing and new units"""
-    modules_list = args[0]
+
     if edit_type == "new_units":
         pass
     
     if edit_type == "unit_edits":
         if "remove_zone_capture" in edits:
-            modules_list.v.remove(module.index)  # noqa
+            module.parent.remove(module.index)  # noqa
             
 
 # TInfluenceScoutModuleDescriptor
 def _handle_influencescout_module(logger, game_db, unit_data, edit_type, unit_name,
                                   edits, module, *args) -> None:
     """Handle TInfluenceScoutModuleDescriptor for existing and new units"""
-    modules_list = args[0]
+
     if edit_type == "new_units":
         pass
     
     if edit_type == "unit_edits":
         if "remove_zone_capture" in edits:
-            modules_list.v.remove(module.index)  # noqa
+            module.parent.remove(module.index)  # noqa
             
 
 # TCubeActionModuleDescriptor

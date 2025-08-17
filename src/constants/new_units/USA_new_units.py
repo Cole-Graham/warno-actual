@@ -47,8 +47,8 @@ USA_NEW_UNITS = {
         "CommandPoints": 145,
         "UnitAttackValue": 1,
         "UnitDefenseValue": 16,
-        "SpecialitiesList": [
-            'hq_inf',
+        "UnitRole": 'hq_inf',
+        "SpecialtiesList": [
             '_leader',
             'infantry_equip_light',
         ],
@@ -161,7 +161,7 @@ USA_NEW_UNITS = {
             },
         },
         "availability": [4, 0, 0, 0],
-        "SpecialitiesList": [
+        "SpecialtiesList": [
             'supply',
             '_supply_squad',
         ],
@@ -231,7 +231,7 @@ USA_NEW_UNITS = {
         },
         "TransportedSoldier": "Cav_Scout_Dragon_M3A1_US",
         "CommandPoints": 20,
-        "SpecialitiesList": [
+        "SpecialtiesList": [
             'reco',
             'infantry_equip_heavy',
         ],
@@ -321,7 +321,7 @@ USA_NEW_UNITS = {
         },
         "TransportedSoldier": "Cav_Scout_Dragon_M3A2_US",
         "CommandPoints": 20,
-        "SpecialitiesList": [
+        "SpecialtiesList": [
             'reco',
             'infantry_equip_heavy',
         ],
@@ -374,7 +374,7 @@ USA_NEW_UNITS = {
     #         ],
     #     },
     #     "CommandPoints": 100,
-    #     "SpecialitiesList": [
+    #     "SpecialtiesList": [
     #             'reco',
     #             '_transport1',
     #             '_ifv',
@@ -434,7 +434,7 @@ USA_NEW_UNITS = {
         "CommandPoints": 60,
         # "UnitAttackValue": 1,
         # "UnitDefenseValue": 16,
-        "SpecialitiesList": [
+        "SpecialtiesList": [
                 'AA',
                 'infantry_equip_heavy',
             ],

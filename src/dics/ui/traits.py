@@ -268,10 +268,9 @@ TRAIT_EDITS = {
                 f"150m of enemies, gain the following bonuses: "
                 f"\n- 15% bonus to aim time, shot reload, and salvo reload. (multiplicative)"
                 f"\n- 15% bonus to physical damage. (flat)"
-                f"\n\nFor 10 seconds if below 90% cohesion "
-                f"Shock units will activate a sprint ability. They will move 100% faster, "
-                f"receive no suppression damage, and -20% physical damage. "
-                f"\nThis bonus has a 10 second duration, 35 second cooldown."
+                f"\n\nWithin 875m of enemies, activate a sprint ability: When in combat "
+                f"and above 40% cohesion, Shock units will activate a sprint ability. "
+                f"While active, shock infantry move 100% faster, and receive -50% suppression damage"
             )
         }
     },

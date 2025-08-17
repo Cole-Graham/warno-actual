@@ -141,9 +141,9 @@ sov_unit_edits = {
         "TransportedTexture": "UseInGame_Transport_REGINF",
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "UnitRole": "infantry",
         "SpecialtiesList": {
             "overwrite_all": [
-                'infantry',
                 'leader_sov',
                 '_ifv',
                 'infantry_equip_light',
@@ -221,9 +221,9 @@ sov_unit_edits = {
         "TransportedTexture": "UseInGame_Transport_REGINF",
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "UnitRole": "infantry",
         "SpecialtiesList": {
             "overwrite_all": [
-                'infantry',
                 'leader_sov',
                 '_ifv',
                 'infantry_equip_light',
@@ -297,9 +297,9 @@ sov_unit_edits = {
         "TransportedTexture": "UseInGame_Transport_assault",
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "UnitRole": "engineer",
         "SpecialtiesList": {
             "overwrite_all": [
-                'engineer',
                 'leader_sov',
                 '_choc',
                 'infantry_equip_light',
@@ -364,9 +364,9 @@ sov_unit_edits = {
         "TransportedTexture": "UseInGame_Transport_assault",
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "UnitRole": "engineer",
         "SpecialtiesList": {
             "overwrite_all": [
-                'engineer',
                 'leader_sov',
                 '_choc',
                 'infantry_equip_light',
@@ -418,9 +418,9 @@ sov_unit_edits = {
         "TransportedTexture": "UseInGame_Transport_REGINF",
         "IdentifiedTextures": ["Texture_RTS_H_Infantry_sf", "Texture_sf"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "UnitRole": "engineer",
         "SpecialtiesList": {
             "overwrite_all": [
-                'engineer',
                 'leader_sov',
                 '_sf',
                 '_choc',
@@ -474,9 +474,9 @@ sov_unit_edits = {
         "TransportedTexture": "UseInGame_Transport_REGINF",
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "UnitRole": "infantry",
         "SpecialtiesList": {
             "overwrite_all": [
-                'infantry',
                 'leader_sov',
                 '_ifv',
                 '_choc',
@@ -546,9 +546,9 @@ sov_unit_edits = {
         "TransportedTexture": "UseInGame_Transport_assault",
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "UnitRole": "engineer",
         "SpecialtiesList": {
             "overwrite_all": [
-                'engineer',
                 'leader_sov',
                 '_choc',
                 '_para',
@@ -1430,9 +1430,9 @@ sov_unit_edits = {
         "Factory": "EFactory/Art",
         "IdentifiedTextures": ["Texture_RTS_H_appui", "Texture_appui"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "UnitRole": "leader_sov",
         "SpecialtiesList": {
             "overwrite_all": [
-                'leader_sov',
                 '_amphibie',
             ],
         },
@@ -1703,9 +1703,9 @@ sov_unit_edits = {
         },
         "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "UnitRole": "armor",
         "SpecialtiesList": {
             "overwrite_all": [
-                
                 'leader_sov',
                 '_smoke_launcher',
                 '_era',
@@ -1754,6 +1754,11 @@ sov_unit_edits = {
         "GameName": {
             "display": "BMP-1P [FAKTORIYA]",
             # "token": "CVRIKDQELZ",
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("ATGM_9K111_Fagot", "ATGM_9K111M_Faktoriya")],
+            },
         },
     },
 
@@ -2700,7 +2705,7 @@ sov_unit_edits = {
         "availability": [0, 2, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "AA_R33_Vympel": 4,
+                "AA_R33_Vympel": 2,
             },
         },
     },
@@ -2715,7 +2720,7 @@ sov_unit_edits = {
         "availability": [0, 2, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "AA_R33_Vympel": 4,
+                "AA_R33_Vympel": 2,
             },
         },
     },

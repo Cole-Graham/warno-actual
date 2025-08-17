@@ -44,8 +44,8 @@ FR_NEW_UNITS = {
         "TransportedSoldier": "Chasseurs_CMD2_FR",
         "Factory": "EFactory/Logistic",
         "CommandPoints": 145,
-        "SpecialitiesList": [
-            'hq_inf',
+        "UnitRole": 'hq_inf',
+        "SpecialtiesList": [
             '_leader',
             '_ifv',
             'infantry_equip_light',

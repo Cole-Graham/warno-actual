@@ -47,33 +47,56 @@ def _handle_new_units(source_path: Any, game_db: Any) -> None:
                 if namespace is None:
                     continue
                 if namespace.startswith("AllWeaponAlternatives_"):
-                    for row_index, (edit_type, edit_list) in depiction_edits.items():
-                        if edit_type == "edit":
-                            for member, value in edit_list:
-                                if member == "SelectorId":
-                                    weaponalternatives_obj.v[row_index].v.by_m(member).v = f"['{value}']"
-                                if member == "MeshDescriptor" or member == "ReferenceMeshForSkeleton":
-                                    new_mesh = f"$/GFX/DepictionResources/Modele_{value}"
-                                    weaponalternatives_obj.v[row_index].v.by_m(member).v = new_mesh
-                                    logger.info(f"Changed {member} for {unit_name} to {new_mesh}")
-                        elif edit_type == "add":
-                            for member, value in edit_list:
-                                if member == "SelectorId":
-                                    selector_id = "['" + f"{value}" + "']"
-                                elif member == "MeshDescriptor":
-                                    mesh_member = "MeshDescriptor"
-                                    mesh_descriptor = f"$/GFX/DepictionResources/Modele_{value}"
-                                elif member == "ReferenceMeshForSkeleton":
-                                    mesh_member = "ReferenceMeshForSkeleton"
-                                    mesh_descriptor = f"$/GFX/DepictionResources/Modele_{value}"
-                            new_entry = (
-                                f"TDepictionVisual"
-                                f"("
-                                f"    SelectorId = {selector_id}"
-                                f"    {mesh_member} = {mesh_descriptor}"
-                                f")"
-                            )
-                            weaponalternatives_obj.v.insert(row_index, new_entry)
+                    weaponalternatives_obj.v = depiction_edits
+                    
+                    # rows_to_insert = []
+                    # for row_index, (edit_type, edit_list) in depiction_edits.items():
+                    #     if edit_type == "edit":
+                    #         for member, value in edit_list:
+                    #             if member == "SelectorId":
+                    #                 weaponalternatives_obj.v[row_index].v.by_m(member).v = f"['{value}']"
+                    #             if member == "MeshDescriptor" or member == "ReferenceMeshForSkeleton":
+                    #                 new_mesh = f"$/GFX/DepictionResources/Modele_{value}"
+                    #                 weaponalternatives_obj.v[row_index].v.by_m(member).v = new_mesh
+                    #                 logger.info(f"Changed {member} for {unit_name} to {new_mesh}")
+                    #     elif edit_type == "add":
+                    #         for member, value in edit_list:
+                    #             if member == "SelectorId":
+                    #                 selector_id = "['" + f"{value}" + "']"
+                    #             elif member == "MeshDescriptor":
+                    #                 mesh_member = "MeshDescriptor"
+                    #                 mesh_descriptor = f"$/GFX/DepictionResources/Modele_{value}"
+                    #             elif member == "ReferenceMeshForSkeleton":
+                    #                 mesh_member = "ReferenceMeshForSkeleton"
+                    #                 mesh_descriptor = f"$/GFX/DepictionResources/Modele_{value}"
+                    #         new_entry = (
+                    #             f"TDepictionVisual"
+                    #             f"("
+                    #             f"    SelectorId = {selector_id}"
+                    #             f"    {mesh_member} = {mesh_descriptor}"
+                    #             f")"
+                    #         )
+                    #         weaponalternatives_obj.v.insert(row_index, new_entry)
+                    #     elif edit_type == "insert":
+                    #         for member, value in edit_list:
+                    #             if member == "SelectorId":
+                    #                 selector_id = "['" + f"{value}" + "']"
+                    #             elif member == "MeshDescriptor":
+                    #                 mesh_member = "MeshDescriptor"
+                    #                 mesh_descriptor = f"$/GFX/DepictionResources/Modele_{value}"
+                    #             elif member == "ReferenceMeshForSkeleton":
+                    #                 mesh_member = "ReferenceMeshForSkeleton"
+                    #                 mesh_descriptor = f"$/GFX/DepictionResources/Modele_{value}"
+                    #         new_entry = (
+                    #             f"TDepictionVisual"
+                    #             f"("
+                    #             f"    SelectorId = {selector_id}"
+                    #             f"    {mesh_member} = {mesh_descriptor}"
+                    #             f")"
+                    #         )
+                    #         rows_to_insert.append((row_index, new_entry))
+                    # for row_index, new_entry in reversed(rows_to_insert):
+                    #     weaponalternatives_obj.v.insert(row_index, new_entry)
 
         # AllWeaponSubDepiction_
         weaponsubdepictions_obj = source_path.by_namespace(f"AllWeaponSubDepiction_{donor_name}").copy()
@@ -97,39 +120,45 @@ def _handle_new_units(source_path: Any, game_db: Any) -> None:
             infantry_depiction_edits = NEW_DEPICTIONS[depiction_key].get("DepictionInfantry_ndf", {})
             if not infantry_depiction_edits:
                 continue
+            
             # prevent variable shadowing from weapon_replacements loop
             if "operator" in locals():
                 del operator
+            
             for (namespace, obj_type), depiction_edits in infantry_depiction_edits.items():
                 if namespace is None:
                     continue
                 if namespace.startswith("AllWeaponSubDepiction_"):
-                    rows_to_remove = []
                     operator_edits = depiction_edits.get("Operators", {})
-                    for operator_index, (edit_type, edit_list) in operator_edits.items():
-                        if edit_type == "edit":
-                            for member, value in edit_list:
-                                if member == "FireEffectTag":
-                                    operator = operators.v[operator_index]
-                                    operator.v.by_m(member).v = f'"FireEffect_{value}"'
-                        elif edit_type == "remove":
-                            rows_to_remove.append(operator_index)
-                        elif edit_type == "add":
-                            for member, value in edit_list:
-                                if member == "FireEffectTag":
-                                    effect_tag = f'"FireEffect_{value}"'
-                                elif member == "WeaponShootDataPropertyName":
-                                    shoot_data_property = f'"WeaponShootData_{value}"'
-                            new_entry = (
-                                f"DepictionOperator_WeaponInstantFireInfantry"
-                                f"("
-                                f"    FireEffectTag = {effect_tag}"
-                                f"    WeaponShootDataPropertyName = {shoot_data_property}"
-                                f")"
-                            )
-                            operators.v.insert(operator_index, new_entry)
-                    for row_index in reversed(rows_to_remove):
-                        operators.v.remove(row_index)
+                    operators.v = operator_edits
+                    
+                    # rows_to_remove = []
+                    # rows_to_insert = []
+                    # operator_edits = depiction_edits.get("Operators", {})
+                    # for operator_index, (edit_type, edit_list) in operator_edits.items():
+                    #     if edit_type == "edit":
+                    #         for member, value in edit_list:
+                    #             if member == "FireEffectTag":
+                    #                 operator = operators.v[operator_index]
+                    #                 operator.v.by_m(member).v = f'"FireEffect_{value}"'
+                    #     elif edit_type == "remove":
+                    #         rows_to_remove.append(operator_index)
+                    #     elif edit_type == "add":
+                    #         for member, value in edit_list:
+                    #             if member == "FireEffectTag":
+                    #                 effect_tag = f'"FireEffect_{value}"'
+                    #             elif member == "WeaponShootDataPropertyName":
+                    #                 shoot_data_property = f'"WeaponShootData_{value}"'
+                    #         new_entry = (
+                    #             f"DepictionOperator_WeaponInstantFireInfantry"
+                    #             f"("
+                    #             f"    FireEffectTag = {effect_tag}"
+                    #             f"    WeaponShootDataPropertyName = {shoot_data_property}"
+                    #             f")"
+                    #         )
+                    #         operators.v.insert(operator_index, new_entry)
+                    # for row_index in reversed(rows_to_remove):
+                    #     operators.v.remove(row_index)
 
         # AllWeaponSubDepictionBackpack_
         weaponbackpack_obj = source_path.by_namespace(f"AllWeaponSubDepictionBackpack_{donor_name}").copy()
@@ -147,18 +176,20 @@ def _handle_new_units(source_path: Any, game_db: Any) -> None:
                 if namespace is None:
                     continue
                 if namespace == f"TacticDepiction_{unit_name}_Alternatives":
-                    rows_to_remove = []
-                    for row_index, (edit_type, edit_list) in depiction_edits.items():
-                        if edit_type == "edit":
-                            for member, value in edit_list:
-                                if member == "MeshDescriptor" or member == "ReferenceMeshForSkeleton":
-                                    new_mesh = f"$/GFX/DepictionResources/Modele_{value}"
-                                    depictionalternatives_list.v[row_index].v.by_m(member).v = new_mesh
-                                    logger.info(f"Changed {member} for {unit_name} to {new_mesh}")
-                        elif edit_type == "remove":
-                            rows_to_remove.append(row_index)
-                    for row_index in reversed(rows_to_remove):
-                        depictionalternatives_list.v.remove(row_index)
+                    depictionalternatives_list.v = depiction_edits
+                    
+                    # rows_to_remove = []
+                    # for row_index, (edit_type, edit_list) in depiction_edits.items():
+                    #     if edit_type == "edit":
+                    #         for member, value in edit_list:
+                    #             if member == "MeshDescriptor" or member == "ReferenceMeshForSkeleton":
+                    #                 new_mesh = f"$/GFX/DepictionResources/Modele_{value}"
+                    #                 depictionalternatives_list.v[row_index].v.by_m(member).v = new_mesh
+                    #                 logger.info(f"Changed {member} for {unit_name} to {new_mesh}")
+                    #     elif edit_type == "remove":
+                    #         rows_to_remove.append(row_index)
+                    # for row_index in reversed(rows_to_remove):
+                    #     depictionalternatives_list.v.remove(row_index)
 
         # TacticDepiction_unit_Soldier
         soldierdepiction_obj = source_path.by_namespace(f"TacticDepiction_{donor_name}_Soldier").copy()

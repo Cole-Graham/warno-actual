@@ -3,6 +3,7 @@
 
 def apply_aim_time_standards(source_path, logger):
     """Edit aim times for weapons."""
+    # TODO: Use dic references for these standardizations.
     for ammo_descr in source_path:
         has_category = ammo_descr.v.by_m("TypeCategoryName", False) is not None
         has_aim_time = ammo_descr.v.by_m("AimingTime", False) is not None

@@ -42,3 +42,39 @@ def edit_gen_gp_gfx_damagelevels(source_path) -> None:
         elif value.v == "0.8":
             effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_Ajoute_Tag_no_Choc_Move_Morale")
 
+    # Insert new damage level to trigger shock sprint at 99% cohesion and prevent at => 40%
+    new_damage_level1 = (
+        f'TDamageLevelDescriptor'
+        f'('
+        f'    DescriptorId = GUID:{{932c70e6-e41f-45ad-bd94-866aec4efeed}}'
+        f'    Value = 0.01'
+        f'    LocalizationToken = "mrl_4"'
+        f'    MoralModifier = 99'
+        f'    AnimationType = ESoldierSuppressStatus/Operational'
+        f'    EffectsPacks = '
+        f'    ['
+        f'        $/GFX/EffectCapacity/UnitEffect_GroundUnit_Cohesion_High,'
+        f'        $/GFX/EffectCapacity/UnitEffect_Ajoute_Tag_Swift_ok,'
+        f'    ]'
+        f')'
+    )
+    damage_levels.v.insert(1, new_damage_level1)
+    
+    new_damage_level2 = (
+        f'TDamageLevelDescriptor'
+        f'('
+        f'    DescriptorId = GUID:{{e21510c8-e8e8-42dc-bd79-6770b8dc298a}}'
+        f'    Value = 0.6'
+        f'    LocalizationToken = "mrl_2"'
+        f'    MoralModifier = 99'
+        f'    AnimationType = ESoldierSuppressStatus/Suppressed'
+        f'    PrecisionEffectValue = 45'
+        f'    EffectsPacks = '
+        f'    ['
+        f'        $/GFX/EffectCapacity/UnitEffect_Precision_moins_45,'
+        f'        $/GFX/EffectCapacity/UnitEffect_GroundUnit_Cohesion_Mediocre,'
+        f'        $/GFX/EffectCapacity/UnitEffect_Ajoute_Tag_no_Choc_Move_Morale'
+        f'    ]'
+        f')'
+    )
+    damage_levels.v.insert(2, new_damage_level2)

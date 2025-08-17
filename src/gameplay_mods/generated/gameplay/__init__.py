@@ -5,6 +5,8 @@ from .decks import (
     edit_gen_gp_decks_divisioncostmatrix,
     edit_gen_gp_decks_divisionrules,
     edit_gen_gp_decks_divisions,
+    edit_gen_gp_decks_strategicdecks,
+    edit_gen_gp_decks_strategicpacks,
 )
 from .gfx import (
     edit_gen_gp_gfx_ammunition,
@@ -45,6 +47,8 @@ __all__ = [
     'edit_gen_gp_decks_divisioncostmatrix',
     'edit_gen_gp_decks_divisionrules',
     'edit_gen_gp_decks_divisions',
+    'edit_gen_gp_decks_strategicdecks',
+    'edit_gen_gp_decks_strategicpacks',
     # .gfx
     'edit_gen_gp_gfx_ammunition',
     'edit_gen_gp_gfx_ammunitionmissiles',

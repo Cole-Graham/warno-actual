@@ -183,7 +183,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 6.0,
             },
         },
-        "SupplyCost": 90.0,
+        "SupplyCost": 75.0,
         "WeaponDescriptor": {
             "SalvoLengths": [1],
         },
@@ -195,32 +195,75 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("ATGM_HOT2", "ATGM", None, False): {
         "Ammunition": {
             "Arme": {
-                "Index": 23,
+                "Index": 24,
+            },
+            "hit_roll": {
+                "Idling": 70,
             },
             "parent_membr": {
-                "MaximalSpeedGRU": 466,
+                "MaximalSpeedGRU": 739,
             },
         },
-        "SupplyCost": 160.0,
+        "SupplyCost": 115.0,
         "WeaponDescriptor": {
             "SalvoLengths": [6, 4, 3, 2, 1],
         },
         "MissileDescriptor": {
-            "MaxSpeedGRU": 466,
+            "MaxSpeedGRU": 739,
         },
     },
 
     ("ATGM_HOT1", "ATGM", None, False): {
         "Ammunition": {
+            "hit_roll": {
+                "Idling": 65,
+            },
             "parent_membr": {
-                "MaximalSpeedGRU": 466,
+                "MaximalSpeedGRU": 739,
             },
         },
-        "SupplyCost": 150.0,
+        "SupplyCost": 90.0,
         "WeaponDescriptor": {
             "SalvoLengths": [6, 4, 1],
         },
 
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 739,
+        },
+    },
+    
+    ("ATGM_BGM71D_TOW_2A_IFV", "ATGM", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 24,
+            },
+            "parent_membr": {
+                "MaximalSpeedGRU": 466,
+            }
+        },
+        "SupplyCost": 115.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [2],
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 466,
+        },
+    },
+    
+    ("ATGM_BGM71D_TOW_2_IFV", "ATGM", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 23,
+            },
+            "parent_membr": {
+                # "Caliber": ("6.1kg HYBRID", "SVJNWQPYKO"),
+                "MaximalSpeedGRU": 466,
+            }
+        },
+        "SupplyCost": 100.0,
+        "WeaponDescriptor": {            
+            "SalvoLengths": [2],
+        },
         "MissileDescriptor": {
             "MaxSpeedGRU": 466,
         },
@@ -294,6 +337,29 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
         "MissileDescriptor": {
             "MaxSpeedGRU": 466,
+        },
+    },
+    
+    ("ATGM_9K111M_Faktoriya_IFV", "ATGM", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 19,
+            },
+            "display": "9K111M Faktoriya",
+            "token": "TDLAGLBIVE",
+            "hit_roll": {
+                "Idling": 45,
+            },
+            "parent_membr": {
+                "MaximalSpeedGRU": 311,
+            },
+        },
+        "SupplyCost": 60.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [1],
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 311,
         },
     },
 

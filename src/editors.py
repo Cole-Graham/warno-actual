@@ -23,6 +23,8 @@ from .gameplay_mods import (
     edit_gen_gp_decks_divisioncostmatrix,
     edit_gen_gp_decks_divisionrules,
     edit_gen_gp_decks_divisions,
+    edit_gen_gp_decks_strategicdecks,
+    edit_gen_gp_decks_strategicpacks,
     edit_gen_gp_gfx_ammunition,
     edit_gen_gp_gfx_ammunitionmissiles,
     edit_gen_gp_gfx_missiledescriptors,
@@ -132,6 +134,8 @@ __all__ = [
     'edit_gen_gp_decks_divisioncostmatrix',
     'edit_gen_gp_decks_divisionrules',
     'edit_gen_gp_decks_divisions',
+    'edit_gen_gp_decks_strategicdecks',
+    'edit_gen_gp_decks_strategicpacks',
     'edit_gen_gp_gfx_ammunition',
     'edit_gen_gp_gfx_ammunitionmissiles',
     'edit_gen_gp_gfx_missiledescriptors',
@@ -282,6 +286,12 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
             (lambda source_path: edit_gen_gp_decks(source_path, game_db), "gameplay"),
             # TODO: Confirm if this is deprecated, not from main refactor but from a previous refactor of this specific task
             # (edit_deck_pack_lists, "gameplay"),
+        ],
+        "GameData/Generated/Gameplay/Decks/StrategicDecks.ndf": [
+            (lambda source_path: edit_gen_gp_decks_strategicdecks(source_path, game_db), "gameplay"),
+        ],
+        "GameData/Generated/Gameplay/Decks/StrategicPacks.ndf": [
+            (lambda source_path: edit_gen_gp_decks_strategicpacks(source_path, game_db), "gameplay"),
         ],
         "GameData/Generated/Gameplay/Decks/DivisionCostMatrix.ndf": [
             (lambda source_path: edit_gen_gp_decks_divisioncostmatrix(source_path), "gameplay"),

@@ -45,7 +45,7 @@ RFA_NEW_UNITS = {
         "TransportedSoldier": "Engineers_CMD_RFA",
         "Factory": "EFactory/Logistic",
         "CommandPoints": 145,
-        "SpecialitiesList": [
+        "SpecialtiesList": [
             'hq_inf',
             '_leader',
             'infantry_equip_medium',
@@ -100,7 +100,7 @@ RFA_NEW_UNITS = {
                 "Commandant",
                 "GroundUnits",
                 "InfmapCommander",
-                "UNITE_M577_CMD2_US",
+                "UNITE_M577_CMD2_RFA",
                 "Unite",
                 "Vehicule",
                 "Vehicule_CMD",

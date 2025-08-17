@@ -154,11 +154,11 @@ def main() -> None:
         
         # Define paths
         if parse_vanilla:
-            MOD_SRC = Path(r"C:\Program Files (x86)\Steam\steamapps\common\WARNO\Mods\sourcemod")
-            MOD_DST = Path(r"C:\Program Files (x86)\Steam\steamapps\common\WARNO\Mods\sourcemod")
+            MOD_SRC = Path(r"C:/Program Files (x86)/Steam/steamapps/common/WARNO/Mods/sourcemod")
+            MOD_DST = Path(r"C:/Program Files (x86)/Steam/steamapps/common/WARNO/Mods/sourcemod")
         else:   
-            MOD_SRC = Path(r"C:\Program Files (x86)\Steam\steamapps\common\WARNO\Mods\WARNO ACTUAL test dev")
-            MOD_DST = Path(r"C:\Program Files (x86)\Steam\steamapps\common\WARNO\Mods\WARNO ACTUAL test dev")
+            MOD_SRC = Path(r"C:/Program Files (x86)/Steam/steamapps/common/WARNO/Mods/WARNO ACTUAL test dev")
+            MOD_DST = Path(r"C:/Program Files (x86)/Steam/steamapps/common/WARNO/Mods/WARNO ACTUAL test dev")
         
         # Initialize mod
         mod = ndf.Mod(str(MOD_SRC), str(MOD_DST))
@@ -166,7 +166,7 @@ def main() -> None:
         logger.info("Parsing damage resistance data")
 
         # Parse source directly without context manager
-        source = mod.parse_src(r"GameData\Generated\Gameplay\Gfx\DamageResistance.ndf")
+        source = mod.parse_src(r"GameData/Generated/Gameplay/Gfx/DamageResistance.ndf")
         damage_params = source.by_n("DamageResistanceParams").v
         
         # Get damage array first

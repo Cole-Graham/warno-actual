@@ -108,12 +108,12 @@ UK_NEW_UNITS = {
         "CommandPoints": 145,
         "UnitAttackValue": 1,
         "UnitDefenseValue": 16,
-        "SpecialitiesList": [
-                'hq_inf',
-                '_leader',
-                '_ifv',
-                'infantry_equip_light',
-            ],
+        "UnitRole": 'hq_inf',
+        "SpecialtiesList": [
+            '_leader',
+            '_ifv',
+            'infantry_equip_light',
+        ],
         "MenuIconTexture": "Texture_RTS_H_CMD_inf",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Inf",
         "Decks": {

@@ -61,11 +61,11 @@ SOV_NEW_UNITS = {
         "CommandPoints": 145,
         "UnitAttackValue": 1,
         "UnitDefenseValue": 16,
-        "SpecialitiesList": [
-                'hq_inf',
-                'leader_sov',
-                'infantry_equip_light',
-            ],
+        "UnitRole": 'hq_inf',
+        "SpecialtiesList": [
+            'leader_sov',
+            'infantry_equip_light',
+        ],
         "MenuIconTexture": "Texture_RTS_H_CMD_inf",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Inf",
         "Decks": {
@@ -155,11 +155,11 @@ SOV_NEW_UNITS = {
         "CommandPoints": 145,
         "UnitAttackValue": 1,
         "UnitDefenseValue": 16,
-        "SpecialitiesList": [
-                'hq_inf',
-                'leader_sov',
-                'infantry_equip_light',
-            ],
+        "UnitRole": 'hq_inf',
+        "SpecialtiesList": [
+            'leader_sov',
+            'infantry_equip_light',
+        ],
         "MenuIconTexture": "Texture_RTS_H_CMD_inf",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Inf",
         "Divisions": {
@@ -211,11 +211,11 @@ SOV_NEW_UNITS = {
             "front": (18, None),
         },
         "CommandPoints": 335,
-        "SpecialitiesList": [
-                'hq_tank',
-                'leader_sov',
-                '_smoke_launcher',
-            ],
+        "UnitRole": 'hq_tank',
+        "SpecialtiesList": [
+            'leader_sov',
+            '_smoke_launcher',
+        ],
         "Decks": {
             "packs": {
                 "rename": True, 
@@ -274,11 +274,11 @@ SOV_NEW_UNITS = {
         },
         "Factory": "EFactory/Logistic",
         "CommandPoints": 145,
-        "SpecialitiesList": [
-                'hq_veh',
-                'leader_sov',
-                '_amphibie',
-            ],
+        "UnitRole": 'hq_veh',
+        "SpecialtiesList": [
+            'leader_sov',
+            '_amphibie',
+        ],
         "Decks": {
             "packs": {
                 "rename": True, 
@@ -368,7 +368,7 @@ SOV_NEW_UNITS = {
         },
         "TransportedSoldier": "MotRifles_RPG7V_TTsko_SOV",
         "CommandPoints": 30,
-        "SpecialitiesList": [
+        "SpecialtiesList": [
                 'infantry',
                 '_ifv',
                 'infantry_equip_medium',
@@ -431,7 +431,7 @@ SOV_NEW_UNITS = {
             },
         },
         "CommandPoints": 40,
-        "SpecialitiesList": [
+        "SpecialtiesList": [
                 'AT',
                 'infantry_equip_heavy',
             ],
@@ -496,7 +496,7 @@ SOV_NEW_UNITS = {
             },
         },
         "CommandPoints": 40,
-        "SpecialitiesList": [
+        "SpecialtiesList": [
                 'AT',
                 '_para',
                 'infantry_equip_heavy'

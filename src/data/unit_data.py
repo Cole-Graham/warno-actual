@@ -189,6 +189,10 @@ def _extract_ui_data(module: Any) -> Dict[str, Any]:
         specialties = module.v.by_m("SpecialtiesList").v
         if specialties:
             data["specialties"] = [strip_quotes(spec.v) for spec in specialties]
+            
+        name_token = module.v.by_m("NameToken").v
+        if name_token:
+            data["name_token"] = strip_quotes(name_token)
 
         # Get menu icon texture
         texture = module.v.by_m("MenuIconTexture").v

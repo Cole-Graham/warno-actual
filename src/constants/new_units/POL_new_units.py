@@ -54,8 +54,8 @@ POL_NEW_UNITS = {
         "CommandPoints": 145,
         # "UnitAttackValue": 1,
         # "UnitDefenseValue": 16,
-        "SpecialitiesList": [
-            'hq_inf',
+        "UnitRole": 'hq_inf',
+        "SpecialtiesList": [
             'leader_sov',
             'infantry_equip_light',
         ],
@@ -120,8 +120,8 @@ POL_NEW_UNITS = {
         },
         "Factory": "EFactory/Logistic",
         "CommandPoints": 190,
-        "SpecialitiesList": [
-            'hq_tank',
+        "UnitRole": 'hq_tank',
+        "SpecialtiesList": [
             'leader_sov',
         ],
         "Decks": {
@@ -179,8 +179,8 @@ POL_NEW_UNITS = {
         },
         "Factory": "EFactory/Logistic",
         "CommandPoints": 255,
-        "SpecialitiesList": [
-            'hq_tank',
+        "UnitRole": 'hq_tank',
+        "SpecialtiesList": [
             'leader_sov',
         ],
         "Decks": {
@@ -232,8 +232,8 @@ POL_NEW_UNITS = {
         },
         "Factory": "EFactory/Logistic",
         "CommandPoints": 285,
-        "SpecialitiesList": [
-            'hq_tank',
+        "UnitRole": 'hq_tank',
+        "SpecialtiesList": [
             'leader_sov',
             '_smoke_launcher',
         ],
@@ -305,9 +305,7 @@ POL_NEW_UNITS = {
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "Factory": "EFactory/Art",
         "CommandPoints": 60,
-        "SpecialitiesList": [
-            'leader_sov',
-        ],
+        "UnitRole": 'leader_sov',
         "InfoPanelConfig": "Default",
         "Divisions": {
             "default": {
@@ -365,7 +363,7 @@ POL_NEW_UNITS = {
             },
         },
         "CommandPoints": 40,
-        "SpecialitiesList": [
+        "SpecialtiesList": [
             'AT',
             'infantry_equip_heavy',
         ],
@@ -420,8 +418,8 @@ POL_NEW_UNITS = {
         },
         "Factory": "EFactory/Logistic",
         "CommandPoints": 145,
-        "SpecialitiesList": [
-            'hq_veh',
+        "UnitRole": 'hq_veh',
+        "SpecialtiesList": [
             'leader_sov',
             '_amphibie',
         ],

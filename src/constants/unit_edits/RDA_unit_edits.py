@@ -85,9 +85,9 @@ rda_unit_edits = {
         "TransportedTexture": "UseInGame_Transport_REGINF",
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "UnitRole": "infantry",
         "SpecialtiesList": {
             "overwrite_all": [
-                'infantry',
                 'leader_sov',
                 '_resolute',
                 '_ifv',
@@ -162,9 +162,9 @@ rda_unit_edits = {
         "TransportedTexture": "UseInGame_Transport_assault",
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "UnitRole": "engineer",
         "SpecialtiesList": {
             "overwrite_all": [
-                'engineer',
                 'leader_sov',
                 '_choc',
                 '_resolute',
@@ -528,9 +528,9 @@ rda_unit_edits = {
         "Factory": "EFactory/Art",
         "IdentifiedTextures": ["Texture_RTS_H_appui", "Texture_appui"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "UnitRole": "leader_sov",
         "SpecialtiesList": {
             "overwrite_all": [
-                'leader_sov',
                 '_amphibie',
                 '_resolute',
             ],
@@ -596,9 +596,9 @@ rda_unit_edits = {
         },
         "IdentifiedTextures": ["Texture_RTS_H_Armor", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "UnitRole": "armor",
         "SpecialtiesList": {
             "overwrite_all": [
-                'armor',
                 'leader_sov',
                 '_resolute',
                 # '_smoke_launcher',  # do not smoke
@@ -633,9 +633,9 @@ rda_unit_edits = {
         },
         "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "UnitRole": "armor",
         "SpecialtiesList": {
             "overwrite_all": [
-                
                 'leader_sov',
                 '_resolute',
                 '_smoke_launcher',
@@ -670,9 +670,9 @@ rda_unit_edits = {
         },
         "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "UnitRole": "armor",
         "SpecialtiesList": {
             "overwrite_all": [
-                
                 'leader_sov',
                 '_resolute'
                 '_smoke_launcher',

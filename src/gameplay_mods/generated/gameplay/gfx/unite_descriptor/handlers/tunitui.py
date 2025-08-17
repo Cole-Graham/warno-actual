@@ -16,6 +16,7 @@ def handle_unitui_module(
 ) -> None:  # noqa
     """Handle TUnitUIModuleDescriptor for existing and new units"""
     dictionary_entries = args[0]
+    donor = args[1]
         
     # Global bomber edits TODO: Use dic references instead for standardization
     if edit_type == "unit_edits":
@@ -26,7 +27,10 @@ def handle_unitui_module(
         if uses_dive_bomb:
             module.v.by_m("SpecialtiesList").v.add("'dive_attack'")
             logger.info(f"Added dive_attack specialty to {unit_name}")
-
+    
+    if "UnitRole" in edits:
+        module.v.by_m("UnitRole").v = "'" + edits["UnitRole"] + "'"
+    
     specialties_list = module.v.by_m("SpecialtiesList")
     if "SpecialtiesList" in edits:
         if edit_type == "unit_edits":
@@ -61,7 +65,15 @@ def handle_unitui_module(
     if "InfoPanelConfig" in edits:
         module.v.by_m("InfoPanelConfigurationToken").v = f"'{edits['InfoPanelConfig']}'"
     
-    if edits.get("GameName", {}).get("display"):
+    # If display name isn't being changed, check if donor unit had its vanilla token modified
+    if edit_type == "new_units" and not edits.get("GameName", {}):
+        # check if token matches vanilla name token of donor unit
+        vanilla_token = game_db["unit_data"].get(donor, {}).get("name_token")
+        if not vanilla_token == module.v.by_m("NameToken").v[1:-1]:
+            module.v.by_m("NameToken").v = f"'{vanilla_token}'"
+            logger.debug(f"Corrected name token for new unit {unit_name} back to vanilla donor token {vanilla_token}")
+ 
+    elif edits.get("GameName", {}).get("display"):
         # check if token was provided
         token = edits.get("GameName", {}).get("token")
         rename = edits["GameName"]["display"]

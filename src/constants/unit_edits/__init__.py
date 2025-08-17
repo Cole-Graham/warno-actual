@@ -288,7 +288,9 @@ def load_unit_edits() -> Dict:
     logger.info("Resolving shared values in unit edits dictionaries...")
     merged_edits = resolve_unit_edit_references_optimized(merged_edits)
     logger.info("Successfully resolved unit edit references")
-    with open("merged_edits.json", "w") as f:
+    logs_dir = Path(__file__).parents[3] / "logs"
+    logs_dir.mkdir(exist_ok=True)
+    with open(logs_dir / "merged_edits.json", "w") as f:
         json.dump(merged_edits, f, indent=4)
 
     return merged_edits

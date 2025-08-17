@@ -55,8 +55,8 @@ RDA_NEW_UNITS = {
         "CommandPoints": 145,
         "UnitAttackValue": 1,
         "UnitDefenseValue": 16,
-        "SpecialitiesList": [
-            'hq_inf',
+        "UnitRole": 'hq_inf',
+        "SpecialtiesList": [
             'leader_sov',
             '_resolute',
             'infantry_equip_light',
@@ -114,8 +114,8 @@ RDA_NEW_UNITS = {
         },
         "Factory": "EFactory/Logistic",
         "CommandPoints": 145,
-        "SpecialitiesList": [
-            'hq_veh',
+        "UnitRole": 'hq_veh',
+        "SpecialtiesList": [
             'leader_sov',
             '_amphibie',
             '_resolute',
@@ -184,7 +184,7 @@ RDA_NEW_UNITS = {
             },
         },
         "CommandPoints": 40,
-        "SpecialitiesList": [
+        "SpecialtiesList": [
             'AT',
             '_resolute',
             'infantry_equip_heavy',
@@ -240,11 +240,11 @@ RDA_NEW_UNITS = {
         },
         "Factory": "EFactory/Logistic",
         "CommandPoints": 190,
-        "SpecialitiesList": [
-                'hq_tank',
-                'leader_sov',
-                '_resolute',
-            ],
+        "UnitRole": 'hq_tank',
+        "SpecialtiesList": [
+            'leader_sov',
+            '_resolute',
+        ],
         "Decks": {
             "packs": {
                 "rename": True, 
@@ -308,12 +308,12 @@ RDA_NEW_UNITS = {
         },
         "Factory": "EFactory/Logistic",
         "CommandPoints": 265,
-        "SpecialitiesList": [
-                'hq_tank',
-                'leader_sov',
-                '_resolute',
-                '_smoke_launcher',
-            ],
+        "UnitRole": 'hq_tank',
+        "SpecialtiesList": [
+            'leader_sov',
+            '_resolute',
+            '_smoke_launcher',
+        ],
         "Decks": {
             "packs": {
                 "rename": True, 
@@ -376,8 +376,8 @@ RDA_NEW_UNITS = {
         },
         "Factory": "EFactory/Logistic",
         "CommandPoints": 285,
-        "SpecialitiesList": [
-            'hq_tank',
+        "UnitRole": 'hq_tank',
+        "SpecialtiesList": [
             'leader_sov',
             '_resolute',
             '_smoke_launcher',

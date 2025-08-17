@@ -54,9 +54,9 @@ rfa_unit_edits = {
         # "UnitDefenseValue": 16,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "UnitRole": "infantry",
         "SpecialtiesList": {
             "overwrite_all": [
-                "infantry",
                 "_leader",
                 "_ifv",
                 "infantry_equip_heavy",
@@ -101,9 +101,9 @@ rfa_unit_edits = {
         # "UnitDefenseValue": 31,
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "UnitRole": "infantry",
         "SpecialtiesList": {
             "overwrite_all": [
-                "infantry",
                 "_leader",
                 "_choc",
                 "infantry_equip_light",
@@ -139,9 +139,9 @@ rfa_unit_edits = {
         # "UnitDefenseValue": 31,
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "UnitRole": "infantry",
         "SpecialtiesList": {
             "overwrite_all": [
-                "infantry",
                 "_leader",
                 "infantry_equip_light",
             ],
@@ -156,7 +156,9 @@ rfa_unit_edits = {
     },
     "Engineers_CMD_RFA": {  # #CMD PIONIER FÜH.
         "CommandPoints": 40,
-        "GameName": {"display": "#LDR PIONIER LDR."},
+        "GameName": {
+            "display": "#LDR PIONIER LDR."
+        },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
@@ -177,9 +179,9 @@ rfa_unit_edits = {
         # "UnitDefenseValue": 31,
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "UnitRole": "engineer",
         "SpecialtiesList": {
             "overwrite_all": [
-                "engineer",
                 "_leader",
                 "_choc",
                 "infantry_equip_medium",
@@ -325,10 +327,9 @@ rfa_unit_edits = {
         "Factory": "EFactory/Art",
         "IdentifiedTextures": ["Texture_RTS_H_appui", "Texture_appui"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "UnitRole": "_leader",
         "SpecialtiesList": {
-            "overwrite_all": [
-                "_leader",
-            ],
+            "overwrite_all": [],
         },
         "MenuIconTexture": "Texture_RTS_H_appui",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Transport",

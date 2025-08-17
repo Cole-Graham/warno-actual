@@ -1,9 +1,11 @@
 # RDA_Rugen_Gruppierung doesn't have _multi suffix for some dumb ass reason
 divs_not_released = [
     "BEL_16e_Mecanisee_multi",
+    "BEL_Division_Mobilisation_multi",
     "FR_11e_Para_multi",
     "FR_152e_Infanterie_multi",
     # "FR_5e_Blindee_multi",
+    "NL_CLKA_multi",
     "NATO_Garnison_Berlin_multi",
     "NL_4e_Divisie_multi",
     # "POL_20_Pancerna_multi",

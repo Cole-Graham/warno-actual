@@ -154,6 +154,28 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("AutoCanon_HE_25mm_M242_Bushmaster_Late", "autocannon", None, False): { # 22
         "Ammunition": {
             "hit_roll": {
+                "Idling": 65,
+                "Moving": 35,
+            },
+            "parent_membr": {
+                "PhysicalDamages": 0.25,
+                "SuppressDamages": 25,
+                "DisplaySalveAccuracy": False,
+                "AimingTime": 1.2,
+                "TimeBetweenTwoSalvos": 1.6,
+                "NbTirParSalves": 8,
+                "AffichageMunitionParSalve": 8,
+            },
+        },
+        "SupplyCost": 2.0,
+        "WeaponDescriptor": {
+            "Salves": 60,
+        },
+    },
+    
+    ("AutoCanon_HE_25mm_M242_Bushmaster_APDS", "autocannon", "AutoCanon_HE_25mm_M242_Bushmaster_Late", True): {
+        "Ammunition": {
+            "hit_roll": {
                 "Idling": 55,
                 "Moving": 30,
             },
@@ -526,12 +548,37 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
         "SupplyCost": 2.0,
     },
+    
+    ("AutoCanon_AP_25mm_M242_Bushmaster_APDS", "autocannon", "AutoCanon_AP_25mm_M242_Bushmaster_Late", True): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 12,
+            },
+            "hit_roll": {
+                "Idling": 55,
+                "Moving": 30,
+            },
+            "parent_membr": {
+                "PhysicalDamages": 0.25,
+                "SuppressDamages": 25,
+                "DisplaySalveAccuracy": False,
+                "AimingTime": 1.2,
+                "TimeBetweenTwoSalvos": 1.6,
+                "NbTirParSalves": 8,
+                "AffichageMunitionParSalve": 8,
+            },
+        },
+        "SupplyCost": 2.0,
+        "WeaponDescriptor": {
+            "Salves": 60,
+        },
+    },
 
     ("AutoCanon_AP_25mm_M242_Bushmaster_Late", "autocannon", None, False): { # 7
         "Ammunition": {
             "hit_roll": {
-                "Idling": 55,
-                "Moving": 30,
+                "Idling": 65,
+                "Moving": 35,
             },
             "parent_membr": {
                 "Caliber": ("25mm APFSDS", "IQRYAPQHPQ"),

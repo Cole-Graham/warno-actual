@@ -2,6 +2,7 @@
 
 from src.constants.effects.capacities import (
     CHOC_MOVE_CAPACITY,
+    CHOC_MOVE_OK_CAPACITY,
     NO_CHOC_MOVE_CAPACITY,
     SWIFT_CAPACITY,
     NO_SWIFT_CAPACITY,
@@ -33,6 +34,7 @@ def edit_gen_gp_gfx_capacitelist(source_path) -> None:
     for i, row in enumerate(source_path, start=1):
         if row.namespace == "Capacite_Choc":
             source_path.insert(i, CHOC_MOVE_CAPACITY)
+            source_path.insert(i, CHOC_MOVE_OK_CAPACITY)
             source_path.insert(i, NO_CHOC_MOVE_CAPACITY)
             source_path.insert(i, SWIFT_CAPACITY)
             source_path.insert(i, NO_SWIFT_CAPACITY)

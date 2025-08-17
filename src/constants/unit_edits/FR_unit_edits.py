@@ -64,9 +64,9 @@ fr_unit_edits = {
         "TransportedTexture": "UseInGame_Transport_REGINF",
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "UnitRole": "infantry",
         "SpecialtiesList": {
             "overwrite_all": [
-                'infantry',
                 '_leader',
                 '_ifv',
                 'infantry_equip_medium',
@@ -140,9 +140,9 @@ fr_unit_edits = {
         "TransportedTexture": "UseInGame_Transport_REGINF",
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "UnitRole": "infantry",
         "SpecialtiesList": {
             "overwrite_all": [
-                'infantry',
                 '_leader',
                 '_ifv',
                 'infantry_equip_light',
@@ -203,9 +203,9 @@ fr_unit_edits = {
         "TransportedTexture": "UseInGame_Transport_assault",
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "UnitRole": "engineer",
         "SpecialtiesList": {
             "overwrite_all": [
-                'infantry',
                 '_leader',
                 '_choc',
                 'infantry_equip_medium',
@@ -508,9 +508,9 @@ fr_unit_edits = {
         },
         "IdentifiedTextures": ["Texture_RTS_H_Armor", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "UnitRole": "armor",
         "SpecialtiesList": {
             "overwrite_all": [
-                'armor',
                 '_leader',
                 '_smoke_launcher',
             ],

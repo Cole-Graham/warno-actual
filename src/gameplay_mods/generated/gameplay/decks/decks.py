@@ -14,7 +14,7 @@ logger = setup_logger(__name__)
 
 # Edit deck packs ------------------------------------------------------------------------
 def edit_gen_gp_decks_deckpacks(source_path: Any, game_db: Dict[str, Any]) -> None:
-    """GameData\Generated\Gameplay\Decks\DeckPacks.ndf"""
+    """GameData/Generated/Gameplay/Decks/DeckPacks.ndf"""
     logger.info("Modifying deck packs using precomputed database mappings")
     
     unit_edits = load_unit_edits()
@@ -146,7 +146,7 @@ def _create_new_command_unit_deck_packs(source_path: Any, new_units: Dict[str, A
 
         # Skip if donor has no deck pack data
         if donor_name not in deck_pack_data["base_units"]:
-            logger.warning(f"No deck pack data found for donor {donor_name}")
+            logger.debug(f"No deck pack data found for donor {donor_name}")
             continue
 
         availability = edits["availability"]
@@ -181,7 +181,10 @@ def _create_new_command_unit_deck_packs(source_path: Any, new_units: Dict[str, A
         for donor_namespace, template_pack in donor_templates.items():
             # Parse the donor namespace to understand its structure
             parts = donor_namespace.split("_")
+            logger.debug(f"Donor namespace: {donor_namespace}")
+            logger.debug(f"Parts: {parts}")
             if len(parts) < 4:
+                logger.warning(f"Donor namespace {donor_namespace} has less than 4 parts")
                 continue
 
             try:
@@ -189,7 +192,7 @@ def _create_new_command_unit_deck_packs(source_path: Any, new_units: Dict[str, A
                 donor_xp = int(parts[-2])
 
                 # Replace donor unit name with new unit name in the namespace structure
-                donor_unit_part = "_".join(parts[3:-2])  # Everything between prefix and _XP_Number
+                donor_unit_part = "_".join(parts[3:-2])  # Everything between Descriptor_Deck_Pack_ and _{XP}_{Number}
                 new_unit_part = donor_unit_part.replace(donor_name, new_unit_name, 1)
 
                 # Determine target XP for this donor namespace
@@ -347,7 +350,7 @@ def _find_best_target_xp(current_xp: int, available_xp_levels: list, missing_xp_
         
 # Update deck pack references ------------------------------------------------------------
 def edit_gen_gp_decks(source_path: Any, game_db: Dict[str, Any]) -> None:
-    """GameData\Generated\Gameplay\Decks\Decks.ndf."""
+    """GameData/Generated/Gameplay/Decks/Decks.ndf."""
     unit_edits = load_unit_edits()
     unit_edits.update(supply_unit_edits)
     
@@ -577,3 +580,6 @@ def edit_deck_pack_lists(source_path: Any) -> None:
 
                             logger.info(f"Renaming deck pack: {deck_pack.v} -> {new_descriptor}")
                             deck_pack.v = new_descriptor
+            
+            
+        

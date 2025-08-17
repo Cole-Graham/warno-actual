@@ -1,5 +1,6 @@
 """Weapon edit definitions."""
 
+from pathlib import Path
 from typing import Dict, Any, Union, List, Tuple, Set
 from src.utils.logging_utils import setup_logger
 import json, os
@@ -128,6 +129,10 @@ def precompute_dependency_graph(ammunition_dict: Dict) -> Dict[str, Set[str]]:
             
             # Find all weapon references in this weapon's data
             for field_path, field_value in _flatten_dict(value):
+                # Special exception: NewTexture and Texture fields should not be treated as weapon references
+                if field_path.endswith("NewTexture") or field_path.endswith("Texture"):
+                    continue
+                    
                 if isinstance(field_value, str) and field_value in weapon_names:
                     dependencies[weapon_name].add(field_value)
     
@@ -231,7 +236,7 @@ def _resolve_weapon_with_cache(weapon_data: Any, weapon_name: str, field_cache: 
             return [resolve_value(item, f"{current_path}[{i}]") for i, item in enumerate(value)]
         elif isinstance(value, str):
             # Special exception: NewTexture field should not be resolved as references
-            if current_path.endswith("NewTexture"):
+            if current_path.endswith("NewTexture") or current_path.endswith("Texture"):
                 return value
             
             # Check if this string references a weapon name
@@ -325,7 +330,9 @@ logger.info("Resolving shared values in ammunition dictionaries...")
 ammunitions = resolve_ammunition_shared_values_optimized(raw_ammunitions)
 # Convert tuple keys to strings for JSON serialization
 ammunitions_for_json = {str(k): v for k, v in ammunitions.items()}
-with open("ammunitions.json", "w") as f:
+logs_dir = Path(__file__).parents[3] / "logs"
+logs_dir.mkdir(exist_ok=True)
+with open(logs_dir / "ammunitions.json", "w") as f:
     json.dump(ammunitions_for_json, f, indent=4)
 logger.info(f"Resolved shared values for {len(ammunitions)} ammunition entries")
 
@@ -334,6 +341,6 @@ logger.info("Resolving shared values in missile dictionaries...")
 missiles = resolve_ammunition_shared_values_optimized(raw_missiles)
 # Convert tuple keys to strings for JSON serialization
 missiles_for_json = {str(k): v for k, v in missiles.items()}
-with open("missiles.json", "w") as f:
+with open(logs_dir / "missiles.json", "w") as f:
     json.dump(missiles_for_json, f, indent=4)
 logger.info(f"Resolved shared values for {len(missiles)} missile entries")
