@@ -105,7 +105,7 @@ def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_nam
         "TTransporterModuleDescriptor": { "handler": _handle_transporter_module, "args": [] },
         # "UnitCadavreGeneratorModuleDescriptor": { "handler": handle_unitcadavre_module, "args": [] },
         # "TIAStratModuleDescriptor": { "handler": handle_iastrat_module, "args": [] },
-        "TCapaciteModuleDescriptor": { "handler": handle_capacite_module, "args": [found_capacite_module] },
+        "TCapaciteModuleDescriptor": { "handler": handle_capacite_module, "args": [found_capacite_module, modules_list] },
         "TProductionModuleDescriptor": { "handler": _handle_production_module, "args": [] },
         "TZoneInfluenceMapModuleDescriptor": { "handler": _handle_zoneinfluencemap_module, "args": [] },
         "TInfluenceScoutModuleDescriptor": { "handler": _handle_influencescout_module, "args": [] },
@@ -117,7 +117,6 @@ def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_nam
         "TTacticalLabelModuleDescriptor": { "handler": _handle_tacticallabel_module, "args": [] },
         "TStrategicDataModuleDescriptor": { "handler": _handle_strategicdata_module, "args": [] },
         "TUnitUIModuleDescriptor": { "handler": handle_unitui_module, "args": [dictionary_entries, donor] },
-        "TShowRoomEquivalenceModuleDescriptor": { "handler": _handle_showroomequivalence_module, "args": [] },
         # "TUnitUpkeepModuleDescriptor": { "handler": handle_unitupkeep_module, "args": [] },
         "TDeploymentShiftModuleDescriptor": { "handler": _handle_deploymentshift_module, "args": [found_zoneinfluence_module] },
     }
@@ -129,6 +128,12 @@ def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_nam
 
         handling_data["handler"](logger, game_db, unit_data, edit_type, unit_name, 
                                  edits, module, *handling_data["args"])
+    
+    # Call handle_capacite_module if not found (otherwise it would have already been called)
+    if not found_capacite_module:
+        args = [found_capacite_module, modules_list]
+        handle_capacite_module(logger, game_db, unit_data, edit_type, unit_name,
+                               edits, None, *args)
     
     # Handle weapon descriptor for new units
     if edit_type == "new_units":
@@ -191,6 +196,12 @@ def _remove_modules(game_db, edit_type, unit_name, edits, modules_list) -> None:
     """Remove modules from new and existing units"""
     
     for module_to_remove in edits.get("modules_remove", []):
+        if module_to_remove.startswith("~/"):
+            for module in modules_list.v:
+                if not isinstance(module.v, ndf.model.Object) and module.v == module_to_remove:
+                    modules_list.v.remove(module.index)
+            continue
+        
         module = find_obj_by_type(modules_list.v, module_to_remove)
         if module:
             modules_list.v.remove(module.index)
@@ -206,7 +217,7 @@ def _handle_typeunit_module(logger, game_db, unit_data, edit_type, unit_name,
     """Handle TTypeUnitModuleDescriptor for existing and new units"""
     # TODO: Add the keys and values back to the dictionary entries
     for member, value in edits.get("TypeUnit", {}).items():
-        module.v.by_m(member).v = str(value)
+        module.v.by_m(member).v = value
         
 
 # TFormationModuleDescriptor
@@ -360,7 +371,7 @@ def _handle_infantryapparence_module(logger, game_db, unit_data, edit_type, unit
                                      edits, module, *args) -> None:
     """Handle InfantryApparenceModuleDescriptor for existing and new units"""
     if edit_type == "new_units" and "depictions" in edits:
-        module.v.by_m("Depiction").v = f"$/GFX/Depiction/Gfx_{unit_name}"
+        module.v.by_m("Depiction").v = f"$/GFX/Depiction/TacticDepiction_{unit_name}"
     
     if edit_type == "unit_edits":
         pass
@@ -371,7 +382,7 @@ def _handle_vehicleapparence_module(logger, game_db, unit_data, edit_type, unit_
                                     edits, module, *args) -> None:
     """Handle VehicleApparenceModuleDescriptor for existing and new units"""
     if edit_type == "new_units" and "depictions" in edits:
-        module.v.by_m("Depiction").v = f"$/GFX/Depiction/Gfx_{unit_name}"
+        module.v.by_m("MimeticName").v = f'"{unit_name}"'
     
     if edit_type == "unit_edits":
         pass
@@ -542,16 +553,7 @@ def _handle_strategicdata_module(logger, game_db, unit_data, edit_type, unit_nam
         module.v.by_m("UnitAttackValue").v = str(edits["UnitAttackValue"])
     if "UnitDefenseValue" in edits:
         module.v.by_m("UnitDefenseValue").v = str(edits["UnitDefenseValue"])
-            
-
-# TShowRoomEquivalenceModuleDescriptor
-def _handle_showroomequivalence_module(logger, game_db, unit_data, edit_type, unit_name,
-                                       edits, module, *args) -> None:
-    """Handle TShowRoomEquivalenceModuleDescriptor for existing and new units"""
-    
-    if edit_type == "new_units":
-        module.v.by_m("ShowRoomDescriptor").v = f"~/Descriptor_ShowRoomUnit_{unit_name}"
-    
+        
 
 # TDeploymentShiftModuleDescriptor
 def _handle_deploymentshift_module(logger, game_db, unit_data, edit_type, unit_name,
@@ -627,3 +629,4 @@ def _handle_orderable_module(logger, game_db, unit_data, edit_type, unit_name,
     
     if edit_type == "new_units":
         module.v.by_m("UnlockableOrders").v = f"~/Descriptor_OrderAvailability_{unit_name}"
+        

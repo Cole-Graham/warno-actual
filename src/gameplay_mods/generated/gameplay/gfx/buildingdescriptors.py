@@ -71,6 +71,7 @@ def _handle_fob_attributes(source_path: Any) -> None:
             "FOBPOL": "PUNKT ZAOPATRZENIA",
             "FOBRFA": "FELDDEPOT",
             "FOBSOV": "SKLAD SNABZHENIYA",
+            "FOBTCH": "tbd",
             "FOBUK": "FIELD SUPPLY POINT",
             "FOBUS": "FIELD SUPPLY POINT",
         }

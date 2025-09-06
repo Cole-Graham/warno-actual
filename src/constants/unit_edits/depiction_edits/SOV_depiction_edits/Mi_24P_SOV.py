@@ -27,7 +27,7 @@ mi_24p_sov: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
             "WeaponShootDataPropertyName": "'WeaponShootData_0_2'",
         },
         
-        ("Gfx_Mi_24P_SOV", "TacticAerialDepictionTemplate"): { # (Namespace (can be None), Object type)
+        ("TacticDepiction_Mi_24P_SOV", "TacticAerialDepictionDesc"): { # (Namespace (can be None), Object type)
             "Actions": (
                 f'MAP['
                 f'\n                    ( "weapon_effet_tag1", Weapon_GatlingAir_AP_Gsh_30_2_30mm_x2 ),'

@@ -171,7 +171,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": [0, 0, 7, 5],
+        "availability": [0, 7, 5, 0],
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {

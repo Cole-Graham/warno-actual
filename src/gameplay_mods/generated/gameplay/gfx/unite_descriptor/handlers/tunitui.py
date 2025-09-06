@@ -107,8 +107,5 @@ def handle_unitui_module(
     # Check for custom button texture in edits, else default to unit name
     module.v.by_m("ButtonTexture").v = f"'Texture_Button_Unit_{edits.get("ButtonTexture", unit_name)}'"
     
-    if "Nation" in edits:
-        module.v.by_m("CountryTexture").v = f"'CommonTexture_MotherCountryFlag_{edits['Nation']}'"
-    
     if "TypeStrategicCount" in edits:
         module.v.by_m("TypeStrategicCount").v = edits["TypeStrategicCount"]  # noqa

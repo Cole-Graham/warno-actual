@@ -271,7 +271,7 @@ POL_NEW_UNITS = {
         "ShowroomGUID": "6211126c-6458-4edc-8e7e-a7d17338c60a",
         "CadavreGUID": "8f3685da-a277-41c1-8870-3d60c6acc84f",
         "modules_add": ["TCommanderModuleDescriptor()"],
-        "modules_remove": ["WeaponDescriptor", "WeaponManager", "Transporter"],
+        "modules_remove": ["WeaponDescriptor", "WeaponManager", "Transporter", "~/TargetManagerModuleDescriptor"],
         "depictions": {
             "custom": {
                 "DepictionVehicles.ndf": ["TacticVehicleDepictionDesc"],
@@ -286,7 +286,7 @@ POL_NEW_UNITS = {
             "token": "RTBIJFPDGK",
         },
         "TypeUnit": {
-            "AcknowUnitType": "~/TAcknowUnitType_Command",
+            "AcknowUnitTypes": "[~/TAcknowUnitType_Command]",
         },
         "TagSet": {
             "overwrite_all": [

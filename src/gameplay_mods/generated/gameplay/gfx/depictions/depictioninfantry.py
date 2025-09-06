@@ -33,8 +33,6 @@ def _handle_new_units(source_path: Any, game_db: Any) -> None:
         depiction_key = unit_name.lower()
 
         # Clone all required objects
-        depictionsquad_obj = source_path.by_namespace(f"Gfx_{donor_name}").copy()
-        depictionsquad_obj.namespace = f"Gfx_{unit_name}"
 
         # AllWeaponAlternatives_
         weaponalternatives_obj = source_path.by_namespace(f"AllWeaponAlternatives_{donor_name}").copy()
@@ -248,7 +246,6 @@ def _handle_new_units(source_path: Any, game_db: Any) -> None:
         comment_title = f"// *****************************[ {unit_name} ]*****************************\n"
         new_entries = (
             comment_title,
-            depictionsquad_obj,
             weaponalternatives_obj,
             weaponsubdepictions_obj,
             weaponbackpack_obj,

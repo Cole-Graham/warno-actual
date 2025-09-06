@@ -12,16 +12,17 @@ def handle_capacite_module(
 ) -> None:
     """Handle TCapaciteModuleDescriptor for existing and new units"""
     found_capacite_module = args[0]
-    default_skill_list = module.v.by_m("DefaultSkillList")
+    modules_list = args[1]
     
     if not found_capacite_module:
-        _add_capacite_module(logger, unit_data, edit_type, unit_name, edits, module)
+        _add_capacite_module(logger, unit_data, edit_type, unit_name, edits, module, modules_list)
     
     else:
+        default_skill_list = module.v.by_m("DefaultSkillList")
         _add_capacities(logger, unit_data, edit_type, unit_name, edits, default_skill_list)
     
 
-def _add_capacite_module(logger, unit_data, edit_type, unit_name, edits, module) -> None:
+def _add_capacite_module(logger, unit_data, edit_type, unit_name, edits, module, modules_list) -> None:
     """Add a TCapaciteModuleDescriptor to a unit"""
     
     capacities_to_add = edits.get("capacities", {}).get("add_capacities", [])
@@ -36,7 +37,7 @@ def _add_capacite_module(logger, unit_data, edit_type, unit_name, edits, module)
             f"        ]"
             f")"
         )
-        module.v.add(capacities_module)
+        modules_list.v.add(capacities_module)
         logger.info(f"Added capacities module to {unit_name}")
 
 

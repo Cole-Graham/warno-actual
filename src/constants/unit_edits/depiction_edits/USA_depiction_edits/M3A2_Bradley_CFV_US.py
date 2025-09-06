@@ -8,7 +8,7 @@ m3a2_bradley_cfv_us: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
     "valid_files": ["DepictionVehicles.ndf"],
     "DepictionVehicles_ndf": {
         
-        ("Gfx_M3A2_Bradley_CFV_US", "TacticVehicleDepictionDesc"): {
+        ("TacticDepiction_M3A2_Bradley_CFV_US", "TacticVehicleDepictionDesc"): {
             "SubDepictionGenerators": {
                 "TransportedInfantrySubGenerator": {
                     "add": None,

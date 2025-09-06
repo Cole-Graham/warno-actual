@@ -65,15 +65,13 @@ def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
                 if entry.namespace == "InfantrySelectorTactic_00_01":
                     break
 
-                # Get unit name from Gfx_ entries
-                if entry.namespace.startswith("Gfx_"):
-                    current_unit = entry.namespace.replace("Gfx_", "")
+                # Get unit name from TacticDepiction_ entries
+                if entry.namespace.startswith("AllWeaponAlternatives_"):
+                    current_unit = entry.namespace.replace("AllWeaponAlternatives_", "")
                     logger.debug(f"Found new unit: {current_unit}")
                     depiction_data[current_unit] = deepcopy(template_data_entry)
-                    continue
-
-                if not current_unit:
-                    continue
+                    if not current_unit:
+                        continue
 
                 # Process weapon alternatives
                 if entry.namespace == f"AllWeaponAlternatives_{current_unit}":

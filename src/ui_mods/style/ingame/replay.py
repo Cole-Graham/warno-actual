@@ -76,16 +76,7 @@ def _update_slider_components(elements: Any) -> None:
                 
                 elif is_obj_type(subcomponent.v, "BUCKGaugeValueDescriptor"):
                     subcomponent.v.by_member("BackgroundBlockColorToken").v = '"SliderBasic/SliderBar_M81"'
-                    
-                    nested_subcomponents = subcomponent.v.by_member("Components").v
-                    for nested_component in nested_subcomponents:
-                        if not isinstance(nested_component.v, ndf.model.Object):
-                            continue
-                        
-                        if is_obj_type(nested_component.v, "BUCKContainerDescriptor"):
-                            nested_component.v.by_m("BackgroundBlockColorToken").v = '"SliderBasic/ThumbColor_M81"'
-                        
-    
+
     logger.debug("Updated slider component colors")
 
 

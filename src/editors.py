@@ -49,7 +49,6 @@ from .gameplay_mods import (
     edit_gen_gp_gfx_experiencelevels,
     edit_gen_gp_gfx_firedescriptor,
     edit_gen_gp_gfx_orderavailabilitytactic,
-    edit_gen_gp_gfx_showroomunits,
     edit_gen_gp_gfx_smokedescriptor,
     edit_gen_gp_gfx_unitedescriptor,
     edit_gen_gp_gfx_weapondescriptor,
@@ -160,7 +159,6 @@ __all__ = [
     'edit_gen_gp_gfx_experiencelevels',
     'edit_gen_gp_gfx_firedescriptor',
     'edit_gen_gp_gfx_orderavailabilitytactic',
-    'edit_gen_gp_gfx_showroomunits',
     'edit_gen_gp_gfx_smokedescriptor',
     'edit_gen_gp_gfx_unitedescriptor',
     'edit_gen_gp_gfx_weapondescriptor',
@@ -366,9 +364,6 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         ],
         "GameData/Generated/Gameplay/Gfx/MissileCarriageDepiction.ndf": [
             (edit_gen_gp_gfx_missilecarriagedepiction, "gameplay"),
-        ],
-        "GameData/Generated/Gameplay/Gfx/ShowRoomUnits.ndf": [
-            (edit_gen_gp_gfx_showroomunits, "gameplay"),
         ],
         # "GameData/Generated/Gameplay/Gfx/UniteCadavreDescriptor.ndf": [
         #     unit_edits_cadavre_descriptor,

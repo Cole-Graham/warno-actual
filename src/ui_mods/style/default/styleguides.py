@@ -261,11 +261,6 @@ def edit_defaultstyleguides(source_path) -> None:
             index = block_colors_map.by_k('"PanelScore/ScoreBackground"').index + 1
             block_colors_map.insert(index, panelscore_scorebackground_m81)
             
-            # Add SliderBasic m81
-            sliderbasic_thumbcolor_m81 = ('"SliderBasic/ThumbColor_M81"', 'MAP [ ( ~/ComponentState/Normal, TColorRTTI( Color = M81_ArtichokeVeryLight ) ), ]')
-            index = block_colors_map.by_k('"SliderBasic/ThumbColor"').index + 1
-            block_colors_map.insert(index, sliderbasic_thumbcolor_m81)
-            
             sliderbasic_sliderbar_m81 = ('"SliderBasic/SliderBar_M81"', 'MAP [ ( ~/ComponentState/Normal, TColorRTTI( Color = M81_Ebony ) ), ]')
             index = block_colors_map.by_k('"SliderBasic/SliderBar"').index + 1
             block_colors_map.insert(index, sliderbasic_sliderbar_m81)

@@ -118,7 +118,7 @@ USA_NEW_UNITS = {
             ],
         "modules_remove": ["TTransporterModuleDescriptor"],
         "TypeUnit": {
-            "AcknowUnitType": "~/TAcknowUnitType_Logistic",
+            "AcknowUnitTypes": "[~/TAcknowUnitType_Logistic]",
         },
         "depictions": {
             "remove": {

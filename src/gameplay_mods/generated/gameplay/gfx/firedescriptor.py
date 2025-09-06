@@ -41,6 +41,8 @@ def edit_gen_gp_gfx_firedescriptor(source_path) -> None:
                 new_entry.v.by_m("DescriptorId").v = new_guid
             else:
                 logger.warning(f"New DescriptorId not found for donor {donor}")
+                
+            new_entry.v.by_m("ClassNameForDebug").v = f"'FireDescriptor_{name}'"
 
             modules_list = new_entry.v.by_m("ModulesDescriptors")
             for module in modules_list.v:

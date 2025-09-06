@@ -94,6 +94,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "RadiusSplashSuppressDamagesGRU": 66,
                 "SuppressDamages": 115,
                 "FlightTimeForSpeed": 3.3,
+                "SupplyCost": 300.0,
             },
         },
     },
@@ -244,6 +245,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1400,
+                "SupplyCost": 300.0,
             },
         },
     },

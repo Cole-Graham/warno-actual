@@ -17,7 +17,7 @@ dca_m167a2_vulcan_20mm_uk: Dict[str, Dict[str, Any]] = {
             f')'
         ),
         "TacticVehicleDepictionDesc": (
-            f'export Gfx_DCA_M167A2_Vulcan_20mm_UK is TacticVehicleDepictionDesc'
+            f'TacticDepiction_DCA_M167A2_Vulcan_20mm_UK is TacticVehicleDepictionDesc'
             f'('
             f"    CoatingName = 'DCA_M167A2_Vulcan_20mm_UK'"
             f'    Selector = SpecificVehicleDepictionSelector'

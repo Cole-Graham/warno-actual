@@ -13,7 +13,7 @@ mortier_2b9_vasilek_nonpara_sov: Dict[str, Dict[Union[str, Tuple[str, str]], dic
             "WeaponShootDataPropertyName": ["'WeaponShootData_0_3'"],
         },
         
-        ("Gfx_Mortier_2B9_Vasilek_nonPara_SOV", "TacticVehicleDepictionDesc"): {
+        ("TacticDepiction_Mortier_2B9_Vasilek_nonPara_SOV", "TacticVehicleDepictionDesc"): {
             "Operators": {
                 7: ("add", (
                     "DepictionOperator_Mortier_2B9_Vasilek_nonPara_SOV_Weapon3"

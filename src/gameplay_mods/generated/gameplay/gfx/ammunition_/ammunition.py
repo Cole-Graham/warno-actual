@@ -114,19 +114,19 @@ def edit_gen_gp_gfx_ammunition(source_path, game_db: Dict[str, Any]) -> None:
                         base_cost = _get_base_supply_cost(weapon_name)
                         if len(data["NbWeapons"]) > 1:
                             _create_quantity_variants(
-                                source_path, base_descr, weapon_name, data["NbWeapons"], base_cost, is_new, use_strength
+                                source_path, base_descr, weapon_name, data["NbWeapons"], base_cost,
+                                is_new, use_strength, category
                             )
                         elif category == "small_arms" and data["NbWeapons"][0] > 1:
                             # Set base namespace first with strength if needed
                             if use_strength:
-                                for strength in range(2, 15):
+                                for strength in range(2, 17):
                                     strength_descr = base_descr.copy()
                                     strength_descr.namespace = (
                                         f"Ammo_{weapon_name}_strength{strength}_x{data['NbWeapons'][0]}"
                                     )
-                                    strength_descr.v.by_m("Arme").v.by_m("Index").v = str(
-                                        strength - 1
-                                    )  # Index starts at 1
+                                    arme_index = min(strength - 1, 13)
+                                    strength_descr.v.by_m("Arme").v.by_m("Index").v = str(arme_index)
 
                                     # Generate unique GUIDs for descriptor IDs
                                     strength_descr.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
@@ -140,10 +140,11 @@ def edit_gen_gp_gfx_ammunition(source_path, game_db: Dict[str, Any]) -> None:
 
                         elif category == "small_arms" and data["NbWeapons"][0] == 1:
                             if use_strength and not is_new:
-                                for strength in range(2, 15):
+                                for strength in range(2, 17):
                                     strength_descr = base_descr.copy()
                                     strength_descr.namespace = f"Ammo_{weapon_name}_strength{strength}"
-                                    strength_descr.v.by_m("Arme").v.by_m("Index").v = str(strength - 1)
+                                    arme_index = min(strength - 1, 13)
+                                    strength_descr.v.by_m("Arme").v.by_m("Index").v = str(arme_index)
 
                                     # Generate unique GUIDs for descriptor IDs
                                     strength_descr.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
@@ -201,7 +202,16 @@ def _should_use_strength_variant(weapon_name: str) -> bool:
     return False
 
 
-def _create_quantity_variants(source_path, base_descr, weapon_name, quantities, base_cost, is_new, use_strength):
+def _create_quantity_variants(
+    source_path,
+    base_descr,
+    weapon_name,
+    quantities,
+    base_cost,
+    is_new,
+    use_strength,
+    category,
+):
     """Create quantity and strength variants from base ammunition descriptor."""
     logger.info(f"Creating quantity and strength variants for {weapon_name} (is_new={is_new})")
     logger.info(f"Quantities: {quantities}")
@@ -213,7 +223,7 @@ def _create_quantity_variants(source_path, base_descr, weapon_name, quantities, 
     for i, quantity in enumerate(quantities):
         if use_strength:
             # Create strength variants for each quantity
-            for strength in range(2, 15):  # 2 to 14 inclusive
+            for strength in range(2, 17):  # 2 to 16 inclusive
                 # Only create quantity variants up to the strength value
                 effective_quantity = min(quantity, strength)
 
@@ -239,11 +249,19 @@ def _create_quantity_variants(source_path, base_descr, weapon_name, quantities, 
 
                     # Set Arme Index based on strength
                     arme_obj = variant.v.by_m("Arme").v
-                    arme_obj.by_m("Index").v = str(strength - 1)
+                    arme_index = min(strength - 1, 13)
+                    arme_obj.by_m("Index").v = str(arme_index)
 
                     if base_cost is not None:
                         # Scale supply cost by effective quantity
-                        variant.v.by_m("SupplyCost").v = str(base_cost * effective_quantity)
+                        variant_supply_cost = base_cost * effective_quantity
+                        if category == "small_arms":
+                            # 66% modifier to limit the supply costs of small arms
+                            # None digits will round to the nearest integer, then convert back to float
+                            small_arms_variant_cost = float(round((variant_supply_cost * 0.66), None))
+                            variant.v.by_m("SupplyCost").v = str(small_arms_variant_cost)
+                        else:
+                            variant.v.by_m("SupplyCost").v = str(variant_supply_cost)
 
                     source_path.add(variant)
                     created_variants.add(namespace)
@@ -251,8 +269,18 @@ def _create_quantity_variants(source_path, base_descr, weapon_name, quantities, 
                 else:
                     # Update both supply cost and Arme Index
                     if base_cost is not None:
-                        existing.v.by_m("SupplyCost").v = str(base_cost * effective_quantity)
-                    existing.v.by_m("Arme").v.by_m("Index").v = str(strength - 1)
+                        # Scale supply cost by effective quantity
+                        existing_supply_cost = base_cost * effective_quantity
+                        if category == "small_arms":
+                            # 66% modifier to limit the supply costs of small arms
+                            # None digits will round to the nearest integer, then convert back to float
+                            small_arms_existing_cost = float(round((existing_supply_cost * 0.66), None))
+                            existing.v.by_m("SupplyCost").v = str(small_arms_existing_cost)
+                        else:
+                            existing.v.by_m("SupplyCost").v = str(existing_supply_cost)
+
+                    arme_index = min(strength - 1, 13)
+                    existing.v.by_m("Arme").v.by_m("Index").v = str(arme_index)
                     created_variants.add(namespace)
                     logger.debug(f"Updated existing variant {namespace}")
         else:
@@ -270,14 +298,30 @@ def _create_quantity_variants(source_path, base_descr, weapon_name, quantities, 
                 variant.namespace = namespace
 
                 if base_cost is not None:
-                    variant.v.by_m("SupplyCost").v = str(base_cost * quantity)
+                    # Scale supply cost by quantity
+                    variant_supply_cost = base_cost * quantity
+                    if category == "small_arms":
+                        # 66% modifier to limit the supply costs of small arms
+                        # None digits will round to the nearest integer, then convert back to float
+                        small_arms_variant_cost = float(round((variant_supply_cost * 0.66), None))
+                        variant.v.by_m("SupplyCost").v = str(small_arms_variant_cost)
+                    else:
+                        variant.v.by_m("SupplyCost").v = str(variant_supply_cost)
 
                 source_path.add(variant)
                 logger.info(f"Created new variant {namespace}")
             else:
                 if base_cost is not None:
-                    existing.v.by_m("SupplyCost").v = str(base_cost * quantity)
-                logger.debug(f"Updated existing variant {namespace}")
+                    # Scale supply cost by quantity
+                    existing_supply_cost = base_cost * quantity
+                    if category == "small_arms":
+                        # 66% modifier to limit the supply costs of small arms
+                        # None digits will round to the nearest integer, then convert back to float
+                        small_arms_existing_cost = float(round((existing_supply_cost * 0.66), None))
+                        existing.v.by_m("SupplyCost").v = str(small_arms_existing_cost)
+                    else:
+                        existing.v.by_m("SupplyCost").v = str(existing_supply_cost)
+                    logger.debug(f"Updated existing variant {namespace}")
 
 
 def _apply_weapon_edits(descr: Any, category: str, data: Dict, ammo_data: Dict) -> None:
@@ -370,7 +414,7 @@ def get_supply_costs(weapons_dict: Dict) -> List[Tuple[str, int]]:
             continue
         if supply_cost := data.get("Ammunition", {}).get("parent_membr", {}).get("SupplyCost", None):
             weapon_costs.append((weapon, supply_cost))
-        elif base_supply_cost := data.get("BaseSupplyCost", None):
+        elif base_supply_cost := data.get("SupplyCost", None):
             weapon_costs.append((weapon, base_supply_cost))
     return weapon_costs
 

@@ -579,7 +579,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "SupplyCost": 1.0,
-        "NbWeapons": [1],
+        "NbWeapons": [2, 1],
         "WeaponDescriptor": {
             "Salves": 18,
         },
@@ -608,7 +608,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "SupplyCost": 1.0,
-        "NbWeapons": [10, 9, 6, 4, 3, 1],
+        "NbWeapons": [10, 9, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 18,               
         },
@@ -818,7 +818,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "SupplyCost": 1.0,
-        "NbWeapons": [6],
+        "NbWeapons": [6, 5, 2, 1],
         "WeaponDescriptor": {
             "Salves": 11,               
         },
@@ -1306,6 +1306,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 1.5,
                 "TimeBetweenTwoSalvos": 5.0,
                 "NbTirParSalves": 8,
+                "SupplyCost": 1.0,
                 "AffichageMunitionParSalve": 40,
             },
         },
@@ -1337,6 +1338,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 1.5,
                 "TimeBetweenTwoSalvos": 5.0,
                 "NbTirParSalves": 8,
+                "SupplyCost": 1.0,
                 "AffichageMunitionParSalve": 40,
             },
         },
@@ -1360,6 +1362,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "SuppressDamages": 24,
                 "TimeBetweenTwoSalvos": 2.0,
                 "NbTirParSalves": 5,
+                "SupplyCost": 1.0,
                 "AffichageMunitionParSalve": 25, 
             },
         },
@@ -1425,6 +1428,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "SuppressDamages": 24,
                 "TimeBetweenTwoSalvos": 2.0,
                 "NbTirParSalves": 5,
+                "SupplyCost": 1.0,
                 "AffichageMunitionParSalve": 25,
             }
         },
@@ -1787,7 +1791,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
         "Texture": "FM_kbk_AKM",
         "SupplyCost": 1.0,
-        "NbWeapons": [1],
+        "NbWeapons": [2, 1],
         "WeaponDescriptor": {
             "Salves": 22,
         },
@@ -1938,7 +1942,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "SupplyCost": 1.0,
-        "NbWeapons": [1],
+        "NbWeapons": [2, 1],
         "WeaponDescriptor": {
             "Salves": 11,
         },
@@ -1997,7 +2001,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "SupplyCost": 1.0,
-        "NbWeapons": [1],
+        "NbWeapons": [2, 1],
         "WeaponDescriptor": {
             "Salves": 11,
         },
@@ -2085,7 +2089,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "SupplyCost": 1.0,
-        "NbWeapons": [1],
+        "NbWeapons": [2, 1],
         "WeaponDescriptor": {
             "Salves": 11,
         },
@@ -2173,7 +2177,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "SupplyCost": 1.0,
-        "NbWeapons": [1],
+        "NbWeapons": [2, 1],
         "WeaponDescriptor": {
             "Salves": 11,
         },
@@ -2232,7 +2236,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "SupplyCost": 1.0,
-        "NbWeapons": [2],
+        "NbWeapons": [2, 1],
         "WeaponDescriptor": {
             "Salves": 11,
         },
@@ -2290,7 +2294,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "SupplyCost": 1.0,
-        "NbWeapons": [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+        "NbWeapons": [13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 22,
         },
@@ -2349,7 +2353,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "SupplyCost": 1.0,
-        "NbWeapons": [1],
+        "NbWeapons": [2, 1],
         "WeaponDescriptor": {
             "Salves": 11,
         },
@@ -2408,7 +2412,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "SupplyCost": 1.0,
-        "NbWeapons": [1],
+        "NbWeapons": [2, 1],
         "WeaponDescriptor": {
             "Salves": 11,
         },

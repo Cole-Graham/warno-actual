@@ -139,20 +139,20 @@ def _add_damage_resistance_values(source_path) -> None:
     resist_params_obj = source_path.by_n("DamageResistanceParams").v
 
     # Add family definitions
-    damage_family_list = resist_params_obj.by_m("DamageFamilyDefinitionList").v
+    damage_family_list = resist_params_obj.by_m("DamageFamilyCounts").v
     families = {
-        "sniper": "TDamageTypeFamilyDefinition(Family=DamageFamily_sniper MaxIndex=2)",
-        # "full_ball": "TDamageTypeFamilyDefinition(Family=DamageFamily_full_balle MaxIndex=1)",
-        "dpicm": "TDamageTypeFamilyDefinition(Family=DamageFamily_dpicm MaxIndex=4)",
-        # "kpvt": "TDamageTypeFamilyDefinition(Family=DamageFamily_kpvt MaxIndex=1)",
-        "nplm_bomb": "TDamageTypeFamilyDefinition(Family=DamageFamily_nplm_bomb MaxIndex=1)",
-        "pgb_bomb": "TDamageTypeFamilyDefinition(Family=DamageFamily_pgb_bomb MaxIndex=1)",
-        "manpad_hagru": "TDamageTypeFamilyDefinition(Family=DamageFamily_manpad_hagru MaxIndex=1)",
-        "manpad_tbagru": "TDamageTypeFamilyDefinition(Family=DamageFamily_manpad_tbagru MaxIndex=1)",
-        "sa_intermediate": "TDamageTypeFamilyDefinition(Family=DamageFamily_sa_intermediate MaxIndex=13)",
-        "sa_full": "TDamageTypeFamilyDefinition(Family=DamageFamily_sa_full MaxIndex=13)",
-        "12_7": "TDamageTypeFamilyDefinition(Family=DamageFamily_12_7 MaxIndex=1)",
-        "14_5": "TDamageTypeFamilyDefinition(Family=DamageFamily_14_5 MaxIndex=1)",
+        "sniper": ("(DamageFamily_sniper, 2)"),
+        # "full_ball": ("(DamageFamily_full_balle, 1)"),
+        "dpicm": ("(DamageFamily_dpicm, 4)"),
+        # "kpvt": ("(DamageFamily_kpvt, 1)"),
+        "nplm_bomb": ("(DamageFamily_nplm_bomb, 1)"),
+        "pgb_bomb": ("(DamageFamily_pgb_bomb, 1)"),
+        "manpad_hagru": ("(DamageFamily_manpad_hagru, 1)"),
+        "manpad_tbagru": ("(DamageFamily_manpad_tbagru, 1)"),
+        "sa_intermediate": ("(DamageFamily_sa_intermediate, 13)"),
+        "sa_full": ("(DamageFamily_sa_full, 13)"),
+        "12_7": ("(DamageFamily_12_7, 1)"),
+        "14_5": ("(DamageFamily_14_5, 1)"),
     }
 
     for family_name, family_def in families.items():
@@ -196,8 +196,8 @@ def _apply_damage_family_edits(source_path) -> None:
     damage_params_obj = source_path.by_n("DamageResistanceParams").v
 
     # Add new infantry resistance family
-    resistance_list = damage_params_obj.by_m("ResistanceFamilyDefinitionList").v
-    resistance_list.add("TResistanceTypeFamilyDefinition(Family=ResistanceFamily_infanterieWA MaxIndex=13)")
+    resistance_list = damage_params_obj.by_m("ResistanceFamilyCounts").v
+    resistance_list.add("(ResistanceFamily_infanterieWA, 13)")
     logger.info("Added infantryWA resistance family")
 
     damage_array = damage_params_obj.by_m("Values").v

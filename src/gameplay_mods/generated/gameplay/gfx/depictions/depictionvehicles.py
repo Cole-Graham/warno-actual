@@ -7,6 +7,7 @@ from src import ndf
 from src.constants.new_units import NEW_DEPICTIONS, NEW_UNITS
 from src.constants.unit_edits import load_depiction_edits
 from src.utils.logging_utils import setup_logger
+from src.utils.ndf_utils import find_obj_by_type, find_obj_by_namespace
 
 logger = setup_logger(__name__)
 
@@ -26,7 +27,7 @@ def _handle_new_units(source_path: Any) -> None:
 
     def get_base_namespace(namespace_: str, prefix: str) -> str:
         """Extract the base namespace after the given prefix."""
-        if namespace_.startswith("Gfx"):
+        if namespace_.startswith("TacticDepiction"):
             return namespace_.split(f"{prefix}_")[-1]
         elif namespace_.startswith("DepictionOperator"):
             parts = namespace_.split(f"{prefix}_")[-1].rsplit("_", 1)[0]
@@ -40,12 +41,19 @@ def _handle_new_units(source_path: Any) -> None:
         if is_weapon:
             new_obj.namespace = f"DepictionOperator_{unit_name_}_Weapon{weapon_num}"
         else:
-            new_obj.namespace = f"Gfx_{unit_name_}"
+            new_obj.namespace = f"TacticDepiction_{unit_name_}"
             depiction_veh_edits = edits.get("depictions", {}).get("remove", {}).get("DepictionVehicles_ndf", {})
             if "remove_members" in depiction_veh_edits:
                 for member in depiction_veh_edits["remove_members"]:
                     new_obj.v.remove_by_member(member)
         return new_obj
+    
+    def add_unit_mimetic(unit_name: str) -> None:
+        tmemeticunitregistration_descr = find_obj_by_type(source_path, "TMimeticUnitRegistration")
+        mimeticunit_map = tmemeticunitregistration_descr.v.by_m("MimeticUnit")
+        new_entry = f"('{unit_name}', TacticDepiction_{unit_name})"
+        mimeticunit_map.v.add(new_entry)
+        logger.info(f"Added unit mimetic for {unit_name}")
 
     for donor, edits in NEW_UNITS.items():
         donor_name = donor[0]
@@ -85,13 +93,15 @@ def _handle_new_units(source_path: Any) -> None:
             ):
                 logger.warning(f"No custom depiction found for {unit_name} (key: {depiction_key})")
 
-        # Handle default depictions if no customs were added
+        # Handle default depictions if customs were not added
         if not custom_veh_added or not custom_operator_added:
             weapon_count = 0
             new_objects = []
 
             for obj_row in source_path:
                 namespace = obj_row.namespace
+                if namespace is None:
+                    continue
 
                 if "DepictionOperator_" in namespace and not custom_operator_added:
                     base_namespace = get_base_namespace(namespace, "DepictionOperator")
@@ -99,14 +109,17 @@ def _handle_new_units(source_path: Any) -> None:
                         weapon_count += 1
                         new_objects.append(create_new_object(obj_row, unit_name, True, weapon_count, edits))
 
-                elif "Gfx_" in namespace and not custom_veh_added:
-                    base_namespace = get_base_namespace(namespace, "Gfx")
+                elif "TacticDepiction_" in namespace and not custom_veh_added:
+                    base_namespace = get_base_namespace(namespace, "TacticDepiction")
                     if donor_name == base_namespace:
                         new_objects.append(create_new_object(obj_row, unit_name, False, weapon_count, edits))
 
             for obj in new_objects:
                 logger.info(f"Adding new object to DepictionVehicles.ndf: {obj.namespace}")
                 source_path.add(obj)
+        
+        # Add to TMimeticUnitRegistration
+        add_unit_mimetic(unit_name)
                 
 
 def _handle_unit_edits(source_path: Any) -> None:
@@ -150,11 +163,11 @@ def _handle_unit_edits(source_path: Any) -> None:
                     new_entry = _handle_weapon_operator(unit_name, new_entry, edits)
 
                     # Calculate insertion index
-                    row_index = source_path.by_n(f"Gfx_{unit_name}").index
+                    row_index = source_path.by_n(f"TacticDepiction_{unit_name}").index
                     source_path.insert(row_index, new_entry)
                     logger.info(f"Inserted new weapon operator for {unit_name} at index {row_index}")
 
-                elif namespace.startswith("Gfx_"):
+                elif namespace.startswith("TacticDepiction_"):
                     # Handle vehicle depiction copy
                     donor = source_path.by_n(namespace)
                     if not donor:
@@ -175,7 +188,7 @@ def _handle_unit_edits(source_path: Any) -> None:
                         _handle_weapon_operator(unit_name, weapon_operator, edits)
                         logger.info(f"Updated weapon operator for {unit_name}")
 
-                elif namespace.startswith("Gfx_"):
+                elif namespace.startswith("TacticDepiction_"):
                     vehicle_depiction = source_path.by_n(namespace)
                     if vehicle_depiction:
                         _handle_vehicle_depiction(unit_name, vehicle_depiction, edits)

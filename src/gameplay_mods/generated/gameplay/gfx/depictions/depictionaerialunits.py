@@ -61,7 +61,7 @@ def edit_gen_gp_gfx_depictionaerialunits(source_path: Any) -> None:
                         operator.v.by_m(row_name_or_type).v = value
                         logger.info(f"Edited {row_name_or_type} for {unit_name}")
 
-            elif namespace and namespace.startswith("Gfx_"):
+            elif namespace and namespace.startswith("TacticDepiction_"):
                 aerial_template = source_path.by_n(namespace)
 
                 for row_name_or_type, value in edits.items():

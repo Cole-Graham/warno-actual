@@ -58,9 +58,9 @@ def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
                 if not hasattr(entry, "namespace"):
                     continue
 
-                # Get unit name from Gfx_ entries
-                if entry.namespace.startswith("Gfx_"):
-                    current_unit = entry.namespace.replace("Gfx_", "")
+                # Get unit name from TacticDepiction_ entries
+                if entry.namespace.startswith("TacticDepiction_"):
+                    current_unit = entry.namespace.replace("TacticDepiction_", "")
                     logger.debug(f"Found new unit: {current_unit}")
                     depiction_data[current_unit] = deepcopy(template_data_entry)
                     continue

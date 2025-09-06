@@ -23,7 +23,6 @@ from .depictions import (
     edit_gen_gp_gfx_depictionvehiclesshowroom,
     edit_gen_gp_gfx_missilecarriage,
     edit_gen_gp_gfx_missilecarriagedepiction,
-    edit_gen_gp_gfx_showroomunits,
 )
 from .effetssurunite import edit_gen_gp_gfx_effetssurunite
 from .experiencelevels import edit_gen_gp_gfx_experiencelevels
@@ -58,7 +57,6 @@ __all__ = [
     'edit_gen_gp_gfx_missilecarriage',
     'edit_gen_gp_gfx_missilecarriagedepiction',
     'edit_gen_gp_gfx_orderavailabilitytactic',
-    'edit_gen_gp_gfx_showroomunits',
     'edit_gen_gp_gfx_smokedescriptor',
     'edit_gen_gp_gfx_unitedescriptor',
     'edit_gen_gp_gfx_weapondescriptor',

@@ -8,7 +8,6 @@ from .depictionvehicles import edit_gen_gp_gfx_depictionvehicles
 from .depictionvehiclesshowroom import edit_gen_gp_gfx_depictionvehiclesshowroom
 from .missilecarriage import edit_gen_gp_gfx_missilecarriage
 from .missilecarriagedepiction import edit_gen_gp_gfx_missilecarriagedepiction
-from .showroomunits import edit_gen_gp_gfx_showroomunits
 
 __all__ = [
     "edit_gen_gp_gfx_depictionaerialghosts",
@@ -21,5 +20,4 @@ __all__ = [
     "edit_gen_gp_gfx_depictionvehiclesshowroom",
     "edit_gen_gp_gfx_missilecarriage",
     "edit_gen_gp_gfx_missilecarriagedepiction",
-    "edit_gen_gp_gfx_showroomunits",
 ]

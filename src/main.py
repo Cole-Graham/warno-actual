@@ -66,7 +66,7 @@ def main() -> None:
         mod_src_path = get_mod_src_path(config)
         mod_dst_path = get_mod_dst_path(config)
         mod = ndf.Mod(str(mod_src_path), str(mod_dst_path))
-        # mod.check_if_src_is_newer()
+        mod.check_if_src_is_newer()
 
         # Get all file editors based on build target
         editors = get_all_editors(config)

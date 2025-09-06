@@ -178,7 +178,6 @@ NO_CHOC_MOVE_CAPACITY = (
     '('
     '    DescriptorId     = GUID:{d9387c72-50d7-4781-929b-f3d08c3ea241}'
     '    Name             = "no_Choc_Move"'
-    '    NameToken        = "None"'
     '    CumulEffect          = ~/CapaciteCumulEffect_jamais'
     '    Declenchement        = ~/CapaciteDeclenchementType_automatique'
     '    TargetTeamFilter     = ~/CapaciteTargetFilter_joueur'
@@ -189,7 +188,6 @@ NO_CHOC_MOVE_CAPACITY = (
     '    CanBeCastFromTransport  = True'
     '    TargetEffect         = ~/UnitEffect_Ajoute_Tag_no_Choc_Move'
     '    EffectDuration   = -1.00'
-    '    MaxTargetNb            = 1'
     '    TargetInBuilding       = True'
     '    TargetInTransport      = True'
     '    TargetInSelf           = True'
@@ -197,8 +195,8 @@ NO_CHOC_MOVE_CAPACITY = (
     '    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never'
     '    DisplayRangeColor      = RGBA[0,0,0,0]'
     '    DisplayRangeThickness  = 0.00'
-    '    TagsCiblePossible = []'
-    '    TagsCibleExcluded = []'
+    '    AllowedTargetTags = []'
+    '    ForbiddenTargetTags = []'
     '    Conditions = ['
     '        ~/ConditionNotInMovement,'
     '    ]'
@@ -210,7 +208,6 @@ CHOC_MOVE_OK_CAPACITY = (
     '('
     '    DescriptorId = GUID:{28b2ef52-3484-4820-b0e1-2103683706b2}'
     '    Name = "Choc_Move_ok"'
-    '    NameToken = "None"'
     '    CumulEffect = ~/CapaciteCumulEffect_jamais'
     '    Declenchement = ~/CapaciteDeclenchementType_automatique'
     '    TargetTeamFilter = ~/CapaciteTargetFilter_ennemi'
@@ -222,7 +219,6 @@ CHOC_MOVE_OK_CAPACITY = (
     '    TargetEffect = nil'
     '    SelfEffect = ~/UnitEffect_Ajoute_Tag_Choc_Move_ok'
     '    EffectDuration = -1.00'
-    '    MaxTargetNb = -1'
     '    TargetInBuilding = True'
     '    TargetInTransport = True'
     '    TargetInSelf = True'
@@ -230,8 +226,8 @@ CHOC_MOVE_OK_CAPACITY = (
     '    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never'
     '    DisplayRangeColor = RGBA[0, 0, 0, 0]'
     '    DisplayRangeThickness = 0.00'
-    '    TagsCiblePossible = []'
-    '    TagsCibleExcluded = []'
+    '    AllowedTargetTags = []'
+    '    ForbiddenTargetTags = []'
     ')'
 )
 
@@ -240,7 +236,6 @@ CHOC_MOVE_OK_CAPACITY = (
 #     '('
 #     '    DescriptorId     = GUID:{76a483af-5f44-4ad2-a4c2-8caef5e5f828}'
 #     '    Name             = "Choc_Move"'
-#     '    NameToken        = "None"'
 #     '    CumulEffect          = ~/CapaciteCumulEffect_jamais'
 #     '    Declenchement        = ~/CapaciteDeclenchementType_automatique'
 #     '    TargetTeamFilter     = ~/CapaciteTargetFilter_joueur'
@@ -251,7 +246,6 @@ CHOC_MOVE_OK_CAPACITY = (
 #     '    CanBeCastFromTransport  = False'
 #     '    TargetEffect         = ~/UnitEffect_Choc_Move'
 #     '    EffectDuration   = -1.00'
-#     '    MaxTargetNb            = -1'
 #     '    TargetInBuilding       = True'
 #     '    TargetInTransport      = True'
 #     '    TargetInSelf           = True'
@@ -259,8 +253,8 @@ CHOC_MOVE_OK_CAPACITY = (
 #     '    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never'
 #     '    DisplayRangeColor      = RGBA[0,0,0,0]'
 #     '    DisplayRangeThickness  = 0.00'
-#     '    TagsCiblePossible = []'
-#     '    TagsCibleExcluded = []'
+#     '    AllowedTargetTags = []'
+#     '    ForbiddenTargetTags = []'
 #     '    Conditions = ['
 #     '        ~/ConditionTagRaisedInUnit_choc_move_ok_1,'
 #     '        ~/ConditionTagNotRaisedInUnit_no_choc_move_1,'
@@ -275,7 +269,6 @@ CHOC_MOVE_CAPACITY = (
     '('
     '    DescriptorId     = GUID:{76a483af-5f44-4ad2-a4c2-8caef5e5f828}'
     '    Name             = "Choc_Move"'
-    '    NameToken        = "None"'
     '    CumulEffect          = ~/CapaciteCumulEffect_jamais'
     '    Declenchement        = ~/CapaciteDeclenchementType_automatique'
     '    TargetTeamFilter     = ~/CapaciteTargetFilter_ennemi'
@@ -287,7 +280,6 @@ CHOC_MOVE_CAPACITY = (
     '    TargetEffect         = nil'
     '    SelfEffect           = ~/UnitEffect_Choc_Move'
     '    EffectDuration   = -1.00'
-    '    MaxTargetNb            = -1'
     '    TargetInBuilding       = True'
     '    TargetInTransport      = True'
     '    TargetInSelf           = True'
@@ -295,8 +287,8 @@ CHOC_MOVE_CAPACITY = (
     '    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never'
     '    DisplayRangeColor      = RGBA[0,0,0,0]'
     '    DisplayRangeThickness  = 0.00'
-    '    TagsCiblePossible = ["AllUnits"]'
-    '    TagsCibleExcluded = []'
+    '    AllowedTargetTags = ["AllUnits"]'
+    '    ForbiddenTargetTags = []'
     '    Conditions = ['
     '        ~/ConditionTagNotRaisedInUnit_no_choc_move_1,'
     '        ~/ConditionTagNotRaisedInUnit_no_choc_move_morale_1,'
@@ -310,7 +302,6 @@ CHOC_MOVE_COOLDOWN_CAPACITY = (
     '('
     '    DescriptorId     = GUID:{2e4a3e85-7747-4dea-8a55-24ee4a9683a0}'
     '    Name             = "Choc_Move_cooldown"'
-    '    NameToken        = "None"'
     '    CumulEffect          = ~/CapaciteCumulEffect_jamais'
     '    Declenchement        = ~/CapaciteDeclenchementType_automatique'
     '    TargetTeamFilter     = ~/CapaciteTargetFilter_joueur'
@@ -322,7 +313,6 @@ CHOC_MOVE_COOLDOWN_CAPACITY = (
     '    TargetEffect         = nil'
     '    SelfEffect       = ~/UnitEffect_Ajoute_Tag_Choc_Move_cooldown'
     '    EffectDuration   = 300.00'
-    '    MaxTargetNb            = -1'
     '    TargetInBuilding       = True'
     '    TargetInTransport      = True'
     '    TargetInSelf           = True'
@@ -330,10 +320,10 @@ CHOC_MOVE_COOLDOWN_CAPACITY = (
     '    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never'
     '    DisplayRangeColor      = RGBA[0,0,0,0]'
     '    DisplayRangeThickness  = 0.00'
-    '    TagsCiblePossible = ['
+    '    AllowedTargetTags = ['
     '        "GroundUnits",'
     '    ]'
-    '    TagsCibleExcluded = []'
+    '    ForbiddenTargetTags = []'
     '    Conditions = ['
     # '        ~/ConditionTagRaisedInUnit_choc_move_ok_1,'
     '        ~/ConditionTagRaisedInUnit_Choc_Move_active,'
@@ -346,7 +336,6 @@ SWIFT_CAPACITY = (
     '('
     '    DescriptorId     = GUID:{ab45713f-c4b5-42a5-8396-c8668894aafb}'
     '    Name             = "Swift"'
-    '    NameToken        = "None"'
     '    CumulEffect          = ~/CapaciteCumulEffect_jamais'
     '    Declenchement        = ~/CapaciteDeclenchementType_automatique'
     '    TargetTeamFilter     = ~/CapaciteTargetFilter_joueur'
@@ -357,7 +346,6 @@ SWIFT_CAPACITY = (
     '    CanBeCastFromTransport  = False'
     '    TargetEffect         = ~/UnitEffect_Swift'
     '    EffectDuration         = -1.00'
-    '    MaxTargetNb            = 1'
     '    TargetInBuilding       = True'
     '    TargetInTransport      = True'
     '    TargetInSelf           = True'
@@ -365,8 +353,8 @@ SWIFT_CAPACITY = (
     '    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never'
     '    DisplayRangeColor      = RGBA[0,0,0,0]'
     '    DisplayRangeThickness  = 0.00'
-    '    TagsCiblePossible = []'
-    '    TagsCibleExcluded = []'
+    '    AllowedTargetTags = []'
+    '    ForbiddenTargetTags = []'
     '    Conditions = ['
     '        ~/ConditionTagNotRaisedInUnit_no_swift_1,'
     '        ~/ConditionTagRaisedInUnit_swift_ok_1,'
@@ -379,7 +367,6 @@ NO_SWIFT_CAPACITY = (
     '('
     '    DescriptorId     = GUID:{546d38fd-a25d-4d03-aa10-7e74b1de0645}'
     '    Name             = "no_Swift"'
-    '    NameToken        = "None"'
     '    CumulEffect          = ~/CapaciteCumulEffect_jamais'
     '    Declenchement        = ~/CapaciteDeclenchementType_automatique'
     '    TargetTeamFilter     = ~/CapaciteTargetFilter_joueur'
@@ -390,7 +377,6 @@ NO_SWIFT_CAPACITY = (
     '    CanBeCastFromTransport  = False'
     '    TargetEffect       = ~/UnitEffect_Ajoute_Tag_no_Swift'
     '    EffectDuration       = -1.00'
-    '    MaxTargetNb            = 1'
     '    TargetInBuilding       = True'
     '    TargetInTransport      = True'
     '    TargetInSelf           = True'
@@ -398,8 +384,8 @@ NO_SWIFT_CAPACITY = (
     '    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never'
     '    DisplayRangeColor      = RGBA[0,0,0,0]'
     '    DisplayRangeThickness  = 0.00'
-    '    TagsCiblePossible = []'
-    '    TagsCibleExcluded = []'
+    '    AllowedTargetTags = []'
+    '    ForbiddenTargetTags = []'
     '    Conditions = ['
     '        ~/ConditionNotInMovement,'
     '    ]'
@@ -411,7 +397,6 @@ DEPLOY_CAPACITY = (
     '('
     '    DescriptorId     = GUID:{ad71a869-ab57-475a-96cb-c8f411ab3502}'
     '    Name             = "Deploy"'
-    '    NameToken        = "None"'
     '    CumulEffect          = ~/CapaciteCumulEffect_jamais'
     '    Declenchement        = ~/CapaciteDeclenchementType_automatique'
     '    TargetTeamFilter     = ~/CapaciteTargetFilter_joueur'
@@ -422,7 +407,6 @@ DEPLOY_CAPACITY = (
     '    CanBeCastFromTransport  = False'
     '    TargetEffect         = ~/UnitEffect_Deploy'
     '    EffectDuration       = -1.00'
-    '    MaxTargetNb            = 1'
     '    TargetInBuilding       = False'
     '    TargetInTransport      = False'
     '    TargetInSelf           = False'
@@ -430,8 +414,8 @@ DEPLOY_CAPACITY = (
     '    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never'
     '    DisplayRangeColor      = RGBA[0,0,0,0]'
     '    DisplayRangeThickness  = 0.00'
-    '    TagsCiblePossible = []'
-    '    TagsCibleExcluded = []'
+    '    AllowedTargetTags = []'
+    '    ForbiddenTargetTags = []'
     '    Conditions = ['
     '        ~/ConditionTagNotRaisedInUnit_Deploy_ok_1,'
     '    ]'
@@ -443,7 +427,6 @@ DEPLOY_OK_CAPACITY = (
     '('
     '    DescriptorId     = GUID:{312173e8-9fbe-4ca6-adc2-703e8c1f944a}'
     '    Name             = "Deploy_ok"'
-    '    NameToken        = "None"'
     '    CumulEffect          = ~/CapaciteCumulEffect_jamais'
     '    Declenchement        = ~/CapaciteDeclenchementType_automatique'
     '    TargetTeamFilter     = ~/CapaciteTargetFilter_joueur'
@@ -454,7 +437,6 @@ DEPLOY_OK_CAPACITY = (
     '    CanBeCastFromTransport  = False'
     '    TargetEffect         = ~/UnitEffect_Ajoute_Tag_Deploy_ok'
     '    EffectDuration       = -1.00'
-    '    MaxTargetNb            = 1'
     '    TargetInBuilding       = False'
     '    TargetInTransport      = False'
     '    TargetInSelf           = False'
@@ -462,8 +444,8 @@ DEPLOY_OK_CAPACITY = (
     '    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never'
     '    DisplayRangeColor      = RGBA[0,0,0,0]'
     '    DisplayRangeThickness  = 0.00'
-    '    TagsCiblePossible = []'
-    '    TagsCibleExcluded = []'
+    '    AllowedTargetTags = []'
+    '    ForbiddenTargetTags = []'
     '    Conditions = ['
     '        ~/ConditionNotInMovement,'
     '    ]'
@@ -471,7 +453,71 @@ DEPLOY_OK_CAPACITY = (
 )
 
 CONDITIONS = [
-    # ConditionTagRaisedInUnit
+    # no_choc_move_1
+    (
+        'ConditionTagRaisedInUnit_no_choc_move_1 is TConditionTagRaisedInUnit'
+        '('
+        '    DescriptorId    = GUID:{c019e340-3b66-4128-a428-61f8a4941097}'
+        '    Tag             = "no_Choc_Move"'
+        ')'
+    ),
+    (
+        'ConditionTagNotRaisedInUnit_no_choc_move_1 is TConditionNot'
+        '('
+        '    ConditionToInverse = ConditionTagRaisedInUnit_choc_move_ok_1'
+        '    DescriptorId    = GUID:{d7157b12-61e5-4090-809d-c2f54739ed8b}'
+        ')'
+    ),
+    
+    # no_choc_move_morale_1
+    (
+        'ConditionTagRaisedInUnit_no_choc_move_morale_1 is TConditionTagRaisedInUnit'
+        '('
+        '    DescriptorId    = GUID:{5f57fe1c-240e-4a9e-8844-0ab1d84a4836}'
+        '    Tag             = "no_Choc_Move_Morale"'
+        ')'
+    ),
+    (
+        'ConditionTagNotRaisedInUnit_no_choc_move_morale_1 is TConditionNot'
+        '('
+        '    ConditionToInverse = ConditionTagRaisedInUnit_choc_move_ok_1'
+        '    DescriptorId    = GUID:{6112f303-03b6-4993-b047-7cb4f9ddd8d1}'
+        ')'
+    ),
+    
+    # no_swift_1
+    (
+        'ConditionTagRaisedInUnit_no_swift_1 is TConditionTagRaisedInUnit'
+        '('
+        '    DescriptorId    = GUID:{ef2c4bdd-b1b1-4323-877d-be23d0e2f14a}'
+        '    Tag             = "no_Swift"'
+        ')'
+    ),
+    (
+        'ConditionTagNotRaisedInUnit_no_swift_1 is TConditionNot'
+        '('
+        '    ConditionToInverse = ConditionTagRaisedInUnit_swift_ok_1'
+        '    DescriptorId    = GUID:{d7af0230-ed77-4499-870e-ef4da99b42e7}'
+        ')'
+    ),
+    
+    # Deploy_ok_1
+    (
+        'ConditionTagRaisedInUnit_Deploy_ok_1 is TConditionTagRaisedInUnit'
+        '('
+        '    DescriptorId    = GUID:{69205aef-849d-44e7-9343-fbc6c570903d}'
+        '    Tag             = "Deploy_ok"'
+        ')'
+    ),
+    (
+        'ConditionTagNotRaisedInUnit_Deploy_ok_1 is TConditionNot'
+        '('
+        '    ConditionToInverse = ConditionTagRaisedInUnit_Deploy_ok_1'
+        '    DescriptorId    = GUID:{34e0d875-877a-40a8-860b-71bb0c18d3a9}'
+        ')'
+    ),
+    
+    # choc_move_ok_1
     (
         'ConditionTagRaisedInUnit_choc_move_ok_1 is TConditionTagRaisedInUnit'
         '('
@@ -479,6 +525,8 @@ CONDITIONS = [
         '    Tag             = "Choc_Move_ok"'
         ')'
     ),
+    
+    # swift_ok_1
     (
         'ConditionTagRaisedInUnit_swift_ok_1 is TConditionTagRaisedInUnit'
         '('
@@ -486,48 +534,13 @@ CONDITIONS = [
         '    Tag             = "Swift_ok"'
         ')'
     ),
+    
+    # Choc_Move_active
     (
         'ConditionTagRaisedInUnit_Choc_Move_active is TConditionTagRaisedInUnit'
         '('
         '    DescriptorId    = GUID:{37691a2f-3922-4ddb-bba8-ca8a167e675c}'
         '    Tag             = "Choc_Move_active"'
-        ')'
-    ),
-    
-    # ConditionTagNotRaisedInUnit
-    (
-        'ConditionTagNotRaisedInUnit_no_choc_move_1 is TConditionTagNotRaisedInUnit'
-        '('
-        '    DescriptorId    = GUID:{d7157b12-61e5-4090-809d-c2f54739ed8b}'
-        '    Tag             = "no_Choc_Move"'
-        ')'
-    ),
-    (
-        'ConditionTagNotRaisedInUnit_no_choc_move_morale_1 is TConditionTagNotRaisedInUnit'
-        '('
-        '    DescriptorId    = GUID:{6112f303-03b6-4993-b047-7cb4f9ddd8d1}'
-        '    Tag             = "no_Choc_Move_Morale"'
-        ')'
-    ),
-    (
-        'ConditionTagNotRaisedInUnit_no_swift_1 is TConditionTagNotRaisedInUnit'
-        '('
-        '    DescriptorId    = GUID:{d7af0230-ed77-4499-870e-ef4da99b42e7}'
-        '    Tag             = "no_Swift"'
-        ')'
-    ),
-    (
-        'ConditionTagNotRaisedInUnit_Choc_Move_cooldown is TConditionTagNotRaisedInUnit'
-        '('
-        '    DescriptorId    = GUID:{933630b2-3136-476f-b3a9-fb9139aa5c90}'
-        '    Tag             = "Choc_Move_cooldown"'
-        ')'
-    ),
-    (
-        'ConditionTagNotRaisedInUnit_Deploy_ok_1 is TConditionTagNotRaisedInUnit'
-        '('
-        '    DescriptorId    = GUID:{34e0d875-877a-40a8-860b-71bb0c18d3a9}'
-        '    Tag             = "Deploy_ok"'
         ')'
     ),
 ]
