@@ -2,6 +2,16 @@
 
 # fmt: off
 FR_NEW_UNITS = {
+    # Infantry armor reference
+    ("Infantry_armor_reference", 0): {
+        "armor": {
+            "front": (None, "ResistanceFamily_infanterieWA"),
+            "sides": (None, "ResistanceFamily_infanterieWA"),
+            "rear": (None, "ResistanceFamily_infanterieWA"),
+            "top": (None, "ResistanceFamily_infanterieWA"),
+        },
+    },
+    
     ("Chasseurs_CMD_FR", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "416dd19d-49b3-4a23-bd49-9e890f2a1efd",
         "GroupeCombatGUID": "5910ff01-80de-4b1f-a203-629d3fe3cb3b",
@@ -42,6 +52,7 @@ FR_NEW_UNITS = {
         },
         "TransportedTexture": "UseInGame_Transport_COMMAND",
         "TransportedSoldier": "Chasseurs_CMD2_FR",
+        "armor": "Infantry_armor_reference",
         "Factory": "EFactory/Logistic",
         "CommandPoints": 145,
         "UnitRole": 'hq_inf',

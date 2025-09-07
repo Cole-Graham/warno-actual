@@ -169,6 +169,7 @@ pol_unit_edits = {
     # POL INFANTRY
     "Engineers_CMD_POL": {  # Saperzy Ldr.
         "CommandPoints": 35,
+        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDRSOV SAPERZY LDR.",
         },
@@ -236,6 +237,7 @@ pol_unit_edits = {
     },
     "Rifles_CMD_POL": {  # ????
         "CommandPoints": 35,
+        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDRSOV PIECHOTA ZMECH. LDR.",
         },
@@ -286,6 +288,7 @@ pol_unit_edits = {
     },
     "MotRifles_CMD_POL": {  # Piechota Zmech. Ldr.
         "CommandPoints": 35,
+        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDRSOV PIECHOTA ZMECH. LDR.",
         },
@@ -348,6 +351,7 @@ pol_unit_edits = {
     },
     "Engineers_POL": {  # Saperzy
         "CommandPoints": 50,
+        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -375,6 +379,7 @@ pol_unit_edits = {
     },
     "Engineers_Flam_POL": {  # Saperzy Szturmowi
         "CommandPoints": 45,
+        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -400,6 +405,7 @@ pol_unit_edits = {
     },
     "Groupe_AT_POL": {  # Druzyna PPanc
         "CommandPoints": 40,
+        "armor": "Infantry_armor_reference",
         "Divisions": {
             "add": ["POL_20_Pancerna"],
             "is_transported": True,
@@ -430,6 +436,7 @@ pol_unit_edits = {
         # 2x RPG-7VL x6 (panzerjager with VL instead of VR)
     },
     "Groupe_AT_Para_POL": {  # Desant. Druzyna Ppanc.
+        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "SPADO. DRUŻYNA PPANC.",
         },
@@ -438,12 +445,14 @@ pol_unit_edits = {
     #
     # },
     "Rifles_HMG_POL": {  # Piechota (SVD)
+        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "PIECHOTA [SVD]",
         },
     },
     "MotRifles_POL": {  # Piechota Zmech
         "CommandPoints": 30,
+        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 4,
@@ -480,6 +489,7 @@ pol_unit_edits = {
         # RPG-7VM x6
     },
     "MotRifles_SVD_POL": {  # Piechota Zmech (SVD)
+        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "PIECHOTA ZMECH [SVD]",
         },
@@ -529,21 +539,25 @@ pol_unit_edits = {
     # },
     #
     "Engineers_paras_POL": {  # Desant. Saperzy
+        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "SPADO. SAPERZY",
         },
     },
     "Engineers_paras_Flam_POL": {  # Desant. Saperzy (LPO-50)
+        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "SPADO. SAPERZY [FLAM]",
         },
     },
     "Engineers_paras_CMD_POL": {  # Desant. Saperzy Dow.
+        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "SPADO. SAPERZY LDR.",
         },
     },
     "Commandos_Para_POL": {  # Desant. Komandosi
+        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "SPADO. KOMANDOSI",
         },
@@ -555,6 +569,7 @@ pol_unit_edits = {
     # },
     "WSW_POL": {  # WSW
         "CommandPoints": 30,
+        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -567,12 +582,23 @@ pol_unit_edits = {
         },
     },
     "Para_Security_POL": {  # Desant. Ochrona
+        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "SPADO. OCHRONA",
         },
     },
-    "Reserve_CMD_POL": {"GameName": {"display": "#CMD REZERWIŚCI DOW."}},
-    "Reserve_POL": {"GameName": {"display": "REZERWIŚCI"}},
+    "Reserve_CMD_POL": {
+        "armor": "Infantry_armor_reference",
+        "GameName": {
+            "display": "#CMD REZERWIŚCI DOW."
+        }
+    },
+    "Reserve_POL": {
+        "armor": "Infantry_armor_reference",
+        "GameName": {
+            "display": "REZERWIŚCI"
+        },
+    },
     "ATteam_RCL_SPG9_POL": {  # SPG-9
         "strength": 5,
         "CommandPoints": 30,
@@ -1153,6 +1179,7 @@ pol_unit_edits = {
         "GameName": {
             "display": "#RECO2 ZWIADOWCY ZMOT.",
         },
+        "armor": "Infantry_armor_reference",
         "CommandPoints": 40,
         "availability": [6, 4, 0, 0],
         "max_speed": 26,
@@ -1182,6 +1209,7 @@ pol_unit_edits = {
         "GameName": {
             "display": "#RECO2 SAPERZY ZWIAD.",
         },
+        "armor": "Infantry_armor_reference",
         "CommandPoints": 50,
         "Divisions": {
             "default": {
@@ -1197,6 +1225,7 @@ pol_unit_edits = {
     },
     "Scout_POL": {  # Zwiadowcy
         "CommandPoints": 20,
+        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 3,
@@ -1223,12 +1252,14 @@ pol_unit_edits = {
         "DeploymentShift": 0,
     },
     "Scout_para_POL": {  # Desant. Zwiadowcy
+        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#RECO2 SPADO. ZWIADOWCY",
         },
     },
     "Scout_LRRP_POL": {  # Rozp. Specjalne [GSR]
         "CommandPoints": 40,
+        "armor": "Infantry_armor_reference",
         "strength": 4,
         "WeaponAssignment": [
             (0, [0,]),
@@ -1263,6 +1294,7 @@ pol_unit_edits = {
     },
     "Scout_LRRP_Para_POL": {  # Desant. Rozp. Specjalne [GSR]
         # "CommandPoints": 30,
+        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -1272,20 +1304,15 @@ pol_unit_edits = {
         },
     },
     "Sniper_paras_POL": {  # Desant. Snajper
+        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#RECO2 SPADO. SNAJPER",
         },
     },
     "Scout_SF_POL": {  # Rozp. Specjalne
         "CommandPoints": 30,
+        "armor": "Infantry_armor_reference",
         # "strength": 5,
-        # "WeaponAssignment": [
-        #     (0, [2, ]),
-        #     (1, [1, ]),
-        #     (2, [1, ]),
-        #     (3, [1, ]),
-        #     (4, [0, 3, ]),
-        # ],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -1357,6 +1384,7 @@ pol_unit_edits = {
     # POL AA
     "MANPAD_Strela_2M_POL": {  # Strzala-2M
         "CommandPoints": 20,
+        "armor": "Infantry_armor_reference",
         "availability": [12, 9, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -1369,6 +1397,7 @@ pol_unit_edits = {
         },
     },
     "MANPAD_Strela_2M_Naval_POL": {  # Desant. Strzala-2M
+        "armor": "Infantry_armor_reference",
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1383,6 +1412,7 @@ pol_unit_edits = {
         },
     },
     "MANPAD_Strela_2M_Para_POL": {  # Desant. Strzala-2M
+        "armor": "Infantry_armor_reference",
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],

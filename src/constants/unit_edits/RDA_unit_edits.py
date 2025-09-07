@@ -56,6 +56,7 @@ rda_unit_edits = {
     # RDA INF
     "MotRifles_CMD_DDR": {
         "CommandPoints": 35,
+        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDRSOV MOT.-SCHUTZEN LDR.",
             "token": "LJDWEYDMZI",
@@ -131,6 +132,7 @@ rda_unit_edits = {
 
     "Engineers_CMD_DDR": {
         "CommandPoints": 45,
+        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDRSOV PIONIER LDR.",
             "token": "KYSSUXXTDG",
@@ -195,6 +197,7 @@ rda_unit_edits = {
 
     "MP_DDR": {
         "CommandPoints": 15,
+        "armor": "Infantry_armor_reference",
         "availability": [0, 12, 9, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -204,6 +207,7 @@ rda_unit_edits = {
 
     "Security_DDR": {
         "CommandPoints": 25,
+        "armor": "Infantry_armor_reference",
         "availability": [10, 0, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -234,6 +238,7 @@ rda_unit_edits = {
     
     "KdA_DDR": {
         "CommandPoints": 35,
+        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -243,6 +248,7 @@ rda_unit_edits = {
 
     "MotRifles_DDR": {
         "CommandPoints": 35,
+        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 69,
@@ -275,6 +281,7 @@ rda_unit_edits = {
             "display": "MOT.-SCHÜTZEN [SVD]",
         },
         "CommandPoints": 35,
+        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -292,6 +299,7 @@ rda_unit_edits = {
             "display": "MOT.-SCHÜTZEN [BTR]",
         },
         "CommandPoints": 40,
+        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -321,6 +329,7 @@ rda_unit_edits = {
 
     "MotSchutzen_DDR": {  # Panzerjager 2x RPG-7VR
         "CommandPoints": 30,
+        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -344,6 +353,7 @@ rda_unit_edits = {
 
     "Engineers_DDR": {
         "CommandPoints": 40,
+        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -381,6 +391,7 @@ rda_unit_edits = {
             "display": "PIONIER [FLAM]",
         },
         "CommandPoints": 50,
+        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -843,6 +854,7 @@ rda_unit_edits = {
 
     "Scout_DDR": {
         "CommandPoints": 20,
+        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -860,6 +872,7 @@ rda_unit_edits = {
 
     "HvyScout_DDR": {
         "CommandPoints": 35,
+        "armor": "Infantry_armor_reference",
         "availability": [6, 4, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -870,6 +883,7 @@ rda_unit_edits = {
 
     "Scout_LRRP_DDR": {
         "CommandPoints": 60,
+        "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -883,6 +897,7 @@ rda_unit_edits = {
             "display": "Fla-RAK STRELA-2M",
         },
         "CommandPoints": 20,
+        "armor": "Infantry_armor_reference",
         "availability": [12, 9, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -900,6 +915,7 @@ rda_unit_edits = {
             "display": "Fla-RAK IGLA",
         },
         "CommandPoints": 35,
+        "armor": "Infantry_armor_reference",
         "availability": [7, 5, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {

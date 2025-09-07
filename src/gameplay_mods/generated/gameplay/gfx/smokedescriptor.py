@@ -18,12 +18,9 @@ def _smoke_duration(source_path) -> None:
 
     smokes = [  # (name, duration)
         ("Fumi105mm", 80),
-        ("Fumi107mm", 80),
         ("Fumi120mm", 80),
         ("Fumi120mm_mortier", 80),
-        ("Fumi122mm", 80),
         ("Fumi152mm", 80),
-        ("Fumi155mm", 80),
         ("Fumi203mm", 80),
         ("Fumi60mm", 80),
         ("Fumi81mm", 80),

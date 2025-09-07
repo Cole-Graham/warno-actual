@@ -429,10 +429,13 @@ def _handle_damage_module(logger, game_db, unit_data, edit_type, unit_name,
                 
                 # Handle custom infantry armor reference
                 if armor_family == "ResistanceFamily_infanterieWA":
-                    inf_strength = unit_data.get(
-                        "strength", None) if unit_data else edits.get("strength", None)
+                    
+                    inf_strength = edits.get("strength", None)
+                    if not inf_strength:
+                        inf_strength = unit_data.get("strength", None)
+                    
                     if inf_strength is not None:
-                        armor_level = str(15 - inf_strength)
+                        armor_level = str(max(15 - inf_strength, 1))
                         blindage_obj.by_m(resistance_key).v.by_m("Family").v = armor_family
                         blindage_obj.by_m(resistance_key).v.by_m("Index").v = armor_level
                     

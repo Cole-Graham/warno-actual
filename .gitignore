@@ -13,6 +13,7 @@ src/data/database/*.json
 LDR_unit_edits_old.py
 notes
 .cursor
+python_version_check.py
 
 # don't ignore
 !logs/.gitkeep

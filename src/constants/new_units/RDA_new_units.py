@@ -51,6 +51,7 @@ RDA_NEW_UNITS = {
         },
         "TransportedTexture": "UseInGame_Transport_COMMAND",
         "TransportedSoldier": "MotRifles_CMD_DDR",
+        "armor": "Infantry_armor_reference",
         "Factory": "EFactory/Logistic",
         "CommandPoints": 145,
         "UnitAttackValue": 1,

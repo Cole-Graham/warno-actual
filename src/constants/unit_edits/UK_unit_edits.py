@@ -28,6 +28,7 @@ uk_unit_edits = {
     # UK INF
     "Territorial_CMD_UK": {
         "CommandPoints": 30,
+        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDR TERRIERS LDR.",
             "token": "QMPRIAZFYF",
@@ -90,6 +91,7 @@ uk_unit_edits = {
 
     "Engineers_CMD_UK": {
         "CommandPoints": 40,
+        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDR ASSAULT PIONEERS LDR.",
             "token": "VZOODKAGWE",
@@ -165,6 +167,7 @@ uk_unit_edits = {
 
     "Rifles_CMD_UK": {
         "CommandPoints": 35,
+        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDR RIFLES LDR.",
             "token": "YGMKZKXXEV",
@@ -213,6 +216,7 @@ uk_unit_edits = {
 
     "Airmobile_CMD_UK": {
         "CommandPoints": 35,
+        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDR AIRMOBILE LDR.",
             "token": "CFLNZATSET",
@@ -253,6 +257,7 @@ uk_unit_edits = {
 
     "Airmobile_Mot_CMD_UK": {
         "CommandPoints": 35,
+        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDR MOT. AIRMOBILE LDR.",
             "token": "DPDYRJPOBS",
@@ -332,6 +337,7 @@ uk_unit_edits = {
 
     "Gun_Group_TA_UK": {
         "CommandPoints": 15,
+        "armor": "Infantry_armor_reference",
         "strength": 5,
         "availability": [12, 0, 0, 0],
         "max_speed": 26,
@@ -353,6 +359,7 @@ uk_unit_edits = {
 
     "RMP_UK": {
         "CommandPoints": 20,
+        "armor": "Infantry_armor_reference",
         "strength": 5,
         "availability": [0, 12, 9, 0],
         "WeaponAssignment": [
@@ -374,12 +381,14 @@ uk_unit_edits = {
 
     "Security_UK": {
         "CommandPoints": 25,
+        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "availability": [14, 0, 0, 0],
     },
 
     "Territorial_UK": {
         "CommandPoints": 30,
+        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -406,6 +415,7 @@ uk_unit_edits = {
 
     "AT_Group_TA_UK": {
         "CommandPoints": 25,
+        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "strength": 5,
         "SpecialtiesList": {
@@ -432,6 +442,7 @@ uk_unit_edits = {
 
     "Airmobile_UK": {  # 3x FN Mag
         "CommandPoints": 35,
+        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -441,6 +452,7 @@ uk_unit_edits = {
 
     "Airmobile_MILAN_UK": {  # 7x L85, 2x L86A1 lmg, 1x LAW 80
         "CommandPoints": 45,
+        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -455,6 +467,7 @@ uk_unit_edits = {
 
     "Engineers_Airmobile_UK": {
         "CommandPoints": 45,
+        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -469,6 +482,7 @@ uk_unit_edits = {
 
     "Engineers_TA_UK": {
         "CommandPoints": 40,
+        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "Divisions": {
             "default": {
@@ -488,6 +502,7 @@ uk_unit_edits = {
 
     "Airmobile_Mot_UK": {
         "CommandPoints": 35,
+        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -502,6 +517,7 @@ uk_unit_edits = {
 
     "Rifles_UK": {
         "CommandPoints": 25,
+        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -577,6 +593,7 @@ uk_unit_edits = {
 
     "SAS_UK": {
         "CommandPoints": 70,
+        "armor": "Infantry_armor_reference",
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -797,6 +814,7 @@ uk_unit_edits = {
 
     "Scout_TA_UK": {
         "CommandPoints": 15,
+        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -811,6 +829,7 @@ uk_unit_edits = {
 
     "Scout_UK": {
         "CommandPoints": 20,
+        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -828,6 +847,7 @@ uk_unit_edits = {
 
     "Scout_Airmobile_UK": {
         "CommandPoints": 40,
+        "armor": "Infantry_armor_reference",
         "DeploymentShift": 0,
         "max_speed": 26,
         "SpecialtiesList": {
@@ -841,6 +861,7 @@ uk_unit_edits = {
             "display": "#RECO2 SNIPERS",
         },
         "CommandPoints": 30,
+        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
@@ -854,6 +875,7 @@ uk_unit_edits = {
     # UK AA
     "MANPAD_Blowpipe_UK": {
         "CommandPoints": 15,
+        "armor": "Infantry_armor_reference",
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -868,6 +890,7 @@ uk_unit_edits = {
 
     "MANPAD_Javelin_UK": {
         "CommandPoints": 35,
+        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 1,

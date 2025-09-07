@@ -122,11 +122,12 @@ def _add_weapon(
     unit_strength = None
     for donor, edits in NEW_UNITS.items():
         is_infantry = edits.get("is_infantry", False)
+        is_ground_vehicle = edits.get("is_ground_vehicle", False)
         if edits.get("NewName") == unit_name:
             unit_strength = edits.get("strength")
             break
 
-    if not unit_strength and is_infantry:
+    if not unit_strength and is_infantry and not is_ground_vehicle:
         logger.warning(f"No strength found for new unit {unit_name}")
         return
 
@@ -260,11 +261,12 @@ def _replace_weapon(
     unit_strength = None
     for donor, edits in NEW_UNITS.items():
         is_infantry = edits.get("is_infantry", False)
+        is_ground_vehicle = edits.get("is_ground_vehicle", False)
         if edits.get("NewName") == unit_name:
             unit_strength = edits.get("strength")
             break
 
-    if not unit_strength and is_infantry:
+    if not unit_strength and is_infantry and not is_ground_vehicle:
         logger.warning(f"No strength found for new unit {unit_name}")
         return
 
@@ -329,11 +331,12 @@ def _update_weapon_quantity(new_weap_row: Any, ammo: str, quantity: int, game_db
     unit_strength = None
     for donor, edits in NEW_UNITS.items():
         is_infantry = edits.get("is_infantry", False)
+        is_ground_vehicle = edits.get("is_ground_vehicle", False)
         if edits.get("NewName") == unit_name:
             unit_strength = edits.get("strength")
             break
 
-    if not unit_strength and is_infantry:
+    if not unit_strength and is_infantry and not is_ground_vehicle:
         logger.warning(f"No strength found for new unit {unit_name}")
         return
 
@@ -385,11 +388,12 @@ def _update_weapon_salvo(new_weap_row: Any, ammo: str, salvo: int, game_db: Dict
     unit_strength = None
     for donor, edits in NEW_UNITS.items():
         is_infantry = edits.get("is_infantry", False)
+        is_ground_vehicle = edits.get("is_ground_vehicle", False)
         if edits.get("NewName") == unit_name:
             unit_strength = edits.get("strength")
             break
 
-    if not unit_strength and is_infantry:
+    if not unit_strength and is_infantry and not is_ground_vehicle:
         logger.warning(f"No strength found for new unit {unit_name}")
         return
 
@@ -446,11 +450,12 @@ def _update_unmodified_weapons(new_weap_row: Any, game_db: Dict[str, Any]) -> No
     unit_strength = None
     for donor, edits in NEW_UNITS.items():
         is_infantry = edits.get("is_infantry", False)
+        is_ground_vehicle = edits.get("is_ground_vehicle", False)
         if edits.get("NewName") == unit_name:
             unit_strength = edits.get("strength")
             break
 
-    if not unit_strength and is_infantry:
+    if not unit_strength and is_infantry and not is_ground_vehicle:
         logger.warning(f"No strength found for new unit {unit_name}")
         return
 

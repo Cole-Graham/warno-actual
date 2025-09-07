@@ -43,6 +43,7 @@ RFA_NEW_UNITS = {
         },
         "TransportedTexture": "UseInGame_Transport_COMMAND",
         "TransportedSoldier": "Engineers_CMD_RFA",
+        "armor": "Infantry_armor_reference",
         "Factory": "EFactory/Logistic",
         "CommandPoints": 145,
         "SpecialtiesList": [

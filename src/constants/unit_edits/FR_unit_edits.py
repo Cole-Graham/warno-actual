@@ -34,6 +34,7 @@ fr_unit_edits = {
     # FR INF
     "Chasseurs_CMD_FR": {
         "CommandPoints": 45,
+        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDR CHASSEURS LDR.",
         },
@@ -112,6 +113,7 @@ fr_unit_edits = {
     
     "Rifles_CMD_FR": {
         "CommandPoints": 30,
+        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDR GREN.-VOLTIGEURS LDR.",
         },
@@ -175,6 +177,7 @@ fr_unit_edits = {
     
     "Sapeurs_CMD_FR": {
         "CommandPoints": 50,
+        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDR SAPEURS LDR.",
         },
@@ -271,6 +274,7 @@ fr_unit_edits = {
     
     "Gendarmerie_FR": { # security
         "CommandPoints": 15,
+        "armor": "Infantry_armor_reference",
         "availability": [0, 12, 9, 0],
         "strength": 5,
         "SpecialtiesList": {
@@ -295,6 +299,7 @@ fr_unit_edits = {
     
     "Rifles_FR": {
         "CommandPoints": 35,
+        "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -310,6 +315,7 @@ fr_unit_edits = {
     
     "Rifles_DMR_FR": {
         "CommandPoints": 40,
+        "armor": "Infantry_armor_reference",
         "availability": [8, 6, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -325,6 +331,7 @@ fr_unit_edits = {
     
     "Rifles_APILAS_FR": {   
         "CommandPoints": 45,
+        "armor": "Infantry_armor_reference",
         "availability": [8, 6, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -340,6 +347,7 @@ fr_unit_edits = {
     
     "Escorte_FR": {
         "CommandPoints": 25,
+        "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -349,6 +357,7 @@ fr_unit_edits = {
     
     "Chasseurs_FR": {
         "CommandPoints": 35,
+        "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -358,6 +367,7 @@ fr_unit_edits = {
     
     "Reserviste_FR": {
         "CommandPoints": 30,
+        "armor": "Infantry_armor_reference",
         "availability": [14, 0, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -367,6 +377,7 @@ fr_unit_edits = {
     
     "Sapeurs_FR": {
         "CommandPoints": 35,
+        "armor": "Infantry_armor_reference",
         "availability": [0, 7, 5, 0],
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -377,6 +388,7 @@ fr_unit_edits = {
     
     "Sapeurs_Flam_FR": {
         "CommandPoints": 50,
+        "armor": "Infantry_armor_reference",
         "availability": [0, 7, 5, 0],
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -387,6 +399,7 @@ fr_unit_edits = {
     
     "Groupe_AT_FR": {
         "CommandPoints": 35,
+        "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -401,6 +414,7 @@ fr_unit_edits = {
     
     "Commandos_FR": {
         "CommandPoints": 65,
+        "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -693,6 +707,7 @@ fr_unit_edits = {
     
     "Scout_FR": {
         "CommandPoints": 25,
+        "armor": "Infantry_armor_reference",
         "availability": [8, 6, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -707,6 +722,7 @@ fr_unit_edits = {
     
     "LRRP_FR": {
         "CommandPoints": 60,
+        "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -751,6 +767,7 @@ fr_unit_edits = {
     
     "MANPAD_Mistral_FR": {
         "CommandPoints": 55,
+        "armor": "Infantry_armor_reference",
         "availability": [6, 4, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {

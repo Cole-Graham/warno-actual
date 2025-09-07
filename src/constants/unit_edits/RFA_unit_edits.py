@@ -31,6 +31,7 @@ rfa_unit_edits = {
     # RFA INF
     "Panzergrenadier_CMD_RFA": {  # #CMD Fs-JÄGER FÜH.
         "CommandPoints": 45,
+        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDR PANZERGRENADIER LDR.",
         },
@@ -80,6 +81,7 @@ rfa_unit_edits = {
     },
     "Fallschirmjager_CMD_RFA": {  # #CMD Fs-JÄGER FÜH.
         "CommandPoints": 40,
+        "armor": "Infantry_armor_reference",
         "GameName": {"display": "#LDR FALLSCHIRMJÄGER LDR."},
         "TagSet": {
             "overwrite_all": [
@@ -119,6 +121,7 @@ rfa_unit_edits = {
     },
     "Jager_CMD_RFA": {  # #CMD JÄGER FÜH.
         "CommandPoints": 40,
+        "armor": "Infantry_armor_reference",
         "GameName": {"display": "#LDR JÄGER LDR."},
         "TagSet": {
             "overwrite_all": [
@@ -156,6 +159,7 @@ rfa_unit_edits = {
     },
     "Engineers_CMD_RFA": {  # #CMD PIONIER FÜH.
         "CommandPoints": 40,
+        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDR PIONIER LDR."
         },
@@ -196,6 +200,7 @@ rfa_unit_edits = {
         "remove_zone_capture": None,
     },
     "Panzergrenadier_IFV_RFA": {  # PZ.GRENADIER
+        "armor": "Infantry_armor_reference",
         "GameName": {"display": "PANZERGRENADIER"},
         "CommandPoints": 30,
         "Divisions": {
@@ -213,6 +218,7 @@ rfa_unit_edits = {
         },
     },
     "HeimatschutzJager_RFA": {  # HEIMAT-JAGER
+        "armor": "Infantry_armor_reference",
         "GameName": {"display": "HEIMATJÄGER"},
         "CommandPoints": 30,
         "Divisions": {
@@ -227,20 +233,35 @@ rfa_unit_edits = {
         },
     },
     "Engineers_AT_RFA": {  # PIONIER (CarlG)
-        "GameName": {"display": "PIONIER [CG]"},
+        "armor": "Infantry_armor_reference",
+        "GameName": {
+            "display": "PIONIER [CG]"
+        },
     },
     "Panzergrenadier_APC_RFA": {  # PZ.GRENADIER (M113)
-        "GameName": {"display": "PANZERGRENADIER [M113]"},
+        "armor": "Infantry_armor_reference",
+        "GameName": {
+            "display": "PANZERGRENADIER [M113]"
+        },
     },
     "Fallschirm_RFA": {  # Fs-JÄGER
-        "GameName": {"display": "FALLSCHIRMJÄGER"},
+        "armor": "Infantry_armor_reference",
+        "GameName": {
+            "display": "FALLSCHIRMJÄGER"
+        },
         "UpgradeFromUnit": "Fallschirmjager_CMD_RFA",
     },
     "Jager_RFA": {  # JÄGER (PzF)
-        "GameName": {"display": "JÄGER [PzF]"},
+        "armor": "Infantry_armor_reference",
+        "GameName": {
+            "display": "JÄGER [PzF]"
+        },
     },
     "PzGrenadier_RFA": {  # PZ.GRENADIER (CarlG)
-        "GameName": {"display": "PANZERGRENADIER [CG]"},
+        "armor": "Infantry_armor_reference",
+        "GameName": {
+            "display": "PANZERGRENADIER [CG]"
+        },
     },
     "ATteam_Milan_1_RFA": {
         "CommandPoints": 30,
@@ -409,7 +430,10 @@ rfa_unit_edits = {
     },
     # RFA REC
     "BGS_RFA": {
-        "GameName": {"display": "#RECO2 BGS STREIFE"},
+        "armor": "Infantry_armor_reference",
+        "GameName": {
+            "display": "#RECO2 BGS STREIFE"
+        },
         "CommandPoints": 15,
         "max_speed": 26,
         "availability": [10, 0, 0, 0],
@@ -418,13 +442,21 @@ rfa_unit_edits = {
         },
     },
     "Fallschirmjager_Scout_RFA": {  # Fs-Jager aufk
-        "GameName": {"display": "#RECO2 FJ AUFKLÄRER"},
+        "armor": "Infantry_armor_reference",
+        "GameName": {
+            "display": "#RECO2 FJ AUFKLÄRER"
+        },
     },
     "Jager_Aufk_RFA": {  # JAGER AUFKL.
-        "GameName": {"display": "#RECO2 JÄGER AUFKLÄRER"},
+        "armor": "Infantry_armor_reference",
+        "GameName": {
+            "display": "#RECO2 JÄGER AUFKLÄRER"
+        },
     },
     "M113A1G_reco_RFA": {  # M113A1G AUFKL.
-        "GameName": {"display": "#RECO1 M113A1G AufKl"},
+        "GameName": {
+            "display": "#RECO1 M113A1G AufKl"
+        },
     },
     "M113_GreenArcher_RFA": {
         "CommandPoints": 30,
@@ -440,6 +472,7 @@ rfa_unit_edits = {
     # RFA AA
     "MANPAD_Redeye_RFA": {  # Fliegerfaust
         "CommandPoints": 20,
+        "armor": "Infantry_armor_reference",
         "availability": [12, 9, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {

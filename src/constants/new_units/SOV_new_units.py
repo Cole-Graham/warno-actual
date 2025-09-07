@@ -56,6 +56,7 @@ SOV_NEW_UNITS = {
         "TransportedTexture": "UseInGame_Transport_COMMAND",
 
         "TransportedSoldier": "MotRifles_SOV",
+        "armor": "Infantry_armor_reference",
         "Factory": "EFactory/Logistic",
 
         "CommandPoints": 145,
@@ -151,6 +152,7 @@ SOV_NEW_UNITS = {
         },
         "TransportedTexture": "UseInGame_Transport_COMMAND",
         "TransportedSoldier": "MotRifles_TTsko_SOV",
+        "armor": "Infantry_armor_reference",
         "Factory": "EFactory/Logistic",
         "CommandPoints": 145,
         "UnitAttackValue": 1,
@@ -367,6 +369,7 @@ SOV_NEW_UNITS = {
             },
         },
         "TransportedSoldier": "MotRifles_RPG7V_TTsko_SOV",
+        "armor": "Infantry_armor_reference",
         "CommandPoints": 30,
         "SpecialtiesList": [
                 'infantry',

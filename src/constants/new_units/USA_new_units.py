@@ -44,6 +44,7 @@ USA_NEW_UNITS = {
         "TransportedTexture": "UseInGame_Transport_COMMAND",
         "TransportedSoldier": "Rifles_half_LAW_US",
         "Factory": "EFactory/Logistic",
+        "armor": "Infantry_armor_reference",
         "CommandPoints": 145,
         "UnitAttackValue": 1,
         "UnitDefenseValue": 16,
@@ -230,6 +231,7 @@ USA_NEW_UNITS = {
             },
         },
         "TransportedSoldier": "Cav_Scout_Dragon_M3A1_US",
+        "armor": "Infantry_armor_reference",
         "CommandPoints": 20,
         "SpecialtiesList": [
             'reco',
@@ -320,6 +322,7 @@ USA_NEW_UNITS = {
             },
         },
         "TransportedSoldier": "Cav_Scout_Dragon_M3A2_US",
+        "armor": "Infantry_armor_reference",
         "CommandPoints": 20,
         "SpecialtiesList": [
             'reco',
@@ -431,6 +434,7 @@ USA_NEW_UNITS = {
         "TransportedTexture": "UseInGame_Transport_LAAD",
         "TransportedSoldier": "MANPAD_Stinger_C_US",
         "Factory": "EFactory/DCA",
+        "armor": "Infantry_armor_reference",
         "CommandPoints": 60,
         # "UnitAttackValue": 1,
         # "UnitDefenseValue": 16,

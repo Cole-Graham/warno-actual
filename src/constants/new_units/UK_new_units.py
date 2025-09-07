@@ -104,7 +104,7 @@ UK_NEW_UNITS = {
         "TransportedTexture": "UseInGame_Transport_COMMAND",
         "TransportedSoldier": "Rifles_UK",
         "Factory": "EFactory/Logistic",
-
+        "armor": "Infantry_armor_reference",
         "CommandPoints": 145,
         "UnitAttackValue": 1,
         "UnitDefenseValue": 16,

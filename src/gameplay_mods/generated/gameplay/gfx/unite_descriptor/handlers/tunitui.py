@@ -105,7 +105,7 @@ def handle_unitui_module(
         module.v.by_m("MenuIconTexture").v = "'" + edits["MenuIconTexture"] + "'"
     
     # Check for custom button texture in edits, else default to unit name
-    module.v.by_m("ButtonTexture").v = f"'Texture_Button_Unit_{edits.get("ButtonTexture", unit_name)}'"
+    module.v.by_m("ButtonTexture").v = f"'Texture_Button_Unit_{edits.get('ButtonTexture', unit_name)}'"
     
     if "TypeStrategicCount" in edits:
         module.v.by_m("TypeStrategicCount").v = edits["TypeStrategicCount"]  # noqa
