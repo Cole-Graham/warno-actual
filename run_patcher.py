@@ -1,5 +1,5 @@
 import sys
-
+from datetime import datetime
 # from config.config_loader import ConfigLoader
 from src import ModConfig
 from src.data import build_database, load_database_from_disk
@@ -69,7 +69,7 @@ if __name__ == "__main__":
         from src.main import main
         main()
         
-        logger.info("Patcher completed successfully")
+        logger.info(f"Patcher completed successfully at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     except Exception as e:
         logger.error(f"Patcher failed: {str(e)}")
         raise

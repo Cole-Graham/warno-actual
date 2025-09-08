@@ -347,8 +347,8 @@ SWIFT_CAPACITY = (
     '    TargetEffect         = ~/UnitEffect_Swift'
     '    EffectDuration         = -1.00'
     '    TargetInBuilding       = True'
-    '    TargetInTransport      = True'
-    '    TargetInSelf           = True'
+    '    TargetInTransport      = False'
+    '    TargetInSelf           = False'
     '    TargetMySelf           = True'
     '    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never'
     '    DisplayRangeColor      = RGBA[0,0,0,0]'
@@ -374,12 +374,12 @@ NO_SWIFT_CAPACITY = (
     '    RangeGRU            = 0'
     '    CastTime            = 0.00'
     '    CheckVisibility     = True'
-    '    CanBeCastFromTransport  = False'
+    '    CanBeCastFromTransport  = True'
     '    TargetEffect       = ~/UnitEffect_Ajoute_Tag_no_Swift'
     '    EffectDuration       = -1.00'
     '    TargetInBuilding       = True'
-    '    TargetInTransport      = True'
-    '    TargetInSelf           = True'
+    '    TargetInTransport      = False'
+    '    TargetInSelf           = False'
     '    TargetMySelf           = True'
     '    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never'
     '    DisplayRangeColor      = RGBA[0,0,0,0]'
@@ -464,7 +464,7 @@ CONDITIONS = [
     (
         'ConditionTagNotRaisedInUnit_no_choc_move_1 is TConditionNot'
         '('
-        '    ConditionToInverse = ConditionTagRaisedInUnit_choc_move_ok_1'
+        '    ConditionToInverse = ConditionTagRaisedInUnit_no_choc_move_1'
         '    DescriptorId    = GUID:{d7157b12-61e5-4090-809d-c2f54739ed8b}'
         ')'
     ),
@@ -480,7 +480,7 @@ CONDITIONS = [
     (
         'ConditionTagNotRaisedInUnit_no_choc_move_morale_1 is TConditionNot'
         '('
-        '    ConditionToInverse = ConditionTagRaisedInUnit_choc_move_ok_1'
+        '    ConditionToInverse = ConditionTagRaisedInUnit_no_choc_move_morale_1'
         '    DescriptorId    = GUID:{6112f303-03b6-4993-b047-7cb4f9ddd8d1}'
         ')'
     ),
@@ -496,7 +496,7 @@ CONDITIONS = [
     (
         'ConditionTagNotRaisedInUnit_no_swift_1 is TConditionNot'
         '('
-        '    ConditionToInverse = ConditionTagRaisedInUnit_swift_ok_1'
+        '    ConditionToInverse = ConditionTagRaisedInUnit_no_swift_1'
         '    DescriptorId    = GUID:{d7af0230-ed77-4499-870e-ef4da99b42e7}'
         ')'
     ),

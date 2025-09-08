@@ -1,6 +1,6 @@
 import sys
 import webbrowser  # noqa
-
+from datetime import datetime
 from src import ModConfig
 from src.data import build_database, load_database_from_disk
 from src.utils.database_utils import verify_database
@@ -75,7 +75,7 @@ if __name__ == "__main__":
 
 		main()
 
-		logger.info("Patcher completed successfully")
+		logger.info(f"Patcher completed successfully at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
 	except Exception as e:
 		run_bat = False
