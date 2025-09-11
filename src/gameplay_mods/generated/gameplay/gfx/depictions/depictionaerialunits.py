@@ -2,7 +2,9 @@
 
 from typing import Any
 from src.constants.unit_edits import load_depiction_edits
+from src.constants.new_units import NEW_UNITS, NEW_DEPICTIONS
 from src.utils.logging_utils import setup_logger
+from src.utils.ndf_utils import ndf, find_obj_by_type, is_obj_type
 
 logger = setup_logger(__name__)
 
@@ -10,6 +12,12 @@ def edit_gen_gp_gfx_depictionaerialunits(source_path: Any) -> None:
     """GameData/Generated/Gameplay/Gfx/Depictions/DepictionAerialUnits.ndf"""
     ndf_file = "DepictionAerialUnits.ndf"
 
+    _edit_depictions(source_path, ndf_file)
+    _create_new_depictions(source_path, ndf_file)
+                        
+
+def _edit_depictions(source_path: Any, ndf_file: str) -> None:
+    """Edit depictions for existing units"""
     # Load all depiction edits
     depiction_edits = load_depiction_edits()
 
@@ -71,3 +79,42 @@ def edit_gen_gp_gfx_depictionaerialunits(source_path: Any) -> None:
                     if row_name_or_type in possible_rows:
                         aerial_template.v.by_m(row_name_or_type).v = value
                         logger.info(f"Edited {row_name_or_type} for {unit_name}")
+                        
+
+def _create_new_depictions(source_path: Any, ndf_file: str) -> None:
+    """Create depictions for new units"""
+    mimeticregistration_descr = find_obj_by_type(source_path, "TMimeticUnitRegistration")
+    mimeticunit_map = mimeticregistration_descr.v.by_m("MimeticUnit")
+    for unit_descr_name, unit_data in NEW_DEPICTIONS.items():
+        if ndf_file not in unit_data["valid_files"]:
+            continue
+        unit_depictions = unit_data["DepictionAerialUnits_ndf"]
+        logger.debug(f"Processing aerial edits for {unit_descr_name}")
+        
+        for descr_key, descr_obj in unit_depictions.items():
+            new_descr_obj = ndf.convert(descr_obj)
+            source_path.add(new_descr_obj)
+            logger.info(f"Added {descr_key} for {unit_descr_name}")
+        
+        unit_name = unit_data["unit_name"]
+        _add_unit_mimetic(unit_name, mimeticunit_map)
+    
+    # Fix order of descriptors
+    descriptors_to_move = []
+    # TMimeticUnitRegistration
+    descriptors_to_move.append((mimeticregistration_descr.index, mimeticregistration_descr))
+    # Pilot descriptors
+    for descr_row in source_path:
+        if is_obj_type(descr_row.v, "TemplateDepictionPilote"):
+            descriptors_to_move.append((descr_row.index, descr_row))
+    
+    for index, descr_row in reversed(descriptors_to_move):
+        source_path.remove(index)
+    for index, descr_row in descriptors_to_move:
+        source_path.add(descr_row)
+
+def _add_unit_mimetic(unit_name: str, mimeticunit_map: Any) -> None:
+    """Add unit mimetic to TMimeticUnitRegistration"""
+    new_entry = f"('{unit_name}', TacticDepiction_{unit_name})"
+    mimeticunit_map.v.add(new_entry)
+    logger.info(f"Added unit mimetic for {unit_name}")

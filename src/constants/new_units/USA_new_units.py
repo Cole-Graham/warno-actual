@@ -933,5 +933,91 @@ USA_NEW_UNITS = {
         "Faction": "NATO",
         "Nation": "US",
     },
+    
+    ("F4_Wild_Weasel_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "04881d53-64f0-4db1-a932-0d55f9e7a5d4",
+        "GroupeCombatGUID": "d45a8be9-bae8-458b-9398-f48d27bfb723",
+        "ShowroomGUID": "4bcc7b29-b120-4076-bae5-07dd48107df4",
+        "CadavreGUID": "f09f33ec-7952-4621-bc70-58a4f295ab2c",
+        "NewName": "F4_Wild_Weasel_2_US",
+        "GameName": {
+            "display": "F-4G WILD WEASEL V [SEAD2]",
+            "token": "SHJATHSARL",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "Air",
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Avion",
+                "Avion_SEAD",
+                "UNITE_F4_Wild_Weasel_2_US",
+                "Unite",
+            ],
+        },
+        "depictions": {
+            "new_mesh": True,
+        },
+        "CommandPoints": 240,
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 10000.0,
+            },
+            "OpticalStrengths": {
+                "EOpticalStrength/AntiRadar": 5000.0,
+            },
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "add": [(2, 3), (3, 2)],
+                "AGM_AGM88_HARM": 3,
+            },
+            "SalvoIsMainSalvo": [False, False, False, False],
+            "equipmentchanges": {
+                "add": [
+                    (2, "AGM_AGM65D_Maverick", "AGM_AGM65D_Maverick", 4),
+                    (3, "AA_AIM7M_Sparrow", "AA_AIM7M_Sparrow", 5),
+                ],
+                "replace": [
+                    ("AGM_AGM45_Shrike", "AGM_AGM88_HARM", "AGM_AGM45_Shrike", "AGM_AGM88_HARM"),
+                    ("AA_AIM9J_Sidewinder", "AA_AIM9M_Sidewinder", "AA_AIM9J_Sidewinder", "AA_AIM9M_Sidewinder"),
+                ],
+            },
+            "turrets": {
+                0: {
+                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMaxPitch": 0.8726646,
+                    "AngleRotationMinPitch": -0.8726646,
+                },
+            },
+        },
+        "Decks": {
+            "packs": {
+                "rename": True, 
+            },
+        },
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+            "US_8th_Inf_multi": {
+                "Transports": None,
+            },
+            "US_3rd_Arm_multi": {
+                "Transports": None,
+            },
+        },
+        "availability": [0, 2, 0, 1],
+        "Orders": ['Stop', 'Move', 'FollowFormation', 'Shoot', 'AirplanePatrol', 'AirplaneAttack',
+                   'AirplaneMoveAndEngage', 'AirplaneEvacuate', 'AirplaneShoot', 'AIAirplaneAutoManage', 'AIStop'],
+        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": False,
+        "is_aerial": True,
+        "is_unarmed": False,
+        "Faction": "NATO",
+        "Nation": "US",
+        "UpgradeFromUnit": "F4_Wild_Weasel_US",
+    },
 } 
 # fmt: on

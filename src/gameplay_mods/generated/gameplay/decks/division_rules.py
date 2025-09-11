@@ -210,10 +210,10 @@ def _new_unit_division_rules(source_path: Any) -> None:
                 continue
 
             division_obj_namespace = f"Descriptor_Deck_Division_{division}_Rule"
-            transports = div_data.get("Transports")
+            transports = div_data.get("Transports", None)
 
             # Create transport list if available
-            if transports:
+            if transports is not None:
                 transport_list = [f"$/GFX/Unit/Descriptor_Unit_{t}" for t in transports]
                 transport_str = f"[{', '.join(transport_list)}]"
 
@@ -224,7 +224,10 @@ def _new_unit_division_rules(source_path: Any) -> None:
             cards = div_data.get("cards", default_cards)
 
             # Different entries for vehicles vs infantry/towed
-            if edits.get("is_ground_vehicle", False) and not edits.get("is_infantry", False):
+            is_transportable = "'LoadIntoTransport'" in edits.get("orders", [])
+            is_vehicle_or_aerial = edits.get("is_ground_vehicle", False) or edits.get("is_aerial", False)
+            is_towed = edits.get("is_ground_vehicle", False) and not edits.get("is_infantry", False)
+            if not is_transportable:
                 new_entry = (
                     f"TDeckUniteRule\n"
                     f"(\n"

@@ -5,6 +5,7 @@ import re
 import inspect
 
 from . import ModConfig, ndf
+from .gameplay_mods import add_unit_meshes
 from .editors import get_all_editors
 from .utils.asset_utils import copy_assets
 from .utils.config_utils import get_mod_dst_path, get_mod_src_path
@@ -119,7 +120,8 @@ def main() -> None:
                 logger.error(f"Failed processing {file_path}: {str(e)}")
                 raise
 
-        # Copy assets
+        # Copy assets and create new .ndf asset definitions.
+        add_unit_meshes(config)
         copy_assets(config)
 
         logger.info("Build completed successfully")

@@ -313,6 +313,92 @@ def resolve_new_unit_references_optimized(new_units_dict: Dict) -> Dict:
     return resolved_dict
 
 
+def validate_no_duplicate_keys_in_source_files() -> None:
+    """
+    Validate that there are no duplicate keys in the new units source files.
+    
+    This function checks the actual source files for duplicate tuple keys (donor_unit, integer_id)
+    which would cause silent overwrites and lost unit definitions during dictionary creation.
+    
+    Raises:
+        ValueError: If duplicate keys are found in source files
+    """
+    import re
+    from pathlib import Path
+    
+    # Get the directory containing the new units files
+    new_units_dir = Path(__file__).parent
+    
+    # Pattern to match tuple keys like ("UnitName", 0):
+    tuple_key_pattern = r'\(\s*"([^"]+)"\s*,\s*(\d+)\s*\)\s*:'
+    
+    all_keys = []
+    duplicate_keys = []
+    
+    # Check each new units file
+    for file_path in new_units_dir.glob("*_new_units.py"):
+        if file_path.name == "__init__.py":
+            continue
+            
+        logger.debug(f"Checking {file_path.name} for duplicate keys...")
+        
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+                
+            # Find all tuple keys in this file
+            matches = re.findall(tuple_key_pattern, content)
+            for unit_name, index in matches:
+                key = (unit_name, int(index))
+                if key in all_keys:
+                    duplicate_keys.append((key, file_path.name))
+                else:
+                    all_keys.append(key)
+                    
+        except Exception as e:
+            logger.warning(f"Could not check {file_path.name}: {e}")
+    
+    if duplicate_keys:
+        error_msg = "Duplicate keys found in new units source files:\n"
+        for key, filename in duplicate_keys:
+            error_msg += f"  {key} in {filename}\n"
+        error_msg += "\nThis will cause silent overwrites and lost unit definitions!"
+        logger.error(error_msg)
+        raise ValueError(error_msg)
+    
+    logger.info(f"Validated {len(all_keys)} new unit keys across all source files - no duplicates found")
+
+
+def validate_no_duplicate_keys(new_units_dict: Dict) -> None:
+    """
+    Validate that there are no duplicate keys in the new units dictionary.
+    
+    This function checks for duplicate tuple keys (donor_unit, integer_id) which would
+    cause silent overwrites and lost unit definitions.
+    
+    Args:
+        new_units_dict: Dictionary of new units to validate
+        
+    Raises:
+        ValueError: If duplicate keys are found
+    """
+    seen_keys = set()
+    duplicate_keys = []
+    
+    for key in new_units_dict.keys():
+        if key in seen_keys:
+            duplicate_keys.append(key)
+        else:
+            seen_keys.add(key)
+    
+    if duplicate_keys:
+        error_msg = f"Duplicate keys found in new units dictionary: {duplicate_keys}"
+        logger.error(error_msg)
+        raise ValueError(error_msg)
+    
+    logger.info(f"Validated {len(new_units_dict)} new unit keys - no duplicates found")
+
+
 def load_new_units() -> Dict:
     """Load and merge all new unit dictionaries with reference resolution."""
     merged_units = {}
@@ -331,6 +417,14 @@ def load_new_units() -> Dict:
     }
     
     logger.info(f"Loaded {len(merged_units)} new units total")
+    
+    # Validate no duplicate keys in source files before processing
+    logger.info("Validating new units source files for duplicate keys...")
+    validate_no_duplicate_keys_in_source_files()
+    
+    # Also validate the merged dictionary (though this won't catch source-level duplicates)
+    logger.info("Validating merged new units dictionary...")
+    validate_no_duplicate_keys(merged_units)
 
     # Resolve shared/borrowed values in new units dictionary
     logger.info("Resolving shared values in new units dictionaries...")
@@ -360,4 +454,6 @@ __all__ = [
     "NEW_UNITS",
     "NEW_DEPICTIONS",
     "load_new_units",
+    "validate_no_duplicate_keys_in_source_files",
+    "validate_no_duplicate_keys",
 ]

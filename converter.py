@@ -61,7 +61,7 @@ def unnamed(node: ts.Node) -> DictWrapped:
 
 def assignment(node: ts.Node) -> DictWrapped:
     res_node: DictWrapped = find_converter(field(node, "value"))
-    res_node["namespace"] = field(node, "name").text.decode()
+    res_node["namespace"] = field(node, "name").text.decode()  # type: ignore
     return res_node
 
 

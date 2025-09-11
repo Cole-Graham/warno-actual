@@ -8,7 +8,7 @@ from src.constants.new_units import NEW_UNITS
 # from src.constants.weapons.ammunition.small_arms import weapons as small_arms_weapons
 from src.constants.weapons import ammunitions
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import is_valid_turret, strip_quotes
+from src.utils.ndf_utils import is_valid_turret, strip_quotes, is_obj_type
 
 small_arms_weapons = ammunitions
 
@@ -67,8 +67,8 @@ def new_units_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> Non
 
                 # Handle additions
                 if "add" in changes:
-                    for ammo in changes["add"]:
-                        _add_weapon(source_path, changes, new_weap_row, ammo, game_db)
+                    for weapon_tuple in changes["add"]:
+                        _add_weapon(source_path, weapon_tuple, new_weap_row, changes, edits, game_db)
 
                 # Handle index adjustments for bumped weapons in turret and mounted weapon lists
                 if "update" in changes:
@@ -84,10 +84,18 @@ def new_units_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> Non
                     for ammo, quantity in changes["quantity"].items():
                         _update_weapon_quantity(new_weap_row, ammo, quantity, game_db)
 
+            # Handle turrets
+            if "turrets" in weapon_edits:
+                for turret_index, turret_edits in weapon_edits["turrets"].items():
+                    _update_turret(new_weap_row, turret_index, turret_edits, game_db)
+
             # Handle salvos
             if "Salves" in weapon_edits:
                 for ammo, salvo in weapon_edits["Salves"].items():
                     _update_weapon_salvo(new_weap_row, ammo, salvo, game_db)
+            
+            if "SalvoIsMainSalvo" in weapon_edits:
+                new_weap_row.v.by_m("SalvoIsMainSalvo").v = ndf.convert(str(weapon_edits["SalvoIsMainSalvo"]))
 
         # Update any unmodified weapons that should use strength variants
         _update_unmodified_weapons(new_weap_row, game_db)
@@ -97,37 +105,39 @@ def new_units_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> Non
 
 
 def _add_weapon(
-    source_path: Any, changes: Dict[str, Any], new_weap_row: Any, ammo: str, game_db: Dict[str, Any]
+    source_path: Any, weapon_tuple: tuple, new_weap_row: Any, changes: Dict[str, Any], edits: Dict[str, Any], game_db: Dict[str, Any]
 ) -> None:
     """Add a weapon to the weapon descriptor.
 
     Args:
         source_path: The NDF file being edited
-        changes: Dictionary containing equipment changes
+        weapon_tuple: Tuple containing (turret_index, weapon_name, fire_effect)
         new_weap_row: The weapon descriptor to modify
-        ammo: The ammunition to add
+        changes: Dictionary containing equipment changes (for quantity information)
+        edits: Dictionary containing unit configuration (for strength and unit type)
         game_db: Game database containing weapon and ammunition data
     """
     ammo_db = game_db["ammunition"]
     weapon_db = game_db["weapons"]
 
-    # Get turret index and weapon name from changes
-    # TODO: handle multiple weapon additions, currently hardcoded to access the first tuple '[0]'
-    turret_index = changes["add"][0][0]  # First element's turret index
-    weapon_name = changes["add"][0][1]  # First element's weapon name
-    fire_effect = changes["add"][0][2]  # First element's fire effect
+    # Get turret index and weapon name from weapon tuple
+    turret_index = weapon_tuple[0]  # Turret index
+    weapon_name = weapon_tuple[1]  # Weapon name
+    fire_effect = weapon_tuple[2]  # Fire effect
+    
+    if len(weapon_tuple) == 4:
+        new_yul_bone = weapon_tuple[3]
+    else:
+        new_yul_bone = turret_index + 1
 
-    # Get unit strength from NEW_UNITS
-    unit_name = new_weap_row.namespace.replace("WeaponDescriptor_", "")
-    unit_strength = None
-    for donor, edits in NEW_UNITS.items():
-        is_infantry = edits.get("is_infantry", False)
-        is_ground_vehicle = edits.get("is_ground_vehicle", False)
-        if edits.get("NewName") == unit_name:
-            unit_strength = edits.get("strength")
-            break
-
+    # Get unit properties from edits (passed from parent function)
+    unit_strength = edits.get("strength")
+    is_infantry = edits.get("is_infantry", False)
+    is_ground_vehicle = edits.get("is_ground_vehicle", False)
+    
+    # Check if strength is required but missing
     if not unit_strength and is_infantry and not is_ground_vehicle:
+        unit_name = new_weap_row.namespace.replace("WeaponDescriptor_", "")
         logger.warning(f"No strength found for new unit {unit_name}")
         return
 
@@ -158,6 +168,7 @@ def _add_weapon(
         # Get and copy the entire turret containing our template weapon
         donor_turret = donor_descr.v.by_m("TurretDescriptorList").v[location["turret_index"]]
         if not is_valid_turret(donor_turret.v):
+            logger.warning(f"Invalid turret {donor_turret.v} for {unit_name}")
             continue
 
         # Create new turret by copying template
@@ -168,15 +179,15 @@ def _add_weapon(
         for weapon in mounted_wpns.v:
             weapon.v.by_m("EffectTag").v = f"'FireEffect_{fire_effect}'"
             weapon.v.by_m("SalvoStockIndex").v = str(turret_index)
-            weapon.v.by_m("HandheldEquipmentKey").v = f"'MeshAlternative_{turret_index + 1}'"
-            weapon.v.by_m("WeaponActiveAndCanShootPropertyName").v = f"'WeaponActiveAndCanShoot_{turret_index + 1}'"
-            weapon.v.by_m("WeaponIgnoredPropertyName").v = f"'WeaponIgnored_{turret_index + 1}'"
-            weapon.v.by_m("WeaponShootDataPropertyName").v = f"['WeaponShootData_0_{turret_index + 1}']"
+            weapon.v.by_m("HandheldEquipmentKey").v = f"'MeshAlternative_{new_yul_bone}'"
+            weapon.v.by_m("WeaponActiveAndCanShootPropertyName").v = f"'WeaponActiveAndCanShoot_{new_yul_bone}'"
+            weapon.v.by_m("WeaponIgnoredPropertyName").v = f"'WeaponIgnored_{new_yul_bone}'"
+            weapon.v.by_m("WeaponShootDataPropertyName").v = f"['WeaponShootData_0_{new_yul_bone}']"
 
             # Update ammo path to include strength
             current_ammo = weapon.v.by_m("Ammunition").v
             prefix = current_ammo.split("_", 1)[0]  # Get $/GFX/Weapon/Ammo part
-            quantity = changes["quantity"].get(weapon_name, int(weapon.v.by_m("NbWeapons").v))
+            quantity = changes.get("quantity", {}).get(weapon_name, int(weapon.v.by_m("NbWeapons").v))
 
             if _should_use_strength_variant(weapon_name, game_db):
                 if quantity > 1:
@@ -193,7 +204,8 @@ def _add_weapon(
 
         # Update turret bone index
         # TODO: turret bone might not always be the same as turret index
-        new_yul_bone = turret_index + 1
+        if new_turret.v.by_m("Tag", False) is not None:
+            new_turret.v.by_m("Tag").v = f'"tourelle{new_yul_bone}"'
         new_turret.v.by_m("YulBoneOrdinal").v = str(new_yul_bone)
 
         # Add to target turret list
@@ -266,17 +278,18 @@ def _replace_weapon(
             unit_strength = edits.get("strength")
             break
 
+    # I classify towed equipment as both ground vehicle and infantry, but they never have small arms.
     if not unit_strength and is_infantry and not is_ground_vehicle:
         logger.warning(f"No strength found for new unit {unit_name}")
         return
 
-    # Check if this weapon should use strength variants
-    use_strength = False
-    for (weapon_name, category, _, _), data in small_arms_weapons.items():
-        if weapon_name == new_ammo and category == "small_arms":
-            damage_family = data.get("Ammunition", {}).get("Arme", {}).get("Family")
-            use_strength = damage_family in ["DamageFamily_sa_full", "DamageFamily_sa_intermediate"]
-            break
+    # # Check if this weapon should use strength variants
+    # use_strength = False
+    # for (weapon_name, category, _, _), data in small_arms_weapons.items():
+    #     if weapon_name == new_ammo and category == "small_arms":
+    #         damage_family = data.get("Ammunition", {}).get("Arme", {}).get("Family")
+    #         use_strength = damage_family in ["DamageFamily_sa_full", "DamageFamily_sa_intermediate"]
+    #         break
 
     # Iterate through turrets and weapons to find the one to replace
     for descr_row in new_weap_row.v.by_member("TurretDescriptorList").v:
@@ -298,14 +311,14 @@ def _replace_weapon(
                 # Update ammo path with quantity and strength if needed
                 prefix = current_ammo.split("_", 1)[0]  # Get $/GFX/Weapon/Ammo part
                 quantity = int(weapon_descr_row.v.by_m("NbWeapons").v)
-
+                
                 if quantity > 1:
-                    if use_strength:
+                    if _should_use_strength_variant(new_ammo, game_db):
                         new_ammo_path = f"{prefix}_{new_ammo}_strength{unit_strength}_x{quantity}"
                     else:
                         new_ammo_path = f"{prefix}_{new_ammo}_x{quantity}"
                 else:
-                    if use_strength:
+                    if _should_use_strength_variant(new_ammo, game_db):
                         new_ammo_path = f"{prefix}_{new_ammo}_strength{unit_strength}"
                     else:
                         new_ammo_path = f"{prefix}_{new_ammo}"
@@ -489,3 +502,15 @@ def _update_unmodified_weapons(new_weap_row: Any, game_db: Dict[str, Any]) -> No
 
                 weapon_descr_row.v.by_m("Ammunition").v = new_ammo
                 logger.debug(f"Updated unmodified weapon {current_base_ammo} to use strength variant: {new_ammo}")
+
+
+def _update_turret(new_weap_row: Any, turret_index: int, turret_edits: Dict[str, Any], game_db: Dict[str, Any]) -> None:
+    """Update turret properties for new units."""
+    turret_list = new_weap_row.v.by_member("TurretDescriptorList")
+
+    # turret property edits
+    for membr, value in turret_edits.items():
+        if membr == "MountedWeapons":
+            continue
+        else:
+            turret_list.v[turret_index].v.by_m(membr).v = str(value)

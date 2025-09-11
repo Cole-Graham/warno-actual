@@ -96,11 +96,12 @@ def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_nam
         "TGenericMovementModuleDescriptor": { "handler": _handle_genericmovement_module, "args": [] },
         # "THelicopterMovementModuleDescriptor": { "handler": handle_helicoptermovement_module, "args": [] },
         "TLandMovementModuleDescriptor": { "handler": _handle_landmovement_module, "args": [] },
-        "AirplaneMovementDescriptor": { "handler": _handle_airplanemovement_module, "args": [] },
+        "AirplaneMovementDescriptor": { "handler": _handle_airplanemovement_module, "args": [donor] },
         # "TFuelModuleDescriptor": { "handler": handle_fuel_module, "args": [] },
         "TSupplyModuleDescriptor": { "handler": handle_supply_module, "args": [] },
         "TScannerConfigurationDescriptor": { "handler": _handle_scannerconfiguration_module, "args": [] },
         "TReverseScannerWithIdentificationDescriptor": { "handler": _handle_reversescanner_module, "args": [] },
+        "TMissileCarriageModuleDescriptor": { "handler": _handle_missilecarriage_module, "args": [] },
         "TTransportableModuleDescriptor": { "handler": _handle_transportable_module, "args": [] },
         "TTransporterModuleDescriptor": { "handler": _handle_transporter_module, "args": [] },
         # "UnitCadavreGeneratorModuleDescriptor": { "handler": handle_unitcadavre_module, "args": [] },
@@ -119,6 +120,7 @@ def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_nam
         "TUnitUIModuleDescriptor": { "handler": handle_unitui_module, "args": [dictionary_entries, donor] },
         # "TUnitUpkeepModuleDescriptor": { "handler": handle_unitupkeep_module, "args": [] },
         "TDeploymentShiftModuleDescriptor": { "handler": _handle_deploymentshift_module, "args": [found_zoneinfluence_module] },
+        "TCameraShowroomModuleDescriptor": { "handler": _handle_camerashowroom_module, "args": [] },
     }
     # Iterate over module handlers
     for module_type, handling_data in module_handlers.items():
@@ -289,10 +291,16 @@ def _handle_airplanemovement_module(logger, game_db, unit_data, edit_type, unit_
             logger.info(f"Updated {unit_name} {key} from {old_value} to {value}")
             
     # Global bomber edits TODO: Use dic references instead for standardization
+    if edit_type == "new_units":
+        donor = args[0]
+        unit_or_donor_data = game_db["unit_data"].get(donor, None)
+    else:
+        unit_or_donor_data = unit_data
+
     search_conditions = [
         ("has_terrain_radar", "'terrain_radar'", edits.get("specialties", {})),
-        ("is_sead", "Avion_SEAD", unit_data.get("tags", {})),
-        ("is_ew", "_electronic_warfare", unit_data.get("specialties", {})),
+        ("is_sead", "Avion_SEAD", unit_or_donor_data.get("tags", {})),
+        ("is_ew", "_electronic_warfare", unit_or_donor_data.get("specialties", {})),
     ]
     has_terrain_radar, is_sead, is_ew = determine_characteristics(search_conditions)
     
@@ -382,7 +390,13 @@ def _handle_vehicleapparence_module(logger, game_db, unit_data, edit_type, unit_
                                     edits, module, *args) -> None:
     """Handle VehicleApparenceModuleDescriptor for existing and new units"""
     if edit_type == "new_units" and "depictions" in edits:
-        module.v.by_m("MimeticName").v = f'"{unit_name}"'
+        if edits.get("depictions", {}).get("new_mesh", False):
+            new_name = edits["NewName"]
+            module.v.by_m("MimeticName").v = f'"{new_name}"'
+            module.v.by_m("BlackHoleIdentifier").v = f'"{new_name}"'
+            module.v.by_m("ReferenceMesh").v = f'$/GFX/DepictionResources/Modele_{new_name}'
+        else:
+            module.v.by_m("MimeticName").v = f'"{unit_name}"'
     
     if edit_type == "unit_edits":
         pass
@@ -474,19 +488,18 @@ def _handle_dangerousness_module(logger, game_db, unit_data, edit_type, unit_nam
 def _handle_scannerconfiguration_module(logger, game_db, unit_data, edit_type, unit_name,
                                         edits, module, *args) -> None:
     """Handle TScannerConfigurationDescriptor for existing and new units"""
-    if edit_type == "new_units":
-        pass
-    
+    # if edit_type == "new_units":
+    #     pass
+
+    if "VisionRangesGRU" in edits.get("optics", {}):
+        for key, value in edits["optics"]["VisionRangesGRU"].items():
+            module.v.by_m("VisionRangesGRU").v.by_k(key).v = str(value)
+
+    if "OpticalStrengths" in edits.get("optics", {}):
+        for key, value in edits["optics"]["OpticalStrengths"].items():
+            module.v.by_m("OpticalStrengths").v.by_k(key).v = str(value)
+
     if edit_type == "unit_edits":
-    
-        if "VisionRangesGRU" in edits.get("optics", {}):
-            for key, value in edits["optics"]["VisionRangesGRU"].items():
-                module.v.by_m("VisionRangesGRU").v.by_k(key).v = str(value)
-
-        if "OpticalStrengths" in edits.get("optics", {}):
-            for key, value in edits["optics"]["OpticalStrengths"].items():
-                module.v.by_m("OpticalStrengths").v.by_k(key).v = str(value)
-
         for spec in edits.get("SpecialtiesList", {}).get("add_specs", []):
             # TODO: Good vs. very good needs more testing/research to find a workable differentiation
             # It might have to involve optical strength instead of just vision range
@@ -519,6 +532,20 @@ def _handle_reversescanner_module(logger, game_db, unit_data, edit_type, unit_na
         visibility_rolls_obj.v.by_m("TimeBetweenEachIdentifyRoll").v = str(current_roll_freq / 2)
 
 
+def _handle_missilecarriage_module(logger, game_db, unit_data, edit_type, unit_name,
+                                   edits, module, *args) -> None:
+    """Handle TMissileCarriageModuleDescriptor for existing and new units"""
+    if edit_type == "new_units" and "depictions" in edits:
+        if edits.get("depictions", {}).get("new_mesh", False):
+            new_name = edits["NewName"]
+            module.v.by_m("Connoisseur").v = f'$/GFX/Depiction/MissileCarriage_{new_name}'
+        else:
+            pass
+    
+    if edit_type == "unit_edits":
+        pass
+    
+    
 # TProductionModuleDescriptor
 def _handle_production_module(logger, game_db, unit_data, edit_type, unit_name,
                               edits, module, *args) -> None:
@@ -632,4 +659,19 @@ def _handle_orderable_module(logger, game_db, unit_data, edit_type, unit_name,
     
     if edit_type == "new_units":
         module.v.by_m("UnlockableOrders").v = f"~/Descriptor_OrderAvailability_{unit_name}"
-        
+
+
+# TCameraShowroomModuleDescriptor
+def _handle_camerashowroom_module(logger, game_db, unit_data, edit_type, unit_name,
+                                  edits, module, *args) -> None:
+    """Handle TCameraShowroomModuleDescriptor for existing and new units"""
+    if edit_type == "new_units" and "depictions" in edits:
+        if edits.get("depictions", {}).get("new_mesh", False):
+            new_name = edits["NewName"]
+            module.v.by_m("ShowRoomBlackHoleIdentifier").v = f'"showroom_{new_name}"'
+        else:
+            pass
+    
+    if edit_type == "unit_edits":
+        pass
+    

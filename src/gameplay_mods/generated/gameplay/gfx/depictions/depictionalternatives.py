@@ -19,7 +19,7 @@ def _handle_new_units(source_path: Any) -> None:
     
     for donor, edits in NEW_UNITS.items():
         donor_name = donor[0]
-        if not edits.get("is_ground_vehicle", False):
+        if not edits.get("is_ground_vehicle", False) and not edits.get("is_aerial", False):
             continue
 
         unit_name = edits["NewName"]

@@ -88,6 +88,7 @@ RDA_NEW_UNITS = {
         "is_ground_vehicle": False,
         "is_aerial": False,
         "is_unarmed": False,
+        "is_transport": False,
         "Faction": "PACT",
         "Nation": "DDR",
         "alternatives_count": 5,

@@ -15,18 +15,21 @@ from .damageresistance import (
 from .depictions import (
     edit_gen_gp_gfx_depictionaerialghosts,
     edit_gen_gp_gfx_depictionaerialunits,
+    edit_gen_gp_gfx_depictionaerialunitsshowroom,
     edit_gen_gp_gfx_depictionalternatives,
     edit_gen_gp_gfx_depictionghosts,
     edit_gen_gp_gfx_depictionhumans,
     edit_gen_gp_gfx_depictioninfantry,
     edit_gen_gp_gfx_depictionvehicles,
     edit_gen_gp_gfx_depictionvehiclesshowroom,
+    edit_gen_gp_gfx_mimeticghosts,
     edit_gen_gp_gfx_missilecarriage,
     edit_gen_gp_gfx_missilecarriagedepiction,
 )
 from .effetssurunite import edit_gen_gp_gfx_effetssurunite
 from .experiencelevels import edit_gen_gp_gfx_experiencelevels
 from .firedescriptor import edit_gen_gp_gfx_firedescriptor
+from .ndfdepictionlist import edit_gen_gp_gfx_ndfdepictionlist
 from .orderavailabilitytactic import edit_gen_gp_gfx_orderavailabilitytactic
 from .smokedescriptor import edit_gen_gp_gfx_smokedescriptor
 from .unite_descriptor import edit_gen_gp_gfx_unitedescriptor
@@ -45,6 +48,7 @@ __all__ = [
     'edit_gen_gp_gfx_damageresistancefamilylistimpl',
     'edit_gen_gp_gfx_depictionaerialghosts',
     'edit_gen_gp_gfx_depictionaerialunits',
+    'edit_gen_gp_gfx_depictionaerialunitsshowroom',
     'edit_gen_gp_gfx_depictionalternatives',
     'edit_gen_gp_gfx_depictionghosts',
     'edit_gen_gp_gfx_depictionhumans',
@@ -54,8 +58,10 @@ __all__ = [
     'edit_gen_gp_gfx_effetssurunite',
     'edit_gen_gp_gfx_experiencelevels',
     'edit_gen_gp_gfx_firedescriptor',
+    'edit_gen_gp_gfx_mimeticghosts',
     'edit_gen_gp_gfx_missilecarriage',
     'edit_gen_gp_gfx_missilecarriagedepiction',
+    'edit_gen_gp_gfx_ndfdepictionlist',
     'edit_gen_gp_gfx_orderavailabilitytactic',
     'edit_gen_gp_gfx_smokedescriptor',
     'edit_gen_gp_gfx_unitedescriptor',

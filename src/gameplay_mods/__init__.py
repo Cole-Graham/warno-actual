@@ -5,6 +5,7 @@ from typing import Any, Callable, Dict, List
 
 # New import structure
 from .gameplay import (
+    add_unit_meshes,
     edit_gameplay_constantes_gdconstants,
     edit_gameplay_constantes_ravitaillement,
     edit_gameplay_constantes_weaponconstantes,
@@ -38,6 +39,7 @@ from .generated import (
     edit_gen_gp_gfx_damageresistancefamilylistimpl,
     edit_gen_gp_gfx_depictionaerialghosts,
     edit_gen_gp_gfx_depictionaerialunits,
+    edit_gen_gp_gfx_depictionaerialunitsshowroom,
     edit_gen_gp_gfx_depictionalternatives,
     edit_gen_gp_gfx_depictionghosts,
     edit_gen_gp_gfx_depictionhumans,
@@ -47,6 +49,8 @@ from .generated import (
     edit_gen_gp_gfx_effetssurunite,
     edit_gen_gp_gfx_experiencelevels,
     edit_gen_gp_gfx_firedescriptor,
+    edit_gen_gp_gfx_ndfdepictionlist,
+    edit_gen_gp_gfx_mimeticghosts,
     edit_gen_gp_gfx_missilecarriage,
     edit_gen_gp_gfx_missilecarriagedepiction,
     edit_gen_gp_gfx_orderavailabilitytactic,
@@ -70,6 +74,7 @@ from .userinterface import (
 
 __all__ = [
     # .gameplay
+    'add_unit_meshes',
     'edit_gameplay_constantes_gdconstants',
     'edit_gameplay_constantes_ravitaillement',
     'edit_gameplay_constantes_weaponconstantes',
@@ -102,6 +107,7 @@ __all__ = [
     'edit_gen_gp_gfx_damageresistancefamilylistimpl',
     'edit_gen_gp_gfx_depictionaerialghosts',
     'edit_gen_gp_gfx_depictionaerialunits',
+    'edit_gen_gp_gfx_depictionaerialunitsshowroom',
     'edit_gen_gp_gfx_depictionalternatives',
     'edit_gen_gp_gfx_depictionghosts',
     'edit_gen_gp_gfx_depictionhumans',
@@ -111,6 +117,8 @@ __all__ = [
     'edit_gen_gp_gfx_effetssurunite',
     'edit_gen_gp_gfx_experiencelevels',
     'edit_gen_gp_gfx_firedescriptor',
+    'edit_gen_gp_gfx_ndfdepictionlist',
+    'edit_gen_gp_gfx_mimeticghosts',
     'edit_gen_gp_gfx_missilecarriage',
     'edit_gen_gp_gfx_missilecarriagedepiction',
     'edit_gen_gp_gfx_orderavailabilitytactic',
