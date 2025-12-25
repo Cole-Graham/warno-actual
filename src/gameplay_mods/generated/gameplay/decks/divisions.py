@@ -1,6 +1,5 @@
 """Functions for modifying Divisions.ndf"""
 
-from src.constants.generated.gameplay.decks import divs_not_released
 from src.utils.logging_utils import setup_logger
 from src import ModConfig
 
@@ -12,9 +11,14 @@ def edit_gen_gp_decks_divisions(source_path) -> None:
 
     config = ModConfig.get_instance()
 
-    divs_to_hide = (
-        divs_not_released if not config.config_data["build_config"]["write_dev"] else config.config_data["hide_divs"]
-    )
+    hide_divs = config.config_data.get("hide_divs", [])
+    if config.config_data["build_config"]["write_dev"]:
+        # In dev mode, remove divisions that should be shown for testing
+        dev_show_divs = config.config_data.get("dev_show_divs", [])
+        divs_to_hide = [div for div in hide_divs if div not in dev_show_divs]
+    else:
+        # In release mode, hide all divisions in hide_divs
+        divs_to_hide = hide_divs
 
     indices_to_remove = []
     logger.info("Modifying hidden divisions in Divisions.ndf ")    

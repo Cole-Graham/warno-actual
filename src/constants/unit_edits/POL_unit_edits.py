@@ -66,7 +66,6 @@ pol_unit_edits = {
         #     },
         # },
         "max_speed": 4,
-        "UpgradeFromUnit": "DCA_AZP_S60_POL",
         "availability": [6, 4, 0, 0],
     },
     "DCA_ZUR_23_2S_JOD_Para_POL": {  # Desant. ZUR-23-2S Jod
@@ -855,7 +854,7 @@ pol_unit_edits = {
     "Mortier_2B9_Vasilek_Para_POL": {  # Desant. 2B9 Wasilok
         "CommandPoints": 45,
         "orders": {
-            "add_orders": ["ShootOnPositionSmoke", "ShootOnPositionWithoutCorrectionSmoke"],
+            "add_orders": ["EOrderType/ShootOnPositionSmoke", "EOrderType/ShootOnPositionWithoutCorrectionSmoke"],
         },
         "GameName": {
             "display": "SPADO. 2B9 WASILOK",
@@ -873,7 +872,7 @@ pol_unit_edits = {
                                 "DispersionRadiusOnColor": "RGBA[0,0,0,0]",
                                 "DispersionRadiusOnThickness": -0.1,
                                 "EffectTag": "'FireEffect_Mortier_Vasilek_indirect_82mm_towed'",
-                                "HandheldEquipmentKey": "'MeshAlternative_3'",
+                                "HandheldEquipmentKey": "'WeaponAlternative_3'",
                                 "ShowDispersion": False,
                                 "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
                                 "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
@@ -1161,7 +1160,7 @@ pol_unit_edits = {
     },
     "MTLB_trans_POL": {  # MT-LB
         "orders": {
-            "add_orders": ["sell"],
+            "add_orders": ["EOrderType/Sell"],
         },
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'",],
@@ -1519,7 +1518,7 @@ pol_unit_edits = {
             ],
         },
         "orders": {
-            "add_orders": ["UnloadFromTransport", "UnloadAtPosition", "LoadUnit"]},
+            "add_orders": ["EOrderType/UnloadFromTransport", "EOrderType/UnloadAtPosition", "EOrderType/Load"]},
         "WeaponDescriptor": {
             "Salves": {
                 "RocketAir_S5_57mm_salvolength64": 1,

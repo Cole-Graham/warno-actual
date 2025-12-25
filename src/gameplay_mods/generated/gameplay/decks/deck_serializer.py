@@ -1,6 +1,5 @@
 from typing import Any
 
-from src.constants.generated.gameplay.decks import divs_not_released
 from src.constants.new_units import NEW_UNITS
 from src.utils.logging_utils import setup_logger
 from src import ModConfig, ndf
@@ -49,9 +48,14 @@ def _hide_divisions_deckserializer_ndf(source_path) -> None:
 
     config = ModConfig.get_instance()
 
-    divs_to_hide = (
-        divs_not_released if not config.config_data["build_config"]["write_dev"] else config.config_data["hide_divs"]
-    )
+    hide_divs = config.config_data.get("hide_divs", [])
+    if config.config_data["build_config"]["write_dev"]:
+        # In dev mode, remove divisions that should be shown for testing
+        dev_show_divs = config.config_data.get("dev_show_divs", [])
+        divs_to_hide = [div for div in hide_divs if div not in dev_show_divs]
+    else:
+        # In release mode, hide all divisions in hide_divs
+        divs_to_hide = hide_divs
 
     vanilla_serializer = source_path.find_by_cond(lambda serializer_obj: serializer_obj.index == 0)
     division_ids_map = vanilla_serializer.v.by_member("DivisionIds")

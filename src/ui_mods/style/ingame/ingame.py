@@ -56,7 +56,7 @@ def edit_uiingameresources(source_path: Any) -> None:
                         elements.remove(element)
                     elif unique_name == '"UISpecificMiniMapInfoViewMainContainer"':
                         component_descriptor.by_m("ComponentFrame").v.add("MagnifiableOffset = [0.0, 10.0]")  # noqa
-                    elif unique_name == '"UICommonFlarePanelViewMainContainer"':
+                    elif unique_name == '"UICommonBeaconPanelViewMainContainer"':
                         component_descriptor.by_m("ComponentFrame").v.by_m("RelativeWidthHeight").v = "[0.8312, 0.0]"  # noqa
                         component_descriptor.by_m("ComponentFrame").v.add("AlignementToFather = [0.1688, 0.3]")  # noqa
                     elif unique_name == '"SpecificInGameHUDScoreViewMainContainer"':

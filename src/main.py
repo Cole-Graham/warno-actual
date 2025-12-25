@@ -78,51 +78,57 @@ def main() -> None:
             if not editor_list:  # Skip empty editor lists
                 continue
 
+            # Filter editors that should run based on build_target_cfg
+            # This prevents opening files that won't be processed, avoiding whitespace edits
+            editors_to_run = []
+            skipped_editors = []
+            
+            for editor, build_target in editor_list:
+                if build_target_cfg == "ui_only" and build_target == "ui":
+                    editors_to_run.append((editor, build_target))
+                elif build_target_cfg == "ui_only" and build_target == "gameplay":
+                    skipped_editors.append((editor, build_target))
+                elif build_target_cfg == "gameplay":
+                    editors_to_run.append((editor, build_target))
+                else:
+                    logger.warning(
+                        f"config build target: {build_target_cfg}, "
+                        f"editor build target: {build_target}\n"
+                        f"Invalid configuration. Skipping editor for {file_path}\n"
+                    )
+
+            # Log skipped editors for ui_only build target configuration
+            if skipped_editors:
+                path_replacement_regex = r"^.*/"
+                for editor, build_target in skipped_editors:
+                    editor_name = get_editor_name(editor)
+                    logger.info(
+                        f"Skipping {re.sub(path_replacement_regex, '', file_path)} editor: {editor_name} with build target {build_target}",
+                    )
+
+            # Only open the file if there are editors that will actually run
+            # This prevents the NDF parser from making whitespace edits to skipped files
+            if not editors_to_run:
+                continue
+
             try:
                 with mod.edit(file_path) as source:
-                    for editor, build_target in editor_list:
-                        
-                        if build_target_cfg == "ui_only" and build_target == "ui":
-                            logger.info(f"Processing {file_path}")
-                            try:
-                                editor(source)
-                            except Exception as e:
-                                logger.error(f"Editor failed for {file_path}: {str(e)}")
-                                raise
-                        
-                        # Logging skipped entries for ui_only build target configuration
-                        elif build_target_cfg == "ui_only" and build_target == "gameplay":
-                            # Regex to match everything up to the last '/' in the string
-                            path_replacement_regex = r"^.*/"
-
-                            editor_name = get_editor_name(editor)
-                            logger.info(
-                                f"Skipping {re.sub(path_replacement_regex, '', file_path)} editor: {editor_name} with build target {build_target}",
-                            )
-                            continue
-
-                        elif build_target_cfg == "gameplay":
-                            logger.info(f"Processing {file_path}")
-                            try:
-                                editor(source)
-                            except Exception as e:
-                                logger.error(f"Editor failed for {file_path}: {str(e)}")
-                                raise
-
-                        else:
-                            logger.warning(
-                                f"config build target: {build_target_cfg}, "
-                                f"editor build target: {build_target}\n"
-                                f"Invalid configuration. Skipping editor for {file_path}\n"
-                            )
+                    for editor, build_target in editors_to_run:
+                        logger.info(f"Processing {file_path}")
+                        try:
+                            editor(source)
+                        except Exception as e:
+                            logger.error(f"Editor failed for {file_path}: {str(e)}")
+                            raise
 
             except Exception as e:
                 logger.error(f"Failed processing {file_path}: {str(e)}")
                 raise
 
         # Copy assets and create new .ndf asset definitions.
-        add_unit_meshes(config)
         copy_assets(config)
+        if build_target_cfg == "gameplay":
+            add_unit_meshes(config)
 
         logger.info("Build completed successfully")
 

@@ -138,7 +138,7 @@ def _update_existing_units(source_path: Any, unit: str, edits: Dict) -> None:
             if rule_obj.v.by_m("UnitDescriptor").v != unit_descr:
                 continue
 
-            # add_transport_module = "UnloadFromTransport" in edits.get("orders", {}).get("add_orders", [])
+            # add_transport_module = "EOrderType/UnloadFromTransport" in edits.get("orders", {}).get("add_orders", [])
             # if add_transport_module:
             #     unit_rule_list.remove(rule_obj.index)
             #     logger.debug(f"Removing {unit} from {div_name} because its now a transport unit")
@@ -224,7 +224,7 @@ def _new_unit_division_rules(source_path: Any) -> None:
             cards = div_data.get("cards", default_cards)
 
             # Different entries for vehicles vs infantry/towed
-            is_transportable = "'LoadIntoTransport'" in edits.get("orders", [])
+            is_transportable = "EOrderType/Load" in edits.get("orders", [])
             is_vehicle_or_aerial = edits.get("is_ground_vehicle", False) or edits.get("is_aerial", False)
             is_towed = edits.get("is_ground_vehicle", False) and not edits.get("is_infantry", False)
             if not is_transportable:

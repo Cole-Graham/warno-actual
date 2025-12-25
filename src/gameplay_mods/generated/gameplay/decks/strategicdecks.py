@@ -5,7 +5,6 @@ import re
 from pathlib import Path
 import json
 
-from src.constants.generated.gameplay.decks import divs_not_released
 from src.constants.new_units import NEW_UNITS
 from src.constants.unit_edits import load_unit_edits
 from src.constants.unit_edits.SUPPLY_unit_edits import supply_unit_edits

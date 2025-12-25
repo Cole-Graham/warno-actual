@@ -11,17 +11,17 @@ chasseurs_cmd2_fr: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
             f'[\n'
             f'    TDepictionVisual\n'
             f'    (\n'
-            f'        SelectorId = ["MeshAlternative_1"]\n'
+            f'        SelectorId = ["WeaponAlternative_1"]\n'
             f'        MeshDescriptor = $/GFX/DepictionResources/Modele_M16A2\n'
             f'    ),\n'
             f'    TDepictionVisual\n'
             f'    (\n'
-            f'        SelectorId = ["MeshAlternative_2"]\n'
+            f'        SelectorId = ["WeaponAlternative_2"]\n'
             f'        MeshDescriptor = $/GFX/DepictionResources/Modele_LRAC_F1\n'
             f'    ),\n'
             f'    TDepictionVisual\n'
             f'    (\n'
-            f'        SelectorId = ["MeshAlternative_3"]\n'
+            f'        SelectorId = ["WeaponAlternative_3"]\n'
             f'        MeshDescriptor = $/GFX/DepictionResources/Modele_MainNue\n'
             f'    ),\n'
             f'    TMeshlessDepictionDescriptor\n'
@@ -57,7 +57,7 @@ chasseurs_cmd2_fr: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
         ("TacticDepiction_Chasseurs_CMD2_FR_Soldier", "TemplateInfantryDepictionFactoryTactic"): {
             "Operators": {
                 # 0: ("remove", None),
-                0: ("edit", [("bazooka", "MeshAlternative_2")]),
+                0: ("edit", [("bazooka", "WeaponAlternative_2")]),
             }
         },
     },

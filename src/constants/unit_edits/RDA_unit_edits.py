@@ -702,7 +702,7 @@ rda_unit_edits = {
 
     "MTLB_trans_DDR": {
         "orders": {
-            "add_orders": ["sell"],
+            "add_orders": ["EOrderType/Sell"],
         },
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'",],
@@ -711,7 +711,7 @@ rda_unit_edits = {
 
     "BTR_50_DDR": {
         "orders": {
-            "add_orders": ["sell"],
+            "add_orders": ["EOrderType/Sell"],
         },
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'",],
@@ -720,7 +720,7 @@ rda_unit_edits = {
 
     "SPW_152K_DDR": {
         "orders": {
-            "add_orders": ["sell"],
+            "add_orders": ["EOrderType/Sell"],
         },
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'",],

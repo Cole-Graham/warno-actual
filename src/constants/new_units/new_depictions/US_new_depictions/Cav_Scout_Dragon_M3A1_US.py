@@ -10,22 +10,22 @@ cav_scout_dragon_m3a1_us: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
         ("AllWeaponAlternatives_Cav_Scout_Dragon_M3A1_US", None): ( # (namespace, object type)
             # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "add", "insert", "remove")
             # 1: ("edit", [("MeshDescriptor", "M14_Sniper")]), # (SelectorId or mesh)
-            # 2: ("insert", [("SelectorId", "['MeshAlternative_3']"), ("MeshDescriptor", "M47_DRAGON_II")]),
+            # 2: ("insert", [("SelectorId", "['WeaponAlternative_3']"), ("MeshDescriptor", "M47_DRAGON_II")]),
             # 2: ("edit", [("ReferenceMeshForSkeleton", "M47_DRAGON_II")]),
             f'['
             f'    TDepictionVisual\n'
             f'    (\n'
-            f'        SelectorId = ["MeshAlternative_1"]\n'
+            f'        SelectorId = ["WeaponAlternative_1"]\n'
             f'        MeshDescriptor = $/GFX/DepictionResources/Modele_M16A2\n'
             f'    ),\n'
             f'    TDepictionVisual\n'
             f'    (\n'
-            f'        SelectorId = ["MeshAlternative_2"]\n'
+            f'        SelectorId = ["WeaponAlternative_2"]\n'
             f'        MeshDescriptor = $/GFX/DepictionResources/Modele_M14_Sniper\n'
             f'    ),\n'
             f'    TDepictionVisual\n'
             f'    (\n'
-            f'        SelectorId = ["MeshAlternative_3"]\n'
+            f'        SelectorId = ["WeaponAlternative_3"]\n'
             f'        MeshDescriptor = $/GFX/DepictionResources/Modele_M47_DRAGON_II\n'
             f'    ),\n'
             f'    TMeshlessDepictionDescriptor\n'
@@ -102,7 +102,7 @@ cav_scout_dragon_m3a1_us: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
         ("TacticDepiction_Cav_Scout_Dragon_M3A1_US_Soldier", "TemplateInfantryDepictionFactoryTactic"): {
             "Operators": {
                 # 0: ("remove", None),
-                0: ("edit", [("bazooka", "MeshAlternative_3")]),
+                0: ("edit", [("bazooka", "WeaponAlternative_3")]),
             }
         },
         

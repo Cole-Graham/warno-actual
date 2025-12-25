@@ -18,7 +18,7 @@ def edit_colors(source_path) -> None:
     color_definitions = (
         f'M81_Artichoke       is [156,145,119,255]'        # Panel color
         f'M81_ArtichokeVeryLight is [219,204,168,255]'     # "..._boutonShortcutsM81"
-        f'M81_ArtichokeVeryLight62 is [219,204,168,158]'   # "Flare Labels"
+        f'M81_ArtichokeVeryLight62 is [219,204,168,158]'   # "Beacon Labels"
         f'M81_ArtichokeNearWhite is [255,240,225,255]'     # "..._boutonShortcutsM81"
         f'M81_ArtichokeTransparent is [156,145,119,128]'   # Weapon button status
         f'M81_Artichoke64          is [156,145,119,64]'    # Multiselection scroll bar background

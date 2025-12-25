@@ -8,6 +8,30 @@ from src.utils.ndf_utils import ndf, find_obj_by_type, is_obj_type
 
 logger = setup_logger(__name__)
 
+def _find_aerial_depiction_by_coating_name(source_path: Any, coating_name: str) -> Any:
+    """Find a TacticAerialDepictionRegistration object by its CoatingName member value.
+    
+    Args:
+        source_path: The NDF List to search in
+        coating_name: The CoatingName value to search for (without quotes)
+        
+    Returns:
+        The found object row, or None if not found
+    """
+    def match_coating_name(obj_row: Any) -> bool:
+        """Check if object matches the coating name."""
+        try:
+            if not is_obj_type(obj_row.v, "TacticAerialDepictionRegistration"):
+                return False
+            coating_member = obj_row.v.by_m("CoatingName")
+            # CoatingName is stored as a quoted string, so we need to strip quotes
+            coating_value = str(coating_member.v).strip("'").strip('"')
+            return coating_value == coating_name
+        except Exception:
+            return False
+    
+    return source_path.find_by_cond(match_coating_name, strict=False)
+
 def edit_gen_gp_gfx_depictionaerialunits(source_path: Any) -> None:
     """GameData/Generated/Gameplay/Gfx/Depictions/DepictionAerialUnits.ndf"""
     ndf_file = "DepictionAerialUnits.ndf"
@@ -69,8 +93,13 @@ def _edit_depictions(source_path: Any, ndf_file: str) -> None:
                         operator.v.by_m(row_name_or_type).v = value
                         logger.info(f"Edited {row_name_or_type} for {unit_name}")
 
-            elif namespace and namespace.startswith("TacticDepiction_"):
-                aerial_template = source_path.by_n(namespace)
+            elif obj_type == "TacticAerialDepictionRegistration":
+                # Namespaces were removed, so we find objects by CoatingName using unit_name
+                aerial_template = _find_aerial_depiction_by_coating_name(source_path, unit_name)
+                
+                if aerial_template is None:
+                    logger.error(f"Could not find TacticAerialDepictionRegistration with CoatingName='{unit_name}' for {unit_name}")
+                    continue
 
                 for row_name_or_type, value in edits.items():
                     # SubDepictions and SubDepictionGenerators are not modified, but
@@ -83,8 +112,7 @@ def _edit_depictions(source_path: Any, ndf_file: str) -> None:
 
 def _create_new_depictions(source_path: Any, ndf_file: str) -> None:
     """Create depictions for new units"""
-    mimeticregistration_descr = find_obj_by_type(source_path, "TMimeticUnitRegistration")
-    mimeticunit_map = mimeticregistration_descr.v.by_m("MimeticUnit")
+    # TMimeticUnitRegistration no longer exists in these files
     for unit_descr_name, unit_data in NEW_DEPICTIONS.items():
         if ndf_file not in unit_data["valid_files"]:
             continue
@@ -95,26 +123,3 @@ def _create_new_depictions(source_path: Any, ndf_file: str) -> None:
             new_descr_obj = ndf.convert(descr_obj)
             source_path.add(new_descr_obj)
             logger.info(f"Added {descr_key} for {unit_descr_name}")
-        
-        unit_name = unit_data["unit_name"]
-        _add_unit_mimetic(unit_name, mimeticunit_map)
-    
-    # Fix order of descriptors
-    descriptors_to_move = []
-    # TMimeticUnitRegistration
-    descriptors_to_move.append((mimeticregistration_descr.index, mimeticregistration_descr))
-    # Pilot descriptors
-    for descr_row in source_path:
-        if is_obj_type(descr_row.v, "TemplateDepictionPilote"):
-            descriptors_to_move.append((descr_row.index, descr_row))
-    
-    for index, descr_row in reversed(descriptors_to_move):
-        source_path.remove(index)
-    for index, descr_row in descriptors_to_move:
-        source_path.add(descr_row)
-
-def _add_unit_mimetic(unit_name: str, mimeticunit_map: Any) -> None:
-    """Add unit mimetic to TMimeticUnitRegistration"""
-    new_entry = f"('{unit_name}', TacticDepiction_{unit_name})"
-    mimeticunit_map.v.add(new_entry)
-    logger.info(f"Added unit mimetic for {unit_name}")

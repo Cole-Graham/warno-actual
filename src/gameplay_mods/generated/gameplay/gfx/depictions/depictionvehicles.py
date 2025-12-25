@@ -7,7 +7,7 @@ from src import ndf
 from src.constants.new_units import NEW_DEPICTIONS, NEW_UNITS
 from src.constants.unit_edits import load_depiction_edits
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import find_obj_by_type, find_obj_by_namespace
+from src.utils.ndf_utils import find_obj_by_type, find_obj_by_namespace, find_obj_by_coating_name
 
 logger = setup_logger(__name__)
 
@@ -26,34 +26,33 @@ def _handle_new_units(source_path: Any) -> None:
     logger.info("Creating vehicle depiction entries")
 
     def get_base_namespace(namespace_: str, prefix: str) -> str:
-        """Extract the base namespace after the given prefix."""
-        if namespace_.startswith("TacticDepiction"):
-            return namespace_.split(f"{prefix}_")[-1]
-        elif namespace_.startswith("DepictionOperator"):
+        """Extract the base namespace after the given prefix.
+        Only used for DepictionOperator objects (unit models are unnamed)."""
+        if namespace_.startswith("DepictionOperator"):
             parts = namespace_.split(f"{prefix}_")[-1].rsplit("_", 1)[0]
             return parts  # Return parts directly
+        return ""
 
     def create_new_object(
         obj_row_: Any, unit_name_: str, is_weapon: bool, weapon_num: int = 0, edits: dict = None
     ) -> Any:
-        """Create a new depiction object with updated namespace."""
+        """Create a new depiction object with updated namespace or CoatingName."""
         new_obj = obj_row_.copy()
         if is_weapon:
             new_obj.namespace = f"DepictionOperator_{unit_name_}_Weapon{weapon_num}"
         else:
-            new_obj.namespace = f"TacticDepiction_{unit_name_}"
+            # For TacticVehicleDepictionRegistration, set CoatingName instead of namespace
+            # Unit model objects are always unnamed now
+            new_obj.namespace = None
+            coating_member = new_obj.v.by_m("CoatingName")
+            coating_member.v = f"'{unit_name_}'"
             depiction_veh_edits = edits.get("depictions", {}).get("remove", {}).get("DepictionVehicles_ndf", {})
             if "remove_members" in depiction_veh_edits:
                 for member in depiction_veh_edits["remove_members"]:
                     new_obj.v.remove_by_member(member)
         return new_obj
     
-    def add_unit_mimetic(unit_name: str) -> None:
-        tmemeticunitregistration_descr = find_obj_by_type(source_path, "TMimeticUnitRegistration")
-        mimeticunit_map = tmemeticunitregistration_descr.v.by_m("MimeticUnit")
-        new_entry = f"('{unit_name}', TacticDepiction_{unit_name})"
-        mimeticunit_map.v.add(new_entry)
-        logger.info(f"Added unit mimetic for {unit_name}")
+    # TMimeticUnitRegistration no longer exists in these files
 
     for donor, edits in NEW_UNITS.items():
         donor_name = donor[0]
@@ -69,11 +68,11 @@ def _handle_new_units(source_path: Any) -> None:
         # Handle custom depictions first
         depiction_key = unit_name.lower()
         if depiction_key in NEW_DEPICTIONS:
-            # Add TacticVehicleDepictionDesc if present
-            if "TacticVehicleDepictionDesc" in custom_depictions:
+            # Add TacticVehicleDepictionRegistration if present
+            if "TacticVehicleDepictionRegistration" in custom_depictions:
                 custom_veh_added = True
                 custom_veh_depiction = NEW_DEPICTIONS[depiction_key]["DepictionVehicles_ndf"][
-                    "TacticVehicleDepictionDesc"
+                    "TacticVehicleDepictionRegistration"
                 ]
                 source_path.add(custom_veh_depiction)
                 logger.info(f"Added custom vehicle depiction for {unit_name}")
@@ -88,7 +87,7 @@ def _handle_new_units(source_path: Any) -> None:
                 logger.info(f"Added custom operator depiction for {unit_name}")
         else:
             if (
-                "TacticVehicleDepictionDesc" in custom_depictions
+                "TacticVehicleDepictionRegistration" in custom_depictions
                 or "DepictionOperator_WeaponContinuousFire" in custom_depictions
             ):
                 logger.warning(f"No custom depiction found for {unit_name} (key: {depiction_key})")
@@ -98,28 +97,28 @@ def _handle_new_units(source_path: Any) -> None:
             weapon_count = 0
             new_objects = []
 
+            # Find donor vehicle depiction by CoatingName
+            donor_vehicle = find_obj_by_coating_name(source_path, donor_name, "TacticVehicleDepictionRegistration")
+            
             for obj_row in source_path:
                 namespace = obj_row.namespace
-                if namespace is None:
-                    continue
-
-                if "DepictionOperator_" in namespace and not custom_operator_added:
+                
+                if "DepictionOperator_" in (namespace or "") and not custom_operator_added:
                     base_namespace = get_base_namespace(namespace, "DepictionOperator")
                     if donor_name == base_namespace:
                         weapon_count += 1
                         new_objects.append(create_new_object(obj_row, unit_name, True, weapon_count, edits))
 
-                elif "TacticDepiction_" in namespace and not custom_veh_added:
-                    base_namespace = get_base_namespace(namespace, "TacticDepiction")
-                    if donor_name == base_namespace:
-                        new_objects.append(create_new_object(obj_row, unit_name, False, weapon_count, edits))
+                elif not custom_veh_added and donor_vehicle and obj_row.v == donor_vehicle.v:
+                    # Found the donor vehicle depiction
+                    new_objects.append(create_new_object(obj_row, unit_name, False, weapon_count, edits))
 
             for obj in new_objects:
-                logger.info(f"Adding new object to DepictionVehicles.ndf: {obj.namespace}")
+                obj_desc = obj.namespace if obj.namespace else f"CoatingName={obj.v.by_m('CoatingName').v}"
+                logger.info(f"Adding new object to DepictionVehicles.ndf: {obj_desc}")
                 source_path.add(obj)
         
-        # Add to TMimeticUnitRegistration
-        add_unit_mimetic(unit_name)
+        # TMimeticUnitRegistration no longer exists in these files
                 
 
 def _handle_unit_edits(source_path: Any) -> None:
@@ -150,7 +149,7 @@ def _handle_unit_edits(source_path: Any) -> None:
 
             namespace, obj_type = key
             if "copy" in edits:
-                if namespace.startswith("DepictionOperator_"):
+                if namespace and namespace.startswith("DepictionOperator_"):
                     # Handle weapon operator copy
                     donor = source_path.by_n(namespace)
                     if not donor:
@@ -162,37 +161,51 @@ def _handle_unit_edits(source_path: Any) -> None:
                     new_entry.type = obj_type
                     new_entry = _handle_weapon_operator(unit_name, new_entry, edits)
 
-                    # Calculate insertion index
-                    row_index = source_path.by_n(f"TacticDepiction_{unit_name}").index
-                    source_path.insert(row_index, new_entry)
-                    logger.info(f"Inserted new weapon operator for {unit_name} at index {row_index}")
+                    # Calculate insertion index - find vehicle depiction by CoatingName
+                    vehicle_depiction = find_obj_by_coating_name(
+                        source_path, unit_name, "TacticVehicleDepictionRegistration")
+                    if vehicle_depiction:
+                        source_path.insert(vehicle_depiction.index, new_entry)
+                    else:
+                        source_path.add(new_entry)
+                    logger.info(f"Inserted new weapon operator for {unit_name}")
 
-                elif namespace.startswith("TacticDepiction_"):
-                    # Handle vehicle depiction copy
-                    donor = source_path.by_n(namespace)
+                elif obj_type == "TacticVehicleDepictionRegistration":
+                    # Handle vehicle depiction copy - unit model objects are unnamed, find by CoatingName
+                    # Extract donor name from copy target or use unit_name
+                    donor_name = edits.get("copy", "").replace("TacticDepiction_", "").replace("_", "")
+                    if not donor_name:
+                        # If no copy target specified, use the unit_name as donor
+                        donor_name = unit_name
+                    donor = find_obj_by_coating_name(source_path, donor_name, "TacticVehicleDepictionRegistration")
+                    
                     if not donor:
-                        logger.error(f"Could not find donor {namespace} for {unit_name}")
+                        logger.error(f"Could not find donor TacticVehicleDepictionRegistration with CoatingName='{donor_name}' for {unit_name}")
                         continue
 
                     new_entry = donor.copy()
-                    new_entry.namespace = edits["copy"]
+                    new_entry.namespace = None  # Unit model objects are always unnamed
                     new_entry = _handle_vehicle_depiction(unit_name, new_entry, edits)
                     source_path.insert(donor.index + 1, new_entry)
                     logger.info(f"Inserted new vehicle depiction for {unit_name}")
 
             else:
                 # Handle direct edits
-                if namespace.startswith("DepictionOperator_"):
+                if namespace and namespace.startswith("DepictionOperator_"):
                     weapon_operator = source_path.by_n(namespace)
                     if weapon_operator:
                         _handle_weapon_operator(unit_name, weapon_operator, edits)
                         logger.info(f"Updated weapon operator for {unit_name}")
 
-                elif namespace.startswith("TacticDepiction_"):
-                    vehicle_depiction = source_path.by_n(namespace)
+                elif obj_type == "TacticVehicleDepictionRegistration":
+                    # Find vehicle depiction by CoatingName instead of namespace
+                    vehicle_depiction = find_obj_by_coating_name(
+                        source_path, unit_name, "TacticVehicleDepictionRegistration")
                     if vehicle_depiction:
                         _handle_vehicle_depiction(unit_name, vehicle_depiction, edits)
                         logger.info(f"Updated vehicle depiction for {unit_name}")
+                    else:
+                        logger.error(f"Could not find TacticVehicleDepictionRegistration with CoatingName='{unit_name}'")
 
 
 def _handle_weapon_operator(unit_name, weapon_operator, edits, is_new_entry=False):  # noqa

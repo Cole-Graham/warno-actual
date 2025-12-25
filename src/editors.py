@@ -48,7 +48,6 @@ from .gameplay_mods import (
     edit_gen_gp_gfx_experiencelevels,
     edit_gen_gp_gfx_firedescriptor,
     edit_gen_gp_gfx_ndfdepictionlist,
-    edit_gen_gp_gfx_mimeticghosts,
     edit_gen_gp_gfx_missilecarriage,
     edit_gen_gp_gfx_missilecarriagedepiction,
     edit_gen_gp_gfx_orderavailabilitytactic,
@@ -78,7 +77,7 @@ from src.ui_mods.style import (
     edit_defaultstyleguides,
     edit_orderdisplay,
     edit_textstyles,
-    edit_uicommonflarelabelresources,
+    edit_uicommonbeaconlabelresources,
     edit_uiingamebuckcubeaction,
     edit_uiingamebuckengagementrules,
     edit_uiingamedefaultcontainer,
@@ -160,7 +159,6 @@ __all__ = [
     'edit_gen_gp_gfx_effetssurunite',
     'edit_gen_gp_gfx_experiencelevels',
     'edit_gen_gp_gfx_firedescriptor',
-    'edit_gen_gp_gfx_mimeticghosts',
     'edit_gen_gp_gfx_missilecarriage',
     'edit_gen_gp_gfx_missilecarriagedepiction',
     'edit_gen_gp_gfx_ndfdepictionlist',
@@ -188,7 +186,7 @@ __all__ = [
     'edit_defaultstyleguides',
     'edit_orderdisplay',
     'edit_textstyles',
-    'edit_uicommonflarelabelresources',
+    'edit_uicommonbeaconlabelresources',
     'edit_uiingamebuckcubeaction',
     'edit_uiingamebuckengagementrules',
     'edit_uiingamedefaultcontainer',
@@ -371,9 +369,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/Generated/Gameplay/Gfx/Depictions/DepictionAerialUnitsShowRoom.ndf": [
             (edit_gen_gp_gfx_depictionaerialunitsshowroom, "gameplay"),
         ],
-        "GameData/Generated/Gameplay/Gfx/Depictions/MimeticGhosts.ndf": [
-            (edit_gen_gp_gfx_mimeticghosts, "gameplay"),
-        ],
+        # "GameData/Generated/Gameplay/Gfx/Depictions/MimeticGhosts.ndf": [
+        #     (edit_gen_gp_gfx_mimeticghosts, "gameplay"),
+        # ],
         "GameData/Generated/Gameplay/Gfx/MissileCarriage.ndf": [
             (edit_gen_gp_gfx_missilecarriage, "gameplay"),
         ],
@@ -560,8 +558,8 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
             (edit_uispecificshowroomgroupsdeckcreatorscreenview, "ui"),
         ],
         # Common UI templates and components
-        "GameData/UserInterface/Use/Common/UICommonFlareLabelResources.ndf": [
-            (edit_uicommonflarelabelresources, "ui"),
+        "GameData/UserInterface/Use/Common/UICommonBeaconLabelResources.ndf": [
+            (edit_uicommonbeaconlabelresources, "ui"),
         ],
         # Generated UI files
         "GameData/Generated/UserInterface/Textures/WeaponTextures.ndf": [

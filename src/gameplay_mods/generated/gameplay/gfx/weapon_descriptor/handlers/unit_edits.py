@@ -621,7 +621,7 @@ def _apply_custom_weapon_swaps(weapon_descr: Any, wd_edits: Dict, game_db: Dict)
             turret = turret_list.v[turret_index]
             mounted_wpns = turret.v.by_m("MountedWeaponDescriptorList")
             new_wpn = ndf.convert(mounted_weapons[ammunition])
-            new_wpn[0].v.by_m("HandheldEquipmentKey").v = f"'MeshAlternative_{mesh_alt_number}'"
+            new_wpn[0].v.by_m("HandheldEquipmentKey").v = f"'WeaponAlternative_{mesh_alt_number}'"
             new_wpn[0].v.by_m("WeaponActiveAndCanShootPropertyName").v = f"'WeaponActiveAndCanShoot_{mesh_alt_number}'"
             new_wpn[0].v.by_m("WeaponIgnoredPropertyName").v = f"'WeaponIgnored_{mesh_alt_number}'"
             new_wpn[0].v.by_m("WeaponShootDataPropertyName").v = f"['WeaponShootData_0_{mesh_alt_number}']"
@@ -632,7 +632,7 @@ def _apply_custom_weapon_swaps(weapon_descr: Any, wd_edits: Dict, game_db: Dict)
             turret = turret_list.v[turret_index]
             mounted_wpns = turret.v.by_m("MountedWeaponDescriptorList")
             new_wpn = ndf.convert(mounted_weapons[ammunition])
-            new_wpn[0].v.by_m("HandheldEquipmentKey").v = f"'MeshAlternative_{mesh_alt_number}'"
+            new_wpn[0].v.by_m("HandheldEquipmentKey").v = f"'WeaponAlternative_{mesh_alt_number}'"
             new_wpn[0].v.by_m("WeaponActiveAndCanShootPropertyName").v = f"'WeaponActiveAndCanShoot_{mesh_alt_number}'"
             new_wpn[0].v.by_m("WeaponIgnoredPropertyName").v = f"'WeaponIgnored_{mesh_alt_number}'"
             new_wpn[0].v.by_m("WeaponShootDataPropertyName").v = f"['WeaponShootData_0_{mesh_alt_number}']"

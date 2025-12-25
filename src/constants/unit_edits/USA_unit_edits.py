@@ -2029,7 +2029,7 @@ usa_unit_edits = {
     "M113A3_US": {
         "CommandPoints": 15,
         "orders": {
-            "add_orders": ["sell"],
+            "add_orders": ["EOrderType/Sell"],
         },
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'",],
@@ -2039,7 +2039,7 @@ usa_unit_edits = {
     "M113A1_NG_US": {
         "CommandPoints": 15,
         "orders": {
-            "add_orders": ["sell"],
+            "add_orders": ["EOrderType/Sell"],
         },
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'"],
@@ -2299,7 +2299,7 @@ usa_unit_edits = {
             ],
         },
         "orders": {
-            "add_orders": ["UnloadFromTransport", "UnloadAtPosition", "LoadUnit"]
+            "add_orders": ["EOrderType/UnloadFromTransport", "EOrderType/UnloadAtPosition", "EOrderType/Load"]
         },
         "Divisions": {
             "US_3rd_Arm": {
@@ -2330,7 +2330,7 @@ usa_unit_edits = {
             ],
         },
         "orders": {
-            "add_orders": ["UnloadFromTransport", "UnloadAtPosition", "LoadUnit"]
+            "add_orders": ["EOrderType/UnloadFromTransport", "EOrderType/UnloadAtPosition", "EOrderType/Load"]
         },
         "Divisions": {
             "US_11ACR": {
@@ -2970,7 +2970,7 @@ usa_unit_edits = {
             "add_specs": ["'terrain_radar'"],
         },
         "availability": [0, 2, 0, 0],
-        "UpgradeFromUnit": "F111F_Aardvark_LGB2_US",
+        # "UpgradeFromUnit": "F111F_Aardvark_LGB2_US", Circular dependency
     },
 
     "F111F_Aardvark_LGB_US": {  # 4x GBU-12

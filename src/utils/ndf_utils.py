@@ -78,6 +78,58 @@ def find_obj_by_namespace(ndf_list: ndf.model.List, namespace: str) -> Any:
     )
 
 
+def find_obj_by_coating_name(ndf_list: ndf.model.List, coating_name: str, obj_type: str) -> Any:
+    """Find an object by its CoatingName member value.
+    
+    Args:
+        ndf_list: The NDF List to search in
+        coating_name: The CoatingName value to search for (without quotes)
+        obj_type: The expected object type
+        
+    Returns:
+        The found object row, or None if not found
+    """
+    def match_coating_name(obj_row: Any) -> bool:
+        """Check if object matches the coating name."""
+        try:
+            if not is_obj_type(obj_row.v, obj_type):
+                return False
+            coating_member = obj_row.v.by_m("CoatingName")
+            # CoatingName is stored as a quoted string, so we need to strip quotes
+            coating_value = str(coating_member.v).strip("'").strip('"')
+            return coating_value == coating_name
+        except Exception:
+            return False
+    
+    return ndf_list.find_by_cond(match_coating_name, strict=False)
+
+
+def find_obj_by_mimetic_name(ndf_list: ndf.model.List, mimetic_name: str, obj_type: str) -> Any:
+    """Find an object by its MimeticName member value.
+    
+    Args:
+        ndf_list: The NDF List to search in
+        mimetic_name: The MimeticName value to search for (without quotes)
+        obj_type: The expected object type
+        
+    Returns:
+        The found object row, or None if not found
+    """
+    def match_mimetic_name(obj_row: Any) -> bool:
+        """Check if object matches the mimetic name."""
+        try:
+            if not is_obj_type(obj_row.v, obj_type):
+                return False
+            mimetic_member = obj_row.v.by_m("MimeticName")
+            # MimeticName is stored as a quoted string, so we need to strip quotes
+            mimetic_value = str(mimetic_member.v).strip("'").strip('"')
+            return mimetic_value == mimetic_name
+        except Exception:
+            return False
+    
+    return ndf_list.find_by_cond(match_mimetic_name, strict=False)
+
+
 def is_obj_type(item: Any, item_type: str) -> bool:
     """Check if an NDF object is of a specific type.
     

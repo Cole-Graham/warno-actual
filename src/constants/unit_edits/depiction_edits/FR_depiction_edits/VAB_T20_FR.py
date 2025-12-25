@@ -13,7 +13,7 @@ vab_t20_fr: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
             "WeaponShootDataPropertyName": ["'WeaponShootData_0_3'"],
         },
         
-        ("TacticDepiction_VAB_T20_FR", "TacticVehicleDepictionDesc"): {
+        (None, "TacticVehicleDepictionRegistration"): {
             "Operators": {
                 7: ("add", (
                     "DepictionOperator_VAB_T20_FR_Weapon3"

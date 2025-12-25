@@ -31,12 +31,12 @@ def edit_gen_gp_gfx_orderavailabilitytactic(source_path, game_db: Dict[str, Any]
         if unit_name in unit_edits and "orders" in unit_edits[unit_name]:
             if "add_orders" in unit_edits[unit_name]["orders"]:
                 for order in unit_edits[unit_name]["orders"]["add_orders"]:
-                    if order == "sell":
-                        order_list.v.insert(1, "'Sell'")
-                        logger.info(f"Added 'Sell' order to {unit_name}")
+                    if order == "EOrderType/Sell":
+                        order_list.v.insert(1, "EOrderType/Sell")
+                        logger.info(f"Added EOrderType/Sell order to {unit_name}")
                     else:
-                        order_list.v.add(f"'{order}'")
-                        logger.info(f"Added '{order}' order to {unit_name}")
+                        order_list.v.add(f"{order}")
+                        logger.info(f"Added {order} order to {unit_name}")
 
             if "remove_orders" in unit_edits[unit_name]["orders"]:
                 for order in order_list.v:
@@ -50,9 +50,9 @@ def edit_gen_gp_gfx_orderavailabilitytactic(source_path, game_db: Dict[str, Any]
             if unit_data.get("is_supply_unit", False):
                 # Find and remove sell order
                 for i, order in enumerate(order_list.v):
-                    if order.v == "'Sell'":
+                    if order.v == "EOrderType/Sell":
                         order_list.v.remove(i)
-                        logger.info(f"Removed 'Sell' order from supply unit {unit_name}")
+                        logger.info(f"Removed EOrderType/Sell order from supply unit {unit_name}")
                         break
 
     # Create new order entries for new units
@@ -62,7 +62,7 @@ def edit_gen_gp_gfx_orderavailabilitytactic(source_path, game_db: Dict[str, Any]
             continue
 
         unit_name = edits["NewName"]
-        orders_str = str(edits["Orders"])
+        orders_str = str(edits["Orders"]).replace("'", "")
         new_entry = f"Descriptor_OrderAvailability_{unit_name} is {orders_str}"
         source_path.add(new_entry)
         logger.info(f"Added new order entry for {unit_name}")

@@ -143,7 +143,7 @@ uk_unit_edits = {
                 "add_edits": {
                     1: {
                         "SalvoStockIndex": 1,
-                        "HandheldEquipmentKey": "'MeshAlternative_2'",
+                        "HandheldEquipmentKey": "'WeaponAlternative_2'",
                         "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
                         "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
                         "WeaponShootDataPropertyName": ["WeaponShootData_0_2"],
@@ -732,14 +732,14 @@ uk_unit_edits = {
     "Saxon_UK": {
         "CommandPoints": 15,
         "orders": {
-            "remove_orders": ["'sell'"],
+            "remove_orders": ["EOrderType/Sell"],
         },
     },
 
     "FV603_Saracen_UK": {
         "CommandPoints": 15,
         "orders": {
-            "remove_orders": ["'sell'"],
+            "remove_orders": ["EOrderType/Sell"],
         },
     },
 

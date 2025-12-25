@@ -436,7 +436,7 @@ sov_unit_edits = {
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "Divisions": {
             "SOV_119IndTkBrig": {
-                "Transports": ["GAZ_66_SOV", "BTR_60_SOV"],
+                "Transports": ["GAZ_66B_SOV", "BTR_60_SOV"],
             },
         },
         "availability": [0, 0, 4, 3],
@@ -1489,7 +1489,7 @@ sov_unit_edits = {
     "Mortier_2B9_Vasilek_nonPara_SOV": {
         "CommandPoints": 45,
         "orders": {
-            "add_orders": ["ShootOnPositionSmoke", "ShootOnPositionWithoutCorrectionSmoke"],
+            "add_orders": ["EOrderType/ShootOnPositionSmoke", "EOrderType/ShootOnPositionWithoutCorrectionSmoke"],
         },
         "availability": [4, 3, 2, 0],
         "WeaponDescriptor": {
@@ -1504,7 +1504,7 @@ sov_unit_edits = {
                                 "DispersionRadiusOnColor": "RGBA[0,0,0,0]",
                                 "DispersionRadiusOnThickness": -0.1,
                                 "EffectTag": "'FireEffect_Mortier_Vasilek_indirect_82mm_towed'",
-                                "HandheldEquipmentKey": "'MeshAlternative_3'",
+                                "HandheldEquipmentKey": "'WeaponAlternative_3'",
                                 "ShowDispersion": False,
                                 "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
                                 "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
@@ -1520,7 +1520,7 @@ sov_unit_edits = {
     "Mortier_2B9_Vasilek_SOV": {
         "CommandPoints": 45,
         "orders": {
-            "add_orders": ["ShootOnPositionSmoke", "ShootOnPositionWithoutCorrectionSmoke"],
+            "add_orders": ["EOrderType/ShootOnPositionSmoke", "EOrderType/ShootOnPositionWithoutCorrectionSmoke"],
         },
         "availability": [0, 4, 3, 2],
         "WeaponDescriptor": {
@@ -1535,7 +1535,7 @@ sov_unit_edits = {
                                 "DispersionRadiusOnColor": "RGBA[0,0,0,0]",
                                 "DispersionRadiusOnThickness": -0.1,
                                 "EffectTag": "'FireEffect_Mortier_Vasilek_indirect_82mm_towed'",
-                                "HandheldEquipmentKey": "'MeshAlternative_3'",
+                                "HandheldEquipmentKey": "'WeaponAlternative_3'",
                                 "ShowDispersion": False,
                                 "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
                                 "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
@@ -1561,7 +1561,7 @@ sov_unit_edits = {
     "MTLB_Vasilek_SOV": {
         "CommandPoints": 60,
         "orders": {
-            "add_orders": ["ShootOnPositionSmoke", "ShootOnPositionWithoutCorrectionSmoke"],
+            "add_orders": ["EOrderType/ShootOnPositionSmoke", "EOrderType/ShootOnPositionWithoutCorrectionSmoke"],
         },
         "availability": [4, 3, 2, 0],
         "WeaponDescriptor": {
@@ -1576,7 +1576,7 @@ sov_unit_edits = {
                                 "DispersionRadiusOnColor": "RGBA[0,0,0,0]",
                                 "DispersionRadiusOnThickness": -0.1,
                                 "EffectTag": "'FireEffect_Mortier_Vasilek_indirect_82mm'",
-                                "HandheldEquipmentKey": "'MeshAlternative_4'",
+                                "HandheldEquipmentKey": "'WeaponAlternative_4'",
                                 "ShowDispersion": False,
                                 "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_4'",
                                 "WeaponIgnoredPropertyName": "'WeaponIgnored_4'",
@@ -1753,7 +1753,7 @@ sov_unit_edits = {
 
     "MTLB_transp_SOV": {
         "orders": {
-            "add_orders": ["sell"],
+            "add_orders": ["EOrderType/Sell"],
         },
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'",],
@@ -2367,7 +2367,7 @@ sov_unit_edits = {
                 2: {
                     "MountedWeapons": {
                         "AA_R60M_Vympel": {
-                            "HandheldEquipmentKey": "'MeshAlternative_1'",
+                            "HandheldEquipmentKey": "'WeaponAlternative_1'",
                             "SalvoStockIndex": 0,
                             "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_1'",
                             "WeaponIgnoredPropertyName": "'WeaponIgnored_1'",

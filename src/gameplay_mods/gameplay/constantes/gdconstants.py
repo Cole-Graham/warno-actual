@@ -24,7 +24,7 @@ def edit_gameplay_constantes_gdconstants(source_path) -> None:
             edits: List[Tuple[str, str, Union[str, int], Union[str, None]]] = [
                 ("value", "ConquestPossibleScores", "[2000, 3000, 4000]", None),
                 ("map", "BaseIncome", 21, "ECombatRule/Conquest"),
-                ("map", "TimeBeforeEarningCommandPoints", 6, "ECombatRule/Conquest"),
+                ("map", "TimeBeforeEarningCommandPointsSkirmish", 6, "ECombatRule/Conquest"),
                 ("value", "DefaultArgentInitial", 2000, None),
             ]
 

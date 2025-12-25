@@ -91,7 +91,7 @@ fr_unit_edits = {
                             "YulBoneOrdinal": 3,
                         },
                         "SalvoStockIndex": 2,
-                        "HandheldEquipmentKey": "'MeshAlternative_3'",
+                        "HandheldEquipmentKey": "'WeaponAlternative_3'",
                         "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
                         "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
                         "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
@@ -229,7 +229,7 @@ fr_unit_edits = {
                 "add_edits": {
                     2: {
                         "SalvoStockIndex": 2,
-                        "HandheldEquipmentKey": "'MeshAlternative_3'",
+                        "HandheldEquipmentKey": "'WeaponAlternative_3'",
                         "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
                         "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
                         "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],

@@ -461,7 +461,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "SupplyCost": 1.0,
-        "NbWeapons": [8, 7, 6, 5, 4, 3, 2, 1],
+        "NbWeapons": [12, 8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 12,               
         },
@@ -695,7 +695,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "SupplyCost": 1.0,
-        "NbWeapons": [8, 6, 1],
+        "NbWeapons": [8, 6, 3, 1],
         "WeaponDescriptor": {
             "Salves": 11,               
         },
@@ -2265,7 +2265,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "SupplyCost": 1.0,
-        "NbWeapons": [9, 8, 7, 6, 5, 4, 3, 2, 1],
+        "NbWeapons": [10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 22,
         },

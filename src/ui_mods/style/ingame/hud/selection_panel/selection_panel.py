@@ -49,8 +49,8 @@ def edit_uispecificsmartgroupselectionpanelview(source_path) -> None:
     # Update smart group selection main panel
     _update_smartgroupselectionpanelmainpanel(source_path)
 
-    # Update smart group action button template
-    _update_smartgroupactionbuttontemplate(source_path)
+    # Update dissolve button
+    _update_dissolvebutton(source_path)
 
     # Update smart group label container
     _update_smartgrouplabelcontainer(source_path)
@@ -83,43 +83,27 @@ def _update_smartgroupselectionpanelmainpanel(source_path) -> None:
     logger.debug("Updated SmartGroupSelectionPanelMainPanel properties")
 
 
-def _update_smartgroupactionbuttontemplate(source_path) -> None:
-    """template SmartGroupActionButton"""
-    smartgroupactionbuttontemplate = source_path.by_namespace("SmartGroupActionButton").v
-
-    # edit template params
-    template_params = smartgroupactionbuttontemplate.params
-    template_params.by_param("ReinforceBackgroundBlockColorToken").v = '"BoutonTemps_Background_M81"'
-    template_params.by_param("ReinforceBorderLineColorToken").v = '"BoutonTemps_Line_M81"'
+def _update_dissolvebutton(source_path) -> None:
+    """DissolveButton"""
+    dissolvebutton = source_path.by_namespace("DissolveButton").v
 
     # edit template members
-    components = smartgroupactionbuttontemplate.by_member("Components").v
-
-    # Split at the last occurrence of '] +' to separate main components from concatenated part
-    main_components_str, concatenated_part = components.rsplit("] +", 1)
-    main_components_str = main_components_str + "]"
-    concatenated_part = "+" + concatenated_part
-
-    # Parse the main components part back into an NDF List
-    main_components = ndf.convert(main_components_str)
-
-    # Apply modifications to the components
-    inner_list = main_components[0].v
-    for component in inner_list:
+    components = dissolvebutton.by_member("Components").v
+    for component in components:
         if isinstance(component.v, ndf.model.Object):
+            
             if is_obj_type(component.v, "BUCKContainerDescriptor"):
-                pass  # placeholder for any future edits of BUCKContainerDescriptor
+                subcomponents = component.v.by_member("Components").v
+                for subcomponent in subcomponents:
+                    if isinstance(subcomponent.v, ndf.model.Object):
+                        if is_obj_type(subcomponent.v, "PanelRoundedCorner"):
+                            subcomponent.v.by_member(
+                                "BackgroundBlockColorToken").v = '"BoutonTemps_Background_M81"'
+                            subcomponent.v.by_member(
+                                "BorderLineColorToken").v = '"BoutonTemps_Line_M81"'
+            
             elif is_obj_type(component.v, "BUCKTextDescriptor"):
                 component.v.by_member("TextColor").v = '"ButtonHUD/Text2_M81"'
-
-    # Convert the modified components back to string using ndf printer and recombine
-    from ndf_parse import printer
-
-    modified_components_str = printer.string(main_components)
-    final_components_str = modified_components_str + concatenated_part
-
-    # Set the final value as a string
-    smartgroupactionbuttontemplate.by_member("Components").v = final_components_str
 
 
 def _update_smartgrouplabelcontainer(source_path) -> None:
@@ -127,10 +111,7 @@ def _update_smartgrouplabelcontainer(source_path) -> None:
     smartgrouplabelcontainer = source_path.by_namespace("SmartGroupLabelContainer").v
     for component in smartgrouplabelcontainer.by_member("Components").v:
         if isinstance(component.v, ndf.model.Object):
-            if is_obj_type(component.v, "SmartGroupActionButton"):
-                component.v.by_member("ReinforceBackgroundBlockColorToken").v = '"BoutonTemps_Background_M81"'
-                component.v.by_member("ReinforceBorderLineColorToken").v = '"BoutonTemps_Line_M81"'
-            elif is_obj_type(component.v, "BUCKContainerDescriptor"):
+            if is_obj_type(component.v, "BUCKContainerDescriptor"):
                 pass  # placeholder for any future edits of BUCKContainerDescriptor
 
     logger.debug("Updated SmartGroupActionButton template properties")

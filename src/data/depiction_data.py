@@ -118,7 +118,7 @@ def gather_depiction_data(mod_src_path: Path) -> Dict[str, Any]:
 
                             # Map weapon to mesh based on weapon_shoot_data index
                             mesh_index = int(weapon_shoot_data.split("_")[-1])
-                            mesh_key = f"MeshAlternative_{mesh_index}"
+                            mesh_key = f"WeaponAlternative_{mesh_index}"
                             if mesh_key in depiction_data[current_unit]["weapon_alternatives"]["alts"]:
                                 mesh = depiction_data[current_unit]["weapon_alternatives"]["alts"][mesh_key]  # noqa
                                 all_weapon_meshes[weapon_name] = mesh.split("Modele_")[-1]

@@ -35,7 +35,7 @@ def edit_buckspecificbuttons(source_path) -> None:
                     roundedpanel = row.v
                     
                     # Set background color based on strategic mode
-                    bg_colortoken = '(<IsFromStrategic> == true ? "SM_RifleGreen_75" : "BoutonFlares_M81")'
+                    bg_colortoken = '(<IsFromStrategic> == true ? "SM_RifleGreen_75" : "BoutonBeacons_M81")'
                     roundedpanel.by_member("BackgroundBlockColorToken").v = bg_colortoken
                     
                     # Set border color based on strategic mode
@@ -57,11 +57,6 @@ def edit_buckspecificbuttons(source_path) -> None:
     
     # Update HUDButton properties
     hudbutton = source_path.by_namespace("HUDButton").v
-    
-    # Add default toggle value parameter
-    new_param = "DefaultToggleValue : bool = false"
-    index = hudbutton.params.by_param("IsTogglable").index + 1
-    hudbutton.params.insert(index, new_param)
     
     # Update visual properties
     hudbutton.params.by_param("HasBorder").v = "false"

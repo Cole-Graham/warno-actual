@@ -120,9 +120,9 @@ def edit_defaultstyleguides(source_path) -> None:
             index = block_colors_map.by_k('"BoutonTemps_ROE_M81"').index + 1
             block_colors_map.insert(index, boutontemps_roe_shortcuts_m81)
 
-            # Update CustomFlareText colors
-            _edit_componentstate(block_colors_map, '"CustomFlareText"', 'Normal', 'M81_ArtichokeNearWhite')
-            _edit_componentstate(block_colors_map, '"CustomFlareText"', 'Highlighted', 'M81_EbonyVeryDark')
+            # Update CustomBeaconText colors
+            _edit_componentstate(block_colors_map, '"CustomBeaconText"', 'Normal', 'M81_ArtichokeNearWhite')
+            _edit_componentstate(block_colors_map, '"CustomBeaconText"', 'Highlighted', 'M81_EbonyVeryDark')
 
             # Add BoutonTemps pawn background
             boutontemps_pawn_background_m81 = (
@@ -139,9 +139,9 @@ def edit_defaultstyleguides(source_path) -> None:
             index = block_colors_map.by_k('"BoutonTemps_pawn"').index + 1
             block_colors_map.insert(index, boutontemps_pawn_background_m81)
 
-            # Add BoutonFlares background
-            boutonflares_m81 = (
-                f'("BoutonFlares_M81",            MAP ['
+            # Add BoutonBeacons background
+            boutonbeacons_m81 = (
+                f'("BoutonBeacons_M81",            MAP ['
                 f'                                   ( ~/ComponentState/Normal,                TColorRTTI( Color = M81_Quincy ) ),'
                 f'                                   ( ~/ComponentState/Highlighted,           TColorRTTI( Color = M81_Artichoke ) ),'
                 f'                                   ( ~/ComponentState/Clicked,               TColorRTTI( Color = M81_VeryDarkCharcoal ) ),'
@@ -151,8 +151,8 @@ def edit_defaultstyleguides(source_path) -> None:
                 f'                                   ( ~/ComponentState/Grayed,                TColorRTTI( Color = [122,167,176,50] ) ),'
                 f'                               ])'
             )
-            index = block_colors_map.by_k('"BoutonFlares"').index + 1
-            block_colors_map.insert(index, boutonflares_m81)
+            index = block_colors_map.by_k('"BoutonBeacons"').index + 1
+            block_colors_map.insert(index, boutonbeacons_m81)
 
             # Add BoutonSelectionMultiple background
             boutonselectionmultiple_background_m81 = (

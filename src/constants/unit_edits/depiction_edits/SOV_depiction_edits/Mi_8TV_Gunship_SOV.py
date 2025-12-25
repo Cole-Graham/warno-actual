@@ -7,7 +7,7 @@ mi_8tv_gunship_sov: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
     "unit_name": "Mi_8TV_Gunship_SOV",
     "valid_files": ["DepictionAerialUnits.ndf", "MissileCarriage.ndf", "MissileCarriageDepiction.ndf"],
     "DepictionAerialUnits_ndf": {
-        ("TacticDepiction_Mi_8TV_Gunship_SOV", "TacticAerialDepictionDesc"): {  # (Namespace (can be None), Object type)
+        (None, "TacticAerialDepictionRegistration"): {  # (Namespace (can be None), Object type)
             "Operators": (
                 f'\n    ['
                 f'\n        $/GFX/Sound/DepictionOperator_MovementSound_SM_Helico_Mi17,'

@@ -506,8 +506,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "MaxSpeedGRU": 622,
         },
     },
-
-    ("ATGM_9M119M_Invar", "ATGM", "ATGM_9M119_Refleks", True): {
+    
+    # Eugen added their own version of this missile, but pretty sure they modeled it innacurately.
+    # ("ATGM_9M119M_Invar", "ATGM", "ATGM_9M119_Refleks", True): {
+    ("ATGM_9M119M_Invar", "ATGM", None, False): {
         "Ammunition": {
             "Arme": {
                 "Index": 24,

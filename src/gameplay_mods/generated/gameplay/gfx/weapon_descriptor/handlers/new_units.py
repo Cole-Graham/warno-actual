@@ -179,7 +179,7 @@ def _add_weapon(
         for weapon in mounted_wpns.v:
             weapon.v.by_m("EffectTag").v = f"'FireEffect_{fire_effect}'"
             weapon.v.by_m("SalvoStockIndex").v = str(turret_index)
-            weapon.v.by_m("HandheldEquipmentKey").v = f"'MeshAlternative_{new_yul_bone}'"
+            weapon.v.by_m("HandheldEquipmentKey").v = f"'WeaponAlternative_{new_yul_bone}'"
             weapon.v.by_m("WeaponActiveAndCanShootPropertyName").v = f"'WeaponActiveAndCanShoot_{new_yul_bone}'"
             weapon.v.by_m("WeaponIgnoredPropertyName").v = f"'WeaponIgnored_{new_yul_bone}'"
             weapon.v.by_m("WeaponShootDataPropertyName").v = f"['WeaponShootData_0_{new_yul_bone}']"
@@ -233,7 +233,7 @@ def _update_weapon(
         mounted_weapons = turret.v.by_member("MountedWeaponDescriptorList")
         for weapon in mounted_weapons.v:
             weapon.v.by_m("SalvoStockIndex").v = str(turret_index)
-            weapon.v.by_m("HandheldEquipmentKey").v = f"'MeshAlternative_{turret_index + 1}'"
+            weapon.v.by_m("HandheldEquipmentKey").v = f"'WeaponAlternative_{turret_index + 1}'"
             weapon.v.by_m("WeaponActiveAndCanShootPropertyName").v = f"'WeaponActiveAndCanShoot_{turret_index + 1}'"
             weapon.v.by_m("WeaponIgnoredPropertyName").v = f"'WeaponIgnored_{turret_index + 1}'"
             weapon.v.by_m("WeaponShootDataPropertyName").v = f"['WeaponShootData_0_{turret_index + 1}']"

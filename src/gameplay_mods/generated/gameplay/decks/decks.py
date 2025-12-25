@@ -3,7 +3,7 @@
 from typing import Any, Dict
 import re
 
-from src.constants.generated.gameplay.decks import divs_not_released
+from src.constants.generated.gameplay.decks import load_deck_edits
 from src.constants.new_units import NEW_UNITS
 from src.constants.unit_edits import load_unit_edits
 from src.constants.unit_edits.SUPPLY_unit_edits import supply_unit_edits
@@ -121,6 +121,95 @@ def _determine_deck_pack_edits(source_path: Any, game_db: Dict[str, Any], unit_e
                             missing_xp_list.remove(target_xp)
                             
             logger.debug(f"Processed mappings for {base_unit}: {len(all_unit_packs)} packs")
+    
+    # Process transport modifications
+    for base_unit, unit_data in deck_pack_data["base_units"].items():
+        if base_unit not in unit_edits:
+            continue
+        
+        # Check if unit has transport modifications
+        unit_edit = unit_edits[base_unit]
+        new_transports = None
+        if "Divisions" in unit_edit:
+            divisions_config = unit_edit["Divisions"]
+            if isinstance(divisions_config, dict) and "default" in divisions_config:
+                default_config = divisions_config["default"]
+                if isinstance(default_config, dict) and "Transports" in default_config:
+                    new_transports = default_config["Transports"]
+        
+        if new_transports is None:
+            continue
+        
+        # Convert to set for easier comparison
+        new_transports_set = set(new_transports)
+        
+        # Extract existing transports from transport pack namespaces
+        existing_transports = set()
+        for transport_pack_namespace in unit_data["transport_packs"]:
+            parts = transport_pack_namespace.split("_")
+            if len(parts) >= 4:
+                # Format: Descriptor_Deck_Pack_{unit_name}_{transport_name}_{xp}_{number}
+                # Extract transport name: everything between unit_name and xp
+                unit_with_possible_transport = "_".join(parts[3:-2])
+                if unit_with_possible_transport.startswith(base_unit + "_"):
+                    transport_name = unit_with_possible_transport[len(base_unit) + 1:]  # +1 for underscore
+                    existing_transports.add(transport_name)
+        
+        # Check if transports have changed
+        if existing_transports != new_transports_set:
+            logger.info(f"Transport modification detected for {base_unit}: {existing_transports} -> {new_transports_set}")
+            
+            # Process each transport pack
+            for transport_pack_namespace in unit_data["transport_packs"]:
+                parts = transport_pack_namespace.split("_")
+                if len(parts) < 4:
+                    continue
+                
+                try:
+                    number = int(parts[-1])
+                    xp = int(parts[-2])
+                    unit_with_possible_transport = "_".join(parts[3:-2])
+                    
+                    # Extract existing transport name
+                    if not unit_with_possible_transport.startswith(base_unit + "_"):
+                        continue
+                    
+                    old_transport_name = unit_with_possible_transport[len(base_unit) + 1:]
+                    
+                    # Skip if this transport is still valid
+                    if old_transport_name in new_transports_set:
+                        continue
+                    
+                    # Map to first available new transport (or handle multiple transports)
+                    # For now, map to the first new transport
+                    if new_transports_set:
+                        new_transport_name = sorted(new_transports_set)[0]  # Use sorted for consistency
+                        
+                        # Check if there's already an XP mapping for this pack
+                        if transport_pack_namespace in deck_pack_edit_mappings["existing_deck_pack_edits"]:
+                            # There's already an XP mapping - we need to update it to also change transport
+                            existing_mapping = deck_pack_edit_mappings["existing_deck_pack_edits"][transport_pack_namespace]
+                            # Parse existing mapping to extract XP and number (it may already have a transport)
+                            existing_parts = existing_mapping.split("_")
+                            if len(existing_parts) >= 4:
+                                try:
+                                    existing_xp = int(existing_parts[-2])
+                                    existing_number = int(existing_parts[-1])
+                                    # Create new mapping with new transport and existing (possibly updated) XP
+                                    updated_namespace = f"Descriptor_Deck_Pack_{base_unit}_{new_transport_name}_{existing_xp}_{existing_number}"
+                                    deck_pack_edit_mappings["existing_deck_pack_edits"][transport_pack_namespace] = updated_namespace
+                                    logger.info(f"Updated transport+XP mapping: {transport_pack_namespace} -> {updated_namespace}")
+                                except (ValueError, IndexError):
+                                    logger.warning(f"Failed to parse existing mapping {existing_mapping} for transport update")
+                        else:
+                            # No existing mapping - create new transport mapping with original XP
+                            new_namespace = f"Descriptor_Deck_Pack_{base_unit}_{new_transport_name}_{xp}_{number}"
+                            deck_pack_edit_mappings["existing_deck_pack_edits"][transport_pack_namespace] = new_namespace
+                            logger.info(f"Transport mapping: {transport_pack_namespace} -> {new_namespace}")
+                    
+                except (ValueError, IndexError) as e:
+                    logger.warning(f"Failed to parse transport pack namespace {transport_pack_namespace}: {e}")
+                    continue
             
     return deck_pack_edit_mappings
 
@@ -290,6 +379,39 @@ def _edit_existing_deck_packs(source_path: Any, deck_pack_edits: Dict[str, str])
                         xp_member = deck_pack.v.by_m("Xp", False)
                         if xp_member:
                             deck_pack.v.remove_by_member("Xp")
+                    
+                    # Check if transport changed by comparing old and new namespace parts
+                    old_parts = old_namespace.split("_")
+                    new_parts = new_namespace.split("_")
+                    if len(old_parts) >= 4 and len(new_parts) >= 4:
+                        # Extract unit_with_possible_transport from both namespaces
+                        old_unit_with_transport = "_".join(old_parts[3:-2])
+                        new_unit_with_transport = "_".join(new_parts[3:-2])
+                        
+                        # If they differ, the transport likely changed
+                        if old_unit_with_transport != new_unit_with_transport:
+                            # Get base unit name from Unit member to extract transport name
+                            unit_member = deck_pack.v.by_m("Unit", False)
+                            transport_member = deck_pack.v.by_m("Transport", False)
+                            
+                            if unit_member and transport_member:
+                                # Extract unit name from Unit member: $/GFX/Unit/Descriptor_Unit_{unit_name}
+                                unit_ref = unit_member.v
+                                if "Descriptor_Unit_" in unit_ref:
+                                    base_unit_name = unit_ref.split("Descriptor_Unit_")[-1]
+                                    
+                                    # Extract transport from new namespace
+                                    if new_unit_with_transport.startswith(base_unit_name + "_"):
+                                        new_transport_name = new_unit_with_transport[len(base_unit_name) + 1:]
+                                        # Update Transport member
+                                        new_transport_ref = f"$/GFX/Unit/Descriptor_Unit_{new_transport_name}"
+                                        transport_member.v = new_transport_ref
+                                        logger.info(f"Updated Transport member: {transport_member.v} -> {new_transport_ref}")
+                                    elif old_unit_with_transport.startswith(base_unit_name + "_") and not new_unit_with_transport.startswith(base_unit_name + "_"):
+                                        # Old had transport, new doesn't - remove transport
+                                        old_transport_name = old_unit_with_transport[len(base_unit_name) + 1:]
+                                        logger.info(f"Removing Transport member (transport removed: {old_transport_name})")
+                                        deck_pack.v.remove_by_member("Transport")
 
                     modifications_applied += 1
 
@@ -383,16 +505,19 @@ def edit_gen_gp_decks(source_path: Any, game_db: Dict[str, Any]) -> None:
     # Handle removal of deck packs from multi decks based on unit edits
     _remove_deck_packs_from_multi_decks(source_path)
     
-    # Add new deck pack references
-    # TODO: Set up constants for this
-    eighth_inf_deck = {
-        "add": ["8th_M1A1_Abrams_US_1_1"],
-    }
-    
-    for pack in eighth_inf_deck["add"]:
-        deck = source_path.by_n("Descriptor_Deck_US_8th_Inf_multi")
-        pack_ref = f"~/Descriptor_Deck_Pack_{pack}"
-        deck.v.by_m("DeckPackList").v.add(pack_ref)
+    # Add and remove deck pack references
+    multi_deck_edits = load_deck_edits()
+    for division, edits in multi_deck_edits.items():
+        deck = source_path.by_n(f"Descriptor_Deck_{division}_multi")
+        pack_list = deck.v.by_m("DeckPackList")
+        if "remove" in edits:
+            for pack in edits["remove"]:
+                logger.info(f"Removing {pack} from {division}")
+                pack_ref = pack_list.v.find_by_cond(lambda x: x.v == f"~/Descriptor_Deck_Pack_{pack}")
+                pack_list.v.remove(pack_ref)
+        if "add" in edits:
+            for pack in edits["add"]:
+                pack_list.v.add(f"~/Descriptor_Deck_Pack_{pack}")
         
     _hide_divisions_decks_ndf(source_path)
 
@@ -468,9 +593,14 @@ def _hide_divisions_decks_ndf(source_path) -> None:
 
     config = ModConfig.get_instance()
 
-    divs_to_hide = (
-        divs_not_released if not config.config_data["build_config"]["write_dev"] else config.config_data["hide_divs"]
-    )
+    hide_divs = config.config_data.get("hide_divs", [])
+    if config.config_data["build_config"]["write_dev"]:
+        # In dev mode, remove divisions that should be shown for testing
+        dev_show_divs = config.config_data.get("dev_show_divs", [])
+        divs_to_hide = [div for div in hide_divs if div not in dev_show_divs]
+    else:
+        # In release mode, hide all divisions in hide_divs
+        divs_to_hide = hide_divs
 
     indices_to_remove = []
     for division in divs_to_hide:

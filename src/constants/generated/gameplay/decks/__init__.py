@@ -4,12 +4,9 @@ import importlib
 from pathlib import Path
 from typing import Dict
 
-from .divs_not_released import divs_not_released
 from src.utils.logging_utils import setup_logger
 
-__all__ = [
-    'divs_not_released',
-]
+__all__ = []
 
 logger = setup_logger('decks')
 
@@ -22,13 +19,16 @@ def load_deck_edits() -> Dict:
     
     # Dictionary name mapping
     dict_names = {
+        'POL_decks': 'pol_decks',
+        'RDA_decks': 'rda_decks',
+        'SOV_decks': 'sov_decks',
         'US_decks': 'us_decks',
     }
     
     # Load dictionaries
     dics_path = Path(__file__).parent
     for file in dics_path.glob("*decks.py"):
-        module_name = f"src.constants.division_edits.decks.{file.stem}"
+        module_name = f"src.constants.generated.gameplay.decks.{file.stem}"
         logger.debug(f"Processing {file.stem}")
         
         try:
@@ -59,7 +59,7 @@ def load_strategic_deck_edits() -> Dict:
     # Load dictionaries
     dics_path = Path(__file__).parent
     for file in dics_path.glob("*strategic_decks.py"):
-        module_name = f"src.constants.division_edits.decks.{file.stem}"
+        module_name = f"src.constants.generated.gameplay.decks.{file.stem}"
         logger.debug(f"Processing {file.stem}")
         
         try:

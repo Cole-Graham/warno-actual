@@ -181,14 +181,14 @@ def _add_modules(game_db, edit_type, unit_name, edits, modules_list) -> None:
             f")"
         )
         
-        if not found_transporter_module and "UnloadFromTransport" in edits.get(
+        if not found_transporter_module and "EOrderType/UnloadFromTransport" in edits.get(
             "orders", {}).get("add_orders", []):
             modules_list.v.add(transporter_module)
         
         for module in edits.get("modules_add", []):
             modules_list.v.add(module)
         
-        if "sell" in edits.get("orders", {}).get("add_orders", []):
+        if "EOrderType/Sell" in edits.get("orders", {}).get("add_orders", []):
             sell_module = "~/SellModuleDescriptor"
             modules_list.v.add(sell_module)  # noqa
 
@@ -342,7 +342,7 @@ def _handle_transporter_module(logger, game_db, unit_data, edit_type, unit_name,
                 transport_tags.v = '["Crew"]'
                 logger.info(f"Updated {unit_name} to regular transport")
 
-        add_unit_transport = "UnloadFromTransport" in edits.get("orders", {}).get("add_orders", [])
+        add_unit_transport = "EOrderType/UnloadFromTransport" in edits.get("orders", {}).get("add_orders", [])
 
         if add_unit_transport:
             transport_tags = '["Crew", "Unite_transportable"]'
@@ -407,7 +407,7 @@ def _handle_autocover_module(logger, game_db, unit_data, edit_type, unit_name,
                              edits, module, *args) -> None:
     """Handle TAutoCoverModuleDescriptor for existing and new units"""
     
-    module.v.by_m("AutoCoverRangeGRU").v = "70"
+    module.v.by_m("AutoCoverRangeGRU").v = "70.0"
 
 
 # TBaseDamageModuleDescriptor

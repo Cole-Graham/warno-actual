@@ -24,9 +24,9 @@ directories:
   
   # Release builds
   gameplay_release: "WARNO ACTUAL"
-  ui_only_release: "WARNO ACTUAL UI"
+  ui_only_release: "Warno Actual UI"
 
-# divisions to hide when building dev
+# divisions to hide (base list used in release builds)
 hide_divs:
   - "BEL_16e_Mecanisee_multi"
   - "BEL_Division_Mobilisation_multi"
@@ -36,23 +36,25 @@ hide_divs:
   - "FR_152e_Infanterie_multi"
   # - "FR_5e_Blindee_multi"
   - "FR_6e_Blindee_Legere_multi"
+  - "FR_Division_du_Rhin_multi"
   - "NL_CLKA_multi"
   - "NATO_Garnison_Berlin_multi"
   - "NL_4e_Divisie_multi"
   # - "POL_20_Pancerna_multi"
-  # - "POL_4_Zmechanizowana_multi"
+  - "POL_4_Zmechanizowana_multi"
   - "POL_Korpus_Desantowy_multi"
   - "RDA_4_MSD_multi"
   # - "RDA_7_Panzer_multi"
   - "RDA_9_Panzer_multi"
-  # - "RDA_KdA_Bezirk_Erfurt_multi"
+  - "RDA_KdA_Bezirk_Erfurt_multi"
   - "RDA_Rugen_Gruppierung"
   - "RFA_1_Luftlande_multi"
-  # - "RFA_2_PzGrenadier_multi"
+  - "RFA_2_PzGrenadier_multi"
   - "RFA_5_Panzer_multi"
-  # - "RFA_TerrKdo_Sud_multi"
+  - "RFA_TerrKdo_Sud_multi"
   # - "SOV_119IndTkBrig_multi"
   - "SOV_157_Rifle_multi"
+  - "SOV_17_Gds_Tank_multi"
   - "SOV_25_Tank_multi"
   # - "SOV_27_Gds_Rifle_multi"
   - "SOV_31_Tank_multi"
@@ -79,3 +81,11 @@ hide_divs:
   # - "US_8th_Inf_multi"
   - "US_9th_Mot_multi"
   - "WP_Unternehmen_Zentrum_multi"
+
+# divisions to show in dev builds even if they're in hide_divs
+# (useful for testing divisions being prepared for release)
+dev_show_divs:
+  - "POL_4_Zmechanizowana_multi"
+  - "RDA_KdA_Bezirk_Erfurt_multi"
+  - "RFA_2_PzGrenadier_multi"
+  - "RFA_TerrKdo_Sud_multi"

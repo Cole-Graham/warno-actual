@@ -60,7 +60,6 @@ def edit_uispecificingamehudtimepanelview(source_path) -> None:
                     componentframe.remove_by_member("RelativeWidthHeight")
                     componentframe.by_member("MagnifiableWidthHeight").v = "[25.0, 25.0]"
                     component_descr.add('BackgroundColorToken = "BoutonTimePanel_M81Play"')
-                    component_descr.add('DefaultToggleValue = true')
                     component_descr.add('BorderLineColorToken = "TimePanel/ButtonBorder_M81Play"')
                     component_descr.add('BorderThickness = "1"')
                     component_descr.add('TextureColorToken = "BoutonTimePanel_M81Play"')

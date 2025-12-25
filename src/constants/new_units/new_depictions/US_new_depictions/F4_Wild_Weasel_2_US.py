@@ -54,8 +54,8 @@ f4_wild_weasel_2_us: Dict[str, Dict[str, Any]] = {
                     "WeaponShootData_0_5",
                 ]
             )""",
-        "TacticAerialDepictionDesc": """
-            export TacticDepiction_F4_Wild_Weasel_2_US is TacticAerialDepictionDesc
+        "TacticAerialDepictionRegistration": """
+            unnamed TacticAerialDepictionRegistration
             (
                 Deviator = DepictionDeviator_Airplane
                 AdditionalTextures = $/M3D/Shader/AirplaneDestTextures
@@ -108,10 +108,11 @@ f4_wild_weasel_2_us: Dict[str, Dict[str, Any]] = {
     },
     
     "DepictionAerialUnitsShowroom_ndf": {
-        "ShowroomAerialDepictionDesc": """
-            export Gfx_F4_Wild_Weasel_2_US_Showroom is ShowroomAerialDepictionDesc
+        "ShowroomAerialDepictionRegistration": """
+            unnamed ShowroomAerialDepictionRegistration
             (
                 MeshDescriptor = $/GFX/DepictionResources/Modele_F4_Wild_Weasel_2_US
+                MimeticName = 'showroom_F4_Wild_Weasel_2_US'
                 SubDepictionGenerators = 
                 [
                     SubGenerators_Showroom_F4_Wild_Weasel_2_US,

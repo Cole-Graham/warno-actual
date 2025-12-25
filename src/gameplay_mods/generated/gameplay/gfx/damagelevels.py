@@ -68,7 +68,6 @@ def edit_gen_gp_gfx_damagelevels(source_path) -> None:
         f'    LocalizationToken = "mrl_2"'
         f'    MoralModifier = 99'
         f'    AnimationType = ESoldierSuppressStatus/Suppressed'
-        f'    PrecisionEffectValue = 45'
         f'    EffectsPacks = '
         f'    ['
         f'        $/GFX/EffectCapacity/UnitEffect_Precision_moins_45,'

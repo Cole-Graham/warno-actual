@@ -291,9 +291,10 @@ def _handle_new_units(source_path: Any, game_db: Any) -> None:
                             new_meshes.add(mesh)
                         new_catalog_entry.v.by_member("Meshes").v = new_meshes
             else:
-                new_mesh_list = [f"$/GFX/DepictionResources/Modele_{donor_name}"]
+                model_name = donor_name if not edits.get("model", False) else edits["model"]
+                new_mesh_list = [f"$/GFX/DepictionResources/Modele_{model_name}"]
                 for i in range(2, edits.get("alternatives_count", 1) + 1):
-                    new_mesh_list.append(f"$/GFX/DepictionResources/Modele_{donor_name}_{i:02}")
+                    new_mesh_list.append(f"$/GFX/DepictionResources/Modele_{model_name}_{i:02}")
 
                 new_meshes = ndf.model.List()
                 for mesh in new_mesh_list:
@@ -468,7 +469,7 @@ def _add_weapon_mesh(source_path: Any, unit_name: str, turret_index: int, mesh: 
         weapon_alts = source_path.by_n(f"AllWeaponAlternatives_{unit_name}").v
         new_entry = (
             f"TDepictionVisual("
-            f"    SelectorId = ['MeshAlternative_{turret_index + 1}']"
+            f"    SelectorId = ['WeaponAlternative_{turret_index + 1}']"
             f"    MeshDescriptor = $/GFX/DepictionResources/Modele_{mesh}"
             f")"
         )
@@ -521,7 +522,7 @@ def _add_animation_tag(source_path: Any, unit_name: str, turret_index: int, tag:
                 
                 # Add the new tag
                 conditional_tags.v.add(
-                    f"('{tag}', 'MeshAlternative_{turret_index + 1}')"
+                    f"('{tag}', 'WeaponAlternative_{turret_index + 1}')"
                 )
                 logger.info(f"Added animation tag for {unit_name} turret {turret_index}")
                 break

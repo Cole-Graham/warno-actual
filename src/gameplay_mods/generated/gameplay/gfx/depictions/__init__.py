@@ -7,7 +7,6 @@ from .depictionhumans import edit_gen_gp_gfx_depictionhumans
 from .depictioninfantry import edit_gen_gp_gfx_depictioninfantry
 from .depictionvehicles import edit_gen_gp_gfx_depictionvehicles
 from .depictionvehiclesshowroom import edit_gen_gp_gfx_depictionvehiclesshowroom
-from .mimeticghosts import edit_gen_gp_gfx_mimeticghosts
 from .missilecarriage import edit_gen_gp_gfx_missilecarriage
 from .missilecarriagedepiction import edit_gen_gp_gfx_missilecarriagedepiction
 
@@ -21,7 +20,6 @@ __all__ = [
     "edit_gen_gp_gfx_depictioninfantry",
     "edit_gen_gp_gfx_depictionvehicles",
     "edit_gen_gp_gfx_depictionvehiclesshowroom",
-    "edit_gen_gp_gfx_mimeticghosts",
     "edit_gen_gp_gfx_missilecarriage",
     "edit_gen_gp_gfx_missilecarriagedepiction",
 ]

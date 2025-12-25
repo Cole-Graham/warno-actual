@@ -22,7 +22,6 @@ from .depictions import (
     edit_gen_gp_gfx_depictioninfantry,
     edit_gen_gp_gfx_depictionvehicles,
     edit_gen_gp_gfx_depictionvehiclesshowroom,
-    edit_gen_gp_gfx_mimeticghosts,
     edit_gen_gp_gfx_missilecarriage,
     edit_gen_gp_gfx_missilecarriagedepiction,
 )
@@ -58,7 +57,6 @@ __all__ = [
     'edit_gen_gp_gfx_effetssurunite',
     'edit_gen_gp_gfx_experiencelevels',
     'edit_gen_gp_gfx_firedescriptor',
-    'edit_gen_gp_gfx_mimeticghosts',
     'edit_gen_gp_gfx_missilecarriage',
     'edit_gen_gp_gfx_missilecarriagedepiction',
     'edit_gen_gp_gfx_ndfdepictionlist',

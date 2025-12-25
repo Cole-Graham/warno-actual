@@ -13,7 +13,7 @@ mtlb_vasilek_sov: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
             "WeaponShootDataPropertyName": ["'WeaponShootData_0_4'"]
         },
         
-        ("TacticDepiction_MTLB_Vasilek_SOV", "TacticVehicleDepictionDesc"): {
+        (None, "TacticVehicleDepictionRegistration"): {
             "SubDepictions": {
                 0: {
                     "Depiction": {
