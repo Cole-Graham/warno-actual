@@ -398,8 +398,8 @@ SOV_NEW_UNITS = {
         "Faction": "PACT",
         "Nation": "SOV",
         "UpgradeFromUnit": "MotRifles_TTsko_SOV",
-        "alternatives_count": 6,
-        "selector_tactic": "00_06",
+        "alternatives_count": 4,
+        "selector_tactic": "00_04",
     },
 
     ("ATteam_Fagot_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys

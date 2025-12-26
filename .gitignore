@@ -14,6 +14,10 @@ LDR_unit_edits_old.py
 notes
 .cursor
 python_version_check.py
+tools/dpm_visualizer/user_data.json
+tools/dpm_visualizer/dpm_visualizer_cache.json
+tools/infantry_dpm_visualizer.py
+tools/extract_infantry_tab.py
 
 # don't ignore
 !logs/.gitkeep
