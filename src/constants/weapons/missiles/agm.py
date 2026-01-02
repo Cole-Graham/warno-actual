@@ -46,6 +46,14 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("AGM_Kh66", "ATGM", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "SupplyCost": 60.0,
+            },
+        },
+    },
+    
     ("AGM_Kh29T", "ATGM", None, False): { # 85
         "Ammunition": {
             "parent_membr": {

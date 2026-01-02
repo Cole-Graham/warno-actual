@@ -87,7 +87,7 @@ SOV_NEW_UNITS = {
         },
         "availability": [0, 0, 2, 0],
         "max_speed": 26,
-        "Orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootOnPositionSmoke',
                    'EOrderType/ShootOnPositionWithoutCorrectionSmoke', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
@@ -174,7 +174,7 @@ SOV_NEW_UNITS = {
         },
         "availability": [0, 0, 2, 0],
         "max_speed": 26,
-        "Orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootOnPositionSmoke',
                    'EOrderType/ShootOnPositionWithoutCorrectionSmoke', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
@@ -243,7 +243,7 @@ SOV_NEW_UNITS = {
             },
         },
         "availability": [0, 0, 2, 0],
-        "Orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
@@ -255,7 +255,7 @@ SOV_NEW_UNITS = {
         "Faction": "PACT",
         "Nation": "SOV",
     },
-
+    # MT-LBu
     ("MTLB_CMD_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "ddc1a5b9-cc08-494a-a9dc-7d8b35591505",
         "GroupeCombatGUID": "41959c7e-e732-453f-91d5-000729d068e5",
@@ -308,7 +308,7 @@ SOV_NEW_UNITS = {
             },
         },
         "availability": [0, 3, 0, 0],
-        "Orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/QuickMove', 'EOrderType/Reverse',
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/QuickMove', 'EOrderType/Reverse',
                    'EOrderType/AskForSupply', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": False, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,
@@ -372,8 +372,8 @@ SOV_NEW_UNITS = {
         "TransportedSoldier": "MotRifles_RPG7V_TTsko_SOV",
         "armor": "Infantry_armor_reference",
         "CommandPoints": 30,
+        "UnitRole": 'infantry',
         "SpecialtiesList": [
-                'infantry',
                 '_ifv',
                 'infantry_equip_medium',
             ],
@@ -387,7 +387,7 @@ SOV_NEW_UNITS = {
         },
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
-        "Orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
                    'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
@@ -436,7 +436,6 @@ SOV_NEW_UNITS = {
         },
         "CommandPoints": 40,
         "SpecialtiesList": [
-                'AT',
                 'infantry_equip_heavy',
             ],
         "ButtonTexture": "Atteam_Konkurs_DShV_SOV",
@@ -453,7 +452,7 @@ SOV_NEW_UNITS = {
         },
         "availability": [7, 5, 4, 0],
         "max_speed": 20,
-        "Orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/Attack', 'EOrderType/MoveAndAttack',
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/Attack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
@@ -501,7 +500,6 @@ SOV_NEW_UNITS = {
         },
         "CommandPoints": 40,
         "SpecialtiesList": [
-                'AT',
                 '_para',
                 'infantry_equip_heavy'
             ],
@@ -516,7 +514,7 @@ SOV_NEW_UNITS = {
         },
         "availability": [0, 7, 5, 4],
         "max_speed": 20,
-        "Orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/Attack', 'EOrderType/MoveAndAttack', 
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/Attack', 'EOrderType/MoveAndAttack', 
                    'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load', 
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.

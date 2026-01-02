@@ -1,6 +1,7 @@
 """Functions for modifying CapaciteList.ndf"""
 
 from src.constants.effects.capacities import (
+    MEDIUM_COHESION_LOSS_CAPACITY,
     CHOC_MOVE_CAPACITY,
     CHOC_MOVE_OK_CAPACITY,
     NO_CHOC_MOVE_CAPACITY,
@@ -40,4 +41,5 @@ def edit_gen_gp_gfx_capacitelist(source_path) -> None:
             source_path.insert(i, NO_SWIFT_CAPACITY)
             source_path.insert(i, DEPLOY_OK_CAPACITY)
             source_path.insert(i, DEPLOY_CAPACITY)
+            source_path.insert(i, MEDIUM_COHESION_LOSS_CAPACITY)
             break

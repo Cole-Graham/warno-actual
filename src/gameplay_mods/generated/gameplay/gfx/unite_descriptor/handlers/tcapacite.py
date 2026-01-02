@@ -56,6 +56,13 @@ def _add_capacite_module(
                 "Swift",
                 "no_Swift",
             ],
+            "'infantry_equip_medium'": [
+                "Medium_Cohesion_Loss",
+            ],
+            "'infantry_equip_heavy'": [
+                "Medium_Cohesion_Loss",
+            ],
+            
         },
     }
     for condition_type, condition in skills_to_add.items():
@@ -120,6 +127,12 @@ def _add_capacities(logger, unit_data, edit_type, unit_name, edits, default_skil
             "'_swift'": [
                 "$/GFX/EffectCapacity/Capacite_Swift",
                 "$/GFX/EffectCapacity/Capacite_no_Swift",
+            ],
+            "'infantry_equip_medium'": [
+                "$/GFX/EffectCapacity/Capacite_Medium_Cohesion_Loss",
+            ],
+            "'infantry_equip_heavy'": [
+                "$/GFX/EffectCapacity/Capacite_Medium_Cohesion_Loss",
             ],
         },
     }

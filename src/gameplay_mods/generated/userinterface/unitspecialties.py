@@ -63,6 +63,12 @@ def _write_trait_texts() -> None:
         description_token, description = data["description"]
         if description_token and description:
             entries.append((description_token, description))
+        
+        extended = data.get("extended", None)
+        if extended is not None:
+            extended_token, extended_text = extended
+            if extended_token and extended_text:
+                entries.append((extended_token, extended_text))
 
     # Add specialty entries
     for trait, data in TRAIT_EDITS.items():

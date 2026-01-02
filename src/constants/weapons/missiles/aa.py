@@ -438,6 +438,22 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("SAM_9M33M2", "SAM", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "MaximumRangeHelicopterGRU": 2975,
+                "MaximumRangeAirplaneGRU": 4200,
+            }
+        },
+        "SupplyCost": 60.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [6],
+            "units": {
+                6: ["Osa_9K33M3_SOV", "Osa_9K33M3_TCH", "Osa_9K33M3_DDR", "Osa_9K33M3_POL"],
+            },
+        },
+    },
 
     ("SAM_9M311_Tunguska", "SAM", None, False): { # 177
         "Ammunition": {
@@ -514,6 +530,48 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 3.5,
                 "SupplyCost": 25.0,
             }
+        },
+    },
+    
+    ("SAM_Strela2", "MANPAD", None, False): { #
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_tbagru",
+            },
+            "parent_membr": {
+                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeAirplaneGRU": 1750,
+                "TimeBetweenTwoSalvos": 7.0,
+                "AimingTime": 1.2,
+            }
+        },
+        "SupplyCost": 25.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [4],
+            "units": {
+                4: ["W3W_Sokol_AA_POL", "Mi_2_AA_POL"],
+            },
+        },
+    },
+    
+    ("SAM_Strela2_HAGRU", "MANPAD", "SAM_Strela2", True): { #
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_hagru",
+            },
+            "parent_membr": {
+                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeAirplaneGRU": 1750,
+                "TimeBetweenTwoSalvos": 7.0,
+                "AimingTime": 3.0,
+            }
+        },
+        "SupplyCost": 25.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [4],
+            "units": {
+                4: ["W3W_Sokol_AA_POL", "Mi_2_AA_POL"],
+            },
         },
     },
 

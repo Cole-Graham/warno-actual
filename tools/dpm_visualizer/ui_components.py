@@ -227,13 +227,20 @@ class SearchableCombobox(ttk.Frame):
     
     def _on_root_configure(self, event):
         """Handle root window movement - update popup position."""
-        # Only update if this is the root window being moved (not child widgets)
-        if event.widget == self.winfo_toplevel() and self.is_open and self.popup:
-            try:
-                self.position_popup()
-            except:
-                # Widget may have been destroyed
-                pass
+        # Check if widget still exists before accessing it
+        try:
+            if not self.winfo_exists():
+                return
+            # Only update if this is the root window being moved (not child widgets)
+            if event.widget == self.winfo_toplevel() and self.is_open and self.popup:
+                try:
+                    self.position_popup()
+                except:
+                    # Widget may have been destroyed
+                    pass
+        except:
+            # Widget has been destroyed, ignore
+            pass
     
     
     def check_close(self):
@@ -369,7 +376,7 @@ class RangeModifierEditor:
         header_frame = ttk.Frame(editor_frame)
         header_frame.pack(fill=tk.X, pady=(0, 5))
         ttk.Label(header_frame, text="Range Fraction", width=15).pack(side=tk.LEFT, padx=5)
-        ttk.Label(header_frame, text="Multiplier", width=15).pack(side=tk.LEFT, padx=5)
+        ttk.Label(header_frame, text="Percentage", width=15).pack(side=tk.LEFT, padx=5)
         
         # Veterancy bonus type checkbox
         vet_bonus_frame = ttk.LabelFrame(main_frame, text="Veterancy Accuracy Bonus", padding="5")

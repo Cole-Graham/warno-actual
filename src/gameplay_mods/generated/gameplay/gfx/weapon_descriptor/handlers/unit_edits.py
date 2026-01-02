@@ -491,6 +491,7 @@ def _apply_salvo_changes(weapon_descr: Any, wd_edits: Dict, weapon_descr_data: D
     salvo_mapping = weapon_descr_data["salvo_mapping"]
     for weapon, val in salve_edits.items():
 
+        # TODO: These 6 lines are a hack because I'm lazy and I forget why it exists xD but its necessary
         if weapon == "special":
             for special_weapon, special_val in val.items():
                 index = special_val[0]

@@ -39,8 +39,11 @@ def apply_default_salves(source_path: Any, logger, game_db: Dict[str, Any], unit
                                 current, new = replacement
                             if current == ammo_name:
                                 skip_weapon_descr_ammo_name = True
+                                
                     if salve_changes:
                         for ammo, salve in salve_changes.items():
+                            # TODO: This breaks too easily if the unit edit and ammo dics aren't written to both refer
+                            # TODO: to either the AP or HE version of the ammo.
                             if ammo == ammo_name:
                                 skip_weapon_descr_ammo_name = True
 

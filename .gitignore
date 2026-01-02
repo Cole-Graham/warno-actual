@@ -18,6 +18,7 @@ tools/dpm_visualizer/user_data.json
 tools/dpm_visualizer/dpm_visualizer_cache.json
 tools/infantry_dpm_visualizer.py
 tools/extract_infantry_tab.py
+agent
 
 # don't ignore
 !logs/.gitkeep

@@ -106,10 +106,6 @@ usa_unit_edits = {
         "availability": [0, 0, 0, 2],
     },
 
-    "CH47_Super_Chinook_US": {
-        "UpgradeFromUnit": "UH60A_Supply_US",
-    },
-
     # US INF
     "Rifles_half_CMD_US": {
         "CommandPoints": 30,
@@ -275,19 +271,6 @@ usa_unit_edits = {
                 "Transports": ["M1038_Humvee_US", "M113A3_US"],
             }
         },
-        "WeaponAssignment": [
-                (0, [1, ]),
-                (1, [1, ]),
-                (2, [0, ]),
-                (3, [0, ]),
-                (4, [0, ]),
-                (5, [0, ]),
-                (6, [0, ]),
-                (7, [0, ]),
-                (8, [0, ]),
-                (9, [0, ]),
-                (10, [0, 2, ]),
-            ],
         "WeaponDescriptor": {
             "Salves": {
                 "add": [(2, 8)], # (turret, salves)
@@ -419,6 +402,14 @@ usa_unit_edits = {
                 '_para',
                 'infantry_equip_light',
             ],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_M16": 10,
+                    "MMG_inf_M240B_7_62mm": 2,
+                },
+            },
         },
         "MenuIconTexture": "Texture_RTS_H_assault",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
@@ -731,21 +722,10 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
-        "WeaponAssignment": [
-                (0, [1, ]),
-                (1, [1, ]),
-                (2, [0, ]),
-                (3, [0, ]),
-                (4, [0, ]),
-                (5, [0, ]),
-                (6, [0, ]),
-                (7, [0, ]),
-                (8, [0, ]),
-                (9, [0, 2]),
-            ],
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "quantity": {
+                    "FM_M16": 8,
                     "MMG_WA_M60E3_7_62mm": 2,
                 },
             },
@@ -768,6 +748,12 @@ usa_unit_edits = {
             "add_specs": ["'infantry_equip_light'"],
         },
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_M16": 8,
+                    "MMG_inf_M240B_7_62mm": 2,
+                },
+            },
             "Salves": {
                 "Grenade_Satchel_Charge": 6,
             },
@@ -820,16 +806,6 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                "replace": [("MMG_inf_M240B_7_62mm", "MMG_WA_M60E3_7_62mm")],
-            },
-            "Salves": {
-                "FM_M16": 9,
-                "MMG_WA_M60E3_7_62mm": 18,
-                "RocketInf_M202_Flash_66mm": 2,
-            },
-        },
     },
 
     "NatGuard_Engineers_Flam_US": {
@@ -855,7 +831,7 @@ usa_unit_edits = {
             "Salves": {
                 "PM_GreaseGun": 40,
                 "FM_M16A1": 7,
-                "MMG_M60E1_7_62mm": 18,
+                "MMG_M60E1_7_62mm": 30,
                 "flamethrower_M2": 15,
             },
         },
@@ -949,16 +925,10 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
-        "WeaponAssignment": [
-                (0, [1, ]),
-                (1, [1, ]),
-                (2, [0, ]),
-                (3, [0, ]),
-                (4, [0, ]),
-            ],
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "quantity": {
+                    "FM_M16": 3,
                     "MMG_WA_M60E3_7_62mm": 2,
                 },
             },
@@ -1136,7 +1106,7 @@ usa_unit_edits = {
             "Salves": {
                 "FM_M16": 9,
                 "SAW_M249_5_56mm": 30,
-                "MMG_WA_M60E3_7_62mm": 18,
+                "MMG_WA_M60E3_7_62mm": 30,
                 "RocketInf_AT4_83mm": 4,
             },
         },
@@ -1232,13 +1202,6 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
-        "WeaponAssignment": [
-            (0, [1, ]),
-            (1, [1, ]),
-            (2, [0, ]),
-            (3, [0, ]),
-            (4, [0, 2, ]),
-        ],
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "quantity": {
@@ -1394,7 +1357,7 @@ usa_unit_edits = {
             "Salves": {
                 "FM_M16": 7,
                 "SAW_M249_5_56mm": 30,
-                "MMG_WA_M60E3_7_62mm": 18,
+                "MMG_WA_M60E3_7_62mm": 30,
                 "M47_DRAGON_II": 4,
             },
         }
@@ -1429,7 +1392,7 @@ usa_unit_edits = {
             },
             "Salves": {
                 "FM_M16A1": 10,
-                "MMG_M60E1_7_62mm": 18,
+                "MMG_M60E1_7_62mm": 30,
                 "M47_DRAGON": 4,
             },
         }
@@ -2359,8 +2322,9 @@ usa_unit_edits = {
     },
 
     "OH58D_Combat_Scout_US": {
+        "CommandPoints": 60,
         "availability": [0, 4, 3, 0],
-        "ECM:": -0.1,
+        "ECM": -0.1,
     },
 
     "OH58D_Kiowa_Warrior_US": {
@@ -2438,7 +2402,7 @@ usa_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_M16": 11,
-                "SAW_M249_5_56mm": 45,
+                "SAW_M249_5_56mm": 30,
                 "add": [(2, 4)], # (salves_index, salves)
             },
             "equipmentchanges": {
@@ -2494,6 +2458,9 @@ usa_unit_edits = {
                     ("Commando_733", "M16A1_Carbine"),
                     ("RocketInf_M72A1_LAW_66mm", "RocketInf_M72A3_LAW_66mm"),
                 ],
+                "Salves": {
+                    "Commando_733": 11,
+                },
             },
         },
         "DeploymentShift": 0,

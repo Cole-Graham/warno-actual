@@ -546,7 +546,7 @@ fr_unit_edits = {
     },
     
     "VAB_FR": {
-        "CommandPoints": 20,
+        "CommandPoints": 15,
         "strength": 10,
     },
 
@@ -567,10 +567,6 @@ fr_unit_edits = {
     "VAB_T20_FR": {
         "CommandPoints": 50,
         "strength": 10,
-        # "modules_remove": ["TTransporterModuleDescriptor"],
-        # "SpecialtiesList": {
-        #     "remove_specs": ["'_transport1'"],
-        # },
         "availability": [8, 6, 0, 0],
         "Divisions": {
             "add": ["FR_5e_Blindee"],
@@ -759,6 +755,17 @@ fr_unit_edits = {
         "CommandPoints": 165,
         "availability": [0, 0, 3, 2],
     },
+    
+    "Gazelle_20mm_reco_FR": {
+        "CommandPoints": 50,
+        "availability": [0, 4, 3, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "AutoCanon_AP_20mm_M621_GIAT": 10,
+            },
+        },
+    },
+    
     # FR AA
     "TRM_2000_20mm_FR": {
         "CommandPoints": 35,
@@ -826,6 +833,11 @@ fr_unit_edits = {
     
     "Gazelle_20mm_FR": {
         "availability": [0, 8, 6, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "AutoCanon_AP_20mm_M621_GIAT": 10,
+            },
+        },
     },
     
     "Gazelle_HOT_FR": {

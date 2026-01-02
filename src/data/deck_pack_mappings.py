@@ -22,7 +22,7 @@ def build_deck_pack_mappings(mod_source_path: Path) -> Dict[str, Dict[str, str]]
 
     # Load unit edits
     unit_edits = load_unit_edits()
-    unit_edits.update(supply_unit_edits)
+    # unit_edits.update(supply_unit_edits)
 
     # Build two separate types of mappings
     deck_pack_modifications = {}  # For modifying DeckPacks.ndf (only XP/number changes)
@@ -55,6 +55,9 @@ def build_deck_pack_data(mod_source_path: Path) -> Dict[str, Any]:
 
 def _parse_deck_pack_data(mod_source_path: Path) -> Dict[str, Any]:
     """Parse existing DeckPacks.ndf with structured categorization of transport vs non-transport deck packs.
+    
+    Parses ALL deck packs from game files. Uses unit_edits to identify base unit names,
+    but includes all deck packs regardless of whether they're in unit_edits.
 
     Returns:
         Dict with structured deck pack data:
@@ -77,11 +80,26 @@ def _parse_deck_pack_data(mod_source_path: Path) -> Dict[str, Any]:
         # Parse DeckPacks.ndf
         mod = ndf.Mod(str(mod_source_path), "None")
         ndf_path = "GameData/Generated/Gameplay/Decks/DeckPacks.ndf"
-        source = mod.parse_src(ndf_path)
+        
+        # Check if file exists
+        full_path = mod_source_path / ndf_path
+        if not full_path.exists():
+            logger.error(f"DeckPacks.ndf not found at {full_path}")
+            return data
+        
+        try:
+            source = mod.parse_src(ndf_path)
+        except Exception as parse_error:
+            logger.error(f"Failed to parse {ndf_path}: {parse_error}", exc_info=True)
+            return data
+        
+        if source is None:
+            logger.error(f"Failed to parse {ndf_path} - parse_src returned None")
+            return data
 
-        # Load unit edits to know which are base units
+        # Load unit edits to know which are base units (used for identifying base unit names)
         unit_edits = load_unit_edits()
-        unit_edits.update(supply_unit_edits)
+        # unit_edits.update(supply_unit_edits)
         base_unit_names = set(unit_edits.keys())
 
         for deck_pack in source:
@@ -156,7 +174,7 @@ def _parse_deck_pack_data(mod_source_path: Path) -> Dict[str, Any]:
         logger.info(f"Parsed {len(data['all_namespaces'])} total deck packs for {len(data['base_units'])} base units")
 
     except Exception as e:
-        logger.error(f"Failed to parse deck pack data: {e}")
+        logger.error(f"Failed to parse deck pack data: {e}", exc_info=True)
 
     return data
 

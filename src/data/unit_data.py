@@ -78,16 +78,17 @@ def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
             unit_info["is_at_team"] = True
 
         for module in modules_list:
+            
+            if module.v == "HelicoFlagsModuleDescriptor":
+                unit_info["is_helo_unit"] = True
+                continue
+
             if not isinstance(module.v, ndf.model.Object):
                 continue
 
             module_type = module.v.type
 
-            # Extract data based on module type
-            if module_type == "HelicopterPositionModuleDescriptor":
-                unit_info["is_helo_unit"] = True
-
-            elif module_type == "TProductionModuleDescriptor":
+            if module_type == "TProductionModuleDescriptor":
                 unit_info.update(_extract_production_data(module))
 
             elif module_type == "TTagsModuleDescriptor":

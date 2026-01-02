@@ -160,6 +160,30 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "MaxAccelerationGRU": 2826,
         },
     },
+    
+    ("AA_R23R_Vympel", "A2A", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "TimeBetweenTwoShots": 1.5,
+                "TimeBetweenTwoFx": 1.5,
+                "MaximumRangeAirplaneGRU": 6825,
+                "TimeBetweenTwoSalvos": 1.5,
+                "SupplyCost": 50.0,
+            },
+        },
+    },
+    
+    ("AA_R13M", "A2A", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Moving": 40,
+            },
+            "parent_membr": {
+                "PhysicalDamages": 4.0,
+                "SupplyCost": 25.0,
+            },
+        },
+    },
 
     ("AA_AIM9M_Sidewinder", "A2A", None, False): { # 7
         "Ammunition": {

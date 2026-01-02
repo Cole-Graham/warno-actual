@@ -212,6 +212,18 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("Canon_HE_100mm_D10T_Merida", "canon", None, False): { # 171
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 55,
+                "Moving": 45,
+            },
+            "parent_membr": {
+                "PhysicalDamages": 1.15,
+            },
+        },
+    },
 
     ("Canon_HE_100mm_2A70", "canon", None, False): { # 169
         "Ammunition": {
@@ -220,6 +232,15 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "PhysicalDamages": 1.15,
                 "RadiusSplashSuppressDamagesGRU": 86,
                 "SupplyCost": 100.0,
+            },
+        },
+    },
+    
+    ("Canon_AP_D10T_Merida", "canon", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 55,
+                "Moving": 45,
             },
         },
     },

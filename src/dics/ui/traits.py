@@ -2,85 +2,172 @@
 
 from src.constants import NEW_SUPPLY_CONSTANTS
 
+
+def get_ratio_color(ratio: float) -> str:
+    """Map supply ratio to color tag based on thresholds.
+    
+    Args:
+        ratio: The supply ratio value from NEW_SUPPLY_CONSTANTS
+        
+    Returns:
+        Color tag string for use in trait descriptions
+    """
+    if ratio < 1.0:
+        return "moral_color_bad_2"
+    elif ratio >= 3.0:
+        return "styleTurquoise"
+    elif ratio >= 2.0:
+        return "styleGreen"
+    else:  # ratio >= 1.0 and < 2.0
+        return "style1"
+
+
 runner_configs = NEW_SUPPLY_CONSTANTS["RunnerSupply"]
 for key, value in runner_configs.items():
     if key == "DefaultSupplyRangeGRU":
-        if value == "SpecificDefaultSupplyRangeGRU":
-            runner_range = "450"
-        else:
-            runner_range = value
+        runner_range = value
     elif key == "FuelSupplyBySecond":
         runner_fuel = value * 30
-        runner_fuel_percentage = f"({int(value * 100)}%)" if value != 1.0 else ""
+        runner_fuel_percentage = f"({int(value * 100)}%)"
+        runner_fuel_color = get_ratio_color(value)
     elif key == "HealthSupplyBySecond":
         runner_health = float(value/10)
-        runner_health_percentage = f"({int(value * 100/2)}%)" if value != 2.0 else ""
+        runner_health_percentage = f"({int(value * 100)}%)"
+        runner_health_color = get_ratio_color(value)
     elif key == "AmmunitionSupplyBySecond":
         runner_ammo = value * 60
-        runner_ammo_percentage = f"({int(value * 100)}%)" if value != 1.0 else ""
+        runner_ammo_percentage = f"({int(value * 100)}%)"
+        runner_ammo_color = get_ratio_color(value)
     elif key == "CriticsSupplyBySecond":
         runner_critics = value * 10
-        runner_critics_percentage = f"({int(value * 100)}%)" if value != 1.0 else ""
+        runner_critics_percentage = f"({int(value * 100)}%)"
+        runner_critics_color = get_ratio_color(value)
 
 squad_configs = NEW_SUPPLY_CONSTANTS["SquadSupply"]
 for key, value in squad_configs.items():
     if key == "DefaultSupplyRangeGRU":
-        if value == "SpecificDefaultSupplyRangeGRU":
-            squad_range = "450"
-        else:
-            squad_range = value
+        squad_range = value
     elif key == "FuelSupplyBySecond":
         squad_fuel = value * 30
-        squad_fuel_percentage = f"({int(value * 100)}%)" if value != 1.0 else ""
+        squad_fuel_percentage = f"({int(value * 100)}%)"
+        squad_fuel_color = get_ratio_color(value)
     elif key == "HealthSupplyBySecond":
         squad_health = float(value/10)
-        squad_health_percentage = f"({int(value * 100/2)}%)" if value != 2.0 else ""
+        squad_health_percentage = f"({int(value * 100)}%)"
+        squad_health_color = get_ratio_color(value)
     elif key == "AmmunitionSupplyBySecond":
         squad_ammo = value * 60
-        squad_ammo_percentage = f"({int(value * 100)}%)" if value != 1.0 else ""
+        squad_ammo_percentage = f"({int(value * 100)}%)"
+        squad_ammo_color = get_ratio_color(value)
     elif key == "CriticsSupplyBySecond":
         squad_critics = value * 10
-        squad_critics_percentage = f"({int(value * 100)}%)" if value != 1.0 else ""
+        squad_critics_percentage = f"({int(value * 100)}%)"
+        squad_critics_color = get_ratio_color(value)
 
 primary_configs = NEW_SUPPLY_CONSTANTS["PrimarySupply"]
 for key, value in primary_configs.items():
     if key == "DefaultSupplyRangeGRU":
-        if value == "SpecificDefaultSupplyRangeGRU":
-            primary_range = "450"
-        else:
-            primary_range = value
+        primary_range = value
     elif key == "FuelSupplyBySecond":
         primary_fuel = value * 30
-        primary_fuel_percentage = f"({int(value * 100)}%)" if value != 1.0 else ""
+        primary_fuel_percentage = f"({int(value * 100)}%)"
+        primary_fuel_color = get_ratio_color(value)
     elif key == "HealthSupplyBySecond":
         primary_health = float(value/10)
-        primary_health_percentage = f"({int(value * 100/2)}%)" if value != 2.0 else ""
+        primary_health_percentage = f"({int(value * 100)}%)"
+        primary_health_color = get_ratio_color(value)
     elif key == "AmmunitionSupplyBySecond":
         primary_ammo = value * 60
-        primary_ammo_percentage = f"({int(value * 100)}%)" if value != 1.0 else ""
+        primary_ammo_percentage = f"({int(value * 100)}%)"
+        primary_ammo_color = get_ratio_color(value)
     elif key == "CriticsSupplyBySecond":
         primary_critics = value * 10
-        primary_critics_percentage = f"({int(value * 100)}%)" if value != 1.0 else ""
+        primary_critics_percentage = f"({int(value * 100)}%)"
+        primary_critics_color = get_ratio_color(value)
 
 divisional_configs = NEW_SUPPLY_CONSTANTS["DvisionalSupply"] # Dvisional because 'Div' is reserved in NDF
 for key, value in divisional_configs.items():
     if key == "DefaultSupplyRangeGRU":
-        if value == "SpecificDefaultSupplyRangeGRU":
-            divisional_range = "450"
-        else:
-            divisional_range = value
+        divisional_range = value
     elif key == "FuelSupplyBySecond":
         divisional_fuel = value * 30
-        divisional_fuel_percentage = f"({int(value * 100)}%)" if value != 1.0 else ""
+        divisional_fuel_percentage = f"({int(value * 100)}%)"
+        divisional_fuel_color = get_ratio_color(value)
     elif key == "HealthSupplyBySecond":
         divisional_health = float(value/10)
-        divisional_health_percentage = f"({int(value * 100/2)}%)" if value != 2.0 else ""
+        divisional_health_percentage = f"({int(value * 100)}%)"
+        divisional_health_color = get_ratio_color(value)
     elif key == "AmmunitionSupplyBySecond":
         divisional_ammo = value * 60
-        divisional_ammo_percentage = f"({int(value * 100)}%)" if value != 1.0 else ""
+        divisional_ammo_percentage = f"({int(value * 100)}%)"
+        divisional_ammo_color = get_ratio_color(value)
     elif key == "CriticsSupplyBySecond":
         divisional_critics = value * 10
-        divisional_critics_percentage = f"({int(value * 100)}%)" if value != 1.0 else ""   
+        divisional_critics_percentage = f"({int(value * 100)}%)"
+        divisional_critics_color = get_ratio_color(value)
+
+runner_helo_configs = NEW_SUPPLY_CONSTANTS["RunnerHeloSupply"]
+for key, value in runner_helo_configs.items():
+    if key == "DefaultSupplyRangeGRU":
+        runner_helo_range = value
+    elif key == "FuelSupplyBySecond":
+        runner_helo_fuel = value * 30
+        runner_helo_fuel_percentage = f"({int(value * 100)}%)"
+        runner_helo_fuel_color = get_ratio_color(value)
+    elif key == "HealthSupplyBySecond":
+        runner_helo_health = float(value/10)
+        runner_helo_health_percentage = f"({int(value * 100)}%)"
+        runner_helo_health_color = get_ratio_color(value)
+    elif key == "AmmunitionSupplyBySecond":
+        runner_helo_ammo = value * 60
+        runner_helo_ammo_percentage = f"({int(value * 100)}%)"
+        runner_helo_ammo_color = get_ratio_color(value)
+    elif key == "CriticsSupplyBySecond":
+        runner_helo_critics = value * 10
+        runner_helo_critics_percentage = f"({int(value * 100)}%)"
+        runner_helo_critics_color = get_ratio_color(value)
+
+primary_helo_configs = NEW_SUPPLY_CONSTANTS["PrimaryHeloSupply"]
+for key, value in primary_helo_configs.items():
+    if key == "DefaultSupplyRangeGRU":
+        primary_helo_range = value
+    elif key == "FuelSupplyBySecond":
+        primary_helo_fuel = value * 30
+        primary_helo_fuel_percentage = f"({int(value * 100)}%)"
+        primary_helo_fuel_color = get_ratio_color(value)
+    elif key == "HealthSupplyBySecond":
+        primary_helo_health = float(value/10)
+        primary_helo_health_percentage = f"({int(value * 100)}%)"
+        primary_helo_health_color = get_ratio_color(value)
+    elif key == "AmmunitionSupplyBySecond":
+        primary_helo_ammo = value * 60
+        primary_helo_ammo_percentage = f"({int(value * 100)}%)"
+        primary_helo_ammo_color = get_ratio_color(value)
+    elif key == "CriticsSupplyBySecond":
+        primary_helo_critics = value * 10
+        primary_helo_critics_percentage = f"({int(value * 100)}%)"
+        primary_helo_critics_color = get_ratio_color(value)
+
+divisional_helo_configs = NEW_SUPPLY_CONSTANTS["DvisionalHeloSupply"]
+for key, value in divisional_helo_configs.items():
+    if key == "DefaultSupplyRangeGRU":
+        divisional_helo_range = value
+    elif key == "FuelSupplyBySecond":
+        divisional_helo_fuel = value * 30
+        divisional_helo_fuel_percentage = f"({int(value * 100)}%)"
+        divisional_helo_fuel_color = get_ratio_color(value)
+    elif key == "HealthSupplyBySecond":
+        divisional_helo_health = float(value/10)
+        divisional_helo_health_percentage = f"({int(value * 100)}%)"
+        divisional_helo_health_color = get_ratio_color(value)
+    elif key == "AmmunitionSupplyBySecond":
+        divisional_helo_ammo = value * 60
+        divisional_helo_ammo_percentage = f"({int(value * 100)}%)"
+        divisional_helo_ammo_color = get_ratio_color(value)
+    elif key == "CriticsSupplyBySecond":
+        divisional_helo_critics = value * 10
+        divisional_helo_critics_percentage = f"({int(value * 100)}%)"
+        divisional_helo_critics_color = get_ratio_color(value)   
 
 
 NEW_TRAITS = {
@@ -115,7 +202,10 @@ NEW_TRAITS = {
         "title": ("PWXOBNIDQC", "Medium Equipment"),
         "description": ("GUPAGRZAWI", (
             f"These infantry are moderately equipped, and while just as mobile, "
-            f"carry less ammunition than their light counterparts."
+            f"struggle to maintain cohesion under fire."
+        )),
+        "extended": ("UQBVPVHSOX", (
+            f"- Increased suppression damage taken while moving (50%)"
         )),
         "texture": "medium_equipment.png",
     },
@@ -125,6 +215,10 @@ NEW_TRAITS = {
         "description": ("XLMSCEWDLB", (
             f"These infantry are burdened by powerful yet heavy equipment, "
             f"hampering their mobility on the battlefield."
+        )),
+        "extended": ("ZGBDBQRXQA", (
+            f"- Increased suppression damage taken while moving (50%)\n"
+            f"- Reduced movement speed (-6 Km/h)"
         )),
         "texture": "heavy_equipment.png",
     },
@@ -136,6 +230,9 @@ NEW_TRAITS = {
             f"positions. Keep a transport nearby if you foresee the need to "
             f"reposition this unit in a hurry, and be proactive about avoiding "
             f"enemy artillery if their position is revealed."
+        )),
+        "extended": ("EFCIVTGYYW", (
+            f"- Reduced movement speed (-12 Km/h)"
         )),
         "texture": "veryheavy_equipment.png",
     },
@@ -213,11 +310,15 @@ NEW_TRAITS = {
     "_supply_runner": {
         "title": ("FOQNHPUZUW", "Runner"),
         "description": ("UQVNPUWWQY", (
-            '#style1{- Supply Range: }' + f'#moral_color_bad_3{{{runner_range}m}}'
-            '\n#style1{- Fuel Supply: }' + f'#style1{{{runner_fuel}}}' + '#style1{ per second}' + f' #style1{{{runner_fuel_percentage}}}'
-            '\n#style1{- Health Supply: }' + f'#style1{{{runner_health}}}' + '#style1{ per second}' + f' #style1{{{runner_health_percentage}}}'
-            '\n#style1{- Ammunition Supply: }' + f'#styleTurquoise{{{runner_ammo}}}' + '#style1{ per second}' + f' #styleTurquoise{{{runner_ammo_percentage}}}'
-            '\n#style1{- Crit Repair Rate:: }' + f'#moral_color_bad_2{{{runner_critics}}}' + '#style1{ per second}' + f' #moral_color_bad_2{{{runner_critics_percentage}}}'
+            '#style1{- Supply Range: }' + f'#moral_color_bad_2{{{runner_range}m}}'
+            '\n#style1{- Fuel Supply: }' + f'#{runner_fuel_color}{{{runner_fuel}}}'
+            + '#style1{ per second}' + f' #{runner_fuel_color}{{{runner_fuel_percentage}}}'
+            '\n#style1{- Health Supply: }' + f'#{runner_health_color}{{{runner_health}}}'
+            + '#style1{ per second}' + f' #{runner_health_color}{{{runner_health_percentage}}}'
+            '\n#style1{- Ammunition Supply: }' + f'#{runner_ammo_color}{{{runner_ammo}}}'
+            + '#style1{ per second}' + f' #{runner_ammo_color}{{{runner_ammo_percentage}}}'
+            '\n#style1{- Crit Repair Rate:: }' + f'#{runner_critics_color}{{{runner_critics}}}'
+            + '#style1{ per second}' + f' #{runner_critics_color}{{{runner_critics_percentage}}}'
         )),
         "texture": "runner_supply.png",
     },
@@ -225,11 +326,15 @@ NEW_TRAITS = {
     "_supply_squad": {
         "title": ("JZDIXEPDQC", "Squad"),
         "description": ("NNCAFAFCWS", (
-            '#style1{- Supply Range: }' + f'#moral_color_bad_2{{{squad_range}m}}'
-            '\n#style1{- Fuel Supply: }' + f'#styleGreen{{{squad_fuel}}}' + '#style1{ per second}' + f' #styleGreen{{{squad_fuel_percentage}}}'
-            '\n#style1{- Health Supply: }' + f'#style1{{{squad_health}}}' + '#style1{ per second}' + f' #style1{{{squad_health_percentage}}}'
-            '\n#style1{- Ammunition Supply: }' + f'#styleGreen{{{squad_ammo}}}' + '#style1{ per second}' + f' #styleGreen{{{squad_ammo_percentage}}}'
-            '\n#style1{- Crit Repair Rate:: }' + f'#style1{{{squad_critics}}}' + '#style1{ per second}' + f' #style1{{{squad_critics_percentage}}}'
+            '#style1{- Supply Range: }' + f'#style1{{{squad_range}m}}'
+            '\n#style1{- Fuel Supply: }' + f'#{squad_fuel_color}{{{squad_fuel}}}'
+            + '#style1{ per second}' + f' #{squad_fuel_color}{{{squad_fuel_percentage}}}'
+            '\n#style1{- Health Supply: }' + f'#{squad_health_color}{{{squad_health}}}'
+            + '#style1{ per second}' + f' #{squad_health_color}{{{squad_health_percentage}}}'
+            '\n#style1{- Ammunition Supply: }' + f'#{squad_ammo_color}{{{squad_ammo}}}'
+            + '#style1{ per second}' + f' #{squad_ammo_color}{{{squad_ammo_percentage}}}'
+            '\n#style1{- Crit Repair Rate:: }' + f'#{squad_critics_color}{{{squad_critics}}}'
+            + '#style1{ per second}' + f' #{squad_critics_color}{{{squad_critics_percentage}}}'
         )),
         "texture": "squad_supply.png",
     },
@@ -237,11 +342,15 @@ NEW_TRAITS = {
     "_supply_primary": {
         "title": ("VVLHQSOXCW", "Primary"),
         "description": ("ULULIILHXH", (
-            '#style1{- Supply Range: }' + f'#style1{{{primary_range}m}}'
-            '\n#style1{- Fuel Supply: }' + f'#style1{{{primary_fuel}}}' + '#style1{ per second}' + f' #style1{{{primary_fuel_percentage}}}'
-            '\n#style1{- Health Supply: }' + f'#style1{{{primary_health}}}' + '#style1{ per second}' + f' #style1{{{primary_health_percentage}}}'
-            '\n#style1{- Ammunition Supply: }' + f'#style1{{{primary_ammo}}}' + '#style1{ per second}' + f' #style1{{{primary_ammo_percentage}}}'
-            '\n#style1{- Crit Repair Rate:: }' + f'#style1{{{primary_critics}}}' + '#style1{ per second}' + f' #style1{{{primary_critics_percentage}}}'
+            '#style1{- Supply Range: }' + f'#styleGreen{{{primary_range}m}}'
+            '\n#style1{- Fuel Supply: }' + f'#{primary_fuel_color}{{{primary_fuel}}}'
+            + '#style1{ per second}' + f' #{primary_fuel_color}{{{primary_fuel_percentage}}}'
+            '\n#style1{- Health Supply: }' + f'#{primary_health_color}{{{primary_health}}}'
+            + '#style1{ per second}' + f' #{primary_health_color}{{{primary_health_percentage}}}'
+            '\n#style1{- Ammunition Supply: }' + f'#{primary_ammo_color}{{{primary_ammo}}}'
+            + '#style1{ per second}' + f' #{primary_ammo_color}{{{primary_ammo_percentage}}}'
+            '\n#style1{- Crit Repair Rate:: }' + f'#{primary_critics_color}{{{primary_critics}}}'
+            + '#style1{ per second}' + f' #{primary_critics_color}{{{primary_critics_percentage}}}'
         )),
         "texture": "primary_supply.png",
     },
@@ -250,10 +359,62 @@ NEW_TRAITS = {
         "title": ("FEDLBRSWYR", "Divisional"),
         "description": ("GHPEPQIELW", (
             '#style1{- Supply Range: }' + f'#styleTurquoise{{{divisional_range}m}}'
-            '\n#style1{- Fuel Supply: }' + f'#style1{{{divisional_fuel}}}' + '#style1{ per second}' + f' #style1{{{divisional_fuel_percentage}}}'
-            '\n#style1{- Health Supply: }' + f'#moral_color_bad_2{{{divisional_health}}}' + '#style1{ per second}' + f' #moral_color_bad_2{{{divisional_health_percentage}}}'
-            '\n#style1{- Ammunition Supply: }' + f'#moral_color_bad_2{{{divisional_ammo}}}' + '#style1{ per second}' + f' #moral_color_bad_2{{{divisional_ammo_percentage}}}'
-            '\n#style1{- Crit Repair Rate:: }' + f'#styleTurquoise{{{divisional_critics}}}' + '#style1{ per second}' + f' #styleTurquoise{{{divisional_critics_percentage}}}'
+            '\n#style1{- Fuel Supply: }' + f'#{divisional_fuel_color}{{{divisional_fuel}}}'
+            + '#style1{ per second}' + f' #{divisional_fuel_color}{{{divisional_fuel_percentage}}}'
+            '\n#style1{- Health Supply: }' + f'#{divisional_health_color}{{{divisional_health}}}'
+            + '#style1{ per second}' + f' #{divisional_health_color}{{{divisional_health_percentage}}}'
+            '\n#style1{- Ammunition Supply: }' + f'#{divisional_ammo_color}{{{divisional_ammo}}}'
+            + '#style1{ per second}' + f' #{divisional_ammo_color}{{{divisional_ammo_percentage}}}'
+            '\n#style1{- Crit Repair Rate:: }' + f'#{divisional_critics_color}{{{divisional_critics}}}'
+            + '#style1{ per second}' + f' #{divisional_critics_color}{{{divisional_critics_percentage}}}'
+        )),
+        "texture": "divisional_supply.png",
+    },
+    
+    "_supply_runner_helo": {
+        "title": ("HQWRTYZXCV", "Runner (Helicopter)"),
+        "description": ("BNMJKLPQRS", (
+            '#style1{- Supply Range: }' + f'#styleGreen{{{runner_helo_range}m}}'
+            '\n#style1{- Fuel Supply: }' + f'#{runner_helo_fuel_color}{{{runner_helo_fuel}}}'
+            + '#style1{ per second}' + f' #{runner_helo_fuel_color}{{{runner_helo_fuel_percentage}}}'
+            '\n#style1{- Health Supply: }' + f'#{runner_helo_health_color}{{{runner_helo_health}}}'
+            + '#style1{ per second}' + f' #{runner_helo_health_color}{{{runner_helo_health_percentage}}}'
+            '\n#style1{- Ammunition Supply: }' + f'#{runner_helo_ammo_color}{{{runner_helo_ammo}}}'
+            + '#style1{ per second}' + f' #{runner_helo_ammo_color}{{{runner_helo_ammo_percentage}}}'
+            '\n#style1{- Crit Repair Rate:: }' + f'#{runner_helo_critics_color}{{{runner_helo_critics}}}'
+            + '#style1{ per second}' + f' #{runner_helo_critics_color}{{{runner_helo_critics_percentage}}}'
+        )),
+        "texture": "runner_supply.png",
+    },
+    
+    "_supply_primary_helo": {
+        "title": ("ANDUVIMEHT", "Primary (Helicopter)"),
+        "description": ("GUISMXYQPZ", (
+            '#style1{- Supply Range: }' + f'#styleTurquoise{{{primary_helo_range}m}}'
+            '\n#style1{- Fuel Supply: }' + f'#{primary_helo_fuel_color}{{{primary_helo_fuel}}}'
+            + '#style1{ per second}' + f' #{primary_helo_fuel_color}{{{primary_helo_fuel_percentage}}}'
+            '\n#style1{- Health Supply: }' + f'#{primary_helo_health_color}{{{primary_helo_health}}}'
+            + '#style1{ per second}' + f' #{primary_helo_health_color}{{{primary_helo_health_percentage}}}'
+            '\n#style1{- Ammunition Supply: }' + f'#{primary_helo_ammo_color}{{{primary_helo_ammo}}}'
+            + '#style1{ per second}' + f' #{primary_helo_ammo_color}{{{primary_helo_ammo_percentage}}}'
+            '\n#style1{- Crit Repair Rate:: }' + f'#{primary_helo_critics_color}{{{primary_helo_critics}}}'
+            + '#style1{ per second}' + f' #{primary_helo_critics_color}{{{primary_helo_critics_percentage}}}'
+        )),
+        "texture": "primary_supply.png",
+    },
+    
+    "_supply_divisional_helo": {
+        "title": ("HDNGUIMAOX", "Divisional (Helicopter)"),
+        "description": ("UGJYTIVNGL", (
+            '#style1{- Supply Range: }' + f'#styleTurquoise{{{divisional_helo_range}m}}'
+            '\n#style1{- Fuel Supply: }' + f'#{divisional_helo_fuel_color}{{{divisional_helo_fuel}}}'
+            + '#style1{ per second}' + f' #{divisional_helo_fuel_color}{{{divisional_helo_fuel_percentage}}}'
+            '\n#style1{- Health Supply: }' + f'#{divisional_helo_health_color}{{{divisional_helo_health}}}'
+            + '#style1{ per second}' + f' #{divisional_helo_health_color}{{{divisional_helo_health_percentage}}}'
+            '\n#style1{- Ammunition Supply: }' + f'#{divisional_helo_ammo_color}{{{divisional_helo_ammo}}}'
+            + '#style1{ per second}' + f' #{divisional_helo_ammo_color}{{{divisional_helo_ammo_percentage}}}'
+            '\n#style1{- Crit Repair Rate:: }' + f'#{divisional_helo_critics_color}{{{divisional_helo_critics}}}'
+            + '#style1{ per second}' + f' #{divisional_helo_critics_color}{{{divisional_helo_critics_percentage}}}'
         )),
         "texture": "divisional_supply.png",
     },

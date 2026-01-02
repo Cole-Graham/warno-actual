@@ -201,6 +201,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("Bomb_CLU_RBK_250kg_salvolength4", "clu_bomb", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "SupplyCost": 280.0,
+            },
+        },
+    },
+    
     ("Bomb_CLU_RBK_500kg_salvolength2", "clu_bomb", None, False): { # 56
         "Ammunition": {
             "parent_membr": {
@@ -208,6 +216,23 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("Bomb_CLU_RBK_500kg_salvolength4", "clu_bomb", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "SupplyCost": 360.0,
+            },
+        },
+    },
+    
+    ("Bomb_CLU_RBK_500kg_salvolength6", "clu_bomb", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "SupplyCost": 460.0,
+            },
+        },
+    },
+
 
     ("Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength8", "clu_bomb", None, False): { # 44
         "Ammunition": {

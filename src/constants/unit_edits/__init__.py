@@ -269,6 +269,7 @@ def load_unit_edits() -> Dict:
     
     # Load dictionaries
     dics_path = Path(__file__).parent
+    unit_source_map = {}  # Track which file each unit comes from
     for file in dics_path.glob("*unit_edits.py"):
         module_name = f"src.constants.unit_edits.{file.stem}"
         logger.debug(f"Processing {file.stem}")
@@ -277,7 +278,28 @@ def load_unit_edits() -> Dict:
             module = importlib.import_module(module_name)
             dict_name = dict_names.get(file.stem)
             if dict_name and hasattr(module, dict_name):
-                merged_edits.update(getattr(module, dict_name))
+                unit_dict = getattr(module, dict_name)
+                
+                # Check for duplicate entries before merging
+                duplicates = []
+                for unit_name in unit_dict.keys():
+                    if unit_name in merged_edits:
+                        duplicates.append(unit_name)
+                
+                # Log warnings for duplicates
+                if duplicates:
+                    for unit_name in duplicates:
+                        logger.warning(
+                            f"Duplicate unit entry '{unit_name}' found in {file.stem}. "
+                            f"Previously loaded from {unit_source_map.get(unit_name, 'unknown')}. "
+                            f"Entry from {file.stem} will overwrite the previous one."
+                        )
+                
+                # Track source for each unit
+                for unit_name in unit_dict.keys():
+                    unit_source_map[unit_name] = file.stem
+                
+                merged_edits.update(unit_dict)
                 logger.info(f"Loaded unit edits from {file.stem}")
         except Exception as e:
             logger.error(f"Failed to load {file.stem}: {str(e)}")

@@ -266,7 +266,7 @@ def _remove_deck_packs_from_multi_decks(source_path: Any) -> None:
 
     # Load unit edits
     unit_edits = load_unit_edits()
-    unit_edits.update(supply_unit_edits)
+    # unit_edits.update(supply_unit_edits)
 
     removals_processed = 0
 

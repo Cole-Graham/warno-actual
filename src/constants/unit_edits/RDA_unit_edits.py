@@ -12,6 +12,10 @@ rda_unit_edits = {
                 "cards": 2,
             },
         },
+        "SpecialtiesList": {
+            "add_specs": ["'leader_sov'",],
+            "remove_specs": ["'_leader'"],
+        },
         "availability": [0, 4, 0, 0],
     },
     
@@ -21,6 +25,10 @@ rda_unit_edits = {
             "default": {
                 "cards": 1,
             },
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'leader_sov'",],
+            "remove_specs": ["'_leader'"],
         },
         "availability": [0, 0, 2, 0],
     },
@@ -33,6 +41,10 @@ rda_unit_edits = {
                 "cards": 2,
             },
         },
+        "SpecialtiesList": {
+            "add_specs": ["'leader_sov'",],
+            "remove_specs": ["'_leader'"],
+        },
         "availability": [0, 3, 0, 0],
     },
 
@@ -44,13 +56,11 @@ rda_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": [0, 0, 3, 0],
-    },
-
-    "MTLB_supply_DDR": {
-        "GameName": {
-            "display": "MT-LB MUN.",
+        "SpecialtiesList": {
+            "add_specs": ["'leader_sov'",],
+            "remove_specs": ["'_leader'"],
         },
+        "availability": [0, 0, 3, 0],
     },
 
     # RDA INF
@@ -1029,7 +1039,7 @@ rda_unit_edits = {
         "CommandPoints": 50,
         "WeaponDescriptor": {
             "Salves": {
-                "AutoCanon_AP_23mm_NS23": 20,
+                "AutoCanon_AP_23mm_NS23": 25,
                 "RocketAir_S5_57mm_salvolength32": 1,
             },
         },

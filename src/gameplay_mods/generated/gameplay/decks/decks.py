@@ -18,7 +18,7 @@ def edit_gen_gp_decks_deckpacks(source_path: Any, game_db: Dict[str, Any]) -> No
     logger.info("Modifying deck packs using precomputed database mappings")
     
     unit_edits = load_unit_edits()
-    unit_edits.update(supply_unit_edits)
+    # unit_edits.update(supply_unit_edits)
     deck_pack_data = game_db.get("deck_pack_data", {})
     
     deck_pack_edits = _determine_deck_pack_edits(source_path, game_db, unit_edits)
@@ -474,7 +474,7 @@ def _find_best_target_xp(current_xp: int, available_xp_levels: list, missing_xp_
 def edit_gen_gp_decks(source_path: Any, game_db: Dict[str, Any]) -> None:
     """GameData/Generated/Gameplay/Decks/Decks.ndf."""
     unit_edits = load_unit_edits()
-    unit_edits.update(supply_unit_edits)
+    # unit_edits.update(supply_unit_edits)
     
     deck_pack_edits = _determine_deck_pack_edits(source_path, game_db, unit_edits)
     existing_deck_pack_edits = deck_pack_edits["existing_deck_pack_edits"]
@@ -528,7 +528,7 @@ def _remove_deck_packs_from_multi_decks(source_path: Any) -> None:
 
     # Load unit edits
     unit_edits = load_unit_edits()
-    unit_edits.update(supply_unit_edits)
+    # unit_edits.update(supply_unit_edits)
 
     removals_processed = 0
 

@@ -15,6 +15,8 @@ from .ndf_parsers import (
     parse_infantry_units,
     parse_weapon_descriptors,
     parse_ammunition_properties,
+    parse_shock_bonuses,
+    parse_shock_range,
 )
 from .ui_components import SearchableCombobox
 from .infantry_tab import InfantryTab
@@ -36,6 +38,15 @@ class DPMVisualizerApp:
         self.ammunition_props: Dict[str, Dict[str, Any]] = {}
         self.custom_weapons: Dict[str, Dict[str, Any]] = {}
         
+        # Shock trait bonuses and range (parsed from game files)
+        self.shock_bonuses: Dict[str, float] = {
+            "damage_multiplier": 1.15,
+            "salvo_reload_multiplier": 0.85,
+            "shot_time_multiplier": 0.85,
+            "aim_time_multiplier": 0.85,
+        }
+        self.shock_range: float = 100.0
+        
         # Range modifier tables (shared between tabs, global across profiles)
         self.range_modifier_tables: Dict[str, List[Tuple[float, float]]] = {
             "vanilla": RANGE_MODIFIERS_TABLE.copy()
@@ -56,6 +67,8 @@ class DPMVisualizerApp:
         
         # Store pending custom units to load after dataset cache
         self._pending_custom_units = {}
+        # Store pending UI state to load after tabs are initialized
+        self._pending_ui_state = {}
         
         self.setup_ui()
         
@@ -80,6 +93,9 @@ class DPMVisualizerApp:
         
         # Reload custom units after cache (they may have been overwritten)
         self.reload_custom_units_after_cache()
+        
+        # Load UI state after everything is initialized
+        self.load_ui_state()
         
         # Collect bonus combinations after loading data (needed for veterancy dropdowns)
         if self.infantry_units:
@@ -122,8 +138,8 @@ class DPMVisualizerApp:
         self.notebook = ttk.Notebook(self.root)
         self.notebook.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
         
-        # Bind tab change event to close all dropdowns
-        self.notebook.bind("<<NotebookTabChanged>>", self.on_tab_changed)
+        # Bind tab change event to close all dropdowns and auto-save
+        self.notebook.bind("<<NotebookTabChanged>>", lambda e: [self.on_tab_changed(), self.auto_save_state()])
         
         # Bind window focus events to close dropdowns when window loses focus
         self.root.bind("<FocusOut>", self.on_window_focus_out)
@@ -187,10 +203,23 @@ class DPMVisualizerApp:
             return
         
         try:
+            # Preserve custom units before parsing
+            custom_units_backup = {}
+            for unit_name, unit_info in self.infantry_units.items():
+                if unit_info.get("custom_unit", False):
+                    custom_units_backup[unit_name] = unit_info
+            
             # Parse data
             self.infantry_units = parse_infantry_units(self.mod_path)
             self.weapon_descriptors = parse_weapon_descriptors(self.mod_path)
             self.ammunition_props = parse_ammunition_properties(self.mod_path)
+            
+            # Restore custom units after parsing
+            self.infantry_units.update(custom_units_backup)
+            
+            # Parse shock bonuses and range
+            self.shock_bonuses = parse_shock_bonuses(self.mod_path)
+            self.shock_range = parse_shock_range(self.mod_path)
             
             # Save dataset to cache file
             self.save_dataset_cache()
@@ -218,6 +247,15 @@ class DPMVisualizerApp:
                 # Update load unit dropdown
                 if hasattr(self.infantry_tab, 'load_unit_combo'):
                     self.infantry_tab.load_unit_combo.set_values(self.infantry_tab.unit_display_names)
+                
+                # Reload custom units from user_data.json after loading data
+                # First, load user data to populate _pending_custom_units
+                self.load_user_data()
+                # Then reload custom units
+                if hasattr(self.infantry_tab, 'reload_custom_units_after_cache'):
+                    self.infantry_tab.reload_custom_units_after_cache()
+                elif hasattr(self, 'reload_custom_units_after_cache'):
+                    self.reload_custom_units_after_cache()
             
             # Update Weapons tab UI
             if hasattr(self, 'weapons_tab'):
@@ -256,10 +294,13 @@ class DPMVisualizerApp:
         try:
             # Serialize the data structures
             cache_data = {
+                "cache_version": "2.2",  # Version 2.2: Added suppress_damages support for damage type selection
                 "mod_path": str(self.mod_path),
                 "infantry_units": self._serialize_infantry_units(),
                 "weapon_descriptors": self._serialize_weapon_descriptors(),
-                "ammunition_props": self.ammunition_props,  # Already JSON-serializable
+                "ammunition_props": self.ammunition_props,  # Already JSON-serializable (includes suppress_damages)
+                "shock_bonuses": self.shock_bonuses,
+                "shock_range": self.shock_range,
             }
             
             with open(self.dataset_cache_file, 'w', encoding='utf-8') as f:
@@ -275,6 +316,20 @@ class DPMVisualizerApp:
             # Skip custom units - they're saved in user_data.json
             if unit_info.get("custom_unit", False):
                 continue
+            
+            # Convert any multiplicative bonuses to flat before serializing (safety check)
+            acc_bonuses = unit_info.get("veterancy_accuracy_bonuses", {})
+            if acc_bonuses:
+                converted_bonuses = {}
+                for level, bonus_value in acc_bonuses.items():
+                    if bonus_value > 1.0:
+                        # This looks like a multiplier (e.g., 1.12), convert to flat (0.12)
+                        converted_bonuses[level] = bonus_value - 1.0
+                    else:
+                        # Already flat or zero
+                        converted_bonuses[level] = bonus_value
+                acc_bonuses = converted_bonuses
+            
             serialized[unit_name] = {
                 "is_infantry": unit_info.get("is_infantry", False),
                 "tags": unit_info.get("tags", []),
@@ -283,8 +338,11 @@ class DPMVisualizerApp:
                 "veterancy_pack": unit_info.get("veterancy_pack", "simple_v3"),
                 "available_veterancy_levels": unit_info.get("available_veterancy_levels", [0, 1, 2, 3]),
                 "experience_levels_pack": unit_info.get("experience_levels_pack"),
-                "veterancy_accuracy_bonuses": unit_info.get("veterancy_accuracy_bonuses", {}),
+                "veterancy_accuracy_bonuses": acc_bonuses,
                 "veterancy_reload_speed_multipliers": unit_info.get("veterancy_reload_speed_multipliers", {}),
+                "has_shock_trait": unit_info.get("has_shock_trait", False),
+                "price": unit_info.get("price"),
+                "strength": unit_info.get("strength"),  # Include strength for target strength dropdown
             }
         return serialized
     
@@ -327,6 +385,12 @@ class DPMVisualizerApp:
             with open(self.dataset_cache_file, 'r', encoding='utf-8') as f:
                 cache_data = json.load(f)
             
+            # Check cache version - invalidate old caches that don't have multiplicative->flat conversion
+            cache_version = cache_data.get("cache_version", "1.0")
+            if cache_version < "2.2":
+                print(f"Warning: Cache version {cache_version} is outdated (needs 2.2+). Cache will be regenerated.")
+                return False
+            
             # Restore mod path
             cached_mod_path = cache_data.get("mod_path", "")
             if not cached_mod_path:
@@ -344,20 +408,64 @@ class DPMVisualizerApp:
             # Load cached data if available
             if "infantry_units" in cache_data and "weapon_descriptors" in cache_data and "ammunition_props" in cache_data:
                 try:
+                    # Preserve custom units before overwriting infantry_units
+                    custom_units_backup = {}
+                    for unit_name, unit_info in self.infantry_units.items():
+                        if unit_info.get("custom_unit", False):
+                            custom_units_backup[unit_name] = unit_info
+                    
                     # Deserialize infantry units (bonuses should be included)
                     self.infantry_units = cache_data["infantry_units"]
                     self.weapon_descriptors = cache_data["weapon_descriptors"]
                     self.ammunition_props = cache_data["ammunition_props"]
                     
+                    # Convert any multiplicative bonuses to flat when loading from cache (safety check)
+                    for unit_name, unit_info in self.infantry_units.items():
+                        acc_bonuses = unit_info.get("veterancy_accuracy_bonuses", {})
+                        if acc_bonuses:
+                            converted_bonuses = {}
+                            for level, bonus_value in acc_bonuses.items():
+                                bonus_float = float(bonus_value) if isinstance(bonus_value, (str, int)) else bonus_value
+                                if bonus_float > 1.0:
+                                    # This looks like a multiplier (e.g., 1.12), convert to flat (0.12)
+                                    converted_bonuses[level] = bonus_float - 1.0
+                                else:
+                                    # Already flat or zero
+                                    converted_bonuses[level] = bonus_float
+                            unit_info["veterancy_accuracy_bonuses"] = converted_bonuses
+                    
+                    # Restore custom units after loading cache
+                    self.infantry_units.update(custom_units_backup)
+                    
+                    # Load shock bonuses and range if available
+                    if "shock_bonuses" in cache_data:
+                        self.shock_bonuses = cache_data["shock_bonuses"]
+                    if "shock_range" in cache_data:
+                        self.shock_range = float(cache_data["shock_range"])
+                    
                     # Ensure bonus dictionary keys are integers (JSON loads them as strings)
+                    # Also convert any multiplicative bonuses to flat bonuses (safety check for old cache files)
                     for unit_name, unit_info in self.infantry_units.items():
                         # Convert veterancy_accuracy_bonuses keys from string to int if needed
+                        # Also convert multiplicative values (> 1.0) to flat values
                         if "veterancy_accuracy_bonuses" in unit_info:
                             acc_bonuses = unit_info["veterancy_accuracy_bonuses"]
                             if acc_bonuses:
                                 sample_key = next(iter(acc_bonuses.keys())) if acc_bonuses else None
                                 if sample_key is not None and isinstance(sample_key, str):
-                                    unit_info["veterancy_accuracy_bonuses"] = {int(k): float(v) for k, v in acc_bonuses.items()}
+                                    acc_bonuses = {int(k): float(v) for k, v in acc_bonuses.items()}
+                                
+                                # Convert multiplicative bonuses to flat (detect multipliers > 1.0)
+                                converted_bonuses = {}
+                                for level, bonus_value in acc_bonuses.items():
+                                    if bonus_value > 1.0:
+                                        # This looks like a multiplier (e.g., 1.12), convert to flat (0.12)
+                                        converted_bonuses[level] = bonus_value - 1.0
+                                    else:
+                                        # Already flat or zero
+                                        converted_bonuses[level] = bonus_value
+                                
+                                unit_info["veterancy_accuracy_bonuses"] = converted_bonuses
                         
                         # Convert veterancy_reload_speed_multipliers keys from string to int if needed
                         if "veterancy_reload_speed_multipliers" in unit_info:
@@ -380,16 +488,27 @@ class DPMVisualizerApp:
                             has_bonuses = True
                             bonus_count += 1
                     
-                    print(f"DEBUG: Loaded cache - Found bonuses for {bonus_count} units")
-                    
                     # If bonuses are missing, re-parse to get them
                     if not has_bonuses:
                         print("Warning: Cached data missing veterancy bonuses, re-parsing...")
+                        # Preserve custom units before re-parsing
+                        custom_units_backup = {}
+                        for unit_name, unit_info in self.infantry_units.items():
+                            if unit_info.get("custom_unit", False):
+                                custom_units_backup[unit_name] = unit_info
+                        
                         self.infantry_units = parse_infantry_units(self.mod_path)
                         self.weapon_descriptors = parse_weapon_descriptors(self.mod_path)
                         self.ammunition_props = parse_ammunition_properties(self.mod_path)
+                        
+                        # Restore custom units after re-parsing
+                        self.infantry_units.update(custom_units_backup)
+                        
+                        # Parse shock bonuses and range
+                        self.shock_bonuses = parse_shock_bonuses(self.mod_path)
+                        self.shock_range = parse_shock_range(self.mod_path)
+                        
                         self.save_dataset_cache()
-                        print("DEBUG: Re-parsed data, bonuses should now be available")
                     
                     # Update Infantry tab UI if it exists
                     if hasattr(self, 'infantry_tab'):
@@ -457,9 +576,22 @@ class DPMVisualizerApp:
             
             # If cache doesn't have data, re-parse from NDF files
             try:
+                # Preserve custom units before parsing
+                custom_units_backup = {}
+                for unit_name, unit_info in self.infantry_units.items():
+                    if unit_info.get("custom_unit", False):
+                        custom_units_backup[unit_name] = unit_info
+                
                 self.infantry_units = parse_infantry_units(self.mod_path)
                 self.weapon_descriptors = parse_weapon_descriptors(self.mod_path)
                 self.ammunition_props = parse_ammunition_properties(self.mod_path)
+                
+                # Restore custom units after parsing
+                self.infantry_units.update(custom_units_backup)
+                
+                # Parse shock bonuses and range
+                self.shock_bonuses = parse_shock_bonuses(self.mod_path)
+                self.shock_range = parse_shock_range(self.mod_path)
                 
                 # Save the newly parsed data
                 self.save_dataset_cache()
@@ -568,10 +700,25 @@ class DPMVisualizerApp:
                     if "custom_units" in profile_data:
                         for unit_name, unit_info in profile_data["custom_units"].items():
                             # Ensure bonus dictionary keys are integers
+                            # Also convert any multiplicative bonuses to flat bonuses (safety check)
                             if "veterancy_accuracy_bonuses" in unit_info:
                                 acc_bonuses = unit_info["veterancy_accuracy_bonuses"]
-                                if acc_bonuses and isinstance(next(iter(acc_bonuses.keys())), str):
-                                    unit_info["veterancy_accuracy_bonuses"] = {int(k): float(v) for k, v in acc_bonuses.items()}
+                                if acc_bonuses:
+                                    # Convert keys from string to int if needed
+                                    if isinstance(next(iter(acc_bonuses.keys())), str):
+                                        acc_bonuses = {int(k): float(v) for k, v in acc_bonuses.items()}
+                                    
+                                    # Convert multiplicative bonuses to flat (detect multipliers > 1.0)
+                                    converted_bonuses = {}
+                                    for level, bonus_value in acc_bonuses.items():
+                                        if bonus_value > 1.0:
+                                            # This looks like a multiplier (e.g., 1.12), convert to flat (0.12)
+                                            converted_bonuses[level] = bonus_value - 1.0
+                                        else:
+                                            # Already flat or zero
+                                            converted_bonuses[level] = bonus_value
+                                    
+                                    unit_info["veterancy_accuracy_bonuses"] = converted_bonuses
                             if "veterancy_reload_speed_multipliers" in unit_info:
                                 reload_multipliers = unit_info["veterancy_reload_speed_multipliers"]
                                 if reload_multipliers and isinstance(next(iter(reload_multipliers.keys())), str):
@@ -590,9 +737,16 @@ class DPMVisualizerApp:
                         # Update weapons tab dropdowns
                         if hasattr(self, 'weapons_tab') and hasattr(self.weapons_tab, '_initialize_data'):
                             self.weapons_tab._initialize_data()
+                    
+                    # Store UI state for loading after tabs are initialized
+                    if "ui_state" in data:
+                        self._pending_ui_state = data["ui_state"]
+                    else:
+                        self._pending_ui_state = {}
                         
             except Exception as e:
                 print(f"Error loading user data: {e}")
+                self._pending_ui_state = {}
     
     def reload_custom_units_after_cache(self):
         """Reload custom units from pending data after dataset cache has loaded."""
@@ -622,7 +776,7 @@ class DPMVisualizerApp:
                 self.weapons_tab._initialize_data()
     
     def save_user_data(self):
-        """Save user data to JSON file (range modifier tables, custom units, custom weapons)."""
+        """Save user data to JSON file (range modifier tables, custom units, custom weapons, UI state)."""
         try:
             # Ensure current profile exists
             if self.current_profile not in self.profiles:
@@ -638,12 +792,35 @@ class DPMVisualizerApp:
                 if unit_info.get("custom_unit", False):
                     profile_data["custom_units"][unit_name] = unit_info.copy()
             
+            # Save tab states
+            ui_state = {}
+            if hasattr(self, 'infantry_tab') and hasattr(self.infantry_tab, 'save_tab_state'):
+                ui_state["infantry_tab"] = self.infantry_tab.save_tab_state()
+            if hasattr(self, 'weapons_tab') and hasattr(self.weapons_tab, 'save_tab_state'):
+                ui_state["weapons_tab"] = self.weapons_tab.save_tab_state()
+            
+            # Save window geometry
+            try:
+                geometry = self.root.geometry()
+                ui_state["window_geometry"] = geometry
+            except:
+                pass
+            
+            # Save selected tab
+            try:
+                if hasattr(self, 'notebook'):
+                    selected_tab = self.notebook.index(self.notebook.select())
+                    ui_state["selected_tab"] = selected_tab
+            except:
+                pass
+            
             data = {
                 "current_range_modifier_table": self.current_range_modifier_table_name,
                 "current_profile": self.current_profile,
                 "range_modifier_tables": {},
                 "range_modifier_vet_bonus_type": {},
-                "profiles": {}
+                "profiles": {},
+                "ui_state": ui_state,
             }
             
             # Convert range modifier tables tuples to lists for JSON serialization
@@ -840,6 +1017,54 @@ class DPMVisualizerApp:
         
         # Update dropdown
         self.update_profile_dropdown()
+    
+    def load_ui_state(self):
+        """Load saved UI state after tabs are initialized."""
+        if not hasattr(self, '_pending_ui_state') or not self._pending_ui_state:
+            return
+        
+        ui_state = self._pending_ui_state
+        
+        # Load window geometry
+        if "window_geometry" in ui_state:
+            try:
+                self.root.geometry(ui_state["window_geometry"])
+            except:
+                pass
+        
+        # Load selected tab
+        if "selected_tab" in ui_state and hasattr(self, 'notebook'):
+            try:
+                tab_index = ui_state["selected_tab"]
+                if 0 <= tab_index < self.notebook.index("end"):
+                    self.notebook.select(tab_index)
+            except:
+                pass
+        
+        # Load infantry tab state
+        if "infantry_tab" in ui_state and hasattr(self, 'infantry_tab') and hasattr(self.infantry_tab, 'load_tab_state'):
+            try:
+                self.infantry_tab.load_tab_state(ui_state["infantry_tab"])
+            except Exception as e:
+                print(f"Error loading infantry tab state: {e}")
+        
+        # Load weapons tab state
+        if "weapons_tab" in ui_state and hasattr(self, 'weapons_tab') and hasattr(self.weapons_tab, 'load_tab_state'):
+            try:
+                self.weapons_tab.load_tab_state(ui_state["weapons_tab"])
+            except Exception as e:
+                print(f"Error loading weapons tab state: {e}")
+    
+    def auto_save_state(self):
+        """Auto-save UI state (called periodically or on state changes)."""
+        try:
+            # Only save if tabs are initialized
+            if hasattr(self, 'infantry_tab') and hasattr(self, 'weapons_tab'):
+                # Save user data (which includes UI state)
+                self.save_user_data()
+        except Exception as e:
+            # Silently fail for auto-save to avoid interrupting user
+            pass
     
     def on_closing(self):
         """Handle window close event - save data before closing."""

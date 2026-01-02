@@ -33,16 +33,7 @@ def handle_supply_module(
 
         old_capacity = supply_capacity.v
 
-        # Update supply type based on unit type
-        if is_helo:
-            if edits.get("is_small", False):
-                supply_descr.v = "$/GFX/Weapon/SmallHeloSupply"
-                logger.info(f"Set {unit_name} to SmallHeloSupply")
-            else:
-                supply_descr.v = "$/GFX/Weapon/HeloSupply"
-                logger.info(f"Set {unit_name} to HeloSupply")
-
-        elif "SupplyDescriptor" in edits:
+        if "SupplyDescriptor" in edits:
             supply_descr.v = f"$/GFX/Weapon/{edits['SupplyDescriptor']}"
             logger.info(f"Set {unit_name} supply descriptor to {edits['SupplyDescriptor']}")
 

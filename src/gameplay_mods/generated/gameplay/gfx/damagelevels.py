@@ -26,9 +26,10 @@ def edit_gen_gp_gfx_damagelevels(source_path) -> None:
         if value.v == "0":
             effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_Ajoute_Tag_no_Choc_Move_Morale")
             effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_Ajoute_Tag_Swift_ok")
+            effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_Cohesion_Loss_ok")
 
         elif value.v == "0.1":
-            pass
+            effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_Cohesion_Loss_ok")
 
         elif value.v == "0.25":
             pass
@@ -42,7 +43,7 @@ def edit_gen_gp_gfx_damagelevels(source_path) -> None:
         elif value.v == "0.8":
             effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_Ajoute_Tag_no_Choc_Move_Morale")
 
-    # Insert new damage level to trigger shock sprint at 99% cohesion and prevent at => 40%
+    # Insert new damage level to trigger shock sprint at 99% cohesion and prevent at < 40%
     new_damage_level1 = (
         f'TDamageLevelDescriptor'
         f'('
@@ -55,6 +56,7 @@ def edit_gen_gp_gfx_damagelevels(source_path) -> None:
         f'    ['
         f'        $/GFX/EffectCapacity/UnitEffect_GroundUnit_Cohesion_High,'
         f'        $/GFX/EffectCapacity/UnitEffect_Ajoute_Tag_Swift_ok,'
+        f'        $/GFX/EffectCapacity/UnitEffect_Cohesion_Loss_ok,'
         f'    ]'
         f')'
     )
@@ -76,4 +78,4 @@ def edit_gen_gp_gfx_damagelevels(source_path) -> None:
         f'    ]'
         f')'
     )
-    damage_levels.v.insert(2, new_damage_level2)
+    damage_levels.v.insert(5, new_damage_level2)

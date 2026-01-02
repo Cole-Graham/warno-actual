@@ -173,6 +173,66 @@ DEPLOY_EFFECT = (
     ')'
 )
 
+COHESION_LOSS_OK_EFFECT = (
+    'export UnitEffect_Cohesion_Loss_ok is TEffectsPackDescriptor'
+    '('
+    '    DescriptorId       = GUID:{b72b0cca-de27-4284-b269-dfa441ee4e0d}'
+    "    NameForDebug       = 'Cohesion_Loss_ok'"
+    '    EffectsDescriptors = ['
+    '        TUnitEffectRaiseTagDescriptor'
+    '        ('
+    '            TagListToRaise = ["Cohesion_Loss_ok"]'
+    '        )'
+    '    ]'
+    ')'
+)
+
+MEDIUM_COHESION_LOSS_EFFECT = (
+    'export UnitEffect_Medium_Cohesion_Loss is TEffectsPackDescriptor'
+    '('
+    '    DescriptorId       = GUID:{0ba81a5a-8c30-4501-91c6-b1b3df271393}'
+    "    NameForDebug       = 'Med_Cohesion_Loss'"
+    '    EffectsDescriptors = ['
+    '        TUnitEffectIncreaseDamageTakenDescriptor'
+    '        ('
+    '            ModifierType = ~/ModifierType_Multiplicatif'
+    '            BonusDamage = 1.5'
+    '            DamageType  = EDamageType/Suppress'
+    '        ),'
+    '    ]'
+    ')'
+)
+
+MEDIUM_COHESION_LOSS_CAPACITY = (
+    'export Capacite_Medium_Cohesion_Loss is TCapaciteDescriptor'
+    '('
+    '    DescriptorId     = GUID:{0536d4b4-7512-4519-ae59-46cf0aaef066}'
+    '    Name             = "Medium_Cohesion_Loss"'
+    '    CumulEffect          = ~/CapaciteCumulEffect_jamais'
+    '    Declenchement        = ~/CapaciteDeclenchementType_automatique'
+    '    TargetTeamFilter     = ~/CapaciteTargetFilter_joueur'
+    '    InfluenceMapAlliance = ~/AllianceRelation/vide'
+    '    RangeGRU            = 0'
+    '    CastTime            = 5.00'
+    '    CheckVisibility     = True'
+    '    CanBeCastFromTransport  = True'
+    '    TargetEffect         = ~/UnitEffect_Medium_Cohesion_Loss'
+    '    EffectDuration   = -1.00'
+    '    TargetInBuilding       = True'
+    '    TargetInTransport      = True'
+    '    TargetInSelf           = True'
+    '    TargetMySelf           = True'
+    '    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never'
+    '    DisplayRangeColor      = RGBA[0,0,0,0]'
+    '    DisplayRangeThickness  = 0.00'
+    '    AllowedTargetTags = []'
+    '    ForbiddenTargetTags = []'
+    '    Conditions = ['
+    '        ~/ConditionInMovement,'
+    '    ]'
+    ')'
+)
+
 NO_CHOC_MOVE_CAPACITY = (
     'export Capacite_no_Choc_Move is TCapaciteDescriptor'
     '('
@@ -402,7 +462,7 @@ DEPLOY_CAPACITY = (
     '    TargetTeamFilter     = ~/CapaciteTargetFilter_joueur'
     '    InfluenceMapAlliance = ~/AllianceRelation/vide'
     '    RangeGRU            = 0'
-    '    CastTime            = 0.00'
+    '    CastTime            = 3.00'
     '    CheckVisibility     = True'
     '    CanBeCastFromTransport  = False'
     '    TargetEffect         = ~/UnitEffect_Deploy'
@@ -432,7 +492,7 @@ DEPLOY_OK_CAPACITY = (
     '    TargetTeamFilter     = ~/CapaciteTargetFilter_joueur'
     '    InfluenceMapAlliance = ~/AllianceRelation/vide'
     '    RangeGRU            = 0'
-    '    CastTime            = 18.00'
+    '    CastTime            = 15.00'
     '    CheckVisibility     = True'
     '    CanBeCastFromTransport  = False'
     '    TargetEffect         = ~/UnitEffect_Ajoute_Tag_Deploy_ok'
@@ -541,6 +601,15 @@ CONDITIONS = [
         '('
         '    DescriptorId    = GUID:{37691a2f-3922-4ddb-bba8-ca8a167e675c}'
         '    Tag             = "Choc_Move_active"'
+        ')'
+    ),
+    
+    # Cohesion_Higher_Than_80
+    (
+        'ConditionTagRaisedInUnit_Cohesion_Higher_Than_80 is TConditionTagRaisedInUnit'
+        '('
+        '    DescriptorId    = GUID:{74702d0d-af52-473a-90dc-ca8d53f86cb8}'
+        '    Tag             = "Cohesion_Loss_ok"'
         ')'
     ),
 ]

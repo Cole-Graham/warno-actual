@@ -228,6 +228,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "PhysicalDamages": 0.20,
                 "SuppressDamages": 25,
                 "DisplaySalveAccuracy": False,
+                "AimingTime": 1.2,
                 "TimeBetweenTwoSalvos": 1.0,
                 "NbTirParSalves": 8,
                 "AffichageMunitionParSalve": 8,
@@ -638,6 +639,9 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "SupplyCost": 2.0,
+        "WeaponDescriptor": {
+            "Salves": 48,
+        },
     },
 
     ("AutoCanon_AP_23mm_Bitube_Gsh23L", "autocannon", None, False): { # 4
@@ -853,6 +857,9 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "SupplyCost": 15.0,
             },
         },
+        "WeaponDescriptor": {
+            "Salves": 13,
+        },
     },
 
     ("Gatling_M61_Vulcan_20mm_late", "autocannon", None, False): { # 317
@@ -874,6 +881,9 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 1.2,
                 "SupplyCost": 15.0,
             },
+        },
+        "WeaponDescriptor": {
+            "Salves": 13,
         },
     },
 

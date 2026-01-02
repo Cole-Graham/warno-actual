@@ -242,9 +242,14 @@ def parse_experience_levels(mod_src_path: Path) -> Dict[str, Dict[int, List[str]
 def parse_veterancy_effect_bonuses(mod_src_path: Path) -> Dict[str, Dict[str, float]]:
     """Parse veterancy bonuses from EffetsSurUnite.ndf.
     
+    Converts multiplicative accuracy bonuses to equivalent flat bonuses for application compatibility.
+    The application can then apply them as either multiplicative or flat based on user settings.
+    
     Returns:
         Dictionary mapping effect_name -> {"accuracy_bonus": float, "reload_speed_multiplier": float}
-        - accuracy_bonus: as decimal (e.g., 0.12 for 12%)
+        - accuracy_bonus: as decimal flat bonus (e.g., 0.12 for 12%)
+          - If ModifierType_Multiplicatif: converts multiplier (e.g., 1.12) to flat bonus (0.12)
+          - If ModifierType_Additionnel: uses value directly as percentage (e.g., 12 -> 0.12)
         - reload_speed_multiplier: multiplier for time between salvos (e.g., 0.8 means 20% faster)
     """
     ndf_path = "GameData/Generated/Gameplay/Gfx/EffetsSurUnite.ndf"
@@ -281,12 +286,49 @@ def parse_veterancy_effect_bonuses(mod_src_path: Path) -> Dict[str, Dict[str, fl
                 # Look for TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor (accuracy bonus)
                 if effect_type == "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor":
                     modifier_value = effect.v.by_m("ModifierValue", None)
+                    modifier_type = effect.v.by_m("ModifierType", None)
                     if modifier_value:
                         try:
-                            # ModifierValue is a percentage (e.g., 12 means 12%)
-                            # ModifierType_Additionnel means it's added directly
-                            accuracy_bonus = float(modifier_value.v) / 100.0
-                        except (ValueError, TypeError):
+                            value = float(modifier_value.v)
+                            mod_type = strip_quotes(modifier_type.v) if modifier_type else None
+                            
+                            if mod_type == "ModifierType_Multiplicatif":
+                                # Multiplicative bonus: convert to equivalent flat bonus
+                                # When ModifierType is Multiplicatif, ModifierValue is a multiplier
+                                # Example: if ModifierValue is 1.0105, that means multiply by 1.0105 (1.05% increase)
+                                # We convert to flat: (multiplier - 1.0) = 0.0105
+                                # For storage, we store this as a decimal flat bonus (0.0105 for 1.05%)
+                                if value > 1.0:
+                                    # Multiplier > 1.0: convert to flat bonus
+                                    accuracy_bonus = value - 1.0
+                                elif value <= 0.0:
+                                    accuracy_bonus = 0.0
+                                else:
+                                    # Value between 0 and 1: this shouldn't happen for multiplicative bonuses
+                                    # But if it does, assume it's already a flat bonus (though this is unusual)
+                                    accuracy_bonus = value
+                            elif mod_type == "ModifierType_Additionnel":
+                                # Flat bonus: ModifierValue is a percentage (e.g., 12 means 12%)
+                                # ModifierType_Additionnel means it's added directly
+                                accuracy_bonus = value / 100.0
+                            elif mod_type is None:
+                                # ModifierType is None - check if value looks like a multiplier
+                                if value > 1.0:
+                                    # Looks like a multiplier (e.g., 1.0105), convert to flat
+                                    accuracy_bonus = value - 1.0
+                                else:
+                                    # Assume it's a percentage (e.g., 1.05 means 1.05%)
+                                    accuracy_bonus = value / 100.0
+                            else:
+                                # Unknown modifier type - check if value looks like a multiplier
+                                if value > 1.0:
+                                    # Looks like a multiplier, convert to flat
+                                    accuracy_bonus = value - 1.0
+                                else:
+                                    # Assume it's a percentage
+                                    accuracy_bonus = value / 100.0
+                        except (ValueError, TypeError) as e:
+                            print(f"Warning: Failed to parse accuracy bonus for {effect_name}: {e}")
                             pass
                 
                 # Look for TUnitEffectAlterWeaponTempsEntreDeuxSalvesDescriptor (reload speed bonus)
@@ -303,7 +345,7 @@ def parse_veterancy_effect_bonuses(mod_src_path: Path) -> Dict[str, Dict[str, fl
             # Store the bonuses if there are any
             if accuracy_bonus > 0 or reload_speed_multiplier != 1.0:
                 effect_bonuses[effect_name] = {
-                    "accuracy_bonus": accuracy_bonus,
+                    "accuracy_bonus": round(accuracy_bonus, 2),
                     "reload_speed_multiplier": reload_speed_multiplier,
                 }
                 
@@ -311,6 +353,138 @@ def parse_veterancy_effect_bonuses(mod_src_path: Path) -> Dict[str, Dict[str, fl
         print(f"Warning: Failed to parse veterancy bonuses from EffetsSurUnite: {e}")
     
     return effect_bonuses
+
+
+def parse_shock_bonuses(mod_src_path: Path) -> Dict[str, float]:
+    """Parse shock bonuses from EffetsSurUnite.ndf (UnitEffect_Choc).
+    
+    Returns:
+        Dictionary with shock bonus values:
+        - "damage_multiplier": float (e.g., 1.15 for +15%)
+        - "salvo_reload_multiplier": float (e.g., 0.85 for 15% faster)
+        - "shot_time_multiplier": float (e.g., 0.85 for 15% faster)
+        - "aim_time_multiplier": float (e.g., 0.85 for 15% faster)
+    """
+    ndf_path = "GameData/Generated/Gameplay/Gfx/EffetsSurUnite.ndf"
+    shock_bonuses: Dict[str, float] = {
+        "damage_multiplier": 1.15,  # Default fallback values
+        "salvo_reload_multiplier": 0.85,
+        "shot_time_multiplier": 0.85,
+        "aim_time_multiplier": 0.85,
+    }
+    
+    try:
+        mod = ndf.Mod(str(mod_src_path), "None")
+        parse_source = mod.parse_src(ndf_path)
+        
+        for effect_row in parse_source:
+            if not hasattr(effect_row, "namespace"):
+                continue
+            
+            effect_name = effect_row.namespace
+            
+            # Look for UnitEffect_Choc
+            if effect_name != "UnitEffect_Choc":
+                continue
+            
+            # Parse effects to find bonuses
+            effects_list = effect_row.v.by_m("EffectsDescriptors", None)
+            if not effects_list:
+                continue
+            
+            for effect in effects_list.v:
+                if not isinstance(effect.v, ndf.model.Object):
+                    continue
+                
+                effect_type = effect.v.type
+                modifier_value = effect.v.by_m("ModifierValue", None)
+                modifier_type = effect.v.by_m("ModifierType", None)
+                
+                if not modifier_value:
+                    continue
+                
+                try:
+                    value = float(modifier_value.v)
+                    mod_type = strip_quotes(modifier_type.v) if modifier_type else None
+                    
+                    # TUnitEffectIncreaseWeaponPhysicalDamagesDescriptor with ModifierType_Pourcentage
+                    if effect_type == "TUnitEffectIncreaseWeaponPhysicalDamagesDescriptor":
+                        if mod_type == "ModifierType_Pourcentage":
+                            # Value is percentage (e.g., 15 means +15%), convert to multiplier
+                            shock_bonuses["damage_multiplier"] = 1.0 + (value / 100.0)
+                    
+                    # TUnitEffectAlterWeaponTempsEntreDeuxSalvesDescriptor with ModifierType_Multiplicatif
+                    elif effect_type == "TUnitEffectAlterWeaponTempsEntreDeuxSalvesDescriptor":
+                        if mod_type == "ModifierType_Multiplicatif":
+                            # Value is multiplier (e.g., 0.85 means 15% faster)
+                            shock_bonuses["salvo_reload_multiplier"] = value
+                    
+                    # TUnitEffectAlterWeaponTempsEntreDeuxTirsDescriptor with ModifierType_Pourcentage
+                    elif effect_type == "TUnitEffectAlterWeaponTempsEntreDeuxTirsDescriptor":
+                        if mod_type == "ModifierType_Pourcentage":
+                            # Value is percentage change (e.g., -15 means 15% faster)
+                            # Convert to multiplier: if -15%, then multiplier = 1 - 0.15 = 0.85
+                            if value < 0:
+                                shock_bonuses["shot_time_multiplier"] = 1.0 + (value / 100.0)
+                            else:
+                                shock_bonuses["shot_time_multiplier"] = 1.0 + (value / 100.0)
+                    
+                    # TBonusWeaponAimtimeEffectDescriptor with ModifierType_Multiplicatif
+                    elif effect_type == "TBonusWeaponAimtimeEffectDescriptor":
+                        if mod_type == "ModifierType_Multiplicatif":
+                            # Value is multiplier (e.g., 0.85 means 15% faster aiming)
+                            shock_bonuses["aim_time_multiplier"] = value
+                            
+                except (ValueError, TypeError):
+                    pass
+            
+            # Found UnitEffect_Choc, break
+            break
+                
+    except Exception as e:
+        print(f"Warning: Failed to parse shock bonuses from EffetsSurUnite: {e}")
+    
+    return shock_bonuses
+
+
+def parse_shock_range(mod_src_path: Path) -> float:
+    """Parse shock range from CapaciteList.ndf (Capacite_Choc RangeGRU).
+    
+    Returns:
+        Shock range in meters (default 100.0 if not found)
+    """
+    ndf_path = "GameData/Generated/Gameplay/Gfx/CapaciteList.ndf"
+    shock_range = 100.0  # Default fallback value
+    
+    try:
+        mod = ndf.Mod(str(mod_src_path), "None")
+        parse_source = mod.parse_src(ndf_path)
+        
+        for capacite_row in parse_source:
+            if not hasattr(capacite_row, "namespace"):
+                continue
+            
+            capacite_name = capacite_row.namespace
+            
+            # Look for Capacite_Choc
+            if capacite_name != "Capacite_Choc":
+                continue
+            
+            # Get RangeGRU value
+            range_gru = capacite_row.v.by_m("RangeGRU", None)
+            if range_gru:
+                try:
+                    shock_range = float(range_gru.v)
+                except (ValueError, TypeError):
+                    pass
+            
+            # Found Capacite_Choc, break
+            break
+                
+    except Exception as e:
+        print(f"Warning: Failed to parse shock range from CapaciteList: {e}")
+    
+    return shock_range
 
 
 def apply_veterancy_bonuses_to_units(
@@ -360,6 +534,9 @@ def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
         "display_name": None,
         "veterancy_pack": "simple_v3",  # Default to simple_v3 for infantry
         "available_veterancy_levels": [0, 1, 2, 3],  # Default 4 levels
+        "has_shock_trait": False,  # Shock trait (_choc) from SpecialtiesList
+        "price": None,  # Command points price from TProductionModuleDescriptor
+        "strength": None,  # Unit strength (HP) from TBaseDamageModuleDescriptor
     }
     
     try:
@@ -385,6 +562,13 @@ def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
                 unit_role = module.v.by_m("UnitRole", None)
                 if unit_role:
                     unit_info["unit_role"] = strip_quotes(unit_role.v)
+                
+                # Extract SpecialtiesList to check for Shock trait (_choc)
+                specialties_list = module.v.by_m("SpecialtiesList", None)
+                if specialties_list:
+                    specialties = [strip_quotes(spec.v) for spec in specialties_list.v]
+                    if '_choc' in specialties:
+                        unit_info["has_shock_trait"] = True
             
             # Check for ExperienceLevelsPack reference
             elif module_type == "TExperienceModuleDescriptor":
@@ -408,6 +592,32 @@ def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
                         unit_info["veterancy_pack"] = "avion"
                     else:
                         unit_info["veterancy_pack"] = "simple_v3"
+            
+            # Extract strength from TBaseDamageModuleDescriptor
+            elif module_type == "TBaseDamageModuleDescriptor":
+                max_damages = module.v.by_m("MaxPhysicalDamages", None)
+                if max_damages:
+                    try:
+                        unit_info["strength"] = int(max_damages.v)
+                    except (ValueError, TypeError, AttributeError):
+                        pass
+            
+            # Extract price from TProductionModuleDescriptor
+            elif module_type == "TProductionModuleDescriptor":
+                production_resources = module.v.by_m("ProductionRessourcesNeeded", None)
+                if production_resources:
+                    # ProductionRessourcesNeeded is a MAP
+                    # Look for Resource_CommandPoints entry using by_k()
+                    try:
+                        cmd_points_key = "$/GFX/Resources/Resource_CommandPoints"
+                        cmd_points_value = production_resources.v.by_k(cmd_points_key)
+                        if cmd_points_value:
+                            try:
+                                unit_info["price"] = int(cmd_points_value.v)
+                            except (ValueError, TypeError, AttributeError):
+                                pass
+                    except (AttributeError, TypeError, KeyError):
+                        pass
         
         # Determine veterancy pack from tags if not found in module
         if unit_info["veterancy_pack"] == "simple_v3":
@@ -589,6 +799,10 @@ def parse_ammunition_properties(mod_src_path: Path) -> Dict[str, Dict[str, Any]]
                 physical_damages = membr("PhysicalDamages", None)
                 if physical_damages:
                     properties["physical_damages"] = float(physical_damages.v)
+                
+                suppress_damages = membr("SuppressDamages", None)
+                if suppress_damages:
+                    properties["suppress_damages"] = float(suppress_damages.v)
                 
                 nb_tir_par_salves = membr("NbTirParSalves", None)
                 if nb_tir_par_salves:

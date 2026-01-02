@@ -109,5 +109,17 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("DCA_1_canon_S60_57mm", "DCA", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "MaximumRangeGRU": 1575,
+                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 2450,
+                "TimeBetweenTwoSalvos": 1.8,
+                "SupplyCost": 4.0,
+            },
+        },
+    },
 }
 # fmt: on

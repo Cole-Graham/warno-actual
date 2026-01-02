@@ -55,12 +55,18 @@ def handle_unitui_module(
     if "SupplyDescriptor" in edits:
         if "RunnerSupply" in edits["SupplyDescriptor"]:
             specialties_list.v.add("'_supply_runner'")
+        elif "RunnerHeloSupply" in edits["SupplyDescriptor"]:
+            specialties_list.v.add("'_supply_runner_helo'")
         elif "SquadSupply" in edits["SupplyDescriptor"]:
             specialties_list.v.add("'_supply_squad'")
         elif "PrimarySupply" in edits["SupplyDescriptor"]:
             specialties_list.v.add("'_supply_primary'")
+        elif "PrimaryHeloSupply" in edits["SupplyDescriptor"]:
+            specialties_list.v.add("'_supply_primary_helo'")
         elif "DvisionalSupply" in edits["SupplyDescriptor"]:
             specialties_list.v.add("'_supply_divisional'")
+        elif "DvisionalHeloSupply" in edits["SupplyDescriptor"]:
+            specialties_list.v.add("'_supply_divisional_helo'")
 
     if "InfoPanelConfig" in edits:
         module.v.by_m("InfoPanelConfigurationToken").v = f"'{edits['InfoPanelConfig']}'"

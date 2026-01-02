@@ -133,6 +133,17 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("Howz_Canon_M30_Howitzer_122mm", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 3.3,
+                "SuppressDamages": 281,
+                "RadiusSplashPhysicalDamagesGRU": 122,
+                "RadiusSplashSuppressDamagesGRU": 163,
+            },
+        },
+    },
 
     ("Howz_Canon_D30_Howitzer_122mm", "howitzer", None, False): { # 393
         "Ammunition": {
@@ -157,6 +168,17 @@ weapons: Dict[WeaponKey, WeaponData] = {
     },
 
     ("Howz_Canon_D22_Howitzer_152mm_late", "howitzer", None, False): { # 389
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 4.2,
+                "SuppressDamages": 350,
+                "RadiusSplashPhysicalDamagesGRU": 152,
+                "RadiusSplashSuppressDamagesGRU": 203,
+            },
+        },
+    },
+    
+    ("Howz_Canon_D20_towed_152mm", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
                 "PhysicalDamages": 4.2,

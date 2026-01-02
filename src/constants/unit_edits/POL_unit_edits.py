@@ -66,7 +66,10 @@ pol_unit_edits = {
         #     },
         # },
         "max_speed": 4,
-        "availability": [6, 4, 0, 0],
+        "availability": [9, 7, 0, 0],
+        "capacities": {
+            "add_capacities": ["Deploy", "Deploy_ok"],
+        },
     },
     "DCA_ZUR_23_2S_JOD_Para_POL": {  # Desant. ZUR-23-2S Jod
         "CommandPoints": 30,
@@ -92,9 +95,29 @@ pol_unit_edits = {
         },
         "UpgradeFromUnit": "DCA_ZU_23_2_Para_POL",
     },
+    "UAZ_469_CMD_POL": {  # WD-43
+        "CommandPoints": 145,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "GameName": {
+            "display": "#CMD WD-43",
+        },
+        "availability": [0, 4, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'leader_sov'",],
+            "remove_specs": ["'_leader'"],
+        },
+    },
     "UAZ_469_CMD_Para_POL": {  # Desant. WD-43
         "GameName": {
             "display": "#CMD SPADO. WD-43",
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'leader_sov'",],
+            "remove_specs": ["'_leader'"],
         },
     },
     "BMP_1_CMD_POL": {  # BWP-1K3
@@ -105,6 +128,10 @@ pol_unit_edits = {
             },
         },
         "availability": [0, 0, 3, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'leader_sov'",],
+            "remove_specs": ["'_leader'"],
+        },
         "UpgradeFromUnit": None,
     },
     "BRDM_2_CMD_POL": {  # BRDM-2U
@@ -115,6 +142,10 @@ pol_unit_edits = {
                 "cards": 2,
             },
         },
+        "SpecialtiesList": {
+            "add_specs": ["'leader_sov'",],
+            "remove_specs": ["'_leader'"],
+        },
         "availability": [0, 3, 0, 0],
     },
     "BRDM_2_CMD_R5_POL": {  # BRDM-2 R-5
@@ -123,6 +154,10 @@ pol_unit_edits = {
             "default": {
                 "cards": 2,
             },
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'leader_sov'",],
+            "remove_specs": ["'_leader'"],
         },
         "availability": [0, 0, 3, 0],
     },
@@ -134,30 +169,25 @@ pol_unit_edits = {
                 "cards": 2,
             },
         },
+        "SpecialtiesList": {
+            "add_specs": ["'leader_sov'",],
+            "remove_specs": ["'_leader'"],
+        },
         "availability": [0, 0, 3, 0],
     },
     "Mi_2_CMD_POL": {  # Mi-2D PRZETACZNIK
         "GameName": {"display": "#CMD Mi-2D PRZEŁĄCZNIK"},
-        "CommandPoints": 145,
+        "CommandPoints": 115,
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
+        "SpecialtiesList": {
+            "add_specs": ["'leader_sov'",],
+            "remove_specs": ["'_leader'"],
+        },
         "availability": [0, 3, 0, 0],
-    },
-    "GAZ_66B_supply_POL": {  # GAZ-66B Zaop.
-        "GameName": {
-            "display": "SPADO. GAZ-66B ZAOP.",
-        },
-    },
-    "UAZ_469_supply_Para_POL": {  # Desant. UAZ-469 Zaop.
-        "GameName": {
-            "display": "SPADO. UAZ-469 ZAOP.",
-        },
-    },
-    "Star_266_supply_POL": {  # Star 266 Zaop.
-        "UpgradeFromUnit": "GAZ_66B_supply_POL",
     },
     "BAV_485_Supply_POL": {  # BAW-485
         "UpgradeFromUnit": None,
@@ -217,7 +247,7 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "MMG_PKM_7_62mm": 18,
+                "MMG_PKM_7_62mm": 30,
             },
             "equipmentchanges": {
                 "replace": [("RocketInf_RPG76_Komar", "MMG_PKM_7_62mm", "RocketInf_RPG76_Komar", "MMG_PKM_7_62mm")],
@@ -234,11 +264,11 @@ pol_unit_edits = {
         "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
-    "Rifles_CMD_POL": {  # ????
-        "CommandPoints": 35,
+    "Rifles_CMD_POL": {
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDRSOV PIECHOTA ZMECH. LDR.",
+            "display": "#LDRSOV PIECHOTA LDR.",
         },
         "TagSet": {
             "overwrite_all": [
@@ -266,16 +296,17 @@ pol_unit_edits = {
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "Divisions": {
             "default": {
-                "cards": 3,
+                "cards": 1,
             },
             "POL_4_Zmechanizowana": {
                 "Transports": ["Star_266_POL", "OT_64_SKOT_2A_POL"],
             },
         },
-        "availability": [0, 0, 7, 5],
+        "availability": [0, 7, 5, 0],
         "max_speed": 26,
         "WeaponDescriptor": {
             "Salves": {
+                "FM_kbk_AK": 9,
                 "RocketInf_RPG76_Komar": 7,
             },
         },
@@ -305,15 +336,6 @@ pol_unit_edits = {
             ],
         },
         "strength": 7,
-        "WeaponAssignment": [
-            (0, [1,]),
-            (1, [0,]),
-            (2, [0,]),
-            (3, [0,]),
-            (4, [0,]),
-            (5, [0, 3,]),
-            (6, [0, 2,]),
-        ],
         "TransportedTexture": "UseInGame_Transport_REGINF",
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
@@ -335,10 +357,11 @@ pol_unit_edits = {
                 "Transports": ["Star_266_POL", "BMP_1_SP2_POL", "BMP_2_POL"],
             },
         },
-        "availability": [0, 0, 7, 5],
+        "availability": [0, 7, 5, 0],
         "max_speed": 26,
         "WeaponDescriptor": {
             "Salves": {
+                "FM_kbk_AK": 9,
                 "RocketInf_RPG76_Komar": 7,
             },
         },
@@ -349,7 +372,7 @@ pol_unit_edits = {
         "remove_zone_capture": None,
     },
     "Engineers_POL": {  # Saperzy
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
@@ -367,7 +390,7 @@ pol_unit_edits = {
         # "WeaponDescriptor": {
         #     "Salves": {
         #         "FM_AK_74": 11,
-        #         "MMG_PKM_7_62mm": 18,
+        #         "MMG_PKM_7_62mm": 30,
         #         "Grenade_Satchel_Charge": 5,
         #     },
         # },
@@ -377,7 +400,7 @@ pol_unit_edits = {
         # RPG-76 Komar x4
     },
     "Engineers_Flam_POL": {  # Saperzy Szturmowi
-        "CommandPoints": 45,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
@@ -403,14 +426,17 @@ pol_unit_edits = {
         # RPO Rys x6
     },
     "Groupe_AT_POL": {  # Druzyna PPanc
-        "CommandPoints": 40,
+        "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
+        "GameName": {
+            "display": "DRUŻYNA PPANC.",
+        },
         "Divisions": {
             "add": ["POL_20_Pancerna"],
             "is_transported": True,
             "needs_transport": True,
             "POL_20_Pancerna": {
-                "Transports": ["Star_266_POL", "MTLB_trans_POL", "BMP_1_SP2_POL", "BMP_2_POL"],
+                "Transports": ["Star_266_POL", "MTLB_trans_POL", "BMP_1_SP2_POL"],
                 "cards": 2,
             },
         },
@@ -428,9 +454,6 @@ pol_unit_edits = {
                 },
             },
         },
-        "GameName": {
-            "display": "DRUŻYNA PPANC.",
-        },
         # 7x kbk AKM
         # 2x RPG-7VL x6 (panzerjager with VL instead of VR)
     },
@@ -440,13 +463,40 @@ pol_unit_edits = {
             "display": "SPADO. DRUŻYNA PPANC.",
         },
     },
-    # "Rifles_POL": {  # Piechota
-    #
-    # },
+    "Rifles_POL": {  # Piechota
+        "CommandPoints": 30,
+        "armor": "Infantry_armor_reference",
+        "Divisions": {
+            "default": {
+                "cards": 3,
+            },
+        },
+        "availability": [10, 7, 0, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_kbk_AK": 9,
+            },
+        },
+    },
     "Rifles_HMG_POL": {  # Piechota (SVD)
+        "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "PIECHOTA [SVD]",
+        },
+        "availability": [7, 5, 0, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_kbk_AK": 9,
+            },
         },
     },
     "MotRifles_POL": {  # Piechota Zmech
@@ -454,7 +504,7 @@ pol_unit_edits = {
         "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
-                "cards": 4,
+                "cards": 3,
             },
         },
         "availability": [10, 7, 0, 0],
@@ -463,16 +513,6 @@ pol_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
-        "WeaponAssignment": [
-            (0, [1,]),
-            (1, [0,]),
-            (2, [0,]),
-            (3, [0,]),
-            (4, [0,]),
-            (5, [0,]),
-            (6, [0,]),
-            (7, [0, 2,]),
-        ],
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "quantity": {
@@ -492,10 +532,10 @@ pol_unit_edits = {
         "GameName": {
             "display": "PIECHOTA ZMECH [SVD]",
         },
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "Divisions": {
             "default": {
-                "cards": 2,
+                "cards": 1, # Limit BWP-2 since we added BWP-2 to ATGMs and Leaders
             },
         },
         "availability": [10, 7, 0, 0],
@@ -555,6 +595,15 @@ pol_unit_edits = {
             "display": "SPADO. SAPERZY LDR.",
         },
     },
+    "Commandos_POL": {  # Komandosi
+        "CommandPoints": 35,
+        "armor": "Infantry_armor_reference",
+        "availability": [0, 0, 8, 6],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+    },
     "Commandos_Para_POL": {  # Desant. Komandosi
         "armor": "Infantry_armor_reference",
         "GameName": {
@@ -567,7 +616,7 @@ pol_unit_edits = {
     #     },
     # },
     "WSW_POL": {  # WSW
-        "CommandPoints": 30,
+        "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
@@ -698,12 +747,13 @@ pol_unit_edits = {
     "Atteam_Fagot_POL": {  # PPK Fagot
         "CommandPoints": 30,
         "max_speed": 20,
+        "availability": [9, 7, 5, 0],
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
         "Divisions": {
             "POL_20_Pancerna": {
-                "Transports": ["UAZ_469_trans_POL", "MTLB_trans_POL", "BMP_1_SP2_POL"],
+                "Transports": ["UAZ_469_trans_POL", "MTLB_trans_POL", "BMP_1_SP2_POL", "BMP_2_POL"],
             },
         },
         "WeaponDescriptor": {
@@ -890,25 +940,50 @@ pol_unit_edits = {
         },
     },
     "Howz_M30_122mm_POL": {  # H wz. 1938/85 122mm
-        "CommandPoints": 65,
+        "CommandPoints": 75,
         "availability": [5, 4, 3, 0],
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
     },
     "Howz_ML20_152mm_POL": {  # AH wz. 1937/85 152mm
-        "CommandPoints": 110,
+        "CommandPoints": 100,
         "availability": [3, 2, 0, 0],
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
         "UpgradeFromUnit": "Howz_M30_122mm_POL",
     },
     "BM21_Grad_POL": {  # BM-21 Grad
-        # "CommandPoints": 175,
         "CommandPoints": "BM21_Grad_SOV",
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "availability": [3, 2, 0, 0],
+        "availability": "BM21_Grad_SOV",
     },
-    "RM70_85_POL": {"GameName": {"display": "RM wz. 70/85"}},  # RM wz. 70/85
+    "RM70_85_POL": {
+        "CommandPoints": "MFRW_RM70_DDR",
+        "GameName": {
+            "display": "RM wz. 70/85"
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("RocketArt_M21OF_122mm", "RocketArt_M21OF_122mm_RM70")],
+            },
+        },
+        "availability": "MFRW_RM70_DDR",
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+    },
     "2S1_POL": {  # 2S1 Gozdzik
         "CommandPoints": "2S1_Gvozdika_SOV",
         "availability": "2S1_Gvozdika_SOV",
@@ -988,6 +1063,40 @@ pol_unit_edits = {
         "availability": [0, 0, 6, 0],
         "remove_zone_capture": None,
     },
+    "T55AM_Merida_CMD_POL": {  # T-55AM Merida LDR
+        "CommandPoints": 125,
+        "GameName": {
+            "display": "#LDRSOV T-55AD-1M Merida LDR.",
+            "token": "POLT55AMLD",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "GroundUnits",
+                "UNITE_T55AM_Merida_CMD_POL",
+                "Unite",
+            ],
+        },
+        "IdentifiedTextures": ["Texture_RTS_H_Armor", "Texture_Armor"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "UnitRole": "armor",
+        "SpecialtiesList": {
+            "overwrite_all": [
+                "leader_sov",
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Armor",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 0, 4, 0],
+        "remove_zone_capture": None,
+    },
     "T72M_CMD_POL": {  # T-72MD LDR
         "CommandPoints": 160,
         "GameName": {
@@ -1058,12 +1167,20 @@ pol_unit_edits = {
         "remove_zone_capture": None,
     },
     "T55A_POL": {  # T-55A
-        "CommandPoints": 65,
+        "CommandPoints": 70,
         "availability": [10, 7, 0, 0],
     },
     "T55AS_POL": {  # T-55AS coffin launcher
         "CommandPoints": 85,
-        "availability": [4, 3, 0, 0],
+        "availability": [0, 4, 3, 0],
+    },
+    "T55AM_Merida_POL": {  # T-55AM Merida
+        "CommandPoints": 110,
+        "availability": [0, 8, 6, 0],
+    },
+    "T55AMS_Merida_POL": {  # T-55AMS Merida coffin launcher
+        "CommandPoints": 140,
+        "availability": [0, 3, 2, 0],
     },
     "T72M_POL": {  # T-72M
         "CommandPoints": 140,
@@ -1097,6 +1214,7 @@ pol_unit_edits = {
                 "ATGM_9K111M_Faktoriya": 6,
             },
         },
+        "availability": [10, 7, 0, 0],
     },
     "UAZ_469_Fagot_Para_POL": {  # Desant./Spado. UAZ-469 Fagot/Faktoria
         "CommandPoints": 35,
@@ -1109,15 +1227,21 @@ pol_unit_edits = {
             },
         },
     },
+    "AT_D48_85mm_POL": {  # D-48 AT 85mm
+        "CommandPoints": 40,
+        "availability": [9, 7, 5, 0],
+    },
     "BRDM_2_Konkurs_POL": {  # BRDM-2 Konkurs
         "CommandPoints": "BRDM_2_Konkurs_SOV",
-        "strength": 8,
-        "stealth": 1.5,
+        "strength": "BRDM_2_Konkurs_SOV",
+        "stealth": "BRDM_2_Konkurs_SOV",
+        "availability": "BRDM_2_Konkurs_SOV",
     },
     "BRDM_2_Malyu_P_POL": {  # BRDM-2 Malutka-P
         "CommandPoints": 40,
         "strength": 8,
         "stealth": 1.5,
+        "availability": [10, 7, 0, 0],
     },
     #   tank tab transports
     "OT_64_SKOT_2_POL": {  # SKOT-2
@@ -1129,7 +1253,6 @@ pol_unit_edits = {
         "strength": 10,
         "SpecialtiesList": {
             "overwrite_all": [
-                "transport",
                 "_transport2",
                 "_amphibie",
             ],
@@ -1137,10 +1260,10 @@ pol_unit_edits = {
         "is_prime_mover": True,
     },
     "OT_64_SKOT_2AM_POL": {  # SKOT-2AM
+        "CommandPoints": 30,
         "strength": 10,
         "SpecialtiesList": {
             "overwrite_all": [
-                "transport",
                 "_transport2",
                 "_amphibie",
             ],
@@ -1148,10 +1271,10 @@ pol_unit_edits = {
         "is_prime_mover": True,
     },
     "OT_64_SKOT_2P_POL": {  # SKOT-2AP
+        "CommandPoints": 30,
         "strength": 10,
         "SpecialtiesList": {
             "overwrite_all": [
-                "transport",
                 "_transport2",
                 "_amphibie",
             ],
@@ -1179,7 +1302,7 @@ pol_unit_edits = {
             "display": "#RECO2 ZWIADOWCY ZMOT.",
         },
         "armor": "Infantry_armor_reference",
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "availability": [6, 4, 0, 0],
         "max_speed": 26,
         "strength": 8,
@@ -1209,7 +1332,7 @@ pol_unit_edits = {
             "display": "#RECO2 SAPERZY ZWIAD.",
         },
         "armor": "Infantry_armor_reference",
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1313,6 +1436,7 @@ pol_unit_edits = {
         "armor": "Infantry_armor_reference",
         # "strength": 5,
         "max_speed": 26,
+        "availability": [0, 0, 4, 3],
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
@@ -1331,6 +1455,10 @@ pol_unit_edits = {
     #         "display": "#RECO2 SPADO. ROZP. SPECJALNE",
     #     },
     # },
+    "BRDM_1_PSNR1_POL": {  # BRDM-1 PSNR-1
+        "CommandPoints": 30,
+        "availability": [8, 0, 0, 0],
+    },
     "BRM_1_POL": {  # BWR-1D
         "CommandPoints": "BRM_1_SOV",
         "availability": "BRM_1_SOV",
@@ -1356,6 +1484,11 @@ pol_unit_edits = {
     "Mi_2Ro_reco_POL": {  # Mi-2Ro
         "CommandPoints": 50,
         "availability": [0, 4, 3, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "AutoCanon_AP_23mm_NS23": 25,
+            },
+        },
     },
     #   recon tab transports
     "BMP_1_SP2_reco_POL": {  # Rozp. BWP-1
@@ -1393,6 +1526,9 @@ pol_unit_edits = {
             "equipmentchanges": {
                 "replace": [("FM_kbk_AK", "FM_kbk_AK_noreflex")],
             },
+            "Salves": {
+                "FM_kbk_AK": 7,
+            },
         },
     },
     "MANPAD_Strela_2M_Naval_POL": {  # Desant. Strzala-2M
@@ -1404,6 +1540,9 @@ pol_unit_edits = {
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [("FM_kbk_AK", "FM_kbk_AK_noreflex")],
+            },
+            "Salves": {
+                "FM_kbk_AK": 7,
             },
         },
         "GameName": {
@@ -1420,9 +1559,38 @@ pol_unit_edits = {
             "equipmentchanges": {
                 "replace": [("FM_kbk_AKM", "FM_kbk_AK_noreflex")],
             },
+            "Salves": {
+                "FM_kbk_AK": 7,
+            },
         },
         "GameName": {
             "display": "SPADO. STRZAŁA-2M",
+        },
+    },
+    "DCA_AZP_S60_POL": {  # AZP S-60
+        "CommandPoints": 35,
+        "max_speed": 4,
+        "availability": [9, 7, 0, 0],
+        "capacities": {
+            "add_capacities": ["Deploy", "Deploy_ok"],
+        },
+    },
+    "Hibneryt_POL": {  # Hibneryt
+        "CommandPoints": 40,
+        "availability": [7, 5, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_ZU23_2_23mm": 18,
+            },
+        },
+    },
+    "Hibneryt_KG_POL": {  # Hibneryt KG
+        "CommandPoints": 50,
+        "availability": [6, 4, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_Jod_SP_23mm": 18,
+            },
         },
     },
     "BRDM_Strela_1_POL": {  # (BRDM-2) Strzala-1
@@ -1431,6 +1599,15 @@ pol_unit_edits = {
         # "CommandPoints": 50,
         # "availability": [6, 4, 0, 0],
         "strength": 8,
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 220,
+            },
+            "TimeBetweenEachIdentifyRoll": 1.0,
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'good_airoptics'"],
+        },
         "WeaponDescriptor": {
             "Salves": {
                 "SAM_Strela1_salvolength4": 2,
@@ -1471,16 +1648,26 @@ pol_unit_edits = {
         },
     },
     "Osa_9K33M3_POL": {  # PWRB Osa-AKM
+        "CommandPoints": 130,
+        "GameName": {
+            "display": "9K33M3 ROMB",  # wargame reference
+        },
         "optics": {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 300,
             },
             "TimeBetweenEachIdentifyRoll": 1.0,
         },
+        "availability": [0, 3, 2, 0],
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
-        "GameName": {"display": "9K33M3 ROMB"},  # wargame reference
+
     },
     "2K12_KUB_POL": {  # 2K12 Kub
         "CommandPoints": "2K12_KUB_SOV",
@@ -1498,7 +1685,7 @@ pol_unit_edits = {
         },
     },
     # POL HELI
-    "Mi_24D_POL": {  # 128x S-5, 4x Falanga - Mi-24D [AT] -> transport
+    "Mi_24D_POL": {  # 64x S-5, 4x Falanga - Mi-24D [AT] -> transport
         "CommandPoints": 145,
         "TagSet": {
             "overwrite_all": [
@@ -1513,17 +1700,11 @@ pol_unit_edits = {
         },
         "SpecialtiesList": {
             "overwrite_all": [
-                "transport",
                 "_transport1",
             ],
         },
         "orders": {
             "add_orders": ["EOrderType/UnloadFromTransport", "EOrderType/UnloadAtPosition", "EOrderType/Load"]},
-        "WeaponDescriptor": {
-            "Salves": {
-                "RocketAir_S5_57mm_salvolength64": 1,
-            },
-        },
         "Divisions": {
             "remove": ["POL_20_Pancerna"],
         },
@@ -1539,6 +1720,10 @@ pol_unit_edits = {
             "display": "Mi-24D [AT]"
         },
     },
+    "Mi_24V_POL": {
+        "CommandPoints": "Mi_24V_AT_SOV",
+        "availability": "Mi_24V_AT_SOV",
+    },
     "W3W_Sokol_RKT_POL": {  # W-3 Sokol [RKT]
         "GameName": {
             "display": "W-3 SOKÓŁ [RKT]"
@@ -1549,12 +1734,30 @@ pol_unit_edits = {
             "display": "W-3 SOKÓŁ [AA]"
         }
     },
+    "Mi_2_rocket_POL": {  # Mi-2URN Zmija
+        "CommandPoints": 50,
+        "availability": [8, 6, 0, 0],
+    },
     "Mi_2_ATGM_POL": {  # Mi-2URP Salamandra
         "CommandPoints": 60,
-        "availability": [0, 7, 5, 0],
+        "availability": [7, 5, 0, 0],
         "Divisions": {
             "POL_20_Pancerna": {
                 "cards": 2,
+            },
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "AutoCanon_AP_23mm_NS23": 25,
+            },
+        },
+    },
+    "Mi_2_AA_POL": {  # Mi-2URPG GNIEWOSZ
+        "CommandPoints": 80,
+        "availability": [0, 4, 3, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "AutoCanon_AP_23mm_NS23": 25,
             },
         },
     },
@@ -1624,8 +1827,14 @@ pol_unit_edits = {
             },
         },
     },
-    # "MiG_23MF_AA_POL": {  # MiG-23MF [AA]
-    # },
+    "MiG_21bis_AT_POL": {  # 2x Kh-66, 2x R-13M
+        "CommandPoints": 115,
+        "availability": [0, 3, 0, 0],
+    },
+    "MiG_23MF_AA_POL": {  # MiG-23MF [AA]
+        "CommandPoints": 115,
+        "availability": [0, 4, 3, 2],
+    },
     "MiG_23MF_AA2_POL": {  # MiG-23MF [AA2]
         "CommandPoints": 130,
         "availability": [0, 4, 3, 2],
@@ -1648,9 +1857,21 @@ pol_unit_edits = {
         },
         "availability": [0, 2, 0, 1],
     },
+    "Su_17_cluster_POL": { # Su-20 [CLU] - 6x RBK-500
+        "CommandPoints": 180,
+        "availability": [0, 2, 0, 0],
+    },
+    "Su_22_POL": {
+        "CommandPoints": "Su_22_DDR",
+        "availability": "Su_22_DDR",
+    },
+    "Su_22_clu_POL": {  # 4x RBK-250, 2x R-60M
+        "CommandPoints": 205,
+        "availability": [0, 2, 0, 0],
+    },
     "Su_22_AT_POL": {  # Su-22M4 Seria 30
         "CommandPoints": "Su_22_AT_SOV",
-        "availability": [0, 2, 0, 0],
+        "availability": "Su_22_AT_SOV",
     },
     "Su_22_RKT_POL": {  # 4x S-24, 2x R-60M
         "CommandPoints": 125,

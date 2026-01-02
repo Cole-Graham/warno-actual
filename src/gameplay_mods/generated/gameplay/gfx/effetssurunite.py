@@ -13,6 +13,8 @@ from src.constants.effects.capacities import (
     SWIFT_OK_EFFECT,
     DEPLOY_EFFECT,
     DEPLOY_OK_EFFECT,
+    MEDIUM_COHESION_LOSS_EFFECT,
+    COHESION_LOSS_OK_EFFECT,
 )
 from src.utils.logging_utils import setup_logger
 
@@ -23,7 +25,7 @@ def edit_gen_gp_gfx_effetssurunite(source_path) -> None:
     """GameData/Generated/Gameplay/Gfx/EffetsSurUnite.ndf"""
     logger.info("Modifying unit effects")
 
-    # Add new shock effects
+    # Add new effects
     for i, row in enumerate(source_path, start=1):
         if row.namespace == "UnitEffect_Choc":
             source_path.insert(i, CHOC_MOVE_EFFECT)
@@ -35,7 +37,8 @@ def edit_gen_gp_gfx_effetssurunite(source_path) -> None:
             source_path.insert(i, SWIFT_OK_EFFECT)
             source_path.insert(i, DEPLOY_OK_EFFECT)
             source_path.insert(i, DEPLOY_EFFECT)
-            logger.info("Added shock movement effects")
+            source_path.insert(i, MEDIUM_COHESION_LOSS_EFFECT)
+            source_path.insert(i, COHESION_LOSS_OK_EFFECT)
             break
 
     # Modify sniper effects
@@ -132,14 +135,42 @@ def _edit_veterancy_effects(source_path) -> None:
         "UnitEffect_xp_trained_avion": {"TUnitEffectHealOverTimeDescriptor": 2},
         "UnitEffect_xp_veteran_avion": {
             "TUnitEffectBonusPrecisionWhenTargetedDescriptor": -4,
-            "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor": 4,
+            "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor": 1.04,
         },
         "UnitEffect_xp_elite_avion": {
             "TUnitEffectBonusPrecisionWhenTargetedDescriptor": -8,
-            "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor": 8,
+            "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor": 1.08,
         },
     }
+    
+    # Switch to multiplicative modifier for all veterancy accuracy bonuses
+    infantry_xp_objects = [
+        "xp_trained",
+        "xp_trained_SF",
+        "xp_veteran",
+        "xp_veteran_SF",
+        "xp_elite",
+        "xp_elite_SF",
+    ]
+    for row in source_path:
+        if not any(row.namespace.endswith(string) for string in infantry_xp_objects):
+            continue
+        
+        effects_list = row.v.by_m("EffectsDescriptors")
+        for effect in effects_list.v:
+            if not hasattr(effect.v, "type"):
+                continue
+            effect_type = effect.v.type
+            if effect_type == "TUnitEffectIncreaseWeaponPrecisionArretDescriptor":
+                effect.v.by_m("ModifierType").v = "~/ModifierType_Multiplicatif"
+                modifier_value = effect.v.by_m("ModifierValue").v
+                effect.v.by_m("ModifierValue").v = str(float(modifier_value) / 100.0 + 1.0)
+            elif effect_type == "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor":
+                effect.v.by_m("ModifierType").v = "~/ModifierType_Multiplicatif"
+                modifier_value = effect.v.by_m("ModifierValue").v
+                effect.v.by_m("ModifierValue").v = str(float(modifier_value) / 100.0 + 1.0)
 
+    # Apply specifically defined veterancy changes
     for row in source_path:
         if row.namespace not in vet_changes:
             continue

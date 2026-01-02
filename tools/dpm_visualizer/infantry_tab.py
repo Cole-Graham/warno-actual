@@ -1,5 +1,6 @@
 """Infantry Tab for DPM Visualizer."""
 
+import csv
 import json
 import sys
 from pathlib import Path
@@ -15,7 +16,7 @@ from tkinter import ttk, filedialog, messagebox
 # Add src to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from .constants import RANGE_MODIFIERS_TABLE, SMALL_ARMS_DAMAGE_FAMILIES
+from .constants import RANGE_MODIFIERS_TABLE, SMALL_ARMS_DAMAGE_FAMILIES, SA_INF_ARMOR_DAMAGE_RATIOS
 from .calculations import (
     calculate_dpm,
     calculate_accuracy,
@@ -49,9 +50,18 @@ class InfantryTab:
         self.veterancy_selectors: Dict[SearchableCombobox, ttk.Frame] = {}  # Map unit dropdown to veterancy button frame
         self.veterancy_buttons: Dict[SearchableCombobox, Dict[int, ttk.Button]] = {}  # Map unit dropdown to veterancy level buttons
         self.unit_veterancy_levels: Dict[SearchableCombobox, int] = {}  # Map unit dropdown to veterancy level
+        self.unit_target_strength: Dict[SearchableCombobox, int] = {}  # Map unit dropdown to target strength (default 7)
+        self.unit_target_strength_combos: Dict[SearchableCombobox, ttk.Combobox] = {}  # Map unit dropdown to target strength combobox
+        self.unit_strength_labels: Dict[SearchableCombobox, ttk.Label] = {}  # Map unit dropdown to unit strength label
+        self.unit_use_vanilla_range_table_vars: List[tk.BooleanVar] = []  # Track vanilla range table checkbox states
+        self.unit_visibility_vars: List[tk.BooleanVar] = []  # Track visibility checkboxes for each unit
+        self.unit_price_adjustments: Dict[SearchableCombobox, int] = {}  # Map unit dropdown to price adjustment value
+        self.unit_price_spinboxes: Dict[SearchableCombobox, ttk.Spinbox] = {}  # Map unit dropdown to price adjustment spinbox
+        self.unit_price_vars: Dict[SearchableCombobox, tk.StringVar] = {}  # Map unit dropdown to price adjustment StringVar
         self.unit_display_names: List[str] = []  # Cached display names list
         self.successive_hits: int = 0
         self.range_step: float = 25.0  # Fixed at 25m
+        self._is_loading_state: bool = False  # Flag to prevent auto-save during state loading
         
         # Configure styles for veterancy buttons
         self.style = ttk.Style()
@@ -103,7 +113,7 @@ class InfantryTab:
         top_section.pack(fill=tk.BOTH, expand=True, pady=(0, 10))
         
         # Left panel - Controls
-        left_panel = ttk.Frame(top_section, width=300)
+        left_panel = ttk.Frame(top_section, width=425)
         left_panel.pack(side=tk.LEFT, fill=tk.Y, padx=(0, 10))
         left_panel.pack_propagate(False)
         
@@ -115,51 +125,109 @@ class InfantryTab:
         unit_canvas_frame = ttk.Frame(unit_section)
         unit_canvas_frame.pack(fill=tk.BOTH, expand=True)
         
-        unit_canvas = tk.Canvas(unit_canvas_frame)
+        unit_canvas = tk.Canvas(unit_canvas_frame, highlightthickness=0)
         unit_scrollbar = ttk.Scrollbar(unit_canvas_frame, orient="vertical", command=unit_canvas.yview)
         unit_scrollable_frame = ttk.Frame(unit_canvas)
         
-        def update_scrollregion(event):
-            unit_canvas.configure(scrollregion=unit_canvas.bbox("all"))
+        def update_scrollregion(event=None):
+            """Update scroll region and canvas window width."""
+            unit_scrollable_frame.update_idletasks()
+            bbox = unit_canvas.bbox("all")
+            if bbox:
+                unit_canvas.configure(scrollregion=bbox)
+                # Update canvas window width to match canvas width
+                canvas_width = unit_canvas.winfo_width()
+                if canvas_width > 1:
+                    # Account for scrollbar width
+                    scrollbar_width = unit_scrollbar.winfo_reqwidth()
+                    window_width = max(1, canvas_width - scrollbar_width)
+                    unit_canvas.itemconfig(unit_canvas_window, width=window_width)
         
         unit_scrollable_frame.bind("<Configure>", update_scrollregion)
         
-        unit_canvas.create_window((0, 0), window=unit_scrollable_frame, anchor="nw")
+        unit_canvas_window = unit_canvas.create_window((0, 0), window=unit_scrollable_frame, anchor="nw")
         unit_canvas.configure(yscrollcommand=unit_scrollbar.set)
+        
+        def on_canvas_configure(event):
+            """Handle canvas resize."""
+            if event.width > 1:
+                update_scrollregion()
+        
+        unit_canvas.bind("<Configure>", on_canvas_configure)
         
         # Make canvas scrollable with mouse wheel
         def on_mousewheel(event):
-            unit_canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
+            """Handle mouse wheel scrolling for unit dropdowns."""
+            bbox = unit_canvas.bbox("all")
+            if bbox:
+                canvas_height = unit_canvas.winfo_height()
+                content_height = bbox[3] - bbox[1]
+                if content_height > canvas_height:
+                    unit_canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
+                    return "break"
+            return None
         
+        # Bind mouse wheel to canvas and scrollbar
         unit_canvas.bind("<MouseWheel>", on_mousewheel)
+        unit_scrollbar.bind("<MouseWheel>", on_mousewheel)
         
+        # Pack canvas and scrollbar
         unit_canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         unit_scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
         
         self.unit_dropdowns_frame = unit_scrollable_frame
         self.unit_canvas = unit_canvas  # Store reference to canvas
+        self.update_unit_scrollregion = update_scrollregion
         
-        # Add/Remove unit buttons
+        # Add/Remove unit buttons and normalization checkbox
         unit_button_frame = ttk.Frame(unit_section)
         unit_button_frame.pack(fill=tk.X, pady=(5, 0))
         ttk.Button(unit_button_frame, text="+ Add Unit", command=self.add_unit_dropdown).pack(side=tk.LEFT, padx=2)
         ttk.Button(unit_button_frame, text="- Remove", command=self.remove_unit_dropdown).pack(side=tk.LEFT, padx=2)
         
+        # Normalize by price checkbox
+        self.normalize_by_price_var = tk.BooleanVar(value=False)
+        normalize_checkbox = ttk.Checkbutton(
+            unit_button_frame,
+            text="Normalize by Price",
+            variable=self.normalize_by_price_var,
+            command=lambda: [self.generate_chart(), self.app.auto_save_state()]
+        )
+        normalize_checkbox.pack(side=tk.LEFT, padx=(10, 2))
+        
+        # Damage type dropdown
+        ttk.Label(unit_button_frame, text="DPM:").pack(side=tk.LEFT, padx=(10, 2))
+        self.damage_type_var = tk.StringVar(value="Physical")
+        damage_type_combo = ttk.Combobox(
+            unit_button_frame,
+            textvariable=self.damage_type_var,
+            values=["Physical", "Suppression"],
+            state="readonly",
+            width=12,
+        )
+        damage_type_combo.pack(side=tk.LEFT, padx=(0, 2))
+        damage_type_combo.bind("<<ComboboxSelected>>", lambda e: [self.generate_chart(), self.app.auto_save_state()])
+        
         # Add initial unit dropdown
         self.add_unit_dropdown()
         
         # Successive hits slider
-        ttk.Label(left_panel, text="Successive Hits:").pack(anchor=tk.W, pady=(0, 5))
+        successive_hits_frame = ttk.Frame(left_panel)
+        successive_hits_frame.pack(fill=tk.X, pady=(0, 5))
+        ttk.Label(successive_hits_frame, text="Successive Hits:").pack(side=tk.LEFT, padx=(0, 5))
         self.hits_var = tk.IntVar(value=0)
-        self.hits_label = ttk.Label(left_panel, text="0")
-        self.hits_label.pack(anchor=tk.W)
-        hits_scale = ttk.Scale(left_panel, from_=0, to=5, variable=self.hits_var, orient=tk.HORIZONTAL, command=self.on_hits_changed)
+        self.hits_label = ttk.Label(successive_hits_frame, text="0")
+        self.hits_label.pack(side=tk.LEFT, padx=(0, 5))
+        hits_scale = ttk.Scale(successive_hits_frame, from_=0, to=5, variable=self.hits_var, orient=tk.HORIZONTAL, command=self.on_hits_changed)
         hits_scale.pack(fill=tk.X, pady=(0, 10))
         
         # Buttons
-        ttk.Button(left_panel, text="Generate Chart", command=self.generate_chart).pack(fill=tk.X, pady=(0, 5))
-        ttk.Button(left_panel, text="Range Modifier Tables", command=self.open_range_modifier_editor).pack(fill=tk.X, pady=(0, 5))
-        ttk.Button(left_panel, text="Export Chart", command=self.export_chart).pack(fill=tk.X)
+        buttons_frame = ttk.Frame(left_panel)
+        buttons_frame.pack(fill=tk.X, pady=(0, 5))
+        ttk.Button(buttons_frame, text="Generate Chart", command=self.generate_chart).pack(side=tk.LEFT, padx=2)
+        ttk.Button(buttons_frame, text="Range Modifier Tables", command=self.open_range_modifier_editor).pack(side=tk.LEFT, padx=2)
+        ttk.Button(buttons_frame, text="Export Chart", command=self.export_chart).pack(side=tk.LEFT, padx=2)
+        ttk.Button(buttons_frame, text="Export Graph Data", command=self.export_graph_data).pack(side=tk.LEFT, padx=2)
         
         # Right panel - Chart and Info Panel
         right_panel = ttk.Frame(top_section)
@@ -279,6 +347,17 @@ class InfantryTab:
             checkbox.pack(side=tk.LEFT, padx=2)
             self.custom_unit_vet_checkboxes.append(checkbox)
         
+        # Shock trait checkbox
+        self.custom_unit_shock_trait_var = tk.BooleanVar(value=False)
+        shock_checkbox = ttk.Checkbutton(vet_frame, text="Shock Trait", variable=self.custom_unit_shock_trait_var)
+        shock_checkbox.pack(side=tk.LEFT, padx=(10, 0))
+        
+        # Strength field
+        ttk.Label(vet_frame, text="Strength:").pack(side=tk.LEFT, padx=(10, 2))
+        self.custom_unit_strength_var = tk.IntVar(value=7)
+        strength_spinbox = ttk.Spinbox(vet_frame, from_=2, to=14, textvariable=self.custom_unit_strength_var, width=5)
+        strength_spinbox.pack(side=tk.LEFT)
+        
         # Veterancy bonuses section
         bonuses_frame = ttk.LabelFrame(custom_unit_section, text="Veterancy Bonuses", padding="5")
         bonuses_frame.pack(fill=tk.X, pady=(5, 0))
@@ -338,7 +417,7 @@ class InfantryTab:
         self.custom_weapon_accuracy_var = tk.StringVar(value="0.5")
         ttk.Entry(row1, textvariable=self.custom_weapon_accuracy_var, width=10).pack(side=tk.LEFT)
         
-        # Row 2: Physical Damage, Damage Family
+        # Row 2: Physical Damage, Suppression Damage
         row2 = ttk.Frame(props_frame)
         row2.pack(fill=tk.X, pady=2)
         
@@ -346,9 +425,17 @@ class InfantryTab:
         self.custom_weapon_damage_var = tk.StringVar(value="10")
         ttk.Entry(row2, textvariable=self.custom_weapon_damage_var, width=10).pack(side=tk.LEFT, padx=(0, 10))
         
-        ttk.Label(row2, text="Damage Family:", width=15).pack(side=tk.LEFT, padx=(0, 5))
+        ttk.Label(row2, text="Suppression Damage:", width=18).pack(side=tk.LEFT, padx=(0, 5))
+        self.custom_weapon_suppress_damage_var = tk.StringVar(value="10")
+        ttk.Entry(row2, textvariable=self.custom_weapon_suppress_damage_var, width=10).pack(side=tk.LEFT)
+        
+        # Row 2b: Damage Family
+        row2b = ttk.Frame(props_frame)
+        row2b.pack(fill=tk.X, pady=2)
+        
+        ttk.Label(row2b, text="Damage Family:", width=15).pack(side=tk.LEFT, padx=(0, 5))
         self.custom_weapon_damage_family_var = tk.StringVar(value="DamageFamily_sa_intermediate")
-        damage_family_combo = ttk.Combobox(row2, textvariable=self.custom_weapon_damage_family_var, width=25, state="readonly")
+        damage_family_combo = ttk.Combobox(row2b, textvariable=self.custom_weapon_damage_family_var, width=25, state="readonly")
         damage_family_combo['values'] = list(SMALL_ARMS_DAMAGE_FAMILIES)
         damage_family_combo.pack(side=tk.LEFT)
         
@@ -386,6 +473,51 @@ class InfantryTab:
         ttk.Button(self.weapon_button_frame, text="Create Custom Weapon", command=self.create_custom_weapon).pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0, 2))
         ttk.Button(self.weapon_button_frame, text="Edit Custom Weapon", command=self.edit_custom_weapon).pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(2, 0))
         
+        # Live preview section
+        preview_frame = ttk.Frame(custom_weapon_section)
+        preview_frame.pack(fill=tk.X, pady=(5, 0))
+        
+        ttk.Label(preview_frame, text="Live Preview:", font=("TkDefaultFont", 9, "bold")).pack(anchor=tk.W, pady=(0, 2))
+        
+        # Bonus selector for preview
+        bonus_preview_row = ttk.Frame(preview_frame)
+        bonus_preview_row.pack(fill=tk.X, pady=(0, 5))
+        ttk.Label(bonus_preview_row, text="Bonuses:").pack(side=tk.LEFT, padx=(0, 5))
+        self.preview_bonus_combo = SearchableCombobox(bonus_preview_row, width=30)
+        self.preview_bonus_combo.pack(side=tk.LEFT, fill=tk.X, expand=True)
+        # Ensure bonus combinations are collected before setting values
+        if not hasattr(self, 'bonus_combinations') or not self.bonus_combinations:
+            self.collect_bonus_combinations()
+        self.preview_bonus_combo.set_values(self.get_bonus_display_strings())
+        self.preview_bonus_combo.set("No bonuses")  # Set default value
+        self.preview_bonus_combo.bind("<<ComboboxSelected>>", lambda e: self.update_preview())
+        
+        preview_info_frame = ttk.Frame(preview_frame)
+        preview_info_frame.pack(fill=tk.X)
+        
+        self.preview_dpm_label = ttk.Label(preview_info_frame, text="DPM: --", foreground="blue")
+        self.preview_dpm_label.pack(side=tk.LEFT, padx=(0, 10))
+        
+        self.preview_shots_label = ttk.Label(preview_info_frame, text="Shots/min: --", foreground="green")
+        self.preview_shots_label.pack(side=tk.LEFT, padx=(0, 10))
+        
+        self.preview_ammo_label = ttk.Label(preview_info_frame, text="Ammo/min: --", foreground="orange")
+        self.preview_ammo_label.pack(side=tk.LEFT)
+        
+        # Bind update_preview to all custom weapon input fields
+        self.custom_weapon_max_range_var.trace_add("write", lambda *args: self.app.root.after_idle(self.update_preview))
+        self.custom_weapon_accuracy_var.trace_add("write", lambda *args: self.app.root.after_idle(self.update_preview))
+        self.custom_weapon_damage_var.trace_add("write", lambda *args: self.app.root.after_idle(self.update_preview))
+        self.custom_weapon_suppress_damage_var.trace_add("write", lambda *args: self.app.root.after_idle(self.update_preview))
+        self.custom_weapon_shots_per_salvo_var.trace_add("write", lambda *args: self.app.root.after_idle(self.update_preview))
+        self.custom_weapon_time_between_salvos_var.trace_add("write", lambda *args: self.app.root.after_idle(self.update_preview))
+        self.custom_weapon_time_between_shots_var.trace_add("write", lambda *args: self.app.root.after_idle(self.update_preview))
+        self.custom_weapon_aiming_time_var.trace_add("write", lambda *args: self.app.root.after_idle(self.update_preview))
+        self.custom_weapon_ammo_per_salvo_var.trace_add("write", lambda *args: self.app.root.after_idle(self.update_preview))
+        
+        # Initial preview update
+        self.update_preview()
+        
         # Store line data for tooltips
         self.line_data: Dict[str, List[Tuple[float, float]]] = {}  # Total DPM by range
         self.weapon_dpm_data: Dict[str, Dict[str, List[Tuple[float, float]]]] = {}  # Unit -> Weapon -> DPM data
@@ -394,6 +526,14 @@ class InfantryTab:
         self.selected_range: Optional[float] = None  # Selected range for locked display
         self.selected_marker = None  # Marker for selected data point
         self.hover_marker = None  # Marker for hovered data point
+        
+        # Initialize unit dropdowns scrolling after UI is set up
+        if hasattr(self, 'update_unit_scrollregion'):
+            def init_scroll():
+                self.parent.update_idletasks()
+                if hasattr(self, 'update_unit_scrollregion'):
+                    self.update_unit_scrollregion()
+            self.parent.after(200, init_scroll)
         
         # Bind mouse motion for tooltips
         self.connect_hover_handler()
@@ -413,11 +553,26 @@ class InfantryTab:
     def add_unit_dropdown(self):
         """Add a new unit selection dropdown with searchable functionality and veterancy buttons."""
         frame = ttk.Frame(self.unit_dropdowns_frame)
-        frame.pack(fill=tk.X, pady=2)
+        frame.pack(fill=tk.X, pady=(5, 2))
         
-        # Top row: Unit selection
+        # Separator line (except for first unit)
+        if len(self.unit_dropdowns) > 0:
+            separator = ttk.Separator(frame, orient='horizontal')
+            separator.pack(fill=tk.X, pady=(0, 5))
+        
+        # Top row: Unit selection with visibility checkbox
         unit_row = ttk.Frame(frame)
         unit_row.pack(fill=tk.X)
+        
+        # Visibility checkbox
+        visibility_var = tk.BooleanVar(value=True)  # Default to visible
+        self.unit_visibility_vars.append(visibility_var)
+        visibility_checkbox = ttk.Checkbutton(
+            unit_row,
+            variable=visibility_var,
+            command=lambda: [self.generate_chart(), self.app.auto_save_state()]
+        )
+        visibility_checkbox.pack(side=tk.LEFT, padx=(0, 5))
         
         # Add label with number
         dropdown_num = len(self.unit_dropdowns) + 1
@@ -459,18 +614,122 @@ class InfantryTab:
             veterancy_buttons_dict[level] = btn
             # Always show buttons (don't hide initially)
         
+        # Unit strength label
+        unit_strength_label = ttk.Label(veterancy_row, text="Strength: --", width=12)
+        unit_strength_label.pack(side=tk.LEFT, padx=(10, 2))
+        
+        # Store unit strength label reference
+        self.unit_strength_labels[combo] = unit_strength_label
+        
+        # Target strength dropdown
+        target_strength_label = ttk.Label(veterancy_row, text="Target:", width=6)
+        target_strength_label.pack(side=tk.LEFT, padx=(10, 2))
+        
+        target_strength_combo = ttk.Combobox(veterancy_row, width=5, state="readonly")
+        target_strength_combo['values'] = [str(i) for i in range(2, 15)]  # Strength 2-14
+        # Don't set a default value here - will be set when unit is selected
+        # Store the event handler function for later rebinding
+        def on_target_strength_selected(e):
+            self.set_target_strength(combo, int(target_strength_combo.get()))
+            # Don't generate chart or auto-save during state loading
+            if not getattr(self, '_is_loading_state', False):
+                self.generate_chart()
+                self.app.auto_save_state()
+        target_strength_combo.bind("<<ComboboxSelected>>", on_target_strength_selected)
+        target_strength_combo.pack(side=tk.LEFT, padx=1)
+        
+        # Store target strength dropdown reference
+        self.unit_target_strength_combos[combo] = target_strength_combo
+        
+        # Vanilla range table checkbox row
+        vanilla_row = ttk.Frame(frame)
+        vanilla_row.pack(fill=tk.X, pady=(2, 0))
+        
+        use_vanilla_var = tk.BooleanVar(value=False)  # Default to not using vanilla
+        self.unit_use_vanilla_range_table_vars.append(use_vanilla_var)
+        use_vanilla_checkbox = ttk.Checkbutton(
+            vanilla_row,
+            text="Use Vanilla Range Table",
+            variable=use_vanilla_var,
+            command=lambda: [self.generate_chart(), self.app.auto_save_state()]
+        )
+        use_vanilla_checkbox.pack(side=tk.LEFT, padx=(8, 0))
+        
+        # Price adjustment spinbox
+        price_label = ttk.Label(vanilla_row, text="Price:")
+        price_label.pack(side=tk.LEFT, padx=(10, 2))
+        price_var = tk.StringVar(value="5")
+        def on_price_changed(*args):
+            try:
+                price_value = int(price_var.get())
+                self.unit_price_adjustments[combo] = price_value
+                # Don't generate chart or auto-save during state loading
+                if not getattr(self, '_is_loading_state', False):
+                    self.generate_chart()
+                    self.app.auto_save_state()
+            except (ValueError, tk.TclError):
+                pass
+        price_var.trace_add('write', on_price_changed)  # Trace all value changes
+        price_spinbox = ttk.Spinbox(
+            vanilla_row,
+            from_=5,
+            to=1000,
+            increment=5,
+            width=8,
+            textvariable=price_var,
+        )
+        price_spinbox.pack(side=tk.LEFT, padx=(0, 0))
+        # Also bind additional events as backup
+        price_spinbox.bind('<KeyRelease>', lambda e: on_price_changed())  # Handle manual typing
+        price_spinbox.bind('<FocusOut>', lambda e: on_price_changed())  # Handle when focus leaves the field
+        self.unit_price_spinboxes[combo] = price_spinbox
+        self.unit_price_vars[combo] = price_var
+        
         self.unit_dropdowns.append(combo)
         self.veterancy_selectors[combo] = veterancy_frame
         self.veterancy_buttons[combo] = veterancy_buttons_dict
         self.unit_veterancy_levels[combo] = 0
+        # Don't set default target strength here - will be set when unit is selected
+        
+        # Bind mouse wheel to new frame and its children for unit dropdowns scrolling
+        if hasattr(self, 'unit_canvas'):
+            def on_unit_mousewheel(event):
+                """Handle mouse wheel scrolling for unit dropdowns."""
+                bbox = self.unit_canvas.bbox("all")
+                if bbox:
+                    canvas_height = self.unit_canvas.winfo_height()
+                    content_height = bbox[3] - bbox[1]
+                    if content_height > canvas_height:
+                        self.unit_canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
+                        return "break"
+                return None
+            
+            def bind_mousewheel_to_new_widgets(widget):
+                widget.bind("<MouseWheel>", on_unit_mousewheel)
+                for child in widget.winfo_children():
+                    bind_mousewheel_to_new_widgets(child)
+            
+            bind_mousewheel_to_new_widgets(frame)
         
         # Update scroll region after adding
         self.unit_dropdowns_frame.update_idletasks()
-        if hasattr(self, 'unit_canvas'):
-            self.unit_canvas.configure(scrollregion=self.unit_canvas.bbox("all"))
+        if hasattr(self, 'update_unit_scrollregion'):
+            self.update_unit_scrollregion()
         
         # Update all labels to reflect correct numbering
         self.update_dropdown_labels()
+    
+    def _safe_update_info_text(self, content: str):
+        """Safely update the info text widget, handling cases where it may be destroyed."""
+        try:
+            if hasattr(self, 'info_text') and self.info_text.winfo_exists():
+                self.info_text.config(state=tk.NORMAL)
+                self.info_text.delete('1.0', tk.END)
+                self.info_text.insert('1.0', content)
+                self.info_text.config(state=tk.DISABLED)
+        except tk.TclError:
+            # Widget was destroyed, silently ignore
+            pass
     
     def set_veterancy_level(self, combo: SearchableCombobox, level: int):
         """Set veterancy level for a unit and update button states."""
@@ -509,6 +768,10 @@ class InfantryTab:
         # Regenerate chart
         self.generate_chart()
     
+    def set_target_strength(self, combo: SearchableCombobox, target_strength: int):
+        """Set target strength for a unit."""
+        self.unit_target_strength[combo] = target_strength
+    
     def remove_unit_dropdown(self):
         """Remove the last unit dropdown."""
         if self.unit_dropdowns:
@@ -524,6 +787,23 @@ class InfantryTab:
                     del self.veterancy_buttons[dropdown]
                 if dropdown in self.unit_veterancy_levels:
                     del self.unit_veterancy_levels[dropdown]
+                if dropdown in self.unit_target_strength:
+                    del self.unit_target_strength[dropdown]
+                if hasattr(self, 'unit_target_strength_combos') and dropdown in self.unit_target_strength_combos:
+                    del self.unit_target_strength_combos[dropdown]
+                # Remove price adjustment references
+                if dropdown in self.unit_price_adjustments:
+                    del self.unit_price_adjustments[dropdown]
+                if dropdown in self.unit_price_spinboxes:
+                    del self.unit_price_spinboxes[dropdown]
+                if dropdown in self.unit_price_vars:
+                    del self.unit_price_vars[dropdown]
+                # Remove corresponding vanilla range table checkbox var
+                if self.unit_use_vanilla_range_table_vars:
+                    self.unit_use_vanilla_range_table_vars.pop()
+                # Remove corresponding visibility checkbox var
+                if self.unit_visibility_vars:
+                    self.unit_visibility_vars.pop()
                 # Destroy the entire frame (which contains unit_row + veterancy_row)
                 # dropdown.master is unit_row, dropdown.master.master is frame
                 parent_frame = dropdown.master.master
@@ -566,6 +846,14 @@ class InfantryTab:
                         btn.configure(style='SelectedVet.TButton', state='normal')
                     else:
                         btn.configure(style='TButton', state='normal')
+            # Reset unit strength label if no unit selected
+            if combo in self.unit_strength_labels:
+                try:
+                    unit_strength_label = self.unit_strength_labels[combo]
+                    if unit_strength_label.winfo_exists():
+                        unit_strength_label.configure(text="Strength: --")
+                except (tk.TclError, AttributeError):
+                    pass
             return
         
         # Get veterancy info for this unit
@@ -601,6 +889,80 @@ class InfantryTab:
                         btn.configure(style='SelectedVet.TButton', state='normal')
                     else:
                         btn.configure(style='TButton', state='normal')
+        
+        # Update target strength dropdown to match unit's strength (defaults to 1.0 ratio)
+        # Only update if combobox exists (might not exist during early initialization)
+        if combo in self.unit_target_strength_combos:
+            try:
+                target_strength_combo = self.unit_target_strength_combos[combo]
+                # Check if widget still exists
+                if not target_strength_combo.winfo_exists():
+                    return
+                
+                unit_strength = unit_info.get("strength", 7)  # Default to 7 if not found
+                current_value = target_strength_combo.get() or ''
+                target_value = str(unit_strength) if (unit_strength is not None and 2 <= unit_strength <= 14) else '7'
+                
+                # Only update if value is different to avoid triggering event unnecessarily
+                if current_value != target_value:
+                    # Temporarily unbind to prevent triggering generate_chart during initialization
+                    target_strength_combo.unbind("<<ComboboxSelected>>")
+                    target_strength_combo.set(target_value)
+                    # Rebind the event handler (check loading flag)
+                    def on_target_strength_selected(e):
+                        self.set_target_strength(combo, int(target_strength_combo.get()))
+                        # Don't generate chart or auto-save during state loading
+                        if not getattr(self, '_is_loading_state', False):
+                            self.generate_chart()
+                            self.app.auto_save_state()
+                    target_strength_combo.bind("<<ComboboxSelected>>", on_target_strength_selected)
+                
+                self.unit_target_strength[combo] = int(target_value)
+            except (tk.TclError, AttributeError, ValueError):
+                # Widget was destroyed or doesn't exist yet, or invalid value - skip silently
+                pass
+        
+        # Update price adjustment spinbox to match unit's price (defaults to actual price)
+        # Only update if spinbox exists (might not exist during early initialization)
+        if combo in self.unit_price_vars:
+            try:
+                price_var = self.unit_price_vars[combo]
+                # Check if variable still exists
+                if not hasattr(price_var, 'get'):
+                    return
+                
+                unit_price = unit_info.get("price", 0)  # Default to 0 if not found
+                if unit_price is None:
+                    unit_price = 0
+                # Round to nearest multiple of 5
+                unit_price = max(5, ((unit_price + 2) // 5) * 5)
+                current_value = price_var.get() or '0'
+                target_value = str(unit_price)
+                
+                # Only update if value is different to avoid triggering event unnecessarily
+                if current_value != target_value:
+                    # Set the value - trace will handle the update
+                    price_var.set(target_value)
+                
+                self.unit_price_adjustments[combo] = unit_price
+            except (tk.TclError, AttributeError, ValueError):
+                # Widget was destroyed or doesn't exist yet, or invalid value - skip silently
+                pass
+        
+        # Update unit strength label
+        if combo in self.unit_strength_labels:
+            try:
+                unit_strength_label = self.unit_strength_labels[combo]
+                if unit_strength_label.winfo_exists():
+                    unit_strength = unit_info.get("strength", 7)  # Default to 7 if not found
+                    unit_strength_label.configure(text=f"Strength: {unit_strength}")
+            except (tk.TclError, AttributeError):
+                # Widget was destroyed or doesn't exist yet - skip silently
+                pass
+        
+        # Don't auto-save during state loading to prevent loops/freezes
+        if not self._is_loading_state:
+            self.app.auto_save_state()
     
     def _get_dpm_at_range(self, dpm_data: List[Tuple[float, float]], target_range: float) -> float:
         """Get DPM value at a specific range, interpolating if necessary."""
@@ -635,6 +997,7 @@ class InfantryTab:
         """Handle successive hits slider change."""
         self.successive_hits = self.hits_var.get()
         self.hits_label.config(text=str(self.successive_hits))
+        self.app.auto_save_state()
     
     def generate_chart(self):
         """Generate the DPM chart comparing total squad DPM."""
@@ -644,18 +1007,47 @@ class InfantryTab:
         # Get selected units and their veterancy levels from all dropdowns
         selected_units = []
         unit_veterancy_map = {}  # Map unit_name to veterancy_level
+        unit_use_vanilla_map = {}  # Map unit_name to use_vanilla_range_table
+        unit_target_strength_map = {}  # Map unit_name to target_strength
+        unit_dropdown_index_map = {}  # Map unit_name to dropdown index (for color assignment)
+        unit_price_map = {}  # Map unit_name to adjusted price
         
-        for dropdown in self.unit_dropdowns:
+        for idx, dropdown in enumerate(self.unit_dropdowns):
             if isinstance(dropdown, SearchableCombobox):
                 unit_name = dropdown.get()
             else:
                 unit_name = dropdown.get()
             
             if unit_name and unit_name in self.app.infantry_units:
+                # Check visibility checkbox
+                is_visible = self.unit_visibility_vars[idx].get() if idx < len(self.unit_visibility_vars) else True
+                if not is_visible:
+                    continue  # Skip this unit if it's not visible
+                
                 selected_units.append(unit_name)
+                # Store dropdown index for color assignment (based on position in left panel)
+                unit_dropdown_index_map[unit_name] = idx
                 # Get veterancy level from stored value
                 veterancy_level = self.unit_veterancy_levels.get(dropdown, 0)
                 unit_veterancy_map[unit_name] = veterancy_level
+                # Get vanilla range table checkbox state
+                use_vanilla_range_table = self.unit_use_vanilla_range_table_vars[idx].get() if idx < len(self.unit_use_vanilla_range_table_vars) else False
+                unit_use_vanilla_map[unit_name] = use_vanilla_range_table
+                # Get price adjustment from stored value, fallback to actual price
+                unit_info = self.app.infantry_units[unit_name]
+                actual_price = unit_info.get("price", 0) or 0
+                adjusted_price = self.unit_price_adjustments.get(dropdown, actual_price)
+                unit_price_map[unit_name] = adjusted_price
+                # Get target strength from stored value, ensure it's an integer
+                target_strength = self.unit_target_strength.get(dropdown, 7)
+                try:
+                    target_strength = int(target_strength) if target_strength is not None else 7
+                except (ValueError, TypeError):
+                    target_strength = 7
+                unit_target_strength_map[unit_name] = target_strength
+        
+        # Store for later use in info panel (after map is populated)
+        self.unit_target_strength_map = unit_target_strength_map
         
         # Check if we have any units to plot
         if not selected_units:
@@ -680,7 +1072,12 @@ class InfantryTab:
                 pass
             self.hover_marker = None
         self.ax.set_xlabel("Range (m)")
-        self.ax.set_ylabel("Total Squad DPM (Damage Per Minute)")
+        # Update y-axis label based on normalization
+        normalize_by_price = self.normalize_by_price_var.get() if hasattr(self, 'normalize_by_price_var') else False
+        if normalize_by_price:
+            self.ax.set_ylabel("DPM per Command Point")
+        else:
+            self.ax.set_ylabel("Total Squad DPM (Damage Per Minute)")
         self.ax.grid(True)
         table_name = getattr(self.app, 'current_range_modifier_table_name', 'vanilla')
         self.ax.set_title(f"Infantry Squad Total DPM vs Range (Range Modifier: {table_name})")
@@ -691,13 +1088,13 @@ class InfantryTab:
         # Clear previous line data
         self.line_data = {}
         self.weapon_dpm_data = {}
+        self.unit_target_strength_map = {}  # Store target strength map for info panel (will be populated below)
         
         # Reconnect hover handler (in case it was disconnected)
         self.connect_hover_handler()
         
         # Plot each selected unit's total DPM
         colors = ['blue', 'red', 'green', 'orange', 'purple', 'brown', 'pink', 'gray', 'cyan', 'magenta']
-        color_idx = 0
         max_chart_range = 0.0  # Track maximum range across all units
         
         for unit_name in selected_units:
@@ -736,7 +1133,9 @@ class InfantryTab:
                         continue
                     
                     # Must have required properties for DPM calculation
-                    if not (ammo_props.get("idling") and ammo_props.get("max_range") and ammo_props.get("physical_damages")):
+                    damage_type = self.damage_type_var.get() if hasattr(self, 'damage_type_var') else "Physical"
+                    required_damage = ammo_props.get("suppress_damages") if damage_type == "Suppression" else ammo_props.get("physical_damages")
+                    if not (ammo_props.get("idling") and ammo_props.get("max_range") and required_damage):
                         continue
                     
                     # Track max range for this unit
@@ -752,7 +1151,43 @@ class InfantryTab:
                     veterancy_reload_multipliers = unit_info.get("veterancy_reload_speed_multipliers", {})
                     reload_speed_multiplier = veterancy_reload_multipliers.get(veterancy_level, 1.0)
                     
+                    # Check if unit has Shock trait
+                    has_shock_trait = unit_info.get("has_shock_trait", False)
+                    
+                    # Get attacker strength and target strength for damage ratio
+                    attacker_strength = unit_info.get("strength", 7)  # Default to 7 if not found
+                    # Ensure attacker_strength is an integer
+                    try:
+                        attacker_strength = int(attacker_strength) if attacker_strength is not None else 7
+                    except (ValueError, TypeError):
+                        attacker_strength = 7
+                    
+                    # If target strength not set, default to attacker's strength (1.0 ratio)
+                    target_strength = unit_target_strength_map.get(unit_name, attacker_strength)
+                    # Ensure target_strength is an integer
+                    try:
+                        target_strength = int(target_strength) if target_strength is not None else attacker_strength
+                    except (ValueError, TypeError):
+                        target_strength = attacker_strength
+                    
+                    # Calculate damage ratio from SA_INF_ARMOR_DAMAGE_RATIOS table
+                    # Table is indexed by attacker strength (2-14), then target strength (14-2, reverse order)
+                    # Columns represent target strengths 14, 13, 12, ..., 3, 2 (column 0 = strength 14, column 12 = strength 2)
+                    damage_ratio = 1.0
+                    if 2 <= attacker_strength <= 14 and 2 <= target_strength <= 14:
+                        attacker_idx = attacker_strength - 2  # Convert to 0-based index (0-12)
+                        # Target strength columns are in reverse order: 14->0, 13->1, ..., 2->12
+                        target_idx = 14 - target_strength  # Convert to column index (14->0, 2->12)
+                        if 0 <= attacker_idx < len(SA_INF_ARMOR_DAMAGE_RATIOS):
+                            if 0 <= target_idx < len(SA_INF_ARMOR_DAMAGE_RATIOS[attacker_idx]):
+                                damage_ratio = SA_INF_ARMOR_DAMAGE_RATIOS[attacker_idx][target_idx]
+                    
+                    # Determine which range table to use for this unit
+                    use_vanilla_range_table = unit_use_vanilla_map.get(unit_name, False)
+                    unit_range_table = RANGE_MODIFIERS_TABLE if use_vanilla_range_table else self.get_current_range_modifier_table()
+                    
                     # Calculate DPM for this weapon
+                    damage_type = self.damage_type_var.get() if hasattr(self, 'damage_type_var') else "Physical"
                     dpm_data = calculate_dpm(
                         ammo_props,
                         weapon_info["quantity"],
@@ -761,10 +1196,15 @@ class InfantryTab:
                         veterancy_level,
                         veterancy_accuracy_bonus,
                         reload_speed_multiplier,
-                        self.get_current_range_modifier_table(),
+                        unit_range_table,
                         use_multiplicative_vet_bonus=self.app.range_modifier_vet_bonus_type.get(
                             self.app.current_range_modifier_table_name, True
-                        )
+                        ),
+                        has_shock_trait=has_shock_trait,
+                        shock_range=getattr(self.app, 'shock_range', 100.0),
+                        shock_bonuses=getattr(self.app, 'shock_bonuses', None),
+                        damage_ratio_multiplier=damage_ratio,
+                        damage_type=damage_type
                     )
                     
                     # Calculate shots per minute and ammunition consumption
@@ -785,6 +1225,8 @@ class InfantryTab:
                         "veterancy_accuracy_bonus": veterancy_accuracy_bonus,
                         "shots_per_minute": shots_per_minute,
                         "ammo_consumption_per_minute": ammo_consumption_per_minute,
+                        "use_vanilla_range_table": use_vanilla_range_table,  # Store for info display
+                        "has_shock_trait": has_shock_trait,  # Store for info display
                     }
                     
                     all_weapon_dpm_data.append(dpm_data)
@@ -815,21 +1257,40 @@ class InfantryTab:
             if total_dpm_by_range:
                 ranges = sorted(total_dpm_by_range.keys())
                 dpm_values = [total_dpm_by_range[r] for r in ranges]
-                color = colors[color_idx % len(colors)]
+                # Use dropdown index to determine color (maintains color based on position in left panel)
+                dropdown_idx = unit_dropdown_index_map.get(unit_name, 0)
+                color = colors[dropdown_idx % len(colors)]
                 
                 # Track maximum range for x-axis ticks
                 max_chart_range = max(max_chart_range, max(ranges))
                 
-                # Use unit name for legend (not display name/token)
-                line, = self.ax.plot(ranges, dpm_values, label=unit_name, color=color, linewidth=2)
+                # Use dashed line style if using vanilla range table
+                use_vanilla_range_table = unit_use_vanilla_map.get(unit_name, False)
+                linestyle = '--' if use_vanilla_range_table else '-'
                 
-                # Store line data for tooltips (total DPM)
+                # Get adjusted unit price for legend and normalization (falls back to actual price)
+                unit_price = unit_price_map.get(unit_name, unit_info.get("price"))
+                
+                # Normalize by price if checkbox is checked
+                normalize_by_price = self.normalize_by_price_var.get() if hasattr(self, 'normalize_by_price_var') else False
+                if normalize_by_price and unit_price and unit_price > 0:
+                    # Normalize DPM values by dividing by price
+                    dpm_values = [dpm / unit_price for dpm in dpm_values]
+                
+                # Create legend label with price
+                if unit_price:
+                    legend_label = f"{unit_name} ({unit_price} pts)"
+                else:
+                    legend_label = f"{unit_name} (N/A pts)"
+                
+                # Use unit name for legend with price
+                line, = self.ax.plot(ranges, dpm_values, label=legend_label, color=color, linewidth=2, linestyle=linestyle)
+                
+                # Store line data for tooltips (total DPM, normalized if applicable)
                 self.line_data[unit_name] = list(zip(ranges, dpm_values))
                 
                 # Store individual weapon DPM data for this unit
                 self.weapon_dpm_data[unit_name] = unit_weapon_data
-                
-                color_idx += 1
         
         # Process custom units (units with custom_unit flag)
         for unit_name in selected_units:
@@ -857,7 +1318,9 @@ class InfantryTab:
                     continue
                 
                 # Must have required properties for DPM calculation
-                if not (ammo_props.get("idling") and ammo_props.get("max_range") and ammo_props.get("physical_damages")):
+                damage_type = self.damage_type_var.get() if hasattr(self, 'damage_type_var') else "Physical"
+                required_damage = ammo_props.get("suppress_damages") if damage_type == "Suppression" else ammo_props.get("physical_damages")
+                if not (ammo_props.get("idling") and ammo_props.get("max_range") and required_damage):
                     continue
                 
                 # Track max range for this unit
@@ -869,7 +1332,41 @@ class InfantryTab:
                 veterancy_reload_multipliers = unit_info.get("veterancy_reload_speed_multipliers", {})
                 reload_speed_multiplier = veterancy_reload_multipliers.get(veterancy_level, 1.0)
                 
+                # Check if unit has Shock trait
+                has_shock_trait = unit_info.get("has_shock_trait", False)
+                
+                # Get attacker strength and target strength for damage ratio
+                attacker_strength = unit_info.get("strength", 7)  # Default to 7 if not found
+                # Ensure attacker_strength is an integer
+                try:
+                    attacker_strength = int(attacker_strength) if attacker_strength is not None else 7
+                except (ValueError, TypeError):
+                    attacker_strength = 7
+                
+                # If target strength not set, default to attacker's strength (1.0 ratio)
+                target_strength = unit_target_strength_map.get(unit_name, attacker_strength)
+                # Ensure target_strength is an integer
+                try:
+                    target_strength = int(target_strength) if target_strength is not None else attacker_strength
+                except (ValueError, TypeError):
+                    target_strength = attacker_strength
+                
+                # Calculate damage ratio from SA_INF_ARMOR_DAMAGE_RATIOS table
+                # Table is indexed by attacker strength (2-14), then target strength (2-14)
+                damage_ratio = 1.0
+                if 2 <= attacker_strength <= 14 and 2 <= target_strength <= 14:
+                    attacker_idx = attacker_strength - 2  # Convert to 0-based index
+                    target_idx = target_strength - 2  # Convert to 0-based index
+                    if 0 <= attacker_idx < len(SA_INF_ARMOR_DAMAGE_RATIOS):
+                        if 0 <= target_idx < len(SA_INF_ARMOR_DAMAGE_RATIOS[attacker_idx]):
+                            damage_ratio = SA_INF_ARMOR_DAMAGE_RATIOS[attacker_idx][target_idx]
+                
+                # Determine which range table to use for this unit
+                use_vanilla_range_table = unit_use_vanilla_map.get(unit_name, False)
+                unit_range_table = RANGE_MODIFIERS_TABLE if use_vanilla_range_table else self.get_current_range_modifier_table()
+                
                 # Calculate DPM for this weapon using the standard calculate_dpm function
+                damage_type = self.damage_type_var.get() if hasattr(self, 'damage_type_var') else "Physical"
                 weapon_dpm_data = calculate_dpm(
                     ammo_props,
                     quantity,  # Use stored quantity
@@ -878,10 +1375,15 @@ class InfantryTab:
                     veterancy_level,
                     veterancy_accuracy_bonus,
                     reload_speed_multiplier,
-                    self.get_current_range_modifier_table(),
+                    unit_range_table,
                     use_multiplicative_vet_bonus=self.app.range_modifier_vet_bonus_type.get(
                         self.app.current_range_modifier_table_name, True
-                    )
+                    ),
+                    has_shock_trait=has_shock_trait,
+                    shock_range=getattr(self.app, 'shock_range', 100.0),
+                    shock_bonuses=getattr(self.app, 'shock_bonuses', None),
+                    damage_ratio_multiplier=damage_ratio,
+                    damage_type=damage_type
                 )
                 
                 # Store weapon data with quantity
@@ -893,6 +1395,7 @@ class InfantryTab:
                     "veterancy_accuracy_bonus": veterancy_accuracy_bonus,
                     "shots_per_minute": calculate_shots_per_minute(ammo_props, reload_speed_multiplier),
                     "ammo_consumption_per_minute": calculate_shots_per_minute(ammo_props, reload_speed_multiplier) * (ammo_props.get("affichage_munition_par_salve", 0.0) / ammo_props.get("nb_tir_par_salves", 1.0)),
+                    "use_vanilla_range_table": use_vanilla_range_table,  # Store for info display
                 }
                 
                 # Add to total DPM
@@ -910,27 +1413,46 @@ class InfantryTab:
                 # Convert to sorted list
                 ranges = sorted(total_dpm_by_range.keys())
                 dpm_values = [total_dpm_by_range[r] for r in ranges]
-                color = colors[color_idx % len(colors)]
+                # Use dropdown index to determine color (maintains color based on position in left panel)
+                dropdown_idx = unit_dropdown_index_map.get(unit_name, 0)
+                color = colors[dropdown_idx % len(colors)]
                 
                 # Track maximum range for x-axis ticks
                 max_chart_range = max(max_chart_range, max(ranges))
                 
-                # Plot custom unit
-                line, = self.ax.plot(ranges, dpm_values, label=unit_name, color=color, linewidth=2, linestyle='--')
+                # Use dashed line style if using vanilla range table
+                use_vanilla_range_table = unit_use_vanilla_map.get(unit_name, False)
+                linestyle = '--' if use_vanilla_range_table else '-'
                 
-                # Store line data for tooltips
+                # Get adjusted unit price for legend and normalization (falls back to actual price)
+                unit_price = unit_price_map.get(unit_name, unit_info.get("price"))
+                
+                # Normalize by price if checkbox is checked
+                normalize_by_price = self.normalize_by_price_var.get() if hasattr(self, 'normalize_by_price_var') else False
+                if normalize_by_price and unit_price and unit_price > 0:
+                    # Normalize DPM values by dividing by price
+                    dpm_values = [dpm / unit_price for dpm in dpm_values]
+                
+                # Create legend label with price
+                if unit_price:
+                    legend_label = f"{unit_name} ({unit_price} pts)"
+                else:
+                    legend_label = f"{unit_name} (N/A pts)"
+                
+                # Plot custom unit with price in legend
+                line, = self.ax.plot(ranges, dpm_values, label=legend_label, color=color, linewidth=2, linestyle=linestyle)
+                
+                # Store line data for tooltips (normalized if applicable)
                 self.line_data[unit_name] = list(zip(ranges, dpm_values))
                 
                 # Store individual weapon DPM data for this unit
                 self.weapon_dpm_data[unit_name] = unit_weapon_data
-                
-                color_idx += 1
         
         # All units for display (custom units are already in selected_units)
         all_units_for_display = selected_units
         all_unit_veterancy_map = unit_veterancy_map.copy()
         
-        if color_idx > 0:
+        if selected_units:
             # Display veterancy bonuses in the info panel
             self._display_veterancy_bonuses_in_info_panel(all_units_for_display, all_unit_veterancy_map)
             
@@ -975,11 +1497,13 @@ class InfantryTab:
         
         # Get all small arms ammunition names
         weapon_names = []
+        damage_type = self.damage_type_var.get() if hasattr(self, 'damage_type_var') else "Physical"
         for ammo_name, ammo_props in self.app.ammunition_props.items():
             damage_family = ammo_props.get("damage_family", "")
             if damage_family in SMALL_ARMS_DAMAGE_FAMILIES:
-                # Check if it has required properties
-                if ammo_props.get("idling") and ammo_props.get("max_range") and ammo_props.get("physical_damages"):
+                # Check if it has required properties (check for appropriate damage type)
+                required_damage = ammo_props.get("suppress_damages") if damage_type == "Suppression" else ammo_props.get("physical_damages")
+                if ammo_props.get("idling") and ammo_props.get("max_range") and required_damage:
                     weapon_names.append(ammo_name)
         
         # Add custom weapons
@@ -1013,18 +1537,24 @@ class InfantryTab:
                 acc_bonus = acc_bonuses.get(level, 0.0)
                 reload_mult = reload_multipliers.get(level, 1.0)
                 
+                # Normalize values to avoid floating point precision issues
+                # Round to 6 decimal places for accuracy bonus (handles values like 0.0105)
+                # Round to 4 decimal places for reload multiplier (handles values like 0.85)
+                acc_bonus_normalized = round(float(acc_bonus), 6)
+                reload_mult_normalized = round(float(reload_mult), 4)
+                
                 # Format as string for display
-                acc_percent = acc_bonus * 100.0
-                if acc_bonus == 0.0 and reload_mult == 1.0:
+                acc_percent = acc_bonus_normalized * 100.0
+                if acc_bonus_normalized == 0.0 and reload_mult_normalized == 1.0:
                     display = "No bonuses"
-                elif acc_bonus == 0.0:
-                    display = f"Reload: {reload_mult:.2f}x"
-                elif reload_mult == 1.0:
+                elif acc_bonus_normalized == 0.0:
+                    display = f"Reload: {reload_mult_normalized:.2f}x"
+                elif reload_mult_normalized == 1.0:
                     display = f"Acc: +{acc_percent:.1f}%"
                 else:
-                    display = f"Acc: +{acc_percent:.1f}%, Reload: {reload_mult:.2f}x"
+                    display = f"Acc: +{acc_percent:.1f}%, Reload: {reload_mult_normalized:.2f}x"
                 
-                bonus_set.add((acc_bonus, reload_mult, display))
+                bonus_set.add((acc_bonus_normalized, reload_mult_normalized, display))
         
         # Convert to sorted list (by accuracy bonus, then reload multiplier)
         self.bonus_combinations = sorted(bonus_set, key=lambda x: (x[0], x[1]))
@@ -1037,7 +1567,17 @@ class InfantryTab:
             for combo in self.custom_unit_bonus_combos:
                 combo.set_values(bonus_display_strings)
         
+        # Update preview bonus combo if it exists
+        if hasattr(self, 'preview_bonus_combo'):
+            self.preview_bonus_combo.set_values(bonus_display_strings)
+        
         return bonus_display_strings
+    
+    def get_bonus_display_strings(self) -> List[str]:
+        """Get list of bonus display strings."""
+        if not hasattr(self, 'bonus_combinations') or not self.bonus_combinations:
+            self.collect_bonus_combinations()
+        return [combo[2] for combo in self.bonus_combinations]
     
     def get_bonus_values_from_display(self, display_string: str):
         """Get accuracy bonus and reload multiplier from display string."""
@@ -1065,6 +1605,7 @@ class InfantryTab:
         self.custom_weapon_max_range_var.set(str(ammo_props.get("max_range", 400)))
         self.custom_weapon_accuracy_var.set(str(ammo_props.get("idling", 0.5)))
         self.custom_weapon_damage_var.set(str(ammo_props.get("physical_damages", 10)))
+        self.custom_weapon_suppress_damage_var.set(str(ammo_props.get("suppress_damages", 10)))
         self.custom_weapon_damage_family_var.set(ammo_props.get("damage_family", "DamageFamily_sa_intermediate"))
         self.custom_weapon_shots_per_salvo_var.set(str(ammo_props.get("nb_tir_par_salves", 1)))
         self.custom_weapon_time_between_salvos_var.set(str(ammo_props.get("time_between_salvos", 2.0)))
@@ -1077,6 +1618,122 @@ class InfantryTab:
         
         self.custom_weapon_aiming_time_var.set(str(ammo_props.get("aiming_time", 1.0)))
         self.custom_weapon_ammo_per_salvo_var.set(str(ammo_props.get("affichage_munition_par_salve", 1)))
+        
+        # Update preview after loading weapon
+        if hasattr(self, 'update_preview'):
+            self.update_preview()
+    
+    def update_preview(self):
+        """Update the live preview of DPM, Shots/min, and Ammo/min based on current form values."""
+        try:
+            # Get values from form, with defaults if empty
+            max_range_str = self.custom_weapon_max_range_var.get().strip()
+            accuracy_str = self.custom_weapon_accuracy_var.get().strip()
+            damage_str = self.custom_weapon_damage_var.get().strip()
+            suppress_damage_str = self.custom_weapon_suppress_damage_var.get().strip()
+            shots_per_salvo_str = self.custom_weapon_shots_per_salvo_var.get().strip()
+            time_between_salvos_str = self.custom_weapon_time_between_salvos_var.get().strip()
+            time_between_shots_str = self.custom_weapon_time_between_shots_var.get().strip()
+            aiming_time_str = self.custom_weapon_aiming_time_var.get().strip()
+            ammo_per_salvo_str = self.custom_weapon_ammo_per_salvo_var.get().strip()
+            
+            # Get damage type from dropdown
+            damage_type = self.damage_type_var.get() if hasattr(self, 'damage_type_var') else "Physical"
+            
+            # Validate that required fields have values
+            required_damage_str = suppress_damage_str if damage_type == "Suppression" else damage_str
+            if not all([max_range_str, accuracy_str, required_damage_str, shots_per_salvo_str, time_between_salvos_str]):
+                self.preview_dpm_label.config(text="DPM: --")
+                self.preview_shots_label.config(text="Shots/min: --")
+                self.preview_ammo_label.config(text="Ammo/min: --")
+                return
+            
+            # Parse values
+            max_range = float(max_range_str)
+            accuracy = float(accuracy_str)
+            if damage_type == "Suppression":
+                damage = float(suppress_damage_str) if suppress_damage_str else 0.0
+            else:
+                damage = float(damage_str)
+            shots_per_salvo = int(shots_per_salvo_str) if shots_per_salvo_str else 1
+            time_between_salvos = float(time_between_salvos_str)
+            time_between_shots = float(time_between_shots_str) if time_between_shots_str else None
+            aiming_time = float(aiming_time_str) if aiming_time_str else 0.0
+            ammo_per_salvo = float(ammo_per_salvo_str) if ammo_per_salvo_str else 1.0
+            
+            # Validate basic constraints
+            if max_range <= 0 or accuracy < 0 or accuracy > 1 or damage <= 0 or shots_per_salvo <= 0 or time_between_salvos <= 0:
+                self.preview_dpm_label.config(text="DPM: Invalid")
+                self.preview_shots_label.config(text="Shots/min: Invalid")
+                self.preview_ammo_label.config(text="Ammo/min: Invalid")
+                return
+            
+            # Get bonus values from preview bonus dropdown
+            bonus_display = self.preview_bonus_combo.get() if hasattr(self, 'preview_bonus_combo') else "No bonuses"
+            veterancy_accuracy_bonus, reload_speed_multiplier = self.get_bonus_values_from_display(bonus_display)
+            
+            # Create temporary ammo_props dict for calculations
+            ammo_props = {
+                "max_range": max_range,
+                "idling": accuracy,
+                "physical_damages": float(damage_str) if damage_str else 0.0,
+                "suppress_damages": float(suppress_damage_str) if suppress_damage_str else 0.0,
+                "nb_tir_par_salves": shots_per_salvo,
+                "time_between_salvos": time_between_salvos,
+                "time_between_shots": time_between_shots,
+                "aiming_time": aiming_time,
+                "affichage_munition_par_salve": ammo_per_salvo,
+            }
+            
+            # Use appropriate damage value based on damage type
+            if damage_type == "Suppression":
+                effective_damage = ammo_props.get("suppress_damages", 0.0)
+            else:
+                effective_damage = ammo_props.get("physical_damages", 0.0)
+            
+            # Calculate shots per minute with reload multiplier
+            shots_per_minute = calculate_shots_per_minute(ammo_props, reload_speed_multiplier=reload_speed_multiplier, shot_time_multiplier=1.0)
+            
+            # Calculate ammo per minute
+            ammo_per_minute = shots_per_minute * (ammo_per_salvo / shots_per_salvo) if shots_per_salvo > 0 else 0.0
+            
+            # Calculate DPM at max range for preview
+            # Use the current range modifier table from the app
+            range_modifiers_table = self.get_current_range_modifier_table() if hasattr(self, 'get_current_range_modifier_table') else RANGE_MODIFIERS_TABLE
+            use_multiplicative_vet_bonus = self.app.range_modifier_vet_bonus_type.get(
+                self.app.current_range_modifier_table_name, True
+            )
+            
+            # Calculate accuracy at max range
+            preview_accuracy = calculate_accuracy(
+                max_range,  # Range at max range
+                max_range,
+                accuracy,
+                successive_hits=0,  # No successive hits for preview
+                veterancy_level=0,  # No veterancy for preview
+                veterancy_accuracy_bonus=veterancy_accuracy_bonus,
+                range_modifiers_table=range_modifiers_table,
+                use_multiplicative_vet_bonus=use_multiplicative_vet_bonus,
+            )
+            
+            # Calculate DPM (assuming 1 weapon for preview)
+            dpm = preview_accuracy * effective_damage * shots_per_minute * 1
+            
+            # Update labels with formatted values
+            self.preview_dpm_label.config(text=f"DPM: {dpm:.2f}")
+            self.preview_shots_label.config(text=f"Shots/min: {shots_per_minute:.1f}")
+            self.preview_ammo_label.config(text=f"Ammo/min: {ammo_per_minute:.1f}")
+            
+        except (ValueError, ZeroDivisionError):
+            # Invalid input, show dashes
+            self.preview_dpm_label.config(text="DPM: --")
+            self.preview_shots_label.config(text="Shots/min: --")
+            self.preview_ammo_label.config(text="Ammo/min: --")
+        except Exception:
+            # Any other error, show dashes
+            self.preview_dpm_label.config(text="DPM: --")
+            self.preview_shots_label.config(text="Shots/min: --")
+            self.preview_ammo_label.config(text="Ammo/min: --")
     
     def create_custom_weapon(self):
         """Create a custom weapon from user input."""
@@ -1090,6 +1747,8 @@ class InfantryTab:
             max_range = float(self.custom_weapon_max_range_var.get())
             accuracy = float(self.custom_weapon_accuracy_var.get())
             damage = float(self.custom_weapon_damage_var.get())
+            suppress_damage_str = self.custom_weapon_suppress_damage_var.get().strip()
+            suppress_damage = float(suppress_damage_str) if suppress_damage_str else 0.0
             damage_family = self.custom_weapon_damage_family_var.get()
             shots_per_salvo = int(self.custom_weapon_shots_per_salvo_var.get())
             time_between_salvos = float(self.custom_weapon_time_between_salvos_var.get())
@@ -1108,6 +1767,7 @@ class InfantryTab:
                 "max_range": max_range,
                 "idling": accuracy,
                 "physical_damages": damage,
+                "suppress_damages": suppress_damage,
                 "damage_family": damage_family,
                 "nb_tir_par_salves": shots_per_salvo,
                 "time_between_salvos": time_between_salvos,
@@ -1189,6 +1849,12 @@ class InfantryTab:
                     veterancy_accuracy_bonuses[level] = acc_bonus
                     veterancy_reload_speed_multipliers[level] = reload_mult
         
+        # Get shock trait checkbox value
+        has_shock_trait = self.custom_unit_shock_trait_var.get()
+        
+        # Get strength value
+        strength = self.custom_unit_strength_var.get()
+        
         # Create custom unit entry in infantry_units (so it appears in dropdowns)
         custom_unit_info = {
             "is_infantry": True,
@@ -1203,6 +1869,8 @@ class InfantryTab:
             "custom_unit": True,  # Flag to identify custom units
             "custom_weapons": selected_weapons,  # Store selected weapons with quantities
             "default_veterancy_level": available_vet_levels[0],  # Store default veterancy (first available)
+            "has_shock_trait": has_shock_trait,  # Store shock trait
+            "strength": strength,  # Store strength
         }
         
         # Add to infantry_units (replace if name already exists)
@@ -1241,6 +1909,12 @@ class InfantryTab:
         # Reset veterancy checkboxes (only level 0 checked)
         for i, var in enumerate(self.custom_unit_vet_vars):
             var.set(i == 0)
+        # Reset shock trait checkbox
+        self.custom_unit_shock_trait_var.set(False)
+        
+        # Reset strength to default
+        self.custom_unit_strength_var.set(7)
+        
         # Reset veterancy bonuses (set to "No bonuses")
         for combo in self.custom_unit_bonus_combos:
             combo.var.set("No bonuses")
@@ -1372,6 +2046,7 @@ class InfantryTab:
         self.custom_weapon_max_range_var.set(str(weapon_props.get("max_range", 0)))
         self.custom_weapon_accuracy_var.set(str(weapon_props.get("idling", 0)))
         self.custom_weapon_damage_var.set(str(weapon_props.get("physical_damages", 0)))
+        self.custom_weapon_suppress_damage_var.set(str(weapon_props.get("suppress_damages", 0)))
         self.custom_weapon_damage_family_var.set(weapon_props.get("damage_family", "DamageFamily_sa_intermediate"))
         self.custom_weapon_shots_per_salvo_var.set(str(weapon_props.get("nb_tir_par_salves", 1)))
         self.custom_weapon_time_between_salvos_var.set(str(weapon_props.get("time_between_salvos", 1.0)))
@@ -1379,6 +2054,10 @@ class InfantryTab:
         self.custom_weapon_time_between_shots_var.set(str(time_between_shots) if time_between_shots is not None else "")
         self.custom_weapon_aiming_time_var.set(str(weapon_props.get("aiming_time", 0)))
         self.custom_weapon_ammo_per_salvo_var.set(str(weapon_props.get("affichage_munition_par_salve", 1.0)))
+        
+        # Update preview after loading weapon for editing
+        if hasattr(self, 'update_preview'):
+            self.update_preview()
         
         # Update button text to show we're editing
         if hasattr(self, 'weapon_button_frame'):
@@ -1441,6 +2120,14 @@ class InfantryTab:
         available_vet_levels = unit_info.get("available_veterancy_levels", [0])
         for i, var in enumerate(self.custom_unit_vet_vars):
             var.set(i in available_vet_levels)
+        
+        # Set shock trait checkbox based on unit's shock trait
+        has_shock_trait = unit_info.get("has_shock_trait", False)
+        self.custom_unit_shock_trait_var.set(has_shock_trait)
+        
+        # Set strength field based on unit's strength
+        strength = unit_info.get("strength", 7)
+        self.custom_unit_strength_var.set(strength)
         
         # Populate veterancy bonuses
         veterancy_accuracy_bonuses = unit_info.get("veterancy_accuracy_bonuses", {})
@@ -1533,12 +2220,6 @@ class InfantryTab:
             veterancy_reload_multipliers = unit_info.get("veterancy_reload_speed_multipliers", {})
             reload_multiplier = veterancy_reload_multipliers.get(veterancy_level, 1.0)
             
-            # Debug output to console
-            if not veterancy_accuracy_bonuses and not veterancy_reload_multipliers:
-                xp_pack = unit_info.get("experience_levels_pack", "None")
-                print(f"DEBUG: {unit_name} (Lv {veterancy_level}) - No bonuses found. XP Pack: {xp_pack}")
-                print(f"DEBUG: Unit info keys: {list(unit_info.keys())}")
-            
             # Format bonuses
             accuracy_percent = accuracy_bonus * 100.0
             
@@ -1558,8 +2239,12 @@ class InfantryTab:
                     reload_penalty_percent = (reload_multiplier - 1.0) * 100.0
                     bonus_parts.append(f"Reload: -{reload_penalty_percent:.1f}%")
             
+            # Get unit price
+            unit_price = unit_info.get("price")
+            price_text = f" ({unit_price} pts)" if unit_price else " (N/A pts)"
+            
             # Format with indentation
-            bonus_lines.append(f"{unit_name} (Lv {veterancy_level}):")
+            bonus_lines.append(f"{unit_name}{price_text} (Lv {veterancy_level}):")
             if bonus_parts:
                 for bonus_part in bonus_parts:
                     bonus_lines.append(f"    {bonus_part}")
@@ -1577,11 +2262,8 @@ class InfantryTab:
         bonus_lines.append("on the chart to see")
         bonus_lines.append("detailed information.")
         
-        # Update info panel
-        self.info_text.config(state=tk.NORMAL)
-        self.info_text.delete('1.0', tk.END)
-        self.info_text.insert('1.0', '\n'.join(bonus_lines))
-        self.info_text.config(state=tk.DISABLED)
+        # Update info panel (check if widget still exists)
+        self._safe_update_info_text('\n'.join(bonus_lines))
     
     def _get_unit_color(self, unit_name: str) -> str:
         """Get the color used for a unit's line in the chart."""
@@ -1683,8 +2365,13 @@ class InfantryTab:
             if marker_x:
                 self.hover_marker = self.ax.scatter(marker_x, marker_y, s=100, c='red', marker='X', zorder=10, label='Hovered Range')
             
+            # Get unit price
+            unit_info = self.app.infantry_units.get(closest_unit, {})
+            unit_price = unit_info.get("price")
+            price_text = f' ({unit_price} pts)' if unit_price else ' (N/A pts)'
+            
             # Build tooltip text with weapon breakdown
-            tooltip_lines = [f'{closest_unit}', f'Range: {x:.0f}m', f'Total DPM: {y:.2f}', '']
+            tooltip_lines = [f'{closest_unit}{price_text}', f'Range: {x:.0f}m', f'Total DPM: {y:.2f}', '']
             
             # Add individual weapon DPM breakdown
             if closest_unit in self.weapon_dpm_data:
@@ -1709,6 +2396,10 @@ class InfantryTab:
                             veterancy_accuracy_bonus = weapon_info.get("veterancy_accuracy_bonus", 0.0)
                             
                             if max_range > 0:
+                                # Determine which range table to use for this weapon
+                                use_vanilla_range_table = weapon_info.get("use_vanilla_range_table", False)
+                                weapon_range_table = RANGE_MODIFIERS_TABLE if use_vanilla_range_table else self.get_current_range_modifier_table()
+                                
                                 accuracy = calculate_accuracy(
                                     x,
                                     max_range,
@@ -1716,24 +2407,48 @@ class InfantryTab:
                                     self.successive_hits,
                                     veterancy_level,
                                     veterancy_accuracy_bonus,
-                                    self.get_current_range_modifier_table(),
+                                    weapon_range_table,
                                     use_multiplicative_vet_bonus=self.app.range_modifier_vet_bonus_type.get(
                                         self.app.current_range_modifier_table_name, True
                                     )
                                 )
+                                
+                                # Apply shock aim time bonus if applicable (within shock range)
+                                has_shock_trait = weapon_info.get("has_shock_trait", False)
+                                shock_range = getattr(self.app, 'shock_range', 100.0)
+                                shock_bonuses = getattr(self.app, 'shock_bonuses', {})
+                                if has_shock_trait and x <= shock_range:
+                                    aim_time_multiplier = shock_bonuses.get("aim_time_multiplier", 0.85)
+                                    SHOCK_AIM_TIME_SPEED_MULTIPLIER = 1.0 / aim_time_multiplier if aim_time_multiplier > 0 else 1.0
+                                    accuracy = min(1.0, accuracy * SHOCK_AIM_TIME_SPEED_MULTIPLIER)
                         
                         # Get additional weapon stats from ammo_props
                         ammo_props_for_stats = weapon_info.get("ammo_props", {})
                         salvo_reload = ammo_props_for_stats.get("time_between_salvos", 0.0)
                         shot_reload = ammo_props_for_stats.get("time_between_shots", None)
                         shots_per_salvo = ammo_props_for_stats.get("nb_tir_par_salves", 1)
-                        physical_damage = ammo_props_for_stats.get("physical_damages", 0.0)
-                        per_weapon_damage = physical_damage  # Physical damage is per weapon
-                        total_damage = physical_damage * quantity if quantity > 0 else 0.0
+                        damage_type = self.damage_type_var.get() if hasattr(self, 'damage_type_var') else "Physical"
+                        if damage_type == "Suppression":
+                            base_damage = ammo_props_for_stats.get("suppress_damages", 0.0)
+                            damage_label = "Suppression Damage"
+                        else:
+                            base_damage = ammo_props_for_stats.get("physical_damages", 0.0)
+                            damage_label = "Physical Damage"
                         
-                        tooltip_lines.append(f'  {weapon_name}:')
+                        # Apply shock damage bonus if applicable (within shock range, only for physical)
+                        has_shock_trait = weapon_info.get("has_shock_trait", False)
+                        shock_range = getattr(self.app, 'shock_range', 100.0)
+                        shock_bonuses = getattr(self.app, 'shock_bonuses', {})
+                        if has_shock_trait and x <= shock_range and damage_type == "Physical":
+                            SHOCK_DAMAGE_MULTIPLIER = shock_bonuses.get("damage_multiplier", 1.15)
+                            base_damage = base_damage * SHOCK_DAMAGE_MULTIPLIER
+                        
+                        per_weapon_damage = base_damage
+                        total_damage = base_damage * quantity if quantity > 0 else 0.0
+                        
+                        tooltip_lines.append(f'  [ {quantity}x ] {weapon_name}:')
                         tooltip_lines.append(f'    DPM: {total_weapon_dpm:.2f} ({per_weapon_dpm:.2f} per weapon)')
-                        tooltip_lines.append(f'    Physical Damage: {total_damage:.2f} ({per_weapon_damage:.2f} per weapon)')
+                        tooltip_lines.append(f'    {damage_label}: {total_damage:.2f} ({per_weapon_damage:.2f} per weapon)')
                         tooltip_lines.append(f'    Base Accuracy: {base_accuracy * 100:.1f}%')
                         tooltip_lines.append(f'    Accuracy: {accuracy * 100:.1f}%')
                         tooltip_lines.append(f'    Shots/min: {shots_per_min:.1f} (per weapon)')
@@ -1748,9 +2463,6 @@ class InfantryTab:
             tooltip_text = '\n'.join(tooltip_lines)
             
             # Update info panel with veterancy bonuses always at top, then data point info
-            self.info_text.config(state=tk.NORMAL)
-            self.info_text.delete('1.0', tk.END)
-            
             # Build complete text content
             content_lines = []
             
@@ -1768,10 +2480,15 @@ class InfantryTab:
             content_lines.append('Click to select this range')
             content_lines.append('and see all units.')
             
-            # Insert all content at once
-            self.info_text.insert('1.0', '\n'.join(content_lines))
-            self.info_text.config(state=tk.DISABLED)
-            self.info_text.see('1.0')
+            # Insert all content at once (safely)
+            try:
+                if hasattr(self, 'info_text') and self.info_text.winfo_exists():
+                    self.info_text.insert('1.0', '\n'.join(content_lines))
+                    self.info_text.config(state=tk.DISABLED)
+                    self.info_text.see('1.0')
+            except tk.TclError:
+                # Widget was destroyed, silently ignore
+                pass
             
             self.canvas.draw_idle()
         else:
@@ -1879,8 +2596,71 @@ class InfantryTab:
         
         # Display each unit's information
         for unit_name, total_dpm in unit_dpm_at_range:
-            info_lines.append(f"{unit_name}")
-            info_lines.append(f"  Total DPM: {total_dpm:.2f}")
+            unit_info = self.app.infantry_units.get(unit_name, {})
+            unit_price = unit_info.get("price")
+            price_text = f" ({unit_price} pts)" if unit_price else " (N/A pts)"
+            
+            # Get unit strength and target strength
+            unit_strength = unit_info.get("strength", 7)
+            try:
+                unit_strength = int(unit_strength) if unit_strength is not None else 7
+            except (ValueError, TypeError):
+                unit_strength = 7
+            
+            # Get target strength directly from dropdowns (like generate_chart does)
+            # Find the dropdown for this unit and get its target strength from the combobox
+            target_strength = unit_strength  # Default to unit strength
+            for idx, dropdown in enumerate(self.unit_dropdowns):
+                if isinstance(dropdown, SearchableCombobox):
+                    dropdown_unit_name = dropdown.get()
+                else:
+                    dropdown_unit_name = dropdown.get()
+                
+                if dropdown_unit_name == unit_name:
+                    # Found the dropdown for this unit, get target strength from combobox
+                    if dropdown in self.unit_target_strength_combos:
+                        target_strength_combo = self.unit_target_strength_combos[dropdown]
+                        try:
+                            combo_value = target_strength_combo.get()
+                            target_strength = int(combo_value) if combo_value else unit_strength
+                        except (ValueError, TypeError, tk.TclError):
+                            # Fallback to stored value if combobox read fails
+                            stored_target = self.unit_target_strength.get(dropdown, unit_strength)
+                            try:
+                                target_strength = int(stored_target) if stored_target is not None else unit_strength
+                            except (ValueError, TypeError):
+                                target_strength = unit_strength
+                    else:
+                        # Fallback to stored value if combobox not found
+                        stored_target = self.unit_target_strength.get(dropdown, unit_strength)
+                        try:
+                            target_strength = int(stored_target) if stored_target is not None else unit_strength
+                        except (ValueError, TypeError):
+                            target_strength = unit_strength
+                    break
+            
+            # Calculate damage ratio
+            # Table is indexed by attacker strength (2-14), then target strength (14-2, reverse order)
+            # Columns represent target strengths 14, 13, 12, ..., 3, 2 (column 0 = strength 14, column 12 = strength 2)
+            damage_ratio = 1.0
+            damage_ratio_percent = 100
+            if 2 <= unit_strength <= 14 and 2 <= target_strength <= 14:
+                attacker_idx = unit_strength - 2  # Convert to 0-based index (0-12)
+                # Target strength columns are in reverse order: 14->0, 13->1, ..., 2->12
+                target_idx = 14 - target_strength  # Convert to column index (14->0, 2->12)
+                if 0 <= attacker_idx < len(SA_INF_ARMOR_DAMAGE_RATIOS):
+                    if 0 <= target_idx < len(SA_INF_ARMOR_DAMAGE_RATIOS[attacker_idx]):
+                        damage_ratio = SA_INF_ARMOR_DAMAGE_RATIOS[attacker_idx][target_idx]
+                        damage_ratio_percent = int(damage_ratio * 100)
+            
+            # Calculate DPM at 100% damage (without ratio applied)
+            # total_dpm already has damage_ratio applied, so divide by it to get base DPM
+            dpm_at_100_percent = total_dpm / damage_ratio if damage_ratio > 0 else total_dpm
+            
+            info_lines.append(f"{unit_name}{price_text}")
+            info_lines.append(f"  Unit Strength: {unit_strength}")
+            info_lines.append(f"  Target Strength: {target_strength} ({damage_ratio_percent}% damage)")
+            info_lines.append(f"  Total DPM: {dpm_at_100_percent:.2f} ({total_dpm:.2f})")
             info_lines.append("")
             
             # Add weapon breakdown for this unit
@@ -1905,6 +2685,10 @@ class InfantryTab:
                             veterancy_accuracy_bonus = weapon_info.get("veterancy_accuracy_bonus", 0.0)
                             
                             if max_range > 0:
+                                # Determine which range table to use for this weapon
+                                use_vanilla_range_table = weapon_info.get("use_vanilla_range_table", False)
+                                weapon_range_table = RANGE_MODIFIERS_TABLE if use_vanilla_range_table else self.get_current_range_modifier_table()
+                                
                                 accuracy = calculate_accuracy(
                                     range_val,
                                     max_range,
@@ -1912,24 +2696,48 @@ class InfantryTab:
                                     self.successive_hits,
                                     veterancy_level,
                                     veterancy_accuracy_bonus,
-                                    self.get_current_range_modifier_table(),
+                                    weapon_range_table,
                                     use_multiplicative_vet_bonus=self.app.range_modifier_vet_bonus_type.get(
                                         self.app.current_range_modifier_table_name, True
                                     )
                                 )
+                                
+                                # Apply shock aim time bonus if applicable (within shock range)
+                                has_shock_trait = weapon_info.get("has_shock_trait", False)
+                                shock_range = getattr(self.app, 'shock_range', 100.0)
+                                shock_bonuses = getattr(self.app, 'shock_bonuses', {})
+                                if has_shock_trait and range_val <= shock_range:
+                                    aim_time_multiplier = shock_bonuses.get("aim_time_multiplier", 0.85)
+                                    SHOCK_AIM_TIME_SPEED_MULTIPLIER = 1.0 / aim_time_multiplier if aim_time_multiplier > 0 else 1.0
+                                    accuracy = min(1.0, accuracy * SHOCK_AIM_TIME_SPEED_MULTIPLIER)
                         
                         # Get additional weapon stats from ammo_props
                         ammo_props_for_stats = weapon_info.get("ammo_props", {})
                         salvo_reload = ammo_props_for_stats.get("time_between_salvos", 0.0)
                         shot_reload = ammo_props_for_stats.get("time_between_shots", None)
                         shots_per_salvo = ammo_props_for_stats.get("nb_tir_par_salves", 1)
-                        physical_damage = ammo_props_for_stats.get("physical_damages", 0.0)
-                        per_weapon_damage = physical_damage  # Physical damage is per weapon
-                        total_damage = physical_damage * quantity if quantity > 0 else 0.0
+                        damage_type = self.damage_type_var.get() if hasattr(self, 'damage_type_var') else "Physical"
+                        if damage_type == "Suppression":
+                            base_damage = ammo_props_for_stats.get("suppress_damages", 0.0)
+                            damage_label = "Suppression Damage"
+                        else:
+                            base_damage = ammo_props_for_stats.get("physical_damages", 0.0)
+                            damage_label = "Physical Damage"
                         
-                        info_lines.append(f"    {weapon_name}:")
+                        # Apply shock damage bonus if applicable (within shock range, only for physical)
+                        has_shock_trait = weapon_info.get("has_shock_trait", False)
+                        shock_range = getattr(self.app, 'shock_range', 100.0)
+                        shock_bonuses = getattr(self.app, 'shock_bonuses', {})
+                        if has_shock_trait and range_val <= shock_range and damage_type == "Physical":
+                            SHOCK_DAMAGE_MULTIPLIER = shock_bonuses.get("damage_multiplier", 1.15)
+                            base_damage = base_damage * SHOCK_DAMAGE_MULTIPLIER
+                        
+                        per_weapon_damage = base_damage
+                        total_damage = base_damage * quantity if quantity > 0 else 0.0
+                        
+                        info_lines.append(f"    [ {quantity}x ] {weapon_name}:")
                         info_lines.append(f"      DPM: {weapon_dpm:.2f} ({per_weapon_dpm:.2f} per weapon)")
-                        info_lines.append(f"      Physical Damage: {total_damage:.2f} ({per_weapon_damage:.2f} per weapon)")
+                        info_lines.append(f"      {damage_label}: {total_damage:.2f} ({per_weapon_damage:.2f} per weapon)")
                         info_lines.append(f"      Base Accuracy: {base_accuracy * 100:.1f}%")
                         info_lines.append(f"      Accuracy: {accuracy * 100:.1f}%")
                         info_lines.append(f"      Shots/min: {shots_per_min:.1f} (per weapon)")
@@ -1949,25 +2757,31 @@ class InfantryTab:
         info_lines.append("Click again to deselect.")
         
         # Update info panel
-        self.info_text.config(state=tk.NORMAL)
-        self.info_text.delete('1.0', tk.END)
-        self.info_text.insert('1.0', '\n'.join(info_lines))
-        self.info_text.config(state=tk.DISABLED)
-        # Scroll to top
-        self.info_text.see('1.0')
+        self._safe_update_info_text('\n'.join(info_lines))
+        # Scroll to top (safely)
+        try:
+            if hasattr(self, 'info_text') and self.info_text.winfo_exists():
+                self.info_text.see('1.0')
+        except tk.TclError:
+            pass
     
     def _update_info_panel_with_veterancy_only(self):
         """Update info panel to show only veterancy bonuses."""
-        self.info_text.config(state=tk.NORMAL)
-        self.info_text.delete('1.0', tk.END)
-        if hasattr(self, 'current_veterancy_info') and self.current_veterancy_info:
-            self.info_text.insert('1.0', self.current_veterancy_info + '\n\n')
-            self.info_text.insert(tk.END, '─' * 40 + '\n\n')
-            self.info_text.insert(tk.END, 'Click on a data point to select it\nand see all units at that range.')
-        else:
-            self.info_text.insert('1.0', 'Click on a data point to select it\nand see all units at that range.')
-        self.info_text.config(state=tk.DISABLED)
-        self.info_text.see('1.0')
+        try:
+            if hasattr(self, 'info_text') and self.info_text.winfo_exists():
+                self.info_text.config(state=tk.NORMAL)
+                self.info_text.delete('1.0', tk.END)
+                if hasattr(self, 'current_veterancy_info') and self.current_veterancy_info:
+                    self.info_text.insert('1.0', self.current_veterancy_info + '\n\n')
+                    self.info_text.insert(tk.END, '─' * 40 + '\n\n')
+                    self.info_text.insert(tk.END, 'Click on a data point to select it\nand see all units at that range.')
+                else:
+                    self.info_text.insert('1.0', 'Click on a data point to select it\nand see all units at that range.')
+                self.info_text.config(state=tk.DISABLED)
+                self.info_text.see('1.0')
+        except tk.TclError:
+            # Widget was destroyed, silently ignore
+            pass
     
     def load_user_data(self):
         """Load user data from JSON file (range modifier tables, custom units, custom weapons)."""
@@ -1993,8 +2807,22 @@ class InfantryTab:
                             # Ensure bonus dictionary keys are integers
                             if "veterancy_accuracy_bonuses" in unit_info:
                                 acc_bonuses = unit_info["veterancy_accuracy_bonuses"]
-                                if acc_bonuses and isinstance(next(iter(acc_bonuses.keys())), str):
-                                    unit_info["veterancy_accuracy_bonuses"] = {int(k): float(v) for k, v in acc_bonuses.items()}
+                                if acc_bonuses:
+                                    # Convert keys from string to int if needed
+                                    if isinstance(next(iter(acc_bonuses.keys())), str):
+                                        acc_bonuses = {int(k): float(v) for k, v in acc_bonuses.items()}
+                                    
+                                    # Convert multiplicative bonuses to flat (detect multipliers > 1.0)
+                                    converted_bonuses = {}
+                                    for level, bonus_value in acc_bonuses.items():
+                                        if bonus_value > 1.0:
+                                            # This looks like a multiplier (e.g., 1.12), convert to flat (0.12)
+                                            converted_bonuses[level] = bonus_value - 1.0
+                                        else:
+                                            # Already flat or zero
+                                            converted_bonuses[level] = bonus_value
+                                    
+                                    unit_info["veterancy_accuracy_bonuses"] = converted_bonuses
                             if "veterancy_reload_speed_multipliers" in unit_info:
                                 reload_multipliers = unit_info["veterancy_reload_speed_multipliers"]
                                 if reload_multipliers and isinstance(next(iter(reload_multipliers.keys())), str):
@@ -2090,4 +2918,330 @@ class InfantryTab:
                 messagebox.showinfo("Success", f"Chart exported to {filename}")
             except Exception as e:
                 messagebox.showerror("Error", f"Failed to export chart: {e}")
+    
+    def export_graph_data(self):
+        """Export graph data (range vs DPM/accuracy) to CSV or JSON."""
+        if not hasattr(self, 'line_data') or not self.line_data:
+            messagebox.showwarning("Warning", "Please generate a chart first")
+            return
+        
+        filename = filedialog.asksaveasfilename(
+            defaultextension=".csv",
+            filetypes=[("CSV files", "*.csv"), ("JSON files", "*.json"), ("All files", "*.*")]
+        )
+        
+        if not filename:
+            return
+        
+        try:
+            file_ext = Path(filename).suffix.lower()
+            
+            if file_ext == '.json':
+                # Export as JSON with detailed structure
+                export_data = {
+                    "metadata": {
+                        "successive_hits": self.successive_hits,
+                        "range_step": self.range_step,
+                        "range_modifier_table": self.app.current_range_modifier_table_name,
+                        "range_modifier_table_values": self.app.range_modifier_tables.get(
+                            self.app.current_range_modifier_table_name, []
+                        ),
+                    },
+                    "units": {},
+                    "accuracy_calculations": []
+                }
+                
+                # Add unit data
+                for unit_name, dpm_data in self.line_data.items():
+                    export_data["units"][unit_name] = {
+                        "dpm_data": dpm_data,
+                        "veterancy_level": self.unit_veterancy_levels.get(
+                            next((d for d in self.unit_dropdowns if d.get() == unit_name), None), 0
+                        ) if hasattr(self, 'unit_dropdowns') else 0,
+                    }
+                    
+                    # Add weapon-level data if available
+                    if hasattr(self, 'weapon_dpm_data') and unit_name in self.weapon_dpm_data:
+                        export_data["units"][unit_name]["weapons"] = {}
+                        for weapon_name, weapon_info in self.weapon_dpm_data[unit_name].items():
+                            export_data["units"][unit_name]["weapons"][weapon_name] = {
+                                "dpm_data": weapon_info.get("dpm_data", []),
+                                "quantity": weapon_info.get("quantity", 1),
+                                "shots_per_minute": weapon_info.get("shots_per_minute", 0),
+                                "ammo_consumption_per_minute": weapon_info.get("ammo_consumption_per_minute", 0),
+                                "veterancy_level": weapon_info.get("veterancy_level", 0),
+                                "veterancy_accuracy_bonus": weapon_info.get("veterancy_accuracy_bonus", 0),
+                            }
+                
+                # Calculate accuracy at each range for debugging
+                if hasattr(self, 'weapon_dpm_data') and self.weapon_dpm_data:
+                    # Sample ranges to show accuracy calculations
+                    sample_ranges = [0, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 800, 850, 900]
+                    for unit_name, weapons in self.weapon_dpm_data.items():
+                        for weapon_name, weapon_info in weapons.items():
+                            ammo_props = weapon_info.get("ammo_props", {})
+                            if ammo_props:
+                                base_accuracy = ammo_props.get("idling", 0)
+                                max_range = ammo_props.get("max_range", 0)
+                                veterancy_level = weapon_info.get("veterancy_level", 0)
+                                veterancy_accuracy_bonus = weapon_info.get("veterancy_accuracy_bonus", 0)
+                                
+                                for sample_range in sample_ranges:
+                                    if sample_range <= max_range:
+                                        range_table = self.get_current_range_modifier_table() if hasattr(self, 'get_current_range_modifier_table') else RANGE_MODIFIERS_TABLE
+                                        use_multiplicative = self.app.range_modifier_vet_bonus_type.get(
+                                            self.app.current_range_modifier_table_name, True
+                                        )
+                                        
+                                        accuracy = calculate_accuracy(
+                                            sample_range,
+                                            max_range,
+                                            base_accuracy,
+                                            self.successive_hits,
+                                            veterancy_level,
+                                            veterancy_accuracy_bonus,
+                                            range_table,
+                                            use_multiplicative,
+                                        )
+                                        
+                                        export_data["accuracy_calculations"].append({
+                                            "unit": unit_name,
+                                            "weapon": weapon_name,
+                                            "range_m": sample_range,
+                                            "range_fraction": sample_range / max_range if max_range > 0 else 0,
+                                            "base_accuracy": base_accuracy,
+                                            "calculated_accuracy": accuracy,
+                                            "veterancy_level": veterancy_level,
+                                            "veterancy_accuracy_bonus": veterancy_accuracy_bonus,
+                                        })
+                
+                with open(filename, 'w') as f:
+                    json.dump(export_data, f, indent=2)
+                
+            else:
+                # Export as CSV
+                with open(filename, 'w', newline='') as f:
+                    writer = csv.writer(f)
+                    # Header
+                    writer.writerow(["Range (m)", "Unit", "Weapon", "Quantity", "DPM", "Shots/min", "Ammo/min", "Accuracy %", "Base Accuracy", "Max Range"])
+                    
+                    # Collect all unique ranges
+                    all_ranges = set()
+                    for dpm_data in self.line_data.values():
+                        for range_val, _ in dpm_data:
+                            all_ranges.add(range_val)
+                    all_ranges = sorted(all_ranges)
+                    
+                    # Write data for each range and each weapon
+                    for range_val in all_ranges:
+                        for unit_name, dpm_data in self.line_data.items():
+                            # Find total DPM at this range
+                            total_dpm = self._get_dpm_at_range(dpm_data, range_val)
+                            
+                            # Get weapon info if available
+                            total_shots_per_min = 0
+                            total_ammo_per_min = 0
+                            
+                            if hasattr(self, 'weapon_dpm_data') and unit_name in self.weapon_dpm_data:
+                                # Write a row for each weapon
+                                for weapon_name, weapon_info in self.weapon_dpm_data[unit_name].items():
+                                    quantity = weapon_info.get("quantity", 1)
+                                    weapon_shots_per_min = weapon_info.get("shots_per_minute", 0)
+                                    weapon_ammo_per_min = weapon_info.get("ammo_consumption_per_minute", 0)
+                                    
+                                    total_shots_per_min += weapon_shots_per_min * quantity
+                                    total_ammo_per_min += weapon_ammo_per_min * quantity
+                                    
+                                    # Calculate accuracy for this weapon
+                                    accuracy = 0
+                                    base_acc = 0
+                                    max_rng = 0
+                                    ammo_props = weapon_info.get("ammo_props", {})
+                                    if ammo_props:
+                                        base_acc = ammo_props.get("idling", 0)
+                                        max_rng = ammo_props.get("max_range", 0)
+                                        if range_val <= max_rng:
+                                            vet_level = weapon_info.get("veterancy_level", 0)
+                                            vet_bonus = weapon_info.get("veterancy_accuracy_bonus", 0)
+                                            range_table = self.get_current_range_modifier_table() if hasattr(self, 'get_current_range_modifier_table') else RANGE_MODIFIERS_TABLE
+                                            use_multiplicative = self.app.range_modifier_vet_bonus_type.get(
+                                                self.app.current_range_modifier_table_name, True
+                                            )
+                                            accuracy = calculate_accuracy(
+                                                range_val,
+                                                max_rng,
+                                                base_acc,
+                                                self.successive_hits,
+                                                vet_level,
+                                                vet_bonus,
+                                                range_table,
+                                                use_multiplicative,
+                                            )
+                                    
+                                    # Get weapon-specific DPM from weapon_dpm_data
+                                    weapon_dpm = 0
+                                    weapon_dpm_data_list = weapon_info.get("dpm_data", [])
+                                    if weapon_dpm_data_list:
+                                        weapon_dpm = self._get_dpm_at_range(weapon_dpm_data_list, range_val)
+                                    
+                                    writer.writerow([
+                                        f"{range_val:.1f}",
+                                        unit_name,
+                                        weapon_name,
+                                        quantity,
+                                        f"{weapon_dpm:.2f}",
+                                        f"{weapon_shots_per_min:.2f}",
+                                        f"{weapon_ammo_per_min:.2f}",
+                                        f"{accuracy * 100:.2f}" if accuracy > 0 else "",
+                                        f"{base_acc * 100:.2f}" if base_acc > 0 else "",
+                                        f"{max_rng:.1f}" if max_rng > 0 else ""
+                                    ])
+                                
+                                # Also write a summary row with total DPM for the unit
+                                writer.writerow([
+                                    f"{range_val:.1f}",
+                                    unit_name,
+                                    "TOTAL",
+                                    "",
+                                    f"{total_dpm:.2f}",
+                                    f"{total_shots_per_min:.2f}",
+                                    f"{total_ammo_per_min:.2f}",
+                                    "",
+                                    "",
+                                    ""
+                                ])
+                            else:
+                                # No weapon data available, just write unit total
+                                writer.writerow([
+                                    f"{range_val:.1f}",
+                                    unit_name,
+                                    "",
+                                    "",
+                                    f"{total_dpm:.2f}",
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    ""
+                                ])
+            
+            messagebox.showinfo("Success", f"Graph data exported to {filename}")
+            
+        except Exception as e:
+            messagebox.showerror("Error", f"Failed to export graph data: {e}")
+            import traceback
+            traceback.print_exc()
+    
+    def save_tab_state(self) -> Dict[str, Any]:
+        """Save the current state of the infantry tab."""
+        state = {
+            "selected_units": [],
+            "veterancy_levels": [],
+            "visibility_states": [],
+            "vanilla_range_table_states": [],
+            "price_adjustments": [],
+            "successive_hits": self.successive_hits,
+        }
+        
+        for idx, dropdown in enumerate(self.unit_dropdowns):
+            unit_name = dropdown.get() if hasattr(dropdown, 'get') else ""
+            state["selected_units"].append(unit_name)
+            
+            # Get veterancy level
+            veterancy_level = self.unit_veterancy_levels.get(dropdown, 0)
+            state["veterancy_levels"].append(veterancy_level)
+            
+            # Get visibility state
+            visibility = self.unit_visibility_vars[idx].get() if idx < len(self.unit_visibility_vars) else True
+            state["visibility_states"].append(visibility)
+            
+            # Get vanilla range table checkbox state
+            use_vanilla = self.unit_use_vanilla_range_table_vars[idx].get() if idx < len(self.unit_use_vanilla_range_table_vars) else False
+            state["vanilla_range_table_states"].append(use_vanilla)
+            
+            # Get price adjustment (fallback to actual price if not set)
+            if dropdown in self.unit_price_adjustments:
+                price_adjustment = self.unit_price_adjustments[dropdown]
+            elif unit_name and unit_name in self.app.infantry_units:
+                price_adjustment = self.app.infantry_units[unit_name].get("price", 0) or 0
+            else:
+                price_adjustment = 0
+            state["price_adjustments"].append(price_adjustment)
+        
+        return state
+    
+    def load_tab_state(self, state: Dict[str, Any]):
+        """Load a saved state into the infantry tab."""
+        if not state:
+            return
+        
+        # Set flag to prevent auto-save during loading
+        self._is_loading_state = True
+        
+        try:
+            # Load successive hits
+            if "successive_hits" in state:
+                self.successive_hits = state["successive_hits"]
+                if hasattr(self, 'hits_label'):
+                    self.hits_label.config(text=str(self.successive_hits))
+            
+            # Ensure we have enough dropdowns
+            selected_units = state.get("selected_units", [])
+            while len(self.unit_dropdowns) < len(selected_units):
+                self.add_unit_dropdown()
+            
+            # Load state for each dropdown
+            for idx, unit_name in enumerate(selected_units):
+                if idx < len(self.unit_dropdowns):
+                    dropdown = self.unit_dropdowns[idx]
+                    
+                    # Set unit selection
+                    if unit_name and unit_name in self.app.infantry_units:
+                        dropdown.set(unit_name)
+                        self.on_unit_selected(dropdown)
+                        
+                        # Set veterancy level
+                        veterancy_levels = state.get("veterancy_levels", [])
+                        if idx < len(veterancy_levels):
+                            veterancy_level = veterancy_levels[idx]
+                            if dropdown in self.unit_veterancy_levels:
+                                self.unit_veterancy_levels[dropdown] = veterancy_level
+                                # Update button appearance
+                                if dropdown in self.veterancy_buttons:
+                                    for level, button in self.veterancy_buttons[dropdown].items():
+                                        if level == veterancy_level:
+                                            button.config(style='SelectedVet.TButton')
+                                        else:
+                                            button.config(style='TButton')
+                    
+                    # Set visibility state
+                    visibility_states = state.get("visibility_states", [])
+                    if idx < len(visibility_states) and idx < len(self.unit_visibility_vars):
+                        self.unit_visibility_vars[idx].set(visibility_states[idx])
+                    
+                    # Set vanilla range table checkbox state
+                    vanilla_states = state.get("vanilla_range_table_states", [])
+                    if idx < len(vanilla_states) and idx < len(self.unit_use_vanilla_range_table_vars):
+                        self.unit_use_vanilla_range_table_vars[idx].set(vanilla_states[idx])
+                    
+                    # Set price adjustment
+                    price_adjustments = state.get("price_adjustments", [])
+                    if idx < len(price_adjustments) and dropdown in self.unit_price_vars:
+                        try:
+                            price_value = price_adjustments[idx]
+                            price_var = self.unit_price_vars[dropdown]
+                            if hasattr(price_var, 'set'):
+                                # Set the value - trace will handle the update, but loading flag prevents chart generation
+                                price_var.set(str(price_value))
+                                self.unit_price_adjustments[dropdown] = price_value
+                        except (tk.TclError, AttributeError, ValueError):
+                            # Widget was destroyed or doesn't exist yet, or invalid value - skip silently
+                            pass
+            
+            # Generate chart after loading all state
+            if hasattr(self, 'generate_chart'):
+                self.generate_chart()
+        finally:
+            # Always reset the flag
+            self._is_loading_state = False
 

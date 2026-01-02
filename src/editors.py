@@ -6,6 +6,7 @@ from typing import Callable, Dict, List
 from .gameplay_mods import (
     # .gameplay
     edit_gameplay_constantes_gdconstants,
+    edit_gameplay_constantes_hitrollconstants,
     edit_gameplay_constantes_ravitaillement,
     edit_gameplay_constantes_weaponconstantes,
     edit_gameplay_terrains,
@@ -118,6 +119,7 @@ from src.ui_mods.style import (
 __all__ = [
     # gameplay_mods.gameplay
     'edit_gameplay_constantes_gdconstants',
+    'edit_gameplay_constantes_hitrollconstants',
     'edit_gameplay_constantes_ravitaillement',
     'edit_gameplay_constantes_weaponconstantes',
     'edit_gameplay_terrains',
@@ -239,6 +241,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         # Core gameplay mechanics
         "GameData/Gameplay/Constantes/GDConstants.ndf": [
             (edit_gameplay_constantes_gdconstants, "gameplay"),
+        ],
+        "GameData/Gameplay/Constantes/HitRollConstants.ndf": [
+            (edit_gameplay_constantes_hitrollconstants, "gameplay"),
         ],
         "GameData/Gameplay/Constantes/Ravitaillement.ndf": [
             (edit_gameplay_constantes_ravitaillement, "gameplay"),

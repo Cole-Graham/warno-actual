@@ -10,10 +10,10 @@ from src.utils.logging_utils import setup_logger
 logger = setup_logger(__name__)
 
 # Map database keys to filenames in a sorted dictionary to ensure consistent ordering
+# Note: deck_pack_mappings moved to constants_precomputation/ subfolder
 DB_FILENAMES = {
     "ammunition": "ammunition.json",
     "deck_pack_data": "deck_pack_data.json",
-    "deck_pack_mappings": "deck_pack_mappings.json",
     "decks": "decks.json",
     "depiction_data": "depiction_data.json",
     "unit_data": "unit_data.json",

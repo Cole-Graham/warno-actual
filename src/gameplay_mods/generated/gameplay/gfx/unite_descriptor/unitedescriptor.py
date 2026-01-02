@@ -158,7 +158,8 @@ def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_nam
 def _add_modules(game_db, edit_type, unit_name, edits, modules_list) -> None:
     """Add modules to new and existing units"""
     if edit_type == "new_units":
-        pass
+        for module in edits.get("modules_add", []):
+            modules_list.v.add(module)
     
     if edit_type == "unit_edits":
         unit_db = game_db["unit_data"]
@@ -187,7 +188,7 @@ def _add_modules(game_db, edit_type, unit_name, edits, modules_list) -> None:
         
         for module in edits.get("modules_add", []):
             modules_list.v.add(module)
-        
+
         if "EOrderType/Sell" in edits.get("orders", {}).get("add_orders", []):
             sell_module = "~/SellModuleDescriptor"
             modules_list.v.add(sell_module)  # noqa

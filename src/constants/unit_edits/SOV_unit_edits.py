@@ -12,6 +12,10 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
+        "SpecialtiesList": {
+            "add_specs": ["'leader_sov'",],
+            "remove_specs": ["'_leader'"],
+        },
         "availability": [0, 3, 0, 0],
     },
 
@@ -22,6 +26,10 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
+        "SpecialtiesList": {
+            "add_specs": ["'leader_sov'",],
+            "remove_specs": ["'_leader'"],
+        },
         "availability": [0, 0, 3, 0],
     },
 
@@ -31,6 +39,10 @@ sov_unit_edits = {
             "default": {
                 "cards": 1,
             },
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'leader_sov'",],
+            "remove_specs": ["'_leader'"],
         },
         "availability": [0, 0, 3, 0],
     },
@@ -44,7 +56,8 @@ sov_unit_edits = {
         },
         "availability": [0, 4, 0, 0],
         "SpecialtiesList": {
-            "remove_specs": ["'_para'"],
+            "add_specs": ["'leader_sov'",],
+            "remove_specs": ["'_leader'", '_para'],
         },
         "ButtonTexture": "LUAZ_967M_SOV",
         "DeploymentShift": 0,
@@ -57,6 +70,10 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
+        "SpecialtiesList": {
+            "add_specs": ["'leader_sov'",],
+            "remove_specs": ["'_leader'"],
+        },
         "availability": [0, 0, 3, 0],
     },
 
@@ -68,6 +85,10 @@ sov_unit_edits = {
             },
         },
         "strength": 10,
+        "SpecialtiesList": {
+            "add_specs": ["'leader_sov'",],
+            "remove_specs": ["'_leader'"],
+        },
         "availability": [0, 0, 3, 0],
     },
 
@@ -79,6 +100,10 @@ sov_unit_edits = {
             },
         },
         "strength": 10,
+        "SpecialtiesList": {
+            "add_specs": ["'leader_sov'",],
+            "remove_specs": ["'_leader'"],
+        },
         "availability": [0, 0, 3, 0],
     },
 
@@ -89,23 +114,9 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-    },
-
-    "Mi_8TZ_SOV": {  # Mi-8MT Gruzovoi
-        "GameName": {
-            "display": "Mi-8MT GRUZ.",
-        },
-    },
-
-    "Mi_6_SOV": {  # Mi-6A Gruzovoi
-        "GameName": {
-            "display": "Mi-6A GRUZ.",
-        },
-    },
-
-    "Mi_26_SOV": {  # Mi-26 Gruzovoi
-        "GameName": {
-            "display": "Mi-26 GRUZ.",
+        "SpecialtiesList": {
+            "add_specs": ["'leader_sov'",],
+            "remove_specs": ["'_leader'"],
         },
     },
 
@@ -507,7 +518,7 @@ sov_unit_edits = {
             },
             "Salves": {
                 "PM_AKSU_74": 7,
-                "SAW_RPK_74_5_56mm": 10,
+                "SAW_RPK_74_5_56mm": 15,
                 "MANPAD_igla": 4,
                 "Grenade_SMOKE": 3,
             },
@@ -606,7 +617,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 11,
-                "MMG_PKM_7_62mm": 18,
+                "MMG_PKM_7_62mm": 30,
                 "Grenade_Satchel_Charge": 5,
             },
         },
@@ -632,7 +643,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 11,
-                "MMG_PKM_7_62mm": 18,
+                "MMG_PKM_7_62mm": 30,
                 "Grenade_Satchel_Charge": 5,
             },
         },
@@ -683,7 +694,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 7,
-                "MMG_PKM_7_62mm": 18,
+                "MMG_PKM_7_62mm": 30,
                 "RocketInf_RPO_A_93mm": 4,
             },
         },
@@ -708,7 +719,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 7,
-                "MMG_PKM_7_62mm": 18,
+                "MMG_PKM_7_62mm": 30,
                 "RocketInf_RPO_A_93mm": 4,
             },
         },
@@ -792,7 +803,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 9,
-                "SAW_RPK_74_5_56mm": 10,
+                "SAW_RPK_74_5_56mm": 15,
                 "RocketInf_RPG27_105mm": 4,
             },
         },
@@ -822,7 +833,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 11,
-                "SAW_RPK_74_5_56mm": 10,
+                "SAW_RPK_74_5_56mm": 15,
                 "RocketInf_RPG26_72_5mm": 7,
             },
         },
@@ -857,7 +868,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 7,
-                "SAW_RPK_74_5_56mm": 10,
+                "SAW_RPK_74_5_56mm": 15,
                 "ATGM_9K115_Metis": 6,
             },
         },
@@ -1004,7 +1015,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 11,
-                "MMG_PKM_7_62mm": 18,
+                "MMG_PKM_7_62mm": 30,
                 "RocketInf_RPG22_72_5mm": 6,
             },
         },
@@ -1026,7 +1037,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 11,
-                "MMG_PKM_7_62mm": 18,
+                "MMG_PKM_7_62mm": 30,
                 "RocketInf_RPG22_72_5mm": 6,
             },
         },

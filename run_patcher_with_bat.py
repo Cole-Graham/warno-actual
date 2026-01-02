@@ -70,6 +70,11 @@ if __name__ == "__main__":
 		else:
 			config.config_data['game_db'] = load_database_from_disk(config.config_data)
 
+		# Always build constants precomputation data (regenerates on every run)
+		from src.data.constants_precomputation import build_constants_precomputation_data
+		constants_data = build_constants_precomputation_data(config.config_data, game_db=config.config_data['game_db'])
+		config.config_data['game_db']['deck_pack_mappings'] = constants_data
+
 		# Import and run main after database is loaded
 		from src.main import main
 

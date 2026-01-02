@@ -57,12 +57,12 @@ def edit_gen_gp_gfx_orderavailabilitytactic(source_path, game_db: Dict[str, Any]
 
     # Create new order entries for new units
     for donor, edits in NEW_UNITS.items():
-        if "NewName" not in edits or "Orders" not in edits:
+        if "NewName" not in edits or "orders" not in edits:
             logger.warning(f"No orders found for {donor}")
             continue
 
         unit_name = edits["NewName"]
-        orders_str = str(edits["Orders"]).replace("'", "")
+        orders_str = str(edits["orders"]).replace("'", "")
         new_entry = f"Descriptor_OrderAvailability_{unit_name} is {orders_str}"
         source_path.add(new_entry)
         logger.info(f"Added new order entry for {unit_name}")

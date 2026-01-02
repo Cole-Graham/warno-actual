@@ -109,6 +109,329 @@ class WeaponsTab:
         bonus_strings = self.get_bonus_display_strings()
         for bonus_combo in self.weapon_bonus_combos:
             bonus_combo.set_values(bonus_strings)
+        
+        # Update load weapon combo with ALL weapons (including vehicle weapons)
+        if hasattr(self, 'load_weapon_combo'):
+            all_weapon_names = []
+            # Include all ammunition props (not filtered by damage family)
+            if hasattr(self.app, 'ammunition_props') and self.app.ammunition_props:
+                for ammo_name in sorted(self.app.ammunition_props.keys()):
+                    ammo_props = self.app.ammunition_props[ammo_name]
+                    # Only require basic properties, not damage family
+                    if ammo_props.get("idling") and ammo_props.get("max_range") and ammo_props.get("physical_damages"):
+                        all_weapon_names.append(ammo_name)
+            # Add custom weapons
+            if hasattr(self.app, 'custom_weapons') and self.app.custom_weapons:
+                for custom_name in sorted(self.app.custom_weapons.keys()):
+                    if custom_name not in all_weapon_names:
+                        all_weapon_names.append(custom_name)
+            self.load_weapon_combo.set_values(all_weapon_names)
+    
+    def on_load_weapon_selected(self, event=None):
+        """Populate custom weapon fields from selected existing weapon."""
+        weapon_name = self.load_weapon_combo.get().strip()
+        if not weapon_name:
+            return
+        
+        # Get weapon properties (check custom weapons first, then regular)
+        ammo_props = self.app.custom_weapons.get(weapon_name) or self.app.ammunition_props.get(weapon_name)
+        if not ammo_props:
+            return
+        
+        # Populate all fields
+        self.custom_weapon_name_var.set(weapon_name)
+        self.custom_weapon_max_range_var.set(str(ammo_props.get("max_range", 400)))
+        self.custom_weapon_accuracy_var.set(str(ammo_props.get("idling", 0.5)))
+        self.custom_weapon_damage_var.set(str(ammo_props.get("physical_damages", 10)))
+        self.custom_weapon_suppress_damage_var.set(str(ammo_props.get("suppress_damages", 10)))
+        self.custom_weapon_damage_family_var.set(ammo_props.get("damage_family", ""))
+        self.custom_weapon_shots_per_salvo_var.set(str(ammo_props.get("nb_tir_par_salves", 1)))
+        self.custom_weapon_time_between_salvos_var.set(str(ammo_props.get("time_between_salvos", 2.0)))
+        
+        time_between_shots = ammo_props.get("time_between_shots")
+        if time_between_shots is not None:
+            self.custom_weapon_time_between_shots_var.set(str(time_between_shots))
+        else:
+            self.custom_weapon_time_between_shots_var.set("")
+        
+        self.custom_weapon_aiming_time_var.set(str(ammo_props.get("aiming_time", 1.0)))
+        self.custom_weapon_ammo_per_salvo_var.set(str(ammo_props.get("affichage_munition_par_salve", 1)))
+        
+        # Update preview after loading weapon
+        if hasattr(self, 'update_preview'):
+            self.update_preview()
+    
+    def update_preview(self):
+        """Update the live preview of DPM, Shots/min, and Ammo/min based on current form values."""
+        try:
+            # Get values from form, with defaults if empty
+            max_range_str = self.custom_weapon_max_range_var.get().strip()
+            accuracy_str = self.custom_weapon_accuracy_var.get().strip()
+            damage_str = self.custom_weapon_damage_var.get().strip()
+            suppress_damage_str = self.custom_weapon_suppress_damage_var.get().strip()
+            shots_per_salvo_str = self.custom_weapon_shots_per_salvo_var.get().strip()
+            time_between_salvos_str = self.custom_weapon_time_between_salvos_var.get().strip()
+            time_between_shots_str = self.custom_weapon_time_between_shots_var.get().strip()
+            aiming_time_str = self.custom_weapon_aiming_time_var.get().strip()
+            ammo_per_salvo_str = self.custom_weapon_ammo_per_salvo_var.get().strip()
+            
+            # Get damage type from dropdown
+            damage_type = self.damage_type_var.get() if hasattr(self, 'damage_type_var') else "Physical"
+            
+            # Validate that required fields have values
+            required_damage_str = suppress_damage_str if damage_type == "Suppression" else damage_str
+            if not all([max_range_str, accuracy_str, required_damage_str, shots_per_salvo_str, time_between_salvos_str]):
+                self.preview_dpm_label.config(text="DPM: --")
+                self.preview_shots_label.config(text="Shots/min: --")
+                self.preview_ammo_label.config(text="Ammo/min: --")
+                return
+            
+            # Parse values
+            max_range = float(max_range_str)
+            accuracy = float(accuracy_str)
+            if damage_type == "Suppression":
+                damage = float(suppress_damage_str) if suppress_damage_str else 0.0
+            else:
+                damage = float(damage_str)
+            shots_per_salvo = int(shots_per_salvo_str) if shots_per_salvo_str else 1
+            time_between_salvos = float(time_between_salvos_str)
+            time_between_shots = float(time_between_shots_str) if time_between_shots_str else None
+            aiming_time = float(aiming_time_str) if aiming_time_str else 0.0
+            ammo_per_salvo = float(ammo_per_salvo_str) if ammo_per_salvo_str else 1.0
+            
+            # Validate basic constraints
+            if max_range <= 0 or accuracy < 0 or accuracy > 1 or damage <= 0 or shots_per_salvo <= 0 or time_between_salvos <= 0:
+                self.preview_dpm_label.config(text="DPM: Invalid")
+                self.preview_shots_label.config(text="Shots/min: Invalid")
+                self.preview_ammo_label.config(text="Ammo/min: Invalid")
+                return
+            
+            # Get bonus values from preview bonus dropdown
+            bonus_display = self.preview_bonus_combo.get() if hasattr(self, 'preview_bonus_combo') else "No bonuses"
+            veterancy_accuracy_bonus, reload_speed_multiplier = self.get_bonus_values_from_display(bonus_display)
+            
+            # Create temporary ammo_props dict for calculations
+            ammo_props = {
+                "max_range": max_range,
+                "idling": accuracy,
+                "physical_damages": float(damage_str) if damage_str else 0.0,
+                "suppress_damages": float(suppress_damage_str) if suppress_damage_str else 0.0,
+                "nb_tir_par_salves": shots_per_salvo,
+                "time_between_salvos": time_between_salvos,
+                "time_between_shots": time_between_shots,
+                "aiming_time": aiming_time,
+                "affichage_munition_par_salve": ammo_per_salvo,
+            }
+            
+            # Use appropriate damage value based on damage type
+            if damage_type == "Suppression":
+                effective_damage = ammo_props.get("suppress_damages", 0.0)
+            else:
+                effective_damage = ammo_props.get("physical_damages", 0.0)
+            
+            # Calculate shots per minute with reload multiplier
+            shots_per_minute = calculate_shots_per_minute(ammo_props, reload_speed_multiplier=reload_speed_multiplier, shot_time_multiplier=1.0)
+            
+            # Calculate ammo per minute
+            ammo_per_minute = shots_per_minute * (ammo_per_salvo / shots_per_salvo) if shots_per_salvo > 0 else 0.0
+            
+            # Calculate DPM at max range for preview
+            # Use the current range modifier table from the app
+            range_modifiers_table = self.get_current_range_modifier_table() if hasattr(self, 'get_current_range_modifier_table') else RANGE_MODIFIERS_TABLE
+            use_multiplicative_vet_bonus = self.app.range_modifier_vet_bonus_type.get(
+                self.app.current_range_modifier_table_name, True
+            )
+            
+            # Calculate accuracy at max range
+            preview_accuracy = calculate_accuracy(
+                max_range,  # Range at max range
+                max_range,
+                accuracy,
+                successive_hits=0,  # No successive hits for preview
+                veterancy_level=0,  # No veterancy for preview
+                veterancy_accuracy_bonus=veterancy_accuracy_bonus,
+                range_modifiers_table=range_modifiers_table,
+                use_multiplicative_vet_bonus=use_multiplicative_vet_bonus,
+            )
+            
+            # Calculate DPM (assuming 1 weapon for preview)
+            dpm = preview_accuracy * effective_damage * shots_per_minute * 1
+            
+            # Update labels with formatted values
+            self.preview_dpm_label.config(text=f"DPM: {dpm:.2f}")
+            self.preview_shots_label.config(text=f"Shots/min: {shots_per_minute:.1f}")
+            self.preview_ammo_label.config(text=f"Ammo/min: {ammo_per_minute:.1f}")
+            
+        except (ValueError, ZeroDivisionError):
+            # Invalid input, show dashes
+            self.preview_dpm_label.config(text="DPM: --")
+            self.preview_shots_label.config(text="Shots/min: --")
+            self.preview_ammo_label.config(text="Ammo/min: --")
+        except Exception:
+            # Any other error, show dashes
+            self.preview_dpm_label.config(text="DPM: --")
+            self.preview_shots_label.config(text="Shots/min: --")
+            self.preview_ammo_label.config(text="Ammo/min: --")
+    
+    def create_custom_weapon(self):
+        """Create a custom weapon from user input."""
+        weapon_name = self.custom_weapon_name_var.get().strip()
+        if not weapon_name:
+            messagebox.showwarning("Warning", "Please enter a weapon name")
+            return
+        
+        try:
+            # Parse all values
+            max_range = float(self.custom_weapon_max_range_var.get())
+            accuracy = float(self.custom_weapon_accuracy_var.get())
+            damage = float(self.custom_weapon_damage_var.get())
+            suppress_damage_str = self.custom_weapon_suppress_damage_var.get().strip()
+            suppress_damage = float(suppress_damage_str) if suppress_damage_str else 0.0
+            damage_family = self.custom_weapon_damage_family_var.get().strip()
+            shots_per_salvo = int(self.custom_weapon_shots_per_salvo_var.get())
+            time_between_salvos = float(self.custom_weapon_time_between_salvos_var.get())
+            time_between_shots_str = self.custom_weapon_time_between_shots_var.get().strip()
+            time_between_shots = float(time_between_shots_str) if time_between_shots_str else None
+            aiming_time = float(self.custom_weapon_aiming_time_var.get())
+            ammo_per_salvo = float(self.custom_weapon_ammo_per_salvo_var.get())
+            
+            # Validate values
+            if max_range <= 0 or accuracy < 0 or accuracy > 1 or damage <= 0:
+                messagebox.showerror("Error", "Invalid weapon properties. Please check your values.")
+                return
+            
+            # Create custom weapon properties
+            custom_weapon_props = {
+                "max_range": max_range,
+                "idling": accuracy,
+                "physical_damages": damage,
+                "suppress_damages": suppress_damage,
+                "damage_family": damage_family if damage_family else None,
+                "nb_tir_par_salves": shots_per_salvo,
+                "time_between_salvos": time_between_salvos,
+                "time_between_shots": time_between_shots,
+                "aiming_time": aiming_time,
+                "affichage_munition_par_salve": ammo_per_salvo,
+            }
+            
+            # Store custom weapon
+            self.app.custom_weapons[weapon_name] = custom_weapon_props
+            
+            # Save user data
+            self.app.save_user_data()
+            
+            # Update dropdowns
+            self._initialize_data()
+            
+            # Update infantry tab dropdowns if it exists
+            if hasattr(self.app, 'infantry_tab') and hasattr(self.app.infantry_tab, 'update_custom_weapon_dropdowns'):
+                self.app.infantry_tab.update_custom_weapon_dropdowns()
+            
+            messagebox.showinfo("Success", f"Custom weapon '{weapon_name}' created successfully!")
+            
+        except ValueError as e:
+            messagebox.showerror("Error", f"Invalid input: {e}. Please check all fields are valid numbers.")
+        except Exception as e:
+            messagebox.showerror("Error", f"Failed to create custom weapon: {e}")
+    
+    def edit_custom_weapon(self):
+        """Edit an existing custom weapon."""
+        if not self.app.custom_weapons:
+            messagebox.showwarning("Warning", "No custom weapons found to edit.")
+            return
+        
+        # Show selection dialog
+        dialog = tk.Toplevel(self.app.root)
+        dialog.title("Edit Custom Weapon")
+        dialog.geometry("300x150")
+        dialog.transient(self.app.root)
+        dialog.grab_set()
+        
+        ttk.Label(dialog, text="Select weapon to edit:").pack(pady=10)
+        weapon_var = tk.StringVar()
+        weapon_combo = ttk.Combobox(dialog, textvariable=weapon_var, values=list(self.app.custom_weapons.keys()), width=30, state="readonly")
+        weapon_combo.pack(pady=5)
+        if self.app.custom_weapons:
+            weapon_combo.current(0)
+        
+        def load_for_edit():
+            weapon_name = weapon_var.get()
+            if weapon_name:
+                self.on_load_weapon_selected_for_edit(weapon_name)
+                dialog.destroy()
+        
+        ttk.Button(dialog, text="Edit", command=load_for_edit).pack(pady=5)
+    
+    def on_load_weapon_selected_for_edit(self, weapon_name: str):
+        """Load weapon data into form for editing."""
+        weapon_props = self.app.custom_weapons.get(weapon_name, {})
+        if not weapon_props:
+            return
+        
+        # Store original name for update
+        self.editing_weapon_name = weapon_name
+        
+        # Populate form fields
+        self.custom_weapon_name_var.set(weapon_name)
+        self.custom_weapon_max_range_var.set(str(weapon_props.get("max_range", 0)))
+        self.custom_weapon_accuracy_var.set(str(weapon_props.get("idling", 0)))
+        self.custom_weapon_damage_var.set(str(weapon_props.get("physical_damages", 0)))
+        self.custom_weapon_suppress_damage_var.set(str(weapon_props.get("suppress_damages", 0)))
+        self.custom_weapon_damage_family_var.set(weapon_props.get("damage_family", ""))
+        self.custom_weapon_shots_per_salvo_var.set(str(weapon_props.get("nb_tir_par_salves", 1)))
+        self.custom_weapon_time_between_salvos_var.set(str(weapon_props.get("time_between_salvos", 1.0)))
+        time_between_shots = weapon_props.get("time_between_shots")
+        self.custom_weapon_time_between_shots_var.set(str(time_between_shots) if time_between_shots is not None else "")
+        self.custom_weapon_aiming_time_var.set(str(weapon_props.get("aiming_time", 0)))
+        self.custom_weapon_ammo_per_salvo_var.set(str(weapon_props.get("affichage_munition_par_salve", 1.0)))
+        
+        # Update preview after loading weapon for editing
+        if hasattr(self, 'update_preview'):
+            self.update_preview()
+        
+        # Update button text to show we're editing
+        if hasattr(self, 'weapon_button_frame'):
+            for widget in self.weapon_button_frame.winfo_children():
+                if isinstance(widget, ttk.Button) and widget.cget("text") == "Create Custom Weapon":
+                    widget.config(text="Update Custom Weapon", command=self.update_custom_weapon)
+                    break
+    
+    def update_custom_weapon(self):
+        """Update an existing custom weapon."""
+        if not hasattr(self, 'editing_weapon_name'):
+            messagebox.showwarning("Warning", "No weapon selected for editing.")
+            return
+        
+        original_name = self.editing_weapon_name
+        new_name = self.custom_weapon_name_var.get().strip()
+        
+        if not new_name:
+            messagebox.showwarning("Warning", "Please enter a weapon name")
+            return
+        
+        # If name changed and new name exists, ask for confirmation
+        if new_name != original_name and new_name in self.app.custom_weapons:
+            response = messagebox.askyesno("Confirm", f"Weapon '{new_name}' already exists. Replace it?")
+            if not response:
+                return
+        
+        # Remove old weapon if name changed
+        if new_name != original_name and original_name in self.app.custom_weapons:
+            del self.app.custom_weapons[original_name]
+        
+        # Create/update the weapon (reuse create logic)
+        self.create_custom_weapon()
+        
+        # Reset button text
+        if hasattr(self, 'weapon_button_frame'):
+            for widget in self.weapon_button_frame.winfo_children():
+                if isinstance(widget, ttk.Button) and widget.cget("text") == "Update Custom Weapon":
+                    widget.config(text="Create Custom Weapon", command=self.create_custom_weapon)
+                    break
+        
+        # Clear editing flag
+        if hasattr(self, 'editing_weapon_name'):
+            delattr(self, 'editing_weapon_name')
     
     def setup_ui(self):
         """Set up the Weapons tab UI."""
@@ -178,8 +501,8 @@ class WeaponsTab:
         self.successive_hits_var = tk.IntVar(value=0)
         hits_spinbox = ttk.Spinbox(hits_frame, from_=0, to=5, textvariable=self.successive_hits_var, width=5)
         hits_spinbox.pack(side=tk.LEFT)
-        hits_spinbox.bind('<ButtonRelease-1>', lambda e: self.update_graph())
-        hits_spinbox.bind('<KeyRelease>', lambda e: self.update_graph())
+        hits_spinbox.bind('<ButtonRelease-1>', lambda e: [self.update_graph(), self.app.auto_save_state()])
+        hits_spinbox.bind('<KeyRelease>', lambda e: [self.update_graph(), self.app.auto_save_state()])
         
         # Range modifier table selection
         range_frame = ttk.Frame(config_section)
@@ -200,9 +523,24 @@ class WeaponsTab:
             vet_mode_frame,
             text="Use multiplicative veterancy accuracy bonus (unchecked = flat bonus)",
             variable=self.use_multiplicative_vet_bonus_var,
-            command=self.update_graph
+            command=lambda: [self.update_graph(), self.app.auto_save_state()]
         )
         vet_mode_checkbox.pack(side=tk.LEFT)
+        
+        # Damage type dropdown
+        damage_type_frame = ttk.Frame(config_section)
+        damage_type_frame.pack(fill=tk.X, pady=2)
+        ttk.Label(damage_type_frame, text="DPM:").pack(side=tk.LEFT, padx=(0, 5))
+        self.damage_type_var = tk.StringVar(value="Physical")
+        damage_type_combo = ttk.Combobox(
+            damage_type_frame,
+            textvariable=self.damage_type_var,
+            values=["Physical", "Suppression"],
+            state="readonly",
+            width=12,
+        )
+        damage_type_combo.pack(side=tk.LEFT, padx=(0, 2))
+        damage_type_combo.bind("<<ComboboxSelected>>", lambda e: [self.update_graph(), self.app.auto_save_state()])
         
         # Generate chart button
         ttk.Button(config_section, text="Generate Chart", command=self.generate_chart).pack(fill=tk.X, pady=(5, 0))
@@ -226,9 +564,13 @@ class WeaponsTab:
         self.canvas.draw()
         self.canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
         
-        # Info panel
-        text_frame = ttk.LabelFrame(right_panel, text="Data Point Info", padding="5")
-        text_frame.pack(fill=tk.BOTH, expand=True)
+        # Bottom section - Info panel and Custom Weapon side by side
+        bottom_section = ttk.Frame(right_panel)
+        bottom_section.pack(fill=tk.BOTH, expand=True)
+        
+        # Info panel (smaller, left side)
+        text_frame = ttk.LabelFrame(bottom_section, text="Data Point Info", padding="5")
+        text_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=(0, 5))
         
         scrollbar = ttk.Scrollbar(text_frame)
         scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
@@ -236,8 +578,8 @@ class WeaponsTab:
         self.info_text = tk.Text(
             text_frame,
             wrap=tk.WORD,
-            width=45,
-            height=20,
+            width=20,
+            height=12,
             font=('Consolas', 9),
             state=tk.DISABLED,
             bg='#f0f0f0',
@@ -251,6 +593,134 @@ class WeaponsTab:
         self.info_text.config(state=tk.NORMAL)
         self.info_text.insert('1.0', 'Select weapons and generate\na chart to see DPM comparison.\n\nHover over data points\nto see details.\n\nClick on a data point\nto select it and see\nall weapons at that range.')
         self.info_text.config(state=tk.DISABLED)
+        
+        # Custom Weapon Section (right side of bottom section)
+        custom_weapon_section = ttk.LabelFrame(bottom_section, text="Create Custom Weapon", padding="5")
+        custom_weapon_section.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
+        
+        # Load from existing weapon dropdown (all weapons, not just small arms)
+        ttk.Label(custom_weapon_section, text="Load from existing weapon:").pack(anchor=tk.W)
+        self.load_weapon_combo = SearchableCombobox(custom_weapon_section, width=25)
+        self.load_weapon_combo.pack(fill=tk.X, pady=(0, 5))
+        self.load_weapon_combo.bind("<<ComboboxSelected>>", self.on_load_weapon_selected)
+        
+        # Custom weapon name
+        ttk.Label(custom_weapon_section, text="Weapon Name:").pack(anchor=tk.W)
+        self.custom_weapon_name_var = tk.StringVar()
+        ttk.Entry(custom_weapon_section, textvariable=self.custom_weapon_name_var, width=25).pack(fill=tk.X, pady=(0, 5))
+        
+        # Weapon properties grid
+        props_frame = ttk.Frame(custom_weapon_section)
+        props_frame.pack(fill=tk.X, pady=(0, 5))
+        
+        # Row 1: Max Range, Base Accuracy (Idling)
+        row1 = ttk.Frame(props_frame)
+        row1.pack(fill=tk.X, pady=2)
+        
+        ttk.Label(row1, text="Max Range (m):", width=15).pack(side=tk.LEFT, padx=(0, 5))
+        self.custom_weapon_max_range_var = tk.StringVar(value="400")
+        ttk.Entry(row1, textvariable=self.custom_weapon_max_range_var, width=10).pack(side=tk.LEFT, padx=(0, 10))
+        
+        ttk.Label(row1, text="Base Accuracy:", width=15).pack(side=tk.LEFT, padx=(0, 5))
+        self.custom_weapon_accuracy_var = tk.StringVar(value="0.5")
+        ttk.Entry(row1, textvariable=self.custom_weapon_accuracy_var, width=10).pack(side=tk.LEFT)
+        
+        # Row 2: Physical Damage, Suppression Damage
+        row2 = ttk.Frame(props_frame)
+        row2.pack(fill=tk.X, pady=2)
+        
+        ttk.Label(row2, text="Physical Damage:", width=15).pack(side=tk.LEFT, padx=(0, 5))
+        self.custom_weapon_damage_var = tk.StringVar(value="10")
+        ttk.Entry(row2, textvariable=self.custom_weapon_damage_var, width=10).pack(side=tk.LEFT, padx=(0, 10))
+        
+        ttk.Label(row2, text="Suppression Damage:", width=18).pack(side=tk.LEFT, padx=(0, 5))
+        self.custom_weapon_suppress_damage_var = tk.StringVar(value="10")
+        ttk.Entry(row2, textvariable=self.custom_weapon_suppress_damage_var, width=10).pack(side=tk.LEFT)
+        
+        # Row 2b: Damage Family (optional, can be empty for vehicle weapons)
+        row2b = ttk.Frame(props_frame)
+        row2b.pack(fill=tk.X, pady=2)
+        
+        ttk.Label(row2b, text="Damage Family:", width=15).pack(side=tk.LEFT, padx=(0, 5))
+        self.custom_weapon_damage_family_var = tk.StringVar(value="")
+        damage_family_entry = ttk.Entry(row2b, textvariable=self.custom_weapon_damage_family_var, width=25)
+        damage_family_entry.pack(side=tk.LEFT)
+        
+        # Row 3: Shots per salvo, Time between salvos, Time between shots
+        row3 = ttk.Frame(props_frame)
+        row3.pack(fill=tk.X, pady=2)
+        
+        ttk.Label(row3, text="Shots/Salvo:", width=15).pack(side=tk.LEFT, padx=(0, 5))
+        self.custom_weapon_shots_per_salvo_var = tk.StringVar(value="1")
+        ttk.Entry(row3, textvariable=self.custom_weapon_shots_per_salvo_var, width=10).pack(side=tk.LEFT, padx=(0, 10))
+        
+        ttk.Label(row3, text="Time Between Salvos (s):", width=20).pack(side=tk.LEFT, padx=(0, 5))
+        self.custom_weapon_time_between_salvos_var = tk.StringVar(value="2.0")
+        ttk.Entry(row3, textvariable=self.custom_weapon_time_between_salvos_var, width=10).pack(side=tk.LEFT, padx=(0, 10))
+        
+        ttk.Label(row3, text="Time Between Shots (s):", width=20).pack(side=tk.LEFT, padx=(0, 5))
+        self.custom_weapon_time_between_shots_var = tk.StringVar(value="")
+        ttk.Entry(row3, textvariable=self.custom_weapon_time_between_shots_var, width=10).pack(side=tk.LEFT)
+        
+        # Row 4: Aiming time, Ammo per salvo
+        row4 = ttk.Frame(props_frame)
+        row4.pack(fill=tk.X, pady=2)
+        
+        ttk.Label(row4, text="Aiming Time (s):", width=15).pack(side=tk.LEFT, padx=(0, 5))
+        self.custom_weapon_aiming_time_var = tk.StringVar(value="1.0")
+        ttk.Entry(row4, textvariable=self.custom_weapon_aiming_time_var, width=10).pack(side=tk.LEFT, padx=(0, 10))
+        
+        ttk.Label(row4, text="Ammo Per Salvo:", width=15).pack(side=tk.LEFT, padx=(0, 5))
+        self.custom_weapon_ammo_per_salvo_var = tk.StringVar(value="1")
+        ttk.Entry(row4, textvariable=self.custom_weapon_ammo_per_salvo_var, width=10).pack(side=tk.LEFT)
+        
+        # Create/Edit custom weapon buttons
+        self.weapon_button_frame = ttk.Frame(custom_weapon_section)
+        self.weapon_button_frame.pack(fill=tk.X, pady=(5, 0))
+        ttk.Button(self.weapon_button_frame, text="Create Custom Weapon", command=self.create_custom_weapon).pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0, 2))
+        ttk.Button(self.weapon_button_frame, text="Edit Custom Weapon", command=self.edit_custom_weapon).pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(2, 0))
+        
+        # Live preview section
+        preview_frame = ttk.Frame(custom_weapon_section)
+        preview_frame.pack(fill=tk.X, pady=(5, 0))
+        
+        ttk.Label(preview_frame, text="Live Preview:", font=("TkDefaultFont", 9, "bold")).pack(anchor=tk.W, pady=(0, 2))
+        
+        # Bonus selector for preview
+        bonus_preview_row = ttk.Frame(preview_frame)
+        bonus_preview_row.pack(fill=tk.X, pady=(0, 5))
+        ttk.Label(bonus_preview_row, text="Bonuses:").pack(side=tk.LEFT, padx=(0, 5))
+        self.preview_bonus_combo = SearchableCombobox(bonus_preview_row, width=30)
+        self.preview_bonus_combo.pack(side=tk.LEFT, fill=tk.X, expand=True)
+        # Ensure bonus combinations are collected before setting values
+        if not hasattr(self, 'bonus_combinations') or not self.bonus_combinations:
+            self.collect_bonus_combinations()
+        self.preview_bonus_combo.set_values(self.get_bonus_display_strings())
+        self.preview_bonus_combo.set("No bonuses")  # Set default value
+        self.preview_bonus_combo.bind("<<ComboboxSelected>>", lambda e: self.update_preview())
+        
+        preview_info_frame = ttk.Frame(preview_frame)
+        preview_info_frame.pack(fill=tk.X)
+        
+        self.preview_dpm_label = ttk.Label(preview_info_frame, text="DPM: --", foreground="blue")
+        self.preview_dpm_label.pack(side=tk.LEFT, padx=(0, 10))
+        
+        self.preview_shots_label = ttk.Label(preview_info_frame, text="Shots/min: --", foreground="green")
+        self.preview_shots_label.pack(side=tk.LEFT, padx=(0, 10))
+        
+        self.preview_ammo_label = ttk.Label(preview_info_frame, text="Ammo/min: --", foreground="orange")
+        self.preview_ammo_label.pack(side=tk.LEFT)
+        
+        # Bind update_preview to all custom weapon input fields
+        self.custom_weapon_max_range_var.trace_add("write", lambda *args: self.app.root.after_idle(self.update_preview))
+        self.custom_weapon_accuracy_var.trace_add("write", lambda *args: self.app.root.after_idle(self.update_preview))
+        self.custom_weapon_damage_var.trace_add("write", lambda *args: self.app.root.after_idle(self.update_preview))
+        self.custom_weapon_suppress_damage_var.trace_add("write", lambda *args: self.app.root.after_idle(self.update_preview))
+        self.custom_weapon_shots_per_salvo_var.trace_add("write", lambda *args: self.app.root.after_idle(self.update_preview))
+        self.custom_weapon_time_between_salvos_var.trace_add("write", lambda *args: self.app.root.after_idle(self.update_preview))
+        self.custom_weapon_time_between_shots_var.trace_add("write", lambda *args: self.app.root.after_idle(self.update_preview))
+        self.custom_weapon_aiming_time_var.trace_add("write", lambda *args: self.app.root.after_idle(self.update_preview))
+        self.custom_weapon_ammo_per_salvo_var.trace_add("write", lambda *args: self.app.root.after_idle(self.update_preview))
         
         # Bind mouse motion for tooltips
         self.connect_hover_handler()
@@ -286,7 +756,7 @@ class WeaponsTab:
         visibility_checkbox = ttk.Checkbutton(
             weapon_row,
             variable=visibility_var,
-            command=self.update_graph
+            command=lambda: [self.update_graph(), self.app.auto_save_state()]
         )
         visibility_checkbox.pack(side=tk.LEFT, padx=(0, 5))
         ttk.Label(weapon_row, text="Weapon:").pack(side=tk.LEFT, padx=(0, 5))
@@ -304,8 +774,8 @@ class WeaponsTab:
         self.weapon_quantity_vars.append(quantity_var)
         quantity_spinbox = ttk.Spinbox(quantity_row, from_=1, to=10, textvariable=quantity_var, width=5)
         quantity_spinbox.pack(side=tk.LEFT, padx=(0, 5))
-        quantity_spinbox.bind('<ButtonRelease-1>', lambda e: self.update_graph())
-        quantity_spinbox.bind('<KeyRelease>', lambda e: self.update_graph())
+        quantity_spinbox.bind('<ButtonRelease-1>', lambda e: [self.update_graph(), self.app.auto_save_state()])
+        quantity_spinbox.bind('<KeyRelease>', lambda e: [self.update_graph(), self.app.auto_save_state()])
         # Vanilla range table checkbox
         use_vanilla_var = tk.BooleanVar(value=False)  # Default to using selected range table
         self.weapon_use_vanilla_range_table_vars.append(use_vanilla_var)
@@ -328,7 +798,7 @@ class WeaponsTab:
             self.collect_bonus_combinations()
         bonus_combo.set_values(self.get_bonus_display_strings())
         bonus_combo.set("No bonuses")  # Set default value
-        bonus_combo.bind("<<ComboboxSelected>>", lambda e: self.update_graph())
+        bonus_combo.bind("<<ComboboxSelected>>", lambda e: [self.update_graph(), self.app.auto_save_state()])
         self.weapon_bonus_combos.append(bonus_combo)
         
         # Update scroll region
@@ -413,6 +883,7 @@ class WeaponsTab:
         if selected_table in self.app.range_modifier_tables:
             self.app.current_range_modifier_table_name = selected_table
             self.update_graph()
+            self.app.auto_save_state()
     
     def open_range_modifier_editor(self):
         """Open the range modifier table editor window."""
@@ -479,9 +950,9 @@ class WeaponsTab:
                 use_vanilla_range_table = self.weapon_use_vanilla_range_table_vars[i].get() if i < len(self.weapon_use_vanilla_range_table_vars) else False
                 
                 if ammo_name in self.app.ammunition_props:
-                    selected_weapons_data.append((ammo_name, quantity, False, veterancy_accuracy_bonus, reload_speed_multiplier, use_vanilla_range_table))  # False = not custom
+                    selected_weapons_data.append((ammo_name, quantity, False, veterancy_accuracy_bonus, reload_speed_multiplier, use_vanilla_range_table, i))  # False = not custom, i = dropdown index
                 elif hasattr(self.app, 'custom_weapons') and ammo_name in self.app.custom_weapons:
-                    selected_weapons_data.append((ammo_name, quantity, True, veterancy_accuracy_bonus, reload_speed_multiplier, use_vanilla_range_table))  # True = custom
+                    selected_weapons_data.append((ammo_name, quantity, True, veterancy_accuracy_bonus, reload_speed_multiplier, use_vanilla_range_table, i))  # True = custom, i = dropdown index
         
         if not selected_weapons_data:
             self.ax.text(0.5, 0.5, 'Select weapons to compare', 
@@ -493,10 +964,9 @@ class WeaponsTab:
         
         # Generate DPM data for each weapon
         colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf']
-        color_idx = 0
         max_chart_range = 0
         
-        for ammo_name, quantity, is_custom, veterancy_accuracy_bonus, reload_speed_multiplier, use_vanilla_range_table in selected_weapons_data:
+        for ammo_name, quantity, is_custom, veterancy_accuracy_bonus, reload_speed_multiplier, use_vanilla_range_table, dropdown_idx in selected_weapons_data:
             # Get ammunition properties
             if is_custom:
                 ammo_props = self.app.custom_weapons[ammo_name].copy()
@@ -512,6 +982,7 @@ class WeaponsTab:
             # Calculate DPM with selected bonuses
             # Read checkbox value fresh each time
             use_multiplicative = self.use_multiplicative_vet_bonus_var.get()
+            damage_type = self.damage_type_var.get() if hasattr(self, 'damage_type_var') else "Physical"
             dpm_data = calculate_dpm(
                 ammo_props,
                 quantity,
@@ -521,7 +992,8 @@ class WeaponsTab:
                 veterancy_accuracy_bonus=veterancy_accuracy_bonus,
                 reload_speed_multiplier=reload_speed_multiplier,
                 range_modifiers_table=weapon_range_table,
-                use_multiplicative_vet_bonus=use_multiplicative
+                use_multiplicative_vet_bonus=use_multiplicative,
+                damage_type=damage_type
             )
             
             if dpm_data:
@@ -531,7 +1003,8 @@ class WeaponsTab:
                 # Track maximum range for x-axis ticks
                 max_chart_range = max(max_chart_range, max(ranges))
                 
-                color = colors[color_idx % len(colors)]
+                # Use dropdown index to determine color (maintains color based on position in left panel)
+                color = colors[dropdown_idx % len(colors)]
                 # Build label with bonuses if applicable
                 bonus_label = ""
                 if veterancy_accuracy_bonus != 0.0 or reload_speed_multiplier != 1.0:
@@ -548,8 +1021,6 @@ class WeaponsTab:
                 
                 # Store line data for marker placement
                 self.line_data[label] = list(zip(ranges, dpm_values))
-                
-                color_idx += 1
         
         if self.ax.lines:
             self.ax.legend(loc='best')
@@ -767,7 +1238,13 @@ class WeaponsTab:
                 if ammo_props:
                     max_range = ammo_props.get("max_range", 0)
                     base_accuracy = ammo_props.get("idling", 0)
-                    physical_damage = ammo_props.get("physical_damages", 0)
+                    damage_type = self.damage_type_var.get() if hasattr(self, 'damage_type_var') else "Physical"
+                    if damage_type == "Suppression":
+                        base_damage = ammo_props.get("suppress_damages", 0)
+                        damage_label = "Suppression Damage"
+                    else:
+                        base_damage = ammo_props.get("physical_damages", 0)
+                        damage_label = "Physical Damage"
                     
                     if range_val <= max_range:
                         # Determine which range table to use for this weapon
@@ -785,7 +1262,7 @@ class WeaponsTab:
                             use_multiplicative_vet_bonus=use_multiplicative
                         )
                         shots_per_min = calculate_shots_per_minute(ammo_props, reload_speed_multiplier)
-                        dpm = accuracy * physical_damage * shots_per_min * quantity
+                        dpm = accuracy * base_damage * shots_per_min * quantity
                         per_weapon_dpm = dpm / quantity if quantity > 0 else 0
                         
                         # Calculate ammo consumption per minute
@@ -796,8 +1273,8 @@ class WeaponsTab:
                         # Get additional weapon stats
                         salvo_reload = ammo_props.get("time_between_salvos", 0.0)
                         shot_reload = ammo_props.get("time_between_shots", None)
-                        per_weapon_damage = physical_damage  # Physical damage is per weapon
-                        total_damage = physical_damage * quantity if quantity > 0 else 0.0
+                        per_weapon_damage = base_damage
+                        total_damage = base_damage * quantity if quantity > 0 else 0.0
                         
                         custom_label = " (custom)" if is_custom else ""
                         bonus_label = ""
@@ -811,7 +1288,7 @@ class WeaponsTab:
                         
                         info_lines.append(f"{ammo_name}{custom_label} (x{quantity}){bonus_label}:")
                         info_lines.append(f"  DPM: {dpm:.2f} ({per_weapon_dpm:.2f} per weapon)")
-                        info_lines.append(f"  Physical Damage: {total_damage:.2f} ({per_weapon_damage:.2f} per weapon)")
+                        info_lines.append(f"  {damage_label}: {total_damage:.2f} ({per_weapon_damage:.2f} per weapon)")
                         info_lines.append(f"  Base Accuracy: {base_accuracy * 100:.1f}%")
                         info_lines.append(f"  Accuracy: {accuracy * 100:.1f}%")
                         info_lines.append(f"  Shots/min: {shots_per_min:.1f} (per weapon)")
@@ -857,4 +1334,99 @@ class WeaponsTab:
         
         # If target_range is before the data, return the first value
         return dpm_data[0][1]
+    
+    def save_tab_state(self) -> Dict[str, Any]:
+        """Save the current state of the weapons tab."""
+        state = {
+            "selected_weapons": [],
+            "quantities": [],
+            "bonuses": [],
+            "visibility_states": [],
+            "vanilla_range_table_states": [],
+            "successive_hits": self.successive_hits_var.get() if hasattr(self, 'successive_hits_var') else 0,
+            "use_multiplicative_vet_bonus": self.use_multiplicative_vet_bonus_var.get() if hasattr(self, 'use_multiplicative_vet_bonus_var') else True,
+            "range_table": self.range_table_var.get() if hasattr(self, 'range_table_var') else "vanilla",
+        }
+        
+        for idx, dropdown in enumerate(self.weapon_dropdowns):
+            weapon_name = dropdown.get() if hasattr(dropdown, 'get') else ""
+            state["selected_weapons"].append(weapon_name)
+            
+            # Get quantity
+            quantity = self.weapon_quantity_vars[idx].get() if idx < len(self.weapon_quantity_vars) else 1
+            state["quantities"].append(quantity)
+            
+            # Get bonus selection
+            bonus = self.weapon_bonus_combos[idx].get() if idx < len(self.weapon_bonus_combos) else "No bonuses"
+            state["bonuses"].append(bonus)
+            
+            # Get visibility state
+            visibility = self.weapon_visibility_vars[idx].get() if idx < len(self.weapon_visibility_vars) else True
+            state["visibility_states"].append(visibility)
+            
+            # Get vanilla range table checkbox state
+            use_vanilla = self.weapon_use_vanilla_range_table_vars[idx].get() if idx < len(self.weapon_use_vanilla_range_table_vars) else False
+            state["vanilla_range_table_states"].append(use_vanilla)
+        
+        return state
+    
+    def load_tab_state(self, state: Dict[str, Any]):
+        """Load a saved state into the weapons tab."""
+        if not state:
+            return
+        
+        # Load successive hits
+        if "successive_hits" in state and hasattr(self, 'successive_hits_var'):
+            self.successive_hits_var.set(state["successive_hits"])
+            self.successive_hits = state["successive_hits"]
+        
+        # Load multiplicative vet bonus checkbox
+        if "use_multiplicative_vet_bonus" in state and hasattr(self, 'use_multiplicative_vet_bonus_var'):
+            self.use_multiplicative_vet_bonus_var.set(state["use_multiplicative_vet_bonus"])
+        
+        # Load range table selection
+        if "range_table" in state and hasattr(self, 'range_table_var'):
+            range_table = state["range_table"]
+            if range_table in self.app.range_modifier_tables:
+                self.range_table_var.set(range_table)
+                self.app.current_range_modifier_table_name = range_table
+        
+        # Ensure we have enough dropdowns
+        selected_weapons = state.get("selected_weapons", [])
+        while len(self.weapon_dropdowns) < len(selected_weapons):
+            self.add_weapon_dropdown()
+        
+        # Load state for each dropdown
+        for idx, weapon_name in enumerate(selected_weapons):
+            if idx < len(self.weapon_dropdowns):
+                dropdown = self.weapon_dropdowns[idx]
+                
+                # Set weapon selection
+                if weapon_name:
+                    dropdown.set(weapon_name)
+                    self.on_weapon_selected(dropdown)
+                
+                # Set quantity
+                quantities = state.get("quantities", [])
+                if idx < len(quantities) and idx < len(self.weapon_quantity_vars):
+                    self.weapon_quantity_vars[idx].set(quantities[idx])
+                
+                # Set bonus selection
+                bonuses = state.get("bonuses", [])
+                if idx < len(bonuses) and idx < len(self.weapon_bonus_combos):
+                    self.weapon_bonus_combos[idx].set(bonuses[idx])
+                
+                # Set visibility state
+                visibility_states = state.get("visibility_states", [])
+                if idx < len(visibility_states) and idx < len(self.weapon_visibility_vars):
+                    self.weapon_visibility_vars[idx].set(visibility_states[idx])
+                
+                # Set vanilla range table checkbox state
+                vanilla_states = state.get("vanilla_range_table_states", [])
+                if idx < len(vanilla_states) and idx < len(self.weapon_use_vanilla_range_table_vars):
+                    self.weapon_use_vanilla_range_table_vars[idx].set(vanilla_states[idx])
+        
+        # Update graph after loading all state
+        if hasattr(self, 'update_graph'):
+            self.update_graph()
 
