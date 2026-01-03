@@ -400,7 +400,7 @@ usa_unit_edits = {
                 '_leader',
                 '_choc',
                 '_para',
-                'infantry_equip_light',
+                'infantry_equip_medium',
             ],
         },
         "WeaponDescriptor": {
@@ -421,7 +421,7 @@ usa_unit_edits = {
     },
 
     "Airborne_CMD_US": {
-        "CommandPoints": 65,
+        "CommandPoints": 60,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDR AIRBORNE LDR.",
@@ -476,7 +476,7 @@ usa_unit_edits = {
     },
 
     "AeroRifles_CMD_US": {
-        "CommandPoints": 45,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDR AERO-RIFLES LDR.",
@@ -652,7 +652,7 @@ usa_unit_edits = {
     },
 
     "Engineers_US": {
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
@@ -670,20 +670,11 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
-        "WeaponAssignment": [
-                (0, [1, ]),
-                (1, [1, ]),
-                (2, [0, ]),
-                (3, [0, ]),
-                (4, [0, ]),
-                (5, [0, ]),
-                (6, [0, ]),
-                (7, [0, ]),
-                (8, [0, ]),
-                (9, [0, 2]),
-            ],
         "WeaponDescriptor": {
             "equipmentchanges": {
+                "animate": {
+                    "MMG_WA_M60E3_7_62mm": False,
+                },
                 "quantity": {
                     "MMG_WA_M60E3_7_62mm": 2,
                 },
@@ -736,7 +727,7 @@ usa_unit_edits = {
     },
 
     "Airborne_Engineers_US": {
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         # "GameName": {
         #     "display": "AIRBORNE ASSAULT ENG.",
         #     "token": "TXOZWRNEVU",
@@ -745,7 +736,7 @@ usa_unit_edits = {
         "availability": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_light'"],
+            "add_specs": ["'infantry_equip_medium'"],
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -780,7 +771,7 @@ usa_unit_edits = {
         "availability": [0, 9, 7, 0],
         "max_speed": 26,
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_medium'"],
+            "add_specs": ["'infantry_equip_light'"],
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -794,7 +785,7 @@ usa_unit_edits = {
         "GameName": {
             "display": "AB ENGINEERS [FLASH]",
         },
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
@@ -803,8 +794,24 @@ usa_unit_edits = {
         },
         "availability": [0, 9, 7, 0],
         "max_speed": 26,
+        "strength": 6,
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_medium'"],
+            "add_specs": ["'infantry_equip_light'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                # AnimateOnlyOneSoldier (False when quantity of a given small arm weapon is > 1)
+                "animate": {
+                    "SAW_M249_5_56mm": False,
+                },
+                "replace": [("MMG_inf_M240B_7_62mm", "SAW_M249_5_56mm")],
+                "quantity": {
+                    "SAW_M249_5_56mm": 2,
+                },
+            },
+            "Salves": {
+                "SAW_M249_5_56mm": 23,
+            },
         },
     },
 
@@ -898,7 +905,7 @@ usa_unit_edits = {
         "GameName": {
             "display": "AIRBORNE [DRAGON]",
         },
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "availability": [0, 6, 4, 0],
         "max_speed": 20,
@@ -1165,7 +1172,7 @@ usa_unit_edits = {
     },
 
     "Airborne_US": {
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
@@ -1190,7 +1197,7 @@ usa_unit_edits = {
         "GameName": {
             "display": "AB FIRETEAM [AT4]",
         },
-        "CommandPoints": 30,
+        "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
@@ -1199,20 +1206,24 @@ usa_unit_edits = {
         },
         "availability": [0, 9, 7, 0],
         "max_speed": 26,
+        "strength": 6,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
+                "animate": {
+                    "SAW_M249_5_56mm": False,
+                },
                 "quantity": {
-                    "FM_M16": 3,
+                    "FM_M16": 4,
                     "SAW_M249_5_56mm": 2,
                 },
             },
             "Salves": {
-                "FM_M16": 9,
-                "SAW_M249_5_56mm": 30,
-                "RocketInf_AT4_83mm": 4,
+                "FM_M16": 11,
+                "SAW_M249_5_56mm": 23,
+                "RocketInf_AT4_83mm": 6,
             },
         },
     },
@@ -1221,7 +1232,7 @@ usa_unit_edits = {
         "GameName": {
             "display": "AB FIRETEAM [DRAGON]",
         },
-        "CommandPoints": 30,
+        "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
@@ -1230,20 +1241,31 @@ usa_unit_edits = {
         },
         "availability": [0, 9, 7, 0],
         "max_speed": 20,
+        "strength": 6,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "animate": {
+                    "MMG_inf_M240B_7_62mm": False,
+                },
+                "replace": [
+                    ("SAW_M249_5_56mm", "MMG_inf_M240B_7_62mm", "SAW_M249_5_56mm", "MMG_inf_M240B_7_62mm")
+                ],
+                "quantity": {
+                    "MMG_inf_M240B_7_62mm": 2,
+                },
+            },
             "Salves": {
-                "FM_M16": 7,
-                "SAW_M249_5_56mm": 30,
+                "MMG_inf_M240B_7_62mm": 36,
                 "M47_DRAGON_II": 4,
             },
         },
     },
 
     "AeroRifles_AB_US": {
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
@@ -1261,7 +1283,7 @@ usa_unit_edits = {
         "GameName": {
             "display": "AERO-RIFLES [DRAGON]",
         },
-        "CommandPoints": 40,
+        "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "Divisions": {
             "add": ["US_82nd_Airborne"],
@@ -1274,14 +1296,18 @@ usa_unit_edits = {
         },
         "availability": [0, 6, 4, 0],
         "max_speed": 20,
+        "strength": 10,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
         "WeaponDescriptor": {
+            "quantity": {
+                "FM_M16": 8,
+            },
             "Salves": {
-                "FM_M16": 7,
-                "SAW_M249_5_56mm": 30,
-                "M47_DRAGON_II": 4,
+                "FM_M16": 11,
+                "SAW_M249_5_56mm": 23,
+                "M47_DRAGON_II": 8,
             },
         },
     },

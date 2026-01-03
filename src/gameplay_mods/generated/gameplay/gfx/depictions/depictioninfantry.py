@@ -364,14 +364,24 @@ def _handle_complex_unit_edits(source_path: Any) -> None:
                                         new_value = f'"FireEffect_{value}"'
                                         operators_member.v[index].v.by_m(submember).v = new_value
                                         logger.info(f"Changed FireEffectTag for {unit_name} to {value}")
+            
+            elif namespace and namespace.startswith("TacticDepiction_") and namespace.endswith("_Alternatives"):
+                tacticdepiction_alternatives = source_path.by_n(namespace)
+                if not tacticdepiction_alternatives:
+                    logger.error(f"Unit Edits: Could not find tactic depiction {namespace} for {unit_name}")
+                    continue
+                    
+                tacticdepiction_alternatives.v = edits
 
-            elif namespace and namespace.startswith("TacticDepiction_"):
+            elif namespace and namespace.startswith("TacticDepiction_") and namespace.endswith("_Soldier"):
                 tacticdepiction_soldier = source_path.by_n(namespace)
                 if not tacticdepiction_soldier:
                     logger.error(f"Could not find tactic depiction {namespace} for {unit_name}")
                     continue
 
                 for member, member_edits in edits.items():
+                    if member == "Selector":
+                        tacticdepiction_soldier.v.by_m(member).v = f"InfantrySelectorTactic_{member_edits}"
                     if member == "Operators":
                         operators_member = tacticdepiction_soldier.v.by_m(member)
                         for index, (edit_type, edit_list) in member_edits.items():
@@ -398,6 +408,46 @@ def _handle_complex_unit_edits(source_path: Any) -> None:
                                                 f"{mesh_alternative} in {unit_name}"
                                             )
                                             
+            elif namespace and namespace.startswith("TacticDepiction_") and namespace.endswith("_Ghost"):
+                tacticdepiction_ghost = source_path.by_n(namespace)
+                if not tacticdepiction_ghost:
+                    logger.error(f"Unit Edits: Could not find tactic depiction {namespace} for {unit_name}")
+                    continue
+                    
+                for member, member_edits in edits.items():
+                    if member == "Selector":
+                        tacticdepiction_ghost.v.by_m(member).v = f"InfantrySelectorTactic_{member_edits}"
+                        
+            elif obj_type == "TTransportedInfantryEntry":
+                transport_catalog = source_path.find_by_cond(
+                    lambda x: is_obj_type(x.v, "TTransportedInfantryCatalogEntries"))
+                if not transport_catalog:
+                    logger.error(f"Unit Edits: Could not find transport catalog")
+                    continue
+                
+                catalog_entries = transport_catalog.v.by_member("Entries").v
+                    
+                transportedinfantryentry = catalog_entries.find_by_cond(
+                    lambda x: x.v.by_member("Identifier").v == f'"{unit_name}"')
+                if not transportedinfantryentry:
+                    logger.error(f"Unit Edits: Could not find transported infantry entry {unit_name}")
+                    continue
+                    
+                for member, member_edits in edits.items():
+                    if member == "Count":
+                        transportedinfantryentry.v.by_m(member).v = str(member_edits)
+                    elif member == "Meshes":
+                        new_mesh_list = []
+                        for mesh in member_edits:
+                            new_mesh_list.append(f"$/GFX/DepictionResources/Modele_{mesh}")
+                        new_meshes = ndf.model.List()
+                        for mesh in new_mesh_list:
+                            new_meshes.add(mesh)
+                        transportedinfantryentry.v.by_member("Meshes").v = new_meshes
+                    elif member == "UniqueCount":
+                        transportedinfantryentry.v.by_member("UniqueCount").v = str(member_edits)
+                    else:
+                        logger.error(f"Unit Edits: Unknown member {member} for {unit_name}")
                                             
 def _handle_unit_edits(source_path: Any, game_db: Dict[str, Any]) -> None:
     # this function is so limited and could easily break if the unit edits are not formatted correctly
@@ -416,6 +466,26 @@ def _handle_unit_edits(source_path: Any, game_db: Dict[str, Any]) -> None:
     for unit_name, edits in unit_edits.items():
         if "WeaponDescriptor" not in edits:
             continue
+        
+        if "replace" in edits["WeaponDescriptor"].get("equipmentchanges", {}):
+            weapon_replacements = edits["WeaponDescriptor"].get("equipmentchanges", {}).get("replace", [])
+            for replacement in weapon_replacements:
+                if len(replacement) == 4:
+                    old_fire_effect = replacement[2]
+                    new_fire_effect = replacement[3]
+                    
+                    # AllWeaponSubDepiction
+                    weapon_subdepictions = source_path.find_by_cond(
+                        lambda x: x.namespace == f"AllWeaponSubDepiction_{unit_name}", False)
+                    if not weapon_subdepictions:
+                        logger.debug(f"No infantry weapon subdepictions found for {unit_name}")
+                        continue
+                    operators_list = weapon_subdepictions.v.by_m("Operators").v
+                    target_operator = operators_list.find_by_cond(
+                        lambda x: x.v.by_m("FireEffectTag").v == f'"FireEffect_{old_fire_effect}"')
+                    if target_operator:
+                        target_operator.v.by_m("FireEffectTag").v = f'"FireEffect_{new_fire_effect}"'
+                        logger.info(f"Replaced fire effect {old_fire_effect} with {new_fire_effect} for {unit_name}")
             
         weapon_changes = edits["WeaponDescriptor"].get("equipmentchanges", {})
         if "add" in weapon_changes:

@@ -8,6 +8,7 @@ logs/*
 output.txt
 scripts/
 src/data/database/*.json
+src/data/database/constants_precomputation/*.json
 .VSCodeCounter/
 *.lnk
 LDR_unit_edits_old.py

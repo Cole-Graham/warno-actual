@@ -817,7 +817,14 @@ class WeaponsTab:
                 self.weapon_visibility_vars.pop()
             if self.weapon_use_vanilla_range_table_vars:
                 self.weapon_use_vanilla_range_table_vars.pop()
-            last_dropdown.master.destroy()
+            # Destroy the entire weapon_frame (which contains weapon_row, quantity_row, bonus_row, and separator)
+            # last_dropdown.master is weapon_row, last_dropdown.master.master is weapon_frame
+            weapon_frame = last_dropdown.master.master
+            weapon_frame.destroy()
+            
+            # Update scroll region
+            self.weapon_dropdowns_frame.update_idletasks()
+            self.weapon_canvas.configure(scrollregion=self.weapon_canvas.bbox("all"))
             
             # Update graph if needed
             self.update_graph()

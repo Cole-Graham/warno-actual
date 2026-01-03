@@ -20,6 +20,8 @@ from .SOV_depiction_edits import (
 )
 # from .UK_depiction_edits import ()
 from .USA_depiction_edits import (
+    airborne_engineers_flash_us,
+    airborne_half_dragon_us,
     f111e_aardvark_napalm_us,
     f111f_aardvark_napalm_us,
     f16e_napalm_us,
@@ -49,6 +51,8 @@ __all__ = [
     "mtlb_vasilek_sov",
     
     # USA
+    "airborne_engineers_flash_us",
+    "airborne_half_dragon_us",
     "f111e_aardvark_napalm_us",
     "f111f_aardvark_napalm_us",
     "f16e_napalm_us",

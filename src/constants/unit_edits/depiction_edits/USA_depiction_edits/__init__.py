@@ -1,5 +1,7 @@
 """USA depiction edits."""
 
+from .Airborne_Engineers_Flash_US import airborne_engineers_flash_us
+from .Airborne_half_Dragon_US import airborne_half_dragon_us
 from .F111E_Aardvark_napalm_US import f111e_aardvark_napalm_us
 from .F111F_Aardvark_napalm_US import f111f_aardvark_napalm_us
 from .F16E_napalm_US import f16e_napalm_us
@@ -11,6 +13,8 @@ from .Scout_US import scout_us
 
 
 __all__ = [
+    "airborne_engineers_flash_us",
+    "airborne_half_dragon_us",
     "f111e_aardvark_napalm_us",
     "f111f_aardvark_napalm_us",
     "f16e_napalm_us",
