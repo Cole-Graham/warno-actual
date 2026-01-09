@@ -27,7 +27,7 @@ uk_unit_edits = {
 
     # UK INF
     "Territorial_CMD_UK": {
-        "CommandPoints": 30,
+        "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDR TERRIERS LDR.",
@@ -46,15 +46,6 @@ uk_unit_edits = {
             ],
         },
         "strength": 7,
-        "WeaponAssignment": [
-                (0, [1, ]),
-                (1, [1, ]),
-                (2, [1, ]),
-                (3, [1, ]),
-                (4, [0, ]),
-                (5, [0, ]),
-                (6, [0, 2, ]),
-            ],
         "TransportedTexture": "UseInGame_Transport_REGINF",
         # "SortingOrder": 20075,
         # "UnitAttackValue": 1,
@@ -70,7 +61,7 @@ uk_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "availability": [0, 0, 7, 5],
+        "availability": [0, 7, 5, 0],
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -79,7 +70,7 @@ uk_unit_edits = {
                 },
             },
             "Salves": {
-                "PM_Sterling": 18,
+                "PM_Sterling": 22,
             },
         },
         "selector_tactic": "(0, 2)",
@@ -90,7 +81,7 @@ uk_unit_edits = {
     },
 
     "Engineers_CMD_UK": {
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDR ASSAULT PIONEERS LDR.",
@@ -109,16 +100,6 @@ uk_unit_edits = {
             ],
         },
         "strength": 8,
-        "WeaponAssignment": [
-                (0, [0, ]),
-                (1, [0, ]),
-                (2, [0, ]),
-                (3, [0, ]),
-                (4, [0, ]),
-                (5, [0, ]),
-                (6, [0, 1]),
-                (7, [0, 2]),
-            ],
         "TransportedTexture": "UseInGame_Transport_assault",
         # "SortingOrder": 20075,
         # "UnitAttackValue": 1,
@@ -155,7 +136,7 @@ uk_unit_edits = {
             },
             "Salves": {
                 "add": [(1, 7)], # (salve_index, salves)
-                "PM_Sterling": 18,
+                "PM_Sterling": 22,
             },
         },
         "selector_tactic": "(0, 8)",
@@ -215,7 +196,7 @@ uk_unit_edits = {
     },
 
     "Airmobile_CMD_UK": {
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDR AIRMOBILE LDR.",
@@ -327,6 +308,13 @@ uk_unit_edits = {
             "add_specs": ["'refundable_unit'",],
         },
     },
+    
+    "LandRover_MP_UK": {
+        "CommandPoints": 15,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+    },
 
     "Bedford_MJ_4t_trans_UK": {
         "CommandPoints": 15,
@@ -341,13 +329,6 @@ uk_unit_edits = {
         "strength": 5,
         "availability": [12, 0, 0, 0],
         "max_speed": 26,
-        "WeaponAssignment": [
-                (0, [1, ]),
-                (1, [1, ]),
-                (2, [0, ]),
-                (3, [0, ]),
-                (4, [0, ]),
-            ],
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "quantity": {
@@ -355,20 +336,16 @@ uk_unit_edits = {
                 },
             },
         },
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
     },
 
     "RMP_UK": {
-        "CommandPoints": 20,
+        "CommandPoints": 15,
         "armor": "Infantry_armor_reference",
         "strength": 5,
         "availability": [0, 12, 9, 0],
-        "WeaponAssignment": [
-                (0, [2, ]),
-                (1, [1, ]),
-                (2, [1, ]),
-                (3, [0, ]),
-                (4, [0, ]),
-            ],
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -377,34 +354,44 @@ uk_unit_edits = {
                 },
             },
         },
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
+        },
     },
 
     "Security_UK": {
-        "CommandPoints": 25,
+        "CommandPoints": 15,
         "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "availability": [14, 0, 0, 0],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "animate": {
+                    "SAW_Bren_L4A4": False,
+                },
+                "quantity": {
+                    "FM_L1A1_SLR": 5,
+                    "SAW_Bren_L4A4": 2,
+                },
+            },
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
     },
 
     "Territorial_UK": {
-        "CommandPoints": 30,
+        "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
-        "WeaponAssignment": [
-                (0, [2, ]),
-                (1, [2, ]),
-                (2, [2, ]),
-                (3, [1, ]),
-                (4, [1, ]),
-                (5, [1, ]),
-                (6, [1, ]),
-                (7, [0, 3,]),
-            ],
         "WeaponDescriptor": {
             "equipmentchanges": {
+                "animate": {
+                    "SAW_Bren_L4A4": False,
+                },
                 "quantity": {
                     "FM_L1A1_SLR": 4,
                     "SAW_Bren_L4A4": 3,
@@ -414,20 +401,13 @@ uk_unit_edits = {
     },
 
     "AT_Group_TA_UK": {
-        "CommandPoints": 25,
+        "CommandPoints": 20,
         "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "strength": 5,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
-        "WeaponAssignment": [
-                (0, [0, ]),
-                (1, [0, ]),
-                (2, [0, ]),
-                (3, [0, ]),
-                (4, [0, 1]),
-            ],
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "quantity": {
@@ -444,14 +424,22 @@ uk_unit_edits = {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "max_speed": 26,
+        "strength": 10,
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_light'"],
+            "add_specs": ["'infantry_equip_medium'"],
         },
         "availability": [10, 7, 0, 0],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_L85A1": 7,
+                },
+            },
+        },
     },
 
     "Airmobile_MILAN_UK": {  # 7x L85, 2x L86A1 lmg, 1x LAW 80
-        "CommandPoints": 45,
+        "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "SpecialtiesList": {
@@ -501,7 +489,7 @@ uk_unit_edits = {
     },
 
     "Airmobile_Mot_UK": {
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1110,7 +1098,7 @@ uk_unit_edits = {
     },
 
     "Harrier_UK": {  # 4x AIM-9L
-        "CommandPoints": 100,
+        "CommandPoints": 95,
         "availability": [0, 4, 3, 0],
     },
 

@@ -85,14 +85,6 @@ rda_unit_edits = {
             ],
         },
         "strength": 6,
-        "WeaponAssignment": [
-                (0, [1, ]),
-                (1, [0, ]),
-                (2, [0, ]),
-                (3, [0, ]),
-                (4, [0, 3]),
-                (5, [0, 2]),
-            ],
         "TransportedTexture": "UseInGame_Transport_REGINF",
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
@@ -161,16 +153,6 @@ rda_unit_edits = {
             ],
         },
         "strength": 8,
-        "WeaponAssignment": [
-                (0, [0, ]),
-                (1, [0, ]),
-                (2, [0, ]),
-                (3, [0, ]),
-                (4, [0, ]),
-                (5, [0, ]),
-                (6, [0, ]),
-                (7, [0, 1, ]),
-            ],
         "TransportedTexture": "UseInGame_Transport_assault",
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
@@ -194,7 +176,7 @@ rda_unit_edits = {
                 },
             },
             "Salves": {
-                "FM_Mpi_AK_74N": 9,
+                "FM_Mpi_AK_74N": 11,
                 "RocketInf_RPG7VL": 6,
             },
         },
@@ -209,6 +191,141 @@ rda_unit_edits = {
         "CommandPoints": 15,
         "armor": "Infantry_armor_reference",
         "availability": [0, 12, 9, 0],
+        "max_speed": 26,
+        "strength": 5,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "PM_Skorpion": 5,
+                },
+            },
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
+        },
+    },
+    
+    "KdA_CMD_DDR": {
+        "CommandPoints": 20,
+        "armor": "Infantry_armor_reference",
+        "GameName": {
+            "display": "#LDRSOV K.d.A. FÜH. LDR.",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "UNITE_KdA_CMD_DDR",
+                "Unite",
+            ],
+        },
+        "TransportedTexture": "UseInGame_Transport_REGINF",
+        "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "UnitRole": "infantry",
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'leader_sov',
+                '_reservist',
+                '_militia',
+                'infantry_equip_light',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Infantry",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 7, 0, 0],
+        "max_speed": 26,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_KMS_72": 5,
+                },
+                "add": [(1, "SAW_lMG_K_7_62mm")],
+                "add_edits": {
+                    1: {
+                        "SalvoStockIndex": 1,
+                        "HandheldEquipmentKey": "'WeaponAlternative_2'",
+                        "NbWeapons": 1,
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_2"],
+                    },
+                },
+            },
+            "Salves": {
+                "add": [(1, 15)],
+            },
+        },
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+        "remove_zone_capture": None,
+    },
+    
+    "Reserve_CMD_DDR": {
+        "CommandPoints": 30,
+        "armor": "Infantry_armor_reference",
+        "GameName": {
+            "display": "#LDRSOV RESERVISTEN FÜH. LDR.",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "UNITE_Reserve_CMD_DDR",
+                "Unite",
+            ],
+        },
+        "TransportedTexture": "UseInGame_Transport_REGINF",
+        "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "UnitRole": "infantry",
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'leader_sov',
+                'infantry_equip_heavy',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Infantry",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 7, 5, 0],
+        "max_speed": 20,
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+        "remove_zone_capture": None,
+    },
+    
+    "Reserve_DDR": {
+        "CommandPoints": 35,
+        "armor": "Infantry_armor_reference",
+        "availability": [10, 0, 0, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+    },
+    
+    "Reserve_HMG_DDR": {
+        "CommandPoints": 20,
+        "armor": "Infantry_armor_reference",
+        "availability": [12, 0, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -254,6 +371,22 @@ rda_unit_edits = {
                 "cards": 1,
             },
         },
+        "max_speed": 26,
+        "availability": [12, 0, 0, 0],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "animate": {
+                    "SAW_lMG_K_7_62mm": False,
+                },
+                "quantity": {
+                    "FM_KMS_72": 12,
+                    "SAW_lMG_K_7_62mm": 2,
+                },
+            },
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
+        },
     },
 
     "MotRifles_DDR": {
@@ -280,7 +413,7 @@ rda_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_Mpi_AK_74N": 9,
+                "FM_Mpi_AK_74N": 11,
                 "RocketInf_RPG7VL": 4,
             },
         },
@@ -331,14 +464,14 @@ rda_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_Mpi_AK_74N": 9,
+                "FM_Mpi_AK_74N": 11,
                 "RocketInf_RPG7VL": 6,
             },
         },
     },
 
     "MotSchutzen_DDR": {  # Panzerjager 2x RPG-7VR
-        "CommandPoints": 30,
+        "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
@@ -352,7 +485,7 @@ rda_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_Mpi_AK_74N": 9,
+                "FM_Mpi_AK_74N": 11,
                 "RocketInf_RPG7VR_64mm": 4,
                 "special": {
                     "RocketInf_RPG7VR_64mm": (1, 4),
@@ -374,18 +507,11 @@ rda_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
-        "WeaponAssignment": [
-            (0, [1, ]),
-            (1, [1, ]),
-            (2, [0, ]),
-            (3, [0, ]),
-            (4, [0, ]),
-            (5, [0, ]),
-            (6, [0, ]),
-            (7, [0, 2, ]),
-        ],
         "WeaponDescriptor": {
             "equipmentchanges": {
+                "animate": {
+                    "MMG_PKM_7_62mm": False,
+                },
                 "quantity": {
                     "MMG_PKM_7_62mm": 2,
                 },
@@ -414,7 +540,7 @@ rda_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_Mpi_AK_74N": 7,
+                "FM_Mpi_AK_74N": 11,
             },
         },
     },
@@ -857,6 +983,11 @@ rda_unit_edits = {
         },
         "availability": [6, 4, 0, 0],
     },
+    
+    "PT76B_DDR": {
+        "CommandPoints": 30,
+        "availability": [8, 6, 0, 0],
+    },
 
     "Mi_2_reco_DDR": {
         "availability": [0, 4, 0, 0],
@@ -879,9 +1010,30 @@ rda_unit_edits = {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
     },
+    
+    "Scout_KdA_DDR": {
+        "CommandPoints": 20,
+        "armor": "Infantry_armor_reference",
+        "availability": [8, 0, 0, 0],
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "animate": {
+                    "SAW_lMG_K_7_62mm": False,
+                },
+                "quantity": {
+                    "FM_KMS_72": 4,
+                    "SAW_lMG_K_7_62mm": 2,
+                },
+            },
+        },
+    },
 
     "HvyScout_DDR": {
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "availability": [6, 4, 0, 0],
         "max_speed": 26,
@@ -1121,12 +1273,12 @@ rda_unit_edits = {
 
     # RDA AIR
     "MiG_21PFM_AA_DDR": {
-        "CommandPoints": 100,
+        "CommandPoints": 95,
         "availability": [0, 4, 3, 2],
     },
 
     "MiG_21bis_AA2_DDR": {
-        "CommandPoints": 120,
+        "CommandPoints": 110,
         "availability": [0, 4, 3, 2],
     },
 

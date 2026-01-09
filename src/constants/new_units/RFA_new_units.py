@@ -37,7 +37,7 @@ RFA_NEW_UNITS = {
         ],
         "WeaponDescriptor": {
             "Salves": {
-                "PM_uzi": 7,
+                "PM_uzi": 11,
                 "RocketInf_Carl_Gustav": 5,
             },
         },

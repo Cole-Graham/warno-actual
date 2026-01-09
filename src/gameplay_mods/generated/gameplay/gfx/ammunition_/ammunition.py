@@ -68,7 +68,10 @@ def edit_gen_gp_gfx_ammunition(source_path, game_db: Dict[str, Any]) -> None:
 
                 # Determine if weapon should use strength variants
                 use_strength = False
-                if category == "small_arms":
+                ammo_properties = game_db["ammunition"]["ammo_properties"].get(f"Ammo_{weapon_name}", {})
+                is_crew_or_vehicle_weapon = ammo_properties.get("MinMaxCategory", None) == "MinMax_MMG_HMG"
+                    
+                if category == "small_arms" and not is_crew_or_vehicle_weapon:
                     damage_family = ammo_data.get("Arme", {}).get("Family")
                     use_strength = damage_family in ["DamageFamily_sa_full", "DamageFamily_sa_intermediate"]
 
@@ -469,7 +472,6 @@ def _create_new_descriptor(source_path, data, weapon_name, donor):
 
 def _get_existing_descriptor(source_path, weapon_name):
     """Get an existing descriptor for ammunition."""
-    # TODO: Somehow this broke? Its defining
     base_descr = source_path.by_n(f"Ammo_{weapon_name}")
     if not base_descr:
         # Try without Ammo_ prefix

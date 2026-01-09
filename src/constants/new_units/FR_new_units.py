@@ -31,17 +31,10 @@ FR_NEW_UNITS = {
         "strength": 5,
         # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
         # "Dangerousness": 12,
-        "WeaponAssignment": [
-            (0, [0, ]),
-            (1, [0, ]),
-            (2, [0, ]),
-            (3, [0, 1]),
-            (4, [0, 2]),
-        ],
         "WeaponDescriptor": {
             "Salves": {
                 "add": [(2, 4),],
-                "FM_FAMAS": 9,
+                "FM_FAMAS": 11,
             },
             "equipmentchanges": {
                 "add": [(2, "RocketInf_LRAC_F1", "RocketInf_LRAC_F1")],

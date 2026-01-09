@@ -164,11 +164,11 @@ DIVISION_MATRICES = {
             '(EFactory/DCA, [2, 2, 3, 4, 5]),'
             '(EFactory/Defense, []),'
             '(EFactory/Helis, [2, 2, 3, 3, 4]),'
-            '(EFactory/Infantry, [2, 2, 2, 2, 2, 2, 2, 2, 2, 2]),'
+            '(EFactory/Infantry, [2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4]),'
             '(EFactory/Logistic, [2, 2, 2, 2, 2, 2, 2, 2, 3, 3]),'
-            '(EFactory/Planes, [2, 2, 3, 4, 4, 5, 6]),'
+            '(EFactory/Planes, [2, 2, 2, 4, 4, 5, 7]),'
             '(EFactory/Recons, [2, 2, 3, 4, 4]),'
-            '(EFactory/Tanks, [2, 2, 3, 3, 3, 3]),'
+            '(EFactory/Tanks, [2, 2, 2, 2, 3, 3]),'
         ']'
     ),
 

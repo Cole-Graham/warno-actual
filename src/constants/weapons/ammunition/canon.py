@@ -17,6 +17,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "DisplaySalveAccuracy": False,
+                "SupplyCost": 8.0,
             },
         },
     },
@@ -31,6 +32,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "DisplaySalveAccuracy": False,
+                "SupplyCost": 8.0,
             },
         },
     },
@@ -39,6 +41,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "display": "SPG-9D",
             "token": "SPG9D_PARA",
+            "parent_membr": {
+                "DisplaySalveAccuracy": False,
+                "SupplyCost": 8.0,
+            },
         },
     },
 
@@ -65,6 +71,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "PhysicalDamages": 0.85,
                 "SuppressDamages": 115,
                 "DisplaySalveAccuracy": False,
+                "SupplyCost": 8.0,
             },
         },
     },
@@ -78,6 +85,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "PhysicalDamages": 0.85,
                 "SuppressDamages": 115,
                 "DisplaySalveAccuracy": False,
+                "SupplyCost": 8.0,
             },
         },
     },
@@ -95,6 +103,20 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "SuppressDamages": 115,
                 "FlightTimeForSpeed": 3.3,
                 "SupplyCost": 300.0,
+            },
+        },
+    },
+    
+    ("Canon_HE_76mm_D56T", "canon", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 50,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 1400,
+                "RadiusSplashPhysicalDamagesGRU": 31,
+                "RadiusSplashSuppressDamagesGRU": 55,
+                "SupplyCost": 8.0,
             },
         },
     },
@@ -241,6 +263,20 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "hit_roll": {
                 "Idling": 55,
                 "Moving": 45,
+            },
+        },
+    },
+    
+    ("Canon_AP_76mm_D56T", "canon", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 50,
+            },
+            "Arme": {
+                "Index": 15, # HEAT
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 1400,
             },
         },
     },

@@ -12,7 +12,7 @@ chasseurs_cmd2_fr: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
             f'    TDepictionVisual\n'
             f'    (\n'
             f'        SelectorId = ["WeaponAlternative_1"]\n'
-            f'        MeshDescriptor = $/GFX/DepictionResources/Modele_M16A2\n'
+            f'        MeshDescriptor = $/GFX/DepictionResources/Modele_Famas_F1\n'
             f'    ),\n'
             f'    TDepictionVisual\n'
             f'    (\n'

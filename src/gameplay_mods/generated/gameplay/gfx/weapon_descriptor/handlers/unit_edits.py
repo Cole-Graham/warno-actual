@@ -255,10 +255,47 @@ def _add_new_weapons(weapon_descr: Any, wd_edits: Dict, turret_templates: List[T
     """Add new weapons to the descriptor."""
     equipment_changes = wd_edits["equipmentchanges"]
     ammo_db = game_db["ammunition"]
+    unit_db = game_db["unit_data"]
+    unit_edits = load_unit_edits()
     turret_list = weapon_descr.v.by_member("TurretDescriptorList").v
     add_list = equipment_changes["add"]
 
-    def _apply_add_edits(turret_template, turret_index):
+    # Get unit name and check if it's infantry
+    unit_name = weapon_descr.namespace.replace("WeaponDescriptor_", "")
+    is_infantry = False
+    unit_strength = None
+
+    # Check unit edits first
+    if unit_name in unit_edits:
+        unit_edit_data = unit_edits[unit_name]
+        if unit_edit_data.get("UnitRole") == "infantry" or "Infanterie" in unit_edit_data.get("TagSet", {}).get("overwrite_all", []):
+            is_infantry = True
+        unit_strength = unit_edit_data.get("strength")
+    
+    # Check unit database if not found in edits or to verify infantry status
+    if unit_name in unit_db:
+        unit_data = unit_db[unit_name]
+        if unit_data.get("unit_role") == "infantry" or "Infanterie" in unit_data.get("tags", []):
+            is_infantry = True
+        if not unit_strength:
+            unit_strength = unit_data.get("strength")
+
+    def _is_infantry_small_arm(weapon_name: str, game_db: Dict) -> bool:
+        """Check if a weapon is an infantry small arm by checking if it has a valid caliber token."""
+        # Check if weapon should use strength variant (indicates it's a small arm with caliber)
+        if _should_use_strength_variant(weapon_name, game_db):
+            return True
+        
+        # Also check if weapon has caliber in constants
+        for (ammo_name, category, _, _), data in ammos.items():
+            if ammo_name == weapon_name and category == "small_arms":
+                # Check if it has a caliber token in parent_membr
+                if "Ammunition" in data and "parent_membr" in data["Ammunition"]:
+                    if "Caliber" in data["Ammunition"]["parent_membr"]:
+                        return True
+        return False
+
+    def _apply_add_edits(turret_template, turret_index, weapon_name):
         if "add_edits" in equipment_changes:
             add_edits = equipment_changes["add_edits"][turret_index]
             if "turret_edits" in add_edits:
@@ -274,12 +311,34 @@ def _add_new_weapons(weapon_descr: Any, wd_edits: Dict, turret_templates: List[T
                         for item in value:
                             ndf_list.add(f"'{item}'")
                         mounted_weapon.v.by_m(membr).v = ndf_list
+                
+                # Apply strength and quantity variants for infantry small arms
+                if is_infantry and unit_strength:
+                    current_ammo = mounted_weapon.v.by_m("Ammunition").v
+                    # Extract base ammo name (remove $/GFX/Weapon/Ammo_ prefix and any existing variants)
+                    if current_ammo.startswith("$/GFX/Weapon/Ammo_"):
+                        base_ammo = current_ammo.split("$/GFX/Weapon/Ammo_", 1)[1]
+                        # Strip any existing strength or quantity suffixes
+                        base_ammo = re.sub(r"(?:_strength\d+)?(?:_x\d{1,2})?$", "", base_ammo)
+                        
+                        # Check if this is an infantry small arm
+                        if _is_infantry_small_arm(base_ammo, game_db):
+                            quantity = int(mounted_weapon.v.by_m("NbWeapons").v)
+                            prefix = "$/GFX/Weapon/Ammo_"
+                            
+                            if quantity > 1:
+                                new_ammo = f"{prefix}{base_ammo}_strength{unit_strength}_x{quantity}"
+                            else:
+                                new_ammo = f"{prefix}{base_ammo}_strength{unit_strength}"
+                            
+                            mounted_weapon.v.by_m("Ammunition").v = new_ammo
+                            logger.debug(f"Applied strength variant for infantry small arm {base_ammo}: {new_ammo}")
 
     for ammo_name, turret_template in turret_templates:
         for turret_index, weapon_name in add_list:
             old_name = ammo_db["renames_new_old"].get(weapon_name, None)
             if (old_name and old_name == ammo_name) or weapon_name == ammo_name:
-                _apply_add_edits(turret_template, turret_index)
+                _apply_add_edits(turret_template, turret_index, weapon_name)
                 logger.debug(f"Adding {ammo_name} at index {turret_index}")
                 turret_list.insert(turret_index, turret_template)
 

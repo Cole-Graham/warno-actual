@@ -3,6 +3,7 @@ from typing import List, Tuple
 from src import ndf
 from src.dics.veterancy.vet_bonuses import VETERANCY_BONUSES
 from src.utils.dictionary_utils import write_dictionary_entries
+from src.utils.ndf_utils import find_obj_by_type, strip_quotes
 from src.constants.effects.capacities import (
     CHOC_MOVE_EFFECT,
     CHOC_MOVE_OK_EFFECT,
@@ -76,7 +77,6 @@ def edit_gen_gp_gfx_effetssurunite(source_path) -> None:
                 break
             
     _edit_veterancy_effects(source_path)
-    _edit_veterancy_hints(source_path)
             
     # Write experience hint texts to dictionary file.
     entries: List[Tuple[str, str]] = []
@@ -95,7 +95,7 @@ def _edit_veterancy_effects(source_path) -> None:
     """GameData/Generated/Gameplay/Gfx/EffetsSurUnite.ndf"""
     logger.info("Modifying veterancy effects")
 
-    def add_evasion(value: int) -> str:
+    def _add_evasion(value: int) -> str:
         effect_template = (
             f"TUnitEffectBonusPrecisionWhenTargetedDescriptor"
             f"("
@@ -130,45 +130,45 @@ def _edit_veterancy_effects(source_path) -> None:
         "UnitEffect_xp_rookie_helo": {"TUnitEffectHealOverTimeDescriptor": 1.6},
         "UnitEffect_xp_trained_helo": {"TUnitEffectHealOverTimeDescriptor": 4.2},
         "UnitEffect_xp_veteran_helo": {"TUnitEffectHealOverTimeDescriptor": 6.2},
-        "UnitEffect_xp_elite_helo": {"TUnitEffectHealOverTimeDescriptor": 8.4, "add": [(add_evasion, (-5,))]},
+        "UnitEffect_xp_elite_helo": {"TUnitEffectHealOverTimeDescriptor": 8.4, "add": [(_add_evasion, (-5,))]},
         # Avion
         "UnitEffect_xp_trained_avion": {"TUnitEffectHealOverTimeDescriptor": 2},
         "UnitEffect_xp_veteran_avion": {
             "TUnitEffectBonusPrecisionWhenTargetedDescriptor": -4,
-            "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor": 1.04,
+            "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor": 4,
         },
         "UnitEffect_xp_elite_avion": {
             "TUnitEffectBonusPrecisionWhenTargetedDescriptor": -8,
-            "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor": 1.08,
+            "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor": 8,
         },
     }
     
     # Switch to multiplicative modifier for all veterancy accuracy bonuses
-    infantry_xp_objects = [
-        "xp_trained",
-        "xp_trained_SF",
-        "xp_veteran",
-        "xp_veteran_SF",
-        "xp_elite",
-        "xp_elite_SF",
-    ]
-    for row in source_path:
-        if not any(row.namespace.endswith(string) for string in infantry_xp_objects):
-            continue
+    # infantry_xp_objects = [
+    #     "xp_trained",
+    #     "xp_trained_SF",
+    #     "xp_veteran",
+    #     "xp_veteran_SF",
+    #     "xp_elite",
+    #     "xp_elite_SF",
+    # ]
+    # for row in source_path:
+    #     if not any(row.namespace.endswith(string) for string in infantry_xp_objects):
+    #         continue
         
-        effects_list = row.v.by_m("EffectsDescriptors")
-        for effect in effects_list.v:
-            if not hasattr(effect.v, "type"):
-                continue
-            effect_type = effect.v.type
-            if effect_type == "TUnitEffectIncreaseWeaponPrecisionArretDescriptor":
-                effect.v.by_m("ModifierType").v = "~/ModifierType_Multiplicatif"
-                modifier_value = effect.v.by_m("ModifierValue").v
-                effect.v.by_m("ModifierValue").v = str(float(modifier_value) / 100.0 + 1.0)
-            elif effect_type == "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor":
-                effect.v.by_m("ModifierType").v = "~/ModifierType_Multiplicatif"
-                modifier_value = effect.v.by_m("ModifierValue").v
-                effect.v.by_m("ModifierValue").v = str(float(modifier_value) / 100.0 + 1.0)
+    #     effects_list = row.v.by_m("EffectsDescriptors")
+    #     for effect in effects_list.v:
+    #         if not hasattr(effect.v, "type"):
+    #             continue
+    #         effect_type = effect.v.type
+    #         if effect_type == "TUnitEffectIncreaseWeaponPrecisionArretDescriptor":
+    #             effect.v.by_m("ModifierType").v = "~/ModifierType_Multiplicatif"
+    #             modifier_value = effect.v.by_m("ModifierValue").v
+    #             effect.v.by_m("ModifierValue").v = str(float(modifier_value) / 100.0 + 1.0)
+    #         elif effect_type == "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor":
+    #             effect.v.by_m("ModifierType").v = "~/ModifierType_Multiplicatif"
+    #             modifier_value = effect.v.by_m("ModifierValue").v
+    #             effect.v.by_m("ModifierValue").v = str(float(modifier_value) / 100.0 + 1.0)
 
     # Apply specifically defined veterancy changes
     for row in source_path:
@@ -201,61 +201,40 @@ def _edit_veterancy_effects(source_path) -> None:
             for effect_fn, args in changes["add"]:  # noqa
                 effect_str = effect_fn(*args)
                 effects_list.v.add(effect_str)
-                
-                
-def _edit_veterancy_hints(source_path) -> None:
-    """GameData/Generated/Gameplay/Gfx/ExperienceLevels.ndf"""
-    logger.info("--------- editing ExperienceLevels.ndf ---------")
-    logger.info("          Modifying plane veterancy hints       ")
+    
+    _add_multiplicative_infantry_xp(source_path)
 
-    # Define experience pack mappings
-    xp_packs = {
-        "ExperienceLevelsPackDescriptor_XP_pack_simple_v3": {
-            "pack_type": "simple_v3",
-            "level_format": "simple_v3_{level}",
-        },
-        "ExperienceLevelsPackDescriptor_XP_pack_SF_v2": {
-            "pack_type": "SF_v2",
-            "level_format": "SF_v2_{level}",
-        },
-        "ExperienceLevelsPackDescriptor_XP_pack_artillery": {
-            "pack_type": "artillery",
-            "level_format": "artillery_{level}",
-        },
-        "ExperienceLevelsPackDescriptor_XP_pack_helico": {
-            "pack_type": "helico",
-            "level_format": "helico_{level}",
-        },
-        "ExperienceLevelsPackDescriptor_XP_pack_avion": {
-            "pack_type": "avion",
-            "level_format": "avion_{level}",
-        },
+def _add_multiplicative_infantry_xp(source_path) -> None:
+    """GameData/Generated/Gameplay/Gfx/EffetsSurUnite.ndf"""
+    logger.info("Adding multiplicative infantry XP effects")
+
+    infantry_xp_objects = {
+        "xp_rookie": "93c3832b-179f-4f71-9c3e-0aaa51ad6563",
+        "xp_trained": "38b2a348-2385-463c-8edb-722a5d9b37f3",
+        "xp_trained_SF": "2b3b11d5-f08d-4428-82a2-7307ab6055d9",
+        "xp_veteran": "d1b6e97c-24f3-4aec-a457-79c3262cc830",
+        "xp_veteran_SF": "f125886e-e9d2-4f30-92d9-700303ccd8c6",
+        "xp_elite": "b80fe588-b3b5-4f63-9587-75b254a2361e",
+        "xp_elite_SF": "7b707579-3230-4884-a91f-b10dc4df0ddb",
     }
-
-    for row in source_path:
-        if row.namespace not in xp_packs:
-            continue
-
-        pack_info = xp_packs[row.namespace]
-        pack_type = pack_info["pack_type"]
-
-        try:
-            xp_descr_list = row.v.by_m("ExperienceLevelsDescriptors").v
-
-            for level, xp_descr in enumerate(xp_descr_list):
-                if not isinstance(xp_descr.v, ndf.model.Object):
-                    continue
-
-                # Use index as level number (0-based)
-                level_key = pack_info["level_format"].format(level=level)
-
-                if level_key not in VETERANCY_BONUSES[pack_type]:
-                    logger.warning(f"Missing veterancy data for {level_key} in {pack_type}")
-                    continue
-
-                body_token = VETERANCY_BONUSES[pack_type][level_key]["body_token"]
-                xp_descr.v.by_m("HintBodyToken").v = f"'{body_token}'"
-                logger.info(f"Modified dictionary token for level {level} of {row.namespace}")
-
-        except Exception as e:
-            logger.error(f"Failed to process {row.namespace}: {str(e)}")
+    
+    for namespace, guid in infantry_xp_objects.items():
+        new_effect = source_path.by_n(f"UnitEffect_{namespace}").copy()
+        new_effect.namespace = f"UnitEffect_{namespace}_multiplicative"
+        current_debug_name = strip_quotes(new_effect.v.by_m("NameForDebug").v)
+        new_effect.v.by_m("NameForDebug").v = f"'{current_debug_name}_multiplicative'"
+        new_effect.v.by_m("DescriptorId").v = f"GUID:{{{guid}}}"
+        effects_list = new_effect.v.by_m("EffectsDescriptors")
+        weapon_precision = find_obj_by_type(effects_list.v, "TUnitEffectIncreaseWeaponPrecisionArretDescriptor")
+        if weapon_precision:
+            weapon_precision.v.by_m("ModifierType").v = "~/ModifierType_Multiplicatif"
+            weapon_precision.v.by_m("ModifierValue").v = str(
+                float(weapon_precision.v.by_m("ModifierValue").v) / 100.0 + 1.0)
+        weapon_precision = find_obj_by_type(effects_list.v, "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor")
+        if weapon_precision:
+            weapon_precision.v.by_m("ModifierType").v = "~/ModifierType_Multiplicatif"
+            weapon_precision.v.by_m("ModifierValue").v = str(
+                float(weapon_precision.v.by_m("ModifierValue").v) / 100.0 + 1.0)
+        source_path.add(new_effect)
+        logger.info(f"Added new effect: {new_effect.namespace}")
+        

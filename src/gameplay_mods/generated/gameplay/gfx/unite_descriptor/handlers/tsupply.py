@@ -7,7 +7,7 @@ def handle_supply_module(
     game_db,
     unit_data,
     edit_type,
-    unit_name   ,
+    unit_name,
     edits,
     module,
     *args,

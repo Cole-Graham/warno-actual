@@ -239,6 +239,22 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("RocketInf_RPG2", "light_at", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 12,
+            },
+            "hit_roll": {
+                "Idling": 40,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 450,
+                "DisplaySalveAccuracy": False,
+                "SupplyCost": 5.0,
+            },
+        },
+    },
+    
     ("RocketInf_LRAC_73", "medium_at", None, False): {
         "Ammunition": {
             "Arme": {

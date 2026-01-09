@@ -21,17 +21,10 @@ USA_NEW_UNITS = {
         "strength": 5,
         # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
         # "Dangerousness": 12,
-        "WeaponAssignment": [
-            (0, [1, ]),
-            (1, [1, ]),
-            (2, [1, ]),
-            (3, [0, 3]),
-            (4, [0, 2, ]),
-        ],
         "WeaponDescriptor": {
             "Salves": {
-                "FM_M16": 7,
-                "Commando_733": 7,
+                "FM_M16": 11,
+                "Commando_733": 11,
                 "M72A3_LAW_66mm": 5,
             },
             "equipmentchanges": {
@@ -213,7 +206,7 @@ USA_NEW_UNITS = {
         "WeaponDescriptor": {
             "Salves": {
                 "add": [(1, 10), ],
-                "FM_M16": 7,
+                "FM_M16": 11,
                 "MMG_inf_M240B_7_62mm": 30,
                 "M47_DRAGON_II": 2,
             },
@@ -303,7 +296,7 @@ USA_NEW_UNITS = {
         "WeaponDescriptor": {
             "Salves": {
                 "add": [(1, 10), ],
-                "FM_M16": 7,
+                "FM_M16": 11,
                 "MMG_inf_M240B_7_62mm": 30,
                 "M47_DRAGON_II": 2,
             },
@@ -415,7 +408,7 @@ USA_NEW_UNITS = {
         "WeaponDescriptor": {
             "Salves": {
                 "add": [(1, 10), ],
-                "FM_M16": 7,
+                "FM_M16": 11,
                 "MANPAD_FIM92": 8,
             },
             "equipmentchanges": {

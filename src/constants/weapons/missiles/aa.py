@@ -22,7 +22,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 1.2,
             },
         },
-        "SupplyCost": 50.0,
+        "SupplyCost": 65.0,
         "WeaponDescriptor": {
             "SalvoLengths": [4],
             "units": {
@@ -41,7 +41,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 1.2,
             },
         },
-        "SupplyCost": 40.0,
+        "SupplyCost": 60.0,
         "WeaponDescriptor": {
             "SalvoLengths": [4],
             "units": {
@@ -139,7 +139,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 1.2,
             },
         },
-        "SupplyCost": 60.0,
+        "SupplyCost": 65.0,
         "WeaponDescriptor": {
             "SalvoLengths": [4],
             "units": {
@@ -161,7 +161,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 1.2,
             },
         },
-        "SupplyCost": 60.0,
+        "SupplyCost": 80.0,
         "WeaponDescriptor": {
             "SalvoLengths": [4],
             "units": {
@@ -374,7 +374,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 1.2,
             }
         },
-        "SupplyCost": 80.0,
+        "SupplyCost": 100.0,
         "WeaponDescriptor": {
             "SalvoLengths": [8],
             "units": {
@@ -393,7 +393,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoFx": 2.5,
             },
         },
-        "SupplyCost": 60.0,
+        "SupplyCost": 65.0,
         "WeaponDescriptor": {
             "SalvoLengths": [2],
             "units": {
@@ -446,7 +446,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeAirplaneGRU": 4200,
             }
         },
-        "SupplyCost": 60.0,
+        "SupplyCost": 100.0,
         "WeaponDescriptor": {
             "SalvoLengths": [6],
             "units": {
@@ -465,7 +465,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 1.2,
             }
         },
-        "SupplyCost": 75.0,
+        "SupplyCost": 85.0,
         "WeaponDescriptor": {
             "SalvoLengths": [8],
             "units": {

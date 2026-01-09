@@ -449,6 +449,11 @@ def _should_use_strength_variant(weapon_name: str, game_db: Dict[str, Any]) -> b
     Returns:
         bool: True if weapon should use strength variants
     """
+    ammo_properties = game_db["ammunition"]["ammo_properties"].get(f"Ammo_{weapon_name}", {})
+    is_crew_or_vehicle_weapon = ammo_properties.get("MinMaxCategory", None) == "MinMax_MMG_HMG"
+    if is_crew_or_vehicle_weapon:
+        return False
+    
     for (ammo_name, category, _, _), data in small_arms_weapons.items():
         if ammo_name == weapon_name and category == "small_arms":
             damage_family = data.get("Ammunition", {}).get("Arme", {}).get("Family")
@@ -486,7 +491,10 @@ def _update_unmodified_weapons(new_weap_row: Any, game_db: Dict[str, Any]) -> No
             # Check if this weapon should use strength variants
             use_strength = False
             for (weapon_name, category, _, _), data in small_arms_weapons.items():
-                if weapon_name == current_base_ammo and category == "small_arms":
+                ammo_properties = game_db["ammunition"]["ammo_properties"].get(f"Ammo_{weapon_name}", {})
+                is_crew_or_vehicle_weapon = ammo_properties.get("MinMaxCategory", None) == "MinMax_MMG_HMG"
+                
+                if weapon_name == current_base_ammo and category == "small_arms" and not is_crew_or_vehicle_weapon:
                     damage_family = data.get("Ammunition", {}).get("Arme", {}).get("Family")
                     use_strength = damage_family in ["DamageFamily_sa_full", "DamageFamily_sa_intermediate"]
                     break

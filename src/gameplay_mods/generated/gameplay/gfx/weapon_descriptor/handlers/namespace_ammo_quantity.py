@@ -40,9 +40,12 @@ def update_weapondescr_ammoname_quantity(source_path, logger, game_db):
 
             # Check if this weapon should use strength variants
             use_strength = False
-            damage_family = data.get("Ammunition", {}).get("Arme", {}).get("Family")
-            if damage_family in ["DamageFamily_sa_full", "DamageFamily_sa_intermediate"]:
-                use_strength = True
+            ammo_properties = ammo_db["ammo_properties"].get(f"Ammo_{weapon_name}", {})
+            is_crew_or_vehicle_weapon = ammo_properties.get("MinMaxCategory", None) == "MinMax_MMG_HMG"
+            if not is_crew_or_vehicle_weapon:
+                damage_family = data.get("Ammunition", {}).get("Arme", {}).get("Family")
+                if damage_family in ["DamageFamily_sa_full", "DamageFamily_sa_intermediate"]:
+                    use_strength = True
 
             for turret_index, turret_data in weapon_descr_data["turrets"].items():
                 old_name = ammo_db["renames_new_old"].get(weapon_name, None)

@@ -196,7 +196,7 @@ MEDIUM_COHESION_LOSS_EFFECT = (
     '        TUnitEffectIncreaseDamageTakenDescriptor'
     '        ('
     '            ModifierType = ~/ModifierType_Multiplicatif'
-    '            BonusDamage = 1.5'
+    '            BonusDamage = 1.33'
     '            DamageType  = EDamageType/Suppress'
     '        ),'
     '    ]'

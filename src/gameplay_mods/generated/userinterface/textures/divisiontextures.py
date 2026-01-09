@@ -9,12 +9,12 @@ def edit_gen_ui_divisiontextures(source_path) -> None:
     """GameData/Generated/UserInterface/Textures/DivisionTextures.ndf"""
     logger.info("Modifying/Adding division emblem textures in DivisionTextures.ndf")
 
-    for division in GRAY_EMBLEMS:
-        namespace_prefix = "Texture_Division_Emblem_"
-        texture_obj = source_path.by_n(namespace_prefix + division).v
-        filename = f'"GameData:/Assets/2D/Interface/UseOutGame/Division/Emblem/{division}_gray.png"'
-        texture_obj.by_m("FileName").v = filename
-        logger.info(f"Changed {division} texture to {filename.split('/')[-1]}")
+    # for division in GRAY_EMBLEMS:
+    #     namespace_prefix = "Texture_Division_Emblem_"
+    #     texture_obj = source_path.by_n(namespace_prefix + division).v
+    #     filename = f'"GameData:/Assets/2D/Interface/UseOutGame/Division/Emblem/{division}_gray.png"'
+    #     texture_obj.by_m("FileName").v = filename
+    #     logger.info(f"Changed {division} texture to {filename.split('/')[-1]}")
 
     for emblem_namespace, data in DIVISION_EMBLEMS.items():
         _dir = data["texture_dir"]

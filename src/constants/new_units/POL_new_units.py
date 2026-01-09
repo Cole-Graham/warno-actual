@@ -39,7 +39,7 @@ POL_NEW_UNITS = {
         ],
         "WeaponDescriptor": {
             "Salves": {
-                "FM_kbk_AK": 7,
+                "FM_kbk_AK": 11,
                 "RocketInf_RPG76_Komar": 5,
             },
             "equipmentchanges": {

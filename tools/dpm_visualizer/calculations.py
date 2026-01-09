@@ -181,6 +181,8 @@ def calculate_dpm(
     has_shock_trait: bool = False,
     shock_range: float = 100.0,
     shock_bonuses: Optional[Dict[str, float]] = None,
+    has_militia_trait: bool = False,
+    militia_bonuses: Optional[Dict[str, float]] = None,
     damage_ratio_multiplier: float = 1.0,
     damage_type: str = "Physical",
 ) -> List[Tuple[float, float]]:
@@ -197,6 +199,8 @@ def calculate_dpm(
         range_modifiers_table: Optional range modifiers table. If None, uses RANGE_MODIFIERS_TABLE.
         has_shock_trait: Whether the unit has the Shock trait (_choc)
         shock_range: Range threshold for shock bonuses to activate (default 100m)
+        has_militia_trait: Whether the unit has the Militia trait (militia)
+        militia_bonuses: Dictionary with militia bonus multipliers (reload_speed_multiplier, aim_time_multiplier)
         damage_type: Type of damage to use ("Physical" or "Suppression")
         
     Returns:
@@ -238,6 +242,22 @@ def calculate_dpm(
     # For aim time, we convert to speed multiplier (inverse) since it affects accuracy calculation
     SHOCK_AIM_TIME_SPEED_MULTIPLIER = 1.0 / SHOCK_AIM_TIME_MULTIPLIER if SHOCK_AIM_TIME_MULTIPLIER > 0 else 1.0
     
+    # Militia bonuses (from UnitEffect_militia, parsed from game files):
+    # Default values if not provided
+    if militia_bonuses is None:
+        militia_bonuses = {
+            "reload_speed_multiplier": 1.20,
+            "aim_time_multiplier": 1.20,
+        }
+    
+    # Extract militia multipliers
+    MILITIA_RELOAD_MULTIPLIER = militia_bonuses.get("reload_speed_multiplier", 1.20)
+    MILITIA_AIM_TIME_MULTIPLIER = militia_bonuses.get("aim_time_multiplier", 1.20)
+    
+    # Note: militia multipliers multiply time (higher = slower)
+    # For aim time, we convert to speed multiplier (inverse) since it affects accuracy calculation
+    MILITIA_AIM_TIME_SPEED_MULTIPLIER = 1.0 / MILITIA_AIM_TIME_MULTIPLIER if MILITIA_AIM_TIME_MULTIPLIER > 0 else 1.0
+    
     dpm_data = []
     current_range = 0.0
     
@@ -245,21 +265,27 @@ def calculate_dpm(
         # Check if shock bonuses apply (within shock_range)
         is_shock_range = has_shock_trait and current_range <= shock_range
         
-        # Apply shock reload multipliers if in shock range
+        # Apply reload multipliers (shock and militia)
         effective_reload_multiplier = reload_speed_multiplier
         effective_shot_time_multiplier = 1.0
+        
+        # Apply shock reload multipliers if in shock range
         if is_shock_range:
             # Apply salvo reload multiplier directly (multiplies time, lower = faster)
             # If reload_speed_multiplier is 1.0 and SHOCK_SALVO_RELOAD_MULTIPLIER is 0.85,
             # then effective_reload_multiplier = 0.85 (15% faster)
-            effective_reload_multiplier = reload_speed_multiplier * SHOCK_SALVO_RELOAD_MULTIPLIER
+            effective_reload_multiplier = effective_reload_multiplier * SHOCK_SALVO_RELOAD_MULTIPLIER
             # Apply shot time multiplier separately (also multiplies time, lower = faster)
             effective_shot_time_multiplier = SHOCK_SHOT_TIME_MULTIPLIER
         
-        # Recalculate shots per minute with shock bonuses if applicable
+        # Apply militia reload multiplier (applies at all ranges, multiplies time, higher = slower)
+        if has_militia_trait:
+            effective_reload_multiplier = effective_reload_multiplier * MILITIA_RELOAD_MULTIPLIER
+        
+        # Recalculate shots per minute with bonuses if applicable
         shots_per_minute = calculate_shots_per_minute(ammo_props, effective_reload_multiplier, effective_shot_time_multiplier)
         
-        # Calculate accuracy (shock aim time bonus affects accuracy)
+        # Calculate accuracy (shock and militia aim time bonuses affect accuracy)
         accuracy = calculate_accuracy(
             current_range,
             max_range,
@@ -275,6 +301,11 @@ def calculate_dpm(
         if is_shock_range:
             # Faster aim time means more accurate, apply as multiplicative bonus
             accuracy = min(1.0, accuracy * SHOCK_AIM_TIME_SPEED_MULTIPLIER)
+        
+        # Apply militia aim time multiplier to accuracy (slower aiming = less accurate)
+        if has_militia_trait:
+            # Slower aim time means less accurate, apply as multiplicative penalty
+            accuracy = accuracy * MILITIA_AIM_TIME_SPEED_MULTIPLIER
         
         # Apply shock damage multiplier (only applies to physical damage, not suppression)
         effective_damage = base_damages
@@ -299,16 +330,22 @@ def calculate_dpm(
             # Check if shock bonuses apply at max range
             is_shock_range = has_shock_trait and max_range <= shock_range
             
-            # Apply shock reload multipliers if in shock range
+            # Apply reload multipliers (shock and militia)
             effective_reload_multiplier = reload_speed_multiplier
             effective_shot_time_multiplier = 1.0
+            
+            # Apply shock reload multipliers if in shock range
             if is_shock_range:
                 # Apply salvo reload multiplier directly (multiplies time, lower = faster)
-                effective_reload_multiplier = reload_speed_multiplier * SHOCK_SALVO_RELOAD_MULTIPLIER
+                effective_reload_multiplier = effective_reload_multiplier * SHOCK_SALVO_RELOAD_MULTIPLIER
                 # Apply shot time multiplier separately
                 effective_shot_time_multiplier = SHOCK_SHOT_TIME_MULTIPLIER
             
-            # Recalculate shots per minute with shock bonuses if applicable
+            # Apply militia reload multiplier (applies at all ranges, multiplies time, higher = slower)
+            if has_militia_trait:
+                effective_reload_multiplier = effective_reload_multiplier * MILITIA_RELOAD_MULTIPLIER
+            
+            # Recalculate shots per minute with bonuses if applicable
             shots_per_minute = calculate_shots_per_minute(ammo_props, effective_reload_multiplier, effective_shot_time_multiplier)
             
             accuracy = calculate_accuracy(
@@ -325,6 +362,10 @@ def calculate_dpm(
             # Apply shock aim time multiplier to accuracy
             if is_shock_range:
                 accuracy = min(1.0, accuracy * SHOCK_AIM_TIME_SPEED_MULTIPLIER)
+            
+            # Apply militia aim time multiplier to accuracy (slower aiming = less accurate)
+            if has_militia_trait:
+                accuracy = accuracy * MILITIA_AIM_TIME_SPEED_MULTIPLIER
             
             # Apply shock damage multiplier (only applies to physical damage, not suppression)
             effective_damage = base_damages

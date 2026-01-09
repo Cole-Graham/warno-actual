@@ -103,6 +103,7 @@ def build_ammo_data(mod_src_path: Path) -> Dict[str, Any]:
             "renames_new_old": renames_new_old,
             "salves_map": build_ammo_salves_map(weapon_descriptor_file),
             "mortar_weapons": build_mortar_weapons(ammo_file),
+            "ammo_properties": build_ammo_properties(ammo_file),
         }
         
     except Exception as e:
@@ -116,7 +117,27 @@ def build_ammo_data(mod_src_path: Path) -> Dict[str, Any]:
             "renames_new_old": {},
             "salves_map": {},
             "mortar_weapons": {},
+            "ammo_properties": {},
         }
+
+def build_ammo_properties(parse_ammo_source) -> Dict[str, Any]:
+    """Build dictionary of ammunition properties from Ammunition.ndf"""
+    ammo_properties = {}
+    
+    for ammo_descr in parse_ammo_source:
+        
+        # MinMaxCategory
+        if ammo_descr.v.by_m("MinMaxCategory", False) is not None:
+            min_max_category = ammo_descr.v.by_m("MinMaxCategory", False).v
+        else:
+            min_max_category = None
+            
+        # Set properties
+        ammo_properties[ammo_descr.n] = {
+            "MinMaxCategory": min_max_category,
+        }
+    
+    return ammo_properties
 
 def build_radar_weapons(parse_ammo_source, parse_ammo_missile_source) -> List[str]:
     """Build list of radar weapons from Ammunition.ndf and AmmunitionMissiles.ndf"""

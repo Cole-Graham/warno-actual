@@ -9,6 +9,7 @@ from src.utils.ndf_utils import find_obj_by_type, find_obj_by_namespace, determi
 
 from .handlers import (
     handle_capacite_module,
+    handle_experience_module,
     handle_supply_module,
     handle_tags_module,
     handle_unitui_module,
@@ -83,7 +84,7 @@ def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_nam
         "TTypeUnitModuleDescriptor": { "handler": _handle_typeunit_module, "args": [] },
         "TFormationModuleDescriptor": { "handler": _handle_formation_module, "args": [] },
         "TTagsModuleDescriptor": { "handler": handle_tags_module, "args": [] },
-        # "TExperienceModuleDescriptor": { "handler": handle_experience_module, "args": [] },
+        "TExperienceModuleDescriptor": { "handler": handle_experience_module, "args": [] },
         "TVisibilityModuleDescriptor": { "handler": _handle_visibility_module, "args": [] },
         "InfantryApparenceModuleDescriptor": { "handler": _handle_infantryapparence_module, "args": [] },
         "VehicleApparenceModuleDescriptor": { "handler": _handle_vehicleapparence_module, "args": [] },
@@ -597,7 +598,11 @@ def _handle_deploymentshift_module(logger, game_db, unit_data, edit_type, unit_n
     if found_zoneinfluence_module:
         logger.info(f"Removed {module.v.type} from {unit_name}")
         module.parent.remove(module.index)
-        
+    
+    # Adjust forward deploy for units with helicopter transports
+    elif edits.get("DeploymentShift", None) is not None:
+        module.v.by_m("DeploymentShiftGRU").v = str(edits["DeploymentShift"])
+    
     else:
         # Nerf forward deploy
         shift_val = float(module.v.by_m("DeploymentShiftGRU").v)

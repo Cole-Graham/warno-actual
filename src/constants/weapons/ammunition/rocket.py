@@ -29,6 +29,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
     
     ("RocketAir_SNEB_68mm_x18_helo", "rocket", None, False): {
         "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 15,
+            },
             "parent_membr": {
                 "RadiusSplashPhysicalDamagesGRU": 14,
                 "RadiusSplashSuppressDamagesGRU": 21,

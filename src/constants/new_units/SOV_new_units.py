@@ -40,7 +40,7 @@ SOV_NEW_UNITS = {
         ],
         "WeaponDescriptor": {
             "Salves": {
-                "FM_AK_74": 7,
+                "FM_AK_74": 11,
                 "Sniper_SVD_Dragunov": 100,
                 "RocketInf_RPG22_72_5mm": 5
             },
@@ -140,7 +140,7 @@ SOV_NEW_UNITS = {
         ],
         "WeaponDescriptor": {
             "Salves": {
-                "FM_AK_74": 7,
+                "FM_AK_74": 11,
                 "Sniper_SVD_Dragunov": 100,
                 "RocketInf_RPG22_72_5mm": 5
             },
@@ -345,19 +345,10 @@ SOV_NEW_UNITS = {
             ],
         },
         "strength": 7,
-        "WeaponAssignment": [
-                (0, [1]),
-                (1, [0]),
-                (2, [0]),
-                (3, [0]),
-                (4, [0]),
-                (5, [0]),
-                (6, [0, 2]),
-            ],
         "WeaponDescriptor": {
             "Salves": {
-                "FM_AK_74": 9,
-                "SAW_RPK_74_5_56mm": 10,
+                "FM_AK_74": 11,
+                "SAW_RPK_74_5_56mm": 15,
                 "RocketInf_RPG7VL": 6,
             },
             "equipmentchanges": {

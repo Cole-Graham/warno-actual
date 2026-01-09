@@ -239,7 +239,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "SupplyCost": 1.0,
         "NbWeapons": [2, 1],
         "WeaponDescriptor": {
-            "Salves": 15,
+            "Salves": 18,
         },
     },
 
@@ -267,7 +267,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "SupplyCost": 1.0,
         "NbWeapons": [2, 1],
         "WeaponDescriptor": {
-            "Salves": 15,
+            "Salves": 18,
         },
     },
     
@@ -382,7 +382,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "SupplyCost": 1.0,
         "NbWeapons": [3, 2, 1],
         "WeaponDescriptor": {
-            "Salves": 20,
+            "Salves": 30,
         },
     },
     
@@ -411,7 +411,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "SupplyCost": 1.0,
         "NbWeapons": [3, 2, 1],
         "WeaponDescriptor": {
-            "Salves": 20,
+            "Salves": 24,
         },
     },
     
@@ -440,7 +440,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "SupplyCost": 1.0,
         "NbWeapons": [8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
-            "Salves": 18,               
+            "Salves": 22,               
         },
     },
     
@@ -498,7 +498,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "SupplyCost": 1.0,
         "NbWeapons": [8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
-            "Salves": 18,               
+            "Salves": 22,               
         },
     },
     
@@ -528,7 +528,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "SupplyCost": 1.0,
         "NbWeapons": [2],
         "WeaponDescriptor": {
-            "Salves": 18,               
+            "Salves": 22,               
         },
     },
 
@@ -587,7 +587,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "SupplyCost": 1.0,
         "NbWeapons": [2, 1],
         "WeaponDescriptor": {
-            "Salves": 18,
+            "Salves": 22,
         },
     },
 
@@ -616,7 +616,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "SupplyCost": 1.0,
         "NbWeapons": [10, 9, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
-            "Salves": 18,               
+            "Salves": 22,               
         },
     },
     
@@ -645,7 +645,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "SupplyCost": 1.0,
         "NbWeapons": [7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
-            "Salves": 18,               
+            "Salves": 22,               
         },
     },
     
@@ -777,8 +777,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "display": "M16A1 Carbine",
             "token": "VDUNUQCOUY",
             "hit_roll": {
-                "Idling": 50,
-                "Moving": 35,
+                "Idling": 55,
+                "Moving": 40,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 1.0,
@@ -1833,8 +1833,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_sa_full",
             },
             "hit_roll": {
-                "Idling": 50,
-                "Moving": 20,
+                "Idling": 55,
+                "Moving": 25,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 2.2,
@@ -1844,7 +1844,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "SuppressDamages": 8,
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.0,
-                "TimeBetweenTwoSalvos": 6.0,
+                "TimeBetweenTwoSalvos": 5.5,
                 "NbTirParSalves": 6,
                 "AffichageMunitionParSalve": 30,
             },
@@ -1864,8 +1864,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_sa_full",
             },
             "hit_roll": {
-                "Idling": 50,
-                "Moving": 20,
+                "Idling": 55,
+                "Moving": 25,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 2.2,
@@ -1876,7 +1876,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "DisplaySalveAccuracy": False,
                 "TirReflexe": False,
                 "AimingTime": 1.0,
-                "TimeBetweenTwoSalvos": 6.0,
+                "TimeBetweenTwoSalvos": 5.5,
                 "NbTirParSalves": 6,
                 "AffichageMunitionParSalve": 30,
             },
@@ -1896,8 +1896,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_sa_full",
             },
             "hit_roll": {
-                "Idling": 50,
-                "Moving": 20,
+                "Idling": 55,
+                "Moving": 25,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 2.2,
@@ -1907,7 +1907,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "SuppressDamages": 8,
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.0,
-                "TimeBetweenTwoSalvos": 6.0,
+                "TimeBetweenTwoSalvos": 5.5,
                 "NbTirParSalves": 6,
                 "AffichageMunitionParSalve": 30,
             },
@@ -1927,8 +1927,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_sa_full",
             },
             "hit_roll": {
-                "Idling": 50,
-                "Moving": 20,
+                "Idling": 55,
+                "Moving": 25,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 2.2,
@@ -1939,7 +1939,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "DisplaySalveAccuracy": False,
                 "TirReflexe": False,
                 "AimingTime": 1.0,
-                "TimeBetweenTwoSalvos": 6.0,
+                "TimeBetweenTwoSalvos": 5.5,
                 "NbTirParSalves": 6,
                 "AffichageMunitionParSalve": 30,
             },
@@ -2089,6 +2089,65 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TirReflexe": False,
                 "AimingTime": 1.0,
                 "TimeBetweenTwoSalvos": 4.5,
+                "NbTirParSalves": 6,
+                "AffichageMunitionParSalve": 30,
+            },
+        },
+        "SupplyCost": 1.0,
+        "NbWeapons": [2, 1],
+        "WeaponDescriptor": {
+            "Salves": 11,
+        },
+    },
+    
+    ("FM_KMS_72", "small_arms", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_sa_full",
+            },
+            "hit_roll": {
+                "Idling": 55,
+                "Moving": 25,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 2.2,
+                "MaximumRangeGRU": 875,
+                "MaximumRangeHelicopterGRU": 700,
+                "PhysicalDamages": 0.06,
+                "SuppressDamages": 6,
+                "DisplaySalveAccuracy": False,
+                "AimingTime": 1.0,
+                "TimeBetweenTwoSalvos": 5.5,
+                "NbTirParSalves": 6,
+                "AffichageMunitionParSalve": 30,
+            },
+        },
+        "SupplyCost": 1.0,
+        "NbWeapons": [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+        "WeaponDescriptor": {
+            "Salves": 11,
+        },
+    },
+
+    ("FM_KMS_72_noreflex", "small_arms", "FM_KMS_72", True): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_sa_full",
+            },
+            "hit_roll": {
+                "Idling": 55,
+                "Moving": 25,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 2.2,
+                "MaximumRangeGRU": 875,
+                "MaximumRangeHelicopterGRU": 700,
+                "PhysicalDamages": 0.06,
+                "SuppressDamages": 6,
+                "DisplaySalveAccuracy": False,
+                "TirReflexe": False,
+                "AimingTime": 1.0,
+                "TimeBetweenTwoSalvos": 5.5,
                 "NbTirParSalves": 6,
                 "AffichageMunitionParSalve": 30,
             },
@@ -2341,11 +2400,11 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_sa_full",
             },
             "hit_roll": {
-                "Idling": 60,
-                "Moving": 20,
+                "Idling": 70,
+                "Moving": 30,
             },
             "parent_membr": {
-                "TimeBetweenTwoShots": 3.0,
+                "TimeBetweenTwoShots": 2.3,
                 "MaximumRangeGRU": 875,
                 "MaximumRangeHelicopterGRU": 700,
                 "PhysicalDamages": 0.06,
@@ -2370,11 +2429,11 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_sa_full",
             },
             "hit_roll": {
-                "Idling": 60,
-                "Moving": 20,
+                "Idling": 70,
+                "Moving": 30,
             },
             "parent_membr": {
-                "TimeBetweenTwoShots": 3.0,
+                "TimeBetweenTwoShots": 2.3,
                 "MaximumRangeGRU": 875,
                 "MaximumRangeHelicopterGRU": 700,
                 "PhysicalDamages": 0.06,

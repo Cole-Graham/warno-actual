@@ -487,6 +487,78 @@ def parse_shock_range(mod_src_path: Path) -> float:
     return shock_range
 
 
+def parse_militia_bonuses(mod_src_path: Path) -> Dict[str, float]:
+    """Parse militia bonuses from EffetsSurUnite.ndf (UnitEffect_militia).
+    
+    Returns:
+        Dictionary with militia bonus values:
+        - "reload_speed_multiplier": float (e.g., 1.20 means 20% slower reload)
+        - "aim_time_multiplier": float (e.g., 1.20 means 20% slower aiming)
+    """
+    ndf_path = "GameData/Generated/Gameplay/Gfx/EffetsSurUnite.ndf"
+    militia_bonuses: Dict[str, float] = {
+        "reload_speed_multiplier": 1.20,  # Default fallback values
+        "aim_time_multiplier": 1.20,
+    }
+    
+    try:
+        mod = ndf.Mod(str(mod_src_path), "None")
+        parse_source = mod.parse_src(ndf_path)
+        
+        for effect_row in parse_source:
+            if not hasattr(effect_row, "namespace"):
+                continue
+            
+            effect_name = effect_row.namespace
+            
+            # Look for UnitEffect_militia
+            if effect_name != "UnitEffect_militia":
+                continue
+            
+            # Parse effects to find bonuses
+            effects_list = effect_row.v.by_m("EffectsDescriptors", None)
+            if not effects_list:
+                continue
+            
+            for effect in effects_list.v:
+                if not isinstance(effect.v, ndf.model.Object):
+                    continue
+                
+                effect_type = effect.v.type
+                modifier_value = effect.v.by_m("ModifierValue", None)
+                modifier_type = effect.v.by_m("ModifierType", None)
+                
+                if not modifier_value:
+                    continue
+                
+                try:
+                    value = float(modifier_value.v)
+                    mod_type = strip_quotes(modifier_type.v) if modifier_type else None
+                    
+                    # TUnitEffectAlterWeaponTempsEntreDeuxSalvesDescriptor with ModifierType_Multiplicatif
+                    if effect_type == "TUnitEffectAlterWeaponTempsEntreDeuxSalvesDescriptor":
+                        if mod_type == "ModifierType_Multiplicatif":
+                            # Value is multiplier (e.g., 1.20 means 20% slower reload)
+                            militia_bonuses["reload_speed_multiplier"] = value
+                    
+                    # TBonusWeaponAimtimeEffectDescriptor with ModifierType_Multiplicatif
+                    elif effect_type == "TBonusWeaponAimtimeEffectDescriptor":
+                        if mod_type == "ModifierType_Multiplicatif":
+                            # Value is multiplier (e.g., 1.20 means 20% slower aiming)
+                            militia_bonuses["aim_time_multiplier"] = value
+                            
+                except (ValueError, TypeError):
+                    pass
+            
+            # Found UnitEffect_militia, break
+            break
+                
+    except Exception as e:
+        print(f"Warning: Failed to parse militia bonuses from EffetsSurUnite: {e}")
+    
+    return militia_bonuses
+
+
 def apply_veterancy_bonuses_to_units(
     unit_data: Dict[str, Dict[str, Any]], 
     pack_to_effects_map: Dict[str, Dict[int, List[str]]],
@@ -535,6 +607,7 @@ def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
         "veterancy_pack": "simple_v3",  # Default to simple_v3 for infantry
         "available_veterancy_levels": [0, 1, 2, 3],  # Default 4 levels
         "has_shock_trait": False,  # Shock trait (_choc) from SpecialtiesList
+        "has_militia_trait": False,  # Militia trait (militia) from TCapaciteModuleDescriptor
         "price": None,  # Command points price from TProductionModuleDescriptor
         "strength": None,  # Unit strength (HP) from TBaseDamageModuleDescriptor
     }
@@ -617,6 +690,20 @@ def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
                             except (ValueError, TypeError, AttributeError):
                                 pass
                     except (AttributeError, TypeError, KeyError):
+                        pass
+            
+            # Check for militia capacity from TCapaciteModuleDescriptor
+            elif module_type == "TCapaciteModuleDescriptor":
+                default_skill_list = module.v.by_m("DefaultSkillList", None)
+                if default_skill_list:
+                    try:
+                        for skill in default_skill_list.v:
+                            skill_ref = strip_quotes(skill.v)
+                            # Check if skill reference contains Capacite_militia
+                            if "Capacite_militia" in skill_ref:
+                                unit_info["has_militia_trait"] = True
+                                break
+                    except (AttributeError, TypeError, ValueError):
                         pass
         
         # Determine veterancy pack from tags if not found in module

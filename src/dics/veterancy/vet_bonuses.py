@@ -47,9 +47,55 @@ VETERANCY_BONUSES = {
             ),
         },
     },
-    "SF_v2": {
-        "SF_v2_0": {
-            "body_token": "DOEGCIUMLR",
+    "simple_v3_multiplicative": {
+        "simple_v3_multiplicative_0": {
+            "body_token": "YBXGZUCPGW",
+            "body": (
+                '#style1{- Accuracy: normal}'
+                '\n#style1{- Aiming time: normal}'
+                '\n#style1{- Reload time: normal}'
+                '\n#style1{- Stress resistance: normal}'
+                '\n#style1{- Stress recovery: 1.6 per second}'
+                '\n(multiplicative, multiplicative, multiplicative, percentage)'
+            ),
+        },
+        "simple_v3_multiplicative_1": {
+            "body_token": "OZELGDYCJI",
+            "body": (
+                '#style1{- Accuracy:} #moral_color_bad_2{+5%}'
+                '\n#style1{- Aiming time:} #moral_color_bad_2{-4%}'
+                '\n#style1{- Reload time:} #moral_color_bad_2{-10%}'
+                '\n#style1{- Stress resistance:} #moral_color_bad_2{+14%}'
+                '\n#style1{- Stress recovery:} #moral_color_bad_2{4.0} #style1{per second}'
+                '\n(multiplicative, multiplicative, multiplicative, percentage)'
+            ),
+        },
+        "simple_v3_multiplicative_2": {
+            "body_token": "KODCDSFEDT",
+            "body": (
+                '#style1{- Accuracy:} #styleGreen{+10%}'
+                '\n#style1{- Aiming time:} #styleGreen{-8%}'
+                '\n#style1{- Reload time:} #styleGreen{-17%}'
+                '\n#style1{- Stress resistance:} #styleGreen{+22%}'
+                '\n#style1{- Stress recovery:} #styleGreen{4.8} #style1{per second}'
+                '\n(multiplicative, multiplicative, multiplicative, percentage)'
+            ),
+        },
+        "simple_v3_multiplicative_3": {
+            "body_token": "GQBPUEGUYF",
+            "body": (
+                '#style1{- Accuracy:} #styleTurquoise{+15%}'
+                '\n#style1{- Aiming time:} #styleTurquoise{-12%}'
+                '\n#style1{- Reload time:} #styleTurquoise{-24%}'
+                '\n#style1{- Stress resistance:} #styleTurquoise{+32%}'
+                '\n#style1{- Stress recovery:} #styleTurquoise{5.4} #style1{per second}'
+                '\n(multiplicative, multiplicative, multiplicative, percentage)'
+            ),
+        },
+    },
+    "SF_v2_multiplicative": {
+        "SF_v2_multiplicative_0": {
+            "body_token": "FSDWIVSTQO",
             "body": (
                 '#style1{- Movement speed: normal}'
                 '\n#style1{- Accuracy: normal}'
@@ -59,8 +105,8 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Stress recovery: 2.0 per second}'
             ),
         },
-        "SF_v2_1": {
-            "body_token": "JRSBBOKWWV",
+        "SF_v2_multiplicative_1": {
+            "body_token": "BTMBWVRSDH",
             "body": (
                 '#style1{- Movement speed:} #styleGreen{+10%}'
                 '\n#style1{- Accuracy:} #moral_color_bad_2{+8%}'
@@ -68,11 +114,11 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Reload time:} #moral_color_bad_2{-10%}'
                 '\n#style1{- Stress resistance:} #moral_color_bad_2{+20%}'
                 '\n#style1{- Stress recovery:} #moral_color_bad_2{4.8} #style1{per second}'
-                '\n(percentage, flat, multiplicative, multiplicative, percentage)'
+                '\n(percentage, multiplicative, multiplicative, multiplicative, percentage)'
             ),
         },
-        "SF_v2_2": {
-            "body_token": "AVYMGIMQVZ",
+        "SF_v2_multiplicative_2": {
+            "body_token": "JHQIIEVPZF",
             "body": (
                 '#style1{- Movement speed:} #styleGreen{+20%}'
                 '\n#style1{- Accuracy:} #styleGreen{+12%}'
@@ -80,11 +126,11 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Reload time:} #styleGreen{-20%}'
                 '\n#style1{- Stress resistance:} #styleGreen{+30%}'
                 '\n#style1{- Stress recovery:} #styleGreen{6.0} #style1{per second}'
-                '\n(percentage, flat, multiplicative, multiplicative, percentage)'
+                '\n(percentage, multiplicative, multiplicative, multiplicative, percentage)'
             ),
         },
-        "SF_v2_3": {
-            "body_token": "UBCNRFKSNH",
+        "SF_v2_multiplicative_3": {
+            "body_token": "ZIUCSNONPU",
             "body": (
                 '#style1{- Movement speed:} #styleTurquoise{+30%}'
                 '\n#style1{- Accuracy:} #styleTurquoise{+16%}'
@@ -92,7 +138,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Reload time:} #styleTurquoise{-30%}'
                 '\n#style1{- Stress resistance:} #styleTurquoise{+40%}'
                 '\n#style1{- Stress recovery:} #styleTurquoise{7.8} #style1{per second}'
-                '\n(percentage, flat, multiplicative, multiplicative, percentage)'
+                '\n(percentage, multiplicative, multiplicative, multiplicative, percentage)'
             ),
         },
     },

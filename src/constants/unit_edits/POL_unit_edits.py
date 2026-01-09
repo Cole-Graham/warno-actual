@@ -247,7 +247,7 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "MMG_PKM_7_62mm": 30,
+                "MMG_PKM_7_62mm": 36,
             },
             "equipmentchanges": {
                 "replace": [("RocketInf_RPG76_Komar", "MMG_PKM_7_62mm", "RocketInf_RPG76_Komar", "MMG_PKM_7_62mm")],
@@ -390,7 +390,7 @@ pol_unit_edits = {
         # "WeaponDescriptor": {
         #     "Salves": {
         #         "FM_AK_74": 11,
-        #         "MMG_PKM_7_62mm": 30,
+        #         "MMG_PKM_7_62mm": 36,
         #         "Grenade_Satchel_Charge": 5,
         #     },
         # },
@@ -417,8 +417,8 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_kbk_AK": 7,  # 7 mags per soldier bc heavy
-                "MMG_PKM_7_62mm": 24,
+                "FM_kbk_AK": 11,  # 7 mags per soldier bc heavy
+                "MMG_PKM_7_62mm": 36,
             },
         },
         # 8x kbk AKM
@@ -1527,7 +1527,7 @@ pol_unit_edits = {
                 "replace": [("FM_kbk_AK", "FM_kbk_AK_noreflex")],
             },
             "Salves": {
-                "FM_kbk_AK": 7,
+                "FM_kbk_AK": 11,
             },
         },
     },
@@ -1542,7 +1542,7 @@ pol_unit_edits = {
                 "replace": [("FM_kbk_AK", "FM_kbk_AK_noreflex")],
             },
             "Salves": {
-                "FM_kbk_AK": 7,
+                "FM_kbk_AK": 11,
             },
         },
         "GameName": {
@@ -1560,7 +1560,7 @@ pol_unit_edits = {
                 "replace": [("FM_kbk_AKM", "FM_kbk_AK_noreflex")],
             },
             "Salves": {
-                "FM_kbk_AK": 7,
+                "FM_kbk_AK": 11,
             },
         },
         "GameName": {
@@ -1804,8 +1804,8 @@ pol_unit_edits = {
         },
     },
     "MiG_21bis_POL": {  # 4x R-60M, 2x R-13M - MiG-21bis [AA2]
-        "CommandPoints": 120,
-        "availability": [0, 4, 3, 2],
+        "CommandPoints": "MiG_21bis_AA2_DDR",
+        "availability": "MiG_21bis_AA2_DDR",
         "GameName": {
             "display": "MiG-21bis [AA]"
         },
@@ -1831,12 +1831,12 @@ pol_unit_edits = {
         "CommandPoints": 115,
         "availability": [0, 3, 0, 0],
     },
-    "MiG_23MF_AA_POL": {  # MiG-23MF [AA]
-        "CommandPoints": 115,
+    "MiG_23MF_AA_POL": {  # MiG-23MF [AA], 2x R-23R, 4x R-60M
+        "CommandPoints": 125,
         "availability": [0, 4, 3, 2],
     },
-    "MiG_23MF_AA2_POL": {  # MiG-23MF [AA2]
-        "CommandPoints": 130,
+    "MiG_23MF_AA2_POL": {  # MiG-23MF [AA2], 2x R-3R, 2x R-13M
+        "CommandPoints": 110,
         "availability": [0, 4, 3, 2],
         "Divisions": {
             "add": ["POL_20_Pancerna"],

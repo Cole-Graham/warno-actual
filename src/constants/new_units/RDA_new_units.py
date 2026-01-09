@@ -31,16 +31,9 @@ RDA_NEW_UNITS = {
         "strength": 5,
         # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
         "Dangerousness": 12,
-        "WeaponAssignment": [
-            (0, [1]),
-            (1, [0]),
-            (2, [0]),
-            (3, [0, 3]),
-            (4, [0, 2]),
-        ],
         "WeaponDescriptor": {
             "Salves": {
-                "FM_Mpi_AK_74N": 7,
+                "FM_Mpi_AK_74N": 11,
                 "RocketInf_RPG18_64mm": 5,
             },
             "equipmentchanges": {
@@ -75,6 +68,9 @@ RDA_NEW_UNITS = {
             },
             "RDA_7_Panzer_multi": {
                 "Transports": ["UAZ_469_trans_DDR", "BTR_70_DDR", "Mi_2_trans_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
+            },
+            "RDA_KdA_Bezirk_Erfurt_multi": {
+                "Transports": ["UAZ_469_trans_DDR", "SPW_152K_DDR", "BTR_60_DDR","Mi_2_trans_DDR"],
             },
         },
         "availability": [0, 0, 2, 0],
@@ -198,6 +194,9 @@ RDA_NEW_UNITS = {
             },
             "RDA_7_Panzer_multi": {
                 "Transports": ["UAZ_469_trans_DDR", "BTR_50_DDR", "BMP_1_SP1_DDR", "BMP_1_SP2_DDR", "BMP_1P_DDR"],
+            },
+            "RDA_KdA_Bezirk_Erfurt_multi": {
+                "Transports": ["UAZ_469_trans_DDR"],
             },
         },
         "availability": [7, 5, 4, 0],

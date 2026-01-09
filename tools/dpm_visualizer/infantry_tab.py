@@ -352,6 +352,11 @@ class InfantryTab:
         shock_checkbox = ttk.Checkbutton(vet_frame, text="Shock Trait", variable=self.custom_unit_shock_trait_var)
         shock_checkbox.pack(side=tk.LEFT, padx=(10, 0))
         
+        # Militia trait checkbox
+        self.custom_unit_militia_trait_var = tk.BooleanVar(value=False)
+        militia_checkbox = ttk.Checkbutton(vet_frame, text="Militia Trait", variable=self.custom_unit_militia_trait_var)
+        militia_checkbox.pack(side=tk.LEFT, padx=(10, 0))
+        
         # Strength field
         ttk.Label(vet_frame, text="Strength:").pack(side=tk.LEFT, padx=(10, 2))
         self.custom_unit_strength_var = tk.IntVar(value=7)
@@ -1154,6 +1159,9 @@ class InfantryTab:
                     # Check if unit has Shock trait
                     has_shock_trait = unit_info.get("has_shock_trait", False)
                     
+                    # Check if unit has Militia trait
+                    has_militia_trait = unit_info.get("has_militia_trait", False)
+                    
                     # Get attacker strength and target strength for damage ratio
                     attacker_strength = unit_info.get("strength", 7)  # Default to 7 if not found
                     # Ensure attacker_strength is an integer
@@ -1203,6 +1211,8 @@ class InfantryTab:
                         has_shock_trait=has_shock_trait,
                         shock_range=getattr(self.app, 'shock_range', 100.0),
                         shock_bonuses=getattr(self.app, 'shock_bonuses', None),
+                        has_militia_trait=has_militia_trait,
+                        militia_bonuses=getattr(self.app, 'militia_bonuses', None),
                         damage_ratio_multiplier=damage_ratio,
                         damage_type=damage_type
                     )
@@ -1312,8 +1322,11 @@ class InfantryTab:
             max_unit_range = 0.0
             
             for weapon_name, quantity in selected_weapons.items():
-                # Get ammunition properties (check custom weapons first, then regular)
-                ammo_props = self.app.custom_weapons.get(weapon_name) or self.app.ammunition_props.get(weapon_name)
+                # Extract base weapon name for fallback lookup
+                base_name = extract_base_weapon_name(weapon_name)
+                
+                # Get ammunition properties (check custom weapons first, then regular, then base name)
+                ammo_props = self.app.custom_weapons.get(weapon_name) or self.app.ammunition_props.get(weapon_name) or self.app.ammunition_props.get(base_name)
                 if not ammo_props:
                     continue
                 
@@ -1335,6 +1348,9 @@ class InfantryTab:
                 # Check if unit has Shock trait
                 has_shock_trait = unit_info.get("has_shock_trait", False)
                 
+                # Check if unit has Militia trait
+                has_militia_trait = unit_info.get("has_militia_trait", False)
+                
                 # Get attacker strength and target strength for damage ratio
                 attacker_strength = unit_info.get("strength", 7)  # Default to 7 if not found
                 # Ensure attacker_strength is an integer
@@ -1352,11 +1368,13 @@ class InfantryTab:
                     target_strength = attacker_strength
                 
                 # Calculate damage ratio from SA_INF_ARMOR_DAMAGE_RATIOS table
-                # Table is indexed by attacker strength (2-14), then target strength (2-14)
+                # Table is indexed by attacker strength (2-14), then target strength (14-2, reverse order)
+                # Columns represent target strengths 14, 13, 12, ..., 3, 2 (column 0 = strength 14, column 12 = strength 2)
                 damage_ratio = 1.0
                 if 2 <= attacker_strength <= 14 and 2 <= target_strength <= 14:
-                    attacker_idx = attacker_strength - 2  # Convert to 0-based index
-                    target_idx = target_strength - 2  # Convert to 0-based index
+                    attacker_idx = attacker_strength - 2  # Convert to 0-based index (0-12)
+                    # Target strength columns are in reverse order: 14->0, 13->1, ..., 2->12
+                    target_idx = 14 - target_strength  # Convert to column index (14->0, 2->12)
                     if 0 <= attacker_idx < len(SA_INF_ARMOR_DAMAGE_RATIOS):
                         if 0 <= target_idx < len(SA_INF_ARMOR_DAMAGE_RATIOS[attacker_idx]):
                             damage_ratio = SA_INF_ARMOR_DAMAGE_RATIOS[attacker_idx][target_idx]
@@ -1382,6 +1400,8 @@ class InfantryTab:
                     has_shock_trait=has_shock_trait,
                     shock_range=getattr(self.app, 'shock_range', 100.0),
                     shock_bonuses=getattr(self.app, 'shock_bonuses', None),
+                    has_militia_trait=has_militia_trait,
+                    militia_bonuses=getattr(self.app, 'militia_bonuses', None),
                     damage_ratio_multiplier=damage_ratio,
                     damage_type=damage_type
                 )
@@ -1852,6 +1872,9 @@ class InfantryTab:
         # Get shock trait checkbox value
         has_shock_trait = self.custom_unit_shock_trait_var.get()
         
+        # Get militia trait checkbox value
+        has_militia_trait = self.custom_unit_militia_trait_var.get()
+        
         # Get strength value
         strength = self.custom_unit_strength_var.get()
         
@@ -1870,6 +1893,7 @@ class InfantryTab:
             "custom_weapons": selected_weapons,  # Store selected weapons with quantities
             "default_veterancy_level": available_vet_levels[0],  # Store default veterancy (first available)
             "has_shock_trait": has_shock_trait,  # Store shock trait
+            "has_militia_trait": has_militia_trait,  # Store militia trait
             "strength": strength,  # Store strength
         }
         
@@ -1911,6 +1935,8 @@ class InfantryTab:
             var.set(i == 0)
         # Reset shock trait checkbox
         self.custom_unit_shock_trait_var.set(False)
+        # Reset militia trait checkbox
+        self.custom_unit_militia_trait_var.set(False)
         
         # Reset strength to default
         self.custom_unit_strength_var.set(7)
@@ -2125,6 +2151,10 @@ class InfantryTab:
         has_shock_trait = unit_info.get("has_shock_trait", False)
         self.custom_unit_shock_trait_var.set(has_shock_trait)
         
+        # Set militia trait checkbox based on unit's militia trait
+        has_militia_trait = unit_info.get("has_militia_trait", False)
+        self.custom_unit_militia_trait_var.set(has_militia_trait)
+        
         # Set strength field based on unit's strength
         strength = unit_info.get("strength", 7)
         self.custom_unit_strength_var.set(strength)
@@ -2274,6 +2304,74 @@ class InfantryTab:
         # Default to black if not found
         return 'black'
     
+    def _format_traits_and_bonuses(self, unit_info: Dict[str, Any], range_val: float) -> List[str]:
+        """Format traits and active bonuses information for display.
+        
+        Args:
+            unit_info: Unit information dictionary
+            range_val: Current range in meters
+            
+        Returns:
+            List of formatted strings describing traits and bonuses
+        """
+        info_lines = []
+        
+        # Check for traits
+        has_shock_trait = unit_info.get("has_shock_trait", False)
+        has_militia_trait = unit_info.get("has_militia_trait", False)
+        
+        # Build traits list
+        traits = []
+        if has_shock_trait:
+            traits.append("Shock")
+        if has_militia_trait:
+            traits.append("Militia")
+        
+        if traits:
+            info_lines.append(f"  Traits: {', '.join(traits)}")
+        else:
+            info_lines.append("  Traits: None")
+        
+        # Check for active bonuses
+        active_bonuses = []
+        
+        # Shock bonuses (only active within shock range)
+        if has_shock_trait:
+            shock_range = getattr(self.app, 'shock_range', 100.0)
+            shock_bonuses = getattr(self.app, 'shock_bonuses', {})
+            if range_val <= shock_range:
+                damage_mult = shock_bonuses.get("damage_multiplier", 1.15)
+                salvo_reload_mult = shock_bonuses.get("salvo_reload_multiplier", 0.85)
+                shot_time_mult = shock_bonuses.get("shot_time_multiplier", 0.85)
+                aim_time_mult = shock_bonuses.get("aim_time_multiplier", 0.85)
+                
+                damage_bonus = int((damage_mult - 1.0) * 100)
+                reload_bonus = int((1.0 - salvo_reload_mult) * 100)
+                shot_time_bonus = int((1.0 - shot_time_mult) * 100)
+                aim_time_bonus = int((1.0 - aim_time_mult) * 100)
+                
+                active_bonuses.append(f"Shock (≤{shock_range:.0f}m): +{damage_bonus}% damage, {reload_bonus}% faster reload, {shot_time_bonus}% faster shots, {aim_time_bonus}% faster aim")
+        
+        # Militia penalties (always active)
+        if has_militia_trait:
+            militia_bonuses = getattr(self.app, 'militia_bonuses', {})
+            reload_mult = militia_bonuses.get("reload_speed_multiplier", 1.20)
+            aim_time_mult = militia_bonuses.get("aim_time_multiplier", 1.20)
+            
+            reload_penalty = int((reload_mult - 1.0) * 100)
+            aim_time_penalty = int((aim_time_mult - 1.0) * 100)
+            
+            active_bonuses.append(f"Militia: {reload_penalty}% slower reload, {aim_time_penalty}% slower aim")
+        
+        if active_bonuses:
+            info_lines.append("  Active Bonuses:")
+            for bonus in active_bonuses:
+                info_lines.append(f"    • {bonus}")
+        else:
+            info_lines.append("  Active Bonuses: None")
+        
+        return info_lines
+    
     def _remove_all_markers(self):
         """Remove all scatter plot markers (selected and hover) from the chart."""
         # Remove all red X scatter markers by iterating through collections backwards
@@ -2372,6 +2470,13 @@ class InfantryTab:
             
             # Build tooltip text with weapon breakdown
             tooltip_lines = [f'{closest_unit}{price_text}', f'Range: {x:.0f}m', f'Total DPM: {y:.2f}', '']
+            
+            # Add traits and bonuses information
+            trait_bonus_info = self._format_traits_and_bonuses(unit_info, x)
+            if trait_bonus_info:
+                tooltip_lines.append('Traits & Bonuses:')
+                tooltip_lines.extend(trait_bonus_info)
+                tooltip_lines.append('')
             
             # Add individual weapon DPM breakdown
             if closest_unit in self.weapon_dpm_data:
@@ -2662,6 +2767,14 @@ class InfantryTab:
             info_lines.append(f"  Target Strength: {target_strength} ({damage_ratio_percent}% damage)")
             info_lines.append(f"  Total DPM: {dpm_at_100_percent:.2f} ({total_dpm:.2f})")
             info_lines.append("")
+            
+            # Add traits and bonuses information
+            trait_bonus_info = self._format_traits_and_bonuses(unit_info, range_val)
+            if trait_bonus_info:
+                info_lines.append("  Traits & Bonuses:")
+                for line in trait_bonus_info:
+                    info_lines.append(f"  {line}")
+                info_lines.append("")
             
             # Add weapon breakdown for this unit
             if unit_name in self.weapon_dpm_data:

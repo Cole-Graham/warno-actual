@@ -142,14 +142,6 @@ sov_unit_edits = {
             ],
         },
         "strength": 6,
-        "WeaponAssignment": [
-            (0, [1, ]),
-            (1, [0, ]),
-            (2, [0, ]),
-            (3, [0, ]),
-            (4, [0, 3]),
-            (5, [0, 2]),
-        ],
         "TransportedTexture": "UseInGame_Transport_REGINF",
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
@@ -278,7 +270,7 @@ sov_unit_edits = {
     },
 
     "Engineers_CMD_TTsko_SOV": {
-        "CommandPoints": 45,
+        "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDRSOV SAPERY LDR.",
@@ -298,16 +290,6 @@ sov_unit_edits = {
             ],
         },
         "strength": 8,
-        "WeaponAssignment": [
-            (0, [0, ]),
-            (1, [0, ]),
-            (2, [0, ]),
-            (3, [0, ]),
-            (4, [0, ]),
-            (5, [0, ]),
-            (6, [0, ]),
-            (7, [0, 1, ]),
-        ],
         "TransportedTexture": "UseInGame_Transport_assault",
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
@@ -346,10 +328,10 @@ sov_unit_edits = {
     },
 
     "Engineers_CMD_SOV": {
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDRSOV SAPERY LDR.",
+            "display": "#LDRSOV SAPERY LDR. [RPG-7]",
             # "token": "AGYMPGDUXA",
         },
         "TagSet": {
@@ -366,16 +348,6 @@ sov_unit_edits = {
             ],
         },
         "strength": 8,
-        "WeaponAssignment": [
-            (0, [0, ]),
-            (1, [0, ]),
-            (2, [0, ]),
-            (3, [0, ]),
-            (4, [0, ]),
-            (5, [0, ]),
-            (6, [0, ]),
-            (7, [0, 1, ]),
-        ],
         "TransportedTexture": "UseInGame_Transport_assault",
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
@@ -480,14 +452,6 @@ sov_unit_edits = {
             ],
         },
         "strength": 6,
-        "WeaponAssignment": [
-            (0, [1, ]),
-            (1, [0, ]),
-            (2, [0, ]),
-            (3, [0, ]),
-            (4, [0, 3, ]),
-            (5, [0, 2, ]),
-        ],
         "TransportedTexture": "UseInGame_Transport_REGINF",
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
@@ -531,7 +495,7 @@ sov_unit_edits = {
     },
 
     "Engineers_CMD_VDV_SOV": {
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDRSOV DESANT. SAPERY LDR.",
@@ -551,16 +515,6 @@ sov_unit_edits = {
             ],
         },
         "strength": 8,
-        "WeaponAssignment": [
-                (0, [0, ]),
-                (1, [0, ]),
-                (2, [0, ]),
-                (3, [0, ]),
-                (4, [0, ]),
-                (5, [0, ]),
-                (6, [0, ]),
-                (7, [0, 1, ]),
-            ],
         "TransportedTexture": "UseInGame_Transport_assault",
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
@@ -584,7 +538,7 @@ sov_unit_edits = {
                 },
             },
             "Salves": {
-                "FM_AKS_74": 9,
+                "FM_AKS_74": 11,
                 "RocketInf_RPG7": 6,
             },
         },
@@ -617,7 +571,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 11,
-                "MMG_PKM_7_62mm": 30,
+                "MMG_PKM_7_62mm": 36,
                 "Grenade_Satchel_Charge": 5,
             },
         },
@@ -643,7 +597,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 11,
-                "MMG_PKM_7_62mm": 30,
+                "MMG_PKM_7_62mm": 36,
                 "Grenade_Satchel_Charge": 5,
             },
         },
@@ -693,8 +647,8 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_AK_74": 7,
-                "MMG_PKM_7_62mm": 30,
+                "FM_AK_74": 11,
+                "MMG_PKM_7_62mm": 36,
                 "RocketInf_RPO_A_93mm": 4,
             },
         },
@@ -718,8 +672,8 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_AK_74": 7,
-                "MMG_PKM_7_62mm": 30,
+                "FM_AK_74": 11,
+                "MMG_PKM_7_62mm": 36,
                 "RocketInf_RPO_A_93mm": 4,
             },
         },
@@ -738,7 +692,7 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_AKS_74": 7,
+                "FM_AKS_74": 11,
             },
         },
     },
@@ -758,28 +712,9 @@ sov_unit_edits = {
             },
         },
         "max_speed": 26,
-        # not sure if I want to change the strength of this unit, might delete these changes.
-        # "strength": 8,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
-        # "WeaponAssignment": [
-        #     (0, [1, ]),
-        #     (1, [0, ]),
-        #     (2, [0, ]),
-        #     (3, [0, ]),
-        #     (4, [0, ]),
-        #     (5, [0, ]),
-        #     (6, [0, ]),
-        #     (7, [0, 2]),
-        # ],
-        # "WeaponDescriptor": {
-        #     "equipmentchanges": {
-        #         "quantity": {
-        #             "FM_AK_74": 7,
-        #         },
-        #     },
-        # },
         "availability": [10, 7, 0, 0],
     },
 
@@ -802,7 +737,7 @@ sov_unit_edits = {
         "UpgradeFromUnit": "MotRifles_BTR_TTsko_SOV",
         "WeaponDescriptor": {
             "Salves": {
-                "FM_AK_74": 9,
+                "FM_AK_74": 11,
                 "SAW_RPK_74_5_56mm": 15,
                 "RocketInf_RPG27_105mm": 4,
             },
@@ -831,9 +766,21 @@ sov_unit_edits = {
         },
         "UpgradeFromUnit": "MotRifles_CMD_TTsko_SOV",
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "animate": {
+                    "MMG_PKM_7_62mm": False,
+                },
+                "quantity": {
+                    "FM_AK_74": 6,
+                    "MMG_PKM_7_62mm": 2,
+                },
+                "replace": [
+                    ("SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm", "SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm"),
+                ],
+            },
             "Salves": {
                 "FM_AK_74": 11,
-                "SAW_RPK_74_5_56mm": 15,
+                "MMG_PKM_7_62mm": 36,
                 "RocketInf_RPG26_72_5mm": 7,
             },
         },
@@ -844,7 +791,7 @@ sov_unit_edits = {
         "GameName": {
             "display": "MOTOSTRELKI [METIS]",
         },
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -867,7 +814,7 @@ sov_unit_edits = {
         "UpgradeFromUnit": "MotRifles_RPG7V_TTsko_SOV",
         "WeaponDescriptor": {
             "Salves": {
-                "FM_AK_74": 7,
+                "FM_AK_74": 11,
                 "SAW_RPK_74_5_56mm": 15,
                 "ATGM_9K115_Metis": 6,
             },
@@ -898,7 +845,7 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_AKS_74": 9,
+                "FM_AKS_74": 11,
             },
         },
     },
@@ -924,7 +871,7 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_AKS_74": 9,
+                "FM_AKS_74": 11,
             },
         },
     },
@@ -939,7 +886,7 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_AKS_74": 9,
+                "FM_AKS_74": 11,
                 "RocketInf_RPG22_72_5mm": 4,
             },
         },
@@ -950,15 +897,24 @@ sov_unit_edits = {
         "GameName": {
             "display": "DESANTNIKI [METIS]",
         },
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "availability": [0, 7, 5, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "animate": {
+                    "SAW_RPK_74_5_56mm": False,
+                },
+                "quantity": {
+                    "FM_AKS_74": 5,
+                    "SAW_RPK_74_5_56mm": 2,
+                },
+            },
             "Salves": {
-                "FM_AKS_74": 7,
+                "FM_AKS_74": 11,
                 "ATGM_9K115_Metis": 6,
             },
         },
@@ -981,6 +937,16 @@ sov_unit_edits = {
             "Salves": {
                 "FM_AK_74": 11,
             },
+        },
+    },
+    
+    "MP_Combat_SOV": {
+        "CommandPoints": 35,
+        "armor": "Infantry_armor_reference",
+        "availability": [0, 8, 6, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
         },
     },
 
@@ -1015,7 +981,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 11,
-                "MMG_PKM_7_62mm": 30,
+                "MMG_PKM_7_62mm": 36,
                 "RocketInf_RPG22_72_5mm": 6,
             },
         },
@@ -1037,7 +1003,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 11,
-                "MMG_PKM_7_62mm": 30,
+                "MMG_PKM_7_62mm": 36,
                 "RocketInf_RPG22_72_5mm": 6,
             },
         },
@@ -1058,7 +1024,7 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_AK_74": 7,
+                "FM_AK_74": 11,
                 "RocketInf_RPG29_105mm": 6,
             },
         },
@@ -1096,7 +1062,7 @@ sov_unit_edits = {
     },
 
     "Spetsnaz_FireSupport_SOV": {
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "availability": [0, 0, 8, 6],
         "max_speed": 20,
@@ -1417,6 +1383,13 @@ sov_unit_edits = {
     },
 
     "UAZ_469_MP_SOV": {
+        "CommandPoints": 15,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+    },
+    
+    "UAZ_452_MP_SOV": {
         "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'",],
@@ -2013,7 +1986,7 @@ sov_unit_edits = {
             # "display": "#RECO2 RAZVEDKA SAPERY",
             "display": "#RECO2 RAZV. SAPERY",
         },
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -2033,7 +2006,7 @@ sov_unit_edits = {
             # "display": "#RECO2 RAZVEDKA SAPERY",
             "display": "#RECO2 RAZV. SAPERY",
         },
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -2048,7 +2021,7 @@ sov_unit_edits = {
 
     "HvyScout_SOV": {
         "armor": "Infantry_armor_reference",
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "availability": [7, 5, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -2058,7 +2031,7 @@ sov_unit_edits = {
     },
 
     "HvyScout_TTsko_SOV": {
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "availability": [7, 5, 0, 0],
         "max_speed": 26,

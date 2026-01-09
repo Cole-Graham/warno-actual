@@ -35,8 +35,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("AutoCanon_HE_30mm_Bitube_Gsh30k_burst", "autocannon", "AutoCanon_HE_30mm_Bitube_Gsh30k", True): {
         "Ammunition": {
             "hit_roll": {
-                "Idling": 15,
-                "Moving": 10,
+                "Idling": 18,
+                "Moving": 12,
             },
             "parent_membr": {
                 "ImpactHappening": "'Gsh301'",

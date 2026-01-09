@@ -16,6 +16,7 @@ from .SOV_depiction_edits import (
     mi_24p_sov,
     mortier_2b9_vasilek_nonpara_sov,
     mortier_2b9_vasilek_sov,
+    motrifles_btr_ttsko_sov,
     mtlb_vasilek_sov,
 )
 # from .UK_depiction_edits import ()
@@ -29,6 +30,7 @@ from .USA_depiction_edits import (
     m3a1_bradley_cfv_us,
     m3a2_bradley_cfv_us,
     ranger_us,
+    rifles_half_at4_us,
     scout_us,
 )
 
@@ -48,6 +50,7 @@ __all__ = [
     "mi_24p_sov",
     "mortier_2b9_vasilek_nonpara_sov",
     "mortier_2b9_vasilek_sov",
+    "motrifles_btr_ttsko_sov",
     "mtlb_vasilek_sov",
     
     # USA
@@ -60,5 +63,6 @@ __all__ = [
     "m3a1_bradley_cfv_us",
     "m3a2_bradley_cfv_us",
     "ranger_us",
+    "rifles_half_at4_us",
     "scout_us",
 ]

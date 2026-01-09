@@ -17,6 +17,7 @@ from .ndf_parsers import (
     parse_ammunition_properties,
     parse_shock_bonuses,
     parse_shock_range,
+    parse_militia_bonuses,
 )
 from .ui_components import SearchableCombobox
 from .infantry_tab import InfantryTab
@@ -46,6 +47,12 @@ class DPMVisualizerApp:
             "aim_time_multiplier": 0.85,
         }
         self.shock_range: float = 100.0
+        
+        # Militia trait bonuses (parsed from game files)
+        self.militia_bonuses: Dict[str, float] = {
+            "reload_speed_multiplier": 1.20,
+            "aim_time_multiplier": 1.20,
+        }
         
         # Range modifier tables (shared between tabs, global across profiles)
         self.range_modifier_tables: Dict[str, List[Tuple[float, float]]] = {
@@ -221,6 +228,9 @@ class DPMVisualizerApp:
             self.shock_bonuses = parse_shock_bonuses(self.mod_path)
             self.shock_range = parse_shock_range(self.mod_path)
             
+            # Parse militia bonuses
+            self.militia_bonuses = parse_militia_bonuses(self.mod_path)
+            
             # Save dataset to cache file
             self.save_dataset_cache()
             
@@ -294,13 +304,14 @@ class DPMVisualizerApp:
         try:
             # Serialize the data structures
             cache_data = {
-                "cache_version": "2.2",  # Version 2.2: Added suppress_damages support for damage type selection
+                "cache_version": "2.3",  # Version 2.3: Added militia trait support
                 "mod_path": str(self.mod_path),
                 "infantry_units": self._serialize_infantry_units(),
                 "weapon_descriptors": self._serialize_weapon_descriptors(),
                 "ammunition_props": self.ammunition_props,  # Already JSON-serializable (includes suppress_damages)
                 "shock_bonuses": self.shock_bonuses,
                 "shock_range": self.shock_range,
+                "militia_bonuses": self.militia_bonuses,
             }
             
             with open(self.dataset_cache_file, 'w', encoding='utf-8') as f:
@@ -341,6 +352,7 @@ class DPMVisualizerApp:
                 "veterancy_accuracy_bonuses": acc_bonuses,
                 "veterancy_reload_speed_multipliers": unit_info.get("veterancy_reload_speed_multipliers", {}),
                 "has_shock_trait": unit_info.get("has_shock_trait", False),
+                "has_militia_trait": unit_info.get("has_militia_trait", False),
                 "price": unit_info.get("price"),
                 "strength": unit_info.get("strength"),  # Include strength for target strength dropdown
             }
@@ -387,8 +399,8 @@ class DPMVisualizerApp:
             
             # Check cache version - invalidate old caches that don't have multiplicative->flat conversion
             cache_version = cache_data.get("cache_version", "1.0")
-            if cache_version < "2.2":
-                print(f"Warning: Cache version {cache_version} is outdated (needs 2.2+). Cache will be regenerated.")
+            if cache_version < "2.3":
+                print(f"Warning: Cache version {cache_version} is outdated (needs 2.3+). Cache will be regenerated.")
                 return False
             
             # Restore mod path
@@ -442,6 +454,16 @@ class DPMVisualizerApp:
                         self.shock_bonuses = cache_data["shock_bonuses"]
                     if "shock_range" in cache_data:
                         self.shock_range = float(cache_data["shock_range"])
+                    
+                    # Load militia bonuses if available
+                    if "militia_bonuses" in cache_data:
+                        self.militia_bonuses = cache_data["militia_bonuses"]
+                    else:
+                        # Default values if not in cache
+                        self.militia_bonuses = {
+                            "reload_speed_multiplier": 1.20,
+                            "aim_time_multiplier": 1.20,
+                        }
                     
                     # Ensure bonus dictionary keys are integers (JSON loads them as strings)
                     # Also convert any multiplicative bonuses to flat bonuses (safety check for old cache files)

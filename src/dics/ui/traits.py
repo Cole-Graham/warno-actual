@@ -205,9 +205,17 @@ NEW_TRAITS = {
             f"struggle to maintain cohesion under fire."
         )),
         "extended": ("UQBVPVHSOX", (
-            f"- Increased suppression damage taken while moving (50%)"
+            f"- Increased suppression damage taken while moving (33%)"
         )),
         "texture": "medium_equipment.png",
+    },
+    
+    "mequip_label": { # label for medium equipment texture (#MEQUIP)
+        "title": (None, None),
+        "description": (None, (
+            None
+        )),
+        "texture": "mequip_label.png",
     },
     
     "infantry_equip_heavy": {
@@ -217,10 +225,18 @@ NEW_TRAITS = {
             f"hampering their mobility on the battlefield."
         )),
         "extended": ("ZGBDBQRXQA", (
-            f"- Increased suppression damage taken while moving (50%)\n"
+            f"- Increased suppression damage taken while moving (33%)\n"
             f"- Reduced movement speed (-6 Km/h)"
         )),
         "texture": "heavy_equipment.png",
+    },
+    
+    "hequip_label": { # label for heavy equipment texture (#HEQUIP)
+        "title": (None, None),
+        "description": (None, (
+            None
+        )),
+        "texture": "hequip_label.png",
     },
     
     "infantry_equip_veryheavy": {

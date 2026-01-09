@@ -40,7 +40,14 @@ def edit_gameplay_constantes_gdconstants(source_path) -> None:
         elif row.namespace == "ModernWarfareConstantes":
             row.v.by_m("FrontSideAngleInDeg").v = "75"
             # logger.info("Set FrontSideAngleInDeg to 75")
-
-            row.v.by_m("SplashRatioDamage").v = "[0.15, 0.15, 0.01]"
-            row.v.by_m("SplashRatioDistance").v = "[0.15, 0.15, 0.1]"
-            # logger.info("Set splash ratios: Damage=[0.15, 0.15, 0.01], Distance=[0.15, 0.15, 0.1]")
+            
+            # Values in splash ratios correspond to enum EDamageType
+            # EDamageType is TBaseClass
+            # (
+            #     Suppress  is 0
+            #     Physical  is 1
+            #     Stun      is 2
+            #     Length    is 3
+            # )
+            row.v.by_m("SplashRatioDamage").v = "[0.15, 0.15, 0.05]"
+            row.v.by_m("SplashRatioDistance").v = "[0.15, 0.15, 0.10]"

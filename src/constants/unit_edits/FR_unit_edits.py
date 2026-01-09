@@ -31,9 +31,10 @@ fr_unit_edits = {
         "CommandPoints": 125,
         "availability": [0, 3, 0, 0],
     },
+    
     # FR INF
     "Chasseurs_CMD_FR": {
-        "CommandPoints": 45,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDR CHASSEURS LDR.",
@@ -52,16 +53,6 @@ fr_unit_edits = {
             ],
         },
         "strength": 8,
-        "WeaponAssignment": [
-                (0, [0, ]),
-                (1, [0, ]),
-                (2, [0, ]),
-                (3, [0, ]),
-                (4, [0, ]),
-                (5, [0, ]),
-                (6, [0, 1]),
-                (7, [0, 2]),
-            ],
         "TransportedTexture": "UseInGame_Transport_REGINF",
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
@@ -103,7 +94,7 @@ fr_unit_edits = {
             },
             "Salves": {
                 "add": [(2, 6)],
-                "FM_FAMAS": 9,
+                "FM_FAMAS": 11,
             },
         },
         "is_infantry": True,
@@ -112,7 +103,7 @@ fr_unit_edits = {
     },
     
     "Rifles_CMD_FR": {
-        "CommandPoints": 30,
+        "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDR GREN.-VOLTIGEURS LDR.",
@@ -131,14 +122,6 @@ fr_unit_edits = {
             ],
         },
         "strength": 6,
-        "WeaponAssignment": [
-                (0, [1, ]),
-                (1, [0, ]),
-                (2, [0, ]),
-                (3, [0, ]),
-                (4, [0, ]),
-                (5, [0, 2]),
-            ],
         "TransportedTexture": "UseInGame_Transport_REGINF",
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
@@ -193,16 +176,6 @@ fr_unit_edits = {
                 "Unite",
             ],
         },
-        "WeaponAssignment": [
-                (0, [1, ]),
-                (1, [0, ]),
-                (2, [0, ]),
-                (3, [0, ]),
-                (4, [0, ]),
-                (5, [0, ]),
-                (6, [0, ]),
-                (7, [0, 2]),
-            ],
         "TransportedTexture": "UseInGame_Transport_assault",
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
@@ -238,7 +211,7 @@ fr_unit_edits = {
             },
             "Salves": {
                 "add": [(2, 6)],
-                "FM_FAMAS": 9,
+                "FM_FAMAS": 11,
             },
         },
         "is_infantry": True,
@@ -247,6 +220,13 @@ fr_unit_edits = {
     },
     
     "VLTT_P4_FR": {
+        "CommandPoints": 15,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+    },
+    
+    "VLTT_P4_Gendarmerie_FR": {
         "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'",],
@@ -272,7 +252,7 @@ fr_unit_edits = {
         },
     },
     
-    "Gendarmerie_FR": { # security
+    "Gendarmerie_FR": { # Prevote
         "CommandPoints": 15,
         "armor": "Infantry_armor_reference",
         "availability": [0, 12, 9, 0],
@@ -297,7 +277,7 @@ fr_unit_edits = {
         },
     },
     
-    "Rifles_FR": {
+    "Rifles_FR": { # Gren.-Voltigeurs
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
@@ -307,13 +287,13 @@ fr_unit_edits = {
         "max_speed": 26,
         "WeaponDescriptor": {
             "Salves": {
-                "FM_FAMAS": 9,
+                "FM_FAMAS": 11,
                 "RocketInf_LRAC_F1": 7,
             },
         },
     },
     
-    "Rifles_DMR_FR": {
+    "Rifles_DMR_FR": { # Gren.-Voltigeurs [FR-F1]
         "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "availability": [8, 6, 0, 0],
@@ -323,13 +303,13 @@ fr_unit_edits = {
         "max_speed": 26,
         "WeaponDescriptor": {
             "Salves": {
-                "FM_FAMAS": 9,
+                "FM_FAMAS": 11,
                 "RocketInf_LRAC_F1": 7,
             },
         },
     },
     
-    "Rifles_APILAS_FR": {   
+    "Rifles_APILAS_FR": { # Gren.-Voltigeurs [APILAS]
         "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "availability": [8, 6, 0, 0],
@@ -339,14 +319,14 @@ fr_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_FAMAS": 7,
+                "FM_FAMAS": 11,
                 "RocketInf_APILAS": 6,
             },
         },
     },
     
-    "Escorte_FR": {
-        "CommandPoints": 25,
+    "Escorte_FR": { # Escorte PC
+        "CommandPoints": 15,
         "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
@@ -355,7 +335,7 @@ fr_unit_edits = {
         },
     },
     
-    "Chasseurs_FR": {
+    "Chasseurs_FR": { # Chasseurs
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
@@ -387,7 +367,7 @@ fr_unit_edits = {
     },
     
     "Sapeurs_Flam_FR": {
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "availability": [0, 7, 5, 0],
         "SpecialtiesList": {
@@ -407,18 +387,18 @@ fr_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_FAMAS": 7,
+                "FM_FAMAS": 11,
             },
         },
     },
     
     "Commandos_FR": {
-        "CommandPoints": 65,
+        "CommandPoints": 60,
         "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "max_speed": 20,
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_heavy'"],
+            "add_specs": ["'infantry_equip_medium'"],
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -716,7 +696,7 @@ fr_unit_edits = {
         },
     },
     
-    "LRRP_FR": {
+    "LRRP_FR": { # Dragon-Paras
         "CommandPoints": 60,
         "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
@@ -920,7 +900,7 @@ fr_unit_edits = {
         },
     },
     "Mirage_III_E_FR": {
-        "CommandPoints": 115,
+        "CommandPoints": 110,
         "strength": 10,
         "availability": [0, 4, 3, 2],
     },

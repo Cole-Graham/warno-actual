@@ -128,14 +128,6 @@ usa_unit_edits = {
             ],
         },
         "strength": 6,
-        "WeaponAssignment": [
-                (0, [0, ]),
-                (1, [0, ]),
-                (2, [1, ]),
-                (3, [1, ]),
-                (4, [1, 3]),
-                (5, [1, 2]),
-            ],
         "TransportedTexture": "UseInGame_Transport_REGINF",
         # "SortingOrder": 20075,
         # "UnitAttackValue": 1,
@@ -233,7 +225,7 @@ usa_unit_edits = {
     },
 
     "Engineer_CMD_US": {
-        "CommandPoints": 55,
+        "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDR ENGINEERS LDR.",
@@ -309,17 +301,6 @@ usa_unit_edits = {
             ],
         },
         "strength": 9,
-        "WeaponAssignment": [
-                (0, [1, ]),
-                (1, [0, ]),
-                (2, [0, ]),
-                (3, [0, ]),
-                (4, [0, ]),
-                (5, [0, ]),
-                (6, [0, ]),
-                (7, [0, 3]),
-                (8, [0, 2]),
-            ],
         "TransportedTexture": "UseInGame_Transport_REGINF",
         # "SortingOrder": 20075,
         # "UnitAttackValue": 1,
@@ -466,7 +447,7 @@ usa_unit_edits = {
         "max_speed": 26,
         "WeaponDescriptor": {
             "Salves": {
-                "FM_M16": 9,
+                "FM_M16": 11,
                 "RocketInf_AT4_83mm": 8,
             },
         },
@@ -652,7 +633,10 @@ usa_unit_edits = {
     },
 
     "Engineers_US": {
-        "CommandPoints": 45,
+        "CommandPoints": 50,
+        "GameName": {
+            "display": "ENGINEERS",
+        },
         "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
@@ -727,11 +711,10 @@ usa_unit_edits = {
     },
 
     "Airborne_Engineers_US": {
-        "CommandPoints": 45,
-        # "GameName": {
-        #     "display": "AIRBORNE ASSAULT ENG.",
-        #     "token": "TXOZWRNEVU",
-        # },
+        "CommandPoints": 50,
+        "GameName": {
+            "display": "AIRBORNE ENGINEERS",
+        },
         "armor": "Infantry_armor_reference",
         "availability": [0, 6, 4, 0],
         "max_speed": 26,
@@ -775,7 +758,7 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_M16": 9,
+                "FM_M16": 11,
                 "RocketInf_M202_Flash_66mm": 2,
             },
         },
@@ -785,7 +768,7 @@ usa_unit_edits = {
         "GameName": {
             "display": "AB ENGINEERS [FLASH]",
         },
-        "CommandPoints": 40,
+        "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
@@ -872,7 +855,7 @@ usa_unit_edits = {
         "GameName": {
             "display": "ENGINEERS [DRAGON]",
         },
-        "CommandPoints": 50,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
@@ -892,8 +875,8 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_M16": 7,
-                "M47_DRAGON": 6,
+                "FM_M16": 11,
+                "M47_DRAGON": 8,
             },
             "equipmentchanges": {
                 "replace": [("M47_DRAGON", "M47_DRAGON_II")],
@@ -915,6 +898,9 @@ usa_unit_edits = {
     },
 
     "Airborne_MP_US": {
+        "GameName": {
+            "display": "AIRBORNE MP PATROL",
+        },
         "CommandPoints": 20,
         "armor": "Infantry_armor_reference",
         "availability": [0, 12, 9, 0],
@@ -925,6 +911,9 @@ usa_unit_edits = {
     },
 
     "MP_US": {
+        "GameName": {
+            "display": "MP PATROL",
+        },
         "CommandPoints": 20,
         "armor": "Infantry_armor_reference",
         "availability": [0, 12, 9, 0],
@@ -940,7 +929,7 @@ usa_unit_edits = {
                 },
             },
             "Salves": {
-                "FM_M16": 7,
+                "FM_M16": 11,
             },
         },
     },
@@ -958,7 +947,7 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_M16": 7,
+                "FM_M16": 11,
             },
         },
     },
@@ -976,33 +965,42 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_M16": 7,
-                "RocketInf_M67_RCL_90mm": 6,
+                "FM_M16": 11,
+                "RocketInf_M67_RCL_90mm": 8,
             },
         },
     },
 
     "Rifles_HMG_US": { # GUNNERS
+        "GameName": {
+            "display": "GUNNERS",
+        },
         "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_light'"],
+            "add_specs": ["'infantry_equip_medium'"],
         },
     },
 
     "Airborne_HMG_US": {  # AIRBORNE GUNNERS
+        "GameName": {
+            "display": "AIRBORNE GUNNERS",
+        },
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "availability": [0, 7, 5, 0],
         "max_speed": 26,
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_light'"],
+            "add_specs": ["'infantry_equip_medium'"],
         },
     },
 
     "AeroRifles_US": {  # AIR CAV TROOPERS
+        "GameName": {
+            "display": "AIR CAV TROOPERS",
+        },
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
@@ -1013,6 +1011,9 @@ usa_unit_edits = {
     },
 
     "Rifles_Cavalry_US": {  # DISMOUNT TROOPERS WIP
+        "GameName": {
+            "display": "DISMOUNT. TROOPERS",
+        },
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "availability": [12, 9, 0, 0],
@@ -1024,7 +1025,7 @@ usa_unit_edits = {
         #     "remove": ["US_11ACR"],
         # },
         "Salves": {
-            "FM_M16": 9,
+            "FM_M16": 11,
             "SAW_M249_5_56mm": 30,
             "RocketInf_AT4_83mm": 4,
         },
@@ -1034,7 +1035,7 @@ usa_unit_edits = {
         "GameName": {
             "display": "MECH. RIFLES [DRAGON]",
         },
-        "CommandPoints": 45,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 20,
@@ -1043,7 +1044,7 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_M16": 7,
+                "FM_M16": 11,
             },
         },
     },
@@ -1057,7 +1058,18 @@ usa_unit_edits = {
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_light'"],
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "animate": {
+                    "MMG_inf_M240B_7_62mm": False,
+                },
+                "quantity": {
+                    "FM_M16": 6,
+                    "MMG_inf_M240B_7_62mm": 2,
+                },
+            },
         },
     },
 
@@ -1110,22 +1122,30 @@ usa_unit_edits = {
             "add_specs": ["'infantry_equip_medium'"],
         },
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [
+                    ("MMG_WA_M60E3_7_62mm", "MMG_inf_M240B_7_62mm", "MMG_M60_7_62mm", "MMG_inf_M240B_7_62mm"),
+                ]
+            },
             "Salves": {
-                "FM_M16": 9,
+                "FM_M16": 11,
                 "SAW_M249_5_56mm": 30,
-                "MMG_WA_M60E3_7_62mm": 30,
+                "MMG_inf_M240B_7_62mm": 36,
                 "RocketInf_AT4_83mm": 4,
             },
         },
     },
 
     "Ranger_US": {
-        "CommandPoints": 65,
+        "GameName": {
+            "display": "RANGERS",
+        },
+        "CommandPoints": 60,
         "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_light'"],
+            "add_specs": ["'infantry_equip_medium'"],
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -1145,7 +1165,7 @@ usa_unit_edits = {
         "GameName": {
             "display": "RANGERS [DRAGON]",
         },
-        "CommandPoints": 70,
+        "CommandPoints": 65,
         "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "max_speed": 20,
@@ -1157,7 +1177,7 @@ usa_unit_edits = {
                 "replace": [("Commando_733", "M16A1_Carbine")],
             },
             "Salves": {
-                "M16A1_Carbine": 7,
+                "M16A1_Carbine": 11,
             },
         },
     },
@@ -1172,6 +1192,9 @@ usa_unit_edits = {
     },
 
     "Airborne_US": {
+        "GameName": {
+            "display": "AIRBORNE",
+        },
         "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "Divisions": {
@@ -1186,7 +1209,7 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_M16": 9,
+                "FM_M16": 11,
                 "MMG_inf_M240B_7_62mm": 36,
                 "RocketInf_AT4_83mm": 6,
             },
@@ -1223,7 +1246,7 @@ usa_unit_edits = {
             "Salves": {
                 "FM_M16": 11,
                 "SAW_M249_5_56mm": 23,
-                "RocketInf_AT4_83mm": 6,
+                "RocketInf_AT4_83mm": 4,
             },
         },
     },
@@ -1265,6 +1288,9 @@ usa_unit_edits = {
     },
 
     "AeroRifles_AB_US": {
+        "GameName": {
+            "display": "AERO-RIFLES",
+        },
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "Divisions": {
@@ -1330,7 +1356,7 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_M16": 9,
+                "FM_M16": 11,
                 "SAW_M249_5_56mm": 30,
                 "RocketInf_AT4_83mm": 4,
             },
@@ -1350,7 +1376,7 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_M16": 9,
+                "FM_M16": 11,
                 "SAW_M249_5_56mm": 30,
                 "RocketInf_AT4_83mm": 9,
             },
@@ -1381,7 +1407,7 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_M16": 7,
+                "FM_M16": 11,
                 "SAW_M249_5_56mm": 30,
                 "MMG_WA_M60E3_7_62mm": 30,
                 "M47_DRAGON_II": 4,
@@ -1478,7 +1504,7 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_M16": 7,
+                "FM_M16": 11,
                 "SAW_M249_5_56mm": 30,
                 "M47_DRAGON_II": 4,
             },
@@ -1609,6 +1635,9 @@ usa_unit_edits = {
     },
     
     "HMGteam_Mk19_US": {
+        "GameName": {
+            "display": "Mk.19 40mm",
+        },
         "is_standard": (True, "40mm_Mk19_Team"), 
         "CommandPoints": 30,
         "strength": 5,
@@ -1619,6 +1648,9 @@ usa_unit_edits = {
     },
     
     "HMGteam_Mk19_AB_US": {
+        "GameName": {
+            "display": "AB Mk.19 40mm",
+        },
         "is_standard": (True, "Para_40mm_Mk19_Team"), 
         "CommandPoints": 30,
         "strength": 5,
@@ -1629,6 +1661,9 @@ usa_unit_edits = {
     },
 
     "ATteam_ITOW_US": {
+        "GameName": {
+            "display": "I-TOW",
+        },
         "CommandPoints": 60,
         "availability": [6, 4, 0, 0],
         "max_speed": 14,
@@ -1638,6 +1673,9 @@ usa_unit_edits = {
     },
 
     "ATteam_TOW2_US": {
+        "GameName": {
+            "display": "TOW-2",
+        },
         "CommandPoints": 75,
         "availability": [4, 3, 0, 0],
         "max_speed": 14,
@@ -1661,6 +1699,9 @@ usa_unit_edits = {
     },
 
     "ATteam_TOW2_para_US": {
+        "GameName": {
+            "display": "AB TOW-2",
+        },
         "CommandPoints": 75,
         "Divisions": {
             "default": {
@@ -2374,6 +2415,9 @@ usa_unit_edits = {
     },
 
     "Airborne_Scout_US": {
+        "GameName": {
+            "display": "#RECO2 AIRBORNE SCOUTS",
+        },
         "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "availability": [0, 7, 5, 0],
@@ -2383,12 +2427,15 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_M16": 9,
+                "FM_M16": 11,
             },
         },
     },
 
     "Scout_US": {
+        "GameName": {
+            "display": "#RECO2 SCOUTS",
+        },
         "CommandPoints": 20,
         "armor": "Infantry_armor_reference",
         "availability": [8, 6, 0, 0],
@@ -2419,12 +2466,6 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
-        "WeaponAssignment": [
-                (0, [1, ]),
-                (1, [0, ]),
-                (2, [0, ]),
-                (3, [0, 2, ]),
-            ],
         "WeaponDescriptor": {
             "Salves": {
                 "FM_M16": 11,
@@ -2459,6 +2500,9 @@ usa_unit_edits = {
     },
 
     "LRRP_US": {
+        "GameName": {
+            "display": "#RECO2 LRS",
+        },
         "CommandPoints": 70,
         "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
@@ -2485,7 +2529,7 @@ usa_unit_edits = {
                     ("RocketInf_M72A1_LAW_66mm", "RocketInf_M72A3_LAW_66mm"),
                 ],
                 "Salves": {
-                    "Commando_733": 11,
+                    "M16A1_Carbine": 11,
                 },
             },
         },
@@ -2542,7 +2586,7 @@ usa_unit_edits = {
                 "replace": [("FM_M16", "FM_M16_noreflex")],
             },
             "Salves": {
-                "FM_M16": 7,
+                "FM_M16": 11,
                 "MANPAD_FIM92": 6,
             },
         },
@@ -2574,7 +2618,7 @@ usa_unit_edits = {
                 "replace": [("FM_M16", "FM_M16_noreflex")],
             },
             "Salves": {
-                "FM_M16": 7,
+                "FM_M16": 11,
                 "MANPAD_FIM92": 6,
             },
         },
