@@ -24,22 +24,30 @@ def build_deck_pack_mappings(mod_source_path: Path) -> Dict[str, Dict[str, str]]
     unit_edits = load_unit_edits()
     # unit_edits.update(supply_unit_edits)
 
-    # Build two separate types of mappings
+    # Build three separate types of mappings
     deck_pack_modifications = {}  # For modifying DeckPacks.ndf (only XP/number changes)
     reference_mappings = {}  # For updating Decks.ndf references (donor -> new unit)
+    new_command_unit_deck_packs = {}  # For creating new deck packs in DeckPacks.ndf
 
     # Process existing unit edits - only XP/number changes, never unit name changes
     _build_unit_edit_mappings_from_structured_data(unit_edits, deck_pack_data, deck_pack_modifications)
 
-    # Process new command units - only for reference replacement
+    # Process new command units - reference replacement AND new deck pack creation
     _build_command_unit_reference_mappings(deck_pack_data, reference_mappings)
+    _build_new_command_unit_deck_packs(deck_pack_data, new_command_unit_deck_packs)
 
     logger.info(
-        f"Built {len(deck_pack_modifications)} deck pack modifications and {len(reference_mappings)} reference mappings"
+        f"Built {len(deck_pack_modifications)} deck pack modifications, "
+        f"{len(reference_mappings)} reference mappings, and "
+        f"{len(new_command_unit_deck_packs)} new command unit deck packs"
     )
 
     # Return separated mappings
-    return {"deck_pack_modifications": deck_pack_modifications, "reference_mappings": reference_mappings}
+    return {
+        "deck_pack_modifications": deck_pack_modifications,
+        "reference_mappings": reference_mappings,
+        "new_command_unit_deck_packs": new_command_unit_deck_packs,
+    }
 
 
 def build_deck_pack_data(mod_source_path: Path) -> Dict[str, Any]:
@@ -121,49 +129,67 @@ def _parse_deck_pack_data(mod_source_path: Path) -> Dict[str, Any]:
             try:
                 number = int(parts[-1])
                 xp = int(parts[-2])
-                unit_with_possible_transport = "_".join(parts[3:-2])
 
-                # Find the base unit name
+                # Check if this deck pack has a Transport member (most reliable way to detect transport variants)
+                transport_member = deck_pack.v.by_m("Transport", False)
+                is_transport_variant = transport_member is not None and transport_member.v is not None
+
+                # Extract base unit name from Unit member if available, otherwise fall back to namespace parsing
                 base_unit = None
-                is_transport_variant = False
+                unit_member = deck_pack.v.by_m("Unit", False)
+                if unit_member and unit_member.v:
+                    # Extract unit name from Unit member: $/GFX/Unit/Descriptor_Unit_{unit_name}
+                    unit_ref = str(unit_member.v)
+                    if "Descriptor_Unit_" in unit_ref:
+                        base_unit = unit_ref.split("Descriptor_Unit_")[-1]
 
-                for unit_name in base_unit_names:
-                    if unit_with_possible_transport == unit_name:
-                        # Exact match - simple deck pack
-                        base_unit = unit_name
-                        is_transport_variant = False
-                        break
-                    elif unit_with_possible_transport.startswith(unit_name + "_"):
-                        # Transport variant - base unit plus transport name
-                        base_unit = unit_name
-                        is_transport_variant = True
-                        break
+                # Fallback: If we couldn't get base unit from Unit member, parse from namespace
+                if base_unit is None:
+                    logger.warning(f"No base unit found for {namespace}, trying to parse from namespace")
+                    unit_with_possible_transport = "_".join(parts[3:-2])
+                    
+                    # Try to match against known units from unit_edits
+                    for unit_name in base_unit_names:
+                        if unit_with_possible_transport == unit_name:
+                            # Exact match - simple deck pack
+                            base_unit = unit_name
+                            break
+                        elif unit_with_possible_transport.startswith(unit_name + "_"):
+                            # Transport variant - base unit plus transport name
+                            base_unit = unit_name
+                            break
+                    
+                    # If still no match, use the full string as base unit
+                    if base_unit is None:
+                        base_unit = unit_with_possible_transport
 
-                if base_unit:
-                    # Initialize base unit entry if not exists
-                    if base_unit not in data["base_units"]:
-                        data["base_units"][base_unit] = {
-                            "simple_packs": [],
-                            "transport_packs": [],
-                            "number_xp_combinations": {},
-                        }
+                # Initialize base unit entry if not exists
+                if base_unit not in data["base_units"]:
+                    data["base_units"][base_unit] = {
+                        "simple_packs": [],
+                        "transport_packs": [],
+                        "number_xp_combinations": {},
+                    }
 
-                    unit_data = data["base_units"][base_unit]
+                unit_data = data["base_units"][base_unit]
 
-                    # Categorize by transport vs simple
-                    if is_transport_variant:
-                        unit_data["transport_packs"].append(namespace)
-                    else:
-                        unit_data["simple_packs"].append(namespace)
+                # Categorize by transport vs simple based on Transport member presence
+                if is_transport_variant:
+                    unit_data["transport_packs"].append(namespace)
+                else:
+                    unit_data["simple_packs"].append(namespace)
 
-                    # Track (number, xp) combinations for the base unit
-                    if number not in unit_data["number_xp_combinations"]:
-                        unit_data["number_xp_combinations"][number] = []
-                    if xp not in unit_data["number_xp_combinations"][number]:
-                        unit_data["number_xp_combinations"][number].append(xp)
+                # Track (number, xp) combinations for the base unit
+                if number not in unit_data["number_xp_combinations"]:
+                    unit_data["number_xp_combinations"][number] = []
+                if xp not in unit_data["number_xp_combinations"][number]:
+                    unit_data["number_xp_combinations"][number].append(xp)
 
             except (ValueError, IndexError) as e:
                 logger.warning(f"Failed to parse deck pack namespace {namespace}: {e}")
+                continue
+            except Exception as e:
+                logger.warning(f"Error processing deck pack {namespace}: {e}")
                 continue
 
         # Sort XP levels for each combination
@@ -196,6 +222,7 @@ def _build_unit_edit_mappings_from_structured_data(
 
         # Process deck packs grouped by Number (like the old logic)
         # Group all packs (simple + transport) by their Number value
+        # Skip packs with Number = 999 (different game mode)
         number_groups = {}  # number -> [namespaces]
         all_unit_packs = unit_data["simple_packs"] + unit_data["transport_packs"]
 
@@ -204,6 +231,9 @@ def _build_unit_edit_mappings_from_structured_data(
             if len(parts) >= 4:
                 try:
                     number = int(parts[-1])
+                    # Skip packs with Number = 999 (different game mode)
+                    if number == 999:
+                        continue
                     if number not in number_groups:
                         number_groups[number] = []
                     number_groups[number].append(namespace)
@@ -229,16 +259,17 @@ def _build_unit_edit_mappings_from_structured_data(
                         continue
 
             # Smart mapping logic: find which XP levels to keep, update, and create
+            # Note: availability[xp] represents unit count per pack at that XP level, not pack count
             available_xp_set = set(available_xp_levels)
             existing_xp_set = set(existing_xp_levels)
 
             # Find which existing packs already match target XP levels (keep unchanged)
             packs_to_keep = available_xp_set.intersection(existing_xp_set)
 
-            # Find which existing packs need to be updated
+            # Find which existing packs need to be updated (XP levels where availability == 0)
             packs_to_update = existing_xp_set - available_xp_set
 
-            # Find which target XP levels need new packs
+            # Find which target XP levels need new packs (available XP levels with no existing packs)
             missing_xp_levels = sorted(available_xp_set - existing_xp_set)
 
             logger.debug(
@@ -258,6 +289,9 @@ def _build_unit_edit_mappings_from_structured_data(
                 target_xp = _find_best_target_xp(current_xp, available_xp_levels, missing_xp_list)
 
                 if target_xp is not None and target_xp != current_xp:
+                    # Get the Number (quantity) for the target XP level from availability
+                    target_number = availability[target_xp]
+                    
                     # Create mappings for all namespaces with this XP level
                     for namespace in namespaces_for_xp:
                         # Parse namespace and create mapping
@@ -265,8 +299,9 @@ def _build_unit_edit_mappings_from_structured_data(
                         unit_with_possible_transport = "_".join(parts[3:-2])
 
                         # Create mapping preserving the full namespace structure
+                        # Use target_number (from availability) instead of original number
                         old_namespace = namespace
-                        new_namespace = f"Descriptor_Deck_Pack_{unit_with_possible_transport}_{target_xp}_{number}"
+                        new_namespace = f"Descriptor_Deck_Pack_{unit_with_possible_transport}_{target_xp}_{target_number}"
                         mappings[old_namespace] = new_namespace
                         logger.debug(f"Created mapping: {old_namespace} -> {new_namespace}")
 
@@ -370,3 +405,81 @@ def _build_command_unit_reference_mappings(deck_pack_data: Dict[str, Any], mappi
                 continue
 
         logger.debug(f"Added reference mappings for new command unit {new_unit_name}")
+
+
+def _build_new_command_unit_deck_packs(deck_pack_data: Dict[str, Any], new_deck_packs: Dict[str, Dict[str, Any]]) -> None:
+    """Build precomputed data for creating new command unit deck packs in DeckPacks.ndf.
+    
+    Args:
+        deck_pack_data: Precomputed deck pack data
+        new_deck_packs: Dictionary to populate with new deck pack creation data
+            Format: {
+                "new_namespace": {
+                    "donor_template": "donor_namespace",
+                    "new_unit_name": "unit_name",
+                    "xp": xp_level,
+                    "number": number
+                }
+            }
+    """
+    for donor, edits in NEW_UNITS.items():
+        donor_name = donor[0]
+
+        # Only process command units
+        if "NewName" not in edits or "availability" not in edits:
+            continue
+
+        new_unit_name = edits["NewName"]
+        if "_CMD2_" not in new_unit_name:
+            continue
+
+        # Skip if donor has no existing deck packs
+        if donor_name not in deck_pack_data["base_units"]:
+            continue
+
+        availability = edits["availability"]
+
+        # Find all available XP levels for the new command unit
+        available_xp_levels = []
+        for i, avail in enumerate(availability):
+            if avail > 0:
+                available_xp_levels.append(i)
+
+        if not available_xp_levels:
+            continue
+
+        # Get donor deck pack data
+        donor_data = deck_pack_data["base_units"][donor_name]
+        all_donor_packs = donor_data["simple_packs"] + donor_data["transport_packs"]
+
+        # For each donor pack, create new packs for all available XP levels
+        for donor_namespace in all_donor_packs:
+            # Parse donor namespace
+            parts = donor_namespace.split("_")
+            if len(parts) < 4:
+                continue
+
+            try:
+                number = int(parts[-1])
+                donor_xp = int(parts[-2])
+                donor_unit_part = "_".join(parts[3:-2])
+                
+                # Replace donor name with new unit name
+                new_unit_part = donor_unit_part.replace(donor_name, new_unit_name, 1)
+
+                # Create new deck packs for all available XP levels
+                for create_xp in available_xp_levels:
+                    new_namespace = f"Descriptor_Deck_Pack_{new_unit_part}_{create_xp}_{number}"
+                    
+                    # Store precomputed data for creating this deck pack
+                    new_deck_packs[new_namespace] = {
+                        "donor_template": donor_namespace,
+                        "new_unit_name": new_unit_name,
+                        "xp": create_xp,
+                        "number": number,
+                    }
+
+            except (ValueError, IndexError):
+                continue
+
+        logger.debug(f"Precomputed {len([k for k in new_deck_packs.keys() if new_unit_name in k])} new deck packs for command unit {new_unit_name}")

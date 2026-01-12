@@ -7,6 +7,18 @@ WeaponKey = Tuple[str, str, Optional[str], bool]  # (weapon, category, donor, is
 
 # fmt: off
 weapons: Dict[WeaponKey, WeaponData] = {
+    
+    ("DCA_4_canon_ZPU4_towed_14_5mm", "DCA", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "MaximumRangeGRU": 1400,
+                "MaximumRangeHelicopterGRU": 1925,
+                "MaximumRangeAirplaneGRU": 1575,
+                "AimingTime": 1.2,
+            },
+        },
+    },
+    
     ("DCA_4_canons_AZP_23_Amur_23mm_late", "DCA", None, False): {
         "Ammunition": {
             "hit_roll": {
@@ -117,7 +129,21 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeHelicopterGRU": 2625,
                 "MaximumRangeAirplaneGRU": 2450,
                 "TimeBetweenTwoSalvos": 1.8,
-                "SupplyCost": 4.0,
+                "SupplyCost": 8.0,
+            },
+        },
+    },
+    
+    ("DCA_2_canons_S60_57mm", "DCA", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "TimeBetweenTwoShots": 0.4,
+                "TimeBetweenTwoFx": 0.4,
+                "MaximumRangeGRU": 1575,
+                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 2450,
+                "TimeBetweenTwoSalvos": 2.0,
+                "SupplyCost": 16.0,
             },
         },
     },

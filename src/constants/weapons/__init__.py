@@ -27,7 +27,7 @@ from .damage_values import (
 from .missiles import raw_missiles
 from .mounted_weapons import mounted_weapons
 from .salvo_standards import LIGHT_AT_AMMO
-from .weapon_descriptions import WEAPON_DESCRIPTIONS, WEAPON_TRAITS
+from .weapon_descriptions import WEAPON_DESCRIPTIONS, WEAPON_TRAIT_EDITS
 from .vanilla_inst_modifications import (
     AMMUNITION_MISSILES_REMOVALS,
     AMMUNITION_MISSILES_RENAMES,
@@ -56,7 +56,7 @@ __all__ = [
     'SNIPER_DAMAGE',
     'LIGHT_AT_AMMO',
     'WEAPON_DESCRIPTIONS',
-    'WEAPON_TRAITS',
+    'WEAPON_TRAIT_EDITS',
     'ammunitions',
     'PGB_BOMB_DAMAGE',
     'MANPAD_HAGRU_DAMAGE',

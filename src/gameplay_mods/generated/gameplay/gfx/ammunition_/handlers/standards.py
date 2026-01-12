@@ -132,6 +132,7 @@ def apply_bomb_damage_standards(source_path, logger):
         "1250": ["KAB_1500"],
     }
 
+    # TODO: String matching is not reliable long term, we should set this in ammo edits instead
     for ammo_descr in source_path:
         ammo_name = ammo_descr.namespace
         # name_hash = ammo_descr.v.by_m("Name")
@@ -161,9 +162,10 @@ def apply_he_damage_standards(source_path, logger):
     """Apply HE (PhysicalDamages) standards in Ammunition.ndf"""
     
     damage_map = {
-        "'BMQJOXODMC'": "1.25",  # 105mm
-        "'DYWXTLDKWR'": "1.5",   # 120mm
-        "'GPFACVPVNW'": "1.6",   # 125mm
+        "'BMQJOXODMC'": 1.25,  # 105mm
+        "'PTAGBRTCDY'": 1.4,   # 115mm
+        "'DYWXTLDKWR'": 1.5,   # 120mm
+        "'GPFACVPVNW'": 1.6,   # 125mm
     }
     
     exceptions = [
@@ -194,5 +196,5 @@ def apply_he_damage_standards(source_path, logger):
         
         caliber_membr = ammo_descr.v.by_m("Caliber").v
         if caliber_membr in damage_map:
-            ammo_descr.v.by_m("PhysicalDamages").v = damage_map[caliber_membr]
+            ammo_descr.v.by_m("PhysicalDamages").v = str(damage_map[caliber_membr])
             logger.info(f"Changed {namespace} HE damage to {damage_map[caliber_membr]}")

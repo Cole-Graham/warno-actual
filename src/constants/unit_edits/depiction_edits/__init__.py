@@ -9,6 +9,7 @@ from .POL_depiction_edits import (
 )
 from .RDA_depiction_edits import (
     mi_24p_s8_at_ddr,
+    mi_24p_s8_at2_ddr,
 )
 # from .RFA_depiction_edits import ()
 from .SOV_depiction_edits import (
@@ -44,6 +45,7 @@ __all__ = [
     
     # RDA
     "mi_24p_s8_at_ddr",
+    "mi_24p_s8_at2_ddr",
     
     # SOV
     "mi_8tv_gunship_sov",

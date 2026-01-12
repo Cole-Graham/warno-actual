@@ -2,13 +2,14 @@ rfa_unit_edits = {
     # RFA LOG
     "Iltis_RFA": {
         "CommandPoints": 145,
-        "availability": [0, 3, 0, 0],
+        "availability": [0, 4, 0, 0],
         "Divisions": {
             "default": {
-                "cards": 2,
+                "cards": 1,
             },
         },
     },
+    
     "DCA_FK20_2_20mm_Zwillinge_RFA": {  # FK-20-2 Zwillinge
         "CommandPoints": 20,
         "Factory": "EFactory/Logistic",
@@ -28,6 +29,7 @@ rfa_unit_edits = {
         },
         "UpgradeFromUnit": "FOB_RFA",
     },
+    
     # RFA INF
     "Panzergrenadier_CMD_RFA": {  # #CMD Fs-JÄGER FÜH.
         "CommandPoints": 45,
@@ -79,6 +81,7 @@ rfa_unit_edits = {
         "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
+    
     "Fallschirmjager_CMD_RFA": {  # #CMD Fs-JÄGER FÜH.
         "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
@@ -119,6 +122,7 @@ rfa_unit_edits = {
         "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
+    
     "Jager_CMD_RFA": {  # #CMD JÄGER FÜH.
         "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
@@ -157,6 +161,7 @@ rfa_unit_edits = {
         "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
+    
     "Engineers_CMD_RFA": {  # #CMD PIONIER FÜH.
         "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
@@ -199,6 +204,7 @@ rfa_unit_edits = {
         "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
+    
     "Panzergrenadier_IFV_RFA": {  # PZ.GRENADIER
         "armor": "Infantry_armor_reference",
         "GameName": {"display": "PANZERGRENADIER"},
@@ -217,9 +223,12 @@ rfa_unit_edits = {
             "add_specs": ["'infantry_equip_medium'"],
         },
     },
+    
     "HeimatschutzJager_RFA": {  # HEIMAT-JAGER
         "armor": "Infantry_armor_reference",
-        "GameName": {"display": "HEIMATJÄGER"},
+        "GameName": {
+            "display": "HEIMATJÄGER"
+        },
         "CommandPoints": 30,
         "Divisions": {
             "default": {
@@ -232,18 +241,21 @@ rfa_unit_edits = {
             "add_specs": ["'infantry_equip_medium'"],
         },
     },
+    
     "Engineers_AT_RFA": {  # PIONIER (CarlG)
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "PIONIER [CG]"
         },
     },
+    
     "Panzergrenadier_APC_RFA": {  # PZ.GRENADIER (M113)
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "PANZERGRENADIER [M113]"
         },
     },
+    
     "Fallschirm_RFA": {  # Fs-JÄGER
         "armor": "Infantry_armor_reference",
         "GameName": {
@@ -251,18 +263,21 @@ rfa_unit_edits = {
         },
         "UpgradeFromUnit": "Fallschirmjager_CMD_RFA",
     },
+    
     "Jager_RFA": {  # JÄGER (PzF)
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "JÄGER [PzF]"
         },
     },
+    
     "PzGrenadier_RFA": {  # PZ.GRENADIER (CarlG)
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "PANZERGRENADIER [CG]"
         },
     },
+    
     "ATteam_Milan_1_RFA": {
         "CommandPoints": 30,
         "max_speed": 20,
@@ -271,6 +286,7 @@ rfa_unit_edits = {
         },
         "availability": [9, 7, 5, 0],
     },
+    
     "ATteam_Milan_2_RFA": {
         "CommandPoints": 45,
         "max_speed": 20,
@@ -279,6 +295,7 @@ rfa_unit_edits = {
         },
         "availability": [6, 4, 0, 0],
     },
+    
     "ATteam_Milan_2_para_RFA": {
         "CommandPoints": 45,
         "max_speed": 20,
@@ -287,6 +304,7 @@ rfa_unit_edits = {
         },
         "availability": [6, 4, 0, 0],
     },
+    
     "HMGteam_MG3_RFA": {  # MG-3 7,62mm
         "CommandPoints": "HMGteam_M60_US",
         "GameName": {
@@ -298,6 +316,7 @@ rfa_unit_edits = {
             "add_specs": "HMGteam_M60_US",
         },
     },
+    
     "HMGteam_MG3_FJ_RFA": {  # Fs-MG-3 7,62mm
         "CommandPoints": "HMGteam_M60_AB_US",
         "GameName": {
@@ -309,6 +328,7 @@ rfa_unit_edits = {
             "add_specs": "HMGteam_M60_AB_US",
         },
     },
+    
     # trsp
     "Unimog_trans_RFA": {
         "CommandPoints": 15,
@@ -316,18 +336,21 @@ rfa_unit_edits = {
             "add_specs": ["'refundable_unit'",],
         },
     },
+    
     "Iltis_trans_RFA": {
         "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'",],
         },
     },
+    
     "MAN_Kat_6x6_trans_RFA": {
         "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'",],
         },
     },
+    
     # RFA ARTY
     "M577_RFA": {
         "CommandPoints": 60,
@@ -362,23 +385,28 @@ rfa_unit_edits = {
         "availability": [0, 2, 0, 0],
         "remove_zone_capture": None,
     },
+    
     "M113_PzMorser_RFA": {
         "GameName": {"display": "PzMrs M113A1G"},
         "CommandPoints": 75,
         "availability": [4, 3, 0, 0],
     },
+    
     "Mortier_Tampella_120mm_RFA": {
         "GameName": {"display": "TAMPELLA 120mm"},
     },
+    
     "M109A3G_HOWZ_RFA": {
         "CommandPoints": 190,
         "availability": [3, 2, 0, 0],
     },
+    
     # RFA TANK
     "Jaguar_2_RFA": {
         "CommandPoints": 75,
         "availability": [6, 4, 0, 0],
     },
+    
     "Leopard_1A1_RFA": {
         "CommandPoints": 80,
         "availability": [10, 7, 0, 0],
@@ -388,6 +416,7 @@ rfa_unit_edits = {
         #     },
         # },
     },
+    
     "Leopard_1A5_RFA": {
         "CommandPoints": 105,
         "availability": [10, 7, 0, 0],
@@ -397,12 +426,14 @@ rfa_unit_edits = {
         #     },
         # },
     },
+    
     # trsp
     "TPZ_Fuchs_1_RFA": {
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'",],
         },
     },
+    
     "Marder_1A3_RFA": {
         "CommandPoints": 50,
         "WeaponDescriptor": {
@@ -411,6 +442,7 @@ rfa_unit_edits = {
             },
         },
     },
+    
     "Marder_1A3_MILAN_RFA": {
         "CommandPoints": 60,
         "WeaponDescriptor": {
@@ -428,6 +460,7 @@ rfa_unit_edits = {
             },
         },
     },
+    
     # RFA REC
     "BGS_RFA": {
         "armor": "Infantry_armor_reference",
@@ -441,23 +474,27 @@ rfa_unit_edits = {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
     },
+    
     "Fallschirmjager_Scout_RFA": {  # Fs-Jager aufk
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#RECO2 FJ AUFKLÄRER"
         },
     },
+    
     "Jager_Aufk_RFA": {  # JAGER AUFKL.
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#RECO2 JÄGER AUFKLÄRER"
         },
     },
+    
     "M113A1G_reco_RFA": {  # M113A1G AUFKL.
         "GameName": {
             "display": "#RECO1 M113A1G AufKl"
         },
     },
+    
     "M113_GreenArcher_RFA": {
         "CommandPoints": 30,
         # "optics": {
@@ -465,10 +502,12 @@ rfa_unit_edits = {
         # },
         "availability": [8, 0, 0, 0],
     },
+    
     "Bo_105_reco_RFA": {
         "CommandPoints": 30,
         "availability": [0, 4, 0, 0],
     },
+    
     # RFA AA
     "MANPAD_Redeye_RFA": {  # Fliegerfaust
         "CommandPoints": 20,

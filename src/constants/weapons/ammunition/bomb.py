@@ -15,6 +15,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("Bomb_ZB500_500kg_Napalm_salvolength6", "napalm_bomb", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "SupplyCost": 280.0,
+            },
+        },
+    },
+    
     ("Bomb_Matra_400kg_salvolength4", "he_bomb", None, False): {
         "Ammunition": {
             "parent_membr": {
@@ -176,8 +184,16 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("Bomb_FAB_500kg_salvolength8", "he_bomb", None, False): { # 58
+        "Ammunition": {
+            "parent_membr": {
+                "SupplyCost": 540.0,
+            },
+        },
+    },
 
-    ("Bomb_FAB_500kg_salvolength6", "napalm_bomb", None, False): { # 58
+    ("Bomb_FAB_500kg_salvolength6", "he_bomb", None, False): { # 58
         "Ammunition": {
             "parent_membr": {
                 "SupplyCost": 450.0,
@@ -185,7 +201,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("Bomb_FAB_500kg_salvolength4", "napalm_bomb", None, False): { # 57
+    ("Bomb_FAB_500kg_salvolength4", "he_bomb", None, False): { # 57
         "Ammunition": {
             "parent_membr": {
                 "SupplyCost": 360.0,
@@ -193,7 +209,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("Bomb_FAB_250kg_salvolength4", "napalm_bomb", None, False): { # 54
+    ("Bomb_FAB_250kg_salvolength4", "he_bomb", None, False): { # 54
         "Ammunition": {
             "parent_membr": {
                 "SupplyCost": 280.0,

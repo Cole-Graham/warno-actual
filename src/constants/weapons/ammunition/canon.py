@@ -47,6 +47,42 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("Canon_HEAT_85mm_S53", "canon", "Canon_AP_85mm_S53", True): { # T-34 3BK-2
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_ap_missile",
+                "Index": 13,
+            },
+            "hit_roll": {
+                "Idling": 45,
+            },
+            "parent_membr": {
+                "Caliber": ("85mm HEAT", "IWLOKTOKDR"),
+                "TraitsToken": ['HE', 'HEAT'],
+                "MaximumRangeGRU": 1750,
+                "DamageTypeEvolutionOverRangeDescriptor": "nil"
+            },
+        },
+    },
+    
+    ("Canon_HEAT2_85mm_S53", "canon", "Canon_AP_85mm_S53", True): { # T-34 3BK-2M
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_ap_missile",
+                "Index": 15,
+            },
+            "hit_roll": {
+                "Idling": 45,
+            },
+            "parent_membr": {
+                "Caliber": ("85mm HEAT", "IWLOKTOKDR"),
+                "TraitsToken": ['HE', 'HEAT'],
+                "MaximumRangeGRU": 1750,
+                "DamageTypeEvolutionOverRangeDescriptor": "nil"
+            },
+        },
+    },
 
     ("Canon_HEAT_152mm_Sheridan", "canon", None, False): { # 239
         "Ammunition": {
@@ -109,14 +145,26 @@ weapons: Dict[WeaponKey, WeaponData] = {
     
     ("Canon_HE_76mm_D56T", "canon", None, False): {
         "Ammunition": {
-            "hit_roll": {
-                "Idling": 50,
-            },
             "parent_membr": {
-                "MaximumRangeGRU": 1400,
+                "MaximumRangeGRU": 1575,
                 "RadiusSplashPhysicalDamagesGRU": 31,
                 "RadiusSplashSuppressDamagesGRU": 55,
                 "SupplyCost": 8.0,
+            },
+        },
+    },
+    
+    ("Canon_HE_85mm_S53", "canon", None, False): { # T-34 3BK-2
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 45,
+            },
+            "parent_membr": {
+                "Caliber": ("85mm HEAT", "IWLOKTOKDR"),
+                "TraitsToken": ['HE'],
+                "MaximumRangeGRU": 1750,
+                "RadiusSplashPhysicalDamagesGRU": 38,
+                "RadiusSplashSuppressDamagesGRU": 55,
             },
         },
     },
@@ -148,6 +196,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeGRU": 875,
                 "PhysicalDamages": 3,
                 "AimingTime": 2.0,
+            },
+        },
+    },
+    
+    ("Canon_HE_115mm_U5TS_T62M", "canon", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 1.4,
             },
         },
     },
@@ -269,14 +325,11 @@ weapons: Dict[WeaponKey, WeaponData] = {
     
     ("Canon_AP_76mm_D56T", "canon", None, False): {
         "Ammunition": {
-            "hit_roll": {
-                "Idling": 50,
-            },
             "Arme": {
                 "Index": 15, # HEAT
             },
             "parent_membr": {
-                "MaximumRangeGRU": 1400,
+                "MaximumRangeGRU": 1575,
             },
         },
     },

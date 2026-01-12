@@ -28,15 +28,7 @@ POL_NEW_UNITS = {
             ],
         },
         "strength": 5,
-        # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
         # "Dangerousness": 12,
-        "WeaponAssignment": [
-            (0, [1]),
-            (1, [0]),
-            (2, [0]),
-            (3, [0, 3]),
-            (4, [0, 2]),
-        ],
         "WeaponDescriptor": {
             "Salves": {
                 "FM_kbk_AK": 11,
@@ -62,11 +54,6 @@ POL_NEW_UNITS = {
         ],
         "MenuIconTexture": "Texture_RTS_H_CMD_inf",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Inf",
-        "Decks": {
-            "packs": {
-                "rename": True, 
-            },
-        },
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -129,16 +116,11 @@ POL_NEW_UNITS = {
             ],
         },
         "Factory": "EFactory/Logistic",
-        "CommandPoints": 190,
+        "CommandPoints": 205,
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
             'leader_sov',
         ],
-        "Decks": {
-            "packs": {
-                "rename": True, 
-            },
-        },
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -188,17 +170,12 @@ POL_NEW_UNITS = {
             ],
         },
         "Factory": "EFactory/Logistic",
-        "CommandPoints": 235,
+        "CommandPoints": 255,
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
             'leader_sov',
             '_smoke_launcher',
         ],
-        "Decks": {
-            "packs": {
-                "rename": True, 
-            },
-        },
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -241,16 +218,11 @@ POL_NEW_UNITS = {
             ],
         },
         "Factory": "EFactory/Logistic",
-        "CommandPoints": 255,
+        "CommandPoints": 275,
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
             'leader_sov',
         ],
-        "Decks": {
-            "packs": {
-                "rename": True, 
-            },
-        },
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -294,17 +266,12 @@ POL_NEW_UNITS = {
             ],
         },
         "Factory": "EFactory/Logistic",
-        "CommandPoints": 285,
+        "CommandPoints": 310,
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
             'leader_sov',
             '_smoke_launcher',
         ],
-        "Decks": {
-            "packs": {
-                "rename": True, 
-            },
-        },
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -489,11 +456,6 @@ POL_NEW_UNITS = {
             'leader_sov',
             '_amphibie',
         ],
-        "Decks": {
-            "packs": {
-                "rename": True, 
-            },
-        },
         "Divisions": {
             "default": {
                 "cards": 2,

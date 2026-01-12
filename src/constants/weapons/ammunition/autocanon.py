@@ -931,6 +931,28 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("Pod_GUV_Gatling_7_62mm_12_7mm_x2", "autocannon", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 12,
+                "Moving": 8,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 1225,
+                "PhysicalDamages": 2.0,
+                "DisplaySalveAccuracy": False,
+                "AimingTime": 1.2,
+                "TimeBetweenTwoSalvos": 0.8,
+                "NbTirParSalves": 6,
+                "SupplyCost": 58.0,
+                "AffichageMunitionParSalve": 200,
+            },
+        },
+        "WeaponDescriptor": {
+            "Salves": 8,
+        },
+    },
+    
     ("Gatling_AP_M197_20mm", "autocannon", None, False): { # 311
         "Ammunition": {
             "hit_roll": {

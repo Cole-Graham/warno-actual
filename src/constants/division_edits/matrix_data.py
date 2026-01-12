@@ -21,6 +21,21 @@
 # of flexibility for the player because its rare to see a player consume an entire tab
 # of tanks in a single match. 
 
+# NEW MATRICES DIC IS WIP (we need an actual python dictionary for validation purposes)
+DIVISION_MATRICES_NEW = {
+    "US_3rd_Arm_multi": {
+        "EFactory/Art": [2, 3, 4, 5, 6],
+        "EFactory/DCA": [2, 2, 4, 4, 4],
+        "EFactory/Defense": [0],
+        "EFactory/Helis": [2, 2, 3, 4, 5],
+        "EFactory/Infantry": [2, 2, 2, 2, 2, 3, 4, 5],
+        "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 2, 3, 3],
+        "EFactory/Planes": [2, 2, 4, 5, 6, 8],
+        "EFactory/Recons": [2, 2, 2, 2, 3, 3, 4],
+        "EFactory/Tanks": [2, 2, 2, 2, 2, 2, 3, 3],
+    },
+}
+
 DIVISION_MATRICES = {
     "MatrixCostName_US_3rd_Arm_multi": (
         'MatrixCostName_US_3rd_Arm_multi is MAP'

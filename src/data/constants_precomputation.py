@@ -33,7 +33,8 @@ def build_constants_precomputation_data(config: Dict[str, Any], game_db: Dict[st
         Dict with deck_pack_mappings structure:
         {
             "deck_pack_modifications": {...},
-            "reference_mappings": {...}
+            "reference_mappings": {...},
+            "new_command_unit_deck_packs": {...}
         }
     """
     logger.info("Building constants precomputation data")
@@ -55,12 +56,17 @@ def build_constants_precomputation_data(config: Dict[str, Any], game_db: Dict[st
         logger.info(
             f"Constants precomputation data built and saved: "
             f"{len(mappings.get('deck_pack_modifications', {}))} modifications, "
-            f"{len(mappings.get('reference_mappings', {}))} references"
+            f"{len(mappings.get('reference_mappings', {}))} references, "
+            f"{len(mappings.get('new_command_unit_deck_packs', {}))} new command unit deck packs"
         )
         return mappings
     except Exception as e:
         logger.error(f"Failed to build constants precomputation data: {e}", exc_info=True)
-        return {"deck_pack_modifications": {}, "reference_mappings": {}}
+        return {
+            "deck_pack_modifications": {},
+            "reference_mappings": {},
+            "new_command_unit_deck_packs": {},
+        }
 
 
 def load_constants_precomputation_data(config: Dict[str, Any]) -> Dict[str, Dict[str, str]]:
@@ -77,16 +83,27 @@ def load_constants_precomputation_data(config: Dict[str, Any]) -> Dict[str, Dict
     
     if not mappings_file.exists():
         logger.debug("Constants precomputation data not found, returning empty dict")
-        return {"deck_pack_modifications": {}, "reference_mappings": {}}
+        return {
+            "deck_pack_modifications": {},
+            "reference_mappings": {},
+            "new_command_unit_deck_packs": {},
+        }
     
     try:
         with open(mappings_file) as f:
             mappings = json.load(f)
         logger.debug("Loaded constants precomputation data from disk")
+        # Ensure all expected keys exist (for backward compatibility)
+        if "new_command_unit_deck_packs" not in mappings:
+            mappings["new_command_unit_deck_packs"] = {}
         return mappings
     except Exception as e:
         logger.error(f"Failed to load constants precomputation data: {e}")
-        return {"deck_pack_modifications": {}, "reference_mappings": {}}
+        return {
+            "deck_pack_modifications": {},
+            "reference_mappings": {},
+            "new_command_unit_deck_packs": {},
+        }
 
 
 def save_constants_precomputation_data(data: Dict[str, Dict[str, str]], config: Dict[str, Any]) -> None:

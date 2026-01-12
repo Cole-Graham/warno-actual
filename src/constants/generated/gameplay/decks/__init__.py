@@ -19,6 +19,7 @@ def load_deck_edits() -> Dict:
     
     # Dictionary name mapping
     dict_names = {
+        'FR_decks': 'fr_decks',
         'POL_decks': 'pol_decks',
         'RDA_decks': 'rda_decks',
         'SOV_decks': 'sov_decks',

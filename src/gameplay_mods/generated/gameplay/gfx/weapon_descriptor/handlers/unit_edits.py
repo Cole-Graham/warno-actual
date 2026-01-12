@@ -285,14 +285,6 @@ def _add_new_weapons(weapon_descr: Any, wd_edits: Dict, turret_templates: List[T
         # Check if weapon should use strength variant (indicates it's a small arm with caliber)
         if _should_use_strength_variant(weapon_name, game_db):
             return True
-        
-        # Also check if weapon has caliber in constants
-        for (ammo_name, category, _, _), data in ammos.items():
-            if ammo_name == weapon_name and category == "small_arms":
-                # Check if it has a caliber token in parent_membr
-                if "Ammunition" in data and "parent_membr" in data["Ammunition"]:
-                    if "Caliber" in data["Ammunition"]["parent_membr"]:
-                        return True
         return False
 
     def _apply_add_edits(turret_template, turret_index, weapon_name):
@@ -460,6 +452,7 @@ def _apply_turret_changes(weapon_descr: Any, turrets_edits: Dict, weapon_descr_d
     for turret_number, turret_edits in turrets_edits.items():
         if not isinstance(turret_number, int):
             continue
+        # TODO: Verify if turret_number needs to be 1-based indexing for some reason?
         turret_index = turret_number - 1
         if str(turret_index) not in turret_data:  # json keys are always strings
             logger.warning(f"Turret {turret_number} not found in database")

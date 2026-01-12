@@ -48,11 +48,6 @@ USA_NEW_UNITS = {
         ],
         "MenuIconTexture": "Texture_RTS_H_CMD_inf",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Inf",
-        "Decks": {
-            "packs": {
-                "rename": True, 
-            },
-        },
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -479,12 +474,7 @@ USA_NEW_UNITS = {
             ],
         },
         "Factory": "EFactory/Logistic",
-        "CommandPoints": 350,
-        "Decks": {
-            "packs": {
-                "rename": True, 
-            },
-        },
+        "CommandPoints": 355,
         "Divisions": {
             "default": {
                 "cards": 69,
@@ -529,12 +519,7 @@ USA_NEW_UNITS = {
             ],
         },
         "Factory": "EFactory/Logistic",
-        "CommandPoints": 325,
-        "Decks": {
-            "packs": {
-                "rename": True, 
-            },
-        },
+        "CommandPoints": 355,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -630,12 +615,7 @@ USA_NEW_UNITS = {
             ],
         },
         "Factory": "EFactory/Logistic",
-        "CommandPoints": 295,
-        "Decks": {
-            "packs": {
-                "rename": True, 
-            },
-        },
+        "CommandPoints": 320,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -685,12 +665,7 @@ USA_NEW_UNITS = {
             ],
         },
         "Factory": "EFactory/Logistic",
-        "CommandPoints": 280,
-        "Decks": {
-            "packs": {
-                "rename": True, 
-            },
-        },
+        "CommandPoints": 305,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -736,12 +711,7 @@ USA_NEW_UNITS = {
             ],
         },
         "Factory": "EFactory/Logistic",
-        "CommandPoints": 225,
-        "Decks": {
-            "packs": {
-                "rename": True, 
-            },
-        },
+        "CommandPoints": 245,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -787,12 +757,7 @@ USA_NEW_UNITS = {
             ],
         },
         "Factory": "EFactory/Logistic",
-        "CommandPoints": 220,
-        "Decks": {
-            "packs": {
-                "rename": True, 
-            },
-        },
+        "CommandPoints": 240,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -835,12 +800,7 @@ USA_NEW_UNITS = {
             ],
         },
         "Factory": "EFactory/Logistic",
-        "CommandPoints": 150,
-        "Decks": {
-            "packs": {
-                "rename": True, 
-            },
-        },
+        "CommandPoints": 170,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -849,7 +809,7 @@ USA_NEW_UNITS = {
                 "Transports": None,
             },
         },
-        "availability": [0, 0, 0, 3],
+        "availability": [0, 0, 3, 0],
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply',
@@ -884,11 +844,6 @@ USA_NEW_UNITS = {
         },
         "Factory": "EFactory/Logistic",
         "CommandPoints": 145,
-        "Decks": {
-            "packs": {
-                "rename": True, 
-            },
-        },
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -979,11 +934,6 @@ USA_NEW_UNITS = {
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },
-            },
-        },
-        "Decks": {
-            "packs": {
-                "rename": True, 
             },
         },
         "Divisions": {

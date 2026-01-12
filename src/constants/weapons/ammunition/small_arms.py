@@ -1626,6 +1626,33 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("Pod_GUV_AGS17_2x", "AGL", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 10,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 0.2,
+                "MaximumRangeGRU": 1225,
+                "DispersionAtMaxRangeGRU": 60,
+                "RadiusSplashPhysicalDamagesGRU": 22,
+                "PhysicalDamages": 0.50,
+                "RadiusSplashSuppressDamagesGRU": 42,
+                "SuppressDamages": 20.0,
+                "DisplaySalveAccuracy": False,
+                "AimingTime": 2.5,
+                "TimeBetweenTwoSalvos": 3.0,
+                "NbTirParSalves": 10,
+                "SupplyCost": 10.0,
+                "AffichageMunitionParSalve": 20,
+            },
+        },
+        "WeaponDescriptor": {
+            "Salves": 30,
+        },
+    },
+    
     ("HMG_team_12_7_mm_NSV_6U6", "small_arms", None, False): {
         "is_standard": (True, "DCA_12_7mm_HMG_Team"),
         "Ammunition": {
@@ -1821,6 +1848,15 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "Arme": {
                 "Family": "DamageFamily_12_7",
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 1225,
+                "PhysicalDamages": 0.20,
+                "SuppressDamages": 42,
+                "TimeBetweenTwoSalvos": 3.0,
+                "NbTirParSalves": 5,
+                "SupplyCost": 2.0,
+                "AffichageMunitionParSalve": 50,
             },
         },
     },
@@ -2114,7 +2150,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeGRU": 875,
                 "MaximumRangeHelicopterGRU": 700,
                 "PhysicalDamages": 0.06,
-                "SuppressDamages": 6,
+                "SuppressDamages": 8,
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.0,
                 "TimeBetweenTwoSalvos": 5.5,
@@ -2143,7 +2179,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeGRU": 875,
                 "MaximumRangeHelicopterGRU": 700,
                 "PhysicalDamages": 0.06,
-                "SuppressDamages": 6,
+                "SuppressDamages": 8,
                 "DisplaySalveAccuracy": False,
                 "TirReflexe": False,
                 "AimingTime": 1.0,

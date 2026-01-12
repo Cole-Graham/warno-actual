@@ -252,6 +252,17 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("Mortier_M43_82mm_TOWED", "mortar", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 1.8,
+                "SuppressDamages": 191,
+                "RadiusSplashPhysicalDamagesGRU": 82,
+                "RadiusSplashSuppressDamagesGRU": 109,
+            },
+        },
+    },
+    
     ("Howz_Canon_2A60_Howitzer_120mm_SMOKE", "mortar", None, False): { # 371
         "Ammunition": {
             "parent_membr": {

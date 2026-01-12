@@ -57,11 +57,6 @@ RDA_NEW_UNITS = {
         ],
         "MenuIconTexture": "Texture_RTS_H_CMD_inf",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Inf",
-        "Decks": {
-            "packs": {
-                "rename": True, 
-            },
-        },
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -118,11 +113,6 @@ RDA_NEW_UNITS = {
             '_amphibie',
             '_resolute',
         ],
-        "Decks": {
-            "packs": {
-                "rename": True, 
-            },
-        },
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -214,6 +204,58 @@ RDA_NEW_UNITS = {
         "depiction_type": "Towed",
         "alternatives_count": 2,
     },
+    
+    ("T54B_CMD_DDR", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "f7652424-a88a-41c5-837d-a0e25713c036",
+        "GroupeCombatGUID": "c0304787-17d4-4277-bc87-7bb405aa4876",
+        "ShowroomGUID": "04f02987-77e8-40de-a214-b0f6abf047b2",
+        "CadavreGUID": "2eb3afbb-2015-4f06-a410-a0d2e29f90eb",
+        "NewName": "T54B_CMD2_DDR",
+        "GameName": {
+            "token": "CRMEBWSIWS",
+            "display": "#CMD FüPz T-54AMK",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "Char_CMD",
+                "Commandant",
+                "GroundUnits",
+                "InfmapCommander",
+                "UNITE_T54B_CMD2_DDR",
+                "Unite",
+            ],
+        },
+        "Factory": "EFactory/Logistic",
+        "CommandPoints": 200,
+        "UnitRole": 'hq_tank',
+        "SpecialtiesList": [
+            'leader_sov',
+            '_resolute',
+        ],
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+            "RDA_KdA_Bezirk_Erfurt_multi": {
+                "Transports": None,
+            },
+        },
+        "availability": [0, 0, 2, 0],
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
+                   'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
+                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "DDR",
+    },
 
     ("T55A_CMD_DDR", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "257bde27-dc1e-4899-ab2f-c6edf9c4af76",
@@ -239,17 +281,12 @@ RDA_NEW_UNITS = {
             ],
         },
         "Factory": "EFactory/Logistic",
-        "CommandPoints": 190,
+        "CommandPoints": 205,
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
             'leader_sov',
             '_resolute',
         ],
-        "Decks": {
-            "packs": {
-                "rename": True, 
-            },
-        },
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -307,18 +344,13 @@ RDA_NEW_UNITS = {
             ],
         },
         "Factory": "EFactory/Logistic",
-        "CommandPoints": 265,
+        "CommandPoints": 290,
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
             'leader_sov',
             '_resolute',
             '_smoke_launcher',
         ],
-        "Decks": {
-            "packs": {
-                "rename": True, 
-            },
-        },
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -375,18 +407,13 @@ RDA_NEW_UNITS = {
             ],
         },
         "Factory": "EFactory/Logistic",
-        "CommandPoints": 285,
+        "CommandPoints": 310,
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
             'leader_sov',
             '_resolute',
             '_smoke_launcher',
         ],
-        # "Decks": {
-        #     "packs": {
-        #         "rename": True, 
-        #     },
-        # },
         # "Divisions": {
         #     "default": {
         #         "cards": 1,

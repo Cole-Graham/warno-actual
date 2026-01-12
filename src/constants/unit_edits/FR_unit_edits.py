@@ -16,6 +16,11 @@ fr_unit_edits = {
         "availability": [0, 4, 0, 0],
     },
     
+    "Auverland_PC_FR": {
+        "CommandPoints": 145,
+        "availability": [0, 4, 0, 0],
+    },
+    
     "VAB_CMD_FR": {
         "CommandPoints": 155,
         "strength": 10,
@@ -23,7 +28,7 @@ fr_unit_edits = {
     },
     
     "AMX_10_PC_CMD_FR": {
-        "CommandPoints": 160,
+        "CommandPoints": 175,
         "availability": [0, 0, 3, 0],
     },
     
@@ -472,7 +477,7 @@ fr_unit_edits = {
     
     # FR ARTILLERY
     "Mortier_MORT61_120mm_FR": {
-        "CommandPoints": 40,
+        "CommandPoints": 50,
         "availability": [5, 4, 3, 0]
     },
     "VAB_Mortar_81_FR": {

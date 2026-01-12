@@ -110,7 +110,7 @@ RFA_NEW_UNITS = {
         "CommandPoints": 145,
         "Divisions": {
             "default": {
-                "cards": 2,
+                "cards": 1,
             },
             "RFA_2_PzGrenadier_multi": {
                 "Transports": None,

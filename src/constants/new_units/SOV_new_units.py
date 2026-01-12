@@ -31,13 +31,6 @@ SOV_NEW_UNITS = {
         "strength": 5,
         # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
         "Dangerousness": 12,
-        "WeaponAssignment": [
-            (0, [1]),
-            (1, [0]),
-            (2, [0]),
-            (3, [0, 3]),
-            (4, [0, 2]),
-        ],
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 11,
@@ -69,11 +62,6 @@ SOV_NEW_UNITS = {
         ],
         "MenuIconTexture": "Texture_RTS_H_CMD_inf",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Inf",
-        "Decks": {
-            "packs": {
-                "rename": True, 
-            },
-        },
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -131,13 +119,6 @@ SOV_NEW_UNITS = {
         "strength": 5,
         # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
         "Dangerousness": 12,
-        "WeaponAssignment": [
-            (0, [1]),
-            (1, [0]),
-            (2, [0]),
-            (3, [0, 3]),
-            (4, [0, 2]),
-        ],
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 11,
@@ -189,6 +170,54 @@ SOV_NEW_UNITS = {
         "alternatives_count": 4,
         "selector_tactic": "02_04",
     },
+    
+    ("T62M_CMD_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "c2ac3a2f-1057-4ec9-9899-7f393b33ac82",
+        "GroupeCombatGUID": "0dc2bcb7-29cc-4d6c-9f71-f6db00824499",
+        "ShowroomGUID": "e6094770-c5e4-425c-971e-cc579665e64d",
+        "CadavreGUID": "5c2534eb-fcc8-4737-8f6f-b57d720d1313",
+        "NewName": "T62M_CMD2_SOV",
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "Char_CMD",
+                "Commandant",
+                "GroundUnits",
+                "InfmapCommander",
+                "UNITE_T62M_CMD2_SOV",
+                "Unite",
+            ],
+        },
+        "Factory": "EFactory/Logistic",
+        "CommandPoints": 265,
+        "UnitRole": 'hq_tank',
+        "SpecialtiesList": [
+            'leader_sov',
+            '_smoke_launcher',
+        ],
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+            "RDA_KdA_Bezirk_Erfurt_multi": {
+                "Transports": None,
+            },
+        },
+        "availability": [0, 0, 2, 0],
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
+                   'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
+                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply',
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "SOV",
+    },
 
     ("T80BV_CMD_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "7885fe97-44c5-4ec9-92ea-dea7d1335a23",
@@ -213,17 +242,13 @@ SOV_NEW_UNITS = {
         "armor": {
             "front": (18, None),
         },
-        "CommandPoints": 335,
+        "CommandPoints": 355,
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
             'leader_sov',
             '_smoke_launcher',
+            '_era',
         ],
-        "Decks": {
-            "packs": {
-                "rename": True, 
-            },
-        },
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -282,11 +307,6 @@ SOV_NEW_UNITS = {
             'leader_sov',
             '_amphibie',
         ],
-        "Decks": {
-            "packs": {
-                "rename": True, 
-            },
-        },
         "Divisions": {
             "default": {
                 "cards": 2,

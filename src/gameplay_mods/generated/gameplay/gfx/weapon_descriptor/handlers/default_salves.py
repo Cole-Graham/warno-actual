@@ -49,7 +49,8 @@ def apply_default_salves(source_path: Any, logger, game_db: Dict[str, Any], unit
 
             if skip_weapon_descr_ammo_name:
                 logger.debug(
-                    f"Skipping {ammo_name} for {weapon_descr_name} because it is replaced or " f"has custom salves."
+                    f"Skipping {ammo_name} for {weapon_descr_name} because it is replaced or "
+                    f"has custom salves."
                 )
                 continue
 

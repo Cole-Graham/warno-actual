@@ -78,7 +78,7 @@ usa_unit_edits = {
     },
 
     "M2A1_Bradley_Leader_US": {
-        "CommandPoints": 180,
+        "CommandPoints": 195,
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [
@@ -97,7 +97,7 @@ usa_unit_edits = {
     },
 
     "M2A2_Bradley_Leader_US": {
-        "CommandPoints": 180,
+        "CommandPoints": 195,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -1740,6 +1740,13 @@ usa_unit_edits = {
             "add_specs": ["'refundable_unit'",],
         },
     },
+    
+    "M1025_Humvee_MP_US": {
+        "CommandPoints": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+    },
 
     "M1038_Humvee_US": {
         "CommandPoints": 15,
@@ -2322,7 +2329,6 @@ usa_unit_edits = {
         },
         "SpecialtiesList": {
             "overwrite_all": [
-                'reco',
                 '_transport1',
                 '_ifv',
                 '_smoke_launcher',
@@ -2353,7 +2359,6 @@ usa_unit_edits = {
         },
         "SpecialtiesList": {
             "overwrite_all": [
-                'reco',
                 '_transport1',
                 '_ifv',
                 '_smoke_launcher',
@@ -2528,9 +2533,9 @@ usa_unit_edits = {
                     ("Commando_733", "M16A1_Carbine"),
                     ("RocketInf_M72A1_LAW_66mm", "RocketInf_M72A3_LAW_66mm"),
                 ],
-                "Salves": {
-                    "M16A1_Carbine": 11,
-                },
+            },
+            "Salves": {
+                "M16A1_Carbine": 11,
             },
         },
         "DeploymentShift": 0,

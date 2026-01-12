@@ -19,8 +19,23 @@ rda_unit_edits = {
         "availability": [0, 4, 0, 0],
     },
     
+    "PT76B_CMD_DDR": { # Too inexpensive to make a LDR., just changing to a CV
+        "CommandPoints": 170,
+        "Factory": "EFactory/Logistic",
+        "SpecialtiesList": {
+            "add_specs": ["'leader_sov'",],
+            "remove_specs": ["'_leader'"],
+        },
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 0, 3, 0],
+    },
+    
     "BMP_1_CMD_DDR": {
-        "CommandPoints": 145,
+        "CommandPoints": 170,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -30,12 +45,12 @@ rda_unit_edits = {
             "add_specs": ["'leader_sov'",],
             "remove_specs": ["'_leader'"],
         },
-        "availability": [0, 0, 2, 0],
+        "availability": [0, 0, 3, 0],
     },
 
     "BRDM_2_CMD_DDR": {
         "strength": 8,
-        "CommandPoints": 145,
+        "CommandPoints": 155,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -49,7 +64,7 @@ rda_unit_edits = {
     },
 
     "BTR_60_CMD_DDR": {
-        "CommandPoints": 160,
+        "CommandPoints": 175,
         "strength": 10,
         "Divisions": {
             "default": {
@@ -692,10 +707,43 @@ rda_unit_edits = {
         "availability": [0, 2, 0, 0],
         "remove_zone_capture": None,
     },
+    
+    "Mortier_M43_82mm_DDR": {
+        "CommandPoints": 30,
+        "availability": [5, 4, 3, 0],
+    },
 
     "Mortier_PM43_120mm_DDR": {
-        "CommandPoints": 40,
+        "CommandPoints": 45,
         "availability": [5, 4, 3, 0],
+    },
+    
+    "Howz_M46_130mm_DDR": {
+        "CommandPoints": 100,
+        "availability": [4, 3, 2, 0],
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+    },
+    
+    "Howz_D20_152mm_DDR": {
+        "CommandPoints": 95,
+        "availability": [3, 2, 0, 0],
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+    },
+    
+    "Howz_D30_122mm_DDR": {
+        "CommandPoints": "Howz_D30_122mm_SOV",
+        "availability": "Howz_D30_122mm_SOV",
+        "Divisions": {
+            "default": "Howz_D30_122mm_SOV"
+        },
     },
 
     "2S1_DDR": {
@@ -723,8 +771,55 @@ rda_unit_edits = {
             },
         },
     },
+    
+    "BM21_Grad_DDR": { # BM-21 [NPLM]
+        "CommandPoints": 195,
+        "availability": [3, 2, 0, 0],
+    },
+    
+    "BM24M_DDR": {
+        "CommandPoints": 240,
+        "availability": [2, 0, 1, 0],
+    },
 
     # RDA TANK
+    
+    "T54B_CMD_DDR": {
+        "CommandPoints": 75,
+        "GameName": {
+            "display": "#LDRSOV FüPz T-54AMK LDR.",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "Char_Standard",
+                "GroundUnits",
+                "UNITE_T54B_CMD_DDR",
+                "Unite",
+            ],
+        },
+        "IdentifiedTextures": ["Texture_RTS_H_Armor", "Texture_Armor"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "UnitRole": "armor",
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'leader_sov',
+                '_resolute',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Armor",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 0, 6, 0],
+        "remove_zone_capture": None,
+    },
+    
     "T55A_CMD_DDR": {
         "CommandPoints": 80,
         "GameName": {
@@ -835,6 +930,16 @@ rda_unit_edits = {
         "availability": [0, 0, 4, 0],
         "remove_zone_capture": None,
     },
+    
+    "AT_D44_85mm_DDR": {  # D-44 AT 85mm
+        "CommandPoints": 35,
+        "availability": [9, 7, 5, 0],
+    },
+    
+    "AT_T12_Rapira_DDR": { 
+        "CommandPoints": "AT_T12_Rapira_SOV",
+        "availability": "AT_T12_Rapira_SOV",
+    },
 
     "MTLB_trans_DDR": {
         "orders": {
@@ -888,14 +993,22 @@ rda_unit_edits = {
     "UAZ_469_Fagot_DDR": {
         "CommandPoints": 35,
         "GameName": {
-            "display": "UAZ-469 FAKTORIYA",
+            "display": "UAZ-469 FAGOT-M",
             "token": "KBMDYNGBOG",
         },
+        "availability": [10, 7, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
                 "ATGM_9K111M_Faktoriya": 6,
             },
         },
+    },
+    
+    "BRDM_Malyu_P_DDR": {  # BRDM-2 Malutka-P
+        "CommandPoints": "BRDM_2_Malyu_P_POL",
+        "strength": "BRDM_2_Malyu_P_POL",
+        "stealth": "BRDM_2_Malyu_P_POL",
+        "availability": "BRDM_2_Malyu_P_POL",
     },
 
     "BRDM_Konkurs_DDR": {
@@ -904,11 +1017,36 @@ rda_unit_edits = {
         "stealth": 1.5,
         "availability": [8, 6, 0, 0],
     },
+    
+    "PT76B_tank_DDR": {
+        "CommandPoints": 20,
+        "availability": [12, 0, 0, 0],
+    },
+    
+    "T34_85M_DDR": {
+        "armor": {
+            "front": (4, None),
+            "sides": (2, None),
+            "rear": (1, None),
+        },
+        "availability": [10, 0, 0, 0],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("Canon_AP_85mm_S53", "Canon_HEAT2_85mm_S53")],
+            },
+        },
+    },
+    
+    "T54B_DDR": {
+        "CommandPoints": 65,
+        "availability": [10, 7, 0, 0],
+    },
 
     "T55A_DDR": {
         "GameName": {
             "display": "KPz T-55A",
         },
+        "strength": 20,
         "CommandPoints": 70,
         "availability": [10, 7, 0, 0],
     },
@@ -926,7 +1064,7 @@ rda_unit_edits = {
             "display": "KPz T-72M",
         },
         "CommandPoints": 145,
-        "availability": [0, 7, 5, 0],
+        "availability": [0, 6, 4, 0],
     },
 
     "T72M1_DDR": {
@@ -1069,6 +1207,9 @@ rda_unit_edits = {
             "equipmentchanges": {
                 "replace": [("FM_Mpi_AK_74N", "FM_Mpi_AK_74N_noreflex")],
             },
+            "Salves": {
+                "FM_Mpi_AK_74N_noreflex": 11,
+            },
         },
     },
 
@@ -1087,6 +1228,15 @@ rda_unit_edits = {
             "equipmentchanges": {
                 "replace": [("FM_AK_74", "FM_AK_74_noreflex")],
             },
+        },
+    },
+    
+    "DCA_ZPU4_DDR": {
+        "CommandPoints": 20,
+        "availability": [12, 9, 0, 0],
+        "max_speed": 4,
+        "capacities": {
+            "add_capacities": ["Deploy", "Deploy_ok"],
         },
     },
 
@@ -1108,6 +1258,11 @@ rda_unit_edits = {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
         "UpgradeFromUnit": "FOB_DDR",
+    },
+    
+    "ZSU_57_2_DDR": {
+        "CommandPoints": 60,
+        "availability": [7, 0, 0, 0],
     },
 
     "BRDM_Strela_1_DDR": {
@@ -1162,6 +1317,25 @@ rda_unit_edits = {
         "availability": [6, 4, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
+        },
+    },
+    
+    "Osa_9K33M3_DDR": {
+        "CommandPoints": "Osa_9K33M3_POL",
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 300,
+            },
+            "TimeBetweenEachIdentifyRoll": 1.0,
+        },
+        "availability": "Osa_9K33M3_POL",
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'verygood_airoptics'"],
         },
     },
 
@@ -1220,11 +1394,16 @@ rda_unit_edits = {
         "GameName": {
             "display": "Mi-8TV [RKT2]",
         },
-        "CommandPoints": 85,
-        "availability": [0, 6, 4, 0],
+        "CommandPoints": "Mi_8TV_s57_32_SOV",
+        "availability": "Mi_8TV_s57_32_SOV",
     },
 
     "Mi_8TV_UPK_DDR": {
+        "CommandPoints": 85,
+        "availability": [0, 6, 4, 0],
+    },
+    
+    "Mi_8TB_DDR": { # 12.7mm Afanasyev, 2x 64x S-5m, 6x Malyutka-M
         "CommandPoints": 85,
         "availability": [0, 6, 4, 0],
     },
@@ -1255,12 +1434,39 @@ rda_unit_edits = {
                 1: {
                     "MountedWeapons": {
                         "AutoCanon_AP_30mm_Bitube_Gsh30k": {
-                            # "add_members": [("TirContinu", True), ],
                             "Ammunition": "AutoCanon_AP_30mm_Bitube_Gsh30k_burst",
                             "EffectTag": "'FireEffect_GatlingAir_Gsh_30_2_30mm_x2'",
                         },
                         "AutoCanon_HE_30mm_Bitube_Gsh30k": {
-                            # "add_members": [("TirContinu", True), ],
+                            "Ammunition": "AutoCanon_HE_30mm_Bitube_Gsh30k_burst",
+                            "EffectTag": "'FireEffect_GatlingAir_Gsh_30_2_30mm_x2'",
+                        },
+                    },
+                },
+            },
+        },
+        "availability": [0, 3, 2, 0],
+    },
+    
+    "Mi_24P_s8_AT2_DDR": {
+        "CommandPoints": 175,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "AutoCanon_AP_30mm_Bitube_Gsh30k": 5,
+            },
+            "turrets": {
+                1: {
+                    "MountedWeapons": {
+                        "AutoCanon_AP_30mm_Bitube_Gsh30k": {
+                            "Ammunition": "AutoCanon_AP_30mm_Bitube_Gsh30k_burst",
+                            "EffectTag": "'FireEffect_GatlingAir_Gsh_30_2_30mm_x2'",
+                        },
+                        "AutoCanon_HE_30mm_Bitube_Gsh30k": {
                             "Ammunition": "AutoCanon_HE_30mm_Bitube_Gsh30k_burst",
                             "EffectTag": "'FireEffect_GatlingAir_Gsh_30_2_30mm_x2'",
                         },
@@ -1332,6 +1538,11 @@ rda_unit_edits = {
     "MiG_23MF_DDR": {  # [HE]
         "CommandPoints": 220,
         "availability": [0, 3, 0, 0],
+    },
+    
+    "MiG_23MF_AA_DDR": {
+        "CommandPoints": 125,
+        "availability": [0, 4, 3, 2],
     },
 
     "MiG_23ML_DDR": {  # [AA]

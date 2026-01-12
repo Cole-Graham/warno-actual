@@ -7,6 +7,42 @@ WeaponKey = Tuple[str, str, Optional[str], bool]  # (weapon, category, donor, is
 
 # fmt: off
 weapons: Dict[WeaponKey, WeaponData] = {
+    
+    ("RocketArt_9M55K5_300mm", "MLRS", None, False): { # SMERCH
+        "Ammunition": {
+            "Arme": {
+                "Index": 4,
+                "Family": "DamageFamily_dpicm",
+            },
+            "parent_membr": {
+                "SuppressDamages": 85,
+                "RadiusSplashPhysicalDamagesGRU": 250,
+                "RadiusSplashSuppressDamagesGRU": 300,
+                "DispersionAtMaxRangeGRU": 900,
+                "DispersionAtMinRangeGRU": 300,
+                "AimingTime": 18.0,
+                "NbTirParSalves": 48,
+                "SupplyCost": 1200.0,
+                "NbrProjectilesSimultanes": 4,
+                "AffichageMunitionParSalve": 12,
+            },
+        },
+    },
+    
+    ("RocketArt_M24F_240mm_salvolength12", "MLRS", None, False): { # BM-24M
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 8.6,
+                "SuppressDamages": 540,
+                "DispersionAtMaxRangeGRU": 560,
+                "DispersionAtMinRangeGRU": 240,
+                "RadiusSplashPhysicalDamagesGRU": 240,
+                "RadiusSplashSuppressDamagesGRU": 320,
+                "SupplyCost": 960.0,
+            },
+        },
+    },
+    
     ("RocketArt_thermobaric_220mm_salvolength30", "MLRS", None, False): { # 657
         "Ammunition": {
             "Arme": {
@@ -46,6 +82,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "SuppressDamages": 20,
                 "DispersionAtMaxRangeGRU": 1500,
                 "DispersionAtMinRangeGRU": 500,
+                "AimingTime": 18.0,
                 "TimeBetweenTwoSalvos": 130.0,
                 "NbTirParSalves": 144,
                 "SupplyCost": 960.0,
@@ -63,6 +100,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "DispersionAtMaxRangeGRU": 848,
                 "RadiusSplashPhysicalDamagesGRU": 283,
                 "RadiusSplashSuppressDamagesGRU": 377,
+                "AimingTime": 18.0,
             },
         },
     },
@@ -84,6 +122,19 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PhysicalDamages": 4.2,
                 "SuppressDamages": 350,
+                "RadiusSplashPhysicalDamagesGRU": 152,
+                "RadiusSplashSuppressDamagesGRU": 203,
+                "TimeBetweenTwoSalvos": 220.0,
+                "SupplyCost": 580.0,
+            },
+        },
+    },
+    
+    ("RocketArt_M21OF_122mm_napalm", "MLRS", None, False): { # BM-21 [NPLM]
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 2.1,
+                "SuppressDamages": 175,
                 "RadiusSplashPhysicalDamagesGRU": 152,
                 "RadiusSplashSuppressDamagesGRU": 203,
                 "TimeBetweenTwoSalvos": 220.0,

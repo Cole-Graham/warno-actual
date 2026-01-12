@@ -116,11 +116,6 @@ UK_NEW_UNITS = {
         ],
         "MenuIconTexture": "Texture_RTS_H_CMD_inf",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Inf",
-        "Decks": {
-            "packs": {
-                "rename": True, 
-            },
-        },
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -170,12 +165,7 @@ UK_NEW_UNITS = {
             ],
         },
         "Factory": "EFactory/Logistic",
-        "CommandPoints": 290,
-        "Decks": {
-            "packs": {
-                "rename": True, 
-            },
-        },
+        "CommandPoints": 315,
         "Divisions": {
             "default": {
                 "cards": 1,

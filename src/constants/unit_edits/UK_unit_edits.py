@@ -14,6 +14,16 @@ uk_unit_edits = {
         },
         "availability": [0, 4, 0, 0],
     },
+    
+    "LandRover_CMD_nonBerlin_UK": {
+        "CommandPoints": 145,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 4, 0, 0],
+    },
 
     "Saxon_CMD_UK": {
         "CommandPoints": 155,

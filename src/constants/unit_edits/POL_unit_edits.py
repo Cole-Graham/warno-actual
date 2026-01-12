@@ -121,7 +121,7 @@ pol_unit_edits = {
         },
     },
     "BMP_1_CMD_POL": {  # BWP-1K3
-        "CommandPoints": 155,
+        "CommandPoints": 170,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -136,7 +136,7 @@ pol_unit_edits = {
     },
     "BRDM_2_CMD_POL": {  # BRDM-2U
         "strength": 8,
-        "CommandPoints": 145,
+        "CommandPoints": 155,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -149,7 +149,7 @@ pol_unit_edits = {
         "availability": [0, 3, 0, 0],
     },
     "BRDM_2_CMD_R5_POL": {  # BRDM-2 R-5
-        "CommandPoints": 160,
+        "CommandPoints": 175,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -162,7 +162,7 @@ pol_unit_edits = {
         "availability": [0, 0, 3, 0],
     },
     "OT_64_SKOT_CMD_POL": {  # SKOT R-2M
-        "CommandPoints": 165,
+        "CommandPoints": 180,
         "strength": 10,
         "Divisions": {
             "default": {
@@ -881,7 +881,7 @@ pol_unit_edits = {
         "remove_zone_capture": None,
     },
     "Mortier_PM43_120mm_POL": {  # M wz.43 120mm
-        "CommandPoints": 40,
+        "CommandPoints": 45,
         "availability": [5, 4, 3, 0],
     },
     "Mortier_2S12_120mm_Para_POL": {  # Desant. 2S12 120mm
@@ -1667,7 +1667,6 @@ pol_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
-
     },
     "2K12_KUB_POL": {  # 2K12 Kub
         "CommandPoints": "2K12_KUB_SOV",
@@ -1815,8 +1814,8 @@ pol_unit_edits = {
         "availability": [0, 3, 0, 0],
     },
     "MiG_21bis_RKT2_POL": {  # 4x S-24 [RKT2]
-        "CommandPoints": 100,
-        "availability": [0, 4, 0, 0],
+        "CommandPoints": "MiG_21bis_RKT2_DDR",
+        "availability": "MiG_21bis_RKT2_DDR",
         "WeaponDescriptor": {
             "Salves": {
                 "RocketAir_S24_240mm_avion_salvolength4": (1, True),
@@ -1832,8 +1831,8 @@ pol_unit_edits = {
         "availability": [0, 3, 0, 0],
     },
     "MiG_23MF_AA_POL": {  # MiG-23MF [AA], 2x R-23R, 4x R-60M
-        "CommandPoints": 125,
-        "availability": [0, 4, 3, 2],
+        "CommandPoints": "MiG_23MF_AA_DDR",
+        "availability": "MiG_23MF_AA_DDR",
     },
     "MiG_23MF_AA2_POL": {  # MiG-23MF [AA2], 2x R-3R, 2x R-13M
         "CommandPoints": 110,

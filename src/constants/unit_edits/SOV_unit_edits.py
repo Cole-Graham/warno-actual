@@ -20,7 +20,7 @@ sov_unit_edits = {
     },
 
     "BMP_1_CMD_SOV": {
-        "CommandPoints": 155,
+        "CommandPoints": 170,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -34,7 +34,7 @@ sov_unit_edits = {
     },
 
     "BMD_2_CMD_SOV": {
-        "CommandPoints": 160,
+        "CommandPoints": 175,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -64,7 +64,7 @@ sov_unit_edits = {
     },
 
     "BMP_2_CMD_SOV": {
-        "CommandPoints": 170,
+        "CommandPoints": 185,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -78,7 +78,7 @@ sov_unit_edits = {
     },
 
     "BTR_60_CMD_SOV": {
-        "CommandPoints": 160,
+        "CommandPoints": 175,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -93,7 +93,7 @@ sov_unit_edits = {
     },
 
     "BTR_80_CMD_SOV": {
-        "CommandPoints": 170,
+        "CommandPoints": 185,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -215,14 +215,6 @@ sov_unit_edits = {
             ],
         },
         "strength": 6,
-        "WeaponAssignment": [
-            (0, [1, ]),
-            (1, [0, ]),
-            (2, [0, ]),
-            (3, [0, ]),
-            (4, [0, 3]),
-            (5, [0, 2]),
-        ],
         "TransportedTexture": "UseInGame_Transport_REGINF",
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
@@ -1668,6 +1660,11 @@ sov_unit_edits = {
         },
         "availability": [2, 0, 1, 0],
     },
+    
+    "2S7M_Malka_SOV": {
+        "CommandPoints": 260,
+        "availability": [2, 0, 1, 0],
+    },
 
     "BM21V_GradV_SOV": {
         "CommandPoints": 95,
@@ -1693,8 +1690,49 @@ sov_unit_edits = {
         },
         "availability": [0, 2, 0, 0],
     },
+    
+    "BM30_Smerch_SOV": {
+        "CommandPoints": 360,
+        "availability": [0, 1, 0, 0],
+    },
 
     # SOV TANK
+    "T62M_CMD_SOV": {
+        "CommandPoints": 145,
+        "GameName": {
+            "token": "LARNJZNGAB",
+            "display": "#LDRSOV T-62MK LDR.",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "GroundUnits",
+                "UNITE_T62M_CMD_SOV",
+                "Unite",
+            ],
+        },
+        "IdentifiedTextures": ["Texture_RTS_H_Armor", "Texture_Armor"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "UnitRole": "armor",
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'leader_sov',
+                '_smoke_launcher',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Armor",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 0, 4, 0],
+        "remove_zone_capture": None,
+    },
+    
     "T80BV_CMD_SOV": {
         "CommandPoints": 220,
         "GameName": {
@@ -1840,6 +1878,29 @@ sov_unit_edits = {
     "TO_55_SOV": {
         "CommandPoints": 60,
         "availability": [8, 6, 0, 0],
+    },
+    
+    "T62M1_SOV": {
+        "CommandPoints": 105,
+        "availability": [8, 6, 0, 0],
+    },
+    
+    "T62M_SOV": {
+        "CommandPoints": 135,
+        "availability": [0, 6, 4, 0],
+    },
+    
+    "T62MV_SOV": {
+        "CommandPoints": 135,
+        "armor": {
+            "front": (12, None),
+        },
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "availability": [0, 0, 0, 3],
     },
 
     "T80BV_SOV": {
@@ -2319,6 +2380,24 @@ sov_unit_edits = {
             "add_specs": ["'verygood_airoptics'"],
         },
     },
+    
+    "Buk_9K37M_SOV": {
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 300,
+            },
+            "TimeBetweenEachIdentifyRoll": 1.0,
+        },
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "availability": [0, 2, 0, 1],
+        "SpecialtiesList": {
+            "add_specs": ["'verygood_airoptics'"],
+        },
+    },
 
     # SOV HELI
     "Mi_2_trans_SOV": {
@@ -2380,9 +2459,16 @@ sov_unit_edits = {
     },
 
     "Mi_8TV_s57_32_SOV": {
+        "CommandPoints": 85,
+        "availability": [0, 6, 4, 0],
         "GameName": {
             "display": "Mi-8MT [RKT2]",
         },
+    },
+    
+    "Mi_8TV_PodGatling_PodAGL_SOV": {
+        "CommandPoints": 85,
+        "availability": [0, 6, 4, 0],
     },
 
     "Mi_8TV_s80_SOV": {
@@ -2597,6 +2683,14 @@ sov_unit_edits = {
         },
         "availability": [0, 2, 0, 0],
     },
+    
+    "Su_24M_nplm_SOV": {
+        "CommandPoints": 190,
+        "availability": [0, 3, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'terrain_radar'"],
+        },
+    },
 
     "Su_24M_thermo_SOV": {
         "CommandPoints": 225,
@@ -2606,7 +2700,14 @@ sov_unit_edits = {
         "availability": [0, 2, 0, 0],
     },
     
+    "MiG_25RBF_SOV": { # 8x FAB-500
+        "CommandPoints": 175,
+        "availability": [0, 2, 0, 0],
+    },
+    
     "MiG_25BM_SOV": {  # Kh-58U 6300m
+        "CommandPoints": 270,
+        "availability": [0, 2, 0, 1],
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 10000.0,
@@ -2636,6 +2737,11 @@ sov_unit_edits = {
             },
         },
         "availability": [0, 2, 0, 0],
+    },
+    
+    "MiG_27M_SOV": { # GSh-6-30, 2x Kh-29T
+        "CommandPoints": 175,
+        "availability": [0, 2, 0, 1],
     },
 
     "MiG_27M_napalm_SOV": {  # 4x ZB-500
