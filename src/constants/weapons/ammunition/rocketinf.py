@@ -422,6 +422,17 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("RocketInf_Handflammpatrone", "napalm", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "MaximumRangeGRU": 450,
+                "PhysicalDamages": 0.45,
+                "DisplaySalveAccuracy": False,
+                "FireDescriptor": "$/GFX/Weapon/Descriptor_Fire_NapalmLeger_53m",
+            },
+        },
+    },
 
     ("RocketInf_M202_Flash_66mm", "napalm", None, False): { # 673
         "Ammunition": {

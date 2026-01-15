@@ -449,7 +449,7 @@ supply_unit_edits = {
             },
         },
         "SupplyDescriptor": "DvisionalHeloSupply",
-        "availability": [3, 0, 0, 0],
+        "availability": [2, 0, 0, 0],
     },
     "CH47_Super_Chinook_US": {
         "SupplyCapacity": 2400.0,
@@ -460,7 +460,7 @@ supply_unit_edits = {
             },
         },
         "SupplyDescriptor": "DvisionalHeloSupply",
-        "availability": [3, 0, 0, 0],
+        "availability": [2, 0, 0, 0],
         "UpgradeFromUnit": "UH60A_Supply_US"
     },
     "CH53G_RFA": {
@@ -472,7 +472,7 @@ supply_unit_edits = {
             },
         },
         "SupplyDescriptor": "DvisionalHeloSupply",
-        "availability": [3, 0, 0, 0],
+        "availability": [2, 0, 0, 0],
     },
     "Mi_6_POL": {
         "SupplyCapacity": 3000.0,

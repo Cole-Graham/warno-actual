@@ -17,7 +17,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "RadiusSplashPhysicalDamagesGRU": 203,
                 "RadiusSplashSuppressDamagesGRU": 271,
                 "TimeBetweenTwoSalvos": 50.0,
-                "NbTirParSalves": 2,
+                "ShotsCountPerSalvo": 2,
                 "SupplyCost": 80.0,
                 "AffichageMunitionParSalve": 2,
             },
@@ -30,7 +30,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoShots": 15.0,
                 "TimeBetweenTwoFx": 16.0,
                 "TimeBetweenTwoSalvos": 50.0,
-                "NbTirParSalves": 2,
+                "ShotsCountPerSalvo": 2,
                 "AffichageMunitionParSalve": 2,
             },
         },
@@ -101,7 +101,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "SuppressDamages": 187,
                 "RadiusSplashPhysicalDamagesGRU": 105,
                 "RadiusSplashSuppressDamagesGRU": 140,
-                "NbTirParSalves": 5,
+                "ShotsCountPerSalvo": 5,
                 "SupplyCost": 100.0,
                 "AffichageMunitionParSalve": 5,
             },
@@ -112,7 +112,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "TimeBetweenTwoShots": 5.0,
-                "NbTirParSalves": 5,
+                "ShotsCountPerSalvo": 5,
                 "AffichageMunitionParSalve": 5,
             },
         },
@@ -137,7 +137,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "SuppressDamages": 187,
                 "RadiusSplashPhysicalDamagesGRU": 105,
                 "RadiusSplashSuppressDamagesGRU": 140,
-                "NbTirParSalves": 5,
+                "ShotsCountPerSalvo": 5,
                 "SupplyCost": 100.0,
                 "AffichageMunitionParSalve": 5,
             },
@@ -148,7 +148,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "TimeBetweenTwoShots": 5.0,
-                "NbTirParSalves": 5,
+                "ShotsCountPerSalvo": 5,
                 "AffichageMunitionParSalve": 5,
             },
         },

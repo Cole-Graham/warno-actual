@@ -238,7 +238,7 @@ def _handle_salvo_variants(source_path: Any, base_descr: Any, weapon_name: str, 
                 # Only apply salvo-specific values
                 if base_cost is not None:
                     variant.v.by_m("SupplyCost").v = str(base_cost * length)
-                variant.v.by_m("NbTirParSalves").v = str(length)
+                variant.v.by_m("ShotsCountPerSalvo").v = str(length)
                 variant.v.by_m("AffichageMunitionParSalve").v = str(length)
 
                 source_path.add(variant)
@@ -257,7 +257,7 @@ def _handle_salvo_variants(source_path: Any, base_descr: Any, weapon_name: str, 
                     # Then update salvo-specific values
                     if base_cost is not None:
                         existing.v.by_m("SupplyCost").v = str(base_cost * length)
-                    existing.v.by_m("NbTirParSalves").v = str(length)
+                    existing.v.by_m("ShotsCountPerSalvo").v = str(length)
                     existing.v.by_m("AffichageMunitionParSalve").v = str(length)
                     logger.info(f"Updated existing variant {namespace}")
                 else:
@@ -330,8 +330,9 @@ def _apply_missile_edits(descr: Any, data: Dict, ammo_data: Dict, is_new: bool) 
 
 def _apply_hit_roll_edits(descr: Any, hit_roll_data: Dict) -> None:
     """Apply hit roll edits to descriptor."""
-    hitroll_obj = descr.v.by_m("HitRollRuleDescriptor").v
-    roll_membrs = hitroll_obj.by_m("BaseHitValueModifiers").v
+    logger.debug(f"Applying hit roll edits to {descr.n}")
+    hitroll_obj = descr.v.by_m("HitRollRuleDescriptor")
+    roll_membrs = hitroll_obj.v.by_m("BaseHitValueModifiers").v
 
     for roll_type, hit_chance in hit_roll_data.items():
         if roll_type == "Idling":
@@ -342,6 +343,12 @@ def _apply_hit_roll_edits(descr: Any, hit_roll_data: Dict) -> None:
             roll_membr_list = list(roll_membrs[2].v)
             roll_membr_list[1] = str(hit_chance)
             roll_membrs[2].v = tuple(roll_membr_list)
+        elif roll_type == "DistanceToTarget":
+            dis_to_target_membr = hitroll_obj.v.by_m("DistanceToTarget", None)
+            if dis_to_target_membr:
+                dis_to_target_membr.v = str(hit_chance)
+            else:
+                hitroll_obj.v.add(f"DistanceToTarget = {str(hit_chance)}")
 
 
 def _track_dictionary_entries(weapon_name, data, ingame_names, calibers):

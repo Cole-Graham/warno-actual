@@ -145,7 +145,7 @@ class WeaponsTab:
         self.custom_weapon_damage_var.set(str(ammo_props.get("physical_damages", 10)))
         self.custom_weapon_suppress_damage_var.set(str(ammo_props.get("suppress_damages", 10)))
         self.custom_weapon_damage_family_var.set(ammo_props.get("damage_family", ""))
-        self.custom_weapon_shots_per_salvo_var.set(str(ammo_props.get("nb_tir_par_salves", 1)))
+        self.custom_weapon_shots_per_salvo_var.set(str(ammo_props.get("shots_count_per_salvo", 1)))
         self.custom_weapon_time_between_salvos_var.set(str(ammo_props.get("time_between_salvos", 2.0)))
         
         time_between_shots = ammo_props.get("time_between_shots")
@@ -216,7 +216,7 @@ class WeaponsTab:
                 "idling": accuracy,
                 "physical_damages": float(damage_str) if damage_str else 0.0,
                 "suppress_damages": float(suppress_damage_str) if suppress_damage_str else 0.0,
-                "nb_tir_par_salves": shots_per_salvo,
+                "shots_count_per_salvo": shots_per_salvo,
                 "time_between_salvos": time_between_salvos,
                 "time_between_shots": time_between_shots,
                 "aiming_time": aiming_time,
@@ -307,7 +307,7 @@ class WeaponsTab:
                 "physical_damages": damage,
                 "suppress_damages": suppress_damage,
                 "damage_family": damage_family if damage_family else None,
-                "nb_tir_par_salves": shots_per_salvo,
+                "shots_count_per_salvo": shots_per_salvo,
                 "time_between_salvos": time_between_salvos,
                 "time_between_shots": time_between_shots,
                 "aiming_time": aiming_time,
@@ -378,7 +378,7 @@ class WeaponsTab:
         self.custom_weapon_damage_var.set(str(weapon_props.get("physical_damages", 0)))
         self.custom_weapon_suppress_damage_var.set(str(weapon_props.get("suppress_damages", 0)))
         self.custom_weapon_damage_family_var.set(weapon_props.get("damage_family", ""))
-        self.custom_weapon_shots_per_salvo_var.set(str(weapon_props.get("nb_tir_par_salves", 1)))
+        self.custom_weapon_shots_per_salvo_var.set(str(weapon_props.get("shots_count_per_salvo", 1)))
         self.custom_weapon_time_between_salvos_var.set(str(weapon_props.get("time_between_salvos", 1.0)))
         time_between_shots = weapon_props.get("time_between_shots")
         self.custom_weapon_time_between_shots_var.set(str(time_between_shots) if time_between_shots is not None else "")
@@ -1273,7 +1273,7 @@ class WeaponsTab:
                         per_weapon_dpm = dpm / quantity if quantity > 0 else 0
                         
                         # Calculate ammo consumption per minute
-                        shots_per_salvo = ammo_props.get("nb_tir_par_salves", 1)
+                        shots_per_salvo = ammo_props.get("shots_count_per_salvo", 1)
                         ammo_per_salvo = ammo_props.get("affichage_munition_par_salve", 0.0)
                         ammo_per_min = shots_per_min * (ammo_per_salvo / shots_per_salvo) if shots_per_salvo > 0 else 0
                         

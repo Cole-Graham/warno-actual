@@ -26,6 +26,7 @@ def edit_gameplay_constantes_gdconstants(source_path) -> None:
                 ("map", "BaseIncome", 21, "ECombatRule/Conquest"),
                 ("map", "TimeBeforeEarningCommandPointsSkirmish", 6, "ECombatRule/Conquest"),
                 ("value", "DefaultArgentInitial", 2000, None),
+                # ("value", "ArgentInitialSetting", "[1000, 1500, 2000, 2500, 3000, 3500]", None)
             ]
 
             membr = row.v.by_m

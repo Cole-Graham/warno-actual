@@ -54,7 +54,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeAirplaneGRU": 2450,
                 "SuppressDamages": 60,
                 "AimingTime": 1.2,
-                "NbTirParSalves": 16,
+                "ShotsCountPerSalvo": 16,
                 "AffichageMunitionParSalve": 128,
             },
         },

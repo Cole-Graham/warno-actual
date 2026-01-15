@@ -357,6 +357,11 @@ class InfantryTab:
         militia_checkbox = ttk.Checkbutton(vet_frame, text="Militia Trait", variable=self.custom_unit_militia_trait_var)
         militia_checkbox.pack(side=tk.LEFT, padx=(10, 0))
         
+        # Reservist trait checkbox
+        self.custom_unit_reservist_trait_var = tk.BooleanVar(value=False)
+        reservist_checkbox = ttk.Checkbutton(vet_frame, text="Reservist Trait", variable=self.custom_unit_reservist_trait_var)
+        reservist_checkbox.pack(side=tk.LEFT, padx=(10, 0))
+        
         # Strength field
         ttk.Label(vet_frame, text="Strength:").pack(side=tk.LEFT, padx=(10, 2))
         self.custom_unit_strength_var = tk.IntVar(value=7)
@@ -1162,6 +1167,9 @@ class InfantryTab:
                     # Check if unit has Militia trait
                     has_militia_trait = unit_info.get("has_militia_trait", False)
                     
+                    # Check if unit has Reservist trait
+                    has_reservist_trait = unit_info.get("has_reservist_trait", False)
+                    
                     # Get attacker strength and target strength for damage ratio
                     attacker_strength = unit_info.get("strength", 7)  # Default to 7 if not found
                     # Ensure attacker_strength is an integer
@@ -1213,15 +1221,17 @@ class InfantryTab:
                         shock_bonuses=getattr(self.app, 'shock_bonuses', None),
                         has_militia_trait=has_militia_trait,
                         militia_bonuses=getattr(self.app, 'militia_bonuses', None),
+                        has_reservist_trait=has_reservist_trait,
+                        reservist_bonuses=getattr(self.app, 'reservist_bonuses', None),
                         damage_ratio_multiplier=damage_ratio,
                         damage_type=damage_type
                     )
                     
                     # Calculate shots per minute and ammunition consumption
                     shots_per_minute = calculate_shots_per_minute(ammo_props, reload_speed_multiplier)
-                    nb_tir_par_salves = ammo_props.get("nb_tir_par_salves", 1)
-                    affichage_munition_par_salve = ammo_props.get("affichage_munition_par_salve", nb_tir_par_salves)
-                    ammo_per_shot = affichage_munition_par_salve / nb_tir_par_salves if nb_tir_par_salves > 0 else 1.0
+                    shots_count_per_salvo = ammo_props.get("shots_count_per_salvo", 1)
+                    affichage_munition_par_salve = ammo_props.get("affichage_munition_par_salve", shots_count_per_salvo)
+                    ammo_per_shot = affichage_munition_par_salve / shots_count_per_salvo if shots_count_per_salvo > 0 else 1.0
                     ammo_consumption_per_minute = shots_per_minute * ammo_per_shot
                     
                     # Store individual weapon DPM data with quantity info and firing stats
@@ -1351,6 +1361,9 @@ class InfantryTab:
                 # Check if unit has Militia trait
                 has_militia_trait = unit_info.get("has_militia_trait", False)
                 
+                # Check if unit has Reservist trait
+                has_reservist_trait = unit_info.get("has_reservist_trait", False)
+                
                 # Get attacker strength and target strength for damage ratio
                 attacker_strength = unit_info.get("strength", 7)  # Default to 7 if not found
                 # Ensure attacker_strength is an integer
@@ -1402,6 +1415,8 @@ class InfantryTab:
                     shock_bonuses=getattr(self.app, 'shock_bonuses', None),
                     has_militia_trait=has_militia_trait,
                     militia_bonuses=getattr(self.app, 'militia_bonuses', None),
+                    has_reservist_trait=has_reservist_trait,
+                    reservist_bonuses=getattr(self.app, 'reservist_bonuses', None),
                     damage_ratio_multiplier=damage_ratio,
                     damage_type=damage_type
                 )
@@ -1414,7 +1429,7 @@ class InfantryTab:
                     "veterancy_level": veterancy_level,
                     "veterancy_accuracy_bonus": veterancy_accuracy_bonus,
                     "shots_per_minute": calculate_shots_per_minute(ammo_props, reload_speed_multiplier),
-                    "ammo_consumption_per_minute": calculate_shots_per_minute(ammo_props, reload_speed_multiplier) * (ammo_props.get("affichage_munition_par_salve", 0.0) / ammo_props.get("nb_tir_par_salves", 1.0)),
+                    "ammo_consumption_per_minute": calculate_shots_per_minute(ammo_props, reload_speed_multiplier) * (ammo_props.get("affichage_munition_par_salve", 0.0) / ammo_props.get("shots_count_per_salvo", 1.0)),
                     "use_vanilla_range_table": use_vanilla_range_table,  # Store for info display
                 }
                 
@@ -1627,7 +1642,7 @@ class InfantryTab:
         self.custom_weapon_damage_var.set(str(ammo_props.get("physical_damages", 10)))
         self.custom_weapon_suppress_damage_var.set(str(ammo_props.get("suppress_damages", 10)))
         self.custom_weapon_damage_family_var.set(ammo_props.get("damage_family", "DamageFamily_sa_intermediate"))
-        self.custom_weapon_shots_per_salvo_var.set(str(ammo_props.get("nb_tir_par_salves", 1)))
+        self.custom_weapon_shots_per_salvo_var.set(str(ammo_props.get("shots_count_per_salvo", 1)))
         self.custom_weapon_time_between_salvos_var.set(str(ammo_props.get("time_between_salvos", 2.0)))
         
         time_between_shots = ammo_props.get("time_between_shots")
@@ -1698,7 +1713,7 @@ class InfantryTab:
                 "idling": accuracy,
                 "physical_damages": float(damage_str) if damage_str else 0.0,
                 "suppress_damages": float(suppress_damage_str) if suppress_damage_str else 0.0,
-                "nb_tir_par_salves": shots_per_salvo,
+                "shots_count_per_salvo": shots_per_salvo,
                 "time_between_salvos": time_between_salvos,
                 "time_between_shots": time_between_shots,
                 "aiming_time": aiming_time,
@@ -1789,7 +1804,7 @@ class InfantryTab:
                 "physical_damages": damage,
                 "suppress_damages": suppress_damage,
                 "damage_family": damage_family,
-                "nb_tir_par_salves": shots_per_salvo,
+                "shots_count_per_salvo": shots_per_salvo,
                 "time_between_salvos": time_between_salvos,
                 "time_between_shots": time_between_shots,
                 "aiming_time": aiming_time,
@@ -1875,6 +1890,9 @@ class InfantryTab:
         # Get militia trait checkbox value
         has_militia_trait = self.custom_unit_militia_trait_var.get()
         
+        # Get reservist trait checkbox value
+        has_reservist_trait = self.custom_unit_reservist_trait_var.get()
+        
         # Get strength value
         strength = self.custom_unit_strength_var.get()
         
@@ -1894,6 +1912,7 @@ class InfantryTab:
             "default_veterancy_level": available_vet_levels[0],  # Store default veterancy (first available)
             "has_shock_trait": has_shock_trait,  # Store shock trait
             "has_militia_trait": has_militia_trait,  # Store militia trait
+            "has_reservist_trait": has_reservist_trait,  # Store reservist trait
             "strength": strength,  # Store strength
         }
         
@@ -1937,6 +1956,8 @@ class InfantryTab:
         self.custom_unit_shock_trait_var.set(False)
         # Reset militia trait checkbox
         self.custom_unit_militia_trait_var.set(False)
+        # Reset reservist trait checkbox
+        self.custom_unit_reservist_trait_var.set(False)
         
         # Reset strength to default
         self.custom_unit_strength_var.set(7)
@@ -2074,7 +2095,7 @@ class InfantryTab:
         self.custom_weapon_damage_var.set(str(weapon_props.get("physical_damages", 0)))
         self.custom_weapon_suppress_damage_var.set(str(weapon_props.get("suppress_damages", 0)))
         self.custom_weapon_damage_family_var.set(weapon_props.get("damage_family", "DamageFamily_sa_intermediate"))
-        self.custom_weapon_shots_per_salvo_var.set(str(weapon_props.get("nb_tir_par_salves", 1)))
+        self.custom_weapon_shots_per_salvo_var.set(str(weapon_props.get("shots_count_per_salvo", 1)))
         self.custom_weapon_time_between_salvos_var.set(str(weapon_props.get("time_between_salvos", 1.0)))
         time_between_shots = weapon_props.get("time_between_shots")
         self.custom_weapon_time_between_shots_var.set(str(time_between_shots) if time_between_shots is not None else "")
@@ -2154,6 +2175,10 @@ class InfantryTab:
         # Set militia trait checkbox based on unit's militia trait
         has_militia_trait = unit_info.get("has_militia_trait", False)
         self.custom_unit_militia_trait_var.set(has_militia_trait)
+        
+        # Set reservist trait checkbox based on unit's reservist trait
+        has_reservist_trait = unit_info.get("has_reservist_trait", False)
+        self.custom_unit_reservist_trait_var.set(has_reservist_trait)
         
         # Set strength field based on unit's strength
         strength = unit_info.get("strength", 7)
@@ -2319,6 +2344,7 @@ class InfantryTab:
         # Check for traits
         has_shock_trait = unit_info.get("has_shock_trait", False)
         has_militia_trait = unit_info.get("has_militia_trait", False)
+        has_reservist_trait = unit_info.get("has_reservist_trait", False)
         
         # Build traits list
         traits = []
@@ -2326,6 +2352,8 @@ class InfantryTab:
             traits.append("Shock")
         if has_militia_trait:
             traits.append("Militia")
+        if has_reservist_trait:
+            traits.append("Reservist")
         
         if traits:
             info_lines.append(f"  Traits: {', '.join(traits)}")
@@ -2362,6 +2390,17 @@ class InfantryTab:
             aim_time_penalty = int((aim_time_mult - 1.0) * 100)
             
             active_bonuses.append(f"Militia: {reload_penalty}% slower reload, {aim_time_penalty}% slower aim")
+        
+        # Reservist penalties (always active)
+        if has_reservist_trait:
+            reservist_bonuses = getattr(self.app, 'reservist_bonuses', {})
+            reload_mult = reservist_bonuses.get("reload_speed_multiplier", 1.20)
+            aim_time_mult = reservist_bonuses.get("aim_time_multiplier", 1.20)
+            
+            reload_penalty = int((reload_mult - 1.0) * 100)
+            aim_time_penalty = int((aim_time_mult - 1.0) * 100)
+            
+            active_bonuses.append(f"Reservist: {reload_penalty}% slower reload, {aim_time_penalty}% slower aim")
         
         if active_bonuses:
             info_lines.append("  Active Bonuses:")
@@ -2531,7 +2570,7 @@ class InfantryTab:
                         ammo_props_for_stats = weapon_info.get("ammo_props", {})
                         salvo_reload = ammo_props_for_stats.get("time_between_salvos", 0.0)
                         shot_reload = ammo_props_for_stats.get("time_between_shots", None)
-                        shots_per_salvo = ammo_props_for_stats.get("nb_tir_par_salves", 1)
+                        shots_per_salvo = ammo_props_for_stats.get("shots_count_per_salvo", 1)
                         damage_type = self.damage_type_var.get() if hasattr(self, 'damage_type_var') else "Physical"
                         if damage_type == "Suppression":
                             base_damage = ammo_props_for_stats.get("suppress_damages", 0.0)
@@ -2828,7 +2867,7 @@ class InfantryTab:
                         ammo_props_for_stats = weapon_info.get("ammo_props", {})
                         salvo_reload = ammo_props_for_stats.get("time_between_salvos", 0.0)
                         shot_reload = ammo_props_for_stats.get("time_between_shots", None)
-                        shots_per_salvo = ammo_props_for_stats.get("nb_tir_par_salves", 1)
+                        shots_per_salvo = ammo_props_for_stats.get("shots_count_per_salvo", 1)
                         damage_type = self.damage_type_var.get() if hasattr(self, 'damage_type_var') else "Physical"
                         if damage_type == "Suppression":
                             base_damage = ammo_props_for_stats.get("suppress_damages", 0.0)

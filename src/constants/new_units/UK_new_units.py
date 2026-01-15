@@ -44,7 +44,7 @@ UK_NEW_UNITS = {
             },
         },
         "availability": [6, 4, 0, 0],
-        "max_speed": 4,
+        "max_speed": 6,
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },

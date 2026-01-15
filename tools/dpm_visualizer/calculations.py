@@ -139,7 +139,7 @@ def calculate_shots_per_minute(ammo_props: Dict[str, Any], reload_speed_multipli
         reload_speed_multiplier: Multiplier for time between salvos (e.g., 0.8 means 20% faster)
         shot_time_multiplier: Multiplier for time between shots (e.g., 0.85 means 15% faster)
     """
-    nb_tir_par_salves = ammo_props.get("nb_tir_par_salves", 1)
+    shots_count_per_salvo = ammo_props.get("shots_count_per_salvo", 1)
     time_between_salvos = ammo_props.get("time_between_salvos", 1.0)
     time_between_shots = ammo_props.get("time_between_shots", None)
     aiming_time = ammo_props.get("aiming_time", 0.0)
@@ -151,7 +151,7 @@ def calculate_shots_per_minute(ammo_props: Dict[str, Any], reload_speed_multipli
         # Apply shot time multiplier to time between shots
         time_between_shots = time_between_shots * shot_time_multiplier
         # Calculate time per salvo (aiming_time only happens before first salvo, not included here)
-        time_per_salvo = time_between_shots * (nb_tir_par_salves - 1)
+        time_per_salvo = time_between_shots * (shots_count_per_salvo - 1)
         # Total cycle time between salvos (aiming_time is only for the first salvo, so not in cycle)
         total_cycle_time = time_per_salvo + time_between_salvos
     else:
@@ -161,7 +161,7 @@ def calculate_shots_per_minute(ammo_props: Dict[str, Any], reload_speed_multipli
     # Calculate shots per minute
     # Note: aiming_time only affects the first salvo, so for sustained fire rate it's not included
     if total_cycle_time > 0:
-        shots_per_minute = (60.0 / total_cycle_time) * nb_tir_par_salves
+        shots_per_minute = (60.0 / total_cycle_time) * shots_count_per_salvo
     else:
         shots_per_minute = 0.0
     
@@ -183,6 +183,8 @@ def calculate_dpm(
     shock_bonuses: Optional[Dict[str, float]] = None,
     has_militia_trait: bool = False,
     militia_bonuses: Optional[Dict[str, float]] = None,
+    has_reservist_trait: bool = False,
+    reservist_bonuses: Optional[Dict[str, float]] = None,
     damage_ratio_multiplier: float = 1.0,
     damage_type: str = "Physical",
 ) -> List[Tuple[float, float]]:
@@ -201,6 +203,8 @@ def calculate_dpm(
         shock_range: Range threshold for shock bonuses to activate (default 100m)
         has_militia_trait: Whether the unit has the Militia trait (militia)
         militia_bonuses: Dictionary with militia bonus multipliers (reload_speed_multiplier, aim_time_multiplier)
+        has_reservist_trait: Whether the unit has the Reservist trait (reservist)
+        reservist_bonuses: Dictionary with reservist bonus multipliers (reload_speed_multiplier, aim_time_multiplier)
         damage_type: Type of damage to use ("Physical" or "Suppression")
         
     Returns:
@@ -258,6 +262,22 @@ def calculate_dpm(
     # For aim time, we convert to speed multiplier (inverse) since it affects accuracy calculation
     MILITIA_AIM_TIME_SPEED_MULTIPLIER = 1.0 / MILITIA_AIM_TIME_MULTIPLIER if MILITIA_AIM_TIME_MULTIPLIER > 0 else 1.0
     
+    # Reservist bonuses (from UnitEffect_reservist, parsed from game files):
+    # Default values if not provided
+    if reservist_bonuses is None:
+        reservist_bonuses = {
+            "reload_speed_multiplier": 1.20,
+            "aim_time_multiplier": 1.20,
+        }
+    
+    # Extract reservist multipliers
+    RESERVIST_RELOAD_MULTIPLIER = reservist_bonuses.get("reload_speed_multiplier", 1.20)
+    RESERVIST_AIM_TIME_MULTIPLIER = reservist_bonuses.get("aim_time_multiplier", 1.20)
+    
+    # Note: reservist multipliers multiply time (higher = slower)
+    # For aim time, we convert to speed multiplier (inverse) since it affects accuracy calculation
+    RESERVIST_AIM_TIME_SPEED_MULTIPLIER = 1.0 / RESERVIST_AIM_TIME_MULTIPLIER if RESERVIST_AIM_TIME_MULTIPLIER > 0 else 1.0
+    
     dpm_data = []
     current_range = 0.0
     
@@ -265,7 +285,7 @@ def calculate_dpm(
         # Check if shock bonuses apply (within shock_range)
         is_shock_range = has_shock_trait and current_range <= shock_range
         
-        # Apply reload multipliers (shock and militia)
+        # Apply reload multipliers (shock, militia, and reservist)
         effective_reload_multiplier = reload_speed_multiplier
         effective_shot_time_multiplier = 1.0
         
@@ -282,10 +302,14 @@ def calculate_dpm(
         if has_militia_trait:
             effective_reload_multiplier = effective_reload_multiplier * MILITIA_RELOAD_MULTIPLIER
         
+        # Apply reservist reload multiplier (applies at all ranges, multiplies time, higher = slower)
+        if has_reservist_trait:
+            effective_reload_multiplier = effective_reload_multiplier * RESERVIST_RELOAD_MULTIPLIER
+        
         # Recalculate shots per minute with bonuses if applicable
         shots_per_minute = calculate_shots_per_minute(ammo_props, effective_reload_multiplier, effective_shot_time_multiplier)
         
-        # Calculate accuracy (shock and militia aim time bonuses affect accuracy)
+        # Calculate accuracy (shock, militia, and reservist aim time bonuses affect accuracy)
         accuracy = calculate_accuracy(
             current_range,
             max_range,
@@ -306,6 +330,11 @@ def calculate_dpm(
         if has_militia_trait:
             # Slower aim time means less accurate, apply as multiplicative penalty
             accuracy = accuracy * MILITIA_AIM_TIME_SPEED_MULTIPLIER
+        
+        # Apply reservist aim time multiplier to accuracy (slower aiming = less accurate)
+        if has_reservist_trait:
+            # Slower aim time means less accurate, apply as multiplicative penalty
+            accuracy = accuracy * RESERVIST_AIM_TIME_SPEED_MULTIPLIER
         
         # Apply shock damage multiplier (only applies to physical damage, not suppression)
         effective_damage = base_damages
@@ -330,7 +359,7 @@ def calculate_dpm(
             # Check if shock bonuses apply at max range
             is_shock_range = has_shock_trait and max_range <= shock_range
             
-            # Apply reload multipliers (shock and militia)
+            # Apply reload multipliers (shock, militia, and reservist)
             effective_reload_multiplier = reload_speed_multiplier
             effective_shot_time_multiplier = 1.0
             
@@ -344,6 +373,10 @@ def calculate_dpm(
             # Apply militia reload multiplier (applies at all ranges, multiplies time, higher = slower)
             if has_militia_trait:
                 effective_reload_multiplier = effective_reload_multiplier * MILITIA_RELOAD_MULTIPLIER
+            
+            # Apply reservist reload multiplier (applies at all ranges, multiplies time, higher = slower)
+            if has_reservist_trait:
+                effective_reload_multiplier = effective_reload_multiplier * RESERVIST_RELOAD_MULTIPLIER
             
             # Recalculate shots per minute with bonuses if applicable
             shots_per_minute = calculate_shots_per_minute(ammo_props, effective_reload_multiplier, effective_shot_time_multiplier)
@@ -366,6 +399,10 @@ def calculate_dpm(
             # Apply militia aim time multiplier to accuracy (slower aiming = less accurate)
             if has_militia_trait:
                 accuracy = accuracy * MILITIA_AIM_TIME_SPEED_MULTIPLIER
+            
+            # Apply reservist aim time multiplier to accuracy (slower aiming = less accurate)
+            if has_reservist_trait:
+                accuracy = accuracy * RESERVIST_AIM_TIME_SPEED_MULTIPLIER
             
             # Apply shock damage multiplier (only applies to physical damage, not suppression)
             effective_damage = base_damages

@@ -914,7 +914,7 @@ USA_NEW_UNITS = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "add": [(2, 3), (3, 2)],
+                "add": [(2, 2), (3, 2)],
                 "AGM_AGM88_HARM": 3,
             },
             "SalvoIsMainSalvo": [False, False, False, False],
@@ -938,14 +938,17 @@ USA_NEW_UNITS = {
         },
         "Divisions": {
             "default": {
-                "cards": 2,
+                "cards": 1,
             },
-            "US_8th_Inf_multi": {
+            "RFA_TerrKdo_Sud_multi": {
                 "Transports": None,
             },
-            "US_3rd_Arm_multi": {
-                "Transports": None,
-            },
+            # "US_8th_Inf_multi": {
+            #     "Transports": None,
+            # },
+            # "US_3rd_Arm_multi": {
+            #     "Transports": None,
+            # },
         },
         "availability": [0, 2, 0, 1],
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/Shoot', 'EOrderType/AirplanePatrol', 'EOrderType/AirplaneAttack',

@@ -52,26 +52,26 @@ def _edit_veterancy_hints(source_path) -> None:
         pack_info = xp_packs[row.namespace]
         pack_type = pack_info["pack_type"]
 
-        try:
-            xp_descr_list = row.v.by_m("ExperienceLevelsDescriptors").v
+        # try:
+        xp_descr_list = row.v.by_m("ExperienceLevelsDescriptors").v
 
-            for level, xp_descr in enumerate(xp_descr_list):
-                if not isinstance(xp_descr.v, ndf.model.Object):
-                    continue
+        for level, xp_descr in enumerate(xp_descr_list):
+            if not isinstance(xp_descr.v, ndf.model.Object):
+                continue
 
-                # Use index as level number (0-based)
-                level_key = pack_info["level_format"].format(level=level)
+            # Use index as level number (0-based)
+            level_key = pack_info["level_format"].format(level=level)
 
-                if level_key not in VETERANCY_BONUSES[pack_type]:
-                    logger.warning(f"Missing veterancy data for {level_key} in {pack_type}")
-                    continue
+            if level_key not in VETERANCY_BONUSES[pack_type]:
+                logger.warning(f"Missing veterancy data for {level_key} in {pack_type}")
+                continue
 
-                body_token = VETERANCY_BONUSES[pack_type][level_key]["body_token"]
-                xp_descr.v.by_m("HintBodyToken").v = f"'{body_token}'"
-                logger.info(f"Modified dictionary token for level {level} of {row.namespace}")
+            body_token = VETERANCY_BONUSES[pack_type][level_key]["body_token"]
+            xp_descr.v.by_m("HintBodyToken").v = f"'{body_token}'"
+            logger.info(f"Modified dictionary token for level {level} of {row.namespace}")
 
-        except Exception as e:
-            logger.error(f"Failed to process {row.namespace}: {str(e)}")
+        # except Exception as e:
+        #     logger.error(f"Failed to process {row.namespace}: {str(e)}")
             
 def _create_new_packs(source_path) -> None:
     """GameData/Generated/Gameplay/Gfx/ExperienceLevels.ndf"""

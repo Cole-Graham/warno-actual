@@ -23,7 +23,7 @@ rfa_unit_edits = {
             },
         },
         "availability": [9, 7, 0, 0],
-        "max_speed": 4,
+        "max_speed": 6,
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
@@ -50,7 +50,6 @@ rfa_unit_edits = {
             ],
         },
         "strength": 6,
-        "WeaponAssignment": [(0, [1]), (1, [0]), (2, [0]), (3, [0]), (4, [0, 3]), (5, [0, 2])],
         "TransportedTexture": "UseInGame_Transport_REGINF",
         # "SortingOrder": 20075,
         # "UnitAttackValue": 1,
@@ -229,10 +228,13 @@ rfa_unit_edits = {
         "GameName": {
             "display": "HEIMATJÄGER"
         },
-        "CommandPoints": 30,
+        "CommandPoints": 35,
         "Divisions": {
             "default": {
                 "cards": 1,  # or 2
+            },
+            "RFA_TerrKdo_Sud": {
+                "cards": 2,
             },
         },
         "availability": [10, 0, 0, 0],
@@ -240,12 +242,61 @@ rfa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "animate": {
+                    "MMG_inf__MG3_7_62mm": False,
+                },
+                "quantity": {
+                    "FM_G3KA4": 8,
+                    "MMG_inf__MG3_7_62mm": 2,
+                },
+            },
+        },
+    },
+    
+    "Engineers_RFA": {
+        "CommandPoints": 50,
+        "armor": "Infantry_armor_reference",
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_G3KA4": 8,
+                    "MMG_inf__MG3_7_62mm": 2,
+                },
+            },
+            "Salves": {
+                "Grenade_Satchel_Charge": 6,
+            },
+        },
+    },
+    
+    "Engineers_Reserve_RFA": {
+        "CommandPoints": 25,
+        "armor": "Infantry_armor_reference",
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+    },
+    
+    "Engineers_Flam_RFA": {
+        "CommandPoints": 40,
+        "armor": "Infantry_armor_reference",
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
+        },
     },
     
     "Engineers_AT_RFA": {  # PIONIER (CarlG)
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "PIONIER [CG]"
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
         },
     },
     

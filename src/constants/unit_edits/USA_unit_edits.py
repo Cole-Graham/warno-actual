@@ -2655,7 +2655,7 @@ usa_unit_edits = {
             },
         },
         "availability": [0, 8, 6, 0],
-        "max_speed": 4,
+        "max_speed": 6,
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
@@ -2679,7 +2679,7 @@ usa_unit_edits = {
             # },
         },
         "availability": [6, 4, 0, 0],
-        "max_speed": 4,
+        "max_speed": 6,
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },

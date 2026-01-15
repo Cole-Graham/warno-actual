@@ -137,7 +137,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "PhysicalDamages": 0.85,
                 "RadiusSplashSuppressDamagesGRU": 66,
                 "SuppressDamages": 115,
-                "FlightTimeForSpeed": 3.3,
+                # Eugen removed this from HE canons, not sure if I can add it back
+                # "FlightTimeForSpeed": 3.3,
                 "SupplyCost": 300.0,
             },
         },
@@ -314,7 +315,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("Canon_AP_D10T_Merida", "canon", None, False): {
+    ("Canon_AP_100mm_D10T_Merida", "canon", None, False): {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 55,

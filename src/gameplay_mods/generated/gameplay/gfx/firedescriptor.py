@@ -18,6 +18,11 @@ def edit_gen_gp_gfx_firedescriptor(source_path) -> None:
                 "AmmunitionForBurn": "$/GFX/Weapon/Ammo_Degats_napalm_leger_53m",
             },
         },
+        ("NapalmSpecial", None, False): {
+            "TFireModuleDescriptor": {
+                "AmmunitionForBurn": "$/GFX/Weapon/Ammo_Degats_napalm_leger_53m",
+            },
+        },
         ("NapalmLeger", None, False): {
             "TFireModuleDescriptor": {
                 "RadiusGRU": 80,

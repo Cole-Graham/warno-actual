@@ -18,6 +18,7 @@ from .ndf_parsers import (
     parse_shock_bonuses,
     parse_shock_range,
     parse_militia_bonuses,
+    parse_reservist_bonuses,
 )
 from .ui_components import SearchableCombobox
 from .infantry_tab import InfantryTab
@@ -50,6 +51,12 @@ class DPMVisualizerApp:
         
         # Militia trait bonuses (parsed from game files)
         self.militia_bonuses: Dict[str, float] = {
+            "reload_speed_multiplier": 1.20,
+            "aim_time_multiplier": 1.20,
+        }
+        
+        # Reservist trait bonuses (parsed from game files)
+        self.reservist_bonuses: Dict[str, float] = {
             "reload_speed_multiplier": 1.20,
             "aim_time_multiplier": 1.20,
         }
@@ -231,6 +238,9 @@ class DPMVisualizerApp:
             # Parse militia bonuses
             self.militia_bonuses = parse_militia_bonuses(self.mod_path)
             
+            # Parse reservist bonuses
+            self.reservist_bonuses = parse_reservist_bonuses(self.mod_path)
+            
             # Save dataset to cache file
             self.save_dataset_cache()
             
@@ -304,7 +314,7 @@ class DPMVisualizerApp:
         try:
             # Serialize the data structures
             cache_data = {
-                "cache_version": "2.3",  # Version 2.3: Added militia trait support
+                "cache_version": "2.4",  # Version 2.4: Added reservist trait support
                 "mod_path": str(self.mod_path),
                 "infantry_units": self._serialize_infantry_units(),
                 "weapon_descriptors": self._serialize_weapon_descriptors(),
@@ -312,6 +322,7 @@ class DPMVisualizerApp:
                 "shock_bonuses": self.shock_bonuses,
                 "shock_range": self.shock_range,
                 "militia_bonuses": self.militia_bonuses,
+                "reservist_bonuses": self.reservist_bonuses,
             }
             
             with open(self.dataset_cache_file, 'w', encoding='utf-8') as f:
@@ -353,6 +364,7 @@ class DPMVisualizerApp:
                 "veterancy_reload_speed_multipliers": unit_info.get("veterancy_reload_speed_multipliers", {}),
                 "has_shock_trait": unit_info.get("has_shock_trait", False),
                 "has_militia_trait": unit_info.get("has_militia_trait", False),
+                "has_reservist_trait": unit_info.get("has_reservist_trait", False),
                 "price": unit_info.get("price"),
                 "strength": unit_info.get("strength"),  # Include strength for target strength dropdown
             }
@@ -399,8 +411,8 @@ class DPMVisualizerApp:
             
             # Check cache version - invalidate old caches that don't have multiplicative->flat conversion
             cache_version = cache_data.get("cache_version", "1.0")
-            if cache_version < "2.3":
-                print(f"Warning: Cache version {cache_version} is outdated (needs 2.3+). Cache will be regenerated.")
+            if cache_version < "2.4":
+                print(f"Warning: Cache version {cache_version} is outdated (needs 2.4+). Cache will be regenerated.")
                 return False
             
             # Restore mod path
@@ -461,6 +473,16 @@ class DPMVisualizerApp:
                     else:
                         # Default values if not in cache
                         self.militia_bonuses = {
+                            "reload_speed_multiplier": 1.20,
+                            "aim_time_multiplier": 1.20,
+                        }
+                    
+                    # Load reservist bonuses if available
+                    if "reservist_bonuses" in cache_data:
+                        self.reservist_bonuses = cache_data["reservist_bonuses"]
+                    else:
+                        # Default values if not in cache
+                        self.reservist_bonuses = {
                             "reload_speed_multiplier": 1.20,
                             "aim_time_multiplier": 1.20,
                         }
@@ -529,6 +551,10 @@ class DPMVisualizerApp:
                         # Parse shock bonuses and range
                         self.shock_bonuses = parse_shock_bonuses(self.mod_path)
                         self.shock_range = parse_shock_range(self.mod_path)
+                        
+                        # Parse militia and reservist bonuses
+                        self.militia_bonuses = parse_militia_bonuses(self.mod_path)
+                        self.reservist_bonuses = parse_reservist_bonuses(self.mod_path)
                         
                         self.save_dataset_cache()
                     
@@ -614,6 +640,10 @@ class DPMVisualizerApp:
                 # Parse shock bonuses and range
                 self.shock_bonuses = parse_shock_bonuses(self.mod_path)
                 self.shock_range = parse_shock_range(self.mod_path)
+                
+                # Parse militia and reservist bonuses
+                self.militia_bonuses = parse_militia_bonuses(self.mod_path)
+                self.reservist_bonuses = parse_reservist_bonuses(self.mod_path)
                 
                 # Save the newly parsed data
                 self.save_dataset_cache()

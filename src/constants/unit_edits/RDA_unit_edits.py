@@ -1234,7 +1234,7 @@ rda_unit_edits = {
     "DCA_ZPU4_DDR": {
         "CommandPoints": 20,
         "availability": [12, 9, 0, 0],
-        "max_speed": 4,
+        "max_speed": 6,
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
@@ -1253,7 +1253,7 @@ rda_unit_edits = {
         },
         "Factory": "EFactory/Logistic",
         "availability": [9, 7, 0, 0],
-        "max_speed": 4,
+        "max_speed": 6,
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },

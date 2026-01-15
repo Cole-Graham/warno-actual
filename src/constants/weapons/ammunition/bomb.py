@@ -90,7 +90,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Bomb_Mk77_340kg_Napalm_salvolength8", "napalm_bomb", None, False): {
         "Ammunition": {
             "parent_membr": {
-                "NbTirParSalves": 8,
+                "ShotsCountPerSalvo": 8,
                 "SupplyCost": 260.0,
                 "AffichageMunitionParSalve": 8,
             },
@@ -100,7 +100,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Bomb_Mk77_340kg_Napalm_salvolength5", "napalm_bomb", "Bomb_Mk77_340kg_Napalm_salvolength4", True): { # 71
         "Ammunition": {
             "parent_membr": {
-                "NbTirParSalves": 5,
+                "ShotsCountPerSalvo": 5,
                 "SupplyCost": 200.0,
                 "AffichageMunitionParSalve": 5,
             },
@@ -118,7 +118,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Bomb_Mk77_340kg_Napalm_salvolength3", "napalm_bomb", "Bomb_Mk77_340kg_Napalm_salvolength4", True): { # 71
         "Ammunition": {
             "parent_membr": {
-                "NbTirParSalves": 3,
+                "ShotsCountPerSalvo": 3,
                 "SupplyCost": 150.0,
                 "AffichageMunitionParSalve": 3,
             },

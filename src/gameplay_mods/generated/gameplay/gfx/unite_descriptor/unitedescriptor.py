@@ -519,19 +519,17 @@ def _handle_reversescanner_module(logger, game_db, unit_data, edit_type, unit_na
                                    edits, module, *args) -> None:
     """Handle TReverseScannerWithIdentificationDescriptor for existing and new units"""
 
-    visibility_rolls_obj = module.v.by_m("VisibilityRollRule")
-
-    current_base_prob = float(visibility_rolls_obj.v.by_m("IdentifyBaseProbability").v)
+    current_base_prob = float(module.v.by_m("IdentifyBaseProbability").v)
     new_base_prob = min(current_base_prob * 1.25, 1.0)
         
-    visibility_rolls_obj.v.by_m("IdentifyBaseProbability").v = str(new_base_prob)
+    module.v.by_m("IdentifyBaseProbability").v = str(new_base_prob)
 
     custom_roll_freq = edits.get("optics", {}).get("TimeBetweenEachIdentifyRoll", None)
     if custom_roll_freq:
-        visibility_rolls_obj.v.by_m("TimeBetweenEachIdentifyRoll").v = str(custom_roll_freq)
+        module.v.by_m("TimeBetweenEachIdentifyRoll").v = str(custom_roll_freq)
     else:
-        current_roll_freq = float(visibility_rolls_obj.v.by_m("TimeBetweenEachIdentifyRoll").v)
-        visibility_rolls_obj.v.by_m("TimeBetweenEachIdentifyRoll").v = str(current_roll_freq / 2)
+        current_roll_freq = float(module.v.by_m("TimeBetweenEachIdentifyRoll").v)
+        module.v.by_m("TimeBetweenEachIdentifyRoll").v = str(current_roll_freq / 2)
 
 
 def _handle_missilecarriage_module(logger, game_db, unit_data, edit_type, unit_name,

@@ -2166,7 +2166,7 @@ sov_unit_edits = {
             },
         },
         "availability": [9, 7, 0, 0],
-        "max_speed": 4,
+        "max_speed": 6,
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
@@ -2182,7 +2182,7 @@ sov_unit_edits = {
         },
         "Factory": "EFactory/Logistic",
         "availability": [0, 9, 7, 0],
-        "max_speed": 4,
+        "max_speed": 6,
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },

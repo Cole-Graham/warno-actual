@@ -16,3 +16,9 @@ def edit_uispecificshowroomarmorycomponent(source_path) -> None:
     # Update max units
     source_path.by_namespace("MaxUnitsInDeckPerCategory").v = "11"
     logger.debug("Updated max units in deck per category")
+    
+    armory_component = source_path.by_namespace("ArmoryComponentDescriptor")
+    unit_pack_descriptor = armory_component.v.by_member("UnitPackDescriptor")
+    unit_pack_descriptor.v.by_member("FirstMargin").v = "TRTTILength(Magnifiable = 9.0)"
+    unit_pack_descriptor.v.by_member("LastMargin").v = "TRTTILength(Magnifiable = 10.0)"
+    logger.debug("Updated armory component margins")

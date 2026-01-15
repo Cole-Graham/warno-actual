@@ -365,7 +365,7 @@ fr_unit_edits = {
         "armor": "Infantry_armor_reference",
         "availability": [0, 7, 5, 0],
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_light'"],
+            "add_specs": ["'infantry_equip_medium'"],
         },
         "max_speed": 26,
         "UpgradeFromUnit": "Sapeurs_CMD_FR",

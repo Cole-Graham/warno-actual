@@ -20,7 +20,7 @@ pol_unit_edits = {
             },
         },
         "availability": [9, 7, 0, 0],
-        "max_speed": 4,
+        "max_speed": 6,
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
@@ -45,7 +45,7 @@ pol_unit_edits = {
             },
         },
         "availability": [9, 7, 0, 0],
-        "max_speed": 4,
+        "max_speed": 6,
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
@@ -65,7 +65,7 @@ pol_unit_edits = {
         #         "cards": 1,
         #     },
         # },
-        "max_speed": 4,
+        "max_speed": 6,
         "availability": [9, 7, 0, 0],
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
@@ -89,7 +89,7 @@ pol_unit_edits = {
         #     },
         # },
         "availability": [6, 4, 0, 0],
-        "max_speed": 4,
+        "max_speed": 6,
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
@@ -1569,7 +1569,7 @@ pol_unit_edits = {
     },
     "DCA_AZP_S60_POL": {  # AZP S-60
         "CommandPoints": 35,
-        "max_speed": 4,
+        "max_speed": 6,
         "availability": [9, 7, 0, 0],
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],

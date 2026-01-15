@@ -186,8 +186,8 @@ def apply_he_damage_standards(source_path, logger):
         if name_membr == "'None'":
             continue
         
-        minmax_category = ammo_descr.v.by_m("MinMaxCategory").v
-        if minmax_category != "MinMax_CanonAP":
+        minmax_category = ammo_descr.v.by_m("MinMaxCategory", False)
+        if minmax_category is None or minmax_category.v != "MinMax_CanonAP":
             continue
         
         piercing_bool = ammo_descr.v.by_m("PiercingWeapon").v
