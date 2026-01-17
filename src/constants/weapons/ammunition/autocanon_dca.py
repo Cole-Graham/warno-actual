@@ -26,6 +26,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 25,
             },
             "parent_membr": {
+                "MaximumRangeGRU": 1575,
                 "AimingTime": 1.2,
             },
         },
@@ -38,6 +39,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 25,
             },
             "parent_membr": {
+                "MaximumRangeGRU": 1575,
                 "AimingTime": 1.2,
             },
         },
@@ -73,7 +75,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_2_canon_ZU23_2_23mm_TOWED", "DCA", None, False): { # 261
         "Ammunition": {
             "parent_membr": {
-                "MaximumRangeGRU": 1225,
+                "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 1925,
                 "AimingTime": 1.2,
@@ -84,7 +86,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_2_canon_ZU23_2_23mm", "DCA", None, False): { # 260
         "Ammunition": {
             "parent_membr": {
-                "MaximumRangeGRU": 1225,
+                "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 1925,
                 "AimingTime": 1.2,
@@ -95,7 +97,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_2_canon_Jod_SP_23mm", "DCA", None, False): { # ???
         "Ammunition": {
             "parent_membr": {
-                "MaximumRangeGRU": 1225,
+                "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 1925,
                 "AimingTime": 1.2,
@@ -106,7 +108,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_2_canon_Jod_towed_23mm", "DCA", None, False): { # ???
         "Ammunition": {
             "parent_membr": {
-                "MaximumRangeGRU": 1225,
+                "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 1925,
                 "AimingTime": 1.2,
@@ -118,6 +120,25 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 15,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 1575,
+                "AimingTime": 1.2,
+            },
+        },
+    },
+    
+    ("DCA_1_canon_Bofors_40mm", "DCA", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "TimeBetweenTwoShots": 0.3,
+                "TimeBetweenTwoFx": 0.3,
+                "MaximumRangeGRU": 1575,
+                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 2275,
+                "ShotsCountPerSalvo": 10,
+                "AffichageMunitionParSalve": 10,
+                "TimeBetweenTwoSalvos": 1.5,
             },
         },
     },

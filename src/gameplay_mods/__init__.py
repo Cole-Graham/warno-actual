@@ -69,6 +69,7 @@ from .generated import (
 from .userinterface import (
     edit_ui_ingame_uispecificunitinfopanelview,
     edit_ui_ingame_useingametextures,
+    edit_ui_outgame_uispecificoutgamewelcomeview,
     edit_ui_style_defaulttextformatscript,
 )
 
@@ -136,5 +137,6 @@ __all__ = [
     # .userinterface
     'edit_ui_ingame_uispecificunitinfopanelview',
     'edit_ui_ingame_useingametextures',
+    'edit_ui_outgame_uispecificoutgamewelcomeview',
     'edit_ui_style_defaulttextformatscript',
 ]

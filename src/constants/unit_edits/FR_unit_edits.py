@@ -224,6 +224,93 @@ fr_unit_edits = {
         "remove_zone_capture": None,
     },
     
+    "Rifles_Aero_CMD_FR": {
+        "CommandPoints": 30,
+        "armor": "Infantry_armor_reference",
+        "GameName": {
+            "display": "#LDR AEROMOBILES LDR.",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_Standard",
+                "Steelman_infanterie_autoresolve",
+                "UNITE_Rifles_Aero_CMD_FR",
+                "Unite",
+            ],
+        },
+        "strength": 9,
+        "TransportedTexture": "UseInGame_Transport_REGINF",
+        "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "UnitRole": "infantry",
+        "SpecialtiesList": {
+            "overwrite_all": [
+                '_leader',
+                'infantry_equip_medium',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Infantry",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 0, 7, 5],
+        "max_speed": 26,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "insert": [(1, "MMG_inf_AANF1_7_62mm")],
+                "insert_edits": {
+                    1: {
+                        "turret_edits": {
+                            "YulBoneOrdinal": 2,
+                        },
+                        "AnimateOnlyOneSoldier": False,
+                        "NbWeapons": 3,
+                        "SalvoStockIndex": 1,
+                        "HandheldEquipmentKey": "'WeaponAlternative_2'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_2"],
+                    },
+                    2: {
+                        "turret_edits": {
+                            "YulBoneOrdinal": 3,
+                        },
+                        "SalvoStockIndex": 2,
+                        "HandheldEquipmentKey": "'WeaponAlternative_3'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
+                    },
+                },
+                "quantity": {
+                    "FM_FAMAS": 6,
+                },
+            },
+            "Salves": {
+                "insert": [(1, 45)],
+            },
+        },
+        "is_infantry": True,
+        "is_ground_vehicle": False,
+        "remove_zone_capture": None,
+    },
+    
+    "Auverland_FR": {
+        "CommandPoints": 15,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+    },
+    
     "VLTT_P4_FR": {
         "CommandPoints": 15,
         "SpecialtiesList": {
@@ -266,13 +353,6 @@ fr_unit_edits = {
             "add_specs": ["'infantry_equip_light'"],
         },
         "max_speed": 26,
-        "WeaponAssignment": [
-                (0, [0, ]),
-                (1, [0, ]),
-                (2, [0, ]),
-                (3, [0, ]),
-                (4, [0, ]),
-            ],
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "quantity": {
@@ -326,6 +406,30 @@ fr_unit_edits = {
             "Salves": {
                 "FM_FAMAS": 11,
                 "RocketInf_APILAS": 6,
+            },
+        },
+    },
+    
+    "Rifles_Aero_FR": { # AEROMOBILES
+        "CommandPoints": 50,
+        "armor": "Infantry_armor_reference",
+        "strength": 11,
+        "availability": [8, 6, 0, 0],
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "animate": {
+                    "MMG_inf_AANF1_7_62mm": False,
+                },
+                "quantity": {
+                    "MMG_inf_AANF1_7_62mm": 2,
+                },
+            },
+            "Salves": {
+                "RocketInf_APILAS": 7,
             },
         },
     },
@@ -477,17 +581,20 @@ fr_unit_edits = {
     
     # FR ARTILLERY
     "Mortier_MORT61_120mm_FR": {
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "availability": [5, 4, 3, 0]
     },
+    
     "VAB_Mortar_81_FR": {
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "availability": [4, 3, 0, 0],
     },
+    
     "AMX_30_AuF1_FR": {
         "CommandPoints": 210,
         "availability": [3, 2, 0, 0],
     },
+    
     # FR TANK
     "AMX_30_B2_CMD_FR": {
         "CommandPoints": 145,
@@ -528,6 +635,16 @@ fr_unit_edits = {
             },
         },
         "remove_zone_capture": None,
+    },
+    
+    "Auverland_MILAN_FR": {
+        "CommandPoints": 45,
+        "availability": [8, 6, 0, 0],
+    },
+    
+    "VLRA_MILAN_FR": {
+        "CommandPoints": 45,
+        "availability": [0, 8, 6, 0],
     },
     
     "VAB_FR": {
@@ -683,7 +800,16 @@ fr_unit_edits = {
     },
     # FR RECON
     "VLRA_HMG_FR": {
-        "CommandPoints": 25,
+        "CommandPoints": 20,
+    },
+    
+    "Auverland_MG_FR": {
+        "CommandPoints": 20,
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_AANF1_7_62mm": 44,
+            },
+        },
     },
     
     "Scout_FR": {
@@ -697,6 +823,37 @@ fr_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "RocketInf_LRAC_F1": 4,
+            },
+        },
+    },
+    
+    "Scout_Aero_FR": {
+        "CommandPoints": 45,
+        "max_speed": 26,
+        "armor": "Infantry_armor_reference",
+        "availability": [0, 6, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "insert": [(1, "RocketInf_LRAC_F1")],
+                "insert_edits": {
+                    1: {
+                        "turret_edits": {
+                            "YulBoneOrdinal": 2,
+                        },
+                        "NbWeapons": 1,
+                        "SalvoStockIndex": 1,
+                        "HandheldEquipmentKey": "'WeaponAlternative_2'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_2"],
+                    },
+                },
+            },
+            "Salves": {
+                "insert": [(1, 4)],
             },
         },
     },
@@ -741,6 +898,11 @@ fr_unit_edits = {
         "availability": [0, 0, 3, 2],
     },
     
+    "Gazelle_reco_FR": {
+        "CommandPoints": 35,
+        "availability": [0, 4, 0, 0],
+    },
+    
     "Gazelle_20mm_reco_FR": {
         "CommandPoints": 50,
         "availability": [0, 4, 3, 0],
@@ -755,6 +917,16 @@ fr_unit_edits = {
     "TRM_2000_20mm_FR": {
         "CommandPoints": 35,
         "availability": [9, 7, 0, 0],
+    },
+    
+    "VLRA_20mm_FR": {
+        "CommandPoints": 35,
+        "availability": [9, 7, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_1_canon_Bofors_40mm": 15,
+            },
+        },
     },
     
     "MANPAD_Mistral_FR": {
@@ -850,6 +1022,11 @@ fr_unit_edits = {
     "Mirage_5_F_clu_FR": {
         "CommandPoints": 200,
         "availability": [0, 2, 0, 0],
+    },
+    
+    "Mirage_2000_C_FR": {
+        "CommandPoints": 175,
+        "availability": [0, 3, 2, 0],
     },
     
     "Jaguar_HE_FR": {

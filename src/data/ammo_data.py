@@ -81,29 +81,20 @@ def build_ammo_data(mod_src_path: Path) -> Dict[str, Any]:
         ammo_missile_file = mod.parse_src(ammo_missile_path)
         weapon_descriptor_file = mod.parse_src(weapon_descriptor_path)
 
-        # Merge salvo weapons and renames separately
+        # Build salvo weapons (from game files - base game data)
         salvo_weapons = build_salvo_weapons(ammo_file)
         salvo_weapons.update(build_salvo_weapons(ammo_missile_file))
-        
-        renames = build_renames(ammo_file)
-        renames.update(build_renames(ammo_missile_file))
-        
-        # Combine salvo weapons and renames
-        renames_old_new = {**salvo_weapons, **renames}
-        
-        # Create reversed mapping
-        renames_new_old = {v: k for k, v in renames_old_new.items()}
         
         return {
             "mg_categories": build_mg_categories(ammo_file),
             "full_ball_weapons": build_full_ball_weapons(ammo_file),
             "sniper_weapons": build_sniper_weapons(ammo_file),
             "radar_weapons": build_radar_weapons(ammo_file, ammo_missile_file),
-            "renames_old_new": renames_old_new,
-            "renames_new_old": renames_new_old,
+            "salvo_weapons": salvo_weapons,
             "salves_map": build_ammo_salves_map(weapon_descriptor_file),
             "mortar_weapons": build_mortar_weapons(ammo_file),
             "ammo_properties": build_ammo_properties(ammo_file),
+            "all_ammunition_and_missile": build_all_ammunition_and_missile_names(ammo_file, ammo_missile_file),
         }
         
     except Exception as e:
@@ -113,12 +104,41 @@ def build_ammo_data(mod_src_path: Path) -> Dict[str, Any]:
             "full_ball_weapons": [],
             "sniper_weapons": [],
             "radar_weapons": [],
-            "renames_old_new": {},
-            "renames_new_old": {},
+            "salvo_weapons": {},
             "salves_map": {},
             "mortar_weapons": {},
             "ammo_properties": {},
+            "all_ammunition_and_missile": [],
         }
+
+def build_all_ammunition_and_missile_names(parse_ammo_source, parse_ammo_missile_source) -> List[str]:
+    """Build list of all ammunition and missile names from both files.
+    
+    Args:
+        parse_ammo_source: Parsed Ammunition.ndf file
+        parse_ammo_missile_source: Parsed AmmunitionMissiles.ndf file
+    
+    Returns:
+        List of ammunition names without "Ammo_" prefix
+    """
+    all_names = []
+    
+    for ammo_descr in parse_ammo_source:
+        if hasattr(ammo_descr, 'namespace') and ammo_descr.namespace:
+            # Extract name without "Ammo_" prefix
+            name = ammo_descr.namespace.removeprefix('Ammo_')
+            if name:
+                all_names.append(name)
+    
+    for ammo_descr in parse_ammo_missile_source:
+        if hasattr(ammo_descr, 'namespace') and ammo_descr.namespace:
+            # Extract name without "Ammo_" prefix
+            name = ammo_descr.namespace.removeprefix('Ammo_')
+            if name:
+                all_names.append(name)
+    
+    return all_names
+
 
 def build_ammo_properties(parse_ammo_source) -> Dict[str, Any]:
     """Build dictionary of ammunition properties from Ammunition.ndf"""
@@ -269,29 +289,6 @@ def build_sniper_weapons(parse_source) -> list:
             snipers.append(weapon.n)
     
     return snipers 
-
-
-def build_renames(parse_source) -> Dict[str, str]:
-    """Build mapping of constants renames to their new names.
-    
-    Returns:
-        Dict mapping original names to renamed versions
-    """
-    renames = {}
-    
-    for ammo_descr in parse_source:
-        
-        name = ammo_descr.namespace.removeprefix('Ammo_')
-        
-        for old_name, new_name in AMMUNITION_RENAMES:
-            if old_name == name:
-                renames[old_name] = new_name
-    
-        for old_name, new_name in AMMUNITION_MISSILES_RENAMES:
-            if old_name == name:
-                renames[old_name] = new_name
-    
-    return renames
 
 
 def build_salvo_weapons(parse_source) -> Dict[str, str]:

@@ -397,6 +397,13 @@ def _apply_hit_roll_edits(descr: Any, hit_roll_data: Dict) -> None:
         modifiers[1].v = (modifiers[1].v[0], str(hit_roll_data["Idling"]))
     if "Moving" in hit_roll_data:
         modifiers[2].v = (modifiers[2].v[0], str(hit_roll_data["Moving"]))
+    if "DistanceToTarget" in hit_roll_data:
+        # Check if DistanceToTarget member exists
+        distance_to_target_membr = hitroll_obj.by_m("DistanceToTarget", None)
+        if distance_to_target_membr:
+            distance_to_target_membr.v = str(hit_roll_data["DistanceToTarget"])
+        else:
+            hitroll_obj.add(f"DistanceToTarget = {str(hit_roll_data["DistanceToTarget"])}")
 
 
 def _track_dictionary_entries(weapon_name, ammo_data, ingame_names, calibers):

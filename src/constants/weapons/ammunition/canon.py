@@ -169,6 +169,22 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("Canon_HE_90mm_M48", "canon", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 1.0,
+            },
+        },
+    },
+    
+    ("Canon_HE_90mm_M48_KanJPz", "canon", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 1.0,
+            },
+        },
+    },
 
     ("Canon_HE_165mm_AVRE", "canon", None, False): { # 217
         "Ammunition": {

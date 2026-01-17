@@ -3,6 +3,7 @@
 from typing import Any, Dict
 
 from src.constants.weapons import (
+    KE_AND_HEAT_ROW_COUNT,
     VANILLA_LAST_ROW,
     VANILLA_LAST_COLUMN,
     DAMAGE_EDITS,
@@ -235,6 +236,16 @@ def _edit_infantry_armor(source_path) -> None:
 
     damage_params_obj = source_path.by_n("DamageResistanceParams").v
     damage_array = damage_params_obj.by_m("Values").v
+    
+    # Validate INFANTRY_ARMOR_EDITS is proper length
+    if len(INFANTRY_ARMOR_EDITS) + KE_AND_HEAT_ROW_COUNT != VANILLA_LAST_ROW:
+        logger.warning(
+            f"INFANTRY_ARMOR_EDITS IS NOT THE CORRECT LENGTH!!!\n"
+            f"Expected {VANILLA_LAST_ROW} rows, got:\n"
+            f"INFANTRY_ARMOR_EDITS: {len(INFANTRY_ARMOR_EDITS)}\n"
+            f"KE_AND_HEAT_ROW_COUNT: {KE_AND_HEAT_ROW_COUNT}\n"
+            f"TOTAL: {len(INFANTRY_ARMOR_EDITS) + KE_AND_HEAT_ROW_COUNT}\n"
+        )
 
     # Apply infantry armor edits
     for i, row in enumerate(damage_array):

@@ -47,6 +47,7 @@ def handle_tags_module(
         return
 
     tagset = module.v.by_m("TagSet")
+    # TODO: This is fragile, tags should always be added or removed, not overwritten
     if "overwrite_all" in edits["TagSet"]:
         tagset.v = ndf.convert(str(edits["TagSet"]["overwrite_all"]))
     elif "add_tags" in edits["TagSet"]:

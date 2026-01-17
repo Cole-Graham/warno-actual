@@ -22,6 +22,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "SalvoLengths": [1],
         },
         "MissileDescriptor": {
+            # TODO: Create indicator for missile speed on unit card
             "MaxSpeedGRU": 233,
         },
     },
@@ -569,12 +570,14 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
 
+    # TODO: Find out why this is sourcing ATGM_9M113M_KonkursM_salvolength5 for the donor
     ("ATGM_inf_9M113M_KonkursM", "ATGM", "ATGM_9M113M_KonkursM", True): {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 60,
             },
             "parent_membr": {
+                "TimeBetweenTwoSalvos": 8.0,
                 "MaximumRangeGRU": 2450,
             },
         },

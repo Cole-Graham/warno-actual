@@ -45,6 +45,25 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("RocketAir_SNEB_68mm_avion_salvolength18", "rocket", "RocketAir_SNEB_68mm_salvolength18", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2450,
+                "RadiusSplashPhysicalDamagesGRU": 14,
+                "RadiusSplashSuppressDamagesGRU": 21,
+                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoFx": 0.1,
+                "PhysicalDamages": 0.75,
+                "SuppressDamages": 75,
+                "SupplyCost": 108.0,
+            },
+        },
+    },
+    
     ("RocketAir_SNEB_68mm_salvolength36", "rocket", None, False): {
         "Ammunition": {
             "hit_roll": {

@@ -296,6 +296,15 @@ def _handle_vehicle_depiction(unit_name, vehicle_depiction, edits, is_new_entry=
                                 )"""
                             sub_dep_generators.v.add(new_entry)
                             vehicle_depiction.v.add(sub_dep_generators)
+                elif sub_dep_type == "TowedUnitSubDepictionGenerator":
+                    for edit_type, edit_value in sub_dep_value.items():
+                        if edit_type == "add":
+                            new_entry = f"""TowedUnitSubDepictionGenerator
+                                (
+                                    Mesh = $/GFX/DepictionResources/Modele_{unit_name}
+                                )"""
+                            sub_dep_generators.v.add(new_entry)
+                            vehicle_depiction.v.add(sub_dep_generators)
 
         else:
             logger.error(f"Unknown row name or type: {row_name_or_type}")

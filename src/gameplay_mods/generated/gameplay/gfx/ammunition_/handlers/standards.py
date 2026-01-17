@@ -101,6 +101,11 @@ def apply_bomb_damage_standards(source_path, logger):
     """Edit bomb damage standards in Ammunition.ndf and AmmunitionMissiles.ndf"""
 
     bombs = {
+        "he_100kg": {
+            "PhysicalDamages": 5,
+            "RadiusSplashPhysicalDamagesGRU": 58,
+            "RadiusSplashSuppressDamagesGRU": 77,
+        },
         "he_250kg": {
             "PhysicalDamages": 10,
             "RadiusSplashPhysicalDamagesGRU": 110,
@@ -126,6 +131,7 @@ def apply_bomb_damage_standards(source_path, logger):
     }
 
     he_bomb_matching = {
+        "100": ["119kg"],
         "250": ["250kg", "GBU_12"],
         "500": ["400kg", "450kg", "500kg", "513kg"],
         "1000": ["1000kg", "GBU_10", "GBU_27"],
@@ -138,6 +144,10 @@ def apply_bomb_damage_standards(source_path, logger):
         # name_hash = ammo_descr.v.by_m("Name")
         traits_list = ammo_descr.v.by_m("TraitsToken")
         if any("'HE'" in trait.v for trait in traits_list.v):
+            if any(bomb in ammo_name for bomb in he_bomb_matching["100"]):
+                for key, value in bombs["he_100kg"].items():
+                    ammo_descr.v.by_m(key).v = str(value)
+                    logger.info(f"(Ammunition.ndf) Changed {ammo_descr.namespace} {key} to {value}")
             if any(bomb in ammo_name for bomb in he_bomb_matching["250"]):
                 for key, value in bombs["he_250kg"].items():
                     ammo_descr.v.by_m(key).v = str(value)

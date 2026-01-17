@@ -1,6 +1,8 @@
 """Unit edits for depiction files."""
 
 from .FR_depiction_edits import (
+    rifles_aero_cmd_fr,
+    scout_aero_fr,
     vab_t20_fr,
 )
 from .POL_depiction_edits import (
@@ -11,7 +13,9 @@ from .RDA_depiction_edits import (
     mi_24p_s8_at_ddr,
     mi_24p_s8_at2_ddr,
 )
-# from .RFA_depiction_edits import ()
+from .RFA_depiction_edits import (
+    unimog_s_404_rfa,
+)
 from .SOV_depiction_edits import (
     mi_8tv_gunship_sov,
     mi_24p_sov,
@@ -20,7 +24,9 @@ from .SOV_depiction_edits import (
     motrifles_btr_ttsko_sov,
     mtlb_vasilek_sov,
 )
-# from .UK_depiction_edits import ()
+from .UK_depiction_edits import (
+    rover_101fc_supply_uk,
+)
 from .USA_depiction_edits import (
     airborne_engineers_flash_us,
     airborne_half_dragon_us,
@@ -30,6 +36,7 @@ from .USA_depiction_edits import (
     f4e_phantom_ii_napalm_us,
     m3a1_bradley_cfv_us,
     m3a2_bradley_cfv_us,
+    m35_supply_us,
     ranger_us,
     rifles_half_at4_us,
     scout_us,
@@ -37,6 +44,8 @@ from .USA_depiction_edits import (
 
 __all__ = [
     # FR
+    "rifles_aero_cmd_fr",
+    "scout_aero_fr",
     "vab_t20_fr",
     
     # POL
@@ -47,6 +56,9 @@ __all__ = [
     "mi_24p_s8_at_ddr",
     "mi_24p_s8_at2_ddr",
     
+    # RFA
+    "unimog_s_404_rfa",
+    
     # SOV
     "mi_8tv_gunship_sov",
     "mi_24p_sov",
@@ -54,6 +66,9 @@ __all__ = [
     "mortier_2b9_vasilek_sov",
     "motrifles_btr_ttsko_sov",
     "mtlb_vasilek_sov",
+    
+    # UK
+    "rover_101fc_supply_uk",
     
     # USA
     "airborne_engineers_flash_us",
@@ -64,6 +79,7 @@ __all__ = [
     "f4e_phantom_ii_napalm_us",
     "m3a1_bradley_cfv_us",
     "m3a2_bradley_cfv_us",
+    "m35_supply_us",
     "ranger_us",
     "rifles_half_at4_us",
     "scout_us",

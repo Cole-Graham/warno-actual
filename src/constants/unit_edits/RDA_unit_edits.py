@@ -704,7 +704,7 @@ rda_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": [0, 2, 0, 0],
+        "availability": [0, 3, 0, 0],
         "remove_zone_capture": None,
     },
     
@@ -1020,7 +1020,7 @@ rda_unit_edits = {
     
     "PT76B_tank_DDR": {
         "CommandPoints": 20,
-        "availability": [12, 0, 0, 0],
+        "availability": [14, 0, 0, 0],
     },
     
     "T34_85M_DDR": {
@@ -1029,7 +1029,7 @@ rda_unit_edits = {
             "sides": (2, None),
             "rear": (1, None),
         },
-        "availability": [10, 0, 0, 0],
+        "availability": [12, 0, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [("Canon_AP_85mm_S53", "Canon_HEAT2_85mm_S53")],
@@ -1046,7 +1046,6 @@ rda_unit_edits = {
         "GameName": {
             "display": "KPz T-55A",
         },
-        "strength": 20,
         "CommandPoints": 70,
         "availability": [10, 7, 0, 0],
     },
@@ -1503,7 +1502,7 @@ rda_unit_edits = {
 
     "MiG_21bis_HE_DDR": {
         "CommandPoints": 135,
-        "availability": [0, 3, 0, 0],
+        "availability": [0, 4, 0, 0],
     },
 
     "MiG_21bis_RKT2_DDR": {  # 4x S-24 [RKT2]

@@ -184,7 +184,7 @@ f4_wild_weasel_2_us: Dict[str, Dict[str, Any]] = {
                             PhysicalProperty = "Tourelle4_MissileCount"
                             ProjectileModelResource = $/GFX/DepictionResources/Modele_Missile_Maverick_AGM65D
                         )
-                        MissileCount = 3
+                        MissileCount = 2
                         WeaponIndex = 4
                     ),
                     TStaticMissileCarriageSubDepictionMissileInfo
@@ -231,7 +231,7 @@ f4_wild_weasel_2_us: Dict[str, Dict[str, Any]] = {
                         (
                             ProjectileModelResource = $/GFX/DepictionResources/Modele_Missile_Maverick_AGM65D
                         )
-                        MissileCount = 3
+                        MissileCount = 2
                         WeaponIndex = 4
                     ),
                     TStaticMissileCarriageSubDepictionMissileInfo

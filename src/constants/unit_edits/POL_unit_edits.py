@@ -877,7 +877,7 @@ pol_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": [0, 2, 0, 0],
+        "availability": [0, 3, 0, 0],
         "remove_zone_capture": None,
     },
     "Mortier_PM43_120mm_POL": {  # M wz.43 120mm
@@ -1495,7 +1495,7 @@ pol_unit_edits = {
         "CommandPoints": 35,
     },
     "BRDM_1_POL": {  # BRDM-1
-        "CommandPoints": 25,
+        "CommandPoints": 20,
         "UpgradeFromUnit": None,
     },
     "OT_65_POL": {  # OT-65
@@ -1736,6 +1736,11 @@ pol_unit_edits = {
     "Mi_2_rocket_POL": {  # Mi-2URN Zmija
         "CommandPoints": 50,
         "availability": [8, 6, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "AutoCanon_AP_23mm_NS23": 25,
+            },
+        },
     },
     "Mi_2_ATGM_POL": {  # Mi-2URP Salamandra
         "CommandPoints": 60,
@@ -1810,8 +1815,8 @@ pol_unit_edits = {
         },
     },
     "MiG_21bis_HE_POL": {  # MiG-21bis [HE]
-        "CommandPoints": 135,
-        "availability": [0, 3, 0, 0],
+        "CommandPoints": "MiG_21bis_HE_DDR",
+        "availability": "MiG_21bis_HE_DDR",
     },
     "MiG_21bis_RKT2_POL": {  # 4x S-24 [RKT2]
         "CommandPoints": "MiG_21bis_RKT2_DDR",

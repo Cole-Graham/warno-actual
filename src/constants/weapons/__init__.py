@@ -6,6 +6,9 @@ from src.utils.logging_utils import setup_logger
 import json, os
 from .ammunition import raw_ammunitions
 from .damage_values import (
+    HEAT_ROW_COUNT,
+    KINETIC_ROW_COUNT,
+    KE_AND_HEAT_ROW_COUNT,
     VANILLA_LAST_ROW,
     VANILLA_LAST_COLUMN,
     DAMAGE_EDITS,
@@ -36,6 +39,9 @@ from .vanilla_inst_modifications import (
 )
 
 __all__ = [
+    'HEAT_ROW_COUNT',
+    'KINETIC_ROW_COUNT',
+    'KE_AND_HEAT_ROW_COUNT',
     'VANILLA_LAST_ROW',
     'VANILLA_LAST_COLUMN',
     'AMMUNITION_MISSILES_REMOVALS',

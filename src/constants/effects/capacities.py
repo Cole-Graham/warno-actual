@@ -83,7 +83,7 @@ CHOC_MOVE_EFFECT = (
     '        TUnitEffectIncreaseSpeedDescriptor'
     '        ('
     '            ModifierType = ~/ModifierType_Multiplicatif'
-    '            BonusSpeedBaseInPercent   = 2.0'
+    '            BonusSpeedBaseInPercent   = 1.7'
     '        ),'
     '        TUnitEffectShowLabelIconDescriptor'
     '        ('

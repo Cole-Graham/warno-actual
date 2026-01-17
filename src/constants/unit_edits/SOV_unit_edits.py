@@ -474,7 +474,7 @@ sov_unit_edits = {
             },
             "Salves": {
                 "PM_AKSU_74": 7,
-                "SAW_RPK_74_5_56mm": 15,
+                "SAW_RPK_74_5_56mm": 18,
                 "MANPAD_igla": 4,
                 "Grenade_SMOKE": 3,
             },
@@ -730,7 +730,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 11,
-                "SAW_RPK_74_5_56mm": 15,
+                "SAW_RPK_74_5_56mm": 18,
                 "RocketInf_RPG27_105mm": 4,
             },
         },
@@ -807,7 +807,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 11,
-                "SAW_RPK_74_5_56mm": 15,
+                "SAW_RPK_74_5_56mm": 18,
                 "ATGM_9K115_Metis": 6,
             },
         },
@@ -1448,7 +1448,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": [0, 2, 0, 0],
+        "availability": [0, 3, 0, 0],
         "remove_zone_capture": None,
     },
 
@@ -1525,12 +1525,17 @@ sov_unit_edits = {
     },
 
     "Mortier_2S12_120mm_SOV": {
-        "CommandPoints": 40,
+        "CommandPoints": 45,
+        "availability": [5, 4, 3, 0],
+    },
+    
+    "Mortier_2S12_120mm_TTsko_SOV": {
+        "CommandPoints": 45,
         "availability": [5, 4, 3, 0],
     },
 
     "Mortier_2S12_120mm_VDV_SOV": {
-        "CommandPoints": 40,
+        "CommandPoints": 45,
         "availability": [5, 4, 3, 0],
     },
 
@@ -1581,6 +1586,11 @@ sov_unit_edits = {
         },
         "CommandPoints": 85,
         "availability": [0, 3, 2, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "Howz_Canon_2A51_Howitzer_120mm": 39,
+            },
+        },
     },
 
     "2S23_Nona_SVK_SOV": {
@@ -1589,6 +1599,12 @@ sov_unit_edits = {
         },
         "CommandPoints": 95,
         "availability": [3, 2, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "Howz_Canon_2A60_Howitzer_120mm": 39,
+                "MMG_PKT_7_62mm": 44,
+            },
+        },
     },
 
     "Howz_2A36_Giatsint_B_SOV": {
@@ -2580,6 +2596,11 @@ sov_unit_edits = {
             },
         },
         "availability": [0, 2, 0, 1],
+        "WeaponDescriptor": {
+            "Salves": {
+                "AGM_Kh29T": 1,
+            },
+        },
     },
 
     "Su_24MP_EW_SOV": { # EW
@@ -2667,6 +2688,11 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "AGM_Kh29T": 1,
+            },
+        },
     },
 
     "Su_24M_AT2_SOV": {
@@ -2730,18 +2756,23 @@ sov_unit_edits = {
     },
 
     "MiG_27M_bombe_SOV": {  # 4x FAB-500
-        "CommandPoints": 145,
+        "CommandPoints": 160,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-        "availability": [0, 2, 0, 0],
+        "availability": [0, 3, 0, 0],
     },
     
     "MiG_27M_SOV": { # GSh-6-30, 2x Kh-29T
         "CommandPoints": 175,
         "availability": [0, 2, 0, 1],
+        "WeaponDescriptor": {
+            "Salves": {
+                "AGM_Kh29T": 1,
+            },
+        },
     },
 
     "MiG_27M_napalm_SOV": {  # 4x ZB-500
@@ -2766,6 +2797,7 @@ sov_unit_edits = {
         },
         "availability": [0, 3, 2, 0],
     },
+
 
     "Su_25T_SOV": {  # 16x Vikhr, 2x R-73
         "CommandPoints": 260,

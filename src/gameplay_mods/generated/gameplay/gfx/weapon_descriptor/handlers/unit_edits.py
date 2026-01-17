@@ -135,12 +135,17 @@ def unit_edits_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> No
 def _gather_turret_templates(
     source_path: Any, unit: str, edits: Dict, ammo_db: Dict[str, Any], weapon_db: Dict[str, Any]
 ) -> List[Tuple[str, Any]]:
-    """Gather turret templates for equipment changes using database data."""
+    """Gather turret templates for equipment changes using database data.
+    
+    Handles both "add" and "insert" keys from equipmentchanges.
+    """
     turret_objects = []
     weapons_to_add = []
 
     equipment_changes = edits["WeaponDescriptor"].get("equipmentchanges", {})
-    if not equipment_changes.get("add"):
+    # Check for either "add" or "insert" keys
+    weapon_list = equipment_changes.get("add") or equipment_changes.get("insert")
+    if not weapon_list:
         return []
 
     weapon_descr_name = f"WeaponDescriptor_{unit}"
@@ -158,7 +163,7 @@ def _gather_turret_templates(
             turret_objects.extend(
                 _find_turret_templates(
                     weapon_descr,
-                    equipment_changes["add"],
+                    weapon_list,
                     weapons_to_add,
                     weapon_descr_data,
                     weapon_db,
@@ -333,6 +338,139 @@ def _add_new_weapons(weapon_descr: Any, wd_edits: Dict, turret_templates: List[T
                 _apply_add_edits(turret_template, turret_index, weapon_name)
                 logger.debug(f"Adding {ammo_name} at index {turret_index}")
                 turret_list.insert(turret_index, turret_template)
+
+
+def _insert_new_weapons(weapon_descr: Any, wd_edits: Dict, turret_templates: List[Tuple[str, Any]], game_db: Dict) -> None:
+    """Insert new weapons at specific indices in the descriptor.
+    
+    Similar to _add_new_weapons but inserts turrets in reverse order (highest index first)
+    to maintain correct positions when inserting multiple turrets.
+    """
+    equipment_changes = wd_edits["equipmentchanges"]
+    ammo_db = game_db["ammunition"]
+    unit_db = game_db["unit_data"]
+    unit_edits = load_unit_edits()
+    turret_list = weapon_descr.v.by_member("TurretDescriptorList").v
+    insert_list = equipment_changes["insert"]
+
+    # Get unit name and check if it's infantry
+    unit_name = weapon_descr.namespace.replace("WeaponDescriptor_", "")
+    is_infantry = False
+    unit_strength = None
+
+    # Check unit edits first
+    if unit_name in unit_edits:
+        unit_edit_data = unit_edits[unit_name]
+        if unit_edit_data.get("UnitRole") == "infantry" or "Infanterie" in unit_edit_data.get("TagSet", {}).get("overwrite_all", []):
+            is_infantry = True
+        unit_strength = unit_edit_data.get("strength")
+    
+    # Check unit database if not found in edits or to verify infantry status
+    if unit_name in unit_db:
+        unit_data = unit_db[unit_name]
+        if unit_data.get("unit_role") == "infantry" or "Infanterie" in unit_data.get("tags", []):
+            is_infantry = True
+        if not unit_strength:
+            unit_strength = unit_data.get("strength")
+
+    def _is_infantry_small_arm(weapon_name: str, game_db: Dict) -> bool:
+        """Check if a weapon is an infantry small arm by checking if it has a valid caliber token."""
+        # Check if weapon should use strength variant (indicates it's a small arm with caliber)
+        if _should_use_strength_variant(weapon_name, game_db):
+            return True
+        return False
+
+    def _apply_insert_edits(turret_template, turret_index, weapon_name):
+        if "insert_edits" in equipment_changes:
+            insert_edits = equipment_changes["insert_edits"].get(turret_index)
+            if not insert_edits:
+                return
+            if "turret_edits" in insert_edits:
+                for membr, value in insert_edits["turret_edits"].items():
+                    turret_template.v.by_m(membr).v = str(value)
+            mounted_weapons = turret_template.v.by_m("MountedWeaponDescriptorList")
+            for mounted_weapon in mounted_weapons.v:
+                for membr, value in insert_edits.items():
+                    if membr == "turret_edits":
+                        continue
+                    if isinstance(value, (bool, int, float, str)):
+                        mounted_weapon.v.by_m(membr).v = str(value)
+                    elif isinstance(value, list):
+                        ndf_list = ndf.model.List()
+                        for item in value:
+                            ndf_list.add(f"'{item}'")
+                        mounted_weapon.v.by_m(membr).v = ndf_list
+                
+                # Apply strength and quantity variants for infantry small arms
+                if is_infantry and unit_strength:
+                    current_ammo = mounted_weapon.v.by_m("Ammunition").v
+                    # Extract base ammo name (remove $/GFX/Weapon/Ammo_ prefix and any existing variants)
+                    if current_ammo.startswith("$/GFX/Weapon/Ammo_"):
+                        base_ammo = current_ammo.split("$/GFX/Weapon/Ammo_", 1)[1]
+                        # Strip any existing strength or quantity suffixes
+                        base_ammo = re.sub(r"(?:_strength\d+)?(?:_x\d{1,2})?$", "", base_ammo)
+                        
+                        # Check if this is an infantry small arm
+                        if _is_infantry_small_arm(base_ammo, game_db):
+                            quantity = int(mounted_weapon.v.by_m("NbWeapons").v)
+                            prefix = "$/GFX/Weapon/Ammo_"
+                            
+                            if quantity > 1:
+                                new_ammo = f"{prefix}{base_ammo}_strength{unit_strength}_x{quantity}"
+                            else:
+                                new_ammo = f"{prefix}{base_ammo}_strength{unit_strength}"
+                            
+                            mounted_weapon.v.by_m("Ammunition").v = new_ammo
+                            logger.debug(f"Applied strength variant for infantry small arm {base_ammo}: {new_ammo}")
+
+    # Sort insert_list by index in descending order to insert highest indices first
+    # This ensures that when inserting multiple turrets, later insertions don't affect earlier ones
+    sorted_insert_list = sorted(insert_list, key=lambda x: x[0], reverse=True)
+
+    for ammo_name, turret_template in turret_templates:
+        for turret_index, weapon_name in sorted_insert_list:
+            old_name = ammo_db["renames_new_old"].get(weapon_name, None)
+            if (old_name and old_name == ammo_name) or weapon_name == ammo_name:
+                # Update SalvoStockIndex to match the insert position
+                mounted_weapons = turret_template.v.by_m("MountedWeaponDescriptorList")
+                for mounted_weapon in mounted_weapons.v:
+                    mounted_weapon.v.by_m("SalvoStockIndex").v = str(turret_index)
+                
+                _apply_insert_edits(turret_template, turret_index, weapon_name)
+                logger.debug(f"Inserting {ammo_name} at index {turret_index}")
+                turret_list.insert(turret_index, turret_template)
+                break  # Only insert once per template
+
+    # Apply insert_edits to all turrets at the specified indices (both newly inserted and bumped)
+    # The edit_index already accounts for any index bumping
+    if "insert_edits" in equipment_changes:
+        insert_edits = equipment_changes["insert_edits"]
+        for edit_index, edits in insert_edits.items():
+            if edit_index < len(turret_list):
+                turret = turret_list[edit_index]
+                if not is_valid_turret(turret.v):
+                    continue
+                
+                # Apply turret edits
+                if "turret_edits" in edits:
+                    for membr, value in edits["turret_edits"].items():
+                        turret.v.by_m(membr).v = str(value)
+                
+                # Apply mounted weapon edits
+                mounted_weapons = turret.v.by_m("MountedWeaponDescriptorList")
+                for mounted_weapon in mounted_weapons.v:
+                    for membr, value in edits.items():
+                        if membr == "turret_edits":
+                            continue
+                        if isinstance(value, (bool, int, float, str)):
+                            mounted_weapon.v.by_m(membr).v = str(value)
+                        elif isinstance(value, list):
+                            ndf_list = ndf.model.List()
+                            for item in value:
+                                ndf_list.add(f"'{item}'")
+                            mounted_weapon.v.by_m(membr).v = ndf_list
+                
+                logger.debug(f"Applied insert_edits to turret at index {edit_index}")
 
 
 def _update_weapon_quantities(
@@ -548,7 +686,7 @@ def _apply_salvo_changes(weapon_descr: Any, wd_edits: Dict, weapon_descr_data: D
     salvo_mapping = weapon_descr_data["salvo_mapping"]
     for weapon, val in salve_edits.items():
 
-        # TODO: These 6 lines are a hack because I'm lazy and I forget why it exists xD but its necessary
+        # TODO: Temp hack until proper fix for units with multiple of the same weapon
         if weapon == "special":
             for special_weapon, special_val in val.items():
                 index = special_val[0]
@@ -558,7 +696,7 @@ def _apply_salvo_changes(weapon_descr: Any, wd_edits: Dict, weapon_descr_data: D
 
         salvo = val
         winchester = None
-        if weapon not in ("add", "remove") and type(val) in (list, dict, set, tuple) and len(val) == 2:
+        if weapon not in ("add", "remove", "insert") and type(val) in (list, dict, set, tuple) and len(val) == 2:
             salvo = val[0]
             winchester = str(val[1])
 
@@ -625,6 +763,20 @@ def _apply_salvo_changes(weapon_descr: Any, wd_edits: Dict, weapon_descr_data: D
                 logger.debug(f"Adding salvo {salvo} at index {index}")
                 salves_winchester.v.insert(index, winchester)
 
+    # Insert new salvos at specific indices (in reverse order to maintain correct positions)
+    if "insert" in salve_edits:
+        insert_list = salve_edits["insert"]
+        # Sort by index in descending order to insert highest indices first
+        sorted_insert_list = sorted(insert_list, key=lambda x: x[0], reverse=True)
+        for addition in sorted_insert_list:
+            index, salvo = addition[0], addition[1]
+            winchester = "False" if len(addition) < 3 else addition[2]
+            logger.debug(f"Inserting salvo {salvo} at index {index}")
+            salves_list.v.insert(index, str(salvo))
+            if salves_winchester:
+                logger.debug(f"Inserting salvo {salvo} at index {index}")
+                salves_winchester.v.insert(index, winchester)
+
     # Remove salvos for specific weapons
     if "remove" in salve_edits:
         for weapon in salve_edits["remove"]:
@@ -661,6 +813,10 @@ def _apply_equipment_changes(
     # Handle additions
     if "add" in equipment_changes:
         _add_new_weapons(weapon_descr, wd_edits, turret_templates, game_db)
+
+    # Handle insertions (inserts at specific indices in correct order)
+    if "insert" in equipment_changes:
+        _insert_new_weapons(weapon_descr, wd_edits, turret_templates, game_db)
 
     # Handle quantity changes
     if "quantity" in equipment_changes:

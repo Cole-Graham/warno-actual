@@ -13,8 +13,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_sniper",
             },
             "hit_roll": {
-                "BaseCriticModifier": 0,
-                "Idling": 50,
+                "Idling": 55,
+                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 9.0,
@@ -23,6 +23,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "SuppressDamages": 100.0,
                 "MaximumRangeGRU": 1050,
                 "MaximumRangeHelicopterGRU": 875,
+                "RadiusSplashPhysicalDamagesGRU": 2,
                 "DisplaySalveAccuracy": False,
                 "TimeBetweenTwoSalvos": 9.0,
                 "AimingTime": 6.0,
@@ -43,14 +44,15 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_sniper",
             },
             "hit_roll": {
-                "BaseCriticModifier": 0,
                 "Idling": 65,
+                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 9.0,
                 "TimeBetweenTwoFx": 9.0,
                 "PhysicalDamages": 1.0,
                 "SuppressDamages": 100.0,
+                "RadiusSplashPhysicalDamagesGRU": 2,
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 6.0,
                 "TimeBetweenTwoSalvos": 9.0,
@@ -71,8 +73,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_sniper",
             },
             "hit_roll": {
-                "BaseCriticModifier": 0,
-                "Idling": 50,
+                "Idling": 55,
+                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 9.0,
@@ -81,6 +83,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "SuppressDamages": 100.0,
                 "MaximumRangeGRU": 1050,
                 "MaximumRangeHelicopterGRU": 875,
+                "RadiusSplashPhysicalDamagesGRU": 2,
                 "DisplaySalveAccuracy": False,
                 "TimeBetweenTwoSalvos": 9.0,
                 "AimingTime": 6.0,
@@ -101,8 +104,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_sniper",
             },
             "hit_roll": {
-                "BaseCriticModifier": 0,
-                "Idling": 50,
+                "Idling": 55,
+                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 9.0,
@@ -111,6 +114,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "SuppressDamages": 100.0,
                 "MaximumRangeGRU": 1050,
                 "MaximumRangeHelicopterGRU": 875,
+                "RadiusSplashPhysicalDamagesGRU": 2,
                 "DisplaySalveAccuracy": False,
                 "TimeBetweenTwoSalvos": 9.0,
                 "AimingTime": 6.0,
@@ -131,14 +135,15 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_sniper",
             },
             "hit_roll": {
-                "BaseCriticModifier": 0,
                 "Idling": 65,
+                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 9.0,
                 "TimeBetweenTwoFx": 9.0,
                 "PhysicalDamages": 1.0,
                 "SuppressDamages": 100.0,
+                "RadiusSplashPhysicalDamagesGRU": 2,
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 6.0,
                 "TimeBetweenTwoSalvos": 9.0,
@@ -159,8 +164,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_sniper",
             },
             "hit_roll": {
-                "BaseCriticModifier": 0,
-                "Idling": 50,
+                "Idling": 55,
+                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 9.0,
@@ -169,6 +174,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "SuppressDamages": 100.0,
                 "MaximumRangeGRU": 1050,
                 "MaximumRangeHelicopterGRU": 875,
+                "RadiusSplashPhysicalDamagesGRU": 2,
                 "DisplaySalveAccuracy": False,
                 "TimeBetweenTwoSalvos": 9.0,
                 "AimingTime": 6.0,
@@ -189,14 +195,15 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_sniper",
             },
             "hit_roll": {
-                "BaseCriticModifier": 0,
                 "Idling": 65,
+                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 9.0,
                 "TimeBetweenTwoFx": 9.0,
                 "PhysicalDamages": 1.0,
                 "SuppressDamages": 100.0,
+                "RadiusSplashPhysicalDamagesGRU": 2,
                 "DisplaySalveAccuracy": False,
                 "TimeBetweenTwoSalvos": 9.0,
                 "AimingTime": 6.0,
@@ -469,7 +476,36 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "SupplyCost": 1.0,
         "NbWeapons": [12, 8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
-            "Salves": 12,               
+            "Salves": 14,               
+        },
+    },
+    
+    ("PM_MP_5A3", "small_arms", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_sa_intermediate",
+            },
+            "hit_roll": {
+                "Idling": 55,
+                "Moving": 45,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 0.4,
+                "MaximumRangeGRU": 450,
+                "MaximumRangeHelicopterGRU": 400,
+                "PhysicalDamages": 0.05,
+                "SuppressDamages": 5,
+                "DisplaySalveAccuracy": False,
+                "AimingTime": 0.5,
+                "TimeBetweenTwoSalvos": 3.8,
+                "ShotsCountPerSalvo": 6,
+                "AffichageMunitionParSalve": 30,
+            },
+        },
+        "SupplyCost": 1.0,
+        "NbWeapons": [6, 5, 4, 3, 2, 1],
+        "WeaponDescriptor": {
+            "Salves": 14,               
         },
     },
     
@@ -794,7 +830,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "SupplyCost": 1.0,
-        "NbWeapons": [11, 8, 7, 5, 4, 3, 2],
+        "NbWeapons": [11, 9, 8, 7, 6, 5, 4, 3, 2],
         "NewTexture": "M16A1_Carbine",
         "WeaponDescriptor": {
             "Salves": 11,
@@ -1105,6 +1141,35 @@ weapons: Dict[WeaponKey, WeaponData] = {
     # },
 
     ("MMG_PKM_7_62mm", "small_arms", None, False): {  # 474
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_sa_full",
+            },
+            "hit_roll": {
+                "Idling": 70,
+                "Moving": 30,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 2.2,
+                "MaximumRangeGRU": 875,
+                "MaximumRangeHelicopterGRU": 700,
+                "PhysicalDamages": 0.12,
+                "SuppressDamages": 24,
+                "DisplaySalveAccuracy": False,
+                "AimingTime": 1.0,
+                "TimeBetweenTwoSalvos": 2.2,
+                "ShotsCountPerSalvo": 2,
+                "AffichageMunitionParSalve": 20,
+            },
+        },
+        "SupplyCost": 1.0,
+        "NbWeapons": [3, 2, 1],
+        "WeaponDescriptor": {
+            "Salves": 45,
+        },
+    },
+    
+    ("SAW_HK21_7_62mm", "small_arms", None, False): {  # 474
         "Ammunition": {
             "Arme": {
                 "Family": "DamageFamily_sa_full",

@@ -5,7 +5,7 @@ from src import ModConfig
 from src.data import build_database, load_database_from_disk
 from src.utils.database_utils import verify_database
 from src.utils.dictionary_utils import initialize_dictionary_files
-from src.utils.logging_utils import setup_logger
+from src.utils.logging_utils import setup_logger, get_counting_handler
 from src.utils.config_utils import get_mod_dst_path
 from subprocess import Popen
 
@@ -74,17 +74,46 @@ if __name__ == "__main__":
 		from src.data.constants_precomputation import build_constants_precomputation_data
 		constants_data = build_constants_precomputation_data(config.config_data, game_db=config.config_data['game_db'])
 		config.config_data['game_db']['deck_pack_mappings'] = constants_data
+		
+		# Merge salvo_weapons (from base game database) with constants renames (from constants precomputation)
+		# and add to ammo_db so handlers can access them the same way
+		ammo_db = config.config_data['game_db'].get('ammunition', {})
+		salvo_weapons = ammo_db.get('salvo_weapons', {})
+		constants_renames = constants_data.get('ammunition_renames', {})
+		constants_renames_old_new = constants_renames.get('renames_old_new', {})
+		
+		# Combine salvo weapons and constants renames
+		renames_old_new = {**salvo_weapons, **constants_renames_old_new}
+		
+		# Create reversed mapping
+		renames_new_old = {v: k for k, v in renames_old_new.items()}
+		
+		# Add merged renames to ammo_db
+		ammo_db['renames_old_new'] = renames_old_new
+		ammo_db['renames_new_old'] = renames_new_old
 
 		# Import and run main after database is loaded
 		from src.main import main
 
 		main()
 
-		logger.info(f"Patcher completed successfully at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+		# Get error and warning counts
+		counting_handler = get_counting_handler()
+		if counting_handler:
+			error_count, warning_count = counting_handler.get_counts()
+			logger.info(f"Patcher completed successfully at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+			logger.info(f"Summary: {error_count} error(s), {warning_count} warning(s)")
+		else:
+			logger.info(f"Patcher completed successfully at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
 	except Exception as e:
 		run_bat = False
 		logger.error(f"Patcher failed: {str(e)}")
+		# Still show counts even if there was an exception
+		counting_handler = get_counting_handler()
+		if counting_handler:
+			error_count, warning_count = counting_handler.get_counts()
+			logger.info(f"Summary: {error_count} error(s), {warning_count} warning(s)")
 		raise
 
 	if run_bat:

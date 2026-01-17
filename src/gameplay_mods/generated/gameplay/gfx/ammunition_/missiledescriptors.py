@@ -1,3 +1,4 @@
+import re
 from typing import Any, Dict
 from src import ndf
 from src.constants.weapons import missiles
@@ -10,7 +11,8 @@ def edit_gen_gp_gfx_missiledescriptors(source: Any, game_db: Dict[str, Any]) -> 
     logger.info("Adjusting missile speed and acceleration")
 
     ammo_db = game_db["ammunition"]
-    missile_inst_renames = ammo_db.get("renames_new_old", {})
+    missile_inst_renames_new_old = ammo_db.get("renames_new_old", {})
+    missile_inst_renames_old_new = ammo_db.get("renames_old_new", {})
 
     for missile_decr in source:
         # Strip Ammo_ prefix for comparison
@@ -18,11 +20,19 @@ def edit_gen_gp_gfx_missiledescriptors(source: Any, game_db: Dict[str, Any]) -> 
 
         for (missile, category, donor, is_new), data in missiles.items():
             if data is None or "MissileDescriptor" not in data:
-                continue
+                continue             
 
             # Check for renames
-            if stripped_namespace in missile_inst_renames:
-                stripped_namespace = missile_inst_renames[stripped_namespace]
+            if stripped_namespace in missile_inst_renames_new_old:
+                stripped_namespace = missile_inst_renames_new_old[stripped_namespace]
+            elif stripped_namespace in missile_inst_renames_old_new:
+                stripped_namespace = missile_inst_renames_old_new[stripped_namespace]
+                
+            # regex to match stripped namespace with any salvolengthN suffix
+            salvo_length_match = re.search(r"_salvolength(\d+)$", stripped_namespace)
+            if salvo_length_match:
+                salvo_length = int(salvo_length_match.group(1))
+                stripped_namespace = stripped_namespace.replace(salvo_length_match.group(0), "")
 
             if missile != stripped_namespace:
                 continue

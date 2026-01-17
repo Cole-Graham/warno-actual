@@ -133,5 +133,49 @@ RFA_NEW_UNITS = {
         "Faction": "NATO",
         "Nation": "RFA",
     },
+    
+    ("M48A2GA2_CMD_RFA", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "e4443ed2-614d-4eaf-99ca-8ce9bf486283",
+        "GroupeCombatGUID": "7c4a5580-e66f-4926-8ae4-7456553057bb",
+        "ShowroomGUID": "cd4880e5-8ad9-4f4d-8454-26da9d917872",
+        "CadavreGUID": "1e4053b9-33fa-4deb-84ec-adc733c06d1b",
+        "NewName": "M48A2GA2_CMD2_RFA",
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "Char_CMD",
+                "Commandant",
+                "GroundUnits",
+                "InfmapCommander",
+                "UNITE_M48A2GA2_CMD2_RFA",
+                "Unite",
+            ],
+        },
+        "Factory": "EFactory/Logistic",
+        "CommandPoints": 215,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+            "RFA_TerrKdo_Sud_multi": {
+                "cards": 2,
+                "Transports": None,
+            },
+        },
+        "availability": [0, 0, 2, 0],
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
+                   'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
+                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply',
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "NATO",
+        "Nation": "RFA",
+    },
 }
 # fmt: on

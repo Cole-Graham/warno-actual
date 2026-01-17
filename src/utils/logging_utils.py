@@ -8,6 +8,31 @@ from pathlib import Path
 from typing import Optional
 
 
+class CountingHandler(logging.Handler):
+    """A logging handler that counts errors and warnings."""
+    
+    def __init__(self):
+        super().__init__()
+        self.error_count = 0
+        self.warning_count = 0
+    
+    def emit(self, record):
+        """Count errors and warnings."""
+        if record.levelno >= logging.ERROR:
+            self.error_count += 1
+        elif record.levelno >= logging.WARNING:
+            self.warning_count += 1
+    
+    def get_counts(self):
+        """Get the current error and warning counts."""
+        return self.error_count, self.warning_count
+    
+    def reset(self):
+        """Reset the counts."""
+        self.error_count = 0
+        self.warning_count = 0
+
+
 @contextmanager
 def log_time(logger: logging.Logger, operation: str):
     """Log the time taken for an operation."""
@@ -98,6 +123,15 @@ def cleanup_old_logs(log_dir: Path, keep_count: int = 5):
         print(f"Warning: Error during log cleanup: {e}")
 
 
+# Global counting handler instance for tracking errors/warnings across all loggers
+_counting_handler: Optional[CountingHandler] = None
+
+
+def get_counting_handler() -> Optional[CountingHandler]:
+    """Get the global counting handler instance."""
+    return _counting_handler
+
+
 def setup_logger(name: str) -> logging.Logger:
     """Set up and return a logger with fallback options for file handling.
     
@@ -107,12 +141,20 @@ def setup_logger(name: str) -> logging.Logger:
     Returns:
         Configured logger object
     """
+    global _counting_handler
+    
     # Create logger
     logger = logging.getLogger(name)
     logger.setLevel(logging.DEBUG)
     
     # Remove existing handlers to avoid duplicates
     logger.handlers.clear()
+    
+    # Add counting handler if it doesn't exist (shared across all loggers)
+    if _counting_handler is None:
+        _counting_handler = CountingHandler()
+        _counting_handler.setLevel(logging.WARNING)  # Only count warnings and above
+    logger.addHandler(_counting_handler)
     
     # Try to set up file handler
     log_dir = Path("logs")

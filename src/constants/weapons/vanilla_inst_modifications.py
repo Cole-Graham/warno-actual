@@ -28,7 +28,7 @@ AMMUNITION_MISSILES_RENAMES = [
     ("AGM_Kh28_X28", "AGM_Kh28"),
     ("SAM_MIM72G", "SAM_MIM72G_salvolength4"),
     ("Javelin_LML", "Javelin_LML_salvolength3"),
-    ("AGM_9K121_Vikhr_x16_avion", "AGM_9K121_Vikhr_avion_salvolength2"), # x16 meant 16 ammo in vanilla
+    ("AGM_9K121_Vikhr_x16_avion", "AGM_9K121_Vikhr_avion_ripple2_salvolength2"), # x16 meant 16 ammo in vanilla
     ("Bomb_GBU_12_x1", "Bomb_GBU_12"),
     ("Bomb_KAB_1500L_x1", "Bomb_KAB_1500L"),
     ("Bomb_KAB_1500Kr_x1", "Bomb_KAB_1500Kr"),

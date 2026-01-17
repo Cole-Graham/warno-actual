@@ -56,7 +56,7 @@ usa_unit_edits = {
             # airborne humvee becomes redundant with regular after FWD deploy changes, just give regular one to 82ab
             # but not in the same patch as changing tacom transports, to avoid potential deckwipes
         },
-        "availability": [0, 3, 0, 0],
+        "availability": [0, 4, 0, 0],
         "SpecialtiesList": {
             "remove_specs": ["'_para'"],
         },
@@ -66,7 +66,7 @@ usa_unit_edits = {
 
     "M1025_Humvee_CMD_US": {
         "CommandPoints": 145,
-        "availability": [0, 3, 0, 0],
+        "availability": [0, 4, 0, 0],
         "Divisions": {
             # "add": ['US_82nd_Airborne'],
             # airborne humvee redundant with regular after FWD deploy changes, just give regular one to 82ab imo
@@ -588,7 +588,7 @@ usa_unit_edits = {
     },
 
     "GreenBerets_CMD_US": {
-        "CommandPoints": 75,
+        "CommandPoints": 70,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDR GREEN BERETS LDR.",
@@ -623,9 +623,17 @@ usa_unit_edits = {
                 'infantry_equip_light',
             ],
         },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("Commando_733", "M16A1_Carbine")],
+            },
+            "Salves": {
+                "M16A1_Carbine": 11,
+            },
+        },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "availability": [0, 0, 0, 2],
+        "availability": [0, 0, 0, 3],
         "max_speed": 26,
         "is_infantry": True,
         "is_ground_vehicle": False,
@@ -1510,12 +1518,40 @@ usa_unit_edits = {
             },
         }
     },
+    
+    "GreenBerets_US": {
+        "CommandPoints": 45,
+        "armor": "Infantry_armor_reference",
+        "max_speed": 26,
+        "availability": [0, 0, 8, 6],
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("Commando_733", "M16A1_Carbine")],
+            },
+            "Salves": {
+                "M16A1_Carbine": 11,
+            },
+        },
+    },
 
     "GreenBerets_ODA_US": {
         "GameName": {
             "display": "GREEN BERETS [ODA]",
         },
         "CommandPoints": 85,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
         "availability": [0, 0, 0, 3],
         "max_speed": 26,
         "armor": "Infantry_armor_reference",
@@ -1786,7 +1822,7 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": [0, 2, 0, 0],
+        "availability": [0, 3, 0, 0],
         "remove_zone_capture": None,
     },
 
@@ -2057,7 +2093,7 @@ usa_unit_edits = {
                 '_smoke_launcher',
             ],
         },
-        "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
+        "MenuIconTexture": "Texture_RTS_H_Armor",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
         "availability": [0, 0, 0, 4],
         "remove_zone_capture": None,
@@ -2381,7 +2417,7 @@ usa_unit_edits = {
     },
 
     "M1A1_Abrams_reco_US": {
-        "availability": [0, 3, 2, 0],
+        "availability": [0, 4, 3, 0],
         "CommandPoints": 250,
     },
 
@@ -2391,6 +2427,11 @@ usa_unit_edits = {
         },
         "CommandPoints": 40,
         "availability": [0, 4, 3, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "Gatling_m134_7_62mm": 90,
+            },
+        },
     },
 
     "OH58D_Combat_Scout_US": {
@@ -2714,6 +2755,14 @@ usa_unit_edits = {
             "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "availability": [4, 3, 0, 0],
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+            "US_8th_Inf": {
+                "Transports": ["M35_supply_US", "M35_trans_US"],
+            },
+        },
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
@@ -3018,6 +3067,10 @@ usa_unit_edits = {
     "F111F_Aardvark_LGB_US": {  # 4x GBU-12
         "CommandPoints": 210,
     },
+    
+    "F111F_Aardvark_LGB2_US": { # 4x GBU-10
+        "CommandPoints": 260,
+    },
 
     "F111E_Aardvark_CBU_US": {  # 8x Mk-20 Rockeye, 3rd Armored
         "CommandPoints": 190,
@@ -3126,6 +3179,11 @@ usa_unit_edits = {
             },
         },
         "availability": [0, 2, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "AGM_AGM65D_Maverick": 2,
+            },
+        },
     },
 
     "F16E_HE_US": {
@@ -3278,7 +3336,7 @@ usa_unit_edits = {
         "availability": [0, 2, 0, 0],
     },
 
-    "A10_Thunderbolt_II_ATGM_US": {  # 76x Hydra, 2x AIM-9M
+    "A10_Thunderbolt_II_ATGM_US": {  # 4x AGM-65D, 2x AIM-9M
         "CommandPoints": 240,
         "AirplaneMovement": {
             "parent_membr": {
@@ -3287,5 +3345,10 @@ usa_unit_edits = {
         },
         "max_speed": 500,
         "availability": [0, 2, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "AGM_AGM65D_Maverick": 2,
+            },
+        },
     },
 }

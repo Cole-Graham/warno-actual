@@ -341,10 +341,33 @@ def _handle_complex_unit_edits(source_path: Any) -> None:
                 for row_index, (edit_type, edit_list) in edits.items():
                     if edit_type == "edit":
                         for member, value in edit_list:
-                            if member == "MeshDescriptor" or member == "ReferenceMeshForSkeleton":
+                            if member == "SelectorId":
+                                weapon_alternatives.v[row_index].v.by_m(member).v = f"['{value}']"
+                                logger.info(f"Changed SelectorId for {unit_name} to {value}")
+                            elif member == "MeshDescriptor" or member == "ReferenceMeshForSkeleton":
                                 new_mesh = f"$/GFX/DepictionResources/Modele_{value}"
                                 weapon_alternatives.v[row_index].v.by_m(member).v = new_mesh
                                 logger.info(f"Changed {member} for {unit_name} to {new_mesh}")
+                    elif edit_type == "insert":
+                        selector_id = None
+                        new_mesh = None
+                        for member, value in edit_list:
+                            if member == "SelectorId":
+                                selector_id = f"['{value}']"
+                            elif member == "MeshDescriptor" or member == "ReferenceMeshForSkeleton":
+                                new_mesh = f"$/GFX/DepictionResources/Modele_{value}"
+                        if selector_id and new_mesh:
+                            new_entry = (
+                                f"TDepictionVisual"
+                                f"("
+                                f"    SelectorId = {selector_id}"
+                                f"    MeshDescriptor = {new_mesh}"
+                                f")"
+                            )
+                            weapon_alternatives.v.insert(row_index, new_entry)
+                            logger.info(f"Inserted {member} for {unit_name} at index {row_index}")
+                        else:
+                            logger.error(f"Could not insert {member} for {unit_name} at index {row_index}")
 
             elif namespace and namespace.startswith("AllWeaponSubDepiction_"):
                 weapon_subdepictions = source_path.by_n(namespace)
@@ -356,6 +379,7 @@ def _handle_complex_unit_edits(source_path: Any) -> None:
                     if member == "Operators":
                         operators_member = weapon_subdepictions.v.by_m(member)
                         for index, (edit_type, edit_list) in member_edits.items():
+                            
                             if edit_type == "edit":
                                 for submember, value in edit_list:
                                     if submember == "FireEffectTag":
@@ -363,7 +387,28 @@ def _handle_complex_unit_edits(source_path: Any) -> None:
                                         value = value.strip('"').strip("'")
                                         new_value = f'"FireEffect_{value}"'
                                         operators_member.v[index].v.by_m(submember).v = new_value
-                                        logger.info(f"Changed FireEffectTag for {unit_name} to {value}")
+                                    elif submember == "WeaponShootDataPropertyName":
+                                        operators_member.v[index].v.by_m(submember).v = '"' + value + '"'
+                            
+                            elif edit_type == "insert":
+                                effect_tag = None
+                                shoot_property = None
+                                for submember, value in edit_list:
+                                    if submember == "FireEffectTag":
+                                        # Remove quotes if present
+                                        value = value.strip('"').strip("'")
+                                        effect_tag = f'"FireEffect_{value}"'
+                                    elif submember == "WeaponShootDataPropertyName":
+                                        shoot_property = f'"{value}"'
+                                if effect_tag and shoot_property:
+                                    new_entry = (
+                                        f"DepictionOperator_WeaponInstantFireInfantry"
+                                        f"("
+                                        f"    FireEffectTag = {effect_tag}"
+                                        f"    WeaponShootDataPropertyName = {shoot_property}"
+                                        f")"
+                                    )
+                                    operators_member.v.insert(index, new_entry)
             
             elif namespace and namespace.startswith("TacticDepiction_") and namespace.endswith("_Alternatives"):
                 tacticdepiction_alternatives = source_path.by_n(namespace)
@@ -384,14 +429,15 @@ def _handle_complex_unit_edits(source_path: Any) -> None:
                         tacticdepiction_soldier.v.by_m(member).v = f"InfantrySelectorTactic_{member_edits}"
                     if member == "Operators":
                         operators_member = tacticdepiction_soldier.v.by_m(member)
+                        
+                        # Need to check if ConditionalTags member exists, else create it
+                        conditional_tags = operators_member.v[0].v.by_m("ConditionalTags", False)
+                        if conditional_tags is None:
+                            operators_member.v[0].v.add("ConditionalTags = []")
+                            conditional_tags = operators_member.v[0].v.by_m("ConditionalTags")
+                        
                         for index, (edit_type, edit_list) in member_edits.items():
                             if edit_type == "replace":
-                                # need to check if ConditionalTags object exists, else create it
-                                conditional_tags = operators_member.v[index].v.by_m("ConditionalTags", False)
-                                if conditional_tags is None:
-                                    operators_member.v[index].v.add(ndf.convert("ConditionalTags = []"))
-                                    conditional_tags = operators_member.v[index].v.by_m("ConditionalTags")
-
                                 for new_tag, mesh_alternative in edit_list:
                                     # Remove quotes if present
                                     # old_tag = old_tag.strip("'")
@@ -407,6 +453,13 @@ def _handle_complex_unit_edits(source_path: Any) -> None:
                                                 f"Replaced tag with {new_tag} for mesh "
                                                 f"{mesh_alternative} in {unit_name}"
                                             )
+                            elif edit_type == "insert":
+                                for new_tag, mesh_alternative in edit_list:
+                                    new_entry = (
+                                        f"('{new_tag}', '{mesh_alternative}')"
+                                    )
+                                    conditional_tags.v.insert(index, new_entry)
+                                    logger.info(f"Inserted tag {new_tag} for mesh {mesh_alternative} at index {index}")
                                             
             elif namespace and namespace.startswith("TacticDepiction_") and namespace.endswith("_Ghost"):
                 tacticdepiction_ghost = source_path.by_n(namespace)
@@ -488,7 +541,10 @@ def _handle_unit_edits(source_path: Any, game_db: Dict[str, Any]) -> None:
                         logger.info(f"Replaced fire effect {old_fire_effect} with {new_fire_effect} for {unit_name}")
             
         weapon_changes = edits["WeaponDescriptor"].get("equipmentchanges", {})
+        
+        # Old depiction edit code
         if "add" in weapon_changes:
+            
             
             # Get weapon info (salvo_index, weapon_name), e.g:
             # "add": [

@@ -903,7 +903,7 @@ USA_NEW_UNITS = {
         "depictions": {
             "new_mesh": True,
         },
-        "CommandPoints": 240,
+        "CommandPoints": 260,
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 10000.0,
@@ -914,7 +914,7 @@ USA_NEW_UNITS = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "add": [(2, 2), (3, 2)],
+                "add": [(2, 1), (3, 2)],
                 "AGM_AGM88_HARM": 3,
             },
             "SalvoIsMainSalvo": [False, False, False, False],

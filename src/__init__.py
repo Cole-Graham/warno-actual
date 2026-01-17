@@ -76,4 +76,4 @@ class ModConfig:
         cls._instance = None
 
 
-__all__ = ["ModConfig"]
+__all__ = ["ModConfig", "ndf"]

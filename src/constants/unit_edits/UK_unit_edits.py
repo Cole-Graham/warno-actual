@@ -635,7 +635,7 @@ uk_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": [0, 2, 0, 0],
+        "availability": [0, 3, 0, 0],
         "remove_zone_capture": None,
     },
 
@@ -938,6 +938,15 @@ uk_unit_edits = {
             "add_specs": ["'good_airoptics'"],
         },
         "availability": [6, 4, 0, 0],
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+            "UK_2nd_Infantry": {
+                "cards": 1,
+                "Transports": ["Rover_101FC_supply_UK", "Bedford_MJ_4t_trans_UK"],
+            },
+        },
     },
 
     "Tracked_Rapier_UK": {
@@ -966,6 +975,15 @@ uk_unit_edits = {
             "add_specs": ["'verygood_airoptics'"],
         },
         "availability": [6, 4, 0, 0],
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+            "UK_2nd_Infantry": {
+                "cards": 2,
+                "Transports": ["Rover_101FC_supply_UK", "Bedford_MJ_4t_trans_UK"],
+            },
+        },
     },
 
     # UK HELI
@@ -1078,7 +1096,7 @@ uk_unit_edits = {
             "display": "HARRIER GR.3 [HE]",
         },
         "CommandPoints": 130,
-        "availability": [0, 3, 0, 0],
+        "availability": [0, 4, 0, 0],
     },
 
     "Jaguar_CLU_UK": {  # 4x BL755 CLU

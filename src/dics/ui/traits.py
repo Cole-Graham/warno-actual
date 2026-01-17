@@ -447,7 +447,7 @@ TRAIT_EDITS = {
                 f"\n- 15% bonus to physical damage. (flat)"
                 f"\n\nWithin 875m of enemies, activate a sprint ability: When in combat "
                 f"and above 40% cohesion, Shock units will activate a sprint ability. "
-                f"While active, shock infantry move 100% faster, and receive -50% suppression damage"
+                f"While active, shock infantry move 70% faster, and receive -50% suppression damage"
             )
         }
     },

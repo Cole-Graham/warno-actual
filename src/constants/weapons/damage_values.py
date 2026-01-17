@@ -1,5 +1,8 @@
 """Damage value constants."""
 
+KINETIC_ROW_COUNT = 40
+HEAT_ROW_COUNT = 30
+KE_AND_HEAT_ROW_COUNT = KINETIC_ROW_COUNT + HEAT_ROW_COUNT
 VANILLA_LAST_ROW = 140 # used for log warning if Eugen changed the damage array
 VANILLA_LAST_COLUMN = 48 + 13 # 13 is the number of WA armor levels, we add them before this check (yeah...not optimal)
 
@@ -167,6 +170,10 @@ INFANTRY_ARMOR_EDITS = {
         108: (0.5, "cluster_ap 4"),
         109: (0.5, "cluster_ap 5"),
         110: (0.5, "cluster_ap 6"),
+        111: (1.0, "fmballe 1"),
+        112: (1.0, "fmballe 2"),
+        113: (1.6, "fmballe 3"),
+        114: (3.0, "fmballe 4"),
         115: (1.0, "flamme 1"),
         116: (1.0, "frag 1"),
         117: (0.85, "grenades 1"),

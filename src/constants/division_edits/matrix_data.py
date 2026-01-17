@@ -26,7 +26,7 @@ DIVISION_MATRICES_NEW = {
     "US_3rd_Arm_multi": {
         "EFactory/Art": [2, 3, 4, 5, 6],
         "EFactory/DCA": [2, 2, 4, 4, 4],
-        "EFactory/Defense": [0],
+        "EFactory/Defense": [],
         "EFactory/Helis": [2, 2, 3, 4, 5],
         "EFactory/Infantry": [2, 2, 2, 2, 2, 3, 4, 5],
         "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 2, 3, 3],
@@ -42,7 +42,7 @@ DIVISION_MATRICES = {
         '['
         '    (EFactory/Art, [2, 3, 4, 5, 6]),'
         '    (EFactory/DCA, [2, 2, 4, 4, 4]),'
-        '    (EFactory/Defense, [0]),'
+        '    (EFactory/Defense, []),'
         '    (EFactory/Helis, [2, 2, 3, 4, 5]),'
         '    (EFactory/Infantry, [2, 2, 2, 2, 2, 3, 4, 5]),'
         '    (EFactory/Logistic, [2, 2, 2, 2, 2, 2, 2, 3, 3]),'
@@ -57,10 +57,10 @@ DIVISION_MATRICES = {
         '['
         '    (EFactory/Art, [2, 2, 4, 4, 6]),'
         '    (EFactory/DCA, [2, 2, 4, 4, 4]),'
-        '    (EFactory/Defense, [0]),'
+        '    (EFactory/Defense, []),'
         '    (EFactory/Helis, [2, 2, 4, 4]),'
         '    (EFactory/Infantry, [2, 2, 2, 2, 2, 2, 3, 4, 4, 4, 5]),'
-        '    (EFactory/Logistic, [2, 2, 2, 2, 2, 2, 2, 2, 3, 3]),'
+        '    (EFactory/Logistic, [2, 2, 2, 2, 2, 2, 3, 3, 3]),'
         '    (EFactory/Planes, [2, 2, 4, 5, 6, 8]),'
         '    (EFactory/Recons, [2, 2, 2, 3, 3, 3]),'
         '    (EFactory/Tanks, [2, 2, 2, 3, 3]),'
@@ -90,7 +90,7 @@ DIVISION_MATRICES = {
         '    (EFactory/Defense, []),'
         '    (EFactory/Helis, [2, 2, 3, 3, 4]),'
         '    (EFactory/Infantry, [2, 2, 2, 2, 2, 2, 3, 3, 3, 4, 4]),'
-        '    (EFactory/Logistic, [2, 2, 2, 2, 2, 2, 2, 3]),'
+        '    (EFactory/Logistic, [2, 2, 2, 2, 2, 3, 3]),'
         '    (EFactory/Planes, [2, 2, 4, 5, 6, 8]),'
         '    (EFactory/Recons, [2, 2, 2, 3, 3, 3, 3]),'
         '    (EFactory/Tanks, [2, 2, 3, 3, 3]),'
@@ -102,13 +102,28 @@ DIVISION_MATRICES = {
         '['
         '    (EFactory/Art, [2, 2, 2, 2, 4, 4]),'
         '    (EFactory/DCA, [2, 3, 5, 5, 5]),'
-        '    (EFactory/Defense, [0, 0, 0, 0]),'
+        '    (EFactory/Defense, []),'
         '    (EFactory/Helis, [2, 2, 2, 3, 3, 4, 4, 4]),'
         '    (EFactory/Infantry, [2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4]),'
         '    (EFactory/Logistic, [2, 2, 2, 2, 2, 2, 3]),'
         '    (EFactory/Planes, [2, 2, 4, 5, 6, 6]),'
         '    (EFactory/Recons, [2, 2, 2, 3, 3, 3, 3]),'
         '    (EFactory/Tanks, [4, 4, 6, 6]),'
+        ']'
+    ),
+    
+    "MatrixCostName_RFA_TerrKo_Sud_multi": (
+        'MatrixCostName_RFA_TerrKo_Sud_multi is MAP'
+        '['
+        '    (EFactory/Art, [2, 2, 4, 4, 5, 6]),'
+        '    (EFactory/DCA, [2, 2, 3, 4, 5]),'
+        '    (EFactory/Defense, []),'
+        '    (EFactory/Helis, [2, 2, 3, 3, 4]),'
+        '    (EFactory/Infantry, [2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4]),'
+        '    (EFactory/Logistic, [2, 2, 2, 2, 2, 2, 2, 2, 3]),'
+        '    (EFactory/Planes, [2, 2, 2, 4, 4, 5, 7]),'
+        '    (EFactory/Recons, [2, 2, 2, 3, 4, 4]),'
+        '    (EFactory/Tanks, [2, 2, 2, 3, 3]),'
         ']'
     ),
 
@@ -175,15 +190,15 @@ DIVISION_MATRICES = {
     "MatrixCostName_RDA_KdA_Bezirk_Erfurt_multi": (
         'MatrixCostName_RDA_KdA_Bezirk_Erfurt_multi is MAP'
         '['
-            '(EFactory/Art, [2, 2, 2, 4, 6, 6, 6]),'
-            '(EFactory/DCA, [2, 2, 3, 4, 5]),'
-            '(EFactory/Defense, []),'
-            '(EFactory/Helis, [2, 2, 3, 3, 4]),'
-            '(EFactory/Infantry, [2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4]),'
-            '(EFactory/Logistic, [2, 2, 2, 2, 2, 2, 2, 2, 3, 3]),'
-            '(EFactory/Planes, [2, 2, 2, 4, 4, 5, 7]),'
-            '(EFactory/Recons, [2, 2, 3, 4, 4]),'
-            '(EFactory/Tanks, [2, 2, 2, 2, 3, 3]),'
+        '    (EFactory/Art, [2, 2, 2, 4, 6, 6, 6]),'
+        '    (EFactory/DCA, [2, 2, 3, 4, 5]),'
+        '    (EFactory/Defense, []),'
+        '    (EFactory/Helis, [2, 2, 3, 3, 4]),'
+        '    (EFactory/Infantry, [2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4]),'
+        '    (EFactory/Logistic, [2, 2, 2, 2, 2, 2, 2, 2, 3, 3]),'
+        '    (EFactory/Planes, [2, 2, 2, 4, 4, 5, 7]),'
+        '    (EFactory/Recons, [2, 2, 3, 4, 4]),'
+        '    (EFactory/Tanks, [2, 2, 2, 2, 3, 3]),'
         ']'
     ),
 
@@ -192,7 +207,7 @@ DIVISION_MATRICES = {
         '['
         '    (EFactory/Art, [2, 2, 4, 4, 5, 6]),'
         '    (EFactory/DCA, [2, 2, 4, 4, 4]),'
-        '    (EFactory/Defense, [0]),'
+        '    (EFactory/Defense, []),'
         '    (EFactory/Helis, [2, 4, 4]),'
         '    (EFactory/Infantry, [2, 2, 2, 2, 2, 3, 4, 5]),'
         '    (EFactory/Logistic, [2, 2, 2, 2, 2, 2, 2, 2, 3, 3]),'
@@ -207,7 +222,7 @@ DIVISION_MATRICES = {
         '['
         '    (EFactory/Art, [2, 3, 4, 4, 6]),'
         '    (EFactory/DCA, [2, 2, 4, 4, 4]),'
-        '    (EFactory/Defense, [0]),'
+        '    (EFactory/Defense, []),'
         '    (EFactory/Helis, [2, 2, 3, 4, 5, 5]),'
         '    (EFactory/Infantry, [2, 2, 2, 2, 3, 3, 3, 4, 4, 5, 5]),'
         '    (EFactory/Logistic, [2, 2, 2, 2, 2, 2, 2, 3, 3, 3]),'
@@ -225,9 +240,9 @@ DIVISION_MATRICES = {
         '    (EFactory/Defense, []),'
         '    (EFactory/Helis, [2, 2, 3, 3, 3, 4]),'
         '    (EFactory/Infantry, [2, 2, 2, 2, 3, 4, 4, 5]),'
-        '    (EFactory/Logistic, [2, 2, 2, 2, 2, 3, 4]),'
-        '    (EFactory/Planes, [2, 2, 3, 4, 4, 4, 6, 6]),'
-        '    (EFactory/Recons, [2, 2, 2, 2, 2, 3, 3, 3, 4]),'
+        '    (EFactory/Logistic, [2, 2, 2, 2, 3, 3, 3]),'
+        '    (EFactory/Planes, [2, 2, 3, 4, 5, 6, 8]),'
+        '    (EFactory/Recons, [2, 2, 2, 2, 2, 2, 2, 2, 3, 3]),'
         '    (EFactory/Tanks, [2, 2, 2, 3, 3, 3, 3, 3]),'
         ']'
     ),

@@ -170,11 +170,16 @@ def _add_modules(game_db, edit_type, unit_name, edits, modules_list) -> None:
         
         wreck_type = "Default" if not unit_db.get(
             unit_name, {}).get("is_helo_unit", False) else "Chopper"
+        
+        if "tow_only" in edits:
+            transportable_tag_set = '"Unite_transportable"'
+        else:
+            transportable_tag_set = '"Crew", "Unite_transportable"'
             
         transporter_module = (
             f"TTransporterModuleDescriptor"
             f"("
-            f'    TransportableTagSet = ["Crew", "Unite_transportable"]'
+            f'    TransportableTagSet = [{transportable_tag_set}]'
             f"    NbSeatsAvailable = 1"
             f"    WreckUnloadPhysicalDamageBonus = WreckUnloadDamageBonus_{wreck_type}_Physical"
             f"    WreckUnloadSuppressDamageBonus = WreckUnloadDamageBonus_{wreck_type}_Suppress"

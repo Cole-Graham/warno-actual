@@ -368,7 +368,7 @@ SOV_NEW_UNITS = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 11,
-                "SAW_RPK_74_5_56mm": 15,
+                "SAW_RPK_74_5_56mm": 18,
                 "RocketInf_RPG7VL": 6,
             },
             "equipmentchanges": {

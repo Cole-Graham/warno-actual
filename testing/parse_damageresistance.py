@@ -2,10 +2,14 @@
 
 import csv
 import os
+import sys
 import winreg
 from datetime import datetime
 from pathlib import Path
 from typing import Any, List, Tuple
+
+# Add project root to path for imports
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from src import ndf
 from src.utils.logging_utils import setup_logger
@@ -30,12 +34,32 @@ def get_desktop_path() -> Path:
 def get_resistance_families(damage_params: Any) -> List[Tuple[str, int]]:
     """Get list of resistance families and their max indices."""
     resistance_families = []
-    resistance_list = damage_params.by_m("ResistanceFamilyDefinitionList").v
+    resistance_list = damage_params.by_m("ResistanceFamilyCounts").v
     
-    for family in resistance_list:
-        family_name = family.v.by_m("Family").v.replace("ResistanceFamily_", "")
-        max_index = family.v.by_m("MaxIndex").v
-        resistance_families.append((family_name, max_index))
+    for family_tuple in resistance_list:
+        # Tuples are represented as list-like: (FamilyName, MaxIndex)
+        # Try different access patterns to handle NDF parser variations
+        try:
+            if hasattr(family_tuple, 'v'):
+                # NDF wrapper object - access via .v[index]
+                family_name_raw = family_tuple.v[0]
+                max_index = family_tuple.v[1]
+                # Unwrap if nested
+                if hasattr(family_name_raw, 'v'):
+                    family_name_raw = family_name_raw.v
+                if hasattr(max_index, 'v'):
+                    max_index = max_index.v
+            else:
+                # Direct list/tuple access
+                family_name_raw = family_tuple[0]
+                max_index = family_tuple[1]
+        except (AttributeError, IndexError, TypeError) as e:
+            logger.error(f"Error accessing resistance family tuple: {e}")
+            continue
+        
+        # Remove prefix from family name
+        family_name = str(family_name_raw).replace("ResistanceFamily_", "")
+        resistance_families.append((family_name, int(max_index)))
         logger.debug(f"Found resistance family: {family_name} with max index {max_index}")
         
     return resistance_families
@@ -44,12 +68,32 @@ def get_resistance_families(damage_params: Any) -> List[Tuple[str, int]]:
 def get_damage_families(damage_params: Any) -> List[Tuple[str, int]]:
     """Get list of damage families and their max indices."""
     damage_families = []
-    damage_list = damage_params.by_m("DamageFamilyDefinitionList").v
+    damage_list = damage_params.by_m("DamageFamilyCounts").v
     
-    for family in damage_list:
-        family_name = family.v.by_m("Family").v.replace("DamageFamily_", "")
-        max_index = family.v.by_m("MaxIndex").v
-        damage_families.append((family_name, max_index))
+    for family_tuple in damage_list:
+        # Tuples are represented as list-like: (FamilyName, MaxIndex)
+        # Try different access patterns to handle NDF parser variations
+        try:
+            if hasattr(family_tuple, 'v'):
+                # NDF wrapper object - access via .v[index]
+                family_name_raw = family_tuple.v[0]
+                max_index = family_tuple.v[1]
+                # Unwrap if nested
+                if hasattr(family_name_raw, 'v'):
+                    family_name_raw = family_name_raw.v
+                if hasattr(max_index, 'v'):
+                    max_index = max_index.v
+            else:
+                # Direct list/tuple access
+                family_name_raw = family_tuple[0]
+                max_index = family_tuple[1]
+        except (AttributeError, IndexError, TypeError) as e:
+            logger.error(f"Error accessing damage family tuple: {e}")
+            continue
+        
+        # Remove prefix from family name
+        family_name = str(family_name_raw).replace("DamageFamily_", "")
+        damage_families.append((family_name, int(max_index)))
         logger.debug(f"Found damage family: {family_name} with max index {max_index}")
         
     return damage_families
@@ -150,15 +194,15 @@ def write_csv_data(damage_levels: List, armor_levels: List, damage_array: Any, o
 def main() -> None:
     """Main entry point for damage resistance parser."""
     try:
-        parse_vanilla = False
+        parse_vanilla = True
         
         # Define paths
         if parse_vanilla:
             MOD_SRC = Path(r"C:/Program Files (x86)/Steam/steamapps/common/WARNO/Mods/sourcemod")
             MOD_DST = Path(r"C:/Program Files (x86)/Steam/steamapps/common/WARNO/Mods/sourcemod")
         else:   
-            MOD_SRC = Path(r"C:/Program Files (x86)/Steam/steamapps/common/WARNO/Mods/WARNO ACTUAL test dev")
-            MOD_DST = Path(r"C:/Program Files (x86)/Steam/steamapps/common/WARNO/Mods/WARNO ACTUAL test dev")
+            MOD_SRC = Path(r"C:/Program Files (x86)/Steam/steamapps/common/WARNO/Mods/WARNO ACTUAL")
+            MOD_DST = Path(r"C:/Program Files (x86)/Steam/steamapps/common/WARNO/Mods/WARNO ACTUAL")
         
         # Initialize mod
         mod = ndf.Mod(str(MOD_SRC), str(MOD_DST))

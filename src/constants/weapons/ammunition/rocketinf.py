@@ -255,6 +255,19 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("RocketInf_Blindicide_RL_100", "heavy_at", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 50,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 700,
+                "DisplaySalveAccuracy": False,
+                "SupplyCost": 15.0,
+            },
+        },
+    },
+    
     ("RocketInf_LRAC_73", "medium_at", None, False): {
         "Ammunition": {
             "Arme": {
@@ -296,6 +309,45 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeGRU": 875,
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 20.0,
+            },
+        },
+    },
+    
+    ("RocketInf_PzF_3", "heavy_at", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 21,
+            },
+            "hit_roll": {
+                "Idling": 60,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 700,
+                "DisplaySalveAccuracy": False,
+                "TimeBetweenTwoSalvos": 6.0,
+                "SupplyCost": 20.0,
+                "TandemCharge": False,
+            },
+        },
+    },
+    
+    ("RocketInf_PzF_3T", "heavy_at", "RocketInf_PzF_3", True): {
+        "Ammunition": {
+            "display": "PANZERFAUST 3-T",
+            "token": "LGJSOHJWCY",
+            "Arme": {
+                "Index": 23,
+            },
+            "hit_roll": {
+                "Idling": 60,
+            },
+            "parent_membr": {
+                "TraitsToken": ['STAT', 'HE', 'TANDEM'],
+                "MaximumRangeGRU": 700,
+                "DisplaySalveAccuracy": False,
+                "TimeBetweenTwoSalvos": 6.0,
+                "SupplyCost": 20.0,
+                "TandemCharge": True, # 1995 lmao xD
             },
         },
     },

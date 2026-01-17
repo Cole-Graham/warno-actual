@@ -668,9 +668,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
 
     ("AutoCanon_AP_20mm_MK_20_Rh_202", "autocannon", None, False): { # 3
         "Ammunition": {
-            "Arme": {
-                "Index": 10,
-            },
             "hit_roll": {
                 "BaseCriticModifier": 68,
                 "Idling": 25,
@@ -692,9 +689,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
     
     ("AutoCanon_AP_M693_F1_20mm", "autocannon", None, False): {
         "Ammunition": {
-            "Arme": {
-                "Index": 10,
-            },
             "hit_roll": {
                 "BaseCriticModifier": 68,
                 "Idling": 20,
@@ -716,9 +710,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
     
     ("AutoCanon_AP_M693_F1_20mm_15acc", "autocannon", "AutoCanon_AP_M693_F1_20mm", True): {
         "Ammunition": {
-            "Arme": {
-                "Index": 10,
-            },
             "hit_roll": {
                 "BaseCriticModifier": 68,
                 "Idling": 15,
@@ -740,9 +731,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
 
     ("AutoCanon_AP_20mm_M621_GIAT_AMX30", "autocannon", None, False): { # 2
         "Ammunition": {
-            "Arme": {
-                "Index": 10,
-            },
             "hit_roll": {
                 "BaseCriticModifier": 68,
                 "Idling": 20,
@@ -764,9 +752,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
 
     ("AutoCanon_AP_20mm_M621_GIAT", "autocannon", None, False): { # 1
         "Ammunition": {
-            "Arme": {
-                "Index": 10,
-            },
             "hit_roll": {
                 "BaseCriticModifier": 68,
                 "Idling": 20,
@@ -788,10 +773,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
     
     ("AutoCanon_AP_T20_20mm", "autocannon", None, False): {
         "Ammunition": {
-            "Arme": {
-                "Family": "DamageFamily_ap",
-                "Index": 10,
-            },
             "hit_roll": {
                 "BaseCriticModifier": 68,
                 "Idling": 20,
@@ -823,7 +804,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "DisplaySalveAccuracy": False,
-                "SupplyCost": 5.0,
+                "SupplyCost": 2.0,
             },
         },
     },
@@ -832,7 +813,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "DisplaySalveAccuracy": False,
-                "SupplyCost": 5.0,
+                "SupplyCost": 1.0,
             },
         },
     },
@@ -840,6 +821,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Gatling_M61_Vulcan_20mm_noRadar", "autocannon", None, False): { # 319
         "Ammunition": {
             "parent_membr": {
+                "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2275,
                 "MaximumRangeAirplaneGRU": 1750,
                 "AimingTime": 1.2,
@@ -851,6 +833,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Gatling_M61_Vulcan_20mm_late_TOWED", "autocannon", None, False): { # 318
         "Ammunition": {
             "parent_membr": {
+                "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 2100,
                 "AimingTime": 1.2,
@@ -865,6 +848,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Gatling_M61_Vulcan_20mm_late", "autocannon", None, False): { # 317
         "Ammunition": {
             "parent_membr": {
+                "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 2100,
                 "AimingTime": 1.2,
@@ -876,6 +860,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Gatling_M61_Vulcan_20mm_TOWED", "autocannon", None, False): { # 316
         "Ammunition": {
             "parent_membr": {
+                "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 2100,
                 "AimingTime": 1.2,
