@@ -2172,7 +2172,7 @@ usa_unit_edits = {
         "CommandPoints": 310,
         "Divisions": {
             "default": {
-                "cards": 3,
+                "cards": 2,
             },
         },
         "availability": [0, 0, 3, 2],

@@ -22,6 +22,8 @@ forward_deploy_new_values = [750.0, 1750.0]
 
 def edit_gen_gp_gfx_unitedescriptor(source_path, game_db) -> None:
     """GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf"""
+    
+    _handle_batch_changes(source_path, game_db)
 
     new_units_dic_entries = []
     _handle_new_units(source_path, game_db, new_units_dic_entries)
@@ -71,6 +73,21 @@ def _handle_new_units(source_path, game_db, new_units_dic_entries) -> None:
         source_path.add(new_unit_descr)
         logger.info(f"- Processed new unit {unit_name}")
 
+def _handle_batch_changes(source_path, game_db) -> None:
+    """Handle batch changes for UniteDescriptor.ndf"""
+    logger.info("Processing batch changes for UniteDescriptor.ndf")
+    
+    for unit_descr in source_path:
+        modules_list = unit_descr.v.by_m("ModulesDescriptors")
+        
+        # Remove frontline visual mechanic from CVs (they can still capture zones)
+        frontline_module = find_obj_by_type(modules_list.v, "TInfluenceScoutModuleDescriptor")
+        if frontline_module:
+            modules_list.v.remove(frontline_module.index)
+        else:
+            continue
+            
+    logger.info("Batch changes processed")
 
 def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_name, edits, modules_list) -> None:
     """Handle modules list edits for new and existing units"""
@@ -109,7 +126,7 @@ def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_nam
         # "TIAStratModuleDescriptor": { "handler": handle_iastrat_module, "args": [] },
         "TCapaciteModuleDescriptor": { "handler": handle_capacite_module, "args": [found_capacite_module, modules_list] },
         "TProductionModuleDescriptor": { "handler": _handle_production_module, "args": [] },
-        "TZoneInfluenceMapModuleDescriptor": { "handler": _handle_zoneinfluencemap_module, "args": [] },
+        "TInfluenceMapModuleDescriptor": { "handler": _handle_influencemap_module, "args": [] },
         "TInfluenceScoutModuleDescriptor": { "handler": _handle_influencescout_module, "args": [] },
         # "TAutomaticBehaviorModuleDescriptor": { "handler": handle_automaticbehavior_module, "args": [] },
         "TCubeActionModuleDescriptor": { "handler": _handle_cubeaction_module, "args": [] },
@@ -618,9 +635,9 @@ def _handle_deploymentshift_module(logger, game_db, unit_data, edit_type, unit_n
             module.v.by_m("DeploymentShiftGRU").v = str(forward_deploy_new_values[0])
 
 # TZoneInfluenceMapModuleDescriptor
-def _handle_zoneinfluencemap_module(logger, game_db, unit_data, edit_type, unit_name,
+def _handle_influencemap_module(logger, game_db, unit_data, edit_type, unit_name,
                                     edits, module, *args) -> None:
-    """Handle TZoneInfluenceMapModuleDescriptor for existing and new units"""
+    """Handle TInfluenceMapModuleDescriptor for existing and new units"""
 
     if edit_type == "new_units":
         pass

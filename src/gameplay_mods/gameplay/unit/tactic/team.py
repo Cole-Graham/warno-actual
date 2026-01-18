@@ -67,6 +67,7 @@ def _handle_team_airport_module(team_airport_module) -> None:
     are also much higher. e.g. 1 Kh-58U SEAD missile costs 3250 supply in Wargame. """
 
     # Roughly equivalent to 1:1 ammo supply rate, comparing the time to resupply 4 AMRAAMs
+    # in wargame and warno actual.
     new_ammo_rate = "2"
     team_airport_module.v.by_m("AmmunitionSupplyAmountBySecond").v = new_ammo_rate
     logger.info(f"Set airport ammunition supply rate to {new_ammo_rate}/second")

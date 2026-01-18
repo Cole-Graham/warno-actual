@@ -13,7 +13,18 @@ logger = setup_logger('patcher')
 def confirm_release_build() -> bool:
     """Prompt user to confirm release build."""
     while True:
-        response = input("Are you sure you want to write the release build? (y/n): ").lower()
+        version = ""
+        build_target = ""
+        try:
+            build_target = ModConfig.get_instance().config_data["build_config"]["target"]
+            if build_target == "gameplay":
+                version = ModConfig.get_instance().config_data["build_config"].get("gameplay_version", "")
+            elif build_target == "ui_only":
+                version = ModConfig.get_instance().config_data["build_config"].get("ui_version", "")
+        except Exception:
+            pass
+        version_str = f" (version: {version})" if version else ""
+        response = input(f"Are you sure you want to write the release build {version_str}? (y/n): ").lower()
         if response == 'y':
             return True
         elif response == 'n':

@@ -1954,7 +1954,7 @@ sov_unit_edits = {
         "CommandPoints": 290,
         "Divisions": {
             "default": {
-                "cards": 4,
+                "cards": 3,
             },
         },
         "availability": [0, 0, 3, 2],

@@ -298,7 +298,6 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "SalvoLengths": [2],
         },
         "MissileDescriptor": {
-            "use_old_name": None,
             "MaxSpeedGRU": 2800,
             "MaxAccelerationGRU": 1400,
         },
@@ -306,11 +305,18 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("Bomb_KAB_1500L", "LGB", None, False): { # 152
         "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_pgb_bomb",
+            },
             "parent_membr": {
+                "add": [34, "IsFireAndForget = True"],
+                "TraitsToken": ['MOTION', 'F&F', 'HE'],
+                "MaximumRangeGRU": 3500,
+                "TimeBetweenTwoSalvos": 2.5,
                 "AimingTime": 0.3,
             },
         },
-        "SupplyCost": 120.0,
+        "SupplyCost": 160.0,
         "WeaponDescriptor": {
             "SalvoLengths": [3, 2, 1],
         },
@@ -318,11 +324,37 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("Bomb_KAB_1500Kr", "LGB", None, False): {
         "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_pgb_bomb",
+            },
             "parent_membr": {
+                "add": [34, "IsFireAndForget = True"],
+                "TraitsToken": ['MOTION', 'F&F', 'HE'],
+                "MaximumRangeGRU": 3500,
+                "TimeBetweenTwoSalvos": 2.5,
                 "AimingTime": 0.3,
             },
         },
-        "SupplyCost": 120.0,
+        "SupplyCost": 160.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [2, 1],
+        },
+    },
+    
+    ("Bomb_GBU_10", "LGB", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_pgb_bomb",
+            },
+            "parent_membr": {
+                "add": [34, "IsFireAndForget = True"],
+                "TraitsToken": ['MOTION', 'F&F', 'HE'],
+                "MaximumRangeGRU": 3500,
+                "TimeBetweenTwoSalvos": 5,
+                "AimingTime": 0.3,
+            },
+        },
+        "SupplyCost": 140.0,
         "WeaponDescriptor": {
             "SalvoLengths": [2, 1],
         },
@@ -330,13 +362,18 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("Bomb_GBU_12", "LGB", None, False): { # 147
         "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_pgb_bomb",
+            },
             "parent_membr": {
-                "TraitsToken": ['MOTION', 'semiAuto', 'HE'],
+                "add": [34, "IsFireAndForget = True"],
+                "TraitsToken": ['MOTION', 'F&F', 'HE'],
+                "MaximumRangeGRU": 3500,
                 "TimeBetweenTwoSalvos": 5,
                 "AimingTime": 0.3,
             },
         },
-        "SupplyCost": 140.0,
+        "SupplyCost": 70.0,
         "WeaponDescriptor": {
             "SalvoLengths": [2, 1],
         },

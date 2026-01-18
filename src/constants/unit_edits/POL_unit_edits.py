@@ -1876,6 +1876,11 @@ pol_unit_edits = {
     "Su_22_AT_POL": {  # Su-22M4 Seria 30
         "CommandPoints": "Su_22_AT_SOV",
         "availability": "Su_22_AT_SOV",
+        "WeaponDescriptor": {
+            "Salves": {
+                "AGM_Kh29T": 1,
+            },
+        },
     },
     "Su_22_RKT_POL": {  # 4x S-24, 2x R-60M
         "CommandPoints": 125,

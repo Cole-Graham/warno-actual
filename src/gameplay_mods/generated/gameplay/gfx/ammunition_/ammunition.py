@@ -352,8 +352,15 @@ def _apply_weapon_edits(descr: Any, category: str, data: Dict, ammo_data: Dict) 
         for key, value in ammo_data["parent_membr"].items():
             logger.debug(f"Setting {key} = {value}")
             if key == "add":  # adding new member, e.g. [16, "MaximumRangeHelicopterGRU = 875"]
-                for index, new_member in value:
+                index = value[0]
+                new_member = value[1]
+                # Extract member name from "MemberName = Value" format
+                member_name = new_member.split("=")[0].strip()
+                # Check if member already exists before inserting
+                if descr.v.by_m(member_name, False) is None:
                     descr.v.insert(index, new_member)
+                else:
+                    logger.debug(f"Member {member_name} already exists in {descr.n}, skipping insert")
             elif isinstance(value, (float, int, bool)):
                 membr(key).v = str(value)
             elif isinstance(value, tuple) and key == "Caliber":

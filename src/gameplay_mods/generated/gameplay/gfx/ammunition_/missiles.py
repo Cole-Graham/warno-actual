@@ -298,7 +298,13 @@ def _apply_missile_edits(descr: Any, data: Dict, ammo_data: Dict, is_new: bool) 
                 if key == "add":
                     index = value[0]
                     value = value[1]
-                    descr.v.insert(index, value)
+                    # Extract member name from "MemberName = Value" format
+                    member_name = value.split("=")[0].strip()
+                    # Check if member already exists before inserting
+                    if descr.v.by_m(member_name, False) is None:
+                        descr.v.insert(index, value)
+                    else:
+                        logger.debug(f"Member {member_name} already exists in {descr.n}, skipping insert")
                 elif isinstance(value, (float, int, bool)):
                     membr(key).v = str(value)
                 elif isinstance(value, tuple) and key == "Caliber":

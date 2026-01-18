@@ -1562,6 +1562,11 @@ rda_unit_edits = {
     "Su_22_AT_DDR": {
         "CommandPoints": "Su_22_AT_SOV",
         "availability": [0, 2, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "AGM_Kh29T": 1,
+            },
+        },
     },
 
     "Su_22_SEAD_DDR": { # Kh-28 5425m
