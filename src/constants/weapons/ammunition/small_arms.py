@@ -13,7 +13,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_sniper",
             },
             "hit_roll": {
-                "Idling": 55,
+                "Idling": 80,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
@@ -44,7 +44,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_sniper",
             },
             "hit_roll": {
-                "Idling": 65,
+                "Idling": 90,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
@@ -73,7 +73,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_sniper",
             },
             "hit_roll": {
-                "Idling": 55,
+                "Idling": 80,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
@@ -104,7 +104,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_sniper",
             },
             "hit_roll": {
-                "Idling": 55,
+                "Idling": 80,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
@@ -135,7 +135,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_sniper",
             },
             "hit_roll": {
-                "Idling": 65,
+                "Idling": 90,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
@@ -164,7 +164,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_sniper",
             },
             "hit_roll": {
-                "Idling": 55,
+                "Idling": 80,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
@@ -195,7 +195,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_sniper",
             },
             "hit_roll": {
-                "Idling": 65,
+                "Idling": 90,
                 "DistanceToTarget": True,
             },
             "parent_membr": {

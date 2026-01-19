@@ -49,6 +49,7 @@ from .gameplay_mods import (
     edit_gen_gp_gfx_experiencelevels,
     edit_gen_gp_gfx_firedescriptor,
     edit_gen_gp_gfx_ndfdepictionlist,
+    edit_gen_gp_gfx_mimeticimpactmapping,
     edit_gen_gp_gfx_missilecarriage,
     edit_gen_gp_gfx_missilecarriagedepiction,
     edit_gen_gp_gfx_orderavailabilitytactic,
@@ -162,6 +163,7 @@ __all__ = [
     'edit_gen_gp_gfx_effetssurunite',
     'edit_gen_gp_gfx_experiencelevels',
     'edit_gen_gp_gfx_firedescriptor',
+    'edit_gen_gp_gfx_mimeticimpactmapping',
     'edit_gen_gp_gfx_missilecarriage',
     'edit_gen_gp_gfx_missilecarriagedepiction',
     'edit_gen_gp_gfx_ndfdepictionlist',
@@ -379,6 +381,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         # "GameData/Generated/Gameplay/Gfx/Depictions/MimeticGhosts.ndf": [
         #     (edit_gen_gp_gfx_mimeticghosts, "gameplay"),
         # ],
+        "GameData/Generated/Gameplay/Gfx/MimeticImpactMapping.ndf": [
+            (edit_gen_gp_gfx_mimeticimpactmapping, "gameplay"),
+        ],
         "GameData/Generated/Gameplay/Gfx/MissileCarriage.ndf": [
             (edit_gen_gp_gfx_missilecarriage, "gameplay"),
         ],

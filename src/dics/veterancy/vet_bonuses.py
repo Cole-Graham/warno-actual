@@ -9,7 +9,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Aiming time: normal}'
                 '\n#style1{- Reload time: normal}'
                 '\n#style1{- Stress resistance: normal}'
-                '\n#style1{- Stress recovery: 1.6 per second}'
+                '\n#style1{- Stress recovery: 3.0 per second}'
                 '\n(flat, multiplicative, multiplicative, percentage)'
             ),
         },
@@ -55,7 +55,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Aiming time: normal}'
                 '\n#style1{- Reload time: normal}'
                 '\n#style1{- Stress resistance: normal}'
-                '\n#style1{- Stress recovery: 1.6 per second}'
+                '\n#style1{- Stress recovery: 3.0 per second}'
             ),
         },
         "simple_v3_multiplicative_1": {
@@ -101,7 +101,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Aiming time: normal}'
                 '\n#style1{- Reload Time: normal}'
                 '\n#style1{- Stress resistance: normal}'
-                '\n#style1{- Stress recovery: 2.0 per second}'
+                '\n#style1{- Stress recovery: 3.5 per second}'
             ),
         },
         "SF_v2_1": {
@@ -150,7 +150,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Aiming time: normal}'
                 '\n#style1{- Reload Time: normal}'
                 '\n#style1{- Stress resistance: normal}'
-                '\n#style1{- Stress recovery: 2.0 per second}'
+                '\n#style1{- Stress recovery: 3.5 per second}'
             ),
         },
         "SF_v2_multiplicative_1": {
@@ -198,7 +198,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Aiming time: normal}'
                 '\n#style1{- Reload time: normal}'
                 '\n#style1{- Stress resistance: normal}'
-                '\n#style1{- Stress recovery: 1.6 per second}'
+                '\n#style1{- Stress recovery: 3.0 per second}'
             ),
         },
         "artillery_1": {
@@ -242,7 +242,7 @@ VETERANCY_BONUSES = {
                 '#style1{- Precision: normal}'
                 '\n#style1{- Aiming time: normal}'
                 '\n#style1{- Stress resistance: normal}'
-                '\n#style1{- Stress recovery: 1.6 per second}'
+                '\n#style1{- Stress recovery: 3.0 per second}'
             ),
         },
         "helico_1": {

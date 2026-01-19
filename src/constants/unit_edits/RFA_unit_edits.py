@@ -961,7 +961,7 @@ rfa_unit_edits = {
                 "cards": 2,
             },
             "RFA_TerrKdo_Sud": {
-                "Transports": ["Unimog_S_404_RFA", "MAN_Kat_6x6_trans_RFA"],
+                "Transports": ["Unimog_S_404_RFA"],
             },
         },
     },

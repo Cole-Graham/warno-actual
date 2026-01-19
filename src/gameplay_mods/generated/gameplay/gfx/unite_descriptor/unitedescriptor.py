@@ -322,13 +322,13 @@ def _handle_airplanemovement_module(logger, game_db, unit_data, edit_type, unit_
         unit_or_donor_data = unit_data
 
     search_conditions = [
-        ("has_terrain_radar", "'terrain_radar'", edits.get("specialties", {})),
+        ("has_terrain_radar", "'terrain_radar'", edits.get("SpecialtiesList", {}).get("add_specs", [])),
         ("is_sead", "Avion_SEAD", unit_or_donor_data.get("tags", {})),
         ("is_ew", "_electronic_warfare", unit_or_donor_data.get("specialties", {})),
     ]
     has_terrain_radar, is_sead, is_ew = determine_characteristics(search_conditions)
     
-    if has_terrain_radar and is_sead and not is_ew:
+    if has_terrain_radar and not is_sead and not is_ew:
         new_value = "300"
         module.v.by_m("AltitudeGRU").v = new_value
         logger.info(f"Updated {unit_name} altitude to {new_value}")
@@ -388,13 +388,13 @@ def _handle_visibility_module(logger, game_db, unit_data, edit_type, unit_name,
         
         # global bomber edits TODO: Use dic references instead for standardization
         conditions_search = [
-            ("has_terrain_radar", "'terrain_radar'", edits.get("specialties", {})),
+            ("has_terrain_radar", "'terrain_radar'", edits.get("SpecialtiesList", {}).get("add_specs", [])),
             ("is_sead", "Avion_SEAD", unit_data.get("tags", {})),
             ("is_ew", "_electronic_warfare", unit_data.get("specialties", {})),
         ]
         has_terrain_radar, is_sead, is_ew = determine_characteristics(conditions_search)
 
-        if has_terrain_radar and is_sead and not is_ew:
+        if has_terrain_radar and not is_sead and not is_ew:
             module.v.by_m("UnitConcealmentBonus").v = "1.75"
             logger.info(f"Updated {unit_name} stealth to 1.75")
 

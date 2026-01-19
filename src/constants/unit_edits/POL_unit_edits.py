@@ -1085,6 +1085,7 @@ pol_unit_edits = {
         "SpecialtiesList": {
             "overwrite_all": [
                 "leader_sov",
+                "_smoke_launcher",
             ],
         },
         "MenuIconTexture": "Texture_RTS_H_Armor",

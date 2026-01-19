@@ -28,6 +28,7 @@ from .depictions import (
 from .effetssurunite import edit_gen_gp_gfx_effetssurunite
 from .experiencelevels import edit_gen_gp_gfx_experiencelevels
 from .firedescriptor import edit_gen_gp_gfx_firedescriptor
+from .mimeticimpactmapping import edit_gen_gp_gfx_mimeticimpactmapping
 from .ndfdepictionlist import edit_gen_gp_gfx_ndfdepictionlist
 from .orderavailabilitytactic import edit_gen_gp_gfx_orderavailabilitytactic
 from .smokedescriptor import edit_gen_gp_gfx_smokedescriptor
@@ -57,6 +58,7 @@ __all__ = [
     'edit_gen_gp_gfx_effetssurunite',
     'edit_gen_gp_gfx_experiencelevels',
     'edit_gen_gp_gfx_firedescriptor',
+    'edit_gen_gp_gfx_mimeticimpactmapping',
     'edit_gen_gp_gfx_missilecarriage',
     'edit_gen_gp_gfx_missilecarriagedepiction',
     'edit_gen_gp_gfx_ndfdepictionlist',

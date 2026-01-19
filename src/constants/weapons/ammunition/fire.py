@@ -24,5 +24,16 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("incendiary_magnesium_53m", "fire", "Degats_napalm_leger", True): {
+        "Ammunition": {
+            "parent_membr": {
+                "RadiusSplashPhysicalDamagesGRU": 53,
+                "RadiusSplashSuppressDamagesGRU": 53,
+                "PhysicalDamages": 0.3,
+                "SuppressDamages": 30,
+            },
+        },
+    },
 }
 # fmt: on

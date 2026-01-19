@@ -91,8 +91,8 @@ DIVISION_MATRICES = {
         '    (EFactory/Helis, [2, 2, 3, 3, 4]),'
         '    (EFactory/Infantry, [2, 2, 2, 2, 2, 2, 3, 3, 3, 4, 4]),'
         '    (EFactory/Logistic, [2, 2, 2, 2, 2, 3, 3]),'
-        '    (EFactory/Planes, [2, 2, 4, 5, 6, 8]),'
-        '    (EFactory/Recons, [2, 2, 2, 3, 3, 3, 3]),'
+        '    (EFactory/Planes, [2, 2, 3, 5, 5, 7]),'
+        '    (EFactory/Recons, [2, 2, 2, 2, 2, 2, 2]),'
         '    (EFactory/Tanks, [2, 2, 3, 3, 3]),'
         ']'
     ),
@@ -122,7 +122,7 @@ DIVISION_MATRICES = {
         '    (EFactory/Infantry, [2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4]),'
         '    (EFactory/Logistic, [2, 2, 2, 2, 2, 2, 2, 2, 3]),'
         '    (EFactory/Planes, [2, 2, 2, 4, 4, 5, 7]),'
-        '    (EFactory/Recons, [2, 2, 2, 3, 4, 4]),'
+        '    (EFactory/Recons, [2, 2, 2, 2, 3, 4]),'
         '    (EFactory/Tanks, [2, 2, 2, 3, 3]),'
         ']'
     ),
@@ -167,7 +167,7 @@ DIVISION_MATRICES = {
         '    (EFactory/Infantry, [2, 2, 2, 2, 2, 3, 3, 3, 4, 4, 4]),'
         '    (EFactory/Logistic, [2, 2, 2, 2, 2, 2, 3, 3]),'
         '    (EFactory/Planes, [2, 2, 3, 3, 4, 5, 7, 8]),'
-        '    (EFactory/Recons, [2, 2, 2, 2, 2, 3, 3, 3, 3]),'
+        '    (EFactory/Recons, [2, 2, 2, 2, 2, 2, 2, 2, 2]),'
         '    (EFactory/Tanks, [2, 2, 3, 3, 3, 3]),'
         ']'
     ),
@@ -182,7 +182,7 @@ DIVISION_MATRICES = {
         '    (EFactory/Infantry, [2, 2, 2, 2, 2, 3, 4, 5]),'
         '    (EFactory/Logistic, [2, 2, 2, 2, 2, 2, 2, 3, 3]),'
         '    (EFactory/Planes, [2, 2, 4, 4, 5, 7]),'
-        '    (EFactory/Recons, [2, 2, 2, 2, 3, 3, 3]),'
+        '    (EFactory/Recons, [2, 2, 2, 2, 2, 2, 2]),'
         '    (EFactory/Tanks, [2, 2, 2, 2, 2, 2, 2, 3]),'
         ']'
     ),
@@ -197,7 +197,7 @@ DIVISION_MATRICES = {
         '    (EFactory/Infantry, [2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4]),'
         '    (EFactory/Logistic, [2, 2, 2, 2, 2, 2, 2, 2, 3, 3]),'
         '    (EFactory/Planes, [2, 2, 2, 4, 4, 5, 7]),'
-        '    (EFactory/Recons, [2, 2, 3, 4, 4]),'
+        '    (EFactory/Recons, [2, 2, 2, 2, 3]),'
         '    (EFactory/Tanks, [2, 2, 2, 2, 3, 3]),'
         ']'
     ),
@@ -212,7 +212,7 @@ DIVISION_MATRICES = {
         '    (EFactory/Infantry, [2, 2, 2, 2, 2, 3, 4, 5]),'
         '    (EFactory/Logistic, [2, 2, 2, 2, 2, 2, 2, 2, 3, 3]),'
         '    (EFactory/Planes, [2, 2, 4, 4, 5, 7]),'
-        '    (EFactory/Recons, [2, 2, 2, 2, 3, 3, 3]),'
+        '    (EFactory/Recons, [2, 2, 2, 2, 2, 2, 3]),'
         '    (EFactory/Tanks, [2, 2, 2, 2, 2, 3, 3, 3]),'
         ']'
     ),
@@ -226,8 +226,8 @@ DIVISION_MATRICES = {
         '    (EFactory/Helis, [2, 2, 3, 4, 5, 5]),'
         '    (EFactory/Infantry, [2, 2, 2, 2, 3, 3, 3, 4, 4, 5, 5]),'
         '    (EFactory/Logistic, [2, 2, 2, 2, 2, 2, 2, 3, 3, 3]),'
-        '    (EFactory/Planes, [2, 2, 4, 5, 6, 8]),'
-        '    (EFactory/Recons, [2, 2, 2, 2, 3, 3, 3]),'
+        '    (EFactory/Planes, [2, 2, 3, 4, 5, 6]),'
+        '    (EFactory/Recons, [2, 2, 2, 2, 2, 2, 2]),'
         '    (EFactory/Tanks, [2, 2, 2, 3, 3, 3]),'
         ']'
     ),
@@ -235,15 +235,15 @@ DIVISION_MATRICES = {
     "MatrixCostName_US_11ACR_multi": (
         'MatrixCostName_US_11ACR_multi is MAP'
         '['
-        '    (EFactory/Art, [2, 4, 4, 6, 6]),'
-        '    (EFactory/DCA, [2, 3, 4, 4, 5]),'
+        '    (EFactory/Art, [2, 3, 4, 6, 6]),'
+        '    (EFactory/DCA, [2, 2, 3, 4, 5]),'
         '    (EFactory/Defense, []),'
-        '    (EFactory/Helis, [2, 2, 3, 3, 3, 4]),'
+        '    (EFactory/Helis, [2, 2, 2, 2, 3, 4]),'
         '    (EFactory/Infantry, [2, 2, 2, 2, 3, 4, 4, 5]),'
-        '    (EFactory/Logistic, [2, 2, 2, 2, 3, 3, 3]),'
+        '    (EFactory/Logistic, [2, 2, 2, 2, 2, 3, 3]),'
         '    (EFactory/Planes, [2, 2, 3, 4, 5, 6, 8]),'
-        '    (EFactory/Recons, [2, 2, 2, 2, 2, 2, 2, 2, 3, 3]),'
-        '    (EFactory/Tanks, [2, 2, 2, 3, 3, 3, 3, 3]),'
+        '    (EFactory/Recons, [2, 2, 2, 2, 2, 2, 2, 2, 2, 2]),'
+        '    (EFactory/Tanks, [2, 2, 2, 2, 3, 3, 3, 3]),'
         ']'
     ),
     

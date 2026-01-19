@@ -773,7 +773,7 @@ rda_unit_edits = {
     },
     
     "BM21_Grad_DDR": { # BM-21 [NPLM]
-        "CommandPoints": 195,
+        "CommandPoints": 140,
         "availability": [3, 2, 0, 0],
     },
     

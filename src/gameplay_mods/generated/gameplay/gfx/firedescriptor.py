@@ -34,6 +34,14 @@ def edit_gen_gp_gfx_firedescriptor(source_path) -> None:
                 "TimeBetweenBurns": 0.5,
             },
         },
+        ("Incendiary_53m", "NapalmLeger", True): {
+            "DescriptorId": "a40c9088-e8ae-4f22-a249-2f6518e9a900",
+            "TFireModuleDescriptor": {
+                "TimeToLive": 90,
+                "RadiusGRU": 53,
+                "AmmunitionForBurn": "$/GFX/Weapon/Ammo_incendiary_magnesium_53m",
+            },
+        },
     }
 
     for (name, donor, is_new), data in fire_descriptors.items():

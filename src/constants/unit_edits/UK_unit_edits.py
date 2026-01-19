@@ -944,7 +944,7 @@ uk_unit_edits = {
             },
             "UK_2nd_Infantry": {
                 "cards": 1,
-                "Transports": ["Rover_101FC_supply_UK", "Bedford_MJ_4t_trans_UK"],
+                "Transports": ["Rover_101FC_supply_UK"],
             },
         },
     },
@@ -981,7 +981,7 @@ uk_unit_edits = {
             },
             "UK_2nd_Infantry": {
                 "cards": 2,
-                "Transports": ["Rover_101FC_supply_UK", "Bedford_MJ_4t_trans_UK"],
+                "Transports": ["Rover_101FC_supply_UK"],
             },
         },
     },

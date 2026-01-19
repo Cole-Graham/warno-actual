@@ -2413,12 +2413,17 @@ usa_unit_edits = {
 
     "M551A1_ACAV_Sheridan_US": {
         "CommandPoints": 50,
-        "availability": [0, 4, 3, 0],
+        "availability": [0, 6, 4, 0],
     },
 
     "M1A1_Abrams_reco_US": {
-        "availability": [0, 4, 3, 0],
+        "availability": [0, 3, 2, 0],
         "CommandPoints": 250,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
     },
 
     "OH58C_Scout_US": {
@@ -2443,6 +2448,14 @@ usa_unit_edits = {
     "OH58D_Kiowa_Warrior_US": {
         "GameName": {
             "display": "#RECO3 OH-58D KIOWA WR.",
+        },
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+            "US_11ACR": {
+                "cards": 2,
+            },
         },
         "availability": [0, 3, 2, 0],
         "ECM": -0.1,
@@ -2760,7 +2773,10 @@ usa_unit_edits = {
                 "cards": 2,
             },
             "US_8th_Inf": {
-                "Transports": ["M35_supply_US", "M35_trans_US"],
+                "Transports": ["M35_supply_US"],
+            },
+            "US_11ACR": {
+                "Transports": ["M35_supply_US"],
             },
         },
         "SpecialtiesList": {
@@ -3171,7 +3187,7 @@ usa_unit_edits = {
     },
 
     "F16E_AGM_US": {  # 4x AGM-65D, 2x AIM-9M
-        "CommandPoints": 200,
+        "CommandPoints": 250,
         "ECM": -0.35,
         "optics": {
             "OpticalStrengths": {

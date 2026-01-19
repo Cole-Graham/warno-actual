@@ -107,7 +107,7 @@ def _edit_veterancy_effects(source_path) -> None:
 
     vet_changes = {
         # Default
-        "UnitEffect_xp_rookie": {"TUnitEffectHealOverTimeDescriptor": 1.6},
+        "UnitEffect_xp_rookie": {"TUnitEffectHealOverTimeDescriptor": 3.0},
         "UnitEffect_xp_trained": {"TUnitEffectHealOverTimeDescriptor": 4},
         "UnitEffect_xp_veteran": {
             "TUnitEffectHealOverTimeDescriptor": 4.8,
@@ -122,12 +122,12 @@ def _edit_veterancy_effects(source_path) -> None:
         "UnitEffect_xp_veteran_SF": {"TUnitEffectHealOverTimeDescriptor": 6.0},
         "UnitEffect_xp_elite_SF": {"TUnitEffectHealOverTimeDescriptor": 6.8},
         # Arty
-        "UnitEffect_xp_rookie_arty": {"TUnitEffectHealOverTimeDescriptor": 1.6},
+        "UnitEffect_xp_rookie_arty": {"TUnitEffectHealOverTimeDescriptor": 3.0},
         "UnitEffect_xp_trained_arty": {"TUnitEffectHealOverTimeDescriptor": 3.0},
         "UnitEffect_xp_veteran_arty": {"TUnitEffectHealOverTimeDescriptor": 3.8},
         "UnitEffect_xp_elite_arty": {"TUnitEffectHealOverTimeDescriptor": 4.6},
         # Helo
-        "UnitEffect_xp_rookie_helo": {"TUnitEffectHealOverTimeDescriptor": 1.6},
+        "UnitEffect_xp_rookie_helo": {"TUnitEffectHealOverTimeDescriptor": 3.0},
         "UnitEffect_xp_trained_helo": {"TUnitEffectHealOverTimeDescriptor": 4.2},
         "UnitEffect_xp_veteran_helo": {"TUnitEffectHealOverTimeDescriptor": 6.2},
         "UnitEffect_xp_elite_helo": {"TUnitEffectHealOverTimeDescriptor": 8.4, "add": [(_add_evasion, (-5,))]},
@@ -142,33 +142,6 @@ def _edit_veterancy_effects(source_path) -> None:
             "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor": 8,
         },
     }
-    
-    # Switch to multiplicative modifier for all veterancy accuracy bonuses
-    # infantry_xp_objects = [
-    #     "xp_trained",
-    #     "xp_trained_SF",
-    #     "xp_veteran",
-    #     "xp_veteran_SF",
-    #     "xp_elite",
-    #     "xp_elite_SF",
-    # ]
-    # for row in source_path:
-    #     if not any(row.namespace.endswith(string) for string in infantry_xp_objects):
-    #         continue
-        
-    #     effects_list = row.v.by_m("EffectsDescriptors")
-    #     for effect in effects_list.v:
-    #         if not hasattr(effect.v, "type"):
-    #             continue
-    #         effect_type = effect.v.type
-    #         if effect_type == "TUnitEffectIncreaseWeaponPrecisionArretDescriptor":
-    #             effect.v.by_m("ModifierType").v = "~/ModifierType_Multiplicatif"
-    #             modifier_value = effect.v.by_m("ModifierValue").v
-    #             effect.v.by_m("ModifierValue").v = str(float(modifier_value) / 100.0 + 1.0)
-    #         elif effect_type == "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor":
-    #             effect.v.by_m("ModifierType").v = "~/ModifierType_Multiplicatif"
-    #             modifier_value = effect.v.by_m("ModifierValue").v
-    #             effect.v.by_m("ModifierValue").v = str(float(modifier_value) / 100.0 + 1.0)
 
     # Apply specifically defined veterancy changes
     for row in source_path:
