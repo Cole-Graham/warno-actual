@@ -43,15 +43,11 @@ SOV_NEW_UNITS = {
                 },
             },
         },
-        # "weapon1": "FM_AK_74",
-        # "weapon1_quantity": 4,
         "Salves": [7, 100, 5, 3],
         "TransportedTexture": "UseInGame_Transport_COMMAND",
-
         "TransportedSoldier": "MotRifles_SOV",
         "armor": "Infantry_armor_reference",
         "Factory": "EFactory/Logistic",
-
         "CommandPoints": 145,
         "UnitAttackValue": 1,
         "UnitDefenseValue": 16,
@@ -71,6 +67,9 @@ SOV_NEW_UNITS = {
             },
             "SOV_76_VDV_multi": {
                 "Transports": ["LUAZ_967M_SOV", "BTR_D_SOV"],
+            },
+            "SOV_79_Gds_Tank_multi": {
+                "Transports": ["UAZ_469_SOV", "BTR_60_SOV", "Mi_2_trans_SOV", "Mi_8TV_non_arme_SOV", "Mi_8TV_SOV"],
             },
         },
         "availability": [0, 0, 2, 0],

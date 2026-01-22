@@ -35,5 +35,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("Degats_napalm_bomb", "fire", "Degats_napalm_buratino", True): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_nplm_bomb_flamme",
+            },
+        },
+    },
 }
 # fmt: on

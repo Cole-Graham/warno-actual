@@ -1,10 +1,12 @@
 from typing import Any, Dict, List, Tuple
 
+from src import ndf
 from src.constants.unit_edits import load_unit_edits
 from src.constants.new_units import NEW_UNITS
 from src.constants.unit_edits.SUPPLY_unit_edits import supply_unit_edits
+from src.constants.generated.gameplay.decks import load_new_divisions
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import is_obj_type  # noqa
+from src.utils.ndf_utils import is_obj_type, strip_quotes  # noqa
 
 logger = setup_logger(__name__)
 
@@ -15,6 +17,7 @@ def edit_gen_gp_decks_divisionrules(source_path: Any, game_db: Dict[str, Any]) -
     _unit_edits_divisionrules(source_path)
     _supply_divisionrules(source_path)
     _mg_team_division_rules(source_path, game_db)
+    _create_national_division_rules(source_path)
 
 def _unit_edits_divisionrules(source_path: Any) -> None:
     """Apply unit edits to DivisionRules.ndf"""
@@ -323,3 +326,219 @@ def _mg_team_division_rules(source_path: Any, game_db: Dict[str, Any]) -> None:
                 rule_obj.v.by_m("NumberOfUnitInPackXPMultiplier").v = xp_multi
                 
                 logger.debug(f"Updated {unit_name} in {div_name} (Para: {is_para}, Type: {mg_type})")
+
+
+def _serialize_unit_rule(rule_v: Any) -> str:
+    """Serialize a TDeckUniteRule object to a string representation.
+    
+    Args:
+        rule_v: The rule object (rule_obj.v from the list iteration)
+    """
+    # Extract values - they should already be strings when accessed via .v
+    unit_descr = rule_v.by_m("UnitDescriptor").v
+    available_without_transport = rule_v.by_m("AvailableWithoutTransport").v
+    max_pack_number = rule_v.by_m("MaxPackNumber").v
+    number_in_pack = rule_v.by_m("NumberOfUnitInPack").v
+    xp_multiplier_raw = rule_v.by_m("NumberOfUnitInPackXPMultiplier").v
+    
+    # Handle XP multiplier - check if it's already a string or needs conversion
+    if isinstance(xp_multiplier_raw, str):
+        xp_multiplier = xp_multiplier_raw
+    elif hasattr(xp_multiplier_raw, '__iter__') and not isinstance(xp_multiplier_raw, str):
+        # Extract numeric values from list/ListRow objects
+        xp_values = []
+        for item in xp_multiplier_raw:
+            # Try to get the actual value from ListRow objects
+            if hasattr(item, 'value'):
+                val = item.value
+            elif hasattr(item, 'v'):
+                val = item.v
+            else:
+                val = item
+            # Strip quotes if it's a string, then convert
+            if isinstance(val, str):
+                val = strip_quotes(val)
+            # Convert to string, handling floats properly
+            if isinstance(val, float):
+                xp_values.append(f"{val:.1f}" if val.is_integer() else str(val))
+            elif isinstance(val, int):
+                xp_values.append(str(val))
+            else:
+                # Try to convert to float first
+                try:
+                    float_val = float(val)
+                    xp_values.append(f"{float_val:.1f}" if float_val.is_integer() else str(float_val))
+                except (ValueError, TypeError):
+                    xp_values.append(str(val))
+        xp_multiplier = "[" + ", ".join(xp_values) + "]"
+    else:
+        xp_multiplier = str(xp_multiplier_raw)
+    
+    # Build the rule string
+    rule_str = (
+        f"TDeckUniteRule\n"
+        f"(\n"
+        f"    UnitDescriptor = {unit_descr}\n"
+        f"    AvailableWithoutTransport = {available_without_transport}\n"
+    )
+    
+    # Add transport list if present
+    transport_list_member = rule_v.by_member("AvailableTransportList", False)
+    if transport_list_member:
+        transport_list_raw = transport_list_member.v
+        
+        # Handle transport list - check if it's already a string or needs conversion
+        if isinstance(transport_list_raw, str):
+            transport_list_str = transport_list_raw
+        elif hasattr(transport_list_raw, '__iter__') and not isinstance(transport_list_raw, str):
+            # Extract string values from list
+            transport_values = []
+            for item in transport_list_raw:
+                # Try to get the actual value from ListRow objects
+                if hasattr(item, 'value'):
+                    val = item.value
+                elif hasattr(item, 'v'):
+                    val = item.v
+                else:
+                    val = item
+                # Ensure it's a string and strip quotes if needed
+                val_str = str(val)
+                if val_str.startswith("'") or val_str.startswith('"'):
+                    val_str = strip_quotes(val_str)
+                transport_values.append(val_str)
+            transport_list_str = "[" + ", ".join(transport_values) + "]"
+        else:
+            transport_list_str = str(transport_list_raw)
+        
+        rule_str += f"    AvailableTransportList = {transport_list_str}\n"
+    
+    rule_str += (
+        f"    MaxPackNumber = {max_pack_number}\n"
+        f"    NumberOfUnitInPack = {number_in_pack}\n"
+        f"    NumberOfUnitInPackXPMultiplier = {xp_multiplier}\n"
+        f"),"
+    )
+    
+    return rule_str
+
+
+def _create_national_division_rules(source_path: Any) -> None:
+    """Create division rules for national divisions by combining rules from source divisions."""
+    new_divisions = load_new_divisions()
+    
+    if not new_divisions:
+        logger.info("No new divisions to create rules for")
+        return
+    
+    logger.info("Creating division rules for national divisions")
+    
+    for div_key, div_data in new_divisions.items():
+        combine_divisions = div_data.get("combine_divisions", [])
+        if not combine_divisions:
+            logger.warning(f"No combine_divisions specified for {div_key}, skipping")
+            continue
+        
+        cfg_name = div_data.get("cfg_name")
+        if not cfg_name:
+            logger.warning(f"No cfg_name specified for {div_key}, skipping")
+            continue
+        
+        new_rule_namespace = f"Descriptor_Deck_Division_{cfg_name}_multi_Rule"
+        
+        # Check if rule already exists (shouldn't happen, but be safe)
+        try:
+            existing_rule = source_path.by_n(new_rule_namespace, False)
+            if existing_rule:
+                logger.warning(f"Division rule {new_rule_namespace} already exists, skipping creation")
+                continue
+        except (AttributeError, KeyError):
+            pass  # Rule doesn't exist, which is expected
+        
+        # Find a donor division rule to copy structure from
+        donor_rule = None
+        for combine_div in combine_divisions:
+            donor_namespace = f"Descriptor_Deck_Division_{combine_div}_multi_Rule"
+            try:
+                donor_rule = source_path.by_n(donor_namespace)
+                if donor_rule:
+                    break
+            except (AttributeError, KeyError):
+                continue
+        
+        if not donor_rule:
+            logger.warning(f"Could not find donor division rule for {div_key} from {combine_divisions}, skipping")
+            continue
+        
+        # Collect all unit rules from source divisions
+        collected_rules: Dict[str, str] = {}  # unit_descriptor -> serialized_rule
+        seen_units = set()  # Track units we've already added
+        
+        for combine_div in combine_divisions:
+            source_namespace = f"Descriptor_Deck_Division_{combine_div}_multi_Rule"
+            try:
+                source_rule = source_path.by_n(source_namespace)
+                if not source_rule:
+                    logger.warning(f"Could not find source division rule {source_namespace}")
+                    continue
+                
+                unit_rule_list = source_rule.v.by_m("UnitRuleList").v
+                
+                for rule_obj in unit_rule_list:
+                    if not is_obj_type(rule_obj.v, "TDeckUniteRule"):
+                        continue
+                    
+                    unit_descr = rule_obj.v.by_m("UnitDescriptor").v
+                    
+                    # Skip if we've already added this unit (keep first occurrence)
+                    if unit_descr in seen_units:
+                        logger.debug(f"Skipping duplicate unit {unit_descr} from {combine_div}")
+                        continue
+                    
+                    # Serialize and store the rule
+                    rule_str = _serialize_unit_rule(rule_obj.v)
+                    collected_rules[unit_descr] = rule_str
+                    seen_units.add(unit_descr)
+                    logger.debug(f"Collected unit rule for {unit_descr} from {combine_div}")
+            
+            except (AttributeError, KeyError) as e:
+                logger.warning(f"Error accessing source division rule {source_namespace}: {e}")
+                continue
+        
+        if not collected_rules:
+            logger.warning(f"No unit rules collected for {div_key}, skipping rule creation")
+            continue
+        
+        # Create new division rule from scratch using string template
+        # Build the UnitRuleList string
+        unit_rules_str = "\n".join([f"        {rule_str}" for rule_str in collected_rules.values()])
+        
+        # Create the complete division rule string
+        division_rule_str = (
+            f"{new_rule_namespace} is TDeckDivisionRule\n"
+            f"(\n"
+            f"    UnitRuleList =\n"
+            f"    [\n"
+            f"{unit_rules_str}\n"
+            f"    ]\n"
+            f")"
+        )
+        
+        # Parse the string using NDF convert to ensure proper formatting
+        # Then add the parsed object to source_path
+        try:
+            parsed_rule = ndf.convert(division_rule_str)
+            if parsed_rule:
+                # Get the first (and only) object from the parsed result
+                new_rule_obj = parsed_rule[0] if isinstance(parsed_rule, list) else parsed_rule
+                # Insert before the donor rule
+                donor_index = donor_rule.index
+                source_path.insert(donor_index, new_rule_obj)
+                logger.info(f"Created division rule {new_rule_namespace} with {len(collected_rules)} unit rules from {len(combine_divisions)} source divisions")
+            else:
+                logger.error(f"Failed to parse division rule string for {new_rule_namespace}")
+        except Exception as e:
+            logger.error(f"Failed to add division rule {new_rule_namespace}: {str(e)}")
+            import traceback
+            logger.debug(traceback.format_exc())
+    
+    logger.info("Finished creating national division rules")

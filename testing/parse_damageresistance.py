@@ -194,15 +194,15 @@ def write_csv_data(damage_levels: List, armor_levels: List, damage_array: Any, o
 def main() -> None:
     """Main entry point for damage resistance parser."""
     try:
-        parse_vanilla = True
+        parse_vanilla = False
         
         # Define paths
         if parse_vanilla:
             MOD_SRC = Path(r"C:/Program Files (x86)/Steam/steamapps/common/WARNO/Mods/sourcemod")
             MOD_DST = Path(r"C:/Program Files (x86)/Steam/steamapps/common/WARNO/Mods/sourcemod")
         else:   
-            MOD_SRC = Path(r"C:/Program Files (x86)/Steam/steamapps/common/WARNO/Mods/WARNO ACTUAL")
-            MOD_DST = Path(r"C:/Program Files (x86)/Steam/steamapps/common/WARNO/Mods/WARNO ACTUAL")
+            MOD_SRC = Path(r"C:/Program Files (x86)/Steam/steamapps/common/WARNO/Mods/WARNO ACTUAL dev")
+            MOD_DST = Path(r"C:/Program Files (x86)/Steam/steamapps/common/WARNO/Mods/WARNO ACTUAL dev")
         
         # Initialize mod
         mod = ndf.Mod(str(MOD_SRC), str(MOD_DST))

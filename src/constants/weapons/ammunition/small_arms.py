@@ -1880,6 +1880,9 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "NbWeapons": [1],
+        "WeaponDescriptor": {
+            "Salves": 48,
+        },
     },
     
     ("HMG_12_7_mm_M85", "small_arms", None, False): {

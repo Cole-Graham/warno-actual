@@ -48,6 +48,11 @@ UK_NEW_UNITS = {
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "Gatling_M61_Vulcan_20mm_late_TOWED": 13,
+            },
+        },
         "UpgradeFromUnit": "FOB_UK",
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
@@ -82,13 +87,6 @@ UK_NEW_UNITS = {
         "strength": 5,
         # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
         "Dangerousness": 12,
-        "WeaponAssignment": [
-            (0, [1, ]),
-            (1, [0, ]),
-            (2, [0, ]),
-            (3, [0, 3]),
-            (4, [0, 2, ]),
-        ],
         "WeaponDescriptor": {
             "Salves": {
                 "FM_L85A1": 11,
@@ -119,6 +117,9 @@ UK_NEW_UNITS = {
         "Divisions": {
             "default": {
                 "cards": 2,
+            },
+            "UK_1st_Armoured_multi": {
+                "Transports": ["Bedford_MJ_4t_trans_UK", "FV432_UK", "Lynx_AH_Mk1_UK"],
             },
             "UK_2nd_Infantry_multi": {
                 "Transports": ["Bedford_MJ_4t_trans_UK", "MCV_80_Warrior_UK", "Lynx_AH_Mk1_UK"],
@@ -178,6 +179,11 @@ UK_NEW_UNITS = {
             },
         },
         "availability": [0, 0, 2, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_L8A2_7_62mm": 96,
+            },
+        },
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack', 
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 
                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply', 

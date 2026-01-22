@@ -16,6 +16,7 @@ from src.constants.weapons import (
     INFANTRY_ARMOR_EDITS,
     SNIPER_DAMAGE,
     NPLM_BOMB_DAMAGE,
+    NPLM_BOMB_FLAMME_DAMAGE,
     PGB_BOMB_DAMAGE,
     MANPAD_HAGRU_DAMAGE,
     MANPAD_TBAGRU_DAMAGE,
@@ -56,13 +57,14 @@ def edit_gen_gp_gfx_damageresistancefamilylist(source_path) -> None:
     dpicm_family = f"DamageFamily_dpicm is {i + 2}"
     # kpvt_family = f"DamageFamily_kpvt is {i + 4}"
     nplm_bomb_family = f"DamageFamily_nplm_bomb is {i + 3}"
-    pgb_bomb_family = f"DamageFamily_pgb_bomb is {i + 4}"
-    manpad_hagru_family = f"DamageFamily_manpad_hagru is {i + 5}"
-    manpad_tbagru_family = f"DamageFamily_manpad_tbagru is {i + 6}"
-    sa_intermediate_family = f"DamageFamily_sa_intermediate is {i + 7}"
-    sa_full_family = f"DamageFamily_sa_full is {i + 8}"
-    twelve_seven_mm_family = f"DamageFamily_12_7 is {i + 9}"
-    fourteen_five_mm_family = f"DamageFamily_14_5 is {i + 10}"
+    nplm_bomb_flamme_family = f"DamageFamily_nplm_bomb_flamme is {i + 4}"
+    pgb_bomb_family = f"DamageFamily_pgb_bomb is {i + 5}"
+    manpad_hagru_family = f"DamageFamily_manpad_hagru is {i + 6}"
+    manpad_tbagru_family = f"DamageFamily_manpad_tbagru is {i + 7}"
+    sa_intermediate_family = f"DamageFamily_sa_intermediate is {i + 8}"
+    sa_full_family = f"DamageFamily_sa_full is {i + 9}"
+    twelve_seven_mm_family = f"DamageFamily_12_7 is {i + 10}"
+    fourteen_five_mm_family = f"DamageFamily_14_5 is {i + 11}"
 
     source_path.insert(j + 1, infanterie_wa_family)
     source_path.add(sniper_family)
@@ -70,6 +72,7 @@ def edit_gen_gp_gfx_damageresistancefamilylist(source_path) -> None:
     source_path.add(dpicm_family)
     # source_path.add(kpvt_family)
     source_path.add(nplm_bomb_family)
+    source_path.add(nplm_bomb_flamme_family)
     source_path.add(pgb_bomb_family)
     source_path.add(manpad_hagru_family)
     source_path.add(manpad_tbagru_family)
@@ -86,6 +89,7 @@ def edit_gen_gp_gfx_damageresistancefamilylist(source_path) -> None:
         f"{dpicm_family}\n"
         # f"{kpvt_family}\n")
         f"{nplm_bomb_family}\n"
+        f"{nplm_bomb_flamme_family}\n"
         f"{pgb_bomb_family}\n"
         f"{manpad_hagru_family}\n"
         f"{manpad_tbagru_family}\n"
@@ -109,6 +113,7 @@ def edit_gen_gp_gfx_damageresistancefamilylistimpl(source_path) -> None:
             '"DamageFamily_dpicm"',
             # '"DamageFamily_kpvt"',
             '"DamageFamily_nplm_bomb"',
+            '"DamageFamily_nplm_bomb_flamme"',
             '"DamageFamily_pgb_bomb"',
             '"DamageFamily_manpad_hagru"',
             '"DamageFamily_manpad_tbagru"',
@@ -147,6 +152,7 @@ def _add_damage_resistance_values(source_path) -> None:
         "dpicm": ("(DamageFamily_dpicm, 4)"),
         # "kpvt": ("(DamageFamily_kpvt, 1)"),
         "nplm_bomb": ("(DamageFamily_nplm_bomb, 1)"),
+        "nplm_bomb_flamme": ("(DamageFamily_nplm_bomb_flamme, 1)"),
         "pgb_bomb": ("(DamageFamily_pgb_bomb, 1)"),
         "manpad_hagru": ("(DamageFamily_manpad_hagru, 1)"),
         "manpad_tbagru": ("(DamageFamily_manpad_tbagru, 1)"),
@@ -178,6 +184,7 @@ def _add_damage_resistance_values(source_path) -> None:
         *[str(sniper) for sniper in SNIPER_DAMAGE],
         *[str(dpicm) for dpicm in DPICM_DAMAGES],
         str(NPLM_BOMB_DAMAGE),
+        str(NPLM_BOMB_FLAMME_DAMAGE),
         str(PGB_BOMB_DAMAGE),
         str(MANPAD_HAGRU_DAMAGE),
         str(MANPAD_TBAGRU_DAMAGE),

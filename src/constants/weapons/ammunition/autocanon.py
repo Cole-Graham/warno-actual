@@ -803,18 +803,31 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Gatling_m134_7_62mm_x2", "autocannon", None, False): { # 321
         "Ammunition": {
             "parent_membr": {
+                "PhysicalDamages": 0.40,
+                "SuppressDamages": 60,
                 "DisplaySalveAccuracy": False,
-                "SupplyCost": 2.0,
+                "SupplyCost": 4.0,
+                "ShotsCountPerSalvo": 10,
+                "AffichageMunitionParSalve": 68,
             },
+        },
+        "WeaponDescriptor": {
+            "Salves": 30,
         },
     },
 
     ("Gatling_m134_7_62mm", "autocannon", None, False): { # 320
         "Ammunition": {
             "parent_membr": {
+                "PhysicalDamages": 0.20,
+                "SuppressDamages": 30,
                 "DisplaySalveAccuracy": False,
-                "SupplyCost": 1.0,
+                "SupplyCost": 2.0,
+                "AffichageMunitionParSalve": 34,
             },
+        },
+        "WeaponDescriptor": {
+            "Salves": 30,
         },
     },
 
@@ -854,6 +867,9 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 1.2,
                 "SupplyCost": 15.0,
             },
+        },
+        "WeaponDescriptor": {
+            "Salves": 13,
         },
     },
 

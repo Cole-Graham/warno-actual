@@ -898,14 +898,18 @@ fr_unit_edits = {
         "availability": [0, 0, 3, 2],
     },
     
+    "Alouette_III_reco_FR": {
+        "availability": [0, 6, 0, 0],
+    },
+    
     "Gazelle_reco_FR": {
         "CommandPoints": 35,
-        "availability": [0, 4, 0, 0],
+        "availability": [0, 6, 0, 0],
     },
     
     "Gazelle_20mm_reco_FR": {
         "CommandPoints": 50,
-        "availability": [0, 4, 3, 0],
+        "availability": [0, 6, 4, 0],
         "WeaponDescriptor": {
             "Salves": {
                 "AutoCanon_AP_20mm_M621_GIAT": 10,

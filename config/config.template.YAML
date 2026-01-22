@@ -28,6 +28,11 @@ directories:
   # Release builds
   gameplay_release: "WARNO ACTUAL"
   ui_only_release: "Warno Actual UI"
+  
+  # Config.ini path override (optional)
+  # Most users will not need to change this. Defaults to {Path.home()}/Saved Games/EugenSystems/WARNO/mod/{mod_name}/Config.ini
+  # Only set this if your WARNO mod Config.ini files are stored in a different location
+  config_ini_base_path: "default"  # Use "default" to use Path.home() based path, or provide custom path
 
 # divisions to hide (base list used in release builds)
 hide_divs:

@@ -686,17 +686,13 @@ def _apply_salvo_changes(weapon_descr: Any, wd_edits: Dict, weapon_descr_data: D
     salvo_mapping = weapon_descr_data["salvo_mapping"]
     for weapon, val in salve_edits.items():
 
-        # TODO: Temp hack until proper fix for units with multiple of the same weapon
-        if weapon == "special":
-            for special_weapon, special_val in val.items():
-                index = special_val[0]
-                salves_list.v.replace(index, str(special_val[1]))
-                break
+        # Skip special control keys
+        if weapon in ("add", "remove", "insert"):
             continue
 
         salvo = val
         winchester = None
-        if weapon not in ("add", "remove", "insert") and type(val) in (list, dict, set, tuple) and len(val) == 2:
+        if type(val) in (list, dict, set, tuple) and len(val) == 2:
             salvo = val[0]
             winchester = str(val[1])
 

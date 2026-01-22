@@ -28,6 +28,11 @@ uk_unit_edits = {
     "Saxon_CMD_UK": {
         "CommandPoints": 155,
         "availability": [0, 3, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_L37A2_7_62mm": 56,
+            },
+        },
     },
 
     "Gazelle_CMD_UK": {
@@ -721,6 +726,11 @@ uk_unit_edits = {
                 '_smoke_launcher',
             ],
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_L8A2_7_62mm": 96,
+            },
+        },
         "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
         "availability": [0, 0, 2, 0],
@@ -732,12 +742,40 @@ uk_unit_edits = {
         "orders": {
             "remove_orders": ["EOrderType/Sell"],
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_L37A2_7_62mm": 56,
+            },
+        },
     },
 
     "FV603_Saracen_UK": {
         "CommandPoints": 15,
         "orders": {
             "remove_orders": ["EOrderType/Sell"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_L37A2_7_62mm": 40,
+            },
+        },
+    },
+    
+    "LandRover_MILAN_nonBerlin_UK": {
+        "CommandPoints": 45,
+        "Divisions": {
+            "default": {
+                "cards": 69,
+            },
+            "UK_2nd_Infantry": {
+                "cards": 2,
+            },
+        },
+        "availability": [8, 6, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_MILAN_2": 6,
+            },
         },
     },
 
@@ -749,9 +787,6 @@ uk_unit_edits = {
             },
             "NATO_Garnison_Berlin": {
                 "cards": 1,
-            },
-            "UK_2nd_Infantry": {
-                "cards": 2,
             },
         },
         "WeaponDescriptor": {
@@ -765,6 +800,11 @@ uk_unit_edits = {
 
     "MCV_80_Warrior_UK": {
         "CommandPoints": 35,
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_L94A1_7_62mm": 80,
+            },
+        },
     },
 
     "MCV_80_Warrior_MILAN_UK": {
@@ -772,6 +812,7 @@ uk_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "ATGM_MILAN_IFV": 6,
+                "MMG_L94A1_7_62mm": 80,
             },
         },
     },
@@ -793,16 +834,31 @@ uk_unit_edits = {
             },
         },
         "availability": [0, 4, 3, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_L8A2_7_62mm": 96,
+            },
+        },
     },
 
     # UK RECON
     "Ferret_Mk2_UK": {
         "CommandPoints": 15,
         "availability": [10, 7, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_M1919": 40,
+            },
+        },
     },
 
     "FV601_Saladin_UK": {
         "CommandPoints": 35,
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_M1919": 40,
+            },
+        },
     },
 
     "FV721_Fox_UK": {
@@ -868,6 +924,7 @@ uk_unit_edits = {
 
     "Gazelle_UK": {
         "CommandPoints": 30,
+        "availability": [0, 6, 0, 0],
     },
 
     # UK AA

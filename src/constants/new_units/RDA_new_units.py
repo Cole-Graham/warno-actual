@@ -61,8 +61,11 @@ RDA_NEW_UNITS = {
             "default": {
                 "cards": 2,
             },
+            "RDA_4_MSD_multi": {
+                "Transports": ["W50_LA_A_DDR", "BTR_70_DDR", "Mi_2_trans_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
+            },
             "RDA_7_Panzer_multi": {
-                "Transports": ["UAZ_469_trans_DDR", "BTR_70_DDR", "Mi_2_trans_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
+                "Transports": ["W50_LA_A_DDR", "BTR_70_DDR", "Mi_2_trans_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
             },
             "RDA_KdA_Bezirk_Erfurt_multi": {
                 "Transports": ["UAZ_469_trans_DDR", "SPW_152K_DDR", "BTR_60_DDR","Mi_2_trans_DDR"],
@@ -361,6 +364,9 @@ RDA_NEW_UNITS = {
             "RDA_7_Panzer_multi": {
                 "Transports": None,
             },
+            "RDA_9_Panzer_multi": {
+                "Transports": None,
+            },
             "RDA_Rugen_Gruppierung": {
                 "Transports": None,
             },
@@ -414,14 +420,14 @@ RDA_NEW_UNITS = {
             '_resolute',
             '_smoke_launcher',
         ],
-        # "Divisions": {
-        #     "default": {
-        #         "cards": 1,
-        #     },
-        #     "POL_20_Pancerna_multi": {
-        #         "Transports": None,
-        #     },
-        # },
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+            "RDA_9_Panzer_multi": {
+                "Transports": None,
+            },
+        },
         "availability": [0, 0, 2, 0],
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',

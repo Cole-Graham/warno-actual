@@ -10,8 +10,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketAir_Zuni_1272mm_salvolength8", "rocket", None, False): { # 637
         "Ammunition": {
             "parent_membr": {
+                # TODO: Decide if I want to scale helo rocket stats the same as any other rockets (caliber + 1 tier = splash radius)
+                # "PhysicalDamages": 1.5,
+                # "SuppressDamages": 162,
                 "RadiusSplashPhysicalDamagesGRU": 21,
                 "RadiusSplashSuppressDamagesGRU": 44,
+                # "TimeBetweenTwoShots": 0.5,
+                # "TimeBetweenTwoFx": 0.5,
                 "SupplyCost": 96.0,
             },
         },

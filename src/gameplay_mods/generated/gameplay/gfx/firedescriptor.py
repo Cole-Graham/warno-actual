@@ -32,6 +32,7 @@ def edit_gen_gp_gfx_firedescriptor(source_path) -> None:
             "DescriptorId": "5372aa53-0162-4d29-8d96-d52f48c8bb50",
             "TFireModuleDescriptor": {
                 "TimeBetweenBurns": 0.5,
+                "AmmunitionForBurn": "$/GFX/Weapon/Ammo_Degats_napalm_bomb",
             },
         },
         ("Incendiary_53m", "NapalmLeger", True): {

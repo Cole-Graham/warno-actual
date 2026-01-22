@@ -1,13 +1,15 @@
 import sys
 import webbrowser  # noqa
+import winsound
 from datetime import datetime
+from pathlib import Path
 from src import ModConfig
 from src.data import build_database, load_database_from_disk
 from src.utils.database_utils import verify_database
 from src.utils.dictionary_utils import initialize_dictionary_files
 from src.utils.logging_utils import setup_logger, get_counting_handler
 from src.utils.config_utils import get_mod_dst_path
-from subprocess import Popen
+from subprocess import Popen, PIPE, STDOUT
 
 logger = setup_logger('patcher')
 
@@ -43,6 +45,91 @@ def confirm_database_rebuild() -> bool:
 		elif response == 'n':
 			return False
 		print("Please enter 'y' or 'n'")
+
+
+def get_config_ini_path(config_data: dict) -> Path:
+	"""Get the path to the mod's Config.ini file.
+	
+	Args:
+		config_data: The configuration data dictionary
+		
+	Returns:
+		Path to the Config.ini file
+	"""
+	build_config = config_data['build_config']
+	dirs = config_data['directories']
+	
+	# Determine mod name based on build target and write_dev setting
+	if build_config['target'] == 'gameplay':
+		mod_name = dirs['gameplay_release'] if not build_config['write_dev'] else dirs['gameplay_dev']
+	else:  # ui_only
+		mod_name = dirs['ui_only_release'] if not build_config['write_dev'] else dirs['ui_only_dev']
+	
+	# Check if user has provided a custom base path override
+	config_ini_base_path = dirs.get('config_ini_base_path', 'default')
+	if config_ini_base_path and config_ini_base_path.strip() and config_ini_base_path.lower() != 'default':
+		# User provided override, use it
+		config_ini_path = Path(config_ini_base_path) / mod_name / "Config.ini"
+	else:
+		# Default path: {home}/Saved Games/EugenSystems/WARNO/mod/{mod_name}/Config.ini
+		config_ini_path = Path.home() / "Saved Games" / "EugenSystems" / "WARNO" / "mod" / mod_name / "Config.ini"
+	
+	return config_ini_path
+
+
+def parse_config_ini_version(config_ini_path: Path) -> str:
+	"""Parse the Version value from Config.ini file.
+	
+	Args:
+		config_ini_path: Path to the Config.ini file
+		
+	Returns:
+		Version string, or empty string if not found or file doesn't exist
+	"""
+	if not config_ini_path.exists():
+		return ""
+	
+	try:
+		with open(config_ini_path, 'r', encoding='utf-8') as f:
+			in_properties_section = False
+			for line in f:
+				line = line.strip()
+				# Check for [Properties] section
+				if line == '[Properties]':
+					in_properties_section = True
+					continue
+				# Check if we've moved to another section
+				if line.startswith('[') and line.endswith(']'):
+					in_properties_section = False
+					continue
+				# Look for Version = value in Properties section
+				if in_properties_section and line.startswith('Version'):
+					# Extract value after '='
+					parts = line.split('=', 1)
+					if len(parts) == 2:
+						version = parts[1].strip()
+						# Remove any trailing comments
+						if ';' in version:
+							version = version.split(';')[0].strip()
+						return version
+	except Exception as e:
+		logger.warning(f"Failed to parse Config.ini at {config_ini_path}: {e}")
+		return ""
+	
+	return ""
+
+
+def play_completion_sound():
+	"""Play a sound notification to indicate completion."""
+	try:
+		# Play Windows system sound (asterisk/notification sound)
+		winsound.PlaySound("SystemAsterisk", winsound.SND_ALIAS)
+	except Exception:
+		# Fallback to a simple beep if system sound fails
+		try:
+			winsound.Beep(1000, 200)  # 1000 Hz for 200 ms
+		except Exception:
+			pass  # Silently fail if audio is not available
 
 
 if __name__ == "__main__":
@@ -116,6 +203,25 @@ if __name__ == "__main__":
 			logger.info(f"Summary: {error_count} error(s), {warning_count} warning(s)")
 		else:
 			logger.info(f"Patcher completed successfully at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+		
+		# Log version information for release builds
+		if not config.config_data['build_config']['write_dev']:
+			build_config = config.config_data['build_config']
+			# Get version from config.YAML
+			if build_config['target'] == 'gameplay':
+				config_version = build_config.get('gameplay_version', '')
+			else:  # ui_only
+				config_version = build_config.get('ui_version', '')
+			
+			logger.info(f"Version from config.YAML: {config_version}")
+			
+			# Get version from Config.ini
+			config_ini_path = get_config_ini_path(config.config_data)
+			config_ini_version = parse_config_ini_version(config_ini_path)
+			if config_ini_version:
+				logger.info(f"Version from Config.ini: {config_ini_version}")
+			else:
+				logger.warning(f"Could not read version from Config.ini at {config_ini_path}")
 
 	except Exception as e:
 		run_bat = False
@@ -125,18 +231,58 @@ if __name__ == "__main__":
 		if counting_handler:
 			error_count, warning_count = counting_handler.get_counts()
 			logger.info(f"Summary: {error_count} error(s), {warning_count} warning(s)")
+		
+		# Log version information for release builds even on failure
+		try:
+			config = ModConfig.get_instance()
+			if not config.config_data['build_config']['write_dev']:
+				build_config = config.config_data['build_config']
+				# Get version from config.YAML
+				if build_config['target'] == 'gameplay':
+					config_version = build_config.get('gameplay_version', '')
+				else:  # ui_only
+					config_version = build_config.get('ui_version', '')
+				
+				logger.info(f"Version from config.YAML: {config_version}")
+				
+				# Get version from Config.ini
+				config_ini_path = get_config_ini_path(config.config_data)
+				config_ini_version = parse_config_ini_version(config_ini_path)
+				if config_ini_version:
+					logger.info(f"Version from Config.ini: {config_ini_version}")
+				else:
+					logger.warning(f"Could not read version from Config.ini at {config_ini_path}")
+		except Exception:
+			pass  # Don't fail on version logging errors
+		
 		raise
 
 	if run_bat:
 		logger.info("Running GenerateMod.bat")
 		try:
 			dst_path = get_mod_dst_path(config.config_data)
-			p = Popen(f"{dst_path}\\GenerateMod.bat", cwd=dst_path)
-			stdout, stderr = p.communicate()
+			# Use PIPE to capture output and read it line by line
+			p = Popen(f"{dst_path}\\GenerateMod.bat", cwd=dst_path, stdout=PIPE, stderr=STDOUT, universal_newlines=True, bufsize=1)
+			sound_played = False
+			# Read output line by line in real-time and display it
+			for line in iter(p.stdout.readline, ''):
+				if line:
+					# Print the line so it's visible in the terminal
+					print(line, end='')
+					# Check if this line contains the success message
+					if "Mod Generation Success" in line and not sound_played:
+						play_completion_sound()
+						sound_played = True
+			p.stdout.close()
+			return_code = p.wait()
 			logger.info("Finished running GenerateMod.bat")
+			# Play sound if we didn't catch the success message (fallback)
+			if not sound_played:
+				play_completion_sound()
 		except Exception as e:
 			logger.error(f"Failed to run GenerateMod.bat: {str(e)}")
 			run_game = False
+			play_completion_sound()  # Still play sound even on failure
 		# if run_game:
 		# 	try:
 		# 		logger.info("Starting WARNO through Steam")

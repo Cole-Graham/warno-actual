@@ -502,9 +502,6 @@ rda_unit_edits = {
             "Salves": {
                 "FM_Mpi_AK_74N": 11,
                 "RocketInf_RPG7VR_64mm": 4,
-                "special": {
-                    "RocketInf_RPG7VR_64mm": (1, 4),
-                },
             },
         },
     },
@@ -916,7 +913,7 @@ rda_unit_edits = {
         "SpecialtiesList": {
             "overwrite_all": [
                 'leader_sov',
-                '_resolute'
+                '_resolute',
                 '_smoke_launcher',
             ],
         },
@@ -1127,7 +1124,7 @@ rda_unit_edits = {
     },
 
     "Mi_2_reco_DDR": {
-        "availability": [0, 4, 0, 0],
+        "availability": [0, 6, 0, 0],
     },
 
     "Scout_DDR": {
@@ -1561,7 +1558,7 @@ rda_unit_edits = {
 
     "Su_22_AT_DDR": {
         "CommandPoints": "Su_22_AT_SOV",
-        "availability": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 1],
         "WeaponDescriptor": {
             "Salves": {
                 "AGM_Kh29T": 1,

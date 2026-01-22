@@ -94,6 +94,11 @@ usa_unit_edits = {
         },
         "availability": [0, 0, 3, 0],
         "UpgradeFromUnit": "M577_CMD2_US",
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_M240_7_62mm": 48,
+            },
+        },
     },
 
     "M2A2_Bradley_Leader_US": {
@@ -104,6 +109,11 @@ usa_unit_edits = {
             },
         },
         "availability": [0, 0, 0, 2],
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_M240_7_62mm": 48,
+            },
+        },
     },
 
     # US INF
@@ -1839,20 +1849,36 @@ usa_unit_edits = {
     "M125_HOWZ_US": {  # M125 mortar carrier, M29A1 81mm Mortar
         "CommandPoints": 45,
         "availability": [4, 3, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "HMG_12_7_mm_M2HB": 35,
+            },
+        },
     },
+    
     "Howz_M102_105mm_US": {
         "CommandPoints": 60,
         "availability": [0, 4, 3, 0],
     },
 
-    "M106A2_HOWZ_US": {
+    "M106A2_HOWZ_US": { # M106A2 mortar carrier, 107mm M30 Mortar
         "CommandPoints": 60,
         "availability": [4, 3, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "HMG_12_7_mm_M2HB": 35,
+            },
+        },
     },
 
     "M109A2_HOWZ_US": {
         "CommandPoints": 180,
         "availability": [3, 2, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "HMG_12_7_mm_M2HB": 35,
+            },
+        },
     },
 
     "M110A2_HOWZ_US": {
@@ -2161,11 +2187,19 @@ usa_unit_edits = {
                     ("AutoCanon_HE_25mm_M242_Bushmaster_Late", "AutoCanon_HE_25mm_M242_Bushmaster_APDS"),
                 ],
             },
+            "Salves": {
+                "MMG_M240_7_62mm": 48,
+            },
         },
     },
 
     "M2A2_Bradley_IFV_US": {
         "CommandPoints": 85,
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_M240_7_62mm": 48,
+            },
+        },
     },
 
     "M1A1HA_Abrams_US": {
@@ -2288,16 +2322,31 @@ usa_unit_edits = {
     # US RECON
     "M151A2_scout_US": {
         "CommandPoints": 25,
+        "WeaponDescriptor": {
+            "Salves": {
+                "HMG_12_7_mm_M2HB": 25,
+            },
+        },
     },
 
     "M113_ACAV_US": {
         "CommandPoints": 35,
+        "WeaponDescriptor": {
+            "Salves": {
+                "HMG_12_7_mm_M2HB": 35,
+            },
+        },
     },
 
     "M1025_Humvee_scout_US": {
         "CommandPoints": 25,
         "ButtonTexture": "M1025_Humvee_HMG_LUX",
         "UpgradeFromUnit": None,
+        "WeaponDescriptor": {
+            "Salves": {
+                "HMG_12_7_mm_M2HB": 35,
+            },
+        },
     },
 
     "M1025_Humvee_AGL_US": {
@@ -2333,6 +2382,11 @@ usa_unit_edits = {
     "M113A1_TOW_US": {
         "CommandPoints": 50,
         "availability": [8, 6, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "HMG_12_7_mm_M2HB": 35,
+            },
+        },
     },
 
     "LAV_25_M1047_US_US": {
@@ -2361,6 +2415,9 @@ usa_unit_edits = {
                     ("AutoCanon_AP_25mm_M242_Bushmaster_Late", "AutoCanon_AP_25mm_M242_Bushmaster_APDS"),
                     ("AutoCanon_HE_25mm_M242_Bushmaster_Late", "AutoCanon_HE_25mm_M242_Bushmaster_APDS"),
                 ],
+            },
+            "Salves": {
+                "MMG_M240_7_62mm": 48,
             },
         },
         "SpecialtiesList": {
@@ -2409,6 +2466,11 @@ usa_unit_edits = {
             },
         },
         "UpgradeFromUnit": "Cav_Scout_Dragon_M3A2_US",
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_M240_7_62mm": 48,
+            },
+        },
     },
 
     "M551A1_ACAV_Sheridan_US": {
@@ -2432,11 +2494,6 @@ usa_unit_edits = {
         },
         "CommandPoints": 40,
         "availability": [0, 4, 3, 0],
-        "WeaponDescriptor": {
-            "Salves": {
-                "Gatling_m134_7_62mm": 90,
-            },
-        },
     },
 
     "OH58D_Combat_Scout_US": {
@@ -2691,9 +2748,11 @@ usa_unit_edits = {
     "M163_PIVADS_US": {
         "CommandPoints": 65,
         "availability": [7, 5, 0, 0],
-        # "SpecialtiesList": {
-        #     "add_specs": ["'normal_airoptics'"],
-        # },
+        "WeaponDescriptor": {
+            "Salves": {
+                "Gatling_M61_Vulcan_20mm_late": 25,
+            },
+        },
     },
 
     "DCA_M167_Vulcan_20mm_US": {
@@ -2727,12 +2786,8 @@ usa_unit_edits = {
                 "cards": 1,
                 "Transports": ["M113A3_US"],
             },
-            # "UK_2nd_Infantry": {
-            #     "cards": 1,
-            #     "Transports": ["LandRover_UK"],
-            # },
         },
-        "availability": [6, 4, 0, 0],
+        "availability": [8, 6, 0, 0],
         "max_speed": 6,
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
@@ -2743,6 +2798,11 @@ usa_unit_edits = {
     "M998_Avenger_US": {
         "CommandPoints": 100,
         "availability": [0, 5, 3, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "HMG_12_7_mm_avenger_M3P": 17,
+            },
+        },
     },
 
     "M48_Chaparral_MIM72F_US": {
@@ -2793,9 +2853,6 @@ usa_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "MMG_M240d_7_62mm": 60,
-                "special": {
-                    "MMG_M240d_7_62mm": (0, 60),
-                },
             },
         },
     },
@@ -3194,7 +3251,7 @@ usa_unit_edits = {
                 "EOpticalStrength/HighAltitude": 375,
             },
         },
-        "availability": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 1],
         "WeaponDescriptor": {
             "Salves": {
                 "AGM_AGM65D_Maverick": 2,
