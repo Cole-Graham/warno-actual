@@ -489,6 +489,21 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "MaxSpeedGRU": 622,
         },
     },
+    
+    ("ATGM_9M114M_KokonM", "ATGM", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "SpeedGRU": 622,
+            },
+        },
+        "SupplyCost": 80.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [1],
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 622,
+        },
+    },
 
     ("ATGM_9M119_Refleks", "ATGM", None, False): {
         "Ammunition": {

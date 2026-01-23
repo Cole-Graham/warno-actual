@@ -65,6 +65,9 @@ SOV_NEW_UNITS = {
             "SOV_119IndTkBrig_multi": {
                 "Transports": ["UAZ_469_SOV", "BTR_80_SOV", "Mi_2_trans_SOV", "Mi_8TV_non_arme_SOV", "Mi_8TV_SOV"],
             },
+            "SOV_35_AirAslt_Brig_multi": {
+                "Transports": ["LUAZ_967M_SOV", "Mi_8TV_non_arme_SOV", "Mi_8MTV_SOV", "Mi_24D_Desant_SOV"],
+            },
             "SOV_76_VDV_multi": {
                 "Transports": ["LUAZ_967M_SOV", "BTR_D_SOV"],
             },
@@ -455,6 +458,9 @@ SOV_NEW_UNITS = {
             },
             "SOV_39_Gds_Rifle_multi": {
                 "Transports": ["UAZ_469_SOV", "BTR_60_SOV", "BMP_1P_SOV"],
+            },
+            "SOV_35_AirAslt_Brig_multi": {
+                "Transports": ["UAZ_469_SOV", "BTR_D_Robot_SOV"],
             },
             "SOV_79_Gds_Tank_multi": {
                 "Transports": ["UAZ_469_SOV", "BMP_1P_SOV"],

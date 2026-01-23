@@ -1151,7 +1151,7 @@ pol_unit_edits = {
     },
     
     "T72M_CMD_POL": {  # T-72MD LDR
-        "CommandPoints": 160,
+        "CommandPoints": 165,
         "GameName": {
             "display": "#LDRSOV T-72MD LDR.",
             "token": "POLTSTMLDR",
@@ -1186,7 +1186,7 @@ pol_unit_edits = {
     },
     
     "T72M1_CMD_POL": {  # T-72M1D LDR
-        "CommandPoints": 190,
+        "CommandPoints": 195,
         "GameName": {
             "display": "#LDRSOV T-72M1D LDR.",
             "token": "POLTSTMOLD",
@@ -1243,11 +1243,11 @@ pol_unit_edits = {
     
     "T72M_POL": {  # T-72M
         "CommandPoints": 140,
-        "availability": [0, 8, 6, 0],
+        "availability": [8, 6, 0, 0],
     },
     
     "T72M1_POL": {  # T-72M1
-        "CommandPoints": 170,
+        "CommandPoints": 175,
         "availability": [0, 6, 4, 0],
         "Divisions": {
             "default": {
@@ -1257,11 +1257,19 @@ pol_unit_edits = {
     },
     
     "T72M1_Wilk_POL": {  # T-72M2 Wilk
-        "CommandPoints": 190,
+        "CommandPoints": 195,
         "availability": [0, 0, 4, 3],
+        "SpecialtiesList": {
+            "overwrite_all": ['_era', '_smoke_launcher', '_smoke_launcher'],
+        },
         "Divisions": {
             "default": {
                 "cards": 2,
+            },
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "SMOKE_Vehicle_Grenadex8": 2,
             },
         },
     },
@@ -1949,6 +1957,7 @@ pol_unit_edits = {
     "MiG_23MF_AA_POL": {  # MiG-23MF [AA], 2x R-23R, 4x R-60M
         "CommandPoints": "MiG_23MF_AA_DDR",
         "availability": "MiG_23MF_AA_DDR",
+        "ECM": "MiG_23MF_AA_DDR",
     },
     
     "MiG_23MF_AA2_POL": {  # MiG-23MF [AA2], 2x R-3R, 2x R-13M
@@ -2031,8 +2040,10 @@ pol_unit_edits = {
         },
         "availability": [0, 2, 0, 1],
         "Divisions": {
-            "add": ["POL_20_Pancerna"],
-            "POL_20_Pancerna": {
+            "add": ["POL_20_Pancerna", "POL_4_Zmechanizowana"],
+            "is_transported": False,
+            "needs_transport": False,
+            "default": {
                 "cards": 1,
             },
         },

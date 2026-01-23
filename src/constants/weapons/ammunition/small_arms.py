@@ -217,7 +217,38 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "Salves": 12,
         },
     },
-
+    
+    ("Sniper_VSS_Vintorez", "small_arms", None, False): { # Firing rate & damage modeled for 2 soldiers
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_sniper",
+            },
+            "hit_roll": {
+                "Idling": 90,
+                "DistanceToTarget": True,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 0.9,
+                "TimeBetweenTwoFx": 0.9,
+                "MaximumRangeGRU": 595,
+                "PhysicalDamages": 0.5,
+                "SuppressDamages": 27.0,
+                "NoiseDissimulationMalus": 1.0,
+                "RadiusSplashPhysicalDamagesGRU": 2,
+                "DisplaySalveAccuracy": False,
+                "TimeBetweenTwoSalvos": 1.7,
+                "AimingTime": 2.0,
+                "ShotsCountPerSalvo": 10,
+                "AffichageMunitionParSalve": 10,
+            },
+        },
+        "SupplyCost": 1.0,
+        "NbWeapons": [2, 1],
+        "WeaponDescriptor": {
+            "Salves": 10,
+        },
+    },
+    
     ("SAW_lMG_K_7_62mm", "small_arms", None, False): {  #720
         # THIS IS NOT 7.62mm!!!!!!!!!!
         # todo: rename this, its 5.45mm... stupid eugen

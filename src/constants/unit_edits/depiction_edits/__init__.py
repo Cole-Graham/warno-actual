@@ -23,6 +23,7 @@ from .SOV_depiction_edits import (
     mortier_2b9_vasilek_sov,
     motrifles_btr_ttsko_sov,
     mtlb_vasilek_sov,
+    sniper_spetsnaz_sov,
 )
 from .UK_depiction_edits import (
     rover_101fc_supply_uk,
@@ -66,6 +67,7 @@ __all__ = [
     "mortier_2b9_vasilek_sov",
     "motrifles_btr_ttsko_sov",
     "mtlb_vasilek_sov",
+    "sniper_spetsnaz_sov",
     
     # UK
     "rover_101fc_supply_uk",

@@ -28,6 +28,7 @@ f4_wild_weasel_2_us: Dict[str, Dict[str, Any]] = {
                 WeaponShootDataPropertyName = 
                 [
                     "WeaponShootData_0_3",
+                    "WeaponShootData_1_3",
                 ]
             )""",
         "weapon4": """
@@ -40,18 +41,6 @@ f4_wild_weasel_2_us: Dict[str, Dict[str, Any]] = {
                 WeaponShootDataPropertyName = 
                 [
                     "WeaponShootData_0_4",
-                ]
-            )""",
-        "weapon5": """
-            Op_F4_Wild_Weasel_2_US_Weapon5 is DepictionOperator_WeaponMissileCarriageFire
-            (
-                Connoisseur = MissileCarriage_F4_Wild_Weasel_2_US
-                FireEffectTag = "weapon_effet_tag5"
-                NbProj = 1
-                WeaponIndex = 5
-                WeaponShootDataPropertyName = 
-                [
-                    "WeaponShootData_0_5",
                 ]
             )""",
         "TacticAerialDepictionRegistration": """
@@ -70,7 +59,6 @@ f4_wild_weasel_2_us: Dict[str, Dict[str, Any]] = {
                         Op_F4_Wild_Weasel_2_US_Weapon2,
                         Op_F4_Wild_Weasel_2_US_Weapon3,
                         Op_F4_Wild_Weasel_2_US_Weapon4,
-                        Op_F4_Wild_Weasel_2_US_Weapon5,
                         DepictionOperator_CriticalEffects,
                         DepictionOperator_AirplaneParts,
                         DepictionOperator_Airplane,
@@ -81,10 +69,9 @@ f4_wild_weasel_2_us: Dict[str, Dict[str, Any]] = {
                         DepictionOperator_Flares,
                     ]
                     Actions = MAP[
-                                ( "weapon_effet_tag2", Weapon_AGM_AGM88_HARM ),
-                                ( "weapon_effet_tag3", Weapon_AA_AIM9M_Sidewinder ),
+                                ( "weapon_effet_tag2", Weapon_AA_AIM7M_Sparrow ),
+                                ( "weapon_effet_tag3", Weapon_AGM_AGM88_HARM ),
                                 ( "weapon_effet_tag4", Weapon_AGM_AGM65D_Maverick ),
-                                ( "weapon_effet_tag5", Weapon_AA_AIM7M_Sparrow ),
                             ]
                             + DepictionAction_Stress_And_Wrecked_Avion
                             + DepictionAction_CriticalFX_Airplane
@@ -135,10 +122,9 @@ f4_wild_weasel_2_us: Dict[str, Dict[str, Any]] = {
                 PylonSet = ~/DepictionPylonSet_Airplane_Default
                 WeaponInfos = 
                 [
-                    TMissileCarriageWeaponInfo( MissileCount=3 MissileType=eAGM WeaponIndex=2 ),
-                    TMissileCarriageWeaponInfo( MissileCount=2 MissileType=eAAM WeaponIndex=3 ),
-                    TMissileCarriageWeaponInfo( MissileCount=3 MissileType=eAGM WeaponIndex=4 ),
-                    TMissileCarriageWeaponInfo( MissileCount=2 MissileType=eAAM WeaponIndex=5 ),
+                    TMissileCarriageWeaponInfo( MissileCount=2 MissileType=eAAM WeaponIndex=2 ),
+                    TMissileCarriageWeaponInfo( MissileCount=2 MissileType=eAGM WeaponIndex=3 ),
+                    TMissileCarriageWeaponInfo( MissileCount=2 MissileType=eAGM WeaponIndex=4 ),
                 ]
             )""",
         "carriage_showroom": """
@@ -162,9 +148,9 @@ f4_wild_weasel_2_us: Dict[str, Dict[str, Any]] = {
                         Depiction = TemplateDepictionStaticMissiles
                         (
                             PhysicalProperty = "Tourelle2_MissileCount"
-                            ProjectileModelResource = $/GFX/DepictionResources/Modele_Missile_AGM88_Harm
+                            ProjectileModelResource = $/GFX/DepictionResources/Modele_Missile_AIM7
                         )
-                        MissileCount = 3
+                        MissileCount = 2
                         WeaponIndex = 2
                     ),
                     TStaticMissileCarriageSubDepictionMissileInfo
@@ -172,7 +158,7 @@ f4_wild_weasel_2_us: Dict[str, Dict[str, Any]] = {
                         Depiction = TemplateDepictionStaticMissiles
                         (
                             PhysicalProperty = "Tourelle3_MissileCount"
-                            ProjectileModelResource = $/GFX/DepictionResources/Modele_Missile_SideWinder
+                            ProjectileModelResource = $/GFX/DepictionResources/Modele_Missile_AGM88_Harm
                         )
                         MissileCount = 2
                         WeaponIndex = 3
@@ -186,16 +172,6 @@ f4_wild_weasel_2_us: Dict[str, Dict[str, Any]] = {
                         )
                         MissileCount = 2
                         WeaponIndex = 4
-                    ),
-                    TStaticMissileCarriageSubDepictionMissileInfo
-                    (
-                        Depiction = TemplateDepictionStaticMissiles
-                        (
-                            PhysicalProperty = "Tourelle5_MissileCount"
-                            ProjectileModelResource = $/GFX/DepictionResources/Modele_Missile_AIM7
-                        )
-                        MissileCount = 2
-                        WeaponIndex = 5
                     ),
                 ]
                 Pylons = ~/DepictionPylonSet_Airplane_Default
@@ -211,16 +187,16 @@ f4_wild_weasel_2_us: Dict[str, Dict[str, Any]] = {
                     (
                         Depiction = TemplateDepictionMissileShowroom
                         (
-                            ProjectileModelResource = $/GFX/DepictionResources/Modele_Missile_AGM88_Harm
+                            ProjectileModelResource = $/GFX/DepictionResources/Modele_Missile_AIM7
                         )
-                        MissileCount = 3
+                        MissileCount = 2
                         WeaponIndex = 2
                     ),
                     TStaticMissileCarriageSubDepictionMissileInfo
                     (
                         Depiction = TemplateDepictionMissileShowroom
                         (
-                            ProjectileModelResource = $/GFX/DepictionResources/Modele_Missile_SideWinder
+                            ProjectileModelResource = $/GFX/DepictionResources/Modele_Missile_AGM88_Harm
                         )
                         MissileCount = 2
                         WeaponIndex = 3
@@ -233,15 +209,6 @@ f4_wild_weasel_2_us: Dict[str, Dict[str, Any]] = {
                         )
                         MissileCount = 2
                         WeaponIndex = 4
-                    ),
-                    TStaticMissileCarriageSubDepictionMissileInfo
-                    (
-                        Depiction = TemplateDepictionMissileShowroom
-                        (
-                            ProjectileModelResource = $/GFX/DepictionResources/Modele_Missile_AIM7
-                        )
-                        MissileCount = 2
-                        WeaponIndex = 5
                     ),
                 ]
                 Pylons = ~/DepictionPylonSet_Airplane_Default_Showroom

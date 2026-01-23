@@ -77,6 +77,21 @@ rda_unit_edits = {
         },
         "availability": [0, 0, 3, 0],
     },
+    
+    "BTR_60_CHAIKA_CMD_DDR": {
+        "CommandPoints": 155,
+        "strength": 10,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'leader_sov'",],
+            "remove_specs": ["'_leader'"],
+        },
+        "availability": [0, 0, 3, 0],
+    },
 
     # RDA INF
     "MotRifles_CMD_DDR": {
@@ -417,6 +432,9 @@ rda_unit_edits = {
             "RDA_7_Panzer": {
                 "cards": 4,
             },
+            "RDA_9_Panzer": {
+                "cards": 4,
+            },
             "SOV_6IndMSBrig": {
                 "cards": 1,
             },
@@ -502,6 +520,27 @@ rda_unit_edits = {
             "Salves": {
                 "FM_Mpi_AK_74N": 11,
                 "RocketInf_RPG7VR_64mm": 4,
+            },
+        },
+    },
+    
+    "MotRifles_RPG27_DDR": {
+        "CommandPoints": 30,
+        "armor": "Infantry_armor_reference",
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "availability": [10, 7, 0, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_Mpi_AK_74N": 11,
+                "RocketInf_RPG27_105mm": 4,
             },
         },
     },
@@ -645,6 +684,13 @@ rda_unit_edits = {
             "add_specs": ["'refundable_unit'",],
         },
     },
+    
+    "GAZ_46_DDR": { # Advanced Schwimming Technologia
+        "CommandPoints": 15,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+    },
 
     "W50_LA_A_DDR": {
         "CommandPoints": 15,
@@ -697,6 +743,9 @@ rda_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_appui",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Transport",
         "Divisions": {
+            "add": ["RDA_9_Panzer"],
+            "is_transported": False,
+            "needs_transport": False,
             "default": {
                 "cards": 1,
             },
@@ -769,8 +818,24 @@ rda_unit_edits = {
         },
     },
     
+    "RM70_85_DDR": { # [NPLM] 80 Salvo Length
+        "CommandPoints": 155,
+        "GameName": {
+            "display": "MFRW RM-70M [INCD]",
+        },
+        "availability": [2, 0, 1, 0],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("RocketArt_M21OF_122mm_napalm", "RocketArt_M21OF_122mm_RM70_napalm")],
+            },
+        },
+    },
+    
     "BM21_Grad_DDR": { # BM-21 [NPLM]
-        "CommandPoints": 140,
+        "CommandPoints": 110,
+        "GameName": {
+            "display": "MFRW BM-21 [INCD]",
+        },
         "availability": [3, 2, 0, 0],
     },
     
@@ -976,6 +1041,19 @@ rda_unit_edits = {
     "BMP_1P_DDR": {
         "CommandPoints": 35,
     },
+    
+    "BMP_1P_Konkurs_DDR": {
+        "CommandPoints": 45,
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_9M113_Konkurs_BMP2": 6,
+            },
+        },      
+    },
+    
+    "BMP_2_DDR": {
+        "CommandPoints": 65, # Vanilla price
+    },
 
     "BTR_60_DDR": {
         "CommandPoints": 20,
@@ -1012,6 +1090,11 @@ rda_unit_edits = {
         "strength": 8,
         "CommandPoints": 50,
         "stealth": 1.5,
+        "availability": [8, 6, 0, 0],
+    },
+    
+    "MTLB_Shturm_DDR": {
+        "CommandPoints": 60,
         "availability": [8, 6, 0, 0],
     },
     
@@ -1059,8 +1142,13 @@ rda_unit_edits = {
         "GameName": {
             "display": "KPz T-72M",
         },
-        "CommandPoints": 145,
+        "CommandPoints": 150,
         "availability": [0, 6, 4, 0],
+    },
+    
+    "T72MUV2_DDR": {
+        "CommandPoints": 155,
+        "availability": [6, 4, 0, 0],
     },
 
     "T72M1_DDR": {
@@ -1068,6 +1156,17 @@ rda_unit_edits = {
             "display": "KPz T-72M1",
         },
         "CommandPoints": 170,
+        "Divisions": {
+            "remove": ["RDA_7_Panzer"],
+            "default": {
+                "cards": 2,
+            },
+        },
+        "availability": [0, 5, 3, 0],
+    },
+    
+    "T72S_DDR": {
+        "CommandPoints": 235,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1125,6 +1224,15 @@ rda_unit_edits = {
 
     "Mi_2_reco_DDR": {
         "availability": [0, 6, 0, 0],
+    },
+    
+    "Mi_2_gunship_DDR": {
+        "CommandPoints": 35,
+        "availability": [0, 6, 4, 0],
+    },
+    
+    "Mi_8PPA_SOV": {
+        "availability": [0, 3, 0, 0],
     },
 
     "Scout_DDR": {
@@ -1537,13 +1645,15 @@ rda_unit_edits = {
     },
     
     "MiG_23MF_AA_DDR": {
-        "CommandPoints": 125,
+        "CommandPoints": 115,
         "availability": [0, 4, 3, 2],
+        "ECM": -0.1,
     },
 
     "MiG_23ML_DDR": {  # [AA]
-        "CommandPoints": 135,
+        "CommandPoints": 145,
         "availability": [0, 3, 2, 0],
+        "ECM": -0.2,
     },
 
     "MiG_29_AA_DDR": {  # 4x R-73, 2x R-27R [AA1]
@@ -1586,6 +1696,14 @@ rda_unit_edits = {
             },
         },
         "availability": [0, 2, 0, 1],
+        "Divisions": {
+            "add": ["RDA_9_Panzer"],
+            "is_transported": False,
+            "needs_transport": False,
+            "default": {
+                "cards": 1,
+            },
+        },
     },
 
     "Su_22_clu_DDR": {

@@ -263,6 +263,27 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("Howz_Canon_2B16_NONA_K_120mm_SMOKE", "mortar", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "AimingTime": 12,
+                "TimeBetweenTwoSalvos": 20.0,
+            },
+        },
+    },
+    
+    ("Howz_Canon_2B16_NONA_K_120mm", "mortar", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 3.6,
+                "SuppressDamages": 265,
+                "TimeBetweenTwoSalvos": 20.0,
+                "RadiusSplashPhysicalDamagesGRU": 120,
+                "RadiusSplashSuppressDamagesGRU": 160,
+            },
+        },
+    },
+    
     ("Howz_Canon_2A60_Howitzer_120mm_SMOKE", "mortar", None, False): { # 371
         "Ammunition": {
             "parent_membr": {

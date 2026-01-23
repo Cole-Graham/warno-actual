@@ -8,7 +8,17 @@ rda_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("DDR General", "XMTKGQNNJQ"),
         "activation_points": 90,
-        "combine_divisions": ["RDA_7_Panzer", "RDA_KdA_Bezirk_Erfurt"],
+        "combine_divisions": ["RDA_7_Panzer", "RDA_9_Panzer","RDA_KdA_Bezirk_Erfurt"],
         "type_texture": "infantryReg",
+    },
+    "RDA_armored": {
+        "guid": "ebea35c1-a604-48e8-9373-68da3fa48c74",
+        "cfg_name": "RDA_national_armored",
+        "div_name": ("East Germany Armored", "OJPAFEOEJD"),
+        "div_power": "DC_PWR1",
+        "description_title": ("DDR Armored", "VGYXLWYJRD"),
+        "activation_points": 90,
+        "combine_divisions": ["RDA_7_Panzer", "RDA_9_Panzer"],
+        "type_texture": "armored",
     },
 }

@@ -158,6 +158,28 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "AutoGyr": 1.57079633,
         },
     },
+    
+    ("AGM_AGM88_HARM_ReflexPriorityFalse", "AntiRadiation", "AGM_AGM88_HARM", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 65,
+                "Moving": 65,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 6125,
+                "ReflexShotDisabledIfPriorityTarget": False,
+                "SpeedGRU": 4947,
+                "MaxAccelerationGRU": 2827,
+                "TimeBetweenTwoSalvos": 2.3,
+                "SupplyCost": 150.0,
+            },
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 4947,
+            "MaxAccelerationGRU": 2827,
+            "AutoGyr": 1.57079633,
+        },
+    },
 
     ("AGM_AGM45_Shrike", "AntiRadiation", None, False): {
         "Ammunition": {

@@ -202,7 +202,7 @@ supply_unit_edits = {
     
     "Ural_4320_DDR": {
         "SupplyCapacity": 1750.0,
-        "CommandPoints": 60,
+        "CommandPoints": 55,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -214,7 +214,7 @@ supply_unit_edits = {
     
     "Ural_4320_SOV": {
         "SupplyCapacity": 1750.0,
-        "CommandPoints": 60,
+        "CommandPoints": 55,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -226,7 +226,7 @@ supply_unit_edits = {
     
     "Star_266_supply_POL": {
         "SupplyCapacity": 1750.0,
-        "CommandPoints": 60,
+        "CommandPoints": 55,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -239,7 +239,7 @@ supply_unit_edits = {
     
     "Bedford_MJ_4t_UK": {
         "SupplyCapacity": 1750.0,
-        "CommandPoints": 60,
+        "CommandPoints": 55,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -312,6 +312,18 @@ supply_unit_edits = {
     "MAN_Kat_6x6_RFA": {
         "SupplyCapacity": 2300.0,
         "CommandPoints": 80,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "SupplyDescriptor": "DvisionalSupply",
+        "availability": [2, 0, 0, 0],
+    },
+    
+    "T815_supply_DDR": {
+        "SupplyCapacity": 2750.0,
+        "CommandPoints": 90,
         "Divisions": {
             "default": {
                 "cards": 2,

@@ -31,6 +31,7 @@ AMMUNITION_MISSILES_RENAMES = [
     ("AGM_9K121_Vikhr_x16_avion", "AGM_9K121_Vikhr_avion_ripple2_salvolength2"), # x16 meant 16 ammo in vanilla
     ("Bomb_GBU_10_x1", "Bomb_GBU_10"),
     ("Bomb_GBU_12_x1", "Bomb_GBU_12"),
+    ("Bomb_KAB_500Kr_x1", "Bomb_KAB_500Kr"),
     ("Bomb_KAB_1500L_x1", "Bomb_KAB_1500L"),
     ("Bomb_KAB_1500Kr_x1", "Bomb_KAB_1500Kr"),
 ]

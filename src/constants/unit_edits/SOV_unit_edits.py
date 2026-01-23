@@ -16,6 +16,20 @@ sov_unit_edits = {
             "add_specs": ["'leader_sov'",],
             "remove_specs": ["'_leader'"],
         },
+        "availability": [0, 0, 3, 0],
+    },
+    
+    "BMD_1K_CMD_SOV": {
+        "CommandPoints": 160,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'leader_sov'",],
+            "remove_specs": ["'_leader'"],
+        },
         "availability": [0, 3, 0, 0],
     },
 
@@ -62,6 +76,21 @@ sov_unit_edits = {
         "ButtonTexture": "LUAZ_967M_SOV",
         "DeploymentShift": 0,
     },
+    
+    "UAZ_469_CMD_VDV_SOV": { # Desant. Belozor
+        "CommandPoints": 145,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 4, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'leader_sov'",],
+            "remove_specs": ["'_leader'"],
+        },
+        "DeploymentShift": 0,
+    },
 
     "BMP_2_CMD_SOV": {
         "CommandPoints": 185,
@@ -75,6 +104,21 @@ sov_unit_edits = {
             "remove_specs": ["'_leader'"],
         },
         "availability": [0, 0, 3, 0],
+    },
+    
+    "BRDM_2_CMD_SOV": {
+        "CommandPoints": 155,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "strength": 8,
+        "SpecialtiesList": {
+            "add_specs": ["'leader_sov'",],
+            "remove_specs": ["'_leader'"],
+        },
+        "availability": [0, 3, 0, 0],
     },
 
     "BTR_60_CMD_SOV": {
@@ -485,6 +529,46 @@ sov_unit_edits = {
         "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
+    
+    "DShV_CMD_SOV": {
+        "CommandPoints": 35,
+        "armor": "Infantry_armor_reference",
+        "GameName": {
+            "display": "#LDRSOV DSh. LDR.",
+            # "token": "JSBZIJKKJJ",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "UNITE_DShV_CMD_SOV",
+                "Unite",
+            ],
+        },
+        "strength": 6,
+        "TransportedTexture": "UseInGame_Transport_REGINF",
+        "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "UnitRole": "infantry",
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'leader_sov',
+                '_choc',
+                'infantry_equip_light',
+            ],
+        },
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 0, 4, 3],
+        "max_speed": 26,
+    },
 
     "Engineers_CMD_VDV_SOV": {
         "CommandPoints": 45,
@@ -856,7 +940,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": [0, 9, 7, 0],
+        "availability": [0, 8, 6, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -881,6 +965,15 @@ sov_unit_edits = {
                 "FM_AKS_74": 11,
                 "RocketInf_RPG22_72_5mm": 4,
             },
+        },
+    },
+    
+    "VDV_Afgantsy_SOV": {
+        "CommandPoints": 40,
+        "availability": [0, 0, 7, 5],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
         },
     },
 
@@ -909,6 +1002,15 @@ sov_unit_edits = {
                 "FM_AKS_74": 11,
                 "ATGM_9K115_Metis": 6,
             },
+        },
+    },
+
+    "DShV_SOV": { # DSh. [RPG-7], 1x RPK-74 , SVD, RPG-7VL
+        "CommandPoints": 35,
+        "availability": [0, 8, 6, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
         },
     },
 
@@ -1324,6 +1426,11 @@ sov_unit_edits = {
             },
         },
     },
+    
+    "UAZ_469_AGL_VDV_SOV": {
+        "CommandPoints": 20,
+        "availability": [0, 12, 9, 0],
+    },
 
     "UAZ_469_SPG9_VDV_SOV": {
         "CommandPoints": 25,
@@ -1351,6 +1458,21 @@ sov_unit_edits = {
                 "ATGM_9K111M_Faktoriya": 6,
             },
         },
+    },
+    
+    "LUAZ_967M_Fagot_VDV_SOV": {
+        "CommandPoints": 35,
+        "availability": [10, 7, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_9K111M_Faktoriya": 6,
+            },
+        },
+    },
+    
+    "UAZ_469_Konkurs_VDV_SOV": {
+        "CommandPoints": 40,
+        "availability": [0, 8, 6, 0],
     },
 
     "LUAZ_967M_SOV": {
@@ -1536,7 +1658,7 @@ sov_unit_edits = {
 
     "Mortier_2S12_120mm_VDV_SOV": {
         "CommandPoints": 45,
-        "availability": [5, 4, 3, 0],
+        "availability": [0, 5, 4, 3],
     },
 
     "MTLB_Vasilek_SOV": {
@@ -1579,6 +1701,16 @@ sov_unit_edits = {
         },
         "availability": [5, 4, 3, 0],
     },
+    
+    "Howz_D30_122mm_VDV_SOV": {
+        "CommandPoints": 85,
+        "availability": [0, 5, 4, 3],
+    },
+    
+    "Mortier_Nona_K_120mm_SOV": {
+        "CommandPoints": 75,
+        "availability": [0, 3, 2, 0],
+    },
 
     "2S9_Nona_SOV": {
         "GameName": {
@@ -1588,7 +1720,7 @@ sov_unit_edits = {
         "availability": [0, 3, 2, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "Howz_Canon_2A51_Howitzer_120mm": 39,
+                "Howz_Canon_2A51_Howitzer_120mm": 6,
             },
         },
     },
@@ -1601,7 +1733,7 @@ sov_unit_edits = {
         "availability": [3, 2, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "Howz_Canon_2A60_Howitzer_120mm": 39,
+                "Howz_Canon_2A60_Howitzer_120mm": 6,
                 "MMG_PKT_7_62mm": 44,
             },
         },
@@ -1828,6 +1960,14 @@ sov_unit_edits = {
             },
         },
     },
+    
+    "BMD_1_SOV": {
+        "CommandPoints": 20,
+    },
+    
+    "BMD_1P_SOV": {
+        "CommandPoints": 30,
+    },
 
     "BMD_2_SOV": {
         "CommandPoints": 35,
@@ -1872,6 +2012,11 @@ sov_unit_edits = {
         "CommandPoints": 65,
         "stealth": 1.5,
         "availability": [8, 6, 0, 0],
+    },
+    
+    "AT_D44_85mm_VDV_SOV": {
+        "CommandPoints": 35,
+        "availability": [0, 9, 7, 5],
     },
 
     "AT_T12_Rapira_SOV": {
@@ -2117,6 +2262,24 @@ sov_unit_edits = {
         },
         "DeploymentShift": 0,
     },
+    
+    "HvyScout_DShV_SOV": {
+        "CommandPoints": 40,
+        "armor": "Infantry_armor_reference",
+        "availability": [0, 5, 4, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_AKS_74": 5,
+                    "SAW_RPK_74_5_56mm": 2,
+                },
+            },
+        },
+    },
 
     "Scout_LRRP_SOV": {  # Spetsnaz GRU
         "CommandPoints": 65,
@@ -2125,6 +2288,45 @@ sov_unit_edits = {
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
+        },
+    },
+    
+    "Sniper_Spetsnaz_SOV": {
+        "CommandPoints": 65,
+        "armor": "Infantry_armor_reference",
+        "availability": [0, 0, 4, 3],
+        "max_speed": 26,
+        "strength": 3,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'", "'_swift'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "animate": {
+                    "Sniper_VSS_Vintorez": False,
+                },
+                "quantity": {
+                    "Sniper_VSS_Vintorez": 2,
+                },
+                "insert": [(2, "RocketInf_RPG26_72_5mm")],
+                "insert_edits": {
+                    2: {
+                        "turret_edits": {
+                            "YulBoneOrdinal": 3,
+                        },
+                        "NbWeapons": 1,
+                        "SalvoStockIndex": 2,
+                        "HandheldEquipmentKey": "'WeaponAlternative_3'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
+                    },
+                },
+            },
+            "Salves": {
+                "Sniper_VSS_Vintorez": 20,
+                "insert": [(2, 4)],
+            },
         },
     },
 
@@ -2147,6 +2349,10 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
+    },
+    
+    "Mi_2_reco_SOV": {
+        "availability": [0, 6, 0, 0],
     },
 
     "Mi_24K_reco_SOV": {
@@ -2298,6 +2504,11 @@ sov_unit_edits = {
             },
         },
     },
+    
+    "ZSU_23_Shilka_Afghan_SOV": {
+        "CommandPoints": 40,
+        "availability": [8, 6, 0, 0],
+    },
 
     "Tunguska_2K22_SOV": {
         "optics": {
@@ -2433,6 +2644,10 @@ sov_unit_edits = {
     "Mi_8TV_SOV": {  # 32 S-5M x2
         "CommandPoints": 50,
     },
+    
+    "Mi_8MTV_SOV": { # 32 S-5m x2, 20% ECM
+        "CommandPoints": 60,
+    },
 
     "Mi_8TV_Gunship_SOV": {  # 4x Molniya, 2x S-24
         "CommandPoints": 110,
@@ -2493,6 +2708,10 @@ sov_unit_edits = {
         },
         "CommandPoints": 95,
         "availability": [0, 4, 3, 0],
+    },
+    
+    "Mi_24D_Desant_SOV": {
+        "CommandPoints": 85,
     },
 
     "Mi_24V_AA_SOV": {
@@ -2573,6 +2792,31 @@ sov_unit_edits = {
                 "AutoCanon_AP_23mm_Bitube_Gsh23L": 28,
                 "RocketAir_B8_80mm_salvolength10": 4,
                 "AGM_9M114M_KokonM_salvolength16": 1,
+            },
+        },
+        "availability": [0, 2, 0, 1],
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+    },
+    
+    "Ka_50_SOV": {
+        "CommandPoints": 230,
+        "availability": [0, 2, 0, 1],
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+    },
+    
+    "Ka_50_AA_SOV": {
+        "availability": [0, 3, 2, 0],
+        "Divisions": {
+            "default": {
+                "cards": 1,
             },
         },
     },
@@ -2744,13 +2988,22 @@ sov_unit_edits = {
         },
     },
     
-    "MiG_27M_sead_SOV": {  # Kh-28 5425m
+    "MiG_27M_sead_SOV": {  # MiG-27K [SEAD] - Kh-28 5600m
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 10000.0,
             },
             "OpticalStrengths": {
                 "EOpticalStrength/AntiRadar": 5000.0,
+            },
+        },
+        "availability": [0, 2, 0, 0],
+        "Divisions": {
+            "add": ["SOV_27_Gds_Rifle"],
+            "is_transported": False,
+            "needs_transport": False,
+            "default": {
+                "cards": 1,
             },
         },
     },
@@ -2783,6 +3036,36 @@ sov_unit_edits = {
             },
         },
         "availability": [0, 3, 0, 0],
+    },
+    
+    "MiG_27M_rkt_SOV": {
+        "CommandPoints": 125,
+        "availability": [0, 3, 2, 0],
+    },
+    
+    "MiG_27M_CLU_SOV": {
+        "CommandPoints": 195, # Vanilla price
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 2, 0, 0],
+    },
+    
+    "MiG_27K_LGB_SOV": {
+        "CommandPoints": 245,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 2, 0, 1],
+    },
+    
+    "MiG_23ML_SOV": { # 3x R-60M, 3x R-60M
+        "CommandPoints": 120,
+        "availability": [0, 4, 3, 2],
     },
 
     "MiG_23MLD_SOV": {  # 2x R-24MR, 2x R-73

@@ -35,6 +35,12 @@ def new_units_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> Non
             logger.warning(f"Weapon descriptor not found for donor {donor_name}")
             continue
 
+        # Log donor turret count before copying
+        donor_turret_list = donor_weap.v.by_member("TurretDescriptorList")
+        donor_turret_count = len(donor_turret_list.v) if donor_turret_list.v else 0
+        unit_name = edits.get("NewName", donor_name)
+        logger.debug(f"Donor {donor_name} turret count: {donor_turret_count}")
+
         new_weap_row = donor_weap.copy()
         new_weap_row.namespace = f"WeaponDescriptor_{edits['NewName']}"
 
@@ -45,8 +51,36 @@ def new_units_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> Non
             # Handle equipment changes
             if "equipmentchanges" in weapon_edits:
                 changes = weapon_edits["equipmentchanges"]
+                
+                # Log initial turret count after copy
+                initial_turret_list = new_weap_row.v.by_member("TurretDescriptorList")
+                initial_turret_count = len(initial_turret_list.v) if initial_turret_list.v else 0
+                logger.debug(f"Initial turret count for {unit_name} after copy: {initial_turret_count}")
 
+                # Handle additions
+                if "add" in changes:
+                    for weapon_tuple in changes["add"]:
+                        _add_weapon(source_path, weapon_tuple, new_weap_row, changes, edits, game_db)
+                    
+                    # Log turret count after additions
+                    after_add_turret_list = new_weap_row.v.by_member("TurretDescriptorList")
+                    after_add_turret_count = len(after_add_turret_list.v) if after_add_turret_list.v else 0
+                    logger.debug(f"Turret count for {unit_name} after additions: {after_add_turret_count}")
+
+                # Handle index adjustments for bumped weapons in turret and mounted weapon lists
+                if "update" in changes:
+                    _update_weapon(changes, new_weap_row)
+                    
                 # Handle replacements
+                if "replace_with_turret" in changes:
+                    for replacement in changes["replace_with_turret"]:
+                        if len(replacement) == 4:
+                            old_weapon_name, new_weapon_name, old_fire_effect, new_fire_effect = replacement
+                            _replace_weapon_with_turret(source_path, new_weap_row, changes, edits, game_db, old_weapon_name, new_weapon_name, new_fire_effect)
+                        else:
+                            old_weapon_name, new_weapon_name = replacement
+                            _replace_weapon_with_turret(source_path, new_weap_row, changes, edits, game_db, old_weapon_name, new_weapon_name, new_weapon_name)
+                        
                 if "replace" in changes:
                     for replacement in changes["replace"]:
                         if len(replacement) == 4:
@@ -64,15 +98,6 @@ def new_units_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> Non
                         else:
                             old_ammo, new_ammo = replacement
                             _replace_weapon(source_path, changes, new_weap_row, old_ammo, new_ammo, None, None, game_db)
-
-                # Handle additions
-                if "add" in changes:
-                    for weapon_tuple in changes["add"]:
-                        _add_weapon(source_path, weapon_tuple, new_weap_row, changes, edits, game_db)
-
-                # Handle index adjustments for bumped weapons in turret and mounted weapon lists
-                if "update" in changes:
-                    _update_weapon(changes, new_weap_row)
 
                 # Handle HAGRU MANPADS
                 if "HAGRU_MANPADS" in changes:
@@ -208,9 +233,26 @@ def _add_weapon(
             new_turret.v.by_m("Tag").v = f'"tourelle{new_yul_bone}"'
         new_turret.v.by_m("YulBoneOrdinal").v = str(new_yul_bone)
 
-        # Add to target turret list
-        turret_list = new_weap_row.v.by_member("TurretDescriptorList")
-        turret_list.v.insert(turret_index, new_turret)
+        # Add to target turret list - use same pattern as unit_edits.py
+        turret_list = new_weap_row.v.by_member("TurretDescriptorList").v
+        
+        # Workaround for NDF parse bug: insert(0, item) replaces all elements instead of inserting
+        # The bug is in ndf_parse model/abc.py line 1175: when key.stop is 0, 
+        # "key.stop or len(self.__inner)" evaluates to len(self.__inner) because 0 is falsy
+        # So insert(0, item) becomes slice(0, len) which replaces all elements instead of inserting
+        # Solution: when inserting at 0 with existing items, rebuild the list with new turret first
+        if turret_index == 0 and len(turret_list) > 0:
+            # Collect all existing turrets
+            existing_turrets = list(turret_list)
+            # Clear the list by removing all elements
+            turret_list.remove(slice(0, len(turret_list)))
+            # Add the new turret first
+            turret_list.add(new_turret)
+            # Add all existing turrets back
+            for existing_turret in existing_turrets:
+                turret_list.add(existing_turret)
+        else:
+            turret_list.insert(turret_index, new_turret)
 
         logger.debug(f"Added turret with {weapon_name} at index {turret_index}")
         template_found = True
@@ -218,6 +260,152 @@ def _add_weapon(
 
     if not template_found:
         logger.warning(f"Could not find template for weapon {weapon_name}")
+
+
+def _replace_weapon_with_turret(
+    source_path: Any, new_weap_row: Any, changes: Dict[str, Any], edits: Dict[str, Any], game_db: Dict[str, Any], 
+    old_weapon_name: str, new_weapon_name: str, fire_effect: str
+) -> None:
+    """Replace a weapon and its turret by finding a donor turret.
+    
+    Args:
+        source_path: The NDF file being edited
+        new_weap_row: The weapon descriptor to modify
+        changes: Dictionary containing equipment changes (for quantity information)
+        edits: Dictionary containing unit configuration (for strength and unit type)
+        game_db: Game database containing weapon and ammunition data
+        old_weapon_name: Name of the weapon to find and replace
+        new_weapon_name: Name of the new weapon to use from donor turret
+        fire_effect: Fire effect to use for the new weapon
+    """
+    ammo_db = game_db["ammunition"]
+    weapon_db = game_db["weapons"]
+    
+    # Get unit properties from edits
+    unit_strength = edits.get("strength")
+    is_infantry = edits.get("is_infantry", False)
+    is_ground_vehicle = edits.get("is_ground_vehicle", False)
+    
+    # Check if strength is required but missing
+    if not unit_strength and is_infantry and not is_ground_vehicle:
+        unit_name = new_weap_row.namespace.replace("WeaponDescriptor_", "")
+        logger.warning(f"No strength found for new unit {unit_name}")
+        return
+    
+    # Find the turret index containing the old weapon
+    turret_index = None
+    turret_list = new_weap_row.v.by_member("TurretDescriptorList")
+    ammo_db_renames_old_new = ammo_db.get("renames_old_new", {})
+    
+    for idx, turret in enumerate(turret_list.v):
+        if not is_valid_turret(turret.v):
+            continue
+        
+        mounted_weapons = turret.v.by_member("MountedWeaponDescriptorList")
+        for weapon_descr_row in mounted_weapons.v:
+            if not isinstance(weapon_descr_row.v, ndf.model.Object):
+                continue
+            
+            current_ammo = weapon_descr_row.v.by_member("Ammunition").v
+            current_base_ammo = current_ammo.split("_", 1)[1]  # Just get the base name after $/GFX/Weapon/Ammo_
+            current_base_ammo = re.sub(r"_strength\d+", "", current_base_ammo)  # Remove strength identifier
+            current_base_ammo = re.sub(r"_x\d+$", "", current_base_ammo)  # Remove quantity identifier if present
+            new_name = ammo_db_renames_old_new.get(current_base_ammo, None)
+            
+            # Check if this is the weapon to replace
+            if current_base_ammo == old_weapon_name or new_name == old_weapon_name:
+                turret_index = idx
+                break
+        
+        if turret_index is not None:
+            break
+    
+    if turret_index is None:
+        unit_name = new_weap_row.namespace.replace("WeaponDescriptor_", "")
+        logger.warning(f"Could not find turret containing weapon {old_weapon_name} for {unit_name}")
+        return
+    
+    # Get the yul_bone from the existing turret
+    existing_turret = turret_list.v[turret_index]
+    new_yul_bone = int(existing_turret.v.by_m("YulBoneOrdinal").v)
+    
+    # Check if new weapon is renamed
+    old_name = ammo_db["renames_new_old"].get(new_weapon_name, None)
+    
+    # Find matching weapon in database to use as template
+    template_found = False
+    for descr_name, descr_data in weapon_db.items():
+        if old_name and old_name not in descr_data["weapon_locations"]:
+            continue
+        elif not old_name and new_weapon_name not in descr_data["weapon_locations"]:
+            continue
+        
+        # Get weapon location data
+        weapon_locations = descr_data["weapon_locations"][old_name or new_weapon_name]
+        if not weapon_locations:
+            continue
+        
+        # Get first location where this weapon appears
+        location = weapon_locations[0]  # Contains mounted_index, salvo_index, turret_index
+        
+        # Find the weapon descriptor in source_path to copy from
+        donor_descr = source_path.by_namespace(descr_name)
+        if not donor_descr:
+            continue
+        
+        # Get and copy the entire turret containing our template weapon
+        donor_turret = donor_descr.v.by_m("TurretDescriptorList").v[location["turret_index"]]
+        if not is_valid_turret(donor_turret.v):
+            unit_name = new_weap_row.namespace.replace("WeaponDescriptor_", "")
+            logger.warning(f"Invalid turret {donor_turret.v} for {unit_name}")
+            continue
+        
+        # Create new turret by copying template
+        new_turret = donor_turret.copy()
+        
+        # Update weapon indices and add strength to ammo path
+        mounted_wpns = new_turret.v.by_m("MountedWeaponDescriptorList")
+        for weapon in mounted_wpns.v:
+            weapon.v.by_m("EffectTag").v = f"'FireEffect_{fire_effect}'"
+            weapon.v.by_m("SalvoStockIndex").v = str(turret_index)
+            weapon.v.by_m("HandheldEquipmentKey").v = f"'WeaponAlternative_{new_yul_bone}'"
+            weapon.v.by_m("WeaponActiveAndCanShootPropertyName").v = f"'WeaponActiveAndCanShoot_{new_yul_bone}'"
+            weapon.v.by_m("WeaponIgnoredPropertyName").v = f"'WeaponIgnored_{new_yul_bone}'"
+            weapon.v.by_m("WeaponShootDataPropertyName").v = f"['WeaponShootData_0_{new_yul_bone}']"
+            
+            # Update ammo path to include strength
+            current_ammo = weapon.v.by_m("Ammunition").v
+            prefix = current_ammo.split("_", 1)[0]  # Get $/GFX/Weapon/Ammo part
+            quantity = changes.get("quantity", {}).get(new_weapon_name, int(weapon.v.by_m("NbWeapons").v))
+            
+            if _should_use_strength_variant(new_weapon_name, game_db):
+                if quantity > 1:
+                    new_ammo = f"{prefix}_{new_weapon_name}_strength{unit_strength}_x{quantity}"
+                else:
+                    new_ammo = f"{prefix}_{new_weapon_name}_strength{unit_strength}"
+            else:
+                if quantity > 1:
+                    new_ammo = f"{prefix}_{new_weapon_name}_x{quantity}"
+                else:
+                    new_ammo = f"{prefix}_{new_weapon_name}"
+            weapon.v.by_m("Ammunition").v = new_ammo
+            weapon.v.by_m("NbWeapons").v = str(quantity)
+        
+        # Update turret bone index
+        # TODO: turret bone might not always be the same as turret index
+        if new_turret.v.by_m("Tag", False) is not None:
+            new_turret.v.by_m("Tag").v = f'"tourelle{new_yul_bone}"'
+        new_turret.v.by_m("YulBoneOrdinal").v = str(new_yul_bone)
+        
+        # Replace the turret at the found index
+        turret_list.v[turret_index] = new_turret
+        
+        logger.debug(f"Replaced turret at index {turret_index} containing {old_weapon_name} with turret containing {new_weapon_name}")
+        template_found = True
+        break
+    
+    if not template_found:
+        logger.warning(f"Could not find template for weapon {new_weapon_name}")
 
 
 def _update_weapon(
@@ -228,6 +416,12 @@ def _update_weapon(
     updates = changes["update"]
     turret_list = new_weap_row.v.by_member("TurretDescriptorList")
     for turret_index in updates:
+        # Check if turret index exists before accessing
+        if turret_index >= len(turret_list.v):
+            unit_name = new_weap_row.namespace.replace("WeaponDescriptor_", "")
+            logger.error(f"Turret index {turret_index} out of range for {unit_name} (only {len(turret_list.v)} turrets exist)")
+            continue
+        
         turret = turret_list.v[turret_index]
         turret.v.by_m("YulBoneOrdinal").v = str(turret_index + 1)
         mounted_weapons = turret.v.by_member("MountedWeaponDescriptorList")

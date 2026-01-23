@@ -134,6 +134,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 25,
             },
             "parent_membr": {
+                "MaximumRangeHelicopterGRU": 1575,
                 "TimeBetweenTwoShots": 0.2,
                 "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 0.30,
@@ -264,6 +265,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "ImpactHappening": "'CanonPetitFK20HEFI'",
+                "MaximumRangeGRU": 1575,
+                "MaximumRangeHelicopterGRU": 1400,
                 "PhysicalDamages": 0.2,
                 "SuppressDamages": 20,
                 "DisplaySalveAccuracy": False,
@@ -668,6 +671,9 @@ weapons: Dict[WeaponKey, WeaponData] = {
 
     ("AutoCanon_AP_20mm_MK_20_Rh_202", "autocannon", None, False): { # 3
         "Ammunition": {
+            "Arme": {
+                "Index": 10,
+            },
             "hit_roll": {
                 "BaseCriticModifier": 68,
                 "Idling": 25,
@@ -676,6 +682,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PhysicalDamages": 0.334,
                 "SuppressDamages": 20,
+                "MaximumRangeGRU": 1575,
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 0.1,
@@ -689,12 +696,17 @@ weapons: Dict[WeaponKey, WeaponData] = {
     
     ("AutoCanon_AP_M693_F1_20mm", "autocannon", None, False): {
         "Ammunition": {
+            "Arme": {
+                "Index": 10,
+            },
             "hit_roll": {
                 "BaseCriticModifier": 68,
                 "Idling": 20,
                 "Moving": 10,
             },
             "parent_membr": {
+                "MaximumRangeGRU": 1575,
+                "MaximumRangeHelicopterGRU": 1400,
                 "PhysicalDamages": 0.334,
                 "SuppressDamages": 20,
                 "DisplaySalveAccuracy": False,
@@ -710,12 +722,17 @@ weapons: Dict[WeaponKey, WeaponData] = {
     
     ("AutoCanon_AP_M693_F1_20mm_15acc", "autocannon", "AutoCanon_AP_M693_F1_20mm", True): {
         "Ammunition": {
+            "Arme": {
+                "Index": 10,
+            },
             "hit_roll": {
                 "BaseCriticModifier": 68,
                 "Idling": 15,
                 "Moving": 10,
             },
             "parent_membr": {
+                "MaximumRangeGRU": 1575,
+                "MaximumRangeHelicopterGRU": 1400,
                 "PhysicalDamages": 0.334,
                 "SuppressDamages": 20,
                 "DisplaySalveAccuracy": False,
@@ -731,12 +748,17 @@ weapons: Dict[WeaponKey, WeaponData] = {
 
     ("AutoCanon_AP_20mm_M621_GIAT_AMX30", "autocannon", None, False): { # 2
         "Ammunition": {
+            "Arme": {
+                "Index": 10,
+            },
             "hit_roll": {
                 "BaseCriticModifier": 68,
                 "Idling": 20,
                 "Moving": 10,
             },
             "parent_membr": {
+                "MaximumRangeGRU": 1575,
+                "MaximumRangeHelicopterGRU": 1400,
                 "PhysicalDamages": 0.334,
                 "SuppressDamages": 20,
                 "DisplaySalveAccuracy": False,
@@ -752,6 +774,9 @@ weapons: Dict[WeaponKey, WeaponData] = {
 
     ("AutoCanon_AP_20mm_M621_GIAT", "autocannon", None, False): { # 1
         "Ammunition": {
+            "Arme": {
+                "Index": 10,
+            },
             "hit_roll": {
                 "BaseCriticModifier": 68,
                 "Idling": 20,
@@ -773,12 +798,16 @@ weapons: Dict[WeaponKey, WeaponData] = {
     
     ("AutoCanon_AP_T20_20mm", "autocannon", None, False): {
         "Ammunition": {
+            "Arme": {
+                "Index": 10,
+            },
             "hit_roll": {
                 "BaseCriticModifier": 68,
                 "Idling": 20,
                 "Moving": 10,
             },
             "parent_membr": {
+                "MaximumRangeGRU": 1575,
                 "TimeBetweenTwoShots": 0.1,
                 "TimeBetweenTwoSalvos": 0.8,
                 "PhysicalDamages": 0.334,

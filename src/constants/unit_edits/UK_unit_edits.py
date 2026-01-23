@@ -1107,12 +1107,21 @@ uk_unit_edits = {
     },
     
     "Tornado_ADV_SEAD_UK" : { # ALARM 5600m
+        "availability": [0, 2, 0, 1],
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 10000.0,
             },
             "OpticalStrengths": {
                 "EOpticalStrength/AntiRadar": 5000.0,
+            },
+        },
+        "Divisions": {
+            "add": ["UK_2nd_Infantry"],
+            "is_transported": False,
+            "needs_transport": False,
+            "default": {
+                "cards": 1,
             },
         },
     },

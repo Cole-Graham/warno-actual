@@ -133,7 +133,7 @@ def apply_bomb_damage_standards(source_path, logger):
     he_bomb_matching = {
         "100": ["119kg"],
         "250": ["250kg", "GBU_12"],
-        "500": ["400kg", "450kg", "500kg", "513kg"],
+        "500": ["500Kr", "400kg", "450kg", "500kg", "513kg"],
         "1000": ["1000kg", "GBU_10", "GBU_27"],
         "1250": ["KAB_1500"],
     }

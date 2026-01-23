@@ -264,7 +264,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AGM_9M114M_KokonM", "ATGM", None, False): { # 37
         "Ammunition": {
             "parent_membr": {
-                "SpeedGRU": 466,
+                "SpeedGRU": 622,
             },
         },
         "SupplyCost": 80.0,
@@ -272,10 +272,33 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "SalvoLengths": [16, 8, 6, 4, 2, 1],
         },
         "MissileDescriptor": {
-            "MaxSpeedGRU": 466,
+            "MaxSpeedGRU": 622,
         },
     },
-
+    
+    ("AGM_9K121_Vikhr", "ATGM", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 24,
+            },
+            "hit_roll": {
+                "Moving": 50,
+            },
+            "parent_membr": {
+                "SpeedGRU": 2800,
+                "MaxAccelerationGRU": 1400,
+            },
+        },
+        "SupplyCost": 100.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [12],
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 2800,
+            "MaxAccelerationGRU": 1400,
+        },
+    },
+    
     ("AGM_9K121_Vikhr_avion_ripple2", "AGM", None, False): { # 36
         "Ammunition": {
             "Arme": {
@@ -300,6 +323,23 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "MissileDescriptor": {
             "MaxSpeedGRU": 2800,
             "MaxAccelerationGRU": 1400,
+        },
+    },
+    
+    ("Bomb_KAB_500Kr", "LGB", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_pgb_bomb",
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 3500,
+                "TimeBetweenTwoSalvos": 1.0,
+                "AimingTime": 0.3,
+            },
+        },
+        "SupplyCost": 100.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [2, 1],
         },
     },
     

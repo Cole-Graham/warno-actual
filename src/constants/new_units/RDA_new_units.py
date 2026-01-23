@@ -67,6 +67,9 @@ RDA_NEW_UNITS = {
             "RDA_7_Panzer_multi": {
                 "Transports": ["W50_LA_A_DDR", "BTR_70_DDR", "Mi_2_trans_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
             },
+            "RDA_9_Panzer_multi": {
+                "Transports": ["W50_LA_A_DDR", "BTR_70_DDR", "Mi_2_trans_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
+            },
             "RDA_KdA_Bezirk_Erfurt_multi": {
                 "Transports": ["UAZ_469_trans_DDR", "SPW_152K_DDR", "BTR_60_DDR","Mi_2_trans_DDR"],
             },
@@ -122,13 +125,16 @@ RDA_NEW_UNITS = {
             },
             "RDA_4_MSD_multi": {
                 "Transports": None,
-                },
+            },
             "RDA_7_Panzer_multi": {
                 "Transports": None,
-                },
+            },
+            "RDA_9_Panzer_multi": {
+                "Transports": None,
+            },
             "RDA_KdA_Bezirk_Erfurt_multi": {
                 "Transports": None,
-                },
+            },
         },
         "availability": [0, 3, 0, 0],
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/QuickMove', 'EOrderType/Reverse',
@@ -187,6 +193,9 @@ RDA_NEW_UNITS = {
             },
             "RDA_7_Panzer_multi": {
                 "Transports": ["UAZ_469_trans_DDR", "BTR_50_DDR", "BMP_1_SP1_DDR", "BMP_1_SP2_DDR", "BMP_1P_DDR"],
+            },
+            "RDA_9_Panzer_multi": {
+                "Transports": ["UAZ_469_trans_DDR", "BMP_1_SP1_DDR", "BMP_1_SP2_DDR", "BMP_1P_DDR"],
             },
             "RDA_KdA_Bezirk_Erfurt_multi": {
                 "Transports": ["UAZ_469_trans_DDR"],
@@ -439,8 +448,55 @@ RDA_NEW_UNITS = {
         "is_aerial": False,
         "is_unarmed": False,
         "Faction": "PACT",
-        "Nation": "POL",
+        "Nation": "DDR",
         "UpgradeFromUnit": "T72M_CMD2_DDR",
+    },
+    
+    ("T72M1_DDR", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "199faa87-81d3-48bf-8fca-b331756a8a8c",
+        "GroupeCombatGUID": "98f2a222-2df1-44be-b552-8c94960f4578",
+        "ShowroomGUID": "e42dc1dc-4d1e-4526-bb56-15f32c1eee8a",
+        "CadavreGUID": "60d5682a-895b-42b0-9ee7-0600fa8917ab",
+        "NewName": "9_Panzer_T72M1_DDR",
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "Char_Standard",
+                "GroundUnits",
+                "SM_charLourd",
+                "UNITE_9_Panzer_T72M1_DDR",
+                "Unite",
+            ],
+        },
+        "GameName": {
+            "display": "#7PANZER KPzT-72M1",
+            "token": "ZXTTDHOZUI",
+        },
+        "CommandPoints": 180,
+        "Divisions": {
+            "default": {
+                "cards": 2, 
+            },
+            "RDA_7_Panzer_multi": {
+                "Transports": None,
+            },
+        },
+        "availability": [0, 0, 4, 3],
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
+                   'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
+                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply',
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "is_replacement": True,
+        "Faction": "PACT",
+        "Nation": "DDR",
+        "UpgradeFromUnit": "T72M_DDR",
     },
 }
 # fmt: on

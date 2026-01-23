@@ -914,27 +914,30 @@ USA_NEW_UNITS = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "add": [(2, 1), (3, 2)],
-                "AGM_AGM88_HARM": 3,
+                "add": [(2, 1)],
+                "AGM_AGM88_HARM": 2,
+                "AA_AIM7M_Sparrow": 2,
             },
-            "SalvoIsMainSalvo": [False, False, False, False],
+            "SalvoIsMainSalvo": [False, False, False],
             "equipmentchanges": {
                 "add": [
-                    (2, "AGM_AGM65D_Maverick", "AGM_AGM65D_Maverick", 4),
-                    (3, "AA_AIM7M_Sparrow", "AA_AIM7M_Sparrow", 5),
+                    (0, "AA_AIM7M_Sparrow", "AA_AIM7M_Sparrow", 2),
                 ],
+                "update": [1, 2],
                 "replace": [
-                    ("AGM_AGM45_Shrike", "AGM_AGM88_HARM", "AGM_AGM45_Shrike", "AGM_AGM88_HARM"),
-                    ("AA_AIM9J_Sidewinder", "AA_AIM9M_Sidewinder", "AA_AIM9J_Sidewinder", "AA_AIM9M_Sidewinder"),
+                    ("AGM_AGM45_Shrike", "AGM_AGM88_HARM_ReflexPriorityFalse", "AGM_AGM45_Shrike", "AGM_AGM88_HARM_ReflexPriorityFalse"),
                 ],
+                "replace_with_turret": [
+                    ("AA_AIM9J_Sidewinder", "AGM_AGM65D_Maverick", "AA_AIM9J_Sidewinder", "AGM_AGM65D_Maverick"),
+                ]
             },
-            "turrets": {
-                0: {
-                    "AngleRotationMax": 1.745329,
-                    "AngleRotationMaxPitch": 0.8726646,
-                    "AngleRotationMinPitch": -0.8726646,
-                },
-            },
+            # "turrets": {
+            #     0: {
+            #         "AngleRotationMax": 1.745329,
+            #         "AngleRotationMaxPitch": 0.8726646,
+            #         "AngleRotationMinPitch": -0.8726646,
+            #     },
+            # },
         },
         "Divisions": {
             "default": {
@@ -951,8 +954,11 @@ USA_NEW_UNITS = {
             # },
         },
         "availability": [0, 2, 0, 1],
-        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/Shoot', 'EOrderType/AirplanePatrol', 'EOrderType/AirplaneAttack',
-                   'EOrderType/AirplaneMoveAndEngage', 'EOrderType/AirplaneEvacuate', 'EOrderType/AirplaneShoot', 'EOrderType/AIAirplaneAutoManage', 'EOrderType/AIStop'],
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/Shoot',
+                   'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection',
+                   'EOrderType/AirplanePatrol', 'EOrderType/AirplaneAttack', 'EOrderType/AirplaneMoveAndEngage',
+                   'EOrderType/AirplaneEvacuate', 'EOrderType/AirplaneShoot', 'EOrderType/AIAirplaneAutoManage',
+                   'EOrderType/AIStop'],
         "is_infantry": False, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,
         "is_ground_vehicle": False,

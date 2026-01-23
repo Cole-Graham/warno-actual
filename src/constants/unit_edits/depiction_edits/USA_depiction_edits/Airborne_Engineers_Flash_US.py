@@ -64,7 +64,7 @@ airborne_engineers_flash_us: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] 
 ]""",
 
         ("TacticDepiction_Airborne_Engineers_Flash_US_Soldier", "TemplateInfantryDepictionFactoryTactic"): {
-            "Selector": "04_06"
+            "Selector": "04_06" # {unique_count}_{count}
         },
         
         ("TacticDepiction_Airborne_Engineers_Flash_US_Ghost", "TemplateInfantryDepictionFactoryGhost"): {

@@ -19,6 +19,15 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("DCA_4_canons_AZP_23_Amur_23mm_Afghan", "DCA", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "MaximumRangeGRU": 1575,
+                "AimingTime": 1.2,
+            },
+        },
+    },
+    
     ("DCA_4_canons_AZP_23_Amur_23mm_late", "DCA", None, False): {
         "Ammunition": {
             "hit_roll": {

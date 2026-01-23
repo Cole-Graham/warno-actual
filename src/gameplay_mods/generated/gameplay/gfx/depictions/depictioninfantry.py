@@ -426,15 +426,45 @@ def _handle_complex_unit_edits(source_path: Any) -> None:
 
                 for member, member_edits in edits.items():
                     if member == "Selector":
+                        
+                        # check if appropriate InfantrySelectorTactic exists, else create it
+                        template_infantry_selector_tactic = source_path.by_n(f"InfantrySelectorTactic_{member_edits}", False)
+                        if not template_infantry_selector_tactic:
+                            # member_edits = "{new_count}_{new_unique_count}"
+                            new_unique_count = f"{int(member_edits.split('_')[0]):02d}"
+                            new_count = int(member_edits.split("_")[1])
+                            new_template = (
+                                f"InfantrySelectorTactic_{member_edits} is TemplateInfantrySelectorTactic"
+                                f"("
+                                f"    Surrogates = TacticDepiction_{new_unique_count}_Surrogates"
+                                f"    UniqueCount = {new_count}"
+                                f")"
+                            )
+                            source_path.add(new_template)
+                        
+                        # update selector tactic
                         tacticdepiction_soldier.v.by_m(member).v = f"InfantrySelectorTactic_{member_edits}"
+                        
                     if member == "Operators":
                         operators_member = tacticdepiction_soldier.v.by_m(member)
                         
+                        # Find the DepictionOperator_SkeletalAnimation2_Default operator
+                        skeletal_animation_operator = None
+                        for obj in operators_member.v:
+                            if is_obj_type(obj.v, "DepictionOperator_SkeletalAnimation2_Default"):
+                                skeletal_animation_operator = obj.v
+                                break
+                        
+                        if skeletal_animation_operator is None:
+                            logger.error(f"Could not find DepictionOperator_SkeletalAnimation2_Default in Operators for {namespace}")
+                            continue
+                        
                         # Need to check if ConditionalTags member exists, else create it
-                        conditional_tags = operators_member.v[0].v.by_m("ConditionalTags", False)
+                        conditional_tags = skeletal_animation_operator.by_m("ConditionalTags", False)
                         if conditional_tags is None:
-                            operators_member.v[0].v.add("ConditionalTags = []")
-                            conditional_tags = operators_member.v[0].v.by_m("ConditionalTags")
+                            logger.debug(f"Creating ConditionalTags for {namespace}")
+                            skeletal_animation_operator.add("ConditionalTags = []")
+                            conditional_tags = skeletal_animation_operator.by_m("ConditionalTags")
                         
                         for index, (edit_type, edit_list) in member_edits.items():
                             if edit_type == "replace":

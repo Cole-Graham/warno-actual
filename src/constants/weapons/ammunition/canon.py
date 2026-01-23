@@ -98,7 +98,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("Canon_HE_73_mm_SPG9_TOWED", "recoilless", None, False): { # 220
+    ("Canon_HE_73_mm_SPG9_TOWED", "recoilless", None, False): {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 40,
@@ -112,7 +112,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("Canon_HE_73_mm_SPG9", "recoilless", None, False): { # 220
+    ("Canon_HE_73_mm_SPG9", "recoilless", None, False): {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 40,
@@ -137,7 +137,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "PhysicalDamages": 0.85,
                 "RadiusSplashSuppressDamagesGRU": 66,
                 "SuppressDamages": 115,
-                # Eugen removed this from HE canons, not sure if I can add it back
+                # Eugen removed this and replaced it with SpeedGRU
                 # "FlightTimeForSpeed": 3.3,
                 "SupplyCost": 300.0,
             },
@@ -263,6 +263,18 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("Canon_HE_125_mm_2A46M", "canon", None, False): { # T-72S
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 50,
+                "Moving": 40,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2275,
+            },
+        },
+    },
 
     ("Canon_HE_125_mm_2A46_T72M", "canon", None, False): { # 206
         "Ammunition": {
@@ -272,7 +284,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MaximumRangeGRU": 2275,
-                "SupplyCost": 220.0,
             },
         },
     },
@@ -415,11 +426,11 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
-
-    ("Canon_AP_125_mm_2A46_T72M", "canon", None, False): { # 134
+    
+    ("Canon_AP_125_mm_2A46M", "canon", None, False): { # T-72S
         "Ammunition": {
             "Arme": {
-                "Index": 29,
+                "Index": 31,
             },
             "hit_roll": {
                 "Idling": 50,
@@ -427,7 +438,29 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MaximumRangeGRU": 2275,
-                "SupplyCost": 220.0,
+            },
+        },
+    },
+    
+    # ("Canon_AP_125_mm_2A46_T72M2", "canon", None, False): { # T-72M2 WILK
+    #     "Ammunition": {
+    #         "Arme": {
+    #             "Index": 31,
+    #         },
+    #     },
+    # },
+
+    ("Canon_AP_125_mm_2A46_T72M", "canon", None, False): { # 134
+        "Ammunition": {
+            # "Arme": {
+            #     "Index": 29,
+            # },
+            "hit_roll": {
+                "Idling": 50,
+                "Moving": 40,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2275,
             },
         },
     },

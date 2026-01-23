@@ -129,6 +129,19 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+
+    ("RocketArt_M21OF_122mm_RM70", "MLRS", "RocketArt_M21OF_122mm", True): { # 646
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 4.2,
+                "SuppressDamages": 350,
+                "RadiusSplashPhysicalDamagesGRU": 152,
+                "RadiusSplashSuppressDamagesGRU": 203,
+                "TimeBetweenTwoSalvos": 130.0,
+                "SupplyCost": 580.0,
+            },
+        },
+    },
     
     ("RocketArt_M21OF_122mm_napalm", "MLRS", None, False): { # BM-21 [NPLM]
         "Ammunition": {
@@ -144,20 +157,20 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
-
-    ("RocketArt_M21OF_122mm_RM70", "MLRS", "RocketArt_M21OF_122mm", True): { # 646
+    
+    ("RocketArt_M21OF_122mm_RM70_napalm", "MLRS", "RocketArt_M21OF_122mm_napalm", True): { # RM-70 [NPLM]
         "Ammunition": {
             "parent_membr": {
-                "PhysicalDamages": 4.2,
-                "SuppressDamages": 350,
-                "RadiusSplashPhysicalDamagesGRU": 53,
-                "RadiusSplashSuppressDamagesGRU": 53,
-                "TimeBetweenTwoSalvos": 155.0,
-                "SupplyCost": 580.0,
+                "ImpactHappening": "'Roquette110Mm130MmClusterNapalm'",
+                "PhysicalDamages": 0.5,
+                "SuppressDamages": 50,
+                "RadiusSplashPhysicalDamagesGRU": 152,
+                "RadiusSplashSuppressDamagesGRU": 203,
+                "TimeBetweenTwoSalvos": 130.0,
+                "SupplyCost": 290.0,
+                "FireDescriptor": "$/GFX/Weapon/Descriptor_Fire_Incendiary_53m",
             },
         },
-        "SupplyCost": 580.0,
-        "NbWeapons": [1],
     },
 }
 # fmt: on
