@@ -1,8 +1,7 @@
 """In-game UI components."""
-from .cube_action import edit_uiingamebuckcubeaction
-from .default_container import edit_uiingamedefaultcontainer
-from .engagement_rules import edit_uiingamebuckengagementrules
 from .hud import (
+    edit_uiingamehudbeaconpanel,
+    edit_uiingamehudreplayresource,
     edit_uispecifichudalertpanelview,
     edit_uispecificingameidleunitview,
     edit_uispecificminimapinfoview,
@@ -23,21 +22,26 @@ from .hud import (
     edit_uispecificunitlabelviewnameonly,
     edit_uispecificunitlabelview,
 )
+from .cube_action import edit_uiingamebuckcubeaction
+from .default_container import edit_uiingamedefaultcontainer
+from .engagement_rules import edit_uiingamebuckengagementrules
 from .ingame import edit_uiingameresources
 from .launch_button import edit_uiingamelaunchbattlebuttonresources
 from .minimap import edit_uiingameminimap
 from .orders import edit_orderdisplay
-from .replay import edit_uiingamehudreplayresource
+from .starting_information import edit_uispecificdisplaystartinginformationview
 
 __all__ = [
     'edit_orderdisplay',
     'edit_uiingamebuckcubeaction',
     'edit_uiingamebuckengagementrules',
     'edit_uiingamedefaultcontainer',
+    'edit_uiingamehudbeaconpanel',
     'edit_uiingamehudreplayresource',
     'edit_uiingamelaunchbattlebuttonresources',
     'edit_uiingameminimap',
     'edit_uiingameresources',
+    'edit_uispecificdisplaystartinginformationview',
     'edit_uispecifichudalertpanelview',
     'edit_uispecifichudmultiselectionpanelview',
     'edit_uispecifichudscoreview',

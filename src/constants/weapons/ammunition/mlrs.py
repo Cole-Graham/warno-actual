@@ -172,5 +172,16 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("MLRS_Hydra_70mm", "MLRS", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 2.5,
+                "SuppressDamages": 180,
+                "RadiusSplashPhysicalDamagesGRU": 94,
+                "RadiusSplashSuppressDamagesGRU": 125,
+            },
+        },
+    },
 }
 # fmt: on

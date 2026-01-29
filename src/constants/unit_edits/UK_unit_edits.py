@@ -90,8 +90,6 @@ uk_unit_edits = {
         },
         "selector_tactic": "(0, 2)",
         "selector_tactic_obj": "00_02",
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
 
@@ -156,8 +154,6 @@ uk_unit_edits = {
         },
         "selector_tactic": "(0, 8)",
         "selector_tactic_obj": "00_08",
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
 
@@ -205,8 +201,6 @@ uk_unit_edits = {
                 ],
             },
         },
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
 
@@ -246,8 +240,6 @@ uk_unit_edits = {
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "availability": [0, 0, 6, 4],
         "max_speed": 26,
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
 
@@ -305,8 +297,6 @@ uk_unit_edits = {
                 "add": [(2, "RocketInf_M72A3_LAW_66mm")],
             },
         },
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
 
@@ -573,11 +563,11 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_veryheavy'"],
         },
-        "availability": [8, 6, 0, 0],
+        "availability": [10, 7, 0, 0],
     },
 
     "ATteam_Milan_1_UK": {
-        "CommandPoints": 30,
+        "CommandPoints": 25,
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -586,7 +576,7 @@ uk_unit_edits = {
     },
 
     "ATteam_Milan_2_UK": {
-        "CommandPoints": 45,
+        "CommandPoints": 40,
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],

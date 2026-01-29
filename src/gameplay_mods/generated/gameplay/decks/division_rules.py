@@ -1,4 +1,4 @@
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 from src import ndf
 from src.constants.unit_edits import load_unit_edits
@@ -17,7 +17,7 @@ def edit_gen_gp_decks_divisionrules(source_path: Any, game_db: Dict[str, Any]) -
     _unit_edits_divisionrules(source_path)
     _supply_divisionrules(source_path)
     _mg_team_division_rules(source_path, game_db)
-    _create_national_division_rules(source_path)
+    _create_national_division_rules(source_path, game_db)
 
 def _unit_edits_divisionrules(source_path: Any) -> None:
     """Apply unit edits to DivisionRules.ndf"""
@@ -422,8 +422,184 @@ def _serialize_unit_rule(rule_v: Any) -> str:
     return rule_str
 
 
-def _create_national_division_rules(source_path: Any) -> None:
-    """Create division rules for national divisions by combining rules from source divisions."""
+def _resolve_combine_divisions(
+    div_key: str, 
+    new_divisions: Dict[str, Dict], 
+    path: set = None
+) -> List[str]:
+    """Recursively resolve combine_divisions to get the final list of base divisions.
+    
+    If a division references other new divisions in combine_divisions, those are
+    recursively resolved to their base divisions (ones that exist in the game).
+    
+    Args:
+        div_key: The division key to resolve
+        new_divisions: Dictionary of all new divisions
+        path: Set of division keys in the current resolution path (to detect cycles)
+    
+    Returns:
+        List of base division names (ones that exist in the game, not in new_divisions)
+    """
+    if path is None:
+        path = set()
+    
+    # Prevent circular dependencies - if this division is in the current path, we have a cycle
+    if div_key in path:
+        logger.warning(f"Circular dependency detected for {div_key}, skipping recursive resolution")
+        return []
+    
+    # If this division is not in new_divisions, it's a base division
+    if div_key not in new_divisions:
+        return [div_key]
+    
+    # Add to current path to detect cycles
+    path.add(div_key)
+    
+    div_data = new_divisions[div_key]
+    combine_divisions = div_data.get("combine_divisions", [])
+    
+    # Check if this division has custom division_rules - if so, it won't have combine_divisions
+    has_custom_rules = div_data.get("division_rules") is not None
+    
+    if not combine_divisions:
+        path.remove(div_key)  # Remove from path before returning
+        # Only warn if this division doesn't have custom rules (divisions with custom rules won't have combine_divisions)
+        if not has_custom_rules:
+            logger.warning(f"No combine_divisions specified for {div_key}")
+        return []
+    
+    # Resolve each division in combine_divisions
+    resolved_divisions = []
+    for combine_div in combine_divisions:
+        # Recursively resolve if it's a new division, otherwise use as-is
+        if combine_div in new_divisions:
+            # Pass path by reference to detect cycles in the current branch
+            resolved = _resolve_combine_divisions(combine_div, new_divisions, path)
+            resolved_divisions.extend(resolved)
+        else:
+            # It's a base division that exists in the game
+            resolved_divisions.append(combine_div)
+    
+    # Remove from path before returning (backtrack)
+    path.remove(div_key)
+    
+    # Remove duplicates while preserving order
+    seen = set()
+    unique_divisions = []
+    for div in resolved_divisions:
+        if div not in seen:
+            seen.add(div)
+            unique_divisions.append(div)
+    
+    return unique_divisions
+
+
+def _convert_custom_division_rule_to_string(unit_name: str, cards: int, availability: List[int], transports: Optional[List[Optional[str]]] = None) -> str:
+    """Convert a custom division rule tuple to TDeckUniteRule string format.
+    
+    Args:
+        unit_name: Name of the unit
+        cards: Number of cards available
+        availability: List of availability values for each XP level [reg, trained, hardened, veteran]
+        transports: Optional list of transport unit names. Include None in the list to indicate
+                   the unit can be deployed without transport but can optionally take transports.
+    
+    Returns:
+        Formatted TDeckUniteRule string
+    """
+    unit_descr = f"$/GFX/Unit/Descriptor_Unit_{unit_name}"
+    
+    # Ensure availability list has exactly 4 elements
+    if len(availability) != 4:
+        logger.warning(f"Invalid availability format for {unit_name}: expected list of 4 elements, got {availability}")
+        # Pad with zeros if too short, truncate if too long
+        availability = (availability + [0] * 4)[:4]
+    
+    # Calculate base availability (max of the list)
+    base_avail = max(availability) if availability else 0
+    
+    # Calculate XP multiplier (each value divided by base, rounded to 2 decimals)
+    if base_avail > 0:
+        xp_multi = [round(val / base_avail, 2) for val in availability]
+    else:
+        xp_multi = [0.0, 0.0, 0.0, 0.0]
+    xp_multi_str = str(xp_multi)
+    
+    # Determine if unit needs transport
+    # If None is in the transport list, the unit can be deployed without transport
+    # but can optionally take transports
+    has_transports = transports is not None and len(transports) > 0
+    can_deploy_without_transport = False
+    
+    if has_transports:
+        # Check if None is in the list (indicating optional transport)
+        can_deploy_without_transport = None in transports
+        # Filter out None values for the actual transport list
+        valid_transports = [t for t in transports if t is not None]
+    else:
+        valid_transports = []
+    
+    # Set AvailableWithoutTransport based on whether None was in the list
+    # If None is present, unit can deploy without transport (but can take one)
+    # If None is not present but transports exist, unit requires transport
+    available_without_transport = can_deploy_without_transport or not has_transports
+    
+    # Build transport list string if valid transports exist
+    transport_str = ""
+    if valid_transports:
+        # Validate transport unit names (no spaces allowed)
+        for transport in valid_transports:
+            if " " in transport:
+                logger.warning(f"Invalid transport unit name '{transport}' for {unit_name}: contains spaces. Unit names should use underscores instead.")
+        transport_list = [f"$/GFX/Unit/Descriptor_Unit_{t}" for t in valid_transports]
+        transport_str = "[" + ", ".join(transport_list) + "]"
+    
+    # Build the rule string
+    rule_str = (
+        f"TDeckUniteRule\n"
+        f"(\n"
+        f"    UnitDescriptor = {unit_descr}\n"
+        f"    AvailableWithoutTransport = {available_without_transport}\n"
+    )
+    
+    if transport_str:
+        rule_str += f"    AvailableTransportList = {transport_str}\n"
+    
+    rule_str += (
+        f"    MaxPackNumber = {cards}\n"
+        f"    NumberOfUnitInPack = {base_avail}\n"
+        f"    NumberOfUnitInPackXPMultiplier = {xp_multi_str}\n"
+        f"),"
+    )
+    
+    return rule_str
+
+
+def _validate_unit_name(unit_name: str, game_db: Dict[str, Any]) -> bool:
+    """Validate that a unit name exists in unit_data or NEW_UNITS.
+    
+    Args:
+        unit_name: The unit name to validate (without Descriptor_Unit_ prefix)
+        game_db: The game database containing unit_data
+    
+    Returns:
+        True if unit exists, False otherwise
+    """
+    # Check in unit_data (existing units)
+    unit_data = game_db.get("unit_data", {})
+    if unit_name in unit_data:
+        return True
+    
+    # Check in NEW_UNITS (new units use "NewName" key)
+    for donor_unit, unit_info in NEW_UNITS.items():
+        if unit_info.get("NewName") == unit_name:
+            return True
+    
+    return False
+
+
+def _create_national_division_rules(source_path: Any, game_db: Dict[str, Any]) -> None:
+    """Create division rules for national divisions by combining rules from source divisions or using custom rules."""
     new_divisions = load_new_divisions()
     
     if not new_divisions:
@@ -433,11 +609,6 @@ def _create_national_division_rules(source_path: Any) -> None:
     logger.info("Creating division rules for national divisions")
     
     for div_key, div_data in new_divisions.items():
-        combine_divisions = div_data.get("combine_divisions", [])
-        if not combine_divisions:
-            logger.warning(f"No combine_divisions specified for {div_key}, skipping")
-            continue
-        
         cfg_name = div_data.get("cfg_name")
         if not cfg_name:
             logger.warning(f"No cfg_name specified for {div_key}, skipping")
@@ -453,6 +624,157 @@ def _create_national_division_rules(source_path: Any) -> None:
                 continue
         except (AttributeError, KeyError):
             pass  # Rule doesn't exist, which is expected
+        
+        # Check if this division has custom division_rules defined
+        custom_rules = div_data.get("division_rules")
+        if custom_rules:
+            logger.info(f"Creating division rule {new_rule_namespace} from custom division_rules")
+            collected_rules: Dict[str, str] = {}  # unit_descriptor -> serialized_rule
+            
+            # Handle division_rules as either a single dict or a list of dicts
+            rules_dicts = []
+            if isinstance(custom_rules, list):
+                rules_dicts = custom_rules
+                logger.debug(f"Processing {len(rules_dicts)} division rule dictionaries for {div_key}")
+            elif isinstance(custom_rules, dict):
+                rules_dicts = [custom_rules]
+            else:
+                logger.warning(f"Invalid division_rules format for {div_key}: expected dict or list of dicts, got {type(custom_rules)}")
+                continue
+            
+            # Process each dictionary in the list
+            for rules_dict in rules_dicts:
+                if not isinstance(rules_dict, dict):
+                    logger.warning(f"Invalid entry in division_rules list for {div_key}: expected dict, got {type(rules_dict)}")
+                    continue
+                
+                # Process each category in the custom rules dictionary
+                for category, unit_rules in rules_dict.items():
+                    if not isinstance(unit_rules, list):
+                        continue
+                    
+                    for rule_tuple in unit_rules:
+                        # Handle tuple format: (unit_name, cards, availability, [transports])
+                        if len(rule_tuple) == 3:
+                            unit_name, cards, availability = rule_tuple
+                            transports = None
+                        elif len(rule_tuple) == 4:
+                            unit_name, cards, availability, transports = rule_tuple
+                        else:
+                            logger.warning(f"Invalid rule tuple format in {div_key} category {category}: {rule_tuple}")
+                            continue
+                        
+                        # Validate availability list has 4 elements (for 4 XP levels)
+                        if not isinstance(availability, list) or len(availability) != 4:
+                            logger.warning(f"Invalid availability format for {unit_name} in {div_key}: expected list of 4 elements, got {availability}")
+                            continue
+                        
+                        # Validate transports is a list if provided
+                        if transports is not None and not isinstance(transports, list):
+                            logger.warning(f"Invalid transports format for {unit_name} in {div_key}: expected list or None, got {type(transports)}")
+                            transports = None
+                        
+                        # Validate transport unit names if provided
+                        if transports:
+                            valid_transports = []
+                            for transport in transports:
+                                if transport is None:
+                                    valid_transports.append(None)
+                                    continue
+                                if " " in transport:
+                                    logger.warning(f"Invalid transport unit name '{transport}' for {unit_name} in {div_key}: contains spaces. Unit names should use underscores instead.")
+                                    continue
+                                if not _validate_unit_name(transport, game_db):
+                                    logger.warning(f"Invalid transport unit name '{transport}' for {unit_name} in {div_key}: transport not found in unit_data or NEW_UNITS")
+                                    continue
+                                valid_transports.append(transport)
+                            transports = valid_transports if valid_transports else None
+                        
+                        # Validate unit name doesn't contain spaces
+                        if " " in unit_name:
+                            logger.warning(f"Invalid unit name '{unit_name}' in {div_key}: contains spaces. Unit names should use underscores instead.")
+                            continue
+                        
+                        # Validate unit name exists in unit_data or NEW_UNITS
+                        if not _validate_unit_name(unit_name, game_db):
+                            logger.warning(f"Invalid unit name '{unit_name}' in {div_key} category {category}: unit not found in unit_data or NEW_UNITS")
+                            continue
+                        
+                        unit_descr = f"$/GFX/Unit/Descriptor_Unit_{unit_name}"
+                        
+                        # Convert to rule string
+                        rule_str = _convert_custom_division_rule_to_string(
+                            unit_name=unit_name,
+                            cards=cards,
+                            availability=availability,
+                            transports=transports
+                        )
+                        
+                        # If unit already exists, log a warning (later dictionaries override earlier ones)
+                        if unit_descr in collected_rules:
+                            logger.debug(f"Overriding existing rule for {unit_name} in {div_key} (from multiple division_rules dictionaries)")
+                        
+                        collected_rules[unit_descr] = rule_str
+                        logger.debug(f"Added custom rule for {unit_name} in {div_key}")
+            
+            if not collected_rules:
+                logger.warning(f"No unit rules collected from custom division_rules for {div_key}, skipping rule creation")
+                continue
+            
+            # Find a donor division rule to insert before
+            # Divisions with custom rules won't have combine_divisions, so just find any division rule as reference
+            donor_rule = None
+            for deck_descr in source_path:
+                if deck_descr.n.endswith("_multi_Rule"):
+                    donor_rule = deck_descr
+                    break
+            
+            # Create new division rule from custom rules
+            unit_rules_str = "\n".join([f"        {rule_str}" for rule_str in collected_rules.values()])
+            
+            division_rule_str = (
+                f"{new_rule_namespace} is TDeckDivisionRule\n"
+                f"(\n"
+                f"    UnitRuleList =\n"
+                f"    [\n"
+                f"{unit_rules_str}\n"
+                f"    ]\n"
+                f")"
+            )
+            
+            try:
+                parsed_rule = ndf.convert(division_rule_str)
+                if parsed_rule:
+                    new_rule_obj = parsed_rule[0] if isinstance(parsed_rule, list) else parsed_rule
+                    if donor_rule:
+                        donor_index = donor_rule.index
+                        source_path.insert(donor_index, new_rule_obj)
+                    else:
+                        source_path.add(new_rule_obj)
+                    logger.info(f"Created division rule {new_rule_namespace} with {len(collected_rules)} unit rules from custom division_rules")
+                else:
+                    logger.error(f"Failed to parse division rule string for {new_rule_namespace}")
+            except Exception as e:
+                logger.error(f"Failed to add division rule {new_rule_namespace}: {str(e)}")
+                import traceback
+                logger.debug(traceback.format_exc())
+            
+            continue  # Skip the combine_divisions logic for custom rules
+        
+        # Handle combine_divisions logic (existing behavior)
+        combine_divisions_raw = div_data.get("combine_divisions", [])
+        if not combine_divisions_raw:
+            logger.warning(f"No combine_divisions or division_rules specified for {div_key}, skipping")
+            continue
+        
+        # Resolve nested combine_divisions to get base divisions
+        combine_divisions = _resolve_combine_divisions(div_key, new_divisions)
+        
+        if not combine_divisions:
+            logger.warning(f"Could not resolve combine_divisions for {div_key}, skipping")
+            continue
+        
+        logger.debug(f"Resolved {div_key} combine_divisions from {combine_divisions_raw} to {combine_divisions}")
         
         # Find a donor division rule to copy structure from
         donor_rule = None

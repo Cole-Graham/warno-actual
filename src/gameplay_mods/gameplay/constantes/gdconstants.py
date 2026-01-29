@@ -43,6 +43,7 @@ def edit_gameplay_constantes_gdconstants(source_path) -> None:
             # logger.info("Set FrontSideAngleInDeg to 75")
             
             # Values in splash ratios correspond to enum EDamageType
+            # i.e. [Suppress, Physical, Stun]
             # EDamageType is TBaseClass
             # (
             #     Suppress  is 0
@@ -50,5 +51,9 @@ def edit_gameplay_constantes_gdconstants(source_path) -> None:
             #     Stun      is 2
             #     Length    is 3
             # )
+            # SplashRatioDamage is the damage ratio at the edge of the splash radius
+            # SplashRatioDistance is the % of the splash radius at which damage BEGINS to fall off
+            # The WARNO engine only recalculates splash damage every X amount of distance, so very small
+            # splash radiuses will feel very binary.
             row.v.by_m("SplashRatioDamage").v = "[0.15, 0.15, 0.05]"
             row.v.by_m("SplashRatioDistance").v = "[0.15, 0.15, 0.10]"

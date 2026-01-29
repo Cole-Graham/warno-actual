@@ -620,19 +620,24 @@ def _hide_divisions_decks_ndf(source_path) -> None:
 
     config = ModConfig.get_instance()
 
-    hide_divs = config.config_data.get("hide_divs", [])
-    if config.config_data["build_config"]["write_dev"]:
-        # In dev mode, remove divisions that should be shown for testing
-        dev_show_divs = config.config_data.get("dev_show_divs", [])
-        divs_to_hide = [div for div in hide_divs if div not in dev_show_divs]
-    else:
-        # In release mode, hide all divisions in hide_divs
-        divs_to_hide = hide_divs
+    # hide_divs = config.config_data.get("hide_divs", [])
+    # if config.config_data["build_config"]["write_dev"]:
+    #     # In dev mode, remove divisions that should be shown for testing
+    #     dev_show_divs = config.config_data.get("dev_show_divs", [])
+    #     divs_to_hide = [div for div in hide_divs if div not in dev_show_divs]
+    # else:
+    #     # In release mode, hide all divisions in hide_divs
+    #     divs_to_hide = hide_divs
 
+    # indices_to_remove = []
+    # for division in divs_to_hide:
+    #     deck_index = source_path.by_n(f"Descriptor_Deck_{division}").index
+    #     indices_to_remove.append(deck_index)
+    
     indices_to_remove = []
-    for division in divs_to_hide:
-        deck_index = source_path.by_n(f"Descriptor_Deck_{division}").index
-        indices_to_remove.append(deck_index)
+    for deck_descr in source_path:
+        if deck_descr.n.endswith("_multi") or deck_descr.n.endswith("_Gruppierung"):
+            indices_to_remove.append(deck_descr.index)
 
     for index in sorted(indices_to_remove, reverse=True):
         source_path.remove(index)

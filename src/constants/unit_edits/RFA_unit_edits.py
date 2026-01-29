@@ -92,8 +92,6 @@ rfa_unit_edits = {
         },
         "availability": [0, 0, 5, 4],
         "max_speed": 20,
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
     
@@ -133,8 +131,6 @@ rfa_unit_edits = {
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
         "availability": [0, 0, 7, 5],
         "max_speed": 26,
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
     
@@ -174,8 +170,6 @@ rfa_unit_edits = {
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
         "availability": [0, 0, 7, 5],
         "max_speed": 26,
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
     
@@ -217,8 +211,6 @@ rfa_unit_edits = {
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
         "availability": [0, 0, 7, 5],
         "max_speed": 26,
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
     
@@ -470,20 +462,20 @@ rfa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_veryheavy'"],
         },
-        "availability": [9, 7, 0, 0],
+        "availability": [10, 7, 0, 0],
     },
     
     "ATteam_Milan_1_RFA": {
-        "CommandPoints": 30,
+        "CommandPoints": 25,
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
-        "availability": [9, 7, 5, 0],
+        "availability": [10, 7, 5, 0],
     },
     
     "ATteam_Milan_2_RFA": {
-        "CommandPoints": 45,
+        "CommandPoints": 40,
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -492,7 +484,7 @@ rfa_unit_edits = {
     },
     
     "ATteam_Milan_2_para_RFA": {
-        "CommandPoints": 45,
+        "CommandPoints": 40,
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],

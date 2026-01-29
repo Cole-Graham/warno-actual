@@ -157,8 +157,6 @@ rda_unit_edits = {
         },
         "selector_tactic": "(0, 6)",
         "selector_tactic_obj": "00_06",
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
 
@@ -212,8 +210,6 @@ rda_unit_edits = {
         },
         "selector_tactic": "(0, 8)",
         "selector_tactic_obj": "00_08",
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
 
@@ -295,8 +291,6 @@ rda_unit_edits = {
                 "add": [(1, 15)],
             },
         },
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
     
@@ -337,8 +331,6 @@ rda_unit_edits = {
         },
         "availability": [0, 7, 5, 0],
         "max_speed": 20,
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
     
@@ -642,7 +634,7 @@ rda_unit_edits = {
     "ATteam_RCL_SPG9_DDR": {
         "strength": 5,
         "CommandPoints": 30,
-        "availability": [9, 7, 0, 0],
+        "availability": [10, 7, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -650,7 +642,7 @@ rda_unit_edits = {
     },
 
     "ATteam_Fagot_DDR": {
-        "CommandPoints": 30,
+        "CommandPoints": 25,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -669,7 +661,7 @@ rda_unit_edits = {
     },
 
     "ATteam_Konkurs_DDR": {
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "availability": [6, 4, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {

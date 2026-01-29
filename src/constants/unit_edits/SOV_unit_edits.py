@@ -233,8 +233,6 @@ sov_unit_edits = {
         },
         "selector_tactic": "(0, 6)",
         "selector_tactic_obj": "00_06",
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
     
@@ -300,8 +298,6 @@ sov_unit_edits = {
         },
         "selector_tactic": "(0, 6)",
         "selector_tactic_obj": "00_06",
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
 
@@ -358,8 +354,6 @@ sov_unit_edits = {
         },
         "selector_tactic": "(0, 8)",
         "selector_tactic_obj": "00_08",
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
 
@@ -413,8 +407,6 @@ sov_unit_edits = {
         "max_speed": 26,
         "selector_tactic": "(0, 8)",
         "selector_tactic_obj": "00_08",
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
 
@@ -462,8 +454,6 @@ sov_unit_edits = {
         "max_speed": 26,
         "selector_tactic": "(0, 8)",
         "selector_tactic_obj": "00_08",
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
 
@@ -525,8 +515,6 @@ sov_unit_edits = {
         },
         "selector_tactic": "(0, 6)",
         "selector_tactic_obj": "00_06",
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
     
@@ -620,8 +608,6 @@ sov_unit_edits = {
         },
         "selector_tactic": "(0, 8)",
         "selector_tactic_obj": "00_08",
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
 
@@ -1292,7 +1278,7 @@ sov_unit_edits = {
         },
         "strength": 5,
         "max_speed": 14,
-        "availability": [0, 9, 7, 0],
+        "availability": [0, 10, 7, 0],
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_veryheavy'"],
         },
@@ -1308,7 +1294,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": [0, 9, 7, 0],
+        "availability": [0, 10, 7, 0],
         "SpecialtiesList": {
             "add_specs": "HMGteam_AGS17_SOV",
         },
@@ -1333,7 +1319,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": [0, 9, 7, 0],
+        "availability": [0, 10, 7, 0],
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_veryheavy'"],
         },
@@ -1342,7 +1328,7 @@ sov_unit_edits = {
     "ATteam_RCL_SPG9_VDV_SOV": {
         "strength": 5,
         "CommandPoints": 30,
-        "availability": [0, 9, 7, 0],
+        "availability": [0, 10, 7, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1350,6 +1336,7 @@ sov_unit_edits = {
     },
 
     "ATteam_Fagot_SOV": {
+        "CommandPoints": 25,
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [("ATGM_9K111M_Faktoriya", "ATGM_9K111_Fagot")],
@@ -1358,6 +1345,7 @@ sov_unit_edits = {
     },
 
     "Atteam_Fagot_DShV_SOV": {
+        "CommandPoints": 25,
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [("ATGM_9K111M_Faktoriya", "ATGM_9K111_Fagot")],
@@ -1366,7 +1354,7 @@ sov_unit_edits = {
     },
 
     "Atteam_Fagot_VDV_SOV": {
-        "CommandPoints": 30,
+        "CommandPoints": 25,
         "availability": [0, 9, 7, 5],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -1380,7 +1368,7 @@ sov_unit_edits = {
     },
 
     "Atteam_Konkurs_VDV_SOV": {
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1395,7 +1383,7 @@ sov_unit_edits = {
     },
 
     "ATteam_Konkurs_TTsko_SOV": {
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1409,7 +1397,7 @@ sov_unit_edits = {
     },
 
     "ATteam_KonkursM_TTsko_SOV": {
-        "CommandPoints": 65,
+        "CommandPoints": 60,
         "Divisions": {
             "default": {
                 "cards": 2,

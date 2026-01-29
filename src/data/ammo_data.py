@@ -94,6 +94,7 @@ def build_ammo_data(mod_src_path: Path) -> Dict[str, Any]:
             "salves_map": build_ammo_salves_map(weapon_descriptor_file),
             "mortar_weapons": build_mortar_weapons(ammo_file),
             "ammo_properties": build_ammo_properties(ammo_file),
+            "missing_cac_tag": build_missing_cac_tag(ammo_file),
             "all_ammunition_and_missile": build_all_ammunition_and_missile_names(ammo_file, ammo_missile_file),
         }
         
@@ -108,6 +109,7 @@ def build_ammo_data(mod_src_path: Path) -> Dict[str, Any]:
             "salves_map": {},
             "mortar_weapons": {},
             "ammo_properties": {},
+            "missing_cac_tag": [],
             "all_ammunition_and_missile": [],
         }
 
@@ -158,6 +160,47 @@ def build_ammo_properties(parse_ammo_source) -> Dict[str, Any]:
         }
     
     return ammo_properties
+
+
+def build_missing_cac_tag(parse_ammo_source) -> List[str]:
+    """Build list of ammunition descriptors missing CAC for infantry MMGs."""
+    missing_cac_tag = []
+    
+    def _parse_numeric_value(value):
+        try:
+            if isinstance(value, (int, float)):
+                return value
+            if "." in value:
+                return float(value)
+            return int(value)
+        except (TypeError, ValueError):
+            return None
+    
+    for ammo_descr in parse_ammo_source:
+        minmax_category = ammo_descr.v.by_m("MinMaxCategory", False)
+        if minmax_category is None or minmax_category.v != "MinMax_inf_MMG":
+            continue
+        
+        min_range_membr = ammo_descr.v.by_m("MinimumRangeGRU", False)
+        if min_range_membr is None:
+            continue
+        
+        min_range_value = _parse_numeric_value(min_range_membr.v)
+        if min_range_value != 0:
+            continue
+        
+        traits_list = ammo_descr.v.by_m("TraitsToken", False)
+        if traits_list is None:
+            missing_cac_tag.append(ammo_descr.n)
+            continue
+        
+        existing_traits = [trait.v for trait in traits_list.v]
+        if "'CAC'" in existing_traits:
+            continue
+        
+        missing_cac_tag.append(ammo_descr.n)
+    
+    return missing_cac_tag
 
 def build_radar_weapons(parse_ammo_source, parse_ammo_missile_source) -> List[str]:
     """Build list of radar weapons from Ammunition.ndf and AmmunitionMissiles.ndf"""

@@ -1,21 +1,28 @@
 """Functions for modifying UI HUD score view."""
 from typing import Any
 
+from src import ModConfig
 from src import ndf
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
 
+config = ModConfig.get_instance()
+build_target = config.config_data['build_config']['target']
 
 def edit_uispecifichudscoreview(source_path) -> None:
     """Edit UISpecificHUDScoreView.ndf."""
     logger.info("Editing UISpecificHUDScoreView.ndf")
     
     _update_alliance_score_line(source_path)
+    
+    # main player component
+    _update_main_player_component(source_path)
     _update_player_score_line(source_path)
+    
     _update_player_score_panel_button(source_path)
-
+    # _update_main_score_panel(source_path)
 
 def _update_alliance_score_line(source_path) -> None:
     """Update alliance score line properties."""
@@ -79,6 +86,14 @@ def _update_text_elements(elements: Any) -> None:
             text_descr.by_member("TextColor").v = '"M81_WhiteText95"'  # noqa
 
 
+def _update_main_player_component(source_path) -> None:
+    """Update main player component properties."""
+    mainplayercomponent = source_path.by_namespace("BUCKSpecificHUDScorePlayerMainComponentDescriptor")
+    if build_target == "gameplay":
+        mainplayercomponent.v.by_m("ComponentFrame").v.by_m("MagnifiableWidthHeight").v = "[0.0, 36.0]"
+    
+
+# inside main player component
 def _update_player_score_line(source_path) -> None:
     """Update player score line properties."""
     playerscoreline = source_path.by_namespace("BUCKSpecificHUDScorePlayerOneLine").v
@@ -87,6 +102,10 @@ def _update_player_score_line(source_path) -> None:
             continue
             
         component = element.v.by_member("ComponentDescriptor").v
+        
+        # Division icon
+        if component.type == "BUCKTextureDescriptor" and build_target == "gameplay":
+            component.by_member("ComponentFrame").v.by_member("MagnifiableWidthHeight").v = "[36.0, 0.0]"
         
         # Player name ?
         if component.type == "BUCKSpecificTextWithHint":  # noqa
@@ -129,3 +148,12 @@ def _update_player_score_panel_button(source_path) -> None:
             # Score icon on button
             elif is_obj_type(nested.v, "BUCKTextureDescriptor"):
                 nested.v.by_member("TextureColorToken").v = '"CouleurTexture_boutonShortcuts_M81"'
+
+
+def _update_main_score_panel(source_path) -> None:
+    """Update main score panel properties."""
+    mainscorepanel = source_path.by_namespace("MainScorePanelComponent")
+    elements = mainscorepanel.v.by_member("Elements")
+    
+    # Remove max score icon/text
+    # elements.v.remove(2)

@@ -124,3 +124,24 @@ def _create_new_packs(source_path) -> None:
     xp_levels_list.v[3].v.by_m("LevelEffectsPacks").v.remove(1)
     xp_levels_list.v[3].v.by_m("LevelEffectsPacks").v.add("$/GFX/EffectCapacity/UnitEffect_xp_elite_multiplicative")
     source_path.add(sf2multi)
+    
+    # create XP_pack_helico_SF
+    helicoSF = source_path.by_n("ExperienceLevelsPackDescriptor_XP_pack_helico").copy()
+    helicoSF.namespace = "ExperienceLevelsPackDescriptor_XP_pack_helico_SF"
+    helicoSF.v.by_m("DescriptorId").v = "GUID:{a2c84573-282e-48d1-b0f7-76bad2f2b6b5}"
+    xp_levels_list = helicoSF.v.by_m("ExperienceLevelsDescriptors")
+    xp_levels_list.v[0].v.by_m("DescriptorId").v = f"GUID:{{3eecf378-1aff-4a23-b7bb-f870aaa70543}}"
+    xp_levels_list.v[1].v.by_m("DescriptorId").v = f"GUID:{{02990a75-1132-4d16-9c91-aa128de93a82}}"
+    xp_levels_list.v[2].v.by_m("DescriptorId").v = f"GUID:{{1e868132-e49b-4ead-b735-c4c921e32905}}"
+    xp_levels_list.v[3].v.by_m("DescriptorId").v = f"GUID:{{c2cb6f3c-fa2f-4eff-8ec2-ae45371c7f15}}"
+    xp_levels_list.v[0].v.by_m("HintBodyToken").v = \
+        "'" + VETERANCY_BONUSES["helico"]["helico_0"]["body_token"] + "'"
+    xp_levels_list.v[1].v.by_m("HintBodyToken").v = \
+        "'" + VETERANCY_BONUSES["helico"]["helico_1"]["body_token"] + "'"
+    xp_levels_list.v[2].v.by_m("HintBodyToken").v = \
+        "'" + VETERANCY_BONUSES["helico"]["helico_2"]["body_token"] + "'"
+    xp_levels_list.v[3].v.by_m("HintBodyToken").v = \
+        "'" + VETERANCY_BONUSES["helico"]["helico_SF_3"]["body_token"] + "'"
+    xp_levels_list.v[3].v.by_m("LevelEffectsPacks").v.remove(0)
+    xp_levels_list.v[3].v.by_m("LevelEffectsPacks").v.add("$/GFX/EffectCapacity/UnitEffect_xp_elite_helo_SF")
+    source_path.add(helicoSF)

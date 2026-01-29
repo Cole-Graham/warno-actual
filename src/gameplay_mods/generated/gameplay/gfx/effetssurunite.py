@@ -211,3 +211,18 @@ def _add_multiplicative_infantry_xp(source_path) -> None:
         source_path.add(new_effect)
         logger.info(f"Added new effect: {new_effect.namespace}")
         
+    xp_elite_helo = source_path.by_n("UnitEffect_xp_elite_helo").copy()
+    xp_elite_helo.namespace = "UnitEffect_xp_elite_helo_SF"
+    xp_elite_helo.v.by_m("DescriptorId").v = f"GUID:{{2967b45d-5b50-48ab-87f7-7ddeeb17f5f4}}"
+    xp_elite_helo.v.by_m("NameForDebug").v = f"'UnitEffect_xp_elite_helo_SF'"
+    new_effect = (
+        f"TUnitEffectBonusPrecisionWhenTargetedDescriptor"
+        f"("
+        f"    ModifierType = ~/ModifierType_Additionnel"
+        f"    BonusPrecisionWhenTargeted = -5"
+        f")"
+    )
+    xp_elite_helo.v.by_m("EffectsDescriptors").v.add(new_effect)
+    source_path.add(xp_elite_helo)
+    
+        

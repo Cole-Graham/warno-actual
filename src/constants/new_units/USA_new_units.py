@@ -149,7 +149,7 @@ USA_NEW_UNITS = {
                 "Transports": None,
             },
         },
-        "availability": [4, 0, 0, 0],
+        "availability": [6, 0, 0, 0],
         "UnitRole": 'supply',
         "SpecialtiesList": [
             '_supply_squad',

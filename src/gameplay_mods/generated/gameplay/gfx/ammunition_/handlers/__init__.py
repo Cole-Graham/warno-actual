@@ -12,6 +12,7 @@ from .standards import (
     apply_he_damage_standards,
     apply_weapon_range_standards,
     apply_bomb_damage_standards,
+    apply_infantry_mmg_cac_trait,
 )
 from .vanilla_renames import (
     remove_vanilla_instances,
@@ -24,6 +25,7 @@ __all__ = [
     'apply_bomb_damage_standards',
     'apply_damage_families',
     'apply_fire_descriptors',
+    'apply_infantry_mmg_cac_trait',
     'apply_he_damage_standards',
     'apply_weapon_range_standards',
     'remove_vanilla_instances',

@@ -84,11 +84,13 @@ from src.ui_mods.style import (
     edit_uiingamebuckcubeaction,
     edit_uiingamebuckengagementrules,
     edit_uiingamedefaultcontainer,
+    edit_uiingamehudbeaconpanel,
     edit_uiingamehudreplayresource,
     edit_uiingamelaunchbattlebuttonresources,
     edit_uiingameminimap,
     edit_uiingameresources,
     edit_uispecificchatview,
+    edit_uispecificdisplaystartinginformationview,
     edit_uispecifichudalertpanelview,
     edit_uispecifichudmultiselectionpanelview,
     edit_uispecifichudscoreview,
@@ -196,11 +198,13 @@ __all__ = [
     'edit_uiingamebuckcubeaction',
     'edit_uiingamebuckengagementrules',
     'edit_uiingamedefaultcontainer',
+    'edit_uiingamehudbeaconpanel',
     'edit_uiingamehudreplayresource',
     'edit_uiingamelaunchbattlebuttonresources',
     'edit_uiingameminimap',
     'edit_uiingameresources',
     'edit_uispecificchatview',
+    'edit_uispecificdisplaystartinginformationview',
     'edit_uispecifichudalertpanelview',
     'edit_uispecifichudmultiselectionpanelview',
     'edit_uispecifichudscoreview',
@@ -462,6 +466,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/UserInterface/Use/Common/UISpecificChatView.ndf": [
             (edit_uispecificchatview, "ui"),
         ],
+        "GameData/UserInterface/Use/InGame/UISpecificDisplayStartingInformationView.ndf": [
+            (edit_uispecificdisplaystartinginformationview, "ui"),
+        ],
         "GameData/UserInterface/Use/Common/UISpecificUnitButtonView.ndf": [
             (edit_uispecificunitbuttonview, "ui"),
         ],
@@ -481,6 +488,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/UserInterface/Use/InGame/UIInGameDefaultContainer.ndf": [
             (edit_uiingamedefaultcontainer, "ui"),
         ],
+        # "GameData/UserInterface/Use/InGame/UIInGameHUDBeaconPanel.ndf": [
+        #     (edit_uiingamehudbeaconpanel, "ui"),
+        # ],
         "GameData/UserInterface/Use/InGame/UIInGameHUDReplayResource.ndf": [
             (edit_uiingamehudreplayresource, "ui"),
         ],

@@ -169,8 +169,6 @@ usa_unit_edits = {
         },
         "selector_tactic": "(0, 6)",
         "selector_tactic_obj": "00_06",
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
 
@@ -220,8 +218,6 @@ usa_unit_edits = {
                 "RocketInf_M72A3_LAW_66mm": 6,
             },
         },
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
 
@@ -285,8 +281,6 @@ usa_unit_edits = {
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
 
@@ -354,8 +348,6 @@ usa_unit_edits = {
         "surrogates": 9,
         "selector_tactic": "(2, 9)",
         "selector_tactic_obj": "02_09",
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
 
@@ -406,8 +398,6 @@ usa_unit_edits = {
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
 
@@ -461,8 +451,6 @@ usa_unit_edits = {
                 "RocketInf_AT4_83mm": 8,
             },
         },
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
 
@@ -504,13 +492,11 @@ usa_unit_edits = {
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
 
-    "Aero_half_CMD_US": {
-        "CommandPoints": 35,
+    "Aero_half_CMD_US": { # Not in use (redundant with AB FIRETEAM units)
+        "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDR AERO-FIRETEAM LDR.",
@@ -530,10 +516,6 @@ usa_unit_edits = {
             ],
         },
         "TransportedTexture": "UseInGame_Transport_REGINF",
-        # "SortingOrder": 20045,
-        # "UnitAttackValue": 1,
-        # "UnitDefenseValue": 41,
-        # "UnitDefenseValue": 41,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
         "UnitRole": "infantry",
@@ -546,11 +528,17 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "availability": [0, 0, 6, 4],
+        "availability": [0, 0, 7, 5],
         "max_speed": 26,
-        "is_infantry": True,
-        "is_ground_vehicle": False,
+        "strength": 4,
         "remove_zone_capture": None,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_M16": 3,
+                },
+            },
+        },
     },
 
     "AeroEngineer_CMD_US": {
@@ -592,8 +580,6 @@ usa_unit_edits = {
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
 
@@ -619,9 +605,6 @@ usa_unit_edits = {
             ],
         },
         "TransportedTexture": "UseInGame_Transport_REGINF",
-        # "SortingOrder": 20100,
-        # "UnitAttackValue": 1,
-        # "UnitDefenseValue": 41,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
         "UnitRole": "infantry",
@@ -645,8 +628,6 @@ usa_unit_edits = {
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "availability": [0, 0, 0, 3],
         "max_speed": 26,
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
 
@@ -1003,9 +984,6 @@ usa_unit_edits = {
     },
 
     "Airborne_HMG_US": {  # AIRBORNE GUNNERS
-        "GameName": {
-            "display": "AIRBORNE GUNNERS",
-        },
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "availability": [0, 7, 5, 0],
@@ -1201,10 +1179,14 @@ usa_unit_edits = {
     },
 
     "DeltaForce_US": {
+        "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [("Commando_733", "M16A2_Carbine")],
+            },
+            "Salves": {
+                "M16A2_Carbine": 11,
             },
         },
     },
@@ -1356,7 +1338,7 @@ usa_unit_edits = {
         },
     },
 
-    "Aero_half_AT4_US": {
+    "Aero_half_AT4_US": { # Not in use (redundant with AB FIRETEAM units)
         "GameName": {
             "display": "AERO-FIRETEAM [AT4]",
         },
@@ -1504,7 +1486,7 @@ usa_unit_edits = {
         },
     },
 
-    "Aero_half_Dragon_US": {
+    "Aero_half_Dragon_US": { # Not in use (redundant with AB FIRETEAM units)
         "GameName": {
             "display": "AERO-FIRETEAM [DRAGON]",
         },
@@ -1527,6 +1509,33 @@ usa_unit_edits = {
                 "M47_DRAGON_II": 4,
             },
         }
+    },
+    
+    "Navy_SEAL_US": {
+        "CommandPoints": 70,
+        "armor": "Infantry_armor_reference",
+        "max_speed": 26,
+        "availability": [0, 0, 8, 6],
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [
+                    ("Commando_733", "M16A2_Carbine"),
+                    ("MMG_M60E3_7_62mm", "MMG_WA_M60E3_7_62mm")
+                ],
+            },
+            "Salves": {
+                "M16A2_Carbine": 11,
+                "Grenade_Satchel_Charge": 5,
+            },
+        },
     },
     
     "GreenBerets_US": {
@@ -1556,7 +1565,7 @@ usa_unit_edits = {
         "GameName": {
             "display": "GREEN BERETS [ODA]",
         },
-        "CommandPoints": 85,
+        "CommandPoints": 75,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -1573,7 +1582,7 @@ usa_unit_edits = {
                 "replace": [("FM_M16", "M16A1_Carbine")],
             },
             "Salves": {
-                "M16A1_Carbine": 9,
+                "M16A1_Carbine": 11,
                 "SAW_M249_5_56mm": 30,
                 "Sniper_M21": 10,
                 "RocketInf_AT4_83mm": 9,
@@ -1710,7 +1719,7 @@ usa_unit_edits = {
         "GameName": {
             "display": "I-TOW",
         },
-        "CommandPoints": 60,
+        "CommandPoints": 50,
         "availability": [6, 4, 0, 0],
         "max_speed": 14,
         "SpecialtiesList": {
@@ -1722,7 +1731,7 @@ usa_unit_edits = {
         "GameName": {
             "display": "TOW-2",
         },
-        "CommandPoints": 75,
+        "CommandPoints": 65,
         "availability": [4, 3, 0, 0],
         "max_speed": 14,
         "SpecialtiesList": {
@@ -1731,7 +1740,10 @@ usa_unit_edits = {
     },
 
     "ATteam_TOW2_Aero_US": {
-        "CommandPoints": 75,
+        "GameName": {
+            "display": "AERO TOW-2",
+        },
+        "CommandPoints": 65,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1748,7 +1760,7 @@ usa_unit_edits = {
         "GameName": {
             "display": "AB TOW-2",
         },
-        "CommandPoints": 75,
+        "CommandPoints": 65,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1763,7 +1775,14 @@ usa_unit_edits = {
 
     "M274_Mule_RCL_US": {
         "CommandPoints": 30,
-        "availability": [0, 9, 7, 0],
+        "availability": [0, 12, 9, 0],
+    },
+    
+    "Gama_Goat_trans_US": {
+        "CommandPoints": 15,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
     },
 
     "M151_MUTT_trans_US": {
@@ -1799,6 +1818,14 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'",],
         },
+    },
+    
+    "M998_Humvee_HMG_US": {
+        "CommandPoints": 15,
+    },
+    
+    "M998_Humvee_AGL_US": {
+        "CommandPoints": 15,
     },
 
     # US ARTILLERY
@@ -1860,6 +1887,11 @@ usa_unit_edits = {
         "CommandPoints": 60,
         "availability": [0, 4, 3, 0],
     },
+    
+    "Howz_M198_155mm_US": {
+        "CommandPoints": 110,
+        "availability": [3, 2, 0, 0],
+    },
 
     "M106A2_HOWZ_US": { # M106A2 mortar carrier, 107mm M30 Mortar
         "CommandPoints": 60,
@@ -1883,7 +1915,12 @@ usa_unit_edits = {
 
     "M110A2_HOWZ_US": {
         "CommandPoints": 220,
-        "availability": [2, 0, 1, 0],
+        "availability": [2, 0, 1, 0]
+    },
+    
+    "MLRS_XM477_Slammer_US": {
+        "CommandPoints": 95,
+        "availability": [0, 4, 3, 0],
     },
 
     "M270_MLRS_US": {
@@ -2859,6 +2896,13 @@ usa_unit_edits = {
 
     "CH47_Chinook_US": {
         "CommandPoints": 60,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+    },
+    
+    "MH47D_Super_Chinook_US": {
+        "CommandPoints": 65,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'",],
         },

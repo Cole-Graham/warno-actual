@@ -1339,6 +1339,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "token": "IYUAMGSZZJ", 
             "parent_membr": {
+                "TraitsToken": ['MOTION', 'CAC'],
                 "TimeBetweenTwoShots": 2.4,
                 "MaximumRangeGRU": 875,
                 "MaximumRangeHelicopterGRU": 700,
@@ -1349,8 +1350,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoSalvos": 2.4,
                 "ShotsCountPerSalvo": 2,
                 "AffichageMunitionParSalve": 20,
+                "CanShootWhileMoving": True,
             },
         },
+        "Texture": "M60E3",
         "SupplyCost": 1.0,
         "NbWeapons": [3, 2, 1],
         "WeaponDescriptor": {
@@ -1477,6 +1480,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "token": "GVHHKBBTHW",
             "parent_membr": {
+                "TraitsToken": ['STAT'],
                 "TimeBetweenTwoShots": 2.4,
                 "MaximumRangeGRU": 875,
                 "MaximumRangeHelicopterGRU": 700,
@@ -1488,6 +1492,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "ShotsCountPerSalvo": 2,
                 "SupplyCost": 1.0,
                 "AffichageMunitionParSalve": 20,
+                "CanShootWhileMoving": False,
             },
         },
         "SupplyCost": 1.0,

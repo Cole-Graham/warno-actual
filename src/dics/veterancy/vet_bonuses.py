@@ -276,6 +276,19 @@ VETERANCY_BONUSES = {
                 '\n(flat, multiplicative, percentage)'
             ),
         },
+        "helico_SF_3": {
+            "body_token": "ZLYYYBJDXI",
+            "body": (
+                '#style1{- Movement speed:} #styleTurquoise{+30%}'
+                '\n#style1{- Accuracy:} #styleTurquoise{+16%}'
+                '\n#style1{- Aiming time:} #styleTurquoise{-30%}'
+                '\n#style1{- Reload time:} #styleTurquoise{-30%}'
+                '\n#style1{- Stress resistance:} #styleTurquoise{+40%}'
+                '\n#style1{- Stress recovery:} #styleTurquoise{7.8} #style1{per second}'
+                '\n#style1{- Evasion:} #styleTurquoise{+5%}'
+                '\n(percentage, multiplicative, multiplicative, multiplicative, percentage, percentage)'
+            ),
+        },
     },
     "avion": {
         "avion_0": {

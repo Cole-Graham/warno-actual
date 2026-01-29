@@ -180,7 +180,7 @@ RDA_NEW_UNITS = {
                 "replace": [("ATGM_9K111_Fagot", "ATGM_9K111M_Faktoriya")]
             },
         },
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "SpecialtiesList": [
             '_resolute',
             'infantry_equip_heavy',

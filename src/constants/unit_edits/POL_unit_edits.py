@@ -262,8 +262,6 @@ pol_unit_edits = {
         "max_speed": 26,
         "selector_tactic": "(2, 4)",
         "selector_tactic_obj": "02_04",
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
     
@@ -315,8 +313,6 @@ pol_unit_edits = {
         },
         "selector_tactic": "(2, 4)",
         "selector_tactic_obj": "02_04",
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
     
@@ -371,8 +367,6 @@ pol_unit_edits = {
         },
         "selector_tactic": "(2, 4)",
         "selector_tactic_obj": "02_04",
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
     
@@ -770,7 +764,7 @@ pol_unit_edits = {
     },
     
     "Atteam_Fagot_POL": {  # PPK Fagot
-        "CommandPoints": 30,
+        "CommandPoints": 25,
         "max_speed": 20,
         "availability": [9, 7, 5, 0],
         "SpecialtiesList": {
@@ -789,7 +783,7 @@ pol_unit_edits = {
     },
     
     "Atteam_Fagot_Para_POL": {  # Desant. PPK Faktoria
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "availability": [7, 5, 4, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -801,7 +795,7 @@ pol_unit_edits = {
     },
     
     "Atteam_Konkurs_POL": {  # PPK Konkurs (campaign only)
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "Divisions": {
             "default": {
                 "cards": 2,

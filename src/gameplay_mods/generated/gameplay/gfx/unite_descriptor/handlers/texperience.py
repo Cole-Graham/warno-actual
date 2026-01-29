@@ -11,12 +11,9 @@ def handle_experience_module(
     *args,
 ) -> None:
     """Handle TExperienceModuleDescriptor for existing and new units"""
-    if edit_type == "new_units":
-        _set_multiplicative_xp_pack(logger, unit_data, edit_type, unit_name, edits, module)
-
-    if edit_type == "unit_edits":
-        _set_multiplicative_xp_pack(logger, unit_data, edit_type, unit_name, edits, module)
-                
+    
+    _set_multiplicative_xp_pack(logger, unit_data, edit_type, unit_name, edits, module)
+    _set_helico_SF_xp_pack(logger, unit_data, edit_type, unit_name, edits, module)
             
 def _set_multiplicative_xp_pack(logger, unit_data, edit_type, unit_name, edits, module) -> None:
     """Set the multiplicative accuracy XP pack for infantry units"""
@@ -47,3 +44,23 @@ def _set_multiplicative_xp_pack(logger, unit_data, edit_type, unit_name, edits, 
                 elif xp_pack.v.endswith("simple_v3"):
                     xp_pack.v = "~/ExperienceLevelsPackDescriptor_XP_pack_simple_v3_multiplicative"
                     logger.info(f"Set {unit_name} XP pack to {xp_pack.v}")
+
+def _set_helico_SF_xp_pack(logger, unit_data, edit_type, unit_name, edits, module) -> None:
+    """Set the multiplicative accuracy XP pack for helicopter units"""
+    required_tags = {"Helo"}
+    required_specialties = {"_sf"}
+
+    if edit_type == "new_units":
+        tags = set(edits.get("TagSet", {}).get("overwrite_all", []))
+        specialties = set(edits.get("SpecialtiesList", []))
+    elif edit_type == "unit_edits":
+        tags = set(unit_data.get("tags", []))
+        specialties = set(unit_data.get("specialties", []))
+    else:
+        return
+
+    if required_tags.issubset(tags) and required_specialties.issubset(specialties):
+        xp_pack = module.v.by_m("ExperienceLevelsPackDescriptor")
+        if xp_pack.v.endswith("SF_v2"):
+            xp_pack.v = "~/ExperienceLevelsPackDescriptor_XP_pack_helico_SF"
+            logger.info(f"Set {unit_name} XP pack to {xp_pack.v}")

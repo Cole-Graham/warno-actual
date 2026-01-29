@@ -102,8 +102,6 @@ fr_unit_edits = {
                 "FM_FAMAS": 11,
             },
         },
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
     
@@ -158,8 +156,6 @@ fr_unit_edits = {
                 "Sniper_FRF1": 10,
             },
         },
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
     
@@ -219,8 +215,6 @@ fr_unit_edits = {
                 "FM_FAMAS": 11,
             },
         },
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
     
@@ -299,8 +293,6 @@ fr_unit_edits = {
                 "insert": [(1, 45)],
             },
         },
-        "is_infantry": True,
-        "is_ground_vehicle": False,
         "remove_zone_capture": None,
     },
     
@@ -562,7 +554,7 @@ fr_unit_edits = {
     },
     
     "ATteam_Milan_1_FR": {
-        "CommandPoints": 30,
+        "CommandPoints": 25,
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -571,7 +563,7 @@ fr_unit_edits = {
     },
     
     "ATteam_Milan_2_FR": {
-        "CommandPoints": 45,
+        "CommandPoints": 40,
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],

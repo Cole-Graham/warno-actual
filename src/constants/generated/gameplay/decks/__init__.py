@@ -10,6 +10,16 @@ __all__ = []
 
 logger = setup_logger('decks')
 
+category_to_factory_mapping = {
+    "artillery": "EFactory/Art",
+    "aa": "EFactory/DCA",
+    "heli": "EFactory/Helis",
+    "infantry": "EFactory/Infantry",
+    "logistic": "EFactory/Logistic",
+    "planes": "EFactory/Planes",
+    "recon": "EFactory/Recons",
+    "tank": "EFactory/Tanks",
+}
 
 def load_deck_edits() -> Dict:
     """Load and merge all deck edit dictionaries."""
@@ -84,9 +94,9 @@ def load_new_divisions() -> Dict:
     
     # Dictionary name mapping
     dict_names = {
-        'POL_new_divs': 'pol_new_divs',
-        'RDA_new_divs': 'rda_new_divs',
-        'SOV_new_divs': 'sov_new_divs',
+        # 'POL_new_divs': 'pol_new_divs',
+        # 'RDA_new_divs': 'rda_new_divs',
+        # 'SOV_new_divs': 'sov_new_divs',
         'US_new_divs': 'us_new_divs',
     }
     

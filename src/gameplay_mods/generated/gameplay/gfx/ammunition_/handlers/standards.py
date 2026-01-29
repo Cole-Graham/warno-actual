@@ -208,3 +208,42 @@ def apply_he_damage_standards(source_path, logger):
         if caliber_membr in damage_map:
             ammo_descr.v.by_m("PhysicalDamages").v = str(damage_map[caliber_membr])
             logger.info(f"Changed {namespace} HE damage to {damage_map[caliber_membr]}")
+
+
+def _parse_numeric_value(value):
+    try:
+        if isinstance(value, (int, float)):
+            return value
+        if "." in value:
+            return float(value)
+        return int(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def apply_infantry_mmg_cac_trait(source_path, logger) -> None:
+    """Add CAC trait to infantry MMGs with MinimumRangeGRU = 0."""
+    for ammo_descr in source_path:
+        minmax_category = ammo_descr.v.by_m("MinMaxCategory", False)
+        if minmax_category is None or minmax_category.v != "MinMax_inf_MMG":
+            continue
+
+        min_range_membr = ammo_descr.v.by_m("MinimumRangeGRU", False)
+        if min_range_membr is None:
+            continue
+
+        min_range_value = _parse_numeric_value(min_range_membr.v)
+        if min_range_value != 0:
+            continue
+
+        traits_list = ammo_descr.v.by_m("TraitsToken", False)
+        if traits_list is None:
+            logger.debug(f"No TraitsToken list found for {ammo_descr.namespace}")
+            continue
+
+        existing_traits = [trait.v for trait in traits_list.v]
+        if "'CAC'" in existing_traits:
+            continue
+
+        traits_list.v.add("'CAC'")
+        logger.info(f"Added CAC trait to {ammo_descr.namespace} (MinimumRangeGRU = 0)")
