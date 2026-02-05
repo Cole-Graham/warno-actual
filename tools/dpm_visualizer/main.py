@@ -148,12 +148,55 @@ class DPMVisualizerApp:
         ttk.Button(profile_frame, text="Delete", command=self.delete_profile).pack(side=tk.LEFT, padx=2)
         self.update_profile_dropdown()
         
-        # Create notebook for tabs
-        self.notebook = ttk.Notebook(self.root)
+        # Create scrollable container for notebook
+        scroll_container = ttk.Frame(self.root)
+        scroll_container.pack(fill=tk.BOTH, expand=True)
+        
+        # Create canvas and scrollbar for scrolling
+        canvas = tk.Canvas(scroll_container, highlightthickness=0)
+        scrollbar = ttk.Scrollbar(scroll_container, orient="vertical", command=canvas.yview)
+        scrollable_frame = ttk.Frame(canvas)
+        
+        # Configure scrollable frame
+        scrollable_frame.bind(
+            "<Configure>",
+            lambda e: canvas.configure(scrollregion=canvas.bbox("all"))
+        )
+        
+        # Create window in canvas for scrollable frame
+        canvas_window = canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
+        
+        # Update canvas window width when canvas is resized
+        def on_canvas_configure(event):
+            canvas_width = event.width
+            canvas.itemconfig(canvas_window, width=canvas_width)
+        
+        canvas.bind("<Configure>", on_canvas_configure)
+        
+        # Configure canvas scrolling
+        canvas.configure(yscrollcommand=scrollbar.set)
+        
+        # Make canvas scrollable with mouse wheel
+        def on_mousewheel(event):
+            canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
+        
+        canvas.bind("<MouseWheel>", on_mousewheel)
+        scrollable_frame.bind("<MouseWheel>", on_mousewheel)
+        
+        # Pack canvas and scrollbar
+        canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+        
+        # Store references for scroll region updates
+        self.scroll_canvas = canvas
+        self.scrollable_frame = scrollable_frame
+        
+        # Create notebook for tabs inside scrollable frame
+        self.notebook = ttk.Notebook(scrollable_frame)
         self.notebook.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
         
         # Bind tab change event to close all dropdowns and auto-save
-        self.notebook.bind("<<NotebookTabChanged>>", lambda e: [self.on_tab_changed(), self.auto_save_state()])
+        self.notebook.bind("<<NotebookTabChanged>>", lambda e: [self.on_tab_changed(), self.auto_save_state(), self.update_scroll_region()])
         
         # Bind window focus events to close dropdowns when window loses focus
         self.root.bind("<FocusOut>", self.on_window_focus_out)
@@ -169,6 +212,15 @@ class DPMVisualizerApp:
         # Initialize tabs
         self.infantry_tab = InfantryTab(self.infantry_frame, self)
         self.weapons_tab = WeaponsTab(self.weapons_frame, self)
+        
+        # Update scroll region after tabs are initialized
+        self.root.after_idle(self.update_scroll_region)
+    
+    def update_scroll_region(self):
+        """Update the scroll region of the main canvas."""
+        if hasattr(self, 'scroll_canvas'):
+            self.scroll_canvas.update_idletasks()
+            self.scroll_canvas.configure(scrollregion=self.scroll_canvas.bbox("all"))
     
     def on_tab_changed(self, event=None):
         """Handle tab change - close all open dropdowns."""
