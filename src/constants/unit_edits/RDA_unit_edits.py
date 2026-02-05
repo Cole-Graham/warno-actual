@@ -275,9 +275,12 @@ rda_unit_edits = {
                 "quantity": {
                     "FM_KMS_72": 5,
                 },
-                "add": [(1, "SAW_lMG_K_7_62mm")],
-                "add_edits": {
+                "insert": [(1, "SAW_lMG_K_7_62mm")],
+                "insert_edits": {
                     1: {
+                        "turret_edits": {
+                            "YulBoneOrdinal": 2,
+                        },
                         "SalvoStockIndex": 1,
                         "HandheldEquipmentKey": "'WeaponAlternative_2'",
                         "NbWeapons": 1,
@@ -288,7 +291,7 @@ rda_unit_edits = {
                 },
             },
             "Salves": {
-                "add": [(1, 15)],
+                "insert": [(1, 15)],
             },
         },
         "remove_zone_capture": None,
@@ -1274,7 +1277,6 @@ rda_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
-        "DeploymentShift": 0,
     },
 
     "Scout_LRRP_DDR": {
@@ -1527,7 +1529,7 @@ rda_unit_edits = {
                 "AutoCanon_AP_30mm_Bitube_Gsh30k": 5,
             },
             "turrets": {
-                1: {
+                0: {
                     "MountedWeapons": {
                         "AutoCanon_AP_30mm_Bitube_Gsh30k": {
                             "Ammunition": "AutoCanon_AP_30mm_Bitube_Gsh30k_burst",
@@ -1556,7 +1558,7 @@ rda_unit_edits = {
                 "AutoCanon_AP_30mm_Bitube_Gsh30k": 5,
             },
             "turrets": {
-                1: {
+                0: {
                     "MountedWeapons": {
                         "AutoCanon_AP_30mm_Bitube_Gsh30k": {
                             "Ammunition": "AutoCanon_AP_30mm_Bitube_Gsh30k_burst",
@@ -1672,7 +1674,7 @@ rda_unit_edits = {
         "CommandPoints": 195,
         "WeaponDescriptor": {
             "turrets": {
-                2: {
+                1: {
                     "AngleRotationMax": 1.745329,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,

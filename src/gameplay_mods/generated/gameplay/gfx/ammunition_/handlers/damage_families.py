@@ -1,26 +1,25 @@
 from typing import Any, Dict
 
-from src.constants.weapons import WEAPON_DESCRIPTIONS
+from src.constants.weapons import WEAPON_DESCRIPTIONS, WEAPON_DESCRIPTION_EDITS
 from src.utils.dictionary_utils import write_dictionary_entries
 
 def apply_damage_families(source_path: Any, logger, game_db: Dict[str, Any]) -> None:
-    """Apply damage family modifications to weapons in Ammunition/AmmunitionMissiles.ndf"""
+    """Apply damage family modifications to weapons in Ammunition.ndf & AmmunitionMissiles.ndf"""
     ammo_db = game_db["ammunition"]
+    renames_new_old = ammo_db.get("renames_new_old", {})
 
     dictionary_entries = []
     for weapon_descr in source_path:
-        # if weapon_descr.n in ammo_db["full_ball_weapons"]:
-        #     arme_obj = weapon_descr.v.by_m("Arme")
-        #     arme_obj.v.by_m("Family").v = "DamageFamily_sa_full"
-        #     logger.info(f"Changed {weapon_descr.n} to DamageFamily_sa_full")
+        # Check if weapon is a sniper weapon, accounting for vanilla instance renames
+        weapon_name = weapon_descr.n
+        is_sniper = weapon_name in ammo_db["sniper_weapons"]
+        
+        # If not found directly, check if this weapon was renamed and check the old name
+        if not is_sniper and weapon_name in renames_new_old:
+            old_name = renames_new_old[weapon_name]
+            is_sniper = old_name in ammo_db["sniper_weapons"]
 
-        # elif "KPVT" in weapon_descr.n or "14_5" in weapon_descr.n:
-        #     if weapon_descr.v.by_m("WeaponCursorType").v == "Weapon_Cursor_MachineGun":
-        #         arme_obj = weapon_descr.v.by_m("Arme")
-        #         arme_obj.v.by_m("Family").v = "DamageFamily_kpvt"
-        #         logger.info(f"Changed {weapon_descr.n} to DamageFamily_kpvt")
-
-        if weapon_descr.n in ammo_db["sniper_weapons"]:
+        if is_sniper:
             arme_obj = weapon_descr.v.by_m("Arme")
             arme_obj.v.by_m("Family").v = "DamageFamily_sniper"
             logger.info(f"Changed {weapon_descr.n} to DamageFamily_sniper")
@@ -35,6 +34,18 @@ def apply_damage_families(source_path: Any, logger, game_db: Dict[str, Any]) -> 
                     if new_dic_entry not in dictionary_entries:
                         dictionary_entries.append(new_dic_entry)
                     break
+    
+    for weapon_type, edits in WEAPON_DESCRIPTION_EDITS.items():
+        category_token = edits["category"][0]
+        category_string = edits["category"][1]
+        description_token = edits["description"][0]
+        description_string = edits["description"][1]
+        new_dic_entry = (category_token, category_string)
+        if new_dic_entry not in dictionary_entries:
+            dictionary_entries.append(new_dic_entry)
+        new_dic_entry = (description_token, description_string)
+        if new_dic_entry not in dictionary_entries:
+            dictionary_entries.append(new_dic_entry)
 
     # Write dictionary entries
     if dictionary_entries:

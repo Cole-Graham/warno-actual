@@ -364,7 +364,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_tbagru",
             },
             "display": "FIM-92C Stinger",
-            "token": "UHRYBRDGDI",
+            "token": "AKFXZOAXUI",
             "hit_roll": {
                 "Idling": 65,
                 "Moving": 65,
@@ -391,7 +391,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_hagru",
             },
             "display": "FIM-92C Stinger",
-            "token": "UHRYBRDGDI",
+            "token": "AKFXZOAXUI",
             "hit_roll": {
                 "Idling": 65,
                 "Moving": 65,
@@ -803,7 +803,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DistanceToTarget": True,
             },
             "display": "FIM-92C Stinger",
-            "token": "GPRDGRDYEA",
+            "token": "AKFXZOAXUI",
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2625,
                 "MaximumRangeAirplaneGRU": 1925,
@@ -824,7 +824,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DistanceToTarget": True,
             },
             "display": "FIM-92C Stinger",
-            "token": "GPRDGRDYEA",
+            "token": "AKFXZOAXUI",
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2625,
                 "MaximumRangeAirplaneGRU": 1925,
@@ -832,6 +832,48 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 3.5,
                 "SupplyCost": 35.0,
             }
+        },
+    },
+    
+    ("MANPAD_FIM92_A", "MANPAD", None, False): {
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_tbagru",
+            },
+            "hit_roll": {
+                "Idling": 50,
+                "DistanceToTarget": True,
+            },
+            "display": "FIM-92A Stinger",
+            "token": "HWTXIBRFHM",
+        },
+        "parent_membr": {
+            "MaximumRangeHelicopterGRU": 2625,
+            "MaximumRangeAirplaneGRU": 1925,
+            "TimeBetweenTwoSalvos": 7.0,
+            "AimingTime": 1.2,
+            "SupplyCost": 30.0,
+        },
+    },
+    
+    ("MANPAD_FIM92_A_HAGRU", "MANPAD", "MANPAD_FIM92_A", True): {
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_hagru",
+            },
+            "hit_roll": {
+                "Idling": 50,
+                "DistanceToTarget": True,
+            },
+            "display": "FIM-92A Stinger",
+            "token": "HWTXIBRFHM",
+            "parent_membr": {
+                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 1925,
+                "TimeBetweenTwoSalvos": 7.0,
+                "AimingTime": 3.5,
+                "SupplyCost": 30.0,
+            },
         },
     },
     

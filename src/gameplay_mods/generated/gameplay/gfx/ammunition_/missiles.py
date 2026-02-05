@@ -1,5 +1,6 @@
 """Functions for editing missile weapons."""
 
+import re
 from typing import Any, Dict, List, Tuple
 from uuid import uuid4
 
@@ -245,8 +246,8 @@ def _handle_salvo_variants(source_path: Any, base_descr: Any, weapon_name: str, 
                 logger.info(f"Created new variant {namespace}")
 
             else:
-                # For existing missiles, update the variant
-                existing = source_path.by_n(namespace)
+                # For existing missiles, update the variant or create it if missing
+                existing = source_path.by_n(namespace, strict=False)
                 if existing:
                     logger.debug(f"Found existing variant {namespace}")
 
@@ -261,7 +262,25 @@ def _handle_salvo_variants(source_path: Any, base_descr: Any, weapon_name: str, 
                     existing.v.by_m("AffichageMunitionParSalve").v = str(length)
                     logger.info(f"Updated existing variant {namespace}")
                 else:
-                    logger.warning(f"Salvo variant {namespace} not found")
+                    # Variant doesn't exist, create it from the base descriptor
+                    logger.info(f"Creating missing salvo variant {namespace}")
+                    variant = base_descr.copy()
+                    variant.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
+                    variant.v.by_m("HitRollRuleDescriptor").v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
+                    variant.namespace = namespace
+
+                    # Apply all base missile edits first
+                    if "Ammunition" in data:
+                        _apply_missile_edits(variant, data, data["Ammunition"], is_new)
+
+                    # Then apply salvo-specific values
+                    if base_cost is not None:
+                        variant.v.by_m("SupplyCost").v = str(base_cost * length)
+                    variant.v.by_m("ShotsCountPerSalvo").v = str(length)
+                    variant.v.by_m("AffichageMunitionParSalve").v = str(length)
+
+                    source_path.add(variant)
+                    logger.info(f"Created missing variant {namespace}")
 
         except Exception as e:
             logger.error(f"Error handling salvo variant {namespace}: {str(e)}")

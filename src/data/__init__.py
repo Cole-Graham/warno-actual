@@ -14,7 +14,7 @@ from .decks import gather_deck_data
 from .depiction_data import gather_depiction_data
 from .persistence import load_database_from_disk, save_database_to_disk
 from .source_loader import get_source_files
-from .unit_data import gather_unit_data, gather_weapon_data
+from .unit_data import build_upgrade_from_mapping, gather_unit_data, gather_weapon_data
 
 logger = setup_logger(__name__)
 
@@ -50,14 +50,16 @@ def build_database(config: Dict[str, Any]) -> Dict[str, Any]:
 
         # Build database components
         # Note: deck_pack_mappings moved to constants_precomputation (generated separately)
+        unit_data = gather_unit_data(mod_source_path)
         _database_cache = {
             "source_files": source_files,
             "ammunition": build_ammo_data(mod_source_path),
-            "unit_data": gather_unit_data(mod_source_path),
+            "unit_data": unit_data,
             "weapons": gather_weapon_data(mod_source_path),
             "depiction_data": gather_depiction_data(mod_source_path),
             "decks": gather_deck_data(mod_source_path),
             "deck_pack_data": build_deck_pack_data(mod_source_path),
+            "upgrade_from_mapping": build_upgrade_from_mapping(unit_data),
         }
 
         logger.info(f"Built database with {len(_database_cache['unit_data'])} units")
@@ -67,6 +69,9 @@ def build_database(config: Dict[str, Any]) -> Dict[str, Any]:
         logger.info(f"Built database with {len(_database_cache['decks'])} deck entries")
         logger.info(
             f"Built database with {len(_database_cache['deck_pack_data']['base_units'])} base units in deck pack data"
+        )
+        logger.info(
+            f"Built database with {len(_database_cache['upgrade_from_mapping'])} UpgradeFrom relationships"
         )
 
         # Save to disk for future use

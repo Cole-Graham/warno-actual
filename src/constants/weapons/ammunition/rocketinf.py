@@ -383,6 +383,22 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("RocketInf_Viper_70mm", "light_at", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 15,
+            },
+            "hit_roll": {
+                "Idling": 50,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 700,
+                "DisplaySalveAccuracy": False,
+                "SupplyCost": 10.0,
+            },
+        },
+    },
 
     ("RocketInf_M67_RCL_90mm_HE", "recoilless", None, False): { # 679
         "Ammunition": {

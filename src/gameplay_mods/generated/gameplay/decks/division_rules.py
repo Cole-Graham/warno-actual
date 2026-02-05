@@ -422,15 +422,171 @@ def _serialize_unit_rule(rule_v: Any) -> str:
     return rule_str
 
 
+def _extract_rule_metadata(rule_v: Any) -> Tuple[int, List[str]]:
+    """Extract card count and transport list from a TDeckUniteRule object.
+    
+    Args:
+        rule_v: The rule object (rule_obj.v from the list iteration)
+    
+    Returns:
+        Tuple of (max_pack_number, transport_list)
+        transport_list is a list of transport unit descriptors (or empty list if none)
+    """
+    max_pack_number = rule_v.by_m("MaxPackNumber").v
+    # Convert to int if it's a string
+    if isinstance(max_pack_number, str):
+        try:
+            max_pack_number = int(max_pack_number)
+        except ValueError:
+            max_pack_number = 0
+    else:
+        max_pack_number = int(max_pack_number)
+    
+    transport_list = []
+    transport_list_member = rule_v.by_member("AvailableTransportList", False)
+    if transport_list_member:
+        transport_list_raw = transport_list_member.v
+        
+        # Handle transport list - extract string values
+        if isinstance(transport_list_raw, str):
+            # Parse string like "[$/GFX/Unit/Descriptor_Unit_X, $/GFX/Unit/Descriptor_Unit_Y]"
+            if transport_list_raw.startswith("[") and transport_list_raw.endswith("]"):
+                transport_str = transport_list_raw[1:-1].strip()
+                if transport_str:
+                    # Split by comma and clean up
+                    transports = [t.strip() for t in transport_str.split(",")]
+                    transport_list = transports
+        elif hasattr(transport_list_raw, '__iter__') and not isinstance(transport_list_raw, str):
+            # Extract string values from list
+            for item in transport_list_raw:
+                # Try to get the actual value from ListRow objects
+                if hasattr(item, 'value'):
+                    val = item.value
+                elif hasattr(item, 'v'):
+                    val = item.v
+                else:
+                    val = item
+                # Ensure it's a string and strip quotes if needed
+                val_str = str(val)
+                if val_str.startswith("'") or val_str.startswith('"'):
+                    val_str = strip_quotes(val_str)
+                transport_list.append(val_str)
+    
+    return max_pack_number, transport_list
+
+
+def _merge_transport_lists(transport_list1: List[str], transport_list2: List[str]) -> List[str]:
+    """Merge two transport lists, removing duplicates while preserving order.
+    
+    Args:
+        transport_list1: First transport list
+        transport_list2: Second transport list
+    
+    Returns:
+        Merged list with unique transports, preserving order (first list first, then second)
+    """
+    seen = set()
+    merged = []
+    
+    # Add transports from first list
+    for transport in transport_list1:
+        if transport not in seen:
+            seen.add(transport)
+            merged.append(transport)
+    
+    # Add transports from second list that aren't already present
+    for transport in transport_list2:
+        if transport not in seen:
+            seen.add(transport)
+            merged.append(transport)
+    
+    return merged
+
+
+def _update_rule_transports(rule_str: str, merged_transports: List[str]) -> str:
+    """Update a serialized rule string with merged transport list.
+    
+    Args:
+        rule_str: The serialized rule string
+        merged_transports: List of merged transport unit descriptors
+    
+    Returns:
+        Updated rule string with merged transports
+    """
+    import re
+    
+    # Build transport list string
+    if merged_transports:
+        transport_str = "[" + ", ".join(merged_transports) + "]"
+    else:
+        transport_str = ""
+    
+    # Check if rule already has AvailableTransportList
+    if "AvailableTransportList" in rule_str:
+        # Replace existing transport list - match the entire line
+        # Pattern: whitespace + AvailableTransportList + = + [ + content + ]
+        # We'll match everything from AvailableTransportList to the closing bracket on the same line
+        pattern = r'(\s*)AvailableTransportList\s*=\s*\[.*?\]'
+        
+        if transport_str:
+            # Find the indentation from the existing line
+            match = re.search(pattern, rule_str, re.MULTILINE)
+            if match:
+                indent = match.group(1) if match.group(1) else "    "
+                replacement = f"{indent}AvailableTransportList = {transport_str}"
+            else:
+                replacement = f"    AvailableTransportList = {transport_str}"
+            rule_str = re.sub(pattern, replacement, rule_str, flags=re.MULTILINE)
+        else:
+            # Remove the entire line if no transports (including newline)
+            pattern = r'\s*AvailableTransportList\s*=\s*\[.*?\]\s*\n'
+            rule_str = re.sub(pattern, "", rule_str, flags=re.MULTILINE)
+    else:
+        # Insert transport list after AvailableWithoutTransport
+        if transport_str:
+            # Find the line with AvailableWithoutTransport and insert after it
+            lines = rule_str.split('\n')
+            new_lines = []
+            for line in lines:
+                new_lines.append(line)
+                if 'AvailableWithoutTransport' in line and 'AvailableTransportList' not in line:
+                    # Get indentation from the AvailableWithoutTransport line
+                    indent_match = re.match(r'(\s*)', line)
+                    indent = indent_match.group(1) if indent_match else "    "
+                    new_lines.append(f"{indent}AvailableTransportList = {transport_str}")
+            rule_str = '\n'.join(new_lines)
+    
+    return rule_str
+
+
+def _extract_unit_name_from_descriptor(unit_descr: str) -> str:
+    """Extract unit name from unit descriptor.
+    
+    Args:
+        unit_descr: Unit descriptor in format "$/GFX/Unit/Descriptor_Unit_{unit_name}"
+    
+    Returns:
+        Unit name without the descriptor prefix
+    """
+    prefix = "$/GFX/Unit/Descriptor_Unit_"
+    if unit_descr.startswith(prefix):
+        return unit_descr[len(prefix):]
+    # Fallback: try to extract from any descriptor format
+    if "Descriptor_Unit_" in unit_descr:
+        return unit_descr.split("Descriptor_Unit_", 1)[1]
+    return unit_descr
+
+
 def _resolve_combine_divisions(
     div_key: str, 
     new_divisions: Dict[str, Dict], 
     path: set = None
 ) -> List[str]:
-    """Recursively resolve combine_divisions to get the final list of base divisions.
+    """Recursively resolve combine_divisions to get the final list of base divisions or new division rules.
     
     If a division references other new divisions in combine_divisions, those are
-    recursively resolved to their base divisions (ones that exist in the game).
+    recursively resolved. Divisions with custom division_rules are treated as resolved
+    (they exist as new division rules) and returned directly.
     
     Args:
         div_key: The division key to resolve
@@ -438,7 +594,8 @@ def _resolve_combine_divisions(
         path: Set of division keys in the current resolution path (to detect cycles)
     
     Returns:
-        List of base division names (ones that exist in the game, not in new_divisions)
+        List of division names - either base divisions (ones that exist in the game)
+        or new division keys (ones with division_rules that have been created as division rules)
     """
     if path is None:
         path = set()
@@ -458,14 +615,16 @@ def _resolve_combine_divisions(
     div_data = new_divisions[div_key]
     combine_divisions = div_data.get("combine_divisions", [])
     
-    # Check if this division has custom division_rules - if so, it won't have combine_divisions
+    # Check if this division has custom division_rules - if so, it's a new division rule that exists
     has_custom_rules = div_data.get("division_rules") is not None
     
     if not combine_divisions:
         path.remove(div_key)  # Remove from path before returning
+        # If it has custom rules, return it as-is (it's a new division rule that exists)
+        if has_custom_rules:
+            return [div_key]
         # Only warn if this division doesn't have custom rules (divisions with custom rules won't have combine_divisions)
-        if not has_custom_rules:
-            logger.warning(f"No combine_divisions specified for {div_key}")
+        logger.warning(f"No combine_divisions specified for {div_key}")
         return []
     
     # Resolve each division in combine_divisions
@@ -608,6 +767,9 @@ def _create_national_division_rules(source_path: Any, game_db: Dict[str, Any]) -
     
     logger.info("Creating division rules for national divisions")
     
+    # First pass: Create all divisions with custom division_rules
+    # This ensures they exist before we try to combine them in the second pass
+    logger.info("First pass: Creating divisions with custom division_rules")
     for div_key, div_data in new_divisions.items():
         cfg_name = div_data.get("cfg_name")
         if not cfg_name:
@@ -759,9 +921,33 @@ def _create_national_division_rules(source_path: Any, game_db: Dict[str, Any]) -
                 import traceback
                 logger.debug(traceback.format_exc())
             
-            continue  # Skip the combine_divisions logic for custom rules
+            continue  # Skip the combine_divisions logic for custom rules (will be handled in second pass)
+    
+    # Second pass: Create all divisions with combine_divisions
+    # Now all divisions with division_rules have been created, so they can be referenced
+    logger.info("Second pass: Creating divisions with combine_divisions")
+    for div_key, div_data in new_divisions.items():
+        cfg_name = div_data.get("cfg_name")
+        if not cfg_name:
+            continue  # Already checked in first pass
         
-        # Handle combine_divisions logic (existing behavior)
+        new_rule_namespace = f"Descriptor_Deck_Division_{cfg_name}_multi_Rule"
+        
+        # Skip if this division has custom division_rules (already created in first pass)
+        custom_rules = div_data.get("division_rules")
+        if custom_rules:
+            continue
+        
+        # Check if rule already exists (shouldn't happen, but be safe)
+        try:
+            existing_rule = source_path.by_n(new_rule_namespace, False)
+            if existing_rule:
+                logger.warning(f"Division rule {new_rule_namespace} already exists, skipping creation")
+                continue
+        except (AttributeError, KeyError):
+            pass  # Rule doesn't exist, which is expected
+        
+        # Handle combine_divisions logic
         combine_divisions_raw = div_data.get("combine_divisions", [])
         if not combine_divisions_raw:
             logger.warning(f"No combine_divisions or division_rules specified for {div_key}, skipping")
@@ -776,10 +962,29 @@ def _create_national_division_rules(source_path: Any, game_db: Dict[str, Any]) -
         
         logger.debug(f"Resolved {div_key} combine_divisions from {combine_divisions_raw} to {combine_divisions}")
         
+        # Get rule exclusions if specified
+        rule_exclusions = div_data.get("rule_exclusions", [])
+        if rule_exclusions:
+            logger.debug(f"Rule exclusions for {div_key}: {rule_exclusions}")
+        
+        # Helper function to get the namespace for a division (handles both base divisions and new division keys)
+        def get_division_namespace(div_name: str) -> str:
+            """Get the division rule namespace for a division name.
+            
+            For base divisions, uses the division name directly.
+            For new divisions, uses the cfg_name from new_divisions.
+            """
+            if div_name in new_divisions:
+                cfg_name = new_divisions[div_name].get("cfg_name")
+                if cfg_name:
+                    return f"Descriptor_Deck_Division_{cfg_name}_multi_Rule"
+            # Base division or fallback
+            return f"Descriptor_Deck_Division_{div_name}_multi_Rule"
+        
         # Find a donor division rule to copy structure from
         donor_rule = None
         for combine_div in combine_divisions:
-            donor_namespace = f"Descriptor_Deck_Division_{combine_div}_multi_Rule"
+            donor_namespace = get_division_namespace(combine_div)
             try:
                 donor_rule = source_path.by_n(donor_namespace)
                 if donor_rule:
@@ -793,10 +998,10 @@ def _create_national_division_rules(source_path: Any, game_db: Dict[str, Any]) -
         
         # Collect all unit rules from source divisions
         collected_rules: Dict[str, str] = {}  # unit_descriptor -> serialized_rule
-        seen_units = set()  # Track units we've already added
+        collected_rule_metadata: Dict[str, Tuple[int, List[str]]] = {}  # unit_descriptor -> (card_count, transport_list)
         
         for combine_div in combine_divisions:
-            source_namespace = f"Descriptor_Deck_Division_{combine_div}_multi_Rule"
+            source_namespace = get_division_namespace(combine_div)
             try:
                 source_rule = source_path.by_n(source_namespace)
                 if not source_rule:
@@ -811,16 +1016,60 @@ def _create_national_division_rules(source_path: Any, game_db: Dict[str, Any]) -
                     
                     unit_descr = rule_obj.v.by_m("UnitDescriptor").v
                     
-                    # Skip if we've already added this unit (keep first occurrence)
-                    if unit_descr in seen_units:
-                        logger.debug(f"Skipping duplicate unit {unit_descr} from {combine_div}")
+                    # Extract unit name and check if it's excluded
+                    unit_name = _extract_unit_name_from_descriptor(unit_descr)
+                    if rule_exclusions and unit_name in rule_exclusions:
+                        logger.debug(f"Skipping excluded unit {unit_name} (from {combine_div})")
+                        continue
+                    
+                    # Extract card count and transports
+                    card_count, transport_list = _extract_rule_metadata(rule_obj.v)
+                    
+                    # Check if we've already seen this unit
+                    if unit_descr in collected_rules:
+                        # Compare card counts - keep the one with higher card count
+                        existing_card_count, existing_transports = collected_rule_metadata[unit_descr]
+                        
+                        if card_count > existing_card_count:
+                            # Replace with the rule that has more cards, but merge transports from both
+                            logger.debug(f"Replacing duplicate unit {unit_descr} from {combine_div} (cards: {existing_card_count} -> {card_count})")
+                            merged_transports = _merge_transport_lists(existing_transports, transport_list)
+                            rule_str = _serialize_unit_rule(rule_obj.v)
+                            # Update the rule with merged transports if they differ
+                            if merged_transports != transport_list:
+                                rule_str = _update_rule_transports(rule_str, merged_transports)
+                            collected_rules[unit_descr] = rule_str
+                            collected_rule_metadata[unit_descr] = (card_count, merged_transports)
+                            logger.debug(f"Merged transports when replacing {unit_descr}: {existing_transports} + {transport_list} -> {merged_transports}")
+                        elif card_count == existing_card_count:
+                            # Same card count - merge transports
+                            logger.debug(f"Merging transports for duplicate unit {unit_descr} from {combine_div} (cards: {card_count})")
+                            merged_transports = _merge_transport_lists(existing_transports, transport_list)
+                            if merged_transports != existing_transports:
+                                # Update the rule with merged transports
+                                rule_str = collected_rules[unit_descr]
+                                updated_rule_str = _update_rule_transports(rule_str, merged_transports)
+                                collected_rules[unit_descr] = updated_rule_str
+                                collected_rule_metadata[unit_descr] = (card_count, merged_transports)
+                                logger.debug(f"Merged transports for {unit_descr}: {existing_transports} + {transport_list} -> {merged_transports}")
+                        else:
+                            # Existing rule has more cards - merge transports into existing rule
+                            logger.debug(f"Merging transports into existing rule for {unit_descr} from {combine_div} (existing cards: {existing_card_count}, new cards: {card_count})")
+                            merged_transports = _merge_transport_lists(existing_transports, transport_list)
+                            if merged_transports != existing_transports:
+                                # Update the rule with merged transports
+                                rule_str = collected_rules[unit_descr]
+                                updated_rule_str = _update_rule_transports(rule_str, merged_transports)
+                                collected_rules[unit_descr] = updated_rule_str
+                                collected_rule_metadata[unit_descr] = (existing_card_count, merged_transports)
+                                logger.debug(f"Merged transports for {unit_descr}: {existing_transports} + {transport_list} -> {merged_transports}")
                         continue
                     
                     # Serialize and store the rule
                     rule_str = _serialize_unit_rule(rule_obj.v)
                     collected_rules[unit_descr] = rule_str
-                    seen_units.add(unit_descr)
-                    logger.debug(f"Collected unit rule for {unit_descr} from {combine_div}")
+                    collected_rule_metadata[unit_descr] = (card_count, transport_list)
+                    logger.debug(f"Collected unit rule for {unit_descr} from {combine_div} (cards: {card_count})")
             
             except (AttributeError, KeyError) as e:
                 logger.warning(f"Error accessing source division rule {source_namespace}: {e}")

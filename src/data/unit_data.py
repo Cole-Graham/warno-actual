@@ -200,6 +200,16 @@ def _extract_ui_data(module: Any) -> Dict[str, Any]:
         if texture:
             data["menu_icon"] = strip_quotes(texture)
 
+        # Get UpgradeFromUnit if present
+        upgrade_from = module.v.by_m("UpgradeFromUnit", None)
+        if upgrade_from is not None:
+            # Extract unit name from "Descriptor_Unit_UnitName" format
+            upgrade_from_value = upgrade_from.v
+            if upgrade_from_value.startswith("Descriptor_Unit_"):
+                data["upgrade_from_unit"] = upgrade_from_value.replace("Descriptor_Unit_", "")
+            else:
+                data["upgrade_from_unit"] = upgrade_from_value
+
     except Exception as e:
         logger.warning(f"Failed to extract UI data: {str(e)}")
     return data
@@ -544,3 +554,187 @@ def _gather_attack_strategies(module: Any) -> List:
         attack_strategies.append(strategy.v)
 
     return attack_strategies
+
+
+def _detect_circular_chains(forward_mapping: Dict[str, str]) -> List[List[str]]:
+    """Detect circular chains in the forward mapping.
+    
+    A circular chain occurs when following upgrade relationships leads back to a unit
+    that was already visited in the chain.
+    
+    Example:
+        If UnitA upgrades from UnitB, UnitB upgrades from UnitC, and UnitC upgrades from UnitA,
+        this creates a circular chain: [UnitA, UnitB, UnitC, UnitA]
+    
+    Args:
+        forward_mapping: Dictionary mapping unit names to their UpgradeFromUnit values
+        
+    Returns:
+        List of circular chains, where each chain is a list of unit names forming the cycle
+    """
+    circular_chains = []
+    visited = set()
+    rec_stack = set()
+    
+    def find_cycle(unit: str, path: List[str]) -> None:
+        """DFS to find cycles starting from a unit."""
+        if unit in rec_stack:
+            # Found a cycle - extract the cycle portion
+            cycle_start = path.index(unit)
+            cycle = path[cycle_start:] + [unit]
+            # Only add if we haven't seen this exact cycle before
+            if cycle not in circular_chains:
+                circular_chains.append(cycle)
+            return
+        
+        if unit in visited:
+            return
+        
+        visited.add(unit)
+        rec_stack.add(unit)
+        path.append(unit)
+        
+        # Follow the upgrade relationship
+        if unit in forward_mapping:
+            upgrade_from = forward_mapping[unit]
+            # Follow the chain - upgrade_from might not be in forward_mapping (could be base unit)
+            # but we still want to detect if it creates a cycle back to something in our path
+            if upgrade_from in rec_stack:
+                # Found a cycle back to upgrade_from
+                cycle_start = path.index(upgrade_from)
+                cycle = path[cycle_start:] + [upgrade_from]
+                if cycle not in circular_chains:
+                    circular_chains.append(cycle)
+            elif upgrade_from not in visited:
+                # Continue DFS
+                find_cycle(upgrade_from, path.copy())
+        
+        rec_stack.remove(unit)
+    
+    # Check all units in the forward mapping
+    for unit in forward_mapping.keys():
+        if unit not in visited:
+            find_cycle(unit, [])
+    
+    return circular_chains
+
+
+def _build_upgrade_chains(forward_mapping: Dict[str, str]) -> Dict[str, Any]:
+    """Build upgrade chains from a forward mapping (unit -> upgrade_from).
+    
+    Groups units into chains where the base unit (lowest in chain) maps to
+    a nested structure representing branches. Each direct child becomes a key,
+    with its value being the chain continuing from that unit (or empty list if leaf).
+    
+    Example (linear chain):
+        If UnitC upgrades from UnitB, and UnitB upgrades from UnitA,
+        the result will be: {"UnitA": {"UnitB": ["UnitC"]}}
+    
+    Example (branching):
+        If UnitB and UnitC both upgrade from UnitA, and UnitD upgrades from UnitB,
+        the result will be: {"UnitA": {"UnitB": ["UnitD"], "UnitC": []}}
+    
+    Args:
+        forward_mapping: Dictionary mapping unit names to their UpgradeFromUnit values
+        
+    Returns:
+        Dictionary mapping base unit names to nested chain structures
+    """
+    # Build reverse mapping: upgrade_from -> [units that upgrade from it]
+    reverse_mapping: Dict[str, List[str]] = {}
+    
+    for unit_name, upgrade_from in forward_mapping.items():
+        if upgrade_from not in reverse_mapping:
+            reverse_mapping[upgrade_from] = []
+        reverse_mapping[upgrade_from].append(unit_name)
+    
+    # Find base units (units that are referenced as upgrade_from but don't upgrade from anything themselves)
+    base_units = set()
+    for upgrade_from in reverse_mapping.keys():
+        if upgrade_from not in forward_mapping:
+            base_units.add(upgrade_from)
+    
+    # Build chains starting from each base unit
+    chain_mapping: Dict[str, Any] = {}
+    
+    def build_branch(unit: str, visited: set) -> Any:
+        """Build a branch structure starting from a unit.
+        
+        Returns:
+            - Empty list [] if unit has no children (leaf node)
+            - Dict[str, Any] mapping each child to its branch if unit has children
+        """
+        if unit in visited:
+            return []
+        visited.add(unit)
+        
+        # Get all units that upgrade from this unit
+        if unit not in reverse_mapping or not reverse_mapping[unit]:
+            # Leaf node - no children
+            return []
+        
+        # Branch node - create nested structure
+        branch = {}
+        for child_unit in reverse_mapping[unit]:
+            child_branch = build_branch(child_unit, visited)
+            branch[child_unit] = child_branch
+        
+        return branch
+    
+    for base_unit in base_units:
+        branch = build_branch(base_unit, set())
+        if branch:  # Only add if there are children
+            chain_mapping[base_unit] = branch
+            logger.debug(f"Built chain for {base_unit}: {branch}")
+    
+    return chain_mapping
+
+
+def build_upgrade_from_mapping(unit_data: Dict[str, Any]) -> Dict[str, List[str]]:
+    """Build UpgradeFrom mapping from vanilla unit data.
+    
+    Creates chains where the base unit (lowest in chain) maps to a list of
+    all units that upgrade from it (directly or indirectly).
+    
+    Example:
+        If UnitC upgrades from UnitB, and UnitB upgrades from UnitA,
+        the result will be: {"UnitA": ["UnitB", "UnitC"]}
+    
+    Args:
+        unit_data: Dictionary of unit data gathered from game files
+        
+    Returns:
+        Dictionary mapping base unit names to nested chain structures
+    """
+    # First, build forward mapping (unit -> upgrade_from)
+    forward_mapping = {}
+    
+    for unit_name, unit_info in unit_data.items():
+        if "upgrade_from_unit" in unit_info:
+            upgrade_from = unit_info["upgrade_from_unit"]
+            if upgrade_from:  # Only add if not None/empty
+                forward_mapping[unit_name] = upgrade_from
+                logger.debug(f"Found UpgradeFrom relationship: {unit_name} -> {upgrade_from}")
+    
+    # Validate for circular chains before building
+    circular_chains = _detect_circular_chains(forward_mapping)
+    if circular_chains:
+        cycle_details = []
+        for i, cycle in enumerate(circular_chains, 1):
+            cycle_str = " -> ".join(cycle)
+            cycle_details.append(f"  Circular chain {i}: {cycle_str}")
+        error_msg = (
+            f"Found {len(circular_chains)} circular chain(s) in vanilla upgrade relationships:\n"
+            + "\n".join(cycle_details) +
+            "\nCircular chains will be excluded from the mapping"
+        )
+        logger.error(error_msg)
+    
+    # Build chains from forward mapping
+    chain_mapping = _build_upgrade_chains(forward_mapping)
+    
+    logger.info(
+        f"Built UpgradeFrom mapping with {len(chain_mapping)} chains "
+        f"containing {sum(len(chain) for chain in chain_mapping.values())} total units"
+    )
+    return chain_mapping

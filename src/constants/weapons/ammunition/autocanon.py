@@ -860,11 +860,16 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
+    # M163_CS_US
     ("Gatling_M61_Vulcan_20mm_noRadar", "autocannon", None, False): { # 319
         "Ammunition": {
+            "hit_roll": {
+                "Idling": 25,
+                "Moving": 15,
+            },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
-                "MaximumRangeHelicopterGRU": 2275,
+                "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 1750,
                 "AimingTime": 1.2,
                 "SupplyCost": 15.0,
@@ -872,8 +877,12 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    # M167A2 VADS 20mm, M167A2 VADS 20mm (UK), AERO-M167A2 PIVADS 20mm
     ("Gatling_M61_Vulcan_20mm_late_TOWED", "autocannon", None, False): { # 318
         "Ammunition": {
+            "hit_roll": {
+                "Idling": 40,
+            },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
@@ -887,8 +896,12 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
+    # M163_PIVADS_US
     ("Gatling_M61_Vulcan_20mm_late", "autocannon", None, False): { # 317
         "Ammunition": {
+            "hit_roll": {
+                "Idling": 40,
+            },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
@@ -902,12 +915,16 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
+    # M167A1
     ("Gatling_M61_Vulcan_20mm_TOWED", "autocannon", None, False): { # 316
         "Ammunition": {
+            "hit_roll": {
+                "Idling": 25,
+            },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
-                "MaximumRangeAirplaneGRU": 2100,
+                "MaximumRangeAirplaneGRU": 1750,
                 "AimingTime": 1.2,
                 "SupplyCost": 15.0,
             },

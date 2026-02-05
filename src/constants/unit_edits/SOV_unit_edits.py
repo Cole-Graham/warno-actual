@@ -1580,9 +1580,9 @@ sov_unit_edits = {
         "availability": [4, 3, 2, 0],
         "WeaponDescriptor": {
             "turrets": {
-                1: {
+                0: {
                     "MountedWeapons": {
-                        "add": {
+                        "insert": {
                             "Mortier_Vasilek_indirect_82mm_towed": {
                                 "Ammunition": "$/GFX/Weapon/Ammo_Mortier_Vasilek_indirect_82mm_SMOKE_towed",
                                 "DispersionRadiusOffColor": "RGBA[0,0,0,0]",
@@ -1611,7 +1611,7 @@ sov_unit_edits = {
         "availability": [0, 4, 3, 2],
         "WeaponDescriptor": {
             "turrets": {
-                1: {
+                0: {
                     "MountedWeapons": {
                         "add": {
                             "Mortier_Vasilek_indirect_82mm_towed": {  # donor
@@ -1657,9 +1657,9 @@ sov_unit_edits = {
         "availability": [4, 3, 2, 0],
         "WeaponDescriptor": {
             "turrets": {
-                1: {
+                0: {
                     "MountedWeapons": {
-                        "add": {
+                        "insert": {
                             "Mortier_Vasilek_indirect_82mm": {  # donor
                                 "Ammunition": "$/GFX/Weapon/Ammo_Mortier_Vasilek_indirect_82mm_SMOKE",
                                 "DispersionRadiusOffColor": "RGBA[0,0,0,0]",
@@ -2207,7 +2207,6 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
-        "DeploymentShift": 0,
     },
 
     "Engineers_Scout_TTsko_SOV": {
@@ -2237,7 +2236,6 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
-        "DeploymentShift": 0,
     },
 
     "HvyScout_TTsko_SOV": {
@@ -2248,7 +2246,6 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
-        "DeploymentShift": 0,
     },
     
     "HvyScout_DShV_SOV": {
@@ -2326,7 +2323,6 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
-        "DeploymentShift": 0,
     },
 
     "Scout_Spetsnaz_VDV_SOV": {
@@ -2646,7 +2642,7 @@ sov_unit_edits = {
                 "AA_R60M_Vympel": 4,
             },
             "turrets": {
-                2: {
+                1: {
                     "MountedWeapons": {
                         "AA_R60M_Vympel": {
                             "HandheldEquipmentKey": "'WeaponAlternative_1'",
@@ -2659,7 +2655,7 @@ sov_unit_edits = {
                     "Tag": "'tourelle1'",
                     "YulBoneOrdinal": 1,
                 },
-                3: {
+                2: {
                     "MountedWeapons": {
                         "RocketAir_S24_240mm_salvolength2": {
                             "SalvoStockIndex": 1,
@@ -2754,7 +2750,7 @@ sov_unit_edits = {
                 "AutoCanon_AP_30mm_Bitube_Gsh30k": 5,
             },
             "turrets": {
-                1: {
+                0: {
                     "MountedWeapons": {
                         "AutoCanon_AP_30mm_Bitube_Gsh30k": {
                             # "add_members": [("TirContinu", True), ],
@@ -2857,7 +2853,7 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "turrets": {
-                2: {
+                1: {
                     "AngleRotationMax": 1.745329,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
@@ -2887,7 +2883,7 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "turrets": {
-                2: {
+                1: {
                     "AngleRotationMax": 1.745329,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
@@ -2902,14 +2898,30 @@ sov_unit_edits = {
 
     "Su_24M_LGB_SOV": {
         "GameName": {
-            "display": "Su-24M [LGB]",
+            "display": "Su-24M [PGB]",
         },
         "CommandPoints": 245,
         "UpgradeFromUnit": None,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("Bomb_KAB_1500Kr", "Bomb_KAB_1500L_salvolength2")],
+            },
+            "Salves": {
+                "Bomb_KAB_1500L_salvolength2": 1,
+            },
+        },
     },
 
     "Su_24M_LGB2_SOV": {
         "CommandPoints": 260,
+        "GameName": {
+            "display": "Su-24M [PGB2]",
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("Bomb_KAB_1500L", "Bomb_KAB_1500Kr")],
+            },
+        },
     },
 
     "Su_24M_AT1_SOV": {
@@ -3042,13 +3054,24 @@ sov_unit_edits = {
     },
     
     "MiG_27K_LGB_SOV": {
-        "CommandPoints": 245,
+        "CommandPoints": 225,
+        "GameName": {
+            "display": "MiG-27K [PGB]",
+        },
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
         "availability": [0, 2, 0, 1],
+        "WeaponDescriptor": {
+            "Salves": {
+                "Bomb_KAB_500Kr_salvolength2": 1,
+            },
+            "equipmentchanges": {
+                "replace": [("Bomb_KAB_500Kr", "Bomb_KAB_500Kr_salvolength2")],
+            },
+        },
     },
     
     "MiG_23ML_SOV": { # 3x R-60M, 3x R-60M

@@ -72,12 +72,17 @@ def apply_weapon_range_standards(source_path, logger):
     members_to_check = {
         "MaximumRangeGRU": {
             1200: 1225,
+            1250: 1225,
         },
         "MaximumRangeHelicopterGRU": {
+            1500: 1575,
             2475: 2450,
+            2650: 2625,
+            
         },
         "MaximumRangeAirplaneGRU": {
             1950: 1925,
+            2300: 2275,
         },
     }
 
@@ -133,8 +138,8 @@ def apply_bomb_damage_standards(source_path, logger):
     he_bomb_matching = {
         "100": ["119kg"],
         "250": ["250kg", "GBU_12"],
-        "500": ["500Kr", "400kg", "450kg", "500kg", "513kg"],
-        "1000": ["1000kg", "GBU_10", "GBU_27"],
+        "500": ["_500Kr", "_500L", "400kg", "450kg", "500kg", "513kg", "CPU_123"],
+        "1000": ["920kg", "1000kg", "GBU_10", "GBU_27"],
         "1250": ["KAB_1500"],
     }
 

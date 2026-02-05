@@ -238,6 +238,49 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("RocketAir_Hydra_70mm_x38_avion", "rocket", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2625,
+                "RadiusSplashPhysicalDamagesGRU": 14,
+                "RadiusSplashSuppressDamagesGRU": 21,
+                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoFx": 0.1,
+                "PhysicalDamages": 0.75,
+                "SuppressDamages": 75,
+                "SupplyCost": 114.0,
+                "SimultaneousShotsCount": 6,
+            },
+        },
+    },
+    
+    ("RocketAir_Hydra_70mm_x114_avion", "rocket", "RocketAir_Hydra_70mm_x38_avion", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 10,
+                "Moving": 10,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2800,
+                "RadiusSplashPhysicalDamagesGRU": 14,
+                "RadiusSplashSuppressDamagesGRU": 21,
+                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoFx": 0.1,
+                "PhysicalDamages": 0.75,
+                "SuppressDamages": 75,
+                "ShotsCountPerSalvo": 114,
+                "SupplyCost": 342.0,
+                "NbSalvosShootOnPosition": 1,
+                "SimultaneousShotsCount": 6,
+                "AffichageMunitionParSalve": 114,
+            },
+        },
+    },
 
     ("RocketAir_Hydra_70mm_salvolength19", "rocket", None, False): { # 609
         "Ammunition": {

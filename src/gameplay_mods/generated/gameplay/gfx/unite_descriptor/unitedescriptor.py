@@ -307,12 +307,64 @@ def _handle_airplanemovement_module(logger, game_db, unit_data, edit_type, unit_
         old_value = module.v.by_m("SpeedInKmph").v
         module.v.by_m("SpeedInKmph").v = str(edits["max_speed"])
         logger.info(f"Updated {unit_name} max speed from {old_value} to {edits['max_speed']}")
-
-    if "AirplaneMovement" in edits and "parent_membr" in edits["AirplaneMovement"]:
-        for key, value in edits["AirplaneMovement"]["parent_membr"].items():
-            old_value = module.v.by_m(key).v
-            module.v.by_m(key).v = str(value)
-            logger.info(f"Updated {unit_name} {key} from {old_value} to {value}")
+    
+    # Handle AirplaneMovement edits - same format for both unit_edits and new_units
+    if "AirplaneMovement" in edits:
+        airplane_movement = edits["AirplaneMovement"]
+        
+        # Handle parent_membr (direct member assignments)
+        if "parent_membr" in airplane_movement:
+            for member_name, value in airplane_movement["parent_membr"].items():
+                old_value = module.v.by_m(member_name).v
+                module.v.by_m(member_name).v = str(value)
+                logger.info(f"Updated {unit_name} {member_name} from {old_value} to {value}")
+        
+        # Handle attack_strategies (modifications to AttackStrategiesDescriptorsSortedByPriority)
+        if "attack_strategies" in airplane_movement:
+            attack_strategies_list = module.v.by_m("AttackStrategiesDescriptorsSortedByPriority").v
+            
+            # Handle insert operations
+            if "insert" in airplane_movement["attack_strategies"]:
+                # Sort by index in descending order to insert highest indices first
+                insert_list = sorted(airplane_movement["attack_strategies"]["insert"], key=lambda x: x[0], reverse=True)
+                for index, attack_strategy in insert_list:
+                    attack_strategies_list.insert(index, attack_strategy)
+                    logger.info(f"Inserted {attack_strategy} at index {index} for {unit_name}")
+            
+            # Handle remove operations - find by string matching
+            if "remove" in airplane_movement["attack_strategies"]:
+                # Find indices of strategies to remove by string matching
+                indices_to_remove = []
+                for strategy_to_remove in airplane_movement["attack_strategies"]["remove"]:
+                    for idx, strategy in enumerate(attack_strategies_list):
+                        if strategy.v == strategy_to_remove:
+                            indices_to_remove.append(idx)
+                            logger.info(f"Found {strategy_to_remove} at index {idx} for {unit_name}")
+                            break
+                    else:
+                        logger.warning(f"Could not find attack strategy {strategy_to_remove} to remove for {unit_name}")
+                
+                # Sort by index in descending order to remove highest indices first
+                indices_to_remove.sort(reverse=True)
+                for index in indices_to_remove:
+                    attack_strategies_list.remove(index)
+                    logger.info(f"Removed attack strategy at index {index} for {unit_name}")
+            
+            # Handle replace operations - find by string matching
+            if "replace" in airplane_movement["attack_strategies"]:
+                for old_strategy, new_strategy in airplane_movement["attack_strategies"]["replace"]:
+                    # Find index of old strategy by string matching
+                    found_index = None
+                    for idx, strategy in enumerate(attack_strategies_list):
+                        if strategy.v == old_strategy:
+                            found_index = idx
+                            break
+                    
+                    if found_index is not None:
+                        attack_strategies_list.replace(found_index, new_strategy)
+                        logger.info(f"Replaced {old_strategy} with {new_strategy} at index {found_index} for {unit_name}")
+                    else:
+                        logger.warning(f"Could not find attack strategy {old_strategy} to replace for {unit_name}")
             
     # Global bomber edits TODO: Use dic references instead for standardization
     if edit_type == "new_units":

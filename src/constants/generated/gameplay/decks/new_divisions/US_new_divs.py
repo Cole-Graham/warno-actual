@@ -1,6 +1,10 @@
 """New divisions for USA."""
 
-from .new_divisionrules import US_airborne_newdivisionrules, US_global_newdivisionrules
+from .new_divisionrules import (
+    US_airborne_newdivisionrules,
+    US_global_newdivisionrules,
+    US_motorized_newdivisionrules,
+)
 
 us_new_divs = {
     "US_general": {
@@ -9,7 +13,7 @@ us_new_divs = {
         "div_name": ("USA", "BUKHWKTHUH"),
         "div_power": "DC_PWR1",
         "description_title": ("USA", "ZWWJULIVOW"),
-        "activation_points": 85,
+        "activation_points": 75,
         "combine_divisions": ["US_3rd_Arm", "US_11ACR", "US_8th_Inf", "US_82nd_Airborne", "US_101st_Airmobile"],
         "type_texture": "infantryReg",
     },
@@ -29,6 +33,7 @@ us_new_divs = {
         "div_name": ("USA Airborne / Armored", "JRXFQANUWW"),
         "div_power": "DC_PWR1",
         "description_title": ("USA Airborne / Armored", "BPAZWZQOQP"),
+        "activation_points": 85,
         "combine_divisions": ["US_airborne", "US_armored"],
         "type_texture": "infantryReg",
     },
@@ -38,6 +43,7 @@ us_new_divs = {
         "div_name": ("USA Airborne / Mechanized", "QKMSZBHSHW"),
         "div_power": "DC_PWR1",
         "description_title": ("USA Airborne / Mechanized", "QEVEXLTTGG"),
+        "activation_points": 85,
         "combine_divisions": ["US_airborne", "US_mechanized"],
         "type_texture": "infantryReg",
     },
@@ -47,8 +53,14 @@ us_new_divs = {
         "div_name": ("USA Airborne / Motorized", "LEOKKLGOZQ"),
         "div_power": "DC_PWR1",
         "description_title": ("USA Airborne / Motorized", "BEDOJYYUIU"),
-        "combine_divisions": ["US_airborne", "US_motorized"],
+        "activation_points": 85,
         "type_texture": "infantryReg",
+        "combine_divisions": ["US_airborne", "US_motorized"],
+        "rule_exclusions": [
+            "HMGteam_Mk19_US",
+            "HMGteam_M2HB_US",
+            "HMGteam_M60_US",
+        ],
     },
     "US_armored": {
         "guid": "fbe63b07-12ba-42a2-83d7-256da9eaee93",
@@ -56,7 +68,7 @@ us_new_divs = {
         "div_name": ("USA Armored", "QFULKVAART"),
         "div_power": "DC_PWR1",
         "description_title": ("USA Armored", "FDEHSHQXMV"),
-        "activation_points": 90,
+        "activation_points": 100,
         "combine_divisions": ["US_3rd_Arm", "US_11ACR"],
         "type_texture": "armored",
     },
@@ -66,6 +78,7 @@ us_new_divs = {
         "div_name": ("USA Armored / Mechanized", "DNMHIFVPBS"),
         "div_power": "DC_PWR1",
         "description_title": ("USA Armored / Mechanized", "JZIMHUFNZD"),
+        "activation_points": 85,
         "combine_divisions": ["US_armored", "US_mechanized"],
         "type_texture": "armored",
     },
@@ -75,6 +88,7 @@ us_new_divs = {
         "div_name": ("USA Armored / Motorized", "SWZWKORUGN"),
         "div_power": "DC_PWR1",
         "description_title": ("USA Armored / Motorized", "JTIJZHFWBO"),
+        "activation_points": 85,
         "combine_divisions": ["US_armored", "US_motorized"],
         "type_texture": "armored",
     },
@@ -84,6 +98,7 @@ us_new_divs = {
         "div_name": ("USA Mechanized", "TWCAJWWYYT"),
         "div_power": "DC_PWR1",
         "description_title": ("USA Mechanized", "XGPPTRINYD"),
+        "activation_points": 100,
         "combine_divisions": ["US_8th_Inf", "US_6th_Light", "US_24th_Inf", "US_35th_Inf"],
         "type_texture": "infantryReg",
     },
@@ -93,6 +108,7 @@ us_new_divs = {
         "div_name": ("USA Mechanized / Motorized", "ADMMJBOYSE"),
         "div_power": "DC_PWR1",
         "description_title": ("USA Mechanized / Motorized", "RQTJYSELLW"),
+        "activation_points": 85,
         "combine_divisions": ["US_mechanized", "US_motorized"],
         "type_texture": "infantryReg",
     },
@@ -102,7 +118,8 @@ us_new_divs = {
         "div_name": ("USA Motorized", "GLVOWMTEIW"),
         "div_power": "DC_PWR1",
         "description_title": ("USA Motorized", "GWDWLGIIRN"),
-        "combine_divisions": ["US_9th_Mot"],
+        "activation_points": 100,
         "type_texture": "infantryReg",
+        "division_rules": [US_motorized_newdivisionrules, US_global_newdivisionrules],
     },
 }

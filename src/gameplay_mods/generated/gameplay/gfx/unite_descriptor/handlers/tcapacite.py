@@ -28,6 +28,10 @@ def handle_capacite_module(
     else:
         default_skill_list = module.v.by_m("DefaultSkillList")
         _add_capacities(logger, unit_data, edit_type, unit_name, edits, default_skill_list)
+        
+    if edits.get("capacities", {}).get("remove_capacities", []):
+        default_skill_list = module.v.by_m("DefaultSkillList")
+        _remove_capacities(logger, unit_data, edit_type, unit_name, edits, default_skill_list)
     
 
 def _add_capacite_module(
@@ -184,9 +188,19 @@ def _add_capacities(logger, unit_data, edit_type, unit_name, edits, default_skil
     for capacity in capacities_to_add:
         default_skill_list.v.add(f"$/GFX/EffectCapacity/Capacite_{capacity}")
         logger.info(f"Added {capacity} capacities to {unit_name}")
+        
+
+def _remove_capacities(logger, unit_data, edit_type, unit_name, edits, default_skill_list) -> None:
+    """Remove capacities from a unit"""
     
-    # capacities_to_remove
     capacities_to_remove = edits.get("capacities", {}).get("remove_capacities", [])
-    for capacity in capacities_to_remove:
-        default_skill_list.v.remove(f"$/GFX/EffectCapacity/Capacite_{capacity}")
-        logger.info(f"Removed {capacity} capacities from {unit_name}")
+    indices_to_remove = []
+    for capacity in default_skill_list.v:
+        capacity_name = capacity.v.split("$/GFX/EffectCapacity/Capacite_")[1]
+        if capacity_name in capacities_to_remove:
+            indices_to_remove.append((capacity.index, capacity_name))
+            logger.info(f"Removed {capacity_name} capacities from {unit_name}")
+    
+    for index, capacity_name in sorted(indices_to_remove, key=lambda x: x[0], reverse=True):
+        default_skill_list.v.remove(index)
+        logger.info(f"Removed {capacity_name} from {unit_name}")

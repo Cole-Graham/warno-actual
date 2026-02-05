@@ -989,6 +989,27 @@ rfa_unit_edits = {
         "availability": [0, 4, 0, 0],
     },
     
+    "F4F_Phantom_II_LGB_RFA": { # 2x GBU-16
+        "CommandPoints": 190,
+        "GameName": {
+            "display": "F-4F [PGB]",
+        },
+        "availability": [0, 1, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "Bomb_GBU_12_salvolength2": 1,
+            },
+            "equipmentchanges": {
+                "replace": [("Bomb_GBU_12", "Bomb_GBU_12_salvolength2")],
+            },
+        },
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 375,
+            },
+        },
+    },
+    
     "G91_R3_Gina_HE_RFA": {
         "CommandPoints": 65,
         "availability": [0, 5, 0, 0],

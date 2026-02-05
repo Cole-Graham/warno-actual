@@ -8,6 +8,27 @@ WEAPON_DESCRIPTIONS = {
     ))
 }
 
+WEAPON_DESCRIPTION_EDITS = {
+    "pgb": {
+        "category": (
+            "EBKQBGCEHE",
+            "PRECISION GUIDED BOMB"
+        ),
+        "description": (
+            "VIFCZPOOHH",
+            (
+                "Precision Guided Bombs (PGBs) come in two forms: laser-guided and electro-optical. "
+                "Laser-guided bombs are more accurate but require active designation at the moment of impact, "
+                "although by spacing out the bombs the pilot can (in theory) rapidly switch the laser to effectively "
+                "guide onto multiple targets within a limited radius. Electro-optical bombs are less accurate but can "
+                "be used to attack multiple targets across a much wider area.\n\n"
+                "Tip: The main advantage of Electro-optical bombs is that you can queue up multiple fire position "
+                "commands at once, while laser-guided bombs require you to manually switch targets as each bomb is launched."
+            )
+        ),
+    },
+}
+
 WEAPON_TRAIT_EDITS = {
     "thermobaric": (
         f"Thermobaric weapons are specialized at destroying infantry and soft targets. "

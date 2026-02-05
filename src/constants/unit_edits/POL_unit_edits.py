@@ -947,9 +947,9 @@ pol_unit_edits = {
         "availability": [0, 4, 3, 2],
         "WeaponDescriptor": {
             "turrets": {
-                1: {
+                0: {
                     "MountedWeapons": {
-                        "add": {
+                        "insert": {
                             "Mortier_Vasilek_indirect_82mm_towed": {
                                 "Ammunition": "$/GFX/Weapon/Ammo_Mortier_Vasilek_indirect_82mm_SMOKE_towed",
                                 "DispersionRadiusOffColor": "RGBA[0,0,0,0]",
@@ -1410,7 +1410,6 @@ pol_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
-        "DeploymentShift": 0,
     },
     
     "Scout_POL": {  # Zwiadowcy
@@ -1439,7 +1438,6 @@ pol_unit_edits = {
                 "RocketInf_RPG7": 4,
             },
         },
-        "DeploymentShift": 0,
     },
     
     "Scout_para_POL": {  # Desant. Zwiadowcy
@@ -1478,7 +1476,6 @@ pol_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
-        "DeploymentShift": 0,
         "GameName": {
             "display": "#RECO2 ROZP. SPECJALNE [GSR]",
         },
@@ -1520,7 +1517,6 @@ pol_unit_edits = {
                 "RocketInf_RPG7VL": 4,
             },
         },
-        "DeploymentShift": 0,
     },
     # TODO: Find out what happened to this unit
     # "Scout_SF_Para_POL": {  # Desant. Rozp. Specjalne
@@ -2025,7 +2021,7 @@ pol_unit_edits = {
         "CommandPoints": 180,
         "WeaponDescriptor": {
             "turrets": {
-                2: {
+                1: {
                     "AngleRotationMax": 1.745329,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,

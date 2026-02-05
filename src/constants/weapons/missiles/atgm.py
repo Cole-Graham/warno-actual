@@ -233,6 +233,18 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("ATGM_GLHL", "ATGM", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 26,
+            },
+        },
+        "SupplyCost": 115.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [2],
+        },
+    },
+    
     ("ATGM_BGM71D_TOW_2A_IFV", "ATGM", None, False): {
         "Ammunition": {
             "Arme": {

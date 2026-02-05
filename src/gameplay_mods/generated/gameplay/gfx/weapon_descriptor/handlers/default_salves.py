@@ -25,6 +25,17 @@ def apply_default_salves(source_path: Any, logger, game_db: Dict[str, Any], unit
         for weapon_descr_name, weapon_descr_data in ammo_db["salves_map"].items():
             skip_weapon_descr_ammo_name = False
             unit_name = weapon_descr_name.replace("WeaponDescriptor_", "")
+            
+            # Track replacements for this unit to match against salves_map entries
+            unit_replacements = {}
+            if unit_name in unit_edits and "WeaponDescriptor" in unit_edits[unit_name]:
+                replacements = unit_edits[unit_name]["WeaponDescriptor"].get("equipmentchanges", {}).get("replace", [])
+                for replacement in replacements:
+                    if len(replacement) == 4:
+                        current, new, old_fire_effect, new_fire_effect = replacement
+                    else:
+                        current, new = replacement
+                    unit_replacements[new] = current  # Map new -> old for lookup
 
             # Check if this weapon should be skipped due to unit edits
             for unit, edits in unit_edits.items():
@@ -55,19 +66,29 @@ def apply_default_salves(source_path: Any, logger, game_db: Dict[str, Any], unit
                 continue
 
             for weapon_ammo, salvo_indices in weapon_descr_data["salves"].items():
-
-                if old_name and weapon_ammo == old_name:
+                # Check if weapon_ammo matches ammo_name directly
+                if weapon_ammo == ammo_name:
+                    logger.debug(f"ammo_name: {ammo_name}, old_name: {old_name}")
+                    weapon_descr = source_path.by_n(weapon_descr_name)
+                    salves = weapon_descr.v.by_m("Salves")
+                    salves.v[salvo_indices[0]].v = str(default_salves)
+                    logger.info(f"Applied default salves ({default_salves}) for {ammo_name} to {weapon_descr_name}")
+                    break
+                
+                # Check if weapon_ammo matches the old name from renames
+                elif old_name and weapon_ammo == old_name:
                     logger.debug(f"ammo_name: {ammo_name}, old_name: {old_name}")
                     weapon_descr = source_path.by_n(weapon_descr_name)
                     salves = weapon_descr.v.by_m("Salves")
                     salves.v[salvo_indices[0]].v = str(default_salves)
                     logger.info(f"Applied default salves ({default_salves}) for {old_name} to {weapon_descr_name}")
                     break
-
-                elif weapon_ammo == ammo_name:
-                    logger.debug(f"ammo_name: {ammo_name}, old_name: {old_name}")
+                
+                # Check if weapon_ammo is the old ammo that was replaced with ammo_name via unit edits
+                elif ammo_name in unit_replacements and weapon_ammo == unit_replacements[ammo_name]:
+                    logger.debug(f"ammo_name: {ammo_name}, weapon_ammo (replaced): {weapon_ammo}")
                     weapon_descr = source_path.by_n(weapon_descr_name)
                     salves = weapon_descr.v.by_m("Salves")
                     salves.v[salvo_indices[0]].v = str(default_salves)
-                    logger.info(f"Applied default salves ({default_salves}) for {ammo_name} to {weapon_descr_name}")
+                    logger.info(f"Applied default salves ({default_salves}) for {ammo_name} (replacing {weapon_ammo}) to {weapon_descr_name}")
                     break

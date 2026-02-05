@@ -331,15 +331,35 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "Arme": {
                 "Family": "DamageFamily_pgb_bomb",
             },
+            "hit_roll": {
+                "Idling": 50,
+                "Moving": 50,
+            },
             "parent_membr": {
-                "MaximumRangeGRU": 3500,
-                "TimeBetweenTwoSalvos": 1.0,
-                "AimingTime": 0.3,
+                "add": [34, "IsFireAndForget = True"],
+                "TraitsToken": ['MOTION', 'F&F', 'HE'],
+                "TimeBetweenTwoShots": 1.2,
+                "TimeBetweenTwoFx": 1.2,
+                "MaximumRangeGRU": 3850,
+                "AngleDispersion": 0.008726646,
+                "DispersionAtMaxRangeGRU": 110,
+                "DispersionAtMinRangeGRU": 110,
+                "RadiusSplashPhysicalDamagesGRU": 200,
+                "RadiusSplashSuppressDamagesGRU": 267,
+                "SpeedGRU": 1400,
+                "MaxAccelerationGRU": 700,
+                "TimeBetweenTwoSalvos": 1.2,
+                "NbSalvosShootOnPosition": 1,
             },
         },
         "SupplyCost": 100.0,
         "WeaponDescriptor": {
             "SalvoLengths": [2, 1],
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 1400,
+            "MaxAccelerationGRU": 700,
+            "AutoGyr": 0.5235988, # 30 degrees
         },
     },
     
@@ -348,17 +368,35 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "Arme": {
                 "Family": "DamageFamily_pgb_bomb",
             },
+            "hit_roll": {
+                "Idling": 65,
+                "Moving": 65,
+            },
             "parent_membr": {
                 "add": [34, "IsFireAndForget = True"],
+                "Caliber": ("Laser Designation", "KNIPQIBDLF"),
                 "TraitsToken": ['MOTION', 'F&F', 'HE'],
-                "MaximumRangeGRU": 3500,
-                "TimeBetweenTwoSalvos": 2.5,
-                "AimingTime": 0.3,
+                "TimeBetweenTwoShots": 0.7,
+                "TimeBetweenTwoFx": 0.7,
+                "MaximumRangeGRU": 3850,
+                "AngleDispersion": 0.008726646,
+                "DispersionAtMaxRangeGRU": 110,
+                "DispersionAtMinRangeGRU": 110,
+                "RadiusSplashPhysicalDamagesGRU": 250,
+                "RadiusSplashSuppressDamagesGRU": 333,
+                "SpeedGRU": 1400,
+                "MaxAccelerationGRU": 700,
+                "TimeBetweenTwoSalvos": 0.7,
             },
         },
         "SupplyCost": 160.0,
         "WeaponDescriptor": {
             "SalvoLengths": [3, 2, 1],
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 1400,
+            "MaxAccelerationGRU": 700,
+            "AutoGyr": 0.5235988, # 30 degrees
         },
     },
     
@@ -367,17 +405,35 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "Arme": {
                 "Family": "DamageFamily_pgb_bomb",
             },
+            "hit_roll": {
+                "Idling": 50,
+                "Moving": 50,
+            },
             "parent_membr": {
                 "add": [34, "IsFireAndForget = True"],
                 "TraitsToken": ['MOTION', 'F&F', 'HE'],
-                "MaximumRangeGRU": 3500,
-                "TimeBetweenTwoSalvos": 2.5,
-                "AimingTime": 0.3,
+                "TimeBetweenTwoShots": 1.2,
+                "TimeBetweenTwoFx": 1.2,
+                "MaximumRangeGRU": 3850,
+                "AngleDispersion": 0.008726646,
+                "DispersionAtMaxRangeGRU": 110,
+                "DispersionAtMinRangeGRU": 110,
+                "RadiusSplashPhysicalDamagesGRU": 250,
+                "RadiusSplashSuppressDamagesGRU": 333,
+                "SpeedGRU": 1400,
+                "MaxAccelerationGRU": 700,
+                "TimeBetweenTwoSalvos": 1.2,
+                "NbSalvosShootOnPosition": 1,
             },
         },
         "SupplyCost": 160.0,
         "WeaponDescriptor": {
-            "SalvoLengths": [2, 1],
+            "SalvoLengths": [3, 2, 1],
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 1400,
+            "MaxAccelerationGRU": 700,
+            "AutoGyr": 0.5235988, # 30 degrees
         },
     },
     
@@ -386,17 +442,35 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "Arme": {
                 "Family": "DamageFamily_pgb_bomb",
             },
+            "hit_roll": {
+                "Idling": 65,
+                "Moving": 65,
+            },
             "parent_membr": {
                 "add": [34, "IsFireAndForget = True"],
+                "Caliber": ("Laser Designation", "KNIPQIBDLF"),
                 "TraitsToken": ['MOTION', 'F&F', 'HE'],
-                "MaximumRangeGRU": 3500,
-                "TimeBetweenTwoSalvos": 5,
-                "AimingTime": 0.3,
+                "TimeBetweenTwoShots": 0.7,
+                "TimeBetweenTwoFx": 0.7,
+                "MaximumRangeGRU": 3850,
+                "AngleDispersion": 0.008726646,
+                "DispersionAtMaxRangeGRU": 110,
+                "DispersionAtMinRangeGRU": 110,
+                "RadiusSplashPhysicalDamagesGRU": 250,
+                "RadiusSplashSuppressDamagesGRU": 333,
+                "SpeedGRU": 1400,
+                "MaxAccelerationGRU": 700,
+                "TimeBetweenTwoSalvos": 0.7,
             },
         },
         "SupplyCost": 140.0,
         "WeaponDescriptor": {
-            "SalvoLengths": [2, 1],
+            "SalvoLengths": [4, 2, 1],
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 1400,
+            "MaxAccelerationGRU": 700,
+            "AutoGyr": 0.5235988, # 30 degrees
         },
     },
 
@@ -405,17 +479,112 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "Arme": {
                 "Family": "DamageFamily_pgb_bomb",
             },
+            "hit_roll": {
+                "Idling": 65,
+                "Moving": 65,
+            },
             "parent_membr": {
                 "add": [34, "IsFireAndForget = True"],
+                "Caliber": ("Laser Designation", "KNIPQIBDLF"),
                 "TraitsToken": ['MOTION', 'F&F', 'HE'],
-                "MaximumRangeGRU": 3500,
-                "TimeBetweenTwoSalvos": 5,
-                "AimingTime": 0.3,
+                "TimeBetweenTwoShots": 0.7,
+                "TimeBetweenTwoFx": 0.7,
+                "MaximumRangeGRU": 3850,
+                "AngleDispersion": 0.008726646,
+                "DispersionAtMaxRangeGRU": 110,
+                "DispersionAtMinRangeGRU": 110,
+                "RadiusSplashPhysicalDamagesGRU": 150,
+                "RadiusSplashSuppressDamagesGRU": 200,
+                "SpeedGRU": 1400,
+                "MaxAccelerationGRU": 700,
+                "TimeBetweenTwoSalvos": 0.7,
             },
         },
-        "SupplyCost": 70.0,
+        "SupplyCost": 85.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [4, 2, 1],
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 1400,
+            "MaxAccelerationGRU": 700,
+            "AutoGyr": 0.5235988, # 30 degrees
+        },
+    },
+    
+    # "CPU-123" is a made up term for GBU-16 by Eduard Brassin scale models
+    ("Bomb_CPU_123", "LGB", None, False): {
+        "Ammunition": {
+            "display": "GBU-16",
+            "token": "THMDZGKPIM",
+            "Arme": {
+                "Family": "DamageFamily_pgb_bomb",
+            },
+            "hit_roll": {
+                "Idling": 65,
+                "Moving": 65,
+            },
+            "parent_membr": {
+                "add": [34, "IsFireAndForget = True"],
+                "Caliber": ("Laser Designation", "KNIPQIBDLF"),
+                "TraitsToken": ['MOTION', 'F&F', 'HE'],
+                "TimeBetweenTwoShots": 0.7,
+                "TimeBetweenTwoFx": 0.7,
+                "MaximumRangeGRU": 3850,
+                "AngleDispersion": 0.008726646,
+                "DispersionAtMaxRangeGRU": 110,
+                "DispersionAtMinRangeGRU": 110,
+                "RadiusSplashPhysicalDamagesGRU": 200,
+                "RadiusSplashSuppressDamagesGRU": 267,
+                "SpeedGRU": 1400,
+                "MaxAccelerationGRU": 700,
+                "TimeBetweenTwoSalvos": 0.7,
+            },
+        },
+        "SupplyCost": 100.0,
         "WeaponDescriptor": {
             "SalvoLengths": [2, 1],
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 1400,
+            "MaxAccelerationGRU": 700,
+            "AutoGyr": 0.5235988, # 30 degrees
+        },
+    },
+    
+    ("Bomb_GBU_27", "LGB", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_pgb_bomb",
+            },
+            "hit_roll": {
+                "Idling": 65,
+                "Moving": 65,
+            },
+            "parent_membr": {
+                "add": [34, "IsFireAndForget = True"],
+                "Caliber": ("Laser Designation", "KNIPQIBDLF"),
+                "TraitsToken": ['MOTION', 'F&F', 'HE'],
+                "TimeBetweenTwoShots": 0.7,
+                "TimeBetweenTwoFx": 0.7,
+                "MaximumRangeGRU": 3850,
+                "AngleDispersion": 0.008726646,
+                "DispersionAtMaxRangeGRU": 110,
+                "DispersionAtMinRangeGRU": 110,
+                "RadiusSplashPhysicalDamagesGRU": 250,
+                "RadiusSplashSuppressDamagesGRU": 333,
+                "SpeedGRU": 1400,
+                "MaxAccelerationGRU": 700,
+                "TimeBetweenTwoSalvos": 0.7,
+            },
+        },
+        "SupplyCost": 140.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [2, 1],
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 1400,
+            "MaxAccelerationGRU": 700,
+            "AutoGyr": 0.5235988, # 30 degrees
         },
     },
     

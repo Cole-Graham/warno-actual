@@ -80,8 +80,18 @@ fr_unit_edits = {
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "add": [(2, "RocketInf_LRAC_F1")],
-                "add_edits": {
+                "insert": [(1, "RocketInf_LRAC_F1")],
+                "insert_edits": {
+                    1: {
+                        "turret_edits": {
+                            "YulBoneOrdinal": 2,
+                        },
+                        "SalvoStockIndex": 1,
+                        "HandheldEquipmentKey": "'WeaponAlternative_2'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_2"],
+                    },
                     2: {
                         "turret_edits": {
                             "YulBoneOrdinal": 3,
@@ -98,7 +108,7 @@ fr_unit_edits = {
                 },
             },
             "Salves": {
-                "add": [(2, 6)],
+                "insert": [(2, 6)],
                 "FM_FAMAS": 11,
             },
         },
@@ -199,9 +209,12 @@ fr_unit_edits = {
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "add": [(2, "RocketInf_LRAC_F1")],
-                "add_edits": {
+                "insert": [(2, "RocketInf_LRAC_F1")],
+                "insert_edits": {
                     2: {
+                        "turret_edits": {
+                            "YulBoneOrdinal": 3,
+                        },
                         "SalvoStockIndex": 2,
                         "HandheldEquipmentKey": "'WeaponAlternative_3'",
                         "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
@@ -211,7 +224,7 @@ fr_unit_edits = {
                 },
             },
             "Salves": {
-                "add": [(2, 6)],
+                "insert": [(2, 6)],
                 "FM_FAMAS": 11,
             },
         },

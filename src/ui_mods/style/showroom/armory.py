@@ -18,12 +18,7 @@ def edit_uispecificshowroomarmorycomponent(source_path) -> None:
     source_path.by_namespace("MaxUnitsInDeckPerCategory").v = "11"
     logger.debug("Updated max units in deck per category")
     
-    armory_component = source_path.by_namespace("ArmoryComponentDescriptor")
-    unit_pack_descriptor = armory_component.v.by_member("UnitPackDescriptor")
-    unit_pack_descriptor.v.by_member("FirstMargin").v = "TRTTILength(Magnifiable = 9.0)"
-    unit_pack_descriptor.v.by_member("LastMargin").v = "TRTTILength(Magnifiable = 10.0)"
-    logger.debug("Updated armory component margins")
-    
+    _edit_armory_component(source_path)
     _edit_category_button_descr(source_path)
     _edit_togglable_filter_button(source_path)
     _edit_division_filter_button(source_path)
@@ -32,6 +27,12 @@ def edit_uispecificshowroomarmorycomponent(source_path) -> None:
     _edit_allegiancedivisionfilter(source_path)
     _edit_unitgridnamefilter(source_path)
 
+def _edit_armory_component(source_path) -> None:
+    """edit ArmoryComponentDescriptor"""
+    
+    # armory_component = source_path.by_namespace("ArmoryComponentDescriptor")
+    # unit_pack_descriptor = armory_component.v.by_member("UnitPackDescriptor")
+    pass
 
 def _edit_category_button_descr(source_path) -> None:
     """edit ArmoryCategoryButtonDescriptor"""
@@ -138,6 +139,6 @@ def _edit_allegiancedivisionfilter(source_path) -> None:
 def _edit_unitgridnamefilter(source_path) -> None:
     """edit UnitGridNameFilter"""
     
-    unitgridnamefilter = source_path.by_namespace("UnitGridNameFilter")
-    unitgridnamefilter.v.by_m("ComponentFrame").v.by_m("MagnifiableWidthHeight").v = "[0.0, 0.0]"
+    # unitgridnamefilter = source_path.by_namespace("UnitGridNameFilter")
+    pass
     

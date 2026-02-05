@@ -41,6 +41,9 @@ def edit_uispecificshowroomdeckcreatorscreencomponent(source_path) -> None:
     # Update FreeCaseDescriptor
     _update_freecasedescriptor(source_path)
     
+    # Update TransportSelectionContainer
+    _update_transportselectioncontainer(source_path)
+    
     # Update activation points component
     _update_activationpointscomponent(source_path)
 
@@ -241,6 +244,7 @@ def _update_transport_button(source_path) -> None:
     notransportbuttondescriptor.by_member("BorderLineColorToken").v = '"BoutonVignetteAchatArmory_M81"'
     logger.debug("Updated transport button border color")
 
+
 def _update_freecasedescriptor(source_path) -> None:
     """Update FreeCaseDescriptor"""
     freecasedescriptor = source_path.by_namespace("FreeCaseDescriptor").v
@@ -250,3 +254,18 @@ def _update_freecasedescriptor(source_path) -> None:
             continue
         component.v.by_member("TextureColorToken").v = '"DeckCreator/SlotLibre_M81"'
     logger.debug("Updated FreeCaseDescriptor")
+
+
+def _update_transportselectioncontainer(source_path) -> None:
+    """Update TransportSelectionContainer"""
+    transportselectioncontainer = source_path.by_namespace("TransportSelectionContainer")
+    component_frame = transportselectioncontainer.v.by_m("ComponentFrame")
+    # component_frame.v.by_m("MagnifiableOffset").v = "[0.0, 175.0]"
+    # transportselectioncontainer.v.by_m("FirstMargin").v = "TRTTILength(Magnifiable = 4.5)"
+    # transportselectioncontainer.v.by_m("InterItemMargin").v = "TRTTILength(Magnifiable = 2.0)"
+    # transportselectioncontainer.v.by_m("LastMargin").v = "TRTTILength(Magnifiable = 4.5)"
+    
+    transportslistcontent = source_path.by_namespace("TransportsListContent")
+    transportslistcontent.v.by_m("FirstMargin").v = "TRTTILength(Magnifiable = 8.0)"
+    transportslistcontent.v.by_m("InterItemMargin").v = "TRTTILength(Magnifiable = 8.0)"
+    transportslistcontent.v.by_m("LastMargin").v = "TRTTILength(Magnifiable = 8.0)"

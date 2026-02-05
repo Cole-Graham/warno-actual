@@ -83,8 +83,10 @@ def _edit_depictions(source_path: Any, ndf_file: str) -> None:
                             logger.info(f"Replaced {member} with {replacement} = {new_value} for {unit_name}")
                     elif row_name_or_type == "WeaponShootDataPropertyName":
                         if isinstance(value, list):
-                            value = "[" + ",".join(value) + "]"
-                            operator.v.by_m(row_name_or_type).v = value
+                            ndf_list = ndf.model.List()
+                            for item in value:
+                                ndf_list.add(f"'{item}'")
+                            operator.v.by_m(row_name_or_type).v = ndf_list
                             logger.info(f"Edited {row_name_or_type} for {unit_name}")
                         else:
                             operator.v.by_m(row_name_or_type).v = value

@@ -133,9 +133,12 @@ uk_unit_edits = {
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "add": [(1, "RocketInf_M72A3_LAW_66mm")],
-                "add_edits": {
+                "insert": [(1, "RocketInf_M72A3_LAW_66mm")],
+                "insert_edits": {
                     1: {
+                        "turret_edits": {
+                            "YulBoneOrdinal": 2,
+                        },
                         "SalvoStockIndex": 1,
                         "HandheldEquipmentKey": "'WeaponAlternative_2'",
                         "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
@@ -148,7 +151,7 @@ uk_unit_edits = {
                 },
             },
             "Salves": {
-                "add": [(1, 7)], # (salve_index, salves)
+                "insert": [(1, 7)], # (salve_index, salves)
                 "PM_Sterling": 22,
             },
         },
@@ -279,22 +282,34 @@ uk_unit_edits = {
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "availability": [0, 0, 5, 4],
         "max_speed": 26,
-        "WeaponAssignment": [
-                (0, [0, ]),
-                (1, [0, ]),
-                (2, [0, ]),
-                (3, [0, ]),
-                (4, [0, ]),
-                (5, [0, ]),
-                (6, [0, 1]),
-                (7, [0, 2]),
-            ],
         "WeaponDescriptor": {
             "Salves": {
-                "add": [(2, 7)], # (turret, salves)
+                "insert": [(2, 7)], # (salves_index, salves)
             },
             "equipmentchanges": {
-                "add": [(2, "RocketInf_M72A3_LAW_66mm")],
+                "insert": [(1, "RocketInf_M72A3_LAW_66mm")],
+                "insert_edits": {
+                    1: {
+                        "turret_edits": {
+                            "YulBoneOrdinal": 2,
+                        },
+                        "SalvoStockIndex": 1,
+                        "HandheldEquipmentKey": "'WeaponAlternative_2'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_2"],
+                    },
+                    2: {
+                        "turret_edits": {
+                            "YulBoneOrdinal": 3,
+                        },
+                        "SalvoStockIndex": 2,
+                        "HandheldEquipmentKey": "'WeaponAlternative_3'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
+                    },
+                },
             },
         },
         "remove_zone_capture": None,
@@ -682,7 +697,7 @@ uk_unit_edits = {
         },
         "WeaponDescriptor": {
             "turrets": {
-                1: {
+                0: {
                     "AngleRotationMaxPitch": 1.0,
                 },
             },
@@ -892,7 +907,6 @@ uk_unit_edits = {
     "Scout_Airmobile_UK": {
         "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
-        "DeploymentShift": 0,
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -1092,6 +1106,22 @@ uk_unit_edits = {
             },
             "OpticalStrengths": {
                 "EOpticalStrength/AntiRadar": 5000,
+            },
+        },
+    },
+    
+    "Buccaneer_S2B_GBU_UK": { # 2x GBU-16
+        "CommandPoints": 210,
+        "GameName": {
+            "display": "BUCCANEER S.2B [PGB]",
+        },
+        "availability": [0, 1, 0, 0],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("Bomb_CPU_123", "Bomb_CPU_123_salvolength2")],
+            },
+            "Salves": {
+                "Bomb_CPU_123_salvolength2": 1,
             },
         },
     },

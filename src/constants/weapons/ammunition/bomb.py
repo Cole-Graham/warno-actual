@@ -31,6 +31,24 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("Bomb_Mk84_920kg_salvolength4", "he_bomb", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "SupplyCost": 360.0,
+            },
+        },
+    },
+    
+    ("Bomb_Mk84_920kg_salvolength2", "he_bomb", "Bomb_Mk84_920kg_salvolength4", True): {
+        "Ammunition": {
+            "parent_membr": {
+                "ShotsCountPerSalvo": 2,
+                "SupplyCost": 240.0,
+                "AffichageMunitionParSalve": 2,
+            },
+        },
+    },
+    
     ("Bomb_Mk83_450kg_salvolength2", "he_bomb", None, False): {
         "Ammunition": {
             "parent_membr": {
@@ -82,7 +100,15 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Bomb_Mk81_119kg_salvolength4", "he_bomb", None, False): {
         "Ammunition": {
             "parent_membr": {
-                "SupplyCost": 180.0,
+                "SupplyCost": 150.0,
+            },
+        },
+    },
+    
+    ("Bomb_Mk81_119kg_salvolength2", "he_bomb", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "SupplyCost": 100.0,
             },
         },
     },
@@ -253,6 +279,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "SupplyCost": 460.0,
+            },
+        },
+    },
+    
+    ("Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength12", "clu_bomb", None, False): { # 44
+        "Ammunition": {
+            "parent_membr": {
+                "SupplyCost": 630.0,
             },
         },
     },

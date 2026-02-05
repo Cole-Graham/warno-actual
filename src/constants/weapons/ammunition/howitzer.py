@@ -179,6 +179,53 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("Howz_Canon_M119_Howitzer_105mm", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "TimeBetweenTwoShots": 4.2,
+                "PhysicalDamages": 3.0,
+                "SuppressDamages": 187,
+                "RadiusSplashPhysicalDamagesGRU": 105,
+                "RadiusSplashSuppressDamagesGRU": 140,
+                "ShotsCountPerSalvo": 6,
+                "SupplyCost": 120.0,
+                "AffichageMunitionParSalve": 6,
+            },
+        },
+    },
+    
+    ("Howz_Canon_M119_Howitzer_105mm_SMOKE", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "TimeBetweenTwoShots": 4.2,
+                "ShotsCountPerSalvo": 6,
+                "AffichageMunitionParSalve": 6,
+            },
+        },
+    },
+    
+    ("Howz_Canon_M198_Howitzer_155mm", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 4.2,
+                "SuppressDamages": 357,
+                "RadiusSplashPhysicalDamagesGRU": 155,
+                "RadiusSplashSuppressDamagesGRU": 207,
+            },
+        },
+    },
+    
+    ("Howz_Canon_M198_Howitzer_155mm_guided", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 4.2,
+                "SuppressDamages": 357,
+                "RadiusSplashPhysicalDamagesGRU": 155,
+                "RadiusSplashSuppressDamagesGRU": 207,
+            },
+        },
+    },
+    
     ("Howz_Canon_FH70_Howitzer_155mm", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {

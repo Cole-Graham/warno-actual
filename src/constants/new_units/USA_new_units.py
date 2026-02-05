@@ -200,13 +200,13 @@ USA_NEW_UNITS = {
         ],
         "WeaponDescriptor": {
             "Salves": {
-                "add": [(1, 10), ],
+                "insert": [(1, 10), ],
                 "FM_M16": 11,
                 "MMG_inf_M240B_7_62mm": 30,
                 "M47_DRAGON_II": 2,
             },
             "equipmentchanges": {
-                "add": [(1, "Sniper_M21", "Sniper_M14")],
+                "insert": [(1, "Sniper_M21", "Sniper_M14")],
                 "update": [2],
                 "replace": [
                     ("MMG_inf_M240B_7_62mm", "M47_DRAGON_II", "MMG_inf_M240B_7_62mm", "M47_DRAGON_II"),
@@ -290,13 +290,13 @@ USA_NEW_UNITS = {
         ],
         "WeaponDescriptor": {
             "Salves": {
-                "add": [(1, 10), ],
+                "insert": [(1, 10), ],
                 "FM_M16": 11,
                 "MMG_inf_M240B_7_62mm": 30,
                 "M47_DRAGON_II": 2,
             },
             "equipmentchanges": {
-                "add": [(1, "Sniper_M21", "Sniper_M14")],
+                "insert": [(1, "Sniper_M21", "Sniper_M14")],
                 "update": [2],
                 "replace": [
                     ("MMG_inf_M240B_7_62mm", "M47_DRAGON_II", "MMG_inf_M240B_7_62mm", "M47_DRAGON_II"),
@@ -402,13 +402,13 @@ USA_NEW_UNITS = {
         # "Dangerousness": 12,
         "WeaponDescriptor": {
             "Salves": {
-                "add": [(1, 10), ],
+                "insert": [(1, 10), ],
                 "FM_M16": 11,
                 "MANPAD_FIM92": 8,
             },
             "equipmentchanges": {
                 "HAGRU_MANPADS": [(2, 0, "MANPAD_FIM92_HAGRU")], # turret_index, donor_weapon_index, ammo_name
-                "add": [(1, "Sniper_M21", "Sniper_M14")],
+                "insert": [(1, "Sniper_M21", "Sniper_M14")],
                 "update": [2],
                 "replace": [("FM_M16_noreflex", "FM_M16_x5")],
                 "quantity": {
@@ -757,7 +757,7 @@ USA_NEW_UNITS = {
             ],
         },
         "Factory": "EFactory/Logistic",
-        "CommandPoints": 240,
+        "CommandPoints": 225,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -914,13 +914,13 @@ USA_NEW_UNITS = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "add": [(2, 1)],
+                "insert": [(2, 1)],
                 "AGM_AGM88_HARM": 2,
                 "AA_AIM7M_Sparrow": 2,
             },
             "SalvoIsMainSalvo": [False, False, False],
             "equipmentchanges": {
-                "add": [
+                "insert": [
                     (0, "AA_AIM7M_Sparrow", "AA_AIM7M_Sparrow", 2),
                 ],
                 "update": [1, 2],
@@ -931,8 +931,9 @@ USA_NEW_UNITS = {
                     ("AA_AIM9J_Sidewinder", "AGM_AGM65D_Maverick", "AA_AIM9J_Sidewinder", "AGM_AGM65D_Maverick"),
                 ]
             },
+            # TODO: Determine if AGM88 has the Autogyr to support being fired from this angle
             # "turrets": {
-            #     0: {
+            #     1: {
             #         "AngleRotationMax": 1.745329,
             #         "AngleRotationMaxPitch": 0.8726646,
             #         "AngleRotationMinPitch": -0.8726646,
@@ -968,5 +969,84 @@ USA_NEW_UNITS = {
         "Nation": "US",
         "UpgradeFromUnit": "F4_Wild_Weasel_US",
     },
+    
+    # ("F15E_StrikeEagle_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+    #     "GUID": "2dbcabb8-89ec-40bd-9211-30250472822f",
+    #     "GroupeCombatGUID": "f98fafe9-6cbb-409d-b056-645469c252e3",
+    #     "ShowroomGUID": "5cc11987-076e-40c8-bc37-a46062961739",
+    #     "CadavreGUID": "5b6437fd-87df-48a3-89b9-ae4f6f01ebc9",
+    #     "NewName": "F15E_StrikeEagle_PGB2_US",
+    #     "GameName": {
+    #         "display": "F-15E STRIKE EAGLE [PGB/HE]",
+    #         "token": "CZCZSOUKMT",
+    #     },
+    #     "TagSet": {
+    #         "overwrite_all": [
+    #             "Air",
+    #             "AllUnits",
+    #             "AllowedForMissileRoE",
+    #             "Avion",
+    #             "Avion_Bombardier",
+    #             "UNITE_F15E_StrikeEagle_PGB2_US",
+    #             "Unite",
+    #         ],
+    #     },
+    #     "CommandPoints": 330,
+    #     "ECM": -0.45,
+    #     "AirplaneMovement": {
+    #         "parent_membr": {
+    #             "AgilityRadiusGRU": 1375,
+    #         },
+    #         "attack_strategies": {
+    #             "insert": [(2, "BombAttackStrategyDescriptor")],
+    #         },
+    #     },
+    #     "WeaponDescriptor": {
+    #         "Salves": {
+    #             "insert": [(2, 1)],
+    #         },
+    #         "SalvoIsMainSalvo": [False, True, True, False],
+    #         "equipmentchanges": {
+    #             "insert": [
+    #                 (2, "Bomb_Mk84_920kg_salvolength2", "Bomb_Mk84_920kg_x4", 2),
+    #             ],
+    #             "insert_edits": {
+    #                 2: {
+    #                     "SalvoStockIndex": 2,
+    #                     "HandheldEquipmentKey": "'WeaponAlternative_3'",
+    #                     "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
+    #                     "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
+    #                     "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
+    #                 },
+    #                 3: {
+    #                     "SalvoStockIndex": 3,
+    #                     "HandheldEquipmentKey": "'WeaponAlternative_4'",
+    #                     "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_4'",
+    #                     "WeaponIgnoredPropertyName": "'WeaponIgnored_4'",
+    #                     "WeaponShootDataPropertyName": ["WeaponShootData_0_4"],
+    #                 },
+    #             },
+    #         },
+    #     },
+    #     "Divisions": {
+    #         "default": {
+    #             "cards": 1,
+    #         },
+    #     },
+    #     "availability": [0, 0, 0, 1],
+    #     "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit',
+    #                'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection',
+    #                'EOrderType/AirplanePatrol', 'EOrderType/AirplaneAttack', 'EOrderType/AirplaneMoveAndEngage',
+    #                'EOrderType/AirplaneEvacuate', 'EOrderType/AirplaneShoot', 'EOrderType/AIAirplaneAutoManage',
+    #                'EOrderType/AIStop'],
+    #     "is_infantry": False, # False for Javelin LML (unique exception), towed units.
+    #     "is_heavy_equipment": False,
+    #     "is_ground_vehicle": False,
+    #     "is_aerial": True,
+    #     "is_unarmed": False,
+    #     "Faction": "NATO",
+    #     "Nation": "US",
+    #     "UpgradeFromUnit": "F15E_StrikeEagle_US",
+    # },
 } 
 # fmt: on

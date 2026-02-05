@@ -80,6 +80,18 @@ supply_unit_edits = {
         "availability": [6, 0, 0, 0],
     },
     
+    "CUCV_US": {
+        "SupplyCapacity": 675.0,
+        "CommandPoints": 25,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "SupplyDescriptor": "SquadSupply",
+        "availability": [6, 0, 0, 0],
+    },
+    
     "Rover_101FC_supply_UK": {
         "SupplyCapacity": 675.0,
         "CommandPoints": 25,
@@ -261,7 +273,7 @@ supply_unit_edits = {
         "availability": [2, 0, 0, 0],
     },
     
-    "M812_supply_US": {
+    "M812_supply_US": { # M813A1 SUPPLY
         "SupplyCapacity": 2000.0,
         "CommandPoints": 70,
         "Divisions": {
@@ -539,6 +551,18 @@ supply_unit_edits = {
     "CH53G_RFA": {
         "SupplyCapacity": 2400.0,
         "CommandPoints": 95,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "SupplyDescriptor": "DvisionalHeloSupply",
+        "availability": [2, 0, 0, 0],
+    },
+    
+    "CH54B_Tarhe_supply_US": {
+        "SupplyCapacity": 3000.0,
+        "CommandPoints": 130,
         "Divisions": {
             "default": {
                 "cards": 2,

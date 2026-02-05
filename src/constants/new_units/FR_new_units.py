@@ -33,13 +33,32 @@ FR_NEW_UNITS = {
         # "Dangerousness": 12,
         "WeaponDescriptor": {
             "Salves": {
-                "add": [(2, 4),],
+                "insert": [(1, 4)],
                 "FM_FAMAS": 11,
             },
             "equipmentchanges": {
-                "add": [(2, "RocketInf_LRAC_F1", "RocketInf_LRAC_F1")],
-                "quantity": {
-                    "RocketInf_LRAC_F1": 1,
+                "insert": [(1, "RocketInf_LRAC_F1", "RocketInf_LRAC_F1")],
+                "insert_edits": {
+                    2: {
+                        "turret_edits": {
+                            "YulBoneOrdinal": 2,
+                        },
+                        "SalvoStockIndex": 1,
+                        "HandheldEquipmentKey": "'WeaponAlternative_2'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_2"],
+                    },
+                    3: {
+                        "turret_edits": {
+                            "YulBoneOrdinal": 3,
+                        },
+                        "SalvoStockIndex": 2,
+                        "HandheldEquipmentKey": "'WeaponAlternative_3'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
+                    },
                 },
             },
         },
