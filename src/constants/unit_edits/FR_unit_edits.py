@@ -931,11 +931,6 @@ fr_unit_edits = {
     "VLRA_20mm_FR": {
         "CommandPoints": 35,
         "availability": [9, 7, 0, 0],
-        "WeaponDescriptor": {
-            "Salves": {
-                "DCA_1_canon_Bofors_40mm": 15,
-            },
-        },
     },
     
     "MANPAD_Mistral_FR": {

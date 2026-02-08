@@ -17,6 +17,9 @@ from .handlers import (
 
 logger = setup_logger(__name__)
 
+# Units that should skip soldier count updates (strength affects HP but not soldier count)
+UNITS_SKIP_SOLDIER_COUNT_UPDATE = {"KdA_DDR_TargetDummy"}
+
 forward_deploy_old_values = []
 forward_deploy_new_values = [750.0, 1750.0]
 
@@ -268,8 +271,12 @@ def _handle_infantrysquad_module(logger, game_db, unit_data, edit_type, unit_nam
         mimetic_descr.v.by_m("MimeticName").v = f"'{unit_name}'"
     
     if "strength" in edits:
-        module.v.by_m("NbSoldatInGroupeCombat").v = str(edits["strength"])
-        logger.info(f"Updated {unit_name} strength to {edits['strength']}")
+        # Skip updating soldier count for specific units (strength affects HP but not soldier count)
+        if unit_name not in UNITS_SKIP_SOLDIER_COUNT_UPDATE:
+            module.v.by_m("NbSoldatInGroupeCombat").v = str(edits["strength"])
+            logger.info(f"Updated {unit_name} strength to {edits['strength']}")
+        else:
+            logger.debug(f"Skipping soldier count update for {unit_name} (strength {edits['strength']} affects HP only)")
             
 
 # TGenericMovementModuleDescriptor

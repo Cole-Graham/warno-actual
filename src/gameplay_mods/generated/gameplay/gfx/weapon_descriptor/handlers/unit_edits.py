@@ -14,7 +14,7 @@ from src.utils.ndf_utils import (
     strip_quotes,
 )
 
-from .new_units import _should_use_strength_variant
+from .new_units import _should_use_strength_variant, UNITS_SKIP_STRENGTH_VARIANTS
 
 logger = setup_logger(__name__)
 
@@ -444,7 +444,10 @@ def _update_weapon_quantities(
                 # Update ammo name with quantity and strength if needed
                 prefix = current_ammo.split("_", 1)[0]
 
-                if _should_use_strength_variant(base_ammo, game_db):
+                # Skip strength variant generation for specific units
+                use_strength_variant = _should_use_strength_variant(base_ammo, game_db) and (unit_name not in UNITS_SKIP_STRENGTH_VARIANTS)
+
+                if use_strength_variant:
                     if quantity > 1:
                         new_ammo = f"{prefix}_{base_ammo}_strength{unit_strength}_x{quantity}"
                     else:
@@ -692,7 +695,7 @@ def _apply_salvo_changes(weapon_descr: Any, wd_edits: Dict, weapon_descr_data: D
             continue
 
         else:
-            logger.error(f"No salvo edits found for {weapon}")
+            logger.error(f"{weapon} ammo not found in {wd_name}")
 
     # Insert new salvos at specific indices (in reverse order to maintain correct positions)
     if "insert" in salve_edits:

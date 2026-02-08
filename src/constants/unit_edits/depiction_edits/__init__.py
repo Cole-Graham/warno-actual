@@ -1,7 +1,9 @@
 """Unit edits for depiction files."""
 
 from .FR_depiction_edits import (
+    chasseurs_cmd_fr,
     rifles_aero_cmd_fr,
+    sapeurs_cmd_fr,
     scout_aero_fr,
     vab_t20_fr,
 )
@@ -10,6 +12,7 @@ from .POL_depiction_edits import (
     mortier_2b9_vasilek_para_pol,
 )
 from .RDA_depiction_edits import (
+    kda_cmd_ddr,
     mi_24p_s8_at_ddr,
     mi_24p_s8_at2_ddr,
 )
@@ -26,6 +29,8 @@ from .SOV_depiction_edits import (
     sniper_spetsnaz_sov,
 )
 from .UK_depiction_edits import (
+    airmobile_mot_cmd_uk,
+    engineers_cmd_uk,
     rover_101fc_supply_uk,
 )
 from .USA_depiction_edits import (
@@ -50,7 +55,9 @@ from .USA_depiction_edits import (
 
 __all__ = [
     # FR
+    "chasseurs_cmd_fr",
     "rifles_aero_cmd_fr",
+    "sapeurs_cmd_fr",
     "scout_aero_fr",
     "vab_t20_fr",
     
@@ -59,6 +66,7 @@ __all__ = [
     "mortier_2b9_vasilek_para_pol",
     
     # RDA
+    "kda_cmd_ddr",
     "mi_24p_s8_at_ddr",
     "mi_24p_s8_at2_ddr",
     
@@ -75,12 +83,15 @@ __all__ = [
     "sniper_spetsnaz_sov",
     
     # UK
+    "airmobile_mot_cmd_uk",
+    "engineers_cmd_uk",
     "rover_101fc_supply_uk",
     
     # USA
     "a7d_corsair_ii_rkt_us",
     "airborne_engineers_flash_us",
     "airborne_half_dragon_us",
+    "engineer_cmd_us",
     "f4e_phantom_ii_napalm_us",
     "f15e_strikeeagle_us",
     "f16e_napalm_us",

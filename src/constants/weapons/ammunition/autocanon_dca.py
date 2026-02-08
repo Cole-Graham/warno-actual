@@ -86,7 +86,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
-                "MaximumRangeAirplaneGRU": 1925,
+                "MaximumRangeAirplaneGRU": 1750,
                 "AimingTime": 1.2,
             },
         },
@@ -97,7 +97,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
-                "MaximumRangeAirplaneGRU": 1925,
+                "MaximumRangeAirplaneGRU": 1750,
                 "AimingTime": 1.2,
             },
         },
@@ -108,7 +108,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
-                "MaximumRangeAirplaneGRU": 1925,
+                "MaximumRangeAirplaneGRU": 1750,
                 "AimingTime": 1.2,
             },
         },
@@ -119,8 +119,23 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
-                "MaximumRangeAirplaneGRU": 1925,
+                "MaximumRangeAirplaneGRU": 1750,
                 "AimingTime": 1.2,
+            },
+        },
+    },
+    
+    ("DCA_2_canon_Bofors_40mm", "DCA", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
+                "MaximumRangeGRU": 1575,
+                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 1925,
+                "ShotsCountPerSalvo": 20,
+                "AffichageMunitionParSalve": 20,
+                "TimeBetweenTwoSalvos": 1.5,
             },
         },
     },
@@ -144,7 +159,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoFx": 0.3,
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2625,
-                "MaximumRangeAirplaneGRU": 2275,
+                "MaximumRangeAirplaneGRU": 1925,
                 "ShotsCountPerSalvo": 10,
                 "AffichageMunitionParSalve": 10,
                 "TimeBetweenTwoSalvos": 1.5,
@@ -157,7 +172,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2625,
-                "MaximumRangeAirplaneGRU": 2450,
+                "MaximumRangeAirplaneGRU": 2275,
                 "TimeBetweenTwoSalvos": 1.8,
                 "SupplyCost": 8.0,
             },
@@ -171,7 +186,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoFx": 0.4,
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2625,
-                "MaximumRangeAirplaneGRU": 2450,
+                "MaximumRangeAirplaneGRU": 2275,
                 "TimeBetweenTwoSalvos": 2.0,
                 "SupplyCost": 16.0,
             },

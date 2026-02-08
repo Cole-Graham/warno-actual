@@ -1019,5 +1019,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "Salves": 25,
         },
     },
+    
+    ("GatlingAir_Gsh_30_6_30mm", "autocannon", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "NbSalvosShootOnPosition": 0,
+                "CanShootOnPosition": False,
+            },
+        },
+    },
 }
 # fmt: on

@@ -262,8 +262,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketAir_Hydra_70mm_x114_avion", "rocket", "RocketAir_Hydra_70mm_x38_avion", True): {
         "Ammunition": {
             "hit_roll": {
-                "Idling": 10,
-                "Moving": 10,
+                "Idling": 15,
+                "Moving": 15,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 2800,

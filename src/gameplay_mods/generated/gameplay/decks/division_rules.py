@@ -734,8 +734,22 @@ def _convert_custom_division_rule_to_string(unit_name: str, cards: int, availabi
     return rule_str
 
 
+def _get_fob_unit_names() -> set:
+    """Get set of valid FOB unit names from BuildingDescriptors.ndf or known list.
+    
+    Returns:
+        Set of FOB unit names (e.g., {"FOB_US", "FOB_SOV", "FOB_UK", ...})
+    """
+    fob_names = {
+        "FOB_BEL", "FOB_CAN", "FOB_CZ", "FOB_DDR", "FOB_ESP", 
+        "FOB_FR", "FOB_NL", "FOB_POL", "FOB_RFA", "FOB_SOV", 
+        "FOB_TCH", "FOB_UK", "FOB_US",
+    }
+    return fob_names
+
+
 def _validate_unit_name(unit_name: str, game_db: Dict[str, Any]) -> bool:
-    """Validate that a unit name exists in unit_data or NEW_UNITS.
+    """Validate that a unit name exists in unit_data, NEW_UNITS, or FOB units.
     
     Args:
         unit_name: The unit name to validate (without Descriptor_Unit_ prefix)
@@ -753,6 +767,11 @@ def _validate_unit_name(unit_name: str, game_db: Dict[str, Any]) -> bool:
     for donor_unit, unit_info in NEW_UNITS.items():
         if unit_info.get("NewName") == unit_name:
             return True
+    
+    # Check if it's a FOB unit (special building units from BuildingDescriptors.ndf)
+    fob_names = _get_fob_unit_names()
+    if unit_name in fob_names:
+        return True
     
     return False
 
@@ -792,6 +811,7 @@ def _create_national_division_rules(source_path: Any, game_db: Dict[str, Any]) -
         if custom_rules:
             logger.info(f"Creating division rule {new_rule_namespace} from custom division_rules")
             collected_rules: Dict[str, str] = {}  # unit_descriptor -> serialized_rule
+            collected_rule_metadata: Dict[str, Tuple[int, List[str]]] = {}  # unit_descriptor -> (card_count, transport_list)
             
             # Handle division_rules as either a single dict or a list of dicts
             rules_dicts = []
@@ -807,7 +827,7 @@ def _create_national_division_rules(source_path: Any, game_db: Dict[str, Any]) -
             # Process each dictionary in the list
             for rules_dict in rules_dicts:
                 if not isinstance(rules_dict, dict):
-                    logger.warning(f"Invalid entry in division_rules list for {div_key}: expected dict, got {type(rules_dict)}")
+                    logger.warning(f"Invalid entry in division_rules list for {div_key}: expected dict, got {type(rules_dict)}. Skipping this entry.")
                     continue
                 
                 # Process each category in the custom rules dictionary
@@ -864,6 +884,58 @@ def _create_national_division_rules(source_path: Any, game_db: Dict[str, Any]) -
                         
                         unit_descr = f"$/GFX/Unit/Descriptor_Unit_{unit_name}"
                         
+                        # Convert transports to descriptor format for merging
+                        transport_descriptors = []
+                        if transports:
+                            # Filter out None values and convert to descriptors
+                            for transport in transports:
+                                if transport is not None:
+                                    transport_descriptors.append(f"$/GFX/Unit/Descriptor_Unit_{transport}")
+                        
+                        # Check if we've already seen this unit
+                        if unit_descr in collected_rules:
+                            # Compare card counts - keep the one with higher card count, but merge transports
+                            existing_card_count, existing_transports = collected_rule_metadata[unit_descr]
+                            
+                            if cards > existing_card_count:
+                                # Replace with the rule that has more cards, but merge transports from both
+                                logger.debug(f"Replacing duplicate unit {unit_descr} (cards: {existing_card_count} -> {cards})")
+                                merged_transports = _merge_transport_lists(existing_transports, transport_descriptors)
+                                # Convert merged transports back to unit names for rule string creation
+                                merged_transport_names = [t.replace("$/GFX/Unit/Descriptor_Unit_", "") for t in merged_transports] if merged_transports else None
+                                rule_str = _convert_custom_division_rule_to_string(
+                                    unit_name=unit_name,
+                                    cards=cards,
+                                    availability=availability,
+                                    transports=merged_transport_names
+                                )
+                                collected_rules[unit_descr] = rule_str
+                                collected_rule_metadata[unit_descr] = (cards, merged_transports)
+                                logger.debug(f"Merged transports when replacing {unit_descr}: {existing_transports} + {transport_descriptors} -> {merged_transports}")
+                            elif cards == existing_card_count:
+                                # Same card count - merge transports
+                                logger.debug(f"Merging transports for duplicate unit {unit_descr} (cards: {cards})")
+                                merged_transports = _merge_transport_lists(existing_transports, transport_descriptors)
+                                if merged_transports != existing_transports:
+                                    # Update the rule with merged transports
+                                    rule_str = collected_rules[unit_descr]
+                                    updated_rule_str = _update_rule_transports(rule_str, merged_transports)
+                                    collected_rules[unit_descr] = updated_rule_str
+                                    collected_rule_metadata[unit_descr] = (cards, merged_transports)
+                                    logger.debug(f"Merged transports for {unit_descr}: {existing_transports} + {transport_descriptors} -> {merged_transports}")
+                            else:
+                                # Existing rule has more cards - merge transports into existing rule
+                                logger.debug(f"Merging transports into existing rule for {unit_descr} (existing cards: {existing_card_count}, new cards: {cards})")
+                                merged_transports = _merge_transport_lists(existing_transports, transport_descriptors)
+                                if merged_transports != existing_transports:
+                                    # Update the rule with merged transports
+                                    rule_str = collected_rules[unit_descr]
+                                    updated_rule_str = _update_rule_transports(rule_str, merged_transports)
+                                    collected_rules[unit_descr] = updated_rule_str
+                                    collected_rule_metadata[unit_descr] = (existing_card_count, merged_transports)
+                                    logger.debug(f"Merged transports for {unit_descr}: {existing_transports} + {transport_descriptors} -> {merged_transports}")
+                            continue
+                        
                         # Convert to rule string
                         rule_str = _convert_custom_division_rule_to_string(
                             unit_name=unit_name,
@@ -872,11 +944,8 @@ def _create_national_division_rules(source_path: Any, game_db: Dict[str, Any]) -
                             transports=transports
                         )
                         
-                        # If unit already exists, log a warning (later dictionaries override earlier ones)
-                        if unit_descr in collected_rules:
-                            logger.debug(f"Overriding existing rule for {unit_name} in {div_key} (from multiple division_rules dictionaries)")
-                        
                         collected_rules[unit_descr] = rule_str
+                        collected_rule_metadata[unit_descr] = (cards, transport_descriptors)
                         logger.debug(f"Added custom rule for {unit_name} in {div_key}")
             
             if not collected_rules:

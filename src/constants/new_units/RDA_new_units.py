@@ -2,6 +2,70 @@
 
 # fmt: off
 RDA_NEW_UNITS = {
+    ("KdA_DDR", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "5f4a66c6-9baa-48b0-8276-20557fb1cf41",
+        "GroupeCombatGUID": "ce0f6edf-7dbb-4654-a28a-5babfffc1678",
+        "ShowroomGUID": "e460caeb-435d-44a8-b6e6-fcec671f4628",
+        "CadavreGUID": "1416dac9-0b07-4a67-8455-fea6055d2254",
+        "NewName": "KdA_DDR_TargetDummy",
+        "GameName": {
+            "display": "KdA 100",
+            # "display": "#CMD MOT.-SCHÜTZEN FÜH.",
+            "token": "VQYWUZFQCE",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "UNITE_KdA_DDR_TargetDummy",
+                "Unite",
+            ],
+        },
+        "strength": 40,
+        # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
+        "Dangerousness": 12,
+        "TransportedTexture": "UseInGame_Transport_REGINF",
+        "TransportedSoldier": "KdA_DDR_TargetDummy",
+        "armor": "Infantry_armor_reference",
+        "Factory": "EFactory/Logistic",
+        "CommandPoints": 5,
+        "UnitAttackValue": 1,
+        "UnitDefenseValue": 16,
+        "UnitRole": 'infantry',
+        "SpecialtiesList": [
+            '_reservist',
+            '_militia',
+            'infantry_equip_light',
+        ],
+        "MenuIconTexture": "Texture_RTS_H_Infantry",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Inf",
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "availability": [99, 0, 0, 0],
+        "max_speed": 200,
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
+                   'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootOnPositionSmoke',
+                   'EOrderType/ShootOnPositionWithoutCorrectionSmoke', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load',
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": True, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": False,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "is_transport": False,
+        "Faction": "PACT",
+        "Nation": "DDR",
+        "alternatives_count": 3,
+        "selector_tactic": "01_03",
+    },
+    
     ("MotRifles_CMD_DDR", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "847f8c3c-52c8-4a5b-8955-6dc3334ac281",
         "GroupeCombatGUID": "5bed0d57-83b0-46d7-99e6-f69138e38a84",

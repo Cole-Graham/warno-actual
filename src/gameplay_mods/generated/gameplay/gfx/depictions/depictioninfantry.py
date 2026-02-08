@@ -330,8 +330,10 @@ def _handle_complex_unit_edits(source_path: Any) -> None:
 
         unit_edits = unit_data["DepictionInfantry_ndf"]
         logger.debug(f"Processing infantry edits for {unit_name}")
+        logger.debug(f"  Found {len(unit_edits)} edit groups for {unit_name}")
 
         for (namespace, obj_type), edits in unit_edits.items():
+            logger.debug(f"  Processing namespace: {namespace}, obj_type: {obj_type}")
             if namespace and namespace.startswith("AllWeaponAlternatives_"):
                 weapon_alternatives = source_path.by_n(namespace)
                 if not weapon_alternatives:
@@ -419,10 +421,12 @@ def _handle_complex_unit_edits(source_path: Any) -> None:
                 tacticdepiction_alternatives.v = edits
 
             elif namespace and namespace.startswith("TacticDepiction_") and namespace.endswith("_Soldier"):
+                logger.debug(f"  Found TacticDepiction_*_Soldier match for {namespace}")
                 tacticdepiction_soldier = source_path.by_n(namespace)
                 if not tacticdepiction_soldier:
                     logger.error(f"Could not find tactic depiction {namespace} for {unit_name}")
                     continue
+                logger.debug(f"  Found tactic depiction object for {namespace}")
 
                 for member, member_edits in edits.items():
                     if member == "Selector":
@@ -466,30 +470,33 @@ def _handle_complex_unit_edits(source_path: Any) -> None:
                             skeletal_animation_operator.add("ConditionalTags = []")
                             conditional_tags = skeletal_animation_operator.by_m("ConditionalTags")
                         
+                        logger.debug(f"  Processing {len(member_edits)} operator edits for {namespace}")
                         for index, (edit_type, edit_list) in member_edits.items():
-                            if edit_type == "replace":
-                                for new_tag, mesh_alternative in edit_list:
-                                    # Remove quotes if present
-                                    # old_tag = old_tag.strip("'")
-                                    # mesh_alternative = mesh_alternative.strip("'")
-
-                                    for tag_tuple in conditional_tags.v:
-                                        # weapon_type = strip_quotes(tag_tuple.v[0])
-                                        mesh_alt = strip_quotes(tag_tuple.v[1])
-
-                                        if mesh_alt == mesh_alternative:
-                                            tag_tuple.v = f"('{new_tag}', '{mesh_alternative}')"
-                                            logger.info(
-                                                f"Replaced tag with {new_tag} for mesh "
-                                                f"{mesh_alternative} in {unit_name}"
-                                            )
+                            logger.debug(f"    Edit at ConditionalTags index {index}: type={edit_type}, list={edit_list}")
+                            if edit_type == "edit":
+                                # Index refers to the position in ConditionalTags list
+                                if index < len(conditional_tags.v):
+                                    for new_tag, mesh_alternative in edit_list:
+                                        tag_tuple = conditional_tags.v[index]
+                                        tag_tuple.v = f"('{new_tag}', '{mesh_alternative}')"
+                                        logger.info(
+                                            f"Updated ConditionalTags[{index}] to ('{new_tag}', '{mesh_alternative}') for {unit_name}"
+                                        )
+                                else:
+                                    logger.warning(
+                                        f"Index {index} out of range for ConditionalTags (length {len(conditional_tags.v)}) "
+                                        f"for {unit_name}. Edit operation skipped."
+                                    )
                             elif edit_type == "insert":
+                                logger.debug(f"    Processing insert operation at ConditionalTags index {index}")
                                 for new_tag, mesh_alternative in edit_list:
                                     new_entry = (
                                         f"('{new_tag}', '{mesh_alternative}')"
                                     )
                                     conditional_tags.v.insert(index, new_entry)
-                                    logger.info(f"Inserted tag {new_tag} for mesh {mesh_alternative} at index {index}")
+                                    logger.info(f"Inserted tag {new_tag} for mesh {mesh_alternative} at ConditionalTags index {index} for {unit_name}")
+                            else:
+                                logger.warning(f"    Unknown edit_type '{edit_type}' for {unit_name} at index {index}")
                                             
             elif namespace and namespace.startswith("TacticDepiction_") and namespace.endswith("_Ghost"):
                 tacticdepiction_ghost = source_path.by_n(namespace)

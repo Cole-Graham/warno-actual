@@ -7,7 +7,7 @@ import inspect
 from . import ModConfig, ndf
 from .gameplay_mods import add_unit_meshes
 from .editors import get_all_editors
-from .utils.asset_utils import copy_assets
+from .utils.asset_utils import copy_assets, copy_fx_files
 from .utils.config_utils import get_mod_dst_path, get_mod_src_path
 from .utils.logging_utils import setup_logger
 
@@ -129,6 +129,7 @@ def main() -> None:
         copy_assets(config)
         if build_target_cfg == "gameplay":
             add_unit_meshes(config)
+            copy_fx_files(config)
 
         logger.info("Build completed successfully")
 

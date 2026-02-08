@@ -337,28 +337,59 @@ def load_depiction_edits() -> Dict:
     
     # Import each faction's edits
     for faction, module_path in faction_modules.items():
+        failed_imports = []
         try:
             module = importlib.import_module(module_path)
             
             # Get all exported variables from __all__
             if hasattr(module, '__all__'):
                 for var_name in module.__all__:
-                    if hasattr(module, var_name):
-                        unit_edits = getattr(module, var_name)
-                        if "unit_name" in unit_edits:
-                            unit_name = unit_edits["unit_name"]
-                            merged_edits[unit_name] = unit_edits
-                            logger.debug(f"Loaded depiction edits for {unit_name}")
+                    try:
+                        if hasattr(module, var_name):
+                            unit_edits = getattr(module, var_name)
+                            if "unit_name" in unit_edits:
+                                unit_name = unit_edits["unit_name"]
+                                merged_edits[unit_name] = unit_edits
+                                logger.debug(f"Loaded depiction edits for {unit_name}")
+                            else:
+                                logger.error(
+                                    f"Variable {var_name} from {faction} module is missing 'unit_name' field. "
+                                    f"This prevents the depiction edits from being loaded."
+                                )
+                                failed_imports.append(var_name)
                         else:
-                            logger.warning(f"No unit_name found in {var_name} from {faction}")
-            else:
-                logger.debug(f"No __all__ defined in {faction} depiction edits")
+                            logger.error(
+                                f"Variable '{var_name}' listed in __all__ but not found in {faction} module "
+                                f"({module_path}). This is likely due to an import error or variable name mismatch "
+                                f"in the module's __init__.py or the source file."
+                            )
+                            failed_imports.append(var_name)
+                    except Exception as e:
+                        logger.error(
+                            f"Error accessing variable '{var_name}' from {faction} module: {str(e)}. "
+                            f"This prevents the depiction edits from being loaded."
+                        )
+                        failed_imports.append(var_name)
                 
-        except ImportError:
-            # Skip if faction module doesn't exist yet
-            logger.debug(f"No depiction edits found for {faction}")
+                if failed_imports:
+                    logger.error(
+                        f"Failed to load {len(failed_imports)} depiction edit(s) from {faction}: {', '.join(failed_imports)}"
+                    )
+            else:
+                logger.warning(f"No __all__ defined in {faction} depiction edits module ({module_path})")
+                
+        except ImportError as e:
+            # ImportError could be due to missing module or import errors within the module
+            logger.error(
+                f"Failed to import {faction} depiction edits module ({module_path}): {str(e)}. "
+                f"This prevents all depiction edits from this faction from being loaded. "
+                f"Check for import errors, missing files, or variable name mismatches."
+            )
         except Exception as e:
-            logger.error(f"Failed to load {faction} depiction edits: {str(e)}")
+            logger.error(
+                f"Unexpected error loading {faction} depiction edits ({module_path}): {str(e)}",
+                exc_info=True,
+            )
     
     logger.info(f"Loaded depiction edits for {len(merged_edits)} units total")
     return merged_edits

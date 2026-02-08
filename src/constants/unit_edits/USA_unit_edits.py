@@ -852,14 +852,14 @@ usa_unit_edits = {
         "GameName": {
             "display": "N.G. ENGINEERS [FLAM]",
         },
-        "CommandPoints": 40,
+        "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "availability": [0, 6, 4, 0],
+        "availability": [6, 0, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -869,9 +869,6 @@ usa_unit_edits = {
                 "replace": [("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm")],
             },
             "Salves": {
-                "PM_GreaseGun": 40,
-                "FM_M16A1": 7,
-                "MMG_M60E1_7_62mm": 30,
                 "flamethrower_M2": 15,
             },
         },
@@ -888,14 +885,13 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": [0, 6, 4, 0],
+        "availability": [6, 0, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_M16A1": 10,
                 "RocketInf_M67_RCL_90mm": 8,
             },
         },
@@ -1573,10 +1569,12 @@ usa_unit_edits = {
     },
 
     "Rifles_half_LAW_NG_US": {
+        "CommandPoints": 20,
         "GameName": {
-            "display": "NG FIRETEAM [LAW]",
+            "display": "N.G. FIRETEAM [LAW]",
         },
         "armor": "Infantry_armor_reference",
+        "availability": [12, 0, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm")],
@@ -1585,12 +1583,12 @@ usa_unit_edits = {
     },
 
     "Rifles_half_Dragon_NG_US": {
+        "CommandPoints": 25,
         "GameName": {
-            "display": "NG FIRETEAM [DRAGON]",
+            "display": "N.G. FIRETEAM [DRAGON]",
         },
-        "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
-        "availability": [15, 12, 0, 0],
+        "availability": [12, 0, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1600,8 +1598,6 @@ usa_unit_edits = {
                 "replace": [("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm")],
             },
             "Salves": {
-                "FM_M16A1": 10,
-                "MMG_M60E1_7_62mm": 30,
                 "M47_DRAGON": 4,
             },
         }
@@ -2565,6 +2561,11 @@ usa_unit_edits = {
         },
     },
     
+    "M151A2_TOW_NG_US": { # N.G. M151A2 I-TOW
+        "CommandPoints": 40,
+        "availability": [10, 0, 0, 0],
+    },
+    
     "M1025_Humvee_TOW_US": {
         "GameName": {
             "display": "M1025 HUMVEE TOW-2",
@@ -2597,10 +2598,32 @@ usa_unit_edits = {
         "CommandPoints": 50,
         "availability": [8, 6, 0, 0],
     },
+    
+    "M113A2_TOW_US": { # N.G. M150A2 TOW-2
+        "CommandPoints": 50,
+        "availability": [8, 6, 0, 0],
+    },
 
     "M728_CEV_US": {
         "CommandPoints": 65,
         "availability": [8, 6, 0, 0],
+    },
+    
+    "M2_Bradley_IFV_NG_US": {
+        "CommandPoints": 50,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [
+                    ("AutoCanon_AP_25mm_M242_Bushmaster_Late", "AutoCanon_AP_25mm_M242_Bushmaster_APDS"),
+                    ("AutoCanon_HE_25mm_M242_Bushmaster_Late", "AutoCanon_HE_25mm_M242_Bushmaster_APDS"),
+                ],
+            },
+        },
     },
 
     "M2A1_Bradley_IFV_US": {
@@ -2924,7 +2947,7 @@ usa_unit_edits = {
 
     "M1A1_Abrams_reco_US": {
         "availability": [0, 3, 2, 0],
-        "CommandPoints": 250,
+        "CommandPoints": 245,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -3313,6 +3336,16 @@ usa_unit_edits = {
             },
         },
     },
+    
+    "M42_Duster_US": {
+        "CommandPoints": 35,
+        "availability": [10, 0, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_Bofors_40mm": 17,
+            },
+        },
+    },
 
     "M163_CS_US": {
         "CommandPoints": 40,
@@ -3550,6 +3583,16 @@ usa_unit_edits = {
         },
         "availability": [0, 0, 0, 3],
     },
+    
+    "UH1M_gunship_US": {
+        "CommandPoints": 70,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [6, 0, 0, 0],
+    },
 
     "AH1F_ATAS_US": {
         "CommandPoints": 130,
@@ -3739,7 +3782,7 @@ usa_unit_edits = {
                 "replace": [("RocketAir_Hydra_70mm_x38_avion", "RocketAir_Hydra_70mm_x114_avion")],
             },
             "turrets": {
-                3: {
+                2: {
                     "MountedWeapons": {
                         "RocketAir_Hydra_70mm_x114_avion": {
                             "WeaponShootDataPropertyName": [

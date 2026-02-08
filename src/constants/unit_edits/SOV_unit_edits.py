@@ -682,6 +682,15 @@ sov_unit_edits = {
             "add_specs": ["'infantry_equip_light'"],
         },
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "animate": {
+                    "SAW_RPK_74_5_56mm": False,
+                },
+                "quantity": {
+                    "FM_AKS_74": 3,
+                    "SAW_RPK_74_5_56mm": 2,
+                },
+            },
             "Salves": {
                 "Grenade_Satchel_Charge": 4,
             },
@@ -746,7 +755,7 @@ sov_unit_edits = {
         "GameName": {
             "display": "DESANT. SAPERY [RPO]",
         },
-        "CommandPoints": 40,
+        "CommandPoints": 45,
         "availability": [0, 9, 7, 0],
         "max_speed": 20,
         "SpecialtiesList": {

@@ -541,7 +541,7 @@ rda_unit_edits = {
     },
 
     "Engineers_DDR": {
-        "CommandPoints": 40,
+        "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
@@ -559,6 +559,7 @@ rda_unit_edits = {
                     "MMG_PKM_7_62mm": False,
                 },
                 "quantity": {
+                    "FM_Mpi_AK_74N": 6,
                     "MMG_PKM_7_62mm": 2,
                 },
             },

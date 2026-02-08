@@ -778,6 +778,35 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("PM_GreaseGun", "small_arms", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_sa_intermediate",
+            },
+            "hit_roll": {
+                "Idling": 45,
+                "Moving": 35,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 0.4,
+                "MaximumRangeGRU": 450,
+                "MaximumRangeHelicopterGRU": 400,
+                "PhysicalDamages": 0.05,
+                "SuppressDamages": 5,
+                "DisplaySalveAccuracy": False,
+                "AimingTime": 0.5,
+                "TimeBetweenTwoSalvos": 3.1,
+                "ShotsCountPerSalvo": 4,
+                "AffichageMunitionParSalve": 20,
+            },
+        },
+        "SupplyCost": 1.0,
+        "NbWeapons": [7, 6, 5, 4, 3, 2],
+        "WeaponDescriptor": {
+            "Salves": 22,               
+        },
+    },
+    
     ("PM_MPi_AKSU_74NK", "small_arms", None, False): {  # 568
         "Ammunition": {
             "Arme": {
@@ -1735,6 +1764,34 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
         "SupplyCost": "MMG_M240_abrams_7_62mm",
         "NbWeapons": "MMG_M240_abrams_7_62mm",
+    },
+    
+    # N.G. UH-1M GUNSHIP, AH-1S COBRA
+    ("Lance_grenade_M129_40mm", "AGL", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 25,
+                "Moving": 15,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 0.2,
+                "MaximumRangeGRU": 1575,
+                "DispersionAtMaxRangeGRU": 70,
+                "RadiusSplashPhysicalDamagesGRU": 30,
+                "PhysicalDamages": 0.25,
+                "RadiusSplashSuppressDamagesGRU": 56,
+                "SuppressDamages": 15.0,
+                "DisplaySalveAccuracy": False,
+                "AimingTime": 2.5,
+                "TimeBetweenTwoSalvos": 4.0,
+                "ShotsCountPerSalvo": 8,
+                "SupplyCost": 5.0,
+                "AffichageMunitionParSalve": 8,
+            },
+        },
+        "WeaponDescriptor": {
+            "Salves": 30,
+        },
     },
     
     ("Lance_grenade_Mk19_40mm", "AGL", None, False): {  # 451

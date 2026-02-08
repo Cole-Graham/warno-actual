@@ -2,7 +2,9 @@
 
 from .new_divisionrules import (
     US_airborne_newdivisionrules,
+    US_armored_newdivisionrules,
     US_global_newdivisionrules,
+    US_mechanized_newdivisionrules,
     US_motorized_newdivisionrules,
 )
 
@@ -14,8 +16,19 @@ us_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("USA", "ZWWJULIVOW"),
         "activation_points": 75,
-        "combine_divisions": ["US_3rd_Arm", "US_11ACR", "US_8th_Inf", "US_82nd_Airborne", "US_101st_Airmobile"],
         "type_texture": "infantryReg",
+        "division_rules": [
+            US_airborne_newdivisionrules,
+            US_armored_newdivisionrules,
+            US_global_newdivisionrules,
+            US_mechanized_newdivisionrules,
+            US_motorized_newdivisionrules,
+        ],
+        "rule_exclusions": [
+            "HMGteam_Mk19_US",
+            "HMGteam_M2HB_US",
+            "HMGteam_M60_US",
+        ],
     },
     "US_airborne": {
         "guid": "a5729c4e-a163-4dd7-8e99-a39fb9ca5d31",
@@ -25,7 +38,10 @@ us_new_divs = {
         "description_title": ("USA Airborne", "FVETLAABRD"),
         "activation_points": 100,
         "type_texture": "infantryReg",
-        "division_rules": [US_airborne_newdivisionrules, US_global_newdivisionrules],
+        "division_rules": [
+            US_airborne_newdivisionrules,
+            US_global_newdivisionrules,
+        ],
     },
     "US_airborne_armored": {
         "guid": "e4107dc6-2618-4579-b2f6-dd8f6f160e8d",
@@ -34,8 +50,17 @@ us_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("USA Airborne / Armored", "BPAZWZQOQP"),
         "activation_points": 85,
-        "combine_divisions": ["US_airborne", "US_armored"],
         "type_texture": "infantryReg",
+        "division_rules": [
+            US_airborne_newdivisionrules,
+            US_armored_newdivisionrules,
+            US_global_newdivisionrules,
+        ],
+        "rule_exclusions": [
+            "HMGteam_Mk19_US",
+            "HMGteam_M2HB_US",
+            "HMGteam_M60_US",
+        ],
     },
     "US_airborne_mechanized": {
         "guid": "a32d7229-4dcc-4673-855b-3e453fee1846",
@@ -44,8 +69,17 @@ us_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("USA Airborne / Mechanized", "QEVEXLTTGG"),
         "activation_points": 85,
-        "combine_divisions": ["US_airborne", "US_mechanized"],
         "type_texture": "infantryReg",
+        "division_rules": [
+            US_airborne_newdivisionrules,
+            US_global_newdivisionrules,
+            US_mechanized_newdivisionrules,
+        ],
+        "rule_exclusions": [
+            "HMGteam_Mk19_US",
+            "HMGteam_M2HB_US",
+            "HMGteam_M60_US",
+        ],
     },
     "US_airborne_motorized": {
         "guid": "d8a90f57-eec1-4399-a9c9-74c8d83b5fff",
@@ -55,7 +89,11 @@ us_new_divs = {
         "description_title": ("USA Airborne / Motorized", "BEDOJYYUIU"),
         "activation_points": 85,
         "type_texture": "infantryReg",
-        "combine_divisions": ["US_airborne", "US_motorized"],
+        "division_rules": [
+            US_airborne_newdivisionrules,
+            US_global_newdivisionrules,
+            US_motorized_newdivisionrules,
+        ],
         "rule_exclusions": [
             "HMGteam_Mk19_US",
             "HMGteam_M2HB_US",
@@ -69,8 +107,11 @@ us_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("USA Armored", "FDEHSHQXMV"),
         "activation_points": 100,
-        "combine_divisions": ["US_3rd_Arm", "US_11ACR"],
         "type_texture": "armored",
+        "division_rules": [
+            US_armored_newdivisionrules,
+            US_global_newdivisionrules,
+        ],
     },
     "US_armored_mechanized": {
         "guid": "13d29ac2-28ce-481f-8e06-c1849f7fcd36",
@@ -79,8 +120,12 @@ us_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("USA Armored / Mechanized", "JZIMHUFNZD"),
         "activation_points": 85,
-        "combine_divisions": ["US_armored", "US_mechanized"],
         "type_texture": "armored",
+        "division_rules": [
+            US_armored_newdivisionrules,
+            US_global_newdivisionrules,
+            US_mechanized_newdivisionrules,
+        ],
     },
     "US_armored_motorized": {
         "guid": "a6ae807e-1e3a-44c9-a4e4-a222b240bc91",
@@ -89,8 +134,12 @@ us_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("USA Armored / Motorized", "JTIJZHFWBO"),
         "activation_points": 85,
-        "combine_divisions": ["US_armored", "US_motorized"],
         "type_texture": "armored",
+        "division_rules": [
+            US_armored_newdivisionrules,
+            US_global_newdivisionrules,
+            US_motorized_newdivisionrules,
+        ],
     },
     "US_mechanized": {
         "guid": "1be5bd50-92da-4c66-aa1e-ef1b6eebb0be",
@@ -99,8 +148,11 @@ us_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("USA Mechanized", "XGPPTRINYD"),
         "activation_points": 100,
-        "combine_divisions": ["US_8th_Inf", "US_6th_Light", "US_24th_Inf", "US_35th_Inf"],
         "type_texture": "infantryReg",
+        "division_rules": [
+            US_global_newdivisionrules,
+            US_mechanized_newdivisionrules,
+        ],
     },
     "US_mechanized_motorized": {
         "guid": "bfb01779-4c5a-4188-88ad-e15f618d71ad",
@@ -109,8 +161,12 @@ us_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("USA Mechanized / Motorized", "RQTJYSELLW"),
         "activation_points": 85,
-        "combine_divisions": ["US_mechanized", "US_motorized"],
         "type_texture": "infantryReg",
+        "division_rules": [
+            US_global_newdivisionrules,
+            US_mechanized_newdivisionrules,
+            US_motorized_newdivisionrules,
+        ],
     },
     "US_motorized": {
         "guid": "9814c02d-4a96-4515-acba-98f2720579ca",
@@ -120,6 +176,9 @@ us_new_divs = {
         "description_title": ("USA Motorized", "GWDWLGIIRN"),
         "activation_points": 100,
         "type_texture": "infantryReg",
-        "division_rules": [US_motorized_newdivisionrules, US_global_newdivisionrules],
+        "division_rules": [
+            US_motorized_newdivisionrules,
+            US_global_newdivisionrules,
+        ],
     },
 }

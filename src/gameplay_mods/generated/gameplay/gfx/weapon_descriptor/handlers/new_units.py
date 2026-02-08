@@ -14,6 +14,9 @@ small_arms_weapons = ammunitions
 
 logger = setup_logger(__name__)
 
+# Units that should skip strength variant generation
+UNITS_SKIP_STRENGTH_VARIANTS = {"KdA_DDR_TargetDummy"}
+
 
 def new_units_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> None:
     """Create weapon descriptors for new units in WeaponDescriptor.ndf"""
@@ -322,7 +325,11 @@ def _insert_weapon(
             prefix = current_ammo.split("_", 1)[0]  # Get $/GFX/Weapon/Ammo part
             quantity = changes.get("quantity", {}).get(weapon_name, int(weapon.v.by_m("NbWeapons").v))
 
-            if _should_use_strength_variant(weapon_name, game_db):
+            # Get unit name to check if we should skip strength variants
+            unit_name = new_weap_row.namespace.replace("WeaponDescriptor_", "")
+            use_strength_variant = _should_use_strength_variant(weapon_name, game_db) and (unit_name not in UNITS_SKIP_STRENGTH_VARIANTS)
+
+            if use_strength_variant:
                 if quantity > 1:
                     new_ammo = f"{prefix}_{weapon_name}_strength{unit_strength}_x{quantity}"
                 else:
@@ -345,7 +352,8 @@ def _insert_weapon(
         if "insert_edits" in changes:
             insert_edits = changes["insert_edits"].get(turret_index)
             if insert_edits:
-                _apply_insert_edits_to_turret_template(new_turret, insert_edits, weapon_name, is_infantry, unit_strength, game_db)
+                unit_name = new_weap_row.namespace.replace("WeaponDescriptor_", "")
+                _apply_insert_edits_to_turret_template(new_turret, insert_edits, weapon_name, is_infantry, unit_strength, game_db, unit_name)
 
         # Insert into target turret list at the specified index - use same pattern as unit_edits.py
         turret_list = new_weap_row.v.by_member("TurretDescriptorList").v
@@ -519,7 +527,11 @@ def _replace_weapon_with_turret(
             prefix = current_ammo.split("_", 1)[0]  # Get $/GFX/Weapon/Ammo part
             quantity = changes.get("quantity", {}).get(new_weapon_name, int(weapon.v.by_m("NbWeapons").v))
             
-            if _should_use_strength_variant(new_weapon_name, game_db):
+            # Get unit name to check if we should skip strength variants
+            unit_name = new_weap_row.namespace.replace("WeaponDescriptor_", "")
+            use_strength_variant = _should_use_strength_variant(new_weapon_name, game_db) and (unit_name not in UNITS_SKIP_STRENGTH_VARIANTS)
+            
+            if use_strength_variant:
                 if quantity > 1:
                     new_ammo = f"{prefix}_{new_weapon_name}_strength{unit_strength}_x{quantity}"
                 else:
@@ -644,13 +656,16 @@ def _replace_weapon(
                 prefix = current_ammo.split("_", 1)[0]  # Get $/GFX/Weapon/Ammo part
                 quantity = int(weapon_descr_row.v.by_m("NbWeapons").v)
                 
+                # Skip strength variant generation for specific units
+                use_strength_variant = _should_use_strength_variant(new_ammo, game_db) and (unit_name not in UNITS_SKIP_STRENGTH_VARIANTS)
+                
                 if quantity > 1:
-                    if _should_use_strength_variant(new_ammo, game_db):
+                    if use_strength_variant:
                         new_ammo_path = f"{prefix}_{new_ammo}_strength{unit_strength}_x{quantity}"
                     else:
                         new_ammo_path = f"{prefix}_{new_ammo}_x{quantity}"
                 else:
-                    if _should_use_strength_variant(new_ammo, game_db):
+                    if use_strength_variant:
                         new_ammo_path = f"{prefix}_{new_ammo}_strength{unit_strength}"
                     else:
                         new_ammo_path = f"{prefix}_{new_ammo}"
@@ -706,7 +721,10 @@ def _update_weapon_quantity(new_weap_row: Any, ammo: str, quantity: int, game_db
 
                 if is_small_arm:
                     prefix = current_ammo.split("_", 1)[0]
-                    if _should_use_strength_variant(ammo, game_db):
+                    # Skip strength variant generation for specific units
+                    use_strength_variant = _should_use_strength_variant(ammo, game_db) and (unit_name not in UNITS_SKIP_STRENGTH_VARIANTS)
+                    
+                    if use_strength_variant:
                         if quantity > 1:
                             new_ammo = f"{prefix}_{ammo}_strength{unit_strength}_x{quantity}"
                         else:
@@ -798,6 +816,12 @@ def _update_unmodified_weapons(new_weap_row: Any, game_db: Dict[str, Any]) -> No
     """Update unmodified weapons to ensure correct strength variants."""
     # Get unit strength from NEW_UNITS
     unit_name = new_weap_row.namespace.replace("WeaponDescriptor_", "")
+    
+    # Skip strength variant generation for specific units
+    if unit_name in UNITS_SKIP_STRENGTH_VARIANTS:
+        logger.debug(f"Skipping strength variant generation for {unit_name}")
+        return
+    
     unit_strength = None
     for donor, edits in NEW_UNITS.items():
         is_infantry = edits.get("is_infantry", False)
@@ -852,6 +876,7 @@ def _apply_insert_edits_to_turret_template(
     is_infantry: bool,
     unit_strength: int,
     game_db: Dict[str, Any],
+    unit_name: str = None,
 ) -> None:
     """Apply insert_edits to a turret template before insertion.
     
@@ -862,6 +887,7 @@ def _apply_insert_edits_to_turret_template(
         is_infantry: Whether the unit is infantry
         unit_strength: Unit strength value
         game_db: Game database containing weapon and ammunition data
+        unit_name: Name of the unit (optional, used to skip strength variants)
     """
     # Apply turret edits
     if "turret_edits" in insert_edits:
@@ -883,7 +909,8 @@ def _apply_insert_edits_to_turret_template(
                 mounted_weapon.v.by_m(membr).v = ndf_list
         
         # Apply strength and quantity variants for infantry small arms
-        if is_infantry and unit_strength:
+        # Skip strength variant generation for specific units
+        if is_infantry and unit_strength and (not unit_name or unit_name not in UNITS_SKIP_STRENGTH_VARIANTS):
             current_ammo = mounted_weapon.v.by_m("Ammunition").v
             # Extract base ammo name (remove $/GFX/Weapon/Ammo_ prefix and any existing variants)
             if current_ammo.startswith("$/GFX/Weapon/Ammo_"):

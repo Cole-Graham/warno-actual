@@ -86,7 +86,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "TraitsToken": ['STAT', 'thermobaric'],
-                "ImpactHappening": "'BombeODAB'",
+                "ImpactHappening": "'BombeODABRPO'",
                 "MaximumRangeGRU": 700,
                 "RadiusSplashPhysicalDamagesGRU": 93,
                 "PhysicalDamages": 2.0,

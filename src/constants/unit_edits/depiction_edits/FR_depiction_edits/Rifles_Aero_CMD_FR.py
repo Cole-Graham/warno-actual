@@ -22,7 +22,7 @@ rifles_aero_cmd_fr: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
 
         ("TacticDepiction_Rifles_Aero_CMD_FR_Soldier", "TemplateInfantryDepictionFactoryTactic"): {
             "Operators": { # usually (always?) editing conditional tags submember
-                0: ("replace", [("mmg", "WeaponAlternative_2")]),
+                0: ("edit", [("mmg", "WeaponAlternative_2")]),
                 1: ("insert", [("grenade", "WeaponAlternative_3")]),
             }
         },

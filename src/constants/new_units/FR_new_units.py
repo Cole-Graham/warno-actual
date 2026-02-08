@@ -39,7 +39,7 @@ FR_NEW_UNITS = {
             "equipmentchanges": {
                 "insert": [(1, "RocketInf_LRAC_F1", "RocketInf_LRAC_F1")],
                 "insert_edits": {
-                    2: {
+                    1: {
                         "turret_edits": {
                             "YulBoneOrdinal": 2,
                         },
@@ -49,7 +49,7 @@ FR_NEW_UNITS = {
                         "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
                         "WeaponShootDataPropertyName": ["WeaponShootData_0_2"],
                     },
-                    3: {
+                    2: {
                         "turret_edits": {
                             "YulBoneOrdinal": 3,
                         },
