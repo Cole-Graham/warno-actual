@@ -98,6 +98,7 @@ def load_new_divisions() -> Dict:
         # 'RDA_new_divs': 'rda_new_divs',
         # 'SOV_new_divs': 'sov_new_divs',
         'US_new_divs': 'us_new_divs',
+        'UK_new_divs': 'uk_new_divs',
     }
     
     logger.info("Loading new division dictionaries...")

@@ -92,27 +92,20 @@ def _add_national_divisions(source_path: Any) -> None:
         logger.info("No new divisions to add")
         return
     
-    # Map current interface order of multi divisions by nation
-    # Structure: interface_order[nation][division_name] = order_value
-    # Use normalized nation codes for consistent matching
-    interface_order: Dict[str, Dict[str, float]] = defaultdict(dict)
-    division_objects: Dict[str, Any] = {}  # Store division objects for later reference
+    # Find donor divisions for each nation (any division with _multi suffix)
+    # We need these to copy the structure from
+    donor_divisions: Dict[str, Any] = {}
     
     for deckdivision_descr in source_path:
         if not hasattr(deckdivision_descr, "namespace") or not deckdivision_descr.namespace.endswith("_multi"):
             continue
         
-        division_name = deckdivision_descr.namespace.replace("Descriptor_Deck_Division_", "").replace("_multi", "")
         division_nation_raw = strip_quotes(deckdivision_descr.v.by_m("CountryId").v)
         division_nation = _normalize_nation_code(division_nation_raw)
-        order_value = float(deckdivision_descr.v.by_m("InterfaceOrder").v)
         
-        # Skip divisions with InterfaceOrder = -1.0 (hidden divisions)
-        if order_value == -1.0:
-            continue
-        
-        interface_order[division_nation][division_name] = order_value
-        division_objects[division_name] = deckdivision_descr
+        # Store first division found for each nation as donor
+        if division_nation not in donor_divisions:
+            donor_divisions[division_nation] = deckdivision_descr
     
     # Group new divisions by nation
     new_divisions_by_nation: Dict[str, Dict[str, Dict]] = defaultdict(dict)
@@ -121,89 +114,65 @@ def _add_national_divisions(source_path: Any) -> None:
         nation = _normalize_nation_code(nation_raw)
         new_divisions_by_nation[nation][div_key] = div_data
     
-    # Calculate interface order adjustments
-    # For each nation, find the first existing division (lowest InterfaceOrder)
-    # New divisions will be inserted before it, so we need to bump existing divisions
-    nation_first_orders: Dict[str, float] = {}
-    for nation, divisions in interface_order.items():
-        if divisions:
-            nation_first_orders[nation] = min(divisions.values())
+    # Sort nations: US first, SOV second, then alphabetical
+    def nation_sort_key(nation: str) -> tuple:
+        if nation == "US":
+            return (0, nation)  # US first
+        elif nation == "SOV":
+            return (1, nation)  # SOV second
+        else:
+            return (2, nation)  # Others alphabetically
     
-    # Calculate how many new divisions per nation
-    new_div_counts: Dict[str, int] = {
-        nation: len(divs) for nation, divs in new_divisions_by_nation.items()
-    }
+    sorted_nations = sorted(new_divisions_by_nation.keys(), key=nation_sort_key)
     
-    # Update interface order for existing divisions (bump them by number of new divisions)
-    for nation, divisions in interface_order.items():
-        bump_amount = new_div_counts.get(nation, 0)
-        if bump_amount > 0:
-            for division_name in divisions:
-                interface_order[nation][division_name] += bump_amount
-                # Update the actual division object
-                if division_name in division_objects:
-                    division_objects[division_name].v.by_m("InterfaceOrder").v = str(
-                        interface_order[nation][division_name]
-                    )
+    # Sort divisions within each nation: general first, then alphabetical
+    def division_sort_key(item):
+        div_key, _ = item
+        is_general = div_key.endswith("_general")
+        return (not is_general, div_key)  # False sorts before True, so general comes first
     
     # Collect dictionary entries for all new divisions
     dictionary_entries = []
     
+    # Track current InterfaceOrder value across all nations
+    current_order = 1.0
+    
     # Create and add new division descriptors
-    for nation, new_divs_dict in new_divisions_by_nation.items():
-        if nation not in nation_first_orders:
-            logger.warning(f"No existing divisions found for nation {nation}, skipping new divisions")
-            continue
+    for nation in sorted_nations:
+        new_divs_dict = new_divisions_by_nation[nation]
         
-        # Find a donor division from the same nation to copy from
+        # Find donor division for this nation
         donor_division = None
-        for div_name, div_obj in division_objects.items():
-            div_nation_raw = strip_quotes(div_obj.v.by_m("CountryId").v)
-            div_nation = _normalize_nation_code(div_nation_raw)
-            if div_nation == nation:
-                donor_division = div_obj
-                break
+        
+        # Try to find donor from same nation first
+        if nation in donor_divisions:
+            donor_division = donor_divisions[nation]
+        else:
+            # Fallback: find any donor division (prefer same coalition)
+            coalition = _get_coalition_for_nation(nation)
+            for donor_nation, donor_div in donor_divisions.items():
+                donor_coalition = _get_coalition_for_nation(donor_nation)
+                if donor_coalition == coalition:
+                    donor_division = donor_div
+                    break
+            
+            # If still no donor, use any available
+            if not donor_division and donor_divisions:
+                donor_division = next(iter(donor_divisions.values()))
         
         if not donor_division:
-            logger.warning(f"No donor division found for nation {nation}, skipping new divisions")
+            logger.warning(f"No donor division found for nation {nation}, skipping {len(new_divs_dict)} new division(s)")
             continue
         
-        # Calculate starting interface order for new divisions
-        # They should be inserted before the first existing division
-        # Note: InterfaceOrder values are reserved differently by coalition:
-        #   - NATO: 1.0 and 2.0 are reserved
-        #   - PACT: only 1.0 is reserved (first PACT division starts at 2.0)
-        first_order = nation_first_orders[nation]
-        num_new = len(new_divs_dict)
-        start_order = first_order - num_new
-        
-        # Determine coalition and set reserved orders accordingly
+        # Determine coalition
         coalition = _get_coalition_for_nation(nation)
-        if coalition == "NATO":
-            RESERVED_ORDERS = {1.0, 2.0}
-        else:  # PACT
-            RESERVED_ORDERS = {1.0}
         
-        # Track the current order value, incrementing and skipping reserved values
-        current_order = start_order
-        
-        # Sort new divisions: "general" decks first, then alphabetical order for the rest
-        def sort_key(item):
-            div_key, _ = item
-            # Return (is_general, div_key) tuple - False sorts before True, so we negate
-            # to make general (True) come first
-            is_general = div_key.endswith("_general")
-            return (not is_general, div_key)
+        # Sort divisions: general first, then alphabetical
+        sorted_divisions = sorted(new_divs_dict.items(), key=division_sort_key)
         
         # Create new division descriptors
-        for idx, (div_key, div_data) in enumerate(sorted(new_divs_dict.items(), key=sort_key)):
-            # Skip reserved InterfaceOrder values (coalition-specific)
-            # If we hit a reserved value, shift to the next available value
-            while current_order in RESERVED_ORDERS:
-                current_order += 1.0
-            
+        for div_key, div_data in sorted_divisions:
             new_order = current_order
-            # Increment for next iteration
             current_order += 1.0
             
             # Create new division descriptor by copying donor
@@ -236,7 +205,6 @@ def _add_national_divisions(source_path: Any) -> None:
             new_div_descr.v.by_m("DivisionPowerClassification").v = f"'{div_power}'"
             
             # Set coalition
-            coalition = _get_coalition_for_nation(nation)
             new_div_descr.v.by_m("DivisionCoalition").v = f"ECoalition/{coalition}"
             
             # Set division tags
@@ -263,9 +231,8 @@ def _add_national_divisions(source_path: Any) -> None:
             new_div_descr.v.by_m("CostMatrix").v = f"MatrixCostName_{cfg_name}_multi"
             
             # Set country ID - use the original format from donor if available, otherwise use normalized nation
-            # Check what format the donor uses
             donor_country_id = strip_quotes(donor_division.v.by_m("CountryId").v)
-            # Use the same format as existing divisions for this nation
+            # Use the same format as donor if it matches nation, otherwise use normalized nation
             country_id_to_use = donor_country_id if _normalize_nation_code(donor_country_id) == nation else nation
             new_div_descr.v.by_m("CountryId").v = f'"{country_id_to_use}"'
             
@@ -285,4 +252,5 @@ def _add_national_divisions(source_path: Any) -> None:
     if dictionary_entries:
         write_dictionary_entries(dictionary_entries, dictionary_type="units")
     
-    logger.info(f"Finished adding {sum(new_div_counts.values())} new divisions")
+    total_divs = sum(len(divs) for divs in new_divisions_by_nation.values())
+    logger.info(f"Finished adding {total_divs} new divisions")

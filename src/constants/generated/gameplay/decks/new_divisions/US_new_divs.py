@@ -28,6 +28,9 @@ us_new_divs = {
             "HMGteam_Mk19_US",
             "HMGteam_M2HB_US",
             "HMGteam_M60_US",
+            "M998_Avenger_nonPara_US",
+            "M1025_Humvee_TOW_US",
+            "DCA_M167A2_Vulcan_20mm_US",
         ],
     },
     "US_airborne": {
@@ -60,6 +63,8 @@ us_new_divs = {
             "HMGteam_Mk19_US",
             "HMGteam_M2HB_US",
             "HMGteam_M60_US",
+            "M998_Avenger_nonPara_US",
+            "DCA_M167A2_Vulcan_20mm_US"
         ],
     },
     "US_airborne_mechanized": {
@@ -79,6 +84,8 @@ us_new_divs = {
             "HMGteam_Mk19_US",
             "HMGteam_M2HB_US",
             "HMGteam_M60_US",
+            "M998_Avenger_nonPara_US",
+            "DCA_M167A2_Vulcan_20mm_US",
         ],
     },
     "US_airborne_motorized": {
@@ -98,6 +105,9 @@ us_new_divs = {
             "HMGteam_Mk19_US",
             "HMGteam_M2HB_US",
             "HMGteam_M60_US",
+            "M998_Avenger_nonPara_US",
+            "M1025_Humvee_TOW_US",
+            "DCA_M167A2_Vulcan_20mm_US",
         ],
     },
     "US_armored": {

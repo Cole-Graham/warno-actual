@@ -473,7 +473,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "WeaponDescriptor": {
             "SalvoLengths": [2],
             "units": {
-                2: ["Roland_3_FR"],
+                2: ["DCA_XMIM_115A_Roland_US", "Roland_3_FR"],
             },
         },
     },

@@ -1805,6 +1805,7 @@ usa_unit_edits = {
                 "M16A1_Carbine": 11,
             },
         },
+        "UpgradeFromUnit": "GreenBerets_CMD_US",
     },
 
     "GreenBerets_ODA_US": {
@@ -2061,8 +2062,8 @@ usa_unit_edits = {
     },
     
     "M151C_RCL_NG_US": {
-        "CommandPoints": 35,
-        "availability": [12, 9, 0, 0],
+        "CommandPoints": 25,
+        "availability": [12, 0, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
                 "RocketInf_M40A1_RCL_106mm": 16,
@@ -2121,6 +2122,13 @@ usa_unit_edits = {
     },
     
     "M1025_Humvee_MP_US": {
+        "CommandPoints": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+    },
+    
+    "CGage_Peacekeeper_US": {
         "CommandPoints": 20,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'",],
@@ -2585,7 +2593,8 @@ usa_unit_edits = {
     },
     
     "CUCV_Hellfire_US": {
-        "CommandPoints": 90,
+        "CommandPoints": 120,
+        "availability": [0, 4, 3, 0],
     },
 
     "M901A1_ITW_US": {  # TOW 2
@@ -2790,6 +2799,15 @@ usa_unit_edits = {
             },
         },
     },
+    
+    "M113A1_ACAV_NG_US": {
+        "CommandPoints": 25,
+        "WeaponDescriptor": {
+            "Salves": {
+                "HMG_12_7_mm_M2HB": 35,
+            },
+        },
+    },
 
     "M113_ACAV_US": {
         "CommandPoints": 35,
@@ -2820,6 +2838,7 @@ usa_unit_edits = {
     },
 
     "M998_Humvee_Delta_US": {
+        "CommandPoints": 30,
         "UpgradeFromUnit": "M1025_Humvee_AGL_US",
     },
 
@@ -2854,6 +2873,21 @@ usa_unit_edits = {
                 "HMG_12_7_mm_M2HB": 35,
             },
         },
+    },
+    
+    "FAV_HMG_US": {
+        "CommandPoints": 30,
+        "availability": [12, 9, 0, 0],
+    },
+    
+    "FAV_AGL_US": {
+        "CommandPoints": 35,
+        "availability": [10, 7, 0, 0],
+    },
+    
+    "FAV_TOW_US": {
+        "CommandPoints": 75,
+        "availability": [8, 6, 0, 0],
     },
 
     "LAV_25_M1047_US_US": {
@@ -3163,10 +3197,37 @@ usa_unit_edits = {
     },
 
     "HvyScout_NG_Dragon_US": {
+        "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
+        "availability": [8, 0, 0, 0],
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm")],
+            },
+        },
+    },
+    
+    "Scout_Aero_US": {
+        "CommandPoints": 40,
+        "availability": [0, 4, 3, 0],
+        "armor": "Infantry_armor_reference",
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "animate": {
+                    "MMG_WA_M60E3_7_62mm": False,
+                },
+                "quantity": {
+                    "FM_M16": 8,
+                    "MMG_WA_M60E3_7_62mm": 2,
+                },
             },
         },
     },
@@ -3206,6 +3267,16 @@ usa_unit_edits = {
             },
         },
     },
+    
+    "LRRP_Aero_US": {
+        "CommandPoints": 70,
+        "armor": "Infantry_armor_reference",
+        "availability": [0, 4, 3, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
+        },
+    },
 
     "Sniper_US": {
         "GameName": {
@@ -3236,6 +3307,11 @@ usa_unit_edits = {
     },
 
     # US AA
+    "M274_Mule_M2HB_US": {
+        "CommandPoints": 15,
+        "UpgradeFromUnit": "DCA_M167A2_Vulcan_20mm_Aero_US",
+    },
+    
     "MANPAD_Stinger_C_US": {
         "GameName": {
             "display": "STINGER C",
@@ -3345,11 +3421,13 @@ usa_unit_edits = {
                 "DCA_2_canon_Bofors_40mm": 17,
             },
         },
+        "UpgradeFromUnit": "M274_Mule_M2HB_US",
     },
 
     "M163_CS_US": {
         "CommandPoints": 40,
         "availability": [8, 6, 0, 0],
+        "UpgradeFromUnit": "M42_Duster_US",
     },
 
     "M163_PIVADS_US": {
@@ -3370,6 +3448,7 @@ usa_unit_edits = {
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
+        "UpgradeFromUnit": "FOB_US",
     },
 
     "DCA_M167A2_Vulcan_20mm_US": { # M167A2 VADS 20mm
@@ -3388,6 +3467,7 @@ usa_unit_edits = {
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
+        "UpgradeFromUnit": None,
     },
     
     "DCA_M167_Vulcan_20mm_US": { # AB M167A1 VADS 20mm
@@ -3407,11 +3487,14 @@ usa_unit_edits = {
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
-        "UpgradeFromUnit": "FOB_US",
+        "UpgradeFromUnit": "DCA_M167_Vulcan_20mm_nonPara_US",
     },
     
     "DCA_M167A2_Vulcan_20mm_Aero_US": { # AERO-M167A2 PIVADS 20mm
         "CommandPoints": 30,
+        "GameName": {
+            "display": "AERO-M167A2 VADS 20mm",
+        },
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -3422,6 +3505,7 @@ usa_unit_edits = {
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
+        "UpgradeFromUnit": "DCA_M167A2_Vulcan_20mm_US",
     },
 
     "M998_Avenger_US": {
@@ -3441,6 +3525,15 @@ usa_unit_edits = {
             "Salves": {
                 "HMG_12_7_mm_avenger_M3P": 17,
             },
+        },
+        "UpgradeFromUnit": None,
+    },
+    
+    "DCA_XM85_Chaparral_US": {
+        "CommandPoints": 130,
+        "availability": [4, 3, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'good_airoptics'"],
         },
     },
 
@@ -3483,6 +3576,7 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
+        "UpgradeFromUnit": "M48_Chaparral_MIM72F_US",
     },
 
     "DCA_I_Hawk_US": {
@@ -3742,7 +3836,7 @@ usa_unit_edits = {
     },
     
     "A6E_Intruder_SEAD_US": {
-        "CommandPoints": 80,
+        "CommandPoints": 165,
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 10000.0,
@@ -4225,6 +4319,17 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
+        "ECM": -0.35,
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 375,
+            },
+        },
+        "availability": [0, 2, 0, 0],
+    },
+    
+    "F16E_TER_CLU_US": {
+        "CommandPoints": 225,
         "ECM": -0.35,
         "optics": {
             "OpticalStrengths": {
