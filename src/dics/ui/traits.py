@@ -226,7 +226,7 @@ NEW_TRAITS = {
         )),
         "extended": ("ZGBDBQRXQA", (
             f"- Increased suppression damage taken while moving (33%)\n"
-            f"- Reduced movement speed (-6 Km/h)"
+            f"- Reduced movement speed (20 Km/h)"
         )),
         "texture": "heavy_equipment.png",
     },
@@ -248,7 +248,7 @@ NEW_TRAITS = {
             f"enemy artillery if their position is revealed."
         )),
         "extended": ("EFCIVTGYYW", (
-            f"- Reduced movement speed (-12 Km/h)"
+            f"- Reduced movement speed (6 - 14 Km/h)"
         )),
         "texture": "veryheavy_equipment.png",
     },

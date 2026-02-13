@@ -710,6 +710,7 @@ usa_unit_edits = {
                     "MMG_WA_M60E3_7_62mm": False,
                 },
                 "quantity": {
+                    "FM_M16": 8,
                     "MMG_WA_M60E3_7_62mm": 2,
                 },
             },
@@ -1941,7 +1942,7 @@ usa_unit_edits = {
             "display": "Mk.19 40mm",
         },
         "is_standard": (True, "40mm_Mk19_Team"), 
-        "CommandPoints": 30,
+        "CommandPoints": 35,
         "strength": 5,
         "max_speed": 14, 
         "SpecialtiesList": {
@@ -1955,7 +1956,7 @@ usa_unit_edits = {
             "display": "AB Mk.19 40mm",
         },
         "is_standard": (True, "Para_40mm_Mk19_Team"), 
-        "CommandPoints": 30,
+        "CommandPoints": 35,
         "strength": 5,
         "max_speed": 14, 
         "SpecialtiesList": {
@@ -3699,7 +3700,7 @@ usa_unit_edits = {
     },
     
     "AH1F_CNITE_US": { # 10% ECM, 4x TOW-2, 38x Hydra
-        "CommandPoints": 135,
+        "CommandPoints": 150,
         "Divisions": {
             "default": {
                 "cards": 69,
@@ -3708,7 +3709,7 @@ usa_unit_edits = {
                 "cards": 3,
             },
         },
-        "availability": [0, 2, 0, 1],
+        "availability": [0, 0, 3, 2],
     },
 
     "AH1F_Cobra_US": {

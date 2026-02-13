@@ -199,17 +199,17 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("AutoCanon_HE_25mm_KBA", "autocannon", None, False): { # 21
         "Ammunition": {
             "hit_roll": {
-                "Idling": 20,
-                "Moving": 10,
+                "Idling": 55,
+                "Moving": 30,
             },
             "parent_membr": {
-                "TimeBetweenTwoShots": 0.4, # was 0.35 but Eugen said it has to be multiple of game tick rate (10hz)
+                "TimeBetweenTwoShots": 0.4, # 175 cyclic = 0.35 but 10hz tickrate requires 0.3 or 0.4
                 "TimeBetweenTwoFx": 0.4,
                 "PhysicalDamages": 0.25,
                 "SuppressDamages": 25,
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.2,
-                "TimeBetweenTwoSalvos": 1.6,
+                "TimeBetweenTwoSalvos": 1.4,
                 "ShotsCountPerSalvo": 8,
                 "AffichageMunitionParSalve": 8,
             },
@@ -272,7 +272,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoSalvos": 1.0,
+                "TimeBetweenTwoSalvos": 1.6,
                 "ShotsCountPerSalvo": 15,
                 "AffichageMunitionParSalve": 25,
             },
@@ -293,7 +293,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoSalvos": 1.0,
+                "TimeBetweenTwoSalvos": 1.6,
                 "ShotsCountPerSalvo": 15,
                 "AffichageMunitionParSalve": 25,
             },
@@ -314,7 +314,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoSalvos": 1.0,
+                "TimeBetweenTwoSalvos": 1.6,
                 "ShotsCountPerSalvo": 15,
                 "AffichageMunitionParSalve": 25,
             },
@@ -335,7 +335,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoSalvos": 1.0,
+                "TimeBetweenTwoSalvos": 1.6,
                 "ShotsCountPerSalvo": 15,
                 "AffichageMunitionParSalve": 25,
             },
@@ -356,7 +356,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoSalvos": 1.0,
+                "TimeBetweenTwoSalvos": 1.6,
                 "ShotsCountPerSalvo": 15,
                 "AffichageMunitionParSalve": 25,
             },
@@ -382,7 +382,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "ImpactHappening": "'CanonPetitFK20HEFI'",
                 "MaximumRangeHelicopterGRU": 2100,
                 "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoSalvos": 0.8,
+                "TimeBetweenTwoSalvos": 1.3,
                 "PhysicalDamages": 0.2,
                 "SuppressDamages": 20,
                 "DisplaySalveAccuracy": False,
@@ -400,6 +400,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Index": 6,
             },
             "hit_roll": {
+                "BaseCriticModifier": 68,
                 "Idling": 40,
                 "Moving": 40,
             },
@@ -425,6 +426,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("AutoCanon_AP_30mm_Bitube_Gsh30k_burst", "autocannon", "AutoCanon_AP_30mm_Bitube_Gsh30k", True): {
         "Ammunition": {
             "hit_roll": {
+                "BaseCriticModifier": 68,
                 "Idling": 15,
                 "Moving": 10,
             },
@@ -604,17 +606,17 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("AutoCanon_AP_25mm_KBA", "autocannon", None, False): { # 6
         "Ammunition": {
             "hit_roll": {
-                "Idling": 50,
-                "Moving": 25,
+                "Idling": 55,
+                "Moving": 30,
             },
             "parent_membr": {
-                "TimeBetweenTwoShots": 0.4, # was 0.35 but Eugen said it has to be multiple of game tick rate (10hz)
+                "TimeBetweenTwoShots": 0.4, # 175 cyclic = 0.35 but 10hz tickrate requires 0.3 or 0.4
                 "TimeBetweenTwoFx": 0.4,
                 "PhysicalDamages": 0.334,
                 "SuppressDamages": 25,
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.2,
-                "TimeBetweenTwoSalvos": 1.6,
+                "TimeBetweenTwoSalvos": 1.4,
                 "ShotsCountPerSalvo": 8,
                 "AffichageMunitionParSalve": 8,
             },
@@ -625,6 +627,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("AutoCanon_AP_23mm_NS23", "autocannon", None, False): { # 5
         "Ammunition": {
             "hit_roll": {
+                "BaseCriticModifier": 68,
                 "Idling": 20,
                 "Moving": 10,
             },
@@ -686,7 +689,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoSalvos": 1.0,
+                "TimeBetweenTwoSalvos": 1.6,
                 "ShotsCountPerSalvo": 15,
                 "AffichageMunitionParSalve": 25,
             },
@@ -712,7 +715,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoSalvos": 1.0,
+                "TimeBetweenTwoSalvos": 1.6,
                 "ShotsCountPerSalvo": 15,
                 "AffichageMunitionParSalve": 25,
             },
@@ -738,7 +741,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoSalvos": 1.0,
+                "TimeBetweenTwoSalvos": 1.6,
                 "ShotsCountPerSalvo": 15,
                 "AffichageMunitionParSalve": 25,
             },
@@ -764,7 +767,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoSalvos": 1.0,
+                "TimeBetweenTwoSalvos": 1.6,
                 "ShotsCountPerSalvo": 15,
                 "AffichageMunitionParSalve": 25,
             },
@@ -788,7 +791,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoSalvos": 1.0,
+                "TimeBetweenTwoSalvos": 1.6,
                 "ShotsCountPerSalvo": 15,
                 "AffichageMunitionParSalve": 25,
             },
@@ -809,7 +812,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoSalvos": 0.8,
+                "TimeBetweenTwoSalvos": 1.4,
                 "PhysicalDamages": 0.334,
                 "SuppressDamages": 20,
                 "DisplaySalveAccuracy": False,
@@ -1003,7 +1006,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Gatling_AP_M197_20mm", "autocannon", None, False): { # 311
         "Ammunition": {
             "hit_roll": {
-                "Idling": 25,
+                "BaseCriticModifier": 68,
+                "Idling": 20,
                 "Moving": 15,
             },
             "parent_membr": {

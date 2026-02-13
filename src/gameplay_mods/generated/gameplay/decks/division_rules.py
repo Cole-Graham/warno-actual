@@ -293,7 +293,7 @@ def _mg_team_division_rules(source_path: Any, game_db: Dict[str, Any]) -> None:
         ("M2HB", "HMG"), ("NSV", "HMG"), 
         ("M60", "MMG"), ("MAG", "MMG"),
         ("AANF1", "MMG"), ("MG3", "MMG"), 
-        ("PKM", "MMG")
+        ("PKM", "MMG"), ("L1A1", "HMG")
     ]
     
     for deck_descr in source_path:
@@ -321,9 +321,10 @@ def _mg_team_division_rules(source_path: Any, game_db: Dict[str, Any]) -> None:
                 
                 # apply availability settings
                 xp_multi = str([0.0, 1.0, 0.75, 0.0] if is_para else [1.0, 0.75, 0.0, 0.0])
+                hmg_xp_multi = str([0.0, 1.0, 0.7, 0.0] if is_para else [1.0, 0.7, 0.0, 0.0])
 
-                rule_obj.v.by_m("NumberOfUnitInPack").v = '9' if mg_type == "HMG" else '12'
-                rule_obj.v.by_m("NumberOfUnitInPackXPMultiplier").v = xp_multi
+                rule_obj.v.by_m("NumberOfUnitInPack").v = '10' if mg_type == "HMG" else '12'
+                rule_obj.v.by_m("NumberOfUnitInPackXPMultiplier").v = hmg_xp_multi if mg_type == "HMG" else xp_multi
                 
                 logger.debug(f"Updated {unit_name} in {div_name} (Para: {is_para}, Type: {mg_type})")
 

@@ -81,7 +81,7 @@ POL_NEW_UNITS = {
         },
         "availability": [0, 0, 2, 0],
         "max_speed": 26,
-        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootOnPositionSmoke',
                    'EOrderType/ShootOnPositionWithoutCorrectionSmoke', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
@@ -137,7 +137,7 @@ POL_NEW_UNITS = {
             },
         },
         "availability": [0, 0, 2, 0],
-        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
@@ -185,7 +185,7 @@ POL_NEW_UNITS = {
             },
         },
         "availability": [0, 0, 2, 0],
-        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
@@ -232,7 +232,7 @@ POL_NEW_UNITS = {
             },
         },
         "availability": [0, 0, 2, 0],
-        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
@@ -281,7 +281,7 @@ POL_NEW_UNITS = {
             },
         },
         "availability": [0, 0, 2, 0],
-        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
@@ -316,7 +316,7 @@ POL_NEW_UNITS = {
             "token": "RTBIJFPDGK",
         },
         "TypeUnit": {
-            "AcknowUnitTypes": "[~/TAcknowUnitType_Command]",
+            "AcknowUnitTypes": ["Command"],
         },
         "TagSet": {
             "overwrite_all": [
@@ -349,7 +349,7 @@ POL_NEW_UNITS = {
             },
         },
         "availability": [0, 2, 0, 0],
-        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/QuickMove', 'EOrderType/Reverse',
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Reverse',
                    'EOrderType/AskForSupply', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": False, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,
@@ -411,7 +411,7 @@ POL_NEW_UNITS = {
         },
         "availability": [7, 5, 4, 0],
         "max_speed": 20,
-        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/Attack', 'EOrderType/MoveAndAttack',
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/Attack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": True,  # False for Javelin LML (unique exception), towed units.
@@ -424,6 +424,17 @@ POL_NEW_UNITS = {
         "Nation": "POL",
         "depiction_type": "Towed",
         "alternatives_count": 2,
+        "servants": ("G_POL", "D_POL"),
+        "servant_types": {
+            "showroom": {
+                "G_POL": ["ATGMServantLeft"],
+                "D_POL": ["ATGMServantRight"]
+            },
+            "subdepictions": {
+                "G_POL": ["ATGMServantLeft"],
+                "D_POL": ["ATGMServantRight"]
+            },
+        }
     },
 
     ("OT_62_TOPAS_R3M_CMD_POL", 0): {  # NIEB. BERETY TOPAS R-3M
@@ -465,7 +476,7 @@ POL_NEW_UNITS = {
             },
         },
         "availability": [0, 3, 0, 0],
-        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/QuickMove', 'EOrderType/Reverse',
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Reverse',
                    'EOrderType/AskForSupply', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": False, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,

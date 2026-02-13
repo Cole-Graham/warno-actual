@@ -75,6 +75,7 @@ def apply_weapon_range_standards(source_path, logger):
             1250: 1225,
         },
         "MaximumRangeHelicopterGRU": {
+            1425: 1400,
             1500: 1575,
             2475: 2450,
             2650: 2625,

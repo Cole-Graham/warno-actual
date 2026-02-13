@@ -1,6 +1,6 @@
 """Functions for modifying DepictionInfantry.ndf"""
 
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 
 from src import ndf
 from src.constants.new_units import NEW_DEPICTIONS, NEW_UNITS
@@ -9,6 +9,37 @@ from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import is_obj_type, strip_quotes
 
 logger = setup_logger(__name__)
+
+
+def _overwrite_skeleton_conditional_tags(
+    soldier_depiction_obj: Any,
+    tags_list: list[tuple[str, str]],
+) -> None:
+    """
+    Overwrite ConditionalTags on the skeletal animation operator with the given list.
+    Always replaces the full list; never insert or replace by index.
+    """
+    operators_member = soldier_depiction_obj.by_m("Operators")
+    skeletal_animation_operator = None
+    for obj in operators_member.v:
+        if is_obj_type(obj.v, "DepictionOperator_SkeletalAnimation2_Default"):
+            skeletal_animation_operator = obj.v
+            break
+    if skeletal_animation_operator is None:
+        logger.warning(
+            "Could not find DepictionOperator_SkeletalAnimation2_Default in Operators; "
+            "skeleton_tags not applied"
+        )
+        return
+    conditional_tags = skeletal_animation_operator.by_m("ConditionalTags", False)
+    if conditional_tags is None:
+        skeletal_animation_operator.add(ndf.convert("ConditionalTags = []"))
+        conditional_tags = skeletal_animation_operator.by_m("ConditionalTags")
+    # Overwrite: remove all existing, then add each from tags_list
+    for i in range(len(conditional_tags.v) - 1, -1, -1):
+        conditional_tags.v.remove(i)
+    for tag, mesh_alternative in tags_list:
+        conditional_tags.v.add(f"('{tag}', '{mesh_alternative}')")
 
 
 def edit_gen_gp_gfx_depictioninfantry(source_path: Any, game_db: Any) -> None:
@@ -229,6 +260,11 @@ def _handle_new_units(source_path: Any, game_db: Any) -> None:
                     for operator_index in reversed(rows_to_remove):
                         conditional_tags.v.remove(operator_index)
 
+        skeleton_tags = edits.get("WeaponDescriptor", {}).get("equipmentchanges", {}).get("skeleton_tags")
+        if skeleton_tags:
+            _overwrite_skeleton_conditional_tags(soldierdepiction_obj.v, skeleton_tags)
+            logger.info(f"Overwrote ConditionalTags for new unit {unit_name} with skeleton_tags")
+
         # TacticDepiction_unit_Ghost
         ghostdepiction_obj = source_path.by_namespace(f"TacticDepiction_{donor_name}_Ghost").copy()
         ghostdepiction_obj.namespace = f"TacticDepiction_{unit_name}_Ghost"
@@ -257,6 +293,28 @@ def _handle_new_units(source_path: Any, game_db: Any) -> None:
         # Insert new entries
         source_path.insert(append_row, new_entries)
         logger.info(f"Added depiction entries for {unit_name}")
+
+        # Update AllWeaponAlternatives mesh for weapon replacements (use donor's layout).
+        # Skip when unit has NEW_DEPICTIONS - mesh is already defined there; replace is for simple changes.
+        has_allweaponalternatives_override = False
+        if depiction_key in NEW_DEPICTIONS:
+            infantry_edits = NEW_DEPICTIONS[depiction_key].get("DepictionInfantry_ndf", {})
+            has_allweaponalternatives_override = any(
+                ns and ns.startswith("AllWeaponAlternatives_") for (ns, _) in infantry_edits
+            )
+        if not has_allweaponalternatives_override:
+            weapon_replacements = edits.get("WeaponDescriptor", {}).get("equipmentchanges", {}).get("replace", [])
+            for replacement in weapon_replacements:
+                if len(replacement) >= 2:
+                    old_weapon, new_weapon = replacement[0], replacement[1]
+                    _update_weapon_alt_mesh_on_replace(
+                        source_path,
+                        unit_name,
+                        old_weapon,
+                        new_weapon,
+                        depiction_db,
+                        depiction_lookup_unit=donor_name,
+                    )
 
         # Add mimetic map entries
         # source_path.by_n("InfantryMimetic").v.add((f"'{unit_name}'", f"TacticDepiction_{unit_name}_Soldier"))
@@ -428,6 +486,11 @@ def _handle_complex_unit_edits(source_path: Any) -> None:
                     continue
                 logger.debug(f"  Found tactic depiction object for {namespace}")
 
+                if "skeleton_tags" in edits:
+                    _overwrite_skeleton_conditional_tags(tacticdepiction_soldier.v, edits["skeleton_tags"])
+                    logger.info(f"Overwrote ConditionalTags for {unit_name} with skeleton_tags from depiction edits")
+                    continue
+
                 for member, member_edits in edits.items():
                     if member == "Selector":
                         
@@ -539,6 +602,79 @@ def _handle_complex_unit_edits(source_path: Any) -> None:
                     else:
                         logger.error(f"Unit Edits: Unknown member {member} for {unit_name}")
                                             
+def _update_weapon_alt_mesh_on_replace(
+    source_path: Any,
+    unit_name: str,
+    old_weapon: str,
+    new_weapon: str,
+    depiction_data: Dict[str, Any],
+    *,
+    depiction_lookup_unit: Optional[str] = None,
+) -> None:
+    """Update AllWeaponAlternatives mesh when a weapon is replaced.
+
+    Uses depiction_data to find which WeaponAlternative index the old weapon uses,
+    and all_weapon_meshes to get the correct mesh for the new weapon.
+
+    For new units cloned from a donor, pass depiction_lookup_unit=donor_name to use
+    the donor's weapon layout for the index lookup.
+    """
+    lookup_unit = depiction_lookup_unit or unit_name
+    unit_data = depiction_data.get(lookup_unit)
+    if not unit_data:
+        logger.debug(f"Unit {lookup_unit} not in depiction_data; skipping weapon mesh update")
+        return
+
+    weapon_subdepictions = unit_data.get("weapon_subdepictions", {})
+    old_weapon_data = weapon_subdepictions.get(old_weapon)
+    if not old_weapon_data:
+        logger.debug(
+            f"Old weapon {old_weapon} not in depiction_data for {lookup_unit}; skipping mesh update"
+        )
+        return
+
+    weapon_shoot_data = old_weapon_data.get("weapon_shoot_data", "")
+    try:
+        weapon_alt_index = int(weapon_shoot_data.split("_")[-1])
+    except (ValueError, IndexError):
+        logger.debug(f"Could not parse weapon_shoot_data '{weapon_shoot_data}' for {unit_name}")
+        return
+
+    all_weapon_meshes = depiction_data.get("all_weapon_meshes", {})
+    if new_weapon not in all_weapon_meshes:
+        logger.debug(
+            f"New weapon {new_weapon} not in all_weapon_meshes; skipping mesh update for {unit_name}"
+        )
+        return
+
+    new_mesh = all_weapon_meshes[new_weapon]
+    weapon_alt_selector = f"WeaponAlternative_{weapon_alt_index}"
+
+    weapon_alternatives = source_path.find_by_cond(
+        lambda x: x.namespace == f"AllWeaponAlternatives_{unit_name}", False
+    )
+    if not weapon_alternatives:
+        logger.debug(f"No AllWeaponAlternatives found for {unit_name}")
+        return
+
+    for i, alt in enumerate(weapon_alternatives.v):
+        if is_obj_type(alt.v, "TDepictionVisual"):
+            try:
+                selector_val = alt.v.by_m("SelectorId").v
+                selector_str = strip_quotes(selector_val[0].v) if selector_val else ""
+            except (AttributeError, IndexError, TypeError):
+                continue
+            if selector_str == weapon_alt_selector:
+                new_mesh_descriptor = f"$/GFX/DepictionResources/Modele_{new_mesh}"
+                alt.v.by_m("MeshDescriptor").v = new_mesh_descriptor
+                logger.info(
+                    f"Updated {unit_name} {weapon_alt_selector} mesh: {old_weapon} -> {new_mesh}"
+                )
+                return
+
+    logger.debug(f"Could not find {weapon_alt_selector} in AllWeaponAlternatives for {unit_name}")
+
+
 def _handle_unit_edits(source_path: Any, game_db: Dict[str, Any]) -> None:
     # this function is so limited and could easily break if the unit edits are not formatted correctly
     """Edit DepictionInfantry.ndf.
@@ -560,11 +696,23 @@ def _handle_unit_edits(source_path: Any, game_db: Dict[str, Any]) -> None:
         if "replace" in edits["WeaponDescriptor"].get("equipmentchanges", {}):
             weapon_replacements = edits["WeaponDescriptor"].get("equipmentchanges", {}).get("replace", [])
             for replacement in weapon_replacements:
-                if len(replacement) == 4:
+                if len(replacement) == 2:
+                    old_weapon, new_weapon = replacement
+                    # 2-tuple: only update mesh, fire effect stays unchanged
+                    _update_weapon_alt_mesh_on_replace(
+                        source_path,
+                        unit_name,
+                        old_weapon,
+                        new_weapon,
+                        depiction_data,
+                    )
+                elif len(replacement) == 4:
+                    old_weapon = replacement[0]
+                    new_weapon = replacement[1]
                     old_fire_effect = replacement[2]
                     new_fire_effect = replacement[3]
-                    
-                    # AllWeaponSubDepiction
+
+                    # AllWeaponSubDepiction - update FireEffectTag
                     weapon_subdepictions = source_path.find_by_cond(
                         lambda x: x.namespace == f"AllWeaponSubDepiction_{unit_name}", False)
                     if not weapon_subdepictions:
@@ -576,6 +724,27 @@ def _handle_unit_edits(source_path: Any, game_db: Dict[str, Any]) -> None:
                     if target_operator:
                         target_operator.v.by_m("FireEffectTag").v = f'"FireEffect_{new_fire_effect}"'
                         logger.info(f"Replaced fire effect {old_fire_effect} with {new_fire_effect} for {unit_name}")
+
+                    # AllWeaponAlternatives - update mesh for replacement weapon
+                    _update_weapon_alt_mesh_on_replace(
+                        source_path,
+                        unit_name,
+                        old_weapon,
+                        new_weapon,
+                        depiction_data,
+                    )
+
+        skeleton_tags = edits["WeaponDescriptor"].get("equipmentchanges", {}).get("skeleton_tags")
+        if skeleton_tags:
+            soldier_row = source_path.find_by_cond(
+                lambda x: x.namespace == f"TacticDepiction_{unit_name}_Soldier",
+                False,
+            )
+            if soldier_row:
+                _overwrite_skeleton_conditional_tags(soldier_row.v, skeleton_tags)
+                logger.info(f"Overwrote ConditionalTags for {unit_name} with skeleton_tags")
+            else:
+                logger.debug(f"No TacticDepiction_{unit_name}_Soldier found; skeleton_tags not applied")
             
         weapon_changes = edits["WeaponDescriptor"].get("equipmentchanges", {})
         

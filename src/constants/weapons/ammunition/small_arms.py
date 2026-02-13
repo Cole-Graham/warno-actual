@@ -1111,6 +1111,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "hit_roll": {
                 "Idling": 70,
             },
+            "display": "L7A2",
+            "token": "VUHHSVFUFA",
             "parent_membr": {
                 "TimeBetweenTwoShots": 1.9,
                 "MaximumRangeGRU": 875,
@@ -1124,6 +1126,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 20,
             },
         },
+        "Texture": "M240B",
         "SupplyCost": 1.0,
         "NbWeapons": [2, 1],
         "WeaponDescriptor": {
@@ -1737,6 +1740,32 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
         "SupplyCost": "MMG_M240_abrams_7_62mm",
         "NbWeapons": "MMG_M240_abrams_7_62mm",
+    },
+    
+    ("DCA_2_canon_SCAT_7_62mm", "small_arms", None, False): { #FV432_SCAT_UK
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 60,
+                "Moving": 25,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 1.2,
+                "MaximumRangeGRU": 1050,
+                "MaximumRangeHelicopterGRU": 875,
+                "PhysicalDamages": 0.24,
+                "SuppressDamages": 48.0,
+                "DisplaySalveAccuracy": False,
+                "AimingTime": 1.2,
+                "TimeBetweenTwoSalvos": 1.2,
+                "ShotsCountPerSalvo": 5,
+                "SupplyCost": 2.0,
+                "CanShootWhileMoving": "True",
+                "AffichageMunitionParSalve": 50,
+            },
+        },
+        "WeaponDescriptor": {
+            "Salves": 64,
+        },
     },
     
     ("MMG_MG3_7_62mm", "small_arms", None, False): {

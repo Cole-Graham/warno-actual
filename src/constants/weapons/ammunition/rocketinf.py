@@ -399,6 +399,38 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("RocketInf_Armbrust", "light_at", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 15,
+            },
+            "hit_roll": {
+                "Idling": 65,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 525,
+                "DisplaySalveAccuracy": False,
+                "SupplyCost": 10.0,
+            },
+        },
+    },
+    
+    ("RocketInf_WASP_58mm", "light_at", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 16,
+            },
+            "hit_roll": {
+                "Idling": 65,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 525,
+                "DisplaySalveAccuracy": False,
+                "SupplyCost": 10.0,
+            },
+        },
+    },
 
     ("RocketInf_M67_RCL_90mm_HE", "recoilless", None, False): { # 679
         "Ammunition": {

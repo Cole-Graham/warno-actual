@@ -12,9 +12,19 @@ from .ammo_data import build_ammo_data
 from .deck_pack_mappings import build_deck_pack_data
 from .decks import gather_deck_data
 from .depiction_data import gather_depiction_data
+from .order_types_data import (
+    compare_order_types_with_previous,
+    gather_order_types,
+)
 from .persistence import load_database_from_disk, save_database_to_disk
 from .source_loader import get_source_files
-from .unit_data import build_upgrade_from_mapping, gather_unit_data, gather_weapon_data
+from .unit_data import (
+    build_all_tags,
+    build_upgrade_from_mapping,
+    compare_tags_with_previous,
+    gather_unit_data,
+    gather_weapon_data,
+)
 
 logger = setup_logger(__name__)
 
@@ -51,6 +61,9 @@ def build_database(config: Dict[str, Any]) -> Dict[str, Any]:
         # Build database components
         # Note: deck_pack_mappings moved to constants_precomputation (generated separately)
         unit_data = gather_unit_data(mod_source_path)
+        order_types_data = gather_order_types(mod_source_path)
+        all_tags_list = build_all_tags(unit_data)["all_tags"]
+        unit_data["all_tags"] = all_tags_list
         _database_cache = {
             "source_files": source_files,
             "ammunition": build_ammo_data(mod_source_path),
@@ -59,8 +72,36 @@ def build_database(config: Dict[str, Any]) -> Dict[str, Any]:
             "depiction_data": gather_depiction_data(mod_source_path),
             "decks": gather_deck_data(mod_source_path),
             "deck_pack_data": build_deck_pack_data(mod_source_path),
+            "order_types": order_types_data,
             "upgrade_from_mapping": build_upgrade_from_mapping(unit_data),
         }
+
+        db_path = Path(config["data_config"]["database_path"])
+
+        # Compare tags with previous build (vanilla game data) and log warnings if changed
+        previous_unit_data_path = db_path / "unit_data.json"
+        if previous_unit_data_path.exists():
+            try:
+                with open(previous_unit_data_path) as f:
+                    previous_unit_data = json.load(f)
+                previous_tags_list = previous_unit_data.get("all_tags", [])
+                compare_tags_with_previous(all_tags_list, previous_tags_list)
+            except Exception as e:
+                logger.debug("Could not compare with previous tags: %s", e)
+
+        # Compare order types with previous build and log warnings if changed
+        previous_order_types_path = db_path / "order_types.json"
+        if previous_order_types_path.exists():
+            try:
+                with open(previous_order_types_path) as f:
+                    previous = json.load(f)
+                previous_list = previous.get("all_order_types", [])
+                compare_order_types_with_previous(
+                    order_types_data.get("all_order_types", []),
+                    previous_list,
+                )
+            except Exception as e:
+                logger.debug("Could not compare with previous order types: %s", e)
 
         logger.info(f"Built database with {len(_database_cache['unit_data'])} units")
         logger.info(f"Built database with {len(_database_cache['weapons'])} weapons")
@@ -72,6 +113,12 @@ def build_database(config: Dict[str, Any]) -> Dict[str, Any]:
         )
         logger.info(
             f"Built database with {len(_database_cache['upgrade_from_mapping'])} UpgradeFrom relationships"
+        )
+        logger.info(
+            f"Built database with {len(_database_cache['order_types']['all_order_types'])} order types"
+        )
+        logger.info(
+            f"Built database with {len(_database_cache['unit_data']['all_tags'])} tags (excluding UNITE_*)"
         )
 
         # Save to disk for future use

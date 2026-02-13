@@ -16,6 +16,7 @@ DB_FILENAMES = {
     "deck_pack_data": "deck_pack_data.json",
     "decks": "decks.json",
     "depiction_data": "depiction_data.json",
+    "order_types": "order_types.json",
     "unit_data": "unit_data.json",
     "upgrade_from_mapping": "UpgradeFrom_mapping.json",
     "weapons": "weapons.json",

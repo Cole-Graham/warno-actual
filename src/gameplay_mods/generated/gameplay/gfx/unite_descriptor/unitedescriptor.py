@@ -98,7 +98,6 @@ def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_nam
     unit_data = game_db["unit_data"].get(unit_name, None)
 
     found_capacite_module = find_obj_by_type(modules_list.v, "TCapaciteModuleDescriptor") is not None
-    found_zoneinfluence_module = find_obj_by_type(modules_list.v, "TZoneInfluenceMapModuleDescriptor") is not None
 
     module_handlers = {
         "TTypeUnitModuleDescriptor": { "handler": _handle_typeunit_module, "args": [] },
@@ -140,7 +139,7 @@ def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_nam
         "TStrategicDataModuleDescriptor": { "handler": _handle_strategicdata_module, "args": [] },
         "TUnitUIModuleDescriptor": { "handler": handle_unitui_module, "args": [dictionary_entries, donor] },
         # "TUnitUpkeepModuleDescriptor": { "handler": handle_unitupkeep_module, "args": [] },
-        "TDeploymentShiftModuleDescriptor": { "handler": _handle_deploymentshift_module, "args": [found_zoneinfluence_module] },
+        "TDeploymentShiftModuleDescriptor": { "handler": _handle_deploymentshift_module, "args": [] },
         "TCameraShowroomModuleDescriptor": { "handler": _handle_camerashowroom_module, "args": [] },
     }
     # Iterate over module handlers
@@ -191,7 +190,7 @@ def _add_modules(game_db, edit_type, unit_name, edits, modules_list) -> None:
         wreck_type = "Default" if not unit_db.get(
             unit_name, {}).get("is_helo_unit", False) else "Chopper"
         
-        if "tow_only" in edits:
+        if edits.get("tow_only", False):
             transportable_tag_set = '"Unite_transportable"'
         else:
             transportable_tag_set = '"Crew", "Unite_transportable"'
@@ -246,15 +245,27 @@ def _handle_typeunit_module(logger, game_db, unit_data, edit_type, unit_name,
     """Handle TTypeUnitModuleDescriptor for existing and new units"""
     # TODO: Add the keys and values back to the dictionary entries
     for member, value in edits.get("TypeUnit", {}).items():
-        module.v.by_m(member).v = value
-        
+        if member == "TypeUnitFormation":
+            continue
+        elif member == "Coalition" and isinstance(value, str):
+            module.v.by_m(member).v = value
+        elif member == "MotherCountry" and isinstance(value, str):
+            module.v.by_m(member).v = f"'{value}'"
+        elif member == "AcknowUnitTypes" and isinstance(value, list):
+            new_list = ndf.model.List()
+            for item in value:
+                new_list.add(f"~/TAcknowUnitType_{item}")
+            module.v.by_m(member).v = new_list
+        else:
+            logger.error(f"Unknown member or invalid configuration of TypeUnit key for {unit_name}: {member} = {value}")
 
 # TFormationModuleDescriptor
 def _handle_formation_module(logger, game_db, unit_data, edit_type, unit_name,
                             edits, module, *args) -> None:
     """Handle TFormationModuleDescriptor for existing and new units"""
-    if edits.get("TypeUnitFormation", None) is not None:
-        module.v.by_m("TypeUnitFormation").v = str(edits["TypeUnitFormation"])
+    formation_type = edits.get("TypeUnit", {}).get("TypeUnitFormation", None)
+    if formation_type:
+        module.v.by_m("TypeUnitFormation").v = f"'{formation_type}'"
 
 
 # TInfantrySquadModuleDescriptor
@@ -438,7 +449,9 @@ def _handle_visibility_module(logger, game_db, unit_data, edit_type, unit_name,
                               edits, module, *args) -> None:
     """Handle TVisibilityModuleDescriptor for existing and new units"""
     if edit_type == "new_units":
-        pass
+        if "stealth" in edits:
+            module.v.by_m("UnitConcealmentBonus").v = str(edits["stealth"])
+            logger.info(f"Updated {unit_name} stealth to {edits['stealth']}")
     
     if edit_type == "unit_edits":
         if "stealth" in edits:
@@ -671,19 +684,12 @@ def _handle_deploymentshift_module(logger, game_db, unit_data, edit_type, unit_n
                                    edits, module, *args) -> None:
     """Handle TDeploymentShiftModuleDescriptor for existing and new units"""
     
-    found_zoneinfluence_module = args[0]
-    
-    # Remove forward deploy for command units
-    if found_zoneinfluence_module:
-        logger.info(f"Removed {module.v.type} from {unit_name}")
-        module.parent.remove(module.index)
-    
-    # Adjust forward deploy for units with helicopter transports
-    elif edits.get("DeploymentShift", None) is not None:
+    # Adjust forward deploy
+    if edits.get("DeploymentShift", None) is not None:
         module.v.by_m("DeploymentShiftGRU").v = str(edits["DeploymentShift"])
     
     else:
-        # Nerf forward deploy
+        # Global Nerfs to forward deploy
         shift_val = float(module.v.by_m("DeploymentShiftGRU").v)
         if shift_val not in forward_deploy_old_values:
             forward_deploy_old_values.append(shift_val)

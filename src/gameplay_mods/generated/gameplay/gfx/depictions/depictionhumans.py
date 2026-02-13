@@ -7,6 +7,71 @@ from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
 
+# Base path for mesh descriptors (Servant vs Driver)
+_MESH_BASE = "$/GFX/DepictionResources/"
+
+
+def _mesh_descriptor_path(servant_id: str, type_name: str) -> str:
+    """Return mesh descriptor path for a servant and subdepiction type (e.g. Driver vs Servant)."""
+    if type_name == "Driver":
+        return f"{_MESH_BASE}MeshDescriptor_Driver_{servant_id}"
+    return f"{_MESH_BASE}MeshDescriptor_Servant_{servant_id}"
+
+
+def _build_subdepictions_ndf(
+    unit_name: str,
+    servant_types_by_servant: dict[str, list[str]],
+    servant_order: tuple[str, ...],
+) -> tuple[str, list[str]]:
+    """
+    Build HumanSubDepictions NDF block (in-game view).
+    Returns (ndf_string, list of mesh paths for catalog).
+    """
+    mesh_paths: list[str] = []
+    entries: list[str] = []
+    for servant_id in servant_order:
+        type_names = servant_types_by_servant.get(servant_id, [])
+        for type_name in type_names:
+            mesh_high = _mesh_descriptor_path(servant_id, type_name)
+            mesh_low = f"{mesh_high}_LOW"
+            mesh_paths.append(mesh_high)
+            entries.append(
+                f"    SubDepiction_{type_name}\n"
+                f"    (\n"
+                f"        MeshDescriptorHigh = {mesh_high}\n"
+                f"        MeshDescriptorLow = {mesh_low}\n"
+                f"    )"
+            )
+    body = ",\n".join(entries)
+    ndf = f"HumanSubDepictions_{unit_name} is\n[\n{body}\n]\n"
+    return ndf, mesh_paths
+
+
+def _build_showroom_ndf(
+    unit_name: str,
+    servant_types_by_servant: dict[str, list[str]],
+    servant_order: tuple[str, ...],
+) -> str:
+    """
+    Build HumanSubDepictionsShowroom NDF block (showroom/armory view).
+    Returns "[]" if no showroom types.
+    """
+    entries: list[str] = []
+    for servant_id in servant_order:
+        type_names = servant_types_by_servant.get(servant_id, [])
+        for type_name in type_names:
+            mesh = _mesh_descriptor_path(servant_id, type_name)
+            entries.append(
+                f"    ShowroomSubDepiction_{type_name}\n"
+                f"    (\n"
+                f"        MeshDescriptor = {mesh}\n"
+                f"    )"
+            )
+    if not entries:
+        return f"HumanSubDepictionsShowroom_{unit_name} is []\n"
+    body = ",\n".join(entries)
+    return f"HumanSubDepictionsShowroom_{unit_name} is\n[\n{body}\n]\n"
+
 
 def edit_gen_gp_gfx_depictionhumans(source_path: Any) -> None:
     """GameData/Generated/Gameplay/Gfx/Depictions/DepictionHumans.ndf"""
@@ -31,96 +96,99 @@ def _handle_new_units(source_path: Any) -> None:
         mesh_names = None
         if "servants" in edits:
             mesh_names = edits["servants"]
-        else:
-            for row in source_path:
-                if row.namespace != f"HumanSubDepictions_{donor_name}":
-                    continue
-
-                left_servant = row.v[0]
-                right_servant = row.v[1]
-
-                left_mesh = left_servant.v.by_m("MeshDescriptorHigh").v.split(
-                    "$/GFX/DepictionResources/MeshDescriptor_Servant_"
-                )[-1]
-                right_mesh = right_servant.v.by_m("MeshDescriptorHigh").v.split(
-                    "$/GFX/DepictionResources/MeshDescriptor_Servant_"
-                )[-1]
-
-                mesh_names = (left_mesh, right_mesh)
-                break
 
         if not mesh_names:
             logger.warning(f"Could not find mesh names for {donor_name}")
             continue
 
-        left_mesh, right_mesh = mesh_names
+        servant_order = mesh_names
+        servant_types = edits.get("servant_types", {})
+        showroom_servant_types = servant_types.get("showroom", {})
+        subdepictions_servant_types = servant_types.get("subdepictions", {})
 
-        if edits.get("is_heavy_equipment", False):
-            # Create heavy equipment human depiction entries
-            human_depiction = (
-                f"HumanSubDepictions_{unit_name} is "
-                f"["
-                f"    SubDepiction_ServantWalkOnlyLeft"
-                f"    ("
-                f"        MeshDescriptorHigh = $/GFX/DepictionResources/MeshDescriptor_Servant_{left_mesh}"
-                f"        MeshDescriptorLow = $/GFX/DepictionResources/MeshDescriptor_Servant_{left_mesh}_LOW"
-                f"    ),"
-                f"    SubDepiction_GunnerIdleOnlyLeft"
-                f"    ("
-                f"        MeshDescriptorHigh = $/GFX/DepictionResources/MeshDescriptor_Servant_{left_mesh}"
-                f"        MeshDescriptorLow = $/GFX/DepictionResources/MeshDescriptor_Servant_{left_mesh}_LOW"
-                f"    ),"
-                f"    SubDepiction_ServantRight"
-                f"    ("
-                f"        MeshDescriptorHigh = $/GFX/DepictionResources/MeshDescriptor_Servant_{right_mesh}"
-                f"        MeshDescriptorLow = $/GFX/DepictionResources/MeshDescriptor_Servant_{right_mesh}_LOW"
-                f"    )"
-                f"]"
+        if subdepictions_servant_types:
+            # New format: build from servant_types keys
+            human_depiction, catalog_mesh_paths = _build_subdepictions_ndf(
+                unit_name,
+                subdepictions_servant_types,
+                servant_order,
             )
-            showroom_depiction = (
-                f"HumanSubDepictionsShowroom_{unit_name} is"
-                f"["
-                f"    ShowroomSubDepiction_GunnerLeft"
-                f"    ("
-                f"        MeshDescriptor = $/GFX/DepictionResources/MeshDescriptor_Servant_{left_mesh}"
-                f"    ),"
-                f"    ShowroomSubDepiction_ServantRight"
-                f"    ("
-                f"        MeshDescriptor = $/GFX/DepictionResources/MeshDescriptor_Servant_{right_mesh}"
-                f"    )"
-                f"]"
+            showroom_depiction = _build_showroom_ndf(
+                unit_name,
+                showroom_servant_types,
+                servant_order,
             )
         else:
-            # Create human depiction entries
-            human_depiction = (
-                f"HumanSubDepictions_{unit_name} is\n"
-                f"[\n"
-                f"    SubDepiction_ATGMServantLeft\n"
-                f"    (\n"
-                f"        MeshDescriptorHigh = $/GFX/DepictionResources/MeshDescriptor_Servant_{left_mesh}\n"
-                f"        MeshDescriptorLow = $/GFX/DepictionResources/MeshDescriptor_Servant_{left_mesh}_LOW\n"
-                f"    ),\n"
-                f"    SubDepiction_ATGMServantRight\n"
-                f"    (\n"
-                f"        MeshDescriptorHigh = $/GFX/DepictionResources/MeshDescriptor_Servant_{right_mesh}\n"
-                f"        MeshDescriptorLow = $/GFX/DepictionResources/MeshDescriptor_Servant_{right_mesh}_LOW\n"
-                f"    )\n"
-                f"]\n"
-            )
-
-            showroom_depiction = (
-                f"HumanSubDepictionsShowroom_{unit_name} is\n"
-                f"[\n"
-                f"    ShowroomSubDepiction_ATGMServantLeft\n"
-                f"    (\n"
-                f"        MeshDescriptor = $/GFX/DepictionResources/MeshDescriptor_Servant_{left_mesh}\n"
-                f"    ),\n"
-                f"    ShowroomSubDepiction_ATGMServantRight\n"
-                f"    (\n"
-                f"        MeshDescriptor = $/GFX/DepictionResources/MeshDescriptor_Servant_{right_mesh}\n"
-                f"    )\n"
-                f"]\n"
-            )
+            # Fallback: no servant_types — use legacy is_heavy_equipment logic
+            logger.warning(f"No servant_types found for {unit_name}, using legacy logic")
+            left_mesh, right_mesh = servant_order[0], servant_order[1]
+            if edits.get("is_heavy_equipment", False):
+                human_depiction = (
+                    f"HumanSubDepictions_{unit_name} is "
+                    f"["
+                    f"    SubDepiction_ServantWalkOnlyLeft"
+                    f"    ("
+                    f"        MeshDescriptorHigh = $/GFX/DepictionResources/MeshDescriptor_Servant_{left_mesh}"
+                    f"        MeshDescriptorLow = $/GFX/DepictionResources/MeshDescriptor_Servant_{left_mesh}_LOW"
+                    f"    ),"
+                    f"    SubDepiction_GunnerIdleOnlyLeft"
+                    f"    ("
+                    f"        MeshDescriptorHigh = $/GFX/DepictionResources/MeshDescriptor_Servant_{left_mesh}"
+                    f"        MeshDescriptorLow = $/GFX/DepictionResources/MeshDescriptor_Servant_{left_mesh}_LOW"
+                    f"    ),"
+                    f"    SubDepiction_ServantRight"
+                    f"    ("
+                    f"        MeshDescriptorHigh = $/GFX/DepictionResources/MeshDescriptor_Servant_{right_mesh}"
+                    f"        MeshDescriptorLow = $/GFX/DepictionResources/MeshDescriptor_Servant_{right_mesh}_LOW"
+                    f"    )"
+                    f"]"
+                )
+                showroom_depiction = (
+                    f"HumanSubDepictionsShowroom_{unit_name} is"
+                    f"["
+                    f"    ShowroomSubDepiction_GunnerLeft"
+                    f"    ("
+                    f"        MeshDescriptor = $/GFX/DepictionResources/MeshDescriptor_Servant_{left_mesh}"
+                    f"    ),"
+                    f"    ShowroomSubDepiction_ServantRight"
+                    f"    ("
+                    f"        MeshDescriptor = $/GFX/DepictionResources/MeshDescriptor_Servant_{right_mesh}"
+                    f"    )"
+                    f"]"
+                )
+            else:
+                human_depiction = (
+                    f"HumanSubDepictions_{unit_name} is\n"
+                    f"[\n"
+                    f"    SubDepiction_ATGMServantLeft\n"
+                    f"    (\n"
+                    f"        MeshDescriptorHigh = $/GFX/DepictionResources/MeshDescriptor_Servant_{left_mesh}\n"
+                    f"        MeshDescriptorLow = $/GFX/DepictionResources/MeshDescriptor_Servant_{left_mesh}_LOW\n"
+                    f"    ),\n"
+                    f"    SubDepiction_ATGMServantRight\n"
+                    f"    (\n"
+                    f"        MeshDescriptorHigh = $/GFX/DepictionResources/MeshDescriptor_Servant_{right_mesh}\n"
+                    f"        MeshDescriptorLow = $/GFX/DepictionResources/MeshDescriptor_Servant_{right_mesh}_LOW\n"
+                    f"    )\n"
+                    f"]\n"
+                )
+                showroom_depiction = (
+                    f"HumanSubDepictionsShowroom_{unit_name} is\n"
+                    f"[\n"
+                    f"    ShowroomSubDepiction_ATGMServantLeft\n"
+                    f"    (\n"
+                    f"        MeshDescriptor = $/GFX/DepictionResources/MeshDescriptor_Servant_{left_mesh}\n"
+                    f"    ),\n"
+                    f"    ShowroomSubDepiction_ATGMServantRight\n"
+                    f"    (\n"
+                    f"        MeshDescriptor = $/GFX/DepictionResources/MeshDescriptor_Servant_{right_mesh}\n"
+                    f"    )\n"
+                    f"]\n"
+                )
+            catalog_mesh_paths = [
+                f"{_MESH_BASE}MeshDescriptor_Servant_{left_mesh}",
+                f"{_MESH_BASE}MeshDescriptor_Servant_{right_mesh}",
+            ]
 
         # Find insertion point and add entries
         for row in source_path:
@@ -131,7 +199,9 @@ def _handle_new_units(source_path: Any) -> None:
             source_path.insert(row.index, human_depiction)
             logger.info(f"Added human depictions for {unit_name}")
 
-            # Add catalog entry
+            # Add catalog entry (unique mesh paths in order)
+            unique_meshes = list(dict.fromkeys(catalog_mesh_paths))
+            meshes_lines = ",\n".join(f"        {p}" for p in unique_meshes)
             catalog_entry = (
                 f"TTransportedInfantryEntry\n"
                 f"(\n"
@@ -139,8 +209,7 @@ def _handle_new_units(source_path: Any) -> None:
                 f'    Identifier = "{unit_name}"\n'
                 f"    Meshes =\n"
                 f"    [\n"
-                f"        $/GFX/DepictionResources/MeshDescriptor_Servant_{left_mesh},\n"
-                f"        $/GFX/DepictionResources/MeshDescriptor_Servant_{right_mesh}\n"
+                f"{meshes_lines}\n"
                 f"    ]\n"
                 f'    UniqueCount = {edits["alternatives_count"]}\n'
                 f")\n"

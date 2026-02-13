@@ -17,6 +17,18 @@ supply_unit_edits = {
         "availability": [8, 0, 0, 0],
     },
     
+    "Supacat_ATMP_supply_UK": {
+        "SupplyCapacity": 500.0,
+        "CommandPoints": 15,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "SupplyDescriptor": "RunnerSupply",
+        "availability": [8, 0, 0, 0],
+    },
+    
     "UAZ_469_supply_SOV": {
         "SupplyCapacity": 500.0,
         "CommandPoints": 15,
@@ -102,7 +114,7 @@ supply_unit_edits = {
         },
         "SupplyDescriptor": "SquadSupply",
         "availability": [6, 0, 0, 0],
-        "tow_only": None,
+        "tow_only": True,
         "orders": {
             "add_orders": ["EOrderType/UnloadFromTransport", "EOrderType/UnloadAtPosition", "EOrderType/Load"]
         },
@@ -121,7 +133,7 @@ supply_unit_edits = {
         },
         "SupplyDescriptor": "SquadSupply",
         "availability": [5, 0, 0, 0],
-        "tow_only": None,
+        "tow_only": True,
         "orders": {
             "add_orders": ["EOrderType/UnloadFromTransport", "EOrderType/UnloadAtPosition", "EOrderType/Load"]
         },
@@ -202,7 +214,7 @@ supply_unit_edits = {
             },
         },
         "SupplyDescriptor": "PrimarySupply",
-        "tow_only": None,
+        "tow_only": True,
         "orders": {
             "add_orders": ["EOrderType/UnloadFromTransport", "EOrderType/UnloadAtPosition", "EOrderType/Load"]
         },
@@ -256,6 +268,13 @@ supply_unit_edits = {
             "default": {
                 "cards": 2,
             },
+        },
+        "tow_only": True,
+        "orders": {
+            "add_orders": ["EOrderType/UnloadFromTransport", "EOrderType/UnloadAtPosition", "EOrderType/Load"]
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'_transport2'"],
         },
         "SupplyDescriptor": "PrimarySupply",
         "availability": [2, 0, 0, 0],
@@ -371,6 +390,18 @@ supply_unit_edits = {
     },
     
     "M113A2_supply_US": {
+        "SupplyCapacity": 925.0,
+        "CommandPoints": 30,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "SupplyDescriptor": "SquadSupply",
+        "availability": [6, 0, 0, 0],
+    },
+    
+    "FV432_supply_UK": {
         "SupplyCapacity": 925.0,
         "CommandPoints": 30,
         "Divisions": {

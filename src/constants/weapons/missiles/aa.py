@@ -249,6 +249,23 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("SAM_BLOODHOUND", "SAM", None, False): {
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_missile_he_bigly",
+            },
+            "hit_roll": {
+                "Idling": 65,
+                "DistanceToTarget": True,
+            },
+            "parent_membr": {
+                "MaximumRangeAirplaneGRU": 6125,
+                "PhysicalDamages": 9.0,
+                "SupplyCost": 180.0,
+            },
+        },
+    },
+    
     ("SAM_9M38M1", "SAM", None, False): {
         "Ammunition": {
             "hit_roll": {

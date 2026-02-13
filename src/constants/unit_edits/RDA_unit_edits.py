@@ -342,8 +342,11 @@ rda_unit_edits = {
         "armor": "Infantry_armor_reference",
         "availability": [10, 0, 0, 0],
         "max_speed": 26,
+        "capacities": {
+            "add_capacities": ["reserviste"],
+        },
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_medium'"],
+            "add_specs": ["'_reservist'", "'infantry_equip_medium'"],
         },
     },
     
@@ -352,8 +355,11 @@ rda_unit_edits = {
         "armor": "Infantry_armor_reference",
         "availability": [12, 0, 0, 0],
         "max_speed": 26,
+        "capacities": {
+            "add_capacities": ["reserviste"],
+        },
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_light'"],
+            "add_specs": ["'_reservist'", "'infantry_equip_light'"],
         },
     },
 

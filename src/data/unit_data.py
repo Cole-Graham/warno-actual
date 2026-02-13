@@ -1,6 +1,6 @@
 import re
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Set
 
 from src import ndf
 from src.data.ammo_data import get_vanilla_renames
@@ -738,3 +738,50 @@ def build_upgrade_from_mapping(unit_data: Dict[str, Any]) -> Dict[str, List[str]
         f"containing {sum(len(chain) for chain in chain_mapping.values())} total units"
     )
     return chain_mapping
+
+
+# Tag used for per-unit identity; excluded from all_tags dataset and validation
+UNITE_TAG_PREFIX = "UNITE_"
+
+
+def build_all_tags(unit_data: Dict[str, Any]) -> Dict[str, List[str]]:
+    """Build list of all unique tags from unit data, excluding UNITE_* tags.
+
+    UNITE_{unitname} tags are unique per unit and are not included in the
+    dataset or validation.
+
+    Returns:
+        Dict with "all_tags": sorted list of unique tag strings.
+    """
+    all_tags: Set[str] = set()
+    for unit_info in unit_data.values():
+        for tag in unit_info.get("tags", []):
+            if tag.startswith(UNITE_TAG_PREFIX):
+                continue
+            all_tags.add(tag)
+    result = {"all_tags": sorted(all_tags)}
+    logger.info(f"Gathered {len(all_tags)} unique tags (excluding {UNITE_TAG_PREFIX}*)")
+    return result
+
+
+def compare_tags_with_previous(
+    current_tags: List[str],
+    previous_tags: List[str],
+) -> None:
+    """Log warnings if tags were added or removed compared to previous build."""
+    current_set = set(current_tags)
+    previous_set = set(previous_tags)
+
+    added = current_set - previous_set
+    removed = previous_set - current_set
+
+    if added:
+        logger.warning(
+            "Tags added in game data (new tags): %s",
+            sorted(added),
+        )
+    if removed:
+        logger.warning(
+            "Tags removed from game data (no longer present): %s",
+            sorted(removed),
+        )

@@ -20,6 +20,7 @@ from src.constants.weapons import (
     PGB_BOMB_DAMAGE,
     MANPAD_HAGRU_DAMAGE,
     MANPAD_TBAGRU_DAMAGE,
+    MISSILE_HE_BIGLY_DAMAGE,
     TWELVE_SEVEN_MM_DAMAGE,
     FOURTEEN_FIVE_MM_DAMAGE,
 )
@@ -65,6 +66,7 @@ def edit_gen_gp_gfx_damageresistancefamilylist(source_path) -> None:
     sa_full_family = f"DamageFamily_sa_full is {i + 9}"
     twelve_seven_mm_family = f"DamageFamily_12_7 is {i + 10}"
     fourteen_five_mm_family = f"DamageFamily_14_5 is {i + 11}"
+    missile_he_bigly_family = f"DamageFamily_missile_he_bigly is {i + 12}"
 
     source_path.insert(j + 1, infanterie_wa_family)
     source_path.add(sniper_family)
@@ -80,7 +82,7 @@ def edit_gen_gp_gfx_damageresistancefamilylist(source_path) -> None:
     source_path.add(sa_full_family)
     source_path.add(twelve_seven_mm_family)
     source_path.add(fourteen_five_mm_family)
-
+    source_path.add(missile_he_bigly_family)
     logger.info(
         f"Added families: \n"
         f"{infanterie_wa_family}\n"
@@ -97,6 +99,7 @@ def edit_gen_gp_gfx_damageresistancefamilylist(source_path) -> None:
         f"{sa_full_family}\n"
         f"{twelve_seven_mm_family}\n"
         f"{fourteen_five_mm_family}\n"
+        f"{missile_he_bigly_family}\n"
     )
 
 
@@ -121,6 +124,7 @@ def edit_gen_gp_gfx_damageresistancefamilylistimpl(source_path) -> None:
             '"DamageFamily_sa_full"',
             '"DamageFamily_12_7"',
             '"DamageFamily_14_5"',
+            '"DamageFamily_missile_he_bigly"',
         ],
     }
 
@@ -160,6 +164,7 @@ def _add_damage_resistance_values(source_path) -> None:
         "sa_full": ("(DamageFamily_sa_full, 13)"),
         "12_7": ("(DamageFamily_12_7, 1)"),
         "14_5": ("(DamageFamily_14_5, 1)"),
+        "missile_he_bigly": ("(DamageFamily_missile_he_bigly, 1)"),
     }
 
     for family_name, family_def in families.items():
@@ -192,6 +197,7 @@ def _add_damage_resistance_values(source_path) -> None:
         *[str(SA_FULL_DAMAGE_RATIOS + list(sa_damage)) for sa_damage in SA_INF_ARMOR_DAMAGE_RATIOS],
         str(TWELVE_SEVEN_MM_DAMAGE),
         str(FOURTEEN_FIVE_MM_DAMAGE),
+        str(MISSILE_HE_BIGLY_DAMAGE),
     )
     logger.info("Added damage values")
     

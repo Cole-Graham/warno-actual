@@ -50,7 +50,7 @@ RDA_NEW_UNITS = {
         },
         "availability": [99, 0, 0, 0],
         "max_speed": 200,
-        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootOnPositionSmoke',
                    'EOrderType/ShootOnPositionWithoutCorrectionSmoke', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
@@ -140,7 +140,7 @@ RDA_NEW_UNITS = {
         },
         "availability": [0, 0, 2, 0],
         "max_speed": 26,
-        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootOnPositionSmoke',
                    'EOrderType/ShootOnPositionWithoutCorrectionSmoke', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
@@ -201,7 +201,7 @@ RDA_NEW_UNITS = {
             },
         },
         "availability": [0, 3, 0, 0],
-        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/QuickMove', 'EOrderType/Reverse',
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Reverse',
                    'EOrderType/AskForSupply', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": False, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,
@@ -267,7 +267,7 @@ RDA_NEW_UNITS = {
         },
         "availability": [7, 5, 4, 0],
         "max_speed": 20,
-        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/Attack', 'EOrderType/MoveAndAttack',
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/Attack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
@@ -279,6 +279,17 @@ RDA_NEW_UNITS = {
         "Nation": "DDR",
         "depiction_type": "Towed",
         "alternatives_count": 2,
+        "servants": ("G_DDR", "D_DDR"),
+        "servant_types": {
+            "showroom": {
+                "G_DDR": ["ATGMServantLeft"],
+                "D_DDR": ["ATGMServantRight"]
+            },
+            "subdepictions": {
+                "G_DDR": ["ATGMServantLeft"],
+                "D_DDR": ["ATGMServantRight"]
+            },
+        }
     },
     
     ("T54B_CMD_DDR", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -320,7 +331,7 @@ RDA_NEW_UNITS = {
             },
         },
         "availability": [0, 0, 2, 0],
-        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
@@ -383,7 +394,7 @@ RDA_NEW_UNITS = {
             },
         },
         "availability": [0, 0, 2, 0],
-        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
@@ -448,7 +459,7 @@ RDA_NEW_UNITS = {
             },
         },
         "availability": [0, 0, 2, 0],
-        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
@@ -502,7 +513,7 @@ RDA_NEW_UNITS = {
             },
         },
         "availability": [0, 0, 2, 0],
-        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
@@ -548,7 +559,7 @@ RDA_NEW_UNITS = {
             },
         },
         "availability": [0, 0, 4, 3],
-        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],

@@ -155,6 +155,32 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("Canon_HE_76mm_L5A1", "canon", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 40,
+                "Moving": 0,
+            },
+            "parent_membr": {
+                "TraitsToken": ['STAT', 'HE'],
+                "CanShootWhileMoving": False,
+            },
+        },
+    },
+    
+    ("Canon_HE_76mm_L23A1", "canon", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 40,
+                "Moving": 0,
+            },
+            "parent_membr": {
+                "TraitsToken": ['STAT', 'HE'],
+                "CanShootWhileMoving": False,
+            },
+        },
+    },
+    
     ("Canon_HE_85mm_S53", "canon", None, False): { # T-34 3BK-2
         "Ammunition": {
             "hit_roll": {
@@ -369,6 +395,27 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "hit_roll": {
                 "Idling": 40,
+                "Moving": 0,
+            },
+            "parent_membr": {
+                "TraitsToken": ['STAT', 'HE', 'HEAT'],
+                "CanShootWhileMoving": False,
+            },
+        },
+    },
+    
+    ("Canon_AP_76mm_L23A1", "canon", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 13,
+            },
+            "hit_roll": {
+                "Idling": 40,
+                "Moving": 0,
+            },
+            "parent_membr": {
+                "TraitsToken": ['STAT', 'HE', 'HEAT'],
+                "CanShootWhileMoving": False,
             },
         },
     },
