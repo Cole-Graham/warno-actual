@@ -280,10 +280,6 @@ USA_NEW_UNITS = {
         "strength": 2,
         # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
         # "Dangerousness": 12,
-        "WeaponAssignment": [
-            (0, [2, ]),
-            (1, [0, 1]),
-        ],
         "WeaponDescriptor": {
             "Salves": {
                 "insert": [(1, 10), ],

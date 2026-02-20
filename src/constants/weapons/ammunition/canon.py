@@ -83,6 +83,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("Canon_HEAT_105mm_L7_Centurion_AVRE", "canon", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 17,
+            },
+        },
+    },
 
     ("Canon_HEAT_152mm_Sheridan", "canon", None, False): { # 239
         "Ammunition": {
@@ -213,6 +221,15 @@ weapons: Dict[WeaponKey, WeaponData] = {
     },
 
     ("Canon_HE_165mm_AVRE", "canon", None, False): { # 217
+        "Ammunition": {
+            "parent_membr": {
+                "MaximumRangeGRU": 1400,
+                "PhysicalDamages": 4.0,
+            },
+        },
+    },
+    
+    ("Canon_HE_165mm_AVRE_L9A1", "canon", None, False): {
         "Ammunition": {
             "parent_membr": {
                 "MaximumRangeGRU": 1400,

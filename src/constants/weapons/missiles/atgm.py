@@ -72,15 +72,37 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Index": 22,
             },
             "hit_roll": {
-                "Idling": 50,
+                "Idling": 60,
+            },
+            "parent_membr": {
+                "SpeedGRU": 350,
+                "NoiseDissimulationMalus": 1.0
+            },
+        },
+        "SupplyCost": 95.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [5, 4, 2, 1],
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 350,
+        },
+    },
+    
+    ("ATGM_Swingfire_noisy", "ATGM", "ATGM_Swingfire", True): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 22,
+            },
+            "hit_roll": {
+                "Idling": 60,
             },
             "parent_membr": {
                 "SpeedGRU": 350,
             },
         },
-        "SupplyCost": 120.0,
+        "SupplyCost": 95.0,
         "WeaponDescriptor": {
-            "SalvoLengths": [5, 2, 1],
+            "SalvoLengths": [5, 4, 2, 1],
         },
         "MissileDescriptor": {
             "MaxSpeedGRU": 350,
@@ -99,7 +121,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "SpeedGRU": 350,
             },
         },
-        "SupplyCost": 100.0,
+        "SupplyCost": 90.0,
         "WeaponDescriptor": {
             "SalvoLengths": [1],
         },
@@ -141,7 +163,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "SpeedGRU": 350,
             },
         },
-        "SupplyCost": 100.0,
+        "SupplyCost": 90.0,
         "WeaponDescriptor": {
             "SalvoLengths": [2, 1],
         },
@@ -230,6 +252,27 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
         "MissileDescriptor": {
             "MaxSpeedGRU": 739,
+        },
+    },
+    
+    ("ATGM_AS11", "ATGM", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 20,
+            },
+            "hit_roll": {
+                "Idling": 45,
+            },
+            "parent_membr": {
+                "SpeedGRU": 350,
+            },
+        },
+        "SupplyCost": 70.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [4],
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 350,
         },
     },
     
@@ -432,7 +475,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MaximumRangeGRU": 2450,
-                "SpeedGRU": 311,
+                "SpeedGRU": 233,
             },
         },
         "SupplyCost": 60.0,
@@ -440,7 +483,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "SalvoLengths": [1],
         },
         "MissileDescriptor": {
-            "MaxSpeedGRU": 311,
+            "MaxSpeedGRU": 233,
         },
     },
 
@@ -454,7 +497,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MaximumRangeGRU": 2450,
-                "SpeedGRU": 311,
+                "SpeedGRU": 233,
             },
         },
         "SupplyCost": 60.0,
@@ -462,7 +505,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "SalvoLengths": [6, 4, 2, 1],
         },
         "MissileDescriptor": {
-            "MaxSpeedGRU": 311,
+            "MaxSpeedGRU": 233,
         },
     },
 

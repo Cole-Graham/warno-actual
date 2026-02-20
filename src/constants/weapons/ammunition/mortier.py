@@ -218,6 +218,17 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("Mortier_L16_82mm", "mortar", None, False): { # UK L16 81mm
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 1.8,
+                "SuppressDamages": 189,
+                "RadiusSplashPhysicalDamagesGRU": 81,
+                "RadiusSplashSuppressDamagesGRU": 108,
+            },
+        },
+    },
 
     ("Mortier_2S12_120mm", "mortar", None, False): { # 510
         "Ammunition": {

@@ -1843,7 +1843,7 @@ sov_unit_edits = {
 
     # SOV TANK
     "T62M_CMD_SOV": {
-        "CommandPoints": 145,
+        "CommandPoints": 130,
         "GameName": {
             "token": "LARNJZNGAB",
             "display": "#LDRSOV T-62MK LDR.",
@@ -2039,17 +2039,17 @@ sov_unit_edits = {
     },
     
     "T62M1_SOV": {
-        "CommandPoints": 105,
+        "CommandPoints": 115,
         "availability": [8, 6, 0, 0],
     },
     
     "T62M_SOV": {
-        "CommandPoints": 135,
+        "CommandPoints": 140,
         "availability": [0, 6, 4, 0],
     },
     
     "T62MV_SOV": {
-        "CommandPoints": 135,
+        "CommandPoints": 140,
         "armor": {
             "front": (12, None),
         },

@@ -323,6 +323,19 @@ NEW_TRAITS = {
         "texture": "swift.png",
     },
     
+    "_remote_controlled": {
+        "title": ("LTMPBFNAUF", "Remote Guidance"),
+        "description": ("EBNJGOCCBM", (
+            f"This vehicle can fire its weapons from behind cover via a remote "
+            f"guidance system. This allows the unit to fire its weapons without "
+            f"exposing itself to enemy fire, at the cost of a required deployment time."
+        )),
+        "extended": ("JGFNIHQPKV", (
+            f"- 0 noise malus while firing"
+        )),
+        "texture": "remote_controlled.png",
+    },
+    
     "_supply_runner": {
         "title": ("FOQNHPUZUW", "Runner"),
         "description": ("UQVNPUWWQY", (

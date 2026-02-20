@@ -774,6 +774,48 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("MANPAD_Starstreak", "MANPAD", "Javelin", True): {
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_tbagru",
+            },
+            "hit_roll": {
+                "Idling": 65,
+                "DistanceToTarget": True,
+            },
+            "parent_membr": {
+                "MaximumRangeHelicopterGRU": 2800,
+                "MaximumRangeAirplaneGRU": 2450,
+                "TimeBetweenTwoSalvos": 7.0,
+                "AimingTime": 1.2,
+                "SupplyCost": 40.0,
+                "MissileDescriptor": "~/Descriptor_Missile_Starstreak_x3",
+            },
+            "Texture": "Starstreak_x3",
+        },
+    },
+    
+    ("MANPAD_Starstreak_HAGRU", "MANPAD", "Javelin", True): {
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_hagru",
+            },
+            "hit_roll": {
+                "Idling": 65,
+                "DistanceToTarget": True,
+            },
+            "parent_membr": {
+                "MaximumRangeHelicopterGRU": 2800,
+                "MaximumRangeAirplaneGRU": 2450,
+                "TimeBetweenTwoSalvos": 7.0,
+                "AimingTime": 3.5,
+                "SupplyCost": 40.0,
+                "MissileDescriptor": "~/Descriptor_Missile_Starstreak_x3",
+            },
+            "Texture": "Starstreak_x3",
+        },
+    },
+    
     ("Mistral", "MANPAD", None, False): {
         "Ammunition": {
             "arme": {
@@ -979,6 +1021,58 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "SalvoLengths": [3],
             "units": {
                 3: ["DCA_Javelin_LML_UK", "Supacat_ATMP_Javelin_LML_UK"],
+            },
+        },
+    },
+    
+    ("Starstreak", "SAM", None, False): {
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_tbagru",
+            },
+            "hit_roll": {
+                "DistanceToTarget": True,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 1.2,
+                "TimeBetweenTwoFx": 1.2,
+                "MaximumRangeHelicopterGRU": 2800,
+                "MaximumRangeAirplaneGRU": 2275,
+                "TimeBetweenTwoSalvos": 12.0,
+                "AimingTime": 1.2,
+            },
+        },
+        "SupplyCost": 40.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [3],
+            "units": {
+                3: ["DCA_Starstreak_LML_UK"],
+            },
+        },
+    },
+    
+    ("Starstreak_HAGRU", "SAM", "Starstreak", True): {
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_hagru",
+            },
+            "hit_roll": {
+                "DistanceToTarget": True,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 1.2,
+                "TimeBetweenTwoFx": 1.2,
+                "MaximumRangeHelicopterGRU": 2800,
+                "MaximumRangeAirplaneGRU": 2275,
+                "TimeBetweenTwoSalvos": 12.0,
+                "AimingTime": 3.0,
+            },
+        },
+        "SupplyCost": 40.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [3],
+            "units": {
+                3: ["DCA_Starstreak_LML_UK"],
             },
         },
     },

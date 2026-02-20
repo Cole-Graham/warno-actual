@@ -1107,6 +1107,11 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "RocketInf_AT4_83mm": 6,
+            },
+        },
     },
     
     "LightRifles_Dragon_US": {

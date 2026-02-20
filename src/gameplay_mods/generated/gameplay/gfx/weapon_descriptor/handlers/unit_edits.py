@@ -432,7 +432,7 @@ def _update_weapon_quantities(
 
             # Check if this weapon has quantity changes
             animate_edits = equipment_changes.get("animate", {})
-            quantity_edits = equipment_changes.get("quantity", {})
+            quantity_edits = equipment_changes.get("quantity", {})            
             if base_ammo in animate_edits:
                 animate_only_one_soldier = animate_edits[base_ammo]
                 weapon_descr_row.v.by_m("AnimateOnlyOneSoldier").v = str(animate_only_one_soldier)

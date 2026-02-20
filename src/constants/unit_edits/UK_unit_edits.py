@@ -24,13 +24,46 @@ uk_unit_edits = {
         },
         "availability": [0, 4, 0, 0],
     },
+    
+    "LandRover_CMD_UK": {
+        "CommandPoints": 145,
+        "GameName": {
+            "display": "#CMD ROVER CP"
+        },
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 4, 0, 0],
+    },
 
     "Saxon_CMD_UK": {
         "CommandPoints": 155,
-        "availability": [0, 3, 0, 0],
+        "availability": [0, 0, 3, 0],
         "WeaponDescriptor": {
             "Salves": {
                 "MMG_L37A2_7_62mm": 56,
+            },
+        },
+    },
+    
+    "FV1612_Humber_CMD_UK": {
+        "CommandPoints": 155,
+        "availability": [0, 3, 0, 0],
+    },
+    
+    "FV105_Sultan_UK": {
+        "CommandPoints": 155,
+        "availability": [0, 3, 0, 0],
+    },
+    
+    "MCV_80_Warrior_CMD_UK": {
+        "CommandPoints": 175,
+        "availability": [0, 0, 3, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_L94A1_7_62mm": 80,
             },
         },
     },
@@ -333,7 +366,7 @@ uk_unit_edits = {
         "max_speed": 26,
         "WeaponDescriptor": {
             "Salves": {
-                "insert": [(2, 7)], # (salves_index, salves)
+                "insert": [(1, 7)], # (salves_index, salves)
             },
             "equipmentchanges": {
                 "insert": [(1, "RocketInf_M72A3_LAW_66mm")],
@@ -419,6 +452,54 @@ uk_unit_edits = {
         "remove_zone_capture": None,
     },
     
+    "Guards_CMD_UK": {
+        "CommandPoints": 45,
+        "armor": "Infantry_armor_reference",
+        "GameName": {
+            "display": "#LDR GUARDS LDR.",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "UNITE_Guards_CMD_UK",
+                "Unite",
+            ],
+        },
+        "TransportedTexture": "UseInGame_Transport_REGINF",
+        "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "UnitRole": "infantry",
+        "SpecialtiesList": {
+            "overwrite_all": [
+                '_leader',
+                '_resolute',
+                'infantry_equip_medium',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Infantry",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
+        "availability": [0, 0, 5, 4],
+        "max_speed": 26,
+        "strength": 7,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_L85A1": 6,
+                },
+                "replace": [("RocketInf_M72A3_LAW_66mm", "RocketInf_LAW_80", "RocketInf_M72_LAW_66mm", "RocketInf_LAW_80")],
+            },
+            "Salves": {
+                "RocketInf_LAW_80": 4,
+            },
+        },
+        "remove_zone_capture": None,
+    },
+    
     "Supacat_ATMP_UK": {
         "CommandPoints": 15,
         "SpecialtiesList": {
@@ -445,6 +526,17 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'",],
         },
+    },
+    
+    "FV1611_Humber_Pig_UK": {
+        "CommandPoints": 15,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+    },
+    
+    "FV1611a_Kremlin_Pig_UK": {
+        "CommandPoints": 20,
     },
     
     "VW_T2b_MP_UK": {
@@ -779,6 +871,9 @@ uk_unit_edits = {
     
     "Paratroopers_Engineers_CarlG_UK": {
         "CommandPoints": 40,
+        "GameName": {
+            "display": "PARA. ENGINEERS [CG]",
+        },
         "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "SpecialtiesList": {
@@ -856,10 +951,106 @@ uk_unit_edits = {
         },
     },
     
+    "Rifles_Patrol_UK": {
+        "CommandPoints": 30,
+        "armor": "Infantry_armor_reference",
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
+        },
+        "availability": [10, 7, 0, 0],
+    },
+    
+    "Rifles_Berlin_UK": {
+        "CommandPoints": 55,
+        "armor": "Infantry_armor_reference",
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "availability": [10, 7, 0, 0],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_L85A1": 7,
+                },
+                "insert": [(2, "MMG_inf_L7A2_7_62mm")],
+                "insert_edits": {
+                    2: {
+                        "turret_edits": {
+                            "YulBoneOrdinal": 3,
+                        },
+                        "SalvoStockIndex": 2,
+                        "HandheldEquipmentKey": "'WeaponAlternative_3'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
+                    },
+                    3: {
+                        "turret_edits": {
+                            "YulBoneOrdinal": 4,
+                        },
+                        "SalvoStockIndex": 3,
+                        "HandheldEquipmentKey": "'WeaponAlternative_4'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_4'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_4'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_4"],
+                    },
+                },
+            },
+            "Salves": {
+                "insert": [(2, 30)],
+                "RocketInf_LAW_80": 7,
+            },
+        },
+    },
+    
+    "Guards_UK": {
+        "CommandPoints": 35,
+        "armor": "Infantry_armor_reference",
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
+        },
+        "availability": [10, 7, 0, 0],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_L85A1": 6,
+                    "SAW_L86A1_5_56mm": 3,
+                },
+            },
+        },
+    },
+    
+    "Guards_CarlG_UK": {
+        "CommandPoints": 40,
+        "GameName": {
+            "display": "GUARDS [CG]",
+        },
+        "armor": "Infantry_armor_reference",
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "availability": [10, 7, 0, 0],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_L85A1": 6,
+                    "SAW_L86A1_5_56mm": 3,
+                },
+            },
+            "Salves": {
+                "RocketInf_Carl_Gustav": 6,
+            },
+        },
+    },
+    
     "HMGteam_MAG_UK": {
         "CommandPoints": "HMGteam_M60_US",
         "GameName": {
-            "display": "MAG 7.62mm"
+            "display": "L7A2 7.62mm"
         },
         "strength": "HMGteam_M60_US",
         "max_speed": "HMGteam_M60_US",
@@ -871,7 +1062,7 @@ uk_unit_edits = {
     "HMGteam_MAG_para_UK": {
         "CommandPoints": "HMGteam_M60_AB_US",
         "GameName": {
-            "display": "MAG 7.62mm"
+            "display": "PARA. L7A2 7.62mm"
         },
         "strength": "HMGteam_M60_AB_US",
         "max_speed": "HMGteam_M60_AB_US",
@@ -894,6 +1085,9 @@ uk_unit_edits = {
     
     "HMGteam_M2HB_para_UK": {
         "CommandPoints": "HMGteam_M2HB_AB_US",
+        "GameName": {
+            "display": "PARA. L1A1 12.7mm",
+        },
         "strength": "HMGteam_M2HB_AB_US",
         "max_speed": "HMGteam_M2HB_AB_US",
         "SpecialtiesList": {
@@ -1030,12 +1224,42 @@ uk_unit_edits = {
                 "cards": 2,
             },
         },
+        "availability": [5, 4, 3, 0],
+    },
+    
+    "81mm_mortar_Para_UK": {
+        "CommandPoints": 35,
         "availability": [0, 5, 4, 3],
+    },
+    
+    "81mm_mortar_CLU_UK": {
+        "CommandPoints": 50,
+        "availability": [0, 4, 3, 0],
+    },
+    
+    "FV432_Mortar_UK": {
+        "CommandPoints": 45,
+        "availability": [4, 3, 0, 0],
+    },
+    
+    "Howz_QF_25pdr_87mm_UK": {
+        "CommandPoints": 55,
+        "availability": [5, 4, 3, 0],
     },
 
     "Howz_L118_105mm_UK": {
         "CommandPoints": 60,
         "availability": [4, 3, 0, 0],
+    },
+    
+    "FV433_Abbot_UK": {
+        "CommandPoints": 95,
+        "availability": [3, 2, 0, 0],
+    },
+    
+    "Howz_BL_5_5in_140mm_UK": {
+        "CommandPoints": 80,
+        "availability": [3, 0, 0, 0],
     },
 
     "FH70_155mm_UK": {
@@ -1053,6 +1277,21 @@ uk_unit_edits = {
             "display": "M107A2",
         },
         "CommandPoints": 185,
+        "availability": [2, 0, 1, 0],
+    },
+    
+    "M109A2_UK": {
+        "CommandPoints": 180,
+        "availability": [3, 2, 0, 0],
+    },
+    
+    "AS90_155mm_UK": {
+        "CommandPoints": 230,
+        "availability": [3, 2, 0, 0],
+    },
+    
+    "M110A2_Howz_UK": {
+        "CommandPoints": 220,
         "availability": [2, 0, 1, 0],
     },
 
@@ -1077,6 +1316,80 @@ uk_unit_edits = {
     },
 
     # UK TANK
+    "Centurion_Mk13_CMD_UK": {
+        "CommandPoints": 75,
+        "GameName": {
+            "display": "#LDR CENTURION Mk.13 LDR.",
+            "token": "DBEDJIGRRN",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "GroundUnits",
+                "UNITE_Centurion_Mk13_CMD_UK",
+                "Unite"
+            ],
+        },
+        "IdentifiedTextures": ["Texture_RTS_H_Armor", "Texture_Armor"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "UnitRole": "armor",
+        "SpecialtiesList": {
+            "overwrite_all": [
+                '_leader',
+                '_reservist',
+                '_smoke_launcher',
+            ],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_FN_MAG_7_62mm": 96,
+            },
+        },
+        "MenuIconTexture": "Texture_RTS_H_Armor",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
+        "availability": [0, 6, 0, 0],
+        "remove_zone_capture": None,
+    },
+    
+    "FV4201_Chieftain_CMD_UK": {
+        "CommandPoints": 150,
+        "GameName": {
+            "display": "#LDR CHIEFTAIN Mk.10 LDR.",
+            "token": "JMOQXJZCVT",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "GroundUnits",
+                "UNITE_FV4201_Chieftain_CMD_UK",
+                "Unite"
+            ],
+        },
+        "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "UnitRole": "armor",
+        "SpecialtiesList": {
+            "overwrite_all": [
+                '_leader',
+                '_smoke_launcher',
+            ],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_L37A2_7_62mm": 96,
+                "MMG_L8A2_7_62mm": 96,
+            },
+        },
+        "MenuIconTexture": "Texture_RTS_H_Armor_heavy",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor_Heavy",
+        "availability": [0, 0, 2, 0],
+        "remove_zone_capture": None,
+    },
+    
     "Challenger_1_Mk1_CMD_UK": {
         "CommandPoints": 205,
         "GameName": {
@@ -1180,6 +1493,9 @@ uk_unit_edits = {
 
     "LandRover_MILAN_UK": {
         "CommandPoints": 45,
+        "GameName": {
+            "display": "ROVER MILAN",
+        },
         "Divisions": {
             "default": {
                 "cards": 69,
@@ -1195,7 +1511,53 @@ uk_unit_edits = {
         },
         "availability": [8, 6, 0, 0],
     },
-
+    
+    "LandRover_MILAN_Para_UK": {
+        "CommandPoints": 45,
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_MILAN_2": 6,
+            },
+        },
+        "availability": [0, 8, 6, 0],
+    },
+    
+    "Supacat_ATMP_MILAN_UK": {
+        "CommandPoints": 50,
+        "availability": [0, 8, 6, 0],
+    },
+    
+    "FV438_Swingfire_UK": {
+        "CommandPoints": 55,
+        "availability": [8, 6, 0, 0],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("ATGM_Swingfire_salvolength2", "ATGM_Swingfire_noisy_salvolength2")],
+            },
+        },
+    },
+    
+    "FV102_Striker_UK": {
+        "CommandPoints": 60,
+        "capacities": {
+            "add_capacities": ["Deploy", "Deploy_ok"],
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'_remote_controlled'"],
+        },
+        "availability": [8, 6, 0, 0],
+    },
+    
+    "FV102_Striker_para_UK": {
+        "CommandPoints": 60,
+        "capacities": {
+            "add_capacities": ["Deploy", "Deploy_ok"],
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'_remote_controlled'"],
+        },
+        "availability": [0, 8, 6, 0],
+    },
 
     "MCV_80_Warrior_UK": {
         "CommandPoints": 35,
@@ -1216,20 +1578,111 @@ uk_unit_edits = {
         },
     },
     
+    "MCV_80_Warrior_MILAN_ERA_UK": {
+        "CommandPoints": 55,
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_MILAN_2_IFV": 6,
+                "MMG_L94A1_7_62mm": 80,
+            },
+        },
+    },
+    
+    "Centurion_AVRE_105_UK": {
+        "CommandPoints": 65,
+        "availability": [8, 6, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_M1919": 96,
+            },
+        },
+    },
+    
+    "FV4003_Centurion_AVRE_UK": {
+        "CommandPoints": 65,
+        "availability": [8, 6, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_M1919": 96,
+            },
+        },
+    },
+    
+    "FV4003_Centurion_AVRE_ROMOR_UK": {
+        "CommandPoints": 75,
+        "armor": {
+            "top": (3, None),
+        },
+        "availability": [0, 8, 6, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_M1919": 96,
+            },
+        },
+    },
+    
+    "Centurion_Mk13_UK": {
+        "CommandPoints": 65,
+        "availability": [10, 0, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_FN_MAG_7_62mm": 96,
+            },
+        },
+    },
+    
     "FV4201_Chieftain_Mk1_4_UK": {
+        "CommandPoints": 75,
+        "availability": [0, 10, 7, 0],
+        "capacities": {
+            "remove_capacities": ["Instructor_TNK"],
+        },
+        "SpecialtiesList": {
+            "remove_specs": ["'_instructor'"],
+        },
         "UpgradeFromUnit": "FV4201_Chieftain_Mk9_CMD_UK",
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_L37A2_7_62mm": 96,
+                "MMG_L8A2_7_62mm": 96,
+                "HMG_12_7_mm_M2HB_CTRL": 55,
+            },
+        },
     },
     
     "FV4201_Chieftain_Mk6_UK": {
+        "CommandPoints": 85,
+        "availability": [10, 7, 0, 0],
         "UpgradeFromUnit": "FV4201_Chieftain_Mk1_4_UK",
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_L37A2_7_62mm": 96,
+                "MMG_L8A2_7_62mm": 96,
+            },
+        },
     },
     
     "FV4201_Chieftain_Mk9_UK": {
+        "CommandPoints": 115,
+        "availability": [8, 6, 0, 0],
         "UpgradeFromUnit": "FV4201_Chieftain_Mk6_UK",
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_L37A2_7_62mm": 96,
+                "MMG_L8A2_7_62mm": 96,
+            },
+        },
     },
     
-    "FV4201_Chieftain_Mk11_UK": {
-        "UpgradeFromUnit": "FV4201_Chieftain_Mk9_UK",
+    "FV4201_Chieftain_UK": { # Mk10 
+        "CommandPoints": 135,
+        "availability": [0, 6, 4, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_L37A2_7_62mm": 96,
+                "MMG_L8A2_7_62mm": 96,
+            },
+        },
     },
 
     "Challenger_1_Mk1_UK": {
@@ -1261,6 +1714,15 @@ uk_unit_edits = {
         "CommandPoints": 25,
     },
     
+    "FV103_Spartan_UK": {
+        "CommandPoints": 25,
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_L37A2_7_62mm": 96,
+            },
+        },
+    },
+    
     "LSV_M2HB_UK": {
         "CommandPoints": 35,
         "availability": [0, 0, 10, 7],
@@ -1280,6 +1742,11 @@ uk_unit_edits = {
             },
         },
     },
+    
+    "FV103_Spartan_GSR_UK": {
+        "CommandPoints": 30,
+        "availability": [0, 8, 0, 0],
+    },
 
     "FV601_Saladin_UK": {
         "CommandPoints": 35,
@@ -1288,15 +1755,62 @@ uk_unit_edits = {
                 "MMG_M1919": 40,
             },
         },
+        "UpgradeFromUnit": "Ferret_Swingfire_UK",
     },
 
     "FV721_Fox_UK": {
-        "CommandPoints": 40,
+        "CommandPoints": 45,
         "availability": [8, 6, 0, 0],
     },
     
+    "FV721_Fox_ZB298_UK": {
+        "CommandPoints": 60,
+        "availability": [0, 6, 4, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_L37A2_7_62mm": 56,
+            },
+        },
+        "UpgradeFromUnit": "FV103_Spartan_GSR_UK",
+    },
+    
+    "Ferret_Swingfire_UK": {
+        "CommandPoints": 75,
+        "TypeUnit": {
+            "AcknowUnitTypes": ["Reco"],
+            "TypeUnitFormation": "Reconnaissance",
+        },
+        "GameName": {
+            "display": "#RECO1 FERRET SWINGFIRE",
+        },
+        "Factory": "EFactory/Recons",
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 3500.0,
+            },
+            "OpticalStrengths": {
+                "EOpticalStrength/Standard": 150.0,
+                "EOpticalStrength/LowAltitude": 150.0,
+                "EOpticalStrength/HighAltitude": 40.0,
+            },
+        },
+        "UpgradeFromUnit": "Ferret_Mk2_UK",
+        "availability": [6, 4, 0, 0],
+        "capacities": {
+            "remove_capacities": ["reserviste"],
+            "add_capacities": ["Deploy", "Deploy_ok"],
+        },
+        "UnitRole": "reco",
+        "SpecialtiesList": {
+            "overwrite_all": [
+                '_remote_controlled',
+                '_smoke_launcher',
+            ],
+        },
+    },
+    
     "FV4201_Chieftain_Mk11_UK": {
-        "CommandPoints": 185,
+        "CommandPoints": 150,
         "TypeUnit": {
             "AcknowUnitTypes": ["Reco"],
             "TypeUnitFormation": "Reconnaissance",
@@ -1327,7 +1841,49 @@ uk_unit_edits = {
                 "EOpticalStrength/HighAltitude": 40.0,
             },
         },
+        "UnitRole": "reco",
+        "availability": [0, 4, 3, 0],
         "UpgradeFromUnit": None,
+    },
+    
+    "FV101_Scorpion_UK": {
+        "CommandPoints": 45,
+        "availability": [10, 7, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_L43A1_7_62mm": 96,
+            },
+        },
+    },
+    
+    "FV107_Scimitar_UK": {
+        "CommandPoints": 50,
+        "availability": [10, 7, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_L43A1_7_62mm": 96,
+            },
+        },
+    },
+    
+    "FV107_Scimitar_Spyglass_UK": {
+        "CommandPoints": 55,
+        "availability": [6, 4, 0, 0],
+    },
+    
+    "Gazelle_SNEB_reco_UK": {
+        "CommandPoints": 45,
+        "availability": [0, 6, 4, 0],
+    },
+    
+    "Westland_Scout_SS11_UK": {
+        "CommandPoints": 60,
+        "availability": [0, 4, 3, 0],
+    },
+    
+    "Lynx_AH_Mk7_Chancellor_UK": {
+        "CommandPoints": 55,
+        "availability": [0, 4, 0, 0],
     },
 
     "Scout_TA_UK": {
@@ -1397,6 +1953,16 @@ uk_unit_edits = {
         "availability": [6, 4, 0, 0],
     },
     
+    "Scout_Motorized_UK": {
+        "CommandPoints": 45,
+        "armor": "Infantry_armor_reference",
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "availability": [6, 4, 0, 0],
+    },
+    
     "Scout_Para_UK": {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
@@ -1436,6 +2002,36 @@ uk_unit_edits = {
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
+        },
+    },
+    
+    "Sniper_Guards_UK": {
+        "CommandPoints": 30,
+        "armor": "Infantry_armor_reference",
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'", "'_swift'"],
+        },
+        "availability": [0, 3, 2, 0],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "insert": [(2, "RocketInf_M72A3_LAW_66mm")],
+                "insert_edits": {
+                    2: {
+                        "turret_edits": {
+                            "YulBoneOrdinal": 3,
+                        },
+                        "SalvoStockIndex": 2,
+                        "HandheldEquipmentKey": "'WeaponAlternative_3'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
+                    },
+                },
+            },
+            "Salves": {
+                "insert": [(2, 2)],
+            },
         },
     },
 
@@ -1483,12 +2079,31 @@ uk_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("PM_Sterling", "PM_Sterling_noreflex")],
+                "replace": [("FM_L85A1", "FM_L85A1_noreflex")],
             },
         },
-        "availability": [9, 7, 0, 0],
+        "availability": [7, 5, 0, 0],
     },
-
+    
+    "MANPAD_Javelin_para_UK": {
+        "CommandPoints": 35,
+        "armor": "Infantry_armor_reference",
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("FM_L85A1", "FM_L85A1_noreflex")],
+            },
+        },
+        "availability": [0, 7, 5, 0],
+    },
 
     "DCA_Javelin_LML_UK": {
         "CommandPoints": 35,
@@ -1497,6 +2112,23 @@ uk_unit_edits = {
             "add_specs": ["'infantry_equip_veryheavy'"],
         },
         "stealth": 2.5,
+        "availability": [6, 4, 0, 0],
+    },
+    
+    "DCA_Starstreak_LML_UK": {
+        "CommandPoints": 50,
+        "max_speed": 14,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_veryheavy'"],
+        },
+        "stealth": 2.5,
+        "availability": [0, 6, 4, 0],
+        "UpgradeFromUnit": "MANPAD_Starstreak_UK",
+    },
+    
+    "Supacat_ATMP_Javelin_LML_UK": {
+        "CommandPoints": 35,
+        "stealth": 2.0,
         "availability": [6, 4, 0, 0],
     },
 
@@ -1599,6 +2231,11 @@ uk_unit_edits = {
             },
         },
         "availability": [0, 8, 6, 0],
+    },
+    
+    "A109A_RKT_UK": {
+        "CommandPoints": 75,
+        "availability": [0, 0, 0, 4],
     },
 
     "Lynx_AH_Mk1_TOW_UK": {

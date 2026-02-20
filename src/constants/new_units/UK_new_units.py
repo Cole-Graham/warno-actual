@@ -34,7 +34,7 @@ UK_NEW_UNITS = {
         },
         "TransportedSoldier": "DCA_M167A2_Vulcan_20mm_UK",
         "Factory": "EFactory/Logistic",
-        "CommandPoints": 25,
+        "CommandPoints": 30,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -76,6 +76,66 @@ UK_NEW_UNITS = {
                 "D_UK": ["ServantRight"]
             },
         }
+    },
+    
+    ("MANPAD_Javelin_UK", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "7be6ab23-0cd0-48bb-8a21-cb4ae72bfaeb",
+        "GroupeCombatGUID": "6654c8cb-38e3-41e9-bc29-d37e1a3fd862",
+        "ShowroomGUID": "4f8f93db-5b47-4e3b-91f9-e7a63870c778",
+        "CadavreGUID": "e9fecaf0-63ae-4181-beb7-a92c1e7d612a",
+        "NewName": "MANPAD_Starstreak_UK",
+        "GameName": {
+            "display": "STARSTREAK",
+            "token": "NFOWVDVULT",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_AA",
+                "Infanterie_Spec_Defense",
+                "UNITE_MANPAD_Starstreak_UK",
+                "Unite",
+            ],
+        },
+        "TransportedSoldier": "MANPAD_Starstreak_UK",
+        "CommandPoints": 60,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [7, 5, 0, 0],
+        "max_speed": 20,
+        "SpecialtiesList": [
+            'infantry_equip_heavy',
+        ],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "HAGRU_MANPADS": [(1, 0, "MANPAD_Starstreak_HAGRU")], # turret_index, donor_weapon_index, ammo_name
+                "replace": [
+                    ("FM_L85A1", "FM_L85A1_noreflex"),
+                    ("MANPAD_FIM92", "MANPAD_Starstreak", "Javelin", "Starstreak_x3"),
+                ],
+            },
+        },
+        "UpgradeFromUnit": "DCA_Javelin_LML_UK",
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
+                   'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
+                   'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": True, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": False,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "NATO",
+        "Nation": "UK",
+        "alternatives_count": 6,
+        "selector_tactic": "00_06",
     },
 
     ("Rifles_CMD_UK", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -207,6 +267,61 @@ UK_NEW_UNITS = {
         "Nation": "UK",
     },
     
+    ("FV4201_Chieftain_CMD_UK", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "c37302a6-8480-497d-8733-6e5d0e70ae3b",
+        "GroupeCombatGUID": "e7b02c97-0130-4ac1-bf35-1c2f3065a4de",
+        "ShowroomGUID": "451549aa-d69c-47e1-8824-30f60b236bb6",
+        "CadavreGUID": "dcf2f600-fa63-4760-bb8a-334e57fccc84",
+        "NewName": "FV4201_Chieftain_CMD2_UK",
+        "GameName": {
+            "display": "#CMD CHIEFTAIN Mk.10 CMD",
+            "token": "VBMOZKDIQO",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "Char_CMD",
+                "Commandant",
+                "GroundUnits",
+                "InfmapCommander",
+                "UNITE_FV4201_Chieftain_CMD2_UK",
+                "Unite",
+            ],
+        },
+        "Factory": "EFactory/Logistic",
+        "CommandPoints": 265,
+        "UnitRole": 'hq_tank',
+        "SpecialtiesList": [
+            '_leader',
+            '_smoke_launcher',
+        ],
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 0, 2, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_L37A2_7_62mm": 96,
+                "MMG_L8A2_7_62mm": 96,
+            },
+        },
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack', 
+                   'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 
+                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply', 
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "NATO",
+        "Nation": "UK",
+    },
+    
     ("FV4201_Chieftain_Mk9_UK", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "42c8aa7b-7dec-406c-9806-876e01d5eff6",
         "GroupeCombatGUID": "2a3009a7-9dd4-4a3e-8f0d-f54471cbb1e2",
@@ -231,7 +346,12 @@ UK_NEW_UNITS = {
             ],
         },
         "Factory": "EFactory/Logistic",
-        "CommandPoints": 245,
+        "CommandPoints": 240,
+        "UnitRole": 'hq_tank',
+        "SpecialtiesList": [
+            '_leader',
+            '_smoke_launcher',
+        ],
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -277,7 +397,11 @@ UK_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "CommandPoints": 120,
+        "CommandPoints": 130,
+        "SpecialtiesList": [
+            '_leader',
+            '_smoke_launcher',
+        ],
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -304,6 +428,64 @@ UK_NEW_UNITS = {
         "Nation": "UK",
     },
     
+    ("Centurion_Mk13_CMD_UK", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "9bc04582-2e83-4b9f-bae7-7d367dc094f2",
+        "GroupeCombatGUID": "f669e647-adbc-4414-99da-6f11eb06819f",
+        "ShowroomGUID": "79a769f6-c8bc-4ec1-b6b6-697f2d024c72",
+        "CadavreGUID": "f5920656-c32e-4094-9264-b4682fdfd05e",
+        "NewName": "Centurion_Mk13_CMD2_UK",
+        "GameName": {
+            "display": "#CMD CENTURION Mk.13 CMD",
+            "token": "BYGMCHPETR",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "Char_CMD",
+                "Commandant",
+                "GroundUnits",
+                "InfmapCommander",
+                "UNITE_Centurion_Mk13_CMD2_UK",
+                "Unite",
+            ],
+        },
+        "Factory": "EFactory/Logistic",
+        "CommandPoints": 200,
+        "capacities": {
+            "remove_capacities": ["reserviste"],
+        },
+        "UnitRole": 'hq_tank',
+        "SpecialtiesList": [
+            '_leader',
+            '_smoke_launcher',
+        ],
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 0, 2, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_FN_MAG_7_62mm": 96,
+                "MMG_FN_MAG_7_62mm": 96,
+            },
+        },
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack', 
+                   'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 
+                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply', 
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "NATO",
+        "Nation": "UK",
+    },
+    
     ("FV101_Scorpion_UK", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "5892675b-4479-4d47-8cd6-c2e2d6a9c87b",
         "GroupeCombatGUID": "f9ebcac8-c741-47ca-8aac-db0b97fd4a59",
@@ -313,6 +495,10 @@ UK_NEW_UNITS = {
         "GameName": {
             "display": "PARA. FV101 SCORPION",
             "token": "VPPQSJIFIU",
+        },
+        "TypeUnit": {
+            "AcknowUnitTypes": ["Tank"],
+            "TypeUnitFormation": "Char",
         },
         "TagSet": {
             "overwrite_all": [
@@ -344,6 +530,7 @@ UK_NEW_UNITS = {
             },
         },
         "stealth": 1.5,
+        "UnitRole": "armor",
         "UpgradeFromUnit": "FV432_Rarden_UK",
         "WeaponDescriptor": {
             "Salves": {
@@ -373,6 +560,10 @@ UK_NEW_UNITS = {
         "GameName": {
             "display": "PARA. FV107 SCIMITAR",
             "token": "FYPVEURLLZ",
+        },
+        "TypeUnit": {
+            "AcknowUnitTypes": ["Tank"],
+            "TypeUnitFormation": "Char",
         },
         "TagSet": {
             "overwrite_all": [
@@ -404,6 +595,7 @@ UK_NEW_UNITS = {
             },
         },
         "stealth": 1.5,
+        "UnitRole": "armor",
         "UpgradeFromUnit": "FV101_Scorpion_para_UK",
         "WeaponDescriptor": {
             "Salves": {

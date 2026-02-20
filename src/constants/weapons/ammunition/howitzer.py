@@ -93,6 +93,41 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("Howz_Canon_QF_25pdr_87mm", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 2.1,
+                "RadiusSplashPhysicalDamagesGRU": 87,
+                "RadiusSplashSuppressDamagesGRU": 116,
+            },
+        },
+    },
+    
+    ("Howz_Canon_L13A1_Howitzer_105mm", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "TimeBetweenTwoShots": 5.0,
+                "PhysicalDamages": 3.0,
+                "SuppressDamages": 187,
+                "RadiusSplashPhysicalDamagesGRU": 105,
+                "RadiusSplashSuppressDamagesGRU": 140,
+                "ShotsCountPerSalvo": 5,
+                "SupplyCost": 100.0,
+                "AffichageMunitionParSalve": 5,
+            },
+        },
+    },
+    
+    ("Howz_Canon_L13A1__Howitzer_105mm_SMOKE", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "TimeBetweenTwoShots": 5.0,
+                "ShotsCountPerSalvo": 5,
+                "AffichageMunitionParSalve": 5,
+            },
+        },
+    },
+    
     ("Howz_Canon_M118_Howitzer_105mm", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
@@ -226,6 +261,17 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("Howz_Canon_BL_5_inch", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 3.8,
+                "SuppressDamages": 280,
+                "RadiusSplashPhysicalDamagesGRU": 140,
+                "RadiusSplashSuppressDamagesGRU": 187,
+            },
+        },
+    },
+    
     ("Howz_Canon_FH70_Howitzer_155mm", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
@@ -234,6 +280,24 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "RadiusSplashPhysicalDamagesGRU": 155,
                 "RadiusSplashSuppressDamagesGRU": 207,
             },
+        },
+    },
+    
+    ("Howz_Canon_BAE_L39_155mm", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "TimeBetweenTwoShots": 3.4,
+                "TimeBetweenTwoFx": 3.4,
+                "PhysicalDamages": 4.2,
+                "SuppressDamages": 357,
+                "RadiusSplashPhysicalDamagesGRU": 155,
+                "RadiusSplashSuppressDamagesGRU": 207,
+                "ShotsCountPerSalvo": 4,
+                "AffichageMunitionParSalve": 4,
+            },
+        },
+        "WeaponDescriptor": {
+            "Salves": 12,
         },
     },
     
