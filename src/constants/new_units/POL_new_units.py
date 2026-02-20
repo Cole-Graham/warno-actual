@@ -96,6 +96,89 @@ POL_NEW_UNITS = {
         "selector_tactic": "02_04",
     },
 
+    ("ASU_85_CMD_POL", 0): {  # ASU-85 CMD
+        "GUID": "c0194429-3a64-4e52-a9a7-67cec54592e2",
+        "GroupeCombatGUID": "6575d3ea-db2a-42bf-aff3-5bdcf3b50373",
+        "ShowroomGUID": "c1ebe660-2108-429c-bf7f-24d8224510e5",
+        "CadavreGUID": "8470bf3d-e203-4841-a528-ae547622908a",
+        "NewName": "ASU_85_CMD2_POL",
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "Char_CMD",
+                "Commandant",
+                "GroundUnits",
+                "InfmapCommander",
+                "UNITE_T55A_CMD2_POL",
+                "Unite",
+            ],
+        },
+        "Factory": "EFactory/Logistic",
+        "CommandPoints": 190,
+        "UnitRole": 'hq_tank',
+        "SpecialtiesList": [
+            'leader_sov',
+        ],
+        "availability": [0, 0, 2, 0],
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
+                   'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
+                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": False,  # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "POL",
+        "GameName": {
+            "display": "#CMD ASU-85D",
+            "token": "POLTASUEFC",
+        },
+    },
+
+    ("T55A_CMD_POL", 2): {  # T-54B CMD
+        "GUID": "23dd9821-54ed-4320-bd58-dce59331d9fc",
+        "GroupeCombatGUID": "15f04b2f-f19f-433d-a659-3801250e5ffc",
+        "ShowroomGUID": "bf3555f0-d3af-4024-a8f9-980967b84cfd",
+        "CadavreGUID": "8a4d7cd6-3a6b-453b-9e11-342982ac2bc3",
+        "NewName": "T54B_CMD2_POL",
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "GroundUnits",
+                "UNITE_T54B_CMD2_POL",
+                "Unite",
+            ],
+        },
+        "GameName": {
+            "display": "#CMD T-54BD",
+            "token": "POLTFFBC",
+        },
+        "Factory": "EFactory/Tanks",
+        "CommandPoints": 200,
+        "UnitRole": 'armor',
+        "SpecialtiesList": [
+            'leader_sov',
+        ],
+        "availability": [0, 0, 2, 0],
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
+                   'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
+                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": False,  # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "POL",
+    },
+
     ("T55A_CMD_POL", 0): {  # T-55AD CV
         "GUID": "f85c67f5-5738-43ff-bae2-a92bfa88d83d",
         "GroupeCombatGUID": "6773a9af-c9e6-4d3f-a41c-953be75f966e",
@@ -149,7 +232,7 @@ POL_NEW_UNITS = {
         "Faction": "PACT",
         "Nation": "POL",
     },
-    
+
     ("T55AM_Merida_CMD_POL", 0): {  # T-55AM Merida CV
         "GUID": "0ed06908-888a-4535-881f-5e714b21a1e4",
         "GroupeCombatGUID": "7c76c4fe-53a0-4508-ad01-2683a195fc34",
@@ -295,6 +378,46 @@ POL_NEW_UNITS = {
         "UpgradeFromUnit": "T72M_CMD2_POL",
     },
 
+    ("T55A_CMD_POL", 1): {  # T-54B Ldr.
+        "GUID": "ce7aac18-0994-4f41-b5dd-35b8c9b8d434",
+        "GroupeCombatGUID": "9ab3d76b-e841-4944-96e8-b6be76bdde98",
+        "ShowroomGUID": "e07a7e81-164b-43b1-98a6-5ecf33509420",
+        "CadavreGUID": "cbd9c1a8-134c-4521-b84e-605ed4d7af99",
+        "NewName": "T54B_CMDactual_POL",
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "GroundUnits",
+                "UNITE_T54B_CMD_POL",
+                "Unite",
+            ],
+        },
+        "GameName": {
+            "display": "#LDRSOV T-54BD LDR.",
+            "token": "POLTFFBD",
+        },
+        "Factory": "EFactory/Tanks",
+        "CommandPoints": 75,
+        "UnitRole": 'armor',
+        "SpecialtiesList": [
+            'leader_sov',
+        ],
+        "availability": [0, 0, 6, 0],
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
+                   'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
+                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": False,  # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "POL",
+    },
+
     ("OT_64_SKOT_2_POL", 0): {  # SKOT R-2AM LDR
         "GUID": "35b514f1-55d8-4c63-86c0-ff0604547fb4",
         "GroupeCombatGUID": "fb1db3c4-ed80-4a3a-b8f8-1eab529da04e",
@@ -437,6 +560,405 @@ POL_NEW_UNITS = {
         }
     },
 
+    ("Atteam_Fagot_Para_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "24abfd2b-f4c6-4377-a1dc-29719cc9c2ad",
+        "GroupeCombatGUID": "3ec286bd-3931-4d6a-8354-89d2e1360197",
+        "ShowroomGUID": "f5e0ff9b-e75d-45b7-9106-9852e53ead09",
+        "CadavreGUID": "b9e1df75-08a7-4ee7-9e9a-a272763652ac",
+        "NewName": "Atteam_Konkurs_Para_POL",
+        "GameName": {
+            "display": "SPADO. PPK KONKURS",
+            "token": "WODNYOJNVF",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_AT",
+                "Infanterie_Spec_Defense",
+                "UNITE_Atteam_Konkurs_Para_POL",
+                "Unite"
+            ],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_9M113_Konkurs": 6,
+            },
+            "equipmentchanges": {
+                "replace": [("ATGM_9K111_Fagot", "ATGM_9M113_Konkurs")]
+            },
+        },
+        "CommandPoints": 45,
+        "SpecialtiesList": [
+                '_para',
+                'infantry_equip_heavy'
+            ],
+        "UpgradeFromUnit": "Atteam_Fagot_Para_POL",
+        "availability": [0, 6, 4, 0],
+        "max_speed": 20,
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/Attack', 'EOrderType/MoveAndAttack', 
+                   'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load', 
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": True, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "POL",
+        "depiction_type": "Towed",
+        "alternatives_count": 2,
+        "servants": ("G_Para_POL", "D_Para_POL"),
+        "servant_types": {
+            "showroom": {
+                "G_Para_POL": ["ATGMServantLeft"],
+                "D_Para_POL": ["ATGMServantRight"]
+            },
+            "subdepictions": {
+                "G_Para_POL": ["ATGMServantLeft"],
+                "D_Para_POL": ["ATGMServantRight"]
+            },
+        },
+        "UpgradeFromUnit": "Atteam_Fagot_Para_POL",
+    },
+
+    ("HMGteam_PKM_para_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "02f68c8d-483d-4787-927a-9db855de0e5f",
+        "GroupeCombatGUID": "7a140754-7160-44fb-8233-ac9b1096abd1",
+        "ShowroomGUID": "aead18dd-0321-4534-a292-e7a2b52a81f3",
+        "CadavreGUID": "e1fa2afd-f15e-4d24-9981-5c482fe4cbf7",
+        "NewName": "HMGteam_NSV_para_POL",
+        "depictions": {
+            "custom": {
+                "DepictionVehicles.ndf": ["TacticVehicleDepictionRegistration", "DepictionOperator_WeaponContinuousFire"],
+            },
+        },
+        "GameName": {
+            "display": "SPADO. NSV 12,7mm",
+            "token": "JNBWVSQPZV",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_Spec_Defense",
+                "UNITE_HMGteam_NSV_para_POL",
+                "Unite"
+            ],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "HMG_12_7_mm_NSVT": 48,
+            },
+            "equipmentchanges": {
+                "replace": [("MMG_PKM_7_62mm", "HMG_12_7_mm_NSVT", "MMG_PKM_7_62mm", "HMG_12_7_mm_NSVT")]
+            },
+        },
+        "CommandPoints": 25,
+        "SpecialtiesList": [
+                '_para',
+                'infantry_equip_veryheavy'
+            ],
+        "UpgradeFromUnit": "HMGteam_PKM_para_POL",
+        "availability": [0, 10, 7, 0],
+        "max_speed": 14,
+        "strength": 5,
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/Attack', 'EOrderType/MoveAndAttack', 
+                   'EOrderType/Shoot','EOrderType/AskForSupply', 'EOrderType/ShootOnPosition', 'EOrderType/UnloadFromTransport', 'EOrderType/UnloadAtPosition', 'EOrderType/Load',
+                   'EOrderType/ShootOnPositionWithoutCorrection','EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": True, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "POL",
+        "depiction_type": "Towed",
+        "alternatives_count": 2,
+        "servants": ("G_Para_POL", "D_Para_POL"),
+        "servant_types": {
+            "showroom": {
+                "G_Para_POL": ["ATGMServantLeft"],
+                "D_Para_POL": ["ATGMServantRight"]
+            },
+            "subdepictions": {
+                "G_Para_POL": ["ATGMServantLeft"],
+                "D_Para_POL": ["ATGMServantRight"]
+            },
+        },
+    },
+
+    ("HMGteam_PKM_para_POL", 1): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "4734c29a-2afe-4c03-baca-964c750825fc",
+        "GroupeCombatGUID": "dda90888-7c16-410b-bb1b-6c7576df5def",
+        "ShowroomGUID": "c3a0e94a-4d8b-403b-9e69-316f977990a1",
+        "CadavreGUID": "4a5322be-f90f-418d-8d20-87768d1faa05",
+        "NewName": "HMGteam_AGS17_para_POL",
+        "GameName": {
+            "display": "SPADO. AGS-17 30mm",
+            "token": "LEAGOMIHPJ",
+        },
+        "depictions": {
+            "custom": {
+                "DepictionVehicles.ndf": ["TacticVehicleDepictionRegistration", "DepictionOperator_WeaponInstantFire"],
+            },
+        },
+        "TagSet": {
+            "overwrite_all": [    
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_Spec_Defense",
+                "UNITE_HMGteam_AGS17_para_POL",
+                "Unite"
+            ],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "Lance_grenade_AGS17": 30,
+            },
+            "equipmentchanges": {
+                "replace": [("MMG_PKM_7_62mm", "Lance_grenade_AGS17", "MMG_PKM_7_62mm", "Lance_grenade_AGS17")]
+            },
+        },
+        "CommandPoints": 30,
+        "SpecialtiesList": [
+                '_para',
+                'infantry_equip_veryheavy'
+            ],
+        "UpgradeFromUnit": "HMGteam_NSV_para_POL",
+        "availability": [0, 8, 6, 0],
+        "max_speed": 14,
+        "strength": 5,
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/Attack', 'EOrderType/MoveAndAttack', 
+                   'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load', 'EOrderType/ShootOnPosition',
+                   'EOrderType/ShootOnPositionWithoutCorrection','EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": True, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "POL",
+        "depiction_type": "Towed",
+        "alternatives_count": 2,
+        "servants": ("G_Para_POL", "D_Para_POL"),
+        "servant_types": {
+            "showroom": {
+                "G_Para_POL": ["ATGMServantLeft"],
+                "D_Para_POL": ["ATGMServantRight"]
+            },
+            "subdepictions": {
+                "G_Para_POL": ["ATGMServantLeft"],
+                "D_Para_POL": ["ATGMServantRight"]
+            },
+        },
+    },
+
+    ("Honker_RYS_POL", 0): {  # HONKERS RYS (Transport)
+        "GameName": {
+            "display": "HONKERS RYS",
+            "token": "ZMUZVMFCMK",
+        },
+        "GUID": "2419def0-6823-40f0-8e64-c646f6ad2d8e",
+        "GroupeCombatGUID": "da37a488-aae5-44e2-8c88-2ff19c8639e8",
+        "ShowroomGUID": "faae217b-5941-4d12-a0f4-f28628527291",
+        "CadavreGUID": "cc4b63e5-182c-4393-9310-7053270a2c96",
+        "NewName": "Honker_RYS_trans_POL",
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "GroundUnits",
+                "UNITE_Honker_RYS_POL",
+                "Unite",
+                "Vehicule",
+                "Vehicule_Transport_Arme",
+                "noSIGINT",
+            ],
+        },
+        "Factory": "EFactory/Tanks",
+        "CommandPoints": 20,
+        "UnitRole": 'transport',
+        "SpecialtiesList": [
+            '_transport1',
+            '_sf',
+        ],
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 3500.0,
+            },
+            "OpticalStrengths": {
+                "EOpticalStrength/Standard": 45.0,
+                "EOpticalStrength/LowAltitude": 45.0,
+                "EOpticalStrength/HighAltitude": 10.0,
+            },
+        },
+        "stealth": 1.5,
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
+                   'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
+                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply', 'EOrderType/UnloadFromTransport', 'EOrderType/UnloadAtPosition', 'EOrderType/Load',
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "POL",
+    },
+
+    ("OT_62_TOPAS_JOD_POL", 0): {  # TOPAS JOD (Transport)
+        "GameName": {
+            "display": "TOPAS JOD",
+            "token": "USEVPJZMYG",
+        },
+        "GUID": "fe208523-a9ca-4ef2-860e-bf6a12b905ca",
+        "GroupeCombatGUID": "058703d8-1efc-4836-89ce-fdf7a195c2d7",
+        "ShowroomGUID": "b4e59d7c-5465-4c1b-bb43-217899193ab5",
+        "CadavreGUID": "c24a9ca7-b29f-47d0-a041-b1e786809548",
+        "NewName": "OT_62_TOPAS_JOD2_POL",
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "GroundUnits",
+                "UNITE_OT_62_TOPAS_JOD2_POL",
+                "Unite",
+                "Vehicule",
+                "Vehicule_Transport_Arme",
+            ],
+        },
+        "Factory": "EFactory/Tanks",
+        "CommandPoints": 40,
+        "UnitRole": 'transport',
+        "SpecialtiesList": [
+            '_transport1',
+            '_ifv',
+            '_amphibie',
+        ],
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
+                   'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
+                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply', 'EOrderType/UnloadFromTransport', 'EOrderType/UnloadAtPosition', 'EOrderType/Load',
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "POL",
+    },
+
+    ("UAZ_469_SPG9_Para_POL", 0): {  # UAZ-469 SPG-9 (Non Para)
+        "GameName": {
+            "display": "UAZ-469 SPG-9",
+            "token": "NZMIMFLCIU",
+        },
+        "GUID": "a6ad7568-566b-44c9-9ecd-cab435c3571d",
+        "GroupeCombatGUID": "33190296-883c-4962-8029-c6b2c117d294",
+        "ShowroomGUID": "befd547b-c68c-4519-bf87-df910c2f0a85",
+        "CadavreGUID": "a48e1365-8229-4df2-a700-a3ce718cfdda",
+        "NewName": "UAZ_469_SPG9_POL",
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "GroundUnits",
+                "UNITE_UAZ_469_SPG9_POL",
+                "Unite",
+                "Vehicule",
+                "Vehicule_faible"
+            ],
+        },
+        "Factory": "EFactory/Infantry",
+        "CommandPoints": 25,
+        "UnitRole": 'appui',
+        "SpecialtiesList": [],
+        "DeploymentShift": 0,
+        "ButtonTexture": "UAZ_469_SPG9_DDR",
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
+                   'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
+                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "POL",
+    },
+
+    ("AT_D48_85mm_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "0de44fc4-1a87-4146-8e24-0dd8ee7c2d52",
+        "GroupeCombatGUID": "ec9269ff-531e-4d45-8bd0-9c3a0b0548cc",
+        "ShowroomGUID": "116fa176-1fea-4d10-9782-794c7ba2fa30",
+        "CadavreGUID": "04dc2d6f-591d-4c24-9e1e-8f6c032b2e99",
+        "NewName": "AT_D48_85mm_Para_POL",
+        "GameName": {
+            "display": "SPADO. D-48 85mm",
+            "token": "GYKTENGDYF",
+        },
+        "depictions": {
+            "custom": {
+                "DepictionVehicles.ndf": ["TacticVehicleDepictionRegistration", "DepictionOperator_WeaponInstantFire"],
+            },
+        },
+        "TagSet": {
+            "overwrite_all": [    
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_Spec_Defense",
+                "UNITE_AT_D48_85mm_Para_POL",
+                "Unite"
+            ],
+        },
+        "SpecialtiesList": [
+                '_para',
+            ],
+        "UpgradeFromUnit": None,
+        "availability": [0, 9, 7, 5],
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/Attack', 'EOrderType/MoveAndAttack', 
+                   'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load', 'EOrderType/ShootOnPosition',
+                   'EOrderType/ShootOnPositionWithoutCorrection','EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": True, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": True,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "POL",
+        "depiction_type": "Towed",
+        "alternatives_count": 2,
+        "servants": ("G_Para_POL", "D_Para_POL"),
+        "servant_types": {
+            "showroom": {
+                "G_Para_POL": ["ATGMServantLeft"],
+                "D_Para_POL": ["ATGMServantRight"]
+            },
+            "subdepictions": {
+                "G_Para_POL": ["ATGMServantLeft"],
+                "D_Para_POL": ["ATGMServantRight"]
+            },
+        },
+    },
+
     ("OT_62_TOPAS_R3M_CMD_POL", 0): {  # NIEB. BERETY TOPAS R-3M
         "GameName": {
             "display": "#CMD TOPAS R-3M",
@@ -485,6 +1007,57 @@ POL_NEW_UNITS = {
         "is_unarmed": True,
         "Faction": "PACT",
         "Nation": "POL",
+    },
+
+    ("Engineers_Scout_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "a8123a99-091d-4e7e-9b09-e366848d1907",
+        "GroupeCombatGUID": "139beeba-bf5b-48d4-bef1-09780c53f9fc",
+        "ShowroomGUID": "3c945163-0eb1-46c0-b9ea-83e4fc58efed",
+        "CadavreGUID": "8283ce2a-bf6a-40ea-9af8-81c0565226c0",
+        "NewName": "Engineers_Scout_Para_POL",
+        "GameName": {
+            "display": "#RECO2 SPADO. ZWIAD. SAPERZY",
+            "token": "YPBVPYJQXC",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_Reco",
+                "Radio",
+                "Reco",
+                "UNITE_Engineers_Scout_Para_POL",
+                "Unite"
+            ],
+        },
+        "SpecialtiesList": [
+            '_choc',
+            '_para',
+            'infantry_equip_light',
+        ],
+        "DeploymentShift": 1750,
+        "strength": 8,
+        "TransportedSoldier": "Engineers_Scout_Para_POL",
+        "armor": "Infantry_armor_reference",
+        "ButtonTexture": "Scout_para_POL",
+        "availability": [0, 6, 4, 0],
+        "max_speed": 26,
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
+                   'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
+                   'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": True, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": False,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "NATO",
+        "Nation": "POL",
+        "alternatives_count": 3,
+        "selector_tactic": "01_03",
     },
 
     # ("MiG_23MF_AA_POL", 0): {  # MiG-23MF [AA3]

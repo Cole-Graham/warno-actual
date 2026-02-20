@@ -441,24 +441,30 @@ def _update_weapon_quantities(
                 quantity = quantity_edits[base_ammo]
                 weapon_descr_row.v.by_m("NbWeapons").v = str(quantity)
 
-                # Update ammo name with quantity and strength if needed
-                prefix = current_ammo.split("_", 1)[0]
+                is_flamethrower = game_db["ammunition"]["ammo_properties"].get(
+                    f"Ammo_{base_ammo}", {},
+                ).get("MinMaxCategory") == "MinMax_FLAME"
 
-                # Skip strength variant generation for specific units
-                use_strength_variant = _should_use_strength_variant(base_ammo, game_db) and (unit_name not in UNITS_SKIP_STRENGTH_VARIANTS)
+                if not is_flamethrower:
+                    # Update ammo name with quantity and strength if needed
+                    prefix = current_ammo.split("_", 1)[0]
 
-                if use_strength_variant:
-                    if quantity > 1:
-                        new_ammo = f"{prefix}_{base_ammo}_strength{unit_strength}_x{quantity}"
+                    # Skip strength variant generation for specific units
+                    use_strength_variant = _should_use_strength_variant(base_ammo, game_db) and (unit_name not in UNITS_SKIP_STRENGTH_VARIANTS)
+
+                    if use_strength_variant:
+                        if quantity > 1:
+                            new_ammo = f"{prefix}_{base_ammo}_strength{unit_strength}_x{quantity}"
+                        else:
+                            new_ammo = f"{prefix}_{base_ammo}_strength{unit_strength}"
                     else:
-                        new_ammo = f"{prefix}_{base_ammo}_strength{unit_strength}"
-                else:
-                    if quantity > 1:
-                        new_ammo = f"{prefix}_{base_ammo}_x{quantity}"
-                    else:
-                        new_ammo = f"{prefix}_{base_ammo}"
+                        if quantity > 1:
+                            new_ammo = f"{prefix}_{base_ammo}_x{quantity}"
+                        else:
+                            new_ammo = f"{prefix}_{base_ammo}"
 
-                weapon_descr_row.v.by_m("Ammunition").v = new_ammo
+                    weapon_descr_row.v.by_m("Ammunition").v = new_ammo
+
                 logger.debug(f"Updated quantity for {base_ammo} to {quantity} in {unit_name}")
 
 

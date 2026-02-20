@@ -357,5 +357,57 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+
+     ("Howz_Canon_A19_Howitzer_122mm", "howitzer", None, False): { 
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 3.3,
+                "SuppressDamages": 281,
+                "RadiusSplashPhysicalDamagesGRU": 122,
+                "RadiusSplashSuppressDamagesGRU": 163,
+            },
+        },
+    },
+
+    ("Howz_Canon_D1_towed_152mm", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 4.2,
+                "SuppressDamages": 350,
+                "RadiusSplashPhysicalDamagesGRU": 152,
+                "RadiusSplashSuppressDamagesGRU": 203,
+            },
+        },
+    },
+
+    ("Howz_Canon_2A44_Howitzer_203mm", "howitzer", None, False): { # 433
+        "Ammunition": {
+            "parent_membr": {
+                "TimeBetweenTwoShots": 15.0,
+                "TimeBetweenTwoFx": 16.0,
+                "PhysicalDamages": 6,
+                "SuppressDamages": 450,
+                "RadiusSplashPhysicalDamagesGRU": 203,
+                "RadiusSplashSuppressDamagesGRU": 271,
+                "TimeBetweenTwoSalvos": 50.0,
+                "ShotsCountPerSalvo": 2,
+                "SupplyCost": 80.0,
+                "AffichageMunitionParSalve": 2,
+            },
+        },
+    },
+    
+    ("Howz_Canon_2A44_Howitzer_203mm_SMOKE", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "TimeBetweenTwoShots": 15.0,
+                "TimeBetweenTwoFx": 16.0,
+                "TimeBetweenTwoSalvos": 50.0,
+                "ShotsCountPerSalvo": 2,
+                "AffichageMunitionParSalve": 2,
+            },
+        },
+    },
+    
 }
 # fmt: on

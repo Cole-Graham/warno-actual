@@ -1458,6 +1458,23 @@ rda_unit_edits = {
         },
     },
 
+    "2K11_KRUG_DDR": {  # 2K11 Krug
+        "CommandPoints": "2K11_KRUG_SOV",
+        "availability": "2K11_KRUG_SOV",
+        # "CommandPoints": 90,
+        # "availability": [4, 3, 0, 0],
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 300,
+            },
+            "TimeBetweenEachIdentifyRoll": 1.0,
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'verygood_airoptics'"],
+        },
+        "UpgradeFromUnit": "2K12_KUB_DDR",
+    },
+
     # RDA HELI
     "Mi_2_trans_DDR": {
         "CommandPoints": 35,

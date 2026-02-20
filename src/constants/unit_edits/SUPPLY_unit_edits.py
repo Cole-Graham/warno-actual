@@ -179,8 +179,23 @@ supply_unit_edits = {
         },
         "SupplyDescriptor": "SquadSupply",
         "availability": [5, 0, 0, 0],
+        "tow_only": True,
+        "orders": {
+            "add_orders": ["EOrderType/UnloadFromTransport", "EOrderType/UnloadAtPosition", "EOrderType/Load"]
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'_transport2'"],
+        },
     },
     
+     "BAV_485_Supply_POL": {
+        "SupplyCapacity": 850.0,
+        "CommandPoints": 35,
+        "SupplyDescriptor": "SquadSupply",
+        "UpgradeFromUnit": None,
+        "availability": [5, 0, 0, 0],
+    },
+
     "VLRA_supply_FR": {
         "SupplyCapacity": 850.0,
         "CommandPoints": 35,
@@ -448,6 +463,21 @@ supply_unit_edits = {
                 "cards": 2,
             },
         },
+        "SupplyDescriptor": "PrimarySupply",
+        "availability": [4, 0, 0, 0],
+    },
+
+    "PTS_M_supply_POL": {
+        "SupplyCapacity": 1600.0,
+        "CommandPoints": 55,
+        "SupplyDescriptor": "PrimarySupply",
+        "UpgradeFromUnit": "BAV_485_Supply_POL",
+        "availability": [4, 0, 0, 0],
+    },
+
+     "PTS_M_supply_DDR": {
+        "SupplyCapacity": 1600.0,
+        "CommandPoints": 55,
         "SupplyDescriptor": "PrimarySupply",
         "availability": [4, 0, 0, 0],
     },

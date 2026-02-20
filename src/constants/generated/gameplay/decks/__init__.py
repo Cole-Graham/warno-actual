@@ -94,7 +94,7 @@ def load_new_divisions() -> Dict:
     
     # Dictionary name mapping
     dict_names = {
-        # 'POL_new_divs': 'pol_new_divs',
+        'POL_new_divs': 'pol_new_divs',
         # 'RDA_new_divs': 'rda_new_divs',
         # 'SOV_new_divs': 'sov_new_divs',
         'US_new_divs': 'us_new_divs',

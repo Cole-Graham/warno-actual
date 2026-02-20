@@ -2599,6 +2599,7 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
+        "UpgradeFromUnit": None,
     },
     
     "Buk_9K37M_SOV": {
@@ -2617,6 +2618,21 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
+    },
+
+    "2K11_KRUG_SOV": {  # 2K11 Krug
+        "CommandPoints": 90,
+        "availability": [4, 3, 0, 0],
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 300,
+            },
+            "TimeBetweenEachIdentifyRoll": 1.0,
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'verygood_airoptics'"],
+        },
+        "UpgradeFromUnit": "2K12_KUB_SOV",
     },
 
     # SOV HELI

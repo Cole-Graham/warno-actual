@@ -340,5 +340,37 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+
+    ("Mortier_M43_160mm_SMOKE", "mortar", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "AimingTime": 16,
+                "TimeBetweenTwoSalvos": 20.0,
+            },
+        },
+    },
+
+    ("Mortier_M43_160mm", "mortar", None, False): { 
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 4.2,
+                "SuppressDamages": 367,
+                "RadiusSplashPhysicalDamagesGRU": 160,
+                "RadiusSplashSuppressDamagesGRU": 213,
+                "AimingTime": 16,
+            },
+        },
+    },
+
+    ("Mortier_M240_240mm", "mortar", None, False): { 
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 6.8,
+                "SuppressDamages": 480,
+                "RadiusSplashPhysicalDamagesGRU": 240,
+                "RadiusSplashSuppressDamagesGRU": 300,
+            },
+        },
+    },
 }
 # fmt: on

@@ -183,5 +183,38 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+
+    ("MLRS_140mm_towed", "MLRS", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 5.1,
+                "SuppressDamages": 400,
+                "RadiusSplashPhysicalDamagesGRU": 180,
+                "RadiusSplashSuppressDamagesGRU": 240,
+            },
+        },
+    },
+
+    ("RocketArt_M14OF_140mm_salvolength12", "MLRS", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 5.1,
+                "SuppressDamages": 400,
+                "RadiusSplashPhysicalDamagesGRU": 180,
+                "RadiusSplashSuppressDamagesGRU": 240,
+            },
+        },
+    },
+
+    ("RocketArt_M14OF_140mm_salvolength16", "MLRS", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 5.1,
+                "SuppressDamages": 400,
+                "RadiusSplashPhysicalDamagesGRU": 180,
+                "RadiusSplashSuppressDamagesGRU": 240,
+            },
+        },
+    },
 }
 # fmt: on

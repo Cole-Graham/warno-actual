@@ -147,7 +147,7 @@ def _update_existing_units(source_path: Any, unit: str, edits: Dict) -> None:
             #     logger.debug(f"Removing {unit} from {div_name} because its now a transport unit")
             #     break
 
-            logger.debug(f"Updating {unit} in {div_name}")
+            logger.debug(f"Updating unit rules for {unit} in {div_name}")
             _apply_unit_updates(rule_obj.v, unit, div_name, edits)
 
 

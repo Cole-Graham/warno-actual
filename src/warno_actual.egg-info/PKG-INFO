@@ -1,0 +1,7 @@
+Metadata-Version: 2.4
+Name: warno-actual
+Version: 0.1.0
+Requires-Python: >=3.11
+Requires-Dist: ndf-parse==0.3.1
+Requires-Dist: tree-sitter==0.20.4
+Requires-Dist: requests==2.32.4
