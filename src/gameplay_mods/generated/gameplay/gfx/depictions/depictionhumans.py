@@ -86,8 +86,8 @@ def _handle_new_units(source_path: Any) -> None:
 
     for donor, edits in NEW_UNITS.items():
         donor_name = donor[0]
-        if not (edits.get("is_ground_vehicle", False) and edits.get("is_infantry", False)):
-            logger.info(f"Skipping {donor_name} because it's not a vehicle or infantry")
+        if not (edits.get("is_ground_vehicle", False) and edits.get("is_heavy_equipment", False)):
+            logger.info(f"Skipping {donor_name} because it's not a vehicle or heavy equipment")
             continue
 
         unit_name = edits["NewName"]

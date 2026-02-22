@@ -266,6 +266,36 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("SAM_9M8M3", "SAM", None, False): { # Krug
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_missile_he_bigly",
+            },
+            "hit_roll": {
+                "Idling": 65,
+                "DistanceToTarget": True,
+            },
+            "parent_membr": {
+                "MaximumRangeAirplaneGRU": 6125,
+                "TimeBetweenTwoShots": 4.0,
+                "TimeBetweenTwoFx": 4.0,
+                "PhysicalDamages": 9.0,
+            },
+        },
+        "SupplyCost": 210.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [2],
+            "units": {
+                2: [
+                    "2K11_KRUG_DDR",
+                    "2K11_KRUG_POL",
+                    "2K11_KRUG_SOV",
+                    "2K11_KRUG_TCH",
+                ],
+            },
+        },
+    },
+    
     ("SAM_9M38M1", "SAM", None, False): {
         "Ammunition": {
             "hit_roll": {
@@ -776,6 +806,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("MANPAD_Starstreak", "MANPAD", "Javelin", True): {
         "Ammunition": {
+            "token": "VWNTLZGOKD", # Starstreak
             "arme": {
                 "DamageFamily": "DamageFamily_manpad_tbagru",
             },
@@ -784,19 +815,22 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DistanceToTarget": True,
             },
             "parent_membr": {
+                "Caliber": ("Laser LOSBR", "QLAJGOHEVR"),
                 "MaximumRangeHelicopterGRU": 2800,
                 "MaximumRangeAirplaneGRU": 2450,
+                "PhysicalDamages": 5.0,
                 "TimeBetweenTwoSalvos": 7.0,
                 "AimingTime": 1.2,
                 "SupplyCost": 40.0,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_Starstreak_x3'",
                 "MissileDescriptor": "~/Descriptor_Missile_Starstreak_x3",
             },
-            "Texture": "Starstreak_x3",
         },
     },
     
     ("MANPAD_Starstreak_HAGRU", "MANPAD", "Javelin", True): {
         "Ammunition": {
+            "token": "VWNTLZGOKD", # Starstreak
             "arme": {
                 "DamageFamily": "DamageFamily_manpad_hagru",
             },
@@ -805,14 +839,16 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DistanceToTarget": True,
             },
             "parent_membr": {
+                "Caliber": ("Laser LOSBR", "QLAJGOHEVR"),
                 "MaximumRangeHelicopterGRU": 2800,
                 "MaximumRangeAirplaneGRU": 2450,
+                "PhysicalDamages": 5.0,
                 "TimeBetweenTwoSalvos": 7.0,
                 "AimingTime": 3.5,
                 "SupplyCost": 40.0,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_Starstreak_x3'",
                 "MissileDescriptor": "~/Descriptor_Missile_Starstreak_x3",
             },
-            "Texture": "Starstreak_x3",
         },
     },
     
@@ -976,6 +1012,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("Javelin_LML", "SAM", None, False): {
         "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_tbagru",
+            },
             "hit_roll": {
                 "Idling": 50,
                 "DistanceToTarget": True,
@@ -1034,10 +1073,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DistanceToTarget": True,
             },
             "parent_membr": {
+                "Caliber": ("Laser LOSBR", "QLAJGOHEVR"),
                 "TimeBetweenTwoShots": 1.2,
                 "TimeBetweenTwoFx": 1.2,
                 "MaximumRangeHelicopterGRU": 2800,
-                "MaximumRangeAirplaneGRU": 2275,
+                "MaximumRangeAirplaneGRU": 2450,
                 "TimeBetweenTwoSalvos": 12.0,
                 "AimingTime": 1.2,
             },
@@ -1060,10 +1100,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DistanceToTarget": True,
             },
             "parent_membr": {
+                "Caliber": ("Laser LOSBR", "QLAJGOHEVR"),
                 "TimeBetweenTwoShots": 1.2,
                 "TimeBetweenTwoFx": 1.2,
                 "MaximumRangeHelicopterGRU": 2800,
-                "MaximumRangeAirplaneGRU": 2275,
+                "MaximumRangeAirplaneGRU": 2450,
                 "TimeBetweenTwoSalvos": 12.0,
                 "AimingTime": 3.0,
             },

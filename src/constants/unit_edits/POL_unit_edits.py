@@ -607,20 +607,20 @@ pol_unit_edits = {
             "equipmentchanges": {
                 "quantity": {
                     "FM_kbk_AK": 5,
-                    },
+                },
                 "insert": [(2, "RocketInf_RPG7")],
-                    "insert_edits": {
-                        2: {
-                            "turret_edits": {
-                                "YulBoneOrdinal": 3,
-                            },
-                            "SalvoStockIndex": 2,
-                            "HandheldEquipmentKey": "'WeaponAlternative_3'",
-                            "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
-                            "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
-                            "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
+                "insert_edits": {
+                    2: {
+                        "turret_edits": {
+                            "YulBoneOrdinal": 3,
                         },
+                        "SalvoStockIndex": 2,
+                        "HandheldEquipmentKey": "'WeaponAlternative_3'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
                     },
+                },
                 },
                 "Salves": {
                     "insert": [(2, 6)],
@@ -1338,7 +1338,7 @@ pol_unit_edits = {
                 "_canBeAirlifted",
             ],
         },
-        "Deploymentshift": 0,
+        "DeploymentShift": 0,
     },
     
     "Mortier_2B9_Vasilek_Para_POL": {  # Desant. 2B9 Wasilok
@@ -1991,6 +1991,9 @@ pol_unit_edits = {
 
     "OT_62_TOPAS_2AP_POL": {  # TOPAS-2AP
         "CommandPoints": 20,
+        "capacities": {
+            "add_capacities": ["IFV"],
+        },
         "SpecialtiesList": {
             "overwrite_all": [
                 "_transport1",
@@ -2481,8 +2484,6 @@ pol_unit_edits = {
     "2K11_KRUG_POL": {  # 2K11 Krug
         "CommandPoints": "2K11_KRUG_SOV",
         "availability": "2K11_KRUG_SOV",
-        # "CommandPoints": 90,
-        # "availability": [4, 3, 0, 0],
         "optics": {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 300,

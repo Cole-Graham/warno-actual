@@ -11,6 +11,7 @@ from .new_divisionrules import (
 uk_new_divs = {
     "UK_general": {
         "division_id": 5012,
+        "interface_order": 550,
         "guid": "6ca2b6dc-bfbf-4389-9b97-13bc547feec0",
         "cfg_name": "UK_national_general",
         "div_name": ("UK", "DZKSDGNWEW"),
@@ -31,6 +32,7 @@ uk_new_divs = {
     },
     "UK_airborne": {
         "division_id": 5013,
+        "interface_order": 551,
         "guid": "cea9f13f-c1dc-46a2-84b0-20ada26427a8",
         "cfg_name": "UK_national_airborne",
         "div_name": ("UK Airborne", "GVGUREJCOJ"),
@@ -45,6 +47,7 @@ uk_new_divs = {
     },
     "UK_airborne_armored": {
         "division_id": 5014,
+        "interface_order": 552,
         "guid": "78a8c263-0b43-4906-b896-261c02ec51ac",
         "cfg_name": "UK_national_airborne_armored",
         "div_name": ("UK Airborne / Armored", "IQWVGFUNHZ"),
@@ -63,6 +66,7 @@ uk_new_divs = {
     },
     "UK_airborne_mechanized": {
         "division_id": 5015,
+        "interface_order": 553,
         "guid": "88bbc172-b591-4395-b209-f74c11094792",
         "cfg_name": "UK_national_airborne_mechanized",
         "div_name": ("UK Airborne / Mechanized", "HRWRXWGYXN"),
@@ -81,6 +85,7 @@ uk_new_divs = {
     },
     "UK_airborne_motorized": {
         "division_id": 5016,
+        "interface_order": 554,
         "guid": "a77f88e7-a344-49e1-885a-78cb9792b07d",
         "cfg_name": "UK_national_airborne_motorized",
         "div_name": ("UK Airborne / Motorized", "YHBYLGXCRV"),
@@ -99,6 +104,7 @@ uk_new_divs = {
     },
     "UK_armored": {
         "division_id": 5017,
+        "interface_order": 555,
         "guid": "e69cee42-dee6-49bc-a088-de332ae3629f",
         "cfg_name": "UK_national_armored",
         "div_name": ("UK Armored", "ORZGPUEMBG"),
@@ -113,6 +119,7 @@ uk_new_divs = {
     },
     "UK_armored_mechanized": {
         "division_id": 5018,
+        "interface_order": 556,
         "guid": "60d6e0ab-c9d7-4d37-9fc8-51b49b2f23fc",
         "cfg_name": "UK_national_armored_mechanized",
         "div_name": ("UK Armored / Mechanized", "WGQDHNQWMG"),
@@ -128,6 +135,7 @@ uk_new_divs = {
     },
     "UK_armored_motorized": {
         "division_id": 5019,
+        "interface_order": 557,
         "guid": "243bd49d-b2b1-4e5d-a412-e7888884cdda",
         "cfg_name": "UK_national_armored_motorized",
         "div_name": ("UK Armored / Motorized", "JLQJBAEBFF"),
@@ -143,6 +151,7 @@ uk_new_divs = {
     },
     "UK_mechanized": {
         "division_id": 5020,
+        "interface_order": 558,
         "guid": "43436e18-7807-45b9-b315-2d9ba601a8e1",
         "cfg_name": "UK_national_mechanized",
         "div_name": ("UK Mechanized", "VOQUBOBJGC"),
@@ -157,6 +166,7 @@ uk_new_divs = {
     },
     "UK_mechanized_motorized": {
         "division_id": 5021,
+        "interface_order": 559,
         "guid": "8a487fdc-bcd1-46b6-9d5c-c50df2d26fb3",
         "cfg_name": "UK_national_mechanized_motorized",
         "div_name": ("UK Mechanized / Motorized", "GYGDEZWQDD"),
@@ -172,6 +182,7 @@ uk_new_divs = {
     },
     "UK_motorized": {
         "division_id": 5022,
+        "interface_order": 560,
         "guid": "d9dc821a-3417-45b0-8db1-01e3f45132d6",
         "cfg_name": "UK_national_motorized",
         "div_name": ("UK Motorized", "LYFYYREQUL"),

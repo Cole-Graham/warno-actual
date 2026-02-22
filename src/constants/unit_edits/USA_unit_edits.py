@@ -3283,6 +3283,16 @@ usa_unit_edits = {
             "add_specs": ["'infantry_equip_light'"],
         },
     },
+    
+    "LRRP_FOLT_US": {
+        "CommandPoints": 30,
+        "armor": "Infantry_armor_reference",
+        "availability": [0, 6, 4, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'", "'_swift'"],
+        },
+    },
 
     "Sniper_US": {
         "GameName": {

@@ -84,6 +84,7 @@ UK_NEW_UNITS = {
         "ShowroomGUID": "4f8f93db-5b47-4e3b-91f9-e7a63870c778",
         "CadavreGUID": "e9fecaf0-63ae-4181-beb7-a92c1e7d612a",
         "NewName": "MANPAD_Starstreak_UK",
+        "strength": 2,
         "GameName": {
             "display": "STARSTREAK",
             "token": "NFOWVDVULT",
@@ -103,7 +104,7 @@ UK_NEW_UNITS = {
             ],
         },
         "TransportedSoldier": "MANPAD_Starstreak_UK",
-        "CommandPoints": 60,
+        "CommandPoints": 50,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -118,9 +119,12 @@ UK_NEW_UNITS = {
             "equipmentchanges": {
                 "HAGRU_MANPADS": [(1, 0, "MANPAD_Starstreak_HAGRU")], # turret_index, donor_weapon_index, ammo_name
                 "replace": [
-                    ("FM_L85A1", "FM_L85A1_noreflex"),
-                    ("MANPAD_FIM92", "MANPAD_Starstreak", "Javelin", "Starstreak_x3"),
+                    ("FM_L85A1", "FM_L85A1_noreflex", "FM_L85A1", "FM_L85A1"),
+                    ("Javelin", "MANPAD_Starstreak", "Javelin", "Starstreak_x3"),
                 ],
+            },
+            "Salves": {
+                "FM_L85A1_noreflex": 11,
             },
         },
         "UpgradeFromUnit": "DCA_Javelin_LML_UK",

@@ -49,12 +49,16 @@ def unit_edits_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> No
 
             # Check each weapon in the turret
             for ammo_name, weapon_info in turret_data["weapons"].items():
-                # Strip _x{number} suffix for dictionary lookup
+                # Strip _x{number} and _salvolength{number} suffixes for dictionary lookup
                 base_ammo_name = re.sub(r"_x\d+$", "", ammo_name)
+                base_ammo_name = re.sub(r"_salvolength\d+$", "", base_ammo_name)
 
-                # since Eugen used same formatting for quantity and salvo length,
-                # we can use the same regex data to get the salvo length
-                salvo_length = weapon_info.get("regex_quantity")
+                # Extract salvo length from ammo name: _salvolength{N} or _x{N}
+                salvo_match = re.search(r"_salvolength(\d+)$", ammo_name)
+                if salvo_match:
+                    salvo_length = int(salvo_match.group(1))
+                else:
+                    salvo_length = weapon_info.get("regex_quantity", 1)
 
                 # Check if this is a TBAGRU missile
                 for (missile_name, _, _, _), missile_data in missiles.items():
@@ -64,6 +68,20 @@ def unit_edits_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> No
                         and "arme" in missile_data["Ammunition"]
                         and missile_data["Ammunition"]["arme"].get("DamageFamily") == "DamageFamily_manpad_tbagru"
                     ):
+
+                        # Find the corresponding HAGRU missile to check its SalvoLengths
+                        hagru_name = f"{base_ammo_name}_HAGRU"
+                        hagru_salvo_lengths = None
+                        for (hagru_missile_name, _, _, _), hagru_data in missiles.items():
+                            if hagru_missile_name == hagru_name and "WeaponDescriptor" in hagru_data:
+                                hagru_salvo_lengths = hagru_data["WeaponDescriptor"].get("SalvoLengths")
+                                break
+
+                        # Use salvo variant when: (salvo_length > 1) OR (HAGRU only has salvo variants, no base)
+                        use_salvo_variant = salvo_length > 1
+                        if not use_salvo_variant and hagru_salvo_lengths and 1 not in hagru_salvo_lengths:
+                            salvo_length = hagru_salvo_lengths[0]
+                            use_salvo_variant = True
 
                         # Find and copy the weapon
                         for weapon in mounted_wpns.v:
@@ -78,11 +96,10 @@ def unit_edits_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> No
                             weapon_ammo = weapon.v.by_m("Ammunition").v
                             if weapon_ammo == ammo_path:
                                 new_wpn = weapon.copy()
-                                # Only add salvo length suffix if length > 1
-                                if salvo_length == 1:
-                                    new_ammo = f"$/GFX/Weapon/Ammo_{base_ammo_name}_HAGRU"
+                                if use_salvo_variant:
+                                    new_ammo = f"$/GFX/Weapon/Ammo_{base_ammo_name}_HAGRU_salvolength{salvo_length}"
                                 else:
-                                    new_ammo = f"$/GFX/Weapon/Ammo_{base_ammo_name}_HAGRU" f"_salvolength{salvo_length}"
+                                    new_ammo = f"$/GFX/Weapon/Ammo_{base_ammo_name}_HAGRU"
                                 new_wpn.v.by_m("Ammunition").v = new_ammo
                                 wpns_to_add.append(new_wpn)
                                 logger.debug(

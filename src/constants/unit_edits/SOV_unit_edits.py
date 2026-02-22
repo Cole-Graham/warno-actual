@@ -2621,8 +2621,8 @@ sov_unit_edits = {
     },
 
     "2K11_KRUG_SOV": {  # 2K11 Krug
-        "CommandPoints": 90,
-        "availability": [4, 3, 0, 0],
+        "CommandPoints": 130,
+        "availability": [3, 2, 0, 0],
         "optics": {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 300,

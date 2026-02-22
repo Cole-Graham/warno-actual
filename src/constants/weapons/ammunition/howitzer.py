@@ -301,6 +301,17 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("Howz_Canon_BAE_L39_155mm_SMOKE", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "TimeBetweenTwoShots": 3.4,
+                "TimeBetweenTwoFx": 3.4,
+                "ShotsCountPerSalvo": 4,
+                "AffichageMunitionParSalve": 4,
+            },
+        },
+    },
+    
     ("Howz_Canon_DANA_SP_152mm", "howitzer", None, False): { # 389
         "Ammunition": {
             "parent_membr": {

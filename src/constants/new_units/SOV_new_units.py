@@ -472,7 +472,7 @@ SOV_NEW_UNITS = {
                    'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
-        "is_heavy_equipment": False,
+        "is_heavy_equipment": True,
         "is_ground_vehicle": True,
         "is_aerial": False,
         "is_unarmed": False,
@@ -545,7 +545,7 @@ SOV_NEW_UNITS = {
                    'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load', 
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
-        "is_heavy_equipment": False,
+        "is_heavy_equipment": True,
         "is_ground_vehicle": True,
         "is_aerial": False,
         "is_unarmed": False,

@@ -125,6 +125,29 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("DCA_2_canons_Oerlikon_GDF_002_35mm", "DCA", None, False): { # Skyguard
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 15,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoFx": 0.1,
+                "MaximumRangeGRU": 1575,
+                "MaximumRangeHelicopterGRU": 2800,
+                "MaximumRangeAirplaneGRU": 2625,
+                "PhysicalDamages": 0.7,
+                "AimingTime": 1.2,
+                "TimeBetweenTwoSalvos": 1.0,
+                "ShotsCountPerSalvo": 18,
+                "AffichageMunitionParSalve": 36,
+            },
+        },
+        "WeaponDescriptor": {
+            "Salves": 7,
+        },
+    },
+    
     ("DCA_2_canon_Bofors_40mm", "DCA", None, False): {
         "Ammunition": {
             "parent_membr": {

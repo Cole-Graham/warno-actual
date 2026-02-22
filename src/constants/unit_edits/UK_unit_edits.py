@@ -2131,6 +2131,26 @@ uk_unit_edits = {
         "stealth": 2.0,
         "availability": [6, 4, 0, 0],
     },
+    
+    "DCA_Oerlikon_GDF_002_35mm_UK": { # Skyguard
+        "CommandPoints": 65,
+        "availability": [8, 6, 0, 0],
+        "armor": {
+            "front": (None, "ResistanceFamily_vehicule"),
+            "sides": (None, "ResistanceFamily_vehicule"),
+            "rear": (None, "ResistanceFamily_vehicule"),
+            "top": (None, "ResistanceFamily_vehicule"),
+        },
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 220,
+            },
+            "TimeBetweenEachIdentifyRoll": 1.0,
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'good_airoptics'"],
+        },
+    },
 
     "DCA_Rapier_UK": {
         "CommandPoints": 65,
@@ -2254,15 +2274,19 @@ uk_unit_edits = {
     },
 
     # UK AIR
-    "Buccaneer_S2B_SEAD_UK": { # Martel 5250m
-        "optics": {
-            "VisionRangesGRU": {
-                "EVisionRange/Standard": 10000,
-            },
-            "OpticalStrengths": {
-                "EOpticalStrength/AntiRadar": 5000,
-            },
-        },
+    "Canberra_T17A_UK": {
+        "CommandPoints": 160,
+        "availability": [0, 2, 0, 0],
+    },
+    
+    "Canberra_B2_UK": { # [HE/CLU]
+        "CommandPoints": 140,
+        "availability": [0, 3, 0, 0],
+    },
+    
+    "Buccaneer_S2B_HE_UK": {
+        "CommandPoints": 190,
+        "availability": [0, 2, 0, 0],
     },
     
     "Buccaneer_S2B_GBU_UK": { # 2x GBU-16
@@ -2281,24 +2305,30 @@ uk_unit_edits = {
         },
     },
     
-    "Tornado_ADV_SEAD_UK" : { # ALARM 5600m
-        "availability": [0, 2, 0, 1],
+    "Buccaneer_S2B_ATGM_UK": {
+        "CommandPoints": 150,
+        "availability": [0, 3, 0, 0],
+    },
+    
+    "Buccaneer_S2B_SEAD_UK": { # Martel 5250m
         "optics": {
             "VisionRangesGRU": {
-                "EVisionRange/Standard": 10000.0,
+                "EVisionRange/Standard": 10000,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/AntiRadar": 5000.0,
+                "EOpticalStrength/AntiRadar": 5000,
             },
         },
-        "Divisions": {
-            "add": ["UK_2nd_Infantry"],
-            "is_transported": False,
-            "needs_transport": False,
-            "default": {
-                "cards": 1,
-            },
-        },
+    },
+    
+    "Hawk_T1_UK": {
+        "CommandPoints": 55,
+        "availability": [0, 6, 0, 0],
+    },
+    
+    "Hawk_T1_AA_UK": {  # 2x AIM-9L
+        "CommandPoints": 55,
+        "availability": [0, 6, 4, 3],
     },
 
     "Harrier_RKT1_UK": {  # 36x SNEB, 2x AIM-9L
@@ -2332,12 +2362,37 @@ uk_unit_edits = {
         "UpgradeFromUnit": "Harrier_RKT1_UK"
     },
 
-    "Harrier_HE1_UK": {  # 2x mk83 450kg
+    "Harrier_HE1_UK": {  # 2x mk83 450kg, 2x AIM-9L
         "GameName": {
             "display": "HARRIER GR.3 [HE]",
         },
         "CommandPoints": 130,
         "availability": [0, 4, 0, 0],
+    },
+    
+    "Harrier_HE2_UK": {  # 4x mk18 513kg
+        "CommandPoints": 130,
+        "availability": [0, 4, 0, 0],
+    },
+    
+    "Harrier_UK": {  # 4x AIM-9L
+        "CommandPoints": 95,
+        "availability": [0, 4, 3, 0],
+    },
+    
+    "Harrier_GR5_UK": {
+        "CommandPoints": 150,
+        "availability": [0, 3, 0, 0],
+    },
+    
+    "Harrier_GR5_CLU_UK": {
+        "CommandPoints": 195,
+        "availability": [0, 2, 0, 0],
+    },
+    
+    "Jaguar_RKT_UK": {  # 36x SNEB, 2x AIM-9L
+        "CommandPoints": 125,
+        "availability": [0, 3, 2, 0],
     },
 
     "Jaguar_CLU_UK": {  # 4x BL755 CLU
@@ -2357,6 +2412,11 @@ uk_unit_edits = {
         "CommandPoints": 190,
         "availability": [0, 2, 0, 0],
     },
+    
+    "Jaguar_overwing_UK": {  # 6x Mk18 513kg, 2x AIM-9L
+        "CommandPoints": 215,
+        "availability": [0, 0, 2, 0],
+    },
 
     "Tornado_ADV_HE_UK": {
         "CommandPoints": 220,
@@ -2365,10 +2425,43 @@ uk_unit_edits = {
         },
         "availability": [0, 2, 0, 0],
     },
-
-    "Harrier_UK": {  # 4x AIM-9L
-        "CommandPoints": 95,
-        "availability": [0, 4, 3, 0],
+    
+    "Tornado_ADV_clu_UK": {
+        "CommandPoints": 240,
+        "availability": [0, 2, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'terrain_radar'"],
+        },
+    },
+    
+    "Tornado_ADV_SEAD_UK" : { # ALARM 5600m
+        "availability": [0, 2, 0, 1],
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 10000.0,
+            },
+            "OpticalStrengths": {
+                "EOpticalStrength/AntiRadar": 5000.0,
+            },
+        },
+        "Divisions": {
+            "add": ["UK_2nd_Infantry"],
+            "is_transported": False,
+            "needs_transport": False,
+            "default": {
+                "cards": 1,
+            },
+        },
+    },
+    
+    "F4_Phantom_GR2_UK": {
+        "CommandPoints": 245,
+        "availability": [0, 0, 2, 0],
+    },
+    
+    "F4_Phantom_GR2_HE_UK": { # 6x mk18 513kg, 2x Skyflash
+        "CommandPoints": 230,
+        "availability": [0, 0, 2, 0],
     },
 
     "F4_Phantom_AA_F3_UK": { # 4x Skyflash, 4x AIM-9L
@@ -2388,5 +2481,20 @@ uk_unit_edits = {
             },
         },
         "availability": [0, 3, 2, 0],
+    },
+    
+    "F4_Phantom_AA_GR2_UK": { 
+        "CommandPoints": 210,
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 375,
+            },
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("AA_AIM9L_Sidewinder", "AA_AIM9M_Sidewinder")],
+            },
+        },
+        "availability": [0, 2, 0, 1],
     },
 }

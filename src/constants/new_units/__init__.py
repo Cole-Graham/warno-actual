@@ -369,6 +369,24 @@ def validate_no_duplicate_keys_in_source_files() -> None:
     logger.info(f"Validated {len(all_keys)} new unit keys across all source files - no duplicates found")
 
 
+def _validate_infantry_strength(new_units_dict: Dict) -> None:
+    """
+    Warn if any infantry new unit with WeaponDescriptor is missing a strength key.
+
+    Infantry units need strength for weapon descriptor processing (e.g. replace, strength variants).
+    """
+    for key, edits in new_units_dict.items():
+        if not isinstance(edits, dict):
+            continue
+        if edits.get("is_heavy_equipment", False):
+            continue
+        is_infantry = edits.get("is_infantry", False)
+        has_weapon_descriptor_replace = edits.get("WeaponDescriptor", {}).get("equipmentchanges", {}).get("replace", False)
+        if is_infantry and has_weapon_descriptor_replace and "strength" not in edits:
+            unit_name = edits.get("NewName", _get_unit_name_from_key(key))
+            logger.warning(f"New unit '{unit_name}' has is_infantry=True and WeaponDescriptor but is missing a 'strength' key. This may cause weapon descriptor edits (e.g. replace) to be skipped.")
+
+
 def validate_no_duplicate_keys(new_units_dict: Dict) -> None:
     """
     Validate that there are no duplicate keys in the new units dictionary.
@@ -430,6 +448,9 @@ def load_new_units() -> Dict:
     logger.info("Resolving shared values in new units dictionaries...")
     merged_units = resolve_new_unit_references_optimized(merged_units)
     logger.info("Successfully resolved new unit references")
+
+    # Validate infantry units have strength (after resolution, since it may be inherited)
+    _validate_infantry_strength(merged_units)
     
     # Save resolved units for debugging (convert tuple keys to strings for JSON serialization)
     logs_dir = Path(__file__).parents[3] / "logs"

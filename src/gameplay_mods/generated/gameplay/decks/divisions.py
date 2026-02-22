@@ -133,10 +133,7 @@ def _add_national_divisions(source_path: Any) -> None:
     
     # Collect dictionary entries for all new divisions
     dictionary_entries = []
-    
-    # Track current InterfaceOrder value across all nations
-    current_order = 1.0
-    
+
     # Create and add new division descriptors
     for nation in sorted_nations:
         new_divs_dict = new_divisions_by_nation[nation]
@@ -172,9 +169,11 @@ def _add_national_divisions(source_path: Any) -> None:
         
         # Create new division descriptors
         for div_key, div_data in sorted_divisions:
-            new_order = current_order
-            current_order += 1.0
-            
+            interface_order = div_data.get("interface_order")
+            if interface_order is None:
+                logger.error(f"Missing interface_order for {div_key}, skipping division")
+                continue
+
             # Create new division descriptor by copying donor
             new_div_descr = donor_division.copy()
             
@@ -197,8 +196,8 @@ def _add_national_divisions(source_path: Any) -> None:
                 # Collect dictionary entry: (token, text)
                 dictionary_entries.append((div_name_tokens[1], div_name_tokens[0]))
             
-            # Set interface order
-            new_div_descr.v.by_m("InterfaceOrder").v = str(new_order)
+            # Set interface order (hardcoded, starting at 500 to avoid vanilla division range)
+            new_div_descr.v.by_m("InterfaceOrder").v = str(float(interface_order))
             
             # Set division power classification
             div_power = div_data.get("div_power", "DC_PWR1")
@@ -246,7 +245,7 @@ def _add_national_divisions(source_path: Any) -> None:
             
             # Add to source_path
             source_path.add(new_div_descr)
-            logger.info(f"Added new division {cfg_name} with InterfaceOrder {new_order} for nation {nation}")
+            logger.info(f"Added new division {cfg_name} with InterfaceOrder {interface_order} for nation {nation}")
     
     # Write dictionary entries to outgame dictionary
     if dictionary_entries:

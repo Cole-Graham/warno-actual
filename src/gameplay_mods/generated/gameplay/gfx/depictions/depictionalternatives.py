@@ -23,10 +23,14 @@ def _handle_new_units(source_path: Any) -> None:
             continue
 
         unit_name = edits["NewName"]
-        uses_new_mesh = edits.get("depictions", {}).get("new_mesh", False)
+        new_mesh = edits.get("depictions", {}).get("new_mesh", False)
+        existing_mesh = edits.get("depictions", {}).get("alternatives", False)
+        uses_donor_mesh = False
+        if not new_mesh and not existing_mesh:
+            uses_donor_mesh = True
 
         # Create alternatives entry using new or donor's models
-        if uses_new_mesh:
+        if new_mesh:
             entry = (
                 f"Alternatives_{unit_name} is ["
                 f"    DepictionVisual_LOD_High( MeshDescriptor = $/GFX/DepictionResources/Modele_{unit_name} ),"
@@ -34,7 +38,15 @@ def _handle_new_units(source_path: Any) -> None:
                 f"    DepictionVisual_LOD_Low( MeshDescriptor = $/GFX/DepictionResources/Modele_{unit_name}_LOW ),"
                 f"]"
             )
-        else:
+        elif existing_mesh:
+            entry = (
+                f"Alternatives_{unit_name} is ["
+                f"    DepictionVisual_LOD_High( MeshDescriptor = $/GFX/DepictionResources/Modele_{existing_mesh} ),"
+                f"    DepictionVisual_LOD_Mid( MeshDescriptor = $/GFX/DepictionResources/Modele_{existing_mesh}_MID ),"
+                f"    DepictionVisual_LOD_Low( MeshDescriptor = $/GFX/DepictionResources/Modele_{existing_mesh}_LOW ),"
+                f"]"
+            )
+        elif uses_donor_mesh:
             entry = (
                 f"Alternatives_{unit_name} is ["
                 f"    DepictionVisual_LOD_High( MeshDescriptor = $/GFX/DepictionResources/Modele_{donor_name} ),"
@@ -42,5 +54,8 @@ def _handle_new_units(source_path: Any) -> None:
                 f"    DepictionVisual_LOD_Low( MeshDescriptor = $/GFX/DepictionResources/Modele_{donor_name}_LOW ),"
                 f"]"
             )
+        else:
+            logger.error(f"No mesh found for {unit_name}")
+            continue
         source_path.add(entry)
         logger.info(f"Added alternatives depiction for {unit_name}")
