@@ -21,8 +21,14 @@ tools/infantry_dpm_visualizer.py
 tools/extract_infantry_tab.py
 agent
 generate_new_divs.py
-generate_uk_divisionrules.py
+generate_divisionrules.py
 UNITS.csv
+pol-div-rules.csv
+rfa-div-rules.csv
+sov-div-rules.csv
+tch-div-rules.csv
+ddr-div-rules.csv
+fr-div-rules.csv
 uk-div-rules.csv
 
 # don't ignore

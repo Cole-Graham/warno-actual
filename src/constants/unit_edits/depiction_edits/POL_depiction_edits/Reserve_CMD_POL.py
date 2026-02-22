@@ -22,7 +22,7 @@ reserve_cmd_pol: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
         
         ("TacticDepiction_Reserve_CMD_POL_Soldier", "TemplateInfantryDepictionFactoryTactic"): {
             "Operators": {
-                2: ("edit", [("bazooka", "WeaponAlternative_3")]),
+                0: ("insert", [("bazooka", "WeaponAlternative_3")]),
             },
         },
     }

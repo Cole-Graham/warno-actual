@@ -177,10 +177,23 @@ def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_nam
 # Add modules
 def _add_modules(game_db, edit_type, unit_name, edits, modules_list) -> None:
     """Add modules to new and existing units"""
+    deployment_shift = edits.get("DeploymentShift")
+    found_deploymentshift_module = find_obj_by_type(
+        modules_list.v, "TDeploymentShiftModuleDescriptor") is not None
+
     if edit_type == "new_units":
         for module in edits.get("modules_add", []):
             modules_list.v.add(module)
-    
+
+        if not found_deploymentshift_module and deployment_shift is not None:
+            deploymentshift_module = (
+                f"TDeploymentShiftModuleDescriptor("
+                f"    DeploymentShiftGRU = {deployment_shift}"
+                f")"
+            )
+            modules_list.v.add(deploymentshift_module)
+            logger.info(f"Added TDeploymentShiftModuleDescriptor to {unit_name} (DeploymentShiftGRU = {deployment_shift})")
+
     if edit_type == "unit_edits":
         unit_db = game_db["unit_data"]
         
@@ -210,7 +223,16 @@ def _add_modules(game_db, edit_type, unit_name, edits, modules_list) -> None:
         if not found_transporter_module and "EOrderType/UnloadFromTransport" in edits.get(
             "orders", {}).get("add_orders", []):
             modules_list.v.add(transporter_module)
-        
+
+        if not found_deploymentshift_module and deployment_shift is not None:
+            deploymentshift_module = (
+                f"TDeploymentShiftModuleDescriptor("
+                f"    DeploymentShiftGRU = {deployment_shift}"
+                f")"
+            )
+            modules_list.v.add(deploymentshift_module)
+            logger.info(f"Added TDeploymentShiftModuleDescriptor to {unit_name} (DeploymentShiftGRU = {deployment_shift})")
+
         for module in edits.get("modules_add", []):
             modules_list.v.add(module)
 
@@ -486,11 +508,16 @@ def _handle_vehicleapparence_module(logger, game_db, unit_data, edit_type, unit_
                                     edits, module, *args) -> None:
     """Handle VehicleApparenceModuleDescriptor for existing and new units"""
     if edit_type == "new_units" and "depictions" in edits:
+        existing_mesh = edits.get("depictions", {}).get("alternatives", False)
         if edits.get("depictions", {}).get("new_mesh", False):
             new_name = edits["NewName"]
             module.v.by_m("MimeticName").v = f'"{new_name}"'
             module.v.by_m("BlackHoleIdentifier").v = f'"{new_name}"'
             module.v.by_m("ReferenceMesh").v = f'$/GFX/DepictionResources/Modele_{new_name}'
+        elif existing_mesh:
+            module.v.by_m("MimeticName").v = f'"{unit_name}"'
+            module.v.by_m("BlackHoleIdentifier").v = f'"{unit_name}"'
+            module.v.by_m("ReferenceMesh").v = f'$/GFX/DepictionResources/Modele_{existing_mesh}'
         else:
             module.v.by_m("MimeticName").v = f'"{unit_name}"'
     
@@ -683,10 +710,11 @@ def _handle_strategicdata_module(logger, game_db, unit_data, edit_type, unit_nam
 def _handle_deploymentshift_module(logger, game_db, unit_data, edit_type, unit_name,
                                    edits, module, *args) -> None:
     """Handle TDeploymentShiftModuleDescriptor for existing and new units"""
-    
+    deployment_shift = edits.get("DeploymentShift")
+
     # Adjust forward deploy
-    if edits.get("DeploymentShift", None) is not None:
-        module.v.by_m("DeploymentShiftGRU").v = str(edits["DeploymentShift"])
+    if deployment_shift is not None:
+        module.v.by_m("DeploymentShiftGRU").v = str(deployment_shift)
     
     else:
         # Global Nerfs to forward deploy
@@ -760,6 +788,9 @@ def _handle_camerashowroom_module(logger, game_db, unit_data, edit_type, unit_na
         if edits.get("depictions", {}).get("new_mesh", False):
             new_name = edits["NewName"]
             module.v.by_m("ShowRoomBlackHoleIdentifier").v = f'"showroom_{new_name}"'
+        elif edits.get("depictions", {}).get("alternatives", False):
+            existing_mesh = edits.get("depictions", {}).get("alternatives", False)
+            module.v.by_m("ShowRoomBlackHoleIdentifier").v = f'"showroom_{existing_mesh}"'
         else:
             pass
     

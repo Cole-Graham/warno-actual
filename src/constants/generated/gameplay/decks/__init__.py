@@ -114,7 +114,7 @@ def load_new_divisions() -> Dict:
             if dict_name and hasattr(module, dict_name):
                 merged_divisions.update(getattr(module, dict_name))
                 logger.info(f"Loaded new divisions from {file.stem}")
-            else:
+            elif str(file.stem) in dict_names:
                 logger.warning(f"No dictionary mapping found for {file.stem} or dictionary {dict_name} not found in module")
                 
         except Exception as e:

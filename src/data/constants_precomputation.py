@@ -20,6 +20,11 @@ from src.utils.database_utils import ensure_db_directory
 from src.utils.logging_utils import setup_logger
 
 from .deck_pack_mappings import build_deck_pack_mappings
+from .small_arms_quantity_validation import (
+    build_valid_small_arms_quantity_variants,
+    save_valid_small_arms_variants,
+    validate_small_arms_quantity_variants,
+)
 from .unit_data import gather_unit_data
 
 logger = setup_logger(__name__)
@@ -123,10 +128,21 @@ def build_constants_precomputation_data(config: Dict[str, Any], game_db: Dict[st
         
         # Save ammunition_renames to separate JSON file
         save_ammunition_renames(ammunition_renames, config)
-        
+
+        # Build and validate small arms quantity variants
+        valid_small_arms_variants = build_valid_small_arms_quantity_variants(game_db)
+        save_valid_small_arms_variants(valid_small_arms_variants, config)
+        if game_db:
+            validation_failed = validate_small_arms_quantity_variants(config, game_db)
+            if validation_failed:
+                logger.warning(
+                    "Small arms quantity validation found errors - see above. "
+                    "Fix unit edits or add quantities to NbWeapons in small_arms.py"
+                )
+
         # Add ammunition_renames to return dict for convenience
         mappings["ammunition_renames"] = ammunition_renames
-        
+
         logger.info(
             f"Constants precomputation data built and saved: "
             f"{len(mappings.get('deck_pack_modifications', {}))} modifications, "

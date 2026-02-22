@@ -1,8 +1,8 @@
-"""Division rules for DDR"""
+"""Division rules for RDA"""
 
 # fmt: off
 
-DDR_airborne_newdivisionrules = {
+RDA_airborne_newdivisionrules = {
     "logistic": [
         ("MotRifles_CMD2_DDR", 2, [0, 0, 2, 0], ["UAZ_469_trans_DDR", "GAZ_46_DDR", "MTLB_trans_DDR", "Mi_2_trans_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"]),
         ("UAZ_469_CMD_DDR", 2, [0, 4, 0, 0]),
@@ -105,7 +105,7 @@ DDR_airborne_newdivisionrules = {
     ],
 }
 
-DDR_armored_newdivisionrules = {
+RDA_armored_newdivisionrules = {
     "logistic": [
         ("MotRifles_CMD2_DDR", 2, [0, 0, 2, 0], ["W50_LA_A_DDR", "BTR_50_DDR", "Mi_2_trans_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"]),
         ("UAZ_469_CMD_DDR", 1, [0, 4, 0, 0]),
@@ -195,7 +195,7 @@ DDR_armored_newdivisionrules = {
     ],
 }
 
-DDR_mechanized_newdivisionrules = {
+RDA_mechanized_newdivisionrules = {
     "logistic": [
         ("MotRifles_CMD2_DDR", 2, [0, 0, 2, 0], ["UAZ_469_trans_DDR", "BTR_50_DDR", "Mi_2_trans_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"]),
         ("UAZ_469_CMD_DDR", 1, [0, 4, 0, 0]),
@@ -435,7 +435,7 @@ DDR_motorized_newdivisionrules = {
     ],
 }
 
-DDR_global_newdivisionrules = {
+RDA_global_newdivisionrules = {
     "planes": [
         ("MiG_21PFM_AA_DDR", 2, [0, 4, 3, 2]),
         ("MiG_21bis_AA2_DDR", 2, [0, 4, 3, 2]),

@@ -8,6 +8,7 @@ from .FR_depiction_edits import (
     vab_t20_fr,
 )
 from .POL_depiction_edits import (
+    # commandos_para_cmd_pol,
     engineers_cmd_pol,
     mortier_2b9_vasilek_para_pol,
 )
@@ -30,8 +31,12 @@ from .SOV_depiction_edits import (
 )
 from .UK_depiction_edits import (
     airmobile_mot_cmd_uk,
+    bedford_mj_4t_uk,
     engineers_cmd_uk,
+    guards_cmd_uk,
+    rifles_berlin_uk,
     rover_101fc_supply_uk,
+    sniper_guards_uk,
 )
 from .USA_depiction_edits import (
     a7d_corsair_ii_rkt_us,
@@ -62,6 +67,7 @@ __all__ = [
     "vab_t20_fr",
     
     # POL
+    # "commandos_para_cmd_pol",
     "engineers_cmd_pol",
     "mortier_2b9_vasilek_para_pol",
     
@@ -84,8 +90,12 @@ __all__ = [
     
     # UK
     "airmobile_mot_cmd_uk",
+    "bedford_mj_4t_uk",
     "engineers_cmd_uk",
+    "guards_cmd_uk",
+    "rifles_berlin_uk",
     "rover_101fc_supply_uk",
+    "sniper_guards_uk",
     
     # USA
     "a7d_corsair_ii_rkt_us",

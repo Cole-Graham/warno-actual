@@ -390,7 +390,7 @@ POL_NEW_UNITS = {
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
-                "UNITE_T54B_CMD_POL",
+                "UNITE_T54B_CMDactual_POL",
                 "Unite",
             ],
         },
@@ -405,6 +405,7 @@ POL_NEW_UNITS = {
             'leader_sov',
         ],
         "availability": [0, 0, 6, 0],
+        "remove_zone_capture": None,
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
@@ -538,7 +539,7 @@ POL_NEW_UNITS = {
                    'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": True,  # False for Javelin LML (unique exception), towed units.
-        "is_heavy_equipment": False,
+        "is_heavy_equipment": True,
         "is_ground_vehicle": True,
         "is_aerial": False,
         "is_unarmed": False,
@@ -604,7 +605,7 @@ POL_NEW_UNITS = {
                    'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load', 
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
-        "is_heavy_equipment": False,
+        "is_heavy_equipment": True,
         "is_ground_vehicle": True,
         "is_aerial": False,
         "is_unarmed": False,
@@ -636,6 +637,7 @@ POL_NEW_UNITS = {
             "custom": {
                 "DepictionVehicles.ndf": ["TacticVehicleDepictionRegistration", "DepictionOperator_WeaponContinuousFire"],
             },
+            "alternatives": "HMGteam_NSV_POL",
         },
         "GameName": {
             "display": "SPADO. NSV 12,7mm",
@@ -654,12 +656,13 @@ POL_NEW_UNITS = {
                 "Unite"
             ],
         },
+        "TransportedSoldier": "HMGteam_NSV_para_POL",
         "WeaponDescriptor": {
             "Salves": {
                 "HMG_12_7_mm_NSVT": 48,
             },
             "equipmentchanges": {
-                "replace": [("MMG_PKM_7_62mm", "HMG_12_7_mm_NSVT", "MMG_PKM_7_62mm", "HMG_12_7_mm_NSVT")]
+                "replace": [("MMG_team_7_62mm_PKM", "HMG_team_12_7_mm_NSV", "MMG_team_7_62mm_PKM", "HMG_team_12_7_mm_NSV")]
             },
         },
         "CommandPoints": 25,
@@ -675,7 +678,7 @@ POL_NEW_UNITS = {
                    'EOrderType/Shoot','EOrderType/AskForSupply', 'EOrderType/ShootOnPosition', 'EOrderType/UnloadFromTransport', 'EOrderType/UnloadAtPosition', 'EOrderType/Load',
                    'EOrderType/ShootOnPositionWithoutCorrection','EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
-        "is_heavy_equipment": False,
+        "is_heavy_equipment": True,
         "is_ground_vehicle": True,
         "is_aerial": False,
         "is_unarmed": False,
@@ -710,6 +713,7 @@ POL_NEW_UNITS = {
             "custom": {
                 "DepictionVehicles.ndf": ["TacticVehicleDepictionRegistration", "DepictionOperator_WeaponInstantFire"],
             },
+            "alternatives": "HMGteam_AGS17_POL",
         },
         "TagSet": {
             "overwrite_all": [    
@@ -724,12 +728,13 @@ POL_NEW_UNITS = {
                 "Unite"
             ],
         },
+        "TransportedSoldier": "HMGteam_AGS17_para_POL",
         "WeaponDescriptor": {
             "Salves": {
                 "Lance_grenade_AGS17": 30,
             },
             "equipmentchanges": {
-                "replace": [("MMG_PKM_7_62mm", "Lance_grenade_AGS17", "MMG_PKM_7_62mm", "Lance_grenade_AGS17")]
+                "replace": [("MMG_team_7_62mm_PKM", "Lance_grenade_AGS17", "MMG_team_7_62mm_PKM", "Lance_grenade_AGS17")]
             },
         },
         "CommandPoints": 30,
@@ -745,7 +750,7 @@ POL_NEW_UNITS = {
                    'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load', 'EOrderType/ShootOnPosition',
                    'EOrderType/ShootOnPositionWithoutCorrection','EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
-        "is_heavy_equipment": False,
+        "is_heavy_equipment": True,
         "is_ground_vehicle": True,
         "is_aerial": False,
         "is_unarmed": False,
@@ -920,24 +925,25 @@ POL_NEW_UNITS = {
             "overwrite_all": [    
                 "AllUnits",
                 "AllowedForMissileRoE",
-                "Crew",
+                "ChasseurDeChar",
+                "ChasseurDeChar_canon_AT",
                 "GroundUnits",
-                "Inf_quartier_ok",
-                "Infanterie",
-                "Infanterie_Spec_Defense",
                 "UNITE_AT_D48_85mm_Para_POL",
-                "Unite"
+                "Unite",
+                "Unite_transportable",
             ],
         },
+        "TransportedSoldier": "AT_D48_85mm_Para_POL",
         "SpecialtiesList": [
                 '_para',
             ],
         "UpgradeFromUnit": None,
         "availability": [0, 9, 7, 5],
+        "DeploymentShift": 1750,
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/Attack', 'EOrderType/MoveAndAttack', 
                    'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load', 'EOrderType/ShootOnPosition',
                    'EOrderType/ShootOnPositionWithoutCorrection','EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
-        "is_infantry": True, # False for Javelin LML (unique exception), towed units.
+        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": True,
         "is_ground_vehicle": True,
         "is_aerial": False,
@@ -949,12 +955,12 @@ POL_NEW_UNITS = {
         "servants": ("G_Para_POL", "D_Para_POL"),
         "servant_types": {
             "showroom": {
-                "G_Para_POL": ["ATGMServantLeft"],
-                "D_Para_POL": ["ATGMServantRight"]
+                "G_Para_POL": ["ServantLeft"],
+                "D_Para_POL": ["ServantRight"]
             },
             "subdepictions": {
-                "G_Para_POL": ["ATGMServantLeft"],
-                "D_Para_POL": ["ATGMServantRight"]
+                "G_Para_POL": ["ServantLeft"],
+                "D_Para_POL": ["ServantRight"]
             },
         },
     },
@@ -1046,6 +1052,12 @@ POL_NEW_UNITS = {
         "ButtonTexture": "Scout_para_POL",
         "availability": [0, 6, 4, 0],
         "max_speed": 26,
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_kbk_AK": 11,
+                "MMG_PKM_7_62mm": 36,
+            },
+        },
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
                    'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
@@ -1056,8 +1068,9 @@ POL_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "NATO",
         "Nation": "POL",
-        "alternatives_count": 3,
-        "selector_tactic": "01_03",
+        "alternatives_count": 4,
+        "selector_tactic": "02_04",
+        "unique_count": 2,
     },
 
     # ("MiG_23MF_AA_POL", 0): {  # MiG-23MF [AA3]

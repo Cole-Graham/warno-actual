@@ -355,6 +355,18 @@ supply_unit_edits = {
         "availability": [2, 0, 0, 0],
     },
     
+    "AEC_Militant_UK": {
+        "SupplyCapacity": 2300.0,
+        "CommandPoints": 80,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "SupplyDescriptor": "DvisionalSupply",
+        "availability": [2, 0, 0, 0],
+    },
+    
     "MAN_Kat_6x6_RFA": {
         "SupplyCapacity": 2300.0,
         "CommandPoints": 80,
@@ -380,6 +392,18 @@ supply_unit_edits = {
     },
     
     "HEMTT_US": {
+        "SupplyCapacity": 2750.0,
+        "CommandPoints": 90,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "SupplyDescriptor": "DvisionalSupply",
+        "availability": [2, 0, 0, 0],
+    },
+    
+    "Bedford_TM_6x6_supply_UK": {
         "SupplyCapacity": 2750.0,
         "CommandPoints": 90,
         "Divisions": {

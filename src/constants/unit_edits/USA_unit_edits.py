@@ -1107,6 +1107,11 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "RocketInf_AT4_83mm": 6,
+            },
+        },
     },
     
     "LightRifles_Dragon_US": {
@@ -3276,6 +3281,16 @@ usa_unit_edits = {
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
+        },
+    },
+    
+    "LRRP_FOLT_US": {
+        "CommandPoints": 30,
+        "armor": "Infantry_armor_reference",
+        "availability": [0, 6, 4, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
     },
 
