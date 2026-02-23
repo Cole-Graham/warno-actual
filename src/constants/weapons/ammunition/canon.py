@@ -344,6 +344,18 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
+    ("Canon_HE_125_mm_2A46_T64A_late", "canon", None, False): { # T-64AV
+        "Ammunition": {
+            "parent_membr": {
+                "TimeBetweenTwoShots": 6.6,
+                "TimeBetweenTwoSalvos": 6.6,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 1925,
+            },
+        },
+    },
+
 
     ("Canon_HE_125_mm_2A46_T64A", "canon", None, False): { # 204
         "Ammunition": {
@@ -538,6 +550,21 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "TimeBetweenTwoShots": 6.6,
                 "TimeBetweenTwoSalvos": 6.6,
+            },
+        },
+    },
+
+    ("Canon_AP_125_mm_2A46_T64A_late", "canon", None, False): { # 
+        "Ammunition": {
+            "Arme": {
+                "Index": 20, # KE
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 6.6,
+                "TimeBetweenTwoSalvos": 6.6,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 1925,
             },
         },
     },

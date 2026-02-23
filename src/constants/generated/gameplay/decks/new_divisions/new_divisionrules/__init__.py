@@ -19,6 +19,13 @@ from .POL_newdivisionrules import (
     POL_mechanized_newdivisionrules,
     POL_motorized_newdivisionrules,
 )
+from .SOV_newdivisionrules import (
+    SOV_airborne_newdivisionrules,
+    SOV_armored_newdivisionrules,
+    SOV_global_newdivisionrules,
+    SOV_mechanized_newdivisionrules,
+    SOV_motorized_newdivisionrules,
+)
 
 __all__ = [
     "UK_airborne_newdivisionrules",
@@ -36,4 +43,9 @@ __all__ = [
     "POL_global_newdivisionrules",
     "POL_mechanized_newdivisionrules",
     "POL_motorized_newdivisionrules",
+    "SOV_airborne_newdivisionrules",
+    "SOV_armored_newdivisionrules",
+    "SOV_global_newdivisionrules",
+    "SOV_mechanized_newdivisionrules",
+    "SOV_motorized_newdivisionrules",
 ]
