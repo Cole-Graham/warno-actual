@@ -1997,7 +1997,7 @@ pol_unit_edits = {
         "SpecialtiesList": {
             "overwrite_all": [
                 "_transport1",
-                "_ifv",   #This trait needs implemntation
+                "_ifv",
                 "_amphibie",
             ],
         },
