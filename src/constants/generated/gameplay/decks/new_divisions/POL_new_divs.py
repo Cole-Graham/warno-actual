@@ -4,14 +4,15 @@ from .new_divisionrules import (
     POL_airborne_newdivisionrules,
     POL_armored_newdivisionrules,
     POL_global_newdivisionrules,
+    # POL_marine_newdivisionrules,
     POL_mechanized_newdivisionrules,
     POL_motorized_newdivisionrules,
 )
 
 pol_new_divs = {
     "POL_general": {
-        "division_id": 5023,
-        "interface_order": 600,
+        "division_id": 6017,
+        "interface_order": 2050,
         "guid": "3babedc3-2a72-46ba-9eab-27e8c9a53e5b",
         "cfg_name": "POL_national_general",
         "div_name": ("Poland", "CXOZNLXSDT"),
@@ -28,8 +29,8 @@ pol_new_divs = {
         ],
     },
     "POL_airborne": {
-        "division_id": 5024,
-        "interface_order": 601,
+        "division_id": 6018,
+        "interface_order": 2051,
         "guid": "38ffe9cd-58a2-48f9-a8cc-14b928a6e2d3",
         "cfg_name": "POL_national_airborne",
         "div_name": ("Poland Airborne", "WNLQJDPVNF"),
@@ -43,8 +44,8 @@ pol_new_divs = {
         ],
     },
     "POL_airborne_armored": {
-        "division_id": 5025,
-        "interface_order": 602,
+        "division_id": 6019,
+        "interface_order": 2052,
         "guid": "cb8d705d-6d67-403d-af67-2336928d8b4f",
         "cfg_name": "POL_national_airborne_armored",
         "div_name": ("Poland Airborne / Armored", "FGVDDWNUJN"),
@@ -58,9 +59,10 @@ pol_new_divs = {
             POL_global_newdivisionrules,
         ],
     },
+    # airborne_marine 6020, 2053
     "POL_airborne_mechanized": {
-        "division_id": 5026,
-        "interface_order": 603,
+        "division_id": 6021,
+        "interface_order": 2054,
         "guid": "a8060e82-2ba0-4574-a479-80e9af0827dd",
         "cfg_name": "POL_national_airborne_mechanized",
         "div_name": ("Poland Airborne / Mechanized", "DDIQTWOTFJ"),
@@ -75,8 +77,8 @@ pol_new_divs = {
         ],
     },
     "POL_airborne_motorized": {
-        "division_id": 5027,
-        "interface_order": 604,
+        "division_id": 6022,
+        "interface_order": 2055,
         "guid": "82521003-6472-4f75-9c89-2ea9f5ac5d48",
         "cfg_name": "POL_national_airborne_motorized",
         "div_name": ("Poland Airborne / Motorized", "ARNCRGSACJ"),
@@ -91,8 +93,8 @@ pol_new_divs = {
         ],
     },
     "POL_armored": {
-        "division_id": 5028,
-        "interface_order": 605,
+        "division_id": 6023,
+        "interface_order": 2056,
         "guid": "fb8eda0a-3d52-48c5-89cd-10b1b2b35793",
         "cfg_name": "POL_national_armored",
         "div_name": ("Poland Armored", "MDQWJIRLBO"),
@@ -105,9 +107,10 @@ pol_new_divs = {
             POL_global_newdivisionrules,
         ],
     },
+    # armored_marine 6024, 2057
     "POL_armored_mechanized": {
-        "division_id": 5029,
-        "interface_order": 606,
+        "division_id": 6025,
+        "interface_order": 2058,
         "guid": "92ad22bf-595a-429d-b5ce-6415858fdbb6",
         "cfg_name": "POL_national_armored_mechanized",
         "div_name": ("Poland Armored / Mechanized", "WTVPATJPSC"),
@@ -122,8 +125,8 @@ pol_new_divs = {
         ],
     },
     "POL_armored_motorized": {
-        "division_id": 5030,
-        "interface_order": 607,
+        "division_id": 6026,
+        "interface_order": 2059,
         "guid": "9e96c28b-711a-4e0c-a115-c1a81bbcc48c",
         "cfg_name": "POL_national_armored_motorized",
         "div_name": ("Poland Armored / Motorized", "MCNDXUQEQE"),
@@ -137,9 +140,12 @@ pol_new_divs = {
             POL_motorized_newdivisionrules,
         ],
     },
+    # marine 6027, 2060
+    # marine_mechanized 6028, 2061
+    # marine_motorized 6029, 2062
     "POL_mechanized": {
-        "division_id": 5031,
-        "interface_order": 608,
+        "division_id": 6030,
+        "interface_order": 2063,
         "guid": "25f18399-f97d-4a8c-806a-43fe10135347",
         "cfg_name": "POL_national_mechanized",
         "div_name": ("Poland Mechanized", "CDEMZLKZQI"),
@@ -153,8 +159,8 @@ pol_new_divs = {
         ],
     },
     "POL_mechanized_motorized": {
-        "division_id": 5032,
-        "interface_order": 609,
+        "division_id": 6031,
+        "interface_order": 2064,
         "guid": "e299fafc-3448-4814-bd39-db4f8c022349",
         "cfg_name": "POL_national_mechanized_motorized",
         "div_name": ("Poland Mechanized / Motorized", "VPLAGOPKIS"),
@@ -169,8 +175,8 @@ pol_new_divs = {
         ],
     },
     "POL_motorized": {
-        "division_id": 5033,
-        "interface_order": 610,
+        "division_id": 6032,
+        "interface_order": 2065,
         "guid": "9d1c934a-fc66-423e-9ea8-b7f70f1142b4",
         "cfg_name": "POL_national_motorized",
         "div_name": ("Poland Motorized", "XTNOATBQXR"),

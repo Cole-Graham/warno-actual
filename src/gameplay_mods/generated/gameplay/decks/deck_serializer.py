@@ -95,9 +95,10 @@ def _hide_divisions_deckserializer_ndf(source_path) -> None:
     config = ModConfig.get_instance()
 
     hide_divs = config.config_data.get("hide_divs", [])
-    if config.config_data["build_config"]["write_dev"]:
+    write_dev = config.config_data["build_config"]["write_dev"]
+    dev_show_divs = config.config_data.get("dev_show_divs") or []
+    if write_dev and len(dev_show_divs) > 0:
         # In dev mode, remove divisions that should be shown for testing
-        dev_show_divs = config.config_data.get("dev_show_divs", [])
         divs_to_hide = [div for div in hide_divs if div not in dev_show_divs]
     else:
         # In release mode, hide all divisions in hide_divs

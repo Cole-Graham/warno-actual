@@ -1233,8 +1233,12 @@ rda_unit_edits = {
         "availability": [0, 6, 4, 0],
     },
     
-    "Mi_8PPA_SOV": {
-        "availability": [0, 3, 0, 0],
+    "Mi_14PL_recon_DDR": { # #RECO3 AUFKL. Mi-14PL
+        "availability": [0, 4, 0, 0],
+    },
+    
+    "Mi_8TB_reco_Marine_DDR": { # #RECO2 AUFKL. Mi-8TB
+        "availability": [0, 4, 3, 0],
     },
 
     "Scout_DDR": {

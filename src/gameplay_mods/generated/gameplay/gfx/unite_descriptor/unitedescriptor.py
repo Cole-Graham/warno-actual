@@ -641,9 +641,10 @@ def _handle_reversescanner_module(logger, game_db, unit_data, edit_type, unit_na
     """Handle TReverseScannerWithIdentificationDescriptor for existing and new units"""
 
     current_base_prob = float(module.v.by_m("IdentifyBaseProbability").v)
-    new_base_prob = min(current_base_prob * 1.25, 1.0)
+    new_base_prob = min(current_base_prob * 2.0, 1.0)
         
     module.v.by_m("IdentifyBaseProbability").v = str(new_base_prob)
+    logger.info(f"Updated {unit_name} identify base probability from {current_base_prob} to {new_base_prob}")
 
     custom_roll_freq = edits.get("optics", {}).get("TimeBetweenEachIdentifyRoll", None)
     if custom_roll_freq:

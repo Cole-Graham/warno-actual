@@ -4,12 +4,15 @@
 #     RDA_airborne_newdivisionrules,
 #     RDA_armored_newdivisionrules,
 #     RDA_global_newdivisionrules,
+#     # RDA_marine_newdivisionrules,
 #     RDA_mechanized_newdivisionrules,
 #     RDA_motorized_newdivisionrules,
 # )
 
 # rda_new_divs = {
 #     "RDA_general": {
+#         "division_id": 6033,
+#         "interface_order": 2100,
 #         "guid": "7bff2408-3791-45de-945f-79bc45698f91",
 #         "cfg_name": "RDA_national_general",
 #         "div_name": ("East Germany", "KXOMJZFCGW"),
@@ -26,6 +29,8 @@
 #         ],
 #     },
 #     "RDA_airborne": {
+#         "division_id": 6034,
+#         "interface_order": 2101,
 #         "guid": "d94e39fb-402d-4406-b3ed-7a7877169656",
 #         "cfg_name": "RDA_national_airborne",
 #         "div_name": ("East Germany Airborne", "EJRGZXPRVA"),
@@ -39,6 +44,8 @@
 #         ],
 #     },
 #     "RDA_airborne_armored": {
+#         "division_id": 6035,
+#         "interface_order": 2102,
 #         "guid": "4a8cf165-75b9-47ae-ae9d-ccb132334460",
 #         "cfg_name": "RDA_national_airborne_armored",
 #         "div_name": ("East Germany Airborne / Armored", "SCSUCHZZZW"),
@@ -52,7 +59,10 @@
 #             RDA_global_newdivisionrules,
 #         ],
 #     },
+#     # airborne_marine 6036, 2103
 #     "RDA_airborne_mechanized": {
+#         "division_id": 6037,
+#         "interface_order": 2104,
 #         "guid": "03f4fcda-b6ad-47ad-b411-93605fb00ada",
 #         "cfg_name": "RDA_national_airborne_mechanized",
 #         "div_name": ("East Germany Airborne / Mechanized", "YACQISHXXY"),
@@ -67,6 +77,8 @@
 #         ],
 #     },
 #     "RDA_airborne_motorized": {
+#         "division_id": 6038,
+#         "interface_order": 2105,
 #         "guid": "fb999696-1cfa-4404-b130-3b862d24ca62",
 #         "cfg_name": "RDA_national_airborne_motorized",
 #         "div_name": ("East Germany Airborne / Motorized", "ZAFVDAUGFE"),
@@ -81,6 +93,8 @@
 #         ],
 #     },
 #     "RDA_armored": {
+#         "division_id": 6039,
+#         "interface_order": 2106,
 #         "guid": "29409dd6-b378-4e61-bd3e-abcec7c46453",
 #         "cfg_name": "RDA_national_armored",
 #         "div_name": ("East Germany Armored", "WFZTDFTHMP"),
@@ -93,7 +107,10 @@
 #             RDA_global_newdivisionrules,
 #         ],
 #     },
+#     # armored_marine 6040, 2107
 #     "RDA_armored_mechanized": {
+#         "division_id": 6041,
+#         "interface_order": 2108,
 #         "guid": "a6904fc3-532f-4e27-8159-d8e6c4994efb",
 #         "cfg_name": "RDA_national_armored_mechanized",
 #         "div_name": ("East Germany Armored / Mechanized", "QIWGHCJYSR"),
@@ -108,6 +125,8 @@
 #         ],
 #     },
 #     "RDA_armored_motorized": {
+#         "division_id": 6042,
+#         "interface_order": 2109,
 #         "guid": "d1e91feb-7621-4e27-9337-b9f7cc94d91f",
 #         "cfg_name": "RDA_national_armored_motorized",
 #         "div_name": ("East Germany Armored / Motorized", "QXLJPUOSGT"),
@@ -121,7 +140,12 @@
 #             RDA_motorized_newdivisionrules,
 #         ],
 #     },
+#     # marine 6043, 2110
+#     # marine_mechanized 6044, 2111
+#     # marine_motorized 6045, 2112
 #     "RDA_mechanized": {
+#         "division_id": 6046,
+#         "interface_order": 2113,
 #         "guid": "a7950a62-c3be-48f6-a1b8-354a05c2e2d5",
 #         "cfg_name": "RDA_national_mechanized",
 #         "div_name": ("East Germany Mechanized", "AGKGGGRBVO"),
@@ -135,6 +159,8 @@
 #         ],
 #     },
 #     "RDA_mechanized_motorized": {
+#         "division_id": 6047,
+#         "interface_order": 2114,
 #         "guid": "16c60e1a-f937-45b8-97f4-465c103a720b",
 #         "cfg_name": "RDA_national_mechanized_motorized",
 #         "div_name": ("East Germany Mechanized / Motorized", "PLCJLGSRJB"),
@@ -149,6 +175,8 @@
 #         ],
 #     },
 #     "RDA_motorized": {
+#         "division_id": 6048,
+#         "interface_order": 2115,
 #         "guid": "dd4ecba8-aeef-4920-9276-66cf7765293a",
 #         "cfg_name": "RDA_national_motorized",
 #         "div_name": ("East Germany Motorized", "TTAHGNHGZK"),

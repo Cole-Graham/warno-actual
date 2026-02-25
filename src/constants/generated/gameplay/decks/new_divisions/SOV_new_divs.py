@@ -4,14 +4,15 @@ from .new_divisionrules import (
     SOV_airborne_newdivisionrules,
     SOV_armored_newdivisionrules,
     SOV_global_newdivisionrules,
+    # SOV_marine_newdivisionrules,
     SOV_mechanized_newdivisionrules,
     SOV_motorized_newdivisionrules,
 )
 
 sov_new_divs = {
     "SOV_general": {
-        "division_id": 5040,
-        "interface_order": 650,
+        "division_id": 6001,
+        "interface_order": 2000,
         "guid": "9e9785e1-6d07-404d-b50c-fcc472a4136c",
         "cfg_name": "SOV_national_general",
         "div_name": ("Soviet Union", "OXRENRYOJC"),
@@ -28,8 +29,8 @@ sov_new_divs = {
         ],
     },
     "SOV_airborne": {
-        "division_id": 5041,
-        "interface_order": 651,
+        "division_id": 6002,
+        "interface_order": 2001,
         "guid": "0791330e-2163-470a-823b-c82d338693f6",
         "cfg_name": "SOV_national_airborne",
         "div_name": ("Soviet Union Airborne", "ZAJBKHZRFG"),
@@ -43,8 +44,8 @@ sov_new_divs = {
         ],
     },
     "SOV_airborne_armored": {
-        "division_id": 5042,
-        "interface_order": 652,
+        "division_id": 6003,
+        "interface_order": 2002,
         "guid": "d5c08b30-bfa3-49ef-bb04-bac85fae9099",
         "cfg_name": "SOV_national_airborne_armored",
         "div_name": ("Soviet Union Airborne / Armored", "QPRCGYSAVK"),
@@ -58,9 +59,10 @@ sov_new_divs = {
             SOV_global_newdivisionrules,
         ],
     },
+    # airborne_marine 6004, 2003
     "SOV_airborne_mechanized": {
-        "division_id": 5043,
-        "interface_order": 653,
+        "division_id": 6005,
+        "interface_order": 2004,
         "guid": "8e8986ae-5986-4d28-b1e7-2de164dea5b5",
         "cfg_name": "SOV_national_airborne_mechanized",
         "div_name": ("Soviet Union Airborne / Mechanized", "MITOJLUNPT"),
@@ -75,8 +77,8 @@ sov_new_divs = {
         ],
     },
     "SOV_airborne_motorized": {
-        "division_id": 5044,
-        "interface_order": 654,
+        "division_id": 6006,
+        "interface_order": 2005,
         "guid": "6cd594d6-5cba-4872-b52f-939b0a8b71e7",
         "cfg_name": "SOV_national_airborne_motorized",
         "div_name": ("Soviet Union Airborne / Motorized", "WUVMUAUQFD"),
@@ -91,8 +93,8 @@ sov_new_divs = {
         ],
     },
     "SOV_armored": {
-        "division_id": 5045,
-        "interface_order": 655,
+        "division_id": 6007,
+        "interface_order": 2006,
         "guid": "4db18e72-6c60-4a37-b650-ccd837ebe19f",
         "cfg_name": "SOV_national_armored",
         "div_name": ("Soviet Union Armored", "AEFXAHFBNM"),
@@ -105,9 +107,10 @@ sov_new_divs = {
             SOV_global_newdivisionrules,
         ],
     },
+    # armored_marine 6008, 2007
     "SOV_armored_mechanized": {
-        "division_id": 5046,
-        "interface_order": 656,
+        "division_id": 6009,
+        "interface_order": 2008,
         "guid": "a2dda653-e983-4b42-83d4-58623a133685",
         "cfg_name": "SOV_national_armored_mechanized",
         "div_name": ("Soviet Union Armored / Mechanized", "MRCIJDCDHJ"),
@@ -122,8 +125,8 @@ sov_new_divs = {
         ],
     },
     "SOV_armored_motorized": {
-        "division_id": 5047,
-        "interface_order": 657,
+        "division_id": 6010,
+        "interface_order": 2009,
         "guid": "4c59b723-92b1-4d73-b99a-8c06b9d258f3",
         "cfg_name": "SOV_national_armored_motorized",
         "div_name": ("Soviet Union Armored / Motorized", "AJDEKHUQVM"),
@@ -137,9 +140,12 @@ sov_new_divs = {
             SOV_motorized_newdivisionrules,
         ],
     },
+    # marine 6011, 2010
+    # marine_mechanized 6012, 2011
+    # marine_motorized 6013, 2012
     "SOV_mechanized": {
-        "division_id": 5048,
-        "interface_order": 658,
+        "division_id": 6014,
+        "interface_order": 2013,
         "guid": "f8b46e84-d3f3-40dd-86fa-f04ca0ae4f76",
         "cfg_name": "SOV_national_mechanized",
         "div_name": ("Soviet Union Mechanized", "GAMGPIJHKY"),
@@ -153,8 +159,8 @@ sov_new_divs = {
         ],
     },
     "SOV_mechanized_motorized": {
-        "division_id": 5049,
-        "interface_order": 659,
+        "division_id": 6015,
+        "interface_order": 2014,
         "guid": "06f7d358-58d8-4cef-8eeb-a6e28009e3d4",
         "cfg_name": "SOV_national_mechanized_motorized",
         "div_name": ("Soviet Union Mechanized / Motorized", "KIDVKKRRHS"),
@@ -169,8 +175,8 @@ sov_new_divs = {
         ],
     },
     "SOV_motorized": {
-        "division_id": 5050,
-        "interface_order": 660,
+        "division_id": 6016,
+        "interface_order": 2015,
         "guid": "218ebe27-54ce-4cdd-9239-4ec5cc4d1b21",
         "cfg_name": "SOV_national_motorized",
         "div_name": ("Soviet Union Motorized", "IIUXWMFLWU"),

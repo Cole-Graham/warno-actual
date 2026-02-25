@@ -4,6 +4,7 @@ from .new_divisionrules import (
     US_airborne_newdivisionrules,
     US_armored_newdivisionrules,
     US_global_newdivisionrules,
+    # US_marine_newdivisionrules,
     US_mechanized_newdivisionrules,
     US_motorized_newdivisionrules,
 )
@@ -11,7 +12,7 @@ from .new_divisionrules import (
 us_new_divs = {
     "US_general": {
         "division_id": 5001,
-        "interface_order": 500,
+        "interface_order": 1000,
         "guid": "0dc2088a-9fca-4925-97c2-166cf79642fd",
         "cfg_name": "US_national_general",
         "div_name": ("USA", "BUKHWKTHUH"),
@@ -37,7 +38,7 @@ us_new_divs = {
     },
     "US_airborne": {
         "division_id": 5002,
-        "interface_order": 501,
+        "interface_order": 1001,
         "guid": "a5729c4e-a163-4dd7-8e99-a39fb9ca5d31",
         "cfg_name": "US_national_airborne",
         "div_name": ("USA Airborne", "NRKJFPTFWT"),
@@ -52,7 +53,7 @@ us_new_divs = {
     },
     "US_airborne_armored": {
         "division_id": 5003,
-        "interface_order": 502,
+        "interface_order": 1002,
         "guid": "e4107dc6-2618-4579-b2f6-dd8f6f160e8d",
         "cfg_name": "US_national_airborne_armored",
         "div_name": ("USA Airborne / Armored", "JRXFQANUWW"),
@@ -73,9 +74,10 @@ us_new_divs = {
             "DCA_M167A2_Vulcan_20mm_US"
         ],
     },
+    # airborne_marine 5004, 1003
     "US_airborne_mechanized": {
-        "division_id": 5004,
-        "interface_order": 503,
+        "division_id": 5005,
+        "interface_order": 1004,
         "guid": "a32d7229-4dcc-4673-855b-3e453fee1846",
         "cfg_name": "US_national_airborne_mechanized",
         "div_name": ("USA Airborne / Mechanized", "QKMSZBHSHW"),
@@ -97,8 +99,8 @@ us_new_divs = {
         ],
     },
     "US_airborne_motorized": {
-        "division_id": 5005,
-        "interface_order": 504,
+        "division_id": 5006,
+        "interface_order": 1005,
         "guid": "d8a90f57-eec1-4399-a9c9-74c8d83b5fff",
         "cfg_name": "US_national_airborne_motorized",
         "div_name": ("USA Airborne / Motorized", "LEOKKLGOZQ"),
@@ -121,8 +123,8 @@ us_new_divs = {
         ],
     },
     "US_armored": {
-        "division_id": 5006,
-        "interface_order": 505,
+        "division_id": 5007,
+        "interface_order": 1006,
         "guid": "fbe63b07-12ba-42a2-83d7-256da9eaee93",
         "cfg_name": "US_national_armored",
         "div_name": ("USA Armored", "QFULKVAART"),
@@ -135,9 +137,10 @@ us_new_divs = {
             US_global_newdivisionrules,
         ],
     },
+    # armored_marine 5008, 1007
     "US_armored_mechanized": {
-        "division_id": 5007,
-        "interface_order": 506,
+        "division_id": 5009,
+        "interface_order": 1008,
         "guid": "13d29ac2-28ce-481f-8e06-c1849f7fcd36",
         "cfg_name": "US_national_armored_mechanized",
         "div_name": ("USA Armored / Mechanized", "DNMHIFVPBS"),
@@ -152,8 +155,8 @@ us_new_divs = {
         ],
     },
     "US_armored_motorized": {
-        "division_id": 5008,
-        "interface_order": 507,
+        "division_id": 5010,
+        "interface_order": 1009,
         "guid": "a6ae807e-1e3a-44c9-a4e4-a222b240bc91",
         "cfg_name": "US_national_armored_motorized",
         "div_name": ("USA Armored / Motorized", "SWZWKORUGN"),
@@ -167,9 +170,12 @@ us_new_divs = {
             US_motorized_newdivisionrules,
         ],
     },
+    # marine 5011, 1010
+    # marine_mechanized 5012, 1011
+    # marine_motorized 5013, 1012
     "US_mechanized": {
-        "division_id": 5009,
-        "interface_order": 508,
+        "division_id": 5014,
+        "interface_order": 1013,
         "guid": "1be5bd50-92da-4c66-aa1e-ef1b6eebb0be",
         "cfg_name": "US_national_mechanized",
         "div_name": ("USA Mechanized", "TWCAJWWYYT"),
@@ -183,8 +189,8 @@ us_new_divs = {
         ],
     },
     "US_mechanized_motorized": {
-        "division_id": 5010,
-        "interface_order": 509,
+        "division_id": 5015,
+        "interface_order": 1014,
         "guid": "bfb01779-4c5a-4188-88ad-e15f618d71ad",
         "cfg_name": "US_national_mechanized_motorized",
         "div_name": ("USA Mechanized / Motorized", "ADMMJBOYSE"),
@@ -199,8 +205,8 @@ us_new_divs = {
         ],
     },
     "US_motorized": {
-        "division_id": 5011,
-        "interface_order": 510,
+        "division_id": 5016,
+        "interface_order": 1015,
         "guid": "9814c02d-4a96-4515-acba-98f2720579ca",
         "cfg_name": "US_national_motorized",
         "div_name": ("USA Motorized", "GLVOWMTEIW"),

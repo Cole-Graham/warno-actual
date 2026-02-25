@@ -32,30 +32,34 @@ def edit_gen_gp_decks_divisions(source_path) -> None:
     config = ModConfig.get_instance()
 
     hide_divs = config.config_data.get("hide_divs", [])
-    if config.config_data["build_config"]["write_dev"]:
+    write_dev = config.config_data["build_config"]["write_dev"]
+    dev_show_divs = config.config_data.get("dev_show_divs") or []
+    if write_dev and len(dev_show_divs) > 0:
         # In dev mode, remove divisions that should be shown for testing
-        dev_show_divs = config.config_data.get("dev_show_divs", [])
         divs_to_hide = [div for div in hide_divs if div not in dev_show_divs]
     else:
         # In release mode, hide all divisions in hide_divs
         divs_to_hide = hide_divs
 
+    # Collect donor divisions BEFORE removing - we need them to copy structure for new divisions
+    donor_divisions = _collect_donor_divisions(source_path)
+
     indices_to_remove = []
-    logger.info("Modifying hidden divisions in Divisions.ndf ")    
+    logger.info("Modifying hidden divisions in Divisions.ndf ")
     for division in divs_to_hide:
         div_index = source_path.by_n(f"Descriptor_Deck_Division_{division}").index
         indices_to_remove.append(div_index)
 
     for index in sorted(indices_to_remove, reverse=True):
         source_path.remove(index)
-    
+
     for deck_descr in source_path:
         MaxActivationPoints = deck_descr.v.by_member("MaxActivationPoints", False)
         if MaxActivationPoints and MaxActivationPoints.v == "50":
             MaxActivationPoints.v = "100"
-    
-    # Add new national divisions
-    _add_national_divisions(source_path)
+
+    # Add new national divisions (pass pre-collected donors since we removed them)
+    _add_national_divisions(source_path, donor_divisions)
 
 
 def _extract_nation_from_division_key(div_key: str) -> str:
@@ -84,28 +88,29 @@ def _get_coalition_for_nation(nation: str) -> str:
     return NATION_TO_COALITION.get(normalized_nation, "NATO")  # Default to NATO if unknown
 
 
-def _add_national_divisions(source_path: Any) -> None:
-    """Add national divisions to Divisions.ndf."""
-    new_divisions = load_new_divisions()
-    
-    if not new_divisions:
-        logger.info("No new divisions to add")
-        return
-    
-    # Find donor divisions for each nation (any division with _multi suffix)
-    # We need these to copy the structure from
+def _collect_donor_divisions(source_path: Any) -> Dict[str, Any]:
+    """Collect donor divisions (any with _multi suffix) for copying structure.
+    Must be called BEFORE removing hidden divisions."""
     donor_divisions: Dict[str, Any] = {}
-    
     for deckdivision_descr in source_path:
         if not hasattr(deckdivision_descr, "namespace") or not deckdivision_descr.namespace.endswith("_multi"):
             continue
-        
+
         division_nation_raw = strip_quotes(deckdivision_descr.v.by_m("CountryId").v)
         division_nation = _normalize_nation_code(division_nation_raw)
-        
-        # Store first division found for each nation as donor
+
         if division_nation not in donor_divisions:
             donor_divisions[division_nation] = deckdivision_descr
+    return donor_divisions
+
+
+def _add_national_divisions(source_path: Any, donor_divisions: Dict[str, Any]) -> None:
+    """Add national divisions to Divisions.ndf."""
+    new_divisions = load_new_divisions()
+
+    if not new_divisions:
+        logger.info("No new divisions to add")
+        return
     
     # Group new divisions by nation
     new_divisions_by_nation: Dict[str, Dict[str, Dict]] = defaultdict(dict)

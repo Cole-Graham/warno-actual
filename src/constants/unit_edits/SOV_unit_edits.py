@@ -169,7 +169,7 @@ sov_unit_edits = {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDRSOV #IFV MOTOSTRELKI LDR.",
+            "display": "#LDRSOV MOTOSTRELKI LDR.",
             # "token": "ZJRMUWLPVH",
         },
         "TagSet": {
@@ -240,7 +240,7 @@ sov_unit_edits = {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDRSOV MOTOSTRELKI LDR.",
+            "display": "#LDRSOV MOTOPEKHOTA LDR.",
             # "token": "ZJRMUWLPVH",
         },
         "TagSet": {
@@ -1429,6 +1429,7 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": "HMGteam_M2HB_US",
         },
+        "UpgradeFromUnit": "HMGteam_DShK_AA_SOV",
     },
 
     "HMGteam_NSV_TTsko_SOV": {
@@ -1478,6 +1479,19 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_veryheavy'"],
         },
+    },
+    
+    "HMGteam_DShK_AA_SOV": {
+        "CommandPoints": "HMGteam_M2HB_M63_UK",
+        "GameName": {
+            "display": "REZ. DShK 12.7mm (AA)",
+        },
+        "strength": "HMGteam_M2HB_M63_UK",
+        "max_speed": "HMGteam_M2HB_M63_UK",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_M2HB_M63_UK",
+        },
+        "UpgradeFromUnit": "HMGteam_PKM_SOV",
     },
 
     "HMGteam_AGS17_SOV": {
@@ -1555,6 +1569,7 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
+        "UpgradeFromUnit": "FireSupport_TTsko_SOV",
     },
 
     "ATteam_Fagot_SOV": {
