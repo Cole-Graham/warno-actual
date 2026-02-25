@@ -354,6 +354,13 @@ supply_unit_edits = {
         "SupplyDescriptor": "DvisionalSupply",
         "availability": [2, 0, 0, 0],
     },
+
+    "KrAZ_255B_supply_DDR": {
+        "SupplyCapacity": 2300.0,
+        "CommandPoints": 80,
+        "SupplyDescriptor": "DvisionalSupply",
+        "availability": [2, 0, 0, 0],
+    },
     
     "AEC_Militant_UK": {
         "SupplyCapacity": 2300.0,

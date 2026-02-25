@@ -358,7 +358,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "SupplyCost": 1.0,
-        "NbWeapons": [2, 1],
+        "NbWeapons": [3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 18,
         },
@@ -829,7 +829,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     },
     
     ("PM_MPi_AKSU_74NK", "small_arms", None, False): {  # 568
-        "Ammunition": {
+       "Ammunition": {
             "Arme": {
                 "Family": "DamageFamily_sa_intermediate",
             },
@@ -851,7 +851,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "SupplyCost": 1.0,
-        "NbWeapons": [5],
+        "NbWeapons": [7, 6, 5, 2, 1],
         "WeaponDescriptor": {
             "Salves": 11,               
         },
@@ -2412,6 +2412,64 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "Salves": 11,
         },
     },
+
+    ("FM_StG_941", "small_arms", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_sa_intermediate",
+            },
+            "hit_roll": {
+                "Idling": 40,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 1.5,
+                "MaximumRangeGRU": 875,
+                "MaximumRangeHelicopterGRU": 700,
+                "PhysicalDamages": 0.06,
+                "SuppressDamages": 6,
+                "DisplaySalveAccuracy": False,
+                "AimingTime": 1.0,
+                "TimeBetweenTwoSalvos": 4.5,
+                "ShotsCountPerSalvo": 6,
+                "AffichageMunitionParSalve": 30,
+            },
+        },
+        "SupplyCost": 1.0,
+        "NbWeapons": [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+        "WeaponDescriptor": {
+            "Salves": 11,
+        },
+    },
+
+    ("FM_StG_942", "small_arms", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_sa_intermediate",
+            },
+            "hit_roll": {
+                "Idling": 40,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 1.5,
+                "MaximumRangeGRU": 875,
+                "MaximumRangeHelicopterGRU": 700,
+                "PhysicalDamages": 0.06,
+                "SuppressDamages": 6,
+                "DisplaySalveAccuracy": False,
+                "AimingTime": 1.0,
+                "TimeBetweenTwoSalvos": 4.5,
+                "ShotsCountPerSalvo": 6,
+                "AffichageMunitionParSalve": 30,
+            },
+        },
+        "SupplyCost": 1.0,
+        "NbWeapons": [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+        "WeaponDescriptor": {
+            "Salves": 11,
+        },
+    },
     
     ("FM_KMS_72", "small_arms", None, False): {
         "Ammunition": {
@@ -2436,7 +2494,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "SupplyCost": 1.0,
-        "NbWeapons": [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+        "NbWeapons": [13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 11,
         },

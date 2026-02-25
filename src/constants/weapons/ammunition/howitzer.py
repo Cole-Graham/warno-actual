@@ -102,6 +102,16 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+
+     ("Howz_Canon_ZiS3_Howitzer_76mm", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 2.1,
+                "RadiusSplashPhysicalDamagesGRU": 76,
+                "RadiusSplashSuppressDamagesGRU": 101,
+            },
+        },
+    },
     
     ("Howz_Canon_L13A1_Howitzer_105mm", "howitzer", None, False): {
         "Ammunition": {

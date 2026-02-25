@@ -765,7 +765,111 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+
+    ("SAM_FASTA_Strela2M_x4_TOWED", "MANPAD", None, False): { 
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_tbagru",
+            },
+            "hit_roll": {
+                "DistanceToTarget": True,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 1.2,
+                "TimeBetweenTwoFx": 1.2,
+                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeAirplaneGRU": 1750,
+                "TimeBetweenTwoSalvos": 20.0,
+                "AimingTime": 1.2,
+            }
+        },
+        "SupplyCost": 25.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [4],
+            "units": {
+                3: ["DCA_FASTA_4_DDR"],
+            },
+        },
+    },
     
+    ("SAM_FASTA_Strela2M_x4_TOWED_HAGRU", "SAM", "SAM_FASTA_Strela2M_x4_TOWED", True): {
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_hagru",
+            },
+            "hit_roll": {
+                "DistanceToTarget": True,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 1.2,
+                "TimeBetweenTwoFx": 1.2,
+                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeAirplaneGRU": 1750,
+                "TimeBetweenTwoSalvos": 20.0,
+                "AimingTime": 3.0,
+            }
+        },
+        "SupplyCost": 25.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [4],
+            "units": {
+                3: ["DCA_FASTA_4_DDR"],
+            },
+        },
+    },
+
+    ("SAM_FASTA_Strela2M", "MANPAD", None, False): { 
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_tbagru",
+            },
+            "hit_roll": {
+                "DistanceToTarget": True,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 1.2,
+                "TimeBetweenTwoFx": 1.2,
+                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeAirplaneGRU": 1750,
+                "TimeBetweenTwoSalvos": 20.0,
+                "AimingTime": 1.2,
+            }
+        },
+        "SupplyCost": 25.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [4],
+            "units": {
+                3: ["LO_1800_FASTA_4_DDR"],
+            },
+        },
+    },
+    
+    ("SAM_FASTA_Strela2M_HAGRU", "SAM", "SAM_FASTA_Strela2M", True): {
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_hagru",
+            },
+            "hit_roll": {
+                "DistanceToTarget": True,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 1.2,
+                "TimeBetweenTwoFx": 1.2,
+                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeAirplaneGRU": 1750,
+                "TimeBetweenTwoSalvos": 20.0,
+                "AimingTime": 3.0,
+            }
+        },
+        "SupplyCost": 25.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [4],
+            "units": {
+                3: ["LO_1800_FASTA_4_DDR"],
+            },
+        },
+    },
+
     ("Javelin", "MANPAD", None, False): {
         "Ammunition": {
             "arme": {

@@ -621,11 +621,11 @@ pol_unit_edits = {
                         "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
                     },
                 },
-                },
-                "Salves": {
-                    "insert": [(2, 6)],
-                },
             },
+            "Salves": {
+                "insert": [(2, 6)],
+            },
+        },
         "selector_tactic": "(2, 4)",
         "selector_tactic_obj": "02_04",
         "remove_zone_capture": None,
@@ -1448,7 +1448,7 @@ pol_unit_edits = {
     },
     
     "RM70_85_POL": {
-        "CommandPoints": "MFRW_RM70_DDR",
+        "CommandPoints": 240,
         "GameName": {
             "display": "RM wz. 70/85"
         },
@@ -1457,7 +1457,7 @@ pol_unit_edits = {
                 "replace": [("RocketArt_M21OF_122mm", "RocketArt_M21OF_122mm_RM70")],
             },
         },
-        "availability": "MFRW_RM70_DDR",
+        "availability": [0, 2, 0, 1],
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -2639,21 +2639,21 @@ pol_unit_edits = {
     },
     
     "MiG_21bis_POL": {  # 4x R-60M, 2x R-13M - MiG-21bis [AA2]
-        "CommandPoints": "MiG_21bis_AA2_DDR",
-        "availability": "MiG_21bis_AA2_DDR",
+        "CommandPoints": 110,
+        "availability": [0, 4, 3, 2],
         "GameName": {
             "display": "MiG-21bis [AA]"
         },
     },
     
     "MiG_21bis_HE_POL": {  # MiG-21bis [HE]
-        "CommandPoints": "MiG_21bis_HE_DDR",
-        "availability": "MiG_21bis_HE_DDR",
+        "CommandPoints": 135,
+        "availability": [0, 4, 0, 0],
     },
     
     "MiG_21bis_RKT2_POL": {  # 4x S-24 [RKT2]
-        "CommandPoints": "MiG_21bis_RKT2_DDR",
-        "availability": "MiG_21bis_RKT2_DDR",
+        "CommandPoints": 100,
+        "availability": [0, 4, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
                 "RocketAir_S24_240mm_avion_salvolength4": (1, True),
@@ -2674,9 +2674,9 @@ pol_unit_edits = {
     },
     
     "MiG_23MF_AA_POL": {  # MiG-23MF [AA], 2x R-23R, 4x R-60M
-        "CommandPoints": "MiG_23MF_AA_DDR",
-        "availability": "MiG_23MF_AA_DDR",
-        "ECM": "MiG_23MF_AA_DDR",
+        "CommandPoints": 115,
+        "availability": [0, 4, 3, 2],
+        "ECM": 20,
     },
     
     "MiG_23MF_AA2_POL": {  # MiG-23MF [AA2], 2x R-3R, 2x R-13M
@@ -2717,8 +2717,8 @@ pol_unit_edits = {
     },
     
     "Su_22_POL": {
-        "CommandPoints": "Su_22_DDR",
-        "availability": "Su_22_DDR",
+        "CommandPoints": 215,
+        "availability": [0, 2, 0, 0],
     },
 
     "Su_22_nplm_POL": {  # 4x ZB-500, 2x R-60M
@@ -2733,7 +2733,7 @@ pol_unit_edits = {
     
     "Su_22_AT_POL": {  # Su-22M4 Seria 30
         "CommandPoints": "Su_22_AT_SOV",
-        "availability": "Su_22_AT_SOV",
+        "availability": [0, 2, 0, 1],
         "WeaponDescriptor": {
             "Salves": {
                 "AGM_Kh29T": 1,

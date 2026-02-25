@@ -103,6 +103,17 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
+    ("DCA_2_canon_2M3_25mm", "DCA", None, False): { # 260
+        "Ammunition": {
+            "parent_membr": {
+                "MaximumRangeGRU": 1575,
+                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeAirplaneGRU": 1750,
+                "AimingTime": 1.2,
+            },
+        },
+    },
+
     ("DCA_2_canon_Jod_SP_23mm", "DCA", None, False): { # ???
         "Ammunition": {
             "parent_membr": {
