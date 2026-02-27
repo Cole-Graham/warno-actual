@@ -477,43 +477,43 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("Bomb_GBU_24", "LGB", None, False): { # GBU 10 Clone for now, its another 20 HE LGB
-        "Ammunition": {
-            "Arme": {
-                "Family": "DamageFamily_pgb_bomb",
-            },
-            "hit_roll": {
-                "Idling": 65,
-                "Moving": 65,
-            },
-            "parent_membr": {
-                "add": [34, "IsFireAndForget = True"],
-                "Caliber": ("Laser Designation", "KNIPQIBDLF"),
-                "TraitsToken": ['MOTION', 'F&F', 'HE'],
-                "TimeBetweenTwoShots": 0.7,
-                "TimeBetweenTwoFx": 0.7,
-                "MaximumRangeGRU": 3850,
-                "AngleDispersion": 0.008726646,
-                "DispersionAtMaxRangeGRU": 500,
-                "DispersionAtMinRangeGRU": 500,
-                "RadiusSplashPhysicalDamagesGRU": 120,
-                "RadiusSplashSuppressDamagesGRU": 160,
-                "SpeedGRU": 1400,
-                "MaxAccelerationGRU": 700,
-                "TimeBetweenTwoSalvos": 0.7,
-                "SimultaneousShotsCount": 1,
-            },
-        },
-        "SupplyCost": 140.0,
-        "WeaponDescriptor": {
-            "SalvoLengths": [4, 2, 1],
-        },
-        "MissileDescriptor": {
-            "MaxSpeedGRU": 1400,
-            "MaxAccelerationGRU": 700,
-            "AutoGyr": 0.5235988, # 30 degrees
-        },
-    },
+    # ("Bomb_GBU_24", "LGB", None, False): { # GBU 10 Clone for now, its another 20 HE LGB
+    #     "Ammunition": {
+    #         "Arme": {
+    #             "Family": "DamageFamily_pgb_bomb",
+    #         },
+    #         "hit_roll": {
+    #             "Idling": 65,
+    #             "Moving": 65,
+    #         },
+    #         "parent_membr": {
+    #             "add": [34, "IsFireAndForget = True"],
+    #             "Caliber": ("Laser Designation", "KNIPQIBDLF"),
+    #             "TraitsToken": ['MOTION', 'F&F', 'HE'],
+    #             "TimeBetweenTwoShots": 0.7,
+    #             "TimeBetweenTwoFx": 0.7,
+    #             "MaximumRangeGRU": 3850,
+    #             "AngleDispersion": 0.008726646,
+    #             "DispersionAtMaxRangeGRU": 500,
+    #             "DispersionAtMinRangeGRU": 500,
+    #             "RadiusSplashPhysicalDamagesGRU": 120,
+    #             "RadiusSplashSuppressDamagesGRU": 160,
+    #             "SpeedGRU": 1400,
+    #             "MaxAccelerationGRU": 700,
+    #             "TimeBetweenTwoSalvos": 0.7,
+    #             "SimultaneousShotsCount": 1,
+    #         },
+    #     },
+    #     "SupplyCost": 140.0,
+    #     "WeaponDescriptor": {
+    #         "SalvoLengths": [4, 2, 1],
+    #     },
+    #     "MissileDescriptor": {
+    #         "MaxSpeedGRU": 1400,
+    #         "MaxAccelerationGRU": 700,
+    #         "AutoGyr": 0.5235988, # 30 degrees
+    #     },
+    # },
 
     ("Bomb_GBU_12", "LGB", None, False): { # 147
         "Ammunition": {

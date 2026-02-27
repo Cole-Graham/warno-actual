@@ -3,6 +3,7 @@
 from typing import Dict, Tuple, Union
 
 # fmt: off
+
 jager_pzf3_rfa: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
     "unit_name": "Jager_PzF3_RFA",
     "valid_files": ["DepictionInfantry.ndf"],
@@ -34,6 +35,25 @@ jager_pzf3_rfa: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
             '    )\n'
             ']'
         ),
+
+        ("TacticDepiction_Jager_PzF3_RFA_Soldier", "TemplateInfantryDepictionFactoryTactic"): {
+            "Selector": "02_03" # {unique_count}_{count}
+        },
+        
+        ("TacticDepiction_Jager_PzF3_RFA_Ghost", "TemplateInfantryDepictionFactoryGhost"): {
+            "Selector": "02_03"
+        },
+        
+        (None, "TTransportedInfantryEntry"): {
+            "Count": 3,
+            "Meshes": [
+                "Jager_PzF3_RFA",
+                "Jager_PzF3_RFA_02",
+                "Jager_PzF3_RFA_03",
+            ],
+            "UniqueCount": 2,
+        },
     },
 }
+
 # fmt: on

@@ -48,6 +48,27 @@ manpad_redeye_geb_rfa: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
                 f']'
             )
         },
+
+        ("TacticDepiction_MANPAD_Redeye_Geb_RFA_Soldier", "TemplateInfantryDepictionFactoryTactic"): {
+            "Selector": "00_06" # {unique_count}_{count}
+        },
+        
+        ("TacticDepiction_MANPAD_Redeye_Geb_RFA_Ghost", "TemplateInfantryDepictionFactoryGhost"): {
+            "Selector": "00_06"
+        },
+        
+        (None, "TTransportedInfantryEntry"): {
+            "Count": 6,
+            "Meshes": [
+                "MANPAD_Redeye_Geb_RFA",
+                "MANPAD_Redeye_Geb_RFA_02",
+                "MANPAD_Redeye_Geb_RFA_03",
+                "MANPAD_Redeye_Geb_RFA_04",
+                "MANPAD_Redeye_Geb_RFA_05",
+                "MANPAD_Redeye_Geb_RFA_06",
+            ],
+            "UniqueCount": 0,
+        },
         
         # ("TacticDepiction_MANPAD_Stinger_C_Rifles_US_Soldier", "TemplateInfantryDepictionFactoryTactic"): {
         #     "Operators": {

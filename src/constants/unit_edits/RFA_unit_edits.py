@@ -380,7 +380,7 @@ rfa_unit_edits = {
                         "turret_edits": {
                             "YulBoneOrdinal": 2,
                         },
-                        "SalvoStockIndex": 1,
+                        "AmmoBoxIndex": 1,
                         "HandheldEquipmentKey": "'WeaponAlternative_2'",
                         "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
                         "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
@@ -588,7 +588,7 @@ rfa_unit_edits = {
                         "turret_edits": {
                             "YulBoneOrdinal": 2,
                         },
-                        "SalvoStockIndex": 1,
+                        "AmmoBoxIndex": 1,
                         "HandheldEquipmentKey": "'WeaponAlternative_2'",
                         "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
                         "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
@@ -598,7 +598,7 @@ rfa_unit_edits = {
                         "turret_edits": {
                             "YulBoneOrdinal": 3,
                         },
-                        "SalvoStockIndex": 2,
+                        "AmmoBoxIndex": 2,
                         "HandheldEquipmentKey": "'WeaponAlternative_3'",
                         "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
                         "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
@@ -1279,7 +1279,7 @@ rfa_unit_edits = {
         # },
     },
 
-    "Leopard_1A2_RFA": {
+    "Leopard_1A1A2_RFA": {
         "CommandPoints": 70,
         "availability": [10, 7, 0, 0],
         # "WeaponDescriptor": {
@@ -1572,7 +1572,7 @@ rfa_unit_edits = {
                         "turret_edits": {
                             "YulBoneOrdinal": 2,
                         },
-                        "SalvoStockIndex": 1,
+                        "AmmoBoxIndex": 1,
                         "HandheldEquipmentKey": "'WeaponAlternative_2'",
                         "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
                         "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
@@ -1582,7 +1582,7 @@ rfa_unit_edits = {
                         "turret_edits": {
                             "YulBoneOrdinal": 3,
                         },
-                        "SalvoStockIndex": 2,
+                        "AmmoBoxIndex": 2,
                         "HandheldEquipmentKey": "'WeaponAlternative_3'",
                         "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
                         "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
@@ -1639,7 +1639,7 @@ rfa_unit_edits = {
                         "turret_edits": {
                             "YulBoneOrdinal": 3,
                         },
-                        "SalvoStockIndex": 2,
+                        "AmmoBoxIndex": 2,
                         "HandheldEquipmentKey": "'WeaponAlternative_3'",
                         "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
                         "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
@@ -2098,18 +2098,18 @@ rfa_unit_edits = {
         },
     },
 
-    "Tornado_IDS_RFA": { # 4x GBU-24
+    "Tornado_IDS_RFA": { # 4x GBU-24 -> 4x GBU-10
         "CommandPoints": 270,
         "GameName": {
             "display": "TORNADO IDS [PGB]",
         },
-        "WeaponDescriptor": {
-            "Salves": {
-                "Bomb_GBU_10_salvolength4": 1,
-            },
-            "equipmentchanges": {
-                "replace": [("Bomb_GBU_24_salvolength2", "Bomb_GBU_24_salvolength4")],
-            },
-        },
+        # "WeaponDescriptor": {
+        #     "Salves": {
+        #         "Bomb_GBU_24_salvolength2": 1,
+        #     },
+        #     "equipmentchanges": {
+        #         "replace": [("Bomb_GBU_24_salvolength2", "Bomb_GBU_10_salvolength4")],
+        #     },
+        # },
     }
 }

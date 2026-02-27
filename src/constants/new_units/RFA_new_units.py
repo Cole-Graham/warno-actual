@@ -332,11 +332,20 @@ RFA_NEW_UNITS = {
                 "Inf_quartier_ok",
                 "Infanterie",
                 "Infanterie_Standard",
+                "Steelman_infanterie_autoresolve",
                 "UNITE_Jager_PzF3_RFA",
                 "Unite",
             ],
         },
+        "strength": 9,
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_G3KA4": 8,
+                    "MMG_inf__MG3_7_62mm": 1,
+                    "RocketInf_Carl_Gustav": 1,
+                },
+            },
             "Salves": {
                 "FM_G3KA4": 11,
                 "MMG_inf__MG3_7_62mm": 18,
@@ -369,7 +378,7 @@ RFA_NEW_UNITS = {
         "Nation": "SOV",
         "UpgradeFromUnit": "Jager_RFA",
         "alternatives_count": 3,
-        "selector_tactic": "03_05",
+        "selector_tactic": "02_03",
     },
 
     # AA
@@ -398,10 +407,23 @@ RFA_NEW_UNITS = {
                 "Unite",
             ],
         },
+        "strength": 2,
         "TransportedSoldier": "MANPAD_Redeye_Geb_RFA",
         "armor": "Infantry_armor_reference",
         "CommandPoints": 20,
         "UnitRole": 'infantry',
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "PM_Uzi": 2,
+                    "MANPAD_FIM43": 1,
+                },
+            },
+            "Salves": {
+                "PM_Uzi": 11,
+                "MANPAD_FIM43": 6,
+            },
+        },
         "SpecialtiesList": [
                 '_mountaineer',
                 'infantry_equip_heavy',
@@ -450,6 +472,7 @@ RFA_NEW_UNITS = {
                 "Unite",
             ],
         },
+        "strength": 2,
         "TransportedSoldier": "MANPAD_Redeye_FJ_RFA",
         "armor": "Infantry_armor_reference",
         "CommandPoints": 20,
@@ -458,6 +481,18 @@ RFA_NEW_UNITS = {
                 '_para',
                 'infantry_equip_heavy',
             ],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "PM_Uzi": 2,
+                    "MANPAD_FIM43": 1,
+                },
+            },
+            "Salves": {
+                "PM_Uzi": 11,
+                "MANPAD_FIM43": 6,
+            },
+        },
         "availability": [0, 9, 7, 0],
         "max_speed": 20,
         "DeploymentShift": 1750,

@@ -20,7 +20,7 @@ pol_new_divs = {
         "summary_text": ("Poland combined arms division.", "SUMPOLGEN"),
         "history_text": ("Poland national division.", "HISPOLGEN"),
         "activation_points": 75,
-        "standout_units": ["T72M1_POL", "BMP_2_POL", "Para_POL"],
+        "standout_units": ["Commandos_Para_POL", "T72M1_Wilk_POL", "Mortier_240mm_M240_POL"],
         "division_rules": [
             POL_airborne_newdivisionrules,
             POL_armored_newdivisionrules,
@@ -39,7 +39,7 @@ pol_new_divs = {
         "summary_text": ("Poland airborne division.", "SUMPOLAIR"),
         "history_text": ("Poland Airborne division.", "HISPOLAIR"),
         "activation_points": 100,
-        "standout_units": ["Para_POL", "T55AM_Merida_POL", "Mi_24D_POL"],
+        "standout_units": ["Commandos_Para_CMD_POL", "ASU_85_POL", "W3W_Sokol_AA_POL"],
         "division_rules": [
             POL_airborne_newdivisionrules,
             POL_global_newdivisionrules,
@@ -55,7 +55,7 @@ pol_new_divs = {
         "summary_text": ("Poland airborne and armored division.", "SUMPOLAARM"),
         "history_text": ("Poland Airborne / Armored division.", "HISPOLAARM"),
         "activation_points": 85,
-        "standout_units": ["Para_POL", "T55AM_Merida_POL", "ASU_85_POL"],
+        "standout_units": ["T72M1_POL", "Para_Metis_POL", "Mi_24V_POL"],
         "division_rules": [
             POL_airborne_newdivisionrules,
             POL_armored_newdivisionrules,
@@ -73,7 +73,7 @@ pol_new_divs = {
         "summary_text": ("Poland airborne and mechanized division.", "SUMPOLAMEC"),
         "history_text": ("Poland Airborne / Mechanized division.", "HISPOLAMEC"),
         "activation_points": 85,
-        "standout_units": ["Para_POL", "BMP_2_POL", "GAZ_66B_POL"],
+        "standout_units": ["T54B_POL", "Engineers_paras_Flam_POL", "Mi_24D_POL"],
         "division_rules": [
             POL_airborne_newdivisionrules,
             POL_global_newdivisionrules,
@@ -90,7 +90,7 @@ pol_new_divs = {
         "summary_text": ("Poland airborne and motorized division.", "SUMPOLAMOT"),
         "history_text": ("Poland Airborne / Motorized division.", "HISPOLAMOT"),
         "activation_points": 85,
-        "standout_units": ["Para_POL", "GAZ_66B_POL", "Mi_24D_POL"],
+        "standout_units": ["Scout_LRRP_Para_POL", "Reserve_POL", "W3W_Sokol_RKT_POL"],
         "division_rules": [
             POL_airborne_newdivisionrules,
             POL_global_newdivisionrules,
@@ -107,7 +107,7 @@ pol_new_divs = {
         "summary_text": ("Poland armored division.", "SUMPOLARM"),
         "history_text": ("Poland Armored division.", "HISPOLARM"),
         "activation_points": 100,
-        "standout_units": ["T72M1_POL", "BMP_2_POL", "T55AM_Merida_POL"],
+        "standout_units": ["T72M1_Wilk_POL", "BMP_2_POL", "DANA_POL"],
         "division_rules": [
             POL_armored_newdivisionrules,
             POL_global_newdivisionrules,
@@ -124,7 +124,7 @@ pol_new_divs = {
         "summary_text": ("Poland armored and mechanized division.", "SUMPOLARMC"),
         "history_text": ("Poland Armored / Mechanized division.", "HISPOLARMC"),
         "activation_points": 85,
-        "standout_units": ["T72M1_POL", "BMP_2_POL", "MotRifles_POL"],
+        "standout_units": ["T72M1_POL", "BMP_1_SP2_POL", "Mortier_240mm_M240_POL"],
         "division_rules": [
             POL_armored_newdivisionrules,
             POL_global_newdivisionrules,
@@ -141,7 +141,7 @@ pol_new_divs = {
         "summary_text": ("Poland armored and motorized division.", "SUMPOLARMT"),
         "history_text": ("Poland Armored / Motorized division.", "HISPOLARMT"),
         "activation_points": 85,
-        "standout_units": ["T72M1_POL", "BMP_2_POL", "MTLB_trans_POL"],
+        "standout_units": ["T72M_POL", "OT_64_SKOT_2AM_POL", "BM24M_POL"],
         "division_rules": [
             POL_armored_newdivisionrules,
             POL_global_newdivisionrules,
@@ -161,7 +161,7 @@ pol_new_divs = {
         "summary_text": ("Poland mechanized division.", "SUMPOLMEC"),
         "history_text": ("Poland Mechanized division.", "HISPOLMEC"),
         "activation_points": 100,
-        "standout_units": ["BMP_2_POL", "T72M1_POL", "MotRifles_POL"],
+        "standout_units": ["MotRifles_POL", "T55AMS_Merida_POL", "2S7_Pion_POL"],
         "division_rules": [
             POL_global_newdivisionrules,
             POL_mechanized_newdivisionrules,
@@ -177,7 +177,7 @@ pol_new_divs = {
         "summary_text": ("Poland mechanized and motorized division.", "SUMPOLMECT"),
         "history_text": ("Poland Mechanized / Motorized division.", "HISPOLMECT"),
         "activation_points": 85,
-        "standout_units": ["BMP_2_POL", "MTLB_trans_POL", "MotRifles_POL"],
+        "standout_units": ["MotRifles_SVD_POL", "T55AS_POL", "Mortier_M43_160mm_POL"],
         "division_rules": [
             POL_global_newdivisionrules,
             POL_mechanized_newdivisionrules,
@@ -194,7 +194,7 @@ pol_new_divs = {
         "summary_text": ("Poland motorized division.", "SUMPOLMOT"),
         "history_text": ("Poland Motorized division.", "HISPOLMOT"),
         "activation_points": 100,
-        "standout_units": ["Star_266_POL", "T72M_POL", "MotRifles_POL"],
+        "standout_units": ["Rifles_POL", "T55A_POL", "Mi_24D_s8_AT_POL"],
         "division_rules": [
             POL_motorized_newdivisionrules,
             POL_global_newdivisionrules,
