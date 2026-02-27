@@ -577,5 +577,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+
+    ("Canon_AP_120_mm_L44_late87", "canon", None, False): { # 
+        "Ammunition": {
+            "Arme": {
+                "Index": 18, # KE
+            },
+        },
+    },
 }
 # fmt: on

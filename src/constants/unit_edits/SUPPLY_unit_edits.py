@@ -28,6 +28,18 @@ supply_unit_edits = {
         "SupplyDescriptor": "RunnerSupply",
         "availability": [8, 0, 0, 0],
     },
+
+    "Faun_Kraka_Log_RFA": {
+        "SupplyCapacity": 500,
+        "CommandPoints": 15,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "SupplyDescriptor": "RunnerSupply",
+        "availability": [8, 0, 0, 0],
+    },
     
     "UAZ_469_supply_SOV": {
         "SupplyCapacity": 500.0,
@@ -303,6 +315,13 @@ supply_unit_edits = {
                 "cards": 2,
             },
         },
+        "SupplyDescriptor": "PrimarySupply",
+        "availability": [2, 0, 0, 0],
+    },
+
+    "DaimlerBenz_Typ1017_supply_RFA": {
+        "SupplyCapacity": 2000.0,
+        "CommandPoints": 70,
         "SupplyDescriptor": "PrimarySupply",
         "availability": [2, 0, 0, 0],
     },

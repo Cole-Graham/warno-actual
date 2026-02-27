@@ -216,5 +216,18 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+
+    ("RocketArt_LARS_110mm", "MLRS", None, False): { # 646
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 4.2,
+                "SuppressDamages": 350,
+                "RadiusSplashPhysicalDamagesGRU": 152,
+                "RadiusSplashSuppressDamagesGRU": 203,
+                "TimeBetweenTwoSalvos": 132.0,
+                "SupplyCost": 522.0,
+            },
+        },
+    },
 }
 # fmt: on

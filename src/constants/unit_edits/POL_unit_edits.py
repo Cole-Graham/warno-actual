@@ -2676,7 +2676,7 @@ pol_unit_edits = {
     "MiG_23MF_AA_POL": {  # MiG-23MF [AA], 2x R-23R, 4x R-60M
         "CommandPoints": 115,
         "availability": [0, 4, 3, 2],
-        "ECM": 20,
+        "ECM": -0.20,
     },
     
     "MiG_23MF_AA2_POL": {  # MiG-23MF [AA2], 2x R-3R, 2x R-13M

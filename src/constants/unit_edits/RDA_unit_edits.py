@@ -1446,6 +1446,9 @@ rda_unit_edits = {
     "UAZ_469_SPG9_FJ_DDR": {
         "CommandPoints": 25,
         "availability": [0, 0, 12, 9],
+        "SpecialtiesList": {
+            "add_specs": ["'_para'"],
+        },
         "DeploymentShift": 1750,
     },
     
@@ -2869,7 +2872,7 @@ rda_unit_edits = {
     },
     
     "Mi_24P_s8_AT2_DDR": {
-        "CommandPoints": 175,
+        "CommandPoints": 160,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -2929,7 +2932,7 @@ rda_unit_edits = {
     },
 
     "MiG_21bis_AA3_DDR": {
-        "CommandPoints": 120,
+        "CommandPoints": 110,
         "availability": [0, 4, 3, 2],
     },
 
@@ -3055,7 +3058,7 @@ rda_unit_edits = {
     },
 
     "Su_22_AT2_DDR": {
-        "CommandPoints": 140,
+        "CommandPoints": 160,
         "availability": [0, 2, 0, 1],
     },
 
@@ -3131,4 +3134,4 @@ rda_unit_edits = {
         "CommandPoints": 125,
         "availability": [0, 3, 2, 0],
     },
-},
+}
