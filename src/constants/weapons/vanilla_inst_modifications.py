@@ -32,7 +32,6 @@ AMMUNITION_MISSILES_RENAMES = [
     ("AGM_AGM114A_x2_sol", "ATGM_GLHL_salvolength2"),
     ("AGM_9K121_Vikhr_x16_avion", "AGM_9K121_Vikhr_avion_ripple2_salvolength2"), # x16 meant 16 ammo in vanilla
     ("Bomb_CPU_123_x1", "Bomb_CPU_123"),
-    ("Bomb_GBU_10_x1", "Bomb_GBU_10"),
     ("Bomb_GBU_12_x1", "Bomb_GBU_12"),
     ("Bomb_GBU_27_x1", "Bomb_GBU_27"),
     ("Bomb_KAB_500Kr_x1", "Bomb_KAB_500Kr"),

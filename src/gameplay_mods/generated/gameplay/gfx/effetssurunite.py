@@ -70,8 +70,10 @@ def edit_gen_gp_gfx_effetssurunite(source_path) -> None:
             if not hasattr(effect.v, "type"):
                 continue
 
-            if effect.v.type == "TEffectInflictSuppressDamageDescriptor":
-                effect.v.by_m("SuppressDamageValue").v = str(suppress_damage)
+            if effect.v.type != "TEffectInflictDamageDescriptor":
+                continue
+            if effect.v.by_m("DamageType").v == "~/EDamageType/Suppress":
+                effect.v.by_m("DamageValue").v = str(suppress_damage)
                 logger.info(f"Updated {effect_name.replace('UnitEffect_', '')} effect to "
                             f"{suppress_damage}")
                 break

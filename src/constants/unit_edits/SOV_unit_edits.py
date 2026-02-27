@@ -5,6 +5,24 @@
 # fmt: off
 sov_unit_edits = {
     #SOV LOG
+    "UAZ_469_CMD_SOV": { # BELOZOR
+        "CommandPoints": 145,
+        "availability": [0, 4, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'leader_sov'",],
+            "remove_specs": ["'_leader'"],
+        },
+    },
+    
+    "BMP_1_CMD_POTOK2_SOV": {
+        "CommandPoints": 155,
+        "availability": [0, 4, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'leader_sov'",],
+            "remove_specs": ["'_leader'"],
+        },
+    },
+    
     "BMD_1_CMD_SOV": {
         "CommandPoints": 145,
         "Divisions": {
@@ -169,7 +187,7 @@ sov_unit_edits = {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDRSOV #IFV MOTOSTRELKI LDR.",
+            "display": "#LDRSOV MOTOSTRELKI LDR.",
             # "token": "ZJRMUWLPVH",
         },
         "TagSet": {
@@ -240,7 +258,7 @@ sov_unit_edits = {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDRSOV MOTOSTRELKI LDR.",
+            "display": "#LDRSOV MOTOPEKHOTA LDR.",
             # "token": "ZJRMUWLPVH",
         },
         "TagSet": {
@@ -843,9 +861,9 @@ sov_unit_edits = {
     "MotRifles_SOV": {
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#IFV MOTOSTRELKI",
+            "display": "MOTOSTRELKI",
         },
-        "CommandPoints": 30,
+        "CommandPoints": 35,
         "Divisions": {
             "default": {
                 "cards": 3,
@@ -859,19 +877,37 @@ sov_unit_edits = {
             "add_specs": ["'infantry_equip_medium'"],
         },
         "availability": [10, 7, 0, 0],
+        "strength": 8,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "animate": {
+                    "SAW_RPK_74_5_56mm": False,
+                },
+                "quantity": {
+                    "FM_AK_74": 6,
+                    "SAW_RPK_74_5_56mm": 2,
+                },
+            },
+        },
     },
 
     "MotRifles_RPG22_SOV": {
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#IFV MOTOSTRELKI [RPG-22]",
+            "display": "MOTOSTRELKI [RPG-22]",
         },
         "CommandPoints": 25,
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
+        "strength": 8,
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_AK_74": 7,
+                },
+            },
             "Salves": {
                 "FM_AK_74": 11,
                 "SAW_RPK_74_5_56mm": 18,
@@ -884,7 +920,7 @@ sov_unit_edits = {
     "MotRifles_TTsko_SOV": {  # RPG-27
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#IFV MOTOSTRELKI [RPG-27]",
+            "display": "MOTOPEKHOTA [RPG-27]",
         },
         "CommandPoints": 30,
         "Divisions": {
@@ -897,12 +933,12 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
-        "UpgradeFromUnit": "MotRifles_SOV",
+        "UpgradeFromUnit": "MotRifles_RPG7V_TTsko_SOV",
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 11,
                 "SAW_RPK_74_5_56mm": 18,
-                "RocketInf_RPG27_105mm": 4,
+                "RocketInf_RPG27_105mm": 5,
             },
         },
     },
@@ -910,7 +946,7 @@ sov_unit_edits = {
     "MotRifles_BTR_TTsko_SOV": {  # RPG-26
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "MOTOSTRELKI [RPG-26]",
+            "display": "MOTOPEKHOTA [RPG-26]",
         },
         "CommandPoints": 30,
         "Divisions": {
@@ -944,7 +980,7 @@ sov_unit_edits = {
             "Salves": {
                 "FM_AK_74": 11,
                 "MMG_PKM_7_62mm": 36,
-                "RocketInf_RPG26_72_5mm": 7,
+                "RocketInf_RPG26_72_5mm": 6,
             },
         },
     },
@@ -954,13 +990,13 @@ sov_unit_edits = {
         "GameName": {
             "display": "MOTOSTRELKI [RPG-7VR]",
         },
-        "CommandPoints": 30,
+        "CommandPoints": 35,
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'", "'_ifv'"],
         },
-        "UpgradeFromUnit": "MotRifles_RPG7V_TTsko_SOV",
+        "UpgradeFromUnit": "MotRifles_SOV",
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "animate": {
@@ -984,7 +1020,7 @@ sov_unit_edits = {
     "MotRifles_Metis_TTsko_SOV": {
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#IFV MOTOSTRELKI [METIS]",
+            "display": "MOTOPEKHOTA [METIS]",
         },
         "CommandPoints": 35,
         "availability": [10, 7, 0, 0],
@@ -992,7 +1028,7 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
-        "UpgradeFromUnit": "MotRifles_RPG7V_TTsko_SOV",
+        "UpgradeFromUnit": "MotRifles_TTsko_SOV",
         "strength": 7,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -1238,7 +1274,10 @@ sov_unit_edits = {
         },
     },
 
-    "MotRifles_HMG_SOV": {  # Pulmetchiki
+    "MotRifles_HMG_SOV": {  # Pulemetchiki
+        "GameName": {
+            "display": "PULEMETCHIKI [BTR]",
+        },
         "armor": "Infantry_armor_reference",
         "CommandPoints": 30,
         "Divisions": {
@@ -1258,12 +1297,9 @@ sov_unit_edits = {
                 "RocketInf_RPG22_72_5mm": 6,
             },
         },
-        "GameName": {
-            "display": "#IFV PULEMETCHIKI",
-        },
     },
 
-    "MotRifles_HMG_TTsko_SOV": {  # Pulmetchiki
+    "MotRifles_HMG_TTsko_SOV": {  # Pulemetchiki
         "armor": "Infantry_armor_reference",
         "CommandPoints": 35,
         "strength": 8,
@@ -1280,7 +1316,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "quantity": {
-                    "FM_AKS_74": 6,
+                    "FM_AK_74": 5,
                 },
             },
             "Salves": {
@@ -1429,6 +1465,7 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": "HMGteam_M2HB_US",
         },
+        "UpgradeFromUnit": "HMGteam_DShK_AA_SOV",
     },
 
     "HMGteam_NSV_TTsko_SOV": {
@@ -1478,6 +1515,19 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_veryheavy'"],
         },
+    },
+    
+    "HMGteam_DShK_AA_SOV": {
+        "CommandPoints": "HMGteam_M2HB_M63_UK",
+        "GameName": {
+            "display": "REZ. DShK 12.7mm (AA)",
+        },
+        "strength": "HMGteam_M2HB_M63_UK",
+        "max_speed": "HMGteam_M2HB_M63_UK",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_M2HB_M63_UK",
+        },
+        "UpgradeFromUnit": "HMGteam_PKM_SOV",
     },
 
     "HMGteam_AGS17_SOV": {
@@ -1555,6 +1605,7 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
+        "UpgradeFromUnit": "FireSupport_TTsko_SOV",
     },
 
     "ATteam_Fagot_SOV": {
@@ -2622,7 +2673,7 @@ sov_unit_edits = {
     },
 
     "BMP_2AG_SOV": {
-        "CommandPoints": 65,
+        "CommandPoints": 60,
     },
 
     "BMP_3_SOV": {
@@ -3081,6 +3132,21 @@ sov_unit_edits = {
         "CommandPoints": 20,
         "availability": [6, 0, 0, 0],
     },
+    
+    "Scout_SOV": {
+        "CommandPoints": 20,
+        "armor": "Infantry_armor_reference",
+        "Divisions": {
+            "default": {
+                "cards": 3,
+            },
+        },
+        "availability": [8, 6, 0, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'", "'_swift'"],
+        },
+    },
 
     "Scout_TTsko_SOV": {
         "CommandPoints": 20,
@@ -3238,7 +3304,7 @@ sov_unit_edits = {
     },
     
     "Sniper_Spetsnaz_SOV": {
-        "CommandPoints": 65,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
@@ -3261,7 +3327,7 @@ sov_unit_edits = {
                             "YulBoneOrdinal": 3,
                         },
                         "NbWeapons": 1,
-                        "SalvoStockIndex": 2,
+                        "AmmoBoxIndex": 2,
                         "HandheldEquipmentKey": "'WeaponAlternative_3'",
                         "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
                         "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
@@ -3287,7 +3353,7 @@ sov_unit_edits = {
     },
 
     "Scout_SpetsnazGRU_Stinger_SOV": { # SpetzGRU with Stinger
-        "CommandPoints": 40,
+        "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "max_speed": 20,
@@ -3327,6 +3393,7 @@ sov_unit_edits = {
     "Mi_8PPA_SOV": { # VG optics, 8 HP, 30% ECM, Jammer
         "CommandPoints": 75,
         "availability": [0, 3, 0, 0],
+        "UpgradeFromUnit": "Mi_8R_SOV",
     },
 
     "Mi_8MTPI_SOV": { # VG optics, 8 HP, 40% ECM, Jammer, Sigint
@@ -3778,7 +3845,7 @@ sov_unit_edits = {
                     "MountedWeapons": {
                         "AA_R60M_Vympel": {
                             "HandheldEquipmentKey": "'WeaponAlternative_1'",
-                            "SalvoStockIndex": 0,
+                            "AmmoBoxIndex": 0,
                             "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_1'",
                             "WeaponIgnoredPropertyName": "'WeaponIgnored_1'",
                             "WeaponShootDataPropertyName": ['WeaponShootData_0_1'],
@@ -3790,7 +3857,7 @@ sov_unit_edits = {
                 2: {
                     "MountedWeapons": {
                         "RocketAir_S24_240mm_salvolength2": {
-                            "SalvoStockIndex": 1,
+                            "AmmoBoxIndex": 1,
                         },
                     },
                 },

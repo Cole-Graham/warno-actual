@@ -119,10 +119,10 @@ mi_8tv_gunship_sov: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
                 )),
             },
         },
-        ("SubGenerators_Showroom_Mi_8TV_Gunship_SOV", "TStaticMissileCarriageSubDepictionGenerator"): {
+        ("SubGenerators_Showroom_Mi_8TV_Gunship_SOV", "TShowroomMissileCarriageSubDepictionGenerator"): {
             "Missiles": {
                 0: ("replace", (
-                    f'TStaticMissileCarriageSubDepictionMissileInfo'
+                    f'TShowroomMissileCarriageSubDepictionMissileInfo'
                     f'('
                     f'    Depiction = TemplateDepictionMissileShowroom'
                     f'    ('

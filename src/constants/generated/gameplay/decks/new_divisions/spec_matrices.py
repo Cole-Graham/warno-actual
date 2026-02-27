@@ -1,17 +1,18 @@
 """Activation Point matrices for National divisions."""
 
-spec_tags = {
-    "general": ["DEFAULT", "infantryReg", "DC_PWR1"],
-    "airborne": ["DEFAULT", "infantryReg","DC_PWR1"],
-    "airborne_armored": ["DEFAULT", "armored","DC_PWR1"],
-    "airborne_mechanized": ["DEFAULT", "infantryReg","DC_PWR1"],
-    "airborne_motorized": ["DEFAULT", "infantryReg","DC_PWR1"],
-    "armored": ["DEFAULT", "armored", "DC_PWR1"],
-    "armored_mechanized": ["DEFAULT", "armored", "DC_PWR1"],
-    "armored_motorized": ["DEFAULT", "armored", "DC_PWR1"],
-    "mechanized": ["DEFAULT", "infantryReg", "DC_PWR1"],
-    "mechanized_motorized": ["DEFAULT", "infantryReg", "DC_PWR1"],
-    "motorized": ["DEFAULT", "infantryReg", "DC_PWR1"],
+# TypeToken mapping for TDeckDivisionDescriptor (replaces DivisionPowerClassification and TypeTexture)
+DIV_TYPE_TO_TOKEN = {
+    "general": "ARMORED",
+    "airborne": "AIRBORNE",
+    "airborne_armored": "AIRBORNE",
+    "airborne_mechanized": "AIRBORNE",
+    "airborne_motorized": "AIRBORNE",
+    "armored": "ARMORED",
+    "armored_mechanized": "ARMORED",
+    "armored_motorized": "ARMORED",
+    "mechanized": "MECHANIZ",
+    "mechanized_motorized": "MECHANIZ",
+    "motorized": "MOTORIZD",
 }
 
 spec_matrices = {

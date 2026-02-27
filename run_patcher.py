@@ -178,9 +178,10 @@ if __name__ == "__main__":
         # Get error and warning counts
         counting_handler = get_counting_handler()
         if counting_handler:
-            error_count, warning_count = counting_handler.get_counts()
+            error_count, warning_count, unique_error_count, unique_warning_count = counting_handler.get_counts()
             logger.info(f"Patcher completed successfully at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
             logger.info(f"Summary: {error_count} error(s), {warning_count} warning(s)")
+            logger.info(f"{unique_error_count} unique error(s), {unique_warning_count} unique warning(s)")
         else:
             logger.info(f"Patcher completed successfully at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         
@@ -207,8 +208,9 @@ if __name__ == "__main__":
         # Still show counts even if there was an exception
         counting_handler = get_counting_handler()
         if counting_handler:
-            error_count, warning_count = counting_handler.get_counts()
+            error_count, warning_count, unique_error_count, unique_warning_count = counting_handler.get_counts()
             logger.info(f"Summary: {error_count} error(s), {warning_count} warning(s)")
+            logger.info(f"{unique_error_count} unique error(s), {unique_warning_count} unique warning(s)")
         
         # Log version information for release builds even on failure
         try:

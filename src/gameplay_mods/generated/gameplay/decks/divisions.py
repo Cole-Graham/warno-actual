@@ -8,7 +8,7 @@ from src.utils.ndf_utils import strip_quotes
 from src.utils.dictionary_utils import write_dictionary_entries
 from src import ModConfig
 from src.constants.generated.gameplay.decks import load_new_divisions
-from src.constants.generated.gameplay.decks.new_divisions import spec_tags
+from src.constants.generated.gameplay.decks.new_divisions import DIV_TYPE_TO_TOKEN
 
 logger = setup_logger(__name__)
 
@@ -32,30 +32,34 @@ def edit_gen_gp_decks_divisions(source_path) -> None:
     config = ModConfig.get_instance()
 
     hide_divs = config.config_data.get("hide_divs", [])
-    if config.config_data["build_config"]["write_dev"]:
+    write_dev = config.config_data["build_config"]["write_dev"]
+    dev_show_divs = config.config_data.get("dev_show_divs") or []
+    if write_dev and len(dev_show_divs) > 0:
         # In dev mode, remove divisions that should be shown for testing
-        dev_show_divs = config.config_data.get("dev_show_divs", [])
         divs_to_hide = [div for div in hide_divs if div not in dev_show_divs]
     else:
         # In release mode, hide all divisions in hide_divs
         divs_to_hide = hide_divs
 
+    # Collect donor divisions BEFORE removing - we need them to copy structure for new divisions
+    donor_divisions = _collect_donor_divisions(source_path)
+
     indices_to_remove = []
-    logger.info("Modifying hidden divisions in Divisions.ndf ")    
+    logger.info("Modifying hidden divisions in Divisions.ndf ")
     for division in divs_to_hide:
         div_index = source_path.by_n(f"Descriptor_Deck_Division_{division}").index
         indices_to_remove.append(div_index)
 
     for index in sorted(indices_to_remove, reverse=True):
         source_path.remove(index)
-    
+
     for deck_descr in source_path:
         MaxActivationPoints = deck_descr.v.by_member("MaxActivationPoints", False)
         if MaxActivationPoints and MaxActivationPoints.v == "50":
             MaxActivationPoints.v = "100"
-    
-    # Add new national divisions
-    _add_national_divisions(source_path)
+
+    # Add new national divisions (pass pre-collected donors since we removed them)
+    _add_national_divisions(source_path, donor_divisions)
 
 
 def _extract_nation_from_division_key(div_key: str) -> str:
@@ -84,28 +88,38 @@ def _get_coalition_for_nation(nation: str) -> str:
     return NATION_TO_COALITION.get(normalized_nation, "NATO")  # Default to NATO if unknown
 
 
-def _add_national_divisions(source_path: Any) -> None:
-    """Add national divisions to Divisions.ndf."""
-    new_divisions = load_new_divisions()
-    
-    if not new_divisions:
-        logger.info("No new divisions to add")
-        return
-    
-    # Find donor divisions for each nation (any division with _multi suffix)
-    # We need these to copy the structure from
+def _set_or_add_member(obj, member_name: str, value: str) -> None:
+    """Set member value if it exists, otherwise add it (for donor compatibility)."""
+    member = obj.by_member(member_name, False)
+    if member:
+        member.v = value
+    else:
+        obj.add(f"{member_name} = {value}")
+
+
+def _collect_donor_divisions(source_path: Any) -> Dict[str, Any]:
+    """Collect donor divisions (any with _multi suffix) for copying structure.
+    Must be called BEFORE removing hidden divisions."""
     donor_divisions: Dict[str, Any] = {}
-    
     for deckdivision_descr in source_path:
         if not hasattr(deckdivision_descr, "namespace") or not deckdivision_descr.namespace.endswith("_multi"):
             continue
-        
+
         division_nation_raw = strip_quotes(deckdivision_descr.v.by_m("CountryId").v)
         division_nation = _normalize_nation_code(division_nation_raw)
-        
-        # Store first division found for each nation as donor
+
         if division_nation not in donor_divisions:
             donor_divisions[division_nation] = deckdivision_descr
+    return donor_divisions
+
+
+def _add_national_divisions(source_path: Any, donor_divisions: Dict[str, Any]) -> None:
+    """Add national divisions to Divisions.ndf."""
+    new_divisions = load_new_divisions()
+
+    if not new_divisions:
+        logger.info("No new divisions to add")
+        return
     
     # Group new divisions by nation
     new_divisions_by_nation: Dict[str, Dict[str, Dict]] = defaultdict(dict)
@@ -199,17 +213,19 @@ def _add_national_divisions(source_path: Any) -> None:
             # Set interface order (hardcoded, starting at 500 to avoid vanilla division range)
             new_div_descr.v.by_m("InterfaceOrder").v = str(float(interface_order))
             
-            # Set division power classification
-            div_power = div_data.get("div_power", "DC_PWR1")
-            new_div_descr.v.by_m("DivisionPowerClassification").v = f"'{div_power}'"
+            # Remove deprecated members (DivisionPowerClassification, TypeTexture replaced by TypeToken)
+            if new_div_descr.v.by_member("DivisionPowerClassification", False):
+                new_div_descr.v.remove_by_member("DivisionPowerClassification")
+            if new_div_descr.v.by_member("TypeTexture", False):
+                new_div_descr.v.remove_by_member("TypeTexture")
             
             # Set coalition
             new_div_descr.v.by_m("DivisionCoalition").v = f"ECoalition/{coalition}"
             
-            # Set division tags
-            tags = spec_tags.get(div_type, spec_tags["general"])
-            tags_with_nation = tags + [nation, coalition]
-            tags_str = "[" + ", ".join([f"'{tag}'" for tag in tags_with_nation]) + "]"
+            # Set division tags: ['DEFAULT', nation, coalition, TypeToken]
+            type_token = DIV_TYPE_TO_TOKEN.get(div_type, DIV_TYPE_TO_TOKEN["general"])
+            tags = ["DEFAULT", nation, coalition, type_token]
+            tags_str = "[" + ", ".join([f"'{tag}'" for tag in tags]) + "]"
             new_div_descr.v.by_m("DivisionTags").v = tags_str
             
             # Set description hint title token
@@ -235,9 +251,26 @@ def _add_national_divisions(source_path: Any) -> None:
             country_id_to_use = donor_country_id if _normalize_nation_code(donor_country_id) == nation else nation
             new_div_descr.v.by_m("CountryId").v = f'"{country_id_to_use}"'
             
-            # Set type texture
-            type_texture = div_data.get("type_texture", "infantryReg")
-            new_div_descr.v.by_m("TypeTexture").v = f'"Texture_Division_Type_{type_texture}"'
+            # Set TypeToken (replaces TypeTexture) - add if donor lacks it
+            _set_or_add_member(new_div_descr.v, "TypeToken", f'"{type_token}"')
+            
+            # Set SummaryTextToken and HistoryTextToken (required in new format)
+            summary_tokens = div_data.get("summary_text", ("", ""))
+            if isinstance(summary_tokens, tuple) and len(summary_tokens) >= 2 and summary_tokens[1]:
+                _set_or_add_member(new_div_descr.v, "SummaryTextToken", f"'{summary_tokens[1]}'")
+                dictionary_entries.append((summary_tokens[1], summary_tokens[0]))
+            history_tokens = div_data.get("history_text", ("", ""))
+            if isinstance(history_tokens, tuple) and len(history_tokens) >= 2 and history_tokens[1]:
+                _set_or_add_member(new_div_descr.v, "HistoryTextToken", f"'{history_tokens[1]}'")
+                dictionary_entries.append((history_tokens[1], history_tokens[0]))
+            
+            # Set StandoutUnits (max 3 units/transports from division rules)
+            standout_units = div_data.get("standout_units", [])
+            if standout_units:
+                standout_str = "[\n        " + ",\n        ".join(
+                    f"$/GFX/Unit/Descriptor_Unit_{u}" for u in standout_units
+                ) + ",\n    ]"
+                _set_or_add_member(new_div_descr.v, "StandoutUnits", standout_str)
             
             # Set emblem texture - uses the division key (e.g., "US_general" -> "Texture_Division_Emblem_US_general")
             emblem_texture = f"Texture_Division_Emblem_{div_key}"

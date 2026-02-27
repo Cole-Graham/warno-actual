@@ -178,12 +178,12 @@ f4_wild_weasel_2_us: Dict[str, Dict[str, Any]] = {
                 ReferenceMesh = $/GFX/DepictionResources/Modele_F4_Wild_Weasel_2_US
             )""",
         "carriage_depiction_showroom": """
-            SubGenerators_Showroom_F4_Wild_Weasel_2_US is TStaticMissileCarriageSubDepictionGenerator
+            SubGenerators_Showroom_F4_Wild_Weasel_2_US is TShowroomMissileCarriageSubDepictionGenerator
             (
                 MissileCarriageConnoisseur = MissileCarriage_F4_Wild_Weasel_2_US_Showroom
                 Missiles = 
                 [
-                    TStaticMissileCarriageSubDepictionMissileInfo
+                    TShowroomMissileCarriageSubDepictionMissileInfo
                     (
                         Depiction = TemplateDepictionMissileShowroom
                         (
@@ -192,7 +192,7 @@ f4_wild_weasel_2_us: Dict[str, Dict[str, Any]] = {
                         MissileCount = 2
                         WeaponIndex = 2
                     ),
-                    TStaticMissileCarriageSubDepictionMissileInfo
+                    TShowroomMissileCarriageSubDepictionMissileInfo
                     (
                         Depiction = TemplateDepictionMissileShowroom
                         (
@@ -201,7 +201,7 @@ f4_wild_weasel_2_us: Dict[str, Dict[str, Any]] = {
                         MissileCount = 2
                         WeaponIndex = 3
                     ),
-                    TStaticMissileCarriageSubDepictionMissileInfo
+                    TShowroomMissileCarriageSubDepictionMissileInfo
                     (
                         Depiction = TemplateDepictionMissileShowroom
                         (

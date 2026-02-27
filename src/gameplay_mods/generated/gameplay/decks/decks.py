@@ -322,6 +322,17 @@ def edit_gen_gp_decks(source_path: Any, game_db: Dict[str, Any]) -> None:
     # Add and remove deck pack references
     multi_deck_edits = load_deck_edits()
     for division, edits in multi_deck_edits.items():
+        
+        # Skip deck modifications for divsions that are removed from the game
+        config = ModConfig.get_instance()
+        hide_divs = config.config_data.get("hide_divs", [])
+        write_dev = config.config_data["build_config"]["write_dev"]
+        dev_show_divs = config.config_data.get("dev_show_divs") or []
+        if not write_dev and f"{division}_multi" in hide_divs:
+            continue
+        if write_dev and division not in dev_show_divs and f"{division}_multi" in hide_divs:
+            continue
+        
         deck = source_path.by_n(f"Descriptor_Deck_{division}_multi")
         pack_list = deck.v.by_m("DeckPackList")
         if "remove" in edits:

@@ -1,36 +1,74 @@
 import logging
 import os
+import re
 import stat
 import time
 from contextlib import contextmanager
 # from datetime import datetime
 from pathlib import Path
-from typing import Optional
+from typing import Callable, Optional
+
+# Rules to normalize messages so similar warnings (e.g. same unit in different divisions) count as one.
+# Each tuple: (compiled regex, replacement callable that receives the match and returns normalized string)
+_MESSAGE_NORMALIZATION_RULES: list[tuple[re.Pattern, Callable[[re.Match], str]]] = [
+    (
+        re.compile(
+            r"^Invalid unit name '([^']+)' in .+ category .+: unit not found in unit_data or NEW_UNITS$",
+        ),
+        lambda m: f"Invalid unit name '{m.group(1)}': unit not found in unit_data or NEW_UNITS",
+    ),
+]
+
+
+def _normalize_message_for_uniqueness(message: str) -> str:
+    """Normalize message so similar warnings count as one for unique-message tracking."""
+    for pattern, replacement in _MESSAGE_NORMALIZATION_RULES:
+        match = pattern.match(message)
+        if match:
+            return replacement(match)
+    return message
 
 
 class CountingHandler(logging.Handler):
-    """A logging handler that counts errors and warnings."""
-    
+    """A logging handler that counts errors and warnings, including unique message counts."""
+
     def __init__(self):
         super().__init__()
         self.error_count = 0
         self.warning_count = 0
-    
+        self._unique_error_messages: set[str] = set()
+        self._unique_warning_messages: set[str] = set()
+
     def emit(self, record):
-        """Count errors and warnings."""
+        """Count errors and warnings, tracking unique messages."""
+        message = record.getMessage()
+        unique_key = _normalize_message_for_uniqueness(message)
         if record.levelno >= logging.ERROR:
             self.error_count += 1
+            self._unique_error_messages.add(unique_key)
         elif record.levelno >= logging.WARNING:
             self.warning_count += 1
-    
+            self._unique_warning_messages.add(unique_key)
+
     def get_counts(self):
-        """Get the current error and warning counts."""
-        return self.error_count, self.warning_count
-    
+        """Get total and unique error/warning counts.
+
+        Returns:
+            Tuple of (error_count, warning_count, unique_error_count, unique_warning_count)
+        """
+        return (
+            self.error_count,
+            self.warning_count,
+            len(self._unique_error_messages),
+            len(self._unique_warning_messages),
+        )
+
     def reset(self):
         """Reset the counts."""
         self.error_count = 0
         self.warning_count = 0
+        self._unique_error_messages.clear()
+        self._unique_warning_messages.clear()
 
 
 @contextmanager

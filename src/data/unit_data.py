@@ -426,7 +426,7 @@ def _gather_mounted_weapons(turret: Any, salvo_data: Dict[str, int]) -> Dict[str
                 continue
 
             ammo_name = ammo_val.split("$/GFX/Weapon/Ammo_", 1)[1]
-            salvo_index = int(weapon.v.by_m("SalvoStockIndex").v)
+            salvo_index = int(weapon.v.by_m("AmmoBoxIndex").v)
             weapon_quantity = int(weapon.v.by_m("NbWeapons").v)
             weapon_data[ammo_name] = {
                 "salvo_index": salvo_index,
@@ -475,7 +475,7 @@ def _gather_weapon_indices(weapon_descr: Any) -> Dict[str, List[int]]:
             if ammo not in weapon_indices:
                 weapon_indices[ammo] = []
 
-            weapon_indices[ammo].append(int(weapon.v.by_m("SalvoStockIndex").v))
+            weapon_indices[ammo].append(int(weapon.v.by_m("AmmoBoxIndex").v))
 
     return weapon_indices
 
@@ -494,7 +494,7 @@ def _gather_salvo_mapping(weapon_descr: Any) -> Dict[Any, Any]:
 
             ammo = weapon.v.by_m("Ammunition").v.split("$/GFX/Weapon/Ammo_", 1)[1]
             # base_name = ammo.split('_x', 1)[0]
-            index = int(weapon.v.by_m("SalvoStockIndex").v)
+            index = int(weapon.v.by_m("AmmoBoxIndex").v)
 
             # Always store indices as a list for consistency
             if ammo not in salvo_mapping:
@@ -539,7 +539,7 @@ def _gather_weapon_locations(weapon_descr: Any) -> Dict[Any, Any]:
                 {
                     "turret_index": i,
                     "mounted_index": mounted_index,
-                    "salvo_index": int(weapon.v.by_m("SalvoStockIndex").v),
+                    "salvo_index": int(weapon.v.by_m("AmmoBoxIndex").v),
                 }
             )
 

@@ -442,7 +442,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("ATGM_9K111_Fagot", "ATGM", None, False): {
+    ("ATGM_9K111_Fagot", "ATGM", "ATGM_9K111M_Faktoriya", True): {
         "Ammunition": {
             "Arme": {
                 "Index": 16,

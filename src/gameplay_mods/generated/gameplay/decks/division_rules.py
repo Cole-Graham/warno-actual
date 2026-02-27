@@ -13,10 +13,13 @@ logger = setup_logger(__name__)
 
 def edit_gen_gp_decks_divisionrules(source_path: Any, game_db: Dict[str, Any]) -> None:
     """GameData/Generated/Gameplay/Decks/DivisionRules.ndf"""
-    _new_unit_division_rules(source_path)
-    _unit_edits_divisionrules(source_path)
-    _supply_divisionrules(source_path)
-    _mg_team_division_rules(source_path, game_db)
+    # old code for editing vanilla divisions
+    # _new_unit_division_rules(source_path)
+    # _unit_edits_divisionrules(source_path)
+    # _supply_divisionrules(source_path)
+    # _mg_team_division_rules(source_path, game_db)
+    
+    # new code for editing national divisions
     _create_national_division_rules(source_path, game_db)
 
 def _unit_edits_divisionrules(source_path: Any) -> None:

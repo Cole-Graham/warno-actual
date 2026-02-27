@@ -43,7 +43,7 @@ FR_NEW_UNITS = {
                         "turret_edits": {
                             "YulBoneOrdinal": 2,
                         },
-                        "SalvoStockIndex": 1,
+                        "AmmoBoxIndex": 1,
                         "HandheldEquipmentKey": "'WeaponAlternative_2'",
                         "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
                         "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
@@ -53,7 +53,7 @@ FR_NEW_UNITS = {
                         "turret_edits": {
                             "YulBoneOrdinal": 3,
                         },
-                        "SalvoStockIndex": 2,
+                        "AmmoBoxIndex": 2,
                         "HandheldEquipmentKey": "'WeaponAlternative_3'",
                         "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
                         "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",

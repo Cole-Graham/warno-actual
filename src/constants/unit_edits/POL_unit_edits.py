@@ -614,7 +614,7 @@ pol_unit_edits = {
                         "turret_edits": {
                             "YulBoneOrdinal": 3,
                         },
-                        "SalvoStockIndex": 2,
+                        "AmmoBoxIndex": 2,
                         "HandheldEquipmentKey": "'WeaponAlternative_3'",
                         "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
                         "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
@@ -905,7 +905,7 @@ pol_unit_edits = {
                         "turret_edits": {
                             "YulBoneOrdinal": 4,
                         },
-                        "SalvoStockIndex": 3,
+                        "AmmoBoxIndex": 3,
                         "HandheldEquipmentKey": "'WeaponAlternative_4'",
                         "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_4'",
                         "WeaponIgnoredPropertyName": "'WeaponIgnored_4'",
@@ -1412,18 +1412,18 @@ pol_unit_edits = {
                 "cards": 2,
             },
         },
-        "UpgradeFromUnit": "Howz_D1_152mm_POL",
+        # "UpgradeFromUnit": "Howz_D1_152mm_POL",
     },
 
-     "Howz_D1_152mm_POL": {  # H wz. 1943 152mm (D-1 152mm)
-        "CommandPoints": 85,
-        "availability": [3, 2, 0, 0],
-        "UpgradeFromUnit": "Howz_M46_130mm_POL",
-        "GameName": {
-            "display": "H wz. 1943 152mm",
-        },
-        "ButtonTexture": "Howz_D1_152mm_SOV",
-    },
+    # "Howz_D1_152mm_POL": {  # H wz. 1943 152mm (D-1 152mm)
+    #     "CommandPoints": 85,
+    #     "availability": [3, 2, 0, 0],
+    #     "UpgradeFromUnit": "Howz_M46_130mm_POL",
+    #     "GameName": {
+    #         "display": "H wz. 1943 152mm",
+    #     },
+    #     "ButtonTexture": "Howz_D1_152mm_SOV",
+    # },
 
      "MLRS_WP_8z_POL": {  # WP-8z
         "CommandPoints": 60,
@@ -2121,7 +2121,7 @@ pol_unit_edits = {
                         "turret_edits": {
                             "YulBoneOrdinal": 2,
                         },
-                        "SalvoStockIndex": 1,
+                        "AmmoBoxIndex": 1,
                         "HandheldEquipmentKey": "'WeaponAlternative_2'",
                         "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
                         "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
