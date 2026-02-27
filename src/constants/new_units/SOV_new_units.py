@@ -79,7 +79,7 @@ SOV_NEW_UNITS = {
         "max_speed": 26,
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootOnPositionSmoke',
-                   'EOrderType/ShootOnPositionWithoutCorrectionSmoke', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load',
+                   'EOrderType/ShootOnPositionWithoutCorrectionSmoke', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/UseCapacite',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,
@@ -159,7 +159,7 @@ SOV_NEW_UNITS = {
         "max_speed": 26,
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootOnPositionSmoke',
-                   'EOrderType/ShootOnPositionWithoutCorrectionSmoke', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load',
+                   'EOrderType/ShootOnPositionWithoutCorrectionSmoke', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/UseCapacite',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,
@@ -201,7 +201,7 @@ SOV_NEW_UNITS = {
         "availability": [0, 0, 2, 0],
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
-                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply',
+                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply', 'EOrderType/UseCapacite',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": False, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,
@@ -548,9 +548,9 @@ SOV_NEW_UNITS = {
         "GroupeCombatGUID": "f41497ec-862f-4321-b628-0b6fb0b80b27",
         "ShowroomGUID": "a4ac9eac-d74d-4da1-91d6-f2c08dd11ad3",
         "CadavreGUID": "9d790fe8-5668-4757-b532-6d70f411d232",
-        "NewName": "MotRifles_RPG7V_TTsko_SOV",
+        "NewName": "MotRifles_RPG7VL_TTsko_SOV",
         "GameName": {
-            "display": "MOTOPEKHOTA",
+            "display": "MOTOSTRELKI",
             "token": "UQYYVBRKGT",
         },
         "TagSet": {
@@ -564,7 +564,7 @@ SOV_NEW_UNITS = {
                 "Infanterie_IFV",
                 "Infanterie_Standard",
                 "Steelman_infanterie_autoresolve",
-                "UNITE_MotRifles_RPG7V_TTsko_SOV",
+                "UNITE_MotRifles_RPG7VL_TTsko_SOV",
                 "Unite",
             ],
         },
@@ -585,7 +585,7 @@ SOV_NEW_UNITS = {
                 ],
             },
         },
-        "TransportedSoldier": "MotRifles_RPG7V_TTsko_SOV",
+        "TransportedSoldier": "MotRifles_RPG7VL_TTsko_SOV",
         "armor": "Infantry_armor_reference",
         "CommandPoints": 30,
         "UnitRole": 'infantry',
@@ -605,7 +605,7 @@ SOV_NEW_UNITS = {
         "max_speed": 26,
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
-                   'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+                   'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/UseCapacite', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,
         "is_ground_vehicle": False,
@@ -616,6 +616,76 @@ SOV_NEW_UNITS = {
         "UpgradeFromUnit": "MotRifles_BTR_TTsko_SOV",
         "alternatives_count": 4,
         "selector_tactic": "00_04",
+    },
+    
+    ("VDV_Afgantsy_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "4db40651-082c-4d1e-894c-3e58457d489a",
+        "GroupeCombatGUID": "6d7aaa9f-c81e-46d6-b8b3-d676debc3d08",
+        "ShowroomGUID": "3952e569-fc4e-4525-98dc-04ca1d949cf3",
+        "CadavreGUID": "8e408f4b-f9b5-41cb-b1d3-302539803d3e",
+        "NewName": "VDV_Afgantsy_RPG7VL_SOV",
+        "GameName": {
+            "display": "DESANT. AFGANTSY [RPG-7VL]",
+            "token": "OBKLXEXBOP",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_Standard",
+                "Steelman_infanterie_autoresolve",
+                "UNITE_VDV_Afgantsy_RPG7VL_SOV",
+                "Unite",
+            ],
+        },
+        "strength": 7,
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_AKS_74": 11,
+                "SAW_RPK_74_5_56mm": 18,
+                "RocketInf_RPG7VL": 6,
+            },
+            "equipmentchanges": {
+                "replace": [
+                    ("RocketInf_RPG22_72_5mm", "RocketInf_RPG7VL", "RocketInf_RPG22_72_5mm", "RocketInf_RPG7VL"),
+                ],
+            },
+        },
+        "TransportedSoldier": "VDV_Afgantsy_RPG7VL_SOV",
+        "armor": "Infantry_armor_reference",
+        "CommandPoints": 45,
+        "UnitRole": 'infantry',
+        "SpecialtiesList": [
+                '_resolute',
+                '_choc',
+                '_para',
+                '_mountaineer',
+                'infantry_equip_medium',
+            ],
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "availability": [10, 7, 0, 0],
+        "max_speed": 26,
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
+                   'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
+                   'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/UseCapacite', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": True, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": False,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "SOV",
+        "UpgradeFromUnit": "VDV_Afgantsy_SOV",
+        "alternatives_count": 6,
+        "selector_tactic": "00_06",
     },
 
     ("ATteam_Fagot_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -672,7 +742,7 @@ SOV_NEW_UNITS = {
         "availability": [7, 5, 4, 0],
         "max_speed": 20,
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/Attack', 'EOrderType/MoveAndAttack',
-                   'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load',
+                   'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": True,
@@ -745,7 +815,7 @@ SOV_NEW_UNITS = {
         "availability": [0, 7, 5, 4],
         "max_speed": 20,
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/Attack', 'EOrderType/MoveAndAttack', 
-                   'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load', 
+                   'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": True,

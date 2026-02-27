@@ -258,7 +258,7 @@ sov_unit_edits = {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDRSOV MOTOPEKHOTA LDR.",
+            "display": "#LDRSOV MOTOSTRELKI LDR.",
             # "token": "ZJRMUWLPVH",
         },
         "TagSet": {
@@ -858,10 +858,10 @@ sov_unit_edits = {
         },
     },
 
-    "MotRifles_SOV": {
+    "MotRifles_SOV": { # MOTOPEKHOTA
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "MOTOSTRELKI",
+            "display": "MOTOPEKHOTA",
         },
         "CommandPoints": 35,
         "Divisions": {
@@ -891,10 +891,10 @@ sov_unit_edits = {
         },
     },
 
-    "MotRifles_RPG22_SOV": {
+    "MotRifles_RPG22_SOV": { # MOTOPEKHOTA [RPG-22]
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "MOTOSTRELKI [RPG-22]",
+            "display": "MOTOPEKHOTA [RPG-22]",
         },
         "CommandPoints": 25,
         "max_speed": 26,
@@ -917,10 +917,10 @@ sov_unit_edits = {
         "availability": [10, 7, 0, 0],
     },
 
-    "MotRifles_TTsko_SOV": {  # RPG-27
+    "MotRifles_TTsko_SOV": {  # MOTOSTRELKI [RPG-27]
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "MOTOPEKHOTA [RPG-27]",
+            "display": "MOTOSTRELKI [RPG-27]",
         },
         "CommandPoints": 30,
         "Divisions": {
@@ -933,7 +933,7 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
-        "UpgradeFromUnit": "MotRifles_RPG7V_TTsko_SOV",
+        "UpgradeFromUnit": "MotRifles_RPG7VL_TTsko_SOV",
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 11,
@@ -943,10 +943,10 @@ sov_unit_edits = {
         },
     },
 
-    "MotRifles_BTR_TTsko_SOV": {  # RPG-26
+    "MotRifles_BTR_TTsko_SOV": {  # MOTOSTRELKI [RPG-26]
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "MOTOPEKHOTA [RPG-26]",
+            "display": "MOTOSTRELKI [RPG-26]",
         },
         "CommandPoints": 30,
         "Divisions": {
@@ -985,10 +985,10 @@ sov_unit_edits = {
         },
     },
 
-    "MotRifles_BTR_SOV": {  # RPG-7VR
+    "MotRifles_BTR_SOV": {  # MOTOPEKHOTA [RPG-7VR]
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "MOTOSTRELKI [RPG-7VR]",
+            "display": "MOTOPEKHOTA [RPG-7VR]",
         },
         "CommandPoints": 35,
         "availability": [10, 7, 0, 0],
@@ -1017,10 +1017,10 @@ sov_unit_edits = {
         },
     },
 
-    "MotRifles_Metis_TTsko_SOV": {
+    "MotRifles_Metis_TTsko_SOV": { # MOTOSTRELKI [METIS]
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "MOTOPEKHOTA [METIS]",
+            "display": "MOTOSTRELKI [METIS]",
         },
         "CommandPoints": 35,
         "availability": [10, 7, 0, 0],
@@ -1028,7 +1028,6 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
-        "UpgradeFromUnit": "MotRifles_TTsko_SOV",
         "strength": 7,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -1045,10 +1044,10 @@ sov_unit_edits = {
         "UpgradeFromUnit": "MotRifles_TTsko_SOV",
     },
 
-    "MotRifles_Metis_SOV": {
+    "MotRifles_Metis_SOV": { # MOTOPEKHOTA [METIS]
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "MOTOSTRELKI [METIS]",
+            "display": "MOTOPEKHOTA [METIS]",
         },
         "CommandPoints": 35,
         "availability": [10, 7, 0, 0],
@@ -1095,7 +1094,7 @@ sov_unit_edits = {
         },
     },
 
-    "VDV_SOV": {  # RPK, SVD, RPG-7VR
+    "VDV_SOV": {  # 2x RPK, SVD, RPG-7VR
         "armor": "Infantry_armor_reference",
         "CommandPoints": 35,
         "Divisions": {
@@ -1114,7 +1113,17 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
+        "strength": 9,
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "animate": {
+                    "SAW_RPK_74_5_56mm": False,
+                },
+                "quantity": {
+                    "FM_AKS_74": 7,
+                    "SAW_RPK_74_5_56mm": 2,
+                },
+            },
             "Salves": {
                 "FM_AKS_74": 11,
             },
@@ -1144,6 +1153,14 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm", "SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm")],
+            },
+            "Salves": {
+                "MMG_PKM_7_62mm": 36,
+            },
+        },
     },
 
     "VDV_Metis_SOV": {
@@ -1157,6 +1174,7 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
+        "UpgradeFromUnit": "VDV_Afgantsy_RPG7VL_SOV",
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "animate": {

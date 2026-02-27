@@ -232,9 +232,19 @@ weapons: Dict[WeaponKey, WeaponData] = {
     
     ("RocketInf_RPG16", "light_at", None, False): { # 684
         "Ammunition": {
+            "display": "RPG-16D",
+            "token": "JOOFGTWXII",
+            "Arme": {
+                "Index": 15,
+            },
+            "hit_roll": {
+                "Idling": 60,
+            },
             "parent_membr": {
+                "MaximumRangeGRU": 1050,
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 10.0,
+                "SpeedGRU": 900,
             },
         },
     },
