@@ -4,12 +4,15 @@
 #     RFA_airborne_newdivisionrules,
 #     RFA_armored_newdivisionrules,
 #     RFA_global_newdivisionrules,
+#     RFA_marine_newdivisionrules,
 #     RFA_mechanized_newdivisionrules,
 #     RFA_motorized_newdivisionrules,
 # )
 
 # rfa_new_divs = {
 #     "RFA_general": {
+#         "division_id": 5050,
+#         "interface_order": 1150,
 #         "guid": "0dc39da4-1fcb-4deb-8a10-d19845ae5959",
 #         "cfg_name": "RFA_national_general",
 #         "div_name": ("West Germany", "OOSLKZZXFY"),
@@ -26,6 +29,8 @@
 #         ],
 #     },
 #     "RFA_airborne": {
+#         "division_id": 5051,
+#         "interface_order": 1151,
 #         "guid": "6ca480ad-e669-45b6-ae75-8b0bfd92aaca",
 #         "cfg_name": "RFA_national_airborne",
 #         "div_name": ("West Germany Airborne", "TZZCGHCDMZ"),
@@ -39,6 +44,8 @@
 #         ],
 #     },
 #     "RFA_airborne_armored": {
+#         "division_id": 5052,
+#         "interface_order": 1152,
 #         "guid": "de5d4625-a1b9-4fd7-a854-22fa20b90990",
 #         "cfg_name": "RFA_national_airborne_armored",
 #         "div_name": ("West Germany Airborne / Armored", "LPSCSNXVMD"),
@@ -52,7 +59,10 @@
 #             RFA_global_newdivisionrules,
 #         ],
 #     },
+#     # airborne_marine 5053, 1153
 #     "RFA_airborne_mechanized": {
+#         "division_id": 5054,
+#         "interface_order": 1154,
 #         "guid": "8704ce69-cf8e-46a6-8fa1-1918711e6743",
 #         "cfg_name": "RFA_national_airborne_mechanized",
 #         "div_name": ("West Germany Airborne / Mechanized", "CFMXXAPLEQ"),
@@ -67,6 +77,8 @@
 #         ],
 #     },
 #     "RFA_airborne_motorized": {
+#         "division_id": 5055,
+#         "interface_order": 1155,
 #         "guid": "331ae92a-058c-46ca-b7ae-40da1b27f1c6",
 #         "cfg_name": "RFA_national_airborne_motorized",
 #         "div_name": ("West Germany Airborne / Motorized", "YBLTYXWACE"),
@@ -81,6 +93,8 @@
 #         ],
 #     },
 #     "RFA_armored": {
+#         "division_id": 5056,
+#         "interface_order": 1156,
 #         "guid": "ad0369de-6740-4a19-a2c7-8a58e7a33ec2",
 #         "cfg_name": "RFA_national_armored",
 #         "div_name": ("West Germany Armored", "QBCMWKUHGC"),
@@ -93,7 +107,10 @@
 #             RFA_global_newdivisionrules,
 #         ],
 #     },
+#     # armored_marine 5057, 1157
 #     "RFA_armored_mechanized": {
+#         "division_id": 5058,
+#         "interface_order": 1158,
 #         "guid": "2a7fd41e-75d5-480c-966a-7bd3dc5c14c8",
 #         "cfg_name": "RFA_national_armored_mechanized",
 #         "div_name": ("West Germany Armored / Mechanized", "RQLVRYIUGB"),
@@ -108,6 +125,8 @@
 #         ],
 #     },
 #     "RFA_armored_motorized": {
+#         "division_id": 5059,
+#         "interface_order": 1159,
 #         "guid": "da2062bd-0648-43fa-a92d-7b31af598470",
 #         "cfg_name": "RFA_national_armored_motorized",
 #         "div_name": ("West Germany Armored / Motorized", "KDUARICYOT"),
@@ -121,7 +140,12 @@
 #             RFA_motorized_newdivisionrules,
 #         ],
 #     },
+#     # marine 5060, 1160
+#     # marine_mechanized 5061, 1161
+#     # marine_motorized 5062, 1162
 #     "RFA_mechanized": {
+#         "division_id": 5063,
+#         "interface_order": 1162,
 #         "guid": "6a85fc5f-d78c-4967-868f-668bb1ea6f49",
 #         "cfg_name": "RFA_national_mechanized",
 #         "div_name": ("West Germany Mechanized", "ZUNRZZKQWE"),
@@ -134,7 +158,10 @@
 #             RFA_mechanized_newdivisionrules,
 #         ],
 #     },
+#     # mechanized_marine 5064, 1163
 #     "RFA_mechanized_motorized": {
+#         "division_id": 5065,
+#         "interface_order": 1164,
 #         "guid": "675869ff-770e-495f-b904-651f569c7da9",
 #         "cfg_name": "RFA_national_mechanized_motorized",
 #         "div_name": ("West Germany Mechanized / Motorized", "ICYLMFPJBB"),
@@ -149,6 +176,8 @@
 #         ],
 #     },
 #     "RFA_motorized": {
+#         "division_id": 5066,
+#         "interface_order": 1165,
 #         "guid": "ffeeec87-49f9-4f4f-a90f-1f0268523c70",
 #         "cfg_name": "RFA_national_motorized",
 #         "div_name": ("West Germany Motorized", "VNLIYBIVLK"),

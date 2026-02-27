@@ -238,7 +238,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "SupplyCost": 2.0,
-        "NbWeapons": [1],
+        "NbWeapons": [2, 1],
         "WeaponDescriptor": {
             "Salves": 10,
         },
@@ -1200,7 +1200,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoSalvos": 1.2,
                 "ShotsCountPerSalvo": 5,
                 "SupplyCost": 2.0,
-                "CanShootWhileMoving": "True",
+                "CanShootWhileMoving": True,
                 "AffichageMunitionParSalve": 50,
             },
         },
@@ -1226,7 +1226,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoSalvos": 1.2,
                 "ShotsCountPerSalvo": 5,
                 "SupplyCost": 2.0,
-                "CanShootWhileMoving": "True",
+                "CanShootWhileMoving": True,
                 "AffichageMunitionParSalve": 50,
             },
         },
@@ -1252,7 +1252,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoSalvos": 1.2,
                 "ShotsCountPerSalvo": 5,
                 "SupplyCost": 2.0,
-                "CanShootWhileMoving": "True",
+                "CanShootWhileMoving": True,
                 "AffichageMunitionParSalve": 50,
             },
         },
@@ -1296,7 +1296,9 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 30,
             },
             "parent_membr": {
+                "TraitsToken": ['MOTION', 'CAC'],
                 "TimeBetweenTwoShots": 2.2,
+                "MinimumRangeGRU": 0,
                 "MaximumRangeGRU": 875,
                 "MaximumRangeHelicopterGRU": 700,
                 "PhysicalDamages": 0.12,
@@ -1305,6 +1307,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 1.0,
                 "TimeBetweenTwoSalvos": 2.2,
                 "ShotsCountPerSalvo": 2,
+                "CanShootWhileMoving": True,
                 "AffichageMunitionParSalve": 20,
             },
         },
@@ -1782,7 +1785,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoSalvos": 1.2,
                 "ShotsCountPerSalvo": 5,
                 "SupplyCost": 2.0,
-                "CanShootWhileMoving": "True",
+                "CanShootWhileMoving": True,
                 "AffichageMunitionParSalve": 50,
             },
         },
@@ -1938,7 +1941,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1225,
-                "MaximumRangeHelicopterGRU": 1050,
+                "MaximumRangeHelicopterGRU": 1225,
                 "PhysicalDamages": 0.20,
                 "SuppressDamages": 42,
                 "TimeBetweenTwoSalvos": 4.3,
@@ -1953,6 +1956,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("HMG_team_12_7_mm_M2HB_M63", "small_arms", None, False): {
         "Ammunition": {
             "Arme": "HMG_team_12_7_mm_NSV_6U6",
+            "hit_roll": "HMG_team_12_7_mm_NSV_6U6",
             "parent_membr": "HMG_team_12_7_mm_NSV_6U6",
         },
         "NbWeapons": "HMG_team_12_7_mm_NSV_6U6",
@@ -1961,6 +1965,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("HMG_team_12_7_mm_DSh_AA", "small_arms", None, False): {
         "Ammunition": {
             "Arme": "HMG_team_12_7_mm_NSV_6U6",
+            "hit_roll": "HMG_team_12_7_mm_NSV_6U6",
             "parent_membr": "HMG_team_12_7_mm_NSV_6U6",
         },
         "NbWeapons": "HMG_team_12_7_mm_NSV_6U6",
@@ -1977,7 +1982,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1225,
-                "MaximumRangeHelicopterGRU": 1050,
+                # "MaximumRangeHelicopterGRU": 1050,
                 "PhysicalDamages": 0.20,
                 "SuppressDamages": 42,
                 "TimeBetweenTwoSalvos": 4.3,
@@ -2203,68 +2208,68 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("FM_kbk_AKMS", "small_arms", None, False): {
-        "Ammunition": {
-            "Arme": {
-                "Family": "DamageFamily_sa_full",
-            },
-            "hit_roll": {
-                "Idling": 55,
-                "Moving": 25,
-            },
-            "parent_membr": {
-                "TimeBetweenTwoShots": 2.2,
-                "MaximumRangeGRU": 875,
-                "MaximumRangeHelicopterGRU": 700,
-                "PhysicalDamages": 0.06,
-                "SuppressDamages": 8,
-                "DisplaySalveAccuracy": False,
-                "AimingTime": 1.0,
-                "TimeBetweenTwoSalvos": 5.5,
-                "ShotsCountPerSalvo": 6,
-                "AffichageMunitionParSalve": 30,
-            },
-            # "token": "AYYOIYKCVF",
-        },
-        # "NewTexture": "kbk_akm",
-        "SupplyCost": 1.0,
-        "NbWeapons": [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
-        "WeaponDescriptor": {
-            "Salves": 11,
-        },
-    },
+    # ("FM_kbk_AKMS", "small_arms", None, False): {
+    #     "Ammunition": {
+    #         "Arme": {
+    #             "Family": "DamageFamily_sa_full",
+    #         },
+    #         "hit_roll": {
+    #             "Idling": 55,
+    #             "Moving": 25,
+    #         },
+    #         "parent_membr": {
+    #             "TimeBetweenTwoShots": 2.2,
+    #             "MaximumRangeGRU": 875,
+    #             "MaximumRangeHelicopterGRU": 700,
+    #             "PhysicalDamages": 0.06,
+    #             "SuppressDamages": 8,
+    #             "DisplaySalveAccuracy": False,
+    #             "AimingTime": 1.0,
+    #             "TimeBetweenTwoSalvos": 5.5,
+    #             "ShotsCountPerSalvo": 6,
+    #             "AffichageMunitionParSalve": 30,
+    #         },
+    #         # "token": "AYYOIYKCVF",
+    #     },
+    #     # "NewTexture": "kbk_akm",
+    #     "SupplyCost": 1.0,
+    #     "NbWeapons": [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+    #     "WeaponDescriptor": {
+    #         "Salves": 11,
+    #     },
+    # },
 
-    ("FM_kbk_AKMS_noreflex", "small_arms", "FM_kbk_AKMS", True): {
-        "Ammunition": {
-            "Arme": {
-                "Family": "DamageFamily_sa_full",
-            },
-            "hit_roll": {
-                "Idling": 55,
-                "Moving": 25,
-            },
-            "parent_membr": {
-                "TimeBetweenTwoShots": 2.2,
-                "MaximumRangeGRU": 875,
-                "MaximumRangeHelicopterGRU": 700,
-                "PhysicalDamages": 0.06,
-                "SuppressDamages": 8,
-                "DisplaySalveAccuracy": False,
-                "TirReflexe": False,
-                "AimingTime": 1.0,
-                "TimeBetweenTwoSalvos": 5.5,
-                "ShotsCountPerSalvo": 6,
-                "AffichageMunitionParSalve": 30,
-            },
-            # "token": "AYYOIYKCVF",
-        },
-        "Texture": "FM_kbk_AKM",
-        "SupplyCost": 1.0,
-        "NbWeapons": [1],
-        "WeaponDescriptor": {
-            "Salves": 11,
-        },
-    },
+    # ("FM_kbk_AKMS_noreflex", "small_arms", "FM_kbk_AKMS", True): {
+    #     "Ammunition": {
+    #         "Arme": {
+    #             "Family": "DamageFamily_sa_full",
+    #         },
+    #         "hit_roll": {
+    #             "Idling": 55,
+    #             "Moving": 25,
+    #         },
+    #         "parent_membr": {
+    #             "TimeBetweenTwoShots": 2.2,
+    #             "MaximumRangeGRU": 875,
+    #             "MaximumRangeHelicopterGRU": 700,
+    #             "PhysicalDamages": 0.06,
+    #             "SuppressDamages": 8,
+    #             "DisplaySalveAccuracy": False,
+    #             "TirReflexe": False,
+    #             "AimingTime": 1.0,
+    #             "TimeBetweenTwoSalvos": 5.5,
+    #             "ShotsCountPerSalvo": 6,
+    #             "AffichageMunitionParSalve": 30,
+    #         },
+    #         # "token": "AYYOIYKCVF",
+    #     },
+    #     "Texture": "FM_kbk_AKM",
+    #     "SupplyCost": 1.0,
+    #     "NbWeapons": [1],
+    #     "WeaponDescriptor": {
+    #         "Salves": 11,
+    #     },
+    # },
     
     ("FM_Tantal", "small_arms", None, False): {
         "Ammunition": {

@@ -86,7 +86,7 @@ fr_unit_edits = {
                         "turret_edits": {
                             "YulBoneOrdinal": 2,
                         },
-                        "SalvoStockIndex": 1,
+                        "AmmoBoxIndex": 1,
                         "HandheldEquipmentKey": "'WeaponAlternative_2'",
                         "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
                         "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
@@ -96,7 +96,7 @@ fr_unit_edits = {
                         "turret_edits": {
                             "YulBoneOrdinal": 3,
                         },
-                        "SalvoStockIndex": 2,
+                        "AmmoBoxIndex": 2,
                         "HandheldEquipmentKey": "'WeaponAlternative_3'",
                         "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
                         "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
@@ -215,7 +215,7 @@ fr_unit_edits = {
                         "turret_edits": {
                             "YulBoneOrdinal": 3,
                         },
-                        "SalvoStockIndex": 2,
+                        "AmmoBoxIndex": 2,
                         "HandheldEquipmentKey": "'WeaponAlternative_3'",
                         "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
                         "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
@@ -281,7 +281,7 @@ fr_unit_edits = {
                         },
                         "AnimateOnlyOneSoldier": False,
                         "NbWeapons": 3,
-                        "SalvoStockIndex": 1,
+                        "AmmoBoxIndex": 1,
                         "HandheldEquipmentKey": "'WeaponAlternative_2'",
                         "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
                         "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
@@ -291,7 +291,7 @@ fr_unit_edits = {
                         "turret_edits": {
                             "YulBoneOrdinal": 3,
                         },
-                        "SalvoStockIndex": 2,
+                        "AmmoBoxIndex": 2,
                         "HandheldEquipmentKey": "'WeaponAlternative_3'",
                         "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
                         "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
@@ -849,7 +849,7 @@ fr_unit_edits = {
                             "YulBoneOrdinal": 2,
                         },
                         "NbWeapons": 1,
-                        "SalvoStockIndex": 1,
+                        "AmmoBoxIndex": 1,
                         "HandheldEquipmentKey": "'WeaponAlternative_2'",
                         "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
                         "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",

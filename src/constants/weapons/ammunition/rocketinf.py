@@ -7,33 +7,33 @@ WeaponKey = Tuple[str, str, Optional[str], bool]  # (weapon, category, donor, is
 
 # fmt: off
 weapons: Dict[WeaponKey, WeaponData] = {
-    ("RocketInf_WOMBAT_RCL_120mm_TOWED", "recoilless", None, False): { # 707
-        "Ammunition": {
-            "Arme": {
-                "Index": 17,
-            },
-            "hit_roll": {
-                "Idling": 40,
-            },
-            "parent_membr": {
-                "MaximumRangeGRU": 1750,
-                "DisplaySalveAccuracy": False,
-            },
-        },
-    },
+    # ("RocketInf_WOMBAT_RCL_120mm_TOWED", "recoilless", None, False): { # 707
+    #     "Ammunition": {
+    #         "Arme": {
+    #             "Index": 17,
+    #         },
+    #         "hit_roll": {
+    #             "Idling": 40,
+    #         },
+    #         "parent_membr": {
+    #             "MaximumRangeGRU": 1750,
+    #             "DisplaySalveAccuracy": False,
+    #         },
+    #     },
+    # },
     
-    ("RocketInf_WOMBAT_RCL_120mm_HE_TOWED", "recoilless", None, False): { # 706
-        "Ammunition": {
-            "hit_roll": {
-                "Idling": 40,
-            },
-            "parent_membr": {
-                "MaximumRangeGRU": 1750,
-                "PhysicalDamages": 1.5,
-                "DisplaySalveAccuracy": False,
-            },
-        },
-    },
+    # ("RocketInf_WOMBAT_RCL_120mm_HE_TOWED", "recoilless", None, False): { # 706
+    #     "Ammunition": {
+    #         "hit_roll": {
+    #             "Idling": 40,
+    #         },
+    #         "parent_membr": {
+    #             "MaximumRangeGRU": 1750,
+    #             "PhysicalDamages": 1.5,
+    #             "DisplaySalveAccuracy": False,
+    #         },
+    #     },
+    # },
     
     ("RocketInf_WOMBAT_RCL_120mm_HE", "recoilless", None, False): { # 705
         "Ammunition": {

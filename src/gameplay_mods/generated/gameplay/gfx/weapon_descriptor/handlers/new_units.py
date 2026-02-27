@@ -314,7 +314,7 @@ def _insert_weapon(
         mounted_wpns = new_turret.v.by_m("MountedWeaponDescriptorList")
         for weapon in mounted_wpns.v:
             weapon.v.by_m("EffectTag").v = f"'FireEffect_{fire_effect}'"
-            weapon.v.by_m("SalvoStockIndex").v = str(turret_index)
+            weapon.v.by_m("AmmoBoxIndex").v = str(turret_index)
             weapon.v.by_m("HandheldEquipmentKey").v = f"'WeaponAlternative_{new_yul_bone}'"
             weapon.v.by_m("WeaponActiveAndCanShootPropertyName").v = f"'WeaponActiveAndCanShoot_{new_yul_bone}'"
             weapon.v.by_m("WeaponIgnoredPropertyName").v = f"'WeaponIgnored_{new_yul_bone}'"
@@ -516,7 +516,7 @@ def _replace_weapon_with_turret(
         mounted_wpns = new_turret.v.by_m("MountedWeaponDescriptorList")
         for weapon in mounted_wpns.v:
             weapon.v.by_m("EffectTag").v = f"'FireEffect_{fire_effect}'"
-            weapon.v.by_m("SalvoStockIndex").v = str(turret_index)
+            weapon.v.by_m("AmmoBoxIndex").v = str(turret_index)
             weapon.v.by_m("HandheldEquipmentKey").v = f"'WeaponAlternative_{new_yul_bone}'"
             weapon.v.by_m("WeaponActiveAndCanShootPropertyName").v = f"'WeaponActiveAndCanShoot_{new_yul_bone}'"
             weapon.v.by_m("WeaponIgnoredPropertyName").v = f"'WeaponIgnored_{new_yul_bone}'"
@@ -576,7 +576,7 @@ def _update_weapon(
         turret.v.by_m("YulBoneOrdinal").v = str(turret_index + 1)
         mounted_weapons = turret.v.by_member("MountedWeaponDescriptorList")
         for weapon in mounted_weapons.v:
-            weapon.v.by_m("SalvoStockIndex").v = str(turret_index)
+            weapon.v.by_m("AmmoBoxIndex").v = str(turret_index)
             weapon.v.by_m("HandheldEquipmentKey").v = f"'WeaponAlternative_{turret_index + 1}'"
             weapon.v.by_m("WeaponActiveAndCanShootPropertyName").v = f"'WeaponActiveAndCanShoot_{turret_index + 1}'"
             weapon.v.by_m("WeaponIgnoredPropertyName").v = f"'WeaponIgnored_{turret_index + 1}'"
@@ -780,7 +780,7 @@ def _update_weapon_salvo(new_weap_row: Any, ammo: str, salvo: int, game_db: Dict
             if current_base_ammo == ammo or (old_ammo and current_base_ammo == old_ammo):
                 salves_list = new_weap_row.v.by_member("Salves").v
                 if isinstance(salves_list, ndf.model.List):
-                    salvo_to_replace = int(weapon_descr_row.v.by_member("SalvoStockIndex").v)
+                    salvo_to_replace = int(weapon_descr_row.v.by_member("AmmoBoxIndex").v)
                     # Check if index is valid before replacing
                     if salvo_to_replace < len(salves_list):
                         logger.debug(f"Updating salvo for {ammo} to {salvo} at index {salvo_to_replace}")

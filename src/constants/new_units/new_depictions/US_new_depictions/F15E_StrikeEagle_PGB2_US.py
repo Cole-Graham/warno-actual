@@ -196,12 +196,12 @@ f15e_strikeeagle_pgb2_us: Dict[str, Dict[str, Any]] = {
                 ReferenceMesh = $/GFX/DepictionResources/Modele_F15E_StrikeEagle_US
             )""",
         "carriage_depiction_showroom": """
-            SubGenerators_Showroom_F15E_StrikeEagle_PGB2_US is TStaticMissileCarriageSubDepictionGenerator
+            SubGenerators_Showroom_F15E_StrikeEagle_PGB2_US is TShowroomMissileCarriageSubDepictionGenerator
             (
                 MissileCarriageConnoisseur = MissileCarriage_F15E_StrikeEagle_PGB2_US_Showroom
                 Missiles = 
                 [
-                    TStaticMissileCarriageSubDepictionMissileInfo
+                    TShowroomMissileCarriageSubDepictionMissileInfo
                     (
                         Depiction = TemplateDepictionMissileShowroom
                         (
@@ -210,7 +210,7 @@ f15e_strikeeagle_pgb2_us: Dict[str, Dict[str, Any]] = {
                         MissileCount = 2
                         WeaponIndex = 2
                     ),
-                    TStaticMissileCarriageSubDepictionMissileInfo
+                    TShowroomMissileCarriageSubDepictionMissileInfo
                     (
                         Depiction = TemplateDepictionMissileShowroom
                         (
@@ -219,7 +219,7 @@ f15e_strikeeagle_pgb2_us: Dict[str, Dict[str, Any]] = {
                         MissileCount = 2
                         WeaponIndex = 2
                     ),
-                    TStaticMissileCarriageSubDepictionMissileInfo
+                    TShowroomMissileCarriageSubDepictionMissileInfo
                     (
                         Depiction = TemplateDepictionMissileShowroom
                         (

@@ -1,8 +1,8 @@
 """Unit edit constants."""
 
 import importlib
-import os
 import json
+import os
 from pathlib import Path
 from typing import Dict, Any, List, Tuple, Set
 
@@ -157,9 +157,41 @@ def precompute_field_resolution_cache(unit_edits_dict: Dict) -> Dict[str, Dict[s
     return field_cache
 
 
+# Keys that hold non-reference strings (game IDs, textures, property names, etc.)
+_REFERENCE_PATH_EXCEPTIONS = frozenset({
+    "UpgradeFromUnit",
+    "ButtonTexture",
+    "MenuIconTexture",
+    "TransportedTexture",
+    "TypeStrategicCount",
+    "UnitRole",
+    "Factory",
+    "SupplyDescriptor",
+    "TypeUnitFormation",
+    "display",
+    "token",
+    "selector_tactic",
+    "selector_tactic_obj",
+    "HandheldEquipmentKey",
+    "WeaponActiveAndCanShootPropertyName",
+    "WeaponIgnoredPropertyName",
+    "WeaponShootDataPropertyName",
+})
+
+
 def _resolve_unit_with_cache(unit_data: Any, unit_name: str, field_cache: Dict[str, Dict[str, Any]], unit_edits_dict: Dict[str, Any]) -> Any:
     """Resolve a single unit using precomputed field cache."""
-    
+
+    def _is_excepted_path(path: str) -> bool:
+        """True if this path holds non-reference strings (pass through as-is)."""
+        if "[" in path:  # List elements (Transports, IdentifiedTextures, etc.)
+            return True
+        # WeaponDescriptor.turrets.* and MountedWeapons.* hold weapon config (RGBA, EffectTag, etc.)
+        if "turrets" in path or "MountedWeapons" in path:
+            return True
+        key = path.split(".")[-1] if path else path
+        return key in _REFERENCE_PATH_EXCEPTIONS
+
     def resolve_value(value: Any, current_path: str = "") -> Any:
         """Recursively resolve a value, handling nested dictionaries and lists."""
         if isinstance(value, dict):
@@ -172,14 +204,12 @@ def _resolve_unit_with_cache(unit_data: Any, unit_name: str, field_cache: Dict[s
             # Recursively resolve lists
             return [resolve_value(item, f"{current_path}[{i}]") for i, item in enumerate(value)]
         elif isinstance(value, str):
-            # Special exception: UpgradeFromUnit field should not be resolved as references
-            if current_path.endswith("UpgradeFromUnit") or current_path.endswith("ButtonTexture"):
+            if _is_excepted_path(current_path):
                 return value
-            
-            # Special exception: if we're inside a list (like Transports), these are unit names, not references
-            if "[" in current_path:
+            # Game asset paths (e.g. $/GFX/Weapon/Ammo_...) are never unit references
+            if value.startswith("$/"):
                 return value
-            
+
             # Check if this string references a unit name
             if value in unit_edits_dict:
                 # Check if we have a precomputed field value
@@ -201,8 +231,12 @@ def _resolve_unit_with_cache(unit_data: Any, unit_name: str, field_cache: Dict[s
                 logger.error(f"Failed to resolve field reference '{value}' for path '{current_path}' - field not found in referenced unit")
                 raise ValueError(f"Field '{current_path}' not found in referenced unit '{value}'")
             else:
-                # String doesn't reference a unit, return as-is
-                return value
+                # String not in unit_edits - fail fast (only excepted paths pass through)
+                raise ValueError(
+                    f"Unknown unit reference '{value}' at path '{current_path}'. "
+                    f"Referenced unit must exist in unit edits, or path must be in "
+                    f"_REFERENCE_PATH_EXCEPTIONS."
+                )
         else:
             # Non-string value, return as-is
             return value
@@ -279,7 +313,15 @@ def load_unit_edits() -> Dict:
             dict_name = dict_names.get(file.stem)
             if dict_name and hasattr(module, dict_name):
                 unit_dict = getattr(module, dict_name)
-                
+
+                # Fail fast on structural errors (e.g. trailing comma makes dict → tuple)
+                if not isinstance(unit_dict, dict):
+                    raise TypeError(
+                        f"{file.stem}: expected dict, got {type(unit_dict).__name__}. "
+                        f"Check for syntax errors like a trailing comma after the closing brace "
+                        f"(e.g. }}, at end of file should be }})."
+                    )
+
                 # Check for duplicate entries before merging
                 duplicates = []
                 for unit_name in unit_dict.keys():
@@ -303,6 +345,7 @@ def load_unit_edits() -> Dict:
                 logger.info(f"Loaded unit edits from {file.stem}")
         except Exception as e:
             logger.error(f"Failed to load {file.stem}: {str(e)}")
+            raise
     
     logger.info(f"Loaded edits for {len(merged_edits)} units total")
 

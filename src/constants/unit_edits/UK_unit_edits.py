@@ -172,7 +172,7 @@ uk_unit_edits = {
                         "turret_edits": {
                             "YulBoneOrdinal": 2,
                         },
-                        "SalvoStockIndex": 1,
+                        "AmmoBoxIndex": 1,
                         "HandheldEquipmentKey": "'WeaponAlternative_2'",
                         "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
                         "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
@@ -375,7 +375,7 @@ uk_unit_edits = {
                         "turret_edits": {
                             "YulBoneOrdinal": 2,
                         },
-                        "SalvoStockIndex": 1,
+                        "AmmoBoxIndex": 1,
                         "HandheldEquipmentKey": "'WeaponAlternative_2'",
                         "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
                         "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
@@ -385,7 +385,7 @@ uk_unit_edits = {
                         "turret_edits": {
                             "YulBoneOrdinal": 3,
                         },
-                        "SalvoStockIndex": 2,
+                        "AmmoBoxIndex": 2,
                         "HandheldEquipmentKey": "'WeaponAlternative_3'",
                         "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
                         "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
@@ -980,7 +980,7 @@ uk_unit_edits = {
                         "turret_edits": {
                             "YulBoneOrdinal": 3,
                         },
-                        "SalvoStockIndex": 2,
+                        "AmmoBoxIndex": 2,
                         "HandheldEquipmentKey": "'WeaponAlternative_3'",
                         "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
                         "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
@@ -990,7 +990,7 @@ uk_unit_edits = {
                         "turret_edits": {
                             "YulBoneOrdinal": 4,
                         },
-                        "SalvoStockIndex": 3,
+                        "AmmoBoxIndex": 3,
                         "HandheldEquipmentKey": "'WeaponAlternative_4'",
                         "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_4'",
                         "WeaponIgnoredPropertyName": "'WeaponIgnored_4'",
@@ -1750,6 +1750,7 @@ uk_unit_edits = {
 
     "FV601_Saladin_UK": {
         "CommandPoints": 35,
+        "stealth": 1.5,
         "WeaponDescriptor": {
             "Salves": {
                 "MMG_M1919": 40,
@@ -1784,6 +1785,7 @@ uk_unit_edits = {
             "display": "#RECO1 FERRET SWINGFIRE",
         },
         "Factory": "EFactory/Recons",
+        "stealth": 1.5,
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 3500.0,
@@ -2021,7 +2023,7 @@ uk_unit_edits = {
                         "turret_edits": {
                             "YulBoneOrdinal": 3,
                         },
-                        "SalvoStockIndex": 2,
+                        "AmmoBoxIndex": 2,
                         "HandheldEquipmentKey": "'WeaponAlternative_3'",
                         "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
                         "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",

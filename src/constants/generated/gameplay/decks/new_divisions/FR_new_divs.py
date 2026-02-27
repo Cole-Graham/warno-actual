@@ -4,12 +4,15 @@
 #     FR_airborne_newdivisionrules,
 #     FR_armored_newdivisionrules,
 #     FR_global_newdivisionrules,
+#     FR_marine_newdivisionrules,
 #     FR_mechanized_newdivisionrules,
 #     FR_motorized_newdivisionrules,
 # )
 
 # fr_new_divs = {
 #     "FR_general": {
+#         "division_id": 5034,
+#         "interface_order": 1100,
 #         "guid": "44ff32fa-edc1-4898-977b-79d4138fa1b0",
 #         "cfg_name": "FR_national_general",
 #         "div_name": ("France", "ZLEJXITAXQ"),
@@ -26,6 +29,8 @@
 #         ],
 #     },
 #     "FR_airborne": {
+#         "division_id": 5035,
+#         "interface_order": 1101,
 #         "guid": "92b28c05-d82c-493b-854b-0c96b4e35882",
 #         "cfg_name": "FR_national_airborne",
 #         "div_name": ("France Airborne", "CXMVYUNIQB"),
@@ -39,6 +44,8 @@
 #         ],
 #     },
 #     "FR_airborne_armored": {
+#         "division_id": 5036,
+#         "interface_order": 1102,
 #         "guid": "68849b08-0ddf-424d-9d84-dd8fde8c77dd",
 #         "cfg_name": "FR_national_airborne_armored",
 #         "div_name": ("France Airborne / Armored", "FJNDIDUSNI"),
@@ -52,7 +59,10 @@
 #             FR_global_newdivisionrules,
 #         ],
 #     },
+#     # airborne_marine 5037, 1103
 #     "FR_airborne_mechanized": {
+#         "division_id": 5038,
+#         "interface_order": 1104,
 #         "guid": "3eeb091f-c000-43be-855e-2f52d5b1486e",
 #         "cfg_name": "FR_national_airborne_mechanized",
 #         "div_name": ("France Airborne / Mechanized", "OJPABGCBXV"),
@@ -67,6 +77,8 @@
 #         ],
 #     },
 #     "FR_airborne_motorized": {
+#         "division_id": 5039,
+#         "interface_order": 1105,
 #         "guid": "9b59ae38-e3ae-48af-9492-01a817add7b2",
 #         "cfg_name": "FR_national_airborne_motorized",
 #         "div_name": ("France Airborne / Motorized", "SVIPHRWGTW"),
@@ -81,6 +93,8 @@
 #         ],
 #     },
 #     "FR_armored": {
+#         "division_id": 5040,
+#         "interface_order": 1106,
 #         "guid": "dba7d663-0d2e-48a4-938f-22222e6137fc",
 #         "cfg_name": "FR_national_armored",
 #         "div_name": ("France Armored", "KLZMZTWBZH"),
@@ -93,7 +107,10 @@
 #             FR_global_newdivisionrules,
 #         ],
 #     },
+#     # armored_marine 5041, 1107
 #     "FR_armored_mechanized": {
+#         "division_id": 5042,
+#         "interface_order": 1108,
 #         "guid": "210fcd1c-ee11-44a8-9f2c-f5a544215fcd",
 #         "cfg_name": "FR_national_armored_mechanized",
 #         "div_name": ("France Armored / Mechanized", "HJBBJFEYNE"),
@@ -108,6 +125,8 @@
 #         ],
 #     },
 #     "FR_armored_motorized": {
+#         "division_id": 5043,
+#         "interface_order": 1109,
 #         "guid": "7f38b59b-5c16-45d6-af2d-38f240d721b9",
 #         "cfg_name": "FR_national_armored_motorized",
 #         "div_name": ("France Armored / Motorized", "KZEGRRGVXE"),
@@ -121,7 +140,12 @@
 #             FR_motorized_newdivisionrules,
 #         ],
 #     },
+#     # marine 5044, 1110
+#     # marine_mechanized 5045, 1111
+#     # marine_motorized 5046, 1112
 #     "FR_mechanized": {
+#         "division_id": 5047,
+#         "interface_order": 1113,
 #         "guid": "bc09036b-b0a7-4fd7-9373-428c612b27e3",
 #         "cfg_name": "FR_national_mechanized",
 #         "div_name": ("France Mechanized", "BLZBTCOVCM"),
@@ -135,6 +159,8 @@
 #         ],
 #     },
 #     "FR_mechanized_motorized": {
+#         "division_id": 5048,
+#         "interface_order": 1114,
 #         "guid": "de8e87cb-09c9-4ed5-a07c-9cf75b474e08",
 #         "cfg_name": "FR_national_mechanized_motorized",
 #         "div_name": ("France Mechanized / Motorized", "TJHHLTTRKO"),
@@ -149,6 +175,8 @@
 #         ],
 #     },
 #     "FR_motorized": {
+#         "division_id": 5049,
+#         "interface_order": 1115,
 #         "guid": "5dfef628-537b-4d71-ac06-4c9fbab73942",
 #         "cfg_name": "FR_national_motorized",
 #         "div_name": ("France Motorized", "BKSVSULYPK"),
