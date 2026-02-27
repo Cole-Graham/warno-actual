@@ -316,7 +316,7 @@ RDA_NEW_UNITS = {
             ],
         },
         "Factory": "EFactory/Logistic",
-        "CommandPoints": 200,
+        "CommandPoints": 205,
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
             'leader_sov',

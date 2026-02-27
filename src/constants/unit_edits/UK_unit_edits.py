@@ -2455,6 +2455,16 @@ uk_unit_edits = {
             },
         },
     },
+
+    "Tornado_ADV_UK": { # 4x Skyflash SuperTEMP, 4x AIM-9L
+        "CommandPoints": 250,
+        "availability": [0, 2, 0, 1],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("AA_AIM9L_Sidewinder", "AA_AIM9M_Sidewinder")],
+            },
+        },
+    },
     
     "F4_Phantom_GR2_UK": {
         "CommandPoints": 245,
@@ -2466,7 +2476,7 @@ uk_unit_edits = {
         "availability": [0, 0, 2, 0],
     },
 
-    "F4_Phantom_AA_F3_UK": { # 4x Skyflash, 4x AIM-9L
+    "F4_Phantom_AA_F3_UK": { # 4x Skyflash, 4x AIM-9M
         "CommandPoints": 175,
         "GameName": {
             "display": "F-4J(UK) PHANTOM II [AA]",

@@ -849,7 +849,7 @@ rda_unit_edits = {
     # RDA TANK
     
     "T54B_CMD_DDR": {
-        "CommandPoints": 75,
+        "CommandPoints": 80,
         "GameName": {
             "display": "#LDRSOV FüPz T-54AMK LDR.",
         },
@@ -1120,7 +1120,7 @@ rda_unit_edits = {
     },
     
     "T54B_DDR": {
-        "CommandPoints": 65,
+        "CommandPoints": 70,
         "availability": [10, 7, 0, 0],
     },
 
@@ -1136,7 +1136,7 @@ rda_unit_edits = {
         "GameName": {
             "display": "KPz T-72",
         },
-        "CommandPoints": 100,
+        "CommandPoints": 110,
         "availability": [8, 6, 0, 0],
     },
 
@@ -1149,8 +1149,8 @@ rda_unit_edits = {
     },
     
     "T72MUV2_DDR": {
-        "CommandPoints": 155,
-        "availability": [6, 4, 0, 0],
+        "CommandPoints": 150,
+        "availability": [0, 6, 4, 0],
     },
 
     "T72M1_DDR": {
@@ -1164,11 +1164,11 @@ rda_unit_edits = {
                 "cards": 2,
             },
         },
-        "availability": [0, 5, 3, 0],
+        "availability": [0, 6, 4, 0],
     },
     
     "T72S_DDR": {
-        "CommandPoints": 235,
+        "CommandPoints": 215,
         "Divisions": {
             "default": {
                 "cards": 2,
