@@ -8,7 +8,7 @@ from src.utils.ndf_utils import strip_quotes
 from src.utils.dictionary_utils import write_dictionary_entries
 from src import ModConfig
 from src.constants.generated.gameplay.decks import load_new_divisions
-from src.constants.generated.gameplay.decks.new_divisions import spec_tags
+from src.constants.generated.gameplay.decks.new_divisions import DIV_TYPE_TO_TOKEN
 
 logger = setup_logger(__name__)
 
@@ -86,6 +86,15 @@ def _get_coalition_for_nation(nation: str) -> str:
     """Get coalition (NATO/PACT) for a given nation code."""
     normalized_nation = _normalize_nation_code(nation)
     return NATION_TO_COALITION.get(normalized_nation, "NATO")  # Default to NATO if unknown
+
+
+def _set_or_add_member(obj, member_name: str, value: str) -> None:
+    """Set member value if it exists, otherwise add it (for donor compatibility)."""
+    member = obj.by_member(member_name, False)
+    if member:
+        member.v = value
+    else:
+        obj.add(f"{member_name} = {value}")
 
 
 def _collect_donor_divisions(source_path: Any) -> Dict[str, Any]:
@@ -204,17 +213,19 @@ def _add_national_divisions(source_path: Any, donor_divisions: Dict[str, Any]) -
             # Set interface order (hardcoded, starting at 500 to avoid vanilla division range)
             new_div_descr.v.by_m("InterfaceOrder").v = str(float(interface_order))
             
-            # Set division power classification
-            div_power = div_data.get("div_power", "DC_PWR1")
-            new_div_descr.v.by_m("DivisionPowerClassification").v = f"'{div_power}'"
+            # Remove deprecated members (DivisionPowerClassification, TypeTexture replaced by TypeToken)
+            if new_div_descr.v.by_member("DivisionPowerClassification", False):
+                new_div_descr.v.remove_by_member("DivisionPowerClassification")
+            if new_div_descr.v.by_member("TypeTexture", False):
+                new_div_descr.v.remove_by_member("TypeTexture")
             
             # Set coalition
             new_div_descr.v.by_m("DivisionCoalition").v = f"ECoalition/{coalition}"
             
-            # Set division tags
-            tags = spec_tags.get(div_type, spec_tags["general"])
-            tags_with_nation = tags + [nation, coalition]
-            tags_str = "[" + ", ".join([f"'{tag}'" for tag in tags_with_nation]) + "]"
+            # Set division tags: ['DEFAULT', nation, coalition, TypeToken]
+            type_token = DIV_TYPE_TO_TOKEN.get(div_type, DIV_TYPE_TO_TOKEN["general"])
+            tags = ["DEFAULT", nation, coalition, type_token]
+            tags_str = "[" + ", ".join([f"'{tag}'" for tag in tags]) + "]"
             new_div_descr.v.by_m("DivisionTags").v = tags_str
             
             # Set description hint title token
@@ -240,9 +251,26 @@ def _add_national_divisions(source_path: Any, donor_divisions: Dict[str, Any]) -
             country_id_to_use = donor_country_id if _normalize_nation_code(donor_country_id) == nation else nation
             new_div_descr.v.by_m("CountryId").v = f'"{country_id_to_use}"'
             
-            # Set type texture
-            type_texture = div_data.get("type_texture", "infantryReg")
-            new_div_descr.v.by_m("TypeTexture").v = f'"Texture_Division_Type_{type_texture}"'
+            # Set TypeToken (replaces TypeTexture) - add if donor lacks it
+            _set_or_add_member(new_div_descr.v, "TypeToken", f'"{type_token}"')
+            
+            # Set SummaryTextToken and HistoryTextToken (required in new format)
+            summary_tokens = div_data.get("summary_text", ("", ""))
+            if isinstance(summary_tokens, tuple) and len(summary_tokens) >= 2 and summary_tokens[1]:
+                _set_or_add_member(new_div_descr.v, "SummaryTextToken", f"'{summary_tokens[1]}'")
+                dictionary_entries.append((summary_tokens[1], summary_tokens[0]))
+            history_tokens = div_data.get("history_text", ("", ""))
+            if isinstance(history_tokens, tuple) and len(history_tokens) >= 2 and history_tokens[1]:
+                _set_or_add_member(new_div_descr.v, "HistoryTextToken", f"'{history_tokens[1]}'")
+                dictionary_entries.append((history_tokens[1], history_tokens[0]))
+            
+            # Set StandoutUnits (max 3 units/transports from division rules)
+            standout_units = div_data.get("standout_units", [])
+            if standout_units:
+                standout_str = "[\n        " + ",\n        ".join(
+                    f"$/GFX/Unit/Descriptor_Unit_{u}" for u in standout_units
+                ) + ",\n    ]"
+                _set_or_add_member(new_div_descr.v, "StandoutUnits", standout_str)
             
             # Set emblem texture - uses the division key (e.g., "US_general" -> "Texture_Division_Emblem_US_general")
             emblem_texture = f"Texture_Division_Emblem_{div_key}"

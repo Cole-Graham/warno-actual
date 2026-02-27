@@ -888,7 +888,7 @@ def _gather_mounted_weapons(turret: Any, salvo_data: Dict[str, int]) -> Dict[str
                 continue
             
             ammo_name = ammo_val.split("$/GFX/Weapon/Ammo_", 1)[1]
-            salvo_index = int(weapon.v.by_m("SalvoStockIndex").v)
+            salvo_index = int(weapon.v.by_m("AmmoBoxIndex").v)
             weapon_quantity = int(weapon.v.by_m("NbWeapons").v)
             
             weapon_data[ammo_name] = {

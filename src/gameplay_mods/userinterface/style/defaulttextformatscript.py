@@ -1,16 +1,18 @@
 """Functions for modifying UI text scripts."""
 
 from src.utils.logging_utils import setup_logger
+from src.utils.ndf_utils import find_obj_by_type
 
 logger = setup_logger(__name__)
 
 
 def edit_ui_style_defaulttextformatscript(source_path) -> None:
-    """GameData/UserInterface/Style/DefaultTextFormatScript.ndf"""
+    """GameData/UserInterface/Style/DefaultStyle/DefaultTextFormatScript.ndf"""
     logger.info("Adding gameplay text scripts to DefaultTextFormatScript.ndf")
     append_end = 0
     append_row = 0
-    commands_map = source_path.by_n("DefaultTextFormatScript").v.by_m("Commands").v
+    main_obj = find_obj_by_type(source_path, "TTextFormatScript")
+    commands_map = main_obj.v.by_m("Commands")
     ldr_tag = 'LDR'
     ldr_entry = (
         f'(\n'
@@ -147,7 +149,7 @@ def edit_ui_style_defaulttextformatscript(source_path) -> None:
     #     f'    )\n'
     #     f')'
     # )
-    for row_count, map_row in enumerate(commands_map, start=1):
+    for row_count, map_row in enumerate(commands_map.v, start=1):
         key = '"HOWZ"'
         if map_row.key == key:
             append_row = row_count - 1
@@ -164,16 +166,16 @@ def edit_ui_style_defaulttextformatscript(source_path) -> None:
     logger.info(f"Appending #{eighth_inf_tag} entry to DefaultTextFormatScript.ndf")
     logger.info(f"Appending #{ninth_panzer_tag} entry to DefaultTextFormatScript.ndf")
     # print(f"Appending #{wa_logo_tag} entry to DefaultTextFormatScript.ndf")
-    # commands_map.insert(append_end, wa_logo_entry)
-    commands_map.insert(append_end, light_equip_entry)
-    commands_map.insert(append_end, medium_equip_entry)
-    commands_map.insert(append_end, heavy_equip_entry)
-    commands_map.insert(append_end, veryheavy_equip_entry)
-    commands_map.insert(append_end, eighth_inf_entry)
-    commands_map.insert(append_end, ninth_panzer_entry)
-    commands_map.insert(append_end, third_arm_entry)
-    commands_map.insert(append_row, ldr_entry)
-    commands_map.insert(append_row, ldr_star_entry)
+    # commands_map.v.insert(append_end, wa_logo_entry)
+    commands_map.v.insert(append_end, light_equip_entry)
+    commands_map.v.insert(append_end, medium_equip_entry)
+    commands_map.v.insert(append_end, heavy_equip_entry)
+    commands_map.v.insert(append_end, veryheavy_equip_entry)
+    commands_map.v.insert(append_end, eighth_inf_entry)
+    commands_map.v.insert(append_end, ninth_panzer_entry)
+    commands_map.v.insert(append_end, third_arm_entry)
+    commands_map.v.insert(append_row, ldr_entry)
+    commands_map.v.insert(append_row, ldr_star_entry)
     
     # Define new texture commands to add
     new_entries = [
@@ -192,6 +194,6 @@ def edit_ui_style_defaulttextformatscript(source_path) -> None:
         )
         
         # Insert before "defense" entry
-        index = commands_map.by_k('"defense"').index
-        commands_map.insert(index, new_entry)
+        index = commands_map.v.by_k('"defense"').index
+        commands_map.v.insert(index, new_entry)
         logger.debug(f"Added text format command for {tag}")

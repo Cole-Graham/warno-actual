@@ -281,7 +281,7 @@ rda_unit_edits = {
                         "turret_edits": {
                             "YulBoneOrdinal": 2,
                         },
-                        "SalvoStockIndex": 1,
+                        "AmmoBoxIndex": 1,
                         "HandheldEquipmentKey": "'WeaponAlternative_2'",
                         "NbWeapons": 1,
                         "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",

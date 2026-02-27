@@ -283,10 +283,12 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("AutoCanon_HE_M693_F1_20mm", "autocannon", None, False): { # 17
         "Ammunition": {
             "hit_roll": {
+                "BaseCriticModifier": 68,
                 "Idling": 20,
                 "Moving": 10,
             },
             "parent_membr": {
+                "MaximumRangeHelicopterGRU": 1400,
                 "ImpactHappening": "'CanonPetitFK20HEFI'",
                 "PhysicalDamages": 0.2,
                 "SuppressDamages": 20,
@@ -304,6 +306,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("AutoCanon_HE_M693_F1_20mm_15acc", "autocannon", "AutoCanon_HE_M693_F1_20mm", True): { # 17
         "Ammunition": {
             "hit_roll": {
+                "BaseCriticModifier": 68,
                 "Idling": 15,
                 "Moving": 10,
             },
@@ -364,9 +367,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "SupplyCost": 5.0,
     },
     
-    ("AutoCanon_HE_T20_20mm", "autocannon", None, False): {
+    ("AutoCanon_HE_T20_20mm", "autocannon", "AutoCanon_HE_M693_F1_20mm", True): {
         "Ammunition": {
             "hit_roll": {
+                "BaseCriticModifier": 68,
                 "Idling": 20,
                 "Moving": 10,
             },
@@ -376,6 +380,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 #     (17, "MinimumRangeHelicopterGRU = 35"),
                 #     (17, "MinimumRangeAirplaneGRU = 35"),
                 # ],
+                "Name": "'EGPMWBVWWT'",
+                "MaximumRangeGRU": 1575,
                 "MaximumRangeAirplaneGRU": 1575,
                 "MinimumRangeHelicopterGRU": 35,
                 "MinimumRangeAirplaneGRU": 35,
@@ -799,7 +805,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "SupplyCost": 5.0,
     },
     
-    ("AutoCanon_AP_T20_20mm", "autocannon", None, False): {
+    ("AutoCanon_AP_T20_20mm", "autocannon", "AutoCanon_AP_M693_F1_20mm", True): {
         "Ammunition": {
             "Arme": {
                 "Index": 10,
@@ -810,6 +816,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 10,
             },
             "parent_membr": {
+                "Name": "'EGPMWBVWWT'",
                 "MaximumRangeGRU": 1575,
                 "TimeBetweenTwoShots": 0.1,
                 "TimeBetweenTwoSalvos": 1.4,

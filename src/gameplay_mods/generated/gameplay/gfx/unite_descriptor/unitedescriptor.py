@@ -296,8 +296,7 @@ def _handle_infantrysquad_module(logger, game_db, unit_data, edit_type, unit_nam
     """Handle TInfantrySquadModuleDescriptor for existing and new units"""
     
     if edit_type == "new_units":
-        module.v.by_m("InfantryMimeticName").v = f"'{unit_name}'"
-        module.v.by_m("WeaponUnitFXKey").v = f"'{unit_name}'"
+        module.v.by_m("SoldierMimeticName").v = f"'{unit_name}'"
         
         mimetic_descr = module.v.by_m("MimeticDescriptor")
         mimetic_descr.v.by_m("DescriptorId").v = f"GUID:{{{edits['GroupeCombatGUID']}}}"
@@ -306,7 +305,7 @@ def _handle_infantrysquad_module(logger, game_db, unit_data, edit_type, unit_nam
     if "strength" in edits:
         # Skip updating soldier count for specific units (strength affects HP but not soldier count)
         if unit_name not in UNITS_SKIP_SOLDIER_COUNT_UPDATE:
-            module.v.by_m("NbSoldatInGroupeCombat").v = str(edits["strength"])
+            module.v.by_m("SoldierCount").v = str(edits["strength"])
             logger.info(f"Updated {unit_name} strength to {edits['strength']}")
         else:
             logger.debug(f"Skipping soldier count update for {unit_name} (strength {edits['strength']} affects HP only)")

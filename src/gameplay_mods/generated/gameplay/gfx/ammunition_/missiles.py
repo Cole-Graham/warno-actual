@@ -165,7 +165,12 @@ def _create_new_descriptor(source_path, weapon_name, donor, data):
 
 
 def _get_existing_descriptor(source_path, weapon_name):
-    """Get an existing descriptor for a missile."""
+    """Get an existing descriptor for a missile.
+
+    For weapons where vanilla only has some salvo variants (e.g. Bomb_GBU_10 has
+    salvolength2 but not the base), we try all configured SalvoLengths to find
+    any existing variant to use as the base descriptor.
+    """
     # Find the missile data from the tuples
     missile_data = None
     for (name, category, donor, is_new), data in missiles.items():
@@ -177,32 +182,31 @@ def _get_existing_descriptor(source_path, weapon_name):
         logger.error(f"No missile data found for {weapon_name}")
         return None
 
-    # First try to find any salvo length variant
-    if "WeaponDescriptor" in missile_data and "SalvoLengths" in missile_data["WeaponDescriptor"]:
-        # Get the lowest salvo length
-        salvo_lengths = sorted(missile_data["WeaponDescriptor"]["SalvoLengths"])
-        lowest_salvo = salvo_lengths[0]
+    # Build list of namespaces to try, in preference order
+    namespaces_to_try = []
 
-        try:
-            # Try with salvo length suffix first
-            if lowest_salvo > 1:
-                existing = source_path.by_n(f"Ammo_{weapon_name}_salvolength{lowest_salvo}")
+    if "WeaponDescriptor" in missile_data and "SalvoLengths" in missile_data["WeaponDescriptor"]:
+        salvo_lengths = sorted(missile_data["WeaponDescriptor"]["SalvoLengths"])
+        for length in salvo_lengths:
+            if length == 1:
+                namespaces_to_try.append(f"Ammo_{weapon_name}")
             else:
-                existing = source_path.by_n(f"Ammo_{weapon_name}")
+                namespaces_to_try.append(f"Ammo_{weapon_name}_salvolength{length}")
+
+    # Always try base name as fallback
+    if f"Ammo_{weapon_name}" not in namespaces_to_try:
+        namespaces_to_try.append(f"Ammo_{weapon_name}")
+
+    for namespace in namespaces_to_try:
+        try:
+            existing = source_path.by_n(namespace, strict=False)
             if existing:
+                logger.debug(f"Using {namespace} as base descriptor for {weapon_name}")
                 return existing
         except Exception:  # noqa
             pass
 
-    # Fall back to base name if no salvo variants found
-    try:
-        existing = source_path.by_n(f"Ammo_{weapon_name}")
-        if existing:
-            return existing
-    except Exception:  # noqa
-        logger.error(f"Could not find missile {weapon_name}")
-        return None
-
+    logger.error(f"Could not find missile {weapon_name}")
     return None
 
 

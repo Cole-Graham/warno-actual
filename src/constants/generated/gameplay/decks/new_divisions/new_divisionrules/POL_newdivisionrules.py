@@ -40,7 +40,7 @@ POL_airborne_newdivisionrules = {
     "artillery": [
         ("BM14M_POL", 1, [3, 2, 0, 0]),
         ("MLRS_WP_8z_POL", 1, [0, 5, 0, 0], ["GAZ_66B_supply_POL"]),
-        ("Howz_D1_152mm_POL", 1, [0, 3, 2, 0], ["GAZ_66B_POL", "MTLB_trans_POL"]),
+        # ("Howz_D1_152mm_POL", 1, [0, 3, 2, 0], ["GAZ_66B_POL", "MTLB_trans_POL"]),
         ("Howz_M46_130mm_POL", 1, [4, 3, 2, 0], ["GAZ_66B_POL", "MTLB_trans_POL"]),
         ("Howz_A19_122mm_POL", 1, [5, 4, 3, 0], ["GAZ_66B_POL", "MTLB_trans_POL"]),
         ("Mortier_M43_160mm_POL", 1, [4, 3, 0, 0], ["GAZ_66B_POL", "MTLB_trans_POL"]),
@@ -223,7 +223,7 @@ POL_marines_newdivisionrules = {
     "artillery": [
         ("BM21_Grad_POL", 2, [3, 2, 0, 0]),
         ("2S1M_POL", 2, [0, 3, 2, 0]),
-        ("Howz_D1_152mm_POL", 2, [0, 3, 2, 0], ["BAV_485_POL", "OT_62_TOPAS_POL"]),
+        # ("Howz_D1_152mm_POL", 2, [0, 3, 2, 0], ["BAV_485_POL", "OT_62_TOPAS_POL"]),
         ("Howz_M46_130mm_POL", 2, [0, 4, 3, 2], ["BAV_485_POL", "OT_62_TOPAS_POL"]),
         ("Howz_A19_122mm_POL", 2, [0, 5, 4, 3], ["BAV_485_POL", "OT_62_TOPAS_POL"]),
         ("OT_64_SKOT_2_CMD_POL", 1, [0, 2, 0, 0]),
@@ -429,7 +429,7 @@ POL_motorized_newdivisionrules = {
         ("BM21_Grad_POL", 2, [3, 2, 0, 0]),
         ("DANA_POL", 2, [2, 0, 1, 0]),
         ("2S1_POL", 2, [3, 2, 0, 0]),
-        ("Howz_D1_152mm_POL", 2, [3, 2, 0, 0], ["KrAZ_255B_POL", "OT_64_SKOT_2A_POL"]),
+        # ("Howz_D1_152mm_POL", 2, [3, 2, 0, 0], ["KrAZ_255B_POL", "OT_64_SKOT_2A_POL"]),
         ("Howz_M46_130mm_POL", 2, [4, 3, 2, 0], ["KrAZ_255B_POL", "OT_64_SKOT_2A_POL"]),
         ("Howz_A19_122mm_POL", 2, [5, 4, 3, 0], ["KrAZ_255B_POL", "OT_64_SKOT_2A_POL"]),
         ("OT_64_SKOT_2_CMD_POL", 1, [0, 2, 0, 0]),

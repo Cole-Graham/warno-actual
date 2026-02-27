@@ -22,15 +22,15 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketAir_Zuni_1272mm_salvolength16", "rocket", None, False): { # 636
-        "Ammunition": {
-            "parent_membr": {
-                "RadiusSplashPhysicalDamagesGRU": 21,
-                "RadiusSplashSuppressDamagesGRU": 44,
-                "SupplyCost": 192.0,
-            },
-        },
-    },
+    # ("RocketAir_Zuni_1272mm_salvolength16", "rocket", None, False): { # 636
+    #     "Ammunition": {
+    #         "parent_membr": {
+    #             "RadiusSplashPhysicalDamagesGRU": 21,
+    #             "RadiusSplashSuppressDamagesGRU": 44,
+    #             "SupplyCost": 192.0,
+    #         },
+    #     },
+    # },
     
     ("RocketAir_SNEB_68mm_x18_helo", "rocket", None, False): {
         "Ammunition": {
@@ -126,7 +126,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("RocketAir_S5_57mm_avion_salvolength32", "rocket", "RocketAir_S5_57mm", True): {
+    ("RocketAir_S5_57mm_avion_salvolength32", "rocket", "RocketAir_S5_57mm_salvolength32", True): {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 20,

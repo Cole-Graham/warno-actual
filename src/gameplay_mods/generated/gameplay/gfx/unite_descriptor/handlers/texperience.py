@@ -12,8 +12,20 @@ def handle_experience_module(
 ) -> None:
     """Handle TExperienceModuleDescriptor for existing and new units"""
     
+    _edit_xp(logger, unit_data, edit_type, unit_name, edits, module)
     _set_multiplicative_xp_pack(logger, unit_data, edit_type, unit_name, edits, module)
     _set_helico_SF_xp_pack(logger, unit_data, edit_type, unit_name, edits, module)
+
+def _edit_xp(logger, unit_data, edit_type, unit_name, edits, module) -> None:
+    """Edit the XP pack for the unit"""
+    
+    if edits.get("XP", {}).get("pack", False): 
+        module.v.by_m("ExperienceLevelsPackDescriptor").v = f"~/ExperienceLevelsPackDescriptor_XP_pack_{edits['XP']}"
+        logger.info(f"Set {unit_name} XP pack to {edits['XP']['pack']}")
+        
+    if edits.get("XP", {}).get("multiplier", False):
+        module.v.by_m("ExperienceMultiplierBonusOnKill").v = f"{edits['XP']['multiplier']}"
+        
             
 def _set_multiplicative_xp_pack(logger, unit_data, edit_type, unit_name, edits, module) -> None:
     """Set the multiplicative accuracy XP pack for infantry units"""

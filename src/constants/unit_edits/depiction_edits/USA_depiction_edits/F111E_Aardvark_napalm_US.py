@@ -33,10 +33,10 @@ f111e_aardvark_napalm_us: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
                 )),
             },
         },
-        ("SubGenerators_Showroom_F111E_Aardvark_napalm_US", "TStaticMissileCarriageSubDepictionGenerator"): {
+        ("SubGenerators_Showroom_F111E_Aardvark_napalm_US", "TShowroomMissileCarriageSubDepictionGenerator"): {
             "Missiles": {
                 0: ("replace", (
-                    f'TStaticMissileCarriageSubDepictionMissileInfo'
+                    f'TShowroomMissileCarriageSubDepictionMissileInfo'
                     f'('
                     f'    Depiction = TemplateDepictionMissileShowroom'
                     f'    ('

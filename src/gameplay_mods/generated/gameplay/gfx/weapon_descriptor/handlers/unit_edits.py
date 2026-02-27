@@ -265,7 +265,7 @@ def _prepare_turret_template(turret: Any, index: int) -> Any:
     # Update weapon indices
     mounted_wpns = new_turret.v.by_m("MountedWeaponDescriptorList")
     for weapon in mounted_wpns.v:
-        weapon.v.by_m("SalvoStockIndex").v = str(index)
+        weapon.v.by_m("AmmoBoxIndex").v = str(index)
 
     # Update turret bone index
     new_yul_bone = index + 1
@@ -364,10 +364,10 @@ def _insert_new_weapons(weapon_descr: Any, wd_edits: Dict, turret_templates: Lis
         for turret_index, weapon_name in sorted_insert_list:
             old_name = ammo_db["renames_new_old"].get(weapon_name, None)
             if (old_name and old_name == ammo_name) or weapon_name == ammo_name:
-                # Update SalvoStockIndex to match the insert position
+                # Update AmmoBoxIndex to match the insert position
                 mounted_weapons = turret_template.v.by_m("MountedWeaponDescriptorList")
                 for mounted_weapon in mounted_weapons.v:
-                    mounted_weapon.v.by_m("SalvoStockIndex").v = str(turret_index)
+                    mounted_weapon.v.by_m("AmmoBoxIndex").v = str(turret_index)
                 
                 _apply_insert_edits(turret_template, turret_index, weapon_name)
                 logger.debug(f"Inserting {ammo_name} at index {turret_index}")

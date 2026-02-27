@@ -48,8 +48,8 @@ def _update_main_unit_button(source_path) -> None:
 
 def _update_corner_button(source_path) -> None:
     """Update corner button properties."""
-    unitcornerbutton_template = source_path.by_namespace("UnitCornerButton").v
-    unitcornerbutton_template.by_member("ButtonAlignementToAnchor").v = "[-3.35, 0.0]"
+    unitcornerbutton_template = source_path.by_namespace("UnitCornerButton")
+    unitcornerbutton_template.v.insert(2, 'ButtonAlignementToAnchor = [-3.35, 0.0]')
     logger.debug("Updated corner button alignment")
 
 

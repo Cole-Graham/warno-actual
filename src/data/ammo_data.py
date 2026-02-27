@@ -243,7 +243,7 @@ def build_ammo_salves_map(parse_source) -> dict:
             mounted_weapons = turret.v.by_m("MountedWeaponDescriptorList")
             for weapon in mounted_weapons.v:
                 ammunition = weapon.v.by_m("Ammunition").v.split('_', 1)[1]
-                salvo_stock_index = weapon.v.by_m("SalvoStockIndex").v
+                salvo_stock_index = weapon.v.by_m("AmmoBoxIndex").v
                 salvos = salves.v[int(salvo_stock_index)].v
                 
                 data = [int(salvo_stock_index), int(salvos)]

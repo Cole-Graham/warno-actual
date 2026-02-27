@@ -1004,14 +1004,14 @@ USA_NEW_UNITS = {
     #             ],
     #             "insert_edits": {
     #                 2: {
-    #                     "SalvoStockIndex": 2,
+    #                     "AmmoBoxIndex": 2,
     #                     "HandheldEquipmentKey": "'WeaponAlternative_3'",
     #                     "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
     #                     "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
     #                     "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
     #                 },
     #                 3: {
-    #                     "SalvoStockIndex": 3,
+    #                     "AmmoBoxIndex": 3,
     #                     "HandheldEquipmentKey": "'WeaponAlternative_4'",
     #                     "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_4'",
     #                     "WeaponIgnoredPropertyName": "'WeaponIgnored_4'",

@@ -247,6 +247,7 @@ SOV_NEW_UNITS = {
             },
         },
         "availability": [0, 0, 2, 0],
+        "UpgradeFromUnit": "T62MD_CMD2_SOV",
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply',
@@ -408,6 +409,7 @@ SOV_NEW_UNITS = {
             '_era',
         ],
         "availability": [0, 0, 2, 0],
+        "UpgradeFromUnit": "T72M1_CMD2_SOV",
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply',
@@ -548,7 +550,7 @@ SOV_NEW_UNITS = {
         "CadavreGUID": "9d790fe8-5668-4757-b532-6d70f411d232",
         "NewName": "MotRifles_RPG7V_TTsko_SOV",
         "GameName": {
-            "display": "MOTOSTRELKI",
+            "display": "MOTOPEKHOTA",
             "token": "UQYYVBRKGT",
         },
         "TagSet": {
@@ -562,11 +564,11 @@ SOV_NEW_UNITS = {
                 "Infanterie_IFV",
                 "Infanterie_Standard",
                 "Steelman_infanterie_autoresolve",
-                "UNITE_MotRifles_RPG7_TTsko_SOV",
+                "UNITE_MotRifles_RPG7V_TTsko_SOV",
                 "Unite",
             ],
         },
-        "strength": 8,
+        "strength": 7,
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 11,
@@ -575,7 +577,8 @@ SOV_NEW_UNITS = {
             },
             "equipmentchanges": {
                 "quantity": {
-                    "FM_AK_74": 7,
+                    "FM_AK_74": 6,
+                    "SAW_RPK_74_5_56mm": 1,
                 },
                 "replace": [
                     ("RocketInf_RPG27_105mm", "RocketInf_RPG7VL", "RocketInf_RPG27_105mm", "RocketInf_RPG7VL"),
@@ -647,7 +650,7 @@ SOV_NEW_UNITS = {
                 "replace": [("ATGM_9K111_Fagot", "ATGM_9K111M_Faktoriya")]
             },
         },
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "SpecialtiesList": [
                 'infantry_equip_heavy',
             ],
@@ -725,7 +728,7 @@ SOV_NEW_UNITS = {
                 "replace": [("ATGM_9K111_Fagot", "ATGM_9K111M_Faktoriya")]
             },
         },
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "SpecialtiesList": [
                 '_para',
                 'infantry_equip_heavy'
