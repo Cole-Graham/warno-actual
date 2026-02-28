@@ -160,7 +160,7 @@ POL_NEW_UNITS = {
             "token": "POLTFFBC",
         },
         "Factory": "EFactory/Tanks",
-        "CommandPoints": 200,
+        "CommandPoints": 205,
         "UnitRole": 'armor',
         "SpecialtiesList": [
             'leader_sov',
@@ -399,7 +399,7 @@ POL_NEW_UNITS = {
             "token": "POLTFFBD",
         },
         "Factory": "EFactory/Tanks",
-        "CommandPoints": 75,
+        "CommandPoints": 80,
         "UnitRole": 'armor',
         "SpecialtiesList": [
             'leader_sov',

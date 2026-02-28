@@ -422,6 +422,17 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
+    ("Howz_Canon_ML20S_towed_152mm", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 4.2,
+                "SuppressDamages": 350,
+                "RadiusSplashPhysicalDamagesGRU": 152,
+                "RadiusSplashSuppressDamagesGRU": 203,
+            },
+        },
+    },
+
     ("Howz_Canon_2A18_Howitzer_122mm", "howitzer", None, False): { # 357
         "Ammunition": {
             "parent_membr": {
