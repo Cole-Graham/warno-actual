@@ -48,7 +48,7 @@ pol_new_divs = {
             "MotRifles_SVD_POL": ["Star_266_POL", "MTLB_trans_POL", "BMP_1_SP2_POL", "BMP_2_POL", "OT_62_TOPAS_2AP_POL"],
             "Rifles_HMG_POL": ["Star_266_POL", "OT_64_SKOT_2A_POL", "OT_64_SKOT_2P_POL", "OT_64_SKOT_2AM_POL", "MTLB_trans_POL", "OT_62_TOPAS_2AP_POL"],
             "Rifles_POL": ["Star_266_POL", "OT_64_SKOT_2A_POL", "OT_64_SKOT_2P_POL", "OT_64_SKOT_2AM_POL", "MTLB_trans_POL", "OT_62_TOPAS_2AP_POL"],
-            "Engineers_POL": ["Star_266_POL", "OT_64_SKOT_2A_POL", "Unit_OT_64_SKOT_2P_POL", "MTLB_trans_POL", "OT_62_TOPAS_POL", "OT_62_TOPAS_2AP_POL"],
+            "Engineers_POL": ["Star_266_POL", "OT_64_SKOT_2A_POL", "OT_64_SKOT_2P_POL", "MTLB_trans_POL", "OT_62_TOPAS_POL", "OT_62_TOPAS_2AP_POL"],
             "Groupe_AT_POL": ["Star_266_POL", "OT_64_SKOT_2A_POL", "OT_64_SKOT_2AM_POL", "MTLB_trans_POL", "OT_62_TOPAS_SPG9_POL", "BMP_1_SP2_POL"],
             "ATteam_RCL_SPG9_POL": ["Star_266_POL", "OT_64_SKOT_2A_POL", "OT_64_SKOT_2AM_POL", "MTLB_trans_POL", "OT_62_TOPAS_SPG9_POL", "BMP_1_SP2_POL"],
             "Atteam_Fagot_POL": ["Star_266_POL", "OT_64_SKOT_2A_POL", "OT_64_SKOT_2AM_POL", "MTLB_trans_POL", "OT_62_TOPAS_SPG9_POL", "BMP_1_SP2_POL"],
