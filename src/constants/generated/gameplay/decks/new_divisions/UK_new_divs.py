@@ -29,10 +29,16 @@ uk_new_divs = {
             UK_motorized_newdivisionrules,
         ],
         "rule_exclusions": [
+            "HMGteam_M2HB_UK",
             "HMGteam_MAG_UK",
         ],
         "matrix_overrides": {
             "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        },
+        "transport_overrides": {
+            "Rifles_CMD2_UK": ["LandRover_UK", "FV432_UK", "MCV_80_Warrior_UK", "MCV_80_Warrior_MILAN_UK", "Lynx_AH_Mk1_UK", "Westland_Wessex_trans_UK"],
+            "Gun_Group_UK": ["LandRover_UK", "FV432_SCAT_UK", "FV432_MILAN_UK", "MCV_80_Warrior_UK", "MCV_80_Warrior_MILAN_UK", "MCV_80_Warrior_MILAN_ERA_UK"],
+            "LRRP_UK": ["LandRover_UK", "LandRover_Yeoman_UK", "Lynx_AH_Mk1_UK", "Lynx_AH_Mk7_SNEB_UK"],
         },
     },
     "UK_airborne": {
@@ -72,6 +78,7 @@ uk_new_divs = {
             UK_global_newdivisionrules,
         ],
         "rule_exclusions": [
+            "HMGteam_M2HB_UK",
             "HMGteam_MAG_UK",
         ],
         "matrix_overrides": {
@@ -95,11 +102,15 @@ uk_new_divs = {
             UK_mechanized_newdivisionrules,
         ],
         "rule_exclusions": [
+            "HMGteam_M2HB_UK",
             "HMGteam_MAG_UK",
         ],
         "matrix_overrides": {
             "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
-        },  
+        },
+        "transport_overrides": {
+            "Rifles_CMD2_UK": ["LandRover_UK", "FV432_UK", "MCV_80_Warrior_UK", "MCV_80_Warrior_MILAN_UK", "Lynx_AH_Mk1_UK", "Westland_Wessex_trans_UK"],
+        },
     },
     "UK_airborne_motorized": {
         "division_id": 5022,
@@ -118,6 +129,7 @@ uk_new_divs = {
             UK_motorized_newdivisionrules,
         ],
         "rule_exclusions": [
+            "HMGteam_M2HB_UK",
             "HMGteam_MAG_UK",
         ],
         "matrix_overrides": {
@@ -182,6 +194,9 @@ uk_new_divs = {
         ],
         "matrix_overrides": {
             "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        },
+        "transport_overrides": {
+            "Rifles_CMD2_UK": ["LandRover_UK", "FV432_UK", "MCV_80_Warrior_UK", "MCV_80_Warrior_MILAN_UK", "Lynx_AH_Mk1_UK", "Westland_Wessex_trans_UK"],
         },
     },
     # marine 5027, 1060
