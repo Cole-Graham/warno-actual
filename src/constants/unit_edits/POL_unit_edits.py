@@ -1825,7 +1825,8 @@ pol_unit_edits = {
          "capacities": {
             "remove_capacities": [],
         },
-        "ButtonTexture": "T55A_POL",
+        "ButtonTexture": "T55A_POL", 
+        "UpgradeFromUnit": "T54B_CMDactual_POL",
     },
 
     "T55A_POL": {  # T-55A
@@ -1912,6 +1913,7 @@ pol_unit_edits = {
     
     "UAZ_469_Fagot_Para_POL": {  # Desant./Spado. UAZ-469 Fagot/Faktoria
         "CommandPoints": 35,
+        "availability": [0, 10, 7, 0],
         "GameName": {
             "display": "SPADO. UAZ-469 FAKTORIA",
         },

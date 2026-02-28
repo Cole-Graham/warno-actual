@@ -62,7 +62,7 @@ POL_airborne_newdivisionrules = {
         ("PT76B_tank_POL", 2, [14, 11, 0, 0]),
         ("BRDM_2_Konkurs_POL", 1, [8, 6, 0, 0]),
         ("BRDM_2_Malyu_P_POL", 1, [10, 7, 0, 0]),
-        ("UAZ_469_Fagot_Para_POL", 2, [0, 12, 9, 0]),
+        ("UAZ_469_Fagot_Para_POL", 2, [0, 10, 7, 0]),
         ("AT_D48_85mm_Para_POL", 2, [0, 9, 7, 5], ["GAZ_66B_POL"]),
     ],
     "recon": [

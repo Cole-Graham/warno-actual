@@ -28,6 +28,9 @@ sov_new_divs = {
             SOV_mechanized_newdivisionrules,
             SOV_motorized_newdivisionrules,
         ],
+        "matrix_overrides": {
+            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        },
         "rule_exclusions": [
             "T62M_CMD2_SOV",
             "T62M_CMD_SOV",
@@ -35,7 +38,25 @@ sov_new_divs = {
             "T62M1_SOV",
             "T62M_SOV",
             "UAZ_469_CMD_SOV",
+            "DCA_ZU_23_2_SOV",
+            "HMGteam_AGS17_SOV",
+            "HMGteam_NSV_SOV",
+            "HMGteam_PKM_SOV",
+            "HMGteam_AGS17_TTsko_SOV",
+            "HMGteam_NSV_TTsko_SOV",
+            "HMGteam_PKM_TTsko_SOV",
+            "HMGteam_DShK_AA_SOV",
+            "ATteam_Fagot_SOV",
+            "ATteam_Faktoriya_SOV",
+            "ATteam_Konkurs_TTsko_SOV",
+            "MANPAD_Igla_SOV",
         ],
+        "transport_overrides": {
+            "MotRifles_CMD2_TTsko_SOV": ["LUAZ_967M_SOV", "BTR_80_SOV", "MTLB_transp_SOV", "Mi_8TV_non_arme_SOV", "Mi_8MTV_SOV", "Mi_24D_Desant_SOV"],
+            "MotRifles_CMD_TTsko_SOV": ["GAZ_66_SOV", "BMP_1_SP2_SOV", "BMP_1P_SOV", "BMP_2_SOV", "BMP_3_SOV"],
+            "Scout_SIGINT_SOV": ["LUAZ_967M_SOV", "LUAZ_967M_AGL_SOV", "Mi_8TV_non_arme_SOV", "Mi_8TV_SOV", "Mi_8MTV_SOV", "Mi_24D_Desant_SOV"],
+            "Scout_SpetsnazGRU_Stinger_SOV": ["LUAZ_967M_SOV", "LUAZ_967M_AGL_SOV", "Mi_8TV_non_arme_SOV", "Mi_8TV_SOV", "Mi_8MTV_SOV", "Mi_24D_Desant_SOV"],
+        },
     },
     "SOV_airborne": {
         "division_id": 6002,
@@ -52,6 +73,9 @@ sov_new_divs = {
             SOV_airborne_newdivisionrules,
             SOV_global_newdivisionrules,
         ],
+        "matrix_overrides": {
+            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        },
     },
     "SOV_airborne_armored": {
         "division_id": 6003,
@@ -69,14 +93,28 @@ sov_new_divs = {
             SOV_armored_newdivisionrules,
             SOV_global_newdivisionrules,
         ],
+        "matrix_overrides": {
+            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        },
         "rule_exclusions": [
             "T62M_CMD2_SOV",
             "T62M_CMD_SOV",
             "T62MV_SOV",
             "T62M1_SOV",
             "T62M_SOV",
-            "UAZ_469_CMD_SOV"
+            "UAZ_469_CMD_SOV",
+            "HMGteam_AGS17_SOV",
+            "HMGteam_NSV_SOV",
+            "HMGteam_PKM_SOV",
+            "ATteam_Fagot_SOV",
+            "ATteam_Faktoriya_SOV",
+            "ATteam_Konkurs_TTsko_SOV",
+            "MANPAD_Igla_SOV",
         ],
+        "transport_overrides": {
+            "MotRifles_CMD2_TTsko_SOV": ["LUAZ_967M_SOV", "BTR_80_SOV", "MTLB_transp_SOV", "Mi_8TV_non_arme_SOV", "Mi_8MTV_SOV", "Mi_24D_Desant_SOV"],
+            "Scout_SIGINT_SOV": ["LUAZ_967M_SOV", "LUAZ_967M_AGL_SOV", "Mi_8TV_non_arme_SOV", "Mi_8TV_SOV", "Mi_8MTV_SOV", "Mi_24D_Desant_SOV"],
+        },
     },
     # airborne_marine 6004, 2003
     "SOV_airborne_mechanized": {
@@ -95,9 +133,25 @@ sov_new_divs = {
             SOV_global_newdivisionrules,
             SOV_mechanized_newdivisionrules,
         ],
+        "matrix_overrides": {
+            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        },
         "rule_exclusions": [
-            "UAZ_469_CMD_SOV"
+            "UAZ_469_CMD_SOV",
+            "DCA_ZU_23_2_SOV",
+            "HMGteam_AGS17_TTsko_SOV",
+            "HMGteam_NSV_TTsko_SOV",
+            "HMGteam_PKM_TTsko_SOV",
+            "HMGteam_DShK_AA_SOV",
+            "ATteam_Fagot_SOV",
+            "ATteam_Faktoriya_SOV",
+            "ATteam_Konkurs_TTsko_SOV",
+            "MANPAD_Igla_SOV",
         ],
+        "transport_overrides": {
+            "MotRifles_CMD2_TTsko_SOV": ["LUAZ_967M_SOV", "BMP_1P_SOV", "MTLB_transp_SOV", "Mi_8TV_non_arme_SOV", "Mi_8MTV_SOV", "Mi_24D_Desant_SOV"],
+            "Scout_SIGINT_SOV": ["LUAZ_967M_SOV", "LUAZ_967M_AGL_SOV", "Mi_8TV_non_arme_SOV", "Mi_8TV_SOV", "Mi_8MTV_SOV", "Mi_24D_Desant_SOV"],
+        },
     },
     "SOV_airborne_motorized": {
         "division_id": 6006,
@@ -115,14 +169,31 @@ sov_new_divs = {
             SOV_global_newdivisionrules,
             SOV_motorized_newdivisionrules,
         ],
+        "matrix_overrides": {
+            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        },
         "rule_exclusions": [
             "T62M_CMD2_SOV",
             "T62M_CMD_SOV",
             "T62MV_SOV",
             "T62M1_SOV",
             "T62M_SOV",
-            "UAZ_469_CMD_SOV"
+            "UAZ_469_CMD_SOV",
+            "UAZ_469_AGL_SOV",
+            "HMGteam_AGS17_SOV",
+            "HMGteam_NSV_SOV",
+            "HMGteam_PKM_SOV",
+            "HMGteam_DShK_AA_SOV",
+            "ATteam_Fagot_SOV",
+            "ATteam_Faktoriya_SOV",
+            "ATteam_Konkurs_TTsko_SOV",
+            "MANPAD_Igla_SOV",
         ],
+        "transport_overrides": {
+            "MotRifles_CMD2_TTsko_SOV": ["LUAZ_967M_SOV", "BTR_80_SOV", "Mi_8TV_non_arme_SOV", "Mi_8MTV_SOV", "Mi_24D_Desant_SOV"],
+            "Scout_SIGINT_SOV": ["LUAZ_967M_SOV", "LUAZ_967M_AGL_SOV", "Mi_8TV_non_arme_SOV", "Mi_8TV_SOV", "Mi_8MTV_SOV", "Mi_24D_Desant_SOV"],
+            "Scout_SpetsnazGRU_Stinger_SOV": ["LUAZ_967M_SOV", "LUAZ_967M_AGL_SOV", "Mi_8TV_non_arme_SOV", "Mi_8TV_SOV", "Mi_8MTV_SOV", "Mi_24D_Desant_SOV"],
+        },
     },
     "SOV_armored": {
         "division_id": 6007,
@@ -139,6 +210,9 @@ sov_new_divs = {
             SOV_armored_newdivisionrules,
             SOV_global_newdivisionrules,
         ],
+        "matrix_overrides": {
+            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        },
     },
     # armored_marine 6008, 2007
     "SOV_armored_mechanized": {
@@ -157,6 +231,21 @@ sov_new_divs = {
             SOV_global_newdivisionrules,
             SOV_mechanized_newdivisionrules,
         ],
+         "matrix_overrides": {
+            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        },
+        "rule_exclusions": [
+            "HMGteam_AGS17_SOV",
+            "HMGteam_NSV_SOV",
+            "HMGteam_PKM_SOV",
+            "MANPAD_Igla_SOV",
+        ],
+        "transport_overrides": {
+            "MotRifles_CMD_TTsko_SOV": ["GAZ_66_SOV", "BMP_1_SP2_SOV", "BMP_1P_SOV", "BMP_2_SOV", "BMP_2AG_SOV", "BMP_3_SOV"],
+            "MotRifles_RPG7VL_TTsko_SOV":  ["GAZ_66_SOV", "BMP_1_SP2_SOV", "BMP_1P_SOV", "BMP_2_SOV", "BMP_2AG_SOV", "BMP_3_SOV"],
+            "MotRifles_TTsko_SOV":  ["GAZ_66_SOV", "BMP_1_SP2_SOV", "BMP_1P_SOV", "BMP_2_SOV", "BMP_2AG_SOV", "BMP_3_SOV"],
+            "MotRifles_Metis_TTsko_SOV":  ["GAZ_66_SOV", "BMP_1_SP2_SOV", "BMP_1P_SOV", "BMP_2_SOV", "BMP_2AG_SOV", "BMP_3_SOV"],
+        },
     },
     "SOV_armored_motorized": {
         "division_id": 6010,
@@ -174,6 +263,12 @@ sov_new_divs = {
             SOV_global_newdivisionrules,
             SOV_motorized_newdivisionrules,
         ],
+         "matrix_overrides": {
+            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        },
+        "transport_overrides": {
+            "MotRifles_CMD2_TTsko_SOV": ["UAZ_469_SOV", "BTR_80_SOV", "Mi_2_trans_SOV", "Mi_8TV_non_arme_SOV", "Mi_8TV_SOV"],
+        },
     },
     # marine 6011, 2010
     # marine_mechanized 6012, 2011
@@ -193,6 +288,9 @@ sov_new_divs = {
             SOV_global_newdivisionrules,
             SOV_mechanized_newdivisionrules,
         ],
+        "matrix_overrides": {
+            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        },
     },
     "SOV_mechanized_motorized": {
         "division_id": 6015,
@@ -210,6 +308,18 @@ sov_new_divs = {
             SOV_mechanized_newdivisionrules,
             SOV_motorized_newdivisionrules,
         ],
+         "matrix_overrides": {
+            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        },
+        "rule_exclusions": [
+            "HMGteam_AGS17_TTsko_SOV",
+            "HMGteam_NSV_TTsko_SOV",
+            "HMGteam_PKM_TTsko_SOV",
+            "MANPAD_Igla_TTsko_SOV",
+        ],
+        "transport_overrides": {
+            "MotRifles_CMD2_TTsko_SOV": ["UAZ_469_SOV", "BTR_80_SOV", "Mi_2_trans_SOV", "Mi_8TV_non_arme_SOV", "Mi_8TV_SOV"],
+        },
     },
     "SOV_motorized": {
         "division_id": 6016,
@@ -226,5 +336,8 @@ sov_new_divs = {
             SOV_motorized_newdivisionrules,
             SOV_global_newdivisionrules,
         ],
+        "matrix_overrides": {
+            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        },
     },
 }

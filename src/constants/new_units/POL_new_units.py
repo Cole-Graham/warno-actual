@@ -159,7 +159,7 @@ POL_NEW_UNITS = {
             "display": "#CMD T-54BD",
             "token": "POLTFFBC",
         },
-        "Factory": "EFactory/Tanks",
+        "Factory": "EFactory/Logistic",
         "CommandPoints": 205,
         "UnitRole": 'armor',
         "SpecialtiesList": [
@@ -937,6 +937,7 @@ POL_NEW_UNITS = {
         "SpecialtiesList": [
                 '_para',
             ],
+        "CommandPoints": 35,
         "UpgradeFromUnit": None,
         "availability": [0, 9, 7, 5],
         "DeploymentShift": 1750,
