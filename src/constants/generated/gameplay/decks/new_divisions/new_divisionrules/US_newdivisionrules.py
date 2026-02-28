@@ -4,7 +4,7 @@
 US_airborne_newdivisionrules = {
     "logistic": [
         ("Rifles_half_CMD2_US", 2, [0, 2, 0, 0], ["M998_Humvee_US", "M998_Humvee_HMG_US", "UH60A_Black_Hawk_US", "CH47_Chinook_US"]),
-        ("M1025_Humvee_CMD_US", 2, [0, 4, 0, 0]),
+        ("M1025_Humvee_CMD_US", 2, [0, 3, 0, 0]),
         ("M551A1_TTS_Sheridan_CMD2_US", 1, [0, 0, 3, 0]),
         ("OH58C_CMD_US", 1, [0, 3, 0, 0]),
         ("UH60A_CO_US", 2, [0, 3, 0, 0]),
@@ -268,7 +268,7 @@ US_global_newdivisionrules = {
 US_mechanized_newdivisionrules = {
     "logistic": [
         ("FOB_US", 1, [0, 2, 0, 0]),
-        ("Rifles_half_CMD2_US", 2, [0, 2, 0, 0], ["M998_Humvee_US", "M113_Dragon_US", "M2A1_Bradley_IFV_US", "UH60A_Black_Hawk_US", "CH47_Chinook_US"]),
+        ("Rifles_half_CMD2_US", 2, [0, 2, 0, 0], ["M998_Humvee_US", "M113_Dragon_US", "M2A1_Bradley_IFV_US", "M2A2_Bradley_IFV_US", "UH60A_Black_Hawk_US", "CH47_Chinook_US"]),
         ("M1A1_Abrams_CMD2_US", 1, [0, 0, 2, 0]),
         ("M1IP_Abrams_CMD2_US", 1, [0, 0, 2, 0]),
         ("M1_Abrams_CMD2_US", 1, [0, 0, 2, 0]),
@@ -426,7 +426,7 @@ US_motorized_newdivisionrules = {
         ("Ranger_Dragon_US", 1, [0, 0, 4, 3], ["M1038_Humvee_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US", "UH1H_Huey_US", "UH60A_Black_Hawk_US"]),
         ("Engineers_US", 1, [0, 6, 4, 0], ["M35_trans_US"]),
         ("Engineers_Dragon_US", 1, [0, 6, 4, 0], ["M35_trans_US"]),
-        ("Engineers_Flash_US", 1, [0, 8, 6, 0], ["M35_trans_US", "CUCV_HMG_US", "CUCV_AGL_US"]),
+        ("Engineers_Flash_US", 1, [0, 8, 6, 0], ["M998_Humvee_US", "CUCV_HMG_US", "CUCV_AGL_US"]),
         ("LightRifles_Dragon_US", 2, [10, 7, 0, 0], ["M1038_Humvee_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US", "UH1H_Huey_US", "UH60A_Black_Hawk_US"]),
         ("LightRifles_AT4_US", 2, [10, 7, 0, 0], ["M1038_Humvee_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US", "UH1H_Huey_US", "UH60A_Black_Hawk_US"]),
         ("LightRifles_RCL_US", 2, [10, 7, 0, 0], ["M1038_Humvee_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US", "UH1H_Huey_US", "UH60A_Black_Hawk_US"]),

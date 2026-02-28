@@ -4,7 +4,7 @@
 
 UK_airborne_newdivisionrules = {
     "logistic": [
-        ("Rifles_CMD2_UK", 2, [0, 2, 0, 0], ["Bedford_MJ_4t_trans_UK", "LandRover_UK", "Lynx_AH_Mk1_UK"]),
+        ("Rifles_CMD2_UK", 2, [0, 2, 0, 0], ["LandRover_UK", "Lynx_AH_Mk1_UK"]),
         ("LandRover_CMD_UK", 2, [0, 4, 0, 0]),
         ("FV105_Sultan_UK", 1, [0, 3, 0, 0]),
         ("FV4201_Chieftain_Mk9_CMD2_UK", 1, [0, 0, 2, 0]),
@@ -35,8 +35,8 @@ UK_airborne_newdivisionrules = {
         ("Paratroopers_MILAN_TA_UK", 2, [8, 0, 0, 0], ["Bedford_MJ_4t_trans_UK"]),
         ("RMP_UK", 2, [0, 12, 9, 0], ["LandRover_MP_UK"]),
         ("ATteam_Milan_2_para_UK", 2, [0, 6, 4, 0], ["Supacat_ATMP_UK", "Lynx_AH_Mk1_UK"]),
-        ("RCL_L6_Wombat_para_UK", 2, [0, 8, 6, 0], ["LandRover_UK"]),
-        ("HMGteam_M2HB_para_UK", 1, [0, 9, 7, 0], ["LandRover_UK"]),
+        ("RCL_L6_Wombat_para_UK", 2, [0, 8, 6, 0], ["Bedford_MJ_4t_trans_UK"]),
+        ("HMGteam_M2HB_para_UK", 1, [0, 10, 7, 0], ["LandRover_UK"]),
         ("HMGteam_MAG_para_UK", 1, [0, 12, 9, 0], ["LandRover_UK"]),
         ("LandRover_WOMBAT_Gurkhas_UK", 1, [0, 12, 9, 0], [None, "CH47_Chinook_UK"]),
     ],
@@ -59,7 +59,7 @@ UK_airborne_newdivisionrules = {
     ],
     "recon": [
         ("Pathfinders_UK", 1, [0, 0, 4, 3], ["Rover_101FC_UK"]),
-        ("LRRP_UK", 1, [0, 0, 4, 3], ["LandRover_UK", "LandRover_Yeoman_UK", "Lynx_AH_Mk1_UK", "Lynx_AH_Mk7_SNEB_UK"]),
+        ("LRRP_UK", 1, [0, 0, 4, 3], ["LandRover_UK", "LandRover_Yeoman_UK", "Saxon_UK", "Lynx_AH_Mk1_UK", "Lynx_AH_Mk7_SNEB_UK"]),
         ("Scout_Para_UK", 2, [0, 7, 5, 0], ["Rover_101FC_UK"]),
         ("Scout_Airmobile_UK", 2, [0, 6, 4, 0], ["Lynx_AH_Mk1_UK"]),
         ("Sniper_UK", 1, [0, 3, 2, 0], ["LandRover_UK", "LandRover_Yeoman_UK"]),
@@ -98,7 +98,7 @@ UK_airborne_newdivisionrules = {
 
 UK_armored_newdivisionrules = {
     "logistic": [
-        ("Rifles_CMD2_UK", 2, [0, 2, 0, 0], ["Bedford_MJ_4t_trans_UK", "FV432_UK", "MCV_80_Warrior_UK", "Lynx_AH_Mk1_UK"]),
+        ("Rifles_CMD2_UK", 2, [0, 2, 0, 0], ["LandRover_UK", "FV432_UK", "MCV_80_Warrior_UK", "MCV_80_Warrior_MILAN_UK", "Lynx_AH_Mk1_UK"]),
         ("LandRover_CMD_UK", 1, [0, 4, 0, 0]),
         ("FV105_Sultan_UK", 1, [0, 3, 0, 0]),
         ("MCV_80_Warrior_CMD_UK", 1, [0, 0, 3, 0]),
@@ -145,7 +145,7 @@ UK_armored_newdivisionrules = {
         ("FV4201_Chieftain_Mk9_CMD_UK", 1, [0, 0, 4, 0]),
         ("Centurion_Mk13_CMD_UK", 1, [0, 6, 0, 0]),
         ("Challenger_1_Mk3_UK", 2, [0, 0, 4, 3]),
-        ("Challenger_1_Mk1_UK", 3, [0, 4, 3, 0]),
+        ("Challenger_1_Mk1_UK", 3, [0, 6, 4, 0]),
         ("FV4201_Chieftain_UK", 2, [0, 8, 6, 0]),
         ("FV4201_Chieftain_Mk9_UK", 2, [8, 6, 0, 0]),
         ("FV4201_Chieftain_Mk6_UK", 2, [10, 7, 0, 0]),
@@ -174,7 +174,7 @@ UK_armored_newdivisionrules = {
         ("DCA_Javelin_LML_UK", 2, [6, 4, 0, 0], ["Bedford_MJ_4t_trans_UK"]),
         ("DCA_Rapier_UK", 2, [6, 4, 0, 0], ["Rover_101FC_supply_UK"]),
         ("DCA_Rapier_Darkfire_UK", 2, [4, 3, 0, 0], ["Rover_101FC_supply_UK"]),
-        ("DCA_Bloodhound_UK", 1, [0, 2, 0, 0], ["Bedford_MJ_4t_UK"]),
+        ("DCA_Bloodhound_UK", 1, [0, 3, 0, 0], ["Bedford_MJ_4t_UK"]),
         ("Tracked_Rapier_UK", 2, [4, 3, 0, 0]),
     ],
     "heli": [
@@ -205,7 +205,7 @@ UK_global_newdivisionrules = {
         ("Jaguar_HE1_UK", 1, [0, 2, 0, 0]),
         ("Jaguar_HE2_UK", 1, [0, 2, 0, 0]),
         ("Jaguar_RKT_UK", 1, [0, 3, 2, 0]),
-        ("Tornado_ADV_UK", 2, [0, 3, 2, 0]),
+        ("Tornado_ADV_UK", 2, [0, 2, 0, 1]),
         ("Tornado_ADV_clu_UK", 1, [0, 2, 0, 0]),
         ("Tornado_ADV_HE_UK", 1, [0, 2, 0, 0]),
         ("Tornado_ADV_SEAD_UK", 1, [0, 2, 0, 1]),
@@ -214,7 +214,7 @@ UK_global_newdivisionrules = {
 
 UK_mechanized_newdivisionrules = {
     "logistic": [
-        ("Rifles_CMD2_UK", 2, [0, 2, 0, 0], ["Bedford_MJ_4t_trans_UK", "Westland_Wessex_trans_UK", "MCV_80_Warrior_UK", "FV432_UK"]),
+        ("Rifles_CMD2_UK", 2, [0, 2, 0, 0], ["LandRover_UK", "Westland_Wessex_trans_UK", "MCV_80_Warrior_UK", "FV432_UK"]),
         ("LandRover_CMD_UK", 1, [0, 4, 0, 0]),
         ("FV105_Sultan_UK", 1, [0, 3, 0, 0]),
         ("MCV_80_Warrior_CMD_UK", 1, [0, 0, 3, 0]),
@@ -248,7 +248,7 @@ UK_mechanized_newdivisionrules = {
         ("RMP_UK", 2, [0, 12, 9, 0], ["VW_T2b_MP_UK"]),
         ("ATteam_Milan_1_UK", 2, [9, 7, 5, 0], ["FV432_UK", "FV432_MILAN_UK"]),
         ("ATteam_Milan_2_UK", 2, [6, 4, 0, 0], ["FV432_UK", "FV432_MILAN_UK", "FV120_Spartan_MCT_UK"]),
-        ("RCL_L6_Wombat_UK", 2, [8, 6, 0, 0], ["FV432_UK", "FV432_WOMBAT_UK"]),
+        ("RCL_L6_Wombat_UK", 2, [8, 6, 0, 0], ["FV432_UK"]),
         ("HMGteam_M2HB_M63_UK", 1, [10, 7, 0, 0], ["FV432_UK"]),
         ("HMGteam_MAG_UK", 1, [12, 9, 0, 0], ["FV432_UK"]),
         ("LandRover_WOMBAT_UK", 1, [12, 9, 0, 0]),
@@ -271,7 +271,7 @@ UK_mechanized_newdivisionrules = {
         ("FV4201_Chieftain_CMD_UK", 1, [0, 0, 4, 0]),
         ("FV4201_Chieftain_Mk9_CMD_UK", 1, [0, 0, 4, 0]),
         ("Centurion_Mk13_CMD_UK", 1, [0, 6, 0, 0]),
-        ("Challenger_1_Mk1_UK", 2, [0, 4, 3, 0]),
+        ("Challenger_1_Mk1_UK", 2, [0, 6, 4, 0]),
         ("FV4201_Chieftain_UK", 2, [0, 8, 6, 0]),
         ("FV4201_Chieftain_Mk9_UK", 2, [8, 6, 0, 0]),
         ("FV4201_Chieftain_Mk6_UK", 2, [10, 7, 0, 0]),
@@ -304,7 +304,7 @@ UK_mechanized_newdivisionrules = {
         ("DCA_Javelin_LML_UK", 2, [6, 4, 0, 0], ["Bedford_MJ_4t_trans_UK"]),
         ("DCA_Rapier_UK", 2, [6, 4, 0, 0], ["Rover_101FC_supply_UK"]),
         ("DCA_Rapier_Darkfire_UK", 2, [4, 3, 0, 0], ["Rover_101FC_supply_UK"]),
-        ("DCA_Bloodhound_UK", 1, [0, 2, 0, 0], ["Bedford_MJ_4t_UK"]),
+        ("DCA_Bloodhound_UK", 1, [0, 3, 0, 0], ["Bedford_MJ_4t_UK"]),
         ("Tracked_Rapier_UK", 2, [4, 3, 0, 0]),
     ],
     "heli": [
@@ -321,7 +321,7 @@ UK_mechanized_newdivisionrules = {
 
 UK_motorized_newdivisionrules = {
     "logistic": [
-        ("Rifles_CMD2_UK", 2, [0, 2, 0, 0], ["Bedford_MJ_4t_trans_UK", "Lynx_AH_Mk1_UK", "LandRover_UK"]),
+        ("Rifles_CMD2_UK", 2, [0, 2, 0, 0], ["LandRover_UK", "Lynx_AH_Mk1_UK"]),
         ("LandRover_CMD_UK", 1, [0, 4, 0, 0]),
         ("FV1612_Humber_CMD_UK", 1, [0, 3, 0, 0]),
         ("Saxon_CMD_UK", 2, [0, 0, 3, 0]),
@@ -350,7 +350,7 @@ UK_motorized_newdivisionrules = {
         ("Guards_UK", 3, [10, 7, 0, 0], ["FV1611_Humber_Pig_UK", "FV1611a_Kremlin_Pig_UK"]),
         ("Guards_CarlG_UK", 3, [10, 7, 0, 0], ["FV1611_Humber_Pig_UK", "FV1611a_Kremlin_Pig_UK"]),
         ("Rifles_Berlin_UK", 3, [0, 6, 4, 0], ["Bedford_MJ_4t_trans_UK", "Saxon_UK"]),
-        ("Gun_Group_UK", 2, [12, 9, 0, 0], ["Bedford_MJ_4t_trans_UK", "Saxon_UK"]),
+        ("Gun_Group_UK", 2, [12, 9, 0, 0], ["LandRover_UK"]),
         ("Rifles_Patrol_UK", 2, [10, 7, 0, 0], ["FV1611_Humber_Pig_UK", "FV1611a_Kremlin_Pig_UK"]),
         ("Engineers_UK", 3, [0, 7, 5, 0], ["Bedford_MJ_4t_trans_UK", "Saxon_UK"]),
         ("Engineers_AT_UK", 3, [0, 6, 4, 0], ["Bedford_MJ_4t_trans_UK", "Saxon_UK"]),
@@ -358,11 +358,11 @@ UK_motorized_newdivisionrules = {
         ("Engineers_TA_UK", 2, [8, 0, 0, 0], ["Bedford_MJ_4t_trans_UK", "FV603_Saracen_UK"]),
         ("Gun_Group_TA_UK", 2, [12, 0, 0, 0], ["Bedford_MJ_4t_trans_UK", "FV603_Saracen_UK"]),
         ("AT_Group_TA_UK", 2, [12, 0, 0, 0], ["Bedford_MJ_4t_trans_UK", "FV603_Saracen_UK"]),
-        ("RMP_UK", 2, [0, 12, 9, 0], ["LandRover_UK", "LandRover_MP_UK"]),
+        ("RMP_UK", 2, [0, 12, 9, 0], ["LandRover_MP_UK"]),
         ("ATteam_Milan_1_UK", 2, [9, 7, 5, 0], ["LandRover_UK", "Saxon_UK"]),
         ("ATteam_Milan_2_UK", 2, [6, 4, 0, 0], ["LandRover_UK", "Saxon_UK"]),
-        ("RCL_L6_Wombat_UK", 2, [8, 6, 0, 0], ["LandRover_UK", "Saxon_UK"]),
-        ("HMGteam_M2HB_UK", 1, [9, 7, 0, 0], ["LandRover_UK", "Saxon_UK"]),
+        ("RCL_L6_Wombat_UK", 2, [8, 6, 0, 0], ["Bedford_MJ_4t_trans_UK"]),
+        ("HMGteam_M2HB_UK", 1, [10, 7, 0, 0], ["LandRover_UK", "Saxon_UK"]),
         ("HMGteam_MAG_UK", 1, [12, 9, 0, 0], ["LandRover_UK", "Saxon_UK"]),
         ("LandRover_WOMBAT_UK", 2, [12, 9, 0, 0]),
     ],

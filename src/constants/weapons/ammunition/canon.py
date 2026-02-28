@@ -84,10 +84,30 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("Canon_AP_100mm_D10T_early_HEAT", "canon", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 16,
+            },
+        },
+    },
+
     ("Canon_HEAT_105mm_L7_Centurion_AVRE", "canon", None, False): {
         "Ammunition": {
             "Arme": {
                 "Index": 17,
+            },
+        },
+    },
+
+    ("Canon_AP_115mm_2A21", "canon", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 18,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 6.6,
+                "TimeBetweenTwoSalvos": 6.6,
             },
         },
     },
@@ -268,6 +288,16 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
+    ("Canon_HE_115mm_2A21", "canon", None, False): { # 211
+        "Ammunition": {
+            "parent_membr": {
+                "TimeBetweenTwoShots": 6.6,
+                "TimeBetweenTwoSalvos": 6.6,
+                "PhysicalDamages": 1.4,
+            },
+        },
+    },
+
     ("Canon_HE_125_mm_2A46M_late_T80UD", "canon", None, False): { # 211
         "Ammunition": {
             "hit_roll": {
@@ -349,8 +379,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "TimeBetweenTwoShots": 6.6,
                 "TimeBetweenTwoSalvos": 6.6,
-            },
-            "parent_membr": {
                 "MaximumRangeGRU": 1925,
             },
         },
@@ -554,22 +582,20 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("Canon_AP_125_mm_2A46_T64A_late", "canon", None, False): { # 
+    ("Canon_AP_125_mm_2A46_T64A_late", "canon", None, False): { # T-64AV 
         "Ammunition": {
             "Arme": {
-                "Index": 20, # KE
+                "Index": 30, # KE
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 6.6,
                 "TimeBetweenTwoSalvos": 6.6,
-            },
-            "parent_membr": {
-                "MaximumRangeGRU": 1925,
+                "MaximumRangeGRU": 1925,  
             },
         },
     },
 
-    ("Canon_AP_125_mm_2A46_T64A", "canon", None, False): { # 132
+    ("Canon_AP_125_mm_2A46_T64A", "canon", None, False): { # T-64A 1983, T-64AM
         "Ammunition": {
             "parent_membr": {
                 "TimeBetweenTwoShots": 6.6,

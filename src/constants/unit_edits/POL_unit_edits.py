@@ -1816,7 +1816,7 @@ pol_unit_edits = {
     },
 
     "T54B_POL": {  # T-54B
-        "CommandPoints": 65,
+        "CommandPoints": 70,
         "availability": [10, 7, 0, 0],
          "SpecialtiesList": {
             "overwrite_all": [
@@ -1825,7 +1825,8 @@ pol_unit_edits = {
          "capacities": {
             "remove_capacities": [],
         },
-        "ButtonTexture": "T55A_POL",
+        "ButtonTexture": "T55A_POL", 
+        "UpgradeFromUnit": "T54B_CMDactual_POL",
     },
 
     "T55A_POL": {  # T-55A
@@ -1912,6 +1913,7 @@ pol_unit_edits = {
     
     "UAZ_469_Fagot_Para_POL": {  # Desant./Spado. UAZ-469 Fagot/Faktoria
         "CommandPoints": 35,
+        "availability": [0, 10, 7, 0],
         "GameName": {
             "display": "SPADO. UAZ-469 FAKTORIA",
         },
@@ -2357,9 +2359,9 @@ pol_unit_edits = {
     },
     
     "DCA_AZP_S60_POL": {  # AZP S-60
-        "CommandPoints": 35,
-        "max_speed": 6,
-        "availability": [9, 7, 0, 0],
+        "CommandPoints": "DCA_AZP_S60_SOV",
+        "max_speed": "DCA_AZP_S60_SOV",
+        "availability": "DCA_AZP_S60_SOV",
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },

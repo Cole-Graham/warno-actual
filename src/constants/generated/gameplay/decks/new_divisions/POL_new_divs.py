@@ -28,6 +28,31 @@ pol_new_divs = {
             POL_mechanized_newdivisionrules,
             POL_motorized_newdivisionrules,
         ],
+        "matrix_overrides": {
+            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        },
+        "rule_exclusions": [
+            "HMGteam_PKM_POL",
+            "HMGteam_NSV_POL",
+            "HMGteam_AGS17_POL",
+            "DCA_ZU_23_2_POL",
+            "UAZ_469_SPG9_POL",
+            "UAZ_469_Fagot_POL",
+            "AT_D44_85mm_POL",
+            "ATteam_FagotM_POL",
+            "Atteam_Konkurs_POL",
+        ],
+        "transport_overrides": {
+            "Rifles_CMD2_POL": ["UAZ_469_trans_POL", "W3_Sokol_POL", "Mi_8T_non_arme_POL", "Mi_8MT_POL",  "BMP_1_SP2_POL",  "OT_64_SKOT_2_POL"],
+            "Rifles_CMD_POL": ["Star_266_POL", "OT_64_SKOT_2A_POL", "OT_64_SKOT_2P_POL", "OT_64_SKOT_2AM_POL", "MTLB_trans_POL", "OT_62_TOPAS_2AP_POL"],
+            "MotRifles_SVD_POL": ["Star_266_POL", "MTLB_trans_POL", "BMP_1_SP2_POL", "BMP_2_POL", "OT_62_TOPAS_2AP_POL"],
+            "Rifles_HMG_POL": ["Star_266_POL", "OT_64_SKOT_2A_POL", "OT_64_SKOT_2P_POL", "OT_64_SKOT_2AM_POL", "MTLB_trans_POL", "OT_62_TOPAS_2AP_POL"],
+            "Rifles_POL": ["Star_266_POL", "OT_64_SKOT_2A_POL", "OT_64_SKOT_2P_POL", "OT_64_SKOT_2AM_POL", "MTLB_trans_POL", "OT_62_TOPAS_2AP_POL"],
+            "Engineers_POL": ["Star_266_POL", "OT_64_SKOT_2A_POL", "OT_64_SKOT_2P_POL", "MTLB_trans_POL", "OT_62_TOPAS_POL", "OT_62_TOPAS_2AP_POL"],
+            "Groupe_AT_POL": ["Star_266_POL", "OT_64_SKOT_2A_POL", "OT_64_SKOT_2AM_POL", "MTLB_trans_POL", "OT_62_TOPAS_SPG9_POL", "BMP_1_SP2_POL"],
+            "ATteam_RCL_SPG9_POL": ["Star_266_POL", "OT_64_SKOT_2A_POL", "OT_64_SKOT_2AM_POL", "MTLB_trans_POL", "OT_62_TOPAS_SPG9_POL", "BMP_1_SP2_POL"],
+            "Atteam_Fagot_POL": ["Star_266_POL", "OT_64_SKOT_2A_POL", "OT_64_SKOT_2AM_POL", "MTLB_trans_POL", "OT_62_TOPAS_SPG9_POL", "BMP_1_SP2_POL"],
+        },
     },
     "POL_airborne": {
         "division_id": 6018,
@@ -44,6 +69,9 @@ pol_new_divs = {
             POL_airborne_newdivisionrules,
             POL_global_newdivisionrules,
         ],
+        "matrix_overrides": {
+            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        },
     },
     "POL_airborne_armored": {
         "division_id": 6019,
@@ -61,6 +89,18 @@ pol_new_divs = {
             POL_armored_newdivisionrules,
             POL_global_newdivisionrules,
         ],
+        "matrix_overrides": {
+            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        },
+        "rule_exclusions": [
+            "HMGteam_PKM_POL",
+            "HMGteam_NSV_POL",
+            "HMGteam_AGS17_POL",
+            "DCA_ZU_23_2_POL",
+        ],
+        "transport_overrides": {
+            "Rifles_CMD2_POL": ["UAZ_469_trans_POL", "W3_Sokol_POL", "Mi_8T_non_arme_POL", "Mi_8MT_POL",  "BMP_1_SP2_POL"],
+        },
     },
     # airborne_marine 6020, 2053
     "POL_airborne_mechanized": {
@@ -79,6 +119,21 @@ pol_new_divs = {
             POL_global_newdivisionrules,
             POL_mechanized_newdivisionrules,
         ],
+        "matrix_overrides": {
+            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        },
+        "rule_exclusions": [
+            "HMGteam_PKM_POL",
+            "HMGteam_NSV_POL",
+            "HMGteam_AGS17_POL",
+            "DCA_ZU_23_2_POL",
+            "UAZ_469_SPG9_POL",
+            "UAZ_469_Fagot_POL",
+            "AT_D44_85mm_POL",
+        ],
+        "transport_overrides": {
+            "Rifles_CMD2_POL": ["UAZ_469_trans_POL", "W3_Sokol_POL", "Mi_8T_non_arme_POL", "Mi_8MT_POL",  "BMP_1_SP2_POL"],
+        },
     },
     "POL_airborne_motorized": {
         "division_id": 6022,
@@ -96,6 +151,21 @@ pol_new_divs = {
             POL_global_newdivisionrules,
             POL_motorized_newdivisionrules,
         ],
+        "matrix_overrides": {
+            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        },
+        "rule_exclusions": [
+            "HMGteam_PKM_POL",
+            "HMGteam_NSV_POL",
+            "HMGteam_AGS17_POL",
+            "DCA_ZU_23_2_POL",
+            "UAZ_469_SPG9_POL",
+            "UAZ_469_Fagot_POL",
+            "AT_D44_85mm_POL",
+        ],
+        "transport_overrides": {
+            "Rifles_CMD2_POL": ["UAZ_469_trans_POL", "W3_Sokol_POL", "Mi_8T_non_arme_POL", "Mi_8MT_POL", "OT_64_SKOT_2_POL"],
+        },
     },
     "POL_armored": {
         "division_id": 6023,
@@ -112,6 +182,9 @@ pol_new_divs = {
             POL_armored_newdivisionrules,
             POL_global_newdivisionrules,
         ],
+        "matrix_overrides": {
+            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        },
     },
     # armored_marine 6024, 2057
     "POL_armored_mechanized": {
@@ -130,6 +203,13 @@ pol_new_divs = {
             POL_global_newdivisionrules,
             POL_mechanized_newdivisionrules,
         ],
+
+        "matrix_overrides": {
+            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        },
+        "transport_overrides": {
+            "Rifles_CMD2_POL": ["Star_266_POL", "MTLB_trans_POL", "BMP_1_SP2_POL", "BMP_2_POL", "Mi_2_trans_POL", "Mi_8MT_POL"],
+        },
     },
     "POL_armored_motorized": {
         "division_id": 6026,
@@ -147,6 +227,17 @@ pol_new_divs = {
             POL_global_newdivisionrules,
             POL_motorized_newdivisionrules,
         ],
+        "matrix_overrides": {
+            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        },
+        "transport_overrides": {
+            "Rifles_CMD2_POL": ["UAZ_469_trans_POL", "W3_Sokol_POL", "Mi_8T_non_arme_POL", "Mi_8MT_POL", "BMP_1_SP2_POL", "OT_64_SKOT_2_POL"],
+            "ATteam_RCL_SPG9_POL": ["UAZ_469_trans_POL", "OT_64_SKOT_2A_POL", "OT_64_SKOT_2AM_POL", "MTLB_trans_POL", "BMP_1_SP2_POL"],
+            "Atteam_Fagot_POL": ["UAZ_469_trans_POL", "OT_64_SKOT_2A_POL", "OT_64_SKOT_2AM_POL", "MTLB_trans_POL", "BMP_1_SP2_POL", "BMP_2_POL"],
+            "ATteam_FagotM_POL": ["UAZ_469_trans_POL", "OT_64_SKOT_2A_POL", "OT_64_SKOT_2AM_POL", "MTLB_trans_POL", "BMP_1_SP2_POL", "BMP_2_POL"],
+            "Atteam_Konkurs_POL": ["UAZ_469_trans_POL", "OT_64_SKOT_2A_POL", "OT_64_SKOT_2AM_POL", "MTLB_trans_POL", "BMP_1_SP2_POL", "BMP_2_POL"],
+            "Groupe_AT_POL": ["Star_266_POL", "OT_64_SKOT_2A_POL", "OT_64_SKOT_2AM_POL", "MTLB_trans_POL", "BMP_1_SP2_POL", "BMP_2_POL"],
+        },
     },
     # marine 6027, 2060
     # marine_mechanized 6028, 2061
@@ -166,6 +257,9 @@ pol_new_divs = {
             POL_global_newdivisionrules,
             POL_mechanized_newdivisionrules,
         ],
+        "matrix_overrides": {
+            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        },
     },
     "POL_mechanized_motorized": {
         "division_id": 6031,
@@ -183,6 +277,17 @@ pol_new_divs = {
             POL_mechanized_newdivisionrules,
             POL_motorized_newdivisionrules,
         ],
+        "matrix_overrides": {
+            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        },
+        "transport_overrides": {
+            "Rifles_CMD2_POL": ["UAZ_469_trans_POL", "OT_62_TOPAS_POL", "BMP_1_SP2_POL", "BMP_2_POL", "OT_64_SKOT_2_POL", "W3_Sokol_POL"],
+            "ATteam_RCL_SPG9_POL": ["UAZ_469_trans_POL", "OT_64_SKOT_2A_POL", "OT_64_SKOT_2AM_POL", "MTLB_trans_POL", "OT_62_TOPAS_SPG9_POL", "BMP_1_SP2_POL"],
+            "Atteam_Fagot_POL": ["UAZ_469_trans_POL", "OT_64_SKOT_2A_POL", "OT_64_SKOT_2AM_POL", "MTLB_trans_POL", "BMP_1_SP2_POL"],
+            "ATteam_FagotM_POL": ["UAZ_469_trans_POL", "OT_64_SKOT_2A_POL", "OT_64_SKOT_2AM_POL", "MTLB_trans_POL", "BMP_1_SP2_POL"],
+            "Atteam_Konkurs_POL": ["UAZ_469_trans_POL", "OT_64_SKOT_2A_POL", "OT_64_SKOT_2AM_POL", "MTLB_trans_POL", "BMP_1_SP2_POL", "BMP_2_POL"],
+            "Groupe_AT_POL": ["UAZ_469_trans_POL", "OT_64_SKOT_2A_POL", "OT_64_SKOT_2AM_POL", "MTLB_trans_POL", "BMP_1_SP2_POL", "BMP_2_POL"],
+        },
     },
     "POL_motorized": {
         "division_id": 6032,
@@ -199,5 +304,8 @@ pol_new_divs = {
             POL_motorized_newdivisionrules,
             POL_global_newdivisionrules,
         ],
+        "matrix_overrides": {
+            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        },
     },
 }
