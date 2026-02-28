@@ -29,6 +29,20 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("RocketArt_MD24F_240mm_salvolength12", "MLRS", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 8.6,
+                "SuppressDamages": 540,
+                "DispersionAtMaxRangeGRU": 560,
+                "DispersionAtMinRangeGRU": 240,
+                "RadiusSplashPhysicalDamagesGRU": 240,
+                "RadiusSplashSuppressDamagesGRU": 320,
+                "SupplyCost": 960.0,
+            },
+        },
+    },
+    
     ("RocketArt_M24F_240mm_salvolength12", "MLRS", None, False): { # BM-24M
         "Ammunition": {
             "parent_membr": {
@@ -39,6 +53,18 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "RadiusSplashPhysicalDamagesGRU": 240,
                 "RadiusSplashSuppressDamagesGRU": 320,
                 "SupplyCost": 960.0,
+            },
+        },
+    },
+    
+    ("RocketArt_9M27F_HE_220mm", "MLRS", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 7.1,
+                "SuppressDamages": 460,
+                "DispersionAtMaxRangeGRU": 848,
+                "RadiusSplashPhysicalDamagesGRU": 280,
+                "RadiusSplashSuppressDamagesGRU": 373,
             },
         },
     },

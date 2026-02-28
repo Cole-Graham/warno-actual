@@ -2052,6 +2052,11 @@ sov_unit_edits = {
             },
         },
     },
+    
+    "Howz_BS3_100mm_SOV": {
+        "CommandPoints": 55,
+        "availability": [6, 0, 0, 0],
+    },
 
     "Howz_2A36_Giatsint_B_SOV": {
         "GameName": {
@@ -2133,7 +2138,32 @@ sov_unit_edits = {
         "availability": [3, 2, 0, 0],
     },
     
+    "2S4_Tyulpan_SOV": {
+        "CommandPoints": 170,
+        "availability": [3, 2, 0, 0],
+    },
+    
+    "Howz_B4M_203mm_SOV": {
+        "CommandPoints": 170,
+        "availability": [3, 0, 0, 0],
+    },
+    
+    "Howz_Br5M_280mm_SOV": {
+        "CommandPoints": 200,
+        "availability": [3, 0, 0, 0],
+    },
+    
     "2S7M_Malka_SOV": {
+        "CommandPoints": 260,
+        "availability": [2, 0, 1, 0],
+    },
+    
+    "2S19_MstaS_SOV": {
+        "CommandPoints": 230,
+        "availability": [2, 0, 1, 0],
+    },
+    
+    "A222_Bereg_SOV": {
         "CommandPoints": 260,
         "availability": [2, 0, 1, 0],
     },
@@ -2151,6 +2181,16 @@ sov_unit_edits = {
             },
         },
         "availability": [3, 2, 0, 0],
+    },
+    
+    "BM24M_SOV": {
+        "CommandPoints": 240,
+        "availability": [2, 0, 1, 0],
+    },
+    
+    "BM27_Uragan_SOV": {
+        "CommandPoints": 320,
+        "availability": [0, 1, 0, 0],
     },
     
     "Prima_SOV": {
@@ -2333,7 +2373,7 @@ sov_unit_edits = {
     },
     
     "T64A_CMD_SOV": {
-        "CommandPoints": 145,
+        "CommandPoints": 135,
         "GameName": {
             "display": "#LDRSOV T-64A Obr. 83 LDR.",
             "token": "SOVTSITAK",
@@ -2364,7 +2404,7 @@ sov_unit_edits = {
     },
 
     "T64B_CMD_SOV": {
-        "CommandPoints": 190,
+        "CommandPoints": 185,
         "GameName": {
             "display": "#LDRSOV T-64B LDR.",
             "token": "SOVTSITBK",
@@ -2519,7 +2559,7 @@ sov_unit_edits = {
     },
 
     "T72B_CMD_SOV": {
-        "CommandPoints": 220,
+        "CommandPoints": 225,
         "GameName": {
             "display": "#LDRSOV T-72BK LDR.",
             "token": "SOVTSETBK",
@@ -2551,7 +2591,7 @@ sov_unit_edits = {
     },
 
     "T80B_CMD_SOV": {
-        "CommandPoints": 215,
+        "CommandPoints": 210,
         "GameName": {
             "display": "#LDRSOV T-80BK LDR.",
             "token": "SOVTEBK",
@@ -3011,17 +3051,17 @@ sov_unit_edits = {
 
     "T64B1_SOV": {
         "CommandPoints": 165,
-        "availability": [0, 6, 4, 0],
+        "availability": [6, 4, 0, 0],
     },
 
     "T64BV1_SOV": {
-        "CommandPoints": 175,
+        "CommandPoints": 180,
         "availability": [0, 6, 4, 0],
     },
 
     "T64B_SOV": {
-        "CommandPoints": 180,
-        "availability": [0, 6, 4, 0],
+        "CommandPoints": 175,
+        "availability": [6, 4, 0, 0],
     },
 
     "T64BV_SOV": {
@@ -3060,22 +3100,22 @@ sov_unit_edits = {
 
     "T72B1_early_SOV": {
         "CommandPoints": 190,
-        "availability": [0, 6, 4, 0],
+        "availability": [6, 4, 0, 0],
     },
 
     "T72B1_SOV": {
-        "CommandPoints": 195,
-        "availability": [0, 4, 3, 0],
+        "CommandPoints": 205,
+        "availability": [0, 6, 4, 0],
     },
 
     "T72B_SOV": {
-        "CommandPoints": 215,
-        "availability": [0, 4, 3, 0],
+        "CommandPoints": 220,
+        "availability": [0, 0, 3, 2],
     },
 
     "T80B_SOV": {
-        "CommandPoints": 205,
-        "availability": [0, 4, 3, 0],
+        "CommandPoints": 200,
+        "availability": [6, 4, 0, 0],
     },
 
     "T80BV_SOV": {
@@ -3103,7 +3143,7 @@ sov_unit_edits = {
         "armor": {
             "front": (18, None),
         },
-        "CommandPoints": 240,
+        "CommandPoints": 245,
         "availability": [0, 0, 4, 3],
     },
 

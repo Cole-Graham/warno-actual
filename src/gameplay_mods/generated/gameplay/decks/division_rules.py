@@ -777,6 +777,12 @@ def _create_national_division_rules(source_path: Any, game_db: Dict[str, Any]) -
                         else:
                             logger.warning(f"Invalid rule tuple format in {div_key} category {category}: {rule_tuple}")
                             continue
+
+                        # Apply transport_overrides from division config if specified
+                        transport_overrides = div_data.get("transport_overrides", {})
+                        if unit_name in transport_overrides:
+                            transports = transport_overrides[unit_name]
+                            logger.debug(f"Applied transport_overrides for {unit_name} in {div_key}")
                         
                         # Check if this unit is excluded
                         if rule_exclusions and unit_name in rule_exclusions:

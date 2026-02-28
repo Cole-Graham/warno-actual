@@ -104,6 +104,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "Arme": {
                 "Index": 18,
+            },
+            "parent_membr": {
                 "TimeBetweenTwoShots": 6.6,
                 "TimeBetweenTwoSalvos": 6.6,
             },

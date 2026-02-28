@@ -2680,7 +2680,7 @@ usa_unit_edits = {
         #     "display": "#3RDARM M1A1 ABRAMS",
         #     "token": "YEMPBPBTNZ",
         # },
-        "CommandPoints": 220,
+        "CommandPoints": 225,
         "Divisions": {
             "remove": ["US_8th_Inf"],
             "default": {

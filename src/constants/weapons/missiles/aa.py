@@ -155,6 +155,30 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("SAM_RAPIER_DARKFIRE", "SAM", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 65,
+                "DistanceToTarget": True,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 3.0,
+                "TimeBetweenTwoFx": 3.0,
+                "PhysicalDamages": 5.0,
+                "MaximumRangeHelicopterGRU": 3150,
+                "MaximumRangeAirplaneGRU": 3850,
+                "AimingTime": 1.2,
+            },
+        },
+        "SupplyCost": 90.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [6],
+            "units": {
+                6: ["DCA_Rapier_Darkfire_UK"],
+            },
+        },
+    },
 
     ("SAM_MIM72G", "SAM", None, False): {
         "Ammunition": {

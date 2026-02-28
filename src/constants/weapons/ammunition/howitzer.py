@@ -36,6 +36,39 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("Howz_Canon_Br5M_towed_280mm", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 8.0,
+                "SuppressDamages": 600,
+                "RadiusSplashPhysicalDamagesGRU": 280,
+                "RadiusSplashSuppressDamagesGRU": 373,
+            },
+        },
+    },
+    
+    ("Howz_Canon_Br5M_towed_280mm_Direct_HE", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 6.8,
+                "SuppressDamages": 510,
+                "RadiusSplashPhysicalDamagesGRU": 280,
+                "RadiusSplashSuppressDamagesGRU": 373,
+            },
+        },
+    },
+    
+    ("Howz_Canon_M240_SP_240mm", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 6.8,
+                "SuppressDamages": 480,
+                "RadiusSplashPhysicalDamagesGRU": 240,
+                "RadiusSplashSuppressDamagesGRU": 300,
+            },
+        },
+    },
+    
     ("Howz_Canon_2A44_Howitzer_203mm_late", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
@@ -56,6 +89,28 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoShots": 10.0,
                 "TimeBetweenTwoFx": 11.0,
                 "TimeBetweenTwoSalvos": 50.0,
+            },
+        },
+    },
+    
+    ("Howz_Canon_B4M_203mm", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 6,
+                "SuppressDamages": 450,
+                "RadiusSplashPhysicalDamagesGRU": 203,
+                "RadiusSplashSuppressDamagesGRU": 271,
+            },
+        },
+    },
+    
+    ("Howz_Canon_B4M_203mm_Direct_HE", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 5.4,
+                "SuppressDamages": 405,
+                "RadiusSplashPhysicalDamagesGRU": 175,
+                "RadiusSplashSuppressDamagesGRU": 233,
             },
         },
     },
@@ -149,6 +204,16 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoShots": 5.0,
                 "ShotsCountPerSalvo": 5,
                 "AffichageMunitionParSalve": 5,
+            },
+        },
+    },
+    
+    ("Howz_Canon_BS3_towed_100mm", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 2.1,
+                "RadiusSplashPhysicalDamagesGRU": 100,
+                "RadiusSplashSuppressDamagesGRU": 133,
             },
         },
     },
@@ -312,6 +377,19 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("Howz_Canon_2A64_152mm", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "TimeBetweenTwoShots": 4.1,
+                "TimeBetweenTwoFx": 4.1,
+                "PhysicalDamages": 4.2,
+                "SuppressDamages": 350,
+                "RadiusSplashPhysicalDamagesGRU": 152,
+                "RadiusSplashSuppressDamagesGRU": 203,
+            },
+        },
+    },
+    
     ("Howz_Canon_DANA_SP_152mm", "howitzer", None, False): { # 389
         "Ammunition": {
             "parent_membr": {
@@ -352,6 +430,22 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "SuppressDamages": 300,
                 "RadiusSplashPhysicalDamagesGRU": 130,
                 "RadiusSplashSuppressDamagesGRU": 174,
+            },
+        },
+    },
+    
+    ("Howz_Canon_A222_Howitzer_130mm", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "TimeBetweenTwoShots": 3.0,
+                "TimeBetweenTwoFx": 3.0,
+                "ShotsCountPerSalvo": 7,
+                "AffichageMunitionParSalve": 7,
+                "PhysicalDamages": 3.6,
+                "SuppressDamages": 300,
+                "RadiusSplashPhysicalDamagesGRU": 130,
+                "RadiusSplashSuppressDamagesGRU": 174,
+                "SupplyCost": 360.0,
             },
         },
     },

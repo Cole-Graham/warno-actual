@@ -2214,9 +2214,32 @@ uk_unit_edits = {
         },
     },
     
+    "DCA_Rapier_Darkfire_UK": {
+        "CommandPoints": 100,
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 300,
+            },
+            "TimeBetweenEachIdentifyRoll": 1.0,
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'verygood_airoptics'"],
+        },
+        "availability": [4, 3, 0, 0],
+    },
+    
     "DCA_Bloodhound_UK": {
         "CommandPoints": 90,
-        "availability": [0, 2, 0, 0],
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 300,
+            },
+            "TimeBetweenEachIdentifyRoll": 1.0,
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'verygood_airoptics'"],
+        },
+        "availability": [0, 3, 0, 0],
     },
 
     # UK HELI
