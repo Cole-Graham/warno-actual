@@ -324,6 +324,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketAir_B8_80mm_salvolength20", "rocket", None, False): { # 594
         "Ammunition": {
             "parent_membr": {
+                "MaximumRangeGRU": 2275,
                 "RadiusSplashPhysicalDamagesGRU": 15,
                 "RadiusSplashSuppressDamagesGRU": 28,
                 "TimeBetweenTwoShots": 0.3,
@@ -337,6 +338,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketAir_B8_80mm_salvolength10", "rocket", None, False): { # 593
         "Ammunition": {
             "parent_membr": {
+                "MaximumRangeGRU": 2275,
                 "RadiusSplashPhysicalDamagesGRU": 15,
                 "RadiusSplashSuppressDamagesGRU": 28,
                 "TimeBetweenTwoShots": 0.3,

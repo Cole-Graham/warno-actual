@@ -2357,9 +2357,9 @@ pol_unit_edits = {
     },
     
     "DCA_AZP_S60_POL": {  # AZP S-60
-        "CommandPoints": 35,
-        "max_speed": 6,
-        "availability": [9, 7, 0, 0],
+        "CommandPoints": "DCA_AZP_S60_SOV",
+        "max_speed": "DCA_AZP_S60_SOV",
+        "availability": "DCA_AZP_S60_SOV",
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
