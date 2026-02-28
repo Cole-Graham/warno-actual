@@ -31,7 +31,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("AA_R73_Vympel", "A2A", None, False): { # 27
+    ("AA_R73_Vympel", "A2A", None, False): {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 70,
@@ -45,7 +45,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("AA_R60M_Vympel", "A2A", None, False): { # 27
+    ("AA_R60M_Vympel", "A2A", None, False): {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 60,
@@ -53,6 +53,21 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DistanceToTarget": False,
             },
             "parent_membr": {
+                "AimingTime": 0.3,
+                "SupplyCost": 30.0,
+            },
+        },
+    },
+    
+    ("AA_R60M_Vympel_Helo", "A2A", "AA_R60M_Vympel", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 60,
+                "Moving": 60,
+                "DistanceToTarget": False,
+            },
+            "parent_membr": {
+                "MaximumRangeHelicopterGRU": 2625,
                 "AimingTime": 0.3,
                 "SupplyCost": 30.0,
             },

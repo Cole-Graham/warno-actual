@@ -1145,14 +1145,15 @@ sov_unit_edits = {
             },
         },
     },
-    
+
     "VDV_Afgantsy_SOV": {
-        "CommandPoints": 40,
-        "availability": [0, 0, 7, 5],
+        "CommandPoints": 35,
+        "availability": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
+        "armor": "Infantry_armor_reference",
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [("SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm", "SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm")],
@@ -1160,6 +1161,16 @@ sov_unit_edits = {
             "Salves": {
                 "MMG_PKM_7_62mm": 36,
             },
+        },
+    },
+    
+    "DShV_Afgantsy_SOV": {
+        "armor": "Infantry_armor_reference",
+        "CommandPoints": 60,
+        "availability": [0, 6, 4, 0],
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
         },
     },
 
@@ -1193,11 +1204,47 @@ sov_unit_edits = {
     },
 
     "DShV_SOV": { # DSh. [RPG-7], 1x RPK-74 , SVD, RPG-7VL
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "availability": [0, 8, 6, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
+        },
+        "strength": 8,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_AKS_74": 6,
+                },
+            },
+        },
+    },
+    
+    "DShV_RPG16_SOV": {
+        "armor": "Infantry_armor_reference",
+        "CommandPoints": 35,
+        "availability": [0, 6, 4, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
+        },
+    },
+    
+    "DShV_Hvy_SOV": {
+        "armor": "Infantry_armor_reference",
+        "CommandPoints": 55,
+        "availability": [0, 6, 4, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_AKS_74": 11,
+                    "SAW_RPK_74_5_56mm": 3,
+                },
+            },
         },
     },
 
@@ -1277,7 +1324,7 @@ sov_unit_edits = {
         },
     },
 
-    "VDV_HMG_SOV": {  # VDV Pulemetchiki
+    "VDV_HMG_SOV": {  # Desant.Pulemetchiki
         "armor": "Infantry_armor_reference",
         "CommandPoints": 35,
         "Divisions": {
@@ -1286,6 +1333,16 @@ sov_unit_edits = {
             },
         },
         "availability": [0, 7, 5, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
+        },
+    },
+    
+    "DShV_HMG_SOV": { # DSh. Pulemetchiki
+        "armor": "Infantry_armor_reference",
+        "CommandPoints": 35,
+        "availability": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -2066,6 +2123,16 @@ sov_unit_edits = {
         "availability": [2, 0, 1, 0],
     },
     
+    "Mortier_240mm_M240_Cluster_SOV": {
+        "CommandPoints": 200,
+        "availability": [3, 2, 0, 0],
+    },
+    
+    "Mortier_240mm_M240_SOV": {
+        "CommandPoints": 200,
+        "availability": [3, 2, 0, 0],
+    },
+    
     "2S7M_Malka_SOV": {
         "CommandPoints": 260,
         "availability": [2, 0, 1, 0],
@@ -2084,6 +2151,11 @@ sov_unit_edits = {
             },
         },
         "availability": [3, 2, 0, 0],
+    },
+    
+    "Prima_SOV": {
+        "CommandPoints": 225,
+        "availability": [2, 0, 1, 0],
     },
 
     "TOS1_Buratino_SOV": {
@@ -2717,6 +2789,7 @@ sov_unit_edits = {
         "orders": {
             "add_orders": ["EOrderType/UnloadFromTransport", "EOrderType/UnloadAtPosition", "EOrderType/Load"]
         },
+        "UnitRole": "ifv",
         "UpgradeFromUnit": "BMD_2_SOV",
     },
 
@@ -3500,7 +3573,7 @@ sov_unit_edits = {
     },
 
     "DCA_AZP_S60_SOV": {
-        "CommandPoints": 30,
+        "CommandPoints": 35,
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
         "capacities": {
@@ -3858,6 +3931,9 @@ sov_unit_edits = {
                 "remove": ["RocketAir_B8_80mm_x20"],
                 "AA_R60M_Vympel": 4,
             },
+            "equipmentchanges": {
+                "replace": [("AA_R60M_Vympel", "AA_R60M_Vympel_Helo")],
+            },
             "turrets": {
                 1: {
                     "MountedWeapons": {
@@ -3879,7 +3955,7 @@ sov_unit_edits = {
                         },
                     },
                 },
-                "remove": [1],
+                "remove": [0],
             },
         },
     },
@@ -3909,8 +3985,8 @@ sov_unit_edits = {
         "GameName": {
             "display": "Mi-8MT [RKT3]",
         },
-        "CommandPoints": 95,
-        "availability": [0, 4, 3, 0],
+        "CommandPoints": 85,
+        "availability": [0, 0, 4, 3],
     },
 
     "Mi_8TB_SOV": {
@@ -3973,7 +4049,7 @@ sov_unit_edits = {
         "GameName": {
             "display": "Mi-24P [AT]",
         },
-        "CommandPoints": 160,
+        "CommandPoints": 185,
         "WeaponDescriptor": {
             "Salves": {
                 "AutoCanon_AP_30mm_Bitube_Gsh30k": 5,
@@ -4002,10 +4078,13 @@ sov_unit_edits = {
         "GameName": {
             "display": "Mi-24P [AA]",
         },
-        "CommandPoints": 160,
+        "CommandPoints": 185,
         "WeaponDescriptor": {
             "Salves": {
                 "AutoCanon_AP_30mm_Bitube_Gsh30k": 5,
+            },
+            "equipmentchanges": {
+                "replace": [("AA_R60M_Vympel", "AA_R60M_Vympel_Helo")],
             },
             "turrets": {
                 0: {

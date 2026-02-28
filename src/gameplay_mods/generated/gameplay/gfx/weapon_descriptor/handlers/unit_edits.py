@@ -811,7 +811,6 @@ def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_
     ammo_pattern = re.compile(r"\$/GFX/Weapon/Ammo_(.*?)(?:_x\d+)?$")
     turret_list = weapon_descr.v.by_member("TurretDescriptorList").v
     ammo_db = game_db["ammunition"]
-    weapon_db = game_db["weapons"]
     unit_db = game_db["unit_data"]
     unit_edits = load_unit_edits()
 
@@ -829,24 +828,6 @@ def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_
     if not unit_strength:
         logger.warning(f"No strength found for unit {unit_name}")
         return
-
-    def __get_weapon_quantity(
-        weapon_descr_: Any, turret_index_: str, ammo_name_: str, ammo_db_: Dict, weapon_db_: Dict
-    ) -> int:
-        """Get the quantity of a weapon from the weapons.json"""
-        weapon_descr_name = weapon_descr_.namespace
-        current_turret = weapon_db_[weapon_descr_name]["turrets"][turret_index_]
-
-        if ammo_name_ in ammo_db_["renames_new_old"]:
-            old_name = ammo_db_["renames_new_old"].get(ammo_name_, None)
-            if old_name:
-                current_weapon = current_turret["weapons"][old_name]
-            else:
-                current_weapon = current_turret["weapons"][ammo_name_]
-        else:
-            current_weapon = current_turret["weapons"][ammo_name_]
-
-        return current_weapon["quantity"]
 
     for turret in turret_list:
         if not is_valid_turret(turret.v):
@@ -888,7 +869,9 @@ def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_
                             current, replacement = replacement
 
                         if ammo_name == current:
-                            quantity = __get_weapon_quantity(weapon_descr, turret_index, ammo_name, ammo_db, weapon_db)
+                            # Use weapon's NbWeapons directly - weapon_db may not have weapons
+                            # added by Salves (e.g. AA_R60M_Vympel replacing vanilla loadout)
+                            quantity = int(weapon.v.by_m("NbWeapons").v)
 
                             # Check if replacement weapon should use strength variants
                             use_strength = False

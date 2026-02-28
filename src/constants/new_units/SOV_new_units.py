@@ -647,7 +647,7 @@ SOV_NEW_UNITS = {
             "Salves": {
                 "FM_AKS_74": 11,
                 "SAW_RPK_74_5_56mm": 18,
-                "RocketInf_RPG7VL": 6,
+                "RocketInf_RPG7VL": 7,
             },
             "equipmentchanges": {
                 "replace": [
@@ -657,7 +657,7 @@ SOV_NEW_UNITS = {
         },
         "TransportedSoldier": "VDV_Afgantsy_RPG7VL_SOV",
         "armor": "Infantry_armor_reference",
-        "CommandPoints": 45,
+        "CommandPoints": 40,
         "UnitRole": 'infantry',
         "SpecialtiesList": [
                 '_resolute',
@@ -671,7 +671,7 @@ SOV_NEW_UNITS = {
                 "cards": 2,
             },
         },
-        "availability": [10, 7, 0, 0],
+        "availability": [0, 6, 4, 0],
         "max_speed": 26,
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',

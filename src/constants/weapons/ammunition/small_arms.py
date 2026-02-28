@@ -386,7 +386,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "SupplyCost": 1.0,
-        "NbWeapons": [2, 1],
+        "NbWeapons": [4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 18,
         },
@@ -515,6 +515,34 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "hit_roll": {
                 "Idling": 80,
                 "Moving": 25,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 2.5,
+                "MaximumRangeGRU": 875,
+                "MaximumRangeHelicopterGRU": 700,
+                "PhysicalDamages": 0.12,
+                "SuppressDamages": 24,
+                "DisplaySalveAccuracy": False,
+                "AimingTime": 1.0,
+                "TimeBetweenTwoSalvos": 3.0,
+                "ShotsCountPerSalvo": 3,
+                "AffichageMunitionParSalve": 30,
+            },
+        },
+        "SupplyCost": 1.0,
+        "NbWeapons": [3, 2, 1],
+        "WeaponDescriptor": {
+            "Salves": 24,
+        },
+    },
+    
+    ("SAW_DP28_7_62mm", "small_arms", None, False): {  # 712
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_sa_full",
+            },
+            "hit_roll": {
+                "Idling": 65,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 2.5,
@@ -2203,6 +2231,35 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Texture": "FM_kbk_AKM",
         "SupplyCost": 1.0,
         "NbWeapons": [2, 1],
+        "WeaponDescriptor": {
+            "Salves": 11,
+        },
+    },
+    
+    ("FM_AKM", "small_arms", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_sa_full",
+            },
+            "hit_roll": {
+                "Idling": 55,
+                "Moving": 25,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 2.2,
+                "MaximumRangeGRU": 875,
+                "MaximumRangeHelicopterGRU": 700,
+                "PhysicalDamages": 0.06,
+                "SuppressDamages": 8,
+                "DisplaySalveAccuracy": False,
+                "AimingTime": 1.0,
+                "TimeBetweenTwoSalvos": 5.5,
+                "ShotsCountPerSalvo": 6,
+                "AffichageMunitionParSalve": 30,
+            },
+        },
+        "SupplyCost": 1.0,
+        "NbWeapons": [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 11,
         },
