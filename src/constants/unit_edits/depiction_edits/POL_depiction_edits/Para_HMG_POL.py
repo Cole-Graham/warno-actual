@@ -15,7 +15,7 @@ para_hmg_pol: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
 
         ("AllWeaponSubDepiction_Para_HMG_POL", "TemplateAllSubWeaponDepiction"): {
             "Operators": {
-                2: ("edit", [("FireEffectTag", "FireEffect_RocketInf_RPG7")]),
+                2: ("edit", [("FireEffectTag", "RocketInf_RPG7")]),
             },
         },
     }

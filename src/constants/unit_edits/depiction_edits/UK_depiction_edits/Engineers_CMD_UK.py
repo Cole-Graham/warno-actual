@@ -16,7 +16,7 @@ engineers_cmd_uk: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
 
         ("AllWeaponSubDepiction_Engineers_CMD_UK", "TemplateAllSubWeaponDepiction"): {
             "Operators": {
-                1: ("insert", [("FireEffectTag", "RocketInf_M72A4_LAW_66mm"), ("WeaponShootDataPropertyName", "WeaponShootData_0_2")]),
+                1: ("insert", [("FireEffectTag", "RocketInf_M72_LAW_66mm"), ("WeaponShootDataPropertyName", "WeaponShootData_0_2")]),
             },
         },
         

@@ -226,7 +226,7 @@ UK_mechanized_newdivisionrules = {
         ("FV432_supply_UK", 2, [6, 0, 0, 0]),
         ("Bedford_MJ_4t_UK", 2, [2, 0, 0, 0]),
         ("AEC_Militant_UK", 2, [2, 0, 0, 0]),
-        ("Westland_Wessex_supply_UK", 1, [4, 0, 0, 0]),
+        ("Westland_Wessex_supply_UK", 1, [5, 0, 0, 0]),
         ("CH47D_Chinook_supply_UK", 1, [2, 0, 0, 0]),
         ("DCA_M167A2_Vulcan_20mm_UK", 1, [6, 4, 0, 0], ["Bedford_MJ_4t_trans_UK"]),
         ("FOB_UK", 1, [0, 2, 0, 0]),

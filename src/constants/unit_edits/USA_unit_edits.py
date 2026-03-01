@@ -3285,12 +3285,12 @@ usa_unit_edits = {
     },
     
     "LRRP_FOLT_US": {
-        "CommandPoints": 30,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "availability": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_light'", "'_swift'"],
+            "add_specs": ["'infantry_equip_medium'"],
         },
     },
 
@@ -3400,9 +3400,9 @@ usa_unit_edits = {
     },
     
     "MANPAD_Stinger_NG_US": {
-        "CommandPoints": 45,
+        "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
-        "availability": [0, 0, 5, 4],
+        "availability": [10, 0, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -3417,7 +3417,7 @@ usa_unit_edits = {
     "MANPAD_Redeye_US": {
         "CommandPoints": 20,
         "armor": "Infantry_armor_reference",
-        "availability": [12, 9, 0, 0],
+        "availability": [12, 0, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],

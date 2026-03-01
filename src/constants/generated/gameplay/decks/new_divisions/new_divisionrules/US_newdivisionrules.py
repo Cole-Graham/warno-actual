@@ -211,7 +211,7 @@ US_armored_newdivisionrules = {
         ("DCA_M167A2_Vulcan_20mm_US", 1, [10, 7, 0, 0], ["M1038_Humvee_US"]),
         ("OH58_CS_US", 1, [0, 4, 3, 0]),
         ("MANPAD_Stinger_C_US", 2, [7, 5, 0, 0], ["M151_MUTT_trans_US"]),
-        ("MANPAD_Stinger_NG_US", 1, [10, 0, 0, 0], ["M151_MUTT_trans_US"]),
+        ("MANPAD_Stinger_NG_US", 1, [8, 0, 0, 0], ["M151_MUTT_trans_US"]),
         ("MANPAD_Redeye_US", 1, [12, 0, 0, 0], ["M151_MUTT_trans_US"]),
     ],
     "heli": [
@@ -319,7 +319,7 @@ US_mechanized_newdivisionrules = {
         ("MP_RCL_US", 1, [0, 10, 7, 0], ["M151_MUTT_trans_US", "M1025_Humvee_MP_US"]),
         ("ATteam_TOW2_US", 2, [4, 3, 0, 0], ["M113A3_US"]),
         ("ATteam_ITOW_US", 1, [6, 4, 0, 0], ["M113A3_US"]),
-        ("ATteam_TOW_US", 1, [9, 0, 0, 0], ["M113A3_US"]),
+        ("ATteam_TOW_US", 1, [10, 0, 0, 0], ["M113A3_US"]),
         ("ATteam_RCL_M40A1_NG_US", 1, [10, 0, 0, 0], ["M113A3_US"]),
         ("HMGteam_Mk19_US", 1, [8, 6, 0, 0], ["M113A3_US"]),
         ("HMGteam_M2HB_US", 1, [10, 7, 0, 0], ["M113A3_US"]),
@@ -379,7 +379,7 @@ US_mechanized_newdivisionrules = {
         ("M42_Duster_US", 1, [10, 0, 0, 0]),
         ("OH58_CS_US", 1, [0, 4, 3, 0]),
         ("MANPAD_Stinger_C_US", 2, [7, 5, 0, 0], ["M151_MUTT_trans_US"]),
-        ("MANPAD_Stinger_NG_US", 1, [10, 0, 0, 0], ["M151_MUTT_trans_US"]),
+        ("MANPAD_Stinger_NG_US", 1, [8, 0, 0, 0], ["M151_MUTT_trans_US"]),
         ("MANPAD_Redeye_US", 1, [12, 0, 0, 0], ["M151_MUTT_trans_US"]),
     ],
     "heli": [
@@ -511,7 +511,7 @@ US_motorized_newdivisionrules = {
         ("DCA_M167A2_Vulcan_20mm_US", 1, [10, 7, 0, 0], ["M1038_Humvee_US"]),
         ("OH58_CS_US", 1, [0, 4, 3, 0]),
         ("MANPAD_Stinger_C_US", 2, [7, 5, 0, 0], ["M151_MUTT_trans_US"]),
-        ("MANPAD_Stinger_NG_US", 1, [10, 0, 0, 0], ["M151_MUTT_trans_US"]),
+        ("MANPAD_Stinger_NG_US", 1, [8, 0, 0, 0], ["M151_MUTT_trans_US"]),
         ("MANPAD_Redeye_US", 1, [12, 0, 0, 0], ["M151_MUTT_trans_US"]),
     ],
     "heli": [

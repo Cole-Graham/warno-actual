@@ -15,7 +15,7 @@ scout_para_pol: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
 
         ("AllWeaponSubDepiction_Scout_para_POL", "TemplateAllSubWeaponDepiction"): {
             "Operators": {
-                1: ("insert", [("FireEffectTag", "FireEffect_Sniper_SVD_Dragunov"), ("WeaponShootDataPropertyName", "WeaponShootData_0_2")]),
+                1: ("insert", [("FireEffectTag", "Sniper_SVD_Dragunov"), ("WeaponShootDataPropertyName", "WeaponShootData_0_2")]),
             },
         },
     }

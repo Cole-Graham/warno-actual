@@ -16,7 +16,7 @@ reserve_cmd_pol: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
 
         ("AllWeaponSubDepiction_Reserve_CMD_POL", "TemplateAllSubWeaponDepiction"): {
             "Operators": {
-                2: ("insert", [("FireEffectTag", "FireEffect_RocketInf_RPG7"), ("WeaponShootDataPropertyName", "WeaponShootData_0_3")]),
+                2: ("insert", [("FireEffectTag", "RocketInf_RPG7"), ("WeaponShootDataPropertyName", "WeaponShootData_0_3")]),
             },
         },
         

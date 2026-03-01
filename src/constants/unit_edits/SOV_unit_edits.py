@@ -3745,7 +3745,7 @@ sov_unit_edits = {
     },
 
     "MANPAD_Strela_3_SOV": {
-        "CommandPoints": 20,
+        "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "max_speed": 20,
         "SpecialtiesList": {
@@ -3756,7 +3756,7 @@ sov_unit_edits = {
                 "replace": [("FM_AK_74", "FM_AK_74_noreflex")],
             },
         },
-        "availability": [12, 9, 0, 0],
+        "availability": [12, 0, 0, 0],
     },
 
     "GAZ_66B_ZU_SOV": {

@@ -545,6 +545,18 @@ supply_unit_edits = {
         "availability": [5, 0, 0, 0],
     },
     
+    "Westland_Wessex_supply_UK": {
+        "SupplyCapacity": 750.0,
+        "CommandPoints": 40,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "SupplyDescriptor": "PrimaryHeloSupply",
+        "availability": [5, 0, 0, 0],
+    },
+    
     "Puma_UK": {
         "SupplyCapacity": 850.0,
         "CommandPoints": 45,
