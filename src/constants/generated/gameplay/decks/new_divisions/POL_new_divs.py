@@ -28,9 +28,9 @@ pol_new_divs = {
             POL_mechanized_newdivisionrules,
             POL_motorized_newdivisionrules,
         ],
-        "matrix_overrides": {
-            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
-        },
+        # "matrix_overrides": {
+        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        # },
         "rule_exclusions": [
             "HMGteam_PKM_POL",
             "HMGteam_NSV_POL",
@@ -69,9 +69,9 @@ pol_new_divs = {
             POL_airborne_newdivisionrules,
             POL_global_newdivisionrules,
         ],
-        "matrix_overrides": {
-            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
-        },
+        # "matrix_overrides": {
+        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        # },
     },
     "POL_airborne_armored": {
         "division_id": 6019,
@@ -89,9 +89,9 @@ pol_new_divs = {
             POL_armored_newdivisionrules,
             POL_global_newdivisionrules,
         ],
-        "matrix_overrides": {
-            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
-        },
+        # "matrix_overrides": {
+        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        # },
         "rule_exclusions": [
             "HMGteam_PKM_POL",
             "HMGteam_NSV_POL",
@@ -119,9 +119,9 @@ pol_new_divs = {
             POL_global_newdivisionrules,
             POL_mechanized_newdivisionrules,
         ],
-        "matrix_overrides": {
-            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
-        },
+        # "matrix_overrides": {
+        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        # },
         "rule_exclusions": [
             "HMGteam_PKM_POL",
             "HMGteam_NSV_POL",
@@ -151,9 +151,9 @@ pol_new_divs = {
             POL_global_newdivisionrules,
             POL_motorized_newdivisionrules,
         ],
-        "matrix_overrides": {
-            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
-        },
+        # "matrix_overrides": {
+        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        # },
         "rule_exclusions": [
             "HMGteam_PKM_POL",
             "HMGteam_NSV_POL",
@@ -182,9 +182,9 @@ pol_new_divs = {
             POL_armored_newdivisionrules,
             POL_global_newdivisionrules,
         ],
-        "matrix_overrides": {
-            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
-        },
+        # "matrix_overrides": {
+        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        # },
     },
     # armored_marine 6024, 2057
     "POL_armored_mechanized": {
@@ -204,9 +204,9 @@ pol_new_divs = {
             POL_mechanized_newdivisionrules,
         ],
 
-        "matrix_overrides": {
-            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
-        },
+        # "matrix_overrides": {
+        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        # },
         "transport_overrides": {
             "Rifles_CMD2_POL": ["Star_266_POL", "MTLB_trans_POL", "BMP_1_SP2_POL", "BMP_2_POL", "Mi_2_trans_POL", "Mi_8MT_POL"],
         },
@@ -227,9 +227,9 @@ pol_new_divs = {
             POL_global_newdivisionrules,
             POL_motorized_newdivisionrules,
         ],
-        "matrix_overrides": {
-            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
-        },
+        # "matrix_overrides": {
+        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        # },
         "transport_overrides": {
             "Rifles_CMD2_POL": ["UAZ_469_trans_POL", "W3_Sokol_POL", "Mi_8T_non_arme_POL", "Mi_8MT_POL", "BMP_1_SP2_POL", "OT_64_SKOT_2_POL"],
             "ATteam_RCL_SPG9_POL": ["UAZ_469_trans_POL", "OT_64_SKOT_2A_POL", "OT_64_SKOT_2AM_POL", "MTLB_trans_POL", "BMP_1_SP2_POL"],
@@ -257,9 +257,9 @@ pol_new_divs = {
             POL_global_newdivisionrules,
             POL_mechanized_newdivisionrules,
         ],
-        "matrix_overrides": {
-            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
-        },
+        # "matrix_overrides": {
+        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        # },
     },
     "POL_mechanized_motorized": {
         "division_id": 6031,
@@ -277,9 +277,9 @@ pol_new_divs = {
             POL_mechanized_newdivisionrules,
             POL_motorized_newdivisionrules,
         ],
-        "matrix_overrides": {
-            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
-        },
+        # "matrix_overrides": {
+        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        # },
         "transport_overrides": {
             "Rifles_CMD2_POL": ["UAZ_469_trans_POL", "OT_62_TOPAS_POL", "BMP_1_SP2_POL", "BMP_2_POL", "OT_64_SKOT_2_POL", "W3_Sokol_POL"],
             "ATteam_RCL_SPG9_POL": ["UAZ_469_trans_POL", "OT_64_SKOT_2A_POL", "OT_64_SKOT_2AM_POL", "MTLB_trans_POL", "OT_62_TOPAS_SPG9_POL", "BMP_1_SP2_POL"],
@@ -304,8 +304,8 @@ pol_new_divs = {
             POL_motorized_newdivisionrules,
             POL_global_newdivisionrules,
         ],
-        "matrix_overrides": {
-            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
-        },
+        # "matrix_overrides": {
+        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        # },
     },
 }

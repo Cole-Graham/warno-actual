@@ -273,7 +273,7 @@ SOV_armored_newdivisionrules = {
 SOV_global_newdivisionrules = {
     "planes": [
         ("MiG_23MLA_AA_SOV", 2, [0, 3, 2, 0]),
-        ("MiG_23MLD_AA1_SOV", 2, [0, 2, 1, 0]),
+        ("MiG_23MLD_AA1_SOV", 2, [0, 3, 2, 0]),
         ("MiG_23MLD_SOV", 1, [0, 3, 2, 0]),
         ("MiG_23ML_SOV", 2, [0, 4, 3, 2]),
         ("MiG_23P_SOV", 2, [0, 3, 2, 0]),

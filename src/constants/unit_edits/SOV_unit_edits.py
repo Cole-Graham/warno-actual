@@ -4342,7 +4342,7 @@ sov_unit_edits = {
         },
     },
 
-    "MiG_27M_sead_SOV": {  # MiG-27K [SEAD2] - Kh-25MP 5250m
+    "MiG_27K_SEAD_SOV": {  # MiG-27K [SEAD2] - Kh-25MP 5250m
         "CommandPoints": 190,
         "optics": {
             "VisionRangesGRU": {

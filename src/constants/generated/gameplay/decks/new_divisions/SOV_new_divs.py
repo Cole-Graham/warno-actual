@@ -28,9 +28,9 @@ sov_new_divs = {
             SOV_mechanized_newdivisionrules,
             SOV_motorized_newdivisionrules,
         ],
-        "matrix_overrides": {
-            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
-        },
+        # "matrix_overrides": {
+        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        # },
         "rule_exclusions": [
             "T62M_CMD2_SOV",
             "T62M_CMD_SOV",
@@ -73,9 +73,9 @@ sov_new_divs = {
             SOV_airborne_newdivisionrules,
             SOV_global_newdivisionrules,
         ],
-        "matrix_overrides": {
-            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
-        },
+        # "matrix_overrides": {
+        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        # },
     },
     "SOV_airborne_armored": {
         "division_id": 6003,
@@ -93,9 +93,9 @@ sov_new_divs = {
             SOV_armored_newdivisionrules,
             SOV_global_newdivisionrules,
         ],
-        "matrix_overrides": {
-            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
-        },
+        # "matrix_overrides": {
+        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        # },
         "rule_exclusions": [
             "T62M_CMD2_SOV",
             "T62M_CMD_SOV",
@@ -133,9 +133,9 @@ sov_new_divs = {
             SOV_global_newdivisionrules,
             SOV_mechanized_newdivisionrules,
         ],
-        "matrix_overrides": {
-            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
-        },
+        # "matrix_overrides": {
+        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        # },
         "rule_exclusions": [
             "UAZ_469_CMD_SOV",
             "DCA_ZU_23_2_SOV",
@@ -169,9 +169,9 @@ sov_new_divs = {
             SOV_global_newdivisionrules,
             SOV_motorized_newdivisionrules,
         ],
-        "matrix_overrides": {
-            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
-        },
+        # "matrix_overrides": {
+        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        # },
         "rule_exclusions": [
             "T62M_CMD2_SOV",
             "T62M_CMD_SOV",
@@ -210,9 +210,9 @@ sov_new_divs = {
             SOV_armored_newdivisionrules,
             SOV_global_newdivisionrules,
         ],
-        "matrix_overrides": {
-            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
-        },
+        # "matrix_overrides": {
+        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        # },
     },
     # armored_marine 6008, 2007
     "SOV_armored_mechanized": {
@@ -231,9 +231,9 @@ sov_new_divs = {
             SOV_global_newdivisionrules,
             SOV_mechanized_newdivisionrules,
         ],
-         "matrix_overrides": {
-            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
-        },
+         # "matrix_overrides": {
+        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        # },
         "rule_exclusions": [
             "HMGteam_AGS17_SOV",
             "HMGteam_NSV_SOV",
@@ -263,9 +263,9 @@ sov_new_divs = {
             SOV_global_newdivisionrules,
             SOV_motorized_newdivisionrules,
         ],
-         "matrix_overrides": {
-            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
-        },
+         # "matrix_overrides": {
+        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        # },
         "transport_overrides": {
             "MotRifles_CMD2_TTsko_SOV": ["UAZ_469_SOV", "BTR_80_SOV", "Mi_2_trans_SOV", "Mi_8TV_non_arme_SOV", "Mi_8TV_SOV"],
         },
@@ -288,9 +288,9 @@ sov_new_divs = {
             SOV_global_newdivisionrules,
             SOV_mechanized_newdivisionrules,
         ],
-        "matrix_overrides": {
-            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
-        },
+        # "matrix_overrides": {
+        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        # },
     },
     "SOV_mechanized_motorized": {
         "division_id": 6015,
@@ -308,9 +308,9 @@ sov_new_divs = {
             SOV_mechanized_newdivisionrules,
             SOV_motorized_newdivisionrules,
         ],
-         "matrix_overrides": {
-            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
-        },
+         # "matrix_overrides": {
+        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        # },
         "rule_exclusions": [
             "HMGteam_AGS17_TTsko_SOV",
             "HMGteam_NSV_TTsko_SOV",
@@ -336,8 +336,8 @@ sov_new_divs = {
             SOV_motorized_newdivisionrules,
             SOV_global_newdivisionrules,
         ],
-        "matrix_overrides": {
-            "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
-        },
+        # "matrix_overrides": {
+        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        # },
     },
 }
