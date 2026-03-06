@@ -195,6 +195,28 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "Salves": 60,
         },
     },
+    
+    ("AutoCanon_HE_25mm_M242_Bushmaster_Late_BSV", "autocannon", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 55,
+                "Moving": 30,
+            },
+            "parent_membr": {
+                "PhysicalDamages": 0.25,
+                "SuppressDamages": 25,
+                "DisplaySalveAccuracy": False,
+                "AimingTime": 1.2,
+                "TimeBetweenTwoSalvos": 1.6,
+                "ShotsCountPerSalvo": 8,
+                "AffichageMunitionParSalve": 8,
+            },
+        },
+        "SupplyCost": 2.0,
+        "WeaponDescriptor": {
+            "Salves": 60,
+        },
+    },
 
     ("AutoCanon_HE_25mm_KBA", "autocannon", None, False): { # 21
         "Ammunition": {

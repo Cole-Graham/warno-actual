@@ -119,8 +119,8 @@ UK_NEW_UNITS = {
             "equipmentchanges": {
                 "HAGRU_MANPADS": [(1, 0, "MANPAD_Starstreak_HAGRU")], # turret_index, donor_weapon_index, ammo_name
                 "replace": [
-                    ("FM_L85A1", "FM_L85A1_noreflex", "FM_L85A1", "FM_L85A1"),
-                    ("Javelin", "MANPAD_Starstreak", "Javelin", "Starstreak_x3"),
+                    ("FM_L85A1", "FM_L85A1_noreflex"),
+                    ("Javelin", "MANPAD_Starstreak"),
                 ],
             },
             "Salves": {

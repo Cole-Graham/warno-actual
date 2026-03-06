@@ -324,10 +324,34 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("Bomb_BL755_cluster_264kg_salvolength8", "clu_bomb", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "SupplyCost": 490.0,
+            },
+        },
+    },
+    
+    ("Bomb_BL755_cluster_264kg_salvolength6", "clu_bomb", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "SupplyCost": 400.0,
+            },
+        },
+    },
+    
     ("Bomb_BL755_cluster_264kg_salvolength4", "clu_bomb", None, False): {
         "Ammunition": {
             "parent_membr": {
                 "SupplyCost": 315.0,
+            },
+        },
+    },
+    
+    ("Bomb_BL755_cluster_264kg_salvolength2", "clu_bomb", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "SupplyCost": 210.0,
             },
         },
     },

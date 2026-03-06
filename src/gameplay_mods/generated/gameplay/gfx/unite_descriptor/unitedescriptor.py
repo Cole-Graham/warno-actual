@@ -567,8 +567,12 @@ def _handle_damage_module(logger, game_db, unit_data, edit_type, unit_name,
                 if armor_family == "ResistanceFamily_infanterieWA":
                     
                     inf_strength = edits.get("strength", None)
-                    if not inf_strength:
+                    if not inf_strength and edit_type == "unit_edits":
                         inf_strength = unit_data.get("strength", None)
+                    elif not inf_strength and edit_type == "new_units":
+                        logger.error(f"New unit {unit_name} is missing a strength key. This may cause weapon "
+                                       "descriptor edits (e.g. replace) to be skipped.")
+                        break
                     
                     if inf_strength is not None:
                         armor_level = str(max(15 - inf_strength, 1))

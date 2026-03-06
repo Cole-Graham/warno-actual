@@ -197,6 +197,12 @@ def _handle_new_units(source_path: Any, game_db: Any) -> None:
         # TacticDepiction_unit_Alternatives
         depictionalternatives_list = source_path.by_namespace(f"TacticDepiction_{donor_name}_Alternatives").copy()
         depictionalternatives_list.namespace = f"TacticDepiction_{unit_name}_Alternatives"
+        mesh_name = depictionalternatives_list.v[0].v.by_m("MeshDescriptor").v.split("Modele_")[-1]
+        if mesh_name != donor_name:
+            logger.debug(f"Mesh name for {donor_name} is not the same as the unit descriptor name, using "
+                         f"{mesh_name} instead.")
+        else:
+            mesh_name = donor_name
         if depiction_key in NEW_DEPICTIONS:
             infantry_depiction_edits = NEW_DEPICTIONS[depiction_key].get("DepictionInfantry_ndf", {})
             if not infantry_depiction_edits:
@@ -349,7 +355,7 @@ def _handle_new_units(source_path: Any, game_db: Any) -> None:
                             new_meshes.add(mesh)
                         new_catalog_entry.v.by_member("Meshes").v = new_meshes
             else:
-                model_name = donor_name if not edits.get("model", False) else edits["model"]
+                model_name = mesh_name if not edits.get("model", False) else edits["model"]
                 new_mesh_list = [f"$/GFX/DepictionResources/Modele_{model_name}"]
                 for i in range(2, edits.get("alternatives_count", 1) + 1):
                     new_mesh_list.append(f"$/GFX/DepictionResources/Modele_{model_name}_{i:02}")

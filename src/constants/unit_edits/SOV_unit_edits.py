@@ -666,7 +666,7 @@ sov_unit_edits = {
         "UnitRole": "infantry",
         "SpecialtiesList": {
             "overwrite_all": [
-                '_leader',
+                'leader_sov',
                 '_mp',
                 'infantry_equip_light',
             ],
@@ -1013,6 +1013,32 @@ sov_unit_edits = {
             "Salves": {
                 "FM_AK_74": 11,
                 "MMG_PKM_7_62mm": 36,
+            },
+        },
+    },
+    
+    "MotRifles_RPG7VS_SOV": { # MOTOPEKHOTA [RPG-7VS]
+        "armor": "Infantry_armor_reference",
+        "GameName": {
+            "display": "MOTOPEKHOTA [RPG-7VS]",
+        },
+        "CommandPoints": 35,
+        "availability": [10, 7, 0, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "strength": 8,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_AK_74": 6,
+                },
+            },
+            "Salves": {
+                "FM_AK_74": 11,
+                "SAW_RPK_74_5_56mm": 18,
+                "RocketInf_RPG7VS": 6,
             },
         },
     },
@@ -2832,6 +2858,7 @@ sov_unit_edits = {
         "capacities": {
             "add_capacities": ["IFV"],
         },
+        "IdentifiedTextures": ["Texture_RTS_H_ifv", "Texture_ifv"],
         "orders": {
             "add_orders": ["EOrderType/UnloadFromTransport", "EOrderType/UnloadAtPosition", "EOrderType/Load"]
         },
@@ -2912,6 +2939,12 @@ sov_unit_edits = {
         "UpgradeFromUnit": "BRDM_2_Konkurs_M_SOV",
     },
     
+    "MTLB_Shturm_Ataka_SOV": {
+        "CommandPoints": 160,
+        "availability": [0, 4, 3, 0],
+        "UpgradeFromUnit": "MTLB_Shturm_SOV",
+    },
+    
     "AT_D44_85mm_VDV_SOV": {
         "CommandPoints": 35,
         "availability": [0, 9, 7, 5],
@@ -2929,7 +2962,12 @@ sov_unit_edits = {
         "CommandPoints": 55,
         "availability": [6, 4, 0, 0],
     },
-
+    
+    "AT_T12R_Ruta_SOV": {
+        "CommandPoints": 65,
+        "availability": [6, 4, 0, 0],
+    },
+    
     "AT_2A45_SprutB_SOV": {
         "GameName": {
             # "display": "2A45M SPRUT-B",
@@ -3176,6 +3214,10 @@ sov_unit_edits = {
     "UAZ_469_Reco_SOV": {
         "CommandPoints": 25,
     },
+    
+    "BTR_40_SOV": {
+        "CommandPoints": 20,
+    },
 
     "LUAZ_967M_AGL_VDV_SOV": {
         "CommandPoints": 30,
@@ -3286,6 +3328,11 @@ sov_unit_edits = {
         "availability": [6, 0, 0, 0],
     },
     
+    "MTLB_Taran_SIGINT_SOV": {
+        "CommandPoints": 20,
+        "availability": [6, 0, 0, 0],
+    },
+    
     "Scout_SOV": {
         "CommandPoints": 20,
         "armor": "Infantry_armor_reference",
@@ -3377,6 +3424,18 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
+        "strength": 8,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm", "SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm")],
+                "quantity": {
+                    "FM_AK_74": 7
+                },
+            },
+            "Salves": {
+                "MMG_PKM_7_62mm": 36,
+            },
+        },
     },
 
     "HvyScout_TTsko_SOV": {
@@ -3386,6 +3445,14 @@ sov_unit_edits = {
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm", "SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm")],
+            },
+            "Salves": {
+                "MMG_PKM_7_62mm": 36,
+            },
         },
     },
     
@@ -3572,6 +3639,11 @@ sov_unit_edits = {
     "Pchela_1T_SOV": { # Recon Drone (slow)
         "CommandPoints": 45,
     },
+    
+    "Pero_UAV_SOV": {
+        "CommandPoints": 50,
+        "availability": [0, 4, 0, 0],
+    },
 
     # SOV AA
     "BTR_ZD_Skrezhet_SOV": {
@@ -3586,6 +3658,17 @@ sov_unit_edits = {
         "CommandPoints": 30,
         "Stealth": 2.0,
     },
+    
+    "DCA_ZU_23_2_nonPara_SOV": {
+        "CommandPoints": 20,
+        "Factory": "EFactory/Logistic",
+        "availability": [10, 7, 0, 0],
+        "max_speed": 6,
+        "capacities": {
+            "add_capacities": ["Deploy", "Deploy_ok"],
+        },
+        "UpgradeFromUnit": "FOB_SOV",
+    },
 
     "DCA_ZU_23_2_TTsko_SOV": {
         "CommandPoints": 20,
@@ -3599,7 +3682,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": [9, 7, 0, 0],
+        "availability": [10, 7, 0, 0],
         "max_speed": 6,
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
@@ -3610,7 +3693,7 @@ sov_unit_edits = {
     "DCA_ZU_23_2_SOV": {
         "CommandPoints": 20,
         "Factory": "EFactory/Logistic",
-        "availability": [9, 7, 0, 0],
+        "availability": [10, 7, 0, 0],
         "max_speed": 6,
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
@@ -3626,7 +3709,7 @@ sov_unit_edits = {
             },
         },
         "Factory": "EFactory/Logistic",
-        "availability": [0, 9, 7, 0],
+        "availability": [0, 10, 7, 0],
         "max_speed": 6,
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
@@ -4185,6 +4268,16 @@ sov_unit_edits = {
         },
     },
     
+    "Mi_24P_Atakax4_SOV": {
+        "CommandPoints": 200,
+        "availability": [0, 2, 0, 1],
+    },
+    
+    "Mi_24P_Atakax8_SOV": {
+        "CommandPoints": 230,
+        "availability": [0, 2, 0, 1],
+    },
+    
     "Ka_50_SOV": {
         "CommandPoints": 230,
         "availability": [0, 2, 0, 1],
@@ -4254,6 +4347,11 @@ sov_unit_edits = {
         },
         "availability": [0, 3, 2, 0],
     },
+    
+    "MiG_21SMT_AA_SOV": {  # 2x R-3R, 2x R-13M1
+        "CommandPoints": 110,
+        "availability": [0, 4, 3, 2],
+    },
 
     "MiG_23MLA_AA_SOV": {  # 2x R-24R, 4x R-60M
         "CommandPoints": 130,
@@ -4304,6 +4402,11 @@ sov_unit_edits = {
                 "EOpticalStrength/AntiRadar": 5000.0,
             },
         },
+    },
+    
+    "MiG_25PD_SOV": {
+        "CommandPoints": 180,
+        "availability": [0, 2, 0, 1],
     },
     
     "MiG_27K_AT1_SOV": { # GSh-6-30, 2x Kh-29L, 40x S-8KOM

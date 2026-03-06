@@ -687,6 +687,145 @@ SOV_NEW_UNITS = {
         "alternatives_count": 6,
         "selector_tactic": "00_06",
     },
+    
+    ("HvyScout_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "a8fd7747-f55e-4726-b23e-62853c1ac473",
+        "GroupeCombatGUID": "9b6ca087-3704-4604-8a83-2cc0796a880d",
+        "ShowroomGUID": "7bc23d6c-1689-4a57-a0d3-9794d272482e",
+        "CadavreGUID": "f13dca39-59f4-40eb-8305-4857a8608b55",
+        "NewName": "HvyScout_RPG7VL_SOV",
+        "GameName": {
+            "display": "#RECO2 MOT. RAZVEDKA [RPG-7]",
+            "token": "XVGJOLTMAO",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_IFV",
+                "Infanterie_Reco",
+                "Radio",
+                "Reco",
+                "UNITE_HvyScout_RPG7VL_SOV",
+                "Unite",
+            ],
+        },
+        "strength": 8,
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_AK_74": 11,
+                "SAW_RPK_74_5_56mm": 18,
+                "RocketInf_RPG7VL": 6,
+            },
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_AK_74": 7,
+                },
+                "replace": [
+                    ("RocketInf_RPG22_72_5mm", "RocketInf_RPG7VL", "RocketInf_RPG22_72_5mm", "RocketInf_RPG7VL"),
+                ],
+            },
+        },
+        "TransportedSoldier": "HvyScout_RPG7VL_SOV",
+        "armor": "Infantry_armor_reference",
+        "CommandPoints": 35,
+        "SpecialtiesList": [
+                '_ifv',
+                'infantry_equip_medium',
+            ],
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 7, 5, 0],
+        "max_speed": 26,
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
+                   'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
+                   'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/UseCapacite', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": True, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": False,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "SOV",
+        "UpgradeFromUnit": "HvyScout_SOV",
+        "alternatives_count": 4,
+        "selector_tactic": "01_04",
+    },
+    
+    ("HvyScout_TTsko_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "f713e2e2-b37a-43c6-a117-a585f2f1717b",
+        "GroupeCombatGUID": "616118a7-8af9-4ea4-bebc-6a39a8769d5d",
+        "ShowroomGUID": "5744d2c2-ab01-4b2b-95dc-1b0a87caa2ab",
+        "CadavreGUID": "d114ae64-034f-4464-8706-334311805dd8",
+        "NewName": "HvyScout_TTsko_RPG7VL_SOV",
+        "GameName": {
+            "display": "#RECO2 MOT. RAZVEDKA [RPG-7]",
+            "token": "XJCCGMJPPP",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_IFV",
+                "Infanterie_Reco",
+                "Radio",
+                "Reco",
+                "UNITE_HvyScout_TTsko_RPG7VL_SOV",
+                "Unite",
+            ],
+        },
+        "strength": 7,
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_AK_74": 11,
+                "SAW_RPK_74_5_56mm": 18,
+                "RocketInf_RPG7VL": 6,
+            },
+            "equipmentchanges": {
+                "replace": [
+                    ("RocketInf_RPG22_72_5mm", "RocketInf_RPG7VL", "RocketInf_RPG22_72_5mm", "RocketInf_RPG7VL"),
+                ],
+            },
+        },
+        "TransportedSoldier": "HvyScout_TTsko_RPG7VL_SOV",
+        "armor": "Infantry_armor_reference",
+        "CommandPoints": 35,
+        "SpecialtiesList": [
+                '_ifv',
+                'infantry_equip_medium',
+            ],
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 7, 5, 0],
+        "max_speed": 26,
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
+                   'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
+                   'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/UseCapacite', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": True, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": False,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "SOV",
+        "UpgradeFromUnit": "HvyScout_TTsko_SOV",
+        "alternatives_count": 4,
+        "selector_tactic": "02_04",
+    },
 
     ("ATteam_Fagot_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "22caa472-c587-4816-b3b4-913e7c2316f4",

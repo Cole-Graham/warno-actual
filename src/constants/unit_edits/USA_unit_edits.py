@@ -171,6 +171,57 @@ usa_unit_edits = {
         "selector_tactic_obj": "00_06",
         "remove_zone_capture": None,
     },
+    
+    "Rifles_half_Cav_CMD_US": {
+        "CommandPoints": 30,
+        "armor": "Infantry_armor_reference",
+        "GameName": {
+            "display": "#LDR CAV. TROOPERS LDR.",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_IFV",
+                "UNITE_Rifles_half_Cav_CMD_US",
+                "Unite",
+            ],
+        },
+        "strength": 6,
+        "TransportedTexture": "UseInGame_Transport_REGINF",
+        "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "UnitRole": "infantry",
+        "SpecialtiesList": {
+            "overwrite_all": [
+                '_leader',
+                '_ifv',
+                'infantry_equip_medium',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Infantry",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
+        "availability": [0, 0, 7, 5],
+        "max_speed": 26,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("RocketInf_M72A3_LAW_66mm", "RocketInf_AT4_83mm", "RocketInf_M72_LAW_66mm", "RocketInf_AT4_83mm")],
+                "quantity": {
+                    "FM_M16": 6,
+                },
+            },
+            "Salves": {
+                "RocketInf_AT4_83mm": 4,
+            },
+        },
+        "selector_tactic": "(2, 4)",
+        "selector_tactic_obj": "02_04",
+        "remove_zone_capture": None,
+    },
 
     "Rifles_CMD_US": {
         "CommandPoints": 30,
@@ -1288,6 +1339,42 @@ usa_unit_edits = {
             },
         },
     },
+    
+    "Rifles_half_Cav_AT4_US": {
+        "GameName": {
+            "display": "CAV. TROOPERS [AT4]",
+        },
+        "CommandPoints": 25,
+        "armor": "Infantry_armor_reference",
+        "availability": [12, 9, 0, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "RocketInf_AT4_83mm": 4,
+            },
+        },
+    },
+    
+    "Rifles_half_Cav_Dragon_US": {
+        "GameName": {
+            "display": "CAV. TROOPERS [DRAGON]",
+        },
+        "CommandPoints": 30,
+        "armor": "Infantry_armor_reference",
+        "availability": [12, 9, 0, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "M47_DRAGON_II": 6,
+            },
+        },
+    },
 
     "Ranger_US": {
         "GameName": {
@@ -1338,6 +1425,10 @@ usa_unit_edits = {
     "DeltaForce_US": {
         "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [("Commando_733", "M16A2_Carbine")],
@@ -1674,6 +1765,13 @@ usa_unit_edits = {
                     ("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm"),
                     ("M47_DRAGON_II", "M47_DRAGON")
                 ],
+                "animate": {
+                    "MMG_M60E1_7_62mm": False,
+                },
+                "quantity": {
+                    "FM_M16A1": 7,
+                    "MMG_M60E1_7_62mm": 2,
+                },
             },
         },
     },
@@ -2260,6 +2358,16 @@ usa_unit_edits = {
             },
         },
     },
+    
+    "M109A2_Copperhead_US": {
+        "CommandPoints": 210,
+        "availability": [2, 0, 1, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "HMG_12_7_mm_M2HB": 35,
+            },
+        },
+    },
 
     "M110A2_HOWZ_US": {
         "CommandPoints": 220,
@@ -2664,6 +2772,62 @@ usa_unit_edits = {
             },
         },
     },
+    
+    "M2A2_BRAT_US": {
+        "CommandPoints": 95,
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_M240_7_62mm": 48,
+            },
+        },
+    },
+    
+    "M2_Bradley_BSV_US": {
+        "CommandPoints": 50,
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_M240_7_62mm": 48,
+                "ATGM_BGM71C_ITOW_IFV_salvolength2": 3,
+            },
+            "turrets": {
+                0: {
+                    "MountedWeapons": {
+                        "insert": {
+                            "0:AutoCanon_AP_25mm_M242_Bushmaster_Late": {
+                                "Ammunition": "$/GFX/Weapon/Ammo_AutoCanon_AP_25mm_M242_Bushmaster_APDS",
+                            },
+                        },
+                        "AutoCanon_HE_25mm_M242_Bushmaster_Late_BSV": {
+                            "HandheldEquipmentKey": "'WeaponAlternative_2'",
+                            "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
+                            "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
+                            "WeaponShootDataPropertyName": ["WeaponShootData_0_2"],
+                        },
+                    },
+                },
+                1: {
+                    "MountedWeapons": {
+                        "ATGM_BGM71C_ITOW_x2_IFV": {
+                            "HandheldEquipmentKey": "'WeaponAlternative_3'",
+                            "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
+                            "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
+                            "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
+                        },
+                    },
+                },
+                2: {
+                    "MountedWeapons": {
+                        "MMG_M240_7_62mm": {
+                            "HandheldEquipmentKey": "'WeaponAlternative_4'",
+                            "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_4'",
+                            "WeaponIgnoredPropertyName": "'WeaponIgnored_4'",
+                            "WeaponShootDataPropertyName": ["WeaponShootData_0_4"],
+                        },
+                    },
+                },
+            },
+        },
+    },
 
     "M1A1HA_Abrams_US": {
         "CommandPoints": 310,
@@ -2730,6 +2894,16 @@ usa_unit_edits = {
             },
         },
         "availability": [6, 0, 0, 0],
+    },
+    
+    "M1_Abrams_MOD_US": {
+        "CommandPoints": 225,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "availability": [0, 4, 3, 0],
     },
 
     "M60A3_Patton_US": {
@@ -2870,6 +3044,11 @@ usa_unit_edits = {
         "CommandPoints": 30,
         "availability": [8, 0, 0, 0],
     },
+    
+    "M548A2_Jammer_US": {
+        "CommandPoints": 15,
+        "availability": [6, 0, 0, 0],
+    },
 
     "M113A1_TOW_US": {
         "CommandPoints": 50,
@@ -2879,6 +3058,10 @@ usa_unit_edits = {
                 "HMG_12_7_mm_M2HB": 35,
             },
         },
+    },
+    
+    "FAV_trans_US": {
+        "CommandPoints": 25,
     },
     
     "FAV_HMG_US": {
@@ -2906,6 +3089,22 @@ usa_unit_edits = {
             },
             "equipmentchanges": {
                 "replace": [("MMG_team_7_62mm_M60", "MMG_turret_7_62mm_M60")],
+            },
+        },
+    },
+    
+    "M3_Bradley_CFV_US": {
+        "CommandPoints": 85,
+        "availability": [6, 4, 0, 0],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [
+                    ("AutoCanon_AP_25mm_M242_Bushmaster_Late", "AutoCanon_AP_25mm_M242_Bushmaster_APDS"),
+                    ("AutoCanon_HE_25mm_M242_Bushmaster_Late", "AutoCanon_HE_25mm_M242_Bushmaster_APDS"),
+                ],
+            },
+            "Salves": {
+                "MMG_M240_7_62mm": 48,
             },
         },
     },
@@ -2978,6 +3177,34 @@ usa_unit_edits = {
                 "MMG_M240_7_62mm": 48,
             },
         },
+    },
+    
+    "M3_ETAS_US": {
+        "CommandPoints": 105,
+        "availability": [4, 3, 0, 0],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [
+                    ("AutoCanon_AP_25mm_M242_Bushmaster_Late", "AutoCanon_AP_25mm_M242_Bushmaster_APDS"),
+                    ("AutoCanon_HE_25mm_M242_Bushmaster_Late", "AutoCanon_HE_25mm_M242_Bushmaster_APDS"),
+                    ("ATGM_BGM71C_ITOW_salvolength2", "ATGM_BGM71C_ITOW_ETAS_IFV_salvolength2"),
+                ],
+            },
+            "Salves": {
+                "ATGM_BGM71C_ITOW_ETAS_IFV_salvolength2": 3,
+                "MMG_M240_7_62mm": 48,
+            },
+        },
+    },
+    
+    "M48A5_reco_NG_US": {
+        "CommandPoints": 90,
+        "availability": [8, 0, 0, 0],
+    },
+    
+    "M60A1_RISE_Passive_reco_US": {
+        "CommandPoints": 90,
+        "availability": [6, 0, 0, 0],
     },
 
     "M551A1_ACAV_Sheridan_US": {
@@ -3133,6 +3360,51 @@ usa_unit_edits = {
         },
     },
     
+    "Scout_Cav_US": { # CAVALRY SCOUTS
+        "CommandPoints": 30,
+        "availability": [12, 9, 0, 0],
+        "armor": "Infantry_armor_reference",
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "insert": [(1, "MMG_WA_M60E3_7_62mm")],
+                "insert_edits": {
+                    1: {
+                        "turret_edits": {
+                            "YulBoneOrdinal": 2,
+                        },
+                        "AnimateOnlyOneSoldier": True,
+                        "NbWeapons": 1,
+                        "AmmoBoxIndex": 1,
+                        "HandheldEquipmentKey": "'WeaponAlternative_2'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_2"],
+                    },
+                    2: {
+                        "turret_edits": {
+                            "YulBoneOrdinal": 3,
+                        },
+                        "AmmoBoxIndex": 2,
+                        "HandheldEquipmentKey": "'WeaponAlternative_3'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
+                    },
+                },
+                "quantity": {
+                    "FM_M16": 5,
+                },
+            },
+            "Salves": {
+                "insert": [(1, 45)],
+            },
+        },
+    },
+    
     "Pathfinder_NG_US": {
         "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
@@ -3214,6 +3486,13 @@ usa_unit_edits = {
             "equipmentchanges": {
                 "replace": [("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm")],
             },
+            "animate": {
+                "MMG_M60E1_7_62mm": False,
+            },
+            "quantity": {
+                "FM_M16": 6,
+                "MMG_M60E1_7_62mm": 2,
+            },
         },
     },
     
@@ -3259,7 +3538,7 @@ usa_unit_edits = {
         },
         "max_speed": 26,
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_light'"],
+            "add_specs": ["'infantry_equip_medium'"],
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -3402,7 +3681,7 @@ usa_unit_edits = {
     "MANPAD_Stinger_NG_US": {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
-        "availability": [10, 0, 0, 0],
+        "availability": [9, 0, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -3815,6 +4094,7 @@ usa_unit_edits = {
             },
         },
         "availability": [0, 2, 0, 1],
+        "UpgradeFromUnit": "AH64_Apache_US",
     },
 
     "AH64_Apache_emp2_US": {
@@ -3831,13 +4111,14 @@ usa_unit_edits = {
     },
 
     "AH64_Apache_ATAS_US": {
-        "CommandPoints": 200,
+        "CommandPoints": 230,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
         "availability": [0, 2, 0, 1],
+        "UpgradeFromUnit": "AH64_Apache_emp1_US",
     },
 
     # US AIR

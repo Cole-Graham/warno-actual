@@ -479,31 +479,56 @@ def _extract_rule_metadata(rule_v: Any) -> Tuple[int, List[str]]:
     return max_pack_number, transport_list
 
 
+def _sort_transports_ground_first(
+    transports: List[str],
+    unit_data: Dict[str, Any],
+) -> List[str]:
+    """Sort transport list so ground transports appear before helicopters.
+
+    Uses is_helo_unit from unit_data to determine transport type. Transports
+    not found in unit_data are treated as ground (listed first).
+
+    Args:
+        transports: List of transport descriptors (e.g. $/GFX/Unit/Descriptor_Unit_X)
+        unit_data: Unit database with is_helo_unit boolean per unit
+
+    Returns:
+        Same list sorted with ground transports first, helicopters last
+    """
+    def _sort_key(descriptor: str) -> int:
+        unit_name = _extract_unit_name_from_descriptor(descriptor)
+        info = unit_data.get(unit_name, {})
+        is_helo = info.get("is_helo_unit", False)
+        return 1 if is_helo else 0  # Ground=0 (first), Helo=1 (last)
+
+    return sorted(transports, key=_sort_key)
+
+
 def _merge_transport_lists(transport_list1: List[str], transport_list2: List[str]) -> List[str]:
     """Merge two transport lists, removing duplicates while preserving order.
-    
+
     Args:
         transport_list1: First transport list
         transport_list2: Second transport list
-    
+
     Returns:
         Merged list with unique transports, preserving order (first list first, then second)
     """
     seen = set()
     merged = []
-    
+
     # Add transports from first list
     for transport in transport_list1:
         if transport not in seen:
             seen.add(transport)
             merged.append(transport)
-    
+
     # Add transports from second list that aren't already present
     for transport in transport_list2:
         if transport not in seen:
             seen.add(transport)
             merged.append(transport)
-    
+
     return merged
 
 
@@ -737,6 +762,7 @@ def _create_national_division_rules(source_path: Any, game_db: Dict[str, Any]) -
         custom_rules = div_data.get("division_rules")
         if custom_rules:
             logger.info(f"Creating division rule {new_rule_namespace} from custom division_rules")
+            unit_data = game_db.get("unit_data", {})
             collected_rules: Dict[str, str] = {}  # unit_descriptor -> serialized_rule
             collected_rule_metadata: Dict[str, Tuple[int, List[str]]] = {}  # unit_descriptor -> (card_count, transport_list)
             
@@ -834,6 +860,7 @@ def _create_national_division_rules(source_path: Any, game_db: Dict[str, Any]) -
                             for transport in transports:
                                 if transport is not None:
                                     transport_descriptors.append(f"$/GFX/Unit/Descriptor_Unit_{transport}")
+                            transport_descriptors = _sort_transports_ground_first(transport_descriptors, unit_data)
                         
                         # Check if we've already seen this unit
                         if unit_descr in collected_rules:
@@ -844,6 +871,7 @@ def _create_national_division_rules(source_path: Any, game_db: Dict[str, Any]) -
                                 # Replace with the rule that has more cards, but merge transports from both
                                 logger.debug(f"Replacing duplicate unit {unit_descr} (cards: {existing_card_count} -> {cards})")
                                 merged_transports = _merge_transport_lists(existing_transports, transport_descriptors)
+                                merged_transports = _sort_transports_ground_first(merged_transports, unit_data)
                                 # Convert merged transports back to unit names for rule string creation
                                 merged_transport_names = [t.replace("$/GFX/Unit/Descriptor_Unit_", "") for t in merged_transports] if merged_transports else None
                                 rule_str = _convert_custom_division_rule_to_string(
@@ -859,6 +887,7 @@ def _create_national_division_rules(source_path: Any, game_db: Dict[str, Any]) -
                                 # Same card count - merge transports
                                 logger.debug(f"Merging transports for duplicate unit {unit_descr} (cards: {cards})")
                                 merged_transports = _merge_transport_lists(existing_transports, transport_descriptors)
+                                merged_transports = _sort_transports_ground_first(merged_transports, unit_data)
                                 if merged_transports != existing_transports:
                                     # Update the rule with merged transports
                                     rule_str = collected_rules[unit_descr]
@@ -870,6 +899,7 @@ def _create_national_division_rules(source_path: Any, game_db: Dict[str, Any]) -
                                 # Existing rule has more cards - merge transports into existing rule
                                 logger.debug(f"Merging transports into existing rule for {unit_descr} (existing cards: {existing_card_count}, new cards: {cards})")
                                 merged_transports = _merge_transport_lists(existing_transports, transport_descriptors)
+                                merged_transports = _sort_transports_ground_first(merged_transports, unit_data)
                                 if merged_transports != existing_transports:
                                     # Update the rule with merged transports
                                     rule_str = collected_rules[unit_descr]
@@ -878,13 +908,22 @@ def _create_national_division_rules(source_path: Any, game_db: Dict[str, Any]) -
                                     collected_rule_metadata[unit_descr] = (existing_card_count, merged_transports)
                                     logger.debug(f"Merged transports for {unit_descr}: {existing_transports} + {transport_descriptors} -> {merged_transports}")
                             continue
-                        
+
+                        # Build sorted transports for rule string (preserve None for optional transport)
+                        transports_for_rule = transports
+                        if transport_descriptors:
+                            sorted_names = [_extract_unit_name_from_descriptor(d) for d in transport_descriptors]
+                            if None in (transports or []):
+                                transports_for_rule = [None] + sorted_names
+                            else:
+                                transports_for_rule = sorted_names
+
                         # Convert to rule string
                         rule_str = _convert_custom_division_rule_to_string(
                             unit_name=unit_name,
                             cards=cards,
                             availability=availability,
-                            transports=transports
+                            transports=transports_for_rule,
                         )
                         
                         collected_rules[unit_descr] = rule_str

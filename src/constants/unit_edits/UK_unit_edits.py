@@ -835,12 +835,19 @@ uk_unit_edits = {
     },
     
     "Engineers_AT_UK": {
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "max_speed": 26,
-        "strength": 9,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
+        },
+        "strength": 9,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_L85A1": 7,
+                },
+            },
         },
     },
 
@@ -972,7 +979,7 @@ uk_unit_edits = {
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "quantity": {
-                    "FM_L85A1": 7,
+                    "FM_L85A1": 6,
                 },
                 "insert": [(2, "MMG_inf_L7A2_7_62mm")],
                 "insert_edits": {
@@ -1708,6 +1715,16 @@ uk_unit_edits = {
             },
         },
     },
+    
+    "Challenger_1_Mk3_UK": {
+        "CommandPoints": 210,
+        "availability": [0, 0, 4, 3],
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_L8A2_7_62mm": 96,
+            },
+        },
+    },
 
     # UK RECON
     "LandRover_Yeoman_UK": {
@@ -1846,6 +1863,7 @@ uk_unit_edits = {
         "UnitRole": "reco",
         "availability": [0, 4, 3, 0],
         "UpgradeFromUnit": None,
+        "DeploymentShift": 750,
     },
     
     "FV101_Scorpion_UK": {
@@ -1976,13 +1994,21 @@ uk_unit_edits = {
     },
     
     "Pathfinders_UK": {
-        "CommandPoints": 50,
+        "CommandPoints": 55,
         "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_light'"],
+            "add_specs": ["'infantry_equip_medium'"],
         },
         "availability": [0, 0, 4, 3],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("RocketInf_M72A3_LAW_66mm", "RocketInf_Carl_Gustav", "RocketInf_M72_LAW_66mm", "RocketInf_Carl_Gustav")],
+            },
+            "Salves": {
+                "RocketInf_Carl_Gustav": 6,
+            },
+        },
     },
     
     "LRRP_UK": { # SAS PATROL
@@ -2243,6 +2269,13 @@ uk_unit_edits = {
     },
 
     # UK HELI
+    "Westland_Wessex_trans_UK": {
+        "CommandPoints": 50,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+    },
+    
     "CH47_Chinook_UK": {
         "CommandPoints": 60,
         "SpecialtiesList": {

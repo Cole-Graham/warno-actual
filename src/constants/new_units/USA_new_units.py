@@ -173,7 +173,7 @@ USA_NEW_UNITS = {
         "CadavreGUID": "eab4f242-c8fd-4868-b009-a6a86f934dd8",
         "NewName": "Cav_Scout_Dragon_M3A1_US",
         "GameName": {
-            "display": "#RECO2 CAVALRY SCOUTS [M3A1]",
+            "display": "#RECO2 CAV. SCOUTS [M3A1]",
             "token": "VKPPUUNVBK",
         },
         "TagSet": {
@@ -220,7 +220,7 @@ USA_NEW_UNITS = {
         "SpecialtiesList": [
             'infantry_equip_heavy',
         ],
-        "ButtonTexture": "Scout_Aero_US",
+        "ButtonTexture": "Scout_Cav_US",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -259,7 +259,7 @@ USA_NEW_UNITS = {
         "CadavreGUID": "b47e0795-709b-4377-9f5c-f42df25e7aac",
         "NewName": "Cav_Scout_Dragon_M3A2_US",
         "GameName": {
-            "display": "#RECO2 CAVALRY SCOUTS [M3A2]",
+            "display": "#RECO2 CAV. SCOUTS [M3A2]",
             "token": "VKPPUUNVBJ",
         },
         "TagSet": {
@@ -306,7 +306,7 @@ USA_NEW_UNITS = {
         "SpecialtiesList": [
             'infantry_equip_heavy',
         ],
-        "ButtonTexture": "Scout_Aero_US",
+        "ButtonTexture": "Scout_Cav_US",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -404,7 +404,7 @@ USA_NEW_UNITS = {
                 "update": [2],
                 "replace": [("FM_M16_noreflex", "FM_M16_x5")],
                 "quantity": {
-                    "FM_M16": 4,
+                    "FM_M16": 5,
                     "Sniper_M21": 1,
                 },
             },

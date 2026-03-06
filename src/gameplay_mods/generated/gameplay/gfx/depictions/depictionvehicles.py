@@ -170,6 +170,11 @@ def _handle_unit_edits(source_path: Any) -> None:
                         source_path.add(new_entry)
                     logger.info(f"Inserted new weapon operator for {unit_name}")
 
+                    # Optionally apply edits to the donor (e.g. when shifting weapon slots)
+                    if "modify_donor" in edits:
+                        _handle_weapon_operator(unit_name, donor, edits["modify_donor"])
+                        logger.info(f"Updated donor weapon operator {namespace} for {unit_name}")
+
                 elif obj_type == "TacticVehicleDepictionRegistration":
                     # Handle vehicle depiction copy - unit model objects are unnamed, find by CoatingName
                     # Extract donor name from copy target or use unit_name
@@ -210,14 +215,23 @@ def _handle_unit_edits(source_path: Any) -> None:
 
 def _handle_weapon_operator(unit_name, weapon_operator, edits, is_new_entry=False):  # noqa
     for row_name_or_type, value in edits.items():
-        if row_name_or_type == "copy":
+        if row_name_or_type in ("copy", "modify_donor"):
             continue
 
-        member_access = weapon_operator.v.by_m(row_name_or_type)
+        member_access = weapon_operator.v.by_m(row_name_or_type, False)
+        if member_access is None:
+            continue
+
         if row_name_or_type == "FireEffectTag":
             member_access.v = value
+        elif row_name_or_type == "WeaponActiveAndCanShootPropertyName":
+            member_access.v = value
         elif row_name_or_type == "WeaponShootDataPropertyName":
-            member_access.v = "[" + ",".join(value) + "]"
+            # ContinuousFire uses scalar; InstantFire/MissileCarriage use list
+            if getattr(weapon_operator.v, "type", None) == "DepictionOperator_WeaponContinuousFire" and isinstance(value, list) and len(value) == 1:
+                member_access.v = value[0]
+            else:
+                member_access.v = "[" + ",".join(value) + "]"
 
     return weapon_operator
 

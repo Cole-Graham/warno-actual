@@ -319,6 +319,18 @@ supply_unit_edits = {
         "availability": [2, 0, 0, 0],
     },
     
+    "MAZ_535A_supply_SOV": {
+        "SupplyCapacity": 2000.0,
+        "CommandPoints": 70,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "SupplyDescriptor": "DvisionalSupply",
+        "availability": [2, 0, 0, 0],
+    },
+    
     "T813_DDR": {
         "SupplyCapacity": 2300.0,
         "CommandPoints": 80,
@@ -477,6 +489,18 @@ supply_unit_edits = {
         },
         "SupplyDescriptor": "SquadSupply",
         "availability": [6, 0, 0, 0],
+    },
+    
+    "M992A2_supply_US": {
+        "SupplyCapacity": 1400.0,
+        "CommandPoints": 45,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "SupplyDescriptor": "PrimarySupply",
+        "availability": [4, 0, 0, 0],
     },
     
     "M548A2_supply_US": {

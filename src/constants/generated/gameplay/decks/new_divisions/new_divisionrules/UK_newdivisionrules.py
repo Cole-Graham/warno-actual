@@ -140,7 +140,7 @@ UK_armored_newdivisionrules = {
         ("FV432_CMD_UK", 1, [0, 3, 0, 0]),
     ],
     "tank": [
-        ("Challenger_1_Mk1_CMD_UK", 1, [0, 0, 2, 0]),
+        ("Challenger_1_Mk1_CMD_UK", 1, [0, 0, 3, 0]),
         ("FV4201_Chieftain_CMD_UK", 1, [0, 0, 4, 0]),
         ("FV4201_Chieftain_Mk9_CMD_UK", 1, [0, 0, 4, 0]),
         ("Centurion_Mk13_CMD_UK", 1, [0, 6, 0, 0]),
@@ -160,7 +160,7 @@ UK_armored_newdivisionrules = {
     "recon": [
         ("Scout_UK", 2, [8, 6, 0, 0], ["LandRover_UK", "FV103_Spartan_UK"]),
         ("Scout_AT_UK", 1, [8, 6, 0, 0], ["LandRover_UK", "FV103_Spartan_UK"]),
-        ("Sniper_UK", 1, [0, 3, 2, 0]),
+        ("Sniper_UK", 1, [0, 3, 2, 0], ["LandRover_UK", "Gazelle_trans_UK"]),
         ("FV4201_Chieftain_Mk11_UK", 2, [0, 4, 3, 0]),
         ("FV103_Spartan_GSR_UK", 1, [0, 8, 0, 0]),
         ("FV101_Scorpion_UK", 2, [10, 7, 0, 0]),
@@ -267,7 +267,7 @@ UK_mechanized_newdivisionrules = {
         ("FV432_CMD_UK", 1, [0, 3, 0, 0]),
     ],
     "tank": [
-        ("Challenger_1_Mk1_CMD_UK", 1, [0, 2, 0, 0]),
+        ("Challenger_1_Mk1_CMD_UK", 1, [0, 0, 3, 0]),
         ("FV4201_Chieftain_CMD_UK", 1, [0, 0, 4, 0]),
         ("FV4201_Chieftain_Mk9_CMD_UK", 1, [0, 0, 4, 0]),
         ("Centurion_Mk13_CMD_UK", 1, [0, 6, 0, 0]),
@@ -374,6 +374,8 @@ UK_motorized_newdivisionrules = {
         ("Howz_L118_105mm_UK", 1, [4, 3, 0, 0], ["Bedford_MJ_4t_trans_UK"]),
         ("Howz_QF_25pdr_87mm_UK", 1, [5, 4, 3, 0], ["Bedford_MJ_4t_trans_UK"]),
         ("FV432_CMD_UK", 1, [0, 3, 0, 0]),
+        ("FV432_Mortar_UK", 2, [4, 3, 0, 0]),
+        ("81mm_mortar_UK", 2, [6, 5, 4, 0], ["Bedford_MJ_4t_trans_UK"]),
     ],
     "tank": [
         ("FV4201_Chieftain_CMD_UK", 1, [0, 0, 4, 0]),

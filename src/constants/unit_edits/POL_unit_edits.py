@@ -143,8 +143,8 @@ pol_unit_edits = {
     },
     
     "BRDM_2_CMD_POL": {  # BRDM-2U
-        "strength": 8,
         "CommandPoints": 155,
+        "strength": 8,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -159,6 +159,7 @@ pol_unit_edits = {
     
     "BRDM_2_CMD_R5_POL": {  # BRDM-2 R-5
         "CommandPoints": 175,
+        "strength": 8,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -2222,6 +2223,10 @@ pol_unit_edits = {
     #     },
     # },
     
+    "UAZ_469_Reco_POL": {
+        "CommandPoints": 25,
+    },
+    
     "BRDM_1_DShK_POL": {
         "CommandPoints": 30,
         "availability": [12, 9, 0, 0],
@@ -2302,7 +2307,6 @@ pol_unit_edits = {
     
     "Honker_RYS_POL": {  # Honker Rys
         "CommandPoints": 25,
-        "UpgradeFromUnit": "Honker_4011_POL",
     },
     
     # POL AA

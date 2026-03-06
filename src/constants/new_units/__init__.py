@@ -417,6 +417,61 @@ def validate_no_duplicate_keys(new_units_dict: Dict) -> None:
     logger.info(f"Validated {len(new_units_dict)} new unit keys - no duplicates found")
 
 
+GUID_FIELDS = ("GUID", "GroupeCombatGUID", "ShowroomGUID", "CadavreGUID")
+
+
+def validate_no_duplicate_guids(new_units_dict: Dict) -> None:
+    """
+    Validate that no new unit entries share identical GUIDs for GUID, GroupeCombatGUID,
+    ShowroomGUID, or CadavreGUID fields.
+
+    Each GUID must be unique across all new units to avoid conflicts in game data.
+
+    Args:
+        new_units_dict: Dictionary of new units to validate (should be resolved)
+
+    Raises:
+        ValueError: If duplicate GUIDs are found for any field
+    """
+    # Map: field_name -> {guid_value -> [unit_names]}
+    guid_to_units: Dict[str, Dict[str, List[str]]] = {
+        field: {} for field in GUID_FIELDS
+    }
+
+    for key, edits in new_units_dict.items():
+        if not isinstance(edits, dict):
+            continue
+        unit_name = edits.get("NewName", _get_unit_name_from_key(key))
+
+        for field in GUID_FIELDS:
+            guid = edits.get(field)
+            if guid is None or not isinstance(guid, str):
+                continue
+            if guid not in guid_to_units[field]:
+                guid_to_units[field][guid] = []
+            guid_to_units[field][guid].append(unit_name)
+
+    duplicates = []
+    for field in GUID_FIELDS:
+        for guid, unit_names in guid_to_units[field].items():
+            if len(unit_names) > 1:
+                duplicates.append((field, guid, unit_names))
+
+    if duplicates:
+        error_lines = [
+            "Duplicate GUIDs found in new units (each GUID must be unique):",
+        ]
+        for field, guid, unit_names in duplicates:
+            error_lines.append(f"  {field} '{guid}' used by: {unit_names}")
+        error_msg = "\n".join(error_lines)
+        logger.error(error_msg)
+        raise ValueError(error_msg)
+
+    logger.info(
+        f"Validated GUID uniqueness for {len(new_units_dict)} new units - no duplicates found",
+    )
+
+
 def load_new_units() -> Dict:
     """Load and merge all new unit dictionaries with reference resolution."""
     merged_units = {}
@@ -451,6 +506,10 @@ def load_new_units() -> Dict:
 
     # Validate infantry units have strength (after resolution, since it may be inherited)
     _validate_infantry_strength(merged_units)
+
+    # Validate no duplicate GUIDs across new units (after resolution)
+    logger.info("Validating GUID uniqueness across new units...")
+    validate_no_duplicate_guids(merged_units)
     
     # Save resolved units for debugging (convert tuple keys to strings for JSON serialization)
     logs_dir = Path(__file__).parents[3] / "logs"
@@ -477,4 +536,5 @@ __all__ = [
     "load_new_units",
     "validate_no_duplicate_keys_in_source_files",
     "validate_no_duplicate_keys",
+    "validate_no_duplicate_guids",
 ]

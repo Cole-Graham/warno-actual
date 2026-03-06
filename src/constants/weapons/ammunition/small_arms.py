@@ -837,6 +837,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 35,
             },
             "parent_membr": {
+                "Caliber": (".45 ACP", "YZUMGOMQKI"),
                 "TimeBetweenTwoShots": 0.4,
                 "MaximumRangeGRU": 450,
                 "MaximumRangeHelicopterGRU": 400,
@@ -946,15 +947,15 @@ weapons: Dict[WeaponKey, WeaponData] = {
 
     ("M16A2_Carbine", "small_arms", "Commando_733", True): {
         "Ammunition": {
+            "display": "M16A2 Carbine",
+            "token": "SZBMRVNELN",
             "Arme": {
                 "Family": "DamageFamily_sa_intermediate",
             },
-            "display": "M16A2 Carbine",
             "hit_roll": {
                 "Idling": 60,
                 "Moving": 45,
             },
-            "token": "SZBMRVNELN",
             "parent_membr": {
                 "TimeBetweenTwoShots": 1.0,
                 "MaximumRangeGRU": 700,

@@ -350,6 +350,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DistanceToTarget": True,
             },
             "parent_membr": {
+                "MaximumRangeHelicopterGRU": 2625,
                 "MaximumRangeAirplaneGRU": 1925,
                 "TimeBetweenTwoSalvos": 7.0,
                 "AimingTime": 1.2,
@@ -367,6 +368,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DistanceToTarget": True,
             },
             "parent_membr": {
+                "MaximumRangeHelicopterGRU": 2625,
                 "MaximumRangeAirplaneGRU": 1925,
                 "TimeBetweenTwoSalvos": 7.0,
                 "AimingTime": 3.5,

@@ -136,6 +136,17 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("Howz_Canon_M185_L39_Howitzer_155mm_guided", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 4.2,
+                "SuppressDamages": 357,
+                "RadiusSplashPhysicalDamagesGRU": 155,
+                "RadiusSplashSuppressDamagesGRU": 207,
+            },
+        },
+    },
 
     ("Howz_Canon_FH70_SP_Howitzer_155mm", "howitzer", None, False): { # 427
         "Ammunition": {
@@ -211,7 +222,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_BS3_towed_100mm", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
-                "PhysicalDamages": 2.1,
+                "PhysicalDamages": 2.8,
                 "RadiusSplashPhysicalDamagesGRU": 100,
                 "RadiusSplashSuppressDamagesGRU": 133,
             },
@@ -439,6 +450,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "TimeBetweenTwoShots": 3.0,
                 "TimeBetweenTwoFx": 3.0,
+                "DispersionAtMaxRangeGRU": 500,
+                "DispersionAtMinRangeGRU": 112,
                 "ShotsCountPerSalvo": 7,
                 "AffichageMunitionParSalve": 7,
                 "PhysicalDamages": 3.6,
