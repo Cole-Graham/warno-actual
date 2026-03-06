@@ -312,14 +312,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "DistanceToTarget": True,
             },
             "parent_membr": {
-                "TimeBetweenTwoShots": 0.9,
-                "TimeBetweenTwoFx": 0.9,
+                "TimeBetweenTwoShots": 1.8,
+                "TimeBetweenTwoFx": 1.8,
                 "MaximumRangeGRU": 595,
                 "PhysicalDamages": 0.5,
                 "SuppressDamages": 27.0,
                 "NoiseDissimulationMalus": 1.0,
                 "DisplaySalveAccuracy": False,
-                "TimeBetweenTwoSalvos": 1.7,
+                "TimeBetweenTwoSalvos": 3.5,
                 "AimingTime": 2.0,
                 "ShotsCountPerSalvo": 10,
                 "AffichageMunitionParSalve": 10,
@@ -427,8 +427,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_sa_intermediate",
             },
             "hit_roll": {
-                "Idling": 30,
-                "Moving": 15,
+                "Idling": 35,
+                "Moving": 20,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 1.2,
@@ -456,8 +456,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_sa_intermediate",
             },
             "hit_roll": {
-                "Idling": 30,
-                "Moving": 15,
+                "Idling": 35,
+                "Moving": 20,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 1.2,

@@ -8,8 +8,8 @@ ot_64_skot_2_cmd_pol: Dict[str, Dict[str, Any]] = {
         "TacticVehicleDepictionRegistration": {
             f'unnamed TacticVehicleDepictionRegistration'
             f'('
-            f"    CoatingName = 'OT_64_SKOT_2_CMD_POL'"
-            f'    Selector = SpecificVehicleDepictionSelector'
+            f"    BlackHoleKey = 'OT_64_SKOT_2_CMD_POL'"
+            f'    Selector = SpecificMechanicalDepictionSelector'
             f'    Alternatives = Alternatives_OT_64_SKOT_2_CMD_POL'
             f'    Operators = '
             f'    ['

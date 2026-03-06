@@ -1245,7 +1245,7 @@ uk_unit_edits = {
     },
     
     "FV432_Mortar_UK": {
-        "CommandPoints": 45,
+        "CommandPoints": 60,
         "availability": [4, 3, 0, 0],
     },
     

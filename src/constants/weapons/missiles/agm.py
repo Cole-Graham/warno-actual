@@ -276,6 +276,24 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("AGM_9M114M_Ataka", "AGM", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 24,
+            },
+            "parent_membr": {
+                "SpeedGRU": 800,
+            },
+        },
+        "SupplyCost": 80.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [8, 4],
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 800,
+        },
+    },
+    
     ("AGM_9K121_Vikhr", "ATGM", None, False): {
         "Ammunition": {
             "Arme": {

@@ -3,7 +3,7 @@
 from typing import Any
 from src.constants.new_units import NEW_UNITS, NEW_DEPICTIONS
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import find_obj_by_mimetic_name
+from src.utils.ndf_utils import find_obj_by_blackhole_key
 from src import ndf
 
 logger = setup_logger(__name__)
@@ -21,7 +21,14 @@ def _handle_new_units(source_path: Any) -> None:
     logger.info("Creating ghost depiction entries")
 
     for donor, edits in NEW_UNITS.items():
-        if not edits.get("is_ground_vehicle", False):
+        # if not edits.get("is_ground_vehicle", False):
+        #     continue
+        
+        if edits.get("is_aerial", False):
+            obj_type = "GhostAerialDepictionRegistration"
+        elif edits.get("is_ground_vehicle", False):
+            obj_type = "GhostVehicleDepictionRegistration"
+        else:
             continue
 
         unit_name = edits["NewName"]
@@ -36,17 +43,17 @@ def _handle_new_units(source_path: Any) -> None:
                 source_path.add(new_descr_obj)
                 logger.info(f"Added custom ghost depiction for {unit_name}")
         else:
-            # Find donor by MimeticName
-            donor_obj = find_obj_by_mimetic_name(source_path, donor_name, "GhostVehicleDepictionRegistration")
+            # Find donor by BlackHoleKey
+            donor_obj = find_obj_by_blackhole_key(source_path, donor_name, obj_type)
             
             if not donor_obj:
-                logger.error(f"Could not find donor ghost depiction with MimeticName='{donor_name}'")
+                logger.error(f"Could not find donor ghost depiction with BlackHoleKey='{donor_name}'")
                 continue
             
             new_depiction_obj = donor_obj.copy()
             new_depiction_obj.namespace = None
-            mimetic_member = new_depiction_obj.v.by_m("MimeticName")
-            mimetic_member.v = f'"{unit_name}"'
+            blackhole_key_member = new_depiction_obj.v.by_m("BlackHoleKey")
+            blackhole_key_member.v = f'"{unit_name}"'
             alternatives_member = new_depiction_obj.v.by_m("Alternatives")
             alternatives_member.v = f"Alternatives_{unit_name}"
             

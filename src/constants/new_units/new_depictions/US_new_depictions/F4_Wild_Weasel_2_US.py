@@ -48,8 +48,8 @@ f4_wild_weasel_2_us: Dict[str, Dict[str, Any]] = {
             (
                 Deviator = DepictionDeviator_Airplane
                 AdditionalTextures = $/M3D/Shader/AirplaneDestTextures
-                Selector = SpecificAirplaneDepictionSelector
-                CoatingName = 'F4_Wild_Weasel_2_US'
+                Selector = SpecificMechanicalDepictionSelector
+                BlackHoleKey = 'F4_Wild_Weasel_2_US'
                 Alternatives = Alternatives_F4_Wild_Weasel_2_US
 
                 Operators = 
@@ -98,8 +98,8 @@ f4_wild_weasel_2_us: Dict[str, Dict[str, Any]] = {
         "ShowroomAerialDepictionRegistration": """
             unnamed ShowroomAerialDepictionRegistration
             (
+                BlackHoleKey = 'showroom_F4_Wild_Weasel_2_US'
                 MeshDescriptor = $/GFX/DepictionResources/Modele_F4_Wild_Weasel_2_US
-                MimeticName = 'showroom_F4_Wild_Weasel_2_US'
                 SubDepictionGenerators = 
                 [
                     SubGenerators_Showroom_F4_Wild_Weasel_2_US,

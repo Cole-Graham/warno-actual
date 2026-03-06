@@ -296,11 +296,11 @@ def _handle_infantrysquad_module(logger, game_db, unit_data, edit_type, unit_nam
     """Handle TInfantrySquadModuleDescriptor for existing and new units"""
     
     if edit_type == "new_units":
-        module.v.by_m("SoldierMimeticName").v = f"'{unit_name}'"
+        module.v.by_m("SoldierBlackHoleKey").v = f"'{unit_name}'"
         
         mimetic_descr = module.v.by_m("MimeticDescriptor")
-        mimetic_descr.v.by_m("DescriptorId").v = f"GUID:{{{edits['GroupeCombatGUID']}}}"
-        mimetic_descr.v.by_m("MimeticName").v = f"'{unit_name}'"
+        mimetic_descr.v.by_m("DescriptorId").v = f"GUID:{{{edits['InfantrySquadModuleGUID']}}}"
+        mimetic_descr.v.by_m("BlackHoleKey").v = f"'{unit_name}'"
     
     if "strength" in edits:
         # Skip updating soldier count for specific units (strength affects HP but not soldier count)
@@ -511,11 +511,11 @@ def _handle_vehicleapparence_module(logger, game_db, unit_data, edit_type, unit_
         if edits.get("depictions", {}).get("new_mesh", False):
             new_name = edits["NewName"]
             module.v.by_m("MimeticName").v = f'"{new_name}"'
-            module.v.by_m("BlackHoleIdentifier").v = f'"{new_name}"'
+            module.v.by_m("BlackHoleKey").v = f'"{new_name}"'
             module.v.by_m("ReferenceMesh").v = f'$/GFX/DepictionResources/Modele_{new_name}'
         elif existing_mesh:
             module.v.by_m("MimeticName").v = f'"{unit_name}"'
-            module.v.by_m("BlackHoleIdentifier").v = f'"{unit_name}"'
+            module.v.by_m("BlackHoleKey").v = f'"{unit_name}"'
             module.v.by_m("ReferenceMesh").v = f'$/GFX/DepictionResources/Modele_{existing_mesh}'
         else:
             module.v.by_m("MimeticName").v = f'"{unit_name}"'

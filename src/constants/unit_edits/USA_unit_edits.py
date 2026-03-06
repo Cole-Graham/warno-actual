@@ -2310,7 +2310,7 @@ usa_unit_edits = {
     },
 
     "M125_HOWZ_US": {  # M125 mortar carrier, M29A1 81mm Mortar
-        "CommandPoints": 45,
+        "CommandPoints": 55,
         "availability": [4, 3, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
@@ -2340,7 +2340,7 @@ usa_unit_edits = {
     },
 
     "M106A2_HOWZ_US": { # M106A2 mortar carrier, 107mm M30 Mortar
-        "CommandPoints": 60,
+        "CommandPoints": 70,
         "availability": [4, 3, 0, 0],
         "WeaponDescriptor": {
             "Salves": {

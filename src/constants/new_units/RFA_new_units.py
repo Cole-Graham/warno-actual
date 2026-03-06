@@ -4,7 +4,7 @@
 RFA_NEW_UNITS = {
     ("Engineers_CMD_RFA", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "8c7f95ed-4fce-491e-9151-29ed2a49fc6a",
-        "GroupeCombatGUID": "64e00b37-e760-4493-89ab-28caa9c825d2",
+        "InfantrySquadModuleGUID": "64e00b37-e760-4493-89ab-28caa9c825d2",
         "ShowroomGUID": "410ea2b1-7671-4061-ad6d-0228d39c973c",
         "CadavreGUID": "c95f3f05-66f0-4a2a-b66f-1396d103d186",
         "NewName": "Engineers_CMD2_RFA",
@@ -82,7 +82,7 @@ RFA_NEW_UNITS = {
 
     ("M577_RFA", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "712fd59c-3baa-434d-b904-b07c5e9c4003",
-        "GroupeCombatGUID": "d1157c11-5816-4ff9-897b-fd49e0fad863",
+        "InfantrySquadModuleGUID": "d1157c11-5816-4ff9-897b-fd49e0fad863",
         "ShowroomGUID": "432efe92-ddce-40da-af72-6508b094186b",
         "CadavreGUID": "ade35527-8206-4c07-a8b3-38da179b3629",
         "NewName": "M577_CMD2_RFA",
@@ -129,7 +129,7 @@ RFA_NEW_UNITS = {
     
     ("M48A2GA2_CMD_RFA", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "e4443ed2-614d-4eaf-99ca-8ce9bf486283",
-        "GroupeCombatGUID": "7c4a5580-e66f-4926-8ae4-7456553057bb",
+        "InfantrySquadModuleGUID": "7c4a5580-e66f-4926-8ae4-7456553057bb",
         "ShowroomGUID": "cd4880e5-8ad9-4f4d-8454-26da9d917872",
         "CadavreGUID": "1e4053b9-33fa-4deb-84ec-adc733c06d1b",
         "NewName": "M48A2GA2_CMD2_RFA",

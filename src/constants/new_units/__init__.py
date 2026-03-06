@@ -417,12 +417,12 @@ def validate_no_duplicate_keys(new_units_dict: Dict) -> None:
     logger.info(f"Validated {len(new_units_dict)} new unit keys - no duplicates found")
 
 
-GUID_FIELDS = ("GUID", "GroupeCombatGUID", "ShowroomGUID", "CadavreGUID")
+GUID_FIELDS = ("GUID", "InfantrySquadModuleGUID", "ShowroomGUID", "CadavreGUID")
 
 
 def validate_no_duplicate_guids(new_units_dict: Dict) -> None:
     """
-    Validate that no new unit entries share identical GUIDs for GUID, GroupeCombatGUID,
+    Validate that no new unit entries share identical GUIDs for GUID, InfantrySquadModuleGUID,
     ShowroomGUID, or CadavreGUID fields.
 
     Each GUID must be unique across all new units to avoid conflicts in game data.

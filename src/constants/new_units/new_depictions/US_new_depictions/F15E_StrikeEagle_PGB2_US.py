@@ -60,8 +60,8 @@ f15e_strikeeagle_pgb2_us: Dict[str, Dict[str, Any]] = {
             (
                 Deviator = DepictionDeviator_Airplane
                 AdditionalTextures = $/M3D/Shader/AirplaneDestTextures
-                Selector = SpecificAirplaneDepictionSelector
-                CoatingName = 'F15E_StrikeEagle_PGB2_US'
+                Selector = SpecificMechanicalDepictionSelector
+                BlackHoleKey = 'F15E_StrikeEagle_PGB2_US'
                 Alternatives = Alternatives_F15E_StrikeEagle_PGB2_US
 
                 Operators = 
@@ -116,8 +116,8 @@ f15e_strikeeagle_pgb2_us: Dict[str, Dict[str, Any]] = {
         "ShowroomAerialDepictionRegistration": """
             unnamed ShowroomAerialDepictionRegistration
             (
+                BlackHoleKey = 'showroom_F15E_StrikeEagle_PGB2_US'
                 MeshDescriptor = $/GFX/DepictionResources/Modele_F15E_StrikeEagle_US
-                MimeticName = 'showroom_F15E_StrikeEagle_PGB2_US'
                 SubDepictionGenerators = 
                 [
                     SubGenerators_Showroom_F15E_StrikeEagle_PGB2_US,

@@ -14,7 +14,7 @@ FR_NEW_UNITS = {
     
     ("Chasseurs_CMD_FR", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "416dd19d-49b3-4a23-bd49-9e890f2a1efd",
-        "GroupeCombatGUID": "5910ff01-80de-4b1f-a203-629d3fe3cb3b",
+        "InfantrySquadModuleGUID": "5910ff01-80de-4b1f-a203-629d3fe3cb3b",
         "ShowroomGUID": "8119e3f8-17df-4a7b-a215-5a465642f343",
         "CadavreGUID": "578e09f3-9959-410e-8615-1f90103762c3",
         "NewName": "Chasseurs_CMD2_FR",
@@ -103,7 +103,7 @@ FR_NEW_UNITS = {
     
     ("AMX_30_B2_CMD_FR", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "e1b9b77e-ed05-4415-951f-cbc291d8e3df",
-        "GroupeCombatGUID": "21eaa0d7-8acd-4431-a7fd-47329780bb11",
+        "InfantrySquadModuleGUID": "21eaa0d7-8acd-4431-a7fd-47329780bb11",
         "ShowroomGUID": "dccaeb21-3a70-4fea-9f4d-bc05f53fd011",
         "CadavreGUID": "86fa429c-aa00-4a30-95e0-9deb1ab09e43",
         "NewName": "AMX_30_B2_CMD2_FR",

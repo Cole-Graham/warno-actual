@@ -966,13 +966,6 @@ sov_unit_edits = {
         "UpgradeFromUnit": "MotRifles_CMD_TTsko_SOV",
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "animate": {
-                    "MMG_PKM_7_62mm": False,
-                },
-                "quantity": {
-                    "FM_AK_74": 6,
-                    "MMG_PKM_7_62mm": 2,
-                },
                 "replace": [
                     ("SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm", "SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm"),
                 ],
@@ -1022,7 +1015,7 @@ sov_unit_edits = {
         "GameName": {
             "display": "MOTOPEKHOTA [RPG-7VS]",
         },
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1032,13 +1025,13 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "quantity": {
-                    "FM_AK_74": 6,
+                    "FM_AK_74": 7,
                 },
             },
             "Salves": {
                 "FM_AK_74": 11,
                 "SAW_RPK_74_5_56mm": 18,
-                "RocketInf_RPG7VS": 6,
+                "RocketInf_RPG7VS_85mm": 6,
             },
         },
     },
@@ -1925,7 +1918,7 @@ sov_unit_edits = {
     },
 
     "Mortier_2B9_Vasilek_nonPara_SOV": {
-        "CommandPoints": 45,
+        "CommandPoints": 40,
         "orders": {
             "add_orders": ["EOrderType/ShootOnPositionSmoke", "EOrderType/ShootOnPositionWithoutCorrectionSmoke"],
         },
@@ -1956,7 +1949,7 @@ sov_unit_edits = {
     },
 
     "Mortier_2B9_Vasilek_SOV": {
-        "CommandPoints": 45,
+        "CommandPoints": 40,
         "orders": {
             "add_orders": ["EOrderType/ShootOnPositionSmoke", "EOrderType/ShootOnPositionWithoutCorrectionSmoke"],
         },
@@ -2002,7 +1995,7 @@ sov_unit_edits = {
     },
 
     "MTLB_Vasilek_SOV": {
-        "CommandPoints": 60,
+        "CommandPoints": 65,
         "orders": {
             "add_orders": ["EOrderType/ShootOnPositionSmoke", "EOrderType/ShootOnPositionWithoutCorrectionSmoke"],
         },
