@@ -44,6 +44,17 @@ def edit_gen_gp_gfx_orderavailabilitytactic(source_path, game_db: Dict[str, Any]
                         order_list.v.remove(order.index)
                         logger.info(f"Removed {order} order from {unit_name}")
 
+        # If unit has add_capacities, ensure UseCapacite order is present
+        if unit_name in unit_edits:
+            add_capacities = unit_edits[unit_name].get("capacities", {}).get("add_capacities", [])
+            if add_capacities:
+                has_use_capacite = any(
+                    getattr(o, "v", o) == "EOrderType/UseCapacite" for o in order_list.v
+                )
+                if not has_use_capacite:
+                    order_list.v.add("EOrderType/UseCapacite")
+                    logger.info(f"Added EOrderType/UseCapacite order to {unit_name} (has add_capacities)")
+
         # Remove sell order from supply units
         if unit_name in game_db["unit_data"]:
             unit_data = game_db["unit_data"][unit_name]

@@ -404,9 +404,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/Generated/Gameplay/Gfx/Depictions/DepictionGhosts.ndf": [
             (edit_gen_gp_gfx_depictionghosts, "gameplay"),
         ],
-        "GameData/Generated/Gameplay/Gfx/Depictions/DepictionAerialGhosts.ndf": [
-            (edit_gen_gp_gfx_depictionaerialghosts, "gameplay"),
-        ],
+        # "GameData/Generated/Gameplay/Gfx/Depictions/DepictionAerialGhosts.ndf": [
+        #     (edit_gen_gp_gfx_depictionaerialghosts, "gameplay"),
+        # ],
         "GameData/Generated/Gameplay/Gfx/Depictions/DepictionHumans.ndf": [
             (edit_gen_gp_gfx_depictionhumans, "gameplay"),
         ],

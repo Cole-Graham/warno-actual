@@ -55,6 +55,8 @@ from .USA_depiction_edits import (
     pathfinder_ng_us,
     ranger_us,
     rifles_half_at4_us,
+    rifles_half_cav_cmd_us,
+    scout_cav_us,
     scout_us,
 )
 
@@ -114,5 +116,7 @@ __all__ = [
     "pathfinder_ng_us",
     "ranger_us",
     "rifles_half_at4_us",
+    "rifles_half_cav_cmd_us",
+    "scout_cav_us",
     "scout_us",
 ]

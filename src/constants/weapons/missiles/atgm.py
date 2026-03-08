@@ -377,6 +377,22 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "MaxSpeedGRU": 466,
         },
     },
+    
+    ("ATGM_BGM71C_ITOW_ETAS_IFV", "ATGM", "ATGM_BGM71C_ITOW", True): {
+        "Ammunition": {
+            "parent_membr": {
+                "SpeedGRU": 466,
+                "TimeBetweenTwoSalvos": 30.0,
+            },
+        },
+        "SupplyCost": 80.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [2],
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 466,
+        },
+    },
 
     ("ATGM_BGM71_TOW", "ATGM", None, False): {
         "Ammunition": {
@@ -557,6 +573,24 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
         "MissileDescriptor": {
             "MaxSpeedGRU": 622,
+        },
+    },
+    
+    ("ATGM_9M114M_Ataka", "ATGM", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 24,
+            },
+            "parent_membr": {
+                "SpeedGRU": 800,
+            },
+        },
+        "SupplyCost": 80.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [1],
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 800,
         },
     },
 

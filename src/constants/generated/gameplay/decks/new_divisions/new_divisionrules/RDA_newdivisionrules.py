@@ -45,7 +45,7 @@ RDA_airborne_newdivisionrules = {
     "artillery": [
         ("Howz_D20_152mm_DDR", 1, [3, 2, 0, 0], ["MTLB_trans_DDR"]),
         ("Howz_M46_130mm_DDR", 1, [4, 3, 2, 0], ["MTLB_trans_DDR"]),
-        ("Howz_D30_122mm_DDR", 1, [5, 4, 3, 0], ["MTLB_trans_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"]),
+        ("Howz_D30_122mm_DDR", 1, [5, 4, 3, 0], ["MTLB_trans_DDR", "Mi_8T_non_arme_DDR"]),
         ("Mortier_2S12_120mm_DDR", 2, [5, 4, 3, 0], ["W50_LA_A_DDR", "MTLB_trans_DDR"]),
         ("Mortier_M43_82mm_FJ_DDR", 3, [0, 5, 4, 3], ["UAZ_469_trans_DDR"]),
     ],
@@ -161,7 +161,7 @@ RDA_armored_newdivisionrules = {
         ("T55A_CMD_DDR", 1, [0, 0, 6, 0]),
         ("T72S_DDR", 2, [0, 0, 4, 3]),
         ("T72M1_DDR", 4, [0, 0, 4, 3]),
-        ("T72M_DDR", 3, [0, 6, 4, 0]),
+        ("T72MUV2_DDR", 3, [0, 6, 4, 0]),
         ("T72_DDR", 2, [8, 6, 0, 0]),
         ("T55AM2B_DDR", 1, [0, 6, 4, 0]),
         ("T55AM2_DDR", 2, [0, 8, 6, 0]),
@@ -313,7 +313,7 @@ RDA_mechanized_newdivisionrules = {
     ],
 }
 
-DDR_motorized_newdivisionrules = {
+RDA_motorized_newdivisionrules = {
     "logistic": [
         ("MotRifles_CMD2_DDR", 2, [0, 0, 2, 0], ["UAZ_469_trans_DDR", "BTR_60_DDR", "BTR_70_DDR", "Mi_2_trans_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"]),
         ("UAZ_469_CMD_DDR", 1, [0, 4, 0, 0]),

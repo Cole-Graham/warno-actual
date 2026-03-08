@@ -155,6 +155,30 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("SAM_RAPIER_DARKFIRE", "SAM", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 65,
+                "DistanceToTarget": True,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 3.0,
+                "TimeBetweenTwoFx": 3.0,
+                "PhysicalDamages": 5.0,
+                "MaximumRangeHelicopterGRU": 3150,
+                "MaximumRangeAirplaneGRU": 3850,
+                "AimingTime": 1.2,
+            },
+        },
+        "SupplyCost": 90.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [6],
+            "units": {
+                6: ["DCA_Rapier_Darkfire_UK"],
+            },
+        },
+    },
 
     ("SAM_MIM72G", "SAM", None, False): {
         "Ammunition": {
@@ -326,6 +350,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DistanceToTarget": True,
             },
             "parent_membr": {
+                "MaximumRangeHelicopterGRU": 2625,
                 "MaximumRangeAirplaneGRU": 1925,
                 "TimeBetweenTwoSalvos": 7.0,
                 "AimingTime": 1.2,
@@ -343,6 +368,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DistanceToTarget": True,
             },
             "parent_membr": {
+                "MaximumRangeHelicopterGRU": 2625,
                 "MaximumRangeAirplaneGRU": 1925,
                 "TimeBetweenTwoSalvos": 7.0,
                 "AimingTime": 3.5,
@@ -620,6 +646,46 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 3.5,
                 "SupplyCost": 35.0,
 
+            }
+        },
+    },
+    
+    ("MANPAD_Strela3", "MANPAD", None, False): {
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_tbagru",
+            },
+            "hit_roll": {
+                "Idling": 50,
+                "DistanceToTarget": True,
+            },
+            "parent_membr": {
+                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeAirplaneGRU": 1750,
+                "PhysicalDamages": 4.0,
+                "TimeBetweenTwoSalvos": 14.0,
+                "AimingTime": 1.2,
+                "SupplyCost": 25.0,
+            }
+        },
+    },
+    
+    ("MANPAD_Strela3_HAGRU", "MANPAD", "MANPAD_Strela3", True): {
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_hagru",
+            },
+            "hit_roll": {
+                "Idling": 50,
+                "DistanceToTarget": True,
+            },
+            "parent_membr": {
+                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeAirplaneGRU": 1750,
+                "PhysicalDamages": 4.0,
+                "TimeBetweenTwoSalvos": 14.0,
+                "AimingTime": 3.5,
+                "SupplyCost": 25.0,
             }
         },
     },
@@ -1036,6 +1102,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("MANPAD_FIM92_A", "MANPAD", None, False): {
         "Ammunition": {
+            "display": "FIM-92A Stinger",
+            "token": "HWTXIBRFHM",
             "arme": {
                 "DamageFamily": "DamageFamily_manpad_tbagru",
             },
@@ -1043,20 +1111,20 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 50,
                 "DistanceToTarget": True,
             },
-            "display": "FIM-92A Stinger",
-            "token": "HWTXIBRFHM",
-        },
-        "parent_membr": {
-            "MaximumRangeHelicopterGRU": 2625,
-            "MaximumRangeAirplaneGRU": 1925,
-            "TimeBetweenTwoSalvos": 7.0,
-            "AimingTime": 1.2,
-            "SupplyCost": 30.0,
+            "parent_membr": {
+                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 1925,
+                "TimeBetweenTwoSalvos": 7.0,
+                "AimingTime": 1.2,
+                "SupplyCost": 30.0,
+            },
         },
     },
     
     ("MANPAD_FIM92_A_HAGRU", "MANPAD", "MANPAD_FIM92_A", True): {
         "Ammunition": {
+            "display": "FIM-92A Stinger",
+            "token": "HWTXIBRFHM",
             "arme": {
                 "DamageFamily": "DamageFamily_manpad_hagru",
             },
@@ -1064,8 +1132,6 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 50,
                 "DistanceToTarget": True,
             },
-            "display": "FIM-92A Stinger",
-            "token": "HWTXIBRFHM",
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2625,
                 "MaximumRangeAirplaneGRU": 1925,

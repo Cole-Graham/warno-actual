@@ -19,8 +19,8 @@ at_d48_85mm_para_pol: Dict[str, Dict[str, Any]] = {
         "TacticVehicleDepictionRegistration": (
             f'unnamed TacticVehicleDepictionRegistration'
             f'    ('
-            f'        CoatingName = "AT_D48_85mm_Para_POL"'
-            f'        Selector = SpecificVehicleDepictionSelector'
+            f'        BlackHoleKey = "AT_D48_85mm_Para_POL"'
+            f'        Selector = SpecificMechanicalDepictionSelector'
             f'        Alternatives = Alternatives_AT_D48_85mm_Para_POL'
             f'        Operators = '
             f'        ['

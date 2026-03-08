@@ -3,7 +3,7 @@
 from typing import Any
 from src.constants.new_units import NEW_UNITS, NEW_DEPICTIONS
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import find_obj_by_mimetic_name
+from src.utils.ndf_utils import find_obj_by_blackhole_key
 
 logger = setup_logger(__name__)
 
@@ -34,18 +34,18 @@ def _handle_new_units(source_path: Any) -> None:
                     source_path.add(new_descr_obj)
                     logger.info(f"Added custom showroom vehicle depiction for {unit_name}")
             else:
-                # Find donor by MimeticName
-                donor_mimetic = f"showroom_{donor_name}"
-                donor_obj = find_obj_by_mimetic_name(source_path, donor_mimetic, "ShowroomVehicleDepictionRegistration")
+                # Find donor by BlackHoleKey
+                donor_blackhole_key = f"showroom_{donor_name}"
+                donor_obj = find_obj_by_blackhole_key(source_path, donor_blackhole_key, "ShowroomVehicleDepictionRegistration")
                 
                 if not donor_obj:
-                    logger.error(f"Could not find donor showroom depiction with MimeticName='{donor_mimetic}'")
+                    logger.error(f"Could not find donor showroom depiction with BlackHoleKey='{donor_blackhole_key}'")
                     continue
                 
                 new_depiction_obj = donor_obj.copy()
                 new_depiction_obj.namespace = None
-                mimetic_member = new_depiction_obj.v.by_m("MimeticName")
-                mimetic_member.v = f'"showroom_{unit_name}"'
+                blackhole_key_member = new_depiction_obj.v.by_m("BlackHoleKey")
+                blackhole_key_member.v = f'"showroom_{unit_name}"'
                 alternatives_member = new_depiction_obj.v.by_m("Alternatives")
                 alternatives_member.v = f"Alternatives_{unit_name}"
 

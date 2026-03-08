@@ -29,6 +29,20 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("RocketArt_MD24F_240mm_salvolength12", "MLRS", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 8.6,
+                "SuppressDamages": 540,
+                "DispersionAtMaxRangeGRU": 560,
+                "DispersionAtMinRangeGRU": 240,
+                "RadiusSplashPhysicalDamagesGRU": 240,
+                "RadiusSplashSuppressDamagesGRU": 320,
+                "SupplyCost": 960.0,
+            },
+        },
+    },
+    
     ("RocketArt_M24F_240mm_salvolength12", "MLRS", None, False): { # BM-24M
         "Ammunition": {
             "parent_membr": {
@@ -39,6 +53,20 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "RadiusSplashPhysicalDamagesGRU": 240,
                 "RadiusSplashSuppressDamagesGRU": 320,
                 "SupplyCost": 960.0,
+            },
+        },
+    },
+    
+    ("RocketArt_9M27F_HE_220mm", "MLRS", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 7.1,
+                "SuppressDamages": 460,
+                "DispersionAtMaxRangeGRU": 848,
+                # "RadiusSplashPhysicalDamagesGRU": 280,
+                # "RadiusSplashSuppressDamagesGRU": 373,
+                "RadiusSplashPhysicalDamagesGRU": 220,
+                "RadiusSplashSuppressDamagesGRU": 293,
             },
         },
     },
@@ -98,8 +126,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "PhysicalDamages": 7.2,
                 "SuppressDamages": 467,
                 "DispersionAtMaxRangeGRU": 848,
-                "RadiusSplashPhysicalDamagesGRU": 283,
-                "RadiusSplashSuppressDamagesGRU": 377,
+                # "RadiusSplashPhysicalDamagesGRU": 283,
+                # "RadiusSplashSuppressDamagesGRU": 377,
+                "RadiusSplashPhysicalDamagesGRU": 227,
+                "RadiusSplashSuppressDamagesGRU": 297,
                 "AimingTime": 18.0,
             },
         },
@@ -110,8 +140,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PhysicalDamages": 4.2,
                 "SuppressDamages": 350,
-                "RadiusSplashPhysicalDamagesGRU": 152,
-                "RadiusSplashSuppressDamagesGRU": 203,
+                # "RadiusSplashPhysicalDamagesGRU": 152,
+                # "RadiusSplashSuppressDamagesGRU": 203,
+                "RadiusSplashPhysicalDamagesGRU": 122,
+                "RadiusSplashSuppressDamagesGRU": 163,
                 "SupplyCost": 174.0,
             },
         },
@@ -122,8 +154,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PhysicalDamages": 4.2,
                 "SuppressDamages": 350,
-                "RadiusSplashPhysicalDamagesGRU": 152,
-                "RadiusSplashSuppressDamagesGRU": 203,
+                # "RadiusSplashPhysicalDamagesGRU": 152,
+                # "RadiusSplashSuppressDamagesGRU": 203,
+                "RadiusSplashPhysicalDamagesGRU": 122,
+                "RadiusSplashSuppressDamagesGRU": 163,
                 "TimeBetweenTwoSalvos": 220.0,
                 "SupplyCost": 580.0,
             },
@@ -135,8 +169,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PhysicalDamages": 4.2,
                 "SuppressDamages": 350,
-                "RadiusSplashPhysicalDamagesGRU": 152,
-                "RadiusSplashSuppressDamagesGRU": 203,
+                # "RadiusSplashPhysicalDamagesGRU": 152,
+                # "RadiusSplashSuppressDamagesGRU": 203,
+                "RadiusSplashPhysicalDamagesGRU": 122,
+                "RadiusSplashSuppressDamagesGRU": 163,
                 "TimeBetweenTwoSalvos": 130.0,
                 "SupplyCost": 580.0,
             },
@@ -178,8 +214,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PhysicalDamages": 2.5,
                 "SuppressDamages": 180,
-                "RadiusSplashPhysicalDamagesGRU": 94,
-                "RadiusSplashSuppressDamagesGRU": 125,
+                # "RadiusSplashPhysicalDamagesGRU": 94,
+                # "RadiusSplashSuppressDamagesGRU": 125,
+                "RadiusSplashPhysicalDamagesGRU": 70,
+                "RadiusSplashSuppressDamagesGRU": 93,
             },
         },
     },
@@ -189,8 +227,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PhysicalDamages": 5.1,
                 "SuppressDamages": 400,
-                "RadiusSplashPhysicalDamagesGRU": 180,
-                "RadiusSplashSuppressDamagesGRU": 240,
+                # "RadiusSplashPhysicalDamagesGRU": 180,
+                # "RadiusSplashSuppressDamagesGRU": 240,
+                "RadiusSplashPhysicalDamagesGRU": 140,
+                "RadiusSplashSuppressDamagesGRU": 187,
             },
         },
     },
@@ -211,8 +251,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PhysicalDamages": 5.1,
                 "SuppressDamages": 400,
-                "RadiusSplashPhysicalDamagesGRU": 180,
-                "RadiusSplashSuppressDamagesGRU": 240,
+                # "RadiusSplashPhysicalDamagesGRU": 180,
+                # "RadiusSplashSuppressDamagesGRU": 240,
+                "RadiusSplashPhysicalDamagesGRU": 140,
+                "RadiusSplashSuppressDamagesGRU": 187,
             },
         },
     },

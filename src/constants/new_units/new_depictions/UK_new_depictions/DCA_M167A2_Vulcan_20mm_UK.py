@@ -19,8 +19,8 @@ dca_m167a2_vulcan_20mm_uk: Dict[str, Dict[str, Any]] = {
         "TacticVehicleDepictionRegistration": (
             f'unnamed TacticVehicleDepictionRegistration'
             f'('
-            f"    CoatingName = 'DCA_M167A2_Vulcan_20mm_UK'"
-            f'    Selector = SpecificVehicleDepictionSelector'
+            f"    BlackHoleKey = 'DCA_M167A2_Vulcan_20mm_UK'"
+            f'    Selector = SpecificMechanicalDepictionSelector'
             f'    Alternatives = Alternatives_DCA_M167A2_Vulcan_20mm_UK'
             f'    Operators = '
             f'    ['

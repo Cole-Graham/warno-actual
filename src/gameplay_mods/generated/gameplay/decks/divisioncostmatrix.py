@@ -160,9 +160,13 @@ def _create_national_division_matrices(source: Any, existing_matrix_names: list)
             continue
         
         spec_matrix = spec_matrices[div_type]
-        
-        matrix_data = spec_matrix
-        
+        matrix_data = dict(spec_matrix)
+
+        # Apply division-specific matrix overrides (e.g. EFactory/Logistic)
+        if "matrix_overrides" in div_data:
+            matrix_data.update(div_data["matrix_overrides"])
+            logger.debug(f"Applied matrix_overrides for {div_key}")
+
         # Find a donor matrix to copy structure from
         donor_matrix = None
         for existing_name in existing_matrix_names:

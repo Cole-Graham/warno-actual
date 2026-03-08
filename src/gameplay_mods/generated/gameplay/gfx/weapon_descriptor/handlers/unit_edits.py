@@ -508,6 +508,7 @@ def _apply_weapon_edits(
             weapon_descr_data,
             game_db,
             wd_edits,
+            source_path,
         )
 
     # Handle equipment changes
@@ -523,12 +524,49 @@ def _apply_weapon_edits(
         )
 
 
-def _apply_turret_changes(weapon_descr: Any, turrets_edits: Dict, weapon_descr_data: Dict, game_db: Dict, wd_edits: Dict = None) -> None:
-    """Apply turret changes using database data."""
-    # turret_list = weapon_descr.v.by_member("TurretDescriptorList").v
-    turret_data = weapon_descr_data["turrets"]
+def _find_donor_weapon(
+    donor_ammo: str,
+    weapon_db: Dict,
+    source_path: Any,
+    ammo_db: Dict,
+    prefix: str,
+) -> Any:
+    """Find a weapon to use as donor from any weapon descriptor that has it (uses precomputed weapon_db)."""
+    renames = ammo_db.get("renames_new_old", {})
+    for lookup_name in [donor_ammo, renames.get(donor_ammo)]:
+        if not lookup_name:
+            continue
+        for descr_name, descr_data in weapon_db.items():
+            if lookup_name not in descr_data.get("weapon_locations", {}):
+                continue
+            donor_descr = source_path.by_namespace(descr_name, strict=False)
+            if not donor_descr:
+                continue
+            for loc in descr_data["weapon_locations"][lookup_name]:
+                turret = donor_descr.v.by_m("TurretDescriptorList").v[loc["turret_index"]]
+                if not is_valid_turret(turret.v):
+                    continue
+                for w in turret.v.by_m("MountedWeaponDescriptorList").v:
+                    if not is_obj_type(w.v, "TMountedWeaponDescriptor"):
+                        continue
+                    ammo = w.v.by_m("Ammunition").v.split(prefix)[1]
+                    if ammo == lookup_name or ammo == donor_ammo or renames.get(ammo) == donor_ammo:
+                        return w.copy()
+    return None
 
+
+def _apply_turret_changes(
+    weapon_descr: Any,
+    turrets_edits: Dict,
+    weapon_descr_data: Dict,
+    game_db: Dict,
+    wd_edits: Dict = None,
+    source_path: Any = None,
+) -> None:
+    """Apply turret changes using database data."""
+    turret_data = weapon_descr_data["turrets"]
     ammo_db = game_db["ammunition"]
+    weapon_db = game_db.get("weapons", {})
     
     # Build a mapping of replacements: new_weapon -> old_weapon
     replacement_map = {}
@@ -553,35 +591,57 @@ def _apply_turret_changes(weapon_descr: Any, turrets_edits: Dict, weapon_descr_d
         # weapon_descr_namespace = weapon_descr.namespace
         # weapon/ammo edits
         if "MountedWeapons" in turret_edits:
-            for turret_descr in turret_list.v:
-                if not is_valid_turret(turret_descr.v):
-                    logger.debug(f"Turret {turret_index} is not valid")
-                    continue
-
+            turret_descr = turret_list.v[turret_index]
+            if not is_valid_turret(turret_descr.v):
+                logger.debug(f"Turret {turret_index} is not valid")
+            else:
                 prefix = "$/GFX/Weapon/Ammo_"
                 mounted_wpns = turret_descr.v.by_m("MountedWeaponDescriptorList")
                 if "insert" in turret_edits["MountedWeapons"]:
-                    for weapon in mounted_wpns.v:
-                        wpn_index = weapon.index
-                        if not is_obj_type(weapon.v, "TMountedWeaponDescriptor"):
-                            logger.debug(f"Mounted weapon {wpn_index} is not valid")
-                            continue
+                    for key, donor_edits in turret_edits["MountedWeapons"]["insert"].items():
+                        #TODO: convert all mounted weapon edits to use the index:donor format
+                        if isinstance(key, str) and ":" in key:
+                            idx_str, donor = key.split(":", 1)
+                            insert_at = int(idx_str)
+                        else:
+                            donor = key
+                            insert_at = donor_edits.get("insert_at") if donor_edits else None
 
-                        ammunition = weapon.v.by_m("Ammunition").v.split(prefix)[1]
-                        for donor, donor_edits in turret_edits["MountedWeapons"]["insert"].items():
-                            if ammunition != donor:
+                        new_wpn = None
+                        for weapon in mounted_wpns.v:
+                            if not is_obj_type(weapon.v, "TMountedWeaponDescriptor"):
                                 continue
-                            new_wpn = weapon.copy()
-                            for membr, value in donor_edits.items():
-                                if isinstance(value, list):
-                                    new_list = ndf.model.List()
-                                    for item in value:
-                                        new_list.add(f"'{item}'")
-                                    new_wpn.v.by_m(membr).v = new_list
-                                else:
-                                    new_wpn.v.by_m(membr).v = str(value)
+                            ammunition = weapon.v.by_m("Ammunition").v.split(prefix)[1]
+                            if ammunition == donor:
+                                new_wpn = weapon.copy()
+                                break
+                            if ammunition in ammo_db.get("renames_new_old", {}):
+                                if ammo_db["renames_new_old"][ammunition] == donor:
+                                    new_wpn = weapon.copy()
+                                    break
 
-                            mounted_wpns.v.add(new_wpn)
+                        if new_wpn is None and source_path and weapon_db:
+                            new_wpn = _find_donor_weapon(
+                                donor, weapon_db, source_path, ammo_db, prefix,
+                            )
+
+                        if new_wpn is not None:
+                            if donor_edits:
+                                for membr, value in donor_edits.items():
+                                    if membr == "insert_at":
+                                        continue
+                                    if isinstance(value, list):
+                                        new_list = ndf.model.List()
+                                        for item in value:
+                                            new_list.add(f"'{item}'")
+                                        new_wpn.v.by_m(membr).v = new_list
+                                    else:
+                                        new_wpn.v.by_m(membr).v = str(value)
+
+                            if insert_at is not None:
+                                mounted_wpns.v.insert(insert_at, new_wpn)
+                            else:
+                                mounted_wpns.v.add(new_wpn)
 
                 for weapon in mounted_wpns.v:
                     if not is_obj_type(weapon.v, "TMountedWeaponDescriptor"):
@@ -811,7 +871,6 @@ def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_
     ammo_pattern = re.compile(r"\$/GFX/Weapon/Ammo_(.*?)(?:_x\d+)?$")
     turret_list = weapon_descr.v.by_member("TurretDescriptorList").v
     ammo_db = game_db["ammunition"]
-    weapon_db = game_db["weapons"]
     unit_db = game_db["unit_data"]
     unit_edits = load_unit_edits()
 
@@ -829,24 +888,6 @@ def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_
     if not unit_strength:
         logger.warning(f"No strength found for unit {unit_name}")
         return
-
-    def __get_weapon_quantity(
-        weapon_descr_: Any, turret_index_: str, ammo_name_: str, ammo_db_: Dict, weapon_db_: Dict
-    ) -> int:
-        """Get the quantity of a weapon from the weapons.json"""
-        weapon_descr_name = weapon_descr_.namespace
-        current_turret = weapon_db_[weapon_descr_name]["turrets"][turret_index_]
-
-        if ammo_name_ in ammo_db_["renames_new_old"]:
-            old_name = ammo_db_["renames_new_old"].get(ammo_name_, None)
-            if old_name:
-                current_weapon = current_turret["weapons"][old_name]
-            else:
-                current_weapon = current_turret["weapons"][ammo_name_]
-        else:
-            current_weapon = current_turret["weapons"][ammo_name_]
-
-        return current_weapon["quantity"]
 
     for turret in turret_list:
         if not is_valid_turret(turret.v):
@@ -888,7 +929,9 @@ def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_
                             current, replacement = replacement
 
                         if ammo_name == current:
-                            quantity = __get_weapon_quantity(weapon_descr, turret_index, ammo_name, ammo_db, weapon_db)
+                            # Use weapon's NbWeapons directly - weapon_db may not have weapons
+                            # added by Salves (e.g. AA_R60M_Vympel replacing vanilla loadout)
+                            quantity = int(weapon.v.by_m("NbWeapons").v)
 
                             # Check if replacement weapon should use strength variants
                             use_strength = False

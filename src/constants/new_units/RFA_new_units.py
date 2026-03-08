@@ -4,7 +4,7 @@
 RFA_NEW_UNITS = {
     ("Engineers_CMD_RFA", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "8c7f95ed-4fce-491e-9151-29ed2a49fc6a",
-        "GroupeCombatGUID": "64e00b37-e760-4493-89ab-28caa9c825d2",
+        "InfantrySquadModuleGUID": "64e00b37-e760-4493-89ab-28caa9c825d2",
         "ShowroomGUID": "410ea2b1-7671-4061-ad6d-0228d39c973c",
         "CadavreGUID": "c95f3f05-66f0-4a2a-b66f-1396d103d186",
         "NewName": "Engineers_CMD2_RFA",
@@ -68,7 +68,7 @@ RFA_NEW_UNITS = {
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootOnPositionSmoke',
                    'EOrderType/ShootOnPositionWithoutCorrectionSmoke', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load',
-                   'EOrderType/Load', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+                   'EOrderType/Load', 'EOrderType/UseCapacite', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": True,  # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,
         "is_ground_vehicle": False,
@@ -82,7 +82,7 @@ RFA_NEW_UNITS = {
 
     ("M577_RFA", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "712fd59c-3baa-434d-b904-b07c5e9c4003",
-        "GroupeCombatGUID": "d1157c11-5816-4ff9-897b-fd49e0fad863",
+        "InfantrySquadModuleGUID": "d1157c11-5816-4ff9-897b-fd49e0fad863",
         "ShowroomGUID": "432efe92-ddce-40da-af72-6508b094186b",
         "CadavreGUID": "ade35527-8206-4c07-a8b3-38da179b3629",
         "NewName": "M577_CMD2_RFA",
@@ -129,7 +129,7 @@ RFA_NEW_UNITS = {
     
     ("M48A2GA2_CMD_RFA", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "e4443ed2-614d-4eaf-99ca-8ce9bf486283",
-        "GroupeCombatGUID": "7c4a5580-e66f-4926-8ae4-7456553057bb",
+        "InfantrySquadModuleGUID": "7c4a5580-e66f-4926-8ae4-7456553057bb",
         "ShowroomGUID": "cd4880e5-8ad9-4f4d-8454-26da9d917872",
         "CadavreGUID": "1e4053b9-33fa-4deb-84ec-adc733c06d1b",
         "NewName": "M48A2GA2_CMD2_RFA",
@@ -173,7 +173,7 @@ RFA_NEW_UNITS = {
 
     ("Leopard_1A1_CMD_RFA", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "3cee73a7-234b-4b47-84d3-a35e3f52891f",
-        "GroupeCombatGUID": "e9d1445a-742e-457f-8e5b-3bc31fb276e2",
+        "InfantrySquadModuleGUID": "e9d1445a-742e-457f-8e5b-3bc31fb276e2",
         "ShowroomGUID": "3a99d004-e456-4073-affa-24914a292bfe",
         "CadavreGUID": "3d5abe13-6fde-4120-b5b0-b38a045c0622",
         "NewName": "Leopard_1A1_CMD2_RFA",
@@ -208,7 +208,7 @@ RFA_NEW_UNITS = {
 
     ("Leopard_1A5_CMD_RFA", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "37216cad-18db-44aa-ba1c-c8fcf1a05def",
-        "GroupeCombatGUID": "647fcc32-7d1b-497d-ae7e-e2ac6ea9057e",
+        "InfantrySquadModuleGUID": "647fcc32-7d1b-497d-ae7e-e2ac6ea9057e",
         "ShowroomGUID": "9e16e901-1f3d-4e1a-b9c1-1d963b5514f7",
         "CadavreGUID": "7c4d6e70-66e2-4a61-9fdc-a84e61820c01",
         "NewName": "Leopard_1A5_CMD2_RFA",
@@ -243,7 +243,7 @@ RFA_NEW_UNITS = {
 
     ("Leopard_2A3_CMD_RFA", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "2f9e285d-8ccc-4aab-9878-66c6750749ba",
-        "GroupeCombatGUID": "c03b6e76-7441-4743-b5a7-b03528c1c20a",
+        "InfantrySquadModuleGUID": "c03b6e76-7441-4743-b5a7-b03528c1c20a",
         "ShowroomGUID": "9293e7f6-73c5-4440-8cc8-93d6a7f2a0f1",
         "CadavreGUID": "20a5d278-9595-4309-9470-6f316645955e",
         "NewName": "Leopard_2A3_CMD2_RFA",
@@ -278,7 +278,7 @@ RFA_NEW_UNITS = {
 
     ("Leopard_2A4_CMD_RFA", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "0ed0ddc0-8e0e-432e-9330-b44cd5dd2403",
-        "GroupeCombatGUID": "c8fdacd7-65fe-4e60-8202-c07fca2efa32",
+        "InfantrySquadModuleGUID": "c8fdacd7-65fe-4e60-8202-c07fca2efa32",
         "ShowroomGUID": "34cff9f0-7936-4f57-b650-fd8b236a72c9",
         "CadavreGUID": "ce0f8e58-ce73-45b4-9002-944345cb6699",
         "NewName": "Leopard_2A4_CMD2_RFA",
@@ -315,7 +315,7 @@ RFA_NEW_UNITS = {
 
     ("Jager_RFA", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "fe71a1c5-862d-4978-8464-7ac27e7be950",
-        "GroupeCombatGUID": "972f8933-632f-4439-a4f8-34639139c897",
+        "InfantrySquadModuleGUID": "972f8933-632f-4439-a4f8-34639139c897",
         "ShowroomGUID": "63560af8-e7b3-4d2b-b044-929baeb9be05",
         "CadavreGUID": "6a7ef9df-15cf-4601-bb1f-f66f1e12d2a5",
         "NewName": "Jager_PzF3_RFA",
@@ -368,7 +368,7 @@ RFA_NEW_UNITS = {
         "max_speed": 20,
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
-                   'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+                   'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,
         "is_ground_vehicle": False,
@@ -381,11 +381,65 @@ RFA_NEW_UNITS = {
         "selector_tactic": "02_03",
     },
 
+    # Tank
+
+    # Transports
+
+    ("TPZ_Fuchs_MILAN_RFA", 0): {  # TPz Fuchs MILAN 2
+        "GameName": {
+            "display": "TPz FUCHS MILAN 2",
+            "token": "YHDWRLQCQC",
+        },
+        "GUID": "832a8134-4109-447c-a3f7-1a2be78c35fa",
+        "InfantrySquadModuleGUID": "1ad309dd-8834-4258-9f78-ab74e664302b",
+        "ShowroomGUID": "c504338a-1c73-4103-bb29-092be80b0414",
+        "CadavreGUID": "9a58c318-3a01-4dd5-8531-e45c9b004c28",
+        "NewName": "TPZ_Fuchs_MILAN_2_RFA",
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "GroundUnits",
+                "UNITE_TPZ_Fuchs_MILAN_2_RFA",
+                "Unite",
+                "Vehicule",
+                "Vehicule_Transport_Arme"
+            ],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_MILAN_2": 5,
+            },
+            "equipmentchanges": {
+                "replace": [("ATGM_MILAN", "ATGM_MILAN_2")]
+            },
+        },
+        "UpgradeFromUnit": "TPZ_Fuchs_MILAN_RFA",
+        "Factory": "EFactory/Tanks",
+        "CommandPoints": 40,
+        "UnitRole": 'transport',
+        "SpecialtiesList": [
+            '_transport1',
+            '_amphibie',
+            '_smoke_launcher'
+        ],
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
+                   'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootDefensiveSmoke',
+                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply', 'EOrderType/UnloadFromTransport', 'EOrderType/UnloadAtPosition', 'EOrderType/Load',
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "NATO",
+        "Nation": "RFA",
+    },
+
     # AA
 
     ("MANPAD_Redeye_RFA", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "e06b6bf9-6d3e-4928-b474-377ea959a79f",
-        "GroupeCombatGUID": "4e494534-691e-4f93-9c8d-ecfd775c64c3",
+        "InfantrySquadModuleGUID": "4e494534-691e-4f93-9c8d-ecfd775c64c3",
         "ShowroomGUID": "b82ab103-a205-4089-8b03-5580803b25b8",
         "CadavreGUID": "d654430c-25dd-43a8-9938-91ac4ed1d221",
         "NewName": "MANPAD_Redeye_Geb_RFA",
@@ -435,7 +489,7 @@ RFA_NEW_UNITS = {
         "max_speed": 20,
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
-                   'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+                   'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/UseCapacite', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,
         "is_ground_vehicle": False,
@@ -450,7 +504,7 @@ RFA_NEW_UNITS = {
 
     ("MANPAD_Redeye_RFA", 1): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "1d5683b2-646a-4459-9186-512eae74a472",
-        "GroupeCombatGUID": "bebf9d9d-020c-43e8-9967-0e1886f9a6f7",
+        "InfantrySquadModuleGUID": "bebf9d9d-020c-43e8-9967-0e1886f9a6f7",
         "ShowroomGUID": "f2485eb3-d533-4ab9-adc6-cd8e21b14a6e",
         "CadavreGUID": "7372cb3e-4f3a-4357-89a6-ea32347c016e",
         "NewName": "MANPAD_Redeye_FJ_RFA",
@@ -498,7 +552,7 @@ RFA_NEW_UNITS = {
         "DeploymentShift": 1750,
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
-                   'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+                   'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,
         "is_ground_vehicle": False,

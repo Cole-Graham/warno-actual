@@ -19,8 +19,8 @@ hmgteam_nsv_para_pol: Dict[str, Dict[str, Any]] = {
         "TacticVehicleDepictionRegistration": (
             f'unnamed TacticVehicleDepictionRegistration'
             f'    ('
-            f'        CoatingName = "HMGteam_NSV_para_POL"'
-            f'        Selector = SpecificVehicleDepictionSelector'
+            f'        BlackHoleKey = "HMGteam_NSV_para_POL"'
+            f'        Selector = SpecificMechanicalDepictionSelector'
             f'        Alternatives = Alternatives_HMGteam_NSV_para_POL'
             f'        Operators = '
             f'        ['

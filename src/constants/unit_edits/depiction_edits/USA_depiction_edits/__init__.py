@@ -10,12 +10,15 @@ from .F16E_napalm_US import f16e_napalm_us
 from .F111E_Aardvark_napalm_US import f111e_aardvark_napalm_us
 from .F111F_Aardvark_napalm_US import f111f_aardvark_napalm_us
 from .Groupe_AT_US import groupe_at_us
+from .M2_Bradley_BSV_US import m2_bradley_bsv_us
 from .M3A1_Bradley_CFV_US import m3a1_bradley_cfv_us
 from .M3A2_Bradley_CFV_US import m3a2_bradley_cfv_us
 from .M35_supply_US import m35_supply_us
 from .Pathfinder_NG_US import pathfinder_ng_us
 from .Ranger_US import ranger_us
 from .Rifles_half_AT4_US import rifles_half_at4_us
+from .Rifles_half_Cav_CMD_US import rifles_half_cav_cmd_us
+from .Scout_Cav_US import scout_cav_us
 from .Scout_US import scout_us
 
 
@@ -31,11 +34,14 @@ __all__ = [
     "f111e_aardvark_napalm_us",
     "f111f_aardvark_napalm_us",
     "groupe_at_us",
+    "m2_bradley_bsv_us",
     "m3a1_bradley_cfv_us",
     "m3a2_bradley_cfv_us",
     "m35_supply_us",
     "pathfinder_ng_us",
     "ranger_us",
     "rifles_half_at4_us",
+    "rifles_half_cav_cmd_us",
+    "scout_cav_us",
     "scout_us", 
 ]

@@ -8,29 +8,29 @@ from src.utils.ndf_utils import ndf, find_obj_by_type, is_obj_type
 
 logger = setup_logger(__name__)
 
-def _find_aerial_depiction_by_coating_name(source_path: Any, coating_name: str) -> Any:
-    """Find a TacticAerialDepictionRegistration object by its CoatingName member value.
+def _find_aerial_depiction_by_blackhole_key(source_path: Any, blackhole_key: str) -> Any:
+    """Find a TacticAerialDepictionRegistration object by its BlackHoleKey member value.
     
     Args:
         source_path: The NDF List to search in
-        coating_name: The CoatingName value to search for (without quotes)
+        blackhole_key: The BlackHoleKey value to search for (without quotes)
         
     Returns:
         The found object row, or None if not found
     """
-    def match_coating_name(obj_row: Any) -> bool:
-        """Check if object matches the coating name."""
+    def match_blackhole_key(obj_row: Any) -> bool:
+        """Check if object matches the blackhole key."""
         try:
             if not is_obj_type(obj_row.v, "TacticAerialDepictionRegistration"):
                 return False
-            coating_member = obj_row.v.by_m("CoatingName")
-            # CoatingName is stored as a quoted string, so we need to strip quotes
-            coating_value = str(coating_member.v).strip("'").strip('"')
-            return coating_value == coating_name
+            blackhole_key_member = obj_row.v.by_m("BlackHoleKey")
+            # BlackHoleKey is stored as a quoted string, so we need to strip quotes
+            blackhole_key_value = str(blackhole_key_member.v).strip("'").strip('"')
+            return blackhole_key_value == blackhole_key
         except Exception:
             return False
     
-    return source_path.find_by_cond(match_coating_name, strict=False)
+    return source_path.find_by_cond(match_blackhole_key, strict=False)
 
 def edit_gen_gp_gfx_depictionaerialunits(source_path: Any) -> None:
     """GameData/Generated/Gameplay/Gfx/Depictions/DepictionAerialUnits.ndf"""
@@ -96,11 +96,11 @@ def _edit_depictions(source_path: Any, ndf_file: str) -> None:
                         logger.info(f"Edited {row_name_or_type} for {unit_name}")
 
             elif obj_type == "TacticAerialDepictionRegistration":
-                # Namespaces were removed, so we find objects by CoatingName using unit_name
-                aerial_template = _find_aerial_depiction_by_coating_name(source_path, unit_name)
+                # Namespaces were removed, so we find objects by BlackHoleKey using unit_name
+                aerial_template = _find_aerial_depiction_by_blackhole_key(source_path, unit_name)
                 
                 if aerial_template is None:
-                    logger.error(f"Could not find TacticAerialDepictionRegistration with CoatingName='{unit_name}' for {unit_name}")
+                    logger.error(f"Could not find TacticAerialDepictionRegistration with BlackHoleKey='{unit_name}' for {unit_name}")
                     continue
 
                 for row_name_or_type, value in edits.items():

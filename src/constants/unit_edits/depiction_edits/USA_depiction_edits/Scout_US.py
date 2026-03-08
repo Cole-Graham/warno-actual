@@ -17,7 +17,7 @@ scout_us: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
 
         ("AllWeaponSubDepiction_Scout_US", "TemplateAllSubWeaponDepiction"): {
             "Operators": {
-                2: ("insert", [("FireEffectTag", "RocketInf_M72A4_LAW_66mm"), ("WeaponShootDataPropertyName", "WeaponShootData_0_3")]),
+                2: ("insert", [("FireEffectTag", "RocketInf_M72_LAW_66mm"), ("WeaponShootDataPropertyName", "WeaponShootData_0_3")]),
                 1: ("edit", [("FireEffectTag", "SAW_M249_5_56mm")]),
             },
         },

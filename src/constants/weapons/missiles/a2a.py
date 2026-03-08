@@ -31,6 +31,30 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
 
+    ("AA_Skyflash_SuperTEMP", "A2A", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 60,
+                "Moving": 60,
+                "DistanceToTarget": False,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 1.5,
+                "TimeBetweenTwoFx": 1.5,
+                "MaximumRangeAirplaneGRU": 8400,
+                "SpeedGRU": 4946,
+                "MaxAccelerationGRU": 2826,
+                "AimingTime": 0.3,
+                "TimeBetweenTwoSalvos": 1.5,
+                "SupplyCost": 50.0,
+            },
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 4946,
+            "MaxAccelerationGRU": 2826,
+        },
+    },
+
     ("AA_R73_Vympel", "A2A", None, False): { # 27
         "Ammunition": {
             "hit_roll": {
@@ -45,7 +69,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("AA_R60M_Vympel", "A2A", None, False): { # 27
+    ("AA_R60M_Vympel", "A2A", None, False): {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 60,
@@ -56,6 +80,45 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 0.3,
                 "SupplyCost": 30.0,
             },
+        },
+    },
+    
+    ("AA_R60M_Vympel_Helo", "A2A", "AA_R60M_Vympel", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 60,
+                "Moving": 60,
+                "DistanceToTarget": False,
+            },
+            "parent_membr": {
+                "MaximumRangeHelicopterGRU": 2625,
+                "AimingTime": 0.3,
+                "SupplyCost": 30.0,
+            },
+        },
+    },
+
+    ("AA_R40RD1", "A2A", None, False): { # 24
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 55,
+                "Moving": 55,
+                "DistanceToTarget": False,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 1.5,
+                "TimeBetweenTwoFx": 1.5,
+                "MaximumRangeAirplaneGRU": 8400,
+                "SpeedGRU": 4946,
+                "MaxAccelerationGRU": 2826,
+                "TimeBetweenTwoSalvos": 1.5,
+                "AimingTime": 0.3,
+                "SupplyCost": 60.0,
+            },
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 4946,
+            "MaxAccelerationGRU": 2826,
         },
     },
 
@@ -70,6 +133,44 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoShots": 1.5,
                 "TimeBetweenTwoFx": 1.5,
                 "MaximumRangeAirplaneGRU": 8400,
+                "SpeedGRU": 4946,
+                "MaxAccelerationGRU": 2826,
+                "TimeBetweenTwoSalvos": 1.5,
+                "AimingTime": 0.3,
+                "SupplyCost": 60.0,
+            },
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 4946,
+            "MaxAccelerationGRU": 2826,
+        },
+    },
+
+    ("AA_R98MR", "A2A", None, False): { # 24
+        "Ammunition": {
+            "parent_membr": {
+                "TimeBetweenTwoShots": 1.5,
+                "TimeBetweenTwoFx": 1.5,
+                "MaximumRangeAirplaneGRU": 6300,
+                "SpeedGRU": 4946,
+                "MaxAccelerationGRU": 2826,
+                "TimeBetweenTwoSalvos": 1.5,
+                "AimingTime": 0.3,
+                "SupplyCost": 60.0,
+            },
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 4946,
+            "MaxAccelerationGRU": 2826,
+        },
+    },
+
+    ("AA_R98MT", "A2A", None, False): { # 24
+        "Ammunition": {
+            "parent_membr": {
+                "TimeBetweenTwoShots": 1.5,
+                "TimeBetweenTwoFx": 1.5,
+                "MaximumRangeAirplaneGRU": 6300,
                 "SpeedGRU": 4946,
                 "MaxAccelerationGRU": 2826,
                 "TimeBetweenTwoSalvos": 1.5,
@@ -143,6 +244,30 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoShots": 1.5,
                 "TimeBetweenTwoFx": 1.5,
                 "MaximumRangeAirplaneGRU": 9275,
+                "SpeedGRU": 4946,
+                "MaxAccelerationGRU": 2826,
+                "TimeBetweenTwoSalvos": 1.5,
+                "AimingTime": 0.3,
+                "SupplyCost": 50.0,
+            },
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 4946,
+            "MaxAccelerationGRU": 2826,
+        },
+    },
+
+    ("AA_R27T_Vympel", "A2A", None, False): { # IR Vympel
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 60,
+                "Moving": 60,
+                "DistanceToTarget": False,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 1.5,
+                "TimeBetweenTwoFx": 1.5,
+                "MaximumRangeAirplaneGRU": 7700,
                 "SpeedGRU": 4946,
                 "MaxAccelerationGRU": 2826,
                 "TimeBetweenTwoSalvos": 1.5,

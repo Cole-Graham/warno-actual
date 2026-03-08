@@ -117,6 +117,7 @@ pol_unit_edits = {
     },
     
     "UAZ_469_CMD_Para_POL": {  # Desant. WD-43
+        "CommandPoints": 145,
         "GameName": {
             "display": "#CMD SPADO. WD-43",
         },
@@ -142,8 +143,8 @@ pol_unit_edits = {
     },
     
     "BRDM_2_CMD_POL": {  # BRDM-2U
-        "strength": 8,
         "CommandPoints": 155,
+        "strength": 8,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -158,6 +159,7 @@ pol_unit_edits = {
     
     "BRDM_2_CMD_R5_POL": {  # BRDM-2 R-5
         "CommandPoints": 175,
+        "strength": 8,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -544,7 +546,7 @@ pol_unit_edits = {
         "UnitRole": "infantry",
         "SpecialtiesList": {
             "overwrite_all": [
-                '_leader',
+                'leader_sov',
                 '_choc',
                 '_para',
                 'infantry_equip_medium',
@@ -572,7 +574,7 @@ pol_unit_edits = {
         "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
          "GameName": {
-            "display": "#CMD REZERWIŚCI DOW."
+            "display": "#LDRSOV REZERWIŚCI DOW."
         },
         "TagSet": {
             "overwrite_all": [
@@ -1825,7 +1827,8 @@ pol_unit_edits = {
          "capacities": {
             "remove_capacities": [],
         },
-        "ButtonTexture": "T55A_POL",
+        "ButtonTexture": "T55A_POL", 
+        "UpgradeFromUnit": "T54B_CMDactual_POL",
     },
 
     "T55A_POL": {  # T-55A
@@ -1912,6 +1915,7 @@ pol_unit_edits = {
     
     "UAZ_469_Fagot_Para_POL": {  # Desant./Spado. UAZ-469 Fagot/Faktoria
         "CommandPoints": 35,
+        "availability": [0, 10, 7, 0],
         "GameName": {
             "display": "SPADO. UAZ-469 FAKTORIA",
         },
@@ -2219,8 +2223,17 @@ pol_unit_edits = {
     #     },
     # },
     
-    "BRDM_1_PSNR1_POL": {  # BRDM-1 PSNR-1
+    "UAZ_469_Reco_POL": {
+        "CommandPoints": 25,
+    },
+    
+    "BRDM_1_DShK_POL": {
         "CommandPoints": 30,
+        "availability": [12, 9, 0, 0],
+    },
+    
+    "BRDM_1_PSNR1_POL": {  # BRDM-1 PSNR-1
+        "CommandPoints": 40,
         "availability": [8, 0, 0, 0],
     },
     
@@ -2294,7 +2307,6 @@ pol_unit_edits = {
     
     "Honker_RYS_POL": {  # Honker Rys
         "CommandPoints": 25,
-        "UpgradeFromUnit": "Honker_4011_POL",
     },
     
     # POL AA
@@ -2357,9 +2369,9 @@ pol_unit_edits = {
     },
     
     "DCA_AZP_S60_POL": {  # AZP S-60
-        "CommandPoints": 35,
-        "max_speed": 6,
-        "availability": [9, 7, 0, 0],
+        "CommandPoints": "DCA_AZP_S60_SOV",
+        "max_speed": "DCA_AZP_S60_SOV",
+        "availability": "DCA_AZP_S60_SOV",
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },

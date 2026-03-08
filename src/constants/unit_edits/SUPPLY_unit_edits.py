@@ -338,6 +338,18 @@ supply_unit_edits = {
         "availability": [2, 0, 0, 0],
     },
     
+    "MAZ_535A_supply_SOV": {
+        "SupplyCapacity": 2000.0,
+        "CommandPoints": 70,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "SupplyDescriptor": "DvisionalSupply",
+        "availability": [2, 0, 0, 0],
+    },
+    
     "T813_DDR": {
         "SupplyCapacity": 2300.0,
         "CommandPoints": 80,
@@ -505,6 +517,18 @@ supply_unit_edits = {
         "availability": [6, 0, 0, 0],
     },
     
+    "M992A2_supply_US": {
+        "SupplyCapacity": 1400.0,
+        "CommandPoints": 45,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "SupplyDescriptor": "PrimarySupply",
+        "availability": [4, 0, 0, 0],
+    },
+    
     "M548A2_supply_US": {
         "SupplyCapacity": 1600.0,
         "CommandPoints": 55,
@@ -560,6 +584,18 @@ supply_unit_edits = {
     },
     
     "UH60A_Supply_US": {
+        "SupplyCapacity": 750.0,
+        "CommandPoints": 40,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "SupplyDescriptor": "PrimaryHeloSupply",
+        "availability": [5, 0, 0, 0],
+    },
+    
+    "Westland_Wessex_supply_UK": {
         "SupplyCapacity": 750.0,
         "CommandPoints": 40,
         "Divisions": {

@@ -4,7 +4,7 @@
 POL_NEW_UNITS = {
     ("Rifles_CMD_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "420dc280-c718-45a3-8edd-a022767e7773",
-        "GroupeCombatGUID": "ff07058f-392e-477f-8eea-ec8ef042d0c6",
+        "InfantrySquadModuleGUID": "ff07058f-392e-477f-8eea-ec8ef042d0c6",
         "ShowroomGUID": "3585f744-fa44-4b2c-99af-2a50f4220b11",
         "CadavreGUID": "39caafd5-cb26-4aaf-8d9c-d3a0db6c23ec",
         "NewName": "Rifles_CMD2_POL",
@@ -83,7 +83,7 @@ POL_NEW_UNITS = {
         "max_speed": 26,
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootOnPositionSmoke',
-                   'EOrderType/ShootOnPositionWithoutCorrectionSmoke', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load',
+                   'EOrderType/ShootOnPositionWithoutCorrectionSmoke', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,
@@ -98,7 +98,7 @@ POL_NEW_UNITS = {
 
     ("ASU_85_CMD_POL", 0): {  # ASU-85 CMD
         "GUID": "c0194429-3a64-4e52-a9a7-67cec54592e2",
-        "GroupeCombatGUID": "6575d3ea-db2a-42bf-aff3-5bdcf3b50373",
+        "InfantrySquadModuleGUID": "6575d3ea-db2a-42bf-aff3-5bdcf3b50373",
         "ShowroomGUID": "c1ebe660-2108-429c-bf7f-24d8224510e5",
         "CadavreGUID": "8470bf3d-e203-4841-a528-ae547622908a",
         "NewName": "ASU_85_CMD2_POL",
@@ -141,7 +141,7 @@ POL_NEW_UNITS = {
 
     ("T55A_CMD_POL", 2): {  # T-54B CMD
         "GUID": "23dd9821-54ed-4320-bd58-dce59331d9fc",
-        "GroupeCombatGUID": "15f04b2f-f19f-433d-a659-3801250e5ffc",
+        "InfantrySquadModuleGUID": "15f04b2f-f19f-433d-a659-3801250e5ffc",
         "ShowroomGUID": "bf3555f0-d3af-4024-a8f9-980967b84cfd",
         "CadavreGUID": "8a4d7cd6-3a6b-453b-9e11-342982ac2bc3",
         "NewName": "T54B_CMD2_POL",
@@ -159,7 +159,7 @@ POL_NEW_UNITS = {
             "display": "#CMD T-54BD",
             "token": "POLTFFBC",
         },
-        "Factory": "EFactory/Tanks",
+        "Factory": "EFactory/Logistic",
         "CommandPoints": 205,
         "UnitRole": 'armor',
         "SpecialtiesList": [
@@ -181,7 +181,7 @@ POL_NEW_UNITS = {
 
     ("T55A_CMD_POL", 0): {  # T-55AD CV
         "GUID": "f85c67f5-5738-43ff-bae2-a92bfa88d83d",
-        "GroupeCombatGUID": "6773a9af-c9e6-4d3f-a41c-953be75f966e",
+        "InfantrySquadModuleGUID": "6773a9af-c9e6-4d3f-a41c-953be75f966e",
         "ShowroomGUID": "2cf23742-85b4-4b75-a280-133aff0a63b6",
         "CadavreGUID": "1b246f95-d334-4219-bbe2-630ed38b013b",
         "NewName": "T55A_CMD2_POL",
@@ -235,7 +235,7 @@ POL_NEW_UNITS = {
 
     ("T55AM_Merida_CMD_POL", 0): {  # T-55AM Merida CV
         "GUID": "0ed06908-888a-4535-881f-5e714b21a1e4",
-        "GroupeCombatGUID": "7c76c4fe-53a0-4508-ad01-2683a195fc34",
+        "InfantrySquadModuleGUID": "7c76c4fe-53a0-4508-ad01-2683a195fc34",
         "ShowroomGUID": "a9ce6acc-5f50-4994-8518-e1aa378f200b",
         "CadavreGUID": "24ee87a1-9b71-4e72-aa2d-66e5b720ea91",
         "NewName": "T55AM_Merida_CMD2_POL",
@@ -283,7 +283,7 @@ POL_NEW_UNITS = {
 
     ("T72M_CMD_POL", 0): {  # T-72MD CV
         "GUID": "dd59b59a-5698-4a72-b16c-71ec2bdc9064",
-        "GroupeCombatGUID": "56fecca1-ce12-4cfb-9675-2ef6bb48e033",
+        "InfantrySquadModuleGUID": "56fecca1-ce12-4cfb-9675-2ef6bb48e033",
         "ShowroomGUID": "65e63a59-27d9-4978-b3ba-93e44f91379c",
         "CadavreGUID": "a3f4a792-bdd7-48c8-a70f-dfe28ec0b129",
         "NewName": "T72M_CMD2_POL",
@@ -331,7 +331,7 @@ POL_NEW_UNITS = {
 
     ("T72M1_CMD_POL", 0): {  # T-72M1D CV
         "GUID": "c292163d-73b2-47dd-9f39-ad607bd75a14",
-        "GroupeCombatGUID": "f71b3c68-eb90-46ec-8ac3-5c75273b0212",
+        "InfantrySquadModuleGUID": "f71b3c68-eb90-46ec-8ac3-5c75273b0212",
         "ShowroomGUID": "217706ae-a44b-4d9a-9b89-a516bf04207b",
         "CadavreGUID": "1b9dae2d-80ce-4331-be82-311b2ed53b29",
         "NewName": "T72M1_CMD2_POL",
@@ -380,7 +380,7 @@ POL_NEW_UNITS = {
 
     ("T55A_CMD_POL", 1): {  # T-54B Ldr.
         "GUID": "ce7aac18-0994-4f41-b5dd-35b8c9b8d434",
-        "GroupeCombatGUID": "9ab3d76b-e841-4944-96e8-b6be76bdde98",
+        "InfantrySquadModuleGUID": "9ab3d76b-e841-4944-96e8-b6be76bdde98",
         "ShowroomGUID": "e07a7e81-164b-43b1-98a6-5ecf33509420",
         "CadavreGUID": "cbd9c1a8-134c-4521-b84e-605ed4d7af99",
         "NewName": "T54B_CMDactual_POL",
@@ -421,7 +421,7 @@ POL_NEW_UNITS = {
 
     ("OT_64_SKOT_2_POL", 0): {  # SKOT R-2AM LDR
         "GUID": "35b514f1-55d8-4c63-86c0-ff0604547fb4",
-        "GroupeCombatGUID": "fb1db3c4-ed80-4a3a-b8f8-1eab529da04e",
+        "InfantrySquadModuleGUID": "fb1db3c4-ed80-4a3a-b8f8-1eab529da04e",
         "ShowroomGUID": "6211126c-6458-4edc-8e7e-a7d17338c60a",
         "CadavreGUID": "8f3685da-a277-41c1-8870-3d60c6acc84f",
         "modules_add": ["TCommanderModuleDescriptor()"],
@@ -486,7 +486,7 @@ POL_NEW_UNITS = {
 
     ("Atteam_Fagot_POL", 0): {  # PPK Faktoria
         "GUID": "a4f73e0b-8b70-4c8d-bcee-440a4c79fb6e",
-        "GroupeCombatGUID": "37d0eb0b-25b4-4351-bd94-db17bfccfce5",
+        "InfantrySquadModuleGUID": "37d0eb0b-25b4-4351-bd94-db17bfccfce5",
         "ShowroomGUID": "24fd6fc3-aaff-4f8b-b46e-63a5188edcab",
         "CadavreGUID": "2a3d92a7-1ab7-4bc1-94be-916ac8b06ab4",
         "NewName": "ATteam_FagotM_POL",
@@ -536,7 +536,7 @@ POL_NEW_UNITS = {
         "availability": [7, 5, 4, 0],
         "max_speed": 20,
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/Attack', 'EOrderType/MoveAndAttack',
-                   'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load',
+                   'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": True,  # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": True,
@@ -563,7 +563,7 @@ POL_NEW_UNITS = {
 
     ("Atteam_Fagot_Para_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "24abfd2b-f4c6-4377-a1dc-29719cc9c2ad",
-        "GroupeCombatGUID": "3ec286bd-3931-4d6a-8354-89d2e1360197",
+        "InfantrySquadModuleGUID": "3ec286bd-3931-4d6a-8354-89d2e1360197",
         "ShowroomGUID": "f5e0ff9b-e75d-45b7-9106-9852e53ead09",
         "CadavreGUID": "b9e1df75-08a7-4ee7-9e9a-a272763652ac",
         "NewName": "Atteam_Konkurs_Para_POL",
@@ -602,7 +602,7 @@ POL_NEW_UNITS = {
         "availability": [0, 6, 4, 0],
         "max_speed": 20,
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/Attack', 'EOrderType/MoveAndAttack', 
-                   'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load', 
+                   'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": True,
@@ -629,7 +629,7 @@ POL_NEW_UNITS = {
 
     ("HMGteam_PKM_para_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "02f68c8d-483d-4787-927a-9db855de0e5f",
-        "GroupeCombatGUID": "7a140754-7160-44fb-8233-ac9b1096abd1",
+        "InfantrySquadModuleGUID": "7a140754-7160-44fb-8233-ac9b1096abd1",
         "ShowroomGUID": "aead18dd-0321-4534-a292-e7a2b52a81f3",
         "CadavreGUID": "e1fa2afd-f15e-4d24-9981-5c482fe4cbf7",
         "NewName": "HMGteam_NSV_para_POL",
@@ -701,7 +701,7 @@ POL_NEW_UNITS = {
 
     ("HMGteam_PKM_para_POL", 1): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "4734c29a-2afe-4c03-baca-964c750825fc",
-        "GroupeCombatGUID": "dda90888-7c16-410b-bb1b-6c7576df5def",
+        "InfantrySquadModuleGUID": "dda90888-7c16-410b-bb1b-6c7576df5def",
         "ShowroomGUID": "c3a0e94a-4d8b-403b-9e69-316f977990a1",
         "CadavreGUID": "4a5322be-f90f-418d-8d20-87768d1faa05",
         "NewName": "HMGteam_AGS17_para_POL",
@@ -747,7 +747,7 @@ POL_NEW_UNITS = {
         "max_speed": 14,
         "strength": 5,
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/Attack', 'EOrderType/MoveAndAttack', 
-                   'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load', 'EOrderType/ShootOnPosition',
+                   'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/ShootOnPosition',
                    'EOrderType/ShootOnPositionWithoutCorrection','EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": True,
@@ -777,7 +777,7 @@ POL_NEW_UNITS = {
             "token": "ZMUZVMFCMK",
         },
         "GUID": "2419def0-6823-40f0-8e64-c646f6ad2d8e",
-        "GroupeCombatGUID": "da37a488-aae5-44e2-8c88-2ff19c8639e8",
+        "InfantrySquadModuleGUID": "da37a488-aae5-44e2-8c88-2ff19c8639e8",
         "ShowroomGUID": "faae217b-5941-4d12-a0f4-f28628527291",
         "CadavreGUID": "cc4b63e5-182c-4393-9310-7053270a2c96",
         "NewName": "Honker_RYS_trans_POL",
@@ -786,7 +786,7 @@ POL_NEW_UNITS = {
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "GroundUnits",
-                "UNITE_Honker_RYS_POL",
+                "UNITE_Honker_RYS_trans_POL",
                 "Unite",
                 "Vehicule",
                 "Vehicule_Transport_Arme",
@@ -811,6 +811,8 @@ POL_NEW_UNITS = {
             },
         },
         "stealth": 1.5,
+        "DeploymentShift": 0,
+        "UpgradeFromUnit": "Honker_4011_POL",
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply', 'EOrderType/UnloadFromTransport', 'EOrderType/UnloadAtPosition', 'EOrderType/Load',
@@ -830,7 +832,7 @@ POL_NEW_UNITS = {
             "token": "USEVPJZMYG",
         },
         "GUID": "fe208523-a9ca-4ef2-860e-bf6a12b905ca",
-        "GroupeCombatGUID": "058703d8-1efc-4836-89ce-fdf7a195c2d7",
+        "InfantrySquadModuleGUID": "058703d8-1efc-4836-89ce-fdf7a195c2d7",
         "ShowroomGUID": "b4e59d7c-5465-4c1b-bb43-217899193ab5",
         "CadavreGUID": "c24a9ca7-b29f-47d0-a041-b1e786809548",
         "NewName": "OT_62_TOPAS_JOD2_POL",
@@ -842,6 +844,7 @@ POL_NEW_UNITS = {
                 "UNITE_OT_62_TOPAS_JOD2_POL",
                 "Unite",
                 "Vehicule",
+                "Vehicule_Appui",
                 "Vehicule_Transport_Arme",
             ],
         },
@@ -855,7 +858,7 @@ POL_NEW_UNITS = {
         ],
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
-                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply', 'EOrderType/UnloadFromTransport', 'EOrderType/UnloadAtPosition', 'EOrderType/Load',
+                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply', 'EOrderType/UnloadFromTransport', 'EOrderType/UnloadAtPosition', 'EOrderType/Load', 'EOrderType/UseCapacite',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": False, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,
@@ -872,7 +875,7 @@ POL_NEW_UNITS = {
             "token": "NZMIMFLCIU",
         },
         "GUID": "a6ad7568-566b-44c9-9ecd-cab435c3571d",
-        "GroupeCombatGUID": "33190296-883c-4962-8029-c6b2c117d294",
+        "InfantrySquadModuleGUID": "33190296-883c-4962-8029-c6b2c117d294",
         "ShowroomGUID": "befd547b-c68c-4519-bf87-df910c2f0a85",
         "CadavreGUID": "a48e1365-8229-4df2-a700-a3ce718cfdda",
         "NewName": "UAZ_469_SPG9_POL",
@@ -908,7 +911,7 @@ POL_NEW_UNITS = {
 
     ("AT_D48_85mm_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "0de44fc4-1a87-4146-8e24-0dd8ee7c2d52",
-        "GroupeCombatGUID": "ec9269ff-531e-4d45-8bd0-9c3a0b0548cc",
+        "InfantrySquadModuleGUID": "ec9269ff-531e-4d45-8bd0-9c3a0b0548cc",
         "ShowroomGUID": "116fa176-1fea-4d10-9782-794c7ba2fa30",
         "CadavreGUID": "04dc2d6f-591d-4c24-9e1e-8f6c032b2e99",
         "NewName": "AT_D48_85mm_Para_POL",
@@ -937,11 +940,12 @@ POL_NEW_UNITS = {
         "SpecialtiesList": [
                 '_para',
             ],
+        "CommandPoints": 35,
         "UpgradeFromUnit": None,
         "availability": [0, 9, 7, 5],
         "DeploymentShift": 1750,
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/Attack', 'EOrderType/MoveAndAttack', 
-                   'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load', 'EOrderType/ShootOnPosition',
+                   'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/ShootOnPosition',
                    'EOrderType/ShootOnPositionWithoutCorrection','EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": False, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": True,
@@ -971,7 +975,7 @@ POL_NEW_UNITS = {
             "token": "MUGMPUTSYS",
         },
         "GUID": "a40a0809-44e9-4f2d-a85b-c2927c736712",
-        "GroupeCombatGUID": "5b78e35d-682b-47a4-b0e0-5d5059825b57",
+        "InfantrySquadModuleGUID": "5b78e35d-682b-47a4-b0e0-5d5059825b57",
         "ShowroomGUID": "871cf1cb-8457-4f8e-a3db-115ad7a2f8e9",
         "CadavreGUID": "aa84aa16-69c0-4145-9b88-fd27dbfc94a6",
         "NewName": "OT_62_TOPAS_R3M_CMD2_POL",
@@ -1005,7 +1009,7 @@ POL_NEW_UNITS = {
         },
         "availability": [0, 3, 0, 0],
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Reverse',
-                   'EOrderType/AskForSupply', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+                   'EOrderType/AskForSupply', 'EOrderType/UseCapacite', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": False, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,
         "is_ground_vehicle": True,
@@ -1017,7 +1021,7 @@ POL_NEW_UNITS = {
 
     ("Engineers_Scout_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "a8123a99-091d-4e7e-9b09-e366848d1907",
-        "GroupeCombatGUID": "139beeba-bf5b-48d4-bef1-09780c53f9fc",
+        "InfantrySquadModuleGUID": "139beeba-bf5b-48d4-bef1-09780c53f9fc",
         "ShowroomGUID": "3c945163-0eb1-46c0-b9ea-83e4fc58efed",
         "CadavreGUID": "8283ce2a-bf6a-40ea-9af8-81c0565226c0",
         "NewName": "Engineers_Scout_Para_POL",
@@ -1060,7 +1064,7 @@ POL_NEW_UNITS = {
         },
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
-                   'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+                   'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/UseCapacite', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,
         "is_ground_vehicle": False,
@@ -1079,7 +1083,7 @@ POL_NEW_UNITS = {
     #         "token": "MIG23MFAA3",
     #     },
     #     "GUID": "1b34c5cf-ed1f-48ce-9db3-f227dfa3cce7",
-    #     "GroupeCombatGUID": "701c25c0-7522-46b3-b2bf-d3614701d7c5",
+    #     "InfantrySquadModuleGUID": "701c25c0-7522-46b3-b2bf-d3614701d7c5",
     #     "ShowroomGUID": "ec350db0-6b05-428c-8659-5fc40fff3820",
     #     "CadavreGUID": "d7249c56-d85b-41b6-8bc1-f1d8e2ba6fd8",
     #     "NewName": "MiG_23MF_AA3_POL",

@@ -4,7 +4,7 @@
 UK_NEW_UNITS = {
     ("DCA_M167A2_Vulcan_20mm_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "016266d7-5576-4c95-8885-a9cd0277079a",
-        "GroupeCombatGUID": "852cb4c1-67fd-4039-89d9-df1c2ba6c46c",
+        "InfantrySquadModuleGUID": "852cb4c1-67fd-4039-89d9-df1c2ba6c46c",
         "ShowroomGUID": "967df281-0e6b-40af-8c42-65ccb81ca47d",
         "CadavreGUID": "e1eeca97-647d-4296-a631-9ea45800fae9",
         "depictions": {
@@ -56,7 +56,7 @@ UK_NEW_UNITS = {
         "UpgradeFromUnit": "FOB_UK",
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
-                   'EOrderType/Load', 'EOrderType/Load', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+                   'EOrderType/Load', 'EOrderType/UseCapacite', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": True,
         "is_ground_vehicle": True,
@@ -80,7 +80,7 @@ UK_NEW_UNITS = {
     
     ("MANPAD_Javelin_UK", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "7be6ab23-0cd0-48bb-8a21-cb4ae72bfaeb",
-        "GroupeCombatGUID": "6654c8cb-38e3-41e9-bc29-d37e1a3fd862",
+        "InfantrySquadModuleGUID": "6654c8cb-38e3-41e9-bc29-d37e1a3fd862",
         "ShowroomGUID": "4f8f93db-5b47-4e3b-91f9-e7a63870c778",
         "CadavreGUID": "e9fecaf0-63ae-4181-beb7-a92c1e7d612a",
         "NewName": "MANPAD_Starstreak_UK",
@@ -119,8 +119,8 @@ UK_NEW_UNITS = {
             "equipmentchanges": {
                 "HAGRU_MANPADS": [(1, 0, "MANPAD_Starstreak_HAGRU")], # turret_index, donor_weapon_index, ammo_name
                 "replace": [
-                    ("FM_L85A1", "FM_L85A1_noreflex", "FM_L85A1", "FM_L85A1"),
-                    ("Javelin", "MANPAD_Starstreak", "Javelin", "Starstreak_x3"),
+                    ("FM_L85A1", "FM_L85A1_noreflex"),
+                    ("Javelin", "MANPAD_Starstreak"),
                 ],
             },
             "Salves": {
@@ -130,7 +130,7 @@ UK_NEW_UNITS = {
         "UpgradeFromUnit": "DCA_Javelin_LML_UK",
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
-                   'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+                   'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,
         "is_ground_vehicle": False,
@@ -144,7 +144,7 @@ UK_NEW_UNITS = {
 
     ("Rifles_CMD_UK", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "1f764bcc-3c0f-4a39-90b3-43d97e749441",
-        "GroupeCombatGUID": "f89e6ee3-40ac-4ef8-a6eb-5c1373cb51d7",
+        "InfantrySquadModuleGUID": "f89e6ee3-40ac-4ef8-a6eb-5c1373cb51d7",
         "ShowroomGUID": "b2e1d9c4-a7f8-4b53-9c6e-d5f4e3a2c1b8",
         "CadavreGUID": "b1352738-64fe-4c41-8505-7fdb44402f6d",
         "NewName": "Rifles_CMD2_UK",
@@ -203,7 +203,7 @@ UK_NEW_UNITS = {
         "max_speed": 26,
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootOnPositionSmoke',
-                   'EOrderType/ShootOnPositionWithoutCorrectionSmoke', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/Load',
+                   'EOrderType/ShootOnPositionWithoutCorrectionSmoke', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/UseCapacite',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,
@@ -218,7 +218,7 @@ UK_NEW_UNITS = {
 
     ("Challenger_1_Mk1_CMD_UK", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "d8a0de03-ee46-49c5-ba51-24320c053d55",
-        "GroupeCombatGUID": "5d21c985-c92a-4975-b0f3-74ed1a7920b8",
+        "InfantrySquadModuleGUID": "5d21c985-c92a-4975-b0f3-74ed1a7920b8",
         "ShowroomGUID": "c4d5e6f7-8a9b-4c5d-6e7f-8a9b0c1d2e3f",
         "CadavreGUID": "e8f48e53-2ad0-4d41-ac9f-f6d24a3f2e77",
         "NewName": "Challenger_1_Mk1_CMD2_UK",
@@ -273,7 +273,7 @@ UK_NEW_UNITS = {
     
     ("FV4201_Chieftain_CMD_UK", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "c37302a6-8480-497d-8733-6e5d0e70ae3b",
-        "GroupeCombatGUID": "e7b02c97-0130-4ac1-bf35-1c2f3065a4de",
+        "InfantrySquadModuleGUID": "e7b02c97-0130-4ac1-bf35-1c2f3065a4de",
         "ShowroomGUID": "451549aa-d69c-47e1-8824-30f60b236bb6",
         "CadavreGUID": "dcf2f600-fa63-4760-bb8a-334e57fccc84",
         "NewName": "FV4201_Chieftain_CMD2_UK",
@@ -328,7 +328,7 @@ UK_NEW_UNITS = {
     
     ("FV4201_Chieftain_Mk9_UK", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "42c8aa7b-7dec-406c-9806-876e01d5eff6",
-        "GroupeCombatGUID": "2a3009a7-9dd4-4a3e-8f0d-f54471cbb1e2",
+        "InfantrySquadModuleGUID": "2a3009a7-9dd4-4a3e-8f0d-f54471cbb1e2",
         "ShowroomGUID": "576ba527-ee4d-4078-b7aa-de7d5768e192",
         "CadavreGUID": "9758e636-88e4-4970-adba-ffb1b4a0813c",
         "NewName": "FV4201_Chieftain_Mk9_CMD2_UK",
@@ -383,7 +383,7 @@ UK_NEW_UNITS = {
     
     ("FV4201_Chieftain_Mk9_UK", 1): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "87f347d1-7532-4ac8-8856-cbf95fa29392",
-        "GroupeCombatGUID": "c6bae323-a820-4eb3-b45f-c617e3162a3d",
+        "InfantrySquadModuleGUID": "c6bae323-a820-4eb3-b45f-c617e3162a3d",
         "ShowroomGUID": "f26a6c58-4680-4fb2-9540-179ac933400a",
         "CadavreGUID": "30a1f922-b453-4fbe-ac83-63be38aba866",
         "NewName": "FV4201_Chieftain_Mk9_CMD_UK",
@@ -434,7 +434,7 @@ UK_NEW_UNITS = {
     
     ("Centurion_Mk13_CMD_UK", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "9bc04582-2e83-4b9f-bae7-7d367dc094f2",
-        "GroupeCombatGUID": "f669e647-adbc-4414-99da-6f11eb06819f",
+        "InfantrySquadModuleGUID": "f669e647-adbc-4414-99da-6f11eb06819f",
         "ShowroomGUID": "79a769f6-c8bc-4ec1-b6b6-697f2d024c72",
         "CadavreGUID": "f5920656-c32e-4094-9264-b4682fdfd05e",
         "NewName": "Centurion_Mk13_CMD2_UK",
@@ -479,7 +479,7 @@ UK_NEW_UNITS = {
         },
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack', 
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 
-                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply', 
+                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply', 'EOrderType/UseCapacite',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": False, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,
@@ -492,7 +492,7 @@ UK_NEW_UNITS = {
     
     ("FV101_Scorpion_UK", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "5892675b-4479-4d47-8cd6-c2e2d6a9c87b",
-        "GroupeCombatGUID": "f9ebcac8-c741-47ca-8aac-db0b97fd4a59",
+        "InfantrySquadModuleGUID": "f9ebcac8-c741-47ca-8aac-db0b97fd4a59",
         "ShowroomGUID": "f9ebcac8-c741-47ca-8aac-db0b97fd4a59",
         "CadavreGUID": "712dc0c8-8a08-407a-86de-7966c49791e2",
         "NewName": "FV101_Scorpion_para_UK",
@@ -557,7 +557,7 @@ UK_NEW_UNITS = {
     
     ("FV107_Scimitar_UK", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "9e1f563b-4429-4d95-a296-06c9e4be0305",
-        "GroupeCombatGUID": "98ce59ad-4057-4d0c-b7d4-d837a9101758",
+        "InfantrySquadModuleGUID": "98ce59ad-4057-4d0c-b7d4-d837a9101758",
         "ShowroomGUID": "9ff607c6-2836-4b3c-90af-06e2a1194a1a",
         "CadavreGUID": "a8a1ac35-7624-4744-b802-18c4c100f364",
         "NewName": "FV107_Scimitar_para_UK",
@@ -622,7 +622,7 @@ UK_NEW_UNITS = {
     
     ("RCL_L6_Wombat_UK", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "1a9bf3de-330b-4188-b4cf-a4bcf42571f1",
-        "GroupeCombatGUID": "0c3c416b-12cd-42a8-bd2e-f343404a403d",
+        "InfantrySquadModuleGUID": "0c3c416b-12cd-42a8-bd2e-f343404a403d",
         "ShowroomGUID": "b33c7197-4360-4ebd-948e-70249481ec53",
         "CadavreGUID": "57a721f1-b874-4e45-bd51-9c5b90dd3afe",
         "NewName": "RCL_L6_Wombat_para_UK",

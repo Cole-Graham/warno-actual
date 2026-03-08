@@ -7,7 +7,7 @@ from src import ndf
 from src.constants.new_units import NEW_DEPICTIONS, NEW_UNITS
 from src.constants.unit_edits import load_depiction_edits
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import find_obj_by_type, find_obj_by_namespace, find_obj_by_coating_name
+from src.utils.ndf_utils import find_obj_by_blackhole_key
 
 logger = setup_logger(__name__)
 
@@ -36,16 +36,16 @@ def _handle_new_units(source_path: Any) -> None:
     def create_new_object(
         obj_row_: Any, unit_name_: str, is_weapon: bool, weapon_num: int = 0, edits: dict = None
     ) -> Any:
-        """Create a new depiction object with updated namespace or CoatingName."""
+        """Create a new depiction object with updated namespace or BlackHoleKey."""
         new_obj = obj_row_.copy()
         if is_weapon:
             new_obj.namespace = f"DepictionOperator_{unit_name_}_Weapon{weapon_num}"
         else:
-            # For TacticVehicleDepictionRegistration, set CoatingName instead of namespace
+            # For TacticVehicleDepictionRegistration, set BlackHoleKey instead of namespace
             # Unit model objects are always unnamed now
             new_obj.namespace = None
-            coating_member = new_obj.v.by_m("CoatingName")
-            coating_member.v = f"'{unit_name_}'"
+            blackhole_key_member = new_obj.v.by_m("BlackHoleKey")
+            blackhole_key_member.v = f"'{unit_name_}'"
             depiction_veh_edits = edits.get("depictions", {}).get("remove", {}).get("DepictionVehicles_ndf", {})
             if "remove_members" in depiction_veh_edits:
                 for member in depiction_veh_edits["remove_members"]:
@@ -97,8 +97,8 @@ def _handle_new_units(source_path: Any) -> None:
             weapon_count = 0
             new_objects = []
 
-            # Find donor vehicle depiction by CoatingName
-            donor_vehicle = find_obj_by_coating_name(source_path, donor_name, "TacticVehicleDepictionRegistration")
+            # Find donor vehicle depiction by BlackHoleKey
+            donor_vehicle = find_obj_by_blackhole_key(source_path, donor_name, "TacticVehicleDepictionRegistration")
             
             for obj_row in source_path:
                 namespace = obj_row.namespace
@@ -114,7 +114,7 @@ def _handle_new_units(source_path: Any) -> None:
                     new_objects.append(create_new_object(obj_row, unit_name, False, weapon_count, edits))
 
             for obj in new_objects:
-                obj_desc = obj.namespace if obj.namespace else f"CoatingName={obj.v.by_m('CoatingName').v}"
+                obj_desc = obj.namespace if obj.namespace else f"BlackHoleKey={obj.v.by_m('BlackHoleKey').v}"
                 logger.info(f"Adding new object to DepictionVehicles.ndf: {obj_desc}")
                 source_path.add(obj)
         
@@ -161,8 +161,8 @@ def _handle_unit_edits(source_path: Any) -> None:
                     new_entry.type = obj_type
                     new_entry = _handle_weapon_operator(unit_name, new_entry, edits)
 
-                    # Calculate insertion index - find vehicle depiction by CoatingName
-                    vehicle_depiction = find_obj_by_coating_name(
+                    # Calculate insertion index - find vehicle depiction by BlackHoleKey
+                    vehicle_depiction = find_obj_by_blackhole_key(
                         source_path, unit_name, "TacticVehicleDepictionRegistration")
                     if vehicle_depiction:
                         source_path.insert(vehicle_depiction.index, new_entry)
@@ -170,17 +170,22 @@ def _handle_unit_edits(source_path: Any) -> None:
                         source_path.add(new_entry)
                     logger.info(f"Inserted new weapon operator for {unit_name}")
 
+                    # Optionally apply edits to the donor (e.g. when shifting weapon slots)
+                    if "modify_donor" in edits:
+                        _handle_weapon_operator(unit_name, donor, edits["modify_donor"])
+                        logger.info(f"Updated donor weapon operator {namespace} for {unit_name}")
+
                 elif obj_type == "TacticVehicleDepictionRegistration":
-                    # Handle vehicle depiction copy - unit model objects are unnamed, find by CoatingName
+                    # Handle vehicle depiction copy - unit model objects are unnamed, find by BlackHoleKey
                     # Extract donor name from copy target or use unit_name
                     donor_name = edits.get("copy", "").replace("TacticDepiction_", "").replace("_", "")
                     if not donor_name:
                         # If no copy target specified, use the unit_name as donor
                         donor_name = unit_name
-                    donor = find_obj_by_coating_name(source_path, donor_name, "TacticVehicleDepictionRegistration")
+                    donor = find_obj_by_blackhole_key(source_path, donor_name, "TacticVehicleDepictionRegistration")
                     
                     if not donor:
-                        logger.error(f"Could not find donor TacticVehicleDepictionRegistration with CoatingName='{donor_name}' for {unit_name}")
+                        logger.error(f"Could not find donor TacticVehicleDepictionRegistration with BlackHoleKey='{donor_name}' for {unit_name}")
                         continue
 
                     new_entry = donor.copy()
@@ -198,26 +203,35 @@ def _handle_unit_edits(source_path: Any) -> None:
                         logger.info(f"Updated weapon operator for {unit_name}")
 
                 elif obj_type == "TacticVehicleDepictionRegistration":
-                    # Find vehicle depiction by CoatingName instead of namespace
-                    vehicle_depiction = find_obj_by_coating_name(
+                    # Find vehicle depiction by BlackHoleKey instead of namespace
+                    vehicle_depiction = find_obj_by_blackhole_key(
                         source_path, unit_name, "TacticVehicleDepictionRegistration")
                     if vehicle_depiction:
                         _handle_vehicle_depiction(unit_name, vehicle_depiction, edits)
                         logger.info(f"Updated vehicle depiction for {unit_name}")
                     else:
-                        logger.error(f"Could not find TacticVehicleDepictionRegistration with CoatingName='{unit_name}'")
+                        logger.error(f"Could not find TacticVehicleDepictionRegistration with BlackHoleKey='{unit_name}'")
 
 
 def _handle_weapon_operator(unit_name, weapon_operator, edits, is_new_entry=False):  # noqa
     for row_name_or_type, value in edits.items():
-        if row_name_or_type == "copy":
+        if row_name_or_type in ("copy", "modify_donor"):
             continue
 
-        member_access = weapon_operator.v.by_m(row_name_or_type)
+        member_access = weapon_operator.v.by_m(row_name_or_type, False)
+        if member_access is None:
+            continue
+
         if row_name_or_type == "FireEffectTag":
             member_access.v = value
+        elif row_name_or_type == "WeaponActiveAndCanShootPropertyName":
+            member_access.v = value
         elif row_name_or_type == "WeaponShootDataPropertyName":
-            member_access.v = "[" + ",".join(value) + "]"
+            # ContinuousFire uses scalar; InstantFire/MissileCarriage use list
+            if getattr(weapon_operator.v, "type", None) == "DepictionOperator_WeaponContinuousFire" and isinstance(value, list) and len(value) == 1:
+                member_access.v = value[0]
+            else:
+                member_access.v = "[" + ",".join(value) + "]"
 
     return weapon_operator
 

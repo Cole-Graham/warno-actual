@@ -79,22 +79,22 @@ cav_scout_dragon_m3a2_us: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
             f'    TDepictionVisual\n'
             f'    (\n'
             f'        SelectorId = [LOD_High, "01"]\n'
-            f'        MeshDescriptor = $/GFX/DepictionResources/Modele_LRRP_US_05\n'
+            f'        MeshDescriptor = $/GFX/DepictionResources/Modele_Rifles_half_Cav_Dragon_US\n'
             f'    ),\n'
             f'    TDepictionVisual\n'
             f'    (\n'
             f'        SelectorId = [LOD_High, "02"]\n'
-            f'        MeshDescriptor = $/GFX/DepictionResources/Modele_LRRP_US_04\n'
+            f'        MeshDescriptor = $/GFX/DepictionResources/Modele_Rifles_half_Cav_Dragon_US_02\n'
             f'    ),\n'
             f'    TDepictionVisual\n'
             f'    (\n'
             f'        SelectorId = [LOD_Low]\n'
-            f'        MeshDescriptor = $/GFX/DepictionResources/Modele_LRRP_US_LOW\n'
+            f'        MeshDescriptor = $/GFX/DepictionResources/Modele_Rifles_half_Cav_Dragon_US_LOW\n'
             f'    ),\n'
             f'    TMeshlessDepictionDescriptor\n'
             f'    (\n'
             f'        SelectorId = ["none"]\n'
-            f'        ReferenceMeshForSkeleton = $/GFX/DepictionResources/Modele_LRRP_US\n'
+            f'        ReferenceMeshForSkeleton = $/GFX/DepictionResources/Modele_Rifles_half_Cav_Dragon_US\n'
             f'    )\n'
             f']'
         ),
@@ -107,7 +107,7 @@ cav_scout_dragon_m3a2_us: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
         },
         
         (None, "TTransportedInfantryEntry"): {
-            "Meshes": ["LRRP_US_05", "LRRP_US_04"],
+            "Meshes": ["Rifles_half_Cav_Dragon_US", "Rifles_half_Cav_Dragon_US_02"],
         }
     },
 }
