@@ -292,7 +292,7 @@ SOV_global_newdivisionrules = {
         ("MiG_27M_sead_SOV", 1, [0, 2, 0, 0]),
         ("MiG_29_9_13_SOV", 1, [0, 2, 0, 1]),
         ("MiG_29_AA2_SOV", 3, [0, 2, 0, 1]),
-        ("MiG_29_AA3_SOV", 1, [0, 2, 1, 0]),
+        ("MiG_29_AA3_SOV", 1, [0, 2, 0, 1]),
         ("MiG_29_AA_SOV", 2, [0, 2, 0, 1]),
         ("Su_15TM_AA2_SOV", 1, [0, 3, 2, 0]),
         ("Su_15TM_AA_SOV", 1, [0, 3, 2, 0]),
