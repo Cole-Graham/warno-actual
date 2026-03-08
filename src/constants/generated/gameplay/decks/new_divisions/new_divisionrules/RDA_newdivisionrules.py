@@ -10,7 +10,7 @@ RDA_airborne_newdivisionrules = {
         ("MTLB_CMD_DDR", 1, [0, 3, 0, 0]),
         ("T55A_CMD2_DDR", 1, [0, 0, 2, 0]),
         ("T55AM2_CMD2_DDR", 1, [0, 0, 2, 0]),
-        ("PT76B_CMD2_DDR", 1, [0, 0, 3, 0]),
+        ("PT76B_CMD_DDR", 1, [0, 0, 3, 0]),
         ("Mi_2_CMD_DDR", 1, [0, 3, 0, 0]),
         ("Mi_9_DDR", 2, [0, 3, 0, 0]),
         ("MTLB_supply_DDR", 3, [6, 0, 0, 0]),
@@ -52,7 +52,7 @@ RDA_airborne_newdivisionrules = {
     "tank": [
         ("T55AM2_CMD_DDR", 1, [0, 0, 4, 0]),
         ("T55A_CMD_DDR", 1, [0, 0, 6, 0]),
-        ("PT76B_CMD_DDR", 1, [0, 0, 8, 0]),
+        ("PT76B_CMD2_DDR", 1, [0, 0, 8, 0]),
         ("T55AM2B_DDR", 1, [0, 6, 4, 0]),
         ("T55AM2_DDR", 2, [0, 8, 6, 0]),
         ("T55A_DDR", 2, [10, 7, 0, 0]),
@@ -61,7 +61,7 @@ RDA_airborne_newdivisionrules = {
         ("BRDM_Konkurs_DDR", 1, [8, 6, 0, 0]),
         ("BRDM_Malyu_P_DDR", 1, [10, 7, 0, 0]),
         ("UAZ_469_Fagot_FJ_DDR", 2, [0, 10, 7, 0]),
-        ("AT_D44_85mm_FJ_DDR", 1, [0, 9, 7, 5], ["W50_LA_A_DDR"]),
+        ("AT_D44_85mm_DDR", 1, [9, 7, 5, 0], ["W50_LA_A_DDR"]),
     ],
     "recon": [
         ("KSK18_DDR", 1, [0, 0, 4, 3], ["W50_LA_A_DDR"]),

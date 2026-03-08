@@ -901,7 +901,7 @@ RDA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "507aa56d-6875-4b05-8aa5-21464360b536",
         "ShowroomGUID": "e65bd9bb-fd99-4316-9146-f5ec494ad462",
         "CadavreGUID": "957a042c-fe88-4a9d-9aa3-2c4e789f03e4",
-        "NewName": "PT76B2_CMD_DDR",
+        "NewName": "PT76B_CMD2_DDR",
         "GameName": {
             "display": "#LDRSOV FüPz PT-76B",
             "token": "WTDVRSZIAP",
@@ -912,7 +912,7 @@ RDA_NEW_UNITS = {
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
-                "UNITE_PT76B2_CMD_DDR",
+                "UNITE_PT76B_CMD2_DDR",
                 "Unite",
             ],
         },

@@ -34,6 +34,14 @@ from .RDA_newdivisionrules import (
     RDA_motorized_newdivisionrules,
 )
 
+from .RFA_newdivisionrules import (
+    RFA_airborne_newdivisionrules,
+    RFA_armored_newdivisionrules,
+    RFA_global_newdivisionrules,
+    RFA_mechanized_newdivisionrules,
+    RFA_motorized_newdivisionrules,
+)
+
 __all__ = [
     "UK_airborne_newdivisionrules",
     "UK_armored_newdivisionrules",
@@ -60,4 +68,9 @@ __all__ = [
     "RDA_global_newdivisionrules",
     "RDA_mechanized_newdivisionrules",
     "RDA_motorized_newdivisionrules",
+    "RFA_airborne_newdivisionrules",
+    "RFA_armored_newdivisionrules",
+    "RFA_global_newdivisionrules",
+    "RFA_mechanized_newdivisionrules",
+    "RFA_motorized_newdivisionrules",
 ]
