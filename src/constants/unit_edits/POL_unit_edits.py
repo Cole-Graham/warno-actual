@@ -1816,7 +1816,7 @@ pol_unit_edits = {
     },
 
     "T54B_POL": {  # T-54B
-        "CommandPoints": 65,
+        "CommandPoints": 70,
         "availability": [10, 7, 0, 0],
          "SpecialtiesList": {
             "overwrite_all": [

@@ -374,6 +374,9 @@ rfa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
+                "turrets": {
+                    "remove": [1],
+                },
                 "remove": [(1, "MMG_PKM_7_62mm")],
                 "insert_edits": {
                     2: {
@@ -582,6 +585,9 @@ rfa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
+                "turrets": {
+                    "remove": [2],
+                },
                 "remove": [(2, "Sniper_G3A3ZF")],
                 "insert_edits": {
                     2: {
@@ -1515,7 +1521,7 @@ rfa_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_M72A4_LAW_66mm": 6,
+                "RocketInf_M72A3_LAW_66mm": 6,
             },
         },
     },
@@ -1566,6 +1572,9 @@ rfa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
+                "turrets": {
+                    "remove": [2],
+                },
                 "remove": [(2, "Sniper_G3A3ZF")],
                 "insert_edits": {
                     2: {

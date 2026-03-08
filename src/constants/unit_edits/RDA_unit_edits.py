@@ -1719,7 +1719,7 @@ rda_unit_edits = {
     # RDA TANK
     
     "T54B_CMD_DDR": {
-        "CommandPoints": 75,
+        "CommandPoints": 80,
         "GameName": {
             "display": "#LDRSOV FüPz T-54AMK LDR.",
         },
@@ -2086,7 +2086,7 @@ rda_unit_edits = {
     },
     
     "T54B_DDR": {
-        "CommandPoints": 65,
+        "CommandPoints": 70,
         "availability": [10, 7, 0, 0],
     },
 

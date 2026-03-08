@@ -316,7 +316,7 @@ RDA_NEW_UNITS = {
             ],
         },
         "Factory": "EFactory/Logistic",
-        "CommandPoints": 200,
+        "CommandPoints": 205,
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
             'leader_sov',
@@ -912,7 +912,7 @@ RDA_NEW_UNITS = {
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
-                "UNITE_T54B_CMDactual_POL",
+                "UNITE_PT76B2_CMD_DDR",
                 "Unite",
             ],
         },

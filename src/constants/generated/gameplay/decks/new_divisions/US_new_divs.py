@@ -112,7 +112,7 @@ us_new_divs = {
         "summary_text": ("USA airborne and motorized division.", "SUMUSAMOT"),
         "history_text": ("USA Airborne / Motorized division.", "HISUSAMOT"),
         "activation_points": 85,
-        "standout_units": ["LightRifles_RCL_US", "LAV_25_M1047_US", "FA16_CAS_US"],
+        "standout_units": ["LightRifles_RCL_US", "LAV_25_M1047_US_US", "FA16_CAS_US"],
         "division_rules": [
             US_airborne_newdivisionrules,
             US_global_newdivisionrules,

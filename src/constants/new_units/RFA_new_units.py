@@ -444,7 +444,7 @@ RFA_NEW_UNITS = {
         "Faction": "PACT",
         "Nation": "RFA",
         "UpgradeFromUnit": "MANPAD_Redeye_FJ_RFA",
-        "alternatives_count": 0,
+        "alternatives_count": 1,
         "selector_tactic": "00_06",
     },
 
@@ -507,7 +507,7 @@ RFA_NEW_UNITS = {
         "Faction": "PACT",
         "Nation": "RFA",
         "UpgradeFromUnit": "MANPAD_Redeye_RFA",
-        "alternatives_count": 0,
+        "alternatives_count": 1,
         "selector_tactic": "00_06",
     },
 }

@@ -2821,7 +2821,7 @@ sov_unit_edits = {
     },
 
     "T54B_SOV": {
-        "CommandPoints": 65,
+        "CommandPoints": 70,
         "availability": [10, 0, 0, 0],
     },
 

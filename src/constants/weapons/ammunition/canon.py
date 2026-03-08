@@ -87,7 +87,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Canon_HEAT_105mm_L7_Centurion_AVRE", "canon", None, False): {
         "Ammunition": {
             "Arme": {
-                "Index": 17,
+                "Index": 17, # HEAT
             },
         },
     },
@@ -102,6 +102,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
+            },
+        },
+    },
+
+    ("Canon_AP_100mm_D10T_early_HEAT", "canon", None, False): { # 239
+        "Ammunition": {
+            "Arme": {
+                "Index": 16,
             },
         },
     },
