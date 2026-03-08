@@ -60,7 +60,7 @@ RDA_airborne_newdivisionrules = {
         ("MTLB_Shturm_DDR", 1, [8, 6, 0, 0]),
         ("BRDM_Konkurs_DDR", 1, [8, 6, 0, 0]),
         ("BRDM_Malyu_P_DDR", 1, [10, 7, 0, 0]),
-        ("UAZ_469_Fagot_FJ_DDR", 2, [0, 10, 7, 0]),
+        ("UAZ_469_Fagot_FJ_DDR", 2, [0, 0, 10, 7]),
         ("AT_D44_85mm_DDR", 1, [9, 7, 5, 0], ["W50_LA_A_DDR"]),
     ],
     "recon": [

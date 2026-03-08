@@ -631,7 +631,7 @@ rda_unit_edits = {
                 '_sf',
                 '_choc',
                 '_para',
-                '_falseflag'
+                '_falseflag',
                 'infantry_equip_light',
             ],
         },
@@ -1446,9 +1446,6 @@ rda_unit_edits = {
     "UAZ_469_SPG9_FJ_DDR": {
         "CommandPoints": 25,
         "availability": [0, 0, 12, 9],
-        "SpecialtiesList": {
-            "add_specs": ["'_para'"],
-        },
         "DeploymentShift": 1750,
     },
     
@@ -2069,6 +2066,7 @@ rda_unit_edits = {
     "PT76B_tank_DDR": {
         "CommandPoints": 20,
         "availability": [14, 0, 0, 0],
+        "UpgradeFromUnit": "PT76B_CMD2_DDR",
     },
     
     "T34_85M_DDR": {
