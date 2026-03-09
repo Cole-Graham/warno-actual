@@ -147,7 +147,7 @@ RFA_NEW_UNITS = {
             ],
         },
         "Factory": "EFactory/Logistic",
-        "CommandPoints": 215,
+        "CommandPoints": 205,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -204,6 +204,7 @@ RFA_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "NATO",
         "Nation": "RFA",
+        "UpgradeFromUnit": "M48A2GA2_CMD2_RFA",
     },
 
     ("Leopard_1A5_CMD_RFA", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -239,6 +240,7 @@ RFA_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "NATO",
         "Nation": "RFA",
+        "UpgradeFromUnit": "Leopard_1A1_CMD2_RFA",
     },
 
     ("Leopard_2A3_CMD_RFA", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -274,6 +276,7 @@ RFA_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "NATO",
         "Nation": "RFA",
+        "UpgradeFromUnit": "Leopard_1A5_CMD2_RFA",
     },
 
     ("Leopard_2A4_CMD_RFA", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -309,6 +312,7 @@ RFA_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "NATO",
         "Nation": "RFA",
+        "UpgradeFromUnit": "Leopard_2A3_CMD2_RFA",
     },
 
     # Infantry

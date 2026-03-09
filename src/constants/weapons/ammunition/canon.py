@@ -612,7 +612,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("Canon_AP_120_mm_L44_late87", "canon", None, False): { # 
+    ("Canon_AP_120_mm_L44_late87", "canon", None, False): { # Leopard 2A1 (DM23)
         "Ammunition": {
             "Arme": {
                 "Index": 29, # KE

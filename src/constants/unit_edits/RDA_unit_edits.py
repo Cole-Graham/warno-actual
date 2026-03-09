@@ -1359,7 +1359,7 @@ rda_unit_edits = {
         },
     },
 
-     "Engineers_Naval_Flam_DDR": {
+    "Engineers_Naval_Flam_DDR": {
         "CommandPoints": 60,
         "armor": "Infantry_armor_reference",
         "availability": [8, 0, 0, 0],
@@ -1431,6 +1431,7 @@ rda_unit_edits = {
         "SpecialtiesList": {
             "add_specs": "HMGteam_AGS17_SOV",
         },
+        "UpgradeFromUnit": "HMGteam_NSV_DDR",
     },
 
     "UAZ_469_SPG9_DDR": {
@@ -2123,7 +2124,7 @@ rda_unit_edits = {
     },
     
     "T72MUV2_DDR": {
-        "CommandPoints": 150,
+        "CommandPoints": 160,
         "availability": [0, 6, 4, 0],
     },
 
@@ -2142,7 +2143,7 @@ rda_unit_edits = {
     },
     
     "T72S_DDR": {
-        "CommandPoints": 215,
+        "CommandPoints": 220,
         "Divisions": {
             "default": {
                 "cards": 2,

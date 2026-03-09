@@ -2719,7 +2719,7 @@ pol_unit_edits = {
         "GameName": {
             "display": "MiG-29A [AA2]",
         },
-        "CommandPoints": 170,
+        "CommandPoints": 165,
         "availability": [0, 3, 2, 0],
     },
     

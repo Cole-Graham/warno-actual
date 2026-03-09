@@ -391,11 +391,14 @@ rfa_unit_edits = {
                     },
                 },
                 "quantity": {
-                    "FM_G3KA4": 10,
+                    "PM_uzi": 10,
                 },
                 "replace": [
                     ("FM_G3KA4", "PM_uzi", "FM_G3KA4", "PM_uzi"),
                 ],
+            },
+            "Salves": {
+                "Grenade_Satchel_Charge": 6,
             },
         },
     },
@@ -539,6 +542,9 @@ rfa_unit_edits = {
                     "MMG_inf__MG3_7_62mm": 2,
                 },
             },
+            "Salves": {
+                "RocketInf_PzF_3": 6,
+            },
         },
         "UpgradeFromUnit": "Fallschirmjager_CMD_RFA",
     },
@@ -614,6 +620,9 @@ rfa_unit_edits = {
                 "quantity": {
                     "FM_G3KA4": 9,
                 },
+            },
+            "Salves": {
+                "RocketInf_PzF_3": 6,
             },
         },
     },
@@ -711,7 +720,7 @@ rfa_unit_edits = {
                 ],
             },
             "Salves": {
-                "RocketInf_PzF_3": 4,
+                "RocketInf_PzF_3": 6,
             },
         },
     },
@@ -1058,7 +1067,7 @@ rfa_unit_edits = {
     },
 
     "Leopard_1A4_CMD_RFA": {
-        "CommandPoints": 85,
+        "CommandPoints": 90,
         "GameName": {
             "display": "#LDR PZ.BEF. LEOPARD 1A4",
             "token": "ELPLTKBAYX",
@@ -1181,7 +1190,7 @@ rfa_unit_edits = {
         "remove_zone_capture": None,
     },
 
-        "Leopard_2A4_CMD_RFA": {
+    "Leopard_2A4_CMD_RFA": {
         "CommandPoints": 270,
         "GameName": {
             "display": "#LDR PZ.BEF. LEOPARD 2A4(C)",
@@ -1243,7 +1252,7 @@ rfa_unit_edits = {
     },
 
     "Jaguar_1_RFA": {
-        "CommandPoints": 75,
+        "CommandPoints": 80,
         "availability": [6, 4, 0, 0],
     },
 
@@ -1297,7 +1306,7 @@ rfa_unit_edits = {
     },
 
     "Leopard_1A4_RFA": {
-        "CommandPoints": 75,
+        "CommandPoints": 80,
         "availability": [10, 7, 0, 0],
         # "WeaponDescriptor": {
         #     "Salves": {
@@ -1547,6 +1556,7 @@ rfa_unit_edits = {
             },
             "Salves": {
                 "RocketInf_PzF_3T": 6,
+                "Grenade_Satchel_Charge": 6,
             },
         },
     },
@@ -1604,6 +1614,9 @@ rfa_unit_edits = {
                 "quantity": {
                     "FM_G3KA4": 10,
                 },
+            },
+            "Salves": {
+                "Grenade_Satchel_Charge": 6,
             },
         },
     },
@@ -1930,7 +1943,7 @@ rfa_unit_edits = {
     },
     
     "F4F_Phantom_II_AA2_RFA": { # 2x 2x AIM-9L(Improved)
-        "CommandPoints": 165,
+        "CommandPoints": 160,
         "availability": [0, 3, 2, 0],
         "optics": {
             "OpticalStrengths": {
@@ -1940,7 +1953,7 @@ rfa_unit_edits = {
     },
 
     "F4F_Phantom_II_AA_RFA": { # 2x 2x AIM-9L
-        "CommandPoints": 155,
+        "CommandPoints": 150,
         "availability": [0, 3, 2, 0],
         "optics": {
             "OpticalStrengths": {

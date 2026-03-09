@@ -389,6 +389,20 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
 
+    ("AA_AIM9L_Sidewinder_upgrade", "A2A", None, False): { # 7
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 70,
+                "Moving": 70,
+                "DistanceToTarget": False,
+            },
+            "parent_membr": {
+                "AimingTime": 0.3,
+                "SupplyCost": 40.0,
+            },
+        },
+    },
+
     ("AA_AIM9L_Sidewinder", "A2A", None, False): { # 6
         "Ammunition": {
             "hit_roll": {
