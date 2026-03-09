@@ -84,7 +84,7 @@ RFA_airborne_newdivisionrules = {
     ],
     "planes": [
         ("Tornado_IDS_MW1_RFA", 1, [0, 2, 0, 0]),
-        ("Tornado_IDS_RFA", 2, [0, 0, 0, 1]),
+        # ("Tornado_IDS_RFA", 2, [0, 0, 0, 1]),
     ],
 }
 
@@ -186,7 +186,7 @@ RFA_global_newdivisionrules = {
         ("F4F_Phantom_II_HE2_RFA", 1, [0, 2, 0, 0]),
         ("F4F_Phantom_II_LGB_RFA", 2, [0, 1, 0, 0]),
         ("F4F_Phantom_II_RKT1_RFA", 1, [0, 3, 2, 0]),
-        ("F4F_Phantom_II_RKT2_RFA", 1, [0, 3, 2, 0]),
+        # ("F4F_Phantom_II_RKT2_RFA", 1, [0, 3, 2, 0]),
         ("HFB_320_ECM_RFA", 1, [0, 2, 0, 0]),
         ("Tornado_IDS_AT1_RFA", 1, [0, 2, 0, 1]),
         ("Tornado_IDS_CLUS_RFA", 1, [0, 2, 0, 0]),
@@ -387,6 +387,6 @@ RFA_motorized_newdivisionrules = {
     ],
     "planes": [
         ("Tornado_IDS_MW1_RFA", 1, [0, 2, 0, 0]),
-        ("Tornado_IDS_RFA", 2, [0, 1, 0, 0]),
+        # ("Tornado_IDS_RFA", 2, [0, 1, 0, 0]),
     ],
 }

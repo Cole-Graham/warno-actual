@@ -1151,7 +1151,7 @@ rfa_unit_edits = {
     },
 
     "Leopard_2A1_CMD_RFA": {
-        "CommandPoints": 180,
+        "CommandPoints": 175,
         "GameName": {
             "display": "#LDR PZ.BEF. LEOPARD 2A1",
             "token": "LWSMADUUPS",
@@ -1283,6 +1283,7 @@ rfa_unit_edits = {
         #         "MMG_AANF1_7_62mm": 44,
         #     },
         # },
+        "UpgradeFromUnit": "Leopard_1A1_CMD_RFA",
     },
 
     "Leopard_1A1A2_RFA": {
@@ -1315,8 +1316,8 @@ rfa_unit_edits = {
         # },
     },
 
-    "Leopard_2A1_RFA": { # Could be swapped to a Recon Unit
-        "CommandPoints": 165,
+    "Leopard_2A1_RFA": { # Gun reduced to 17 AP (DM23)
+        "CommandPoints": 155,
         "availability": [6, 4, 0, 0],
         # "WeaponDescriptor": {
         #     "Salves": {
@@ -1337,7 +1338,7 @@ rfa_unit_edits = {
 
     "Leopard_2A3_RFA": {
         "CommandPoints": 185,
-        "availability": [0, 4, 3, 0],
+        "availability": [0, 6, 4, 0],
         # "WeaponDescriptor": {
         #     "Salves": {
         #         "MMG_AANF1_7_62mm": 44,
@@ -1347,12 +1348,13 @@ rfa_unit_edits = {
 
     "Leopard_2A4_RFA": {
         "CommandPoints": 235,
-        "availability": [0, 4, 3, 0],
+        "availability": [0, 0, 4, 3],
         # "WeaponDescriptor": {
         #     "Salves": {
         #         "MMG_AANF1_7_62mm": 44,
         #     },
         # },
+        "UpgradeFromUnit": "Leopard_2A4_CMD_RFA",
     },
     
     # trsp
@@ -1524,6 +1526,7 @@ rfa_unit_edits = {
                 "RocketInf_M72A3_LAW_66mm": 6,
             },
         },
+        "UpgradeFromUnit": "Sniper_Fern_RFA",
     },
     
     "Fallschirm_B1_RFA": { # Fallschirmjäger B1 (Satchel, Panzerfaust 3T)
@@ -2043,6 +2046,7 @@ rfa_unit_edits = {
     "G91_R3_Gina_NPL_RFA": {
         "CommandPoints": 65,
         "availability": [0, 6, 0, 0],
+        "UpgradeFromUnit": "G91_R3_Gina_RKT_RFA",
     },
     
     "G91_R3_Gina_RKT_RFA": {

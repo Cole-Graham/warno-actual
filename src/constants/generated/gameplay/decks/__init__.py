@@ -33,7 +33,7 @@ def load_deck_edits() -> Dict:
         'FR_decks': 'fr_decks',
         'POL_decks': 'pol_decks',
         'RDA_decks': 'rda_decks',
-        # 'RFA_decks': 'rfa_decks',
+        'RFA_decks': 'rfa_decks',
         'SOV_decks': 'sov_decks',
         'US_decks': 'us_decks',
     }
@@ -97,7 +97,7 @@ def load_new_divisions() -> Dict:
     dict_names = {
         'POL_new_divs': 'pol_new_divs',
         'RDA_new_divs': 'rda_new_divs',
-        # 'RFA_new_divs': 'rfa_new_divs',
+        'RFA_new_divs': 'rfa_new_divs',
         'SOV_new_divs': 'sov_new_divs',
         'US_new_divs': 'us_new_divs',
         'UK_new_divs': 'uk_new_divs',

@@ -296,7 +296,7 @@ RFA_NEW_UNITS = {
             ],
         },
         "Factory": "EFactory/Logistic",
-        "CommandPoints": 315,
+        "CommandPoints": 360,
         "availability": [0, 0, 2, 0],
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
@@ -343,23 +343,23 @@ RFA_NEW_UNITS = {
                 "quantity": {
                     "FM_G3KA4": 8,
                     "MMG_inf__MG3_7_62mm": 1,
-                    "RocketInf_Carl_Gustav": 1,
+                    "RocketInf_PzF_44": 1,
                 },
             },
             "Salves": {
                 "FM_G3KA4": 11,
                 "MMG_inf__MG3_7_62mm": 18,
-                "RocketInf_Carl_Gustav": 4,
+                "RocketInf_PzF_44": 6,
             },
             "equipmentchanges": {
                 "replace": [
-                    ("RocketInf_Carl_Gustav", "RocketInf_PzF_3", "RocketInf_Carl_Gustav", "RocketInf_PzF_3"),
+                    ("RocketInf_PzF_44", "RocketInf_PzF_3", "RocketInf_PzF_44", "RocketInf_PzF_3"),
                 ],
             },
         },
         "TransportedSoldier": "Jager_PzF3_RFA",
         "armor": "Infantry_armor_reference",
-        "CommandPoints": 30,
+        "CommandPoints": 35 ,
         "UnitRole": 'infantry',
         "SpecialtiesList": [
                 'infantry_equip_heavy',
