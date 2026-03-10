@@ -164,6 +164,7 @@ supply_unit_edits = {
         },
         "SupplyDescriptor": "SquadSupply",
         "availability": [5, 0, 0, 0],
+        "UpgradeFromUnit": "LUAZ_967M_supply_SOV",
     },
     
     "GAZ_66_POL": {
@@ -273,6 +274,7 @@ supply_unit_edits = {
         },
         "SupplyDescriptor": "PrimarySupply",
         "availability": [2, 0, 0, 0],
+        "UpgradeFromUnit": "MTLB_supply_SOV",
     },
     
     "Star_266_supply_POL": {
@@ -346,8 +348,9 @@ supply_unit_edits = {
                 "cards": 2,
             },
         },
-        "SupplyDescriptor": "DvisionalSupply",
+        "SupplyDescriptor": "PrimarySupply",
         "availability": [2, 0, 0, 0],
+        "UpgradeFromUnit": "Ural_4320_SOV",
     },
     
     "T813_DDR": {
@@ -372,6 +375,7 @@ supply_unit_edits = {
         },
         "SupplyDescriptor": "DvisionalSupply",
         "availability": [2, 0, 0, 0],
+        "UpgradeFromUnit": "MAZ_535A_supply_SOV",
     },
     
     "KrAZ_255B_supply_POL": {
@@ -476,6 +480,7 @@ supply_unit_edits = {
         },
         "SupplyDescriptor": "SquadSupply",
         "availability": [6, 0, 0, 0],
+        "UpgradeFromUnit": "M1038_Humvee_supply_US",
     },
     
     "FV432_supply_UK": {
@@ -515,6 +520,7 @@ supply_unit_edits = {
         },
         "SupplyDescriptor": "SquadSupply",
         "availability": [6, 0, 0, 0],
+        "UpgradeFromUnit": "GAZ_66_supply_SOV",
     },
     
     "M992A2_supply_US": {
@@ -717,6 +723,7 @@ supply_unit_edits = {
         },
         "SupplyDescriptor": "DvisionalHeloSupply",
         "availability": [2, 0, 0, 0],
+        "UpgradeFromUnit": "CH47_Super_Chinook_US",
     },
     
     "Mi_6_POL": {
@@ -744,6 +751,7 @@ supply_unit_edits = {
         },
         "SupplyDescriptor": "DvisionalHeloSupply",
         "availability": [2, 0, 0, 0],
+        "UpgradeFromUnit": "Mi_8TZ_SOV"
     },
     
     "Mi_26_SOV": {

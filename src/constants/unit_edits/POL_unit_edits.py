@@ -1895,7 +1895,7 @@ pol_unit_edits = {
         "availability": [14, 11, 0, 0],
     },
 
-     "PT76B_tank_Naval_POL": {  # NIEB.BERETY PT-76B
+    "PT76B_tank_Naval_POL": {  # NIEB.BERETY PT-76B
         "CommandPoints": 25,
         "availability": [0, 14, 11, 0],
     },
@@ -2136,7 +2136,7 @@ pol_unit_edits = {
         },
     },
 
-     "Sniper_paras_POL": {  # Desant. Snajper
+    "Sniper_paras_POL": {  # Desant. Snajper
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "strength": 3,
@@ -2185,6 +2185,7 @@ pol_unit_edits = {
             "display": "#RECO2 ROZP. SPECJALNE [GSR]",
         },
         "availability": [0, 0, 4, 3],
+        "UpgradeFromUnit": "Scout_SF_POL",
     },
     
     "Scout_LRRP_Para_POL": {  # Desant. Rozp. Specjalne [GSR]
@@ -2230,6 +2231,7 @@ pol_unit_edits = {
     "BRDM_1_DShK_POL": {
         "CommandPoints": 30,
         "availability": [12, 9, 0, 0],
+        "UpgradeFromUnit": "BRDM_2_POL",
     },
     
     "BRDM_1_PSNR1_POL": {  # BRDM-1 PSNR-1
@@ -2683,6 +2685,7 @@ pol_unit_edits = {
     "MiG_21bis_AT_POL": {  # 2x Kh-66, 2x R-13M
         "CommandPoints": 115,
         "availability": [0, 3, 0, 0],
+        "UpgradeFromUnit": "MiG_21bis_HE_POL",
     },
     
     "MiG_23MF_AA_POL": {  # MiG-23MF [AA], 2x R-23R, 4x R-60M

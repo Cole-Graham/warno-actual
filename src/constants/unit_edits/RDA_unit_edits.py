@@ -1448,6 +1448,7 @@ rda_unit_edits = {
         "CommandPoints": 25,
         "availability": [0, 0, 12, 9],
         "DeploymentShift": 1750,
+        "ButtonTexture": "UAZ_469_SPG9_Para_POL",
     },
     
     "ATteam_RCL_SPG9_DDR": {
@@ -1949,6 +1950,7 @@ rda_unit_edits = {
     "AT_T12_Rapira_DDR": { 
         "CommandPoints": "AT_T12_Rapira_SOV",
         "availability": "AT_T12_Rapira_SOV",
+        "UpgradeFromUnit": "AT_D44_85mm_DDR",
     },
 
     "MTLB_trans_DDR": {
@@ -2042,6 +2044,7 @@ rda_unit_edits = {
         "strength": "BRDM_2_Malyu_P_POL",
         "stealth": "BRDM_2_Malyu_P_POL",
         "availability": "BRDM_2_Malyu_P_POL",
+        "UpgradeFromUnit": "UAZ_469_Fagot_FJ_DDR",
     },
 
     "BRDM_Konkurs_DDR": {
@@ -2908,6 +2911,7 @@ rda_unit_edits = {
     "L39ZO_CLU_DDR": {
         "CommandPoints": 90,
         "availability": [0, 4, 0, 0],
+        "UpgradeFromUnit": "L39ZO_HE1_DDR",
     },
 
     "L39ZO_DDR": {

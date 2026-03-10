@@ -269,6 +269,7 @@ UK_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "NATO",
         "Nation": "UK",
+        "UpgradeFromUnit": "FV4201_Chieftain_CMD2_UK",
     },
     
     ("FV4201_Chieftain_CMD_UK", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -324,6 +325,7 @@ UK_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "NATO",
         "Nation": "UK",
+        "UpgradeFromUnit": "FV4201_Chieftain_Mk9_CMD2_UK",
     },
     
     ("FV4201_Chieftain_Mk9_UK", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -379,57 +381,7 @@ UK_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "NATO",
         "Nation": "UK",
-    },
-    
-    ("FV4201_Chieftain_Mk9_UK", 1): {  # donor unit - increment integer as needed to avoid duplicate keys
-        "GUID": "87f347d1-7532-4ac8-8856-cbf95fa29392",
-        "InfantrySquadModuleGUID": "c6bae323-a820-4eb3-b45f-c617e3162a3d",
-        "ShowroomGUID": "f26a6c58-4680-4fb2-9540-179ac933400a",
-        "CadavreGUID": "30a1f922-b453-4fbe-ac83-63be38aba866",
-        "NewName": "FV4201_Chieftain_Mk9_CMD_UK",
-        "GameName": {
-            "display": "#LDR CHIEFTAIN Mk.9 LDR.",
-            "token": "SHOVALSAYD",
-        },
-        "TagSet": {
-            "overwrite_all": [
-                "AllUnits",
-                "AllowedForMissileRoE",
-                "Char",
-                "GroundUnits",
-                "UNITE_FV4201_Chieftain_Mk9_CMD_UK",
-                "Unite",
-            ],
-        },
-        "CommandPoints": 130,
-        "SpecialtiesList": [
-            '_leader',
-            '_smoke_launcher',
-        ],
-        "Divisions": {
-            "default": {
-                "cards": 1,
-            },
-        },
-        "availability": [0, 0, 4, 0],
-        "UpgradeFromUnit": None,
-        "WeaponDescriptor": {
-            "Salves": {
-                "MMG_L37A2_7_62mm": 96,
-                "MMG_L8A2_7_62mm": 96,
-            },
-        },
-        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack', 
-                   'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 
-                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply', 
-                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
-        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
-        "is_heavy_equipment": False,
-        "is_ground_vehicle": True,
-        "is_aerial": False,
-        "is_unarmed": False,
-        "Faction": "NATO",
-        "Nation": "UK",
+        "UpgradeFromUnit": "Centurion_Mk13_CMD2_UK",
     },
     
     ("Centurion_Mk13_CMD_UK", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -480,6 +432,57 @@ UK_NEW_UNITS = {
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack', 
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 
                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply', 'EOrderType/UseCapacite',
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "NATO",
+        "Nation": "UK",
+    },
+
+    ("FV4201_Chieftain_Mk9_UK", 1): {  # donor unit - increment integer as needed to avoid duplicate keys (This unit is a leader, not a CV)
+        "GUID": "87f347d1-7532-4ac8-8856-cbf95fa29392",
+        "InfantrySquadModuleGUID": "c6bae323-a820-4eb3-b45f-c617e3162a3d",
+        "ShowroomGUID": "f26a6c58-4680-4fb2-9540-179ac933400a",
+        "CadavreGUID": "30a1f922-b453-4fbe-ac83-63be38aba866",
+        "NewName": "FV4201_Chieftain_Mk9_CMD_UK",
+        "GameName": {
+            "display": "#LDR CHIEFTAIN Mk.9 LDR.",
+            "token": "SHOVALSAYD",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "GroundUnits",
+                "UNITE_FV4201_Chieftain_Mk9_CMD_UK",
+                "Unite",
+            ],
+        },
+        "CommandPoints": 130,
+        "SpecialtiesList": [
+            '_leader',
+            '_smoke_launcher',
+        ],
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 0, 4, 0],
+        "UpgradeFromUnit": None,
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_L37A2_7_62mm": 96,
+                "MMG_L8A2_7_62mm": 96,
+            },
+        },
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack', 
+                   'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 
+                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply', 
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": False, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,

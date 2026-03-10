@@ -363,45 +363,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
-
-    ("Canon_AP_125_mm_2A46M_late_T80UD", "canon", None, False): { # 139
-        "Ammunition": {
-            "hit_roll": {
-                "Idling": 60,
-                "Moving": 50,
-            },
-            "parent_membr": {
-                "TimeBetweenTwoShots": 6.6,
-                "TimeBetweenTwoSalvos": 6.6,
-            },
-        },
-    },
-
-    ("Canon_AP_125_mm_2A46M_late", "canon", None, False): { # 138
-        "Ammunition": {
-            "hit_roll": {
-                "Idling": 60,
-                "Moving": 50,
-            },
-            "parent_membr": {
-                "TimeBetweenTwoShots": 6.6,
-                "TimeBetweenTwoSalvos": 6.6,
-            },
-        },
-    },
-
-    ("Canon_AP_125_mm_2A46M_T80B", "canon", None, False): { # 137
-        "Ammunition": {
-            "hit_roll": {
-                "Idling": 55,
-                "Moving": 45,
-            },
-            "parent_membr": {
-                "TimeBetweenTwoShots": 6.6,
-                "TimeBetweenTwoSalvos": 6.6,
-            },
-        },
-    },
     
     ("Canon_AP_125_mm_2A46M", "canon", None, False): { # T-72S
         "Ammunition": {
@@ -426,7 +387,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     #     },
     # },
 
-    ("Canon_AP_125_mm_2A46_T72M", "canon", None, False): { # 134
+    ("Canon_AP_125_mm_2A46_T72M", "canon", None, False): { # T72M
         "Ammunition": {
             # "Arme": {
             #     "Index": 29,
@@ -441,7 +402,46 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("Canon_AP_125_mm_2A46_T64B_very_late", "canon", None, False): { # 133
+    ("Canon_AP_125_mm_2A46M_late_T80UD", "canon", None, False): { # T-80UD
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 60,
+                "Moving": 50,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 6.6,
+                "TimeBetweenTwoSalvos": 6.6,
+            },
+        },
+    },
+
+    ("Canon_AP_125_mm_2A46M_late", "canon", None, False): { # T-80U/89
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 60,
+                "Moving": 50,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 6.6,
+                "TimeBetweenTwoSalvos": 6.6,
+            },
+        },
+    },
+
+    ("Canon_AP_125_mm_2A46M_T80B", "canon", None, False): { # T-80B/BV/IZD. 29
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 55,
+                "Moving": 45,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 6.6,
+                "TimeBetweenTwoSalvos": 6.6,
+            },
+        },
+    },
+
+    ("Canon_AP_125_mm_2A46_T64B_very_late", "canon", None, False): { # T-64B/BV/B1/B1V
         "Ammunition": {
             "hit_roll": {
                 "Idling": 55,
@@ -761,7 +761,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("Canon_AP_90mm_M48", "canon", None, False): { # M48A2CGA1 M41 (M332)
+    ("Canon_AP_90mm_M48", "canon", None, False): { # M48A2CGA1 M41 (M332) APCR
         "Ammunition": {
             "display": "M41 (M332)",
             "token": "QVTVRPBMCP",
@@ -776,7 +776,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("Canon_AP_90mm_KanJPz", "canon", None, False): { # Kanon Jagdpanzer (M332)
+    ("Canon_AP_90mm_KanJPz", "canon", None, False): { # Kanon Jagdpanzer (M332) APCR
         "Ammunition": {
             "display": "BK90/L40 (M332)",
             "token": "LRLCUBCDLE",

@@ -731,6 +731,11 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "RocketInf_LAW_80": 6,
+            },
+        },
     },
 
     "AT_Group_TA_UK": {
@@ -2061,6 +2066,7 @@ uk_unit_edits = {
                 "insert": [(2, 2)],
             },
         },
+        "UpgradeFromUnit": "Sniper_UK",
     },
 
     "Gazelle_UK": {

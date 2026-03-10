@@ -21,6 +21,7 @@ sov_unit_edits = {
             "add_specs": ["'leader_sov'",],
             "remove_specs": ["'_leader'"],
         },
+        "UpgradeFromUnit": "MTLB_CMD2_SOV",
     },
     
     "BMD_1_CMD_SOV": {
@@ -93,6 +94,7 @@ sov_unit_edits = {
         },
         "ButtonTexture": "LUAZ_967M_SOV",
         "DeploymentShift": 0,
+        "UpgradeFromUnit": "UAZ_469_CMD_SOV",
     },
     
     "UAZ_469_CMD_VDV_SOV": { # Desant. Belozor
@@ -2025,21 +2027,6 @@ sov_unit_edits = {
         },
     },
 
-    "Howz_D30_122mm_SOV": {
-        "CommandPoints": 85,
-        "Divisions": {
-            "default": {
-                "cards": 2,
-            },
-        },
-        "availability": [5, 4, 3, 0],
-    },
-    
-    "Howz_D30_122mm_VDV_SOV": {
-        "CommandPoints": 85,
-        "availability": [0, 5, 4, 3],
-    },
-    
     "Mortier_Nona_K_120mm_SOV": {
         "CommandPoints": 75,
         "availability": [0, 3, 2, 0],
@@ -2071,10 +2058,47 @@ sov_unit_edits = {
             },
         },
     },
+
+    "Mortier_240mm_M240_Cluster_SOV": {
+        "CommandPoints": 200,
+        "availability": [3, 2, 0, 0],
+    },
     
+    "Mortier_240mm_M240_SOV": {
+        "CommandPoints": 200,
+        "availability": [3, 2, 0, 0],
+    },
+    
+    "2S4_Tyulpan_SOV": {
+        "CommandPoints": 170,
+        "availability": [3, 2, 0, 0],
+    },
+
     "Howz_BS3_100mm_SOV": {
         "CommandPoints": 55,
         "availability": [6, 0, 0, 0],
+    },
+
+    "Howz_D30_122mm_SOV": {
+        "CommandPoints": 85,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "availability": [5, 4, 3, 0],
+        "UpgradeFromUnit": "Howz_BS3_100mm_SOV",
+    },
+    
+    "Howz_D30_122mm_VDV_SOV": {
+        "CommandPoints": 85,
+        "availability": [0, 5, 4, 3],
+    },
+    
+    "Howz_D20_152mm_SOV": {
+        "CommandPoints": 95,
+        "availability": [3, 2, 0, 0],
+        "UpgradeFromUnit": "Howz_D30_122mm_VDV_SOV",
     },
 
     "Howz_2A36_Giatsint_B_SOV": {
@@ -2088,7 +2112,7 @@ sov_unit_edits = {
             },
         },
         "availability": [3, 2, 0, 0],
-        "UpgradeFromUnit": None,
+        "UpgradeFromUnit": "Howz_D20_152mm_SOV",
     },
 
     "Howz_MstaB_150mm_SOV": {
@@ -2145,21 +2169,6 @@ sov_unit_edits = {
             },
         },
         "availability": [2, 0, 1, 0],
-    },
-    
-    "Mortier_240mm_M240_Cluster_SOV": {
-        "CommandPoints": 200,
-        "availability": [3, 2, 0, 0],
-    },
-    
-    "Mortier_240mm_M240_SOV": {
-        "CommandPoints": 200,
-        "availability": [3, 2, 0, 0],
-    },
-    
-    "2S4_Tyulpan_SOV": {
-        "CommandPoints": 170,
-        "availability": [3, 2, 0, 0],
     },
     
     "Howz_B4M_203mm_SOV": {
@@ -2959,6 +2968,7 @@ sov_unit_edits = {
     "AT_T12R_Ruta_SOV": {
         "CommandPoints": 65,
         "availability": [6, 4, 0, 0],
+        "UpgradeFromUnit": "AT_T12_Rapira_SOV",
     },
     
     "AT_2A45_SprutB_SOV": {
@@ -3253,6 +3263,7 @@ sov_unit_edits = {
                 "cards": 3,
             },
         },
+        "UpgradeFromUnit": "BMD_1_Reostat_SOV",
     },
 
     "BMD_1_Reostat_SOV": {
@@ -3494,6 +3505,7 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
+        "UpgradeFromUnit": "KGB_BorderGuard_LRRP_SOV",
     },
 
     "Scout_Spetsnaz_SOV": { # Spetzrazvedka (GSR)
@@ -3629,13 +3641,14 @@ sov_unit_edits = {
         "availability": [0, 4, 0, 0],
     },
 
-    "Pchela_1T_SOV": { # Recon Drone (slow)
+    "Pchela_1T_SOV": { # Recon Drone (Slow)
         "CommandPoints": 45,
     },
     
-    "Pero_UAV_SOV": {
+    "Pero_UAV_SOV": { # Recon Drone (Medium)
         "CommandPoints": 50,
         "availability": [0, 4, 0, 0],
+        "UpgradeFromUnit": "Pchela_1T_SOV",
     },
 
     # SOV AA

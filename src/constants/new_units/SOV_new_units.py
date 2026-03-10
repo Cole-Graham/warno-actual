@@ -299,6 +299,7 @@ SOV_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "PACT",
         "Nation": "SOV",
+        "UpgradeFromUnit": "T55A_CMD2_SOV",
     },
 
     ("T64B_CMD_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -339,6 +340,7 @@ SOV_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "PACT",
         "Nation": "SOV",
+        "UpgradeFromUnit": "T62M_CMD2_SOV",
     },
 
     ("T72M1_CMD_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -379,6 +381,7 @@ SOV_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "PACT",
         "Nation": "SOV",
+        "UpgradeFromUnit": "T64B_CMD2_SOV",
     },
 
     ("T72B_CMD_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -483,6 +486,7 @@ SOV_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "PACT",
         "Nation": "SOV",
+        "UpgradeFromUnit": "T72B_CMD2_SOV",
     },
     # MT-LBu
     ("MTLB_CMD_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys

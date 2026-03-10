@@ -164,6 +164,7 @@ USA_NEW_UNITS = {
         "is_unarmed": True,
         "Faction": "NATO",
         "Nation": "US",
+        "UpgradeFromUnit": "Gama_Goat_supply_US",
     },
 
     ("Scout_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -681,6 +682,7 @@ USA_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "NATO",
         "Nation": "US",
+        "UpgradeFromUnit": "M60A3_CMD2_US",
     },
 
     ("M60A3_CMD_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -727,6 +729,7 @@ USA_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "NATO",
         "Nation": "US",
+        "UpgradeFromUnit": "M60A1_RISE_Passive_CMD2_US",
     },
 
     ("M60A1_RISE_Passive_CMD_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys

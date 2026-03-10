@@ -231,6 +231,7 @@ POL_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "PACT",
         "Nation": "POL",
+        "UpgradeFromUnit": "T54B_CMD2_POL",
     },
 
     ("T55AM_Merida_CMD_POL", 0): {  # T-55AM Merida CV
@@ -279,6 +280,7 @@ POL_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "PACT",
         "Nation": "POL",
+        "UpgradeFromUnit": "T55A_CMD2_POL",
     },
 
     ("T72M_CMD_POL", 0): {  # T-72MD CV
@@ -326,7 +328,7 @@ POL_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "PACT",
         "Nation": "POL",
-        "UpgradeFromUnit": "T55A_CMD2_POL",
+        "UpgradeFromUnit": "T55AM_Merida_CMD2_POL",
     },
 
     ("T72M1_CMD_POL", 0): {  # T-72M1D CV
@@ -940,10 +942,12 @@ POL_NEW_UNITS = {
         "SpecialtiesList": [
                 '_para',
             ],
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "UpgradeFromUnit": None,
         "availability": [0, 9, 7, 5],
         "DeploymentShift": 1750,
+        "ButtonTexture": "AT_D44_85mm_VDV_SOV",
+        "UpgradeFromUnit": "AT_D48_85mm_POL",
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/Attack', 'EOrderType/MoveAndAttack', 
                    'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/ShootOnPosition',
                    'EOrderType/ShootOnPositionWithoutCorrection','EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
@@ -1049,6 +1053,7 @@ POL_NEW_UNITS = {
             '_para',
             'infantry_equip_light',
         ],
+        "CommandPoints": 45,
         "DeploymentShift": 1750,
         "strength": 8,
         "TransportedSoldier": "Engineers_Scout_Para_POL",
@@ -1075,6 +1080,7 @@ POL_NEW_UNITS = {
         "alternatives_count": 4,
         "selector_tactic": "02_04",
         "unique_count": 2,
+        "UpgradeFromUnit": "Scout_para_POL",
     },
 
     # ("MiG_23MF_AA_POL", 0): {  # MiG-23MF [AA3]

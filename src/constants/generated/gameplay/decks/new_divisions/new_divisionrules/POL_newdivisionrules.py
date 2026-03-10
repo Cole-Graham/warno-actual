@@ -39,7 +39,7 @@ POL_airborne_newdivisionrules = {
     ],
     "artillery": [
         ("BM14M_POL", 1, [3, 2, 0, 0]),
-        ("MLRS_WP_8z_POL", 1, [0, 5, 0, 0], ["GAZ_66B_supply_POL"]),
+        ("MLRS_WP_8z_POL", 1, [0, 5, 0, 0], ["GAZ_66B_POL"]),
         # ("Howz_D1_152mm_POL", 1, [0, 3, 2, 0], ["GAZ_66B_POL", "MTLB_trans_POL"]),
         ("Howz_ML20_152mm_POL", 1, [3, 2, 0, 0], ["GAZ_66B_POL", "MTLB_trans_POL"]),
         ("Howz_M46_130mm_POL", 1, [4, 3, 2, 0], ["GAZ_66B_POL", "MTLB_trans_POL"]),

@@ -35,7 +35,7 @@ RDA_airborne_newdivisionrules = {
         ("MP_DDR", 2, [0, 12, 9, 0], ["UAZ_469_trans_DDR", "GAZ_46_DDR"]),
         ("ATteam_Fagot_FJ_DDR", 2, [0, 0, 9, 7], ["UAZ_469_trans_DDR"]),
         ("ATteam_FagotM_FJ_DDR", 2, [0, 0, 7, 5], ["UAZ_469_trans_DDR"]),
-        ("ATteam_Konkurs_FJ_DDR", 2, [0, 0, 6, 4], ["UAZ_469_trans_DDR", "GAZ_46_DDR", "Mi_2_trans_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"]),
+        ("ATteam_Konkurs_FJ_DDR", 2, [0, 0, 6, 4], ["UAZ_469_trans_DDR"]),
         ("ATteam_RCL_SPG9_FJ_DDR", 1, [0, 0, 10, 7], ["UAZ_469_trans_DDR"]),
         ("UAZ_469_SPG9_FJ_DDR", 1, [0, 0, 12, 9]),
         ("HMGteam_PKM_FJ_DDR", 1, [0, 0, 12, 9], ["UAZ_469_trans_DDR"]),

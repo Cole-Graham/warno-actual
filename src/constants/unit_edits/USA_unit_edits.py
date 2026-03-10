@@ -3048,6 +3048,7 @@ usa_unit_edits = {
     "M1025_Humvee_GVLLD_US": {
         "CommandPoints": 30,
         "availability": [8, 0, 0, 0],
+        "UpgradeFromUnit": "M981_FISTV_US",
     },
     
     "M548A2_Jammer_US": {
@@ -3408,6 +3409,7 @@ usa_unit_edits = {
                 "insert": [(1, 45)],
             },
         },
+        "UpgradeFromUnit": "HvyScout_NG_Dragon_US",
     },
     
     "Pathfinder_NG_US": {
@@ -3499,6 +3501,7 @@ usa_unit_edits = {
                 "MMG_M60E1_7_62mm": 2,
             },
         },
+        "UpgradeFromUnit": "Airborne_Scout_US",
     },
     
     "Scout_Aero_US": {

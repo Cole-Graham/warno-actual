@@ -405,6 +405,7 @@ RDA_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "PACT",
         "Nation": "DDR",
+        "UpgradeFromUnit": "T54B_CMD2_DDR",
     },
 
     ("T55AM2_CMD_DDR", 0): {  # T-55AM Merida CV
@@ -445,6 +446,7 @@ RDA_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "PACT",
         "Nation": "DDR",
+        "UpgradeFromUnit": "T55A_CMD2_DDR",
     },
 
     ("T72M_CMD_DDR", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -510,7 +512,7 @@ RDA_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "PACT",
         "Nation": "DDR",
-        "UpgradeFromUnit": "T55A_CMD2_DDR",
+        "UpgradeFromUnit": "T55AM2_CMD2_DDR",
     },
 
     ("T72M1_CMD_DDR", 0): {  # T-72M1K CV - stats copied from T-72M1D POL
@@ -1026,8 +1028,13 @@ RDA_NEW_UNITS = {
             '_resolute',
             '_para',
         ],
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_9K111M_Faktoriya": 6,
+            },
+        },
         "DeploymentShift": 1750,
-        "ButtonTexture": "UAZ_469_Fagot_DDR",
+        "ButtonTexture": "UAZ_469_Fagot_Para_POL",
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/UseCapacite',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
@@ -1038,6 +1045,7 @@ RDA_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "PACT",
         "Nation": "DDR",
+        "UpgradeFromUnit": "UAZ_469_Fagot_DDR",
     },
 }
 # fmt: on

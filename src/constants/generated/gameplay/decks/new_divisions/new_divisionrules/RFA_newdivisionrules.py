@@ -59,11 +59,11 @@ RFA_airborne_newdivisionrules = {
     ],
     "recon": [
         ("Fallschirm_B1_RFA", 2, [0, 0, 4, 3], ["Unimog_trans_RFA", "UH1D_RFA"]),
-        ("Fernspaher_RFA", 1, [0, 0, 4, 3], ["Iltis_trans_RFA", "Iltis_reco_RFA"]),
+        # ("Fernspaher_RFA", 1, [0, 0, 4, 3], ["Iltis_trans_RFA", "Iltis_reco_RFA"]),
         ("Fallschirmjager_Scout_RFA", 2, [0, 7, 5, 0], ["Iltis_trans_RFA", "Iltis_reco_RFA"]),
         ("Gebirgsjager_JagdKdo_RFA", 2, [0, 4, 3, 0], ["DaimlerBenz_Typ1017_trans_RFA", "UH1D_RFA"]),
         ("Gebirgsjager_Scout_RFA", 2, [0, 7, 5, 0], ["DaimlerBenz_Typ1017_trans_RFA", "UH1D_RFA"]),
-        ("Sniper_Fern_RFA", 1, [0, 0, 4, 3], ["Iltis_trans_RFA", "Iltis_reco_RFA"]),
+        # ("Sniper_Fern_RFA", 1, [0, 0, 4, 3], ["Iltis_trans_RFA", "Iltis_reco_RFA"]),
         ("Sniper_Geb_RFA", 1, [0, 4, 3, 0], ["Faun_kraka_RFA", "Faun_Kraka_MG3_RFA"]),
         ("Luchs_A1_RFA", 1, [0, 6, 4, 0]),
         ("Bo_105_reco_RFA", 2, [0, 6, 0, 0]),
