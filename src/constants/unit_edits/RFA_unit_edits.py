@@ -1285,7 +1285,7 @@ rfa_unit_edits = {
     },
     
     "Leopard_1A1_RFA": {
-        "CommandPoints": 70,
+        "CommandPoints": 75,
         "availability": [10, 7, 0, 0],
         # "WeaponDescriptor": {
         #     "Salves": {
@@ -1296,7 +1296,7 @@ rfa_unit_edits = {
     },
 
     "Leopard_1A1A2_RFA": {
-        "CommandPoints": 70,
+        "CommandPoints": 75,
         "availability": [10, 7, 0, 0],
         # "WeaponDescriptor": {
         #     "Salves": {

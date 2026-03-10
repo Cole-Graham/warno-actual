@@ -92,14 +92,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("Canon_HEAT_105mm_L7_Centurion_AVRE", "canon", None, False): {
-        "Ammunition": {
-            "Arme": {
-                "Index": 17, # HEAT
-            },
-        },
-    },
-
     ("Canon_AP_115mm_2A21", "canon", None, False): {
         "Ammunition": {
             "Arme": {
@@ -108,20 +100,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "TimeBetweenTwoShots": 6.6,
                 "TimeBetweenTwoSalvos": 6.6,
-            },
-        },
-    },
-
-    ("Canon_HEAT_152mm_Sheridan", "canon", None, False): { # 239
-        "Ammunition": {
-            "Arme": {
-                "Index": 17,
-            },
-            "hit_roll": {
-                "Idling": 40,
-            },
-            "parent_membr": {
-                "MaximumRangeGRU": 1575,
             },
         },
     },
@@ -191,32 +169,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("Canon_HE_76mm_L5A1", "canon", None, False): {
-        "Ammunition": {
-            "hit_roll": {
-                "Idling": 40,
-                "Moving": 0,
-            },
-            "parent_membr": {
-                "TraitsToken": ['STAT', 'HE'],
-                "CanShootWhileMoving": False,
-            },
-        },
-    },
-    
-    ("Canon_HE_76mm_L23A1", "canon", None, False): {
-        "Ammunition": {
-            "hit_roll": {
-                "Idling": 40,
-                "Moving": 0,
-            },
-            "parent_membr": {
-                "TraitsToken": ['STAT', 'HE'],
-                "CanShootWhileMoving": False,
-            },
-        },
-    },
-    
     ("Canon_HE_85mm_S53", "canon", None, False): { # T-34 3BK-2
         "Ammunition": {
             "hit_roll": {
@@ -228,62 +180,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeGRU": 1750,
                 "RadiusSplashPhysicalDamagesGRU": 38,
                 "RadiusSplashSuppressDamagesGRU": 55,
-            },
-        },
-    },
-    
-    ("Canon_HE_90mm_M48", "canon", None, False): {
-        "Ammunition": {
-            "parent_membr": {
-                "PhysicalDamages": 1.0,
-            },
-        },
-    },
-    
-    ("Canon_HE_90mm_M48_KanJPz", "canon", None, False): {
-        "Ammunition": {
-            "parent_membr": {
-                "PhysicalDamages": 1.0,
-            },
-        },
-    },
-
-    ("Canon_HE_165mm_AVRE", "canon", None, False): { # 217
-        "Ammunition": {
-            "parent_membr": {
-                "MaximumRangeGRU": 1400,
-                "PhysicalDamages": 4.0,
-            },
-        },
-    },
-    
-    ("Canon_HE_165mm_AVRE_L9A1", "canon", None, False): {
-        "Ammunition": {
-            "parent_membr": {
-                "MaximumRangeGRU": 1400,
-                "PhysicalDamages": 4.0,
-            },
-        },
-    },
-
-    ("Canon_HE_152mm_Sheridan", "canon", None, False): { # 216
-        "Ammunition": {
-            "hit_roll": {
-                "Idling": 40,
-            },
-            "parent_membr": {
-                "MaximumRangeGRU": 1575,
-                "PhysicalDamages": 1.75,
-            },
-        },
-    },
-    
-    ("Canon_HE_142mm_AVRE", "canon", None, False): {
-        "Ammunition": {
-            "parent_membr": {
-                "MaximumRangeGRU": 875,
-                "PhysicalDamages": 3,
-                "AimingTime": 2.0,
             },
         },
     },
@@ -453,38 +349,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("Canon_AP_76mm_L5A1", "canon", None, False): {
-        "Ammunition": {
-            "Arme": {
-                "Index": 13,
-            },
-            "hit_roll": {
-                "Idling": 40,
-                "Moving": 0,
-            },
-            "parent_membr": {
-                "TraitsToken": ['STAT', 'HE', 'HEAT'],
-                "CanShootWhileMoving": False,
-            },
-        },
-    },
-    
-    ("Canon_AP_76mm_L23A1", "canon", None, False): {
-        "Ammunition": {
-            "Arme": {
-                "Index": 13,
-            },
-            "hit_roll": {
-                "Idling": 40,
-                "Moving": 0,
-            },
-            "parent_membr": {
-                "TraitsToken": ['STAT', 'HE', 'HEAT'],
-                "CanShootWhileMoving": False,
-            },
-        },
-    },
-    
     ("Canon_AP_73_mm_2A28_Grom", "canon", None, False): { # 148
         "Ammunition": {
             "Arme": {
@@ -611,11 +475,330 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    # UNITED KINGDOM
 
-    ("Canon_AP_120_mm_L44_late87", "canon", None, False): { # Leopard 2A1 (DM23)
+    ("Canon_AP_120_mm_L11A5_Challenger_DU", "canon", None, False): { # Challanger Mk3 L11A5 (L26A1)
+        "Ammunition": {
+            "display": "L11A5 (L26A1)",
+            "token": "SVUWSIWOMZ",
+        },
+    },
+
+    ("Canon_AP_120_mm_L11A5_Challenger", "canon", None, False): { # Challanger Mk2 L11A5 (L23A1)
+        "Ammunition": {
+            "display": "L11A5 (L23A1)",
+            "token": "AQXRAAHWKX",
+        },
+    },
+
+    ("Canon_AP_120_mm_L11A5_Mk10", "canon", None, False): { # Cheiftian Mk10/11 L11A5 (L23A1)
+        "Ammunition": {
+            "display": "L11A5 (L23A1)",
+            "token": "XOHWOBENKZ",
+        },
+    },
+
+    ("Canon_AP_120_mm_L11A5_Mk9", "canon", None, False): { # Cheiftian Mk9 L11A5 (L23A1)
+        "Ammunition": {
+            "display": "L11A5 (L23A1)",
+            "token": "LSJITDGNSW",
+        },
+    },
+
+    ("Canon_AP_120_mm_L11A5_Mk6", "canon", None, False): { # Cheiftian Mk6/2 L11A5 (L15A5)
+        "Ammunition": {
+            "display": "L11A5 (L15A5)",
+            "token": "TJBDCIUPVY",
+        },
+    },
+
+    # ("Canon_AP_120_mm_L11A5_Mk1_4", "canon", None, False): { # Cheiftian Mk1/4 L11A1 (L15A3) 
+    #     "Ammunition": {
+    #         "display": "L11A1 (L15A3)",
+    #         "token": "ESZSAANXXP",
+    #     },
+    # },
+
+    ("Canon_AP_105mm_L7_Centurion", "canon", None, False): { # Centurion Mk13 L7A3 (L64A4)
+        "Ammunition": {
+            "display": "L7A3 (L64A4)",
+            "token": "HVFSAXIYDV",
+        },
+    },
+
+    ("Canon_HEAT_105mm_L7_Centurion_AVRE", "canon", None, False): { # Centurion Mk12 AVRE 105mm, Currently modeled with a HEAT round that wasn't actually issued
         "Ammunition": {
             "Arme": {
+                "Index": 17, # HEAT
+            },
+            #"display": "L7A3 (L35)",
+            #"token": "XOIJZEAMFO",
+        },
+    },
+    
+    ("Canon_AP_76mm_L23A1", "canon", None, False): { # Scorpion L23A1 (L29) HESH
+        "Ammunition": {
+            "Arme": {
+                "Index": 13,
+            },
+            "hit_roll": {
+                "Idling": 40,
+                "Moving": 0,
+            },
+            "parent_membr": {
+                "TraitsToken": ['STAT', 'HE', 'HEAT'],
+                "CanShootWhileMoving": False,
+            },
+            "display": "L23A1 (L29)",
+            "token": "JIMVFYAGOH",
+        },
+    },
+
+    ("Canon_HE_76mm_L23A1", "canon", None, False): { # Scorpion L23A1 (HE)
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 40,
+                "Moving": 0,
+            },
+            "parent_membr": {
+                "TraitsToken": ['STAT', 'HE'],
+                "CanShootWhileMoving": False,
+            },
+        },
+    },
+
+    ("Canon_AP_76mm_L5A1", "canon", None, False): { # Saladin L5A1 (L29) HESH
+        "Ammunition": {
+            "Arme": {
+                "Index": 13,
+            },
+            "hit_roll": {
+                "Idling": 40,
+                "Moving": 0,
+            },
+            "parent_membr": {
+                "TraitsToken": ['STAT', 'HE', 'HEAT'],
+                "CanShootWhileMoving": False,
+            },
+            "display": "L5A1 (L29)",
+            "token": "JIMVFYAGOH",
+        },
+    },
+
+    ("Canon_HE_76mm_L5A1", "canon", None, False): { # Saladin L5A1 (HE)
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 40,
+                "Moving": 0,
+            },
+            "parent_membr": {
+                "TraitsToken": ['STAT', 'HE'],
+                "CanShootWhileMoving": False,
+            },
+        },
+    },
+
+    ("Canon_HE_165mm_AVRE_L9A1", "canon", None, False): { # Centurion Mk5 AVRE 165mm L9A1 (L33A1) HESH
+        "Ammunition": {
+            "parent_membr": {
+                "MaximumRangeGRU": 1400,
+                "PhysicalDamages": 4.0,
+            },
+            "display": "L9A1 (L33A1)",
+            "token": "UMAXJWHIJY",
+        },
+    },
+
+    # UNITED STATES OF AMERICA
+
+    ("Canon_AP_120_mm_L52_M68_HA", "canon", None, False): { # M1A1(HA) Abrams M256 (M829A1)
+        "Ammunition": {
+            "display": "M256 (M829A1)",
+            "token": "ZHOKJRHTGG",
+        },
+    },
+
+    ("Canon_AP_120_mm_L52_M68", "canon", None, False): { # M1A1 Abrams M256 (M829)
+        "Ammunition": {
+            "display": "M256 (M829)",
+            "token": "LONFWANPHJ",
+        },
+    },
+
+    ("Canon_AP_105mm_M68_M1_MOD", "canon", None, False): { # M1 Abrams MOD M68A1 (XM900E1)
+        "Ammunition": {
+            "display": "M68A1 (XM900E1)",
+            "token": "ZBSIXJNGSM",
+        },
+    },
+
+    ("Canon_AP_105mm_M68_M1", "canon", None, False): { # M1 Abrams/M1IP Abrams M68A1 (M833)
+        "Ammunition": {
+            "display": "M68A1 (M833)",
+            "token": "FLWXGHUNDQ",
+        },
+    },
+
+    ("Canon_AP_105mm_M68_late", "canon", None, False): { # M60A3 (TTS) M68A1 (M774)
+        "Ammunition": {
+            "display": "M68A1 (M774)",
+            "token": "ECMORFUAWR",
+        },
+    },
+
+    ("Canon_AP_105mm_M68_M48A5", "canon", None, False): { # M48A5 M68 (M883)
+        "Ammunition": {
+            "display": "M68 (M883)",
+            "token": "RRHZCAUUMM",
+        },
+    },
+
+    ("Canon_AP_105mm_M68", "canon", None, False): { # M60A1 M68A1 (M774)
+        "Ammunition": {
+            "display": "M68A1 (M774)",
+            "token": "MWZRKGFQKN",
+        },
+    },
+
+    ("Canon_HEAT_152mm_Sheridan", "canon", None, False): { # M551 Sheridan M81E1 (M409)
+        "Ammunition": {
+            "Arme": {
+                "Index": 17,
+            },
+            "hit_roll": {
+                "Idling": 40,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 1575,
+            },
+            "display": "M81E1 (M409)",
+            "token": "WHTWLAHRHH",
+        },
+    },
+
+    ("Canon_HE_152mm_Sheridan", "canon", None, False): { # M551 Sheridan (HE)
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 40,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 1575,
+                "PhysicalDamages": 1.75,
+            },
+        },
+    },
+
+    ("Canon_HE_165mm_AVRE", "canon", None, False): { # M728 CEV M135 (M123) HESH
+        "Ammunition": {
+            "parent_membr": {
+                "MaximumRangeGRU": 1400,
+                "PhysicalDamages": 4.0,
+            },
+            "display": "M135 (M123)",
+            "token": "SIYPXALDAK",
+        },
+    },
+
+    # WEST GERMANY
+
+    ("Canon_AP_120mm_L44_late_2A4", "canon", None, False): { # Leopard 2A4(C) L44 (DM33)
+        "Ammunition": {
+            "display": "L44 (DM33)",
+            "token": "UGOZPAHBEW",
+        },
+    },
+
+    ("Canon_AP_120mm_L44_late", "canon", None, False): { # Leopard 2A3 L44 (DM23)
+        "Ammunition": {
+            "display": "L44 (DM23)",
+            "token": "XEBVLAROMY",
+        },
+    },
+
+    ("Canon_AP_120_mm_L44_late87", "canon", None, False): { # Leopard 2A1 L44 (DM13)
+        "Ammunition": {
+            "display": "L44 (DM13)",
+            "token": "LFFDMTHT",
+            "Arme": {
                 "Index": 29, # KE
+            },
+        },
+    },
+
+    ("Canon_AP_105mm_L7A3_Leo1A5", "canon", None, False): { # Leopard 1A5 L7A3 (DM33)
+        "Ammunition": {
+            "display": "L7A3 (DM33)",
+            "token": "PGWOXXQUEX",
+        },
+    },
+
+    ("Canon_AP_105mm_L7A3_Leo1A4", "canon", None, False): { # Leopard 1A4 L7A3 (DM23)
+        "Ammunition": {
+            "display": "L7A3 (DM23)",
+            "token": "CIZCZKQPLD",
+        },
+    },
+
+    ("Canon_AP_105mm_L7A3_Leo1A1A2", "canon", None, False): { # Leopard 1A1A2 L7A3 (DM33)
+        "Ammunition": {
+            "display": "L7A3 (DM33)",
+            "token": "VNIEZEXJWM",
+        },
+    },
+
+    ("Canon_AP_105mm_L7A3", "canon", None, False): { # Leopard 1A1A1 L7A3 (DM23)
+        "Ammunition": {
+            "display": "L7A3 (DM23)",
+            "token": "EKYWPOSPXA",
+        },
+    },
+
+    ("Canon_AP_105mm_L7A3_M48", "canon", None, False): { # M48A2GA2 L7A3 (DM23)
+        "Ammunition": {
+            "display": "L7A3 (DM23)",
+            "token": "VGISRCHYTN",
+        },
+    },
+
+    ("Canon_AP_90mm_M48", "canon", None, False): { # M48A2CGA1 M41 (M332)
+        "Ammunition": {
+            "display": "M41 (M332)",
+            "token": "QVTVRPBMCP",
+        },
+    },
+
+    ("Canon_HE_90mm_M48", "canon", None, False): { # M48A2CGA1 M41 (HE)
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 1.0,
+            },
+        },
+    },
+    
+    ("Canon_AP_90mm_KanJPz", "canon", None, False): { # Kanon Jagdpanzer (M332)
+        "Ammunition": {
+            "display": "BK90/L40 (M332)",
+            "token": "LRLCUBCDLE",
+        },
+    },
+
+    ("Canon_HE_90mm_M48_KanJPz", "canon", None, False): { # Kanon Jagdpanzer (HE)
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 1.0,
+            },
+        },
+    },
+    
+    # FRANCE
+
+    ("Canon_HE_142mm_AVRE", "canon", None, False): { # French Demo Gun HESH
+        "Ammunition": {
+            "parent_membr": {
+                "MaximumRangeGRU": 875,
+                "PhysicalDamages": 3,
+                "AimingTime": 2.0,
             },
         },
     },
