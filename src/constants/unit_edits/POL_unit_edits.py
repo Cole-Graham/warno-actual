@@ -1993,6 +1993,16 @@ pol_unit_edits = {
         "is_prime_mover": True,
     },
 
+    "OT_62_TOPAS_POL": {  # TOPAS-2
+        "CommandPoints": 15,
+        "orders": {
+            "add_orders": ["EOrderType/Sell"],
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+    },
+
     "OT_62_TOPAS_2AP_POL": {  # TOPAS-2AP
         "CommandPoints": 20,
         "capacities": {

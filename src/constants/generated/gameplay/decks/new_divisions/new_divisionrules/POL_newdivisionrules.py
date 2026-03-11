@@ -172,7 +172,7 @@ POL_armored_newdivisionrules = {
         ("W3RR_Procjon_POL", 1, [0, 6, 0, 0]),
     ],
     "aa": [
-        ("MANPAD_Strela_2M_POL", 3, [12, 9, 0, 0], ["Star_266_POL"]),
+        ("MANPAD_Strela_2M_POL", 3, [12, 9, 0, 0], ["UAZ_469_trans_POL"]),
         ("DCA_ZUR_23_2S_JOD_POL", 2, [9, 7, 0, 0], ["Star_266_POL", "MTLB_trans_POL"]),
         ("ZSU_23_Shilka_POL", 2, [6, 4, 0, 0]),
         ("MTLB_Strela10_POL", 2, [6, 4, 0, 0]),

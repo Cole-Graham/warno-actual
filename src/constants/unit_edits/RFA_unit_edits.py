@@ -1387,6 +1387,9 @@ rfa_unit_edits = {
     
     "M113A1G_RFA": {
         "CommandPoints": 15,
+        "orders": {
+            "add_orders": ["EOrderType/Sell"],
+        },
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'",],
         },

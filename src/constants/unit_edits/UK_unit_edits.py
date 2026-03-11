@@ -1445,6 +1445,12 @@ uk_unit_edits = {
                 "MMG_L37A2_7_62mm": 56,
             },
         },
+         "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+        "orders": {
+            "add_orders": ["EOrderType/Sell"],
+        },
     },
     
     "FV432_SCAT_UK": {
