@@ -60,6 +60,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeGRU": 1750,
                 "DisplaySalveAccuracy": False,
             },
+            "display": "WOMBAT (L2)",
+            "token": "CYYBMKYLSS",
         },
     },
     
@@ -488,7 +490,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketInf_M40A1_RCL_106mm_TOWED", "recoilless", None, False): { # 677
+    ("RocketInf_M40A1_RCL_106mm_TOWED", "recoilless", None, False): { # 677 M40A1 (M344A1)
         "Ammunition": {
             "Arme": {
                 "Index": 16,
@@ -501,6 +503,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 10.0,
             },
+            "display": "M40A1 (M344A1)",
+            "token": "VJGNAWHSLH",
         },
     },
 
@@ -545,6 +549,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 10.0,
             },
+            "display": "M40A1 (M344A1)",
+            "token": "TJMOCUOIXF",
         },
     },
     

@@ -7,48 +7,148 @@ WeaponKey = Tuple[str, str, Optional[str], bool]  # (weapon, category, donor, is
 
 # fmt: off
 weapons: Dict[WeaponKey, WeaponData] = {
-    ("Canon_HEAT_73_mm_SPG9_TOWED", "recoilless", None, False): { # 241
+
+    # WARSAW PACT
+    
+    ("Canon_AP_125_mm_2A46M", "canon", None, False): { # T-72AV/B/B1/B1'84/S 2A46M (3BM-32)
         "Ammunition": {
             "Arme": {
-                "Index": 15,
+                "Index": 31,
             },
             "hit_roll": {
-                "Idling": 40,
+                "Idling": 50,
+                "Moving": 40,
             },
             "parent_membr": {
-                "DisplaySalveAccuracy": False,
-                "SupplyCost": 8.0,
+                "MaximumRangeGRU": 2275,
             },
+            "display": "2A46M (3BM-32)",
+            "token": "OWKJYQDRIB",
         },
     },
 
-    ("Canon_HEAT_73_mm_SPG9", "recoilless", None, False): { # 240
+    ("Canon_HE_125_mm_2A46M", "canon", None, False): { # T-72S (HE)
         "Ammunition": {
-            "Arme": {
-                "Index": 15,
-            },
             "hit_roll": {
-                "Idling": 40,
+                "Idling": 50,
+                "Moving": 40,
             },
             "parent_membr": {
-                "DisplaySalveAccuracy": False,
-                "SupplyCost": 8.0,
-            },
-        },
-    },
-
-    ("Canon_HEAT_73_mm_SPG9D_TOWED", "recoilless", "Canon_HEAT_73_mm_SPG9_TOWED", True): {  # 707
-        "Ammunition": {
-            "display": "SPG-9D",
-            "token": "SPG9D_PARA",
-            "parent_membr": {
-                "DisplaySalveAccuracy": False,
-                "SupplyCost": 8.0,
+                "MaximumRangeGRU": 2275,
             },
         },
     },
     
-    ("Canon_HEAT_85mm_S53", "canon", "Canon_AP_85mm_S53", True): { # T-34 3BK-2
+    ("Canon_AP_125_mm_2A46_T72M2", "canon", None, False): { # T-72M2 WILK 2A46-1 (3BM-26) (Could be swapped to 3BM-32?)
+        "Ammunition": {
+            #"Arme": {
+            #    "Index": 31,
+            #},
+            "display": "2A46-1 (3BM-26)",
+            "token": "OTYHZNLLMR",
+        },
+    },
+
+    ("Canon_AP_125_mm_2A46_T72M", "canon", None, False): { # T-72M/M1/A'79/A'81/M-2/M-3 2A46-1 (3BM-26)
+        "Ammunition": {
+            # "Arme": {
+            #     "Index": 29,
+            # },
+            "hit_roll": {
+                "Idling": 50,
+                "Moving": 40,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2275,
+            },
+            "display": "2A46-1 (3BM-26)",
+            "token": "ISVNZCPVXC",
+        },
+    },
+
+    ("Canon_HE_125_mm_2A46_T72M", "canon", None, False): { # T-72M/M1/A'79/A'81/M-2/M-3 (HE)
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 50,
+                "Moving": 40,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2275,
+            },
+        },
+    },
+
+    ("Canon_AP_125_mm_2A46", "canon", None, False): { # T-72/'73/'77 2A46 (3BM-22)
+        "Ammunition": {
+            "display": "2A46 (3BM-22)",
+            "token": "KXRZMEFESV",
+        },
+    },
+
+    ("Canon_AP_100mm_D10T_late", "canon", None, False): { # T-55AM2 D-10T2S (3BM-25)
+        "Ammunition": {
+            "display": "D-10T2S (3BM-25)",
+            "token": "KADMWTFNND",
+        },
+    },
+
+    ("Canon_AP_100mm_D10T_late", "canon", None, False): { # T-55AM2 D-10T2S (HE)
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 1.15,
+            },
+        },
+    },
+
+    ("Canon_AP_100mm_D10T_Merida", "canon", None, False): { # T-55AM Merdia D-10T2S (3BM-25)
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 55,
+                "Moving": 45,
+            },
+            "display": "D-10T2S (3BM-25)",
+            "token": "HLIZNSNRIV",
+        },
+    },
+
+    ("Canon_HE_100mm_D10T_Merida", "canon", None, False): { # T-55AM Merdia (HE)
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 55,
+                "Moving": 45,
+            },
+            "parent_membr": {
+                "PhysicalDamages": 1.15,
+            },
+        },
+    },
+
+    ("Canon_AP_100mm_D10T_late", "canon", None, False): { # T-55A, TO-55 D-10T2S (3BM-25)
+        "Ammunition": {
+            "display": "D-10T2S (3BM-25)",
+            "token": "MBKOYQGXJF",
+        },
+    },
+
+    ("Canon_AP_100mm_D10T_early_HEAT", "canon", None, False): { # T-54B/AM D-10T2S (3BK-17M)
+        "Ammunition": {
+            "Arme": {
+                "Index": 17,
+            },
+            "display": "D-10T2S (3BK-17M)",
+            "token": "EUSQRXVKEB",
+        },
+    },
+
+    ("Canon_HE_100mm_D10T_early", "canon", None, False): { # T-54B/AM, T-55A, TO-55 (HE)
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 1.15,
+            },
+        },
+    },
+
+    ("Canon_HEAT_85mm_S53", "canon", "Canon_AP_85mm_S53", True): { # T-34 S-53 (3BK-2)
         "Ammunition": {
             "Arme": {
                 "Family": "DamageFamily_ap_missile",
@@ -63,10 +163,12 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeGRU": 1750,
                 "DamageTypeEvolutionOverRangeDescriptor": "nil"
             },
+            "display": "S-53 (3BK-2)",
+            "token": "QGKCOHDYWC",
         },
     },
     
-    ("Canon_HEAT2_85mm_S53", "canon", "Canon_AP_85mm_S53", True): { # T-34 3BK-2M
+    ("Canon_HEAT2_85mm_S53", "canon", "Canon_AP_85mm_S53", True): { # T-34 S-53 (3BK-2M)
         "Ammunition": {
             "Arme": {
                 "Family": "DamageFamily_ap_missile",
@@ -81,66 +183,68 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeGRU": 1750,
                 "DamageTypeEvolutionOverRangeDescriptor": "nil"
             },
-        },
-    },
-    
-    ("Canon_AP_100mm_D10T_early_HEAT", "canon", None, False): {
-        "Ammunition": {
-            "Arme": {
-                "Index": 16,
-            },
+            "display": "S-53 (3BK-2M)",
+            "token": "AABTCOGEZB",
         },
     },
 
-    ("Canon_AP_115mm_2A21", "canon", None, False): {
-        "Ammunition": {
-            "Arme": {
-                "Index": 18,
-            },
-            "parent_membr": {
-                "TimeBetweenTwoShots": 6.6,
-                "TimeBetweenTwoSalvos": 6.6,
-            },
-        },
-    },
-
-    ("Canon_AP_100mm_D10T_early_HEAT", "canon", None, False): { # 239
-        "Ammunition": {
-            "Arme": {
-                "Index": 16,
-            },
-        },
-    },
-    
-    ("Canon_HE_73_mm_SPG9_TOWED", "recoilless", None, False): {
+    ("Canon_HE_85mm_S53", "canon", None, False): { # T-34 3BK-2
         "Ammunition": {
             "hit_roll": {
-                "Idling": 40,
+                "Idling": 45,
             },
             "parent_membr": {
-                "PhysicalDamages": 0.85,
-                "SuppressDamages": 115,
-                "DisplaySalveAccuracy": False,
+                "Caliber": ("85mm HEAT", "IWLOKTOKDR"),
+                "TraitsToken": ['HE'],
+                "MaximumRangeGRU": 1750,
+                "RadiusSplashPhysicalDamagesGRU": 38,
+                "RadiusSplashSuppressDamagesGRU": 55,
+            },
+        },
+    },
+
+    ("Canon_AP_76mm_D56T", "canon", None, False): { # PT-76B 2A16M (BK-354M)
+        "Ammunition": {
+            "Arme": {
+                "Index": 15, # HEAT
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 1575,
+            },
+            "display": "2A16M (BK-354M)",
+            "token": "SHXVLQPRJF",
+        },
+    },
+
+    ("Canon_HE_76mm_D56T", "canon", None, False): { # PT-76B 2A16M (HE)
+        "Ammunition": {
+            "parent_membr": {
+                "MaximumRangeGRU": 1575,
+                "RadiusSplashPhysicalDamagesGRU": 31,
+                "RadiusSplashSuppressDamagesGRU": 55,
                 "SupplyCost": 8.0,
             },
         },
     },
 
-    ("Canon_HE_73_mm_SPG9", "recoilless", None, False): {
+    ("Canon_AP_73_mm_2A28_Grom", "canon", None, False): { # BMP-1 2A28 (PG-15V)
         "Ammunition": {
+            "Arme": {
+                "Index": 17,
+            },
             "hit_roll": {
-                "Idling": 40,
+                "Idling": 45,
             },
             "parent_membr": {
-                "PhysicalDamages": 0.85,
-                "SuppressDamages": 115,
-                "DisplaySalveAccuracy": False,
-                "SupplyCost": 8.0,
+                "MaximumRangeGRU": 1400,
+                "SupplyCost": 300.0,
             },
+            "display": "2A28 (PG-15V)",
+            "token": "UNMNABAZNO",
         },
     },
 
-    ("Canon_HE_73_mm_2A28_Grom", "canon", None, False): { # 219
+    ("Canon_HE_73_mm_2A28_Grom", "canon", None, False): { # BMP-1 2A28 (HE)
         "Ammunition": {
             "hit_roll": {
                 "Idling": 45,
@@ -157,252 +261,98 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
-    
-    ("Canon_HE_76mm_D56T", "canon", None, False): {
+
+    ("Canon_HEAT_73_mm_SPG9_TOWED", "recoilless", None, False): { # SPG-9 (PG9V) (Towed)
         "Ammunition": {
+            "Arme": {
+                "Index": 15,
+            },
+            "hit_roll": {
+                "Idling": 40,
+            },
             "parent_membr": {
-                "MaximumRangeGRU": 1575,
-                "RadiusSplashPhysicalDamagesGRU": 31,
-                "RadiusSplashSuppressDamagesGRU": 55,
+                "DisplaySalveAccuracy": False,
+                "SupplyCost": 8.0,
+            },
+            "display": "SPG-9 (PG9V)",
+            "token": "ACXVIKNDIJ",
+        },
+    },
+
+    ("Canon_HE_73_mm_SPG9_TOWED", "recoilless", None, False): { # SPG-9 (HE) (Towed)
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 40,
+            },
+            "parent_membr": {
+                "PhysicalDamages": 0.85,
+                "SuppressDamages": 115,
+                "DisplaySalveAccuracy": False,
                 "SupplyCost": 8.0,
             },
         },
     },
-    
-    ("Canon_HE_85mm_S53", "canon", None, False): { # T-34 3BK-2
+
+    ("Canon_HEAT_73_mm_SPG9D_TOWED", "recoilless", "Canon_HEAT_73_mm_SPG9_TOWED", True): {  # SPG-9D (PG9V) (Towed-Para)
         "Ammunition": {
-            "hit_roll": {
-                "Idling": 45,
-            },
+            "display": "SPG-9D (PG9V)",
+            "token": "SPGDPARA",
             "parent_membr": {
-                "Caliber": ("85mm HEAT", "IWLOKTOKDR"),
-                "TraitsToken": ['HE'],
-                "MaximumRangeGRU": 1750,
-                "RadiusSplashPhysicalDamagesGRU": 38,
-                "RadiusSplashSuppressDamagesGRU": 55,
-            },
-        },
-    },
-    
-    ("Canon_HE_115mm_U5TS_T62M", "canon", None, False): {
-        "Ammunition": {
-            "parent_membr": {
-                "PhysicalDamages": 1.4,
+                "DisplaySalveAccuracy": False,
+                "SupplyCost": 8.0,
             },
         },
     },
 
-    ("Canon_HE_115mm_2A21", "canon", None, False): { # 211
-        "Ammunition": {
-            "parent_membr": {
-                "TimeBetweenTwoShots": 6.6,
-                "TimeBetweenTwoSalvos": 6.6,
-                "PhysicalDamages": 1.4,
-            },
-        },
-    },
-
-    ("Canon_HE_125_mm_2A46M_late_T80UD", "canon", None, False): { # 211
-        "Ammunition": {
-            "hit_roll": {
-                "Idling": 60,
-                "Moving": 50,
-            },
-            "parent_membr": {
-                "TimeBetweenTwoShots": 6.6,
-                "TimeBetweenTwoSalvos": 6.6,
-            },
-        },
-    },
-
-    ("Canon_HE_125_mm_2A46M_late", "canon", None, False): { # 210
-        "Ammunition": {
-            "hit_roll": {
-                "Idling": 60,
-                "Moving": 50,
-            },
-            "parent_membr": {
-                "TimeBetweenTwoShots": 6.6,
-                "TimeBetweenTwoSalvos": 6.6,
-            },
-        },
-    },
-
-    ("Canon_HE_125_mm_2A46M_T80B", "canon", None, False): { # 209
-        "Ammunition": {
-            "hit_roll": {
-                "Idling": 55,
-                "Moving": 45,
-            },
-            "parent_membr": {
-                "TimeBetweenTwoShots": 6.6,
-                "TimeBetweenTwoSalvos": 6.6,
-            },
-        },
-    },
-    
-    ("Canon_HE_125_mm_2A46M", "canon", None, False): { # T-72S
-        "Ammunition": {
-            "hit_roll": {
-                "Idling": 50,
-                "Moving": 40,
-            },
-            "parent_membr": {
-                "MaximumRangeGRU": 2275,
-            },
-        },
-    },
-
-    ("Canon_HE_125_mm_2A46_T72M", "canon", None, False): { # 206
-        "Ammunition": {
-            "hit_roll": {
-                "Idling": 50,
-                "Moving": 40,
-            },
-            "parent_membr": {
-                "MaximumRangeGRU": 2275,
-            },
-        },
-    },
-
-    ("Canon_HE_125_mm_2A46_T64B_very_late", "canon", None, False): { # 205
-        "Ammunition": {
-            "hit_roll": {
-                "Idling": 55,
-                "Moving": 45,
-            },
-            "parent_membr": {
-                "TimeBetweenTwoShots": 6.6,
-                "TimeBetweenTwoSalvos": 6.6,
-            },
-        },
-    },
-
-    ("Canon_HE_125_mm_2A46_T64A_late", "canon", None, False): { # T-64AV
-        "Ammunition": {
-            "parent_membr": {
-                "TimeBetweenTwoShots": 6.6,
-                "TimeBetweenTwoSalvos": 6.6,
-                "MaximumRangeGRU": 1925,
-            },
-        },
-    },
-
-
-    ("Canon_HE_125_mm_2A46_T64A", "canon", None, False): { # 204
-        "Ammunition": {
-            "parent_membr": {
-                "TimeBetweenTwoShots": 6.6,
-                "TimeBetweenTwoSalvos": 6.6,
-            },
-        },
-    },
-
-    ("Canon_HE_100mm_D10T_early", "canon", None, False): { # 171
-        "Ammunition": {
-            "parent_membr": {
-                "PhysicalDamages": 1.15,
-            },
-        },
-    },
-    
-    ("Canon_HE_100mm_D10T_Merida", "canon", None, False): { # 171
-        "Ammunition": {
-            "hit_roll": {
-                "Idling": 55,
-                "Moving": 45,
-            },
-            "parent_membr": {
-                "PhysicalDamages": 1.15,
-            },
-        },
-    },
-
-    ("Canon_HE_100mm_2A70", "canon", None, False): { # 169
-        "Ammunition": {
-            "parent_membr": {
-                "RadiusSplashPhysicalDamagesGRU": 43,
-                "PhysicalDamages": 1.15,
-                "RadiusSplashSuppressDamagesGRU": 86,
-                "SupplyCost": 100.0,
-            },
-        },
-    },
-    
-    ("Canon_AP_100mm_D10T_Merida", "canon", None, False): {
-        "Ammunition": {
-            "hit_roll": {
-                "Idling": 55,
-                "Moving": 45,
-            },
-        },
-    },
-    
-    ("Canon_AP_76mm_D56T", "canon", None, False): {
+    ("Canon_HEAT_73_mm_SPG9", "recoilless", None, False): { # SPG-9 (PG9V) (Jeep/APC)
         "Ammunition": {
             "Arme": {
-                "Index": 15, # HEAT
-            },
-            "parent_membr": {
-                "MaximumRangeGRU": 1575,
-            },
-        },
-    },
-    
-    ("Canon_AP_73_mm_2A28_Grom", "canon", None, False): { # 148
-        "Ammunition": {
-            "Arme": {
-                "Index": 17,
+                "Index": 15,
             },
             "hit_roll": {
-                "Idling": 45,
+                "Idling": 40,
             },
             "parent_membr": {
-                "MaximumRangeGRU": 1400,
-                "SupplyCost": 300.0,
+                "DisplaySalveAccuracy": False,
+                "SupplyCost": 8.0,
             },
+            "display": "SPG-9 (PG9V)",
+            "token": "HJRNUEJZUU",
         },
     },
-    
-    ("Canon_AP_125_mm_2A46M", "canon", None, False): { # T-72S
-        "Ammunition": {
-            "Arme": {
-                "Index": 31,
-            },
-            "hit_roll": {
-                "Idling": 50,
-                "Moving": 40,
-            },
-            "parent_membr": {
-                "MaximumRangeGRU": 2275,
-            },
-        },
-    },
-    
-    # ("Canon_AP_125_mm_2A46_T72M2", "canon", None, False): { # T-72M2 WILK
-    #     "Ammunition": {
-    #         "Arme": {
-    #             "Index": 31,
-    #         },
-    #     },
-    # },
 
-    ("Canon_AP_125_mm_2A46_T72M", "canon", None, False): { # T72M
+    ("Canon_HE_73_mm_SPG9", "recoilless", None, False): { # SPG-9 (Jeep/APC, HE)
         "Ammunition": {
-            # "Arme": {
-            #     "Index": 29,
-            # },
             "hit_roll": {
-                "Idling": 50,
-                "Moving": 40,
+                "Idling": 40,
             },
             "parent_membr": {
-                "MaximumRangeGRU": 2275,
+                "PhysicalDamages": 0.85,
+                "SuppressDamages": 115,
+                "DisplaySalveAccuracy": False,
+                "SupplyCost": 8.0,
             },
         },
     },
 
-    ("Canon_AP_125_mm_2A46M_late_T80UD", "canon", None, False): { # T-80UD
+    # USSR Only
+
+    ("Canon_AP_125_mm_2A46M_late_T80UD", "canon", None, False): { # T-80UD 2A46M1 (3BM-42)
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 60,
+                "Moving": 50,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 6.6,
+                "TimeBetweenTwoSalvos": 6.6,
+            },
+            "display": "2A46M1 (3BM-42)",
+            "token": "UADUNLIGZF",
+        },
+    },
+
+    ("Canon_HE_125_mm_2A46M_late_T80UD", "canon", None, False): { # T-80UD 2A46M1 (HE)
         "Ammunition": {
             "hit_roll": {
                 "Idling": 60,
@@ -415,7 +365,22 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("Canon_AP_125_mm_2A46M_late", "canon", None, False): { # T-80U/89
+    ("Canon_AP_125_mm_2A46M_late", "canon", None, False): { # T-80U/U'89 2A46M1 (3BM-42)
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 60,
+                "Moving": 50,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 6.6,
+                "TimeBetweenTwoSalvos": 6.6,
+            },
+            "display": "2A46M1 (3BM-42)",
+            "token": "UHRORCESCA",
+        },
+    },
+
+    ("Canon_HE_125_mm_2A46M_late", "canon", None, False): { # T-80U/U'89 2A46M1 (HE)
         "Ammunition": {
             "hit_roll": {
                 "Idling": 60,
@@ -428,7 +393,22 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("Canon_AP_125_mm_2A46M_T80B", "canon", None, False): { # T-80B/BV/IZD. 29
+    ("Canon_AP_125_mm_2A46M_T80B", "canon", None, False): { # T-80B/BV/IZD.29 2A46 (3BM-32) (This should also include the T-64BV, but whatever)
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 55,
+                "Moving": 45,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 6.6,
+                "TimeBetweenTwoSalvos": 6.6,
+            },
+            "display": "2A46M-1 (3BM-32)",
+            "token": "KMMMXRQUBL",
+        },
+    },
+
+    ("Canon_HE_125_mm_2A46M_T80B", "canon", None, False): { # T-80B/BV/IZD.29 2A46 (HE)
         "Ammunition": {
             "hit_roll": {
                 "Idling": 55,
@@ -441,7 +421,22 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("Canon_AP_125_mm_2A46_T64B_very_late", "canon", None, False): { # T-64B/BV/B1/B1V
+    ("Canon_AP_125_mm_2A46_T64B_very_late", "canon", None, False): { # T-64B/BV/B1/B1V 2A46-2 (3BM-32)
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 55,
+                "Moving": 45,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 6.6,
+                "TimeBetweenTwoSalvos": 6.6,
+            },
+            "display": "2A46-2 (3BM-32)",
+            "token": "HPRHLTLVHG",
+        },
+    },
+
+    ("Canon_HE_125_mm_2A46_T64B_very_late", "canon", None, False): { # T-64B/BV/B1/B1V 2A46-2 (HE)
         "Ammunition": {
             "hit_roll": {
                 "Idling": 55,
@@ -454,7 +449,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("Canon_AP_125_mm_2A46_T64A_late", "canon", None, False): { # T-64AV 
+    ("Canon_AP_125_mm_2A46_T64A_late", "canon", None, False): { # T-64AV 2A46 (3BM-26)
         "Ammunition": {
             "Arme": {
                 "Index": 30, # KE
@@ -464,15 +459,171 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoSalvos": 6.6,
                 "MaximumRangeGRU": 1925,  
             },
+            "display": "2A46 (3BM-26)",
+            "token": "SURTPIJIWC",
         },
     },
 
-    ("Canon_AP_125_mm_2A46_T64A", "canon", None, False): { # T-64A 1983, T-64AM
+    ("Canon_HE_125_mm_2A46_T64A_late", "canon", None, False): { # T-64AV (HE)
+        "Ammunition": {
+            "parent_membr": {
+                "TimeBetweenTwoShots": 6.6,
+                "TimeBetweenTwoSalvos": 6.6,
+                "MaximumRangeGRU": 1925,
+            },
+        },
+    },
+
+    ("Canon_AP_125_mm_2A46_T64A", "canon", None, False): { # T-64A'83/M 2A46 (3BM-26)
         "Ammunition": {
             "parent_membr": {
                 "TimeBetweenTwoShots": 6.6,
                 "TimeBetweenTwoSalvos": 6.6,
             },
+            "display": "2A46 (3BM-26)",
+            "token": "LIWPMVFLCO",
+        },
+    },
+
+    ("Canon_HE_125_mm_2A46_T64A", "canon", None, False): { # T-64A 1983, T-64AM (HE)
+        "Ammunition": {
+            "parent_membr": {
+                "TimeBetweenTwoShots": 6.6,
+                "TimeBetweenTwoSalvos": 6.6,
+            },
+        },
+    },
+
+    ("Canon_AP_115mm_2A21", "canon", None, False): { # T-64R 2A21 (3BK-15M)
+        "Ammunition": {
+            "Arme": {
+                "Index": 18,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 6.6,
+                "TimeBetweenTwoSalvos": 6.6,
+            },
+            "display": "2A21 (3BK-15M)",
+            "token": "ESGELIGQDC",
+        },
+    },
+
+    ("Canon_HE_115mm_2A21", "canon", None, False): { # T-64R (HE)
+        "Ammunition": {
+            "parent_membr": {
+                "TimeBetweenTwoShots": 6.6,
+                "TimeBetweenTwoSalvos": 6.6,
+                "PhysicalDamages": 1.4,
+            },
+        },
+    },
+
+    ("Canon_AP_115mm_U5TS_T62M", "canon", None, False): { # T-62M/MD/M1/M1D/MV 2A20 (3BM-21)
+        "Ammunition": {
+            "display": "2A20 (3BM-21)",
+            "token": "BKPFFQQSMZ",
+        },
+    },
+
+    ("Canon_HE_115mm_U5TS_T62M", "canon", None, False): { # T-62M/MD/M1/M1D/MV (HE)
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 1.4,
+            },
+        },
+    },
+
+    ("Canon_HE_100mm_2A70", "canon", None, False): { # BMP-3 2A70 (3UOF19?)
+        "Ammunition": {
+            "parent_membr": {
+                "RadiusSplashPhysicalDamagesGRU": 43,
+                "PhysicalDamages": 1.15,
+                "RadiusSplashSuppressDamagesGRU": 86,
+                "SupplyCost": 100.0,
+            },
+            "display": "2A70 (3UOF19)",
+            "token": "WOJVALWXLE",
+        },
+    },
+
+    # WARSAW PACT AT GUNS
+
+    ("Canon_AP_100mm_2A29R_Ruta", "canon", None, False): { # MT-12R Ruta 2A29 (3BM-34)
+        "Ammunition": {
+            "display": "2A29 (3BM-34)",
+            "token": "YJMRACXBEZ",
+            "parent_membr": {
+                "PhysicalDamages": 1.15,
+            },
+        },
+    },
+
+    ("Canon_AP_100mm_2A29_Rapira", "canon", None, False): { # MT-12 2A29 (3BM-24)
+        "Ammunition": {
+            "display": "2A29 (3BM-24)",
+            "token": "VLXFNDJKVP",
+            "parent_membr": {
+                "PhysicalDamages": 1.15,
+            },
+        },
+    },
+
+    ("Canon_AP_125mm_2A45_Sprut", "canon", None, False): { # Sprut-B 2A45 (3BM-42)
+        "Ammunition": {
+            "display": "2A45 (3BM-42)",
+            "token": "YWGRIPIKZD",
+        },
+    },
+
+    ("Canon_AP_KSM25_100mm", "canon", None, False): { # KSM-65 (BR-412D) (This is a guess, and an experiment. The vanilla version has a wild amount of pen for the APBC that this gun actually had as far as I know, but could fire much faster)
+        "Ammunition": {
+            "Arme": {
+                "Index": 22,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 3.0,
+                "TimeBetweenTwoSalvos": 3.0,
+            },
+            "display": "KSM-65 (BR-412D)",
+            "token": "RQFPASQQYH",
+        },
+    },
+
+    ("Canon_HE__KSM25_100mm", "canon", None, False): { # KSM-65 (BR-412D) (This is a guess, and an experiment. The vanilla version has a wild amount of pen for the APBC that this gun actually had as far as I know, but could fire much faster)
+        "Ammunition": {
+            "parent_membr": {
+                "TimeBetweenTwoShots": 3.0,
+                "TimeBetweenTwoSalvos": 3.0,
+                "PhysicalDamages": 1.15,
+            },
+        },
+    },
+
+    ("Canon_AP_85mm_D48", "canon", None, False): { # D-48 2A15 (BR-372)
+        "Ammunition": {
+            "display": "2A15 (BR-372)",
+            "token": "DDZMIZIWBL",
+        },
+    },
+
+    ("Canon_AP_85mm_D44", "canon", None, False): { # D-44 (BR-365P)
+        "Ammunition": {
+            "display": "D-44 (BR-365P)",
+            "token": "RBGZQGTFLS",
+        },
+    },
+
+    ("Canon_AP_85mm_K52", "canon", None, False): { # K-52 (BR-365P)
+        "Ammunition": {
+            "display": "K-52 (BR-365P)",
+            "token": "BFUPVRLXDT",
+        },
+    },
+
+    ("Canon_AP_57mm_ZiS2", "canon", None, False): { # Zis-2 (BR-271N)
+        "Ammunition": {
+            "display": "K-52 (BR-271N)",
+            "token": "TGQYOOGISZ",
         },
     },
     
@@ -513,12 +664,18 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    # ("Canon_AP_120_mm_L11A5_Mk1_4", "canon", None, False): { # Cheiftian Mk1/4 L11A1 (L15A3) 
-    #     "Ammunition": {
-    #         "display": "L11A1 (L15A3)",
-    #         "token": "ESZSAANXXP",
-    #     },
-    # },
+    ("Canon_AP_120_mm_L11A5_Mk1_4", "canon", None, False): { # Cheiftian Mk1/4 L11A1 (L31A7) 
+        "Ammunition": {
+            "Arme": {
+                "Index": 17, # HEAT
+            },
+            "parent_membr": {
+                "SuppressDamages": 243,
+            },
+            "display": "L11A1 (L31A7) [HESH]",
+            "token": "ESZSAANXXP",
+        },
+    },
 
     ("Canon_AP_105mm_L7_Centurion", "canon", None, False): { # Centurion Mk13 L7A3 (L64A4)
         "Ammunition": {
@@ -530,10 +687,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Canon_HEAT_105mm_L7_Centurion_AVRE", "canon", None, False): { # Centurion Mk12 AVRE 105mm, Currently modeled with a HEAT round that wasn't actually issued
         "Ammunition": {
             "Arme": {
-                "Index": 17, # HEAT
+                "Index": 15, # HEAT
             },
-            #"display": "L7A3 (L35)",
-            #"token": "XOIJZEAMFO",
+            "parent_membr": {
+                "SuppressDamages": 213,
+            },
+            "display": "L7A3 (L35) [HESH]",
+            "token": "XOIJZEAMFO",
         },
     },
     

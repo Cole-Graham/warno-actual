@@ -1601,7 +1601,7 @@ uk_unit_edits = {
     },
     
     "Centurion_AVRE_105_UK": {
-        "CommandPoints": 65,
+        "CommandPoints": 60,
         "availability": [8, 6, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
@@ -1644,8 +1644,8 @@ uk_unit_edits = {
     },
     
     "FV4201_Chieftain_Mk1_4_UK": {
-        "CommandPoints": 75,
-        "availability": [0, 10, 7, 0],
+        "CommandPoints": 80,
+        "availability": [10, 7, 0, 0],
         "capacities": {
             "remove_capacities": ["Instructor_TNK"],
         },
