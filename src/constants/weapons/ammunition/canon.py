@@ -667,7 +667,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Canon_AP_120_mm_L11A5_Mk1_4", "canon", None, False): { # Cheiftian Mk1/4 L11A1 (L31A7) 
         "Ammunition": {
             "Arme": {
-                "Index": 17, # HEAT
+                "Index": 27, # HEAT (I don't know why 17 pen is index 27 on this, and 17 on the sheridan)
             },
             "parent_membr": {
                 "SuppressDamages": 243,

@@ -2123,7 +2123,7 @@ rda_unit_edits = {
             "display": "KPz T-72M",
         },
         "CommandPoints": 150,
-        "availability": [0, 6, 4, 0],
+        "availability": [6, 4, 0, 0],
     },
     
     "T72MUV2_DDR": {

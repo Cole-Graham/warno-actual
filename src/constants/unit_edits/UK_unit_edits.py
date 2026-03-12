@@ -2525,7 +2525,7 @@ uk_unit_edits = {
     },
 
     "Tornado_ADV_UK": { # 4x Skyflash SuperTEMP, 4x AIM-9L
-        "CommandPoints": 250,
+        "CommandPoints": 230,
         "availability": [0, 2, 0, 1],
         "WeaponDescriptor": {
             "equipmentchanges": {

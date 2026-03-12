@@ -336,7 +336,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
         "SupplyCost": 115.0,
         "WeaponDescriptor": {
-            "SalvoLengths": [2],
+            "SalvoLengths": [2, 1],
         },
 
         "MissileDescriptor": {
