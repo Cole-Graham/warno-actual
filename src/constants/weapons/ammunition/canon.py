@@ -953,6 +953,135 @@ weapons: Dict[WeaponKey, WeaponData] = {
     
     # FRANCE
 
+    ("Canon_AP_105mm_F2_BK_MECA_L48_late", "canon", None, False): { # AMX-10RC SB F2 (OFL 105 G2) KE
+        "Ammunition": {
+            "display": "F2 (OFL 105 G2)",
+            "token": "LRKFKOQNUF",
+        },
+    },
+
+    ("Canon_AP_105mm_CN_105_F1_BRENNUS", "canon", None, False): { # AMX-30B2 BRENUS CN 105 F1 (OFL 105 G2) KE
+        "Ammunition": {
+            "display": "CN 105 F1 (OFL 105 G2)",
+            "token": "FFXDOGTWYP",
+        },
+    },
+
+    ("Canon_AP_105mm_F2_BK_MECA_L48", "canon", None, False): { # AMX-10RC F2 (OFL 105 F3) KE
+        "Ammunition": {
+            "display": "F2 (OFL 105 F3)",
+            "token": "YVFYEHYSSD",
+        },
+    },
+    
+    ("Canon_AP_105mm_CN_105_F1_late", "canon", None, False): { # AMX-30B2 CN 105 F1 (OFL 105 F1) KE
+        "Ammunition": {
+            "display": "CN 105 F1 (OFL 105 F1)",
+            "token": "GSQHTMWZRC",
+        },
+    },
+
+    ("Canon_AP_105mm_CN_105_F1", "canon", None, False): { # AMX-30B CN 105 F1 (OOC 105 F1) HEAT 400mm pen
+        "Ammunition": {
+            "display": "CN 105 F1 (OOC 105 F1)",
+            "token": "DJWERULJYY",
+            "Arme": {
+                "Index": 17, # HEAT
+            },
+        },
+    },
+
+    ("Canon_AP_90mm_CN90_F4", "canon", None, False): { # ERC-90 CN 90 F4 (OFL 90 F1) KE
+        "Ammunition": {
+            "display": "CN 90 F4 (OFL 90 F1)",
+            "token": "WPNKDRKULM",
+        },
+    },
+
+    ("Canon_HE_90mm_CN90_F4", "canon", None, False): { # ERC-90 CN 90 F4 (HE)
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 1.0,
+            },
+        },
+    },
+
+    ("Canon_AP_90_mm__F3", "canon", None, False): { # AMX-13/90 CN 90 F3 (OOC 90-62) HEAT 350mm pen
+        "Ammunition": {
+            "display": "CN 90 F3 (OOC 90-62)",
+            "token": "RLSVFBYDKJ",
+            "Arme": {
+                "Index": 16, # HEAT
+            },
+        },
+    },
+
+    ("Canon_HE_90_mm__F3", "canon", None, False): { # AMX-13/90 CN 90 F3 (HE)
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 1.0,
+            },
+        },
+    },
+
+    ("Canon_AP_90mm_CN90_F2", "canon", None, False): { # EBR-90 CN 90 F2 (OOC 90-62) HEAT 350mm pen
+        "Ammunition": {
+            "display": "CN 90 F2 (OOC 90-62)",
+            "token": "VMAYUQLXDF",
+            "Arme": {
+                "Index": 16, # HEAT
+            },
+        },
+    },
+
+    ("Canon_HE_90mm_CN90_F2", "canon", None, False): { # EBR-90 CN 90 F2 (HE)
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 1.0,
+            },
+        },
+    },
+
+    ("Canon_AP_90_mm_GIAT_F1", "canon", None, False): { # AML-90 CN 90 F1 (OOC 90-62) HEAT 350mm pen
+        "Ammunition": {
+            "display": "CN 90 F1 (OOC 90-62)",
+            "token": "IYNTZCWPLE",
+            "Arme": {
+                "Index": 16, # HEAT
+            },
+        },
+    },
+
+    ("Canon_HE_90_mm_GIAT_F1", "canon", None, False): { # AML-90 CN 90 F1 (HE)
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 1.0,
+            },
+        },
+    },
+
+    ("Canon_AP_90mm_M47", "canon", None, False): { # M47 - M36 (M431) HEAT 320mm pen
+        "Ammunition": {
+            "display": "M36 (M431)",
+            "token": "MFHUTOSGWJ",
+        },
+    },
+
+    ("Canon_HE_90mm_M47", "canon", None, False): { # M47 - M36 (HE)
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 1.0,
+            },
+        },
+    },
+
+    ("Canon_AP_75mm_SA_50", "canon", None, False): { # AMX-13 T75 - 75 SA 50 (PCOT-51P)
+        "Ammunition": {
+            "display": "75 SA 50 (PCOT-51P)",
+            "token": "QOEXRTPMSV",
+        },
+    },
+
     ("Canon_HE_142mm_AVRE", "canon", None, False): { # French Demo Gun HESH
         "Ammunition": {
             "parent_membr": {
@@ -960,6 +1089,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "PhysicalDamages": 3,
                 "AimingTime": 2.0,
             },
+            "display": "M135 (PCOT-51P)",
+            "token": "DOCLDCENLS",
         },
     },
 }
