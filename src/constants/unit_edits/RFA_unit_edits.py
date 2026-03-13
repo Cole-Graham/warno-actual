@@ -1346,7 +1346,7 @@ rfa_unit_edits = {
     },
 
     "Leopard_2A3_RFA": {
-        "CommandPoints": 185,
+        "CommandPoints": 180,
         "availability": [0, 6, 4, 0],
         # "WeaponDescriptor": {
         #     "Salves": {

@@ -2127,8 +2127,8 @@ rda_unit_edits = {
     },
     
     "T72MUV2_DDR": {
-        "CommandPoints": 160,
-        "availability": [0, 6, 4, 0],
+        "CommandPoints": 155,
+        "availability": [6, 4, 0, 0],
     },
 
     "T72M1_DDR": {
