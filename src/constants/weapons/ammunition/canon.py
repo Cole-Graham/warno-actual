@@ -1089,7 +1089,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "PhysicalDamages": 3,
                 "AimingTime": 2.0,
             },
-            "display": "M135 (PCOT-51P)",
+            "display": "M135 (???)",
             "token": "DOCLDCENLS",
         },
     },

@@ -3898,11 +3898,29 @@ sov_unit_edits = {
     "ZSU_23_Shilka_early_SOV": {
         "CommandPoints": 85,
         "availability": [6, 4, 0, 0],
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 220,
+            },
+            "TimeBetweenEachIdentifyRoll": 1.0,
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'good_airoptics'"],
+        },
     },
 
    "ZSU_23_Shilka_SOV": {
         "CommandPoints": 85,
         "availability": [6, 4, 0, 0],
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 220,
+            },
+            "TimeBetweenEachIdentifyRoll": 1.0,
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'good_airoptics'"],
+        },
     },
 
     "Tunguska_2K22_SOV": {

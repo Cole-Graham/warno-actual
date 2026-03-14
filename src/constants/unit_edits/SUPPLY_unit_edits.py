@@ -201,7 +201,7 @@ supply_unit_edits = {
         },
     },
     
-     "BAV_485_Supply_POL": {
+    "BAV_485_Supply_POL": {
         "SupplyCapacity": 850.0,
         "CommandPoints": 35,
         "SupplyDescriptor": "SquadSupply",
@@ -230,6 +230,13 @@ supply_unit_edits = {
             },
         },
         "SupplyDescriptor": "SquadSupply",
+        "tow_only": True,
+        "orders": {
+            "add_orders": ["EOrderType/UnloadFromTransport", "EOrderType/UnloadAtPosition", "EOrderType/Load"]
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'_transport2'"],
+        },
         "availability": [5, 0, 0, 0],
     },
     
@@ -289,6 +296,18 @@ supply_unit_edits = {
         "availability": [2, 0, 0, 0],
         "UpgradeFromUnit": "GAZ_66B_supply_POL",
     },
+
+    "Berliet_GBC_8KT_supply_FR": {
+        "SupplyCapacity": 1750.0,
+        "CommandPoints": 55,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "SupplyDescriptor": "PrimarySupply",
+        "availability": [2, 0, 0, 0],
+    },
     
     "Bedford_MJ_4t_UK": {
         "SupplyCapacity": 1750.0,
@@ -327,6 +346,13 @@ supply_unit_edits = {
         "SupplyDescriptor": "PrimarySupply",
         "availability": [2, 0, 0, 0],
     },
+
+    "Berliet_GBU_15_supply_FR": {
+        "SupplyCapacity": 2000.0,
+        "CommandPoints": 70,
+        "SupplyDescriptor": "PrimarySupply",
+        "availability": [2, 0, 0, 0],
+    },
     
     "M812_supply_US": { # M813A1 SUPPLY
         "SupplyCapacity": 2000.0,
@@ -351,6 +377,16 @@ supply_unit_edits = {
         "SupplyDescriptor": "PrimarySupply",
         "availability": [2, 0, 0, 0],
         "UpgradeFromUnit": "Ural_4320_SOV",
+    },
+
+    "TRM_10000_supply_FR": {
+        "SupplyCapacity": 2300.0,
+        "CommandPoints": 80,
+        "SupplyDescriptor": "DvisionalSupply",
+        "availability": [2, 0, 0, 0],
+        "GameName": {
+            "display": "TRM-10000 LOG.",
+        },
     },
     
     "T813_DDR": {

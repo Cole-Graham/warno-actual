@@ -16,7 +16,7 @@ rfa_unit_edits = {
         "SpecialtiesList": {
             "remove_specs": ["'_para'"],
         },
-        "DeploymentShift": 0,
+        
     },
 
     "Faun_Kraka_CMD_RFA": {
@@ -377,7 +377,7 @@ rfa_unit_edits = {
                 "turrets": {
                     "remove": [1],
                 },
-                "remove": [(1, "MMG_PKM_7_62mm")],
+                "remove": [(1, "MMG_inf__MG3_7_62mm")],
                 "insert_edits": {
                     2: {
                         "turret_edits": {
@@ -592,9 +592,9 @@ rfa_unit_edits = {
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "turrets": {
-                    "remove": [2],
+                    "remove": [1],
                 },
-                "remove": [(2, "Sniper_G3A3ZF")],
+                "remove": [(1, "Sniper_G3A3ZF")],
                 "insert_edits": {
                     2: {
                         "turret_edits": {
@@ -1805,16 +1805,21 @@ rfa_unit_edits = {
     },
     
     "Gepard_1A2_RFA": { # Gepard 1A1
-        "CommandPoints": 90,
+        "CommandPoints": 95,
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 220,
+                "EOpticalStrength/HighAltitude": 300,
             },
             "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "availability": [6, 4, 0, 0],
         "SpecialtiesList": {
-            "add_specs": ["'good_airoptics'"],
+            "add_specs": ["'verygood_airoptics'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canons_Oerlikon_GDF_35mm": 16,
+            },
         },
     },
 

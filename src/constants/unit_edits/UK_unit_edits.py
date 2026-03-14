@@ -1913,7 +1913,7 @@ uk_unit_edits = {
     },
     
     "Lynx_AH_Mk7_Chancellor_UK": {
-        "CommandPoints": 55,
+        "CommandPoints": 50,
         "availability": [0, 4, 0, 0],
     },
 

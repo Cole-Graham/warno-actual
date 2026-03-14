@@ -1016,7 +1016,7 @@ pol_unit_edits = {
         "max_speed": 26,
         "availability": [12, 0, 0, 0],
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_light'"],
+            "add_specs": ["'infantry_equip_medium'"],
         },
         "GameName": {
             "display": "REZERWIŚCI"
