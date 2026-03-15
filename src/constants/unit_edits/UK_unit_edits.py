@@ -1740,6 +1740,14 @@ uk_unit_edits = {
     # UK RECON
     "LandRover_Yeoman_UK": {
         "CommandPoints": 25,
+        "WeaponDescriptor": {
+             "equipmentchanges": {
+                "replace": [("MMG_inf_MAG_7_62mm", "MMG_FN_MAG_7_62mm")],
+            },
+            "Salves": {
+                "MMG_inf_MAG_7_62mm": 36,
+            },
+        },
     },
     
     "FV103_Spartan_UK": {

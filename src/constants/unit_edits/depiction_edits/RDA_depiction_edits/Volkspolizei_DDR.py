@@ -10,11 +10,12 @@ volkspolizei_ddr: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
         ("AllWeaponAlternatives_Volkspolizei_DDR", None): { # (namespace, object type)
             # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "add", "remove", "replace")
             1: ("insert", [("SelectorId", "WeaponAlternative_2"),("MeshDescriptor", "RPG18")]), # (selector_id or mesh)
+            2: ("edit", [("ReferenceMeshForSkeleton", "RPG18")]),
         },
 
         ("AllWeaponSubDepiction_Volkspolizei_DDR", "TemplateAllSubWeaponDepiction"): {
             "Operators": {
-                1: ("insert", [("FireEffectTag", "RocketInf_RPG18_64mm")]),
+                1: ("insert", [("FireEffectTag", "RocketInf_RPG18_64mm"), ("WeaponShootDataPropertyName", "WeaponShootData_0_2")]),
             },
         },
 

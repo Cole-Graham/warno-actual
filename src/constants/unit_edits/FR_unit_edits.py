@@ -1235,7 +1235,7 @@ fr_unit_edits = {
         "CommandPoints": 20,
         "WeaponDescriptor": {
             "Salves": {
-                "MMG_AANF1_7_62mm": 44,
+                "MMG_AA52_7_5mm": 44,
             },
         },
     },
@@ -1397,7 +1397,7 @@ fr_unit_edits = {
         "availability": [0, 6, 0, 0],
     },
 
-    "EH60A_EW_US": {
+    "Puma_HET_FR": {
         "CommandPoints": 75,
         "availability": [0, 3, 0, 0],
     },

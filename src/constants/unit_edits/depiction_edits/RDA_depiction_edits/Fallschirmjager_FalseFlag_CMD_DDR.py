@@ -16,8 +16,9 @@ fallschirmjager_falseflag_cmd_ddr: Dict[str, Dict[Union[str, Tuple[str, str]], d
 
         ("AllWeaponSubDepiction_Fallschirmjager_FalseFlag_CMD_DDR", "TemplateAllSubWeaponDepiction"): {
             "Operators": {
-                1: ("insert", [("FireEffectTag", "SAW_M249_5_56mm")]),
-                3: ("insert", [("FireEffectTag", "Grenade_SMOKE")]),
+                1: ("insert", [("FireEffectTag", "SAW_M249_5_56mm"), ("WeaponShootDataPropertyName", "WeaponShootData_0_2")]),
+                3: ("insert", [("FireEffectTag", "Grenade_SMOKE"), ("WeaponShootDataPropertyName", "WeaponShootData_0_4")]),
+                2: ("edit", [("FireEffectTag", "RocketInf_M72_LAW_66mm"), ("WeaponShootDataPropertyName", "WeaponShootData_0_3")]),
             },
         },
 

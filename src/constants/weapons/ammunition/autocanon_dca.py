@@ -124,6 +124,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
+                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 2100,
                 "AimingTime": 1.2,
             },
         },
@@ -137,6 +139,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
+                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 2100,
                 "AimingTime": 1.2,
             },
         },
@@ -197,7 +201,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("DCA_2_canons_2A38M_30mm", "DCA", None, False): { # 262
+    ("DCA_2_canons_2A38M_30mm", "DCA", None, False): { # Tunguska
         "Ammunition": {
             "hit_roll": {
                 "Idling": 45,
@@ -235,7 +239,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("DCA_2_canons_Oerlikon_GDF_35mm", "DCA", None, False): { # 262
+    ("DCA_2_canons_Oerlikon_GDF_35mm", "DCA", None, False): { # Gepard
         "Ammunition": {
             "hit_roll": {
                 "Idling": 45,
@@ -244,8 +248,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "TimeBetweenTwoShots": 0.1,
                 "TimeBetweenTwoFx": 0.1,
-                "MaximumRangeHelicopterGRU": 2800,
-                "MaximumRangeAirplaneGRU": 2625,
+                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 2450,
                 "PhysicalDamages": 0.7,
                 "AimingTime": 1.2,
                 "TimeBetweenTwoSalvos": 1.0,
@@ -264,8 +268,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoShots": 0.1,
                 "TimeBetweenTwoFx": 0.1,
                 "MaximumRangeGRU": 1575,
-                "MaximumRangeHelicopterGRU": 2800,
-                "MaximumRangeAirplaneGRU": 2625,
+                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 2450,
                 "PhysicalDamages": 0.7,
                 "AimingTime": 1.2,
                 "TimeBetweenTwoSalvos": 1.0,

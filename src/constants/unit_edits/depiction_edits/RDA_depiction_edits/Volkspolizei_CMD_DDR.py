@@ -11,12 +11,13 @@ volkspolizei_cmd_ddr: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
             # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "add", "remove", "replace")
             1: ("insert", [("SelectorId", "WeaponAlternative_2"),("MeshDescriptor", "RPG18")]), # (selector_id or mesh)
             2: ("insert", [("SelectorId", "WeaponAlternative_3"),("MeshDescriptor", "MainNue")]),
+            3: ("edit", [("ReferenceMeshForSkeleton", "RPG18")]),
         },
 
         ("AllWeaponSubDepiction_Volkspolizei_CMD_DDR", "TemplateAllSubWeaponDepiction"): {
             "Operators": {
-                1: ("insert", [("FireEffectTag", "RocketInf_RPG18_64mm")]),
-                2: ("insert", [("FireEffectTag", "Grenade_SMOKE")]),
+                1: ("insert", [("FireEffectTag", "RocketInf_RPG18_64mm"), ("WeaponShootDataPropertyName", "WeaponShootData_0_2")]),
+                2: ("insert", [("FireEffectTag", "Grenade_SMOKE"), ("WeaponShootDataPropertyName", "WeaponShootData_0_3")]),
             },
         },
 

@@ -19,6 +19,12 @@ sniper_fj_ddr: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
                 2: ("insert", [("FireEffectTag", "RocketInf_RPG18_64mm"), ("WeaponShootDataPropertyName", "WeaponShootData_0_3")]),
             },
         },
+
+        ("TacticDepiction_Sniper_FJ_DDR_Soldier", "TemplateInfantryDepictionFactoryTactic"): {
+            "Operators": { # usually (always?) editing conditional tags submember
+                1: ("insert", [("bazooka", "WeaponAlternative_3")]),
+            },
+        },
     }
 }
 # fmt: on
