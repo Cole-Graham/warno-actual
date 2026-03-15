@@ -684,5 +684,68 @@ UK_NEW_UNITS = {
             },
         }
     },
+
+    # AA
+
+    ("Tracked_Rapier_UK", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "5e49cc1f-d394-4a13-b6a8-e73d462ec29e",
+        "InfantrySquadModuleGUID": "cd38e351-ebe0-479a-80be-7b9f02dc313f",
+        "ShowroomGUID": "336f4bed-1255-4991-a845-1cd36f149b9f",
+        "CadavreGUID": "d05c2709-4fc9-4011-9c6b-b1bccb216d7a",
+        "NewName": "Tracked_Rapier_FSA_UK", 
+        "GameName": {
+            "display": "Tracked Rapier FSB1",
+            "token": "LLNGLALYWJ",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Canon_AA",
+                "Canon_AA_Standard",
+                "GroundUnits",
+                "UNITE_Tracked_Rapier_FSA_UK",
+                "Unite"
+            ],
+        },
+        "CommandPoints": 105,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "SpecialtiesList": [
+            "_amphibie",
+            "_smoke_launcher",
+            "verygood_airoptics"
+        ],
+        "Factory": "EFactory/DCA",
+        "availability": [0, 3, 2, 0],
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 300,
+            },
+            "TimeBetweenEachIdentifyRoll": 1.0,
+        },
+        "UnitRole": "armor",
+        "UpgradeFromUnit": "Tracked_Rapier_UK",
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("SAM_RAPIER_salvolength8", "SAM_RAPIER_FSA_salvolength8")],
+            },
+
+        },
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack', 
+                   'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
+                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply', 
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "NATO",
+        "Nation": "UK",
+    },
 }
 # fmt: on

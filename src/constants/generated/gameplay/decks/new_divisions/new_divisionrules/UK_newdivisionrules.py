@@ -176,6 +176,7 @@ UK_armored_newdivisionrules = {
         ("DCA_Rapier_Darkfire_UK", 2, [4, 3, 0, 0], ["Rover_101FC_supply_UK"]),
         ("DCA_Bloodhound_UK", 1, [0, 3, 0, 0], ["Bedford_MJ_4t_UK"]),
         ("Tracked_Rapier_UK", 2, [4, 3, 0, 0]),
+        ("Tracked_Rapier_FSA_UK", 2, [0, 3, 2, 0]),
     ],
     "heli": [
         ("Gazelle_SNEB_UK", 2, [0, 8, 6, 0]),
@@ -306,6 +307,7 @@ UK_mechanized_newdivisionrules = {
         ("DCA_Rapier_Darkfire_UK", 2, [4, 3, 0, 0], ["Rover_101FC_supply_UK"]),
         ("DCA_Bloodhound_UK", 1, [0, 3, 0, 0], ["Bedford_MJ_4t_UK"]),
         ("Tracked_Rapier_UK", 2, [4, 3, 0, 0]),
+        ("Tracked_Rapier_FSA_UK", 2, [0, 3, 2, 0]),
     ],
     "heli": [
         ("Gazelle_SNEB_UK", 2, [0, 8, 6, 0]),
@@ -421,6 +423,7 @@ UK_motorized_newdivisionrules = {
         ("DCA_Rapier_FSA_UK", 1, [6, 4, 0, 0], ["Rover_101FC_supply_UK"]),
         ("DCA_Rapier_Darkfire_UK", 2, [4, 3, 0, 0], ["Rover_101FC_supply_UK"]),
         ("Tracked_Rapier_UK", 2, [4, 3, 0, 0]),
+        ("Tracked_Rapier_FSA_UK", 2, [0, 3, 2, 0]),
     ],
     "heli": [
         ("Gazelle_SNEB_UK", 2, [0, 8, 6, 0]),
