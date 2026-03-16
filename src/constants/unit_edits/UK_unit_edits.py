@@ -2225,6 +2225,10 @@ uk_unit_edits = {
 
     "Tracked_Rapier_UK": {
         "CommandPoints": 85,
+        "GameName": {
+            "display": "TRACKED RAPIER FSA",
+            "token": "TQRFBEXVTC",
+        },
         "optics": {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 220,

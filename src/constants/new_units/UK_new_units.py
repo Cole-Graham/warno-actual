@@ -694,7 +694,7 @@ UK_NEW_UNITS = {
         "CadavreGUID": "d05c2709-4fc9-4011-9c6b-b1bccb216d7a",
         "NewName": "Tracked_Rapier_FSA_UK", 
         "GameName": {
-            "display": "Tracked Rapier FSB1",
+            "display": "TRACKED RAPIER FSB1",
             "token": "LLNGLALYWJ",
         },
         "TagSet": {
@@ -708,7 +708,68 @@ UK_NEW_UNITS = {
                 "Unite"
             ],
         },
-        "CommandPoints": 105,
+        "CommandPoints": 110,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "SpecialtiesList": [
+            "_amphibie",
+            "_smoke_launcher",
+            "verygood_airoptics"
+        ],
+        "Factory": "EFactory/DCA",
+        "availability": [4, 3, 0, 0],
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 300,
+            },
+            "TimeBetweenEachIdentifyRoll": 1.0,
+        },
+        "UnitRole": "armor",
+        "UpgradeFromUnit": "Tracked_Rapier_UK",
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("SAM_RAPIER_salvolength8", "SAM_RAPIER_FSA_salvolength8")],
+            },
+
+        },
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack', 
+                   'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
+                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply', 
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "NATO",
+        "Nation": "UK",
+    },
+
+    ("Tracked_Rapier_UK", 1): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "82d04e00-aa94-4316-9dfa-5c9eaa1702a7",
+        "InfantrySquadModuleGUID": "764ff26e-6338-4ccb-a96c-e2e2c1028c4e",
+        "ShowroomGUID": "0471c0e7-a3ef-4a6b-a903-36e2f13bc8e2",
+        "CadavreGUID": "ea4dd6b3-24dc-4a75-9772-63014eb9df19",
+        "NewName": "Tracked_Rapier_FSB2_UK", 
+        "GameName": {
+            "display": "TRACKED RAPIER FSB2 DARKFIRE",
+            "token": "FOPGJBDPVU",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Canon_AA",
+                "Canon_AA_Standard",
+                "GroundUnits",
+                "UNITE_Tracked_Rapier_FSB2_UK",
+                "Unite"
+            ],
+        },
+        "CommandPoints": 125,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -728,10 +789,10 @@ UK_NEW_UNITS = {
             "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "UnitRole": "armor",
-        "UpgradeFromUnit": "Tracked_Rapier_UK",
+        "UpgradeFromUnit": "Tracked_Rapier_FSA_UK",
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("SAM_RAPIER_salvolength8", "SAM_RAPIER_FSA_salvolength8")],
+                "replace": [("SAM_RAPIER_salvolength8", "SAM_RAPIER_DARKFIRE_salvolength8")],
             },
 
         },

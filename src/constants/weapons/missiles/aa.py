@@ -174,9 +174,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
         "SupplyCost": 90.0,
         "WeaponDescriptor": {
-            "SalvoLengths": [6],
+            "SalvoLengths": [8, 6],
             "units": {
                 6: ["DCA_Rapier_Darkfire_UK"],
+                8: ["Tracked_Rapier_FSB2_UK"],
             },
         },
     },
