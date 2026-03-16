@@ -1202,6 +1202,9 @@ rda_unit_edits = {
             "equipmentchanges": {
                 "quantity": {
                     "FM_Mpi_AKS_74NK": 7,
+                    "MMG_PKM_7_62mm": 1,
+                    "SAW_lMG_K_7_62mm": 1,
+                    "RocketInf_RPG7VL": 1,
                 },
                 "insert": [(2, "MMG_PKM_7_62mm")],
                     "insert_edits": {
@@ -1252,6 +1255,9 @@ rda_unit_edits = {
              "equipmentchanges": {
                 "quantity": {
                     "FM_Mpi_AKS_74NK": 7,
+                    "MMG_PKM_7_62mm": 1,
+                    "SAW_lMG_K_7_62mm": 1,
+                    "ATGM_9K115_Metis_M": 1,
                 },
             "insert": [(2, "MMG_PKM_7_62mm")],
                 "insert_edits": {
