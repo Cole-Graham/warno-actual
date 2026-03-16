@@ -2754,6 +2754,16 @@ sov_unit_edits = {
         "CommandPoints": 30,
     },
 
+    "BTR_152K_SOV": {
+        "CommandPoints": 20,
+        "orders": {
+            "add_orders": ["EOrderType/Sell"],
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+    },
+
     "BTR_60_SOV": {
         "CommandPoints": 20,
         "strength": 10,

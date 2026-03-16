@@ -2305,11 +2305,17 @@ pol_unit_edits = {
     },
     
     "OT_65_POL": {  # OT-65
-        "CommandPoints": 15,
         "GameName": {
             "display": "#RECO1 OT-65",
         },
         "UpgradeFromUnit": "BRDM_1_POL",
+        "CommandPoints": 15,
+        "orders": {
+            "add_orders": ["EOrderType/Sell"],
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
     },
     
     "MTLB_TRI_Hors_POL": {  # TRI Hors

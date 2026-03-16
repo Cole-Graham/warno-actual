@@ -386,7 +386,7 @@ US_mechanized_newdivisionrules = {
         ("M48_Chaparral_MIM72F_US", 2, [0, 3, 2, 0]),
         ("M163_PIVADS_US", 2, [8, 6, 0, 0]),
         ("DCA_M167A2_Vulcan_20mm_US", 1, [10, 7, 0, 0], ["M1038_Humvee_US"]),
-        ("M163_CS_US", 2, [7, 5, 0, 0]),
+        ("M163_CS_US", 2, [8, 6, 0, 0]),
         ("M42_Duster_US", 1, [10, 0, 0, 0]),
         ("OH58_CS_US", 1, [0, 4, 3, 0]),
         ("MANPAD_Stinger_C_US", 2, [7, 5, 0, 0], ["M151_MUTT_trans_US"]),

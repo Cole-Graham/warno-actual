@@ -2307,6 +2307,13 @@ uk_unit_edits = {
         },
     },
 
+    "CH47D_Chinook_SAS_UK": {
+        "CommandPoints": 65,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+    },
+
     "Lynx_AH_Mk1_UK": {
         "CommandPoints": 50,
         "SpecialtiesList": {

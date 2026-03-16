@@ -20,7 +20,7 @@ RFA_airborne_newdivisionrules = {
     ],
     "infantry": [
         ("Fallschirmjager_CMD_RFA", 1, [0, 0, 5, 4], ["Unimog_trans_RFA"]),
-        ("Gebirgsjager_CMD_RFA", 1, [0, 0, 4, 3], ["Faun_kraka_RFA", "UH1D_RFA"]),
+        ("Gebirgsjager_CMD_RFA", 1, [0, 0, 4, 3], ["DaimlerBenz_Typ1017_trans_RFA", "UH1D_RFA"]),
         ("Hochgebirgjager_RFA", 2, [0, 0, 4, 3], ["DaimlerBenz_Typ1017_trans_RFA", "UH1D_RFA"]),
         ("Fallschirm_RFA", 3, [0, 6, 4, 0], ["Unimog_trans_RFA"]),
         ("Fallschirm_Reserve_RFA", 3, [8, 0, 0, 0], ["Unimog_trans_RFA"]),

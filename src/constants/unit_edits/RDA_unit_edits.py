@@ -2234,6 +2234,9 @@ rda_unit_edits = {
 
     "OT_65_DDR": {
         "CommandPoints": 15,
+         "orders": {
+            "add_orders": ["EOrderType/Sell"],
+        },
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'",],
         },
@@ -2324,6 +2327,19 @@ rda_unit_edits = {
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
+        },
+    },
+
+    "Scout_Reserve_DDR": {
+        "CommandPoints": 10,
+        "armor": "Infantry_armor_reference",
+        "availability": [8, 0, 0, 0],
+        "max_speed": 26,
+        "capacities": {
+            "add_capacities": ["reserviste"],
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'_reservist'", "'infantry_equip_light'", "'_swift'"],
         },
     },
     

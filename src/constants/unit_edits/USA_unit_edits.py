@@ -2227,6 +2227,9 @@ usa_unit_edits = {
     
     "M1025_Humvee_MP_US": {
         "CommandPoints": 20,
+        "orders": {
+            "add_orders": ["EOrderType/Sell"],
+        },
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'",],
         },
@@ -2234,6 +2237,9 @@ usa_unit_edits = {
     
     "CGage_Peacekeeper_US": {
         "CommandPoints": 20,
+         "orders": {
+            "add_orders": ["EOrderType/Sell"],
+        },
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'",],
         },
@@ -3226,6 +3232,11 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
+    },
+
+    "OH58A_reco_NG_US": {
+        "CommandPoints": 30,
+        "availability": [6, 0, 0, 0],
     },
 
     "OH58C_Scout_US": {
