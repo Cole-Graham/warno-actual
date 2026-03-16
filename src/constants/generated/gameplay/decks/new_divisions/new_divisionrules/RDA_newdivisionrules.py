@@ -278,7 +278,7 @@ RDA_mechanized_newdivisionrules = {
     "recon": [
         ("HvyScout_DDR", 1, [6, 4, 0, 0], ["W50_LA_A_DDR", "BMP_1P_reco_DDR", "Mi_2_trans_DDR"]),
         ("Scout_DDR", 1, [8, 6, 0, 0], ["UAZ_469_trans_DDR", "UAZ_469_Reco_DDR", "UAZ_469_AGL_Grenzer_DDR"]),
-        ("Scout_Reserve_DDR", 1, [8, 0, 0, 0], ["OT_65_DDR"]),
+        ("Scout_Reserve_DDR", 1, [10, 0, 0, 0], ["OT_65_DDR"]),
         ("Scout_KdA_DDR", 1, [8, 0, 0, 0], ["W50_LA_A_DDR"]),
         ("BRDM_2_DDR", 1, [8, 6, 0, 0]),
         ("BRM_1_DDR", 2, [6, 4, 0, 0]),

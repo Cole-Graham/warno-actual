@@ -2331,12 +2331,20 @@ rda_unit_edits = {
     },
 
     "Scout_Reserve_DDR": {
-        "CommandPoints": 10,
+        "CommandPoints": 15,
         "armor": "Infantry_armor_reference",
-        "availability": [8, 0, 0, 0],
+        "availability": [10, 0, 0, 0],
         "max_speed": 26,
+        "strength": 4,
         "capacities": {
             "add_capacities": ["reserviste"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_KMS_72": 3,
+                },
+            },
         },
         "SpecialtiesList": {
             "add_specs": ["'_reservist'", "'infantry_equip_light'", "'_swift'"],
