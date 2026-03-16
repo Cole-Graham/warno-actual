@@ -1627,6 +1627,7 @@ fr_unit_edits = {
         },
     },
     # FR HELICOPTER
+
     "Super_Puma_FR": {
         "CommandPoints": 50,
         "SpecialtiesList": {
@@ -1694,28 +1695,59 @@ fr_unit_edits = {
 
     
     #FR AIR
-    "Mirage_5_F_nplm_FR": {
-        "CommandPoints": 160,
-        "availability": [0, 3, 0, 0],
+
+    "Alpha_Jet_E_CLU_FR": {
+        "CommandPoints": 85,
+        "availability": [0, 4, 0, 0],
     },
-    
-    "Mirage_5_F_clu_FR": {
+
+    "Alpha_Jet_E_FR": {
+        "CommandPoints": 95,
+        "availability": [0, 4, 0, 0],
+    },
+
+    "Alpha_Jet_E_NPLM_FR": {
+        "CommandPoints": 75,
+        "availability": [0, 4, 0, 0],
+    },
+
+    "CM170_Magister_SS11_FR": {
+        "CommandPoints": 65,
+        "availability": [0, 5, 0, 0],
+    },
+
+    "Jaguar_ATGM_FR": {
+        "CommandPoints": 150,
+        "availability": [0, 3, 2, 0],
+    },
+
+    "Jaguar_HE_FR": {
         "CommandPoints": 200,
         "availability": [0, 2, 0, 0],
     },
-    
-    "Mirage_2000_C_FR": {
-        "CommandPoints": 175,
+
+    "Jaguar_clu_FR": {
+        "CommandPoints": 205,
+        "availability": [0, 2, 0, 0],
+    },
+
+    "Jaguar_nplm_FR": {
+        "CommandPoints": 190,
+        "availability": [0, 2, 0, 0],
+    },
+
+    "Jaguar_LGB_FR": { # LGB
+        "CommandPoints": 215,
+        "availability": [0, 0, 0, 1],
+    },
+
+    "Jaguar_RKT_FR": {
+        "CommandPoints": 125,
         "availability": [0, 3, 2, 0],
     },
-    
-    "Jaguar_HE_FR": {
-        "CommandPoints": 200,
-        "availability": [0, 2, 0, 1],
-    },
-    
-    "Jaguar_ATGM_FR": {
-        "CommandPoints": 150,
+
+    "Jaguar_RKT2_FR": {
+        "CommandPoints": 125,
         "availability": [0, 3, 2, 0],
     },
     
@@ -1750,8 +1782,50 @@ fr_unit_edits = {
             },
         },
     },
+
+    "Mirage_2000_C_FR": {
+        "CommandPoints": 175,
+        "availability": [0, 3, 2, 0],
+    },
+
+    "Mirage_2000_C_RDM_AA1_FR": {
+        "CommandPoints": 140,
+        "availability": [0, 3, 2, 0],
+    },
+
+    "Mirage_2000_C_RDM_AA2_FR": {
+        "CommandPoints": 155,
+        "availability": [0, 3, 2, 0],
+    },
+
+    "Mirage_5_F_FR": {
+        "CommandPoints": 200,
+        "availability": [0, 2, 0, 0],
+    },
+
+    "Mirage_5_F_nplm_FR": {
+        "CommandPoints": 160,
+        "availability": [0, 3, 0, 0],
+    },
     
+    "Mirage_5_F_clu_FR": {
+        "CommandPoints": 200,
+        "availability": [0, 2, 0, 0],
+    },
+    
+    "Mirage_F1_C_FR": {
+        "CommandPoints": 150,
+        "availability": [0, 3, 2, 0],
+    },
+
+    "Mirage_F1_CT_FR": { # LGB bomber
+        "CommandPoints": 210,
+        "availability": [0, 0, 0, 1],
+    },
+
     "Mirage_IV_SEAD_FR": { # Martel 5250m
+        "CommandPoints": 240,
+        "availability": [0, 2, 0, 1],
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 10000.0,
@@ -1761,14 +1835,65 @@ fr_unit_edits = {
             },
         },
     },
+
+    "Mirage_IV_FR": { #
+        "CommandPoints": 230,
+        "availability": [0, 2, 0, 0],
+    },
+    
     "Mirage_III_E_FR": {
         "CommandPoints": 110,
         "strength": 10,
         "availability": [0, 4, 3, 2],
     },
-    
-    "Mirage_F1_C_FR": {
-        "CommandPoints": 150,
+
+    "Mirage_III_E_ATGM_FR": {
+        "CommandPoints": 115,
+        "strength": 10,
+        "availability": [0, 4, 3, 0],
+    },
+
+    "Mirage_III_E_SEAD_FR": {
+        "CommandPoints": 130,
+        "strength": 10,
+        "availability": [0, 2, 0, 1],
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 10000.0,
+            },
+            "OpticalStrengths": {
+                "EOpticalStrength/AntiRadar": 5000.0,
+            },
+        },
+    },
+
+    "F8P_Crusader_FR": {
+        "CommandPoints": 75,
+        "availability": [0, 0, 4, 3],
+    },
+
+    "F8P_Crusader_AA2_FR": {
+        "CommandPoints": 85,
+        "availability": [0, 0, 4, 3],
+    },
+
+    "Super_Etendard_AT_FR": {
+        "CommandPoints": 170,
+        "availability": [0, 2, 0, 1],
+    },
+
+    "Super_Etendard_CLU_FR": {
+        "CommandPoints": 210,
+        "availability": [0, 2, 0, 0],
+    },
+
+    "Super_Etendard_HE_FR": {
+        "CommandPoints": 225,
+        "availability": [0, 2, 0, 0],
+    },
+
+    "Super_Etendard_FR": {
+        "CommandPoints": 125,
         "availability": [0, 3, 2, 0],
     },
 }

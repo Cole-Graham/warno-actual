@@ -483,10 +483,9 @@ rda_unit_edits = {
                 },
             },
             "Salves": {
-                "insert": [(3, 3)],
+                "insert": [(1, 18)],
                 "RocketInf_RPG18_64mm": 7,
                 "FM_Mpi_AKS_74NK": 11,
-                "SAW_lMG_K_7_62mm": 36,
             },
         },
         "selector_tactic": "(2, 4)",
@@ -577,10 +576,9 @@ rda_unit_edits = {
                 },
             },
             "Salves": {
-                "insert": [(3, 3)],
+                "insert": [(1, 18)],
                 "RocketInf_RPG18_64mm": 7,
                 "FM_Mpi_AKS_74NK": 11,
-                "SAW_lMG_K_7_62mm": 36,
             },
         },
         "selector_tactic": "(2, 4)",
@@ -1201,40 +1199,39 @@ rda_unit_edits = {
             "add_specs": ["'infantry_equip_medium'"],
         },
         "WeaponDescriptor": {
-             "equipmentchanges": {
+            "equipmentchanges": {
                 "quantity": {
                     "FM_Mpi_AKS_74NK": 7,
-                    "MMG_PKM_7_62mm": 1,
                 },
-            "insert": [(2, "MMG_PKM_7_62mm")],
-                "insert_edits": {
-                    2: {
-                        "turret_edits": {
-                            "YulBoneOrdinal": 3,
+                "insert": [(2, "MMG_PKM_7_62mm")],
+                    "insert_edits": {
+                        2: {
+                            "turret_edits": {
+                                "YulBoneOrdinal": 3,
+                            },
+                            "AmmoBoxIndex": 2,
+                            "HandheldEquipmentKey": "'WeaponAlternative_3'",
+                            "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
+                            "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
+                            "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
                         },
-                        "AmmoBoxIndex": 2,
-                        "HandheldEquipmentKey": "'WeaponAlternative_3'",
-                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
-                        "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
-                        "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
-                    },
-                    3: {
-                        "turret_edits": {
-                            "YulBoneOrdinal": 4,
+                        3: {
+                            "turret_edits": {
+                                "YulBoneOrdinal": 4,
+                            },
+                            "AmmoBoxIndex": 3,
+                            "HandheldEquipmentKey": "'WeaponAlternative_4'",
+                            "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_4'",
+                            "WeaponIgnoredPropertyName": "'WeaponIgnored_4'",
+                            "WeaponShootDataPropertyName": ["WeaponShootData_0_4"],
                         },
-                        "AmmoBoxIndex": 3,
-                        "HandheldEquipmentKey": "'WeaponAlternative_4'",
-                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_4'",
-                        "WeaponIgnoredPropertyName": "'WeaponIgnored_4'",
-                        "WeaponShootDataPropertyName": ["WeaponShootData_0_4"],
                     },
-                },
             },
-            "Salves": {
-                "insert": [(4, 6)],
-                "FM_Mpi_AKS_74NK": 11,
-                "RocketInf_RPG7VL": 36,
-            },
+                    "Salves": {
+                        "insert": [(4, 6)],
+                        "FM_Mpi_AKS_74NK": 11,
+                        "RocketInf_RPG7VL": 36,
+                    },
         },
     },
 
@@ -1255,7 +1252,6 @@ rda_unit_edits = {
              "equipmentchanges": {
                 "quantity": {
                     "FM_Mpi_AKS_74NK": 7,
-                    "MMG_PKM_7_62mm": 1,
                 },
             "insert": [(2, "MMG_PKM_7_62mm")],
                 "insert_edits": {
