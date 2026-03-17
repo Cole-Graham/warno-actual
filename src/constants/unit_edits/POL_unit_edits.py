@@ -1293,19 +1293,6 @@ pol_unit_edits = {
          "GameName": {
             "display": "M wz.43 160mm",
         },
-        "TagSet": {
-            "overwrite_all": [
-                 "AllUnits",
-                "AllowedForMissileRoE",
-                "Artillerie",
-                "Artillerie_Courte_Portee",
-                "CanBeAirlifted",
-                "GroundUnits",
-                "UNITE_Mortier_M43_160mm_POL",
-                "Unite",
-                "Unite_transportable"
-            ],
-        },
     },
 
     "Mortier_PM43_120mm_POL": {  # M wz.43 120mm
@@ -2126,22 +2113,27 @@ pol_unit_edits = {
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "quantity": {
-                    "FM_kbk_AKM": 5,
+                    "FM_kbk_AK": 5,
                 },
-                "replace": [("FM_kbk_AKM", "FM_kbk_AK")],
-                "insert": [(1, "Sniper_SVD_Dragunov")], # (turret, weapon)
+                "replace": [("FM_kbk_AKM", "FM_kbk_AK"), ("RocketInf_RPG76_Komar", "Sniper_SVD_Dragunov")],
+                "insert": [(2, "RocketInf_RPG76_Komar")], # (turret, weapon)
                 "insert_edits": {
-                    1: {
+                    2: {
                         "turret_edits": {
-                            "YulBoneOrdinal": 2,
+                            "YulBoneOrdinal": 3,
                         },
-                        "AmmoBoxIndex": 1,
-                        "HandheldEquipmentKey": "'WeaponAlternative_2'",
-                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
-                        "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
-                        "WeaponShootDataPropertyName": ["WeaponShootData_0_2"],
+                        "AmmoBoxIndex": 2,
+                        "HandheldEquipmentKey": "'WeaponAlternative_3'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
                     },
                 },
+            },
+            "Salves": {
+                "FM_kbk_AK": 11,
+                "Sniper_SVD_Dragunov": 10,
+                "insert": [(2, 6)],
             },
         },
     },

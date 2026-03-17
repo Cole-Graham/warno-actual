@@ -11,11 +11,13 @@ scout_para_pol: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
             # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "insert", "remove")
             # always insert and/or remove first, then define the rest based on adjusted indices
             1: ("insert", [("SelectorId", "WeaponAlternative_2"), ("MeshDescriptor", "Dragunov")]),
+            2: ("edit", [("SelectorId", "WeaponAlternative_3")]),
         },
 
         ("AllWeaponSubDepiction_Scout_para_POL", "TemplateAllSubWeaponDepiction"): {
             "Operators": {
                 1: ("insert", [("FireEffectTag", "Sniper_SVD_Dragunov"), ("WeaponShootDataPropertyName", "WeaponShootData_0_2")]),
+                2: ("edit", [("WeaponShootDataPropertyName", "WeaponShootData_0_3")]),
             },
         },
     }

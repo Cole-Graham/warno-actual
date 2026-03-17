@@ -752,6 +752,10 @@ rda_unit_edits = {
                 'infantry_equip_light',
             ],
         },
+        "orders": {
+            "add_orders": ["EOrderType/ShootOnPositionSmoke",
+                "EOrderType/ShootOnPositionWithoutCorrectionSmoke"],
+        },
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "availability": [0, 7, 0, 0],
@@ -788,7 +792,7 @@ rda_unit_edits = {
                 },
             },
             "Salves": {
-                "insert": [(1, 7), (2, 3)],
+                "insert": [(1, 5), (2, 3)],
             },
         },
         "selector_tactic": "(0, 6)",
@@ -863,7 +867,7 @@ rda_unit_edits = {
         },
     },
 
-     "Volkspolizei_DDR": {
+    "Volkspolizei_DDR": {
         "CommandPoints": 15,
         "armor": "Infantry_armor_reference",
         "availability": [12, 0, 0, 0],
@@ -887,7 +891,7 @@ rda_unit_edits = {
                 },
             },
             "Salves": {
-                "insert": [(1, 7)],
+                "insert": [(1, 5)],
             },
         },
         "SpecialtiesList": {
