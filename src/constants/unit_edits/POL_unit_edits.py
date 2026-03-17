@@ -393,7 +393,7 @@ pol_unit_edits = {
         "UnitRole": "infantry",
         "SpecialtiesList": {
             "overwrite_all": [
-                '_leader',
+                'leader_sov',
                 '_sf',
                 '_choc',
                 'infantry_equip_medium',
@@ -437,7 +437,7 @@ pol_unit_edits = {
         "UnitRole": "infantry",
         "SpecialtiesList": {
             "overwrite_all": [
-                '_leader',
+                'leader_sov',
                 '_sf',
                 '_choc',
                 '_para',
