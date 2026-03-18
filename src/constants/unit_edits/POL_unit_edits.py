@@ -452,9 +452,9 @@ pol_unit_edits = {
                     "PM_PM63_RAK": 8,
                     "Grenade_Satchel_Charge": 1,
                 },
-                "replace": [("FM_Tantal", "PM_PM63_RAK"),
-                        ("MMG_PKM_7_62mm", "Grenade_Satchel_Charge"),
-                        ("RocketInf_RPG7", "RocketInf_RPG76_Komar")],
+                "replace": [("FM_Tantal", "PM_PM63_RAK", "FM_Tantal", "PM_PM63_RAK"),
+                        ("MMG_PKM_7_62mm", "Grenade_Satchel_Charge", "MMG_PKM_7_62mm", "Grenade_Satchel_Charge"),
+                        ("RocketInf_RPG7", "RocketInf_RPG76_Komar", "RocketInf_RPG7", "RocketInf_RPG76_Komar")],
             },
             "Salves": {
                 "Grenade_Satchel_Charge": 5,
@@ -845,7 +845,9 @@ pol_unit_edits = {
         },
          "WeaponDescriptor": {
              "equipmentchanges": {
-                "replace": [("RocketInf_RPG7", "RocketInf_RPG7VL")],
+                "replace": [
+                    ("RocketInf_RPG7", "RocketInf_RPG7VL", "RocketInf_RPG7", "RocketInf_RPG7VL")
+                ],
             },
         },
         # 7x kbk AKM
@@ -877,7 +879,9 @@ pol_unit_edits = {
         },
          "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("RocketInf_RPG76_Komar", "RocketInf_RPG7")],
+                "replace": [
+                    ("RocketInf_RPG76_Komar", "RocketInf_RPG7", "RocketInf_RPG76_Komar", "RocketInf_RPG7")
+                ],
             },
             "Salves": {
                 "RocketInf_RPG7": 6,
@@ -1046,7 +1050,7 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("Ammo_Canon_HEAT_73_mm_SPG9_TOWED", "Ammo_Canon_HEAT_73_mm_SPG9D_TOWED")],
+                "replace": [("Canon_HEAT_73_mm_SPG9_TOWED", "Canon_HEAT_73_mm_SPG9D_TOWED")],
             },
         },
     },
@@ -2115,7 +2119,10 @@ pol_unit_edits = {
                 "quantity": {
                     "FM_kbk_AK": 5,
                 },
-                "replace": [("FM_kbk_AKM", "FM_kbk_AK"), ("RocketInf_RPG76_Komar", "Sniper_SVD_Dragunov")],
+                "replace": [
+                    ("FM_kbk_AKM", "FM_kbk_AK"),
+                    ("RocketInf_RPG76_Komar", "Sniper_SVD_Dragunov", "RocketInf_RPG76_Komar", "Sniper_SVD_Dragunov")
+                ],
                 "insert": [(2, "RocketInf_RPG76_Komar")], # (turret, weapon)
                 "insert_edits": {
                     2: {

@@ -374,22 +374,6 @@ rfa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "turrets": {
-                    "remove": [1],
-                },
-                "remove": [(1, "MMG_inf__MG3_7_62mm")],
-                "insert_edits": {
-                    2: {
-                        "turret_edits": {
-                            "YulBoneOrdinal": 2,
-                        },
-                        "AmmoBoxIndex": 1,
-                        "HandheldEquipmentKey": "'WeaponAlternative_2'",
-                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
-                        "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
-                        "WeaponShootDataPropertyName": ["WeaponShootData_0_2"],
-                    },
-                },
                 "quantity": {
                     "PM_uzi": 10,
                 },
@@ -397,8 +381,19 @@ rfa_unit_edits = {
                     ("FM_G3KA4", "PM_uzi", "FM_G3KA4", "PM_uzi"),
                 ],
             },
+            "turrets": {
+                2: {
+                    "MountedWeapons": {
+                        "Grenade_Satchel_Charge": {
+                            "AmmoBoxIndex": 1,
+                        },
+                    },
+                },
+                "remove": [1],
+            },
             "Salves": {
                 "Grenade_Satchel_Charge": 6,
+                "remove": ["MMG_inf__MG3_7_62mm"],
             },
         },
     },
@@ -591,38 +586,31 @@ rfa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "turrets": {
-                    "remove": [1],
-                },
-                "remove": [(1, "Sniper_G3A3ZF")],
-                "insert_edits": {
-                    2: {
-                        "turret_edits": {
-                            "YulBoneOrdinal": 2,
-                        },
-                        "AmmoBoxIndex": 1,
-                        "HandheldEquipmentKey": "'WeaponAlternative_2'",
-                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
-                        "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
-                        "WeaponShootDataPropertyName": ["WeaponShootData_0_2"],
-                    },
-                    3: {
-                        "turret_edits": {
-                            "YulBoneOrdinal": 3,
-                        },
-                        "AmmoBoxIndex": 2,
-                        "HandheldEquipmentKey": "'WeaponAlternative_3'",
-                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
-                        "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
-                        "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
-                    },
-                },
                 "quantity": {
                     "FM_G3KA4": 9,
                 },
             },
+            "turrets": {
+                2: {
+                    "MountedWeapons": {
+                        "MMG_inf__MG3_7_62mm": {
+                            "AmmoBoxIndex": 1,
+                        },
+                    },
+                },
+                3: {
+                    "MountedWeapons": {
+                        "RocketInf_PzF_3": {
+                            "AmmoBoxIndex": 2,
+                        },
+                    },
+                },
+                "remove": [1],
+            },
             "Salves": {
+                "MMG_inf__MG3_7_62mm": 45,
                 "RocketInf_PzF_3": 6,
+                "remove": ["Sniper_G3A3ZF"],
             },
         },
     },
@@ -637,6 +625,11 @@ rfa_unit_edits = {
         "availability": [6, 4, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "RocketInf_Carl_Gustav": 10,
+            },
         },
     },
 
@@ -666,7 +659,7 @@ rfa_unit_edits = {
     "Jager_Carl_RFA": {  # JÄGER (Carl Gustav)
         "CommandPoints": 40,
         "GameName": {
-            "display": "JÄGER [CarlG]"
+            "display": "JÄGER [CG]"
         },
         "armor": "Infantry_armor_reference",
         "max_speed": 26,
@@ -1587,39 +1580,32 @@ rfa_unit_edits = {
             "add_specs": ["'infantry_equip_medium'"],
         },
         "WeaponDescriptor": {
+            "Salves": {
+                "Grenade_Satchel_Charge": 6,
+                "MMG_inf__MG3_7_62mm": 45,
+                "remove": ["Sniper_G3A3ZF"],
+            },
             "equipmentchanges": {
-                "turrets": {
-                    "remove": [2],
-                },
-                "remove": [(2, "Sniper_G3A3ZF")],
-                "insert_edits": {
-                    2: {
-                        "turret_edits": {
-                            "YulBoneOrdinal": 2,
-                        },
-                        "AmmoBoxIndex": 1,
-                        "HandheldEquipmentKey": "'WeaponAlternative_2'",
-                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
-                        "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
-                        "WeaponShootDataPropertyName": ["WeaponShootData_0_2"],
-                    },
-                    3: {
-                        "turret_edits": {
-                            "YulBoneOrdinal": 3,
-                        },
-                        "AmmoBoxIndex": 2,
-                        "HandheldEquipmentKey": "'WeaponAlternative_3'",
-                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
-                        "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
-                        "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
-                    },
-                },
                 "quantity": {
                     "FM_G3KA4": 10,
                 },
             },
-            "Salves": {
-                "Grenade_Satchel_Charge": 6,
+            "turrets": {
+                2: {
+                    "MountedWeapons": {
+                        "MMG_inf__MG3_7_62mm": {
+                            "AmmoBoxIndex": 1,
+                        },
+                    },
+                },
+                3: {
+                    "MountedWeapons": {
+                        "Grenade_Satchel_Charge": {
+                            "AmmoBoxIndex": 2,
+                        },
+                    },
+                },
+                "remove": [1],
             },
         },
     },
@@ -1661,7 +1647,7 @@ rfa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "insert": [(2, "RocketInf_M72A4_LAW_66mm")],
+                "insert": [(2, "RocketInf_M72A3_LAW_66mm")],
                 "insert_edits": {
                     2: {
                         "turret_edits": {
@@ -1677,6 +1663,9 @@ rfa_unit_edits = {
                 "quantity": {
                     "PM_MP_5SD": 2,
                 },
+            },
+            "Salves": {
+                "insert": [(2, 4)],
             },
         },
     },

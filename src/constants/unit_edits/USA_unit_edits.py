@@ -3846,6 +3846,12 @@ usa_unit_edits = {
     "DCA_XM85_Chaparral_US": {
         "CommandPoints": 130,
         "availability": [4, 3, 0, 0],
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 220,
+            },
+            "TimeBetweenEachIdentifyRoll": 1.0,
+        },
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
         },

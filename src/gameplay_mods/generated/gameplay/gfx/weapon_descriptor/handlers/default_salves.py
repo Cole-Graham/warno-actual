@@ -54,9 +54,12 @@ def apply_default_salves(source_path: Any, logger, game_db: Dict[str, Any], unit
                     if salve_changes:
                         for ammo, salve in salve_changes.items():
                             # TODO: This breaks too easily if the unit edit and ammo dics aren't written to both refer
-                            # TODO: to either the AP or HE version of the ammo.
+                            # TODO: to either the AP or HE version of the ammo. (default salves in ammo dics)
                             if ammo == ammo_name:
                                 skip_weapon_descr_ammo_name = True
+                        # Skip weapons that are being removed (avoids applying to wrong slot after removal)
+                        if "remove" in salve_changes and ammo_name in salve_changes["remove"]:
+                            skip_weapon_descr_ammo_name = True
 
             if skip_weapon_descr_ammo_name:
                 logger.debug(

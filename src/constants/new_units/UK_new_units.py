@@ -694,7 +694,7 @@ UK_NEW_UNITS = {
         "CadavreGUID": "d05c2709-4fc9-4011-9c6b-b1bccb216d7a",
         "NewName": "Tracked_Rapier_FSA_UK", 
         "GameName": {
-            "display": "TRACKED RAPIER FSB1",
+            "display": "TRACKED RAPIER LASERFIRE",
             "token": "LLNGLALYWJ",
         },
         "TagSet": {
@@ -717,18 +717,18 @@ UK_NEW_UNITS = {
         "SpecialtiesList": [
             "_amphibie",
             "_smoke_launcher",
-            "verygood_airoptics"
+            "good_airoptics"
         ],
         "Factory": "EFactory/DCA",
         "availability": [4, 3, 0, 0],
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 220,
             },
             "TimeBetweenEachIdentifyRoll": 1.0,
         },
-        "UnitRole": "armor",
-        "UpgradeFromUnit": "Tracked_Rapier_UK",
+        "UnitRole": "AA",
+        "UpgradeFromUnit": "DCA_Rapier_FSA_UK",
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [("SAM_RAPIER_salvolength8", "SAM_RAPIER_FSA_salvolength8")],
@@ -755,7 +755,7 @@ UK_NEW_UNITS = {
         "CadavreGUID": "ea4dd6b3-24dc-4a75-9772-63014eb9df19",
         "NewName": "Tracked_Rapier_FSB2_UK", 
         "GameName": {
-            "display": "TRACKED RAPIER FSB2 DARKFIRE",
+            "display": "TRACKED RAPIER DARKFIRE",
             "token": "FOPGJBDPVU",
         },
         "TagSet": {
@@ -788,8 +788,8 @@ UK_NEW_UNITS = {
             },
             "TimeBetweenEachIdentifyRoll": 1.0,
         },
-        "UnitRole": "armor",
-        "UpgradeFromUnit": "Tracked_Rapier_FSA_UK",
+        "UnitRole": "AA",
+        "UpgradeFromUnit": "Tracked_Rapier_UK",
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [("SAM_RAPIER_salvolength8", "SAM_RAPIER_DARKFIRE_salvolength8")],
