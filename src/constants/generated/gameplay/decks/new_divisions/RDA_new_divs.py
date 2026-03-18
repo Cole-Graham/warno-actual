@@ -18,6 +18,7 @@ rda_new_divs = {
         "div_name": ("East Germany", "KXOMJZFCGW"),
         "div_power": "DC_PWR1",
         "description_title": ("East Germany", "HRZHKIMNKJ"),
+        "standout_units": ["T72M1_DDR", "Fallschirmjager_DDR", "MiG_21bis_CLU_DDR"],
         "activation_points": 75,
         "type_texture": "infantryReg",
         "division_rules": [
@@ -27,6 +28,14 @@ rda_new_divs = {
             RDA_mechanized_newdivisionrules,
             RDA_motorized_newdivisionrules,
         ],
+        "rule_exclusions": [
+            "UAZ_469_SPG9_DDR",
+            "Mortier_M43_82mm_DDR",
+            "UAZ_469_Fagot_DDR",
+        ],
+        "transport_overrides": {
+            "MotRifles_CMD2_DDR": ["GAZ_46_DDR", "BTR_50_DDR", "BTR_60_DDR", "BTR_70_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
+        },
     },
     "RDA_airborne": {
         "division_id": 6034,
@@ -36,6 +45,7 @@ rda_new_divs = {
         "div_name": ("East Germany Airborne", "EJRGZXPRVA"),
         "div_power": "DC_PWR1",
         "description_title": ("East Germany Airborne", "CPYKOFFEHC"),
+        "standout_units": ["PT76B_tank_DDR", "Fallschirmjager_CMD_DDR", "Mi_14PL_AT_DDR"],
         "activation_points": 100,
         "type_texture": "infantryReg",
         "division_rules": [
@@ -51,6 +61,7 @@ rda_new_divs = {
         "div_name": ("East Germany Airborne / Armored", "SCSUCHZZZW"),
         "div_power": "DC_PWR1",
         "description_title": ("East Germany Airborne / Armored", "HBYTYHAUUQ"),
+        "standout_units": ["T72MUV2_DDR", "Luftsturmjager_DDR", "MiG_23BN_KMGU_DDR"],
         "activation_points": 85,
         "type_texture": "infantryReg",
         "division_rules": [
@@ -58,6 +69,9 @@ rda_new_divs = {
             RDA_armored_newdivisionrules,
             RDA_global_newdivisionrules,
         ],
+        "transport_overrides": {
+            "MotRifles_CMD2_DDR": ["GAZ_46_DDR", "BTR_50_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
+        },
     },
     # airborne_marine 6036, 2103
     "RDA_airborne_mechanized": {
@@ -68,6 +82,7 @@ rda_new_divs = {
         "div_name": ("East Germany Airborne / Mechanized", "YACQISHXXY"),
         "div_power": "DC_PWR1",
         "description_title": ("East Germany Airborne / Mechanized", "SRLONEIQVR"),
+        "standout_units": ["BMP_1_SP1_DDR", "Fallschirmjager_HMG_DDR", "Mi_24P_s8_AT_DDR"],
         "activation_points": 85,
         "type_texture": "infantryReg",
         "division_rules": [
@@ -75,6 +90,14 @@ rda_new_divs = {
             RDA_global_newdivisionrules,
             RDA_mechanized_newdivisionrules,
         ],
+        "rule_exclusions": [
+            "UAZ_469_SPG9_DDR",
+            "Mortier_M43_82mm_DDR",
+            "UAZ_469_Fagot_DDR",
+        ],
+        "transport_overrides": {
+            "MotRifles_CMD2_DDR": ["GAZ_46_DDR", "BTR_50_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
+        },
     },
     "RDA_airborne_motorized": {
         "division_id": 6038,
@@ -84,6 +107,7 @@ rda_new_divs = {
         "div_name": ("East Germany Airborne / Motorized", "ZAFVDAUGFE"),
         "div_power": "DC_PWR1",
         "description_title": ("East Germany Airborne / Motorized", "NGVVQXOYBL"),
+        "standout_units": ["BTR_70_DDR", "Luftsturmjager_Metis_DDR", "Mi_24D_AA_DDR"],
         "activation_points": 85,
         "type_texture": "infantryReg",
         "division_rules": [
@@ -91,6 +115,14 @@ rda_new_divs = {
             RDA_global_newdivisionrules,
             RDA_motorized_newdivisionrules,
         ],
+        "rule_exclusions": [
+            "UAZ_469_SPG9_DDR",
+            "Mortier_M43_82mm_DDR",
+            "UAZ_469_Fagot_DDR",
+        ],
+        "transport_overrides": {
+            "MotRifles_CMD2_DDR": ["GAZ_46_DDR", "BTR_60_DDR", "BTR_70_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
+        },
     },
     "RDA_armored": {
         "division_id": 6039,
@@ -100,6 +132,7 @@ rda_new_divs = {
         "div_name": ("East Germany Armored", "WFZTDFTHMP"),
         "div_power": "DC_PWR1",
         "description_title": ("East Germany Armored", "ADAADRXAAJ"),
+        "standout_units": ["T72S_DDR", "MotRifles_RPG27_DDR", "2K11_KRUG_DDR"],
         "activation_points": 100,
         "type_texture": "armored",
         "division_rules": [
@@ -116,6 +149,7 @@ rda_new_divs = {
         "div_name": ("East Germany Armored / Mechanized", "QIWGHCJYSR"),
         "div_power": "DC_PWR1",
         "description_title": ("East Germany Armored / Mechanized", "YOEYSYIFBF"),
+        "standout_units": ["BMP_2_DDR", "MotRifles_HMG_DDR", "BM24M_DDR"],
         "activation_points": 85,
         "type_texture": "armored",
         "division_rules": [
@@ -123,6 +157,9 @@ rda_new_divs = {
             RDA_global_newdivisionrules,
             RDA_mechanized_newdivisionrules,
         ],
+        "transport_overrides": {
+            "MotRifles_CMD2_DDR": ["GAZ_46_DDR", "BTR_50_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
+        },
     },
     "RDA_armored_motorized": {
         "division_id": 6042,
@@ -132,6 +169,7 @@ rda_new_divs = {
         "div_name": ("East Germany Armored / Motorized", "QXLJPUOSGT"),
         "div_power": "DC_PWR1",
         "description_title": ("East Germany Armored / Motorized", "XHRBMGCMPE"),
+        "standout_units": ["T72M1_CMD_DDR", "MotRifles_BTR_DDR", "RM70_85_DDR"],
         "activation_points": 85,
         "type_texture": "armored",
         "division_rules": [
@@ -139,6 +177,9 @@ rda_new_divs = {
             RDA_global_newdivisionrules,
             RDA_motorized_newdivisionrules,
         ],
+        "transport_overrides": {
+            "MotRifles_CMD2_DDR": ["GAZ_46_DDR", "BTR_50_DDR", "BTR_60_DDR", "BTR_70_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
+        },
     },
     # marine 6043, 2110
     # marine_mechanized 6044, 2111
@@ -151,6 +192,7 @@ rda_new_divs = {
         "div_name": ("East Germany Mechanized", "AGKGGGRBVO"),
         "div_power": "DC_PWR1",
         "description_title": ("East Germany Mechanized", "PFOMHNBHBF"),
+        "standout_units": ["T72M_DDR", "MotRifles_DDR", "2K12_KUB_DDR"],
         "activation_points": 100,
         "type_texture": "infantryReg",
         "division_rules": [
@@ -166,6 +208,7 @@ rda_new_divs = {
         "div_name": ("East Germany Mechanized / Motorized", "PLCJLGSRJB"),
         "div_power": "DC_PWR1",
         "description_title": ("East Germany Mechanized / Motorized", "DBYPNDCUNS"),
+        "standout_units": ["T55AM2B_DDR", "Wachregiment_DDR", "Su_22_UPK_DDR"],
         "activation_points": 85,
         "type_texture": "infantryReg",
         "division_rules": [
@@ -173,6 +216,9 @@ rda_new_divs = {
             RDA_mechanized_newdivisionrules,
             RDA_motorized_newdivisionrules,
         ],
+        "transport_overrides": {
+            "MotRifles_CMD2_DDR": ["GAZ_46_DDR", "BTR_50_DDR", "BTR_60_DDR", "BTR_70_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
+        },
     },
     "RDA_motorized": {
         "division_id": 6048,
@@ -182,6 +228,7 @@ rda_new_divs = {
         "div_name": ("East Germany Motorized", "TTAHGNHGZK"),
         "div_power": "DC_PWR1",
         "description_title": ("East Germany Motorized", "OBGEYXBDNH"),
+        "standout_units": ["T55AM2_DDR", "MotRifles_Strela_DDR", "Mi_24P_s8_AT2_DDR"],
         "activation_points": 100,
         "type_texture": "infantryReg",
         "division_rules": [

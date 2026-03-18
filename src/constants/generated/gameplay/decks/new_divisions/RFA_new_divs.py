@@ -18,6 +18,7 @@ rfa_new_divs = {
         "div_name": ("West Germany", "OOSLKZZXFY"),
         "div_power": "DC_PWR1",
         "description_title": ("West Germany", "VOBUEIVGGX"),
+        "standout_units": ["Leopard_2A4_RFA", "Fallschirm_B1_RFA", "F4F_Phantom_II_AA2_RFA"],
         "activation_points": 75,
         "type_texture": "infantryReg",
         "division_rules": [
@@ -27,6 +28,14 @@ rfa_new_divs = {
             RFA_mechanized_newdivisionrules,
             RFA_motorized_newdivisionrules,
         ],
+        "transport_overrides": {
+            "Engineers_CMD2_RFA": ["Iltis_trans_RFA", "M113A1G_RFA", "Marder_1A1_RFA", "Marder_1A3_RFA", "TPZ_Fuchs_1_RFA", "UH1D_RFA"],
+            "ATteam_Milan_1_RFA": ["Iltis_trans_RFA", "M113A1G_RFA", "M113A1G_MILAN_RFA",  "Marder_1A1_MILAN_RFA", "Marder_1A3_MILAN_RFA", "TPZ_Fuchs_MILAN_RFA", "TPZ_Fuchs_MILAN_2_RFA"],
+            "ATteam_Milan_2_RFA": ["Iltis_trans_RFA", "M113A1G_RFA", "M113A1G_MILAN_RFA",  "Marder_1A1_MILAN_RFA", "Marder_1A3_MILAN_RFA", "TPZ_Fuchs_MILAN_RFA", "TPZ_Fuchs_MILAN_2_RFA", "UH1D_RFA"],
+            "Panzergrenadier_IFV_RFA": ["Unimog_trans_RFA", "Marder_1A1_RFA", "Marder_1A1_MILAN_RFA", "Marder_1A3_RFA", "Marder_1A3_MILAN_RFA"],
+            "Panzergrenadier_PzF3_RFA": ["Unimog_trans_RFA", "Marder_1A1_RFA", "Marder_1A1_MILAN_RFA", "Marder_1A3_RFA", "Marder_1A3_MILAN_RFA"],
+            "PzGrenadier_RFA": ["Unimog_trans_RFA", "Marder_1A1_RFA", "Marder_1A1_MILAN_RFA", "Marder_1A3_RFA", "Marder_1A3_MILAN_RFA"],
+        },
     },
     "RFA_airborne": {
         "division_id": 5051,
@@ -36,6 +45,7 @@ rfa_new_divs = {
         "div_name": ("West Germany Airborne", "TZZCGHCDMZ"),
         "div_power": "DC_PWR1",
         "description_title": ("West Germany Airborne", "QJJLVESQSZ"),
+        "standout_units": ["Wiesel_TOW_RFA", "Hochgebirgjager_RFA", "Tornado_IDS_MW1_RFA"],
         "activation_points": 100,
         "type_texture": "infantryReg",
         "division_rules": [
@@ -51,6 +61,7 @@ rfa_new_divs = {
         "div_name": ("West Germany Airborne / Armored", "LPSCSNXVMD"),
         "div_power": "DC_PWR1",
         "description_title": ("West Germany Airborne / Armored", "TGVGUNLLWF"),
+        "standout_units": ["Leopard_2A3_CMD_RFA", "Gebirgsjager_Hvy_RFA", "Marder_Roland_RFA"],
         "activation_points": 85,
         "type_texture": "infantryReg",
         "division_rules": [
@@ -68,6 +79,7 @@ rfa_new_divs = {
         "div_name": ("West Germany Airborne / Mechanized", "CFMXXAPLEQ"),
         "div_power": "DC_PWR1",
         "description_title": ("West Germany Airborne / Mechanized", "FTZNFMXTTR"),
+        "standout_units": ["Marder_1A3_MILAN_RFA", "Fallschirm_RFA", "M110A2_Howz_RFA"],
         "activation_points": 85,
         "type_texture": "infantryReg",
         "division_rules": [
@@ -84,12 +96,16 @@ rfa_new_divs = {
         "div_name": ("West Germany Airborne / Motorized", "YBLTYXWACE"),
         "div_power": "DC_PWR1",
         "description_title": ("West Germany Airborne / Motorized", "KZIDWNLQVV"),
+        "standout_units": ["Leopard_2A1_RFA", "Fernspaher_RFA", "F4F_Phantom_II_LGB_RFA"],
         "activation_points": 85,
         "type_texture": "infantryReg",
         "division_rules": [
             RFA_airborne_newdivisionrules,
             RFA_global_newdivisionrules,
             RFA_motorized_newdivisionrules,
+        ],
+        "rule_exclusions": [
+            "Mortier_Tampella_120mm_RFA",
         ],
     },
     "RFA_armored": {
@@ -100,6 +116,7 @@ rfa_new_divs = {
         "div_name": ("West Germany Armored", "QBCMWKUHGC"),
         "div_power": "DC_PWR1",
         "description_title": ("West Germany Armored", "BECVYLEXMB"),
+        "standout_units": ["Leopard_2A4_CMD_RFA", "Panzergrenadier_PzF3_RFA", "M270_MLRS_RFA"],
         "activation_points": 100,
         "type_texture": "armored",
         "division_rules": [
@@ -116,6 +133,7 @@ rfa_new_divs = {
         "div_name": ("West Germany Armored / Mechanized", "RQLVRYIUGB"),
         "div_power": "DC_PWR1",
         "description_title": ("West Germany Armored / Mechanized", "RUOIPSCYZT"),
+        "standout_units": ["Leopard_2A3_RFA", "Panzergrenadier_APC_RFA", "M109A3G_HOWZ_RFA"],
         "activation_points": 85,
         "type_texture": "armored",
         "division_rules": [
@@ -123,6 +141,14 @@ rfa_new_divs = {
             RFA_global_newdivisionrules,
             RFA_mechanized_newdivisionrules,
         ],
+        "transport_overrides": {
+            "Engineers_CMD2_RFA": ["Iltis_trans_RFA", "M113A1G_RFA", "Marder_1A1_RFA", "Marder_1A3_RFA", "UH1D_RFA"],
+            "ATteam_Milan_1_RFA": ["Iltis_trans_RFA", "M113A1G_RFA", "M113A1G_MILAN_RFA",  "Marder_1A1_MILAN_RFA", "Marder_1A3_MILAN_RFA"],
+            "ATteam_Milan_2_RFA": ["Iltis_trans_RFA", "M113A1G_RFA", "M113A1G_MILAN_RFA",  "Marder_1A1_MILAN_RFA", "Marder_1A3_MILAN_RFA"],
+            "Panzergrenadier_IFV_RFA": ["Unimog_trans_RFA", "Marder_1A1_RFA", "Marder_1A1_MILAN_RFA", "Marder_1A3_RFA", "Marder_1A3_MILAN_RFA"],
+            "Panzergrenadier_PzF3_RFA": ["Unimog_trans_RFA", "Marder_1A1_RFA", "Marder_1A1_MILAN_RFA", "Marder_1A3_RFA", "Marder_1A3_MILAN_RFA"],
+            "PzGrenadier_RFA": ["Unimog_trans_RFA", "Marder_1A1_RFA", "Marder_1A1_MILAN_RFA", "Marder_1A3_RFA", "Marder_1A3_MILAN_RFA"],
+        },
     },
     "RFA_armored_motorized": {
         "division_id": 5059,
@@ -132,6 +158,7 @@ rfa_new_divs = {
         "div_name": ("West Germany Armored / Motorized", "KDUARICYOT"),
         "div_power": "DC_PWR1",
         "description_title": ("West Germany Armored / Motorized", "SGXMGQWZBH"),
+        "standout_units": ["Leopard_2A1_CMD_RFA", "Jager_PzF3_RFA", "Tornado_IDS_CLUS_RFA"],
         "activation_points": 85,
         "type_texture": "armored",
         "division_rules": [
@@ -151,6 +178,7 @@ rfa_new_divs = {
         "div_name": ("West Germany Mechanized", "ZUNRZZKQWE"),
         "div_power": "DC_PWR1",
         "description_title": ("West Germany Mechanized", "CJRGFQHSBS"),
+        "standout_units": ["Marder_1A1_MILAN_RFA", "Panzergrenadier_IFV_RFA", "DCA_I_Hawk_RFA"],
         "activation_points": 100,
         "type_texture": "infantryReg",
         "division_rules": [
@@ -167,6 +195,7 @@ rfa_new_divs = {
         "div_name": ("West Germany Mechanized / Motorized", "ICYLMFPJBB"),
         "div_power": "DC_PWR1",
         "description_title": ("West Germany Mechanized / Motorized", "QUBYOPANZI"),
+        "standout_units": ["TPZ_Fuchs_MILAN_RFA", "Jager_Carl_RFA", "G91_R3_Gina_NPL_RFA"],
         "activation_points": 85,
         "type_texture": "infantryReg",
         "division_rules": [
@@ -183,6 +212,7 @@ rfa_new_divs = {
         "div_name": ("West Germany Motorized", "VNLIYBIVLK"),
         "div_power": "DC_PWR1",
         "description_title": ("West Germany Motorized", "BTOQJTXPPD"),
+        "standout_units": ["TPZ_Fuchs_MILAN_2_RFA", "TankHunters_RFA", "Lars_2_RFA"],
         "activation_points": 100,
         "type_texture": "infantryReg",
         "division_rules": [
