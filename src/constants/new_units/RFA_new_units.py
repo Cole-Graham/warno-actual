@@ -30,7 +30,7 @@ RFA_NEW_UNITS = {
         "strength": 5,
         "WeaponDescriptor": {
             "Salves": {
-                "PM_uzi": 11,
+                "PM_uzi": 22,
                 "RocketInf_Carl_Gustav": 5,
             },
         },
@@ -546,7 +546,7 @@ RFA_NEW_UNITS = {
                 },
             },
             "Salves": {
-                "PM_Uzi": 6,
+                "PM_Uzi": 22,
                 "MANPAD_FIM43": 6,
             },
         },
@@ -567,7 +567,7 @@ RFA_NEW_UNITS = {
         "is_ground_vehicle": False,
         "is_aerial": False,
         "is_unarmed": False,
-        "Faction": "PACT",
+        "Faction": "NATO",
         "Nation": "RFA",
         "UpgradeFromUnit": "MANPAD_Redeye_FJ_RFA",
         "alternatives_count": 1,
@@ -615,7 +615,7 @@ RFA_NEW_UNITS = {
                 },
             },
             "Salves": {
-                "PM_Uzi": 6,
+                "PM_Uzi": 22,
                 "MANPAD_FIM43": 6,
             },
         },
@@ -630,7 +630,7 @@ RFA_NEW_UNITS = {
         "is_ground_vehicle": False,
         "is_aerial": False,
         "is_unarmed": False,
-        "Faction": "PACT",
+        "Faction": "NATO",
         "Nation": "RFA",
         "UpgradeFromUnit": "MANPAD_Redeye_RFA",
         "alternatives_count": 1,

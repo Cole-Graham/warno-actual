@@ -285,7 +285,7 @@ rda_unit_edits = {
                 },
             },
             "Salves": {
-                "FM_KMS_72": 11,
+                "FM_KMS_72": 9,
                 "RocketInf_RPG7": 6,
             },
         },
@@ -355,6 +355,8 @@ rda_unit_edits = {
             },
             "Salves": {
                 "insert": [(1, 15)],
+                "FM_KMS_72": 9,
+                "SAW_lMG_K_7_62mm": 24,
             },
         },
         "remove_zone_capture": None,
@@ -393,6 +395,11 @@ rda_unit_edits = {
         "Divisions": {
             "default": {
                 "cards": 1,
+            },
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_KMS_72": 9,
             },
         },
         "availability": [0, 7, 5, 0],
@@ -803,7 +810,7 @@ rda_unit_edits = {
     "Reserve_DDR": {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
-        "availability": [10, 0, 0, 0],
+        "availability": [12, 0, 0, 0],
         "max_speed": 26,
         "capacities": {
             "add_capacities": ["reserviste"],
@@ -811,18 +818,10 @@ rda_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'_reservist'", "'infantry_equip_medium'"],
         },
-    },
-
-    "Reserve_DDR": {
-        "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
-        "availability": [10, 0, 0, 0],
-        "max_speed": 26,
-        "capacities": {
-            "add_capacities": ["reserviste"],
-        },
-        "SpecialtiesList": {
-            "add_specs": ["'_reservist'", "'infantry_equip_medium'"],
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_KMS_72": 9,
+            },
         },
     },
     
@@ -836,6 +835,11 @@ rda_unit_edits = {
         },
         "SpecialtiesList": {
             "add_specs": ["'_reservist'", "'infantry_equip_light'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_KMS_72": 9,
+            },
         },
     },
 
@@ -918,6 +922,10 @@ rda_unit_edits = {
                     "FM_KMS_72": 12,
                     "SAW_lMG_K_7_62mm": 2,
                 },
+            },
+            "Salves": {
+                "FM_KMS_72": 9,
+                "SAW_lMG_K_7_62mm": 24,
             },
         },
         "SpecialtiesList": {
@@ -1395,8 +1403,10 @@ rda_unit_edits = {
                 },
             },
             "Salves": {
-                "Grenade_Satchel_Charge": 6,
+                "FM_KMS_72": 9,
+                "Grenade_Satchel_Charge": 7,
             },
+            
         },
     },
 
@@ -1430,6 +1440,12 @@ rda_unit_edits = {
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_KMS_72": 9,
+            },
+            
         },
     },
 
@@ -2341,6 +2357,9 @@ rda_unit_edits = {
                     "FM_KMS_72": 3,
                 },
             },
+            "Salves": {
+                "FM_KMS_72": 9,
+            },
         },
         "SpecialtiesList": {
             "add_specs": ["'_reservist'", "'infantry_equip_light'", "'_swift'"],
@@ -2364,6 +2383,10 @@ rda_unit_edits = {
                     "FM_KMS_72": 4,
                     "SAW_lMG_K_7_62mm": 2,
                 },
+            },
+            "Salves": {
+                "FM_KMS_72": 9,
+                "SAW_lMG_K_7_62mm": 24,
             },
         },
     },
@@ -2408,6 +2431,7 @@ rda_unit_edits = {
             },
             "Salves": {
                 "insert": [(1, 18)],
+                "FM_KMS_72": 9,
             },
         },
     },
@@ -2419,6 +2443,11 @@ rda_unit_edits = {
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_KMS_72": 9,
+            },
         },
     },
 
@@ -2452,6 +2481,7 @@ rda_unit_edits = {
             },
             "Salves": {
                 "insert": [(2, 18)],
+                "FM_KMS_72": 9,
             },
         },
     },

@@ -243,6 +243,7 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
+                "FM_kbk_AK": 9,
                 "MMG_PKM_7_62mm": 36,
             },
             "equipmentchanges": {
@@ -403,6 +404,7 @@ pol_unit_edits = {
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "WeaponDescriptor": {
             "Salves": {
+                "PM_PM63_RAK": 22,
                 "RocketInf_RPG7VL": 6,
             },
         },
@@ -457,7 +459,8 @@ pol_unit_edits = {
                         ("RocketInf_RPG7", "RocketInf_RPG76_Komar", "RocketInf_RPG7", "RocketInf_RPG76_Komar")],
             },
             "Salves": {
-                "Grenade_Satchel_Charge": 5,
+                "PM_PM63_RAK": 22,
+                "Grenade_Satchel_Charge": 6,
                 "RocketInf_RPG76_Komar": 8,
             },
         },
@@ -511,6 +514,7 @@ pol_unit_edits = {
             },
             "Salves": {
                 "RocketInf_RPG7": 6,
+                "FM_kbk_AK": 9,
             },
         },
         "selector_tactic": "(2, 4)",
@@ -518,7 +522,7 @@ pol_unit_edits = {
         "remove_zone_capture": None,
     },
 
-     "Para_CMD_POL": {  # Dow. SPADOCHRONIARZE 
+    "Para_CMD_POL": {  # Dow. SPADOCHRONIARZE 
         "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
@@ -557,9 +561,7 @@ pol_unit_edits = {
                 "quantity": {
                     "FM_kbk_AK": 7,
                 },
-                "replace": [
-                    ("FM_kbk_AKM", "FM_kbk_AK"),
-                ],
+                "replace": [("FM_kbk_AKM", "FM_Tantal")]
             },
             "Salves": {
                 "RocketInf_RPG7": 6,
@@ -626,6 +628,7 @@ pol_unit_edits = {
             },
             "Salves": {
                 "insert": [(2, 6)],
+                "FM_kbk_AK": 9,
             },
         },
         "selector_tactic": "(2, 4)",
@@ -648,6 +651,12 @@ pol_unit_edits = {
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_kbk_AK": 9,
+                "Grenade_Satchel_Charge": 6,
+            },
         },
         "UpgradeFromUnit": "Engineers_CMD_POL",
         # "WeaponDescriptor": {
@@ -681,7 +690,7 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_kbk_AK": 11,  # 7 mags per soldier bc heavy
+                "FM_kbk_AK": 9,  # 7 mags per soldier bc heavy
                 "MMG_PKM_7_62mm": 36,
             },
         },
@@ -846,8 +855,12 @@ pol_unit_edits = {
          "WeaponDescriptor": {
              "equipmentchanges": {
                 "replace": [
-                    ("RocketInf_RPG7", "RocketInf_RPG7VL", "RocketInf_RPG7", "RocketInf_RPG7VL")
+                    ("FM_kbk_AKM", "FM_Tantal"), ("SAW_RPK_7_62mm", "SAW_RPK_74_5_56mm", "SAW_RPK_7_62mm", "SAW_RPK_74_5_56mm"), ("RocketInf_RPG7", "RocketInf_RPG7VL", "RocketInf_RPG7", "RocketInf_RPG7VL")
                 ],
+            },
+            "Salves": {
+                "FM_kbk_AKM": 11,
+                "SAW_RPK_7_62mm": 24,
             },
         },
         # 7x kbk AKM
@@ -863,6 +876,15 @@ pol_unit_edits = {
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("FM_kbk_AKM", "FM_Tantal"), ("SAW_RPK_7_62mm", "SAW_RPK_74_5_56mm", "SAW_RPK_7_62mm", "SAW_RPK_74_5_56mm")],
+            },
+            "Salves": {
+                "FM_kbk_AKM": 11,
+                "SAW_RPK_7_62mm": 24,
+            },
         },
         # 8x kbk AKM
         # 1x RPK
@@ -880,7 +902,7 @@ pol_unit_edits = {
          "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [
-                    ("RocketInf_RPG76_Komar", "RocketInf_RPG7", "RocketInf_RPG76_Komar", "RocketInf_RPG7")
+                    ("FM_kbk_AKM", "FM_Tantal"), ("RocketInf_RPG76_Komar", "RocketInf_RPG7", "RocketInf_RPG76_Komar", "RocketInf_RPG7")
                 ],
             },
             "Salves": {
@@ -921,6 +943,8 @@ pol_unit_edits = {
             },
             "Salves": {
                 "insert": [(3, 6)],
+                "FM_kbk_AK": 9,
+                "Grenade_Satchel_Charge": 6,
             },
         },
         "GameName": {
@@ -952,7 +976,7 @@ pol_unit_edits = {
             },
             "Salves": {
                 "FM_kbk_AK": 9,
-                "flamethrower_LPO": 120,
+                "flamethrower_LPO": 30,
             },
         },
         "GameName": {
@@ -983,9 +1007,7 @@ pol_unit_edits = {
         },
         "UpgradeFromUnit": "Commandos_Para_CMD_POL",
     },
-    
-    
-    
+        
     "WSW_POL": {  # WSW
         "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
@@ -999,6 +1021,13 @@ pol_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_kbk_AK": 9,
+                "PM_PM63_RAK": 22,
+                "SAW_RPK_7_62mm": 24,
+            },
+        },
     },
     
     "Para_Security_POL": {  # Desant. Ochrona
@@ -1008,6 +1037,15 @@ pol_unit_edits = {
         "availability": [0, 6, 4, 0],
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("FM_kbk_AKM", "FM_kbk_AK"), ("SAW_RPK_74_5_56mm","SAW_RPK_7_62mm", "SAW_RPK_74_5_56mm","SAW_RPK_7_62mm")],
+            },
+            "Salves": {
+                "FM_kbk_AK": 9,
+                "SAW_RPK_74_5_56mm": 29,
+            },
         },
         "GameName": {
             "display": "SPADO. OCHRONA",
@@ -1024,6 +1062,11 @@ pol_unit_edits = {
         },
         "GameName": {
             "display": "REZERWIŚCI"
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_kbk_AK": 9,
+            },
         },
     },
     
@@ -2052,6 +2095,9 @@ pol_unit_edits = {
                     "FM_kbk_AK": 7,
                 },
             },
+            "Salves": {
+                "FM_kbk_AK": 9,
+            },
         },
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -2073,6 +2119,11 @@ pol_unit_edits = {
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_kbk_AK": 9,
+            },
         },
     },
     
@@ -2098,7 +2149,7 @@ pol_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_kbk_AK": 9,
-                "PM_PM63_RAK": 9,
+                "PM_PM63_RAK": 22,
                 "RocketInf_RPG7": 4,
             },
         },
@@ -2120,7 +2171,7 @@ pol_unit_edits = {
                     "FM_kbk_AK": 5,
                 },
                 "replace": [
-                    ("FM_kbk_AKM", "FM_kbk_AK"),
+                    ("FM_kbk_AKM", "FM_Tantal"),
                     ("RocketInf_RPG76_Komar", "Sniper_SVD_Dragunov", "RocketInf_RPG76_Komar", "Sniper_SVD_Dragunov")
                 ],
                 "insert": [(2, "RocketInf_RPG76_Komar")], # (turret, weapon)
@@ -2145,6 +2196,20 @@ pol_unit_edits = {
         },
     },
 
+    "Sniper_POL": {  # Snajper
+        "CommandPoints": 25,
+        "armor": "Infantry_armor_reference",
+        "WeaponDescriptor": {
+            "Salves": {
+                "PM_PM63_RAK": 22,
+            },
+        },
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'", "'_swift'"],
+        },
+    },
+
     "Sniper_paras_POL": {  # Desant. Snajper
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
@@ -2152,12 +2217,19 @@ pol_unit_edits = {
         "GameName": {
             "display": "#RECO2 SPADO. SNAJPER",
         },
-         "WeaponDescriptor": {
+        "WeaponDescriptor": {
             "equipmentchanges": {
                 "quantity": {
                     "Sniper_SVD_Dragunov": 2,
                 },
             },
+            "Salves": {
+                "PM_PM63_RAK": 22,
+            },
+        },
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
     },
     
@@ -2178,6 +2250,7 @@ pol_unit_edits = {
                 },
             },
             "Salves": {
+                "PM_PM63_RAK": 22,
                 "RocketInf_RPG76_Komar": 4,
             },
         },
@@ -2207,6 +2280,11 @@ pol_unit_edits = {
         "GameName": {
             "display": "#RECO2 SPADO. ROZP. [GSR]",
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "PM_PM63_RAK": 22,
+            },
+        },
     },
     
     "Scout_SF_POL": {  # Rozp. Specjalne
@@ -2219,8 +2297,8 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_Tantal": 9,
-                "PM_PM63_RAK": 9,
+                "FM_Tantal": 11,
+                "PM_PM63_RAK": 22,
                 "RocketInf_RPG7VL": 4,
             },
         },
@@ -2337,10 +2415,10 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_kbk_AK", "FM_kbk_AK_noreflex")],
+                "replace": [("FM_kbk_AK", "FM_kbk_AK_noreflex")]
             },
             "Salves": {
-                "FM_kbk_AK": 11,
+                "FM_kbk_AK_noreflex": 9,
             },
         },
     },
@@ -2357,7 +2435,7 @@ pol_unit_edits = {
                 "replace": [("FM_kbk_AK", "FM_kbk_AK_noreflex")],
             },
             "Salves": {
-                "FM_kbk_AK": 11,
+                "FM_kbk_AK": 9,
             },
         },
         "GameName": {
@@ -2374,10 +2452,10 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_kbk_AK", "FM_kbk_AK_noreflex")],
+                "replace": [("FM_kbk_AKM", "FM_kbk_AK")],
             },
             "Salves": {
-                "FM_kbk_AK": 11,
+                "FM_kbk_AK": 9,
             },
         },
         "GameName": {

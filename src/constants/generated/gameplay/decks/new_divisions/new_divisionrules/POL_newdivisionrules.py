@@ -79,6 +79,7 @@ POL_airborne_newdivisionrules = {
     ],
     "aa": [
         ("MANPAD_Strela_2M_Para_POL", 3, [0, 12, 9, 0], ["UAZ_469_trans_POL"]),
+        ("MANPAD_Igla_Para_POL", 1, [0, 7, 5, 0], ["UAZ_469_trans_POL"]),
         ("DCA_ZUR_23_2S_JOD_Para_POL", 3, [0, 9, 7, 0], ["UAZ_469_trans_POL"]),
         ("Hibneryt_POL", 2, [7, 5, 0, 0]),
         ("Hibneryt_KG_POL", 2, [6, 4, 0, 0]),
@@ -173,6 +174,7 @@ POL_armored_newdivisionrules = {
     ],
     "aa": [
         ("MANPAD_Strela_2M_POL", 3, [12, 9, 0, 0], ["UAZ_469_trans_POL"]),
+        ("MANPAD_Igla_POL", 1, [7, 5, 0, 0], ["UAZ_469_trans_POL"]),
         ("DCA_ZUR_23_2S_JOD_POL", 2, [9, 7, 0, 0], ["UAZ_469_trans_POL", "MTLB_trans_POL"]),
         ("ZSU_23_Shilka_POL", 2, [6, 4, 0, 0]),
         ("MTLB_Strela10_POL", 2, [6, 4, 0, 0]),
@@ -371,6 +373,7 @@ POL_mechanized_newdivisionrules = {
     ],
     "aa": [
         ("MANPAD_Strela_2M_POL", 3, [12, 9, 0, 0], ["UAZ_469_trans_POL", "OT_62_TOPAS_JOD2_POL"]),
+        ("MANPAD_Igla_POL", 1, [7, 5, 0, 0], ["UAZ_469_trans_POL", "OT_62_TOPAS_JOD2_POL"]),
         ("DCA_ZPU4_POL", 2, [12, 9, 0, 0], ["UAZ_469_trans_POL"]),
         ("DCA_ZUR_23_2S_JOD_POL", 2, [9, 7, 0, 0], ["UAZ_469_trans_POL", "OT_62_TOPAS_POL"]),
         ("DCA_AZP_S60_POL", 3, [9, 7, 0, 0], ["Star_266_POL", "OT_62_TOPAS_POL"]),
@@ -471,6 +474,7 @@ POL_motorized_newdivisionrules = {
     ],
     "aa": [
         ("MANPAD_Strela_2M_POL", 3, [12, 9, 0, 0], ["UAZ_469_trans_POL", "OT_64_SKOT_2P_POL"]),
+        ("MANPAD_Igla_POL", 1, [7, 5, 0, 0], ["UAZ_469_trans_POL", "OT_64_SKOT_2P_POL"]),
         ("DCA_ZPU4_POL", 2, [12, 9, 0, 0], ["UAZ_469_trans_POL", "OT_64_SKOT_2A_POL"]),
         ("DCA_ZUR_23_2S_JOD_POL", 2, [9, 7, 0, 0], ["UAZ_469_trans_POL", "OT_64_SKOT_2A_POL"]),
         ("DCA_AZP_S60_POL", 3, [9, 7, 0, 0], ["Star_266_POL", "OT_64_SKOT_2A_POL"]),

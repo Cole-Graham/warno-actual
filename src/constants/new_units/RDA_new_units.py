@@ -99,6 +99,7 @@ RDA_NEW_UNITS = {
             "Salves": {
                 "FM_Mpi_AK_74N": 11,
                 "RocketInf_RPG18_64mm": 5,
+                "Sniper_SVD_Dragunov": 10,
             },
             "equipmentchanges": {
                 "quantity": {

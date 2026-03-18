@@ -31,7 +31,7 @@ POL_NEW_UNITS = {
         # "Dangerousness": 12,
         "WeaponDescriptor": {
             "Salves": {
-                "FM_kbk_AK": 11,
+                "FM_kbk_AK": 9,
                 "RocketInf_RPG76_Komar": 5,
             },
             "equipmentchanges": {
@@ -828,49 +828,6 @@ POL_NEW_UNITS = {
         "Nation": "POL",
     },
 
-    ("OT_62_TOPAS_JOD_POL", 0): {  # TOPAS JOD (Transport)
-        "GameName": {
-            "display": "TOPAS JOD",
-            "token": "USEVPJZMYG",
-        },
-        "GUID": "fe208523-a9ca-4ef2-860e-bf6a12b905ca",
-        "InfantrySquadModuleGUID": "058703d8-1efc-4836-89ce-fdf7a195c2d7",
-        "ShowroomGUID": "b4e59d7c-5465-4c1b-bb43-217899193ab5",
-        "CadavreGUID": "c24a9ca7-b29f-47d0-a041-b1e786809548",
-        "NewName": "OT_62_TOPAS_JOD2_POL",
-        "TagSet": {
-            "overwrite_all": [
-                "AllUnits",
-                "AllowedForMissileRoE",
-                "GroundUnits",
-                "UNITE_OT_62_TOPAS_JOD2_POL",
-                "Unite",
-                "Vehicule",
-                "Vehicule_Appui",
-                "Vehicule_Transport_Arme",
-            ],
-        },
-        "Factory": "EFactory/Tanks",
-        "CommandPoints": 40,
-        "UnitRole": 'transport',
-        "SpecialtiesList": [
-            '_transport1',
-            '_ifv',
-            '_amphibie',
-        ],
-        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
-                   'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
-                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply', 'EOrderType/UnloadFromTransport', 'EOrderType/UnloadAtPosition', 'EOrderType/Load', 'EOrderType/UseCapacite',
-                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
-        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
-        "is_heavy_equipment": False,
-        "is_ground_vehicle": True,
-        "is_aerial": False,
-        "is_unarmed": False,
-        "Faction": "PACT",
-        "Nation": "POL",
-    },
-
     ("UAZ_469_SPG9_Para_POL", 0): {  # UAZ-469 SPG-9 (Non Para)
         "GameName": {
             "display": "UAZ-469 SPG-9",
@@ -910,6 +867,8 @@ POL_NEW_UNITS = {
         "Faction": "PACT",
         "Nation": "POL",
     },
+
+    # Tanks
 
     ("AT_D48_85mm_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "0de44fc4-1a87-4146-8e24-0dd8ee7c2d52",
@@ -973,6 +932,8 @@ POL_NEW_UNITS = {
         },
     },
 
+    # Arty
+
     ("OT_62_TOPAS_R3M_CMD_POL", 0): {  # NIEB. BERETY TOPAS R-3M
         "GameName": {
             "display": "#CMD TOPAS R-3M",
@@ -1023,6 +984,8 @@ POL_NEW_UNITS = {
         "Nation": "POL",
     },
 
+    # Recon
+
     ("Engineers_Scout_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "a8123a99-091d-4e7e-9b09-e366848d1907",
         "InfantrySquadModuleGUID": "139beeba-bf5b-48d4-bef1-09780c53f9fc",
@@ -1063,7 +1026,7 @@ POL_NEW_UNITS = {
         "max_speed": 26,
         "WeaponDescriptor": {
             "Salves": {
-                "FM_kbk_AK": 11,
+                "FM_kbk_AK": 9,
                 "MMG_PKM_7_62mm": 36,
             },
         },
@@ -1082,6 +1045,169 @@ POL_NEW_UNITS = {
         "unique_count": 2,
         "UpgradeFromUnit": "Scout_para_POL",
     },
+
+    # AA
+
+    ("MANPAD_Strela_2M_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "3c897b43-1c2e-451d-bdc4-9f85221a12bd",
+        "InfantrySquadModuleGUID": "1a7b7ac5-051a-4bda-974d-8ce427752449",
+        "ShowroomGUID": "be898896-37dd-4611-8f14-802402d2b7b6",
+        "CadavreGUID": "f4dd125c-5e5d-450d-a35b-59b4d4fabb2c",
+        "NewName": "MANPAD_Igla_POL",
+        "GameName": {
+            "display": "IGŁA",
+            "token": "RVTWTXCQDL",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_AA",
+                "Infanterie_Spec_Defense",
+                "UNITE_MANPAD_Igla_POL",
+                "Unite",
+            ],
+        },
+        "strength": 2,
+        "TransportedSoldier": "MANPAD_Igla_POL",
+        "armor": "Infantry_armor_reference",
+        "CommandPoints": 35,
+        "UnitRole": 'infantry',
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_kbk_AK_noreflex": 9,
+                "MANPAD_Strela2M": 6,
+            },
+            "equipmentchanges": {
+                "replace": [("FM_kbk_AK", "FM_kbk_AK_noreflex"), ("MANPAD_Strela2M", "MANPAD_igla", "MANPAD_Strela2M", "MANPAD_igla")]
+            },
+        },
+        "SpecialtiesList": [
+                'infantry_equip_heavy',
+        ],
+        "availability": [7, 5, 0, 0],
+        "max_speed": 20,
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
+                   'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
+                   'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": True, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": False,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "POL",
+        "UpgradeFromUnit": "MANPAD_Strela_2M_Para_POL",
+        "alternatives_count": 2,
+        "selector_tactic": "02_02",
+    },
+
+    ("MANPAD_Strela_2M_Para_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "f1f65a66-c330-4754-b504-8e546d57a122",
+        "InfantrySquadModuleGUID": "0ba68476-d848-4c23-a157-a4533d509bd4",
+        "ShowroomGUID": "91e12fdd-9218-49de-9d5c-41ad45056dd2",
+        "CadavreGUID": "d1e05bed-7d60-4aae-88cc-006a2fb6d935",
+        "NewName": "MANPAD_Igla_Para_POL",
+        "GameName": {
+            "display": "SPADO. IGŁA",
+            "token": "QEANKFVGJH",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_AA",
+                "Infanterie_Spec_Defense",
+                "UNITE_MANPAD_Igla_Para_POL",
+                "Unite",
+            ],
+        },
+        "strength": 2,
+        "TransportedSoldier": "MANPAD_Igla_Para_POL",
+        "armor": "Infantry_armor_reference",
+        "CommandPoints": 35,
+        "UnitRole": 'infantry',
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_kbk_AK": 9,
+                "MANPAD_Strela2M": 6,
+            },
+            "equipmentchanges": {
+                "replace": [("FM_kbk_AKM", "FM_kbk_AK"), ("MANPAD_Strela2M", "MANPAD_igla", "MANPAD_Strela2M", "MANPAD_igla")]
+            },
+        },
+        "SpecialtiesList": [
+                '_para',
+                'infantry_equip_heavy',
+        ],
+        "availability": [0, 7, 5, 0],
+        "max_speed": 20,
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
+                   'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
+                   'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": True, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": False,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "POL",
+        "UpgradeFromUnit": "MANPAD_Igla_POL",
+        "alternatives_count": 2,
+        "selector_tactic": "02_02",
+    },
+
+    ("OT_62_TOPAS_JOD_POL", 0): {  # TOPAS JOD (Transport)
+        "GameName": {
+            "display": "TOPAS JOD",
+            "token": "USEVPJZMYG",
+        },
+        "GUID": "fe208523-a9ca-4ef2-860e-bf6a12b905ca",
+        "InfantrySquadModuleGUID": "058703d8-1efc-4836-89ce-fdf7a195c2d7",
+        "ShowroomGUID": "b4e59d7c-5465-4c1b-bb43-217899193ab5",
+        "CadavreGUID": "c24a9ca7-b29f-47d0-a041-b1e786809548",
+        "NewName": "OT_62_TOPAS_JOD2_POL",
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "GroundUnits",
+                "UNITE_OT_62_TOPAS_JOD2_POL",
+                "Unite",
+                "Vehicule",
+                "Vehicule_Appui",
+                "Vehicule_Transport_Arme",
+            ],
+        },
+        "Factory": "EFactory/Tanks",
+        "CommandPoints": 40,
+        "UnitRole": 'transport',
+        "SpecialtiesList": [
+            '_transport1',
+            '_ifv',
+            '_amphibie',
+        ],
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
+                   'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
+                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply', 'EOrderType/UnloadFromTransport', 'EOrderType/UnloadAtPosition', 'EOrderType/Load', 'EOrderType/UseCapacite',
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "POL",
+    },
+
 
     # ("MiG_23MF_AA_POL", 0): {  # MiG-23MF [AA3]
     #     "GameName": {
