@@ -109,13 +109,16 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("SAM_RAPIER", "SAM", None, False): {
         "Ammunition": {
+            "display": "Mk.1 BLINDFIRE",
             "hit_roll": {
                 "Idling": 50,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
-                "TimeBetweenTwoShots": 3.0,
-                "TimeBetweenTwoFx": 3.0,
+                "Caliber": ("existing", "CCYZVFZIEZ"), # "Radar"
+                "TraitsToken": ['STAT', 'RADAR'],
+                "TimeBetweenTwoShots": 2.5,
+                "TimeBetweenTwoFx": 2.5,
                 "PhysicalDamages": 5.0,
                 "MaximumRangeHelicopterGRU": 2800,
                 "MaximumRangeAirplaneGRU": 3500,
@@ -134,16 +137,19 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("SAM_RAPIER_FSA", "SAM", None, False): {
         "Ammunition": {
+            "display": "Mk.1E",
             "hit_roll": {
-                "Idling": 55,
+                "Idling": 60,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
-                "TimeBetweenTwoShots": 3.0,
-                "TimeBetweenTwoFx": 3.0,
+                "Caliber": ("SACLOS LiDAR", "THGDKSIWAY"),
+                "TraitsToken": ['STAT', 'manual'],
+                "TimeBetweenTwoShots": 2.5,
+                "TimeBetweenTwoFx": 2.5,
                 "PhysicalDamages": 5.0,
                 "MaximumRangeHelicopterGRU": 3150,
-                "MaximumRangeAirplaneGRU": 3850,
+                "MaximumRangeAirplaneGRU": 3150,
                 "AimingTime": 1.2,
             },
         },
@@ -159,13 +165,16 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("SAM_RAPIER_DARKFIRE", "SAM", None, False): {
         "Ammunition": {
+            "display": "Mk.1E BLINDFIRE",
             "hit_roll": {
                 "Idling": 65,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
-                "TimeBetweenTwoShots": 3.0,
-                "TimeBetweenTwoFx": 3.0,
+                "Caliber": ("existing", "CCYZVFZIEZ"), # "Radar"
+                "TraitsToken": ['STAT', 'RADAR'],
+                "TimeBetweenTwoShots": 2.5,
+                "TimeBetweenTwoFx": 2.5,
                 "PhysicalDamages": 5.0,
                 "MaximumRangeHelicopterGRU": 3150,
                 "MaximumRangeAirplaneGRU": 3850,
@@ -281,7 +290,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_missile_he_bigly",
             },
             "hit_roll": {
-                "Idling": 65,
+                "Idling": 60,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
@@ -298,7 +307,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_missile_he_bigly",
             },
             "hit_roll": {
-                "Idling": 65,
+                "Idling": 60,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
@@ -512,17 +521,19 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("SAM_ROLAND_2", "SAM", None, False): {
         "Ammunition": {
             "hit_roll": {
+                "Idling": 60,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
-                "MaximumRangeHelicopterGRU": 2800,
-                "MaximumRangeAirplaneGRU": 3500,
+                "MaximumRangeHelicopterGRU": 3325,
+                "MaximumRangeAirplaneGRU": 3325,
                 "AimingTime": 1.2,
+                "PhysicalDamages": 6.0,
                 "TimeBetweenTwoShots": 2.5,
                 "TimeBetweenTwoFx": 2.5,
             },
         },
-        "SupplyCost": 65.0,
+        "SupplyCost": 70.0,
         "WeaponDescriptor": {
             "SalvoLengths": [2],
             "units": {
@@ -534,11 +545,12 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("SAM_ROLAND_3", "SAM", None, False): {
         "Ammunition": {
             "hit_roll": {
+                "Idling": 65,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 3150,
-                "MaximumRangeAirplaneGRU": 4375,
+                "MaximumRangeAirplaneGRU": 4025,
                 "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 2.5,
                 "TimeBetweenTwoFx": 2.5,

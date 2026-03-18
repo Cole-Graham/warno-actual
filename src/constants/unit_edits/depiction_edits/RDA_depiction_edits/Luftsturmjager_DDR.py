@@ -16,7 +16,13 @@ luftsturmjager_ddr: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
         ("AllWeaponSubDepiction_Luftsturmjager_DDR", "TemplateAllSubWeaponDepiction"): {
             "Operators": {
                 2: ("insert", [("FireEffectTag", "MMG_PKM_7_62mm"), ("WeaponShootDataPropertyName", "WeaponShootData_0_3")]),
-                3: ("edit", [("FireEffectTag", "RocketInf_RPG7VL"), ("WeaponShootDataPropertyName", "WeaponShootData_0_3")]),
+                3: ("edit", [("FireEffectTag", "RocketInf_RPG7VL"), ("WeaponShootDataPropertyName", "WeaponShootData_0_4")]),
+            },
+        },
+        
+        ("TacticDepiction_Luftsturmjager_DDR_Soldier", "TemplateInfantryDepictionFactoryTactic"): {
+            "Operators": {
+                0: ("insert", [("mmg", "WeaponAlternative_3")]),
             },
         },
     },

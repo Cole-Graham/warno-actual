@@ -1016,3 +1016,10 @@ def _update_turret(new_weap_row: Any, turret_index: int, turret_edits: Dict[str,
             continue
         else:
             turret_list.v[turret_index].v.by_m(membr).v = str(value)
+    
+    if "remove" in turret_edits:
+        turret_list = new_weap_row.v.by_member("TurretDescriptorList")
+        # Sort in reverse order to remove highest indices first
+        remove_indices = sorted([int(idx) for idx in turret_edits["remove"]], reverse=True)
+        for turret_index in remove_indices:
+            turret_list.v.remove(turret_index)

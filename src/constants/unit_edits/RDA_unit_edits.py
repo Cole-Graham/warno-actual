@@ -1205,65 +1205,9 @@ rda_unit_edits = {
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "quantity": {
-                    "FM_Mpi_AKS_74NK": 7,
                     "MMG_PKM_7_62mm": 1,
-                    "SAW_lMG_K_7_62mm": 1,
-                    "RocketInf_RPG7VL": 1,
                 },
                 "insert": [(2, "MMG_PKM_7_62mm")],
-                    "insert_edits": {
-                        2: {
-                            "turret_edits": {
-                                "YulBoneOrdinal": 3,
-                            },
-                            "AmmoBoxIndex": 2,
-                            "HandheldEquipmentKey": "'WeaponAlternative_3'",
-                            "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
-                            "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
-                            "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
-                        },
-                        3: {
-                            "turret_edits": {
-                                "YulBoneOrdinal": 4,
-                            },
-                            "AmmoBoxIndex": 3,
-                            "HandheldEquipmentKey": "'WeaponAlternative_4'",
-                            "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_4'",
-                            "WeaponIgnoredPropertyName": "'WeaponIgnored_4'",
-                            "WeaponShootDataPropertyName": ["WeaponShootData_0_4"],
-                        },
-                    },
-            },
-                    "Salves": {
-                        "insert": [(4, 6)],
-                        "FM_Mpi_AKS_74NK": 11,
-                        "RocketInf_RPG7VL": 36,
-                    },
-        },
-    },
-
-    "Luftsturmjager_Metis_DDR": {
-        "GameName": {
-            "display": "LUFTSTURM-JÄGER (Metis)",
-        },
-        "CommandPoints": 50,
-        "armor": "Infantry_armor_reference",
-        "strength": 9,
-        "availability": [0, 0, 4, 3],
-        "max_speed": 20,
-        "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_heavy'"],
-        },
-        "UpgradeFromUnit": "Luftsturmjager_DDR",
-        "WeaponDescriptor": {
-             "equipmentchanges": {
-                "quantity": {
-                    "FM_Mpi_AKS_74NK": 7,
-                    "MMG_PKM_7_62mm": 1,
-                    "SAW_lMG_K_7_62mm": 1,
-                    "ATGM_9K115_Metis_M": 1,
-                },
-            "insert": [(2, "MMG_PKM_7_62mm")],
                 "insert_edits": {
                     2: {
                         "turret_edits": {
@@ -1288,9 +1232,57 @@ rda_unit_edits = {
                 },
             },
             "Salves": {
-                "insert": [(4, 6)],
-                "FM_Mpi_AKS_74NK": 11,
-                "ATGM_9K115_Metis_M": 36,
+                "insert": [(2, 36)],
+            },
+        },
+    },
+
+    "Luftsturmjager_Metis_DDR": {
+        "GameName": {
+            "display": "LUFTSTURM-JÄGER (Metis)",
+        },
+        "CommandPoints": 50,
+        "armor": "Infantry_armor_reference",
+        "strength": 9,
+        "availability": [0, 0, 4, 3],
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
+        "UpgradeFromUnit": "Luftsturmjager_DDR",
+        "WeaponDescriptor": {
+             "equipmentchanges": {
+                "quantity": {
+                    "FM_Mpi_AKS_74NK": 7,
+                    "MMG_PKM_7_62mm": 1,
+                    "SAW_lMG_K_7_62mm": 1,
+                },
+                "insert": [(2, "MMG_PKM_7_62mm")],
+                "insert_edits": {
+                    2: {
+                        "turret_edits": {
+                            "YulBoneOrdinal": 3,
+                        },
+                        "AmmoBoxIndex": 2,
+                        "HandheldEquipmentKey": "'WeaponAlternative_3'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
+                    },
+                    3: {
+                        "turret_edits": {
+                            "YulBoneOrdinal": 4,
+                        },
+                        "AmmoBoxIndex": 3,
+                        "HandheldEquipmentKey": "'WeaponAlternative_4'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_4'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_4'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_4"],
+                    },
+                },
+            },
+            "Salves": {
+                "insert": [(2, 36)],
             },
         },
     },

@@ -10,6 +10,7 @@ from src.constants.weapons.vanilla_inst_modifications import (
     AMMUNITION_MISSILES_REMOVALS,
 )
 from src.utils.dictionary_utils import write_dictionary_entries
+from src.utils.ndf_utils import strip_quotes
 from src.utils.logging_utils import setup_logger
 
 from .ammunition import get_supply_costs
@@ -96,7 +97,9 @@ def edit_gen_gp_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]
 
                 # Track dictionary entries
                 try:
-                    _track_dictionary_entries(weapon_name, data, ingame_names, calibers)
+                    _track_dictionary_entries(
+                        weapon_name, data, ingame_names, calibers, base_descr,
+                    )
                 except Exception as e:
                     logger.error(f"Failed tracking dictionary entries for {weapon_name}: {str(e)}")
                     continue
@@ -380,12 +383,24 @@ def _apply_hit_roll_edits(descr: Any, hit_roll_data: Dict) -> None:
                 hitroll_obj.v.add(f"DistanceToTarget = {str(hit_chance)}")
 
 
-def _track_dictionary_entries(weapon_name, data, ingame_names, calibers):
-    """Track dictionary entries for a missile."""
+def _track_dictionary_entries(
+    weapon_name, data, ingame_names, calibers, base_descr: Any = None,
+):
+    """Track dictionary entries for a missile.
+
+    When display is provided but token is not, uses the vanilla token from the
+    descriptor (same pattern as unit edits GameName).
+    """
     if "Ammunition" in data:
         ammo_data = data["Ammunition"]
-        if "display" in ammo_data and "token" in ammo_data:
-            ingame_names.append((weapon_name, ammo_data["token"], ammo_data["display"]))
+        if "display" in ammo_data:
+            token = ammo_data.get("token")
+            if token is None and base_descr is not None:
+                name_membr = base_descr.v.by_m("Name", False)
+                if name_membr is not None and name_membr.v:
+                    token = strip_quotes(name_membr.v)
+            if token is not None:
+                ingame_names.append((weapon_name, token, ammo_data["display"]))
 
         if "parent_membr" in ammo_data and "Caliber" in ammo_data["parent_membr"]:
             caliber_data = ammo_data["parent_membr"]["Caliber"]

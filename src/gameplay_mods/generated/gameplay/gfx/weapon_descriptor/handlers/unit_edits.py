@@ -19,11 +19,7 @@ from .new_units import _should_use_strength_variant, UNITS_SKIP_STRENGTH_VARIANT
 logger = setup_logger(__name__)
 
 def unit_edits_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> None:
-    """Unit Edits for WeaponDescriptor.ndf file.
-    Args:
-        source_path: The NDF file being edited
-        game_db: Game database containing ammunition and weapon data
-    """
+    """Unit Edits for WeaponDescriptor.ndf file."""
     ammo_db = game_db["ammunition"]
     unit_db = game_db["unit_data"]
     weapon_db = game_db["weapons"]
@@ -132,7 +128,10 @@ def unit_edits_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> No
         weapon_descr_data = weapon_db[weapon_descr_name]
 
         # Gather templates for this specific unit's equipment changes
-        turret_templates = _gather_turret_templates(source_path, unit, edits, ammo_db, weapon_db)
+        insert_templates = game_db.get("insert_turret_templates", {})
+        turret_templates = _gather_turret_templates(
+            source_path, unit, edits, ammo_db, weapon_db, insert_templates,
+        )
 
         if weapon_descr:
             _apply_weapon_edits(
@@ -150,17 +149,23 @@ def unit_edits_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> No
             
 
 def _gather_turret_templates(
-    source_path: Any, unit: str, edits: Dict, ammo_db: Dict[str, Any], weapon_db: Dict[str, Any]
+    source_path: Any,
+    unit: str,
+    edits: Dict,
+    ammo_db: Dict[str, Any],
+    weapon_db: Dict[str, Any],
+    insert_templates: Dict[str, str] | None = None,
 ) -> List[Tuple[str, Any]]:
-    """Gather turret templates for equipment changes using database data.
-    
-    Handles "insert" key from equipmentchanges.
+    """Gather turret templates for equipment changes.
+
+    Uses precomputed insert_turret_templates (from vanilla) only. No fallback to
+    source_path, since patched donors are unreliable.
     """
     turret_objects = []
     weapons_to_add = []
+    insert_templates = insert_templates or {}
 
     equipment_changes = edits["WeaponDescriptor"].get("equipmentchanges", {})
-    # Check for "insert" key
     weapon_list = equipment_changes.get("insert")
     if not weapon_list:
         return []
@@ -170,90 +175,52 @@ def _gather_turret_templates(
         logger.warning(f"Weapon {weapon_descr_name} not found in database")
         return []
 
-    # Find the matching weapon descriptor
-    weapon_descr_data = weapon_db[weapon_descr_name]
-    for weapon_descr in source_path:
-        if weapon_descr.namespace != weapon_descr_name:
-            continue
-
-        try:
-            turret_objects.extend(
-                _find_turret_templates(
-                    weapon_descr,
-                    weapon_list,
-                    weapons_to_add,
-                    weapon_descr_data,
-                    weapon_db,
-                    ammo_db,
-                    source_path,
-                )
-            )
-            break  # Found and processed the descriptor
-        except Exception as e:
-            logger.error(f"Failed to find turret templates for {weapon_descr_name}: {str(e)}")
+    turret_objects.extend(
+        _find_turret_templates(weapon_list, weapons_to_add, insert_templates),
+    )
 
     logger.debug(f"Found templates for weapons: {weapons_to_add}")
     return turret_objects
 
 
 def _find_turret_templates(
-    weapon_descr: Any,
     add_list: List,
     weapons_to_add: List,
-    weapon_descr_data: Dict,
-    weapon_db: Dict,
-    ammo_db: Dict,
-    source_path: Any,
+    insert_templates: Dict[str, str],
 ) -> List[Tuple[str, Any]]:
-    """Find turret templates matching the add list using database data."""
+    """Find turret templates matching the add list.
+
+    Uses insert_turret_templates (vanilla) only. No fallback to source_path.
+    """
     templates = []
-    processed_weapons = set()  # Track which weapons we've already found templates for
+    processed_weapons = set()
 
-    def find_donor_descriptor(weapon_name: str) -> Tuple[str, Dict] | Tuple[None, None]:
-        """Find a weapon descriptor that has the weapon we want."""
-        for descr_name, descr_data in weapon_db.items():
-            if weapon_name in descr_data["weapon_locations"]:
-                return descr_name, descr_data
-        return None, None
-
-    def add_turret_template(donor_descr_: Any, donor_locations: Dict, weapon_name: str) -> bool:
-        for location in donor_locations[weapon_name]:
-            # Get the turret from the donor descriptor
-            for turret in donor_descr_.v.by_member("TurretDescriptorList").v:
-                if turret.index == location["turret_index"]:
-                    new_turret = _prepare_turret_template(turret, int(turret.index))
-                    weapons_to_add.append(weapon_name)
-                    templates.append((weapon_name, new_turret))
-                    return True
+    def add_turret_from_template(template_str: str, weapon_name: str, index: int) -> bool:
+        try:
+            parsed = ndf.convert(template_str)
+            if parsed and len(parsed) > 0:
+                turret_row = parsed[0]
+                new_turret = _prepare_turret_template(turret_row, index)
+                weapons_to_add.append(weapon_name)
+                templates.append((weapon_name, new_turret))
+                return True
+        except Exception as e:
+            logger.warning(f"Failed to parse insert template for {weapon_name}: {e}")
         return False
 
-    # Process each weapon to add
     for index_to_insert, ammo_name in add_list:
-        if ammo_name in processed_weapons:  # Skip if we already found a template
+        if ammo_name in processed_weapons:
             continue
 
-        ammo_renames = ammo_db["renames_new_old"]
-        old_name = ammo_renames.get(ammo_name, None)
+        if ammo_name not in insert_templates:
+            logger.warning(f"No insert template in database for {ammo_name}, skipping")
+            continue
 
-        # Try both new and old names
-        for name in [ammo_name, old_name]:
-            if not name:
-                continue
-
-            # Find a descriptor that has this weapon
-            donor_name, donor_data = find_donor_descriptor(name)
-            if not donor_name:
-                continue
-
-            # Get the actual descriptor from source_path
-            donor_descr = source_path.by_namespace(donor_name)
-            if not donor_descr:
-                continue
-
-            template_added = add_turret_template(donor_descr, donor_data["weapon_locations"], name)
-            if template_added:
-                processed_weapons.add(ammo_name)
-                break
+        if add_turret_from_template(insert_templates[ammo_name], ammo_name, index_to_insert):
+            processed_weapons.add(ammo_name)
+            logger.debug(f"Using insert template for {ammo_name}")
+        else:
+            logger.warning(f"Could not add turret from template for {ammo_name}")
 
     return templates
 

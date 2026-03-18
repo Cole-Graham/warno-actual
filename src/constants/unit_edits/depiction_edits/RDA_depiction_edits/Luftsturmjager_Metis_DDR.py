@@ -19,6 +19,13 @@ luftsturmjager_metis_ddr: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
                 3: ("edit", [("FireEffectTag", "ATGM_9K115_Metis_M"), ("WeaponShootDataPropertyName", "WeaponShootData_0_4")]),
             },
         },
+        
+        ("TacticDepiction_Luftsturmjager_Metis_DDR_Soldier", "TemplateInfantryDepictionFactoryTactic"): {
+            "Operators": {
+                0: ("insert", [("mmg", "WeaponAlternative_3")]),
+                1: ("edit", [("bazooka", "WeaponAlternative_4")]),
+            },
+        },
     },
 }
 # fmt: on

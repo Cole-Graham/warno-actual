@@ -2202,14 +2202,17 @@ uk_unit_edits = {
 
     "DCA_Rapier_UK": {
         "CommandPoints": 65,
+        "GameName": {
+            "display": "RAPIER",
+        },
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 220,
+                "EOpticalStrength/HighAltitude": 300,
             },
             "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "SpecialtiesList": {
-            "add_specs": ["'good_airoptics'"],
+            "add_specs": ["'verygood_airoptics'"],
         },
         "availability": [6, 4, 0, 0],
         "Divisions": {
@@ -2226,8 +2229,26 @@ uk_unit_edits = {
     "Tracked_Rapier_UK": {
         "CommandPoints": 85,
         "GameName": {
-            "display": "TRACKED RAPIER FSA",
+            "display": "TRACKED RAPIER",
             "token": "TQRFBEXVTC",
+        },
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 300,
+            },
+            "TimeBetweenEachIdentifyRoll": 1.0,
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'verygood_airoptics'"],
+        },
+        "availability": [4, 3, 0, 0],
+        "UpgradeFromUnit": "DCA_Rapier_Darkfire_UK",
+    },
+
+    "DCA_Rapier_FSA_UK": {  # towed FSB1
+        "CommandPoints": 85,
+        "GameName": {
+            "display": "RAPIER LASERFIRE",
         },
         "optics": {
             "OpticalStrengths": {
@@ -2237,20 +2258,6 @@ uk_unit_edits = {
         },
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
-        },
-        "availability": [4, 3, 0, 0],
-    },
-
-    "DCA_Rapier_FSA_UK": {  # towed FSB1
-        "CommandPoints": 85,
-        "optics": {
-            "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
-            },
-            "TimeBetweenEachIdentifyRoll": 1.0,
-        },
-        "SpecialtiesList": {
-            "add_specs": ["'verygood_airoptics'"],
         },
         "availability": [6, 4, 0, 0],
         "Divisions": {
@@ -2262,10 +2269,14 @@ uk_unit_edits = {
                 "Transports": ["Rover_101FC_supply_UK"],
             },
         },
+        "UpgradeFromUnit": None,
     },
     
     "DCA_Rapier_Darkfire_UK": {
         "CommandPoints": 100,
+        "GameName": {
+            "display": "RAPIER DARKFIRE",
+        },
         "optics": {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 300,
@@ -2276,6 +2287,7 @@ uk_unit_edits = {
             "add_specs": ["'verygood_airoptics'"],
         },
         "availability": [4, 3, 0, 0],
+        "UpgradeFromUnit": "DCA_Rapier_UK",
     },
     
     "DCA_Bloodhound_UK": {
@@ -2290,6 +2302,7 @@ uk_unit_edits = {
             "add_specs": ["'verygood_airoptics'"],
         },
         "availability": [0, 3, 0, 0],
+        "UpgradeFromUnit": None,
     },
 
     # UK HELI

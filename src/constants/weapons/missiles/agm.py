@@ -110,8 +110,17 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "MaxAccelerationGRU": 1400,
         },
     },
+    
+    ("AGM_Kh25ML", "ATGM", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "MaximumRangeGRU": 3850,
+                "SupplyCost": 360.0,
+            },
+        },
+    },
 
-    ("AGM_BGM71D_TOW_2", "AGM", None, False): {
+    ("AGM_BGM71D_TOW_2", "ATGM", None, False): {
         "Ammunition": {
             "Arme": {
                 "Index": 23,
@@ -276,7 +285,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("AGM_9M114M_Ataka", "AGM", None, False): {
+    ("AGM_9M114M_Ataka", "ATGM", None, False): {
         "Ammunition": {
             "Arme": {
                 "Index": 24,
@@ -317,7 +326,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("AGM_9K121_Vikhr_avion_ripple2", "AGM", None, False): { # 36
+    ("AGM_9K121_Vikhr_avion_ripple2", "ATGM", None, False): { # 36
         "Ammunition": {
             "Arme": {
                 "Index": 24,
@@ -650,7 +659,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("AGM_AS30L", "AGM", None, False): {
+    ("AGM_AS30L", "ATGM", None, False): {
         "Ammunition": {
             "parent_membr": {
                 "SpeedGRU": 2800,
