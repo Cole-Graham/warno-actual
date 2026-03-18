@@ -48,9 +48,9 @@ tankhunters_rfa: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
         (None, "TTransportedInfantryEntry"): {
             "Count": 3,
             "Meshes": [
-                "TankHunters_RFA",
-                "TankHunters_RFA_02",
-                "TankHunters_RFA_03",
+                "Jager_RFA",
+                "Jager_RFA_02",
+                "Jager_RFA_03",
             ],
             "UniqueCount": 2,
         },

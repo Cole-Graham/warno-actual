@@ -312,7 +312,7 @@ rfa_unit_edits = {
                     "MMG_inf__MG3_7_62mm": False,
                 },
                 "quantity": {
-                    "FM_G3KA4": 8,
+                    "FM_G3KA4": 7,
                     "MMG_inf__MG3_7_62mm": 2,
                 },
             },
@@ -584,6 +584,7 @@ rfa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
+        "strength": 11,
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "quantity": {
@@ -1922,6 +1923,11 @@ rfa_unit_edits = {
     "Alpha_Jet_A_KWS_RFA": { # 30% ECM, 2 Mavericks
         "CommandPoints": 100,
         "availability": [0, 3, 2, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "AGM_AGM65B_Maverick": 1,
+            },
+        },
     },
 
     "F104G_Starfighter_RFA": { # F-104G [AA]

@@ -546,7 +546,7 @@ RFA_NEW_UNITS = {
                 },
             },
             "Salves": {
-                "PM_Uzi": 11,
+                "PM_Uzi": 6,
                 "MANPAD_FIM43": 6,
             },
         },
@@ -615,7 +615,7 @@ RFA_NEW_UNITS = {
                 },
             },
             "Salves": {
-                "PM_Uzi": 11,
+                "PM_Uzi": 6,
                 "MANPAD_FIM43": 6,
             },
         },

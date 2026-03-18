@@ -13,11 +13,25 @@ from .POL_depiction_edits import (
     mortier_2b9_vasilek_para_pol,
 )
 from .RDA_depiction_edits import (
+    fallschirmjager_cmd_ddr,
+    fallschirmjager_falseflag_cmd_ddr,
+    grenzer_flam_ddr,
+    grenzer_mot_ddr,
     kda_cmd_ddr,
+    luftsturmjager_cmd_ddr,
+    luftsturmjager_ddr,
+    luftsturmjager_metis_ddr,
     mi_24p_s8_at_ddr,
     mi_24p_s8_at2_ddr,
+    sniper_fj_ddr,
+    volkspolizei_cmd_ddr,
+    volkspolizei_ddr,
 )
 from .RFA_depiction_edits import (
+    engineers_geb_rfa_rfa,
+    gebirgsjager_jagdkdo_rfa,
+    gebirgsjager_pzf3_rfa,
+    sniper_fern_rfa,
     unimog_s_404_rfa,
 )
 from .SOV_depiction_edits import (
@@ -74,11 +88,25 @@ __all__ = [
     "mortier_2b9_vasilek_para_pol",
     
     # RDA
+    "fallschirmjager_cmd_ddr",
+    "fallschirmjager_falseflag_cmd_ddr",
+    "grenzer_flam_ddr",
+    "grenzer_mot_ddr",
     "kda_cmd_ddr",
+    "luftsturmjager_cmd_ddr",
+    "luftsturmjager_ddr",
+    "luftsturmjager_metis_ddr",
     "mi_24p_s8_at_ddr",
     "mi_24p_s8_at2_ddr",
+    "sniper_fj_ddr",
+    "volkspolizei_cmd_ddr",
+    "volkspolizei_ddr",
     
     # RFA
+    "engineers_geb_rfa_rfa",
+    "gebirgsjager_jagdkdo_rfa",
+    "gebirgsjager_pzf3_rfa",
+    "sniper_fern_rfa",
     "unimog_s_404_rfa",
     
     # SOV

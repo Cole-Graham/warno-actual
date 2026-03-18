@@ -158,6 +158,17 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+
+    ("Howz_Canon_M126_SP_Howitzer_155mm", "howitzer", None, False): { # M109G
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 4.2,
+                "SuppressDamages": 357,
+                "RadiusSplashPhysicalDamagesGRU": 155,
+                "RadiusSplashSuppressDamagesGRU": 207,
+            },
+        },
+    },
     
     ("Howz_Canon_QF_25pdr_87mm", "howitzer", None, False): {
         "Ammunition": {
@@ -611,6 +622,5 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
-    
 }
 # fmt: on

@@ -60,12 +60,12 @@ manpad_redeye_geb_rfa: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
         (None, "TTransportedInfantryEntry"): {
             "Count": 6,
             "Meshes": [
-                "MANPAD_Redeye_Geb_RFA",
-                "MANPAD_Redeye_Geb_RFA_02",
-                "MANPAD_Redeye_Geb_RFA_03",
-                "MANPAD_Redeye_Geb_RFA_04",
-                "MANPAD_Redeye_Geb_RFA_05",
-                "MANPAD_Redeye_Geb_RFA_06",
+                "MANPAD_Redeye_RFA",
+                "MANPAD_Redeye_RFA_02",
+                "MANPAD_Redeye_RFA_03",
+                "MANPAD_Redeye_RFA_04",
+                "MANPAD_Redeye_RFA_05",
+                "MANPAD_Redeye_RFA_06",
             ],
             "UniqueCount": 0,
         },
