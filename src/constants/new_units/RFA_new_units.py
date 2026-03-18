@@ -342,6 +342,7 @@ RFA_NEW_UNITS = {
             ],
         },
         "strength": 9,
+        "ButtonTexture": "Gebirgsjager_PzF3_RFA",
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "quantity": {
@@ -381,6 +382,73 @@ RFA_NEW_UNITS = {
         "Faction": "PACT",
         "Nation": "SOV",
         "UpgradeFromUnit": "Jager_RFA",
+        "alternatives_count": 3,
+        "selector_tactic": "02_03",
+    },
+
+    ("Jager_RFA", 1): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "3db5dc5b-a725-4d69-912c-73c898484d42",
+        "InfantrySquadModuleGUID": "1fa82470-f82e-49bb-85e1-4076a6a69470",
+        "ShowroomGUID": "658a4409-7a40-40db-b583-a3447815cda1",
+        "CadavreGUID": "dc1c1b2a-fa0d-4278-9489-e73bbf7047b2",
+        "NewName": "TankHunters_RFA",
+        "GameName": {
+            "display": "PANZERJÄGER",
+            "token": "IJHOANHZVW",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_Standard",
+                "Steelman_infanterie_autoresolve",
+                "UNITE_TankHunters_RFA",
+                "Unite",
+            ],
+        },
+        "strength": 9,
+        "ButtonTexture": "Gebirgsjager_RFA",
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_G3KA4": 11,
+                "RocketInf_PzF_3T": 4,
+                "RocketInf_PzF_3T": 4,
+            },
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_G3KA4": 9,
+                    "MMG_inf__MG3_7_62mm": 1,
+                    "RocketInf_PzF_44": 1,
+                },
+                "replace": [
+                    ("MMG_inf__MG3_7_62mm", "RocketInf_PzF_3T", "MMG_inf__MG3_7_62mm", "RocketInf_PzF_3"), ("RocketInf_PzF_44", "RocketInf_PzF_3T", "RocketInf_PzF_44", "RocketInf_PzF_3"),
+                ],
+            },
+        },
+        "TransportedSoldier": "TankHunters_RFA",
+        "armor": "Infantry_armor_reference",
+        "CommandPoints": 40 ,
+        "UnitRole": 'infantry',
+        "SpecialtiesList": [
+                'infantry_equip_heavy',
+            ],
+        "availability": [10, 7, 0, 0],
+        "max_speed": 20,
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
+                   'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
+                   'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": True, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": False,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "SOV",
+        "UpgradeFromUnit": "Jager_PzF3_RFA",
         "alternatives_count": 3,
         "selector_tactic": "02_03",
     },

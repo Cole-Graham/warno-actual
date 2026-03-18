@@ -1,17 +1,18 @@
-"""Jager_PzF3_RFA depiction edits."""
+"""TankHunters_RFA depiction edits."""
 
 from typing import Dict, Tuple, Union
 
 # fmt: off
 
-jager_pzf3_rfa: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
-    "unit_name": "Jager_PzF3_RFA",
+tankhunters_rfa: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
+    "unit_name": "TankHunters_RFA",
     "valid_files": ["DepictionInfantry.ndf"],
     "DepictionInfantry_ndf": {
-        ("AllWeaponAlternatives_Jager_PzF3_RFA", None): ( # (namespace, object type)
+        ("AllWeaponAlternatives_TankHunters_RFA", None): ( # (namespace, object type)
             # # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "add", "remove", "replace")
-            # 2: ("edit", [("MeshDescriptor", "RPG7V")]), # (selector_id or mesh)
-            # 3: ("edit", [("ReferenceMeshForSkeleton", "RPG7V")]),
+            # 1: ("edit", [("MeshDescriptor", "Panzerfaust_3"), ("SelectorId", "WeaponAlternative_2")]),
+            # 2: ("edit", [("MeshDescriptor", "Panzerfaust_3"), ("SelectorId", "WeaponAlternative_3")]),
+            # 3: ("edit", [("ReferenceMeshForSkeleton", "Panzerfaust_3")]),
             f'['
             f'    TDepictionVisual\n'
             f'    (\n'
@@ -21,7 +22,7 @@ jager_pzf3_rfa: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
             f'    TDepictionVisual\n'
             f'    (\n'
             f'        SelectorId = ["WeaponAlternative_2"]\n'
-            f'        MeshDescriptor = $/GFX/DepictionResources/Modele_MG3\n'
+            f'        MeshDescriptor = $/GFX/DepictionResources/Modele_Panzerfaust_3\n'
             f'    ),\n'
             f'    TDepictionVisual\n'
             f'    (\n'
@@ -36,16 +37,20 @@ jager_pzf3_rfa: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
             f']'
         ),
 
-        ("TacticDepiction_Jager_PzF3_RFA_Soldier", "TemplateInfantryDepictionFactoryTactic"): {
-            "Selector": "02_03" # {unique_count}_{count}
+        ("TacticDepiction_TankHunters_RFA_Soldier", "TemplateInfantryDepictionFactoryTactic"): {
+            "Operators": {
+                1: ("insert", [("bazooka", "WeaponAlternative_3")]),
+                0: ("edit", [("bazooka", "WeaponAlternative_2")]),
+            },
+            "Selector": "02_03", # {unique_count}_{count}
         },
         
         (None, "TTransportedInfantryEntry"): {
             "Count": 3,
             "Meshes": [
-                "Jager_PzF3_RFA",
-                "Jager_PzF3_RFA_02",
-                "Jager_PzF3_RFA_03",
+                "TankHunters_RFA",
+                "TankHunters_RFA_02",
+                "TankHunters_RFA_03",
             ],
             "UniqueCount": 2,
         },

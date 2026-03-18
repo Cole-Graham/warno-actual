@@ -326,6 +326,7 @@ RFA_motorized_newdivisionrules = {
         ("Jager_RFA", 3, [10, 7, 0, 0], ["Unimog_trans_RFA", "TPZ_Fuchs_1_RFA", "TPZ_Fuchs_MILAN_RFA", "TPZ_Fuchs_MILAN_2_RFA"]),
         ("Jager_PzF3_RFA", 2, [10, 7, 0, 0], ["Unimog_trans_RFA", "TPZ_Fuchs_1_RFA", "TPZ_Fuchs_MILAN_RFA", "TPZ_Fuchs_MILAN_2_RFA"]),
         ("Jager_Carl_RFA", 3, [10, 7, 0, 0], ["Unimog_trans_RFA", "TPZ_Fuchs_1_RFA", "TPZ_Fuchs_MILAN_RFA", "TPZ_Fuchs_MILAN_2_RFA"]),
+        ("TankHunters_RFA", 2, [10, 7, 0, 0], ["Unimog_trans_RFA", "TPZ_Fuchs_1_RFA", "TPZ_Fuchs_MILAN_RFA", "TPZ_Fuchs_MILAN_2_RFA"]),
         ("HeimatschutzJager_RFA", 3, [12, 0, 0, 0], ["Unimog_trans_RFA"]),
         ("Engineers_Reserve_RFA", 3, [12, 0, 0, 0], ["Unimog_trans_RFA"]),
         ("Engineers_RFA", 2, [8, 6, 0, 0], ["Unimog_trans_RFA", "TPZ_Fuchs_1_RFA"]),
