@@ -4360,6 +4360,11 @@ sov_unit_edits = {
             },
         },
         "availability": [0, 5, 0, 0],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("RocketAir_S5_57mm_salvolength32", "RocketAir_S5_57mm_avion_salvolength32")],
+            },
+        },
     },
 
     "MiG_21bis_CLU_SOV": {  # 2x RBK-500, 2x RBK-250
@@ -4535,6 +4540,14 @@ sov_unit_edits = {
     "MiG_27M_rkt_SOV": {
         "CommandPoints": 125,
         "availability": [0, 3, 2, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "RocketAir_B8_80mm_salvolength40": 1,
+            },
+            "equipmentchanges": {
+                "replace": [("RocketAir_B8_80mm_avion_salvolength10", "RocketAir_B8_80mm_salvolength40")],
+            },
+        },
     },
 
     "MiG_27M_sead_SOV": {  # MiG-27K [SEAD] - Kh-28 5600m
@@ -4663,16 +4676,16 @@ sov_unit_edits = {
     },
 
     "Su_17M4_HE1_SOV": {  # 6x FAB-500, 2x R-60M
-        "CommandPoints": 230,
-        "availability": [0, 3, 2, 0],
-    },
-
-    "Su_17M4_HE1_SOV": {  # 6x FAB-500, 2x R-60M
-        "CommandPoints": 220,
+        "CommandPoints": 175,
         "availability": [0, 2, 0, 0],
     },
 
     "Su_17M4_HE2_SOV": {  # 4x FAB-500, 2x RBK-500, 2x R-60M
+        "CommandPoints": 240,
+        "availability": [0, 2, 0, 0],
+    },
+
+    "Su_17M4_CLU_SOV": {  # 4x FAB-500, 2x RBK-500, 2x R-60M
         "CommandPoints": 240,
         "availability": [0, 2, 0, 0],
     },
@@ -4685,6 +4698,19 @@ sov_unit_edits = {
             },
         },
         "availability": [0, 3, 2, 0],
+    },
+
+    "Su_17M4_RKT2_SOV": { # 2x 40x SK-80s, 2x R-60M
+        "CommandPoints": 125,
+        "availability": [0, 3, 2, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "RocketAir_B8_80mm_salvolength40": 2,
+            },
+            "equipmentchanges": {
+                "replace": [("RocketAir_B8_80mm_salvolength80", "RocketAir_B8_80mm_salvolength40")],
+            },
+        },
     },
 
     "Su_17M4_thermo_SOV": {  # 6x ODAB-500PM, 2x R-60M

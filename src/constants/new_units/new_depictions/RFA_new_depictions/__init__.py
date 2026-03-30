@@ -1,13 +1,15 @@
 """New depictions for RFA units"""
 
 from .Jager_PzF3_RFA import jager_pzf3_rfa
-from .MANPAD_Redeye_FJ_RFA import manpad_redeye_fj_rfa
+from .MANPAD_Stinger_FJ_RFA import manpad_stinger_fj_rfa
+from .MANPAD_Stinger_RFA import manpad_stinger_rfa
 from .MANPAD_Redeye_Geb_RFA import manpad_redeye_geb_rfa
 from .TankHunters_RFA import tankhunters_rfa
 
 RFA_NEW_DEPICTIONS = {
     "jager_pzf3_rfa": jager_pzf3_rfa,
-    "manpad_redeye_fj_rfa": manpad_redeye_fj_rfa,
+    "manpad_stinger_fj_rfa": manpad_stinger_fj_rfa,
+    "manpad_stinger_rfa": manpad_stinger_rfa,
     "manpad_redeye_geb_rfa": manpad_redeye_geb_rfa,
     "tankhunters_rfa": tankhunters_rfa,
 }

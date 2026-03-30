@@ -3035,6 +3035,11 @@ rda_unit_edits = {
     "L39ZO_DDR": {
         "CommandPoints": 60,
         "availability": [0, 5, 0, 0],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("RocketAir_S5_57mm_salvolength32", "RocketAir_S5_57mm_avion_salvolength32")],
+            },
+        },
     },
 
     "L39ZO_HE1_DDR": {

@@ -70,7 +70,7 @@ RFA_airborne_newdivisionrules = {
         ("CL_289_RFA", 1, [0, 3, 0, 0]),
     ],
     "aa": [
-        ("MANPAD_Redeye_FJ_RFA", 2, [0, 9, 7, 0], ["Iltis_trans_RFA"]),
+        ("MANPAD_Stinger_FJ_RFA", 2, [0, 7, 5, 0], ["Iltis_trans_RFA"]),
         ("MANPAD_Redeye_Geb_RFA", 3, [9, 7, 0, 0], ["Faun_kraka_RFA", "UH1D_RFA"]),
         ("DCA_FK20_2_20mm_FJ_RFA", 2, [0, 9, 7, 0], ["Iltis_trans_RFA"]),
         ("DCA_FK20_2_20mm_Zwillinge_RFA", 2, [9, 7, 0, 0], ["Faun_kraka_RFA"]),
@@ -161,6 +161,7 @@ RFA_armored_newdivisionrules = {
     ],
     "aa": [
         ("MANPAD_Redeye_RFA", 2, [9, 7, 0, 0], ["Iltis_trans_RFA"]),
+        ("MANPAD_Stinger_RFA", 1, [7, 5, 0, 0], ["Iltis_trans_RFA"]),
         ("DCA_FK20_2_20mm_Zwillinge_RFA", 2, [9, 7, 0, 0], ["Unimog_trans_RFA"]),
         ("Unimog_S_404_FK20_RFA", 1, [9, 7, 0, 0]),
         ("Gepard_1A2_RFA", 2, [6, 4, 0, 0]),
@@ -283,6 +284,7 @@ RFA_mechanized_newdivisionrules = {
     ],
     "aa": [
         ("MANPAD_Redeye_RFA", 2, [9, 7, 0, 0], ["Iltis_trans_RFA"]),
+        ("MANPAD_Stinger_RFA", 1, [7, 5, 0, 0], ["Iltis_trans_RFA"]),
         ("DCA_FK20_2_20mm_Zwillinge_RFA", 2, [9, 7, 0, 0], ["Unimog_trans_RFA"]),
         ("Bofors_40mm_RFA", 3, [10, 7, 0, 0]),
         ("Unimog_S_404_FK20_RFA", 2, [9, 7, 0, 0]),
@@ -375,6 +377,7 @@ RFA_motorized_newdivisionrules = {
     ],
     "aa": [
         ("MANPAD_Redeye_RFA", 3, [9, 7, 0, 0], ["Iltis_trans_RFA"]),
+        ("MANPAD_Stinger_RFA", 2, [7, 5, 0, 0], ["Iltis_trans_RFA"]),
         ("DCA_FK20_2_20mm_Zwillinge_RFA", 2, [9, 7, 0, 0], ["Unimog_trans_RFA"]),
         ("Bofors_40mm_RFA", 3, [10, 7, 0, 0]),
         ("Unimog_S_404_FK20_RFA", 2, [9, 7, 0, 0]),

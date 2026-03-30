@@ -1,0 +1,74 @@
+"""MANPAD_Stinger_RFA depiction edits."""
+
+from typing import Dict, Tuple, Union
+
+# fmt: off
+manpad_stinger_rfa: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
+    "unit_name": "MANPAD_Stinger_RFA",
+    "valid_files": ["DepictionInfantry.ndf"],
+    "DepictionInfantry_ndf": {
+        ("AllWeaponAlternatives_MANPAD_Stinger_RFA", None): ( # (namespace, object type)
+            # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "add", "remove")
+            # 1: ("add", [("SelectorId", "WeaponAlternative_2"), ("MeshDescriptor", "M14_Sniper")]), # (selector_id or mesh)
+            # 2: ("edit", [("SelectorId", "WeaponAlternative_3")]),
+            f'[\n'
+            f'    TDepictionVisual\n'
+            f'    (\n'
+            f'        SelectorId = ["WeaponAlternative_1"]\n'
+            f'        MeshDescriptor = $/GFX/DepictionResources/Modele_Uzi\n'
+            f'    ),\n'
+            f'    TDepictionVisual\n'
+            f'    (\n'
+            f'        SelectorId = ["WeaponAlternative_2"]\n'
+            f'        MeshDescriptor = $/GFX/DepictionResources/Modele_MANPAD_FIM92_A\n'
+            f'    ),\n'
+            f'    TMeshlessDepictionDescriptor\n'
+            f'    (\n'
+            f'        SelectorId = ["none"]\n'
+            f'        ReferenceMeshForSkeleton = $/GFX/DepictionResources/Modele_MANPAD_FIM92_A\n'
+            f'    ),\n'
+            f']'
+        ),
+        
+        ("AllWeaponSubDepiction_MANPAD_Stinger_RFA", "TemplateAllSubWeaponDepiction"): {
+            # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "add", "remove")
+            "Operators": (
+                # 1: ("add", [("FireEffectTag", "Sniper_M14"), ("WeaponShootDataPropertyName", "0_2")]), # (selector_id or mesh)
+                f'[\n'
+                f'    DepictionOperator_WeaponInstantFireInfantry\n'
+                f'    (\n'
+                f'        FireEffectTag = "FireEffect_PM_uzi"\n'
+                f'        WeaponShootDataPropertyName = "WeaponShootData_0_1"\n'
+                f'    ),\n'
+                f'    DepictionOperator_WeaponInstantFireInfantry\n'
+                f'    (\n'
+                f'        FireEffectTag = "FireEffect_MANPAD_FIM92_A"\n'
+                f'        WeaponShootDataPropertyName = "WeaponShootData_0_2"\n'
+                f'    ),\n'
+                f']'
+            )
+        },
+
+        ("TacticDepiction_MANPAD_Stinger_RFA_Soldier", "TemplateInfantryDepictionFactoryTactic"): {
+            "Selector": "00_06" # {unique_count}_{count}
+        },
+        
+        ("TacticDepiction_MANPAD_Stinger_RFA_Ghost", "TemplateInfantryDepictionFactoryGhost"): {
+            "Selector": "00_06"
+        },
+        
+        (None, "TTransportedInfantryEntry"): {
+            "Count": 6,
+            "Meshes": [
+                "MANPAD_Redeye_RFA",
+                "MANPAD_Redeye_RFA_02",
+                "MANPAD_Redeye_RFA_03",
+                "MANPAD_Redeye_RFA_04",
+                "MANPAD_Redeye_RFA_05",
+                "MANPAD_Redeye_RFA_06",
+            ],
+            "UniqueCount": 0,
+        },
+    },
+}
+# fmt: on

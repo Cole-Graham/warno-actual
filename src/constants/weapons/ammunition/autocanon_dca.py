@@ -213,16 +213,20 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_2_canons_2A38M_30mm", "DCA", None, False): { # Tunguska
         "Ammunition": {
             "hit_roll": {
-                "Idling": 45,
-                "Moving": 30,
+                "Idling": 15,
+                "Moving": 10,
             },
             "parent_membr": {
+                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoFx": 0.1,
                 "MaximumRangeHelicopterGRU": 2625,
                 "MaximumRangeAirplaneGRU": 2450,
+                "PhysicalDamages": 2.1,
                 "SuppressDamages": 60,
+                "TimeBetweenTwoSalvos": 1.0,
                 "AimingTime": 1.2,
-                "ShotsCountPerSalvo": 16,
-                "AffichageMunitionParSalve": 128,
+                "ShotsCountPerSalvo": 10,
+                "AffichageMunitionParSalve": 70,
             },
         },
     },
@@ -251,8 +255,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_2_canons_Oerlikon_GDF_35mm", "DCA", None, False): { # Gepard
         "Ammunition": {
             "hit_roll": {
-                "Idling": 45,
-                "Moving": 30,
+                "Idling": 25,
+                "Moving": 15,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 0.1,
@@ -271,7 +275,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_2_canons_Oerlikon_GDF_002_35mm", "DCA", None, False): { # Skyguard
         "Ammunition": {
             "hit_roll": {
-                "Idling": 15,
+                "Idling": 25,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 0.1,

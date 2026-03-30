@@ -31,6 +31,23 @@ weapons: Dict[WeaponKey, WeaponData] = {
     #         },
     #     },
     # },
+
+    ("RocketAir_Zuni_127mm_F4F_salvolength8", "rocket", "RocketAir_Zuni_1272mm_salvolength8", True): { # Zuni's on the German F4F
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2625,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
+                "RadiusSplashPhysicalDamagesGRU": 21,
+                "RadiusSplashSuppressDamagesGRU": 44,
+                "SupplyCost": 128.0,
+            },
+        },
+    },
     
     ("RocketAir_SNEB_68mm_x18_helo", "rocket", None, False): {
         "Ammunition": {
@@ -143,6 +160,27 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "NbSalvosShootOnPosition": 2,
                 "SimultaneousShotsCount": 2,
                 "AffichageMunitionParSalve": 32,
+            },
+        },
+    },
+
+     ("RocketAir_Grom_57mm_salvolength16", "rocket", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },                
+            "parent_membr": {
+                "MaximumRangeGRU": 2450,
+                "RadiusSplashPhysicalDamagesGRU": 9,
+                "RadiusSplashSuppressDamagesGRU": 15,  
+                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoFx": 0.1,
+                "ShotsCountPerSalvo": 32,
+                "SupplyCost": 64.0,
+                "NbSalvosShootOnPosition": 2,
+                "SimultaneousShotsCount": 2,
+                "AffichageMunitionParSalve": 16,
             },
         },
     },
@@ -321,13 +359,56 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketAir_B8_80mm_salvolength20", "rocket", None, False): { # 594
+    ("RocketAir_B8_80mm_salvolength80", "rocket", None, False): { # 594
         "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
             "parent_membr": {
-                "MaximumRangeGRU": 2275,
+                "MaximumRangeGRU": 2450,
                 "RadiusSplashPhysicalDamagesGRU": 15,
                 "RadiusSplashSuppressDamagesGRU": 28,
-                "TimeBetweenTwoShots": 0.3,
+                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoFx": 0.1,
+                "PhysicalDamages": 0.9,
+                "SuppressDamages": 90,
+                "SupplyCost": 480.0,
+            },
+        },
+    },
+
+    ("RocketAir_B8_80mm_salvolength40", "rocket", None, False): { # 594
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2450,
+                "RadiusSplashPhysicalDamagesGRU": 15,
+                "RadiusSplashSuppressDamagesGRU": 28,
+                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoFx": 0.1,
+                "PhysicalDamages": 0.9,
+                "SuppressDamages": 90,
+                "SupplyCost": 240.0,
+            },
+        },
+    },
+
+    ("RocketAir_B8_80mm_salvolength20", "rocket", None, False): { # 594
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2450,
+                "RadiusSplashPhysicalDamagesGRU": 15,
+                "RadiusSplashSuppressDamagesGRU": 28,
+                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoFx": 0.1,
                 "PhysicalDamages": 0.9,
                 "SuppressDamages": 90,
                 "SupplyCost": 120.0,
@@ -335,18 +416,28 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketAir_B8_80mm_salvolength10", "rocket", None, False): { # 593
+    ("RocketAir_B8_80mm_Avion_salvolength10", "rocket", "RocketAir_B8_80mm_salvolength10", True): { # 593
         "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
             "parent_membr": {
-                "MaximumRangeGRU": 2275,
+                "MaximumRangeGRU": 2450,
                 "RadiusSplashPhysicalDamagesGRU": 15,
                 "RadiusSplashSuppressDamagesGRU": 28,
-                "TimeBetweenTwoShots": 0.3,
+                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoFx": 0.1,
                 "PhysicalDamages": 0.9,
                 "SuppressDamages": 90,
                 "SupplyCost": 60.0,
             },
         },
     },
+
+    # SNEB Pod's maybe should be swapped to 1 salvo of 36 rather than 2 salvos of 18? Would Fix the issue of the Gina not being able to dump all its rockets
+
+
+
 }
 # fmt: on

@@ -2876,6 +2876,14 @@ pol_unit_edits = {
         "GameName": {
             "display": "SU-22M4 [RKT2]",
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "RocketAir_B8_80mm_salvolength40": 2,
+            },
+            "equipmentchanges": {
+                "replace": [("RocketAir_B8_80mm_salvolength80", "RocketAir_B8_80mm_salvolength40")],
+            },
+        },
     },
     
     "Su_22_SEAD_POL": {  # Su-22M4P [SEAD]

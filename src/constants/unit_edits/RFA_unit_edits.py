@@ -1918,6 +1918,14 @@ rfa_unit_edits = {
     "Alpha_Jet_A_rkt_RFA": {
         "CommandPoints": 70,
         "availability": [0, 5, 0, 0],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("RocketAir_SNEB_68mm_salvolength18", "RocketAir_SNEB_68mm_salvolength36")],
+            },
+            "Salves": {
+                "RocketAir_SNEB_68mm_salvolength36": (1, True),
+            },
+        },
     },
 
     "Alpha_Jet_A_KWS_RFA": { # 30% ECM, 2 Mavericks
@@ -2037,6 +2045,11 @@ rfa_unit_edits = {
         "optics": {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 375,
+            },
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("RocketAir_Zuni_1272mm_salvolength8", "RocketAir_Zuni_127mm_F4F_salvolength8")],
             },
         },
     },
