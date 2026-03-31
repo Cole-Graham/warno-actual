@@ -1775,7 +1775,7 @@ rfa_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_1_canon_FK20_20mm": 29,
+                "DCA_1_canon_FK20_20mm_TOWED": 29,
             },
         },
     },
@@ -1789,7 +1789,7 @@ rfa_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_1_canon_FK20_20mm": 29,
+                "DCA_1_canon_FK20_20mm_TOWED": 29,
             },
         },
     },
