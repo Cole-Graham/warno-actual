@@ -25,6 +25,11 @@ pol_unit_edits = {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
         "UpgradeFromUnit": "FOB_POL",
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_ZU23_2_23mm_TOWED": 31,
+            },
+        },
     },
     
     "DCA_ZU_23_2_Para_POL": {  # Desant. ZU-23-2
@@ -51,6 +56,11 @@ pol_unit_edits = {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
         # "UpgradeFromUnit": "FOB_POL",  # no fob in korpus
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_ZU23_2_23mm_TOWED": 31,
+            },
+        },
     },
     
     "DCA_ZUR_23_2S_JOD_POL": {  # ZUR-23-2S Jod
@@ -71,6 +81,11 @@ pol_unit_edits = {
         "availability": [9, 7, 0, 0],
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_Jod_towed_23mm": 31,
+            },
         },
     },
     
@@ -97,6 +112,11 @@ pol_unit_edits = {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
         "UpgradeFromUnit": "DCA_ZU_23_2_Para_POL",
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_Jod_towed_23mm": 31,
+            },
+        },
     },
     
     "UAZ_469_CMD_POL": {  # WD-43
@@ -2462,6 +2482,20 @@ pol_unit_edits = {
             "display": "SPADO. STRZAŁA-2M",
         },
     },
+
+    "DCA_ZPU4_POL": {
+        "CommandPoints": 20,
+        "availability": [12, 9, 0, 0],
+        "max_speed": 6,
+        "capacities": {
+            "add_capacities": ["Deploy", "Deploy_ok"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_4_canon_ZPU4_towed_14_5mm": 160,
+            },
+        },
+    },
     
     "DCA_AZP_S60_POL": {  # AZP S-60
         "CommandPoints": "DCA_AZP_S60_SOV",
@@ -2470,6 +2504,11 @@ pol_unit_edits = {
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_1_canon_S60_57mm": 1,
+            },
+        },
     },
     
     "Hibneryt_POL": {  # Hibneryt
@@ -2477,7 +2516,7 @@ pol_unit_edits = {
         "availability": [7, 5, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_2_canon_ZU23_2_23mm": 18,
+                "DCA_2_canon_ZU23_2_23mm": 20,
             },
         },
     },
@@ -2487,7 +2526,7 @@ pol_unit_edits = {
         "availability": [6, 4, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_2_canon_Jod_SP_23mm": 18,
+                "DCA_2_canon_Jod_SP_23mm": 20,
             },
         },
     },
@@ -2546,6 +2585,11 @@ pol_unit_edits = {
         },
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_4_canons_AZP_23_Amur_23mm_late": 67,
+            },
         },
     },
     

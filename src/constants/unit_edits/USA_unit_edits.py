@@ -3732,7 +3732,7 @@ usa_unit_edits = {
         "availability": [10, 0, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_2_canon_Bofors_40mm": 17,
+                "DCA_2_canon_Bofors_40mm": 1,
             },
         },
         "UpgradeFromUnit": "M274_Mule_M2HB_US",
@@ -3742,6 +3742,11 @@ usa_unit_edits = {
         "CommandPoints": 40,
         "availability": [8, 6, 0, 0],
         "UpgradeFromUnit": "M42_Duster_US",
+        "WeaponDescriptor": {
+            "Salves": {
+                "Gatling_M61_Vulcan_20mm_noRadar": 76,
+            },
+        },
     },
 
     "M163_PIVADS_US": {
@@ -3749,7 +3754,7 @@ usa_unit_edits = {
         "availability": [7, 5, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "Gatling_M61_Vulcan_20mm_late": 25,
+                "Gatling_M61_Vulcan_20mm_late": 38,
             },
         },
     },
@@ -3761,6 +3766,11 @@ usa_unit_edits = {
         "max_speed": 6,
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "Gatling_M61_Vulcan_20mm_TOWED": 76,
+            },
         },
         "UpgradeFromUnit": "FOB_US",
     },
@@ -3782,6 +3792,11 @@ usa_unit_edits = {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
         "UpgradeFromUnit": None,
+        "WeaponDescriptor": {
+            "Salves": {
+                "Gatling_M61_Vulcan_20mm_late_TOWED": 38,
+            },
+        },
     },
     
     "DCA_M167_Vulcan_20mm_US": { # AB M167A1 VADS 20mm
@@ -3801,6 +3816,11 @@ usa_unit_edits = {
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "Gatling_M61_Vulcan_20mm_TOWED": 76,
+            },
+        },
         "UpgradeFromUnit": "DCA_M167_Vulcan_20mm_nonPara_US",
     },
     
@@ -3818,6 +3838,11 @@ usa_unit_edits = {
         "max_speed": 6,
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "Gatling_M61_Vulcan_20mm_late_TOWED": 38,
+            },
         },
         "UpgradeFromUnit": "DCA_M167A2_Vulcan_20mm_US",
     },

@@ -2098,6 +2098,11 @@ rda_unit_edits = {
     "BTR_152A_DDR": {
         "CommandPoints": 25,
         "strength": 10,
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_ZPU4_14_5mm": 192,
+            },
+        },
     },
 
     "PSzH_IV_DDR": {
@@ -2691,6 +2696,11 @@ rda_unit_edits = {
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_4_canon_ZPU4_towed_14_5mm": 160,
+            },
+        },
     },
 
     "DCA_ZU_23_2_DDR": {
@@ -2711,6 +2721,11 @@ rda_unit_edits = {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
         "UpgradeFromUnit": "FOB_DDR",
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_ZU23_2_23mm_TOWED": 31,
+            },
+        },
     },
 
     "Bofors_40mm_capture_DDR": {
@@ -2723,6 +2738,11 @@ rda_unit_edits = {
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_1_canon_Bofors_40mm": 1,
+            },
+        },
     },
     
     "DCA_AZP_S60_DDR": {
@@ -2734,6 +2754,11 @@ rda_unit_edits = {
         "max_speed": 6,
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_1_canon_S60_57mm": 1,
+            },
         },
     },
 
@@ -2764,11 +2789,21 @@ rda_unit_edits = {
     "W50_LA_A_25mm_DDR": {
         "CommandPoints": 40,
         "availability": [7, 5, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_2M3_25mm": 107,
+            },
+        },
     },
 
     "ZSU_57_2_DDR": {
         "CommandPoints": 60,
         "availability": [7, 0, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canons_S60_57mm": 1,
+            },
+        },
     },
 
     "BRDM_Strela_1_DDR": {
@@ -2824,6 +2859,11 @@ rda_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_4_canons_APZ23_23mm": 67,
+            },
+        },
     },
     
     "Osa_9K33M3_DDR": {
@@ -2876,7 +2916,7 @@ rda_unit_edits = {
         "UpgradeFromUnit": "2K12_KUB_DDR",
     },
 
-     "DCA_I_Hawk_capture_DDR": {
+    "DCA_I_Hawk_capture_DDR": {
         "optics": {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 300,

@@ -1761,7 +1761,7 @@ rfa_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_1_canon_Bofors_40mm": 18,
+                "DCA_1_canon_Bofors_40mm": 1,
             },
         },
     },
@@ -1773,25 +1773,45 @@ rfa_unit_edits = {
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_1_canon_FK20_20mm": 29,
+            },
+        },
     },
 
-    "DCA_FK20_2_20mm_FJ_RFA": {
+    "DCA_FK20_2_20mm_RFA": {
         "CommandPoints": 25,
         "availability": [9, 7, 0, 0],
         "max_speed": 6,
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_1_canon_FK20_20mm": 29,
+            },
+        },
     },
 
     "Faun_Kraka_20mm_RFA": {
         "CommandPoints": 35,
         "availability": [9, 7, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_1_canon_FK20_20mm": 19,
+            },
+        },
     },
 
     "Unimog_S_404_FK20_RFA": {
         "CommandPoints": 35,
         "availability": [9, 7, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_1_canon_FK20_20mm": 29,
+            },
+        },
     },
     
     "Gepard_1A2_RFA": { # Gepard 1A1

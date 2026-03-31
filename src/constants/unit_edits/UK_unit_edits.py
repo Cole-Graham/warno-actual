@@ -2198,6 +2198,11 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canons_Oerlikon_GDF_002_35mm": 14,
+            },
+        },
     },
 
     "DCA_Rapier_UK": {
@@ -2450,17 +2455,17 @@ uk_unit_edits = {
         "UpgradeFromUnit": None,
     },
 
-    "Harrier_RKT2_UK": {  # 36x SNEB, 36x SNEB
+    "Harrier_RKT2_UK": {  # 36x SNEB, 36x SNEB, experimenting with split rocket salvo
         "CommandPoints": 100,
         "availability": [0, 4, 3, 0],
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                "replace": [("RocketAir_SNEB_68mm_salvolength18", "RocketAir_SNEB_68mm_salvolength36")],
-            },
-            "Salves": {
-                "RocketAir_SNEB_68mm": 1,
-            },
-        },
+        # "WeaponDescriptor": {
+        #     "equipmentchanges": {
+        #         "replace": [("RocketAir_SNEB_68mm_salvolength18", "RocketAir_SNEB_68mm_salvolength36")],
+        #     },
+        #     "Salves": {
+        #         "RocketAir_SNEB_68mm": 1,
+        #     },
+        # },
         "UpgradeFromUnit": "Harrier_RKT1_UK"
     },
 

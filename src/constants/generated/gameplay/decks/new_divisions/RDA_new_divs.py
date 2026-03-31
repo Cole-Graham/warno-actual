@@ -19,6 +19,8 @@ rda_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("East Germany", "HRZHKIMNKJ"),
         "standout_units": ["T72M1_DDR", "Fallschirmjager_DDR", "MiG_21bis_CLU_DDR"],
+        "summary_text": ("East German combined arms division.", "SUMEGGEN"),
+        "history_text": ("East German national division.", "HISEGGEN"),
         "activation_points": 75,
         "type_texture": "infantryReg",
         "division_rules": [
@@ -46,6 +48,8 @@ rda_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("East Germany Airborne", "CPYKOFFEHC"),
         "standout_units": ["PT76B_tank_DDR", "Fallschirmjager_CMD_DDR", "Mi_14PL_AT_DDR"],
+        "summary_text": ("East German airborne division.", "SUMEGAIR"),
+        "history_text": ("East German Airborne division.", "HISEGAIR"),
         "activation_points": 100,
         "type_texture": "infantryReg",
         "division_rules": [
@@ -62,6 +66,8 @@ rda_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("East Germany Airborne / Armored", "HBYTYHAUUQ"),
         "standout_units": ["T72MUV2_DDR", "Luftsturmjager_DDR", "MiG_23BN_KMGU_DDR"],
+        "summary_text": ("East German airborne and armored division.", "SUMEGAARM"),
+        "history_text": ("East German Airborne / Armored division.", "HISEGAARM"),
         "activation_points": 85,
         "type_texture": "infantryReg",
         "division_rules": [
@@ -83,6 +89,8 @@ rda_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("East Germany Airborne / Mechanized", "SRLONEIQVR"),
         "standout_units": ["BMP_1_SP1_DDR", "Fallschirmjager_HMG_DDR", "Mi_24P_s8_AT_DDR"],
+        "summary_text": ("East German airborne and mechanized division.", "SUMEGAMEC"),
+        "history_text": ("East German Airborne / Mechanized division.", "HISEGAMEC"),
         "activation_points": 85,
         "type_texture": "infantryReg",
         "division_rules": [
@@ -108,6 +116,8 @@ rda_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("East Germany Airborne / Motorized", "NGVVQXOYBL"),
         "standout_units": ["BTR_70_DDR", "Luftsturmjager_Metis_DDR", "Mi_24D_AA_DDR"],
+        "summary_text": ("East German airborne and motorized division.", "SUMEGAMOT"),
+        "history_text": ("East German Airborne / Motorized division.", "HISEGAMOT"),
         "activation_points": 85,
         "type_texture": "infantryReg",
         "division_rules": [
@@ -133,6 +143,8 @@ rda_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("East Germany Armored", "ADAADRXAAJ"),
         "standout_units": ["T72S_DDR", "MotRifles_RPG27_DDR", "2K11_KRUG_DDR"],
+        "summary_text": ("East German armored division.", "SUMEGARM"),
+        "history_text": ("East German Armored division.", "HISEGARM"),
         "activation_points": 100,
         "type_texture": "armored",
         "division_rules": [
@@ -150,6 +162,8 @@ rda_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("East Germany Armored / Mechanized", "YOEYSYIFBF"),
         "standout_units": ["BMP_2_DDR", "MotRifles_HMG_DDR", "BM24M_DDR"],
+        "summary_text": ("East German armored and mechanized division.", "SUMEGARMC"),
+        "history_text": ("East German Armored / Mechanized division.", "HISEGARMC"),
         "activation_points": 85,
         "type_texture": "armored",
         "division_rules": [
@@ -170,6 +184,8 @@ rda_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("East Germany Armored / Motorized", "XHRBMGCMPE"),
         "standout_units": ["T72M1_CMD_DDR", "MotRifles_BTR_DDR", "RM70_85_DDR"],
+        "summary_text": ("East German armored and motorized division.", "SUMEGARMT"),
+        "history_text": ("East German Armored / Motorized division.", "HISEGARMT"),
         "activation_points": 85,
         "type_texture": "armored",
         "division_rules": [
@@ -193,6 +209,8 @@ rda_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("East Germany Mechanized", "PFOMHNBHBF"),
         "standout_units": ["T72M_DDR", "MotRifles_DDR", "2K12_KUB_DDR"],
+        "summary_text": ("East German mechanized division.", "SUMEGMEC"),
+        "history_text": ("East German Mechanized division.", "HISEGMEC"),
         "activation_points": 100,
         "type_texture": "infantryReg",
         "division_rules": [
@@ -209,6 +227,8 @@ rda_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("East Germany Mechanized / Motorized", "DBYPNDCUNS"),
         "standout_units": ["T55AM2B_DDR", "Wachregiment_DDR", "Su_22_UPK_DDR"],
+        "summary_text": ("East German mechanized and motorized division.", "SUMEGMECT"),
+        "history_text": ("East German Mechanized / Motorized division.", "HISEGMECT"),
         "activation_points": 85,
         "type_texture": "infantryReg",
         "division_rules": [
@@ -229,6 +249,8 @@ rda_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("East Germany Motorized", "OBGEYXBDNH"),
         "standout_units": ["T55AM2_DDR", "MotRifles_Strela_DDR", "Mi_24P_s8_AT2_DDR"],
+        "summary_text": ("East German motorized division.", "SUMEGMOT"),
+        "history_text": ("East German Motorized division.", "HISEGMOT"),
         "activation_points": 100,
         "type_texture": "infantryReg",
         "division_rules": [

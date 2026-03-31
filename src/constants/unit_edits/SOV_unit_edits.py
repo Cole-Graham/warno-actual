@@ -2764,6 +2764,16 @@ sov_unit_edits = {
         },
     },
 
+    "BTR_152A_SOV": {
+        "CommandPoints": 25,
+        "strength": 10,
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_ZPU4_14_5mm": 192,
+            },
+        },
+    },
+
     "BTR_60_SOV": {
         "CommandPoints": 20,
         "strength": 10,
@@ -3284,6 +3294,11 @@ sov_unit_edits = {
     "ZSU_23_Shilka_reco_SOV": {
         "CommandPoints": 70,
         "availability": [0, 4, 3, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_4_canons_AZP_23_Amur_23mm_PSNR": 213,
+            },
+        },
     },
 
     "BMD_3_reco_SOV": {
@@ -3664,10 +3679,20 @@ sov_unit_edits = {
     # SOV AA
     "BTR_ZD_Skrezhet_SOV": {
         "CommandPoints": 30,
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_ZU23_2_23mm": 29,
+            },
+        },
     },
 
     "GTMU_1D_ZU_SOV": {
         "CommandPoints": 30,
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_ZU23_2_23mm": 29,
+            },
+        },
     },
 
     "LuAZ_967M_AA_VDV_SOV": {
@@ -3684,6 +3709,11 @@ sov_unit_edits = {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
         "UpgradeFromUnit": "FOB_SOV",
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_ZU23_2_23mm_TOWED": 31,
+            },
+        },
     },
 
     "DCA_ZU_23_2_TTsko_SOV": {
@@ -3704,6 +3734,11 @@ sov_unit_edits = {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
         "UpgradeFromUnit": "FOB_SOV",
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_ZU23_2_23mm_TOWED": 31,
+            },
+        },
     },
 
     "DCA_ZU_23_2_SOV": {
@@ -3715,6 +3750,11 @@ sov_unit_edits = {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
         "UpgradeFromUnit": "FOB_SOV",
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_ZU23_2_23mm_TOWED": 31,
+            },
+        },
     },
 
     "DCA_ZU_23_2_SOV": {  # Airborne
@@ -3731,6 +3771,11 @@ sov_unit_edits = {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
         "UpgradeFromUnit": "FOB_SOV",
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_ZU23_2_23mm_TOWED": 31,
+            },
+        },
     },
 
     "DCA_AZP_S60_SOV": {
@@ -3739,6 +3784,11 @@ sov_unit_edits = {
         "max_speed": 6,
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_1_canon_S60_57mm": 1,
+            },
         },
     },
 
@@ -3872,16 +3922,31 @@ sov_unit_edits = {
             },
         },
         "availability": [0, 10, 7, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_ZU23_2_23mm": 39,
+            },
+        },
     },
 
     "Ural_4320_ZU_SOV": {
         "CommandPoints": 40,
-        "availability": [ 10, 7, 0, 0],
+        "availability": [10, 7, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_ZU23_2_23mm": 39,
+            },
+        },
     },
 
     "Ural_4320_ZPU_SOV": {
         "CommandPoints": 30,
-        "availability": [ 12, 9, 0, 0],
+        "availability": [12, 9, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_4_canon_ZPU4_14_5mm": 80,
+            },
+        },
     },
 
     "BRDM_Strela_1_SOV": {
@@ -3903,6 +3968,11 @@ sov_unit_edits = {
     "ZSU_23_Shilka_Afghan_SOV": {
         "CommandPoints": 40,
         "availability": [8, 6, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_4_canons_AZP_23_Amur_23mm_Afghan": 213,
+            },
+        },
     },
 
     "ZSU_23_Shilka_early_SOV": {
@@ -3917,6 +3987,11 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_4_canons_APZ23_23mm": 67,
+            },
+        },
     },
 
    "ZSU_23_Shilka_SOV": {
@@ -3930,6 +4005,11 @@ sov_unit_edits = {
         },
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_4_canons_AZP_23_Amur_23mm_late": 67,
+            },
         },
     },
 
@@ -3955,7 +4035,7 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_2_canons_2A38M_30mm": 12,
+                "DCA_2_canons_2A38M_30mm": 21,
             },
         },
     },

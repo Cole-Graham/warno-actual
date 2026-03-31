@@ -609,8 +609,8 @@ SOV_motorized_newdivisionrules = {
         ("DCA_KS30_130mm_SOV", 1, [10, 7, 0, 0], ["KrAZ_255B_SOV"]),
         ("Ural_4320_ZPU_SOV", 1, [12, 9, 0, 0]),
         ("Ural_4320_ZU_SOV", 1, [10, 7, 0, 0]),
-        ("MANPAD_Igla_SOV", 2, [7, 5, 0, 0], ["UAZ_469_SOV"]),
-        ("MANPAD_Strela_3_SOV", 1, [12, 0, 0, 0], ["UAZ_469_SOV"]),
+        ("MANPAD_Igla_SOV", 2, [7, 5, 0, 0], ["UAZ_469_SOV", "BTR_152A_SOV"]),
+        ("MANPAD_Strela_3_SOV", 1, [12, 0, 0, 0], ["UAZ_469_SOV", "BTR_152A_SOV"]),
     ],
     "heli": [
         ("Mi_8TV_PodGatling_PodAGL_SOV", 1, [0, 6, 4, 0]),

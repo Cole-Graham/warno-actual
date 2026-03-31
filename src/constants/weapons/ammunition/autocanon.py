@@ -896,14 +896,20 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Gatling_M61_Vulcan_20mm_noRadar", "autocannon", None, False): { # 319
         "Ammunition": {
             "hit_roll": {
-                "Idling": 25,
-                "Moving": 15,
+                "Idling": 10,
+                "Moving": 5,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 1750,
+                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoFx": 0.1,
+                "PhysicalDamages": 1.0,
+                "TimeBetweenTwoSalvos": 1.0,
                 "AimingTime": 1.2,
+                "ShotsCountPerSalvo": 6,
+                "AffichageMunitionParSalve": 30,
                 "SupplyCost": 15.0,
             },
         },
@@ -913,13 +919,19 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Gatling_M61_Vulcan_20mm_late_TOWED", "autocannon", None, False): { # 318
         "Ammunition": {
             "hit_roll": {
-                "Idling": 40,
+                "Idling": 15,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 2100,
+                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoFx": 0.1,
+                "PhysicalDamages": 1.0,
+                "TimeBetweenTwoSalvos": 1.0,
                 "AimingTime": 1.2,
+                "ShotsCountPerSalvo": 12,
+                "AffichageMunitionParSalve": 60,
                 "SupplyCost": 15.0,
             },
         },
@@ -932,13 +944,20 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Gatling_M61_Vulcan_20mm_late", "autocannon", None, False): { # 317
         "Ammunition": {
             "hit_roll": {
-                "Idling": 40,
+                "Idling": 15,
+                "Moving": 5,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 2100,
+                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoFx": 0.1,
+                "PhysicalDamages": 1.0,
+                "TimeBetweenTwoSalvos": 1.0,
                 "AimingTime": 1.2,
+                "ShotsCountPerSalvo": 12,
+                "AffichageMunitionParSalve": 60,
                 "SupplyCost": 15.0,
             },
         },
@@ -951,13 +970,19 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Gatling_M61_Vulcan_20mm_TOWED", "autocannon", None, False): { # 316
         "Ammunition": {
             "hit_roll": {
-                "Idling": 25,
+                "Idling": 10,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 1750,
+                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoFx": 0.1,
+                "PhysicalDamages": 1.0,
+                "TimeBetweenTwoSalvos": 1.0,
                 "AimingTime": 1.2,
+                "ShotsCountPerSalvo": 6,
+                "AffichageMunitionParSalve": 30,
                 "SupplyCost": 15.0,
             },
         },

@@ -19,6 +19,8 @@ rfa_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("West Germany", "VOBUEIVGGX"),
         "standout_units": ["Leopard_2A4_RFA", "Fallschirm_B1_RFA", "F4F_Phantom_II_AA2_RFA"],
+        "summary_text": ("West German combined arms division.", "SUMWGGEN"),
+        "history_text": ("West German national division.", "HISWGGEN"),
         "activation_points": 75,
         "type_texture": "infantryReg",
         "division_rules": [
@@ -46,6 +48,8 @@ rfa_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("West Germany Airborne", "QJJLVESQSZ"),
         "standout_units": ["Wiesel_TOW_RFA", "Hochgebirgjager_RFA", "Tornado_IDS_MW1_RFA"],
+        "summary_text": ("West German airborne division.", "SUMWGAIR"),
+        "history_text": ("West German Airborne division.", "HISWGAIR"),
         "activation_points": 100,
         "type_texture": "infantryReg",
         "division_rules": [
@@ -62,6 +66,8 @@ rfa_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("West Germany Airborne / Armored", "TGVGUNLLWF"),
         "standout_units": ["Leopard_2A3_CMD_RFA", "Gebirgsjager_Hvy_RFA", "Marder_Roland_RFA"],
+        "summary_text": ("West German airborne and armored division.", "SUMWGAARM"),
+        "history_text": ("West German Airborne / Armored division.", "HISWGAARM"),
         "activation_points": 85,
         "type_texture": "infantryReg",
         "division_rules": [
@@ -80,6 +86,8 @@ rfa_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("West Germany Airborne / Mechanized", "FTZNFMXTTR"),
         "standout_units": ["Marder_1A3_MILAN_RFA", "Fallschirm_RFA", "M110A2_Howz_RFA"],
+        "summary_text": ("West German airborne and mechanized division.", "SUMWGAMEC"),
+        "history_text": ("West German Airborne / Mechanized division.", "HISWGAMEC"),
         "activation_points": 85,
         "type_texture": "infantryReg",
         "division_rules": [
@@ -97,6 +105,8 @@ rfa_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("West Germany Airborne / Motorized", "KZIDWNLQVV"),
         "standout_units": ["Leopard_2A1_RFA", "Fernspaher_RFA", "F4F_Phantom_II_LGB_RFA"],
+        "summary_text": ("West German airborne and motorized division.", "SUMWGAMOT"),
+        "history_text": ("West German Airborne / Motorized division.", "HISWGAMOT"),
         "activation_points": 85,
         "type_texture": "infantryReg",
         "division_rules": [
@@ -117,6 +127,8 @@ rfa_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("West Germany Armored", "BECVYLEXMB"),
         "standout_units": ["Leopard_2A4_CMD_RFA", "Panzergrenadier_PzF3_RFA", "M270_MLRS_RFA"],
+        "summary_text": ("West German armored division.", "SUMWGARM"),
+        "history_text": ("West German Armored division.", "HISWGARM"),
         "activation_points": 100,
         "type_texture": "armored",
         "division_rules": [
@@ -134,6 +146,8 @@ rfa_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("West Germany Armored / Mechanized", "RUOIPSCYZT"),
         "standout_units": ["Leopard_2A3_RFA", "Panzergrenadier_APC_RFA", "M109A3G_HOWZ_RFA"],
+        "summary_text": ("West German armored and mechanized division.", "SUMWGARMC"),
+        "history_text": ("West German Armored / Mechanized division.", "HISWGARMC"),
         "activation_points": 85,
         "type_texture": "armored",
         "division_rules": [
@@ -159,6 +173,8 @@ rfa_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("West Germany Armored / Motorized", "SGXMGQWZBH"),
         "standout_units": ["Leopard_2A1_CMD_RFA", "Jager_PzF3_RFA", "Tornado_IDS_CLUS_RFA"],
+        "summary_text": ("West German armored and motorized division.", "SUMWGARMT"),
+        "history_text": ("West German Armored / Motorized division.", "HISWGARMT"),
         "activation_points": 85,
         "type_texture": "armored",
         "division_rules": [
@@ -179,6 +195,8 @@ rfa_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("West Germany Mechanized", "CJRGFQHSBS"),
         "standout_units": ["Marder_1A1_MILAN_RFA", "Panzergrenadier_IFV_RFA", "DCA_I_Hawk_RFA"],
+        "summary_text": ("West German mechanized division.", "SUMWGMEC"),
+        "history_text": ("West German Mechanized division.", "HISWGMEC"),
         "activation_points": 100,
         "type_texture": "infantryReg",
         "division_rules": [
@@ -196,6 +214,8 @@ rfa_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("West Germany Mechanized / Motorized", "QUBYOPANZI"),
         "standout_units": ["TPZ_Fuchs_MILAN_RFA", "Jager_Carl_RFA", "G91_R3_Gina_NPL_RFA"],
+        "summary_text": ("West German mechanized and motorized division.", "SUMWGMECT"),
+        "history_text": ("West German Mechanized / Motorized division.", "HISWGMECT"),
         "activation_points": 85,
         "type_texture": "infantryReg",
         "division_rules": [
@@ -213,6 +233,8 @@ rfa_new_divs = {
         "div_power": "DC_PWR1",
         "description_title": ("West Germany Motorized", "BTOQJTXPPD"),
         "standout_units": ["TPZ_Fuchs_MILAN_2_RFA", "TankHunters_RFA", "Lars_2_RFA"],
+        "summary_text": ("West German motorized division.", "SUMWGMOT"),
+        "history_text": ("West German Motorized division.", "HISWGMOT"),
         "activation_points": 100,
         "type_texture": "infantryReg",
         "division_rules": [

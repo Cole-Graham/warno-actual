@@ -1458,6 +1458,11 @@ fr_unit_edits = {
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_4_canon_Maxson_towed_12_7mm": 3,
+            },
+        },
     },
 
     "DCA_Bofors_L60_FR": { # L/60 40mm Bofors
@@ -1466,6 +1471,11 @@ fr_unit_edits = {
         "max_speed": 6,
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_1_canon_Bofors_40mm_L60": 1,
+            },
         },
     },
 
@@ -1478,6 +1488,11 @@ fr_unit_edits = {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
         "UpgradeFromUnit": "FOB_FR",
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_1_canon_53T2_20mm_TOWED": 60,
+            },
+        },
     },
 
     "DCA_53T2_20mm_Para_FR": { # Para 20mm AA gun for Logi Tab
@@ -1487,6 +1502,11 @@ fr_unit_edits = {
         "Factory": "EFactory/Logistic",
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_1_canon_53T2_20mm_TOWED": 60,
+            },
         },
     },
 
@@ -1499,6 +1519,11 @@ fr_unit_edits = {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
         "UpgradeFromUnit": "FOB_FR",
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_1_canon_53T2_20mm_TOWED": 60,
+            },
+        },
     },
 
     "DCA_HS831_30mm_FR": { # 30mm AA gun
@@ -1507,6 +1532,11 @@ fr_unit_edits = {
         "max_speed": 6,
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canons_HS_831_30mm_TOWED": 26,
+            },
         },
     },
 
@@ -1517,6 +1547,11 @@ fr_unit_edits = {
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_76T2_20mm": 41,
+            },
+        },
     },
 
     "DCA_76T2_20mm_CPA_FR": { # SF CERBERE Duel 20mm
@@ -1526,31 +1561,61 @@ fr_unit_edits = {
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_76T2_20mm": 41,
+            },
+        },
     },
 
     "TRM_2000_20mm_FR": {
         "CommandPoints": 35,
         "availability": [9, 7, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_1_canon_53T2_20mm": 60,
+            },
+        },
     },
     
     "TRM_2000_20mm_Legion_FR": {
         "CommandPoints": 35,
         "availability": [0, 9, 7, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_1_canon_53T2_20mm": 60,
+            },
+        },
     },
 
     "VLRA_20mm_FR": {
         "CommandPoints": 35,
         "availability": [0, 9, 7, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_1_canon_53T2_20mm": 60,
+            },
+        },
     },
 
     "M16_MGMC_FR": {
         "CommandPoints": 25,
         "availability": [10, 7, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_4_canon_Maxson_SP_12_7mm": 3,
+            },
+        },
     },
 
     "AMX_13_DCA_FR": {
         "CommandPoints": 60,
         "availability": [6, 4, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canons_HS_831_30mm": 16,
+            },
+        },
     },
 
     "TRM_2000_Mistral_FR": {
