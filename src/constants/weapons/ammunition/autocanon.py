@@ -910,7 +910,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 1.2,
                 "ShotsCountPerSalvo": 6,
                 "AffichageMunitionParSalve": 30,
-                "SupplyCost": 15.0,
+                "SupplyCost": 3.0,
             },
         },
     },
@@ -932,7 +932,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 1.2,
                 "ShotsCountPerSalvo": 12,
                 "AffichageMunitionParSalve": 60,
-                "SupplyCost": 15.0,
+                "SupplyCost": 6.0,
             },
         },
         "WeaponDescriptor": {
@@ -958,7 +958,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 1.2,
                 "ShotsCountPerSalvo": 12,
                 "AffichageMunitionParSalve": 60,
-                "SupplyCost": 15.0,
+                "SupplyCost": 6.0,
             },
         },
         "WeaponDescriptor": {
@@ -983,7 +983,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 1.2,
                 "ShotsCountPerSalvo": 6,
                 "AffichageMunitionParSalve": 30,
-                "SupplyCost": 15.0,
+                "SupplyCost": 3.0,
             },
         },
         "WeaponDescriptor": {
