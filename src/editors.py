@@ -67,6 +67,7 @@ from .gameplay_mods import (
     # .userinterface
     edit_ui_ingame_useingametextures,
     edit_ui_ingame_uispecificunitinfopanelview,
+    edit_ui_ingame_uispecificunitinfosingleweaponpanelview,
     edit_ui_outgame_uispecificoutgamewelcomeview,
     edit_ui_style_defaulttextformatscript,
 )
@@ -535,6 +536,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         ],
         "GameData/UserInterface/Use/InGame/UISpecificUnitInfoPanelView.ndf": [
             (edit_ui_ingame_uispecificunitinfopanelview, "gameplay"),
+        ],
+        "GameData/UserInterface/Use/InGame/UISpecificUnitInfoSingleWeaponPanelView.ndf": [
+            (edit_ui_ingame_uispecificunitinfosingleweaponpanelview, "gameplay"),
         ],
         "GameData/UserInterface/Use/InGame/UISpecificUnitLabelAggregationView.ndf": [
             (edit_uispecificunitlabelaggregationview, "ui"),

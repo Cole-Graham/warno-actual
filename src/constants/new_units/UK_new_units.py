@@ -258,6 +258,9 @@ UK_NEW_UNITS = {
                 "MMG_L8A2_7_62mm": 96,
             },
         },
+        "armor": {
+            "top": (4, None),
+        },
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack', 
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 
                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply', 
@@ -314,6 +317,9 @@ UK_NEW_UNITS = {
                 "MMG_L8A2_7_62mm": 96,
             },
         },
+        "armor": {
+            "top": (4, None),
+        },
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack', 
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 
                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply', 
@@ -369,6 +375,9 @@ UK_NEW_UNITS = {
                 "MMG_L37A2_7_62mm": 96,
                 "MMG_L8A2_7_62mm": 96,
             },
+        },
+        "armor": {
+            "top": (4, None),
         },
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack', 
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 
@@ -429,6 +438,9 @@ UK_NEW_UNITS = {
                 "MMG_FN_MAG_7_62mm": 96,
             },
         },
+        "armor": {
+            "top": (3, None),
+        },
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack', 
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 
                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply', 'EOrderType/UseCapacite',
@@ -479,6 +491,9 @@ UK_NEW_UNITS = {
                 "MMG_L37A2_7_62mm": 96,
                 "MMG_L8A2_7_62mm": 96,
             },
+        },
+        "armor": {
+            "top": (4, None),
         },
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack', 
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 

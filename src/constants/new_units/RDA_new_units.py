@@ -475,6 +475,9 @@ RDA_NEW_UNITS = {
         },
         "Factory": "EFactory/Logistic",
         "CommandPoints": 290,
+        "armor": {
+            "top": (2, None),
+        },
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
             'leader_sov',
@@ -541,6 +544,9 @@ RDA_NEW_UNITS = {
         },
         "Factory": "EFactory/Logistic",
         "CommandPoints": 310,
+        "armor": {
+            "top": (3, None),
+        },
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
             'leader_sov',
@@ -593,6 +599,9 @@ RDA_NEW_UNITS = {
             "token": "ZXTTDHOZUI",
         },
         "CommandPoints": 180,
+        "armor": {
+            "top": (3, None),
+        },
         "Divisions": {
             "default": {
                 "cards": 2, 

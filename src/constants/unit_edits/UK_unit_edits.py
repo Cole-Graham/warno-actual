@@ -1317,13 +1317,13 @@ uk_unit_edits = {
                 "cards": 2,
             },
         },
-        "WeaponDescriptor": {
-            "turrets": {
-                0: {
-                    "AngleRotationMaxPitch": 1.0,
-                },
-            },
-        },
+        # "WeaponDescriptor": {
+        #     "turrets": {
+        #         0: {
+        #             "AngleRotationMaxPitch": 1.0,
+        #         },
+        #     },
+        # },
         "availability": [0, 1, 0, 0],
     },
 
@@ -1367,6 +1367,9 @@ uk_unit_edits = {
     
     "FV4201_Chieftain_CMD_UK": {
         "CommandPoints": 150,
+        "armor": {
+            "top": (4, None),
+        },
         "GameName": {
             "display": "#LDR CHIEFTAIN Mk.10 LDR.",
             "token": "JMOQXJZCVT",
@@ -1404,6 +1407,9 @@ uk_unit_edits = {
     
     "Challenger_1_Mk1_CMD_UK": {
         "CommandPoints": 205,
+        "armor": {
+            "top": (4, None),
+        },
         "GameName": {
             "display": "#LDR CHALLENGER Mk.2 LDR.",
             "token": "LDRBLUCHAL",
@@ -1651,6 +1657,9 @@ uk_unit_edits = {
     
     "FV4201_Chieftain_Mk1_4_UK": {
         "CommandPoints": 80,
+        "armor": {
+            "top": (3, None),
+        },
         "availability": [10, 7, 0, 0],
         "capacities": {
             "remove_capacities": ["Instructor_TNK"],
@@ -1670,6 +1679,9 @@ uk_unit_edits = {
     
     "FV4201_Chieftain_Mk6_UK": {
         "CommandPoints": 85,
+        "armor": {
+            "top": (4, None),
+        },
         "availability": [10, 7, 0, 0],
         "UpgradeFromUnit": "FV4201_Chieftain_Mk1_4_UK",
         "WeaponDescriptor": {
@@ -1682,6 +1694,9 @@ uk_unit_edits = {
     
     "FV4201_Chieftain_Mk9_UK": {
         "CommandPoints": 115,
+        "armor": {
+            "top": (4, None),
+        },
         "availability": [8, 6, 0, 0],
         "UpgradeFromUnit": "FV4201_Chieftain_Mk6_UK",
         "WeaponDescriptor": {
@@ -1694,6 +1709,9 @@ uk_unit_edits = {
     
     "FV4201_Chieftain_UK": { # Mk10 
         "CommandPoints": 135,
+        "armor": {
+            "top": (4, None),
+        },
         "availability": [0, 6, 4, 0],
         "WeaponDescriptor": {
             "Salves": {
@@ -1708,6 +1726,9 @@ uk_unit_edits = {
             "display": "CHALLENGER Mk.2",
         },
         "CommandPoints": 185,
+        "armor": {
+            "top": (4, None),
+        },
         "Divisions": {
             "default": {
                 "cards": 69,
@@ -1720,6 +1741,7 @@ uk_unit_edits = {
             },
         },
         "availability": [0, 4, 3, 0],
+        
         "WeaponDescriptor": {
             "Salves": {
                 "MMG_L8A2_7_62mm": 96,
@@ -1729,6 +1751,9 @@ uk_unit_edits = {
     
     "Challenger_1_Mk3_UK": {
         "CommandPoints": 210,
+        "armor": {
+            "top": (4, None),
+        },
         "availability": [0, 0, 4, 3],
         "WeaponDescriptor": {
             "Salves": {
@@ -1849,6 +1874,9 @@ uk_unit_edits = {
     
     "FV4201_Chieftain_Mk11_UK": {
         "CommandPoints": 150,
+        "armor": {
+            "top": (4, None),
+        },
         "TypeUnit": {
             "AcknowUnitTypes": ["Reco"],
             "TypeUnitFormation": "Reconnaissance",

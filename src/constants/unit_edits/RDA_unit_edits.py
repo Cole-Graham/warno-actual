@@ -1903,6 +1903,9 @@ rda_unit_edits = {
 
     "T72_CMD_DDR": {
         "CommandPoints": 115,
+        "armor": {
+            "top": (2, None),
+        },
         "GameName": {
             "display": "#LDRSOV FüPz. T-72K LDR.",
             "token": "NYCDIWGOQO",
@@ -1940,6 +1943,9 @@ rda_unit_edits = {
 
     "T72M_CMD_DDR": {
         "CommandPoints": 170,
+        "armor": {
+            "top": (2, None),
+        },
         "GameName": {
             "display": "#LDRSOV FüPz T-72M LDR.",
             "token": "XVEZUMJKLL",
@@ -1977,6 +1983,9 @@ rda_unit_edits = {
 
     "T72M1_CMD_DDR": {  # FüPz T-72M1K LDR
         "CommandPoints": 195,
+        "armor": {
+            "top": (3, None),
+        },
         "GameName": {
             "display": "#LDRSOV FüPz T-72M1K LDR.",
             "token": "FUPZTSTMOL",
@@ -2195,6 +2204,9 @@ rda_unit_edits = {
             "display": "KPz T-72",
         },
         "CommandPoints": 110,
+        "armor": {
+            "top": (2, None),
+        },
         "availability": [8, 6, 0, 0],
     },
 
@@ -2203,11 +2215,17 @@ rda_unit_edits = {
             "display": "KPz T-72M",
         },
         "CommandPoints": 150,
+        "armor": {
+            "top": (2, None),
+        },
         "availability": [6, 4, 0, 0],
     },
     
     "T72MUV2_DDR": {
         "CommandPoints": 155,
+        "armor": {
+            "top": (2, None),
+        },
         "availability": [6, 4, 0, 0],
     },
 
@@ -2216,6 +2234,9 @@ rda_unit_edits = {
             "display": "KPz T-72M1",
         },
         "CommandPoints": 175,
+        "armor": {
+            "top": (3, None),
+        },
         "Divisions": {
             "remove": ["RDA_7_Panzer"],
             "default": {
@@ -2227,6 +2248,9 @@ rda_unit_edits = {
     
     "T72S_DDR": {
         "CommandPoints": 220,
+        "armor": {
+            "top": (4, None),
+        },
         "Divisions": {
             "default": {
                 "cards": 2,

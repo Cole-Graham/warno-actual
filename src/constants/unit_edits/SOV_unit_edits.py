@@ -2335,6 +2335,9 @@ sov_unit_edits = {
 
     "T62MD_CMD_SOV": {
         "CommandPoints": 130,
+        "armor": {
+            "top": (3, None),
+        },
         "GameName": {
             "token": "LARNJZNOHF",
             "display": "#LDRSOV T-62MDK LDR.",
@@ -2366,6 +2369,9 @@ sov_unit_edits = {
 
     "T62M_CMD_SOV": {
         "CommandPoints": 130,
+        "armor": {
+            "top": (3, None),
+        },
         "GameName": {
             "token": "LARNJZNGAB",
             "display": "#LDRSOV T-62MK LDR.",
@@ -2402,6 +2408,9 @@ sov_unit_edits = {
     
     "T64A_CMD_SOV": {
         "CommandPoints": 135,
+        "armor": {
+            "top": (3, None),
+        },
         "GameName": {
             "display": "#LDRSOV T-64A Obr. 83 LDR.",
             "token": "SOVTSITAK",
@@ -2433,6 +2442,9 @@ sov_unit_edits = {
 
     "T64B_CMD_SOV": {
         "CommandPoints": 185,
+        "armor": {
+            "top": (3, None),
+        },
         "GameName": {
             "display": "#LDRSOV T-64B LDR.",
             "token": "SOVTSITBK",
@@ -2464,6 +2476,9 @@ sov_unit_edits = {
 
     "T64BV_CMD_SOV": {
         "CommandPoints": 200,
+        "armor": {
+            "top": (4, None),
+        },
         "GameName": {
             "display": "#LDRSOV T-64BVK LDR.",
             "token": "SOVTSITBVK",
@@ -2496,6 +2511,9 @@ sov_unit_edits = {
 
     "T72_CMD_SOV": {
         "CommandPoints": 120,
+        "armor": {
+            "top": (2, None),
+        },
         "GameName": {
             "display": "#LDRSOV T-72K Obr. 73 LDR.",
             "token": "OALRSXERYB",
@@ -2526,6 +2544,9 @@ sov_unit_edits = {
     
     "T72M_CMD_SOV": {
         "CommandPoints": 170,
+        "armor": {
+            "top": (2, None),
+        },
         "GameName": {
             "display": "#LDRSOV T-72AK Obr. 79 LDR.",
             "token": "SOVTSETASK",
@@ -2557,6 +2578,9 @@ sov_unit_edits = {
 
     "T72M1_CMD_SOV": {
         "CommandPoints": 195,
+        "armor": {
+            "top": (3, None),
+        },
         "GameName": {
             "display": "#LDRSOV T-72AK Obr. 81 LDR.",
             "token": "SOVTSETAEK",
@@ -2588,6 +2612,9 @@ sov_unit_edits = {
 
     "T72B_CMD_SOV": {
         "CommandPoints": 225,
+        "armor": {
+            "top": (4, None),
+        },
         "GameName": {
             "display": "#LDRSOV T-72BK LDR.",
             "token": "SOVTSETBK",
@@ -2620,6 +2647,9 @@ sov_unit_edits = {
 
     "T80B_CMD_SOV": {
         "CommandPoints": 210,
+        "armor": {
+            "top": (3, None),
+        },
         "GameName": {
             "display": "#LDRSOV T-80BK LDR.",
             "token": "SOVTEBK",
@@ -2651,6 +2681,10 @@ sov_unit_edits = {
 
     "T80BV_CMD_SOV": {
         "CommandPoints": 230,
+        "armor": {
+            "front": (18, None),
+            "top": (4, None),
+        },
         "GameName": {
             "display": "#LDRSOV T-80BVK LDR.",
             "token": "YWAOJLFAFW",
@@ -2664,9 +2698,6 @@ sov_unit_edits = {
                 "UNITE_T80BV_CMD_SOV",
                 "Unite",
             ],
-        },
-        "armor": {
-            "front": (18, None),
         },
         "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
@@ -3046,21 +3077,33 @@ sov_unit_edits = {
 
     "T62M1_SOV": {
         "CommandPoints": 115,
+        "armor": {
+            "top": (3, None),
+        },
         "availability": [8, 6, 0, 0],
     },
 
     "T62MD1_SOV": { # T62M1 with +1 side and rear armor
         "CommandPoints": 115,
+        "armor": {
+            "top": (3, None),
+        },
         "availability": [8, 6, 0, 0],
     },
     
     "T62M_SOV": {
         "CommandPoints": 140,
+        "armor": {
+            "top": (3, None),
+        },
         "availability": [0, 6, 4, 0],
     },
 
     "T62MD_SOV": { # T62M with +1 side and rear armor
         "CommandPoints": 140,
+        "armor": {
+            "top": (3, None),
+        },
         "availability": [0, 6, 4, 0],
     },
     
@@ -3068,6 +3111,7 @@ sov_unit_edits = {
         "CommandPoints": 140,
         "armor": {
             "front": (12, None),
+            "top": (3, None),
         },
         "Divisions": {
             "default": {
@@ -3079,49 +3123,76 @@ sov_unit_edits = {
 
     "T64R_SOV": {
         "CommandPoints": 95,
+        "armor": {
+            "top": (2, None),
+        },
         "availability": [8, 6, 0, 0],
     },
 
     "T64A_SOV": {
         "CommandPoints": 125,
+        "armor": {
+            "top": (3, None),
+        },
         "availability": [6, 4, 0, 0],
         "UpgradeFromUnit": "T64R_SOV",
     },
 
     "T64AM_SOV": { 
         "CommandPoints": 140,
+        "armor": {
+            "top": (3, None),
+        },
         "availability": [0, 6, 4, 0],
         "UpgradeFromUnit": "T64AV_SOV",
     },
 
     "T64AV_SOV": {
         "CommandPoints": 130,
+        "armor": {
+            "top": (3, None),
+        },
         "availability": [6, 4, 0, 0],
         "UpgradeFromUnit": "T64A_SOV",
     },
 
     "T64B1_SOV": {
         "CommandPoints": 165,
+        "armor": {
+            "top": (3, None),
+        },
         "availability": [6, 4, 0, 0],
     },
 
     "T64BV1_SOV": {
         "CommandPoints": 180,
+        "armor": {
+            "top": (4, None),
+        },
         "availability": [0, 6, 4, 0],
     },
 
     "T64B_SOV": {
         "CommandPoints": 175,
+        "armor": {
+            "top": (3, None),
+        },
         "availability": [6, 4, 0, 0],
     },
 
     "T64BV_SOV": {
         "CommandPoints": 205,
+        "armor": {
+            "top": (4, None),
+        },
         "availability": [0, 4, 3, 0],
     },
 
     "T72_SOV": {
         "CommandPoints": 110,
+        "armor": {
+            "top": (2, None),
+        },
         "availability": [8, 6, 0, 0],
         "GameName": {
             "display": "T-72 Obr. 73",
@@ -3130,48 +3201,73 @@ sov_unit_edits = {
 
     "T72_obr77_SOV": {
         "CommandPoints": 125,
+        "armor": {
+            "top": (2, None),
+        },
         "availability": [8, 6, 0, 0],
     },
 
     "T72M_SOV": {
         "CommandPoints": 150,
+        "armor": {
+            "top": (2, None),
+        },
         "availability": [6, 4, 0, 0],
     },
 
     "T72M1_SOV": {
         "CommandPoints": 175,
+        "armor": {
+            "top": (3, None),
+        },
         "availability": [0, 6, 4, 0],
     },
 
     "T72AV_SOV": {
         "CommandPoints": 185,
+        "armor": {
+            "top": (4, None),
+        },
         "availability": [0, 6, 4, 0],
         "UpgradeFromUnit":  "T72M1_SOV",
     },
 
     "T72B1_early_SOV": {
         "CommandPoints": 190,
+        "armor": {
+            "top": (3, None),
+        },
         "availability": [6, 4, 0, 0],
     },
 
     "T72B1_SOV": {
         "CommandPoints": 205,
+        "armor": {
+            "top": (4, None),
+        },
         "availability": [0, 6, 4, 0],
     },
 
     "T72B_SOV": {
         "CommandPoints": 220,
+        "armor": {
+            "top": (4, None),
+        },
         "availability": [0, 0, 3, 2],
     },
 
     "T80B_SOV": {
         "CommandPoints": 200,
+        "armor": {
+            "top": (3, None),
+        },
         "availability": [6, 4, 0, 0],
     },
 
     "T80BV_SOV": {
         "armor": {
             "front": (18, None),
+            "top": (4, None),
         },
         "CommandPoints": 220,
         "Divisions": {
@@ -3193,6 +3289,7 @@ sov_unit_edits = {
     "T80BV_Beast_SOV": {
         "armor": {
             "front": (18, None),
+            "top": (4, None),
         },
         "CommandPoints": 245,
         "availability": [0, 0, 4, 3],
@@ -3200,6 +3297,9 @@ sov_unit_edits = {
 
     "T80U_SOV": {
         "CommandPoints": 260,
+        "armor": {
+            "top": (4, None),
+        },
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -3210,6 +3310,9 @@ sov_unit_edits = {
 
     "T80UD_SOV": {
         "CommandPoints": 305,
+        "armor": {
+            "top": (4, None),
+        },
         "Divisions": {
             "default": {
                 "cards": 3,
@@ -3220,6 +3323,9 @@ sov_unit_edits = {
 
     "T80U_Obr89_SOV": {
         "CommandPoints": 315,
+        "armor": {
+            "top": (4, None),
+        },
         "availability": [0, 0, 3, 2],
     },
 
@@ -3310,6 +3416,9 @@ sov_unit_edits = {
 
     "T64B1_reco_SOV": {
         "CommandPoints": 190,
+        "armor": {
+            "top": (3, None),
+        },
         "availability": [3, 2, 0, 0],
     },
 

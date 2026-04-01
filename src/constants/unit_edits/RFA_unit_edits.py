@@ -986,13 +986,13 @@ rfa_unit_edits = {
 
     "M270_MLRS_RFA": {
         "CommandPoints": 300,
-        "WeaponDescriptor": {
-            "turrets": {
-                0: {
-                    "AngleRotationMaxPitch": 1.0,
-                },
-            },
-        },
+        # "WeaponDescriptor": {
+        #     "turrets": {
+        #         0: {
+        #             "AngleRotationMaxPitch": 1.0,
+        #         },
+        #     },
+        # },
         "availability": [0, 1, 0, 0],
     },
     
@@ -1124,6 +1124,9 @@ rfa_unit_edits = {
 
     "Leopard_2A3_CMD_RFA": {
         "CommandPoints": 205,
+        "armor": {
+            "top": (4, None),
+        },
         "GameName": {
             "display": "#LDR PZ.BEF. LEOPARD 2A3",
             "token": "IKKNOBNJOQ",
@@ -1186,6 +1189,9 @@ rfa_unit_edits = {
 
     "Leopard_2A4_CMD_RFA": {
         "CommandPoints": 270,
+        "armor": {
+            "top": (4, None),
+        },
         "GameName": {
             "display": "#LDR PZ.BEF. LEOPARD 2A4(C)",
             "token": "PBLIFBOOCD",
@@ -1341,6 +1347,9 @@ rfa_unit_edits = {
 
     "Leopard_2A3_RFA": {
         "CommandPoints": 180,
+        "armor": {
+            "top": (4, None),
+        },
         "availability": [0, 6, 4, 0],
         # "WeaponDescriptor": {
         #     "Salves": {
@@ -1351,6 +1360,9 @@ rfa_unit_edits = {
 
     "Leopard_2A4_RFA": {
         "CommandPoints": 235,
+        "armor": {
+            "top": (4, None),
+        },
         "availability": [0, 0, 4, 3],
         # "WeaponDescriptor": {
         #     "Salves": {
@@ -2120,7 +2132,7 @@ rfa_unit_edits = {
     },
 
     "Tornado_IDS_MW1_RFA": { # MW-1 KB44 (Anti Airfield HE Cluster Munitions), 2x AIM-9L
-        "CommandPoints": 240,
+        "CommandPoints": 350,
         "availability": [0, 2, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],

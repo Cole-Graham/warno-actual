@@ -8,6 +8,10 @@ from src.constants.weapons import (
     VANILLA_LAST_COLUMN,
     DAMAGE_EDITS,
     DPICM_DAMAGES,
+    CLU_SOL_HEFRAG,
+    CLU_SOL_AP,
+    CLU_SOL_AP_ROW_FIRST,
+    CLU_SOL_AP_ROW_LAST,
     FMBALLE_INFANTRY_EDITS,
     FMBALLE_ROWS,
     SA_FULL_DAMAGE_RATIOS,
@@ -56,22 +60,24 @@ def edit_gen_gp_gfx_damageresistancefamilylist(source_path) -> None:
     sniper_family = f"DamageFamily_sniper is {i + 1}"
     # full_ball_family = f"DamageFamily_full_balle is {i + 2}"
     dpicm_family = f"DamageFamily_dpicm is {i + 2}"
+    clu_sol_hefrag_family = f"DamageFamily_clu_sol_hefrag is {i + 3}"
     # kpvt_family = f"DamageFamily_kpvt is {i + 4}"
-    nplm_bomb_family = f"DamageFamily_nplm_bomb is {i + 3}"
-    nplm_bomb_flamme_family = f"DamageFamily_nplm_bomb_flamme is {i + 4}"
-    pgb_bomb_family = f"DamageFamily_pgb_bomb is {i + 5}"
-    manpad_hagru_family = f"DamageFamily_manpad_hagru is {i + 6}"
-    manpad_tbagru_family = f"DamageFamily_manpad_tbagru is {i + 7}"
-    sa_intermediate_family = f"DamageFamily_sa_intermediate is {i + 8}"
-    sa_full_family = f"DamageFamily_sa_full is {i + 9}"
-    twelve_seven_mm_family = f"DamageFamily_12_7 is {i + 10}"
-    fourteen_five_mm_family = f"DamageFamily_14_5 is {i + 11}"
-    missile_he_bigly_family = f"DamageFamily_missile_he_bigly is {i + 12}"
+    nplm_bomb_family = f"DamageFamily_nplm_bomb is {i + 4}"
+    nplm_bomb_flamme_family = f"DamageFamily_nplm_bomb_flamme is {i + 5}"
+    pgb_bomb_family = f"DamageFamily_pgb_bomb is {i + 6}"
+    manpad_hagru_family = f"DamageFamily_manpad_hagru is {i + 7}"
+    manpad_tbagru_family = f"DamageFamily_manpad_tbagru is {i + 8}"
+    sa_intermediate_family = f"DamageFamily_sa_intermediate is {i + 9}"
+    sa_full_family = f"DamageFamily_sa_full is {i + 10}"
+    twelve_seven_mm_family = f"DamageFamily_12_7 is {i + 11}"
+    fourteen_five_mm_family = f"DamageFamily_14_5 is {i + 12}"
+    missile_he_bigly_family = f"DamageFamily_missile_he_bigly is {i + 13}"
 
     source_path.insert(j + 1, infanterie_wa_family)
     source_path.add(sniper_family)
     # source_path.add(full_ball_family)
     source_path.add(dpicm_family)
+    source_path.add(clu_sol_hefrag_family)
     # source_path.add(kpvt_family)
     source_path.add(nplm_bomb_family)
     source_path.add(nplm_bomb_flamme_family)
@@ -89,6 +95,7 @@ def edit_gen_gp_gfx_damageresistancefamilylist(source_path) -> None:
         f"{sniper_family}\n"
         # f"{full_ball_family}\n"
         f"{dpicm_family}\n"
+        f"{clu_sol_hefrag_family}\n"
         # f"{kpvt_family}\n")
         f"{nplm_bomb_family}\n"
         f"{nplm_bomb_flamme_family}\n"
@@ -114,6 +121,7 @@ def edit_gen_gp_gfx_damageresistancefamilylistimpl(source_path) -> None:
             '"DamageFamily_sniper"',
             # '"DamageFamily_full_balle"',
             '"DamageFamily_dpicm"',
+            '"DamageFamily_clu_sol_hefrag"',
             # '"DamageFamily_kpvt"',
             '"DamageFamily_nplm_bomb"',
             '"DamageFamily_nplm_bomb_flamme"',
@@ -154,6 +162,7 @@ def _add_damage_resistance_values(source_path) -> None:
         "sniper": ("(DamageFamily_sniper, 2)"),
         # "full_ball": ("(DamageFamily_full_balle, 1)"),
         "dpicm": ("(DamageFamily_dpicm, 4)"),
+        "clu_sol_hefrag": ("(DamageFamily_clu_sol_hefrag, 16)"),
         # "kpvt": ("(DamageFamily_kpvt, 1)"),
         "nplm_bomb": ("(DamageFamily_nplm_bomb, 1)"),
         "nplm_bomb_flamme": ("(DamageFamily_nplm_bomb_flamme, 1)"),
@@ -188,6 +197,7 @@ def _add_damage_resistance_values(source_path) -> None:
     values_list.add(
         *[str(sniper) for sniper in SNIPER_DAMAGE],
         *[str(dpicm) for dpicm in DPICM_DAMAGES],
+        *[str(clu_row) for clu_row in CLU_SOL_HEFRAG],
         str(NPLM_BOMB_DAMAGE),
         str(NPLM_BOMB_FLAMME_DAMAGE),
         str(PGB_BOMB_DAMAGE),
@@ -226,7 +236,14 @@ def _apply_damage_family_edits(source_path) -> None:
     for weapon_type, data in DAMAGE_EDITS.items():
         _apply_damage_array_edits(damage_array, data["row"], data["edits"])
         logger.info(f"Applied damage edits for {weapon_type}")
-        
+
+    # Vanilla clu_sol_ap rows: match CLU_SOL_HEFRAG except infantry / infantry_wa handling (see damage_values).
+    for row_idx, ap_row in zip(range(CLU_SOL_AP_ROW_FIRST, CLU_SOL_AP_ROW_LAST + 1), CLU_SOL_AP):
+        dmg_row = damage_array[row_idx]
+        for col, val in enumerate(ap_row):
+            dmg_row.v.replace(col, str(val))
+        logger.info(f"Applied clu_sol_ap full row for index {row_idx}")
+
         
 def _apply_damage_array_edits(damage_array, row: int, column_edits: dict) -> None:
     """Apply edits to specific columns in a damage array row."""

@@ -1691,6 +1691,9 @@ pol_unit_edits = {
     
     "T72M_CMD_POL": {  # T-72MD LDR
         "CommandPoints": 165,
+        "armor": {
+            "top": (2, None),
+        },
         "GameName": {
             "display": "#LDRSOV T-72MD LDR.",
             "token": "POLTSTMLDR",
@@ -1726,6 +1729,9 @@ pol_unit_edits = {
     
     "T72M1_CMD_POL": {  # T-72M1D LDR
         "CommandPoints": 195,
+        "armor": {
+            "top": (3, None),
+        },
         "GameName": {
             "display": "#LDRSOV T-72M1D LDR.",
             "token": "POLTSTMOLD",
@@ -1888,11 +1894,17 @@ pol_unit_edits = {
     
     "T72M_POL": {  # T-72M
         "CommandPoints": 140,
+        "armor": {
+            "top": (2, None),
+        },
         "availability": [8, 6, 0, 0],
     },
     
     "T72M1_POL": {  # T-72M1
         "CommandPoints": 175,
+        "armor": {
+            "top": (3, None),
+        },
         "availability": [0, 6, 4, 0],
         "Divisions": {
             "default": {
@@ -1903,6 +1915,9 @@ pol_unit_edits = {
     
     "T72M1_Wilk_POL": {  # T-72M2 Wilk
         "CommandPoints": 195,
+        "armor": {
+            "top": (4, None),
+        },
         "availability": [0, 0, 4, 3],
         "SpecialtiesList": {
             "overwrite_all": ['_era', '_smoke_launcher', '_smoke_launcher'],

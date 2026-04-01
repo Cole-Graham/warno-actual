@@ -264,6 +264,9 @@ RFA_NEW_UNITS = {
         },
         "Factory": "EFactory/Logistic",
         "CommandPoints": 315,
+        "armor": {
+            "top": (4, None),
+        },
         "availability": [0, 0, 2, 0],
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
@@ -300,6 +303,9 @@ RFA_NEW_UNITS = {
         },
         "Factory": "EFactory/Logistic",
         "CommandPoints": 360,
+        "armor": {
+            "top": (4, None),
+        },
         "availability": [0, 0, 2, 0],
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',

@@ -2412,13 +2412,13 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "WeaponDescriptor": {
-            "turrets": {
-                0: {
-                    "AngleRotationMaxPitch": 1.0,
-                },
-            },
-        },
+        # "WeaponDescriptor": {
+        #     "turrets": {
+        #         0: {
+        #             "AngleRotationMaxPitch": 1.0,
+        #         },
+        #     },
+        # },
         "availability": [0, 1, 0, 0],
     },
 
@@ -2438,6 +2438,9 @@ usa_unit_edits = {
                 "UNITE_M1A1HA_Abrams_CMD_US",
                 "Unite",
             ],
+        },
+        "armor": {
+            "top": (5, None),
         },
         # "SortingOrder": 20340,
         # "UnitAttackValue": 561,
@@ -2477,6 +2480,9 @@ usa_unit_edits = {
                 "UNITE_M1A1_Abrams_CMD_US",
                 "Unite",
             ],
+        },
+        "armor": {
+            "top": (5, None),
         },
         # "SortingOrder": 20290,
         # "UnitAttackValue": 461,
@@ -2520,6 +2526,9 @@ usa_unit_edits = {
                 "Unite"
             ],
         },
+        "armor": {
+            "top": (5, None),
+        },
         "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "UnitRole": "armor",
@@ -2550,6 +2559,9 @@ usa_unit_edits = {
                 "UNITE_M1_Abrams_CMD_US",
                 "Unite"
             ],
+        },
+        "armor": {
+            "top": (4, None),
         },
         "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
@@ -2582,6 +2594,9 @@ usa_unit_edits = {
                 "Unite"
             ],
         },
+        "armor": {
+            "top": (3, None),
+        },
         "IdentifiedTextures": ["Texture_RTS_H_Armor", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "UnitRole": "armor",
@@ -2612,6 +2627,9 @@ usa_unit_edits = {
                 "UNITE_M60A1_RISE_Passive_CMD_US",
                 "Unite"
             ],
+        },
+        "armor": {
+            "top": (3, None),
         },
         "IdentifiedTextures": ["Texture_RTS_H_Armor", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
@@ -2848,6 +2866,9 @@ usa_unit_edits = {
             },
         },
         "availability": [0, 0, 3, 2],
+        "armor": {
+            "top": (5, None),
+        },
     },
 
     "M1A1_Abrams_US": {
@@ -2866,6 +2887,9 @@ usa_unit_edits = {
             },
         },
         "availability": [5, 3, 0, 0],
+        "armor": {
+            "top": (5, None),
+        },
     },
 
     "M1IP_Abrams_US": {
@@ -2885,6 +2909,9 @@ usa_unit_edits = {
             },
         },
         "availability": [0, 0, 4, 3],
+        "armor": {
+            "top": (5, None),
+        },
     },
 
     "M1_Abrams_US": {
@@ -2895,6 +2922,9 @@ usa_unit_edits = {
             },
         },
         "availability": [6, 4, 0, 0],
+        "armor": {
+            "top": (4, None),
+        },
     },
 
     "M1_Abrams_NG_US": {
@@ -2905,6 +2935,9 @@ usa_unit_edits = {
             },
         },
         "availability": [6, 0, 0, 0],
+        "armor": {
+            "top": (4, None),
+        },
     },
     
     "M1_Abrams_MOD_US": {
@@ -2915,6 +2948,9 @@ usa_unit_edits = {
             },
         },
         "availability": [0, 4, 3, 0],
+        "armor": {
+            "top": (4, None),
+        },
     },
 
     "M60A3_Patton_US": {
@@ -2926,6 +2962,9 @@ usa_unit_edits = {
         },
         "availability": [8, 6, 0, 0],
         "UpgradeFromUnit": "M60A3_Patton_NG_US",
+        "armor": {
+            "top": (3, None),
+        },
     },
 
     "M60A3_ERA_Patton_US": {
@@ -2949,6 +2988,9 @@ usa_unit_edits = {
         },
         "availability": [0, 8, 6, 0],
         "UpgradeFromUnit": "M60A3_Patton_US",
+        "armor": {
+            "top": (3, None),
+        },
     },
 
     "M60A3_Patton_NG_US": {
@@ -2959,6 +3001,9 @@ usa_unit_edits = {
             },
         },
         "availability": [10, 7, 0, 0],
+        "armor": {
+            "top": (3, None),
+        },
     },
 
     "M60A1_RISE_Passive_US": {
@@ -2969,6 +3014,9 @@ usa_unit_edits = {
             },
         },
         "availability": [10, 7, 0, 0],
+        "armor": {
+            "top": (3, None),
+        },
     },
 
     "M551A1_TTS_Sheridan_US": {
@@ -3217,6 +3265,9 @@ usa_unit_edits = {
     "M60A1_RISE_Passive_reco_US": {
         "CommandPoints": 90,
         "availability": [6, 0, 0, 0],
+        "armor": {
+            "top": (3, None),
+        },
     },
 
     "M551A1_ACAV_Sheridan_US": {
@@ -3227,6 +3278,9 @@ usa_unit_edits = {
     "M1A1_Abrams_reco_US": {
         "availability": [0, 3, 2, 0],
         "CommandPoints": 245,
+        "armor": {
+            "top": (5, None),
+        },
         "Divisions": {
             "default": {
                 "cards": 2,
