@@ -53,7 +53,8 @@ def edit_gameplay_constantes_gdconstants(source_path) -> None:
             # )
             # SplashRatioDamage is the damage ratio at the edge of the splash radius
             # SplashRatioDistance is the % of the splash radius at which damage BEGINS to fall off
-            # The WARNO engine only recalculates splash damage every X amount of distance, so very small
-            # splash radiuses will feel very binary.
-            row.v.by_m("SplashRatioDamage").v = "[0.15, 0.15, 0.05]"
+            # e.g. For a radius of 100m, 0.15 means the damage starts to fall off at 15m from the center.
+            # The WARNO engine only recalculates splash damage every ? amount of distance, so very small
+            # splash radiuses will feel very binary. I haven't determined the exact value yet.
+            row.v.by_m("SplashRatioDamage").v = "[0.05, 0.05, 0.05]"
             row.v.by_m("SplashRatioDistance").v = "[0.15, 0.15, 0.10]"

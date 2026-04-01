@@ -131,7 +131,6 @@ def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_nam
         "TInfluenceMapModuleDescriptor": { "handler": _handle_influencemap_module, "args": [] },
         "TInfluenceScoutModuleDescriptor": { "handler": _handle_influencescout_module, "args": [] },
         # "TAutomaticBehaviorModuleDescriptor": { "handler": handle_automaticbehavior_module, "args": [] },
-        "TCubeActionModuleDescriptor": { "handler": _handle_cubeaction_module, "args": [] },
         # "TMinimapDisplayModuleDescriptor": { "handler": handle_minimapdisplay_module, "args": [] },
         "TOrderConfigModuleDescriptor": { "handler": _handle_orderconfig_module, "args": [] },
         "TOrderableModuleDescriptor": { "handler": _handle_orderable_module, "args": [] },
@@ -755,15 +754,6 @@ def _handle_influencescout_module(logger, game_db, unit_data, edit_type, unit_na
     if edit_type == "unit_edits":
         if "remove_zone_capture" in edits:
             module.parent.remove(module.index)  # noqa
-            
-
-# TCubeActionModuleDescriptor
-def _handle_cubeaction_module(logger, game_db, unit_data, edit_type, unit_name,
-                              edits, module, *args) -> None:
-    """Handle TCubeActionModuleDescriptor for existing and new units"""
-    if "CubeActionDescriptor" in edits:
-        new_value = f"$/GFX/UI/CubeAction_Menu_Ordres_{edits['CubeActionDescriptor']}"
-        module.v.by_m("CubeActionDescriptor").v = new_value
         
 
 # TOrderConfigModuleDescriptor

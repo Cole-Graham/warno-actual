@@ -11,12 +11,16 @@ def edit_gen_ui_weaponsminmax(source_path: Any) -> None:
     """GameData/Generated/UserInterface/WeaponsMinMax.ndf"""
     logger.info("Editing weapons min/max values")
 
-    root_obj = source_path.by_n("MinMaxValuesInterfaceHelper").v
-    weapons_map = root_obj.by_m("WeaponsMinMaxValues").v
-    minmax_atgm = weapons_map.by_key("~/MinMax_ATGM").v
+    root_obj = source_path.by_n("MinMaxValuesInterfaceHelper")
+    weapons_map = root_obj.v.by_m("WeaponsMinMaxValues")
+    
+    minmax_atgm = weapons_map.v.by_key("~/MinMax_ATGM")
+    minmax_atgm.v.by_m("Penetration").v.by_m("Min").v = "10"
+    logger.debug("Changed ATGM UI color scaling minimum to 10 AP")
 
-    for min_max_param_obj in minmax_atgm:
-        if min_max_param_obj.namespace == "Penetration":
-            min_max_param_obj.v.by_m("Min").v = "10"
-            logger.debug("Changed ATGM UI color scaling minimum to 10 AP")
-            break
+    minmax_bombe = weapons_map.v.by_key("~/MinMax_Bombe")
+    penetration_bombe = minmax_bombe.v.by_m("Penetration")
+    penetration_bombe.v.by_m("Min").v = "6"
+    penetration_bombe.v.by_m("Max").v = "12"
+    logger.debug("Changed Bombe UI color scaling minimum to 6 AP")
+    logger.debug("Changed Bombe UI color scaling maximum to 12 AP")

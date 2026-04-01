@@ -304,6 +304,9 @@ POL_NEW_UNITS = {
         },
         "Factory": "EFactory/Logistic",
         "CommandPoints": 275,
+        "armor": {
+            "top": (2, None),
+        },
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
             'leader_sov',
@@ -352,6 +355,9 @@ POL_NEW_UNITS = {
         },
         "Factory": "EFactory/Logistic",
         "CommandPoints": 310,
+        "armor": {
+            "top": (3, None),
+        },
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
             'leader_sov',

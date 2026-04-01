@@ -69,6 +69,7 @@ from .generated import (
 )
 from .userinterface import (
     edit_ui_ingame_uispecificunitinfopanelview,
+    edit_ui_ingame_uispecificunitinfosingleweaponpanelview,
     edit_ui_ingame_useingametextures,
     edit_ui_outgame_uispecificoutgamewelcomeview,
     edit_ui_style_defaulttextformatscript,
@@ -138,6 +139,7 @@ __all__ = [
     'edit_gen_ui_weaponsminmax',
     # .userinterface
     'edit_ui_ingame_uispecificunitinfopanelview',
+    'edit_ui_ingame_uispecificunitinfosingleweaponpanelview',
     'edit_ui_ingame_useingametextures',
     'edit_ui_outgame_uispecificoutgamewelcomeview',
     'edit_ui_style_defaulttextformatscript',

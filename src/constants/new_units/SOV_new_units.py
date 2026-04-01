@@ -233,6 +233,9 @@ SOV_NEW_UNITS = {
         },
         "Factory": "EFactory/Logistic",
         "CommandPoints": 265,
+        "armor": {
+            "top": (3, None),
+        },
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
             'leader_sov',
@@ -282,6 +285,9 @@ SOV_NEW_UNITS = {
         },
         "Factory": "EFactory/Logistic",
         "CommandPoints": 265,
+        "armor": {
+            "top": (3, None),
+        },
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
             'leader_sov',
@@ -323,6 +329,9 @@ SOV_NEW_UNITS = {
         },
         "Factory": "EFactory/Logistic",
         "CommandPoints": 320,
+        "armor": {
+            "top": (3, None),
+        },
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
             'leader_sov',
@@ -364,6 +373,9 @@ SOV_NEW_UNITS = {
         },
         "Factory": "EFactory/Logistic",
         "CommandPoints": 310,
+        "armor": {
+            "top": (3, None),
+        },
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
             'leader_sov',
@@ -405,6 +417,9 @@ SOV_NEW_UNITS = {
         },
         "Factory": "EFactory/Logistic",
         "CommandPoints": 355,
+        "armor": {
+            "top": (4, None),
+        },
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
             'leader_sov',
@@ -448,6 +463,7 @@ SOV_NEW_UNITS = {
         "Factory": "EFactory/Logistic",
         "armor": {
             "front": (18, None),
+            "top": (4, None),
         },
         "CommandPoints": 355,
         "UnitRole": 'hq_tank',

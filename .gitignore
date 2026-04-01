@@ -17,8 +17,15 @@ notes
 python_version_check.py
 tools/dpm_visualizer/user_data.json
 tools/dpm_visualizer/dpm_visualizer_cache.json
+tools/artillery_arc_preview/user_state.json
+# PyInstaller portable build (artillery arc preview)
+build/arc_preview/
+dist/ArtilleryArcPreview/
+dist/ArtilleryArcPreview.exe
+build/arc_preview_onefile/
 tools/infantry_dpm_visualizer.py
 tools/extract_infantry_tab.py
+tools/fx_editor/out/
 agent
 generate_new_divs.py
 generate_divisionrules.py

@@ -251,17 +251,71 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("Bomb_CLU_RBK_250kg_salvolength2", "clu_bomb", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 7,
+            },
+            "parent_membr": {
+                "ImpactHappening": "'MLRSClusterAP100m'",
+                "PhysicalDamages": 1,
+                "RadiusSplashPhysicalDamagesGRU": 100,
+                "SupplyCost": 180.0,
+            },
+        },
+    },
+    
     ("Bomb_CLU_RBK_250kg_salvolength4", "clu_bomb", None, False): {
         "Ammunition": {
+            "Arme": {
+                "Index": 7,
+            },
             "parent_membr": {
+                "ImpactHappening": "'MLRSClusterAP100m'",
+                "PhysicalDamages": 1,
+                "RadiusSplashPhysicalDamagesGRU": 100,
                 "SupplyCost": 280.0,
+            },
+        },
+    },
+    
+    ("Bomb_CLU_RBK_250kg_salvolength6", "clu_bomb", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 7,
+            },
+            "parent_membr": {
+                "ImpactHappening": "'MLRSClusterAP100m'",
+                "PhysicalDamages": 1,
+                "RadiusSplashPhysicalDamagesGRU": 100,
+                "SupplyCost": 340.0,
+            },
+        },
+    },
+    
+    ("Bomb_CLU_RBK_250kg_salvolength8", "clu_bomb", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 7,
+            },
+            "parent_membr": {
+                "ImpactHappening": "'MLRSClusterAP100m'",
+                "PhysicalDamages": 1,
+                "RadiusSplashPhysicalDamagesGRU": 100,
+                "SupplyCost": 420.0,
             },
         },
     },
     
     ("Bomb_CLU_RBK_500kg_salvolength2", "clu_bomb", None, False): { # 56
         "Ammunition": {
+            "Arme": {
+                "Index": 8
+            },
             "parent_membr": {
+                "ImpactHappening": "'MLRSClusterAP150m'",
+                "PhysicalDamages": 1,
+                "RadiusSplashPhysicalDamagesGRU": 150,
                 "SupplyCost": 240.0,
             },
         },
@@ -269,7 +323,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
     
     ("Bomb_CLU_RBK_500kg_salvolength4", "clu_bomb", None, False): {
         "Ammunition": {
+            "Arme": {
+                "Index": 8,
+            },
             "parent_membr": {
+                "ImpactHappening": "'MLRSClusterAP150m'",
+                "PhysicalDamages": 1,
+                "RadiusSplashPhysicalDamagesGRU": 150,
                 "SupplyCost": 360.0,
             },
         },
@@ -277,15 +337,58 @@ weapons: Dict[WeaponKey, WeaponData] = {
     
     ("Bomb_CLU_RBK_500kg_salvolength6", "clu_bomb", None, False): {
         "Ammunition": {
+            "Arme": {
+                "Index": 8,
+            },
             "parent_membr": {
+                "ImpactHappening": "'MLRSClusterAP150m'",
+                "PhysicalDamages": 1,
+                "RadiusSplashPhysicalDamagesGRU": 150,
                 "SupplyCost": 460.0,
+            },
+        },
+    },
+    
+    ("Bomb_CLU_RBK_500kg_salvolength8", "clu_bomb", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 8,
+            },
+            "parent_membr": {
+                "ImpactHappening": "'MLRSClusterAP150m'",
+                "PhysicalDamages": 1,
+                "RadiusSplashPhysicalDamagesGRU": 150,
+                "SupplyCost": 540.0,
+            },
+        },
+    },
+    
+    ("KMGU_dispenser", "clu_bomb", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_clu_sol_ap",
+                "Index": 8,
+            },
+            "parent_membr": {
+                "MinMaxCategory": "MinMax_Bombe",
+                "ImpactHappening": "'MLRSClusterAP150m'",
+                "PhysicalDamages": 1,
+                "RadiusSplashPhysicalDamagesGRU": 150,
+                "SupplyCost": 460.0,
+                "PiercingWeapon": True,
             },
         },
     },
     
     ("Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength12", "clu_bomb", None, False): { # 44
         "Ammunition": {
+            "Arme": {
+                "Index": 7,
+            },
             "parent_membr": {
+                "ImpactHappening": "'MLRSClusterAP100m'",
+                "PhysicalDamages": 1,
+                "RadiusSplashPhysicalDamagesGRU": 100,
                 "SupplyCost": 630.0,
             },
         },
@@ -294,7 +397,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
 
     ("Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength8", "clu_bomb", None, False): { # 44
         "Ammunition": {
+            "Arme": {
+                "Index": 7,
+            },
             "parent_membr": {
+                "ImpactHappening": "'MLRSClusterAP100m'",
+                "PhysicalDamages": 1,
+                "RadiusSplashPhysicalDamagesGRU": 100,
                 "SupplyCost": 420.0,
             },
         },
@@ -302,7 +411,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
 
     ("Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength5", "clu_bomb", None, False): { # 43
         "Ammunition": {
+            "Arme": {
+                "Index": 7,
+            },
             "parent_membr": {
+                "ImpactHappening": "'MLRSClusterAP100m'",
+                "PhysicalDamages": 1,
+                "RadiusSplashPhysicalDamagesGRU": 100,
                 "SupplyCost": 320.0,
             },
         },
@@ -310,7 +425,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
 
     ("Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength4", "clu_bomb", None, False): { # 42
         "Ammunition": {
+            "Arme": {
+                "Index": 7,
+            },
             "parent_membr": {
+                "ImpactHappening": "'MLRSClusterAP100m'",
+                "PhysicalDamages": 1,
+                "RadiusSplashPhysicalDamagesGRU": 100,
                 "SupplyCost": 270.0,
             },
         },
@@ -318,7 +439,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
 
     ("Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength2", "clu_bomb", None, False): { # 41
         "Ammunition": {
+            "Arme": {
+                "Index": 7,
+            },
             "parent_membr": {
+                "ImpactHappening": "'MLRSClusterAP100m'",
+                "PhysicalDamages": 1,
+                "RadiusSplashPhysicalDamagesGRU": 100,
                 "SupplyCost": 180.0,
             },
         },
@@ -326,7 +453,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
     
     ("Bomb_BL755_cluster_264kg_salvolength8", "clu_bomb", None, False): {
         "Ammunition": {
+            "Arme": {
+                "Index": 9,
+            },
             "parent_membr": {
+                "ImpactHappening": "'MLRSClusterAP125m'",
+                "PhysicalDamages": 1,
+                "RadiusSplashPhysicalDamagesGRU": 125,
                 "SupplyCost": 490.0,
             },
         },
@@ -334,7 +467,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
     
     ("Bomb_BL755_cluster_264kg_salvolength6", "clu_bomb", None, False): {
         "Ammunition": {
+            "Arme": {
+                "Index": 9,
+            },
             "parent_membr": {
+                "ImpactHappening": "'MLRSClusterAP125m'",
+                "PhysicalDamages": 1,
+                "RadiusSplashPhysicalDamagesGRU": 125,
                 "SupplyCost": 400.0,
             },
         },
@@ -342,7 +481,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
     
     ("Bomb_BL755_cluster_264kg_salvolength4", "clu_bomb", None, False): {
         "Ammunition": {
+            "Arme": {
+                "Index": 9,
+            },
             "parent_membr": {
+                "ImpactHappening": "'MLRSClusterAP125m'",
+                "PhysicalDamages": 1,
+                "RadiusSplashPhysicalDamagesGRU": 125,
                 "SupplyCost": 315.0,
             },
         },
@@ -350,7 +495,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
     
     ("Bomb_BL755_cluster_264kg_salvolength2", "clu_bomb", None, False): {
         "Ammunition": {
+            "Arme": {
+                "Index": 9,
+            },
             "parent_membr": {
+                "ImpactHappening": "'MLRSClusterAP125m'",
+                "PhysicalDamages": 1,
+                "RadiusSplashPhysicalDamagesGRU": 125,
                 "SupplyCost": 210.0,
             },
         },
@@ -358,8 +509,34 @@ weapons: Dict[WeaponKey, WeaponData] = {
     
     ("Bomb_BLG66_Belouga_cluster_305kg_salvolength4", "clu_bomb", None, False): {
         "Ammunition": {
+            "Arme": {
+                "Index": 7,
+            },
             "parent_membr": {
+                "ImpactHappening": "'MLRSClusterAP125m'",
+                "PhysicalDamages": 1,
+                "RadiusSplashPhysicalDamagesGRU": 125,
                 "SupplyCost": 360.0,
+            },
+        },
+    },
+    
+    ("MW1_dispenser", "clu_bomb", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_clu_sol_ap",
+                "Index": 12,
+            },
+            "parent_membr": {
+                "MinMaxCategory": "MinMax_Bombe",
+                "ImpactHappening": "'MLRSClusterAP225m'",
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
+                "PhysicalDamages": 1,
+                "RadiusSplashPhysicalDamagesGRU": 250,
+                "TimeBetweenTwoSalvos": 0.2,
+                "SupplyCost": 720.0,
+                "PiercingWeapon": True,
             },
         },
     },

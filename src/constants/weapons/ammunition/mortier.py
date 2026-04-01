@@ -208,6 +208,18 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("Mortier_81mm_TOWED_CLU_Guided", "mortar", None, False): { # Merlin
+        "Ammunition": {
+            "Arme": {
+                "Index": 6,
+                "Family": "DamageFamily_clu_sol_hefrag",
+            },
+            "parent_membr": {
+                "PhysicalDamages": 1.0,
+            },
+        },
+    },
+    
     ("Mortier_M252_81mm", "mortar", None, False): {
         "Ammunition": {
             "parent_membr": {

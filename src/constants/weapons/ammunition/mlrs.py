@@ -11,19 +11,18 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketArt_9M55K5_300mm", "MLRS", None, False): { # SMERCH
         "Ammunition": {
             "Arme": {
-                "Index": 4,
-                "Family": "DamageFamily_dpicm",
+                "Index": 10,
             },
             "parent_membr": {
-                "SuppressDamages": 85,
-                "RadiusSplashPhysicalDamagesGRU": 250,
-                "RadiusSplashSuppressDamagesGRU": 300,
+                "ImpactHappening": "'MLRSClusterAP175m'",
+                "RadiusSplashPhysicalDamagesGRU": 175,
+                "RadiusSplashSuppressDamagesGRU": 233,
                 "DispersionAtMaxRangeGRU": 900,
-                "DispersionAtMinRangeGRU": 300,
+                "DispersionAtMinRangeGRU": 380,
                 "AimingTime": 18.0,
-                "ShotsCountPerSalvo": 48,
+                "ShotsCountPerSalvo": 12,
                 "SupplyCost": 1200.0,
-                "SimultaneousShotsCount": 4,
+                "SimultaneousShotsCount": 1,
                 "AffichageMunitionParSalve": 12,
             },
         },
@@ -98,23 +97,23 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "display": "M26 'Steel Rain'",
             "token": "ULWAVTGKUK",
             "Arme": {
-                "Index": 3,
-                "Family": "DamageFamily_dpicm",
+                "Index": 9,
             },
             "parent_membr": {
+                "ImpactHappening": "'MLRSClusterAP250m'",
                 "TimeBetweenTwoShots": 1.8,
                 "TimeBetweenTwoFx": 1.8,
-                "RadiusSplashPhysicalDamagesGRU": 400,
-                "PhysicalDamages": 3,
-                "RadiusSplashSuppressDamagesGRU": 533,
-                "SuppressDamages": 20,
+                "RadiusSplashPhysicalDamagesGRU": 250,
+                "PhysicalDamages": 1,
+                "RadiusSplashSuppressDamagesGRU": 333,
+                "SuppressDamages": 250,
                 "DispersionAtMaxRangeGRU": 1500,
                 "DispersionAtMinRangeGRU": 500,
                 "AimingTime": 18.0,
-                "TimeBetweenTwoSalvos": 130.0,
-                "ShotsCountPerSalvo": 144,
-                "SupplyCost": 960.0,
-                "SimultaneousShotsCount": 12,
+                "TimeBetweenTwoSalvos": 70.0, # Experimental, realistic short reload balanced with supply cost (130s -> 70s)
+                "ShotsCountPerSalvo": 12,
+                "SupplyCost": 1440.0, # 960 -> 1440
+                "SimultaneousShotsCount": 1,
                 "AffichageMunitionParSalve": 12,
             },
         },
@@ -179,6 +178,22 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("RocketArt_M21OF_122mm_cluster_RM70", "MLRS", "RocketArt_M21OF_122mm_cluster", True): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 7,
+            },
+            "parent_membr": {
+                "ImpactHappening": "'MLRSClusterAP100m'",   
+                "PhysicalDamages": 1.0,
+                "RadiusSplashPhysicalDamagesGRU": 100,
+                "RadiusSplashSuppressDamagesGRU": 133,
+                "DispersionAtMaxRangeGRU": 600,
+                "DispersionAtMinRangeGRU": 250,
+            },
+        },
+    },
+    
     ("RocketArt_M21OF_122mm_napalm", "MLRS", None, False): { # BM-21 [NPLM]
         "Ammunition": {
             "parent_membr": {
@@ -205,6 +220,23 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoSalvos": 130.0,
                 "SupplyCost": 290.0,
                 "FireDescriptor": "$/GFX/Weapon/Descriptor_Fire_Incendiary_53m",
+            },
+        },
+    },
+    
+    ("RocketArt_9F53_122mm_cluster_salvolength50", "MLRS", None, False): { # Prima
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_clu_sol_hefrag",
+                "Index": 6,
+            },
+            "parent_membr": {
+                "ImpactHappening": "'MLRSClusterAP100m'",
+                "PhysicalDamages": 1,
+                "RadiusSplashPhysicalDamagesGRU": 100,
+                "RadiusSplashSuppressDamagesGRU": 133,
+                "DispersionAtMaxRangeGRU": 600,
+                "DispersionAtMinRangeGRU": 250,
             },
         },
     },
