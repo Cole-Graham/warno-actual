@@ -50,7 +50,7 @@ UK_NEW_UNITS = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "Gatling_M61_Vulcan_20mm_late_TOWED": 13,
+                "Gatling_M61_Vulcan_20mm_late_TOWED": 38,
             },
         },
         "UpgradeFromUnit": "FOB_UK",

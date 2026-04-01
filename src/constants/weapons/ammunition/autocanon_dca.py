@@ -11,18 +11,18 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_4_canon_Maxson_towed_12_7mm", "DCA", None, False): { # 4 50 cals firing at 500 rpm, for combined 2000 rpm
         "Ammunition": {
             "hit_roll": {
-                "Idling": 10,
+                "Idling": 20,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1400,
                 "MaximumRangeHelicopterGRU": 1925,
                 "MaximumRangeAirplaneGRU": 1575,
-                "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoFx": 0.1,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 0.43,
                 "TimeBetweenTwoSalvos": 20.0,
                 "AimingTime": 1.2,
-                "ShotsCountPerSalvo": 240,
+                "ShotsCountPerSalvo": 120,
                 "AffichageMunitionParSalve": 800,
                 "SupplyCost": 100.0,
             },
@@ -32,18 +32,18 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_4_canon_Maxson_SP_12_7mm", "DCA", None, False): { # 4 50 cals firing at 500 rpm, for combined 2000 rpm
         "Ammunition": {
             "hit_roll": {
-                "Idling": 10,
+                "Idling": 20,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1400,
                 "MaximumRangeHelicopterGRU": 1925,
                 "MaximumRangeAirplaneGRU": 1575,
-                "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoFx": 0.1,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 0.43,
                 "TimeBetweenTwoSalvos": 1.0,
                 "AimingTime": 1.2,
-                "ShotsCountPerSalvo": 240,
+                "ShotsCountPerSalvo": 120,
                 "AffichageMunitionParSalve": 800,
                 "SupplyCost": 100.0,
             },
@@ -53,14 +53,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_4_canon_ZPU4_towed_14_5mm", "DCA", None, False): { # 4 14.5's firing at 600 rpm, for combined 2400 rpm, each ammo box has 2500 rounds?
         "Ammunition": {
             "hit_roll": {
-                "Idling": 10,
+                "Idling": 20,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1400,
                 "MaximumRangeHelicopterGRU": 1925,
                 "MaximumRangeAirplaneGRU": 1575,
-                "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoFx": 0.1,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 0.58,
                 "TimeBetweenTwoSalvos": 1.0,
                 "AimingTime": 1.2,
@@ -74,14 +74,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_2_canon_ZPU4_14_5mm", "DCA", None, False): { # 2 14.5's firing at 600 rpm, for combined 1200 rpm, each ammo box has 2500 rounds?
         "Ammunition": {
             "hit_roll": {
-                "Idling": 10,
+                "Idling": 20,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1400,
                 "MaximumRangeHelicopterGRU": 1925,
                 "MaximumRangeAirplaneGRU": 1575,
-                "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoFx": 0.1,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 0.29,
                 "TimeBetweenTwoSalvos": 1.0,
                 "AimingTime": 1.2,
@@ -95,19 +95,19 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_4_canon_ZPU4_14_5mm", "DCA", None, False): { # 4 14.5's firing at 600 rpm, for combined 2400 rpm, each ammo box has 2500 rounds?
         "Ammunition": {
             "hit_roll": {
-                "Idling": 10,
+                "Idling": 20,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1400,
                 "MaximumRangeHelicopterGRU": 1925,
                 "MaximumRangeAirplaneGRU": 1575,
-                "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoFx": 0.1,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 0.58,
                 "TimeBetweenTwoSalvos": 1.0,
                 "AimingTime": 1.2,
                 "ShotsCountPerSalvo": 5,
-                "AffichageMunitionParSalve": 20,
+                "AffichageMunitionParSalve": 40,
                 "SupplyCost": 2.0,
             },
         },
@@ -116,15 +116,16 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_1_canon_FK20_20mm_TOWED", "DCA", None, False): { # 20mm with 1000 RPM
         "Ammunition": {
             "hit_roll": {
-                "Idling": 10,
+                "Idling": 20,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "PhysicalDamages": 0.334,
                 "AimingTime": 1.2,
-                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
                 "TimeBetweenTwoSalvos": 1.6,
-                "ShotsCountPerSalvo": 15,
+                "ShotsCountPerSalvo": 7,
                 "AffichageMunitionParSalve": 25,
                 "SupplyCost": 6.0,
             },
@@ -134,15 +135,16 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_1_canon_FK20_20mm", "DCA", None, False): { # 20mm with 1000 RPM
         "Ammunition": {
             "hit_roll": {
-                "Idling": 10,
+                "Idling": 20,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "PhysicalDamages": 0.334,
                 "AimingTime": 1.2,
-                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
                 "TimeBetweenTwoSalvos": 1.6,
-                "ShotsCountPerSalvo": 15,
+                "ShotsCountPerSalvo": 7,
                 "AffichageMunitionParSalve": 25,
                 "SupplyCost": 6.0,
             },
@@ -152,15 +154,16 @@ weapons: Dict[WeaponKey, WeaponData] = {
      ("DCA_2_canon_FK20_20mm", "DCA", None, False): { # twin 20mm with combined 2000 RPM
         "Ammunition": {
             "hit_roll": {
-                "Idling": 10,
+                "Idling": 20,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "PhysicalDamages": 0.668,
                 "AimingTime": 1.2,
-                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
                 "TimeBetweenTwoSalvos": 1.6,
-                "ShotsCountPerSalvo": 15,
+                "ShotsCountPerSalvo": 7,
                 "AffichageMunitionParSalve": 50,
                 "SupplyCost": 9.0,
             },
@@ -170,15 +173,16 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_1_canon_53T2_20mm", "DCA", None, False): { # 20mm with 740 RPM
         "Ammunition": {
             "hit_roll": {
-                "Idling": 15,
+                "Idling": 30,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "PhysicalDamages": 0.25,
                 "AimingTime": 1.2,
-                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
                 "TimeBetweenTwoSalvos": 1.0,
-                "ShotsCountPerSalvo": 10,
+                "ShotsCountPerSalvo": 5,
                 "AffichageMunitionParSalve": 12,
                 "SupplyCost": 3.0,
             },
@@ -188,15 +192,16 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_1_canon_53T2_20mm_TOWED", "DCA", None, False): { # 20mm with 740 RPM
         "Ammunition": {
             "hit_roll": {
-                "Idling": 15,
+                "Idling": 30,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "PhysicalDamages": 0.25,
                 "AimingTime": 1.2,
-                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
                 "TimeBetweenTwoSalvos": 1.0,
-                "ShotsCountPerSalvo": 10,
+                "ShotsCountPerSalvo": 5,
                 "AffichageMunitionParSalve": 12,
                 "SupplyCost": 3.0,
             },
@@ -206,15 +211,16 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_2_canon_76T2_20mm", "DCA", None, False): { # Twin 20mm at 1500 combined RPM
         "Ammunition": {
             "hit_roll": {
-                "Idling": 10,
+                "Idling": 20,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "PhysicalDamages": 0.5,
                 "AimingTime": 1.2,
-                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
                 "TimeBetweenTwoSalvos": 1.0,
-                "ShotsCountPerSalvo": 10,
+                "ShotsCountPerSalvo": 5,
                 "AffichageMunitionParSalve": 25,
                 "SupplyCost": 4.0,
             },
@@ -224,20 +230,20 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_4_canons_AZP_23_Amur_23mm_Afghan", "DCA", None, False): {
         "Ammunition": {
             "hit_roll": {
-                "Idling": 10,
-                "Moving": 5,
+                "Idling": 20,
+                "Moving": 10,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "AimingTime": 1.2,
-                "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoFx": 0.1,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 1.38,
                 "TimeBetweenTwoSalvos": 1.0,
                 "AimingTime": 1.2,
-                "ShotsCountPerSalvo": 5,
-                "AffichageMunitionParSalve": 30,
-                "SupplyCost": 2.0,
+                "ShotsCountPerSalvo": 10,
+                "AffichageMunitionParSalve": 120,
+                "SupplyCost": 8.0,
             },
         },
     },
@@ -245,20 +251,20 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_4_canons_AZP_23_Amur_23mm_late", "DCA", None, False): {
         "Ammunition": {
             "hit_roll": {
-                "Idling": 15,
-                "Moving": 10,
+                "Idling": 30,
+                "Moving": 15,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2625,
                 "MaximumRangeAirplaneGRU": 2100,
                 "AimingTime": 1.2,
-                "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoFx": 0.1,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 1.38,
                 "TimeBetweenTwoSalvos": 1.0,
                 "AimingTime": 1.2,
-                "ShotsCountPerSalvo": 10,
+                "ShotsCountPerSalvo": 5,
                 "AffichageMunitionParSalve": 60,
                 "SupplyCost": 6.0,
             },
@@ -268,20 +274,20 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_4_canons_AZP_23_Amur_23mm_PSNR", "DCA", None, False): {
         "Ammunition": {
             "hit_roll": {
-                "Idling": 10,
-                "Moving": 5,
+                "Idling": 20,
+                "Moving": 10,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "AimingTime": 1.2,
-                "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoFx": 0.1,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 1.38,
                 "TimeBetweenTwoSalvos": 1.0,
                 "AimingTime": 1.2,
-                "ShotsCountPerSalvo": 5,
-                "AffichageMunitionParSalve": 30,
-                "SupplyCost": 2.0,
+                "ShotsCountPerSalvo": 10,
+                "AffichageMunitionParSalve": 120,
+                "SupplyCost": 8.0,
             },
         },
     },
@@ -289,20 +295,20 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_4_canons_APZ23_23mm", "DCA", None, False): { # 274
         "Ammunition": {
             "hit_roll": {
-                "Idling": 15,
-                "Moving": 10,
+                "Idling": 30,
+                "Moving": 15,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2625,
                 "MaximumRangeAirplaneGRU": 2100,
                 "AimingTime": 1.2,
-                "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoFx": 0.1,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 1.38,
                 "TimeBetweenTwoSalvos": 1.0,
                 "AimingTime": 1.2,
-                "ShotsCountPerSalvo": 10,
+                "ShotsCountPerSalvo": 5,
                 "AffichageMunitionParSalve": 60,
                 "SupplyCost": 6.0,
             },
@@ -312,19 +318,19 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_2_canon_ZU23_2_23mm_TOWED", "DCA", None, False): { # Twin 23mm with combined 2000 cyclic rpm
         "Ammunition": {
             "hit_roll": {
-                "Idling": 10,
+                "Idling": 20,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 1750,
                 "AimingTime": 1.2,
-                "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoFx": 0.1,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 0.77,
                 "TimeBetweenTwoSalvos": 1.0,
                 "AimingTime": 1.2,
-                "ShotsCountPerSalvo": 10,
+                "ShotsCountPerSalvo": 5,
                 "AffichageMunitionParSalve": 33,
                 "SupplyCost": 5.0,
             },
@@ -334,20 +340,19 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_2_canon_ZU23_2_23mm", "DCA", None, False): { # Twin 23mm with combined 2000 cyclic rpm
         "Ammunition": {
              "hit_roll": {
-                "Idling": 10,
-                "Moving": 5,
+                "Idling": 20,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 1750,
                 "AimingTime": 1.2,
-                "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoFx": 0.1,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 0.77,
                 "TimeBetweenTwoSalvos": 1.0,
                 "AimingTime": 1.2,
-                "ShotsCountPerSalvo": 10,
+                "ShotsCountPerSalvo": 5,
                 "AffichageMunitionParSalve": 33,
                 "SupplyCost": 5.0,
             },
@@ -357,20 +362,19 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_2_canon_Jod_SP_23mm", "DCA", None, False): { # Twin 23mm with combined 2000 cyclic rpm
         "Ammunition": {
              "hit_roll": {
-                "Idling": 10,
-                "Moving": 5,
+                "Idling": 20,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 1750,
                 "AimingTime": 1.2,
-                "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoFx": 0.1,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 0.77,
                 "TimeBetweenTwoSalvos": 1.0,
                 "AimingTime": 1.2,
-                "ShotsCountPerSalvo": 10,
+                "ShotsCountPerSalvo": 5,
                 "AffichageMunitionParSalve": 33,
                 "SupplyCost": 5.0,
             },
@@ -380,19 +384,19 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_2_canon_Jod_towed_23mm", "DCA", None, False): { # Twin 23mm with combined 2000 cyclic rpm
         "Ammunition": {
              "hit_roll": {
-                "Idling": 10,
+                "Idling": 20,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 1750,
                 "AimingTime": 1.2,
-                "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoFx": 0.1,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 0.77,
                 "TimeBetweenTwoSalvos": 1.0,
                 "AimingTime": 1.2,
-                "ShotsCountPerSalvo": 10,
+                "ShotsCountPerSalvo": 5,
                 "AffichageMunitionParSalve": 33,
                 "SupplyCost": 5.0,
             },
@@ -402,20 +406,19 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_2_canon_2M3_25mm", "DCA", None, False): { # Twin 25mm at 450 rpm each, for combined 900 rpm
         "Ammunition": {
              "hit_roll": {
-                "Idling": 10,
-                "Moving": 5,
+                "Idling": 20,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 1750,
                 "AimingTime": 1.2,
-                "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoFx": 0.1,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 0.35,
                 "TimeBetweenTwoSalvos": 1.0,
                 "AimingTime": 1.2,
-                "ShotsCountPerSalvo": 10,
+                "ShotsCountPerSalvo": 5,
                 "AffichageMunitionParSalve": 15,
                 "SupplyCost": 2.0,
             },
@@ -425,12 +428,12 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_2_canons_2A38M_30mm", "DCA", None, False): { # Tunguska, twin 30mm at like 4200 rpm
         "Ammunition": {
             "hit_roll": {
-                "Idling": 15,
-                "Moving": 10,
+                "Idling": 30,
+                "Moving": 15,
             },
             "parent_membr": {
-                "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoFx": 0.1,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2625,
                 "MaximumRangeAirplaneGRU": 2450,
@@ -438,7 +441,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "SuppressDamages": 60,
                 "TimeBetweenTwoSalvos": 1.0,
                 "AimingTime": 1.2,
-                "ShotsCountPerSalvo": 10,
+                "ShotsCountPerSalvo": 5,
                 "AffichageMunitionParSalve": 70,
                 "SupplyCost": 36.0,
             },
@@ -449,7 +452,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 25,
-                "Moving": 5,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 0.1,
@@ -470,18 +472,18 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_2_canons_HS_831_30mm_TOWED", "DCA", None, False): { # Single 30mm that fires at 600 rpm
         "Ammunition": {
             "hit_roll": {
-                "Idling": 15,
+                "Idling": 30,
             },
             "parent_membr": {
-                "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoFx": 0.1,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2625,
                 "MaximumRangeAirplaneGRU": 2450,
                 "PhysicalDamages": 0.3,
                 "TimeBetweenTwoSalvos": 1.0,
                 "AimingTime": 1.2,
-                "ShotsCountPerSalvo": 20,
+                "ShotsCountPerSalvo": 10,
                 "AffichageMunitionParSalve": 20,
                 "SupplyCost": 5.0,
             },
@@ -545,7 +547,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "ShotsCountPerSalvo": 960,
                 "AffichageMunitionParSalve": 960,
                 "TimeBetweenTwoSalvos": 10.0,
-                "SupplyCost": 480.0,
+                "SupplyCost": 960.0,
             },
         },
     },

@@ -3296,7 +3296,7 @@ sov_unit_edits = {
         "availability": [0, 4, 3, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_4_canons_AZP_23_Amur_23mm_PSNR": 213,
+                "DCA_4_canons_AZP_23_Amur_23mm_PSNR": 53,
             },
         },
     },
@@ -3970,7 +3970,7 @@ sov_unit_edits = {
         "availability": [8, 6, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_4_canons_AZP_23_Amur_23mm_Afghan": 213,
+                "DCA_4_canons_AZP_23_Amur_23mm_Afghan": 53,
             },
         },
     },

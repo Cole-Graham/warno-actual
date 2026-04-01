@@ -3744,7 +3744,7 @@ usa_unit_edits = {
         "UpgradeFromUnit": "M42_Duster_US",
         "WeaponDescriptor": {
             "Salves": {
-                "Gatling_M61_Vulcan_20mm_noRadar": 76,
+                "Gatling_M61_Vulcan_20mm_noRadar": 19,
             },
         },
     },
@@ -3769,7 +3769,7 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "Gatling_M61_Vulcan_20mm_TOWED": 76,
+                "Gatling_M61_Vulcan_20mm_TOWED": 19,
             },
         },
         "UpgradeFromUnit": "FOB_US",
