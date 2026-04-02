@@ -2131,10 +2131,21 @@ rfa_unit_edits = {
                 "AGM_AGM65B_Maverick": 2,
             },
         },
+        "SpecialtiesList": {
+            "add_specs": ["'terrain_radar'"],
+        },
     },
 
     "Tornado_IDS_HE1_RFA": { # 3x Mk 83, 2x AIM-9L
         "CommandPoints": 220,
+        "availability": [0, 2, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'terrain_radar'"],
+        },
+    },
+
+    "Tornado_IDS_CLUS_RFA": { # 5x Rockeye, 2x AIM-9L
+        "CommandPoints": 200,
         "availability": [0, 2, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
@@ -2162,6 +2173,9 @@ rfa_unit_edits = {
             },
         },
         "availability": [0, 2, 0, 1],
+        "SpecialtiesList": {
+            "add_specs": ["'terrain_radar'"],
+        },
     },
 
     "Tornado_IDS_MW1_RFA": { # MW-1 KB44 (Anti Airfield HE Cluster Munitions), 2x AIM-9L

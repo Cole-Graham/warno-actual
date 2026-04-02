@@ -274,7 +274,7 @@ RFA_mechanized_newdivisionrules = {
     "recon": [
         ("Scout_RFA", 2, [8, 6, 0, 0], ["Iltis_trans_RFA", "Iltis_reco_RFA"]),
         ("Jager_Aufk_RFA", 1, [6, 4, 0, 0], ["Unimog_trans_RFA", "M113A1G_reco_RFA"]),
-        ("BGS_hvy_RFA", 1, [8, 0, 0, 0], ["Iltis_trans_RFA", "M113A1G_reco_RFA"]),
+        ("BGS_hvy_RFA", 1, [8, 0, 0, 0], ["Unimog_trans_RFA", "M113A1G_reco_RFA"]),
         ("BGS_RFA", 2, [10, 0, 0, 0], ["Iltis_trans_RFA", "Sonderwagen_4_RFA"]),
         ("SEK_RFA", 1, [0, 0, 8, 6], ["Iltis_trans_RFA", "Sonderwagen_4_RFA"]),
         ("M113_GreenArcher_RFA", 1, [8, 0, 0, 0]),
