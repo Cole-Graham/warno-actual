@@ -964,6 +964,12 @@ def parse_ammunition_properties(mod_src_path: Path) -> Dict[str, Dict[str, Any]]
                 max_range = membr("MaximumRangeGRU", None)
                 if max_range:
                     properties["max_range"] = float(max_range.v)
+                max_range_air = membr("MaximumRangeAirplaneGRU", None)
+                if max_range_air:
+                    properties["max_range_airplane_gru"] = float(max_range_air.v)
+                max_range_heli = membr("MaximumRangeHelicopterGRU", None)
+                if max_range_heli:
+                    properties["max_range_helicopter_gru"] = float(max_range_heli.v)
                 
                 physical_damages = membr("PhysicalDamages", None)
                 if physical_damages:

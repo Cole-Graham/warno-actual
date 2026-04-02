@@ -21,6 +21,7 @@ from .damage_table_csv import (
     default_damage_table_dir,
     list_damage_table_csvs,
     normalize_damage_family,
+    normalize_resistance_family,
     pick_default_csv_name,
 )
 
@@ -360,6 +361,18 @@ class WeaponsTab:
         if cur not in families:
             self.custom_weapon_damage_family_var.set(families[0])
         self._on_custom_damage_family_selected()
+    
+    def _effective_weapon_max_range(self, ammo_props: Dict[str, Any]) -> float:
+        """Max range (GRU/m) for charts vs selected resistance family: avion/helico use dedicated NDF members."""
+        rf = normalize_resistance_family(self.resistance_family_var.get())
+        base = float(ammo_props.get("max_range") or 0.0)
+        if rf == "avion":
+            v = ammo_props.get("max_range_airplane_gru")
+            return float(v) if v is not None else base
+        if rf == "helico":
+            v = ammo_props.get("max_range_helicopter_gru")
+            return float(v) if v is not None else base
+        return base
     
     def _effective_damage_ratio(
         self,
@@ -1374,6 +1387,7 @@ class WeaponsTab:
             
             # Set weapon quantity
             ammo_props["weapon_quantity"] = quantity
+            ammo_props["max_range"] = self._effective_weapon_max_range(ammo_props)
             
             # Determine which range table to use for this weapon
             weapon_range_table = RANGE_MODIFIERS_TABLE if use_vanilla_range_table else range_modifiers_table
@@ -1675,7 +1689,7 @@ class WeaponsTab:
                     is_custom = True
                 
                 if ammo_props:
-                    max_range = ammo_props.get("max_range", 0)
+                    max_range = self._effective_weapon_max_range(ammo_props)
                     base_accuracy = ammo_props.get("idling", 0)
                     damage_type = self.damage_type_var.get() if hasattr(self, 'damage_type_var') else "Physical"
                     if damage_type == "Suppression":
