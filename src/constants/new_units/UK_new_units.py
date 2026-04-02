@@ -50,7 +50,7 @@ UK_NEW_UNITS = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "Gatling_M61_Vulcan_20mm_late_TOWED": 13,
+                "Gatling_M61_Vulcan_20mm_late_TOWED": 38,
             },
         },
         "UpgradeFromUnit": "FOB_UK",
@@ -258,6 +258,9 @@ UK_NEW_UNITS = {
                 "MMG_L8A2_7_62mm": 96,
             },
         },
+        "armor": {
+            "top": (4, None),
+        },
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack', 
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 
                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply', 
@@ -269,6 +272,7 @@ UK_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "NATO",
         "Nation": "UK",
+        "UpgradeFromUnit": "FV4201_Chieftain_CMD2_UK",
     },
     
     ("FV4201_Chieftain_CMD_UK", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -313,6 +317,9 @@ UK_NEW_UNITS = {
                 "MMG_L8A2_7_62mm": 96,
             },
         },
+        "armor": {
+            "top": (4, None),
+        },
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack', 
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 
                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply', 
@@ -324,6 +331,7 @@ UK_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "NATO",
         "Nation": "UK",
+        "UpgradeFromUnit": "FV4201_Chieftain_Mk9_CMD2_UK",
     },
     
     ("FV4201_Chieftain_Mk9_UK", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -368,56 +376,8 @@ UK_NEW_UNITS = {
                 "MMG_L8A2_7_62mm": 96,
             },
         },
-        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack', 
-                   'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 
-                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply', 
-                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
-        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
-        "is_heavy_equipment": False,
-        "is_ground_vehicle": True,
-        "is_aerial": False,
-        "is_unarmed": False,
-        "Faction": "NATO",
-        "Nation": "UK",
-    },
-    
-    ("FV4201_Chieftain_Mk9_UK", 1): {  # donor unit - increment integer as needed to avoid duplicate keys
-        "GUID": "87f347d1-7532-4ac8-8856-cbf95fa29392",
-        "InfantrySquadModuleGUID": "c6bae323-a820-4eb3-b45f-c617e3162a3d",
-        "ShowroomGUID": "f26a6c58-4680-4fb2-9540-179ac933400a",
-        "CadavreGUID": "30a1f922-b453-4fbe-ac83-63be38aba866",
-        "NewName": "FV4201_Chieftain_Mk9_CMD_UK",
-        "GameName": {
-            "display": "#LDR CHIEFTAIN Mk.9 LDR.",
-            "token": "SHOVALSAYD",
-        },
-        "TagSet": {
-            "overwrite_all": [
-                "AllUnits",
-                "AllowedForMissileRoE",
-                "Char",
-                "GroundUnits",
-                "UNITE_FV4201_Chieftain_Mk9_CMD_UK",
-                "Unite",
-            ],
-        },
-        "CommandPoints": 130,
-        "SpecialtiesList": [
-            '_leader',
-            '_smoke_launcher',
-        ],
-        "Divisions": {
-            "default": {
-                "cards": 1,
-            },
-        },
-        "availability": [0, 0, 4, 0],
-        "UpgradeFromUnit": None,
-        "WeaponDescriptor": {
-            "Salves": {
-                "MMG_L37A2_7_62mm": 96,
-                "MMG_L8A2_7_62mm": 96,
-            },
+        "armor": {
+            "top": (4, None),
         },
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack', 
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 
@@ -430,6 +390,7 @@ UK_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "NATO",
         "Nation": "UK",
+        "UpgradeFromUnit": "Centurion_Mk13_CMD2_UK",
     },
     
     ("Centurion_Mk13_CMD_UK", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -477,9 +438,66 @@ UK_NEW_UNITS = {
                 "MMG_FN_MAG_7_62mm": 96,
             },
         },
+        "armor": {
+            "top": (3, None),
+        },
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack', 
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 
                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply', 'EOrderType/UseCapacite',
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "NATO",
+        "Nation": "UK",
+    },
+
+    ("FV4201_Chieftain_Mk9_UK", 1): {  # donor unit - increment integer as needed to avoid duplicate keys (This unit is a leader, not a CV)
+        "GUID": "87f347d1-7532-4ac8-8856-cbf95fa29392",
+        "InfantrySquadModuleGUID": "c6bae323-a820-4eb3-b45f-c617e3162a3d",
+        "ShowroomGUID": "f26a6c58-4680-4fb2-9540-179ac933400a",
+        "CadavreGUID": "30a1f922-b453-4fbe-ac83-63be38aba866",
+        "NewName": "FV4201_Chieftain_Mk9_CMD_UK",
+        "GameName": {
+            "display": "#LDR CHIEFTAIN Mk.9 LDR.",
+            "token": "SHOVALSAYD",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "GroundUnits",
+                "UNITE_FV4201_Chieftain_Mk9_CMD_UK",
+                "Unite",
+            ],
+        },
+        "CommandPoints": 130,
+        "SpecialtiesList": [
+            '_leader',
+            '_smoke_launcher',
+        ],
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 0, 4, 0],
+        "UpgradeFromUnit": None,
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_L37A2_7_62mm": 96,
+                "MMG_L8A2_7_62mm": 96,
+            },
+        },
+        "armor": {
+            "top": (4, None),
+        },
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack', 
+                   'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 
+                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply', 
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": False, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,
@@ -680,6 +698,130 @@ UK_NEW_UNITS = {
                 "D_UK": ["ATGMServantRight"]
             },
         }
+    },
+
+    # AA
+
+    ("Tracked_Rapier_UK", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "5e49cc1f-d394-4a13-b6a8-e73d462ec29e",
+        "InfantrySquadModuleGUID": "cd38e351-ebe0-479a-80be-7b9f02dc313f",
+        "ShowroomGUID": "336f4bed-1255-4991-a845-1cd36f149b9f",
+        "CadavreGUID": "d05c2709-4fc9-4011-9c6b-b1bccb216d7a",
+        "NewName": "Tracked_Rapier_FSA_UK", 
+        "GameName": {
+            "display": "TRACKED RAPIER LASERFIRE",
+            "token": "LLNGLALYWJ",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Canon_AA",
+                "Canon_AA_Standard",
+                "GroundUnits",
+                "UNITE_Tracked_Rapier_FSA_UK",
+                "Unite"
+            ],
+        },
+        "CommandPoints": 110,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "SpecialtiesList": [
+            "_amphibie",
+            "_smoke_launcher",
+            "good_airoptics"
+        ],
+        "Factory": "EFactory/DCA",
+        "availability": [4, 3, 0, 0],
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 220,
+            },
+            "TimeBetweenEachIdentifyRoll": 1.0,
+        },
+        "UnitRole": "AA",
+        "UpgradeFromUnit": "DCA_Rapier_FSA_UK",
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("SAM_RAPIER_salvolength8", "SAM_RAPIER_FSA_salvolength8")],
+            },
+
+        },
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack', 
+                   'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
+                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply', 
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "NATO",
+        "Nation": "UK",
+    },
+
+    ("Tracked_Rapier_UK", 1): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "82d04e00-aa94-4316-9dfa-5c9eaa1702a7",
+        "InfantrySquadModuleGUID": "764ff26e-6338-4ccb-a96c-e2e2c1028c4e",
+        "ShowroomGUID": "0471c0e7-a3ef-4a6b-a903-36e2f13bc8e2",
+        "CadavreGUID": "ea4dd6b3-24dc-4a75-9772-63014eb9df19",
+        "NewName": "Tracked_Rapier_FSB2_UK", 
+        "GameName": {
+            "display": "TRACKED RAPIER DARKFIRE",
+            "token": "FOPGJBDPVU",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Canon_AA",
+                "Canon_AA_Standard",
+                "GroundUnits",
+                "UNITE_Tracked_Rapier_FSB2_UK",
+                "Unite"
+            ],
+        },
+        "CommandPoints": 125,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "SpecialtiesList": [
+            "_amphibie",
+            "_smoke_launcher",
+            "verygood_airoptics"
+        ],
+        "Factory": "EFactory/DCA",
+        "availability": [0, 3, 2, 0],
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 300,
+            },
+            "TimeBetweenEachIdentifyRoll": 1.0,
+        },
+        "UnitRole": "AA",
+        "UpgradeFromUnit": "Tracked_Rapier_UK",
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("SAM_RAPIER_salvolength8", "SAM_RAPIER_DARKFIRE_salvolength8")],
+            },
+
+        },
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack', 
+                   'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
+                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply', 
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "NATO",
+        "Nation": "UK",
     },
 }
 # fmt: on

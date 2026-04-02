@@ -7,10 +7,12 @@ from src import ndf
 from src.constants.weapons import ammunitions
 from src.constants.weapons.vanilla_inst_modifications import AMMUNITION_REMOVALS
 from src.utils.dictionary_utils import write_dictionary_entries
+from src.utils.ndf_utils import strip_quotes
 from src.utils.logging_utils import setup_logger
 
 from .handlers import (
     add_corrected_shot_dispersion,
+    apply_category_bomb_standards,
     apply_aim_time_standards,
     apply_bomb_damage_standards,
     apply_damage_families,
@@ -95,7 +97,7 @@ def edit_gen_gp_gfx_ammunition(source_path, game_db: Dict[str, Any]) -> None:
 
                 # Apply edits
                 try:
-                    _apply_weapon_edits(base_descr, category, data, ammo_data)
+                    _apply_weapon_edits(base_descr, category, data, ammo_data, game_db, weapon_name)
                     logger.debug(f"Applied edits to {weapon_name}")
                 except Exception as e:
                     logger.error(f"Failed applying edits to {weapon_name}: {str(e)}")
@@ -167,7 +169,9 @@ def edit_gen_gp_gfx_ammunition(source_path, game_db: Dict[str, Any]) -> None:
 
                 # Track dictionary entries
                 try:
-                    _track_dictionary_entries(weapon_name, ammo_data, ingame_names, calibers)
+                    _track_dictionary_entries(
+                        weapon_name, ammo_data, ingame_names, calibers, base_descr,
+                    )
                 except Exception as e:
                     logger.error(f"Failed tracking dictionary entries for {weapon_name}: {str(e)}")
                     continue
@@ -329,7 +333,14 @@ def _create_quantity_variants(
                     logger.debug(f"Updated existing variant {namespace}")
 
 
-def _apply_weapon_edits(descr: Any, category: str, data: Dict, ammo_data: Dict) -> None:
+def _apply_weapon_edits(
+    descr: Any,
+    category: str,
+    data: Dict,
+    ammo_data: Dict,
+    game_db: Dict[str, Any],
+    weapon_name: str,
+) -> None:
     """Apply edits from ammunition data to descriptor."""
     membr = descr.v.by_m
 
@@ -392,6 +403,8 @@ def _apply_weapon_edits(descr: Any, category: str, data: Dict, ammo_data: Dict) 
         membr("InterfaceWeaponTexture").v = texture_file
         logger.debug(f"Applied texture {texture_file}")
 
+    apply_category_bomb_standards(descr, category, weapon_name, game_db, logger)
+
 
 def _apply_hit_roll_edits(descr: Any, hit_roll_data: Dict) -> None:
     """Apply hit roll edits to ammunition descriptor."""
@@ -415,10 +428,22 @@ def _apply_hit_roll_edits(descr: Any, hit_roll_data: Dict) -> None:
             hitroll_obj.add(f"DistanceToTarget = {str(hit_roll_data["DistanceToTarget"])}")
 
 
-def _track_dictionary_entries(weapon_name, ammo_data, ingame_names, calibers):
-    """Track dictionary entries for ammunition."""
-    if "display" in ammo_data and "token" in ammo_data:
-        ingame_names.append((weapon_name, ammo_data["token"], ammo_data["display"]))
+def _track_dictionary_entries(
+    weapon_name, ammo_data, ingame_names, calibers, base_descr: Any = None,
+):
+    """Track dictionary entries for ammunition.
+
+    When display is provided but token is not, uses the vanilla token from the
+    descriptor (same pattern as unit edits GameName).
+    """
+    if "display" in ammo_data:
+        token = ammo_data.get("token")
+        if token is None and base_descr is not None:
+            name_membr = base_descr.v.by_m("Name", False)
+            if name_membr is not None and name_membr.v:
+                token = strip_quotes(name_membr.v)
+        if token is not None:
+            ingame_names.append((weapon_name, token, ammo_data["display"]))
 
     if "parent_membr" in ammo_data and "Caliber" in ammo_data["parent_membr"]:
         caliber_data = ammo_data["parent_membr"]["Caliber"]

@@ -1,0 +1,29 @@
+"""Volkspolizei_DDR depiction edits."""
+
+from typing import Dict, Tuple, Union
+
+# fmt: off
+volkspolizei_ddr: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
+    "unit_name": "Volkspolizei_DDR",
+    "valid_files": ["DepictionInfantry.ndf", "WeaponDescriptor.ndf"],
+    "DepictionInfantry_ndf": {
+        ("AllWeaponAlternatives_Volkspolizei_DDR", None): { # (namespace, object type)
+            # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "add", "remove", "replace")
+            1: ("insert", [("SelectorId", "WeaponAlternative_2"),("MeshDescriptor", "RPG18")]), # (selector_id or mesh)
+            2: ("edit", [("ReferenceMeshForSkeleton", "RPG18")]),
+        },
+
+        ("AllWeaponSubDepiction_Volkspolizei_DDR", "TemplateAllSubWeaponDepiction"): {
+            "Operators": {
+                1: ("insert", [("FireEffectTag", "RocketInf_RPG18_64mm"), ("WeaponShootDataPropertyName", "WeaponShootData_0_2")]),
+            },
+        },
+
+        ("TacticDepiction_Volkspolizei_DDR_Soldier", "TemplateInfantryDepictionFactoryTactic"): {
+            "Operators": { # usually (always?) editing conditional tags submember
+                2: ("insert", [("bazooka", "WeaponAlternative_2")]),
+            },
+        },
+    },
+}
+# fmt: on

@@ -16,6 +16,24 @@ from tkinter import ttk, filedialog, messagebox
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from .constants import RANGE_MODIFIERS_TABLE
+from .damage_table_csv import (
+    DamageTableCsv,
+    default_damage_table_dir,
+    list_damage_table_csvs,
+    normalize_damage_family,
+    pick_default_csv_name,
+)
+
+# Line styles cycle by resistance level index in the selected range (not per weapon).
+RESISTANCE_LEVEL_LINE_STYLES = (
+    "-",
+    "--",
+    "-.",
+    ":",
+    (0, (8, 4)),
+    (0, (4, 2, 1, 2)),
+    (0, (12, 2, 2, 2)),
+)
 from .calculations import (
     calculate_dpm,
     calculate_accuracy,
@@ -57,6 +75,17 @@ class WeaponsTab:
         self.use_multiplicative_vet_bonus_var = tk.BooleanVar(value=True)  # Default to multiplicative
         # Track this separately from range modifier table setting - weapons tab has its own control
         
+        # Damage table (CSV) state — loaded in _initialize_data
+        self.damage_table_dir = default_damage_table_dir()
+        self.damage_table_csv = DamageTableCsv()
+        self.damage_csv_var = tk.StringVar(value="")
+        self.resistance_family_var = tk.StringVar(value="")
+        self.resistance_level_min_var = tk.StringVar(value="")
+        self.resistance_level_max_var = tk.StringVar(value="")
+        self.use_resistance_level_range_var = tk.BooleanVar(value=False)
+        self.custom_ratio_override_var = tk.BooleanVar(value=False)
+        self.custom_ratio_value_var = tk.StringVar(value="1.0")
+        
         # Chart state
         self.fig: Optional[Figure] = None
         self.ax = None
@@ -85,47 +114,284 @@ class WeaponsTab:
         # Collect bonus combinations
         self.collect_bonus_combinations()
         
-        # Update weapon dropdowns if data is already loaded
-        self.weapon_display_names = []
-        
-        # Include regular ammunition if loaded
+        self._load_damage_table_csv_ui(preferred_filename=None)
+        self._refresh_weapon_lists()
+    
+    def _custom_weapon_valid_for_current_table(self, custom_name: str) -> bool:
+        """Custom weapon appears in weapon lists only if (damage_family, damage_level) exists in the loaded CSV."""
+        if not hasattr(self.app, 'custom_weapons'):
+            return False
+        props = self.app.custom_weapons.get(custom_name)
+        if not props:
+            return False
+        df = props.get("damage_family")
+        dl = props.get("damage_level")
+        if not df or dl is None:
+            return False
+        try:
+            return self.damage_table_csv.has_damage_row(df, int(dl))
+        except (TypeError, ValueError):
+            return False
+    
+    def _build_weapon_display_names(self) -> List[str]:
+        names: List[str] = []
         if hasattr(self.app, 'ammunition_props') and self.app.ammunition_props:
             for ammo_name in sorted(self.app.ammunition_props.keys()):
-                self.weapon_display_names.append(ammo_name)
-        
-        # Add custom weapons (always include these, even if ammunition_props isn't loaded yet)
+                names.append(ammo_name)
         if hasattr(self.app, 'custom_weapons') and self.app.custom_weapons:
             for custom_name in sorted(self.app.custom_weapons.keys()):
-                if custom_name not in self.weapon_display_names:
-                    self.weapon_display_names.append(custom_name)
-        
-        # Update all existing dropdowns if we have any weapons
-        if self.weapon_display_names:
-            for dropdown in self.weapon_dropdowns:
-                if isinstance(dropdown, SearchableCombobox):
-                    dropdown.set_values(self.weapon_display_names)
-        
-        # Update bonus dropdowns
+                if self._custom_weapon_valid_for_current_table(custom_name) and custom_name not in names:
+                    names.append(custom_name)
+        return names
+    
+    def _build_load_weapon_combo_names(self) -> List[str]:
+        """Weapons available for 'Load from existing' (stock with basics + valid custom)."""
+        all_weapon_names: List[str] = []
+        if hasattr(self.app, 'ammunition_props') and self.app.ammunition_props:
+            for ammo_name in sorted(self.app.ammunition_props.keys()):
+                ammo_props = self.app.ammunition_props[ammo_name]
+                if ammo_props.get("idling") and ammo_props.get("max_range") and ammo_props.get("physical_damages"):
+                    all_weapon_names.append(ammo_name)
+        if hasattr(self.app, 'custom_weapons') and self.app.custom_weapons:
+            for custom_name in sorted(self.app.custom_weapons.keys()):
+                if self._custom_weapon_valid_for_current_table(custom_name) and custom_name not in all_weapon_names:
+                    all_weapon_names.append(custom_name)
+        return all_weapon_names
+    
+    def _refresh_weapon_lists(self):
+        """Rebuild weapon_display_names and push to dropdowns."""
+        self.weapon_display_names = self._build_weapon_display_names()
+        for dropdown in self.weapon_dropdowns:
+            if isinstance(dropdown, SearchableCombobox):
+                prior = dropdown.get()
+                dropdown.set_values(self.weapon_display_names)
+                if prior and prior in self.weapon_display_names:
+                    dropdown.set(prior)
+                elif self.weapon_display_names:
+                    dropdown.set(self.weapon_display_names[0])
         bonus_strings = self.get_bonus_display_strings()
         for bonus_combo in self.weapon_bonus_combos:
             bonus_combo.set_values(bonus_strings)
-        
-        # Update load weapon combo with ALL weapons (including vehicle weapons)
         if hasattr(self, 'load_weapon_combo'):
-            all_weapon_names = []
-            # Include all ammunition props (not filtered by damage family)
-            if hasattr(self.app, 'ammunition_props') and self.app.ammunition_props:
-                for ammo_name in sorted(self.app.ammunition_props.keys()):
-                    ammo_props = self.app.ammunition_props[ammo_name]
-                    # Only require basic properties, not damage family
-                    if ammo_props.get("idling") and ammo_props.get("max_range") and ammo_props.get("physical_damages"):
-                        all_weapon_names.append(ammo_name)
-            # Add custom weapons
-            if hasattr(self.app, 'custom_weapons') and self.app.custom_weapons:
-                for custom_name in sorted(self.app.custom_weapons.keys()):
-                    if custom_name not in all_weapon_names:
-                        all_weapon_names.append(custom_name)
-            self.load_weapon_combo.set_values(all_weapon_names)
+            self.load_weapon_combo.set_values(self._build_load_weapon_combo_names())
+        self._refresh_custom_weapon_family_level_combos()
+    
+    def _load_damage_table_csv_ui(self, preferred_filename: Optional[str]) -> None:
+        """Load CSV from disk and populate resistance + file combobox."""
+        names = list_damage_table_csvs(self.damage_table_dir)
+        if hasattr(self, 'damage_csv_combo'):
+            self.damage_csv_combo["values"] = names
+        if not names:
+            return
+        pick = preferred_filename if preferred_filename and preferred_filename in names else pick_default_csv_name(names)
+        if not pick:
+            pick = names[0]
+        try:
+            self.damage_table_csv.load_path(self.damage_table_dir / pick)
+        except (OSError, ValueError):
+            self.damage_table_csv.load_path(self.damage_table_dir / names[0])
+            pick = names[0]
+        self.damage_csv_var.set(pick)
+        fams = self.damage_table_csv.resistance_families()
+        if hasattr(self, 'damage_resistance_family_combo'):
+            self.damage_resistance_family_combo["values"] = fams
+            cur = self.resistance_family_var.get()
+            if cur not in fams:
+                if "blindage" in fams:
+                    self.resistance_family_var.set("blindage")
+                else:
+                    self.resistance_family_var.set(fams[0])
+            self._sync_resistance_level_range_combos()
+    
+    def _sync_resistance_level_range_combos(self) -> None:
+        """Populate min/max level dropdowns and default to full range for the resistance family."""
+        fam = self.resistance_family_var.get()
+        levels = self.damage_table_csv.resistance_levels_for(fam)
+        str_levels = [str(x) for x in levels]
+        if hasattr(self, 'damage_resistance_level_min_combo'):
+            self.damage_resistance_level_min_combo["values"] = str_levels
+            self.damage_resistance_level_max_combo["values"] = str_levels
+        if not str_levels:
+            self.resistance_level_min_var.set("")
+            self.resistance_level_max_var.set("")
+            return
+        cur_lo = self.resistance_level_min_var.get()
+        cur_hi = self.resistance_level_max_var.get()
+        if cur_lo not in str_levels:
+            self.resistance_level_min_var.set(str_levels[0])
+        if cur_hi not in str_levels:
+            self.resistance_level_max_var.set(str_levels[-1])
+        # Ensure min <= max (numeric)
+        try:
+            lo = int(float(self.resistance_level_min_var.get()))
+            hi = int(float(self.resistance_level_max_var.get()))
+            if lo > hi:
+                self.resistance_level_min_var.set(str(hi))
+                self.resistance_level_max_var.set(str(lo))
+        except (ValueError, TypeError):
+            self.resistance_level_min_var.set(str_levels[0])
+            self.resistance_level_max_var.set(str_levels[-1])
+        self._update_resistance_level_max_combo_state()
+    
+    def _update_resistance_level_max_combo_state(self) -> None:
+        """When not using a level range, only the min (first) dropdown applies; max is disabled."""
+        if not hasattr(self, "damage_resistance_level_max_combo"):
+            return
+        use_rng = self.use_resistance_level_range_var.get()
+        self.damage_resistance_level_max_combo.configure(state="readonly" if use_rng else "disabled")
+    
+    def _resistance_levels_in_range(self) -> List[int]:
+        """Resistance armor levels for the chart: single level (min) or [min, max] when use range is on."""
+        fam = self.resistance_family_var.get()
+        all_levels = self.damage_table_csv.resistance_levels_for(fam)
+        if not all_levels:
+            return []
+        try:
+            lo = int(float(self.resistance_level_min_var.get().strip()))
+        except (ValueError, TypeError):
+            return [all_levels[0]]
+        lo = max(lo, min(all_levels))
+        lo = min(lo, max(all_levels))
+        if not self.use_resistance_level_range_var.get():
+            return [lo] if lo in all_levels else [all_levels[0]]
+        try:
+            hi = int(float(self.resistance_level_max_var.get().strip()))
+        except (ValueError, TypeError):
+            return [lo] if lo in all_levels else [all_levels[0]]
+        if lo > hi:
+            lo, hi = hi, lo
+        lo = max(lo, min(all_levels))
+        hi = min(hi, max(all_levels))
+        return [lvl for lvl in all_levels if lo <= lvl <= hi]
+    
+    def _on_damage_csv_selected(self, event=None) -> None:
+        name = self.damage_csv_var.get()
+        if not name:
+            return
+        try:
+            self.damage_table_csv.load_path(self.damage_table_dir / name)
+        except (OSError, ValueError) as e:
+            messagebox.showerror("Error", f"Could not load damage table: {e}")
+            return
+        fams = self.damage_table_csv.resistance_families()
+        self.damage_resistance_family_combo["values"] = fams
+        if fams:
+            if "blindage" in fams:
+                self.resistance_family_var.set("blindage")
+            else:
+                self.resistance_family_var.set(fams[0])
+        self._sync_resistance_level_range_combos()
+        self._refresh_weapon_lists()
+        self.update_graph()
+        self.app.auto_save_state()
+    
+    def _reload_damage_table_csv(self) -> None:
+        """Re-read the currently selected damage table file from disk (e.g. after an external edit)."""
+        name = self.damage_csv_var.get()
+        if not name:
+            messagebox.showinfo("Damage table", "No table file selected.")
+            return
+        try:
+            self.damage_table_csv.load_path(self.damage_table_dir / name)
+        except (OSError, ValueError) as e:
+            messagebox.showerror("Error", f"Could not reload damage table: {e}")
+            return
+        fams = self.damage_table_csv.resistance_families()
+        self.damage_resistance_family_combo["values"] = fams
+        if fams:
+            cur = self.resistance_family_var.get()
+            if cur not in fams:
+                if "blindage" in fams:
+                    self.resistance_family_var.set("blindage")
+                else:
+                    self.resistance_family_var.set(fams[0])
+        self._sync_resistance_level_range_combos()
+        self._refresh_weapon_lists()
+        self.update_graph()
+        self.app.auto_save_state()
+    
+    def _on_resistance_family_selected(self, event=None) -> None:
+        self._sync_resistance_level_range_combos()
+        self.update_graph()
+        self.app.auto_save_state()
+    
+    def _on_resistance_level_range_selected(self, event=None) -> None:
+        """Keep min <= max when user changes either level bound."""
+        self._sync_resistance_level_range_combos()
+        self.update_graph()
+        self.app.auto_save_state()
+    
+    def _on_use_resistance_level_range_toggled(self) -> None:
+        self._sync_resistance_level_range_combos()
+        self.update_graph()
+        self.app.auto_save_state()
+    
+    def _on_custom_ratio_value_changed(self) -> None:
+        if self.custom_ratio_override_var.get():
+            self.update_graph()
+            self.app.auto_save_state()
+    
+    def _on_custom_damage_family_selected(self, event=None) -> None:
+        fam = self.custom_weapon_damage_family_var.get().strip()
+        if fam:
+            levels = self.damage_table_csv.damage_levels_for(fam)
+            str_levels = [str(x) for x in levels]
+            self.custom_weapon_damage_level_combo["values"] = str_levels
+            if str_levels:
+                cur = self.custom_weapon_damage_level_var.get()
+                if cur not in str_levels:
+                    self.custom_weapon_damage_level_var.set(str_levels[0])
+        else:
+            self.custom_weapon_damage_level_combo["values"] = []
+        self.update_preview()
+    
+    def _refresh_custom_weapon_family_level_combos(self) -> None:
+        """Fill damage family/level comboboxes from the current CSV."""
+        if not hasattr(self, 'custom_weapon_damage_family_combo'):
+            return
+        families = self.damage_table_csv.damage_families()
+        self.custom_weapon_damage_family_combo["values"] = families
+        if not families:
+            self.custom_weapon_damage_family_var.set("")
+            self.custom_weapon_damage_level_combo["values"] = []
+            self.custom_weapon_damage_level_var.set("")
+            return
+        cur = self.custom_weapon_damage_family_var.get().strip()
+        if cur not in families:
+            self.custom_weapon_damage_family_var.set(families[0])
+        self._on_custom_damage_family_selected()
+    
+    def _effective_damage_ratio(
+        self,
+        ammo_props: Dict[str, Any],
+        resistance_level: Optional[int] = None,
+    ) -> Tuple[float, str]:
+        """Return (multiplier, short label for UI)."""
+        if self.custom_ratio_override_var.get():
+            try:
+                v = float(self.custom_ratio_value_var.get().strip())
+                if v >= 0:
+                    return v, "custom"
+            except ValueError:
+                return 1.0, "custom (invalid)"
+            return 1.0, "custom (invalid)"
+        try:
+            rf = self.resistance_family_var.get().strip()
+            if resistance_level is not None:
+                rl = int(resistance_level)
+            else:
+                lvls = self._resistance_levels_in_range()
+                rl = int(lvls[0]) if lvls else None
+            if rl is None:
+                return 1.0, "target invalid"
+        except (ValueError, TypeError):
+            return 1.0, "target invalid"
+        df = ammo_props.get("damage_family")
+        dl = ammo_props.get("damage_level")
+        r = self.damage_table_csv.lookup(df, dl, rf, rl)
+        if r is None:
+            return 1.0, "no row (1.0)"
+        return r, "table"
     
     def on_load_weapon_selected(self, event=None):
         """Populate custom weapon fields from selected existing weapon."""
@@ -144,7 +410,21 @@ class WeaponsTab:
         self.custom_weapon_accuracy_var.set(str(ammo_props.get("idling", 0.5)))
         self.custom_weapon_damage_var.set(str(ammo_props.get("physical_damages", 10)))
         self.custom_weapon_suppress_damage_var.set(str(ammo_props.get("suppress_damages", 10)))
-        self.custom_weapon_damage_family_var.set(ammo_props.get("damage_family", ""))
+        df = ammo_props.get("damage_family") or ""
+        nf = normalize_damage_family(df)
+        fams = self.damage_table_csv.damage_families()
+        if nf in fams:
+            self.custom_weapon_damage_family_var.set(nf)
+        elif fams:
+            self.custom_weapon_damage_family_var.set(fams[0])
+        else:
+            self.custom_weapon_damage_family_var.set("")
+        dl = ammo_props.get("damage_level")
+        self._on_custom_damage_family_selected()
+        if dl is not None and self.custom_weapon_damage_level_combo["values"]:
+            sl = str(int(dl))
+            if sl in self.custom_weapon_damage_level_combo["values"]:
+                self.custom_weapon_damage_level_var.set(sl)
         self.custom_weapon_shots_per_salvo_var.set(str(ammo_props.get("shots_count_per_salvo", 1)))
         self.custom_weapon_time_between_salvos_var.set(str(ammo_props.get("time_between_salvos", 2.0)))
         
@@ -254,8 +534,20 @@ class WeaponsTab:
                 use_multiplicative_vet_bonus=use_multiplicative_vet_bonus,
             )
             
+            # Damage ratio from CSV / custom (Physical only)
+            preview_ratio = 1.0
+            if damage_type == "Physical":
+                preview_props = {
+                    "damage_family": self.custom_weapon_damage_family_var.get().strip() or None,
+                    "damage_level": None,
+                }
+                try:
+                    preview_props["damage_level"] = int(float(self.custom_weapon_damage_level_var.get().strip()))
+                except (ValueError, TypeError):
+                    preview_props["damage_level"] = None
+                preview_ratio, _ = self._effective_damage_ratio(preview_props)
             # Calculate DPM (assuming 1 weapon for preview)
-            dpm = preview_accuracy * effective_damage * shots_per_minute * 1
+            dpm = preview_accuracy * effective_damage * preview_ratio * shots_per_minute * 1
             
             # Update labels with formatted values
             self.preview_dpm_label.config(text=f"DPM: {dpm:.2f}")
@@ -288,6 +580,14 @@ class WeaponsTab:
             suppress_damage_str = self.custom_weapon_suppress_damage_var.get().strip()
             suppress_damage = float(suppress_damage_str) if suppress_damage_str else 0.0
             damage_family = self.custom_weapon_damage_family_var.get().strip()
+            damage_level_str = self.custom_weapon_damage_level_var.get().strip()
+            if not damage_family or not damage_level_str:
+                messagebox.showerror("Error", "Select a damage family and level from the current damage table.")
+                return
+            damage_level = int(float(damage_level_str))
+            if not self.damage_table_csv.has_damage_row(damage_family, damage_level):
+                messagebox.showerror("Error", "This damage family/level is not in the loaded CSV.")
+                return
             shots_per_salvo = int(self.custom_weapon_shots_per_salvo_var.get())
             time_between_salvos = float(self.custom_weapon_time_between_salvos_var.get())
             time_between_shots_str = self.custom_weapon_time_between_shots_var.get().strip()
@@ -307,6 +607,7 @@ class WeaponsTab:
                 "physical_damages": damage,
                 "suppress_damages": suppress_damage,
                 "damage_family": damage_family if damage_family else None,
+                "damage_level": damage_level,
                 "shots_count_per_salvo": shots_per_salvo,
                 "time_between_salvos": time_between_salvos,
                 "time_between_shots": time_between_shots,
@@ -349,7 +650,12 @@ class WeaponsTab:
         
         ttk.Label(dialog, text="Select weapon to edit:").pack(pady=10)
         weapon_var = tk.StringVar()
-        weapon_combo = ttk.Combobox(dialog, textvariable=weapon_var, values=list(self.app.custom_weapons.keys()), width=30, state="readonly")
+        valid_custom = [k for k in sorted(self.app.custom_weapons.keys()) if self._custom_weapon_valid_for_current_table(k)]
+        if not valid_custom:
+            dialog.destroy()
+            messagebox.showwarning("Warning", "No custom weapons valid for the current damage table.")
+            return
+        weapon_combo = ttk.Combobox(dialog, textvariable=weapon_var, values=valid_custom, width=30, state="readonly")
         weapon_combo.pack(pady=5)
         if self.app.custom_weapons:
             weapon_combo.current(0)
@@ -377,7 +683,21 @@ class WeaponsTab:
         self.custom_weapon_accuracy_var.set(str(weapon_props.get("idling", 0)))
         self.custom_weapon_damage_var.set(str(weapon_props.get("physical_damages", 0)))
         self.custom_weapon_suppress_damage_var.set(str(weapon_props.get("suppress_damages", 0)))
-        self.custom_weapon_damage_family_var.set(weapon_props.get("damage_family", ""))
+        df = weapon_props.get("damage_family", "") or ""
+        nf = normalize_damage_family(df)
+        fams = self.damage_table_csv.damage_families()
+        if nf in fams:
+            self.custom_weapon_damage_family_var.set(nf)
+        elif fams:
+            self.custom_weapon_damage_family_var.set(fams[0])
+        else:
+            self.custom_weapon_damage_family_var.set("")
+        dl = weapon_props.get("damage_level")
+        self._on_custom_damage_family_selected()
+        if dl is not None and self.custom_weapon_damage_level_combo["values"]:
+            sl = str(int(dl))
+            if sl in self.custom_weapon_damage_level_combo["values"]:
+                self.custom_weapon_damage_level_var.set(sl)
         self.custom_weapon_shots_per_salvo_var.set(str(weapon_props.get("shots_count_per_salvo", 1)))
         self.custom_weapon_time_between_salvos_var.set(str(weapon_props.get("time_between_salvos", 1.0)))
         time_between_shots = weapon_props.get("time_between_shots")
@@ -542,6 +862,62 @@ class WeaponsTab:
         damage_type_combo.pack(side=tk.LEFT, padx=(0, 2))
         damage_type_combo.bind("<<ComboboxSelected>>", lambda e: [self.update_graph(), self.app.auto_save_state()])
         
+        # Damage ratio table (CSV): target resistance + optional custom ratio override
+        dmg_tbl_frame = ttk.LabelFrame(config_section, text="Damage vs armor (CSV)", padding="2")
+        dmg_tbl_frame.pack(fill=tk.X, pady=(4, 2))
+        row_dt0 = ttk.Frame(dmg_tbl_frame)
+        row_dt0.pack(fill=tk.X, pady=1)
+        ttk.Label(row_dt0, text="Table file:").pack(side=tk.LEFT, padx=(0, 5))
+        self.damage_csv_combo = ttk.Combobox(row_dt0, textvariable=self.damage_csv_var, state="readonly", width=22)
+        self.damage_csv_combo.pack(side=tk.LEFT, fill=tk.X, expand=True)
+        self.damage_csv_combo.bind("<<ComboboxSelected>>", self._on_damage_csv_selected)
+        row_dt1 = ttk.Frame(dmg_tbl_frame)
+        row_dt1.pack(fill=tk.X, pady=1)
+        ttk.Label(row_dt1, text="Resistance:").pack(side=tk.LEFT, padx=(0, 5))
+        self.damage_resistance_family_combo = ttk.Combobox(
+            row_dt1, textvariable=self.resistance_family_var, state="readonly", width=14,
+        )
+        self.damage_resistance_family_combo.pack(side=tk.LEFT, padx=(0, 6))
+        self.damage_resistance_family_combo.bind("<<ComboboxSelected>>", self._on_resistance_family_selected)
+        ttk.Button(
+            row_dt1,
+            text="Reload table",
+            command=self._reload_damage_table_csv,
+        ).pack(side=tk.LEFT, padx=(4, 0))
+        row_dt1_levels = ttk.Frame(dmg_tbl_frame)
+        row_dt1_levels.pack(fill=tk.X, pady=1)
+        ttk.Label(row_dt1_levels, text="Level min:").pack(side=tk.LEFT, padx=(0, 4))
+        self.damage_resistance_level_min_combo = ttk.Combobox(
+            row_dt1_levels, textvariable=self.resistance_level_min_var, state="readonly", width=5,
+        )
+        self.damage_resistance_level_min_combo.pack(side=tk.LEFT, padx=(0, 8))
+        self.damage_resistance_level_min_combo.bind("<<ComboboxSelected>>", self._on_resistance_level_range_selected)
+        ttk.Label(row_dt1_levels, text="max:").pack(side=tk.LEFT, padx=(0, 4))
+        self.damage_resistance_level_max_combo = ttk.Combobox(
+            row_dt1_levels, textvariable=self.resistance_level_max_var, state="readonly", width=5,
+        )
+        self.damage_resistance_level_max_combo.pack(side=tk.LEFT, padx=(0, 8))
+        self.damage_resistance_level_max_combo.bind("<<ComboboxSelected>>", self._on_resistance_level_range_selected)
+        ttk.Checkbutton(
+            row_dt1_levels,
+            text="Use range",
+            variable=self.use_resistance_level_range_var,
+            command=self._on_use_resistance_level_range_toggled,
+        ).pack(side=tk.LEFT)
+        self._update_resistance_level_max_combo_state()
+        row_dt2 = ttk.Frame(dmg_tbl_frame)
+        row_dt2.pack(fill=tk.X, pady=1)
+        ttk.Checkbutton(
+            row_dt2,
+            text="Custom damage ratio (overrides table)",
+            variable=self.custom_ratio_override_var,
+            command=lambda: [self.update_graph(), self.app.auto_save_state()],
+        ).pack(side=tk.LEFT)
+        ttk.Label(row_dt2, text="Ratio:").pack(side=tk.LEFT, padx=(8, 4))
+        self.custom_ratio_entry = ttk.Entry(row_dt2, textvariable=self.custom_ratio_value_var, width=8)
+        self.custom_ratio_entry.pack(side=tk.LEFT)
+        self.custom_ratio_value_var.trace_add("write", lambda *a: self.app.root.after_idle(self._on_custom_ratio_value_changed))
+        
         # Generate chart button
         ttk.Button(config_section, text="Generate Chart", command=self.generate_chart).pack(fill=tk.X, pady=(5, 0))
         
@@ -637,14 +1013,24 @@ class WeaponsTab:
         self.custom_weapon_suppress_damage_var = tk.StringVar(value="10")
         ttk.Entry(row2, textvariable=self.custom_weapon_suppress_damage_var, width=10).pack(side=tk.LEFT)
         
-        # Row 2b: Damage Family (optional, can be empty for vehicle weapons)
+        # Row 2b: Damage family + level (from current CSV; ratio is looked up, not stored)
         row2b = ttk.Frame(props_frame)
         row2b.pack(fill=tk.X, pady=2)
         
         ttk.Label(row2b, text="Damage Family:", width=15).pack(side=tk.LEFT, padx=(0, 5))
         self.custom_weapon_damage_family_var = tk.StringVar(value="")
-        damage_family_entry = ttk.Entry(row2b, textvariable=self.custom_weapon_damage_family_var, width=25)
-        damage_family_entry.pack(side=tk.LEFT)
+        self.custom_weapon_damage_family_combo = ttk.Combobox(
+            row2b, textvariable=self.custom_weapon_damage_family_var, state="readonly", width=18,
+        )
+        self.custom_weapon_damage_family_combo.pack(side=tk.LEFT, padx=(0, 8))
+        self.custom_weapon_damage_family_combo.bind("<<ComboboxSelected>>", self._on_custom_damage_family_selected)
+        ttk.Label(row2b, text="Level:", width=6).pack(side=tk.LEFT, padx=(0, 4))
+        self.custom_weapon_damage_level_var = tk.StringVar(value="")
+        self.custom_weapon_damage_level_combo = ttk.Combobox(
+            row2b, textvariable=self.custom_weapon_damage_level_var, state="readonly", width=8,
+        )
+        self.custom_weapon_damage_level_combo.pack(side=tk.LEFT)
+        self.custom_weapon_damage_level_combo.bind("<<ComboboxSelected>>", lambda e: self.update_preview())
         
         # Row 3: Shots per salvo, Time between salvos, Time between shots
         row3 = ttk.Frame(props_frame)
@@ -721,6 +1107,8 @@ class WeaponsTab:
         self.custom_weapon_time_between_shots_var.trace_add("write", lambda *args: self.app.root.after_idle(self.update_preview))
         self.custom_weapon_aiming_time_var.trace_add("write", lambda *args: self.app.root.after_idle(self.update_preview))
         self.custom_weapon_ammo_per_salvo_var.trace_add("write", lambda *args: self.app.root.after_idle(self.update_preview))
+        self.custom_weapon_damage_family_var.trace_add("write", lambda *args: self.app.root.after_idle(self.update_preview))
+        self.custom_weapon_damage_level_var.trace_add("write", lambda *args: self.app.root.after_idle(self.update_preview))
         
         # Bind mouse motion for tooltips
         self.connect_hover_handler()
@@ -931,8 +1319,8 @@ class WeaponsTab:
         range_modifiers_table = self.get_current_range_modifier_table()
         table_name = self.app.current_range_modifier_table_name
         
-        # Update title with range modifier table name
-        self.ax.set_title(f"Weapon DPM Comparison (Range Modifier: {table_name})")
+        dmg_csv = self.damage_csv_var.get() or "—"
+        self.ax.set_title(f"Weapon DPM Comparison (Range: {table_name}, Damage CSV: {dmg_csv})")
         
         # Get successive hits
         self.successive_hits = self.successive_hits_var.get()
@@ -969,9 +1357,13 @@ class WeaponsTab:
             self.canvas.draw()
             return
         
-        # Generate DPM data for each weapon
+        # Generate DPM data for each weapon × resistance level in range
         colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf']
         max_chart_range = 0
+        rf_label = self.resistance_family_var.get() or "?"
+        rl_levels = self._resistance_levels_in_range()
+        if not rl_levels:
+            rl_levels = [1]
         
         for ammo_name, quantity, is_custom, veterancy_accuracy_bonus, reload_speed_multiplier, use_vanilla_range_table, dropdown_idx in selected_weapons_data:
             # Get ammunition properties
@@ -990,41 +1382,56 @@ class WeaponsTab:
             # Read checkbox value fresh each time
             use_multiplicative = self.use_multiplicative_vet_bonus_var.get()
             damage_type = self.damage_type_var.get() if hasattr(self, 'damage_type_var') else "Physical"
-            dpm_data = calculate_dpm(
-                ammo_props,
-                quantity,
-                self.successive_hits,
-                self.range_step,
-                veterancy_level=0,  # Not used when bonuses are provided directly
-                veterancy_accuracy_bonus=veterancy_accuracy_bonus,
-                reload_speed_multiplier=reload_speed_multiplier,
-                range_modifiers_table=weapon_range_table,
-                use_multiplicative_vet_bonus=use_multiplicative,
-                damage_type=damage_type
-            )
+            color = colors[dropdown_idx % len(colors)]
+            bonus_label = ""
+            if veterancy_accuracy_bonus != 0.0 or reload_speed_multiplier != 1.0:
+                bonus_parts = []
+                if veterancy_accuracy_bonus != 0.0:
+                    bonus_parts.append(f"+{veterancy_accuracy_bonus * 100:.0f}% acc")
+                if reload_speed_multiplier != 1.0:
+                    bonus_parts.append(f"{reload_speed_multiplier:.2f}x reload")
+                bonus_label = f" [{', '.join(bonus_parts)}]"
             
-            if dpm_data:
+            for level_idx, res_lvl in enumerate(rl_levels):
+                dmg_ratio, _ = self._effective_damage_ratio(ammo_props, resistance_level=res_lvl)
+                if damage_type != "Physical":
+                    dmg_ratio = 1.0
+                dpm_data = calculate_dpm(
+                    ammo_props,
+                    quantity,
+                    self.successive_hits,
+                    self.range_step,
+                    veterancy_level=0,  # Not used when bonuses are provided directly
+                    veterancy_accuracy_bonus=veterancy_accuracy_bonus,
+                    reload_speed_multiplier=reload_speed_multiplier,
+                    range_modifiers_table=weapon_range_table,
+                    use_multiplicative_vet_bonus=use_multiplicative,
+                    damage_type=damage_type,
+                    damage_ratio_multiplier=dmg_ratio,
+                )
+                
+                if not dpm_data:
+                    continue
                 ranges = [point[0] for point in dpm_data]
                 dpm_values = [point[1] for point in dpm_data]
                 
                 # Track maximum range for x-axis ticks
                 max_chart_range = max(max_chart_range, max(ranges))
                 
-                # Use dropdown index to determine color (maintains color based on position in left panel)
-                color = colors[dropdown_idx % len(colors)]
-                # Build label with bonuses if applicable
-                bonus_label = ""
-                if veterancy_accuracy_bonus != 0.0 or reload_speed_multiplier != 1.0:
-                    bonus_parts = []
-                    if veterancy_accuracy_bonus != 0.0:
-                        bonus_parts.append(f"+{veterancy_accuracy_bonus * 100:.0f}% acc")
-                    if reload_speed_multiplier != 1.0:
-                        bonus_parts.append(f"{reload_speed_multiplier:.2f}x reload")
-                    bonus_label = f" [{', '.join(bonus_parts)}]"
-                label = f"{ammo_name} (x{quantity}){bonus_label}"
-                # Use dashed line style if using vanilla range table
-                linestyle = '--' if use_vanilla_range_table else '-'
-                self.ax.plot(ranges, dpm_values, label=label, color=color, linewidth=2, linestyle=linestyle)
+                ls = RESISTANCE_LEVEL_LINE_STYLES[level_idx % len(RESISTANCE_LEVEL_LINE_STYLES)]
+                vanilla_note = " (vanilla range table)" if use_vanilla_range_table else ""
+                label = f"{ammo_name} (x{quantity}){bonus_label}{vanilla_note} · {rf_label} L{res_lvl}"
+                lw = 1.8 if use_vanilla_range_table else 2.0
+                alpha = 0.82 if use_vanilla_range_table else 1.0
+                self.ax.plot(
+                    ranges,
+                    dpm_values,
+                    label=label,
+                    color=color,
+                    linewidth=lw,
+                    linestyle=ls,
+                    alpha=alpha,
+                )
                 
                 # Store line data for marker placement
                 self.line_data[label] = list(zip(ranges, dpm_values))
@@ -1091,6 +1498,9 @@ class WeaponsTab:
                 ammo_name = dropdown.get()
                 if ammo_name and (ammo_name in self.app.ammunition_props or 
                                  (hasattr(self.app, 'custom_weapons') and ammo_name in self.app.custom_weapons)):
+                    is_visible = self.weapon_visibility_vars[i].get() if i < len(self.weapon_visibility_vars) else True
+                    if not is_visible:
+                        continue
                     quantity = self.weapon_quantity_vars[i].get() if i < len(self.weapon_quantity_vars) else 1
                     info_lines.append(f"  {ammo_name} (x{quantity})")
             
@@ -1215,15 +1625,37 @@ class WeaponsTab:
         info_lines = [
             f"Range: {range_val:.0f} m",
             "",
+            f"Damage table: {self.damage_csv_var.get() or '—'}",
+            (
+                f"Target armor: {self.resistance_family_var.get() or '—'} "
+                f"levels {self.resistance_level_min_var.get() or '—'}–{self.resistance_level_max_var.get() or '—'}"
+                if self.use_resistance_level_range_var.get()
+                else f"Target armor: {self.resistance_family_var.get() or '—'} "
+                f"level {self.resistance_level_min_var.get() or '—'}"
+            ),
+            f"Ratio mode: {'custom' if self.custom_ratio_override_var.get() else 'CSV lookup'}",
+            "",
             "Weapons at this range:",
-            ""
+            "",
         ]
+        rl_plot = self._resistance_levels_in_range()
+        if rl_plot:
+            info_lines.extend([
+                f"Plotted resistance levels: {', '.join(str(x) for x in rl_plot)}",
+                "",
+            ])
         
         range_modifiers_table = self.get_current_range_modifier_table()
+        rl_levels = self._resistance_levels_in_range()
+        if not rl_levels:
+            rl_levels = [1]
         
         for i, dropdown in enumerate(self.weapon_dropdowns):
             ammo_name = dropdown.get()
             if ammo_name:
+                is_visible = self.weapon_visibility_vars[i].get() if i < len(self.weapon_visibility_vars) else True
+                if not is_visible:
+                    continue
                 quantity = self.weapon_quantity_vars[i].get() if i < len(self.weapon_quantity_vars) else 1
                 # Get bonus values for this weapon - read directly from combo widget
                 bonus_combo = self.weapon_bonus_combos[i] if i < len(self.weapon_bonus_combos) else None
@@ -1258,55 +1690,70 @@ class WeaponsTab:
                         weapon_range_table = RANGE_MODIFIERS_TABLE if use_vanilla_range_table else range_modifiers_table
                         # Read checkbox value fresh each time
                         use_multiplicative = self.use_multiplicative_vet_bonus_var.get()
-                        accuracy = calculate_accuracy(
-                            range_val,
-                            max_range,
-                            base_accuracy,
-                            self.successive_hits,
-                            veterancy_level=0,
-                            veterancy_accuracy_bonus=veterancy_accuracy_bonus,
-                            range_modifiers_table=weapon_range_table,
-                            use_multiplicative_vet_bonus=use_multiplicative
-                        )
-                        shots_per_min = calculate_shots_per_minute(ammo_props, reload_speed_multiplier)
-                        dpm = accuracy * base_damage * shots_per_min * quantity
-                        per_weapon_dpm = dpm / quantity if quantity > 0 else 0
-                        
-                        # Calculate ammo consumption per minute
-                        shots_per_salvo = ammo_props.get("shots_count_per_salvo", 1)
-                        ammo_per_salvo = ammo_props.get("affichage_munition_par_salve", 0.0)
-                        ammo_per_min = shots_per_min * (ammo_per_salvo / shots_per_salvo) if shots_per_salvo > 0 else 0
-                        
-                        # Get additional weapon stats
-                        salvo_reload = ammo_props.get("time_between_salvos", 0.0)
-                        shot_reload = ammo_props.get("time_between_shots", None)
-                        per_weapon_damage = base_damage
-                        total_damage = base_damage * quantity if quantity > 0 else 0.0
-                        
-                        custom_label = " (custom)" if is_custom else ""
-                        bonus_label = ""
-                        if veterancy_accuracy_bonus != 0.0 or reload_speed_multiplier != 1.0:
-                            bonus_parts = []
-                            if veterancy_accuracy_bonus != 0.0:
-                                bonus_parts.append(f"Acc: +{veterancy_accuracy_bonus * 100:.1f}%")
-                            if reload_speed_multiplier != 1.0:
-                                bonus_parts.append(f"Reload: {reload_speed_multiplier:.2f}x")
-                            bonus_label = f" [{', '.join(bonus_parts)}]"
-                        
-                        info_lines.append(f"{ammo_name}{custom_label} (x{quantity}){bonus_label}:")
-                        info_lines.append(f"  DPM: {dpm:.2f} ({per_weapon_dpm:.2f} per weapon)")
-                        info_lines.append(f"  {damage_label}: {total_damage:.2f} ({per_weapon_damage:.2f} per weapon)")
-                        info_lines.append(f"  Base Accuracy: {base_accuracy * 100:.1f}%")
-                        info_lines.append(f"  Accuracy: {accuracy * 100:.1f}%")
-                        info_lines.append(f"  Shots/min: {shots_per_min:.1f} (per weapon)")
-                        info_lines.append(f"  Ammo/min: {ammo_per_min:.1f} (per weapon)")
-                        info_lines.append(f"  Shots per Salvo: {shots_per_salvo}")
-                        info_lines.append(f"  Salvo Reload: {salvo_reload:.2f}s")
-                        if shot_reload is not None:
-                            info_lines.append(f"  Shot Reload: {shot_reload:.2f}s")
-                        else:
-                            info_lines.append(f"  Shot Reload: N/A")
-                        info_lines.append("")
+                        for res_lvl in rl_levels:
+                            dmg_ratio, ratio_src = self._effective_damage_ratio(
+                                ammo_props,
+                                resistance_level=res_lvl,
+                            )
+                            if damage_type != "Physical":
+                                dmg_ratio = 1.0
+                            accuracy = calculate_accuracy(
+                                range_val,
+                                max_range,
+                                base_accuracy,
+                                self.successive_hits,
+                                veterancy_level=0,
+                                veterancy_accuracy_bonus=veterancy_accuracy_bonus,
+                                range_modifiers_table=weapon_range_table,
+                                use_multiplicative_vet_bonus=use_multiplicative
+                            )
+                            shots_per_min = calculate_shots_per_minute(ammo_props, reload_speed_multiplier)
+                            dpm = accuracy * base_damage * dmg_ratio * shots_per_min * quantity
+                            per_weapon_dpm = dpm / quantity if quantity > 0 else 0
+                            
+                            # Calculate ammo consumption per minute
+                            shots_per_salvo = ammo_props.get("shots_count_per_salvo", 1)
+                            ammo_per_salvo = ammo_props.get("affichage_munition_par_salve", 0.0)
+                            ammo_per_min = shots_per_min * (ammo_per_salvo / shots_per_salvo) if shots_per_salvo > 0 else 0
+                            
+                            # Get additional weapon stats
+                            salvo_reload = ammo_props.get("time_between_salvos", 0.0)
+                            shot_reload = ammo_props.get("time_between_shots", None)
+                            per_weapon_damage = base_damage * dmg_ratio if damage_type == "Physical" else base_damage
+                            total_damage = per_weapon_damage * quantity if quantity > 0 else 0.0
+                            df_raw = ammo_props.get("damage_family") or "—"
+                            dl_raw = ammo_props.get("damage_level")
+                            dl_str = str(dl_raw) if dl_raw is not None else "—"
+                            fam_short = normalize_damage_family(df_raw) if df_raw != "—" else "—"
+                            
+                            custom_label = " (custom)" if is_custom else ""
+                            bonus_label = ""
+                            if veterancy_accuracy_bonus != 0.0 or reload_speed_multiplier != 1.0:
+                                bonus_parts = []
+                                if veterancy_accuracy_bonus != 0.0:
+                                    bonus_parts.append(f"Acc: +{veterancy_accuracy_bonus * 100:.1f}%")
+                                if reload_speed_multiplier != 1.0:
+                                    bonus_parts.append(f"Reload: {reload_speed_multiplier:.2f}x")
+                                bonus_label = f" [{', '.join(bonus_parts)}]"
+                            
+                            info_lines.append(
+                                f"{ammo_name}{custom_label} (x{quantity}){bonus_label} · L{res_lvl}:"
+                            )
+                            info_lines.append(f"  Damage row: {fam_short} / level {dl_str}")
+                            info_lines.append(f"  Damage ratio: {dmg_ratio:.4f} ({ratio_src})")
+                            info_lines.append(f"  DPM: {dpm:.2f} ({per_weapon_dpm:.2f} per weapon)")
+                            info_lines.append(f"  {damage_label}: {total_damage:.2f} ({per_weapon_damage:.2f} per weapon effective)")
+                            info_lines.append(f"  Base Accuracy: {base_accuracy * 100:.1f}%")
+                            info_lines.append(f"  Accuracy: {accuracy * 100:.1f}%")
+                            info_lines.append(f"  Shots/min: {shots_per_min:.1f} (per weapon)")
+                            info_lines.append(f"  Ammo/min: {ammo_per_min:.1f} (per weapon)")
+                            info_lines.append(f"  Shots per Salvo: {shots_per_salvo}")
+                            info_lines.append(f"  Salvo Reload: {salvo_reload:.2f}s")
+                            if shot_reload is not None:
+                                info_lines.append(f"  Shot Reload: {shot_reload:.2f}s")
+                            else:
+                                info_lines.append(f"  Shot Reload: N/A")
+                            info_lines.append("")
         
         self.info_text.config(state=tk.NORMAL)
         self.info_text.delete('1.0', tk.END)
@@ -1353,6 +1800,13 @@ class WeaponsTab:
             "successive_hits": self.successive_hits_var.get() if hasattr(self, 'successive_hits_var') else 0,
             "use_multiplicative_vet_bonus": self.use_multiplicative_vet_bonus_var.get() if hasattr(self, 'use_multiplicative_vet_bonus_var') else True,
             "range_table": self.range_table_var.get() if hasattr(self, 'range_table_var') else "vanilla",
+            "damage_table_csv": self.damage_csv_var.get() if hasattr(self, 'damage_csv_var') else "",
+            "resistance_family": self.resistance_family_var.get() if hasattr(self, 'resistance_family_var') else "",
+            "resistance_level_min": self.resistance_level_min_var.get() if hasattr(self, 'resistance_level_min_var') else "",
+            "resistance_level_max": self.resistance_level_max_var.get() if hasattr(self, 'resistance_level_max_var') else "",
+            "use_resistance_level_range": self.use_resistance_level_range_var.get() if hasattr(self, 'use_resistance_level_range_var') else False,
+            "custom_ratio_override": self.custom_ratio_override_var.get() if hasattr(self, 'custom_ratio_override_var') else False,
+            "custom_ratio_value": self.custom_ratio_value_var.get() if hasattr(self, 'custom_ratio_value_var') else "1.0",
         }
         
         for idx, dropdown in enumerate(self.weapon_dropdowns):
@@ -1382,6 +1836,54 @@ class WeaponsTab:
         if not state:
             return
         
+        # Damage table CSV + target armor + custom ratio (before weapon rows)
+        _dmg_state_keys = (
+            "damage_table_csv", "resistance_family",
+            "resistance_level_min", "resistance_level_max", "resistance_level",
+            "use_resistance_level_range",
+            "custom_ratio_override", "custom_ratio_value",
+        )
+        if hasattr(self, 'damage_csv_var') and any(k in state for k in _dmg_state_keys):
+            csv_name = state.get("damage_table_csv")
+            if csv_name:
+                names = list_damage_table_csvs(self.damage_table_dir)
+                if csv_name in names:
+                    try:
+                        self.damage_table_csv.load_path(self.damage_table_dir / csv_name)
+                        self.damage_csv_var.set(csv_name)
+                    except (OSError, ValueError):
+                        self._load_damage_table_csv_ui(None)
+                else:
+                    self._load_damage_table_csv_ui(None)
+            else:
+                self._load_damage_table_csv_ui(None)
+            rf = state.get("resistance_family", "")
+            fams = self.damage_table_csv.resistance_families()
+            if hasattr(self, 'damage_resistance_family_combo'):
+                self.damage_resistance_family_combo["values"] = fams
+            if rf and rf in fams:
+                self.resistance_family_var.set(rf)
+            self._sync_resistance_level_range_combos()
+            str_levels = []
+            if hasattr(self, 'damage_resistance_level_min_combo'):
+                str_levels = list(self.damage_resistance_level_min_combo["values"])
+            rl_lo = state.get("resistance_level_min", "")
+            rl_hi = state.get("resistance_level_max", "")
+            if (not rl_lo or not rl_hi) and state.get("resistance_level"):
+                rl_lo = rl_hi = str(state.get("resistance_level"))
+            if rl_lo and str_levels and rl_lo in str_levels:
+                self.resistance_level_min_var.set(rl_lo)
+            if rl_hi and str_levels and rl_hi in str_levels:
+                self.resistance_level_max_var.set(rl_hi)
+            if "use_resistance_level_range" in state and hasattr(self, 'use_resistance_level_range_var'):
+                self.use_resistance_level_range_var.set(bool(state["use_resistance_level_range"]))
+            self._sync_resistance_level_range_combos()
+            if "custom_ratio_override" in state and hasattr(self, 'custom_ratio_override_var'):
+                self.custom_ratio_override_var.set(state["custom_ratio_override"])
+            if "custom_ratio_value" in state and hasattr(self, 'custom_ratio_value_var'):
+                self.custom_ratio_value_var.set(state["custom_ratio_value"])
+            self._refresh_weapon_lists()
+        
         # Load successive hits
         if "successive_hits" in state and hasattr(self, 'successive_hits_var'):
             self.successive_hits_var.set(state["successive_hits"])
@@ -1408,8 +1910,8 @@ class WeaponsTab:
             if idx < len(self.weapon_dropdowns):
                 dropdown = self.weapon_dropdowns[idx]
                 
-                # Set weapon selection
-                if weapon_name:
+                # Set weapon selection (skip if filtered out of list, e.g. invalid custom weapon)
+                if weapon_name and weapon_name in self.weapon_display_names:
                     dropdown.set(weapon_name)
                     self.on_weapon_selected(dropdown)
                 

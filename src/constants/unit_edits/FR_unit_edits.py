@@ -5,31 +5,63 @@
 # fmt: off
 fr_unit_edits = {
     # FR LOG
-    "TRM_10000_supply_FR": {
-        "GameName": {
-            "display": "TRM-10000 LOG.",
-        },
-    },
     
     "VLTT_P4_PC_FR": { # CMD P4 PC
         "CommandPoints": 145,
         "availability": [0, 4, 0, 0],
     },
-    
+
+    "VLTT_P4_PC_para_FR": { # CMD Para P4 PC
+        "CommandPoints": 145,
+        "availability": [0, 4, 0, 0],
+        "DeploymentShift": 0,
+    },
+
+    "VLTT_P4_PC_Legion_FR": { # CMD Legion P4 PC
+        "CommandPoints": 145,
+        "availability": [0, 4, 0, 0],
+    },
+
+    "M201_CMD_FR": { # CMD M201 PC
+        "CommandPoints": 145,
+        "availability": [0, 4, 0, 0],
+    },
+
     "Auverland_PC_FR": {
         "CommandPoints": 145,
         "availability": [0, 4, 0, 0],
     },
     
+    "VBL_PC_FR": {
+        "CommandPoints": 155,
+        "strength": 10,
+        "availability": [0, 0, 3, 0],
+    },
+
     "VAB_CMD_FR": {
         "CommandPoints": 155,
         "strength": 10,
+        "availability": [0, 0, 3, 0],
+    },
+
+    "AMX_13_mod56_CMD_FR": {
+        "CommandPoints": 145,
         "availability": [0, 0, 3, 0],
     },
     
     "AMX_10_PC_CMD_FR": {
         "CommandPoints": 175,
         "availability": [0, 0, 3, 0],
+    },
+
+    "Alouette_II_CMD_FR": {
+        "CommandPoints": 115,
+        "availability": [0, 3, 0, 0],
+    },
+
+    "Gazelle_CMD_FR": {
+        "CommandPoints": 115,
+        "availability": [0, 3, 0, 0],
     },
     
     "Puma_PC_FR": {
@@ -602,7 +634,7 @@ fr_unit_edits = {
     
     # FR TANK
     "AMX_30_B2_CMD_FR": {
-        "CommandPoints": 145,
+        "CommandPoints": 135,
         "GameName": {
             "display": "#LDR AMX-30 B2 LDR.",
             "token": "WFTGAGEENP",
@@ -641,6 +673,225 @@ fr_unit_edits = {
         },
         "remove_zone_capture": None,
     },
+
+    "AMX_30_B_CMD_FR": {
+        "CommandPoints": 85,
+        "GameName": {
+            "display": "#LDR AMX-30 B LDR.",
+            "token": "ZYIAQBGAXY",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "GroundUnits",
+                "UNITE_AMX_30_B_CMD_FR",
+                "Unite",
+            ],
+        },
+        "IdentifiedTextures": ["Texture_RTS_H_Armor", "Texture_Armor"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "UnitRole": "armor",
+        "SpecialtiesList": {
+            "overwrite_all": [
+                '_leader',
+                '_smoke_launcher',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Armor",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
+        "availability": [0, 0, 5, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_AANF1_7_62mm": 44,
+            },
+        },
+        "remove_zone_capture": None,
+    },
+
+    "AMX_13_75mm_CMD_FR": {
+        "CommandPoints": 50,
+        "GameName": {
+            "display": "#LDR AMX-13 T75 LDR.",
+            "token": "IMPLFERKOJ",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "GroundUnits",
+                "UNITE_AMX_13_75mm_CMD_FR",
+                "Unite",
+            ],
+        },
+        "IdentifiedTextures": ["Texture_RTS_H_Armor", "Texture_Armor"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "UnitRole": "armor",
+        "SpecialtiesList": {
+            "overwrite_all": [
+                '_leader',
+                '_smoke_launcher',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Armor",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
+        "availability": [0, 0, 6, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_AANF1_7_62mm": 44,
+            },
+        },
+        "remove_zone_capture": None,
+    },
+
+    "AMX_10_RC_CMD_FR": {
+        "CommandPoints": 120,
+        "GameName": {
+            "display": "#LDR AMX-10RC LDR.",
+            "token": "QAQVLDFWWN",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "GroundUnits",
+                "UNITE_AMX_10_RC_CMD_FR",
+                "Unite",
+            ],
+        },
+        "IdentifiedTextures": ["Texture_RTS_H_Armor", "Texture_Armor"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "UnitRole": "armor",
+        "SpecialtiesList": {
+            "overwrite_all": [
+                '_leader',
+                '_amphibie',
+                '_smoke_launcher',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Armor",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
+        "availability": [0, 0, 4, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_AANF1_7_62mm": 44,
+            },
+        },
+        "remove_zone_capture": None,
+    },
+
+    "AMX_10_RC_CMD_FR": {
+        "CommandPoints": 120,
+        "GameName": {
+            "display": "#LDR AMX-10RC LDR.",
+            "token": "QAQVLDFWWN",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "GroundUnits",
+                "UNITE_AMX_10_RC_CMD_FR",
+                "Unite",
+            ],
+        },
+        "IdentifiedTextures": ["Texture_RTS_H_Armor", "Texture_Armor"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "UnitRole": "armor",
+        "SpecialtiesList": {
+            "overwrite_all": [
+                '_leader',
+                '_amphibie',
+                '_smoke_launcher',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Armor",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
+        "availability": [0, 0, 4, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_AANF1_7_62mm": 44,
+            },
+        },
+        "remove_zone_capture": None,
+    },
+
+    "ERC_90_Sagaie_CMD_FR": {
+        "CommandPoints": 90,
+        "GameName": {
+            "display": "#LDR ERC-90 LDR.",
+            "token": "UZQEPDQLUU",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "GroundUnits",
+                "UNITE_ERC_90_Sagaie_CMD_FR",
+                "Unite",
+            ],
+        },
+        "IdentifiedTextures": ["Texture_RTS_H_Armor", "Texture_Armor"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "UnitRole": "armor",
+        "SpecialtiesList": {
+            "overwrite_all": [
+                '_leader',
+                '_amphibie',
+                '_smoke_launcher',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Armor",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
+        "availability": [0, 0, 0, 4],
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_AANF1_7_62mm": 44,
+            },
+        },
+        "remove_zone_capture": None,
+    },
+
+    "AML_90_CMD_FR": {
+        "CommandPoints": 50,
+        "GameName": {
+            "display": "#LDR AML-90 LDR.",
+            "token": "SPARKJMVEK",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "GroundUnits",
+                "UNITE_AML_90_CMD_FR",
+                "Unite",
+            ],
+        },
+        "IdentifiedTextures": ["Texture_RTS_H_Armor", "Texture_Armor"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "UnitRole": "armor",
+        "SpecialtiesList": {
+            "overwrite_all": [
+                '_leader',
+                '_smoke_launcher',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Armor",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
+        "availability": [0, 0, 6, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_AANF1_7_62mm": 44,
+            },
+        },
+        "remove_zone_capture": None,
+    },
     
     "Auverland_MILAN_FR": {
         "CommandPoints": 45,
@@ -658,10 +909,26 @@ fr_unit_edits = {
     },
 
     "VAB_Reserve_FR": {
+        "CommandPoints": 15,
+        "strength": 10,
+    },
+
+    "VAB_Legion_FR": {
+        "CommandPoints": 15,
         "strength": 10,
     },
     
     "VAB_MILAN_FR": {
+        "CommandPoints": 30,
+        "strength": 10,
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_MILAN": 6,
+            }
+        },
+    },
+
+    "VAB_MILAN_Legion_FR": {
         "CommandPoints": 30,
         "strength": 10,
         "WeaponDescriptor": {
@@ -696,6 +963,27 @@ fr_unit_edits = {
             },
         },
     },
+
+    "VIB_FR": {
+        "CommandPoints": 50,
+        "strength": 10,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "add_custom": [(0, 3, "AutoCanon_HE_T20_20mm")],
+                "replace_custom": [(0, 0, 1, "AutoCanon_AP_T20_20mm")],
+            },
+            "Salves": {
+                "DCA_1_canon_T20_20mm": 32,
+            },
+        },
+    },
+
+    "VBRG_FR": {
+        "CommandPoints": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+    },
     
     "AMX_10_P_FR": {
         "CommandPoints": 40,
@@ -718,6 +1006,13 @@ fr_unit_edits = {
         },
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'",],
+        },
+    },
+
+    "AMX_13_VCG_12_7mm_FR": {
+        "CommandPoints": 15,
+        "armor": {
+            "sides": (1, None),
         },
     },
     
@@ -746,10 +1041,35 @@ fr_unit_edits = {
             },
         },
     },
+
+    "VLTT_P4_MILAN_para_FR": {
+        "CommandPoints": 45,
+        "availability": [0, 8, 6, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_MILAN_2": 6,
+            },
+        },
+    },
+
+    "VLTT_P4_MILAN_Legion_FR": {
+        "CommandPoints": 45,
+        "availability": [0, 8, 6, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_MILAN_2": 6,
+            },
+        },
+    },
     
     "VAB_HOT_FR": {
         "CommandPoints": 75,
         "availability": [6, 4, 0, 0]
+    },
+
+    "VAB_HOT_Legion_FR": {
+        "CommandPoints": 75,
+        "availability": [0, 6, 4, 0]
     },
     
     "AMX_10_HOT_FR": {
@@ -765,9 +1085,84 @@ fr_unit_edits = {
             },
         },
     },
+
+    "AML_90_Reserve_FR": {
+        "CommandPoints": 35,
+        "availability": [12, 9, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_AANF1_7_62mm": 44,
+            },
+        },
+    },
+
+    "ERC_90_Sagaie_FR": {
+        "CommandPoints": 80,
+        "availability": [0, 10, 7, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_AANF1_7_62mm": 44,
+            },
+        },
+    },
+
+    "AMX_10_RC_tank_FR": {
+        "CommandPoints": 105,
+        "availability": [8, 6, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_AANF1_7_62mm": 44,
+            },
+        },
+    },
+
+    "AMX_10_RCR_tank_FR": {
+        "CommandPoints": 135,
+        "availability": [0, 8, 6, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_AANF1_7_62mm": 44,
+            },
+        },
+    },
     
+    "AMX_13_75mm_TCA_FR": {
+        "CommandPoints": 45,
+        "availability": [12, 9, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_AANF1_7_62mm": 44,
+            },
+        },
+    },
+
+    "AMX_13_75mm_TCM_FR": {
+        "CommandPoints": 45,
+        "availability": [12, 9, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_AANF1_7_62mm": 44,
+            },
+        },
+    },
+
+    "AMX_13_90mm_FR": {
+        "CommandPoints": 50,
+        "availability": [10, 7, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_AANF1_7_62mm": 44,
+            },
+        },
+    },
+
+    "M47_Patton_Dozer_FR": {
+        "CommandPoints": 60,
+        "availability": [10, 7, 0, 0],
+    },
+
     "AMX_30_B_FR": {
-        "CommandPoints": 70,
+        "CommandPoints": 75,
         "availability": [10, 7, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
@@ -778,17 +1173,18 @@ fr_unit_edits = {
     
     "AMX_30_B2_FR": {
         "CommandPoints": 120,
-        "availability": [0, 7, 5, 0],
+        "availability": [0, 8, 6, 0],
         "WeaponDescriptor": {
             "Salves": {
                 "MMG_AANF1_7_62mm": 44,
             },
         },
+        "UpgradeFromUnit": "AMX_30_B2_CMD_FR",
     },
     
     "AMX_30_B2_Brennus_FR": {
-        "CommandPoints": 150,
-        "availability": [0, 0, 4, 3],
+        "CommandPoints": 140,
+        "availability": [0, 0, 6, 4],
         "Divisions": {
             "default": {
                 "cards": 69,
@@ -808,6 +1204,24 @@ fr_unit_edits = {
         "CommandPoints": 20,
     },
     
+    "VLTT_P4_MG_FR": {
+        "CommandPoints": 20,
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_AANF1_7_62mm": 44,
+            },
+        },
+    },
+
+    "VLTT_P4_MG_Legion_FR": {
+        "CommandPoints": 20,
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_AANF1_7_62mm": 44,
+            },
+        },
+    },
+
     "Auverland_MG_FR": {
         "CommandPoints": 20,
         "WeaponDescriptor": {
@@ -815,6 +1229,20 @@ fr_unit_edits = {
                 "MMG_AANF1_7_62mm": 44,
             },
         },
+    },
+
+    "M201_MG_FR": {
+        "CommandPoints": 20,
+        "WeaponDescriptor": {
+            "Salves": {
+                "MMG_AA52_7_5mm": 44,
+            },
+        },
+    },
+
+    "VAB_reco_FR": {
+        "CommandPoints": 25,
+        "strength": 10,
     },
     
     "Scout_FR": {
@@ -882,6 +1310,12 @@ fr_unit_edits = {
         "strength": 10,
         "availability": [8, 0, 0, 0],
     },
+
+    "VAB_RASIT_Legion_FR": {
+        "CommandPoints": 30,
+        "strength": 10,
+        "availability": [8, 0, 0, 0],
+    },
     
     "VBL_Reco_FR": {
         "CommandPoints": 15,
@@ -892,8 +1326,44 @@ fr_unit_edits = {
         "CommandPoints": 65,
         "availability": [0, 4, 3, 0],
     },
+
+    "M201_RCL_FR": {
+        "CommandPoints": 35,
+        "availability": [8, 6, 0, 0],
+    },
+
+    "AML_60_FR": {
+        "CommandPoints": 25,
+        "availability": [0, 8, 6, 0],
+    },
     
+    "AML_60_Gendarmerie_FR": {
+        "CommandPoints": 30,
+        "availability": [0, 8, 6, 0],
+    },
+
+    "EBR_90mm_FR": {
+        "CommandPoints": 60,
+        "strength": 10,
+        "availability": [6, 0, 0, 0],
+    },
+
+    "AML_90_FR": {
+        "CommandPoints": 50,
+        "availability": [6, 4, 0, 0],
+    },
+
+    "ERC_90_Sagaie_reco_FR": {
+        "CommandPoints": 95,
+        "availability": [0, 6, 4, 0],
+    },
+
     "AMX_10_RC_FR": {
+        "CommandPoints": 135,
+        "availability": [0, 4, 3, 0],
+    },
+
+    "AMX_10_RC_Legion_FR": {
         "CommandPoints": 135,
         "availability": [0, 4, 3, 0],
     },
@@ -908,7 +1378,7 @@ fr_unit_edits = {
     },
     
     "Gazelle_reco_FR": {
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "availability": [0, 6, 0, 0],
     },
     
@@ -921,18 +1391,33 @@ fr_unit_edits = {
             },
         },
     },
+
+    "Ecureuil_reco_FR": {
+        "CommandPoints": 35,
+        "availability": [0, 6, 0, 0],
+    },
+
+    "Puma_HET_FR": {
+        "CommandPoints": 75,
+        "availability": [0, 3, 0, 0],
+    },
+
+    "Puma_Orchidee_FR": { # Exceptional Optics, 6 HP
+        "CommandPoints": 45,
+        "availability": [0, 4, 0, 0],
+    },
+
+    "CM170_Magister_FR": {
+        "CommandPoints": 65,
+        "availability": [0, 3, 2, 0],
+    },
+
+    "CL_89_FR": {
+        "CommandPoints": 60,
+        "availability": [0, 3, 0, 0],
+    },
     
     # FR AA
-    "TRM_2000_20mm_FR": {
-        "CommandPoints": 35,
-        "availability": [9, 7, 0, 0],
-    },
-    
-    "VLRA_20mm_FR": {
-        "CommandPoints": 35,
-        "availability": [9, 7, 0, 0],
-    },
-    
     "MANPAD_Mistral_FR": {
         "CommandPoints": 55,
         "armor": "Infantry_armor_reference",
@@ -943,12 +1428,220 @@ fr_unit_edits = {
             },
         },
     },
+
+    "MANPAD_Mistral_para_FR": {
+        "CommandPoints": 55,
+        "armor": "Infantry_armor_reference",
+        "availability": [0, 6, 4, 0],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("FM_FAMAS", "FM_FAMAS_noreflex")],
+            },
+        },
+    },
+
+    "MANPAD_Mistral_Legion_FR": {
+        "CommandPoints": 55,
+        "armor": "Infantry_armor_reference",
+        "availability": [0, 6, 4, 0],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("FM_FAMAS", "FM_FAMAS_noreflex")],
+            },
+        },
+    },
+
+    "DCA_M55_FR": { # Quad 50 Cal
+        "CommandPoints": 15,
+        "availability": [12, 9, 0, 0],
+        "max_speed": 6,
+        "capacities": {
+            "add_capacities": ["Deploy", "Deploy_ok"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_4_canon_Maxson_towed_12_7mm": 3,
+            },
+        },
+    },
+
+    "DCA_Bofors_L60_FR": { # L/60 40mm Bofors
+        "CommandPoints": 15,
+        "availability": [12, 0, 0, 0],
+        "max_speed": 6,
+        "capacities": {
+            "add_capacities": ["Deploy", "Deploy_ok"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_1_canon_Bofors_40mm_L60": 1,
+            },
+        },
+    },
+
+    "DCA_53T2_20mm_FR": { # 20mm AA gun for Logi Tab
+        "CommandPoints": 20,
+        "availability": [9, 7, 0, 0],
+        "max_speed": 6,
+        "Factory": "EFactory/Logistic",
+        "capacities": {
+            "add_capacities": ["Deploy", "Deploy_ok"],
+        },
+        "UpgradeFromUnit": "FOB_FR",
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_1_canon_53T2_20mm_TOWED": 60,
+            },
+        },
+    },
+
+    "DCA_53T2_20mm_Para_FR": { # Para 20mm AA gun for Logi Tab
+        "CommandPoints": 20,
+        "availability": [0, 9, 7, 0],
+        "max_speed": 6,
+        "Factory": "EFactory/Logistic",
+        "capacities": {
+            "add_capacities": ["Deploy", "Deploy_ok"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_1_canon_53T2_20mm_TOWED": 60,
+            },
+        },
+    },
+
+    "DCA_53T2_20mm_Legion_FR": { # Leigon 20mm AA gun for Logi Tab
+        "CommandPoints": 20,
+        "availability": [0, 9, 7, 0],
+        "max_speed": 6,
+        "Factory": "EFactory/Logistic",
+        "capacities": {
+            "add_capacities": ["Deploy", "Deploy_ok"],
+        },
+        "UpgradeFromUnit": "FOB_FR",
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_1_canon_53T2_20mm_TOWED": 60,
+            },
+        },
+    },
+
+    "DCA_HS831_30mm_FR": { # 30mm AA gun
+        "CommandPoints": 30,
+        "availability": [10, 7, 0, 0],
+        "max_speed": 6,
+        "capacities": {
+            "add_capacities": ["Deploy", "Deploy_ok"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canons_HS_831_30mm_TOWED": 26,
+            },
+        },
+    },
+
+    "DCA_76T2_20mm_FR": { # CERBERE Duel 20mm
+        "CommandPoints": 30,
+        "availability": [10, 7, 0, 0],
+        "max_speed": 6,
+        "capacities": {
+            "add_capacities": ["Deploy", "Deploy_ok"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_76T2_20mm": 41,
+            },
+        },
+    },
+
+    "DCA_76T2_20mm_CPA_FR": { # SF CERBERE Duel 20mm
+        "CommandPoints": 30,
+        "availability": [0, 0, 6, 4],
+        "max_speed": 6,
+        "capacities": {
+            "add_capacities": ["Deploy", "Deploy_ok"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_76T2_20mm": 41,
+            },
+        },
+    },
+
+    "TRM_2000_20mm_FR": {
+        "CommandPoints": 35,
+        "availability": [9, 7, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_1_canon_53T2_20mm": 60,
+            },
+        },
+    },
     
+    "TRM_2000_20mm_Legion_FR": {
+        "CommandPoints": 35,
+        "availability": [0, 9, 7, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_1_canon_53T2_20mm": 60,
+            },
+        },
+    },
+
+    "VLRA_20mm_FR": {
+        "CommandPoints": 35,
+        "availability": [0, 9, 7, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_1_canon_53T2_20mm": 60,
+            },
+        },
+    },
+
+    "M16_MGMC_FR": {
+        "CommandPoints": 25,
+        "availability": [10, 7, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_4_canon_Maxson_SP_12_7mm": 3,
+            },
+        },
+    },
+
     "AMX_13_DCA_FR": {
         "CommandPoints": 60,
         "availability": [6, 4, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canons_HS_831_30mm": 16,
+            },
+        },
+    },
+
+    "TRM_2000_Mistral_FR": {
+        "CommandPoints": 60,
+        "availability": [6, 4, 0, 0],
+    },
+
+    "VLRA_Mistral_FR": {
+        "CommandPoints": 60,
+        "availability": [0, 6, 4, 0],
     },
     
+    "Crotale_FR": {
+        "CommandPoints": 100,
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 220,
+            },
+            "TimeBetweenEachIdentifyRoll": 1.0,
+        },
+        "availability": [4, 3, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'good_airoptics'"],
+        },
+    },
+
     "Roland_2_FR": {
         "CommandPoints": 120,
         "optics": {
@@ -984,9 +1677,38 @@ fr_unit_edits = {
             "add_specs": ["'verygood_airoptics'"],
         },
     },  
+
+    "DCA_I_Hawk_FR": {
+        "CommandPoints": 90,
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 300,
+            },
+            "TimeBetweenEachIdentifyRoll": 1.0,
+        },
+        "availability": [4, 3, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'verygood_airoptics'"],
+        },
+    },
     # FR HELICOPTER
+
     "Super_Puma_FR": {
         "CommandPoints": 50,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+    },
+
+    "Alouette_II_trans_FR": { 
+        "CommandPoints": 35,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+    },
+
+    "Alouette_III_FR": {
+        "CommandPoints": 35,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'",],
         },
@@ -1000,7 +1722,32 @@ fr_unit_edits = {
             },
         },
     },
+
+    "Ecureuil_20mm_FR": {
+        "CommandPoints": 60,
+        "availability": [0, 8, 6, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "AutoCanon_AP_20mm_M621_GIAT": 12,
+            },
+        },
+    },
+
+    "Puma_Pirate_FR": {
+        "CommandPoints": 65,
+        "availability": [0, 7, 5, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "AutoCanon_AP_20mm_M621_GIAT": 15,
+            },
+        },
+    },
     
+    "Alouette_III_SS11_FR": {
+        "CommandPoints": 55,   
+        "availability": [7, 5, 0, 0],
+    },
+
     "Gazelle_HOT_FR": {
         "CommandPoints": 70,   
         "availability": [0, 6, 0, 0],
@@ -1011,35 +1758,61 @@ fr_unit_edits = {
         "availability": [0, 0, 4, 3],
     },
 
-    "Alouette_III_FR": {
-        "CommandPoints": 35,
-        "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'",],
-        },
-    },
-    #FR AIR
-    "Mirage_5_F_nplm_FR": {
-        "CommandPoints": 160,
-        "availability": [0, 3, 0, 0],
-    },
     
-    "Mirage_5_F_clu_FR": {
+    #FR AIR
+
+    "Alpha_Jet_E_CLU_FR": {
+        "CommandPoints": 85,
+        "availability": [0, 4, 0, 0],
+    },
+
+    "Alpha_Jet_E_FR": {
+        "CommandPoints": 95,
+        "availability": [0, 4, 0, 0],
+    },
+
+    "Alpha_Jet_E_NPLM_FR": {
+        "CommandPoints": 75,
+        "availability": [0, 4, 0, 0],
+    },
+
+    "CM170_Magister_SS11_FR": {
+        "CommandPoints": 65,
+        "availability": [0, 5, 0, 0],
+    },
+
+    "Jaguar_ATGM_FR": {
+        "CommandPoints": 150,
+        "availability": [0, 3, 2, 0],
+    },
+
+    "Jaguar_HE_FR": {
         "CommandPoints": 200,
         "availability": [0, 2, 0, 0],
     },
-    
-    "Mirage_2000_C_FR": {
-        "CommandPoints": 175,
+
+    "Jaguar_clu_FR": {
+        "CommandPoints": 205,
+        "availability": [0, 2, 0, 0],
+    },
+
+    "Jaguar_nplm_FR": {
+        "CommandPoints": 190,
+        "availability": [0, 2, 0, 0],
+    },
+
+    "Jaguar_LGB_FR": { # LGB
+        "CommandPoints": 215,
+        "availability": [0, 0, 0, 1],
+    },
+
+    "Jaguar_RKT_FR": {
+        "CommandPoints": 125,
         "availability": [0, 3, 2, 0],
     },
-    
-    "Jaguar_HE_FR": {
-        "CommandPoints": 200,
-        "availability": [0, 2, 0, 1],
-    },
-    
-    "Jaguar_ATGM_FR": {
-        "CommandPoints": 150,
+
+    "Jaguar_RKT2_FR": {
+        "CommandPoints": 125,
         "availability": [0, 3, 2, 0],
     },
     
@@ -1074,8 +1847,50 @@ fr_unit_edits = {
             },
         },
     },
+
+    "Mirage_2000_C_FR": {
+        "CommandPoints": 175,
+        "availability": [0, 3, 2, 0],
+    },
+
+    "Mirage_2000_C_RDM_AA1_FR": {
+        "CommandPoints": 140,
+        "availability": [0, 3, 2, 0],
+    },
+
+    "Mirage_2000_C_RDM_AA2_FR": {
+        "CommandPoints": 155,
+        "availability": [0, 3, 2, 0],
+    },
+
+    "Mirage_5_F_FR": {
+        "CommandPoints": 200,
+        "availability": [0, 2, 0, 0],
+    },
+
+    "Mirage_5_F_nplm_FR": {
+        "CommandPoints": 160,
+        "availability": [0, 3, 0, 0],
+    },
     
+    "Mirage_5_F_clu_FR": {
+        "CommandPoints": 200,
+        "availability": [0, 2, 0, 0],
+    },
+    
+    "Mirage_F1_C_FR": {
+        "CommandPoints": 150,
+        "availability": [0, 3, 2, 0],
+    },
+
+    "Mirage_F1_CT_FR": { # LGB bomber
+        "CommandPoints": 210,
+        "availability": [0, 0, 0, 1],
+    },
+
     "Mirage_IV_SEAD_FR": { # Martel 5250m
+        "CommandPoints": 240,
+        "availability": [0, 2, 0, 1],
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 10000.0,
@@ -1085,14 +1900,65 @@ fr_unit_edits = {
             },
         },
     },
+
+    "Mirage_IV_FR": { #
+        "CommandPoints": 230,
+        "availability": [0, 2, 0, 0],
+    },
+    
     "Mirage_III_E_FR": {
         "CommandPoints": 110,
         "strength": 10,
         "availability": [0, 4, 3, 2],
     },
-    
-    "Mirage_F1_C_FR": {
-        "CommandPoints": 150,
+
+    "Mirage_III_E_ATGM_FR": {
+        "CommandPoints": 115,
+        "strength": 10,
+        "availability": [0, 4, 3, 0],
+    },
+
+    "Mirage_III_E_SEAD_FR": {
+        "CommandPoints": 130,
+        "strength": 10,
+        "availability": [0, 2, 0, 1],
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 10000.0,
+            },
+            "OpticalStrengths": {
+                "EOpticalStrength/AntiRadar": 5000.0,
+            },
+        },
+    },
+
+    "F8P_Crusader_FR": {
+        "CommandPoints": 75,
+        "availability": [0, 0, 4, 3],
+    },
+
+    "F8P_Crusader_AA2_FR": {
+        "CommandPoints": 85,
+        "availability": [0, 0, 4, 3],
+    },
+
+    "Super_Etendard_AT_FR": {
+        "CommandPoints": 170,
+        "availability": [0, 2, 0, 1],
+    },
+
+    "Super_Etendard_CLU_FR": {
+        "CommandPoints": 210,
+        "availability": [0, 2, 0, 0],
+    },
+
+    "Super_Etendard_HE_FR": {
+        "CommandPoints": 225,
+        "availability": [0, 2, 0, 0],
+    },
+
+    "Super_Etendard_FR": {
+        "CommandPoints": 125,
         "availability": [0, 3, 2, 0],
     },
 }

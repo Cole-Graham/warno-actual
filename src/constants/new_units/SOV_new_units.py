@@ -233,6 +233,9 @@ SOV_NEW_UNITS = {
         },
         "Factory": "EFactory/Logistic",
         "CommandPoints": 265,
+        "armor": {
+            "top": (3, None),
+        },
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
             'leader_sov',
@@ -282,6 +285,9 @@ SOV_NEW_UNITS = {
         },
         "Factory": "EFactory/Logistic",
         "CommandPoints": 265,
+        "armor": {
+            "top": (3, None),
+        },
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
             'leader_sov',
@@ -299,6 +305,7 @@ SOV_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "PACT",
         "Nation": "SOV",
+        "UpgradeFromUnit": "T55A_CMD2_SOV",
     },
 
     ("T64B_CMD_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -322,6 +329,9 @@ SOV_NEW_UNITS = {
         },
         "Factory": "EFactory/Logistic",
         "CommandPoints": 320,
+        "armor": {
+            "top": (3, None),
+        },
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
             'leader_sov',
@@ -339,6 +349,7 @@ SOV_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "PACT",
         "Nation": "SOV",
+        "UpgradeFromUnit": "T62M_CMD2_SOV",
     },
 
     ("T72M1_CMD_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -362,6 +373,9 @@ SOV_NEW_UNITS = {
         },
         "Factory": "EFactory/Logistic",
         "CommandPoints": 310,
+        "armor": {
+            "top": (3, None),
+        },
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
             'leader_sov',
@@ -379,6 +393,7 @@ SOV_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "PACT",
         "Nation": "SOV",
+        "UpgradeFromUnit": "T64B_CMD2_SOV",
     },
 
     ("T72B_CMD_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -402,6 +417,9 @@ SOV_NEW_UNITS = {
         },
         "Factory": "EFactory/Logistic",
         "CommandPoints": 355,
+        "armor": {
+            "top": (4, None),
+        },
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
             'leader_sov',
@@ -445,6 +463,7 @@ SOV_NEW_UNITS = {
         "Factory": "EFactory/Logistic",
         "armor": {
             "front": (18, None),
+            "top": (4, None),
         },
         "CommandPoints": 355,
         "UnitRole": 'hq_tank',
@@ -483,6 +502,7 @@ SOV_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "PACT",
         "Nation": "SOV",
+        "UpgradeFromUnit": "T72B_CMD2_SOV",
     },
     # MT-LBu
     ("MTLB_CMD_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys

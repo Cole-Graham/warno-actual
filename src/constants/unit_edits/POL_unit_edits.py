@@ -25,6 +25,11 @@ pol_unit_edits = {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
         "UpgradeFromUnit": "FOB_POL",
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_ZU23_2_23mm_TOWED": 31,
+            },
+        },
     },
     
     "DCA_ZU_23_2_Para_POL": {  # Desant. ZU-23-2
@@ -51,6 +56,11 @@ pol_unit_edits = {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
         # "UpgradeFromUnit": "FOB_POL",  # no fob in korpus
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_ZU23_2_23mm_TOWED": 31,
+            },
+        },
     },
     
     "DCA_ZUR_23_2S_JOD_POL": {  # ZUR-23-2S Jod
@@ -71,6 +81,11 @@ pol_unit_edits = {
         "availability": [9, 7, 0, 0],
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_Jod_towed_23mm": 31,
+            },
         },
     },
     
@@ -97,6 +112,11 @@ pol_unit_edits = {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
         "UpgradeFromUnit": "DCA_ZU_23_2_Para_POL",
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_Jod_towed_23mm": 31,
+            },
+        },
     },
     
     "UAZ_469_CMD_POL": {  # WD-43
@@ -243,6 +263,7 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
+                "FM_kbk_AK": 9,
                 "MMG_PKM_7_62mm": 36,
             },
             "equipmentchanges": {
@@ -393,7 +414,7 @@ pol_unit_edits = {
         "UnitRole": "infantry",
         "SpecialtiesList": {
             "overwrite_all": [
-                '_leader',
+                'leader_sov',
                 '_sf',
                 '_choc',
                 'infantry_equip_medium',
@@ -403,6 +424,7 @@ pol_unit_edits = {
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
         "WeaponDescriptor": {
             "Salves": {
+                "PM_PM63_RAK": 22,
                 "RocketInf_RPG7VL": 6,
             },
         },
@@ -437,7 +459,7 @@ pol_unit_edits = {
         "UnitRole": "infantry",
         "SpecialtiesList": {
             "overwrite_all": [
-                '_leader',
+                'leader_sov',
                 '_sf',
                 '_choc',
                 '_para',
@@ -452,12 +474,13 @@ pol_unit_edits = {
                     "PM_PM63_RAK": 8,
                     "Grenade_Satchel_Charge": 1,
                 },
-                "replace": [("FM_Tantal", "PM_PM63_RAK"),
-                        ("MMG_PKM_7_62mm", "Grenade_Satchel_Charge"),
-                        ("RocketInf_RPG7", "RocketInf_RPG76_Komar")],
+                "replace": [("FM_Tantal", "PM_PM63_RAK", "FM_Tantal", "PM_PM63_RAK"),
+                        ("MMG_PKM_7_62mm", "Grenade_Satchel_Charge", "MMG_PKM_7_62mm", "Grenade_Satchel_Charge"),
+                        ("RocketInf_RPG7", "RocketInf_RPG76_Komar", "RocketInf_RPG7", "RocketInf_RPG76_Komar")],
             },
             "Salves": {
-                "Grenade_Satchel_Charge": 5,
+                "PM_PM63_RAK": 22,
+                "Grenade_Satchel_Charge": 6,
                 "RocketInf_RPG76_Komar": 8,
             },
         },
@@ -511,6 +534,7 @@ pol_unit_edits = {
             },
             "Salves": {
                 "RocketInf_RPG7": 6,
+                "FM_kbk_AK": 9,
             },
         },
         "selector_tactic": "(2, 4)",
@@ -518,7 +542,7 @@ pol_unit_edits = {
         "remove_zone_capture": None,
     },
 
-     "Para_CMD_POL": {  # Dow. SPADOCHRONIARZE 
+    "Para_CMD_POL": {  # Dow. SPADOCHRONIARZE 
         "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
@@ -557,9 +581,7 @@ pol_unit_edits = {
                 "quantity": {
                     "FM_kbk_AK": 7,
                 },
-                "replace": [
-                    ("FM_kbk_AKM", "FM_kbk_AK"),
-                ],
+                "replace": [("FM_kbk_AKM", "FM_Tantal")]
             },
             "Salves": {
                 "RocketInf_RPG7": 6,
@@ -623,11 +645,12 @@ pol_unit_edits = {
                         "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
                     },
                 },
-                },
-                "Salves": {
-                    "insert": [(2, 6)],
-                },
             },
+            "Salves": {
+                "insert": [(2, 6)],
+                "FM_kbk_AK": 9,
+            },
+        },
         "selector_tactic": "(2, 4)",
         "selector_tactic_obj": "02_04",
         "remove_zone_capture": None,
@@ -648,6 +671,12 @@ pol_unit_edits = {
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_kbk_AK": 9,
+                "Grenade_Satchel_Charge": 6,
+            },
         },
         "UpgradeFromUnit": "Engineers_CMD_POL",
         # "WeaponDescriptor": {
@@ -681,7 +710,7 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_kbk_AK": 11,  # 7 mags per soldier bc heavy
+                "FM_kbk_AK": 9,  # 7 mags per soldier bc heavy
                 "MMG_PKM_7_62mm": 36,
             },
         },
@@ -845,7 +874,13 @@ pol_unit_edits = {
         },
          "WeaponDescriptor": {
              "equipmentchanges": {
-                "replace": [("RocketInf_RPG7", "RocketInf_RPG7VL")],
+                "replace": [
+                    ("FM_kbk_AKM", "FM_Tantal"), ("SAW_RPK_7_62mm", "SAW_RPK_74_5_56mm", "SAW_RPK_7_62mm", "SAW_RPK_74_5_56mm"), ("RocketInf_RPG7", "RocketInf_RPG7VL", "RocketInf_RPG7", "RocketInf_RPG7VL")
+                ],
+            },
+            "Salves": {
+                "FM_kbk_AKM": 11,
+                "SAW_RPK_7_62mm": 24,
             },
         },
         # 7x kbk AKM
@@ -862,6 +897,15 @@ pol_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("FM_kbk_AKM", "FM_Tantal"), ("SAW_RPK_7_62mm", "SAW_RPK_74_5_56mm", "SAW_RPK_7_62mm", "SAW_RPK_74_5_56mm")],
+            },
+            "Salves": {
+                "FM_kbk_AKM": 11,
+                "SAW_RPK_7_62mm": 24,
+            },
+        },
         # 8x kbk AKM
         # 1x RPK
         # Metis x6
@@ -877,7 +921,9 @@ pol_unit_edits = {
         },
          "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("RocketInf_RPG76_Komar", "RocketInf_RPG7")],
+                "replace": [
+                    ("FM_kbk_AKM", "FM_Tantal"), ("RocketInf_RPG76_Komar", "RocketInf_RPG7", "RocketInf_RPG76_Komar", "RocketInf_RPG7")
+                ],
             },
             "Salves": {
                 "RocketInf_RPG7": 6,
@@ -917,6 +963,8 @@ pol_unit_edits = {
             },
             "Salves": {
                 "insert": [(3, 6)],
+                "FM_kbk_AK": 9,
+                "Grenade_Satchel_Charge": 6,
             },
         },
         "GameName": {
@@ -948,7 +996,7 @@ pol_unit_edits = {
             },
             "Salves": {
                 "FM_kbk_AK": 9,
-                "flamethrower_LPO": 120,
+                "flamethrower_LPO": 30,
             },
         },
         "GameName": {
@@ -979,9 +1027,7 @@ pol_unit_edits = {
         },
         "UpgradeFromUnit": "Commandos_Para_CMD_POL",
     },
-    
-    
-    
+        
     "WSW_POL": {  # WSW
         "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
@@ -995,6 +1041,13 @@ pol_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_kbk_AK": 9,
+                "PM_PM63_RAK": 22,
+                "SAW_RPK_7_62mm": 24,
+            },
+        },
     },
     
     "Para_Security_POL": {  # Desant. Ochrona
@@ -1004,6 +1057,15 @@ pol_unit_edits = {
         "availability": [0, 6, 4, 0],
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("FM_kbk_AKM", "FM_kbk_AK"), ("SAW_RPK_74_5_56mm","SAW_RPK_7_62mm", "SAW_RPK_74_5_56mm","SAW_RPK_7_62mm")],
+            },
+            "Salves": {
+                "FM_kbk_AK": 9,
+                "SAW_RPK_74_5_56mm": 29,
+            },
         },
         "GameName": {
             "display": "SPADO. OCHRONA",
@@ -1016,10 +1078,15 @@ pol_unit_edits = {
         "max_speed": 26,
         "availability": [12, 0, 0, 0],
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_light'"],
+            "add_specs": ["'infantry_equip_medium'"],
         },
         "GameName": {
             "display": "REZERWIŚCI"
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_kbk_AK": 9,
+            },
         },
     },
     
@@ -1046,7 +1113,7 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("Ammo_Canon_HEAT_73_mm_SPG9_TOWED", "Ammo_Canon_HEAT_73_mm_SPG9D_TOWED")],
+                "replace": [("Canon_HEAT_73_mm_SPG9_TOWED", "Canon_HEAT_73_mm_SPG9D_TOWED")],
             },
         },
     },
@@ -1293,19 +1360,6 @@ pol_unit_edits = {
          "GameName": {
             "display": "M wz.43 160mm",
         },
-        "TagSet": {
-            "overwrite_all": [
-                 "AllUnits",
-                "AllowedForMissileRoE",
-                "Artillerie",
-                "Artillerie_Courte_Portee",
-                "CanBeAirlifted",
-                "GroundUnits",
-                "UNITE_Mortier_M43_160mm_POL",
-                "Unite",
-                "Unite_transportable"
-            ],
-        },
     },
 
     "Mortier_PM43_120mm_POL": {  # M wz.43 120mm
@@ -1450,7 +1504,7 @@ pol_unit_edits = {
     },
     
     "RM70_85_POL": {
-        "CommandPoints": "MFRW_RM70_DDR",
+        "CommandPoints": 240,
         "GameName": {
             "display": "RM wz. 70/85"
         },
@@ -1459,7 +1513,7 @@ pol_unit_edits = {
                 "replace": [("RocketArt_M21OF_122mm", "RocketArt_M21OF_122mm_RM70")],
             },
         },
-        "availability": "MFRW_RM70_DDR",
+        "availability": [0, 2, 0, 1],
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1657,6 +1711,9 @@ pol_unit_edits = {
     
     "T72M_CMD_POL": {  # T-72MD LDR
         "CommandPoints": 165,
+        "armor": {
+            "top": (2, None),
+        },
         "GameName": {
             "display": "#LDRSOV T-72MD LDR.",
             "token": "POLTSTMLDR",
@@ -1692,6 +1749,9 @@ pol_unit_edits = {
     
     "T72M1_CMD_POL": {  # T-72M1D LDR
         "CommandPoints": 195,
+        "armor": {
+            "top": (3, None),
+        },
         "GameName": {
             "display": "#LDRSOV T-72M1D LDR.",
             "token": "POLTSTMOLD",
@@ -1854,11 +1914,17 @@ pol_unit_edits = {
     
     "T72M_POL": {  # T-72M
         "CommandPoints": 140,
+        "armor": {
+            "top": (2, None),
+        },
         "availability": [8, 6, 0, 0],
     },
     
     "T72M1_POL": {  # T-72M1
         "CommandPoints": 175,
+        "armor": {
+            "top": (3, None),
+        },
         "availability": [0, 6, 4, 0],
         "Divisions": {
             "default": {
@@ -1869,6 +1935,9 @@ pol_unit_edits = {
     
     "T72M1_Wilk_POL": {  # T-72M2 Wilk
         "CommandPoints": 195,
+        "armor": {
+            "top": (4, None),
+        },
         "availability": [0, 0, 4, 3],
         "SpecialtiesList": {
             "overwrite_all": ['_era', '_smoke_launcher', '_smoke_launcher'],
@@ -1895,7 +1964,7 @@ pol_unit_edits = {
         "availability": [14, 11, 0, 0],
     },
 
-     "PT76B_tank_Naval_POL": {  # NIEB.BERETY PT-76B
+    "PT76B_tank_Naval_POL": {  # NIEB.BERETY PT-76B
         "CommandPoints": 25,
         "availability": [0, 14, 11, 0],
     },
@@ -1993,6 +2062,16 @@ pol_unit_edits = {
         "is_prime_mover": True,
     },
 
+    "OT_62_TOPAS_POL": {  # TOPAS-2
+        "CommandPoints": 15,
+        "orders": {
+            "add_orders": ["EOrderType/Sell"],
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+    },
+
     "OT_62_TOPAS_2AP_POL": {  # TOPAS-2AP
         "CommandPoints": 20,
         "capacities": {
@@ -2051,6 +2130,9 @@ pol_unit_edits = {
                     "FM_kbk_AK": 7,
                 },
             },
+            "Salves": {
+                "FM_kbk_AK": 9,
+            },
         },
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -2072,6 +2154,11 @@ pol_unit_edits = {
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_kbk_AK": 9,
+            },
         },
     },
     
@@ -2097,7 +2184,7 @@ pol_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_kbk_AK": 9,
-                "PM_PM63_RAK": 9,
+                "PM_PM63_RAK": 22,
                 "RocketInf_RPG7": 4,
             },
         },
@@ -2116,39 +2203,68 @@ pol_unit_edits = {
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "quantity": {
-                    "FM_kbk_AKM": 5,
+                    "FM_kbk_AK": 5,
                 },
-                "replace": [("FM_kbk_AKM", "FM_kbk_AK")],
-                "insert": [(1, "Sniper_SVD_Dragunov")], # (turret, weapon)
+                "replace": [
+                    ("FM_kbk_AKM", "FM_Tantal"),
+                    ("RocketInf_RPG76_Komar", "Sniper_SVD_Dragunov", "RocketInf_RPG76_Komar", "Sniper_SVD_Dragunov")
+                ],
+                "insert": [(2, "RocketInf_RPG76_Komar")], # (turret, weapon)
                 "insert_edits": {
-                    1: {
+                    2: {
                         "turret_edits": {
-                            "YulBoneOrdinal": 2,
+                            "YulBoneOrdinal": 3,
                         },
-                        "AmmoBoxIndex": 1,
-                        "HandheldEquipmentKey": "'WeaponAlternative_2'",
-                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
-                        "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
-                        "WeaponShootDataPropertyName": ["WeaponShootData_0_2"],
+                        "AmmoBoxIndex": 2,
+                        "HandheldEquipmentKey": "'WeaponAlternative_3'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
                     },
                 },
+            },
+            "Salves": {
+                "FM_kbk_AK": 11,
+                "Sniper_SVD_Dragunov": 10,
+                "insert": [(2, 6)],
             },
         },
     },
 
-     "Sniper_paras_POL": {  # Desant. Snajper
+    "Sniper_POL": {  # Snajper
+        "CommandPoints": 25,
+        "armor": "Infantry_armor_reference",
+        "WeaponDescriptor": {
+            "Salves": {
+                "PM_PM63_RAK": 22,
+            },
+        },
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'", "'_swift'"],
+        },
+    },
+
+    "Sniper_paras_POL": {  # Desant. Snajper
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "strength": 3,
         "GameName": {
             "display": "#RECO2 SPADO. SNAJPER",
         },
-         "WeaponDescriptor": {
+        "WeaponDescriptor": {
             "equipmentchanges": {
                 "quantity": {
                     "Sniper_SVD_Dragunov": 2,
                 },
             },
+            "Salves": {
+                "PM_PM63_RAK": 22,
+            },
+        },
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
     },
     
@@ -2169,6 +2285,7 @@ pol_unit_edits = {
                 },
             },
             "Salves": {
+                "PM_PM63_RAK": 22,
                 "RocketInf_RPG76_Komar": 4,
             },
         },
@@ -2185,6 +2302,7 @@ pol_unit_edits = {
             "display": "#RECO2 ROZP. SPECJALNE [GSR]",
         },
         "availability": [0, 0, 4, 3],
+        "UpgradeFromUnit": "Scout_SF_POL",
     },
     
     "Scout_LRRP_Para_POL": {  # Desant. Rozp. Specjalne [GSR]
@@ -2196,6 +2314,11 @@ pol_unit_edits = {
         },
         "GameName": {
             "display": "#RECO2 SPADO. ROZP. [GSR]",
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "PM_PM63_RAK": 22,
+            },
         },
     },
     
@@ -2209,8 +2332,8 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_Tantal": 9,
-                "PM_PM63_RAK": 9,
+                "FM_Tantal": 11,
+                "PM_PM63_RAK": 22,
                 "RocketInf_RPG7VL": 4,
             },
         },
@@ -2230,6 +2353,7 @@ pol_unit_edits = {
     "BRDM_1_DShK_POL": {
         "CommandPoints": 30,
         "availability": [12, 9, 0, 0],
+        "UpgradeFromUnit": "BRDM_2_POL",
     },
     
     "BRDM_1_PSNR1_POL": {  # BRDM-1 PSNR-1
@@ -2293,11 +2417,17 @@ pol_unit_edits = {
     },
     
     "OT_65_POL": {  # OT-65
-        "CommandPoints": 15,
         "GameName": {
             "display": "#RECO1 OT-65",
         },
         "UpgradeFromUnit": "BRDM_1_POL",
+        "CommandPoints": 15,
+        "orders": {
+            "add_orders": ["EOrderType/Sell"],
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
     },
     
     "MTLB_TRI_Hors_POL": {  # TRI Hors
@@ -2320,10 +2450,10 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_kbk_AK", "FM_kbk_AK_noreflex")],
+                "replace": [("FM_kbk_AK", "FM_kbk_AK_noreflex")]
             },
             "Salves": {
-                "FM_kbk_AK": 11,
+                "FM_kbk_AK_noreflex": 9,
             },
         },
     },
@@ -2340,7 +2470,7 @@ pol_unit_edits = {
                 "replace": [("FM_kbk_AK", "FM_kbk_AK_noreflex")],
             },
             "Salves": {
-                "FM_kbk_AK": 11,
+                "FM_kbk_AK": 9,
             },
         },
         "GameName": {
@@ -2357,14 +2487,28 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_kbk_AK", "FM_kbk_AK_noreflex")],
+                "replace": [("FM_kbk_AKM", "FM_kbk_AK")],
             },
             "Salves": {
-                "FM_kbk_AK": 11,
+                "FM_kbk_AK": 9,
             },
         },
         "GameName": {
             "display": "SPADO. STRZAŁA-2M",
+        },
+    },
+
+    "DCA_ZPU4_POL": {
+        "CommandPoints": 20,
+        "availability": [12, 9, 0, 0],
+        "max_speed": 6,
+        "capacities": {
+            "add_capacities": ["Deploy", "Deploy_ok"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_4_canon_ZPU4_towed_14_5mm": 160,
+            },
         },
     },
     
@@ -2375,6 +2519,11 @@ pol_unit_edits = {
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_1_canon_S60_57mm": 1,
+            },
+        },
     },
     
     "Hibneryt_POL": {  # Hibneryt
@@ -2382,7 +2531,7 @@ pol_unit_edits = {
         "availability": [7, 5, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_2_canon_ZU23_2_23mm": 18,
+                "DCA_2_canon_ZU23_2_23mm": 20,
             },
         },
     },
@@ -2392,7 +2541,7 @@ pol_unit_edits = {
         "availability": [6, 4, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_2_canon_Jod_SP_23mm": 18,
+                "DCA_2_canon_Jod_SP_23mm": 20,
             },
         },
     },
@@ -2451,6 +2600,11 @@ pol_unit_edits = {
         },
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_4_canons_AZP_23_Amur_23mm_late": 67,
+            },
         },
     },
     
@@ -2651,21 +2805,21 @@ pol_unit_edits = {
     },
     
     "MiG_21bis_POL": {  # 4x R-60M, 2x R-13M - MiG-21bis [AA2]
-        "CommandPoints": "MiG_21bis_AA2_DDR",
-        "availability": "MiG_21bis_AA2_DDR",
+        "CommandPoints": 110,
+        "availability": [0, 4, 3, 2],
         "GameName": {
             "display": "MiG-21bis [AA]"
         },
     },
     
     "MiG_21bis_HE_POL": {  # MiG-21bis [HE]
-        "CommandPoints": "MiG_21bis_HE_DDR",
-        "availability": "MiG_21bis_HE_DDR",
+        "CommandPoints": 135,
+        "availability": [0, 4, 0, 0],
     },
     
     "MiG_21bis_RKT2_POL": {  # 4x S-24 [RKT2]
-        "CommandPoints": "MiG_21bis_RKT2_DDR",
-        "availability": "MiG_21bis_RKT2_DDR",
+        "CommandPoints": 100,
+        "availability": [0, 4, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
                 "RocketAir_S24_240mm_avion_salvolength4": (1, True),
@@ -2683,12 +2837,13 @@ pol_unit_edits = {
     "MiG_21bis_AT_POL": {  # 2x Kh-66, 2x R-13M
         "CommandPoints": 115,
         "availability": [0, 3, 0, 0],
+        "UpgradeFromUnit": "MiG_21bis_HE_POL",
     },
     
     "MiG_23MF_AA_POL": {  # MiG-23MF [AA], 2x R-23R, 4x R-60M
-        "CommandPoints": "MiG_23MF_AA_DDR",
-        "availability": "MiG_23MF_AA_DDR",
-        "ECM": "MiG_23MF_AA_DDR",
+        "CommandPoints": 115,
+        "availability": [0, 4, 3, 2],
+        "ECM": -0.20,
     },
     
     "MiG_23MF_AA2_POL": {  # MiG-23MF [AA2], 2x R-3R, 2x R-13M
@@ -2719,7 +2874,7 @@ pol_unit_edits = {
         "GameName": {
             "display": "MiG-29A [AA2]",
         },
-        "CommandPoints": 170,
+        "CommandPoints": 165,
         "availability": [0, 3, 2, 0],
     },
     
@@ -2729,8 +2884,8 @@ pol_unit_edits = {
     },
     
     "Su_22_POL": {
-        "CommandPoints": "Su_22_DDR",
-        "availability": "Su_22_DDR",
+        "CommandPoints": 215,
+        "availability": [0, 2, 0, 0],
     },
 
     "Su_22_nplm_POL": {  # 4x ZB-500, 2x R-60M
@@ -2745,7 +2900,7 @@ pol_unit_edits = {
     
     "Su_22_AT_POL": {  # Su-22M4 Seria 30
         "CommandPoints": "Su_22_AT_SOV",
-        "availability": "Su_22_AT_SOV",
+        "availability": [0, 2, 0, 1],
         "WeaponDescriptor": {
             "Salves": {
                 "AGM_Kh29T": 1,
@@ -2779,6 +2934,14 @@ pol_unit_edits = {
         "availability": [0, 3, 2, 0],
         "GameName": {
             "display": "SU-22M4 [RKT2]",
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "RocketAir_B8_80mm_salvolength40": 2,
+            },
+            "equipmentchanges": {
+                "replace": [("RocketAir_B8_80mm_salvolength80", "RocketAir_B8_80mm_salvolength40")],
+            },
         },
     },
     

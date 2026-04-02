@@ -13,11 +13,25 @@ from .POL_depiction_edits import (
     mortier_2b9_vasilek_para_pol,
 )
 from .RDA_depiction_edits import (
+    fallschirmjager_cmd_ddr,
+    fallschirmjager_falseflag_cmd_ddr,
+    grenzer_flam_ddr,
+    grenzer_mot_ddr,
     kda_cmd_ddr,
+    luftsturmjager_cmd_ddr,
+    luftsturmjager_ddr,
+    luftsturmjager_metis_ddr,
     mi_24p_s8_at_ddr,
     mi_24p_s8_at2_ddr,
+    sniper_fj_ddr,
+    volkspolizei_cmd_ddr,
+    volkspolizei_ddr,
 )
 from .RFA_depiction_edits import (
+    engineers_geb_rfa_rfa,
+    gebirgsjager_jagdkdo_rfa,
+    gebirgsjager_pzf3_rfa,
+    sniper_fern_rfa,
     unimog_s_404_rfa,
 )
 from .SOV_depiction_edits import (
@@ -28,6 +42,7 @@ from .SOV_depiction_edits import (
     motrifles_btr_ttsko_sov,
     mtlb_vasilek_sov,
     sniper_spetsnaz_sov,
+    su_24m_clu_sov,
 )
 from .UK_depiction_edits import (
     airmobile_mot_cmd_uk,
@@ -43,10 +58,12 @@ from .USA_depiction_edits import (
     airborne_engineers_flash_us,
     airborne_half_dragon_us,
     engineer_cmd_us,
+    f4e_phantom_ii_cbu_us,
     f4e_phantom_ii_napalm_us,
     f15e_strikeeagle_us,
     f16e_napalm_us,
     f111e_aardvark_napalm_us,
+    # f111f_aardvark_cbu_us,
     f111f_aardvark_napalm_us,
     groupe_at_us,
     m3a1_bradley_cfv_us,
@@ -74,11 +91,25 @@ __all__ = [
     "mortier_2b9_vasilek_para_pol",
     
     # RDA
+    "fallschirmjager_cmd_ddr",
+    "fallschirmjager_falseflag_cmd_ddr",
+    "grenzer_flam_ddr",
+    "grenzer_mot_ddr",
     "kda_cmd_ddr",
+    "luftsturmjager_cmd_ddr",
+    "luftsturmjager_ddr",
+    "luftsturmjager_metis_ddr",
     "mi_24p_s8_at_ddr",
     "mi_24p_s8_at2_ddr",
+    "sniper_fj_ddr",
+    "volkspolizei_cmd_ddr",
+    "volkspolizei_ddr",
     
     # RFA
+    "engineers_geb_rfa_rfa",
+    "gebirgsjager_jagdkdo_rfa",
+    "gebirgsjager_pzf3_rfa",
+    "sniper_fern_rfa",
     "unimog_s_404_rfa",
     
     # SOV
@@ -89,6 +120,7 @@ __all__ = [
     "motrifles_btr_ttsko_sov",
     "mtlb_vasilek_sov",
     "sniper_spetsnaz_sov",
+    "su_24m_clu_sov",
     
     # UK
     "airmobile_mot_cmd_uk",
@@ -104,10 +136,12 @@ __all__ = [
     "airborne_engineers_flash_us",
     "airborne_half_dragon_us",
     "engineer_cmd_us",
+    "f4e_phantom_ii_cbu_us",
     "f4e_phantom_ii_napalm_us",
     "f15e_strikeeagle_us",
     "f16e_napalm_us",
     "f111e_aardvark_napalm_us",
+    "f111f_aardvark_cbu_us",
     "f111f_aardvark_napalm_us",
     "groupe_at_us",
     "m3a1_bradley_cfv_us",

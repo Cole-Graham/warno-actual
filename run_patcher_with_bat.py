@@ -172,7 +172,10 @@ if __name__ == "__main__":
 		from src.data.constants_precomputation import build_constants_precomputation_data
 		constants_data = build_constants_precomputation_data(config.config_data, game_db=config.config_data['game_db'])
 		config.config_data['game_db']['deck_pack_mappings'] = constants_data
-		
+		config.config_data['game_db']['insert_turret_templates'] = constants_data.get(
+			'insert_turret_templates', {},
+		)
+
 		# Merge salvo_weapons (from base game database) with constants renames (from constants precomputation)
 		# and add to ammo_db so handlers can access them the same way
 		ammo_db = config.config_data['game_db'].get('ammunition', {})

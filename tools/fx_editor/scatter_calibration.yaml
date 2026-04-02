@@ -1,0 +1,13 @@
+# FX scatter layout: gameplay meters vs NDF XY units
+#
+# The vanilla MLRS cluster effect (fx_impact_sol_HE_M270_227mm_Cluster_1.ndf) is taken to
+# represent ~120 m gameplay footprint radius (farthest sub-burst from impact center).
+# anchor_max_ndf_radius is max hypot(dx,dy) over all Mobile Position offsets in that file
+# (computed by scatter_extract on that NDF).
+#
+# gameplay_xy = ndf_xy * (reference_gameplay_radius_m / anchor_max_ndf_radius)
+# ndf_xy = gameplay_xy * (anchor_max_ndf_radius / reference_gameplay_radius_m)
+
+reference_gameplay_radius_m: 60.0
+# Precomputed from vanilla cluster (Mobile float3[dx,dy,0] + parPosition pattern)
+anchor_max_ndf_radius: 4272.522908071997

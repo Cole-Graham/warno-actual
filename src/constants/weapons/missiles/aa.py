@@ -109,13 +109,16 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("SAM_RAPIER", "SAM", None, False): {
         "Ammunition": {
+            "display": "Mk.1 BLINDFIRE",
             "hit_roll": {
                 "Idling": 50,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
-                "TimeBetweenTwoShots": 3.0,
-                "TimeBetweenTwoFx": 3.0,
+                "Caliber": ("existing", "CCYZVFZIEZ"), # "Radar"
+                "TraitsToken": ['STAT', 'RADAR'],
+                "TimeBetweenTwoShots": 2.5,
+                "TimeBetweenTwoFx": 2.5,
                 "PhysicalDamages": 5.0,
                 "MaximumRangeHelicopterGRU": 2800,
                 "MaximumRangeAirplaneGRU": 3500,
@@ -134,37 +137,44 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("SAM_RAPIER_FSA", "SAM", None, False): {
         "Ammunition": {
+            "display": "Mk.1E",
             "hit_roll": {
-                "Idling": 55,
+                "Idling": 60,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
-                "TimeBetweenTwoShots": 3.0,
-                "TimeBetweenTwoFx": 3.0,
+                "Caliber": ("SACLOS LiDAR", "THGDKSIWAY"),
+                "TraitsToken": ['STAT', 'manual'],
+                "TimeBetweenTwoShots": 2.5,
+                "TimeBetweenTwoFx": 2.5,
                 "PhysicalDamages": 5.0,
                 "MaximumRangeHelicopterGRU": 3150,
-                "MaximumRangeAirplaneGRU": 3850,
+                "MaximumRangeAirplaneGRU": 3150,
                 "AimingTime": 1.2,
             },
         },
         "SupplyCost": 65.0,
         "WeaponDescriptor": {
-            "SalvoLengths": [4],
+            "SalvoLengths": [8, 4],
             "units": {
                 4: ["DCA_Rapier_FSA_UK"],
+                8: ["Tracked_Rapier_FSA_UK"],
             },
         },
     },
     
     ("SAM_RAPIER_DARKFIRE", "SAM", None, False): {
         "Ammunition": {
+            "display": "Mk.1E BLINDFIRE",
             "hit_roll": {
                 "Idling": 65,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
-                "TimeBetweenTwoShots": 3.0,
-                "TimeBetweenTwoFx": 3.0,
+                "Caliber": ("existing", "CCYZVFZIEZ"), # "Radar"
+                "TraitsToken": ['STAT', 'RADAR'],
+                "TimeBetweenTwoShots": 2.5,
+                "TimeBetweenTwoFx": 2.5,
                 "PhysicalDamages": 5.0,
                 "MaximumRangeHelicopterGRU": 3150,
                 "MaximumRangeAirplaneGRU": 3850,
@@ -173,9 +183,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
         "SupplyCost": 90.0,
         "WeaponDescriptor": {
-            "SalvoLengths": [6],
+            "SalvoLengths": [8, 6],
             "units": {
                 6: ["DCA_Rapier_Darkfire_UK"],
+                8: ["Tracked_Rapier_FSB2_UK"],
             },
         },
     },
@@ -279,7 +290,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_missile_he_bigly",
             },
             "hit_roll": {
-                "Idling": 65,
+                "Idling": 60,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
@@ -296,7 +307,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_missile_he_bigly",
             },
             "hit_roll": {
-                "Idling": 65,
+                "Idling": 60,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
@@ -510,17 +521,19 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("SAM_ROLAND_2", "SAM", None, False): {
         "Ammunition": {
             "hit_roll": {
+                "Idling": 60,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
-                "MaximumRangeHelicopterGRU": 2800,
-                "MaximumRangeAirplaneGRU": 3500,
+                "MaximumRangeHelicopterGRU": 3325,
+                "MaximumRangeAirplaneGRU": 3325,
                 "AimingTime": 1.2,
+                "PhysicalDamages": 6.0,
                 "TimeBetweenTwoShots": 2.5,
                 "TimeBetweenTwoFx": 2.5,
             },
         },
-        "SupplyCost": 65.0,
+        "SupplyCost": 70.0,
         "WeaponDescriptor": {
             "SalvoLengths": [2],
             "units": {
@@ -532,11 +545,12 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("SAM_ROLAND_3", "SAM", None, False): {
         "Ammunition": {
             "hit_roll": {
+                "Idling": 65,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 3150,
-                "MaximumRangeAirplaneGRU": 4375,
+                "MaximumRangeAirplaneGRU": 4025,
                 "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 2.5,
                 "TimeBetweenTwoFx": 2.5,
@@ -831,7 +845,111 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+
+    ("SAM_FASTA_Strela2M_x4_TOWED", "MANPAD", None, False): { 
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_tbagru",
+            },
+            "hit_roll": {
+                "DistanceToTarget": True,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 1.2,
+                "TimeBetweenTwoFx": 1.2,
+                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeAirplaneGRU": 1750,
+                "TimeBetweenTwoSalvos": 20.0,
+                "AimingTime": 1.2,
+            }
+        },
+        "SupplyCost": 25.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [4],
+            "units": {
+                3: ["DCA_FASTA_4_DDR"],
+            },
+        },
+    },
     
+    ("SAM_FASTA_Strela2M_x4_TOWED_HAGRU", "SAM", "SAM_FASTA_Strela2M_x4_TOWED", True): {
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_hagru",
+            },
+            "hit_roll": {
+                "DistanceToTarget": True,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 1.2,
+                "TimeBetweenTwoFx": 1.2,
+                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeAirplaneGRU": 1750,
+                "TimeBetweenTwoSalvos": 20.0,
+                "AimingTime": 3.0,
+            }
+        },
+        "SupplyCost": 25.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [4],
+            "units": {
+                3: ["DCA_FASTA_4_DDR"],
+            },
+        },
+    },
+
+    ("SAM_FASTA_Strela2M", "MANPAD", None, False): { 
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_tbagru",
+            },
+            "hit_roll": {
+                "DistanceToTarget": True,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 1.2,
+                "TimeBetweenTwoFx": 1.2,
+                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeAirplaneGRU": 1750,
+                "TimeBetweenTwoSalvos": 20.0,
+                "AimingTime": 1.2,
+            }
+        },
+        "SupplyCost": 25.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [4],
+            "units": {
+                3: ["LO_1800_FASTA_4_DDR"],
+            },
+        },
+    },
+    
+    ("SAM_FASTA_Strela2M_HAGRU", "SAM", "SAM_FASTA_Strela2M", True): {
+        "Ammunition": {
+            "arme": {
+                "DamageFamily": "DamageFamily_manpad_hagru",
+            },
+            "hit_roll": {
+                "DistanceToTarget": True,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 1.2,
+                "TimeBetweenTwoFx": 1.2,
+                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeAirplaneGRU": 1750,
+                "TimeBetweenTwoSalvos": 20.0,
+                "AimingTime": 3.0,
+            }
+        },
+        "SupplyCost": 25.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [4],
+            "units": {
+                3: ["LO_1800_FASTA_4_DDR"],
+            },
+        },
+    },
+
     ("Javelin", "MANPAD", None, False): {
         "Ammunition": {
             "arme": {
@@ -1193,7 +1311,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DistanceToTarget": True,
             },
             "parent_membr": {
-                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 1750,
                 "TimeBetweenTwoSalvos": 14.0,
                 "AimingTime": 1.2,
@@ -1211,7 +1329,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DistanceToTarget": True,
             },
             "parent_membr": {
-                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 1750,
                 "TimeBetweenTwoSalvos": 14.0,
                 "AimingTime": 3.5,

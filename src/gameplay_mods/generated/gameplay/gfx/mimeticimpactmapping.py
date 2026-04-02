@@ -3,9 +3,49 @@
 from src.utils.logging_utils import setup_logger
 from src import ndf
 from src.utils.ndf_utils import find_obj_by_type
-from src.constants.fx import FxImpactSolBombODABRPO_
+from src.constants.fx import (
+    FxImpactMlrsClusterAp100m_,
+    FxImpactMlrsClusterAp125m_,
+    FxImpactMlrsClusterAp150m_,
+    FxImpactMlrsClusterAp175m_,
+    FxImpactMlrsClusterAp200m_,
+    FxImpactMlrsClusterAp225m_,
+    FxImpactMlrsClusterAp250m_,
+    FxImpactMlrsClusterAp35m_,
+    FxImpactMlrsClusterAp75m_,
+    FxImpactSolBombODABRPO_,
+)
 
 logger = setup_logger(__name__)
+
+
+def _mlrs_cluster_ap_impact_happening(fx_constant: str) -> str:
+    """TImpactHappening for MLRS cluster AP (same layout as RoquetteM26M270227MmCluster)."""
+    return (
+        f"TImpactHappening( Happenings = MAP["
+        f"    ( EImpactSurface/Ground , TCompositeHappening( SubHappenings = [ {fx_constant}, $/GFX/Sound/SoundHappening_FULDA_Bombe_Cluster_sol ] ) ),"
+        f"    ( EImpactSurface/Water , TCompositeHappening( SubHappenings = [ FxImpactEauHEGros, $/GFX/Sound/SoundHappening_FULDA_Bombe_Cluster_sol ] ) ),"
+        f"    ( EImpactSurface/Air , TCompositeHappening( SubHappenings = [ FxOuvertureRoquetteCluster_, $/GFX/Sound/SoundHappening_ImpactCanon_petitSol ] ) ),"
+        f"    ( EImpactSurface/Wall , TCompositeHappening( SubHappenings = [ {fx_constant}, $/GFX/Sound/SoundHappening_FULDA_Bombe_Cluster_sol ] ) ),"
+        f"    ( EImpactSurface/Vehicle , TCompositeHappening( SubHappenings = [ {fx_constant}, $/GFX/Sound/SoundHappening_FULDA_Bombe_Cluster_sol ] ) ),"
+        f"    ( EImpactSurface/FlyingVehicle , TCompositeHappening( SubHappenings = [ {fx_constant}, $/GFX/Sound/SoundHappening_FULDA_Bombe_Cluster_sol ] ) ),"
+        f"    ( EImpactSurface/Missile , $/GFX/Sound/SoundHappening_FULDA_Bombe_Cluster_sol ),"
+        f"    ( EImpactSurface/Ricochet , nil ),"
+        f"])"
+    )
+
+
+_MLRS_CLUSTER_AP_NDF = (
+    ("35", FxImpactMlrsClusterAp35m_),
+    ("75", FxImpactMlrsClusterAp75m_),
+    ("100", FxImpactMlrsClusterAp100m_),
+    ("125", FxImpactMlrsClusterAp125m_),
+    ("150", FxImpactMlrsClusterAp150m_),
+    ("175", FxImpactMlrsClusterAp175m_),
+    ("200", FxImpactMlrsClusterAp200m_),
+    ("225", FxImpactMlrsClusterAp225m_),
+    ("250", FxImpactMlrsClusterAp250m_),
+)
 
 def edit_gen_gp_gfx_mimeticimpactmapping(source_path) -> None:
     """GameData/Generated/Gameplay/Gfx/MimeticImpactMapping.ndf"""
@@ -53,7 +93,17 @@ def _edit_mimetic_registration(source_path) -> None:
     
     happenings_map.v.add(("'BombeODABRPO'", bombe_odab_rpo_value))
     logger.info("Added BombeODABRPO to happenings map")
-    
+
+    # MLRS cluster AP size variants (fx_impact_mlrs_cluster_ap_*m_*.ndf); keys: 'MLRSClusterAP35m', etc.
+    for size_digits, fx_body in _MLRS_CLUSTER_AP_NDF:
+        const_name = f"FxImpactMlrsClusterAp{size_digits}m_"
+        ndf_name = ndf.convert(f"{const_name} is {fx_body}")
+        source_path.add(ndf_name)
+        map_key = f"'MLRSClusterAP{size_digits}m'"
+        happening_value = ndf.convert(_mlrs_cluster_ap_impact_happening(const_name))
+        happenings_map.v.add((map_key, happening_value))
+        logger.info("Added %s TRandomHappening and %s to happenings map", const_name, map_key)
+
     # ============================================================================
     # Effects using EXISTING vanilla FX .ndf files (no TRandomHappening definition needed)
     # ============================================================================

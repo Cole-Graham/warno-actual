@@ -7,6 +7,9 @@ from .fire_descriptors import (
 from .mortars import (
     add_corrected_shot_dispersion,
 )
+from .bomb_category_standards import (
+    apply_category_bomb_standards,
+)
 from .standards import (
     apply_aim_time_standards,
     apply_he_damage_standards,
@@ -21,6 +24,7 @@ from .vanilla_renames import (
 
 __all__ = [
     'add_corrected_shot_dispersion',
+    'apply_category_bomb_standards',
     'apply_aim_time_standards',
     'apply_bomb_damage_standards',
     'apply_damage_families',

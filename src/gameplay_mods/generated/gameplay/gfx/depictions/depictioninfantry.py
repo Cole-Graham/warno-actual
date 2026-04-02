@@ -434,6 +434,9 @@ def _handle_complex_unit_edits(source_path: Any) -> None:
                             logger.info(f"Inserted {member} for {unit_name} at index {row_index}")
                         else:
                             logger.error(f"Could not insert {member} for {unit_name} at index {row_index}")
+                    elif edit_type == "remove":
+                        weapon_alternatives.v.remove(row_index)
+                        logger.info(f"Removed {member} for {unit_name} at index {row_index}")
 
             elif namespace and namespace.startswith("AllWeaponSubDepiction_"):
                 weapon_subdepictions = source_path.by_n(namespace)
@@ -475,6 +478,12 @@ def _handle_complex_unit_edits(source_path: Any) -> None:
                                         f")"
                                     )
                                     operators_member.v.insert(index, new_entry)
+                            
+                            elif edit_type == "remove":
+                                operators_member.v.remove(index)
+                                
+                            else:
+                                logger.warning(f"Unknown edit type {edit_type} for {unit_name} at index {index}")
             
             elif namespace and namespace.startswith("TacticDepiction_") and namespace.endswith("_Alternatives"):
                 tacticdepiction_alternatives = source_path.by_n(namespace)
@@ -564,6 +573,9 @@ def _handle_complex_unit_edits(source_path: Any) -> None:
                                     )
                                     conditional_tags.v.insert(index, new_entry)
                                     logger.info(f"Inserted tag {new_tag} for mesh {mesh_alternative} at ConditionalTags index {index} for {unit_name}")
+                            elif edit_type == "remove":
+                                conditional_tags.v.remove(index)
+                                logger.info(f"Removed tag at ConditionalTags index {index} for {unit_name}")
                             else:
                                 logger.warning(f"    Unknown edit_type '{edit_type}' for {unit_name} at index {index}")
                                             
@@ -725,6 +737,7 @@ def _handle_unit_edits(source_path: Any, game_db: Dict[str, Any]) -> None:
                         logger.debug(f"No infantry weapon subdepictions found for {unit_name}")
                         continue
                     operators_list = weapon_subdepictions.v.by_m("Operators").v
+                    logger.debug(f"Finding operator with FireEffectTag {old_fire_effect} for {unit_name}")
                     target_operator = operators_list.find_by_cond(
                         lambda x: x.v.by_m("FireEffectTag").v == f'"FireEffect_{old_fire_effect}"')
                     if target_operator:

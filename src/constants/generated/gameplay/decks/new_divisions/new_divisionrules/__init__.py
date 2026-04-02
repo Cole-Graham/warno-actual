@@ -26,6 +26,21 @@ from .SOV_newdivisionrules import (
     SOV_mechanized_newdivisionrules,
     SOV_motorized_newdivisionrules,
 )
+from .RDA_newdivisionrules import (
+    RDA_airborne_newdivisionrules,
+    RDA_armored_newdivisionrules,
+    RDA_global_newdivisionrules,
+    RDA_mechanized_newdivisionrules,
+    RDA_motorized_newdivisionrules,
+)
+
+from .RFA_newdivisionrules import (
+    RFA_airborne_newdivisionrules,
+    RFA_armored_newdivisionrules,
+    RFA_global_newdivisionrules,
+    RFA_mechanized_newdivisionrules,
+    RFA_motorized_newdivisionrules,
+)
 
 __all__ = [
     "UK_airborne_newdivisionrules",
@@ -48,4 +63,14 @@ __all__ = [
     "SOV_global_newdivisionrules",
     "SOV_mechanized_newdivisionrules",
     "SOV_motorized_newdivisionrules",
+    "RDA_airborne_newdivisionrules",
+    "RDA_armored_newdivisionrules",
+    "RDA_global_newdivisionrules",
+    "RDA_mechanized_newdivisionrules",
+    "RDA_motorized_newdivisionrules",
+    "RFA_airborne_newdivisionrules",
+    "RFA_armored_newdivisionrules",
+    "RFA_global_newdivisionrules",
+    "RFA_mechanized_newdivisionrules",
+    "RFA_motorized_newdivisionrules",
 ]

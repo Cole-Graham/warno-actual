@@ -21,6 +21,7 @@ sov_unit_edits = {
             "add_specs": ["'leader_sov'",],
             "remove_specs": ["'_leader'"],
         },
+        "UpgradeFromUnit": "MTLB_CMD2_SOV",
     },
     
     "BMD_1_CMD_SOV": {
@@ -93,6 +94,7 @@ sov_unit_edits = {
         },
         "ButtonTexture": "LUAZ_967M_SOV",
         "DeploymentShift": 0,
+        "UpgradeFromUnit": "UAZ_469_CMD_SOV",
     },
     
     "UAZ_469_CMD_VDV_SOV": { # Desant. Belozor
@@ -2025,21 +2027,6 @@ sov_unit_edits = {
         },
     },
 
-    "Howz_D30_122mm_SOV": {
-        "CommandPoints": 85,
-        "Divisions": {
-            "default": {
-                "cards": 2,
-            },
-        },
-        "availability": [5, 4, 3, 0],
-    },
-    
-    "Howz_D30_122mm_VDV_SOV": {
-        "CommandPoints": 85,
-        "availability": [0, 5, 4, 3],
-    },
-    
     "Mortier_Nona_K_120mm_SOV": {
         "CommandPoints": 75,
         "availability": [0, 3, 2, 0],
@@ -2071,10 +2058,47 @@ sov_unit_edits = {
             },
         },
     },
+
+    "Mortier_240mm_M240_Cluster_SOV": {
+        "CommandPoints": 200,
+        "availability": [3, 2, 0, 0],
+    },
     
+    "Mortier_240mm_M240_SOV": {
+        "CommandPoints": 200,
+        "availability": [3, 2, 0, 0],
+    },
+    
+    "2S4_Tyulpan_SOV": {
+        "CommandPoints": 170,
+        "availability": [3, 2, 0, 0],
+    },
+
     "Howz_BS3_100mm_SOV": {
         "CommandPoints": 55,
         "availability": [6, 0, 0, 0],
+    },
+
+    "Howz_D30_122mm_SOV": {
+        "CommandPoints": 85,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "availability": [5, 4, 3, 0],
+        "UpgradeFromUnit": "Howz_BS3_100mm_SOV",
+    },
+    
+    "Howz_D30_122mm_VDV_SOV": {
+        "CommandPoints": 85,
+        "availability": [0, 5, 4, 3],
+    },
+    
+    "Howz_D20_152mm_SOV": {
+        "CommandPoints": 95,
+        "availability": [3, 2, 0, 0],
+        "UpgradeFromUnit": "Howz_D30_122mm_VDV_SOV",
     },
 
     "Howz_2A36_Giatsint_B_SOV": {
@@ -2088,7 +2112,7 @@ sov_unit_edits = {
             },
         },
         "availability": [3, 2, 0, 0],
-        "UpgradeFromUnit": None,
+        "UpgradeFromUnit": "Howz_D20_152mm_SOV",
     },
 
     "Howz_MstaB_150mm_SOV": {
@@ -2145,21 +2169,6 @@ sov_unit_edits = {
             },
         },
         "availability": [2, 0, 1, 0],
-    },
-    
-    "Mortier_240mm_M240_Cluster_SOV": {
-        "CommandPoints": 200,
-        "availability": [3, 2, 0, 0],
-    },
-    
-    "Mortier_240mm_M240_SOV": {
-        "CommandPoints": 200,
-        "availability": [3, 2, 0, 0],
-    },
-    
-    "2S4_Tyulpan_SOV": {
-        "CommandPoints": 170,
-        "availability": [3, 2, 0, 0],
     },
     
     "Howz_B4M_203mm_SOV": {
@@ -2228,7 +2237,7 @@ sov_unit_edits = {
     },
     
     "BM30_Smerch_SOV": {
-        "CommandPoints": 360,
+        "CommandPoints": 330,
         "availability": [0, 1, 0, 0],
     },
 
@@ -2326,6 +2335,9 @@ sov_unit_edits = {
 
     "T62MD_CMD_SOV": {
         "CommandPoints": 130,
+        "armor": {
+            "top": (3, None),
+        },
         "GameName": {
             "token": "LARNJZNOHF",
             "display": "#LDRSOV T-62MDK LDR.",
@@ -2357,6 +2369,9 @@ sov_unit_edits = {
 
     "T62M_CMD_SOV": {
         "CommandPoints": 130,
+        "armor": {
+            "top": (3, None),
+        },
         "GameName": {
             "token": "LARNJZNGAB",
             "display": "#LDRSOV T-62MK LDR.",
@@ -2393,6 +2408,9 @@ sov_unit_edits = {
     
     "T64A_CMD_SOV": {
         "CommandPoints": 135,
+        "armor": {
+            "top": (3, None),
+        },
         "GameName": {
             "display": "#LDRSOV T-64A Obr. 83 LDR.",
             "token": "SOVTSITAK",
@@ -2424,6 +2442,9 @@ sov_unit_edits = {
 
     "T64B_CMD_SOV": {
         "CommandPoints": 185,
+        "armor": {
+            "top": (3, None),
+        },
         "GameName": {
             "display": "#LDRSOV T-64B LDR.",
             "token": "SOVTSITBK",
@@ -2455,6 +2476,9 @@ sov_unit_edits = {
 
     "T64BV_CMD_SOV": {
         "CommandPoints": 200,
+        "armor": {
+            "top": (4, None),
+        },
         "GameName": {
             "display": "#LDRSOV T-64BVK LDR.",
             "token": "SOVTSITBVK",
@@ -2487,6 +2511,9 @@ sov_unit_edits = {
 
     "T72_CMD_SOV": {
         "CommandPoints": 120,
+        "armor": {
+            "top": (2, None),
+        },
         "GameName": {
             "display": "#LDRSOV T-72K Obr. 73 LDR.",
             "token": "OALRSXERYB",
@@ -2517,6 +2544,9 @@ sov_unit_edits = {
     
     "T72M_CMD_SOV": {
         "CommandPoints": 170,
+        "armor": {
+            "top": (2, None),
+        },
         "GameName": {
             "display": "#LDRSOV T-72AK Obr. 79 LDR.",
             "token": "SOVTSETASK",
@@ -2548,6 +2578,9 @@ sov_unit_edits = {
 
     "T72M1_CMD_SOV": {
         "CommandPoints": 195,
+        "armor": {
+            "top": (3, None),
+        },
         "GameName": {
             "display": "#LDRSOV T-72AK Obr. 81 LDR.",
             "token": "SOVTSETAEK",
@@ -2579,6 +2612,9 @@ sov_unit_edits = {
 
     "T72B_CMD_SOV": {
         "CommandPoints": 225,
+        "armor": {
+            "top": (4, None),
+        },
         "GameName": {
             "display": "#LDRSOV T-72BK LDR.",
             "token": "SOVTSETBK",
@@ -2611,6 +2647,9 @@ sov_unit_edits = {
 
     "T80B_CMD_SOV": {
         "CommandPoints": 210,
+        "armor": {
+            "top": (3, None),
+        },
         "GameName": {
             "display": "#LDRSOV T-80BK LDR.",
             "token": "SOVTEBK",
@@ -2642,6 +2681,10 @@ sov_unit_edits = {
 
     "T80BV_CMD_SOV": {
         "CommandPoints": 230,
+        "armor": {
+            "front": (18, None),
+            "top": (4, None),
+        },
         "GameName": {
             "display": "#LDRSOV T-80BVK LDR.",
             "token": "YWAOJLFAFW",
@@ -2655,9 +2698,6 @@ sov_unit_edits = {
                 "UNITE_T80BV_CMD_SOV",
                 "Unite",
             ],
-        },
-        "armor": {
-            "front": (18, None),
         },
         "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
@@ -2743,6 +2783,26 @@ sov_unit_edits = {
 
     "BTR_D_Robot_SOV": {  # 10x Konkurs, 2x PKT
         "CommandPoints": 30,
+    },
+
+    "BTR_152K_SOV": {
+        "CommandPoints": 20,
+        "orders": {
+            "add_orders": ["EOrderType/Sell"],
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+    },
+
+    "BTR_152A_SOV": {
+        "CommandPoints": 25,
+        "strength": 10,
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_ZPU4_14_5mm": 192,
+            },
+        },
     },
 
     "BTR_60_SOV": {
@@ -2959,6 +3019,7 @@ sov_unit_edits = {
     "AT_T12R_Ruta_SOV": {
         "CommandPoints": 65,
         "availability": [6, 4, 0, 0],
+        "UpgradeFromUnit": "AT_T12_Rapira_SOV",
     },
     
     "AT_2A45_SprutB_SOV": {
@@ -3026,21 +3087,33 @@ sov_unit_edits = {
 
     "T62M1_SOV": {
         "CommandPoints": 115,
+        "armor": {
+            "top": (3, None),
+        },
         "availability": [8, 6, 0, 0],
     },
 
     "T62MD1_SOV": { # T62M1 with +1 side and rear armor
         "CommandPoints": 115,
+        "armor": {
+            "top": (3, None),
+        },
         "availability": [8, 6, 0, 0],
     },
     
     "T62M_SOV": {
         "CommandPoints": 140,
+        "armor": {
+            "top": (3, None),
+        },
         "availability": [0, 6, 4, 0],
     },
 
     "T62MD_SOV": { # T62M with +1 side and rear armor
         "CommandPoints": 140,
+        "armor": {
+            "top": (3, None),
+        },
         "availability": [0, 6, 4, 0],
     },
     
@@ -3048,6 +3121,7 @@ sov_unit_edits = {
         "CommandPoints": 140,
         "armor": {
             "front": (12, None),
+            "top": (3, None),
         },
         "Divisions": {
             "default": {
@@ -3059,49 +3133,76 @@ sov_unit_edits = {
 
     "T64R_SOV": {
         "CommandPoints": 95,
+        "armor": {
+            "top": (2, None),
+        },
         "availability": [8, 6, 0, 0],
     },
 
     "T64A_SOV": {
         "CommandPoints": 125,
+        "armor": {
+            "top": (3, None),
+        },
         "availability": [6, 4, 0, 0],
         "UpgradeFromUnit": "T64R_SOV",
     },
 
     "T64AM_SOV": { 
         "CommandPoints": 140,
+        "armor": {
+            "top": (3, None),
+        },
         "availability": [0, 6, 4, 0],
         "UpgradeFromUnit": "T64AV_SOV",
     },
 
     "T64AV_SOV": {
         "CommandPoints": 130,
+        "armor": {
+            "top": (3, None),
+        },
         "availability": [6, 4, 0, 0],
         "UpgradeFromUnit": "T64A_SOV",
     },
 
     "T64B1_SOV": {
         "CommandPoints": 165,
+        "armor": {
+            "top": (3, None),
+        },
         "availability": [6, 4, 0, 0],
     },
 
     "T64BV1_SOV": {
         "CommandPoints": 180,
+        "armor": {
+            "top": (4, None),
+        },
         "availability": [0, 6, 4, 0],
     },
 
     "T64B_SOV": {
         "CommandPoints": 175,
+        "armor": {
+            "top": (3, None),
+        },
         "availability": [6, 4, 0, 0],
     },
 
     "T64BV_SOV": {
         "CommandPoints": 205,
+        "armor": {
+            "top": (4, None),
+        },
         "availability": [0, 4, 3, 0],
     },
 
     "T72_SOV": {
         "CommandPoints": 110,
+        "armor": {
+            "top": (2, None),
+        },
         "availability": [8, 6, 0, 0],
         "GameName": {
             "display": "T-72 Obr. 73",
@@ -3110,48 +3211,73 @@ sov_unit_edits = {
 
     "T72_obr77_SOV": {
         "CommandPoints": 125,
+        "armor": {
+            "top": (2, None),
+        },
         "availability": [8, 6, 0, 0],
     },
 
     "T72M_SOV": {
         "CommandPoints": 150,
+        "armor": {
+            "top": (2, None),
+        },
         "availability": [6, 4, 0, 0],
     },
 
     "T72M1_SOV": {
         "CommandPoints": 175,
+        "armor": {
+            "top": (3, None),
+        },
         "availability": [0, 6, 4, 0],
     },
 
     "T72AV_SOV": {
         "CommandPoints": 185,
+        "armor": {
+            "top": (4, None),
+        },
         "availability": [0, 6, 4, 0],
         "UpgradeFromUnit":  "T72M1_SOV",
     },
 
     "T72B1_early_SOV": {
         "CommandPoints": 190,
+        "armor": {
+            "top": (3, None),
+        },
         "availability": [6, 4, 0, 0],
     },
 
     "T72B1_SOV": {
         "CommandPoints": 205,
+        "armor": {
+            "top": (4, None),
+        },
         "availability": [0, 6, 4, 0],
     },
 
     "T72B_SOV": {
         "CommandPoints": 220,
+        "armor": {
+            "top": (4, None),
+        },
         "availability": [0, 0, 3, 2],
     },
 
     "T80B_SOV": {
         "CommandPoints": 200,
+        "armor": {
+            "top": (3, None),
+        },
         "availability": [6, 4, 0, 0],
     },
 
     "T80BV_SOV": {
         "armor": {
             "front": (18, None),
+            "top": (4, None),
         },
         "CommandPoints": 220,
         "Divisions": {
@@ -3173,6 +3299,7 @@ sov_unit_edits = {
     "T80BV_Beast_SOV": {
         "armor": {
             "front": (18, None),
+            "top": (4, None),
         },
         "CommandPoints": 245,
         "availability": [0, 0, 4, 3],
@@ -3180,6 +3307,9 @@ sov_unit_edits = {
 
     "T80U_SOV": {
         "CommandPoints": 260,
+        "armor": {
+            "top": (4, None),
+        },
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -3190,6 +3320,9 @@ sov_unit_edits = {
 
     "T80UD_SOV": {
         "CommandPoints": 305,
+        "armor": {
+            "top": (4, None),
+        },
         "Divisions": {
             "default": {
                 "cards": 3,
@@ -3200,6 +3333,9 @@ sov_unit_edits = {
 
     "T80U_Obr89_SOV": {
         "CommandPoints": 315,
+        "armor": {
+            "top": (4, None),
+        },
         "availability": [0, 0, 3, 2],
     },
 
@@ -3253,6 +3389,7 @@ sov_unit_edits = {
                 "cards": 3,
             },
         },
+        "UpgradeFromUnit": "BMD_1_Reostat_SOV",
     },
 
     "BMD_1_Reostat_SOV": {
@@ -3263,6 +3400,11 @@ sov_unit_edits = {
     "ZSU_23_Shilka_reco_SOV": {
         "CommandPoints": 70,
         "availability": [0, 4, 3, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_4_canons_AZP_23_Amur_23mm_PSNR": 53,
+            },
+        },
     },
 
     "BMD_3_reco_SOV": {
@@ -3289,6 +3431,9 @@ sov_unit_edits = {
 
     "T64B1_reco_SOV": {
         "CommandPoints": 190,
+        "armor": {
+            "top": (3, None),
+        },
         "availability": [3, 2, 0, 0],
     },
 
@@ -3494,6 +3639,7 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
+        "UpgradeFromUnit": "KGB_BorderGuard_LRRP_SOV",
     },
 
     "Scout_Spetsnaz_SOV": { # Spetzrazvedka (GSR)
@@ -3629,22 +3775,33 @@ sov_unit_edits = {
         "availability": [0, 4, 0, 0],
     },
 
-    "Pchela_1T_SOV": { # Recon Drone (slow)
+    "Pchela_1T_SOV": { # Recon Drone (Slow)
         "CommandPoints": 45,
     },
     
-    "Pero_UAV_SOV": {
+    "Pero_UAV_SOV": { # Recon Drone (Medium)
         "CommandPoints": 50,
         "availability": [0, 4, 0, 0],
+        "UpgradeFromUnit": "Pchela_1T_SOV",
     },
 
     # SOV AA
     "BTR_ZD_Skrezhet_SOV": {
         "CommandPoints": 30,
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_ZU23_2_23mm": 29,
+            },
+        },
     },
 
     "GTMU_1D_ZU_SOV": {
         "CommandPoints": 30,
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_ZU23_2_23mm": 29,
+            },
+        },
     },
 
     "LuAZ_967M_AA_VDV_SOV": {
@@ -3661,6 +3818,11 @@ sov_unit_edits = {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
         "UpgradeFromUnit": "FOB_SOV",
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_ZU23_2_23mm_TOWED": 31,
+            },
+        },
     },
 
     "DCA_ZU_23_2_TTsko_SOV": {
@@ -3681,6 +3843,11 @@ sov_unit_edits = {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
         "UpgradeFromUnit": "FOB_SOV",
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_ZU23_2_23mm_TOWED": 31,
+            },
+        },
     },
 
     "DCA_ZU_23_2_SOV": {
@@ -3692,6 +3859,11 @@ sov_unit_edits = {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
         "UpgradeFromUnit": "FOB_SOV",
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_ZU23_2_23mm_TOWED": 31,
+            },
+        },
     },
 
     "DCA_ZU_23_2_SOV": {  # Airborne
@@ -3708,6 +3880,11 @@ sov_unit_edits = {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
         "UpgradeFromUnit": "FOB_SOV",
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_ZU23_2_23mm_TOWED": 31,
+            },
+        },
     },
 
     "DCA_AZP_S60_SOV": {
@@ -3716,6 +3893,11 @@ sov_unit_edits = {
         "max_speed": 6,
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_1_canon_S60_57mm": 1,
+            },
         },
     },
 
@@ -3849,16 +4031,31 @@ sov_unit_edits = {
             },
         },
         "availability": [0, 10, 7, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_ZU23_2_23mm": 39,
+            },
+        },
     },
 
     "Ural_4320_ZU_SOV": {
         "CommandPoints": 40,
-        "availability": [ 10, 7, 0, 0],
+        "availability": [10, 7, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_ZU23_2_23mm": 39,
+            },
+        },
     },
 
     "Ural_4320_ZPU_SOV": {
         "CommandPoints": 30,
-        "availability": [ 12, 9, 0, 0],
+        "availability": [12, 9, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_4_canon_ZPU4_14_5mm": 80,
+            },
+        },
     },
 
     "BRDM_Strela_1_SOV": {
@@ -3880,16 +4077,49 @@ sov_unit_edits = {
     "ZSU_23_Shilka_Afghan_SOV": {
         "CommandPoints": 40,
         "availability": [8, 6, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_4_canons_AZP_23_Amur_23mm_Afghan": 53,
+            },
+        },
     },
 
     "ZSU_23_Shilka_early_SOV": {
         "CommandPoints": 85,
         "availability": [6, 4, 0, 0],
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 220,
+            },
+            "TimeBetweenEachIdentifyRoll": 1.0,
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'good_airoptics'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_4_canons_APZ23_23mm": 67,
+            },
+        },
     },
 
    "ZSU_23_Shilka_SOV": {
         "CommandPoints": 85,
         "availability": [6, 4, 0, 0],
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 220,
+            },
+            "TimeBetweenEachIdentifyRoll": 1.0,
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'good_airoptics'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_4_canons_AZP_23_Amur_23mm_late": 67,
+            },
+        },
     },
 
     "Tunguska_2K22_SOV": {
@@ -3914,7 +4144,7 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_2_canons_2A38M_30mm": 12,
+                "DCA_2_canons_2A38M_30mm": 21,
             },
         },
     },
@@ -4319,6 +4549,11 @@ sov_unit_edits = {
             },
         },
         "availability": [0, 5, 0, 0],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("RocketAir_S5_57mm_salvolength32", "RocketAir_S5_57mm_avion_salvolength32")],
+            },
+        },
     },
 
     "MiG_21bis_CLU_SOV": {  # 2x RBK-500, 2x RBK-250
@@ -4494,6 +4729,14 @@ sov_unit_edits = {
     "MiG_27M_rkt_SOV": {
         "CommandPoints": 125,
         "availability": [0, 3, 2, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "RocketAir_B8_80mm_salvolength40": 1,
+            },
+            "equipmentchanges": {
+                "replace": [("RocketAir_B8_80mm_avion_salvolength10", "RocketAir_B8_80mm_salvolength40")],
+            },
+        },
     },
 
     "MiG_27M_sead_SOV": {  # MiG-27K [SEAD] - Kh-28 5600m
@@ -4622,16 +4865,16 @@ sov_unit_edits = {
     },
 
     "Su_17M4_HE1_SOV": {  # 6x FAB-500, 2x R-60M
-        "CommandPoints": 230,
-        "availability": [0, 3, 2, 0],
-    },
-
-    "Su_17M4_HE1_SOV": {  # 6x FAB-500, 2x R-60M
-        "CommandPoints": 220,
+        "CommandPoints": 175,
         "availability": [0, 2, 0, 0],
     },
 
     "Su_17M4_HE2_SOV": {  # 4x FAB-500, 2x RBK-500, 2x R-60M
+        "CommandPoints": 240,
+        "availability": [0, 2, 0, 0],
+    },
+
+    "Su_17M4_CLU_SOV": {  # 4x FAB-500, 2x RBK-500, 2x R-60M
         "CommandPoints": 240,
         "availability": [0, 2, 0, 0],
     },
@@ -4644,6 +4887,19 @@ sov_unit_edits = {
             },
         },
         "availability": [0, 3, 2, 0],
+    },
+
+    "Su_17M4_RKT2_SOV": { # 2x 40x SK-80s, 2x R-60M
+        "CommandPoints": 125,
+        "availability": [0, 3, 2, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "RocketAir_B8_80mm_salvolength40": 2,
+            },
+            "equipmentchanges": {
+                "replace": [("RocketAir_B8_80mm_salvolength80", "RocketAir_B8_80mm_salvolength40")],
+            },
+        },
     },
 
     "Su_17M4_thermo_SOV": {  # 6x ODAB-500PM, 2x R-60M
@@ -4800,11 +5056,23 @@ sov_unit_edits = {
     },
 
     "Su_24M_clu_SOV": {
-        "CommandPoints": 200,
+        "CommandPoints": 190,
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
         "availability": [0, 2, 0, 0],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [
+                    (
+                        "Bomb_CLU_RBK_250kg_salvolength8",
+                        "Bomb_CLU_RBK_250kg_salvolength16",
+                        "Bomb_CLU_RBK_250kg_salvolength8",
+                        "Bomb_CLU_RBK_250kg_salvolength16"
+                    )
+                ],
+            },
+        },
     },
     
     "Su_24M_nplm_SOV": {

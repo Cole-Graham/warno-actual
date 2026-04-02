@@ -2227,6 +2227,9 @@ usa_unit_edits = {
     
     "M1025_Humvee_MP_US": {
         "CommandPoints": 20,
+        "orders": {
+            "add_orders": ["EOrderType/Sell"],
+        },
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'",],
         },
@@ -2234,6 +2237,9 @@ usa_unit_edits = {
     
     "CGage_Peacekeeper_US": {
         "CommandPoints": 20,
+         "orders": {
+            "add_orders": ["EOrderType/Sell"],
+        },
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'",],
         },
@@ -2397,7 +2403,7 @@ usa_unit_edits = {
             "display": "M270 MLRS",
             # "token": "MYQQNJCCAK",
         },
-        "CommandPoints": 300,
+        "CommandPoints": 350,
         "Divisions": {
             "add": ["US_8th_Inf"],
             "is_transported": False,
@@ -2406,13 +2412,13 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "WeaponDescriptor": {
-            "turrets": {
-                0: {
-                    "AngleRotationMaxPitch": 1.0,
-                },
-            },
-        },
+        # "WeaponDescriptor": {
+        #     "turrets": {
+        #         0: {
+        #             "AngleRotationMaxPitch": 1.0,
+        #         },
+        #     },
+        # },
         "availability": [0, 1, 0, 0],
     },
 
@@ -2432,6 +2438,9 @@ usa_unit_edits = {
                 "UNITE_M1A1HA_Abrams_CMD_US",
                 "Unite",
             ],
+        },
+        "armor": {
+            "top": (5, None),
         },
         # "SortingOrder": 20340,
         # "UnitAttackValue": 561,
@@ -2471,6 +2480,9 @@ usa_unit_edits = {
                 "UNITE_M1A1_Abrams_CMD_US",
                 "Unite",
             ],
+        },
+        "armor": {
+            "top": (5, None),
         },
         # "SortingOrder": 20290,
         # "UnitAttackValue": 461,
@@ -2514,6 +2526,9 @@ usa_unit_edits = {
                 "Unite"
             ],
         },
+        "armor": {
+            "top": (5, None),
+        },
         "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "UnitRole": "armor",
@@ -2544,6 +2559,9 @@ usa_unit_edits = {
                 "UNITE_M1_Abrams_CMD_US",
                 "Unite"
             ],
+        },
+        "armor": {
+            "top": (4, None),
         },
         "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
@@ -2576,6 +2594,9 @@ usa_unit_edits = {
                 "Unite"
             ],
         },
+        "armor": {
+            "top": (3, None),
+        },
         "IdentifiedTextures": ["Texture_RTS_H_Armor", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "UnitRole": "armor",
@@ -2606,6 +2627,9 @@ usa_unit_edits = {
                 "UNITE_M60A1_RISE_Passive_CMD_US",
                 "Unite"
             ],
+        },
+        "armor": {
+            "top": (3, None),
         },
         "IdentifiedTextures": ["Texture_RTS_H_Armor", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
@@ -2731,6 +2755,11 @@ usa_unit_edits = {
         "CommandPoints": 65,
         "availability": [8, 6, 0, 0],
     },
+
+    "M728A1_CEV_US": {
+        "CommandPoints": 75,
+        "availability": [0, 8, 6, 0],
+    },
     
     "M2_Bradley_IFV_NG_US": {
         "CommandPoints": 50,
@@ -2837,6 +2866,9 @@ usa_unit_edits = {
             },
         },
         "availability": [0, 0, 3, 2],
+        "armor": {
+            "top": (5, None),
+        },
     },
 
     "M1A1_Abrams_US": {
@@ -2855,6 +2887,9 @@ usa_unit_edits = {
             },
         },
         "availability": [5, 3, 0, 0],
+        "armor": {
+            "top": (5, None),
+        },
     },
 
     "M1IP_Abrams_US": {
@@ -2874,6 +2909,9 @@ usa_unit_edits = {
             },
         },
         "availability": [0, 0, 4, 3],
+        "armor": {
+            "top": (5, None),
+        },
     },
 
     "M1_Abrams_US": {
@@ -2884,6 +2922,9 @@ usa_unit_edits = {
             },
         },
         "availability": [6, 4, 0, 0],
+        "armor": {
+            "top": (4, None),
+        },
     },
 
     "M1_Abrams_NG_US": {
@@ -2894,6 +2935,9 @@ usa_unit_edits = {
             },
         },
         "availability": [6, 0, 0, 0],
+        "armor": {
+            "top": (4, None),
+        },
     },
     
     "M1_Abrams_MOD_US": {
@@ -2904,6 +2948,9 @@ usa_unit_edits = {
             },
         },
         "availability": [0, 4, 3, 0],
+        "armor": {
+            "top": (4, None),
+        },
     },
 
     "M60A3_Patton_US": {
@@ -2915,6 +2962,9 @@ usa_unit_edits = {
         },
         "availability": [8, 6, 0, 0],
         "UpgradeFromUnit": "M60A3_Patton_NG_US",
+        "armor": {
+            "top": (3, None),
+        },
     },
 
     "M60A3_ERA_Patton_US": {
@@ -2938,6 +2988,9 @@ usa_unit_edits = {
         },
         "availability": [0, 8, 6, 0],
         "UpgradeFromUnit": "M60A3_Patton_US",
+        "armor": {
+            "top": (3, None),
+        },
     },
 
     "M60A3_Patton_NG_US": {
@@ -2948,6 +3001,9 @@ usa_unit_edits = {
             },
         },
         "availability": [10, 7, 0, 0],
+        "armor": {
+            "top": (3, None),
+        },
     },
 
     "M60A1_RISE_Passive_US": {
@@ -2958,6 +3014,9 @@ usa_unit_edits = {
             },
         },
         "availability": [10, 7, 0, 0],
+        "armor": {
+            "top": (3, None),
+        },
     },
 
     "M551A1_TTS_Sheridan_US": {
@@ -3043,6 +3102,7 @@ usa_unit_edits = {
     "M1025_Humvee_GVLLD_US": {
         "CommandPoints": 30,
         "availability": [8, 0, 0, 0],
+        "UpgradeFromUnit": "M981_FISTV_US",
     },
     
     "M548A2_Jammer_US": {
@@ -3205,6 +3265,9 @@ usa_unit_edits = {
     "M60A1_RISE_Passive_reco_US": {
         "CommandPoints": 90,
         "availability": [6, 0, 0, 0],
+        "armor": {
+            "top": (3, None),
+        },
     },
 
     "M551A1_ACAV_Sheridan_US": {
@@ -3215,11 +3278,19 @@ usa_unit_edits = {
     "M1A1_Abrams_reco_US": {
         "availability": [0, 3, 2, 0],
         "CommandPoints": 245,
+        "armor": {
+            "top": (5, None),
+        },
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
+    },
+
+    "OH58A_reco_NG_US": {
+        "CommandPoints": 30,
+        "availability": [6, 0, 0, 0],
     },
 
     "OH58C_Scout_US": {
@@ -3403,6 +3474,7 @@ usa_unit_edits = {
                 "insert": [(1, 45)],
             },
         },
+        "UpgradeFromUnit": "HvyScout_NG_Dragon_US",
     },
     
     "Pathfinder_NG_US": {
@@ -3494,6 +3566,7 @@ usa_unit_edits = {
                 "MMG_M60E1_7_62mm": 2,
             },
         },
+        "UpgradeFromUnit": "Airborne_Scout_US",
     },
     
     "Scout_Aero_US": {
@@ -3713,7 +3786,7 @@ usa_unit_edits = {
         "availability": [10, 0, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_2_canon_Bofors_40mm": 17,
+                "DCA_2_canon_Bofors_40mm": 1,
             },
         },
         "UpgradeFromUnit": "M274_Mule_M2HB_US",
@@ -3723,6 +3796,11 @@ usa_unit_edits = {
         "CommandPoints": 40,
         "availability": [8, 6, 0, 0],
         "UpgradeFromUnit": "M42_Duster_US",
+        "WeaponDescriptor": {
+            "Salves": {
+                "Gatling_M61_Vulcan_20mm_noRadar": 19,
+            },
+        },
     },
 
     "M163_PIVADS_US": {
@@ -3730,7 +3808,7 @@ usa_unit_edits = {
         "availability": [7, 5, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "Gatling_M61_Vulcan_20mm_late": 25,
+                "Gatling_M61_Vulcan_20mm_late": 38,
             },
         },
     },
@@ -3742,6 +3820,11 @@ usa_unit_edits = {
         "max_speed": 6,
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "Gatling_M61_Vulcan_20mm_TOWED": 19,
+            },
         },
         "UpgradeFromUnit": "FOB_US",
     },
@@ -3763,6 +3846,11 @@ usa_unit_edits = {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
         "UpgradeFromUnit": None,
+        "WeaponDescriptor": {
+            "Salves": {
+                "Gatling_M61_Vulcan_20mm_late_TOWED": 38,
+            },
+        },
     },
     
     "DCA_M167_Vulcan_20mm_US": { # AB M167A1 VADS 20mm
@@ -3782,6 +3870,11 @@ usa_unit_edits = {
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "Gatling_M61_Vulcan_20mm_TOWED": 76,
+            },
+        },
         "UpgradeFromUnit": "DCA_M167_Vulcan_20mm_nonPara_US",
     },
     
@@ -3799,6 +3892,11 @@ usa_unit_edits = {
         "max_speed": 6,
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "Gatling_M61_Vulcan_20mm_late_TOWED": 38,
+            },
         },
         "UpgradeFromUnit": "DCA_M167A2_Vulcan_20mm_US",
     },
@@ -3827,6 +3925,12 @@ usa_unit_edits = {
     "DCA_XM85_Chaparral_US": {
         "CommandPoints": 130,
         "availability": [4, 3, 0, 0],
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 220,
+            },
+            "TimeBetweenEachIdentifyRoll": 1.0,
+        },
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
         },
@@ -4327,13 +4431,25 @@ usa_unit_edits = {
 
 
     "F4E_Phantom_II_CBU_US": {
-        "CommandPoints": 165,
+        "CommandPoints": 190,
         "optics": {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 375,
             },
         },
         "availability": [0, 2, 0, 0],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [
+                    (
+                        "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength2",
+                        "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength5",
+                        "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength2",
+                        "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength5"
+                    ),
+                ],
+            },
+        },
     },
 
     "F4E_Phantom_II_napalm_US": {
@@ -4418,11 +4534,23 @@ usa_unit_edits = {
     },
 
     "F111F_Aardvark_CBU_US": {  # 8x Mk-20 Rockeye, 82nd Airborne
-        "CommandPoints": 190,
+        "CommandPoints": 220,
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
         "availability": [0, 2, 0, 0],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [
+                    (
+                        "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength8",
+                        "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength18",
+                        "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength8",
+                        "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength18"
+                    ),
+                ],
+            },
+        },
     },
 
     "F111E_Aardvark_napalm_US": {  # 4x Mk-77 napalm, 3rd Armored

@@ -20,7 +20,7 @@ uk_new_divs = {
         "summary_text": ("UK combined arms division.", "SUMUKGEN"),
         "history_text": ("UK national division.", "HISUKGEN"),
         "activation_points": 75,
-        "standout_units": ["Challenger_1_Mk1_UK", "MCV_80_Warrior_UK", "Paratroopers_UK"],
+        "standout_units": ["Challenger_1_Mk3_UK", "SAS_UK", "FV721_Fox_ZB298_UK"],
         "division_rules": [
             UK_airborne_newdivisionrules,
             UK_armored_newdivisionrules,
@@ -51,7 +51,7 @@ uk_new_divs = {
         "summary_text": ("UK airborne division.", "SUMUKAIR"),
         "history_text": ("UK Airborne division.", "HISUKAIR"),
         "activation_points": 100,
-        "standout_units": ["Paratroopers_UK", "FV101_Scorpion_para_UK", "Lynx_AH_Mk7_I_TOW_UK"],
+        "standout_units": ["Rifles_Gurkhas_UK", "FV101_Scorpion_para_UK", "A109A_RKT_UK"],
         "division_rules": [
             UK_airborne_newdivisionrules,
             UK_global_newdivisionrules,
@@ -71,7 +71,7 @@ uk_new_divs = {
         "summary_text": ("UK airborne and armored division.", "SUMUKAARM"),
         "history_text": ("UK Airborne / Armored division.", "HISUKAARM"),
         "activation_points": 85,
-        "standout_units": ["Paratroopers_UK", "FV4201_Chieftain_Mk9_UK", "FV101_Scorpion_para_UK"],
+        "standout_units": ["Challenger_1_Mk3_UK", "LSV_MILAN_UK", "AS90_155mm_UK"],
         "division_rules": [
             UK_airborne_newdivisionrules,
             UK_armored_newdivisionrules,
@@ -95,7 +95,7 @@ uk_new_divs = {
         "summary_text": ("UK airborne and mechanized division.", "SUMUKAMEC"),
         "history_text": ("UK Airborne / Mechanized division.", "HISUKAMEC"),
         "activation_points": 85,
-        "standout_units": ["Paratroopers_UK", "MCV_80_Warrior_UK", "FV101_Scorpion_para_UK"],
+        "standout_units": ["Territorial_UK", "Airmobile_MILAN_UK", "Lynx_AH_Mk7_I_TOW_UK"],
         "division_rules": [
             UK_airborne_newdivisionrules,
             UK_global_newdivisionrules,
@@ -122,7 +122,7 @@ uk_new_divs = {
         "summary_text": ("UK airborne and motorized division.", "SUMUKAMOT"),
         "history_text": ("UK Airborne / Motorized division.", "HISUKAMOT"),
         "activation_points": 85,
-        "standout_units": ["Paratroopers_UK", "Saxon_UK", "LandRover_UK"],
+        "standout_units": ["Rifles_Berlin_UK", "Paratroopers_MILAN_TA_UK", "Westland_Scout_SS11_UK"],
         "division_rules": [
             UK_airborne_newdivisionrules,
             UK_global_newdivisionrules,
@@ -146,7 +146,7 @@ uk_new_divs = {
         "summary_text": ("UK armored division.", "SUMUKARM"),
         "history_text": ("UK Armored division.", "HISUKARM"),
         "activation_points": 100,
-        "standout_units": ["Challenger_1_Mk1_UK", "MCV_80_Warrior_UK", "FV438_Swingfire_UK"],
+        "standout_units": ["Challenger_1_Mk1_CMD_UK", "MCV_80_Warrior_UK", "FV438_Swingfire_UK"],
         "division_rules": [
             UK_armored_newdivisionrules,
             UK_global_newdivisionrules,
@@ -166,7 +166,7 @@ uk_new_divs = {
         "summary_text": ("UK armored and mechanized division.", "SUMUKARMC"),
         "history_text": ("UK Armored / Mechanized division.", "HISUKARMC"),
         "activation_points": 85,
-        "standout_units": ["Challenger_1_Mk1_UK", "MCV_80_Warrior_UK", "Rifles_UK"],
+        "standout_units": ["Challenger_1_Mk1_UK", "FV4003_Centurion_AVRE_ROMOR_UK", "M110A2_Howz_UK"],
         "division_rules": [
             UK_armored_newdivisionrules,
             UK_global_newdivisionrules,
@@ -186,7 +186,7 @@ uk_new_divs = {
         "summary_text": ("UK armored and motorized division.", "SUMUKARMT"),
         "history_text": ("UK Armored / Motorized division.", "HISUKARMT"),
         "activation_points": 85,
-        "standout_units": ["Challenger_1_Mk1_UK", "Saxon_UK", "FV4201_Chieftain_UK"],
+        "standout_units": ["FV4201_Chieftain_UK", "Sniper_Guards_UK", "Ferret_Swingfire_UK"],
         "division_rules": [
             UK_armored_newdivisionrules,
             UK_global_newdivisionrules,
@@ -212,7 +212,7 @@ uk_new_divs = {
         "summary_text": ("UK mechanized division.", "SUMUKMEC"),
         "history_text": ("UK Mechanized division.", "HISUKMEC"),
         "activation_points": 100,
-        "standout_units": ["MCV_80_Warrior_UK", "FV432_UK", "Rifles_UK"],
+        "standout_units": ["Centurion_AVRE_105_UK", "Airmobile_TA_UK", "FV432_Rarden_UK"],
         "division_rules": [
             UK_global_newdivisionrules,
             UK_mechanized_newdivisionrules,
@@ -231,7 +231,7 @@ uk_new_divs = {
         "summary_text": ("UK mechanized and motorized division.", "SUMUKMECT"),
         "history_text": ("UK Mechanized / Motorized division.", "HISUKMECT"),
         "activation_points": 85,
-        "standout_units": ["MCV_80_Warrior_UK", "FV432_UK", "Saxon_UK"],
+        "standout_units": ["Airmobile_MILAN_UK", "Security_UK", "FV4201_Chieftain_Mk6_UK"],
         "division_rules": [
             UK_global_newdivisionrules,
             UK_mechanized_newdivisionrules,
@@ -251,7 +251,7 @@ uk_new_divs = {
         "summary_text": ("UK motorized division.", "SUMUKMOT"),
         "history_text": ("UK Motorized division.", "HISUKMOT"),
         "activation_points": 100,
-        "standout_units": ["Saxon_UK", "Guards_UK", "FV4201_Chieftain_UK"],
+        "standout_units": ["LRRP_UK", "Guards_UK", "Lynx_AH_Mk7_I_TOW2_UK"],
         "division_rules": [
             UK_motorized_newdivisionrules,
             UK_global_newdivisionrules,

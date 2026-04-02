@@ -129,6 +129,236 @@ PGB_BOMB_DAMAGE = [
     1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, # 13 WA armor levels
 ]
 
+# Column layout: clu_sol_hefrag.csv (Armor row); blank cells forward-fill to the same family.
+# Regenerate: python tools/clu_sol_hefrag_from_csv.py --apply
+
+CLU_SOL_HEFRAG_FAMILY_ORDER = (
+    'air',
+    'building',
+    'armor',
+    'canon',
+    'helicopter',
+    'infantry',
+    'roof_top_armor',
+    'vehicle',
+    'light_vehicle',
+    'infantry_wa',
+)
+
+CLU_SOL_HEFRAG_BY_LEVEL = {
+    1: {
+        'air': [3.0, 3.0, 2.0],
+        'building': [0.2],
+        'armor': [1.0, 1.0, 1.0, 1.0, 1.0, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
+        'canon': [0.5, 0.5, 0.5],
+        'helicopter': [3.0, 3.0, 2.0],
+        'infantry': [2.0, 2.0, 2.0],
+        'roof_top_armor': [8.0, 6.0],
+        'vehicle': [2.0, 1.0, 3.0],
+        'light_vehicle': [2.0],
+        'infantry_wa': [2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0],
+    },
+    2: {
+        'air': [3.0, 3.0, 2.0],
+        'building': [0.2],
+        'armor': [2.0, 1.0, 1.0, 1.0, 1.0, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
+        'canon': [0.5, 0.5, 0.5],
+        'helicopter': [3.0, 3.0, 2.0],
+        'infantry': [2.0, 2.0, 2.0],
+        'roof_top_armor': [8.0, 6.0],
+        'vehicle': [4.0, 2.0, 3.0],
+        'light_vehicle': [4.0],
+        'infantry_wa': [2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0],
+    },
+    3: {
+        'air': [3.0, 3.0, 2.0],
+        'building': [0.2],
+        'armor': [3.0, 1.5, 1.0, 1.0, 1.0, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
+        'canon': [0.5, 0.5, 0.5],
+        'helicopter': [3.0, 3.0, 2.0],
+        'infantry': [2.0, 2.0, 2.0],
+        'roof_top_armor': [8.0, 6.0],
+        'vehicle': [6.0, 3.0, 3.0],
+        'light_vehicle': [6.0],
+        'infantry_wa': [2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0],
+    },
+    4: {
+        'air': [3.0, 3.0, 2.0],
+        'building': [0.2],
+        'armor': [4.0, 2.0, 1.5, 1.0, 1.0, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
+        'canon': [0.5, 0.5, 0.5],
+        'helicopter': [3.0, 3.0, 2.0],
+        'infantry': [2.0, 2.0, 2.0],
+        'roof_top_armor': [8.0, 6.0],
+        'vehicle': [8.0, 4.0, 3.0],
+        'light_vehicle': [8.0],
+        'infantry_wa': [2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0],
+    },
+    5: {
+        'air': [3.0, 3.0, 2.0],
+        'building': [0.2],
+        'armor': [5.0, 2.5, 2.0, 1.5, 1.0, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
+        'canon': [0.5, 0.5, 0.5],
+        'helicopter': [3.0, 3.0, 2.0],
+        'infantry': [2.0, 2.0, 2.0],
+        'roof_top_armor': [8.0, 6.0],
+        'vehicle': [10.0, 5.0, 3.0],
+        'light_vehicle': [10.0],
+        'infantry_wa': [2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0],
+    },
+    6: {
+        'air': [3.0, 3.0, 2.0],
+        'building': [0.2],
+        'armor': [6.0, 3.0, 2.5, 2.0, 1.5, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
+        'canon': [0.5, 0.5, 0.5],
+        'helicopter': [3.0, 3.0, 2.0],
+        'infantry': [2.4, 2.4, 2.4],
+        'roof_top_armor': [8.0, 6.0],
+        'vehicle': [12.0, 6.0, 3.0],
+        'light_vehicle': [12.0],
+        'infantry_wa': [2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4],
+    },
+    7: {
+        'air': [3.0, 3.0, 2.0],
+        'building': [0.2],
+        'armor': [7.0, 3.5, 3.0, 2.5, 2.0, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
+        'canon': [0.5, 0.5, 0.5],
+        'helicopter': [3.0, 3.0, 2.0],
+        'infantry': [2.8, 2.8, 2.8],
+        'roof_top_armor': [8.0, 6.0],
+        'vehicle': [14.0, 7.0, 3.0],
+        'light_vehicle': [14.0],
+        'infantry_wa': [2.8, 2.8, 2.8, 2.8, 2.8, 2.8, 2.8, 2.8, 2.8, 2.8, 2.8, 2.8, 2.8],
+    },
+    8: {
+        'air': [3.0, 3.0, 2.0],
+        'building': [0.2],
+        'armor': [8.0, 4.0, 3.5, 3.0, 2.5, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
+        'canon': [0.5, 0.5, 0.5],
+        'helicopter': [3.0, 3.0, 2.0],
+        'infantry': [3.2, 3.2, 3.2],
+        'roof_top_armor': [8.0, 6.0],
+        'vehicle': [16.0, 8.0, 3.0],
+        'light_vehicle': [16.0],
+        'infantry_wa': [3.2, 3.2, 3.2, 3.2, 3.2, 3.2, 3.2, 3.2, 3.2, 3.2, 3.2, 3.2, 3.2],
+    },
+    9: {
+        'air': [3.0, 3.0, 2.0],
+        'building': [0.2],
+        'armor': [9.0, 4.5, 4.0, 3.5, 3.0, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
+        'canon': [0.5, 0.5, 0.5],
+        'helicopter': [3.0, 3.0, 2.0],
+        'infantry': [3.6, 3.6, 3.6],
+        'roof_top_armor': [8.0, 6.0],
+        'vehicle': [18.0, 9.0, 3.0],
+        'light_vehicle': [18.0],
+        'infantry_wa': [3.6, 3.6, 3.6, 3.6, 3.6, 3.6, 3.6, 3.6, 3.6, 3.6, 3.6, 3.6, 3.6],
+    },
+    10: {
+        'air': [3.0, 3.0, 2.0],
+        'building': [0.2],
+        'armor': [10.0, 5.0, 4.5, 4.0, 3.5, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
+        'canon': [0.5, 0.5, 0.5],
+        'helicopter': [3.0, 3.0, 2.0],
+        'infantry': [4.0, 4.0, 4.0],
+        'roof_top_armor': [8.0, 6.0],
+        'vehicle': [20.0, 10.0, 3.0],
+        'light_vehicle': [20.0],
+        'infantry_wa': [4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0],
+    },
+    11: {
+        'air': [3.0, 3.0, 2.0],
+        'building': [0.2],
+        'armor': [11.0, 5.5, 5.0, 4.5, 4.0, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
+        'canon': [0.5, 0.5, 0.5],
+        'helicopter': [3.0, 3.0, 2.0],
+        'infantry': [4.4, 4.4, 4.4],
+        'roof_top_armor': [8.0, 6.0],
+        'vehicle': [22.0, 11.0, 3.0],
+        'light_vehicle': [22.0],
+        'infantry_wa': [4.4, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4],
+    },
+    12: {
+        'air': [3.0, 3.0, 2.0],
+        'building': [0.2],
+        'armor': [12.0, 6.0, 5.5, 5.0, 4.5, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
+        'canon': [0.5, 0.5, 0.5],
+        'helicopter': [3.0, 3.0, 2.0],
+        'infantry': [4.8, 4.8, 4.8],
+        'roof_top_armor': [8.0, 6.0],
+        'vehicle': [24.0, 12.0, 3.0],
+        'light_vehicle': [24.0],
+        'infantry_wa': [4.8, 4.8, 4.8, 4.8, 4.8, 4.8, 4.8, 4.8, 4.8, 4.8, 4.8, 4.8, 4.8],
+    },
+    13: {
+        'air': [3.0, 3.0, 2.0],
+        'building': [0.2],
+        'armor': [13.0, 7.0, 6.0, 5.5, 5.0, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
+        'canon': [0.5, 0.5, 0.5],
+        'helicopter': [3.0, 3.0, 2.0],
+        'infantry': [5.2, 5.2, 5.2],
+        'roof_top_armor': [8.0, 6.0],
+        'vehicle': [26.0, 13.0, 3.0],
+        'light_vehicle': [26.0],
+        'infantry_wa': [5.2, 5.2, 5.2, 5.2, 5.2, 5.2, 5.2, 5.2, 5.2, 5.2, 5.2, 5.2, 5.2],
+    },
+    14: {
+        'air': [3.0, 3.0, 2.0],
+        'building': [0.2],
+        'armor': [14.0, 8.0, 7.0, 6.0, 5.5, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
+        'canon': [0.5, 0.5, 0.5],
+        'helicopter': [3.0, 3.0, 2.0],
+        'infantry': [5.6, 5.6, 5.6],
+        'roof_top_armor': [8.0, 6.0],
+        'vehicle': [28.0, 14.0, 3.0],
+        'light_vehicle': [28.0],
+        'infantry_wa': [5.6, 5.6, 5.6, 5.6, 5.6, 5.6, 5.6, 5.6, 5.6, 5.6, 5.6, 5.6, 5.6],
+    },
+    15: {
+        'air': [3.0, 3.0, 2.0],
+        'building': [0.2],
+        'armor': [15.0, 9.0, 8.0, 7.0, 6.0, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
+        'canon': [0.5, 0.5, 0.5],
+        'helicopter': [3.0, 3.0, 2.0],
+        'infantry': [6.0, 6.0, 6.0],
+        'roof_top_armor': [8.0, 6.0],
+        'vehicle': [30.0, 15.0, 3.0],
+        'light_vehicle': [30.0],
+        'infantry_wa': [6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0],
+    },
+    16: {
+        'air': [3.0, 3.0, 2.0],
+        'building': [0.2],
+        'armor': [16.0, 10.0, 9.0, 8.0, 7.0, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
+        'canon': [0.5, 0.5, 0.5],
+        'helicopter': [3.0, 3.0, 2.0],
+        'infantry': [6.4, 6.4, 6.4],
+        'roof_top_armor': [8.0, 6.0],
+        'vehicle': [32.0, 16.0, 3.0],
+        'light_vehicle': [32.0],
+        'infantry_wa': [6.4, 6.4, 6.4, 6.4, 6.4, 6.4, 6.4, 6.4, 6.4, 6.4, 6.4, 6.4, 6.4],
+    },
+}
+
+CLU_SOL_HEFRAG = [
+    [x for k in CLU_SOL_HEFRAG_FAMILY_ORDER for x in CLU_SOL_HEFRAG_BY_LEVEL[lv][k]]
+    for lv in range(1, 17)
+]
+
+# clu_sol_ap (vanilla rows 88–103): same profile as CLU_SOL_HEFRAG except cols 40–42 = half of the first three
+# infantry_wa values for that level (matches HE table: 3 exposed-infantry vs 13 WA bands).
+# WA cols 49–61 are overwritten by INFANTRY_ARMOR_EDITS in damageresistance._edit_infantry_armor.
+
+CLU_SOL_AP = []
+for lv in range(1, 17):
+    ap_row = list(CLU_SOL_HEFRAG[lv - 1])
+    iw = CLU_SOL_HEFRAG_BY_LEVEL[lv]['infantry_wa']
+    ap_row[40:43] = [0.5 * iw[j] for j in range(3)]
+    CLU_SOL_AP.append(ap_row)
+
+CLU_SOL_AP_ROW_FIRST = 88
+CLU_SOL_AP_ROW_LAST = 103
+
 MANPAD_HAGRU_DAMAGE = [
     1.0, 0.9, 0.8, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
     1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
@@ -172,22 +402,22 @@ INFANTRY_ARMOR_EDITS = {
         85: (1.0, "cac 2"),
         86: (1.0, "cac 3"),
         87: (1.0, "cac 4"),
-        88: (0.5, "clu_sol_ap 1"),
-        89: (0.5, "clu_sol_ap 2"),
-        90: (0.5, "clu_sol_ap 3"),
-        91: (0.5, "clu_sol_ap 4"),
-        92: (0.5, "clu_sol_ap 5"),
-        93: (0.5, "clu_sol_ap 6"),
-        94: (0.5, "clu_sol_ap 7"),
-        95: (0.5, "clu_sol_ap 8"),
-        96: (0.5, "clu_sol_ap 9"),
-        97: (0.5, "clu_sol_ap 10"),
-        98: (0.5, "clu_sol_ap 11"),
-        99: (0.5, "clu_sol_ap 12"),
-        100: (0.5, "clu_sol_ap 13"),
-        101: (0.5, "clu_sol_ap 14"),
-        102: (0.5, "clu_sol_ap 15"),
-        103: (0.0, "clu_sol_ap 16"),
+        88: (1.0, "clu_sol_ap 1"),
+        89: (1.0, "clu_sol_ap 2"),
+        90: (1.0, "clu_sol_ap 3"),
+        91: (1.0, "clu_sol_ap 4"),
+        92: (1.0, "clu_sol_ap 5"),
+        93: (1.2, "clu_sol_ap 6"),
+        94: (1.4, "clu_sol_ap 7"),
+        95: (1.6, "clu_sol_ap 8"),
+        96: (1.8, "clu_sol_ap 9"),
+        97: (2.0, "clu_sol_ap 10"),
+        98: (2.2, "clu_sol_ap 11"),
+        99: (2.4, "clu_sol_ap 12"),
+        100: (2.6, "clu_sol_ap 13"),
+        101: (2.8, "clu_sol_ap 14"),
+        102: (3.0, "clu_sol_ap 15"),
+        103: (3.2, "clu_sol_ap 16"),
         104: (4.0, "cluster 1"),
         105: (0.5, "cluster_ap 1"),
         106: (0.5, "cluster_ap 2"),
@@ -256,28 +486,47 @@ DAMAGE_EDITS = {
         }
     },
     
-    "clu_sol_ap_16": {
-        "row": 103,
-        "edits": {
-            6: 7.0,    # 3 top armor (4.25 is vanilla)
-        }
-    },
     "FMballe_1": {  # 5.56mm
         "row": 111,
         "edits": {
-            37: 2.5,    # helicopter <1 armor (1.0 is vanilla)
-            38: 1.25,    # helicopter 1 armor (0.5 is vanilla)
-            45: 1.75,   # vehicle <1 armor (1.25 is vanilla)
+            37: 2.5,    # helicopter <1 armor (vanilla value is 1.0)
+            38: 1.25,    # helicopter 1 armor (vanilla value is 0.5)
+            45: 1.75,   # vehicle <1 armor (vanilla value is 1.25)
         }
     },
+    
+    "he_dca_1": {
+        "row": 119,
+        "edits": {
+            # Same values against air used by missile_he
+            0: 1.0,       # air <1 armor (vanilla value is 1.2)
+            1: 0.7,       # air 1 armor (vanilla value is 1.1)
+            2: 0.6,       # air 2 armor (vanilla value is 1.0)
+            
+            # Note: missile_he is 1.0 for all helo armor levels (helos are more balanced around hitpoints for missiles)
+            37: 1.0,      # helicopter <1 armor (vanilla value is 2.5)
+            38: 0.7,      # helicopter 1 armor (vanilla value is 1.8)
+            39: 0.6,      # helicopter 2 armor (vanilla value is 1.0, but never used)
+            
+            # Note: vanilla infantry armor levels are only still used for weapon teams 
+            40: 1.0,      # infantry 0 armor (vanilla value is 0.5)
+            41: 1.0,      # infantry 1 armor (vanilla value is 0.5, but never used)
+            42: 1.0,      # infantry 2 armor (vanilla value is 0.5, but never used)
+            
+            45: 1.0,      # vehicle <1 armor (vanilla value is 3.30)
+            46: 0.5,      # vehicle 1 armor (vanilla value is 0.8)
+            47: 0.25,     # vehicle 2 armor (vanilla value is 0.4, but never used)
+        }
+    },
+    
     # need to figure out which weapons to seperate from this category or how to balance them with same family ratio
     "HE_autocanon_1": {  # 12.7mm
         "row": 120,
         "edits": {
-            37: 3.3,    # helicopter <1 armor (2.5 is vanilla)
-            # 38: 2.4,    # helicopter 1 armor (0.8 is vanilla)
-            # 46: 2.0,    # vehicle 1 armor (0.8 is vanilla)
-            # 47: 1.0,    # vehicle 2 armor (0.4 is vanilla)
+            37: 3.3,    # helicopter <1 armor (vanilla value is 2.5)
+            # 38: 2.4,    # helicopter 1 armor (vanilla value is 0.8)
+            # 46: 2.0,    # vehicle 1 armor (vanilla value is 0.8)
+            # 47: 1.0,    # vehicle 2 armor (vanilla value is 0.4)
             49: 1.0,    # WA Infantry 1 (14 strength, not set by other WA inf armor function)
         }
     },
@@ -316,8 +565,8 @@ DAMAGE_EDITS = {
     "Missile_HE": {  # avion
         "row": 128,
         "edits": {
-            1: 0.7,    # avion 1 armor (0.9 is vanilla)
-            2: 0.6,    # avion 2 armor (0.8 is vanilla)
+            1: 0.7,    # avion 1 armor (vanilla value is 0.9)
+            2: 0.6,    # avion 2 armor (vanilla value is 0.8)
         }
     },
     "thermobarique": {
@@ -340,8 +589,8 @@ DAMAGE_EDITS = {
     "Roquette_AP_1": {  # blindage
         "row": 139,
         "edits": {
-            7: 0.7,    # blindage 4 armor (0.5 is vanilla)
-            8: 0.6,    # blindage 5 armor (0.5 is vanilla)
+            7: 0.7,    # blindage 4 armor (vanilla value is 0.5)
+            8: 0.6,    # blindage 5 armor (vanilla value is 0.5)
         }
     }
 }

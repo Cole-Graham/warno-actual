@@ -85,6 +85,9 @@ def build_ammo_data(mod_src_path: Path) -> Dict[str, Any]:
         salvo_weapons = build_salvo_weapons(ammo_file)
         salvo_weapons.update(build_salvo_weapons(ammo_missile_file))
         
+        ammo_props = build_ammo_properties(ammo_file)
+        ammo_props.update(build_ammo_properties(ammo_missile_file))
+
         return {
             "mg_categories": build_mg_categories(ammo_file),
             "full_ball_weapons": build_full_ball_weapons(ammo_file),
@@ -93,7 +96,7 @@ def build_ammo_data(mod_src_path: Path) -> Dict[str, Any]:
             "salvo_weapons": salvo_weapons,
             "salves_map": build_ammo_salves_map(weapon_descriptor_file),
             "mortar_weapons": build_mortar_weapons(ammo_file),
-            "ammo_properties": build_ammo_properties(ammo_file),
+            "ammo_properties": ammo_props,
             "missing_cac_tag": build_missing_cac_tag(ammo_file),
             "all_ammunition_and_missile": build_all_ammunition_and_missile_names(ammo_file, ammo_missile_file),
         }
@@ -142,23 +145,41 @@ def build_all_ammunition_and_missile_names(parse_ammo_source, parse_ammo_missile
     return all_names
 
 
+def _parse_numeric_member_value(value: Any) -> Any:
+    """Parse NDF member string to int or float."""
+    try:
+        if isinstance(value, (int, float)):
+            return value
+        if isinstance(value, str):
+            if "." in value:
+                return float(value)
+            return int(value)
+    except (TypeError, ValueError):
+        return None
+    return None
+
+
 def build_ammo_properties(parse_ammo_source) -> Dict[str, Any]:
-    """Build dictionary of ammunition properties from Ammunition.ndf"""
+    """Build dictionary of ammunition properties from Ammunition.ndf or AmmunitionMissiles.ndf."""
     ammo_properties = {}
-    
+
     for ammo_descr in parse_ammo_source:
-        
-        # MinMaxCategory
+
         if ammo_descr.v.by_m("MinMaxCategory", False) is not None:
             min_max_category = ammo_descr.v.by_m("MinMaxCategory", False).v
         else:
             min_max_category = None
-            
-        # Set properties
+
+        radius_membr = ammo_descr.v.by_m("RadiusSplashPhysicalDamagesGRU", False)
+        radius_splash: Any = None
+        if radius_membr is not None:
+            radius_splash = _parse_numeric_member_value(radius_membr.v)
+
         ammo_properties[ammo_descr.n] = {
             "MinMaxCategory": min_max_category,
+            "RadiusSplashPhysicalDamagesGRU": radius_splash,
         }
-    
+
     return ammo_properties
 
 

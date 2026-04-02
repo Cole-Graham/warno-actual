@@ -20,6 +20,10 @@ from src.utils.database_utils import ensure_db_directory
 from src.utils.logging_utils import setup_logger
 
 from .deck_pack_mappings import build_deck_pack_mappings
+from .insert_turret_templates import (
+    build_insert_turret_templates,
+    save_insert_turret_templates,
+)
 from .small_arms_quantity_validation import (
     build_valid_small_arms_quantity_variants,
     save_valid_small_arms_variants,
@@ -129,6 +133,12 @@ def build_constants_precomputation_data(config: Dict[str, Any], game_db: Dict[st
         # Save ammunition_renames to separate JSON file
         save_ammunition_renames(ammunition_renames, config)
 
+        # Build and save insert turret templates (vanilla turrets for equipment insert)
+        insert_templates = build_insert_turret_templates(
+            config, game_db, ammunition_renames=ammunition_renames,
+        )
+        save_insert_turret_templates(insert_templates, config)
+
         # Build and validate small arms quantity variants
         valid_small_arms_variants = build_valid_small_arms_quantity_variants(game_db)
         save_valid_small_arms_variants(valid_small_arms_variants, config)
@@ -140,15 +150,17 @@ def build_constants_precomputation_data(config: Dict[str, Any], game_db: Dict[st
                     "Fix unit edits or add quantities to NbWeapons in small_arms.py"
                 )
 
-        # Add ammunition_renames to return dict for convenience
+        # Add ammunition_renames and insert_turret_templates to return dict for convenience
         mappings["ammunition_renames"] = ammunition_renames
+        mappings["insert_turret_templates"] = insert_templates
 
         logger.info(
             f"Constants precomputation data built and saved: "
             f"{len(mappings.get('deck_pack_modifications', {}))} modifications, "
             f"{len(mappings.get('reference_mappings', {}))} references, "
             f"{len(mappings.get('new_command_unit_deck_packs', {}))} new command unit deck packs, "
-            f"{len(ammunition_renames.get('renames_old_new', {}))} ammunition renames"
+            f"{len(ammunition_renames.get('renames_old_new', {}))} ammunition renames, "
+            f"{len(insert_templates)} insert turret templates"
         )
         return mappings
     except Exception as e:

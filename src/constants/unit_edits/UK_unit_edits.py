@@ -731,6 +731,11 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "RocketInf_LAW_80": 6,
+            },
+        },
     },
 
     "AT_Group_TA_UK": {
@@ -1303,7 +1308,7 @@ uk_unit_edits = {
     },
 
     "M270_MLRS_cluster_UK": {
-        "CommandPoints": 300,
+        "CommandPoints": 350,
         "Divisions": {
             # "add": ["US_8th_Inf"],
             # "is_transported": False,
@@ -1312,13 +1317,13 @@ uk_unit_edits = {
                 "cards": 2,
             },
         },
-        "WeaponDescriptor": {
-            "turrets": {
-                0: {
-                    "AngleRotationMaxPitch": 1.0,
-                },
-            },
-        },
+        # "WeaponDescriptor": {
+        #     "turrets": {
+        #         0: {
+        #             "AngleRotationMaxPitch": 1.0,
+        #         },
+        #     },
+        # },
         "availability": [0, 1, 0, 0],
     },
 
@@ -1362,6 +1367,9 @@ uk_unit_edits = {
     
     "FV4201_Chieftain_CMD_UK": {
         "CommandPoints": 150,
+        "armor": {
+            "top": (4, None),
+        },
         "GameName": {
             "display": "#LDR CHIEFTAIN Mk.10 LDR.",
             "token": "JMOQXJZCVT",
@@ -1399,6 +1407,9 @@ uk_unit_edits = {
     
     "Challenger_1_Mk1_CMD_UK": {
         "CommandPoints": 205,
+        "armor": {
+            "top": (4, None),
+        },
         "GameName": {
             "display": "#LDR CHALLENGER Mk.2 LDR.",
             "token": "LDRBLUCHAL",
@@ -1439,6 +1450,12 @@ uk_unit_edits = {
             "Salves": {
                 "MMG_L37A2_7_62mm": 56,
             },
+        },
+         "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+        "orders": {
+            "add_orders": ["EOrderType/Sell"],
         },
     },
     
@@ -1596,7 +1613,7 @@ uk_unit_edits = {
     },
     
     "Centurion_AVRE_105_UK": {
-        "CommandPoints": 65,
+        "CommandPoints": 60,
         "availability": [8, 6, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
@@ -1639,8 +1656,11 @@ uk_unit_edits = {
     },
     
     "FV4201_Chieftain_Mk1_4_UK": {
-        "CommandPoints": 75,
-        "availability": [0, 10, 7, 0],
+        "CommandPoints": 80,
+        "armor": {
+            "top": (3, None),
+        },
+        "availability": [10, 7, 0, 0],
         "capacities": {
             "remove_capacities": ["Instructor_TNK"],
         },
@@ -1659,6 +1679,9 @@ uk_unit_edits = {
     
     "FV4201_Chieftain_Mk6_UK": {
         "CommandPoints": 85,
+        "armor": {
+            "top": (4, None),
+        },
         "availability": [10, 7, 0, 0],
         "UpgradeFromUnit": "FV4201_Chieftain_Mk1_4_UK",
         "WeaponDescriptor": {
@@ -1671,6 +1694,9 @@ uk_unit_edits = {
     
     "FV4201_Chieftain_Mk9_UK": {
         "CommandPoints": 115,
+        "armor": {
+            "top": (4, None),
+        },
         "availability": [8, 6, 0, 0],
         "UpgradeFromUnit": "FV4201_Chieftain_Mk6_UK",
         "WeaponDescriptor": {
@@ -1683,6 +1709,9 @@ uk_unit_edits = {
     
     "FV4201_Chieftain_UK": { # Mk10 
         "CommandPoints": 135,
+        "armor": {
+            "top": (4, None),
+        },
         "availability": [0, 6, 4, 0],
         "WeaponDescriptor": {
             "Salves": {
@@ -1697,6 +1726,9 @@ uk_unit_edits = {
             "display": "CHALLENGER Mk.2",
         },
         "CommandPoints": 185,
+        "armor": {
+            "top": (4, None),
+        },
         "Divisions": {
             "default": {
                 "cards": 69,
@@ -1709,6 +1741,7 @@ uk_unit_edits = {
             },
         },
         "availability": [0, 4, 3, 0],
+        
         "WeaponDescriptor": {
             "Salves": {
                 "MMG_L8A2_7_62mm": 96,
@@ -1718,6 +1751,9 @@ uk_unit_edits = {
     
     "Challenger_1_Mk3_UK": {
         "CommandPoints": 210,
+        "armor": {
+            "top": (4, None),
+        },
         "availability": [0, 0, 4, 3],
         "WeaponDescriptor": {
             "Salves": {
@@ -1729,6 +1765,14 @@ uk_unit_edits = {
     # UK RECON
     "LandRover_Yeoman_UK": {
         "CommandPoints": 25,
+        "WeaponDescriptor": {
+             "equipmentchanges": {
+                "replace": [("MMG_inf_MAG_7_62mm", "MMG_FN_MAG_7_62mm")],
+            },
+            "Salves": {
+                "MMG_inf_MAG_7_62mm": 36,
+            },
+        },
     },
     
     "FV103_Spartan_UK": {
@@ -1830,6 +1874,9 @@ uk_unit_edits = {
     
     "FV4201_Chieftain_Mk11_UK": {
         "CommandPoints": 150,
+        "armor": {
+            "top": (4, None),
+        },
         "TypeUnit": {
             "AcknowUnitTypes": ["Reco"],
             "TypeUnitFormation": "Reconnaissance",
@@ -1902,7 +1949,7 @@ uk_unit_edits = {
     },
     
     "Lynx_AH_Mk7_Chancellor_UK": {
-        "CommandPoints": 55,
+        "CommandPoints": 50,
         "availability": [0, 4, 0, 0],
     },
 
@@ -2061,6 +2108,7 @@ uk_unit_edits = {
                 "insert": [(2, 2)],
             },
         },
+        "UpgradeFromUnit": "Sniper_UK",
     },
 
     "Gazelle_UK": {
@@ -2178,18 +2226,26 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canons_Oerlikon_GDF_002_35mm": 14,
+            },
+        },
     },
 
     "DCA_Rapier_UK": {
         "CommandPoints": 65,
+        "GameName": {
+            "display": "RAPIER",
+        },
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 220,
+                "EOpticalStrength/HighAltitude": 300,
             },
             "TimeBetweenEachIdentifyRoll": 1.0,
         },
         "SpecialtiesList": {
-            "add_specs": ["'good_airoptics'"],
+            "add_specs": ["'verygood_airoptics'"],
         },
         "availability": [6, 4, 0, 0],
         "Divisions": {
@@ -2205,20 +2261,10 @@ uk_unit_edits = {
 
     "Tracked_Rapier_UK": {
         "CommandPoints": 85,
-        "optics": {
-            "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 220,
-            },
-            "TimeBetweenEachIdentifyRoll": 1.0,
+        "GameName": {
+            "display": "TRACKED RAPIER",
+            "token": "TQRFBEXVTC",
         },
-        "SpecialtiesList": {
-            "add_specs": ["'good_airoptics'"],
-        },
-        "availability": [4, 3, 0, 0],
-    },
-
-    "DCA_Rapier_FSA_UK": {  # towed FSB1
-        "CommandPoints": 85,
         "optics": {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 300,
@@ -2227,6 +2273,24 @@ uk_unit_edits = {
         },
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
+        },
+        "availability": [4, 3, 0, 0],
+        "UpgradeFromUnit": "DCA_Rapier_Darkfire_UK",
+    },
+
+    "DCA_Rapier_FSA_UK": {  # towed FSB1
+        "CommandPoints": 85,
+        "GameName": {
+            "display": "RAPIER LASERFIRE",
+        },
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 220,
+            },
+            "TimeBetweenEachIdentifyRoll": 1.0,
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'good_airoptics'"],
         },
         "availability": [6, 4, 0, 0],
         "Divisions": {
@@ -2238,10 +2302,14 @@ uk_unit_edits = {
                 "Transports": ["Rover_101FC_supply_UK"],
             },
         },
+        "UpgradeFromUnit": None,
     },
     
     "DCA_Rapier_Darkfire_UK": {
         "CommandPoints": 100,
+        "GameName": {
+            "display": "RAPIER DARKFIRE",
+        },
         "optics": {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 300,
@@ -2252,6 +2320,7 @@ uk_unit_edits = {
             "add_specs": ["'verygood_airoptics'"],
         },
         "availability": [4, 3, 0, 0],
+        "UpgradeFromUnit": "DCA_Rapier_UK",
     },
     
     "DCA_Bloodhound_UK": {
@@ -2266,6 +2335,7 @@ uk_unit_edits = {
             "add_specs": ["'verygood_airoptics'"],
         },
         "availability": [0, 3, 0, 0],
+        "UpgradeFromUnit": None,
     },
 
     # UK HELI
@@ -2278,6 +2348,13 @@ uk_unit_edits = {
     
     "CH47_Chinook_UK": {
         "CommandPoints": 60,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+    },
+
+    "CH47D_Chinook_SAS_UK": {
+        "CommandPoints": 65,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'",],
         },
@@ -2406,17 +2483,17 @@ uk_unit_edits = {
         "UpgradeFromUnit": None,
     },
 
-    "Harrier_RKT2_UK": {  # 36x SNEB, 36x SNEB
+    "Harrier_RKT2_UK": {  # 36x SNEB, 36x SNEB, experimenting with split rocket salvo
         "CommandPoints": 100,
         "availability": [0, 4, 3, 0],
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                "replace": [("RocketAir_SNEB_68mm_salvolength18", "RocketAir_SNEB_68mm_salvolength36")],
-            },
-            "Salves": {
-                "RocketAir_SNEB_68mm": 1,
-            },
-        },
+        # "WeaponDescriptor": {
+        #     "equipmentchanges": {
+        #         "replace": [("RocketAir_SNEB_68mm_salvolength18", "RocketAir_SNEB_68mm_salvolength36")],
+        #     },
+        #     "Salves": {
+        #         "RocketAir_SNEB_68mm": 1,
+        #     },
+        # },
         "UpgradeFromUnit": "Harrier_RKT1_UK"
     },
 
@@ -2492,8 +2569,9 @@ uk_unit_edits = {
         },
     },
     
-    "Tornado_ADV_SEAD_UK" : { # ALARM 5600m
+    "Tornado_ADV_SEAD_UK" : { # 3x ALARM 5600m
         "availability": [0, 2, 0, 1],
+        "CommandPoints": 300,
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 10000.0,
@@ -2510,10 +2588,13 @@ uk_unit_edits = {
                 "cards": 1,
             },
         },
+        "SpecialtiesList": {
+            "add_specs": ["'terrain_radar'"],
+        },
     },
 
     "Tornado_ADV_UK": { # 4x Skyflash SuperTEMP, 4x AIM-9L
-        "CommandPoints": 250,
+        "CommandPoints": 230,
         "availability": [0, 2, 0, 1],
         "WeaponDescriptor": {
             "equipmentchanges": {

@@ -20,7 +20,7 @@ sov_new_divs = {
         "summary_text": ("Soviet combined arms division.", "SUMSOVGEN"),
         "history_text": ("USSR national division.", "HISOVGEN"),
         "activation_points": 75,
-        "standout_units": ["T80U_SOV", "BMP_2_SOV", "VDV_SOV"],
+        "standout_units": ["T80UD_SOV", "Spetsnaz_Vympel_SOV", "Su_25T_SOV"],
         "division_rules": [
             SOV_airborne_newdivisionrules,
             SOV_armored_newdivisionrules,
@@ -68,7 +68,7 @@ sov_new_divs = {
         "summary_text": ("Soviet airborne division.", "SUMSOVAIR"),
         "history_text": ("USSR Airborne division.", "HISOVAIR"),
         "activation_points": 100,
-        "standout_units": ["VDV_SOV", "BMD_2_SOV", "BTR_D_SOV"],
+        "standout_units": ["VDV_SOV", "BMD_3_SOV", "Ka_50_SOV"],
         "division_rules": [
             SOV_airborne_newdivisionrules,
             SOV_global_newdivisionrules,
@@ -87,7 +87,7 @@ sov_new_divs = {
         "summary_text": ("Soviet airborne and armored division.", "SUMSOVAARM"),
         "history_text": ("USSR Airborne / Armored division.", "HISOVAARM"),
         "activation_points": 85,
-        "standout_units": ["VDV_SOV", "BMD_2_SOV", "T62MD_SOV"],
+        "standout_units": ["T80U_SOV", "DShV_Hvy_SOV", "MiG_31_AA1_SOV"],
         "division_rules": [
             SOV_airborne_newdivisionrules,
             SOV_armored_newdivisionrules,
@@ -127,7 +127,7 @@ sov_new_divs = {
         "summary_text": ("Soviet airborne and mechanized division.", "SUMSOVAMEC"),
         "history_text": ("USSR Airborne / Mechanized division.", "HISOVAMEC"),
         "activation_points": 85,
-        "standout_units": ["VDV_SOV", "BMD_2_SOV", "BTR_70D_SOV"],
+        "standout_units": ["T10M_SOV", "DShV_Metis_SOV", "MiG_25BM_SOV"],
         "division_rules": [
             SOV_airborne_newdivisionrules,
             SOV_global_newdivisionrules,
@@ -163,7 +163,7 @@ sov_new_divs = {
         "summary_text": ("Soviet airborne and motorized division.", "SUMSOVAMOT"),
         "history_text": ("USSR Airborne / Motorized division.", "HISOVAMOT"),
         "activation_points": 85,
-        "standout_units": ["VDV_SOV", "BTR_D_SOV", "GAZ_66B_SOV"],
+        "standout_units": ["VDV_Combine_SOV", "Alfa_Group_SOV", "MiG_21bis_CLU_SOV"],
         "division_rules": [
             SOV_airborne_newdivisionrules,
             SOV_global_newdivisionrules,
@@ -205,7 +205,7 @@ sov_new_divs = {
         "summary_text": ("Soviet armored division.", "SUMSOVARM"),
         "history_text": ("USSR Armored division.", "HISOVARM"),
         "activation_points": 100,
-        "standout_units": ["T80U_SOV", "T72B_SOV", "BMP_2_SOV"],
+        "standout_units": ["T80U_Obr89_SOV", "T72B_SOV", "T64AM_SOV"],
         "division_rules": [
             SOV_armored_newdivisionrules,
             SOV_global_newdivisionrules,
@@ -225,7 +225,7 @@ sov_new_divs = {
         "summary_text": ("Soviet armored and mechanized division.", "SUMSOVARMC"),
         "history_text": ("USSR Armored / Mechanized division.", "HISOVARMC"),
         "activation_points": 85,
-        "standout_units": ["T80U_SOV", "BMP_2_SOV", "MotRifles_TTsko_SOV"],
+        "standout_units": ["T80U_CMD_SOV", "BMP_2AG_SOV", "2S7M_Malka_SOV"],
         "division_rules": [
             SOV_armored_newdivisionrules,
             SOV_global_newdivisionrules,
@@ -257,7 +257,7 @@ sov_new_divs = {
         "summary_text": ("Soviet armored and motorized division.", "SUMSOVARMT"),
         "history_text": ("USSR Armored / Motorized division.", "HISOVARMT"),
         "activation_points": 85,
-        "standout_units": ["T80U_SOV", "BMP_2_SOV", "BTR_80_SOV"],
+        "standout_units": ["T80BV_Beast_SOV", "KGB_BorderGuard_SOV", "MTLB_BMAN_SOV"],
         "division_rules": [
             SOV_armored_newdivisionrules,
             SOV_global_newdivisionrules,
@@ -283,7 +283,7 @@ sov_new_divs = {
         "summary_text": ("Soviet mechanized division.", "SUMSOVMEC"),
         "history_text": ("USSR Mechanized division.", "HISOVMEC"),
         "activation_points": 100,
-        "standout_units": ["BMP_2_SOV", "T72M1_SOV", "MotRifles_TTsko_SOV"],
+        "standout_units": ["BMP_3_SOV", "MotRifles_TTsko_SOV", "2S4_Tyulpan_SOV"],
         "division_rules": [
             SOV_global_newdivisionrules,
             SOV_mechanized_newdivisionrules,
@@ -302,7 +302,7 @@ sov_new_divs = {
         "summary_text": ("Soviet mechanized and motorized division.", "SUMSOVMECT"),
         "history_text": ("USSR Mechanized / Motorized division.", "HISOVMECT"),
         "activation_points": 85,
-        "standout_units": ["BMP_2_SOV", "BTR_80_SOV", "MotRifles_TTsko_SOV"],
+        "standout_units": ["BMP_2_reco_SOV", "Scout_SpetsnazGRU_Stinger_SOV", "MTLB_Shturm_SOV"],
         "division_rules": [
             SOV_global_newdivisionrules,
             SOV_mechanized_newdivisionrules,
@@ -331,7 +331,7 @@ sov_new_divs = {
         "summary_text": ("Soviet motorized division.", "SUMSOVMOT"),
         "history_text": ("USSR Motorized division.", "HISOVMOT"),
         "activation_points": 100,
-        "standout_units": ["BTR_80_SOV", "T72B_SOV", "MotRifles_TTsko_SOV"],
+        "standout_units": ["BTR_80_SOV", "BM30_Smerch_SOV", "Mi_24VP_SOV"],
         "division_rules": [
             SOV_motorized_newdivisionrules,
             SOV_global_newdivisionrules,

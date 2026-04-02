@@ -335,26 +335,9 @@ class DPMVisualizerApp:
                 if hasattr(self.weapons_tab, 'collect_bonus_combinations'):
                     self.weapons_tab.collect_bonus_combinations()
                 
-                # Update weapon dropdowns (use ammunition_props instead of weapon_descriptors)
-                self.weapons_tab.weapon_display_names = []
-                for ammo_name in sorted(self.ammunition_props.keys()):
-                    self.weapons_tab.weapon_display_names.append(ammo_name)
-                # Add custom weapons
-                if hasattr(self, 'custom_weapons') and self.custom_weapons:
-                    for custom_name in sorted(self.custom_weapons.keys()):
-                        if custom_name not in self.weapons_tab.weapon_display_names:
-                            self.weapons_tab.weapon_display_names.append(custom_name)
-                
-                # Update all existing dropdowns
-                for dropdown in self.weapons_tab.weapon_dropdowns:
-                    if hasattr(dropdown, 'set_values'):
-                        dropdown.set_values(self.weapons_tab.weapon_display_names)
-                
-                # Update bonus dropdowns
-                if hasattr(self.weapons_tab, 'weapon_bonus_combos'):
-                    bonus_strings = self.weapons_tab.get_bonus_display_strings()
-                    for bonus_combo in self.weapons_tab.weapon_bonus_combos:
-                        bonus_combo.set_values(bonus_strings)
+                # Refresh weapon lists (stock + custom weapons valid for current damage CSV)
+                if hasattr(self.weapons_tab, '_refresh_weapon_lists'):
+                    self.weapons_tab._refresh_weapon_lists()
             
             messagebox.showinfo("Success", f"Loaded {len(self.infantry_units)} infantry units")
             
@@ -649,25 +632,8 @@ class DPMVisualizerApp:
                         if hasattr(self.weapons_tab, 'collect_bonus_combinations'):
                             self.weapons_tab.collect_bonus_combinations()
                         
-                        # Update weapon dropdowns (use ammunition_props instead of weapon_descriptors)
-                        self.weapons_tab.weapon_display_names = []
-                        for ammo_name in sorted(self.ammunition_props.keys()):
-                            self.weapons_tab.weapon_display_names.append(ammo_name)
-                        # Add custom weapons
-                        for custom_name in sorted(self.custom_weapons.keys()):
-                            if custom_name not in self.weapons_tab.weapon_display_names:
-                                self.weapons_tab.weapon_display_names.append(custom_name)
-                        
-                        # Update all existing dropdowns
-                        for dropdown in self.weapons_tab.weapon_dropdowns:
-                            if hasattr(dropdown, 'set_values'):
-                                dropdown.set_values(self.weapons_tab.weapon_display_names)
-                        
-                        # Update bonus dropdowns
-                        if hasattr(self.weapons_tab, 'weapon_bonus_combos'):
-                            bonus_strings = self.weapons_tab.get_bonus_display_strings()
-                            for bonus_combo in self.weapons_tab.weapon_bonus_combos:
-                                bonus_combo.set_values(bonus_strings)
+                        if hasattr(self.weapons_tab, '_refresh_weapon_lists'):
+                            self.weapons_tab._refresh_weapon_lists()
                     
                     return True
                 except Exception as e:
@@ -730,19 +696,10 @@ class DPMVisualizerApp:
                 
                 # Update Weapons tab UI if it exists
                 if hasattr(self, 'weapons_tab'):
-                    # Update weapon dropdowns (use ammunition_props instead of weapon_descriptors)
-                    self.weapons_tab.weapon_display_names = []
-                    for ammo_name in sorted(self.ammunition_props.keys()):
-                        self.weapons_tab.weapon_display_names.append(ammo_name)
-                    # Add custom weapons
-                    for custom_name in sorted(self.custom_weapons.keys()):
-                        if custom_name not in self.weapons_tab.weapon_display_names:
-                            self.weapons_tab.weapon_display_names.append(custom_name)
-                    
-                    # Update all existing dropdowns
-                    for dropdown in self.weapons_tab.weapon_dropdowns:
-                        if hasattr(dropdown, 'set_values'):
-                            dropdown.set_values(self.weapons_tab.weapon_display_names)
+                    if hasattr(self.weapons_tab, 'collect_bonus_combinations'):
+                        self.weapons_tab.collect_bonus_combinations()
+                    if hasattr(self.weapons_tab, '_refresh_weapon_lists'):
+                        self.weapons_tab._refresh_weapon_lists()
                 
                 return True
             except Exception as e:
@@ -875,9 +832,12 @@ class DPMVisualizerApp:
                 if hasattr(self.infantry_tab, 'load_unit_combo'):
                     self.infantry_tab.load_unit_combo.set_values(self.infantry_tab.unit_display_names)
             
-            # Update Weapons tab dropdowns with custom weapons
-            if hasattr(self, 'weapons_tab') and hasattr(self.weapons_tab, '_initialize_data'):
-                self.weapons_tab._initialize_data()
+            # Update Weapons tab dropdowns with custom weapons (do not reset damage CSV selection)
+            if hasattr(self, 'weapons_tab'):
+                if hasattr(self.weapons_tab, 'collect_bonus_combinations'):
+                    self.weapons_tab.collect_bonus_combinations()
+                if hasattr(self.weapons_tab, '_refresh_weapon_lists'):
+                    self.weapons_tab._refresh_weapon_lists()
     
     def save_user_data(self):
         """Save user data to JSON file (range modifier tables, custom units, custom weapons, UI state)."""

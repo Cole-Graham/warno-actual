@@ -138,7 +138,6 @@ USA_NEW_UNITS = {
         "IdentifiedTextures": ["Texture_RTS_H_supply", "Texture_supply"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "MenuIconTexture": "Texture_RTS_H_supply",
-        "CubeActionDescriptor": "vehiculeSol_supply",
         "Factory": "EFactory/Logistic",
         "CommandPoints": 30,
         "Divisions": {
@@ -164,6 +163,7 @@ USA_NEW_UNITS = {
         "is_unarmed": True,
         "Faction": "NATO",
         "Nation": "US",
+        "UpgradeFromUnit": "Gama_Goat_supply_US",
     },
 
     ("Scout_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -477,6 +477,9 @@ USA_NEW_UNITS = {
             },
         },
         "availability": [0, 0, 0, 1],
+        "armor": {
+            "top": (5, None),
+        },
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply',
@@ -527,6 +530,9 @@ USA_NEW_UNITS = {
             },
         },
         "availability": [0, 0, 2, 0],
+        "armor": {
+            "top": (5, None),
+        },
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply',
@@ -573,6 +579,9 @@ USA_NEW_UNITS = {
             },
         },
         "availability": [0, 4, 3, 0],
+        "armor": {
+            "top": (5, None),
+        },
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply',
@@ -623,6 +632,9 @@ USA_NEW_UNITS = {
             },
         },
         "availability": [0, 0, 2, 0],
+        "armor": {
+            "top": (5, None),
+        },
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply',
@@ -670,6 +682,9 @@ USA_NEW_UNITS = {
             },
         },
         "availability": [0, 0, 2, 0],
+        "armor": {
+            "top": (4, None),
+        },
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply',
@@ -681,6 +696,7 @@ USA_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "NATO",
         "Nation": "US",
+        "UpgradeFromUnit": "M60A3_CMD2_US",
     },
 
     ("M60A3_CMD_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -716,6 +732,9 @@ USA_NEW_UNITS = {
             },
         },
         "availability": [0, 2, 0, 0],
+        "armor": {
+            "top": (3, None),
+        },
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply',
@@ -727,6 +746,7 @@ USA_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "NATO",
         "Nation": "US",
+        "UpgradeFromUnit": "M60A1_RISE_Passive_CMD2_US",
     },
 
     ("M60A1_RISE_Passive_CMD_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -759,6 +779,9 @@ USA_NEW_UNITS = {
             },
         },
         "availability": [0, 3, 0, 0],
+        "armor": {
+            "top": (3, None),
+        },
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
                    'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply',
