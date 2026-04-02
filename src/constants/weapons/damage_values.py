@@ -489,19 +489,44 @@ DAMAGE_EDITS = {
     "FMballe_1": {  # 5.56mm
         "row": 111,
         "edits": {
-            37: 2.5,    # helicopter <1 armor (1.0 is vanilla)
-            38: 1.25,    # helicopter 1 armor (0.5 is vanilla)
-            45: 1.75,   # vehicle <1 armor (1.25 is vanilla)
+            37: 2.5,    # helicopter <1 armor (vanilla value is 1.0)
+            38: 1.25,    # helicopter 1 armor (vanilla value is 0.5)
+            45: 1.75,   # vehicle <1 armor (vanilla value is 1.25)
         }
     },
+    
+    "he_dca_1": {
+        "row": 119,
+        "edits": {
+            # Same values against air used by missile_he
+            0: 1.0,       # air <1 armor (vanilla value is 1.2)
+            1: 0.7,       # air 1 armor (vanilla value is 1.1)
+            2: 0.6,       # air 2 armor (vanilla value is 1.0)
+            
+            # Note: missile_he is 1.0 for all helo armor levels (helos are more balanced around hitpoints for missiles)
+            37: 1.0,      # helicopter <1 armor (vanilla value is 2.5)
+            38: 0.7,      # helicopter 1 armor (vanilla value is 1.8)
+            39: 0.6,      # helicopter 2 armor (vanilla value is 1.0, but never used)
+            
+            # Note: vanilla infantry armor levels are only still used for weapon teams 
+            40: 1.0,      # infantry 0 armor (vanilla value is 0.5)
+            41: 1.0,      # infantry 1 armor (vanilla value is 0.5, but never used)
+            42: 1.0,      # infantry 2 armor (vanilla value is 0.5, but never used)
+            
+            45: 1.0,      # vehicle <1 armor (vanilla value is 3.30)
+            46: 0.5,      # vehicle 1 armor (vanilla value is 0.8)
+            47: 0.25,     # vehicle 2 armor (vanilla value is 0.4, but never used)
+        }
+    },
+    
     # need to figure out which weapons to seperate from this category or how to balance them with same family ratio
     "HE_autocanon_1": {  # 12.7mm
         "row": 120,
         "edits": {
-            37: 3.3,    # helicopter <1 armor (2.5 is vanilla)
-            # 38: 2.4,    # helicopter 1 armor (0.8 is vanilla)
-            # 46: 2.0,    # vehicle 1 armor (0.8 is vanilla)
-            # 47: 1.0,    # vehicle 2 armor (0.4 is vanilla)
+            37: 3.3,    # helicopter <1 armor (vanilla value is 2.5)
+            # 38: 2.4,    # helicopter 1 armor (vanilla value is 0.8)
+            # 46: 2.0,    # vehicle 1 armor (vanilla value is 0.8)
+            # 47: 1.0,    # vehicle 2 armor (vanilla value is 0.4)
             49: 1.0,    # WA Infantry 1 (14 strength, not set by other WA inf armor function)
         }
     },
@@ -540,8 +565,8 @@ DAMAGE_EDITS = {
     "Missile_HE": {  # avion
         "row": 128,
         "edits": {
-            1: 0.7,    # avion 1 armor (0.9 is vanilla)
-            2: 0.6,    # avion 2 armor (0.8 is vanilla)
+            1: 0.7,    # avion 1 armor (vanilla value is 0.9)
+            2: 0.6,    # avion 2 armor (vanilla value is 0.8)
         }
     },
     "thermobarique": {
@@ -564,8 +589,8 @@ DAMAGE_EDITS = {
     "Roquette_AP_1": {  # blindage
         "row": 139,
         "edits": {
-            7: 0.7,    # blindage 4 armor (0.5 is vanilla)
-            8: 0.6,    # blindage 5 armor (0.5 is vanilla)
+            7: 0.7,    # blindage 4 armor (vanilla value is 0.5)
+            8: 0.6,    # blindage 5 armor (vanilla value is 0.5)
         }
     }
 }

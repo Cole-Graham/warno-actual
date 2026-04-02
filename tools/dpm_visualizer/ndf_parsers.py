@@ -939,6 +939,12 @@ def parse_ammunition_properties(mod_src_path: Path) -> Dict[str, Dict[str, Any]]
                     damage_family = arme_obj.v.by_m("Family", None)
                     if damage_family:
                         properties["damage_family"] = strip_quotes(damage_family.v)
+                    arme_index = arme_obj.v.by_m("Index", None)
+                    if arme_index is not None and arme_index.v is not None:
+                        try:
+                            properties["damage_level"] = int(float(str(arme_index.v).strip().strip("'")))
+                        except (TypeError, ValueError):
+                            pass
                 
                 # Extract Idling accuracy
                 hit_roll = ammo_descr.v.by_m("HitRollRuleDescriptor", None)
