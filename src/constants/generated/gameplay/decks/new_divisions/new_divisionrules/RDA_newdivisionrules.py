@@ -81,9 +81,8 @@ RDA_airborne_newdivisionrules = {
         ("MANPAD_Strela_2M_FJ_DDR", 3, [0, 0, 12, 9], ["UAZ_469_trans_DDR"]),
         ("MANPAD_Igla_DDR", 2, [7, 5, 0, 0], ["UAZ_469_trans_DDR", "BTR_152A_DDR", "Mi_2_trans_DDR"]),
         ("BRDM_Strela_1_DDR", 1, [6, 4, 0, 0]),
-        ("MTLB_Strela10_DDR", 1, [6, 4, 0, 0]),
+        ("MTLB_Strela10_DDR", 2, [6, 4, 0, 0]),
         ("Bofors_40mm_capture_DDR", 1, [10, 7, 0, 0], ["M35_trans_DDR"]),
-        ("DCA_I_Hawk_capture_DDR", 1, [4, 3, 0, 0], ["M35_trans_DDR"]),
     ],
     "heli": [
         ("Mi_24P_s8_AT_DDR", 2, [0, 3, 2, 0]),

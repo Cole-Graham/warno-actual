@@ -104,6 +104,7 @@ SOV_airborne_newdivisionrules = {
         ("MANPAD_Igla_VDV_SOV", 2, [0, 7, 5, 0], ["UAZ_469_SOV", "BTR_ZD_Skrezhet_SOV"]),
         ("MANPAD_Igla_DShV_SOV", 2, [0, 7, 5, 0], ["LUAZ_967M_SOV", "BTR_70D_SOV", "GTMU_1D_SOV", "GTMU_1D_ZU_SOV", "Mi_8TV_non_arme_SOV"]),
         ("BRDM_Strela_1_SOV", 2, [8, 6, 0, 0]),
+        ("MTLB_Strela10_SOV", 2, [6, 4, 0, 0]),
         ("ZSU_23_Shilka_Afghan_SOV", 1, [8, 6, 0, 0]),
         ("Ural_4320_ZPU_SOV", 1, [12, 9, 0, 0]),
         ("GAZ_66B_ZU_SOV", 2, [0, 10, 7, 0]),
