@@ -2153,7 +2153,7 @@ rfa_unit_edits = {
     },
 
     "Tornado_IDS_SEAD_RFA": { # AGM-88 5950m
-        "CommandPoints": 250,
+        "CommandPoints": 300,
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 10000.0,

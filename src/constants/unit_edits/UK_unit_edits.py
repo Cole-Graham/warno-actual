@@ -2569,8 +2569,9 @@ uk_unit_edits = {
         },
     },
     
-    "Tornado_ADV_SEAD_UK" : { # ALARM 5600m
+    "Tornado_ADV_SEAD_UK" : { # 3x ALARM 5600m
         "availability": [0, 2, 0, 1],
+        "CommandPoints": 300,
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 10000.0,
@@ -2586,6 +2587,9 @@ uk_unit_edits = {
             "default": {
                 "cards": 1,
             },
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'terrain_radar'"],
         },
     },
 
