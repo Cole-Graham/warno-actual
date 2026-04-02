@@ -2237,7 +2237,7 @@ sov_unit_edits = {
     },
     
     "BM30_Smerch_SOV": {
-        "CommandPoints": 360,
+        "CommandPoints": 330,
         "availability": [0, 1, 0, 0],
     },
 
@@ -5056,11 +5056,23 @@ sov_unit_edits = {
     },
 
     "Su_24M_clu_SOV": {
-        "CommandPoints": 200,
+        "CommandPoints": 190,
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
         "availability": [0, 2, 0, 0],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [
+                    (
+                        "Bomb_CLU_RBK_250kg_salvolength8",
+                        "Bomb_CLU_RBK_250kg_salvolength16",
+                        "Bomb_CLU_RBK_250kg_salvolength8",
+                        "Bomb_CLU_RBK_250kg_salvolength16"
+                    )
+                ],
+            },
+        },
     },
     
     "Su_24M_nplm_SOV": {

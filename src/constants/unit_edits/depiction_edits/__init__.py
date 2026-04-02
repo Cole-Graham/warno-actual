@@ -42,6 +42,7 @@ from .SOV_depiction_edits import (
     motrifles_btr_ttsko_sov,
     mtlb_vasilek_sov,
     sniper_spetsnaz_sov,
+    su_24m_clu_sov,
 )
 from .UK_depiction_edits import (
     airmobile_mot_cmd_uk,
@@ -57,10 +58,12 @@ from .USA_depiction_edits import (
     airborne_engineers_flash_us,
     airborne_half_dragon_us,
     engineer_cmd_us,
+    f4e_phantom_ii_cbu_us,
     f4e_phantom_ii_napalm_us,
     f15e_strikeeagle_us,
     f16e_napalm_us,
     f111e_aardvark_napalm_us,
+    # f111f_aardvark_cbu_us,
     f111f_aardvark_napalm_us,
     groupe_at_us,
     m3a1_bradley_cfv_us,
@@ -117,6 +120,7 @@ __all__ = [
     "motrifles_btr_ttsko_sov",
     "mtlb_vasilek_sov",
     "sniper_spetsnaz_sov",
+    "su_24m_clu_sov",
     
     # UK
     "airmobile_mot_cmd_uk",
@@ -132,10 +136,12 @@ __all__ = [
     "airborne_engineers_flash_us",
     "airborne_half_dragon_us",
     "engineer_cmd_us",
+    "f4e_phantom_ii_cbu_us",
     "f4e_phantom_ii_napalm_us",
     "f15e_strikeeagle_us",
     "f16e_napalm_us",
     "f111e_aardvark_napalm_us",
+    "f111f_aardvark_cbu_us",
     "f111f_aardvark_napalm_us",
     "groupe_at_us",
     "m3a1_bradley_cfv_us",

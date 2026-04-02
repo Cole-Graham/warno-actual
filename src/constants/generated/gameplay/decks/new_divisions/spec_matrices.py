@@ -1,6 +1,6 @@
 """Activation Point matrices for National divisions."""
 
-# TypeToken mapping for TDeckDivisionDescriptor (replaces DivisionPowerClassification and TypeTexture)
+# TypeToken mapping for TDeckDivisionDescriptor
 DIV_TYPE_TO_TOKEN = {
     "general": "ARMORED",
     "airborne": "AIRBORNE",
@@ -16,7 +16,7 @@ DIV_TYPE_TO_TOKEN = {
 }
 
 spec_matrices = {
-    "general": {
+    "general": {  # sum: 156
         "EFactory/Art": [2, 3, 4, 5, 7],
         "EFactory/DCA": [2, 2, 3, 4, 6],
         "EFactory/Defense": [],
@@ -27,18 +27,18 @@ spec_matrices = {
         "EFactory/Recons": [2, 2, 2, 2, 2, 2, 4],
         "EFactory/Tanks": [2, 2, 2, 2, 2, 2, 3],
     },
-    "airborne": {
+    "airborne": {  # sum: 156
         "EFactory/Art": [2, 3, 4, 4, 6],
         "EFactory/DCA": [2, 2, 3, 4, 4],
         "EFactory/Defense": [],
-        "EFactory/Helis": [2, 2, 2, 3, 3, 4, 5],
+        "EFactory/Helis": [2, 2, 3, 3, 3, 4, 4],
         "EFactory/Infantry": [2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4],
         "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 3, 3],
         "EFactory/Planes": [2, 2, 3, 3, 4, 6, 8],
         "EFactory/Recons": [2, 2, 2, 3, 3, 3, 3],
         "EFactory/Tanks": [2, 2, 3, 3],
     },
-    "airborne_armored": {
+    "airborne_armored": {  # sum: 156
         "EFactory/Art": [2, 3, 4, 5, 6],
         "EFactory/DCA": [2, 2, 3, 4, 5],
         "EFactory/Defense": [],
@@ -49,29 +49,29 @@ spec_matrices = {
         "EFactory/Recons": [2, 2, 2, 3, 3, 3, 3],
         "EFactory/Tanks": [2, 2, 2, 2, 2, 4],
     },
-    "airborne_mechanized": {
-        "EFactory/Art": [2, 3, 4, 5, 6],
-        "EFactory/DCA": [2, 2, 3, 4, 6],
+    "airborne_mechanized": {  # sum: 148
+        "EFactory/Art": [2, 3, 4, 4, 6],
+        "EFactory/DCA": [2, 2, 3, 4, 5],
         "EFactory/Defense": [],
-        "EFactory/Helis": [2, 2, 2, 3, 3, 4],
-        "EFactory/Infantry": [2, 2, 2, 2, 2, 2, 2, 3, 4, 5],
-        "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 2, 3, 3],
-        "EFactory/Planes": [2, 2, 3, 3, 5, 6, 7],
-        "EFactory/Recons": [2, 2, 2, 2, 2, 3, 3],
-        "EFactory/Tanks": [2, 2, 2, 3, 4],
+        "EFactory/Helis": [2, 2, 3, 3, 3, 4],
+        "EFactory/Infantry": [2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3],
+        "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 2, 2, 2],
+        "EFactory/Planes": [2, 2, 3, 3, 4, 6, 8],
+        "EFactory/Recons": [2, 2, 2, 2, 2, 2, 2],
+        "EFactory/Tanks": [2, 2, 2, 2, 2, 2],
     },
-    "airborne_motorized": {
-        "EFactory/Art": [2, 3, 4, 5, 6],
-        "EFactory/DCA": [2, 2, 3, 4, 6],
+    "airborne_motorized": {  # sum: 148
+        "EFactory/Art": [2, 3, 3, 4, 5],
+        "EFactory/DCA": [2, 2, 3, 4, 4],
         "EFactory/Defense": [],
-        "EFactory/Helis": [2, 2, 2, 3, 3, 4],
-        "EFactory/Infantry": [2, 2, 2, 2, 2, 2, 2, 3, 4, 5],
+        "EFactory/Helis": [2, 2, 3, 3, 3, 4],
+        "EFactory/Infantry": [2, 2, 2, 2, 2, 2, 2, 2, 3, 4],
         "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 2, 3, 3],
-        "EFactory/Planes": [2, 2, 3, 3, 5, 6, 7],
-        "EFactory/Recons": [2, 2, 2, 2, 2, 3, 3],
-        "EFactory/Tanks": [2, 2, 2, 3, 4],
+        "EFactory/Planes": [2, 2, 3, 4, 4, 6, 7],
+        "EFactory/Recons": [2, 2, 2, 2, 2, 2, 2, 2],
+        "EFactory/Tanks": [2, 2, 2, 2, 2, 2],
     },
-    "armored": {
+    "armored": {  # sum: 156
         "EFactory/Art": [2, 3, 4, 5, 6],
         "EFactory/DCA": [2, 2, 3, 4, 6],
         "EFactory/Defense": [],
@@ -82,60 +82,60 @@ spec_matrices = {
         "EFactory/Recons": [2, 2, 2, 2, 2, 3, 4],
         "EFactory/Tanks": [2, 2, 2, 2, 2, 2, 3, 3],
     },
-    "armored_mechanized": {
-        "EFactory/Art": [2, 2, 4, 4, 5, 4],
-        "EFactory/DCA": [2, 2, 4, 4, 6],
+    "armored_mechanized": {  # sum: 152
+        "EFactory/Art": [2, 3, 4, 4, 6],
+        "EFactory/DCA": [2, 2, 3, 4, 6],
         "EFactory/Defense": [],
-        "EFactory/Helis": [2, 2, 2, 3, 3],
-        "EFactory/Infantry": [2, 2, 2, 2, 2, 2, 3, 4, 4, 3],
+        "EFactory/Helis": [2, 3, 3, 3, 4],
+        "EFactory/Infantry": [2, 2, 2, 2, 2, 2, 2, 3, 3, 3],
+        "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 3, 3, 3],
+        "EFactory/Planes": [2, 2, 4, 4, 6, 8],
+        "EFactory/Recons": [2, 2, 2, 2, 2, 2, 3],
+        "EFactory/Tanks": [2, 2, 2, 2, 2, 2, 2, 2],
+    },
+    "armored_motorized": {  # sum: 152
+        "EFactory/Art": [2, 2, 3, 4, 4, 5],
+        "EFactory/DCA": [2, 3, 3, 4, 6],
+        "EFactory/Defense": [],
+        "EFactory/Helis": [2, 2, 2, 3, 4],
+        "EFactory/Infantry": [2, 2, 2, 2, 2, 2, 2, 3, 3],
         "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 2, 3, 3],
-        "EFactory/Planes": [2, 2, 4, 5, 6, 7],
-        "EFactory/Recons": [2, 2, 2, 2, 2, 2, 4],
+        "EFactory/Planes": [2, 2, 4, 5, 6, 8],
+        "EFactory/Recons": [2, 2, 2, 2, 2, 2, 2, 3],
         "EFactory/Tanks": [2, 2, 2, 2, 2, 2, 2, 3],
     },
-    "armored_motorized": {
-        "EFactory/Art": [2, 2, 4, 4, 5, 4],
-        "EFactory/DCA": [2, 2, 4, 4, 6],
-        "EFactory/Defense": [],
-        "EFactory/Helis": [2, 2, 2, 3, 3],
-        "EFactory/Infantry": [2, 2, 2, 2, 2, 2, 3, 4, 4, 3],
-        "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 2, 3, 3],
-        "EFactory/Planes": [2, 2, 4, 5, 6, 7],
-        "EFactory/Recons": [2, 2, 2, 2, 2, 2, 4],
-        "EFactory/Tanks": [2, 2, 2, 2, 2, 2, 2, 3],
-    },
-    "mechanized": {
-        "EFactory/Art": [2, 2, 4, 4, 5, 6],
+    "mechanized": {  # sum: 146
+        "EFactory/Art": [2, 3, 4, 4, 5, 5],
         "EFactory/DCA": [2, 2, 4, 4, 6],
         "EFactory/Defense": [],
         "EFactory/Helis": [2, 2, 3, 4],
-        "EFactory/Infantry": [2, 2, 2, 2, 2, 2, 3, 4, 4, 5],
-        "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 2, 3, 3],
+        "EFactory/Infantry": [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+        "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 2, 2, 2],
         "EFactory/Planes": [2, 2, 3, 4, 5, 8],
-        "EFactory/Recons": [2, 2, 2, 2, 2, 2, 3],
-        "EFactory/Tanks": [2, 2, 2, 2, 2, 2, 2, 3],
+        "EFactory/Recons": [2, 2, 2, 2, 2, 2, 2],
+        "EFactory/Tanks": [2, 2, 2, 2, 2, 2, 2, 2],
     },
-    "mechanized_motorized": {
-        "EFactory/Art": [2, 2, 4, 4, 5, 4],
+    "mechanized_motorized": {  # sum: 148
+        "EFactory/Art": [2, 2, 3, 4, 4, 5],
         "EFactory/DCA": [2, 2, 4, 4, 6],
         "EFactory/Defense": [],
         "EFactory/Helis": [2, 2, 2, 3, 3],
-        "EFactory/Infantry": [2, 2, 2, 2, 2, 2, 3, 4, 4, 3],
+        "EFactory/Infantry": [2, 2, 2, 2, 2, 2, 2, 2, 2, 3],
         "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 2, 3, 3],
         "EFactory/Planes": [2, 2, 4, 5, 6, 7],
-        "EFactory/Recons": [2, 2, 2, 2, 2, 2, 4],
+        "EFactory/Recons": [2, 2, 2, 2, 2, 2, 2],
         "EFactory/Tanks": [2, 2, 2, 2, 2, 2, 2, 3],
     },
-    "motorized": {
-        "EFactory/Art": [2, 2, 4, 4, 5, 6],
-        "EFactory/DCA": [2, 2, 4, 4, 6],
+    "motorized": {  # sum: 146
+        "EFactory/Art": [2, 3, 3, 4, 5, 5],
+        "EFactory/DCA": [2, 3, 3, 4, 5],
         "EFactory/Defense": [],
         "EFactory/Helis": [2, 2, 3, 4],
-        "EFactory/Infantry": [2, 2, 2, 2, 2, 2, 3, 4, 4, 5],
+        "EFactory/Infantry": [2, 2, 2, 2, 2, 2, 2, 2, 2],
         "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 2, 3, 3],
         "EFactory/Planes": [2, 2, 3, 4, 5, 8],
-        "EFactory/Recons": [2, 2, 2, 2, 2, 2, 3],
-        "EFactory/Tanks": [2, 2, 2, 2, 2, 2, 2, 3],
+        "EFactory/Recons": [2, 2, 2, 2, 2, 2, 2, 2, 2],
+        "EFactory/Tanks": [2, 2, 2, 2, 2, 2, 2, 2],
     },
 }
 

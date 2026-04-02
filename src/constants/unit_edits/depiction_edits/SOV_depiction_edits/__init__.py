@@ -7,6 +7,7 @@ from .Mortier_2B9_Vasilek_SOV import mortier_2b9_vasilek_sov
 from .MotRifles_BTR_TTsko_SOV import motrifles_btr_ttsko_sov
 from .MTLB_Vasilek_SOV import mtlb_vasilek_sov
 from .Sniper_Spetsnaz_SOV import sniper_spetsnaz_sov
+from .Su_24M_clu_SOV import su_24m_clu_sov
 
 __all__ = [
     "mi_8tv_gunship_sov",
@@ -16,5 +17,6 @@ __all__ = [
     "motrifles_btr_ttsko_sov",
     "mtlb_vasilek_sov",
     "sniper_spetsnaz_sov",
+    "su_24m_clu_sov",
 ]
     

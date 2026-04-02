@@ -2403,7 +2403,7 @@ usa_unit_edits = {
             "display": "M270 MLRS",
             # "token": "MYQQNJCCAK",
         },
-        "CommandPoints": 300,
+        "CommandPoints": 350,
         "Divisions": {
             "add": ["US_8th_Inf"],
             "is_transported": False,
@@ -4431,13 +4431,25 @@ usa_unit_edits = {
 
 
     "F4E_Phantom_II_CBU_US": {
-        "CommandPoints": 165,
+        "CommandPoints": 190,
         "optics": {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 375,
             },
         },
         "availability": [0, 2, 0, 0],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [
+                    (
+                        "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength2",
+                        "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength5",
+                        "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength2",
+                        "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength5"
+                    ),
+                ],
+            },
+        },
     },
 
     "F4E_Phantom_II_napalm_US": {
@@ -4522,11 +4534,23 @@ usa_unit_edits = {
     },
 
     "F111F_Aardvark_CBU_US": {  # 8x Mk-20 Rockeye, 82nd Airborne
-        "CommandPoints": 190,
+        "CommandPoints": 220,
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
         "availability": [0, 2, 0, 0],
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [
+                    (
+                        "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength8",
+                        "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength18",
+                        "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength8",
+                        "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength18"
+                    ),
+                ],
+            },
+        },
     },
 
     "F111E_Aardvark_napalm_US": {  # 4x Mk-77 napalm, 3rd Armored

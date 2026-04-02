@@ -12,6 +12,7 @@ from src.utils.logging_utils import setup_logger
 
 from .handlers import (
     add_corrected_shot_dispersion,
+    apply_category_bomb_standards,
     apply_aim_time_standards,
     apply_bomb_damage_standards,
     apply_damage_families,
@@ -96,7 +97,7 @@ def edit_gen_gp_gfx_ammunition(source_path, game_db: Dict[str, Any]) -> None:
 
                 # Apply edits
                 try:
-                    _apply_weapon_edits(base_descr, category, data, ammo_data)
+                    _apply_weapon_edits(base_descr, category, data, ammo_data, game_db, weapon_name)
                     logger.debug(f"Applied edits to {weapon_name}")
                 except Exception as e:
                     logger.error(f"Failed applying edits to {weapon_name}: {str(e)}")
@@ -332,7 +333,14 @@ def _create_quantity_variants(
                     logger.debug(f"Updated existing variant {namespace}")
 
 
-def _apply_weapon_edits(descr: Any, category: str, data: Dict, ammo_data: Dict) -> None:
+def _apply_weapon_edits(
+    descr: Any,
+    category: str,
+    data: Dict,
+    ammo_data: Dict,
+    game_db: Dict[str, Any],
+    weapon_name: str,
+) -> None:
     """Apply edits from ammunition data to descriptor."""
     membr = descr.v.by_m
 
@@ -394,6 +402,8 @@ def _apply_weapon_edits(descr: Any, category: str, data: Dict, ammo_data: Dict) 
         texture_file = '"' + f"Texture_Interface_Weapon_{data['Texture']}" + '"'
         membr("InterfaceWeaponTexture").v = texture_file
         logger.debug(f"Applied texture {texture_file}")
+
+    apply_category_bomb_standards(descr, category, weapon_name, game_db, logger)
 
 
 def _apply_hit_roll_edits(descr: Any, hit_roll_data: Dict) -> None:

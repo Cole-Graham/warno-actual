@@ -4,10 +4,12 @@ from .A7D_Corsair_II_RKT_US import a7d_corsair_ii_rkt_us
 from .Airborne_Engineers_Flash_US import airborne_engineers_flash_us
 from .Airborne_half_Dragon_US import airborne_half_dragon_us
 from .Engineer_CMD_US import engineer_cmd_us
+from .F4E_Phantom_II_CBU_US import f4e_phantom_ii_cbu_us
 from .F4E_Phantom_II_napalm_US import f4e_phantom_ii_napalm_us
 from .F15E_StrikeEagle_US import f15e_strikeeagle_us
 from .F16E_napalm_US import f16e_napalm_us
 from .F111E_Aardvark_napalm_US import f111e_aardvark_napalm_us
+from .F111F_Aardvark_CBU_US import f111f_aardvark_cbu_us
 from .F111F_Aardvark_napalm_US import f111f_aardvark_napalm_us
 from .Groupe_AT_US import groupe_at_us
 from .M2_Bradley_BSV_US import m2_bradley_bsv_us
@@ -28,10 +30,12 @@ __all__ = [
     "airborne_half_dragon_us",
     "engineer_cmd_us",
     "engineer_cmd_us",
+    "f4e_phantom_ii_cbu_us",
     "f4e_phantom_ii_napalm_us",
     "f15e_strikeeagle_us",
     "f16e_napalm_us",
     "f111e_aardvark_napalm_us",
+    "f111f_aardvark_cbu_us",
     "f111f_aardvark_napalm_us",
     "groupe_at_us",
     "m2_bradley_bsv_us",

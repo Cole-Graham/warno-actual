@@ -14,9 +14,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Index": 10,
             },
             "parent_membr": {
-                "ImpactHappening": "'MLRSClusterAP175m'",
-                "RadiusSplashPhysicalDamagesGRU": 175,
-                "RadiusSplashSuppressDamagesGRU": 233,
+                "ImpactHappening": "'MLRSClusterAP200m'",
+                "RadiusSplashPhysicalDamagesGRU": 200,
+                "RadiusSplashSuppressDamagesGRU": 267,
+                "PhysicalDamages": 1.0,
                 "DispersionAtMaxRangeGRU": 900,
                 "DispersionAtMinRangeGRU": 380,
                 "AimingTime": 18.0,
