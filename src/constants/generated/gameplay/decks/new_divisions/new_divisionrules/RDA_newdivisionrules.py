@@ -75,7 +75,7 @@ RDA_airborne_newdivisionrules = {
         ("Mi_2_reco_DDR", 1, [0, 6, 0, 0]),
         ("Mi_2_gunship_DDR", 1, [0, 6, 4, 0]),
         ("Mi_8TB_reco_Marine_DDR", 2, [0, 3, 2, 0]),
-        ("Mi_14PL_recon_DDR", 1, [0, 3, 0, 0]),
+        ("Mi_14PL_recon_DDR", 1, [0, 4, 0, 0]),
     ],
     "aa": [
         ("MANPAD_Strela_2M_FJ_DDR", 3, [0, 0, 12, 9], ["UAZ_469_trans_DDR"]),
