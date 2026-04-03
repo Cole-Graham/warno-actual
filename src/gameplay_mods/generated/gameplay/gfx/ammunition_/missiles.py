@@ -76,12 +76,12 @@ def edit_gen_gp_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]
                     logger.error(f"Failed getting descriptor for {weapon_name}: {str(e)}")
                     continue
 
-                # Apply edits to base descriptor
+                # SEAD category standards first, then ``missiles`` dict edits (constants override)
                 try:
+                    apply_category_sead_standards(base_descr, category)
                     if ammo_data:
                         _apply_missile_edits(base_descr, data, ammo_data, is_new)
-                        apply_category_sead_standards(base_descr, category)
-                        logger.debug(f"Applied edits to {weapon_name}")
+                    logger.debug(f"Applied edits to {weapon_name}")
                 except Exception as e:
                     logger.error(f"Failed applying edits to {weapon_name}: {str(e)}")
                     continue
@@ -269,10 +269,10 @@ def _handle_salvo_variants(
                 if existing:
                     logger.debug(f"Found existing variant {namespace}")
 
-                    # Apply all base missile edits first
+                    # Category standards first, then constants (same order as base)
                     if "Ammunition" in data:
-                        _apply_missile_edits(existing, data, data["Ammunition"], is_new)
                         apply_category_sead_standards(existing, category)
+                        _apply_missile_edits(existing, data, data["Ammunition"], is_new)
 
                     # Then update salvo-specific values
                     if base_cost is not None:
@@ -288,10 +288,10 @@ def _handle_salvo_variants(
                     variant.v.by_m("HitRollRuleDescriptor").v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
                     variant.namespace = namespace
 
-                    # Apply all base missile edits first
+                    # Category standards first, then constants (same order as base)
                     if "Ammunition" in data:
-                        _apply_missile_edits(variant, data, data["Ammunition"], is_new)
                         apply_category_sead_standards(variant, category)
+                        _apply_missile_edits(variant, data, data["Ammunition"], is_new)
 
                     # Then apply salvo-specific values
                     if base_cost is not None:

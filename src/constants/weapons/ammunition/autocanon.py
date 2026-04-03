@@ -995,7 +995,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("Gatling_M197_20mm", "DCA", None, False): { # 314
+    ("Gatling_M197_20mm", "autocannon", None, False): { # 314
         "Ammunition": {
             "hit_roll": {
                 "Idling": 20,

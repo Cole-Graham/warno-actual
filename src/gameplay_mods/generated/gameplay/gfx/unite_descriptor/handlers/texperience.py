@@ -1,5 +1,104 @@
 """Edit TExperienceModuleDescriptor for existing and new units"""
 
+import re
+from typing import Any, Dict, Optional
+
+from src.constants.new_units import NEW_UNITS
+from src.constants.unit_edits import load_unit_edits
+from src.constants.weapons.ammunition import raw_ammunitions
+from src.constants.weapons.standards import DCA_STANDARDS
+from src.utils.ndf_utils import find_obj_by_type
+
+_DCA_AMMO_BASE_NAMES = frozenset(k[0] for k in raw_ammunitions if k[1] == "DCA")
+
+
+def _strip_ammo_quantity_suffix(ammo_name: str) -> str:
+    m = re.match(r"^(.+)_x\d+$", ammo_name)
+    return m.group(1) if m else ammo_name
+
+
+def _weapon_data_has_dca_ammo(weapon_data: dict, dca_base_names: frozenset) -> bool:
+    for turret in weapon_data.get("turrets", {}).values():
+        for ammo_name in turret.get("weapons", {}):
+            base = _strip_ammo_quantity_suffix(ammo_name)
+            if base in dca_base_names:
+                return True
+    return False
+
+
+def _weapon_descriptor_key_for_lookup(unit_name: str, weapons_db: dict) -> str | None:
+    """Resolve ``WeaponDescriptor_*`` key in ``game_db['weapons']`` (donor for new units)."""
+    key = f"WeaponDescriptor_{unit_name}"
+    if key in weapons_db:
+        return key
+    for donor_key, edits in NEW_UNITS.items():
+        if edits.get("NewName") == unit_name:
+            donor_ws = f"WeaponDescriptor_{donor_key[0]}"
+            if donor_ws in weapons_db:
+                return donor_ws
+            return None
+    return None
+
+
+def _unit_has_explicit_xp_multiplier(unit_name: str, unit_edits: dict) -> bool:
+    if "multiplier" in unit_edits.get(unit_name, {}).get("XP", {}):
+        return True
+    for edits in NEW_UNITS.values():
+        if edits.get("NewName") == unit_name and "multiplier" in edits.get("XP", {}):
+            return True
+    return False
+
+
+def apply_dca_experience_unit_standard_for_unit(
+    logger,
+    game_db: Dict[str, Any],
+    unit_name: str,
+    modules_list: Any,
+    unit_edits: Optional[Dict[str, Any]] = None,
+) -> None:
+    """Apply DCA ``experience_unit`` to one unit's modules (baseline before unit_edits / new_units)."""
+    if unit_edits is None:
+        unit_edits = load_unit_edits()
+    if _unit_has_explicit_xp_multiplier(unit_name, unit_edits):
+        return
+
+    experience = DCA_STANDARDS["experience_unit"]
+    mult_s = str(experience["ExperienceMultiplierBonusOnKill"])
+    weapons_db = game_db.get("weapons") or {}
+
+    xp_mod = find_obj_by_type(modules_list.v, "TExperienceModuleDescriptor")
+    if not xp_mod:
+        return
+
+    ws_key = _weapon_descriptor_key_for_lookup(unit_name, weapons_db)
+    if not ws_key:
+        return
+    wdata = weapons_db[ws_key]
+    if not _weapon_data_has_dca_ammo(wdata, _DCA_AMMO_BASE_NAMES):
+        return
+
+    xp_mod.v.by_m("ExperienceMultiplierBonusOnKill").v = mult_s
+    logger.info(
+        f"DCA experience_unit: ExperienceMultiplierBonusOnKill = {mult_s} ({unit_name})",
+    )
+
+
+def apply_dca_experience_unit_standard(logger, source_path, game_db) -> None:
+    """Set DCA category ``experience_unit`` on all units whose weapon loadout includes DCA ammo."""
+    unit_edits = load_unit_edits()
+
+    for unit_row in source_path:
+        if not hasattr(unit_row, "namespace"):
+            continue
+        if not unit_row.namespace.startswith("Descriptor_Unit_"):
+            continue
+        unit_name = unit_row.namespace.replace("Descriptor_Unit_", "")
+        modules_list = unit_row.v.by_m("ModulesDescriptors")
+        apply_dca_experience_unit_standard_for_unit(
+            logger, game_db, unit_name, modules_list, unit_edits,
+        )
+
+
 def handle_experience_module(
     logger,
     game_db,

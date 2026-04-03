@@ -705,5 +705,75 @@ RFA_NEW_UNITS = {
         "alternatives_count": 1,
         "selector_tactic": "00_06",
     },
+    
+    ("F4F_Phantom_II_AA2_RFA", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "fc3dd6a0-c043-431c-b401-5866eaa0d34f",
+        "InfantrySquadModuleGUID": "0fba431b-91bd-4c22-8bff-ba05b0cc48a0",
+        "ShowroomGUID": "12d4008a-ce7f-48a1-9653-954c9461e447",
+        "CadavreGUID": "e8bbf864-dcd0-4092-8d5b-988b47028dd8",
+        "NewName": "F4F_KWS_AA_RFA",
+        "GameName": {
+            "display": "F-4F KWS [AA]",
+            "token": "NWVVZULNTK",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "Air",
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Avion",
+                "Avion_Chasseur",
+                "UNITE_F4F_KWS_AA_RFA",
+                "Unite",
+            ],
+        },
+        "depictions": {
+            "new_mesh": True,
+        },
+        "CommandPoints": 270,
+        "ECM": -0.4,
+        "WeaponDescriptor": {
+            "Salves": {
+                "AA_AIM9M_Sidewinder": 2,
+                "AA_AIM120A_AMRAAM": 3,
+            },
+            "equipmentchanges": {
+                "replace": [
+                    # First Sidewinder rail (tourelle2 / weapon 2) → AMRAAM; second rail → AIM-9M
+                    (
+                        "AA_AIM9L_Sidewinder_upgrade",
+                        "AA_AIM120A_AMRAAM",
+                        "AA_AIM9L_Sidewinder_upgrade",
+                        "AA_AIM120A_AMRAAM",
+                    ),
+                    (
+                        "AA_AIM9L_Sidewinder_upgrade",
+                        "AA_AIM9M_Sidewinder",
+                        "AA_AIM9L_Sidewinder_upgrade",
+                        "AA_AIM9M_Sidewinder",
+                    ),
+                ],
+            },
+        },
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 2, 0, 1],
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 
+                   'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection',
+                   'EOrderType/AirplanePatrol', 'EOrderType/AirplaneAttack', 'EOrderType/AirplaneMoveAndEngage',
+                   'EOrderType/AirplaneEvacuate', 'EOrderType/AirplaneShoot', 'EOrderType/AIAirplaneAutoManage',
+                   'EOrderType/AIStop'],
+        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": False,
+        "is_aerial": True,
+        "is_unarmed": False,
+        "Faction": "NATO",
+        "Nation": "RFA",
+        "UpgradeFromUnit": "F4F_Phantom_II_AA2_RFA",
+    },
 }
 # fmt: on
