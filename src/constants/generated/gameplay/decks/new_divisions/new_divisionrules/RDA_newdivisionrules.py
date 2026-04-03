@@ -288,7 +288,7 @@ RDA_mechanized_newdivisionrules = {
         ("MANPAD_Strela_2M_DDR", 3, [12, 9, 0, 0], ["UAZ_469_trans_DDR"]),
         ("MANPAD_Igla_DDR", 2, [7, 5, 0, 0], ["UAZ_469_trans_DDR"]),
         ("DCA_ZPU4_DDR", 2, [12, 9, 0, 0], ["UAZ_469_trans_DDR"]),
-        ("DCA_AZP_S60_DDR", 2, [9, 7, 0, 0], ["W50_LA_A_DDR", "MTLB_trans_DDR"]),
+        ("DCA_AZP_S60_DDR", 2, [8, 6, 0, 0], ["W50_LA_A_DDR", "MTLB_trans_DDR"]),
         ("DCA_KS19_100mm_DDR", 1, [9, 7, 0, 0], ["W50_LA_A_DDR", "MTLB_trans_DDR"]),
         ("ZSU_57_2_DDR", 2, [7, 0, 0, 0]),
         ("ZSU_23_Shilka_DDR", 1, [6, 4, 0, 0]),

@@ -3798,23 +3798,38 @@ usa_unit_edits = {
         "UpgradeFromUnit": "M42_Duster_US",
         "WeaponDescriptor": {
             "Salves": {
-                "Gatling_M61_Vulcan_20mm_noRadar": 19,
+                "Gatling_M61_Vulcan_20mm_noRadar": 21,
             },
         },
     },
 
     "M163_PIVADS_US": {
-        "CommandPoints": 65,
+        "CommandPoints": 85,
+        "TagSet": {
+            "add_tags": ['"AA_radar"'],
+        },
         "availability": [7, 5, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "Gatling_M61_Vulcan_20mm_late": 38,
+                "Gatling_M61_Vulcan_20mm_late": 21,
             },
+        },
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 220,
+            },
+            "TimeBetweenEachIdentifyRoll": 0.5,
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'good_airoptics'"],
         },
     },
     
     "DCA_M167_Vulcan_20mm_nonPara_US": { # M167A1 VADS 20mm
-        "CommandPoints": 25,
+        "CommandPoints": 40,
+        "TagSet": {
+            "add_tags": ['"AA_radar"'],
+        },
         "Factory": "EFactory/Logistic",
         "availability": [12, 9, 0, 0],
         "max_speed": 6,
@@ -3823,14 +3838,26 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "Gatling_M61_Vulcan_20mm_TOWED": 19,
+                "Gatling_M61_Vulcan_20mm_TOWED": 8,
             },
+        },
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 220,
+            },
+            "TimeBetweenEachIdentifyRoll": 0.5,
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'good_airoptics'"],
         },
         "UpgradeFromUnit": "FOB_US",
     },
 
     "DCA_M167A2_Vulcan_20mm_US": { # M167A2 VADS 20mm
-        "CommandPoints": 30,
+        "CommandPoints": 50,
+        "TagSet": {
+            "add_tags": ['"AA_radar"'],
+        },
         "Divisions": {
             "add": ["US_3rd_Arm", "US_8th_Inf"],
             "is_transported": True,
@@ -3848,13 +3875,25 @@ usa_unit_edits = {
         "UpgradeFromUnit": None,
         "WeaponDescriptor": {
             "Salves": {
-                "Gatling_M61_Vulcan_20mm_late_TOWED": 38,
+                "Gatling_M61_Vulcan_20mm_late_TOWED": 8,
             },
+        },
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 220,
+            },
+            "TimeBetweenEachIdentifyRoll": 0.5,
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'good_airoptics'"],
         },
     },
     
     "DCA_M167_Vulcan_20mm_US": { # AB M167A1 VADS 20mm
-        "CommandPoints": 25,
+        "CommandPoints": 40,
+        "TagSet": {
+            "add_tags": ['"AA_radar"'],
+        },
         "Factory": "EFactory/Logistic",
         "Divisions": {
             "default": {
@@ -3872,14 +3911,27 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "Gatling_M61_Vulcan_20mm_TOWED": 76,
+                "Gatling_M61_Vulcan_20mm_TOWED": 8,
             },
         },
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 220,
+            },
+            "TimeBetweenEachIdentifyRoll": 0.5,
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'good_airoptics'"],
+        },
         "UpgradeFromUnit": "DCA_M167_Vulcan_20mm_nonPara_US",
+        
     },
     
     "DCA_M167A2_Vulcan_20mm_Aero_US": { # AERO-M167A2 PIVADS 20mm
-        "CommandPoints": 30,
+        "CommandPoints": 50,
+        "TagSet": {
+            "add_tags": ['"AA_radar"'],
+        },
         "GameName": {
             "display": "AERO-M167A2 VADS 20mm",
         },
@@ -3895,8 +3947,17 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "Gatling_M61_Vulcan_20mm_late_TOWED": 38,
+                "Gatling_M61_Vulcan_20mm_late_TOWED": 8,
             },
+        },
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 220,
+            },
+            "TimeBetweenEachIdentifyRoll": 0.5,
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'good_airoptics'"],
         },
         "UpgradeFromUnit": "DCA_M167A2_Vulcan_20mm_US",
     },
@@ -3929,7 +3990,7 @@ usa_unit_edits = {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 220,
             },
-            "TimeBetweenEachIdentifyRoll": 1.0,
+            "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
@@ -3941,7 +4002,7 @@ usa_unit_edits = {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 220,
             },
-            "TimeBetweenEachIdentifyRoll": 1.0,
+            "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "CommandPoints": 130,
         "availability": [0, 3, 2, 0],
@@ -3959,7 +4020,7 @@ usa_unit_edits = {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 300,
             },
-            "TimeBetweenEachIdentifyRoll": 1.0,
+            "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "capacities": {
             "remove_capacities": ["reserviste"],
@@ -3984,7 +4045,7 @@ usa_unit_edits = {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 300,
             },
-            "TimeBetweenEachIdentifyRoll": 1.0,
+            "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "availability": [4, 3, 0, 0],
         "Divisions": {

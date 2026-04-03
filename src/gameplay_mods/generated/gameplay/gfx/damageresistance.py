@@ -6,6 +6,12 @@ from src.constants.weapons import (
     KE_AND_HEAT_ROW_COUNT,
     VANILLA_LAST_ROW,
     VANILLA_LAST_COLUMN,
+    AP_MISSILE_ROW_FIRST,
+    AP_MISSILE_ROW_LAST,
+    SEAD_MISSILE_WA_LEVEL_COUNT,
+    SEAD_INFANTRY_ARMOR_LEVEL_ONE_COLUMN,
+    SEAD_RATIO_VS_INFANTRY,
+    SEAD_WA_INFANTRY_ARMOR_COLUMNS,
     DAMAGE_EDITS,
     CLU_SOL_HEFRAG,
     CLU_SOL_AP,
@@ -70,6 +76,7 @@ def edit_gen_gp_gfx_damageresistancefamilylist(source_path) -> None:
     twelve_seven_mm_family = f"DamageFamily_12_7 is {i + 10}"
     fourteen_five_mm_family = f"DamageFamily_14_5 is {i + 11}"
     missile_he_bigly_family = f"DamageFamily_missile_he_bigly is {i + 12}"
+    sead_missile_wa_family = f"DamageFamily_sead_missile_wa is {i + 13}"
 
     source_path.insert(j + 1, infanterie_wa_family)
     source_path.add(sniper_family)
@@ -84,6 +91,7 @@ def edit_gen_gp_gfx_damageresistancefamilylist(source_path) -> None:
     source_path.add(twelve_seven_mm_family)
     source_path.add(fourteen_five_mm_family)
     source_path.add(missile_he_bigly_family)
+    source_path.add(sead_missile_wa_family)
     logger.info(
         f"Added families: \n"
         f"{infanterie_wa_family}\n"
@@ -99,6 +107,7 @@ def edit_gen_gp_gfx_damageresistancefamilylist(source_path) -> None:
         f"{twelve_seven_mm_family}\n"
         f"{fourteen_five_mm_family}\n"
         f"{missile_he_bigly_family}\n"
+        f"{sead_missile_wa_family}\n"
     )
 
 
@@ -122,6 +131,7 @@ def edit_gen_gp_gfx_damageresistancefamilylistimpl(source_path) -> None:
             '"DamageFamily_12_7"',
             '"DamageFamily_14_5"',
             '"DamageFamily_missile_he_bigly"',
+            '"DamageFamily_sead_missile_wa"',
         ],
     }
 
@@ -160,6 +170,7 @@ def _add_damage_resistance_values(source_path) -> None:
         "12_7": ("(DamageFamily_12_7, 1)"),
         "14_5": ("(DamageFamily_14_5, 1)"),
         "missile_he_bigly": ("(DamageFamily_missile_he_bigly, 1)"),
+        "sead_missile_wa": (f"(DamageFamily_sead_missile_wa, {SEAD_MISSILE_WA_LEVEL_COUNT})"),
     }
 
     for family_name, family_def in families.items():
@@ -179,6 +190,8 @@ def _add_damage_resistance_values(source_path) -> None:
             f"got {last_row_index + 1} rows, {last_column_index + 1} columns"
         )
 
+    sead_missile_wa_rows = _build_sead_missile_wa_rows(values_list)
+
     # Add damage values
     values_list.add(
         *[str(sniper) for sniper in SNIPER_DAMAGE],
@@ -193,8 +206,12 @@ def _add_damage_resistance_values(source_path) -> None:
         str(TWELVE_SEVEN_MM_DAMAGE),
         str(FOURTEEN_FIVE_MM_DAMAGE),
         str(MISSILE_HE_BIGLY_DAMAGE),
+        *[str(row) for row in sead_missile_wa_rows],
     )
-    logger.info("Added damage values")
+    logger.info(
+        "Added damage values "
+        f"(including DamageFamily_sead_missile_wa rows: {len(sead_missile_wa_rows)})"
+    )
     
     
 def _apply_damage_family_edits(source_path) -> None:
@@ -243,6 +260,25 @@ def _apply_damage_array_edits(damage_array, row: int, column_edits: dict) -> Non
                     column = columns
                     dmg_row.v.replace(column, str(value))
                     logger.info(f"Edited row {row}, column {column} to {value}")
+
+
+def _build_sead_missile_wa_rows(damage_array) -> list[list[float]]:
+    """Clone vanilla ap_missile levels and apply WA-SEAD infantry overrides."""
+    sead_rows = []
+    for row_idx in range(AP_MISSILE_ROW_FIRST, AP_MISSILE_ROW_LAST + 1):
+        base_row = [float(value.v) for value in damage_array[row_idx].v]
+        if row_idx != AP_MISSILE_ROW_LAST:
+            base_row[SEAD_INFANTRY_ARMOR_LEVEL_ONE_COLUMN] = SEAD_RATIO_VS_INFANTRY
+            for column in SEAD_WA_INFANTRY_ARMOR_COLUMNS:
+                base_row[column] = SEAD_RATIO_VS_INFANTRY
+        sead_rows.append(base_row)
+
+    if len(sead_rows) != SEAD_MISSILE_WA_LEVEL_COUNT:
+        logger.warning(
+            "DamageFamily_sead_missile_wa row count mismatch: "
+            f"expected {SEAD_MISSILE_WA_LEVEL_COUNT}, got {len(sead_rows)}"
+        )
+    return sead_rows
 
 
 def _edit_infantry_armor(source_path) -> None:

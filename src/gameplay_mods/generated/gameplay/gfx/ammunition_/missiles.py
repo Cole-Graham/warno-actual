@@ -16,6 +16,7 @@ from src.utils.logging_utils import setup_logger
 from .ammunition import get_supply_costs
 from .handlers import (
     apply_bomb_damage_standards,
+    apply_category_sead_standards,
     remove_vanilla_instances,
     vanilla_renames_ammunition,
 )
@@ -79,6 +80,7 @@ def edit_gen_gp_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]
                 try:
                     if ammo_data:
                         _apply_missile_edits(base_descr, data, ammo_data, is_new)
+                        apply_category_sead_standards(base_descr, category)
                         logger.debug(f"Applied edits to {weapon_name}")
                 except Exception as e:
                     logger.error(f"Failed applying edits to {weapon_name}: {str(e)}")
@@ -87,7 +89,9 @@ def edit_gen_gp_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]
                 # Handle salvo variants - pass the fully edited base descriptor
                 try:
                     if "WeaponDescriptor" in data and "SalvoLengths" in data["WeaponDescriptor"]:
-                        _handle_salvo_variants(source_path, base_descr, weapon_name, data, is_new)
+                        _handle_salvo_variants(
+                            source_path, base_descr, weapon_name, data, is_new, category,
+                        )
                     elif is_new:
                         # Only add base descriptor if no salvo variants
                         source_path.add(base_descr)
@@ -213,7 +217,14 @@ def _get_existing_descriptor(source_path, weapon_name):
     return None
 
 
-def _handle_salvo_variants(source_path: Any, base_descr: Any, weapon_name: str, data: Dict, is_new: bool) -> None:
+def _handle_salvo_variants(
+    source_path: Any,
+    base_descr: Any,
+    weapon_name: str,
+    data: Dict,
+    is_new: bool,
+    category: str,
+) -> None:
     """Handle salvo variants for missile."""
     logger.info(f"{'Creating' if is_new else 'Editing'} salvo variants for {weapon_name}")
     salvo_lengths = data["WeaponDescriptor"]["SalvoLengths"]
@@ -261,6 +272,7 @@ def _handle_salvo_variants(source_path: Any, base_descr: Any, weapon_name: str, 
                     # Apply all base missile edits first
                     if "Ammunition" in data:
                         _apply_missile_edits(existing, data, data["Ammunition"], is_new)
+                        apply_category_sead_standards(existing, category)
 
                     # Then update salvo-specific values
                     if base_cost is not None:
@@ -279,6 +291,7 @@ def _handle_salvo_variants(source_path: Any, base_descr: Any, weapon_name: str, 
                     # Apply all base missile edits first
                     if "Ammunition" in data:
                         _apply_missile_edits(variant, data, data["Ammunition"], is_new)
+                        apply_category_sead_standards(variant, category)
 
                     # Then apply salvo-specific values
                     if base_cost is not None:

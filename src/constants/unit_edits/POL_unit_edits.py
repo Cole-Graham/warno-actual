@@ -2516,13 +2516,28 @@ pol_unit_edits = {
         "CommandPoints": "DCA_AZP_S60_SOV",
         "max_speed": "DCA_AZP_S60_SOV",
         "availability": "DCA_AZP_S60_SOV",
+        "TagSet": {
+            "add_tags": ['"AA_radar"'],
+        },
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_1_canon_S60_57mm": 1,
+                "DCA_1_canon_S60_57mm_radar": 1,
             },
+            "equipmentchanges": {
+                "replace": [("DCA_1_canon_S60_57mm", "DCA_1_canon_S60_57mm_radar")],
+            },
+        },
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 300,
+            },
+            "TimeBetweenEachIdentifyRoll": 0.5,
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'verygood_airoptics'"],
         },
     },
     
@@ -2556,7 +2571,7 @@ pol_unit_edits = {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 220,
             },
-            "TimeBetweenEachIdentifyRoll": 1.0,
+            "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
@@ -2582,7 +2597,7 @@ pol_unit_edits = {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 220,
             },
-            "TimeBetweenEachIdentifyRoll": 1.0,
+            "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
@@ -2596,7 +2611,7 @@ pol_unit_edits = {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 220,
             },
-            "TimeBetweenEachIdentifyRoll": 1.0,
+            "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
@@ -2617,7 +2632,7 @@ pol_unit_edits = {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 300,
             },
-            "TimeBetweenEachIdentifyRoll": 1.0,
+            "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "availability": [0, 3, 2, 0],
         "Divisions": {
@@ -2639,7 +2654,7 @@ pol_unit_edits = {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 300,
             },
-            "TimeBetweenEachIdentifyRoll": 1.0,
+            "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
@@ -2654,7 +2669,7 @@ pol_unit_edits = {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 300,
             },
-            "TimeBetweenEachIdentifyRoll": 1.0,
+            "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
