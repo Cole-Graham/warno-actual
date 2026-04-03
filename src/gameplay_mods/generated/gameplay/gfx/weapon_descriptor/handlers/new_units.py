@@ -88,6 +88,7 @@ def new_units_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> Non
                             old_weapon_name, new_weapon_name = replacement
                             _replace_weapon_with_turret(source_path, new_weap_row, changes, edits, game_db, old_weapon_name, new_weapon_name, new_weapon_name)
                         
+                # Each tuple replaces the *next* matching mount in turret order (then mount order).
                 if "replace" in changes:
                     for replacement in changes["replace"]:
                         if len(replacement) == 4:
@@ -104,7 +105,9 @@ def new_units_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> Non
                             )
                         else:
                             old_ammo, new_ammo = replacement
-                            _replace_weapon(source_path, changes, new_weap_row, old_ammo, new_ammo, None, None, game_db)
+                            _replace_weapon(
+                                source_path, changes, new_weap_row, old_ammo, new_ammo, None, None, game_db,
+                            )
 
                 # Handle HAGRU MANPADS
                 if "HAGRU_MANPADS" in changes:
@@ -609,7 +612,11 @@ def _replace_weapon(
     new_fire_effect: str,
     game_db: Dict[str, Any],
 ) -> None:
-    """Replace a weapon with a new one."""
+    """Replace the next matching mounted weapon only (turret order, then mount order).
+
+    Call once per ``equipmentchanges['replace']`` tuple so duplicate donor ammo (e.g. two
+    AIM-9 rails) can map to different replacements in list order.
+    """
     ammo_db = game_db["ammunition"]
 
     # Get unit strength from NEW_UNITS
@@ -678,7 +685,7 @@ def _replace_weapon(
                     current_fire_effect = fire_effect_val.replace("FireEffect_", "")
                     weapon_descr_row.v.by_m("EffectTag").v = f"'FireEffect_{new_fire_effect}'"
                     logger.debug(f"Replaced fire effect {current_fire_effect} with {new_fire_effect}")
-                break
+                return
 
 
 def _update_weapon_quantity(new_weap_row: Any, ammo: str, quantity: int, game_db: Dict[str, Any]) -> None:

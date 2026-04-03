@@ -4,6 +4,9 @@
 from typing import Any, Callable, Dict, List
 
 # New import structure
+from .commondata import (
+    edit_cd_gameplay_constantes_helicoptermovementweights,
+)
 from .gameplay import (
     add_unit_meshes,
     edit_gameplay_constantes_gdconstants,
@@ -80,6 +83,8 @@ from .userinterface import (
 )
 
 __all__ = [
+    # .commondata
+    'edit_cd_gameplay_constantes_helicoptermovementweights',
     # .gameplay
     'add_unit_meshes',
     'edit_gameplay_constantes_gdconstants',

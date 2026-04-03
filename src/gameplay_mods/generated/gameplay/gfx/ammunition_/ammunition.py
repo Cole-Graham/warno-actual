@@ -96,8 +96,11 @@ def edit_gen_gp_gfx_ammunition(source_path, game_db: Dict[str, Any]) -> None:
                     logger.error(f"Failed getting descriptor for {weapon_name}: {str(e)}")
                     continue
 
-                # Apply edits
+                # Category standards (baseline), then constants from ammunitions (overrides)
                 try:
+                    _apply_weapon_category_standards(
+                        base_descr, category, weapon_name, game_db, logger,
+                    )
                     _apply_weapon_edits(base_descr, category, data, ammo_data, game_db, weapon_name)
                     logger.debug(f"Applied edits to {weapon_name}")
                 except Exception as e:
@@ -334,6 +337,19 @@ def _create_quantity_variants(
                     logger.debug(f"Updated existing variant {namespace}")
 
 
+def _apply_weapon_category_standards(
+    descr: Any,
+    category: str,
+    weapon_name: str,
+    game_db: Dict[str, Any],
+    logger: Any,
+) -> None:
+    """Apply by-category weapon standards before ``ammunitions`` dict edits (constants override)."""
+    if category == "DCA":
+        _apply_hit_roll_edits(descr, DCA_STANDARDS["hit_roll"])
+    apply_category_bomb_standards(descr, category, weapon_name, game_db, logger)
+
+
 def _apply_weapon_edits(
     descr: Any,
     category: str,
@@ -389,11 +405,9 @@ def _apply_weapon_edits(
             else:
                 logger.error(f"Unknown type for {key}: {type(value)}")
 
-    # Apply hit roll edits
+    # Apply hit roll edits (after DCA category standard in ``_apply_weapon_category_standards``)
     if "hit_roll" in ammo_data:
         _apply_hit_roll_edits(descr, ammo_data["hit_roll"])
-    if category == "DCA":
-        _apply_hit_roll_edits(descr, DCA_STANDARDS["hit_roll"])
 
     # Apply texture
     if "NewTexture" in data:
@@ -405,8 +419,6 @@ def _apply_weapon_edits(
         texture_file = '"' + f"Texture_Interface_Weapon_{data['Texture']}" + '"'
         membr("InterfaceWeaponTexture").v = texture_file
         logger.debug(f"Applied texture {texture_file}")
-
-    apply_category_bomb_standards(descr, category, weapon_name, game_db, logger)
 
 
 def _apply_hit_roll_edits(descr: Any, hit_roll_data: Dict) -> None:

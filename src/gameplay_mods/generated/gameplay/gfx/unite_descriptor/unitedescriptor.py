@@ -14,6 +14,14 @@ from .handlers import (
     handle_tags_module,
     handle_unitui_module,
 )
+from .handlers.texperience import (
+    apply_dca_experience_unit_standard,
+    apply_dca_experience_unit_standard_for_unit,
+)
+from .handlers.thelicoptermovement import (
+    apply_helicopter_movement_pattern_standard,
+    apply_helicopter_movement_pattern_standard_for_unit,
+)
 
 logger = setup_logger(__name__)
 
@@ -28,10 +36,15 @@ def edit_gen_gp_gfx_unitedescriptor(source_path, game_db) -> None:
     
     _handle_batch_changes(source_path, game_db)
 
-    new_units_dic_entries = []
-    _handle_new_units(source_path, game_db, new_units_dic_entries)
-    
+    # Pattern standards first (baseline); unit_edits / new_units handlers run after and override.
+    apply_dca_experience_unit_standard(logger, source_path, game_db)
+    apply_helicopter_movement_pattern_standard(logger, source_path, game_db)
+
     unit_edits = load_unit_edits()
+
+    new_units_dic_entries = []
+    _handle_new_units(source_path, game_db, new_units_dic_entries, unit_edits)
+
     unit_edits_dic_entries = []
     _handle_unit_edits(source_path, game_db, unit_edits, unit_edits_dic_entries)
 
@@ -55,7 +68,7 @@ def _handle_unit_edits(source_path, game_db, unit_edits, unit_edits_dic_entries)
     logger.info(f"Forward deploy nerfed from {forward_deploy_old_values} to {forward_deploy_new_values}")
 
 
-def _handle_new_units(source_path, game_db, new_units_dic_entries) -> None:
+def _handle_new_units(source_path, game_db, new_units_dic_entries, unit_edits) -> None:
     """Handle new unit creation in UniteDescriptor.ndf"""
     logger.info("Processing new unit creation:")
     
@@ -71,6 +84,12 @@ def _handle_new_units(source_path, game_db, new_units_dic_entries) -> None:
         new_unit_descr.v.by_m("ClassNameForDebug").v = f"'Unite_{edits['NewName']}'"
 
         modules_list = new_unit_descr.v.by_m("ModulesDescriptors")
+        apply_dca_experience_unit_standard_for_unit(
+            logger, game_db, unit_name, modules_list, unit_edits,
+        )
+        apply_helicopter_movement_pattern_standard_for_unit(
+            logger, game_db, unit_name, modules_list,
+        )
         _handle_modules_list(game_db, new_units_dic_entries, "new_units", donor[0], unit_name, edits, modules_list)
         
         source_path.add(new_unit_descr)
@@ -114,7 +133,7 @@ def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_nam
         # "TRoutModuleDescriptor": { "handler": handle_rout_module, "args": [] },
         "TInfantrySquadModuleDescriptor": { "handler": _handle_infantrysquad_module, "args": [] },
         "TGenericMovementModuleDescriptor": { "handler": _handle_genericmovement_module, "args": [] },
-        # "THelicopterMovementModuleDescriptor": { "handler": handle_helicoptermovement_module, "args": [] },
+        # THelicopterMovementModuleDescriptor: batch-edited in apply_helicopter_movement_pattern_standard
         "TLandMovementModuleDescriptor": { "handler": _handle_landmovement_module, "args": [] },
         "AirplaneMovementDescriptor": { "handler": _handle_airplanemovement_module, "args": [donor] },
         # "TFuelModuleDescriptor": { "handler": handle_fuel_module, "args": [] },
@@ -506,16 +525,24 @@ def _handle_vehicleapparence_module(logger, game_db, unit_data, edit_type, unit_
                                     edits, module, *args) -> None:
     """Handle VehicleApparenceModuleDescriptor for existing and new units"""
     if edit_type == "new_units" and "depictions" in edits:
-        existing_mesh = edits.get("depictions", {}).get("alternatives", False)
+        
         if edits.get("depictions", {}).get("new_mesh", False):
             new_name = edits["NewName"]
             module.v.by_m("MimeticName").v = f'"{new_name}"'
             module.v.by_m("BlackHoleKey").v = f'"{new_name}"'
             module.v.by_m("ReferenceMesh").v = f'$/GFX/DepictionResources/Modele_{new_name}'
-        elif existing_mesh:
+        
+        elif edits.get("depictions", {}).get("alternatives", False):
+            existing_mesh = edits.get("depictions", {}).get("alternatives", False)
             module.v.by_m("MimeticName").v = f'"{unit_name}"'
             module.v.by_m("BlackHoleKey").v = f'"{unit_name}"'
             module.v.by_m("ReferenceMesh").v = f'$/GFX/DepictionResources/Modele_{existing_mesh}'
+        
+        elif edits.get("depictions", {}).get("custom", False):
+            new_name = edits["NewName"]
+            module.v.by_m("MimeticName").v = f'"{new_name}"'
+            module.v.by_m("BlackHoleKey").v = f'"{new_name}"'
+        
         else:
             module.v.by_m("MimeticName").v = f'"{unit_name}"'
     
@@ -779,13 +806,24 @@ def _handle_camerashowroom_module(logger, game_db, unit_data, edit_type, unit_na
                                   edits, module, *args) -> None:
     """Handle TCameraShowroomModuleDescriptor for existing and new units"""
     if edit_type == "new_units" and "depictions" in edits:
+        
         if edits.get("depictions", {}).get("new_mesh", False):
             new_name = edits["NewName"]
             module.v.by_m("ShowRoomBlackHoleIdentifier").v = f'"showroom_{new_name}"'
+        
         elif edits.get("depictions", {}).get("alternatives", False):
             existing_mesh = edits.get("depictions", {}).get("alternatives", False)
             module.v.by_m("ShowRoomBlackHoleIdentifier").v = f'"showroom_{existing_mesh}"'
+        
+        elif edits.get("depictions", {}).get("custom", False):
+            new_name = edits["NewName"]
+            module.v.by_m("ShowRoomBlackHoleIdentifier").v = f'"showroom_{new_name}"'
+        
+        elif edits.get("depictions", {}).get("remove", False):
+            pass
+        
         else:
+            logger.error(f"Invalid showroom configuration for new unit: {unit_name}")
             pass
     
     if edit_type == "unit_edits":

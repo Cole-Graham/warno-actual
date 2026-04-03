@@ -35,10 +35,17 @@ class HitRollStandardParams(TypedDict, total=False):
     Moving: int
 
 
+class DcaExperienceUnitParams(TypedDict):
+    """Unit-level defaults for carriers of DCA (category ``DCA``) weapons."""
+
+    ExperienceMultiplierBonusOnKill: float
+
+
 class DcaCategoryStandardEntry(TypedDict):
     """Category-wide defaults for autocannon DCA (ammunition dict category ``DCA``)."""
 
     hit_roll: HitRollStandardParams
+    experience_unit: DcaExperienceUnitParams
 
 
 class SeadArmeStandardParams(TypedDict):
