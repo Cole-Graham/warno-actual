@@ -4,7 +4,13 @@ KINETIC_ROW_COUNT = 40
 HEAT_ROW_COUNT = 30
 KE_AND_HEAT_ROW_COUNT = KINETIC_ROW_COUNT + HEAT_ROW_COUNT
 VANILLA_LAST_ROW = 140 # used for log warning if Eugen changed the damage array
-VANILLA_LAST_COLUMN = 48 + 13 # 13 is the number of WA armor levels, we add them before this check (yeah...not optimal)
+VANILLA_LAST_COLUMN = 48 + 13 # 13 is the number of WA armor levels, we add them before this check (# TODO: yeah...not optimal)
+AP_MISSILE_ROW_FIRST = 40
+AP_MISSILE_ROW_LAST = 70
+SEAD_MISSILE_WA_LEVEL_COUNT = 31
+SEAD_INFANTRY_ARMOR_LEVEL_ONE_COLUMN = 40
+SEAD_RATIO_VS_INFANTRY = 6.0
+SEAD_WA_INFANTRY_ARMOR_COLUMNS = tuple(range(49, 62))
 
 # formatting is usually 13 values per row, except WA infantry armor has a dedicated row
 SNIPER_DAMAGE = [
@@ -81,18 +87,18 @@ DPICM_DAMAGES = [
 ]
 
 TWELVE_SEVEN_MM_DAMAGE = [
-    1.2, 1.1, 1.0, 0.3, 3.5, 1.5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+    1.2, 1.1, 1.0, 0.3, 3.0, 1.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
     0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-    0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 3.3, 2.5,
-    1.7, 1.0, 1.0, 1.0, 8.0, 1.0, 5.0, 3.5, 1.0, 3.3,
+    0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 2.0, 1.5,
+    1.5, 1.0, 1.0, 1.0, 8.0, 1.0, 3.5, 2.5, 1.0, 3.3,
     1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, # 13 WA armor levels
 ]
 
 FOURTEEN_FIVE_MM_DAMAGE = [
-    1.2, 1.1, 1.0, 0.3, 5.0, 2.0, 1.25, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+    1.2, 1.1, 1.0, 0.3, 4.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
     0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-    0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 3.3, 2.5,
-    1.7, 1.0, 1.0, 1.0, 8.0, 1.0, 7.0, 5.0, 1.0, 3.3,
+    0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 2.5, 2.0,
+    2.0, 1.0, 1.0, 1.0, 8.0, 1.0, 5.0, 3.5, 1.0, 3.3,
     1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, # 13 WA armor levels
 ]
 

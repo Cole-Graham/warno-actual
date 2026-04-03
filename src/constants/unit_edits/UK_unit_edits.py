@@ -2221,7 +2221,7 @@ uk_unit_edits = {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 220,
             },
-            "TimeBetweenEachIdentifyRoll": 1.0,
+            "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
@@ -2242,7 +2242,7 @@ uk_unit_edits = {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 300,
             },
-            "TimeBetweenEachIdentifyRoll": 1.0,
+            "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
@@ -2269,7 +2269,7 @@ uk_unit_edits = {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 300,
             },
-            "TimeBetweenEachIdentifyRoll": 1.0,
+            "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
@@ -2287,7 +2287,7 @@ uk_unit_edits = {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 220,
             },
-            "TimeBetweenEachIdentifyRoll": 1.0,
+            "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
@@ -2314,7 +2314,7 @@ uk_unit_edits = {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 300,
             },
-            "TimeBetweenEachIdentifyRoll": 1.0,
+            "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
@@ -2329,7 +2329,7 @@ uk_unit_edits = {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 300,
             },
-            "TimeBetweenEachIdentifyRoll": 1.0,
+            "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],

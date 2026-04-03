@@ -1,8 +1,10 @@
 from .constantes import (
     edit_gameplay_constantes_gdconstants,
     edit_gameplay_constantes_hitrollconstants,
+    edit_gameplay_constantes_iastratweaponconstantes,
     edit_gameplay_constantes_ravitaillement,
     edit_gameplay_constantes_weaponconstantes,
+    edit_gameplay_constantes_weapontypepriorities,
 )
 from .gfx import (
     add_unit_meshes,
@@ -24,8 +26,10 @@ __all__ = [
     'add_unit_meshes',
     'edit_gameplay_constantes_gdconstants',
     'edit_gameplay_constantes_hitrollconstants',
+    'edit_gameplay_constantes_iastratweaponconstantes',
     'edit_gameplay_constantes_ravitaillement',
     'edit_gameplay_constantes_weaponconstantes',
+    'edit_gameplay_constantes_weapontypepriorities',
     'edit_gameplay_terrains',
     'edit_gameplay_unit_airplanecritical',
     'edit_gameplay_unit_groundunitcritical',

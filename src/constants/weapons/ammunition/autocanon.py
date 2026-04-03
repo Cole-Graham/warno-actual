@@ -901,95 +901,101 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
-                "MaximumRangeAirplaneGRU": 1750,
+                "MaximumRangeAirplaneGRU": 2100,
                 "TimeBetweenTwoShots": 0.2,
                 "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 1.0,
-                "TimeBetweenTwoSalvos": 1.0,
+                "TimeBetweenTwoSalvos": 1.6,
                 "AimingTime": 1.2,
-                "ShotsCountPerSalvo": 24,
-                "AffichageMunitionParSalve": 120,
-                "SupplyCost": 3.0,
+                "ShotsCountPerSalvo": 10,
+                "AffichageMunitionParSalve": 100,
+                "SupplyCost": 10.0,
             },
+        },
+        "WeaponDescriptor": {
+            "Salves": 11,
         },
     },
     
     # M167A2 VADS 20mm, M167A2 VADS 20mm (UK), AERO-M167A2 PIVADS 20mm
-    ("Gatling_M61_Vulcan_20mm_late_TOWED", "autocannon", None, False): { # 318
+    ("Gatling_M61_Vulcan_20mm_late_TOWED", "DCA", None, False): { # 318
         "Ammunition": {
             "hit_roll": {
                 "Idling": 30,
             },
             "parent_membr": {
+                "add": [41, "Guidance = Guidance_Radar"],
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 2100,
                 "TimeBetweenTwoShots": 0.2,
                 "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 1.0,
-                "TimeBetweenTwoSalvos": 1.0,
+                "TimeBetweenTwoSalvos": 1.6,
                 "AimingTime": 1.2,
-                "ShotsCountPerSalvo": 12,
-                "AffichageMunitionParSalve": 60,
-                "SupplyCost": 6.0,
+                "ShotsCountPerSalvo": 10,
+                "AffichageMunitionParSalve": 100,
+                "SupplyCost": 10.0,
             },
         },
         "WeaponDescriptor": {
-            "Salves": 13,
+            "Salves": 11,
         },
     },
 
     # M163_PIVADS_US
-    ("Gatling_M61_Vulcan_20mm_late", "autocannon", None, False): { # 317
+    ("Gatling_M61_Vulcan_20mm_late", "DCA", None, False): { # 317
         "Ammunition": {
             "hit_roll": {
                 "Idling": 30,
             },
             "parent_membr": {
+                "add": [41, "Guidance = Guidance_Radar"],
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 2100,
                 "TimeBetweenTwoShots": 0.2,
                 "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 1.0,
-                "TimeBetweenTwoSalvos": 1.0,
+                "TimeBetweenTwoSalvos": 1.6,
                 "AimingTime": 1.2,
-                "ShotsCountPerSalvo": 12,
-                "AffichageMunitionParSalve": 60,
-                "SupplyCost": 6.0,
+                "ShotsCountPerSalvo": 10,
+                "AffichageMunitionParSalve": 100,
+                "SupplyCost": 10.0,
             },
         },
         "WeaponDescriptor": {
-            "Salves": 13,
+            "Salves": 11,
         },
     },
 
     # M167A1
-    ("Gatling_M61_Vulcan_20mm_TOWED", "autocannon", None, False): { # 316
+    ("Gatling_M61_Vulcan_20mm_TOWED", "DCA", None, False): { # 316
         "Ammunition": {
             "hit_roll": {
                 "Idling": 20,
             },
             "parent_membr": {
+                "add": [41, "Guidance = Guidance_Radar"],
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
-                "MaximumRangeAirplaneGRU": 1750,
+                "MaximumRangeAirplaneGRU": 2100,
                 "TimeBetweenTwoShots": 0.2,
                 "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 1.0,
-                "TimeBetweenTwoSalvos": 1.0,
+                "TimeBetweenTwoSalvos": 1.6,
                 "AimingTime": 1.2,
-                "ShotsCountPerSalvo": 24,
-                "AffichageMunitionParSalve": 120,
-                "SupplyCost": 3.0,
+                "ShotsCountPerSalvo": 10,
+                "AffichageMunitionParSalve": 100,
+                "SupplyCost": 10.0,
             },
         },
         "WeaponDescriptor": {
-            "Salves": 13,
+            "Salves": 11,
         },
     },
 
-    ("Gatling_M197_20mm", "autocannon", None, False): { # 314
+    ("Gatling_M197_20mm", "DCA", None, False): { # 314
         "Ammunition": {
             "hit_roll": {
                 "Idling": 20,

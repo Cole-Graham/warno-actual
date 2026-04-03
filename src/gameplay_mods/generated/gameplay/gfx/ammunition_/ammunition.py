@@ -5,6 +5,7 @@ from uuid import uuid4
 
 from src import ndf
 from src.constants.weapons import ammunitions
+from src.constants.weapons.standards import DCA_STANDARDS
 from src.constants.weapons.vanilla_inst_modifications import AMMUNITION_REMOVALS
 from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.ndf_utils import strip_quotes
@@ -391,6 +392,8 @@ def _apply_weapon_edits(
     # Apply hit roll edits
     if "hit_roll" in ammo_data:
         _apply_hit_roll_edits(descr, ammo_data["hit_roll"])
+    if category == "DCA":
+        _apply_hit_roll_edits(descr, DCA_STANDARDS["hit_roll"])
 
     # Apply texture
     if "NewTexture" in data:

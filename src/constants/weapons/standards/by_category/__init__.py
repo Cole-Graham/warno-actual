@@ -5,6 +5,8 @@ Layout mirrors `constants.weapons.ammunition` and `constants.weapons.missiles`:
 - Within each subpackage, one module per category string (e.g. `bomb/clu_bomb.py`).
 """
 
+from .autocanon_dca import DCA_STANDARDS
+from .missiles.sead import SEAD_STANDARDS
 from .bomb import (
     BOMB_CATEGORY_WEAPON_WHITELIST,
     BOMB_STANDARDS,
@@ -14,8 +16,12 @@ from .types import (
     AmmunitionBlock,
     AmmunitionParams,
     CategoryStandardEntry,
+    DcaCategoryStandardEntry,
+    HitRollStandardParams,
     RatioAmmunitionBlock,
     RatioAmmunitionParams,
+    SeadCategoryStandardEntry,
+    SeadArmeStandardParams,
 )
 
 __all__ = [
@@ -24,6 +30,12 @@ __all__ = [
     "AmmunitionBlock",
     "AmmunitionParams",
     "CategoryStandardEntry",
+    "DCA_STANDARDS",
+    "DcaCategoryStandardEntry",
+    "HitRollStandardParams",
+    "SEAD_STANDARDS",
+    "SeadArmeStandardParams",
+    "SeadCategoryStandardEntry",
     "BOMB_STANDARDS",
     "RatioAmmunitionBlock",
     "RatioAmmunitionParams",

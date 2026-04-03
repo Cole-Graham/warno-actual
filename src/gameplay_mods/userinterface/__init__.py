@@ -1,4 +1,6 @@
 from .ingame import (
+    edit_ui_ingame_uiingameunitlabelresource,
+    edit_ui_ingame_uimousepolicyresources,
     edit_ui_ingame_uispecificunitinfopanelview,
     edit_ui_ingame_uispecificunitinfosingleweaponpanelview,
     edit_ui_ingame_useingametextures,
@@ -11,6 +13,8 @@ from .style import (
 )
 
 __all__ = [
+    'edit_ui_ingame_uiingameunitlabelresource',
+    'edit_ui_ingame_uimousepolicyresources',
     'edit_ui_ingame_uispecificunitinfopanelview',
     'edit_ui_ingame_uispecificunitinfosingleweaponpanelview',
     'edit_ui_ingame_useingametextures',

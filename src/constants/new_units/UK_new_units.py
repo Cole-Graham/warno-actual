@@ -24,6 +24,7 @@ UK_NEW_UNITS = {
             "overwrite_all": [
                 "AllUnits",
                 "AllowedForMissileRoE",
+                "AA_radar",
                 "Canon_AA",
                 "Canon_AA_Porte",
                 "GroundUnits",
@@ -34,7 +35,7 @@ UK_NEW_UNITS = {
         },
         "TransportedSoldier": "DCA_M167A2_Vulcan_20mm_UK",
         "Factory": "EFactory/Logistic",
-        "CommandPoints": 30,
+        "CommandPoints": 50,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -44,15 +45,24 @@ UK_NEW_UNITS = {
             },
         },
         "availability": [6, 4, 0, 0],
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 220,
+            },
+            "TimeBetweenEachIdentifyRoll": 0.5,
+        },
         "max_speed": 6,
         "capacities": {
             "add_capacities": ["Deploy", "Deploy_ok"],
         },
         "WeaponDescriptor": {
             "Salves": {
-                "Gatling_M61_Vulcan_20mm_late_TOWED": 38,
+                "Gatling_M61_Vulcan_20mm_late_TOWED": 8,
             },
         },
+        "SpecialtiesList": [
+            'good_airoptics',
+        ],
         "UpgradeFromUnit": "FOB_UK",
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
@@ -740,7 +750,7 @@ UK_NEW_UNITS = {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 220,
             },
-            "TimeBetweenEachIdentifyRoll": 1.0,
+            "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "UnitRole": "AA",
         "UpgradeFromUnit": "DCA_Rapier_FSA_UK",
@@ -801,7 +811,7 @@ UK_NEW_UNITS = {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 300,
             },
-            "TimeBetweenEachIdentifyRoll": 1.0,
+            "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "UnitRole": "AA",
         "UpgradeFromUnit": "Tracked_Rapier_UK",

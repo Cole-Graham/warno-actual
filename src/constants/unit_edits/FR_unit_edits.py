@@ -1634,7 +1634,7 @@ fr_unit_edits = {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 220,
             },
-            "TimeBetweenEachIdentifyRoll": 1.0,
+            "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "availability": [4, 3, 0, 0],
         "SpecialtiesList": {
@@ -1648,7 +1648,7 @@ fr_unit_edits = {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 220,
             },
-            "TimeBetweenEachIdentifyRoll": 1.0,
+            "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "availability": [4, 3, 0, 0],
         "SpecialtiesList": {
@@ -1662,7 +1662,7 @@ fr_unit_edits = {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 300,
             },
-            "TimeBetweenEachIdentifyRoll": 1.0,
+            "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "availability": [0, 3, 2, 0],
         "Divisions": {
@@ -1684,7 +1684,7 @@ fr_unit_edits = {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 300,
             },
-            "TimeBetweenEachIdentifyRoll": 1.0,
+            "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "availability": [4, 3, 0, 0],
         "SpecialtiesList": {

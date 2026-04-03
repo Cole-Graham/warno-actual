@@ -7,8 +7,10 @@ from .gameplay_mods import (
     # .gameplay
     edit_gameplay_constantes_gdconstants,
     edit_gameplay_constantes_hitrollconstants,
+    edit_gameplay_constantes_iastratweaponconstantes,
     edit_gameplay_constantes_ravitaillement,
     edit_gameplay_constantes_weaponconstantes,
+    edit_gameplay_constantes_weapontypepriorities,
     edit_gameplay_terrains,
     edit_gameplay_unit_airplanecritical,
     edit_gameplay_unit_groundunitcritical,
@@ -65,6 +67,8 @@ from .gameplay_mods import (
     edit_gen_ui_weapontraits,
     edit_gen_ui_weaponsminmax,
     # .userinterface
+    edit_ui_ingame_uiingameunitlabelresource,
+    edit_ui_ingame_uimousepolicyresources,
     edit_ui_ingame_useingametextures,
     edit_ui_ingame_uispecificunitinfopanelview,
     edit_ui_ingame_uispecificunitinfosingleweaponpanelview,
@@ -125,6 +129,7 @@ __all__ = [
     # gameplay_mods.gameplay
     'edit_gameplay_constantes_gdconstants',
     'edit_gameplay_constantes_hitrollconstants',
+    'edit_gameplay_constantes_iastratweaponconstantes',
     'edit_gameplay_constantes_ravitaillement',
     'edit_gameplay_constantes_weaponconstantes',
     'edit_gameplay_terrains',
@@ -183,6 +188,8 @@ __all__ = [
     'edit_gen_ui_weapontraits',
     'edit_gen_ui_weaponsminmax',
     # gameplay_mods.userinterface
+    'edit_ui_ingame_uiingameunitlabelresource',
+    'edit_ui_ingame_uimousepolicyresources',
     'edit_ui_ingame_useingametextures',
     'edit_ui_ingame_uispecificunitinfopanelview',
     'edit_ui_outgame_uispecificoutgamewelcomeview',
@@ -254,11 +261,17 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/Gameplay/Constantes/HitRollConstants.ndf": [
             (edit_gameplay_constantes_hitrollconstants, "gameplay"),
         ],
+        "GameData/Gameplay/Constantes/IAStratWeaponConstantes.ndf": [
+            (edit_gameplay_constantes_iastratweaponconstantes, "gameplay"),
+        ],
         "GameData/Gameplay/Constantes/Ravitaillement.ndf": [
             (edit_gameplay_constantes_ravitaillement, "gameplay"),
         ],
         "GameData/Gameplay/Constantes/WeaponConstantes.ndf": [
             (edit_gameplay_constantes_weaponconstantes, "gameplay"),
+        ],
+        "GameData/Gameplay/Constantes/WeaponTypePriorities.ndf": [
+            (edit_gameplay_constantes_weapontypepriorities, "gameplay"),
         ],
         "GameData/Gameplay/Terrains/Terrains.ndf": [
             (edit_gameplay_terrains, "gameplay"),
@@ -443,6 +456,12 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         ],
         "GameData/UserInterface/Use/InGame/UseInGameTextures.ndf": [
             (edit_ui_ingame_useingametextures, "gameplay"),
+        ],
+        "GameData/UserInterface/Use/InGame/UIInGameUnitLabelResources.ndf": [
+            (edit_ui_ingame_uiingameunitlabelresource, "gameplay"),
+        ],
+        "GameData/UserInterface/Use/InGame/UIMousePolicyResources.ndf": [
+            (edit_ui_ingame_uimousepolicyresources, "gameplay"),
         ],
         "GameData/UserInterface/Use/OutGame/UISpecificOutGameWelcomeView.ndf": [
             (edit_ui_outgame_uispecificoutgamewelcomeview, "gameplay"),
