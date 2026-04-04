@@ -201,6 +201,7 @@ UK_global_newdivisionrules = {
         ("Harrier_UK", 2, [0, 4, 3, 0]),
         ("Harrier_HE1_UK", 1, [0, 4, 0, 0]),
         ("Harrier_HE2_UK", 1, [0, 3, 0, 0]),
+        ("Harrier_CLU_UK", 1, [0, 3, 0, 0]),
         ("Harrier_RKT1_UK", 1, [0, 3, 2, 0]),
         ("Harrier_RKT2_UK", 1, [0, 4, 3, 0]),
         ("Jaguar_CLU_UK", 1, [0, 2, 0, 0]),

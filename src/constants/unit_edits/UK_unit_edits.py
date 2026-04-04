@@ -2514,6 +2514,11 @@ uk_unit_edits = {
         "CommandPoints": 95,
         "availability": [0, 4, 3, 0],
     },
+
+    "Harrier_CLU_UK": {
+        "CommandPoints": 170,
+        "availability": [0, 3, 0, 0],
+    },
     
     "Harrier_GR5_UK": {
         "CommandPoints": 150,
