@@ -1424,6 +1424,7 @@ rfa_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "AutoCanon_AP_20mm_MK_20_Rh_202": 48,
+                "ATGM_MILAN_IFV": 4,
             },
         },
     },
@@ -1442,6 +1443,7 @@ rfa_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "AutoCanon_AP_20mm_MK_20_Rh_202": 48,
+                "ATGM_MILAN_IFV": 4,
             },
         },
     },

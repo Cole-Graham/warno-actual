@@ -116,7 +116,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_1_canon_FK20_20mm_TOWED", "DCA", None, False): { # 20mm with 1000 RPM
         "Ammunition": {
             "hit_roll": {
-                "Idling": 20,
+                "Idling": 30,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
@@ -135,7 +135,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_1_canon_FK20_20mm", "DCA", None, False): { # 20mm with 1000 RPM
         "Ammunition": {
             "hit_roll": {
-                "Idling": 20,
+                "Idling": 30,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
@@ -154,7 +154,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
      ("DCA_2_canon_FK20_20mm", "DCA", None, False): { # twin 20mm with combined 2000 RPM
         "Ammunition": {
             "hit_roll": {
-                "Idling": 20,
+                "Idling": 25,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
@@ -173,7 +173,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_1_canon_53T2_20mm", "DCA", None, False): { # 20mm with 740 RPM
         "Ammunition": {
             "hit_roll": {
-                "Idling": 20,
+                "Idling": 30,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
@@ -192,7 +192,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_1_canon_53T2_20mm_TOWED", "DCA", None, False): { # 20mm with 740 RPM
         "Ammunition": {
             "hit_roll": {
-                "Idling": 20,
+                "Idling": 30,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
@@ -211,7 +211,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_2_canon_76T2_20mm", "DCA", None, False): { # Twin 20mm at 1500 combined RPM
         "Ammunition": {
             "hit_roll": {
-                "Idling": 20,
+                "Idling": 25,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
@@ -322,7 +322,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_2_canon_ZU23_2_23mm_TOWED", "DCA", None, False): { # Twin 23mm with combined 2000 cyclic rpm
         "Ammunition": {
             "hit_roll": {
-                "Idling": 20,
+                "Idling": 25,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
@@ -344,7 +344,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_2_canon_ZU23_2_23mm", "DCA", None, False): { # Twin 23mm with combined 2000 cyclic rpm
         "Ammunition": {
              "hit_roll": {
-                "Idling": 20,
+                "Idling": 25,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
@@ -366,7 +366,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_2_canon_Jod_SP_23mm", "DCA", None, False): { # Twin 23mm with combined 2000 cyclic rpm
         "Ammunition": {
              "hit_roll": {
-                "Idling": 20,
+                "Idling": 25,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
@@ -388,7 +388,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_2_canon_Jod_towed_23mm", "DCA", None, False): { # Twin 23mm with combined 2000 cyclic rpm
         "Ammunition": {
              "hit_roll": {
-                "Idling": 20,
+                "Idling": 25,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
@@ -410,7 +410,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_2_canon_2M3_25mm", "DCA", None, False): { # Twin 25mm at 450 rpm each, for combined 900 rpm
         "Ammunition": {
              "hit_roll": {
-                "Idling": 20,
+                "Idling": 25,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
@@ -541,6 +541,9 @@ weapons: Dict[WeaponKey, WeaponData] = {
     
     ("DCA_2_canon_Bofors_40mm", "DCA", None, False): { # M24 Duster -Twin 40mm L60 Bofors, 280 combined RPM, Salvo length is the total ammo
         "Ammunition": {
+            "hit_roll": {
+                "Idling": 25,
+            },
             "parent_membr": {
                 "TimeBetweenTwoShots": 0.2,
                 "TimeBetweenTwoFx": 0.2,
@@ -577,7 +580,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_1_canon_Bofors_40mm_L60", "DCA", None, False): { # Single 40mm L60 Bofors, 140 RPM, Salvo length is the total ammo
         "Ammunition": {
             "hit_roll": {
-                "Idling": 25,
+                "Idling": 30,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 0.4,
