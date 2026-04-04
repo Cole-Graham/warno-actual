@@ -834,7 +834,11 @@ def _apply_custom_weapon_swaps(weapon_descr: Any, wd_edits: Dict, game_db: Dict)
 
 
 def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_db: Dict) -> None:
-    """Replace weapons with their replacements."""
+    """Replace weapons with their replacements.
+
+    ``replace`` tuples apply in order; each tuple replaces the *next* mount matching ``current``
+    in turret order (then mount order), so duplicate donor ammo can map to different weapons.
+    """
     ammo_pattern = re.compile(r"\$/GFX/Weapon/Ammo_(.*?)(?:_x\d+)?$")
     turret_list = weapon_descr.v.by_member("TurretDescriptorList").v
     ammo_db = game_db["ammunition"]
@@ -860,7 +864,6 @@ def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_
         if not is_valid_turret(turret.v):
             continue
 
-        turret_index = str(turret.index)
         mounted_wpns = turret.v.by_m("MountedWeaponDescriptorList")
         for weapon in mounted_wpns.v:
             if not is_obj_type(weapon.v, "TMountedWeaponDescriptor"):
@@ -868,7 +871,7 @@ def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_
 
             ammo_val = weapon.v.by_m("Ammunition").v
 
-            # Handle fixed salvo replacements
+            # Handle fixed salvo replacements (still scan all mounts)
             if "replace_fixedsalvo" in equipment_changes:
                 for current, replacement in equipment_changes["replace_fixedsalvo"]:
                     new_name = None
@@ -882,53 +885,68 @@ def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_
                         weapon.v.by_m("Ammunition").v = f"$/GFX/Weapon/Ammo_{replacement}"
                         logger.debug(f"Replaced {current} with {replacement}")
 
-            match = ammo_pattern.match(ammo_val)
-            # Handle regular replacements
-            if match:
+    if "replace" not in equipment_changes:
+        return
+
+    for repl in equipment_changes["replace"]:
+        if len(repl) == 4:
+            replace_fire_effect = True
+            current, new_weapon, old_fire_effect, new_fire_effect = repl
+        else:
+            replace_fire_effect = False
+            current, new_weapon = repl
+            old_fire_effect = None
+            new_fire_effect = None
+
+        for turret in turret_list:
+            if not is_valid_turret(turret.v):
+                continue
+            mounted_wpns = turret.v.by_m("MountedWeaponDescriptorList")
+            for weapon in mounted_wpns.v:
+                if not is_obj_type(weapon.v, "TMountedWeaponDescriptor"):
+                    continue
+                ammo_val = weapon.v.by_m("Ammunition").v
+                match = ammo_pattern.match(ammo_val)
+                if not match:
+                    continue
                 ammo_name = match.group(1)
-                if "replace" in equipment_changes:
-                    for replacement in equipment_changes["replace"]:
-                        if len(replacement) == 4:
-                            replace_fire_effect = True
-                            current, replacement, old_fire_effect, new_fire_effect = replacement
-                        else:
-                            replace_fire_effect = False
-                            current, replacement = replacement
+                if ammo_name != current:
+                    continue
 
-                        if ammo_name == current:
-                            # Use weapon's NbWeapons directly - weapon_db may not have weapons
-                            # added by Salves (e.g. AA_R60M_Vympel replacing vanilla loadout)
-                            quantity = int(weapon.v.by_m("NbWeapons").v)
+                quantity = int(weapon.v.by_m("NbWeapons").v)
 
-                            # Check if replacement weapon should use strength variants
-                            use_strength = False
-                            for (weapon_name, category, _, _), data in ammos.items():
-                                if weapon_name == replacement and category == "small_arms":
-                                    damage_family = data.get("Ammunition", {}).get("Arme", {}).get("Family")
-                                    use_strength = damage_family in [
-                                        "DamageFamily_sa_full",
-                                        "DamageFamily_sa_intermediate",
-                                    ]
-                                    break
+                use_strength = False
+                for (weapon_name, category, _, _), data in ammos.items():
+                    if weapon_name == new_weapon and category == "small_arms":
+                        damage_family = data.get("Ammunition", {}).get("Arme", {}).get("Family")
+                        use_strength = damage_family in [
+                            "DamageFamily_sa_full",
+                            "DamageFamily_sa_intermediate",
+                        ]
+                        break
 
-                            if quantity > 1:
-                                if use_strength:
-                                    new_ammo = f"$/GFX/Weapon/Ammo_{replacement}_strength{unit_strength}_x{quantity}"
-                                else:
-                                    new_ammo = f"$/GFX/Weapon/Ammo_{replacement}_x{quantity}"
-                            else:
-                                if use_strength:
-                                    new_ammo = f"$/GFX/Weapon/Ammo_{replacement}_strength{unit_strength}"
-                                else:
-                                    new_ammo = f"$/GFX/Weapon/Ammo_{replacement}"
-                            weapon.v.by_m("Ammunition").v = new_ammo
-                            logger.debug(f"Replaced {current} with {replacement}")
+                if quantity > 1:
+                    if use_strength:
+                        new_ammo = f"$/GFX/Weapon/Ammo_{new_weapon}_strength{unit_strength}_x{quantity}"
+                    else:
+                        new_ammo = f"$/GFX/Weapon/Ammo_{new_weapon}_x{quantity}"
+                else:
+                    if use_strength:
+                        new_ammo = f"$/GFX/Weapon/Ammo_{new_weapon}_strength{unit_strength}"
+                    else:
+                        new_ammo = f"$/GFX/Weapon/Ammo_{new_weapon}"
+                weapon.v.by_m("Ammunition").v = new_ammo
+                logger.debug(f"Replaced {current} with {new_weapon}")
 
-                        if replace_fire_effect:
-                            fire_effect_val = strip_quotes(weapon.v.by_m("EffectTag").v).replace("FireEffect_", "")
-                            if old_fire_effect == fire_effect_val:
-                                weapon.v.by_m("EffectTag").v = "'" + f"FireEffect_{new_fire_effect}" + "'"
-                                logger.debug(f"Replaced fire effect{old_fire_effect} with {new_fire_effect}")
+                if replace_fire_effect:
+                    fire_effect_val = strip_quotes(weapon.v.by_m("EffectTag").v).replace("FireEffect_", "")
+                    if old_fire_effect == fire_effect_val:
+                        weapon.v.by_m("EffectTag").v = "'" + f"FireEffect_{new_fire_effect}" + "'"
+                        logger.debug(f"Replaced fire effect{old_fire_effect} with {new_fire_effect}")
+                break
+            else:
+                continue
+            break
 
 
 def _adjust_light_at_salvos(

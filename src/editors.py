@@ -6,6 +6,7 @@ from typing import Callable, Dict, List
 from .gameplay_mods import (
     # .gameplay
     edit_gameplay_constantes_gdconstants,
+    edit_cd_gameplay_constantes_helicoptermovementweights,
     edit_gameplay_constantes_hitrollconstants,
     edit_gameplay_constantes_iastratweaponconstantes,
     edit_gameplay_constantes_ravitaillement,
@@ -257,6 +258,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         # Core gameplay mechanics
         "GameData/Gameplay/Constantes/GDConstants.ndf": [
             (edit_gameplay_constantes_gdconstants, "gameplay"),
+        ],
+        "CommonData/Gameplay/Constantes/HelicopterMovementWeights.ndf": [
+            (edit_cd_gameplay_constantes_helicoptermovementweights, "gameplay"),
         ],
         "GameData/Gameplay/Constantes/HitRollConstants.ndf": [
             (edit_gameplay_constantes_hitrollconstants, "gameplay"),

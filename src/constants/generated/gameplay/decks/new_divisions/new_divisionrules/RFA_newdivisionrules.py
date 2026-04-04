@@ -83,6 +83,7 @@ RFA_airborne_newdivisionrules = {
         ("Bo_105_PAH_1_RFA", 3, [0, 6, 0, 0]),
     ],
     "planes": [
+        ("F4F_KWS_AA_RFA", 2, [0, 2, 0, 1]),
         ("Tornado_IDS_MW1_RFA", 1, [0, 2, 0, 0]),
         # ("Tornado_IDS_RFA", 2, [0, 0, 0, 1]),
     ],
@@ -390,6 +391,7 @@ RFA_motorized_newdivisionrules = {
         ("Bo_105_PAH_1_RFA", 2, [0, 6, 0, 0]),
     ],
     "planes": [
+        ("F4F_KWS_AA_RFA", 1, [0, 2, 0, 1]),
         ("Tornado_IDS_MW1_RFA", 1, [0, 2, 0, 0]),
         # ("Tornado_IDS_RFA", 2, [0, 1, 0, 0]),
     ],
