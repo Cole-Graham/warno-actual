@@ -184,6 +184,7 @@ RDA_armored_newdivisionrules = {
         ("ZSU_23_Shilka_DDR", 2, [6, 4, 0, 0]),
         ("MTLB_Strela10_DDR", 2, [6, 4, 0, 0]),
         ("2K12_KUB_DDR", 2, [4, 3, 0, 0]),
+        ("2K11_KRUG_DDR", 1, [3, 2, 0, 0]),
     ],
     "heli": [
         ("Mi_24D_s5_AT_DDR", 2, [0, 4, 3, 0]),
@@ -294,7 +295,7 @@ RDA_mechanized_newdivisionrules = {
         ("ZSU_23_Shilka_DDR", 1, [6, 4, 0, 0]),
         ("MTLB_Strela10_DDR", 2, [6, 4, 0, 0]),
         ("2K12_KUB_DDR", 1, [4, 3, 0, 0]),
-        ("2K11_KRUG_DDR", 2, [4, 3, 0, 0]),
+        ("2K11_KRUG_DDR", 2, [3, 2, 0, 0]),
     ],
     "heli": [
         ("Mi_24D_s5_AT_DDR", 1, [0, 4, 3, 0]),
