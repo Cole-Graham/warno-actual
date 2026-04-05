@@ -113,7 +113,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "AimingTime": 18.0,
                 "TimeBetweenTwoSalvos": 70.0, # Experimental, realistic short reload balanced with supply cost (130s -> 70s)
                 "ShotsCountPerSalvo": 12,
-                "SupplyCost": 1440.0, # 960 -> 1440
+                "SupplyCost": 1800.0, # 960 -> 1800 (same was Wargame SMERCH)
                 "SimultaneousShotsCount": 1,
                 "AffichageMunitionParSalve": 12,
             },

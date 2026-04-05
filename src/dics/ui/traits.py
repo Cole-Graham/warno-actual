@@ -188,6 +188,15 @@ NEW_TRAITS = {
         )),
         "texture": "verygood_airoptics.png",
     },
+    
+    "radar_fcs": {
+        "title": ("FJZROTAEIR", "Radar Fire Control System"),
+        "description": ("FJJLIZTYHI", (
+            f"This unit is equipped with a radar fire control system, but lacks a "
+            f"search radar for detecting aircraft. It is still vulnerable to enemy SEAD."
+        )),
+        "texture": "radar_fcs.png",
+    },
 
     "infantry_equip_light": {
         "title": ("KLFMLCXTLI", "Light Equipment"),

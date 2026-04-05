@@ -1308,7 +1308,7 @@ uk_unit_edits = {
     },
 
     "M270_MLRS_cluster_UK": {
-        "CommandPoints": 350,
+        "CommandPoints": "M270_MLRS_cluster_US",
         "Divisions": {
             # "add": ["US_8th_Inf"],
             # "is_transported": False,

@@ -1057,5 +1057,81 @@ RDA_NEW_UNITS = {
         "Nation": "DDR",
         "UpgradeFromUnit": "UAZ_469_Fagot_DDR",
     },
+    
+    ("HvyScout_DDR", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "6719c924-baf9-4504-8e50-a4b08ab7c70c",
+        "InfantrySquadModuleGUID": "4bc13e62-8ad3-4663-971d-0a16ce03251b",
+        "ShowroomGUID": "24396c59-18b8-4cf5-97ea-71d26bef0c90",
+        "CadavreGUID": "4401b9de-c033-4e9d-9a24-5c935b3600bc",
+        "NewName": "HvyScout_RPG7VL_DDR",
+        "GameName": {
+            "display": "#RECO2 MOT. AUFKLÃRER [RPG-7]",
+            "token": "LFBKZAMOMO",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_IFV",
+                "Infanterie_Reco",
+                "Radio",
+                "Reco",
+                "UNITE_HvyScout_RPG7VL_DDR",
+                "Unite",
+            ],
+        },
+        "strength": 7,
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_Mpi_AK_74N": 11,
+                "SAW_lMG_K_7_62mm": 18,
+                "RocketInf_RPG7VL": 6,
+            },
+            "equipmentchanges": {
+                "animate": {
+                    "SAW_lMG_K_7_62mm": False,
+                },
+                "quantity": {
+                    "FM_Mpi_AK_74N": 5,
+                    "SAW_lMG_K_7_62mm": 2,
+                },
+                "replace": [
+                    ("RocketInf_RPG18_64mm", "RocketInf_RPG7VL", "RocketInf_RPG18_64mm", "RocketInf_RPG7VL"),
+                ],
+            },
+        },
+        "TransportedSoldier": "HvyScout_RPG7VL_DDR",
+        "armor": "Infantry_armor_reference",
+        "CommandPoints": 40,
+        "SpecialtiesList": [
+                '_resolute',
+                '_ifv',
+                'infantry_equip_medium',
+            ],
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 7, 5, 0],
+        "max_speed": 26,
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
+                   'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
+                   'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/UseCapacite', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": True, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": False,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "DDR",
+        "UpgradeFromUnit": "HvyScout_DDR",
+        "alternatives_count": 6,
+        "selector_tactic": "00_06",
+    },
 }
 # fmt: on

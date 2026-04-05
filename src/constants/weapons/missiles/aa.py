@@ -294,6 +294,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DistanceToTarget": True,
             },
             "parent_membr": {
+                "TraitsToken": ['STAT', 'RADAR', 'biglyHE'],
                 "MaximumRangeAirplaneGRU": 6125,
                 "PhysicalDamages": 9.0,
                 "SupplyCost": 180.0,
@@ -311,6 +312,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DistanceToTarget": True,
             },
             "parent_membr": {
+                "TraitsToken": ['STAT', 'RADAR', 'biglyHE'],
                 "MaximumRangeAirplaneGRU": 6125,
                 "TimeBetweenTwoShots": 4.0,
                 "TimeBetweenTwoFx": 4.0,

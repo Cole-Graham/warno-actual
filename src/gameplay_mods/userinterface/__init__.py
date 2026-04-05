@@ -1,3 +1,4 @@
+from .common import edit_ui_common_bucktexturebank
 from .ingame import (
     edit_ui_ingame_uiingameunitlabelresource,
     edit_ui_ingame_uimousepolicyresources,
@@ -13,6 +14,7 @@ from .style import (
 )
 
 __all__ = [
+    'edit_ui_common_bucktexturebank',
     'edit_ui_ingame_uiingameunitlabelresource',
     'edit_ui_ingame_uimousepolicyresources',
     'edit_ui_ingame_uispecificunitinfopanelview',

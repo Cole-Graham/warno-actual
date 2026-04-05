@@ -144,7 +144,6 @@ RDA_armored_newdivisionrules = {
     ],
     "artillery": [
         ("MFRW_RM70_DDR", 1, [2, 0, 1, 0]),
-        ("MFRW_RM70_cluster_DDR", 1, [2, 0, 1, 0]),
         ("RM70_85_DDR", 1, [2, 0, 1, 0]),
         ("2S3_DDR", 2, [3, 2, 0, 0]),
         ("2S1_DDR", 2, [3, 2, 0, 0]),
@@ -172,6 +171,7 @@ RDA_armored_newdivisionrules = {
     ],
     "recon": [
         ("HvyScout_DDR", 2, [6, 4, 0, 0], ["W50_LA_A_DDR", "BMP_1P_reco_DDR", "Mi_2_trans_DDR"]),
+        ("HvyScout_RPG7VL_DDR", 2, [6, 4, 0, 0], ["W50_LA_A_DDR", "BMP_1P_reco_DDR", "Mi_2_trans_DDR"]),
         ("Scout_DDR", 2, [8, 6, 0, 0], ["UAZ_469_trans_DDR", "UAZ_469_Reco_DDR", "UAZ_469_AGL_Grenzer_DDR"]),
         ("BRDM_2_DDR", 1, [8, 6, 0, 0]),
         ("BRM_1_DDR", 2, [6, 4, 0, 0]),
@@ -277,6 +277,7 @@ RDA_mechanized_newdivisionrules = {
     ],
     "recon": [
         ("HvyScout_DDR", 1, [6, 4, 0, 0], ["W50_LA_A_DDR", "BMP_1P_reco_DDR", "Mi_2_trans_DDR"]),
+        ("HvyScout_RPG7VL_DDR", 2, [6, 4, 0, 0], ["W50_LA_A_DDR", "BMP_1P_reco_DDR", "Mi_2_trans_DDR"]),
         ("Scout_DDR", 1, [8, 6, 0, 0], ["UAZ_469_trans_DDR", "UAZ_469_Reco_DDR", "UAZ_469_AGL_Grenzer_DDR"]),
         ("Scout_Reserve_DDR", 1, [10, 0, 0, 0], ["OT_65_DDR"]),
         ("Scout_KdA_DDR", 1, [8, 0, 0, 0], ["W50_LA_A_DDR"]),
@@ -363,7 +364,6 @@ RDA_motorized_newdivisionrules = {
     ],
     "artillery": [
         ("MFRW_RM70_DDR", 1, [2, 0, 1, 0]),
-        ("MFRW_RM70_cluster_DDR", 1, [2, 0, 1, 0]),
         ("RM70_85_DDR", 1, [2, 0, 1, 0]),
         ("2S1_DDR", 2, [3, 2, 0, 0]),
         ("Howz_D20_152mm_DDR", 2, [3, 2, 0, 0], ["T813_trans_DDR"]),
@@ -401,6 +401,7 @@ RDA_motorized_newdivisionrules = {
         ("Grenzer_Mot_DDR", 2, [8, 0, 0, 0], ["UAZ_469_trans_DDR", "UAZ_469_Reco_DDR", "UAZ_469_AGL_Grenzer_DDR", "BRDM_1_DDR"]),
         ("Grenzer_DDR", 1, [8, 0, 0, 0], ["W50_LA_A_DDR", "BTR_60_reco_DDR"]),
         ("Grenzer_Flam_DDR", 1, [6, 0, 0, 0], ["W50_LA_A_DDR", "BTR_60_reco_DDR"]),
+        ("HvyScout_RPG7VL_DDR", 2, [6, 4, 0, 0], ["W50_LA_A_DDR", "BTR_60_reco_DDR", "Mi_2_trans_DDR"]),
         ("BRDM_2_DDR", 3, [8, 6, 0, 0]),
         ("BRM_1_DDR", 1, [6, 4, 0, 0]),
         ("Mi_2_reco_DDR", 1, [0, 6, 0, 0]),

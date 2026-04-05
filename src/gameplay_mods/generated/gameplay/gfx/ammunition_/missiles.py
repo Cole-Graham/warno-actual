@@ -17,6 +17,7 @@ from .ammunition import get_supply_costs
 from .handlers import (
     apply_bomb_damage_standards,
     apply_category_sead_standards,
+    apply_clu_sol_trait_standards,
     remove_vanilla_instances,
     vanilla_renames_ammunition,
 )
@@ -42,6 +43,7 @@ def edit_gen_gp_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]
         try:
             apply_bomb_damage_standards(source_path, logger)
             edit_missile_speed(source_path, game_db)
+            apply_clu_sol_trait_standards(source_path, logger, game_db)
             logger.debug("Applied global modifications")
         except Exception as e:
             logger.error(f"Failed applying global modifications: {str(e)}")

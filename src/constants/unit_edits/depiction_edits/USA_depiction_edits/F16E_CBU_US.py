@@ -1,0 +1,53 @@
+"""F16E_CBU_US depiction edits."""
+
+from typing import Dict, Tuple, Union
+
+# fmt: off
+f16e_cbu_us: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
+    "unit_name": "F16E_CBU_US",
+    "valid_files": ["MissileCarriage.ndf", "MissileCarriageDepiction.ndf"],
+    "MissileCarriage_ndf": {
+        ("MissileCarriage_F16E_CBU_US", "TMissileCarriageConnoisseur"): { # (Namespace, Object type)
+            "WeaponInfos": {
+                1: {
+                    "MissileCount": 4,
+                },
+            },
+        },
+    },
+    
+    "MissileCarriageDepiction_ndf": {
+        ("SubGenerators_F16E_CBU_US", "TStaticMissileCarriageSubDepictionGenerator"): {
+            "Missiles": {
+                1: ("replace", (
+                    f'TStaticMissileCarriageSubDepictionMissileInfo'
+                    f'('
+                    f'    Depiction = TemplateDepictionStaticMissiles'
+                    f'    ('
+                    f'        PhysicalProperty = "Tourelle3_MissileCount"'
+                    f'        ProjectileModelResource = $/GFX/DepictionResources/Modele_Missile_SideWinder'
+                    f'    )'
+                    f'    MissileCount = 4'
+                    f'    WeaponIndex = 3'
+                    f')'
+                )),
+            },
+        },
+        ("SubGenerators_Showroom_F16E_CBU_US", "TShowroomMissileCarriageSubDepictionGenerator"): {
+            "Missiles": {
+                1: ("replace", (
+                    f'TShowroomMissileCarriageSubDepictionMissileInfo'
+                    f'('
+                    f'    Depiction = TemplateDepictionMissileShowroom'
+                    f'    ('
+                    f'        ProjectileModelResource = $/GFX/DepictionResources/Modele_Missile_SideWinder'
+                    f'    )'
+                    f'    MissileCount = 4'
+                    f'    WeaponIndex = 3'
+                    f')'
+                )),
+            },
+        },
+    },
+}
+# fmt: on

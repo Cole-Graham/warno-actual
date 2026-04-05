@@ -2604,7 +2604,7 @@ rda_unit_edits = {
     },
 
     "Scout_FJ_DDR": {
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "availability": [0, 0, 8, 6],
         "max_speed": 26,
@@ -2612,8 +2612,18 @@ rda_unit_edits = {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [
+                    (
+                        "RocketInf_RPG18_64mm",
+                        "RocketInf_RPG7VL",
+                        "RocketInf_RPG18_64mm",
+                        "RocketInf_RPG7VL",
+                    ),
+                ],
+            },
             "Salves": {
-                "RocketInf_RPG18_64mm": 4,
+                "RocketInf_RPG7VL": 4,
             },
         },
     },
