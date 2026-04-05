@@ -16,6 +16,7 @@ from .handlers import (
     apply_category_bomb_standards,
     apply_aim_time_standards,
     apply_bomb_damage_standards,
+    apply_clu_sol_trait_standards,
     apply_damage_families,
     apply_fire_descriptors,
     apply_he_damage_standards,
@@ -53,6 +54,7 @@ def edit_gen_gp_gfx_ammunition(source_path, game_db: Dict[str, Any]) -> None:
             apply_he_damage_standards(source_path, logger)
             apply_fire_descriptors(source_path, logger)
             apply_infantry_mmg_cac_trait(source_path, logger)
+            apply_clu_sol_trait_standards(source_path, logger, game_db)
             logger.debug("Applied global modifications")
         except Exception as e:
             logger.error(f"Failed applying global modifications: {str(e)}")

@@ -133,6 +133,11 @@ def build_constants_precomputation_data(config: Dict[str, Any], game_db: Dict[st
         # Save ammunition_renames to separate JSON file
         save_ammunition_renames(ammunition_renames, config)
 
+        if game_db and "ammunition" in game_db:
+            clu_targets = game_db["ammunition"].get("clu_sol_trait_targets")
+            if clu_targets:
+                save_clu_sol_trait_targets(clu_targets, config)
+
         # Build and save insert turret templates (vanilla turrets for equipment insert)
         insert_templates = build_insert_turret_templates(
             config, game_db, ammunition_renames=ammunition_renames,
@@ -246,6 +251,21 @@ def save_constants_precomputation_data(data: Dict[str, Dict[str, str]], config: 
         logger.debug(f"Saved deck_pack_mappings to {mappings_file}")
     except Exception as e:
         logger.error(f"Failed to save deck_pack_mappings: {e}")
+        raise
+
+
+def save_clu_sol_trait_targets(targets: Dict[str, str], config: Dict[str, Any]) -> None:
+    """Save precomputed CLU SOL TraitsToken patch map (Ammo_* namespace -> trait key)."""
+    db_path = Path(config["data_config"]["database_path"])
+    constants_dir = db_path / "constants_precomputation"
+    ensure_db_directory(str(constants_dir))
+    out_file = constants_dir / "clu_sol_trait_targets.json"
+    try:
+        with open(out_file, "w") as f:
+            json.dump(targets, f, indent=2, sort_keys=True)
+        logger.debug(f"Saved clu_sol_trait_targets to {out_file}")
+    except Exception as e:
+        logger.error(f"Failed to save clu_sol_trait_targets: {e}")
         raise
 
 

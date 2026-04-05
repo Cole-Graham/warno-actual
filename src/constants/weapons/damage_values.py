@@ -138,6 +138,9 @@ PGB_BOMB_DAMAGE = [
 # Column layout: clu_sol_hefrag.csv (Armor row); blank cells forward-fill to the same family.
 # Regenerate: python tools/clu_sol_hefrag_from_csv.py --apply
 
+CLU_AP_INFANTRY_FINAL_MULTIPLIER = 2.0
+CLU_HEFRAG_INFANTRY_FINAL_MULTIPLIER = 1.5
+
 CLU_SOL_HEFRAG_FAMILY_ORDER = (
     'air',
     'building',
@@ -408,22 +411,22 @@ INFANTRY_ARMOR_EDITS = {
         85: (1.0, "cac 2"),
         86: (1.0, "cac 3"),
         87: (1.0, "cac 4"),
-        88: (1.0, "clu_sol_ap 1"),
-        89: (1.0, "clu_sol_ap 2"),
-        90: (1.0, "clu_sol_ap 3"),
-        91: (1.0, "clu_sol_ap 4"),
-        92: (1.0, "clu_sol_ap 5"),
-        93: (1.2, "clu_sol_ap 6"),
-        94: (1.4, "clu_sol_ap 7"),
-        95: (1.6, "clu_sol_ap 8"),
-        96: (1.8, "clu_sol_ap 9"),
-        97: (2.0, "clu_sol_ap 10"),
-        98: (2.2, "clu_sol_ap 11"),
-        99: (2.4, "clu_sol_ap 12"),
-        100: (2.6, "clu_sol_ap 13"),
-        101: (2.8, "clu_sol_ap 14"),
-        102: (3.0, "clu_sol_ap 15"),
-        103: (3.2, "clu_sol_ap 16"),
+        88: (1.0 * CLU_AP_INFANTRY_FINAL_MULTIPLIER, "clu_sol_ap 1"),
+        89: (1.0 * CLU_AP_INFANTRY_FINAL_MULTIPLIER, "clu_sol_ap 2"),
+        90: (1.0 * CLU_AP_INFANTRY_FINAL_MULTIPLIER, "clu_sol_ap 3"),
+        91: (1.0 * CLU_AP_INFANTRY_FINAL_MULTIPLIER, "clu_sol_ap 4"),
+        92: (1.0 * CLU_AP_INFANTRY_FINAL_MULTIPLIER, "clu_sol_ap 5"),
+        93: (1.2 * CLU_AP_INFANTRY_FINAL_MULTIPLIER, "clu_sol_ap 6"),
+        94: (1.4 * CLU_AP_INFANTRY_FINAL_MULTIPLIER, "clu_sol_ap 7"),
+        95: (1.6 * CLU_AP_INFANTRY_FINAL_MULTIPLIER, "clu_sol_ap 8"),
+        96: (1.8 * CLU_AP_INFANTRY_FINAL_MULTIPLIER, "clu_sol_ap 9"),
+        97: (2.0 * CLU_AP_INFANTRY_FINAL_MULTIPLIER, "clu_sol_ap 10"),
+        98: (2.2 * CLU_AP_INFANTRY_FINAL_MULTIPLIER, "clu_sol_ap 11"),
+        99: (2.4 * CLU_AP_INFANTRY_FINAL_MULTIPLIER, "clu_sol_ap 12"),
+        100: (2.6 * CLU_AP_INFANTRY_FINAL_MULTIPLIER, "clu_sol_ap 13"),
+        101: (2.8 * CLU_AP_INFANTRY_FINAL_MULTIPLIER, "clu_sol_ap 14"),
+        102: (3.0 * CLU_AP_INFANTRY_FINAL_MULTIPLIER, "clu_sol_ap 15"),
+        103: (3.2 * CLU_AP_INFANTRY_FINAL_MULTIPLIER, "clu_sol_ap 16"),
         104: (4.0, "cluster 1"),
         105: (0.5, "cluster_ap 1"),
         106: (0.5, "cluster_ap 2"),

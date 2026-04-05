@@ -18,6 +18,8 @@ from .damage_values import (
     SEAD_RATIO_VS_INFANTRY,
     SEAD_WA_INFANTRY_ARMOR_COLUMNS,
     DAMAGE_EDITS,
+    CLU_AP_INFANTRY_FINAL_MULTIPLIER,
+    CLU_HEFRAG_INFANTRY_FINAL_MULTIPLIER,
     CLU_SOL_HEFRAG,
     CLU_SOL_HEFRAG_BY_LEVEL,
     CLU_SOL_HEFRAG_FAMILY_ORDER,
@@ -43,7 +45,13 @@ from .damage_values import (
 from .missiles import raw_missiles
 from .mounted_weapons import mounted_weapons
 from .salvo_standards import LIGHT_AT_AMMO
-from .weapon_descriptions import WEAPON_DESCRIPTIONS, WEAPON_TRAIT_EDITS, WEAPON_DESCRIPTION_EDITS
+from .weapon_descriptions import (
+    WEAPON_DESCRIPTIONS,
+    WEAPON_DESCRIPTION_EDITS,
+    NEW_WEAPON_TRAITS,
+    SHOW_AS_FILTER,
+    WEAPON_TRAIT_EDITS,
+)
 from .vanilla_inst_modifications import (
     AMMUNITION_MISSILES_REMOVALS,
     AMMUNITION_MISSILES_RENAMES,
@@ -93,6 +101,8 @@ __all__ = [
     'AMMUNITION_REMOVALS',
     'AMMUNITION_RENAMES',
     'DAMAGE_EDITS',
+    'CLU_AP_INFANTRY_FINAL_MULTIPLIER',
+    'CLU_HEFRAG_INFANTRY_FINAL_MULTIPLIER',
     'CLU_SOL_HEFRAG',
     'CLU_SOL_HEFRAG_BY_LEVEL',
     'CLU_SOL_HEFRAG_FAMILY_ORDER',
@@ -113,6 +123,8 @@ __all__ = [
     'LIGHT_AT_AMMO',
     'WEAPON_DESCRIPTIONS',
     'WEAPON_DESCRIPTION_EDITS',
+    'NEW_WEAPON_TRAITS',
+    'SHOW_AS_FILTER',
     'WEAPON_TRAIT_EDITS',
     'ammunitions',
     'PGB_BOMB_DAMAGE',

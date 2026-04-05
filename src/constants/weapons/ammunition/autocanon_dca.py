@@ -576,6 +576,26 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("DCA_1_canon_Bofors_40mm_radar", "DCA", "DCA_1_canon_Bofors_40mm", True): { # Single 40mm L70 Bofors, 240 RPM, Salvo length is the total ammo
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 40,
+            },
+            "parent_membr": {
+                "add": [41, "Guidance = Guidance_Radar"],
+                "TimeBetweenTwoShots": 0.3,
+                "TimeBetweenTwoFx": 0.3,
+                "MaximumRangeGRU": 1575,
+                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 2450,
+                "ShotsCountPerSalvo": 180,
+                "AffichageMunitionParSalve": 180,
+                "TimeBetweenTwoSalvos": 10.0,
+                "SupplyCost": 135.0,
+            },
+        },
+    },
 
     ("DCA_1_canon_Bofors_40mm_L60", "DCA", None, False): { # Single 40mm L60 Bofors, 140 RPM, Salvo length is the total ammo
         "Ammunition": {
@@ -640,7 +660,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_1_canon_S60_57mm_radar", "DCA", "DCA_1_canon_S60_57mm", True): { # Single 57mm, 120 RPM, PUAZO fire director and SON-9 fire-control radar
         "Ammunition": {
             "hit_roll": {
-                "Idling": 40,
+                "Idling": 30,
             },
             "parent_membr": {
                 "add": [41, "Guidance = Guidance_Radar"],
@@ -649,8 +669,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoFx": 0.5,
                 "AimingTime": 1.5,
                 "MaximumRangeGRU": 1575,
-                "MaximumRangeHelicopterGRU": 2625,
-                "MaximumRangeAirplaneGRU": 2450,
+                "MaximumRangeHelicopterGRU": 2800,
+                "MaximumRangeAirplaneGRU": 2625,
                 "PhysicalDamages": 1.0,
                 "ShotsCountPerSalvo": 200,
                 "AffichageMunitionParSalve": 200,

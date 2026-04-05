@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 from src import ndf
+from src.constants.weapons.standards.pattern.clu_sol_traits import CLU_SOL_DAMAGE_FAMILY_TO_TRAIT
 from src.constants.weapons.vanilla_inst_modifications import (
     AMMUNITION_MISSILES_RENAMES,
     AMMUNITION_RENAMES,
@@ -66,6 +67,68 @@ def _process_renames(mod: Any, ndf_path: Any, renames: Dict[str, str]) -> None:
             renames[name] = new_name
 
 
+def _arme_family_value(ammo_descr: Any) -> Any:
+    """Return Arme.Family string if set, else None."""
+    arme = ammo_descr.v.by_m("Arme", False)
+    if arme is None:
+        return None
+    fam = arme.v.by_m("Family", False)
+    if fam is None:
+        return None
+    v = fam.v
+    if not isinstance(v, str):
+        return None
+    s = v.strip()
+    if s.startswith("'") and s.endswith("'"):
+        return s[1:-1]
+    return s
+
+
+def _build_clu_sol_trait_targets_from_ndf(parse_ammo_source, parse_ammo_missile_source) -> Dict[str, str]:
+    """Map from parsed NDF only (vanilla Arme.Family in source files)."""
+    targets: Dict[str, str] = {}
+    for src in (parse_ammo_source, parse_ammo_missile_source):
+        for ammo_descr in src:
+            if not hasattr(ammo_descr, "namespace") or not ammo_descr.namespace:
+                continue
+            fam = _arme_family_value(ammo_descr)
+            if fam is None or fam not in CLU_SOL_DAMAGE_FAMILY_TO_TRAIT:
+                continue
+            targets[ammo_descr.n] = CLU_SOL_DAMAGE_FAMILY_TO_TRAIT[fam]
+    return targets
+
+
+def _build_clu_sol_trait_targets_from_constants() -> Dict[str, str]:
+    """Descriptors whose Family is set to CLU SOL only in ``raw_ammunitions`` (e.g. vanilla ``DamageFamily_cluster`` → patch)."""
+    from src.constants.weapons.ammunition import raw_ammunitions
+
+    targets: Dict[str, str] = {}
+    for (weapon_name, _category, _donor, _is_new), data in raw_ammunitions.items():
+        if data is None:
+            continue
+        ammo_block = data.get("Ammunition", {})
+        arme = ammo_block.get("Arme", {})
+        if not isinstance(arme, dict):
+            continue
+        fam = arme.get("Family")
+        if fam is None or fam not in CLU_SOL_DAMAGE_FAMILY_TO_TRAIT:
+            continue
+        targets[f"Ammo_{weapon_name}"] = CLU_SOL_DAMAGE_FAMILY_TO_TRAIT[fam]
+    return targets
+
+
+def build_clu_sol_trait_targets(parse_ammo_source, parse_ammo_missile_source) -> Dict[str, str]:
+    """Precompute Ammo_* namespace → WeaponTraits key for CLU SOL ammunition.
+
+    Merges (1) NDF scan of existing ``DamageFamily_clu_sol_*`` rows with (2) constants that
+    assign ``Arme.Family`` at patch time (e.g. ``KMGU_dispenser``: vanilla ``DamageFamily_cluster``
+    in source → ``DamageFamily_clu_sol_ap`` from ``bomb.py``). Constants entries override NDF on conflict.
+    """
+    from_ndf = _build_clu_sol_trait_targets_from_ndf(parse_ammo_source, parse_ammo_missile_source)
+    from_constants = _build_clu_sol_trait_targets_from_constants()
+    return {**from_ndf, **from_constants}
+
+
 def build_ammo_data(mod_src_path: Path) -> Dict[str, Any]:
     """Build ammunition database from source files."""
     logger.info("Building ammunition database")
@@ -99,6 +162,7 @@ def build_ammo_data(mod_src_path: Path) -> Dict[str, Any]:
             "ammo_properties": ammo_props,
             "missing_cac_tag": build_missing_cac_tag(ammo_file),
             "all_ammunition_and_missile": build_all_ammunition_and_missile_names(ammo_file, ammo_missile_file),
+            "clu_sol_trait_targets": build_clu_sol_trait_targets(ammo_file, ammo_missile_file),
         }
         
     except Exception as e:
@@ -114,6 +178,7 @@ def build_ammo_data(mod_src_path: Path) -> Dict[str, Any]:
             "ammo_properties": {},
             "missing_cac_tag": [],
             "all_ammunition_and_missile": [],
+            "clu_sol_trait_targets": {},
         }
 
 def build_all_ammunition_and_missile_names(parse_ammo_source, parse_ammo_missile_source) -> List[str]:

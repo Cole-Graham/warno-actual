@@ -7,6 +7,11 @@ from .he_bomb_damage import (
     HE_BOMB_NAME_MATCH,
     HE_BOMB_TRAIT_TOKENS,
 )
+from .clu_sol_traits import (
+    CLU_SOL_DAMAGE_FAMILY_TO_TRAIT,
+    CLU_SOL_TRAIT_TOKEN_CLUSTER,
+    CLU_SOL_TRAIT_TOKEN_HEAT,
+)
 from .weapon_range import WEAPON_RANGE_MEMBERS_TO_CHECK
 
 __all__ = [
@@ -17,5 +22,8 @@ __all__ = [
     "HE_BOMB_DAMAGE_BY_WEIGHT",
     "HE_BOMB_NAME_MATCH",
     "HE_BOMB_TRAIT_TOKENS",
+    "CLU_SOL_DAMAGE_FAMILY_TO_TRAIT",
+    "CLU_SOL_TRAIT_TOKEN_CLUSTER",
+    "CLU_SOL_TRAIT_TOKEN_HEAT",
     "WEAPON_RANGE_MEMBERS_TO_CHECK",
 ]

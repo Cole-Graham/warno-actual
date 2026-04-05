@@ -73,6 +73,7 @@ from .generated import (
     edit_gen_ui_weaponsminmax,
 )
 from .userinterface import (
+    edit_ui_common_bucktexturebank,
     edit_ui_ingame_uiingameunitlabelresource,
     edit_ui_ingame_uimousepolicyresources,
     edit_ui_ingame_uispecificunitinfopanelview,
@@ -149,6 +150,7 @@ __all__ = [
     'edit_gen_ui_weapontraits',
     'edit_gen_ui_weaponsminmax',
     # .userinterface
+    'edit_ui_common_bucktexturebank',
     'edit_ui_ingame_uiingameunitlabelresource',
     'edit_ui_ingame_uimousepolicyresources',
     'edit_ui_ingame_uispecificunitinfopanelview',

@@ -1,7 +1,8 @@
 """Adjusting standard stats for weapons."""
 
-from typing import Union
+from typing import Any, Dict, List, Union
 
+from src import ndf
 from src.constants.weapons.standards import (
     AIM_TIME_STANDARDS,
     CANON_HE_DAMAGE_BY_CALIBER,
@@ -10,6 +11,10 @@ from src.constants.weapons.standards import (
     HE_BOMB_NAME_MATCH,
     HE_BOMB_TRAIT_TOKENS,
     WEAPON_RANGE_MEMBERS_TO_CHECK,
+)
+from src.constants.weapons.standards.pattern.clu_sol_traits import (
+    CLU_SOL_TRAIT_TOKEN_CLUSTER,
+    CLU_SOL_TRAIT_TOKEN_HEAT,
 )
 
 
@@ -144,6 +149,58 @@ def _parse_numeric_value(value: Union[int, float, str]) -> Union[int, float, Non
     except (TypeError, ValueError):
         return None
     return None
+
+
+def _trait_for_ammo_namespace(
+    namespace: str,
+    targets: Dict[str, str],
+    renames_new_old: Dict[str, str],
+) -> Union[str, None]:
+    """Resolve precomputed target after salvo renames (namespace may be new name)."""
+    if namespace in targets:
+        return targets[namespace]
+    base = namespace.removeprefix("Ammo_")
+    old_base = renames_new_old.get(base)
+    if old_base is not None:
+        return targets.get(f"Ammo_{old_base}")
+    return None
+
+
+def apply_clu_sol_trait_standards(source_path, logger, game_db: Dict[str, Any]) -> None:
+    """TraitsToken: swap ``cluster`` for CLU SOL trait from game_db; remove ``HEAT`` (precomputed map)."""
+    ammo_db = game_db.get("ammunition", {})
+    targets = ammo_db.get("clu_sol_trait_targets") or {}
+    if not targets:
+        return
+    renames_new_old = ammo_db.get("renames_new_old", {})
+
+    for ammo_descr in source_path:
+        if not hasattr(ammo_descr, "namespace") or not ammo_descr.namespace:
+            continue
+        target_trait = _trait_for_ammo_namespace(ammo_descr.namespace, targets, renames_new_old)
+        if target_trait is None:
+            continue
+
+        traits_list = ammo_descr.v.by_m("TraitsToken", False)
+        if traits_list is None:
+            logger.debug("(Ammo) No TraitsToken for %s", ammo_descr.namespace)
+            continue
+
+        old_tokens = [trait.v for trait in traits_list.v]
+        new_trait_ndf = f"'{target_trait}'"
+        out: List[str] = [
+            t for t in old_tokens
+            if t not in (CLU_SOL_TRAIT_TOKEN_CLUSTER, CLU_SOL_TRAIT_TOKEN_HEAT)
+        ]
+        if new_trait_ndf not in out:
+            out.append(new_trait_ndf)
+
+        if out == old_tokens:
+            continue
+
+        list_str = "[" + ", ".join(out) + "]"
+        ammo_descr.v.by_m("TraitsToken").v = ndf.convert(list_str.encode("utf-8"))[0].v
+        logger.info("(Ammo) CLU SOL TraitsToken %s -> %s", ammo_descr.namespace, target_trait)
 
 
 def apply_infantry_mmg_cac_trait(source_path, logger) -> None:

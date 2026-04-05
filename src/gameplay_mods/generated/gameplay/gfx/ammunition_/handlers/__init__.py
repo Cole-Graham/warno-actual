@@ -18,6 +18,7 @@ from .standards import (
     apply_he_damage_standards,
     apply_weapon_range_standards,
     apply_bomb_damage_standards,
+    apply_clu_sol_trait_standards,
     apply_infantry_mmg_cac_trait,
 )
 from .vanilla_renames import (
@@ -31,6 +32,7 @@ __all__ = [
     'apply_category_sead_standards',
     'apply_aim_time_standards',
     'apply_bomb_damage_standards',
+    'apply_clu_sol_trait_standards',
     'apply_damage_families',
     'apply_fire_descriptors',
     'apply_infantry_mmg_cac_trait',

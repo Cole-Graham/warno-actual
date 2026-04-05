@@ -68,6 +68,7 @@ from .gameplay_mods import (
     edit_gen_ui_weapontraits,
     edit_gen_ui_weaponsminmax,
     # .userinterface
+    edit_ui_common_bucktexturebank,
     edit_ui_ingame_uiingameunitlabelresource,
     edit_ui_ingame_uimousepolicyresources,
     edit_ui_ingame_useingametextures,
@@ -189,6 +190,7 @@ __all__ = [
     'edit_gen_ui_weapontraits',
     'edit_gen_ui_weaponsminmax',
     # gameplay_mods.userinterface
+    'edit_ui_common_bucktexturebank',
     'edit_ui_ingame_uiingameunitlabelresource',
     'edit_ui_ingame_uimousepolicyresources',
     'edit_ui_ingame_useingametextures',
@@ -458,6 +460,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/Generated/UserInterface/Textures/DivisionTextures.ndf": [
             (edit_gen_ui_divisiontextures, "gameplay"),
         ],
+        "GameData/UserInterface/Use/Common/BUCKTextureBank.ndf": [
+            (edit_ui_common_bucktexturebank, "gameplay"),
+        ],
         "GameData/UserInterface/Use/InGame/UseInGameTextures.ndf": [
             (edit_ui_ingame_useingametextures, "gameplay"),
         ],
@@ -560,9 +565,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/UserInterface/Use/InGame/UISpecificUnitInfoPanelView.ndf": [
             (edit_ui_ingame_uispecificunitinfopanelview, "gameplay"),
         ],
-        "GameData/UserInterface/Use/InGame/UISpecificUnitInfoSingleWeaponPanelView.ndf": [
-            (edit_ui_ingame_uispecificunitinfosingleweaponpanelview, "gameplay"),
-        ],
+        # "GameData/UserInterface/Use/InGame/UISpecificUnitInfoSingleWeaponPanelView.ndf": [
+        #     (edit_ui_ingame_uispecificunitinfosingleweaponpanelview, "gameplay"),
+        # ],
         "GameData/UserInterface/Use/InGame/UISpecificUnitLabelAggregationView.ndf": [
             (edit_uispecificunitlabelaggregationview, "ui"),
         ],

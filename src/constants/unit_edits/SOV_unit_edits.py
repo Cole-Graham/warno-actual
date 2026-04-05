@@ -2217,7 +2217,7 @@ sov_unit_edits = {
     },
     
     "BM27_Uragan_SOV": {
-        "CommandPoints": 320,
+        "CommandPoints": 290,
         "availability": [0, 1, 0, 0],
     },
     
@@ -2237,7 +2237,7 @@ sov_unit_edits = {
     },
     
     "BM30_Smerch_SOV": {
-        "CommandPoints": 330,
+        "CommandPoints": 290,
         "availability": [0, 1, 0, 0],
     },
 
@@ -3888,7 +3888,7 @@ sov_unit_edits = {
     },
 
     "DCA_AZP_S60_SOV": {
-        "CommandPoints": 55,
+        "CommandPoints": 70,
         "TagSet": {
             "add_tags": ['"AA_radar"'],
         },

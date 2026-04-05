@@ -985,14 +985,7 @@ rfa_unit_edits = {
     },
 
     "M270_MLRS_RFA": {
-        "CommandPoints": 300,
-        # "WeaponDescriptor": {
-        #     "turrets": {
-        #         0: {
-        #             "AngleRotationMaxPitch": 1.0,
-        #         },
-        #     },
-        # },
+        "CommandPoints": "M270_MLRS_cluster_US",
         "availability": [0, 1, 0, 0],
     },
     
@@ -1767,7 +1760,10 @@ rfa_unit_edits = {
     },
     
     "Bofors_40mm_RFA": {
-        "CommandPoints": 30,
+        "CommandPoints": 60,
+        "TagSet": {
+            "add_tags": ['"AA_radar"'],
+        },
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
         "capacities": {
@@ -1775,8 +1771,20 @@ rfa_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_1_canon_Bofors_40mm": 1,
+                "DCA_1_canon_Bofors_40mm_radar": 1,
             },
+            "equipmentchanges": {
+                "replace": [("DCA_1_canon_Bofors_40mm", "DCA_1_canon_Bofors_40mm_radar")],
+            },
+        },
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 300,
+            },
+            "TimeBetweenEachIdentifyRoll": 0.5,
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'verygood_airoptics'"],
         },
     },
 
@@ -2182,6 +2190,7 @@ rfa_unit_edits = {
 
     "Tornado_IDS_MW1_RFA": { # MW-1 KB44 (Anti Airfield HE Cluster Munitions), 2x AIM-9L
         "CommandPoints": 350,
+        "max_speed": 1300,
         "availability": [0, 2, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],

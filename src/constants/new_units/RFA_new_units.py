@@ -547,12 +547,13 @@ RFA_NEW_UNITS = {
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "quantity": {
-                    "PM_Uzi": 2,
+                    "PM_Uzi_noreflex": 2,
                     "MANPAD_FIM43": 1,
                 },
+                "replace": [("PM_Uzi", "PM_Uzi_noreflex")],
             },
             "Salves": {
-                "PM_Uzi": 22,
+                "PM_Uzi_noreflex": 22,
                 "MANPAD_FIM43": 6,
             },
         },
@@ -615,14 +616,14 @@ RFA_NEW_UNITS = {
             ],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("MANPAD_FIM43", "MANPAD_FIM92_A")],
+                "replace": [("MANPAD_FIM43", "MANPAD_FIM92_A"), ("PM_Uzi", "PM_Uzi_noreflex")],
                 "quantity": {
-                    "PM_Uzi": 2,
+                    "PM_Uzi_noreflex": 2,
                     "MANPAD_FIM92_A": 1,
                 },
             },
             "Salves": {
-                "PM_Uzi": 22,
+                "PM_Uzi_noreflex": 22,
                 "MANPAD_FIM92_A": 6,
             },
         },
@@ -678,14 +679,14 @@ RFA_NEW_UNITS = {
             ],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("MANPAD_FIM43", "MANPAD_FIM92_A")],
+                "replace": [("MANPAD_FIM43", "MANPAD_FIM92_A"), ("PM_Uzi", "PM_Uzi_noreflex")],
                 "quantity": {
-                    "PM_Uzi": 2,
+                    "PM_Uzi_noreflex": 2,
                     "MANPAD_FIM92_A": 1,
                 },
             },
             "Salves": {
-                "PM_Uzi": 22,
+                "PM_Uzi_noreflex": 22,
                 "MANPAD_FIM92_A": 6,
             },
         },
@@ -732,6 +733,11 @@ RFA_NEW_UNITS = {
         },
         "CommandPoints": 270,
         "ECM": -0.4,
+        # "optics": {
+        #     "OpticalStrengths": {
+        #         "EOpticalStrength/HighAltitude": 375,
+        #     },
+        # },
         "WeaponDescriptor": {
             "Salves": {
                 "AA_AIM9M_Sidewinder": 2,

@@ -144,7 +144,6 @@ RDA_armored_newdivisionrules = {
     ],
     "artillery": [
         ("MFRW_RM70_DDR", 1, [2, 0, 1, 0]),
-        ("MFRW_RM70_cluster_DDR", 1, [2, 0, 1, 0]),
         ("RM70_85_DDR", 1, [2, 0, 1, 0]),
         ("2S3_DDR", 2, [3, 2, 0, 0]),
         ("2S1_DDR", 2, [3, 2, 0, 0]),
@@ -365,7 +364,6 @@ RDA_motorized_newdivisionrules = {
     ],
     "artillery": [
         ("MFRW_RM70_DDR", 1, [2, 0, 1, 0]),
-        ("MFRW_RM70_cluster_DDR", 1, [2, 0, 1, 0]),
         ("RM70_85_DDR", 1, [2, 0, 1, 0]),
         ("2S1_DDR", 2, [3, 2, 0, 0]),
         ("Howz_D20_152mm_DDR", 2, [3, 2, 0, 0], ["T813_trans_DDR"]),

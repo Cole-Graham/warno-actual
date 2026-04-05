@@ -25,7 +25,7 @@ f111f_aardvark_cbu_us: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
         ("MissileCarriage_F111F_Aardvark_CBU_US", "TMissileCarriageConnoisseur"): { # (Namespace, Object type)
             "WeaponInfos": {
                 0: {
-                    "MissileCount": 18,
+                    "MissileCount": 12,
                 },
             },
         },
@@ -42,7 +42,7 @@ f111f_aardvark_cbu_us: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
                     f'        PhysicalProperty = "Tourelle2_MissileCount"'
                     f'        ProjectileModelResource = $/GFX/DepictionResources/Modele_Missile_MK20_RockeyeII'
                     f'    )'
-                    f'    MissileCount = 18'
+                    f'    MissileCount = 12'
                     f'    WeaponIndex = 2'
                     f')'
                 )),
@@ -57,7 +57,7 @@ f111f_aardvark_cbu_us: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
                     f'    ('
                     f'        ProjectileModelResource = $/GFX/DepictionResources/Modele_Missile_MK20_RockeyeII'
                     f'    )'
-                    f'    MissileCount = 18'
+                    f'    MissileCount = 12'
                     f'    WeaponIndex = 2'
                     f')'
                 )),

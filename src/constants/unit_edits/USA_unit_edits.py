@@ -2403,7 +2403,7 @@ usa_unit_edits = {
             "display": "M270 MLRS",
             # "token": "MYQQNJCCAK",
         },
-        "CommandPoints": 350,
+        "CommandPoints": 320,
         "Divisions": {
             "add": ["US_8th_Inf"],
             "is_transported": False,
@@ -3814,14 +3814,8 @@ usa_unit_edits = {
                 "Gatling_M61_Vulcan_20mm_late": 21,
             },
         },
-        "optics": {
-            "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 220,
-            },
-            "TimeBetweenEachIdentifyRoll": 0.5,
-        },
         "SpecialtiesList": {
-            "add_specs": ["'good_airoptics'"],
+            "add_specs": ["'radar_fcs'"],
         },
     },
     
@@ -3841,14 +3835,8 @@ usa_unit_edits = {
                 "Gatling_M61_Vulcan_20mm_TOWED": 8,
             },
         },
-        "optics": {
-            "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 220,
-            },
-            "TimeBetweenEachIdentifyRoll": 0.5,
-        },
         "SpecialtiesList": {
-            "add_specs": ["'good_airoptics'"],
+            "add_specs": ["'radar_fcs'"],
         },
         "UpgradeFromUnit": "FOB_US",
     },
@@ -3878,14 +3866,8 @@ usa_unit_edits = {
                 "Gatling_M61_Vulcan_20mm_late_TOWED": 8,
             },
         },
-        "optics": {
-            "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 220,
-            },
-            "TimeBetweenEachIdentifyRoll": 0.5,
-        },
         "SpecialtiesList": {
-            "add_specs": ["'good_airoptics'"],
+            "add_specs": ["'radar_fcs'"],
         },
     },
     
@@ -3914,14 +3896,8 @@ usa_unit_edits = {
                 "Gatling_M61_Vulcan_20mm_TOWED": 8,
             },
         },
-        "optics": {
-            "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 220,
-            },
-            "TimeBetweenEachIdentifyRoll": 0.5,
-        },
         "SpecialtiesList": {
-            "add_specs": ["'good_airoptics'"],
+            "add_specs": ["'radar_fcs'"],
         },
         "UpgradeFromUnit": "DCA_M167_Vulcan_20mm_nonPara_US",
         
@@ -3950,14 +3926,8 @@ usa_unit_edits = {
                 "Gatling_M61_Vulcan_20mm_late_TOWED": 8,
             },
         },
-        "optics": {
-            "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 220,
-            },
-            "TimeBetweenEachIdentifyRoll": 0.5,
-        },
         "SpecialtiesList": {
-            "add_specs": ["'good_airoptics'"],
+            "add_specs": ["'radar_fcs'"],
         },
         "UpgradeFromUnit": "DCA_M167A2_Vulcan_20mm_US",
     },
@@ -4595,7 +4565,7 @@ usa_unit_edits = {
     },
 
     "F111F_Aardvark_CBU_US": {  # 8x Mk-20 Rockeye, 82nd Airborne
-        "CommandPoints": 220,
+        "CommandPoints": 190,
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
@@ -4605,9 +4575,9 @@ usa_unit_edits = {
                 "replace": [
                     (
                         "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength8",
-                        "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength18",
+                        "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength12",
                         "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength8",
-                        "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength18"
+                        "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength12"
                     ),
                 ],
             },
@@ -4809,6 +4779,11 @@ usa_unit_edits = {
         "optics": {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 375,
+            },
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "AA_AIM9M_Sidewinder": 4,
             },
         },
         "availability": [0, 2, 0, 0],

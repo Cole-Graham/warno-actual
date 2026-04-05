@@ -14,6 +14,8 @@ from src.constants.weapons import (
     SEAD_WA_INFANTRY_ARMOR_COLUMNS,
     DAMAGE_EDITS,
     CLU_SOL_HEFRAG,
+    CLU_AP_INFANTRY_FINAL_MULTIPLIER,
+    CLU_HEFRAG_INFANTRY_FINAL_MULTIPLIER,
     CLU_SOL_AP,
     CLU_SOL_AP_ROW_FIRST,
     CLU_SOL_AP_ROW_LAST,
@@ -193,9 +195,20 @@ def _add_damage_resistance_values(source_path) -> None:
     sead_missile_wa_rows = _build_sead_missile_wa_rows(values_list)
 
     # Add damage values
+    # CLU_SOL_HEFRAG rows are full per-level vectors; scale only infantry + infantry_wa cells
+    # (flat layout: cols 40–42 infantry, 49–61 infantry_wa — see CLU_SOL_HEFRAG_FAMILY_ORDER).
+    _hefrag_m = CLU_HEFRAG_INFANTRY_FINAL_MULTIPLIER
     values_list.add(
         *[str(sniper) for sniper in SNIPER_DAMAGE],
-        *[str(clu_row) for clu_row in CLU_SOL_HEFRAG],
+        *[
+            str(
+                [
+                    v * _hefrag_m if (40 <= i < 43) or (49 <= i < 62) else v
+                    for i, v in enumerate(clu_row)
+                ],
+            )
+            for clu_row in CLU_SOL_HEFRAG
+        ],
         str(NPLM_BOMB_DAMAGE),
         str(NPLM_BOMB_FLAMME_DAMAGE),
         str(PGB_BOMB_DAMAGE),
