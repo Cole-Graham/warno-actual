@@ -258,7 +258,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("RocketAir_Hydra_70mm_salvolength76", "rocket", None, False): {
+    ("RocketAir_Hydra_70mm_salvolength76", "rocket", None, False): { # avion
         "Ammunition": {
             "hit_roll": {
                 "Idling": 20,
@@ -397,21 +397,36 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketAir_B8_80mm_salvolength20", "rocket", None, False): { # 594
+    ("RocketAir_B8_80mm_salvolength20", "rocket", None, False): { # Mi-8TV UPK, Sokol
         "Ammunition": {
             "hit_roll": {
                 "Idling": 20,
                 "Moving": 20,
             },
             "parent_membr": {
-                "MaximumRangeGRU": 2450,
+                "MaximumRangeGRU": 2275,
                 "RadiusSplashPhysicalDamagesGRU": 15,
                 "RadiusSplashSuppressDamagesGRU": 28,
-                "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoFx": 0.1,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 0.9,
                 "SuppressDamages": 90,
                 "SupplyCost": 120.0,
+            },
+        },
+    },
+    
+    ("RocketAir_B8_80mm_salvolength10", "rocket", None, False): { # 594
+        "Ammunition": {
+            "parent_membr": {
+                "MaximumRangeGRU": 2275,
+                "RadiusSplashPhysicalDamagesGRU": 15,
+                "RadiusSplashSuppressDamagesGRU": 28,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
+                "PhysicalDamages": 0.9,
+                "SuppressDamages": 90,
+                "SupplyCost": 60.0,
             },
         },
     },

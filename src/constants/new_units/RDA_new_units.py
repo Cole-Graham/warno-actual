@@ -1065,7 +1065,7 @@ RDA_NEW_UNITS = {
         "CadavreGUID": "4401b9de-c033-4e9d-9a24-5c935b3600bc",
         "NewName": "HvyScout_RPG7VL_DDR",
         "GameName": {
-            "display": "#RECO2 MOT. AUFKLÃRER [RPG-7]",
+            "display": "#RECO2 MOT. AUFKLÄRER [RPG-7]",
             "token": "LFBKZAMOMO",
         },
         "TagSet": {

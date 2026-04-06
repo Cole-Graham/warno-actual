@@ -2441,7 +2441,7 @@ pol_unit_edits = {
     
     # POL AA
     "MANPAD_Strela_2M_POL": {  # Strzala-2M
-        "CommandPoints": 20,
+        "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "availability": [12, 9, 0, 0],
         "max_speed": 20,
@@ -2459,7 +2459,7 @@ pol_unit_edits = {
     },
     
     "MANPAD_Strela_2M_Naval_POL": {  # Desant. Strzala-2M
-        "CommandPoints": 20,
+        "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "max_speed": 20,
         "SpecialtiesList": {
@@ -2479,7 +2479,7 @@ pol_unit_edits = {
     },
     
     "MANPAD_Strela_2M_Para_POL": {  # Desant. Strzala-2M
-        "CommandPoints": 20,
+        "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "max_speed": 20,
         "SpecialtiesList": {

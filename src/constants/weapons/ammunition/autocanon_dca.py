@@ -550,9 +550,9 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2625,
                 "MaximumRangeAirplaneGRU": 1925,
-                "ShotsCountPerSalvo": 480,
-                "AffichageMunitionParSalve": 480,
-                "TimeBetweenTwoSalvos": 10.0,
+                "ShotsCountPerSalvo": 40,
+                "AffichageMunitionParSalve": 40,
+                "TimeBetweenTwoSalvos": 3.2,
                 "SupplyCost": 360.0,
             },
         },
@@ -584,6 +584,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "add": [41, "Guidance = Guidance_Radar"],
+                "TraitsToken": ['STAT', 'RADAR'],
                 "TimeBetweenTwoShots": 0.3,
                 "TimeBetweenTwoFx": 0.3,
                 "MaximumRangeGRU": 1575,
@@ -619,7 +620,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_1_canon_S60_57mm", "DCA", None, False): { # Single 57mm, 120 RPM, Salvo length is the total ammo
         "Ammunition": {
             "hit_roll": {
-                "Idling": 30,
+                "Idling": 40,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 0.5,

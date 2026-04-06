@@ -220,9 +220,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_tbagru",
             },
             "hit_roll": {
+                "Idling": 65,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
+                "MaximumRangeHelicopterGRU": 2625,
                 "MaximumRangeAirplaneGRU": 1925,
                 "AimingTime": 1.2,
             }
@@ -242,9 +244,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_hagru",
             },
             "hit_roll": {
+                "Idling": 65,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
+                "MaximumRangeHelicopterGRU": 2625,
                 "MaximumRangeAirplaneGRU": 1925,
                 "AimingTime": 2.4,
             }
@@ -360,6 +364,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_tbagru",
             },
             "hit_roll": {
+                "Idling": 60,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
@@ -378,6 +383,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_hagru",
             },
             "hit_roll": {
+                "Idling": 60,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
@@ -637,9 +643,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_tbagru",
             },
             "hit_roll": {
+                "Idling": 60,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
+                "MaximumRangeHelicopterGRU": 2625,
                 "MaximumRangeAirplaneGRU": 1925,
                 "TimeBetweenTwoSalvos": 7.0,
                 "AimingTime": 1.2,
@@ -654,9 +662,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_hagru",
             },
             "hit_roll": {
+                "Idling": 60,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
+                "MaximumRangeHelicopterGRU": 2625,
                 "MaximumRangeAirplaneGRU": 1925,
                 "TimeBetweenTwoSalvos": 7.0,
                 "AimingTime": 3.5,
@@ -672,12 +682,12 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_tbagru",
             },
             "hit_roll": {
-                "Idling": 50,
+                "Idling": 55,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2450,
-                "MaximumRangeAirplaneGRU": 1750,
+                "MaximumRangeAirplaneGRU": 1925,
                 "PhysicalDamages": 4.0,
                 "TimeBetweenTwoSalvos": 14.0,
                 "AimingTime": 1.2,
@@ -692,12 +702,12 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_hagru",
             },
             "hit_roll": {
-                "Idling": 50,
+                "Idling": 55,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2450,
-                "MaximumRangeAirplaneGRU": 1750,
+                "MaximumRangeAirplaneGRU": 1925,
                 "PhysicalDamages": 4.0,
                 "TimeBetweenTwoSalvos": 14.0,
                 "AimingTime": 3.5,
@@ -712,10 +722,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_tbagru",
             },
             "hit_roll": {
+                "Idling": 50,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
-                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeHelicopterGRU": 2275,
                 "MaximumRangeAirplaneGRU": 1750,
                 "TimeBetweenTwoSalvos": 14.0,
                 "AimingTime": 1.2,
@@ -730,10 +741,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_hagru",
             },
             "hit_roll": {
+                "Idling": 50,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
-                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeHelicopterGRU": 2275,
                 "MaximumRangeAirplaneGRU": 1750,
                 "TimeBetweenTwoSalvos": 14.0,
                 "AimingTime": 3.5,
@@ -748,10 +760,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_tbagru",
             },
             "hit_roll": {
+                "Idling": 50,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
-                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeHelicopterGRU": 2275,
                 "MaximumRangeAirplaneGRU": 1750,
                 "TimeBetweenTwoSalvos": 7.0,
                 "AimingTime": 1.2,
@@ -772,10 +785,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_hagru",
             },
             "hit_roll": {
+                "Idling": 50,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
-                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeHelicopterGRU": 2275,
                 "MaximumRangeAirplaneGRU": 1750,
                 "TimeBetweenTwoSalvos": 7.0,
                 "AimingTime": 3.0,
@@ -796,10 +810,12 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_tbagru",
             },
             "hit_roll": {
+                "Idling": 50,
+                "Moving": 40,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
-                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeHelicopterGRU": 2275,
                 "MaximumRangeAirplaneGRU": 1750,
                 "TimeBetweenTwoSalvos": 7.0,
                 "AimingTime": 1.2,
@@ -825,10 +841,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_hagru",
             },
             "hit_roll": {
+                "Idling": 50,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
-                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeHelicopterGRU": 2275,
                 "MaximumRangeAirplaneGRU": 1750,
                 "TimeBetweenTwoSalvos": 7.0,
                 "AimingTime": 3.0,
@@ -854,12 +871,13 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_tbagru",
             },
             "hit_roll": {
+                "Idling": 50,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 1.2,
                 "TimeBetweenTwoFx": 1.2,
-                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeHelicopterGRU": 2275,
                 "MaximumRangeAirplaneGRU": 1750,
                 "TimeBetweenTwoSalvos": 20.0,
                 "AimingTime": 1.2,
@@ -880,12 +898,13 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_hagru",
             },
             "hit_roll": {
+                "Idling": 50,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 1.2,
                 "TimeBetweenTwoFx": 1.2,
-                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeHelicopterGRU": 2275,
                 "MaximumRangeAirplaneGRU": 1750,
                 "TimeBetweenTwoSalvos": 20.0,
                 "AimingTime": 3.0,
@@ -906,12 +925,14 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_tbagru",
             },
             "hit_roll": {
+                "Idling": 50,
+                "Moving": 40,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 1.2,
                 "TimeBetweenTwoFx": 1.2,
-                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeHelicopterGRU": 2275,
                 "MaximumRangeAirplaneGRU": 1750,
                 "TimeBetweenTwoSalvos": 20.0,
                 "AimingTime": 1.2,
@@ -932,12 +953,14 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_hagru",
             },
             "hit_roll": {
+                "Idling": 50,
+                "Moving": 40,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 1.2,
                 "TimeBetweenTwoFx": 1.2,
-                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeHelicopterGRU": 2275,
                 "MaximumRangeAirplaneGRU": 1750,
                 "TimeBetweenTwoSalvos": 20.0,
                 "AimingTime": 3.0,
@@ -964,6 +987,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2625,
                 "MaximumRangeAirplaneGRU": 1925,
+                "PhysicalDamages": 5.0,
                 "TimeBetweenTwoSalvos": 7.0,
                 "AimingTime": 1.2,
                 "SupplyCost": 25.0,
@@ -983,6 +1007,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2625,
                 "MaximumRangeAirplaneGRU": 1925,
+                "PhysicalDamages": 5.0,
                 "TimeBetweenTwoSalvos": 7.0,
                 "AimingTime": 3.5,
                 "SupplyCost": 25.0,
@@ -1168,8 +1193,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DistanceToTarget": True,
             },
             "parent_membr": {
-                "MaximumRangeHelicopterGRU": 2100,
+                "MaximumRangeHelicopterGRU": 2275,
                 "MaximumRangeAirplaneGRU": 1750,
+                "PhysicalDamages": 5.0,
                 "TimeBetweenTwoSalvos": 7.0,
                 "AimingTime": 1.2,
                 "SupplyCost": 20.0,
@@ -1187,8 +1213,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DistanceToTarget": True,
             },
             "parent_membr": {
-                "MaximumRangeHelicopterGRU": 2100,
+                "MaximumRangeHelicopterGRU": 2275,
                 "MaximumRangeAirplaneGRU": 1750,
+                "PhysicalDamages": 5.0,
                 "TimeBetweenTwoSalvos": 7.0,
                 "AimingTime": 3.5,
                 "SupplyCost": 20.0,
@@ -1210,6 +1237,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoFx": 1.2,
                 "MaximumRangeHelicopterGRU": 2625,
                 "MaximumRangeAirplaneGRU": 1925,
+                "PhysicalDamages": 5.0,
                 "TimeBetweenTwoSalvos": 12.0,
                 "AimingTime": 1.2,
             }
@@ -1237,6 +1265,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoFx": 1.2,
                 "MaximumRangeHelicopterGRU": 2625,
                 "MaximumRangeAirplaneGRU": 1925,
+                "PhysicalDamages": 5.0,
                 "TimeBetweenTwoSalvos": 12.0,
                 "AimingTime": 3.0,
             }
@@ -1310,10 +1339,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_tbagru",
             },
             "hit_roll": {
+                "Idling": 40,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
-                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeHelicopterGRU": 2275,
                 "MaximumRangeAirplaneGRU": 1750,
                 "TimeBetweenTwoSalvos": 14.0,
                 "AimingTime": 1.2,
@@ -1328,10 +1358,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DamageFamily": "DamageFamily_manpad_hagru",
             },
             "hit_roll": {
+                "Idling": 40,
                 "DistanceToTarget": True,
             },
             "parent_membr": {
-                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeHelicopterGRU": 2275,
                 "MaximumRangeAirplaneGRU": 1750,
                 "TimeBetweenTwoSalvos": 14.0,
                 "AimingTime": 3.5,

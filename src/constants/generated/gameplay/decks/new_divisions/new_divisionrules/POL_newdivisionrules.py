@@ -516,7 +516,7 @@ POL_global_newdivisionrules = {
         ("Su_22_RKT_POL", 1, [0, 3, 2, 0]),
         ("Su_22_RKT2_POL", 1, [0, 3, 2, 0]),
         ("Su_22_AT_POL", 1, [0, 2, 0, 1]),
-        ("Su_22_SEAD_POL", 2, [0, 2, 0, 1]),
+        ("Su_22_SEAD_POL", 1, [0, 3, 0, 2]),
         ("MiG_17PF_POL", 1, [0, 5, 0, 0]),
     ],
 }

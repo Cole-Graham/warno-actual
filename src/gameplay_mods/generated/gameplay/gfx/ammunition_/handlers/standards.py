@@ -42,7 +42,7 @@ def apply_aim_time_standards(source_path, logger):
             else:
                 logger.debug(
                     f"""(Ammunition.ndf) {ammo_descr.namespace} aim time is not in {rule["current"]}, likely
-                                   an ammo edit changed this (in which case ignore this warning) or it was
+                                   an ammo edit changed this (in which case ignore this) or it was
                                    changed by Eugen""",
                 )
             break

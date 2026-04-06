@@ -852,7 +852,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
         "SupplyCost": 5.0,
     },
-    # note: check if these aren't duplicate entries
+    
     ("GatlingAir_M61_Vulcan_20mm", "autocannon", None, False): { # 338
         "Ammunition": {
             "parent_membr": {
@@ -925,6 +925,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "add": [41, "Guidance = Guidance_Radar"],
+                "TraitsToken": ['STAT', 'RADAR'],
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 2100,
@@ -951,6 +952,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "add": [41, "Guidance = Guidance_Radar"],
+                "TraitsToken": ['STAT', 'RADAR'],
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 2100,
@@ -977,6 +979,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "add": [41, "Guidance = Guidance_Radar"],
+                "TraitsToken": ['STAT', 'RADAR'],
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 2100,
@@ -1082,7 +1085,16 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("GatlingAir_Gsh_30_6_30mm", "autocannon", None, False): {
+    ("GatlingAir_Gsh_23_6_23mm_NoShootPos", "autocannon", "GatlingAir_Gsh_23_6_23mm", True): {
+        "Ammunition": {
+            "parent_membr": {
+                "NbSalvosShootOnPosition": 0, # These both need to be set to disable fire pos
+                "CanShootOnPosition": False,
+            },
+        },
+    },
+    
+    ("GatlingAir_Gsh_30_6_30mm_NoShootPos", "autocannon", "GatlingAir_Gsh_30_6_30mm", True): {
         "Ammunition": {
             "parent_membr": {
                 "NbSalvosShootOnPosition": 0,

@@ -3805,7 +3805,7 @@ sov_unit_edits = {
     },
 
     "LuAZ_967M_AA_VDV_SOV": {
-        "CommandPoints": 30,
+        "CommandPoints": 36,
         "Stealth": 2.0,
     },
     
@@ -3946,7 +3946,7 @@ sov_unit_edits = {
     },
 
     "MANPAD_Igla_SOV": {
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
@@ -3978,7 +3978,7 @@ sov_unit_edits = {
     },
 
     "MANPAD_Igla_TTsko_SOV": {
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "availability": [7, 5, 0, 0],
         "max_speed": 20,
@@ -3993,7 +3993,7 @@ sov_unit_edits = {
     },
 
     "MANPAD_Igla_Gvardeitsy_SOV": {
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "availability": [7, 5, 0, 0],
         "max_speed": 20,
@@ -4008,7 +4008,7 @@ sov_unit_edits = {
     },
 
     "MANPAD_Igla_VDV_SOV": {
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "availability": [0, 7, 5, 0],
         "max_speed": 20,
@@ -4023,7 +4023,7 @@ sov_unit_edits = {
     },
 
     "MANPAD_Igla_DShV_SOV": {
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "availability": [0, 7, 5, 0],
         "max_speed": 20,
@@ -4038,7 +4038,7 @@ sov_unit_edits = {
     },
 
     "MANPAD_Strela_3_SOV": {
-        "CommandPoints": 25,
+        "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "max_speed": 20,
         "SpecialtiesList": {
@@ -4699,12 +4699,12 @@ sov_unit_edits = {
         },
         "availability": [0, 0, 0, 1],
         "WeaponDescriptor": {
-            "Salves": {
-                "Bomb_KAB_500Kr_salvolength2": 1,
-            },
             "equipmentchanges": {
-                "replace": [("Bomb_KAB_500Kr", "Bomb_KAB_500Kr_salvolength2")],
+                "replace": [
+                    ("GatlingAir_Gsh_30_6_30mm", "GatlingAir_Gsh_30_6_30mm_NoShootPos"),
+                ],
             },
+            "SalvoIsMainSalvo": [False, True, False],
         },
     },
 
@@ -5068,7 +5068,10 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("Bomb_KAB_1500L", "Bomb_KAB_1500Kr")],
+                "replace": [
+                    ("GatlingAir_Gsh_23_6_23mm", "GatlingAir_Gsh_23_6_23mm_NoShootPos"),
+                    ("Bomb_KAB_1500L", "Bomb_KAB_1500Kr"),
+                ],
             },
         },
         "availability": [0, 0, 0, 1],
