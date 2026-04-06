@@ -407,7 +407,7 @@ RDA_motorized_newdivisionrules = {
         ("Mi_2_reco_DDR", 1, [0, 6, 0, 0]),
         ("Mi_2_gunship_DDR", 1, [0, 6, 4, 0]),
         ("Mi_8TB_reco_Marine_DDR", 2, [0, 3, 2, 0]),
-        ("Mi_14PL_recon_DDR", 1, [0, 3, 0, 0]),
+        ("Mi_14PL_recon_DDR", 1, [0, 4, 0, 0]),
     ],
     "aa": [
         ("MANPAD_Strela_2M_DDR", 3, [12, 9, 0, 0], ["UAZ_469_trans_DDR", "BTR_152A_DDR"]),
@@ -460,7 +460,7 @@ RDA_global_newdivisionrules = {
         ("Su_22_clu_DDR", 1, [0, 2, 0, 0]),
         ("Su_22_nplm_DDR", 1, [0, 3, 0, 0]),
         ("Su_22_RKT_DDR", 1, [0, 3, 2, 0]),
-        ("Su_22_SEAD_DDR", 2, [0, 2, 0, 1]),
+        ("Su_22_SEAD_DDR", 1, [0, 3, 0, 2]),
     ],
 }
 

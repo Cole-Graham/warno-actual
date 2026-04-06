@@ -2667,7 +2667,7 @@ rda_unit_edits = {
         "GameName": {
             "display": "Fla-RAK STRELA-2M",
         },
-        "CommandPoints": 20,
+        "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "availability": [12, 9, 0, 0],
         "max_speed": 20,
@@ -2688,7 +2688,7 @@ rda_unit_edits = {
         "GameName": {
             "display": "Fs-FLA-RAK. STRELA-2M",
         },
-        "CommandPoints": 20,
+        "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "availability": [0, 0, 12, 9],
         "max_speed": 20,
@@ -2709,7 +2709,7 @@ rda_unit_edits = {
         "GameName": {
             "display": "Fla-RAK IGLA",
         },
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "availability": [7, 5, 0, 0],
         "max_speed": 20,

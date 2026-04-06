@@ -2118,7 +2118,7 @@ uk_unit_edits = {
 
     # UK AA
     "MANPAD_Blowpipe_UK": {
-        "CommandPoints": 15,
+        "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "max_speed": 20,
         "SpecialtiesList": {
@@ -2133,7 +2133,7 @@ uk_unit_edits = {
     },
 
     "MANPAD_Javelin_UK": {
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
@@ -2162,7 +2162,7 @@ uk_unit_edits = {
     },
     
     "MANPAD_Javelin_para_UK": {
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
@@ -2182,7 +2182,7 @@ uk_unit_edits = {
     },
 
     "DCA_Javelin_LML_UK": {
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "max_speed": 14,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_veryheavy'"],
@@ -2192,7 +2192,7 @@ uk_unit_edits = {
     },
     
     "DCA_Starstreak_LML_UK": {
-        "CommandPoints": 50,
+        "CommandPoints": 55,
         "max_speed": 14,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_veryheavy'"],
@@ -2203,7 +2203,7 @@ uk_unit_edits = {
     },
     
     "Supacat_ATMP_Javelin_LML_UK": {
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "stealth": 2.0,
         "availability": [6, 4, 0, 0],
     },
@@ -2211,20 +2211,14 @@ uk_unit_edits = {
     "DCA_Oerlikon_GDF_002_35mm_UK": { # Skyguard
         "CommandPoints": 65,
         "availability": [8, 6, 0, 0],
-        "armor": {
-            "front": (None, "ResistanceFamily_vehicule"),
-            "sides": (None, "ResistanceFamily_vehicule"),
-            "rear": (None, "ResistanceFamily_vehicule"),
-            "top": (None, "ResistanceFamily_vehicule"),
-        },
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 220,
+                "EOpticalStrength/HighAltitude": 300,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "SpecialtiesList": {
-            "add_specs": ["'good_airoptics'"],
+            "add_specs": ["'verygood_airoptics'"],
         },
         "WeaponDescriptor": {
             "Salves": {

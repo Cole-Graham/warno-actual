@@ -34,6 +34,12 @@ rda_new_divs = {
             "UAZ_469_SPG9_DDR",
             "Mortier_M43_82mm_DDR",
             "UAZ_469_Fagot_DDR",
+            "HMGteam_PKM_DDR",
+            "ATteam_RCL_SPG9_DDR",
+            "ATteam_Fagot_DDR", 
+            "ATteam_FagotM_DDR",
+            "ATteam_Konkurs_DDR",
+            "MANPAD_Strela_2M_DDR",
         ],
         "transport_overrides": {
             "MotRifles_CMD2_DDR": ["GAZ_46_DDR", "BTR_50_DDR", "BTR_60_DDR", "BTR_70_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
@@ -55,6 +61,14 @@ rda_new_divs = {
         "division_rules": [
             RDA_airborne_newdivisionrules,
             RDA_global_newdivisionrules,
+        ],
+        "rule_exclusions": [
+            "HMGteam_PKM_DDR",
+            "ATteam_RCL_SPG9_DDR",
+            "ATteam_Fagot_DDR", 
+            "ATteam_FagotM_DDR",
+            "ATteam_Konkurs_DDR",
+            "MANPAD_Strela_2M_DDR",
         ],
     },
     "RDA_airborne_armored": {
@@ -78,6 +92,14 @@ rda_new_divs = {
         "transport_overrides": {
             "MotRifles_CMD2_DDR": ["GAZ_46_DDR", "BTR_50_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
         },
+        "rule_exclusions": [
+            "HMGteam_PKM_DDR",
+            "ATteam_RCL_SPG9_DDR",
+            "ATteam_Fagot_DDR", 
+            "ATteam_FagotM_DDR",
+            "ATteam_Konkurs_DDR",
+            "MANPAD_Strela_2M_DDR",
+        ],
     },
     # airborne_marine 6036, 2103
     "RDA_airborne_mechanized": {
@@ -102,6 +124,12 @@ rda_new_divs = {
             "UAZ_469_SPG9_DDR",
             "Mortier_M43_82mm_DDR",
             "UAZ_469_Fagot_DDR",
+            "HMGteam_PKM_DDR",
+            "ATteam_RCL_SPG9_DDR",
+            "ATteam_Fagot_DDR", 
+            "ATteam_FagotM_DDR",
+            "ATteam_Konkurs_DDR",
+            "MANPAD_Strela_2M_DDR",
         ],
         "transport_overrides": {
             "MotRifles_CMD2_DDR": ["GAZ_46_DDR", "BTR_50_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
@@ -129,6 +157,12 @@ rda_new_divs = {
             "UAZ_469_SPG9_DDR",
             "Mortier_M43_82mm_DDR",
             "UAZ_469_Fagot_DDR",
+            "HMGteam_PKM_DDR",
+            "ATteam_RCL_SPG9_DDR",
+            "ATteam_Fagot_DDR", 
+            "ATteam_FagotM_DDR",
+            "ATteam_Konkurs_DDR",
+            "MANPAD_Strela_2M_DDR",
         ],
         "transport_overrides": {
             "MotRifles_CMD2_DDR": ["GAZ_46_DDR", "BTR_60_DDR", "BTR_70_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],

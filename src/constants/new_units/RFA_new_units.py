@@ -363,14 +363,21 @@ RFA_NEW_UNITS = {
                 "RocketInf_PzF_44": 6,
             },
             "equipmentchanges": {
+                "animate": {
+                    "MMG_inf__MG3_7_62mm": False,
+                },
                 "replace": [
                     ("RocketInf_PzF_44", "RocketInf_PzF_3", "RocketInf_PzF_44", "RocketInf_PzF_3"),
                 ],
+                "quantity": {
+                    "FM_G3KA4": 7,
+                    "MMG_inf__MG3_7_62mm": 2,
+                },
             },
         },
         "TransportedSoldier": "Jager_PzF3_RFA",
         "armor": "Infantry_armor_reference",
-        "CommandPoints": 35 ,
+        "CommandPoints": 40,
         "UnitRole": 'infantry',
         "SpecialtiesList": [
                 'infantry_equip_heavy',
@@ -427,17 +434,16 @@ RFA_NEW_UNITS = {
             "equipmentchanges": {
                 "quantity": {
                     "FM_G3KA4": 9,
-                    "MMG_inf__MG3_7_62mm": 1,
-                    "RocketInf_PzF_44": 1,
                 },
                 "replace": [
-                    ("MMG_inf__MG3_7_62mm", "RocketInf_PzF_3T", "MMG_inf__MG3_7_62mm", "RocketInf_PzF_3"), ("RocketInf_PzF_44", "RocketInf_PzF_3T", "RocketInf_PzF_44", "RocketInf_PzF_3"),
+                    ("MMG_inf__MG3_7_62mm", "RocketInf_PzF_3T", "MMG_inf__MG3_7_62mm", "RocketInf_PzF_3"),
+                    ("RocketInf_PzF_44", "RocketInf_PzF_3T", "RocketInf_PzF_44", "RocketInf_PzF_3"),
                 ],
             },
         },
         "TransportedSoldier": "TankHunters_RFA",
         "armor": "Infantry_armor_reference",
-        "CommandPoints": 40 ,
+        "CommandPoints": 45 ,
         "UnitRole": 'infantry',
         "SpecialtiesList": [
                 'infantry_equip_heavy',
@@ -733,11 +739,11 @@ RFA_NEW_UNITS = {
         },
         "CommandPoints": 270,
         "ECM": -0.4,
-        # "optics": {
-        #     "OpticalStrengths": {
-        #         "EOpticalStrength/HighAltitude": 375,
-        #     },
-        # },
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 375,
+            },
+        },
         "WeaponDescriptor": {
             "Salves": {
                 "AA_AIM9M_Sidewinder": 2,

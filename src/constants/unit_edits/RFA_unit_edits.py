@@ -544,8 +544,8 @@ rfa_unit_edits = {
         "UpgradeFromUnit": "Fallschirmjager_CMD_RFA",
     },
 
-    "Fallschirm_Reserve_RFA": {  # JÄGER (PzF)
-        "CommandPoints": 35,
+    "Fallschirm_Reserve_RFA": {
+        "CommandPoints": 40,
         "GameName": {
             "display": "FALLSCHIRM.-RESERVISTEN"
         },
@@ -556,7 +556,11 @@ rfa_unit_edits = {
             "add_capacities": ["reserviste", "Choc", "Choc_feedback"],
         },
         "SpecialtiesList": {
-            "add_specs": ["'_reservist'", "'_choc'", "'infantry_equip_medium'"],
+            "add_specs": [
+                "'_reservist'",
+                "'_choc'",
+                "'infantry_equip_medium'",
+            ],
         },
     },
     
@@ -570,6 +574,11 @@ rfa_unit_edits = {
         "availability": [10, 7, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "RocketInf_PzF_44": 8,
+            },
         },
     },
 
@@ -588,7 +597,8 @@ rfa_unit_edits = {
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "quantity": {
-                    "FM_G3KA4": 9,
+                    "FM_G3KA4": 8,
+                    "MMG_inf__MG3_7_62mm": 3,
                 },
             },
             "turrets": {
@@ -631,11 +641,17 @@ rfa_unit_edits = {
             "Salves": {
                 "RocketInf_Carl_Gustav": 10,
             },
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_G3KA4": 12,
+                    "MMG_inf__MG3_7_62mm": 3,
+                },
+            },
         },
     },
 
     "Jager_RFA": {  # JÄGER (PzF44)
-        "CommandPoints": 30,
+        "CommandPoints": 35,
         "GameName": {
             "display": "JÄGER [PzF44]"
         },
@@ -678,12 +694,15 @@ rfa_unit_edits = {
                     "MMG_inf__MG3_7_62mm": 2,
                 },
             },
+            "Salves": {
+                "RocketInf_Carl_Gustav": 7,
+            },
         },
     },
     
     "PzGrenadier_RFA": {  # PZ.GRENADIER (CarlG)
         "armor": "Infantry_armor_reference",
-        "CommandPoints": 25,
+        "CommandPoints": 30,
         "GameName": {
             "display": "PZ.GRENADIER [CG]"
         },
@@ -695,7 +714,7 @@ rfa_unit_edits = {
     },
     
     "Panzergrenadier_APC_RFA": { # PZ.GRENADIER (M113)
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "GameName": {
             "display": "PZ.GRENADIER [M113]"
         },
@@ -707,11 +726,18 @@ rfa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
+                "animate": {
+                    "MMG_inf__MG3_7_62mm": False,
+                },
                 "replace": [
                     (
                         "RocketInf_PzF_44", "RocketInf_PzF_3",
                     ),
                 ],
+                "quantity": {
+                    "FM_G3KA4": 7,
+                    "MMG_inf__MG3_7_62mm": 2,
+                },
             },
             "Salves": {
                 "RocketInf_PzF_3": 6,
@@ -744,7 +770,7 @@ rfa_unit_edits = {
     },
     
     "Panzergrenadier_IFV_RFA": { # PZ.GRENADIER (G3A3ZF)
-        "CommandPoints": 25,
+        "CommandPoints": 30,
         "GameName": {
             "display": "PZ.GRENADIER"
         },

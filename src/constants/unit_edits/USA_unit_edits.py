@@ -1557,7 +1557,7 @@ usa_unit_edits = {
         "GameName": {
             "display": "AERO-RIFLES [DRAGON]",
         },
-        "CommandPoints": 45,
+        "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "Divisions": {
             "add": ["US_82nd_Airborne"],
@@ -3685,7 +3685,7 @@ usa_unit_edits = {
             "display": "STINGER C",
             "token": "XQYDBWCBAP",
         },
-        "CommandPoints": 45,
+        "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "Divisions": {
             "remove": ["US_82nd_Airborne"],
@@ -3734,7 +3734,7 @@ usa_unit_edits = {
             "display": "AB STINGER C",
             "token": "VVEXCPXVQB",
         },
-        "CommandPoints": 45,
+        "CommandPoints": 50,
         "availability": [0, 7, 5, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -3752,7 +3752,7 @@ usa_unit_edits = {
     },
     
     "MANPAD_Stinger_NG_US": {
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "availability": [9, 0, 0, 0],
         "max_speed": 20,
@@ -3782,11 +3782,11 @@ usa_unit_edits = {
     },
     
     "M42_Duster_US": {
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "availability": [10, 0, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_2_canon_Bofors_40mm": 1,
+                "DCA_2_canon_Bofors_40mm": 12,
             },
         },
         "UpgradeFromUnit": "M274_Mule_M2HB_US",

@@ -489,6 +489,9 @@ def _apply_weapon_edits(
             game_db,
             source_path,
         )
+    
+    if "SalvoIsMainSalvo" in wd_edits:
+        weapon_descr.v.by_m("SalvoIsMainSalvo").v = ndf.convert(str(wd_edits["SalvoIsMainSalvo"]))
 
 
 def _find_donor_weapon(
