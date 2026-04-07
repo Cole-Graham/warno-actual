@@ -65,6 +65,7 @@ def _handle_fob_attributes(source_path: Any) -> None:
             "FOBCAN": "FIELD SUPPLY POINT",  # canada
             "FOBCZ": "tbd",  # czechoslovakia
             "FOBDDR": "FELDDEPOT",
+            "FOBDK": "FELT FORSYNINGSPUNKT",
             "FOBESP": "tbd",  # spain
             "FOBFR": "DÉPÔT DE MUNITION",
             "FOBNL": "MUNITIEDEPOT",  # supposedly preferred over munitie stoortplats

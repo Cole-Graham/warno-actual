@@ -47,7 +47,7 @@ Order of operations: **layout first** (structure + positions), **param scaling s
 
 ### Calibration (`tools/fx_editor/scatter_calibration.yaml`)
 
-NDF XY units are not 1:1 with gameplay meters. The default anchor uses the vanilla MLRS cluster footprint at **120 m** gameplay radius vs the **maximum** Euclidean offset of Mobile `Position` points in that reference file. Adjust `anchor_max_ndf_radius` if you recompute from a different baseline. This file drives **import/emit** mapping only; the scatter canvas **reference ring** uses the **R (m)** field in the UI.
+NDF XY units are not 1:1 with gameplay meters. Defaults live in `scatter_calibration.yaml` (currently **60 m** reference gameplay radius vs **4240.282686** NDF anchor max for the M270 cluster reference). Adjust both if you recompute from a different baseline. This drives **import/emit** mapping only; the scatter canvas **reference ring** uses the **R (m)** field in the UI.
 
 ### Notes
 

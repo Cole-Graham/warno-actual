@@ -261,7 +261,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeGRU": 1050,
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 10.0,
-                "SpeedGRU": 900,
+                "ProjectileSpeedGRU": 900,
             },
         },
     },

@@ -18,6 +18,22 @@ from .scatter_analyze import vfx_effect_group_burst_counts
 from .scatter_timeline import _list_row_child_v
 
 
+def resolve_effect_call_geom_scale(
+    scale_factor: float,
+    *,
+    consistent_call_density: bool,
+    cluster_layout: bool,
+    explicit: Optional[float] = None,
+) -> float:
+    """Linear ``target/source`` when ``consistent_call_density`` is off; else areal (or ``1`` for cluster)."""
+    if explicit is not None:
+        return float(explicit)
+    sf = float(scale_factor)
+    if not consistent_call_density:
+        return sf
+    return 1.0 if cluster_layout else sf * sf
+
+
 # Size-related parameter patterns to scale (migrated from fx_size_scaler)
 SIZE_PARAM_PATTERNS = [
     r'parSize\b',
@@ -902,6 +918,8 @@ def process_file(
     effect_named_flags: Optional[EffectNamedFlagsMap] = None,
     effect_count_scale_pct: Optional[EffectCountScalePctMap] = None,
     effect_call_scale_pct: Optional[Dict[str, float]] = None,
+    effect_call_geom_scale: Optional[float] = None,
+    consistent_call_density: bool = False,
     effect_call_batch_scale_min: Optional[float] = None,
     effect_call_batch_scale_max: Optional[float] = None,
     param_radius_falloff_by_vfx: Optional[Dict[str, List[float]]] = None,
@@ -927,11 +945,19 @@ def process_file(
         if not isinstance(parsed, ndf.model.List):
             raise ValueError(f'Expected ndf.model.List, got {type(parsed).__name__}')
         stats['vfx_burst_denoms'] = vfx_effect_group_burst_counts(parsed)
+        ec_geom = resolve_effect_call_geom_scale(
+            scale_factor,
+            consistent_call_density=consistent_call_density,
+            cluster_layout=False,
+            explicit=effect_call_geom_scale,
+        )
         call_changes = scale_effect_calls(
             parsed,
             effect_call_scale_pct,
             dry_run=dry_run,
             scale_factor=scale_factor,
+            effect_call_geom_scale=ec_geom,
+            consistent_call_density=consistent_call_density,
             effect_call_batch_scale_min=effect_call_batch_scale_min,
             effect_call_batch_scale_max=effect_call_batch_scale_max,
             call_radius_falloff_by_vfx=call_radius_falloff_by_vfx,
@@ -1157,6 +1183,8 @@ def write_scaled_copy(
     effect_named_flags: Optional[EffectNamedFlagsMap] = None,
     effect_count_scale_pct: Optional[EffectCountScalePctMap] = None,
     effect_call_scale_pct: Optional[Dict[str, float]] = None,
+    effect_call_geom_scale: Optional[float] = None,
+    consistent_call_density: bool = False,
     effect_call_batch_scale_min: Optional[float] = None,
     effect_call_batch_scale_max: Optional[float] = None,
     param_radius_falloff_by_vfx: Optional[Dict[str, List[float]]] = None,
@@ -1183,11 +1211,19 @@ def write_scaled_copy(
         if not isinstance(parsed, ndf.model.List):
             raise ValueError(f'Expected ndf.model.List, got {type(parsed).__name__}')
         stats['vfx_burst_denoms'] = vfx_effect_group_burst_counts(parsed)
+        ec_geom = resolve_effect_call_geom_scale(
+            scale_factor,
+            consistent_call_density=consistent_call_density,
+            cluster_layout=False,
+            explicit=effect_call_geom_scale,
+        )
         call_changes = scale_effect_calls(
             parsed,
             effect_call_scale_pct,
             dry_run=False,
             scale_factor=scale_factor,
+            effect_call_geom_scale=ec_geom,
+            consistent_call_density=consistent_call_density,
             effect_call_batch_scale_min=effect_call_batch_scale_min,
             effect_call_batch_scale_max=effect_call_batch_scale_max,
             call_radius_falloff_by_vfx=call_radius_falloff_by_vfx,

@@ -3,6 +3,26 @@ from typing import Any, Dict
 from src.constants.weapons import ammunitions
 from src.constants.new_units import NEW_UNITS
 from src.constants.unit_edits import load_unit_edits
+from src.gameplay_mods.generated.gameplay.gfx.weapon_descriptor.handlers.new_units import (
+    _uses_sniper_damage_family,
+)
+
+
+def _small_arms_ammo_path_for_quantity(
+    prefix: str,
+    weapon_name: str,
+    quantity: int,
+    unit_strength: int,
+    use_strength: bool,
+    game_db: Dict[str, Any],
+) -> str:
+    if use_strength:
+        if quantity > 1:
+            return f"{prefix}_{weapon_name}_strength{unit_strength}_x{quantity}"
+        return f"{prefix}_{weapon_name}_strength{unit_strength}"
+    if quantity > 1 and not _uses_sniper_damage_family(weapon_name, game_db):
+        return f"{prefix}_{weapon_name}_x{quantity}"
+    return f"{prefix}_{weapon_name}"
 
 
 def update_weapondescr_ammoname_quantity(source_path, logger, game_db):
@@ -77,14 +97,14 @@ def update_weapondescr_ammoname_quantity(source_path, logger, game_db):
 
                     if old_name and old_name == ammo_n:
                         if int(nb_weapons) == quantity:
-                            if quantity > 1:
-                                new_ammo = f"{prefix}_{weapon_name}_x{quantity}"
-                                if use_strength:
-                                    new_ammo = f"{prefix}_{weapon_name}_strength{unit_strength}_x{quantity}"
-                            else:
-                                new_ammo = f"{prefix}_{weapon_name}"
-                                if use_strength:
-                                    new_ammo = f"{prefix}_{weapon_name}_strength{unit_strength}"
+                            new_ammo = _small_arms_ammo_path_for_quantity(
+                                prefix,
+                                weapon_name,
+                                quantity,
+                                unit_strength,
+                                use_strength,
+                                game_db,
+                            )
                             mounted_wpn.v.by_m("Ammunition").v = new_ammo
                             logger.info(f"Updated ammo {ammo} to {new_ammo}")
                         else:
@@ -92,26 +112,26 @@ def update_weapondescr_ammoname_quantity(source_path, logger, game_db):
                                 f"database quantity ({quantity}) differs from "
                                 f"NbWeapons ({nb_weapons}) for {weapon_name}"
                             )
-                            if int(nb_weapons) > 1:
-                                new_ammo = f"{prefix}_{weapon_name}_x{quantity}"
-                                if use_strength:
-                                    new_ammo = f"{prefix}_{weapon_name}_strength{unit_strength}_x{quantity}"
-                            else:
-                                new_ammo = f"{prefix}_{weapon_name}"
-                                if use_strength:
-                                    new_ammo = f"{prefix}_{weapon_name}_strength{unit_strength}"
+                            new_ammo = _small_arms_ammo_path_for_quantity(
+                                prefix,
+                                weapon_name,
+                                int(nb_weapons),
+                                unit_strength,
+                                use_strength,
+                                game_db,
+                            )
                             mounted_wpn.v.by_m("Ammunition").v = new_ammo
                             logger.info(f"Updated ammo {ammo} to {new_ammo}")
 
                     elif ammo_n == weapon_name:
                         if int(nb_weapons) == quantity:
-                            if quantity > 1:
-                                new_ammo = f"{prefix}_{weapon_name}_x{quantity}"
-                                if use_strength:
-                                    new_ammo = f"{prefix}_{weapon_name}_strength{unit_strength}_x{quantity}"
-                            else:
-                                new_ammo = f"{prefix}_{weapon_name}"
-                                if use_strength:
-                                    new_ammo = f"{prefix}_{weapon_name}_strength{unit_strength}"
+                            new_ammo = _small_arms_ammo_path_for_quantity(
+                                prefix,
+                                weapon_name,
+                                quantity,
+                                unit_strength,
+                                use_strength,
+                                game_db,
+                            )
                             mounted_wpn.v.by_m("Ammunition").v = new_ammo
                             logger.info(f"Updated ammo {ammo} to {new_ammo}")

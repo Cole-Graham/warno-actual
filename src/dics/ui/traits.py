@@ -315,8 +315,10 @@ NEW_TRAITS = {
             f"This bomber has a terrain-following radar, enabling it to fly extremely "
             f"low and avoid detection and targeting for longer, thus giving enemies less "
             f"time to react. This strategy also has its downsides, as the low altitude "
-            f"makes it an easier target to hit."
-            f"(1.5 stealth bonus)"
+            f"makes it an easier target to hit. "
+        )),
+        "extended": ("SMFUEOJEQG", (
+            f"#styleGreen{{1.75 stealth}}"
         )),
         "texture": "terrain_radar.png",
     },

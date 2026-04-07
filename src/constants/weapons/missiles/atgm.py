@@ -14,7 +14,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MinimumRangeGRU": 60,
-                "SpeedGRU": 233,
+                "ProjectileSpeedGRU": 233,
             }
         },
         "SupplyCost": 60.0,
@@ -34,7 +34,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MinimumRangeGRU": 60,
-                "SpeedGRU": 233,
+                "ProjectileSpeedGRU": 233,
             }
         },
         "SupplyCost": 50.0,
@@ -54,7 +54,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "MinimumRangeGRU": 60,
-                "SpeedGRU": 350,
+                "ProjectileSpeedGRU": 350,
             }
         },
         "SupplyCost": 80.0,
@@ -75,7 +75,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 60,
             },
             "parent_membr": {
-                "SpeedGRU": 350,
+                "ProjectileSpeedGRU": 350,
                 "NoiseDissimulationMalus": 1.0
             },
         },
@@ -97,7 +97,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 60,
             },
             "parent_membr": {
-                "SpeedGRU": 350,
+                "ProjectileSpeedGRU": 350,
             },
         },
         "SupplyCost": 95.0,
@@ -118,7 +118,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 45,
             },
             "parent_membr": {
-                "SpeedGRU": 350,
+                "ProjectileSpeedGRU": 350,
             },
         },
         "SupplyCost": 90.0,
@@ -139,7 +139,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 45,
             },
             "parent_membr": {
-                "SpeedGRU": 350,
+                "ProjectileSpeedGRU": 350,
             },
         },
         "SupplyCost": 60.0,
@@ -160,7 +160,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 45,
             },
             "parent_membr": {
-                "SpeedGRU": 350,
+                "ProjectileSpeedGRU": 350,
             },
         },
         "SupplyCost": 90.0,
@@ -181,7 +181,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 45,
             },
             "parent_membr": {
-                "SpeedGRU": 350,
+                "ProjectileSpeedGRU": 350,
             },
         },
         "SupplyCost": 60.0,
@@ -202,7 +202,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 45,
             },
             "parent_membr": {
-                "SpeedGRU": 466,
+                "ProjectileSpeedGRU": 466,
                 "AimingTime": 6.0,
             },
         },
@@ -224,7 +224,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 70,
             },
             "parent_membr": {
-                "SpeedGRU": 739,
+                "ProjectileSpeedGRU": 739,
             },
         },
         "SupplyCost": 115.0,
@@ -242,7 +242,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 65,
             },
             "parent_membr": {
-                "SpeedGRU": 739,
+                "ProjectileSpeedGRU": 739,
             },
         },
         "SupplyCost": 90.0,
@@ -264,7 +264,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 45,
             },
             "parent_membr": {
-                "SpeedGRU": 350,
+                "ProjectileSpeedGRU": 350,
             },
         },
         "SupplyCost": 70.0,
@@ -294,7 +294,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Index": 24,
             },
             "parent_membr": {
-                "SpeedGRU": 466,
+                "ProjectileSpeedGRU": 466,
             }
         },
         "SupplyCost": 115.0,
@@ -313,7 +313,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 # "Caliber": ("6.1kg HYBRID", "SVJNWQPYKO"),
-                "SpeedGRU": 466,
+                "ProjectileSpeedGRU": 466,
             }
         },
         "SupplyCost": 100.0,
@@ -331,7 +331,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Index": 24,
             },
             "parent_membr": {
-                "SpeedGRU": 466,
+                "ProjectileSpeedGRU": 466,
             }
         },
         "SupplyCost": 115.0,
@@ -351,7 +351,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 # "Caliber": ("6.1kg HYBRID", "SVJNWQPYKO"),
-                "SpeedGRU": 466,
+                "ProjectileSpeedGRU": 466,
             }
         },
         "SupplyCost": 100.0,
@@ -366,7 +366,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("ATGM_BGM71C_ITOW", "ATGM", None, False): {
         "Ammunition": {
             "parent_membr": {
-                "SpeedGRU": 466,
+                "ProjectileSpeedGRU": 466,
             }
         },
         "SupplyCost": 80.0,
@@ -381,7 +381,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("ATGM_BGM71C_ITOW_ETAS_IFV", "ATGM", "ATGM_BGM71C_ITOW", True): {
         "Ammunition": {
             "parent_membr": {
-                "SpeedGRU": 466,
+                "ProjectileSpeedGRU": 466,
                 "TimeBetweenTwoSalvos": 30.0,
             },
         },
@@ -400,7 +400,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Index": 17,
             },
             "parent_membr": {
-                "SpeedGRU": 466,
+                "ProjectileSpeedGRU": 466,
             }
         },
         "SupplyCost": 60.0,
@@ -423,7 +423,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 45,
             },
             "parent_membr": {
-                "SpeedGRU": 311,
+                "ProjectileSpeedGRU": 311,
             },
         },
         "SupplyCost": 60.0,
@@ -446,7 +446,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 45,
             },
             "parent_membr": {
-                "SpeedGRU": 311,
+                "ProjectileSpeedGRU": 311,
             },
         },
         "SupplyCost": 60.0,
@@ -469,7 +469,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 45,
             },
             "parent_membr": {
-                "SpeedGRU": 311,
+                "ProjectileSpeedGRU": 311,
             }
         },
         "SupplyCost": 50.0,
@@ -491,7 +491,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MaximumRangeGRU": 2450,
-                "SpeedGRU": 233,
+                "ProjectileSpeedGRU": 233,
             },
         },
         "SupplyCost": 60.0,
@@ -513,7 +513,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MaximumRangeGRU": 2450,
-                "SpeedGRU": 233,
+                "ProjectileSpeedGRU": 233,
             },
         },
         "SupplyCost": 60.0,
@@ -531,7 +531,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Index": 24
             },
             "parent_membr": {
-                "SpeedGRU": 544,
+                "ProjectileSpeedGRU": 544,
             },
         },
         "SupplyCost": 115.0,
@@ -549,7 +549,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "token": "WMOWZEXCQJ",
             "parent_membr": {
                 "MaximumRangeGRU": 2625,
-                "SpeedGRU": 622,
+                "ProjectileSpeedGRU": 622,
             },
         },
         "SupplyCost": 80.0,
@@ -564,7 +564,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("ATGM_9M114M_KokonM", "ATGM", None, False): {
         "Ammunition": {
             "parent_membr": {
-                "SpeedGRU": 622,
+                "ProjectileSpeedGRU": 622,
             },
         },
         "SupplyCost": 80.0,
@@ -582,7 +582,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Index": 24,
             },
             "parent_membr": {
-                "SpeedGRU": 800,
+                "ProjectileSpeedGRU": 800,
             },
         },
         "SupplyCost": 80.0,
@@ -600,7 +600,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "token": "ZIAPPNOKJO",
             "parent_membr": {
                 "MaximumRangeGRU": 2800,
-                "SpeedGRU": 622,
+                "ProjectileSpeedGRU": 622,
             },
         },
         "SupplyCost": 85.0,
@@ -623,7 +623,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "token": "YUXMIRHNPX",
             "parent_membr": {
                 "MaximumRangeGRU": 2800,
-                "SpeedGRU": 622,
+                "ProjectileSpeedGRU": 622,
             },
         },
         "SupplyCost": 120.0,
@@ -643,7 +643,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "display": "9M117 Bastion",
             "token": "DIHEGBLZRU",
             "parent_membr": {
-                "SpeedGRU": 739,
+                "ProjectileSpeedGRU": 739,
             },
         },
         "SupplyCost": 95.0,
@@ -662,7 +662,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 # "Caliber": ("2.7kg TANDEM", "JDLKNWTJOR"),
-                "SpeedGRU": 389,
+                "ProjectileSpeedGRU": 389,
             },
         },
         "SupplyCost": 95.0,
@@ -695,7 +695,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 # "Caliber": ("2.7kg HEAT", "HNXYVDFTUM"),
-                "SpeedGRU": 389,
+                "ProjectileSpeedGRU": 389,
             },
         },
         "SupplyCost": 75.0,
@@ -711,7 +711,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 # "Caliber": ("2.7kg HEAT", "HNXYVDFTUM"),
-                "SpeedGRU": 389,
+                "ProjectileSpeedGRU": 389,
             },
         },
         "SupplyCost": 75.0,
@@ -734,7 +734,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 50,
             },
             "parent_membr": {
-                "SpeedGRU": 739,
+                "ProjectileSpeedGRU": 739,
             },
         },
         "SupplyCost": 80.0,
@@ -757,7 +757,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 50,
             },
             "parent_membr": {
-                "SpeedGRU": 739,
+                "ProjectileSpeedGRU": 739,
             },
         },
         "SupplyCost": 105.0,

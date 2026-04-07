@@ -599,7 +599,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "Arme": {
                 "Family": "DamageFamily_clu_sol_ap",
-                "Index": 12,
+                "Index": 11,
             },
             "parent_membr": {
                 "MinMaxCategory": "MinMax_Bombe",

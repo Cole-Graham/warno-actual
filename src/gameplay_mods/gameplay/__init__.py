@@ -3,6 +3,7 @@ from .constantes import (
     edit_gameplay_constantes_hitrollconstants,
     edit_gameplay_constantes_iastratweaponconstantes,
     edit_gameplay_constantes_ravitaillement,
+    edit_gameplay_constantes_terrainspeedfactors,
     edit_gameplay_constantes_weaponconstantes,
     edit_gameplay_constantes_weapontypepriorities,
 )
@@ -28,6 +29,7 @@ __all__ = [
     'edit_gameplay_constantes_hitrollconstants',
     'edit_gameplay_constantes_iastratweaponconstantes',
     'edit_gameplay_constantes_ravitaillement',
+    'edit_gameplay_constantes_terrainspeedfactors',
     'edit_gameplay_constantes_weaponconstantes',
     'edit_gameplay_constantes_weapontypepriorities',
     'edit_gameplay_terrains',

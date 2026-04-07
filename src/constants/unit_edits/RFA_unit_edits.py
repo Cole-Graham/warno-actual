@@ -1499,6 +1499,10 @@ rfa_unit_edits = {
         "CommandPoints": 25,
     },
     
+    "Sonderwagen_4_recon_RFA": {
+        "CommandPoints": 30,
+    },
+    
     "Iltis_reco_RFA": {
         "CommandPoints": 25,
     },

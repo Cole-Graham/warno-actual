@@ -338,7 +338,7 @@ def _insert_weapon(
                 else:
                     new_ammo = f"{prefix}_{weapon_name}_strength{unit_strength}"
             else:
-                if quantity > 1:
+                if quantity > 1 and not _uses_sniper_damage_family(weapon_name, game_db):
                     new_ammo = f"{prefix}_{weapon_name}_x{quantity}"
                 else:
                     new_ammo = f"{prefix}_{weapon_name}"
@@ -540,7 +540,7 @@ def _replace_weapon_with_turret(
                 else:
                     new_ammo = f"{prefix}_{new_weapon_name}_strength{unit_strength}"
             else:
-                if quantity > 1:
+                if quantity > 1 and not _uses_sniper_damage_family(new_weapon_name, game_db):
                     new_ammo = f"{prefix}_{new_weapon_name}_x{quantity}"
                 else:
                     new_ammo = f"{prefix}_{new_weapon_name}"
@@ -669,8 +669,10 @@ def _replace_weapon(
                 if quantity > 1:
                     if use_strength_variant:
                         new_ammo_path = f"{prefix}_{new_ammo}_strength{unit_strength}_x{quantity}"
-                    else:
+                    elif not _uses_sniper_damage_family(new_ammo, game_db):
                         new_ammo_path = f"{prefix}_{new_ammo}_x{quantity}"
+                    else:
+                        new_ammo_path = f"{prefix}_{new_ammo}"
                 else:
                     if use_strength_variant:
                         new_ammo_path = f"{prefix}_{new_ammo}_strength{unit_strength}"
@@ -737,7 +739,7 @@ def _update_weapon_quantity(new_weap_row: Any, ammo: str, quantity: int, game_db
                         else:
                             new_ammo = f"{prefix}_{ammo}_strength{unit_strength}"
                     else:
-                        if quantity > 1:
+                        if quantity > 1 and not _uses_sniper_damage_family(ammo, game_db):
                             new_ammo = f"{prefix}_{ammo}_x{quantity}"
                         else:
                             new_ammo = f"{prefix}_{ammo}"
@@ -816,6 +818,18 @@ def _should_use_strength_variant(weapon_name: str, game_db: Dict[str, Any]) -> b
         if ammo_name == weapon_name and category == "small_arms":
             damage_family = data.get("Ammunition", {}).get("Arme", {}).get("Family")
             return damage_family in ["DamageFamily_sa_full", "DamageFamily_sa_intermediate"]
+    return False
+
+
+def _uses_sniper_damage_family(weapon_name: str, game_db: Dict[str, Any]) -> bool:
+    """Sniper rifles use DamageFamily_sniper; vanilla keeps a single Ammo_* path even when NbWeapons > 1."""
+    ammo_properties = game_db["ammunition"]["ammo_properties"].get(f"Ammo_{weapon_name}", {})
+    if ammo_properties.get("MinMaxCategory", None) == "MinMax_MMG_HMG":
+        return False
+    for (ammo_name, category, _, _), data in small_arms_weapons.items():
+        if ammo_name == weapon_name and category == "small_arms":
+            damage_family = data.get("Ammunition", {}).get("Arme", {}).get("Family")
+            return damage_family == "DamageFamily_sniper"
     return False
 
 

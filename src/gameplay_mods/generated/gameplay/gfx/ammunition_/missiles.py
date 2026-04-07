@@ -161,10 +161,8 @@ def _create_new_descriptor(source_path, weapon_name, donor, data):
     # Create base descriptor
     base_descr = donor_descr.copy()
 
-    # Generate new GUIDs
+    # Generate new GUID for missile ammunition descriptor
     base_descr.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
-    hitroll_obj = base_descr.v.by_m("HitRollRuleDescriptor").v
-    hitroll_obj.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
 
     # Set namespace
     base_descr.namespace = f"Ammo_{weapon_name}"
@@ -253,7 +251,6 @@ def _handle_salvo_variants(
                 # For new missiles, copy the already-edited base descriptor
                 variant = base_descr.copy()
                 variant.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
-                variant.v.by_m("HitRollRuleDescriptor").v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
                 variant.namespace = namespace
 
                 # Only apply salvo-specific values
@@ -287,7 +284,6 @@ def _handle_salvo_variants(
                     logger.info(f"Creating missing salvo variant {namespace}")
                     variant = base_descr.copy()
                     variant.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
-                    variant.v.by_m("HitRollRuleDescriptor").v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
                     variant.namespace = namespace
 
                     # Category standards first, then constants (same order as base)

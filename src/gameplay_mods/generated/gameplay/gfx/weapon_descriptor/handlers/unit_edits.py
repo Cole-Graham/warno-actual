@@ -14,7 +14,7 @@ from src.utils.ndf_utils import (
     strip_quotes,
 )
 
-from .new_units import _should_use_strength_variant, UNITS_SKIP_STRENGTH_VARIANTS
+from .new_units import _should_use_strength_variant, _uses_sniper_damage_family, UNITS_SKIP_STRENGTH_VARIANTS
 
 logger = setup_logger(__name__)
 
@@ -442,7 +442,7 @@ def _update_weapon_quantities(
                         else:
                             new_ammo = f"{prefix}_{base_ammo}_strength{unit_strength}"
                     else:
-                        if quantity > 1:
+                        if quantity > 1 and not _uses_sniper_damage_family(base_ammo, game_db):
                             new_ammo = f"{prefix}_{base_ammo}_x{quantity}"
                         else:
                             new_ammo = f"{prefix}_{base_ammo}"
@@ -931,8 +931,10 @@ def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_
                 if quantity > 1:
                     if use_strength:
                         new_ammo = f"$/GFX/Weapon/Ammo_{new_weapon}_strength{unit_strength}_x{quantity}"
-                    else:
+                    elif not _uses_sniper_damage_family(new_weapon, game_db):
                         new_ammo = f"$/GFX/Weapon/Ammo_{new_weapon}_x{quantity}"
+                    else:
+                        new_ammo = f"$/GFX/Weapon/Ammo_{new_weapon}"
                 else:
                     if use_strength:
                         new_ammo = f"$/GFX/Weapon/Ammo_{new_weapon}_strength{unit_strength}"

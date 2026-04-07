@@ -1592,6 +1592,18 @@ uk_unit_edits = {
         },
         "availability": [0, 8, 6, 0],
     },
+    
+    "FV120_Spartan_MCT_UK": {
+        "CommandPoints": 25,
+    },
+    
+    "FV432_MILAN_UK": {
+        "CommandPoints": 20,
+    },
+    
+    "FV432_Rarden_UK": {
+        "CommandPoints": 30,
+    },
 
     "MCV_80_Warrior_UK": {
         "CommandPoints": 35,
@@ -2410,6 +2422,10 @@ uk_unit_edits = {
     "Lynx_AH_Mk7_I_TOW2_UK": {  # 8x FITOW
         "CommandPoints": 130,
         "availability": [0, 4, 3, 0],
+    },
+    
+    "Lynx_AH_Mk7_SNEB_UK": {
+        "CommandPoints": 6767, # vanilla 70
     },
 
     # UK AIR

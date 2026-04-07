@@ -1,4 +1,4 @@
-"""Scatter layout panel: preview vanilla / generated layouts (embedded in Batch Size notebook tab)."""
+"""Scatter layout panel: preview game-extracted vs mod-generated cluster layouts (Batch Size tab)."""
 
 from __future__ import annotations
 
@@ -21,13 +21,14 @@ from src import ndf
 from .call_scale import format_call_qty_report_line
 from .fx_logging import get_fx_logger
 from .ndf_tree_debug import describe_ndf_tree_issues
-from .size_batch import parse_target_sizes
+from .size_batch import parse_target_sizes, resolve_effect_call_geom_scale
 from .scatter_analyze import (
     analyze_effect_groups,
     format_effect_groups_document,
     summarize_scatter_ndf,
 )
 from .scatter_extract import extract_scatter_points_with_vfx, ndf_xy_to_gameplay_m
+from .radius_falloff import burst_gameplay_xy_m_from_parsed_root
 from .scatter_model import ScatterBurst, ScatterProject, load_scatter_calibration_yaml
 from .scatter_timeline import TimelineEvent, build_timeline_events, timeline_end_time_s
 from .scatter_variation import run_cluster_emit_scale_pipeline
@@ -340,6 +341,7 @@ class ScatterLayoutPanel(ttk.Frame):
                     ),
                 )
                 bkw = self.app._batch_scale_kwargs()
+                ccd = bool(bkw.get('consistent_call_density', False))
                 targets = parse_target_sizes(self.app.variation_targets_text.get('1.0', tk.END))
                 tgt_m = float(self.preview_target_m)
                 ecp = (
@@ -389,6 +391,7 @@ class ScatterLayoutPanel(ttk.Frame):
                     call_radius_falloff_by_vfx=call_rf,
                     param_radius_falloff_by_vfx=param_rf,
                     effect_count_scale_pct=ecp,
+                    consistent_call_density=ccd,
                     include_declaration_params=bkw['include_declaration_params'],
                     scale_size=bkw['scale_size'],
                     scale_count=bkw['scale_count'],
@@ -406,10 +409,32 @@ class ScatterLayoutPanel(ttk.Frame):
                 )
                 root = pipe.work
                 last_good_root = pipe.work
+                xy_sync = burst_gameplay_xy_m_from_parsed_root(
+                    pipe.work,
+                    float(self.ref_m),
+                    float(self.anchor_r),
+                )
+                if len(xy_sync) == len(self.project.bursts):
+                    for bi, (gx, gy) in enumerate(xy_sync):
+                        self.project.bursts[bi].x_gameplay_m = float(gx)
+                        self.project.bursts[bi].y_gameplay_m = float(gy)
+                elif xy_sync:
+                    _log.warning(
+                        'scatter cluster preview: NDF burst count %d != layout %d; canvas XY not synced',
+                        len(xy_sync),
+                        len(self.project.bursts),
+                    )
+                g_call = resolve_effect_call_geom_scale(
+                    float(sf),
+                    consistent_call_density=ccd,
+                    cluster_layout=True,
+                )
                 call_line = format_call_qty_report_line(
                     pipe.call_changes,
                     effect_call_scale_pct=ecall,
                     scale_factor=sf,
+                    effect_call_geom_scale=g_call,
+                    ignore_call_qty_curves=ccd,
                     vfx_burst_denoms=pipe.vfx_burst_denoms,
                 )
             else:
@@ -454,21 +479,31 @@ class ScatterLayoutPanel(ttk.Frame):
             if cluster_preview:
                 call_block = (
                     '\n\nEffect summary and timeline use the emitted NDF after Call scale + Param scale '
-                    '(including radius falloff), matching General / batch preview.'
+                    '(including radius falloff), matching General / batch preview. '
+                    'This preview does not write NDF files; use Create variations with Overwrite to refresh outputs.'
                 )
                 if call_line:
                     call_block += (
                         f'\n\nCall qty (same as General preview log): {call_line}\n'
                         'Note: each group line is bursts per layout (xN); the curve summary adds '
                         'burst-scaled counts across all Call-curve VFX, so it is not a single xN.\n'
-                        'Call spatial falloff: each burst gets keep-probability = min of its TActionCall VFX curves '
-                        '(%% as 0–1) at r_norm = distance/target radius (0=center, 1=edge of the dashed circle). '
-                        'Each burst is kept independently with that probability (deterministic from burst index); '
-                        'expected kept count is sum(weights). Radial density follows the curve in expectation. '
-                        'The scatter canvas omits dots for bursts that trim removes (same emitted NDF '
-                        'tree and burst XY as batch Call scale; not recomputed on the canvas). '
-                        'Call Qty %% and scale still adjust TActionCall row counts inside bursts that remain.'
                     )
+                    if ccd:
+                        call_block += (
+                            'Consistent areal call density: Call Qty %% is ignored; TActionCall counts follow area. '
+                            'Call radius falloff **repositions** burst anchors (same burst count) using the curves '
+                            'as a radial weight (deterministic sampling); nothing is removed for falloff.\n'
+                        )
+                    else:
+                        call_block += (
+                            'Call spatial falloff: each burst gets keep-probability = min of its TActionCall VFX curves '
+                            '(%% as 0–1) at r_norm = distance/target radius (0=center, 1=edge of the dashed circle). '
+                            'Each burst is kept independently with that probability (deterministic from burst index); '
+                            'expected kept count is sum(weights). Radial density follows the curve in expectation. '
+                            'The scatter canvas omits dots for bursts that trim removes (same emitted NDF '
+                            'tree and burst XY as batch Call scale; not recomputed on the canvas). '
+                            'Call Qty %% and scale still adjust TActionCall row counts inside bursts that remain.'
+                        )
             self.summary_meta.config(
                 text=(
                     f'{prefix}TSimultaneousAction bursts: {summ.burst_count}  |  '

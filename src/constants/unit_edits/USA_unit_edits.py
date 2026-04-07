@@ -2159,6 +2159,10 @@ usa_unit_edits = {
             "add_specs": ["'infantry_equip_veryheavy'"],
         },
     },
+    
+    "M274_Mule_ITOW_US": {
+        "CommandPoints": 45,
+    },
 
     "M274_Mule_RCL_US": {
         "CommandPoints": 30,
@@ -2243,6 +2247,10 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'",],
         },
+    },
+    
+    "Dragoon_300_US": {
+        "CommandPoints": 15,
     },
 
     "M1038_Humvee_US": {
@@ -3344,6 +3352,10 @@ usa_unit_edits = {
     "MQM_105_Aquila_US": {
         "CommandPoints": 50,
         "availability": [0, 4, 0, 0],
+    },
+    
+    "YCQM_121A_Pave_Tiger_US": {
+        "CommandPoints": 60,
     },
     
     "A37B_Dragonfly_US": {

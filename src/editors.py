@@ -12,6 +12,7 @@ from .gameplay_mods import (
     edit_gameplay_constantes_ravitaillement,
     edit_gameplay_constantes_weaponconstantes,
     edit_gameplay_constantes_weapontypepriorities,
+    edit_gameplay_constantes_terrainspeedfactors,
     edit_gameplay_terrains,
     edit_gameplay_unit_airplanecritical,
     edit_gameplay_unit_groundunitcritical,
@@ -134,6 +135,7 @@ __all__ = [
     'edit_gameplay_constantes_iastratweaponconstantes',
     'edit_gameplay_constantes_ravitaillement',
     'edit_gameplay_constantes_weaponconstantes',
+    'edit_gameplay_constantes_terrainspeedfactors',
     'edit_gameplay_terrains',
     'edit_gameplay_unit_airplanecritical',
     'edit_gameplay_unit_groundunitcritical',
@@ -278,6 +280,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         ],
         "GameData/Gameplay/Constantes/WeaponTypePriorities.ndf": [
             (edit_gameplay_constantes_weapontypepriorities, "gameplay"),
+        ],
+        "GameData/Gameplay/Constantes/TerrainSpeedFactors.ndf": [
+            (edit_gameplay_constantes_terrainspeedfactors, "gameplay"),
         ],
         "GameData/Gameplay/Terrains/Terrains.ndf": [
             (edit_gameplay_terrains, "gameplay"),

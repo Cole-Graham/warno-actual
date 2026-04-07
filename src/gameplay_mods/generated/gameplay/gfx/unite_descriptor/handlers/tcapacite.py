@@ -27,6 +27,15 @@ def handle_capacite_module(
     
     else:
         default_skill_list = module.v.by_m("DefaultSkillList")
+        
+        # remove counter-battery radar capacity (adds tag that reveals unit)
+        counter_battery_capacity = default_skill_list.v.find_by_cond(
+            lambda x: x.v == "$/GFX/EffectCapacity/Capacite_Artillerie_tag_on_shoot", strict=False
+        )
+        if counter_battery_capacity:
+            default_skill_list.v.remove(counter_battery_capacity)
+            logger.info(f"Removed counter-battery radar capacity from {unit_name}")
+        
         _add_capacities(logger, unit_data, edit_type, unit_name, edits, default_skill_list)
         
     if edits.get("capacities", {}).get("remove_capacities", []):

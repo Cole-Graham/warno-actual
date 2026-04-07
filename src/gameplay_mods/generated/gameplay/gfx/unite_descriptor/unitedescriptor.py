@@ -344,6 +344,12 @@ def _handle_landmovement_module(logger, game_db, unit_data, edit_type, unit_name
                                 edits, module, *args) -> None:
     """Handle TLandMovementModuleDescriptor for existing and new units"""
     
+    if "LandMovement" in edits:
+        if "TerrainSpeedFactors" in edits["LandMovement"]:
+            new_value = f"$/GFX/Terrains/{edits['LandMovement']['TerrainSpeedFactors']}TerrainSpeedFactors"
+            module.v.by_m("TerrainSpeedFactors").v = new_value
+            logger.info(f"Updated {unit_name} terrain speed factors to {new_value}")
+    
     if "factor" in edits.get("road_speed", {}):
         factor = edits["road_speed"]["factor"]
         module.v.by_m("SpeedBonusFactorOnRoad").v = "{:0.2f}".format(factor)

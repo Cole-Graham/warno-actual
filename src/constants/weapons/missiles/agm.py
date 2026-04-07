@@ -16,7 +16,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 70,
             },
             "parent_membr": {
-                "SpeedGRU": 739,
+                "ProjectileSpeedGRU": 739,
             },
         },
         "SupplyCost": 115.0,
@@ -34,7 +34,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 65,
             },
             "parent_membr": {
-                "SpeedGRU": 739,
+                "ProjectileSpeedGRU": 739,
             },
         },
         "SupplyCost": 90.0,
@@ -51,7 +51,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "AimingTime": 0.3,
                 "SupplyCost": 60.0,
-                "SpeedGRU": 2800,
+                "ProjectileSpeedGRU": 2800,
                 "MaxAccelerationGRU": 1400,
             },
         },
@@ -71,7 +71,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "SimultaneousShotsCount": 1,
                 "AffichageMunitionParSalve": 2,
                 "SupplyCost": 210.0,
-                "SpeedGRU": 2800,
+                "ProjectileSpeedGRU": 2800,
                 "MaxAccelerationGRU": 1400,
             },
         },
@@ -86,7 +86,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "AimingTime": 0.3,
                 "SupplyCost": 90.0,
-                "SpeedGRU": 2800,
+                "ProjectileSpeedGRU": 2800,
                 "MaxAccelerationGRU": 1400,
             },
         },
@@ -101,7 +101,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "AimingTime": 0.3,
                 "SupplyCost": 60.0,
-                "SpeedGRU": 2800,
+                "ProjectileSpeedGRU": 2800,
                 "MaxAccelerationGRU": 1400,
             },
         },
@@ -127,7 +127,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 # "Caliber": ("6.1kg HYBRID", "SVJNWQPYKO"),
-                "SpeedGRU": 466,
+                "ProjectileSpeedGRU": 466,
             }
         },
         "SupplyCost": 100.0,
@@ -142,7 +142,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AGM_BGM71C_ITOW", "ATGM", None, False): {
         "Ammunition": {
             "parent_membr": {
-                "SpeedGRU": 466,
+                "ProjectileSpeedGRU": 466,
             }
         },
         "SupplyCost": 80.0,
@@ -157,7 +157,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AGM_BGM71C_FITOW", "ATGM", None, False): {
         "Ammunition": {
             "parent_membr": {
-                "SpeedGRU": 466,
+                "ProjectileSpeedGRU": 466,
             }
         },
         "SupplyCost": 90.0,
@@ -175,7 +175,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Index": 17,
             },
             "parent_membr": {
-                "SpeedGRU": 466,
+                "ProjectileSpeedGRU": 466,
             }
         },
         "SupplyCost": 60.0,
@@ -242,7 +242,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MaximumRangeGRU": 2625,
-                "SpeedGRU": 350,
+                "ProjectileSpeedGRU": 350,
             },
         },
         "SupplyCost": 75.0,
@@ -258,7 +258,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MaximumRangeGRU": 2450,
-                "SpeedGRU": 311,
+                "ProjectileSpeedGRU": 311,
             },
         },
         "SupplyCost": 60.0,
@@ -273,7 +273,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AGM_9M114M_KokonM", "ATGM", None, False): { # 37
         "Ammunition": {
             "parent_membr": {
-                "SpeedGRU": 622,
+                "ProjectileSpeedGRU": 622,
             },
         },
         "SupplyCost": 80.0,
@@ -291,7 +291,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Index": 24,
             },
             "parent_membr": {
-                "SpeedGRU": 800,
+                "ProjectileSpeedGRU": 800,
             },
         },
         "SupplyCost": 80.0,
@@ -312,7 +312,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Moving": 50,
             },
             "parent_membr": {
-                "SpeedGRU": 2800,
+                "ProjectileSpeedGRU": 2800,
                 "MaxAccelerationGRU": 1400,
             },
         },
@@ -338,7 +338,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TypeCategoryName": "'" + "JTOYRAARTS" + "'",
                 "WeaponDescriptionToken": "'" + "CRYXRQVTBJ" + "'",
                 "MinMaxCategory": "MinMax_ATGM",
-                "SpeedGRU": 2800,
+                "ProjectileSpeedGRU": 2800,
                 "MaxAccelerationGRU": 1400,
                 "AimingTime": 0.3,
             },
@@ -373,7 +373,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DispersionAtMinRangeGRU": 250,
                 "RadiusSplashPhysicalDamagesGRU": 100,
                 "RadiusSplashSuppressDamagesGRU": 133,
-                "SpeedGRU": 1400,
+                "ProjectileSpeedGRU": 1400,
                 "MaxAccelerationGRU": 700,
                 "TimeBetweenTwoSalvos": 1.2,
                 "NbSalvosShootOnPosition": 1,
@@ -412,7 +412,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DispersionAtMinRangeGRU": 500,
                 "RadiusSplashPhysicalDamagesGRU": 120,
                 "RadiusSplashSuppressDamagesGRU": 160,
-                "SpeedGRU": 1400,
+                "ProjectileSpeedGRU": 1400,
                 "MaxAccelerationGRU": 700,
                 "TimeBetweenTwoSalvos": 0.7,
                 "SimultaneousShotsCount": 1,
@@ -449,7 +449,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DispersionAtMinRangeGRU": 500,
                 "RadiusSplashPhysicalDamagesGRU": 120,
                 "RadiusSplashSuppressDamagesGRU": 160,
-                "SpeedGRU": 1400,
+                "ProjectileSpeedGRU": 1400,
                 "MaxAccelerationGRU": 700,
                 "TimeBetweenTwoSalvos": 1.2,
                 "NbSalvosShootOnPosition": 1,
@@ -487,7 +487,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DispersionAtMinRangeGRU": 500,
                 "RadiusSplashPhysicalDamagesGRU": 120,
                 "RadiusSplashSuppressDamagesGRU": 160,
-                "SpeedGRU": 1400,
+                "ProjectileSpeedGRU": 1400,
                 "MaxAccelerationGRU": 700,
                 "TimeBetweenTwoSalvos": 0.7,
                 "SimultaneousShotsCount": 1,
@@ -525,7 +525,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     #             "DispersionAtMinRangeGRU": 500,
     #             "RadiusSplashPhysicalDamagesGRU": 120,
     #             "RadiusSplashSuppressDamagesGRU": 160,
-    #             "SpeedGRU": 1400,
+    #             "ProjectileSpeedGRU": 1400,
     #             "MaxAccelerationGRU": 700,
     #             "TimeBetweenTwoSalvos": 0.7,
     #             "SimultaneousShotsCount": 1,
@@ -563,7 +563,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DispersionAtMinRangeGRU": 150,
                 "RadiusSplashPhysicalDamagesGRU": 90,
                 "RadiusSplashSuppressDamagesGRU": 120,
-                "SpeedGRU": 1400,
+                "ProjectileSpeedGRU": 1400,
                 "MaxAccelerationGRU": 700,
                 "TimeBetweenTwoSalvos": 0.7,
                 "SimultaneousShotsCount": 1,
@@ -604,7 +604,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DispersionAtMinRangeGRU": 250,
                 "RadiusSplashPhysicalDamagesGRU": 100,
                 "RadiusSplashSuppressDamagesGRU": 133,
-                "SpeedGRU": 1400,
+                "ProjectileSpeedGRU": 1400,
                 "MaxAccelerationGRU": 700,
                 "TimeBetweenTwoSalvos": 0.7,
                 "SimultaneousShotsCount": 1,
@@ -642,7 +642,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "DispersionAtMinRangeGRU": 500,
                 "RadiusSplashPhysicalDamagesGRU": 120,
                 "RadiusSplashSuppressDamagesGRU": 160,
-                "SpeedGRU": 1400,
+                "ProjectileSpeedGRU": 1400,
                 "MaxAccelerationGRU": 700,
                 "TimeBetweenTwoSalvos": 0.7,
                 "SimultaneousShotsCount": 1,
@@ -662,7 +662,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AGM_AS30L", "ATGM", None, False): {
         "Ammunition": {
             "parent_membr": {
-                "SpeedGRU": 2800,
+                "ProjectileSpeedGRU": 2800,
                 "MaxAccelerationGRU": 1400,
                 "AimingTime": 0.3,
                 "SupplyCost": 70.0,

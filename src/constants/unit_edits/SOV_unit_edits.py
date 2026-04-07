@@ -777,6 +777,35 @@ sov_unit_edits = {
             },
         },
     },
+    
+    "Engineers_DShV_SOV": {
+        "armor": "Infantry_armor_reference",
+        "CommandPoints": 30,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 9, 7, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "animate": {
+                    "SAW_RPK_74_5_56mm": False,
+                },
+                "quantity": {
+                    "FM_AKS_74": 3,
+                    "SAW_RPK_74_5_56mm": 2,
+                },
+            },
+            "Salves": {
+                "Grenade_Satchel_Charge": 4,
+            },
+        },
+    },
 
     "Engineers_Flam_SOV": {
         "armor": "Infantry_armor_reference",
@@ -847,6 +876,21 @@ sov_unit_edits = {
         "GameName": {
             "display": "DESANT. SAPERY [RPO]",
         },
+        "CommandPoints": 45,
+        "availability": [0, 9, 7, 0],
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_AKS_74": 11,
+            },
+        },
+    },
+    
+    "Engineers_Flam_DShV_SOV": {
+        "armor": "Infantry_armor_reference",
         "CommandPoints": 45,
         "availability": [0, 9, 7, 0],
         "max_speed": 20,
@@ -1221,6 +1265,16 @@ sov_unit_edits = {
                 "FM_AKS_74": 11,
                 "ATGM_9K115_Metis": 6,
             },
+        },
+    },
+    
+    "DShV_Metis_SOV": {
+        "armor": "Infantry_armor_reference",
+        "CommandPoints": 45,
+        "availability": [0, 7, 5, 0],
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
         },
     },
 
@@ -1817,12 +1871,13 @@ sov_unit_edits = {
         },
     },
 
-    "LUAZ_967M_VDV_SOV": {
-        "CommandPoints": 15,
-        "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'",],
-        },
-    },
+    # removed in landjut patch?
+    # "LUAZ_967M_VDV_SOV": {
+    #     "CommandPoints": 15,
+    #     "SpecialtiesList": {
+    #         "add_specs": ["'refundable_unit'",],
+    #     },
+    # },
 
     "UAZ_469_SOV": {
         "CommandPoints": 15,
@@ -1917,6 +1972,10 @@ sov_unit_edits = {
             },
         },
         "availability": [0, 5, 4, 3],
+    },
+    
+    "Mortier_M43_82mm_SOV": {
+        "CommandPoints": 35,
     },
 
     "Mortier_2B9_Vasilek_nonPara_SOV": {
@@ -2114,6 +2173,10 @@ sov_unit_edits = {
         "availability": [3, 2, 0, 0],
         "UpgradeFromUnit": "Howz_D20_152mm_SOV",
     },
+    
+    "2S5_GiatsintS_SOV": {
+        "CommandPoints": 185,
+    },
 
     "Howz_MstaB_150mm_SOV": {
         "GameName": {
@@ -2194,6 +2257,10 @@ sov_unit_edits = {
     "A222_Bereg_SOV": {
         "CommandPoints": 260,
         "availability": [2, 0, 1, 0],
+    },
+    
+    "BM14M_SOV": {
+        "CommandPoints": 180,
     },
 
     "BM21V_GradV_SOV": {
@@ -2867,6 +2934,10 @@ sov_unit_edits = {
         },
     },
     
+    "BMP_1PG_SOV": {
+        "CommandPoints": 30,
+    },
+    
     "BMD_1_SOV": {
         "CommandPoints": 20,
     },
@@ -3358,6 +3429,10 @@ sov_unit_edits = {
 
     "BTR_D_reco_SOV": {
         "CommandPoints": 25,
+    },
+    
+    "BMP_1P_reco_SOV": {
+        "CommandPoints": 45,
     },
 
     "BMP_2_reco_SOV": {

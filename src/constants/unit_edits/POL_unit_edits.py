@@ -1278,6 +1278,13 @@ pol_unit_edits = {
         },
     },
     
+    "UAZ_452_MP_POL": {
+        "CommandPoints": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+    },
+    
     "Honker_4011_POL": {  # Honker 4011
         "CommandPoints": 15,
         "SpecialtiesList": {
@@ -1501,6 +1508,10 @@ pol_unit_edits = {
             },
         },
         "availability": "BM21_Grad_SOV",
+    },
+    
+    "BM24M_POL": {
+        "CommandPoints": "BM24M_SOV",
     },
     
     "RM70_85_POL": {
@@ -2617,6 +2628,12 @@ pol_unit_edits = {
             "add_specs": ["'good_airoptics'"],
         },
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [
+                    ("DCA_4_canons_APZ23_23mm", "DCA_4_canons_AZP_23_Amur_23mm_late"),
+                    ("DCA_4_canons_APZ23_23mm", "DCA_4_canons_AZP_23_Amur_23mm_late"),
+                ],
+            },
             "Salves": {
                 "DCA_4_canons_AZP_23_Amur_23mm_late": 67,
             },

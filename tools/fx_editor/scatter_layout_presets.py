@@ -1,17 +1,19 @@
 """Shared gameplay disk layout (used by scatter UI and batch cluster variations).
 
-Base positions use area-uniform float sampling on the target disk. When ``source_xy`` is present,
-scaled template residuals are added on top. Per-burst segment clip to the disk boundary still put
-many points on the rim (the chord meets the circle). A **global** residual scale κ = min_j t_j
-(max t with ‖A+tB‖≤R per burst) applies the same κ to all bursts so almost all land **inside** the
-disk, not on the perimeter. Residual is also damped when target ≫ source.
+Base positions use a **pseudo-random** (deterministic) **even-coverage** disk pattern: a Vogel
+(golden-angle) spiral with small per-point hash jitter. This avoids i.i.d. uniform clustering while
+staying reproducible for a given ``jitter_salt``. When ``source_xy`` is present, scaled template
+residuals are added on top. Per-burst segment clip to the disk boundary still put many points on the
+rim (the chord meets the circle). A **global** residual scale κ = min_j t_j (max t with ‖A+tB‖≤R per
+burst) applies the same κ to all bursts so almost all land **inside** the disk, not on the perimeter.
+Residual is also damped when target ≫ source.
 """
 
 from __future__ import annotations
 
 import hashlib
 import math
-from typing import List, Tuple
+from typing import List, Optional, Tuple
 
 
 def _hypot_sq(x: float, y: float) -> float:
@@ -49,7 +51,7 @@ def _max_t_segment_in_closed_disk(ax: float, ay: float, bx: float, by: float, r:
 
 
 def _uniform_disk_points_deterministic(n: int, radius_m: float, salt: str) -> List[Tuple[float, float]]:
-    """Area-uniform samples on a disk (sqrt factor for uniform area)."""
+    """Area-uniform i.i.d. samples on a disk (sqrt factor); used only for ``n == 1`` trivial case."""
     r = max(1e-6, float(radius_m))
     out: List[Tuple[float, float]] = []
     for j in range(n):
@@ -59,6 +61,37 @@ def _uniform_disk_points_deterministic(n: int, radius_m: float, salt: str) -> Li
         rr = math.sqrt(max(u1, 1e-15)) * r
         th = 2 * math.pi * u2
         cx, cy = rr * math.cos(th), rr * math.sin(th)
+        if _hypot_sq(cx, cy) <= r * r + 1e-9:
+            out.append((cx, cy))
+        else:
+            out.append(_clamp_disk_xy(cx, cy, r))
+    return out
+
+
+def _pseudo_even_disk_points_deterministic(n: int, radius_m: float, salt: str) -> List[Tuple[float, float]]:
+    """Even disk coverage with deterministic pseudo-randomness: Vogel spiral + bounded hash jitter."""
+    r = max(1e-6, float(radius_m))
+    if n <= 0:
+        return []
+    if n == 1:
+        return _uniform_disk_points_deterministic(1, r, salt)
+
+    golden_angle = math.pi * (3.0 - math.sqrt(5.0))
+    inv_sqrt_n = 1.0 / math.sqrt(float(n))
+    out: List[Tuple[float, float]] = []
+    for j in range(n):
+        raw = hashlib.sha256(f'{salt}\0vdisk\0{j}'.encode('utf-8')).digest()
+        du = int.from_bytes(raw[0:8], 'big') / (2**64) - 0.5
+        dv = int.from_bytes(raw[8:16], 'big') / (2**64) - 0.5
+        t = (j + 0.5) / float(n)
+        rr_base = math.sqrt(t) * r
+        th = j * golden_angle
+        jitter_scale_r = 0.1 * r * inv_sqrt_n
+        jitter_scale_th = 0.25 * (2 * math.pi / max(n, 8))
+        rr = rr_base + du * jitter_scale_r
+        th2 = th + dv * jitter_scale_th
+        rr = max(0.0, min(r, rr))
+        cx, cy = rr * math.cos(th2), rr * math.sin(th2)
         if _hypot_sq(cx, cy) <= r * r + 1e-9:
             out.append((cx, cy))
         else:
@@ -101,32 +134,49 @@ def gameplay_hex_with_source_residual(
     source_xy: List[Tuple[float, float]],
     *,
     jitter_salt: str = '',
+    per_burst_template_index: Optional[List[int]] = None,
 ) -> List[Tuple[float, float]]:
-    """Place ``n_target`` bursts: uniform disk base + globally scaled residual (κ) to avoid rim pile-up."""
+    """Place ``n_target`` bursts: pseudo-even disk base + globally scaled residual (κ) to avoid rim pile-up.
+
+    When ``per_burst_template_index`` is set (length ``n_target``), residual pairing uses
+    ``source_xy[ti]`` / ``hex_src[ti]`` with ``ti = per_burst_template_index[j] % len(source_xy)``
+    instead of ``j % ns``. That keeps each emitted burst's disk offset aligned with the template
+    row it clones (cluster emit schedules templates out of lockstep with burst index).
+    """
     r = max(1.0, float(target_radius_m))
     salt = jitter_salt or f'residual:{target_radius_m:g}:{source_radius_m:g}'
     if n_target <= 0:
         return []
 
     if not source_xy:
-        return _uniform_disk_points_deterministic(n_target, r, salt + ':base')
+        return _pseudo_even_disk_points_deterministic(n_target, r, salt + ':base')
 
     ns = len(source_xy)
     sr = max(1e-6, float(source_radius_m))
     hex_src = hex_grid_first_n_bursts(ns, max(1.0, sr))
     if len(hex_src) != ns:
-        return _uniform_disk_points_deterministic(n_target, r, salt + ':fallback')
+        return _pseudo_even_disk_points_deterministic(n_target, r, salt + ':fallback')
 
-    hex_tgt = _uniform_disk_points_deterministic(n_target, r, salt + ':tgt')
+    hex_tgt = _pseudo_even_disk_points_deterministic(n_target, r, salt + ':tgt')
     scale = r / sr
     # When target ≫ source, raw (target/source)*residual pushes most points outside the disk;
     # radial clamp then put ~all of them on the rim. Damp toward source-sized offsets in target space.
     # Initial damp (kappa will further shrink B so the whole batch stays in-disk).
     residual_damp = min(1.0, 2.0 * (sr / r))
 
+    use_ti = (
+        per_burst_template_index is not None
+        and len(per_burst_template_index) == n_target
+    )
+
+    def _pair_index(j: int) -> int:
+        if use_ti:
+            return int(per_burst_template_index[j]) % ns
+        return j % ns
+
     t_list: List[float] = []
     for j in range(n_target):
-        i = j % ns
+        i = _pair_index(j)
         ax, ay = hex_tgt[j]
         if _hypot_sq(ax, ay) > r * r + 1e-6:
             ax, ay = _clamp_disk_xy(ax, ay, r)
@@ -141,7 +191,7 @@ def gameplay_hex_with_source_residual(
 
     out: List[Tuple[float, float]] = []
     for j in range(n_target):
-        i = j % ns
+        i = _pair_index(j)
         ax, ay = hex_tgt[j]
         if _hypot_sq(ax, ay) > r * r + 1e-6:
             ax, ay = _clamp_disk_xy(ax, ay, r)

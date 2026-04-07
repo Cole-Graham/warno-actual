@@ -1691,6 +1691,10 @@ rda_unit_edits = {
         "CommandPoints": 45,
         "availability": [5, 4, 3, 0],
     },
+    
+    "Howz_M30_122mm_DDR": {
+        "CommandPoints": 6767, # vanilla 85
+    },
 
     "Howz_M46_130mm_DDR": {
         "CommandPoints": 100,
@@ -3050,6 +3054,10 @@ rda_unit_edits = {
         "availability": [0, 6, 4, 0],
     },
     
+    "Mi_8TV_PodGatling_DDR": {
+        "CommandPoints": 6767, # vanilla 110
+    },
+    
     "Mi_8TB_DDR": { # 12.7mm Afanasyev, 2x 64x S-5m, 6x Malyutka-M
         "CommandPoints": 85,
         "availability": [0, 6, 4, 0],
@@ -3058,6 +3066,10 @@ rda_unit_edits = {
     "Mi_24D_s5_AT_DDR": {
         "CommandPoints": 135,
         "availability": [0, 4, 3, 0],
+    },
+    
+    "Mi_24D_s8_AT_DDR": { # Mi-24D [AT2]
+        "CommandPoints": 6767, # vanilla 130
     },
 
     "Mi_24D_AA_DDR": {
@@ -3217,7 +3229,7 @@ rda_unit_edits = {
         "availability": [0, 3, 0, 0],
     },
 
-    "MiG_23BN_AT_DDR": {  # MiG-23BN [AT]
+    "MiG_23BN_AT2_DDR": {  # MiG-23BN [AT2]
         "CommandPoints": 135,
         "availability": [0, 3, 2, 0],
     },

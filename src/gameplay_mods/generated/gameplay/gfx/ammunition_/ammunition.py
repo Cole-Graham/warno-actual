@@ -141,10 +141,8 @@ def edit_gen_gp_gfx_ammunition(source_path, game_db: Dict[str, Any]) -> None:
                                     arme_index = min(strength - 1, 13)
                                     strength_descr.v.by_m("Arme").v.by_m("Index").v = str(arme_index)
 
-                                    # Generate unique GUIDs for descriptor IDs
+                                    # Generate unique GUID for ammunition descriptor
                                     strength_descr.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
-                                    hitroll_obj = strength_descr.v.by_m("HitRollRuleDescriptor")
-                                    hitroll_obj.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
 
                                     source_path.add(strength_descr)
                                     logger.debug(f"Added strength {strength} variant for {weapon_name}")
@@ -159,10 +157,8 @@ def edit_gen_gp_gfx_ammunition(source_path, game_db: Dict[str, Any]) -> None:
                                     arme_index = min(strength - 1, 13)
                                     strength_descr.v.by_m("Arme").v.by_m("Index").v = str(arme_index)
 
-                                    # Generate unique GUIDs for descriptor IDs
+                                    # Generate unique GUID for ammunition descriptor
                                     strength_descr.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
-                                    hitroll_obj = strength_descr.v.by_m("HitRollRuleDescriptor")
-                                    hitroll_obj.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
 
                                     source_path.add(strength_descr)
                                     logger.debug(f"Added strength {strength} variant for {weapon_name}")
@@ -259,7 +255,6 @@ def _create_quantity_variants(
                     # Create new variant
                     variant = base_descr.copy()
                     variant.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
-                    variant.v.by_m("HitRollRuleDescriptor").v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
                     variant.namespace = namespace
 
                     # Set Arme Index based on strength
@@ -309,7 +304,6 @@ def _create_quantity_variants(
             if is_new or (existing is None):
                 variant = base_descr.copy()
                 variant.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
-                variant.v.by_m("HitRollRuleDescriptor").v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
                 variant.namespace = namespace
 
                 if base_cost is not None:
@@ -364,6 +358,10 @@ def _apply_weapon_edits(
     membr = descr.v.by_m
 
     logger.debug(f"Applying edits to {descr.n}")
+    
+    # disable packing time
+    descr.v.by_m("HasDeploymentTime").v = "False"
+    
 
     if "token" in ammo_data:
         descr.v.by_m("Name").v = "'" + ammo_data["token"] + "'"
@@ -501,10 +499,8 @@ def _create_new_descriptor(source_path, data, weapon_name, donor):
     # Create base descriptor
     base_descr = donor_descr.copy()
 
-    # Generate new GUIDs
+    # Generate new GUID for ammunition descriptor
     base_descr.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
-    hitroll_obj = base_descr.v.by_m("HitRollRuleDescriptor").v
-    hitroll_obj.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
 
     # Set namespace
     if "NbWeapons" in data and len(data["NbWeapons"]) == 1:

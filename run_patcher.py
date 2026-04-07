@@ -173,6 +173,10 @@ if __name__ == "__main__":
         # Add merged renames to ammo_db
         ammo_db['renames_old_new'] = renames_old_new
         ammo_db['renames_new_old'] = renames_new_old
+
+        if config.config_data["build_config"]["target"] == "gameplay":
+            from src.utils.new_divisionrules_unit_validation import validate_new_divisionrules_units
+            validate_new_divisionrules_units(log=logger)
         
         # Import and run main after database is loaded
         from src.main import main
