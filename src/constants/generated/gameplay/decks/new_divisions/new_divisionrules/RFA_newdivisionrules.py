@@ -174,6 +174,9 @@ RFA_armored_newdivisionrules = {
         ("Bo_105_PAH_1A1_RFA", 2, [0, 0, 4, 3]),
         ("Bo_105_PAH_1_RFA", 1, [0, 6, 0, 0]),
     ],
+    "planes": [
+        ("F4F_KWS_AA_RFA", 1, [0, 2, 0, 1]),
+    ]
 }
 
 RFA_global_newdivisionrules = {
@@ -299,6 +302,7 @@ RFA_mechanized_newdivisionrules = {
         ("Bo_105_PAH_1_RFA", 3, [0, 6, 0, 0]),
     ],
     "planes": [
+        ("F4F_KWS_AA_RFA", 1, [0, 2, 0, 1]),
         ("G91_R3_Gina_HE_RFA", 1, [0, 5, 0, 0]),
         ("G91_R3_Gina_NPL_RFA", 1, [0, 6, 0, 0]),
         ("G91_R3_Gina_RKT_RFA", 1, [0, 5, 0, 0]),
@@ -391,7 +395,7 @@ RFA_motorized_newdivisionrules = {
         ("Bo_105_PAH_1_RFA", 2, [0, 6, 0, 0]),
     ],
     "planes": [
-        ("F4F_KWS_AA_RFA", 1, [0, 2, 0, 1]),
+        ("F4F_KWS_AA_RFA", 2, [0, 2, 0, 1]),
         ("Tornado_IDS_MW1_RFA", 1, [0, 2, 0, 0]),
         # ("Tornado_IDS_RFA", 2, [0, 1, 0, 0]),
     ],

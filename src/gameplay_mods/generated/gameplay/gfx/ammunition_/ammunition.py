@@ -358,10 +358,6 @@ def _apply_weapon_edits(
     membr = descr.v.by_m
 
     logger.debug(f"Applying edits to {descr.n}")
-    
-    # disable packing time
-    descr.v.by_m("HasDeploymentTime").v = "False"
-    
 
     if "token" in ammo_data:
         descr.v.by_m("Name").v = "'" + ammo_data["token"] + "'"

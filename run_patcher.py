@@ -6,8 +6,9 @@ from src import ModConfig
 from src.data import build_database, load_database_from_disk
 from src.utils.database_utils import verify_database
 from src.utils.dictionary_utils import initialize_dictionary_files
-from src.utils.logging_utils import setup_logger, get_counting_handler
+from src.utils.logging_utils import configure_logging, setup_logger, get_counting_handler
 
+configure_logging()
 logger = setup_logger('patcher')
 
 
@@ -155,6 +156,9 @@ if __name__ == "__main__":
         config.config_data['game_db']['deck_pack_mappings'] = constants_data
         config.config_data['game_db']['insert_turret_templates'] = constants_data.get(
             'insert_turret_templates', {},
+        )
+        config.config_data['game_db']['deployment_time_units'] = constants_data.get(
+            'deployment_time_units', {},
         )
         
         # Merge salvo_weapons (from base game database) with constants renames (from constants precomputation)

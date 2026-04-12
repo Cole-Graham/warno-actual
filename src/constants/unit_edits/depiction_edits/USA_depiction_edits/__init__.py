@@ -19,6 +19,7 @@ from .M3A2_Bradley_CFV_US import m3a2_bradley_cfv_us
 from .M35_supply_US import m35_supply_us
 from .Pathfinder_NG_US import pathfinder_ng_us
 from .Ranger_US import ranger_us
+from .Rangers_CMD_US import rangers_cmd_us
 from .Rifles_half_AT4_US import rifles_half_at4_us
 from .Rifles_half_Cav_CMD_US import rifles_half_cav_cmd_us
 from .Scout_Cav_US import scout_cav_us
@@ -46,6 +47,7 @@ __all__ = [
     "m35_supply_us",
     "pathfinder_ng_us",
     "ranger_us",
+    "rangers_cmd_us",
     "rifles_half_at4_us",
     "rifles_half_cav_cmd_us",
     "scout_cav_us",

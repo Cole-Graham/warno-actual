@@ -413,11 +413,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Index": 8,
             },
             "parent_membr": {
+                "Caliber": ("0.45kg HEAT", "NURMFQBODI"),
                 "MinMaxCategory": "MinMax_Bombe",
                 "ImpactHappening": "'MLRSClusterAP175m'",
                 "PhysicalDamages": 1,
                 "RadiusSplashPhysicalDamagesGRU": 175,
                 "RadiusSplashSuppressDamagesGRU": 233,
+                "AffichageMunitionParSalve": 96,
                 "SupplyCost": 460.0,
                 "PiercingWeapon": True,
             },
@@ -606,6 +608,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "ImpactHappening": "'MLRSClusterAP225m'",
                 "TimeBetweenTwoShots": 0.2,
                 "TimeBetweenTwoFx": 0.2,
+                "DispersionAtMaxRangeGRU": 50, # Because bomblets
+                "DispersionAtMinRangeGRU": 50,
                 "PhysicalDamages": 1,
                 "RadiusSplashPhysicalDamagesGRU": 250,
                 "RadiusSplashSuppressDamagesGRU": 333,

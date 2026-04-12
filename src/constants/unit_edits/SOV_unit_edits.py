@@ -14,6 +14,15 @@ sov_unit_edits = {
         },
     },
     
+    "UAZ_469_CMD_Naval_SOV": { # MORSKAYA BELOZOR
+        "CommandPoints": 145,
+        "availability": [0, 4, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'leader_sov'",],
+            "remove_specs": ["'_leader'"],
+        },
+    },
+    
     "BMP_1_CMD_POTOK2_SOV": {
         "CommandPoints": 155,
         "availability": [0, 4, 0, 0],
@@ -478,7 +487,7 @@ sov_unit_edits = {
     },
 
     "VDV_CMD_SOV": {
-        "CommandPoints": 45,
+        "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDRSOV DESANTNIKI LDR.",
@@ -523,7 +532,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "quantity": {
-                    "FM_AK_74": 5,
+                    "PM_AKSU_74": 5,
                 },
             },
             "Salves": {
@@ -576,6 +585,13 @@ sov_unit_edits = {
         },
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "PM_AKSU_74": 5,
+                },
+            },  
+        },
     },
 
     "Engineers_CMD_VDV_SOV": {
@@ -1502,13 +1518,47 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_AK_74": 11,
+                "RocketInf_RPG29_105mm": 6,
+            },
+        },
+    },
+    
+    "FireSupport_Naval_SOV": {
+        "armor": "Infantry_armor_reference",
+        "CommandPoints": 25,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [12, 9, 0, 0],
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
                 "RocketInf_RPG29_105mm": 6,
             },
         },
     },
 
     "Spetsnaz_SOV": {
+        "CommandPoints": 75,
+        "armor": "Infantry_armor_reference",
+        "availability": [0, 0, 4, 3],
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "RocketInf_RPO_A_93mm": 6,
+            },
+        },
+    },
+    
+    "Spetsnaz_Naval_SOV": {
         "CommandPoints": 75,
         "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
@@ -1757,6 +1807,17 @@ sov_unit_edits = {
         },
         "UpgradeFromUnit": "FireSupport_TTsko_SOV",
     },
+    
+    "ATteam_RCL_SPG9_Naval_SOV": {
+        "strength": 5,
+        "CommandPoints": 30,
+        "availability": [10, 7, 0, 0],
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
+        "UpgradeFromUnit": "FireSupport_Naval_SOV",
+    },
 
     "ATteam_Fagot_SOV": {
         "CommandPoints": 25,
@@ -1906,6 +1967,14 @@ sov_unit_edits = {
             "add_specs": ["'refundable_unit'",],
         },
     },
+    
+    "ZIL_131_Naval_SOV": {
+        "CommandPoints": 15,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+    },
+    
     "GAZ_66_SOV": {
         "CommandPoints": 15,
         "SpecialtiesList": {
@@ -2270,6 +2339,16 @@ sov_unit_edits = {
 
     "BM21_Grad_SOV": {
         "CommandPoints": 195,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "availability": [3, 2, 0, 0],
+    },
+    
+    "BM21_1_Grad_Naval_SOV": {
+        "CommandPoints": "BM21_Grad_SOV",
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -2873,6 +2952,11 @@ sov_unit_edits = {
     },
 
     "BTR_60_SOV": {
+        "CommandPoints": 20,
+        "strength": 10,
+    },
+
+    "BTR_60_Naval_SOV": {
         "CommandPoints": 20,
         "strength": 10,
     },
@@ -3594,8 +3678,8 @@ sov_unit_edits = {
     "Engineers_Scout_SOV": {
         "armor": "Infantry_armor_reference",
         "GameName": {
-            # "display": "#RECO2 RAZVEDKA SAPERY",
-            "display": "#RECO2 RAZV. SAPERY",
+            # "display": "RAZVEDKA SAPERY",
+            "display": "RAZV. SAPERY",
         },
         "CommandPoints": 45,
         "Divisions": {
@@ -3613,8 +3697,8 @@ sov_unit_edits = {
     "Engineers_Scout_TTsko_SOV": {
         "armor": "Infantry_armor_reference",
         "GameName": {
-            # "display": "#RECO2 RAZVEDKA SAPERY",
-            "display": "#RECO2 RAZV. SAPERY",
+            # "display": "RAZVEDKA SAPERY",
+            "display": "RAZV. SAPERY",
         },
         "CommandPoints": 45,
         "Divisions": {
@@ -3889,8 +3973,12 @@ sov_unit_edits = {
         "Factory": "EFactory/Logistic",
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 0,
         },
         "UpgradeFromUnit": "FOB_SOV",
         "WeaponDescriptor": {
@@ -3914,8 +4002,12 @@ sov_unit_edits = {
         },
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 0,
         },
         "UpgradeFromUnit": "FOB_SOV",
         "WeaponDescriptor": {
@@ -3930,8 +4022,12 @@ sov_unit_edits = {
         "Factory": "EFactory/Logistic",
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 0,
         },
         "UpgradeFromUnit": "FOB_SOV",
         "WeaponDescriptor": {
@@ -3951,8 +4047,12 @@ sov_unit_edits = {
         "Factory": "EFactory/Logistic",
         "availability": [0, 10, 7, 0],
         "max_speed": 6,
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 0,
         },
         "UpgradeFromUnit": "FOB_SOV",
         "WeaponDescriptor": {
@@ -3969,8 +4069,12 @@ sov_unit_edits = {
         },
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 0,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -3982,7 +4086,7 @@ sov_unit_edits = {
         },
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -3998,8 +4102,12 @@ sov_unit_edits = {
         },
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 0,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -4011,7 +4119,7 @@ sov_unit_edits = {
         },
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -4199,7 +4307,7 @@ sov_unit_edits = {
         "availability": [6, 4, 0, 0],
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 220,
+                "EOpticalStrength/HighAltitude": 7800,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -4218,7 +4326,7 @@ sov_unit_edits = {
         "availability": [6, 4, 0, 0],
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 220,
+                "EOpticalStrength/HighAltitude": 7800,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -4235,7 +4343,7 @@ sov_unit_edits = {
     "Tunguska_2K22_SOV": {
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -4262,7 +4370,7 @@ sov_unit_edits = {
     "Tor_SOV": {
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -4281,7 +4389,7 @@ sov_unit_edits = {
     "Osa_9K33M3_SOV": {
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -4295,7 +4403,7 @@ sov_unit_edits = {
     "MTLB_Strela10_SOV": {
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 220,
+                "EOpticalStrength/HighAltitude": 7800,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -4314,7 +4422,7 @@ sov_unit_edits = {
     "MTLB_Strela10M3_SOV": {
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 220,
+                "EOpticalStrength/HighAltitude": 7800,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -4333,7 +4441,7 @@ sov_unit_edits = {
     "2K12_KUB_SOV": { # 2K12 Kub
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -4348,7 +4456,7 @@ sov_unit_edits = {
     "Buk_9K37M_SOV": { # 9K37M Buk
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -4368,7 +4476,7 @@ sov_unit_edits = {
         "availability": [3, 2, 0, 0],
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -4737,7 +4845,7 @@ sov_unit_edits = {
                 "EVisionRange/Standard": 10000.0,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/AntiRadar": 5000.0,
+                "EOpticalStrength/AntiRadar": 175000.0,
             },
         },
     },
@@ -4790,7 +4898,7 @@ sov_unit_edits = {
                 "EVisionRange/Standard": 10000.0,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/AntiRadar": 5000.0,
+                "EOpticalStrength/AntiRadar": 175000.0,
             },
         },
         "availability": [0, 2, 0, 0],
@@ -4844,7 +4952,10 @@ sov_unit_edits = {
                 "RocketAir_B8_80mm_salvolength40": 1,
             },
             "equipmentchanges": {
-                "replace": [("RocketAir_B8_80mm_avion_salvolength10", "RocketAir_B8_80mm_salvolength40")],
+                "replace": [
+                    ("RocketAir_B8_80mm_avion_salvolength10", "RocketAir_B8_80mm_salvolength40"),
+                    ("RocketAir_B8_80mm_avion_salvolength10", "RocketAir_B8_80mm_salvolength40"),
+                ],
             },
         },
     },
@@ -4856,7 +4967,7 @@ sov_unit_edits = {
                 "EVisionRange/Standard": 10000.0,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/AntiRadar": 5000.0,
+                "EOpticalStrength/AntiRadar": 175000.0,
             },
         },
         "availability": [0, 2, 0, 0],
@@ -5054,7 +5165,7 @@ sov_unit_edits = {
                 "EVisionRange/Standard": 10000.0,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/AntiRadar": 5000.0,
+                "EOpticalStrength/AntiRadar": 175000.0,
             },
         },
         "WeaponDescriptor": {
@@ -5079,7 +5190,7 @@ sov_unit_edits = {
                 "EVisionRange/Standard": 10000.0,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/AntiRadar": 5000.0,
+                "EOpticalStrength/AntiRadar": 175000.0,
             },
         },
         "WeaponDescriptor": {

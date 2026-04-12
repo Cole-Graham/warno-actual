@@ -1,27 +1,20 @@
 """Weapon balance standards (data consumed by ammunition / weapon descriptor handlers).
 
-Subpackages:
+Subpackages / modules:
 - pattern: rules applied by matching NDF traits, namespaces, calibers, range members, etc.
-- by_category: rules keyed by weapon category from ammo dictionaries; subpackages mirror
-  ammunition/missiles types, with one module per category (e.g. by_category/bomb/clu_bomb.py).
+- by_category: rules keyed by weapon category from ammo dictionaries.
 """
 
 from .by_category import (
+    A2A_STANDARDS,
     BOMB_CATEGORY_WEAPON_WHITELIST,
-    CLU_BOMB_WEAPON_NAMES,
-    AmmunitionBlock,
-    AmmunitionParams,
-    CategoryStandardEntry,
-    DCA_STANDARDS,
-    DcaCategoryStandardEntry,
-    DcaExperienceUnitParams,
-    HitRollStandardParams,
-    SEAD_STANDARDS,
-    SeadArmeStandardParams,
-    SeadCategoryStandardEntry,
     BOMB_STANDARDS,
-    RatioAmmunitionBlock,
-    RatioAmmunitionParams,
+    CLU_BOMB_WEAPON_NAMES,
+    DCA_STANDARDS,
+    MANPAD_STANDARDS,
+    RatioSpec,
+    SAM_STANDARDS,
+    SEAD_STANDARDS,
 )
 from .pattern import (
     AIM_TIME_STANDARDS,
@@ -38,22 +31,17 @@ from .pattern import (
 )
 
 __all__ = [
+    "A2A_STANDARDS",
     "AIM_TIME_STANDARDS",
     "AimTimeRule",
-    "AmmunitionBlock",
-    "AmmunitionParams",
-    "CategoryStandardEntry",
-    "DCA_STANDARDS",
-    "DcaCategoryStandardEntry",
-    "DcaExperienceUnitParams",
-    "HitRollStandardParams",
-    "SEAD_STANDARDS",
-    "SeadArmeStandardParams",
-    "SeadCategoryStandardEntry",
     "BOMB_CATEGORY_WEAPON_WHITELIST",
+    "BOMB_STANDARDS",
     "CLU_BOMB_WEAPON_NAMES",
-    "RatioAmmunitionBlock",
-    "RatioAmmunitionParams",
+    "DCA_STANDARDS",
+    "MANPAD_STANDARDS",
+    "RatioSpec",
+    "SAM_STANDARDS",
+    "SEAD_STANDARDS",
     "CANON_HE_DAMAGE_BY_CALIBER",
     "CANON_HE_DAMAGE_EXCEPTIONS",
     "HE_BOMB_DAMAGE_BY_WEIGHT",
@@ -63,5 +51,4 @@ __all__ = [
     "CLU_SOL_TRAIT_TOKEN_CLUSTER",
     "CLU_SOL_TRAIT_TOKEN_HEAT",
     "WEAPON_RANGE_MEMBERS_TO_CHECK",
-    "BOMB_STANDARDS",
 ]

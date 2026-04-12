@@ -277,6 +277,18 @@ US_global_newdivisionrules = {
     ]
 }
 
+US_marine_newdivisionrules = {
+    "heli": [
+        ("AH1W_SuperCobra_Hydra_US", 2, [0, 3, 2, 0]),
+        ("AH1W_SuperCobra_AA_US", 1, [0, 3, 2, 0]),
+        ("AH1W_SuperCobra_AT_US", 2, [0, 2, 0, 1]),
+        ("AH1W_SuperCobra_SEAD_US", 1, [0, 3, 2, 0]),
+    ],
+    "planes": [
+        ("Harrier_AV8B_RKT_US", 1, [0, 4, 3, 0]),
+    ],
+}
+
 US_mechanized_newdivisionrules = {
     "logistic": [
         ("FOB_US", 1, [0, 2, 0, 0]),
@@ -451,8 +463,8 @@ US_motorized_newdivisionrules = {
         ("Security_USMC_US", 1, [0, 8, 6, 0], ["M1038_Humvee_US", "Dragoon_300_US"]),
         ("MP_Combat_USAF_US", 1, [0, 8, 6, 0], ["M35_trans_US"]),
         ("MP_Patrol_USAF_US", 1, [0, 7, 5, 0], ["CUCV_trans_US", "CUCV_MP_US", "CUCV_HMG_US", "CUCV_AGL_US", "CGage_Peacekeeper_US"]),
-        ("MP_US", 1, [0, 12, 9, 0], ["CUCV_MP_US", "M1025_Humvee_MP_US", "CUCV_HMG_US", "CUCV_AGL_US"]),
-        ("MP_RCL_US", 1, [0, 10, 7, 0], ["CUCV_MP_US", "M1025_Humvee_MP_US", "CUCV_HMG_US", "CUCV_AGL_US"]),
+        ("MP_US", 1, [0, 12, 9, 0], ["CUCV_MP_US", "CUCV_HMG_US", "CUCV_AGL_US", "M1025_Humvee_MP_US"]),
+        ("MP_RCL_US", 1, [0, 10, 7, 0], ["CUCV_MP_US", "CUCV_HMG_US", "CUCV_AGL_US", "M1025_Humvee_MP_US"]),
         ("NatGuard_Dragon_US", 1, [12, 0, 0, 0], ["M35_trans_US"]),
         ("NatGuard_M67_US", 1, [12, 0, 0, 0], ["M35_trans_US"]),
         ("NatGuard_LAW_US", 1, [12, 0, 0, 0], ["M35_trans_US"]),

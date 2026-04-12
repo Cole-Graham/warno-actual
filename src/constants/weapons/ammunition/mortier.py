@@ -384,14 +384,69 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
-
-    ("Mortier_M240_240mm", "mortar", None, False): { 
+    
+    ("Mortier_M240_240mm", "mortar", None, False): {
         "Ammunition": {
             "parent_membr": {
                 "PhysicalDamages": 6.8,
                 "SuppressDamages": 480,
+                "DispersionAtMaxRangeGRU": 450,
+                "DispersionAtMinRangeGRU": 150,
                 "RadiusSplashPhysicalDamagesGRU": 240,
-                "RadiusSplashSuppressDamagesGRU": 300,
+                "RadiusSplashSuppressDamagesGRU": 320,
+            },
+        },
+    },
+    
+    ("Mortier_M240_240mm_EXT", "mortar", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 6.8,
+                "SuppressDamages": 480,
+                "DispersionAtMaxRangeGRU": 450,
+                "DispersionAtMinRangeGRU": 150,
+                "RadiusSplashPhysicalDamagesGRU": 240,
+                "RadiusSplashSuppressDamagesGRU": 320,
+            },
+        },
+    },
+
+    ("Mortier_M240_240mm_Cluster", "mortar", None, False): { 
+        "Ammunition": {
+            "Arme": {
+                "Index": 6,
+                "Family": "DamageFamily_clu_sol_hefrag",
+            },
+            "parent_membr": {
+                "TraitsToken": ['STAT', 'clusterHEFrag', 'IND'],
+                "ImpactHappening": "'MLRSClusterAP200m'",
+                "PhysicalDamages": 1,
+                "SuppressDamages": 480,
+                "DispersionAtMaxRangeGRU": 450,
+                "DispersionAtMinRangeGRU": 150,
+                "RadiusSplashPhysicalDamagesGRU": 200,
+                "RadiusSplashSuppressDamagesGRU": 200,
+                "PiercingWeapon": True,
+            },
+        },
+    },
+    
+    ("Mortier_M240_240mm_EXT_Cluster", "mortar", None, False): { 
+        "Ammunition": {
+            "Arme": {
+                "Index": 6,
+                "Family": "DamageFamily_clu_sol_hefrag",
+            },
+            "parent_membr": {
+                "TraitsToken": ['STAT', 'clusterHEFrag', 'IND'],
+                "ImpactHappening": "'MLRSClusterAP200m'",
+                "PhysicalDamages": 1,
+                "SuppressDamages": 480,
+                "DispersionAtMaxRangeGRU": 450,
+                "DispersionAtMinRangeGRU": 150,
+                "RadiusSplashPhysicalDamagesGRU": 200,
+                "RadiusSplashSuppressDamagesGRU": 200,
+                "PiercingWeapon": True,
             },
         },
     },

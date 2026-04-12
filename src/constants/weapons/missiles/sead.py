@@ -197,5 +197,20 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "AutoGyr": 1.57079633
         },
     },
+    
+    ("AGM_AGM122_Sidearm", "AntiRadiation", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 17,
+            },
+            "hit_roll": {
+                "Idling": 65,
+                "Moving": 65,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 3500,
+            },
+        },
+    },
 }
 # fmt: on

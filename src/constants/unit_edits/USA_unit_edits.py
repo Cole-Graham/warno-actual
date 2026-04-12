@@ -380,7 +380,7 @@ usa_unit_edits = {
                 '_leader',
                 '_sf',
                 '_choc',
-                'infantry_equip_heavy',
+                'infantry_equip_medium',
             ],
         },
         "MenuIconTexture": "Texture_RTS_H_Infantry_sf",
@@ -394,17 +394,38 @@ usa_unit_edits = {
             },
         },
         "availability": [0, 0, 0, 3],
-        "max_speed": 20,
+        "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("Commando_733", "M16A1_Carbine")],
+                "replace": [
+                    (
+                        "Commando_733",
+                        "M16A1_Carbine"
+                    ),
+                ],
                 "quantity": {
-                    "M16A1_Carbine": 7,
+                    "M16A1_Carbine": 8,
+                },
+            },
+            "turrets": {
+                2: {
+                    "MountedWeapons": {
+                        "RocketInf_M67_RCL_90mm": {
+                            # For some reason I have the prefix hardcoded into the script when changing ammunition
+                            # ($/GFX/Weapon/Ammo_)
+                            "Ammunition": "RocketInf_Carl_Gustav",
+                            "EffectTag": '"FireEffect_RocketInf_Carl_Gustav"',
+                        },
+                        # Insertions are handled first so factor that into the indices, and keep in mind
+                        # that the list is sorted in reverse order to prevent index-shifting issues when
+                        # removing multiple weapons
+                        "remove": [1],
+                    },
                 },
             },
             "Salves": {
                 "M16A1_Carbine": 7,
-                "RocketInf_M67_RCL_90mm": 10,
+                "RocketInf_Carl_Gustav": 7,
             },
         },
         "unique_count": 2,
@@ -3098,7 +3119,7 @@ usa_unit_edits = {
     "M981_FISTV_US": {
         "CommandPoints": 25,
         "GameName": {
-            "display": "#RECO3 M981 FISTV",
+            "display": "M981 FISTV",
             "token": "JKFBZFRBYZ",
         },
         # "TagSet": {  # already added - this makes it show twice in the NDF
@@ -3106,8 +3127,8 @@ usa_unit_edits = {
         # },
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/Standard": 233.475,
-                "EOpticalStrength/LowAltitude": 233.475,
+                "EOpticalStrength/Standard": 7067.0,
+                "EOpticalStrength/LowAltitude": 7067.0,
             },
         },
         "availability": [8, 0, 0, 0],
@@ -3309,7 +3330,7 @@ usa_unit_edits = {
 
     "OH58C_Scout_US": {
         "GameName": {
-            "display": "#RECO2 OH-58C SCOUT",
+            "display": "OH-58C SCOUT",
         },
         "CommandPoints": 40,
         "availability": [0, 4, 3, 0],
@@ -3323,7 +3344,7 @@ usa_unit_edits = {
 
     "OH58D_Kiowa_Warrior_US": {
         "GameName": {
-            "display": "#RECO3 OH-58D KIOWA WR.",
+            "display": "OH-58D KIOWA WR.",
         },
         "Divisions": {
             "default": {
@@ -3372,7 +3393,7 @@ usa_unit_edits = {
 
     "Airborne_Scout_US": {
         "GameName": {
-            "display": "#RECO2 AIRBORNE SCOUTS",
+            "display": "AIRBORNE SCOUTS",
         },
         "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
@@ -3390,7 +3411,7 @@ usa_unit_edits = {
 
     "Scout_US": {
         "GameName": {
-            "display": "#RECO2 SCOUTS",
+            "display": "SCOUTS",
         },
         "CommandPoints": 20,
         "armor": "Infantry_armor_reference",
@@ -3610,7 +3631,7 @@ usa_unit_edits = {
 
     "LRRP_US": {
         "GameName": {
-            "display": "#RECO2 LRS",
+            "display": "LRS",
         },
         "CommandPoints": 70,
         "armor": "Infantry_armor_reference",
@@ -3666,7 +3687,7 @@ usa_unit_edits = {
 
     "Sniper_US": {
         "GameName": {
-            "display": "#RECO2 SNIPERS",
+            "display": "SNIPERS",
         },
         "armor": "Infantry_armor_reference",
         "max_speed": 26,
@@ -3682,7 +3703,7 @@ usa_unit_edits = {
     
     "Sniper_M82_US": {
         "GameName": {
-            "display": "#RECO2 SNIPERS [M82]",
+            "display": "SNIPERS [M82]",
         },
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
@@ -3845,8 +3866,12 @@ usa_unit_edits = {
         "Factory": "EFactory/Logistic",
         "availability": [12, 9, 0, 0],
         "max_speed": 6,
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 0,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -3875,8 +3900,12 @@ usa_unit_edits = {
         },
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 0,
         },
         "UpgradeFromUnit": None,
         "WeaponDescriptor": {
@@ -3906,8 +3935,12 @@ usa_unit_edits = {
         },
         "availability": [0, 12, 9, 0],
         "max_speed": 6,
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 0,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -3936,8 +3969,12 @@ usa_unit_edits = {
         },
         "availability": [0, 10, 7, 0],
         "max_speed": 6,
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 0,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -3976,7 +4013,7 @@ usa_unit_edits = {
         "availability": [4, 3, 0, 0],
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 220,
+                "EOpticalStrength/HighAltitude": 7800,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -3988,7 +4025,7 @@ usa_unit_edits = {
     "M48_Chaparral_MIM72F_US": {
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 220,
+                "EOpticalStrength/HighAltitude": 7800,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -4006,7 +4043,7 @@ usa_unit_edits = {
         },
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -4031,7 +4068,7 @@ usa_unit_edits = {
         "CommandPoints": 90,
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -4222,6 +4259,37 @@ usa_unit_edits = {
         },
         "availability": [0, 4, 3, 0],
     },
+    
+    "AH1W_SuperCobra_Hydra_US": {
+        "CommandPoints": 125,  
+    },
+    
+    "AH1W_SuperCobra_AA_US": {
+        "CommandPoints": 140,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [
+                    ("AA_AIM9L_Sidewinder", "AA_AIM9L_Sidewinder_Helo"),
+                ],
+            },
+        },
+    },
+    
+    "AH1W_SuperCobra_AT_US": {
+        "CommandPoints": 175,
+    },
+    
+    "AH1W_SuperCobra_SEAD_US": {
+        "CommandPoints": 150,
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 10000.0,
+            },
+            "OpticalStrengths": {
+                "EOpticalStrength/AntiRadar": 175000.0,
+            },
+        },
+    },
 
     "AH64_Apache_US": {  # 8x Hellfire / Hydra
         "CommandPoints": 200,
@@ -4285,6 +4353,20 @@ usa_unit_edits = {
         "availability": [0, 6, 0, 0],
     },
     
+    "Harrier_AV8B_RKT_US": {
+        "CommandPoints": 115,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [
+                    (
+                        "RocketAir_Zuni_1272mm_salvolength8",
+                        "RocketAir_Zuni_1272mm_avion_salvolength8"
+                    )
+                ],
+            },
+        },
+    },
+    
     "A6E_Intruder_SEAD_US": {
         "CommandPoints": 165,
         "optics": {
@@ -4292,8 +4374,8 @@ usa_unit_edits = {
                 "EVisionRange/Standard": 10000.0,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/AntiRadar": 5000.0,
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/AntiRadar": 175000.0,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
         "WeaponDescriptor": {
@@ -4369,8 +4451,8 @@ usa_unit_edits = {
                 "EVisionRange/Standard": 12500.0,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/AntiRadar": 5000.0,
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/AntiRadar": 175000.0,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
         "WeaponDescriptor": {
@@ -4399,7 +4481,7 @@ usa_unit_edits = {
         "CommandPoints": 165,
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
         "availability": [0, 3, 2, 0],
@@ -4453,7 +4535,7 @@ usa_unit_edits = {
                 "EVisionRange/Standard": 10000.0,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/AntiRadar": 5000.0,
+                "EOpticalStrength/AntiRadar": 175000.0,
             },
         },
         "WeaponDescriptor": {
@@ -4472,7 +4554,7 @@ usa_unit_edits = {
         "CommandPoints": 165,
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
         "availability": [0, 2, 0, 0],
@@ -4483,7 +4565,7 @@ usa_unit_edits = {
         "CommandPoints": 190,
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
         "availability": [0, 2, 0, 0],
@@ -4505,7 +4587,7 @@ usa_unit_edits = {
         "CommandPoints": 165,
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
         "availability": [0, 3, 0, 0],
@@ -4652,7 +4734,7 @@ usa_unit_edits = {
                 "EVisionRange/Standard": 12500.0,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/AntiRadar": 5000.0,
+                "EOpticalStrength/AntiRadar": 175000.0,
             },
         },
         "availability": [0, 0, 2, 0],
@@ -4674,7 +4756,7 @@ usa_unit_edits = {
         },
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
         "availability": [0, 0, 0, 1],
@@ -4686,7 +4768,7 @@ usa_unit_edits = {
         "ECM": -0.35,
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
         "availability": [0, 2, 0, 1],
@@ -4702,7 +4784,7 @@ usa_unit_edits = {
         "ECM": -0.35,
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
         "availability": [0, 2, 0, 1],
@@ -4721,7 +4803,7 @@ usa_unit_edits = {
         "ECM": -0.35,
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
         "availability": [0, 2, 0, 0],
@@ -4732,7 +4814,7 @@ usa_unit_edits = {
         "ECM": -0.35,
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
         "availability": [0, 2, 0, 0],
@@ -4743,7 +4825,7 @@ usa_unit_edits = {
         "ECM": -0.35,
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
         "availability": [0, 3, 2, 0],
@@ -4766,8 +4848,8 @@ usa_unit_edits = {
                 "EVisionRange/Standard": 10000.0,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/AntiRadar": 5000.0,
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/AntiRadar": 175000.0,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
         "WeaponDescriptor": {
@@ -4796,7 +4878,7 @@ usa_unit_edits = {
         "ECM": -0.35,
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
         "WeaponDescriptor": {
@@ -4812,7 +4894,7 @@ usa_unit_edits = {
         "ECM": -0.35,
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
         "availability": [0, 2, 0, 0],
@@ -4834,7 +4916,7 @@ usa_unit_edits = {
         },
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
         "availability": [0, 0, 2, 0],
@@ -4853,7 +4935,7 @@ usa_unit_edits = {
         "ECM": -0.35,
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
         "availability": [0, 3, 2, 0],

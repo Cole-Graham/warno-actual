@@ -175,7 +175,10 @@ NEW_TRAITS = {
         "title": ("QVLGHFHGMX", "Good Air Detection"),
         "description": ("XFHVTROSUP", (
             f"This unit has good optics for detecting aircraft, and can spot them from a "
-            f"greater distance than most units. (7200m)"
+            f"greater distance than most units."
+        )),
+        "extended": ("CTDRWTDBAR", (
+            f"#styleGreen{{- Approximately 7200m}}"
         )),
         "texture": "good_airoptics.png",
     },
@@ -184,7 +187,10 @@ NEW_TRAITS = {
         "title": ("LEJTSAZONO", "Very Good Air Detection"),
         "description": ("CPCAOEUBMO", (
             f"This unit has a powerful radar for detecting aircraft, and can spot them "
-            f"from a greater distance than most units. (9200m)"
+            f"from a greater distance than most units."
+        )),
+        "extended": ("SKLWZWNVQI", (
+            f"#styleTurquoise{{- Approximately 9200m}}"
         )),
         "texture": "verygood_airoptics.png",
     },
@@ -204,6 +210,9 @@ NEW_TRAITS = {
             f"These infantry are lightly equipped, allowing them to move quickly and "
             f"reposition easily on the battlefield."
         )),
+        "extended": ("KNWOOZEECP", (
+            f"#styleGreen{{- Increased movement speed (26 Km/h)}}"
+        )),
         "texture": "light_equipment.png",
     },
     
@@ -214,7 +223,8 @@ NEW_TRAITS = {
             f"struggle to maintain cohesion under fire."
         )),
         "extended": ("UQBVPVHSOX", (
-            f"- Increased suppression damage taken while moving (33%)"
+            f"#styleGreen{{- Increased movement speed (26 Km/h)}}\n"
+            f"#moral_color_bad_2{{- Increased suppression damage taken while moving (33%)}}"
         )),
         "texture": "medium_equipment.png",
     },
@@ -234,8 +244,7 @@ NEW_TRAITS = {
             f"hampering their mobility on the battlefield."
         )),
         "extended": ("ZGBDBQRXQA", (
-            f"- Increased suppression damage taken while moving (33%)\n"
-            f"- Reduced movement speed (20 Km/h)"
+            f"#moral_color_bad_2{{- Increased suppression damage taken while moving (33%)}}"
         )),
         "texture": "heavy_equipment.png",
     },
@@ -257,7 +266,8 @@ NEW_TRAITS = {
             f"enemy artillery if their position is revealed."
         )),
         "extended": ("EFCIVTGYYW", (
-            f"- Reduced movement speed (6 - 14 Km/h)"
+            f"#moral_color_bad_2{{- Increased suppression damage taken while moving (33%)}}\n"
+            f"#moral_color_bad_3{{- Reduced movement speed (9 - 14 Km/h)}}"
         )),
         "texture": "veryheavy_equipment.png",
     },
@@ -318,7 +328,7 @@ NEW_TRAITS = {
             f"makes it an easier target to hit. "
         )),
         "extended": ("SMFUEOJEQG", (
-            f"#styleGreen{{1.75 stealth}}"
+            f"#styleGreen{{- 1.75 stealth}}"
         )),
         "texture": "terrain_radar.png",
     },
@@ -327,9 +337,10 @@ NEW_TRAITS = {
         "title": ("XPEEKYWBUG", "Swift"),
         "description": ("IUYGGTVPGD", (
             f"Fewer soldiers and light equipment allow this unit to maintain cohesion "
-            "while marching at a faster pace.\n"
-            f"\n"
-            f"50% movement speed bonus while above 90% morale."
+            "while marching at a faster pace."
+        )),
+        "extended": ("UQVBWWXIIQ", (
+            f"#styleTurquoise{{- 50% movement speed bonus while above 90% morale}}"
         )),
         "texture": "swift.png",
     },
@@ -342,7 +353,7 @@ NEW_TRAITS = {
             f"exposing itself to enemy fire, at the cost of a required deployment time."
         )),
         "extended": ("JGFNIHQPKV", (
-            f"- 0 noise malus while firing"
+            f"#styleGreen{{- 0 noise malus while firing}}"
         )),
         "texture": "remote_controlled.png",
     },
@@ -465,23 +476,34 @@ TRAIT_EDITS = {
         "extended": {
             "token": "NKHDAPIZBR",
             "text": (
-                f"CQC Bonuses: While stationary, and if within "
-                f"150m of enemies, gain the following bonuses: "
-                f"\n- 15% bonus to aim time, shot reload, and salvo reload. (multiplicative)"
-                f"\n- 15% bonus to physical damage. (flat)"
-                f"\n\nWithin 875m of enemies, activate a sprint ability: When in combat "
-                f"and above 40% cohesion, Shock units will activate a sprint ability. "
-                f"While active, shock infantry move 70% faster, and receive -50% suppression damage"
+                f"CQC Bonuses - While stationary, and if within "
+                f"150m of enemies, gain the following bonuses:\n"
+                f"#styleGreen{{- 15% bonus to aim time, shot reload, and salvo reload.}}\n"
+                f"#styleGreen{{- 15% bonus to physical damage.}}\n\n"
+                f"Sprint - While within 875m of enemies, in combat, and above 40% cohesion, "
+                f"gain the following bonuses:\n"
+                f"#styleTurquoise{{- 70% increased movement speed.}}"
+                f"#styleTurquoise{{- Receive 50% less suppression damage.}}"
             )
         }
     },
+    
     "_sniper": {
         "extended": {
             "token": "JUDUFDHTTW",
             "text": (
-                f"Sniper units gain an extra level of Stealth, plus a 20% Accuracy "
-                f"bonus when not moving (flat). This unit must remain still for at "
+                f"Sniper units gain an #styleTurquoise{{extra level of Stealth}}, plus a #styleGreen{{20% Accuracy}} "
+                f"bonus when not moving. This unit must remain still for at "
                 f"least 10 seconds for this effect to trigger."
+            )
+        }
+    },
+    
+    "_leader": {
+        "extended": {
+            "token": "CSUKPTRVAR",
+            "text": (
+                f"Leader units grant +1 Veterancy level to all nearby units."
             )
         }
     }

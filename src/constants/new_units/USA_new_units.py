@@ -9,7 +9,7 @@ USA_NEW_UNITS = {
         "CadavreGUID": "2b771f4e-f0e0-464e-bafb-caee6bb82079",
         "NewName": "Rifles_half_CMD2_US",
         "GameName": {
-            "display": "#CMD TACOM",
+            "display": "TACOM",
             "token": "ZVQUJZFLND",
         },
         "TagSet": {
@@ -173,7 +173,7 @@ USA_NEW_UNITS = {
         "CadavreGUID": "eab4f242-c8fd-4868-b009-a6a86f934dd8",
         "NewName": "Cav_Scout_Dragon_M3A1_US",
         "GameName": {
-            "display": "#RECO2 CAV. SCOUTS [M3A1]",
+            "display": "CAV. SCOUTS [M3A1]",
             "token": "VKPPUUNVBK",
         },
         "TagSet": {
@@ -259,7 +259,7 @@ USA_NEW_UNITS = {
         "CadavreGUID": "b47e0795-709b-4377-9f5c-f42df25e7aac",
         "NewName": "Cav_Scout_Dragon_M3A2_US",
         "GameName": {
-            "display": "#RECO2 CAV. SCOUTS [M3A2]",
+            "display": "CAV. SCOUTS [M3A2]",
             "token": "VKPPUUNVBJ",
         },
         "TagSet": {
@@ -924,7 +924,9 @@ USA_NEW_UNITS = {
                 "EVisionRange/Standard": 10000.0,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/AntiRadar": 5000.0,
+                # Eugen changed these values to in-game meters, so we convert by dividing by 0.0283
+                # e.g. old value 5000 / 0.0283 = 176680.56537102472 (we'll just round to 175,000)
+                "EOpticalStrength/AntiRadar": 175000.0,
             },
         },
         "WeaponDescriptor": {

@@ -49,6 +49,7 @@ sov_new_divs = {
             "ATteam_Fagot_SOV",
             "ATteam_Faktoriya_SOV",
             "ATteam_Konkurs_TTsko_SOV",
+            "ATteam_RCL_SPG9_SOV",
             "MANPAD_Igla_SOV",
         ],
         "transport_overrides": {
@@ -109,6 +110,7 @@ sov_new_divs = {
             "ATteam_Fagot_SOV",
             "ATteam_Faktoriya_SOV",
             "ATteam_Konkurs_TTsko_SOV",
+            "ATteam_RCL_SPG9_SOV",
             "MANPAD_Igla_SOV",
         ],
         "transport_overrides": {
@@ -146,6 +148,7 @@ sov_new_divs = {
             "ATteam_Fagot_SOV",
             "ATteam_Faktoriya_SOV",
             "ATteam_Konkurs_TTsko_SOV",
+            "ATteam_RCL_SPG9_SOV",
             "MANPAD_Igla_SOV",
         ],
         "transport_overrides": {
@@ -187,6 +190,7 @@ sov_new_divs = {
             "ATteam_Fagot_SOV",
             "ATteam_Faktoriya_SOV",
             "ATteam_Konkurs_TTsko_SOV",
+            "ATteam_RCL_SPG9_SOV",
             "MANPAD_Igla_SOV",
         ],
         "transport_overrides": {

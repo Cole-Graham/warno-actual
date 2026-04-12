@@ -12,7 +12,6 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "hit_roll": {
                 "Idling": 55,
                 "Moving": 55,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 2.5,
@@ -34,9 +33,6 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("SAM_Strela10", "SAM", None, False): { # 213
         "Ammunition": {
-            "hit_roll": {
-                "DistanceToTarget": True,
-            },
             "parent_membr": {
                 "TimeBetweenTwoShots": 2.5,
                 "TimeBetweenTwoFx": 2.5,
@@ -56,13 +52,12 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("SAM_Strela1", "SAM", None, False): { # 212
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_tbagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_tbagru",
             },
             "hit_roll": {
                 "Idling": 40,
                 "Moving": 40,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 2.5,
@@ -83,13 +78,12 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("SAM_Strela1_HAGRU", "SAM", "SAM_Strela1", True): {
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_hagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_hagru",
             },
             "hit_roll": {
                 "Idling": 40,
                 "Moving": 40,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2450,
@@ -112,7 +106,6 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "display": "Mk.1 BLINDFIRE",
             "hit_roll": {
                 "Idling": 50,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "Caliber": ("existing", "CCYZVFZIEZ"), # "Radar"
@@ -140,7 +133,6 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "display": "Mk.1E",
             "hit_roll": {
                 "Idling": 60,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "Caliber": ("SACLOS LiDAR", "THGDKSIWAY"),
@@ -168,7 +160,6 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "display": "Mk.1E BLINDFIRE",
             "hit_roll": {
                 "Idling": 65,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "Caliber": ("existing", "CCYZVFZIEZ"), # "Radar"
@@ -195,7 +186,6 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 60,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 2.5,
@@ -216,12 +206,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("SAM_IglaV", "MANPAD", None, False): { # 196
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_tbagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_tbagru",
             },
             "hit_roll": {
                 "Idling": 65,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2625,
@@ -240,12 +229,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("SAM_IglaV_HAGRU", "MANPAD", "SAM_IglaV", True): { # 196
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_hagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_hagru",
             },
             "hit_roll": {
                 "Idling": 65,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2625,
@@ -264,9 +252,6 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("SAM_I_Hawk", "SAM", None, False): { # 193
         "Ammunition": {
-            "hit_roll": {
-                "DistanceToTarget": True,
-            },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 3325,
                 "TimeBetweenTwoShots": 3.0,
@@ -290,12 +275,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("SAM_BLOODHOUND", "SAM", None, False): {
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_missile_he_bigly",
+            "Arme": {
+                "Family": "DamageFamily_missile_he_bigly",
             },
             "hit_roll": {
                 "Idling": 60,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "TraitsToken": ['STAT', 'RADAR', 'biglyHE'],
@@ -308,12 +292,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("SAM_9M8M3", "SAM", None, False): { # Krug
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_missile_he_bigly",
+            "Arme": {
+                "Family": "DamageFamily_missile_he_bigly",
             },
             "hit_roll": {
                 "Idling": 60,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "TraitsToken": ['STAT', 'RADAR', 'biglyHE'],
@@ -339,9 +322,6 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("SAM_9M38M1", "SAM", None, False): {
         "Ammunition": {
-            "hit_roll": {
-                "DistanceToTarget": True,
-            },
             "parent_membr": {
                 "MaximumRangeAirplaneGRU": 5950,
                 "MaximumRangeHelicopterGRU": 2975,
@@ -360,12 +340,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("SAM_Igla", "MANPAD", None, False): { # 192
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_tbagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_tbagru",
             },
             "hit_roll": {
                 "Idling": 60,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2625,
@@ -379,12 +358,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("SAM_Igla_HAGRU", "MANPAD", "SAM_Igla", True): { # 192
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_hagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_hagru",
             },
             "hit_roll": {
                 "Idling": 60,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2625,
@@ -398,15 +376,14 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("SAM_FIM92_Stinger", "MANPAD", None, False): { # 187
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_tbagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_tbagru",
             },
             "display": "FIM-92C Stinger",
             "token": "AKFXZOAXUI",
             "hit_roll": {
                 "Idling": 65,
                 "Moving": 65,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2625,
@@ -425,15 +402,14 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("SAM_FIM92_Stinger_HAGRU", "MANPAD", "SAM_FIM92_Stinger", True): { # 187
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_hagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_hagru",
             },
             "display": "FIM-92C Stinger",
             "token": "AKFXZOAXUI",
             "hit_roll": {
                 "Idling": 65,
                 "Moving": 65,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2625,
@@ -452,15 +428,14 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("SAM_FIM92_Stinger_CS", "MANPAD", None, False): { # 185
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_tbagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_tbagru",
             },
             "display": "FIM-92C Stinger",
             "token": "AKFXZOAXUI",
             "hit_roll": {
                 "Idling": 65,
                 "Moving": 65,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2625,
@@ -479,15 +454,14 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("SAM_FIM92_Stinger_CS_HAGRU", "MANPAD", "SAM_FIM92_Stinger_CS", True): { # 185
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_hagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_hagru",
             },
             "display": "FIM-92C Stinger",
             "token": "AKFXZOAXUI",
             "hit_roll": {
                 "Idling": 65,
                 "Moving": 65,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2625,
@@ -506,9 +480,6 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("SAM_9M330_Tor", "SAM", None, False): { # 179
         "Ammunition": {
-            "hit_roll": {
-                "DistanceToTarget": True,
-            },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 3325,
                 "MaximumRangeAirplaneGRU": 3675,
@@ -530,7 +501,6 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 60,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 3325,
@@ -554,7 +524,6 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 65,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 3150,
@@ -575,9 +544,6 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("SAM_9M336", "SAM", None, False): { # 178
         "Ammunition": {
-            "hit_roll": {
-                "DistanceToTarget": True,
-            },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2800,
                 "MaximumRangeAirplaneGRU": 5250,
@@ -596,9 +562,6 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("SAM_9M33M2", "SAM", None, False): {
         "Ammunition": {
-            "hit_roll": {
-                "DistanceToTarget": True,
-            },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2975,
                 "MaximumRangeAirplaneGRU": 4200,
@@ -617,9 +580,6 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("SAM_9M311_Tunguska", "SAM", None, False): { # 177
         "Ammunition": {
-            "hit_roll": {
-                "DistanceToTarget": True,
-            },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 3150,
                 "MaximumRangeAirplaneGRU": 2800,
@@ -639,12 +599,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("MANPAD_igla", "MANPAD", None, False): { # 174
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_tbagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_tbagru",
             },
             "hit_roll": {
                 "Idling": 60,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2625,
@@ -658,12 +617,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("MANPAD_igla_HAGRU", "MANPAD", "MANPAD_igla", True): { # 174
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_hagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_hagru",
             },
             "hit_roll": {
                 "Idling": 60,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2625,
@@ -678,12 +636,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("MANPAD_Strela3", "MANPAD", None, False): {
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_tbagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_tbagru",
             },
             "hit_roll": {
                 "Idling": 55,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2450,
@@ -698,12 +655,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("MANPAD_Strela3_HAGRU", "MANPAD", "MANPAD_Strela3", True): {
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_hagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_hagru",
             },
             "hit_roll": {
                 "Idling": 55,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2450,
@@ -718,12 +674,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("MANPAD_Strela2M", "MANPAD", None, False): { # 171
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_tbagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_tbagru",
             },
             "hit_roll": {
                 "Idling": 50,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2275,
@@ -737,12 +692,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("MANPAD_Strela2M_HAGRU", "MANPAD", "MANPAD_Strela2M", True): { # 171
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_hagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_hagru",
             },
             "hit_roll": {
                 "Idling": 50,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2275,
@@ -756,12 +710,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("SAM_Strela2", "MANPAD", None, False): { #
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_tbagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_tbagru",
             },
             "hit_roll": {
                 "Idling": 50,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2275,
@@ -781,12 +734,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("SAM_Strela2_HAGRU", "MANPAD", "SAM_Strela2", True): { #
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_hagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_hagru",
             },
             "hit_roll": {
                 "Idling": 50,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2275,
@@ -806,13 +758,12 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("SAM_Strela2M", "MANPAD", None, False): { # 171
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_tbagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_tbagru",
             },
             "hit_roll": {
                 "Idling": 50,
                 "Moving": 40,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2275,
@@ -837,12 +788,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("SAM_Strela2M_HAGRU", "MANPAD", "SAM_Strela2M", True): { # 171
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_hagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_hagru",
             },
             "hit_roll": {
                 "Idling": 50,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2275,
@@ -867,12 +817,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("SAM_FASTA_Strela2M_x4_TOWED", "MANPAD", None, False): { 
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_tbagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_tbagru",
             },
             "hit_roll": {
                 "Idling": 50,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 1.2,
@@ -894,12 +843,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("SAM_FASTA_Strela2M_x4_TOWED_HAGRU", "SAM", "SAM_FASTA_Strela2M_x4_TOWED", True): {
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_hagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_hagru",
             },
             "hit_roll": {
                 "Idling": 50,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 1.2,
@@ -921,13 +869,12 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("SAM_FASTA_Strela2M", "MANPAD", None, False): { 
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_tbagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_tbagru",
             },
             "hit_roll": {
                 "Idling": 50,
                 "Moving": 40,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 1.2,
@@ -949,13 +896,12 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("SAM_FASTA_Strela2M_HAGRU", "SAM", "SAM_FASTA_Strela2M", True): {
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_hagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_hagru",
             },
             "hit_roll": {
                 "Idling": 50,
                 "Moving": 40,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 1.2,
@@ -977,12 +923,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("Javelin", "MANPAD", None, False): {
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_tbagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_tbagru",
             },
             "hit_roll": {
                 "Idling": 50,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2625,
@@ -997,12 +942,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("Javelin_HAGRU", "MANPAD", "Javelin", True): {
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_hagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_hagru",
             },
             "hit_roll": {
                 "Idling": 50,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2625,
@@ -1018,12 +962,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("MANPAD_Starstreak", "MANPAD", "Javelin", True): {
         "Ammunition": {
             "token": "VWNTLZGOKD", # Starstreak
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_tbagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_tbagru",
             },
             "hit_roll": {
                 "Idling": 65,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "Caliber": ("Laser LOSBR", "QLAJGOHEVR"),
@@ -1042,12 +985,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("MANPAD_Starstreak_HAGRU", "MANPAD", "Javelin", True): {
         "Ammunition": {
             "token": "VWNTLZGOKD", # Starstreak
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_hagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_hagru",
             },
             "hit_roll": {
                 "Idling": 65,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "Caliber": ("Laser LOSBR", "QLAJGOHEVR"),
@@ -1065,11 +1007,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("Mistral", "MANPAD", None, False): {
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_tbagru",
-            },
-            "hit_roll": {
-                "DistanceToTarget": True,
+            "Arme": {
+                "Family": "DamageFamily_manpad_tbagru",
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2800,
@@ -1083,11 +1022,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("Mistral_HAGRU", "MANPAD", "Mistral", True): {
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_hagru",
-            },
-            "hit_roll": {
-                "DistanceToTarget": True,
+            "Arme": {
+                "Family": "DamageFamily_manpad_hagru",
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2800,
@@ -1101,12 +1037,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("MANPAD_FIM92", "MANPAD", None, False): { # 170
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_tbagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_tbagru",
             },
             "hit_roll": {
                 "Idling": 65,
-                "DistanceToTarget": True,
             },
             "display": "FIM-92C Stinger",
             "token": "AKFXZOAXUI",
@@ -1122,12 +1057,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("MANPAD_FIM92_HAGRU", "MANPAD", "MANPAD_FIM92", True): { # 170
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_hagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_hagru",
             },
             "hit_roll": {
                 "Idling": 65,
-                "DistanceToTarget": True,
             },
             "display": "FIM-92C Stinger",
             "token": "AKFXZOAXUI",
@@ -1145,12 +1079,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "display": "FIM-92A Stinger",
             "token": "HWTXIBRFHM",
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_tbagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_tbagru",
             },
             "hit_roll": {
                 "Idling": 50,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2625,
@@ -1166,12 +1099,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "display": "FIM-92A Stinger",
             "token": "HWTXIBRFHM",
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_hagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_hagru",
             },
             "hit_roll": {
                 "Idling": 50,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2625,
@@ -1185,12 +1117,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("MANPAD_Blowpipe", "MANPAD", None, False): {
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_tbagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_tbagru",
             },
             "hit_roll": {
                 "Idling": 40,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2275,
@@ -1205,12 +1136,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("MANPAD_Blowpipe_HAGRU", "MANPAD", "MANPAD_Blowpipe", True): {
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_hagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_hagru",
             },
             "hit_roll": {
                 "Idling": 40,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2275,
@@ -1225,12 +1155,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("Javelin_LML", "SAM", None, False): {
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_tbagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_tbagru",
             },
             "hit_roll": {
                 "Idling": 50,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 1.2,
@@ -1253,12 +1182,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("Javelin_LML_HAGRU", "SAM", "Javelin_LML", True): {
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_hagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_hagru",
             },
             "hit_roll": {
                 "Idling": 50,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 1.2,
@@ -1281,11 +1209,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("Starstreak", "SAM", None, False): {
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_tbagru",
-            },
-            "hit_roll": {
-                "DistanceToTarget": True,
+            "Arme": {
+                "Family": "DamageFamily_manpad_tbagru",
             },
             "parent_membr": {
                 "Caliber": ("Laser LOSBR", "QLAJGOHEVR"),
@@ -1308,11 +1233,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("Starstreak_HAGRU", "SAM", "Starstreak", True): {
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_hagru",
-            },
-            "hit_roll": {
-                "DistanceToTarget": True,
+            "Arme": {
+                "Family": "DamageFamily_manpad_hagru",
             },
             "parent_membr": {
                 "Caliber": ("Laser LOSBR", "QLAJGOHEVR"),
@@ -1335,12 +1257,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("MANPAD_FIM43", "MANPAD", None, False): { # 171
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_tbagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_tbagru",
             },
             "hit_roll": {
                 "Idling": 40,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2275,
@@ -1354,12 +1275,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("MANPAD_FIM43_HAGRU", "MANPAD", "MANPAD_FIM43", True): { # 171
         "Ammunition": {
-            "arme": {
-                "DamageFamily": "DamageFamily_manpad_hagru",
+            "Arme": {
+                "Family": "DamageFamily_manpad_hagru",
             },
             "hit_roll": {
                 "Idling": 40,
-                "DistanceToTarget": True,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2275,

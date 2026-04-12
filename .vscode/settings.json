@@ -6,5 +6,9 @@
     },
     "[dockercompose]": {
         "editor.autoIndent": "full"
+    },
+    "search.exclude": {
+        "**/src/data/database/**/*.json": true,
+        "!**/src/data/database/master_db_metadata.json": false
     }
 }

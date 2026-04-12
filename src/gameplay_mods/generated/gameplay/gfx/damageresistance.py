@@ -197,18 +197,19 @@ def _add_damage_resistance_values(source_path) -> None:
     # Add damage values
     # CLU_SOL_HEFRAG rows are full per-level vectors; scale only infantry + infantry_wa cells
     # (flat layout: cols 40–42 infantry, 49–61 infantry_wa — see CLU_SOL_HEFRAG_FAMILY_ORDER).
-    _hefrag_m = CLU_HEFRAG_INFANTRY_FINAL_MULTIPLIER
+    hefrag_infantry_cols = set(range(40, 43)) | set(range(49, 62))
+    hefrag_m = CLU_HEFRAG_INFANTRY_FINAL_MULTIPLIER
+    hefrag_rows = []
+    for clu_row in CLU_SOL_HEFRAG:
+        scaled_row = [
+            round(v * hefrag_m, 2) if i in hefrag_infantry_cols else v
+            for i, v in enumerate(clu_row)
+        ]
+        hefrag_rows.append(str(scaled_row))
+
     values_list.add(
         *[str(sniper) for sniper in SNIPER_DAMAGE],
-        *[
-            str(
-                [
-                    v * _hefrag_m if (40 <= i < 43) or (49 <= i < 62) else v
-                    for i, v in enumerate(clu_row)
-                ],
-            )
-            for clu_row in CLU_SOL_HEFRAG
-        ],
+        *hefrag_rows,
         str(NPLM_BOMB_DAMAGE),
         str(NPLM_BOMB_FLAMME_DAMAGE),
         str(PGB_BOMB_DAMAGE),
@@ -253,10 +254,14 @@ def _apply_damage_family_edits(source_path) -> None:
         logger.info(f"Applied damage edits for {weapon_type}")
 
     # Vanilla clu_sol_ap rows: match CLU_SOL_HEFRAG except infantry / infantry_wa handling (see damage_values).
+    # Scale infantry cols 40–42 by AP multiplier; cols 49–61 are overwritten by _edit_infantry_armor.
+    ap_infantry_cols = set(range(40, 43))
+    ap_m = CLU_AP_INFANTRY_FINAL_MULTIPLIER
     for row_idx, ap_row in zip(range(CLU_SOL_AP_ROW_FIRST, CLU_SOL_AP_ROW_LAST + 1), CLU_SOL_AP):
         dmg_row = damage_array[row_idx]
         for col, val in enumerate(ap_row):
-            dmg_row.v.replace(col, str(val))
+            scaled = round(val * ap_m, 2) if col in ap_infantry_cols else val
+            dmg_row.v.replace(col, str(scaled))
         logger.info(f"Applied clu_sol_ap full row for index {row_idx}")
 
         

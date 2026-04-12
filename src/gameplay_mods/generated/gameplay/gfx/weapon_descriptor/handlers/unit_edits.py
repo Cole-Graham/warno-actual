@@ -61,8 +61,7 @@ def unit_edits_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> No
                     if (
                         missile_name == base_ammo_name
                         and "Ammunition" in missile_data
-                        and "arme" in missile_data["Ammunition"]
-                        and missile_data["Ammunition"]["arme"].get("DamageFamily") == "DamageFamily_manpad_tbagru"
+                        and missile_data["Ammunition"].get("Arme", {}).get("Family") == "DamageFamily_manpad_tbagru"
                     ):
 
                         # Find the corresponding HAGRU missile to check its SalvoLengths
@@ -569,7 +568,7 @@ def _apply_turret_changes(
                 mounted_wpns = turret_descr.v.by_m("MountedWeaponDescriptorList")
                 if "insert" in turret_edits["MountedWeapons"]:
                     for key, donor_edits in turret_edits["MountedWeapons"]["insert"].items():
-                        #TODO: convert all mounted weapon edits to use the index:donor format
+                        # TODO: convert all mounted weapon edits to use the index:donor format
                         if isinstance(key, str) and ":" in key:
                             idx_str, donor = key.split(":", 1)
                             insert_at = int(idx_str)
@@ -612,6 +611,10 @@ def _apply_turret_changes(
                                 mounted_wpns.v.insert(insert_at, new_wpn)
                             else:
                                 mounted_wpns.v.add(new_wpn)
+                
+                if "remove" in turret_edits["MountedWeapons"]:
+                    for weapon_index in sorted(turret_edits["MountedWeapons"]["remove"], reverse=True):
+                        mounted_wpns.v.remove(weapon_index)
 
                 for weapon in mounted_wpns.v:
                     if not is_obj_type(weapon.v, "TMountedWeaponDescriptor"):

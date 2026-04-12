@@ -14,6 +14,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 30,
             },
             "parent_membr": {
+                "HasDeploymentTime": True,
                 "MaximumRangeGRU": 1400,
                 "MaximumRangeHelicopterGRU": 1925,
                 "MaximumRangeAirplaneGRU": 1575,
@@ -56,6 +57,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 30,
             },
             "parent_membr": {
+                "HasDeploymentTime": True,
                 "MaximumRangeGRU": 1400,
                 "MaximumRangeHelicopterGRU": 1925,
                 "MaximumRangeAirplaneGRU": 1575,
@@ -119,6 +121,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 30,
             },
             "parent_membr": {
+                "HasDeploymentTime": True,
                 "MaximumRangeGRU": 1575,
                 "PhysicalDamages": 0.34,
                 "AimingTime": 1.2,
@@ -157,6 +160,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 25,
             },
             "parent_membr": {
+                "HasDeploymentTime": True,
                 "MaximumRangeGRU": 1575,
                 "PhysicalDamages": 0.68,
                 "AimingTime": 1.2,
@@ -195,6 +199,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 30,
             },
             "parent_membr": {
+                "HasDeploymentTime": True,
                 "MaximumRangeGRU": 1575,
                 "PhysicalDamages": 0.25,
                 "AimingTime": 1.2,
@@ -214,6 +219,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 25,
             },
             "parent_membr": {
+                "HasDeploymentTime": True,
                 "MaximumRangeGRU": 1575,
                 "PhysicalDamages": 0.5,
                 "AimingTime": 1.2,
@@ -325,6 +331,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 25,
             },
             "parent_membr": {
+                "HasDeploymentTime": True,
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 1750,
@@ -391,6 +398,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 25,
             },
             "parent_membr": {
+                "HasDeploymentTime": True,
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 1750,
@@ -478,6 +486,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 20, # No FCS
             },
             "parent_membr": {
+                "HasDeploymentTime": True,
                 "TimeBetweenTwoShots": 0.2,
                 "TimeBetweenTwoFx": 0.2,
                 "MaximumRangeGRU": 1575,
@@ -564,6 +573,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 30,
             },
             "parent_membr": {
+                "HasDeploymentTime": True,
                 "TimeBetweenTwoShots": 0.3,
                 "TimeBetweenTwoFx": 0.3,
                 "MaximumRangeGRU": 1575,
@@ -583,6 +593,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 40,
             },
             "parent_membr": {
+                "HasDeploymentTime": True,
                 "add": [41, "Guidance = Guidance_Radar"],
                 "TraitsToken": ['STAT', 'RADAR'],
                 "TimeBetweenTwoShots": 0.3,
@@ -604,6 +615,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 30,
             },
             "parent_membr": {
+                "HasDeploymentTime": True,
                 "TimeBetweenTwoShots": 0.4,
                 "TimeBetweenTwoFx": 0.4,
                 "MaximumRangeGRU": 1575,
@@ -623,6 +635,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 40,
             },
             "parent_membr": {
+                "HasDeploymentTime": True,
                 "TimeBetweenTwoShots": 0.5,
                 "TimeBetweenTwoFx": 0.5,
                 "MaximumRangeGRU": 1575,
@@ -664,6 +677,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 30,
             },
             "parent_membr": {
+                "HasDeploymentTime": True,
                 "add": [41, "Guidance = Guidance_Radar"],
                 "TraitsToken": ['STAT', 'RADAR'],
                 "TimeBetweenTwoShots": 0.5,
@@ -682,12 +696,21 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("DCA_1_canon_KS19_100mm", "DCA", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "HasDeploymentTime": True,
+            },
+        },
+    },
+
     ("DCA_1_canon_KS19_100mm_radar", "DCA", "DCA_1_canon_KS19_100mm", True): { # Single 100mm, 120 RPM, PUAZO fire director and SON-9 fire-control radar
         "Ammunition": {
             "hit_roll": {
                 "Idling": 40,
             },
             "parent_membr": {
+                "HasDeploymentTime": True,
                 "add": [41, "Guidance = Guidance_Radar"],
                 "TraitsToken": ['STAT', 'RADAR'],
                 "AimingTime": 2.0,
@@ -704,12 +727,21 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("DCA_1_canon_KS30_130mm", "DCA", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "HasDeploymentTime": True,
+            },
+        },
+    },
+
     ("DCA_1_canon_KS30_130mm_radar", "DCA", "DCA_1_canon_KS30_130mm", True): { # Single 130mm, 120 RPM, PUAZO fire director and SON-9 fire-control radar
         "Ammunition": {
             "hit_roll": {
                 "Idling": 40
             },
             "parent_membr": {
+                "HasDeploymentTime": True,
                 "add": [41, "Guidance = Guidance_Radar"],
                 "TraitsToken": ['STAT', 'RADAR'],
                 "AimingTime": 2.0,

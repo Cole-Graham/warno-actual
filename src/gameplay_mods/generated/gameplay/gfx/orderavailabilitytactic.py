@@ -20,6 +20,11 @@ def edit_gen_gp_gfx_orderavailabilitytactic(source_path, game_db: Dict[str, Any]
 
     unit_edits = load_unit_edits()
 
+    unit_orders_db: Dict[str, set] = {}
+    for entry in game_db.get("order_types", {}).get("order_sets_to_units", []):
+        for u in entry.get("units", []):
+            unit_orders_db[u] = set(entry.get("orders", []))
+
     for order_list in source_path:
         if not hasattr(order_list, "namespace"):
             continue
@@ -30,7 +35,11 @@ def edit_gen_gp_gfx_orderavailabilitytactic(source_path, game_db: Dict[str, Any]
         # Handle existing unit edits
         if unit_name in unit_edits and "orders" in unit_edits[unit_name]:
             if "add_orders" in unit_edits[unit_name]["orders"]:
+                existing_orders = unit_orders_db.get(unit_name, set())
                 for order in unit_edits[unit_name]["orders"]["add_orders"]:
+                    if order in existing_orders:
+                        logger.debug(f"Order {order} already present on {unit_name}, skipping")
+                        continue
                     if order == "EOrderType/Sell":
                         order_list.v.insert(1, "EOrderType/Sell")
                         logger.info(f"Added EOrderType/Sell order to {unit_name}")
@@ -48,12 +57,18 @@ def edit_gen_gp_gfx_orderavailabilitytactic(source_path, game_db: Dict[str, Any]
         if unit_name in unit_edits:
             add_capacities = unit_edits[unit_name].get("capacities", {}).get("add_capacities", [])
             if add_capacities:
-                has_use_capacite = any(
-                    getattr(o, "v", o) == "EOrderType/UseCapacite" for o in order_list.v
-                )
-                if not has_use_capacite:
-                    order_list.v.add("EOrderType/UseCapacite")
-                    logger.info(f"Added EOrderType/UseCapacite order to {unit_name} (has add_capacities)")
+                existing_orders = unit_orders_db.get(unit_name, set())
+                if "EOrderType/UseCapacite" in existing_orders:
+                    logger.debug(
+                        f"Order EOrderType/UseCapacite already present on {unit_name}, skipping"
+                    )
+                else:
+                    has_use_capacite = any(
+                        getattr(o, "v", o) == "EOrderType/UseCapacite" for o in order_list.v
+                    )
+                    if not has_use_capacite:
+                        order_list.v.add("EOrderType/UseCapacite")
+                        logger.info(f"Added EOrderType/UseCapacite order to {unit_name} (has add_capacities)")
 
         # Remove sell order from supply units
         if unit_name in game_db["unit_data"]:

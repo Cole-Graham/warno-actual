@@ -16,6 +16,7 @@ from src.utils.logging_utils import setup_logger
 from .ammunition import get_supply_costs
 from .handlers import (
     apply_bomb_damage_standards,
+    apply_category_aa_missile_standards,
     apply_category_sead_standards,
     apply_clu_sol_trait_standards,
     remove_vanilla_instances,
@@ -78,9 +79,10 @@ def edit_gen_gp_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]
                     logger.error(f"Failed getting descriptor for {weapon_name}: {str(e)}")
                     continue
 
-                # SEAD category standards first, then ``missiles`` dict edits (constants override)
+                # SEAD / AA (SAM, MANPAD) category standards first, then ``missiles`` dict edits
                 try:
                     apply_category_sead_standards(base_descr, category)
+                    apply_category_aa_missile_standards(base_descr, category)
                     if ammo_data:
                         _apply_missile_edits(base_descr, data, ammo_data, is_new)
                     logger.debug(f"Applied edits to {weapon_name}")
@@ -271,6 +273,7 @@ def _handle_salvo_variants(
                     # Category standards first, then constants (same order as base)
                     if "Ammunition" in data:
                         apply_category_sead_standards(existing, category)
+                        apply_category_aa_missile_standards(existing, category)
                         _apply_missile_edits(existing, data, data["Ammunition"], is_new)
 
                     # Then update salvo-specific values
@@ -289,6 +292,7 @@ def _handle_salvo_variants(
                     # Category standards first, then constants (same order as base)
                     if "Ammunition" in data:
                         apply_category_sead_standards(variant, category)
+                        apply_category_aa_missile_standards(variant, category)
                         _apply_missile_edits(variant, data, data["Ammunition"], is_new)
 
                     # Then apply salvo-specific values
@@ -311,9 +315,6 @@ def _apply_missile_edits(descr: Any, data: Dict, ammo_data: Dict, is_new: bool) 
 
     # Apply Arme edits
     if "Ammunition" in data:
-
-        if "arme" in data["Ammunition"] and "DamageFamily" in data["Ammunition"]["arme"]:
-            descr.v.by_m("Arme").v.by_m("Family").v = data["Ammunition"]["arme"]["DamageFamily"]
 
         if "token" in data["Ammunition"]:
             descr.v.by_m("Name").v = "'" + data["Ammunition"]["token"] + "'"

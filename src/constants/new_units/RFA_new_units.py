@@ -9,7 +9,7 @@ RFA_NEW_UNITS = {
         "CadavreGUID": "c95f3f05-66f0-4a2a-b66f-1396d103d186",
         "NewName": "Engineers_CMD2_RFA",
         "GameName": {
-            "display": "#CMD FÜHRUNGSGRUPPE",
+            "display": "FÜHRUNGSGRUPPE",
             "token": "WGERCMDINF",
         },
         "TagSet": {
@@ -741,7 +741,7 @@ RFA_NEW_UNITS = {
         "ECM": -0.4,
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
         "WeaponDescriptor": {

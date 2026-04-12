@@ -19,7 +19,7 @@ FR_NEW_UNITS = {
         "CadavreGUID": "578e09f3-9959-410e-8615-1f90103762c3",
         "NewName": "Chasseurs_CMD2_FR",
         "GameName": {
-            "display": "#CMD GROUPE DE CMDT",
+            "display": "GROUPE DE CMDT",
             "token": "HLYMDCAYOT",
         },
         "TagSet": {
@@ -166,7 +166,7 @@ FR_NEW_UNITS = {
         "Factory": "EFactory/Logistic",
         "CommandPoints": 205,
         "GameName": {
-            "display": "#CMD AMX-30 B PC",
+            "display": "AMX-30 B PC",
             "token": "PYJVWFJQEC",
         },
         "availability": [0, 0, 2, 0],

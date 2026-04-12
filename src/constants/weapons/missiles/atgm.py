@@ -75,6 +75,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 60,
             },
             "parent_membr": {
+                "add": [65, "HasDeploymentTime = True"],
                 "ProjectileSpeedGRU": 350,
                 "NoiseDissimulationMalus": 1.0
             },
@@ -87,7 +88,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "MaxSpeedGRU": 350,
         },
     },
-    
+
     ("ATGM_Swingfire_noisy", "ATGM", "ATGM_Swingfire", True): {
         "Ammunition": {
             "Arme": {

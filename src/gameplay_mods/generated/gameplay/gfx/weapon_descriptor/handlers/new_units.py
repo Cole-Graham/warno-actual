@@ -1030,6 +1030,15 @@ def _update_turret(new_weap_row: Any, turret_index: int, turret_edits: Dict[str,
                     
                     mounted_wpns.v.add(new_wpn)
                     logger.debug(f"Inserted mounted weapon {donor} to turret {turret_index}")
+                    
+    if "MountedWeapons" in turret_edits and "remove" in turret_edits["MountedWeapons"]:
+        if not is_valid_turret(turret.v):
+            logger.warning(f"Turret {turret_index} is not valid for removing mounted weapons")
+        else:
+            mounted_wpns = turret.v.by_m("MountedWeaponDescriptorList")
+            for weapon_index in sorted(turret_edits["MountedWeapons"]["remove"], reverse=True):
+                mounted_wpns.v.remove(weapon_index)
+                logger.debug(f"Removed mounted weapon at index {weapon_index} from turret {turret_index}")
 
     # turret property edits
     for membr, value in turret_edits.items():

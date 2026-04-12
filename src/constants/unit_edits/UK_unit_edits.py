@@ -28,7 +28,7 @@ uk_unit_edits = {
     "LandRover_CMD_UK": {
         "CommandPoints": 145,
         "GameName": {
-            "display": "#CMD ROVER CP"
+            "display": "ROVER CP"
         },
         "Divisions": {
             "default": {
@@ -1573,8 +1573,12 @@ uk_unit_edits = {
     
     "FV102_Striker_UK": {
         "CommandPoints": 60,
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 0,
         },
         "SpecialtiesList": {
             "add_specs": ["'_remote_controlled'"],
@@ -1584,8 +1588,12 @@ uk_unit_edits = {
     
     "FV102_Striker_para_UK": {
         "CommandPoints": 60,
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 0,
         },
         "SpecialtiesList": {
             "add_specs": ["'_remote_controlled'"],
@@ -1865,7 +1873,7 @@ uk_unit_edits = {
             "TypeUnitFormation": "Reconnaissance",
         },
         "GameName": {
-            "display": "#RECO1 FERRET SWINGFIRE",
+            "display": "FERRET SWINGFIRE",
         },
         "Factory": "EFactory/Recons",
         "stealth": 1.5,
@@ -1874,9 +1882,9 @@ uk_unit_edits = {
                 "EVisionRange/Standard": 3500.0,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/Standard": 150.0,
-                "EOpticalStrength/LowAltitude": 150.0,
-                "EOpticalStrength/HighAltitude": 40.0,
+                "EOpticalStrength/Standard": 5300.0,
+                "EOpticalStrength/LowAltitude": 5300.0,
+                "EOpticalStrength/HighAltitude": 1400.0,
             },
         },
         "UpgradeFromUnit": "Ferret_Mk2_UK",
@@ -1904,7 +1912,7 @@ uk_unit_edits = {
             "TypeUnitFormation": "Reconnaissance",
         },
         "GameName": {
-            "display": "#RECO1 CHIEFTAIN MK.11",
+            "display": "CHIEFTAIN MK.11",
         },
         "TagSet": {
             "overwrite_all": [
@@ -1924,9 +1932,9 @@ uk_unit_edits = {
                 "EVisionRange/Standard": 3500.0,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/Standard": 150.0,
-                "EOpticalStrength/LowAltitude": 150.0,
-                "EOpticalStrength/HighAltitude": 40.0,
+                "EOpticalStrength/Standard": 5300.0,
+                "EOpticalStrength/LowAltitude": 5300.0,
+                "EOpticalStrength/HighAltitude": 1400.0,
             },
         },
         "UnitRole": "reco",
@@ -2092,7 +2100,7 @@ uk_unit_edits = {
 
     "Sniper_UK": {
         "GameName": {
-            "display": "#RECO2 SNIPERS",
+            "display": "SNIPERS",
         },
         "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
@@ -2235,7 +2243,7 @@ uk_unit_edits = {
         "availability": [8, 6, 0, 0],
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -2256,7 +2264,7 @@ uk_unit_edits = {
         },
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -2283,7 +2291,7 @@ uk_unit_edits = {
         },
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -2301,7 +2309,7 @@ uk_unit_edits = {
         },
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 220,
+                "EOpticalStrength/HighAltitude": 7800,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -2328,7 +2336,7 @@ uk_unit_edits = {
         },
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -2343,7 +2351,7 @@ uk_unit_edits = {
         "CommandPoints": 90,
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -2425,7 +2433,7 @@ uk_unit_edits = {
     },
     
     "Lynx_AH_Mk7_SNEB_UK": {
-        "CommandPoints": 6767, # vanilla 70
+        "CommandPoints": 60,
     },
 
     # UK AIR
@@ -2471,7 +2479,7 @@ uk_unit_edits = {
                 "EVisionRange/Standard": 10000,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/AntiRadar": 5000,
+                "EOpticalStrength/AntiRadar": 175000.0,
             },
         },
     },
@@ -2602,7 +2610,7 @@ uk_unit_edits = {
                 "EVisionRange/Standard": 10000.0,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/AntiRadar": 5000.0,
+                "EOpticalStrength/AntiRadar": 175000.0,
             },
         },
         "Divisions": {
@@ -2646,7 +2654,7 @@ uk_unit_edits = {
         },
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
         "WeaponDescriptor": {
@@ -2661,7 +2669,7 @@ uk_unit_edits = {
         "CommandPoints": 210,
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
         "WeaponDescriptor": {

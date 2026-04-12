@@ -103,7 +103,7 @@ rda_unit_edits = {
     },
 
     "Mi_2_CMD_DDR": {  # Mi-2D
-        "GameName": {"display": "#CMD Mi-2D"},
+        "GameName": {"display": "Mi-2D"},
         "CommandPoints": 115,
         "SpecialtiesList": {
             "add_specs": ["'leader_sov'",],
@@ -113,7 +113,7 @@ rda_unit_edits = {
     },
 
     "Mi_9_DDR": {  # Mi-19D
-        "GameName": {"display": "#CMD Mi-19"},
+        "GameName": {"display": "Mi-19"},
         "CommandPoints": 145,
         "SpecialtiesList": {
             "add_specs": ["'leader_sov'",],
@@ -124,7 +124,7 @@ rda_unit_edits = {
 
     # RDA INF
     "MotRifles_CMD_DDR": {
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDRSOV MOT.-SCHUTZEN FÜR. LDR.",
@@ -408,7 +408,7 @@ rda_unit_edits = {
     },
     
     "Fallschirmjager_CMD_DDR": {
-        "CommandPoints": 55,
+        "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDRSOV FALLSCHIRM FÜR. LDR.",
@@ -435,7 +435,7 @@ rda_unit_edits = {
         "UnitRole": "infantry",
         "SpecialtiesList": {
             "overwrite_all": [
-                '_leader',
+                'leader_sov',
                 '_sf',
                 '_choc',
                 '_para',
@@ -501,7 +501,7 @@ rda_unit_edits = {
     },
 
     "Luftsturmjager_CMD_DDR": {
-        "CommandPoints": 55,
+        "CommandPoints": 60,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDRSOV LUFTSTURM-JÄGER FÜR. LDR.",
@@ -528,11 +528,11 @@ rda_unit_edits = {
         "UnitRole": "infantry",
         "SpecialtiesList": {
             "overwrite_all": [
-                '_leader',
+                'leader_sov',
                 '_sf',
                 '_choc',
                 '_para',
-                'infantry_equip_light',
+                'infantry_equip_medium',
             ],
         },
         "MenuIconTexture": "Texture_RTS_H_Infantry_sf",
@@ -542,13 +542,21 @@ rda_unit_edits = {
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "animate": {
-                    "SAW_lMG_K_7_62mm": False,
+                    "MMG_PKM_7_62mm": False,
                 },
                 "quantity": {
                     "FM_Mpi_AKS_74NK": 7,
-                    "SAW_lMG_K_7_62mm": 2,
+                    "MMG_PKM_7_62mm": 2,
                 },
-                "insert": [(1, "SAW_lMG_K_7_62mm")],
+                "replace": [
+                    (
+                        "RocketInf_RPG18_64mm",
+                        "RocketInf_RPG27_105mm",
+                        "RocketInf_RPG18_64mm",
+                        "RocketInf_RPG27_105mm",
+                    )
+                ],
+                "insert": [(1, "MMG_PKM_7_62mm")],
                 "insert_edits": {
                     1: {
                         "turret_edits": {
@@ -583,8 +591,8 @@ rda_unit_edits = {
                 },
             },
             "Salves": {
-                "insert": [(1, 18)],
-                "RocketInf_RPG18_64mm": 7,
+                "insert": [(1, 36)],
+                "RocketInf_RPG27_105mm": 6,
                 "FM_Mpi_AKS_74NK": 11,
             },
         },
@@ -594,7 +602,7 @@ rda_unit_edits = {
     },
 
     "Wachregiment_CMD_DDR": {
-        "CommandPoints": 70,
+        "CommandPoints": 55,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDRSOV WACHSCHÜTZEN FÜH. LDR.",
@@ -645,7 +653,7 @@ rda_unit_edits = {
     },
 
     "Fallschirmjager_FalseFlag_CMD_DDR": {
-        "CommandPoints": 60,
+        "CommandPoints": 55,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "#LDRSOV FALLSCHIRM FÜR. FF LDR.",
@@ -675,7 +683,7 @@ rda_unit_edits = {
         "UnitRole": "infantry",
         "SpecialtiesList": {
             "overwrite_all": [
-                '_leader',
+                'leader_sov',
                 '_sf',
                 '_choc',
                 '_para',
@@ -799,7 +807,7 @@ rda_unit_edits = {
                 },
             },
             "Salves": {
-                "insert": [(1, 5), (2, 3)],
+                "insert": [(1, 4), (2, 3)],
             },
         },
         "selector_tactic": "(0, 6)",
@@ -895,7 +903,7 @@ rda_unit_edits = {
                 },
             },
             "Salves": {
-                "insert": [(1, 5)],
+                "insert": [(1, 4)],
             },
         },
         "SpecialtiesList": {
@@ -1073,7 +1081,7 @@ rda_unit_edits = {
     },
 
     "MotSchutzen_DDR": {  # Panzerjager 2x RPG-7VR
-        "CommandPoints": 25,
+        "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
@@ -1299,7 +1307,7 @@ rda_unit_edits = {
         "GameName": {
             "display": "WACHSCHÜTZEN",
         },
-        "CommandPoints": 55,
+        "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "availability": [0, 6, 4, 0],
         "max_speed": 26,
@@ -1312,7 +1320,7 @@ rda_unit_edits = {
         "GameName": {
             "display": "WACHSCHÜTZEN [RPO]",
         },
-        "CommandPoints": 60,
+        "CommandPoints": 65,
         "armor": "Infantry_armor_reference",
         "availability": [0, 6, 4, 0],
         "max_speed": 20,
@@ -1325,7 +1333,7 @@ rda_unit_edits = {
         "GameName": {
             "display": "WACHSCHÜTZEN [STOSS]",
         },
-        "CommandPoints": 60,
+        "CommandPoints": 55,
         "armor": "Infantry_armor_reference",
         "availability": [0, 6, 4, 0],
         "max_speed": 26,
@@ -1630,7 +1638,21 @@ rda_unit_edits = {
             "add_specs": ["'refundable_unit'",],
         },
     },
-
+    
+    "Trabant_601_MP_DDR": {
+        "CommandPoints": 15,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+    },
+    
+    "Barkas_B1000_MP_DDR": {
+        "CommandPoints": 15,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+    },
+    
     # RDA ARTILLERY
     "BTR_50_CMD_DDR": {
         "CommandPoints": 60,
@@ -1692,8 +1714,8 @@ rda_unit_edits = {
         "availability": [5, 4, 3, 0],
     },
     
-    "Howz_M30_122mm_DDR": {
-        "CommandPoints": 6767, # vanilla 85
+    "Howz_M30_122mm_DDR": { # not using, who the hell cares about slightly less range D-30
+        "CommandPoints": 85, # vanilla 85
     },
 
     "Howz_M46_130mm_DDR": {
@@ -2065,12 +2087,7 @@ rda_unit_edits = {
     },
 
     "SPW_152K_DDR": {
-        "orders": {
-            "add_orders": ["EOrderType/Sell"],
-        },
-        "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'",],
-        },
+        "CommandPoints": 15,
     },
 
     "BMP_1_SP1_DDR": {
@@ -2278,7 +2295,7 @@ rda_unit_edits = {
     },
 
     "OT_65_DDR": {
-        "CommandPoints": 15,
+        "CommandPoints": 20,
          "orders": {
             "add_orders": ["EOrderType/Sell"],
         },
@@ -2298,7 +2315,7 @@ rda_unit_edits = {
 
      "BMP_1P_reco_DDR": { # is named BMP-1P in descriptor but lacks the smoke and fagot missle, so its basically a BMP-1 basic
         "GameName": {
-            "display": "#RECO1 AufKl BMP-1",
+            "display": "AufKl BMP-1",
         },
         "CommandPoints": 35,
     },
@@ -2316,7 +2333,7 @@ rda_unit_edits = {
 
     "BRM_1_DDR": {
         "GameName": {
-            "display": "#RECO3 AufKl BRM-1K",
+            "display": "AufKl BRM-1K",
         },
         "CommandPoints": 55,
         "Divisions": {
@@ -2731,8 +2748,12 @@ rda_unit_edits = {
         "CommandPoints": 20,
         "availability": [12, 9, 0, 0],
         "max_speed": 6,
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 0,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -2755,8 +2776,12 @@ rda_unit_edits = {
         "Factory": "EFactory/Logistic",
         "availability": [9, 7, 0, 0],
         "max_speed": 6,
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 0,
         },
         "UpgradeFromUnit": "FOB_DDR",
         "WeaponDescriptor": {
@@ -2773,8 +2798,12 @@ rda_unit_edits = {
         "CommandPoints": 30,
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 0,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -2793,8 +2822,12 @@ rda_unit_edits = {
         },
         "availability": [9, 7, 0, 0],
         "max_speed": 6,
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 0,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -2806,7 +2839,7 @@ rda_unit_edits = {
         },
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -2825,8 +2858,12 @@ rda_unit_edits = {
         },
         "availability": [9, 7, 0, 0],
         "max_speed": 6,
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 0,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -2838,7 +2875,7 @@ rda_unit_edits = {
         },
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -2904,7 +2941,7 @@ rda_unit_edits = {
         },
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 220,
+                "EOpticalStrength/HighAltitude": 7800,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -2923,7 +2960,7 @@ rda_unit_edits = {
     "ZSU_23_Shilka_DDR": {
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 220,
+                "EOpticalStrength/HighAltitude": 7800,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -2943,7 +2980,7 @@ rda_unit_edits = {
         "CommandPoints": 130,
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -2961,7 +2998,7 @@ rda_unit_edits = {
     "2K12_KUB_DDR": {
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -2979,7 +3016,7 @@ rda_unit_edits = {
         # "availability": [4, 3, 0, 0],
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -2992,7 +3029,7 @@ rda_unit_edits = {
     "DCA_I_Hawk_capture_DDR": {
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -3038,7 +3075,7 @@ rda_unit_edits = {
             "display": "Mi-8TV [RKT]",
         },
         "CommandPoints": 70,
-        "availability": [0, 6, 4, 0],
+        "availability": [0, 6, 4, 0], 
     },
 
     "Mi_8TV_s57_32_DDR": {  # [RKT 2]
@@ -3052,10 +3089,21 @@ rda_unit_edits = {
     "Mi_8TV_UPK_DDR": {
         "CommandPoints": 85,
         "availability": [0, 6, 4, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "Pod_UPK_23_250_AP_23mm_x2": 15,
+            },
+        },
     },
     
     "Mi_8TV_PodGatling_DDR": {
-        "CommandPoints": 6767, # vanilla 110
+        "CommandPoints": 85, # vanilla 110
+        "WeaponDescriptor": {
+            "Salves": {
+                "Pod_GUV_Gatling_7_62mm_12_7mm_x2": 8,
+                "Pod_GUV_Gatling_7_62mm_12_7mm_x2": 8,
+            },
+        },
     },
     
     "Mi_8TB_DDR": { # 12.7mm Afanasyev, 2x 64x S-5m, 6x Malyutka-M
@@ -3064,12 +3112,12 @@ rda_unit_edits = {
     },
 
     "Mi_24D_s5_AT_DDR": {
-        "CommandPoints": 135,
+        "CommandPoints": 130,
         "availability": [0, 4, 3, 0],
     },
     
     "Mi_24D_s8_AT_DDR": { # Mi-24D [AT2]
-        "CommandPoints": 6767, # vanilla 130
+        "CommandPoints": 145, # vanilla 130
     },
 
     "Mi_24D_AA_DDR": {
@@ -3158,7 +3206,10 @@ rda_unit_edits = {
         "availability": [0, 5, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("RocketAir_S5_57mm_salvolength32", "RocketAir_S5_57mm_avion_salvolength32")],
+                "replace": [
+                    ("RocketAir_S5_57mm_salvolength32", "RocketAir_S5_57mm_avion_salvolength32"),
+                    ("RocketAir_S5_57mm_salvolength32", "RocketAir_S5_57mm_avion_salvolength32"),
+                ],
             },
         },
     },
@@ -3325,7 +3376,7 @@ rda_unit_edits = {
                 "EVisionRange/Standard": 10000.0,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/AntiRadar": 5000.0,
+                "EOpticalStrength/AntiRadar": 175000.0,
             },
         },
         "availability": [0, 2, 0, 1],

@@ -667,11 +667,12 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Canon_AP_120_mm_L11A5_Mk1_4", "canon", None, False): { # Cheiftian Mk1/4 L11A1 (L31A7) 
         "Ammunition": {
             "Arme": {
-                #"Family": "DamageFamily_ap_missile",
+                "Family": "DamageFamily_ap_missile",
                 "Index": 17, # HEAT (I don't know how to swap KE to HEAT, is still KE)
             },
             "parent_membr": {
                 "SuppressDamages": 243,
+                "DamageTypeEvolutionOverRangeDescriptor": "nil"
             },
             "display": "L11A1 (L31A7) [HESH]",
             "token": "ESZSAANXXP",

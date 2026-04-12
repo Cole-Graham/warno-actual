@@ -9,8 +9,8 @@ SOV_NEW_UNITS = {
         "CadavreGUID": "4a793ae9-5f90-41e1-b8a2-b9203e527de5",
         "NewName": "MotRifles_CMD2_SOV",
         "GameName": {
-            # "display": "#CMD KOMANDNOE OTDELENIE",
-            "display": "#CMD KOM. OTDELENIE",
+            # "display": "KOMANDNOE OTDELENIE",
+            "display": "KOM. OTDELENIE",
             "token": "FFFKSMMRGR",
         },
         "TagSet": {
@@ -99,8 +99,8 @@ SOV_NEW_UNITS = {
         "CadavreGUID": "b852d941-cba8-42e6-867a-7ecf24be522b",
         "NewName": "MotRifles_CMD2_TTsko_SOV",
         "GameName": {
-            # "display": "#CMD KOMANDNOE OTDELENIE",
-            "display": "#CMD KOM. OTDELENIE",
+            # "display": "KOMANDNOE OTDELENIE",
+            "display": "KOM. OTDELENIE",
             "token": "PKHNVEPCJL",
         },
         "TagSet": {
@@ -667,7 +667,7 @@ SOV_NEW_UNITS = {
             "Salves": {
                 "FM_AKS_74": 11,
                 "SAW_RPK_74_5_56mm": 18,
-                "RocketInf_RPG7VL": 7,
+                "RocketInf_RPG7VL": 6,
             },
             "equipmentchanges": {
                 "replace": [
@@ -715,7 +715,7 @@ SOV_NEW_UNITS = {
         "CadavreGUID": "f13dca39-59f4-40eb-8305-4857a8608b55",
         "NewName": "HvyScout_RPG7VL_SOV",
         "GameName": {
-            "display": "#RECO2 MOT. RAZVEDKA [RPG-7]",
+            "display": "MOT. RAZVEDKA [RPG-7]",
             "token": "XVGJOLTMAO",
         },
         "TagSet": {
@@ -786,7 +786,7 @@ SOV_NEW_UNITS = {
         "CadavreGUID": "d114ae64-034f-4464-8706-334311805dd8",
         "NewName": "HvyScout_TTsko_RPG7VL_SOV",
         "GameName": {
-            "display": "#RECO2 MOT. RAZVEDKA [RPG-7]",
+            "display": "MOT. RAZVEDKA [RPG-7]",
             "token": "XJCCGMJPPP",
         },
         "TagSet": {

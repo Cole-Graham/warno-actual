@@ -6,11 +6,13 @@ build_database is false. The "database" is just the collection of JSON files on 
 """
 
 import json
+import re
 from pathlib import Path
 from typing import Any, Dict, List
 
 from src.constants.new_units import NEW_UNITS
 from src.constants.unit_edits import load_unit_edits
+from src.constants.weapons import ammunitions, missiles
 from src.constants.weapons.vanilla_inst_modifications import (
     AMMUNITION_MISSILES_RENAMES,
     AMMUNITION_RENAMES,
@@ -155,9 +157,17 @@ def build_constants_precomputation_data(config: Dict[str, Any], game_db: Dict[st
                     "Fix unit edits or add quantities to NbWeapons in small_arms.py"
                 )
 
+        # Build deployment time units mapping (ammo HasDeploymentTime -> unit modules)
+        deployment_time_units = build_deployment_time_units(game_db) if game_db else {
+            "units_add_deployment": [],
+            "units_remove_deployment": [],
+        }
+        save_deployment_time_units(deployment_time_units, config)
+
         # Add ammunition_renames and insert_turret_templates to return dict for convenience
         mappings["ammunition_renames"] = ammunition_renames
         mappings["insert_turret_templates"] = insert_templates
+        mappings["deployment_time_units"] = deployment_time_units
 
         logger.info(
             f"Constants precomputation data built and saved: "
@@ -165,7 +175,8 @@ def build_constants_precomputation_data(config: Dict[str, Any], game_db: Dict[st
             f"{len(mappings.get('reference_mappings', {}))} references, "
             f"{len(mappings.get('new_command_unit_deck_packs', {}))} new command unit deck packs, "
             f"{len(ammunition_renames.get('renames_old_new', {}))} ammunition renames, "
-            f"{len(insert_templates)} insert turret templates"
+            f"{len(insert_templates)} insert turret templates, "
+            f"{len(deployment_time_units.get('units_add_deployment', []))} deployment time units"
         )
         return mappings
     except Exception as e:
@@ -290,6 +301,105 @@ def save_ammunition_renames(renames: Dict[str, Dict[str, str]], config: Dict[str
         logger.debug(f"Saved ammunition_renames to {renames_file}")
     except Exception as e:
         logger.error(f"Failed to save ammunition_renames: {e}")
+        raise
+
+
+def build_deployment_time_units(game_db: Dict[str, Any]) -> Dict[str, List[str]]:
+    """Build mapping of units that need WeaponDeployment module added or removed.
+    
+    Scans ammunition and missile constants for HasDeploymentTime edits, then
+    reverse-maps ammo names to unit names via game_db weapons data.
+    Filters out units already in unit_edits or NEW_UNITS (handled separately).
+    
+    Returns:
+        Dict with units_add_deployment and units_remove_deployment lists
+    """
+    ammo_needs_deployment: set = set()
+    ammo_loses_deployment: set = set()
+
+    for (weapon_name, _category, _donor, _is_new), data in {**ammunitions, **missiles}.items():
+        ammo_data = data.get("Ammunition", {})
+        parent_membr = ammo_data.get("parent_membr", {})
+        if not parent_membr:
+            continue
+
+        if "HasDeploymentTime" in parent_membr:
+            if parent_membr["HasDeploymentTime"]:
+                ammo_needs_deployment.add(weapon_name)
+            else:
+                ammo_loses_deployment.add(weapon_name)
+
+        add_entry = parent_membr.get("add")
+        if isinstance(add_entry, list) and len(add_entry) == 2 and isinstance(add_entry[1], str):
+            member_str = add_entry[1]
+            if "HasDeploymentTime" in member_str:
+                value_str = member_str.split("=", 1)[1].strip()
+                if value_str == "True":
+                    ammo_needs_deployment.add(weapon_name)
+                elif value_str == "False":
+                    ammo_loses_deployment.add(weapon_name)
+
+    weapons_db = game_db.get("weapons", {})
+
+    # Regex to strip salvo variant suffixes (_xN or _salvolengthN) from ammo names
+    _salvo_suffix_re = re.compile(r'(_x\d+|_salvolength\d+)$')
+
+    # Reverse-map: ammo name -> set of unit names
+    units_add: set = set()
+    units_remove: set = set()
+
+    for weapon_descr_name, weapon_info in weapons_db.items():
+        if not weapon_descr_name.startswith("WeaponDescriptor_"):
+            continue
+        unit_name = weapon_descr_name.replace("WeaponDescriptor_", "", 1)
+
+        unit_base_ammos: set = set()
+        for turret in weapon_info.get("turrets", {}).values():
+            for ammo_name in turret.get("weapons", {}).keys():
+                unit_base_ammos.add(_salvo_suffix_re.sub('', ammo_name))
+
+        if unit_base_ammos & ammo_needs_deployment:
+            units_add.add(unit_name)
+        elif unit_base_ammos & ammo_loses_deployment:
+            units_remove.add(unit_name)
+
+    # Filter out units whose unit_edits already specify WeaponDeployment, or NEW_UNITS
+    unit_edits = load_unit_edits()
+    excluded_units: set = set()
+    for unit_name_key, edits in unit_edits.items():
+        if "WeaponDeployment" in edits:
+            excluded_units.add(unit_name_key)
+    for _key, new_unit_data in NEW_UNITS.items():
+        if isinstance(new_unit_data, dict) and "NewName" in new_unit_data:
+            excluded_units.add(new_unit_data["NewName"])
+
+    units_add -= excluded_units
+    units_remove -= excluded_units
+
+    logger.info(
+        f"Deployment time units: {len(units_add)} add, {len(units_remove)} remove "
+        f"(from {len(ammo_needs_deployment)} ammo needing deployment, "
+        f"{len(ammo_loses_deployment)} losing deployment)"
+    )
+    return {
+        "units_add_deployment": sorted(units_add),
+        "units_remove_deployment": sorted(units_remove),
+    }
+
+
+def save_deployment_time_units(data: Dict[str, List[str]], config: Dict[str, Any]) -> None:
+    """Save deployment time units data as JSON file to disk."""
+    db_path = Path(config["data_config"]["database_path"])
+    constants_dir = db_path / "constants_precomputation"
+    ensure_db_directory(str(constants_dir))
+
+    out_file = constants_dir / "deployment_time_units.json"
+    try:
+        with open(out_file, "w") as f:
+            json.dump(data, f, indent=2, sort_keys=True)
+        logger.debug(f"Saved deployment_time_units to {out_file}")
+    except Exception as e:
+        logger.error(f"Failed to save deployment_time_units: {e}")
         raise
 
 

@@ -10,7 +10,7 @@ RDA_NEW_UNITS = {
         "NewName": "KdA_DDR_TargetDummy",
         "GameName": {
             "display": "KdA 100",
-            # "display": "#CMD MOT.-SCHÜTZEN FÜH.",
+            # "display": MOT.-SCHÜTZEN FÜH.",
             "token": "VQYWUZFQCE",
         },
         "TagSet": {
@@ -73,8 +73,8 @@ RDA_NEW_UNITS = {
         "CadavreGUID": "79abc88c-d5be-4615-9ed2-4cb87bde9f4b",
         "NewName": "MotRifles_CMD2_DDR",
         "GameName": {
-            "display": "#CMD FÜHRUNGSTRUPP",
-            # "display": "#CMD MOT.-SCHÜTZEN FÜH.",
+            "display": "FÜHRUNGSTRUPP",
+            # "display": "MOT.-SCHÜTZEN FÜH.",
             "token": "DGZBQXLAYD",
         },
         "TagSet": {
@@ -301,7 +301,7 @@ RDA_NEW_UNITS = {
         "NewName": "T54B_CMD2_DDR",
         "GameName": {
             "token": "CRMEBWSIWS",
-            "display": "#CMD FüPz T-54AMK",
+            "display": "FüPz T-54AMK",
         },
         "TagSet": {
             "overwrite_all": [
@@ -352,7 +352,7 @@ RDA_NEW_UNITS = {
         "CadavreGUID": "96ae475b-77da-4775-bb65-6cc436c23015",
         "NewName": "T55A_CMD2_DDR",
         "GameName": {
-            "display": "#CMD FüPz T-55AK",
+            "display": "FüPz T-55AK",
             "token": "LSXHWRLFEM",
         },
         "TagSet": {
@@ -457,7 +457,7 @@ RDA_NEW_UNITS = {
         "CadavreGUID": "3f275f69-0fdf-4e49-9f14-a3bfc4e0b471",
         "NewName": "T72M_CMD2_DDR",
         "GameName": {
-            "display": "#CMD FüPz T-72MK",
+            "display": "FüPz T-72MK",
             "token": "DBXQVRQECV",
         },
         "TagSet": {
@@ -525,7 +525,7 @@ RDA_NEW_UNITS = {
         "ShowroomGUID": "6ff34493-d566-430c-a501-2b1fb7c980fd",
         "CadavreGUID": "63454739-09a9-4377-bddd-4125e18c2425",
         "GameName": {
-            "display": "#CMD FüPz T-72M1K",
+            "display": "FüPz T-72M1K",
             "token": "FUPZTSTMOK",
         },
         "NewName": "T72M1_CMD2_DDR",
@@ -1065,7 +1065,7 @@ RDA_NEW_UNITS = {
         "CadavreGUID": "4401b9de-c033-4e9d-9a24-5c935b3600bc",
         "NewName": "HvyScout_RPG7VL_DDR",
         "GameName": {
-            "display": "#RECO2 MOT. AUFKLÄRER [RPG-7]",
+            "display": "MOT. AUFKLÄRER [RPG-7]",
             "token": "LFBKZAMOMO",
         },
         "TagSet": {

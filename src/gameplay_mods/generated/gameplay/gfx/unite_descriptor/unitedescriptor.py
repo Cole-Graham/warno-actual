@@ -98,17 +98,40 @@ def _handle_new_units(source_path, game_db, new_units_dic_entries, unit_edits) -
 def _handle_batch_changes(source_path, game_db) -> None:
     """Handle batch changes for UniteDescriptor.ndf"""
     logger.info("Processing batch changes for UniteDescriptor.ndf")
-    
+
+    deployment_data = game_db.get("deployment_time_units", {})
+    units_add = set(deployment_data.get("units_add_deployment", []))
+    units_remove = set(deployment_data.get("units_remove_deployment", []))
+
     for unit_descr in source_path:
         modules_list = unit_descr.v.by_m("ModulesDescriptors")
-        
+
         # Remove frontline visual mechanic from CVs (they can still capture zones)
         frontline_module = find_obj_by_type(modules_list.v, "TInfluenceScoutModuleDescriptor")
         if frontline_module:
             modules_list.v.remove(frontline_module.index)
-        else:
-            continue
-            
+
+        # Add or remove WeaponDeployment module based on ammunition HasDeploymentTime edits
+        unit_name = unit_descr.n.replace("Descriptor_Unit_", "")
+        if unit_name in units_add:
+            if find_obj_by_type(modules_list.v, "TWeaponDeploymentModuleDescriptor") is None:
+                modules_list.v.add(
+                    "TWeaponDeploymentModuleDescriptor("
+                    "    TimeForWeaponDeployment = 15"
+                    "    TimeForWeaponPacking = 5"
+                    ")"
+                )
+                logger.info(f"Added TWeaponDeploymentModuleDescriptor to {unit_name} (batch)")
+            else:
+                logger.debug(f"TWeaponDeploymentModuleDescriptor already present on {unit_name}, skipping")
+        elif unit_name in units_remove:
+            dep_module = find_obj_by_type(modules_list.v, "TWeaponDeploymentModuleDescriptor")
+            if dep_module is not None:
+                modules_list.v.remove(dep_module.index)
+                logger.info(f"Removed TWeaponDeploymentModuleDescriptor from {unit_name} (batch)")
+            else:
+                logger.warning(f"TWeaponDeploymentModuleDescriptor not found on {unit_name}, skipping")
+
     logger.info("Batch changes processed")
 
 def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_name, edits, modules_list) -> None:
@@ -117,6 +140,7 @@ def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_nam
     unit_data = game_db["unit_data"].get(unit_name, None)
 
     found_capacite_module = find_obj_by_type(modules_list.v, "TCapaciteModuleDescriptor") is not None
+    found_weapondeployment_module = find_obj_by_type(modules_list.v, "TWeaponDeploymentModuleDescriptor") is not None
 
     module_handlers = {
         "TTypeUnitModuleDescriptor": { "handler": _handle_typeunit_module, "args": [] },
@@ -159,6 +183,7 @@ def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_nam
         # "TUnitUpkeepModuleDescriptor": { "handler": handle_unitupkeep_module, "args": [] },
         "TDeploymentShiftModuleDescriptor": { "handler": _handle_deploymentshift_module, "args": [] },
         "TCameraShowroomModuleDescriptor": { "handler": _handle_camerashowroom_module, "args": [] },
+        "TWeaponDeploymentModuleDescriptor": { "handler": _handle_weapondeployment_module, "args": [] },
     }
     # Iterate over module handlers
     for module_type, handling_data in module_handlers.items():
@@ -195,9 +220,21 @@ def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_nam
 # Add modules
 def _add_modules(game_db, edit_type, unit_name, edits, modules_list) -> None:
     """Add modules to new and existing units"""
-    deployment_shift = edits.get("DeploymentShift")
-    found_deploymentshift_module = find_obj_by_type(
-        modules_list.v, "TDeploymentShiftModuleDescriptor") is not None
+    deployment_shift = edits.get("DeploymentShift", None)
+    found_deploymentshift_module = find_obj_by_type(modules_list.v, "TDeploymentShiftModuleDescriptor") is not None
+    
+    weapon_deployment = edits.get("WeaponDeployment", None)
+    found_weapondeployment_module = find_obj_by_type(modules_list.v, "TWeaponDeploymentModuleDescriptor") is not None
+    
+    if not found_weapondeployment_module and weapon_deployment is not None:
+        weapon_deployment_module = (
+            f"TWeaponDeploymentModuleDescriptor("
+            f"    TimeForWeaponDeployment = {weapon_deployment['TimeForWeaponDeployment']}"
+            f"    TimeForWeaponPacking = {weapon_deployment['TimeForWeaponPacking']}"
+            f")"
+        )
+        modules_list.v.add(weapon_deployment_module)
+        logger.info(f"Added TWeaponDeploymentModuleDescriptor to {unit_name}")
 
     if edit_type == "new_units":
         for module in edits.get("modules_add", []):
@@ -254,7 +291,14 @@ def _add_modules(game_db, edit_type, unit_name, edits, modules_list) -> None:
         for module in edits.get("modules_add", []):
             modules_list.v.add(module)
 
-        if "EOrderType/Sell" in edits.get("orders", {}).get("add_orders", []):
+        existing_orders = set()
+        for entry in game_db.get("order_types", {}).get("order_sets_to_units", []):
+            if unit_name in entry.get("units", []):
+                existing_orders = set(entry.get("orders", []))
+                break
+        if "EOrderType/Sell" in existing_orders:
+            logger.debug(f"Order EOrderType/Sell already present on {unit_name}, skipping")
+        elif "EOrderType/Sell" in edits.get("orders", {}).get("add_orders", []):
             sell_module = "~/SellModuleDescriptor"
             modules_list.v.add(sell_module)  # noqa
 
@@ -262,6 +306,12 @@ def _add_modules(game_db, edit_type, unit_name, edits, modules_list) -> None:
 # Remove modules
 def _remove_modules(game_db, edit_type, unit_name, edits, modules_list) -> None:
     """Remove modules from new and existing units"""
+    
+    found_weapondeployment_module = find_obj_by_type(modules_list.v, "TWeaponDeploymentModuleDescriptor") is not None
+    if found_weapondeployment_module and edits.get("WeaponDeployment", {}) is None:
+        modules_list.v.remove(found_weapondeployment_module.index)
+        logger.info(f"Removed TWeaponDeploymentModuleDescriptor from {unit_name}")
+    
     
     for module_to_remove in edits.get("modules_remove", []):
         if module_to_remove.startswith("~/"):
@@ -834,4 +884,12 @@ def _handle_camerashowroom_module(logger, game_db, unit_data, edit_type, unit_na
     
     if edit_type == "unit_edits":
         pass
-    
+
+def _handle_weapondeployment_module(logger, game_db, unit_data, edit_type, unit_name,
+                                    edits, module, *args) -> None:
+    """Handle TWeaponDeploymentModuleDescriptor for existing and new units"""
+    weapon_deployment = edits.get("WeaponDeployment", None)
+    if weapon_deployment:
+        module.v.by_m("TimeForWeaponDeployment").v = str(weapon_deployment["TimeForWeaponDeployment"])
+        module.v.by_m("TimeForWeaponPacking").v = str(weapon_deployment["TimeForWeaponPacking"])
+        logger.info(f"Updated TWeaponDeploymentModuleDescriptor for {unit_name}")

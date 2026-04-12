@@ -17,13 +17,13 @@ WEAPON_DESCRIPTION_EDITS = {
         "description": (
             "VIFCZPOOHH",
             (
-                "Precision Guided Bombs (PGBs) come in two forms: laser-guided and electro-optical. "
-                "Laser-guided bombs are more accurate but require active designation at the moment of impact, "
-                "although by spacing out the bombs the pilot can (in theory) rapidly switch the laser to effectively "
-                "guide onto multiple targets within a limited radius. Electro-optical bombs are less accurate but can "
-                "be used to attack multiple targets across a much wider area.\n\n"
-                "Tip: The main advantage of Electro-optical bombs is that you can queue up multiple fire position "
-                "commands at once, while laser-guided bombs require you to manually switch targets as each bomb is launched."
+                f"Precision Guided Bombs (PGBs) come in two forms: laser-guided and electro-optical. "
+                f"Laser-guided bombs are more accurate but require active designation at the moment of impact, "
+                f"although by spacing out the bombs the pilot can (in theory) rapidly switch the laser to effectively "
+                f"guide onto multiple targets within a limited radius. Electro-optical bombs are less accurate but can "
+                f"be used to attack multiple targets across a much wider area.\n\n"
+                f"#styleGreen{{- The main advantage of Electro-optical bombs is that you can queue up multiple fire position "
+                f"commands at once, while laser-guided bombs require you to manually switch targets as each bomb is launched.}}"
             )
         ),
     },
@@ -47,8 +47,9 @@ WEAPON_TRAIT_EDITS = {
     "TANDEM": (
         f"The tandem-charged HEAT round is specifically designed to "
         f"penetrate explosive reactive armor (ERA) using dual-charge "
-        f"warheads. Penetration is increased by +2 against ERA-equipped "
-        f"units."
+        f"warheads.\n\n"
+        f"#styleGreen{{- Penetration is increased by +2 against ERA-equipped "
+        f"units.}}"
     ),
 }
 
@@ -57,9 +58,9 @@ NEW_WEAPON_TRAITS = {
     "clusterHEAT": {
         "title": "Cluster HEAT",
         "description": (
-            "The Cluster HEAT variant of cluster munitions uses shaped-charge warheads and is "
-            "better equipped to kill enemy tanks than generic cluster loads. It favors armored "
-            "targets over light vehicles and infantry. Damage vs. infantry is AP * 4 / 10"
+            f"The Cluster HEAT variant of cluster munitions uses shaped-charge warheads and is "
+            f"better equipped to kill enemy tanks than generic cluster loads.\n\n"
+            f"- Damage vs. infantry is #styleGreen{{AP * 4}} / 10"
         ),
         "trait_texture_name": "Texture_Trait_Icon_clusterHEAT",
         "trait_hint_title_token": "QXRMTXAMMH",
@@ -68,8 +69,9 @@ NEW_WEAPON_TRAITS = {
     "clusterHEFrag": {
         "title": "Cluster HE-Frag",
         "description": (
-            "The Cluster HE-Frag variant is dedicated to destroying light vehicles and soft "
-            "targets such as enemy infantry. Damage vs. infantry is AP * 6 / 10"
+            f"The Cluster HE-Frag variant is dedicated to destroying light vehicles and soft "
+            f"targets such as enemy infantry.\n\n"
+            f"- Damage vs. infantry is #styleTurquoise{{AP * 6}} / 10"
         ),
         "trait_texture_name": "Texture_Trait_Icon_clusterHEFrag",
         "trait_hint_title_token": "IXIZSDQCRB",
