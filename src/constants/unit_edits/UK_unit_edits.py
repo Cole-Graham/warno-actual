@@ -770,6 +770,16 @@ uk_unit_edits = {
         },
         "availability": [0, 10, 7, 0],
     },
+
+    "Groupe_AT_UK": {
+        "CommandPoints": 35,
+        "armor": "Infantry_armor_reference",
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
+        "availability": [10, 7, 0, 0],
+    },
     
     "Rifles_Gurkhas_UK": {
         "CommandPoints": 70,

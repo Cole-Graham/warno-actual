@@ -363,6 +363,7 @@ UK_motorized_newdivisionrules = {
         ("Engineers_TA_UK", 2, [8, 0, 0, 0], ["Bedford_MJ_4t_trans_UK", "FV603_Saracen_UK"]),
         ("Gun_Group_TA_UK", 2, [12, 0, 0, 0], ["Bedford_MJ_4t_trans_UK", "FV603_Saracen_UK"]),
         ("AT_Group_TA_UK", 2, [12, 0, 0, 0], ["Bedford_MJ_4t_trans_UK", "FV603_Saracen_UK"]),
+        ("Groupe_AT_UK", 2, [10, 7, 0, 0], ["Bedford_MJ_4t_trans_UK", "Saxon_UK"]),
         ("RMP_UK", 2, [0, 12, 9, 0], ["LandRover_MP_UK"]),
         ("ATteam_Milan_1_UK", 2, [9, 7, 5, 0], ["LandRover_UK", "Saxon_UK"]),
         ("ATteam_Milan_2_UK", 2, [6, 4, 0, 0], ["LandRover_UK", "Saxon_UK"]),
