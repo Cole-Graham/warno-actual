@@ -2754,11 +2754,17 @@ usa_unit_edits = {
     "M728_CEV_US": {
         "CommandPoints": 65,
         "availability": [8, 6, 0, 0],
+        "armor": {
+            "top": (3, None),
+        },
     },
 
     "M728A1_CEV_US": {
         "CommandPoints": 75,
         "availability": [0, 8, 6, 0],
+        "armor": {
+            "top": (3, None),
+        },
     },
     
     "M2_Bradley_IFV_NG_US": {
