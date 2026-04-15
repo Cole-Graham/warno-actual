@@ -2351,7 +2351,7 @@ rda_unit_edits = {
     },
     
     "PT76B_DDR": {
-        "CommandPoints": 30,
+        "CommandPoints": "PT76B_Naval_SOV",
         "availability": [8, 6, 0, 0],
     },
 
@@ -2370,7 +2370,7 @@ rda_unit_edits = {
     },
 
     "Mi_14PL_recon_DDR": {  # #RECO3 AUFKL. Mi-14PL
-        "CommandPoints": 50,
+        "CommandPoints": "Mi_14PL_recon_SOV",
         "availability": [0, 4, 0, 0],
     },
 
@@ -2753,7 +2753,7 @@ rda_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -2781,7 +2781,7 @@ rda_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "UpgradeFromUnit": "FOB_DDR",
         "WeaponDescriptor": {
@@ -2803,7 +2803,7 @@ rda_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -2827,7 +2827,7 @@ rda_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -2863,7 +2863,7 @@ rda_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {

@@ -57,7 +57,7 @@ UK_NEW_UNITS = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {

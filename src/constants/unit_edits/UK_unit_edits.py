@@ -5,16 +5,6 @@
 # fmt: off
 uk_unit_edits = {
     # UK LOG
-    "LandRover_CMD_UK": {
-        "CommandPoints": 145,
-        "Divisions": {
-            "default": {
-                "cards": 1,
-            },
-        },
-        "availability": [0, 4, 0, 0],
-    },
-    
     "LandRover_CMD_nonBerlin_UK": {
         "CommandPoints": 145,
         "Divisions": {
@@ -1578,7 +1568,7 @@ uk_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "SpecialtiesList": {
             "add_specs": ["'_remote_controlled'"],
@@ -1593,7 +1583,7 @@ uk_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "SpecialtiesList": {
             "add_specs": ["'_remote_controlled'"],

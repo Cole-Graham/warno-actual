@@ -997,5 +997,74 @@ SOV_NEW_UNITS = {
             },
         }
     },
+    
+    ("Atteam_Fagot_Naval_VDV_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "6745d568-c67c-4f66-b225-52c5d8676af7",
+        "InfantrySquadModuleGUID": "7402469c-cab8-42b4-91f1-f5df692e8b7c",
+        "ShowroomGUID": "37d2361b-b0a9-4af9-8bc1-3031a5ea55db",
+        "CadavreGUID": "f04b5ae7-0169-4201-944a-17b72aa25a24",
+        "NewName": "ATteam_Faktoriya_Naval_VDV_SOV",
+        "GameName": {
+            "display": "DESANT. MOR. FAKTORIYA",
+            "token": "EENCKCRHVQ",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_AT",
+                "Infanterie_Spec_Defense",
+                "UNITE_ATteam_Faktoriya_Naval_VDV_SOV",
+                "Unite"
+            ],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_9K111M_Faktoriya": 6,
+            },
+            "equipmentchanges": {
+                "replace": [("ATGM_9K111_Fagot", "ATGM_9K111M_Faktoriya")]
+            },
+        },
+        "CommandPoints": 35,
+        "SpecialtiesList": [
+                'infantry_equip_heavy',
+            ],
+        "ButtonTexture": "Atteam_Fagot_Naval_VDV_SOV",
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [7, 5, 4, 0],
+        "max_speed": 20,
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/Attack', 'EOrderType/MoveAndAttack',
+                   'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load',
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": True, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": True,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "SOV",
+        "depiction_type": "Towed",
+        "alternatives_count": 2,
+        "servants": ("G_Morskaya", "D_Morskaya"),
+        "servant_types": {
+            "showroom": {
+                "G_Morskaya": ["ATGMServantLeft"],
+                "D_Morskaya": ["ATGMServantRight"]
+            },
+            "subdepictions": {
+                "G_Morskaya": ["ATGMServantLeft"],
+                "D_Morskaya": ["ATGMServantRight"]
+            },
+        }
+    },
 } 
 # fmt: on

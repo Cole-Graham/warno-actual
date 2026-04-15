@@ -93,11 +93,11 @@ mi_8tv_gunship_sov: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
     "MissileCarriage_ndf": {
         ("MissileCarriage_Mi_8TV_Gunship_SOV", "TMissileCarriageConnoisseur"): { # (Namespace, Object type)
             "WeaponInfos": {
-                0: "remove",
-                1: {
+                0: ("remove",),
+                1: ("edit", {
                     "MissileCount": 4,
                     "WeaponIndex": 1,
-                },
+                }),
             },
         },
     },

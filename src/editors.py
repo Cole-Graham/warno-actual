@@ -49,7 +49,7 @@ from .gameplay_mods import (
     edit_gen_gp_gfx_depictioninfantry,
     edit_gen_gp_gfx_depictionvehicles,
     edit_gen_gp_gfx_depictionvehiclesshowroom,
-    edit_gen_gp_gfx_effetssurunite,
+    edit_gen_gp_effects_effetssurunite,
     edit_gen_gp_gfx_experiencelevels,
     edit_gen_gp_gfx_firedescriptor,
     edit_gen_gp_gfx_ndfdepictionlist,
@@ -172,7 +172,7 @@ __all__ = [
     'edit_gen_gp_gfx_depictioninfantry',
     'edit_gen_gp_gfx_depictionvehicles',
     'edit_gen_gp_gfx_depictionvehiclesshowroom',
-    'edit_gen_gp_gfx_effetssurunite',
+    'edit_gen_gp_effects_effetssurunite',
     'edit_gen_gp_gfx_experiencelevels',
     'edit_gen_gp_gfx_firedescriptor',
     'edit_gen_gp_gfx_mimeticimpactmapping',
@@ -391,8 +391,8 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/Generated/Gameplay/Gfx/CapaciteList.ndf": [
             (edit_gen_gp_gfx_capacitelist, "gameplay"),
         ],
-        "GameData/Generated/Gameplay/Gfx/EffetsSurUnite.ndf": [
-            (edit_gen_gp_gfx_effetssurunite, "gameplay"),
+        "GameData/Generated/Gameplay/Effects/EffetsSurUnite.ndf": [
+            (edit_gen_gp_effects_effetssurunite, "gameplay"),
         ],
         "GameData/Generated/Gameplay/Gfx/ConditionsDescriptor.ndf": [
             (edit_gen_gp_gfx_conditionsdescriptor, "gameplay"),

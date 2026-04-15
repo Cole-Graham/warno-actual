@@ -1,5 +1,6 @@
 """Editor for Ammunition.ndf."""
 
+import re
 from typing import Any, Dict, List, Tuple
 from uuid import uuid4
 
@@ -183,6 +184,9 @@ def edit_gen_gp_gfx_ammunition(source_path, game_db: Dict[str, Any]) -> None:
             except Exception as e:
                 logger.error(f"Failed processing weapon {weapon_name}: {str(e)}")
                 continue
+
+        # Blanket-disable HasDeploymentTime on ammo not used by protected units
+        _blanket_disable_deployment_time(source_path, game_db)
 
         # Write dictionary entries
         if ingame_names or calibers:
@@ -546,3 +550,24 @@ def write_ammo_dictionary_entries(ingame_names: List[Tuple[str, str, str]],
         
     if entries:
         write_dictionary_entries(entries, dictionary_type="units")
+
+
+_SALVO_SUFFIX_RE = re.compile(r'(_x\d+|_salvolength\d+)$')
+
+
+def _blanket_disable_deployment_time(source_path, game_db: Dict[str, Any]) -> None:
+    """Set HasDeploymentTime = False on all ammo not used by protected units."""
+    protected_ammo = set(
+        game_db.get("deployment_time_units", {}).get("protected_ammo", []),
+    )
+    count = 0
+    for descr in source_path:
+        membr = descr.v.by_m("HasDeploymentTime", False)
+        if membr is None or membr.v != "True":
+            continue
+        base_name = descr.n.removeprefix("Ammo_").removeprefix("Missile_")
+        base_name = _SALVO_SUFFIX_RE.sub('', base_name)
+        if base_name not in protected_ammo:
+            membr.v = "False"
+            count += 1
+    logger.info(f"Blanket disabled HasDeploymentTime on {count} ammo descriptors")

@@ -26,7 +26,7 @@ pol_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "UpgradeFromUnit": "FOB_POL",
         "WeaponDescriptor": {
@@ -61,7 +61,7 @@ pol_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         # "UpgradeFromUnit": "FOB_POL",  # no fob in korpus
         "WeaponDescriptor": {
@@ -92,7 +92,7 @@ pol_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -125,7 +125,7 @@ pol_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "UpgradeFromUnit": "DCA_ZU_23_2_Para_POL",
         "WeaponDescriptor": {
@@ -2435,7 +2435,7 @@ pol_unit_edits = {
     },
 
     "PT76B_POL": {  # PT-76B
-        "CommandPoints": 30,
+        "CommandPoints": "PT76B_Naval_SOV",
         "availability": [8, 6, 0, 0],
     },
     
@@ -2559,7 +2559,7 @@ pol_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -2580,7 +2580,7 @@ pol_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {

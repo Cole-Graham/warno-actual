@@ -3871,7 +3871,7 @@ usa_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -3905,7 +3905,7 @@ usa_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "UpgradeFromUnit": None,
         "WeaponDescriptor": {
@@ -3940,7 +3940,7 @@ usa_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -3974,7 +3974,7 @@ usa_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -4475,6 +4475,9 @@ usa_unit_edits = {
         "availability": [0, 0, 0, 1],
         "max_speed": 750,
         "UpgradeFromUnit": "F15E_StrikeEagle_US",
+        "SpecialtiesList": {
+            "add_specs": ["'_noise_stealth'"],
+        },
     },
     
     "F4E_Phantom_II_AA_US": {
@@ -4670,16 +4673,41 @@ usa_unit_edits = {
             "add_specs": ["'terrain_radar'"],
         },
         "availability": [0, 2, 0, 0],
+        "Alternatives": {
+            "mesh": "F111F_Sweep40_US",
+        },
         "WeaponDescriptor": {
+            "Salves": {
+                "insert": [(1, 1)],
+            },
+            "SalvoIsMainSalvo": [True, True],
+            "turrets": {
+                0: {
+                    "Tag": '"tourelle1"',
+                    "YulBoneOrdinal": 1,
+                },
+            },
             "equipmentchanges": {
                 "replace": [
                     (
                         "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength8",
                         "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength12",
-                        "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength8",
-                        "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength12"
                     ),
                 ],
+                "insert": [(1, "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength12")],
+                "insert_edits": {
+                    1: {
+                        "turret_edits": {
+                            "Tag": '"tourelle2"',
+                            "YulBoneOrdinal": 2,
+                        },
+                        "AmmoBoxIndex": 1,
+                        "HandheldEquipmentKey": "'WeaponAlternative_3'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
+                    },
+                },
             },
         },
     },

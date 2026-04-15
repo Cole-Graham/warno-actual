@@ -857,6 +857,35 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("PM_PPS_43", "small_arms", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_sa_intermediate",
+            },
+            "hit_roll": {
+                "Idling": 45,
+                "Moving": 35,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 0.4,
+                "MaximumRangeGRU": 450,
+                "MaximumRangeHelicopterGRU": 400,
+                "PhysicalDamages": 0.05,
+                "SuppressDamages": 5,
+                "DisplaySalveAccuracy": False,
+                "AimingTime": 0.5,
+                "TimeBetweenTwoSalvos": 3.1,
+                "ShotsCountPerSalvo": 4,
+                "AffichageMunitionParSalve": 20,
+            },
+        },
+        "SupplyCost": 1.0,
+        "NbWeapons": [7, 6, 5, 4, 3, 2],
+        "WeaponDescriptor": {
+            "Salves": 22,               
+        },
+    },
+    
     ("PM_MPi_AKSU_74NK", "small_arms", None, False): {  # 568
        "Ammunition": {
             "Arme": {

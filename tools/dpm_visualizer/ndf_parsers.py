@@ -252,7 +252,7 @@ def parse_veterancy_effect_bonuses(mod_src_path: Path) -> Dict[str, Dict[str, fl
           - If ModifierType_Additionnel: uses value directly as percentage (e.g., 12 -> 0.12)
         - reload_speed_multiplier: multiplier for time between salvos (e.g., 0.8 means 20% faster)
     """
-    ndf_path = "GameData/Generated/Gameplay/Gfx/EffetsSurUnite.ndf"
+    ndf_path = "GameData/Generated/Gameplay/Effects/EffetsSurUnite.ndf"
     effect_bonuses: Dict[str, Dict[str, float]] = {}
     
     try:
@@ -366,7 +366,7 @@ def parse_shock_bonuses(mod_src_path: Path) -> Dict[str, float]:
         - "shot_time_multiplier": float (e.g., 0.85 for 15% faster)
         - "aim_time_multiplier": float (e.g., 0.85 for 15% faster)
     """
-    ndf_path = "GameData/Generated/Gameplay/Gfx/EffetsSurUnite.ndf"
+    ndf_path = "GameData/Generated/Gameplay/Effects/EffetsSurUnite.ndf"
     shock_bonuses: Dict[str, float] = {
         "damage_multiplier": 1.15,  # Default fallback values
         "salvo_reload_multiplier": 0.85,
@@ -496,7 +496,7 @@ def parse_militia_bonuses(mod_src_path: Path) -> Dict[str, float]:
         - "reload_speed_multiplier": float (e.g., 1.20 means 20% slower reload)
         - "aim_time_multiplier": float (e.g., 1.20 means 20% slower aiming)
     """
-    ndf_path = "GameData/Generated/Gameplay/Gfx/EffetsSurUnite.ndf"
+    ndf_path = "GameData/Generated/Gameplay/Effects/EffetsSurUnite.ndf"
     militia_bonuses: Dict[str, float] = {
         "reload_speed_multiplier": 1.20,  # Default fallback values
         "aim_time_multiplier": 1.20,
@@ -568,7 +568,7 @@ def parse_reservist_bonuses(mod_src_path: Path) -> Dict[str, float]:
         - "reload_speed_multiplier": float (e.g., 1.20 means 20% slower reload)
         - "aim_time_multiplier": float (e.g., 1.20 means 20% slower aiming)
     """
-    ndf_path = "GameData/Generated/Gameplay/Gfx/EffetsSurUnite.ndf"
+    ndf_path = "GameData/Generated/Gameplay/Effects/EffetsSurUnite.ndf"
     reservist_bonuses: Dict[str, float] = {
         "reload_speed_multiplier": 1.20,  # Default fallback values
         "aim_time_multiplier": 1.20,

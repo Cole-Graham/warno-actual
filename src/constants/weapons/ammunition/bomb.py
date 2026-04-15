@@ -454,8 +454,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "PhysicalDamages": 1,
                 "RadiusSplashPhysicalDamagesGRU": 75,
                 "RadiusSplashSuppressDamagesGRU": 100,
-                "ShotsCountPerSalvo": 6,
-                "SimultaneousShotsCount": 2,
+                "ShotsCountPerSalvo": 12,
+                "SimultaneousShotsCount": 1,
                 "SupplyCost": 500.0,
             },
         },
@@ -608,8 +608,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "ImpactHappening": "'MLRSClusterAP225m'",
                 "TimeBetweenTwoShots": 0.2,
                 "TimeBetweenTwoFx": 0.2,
-                "DispersionAtMaxRangeGRU": 50, # Because bomblets
-                "DispersionAtMinRangeGRU": 50,
+                "DispersionAtMaxRangeGRU": 80, # Because bomblets
+                "DispersionAtMinRangeGRU": 80,
                 "PhysicalDamages": 1,
                 "RadiusSplashPhysicalDamagesGRU": 250,
                 "RadiusSplashSuppressDamagesGRU": 333,

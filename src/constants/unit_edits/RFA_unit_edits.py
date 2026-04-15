@@ -54,7 +54,7 @@ rfa_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "UpgradeFromUnit": "FOB_RFA",
     },
@@ -78,7 +78,7 @@ rfa_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "UpgradeFromUnit": "FOB_RFA",
     },
@@ -1809,7 +1809,7 @@ rfa_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -1839,7 +1839,7 @@ rfa_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -1848,23 +1848,23 @@ rfa_unit_edits = {
         },
     },
 
-    "DCA_FK20_2_20mm_RFA": {
-        "CommandPoints": 25,
-        "availability": [9, 7, 0, 0],
-        "max_speed": 6,
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
-        },
-        "WeaponDescriptor": {
-            "Salves": {
-                "DCA_1_canon_FK20_20mm_TOWED": 29,
-            },
-        },
-    },
+    # "DCA_FK20_2_20mm_RFA": {
+    #     "CommandPoints": 25,
+    #     "availability": [9, 7, 0, 0],
+    #     "max_speed": 6,
+    #     # "capacities": {
+    #     #    "add_capacities": ["Deploy", "Deploy_ok"],
+    #     # },
+    #     "WeaponDeployment": {
+    #         "TimeForWeaponDeployment": 15,
+    #         "TimeForWeaponPacking": 1,
+    #     },
+    #     "WeaponDescriptor": {
+    #         "Salves": {
+    #             "DCA_1_canon_FK20_20mm_TOWED": 29,
+    #         },
+    #     },
+    # },
 
     "Faun_Kraka_20mm_RFA": {
         "CommandPoints": 35,

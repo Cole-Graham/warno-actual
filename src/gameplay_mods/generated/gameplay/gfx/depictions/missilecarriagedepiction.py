@@ -40,71 +40,41 @@ def _edit_depictions(source_path: Any, ndf_file: str) -> None:
                 continue
 
             namespace, obj_type = key
-            if namespace is not None and namespace.endswith(unit_name):
-                missile_carriage = source_path.by_n(namespace)
+            if not namespace:
+                continue
 
-                for row_name_or_type, value in edits.items():
-                    if row_name_or_type == "Missiles":
-                        missile_list = missile_carriage.v.by_m(row_name_or_type)
-                        rows_to_add, rows_to_remove = [], []
-                        for missile_index, missile_edits in value.items():
-                            if isinstance(missile_edits, tuple):
-                                if missile_edits[0] == "add":
-                                    rows_to_add.append(missile_index)
-                                    logger.info(f"Added missile {missile_index} {missile_edits[1]} for {unit_name}")
-                                elif missile_edits[0] == "replace":
-                                    missile_list.v.replace(missile_index, missile_edits[1])
-                                    logger.info(f"Replaced row {missile_index} for {unit_name}")
+            missile_carriage = source_path.by_n(namespace)
+            if not missile_carriage:
+                logger.error(f"Could not find missile carriage depiction {namespace} for {unit_name}")
+                continue
 
-                            elif "remove" in missile_edits:
-                                rows_to_remove.append(missile_index)
-                            else:
-                                for member, new_value in missile_edits.items():
-                                    missile_list.v[missile_index].v.by_m(member).v = str(new_value)
-                                    logger.info(f"Edited {member} for {unit_name}")
+            for row_name_or_type, value in edits.items():
+                if row_name_or_type == "Missiles":
+                    missile_list = missile_carriage.v.by_m(row_name_or_type)
+                    rows_to_insert = []
+                    rows_to_remove = []
+                    for row_index, (edit_op, *edit_data) in value.items():
+                        if edit_op == "edit":
+                            for member, new_value in edit_data[0].items():
+                                missile_list.v[row_index].v.by_m(member).v = str(new_value)
+                                logger.info(f"Edited {member} for {unit_name}")
+                        elif edit_op == "replace":
+                            missile_list.v.replace(row_index, edit_data[0])
+                            logger.info(f"Replaced row {row_index} for {unit_name}")
+                        elif edit_op == "remove":
+                            rows_to_remove.append(row_index)
+                        elif edit_op == "insert":
+                            rows_to_insert.append((row_index, edit_data[0]))
 
-                        if rows_to_add:
-                            for row in rows_to_add:
-                                missile_list.v.add(row)
-                        if rows_to_remove:
-                            for row_index in rows_to_remove:
-                                missile_list.v.remove(row_index)
-                                logger.info(f"Removed missile {row_index} for {unit_name}")
-
-            elif namespace is not None and namespace.startswith("SubGenerators_Showroom_"):
-                missile_carriage = source_path.by_n(namespace)
-
-                for row_name_or_type, value in edits.items():
-                    if row_name_or_type == "Missiles":
-                        missile_list = missile_carriage.v.by_m(row_name_or_type)
-                        rows_to_add, rows_to_remove = [], []
-                        for missile_index, missile_edits in value.items():
-
-                            if isinstance(missile_edits, tuple):
-                                if missile_edits[0] == "add":
-                                    rows_to_add.append(missile_edits[1])
-                                    logger.info(f"Added missile {missile_index} {missile_edits[1]} for {unit_name}")
-                                elif missile_edits[0] == "replace":
-                                    missile_list.v.replace(missile_index, missile_edits[1])
-                                    logger.info(f"Replaced row {missile_index} for {unit_name}")
-
-                            elif "remove" in missile_edits:
-                                rows_to_remove.append(missile_index)
-                                logger.info(f"Removed missile {missile_index} {missile_edits[1]} for {unit_name}")
-                            else:
-                                for member, new_value in missile_edits.items():
-                                    missile_list.v[missile_index].v.by_m(member).v = str(new_value)
-                                    logger.info(f"Edited {member} to {new_value} for {unit_name}")
-
-                        if rows_to_add:
-                            for row in rows_to_add:
-                                missile_list.v.add(row)
-                        if rows_to_remove:
-                            for row_index in rows_to_remove:
-                                missile_list.v.remove(row_index)
-
-            else:
-                pass  # expand if we need to look for row by type
+                    for row_index in sorted(rows_to_remove, reverse=True):
+                        missile_list.v.remove(row_index)
+                        logger.info(f"Removed row {row_index} for {unit_name}")
+                    for row_index, ndf_str in sorted(rows_to_insert, reverse=True):
+                        missile_list.v.insert(row_index, ndf_str)
+                        logger.info(f"Inserted row at {row_index} for {unit_name}")
+                else:
+                    missile_carriage.v.by_m(row_name_or_type).v = value
+                    logger.info(f"Edited {row_name_or_type} for {unit_name}")
             
 
 def _create_new_depictions(source_path: Any, ndf_file: str) -> None:

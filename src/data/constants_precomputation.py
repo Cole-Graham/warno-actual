@@ -157,10 +157,9 @@ def build_constants_precomputation_data(config: Dict[str, Any], game_db: Dict[st
                     "Fix unit edits or add quantities to NbWeapons in small_arms.py"
                 )
 
-        # Build deployment time units mapping (ammo HasDeploymentTime -> unit modules)
+        # Build protected ammo set for blanket deployment-time disable
         deployment_time_units = build_deployment_time_units(game_db) if game_db else {
-            "units_add_deployment": [],
-            "units_remove_deployment": [],
+            "protected_ammo": [],
         }
         save_deployment_time_units(deployment_time_units, config)
 
@@ -176,7 +175,7 @@ def build_constants_precomputation_data(config: Dict[str, Any], game_db: Dict[st
             f"{len(mappings.get('new_command_unit_deck_packs', {}))} new command unit deck packs, "
             f"{len(ammunition_renames.get('renames_old_new', {}))} ammunition renames, "
             f"{len(insert_templates)} insert turret templates, "
-            f"{len(deployment_time_units.get('units_add_deployment', []))} deployment time units"
+            f"{len(deployment_time_units.get('protected_ammo', []))} protected ammo"
         )
         return mappings
     except Exception as e:
@@ -305,85 +304,116 @@ def save_ammunition_renames(renames: Dict[str, Dict[str, str]], config: Dict[str
 
 
 def build_deployment_time_units(game_db: Dict[str, Any]) -> Dict[str, List[str]]:
-    """Build mapping of units that need WeaponDeployment module added or removed.
-    
-    Scans ammunition and missile constants for HasDeploymentTime edits, then
-    reverse-maps ammo names to unit names via game_db weapons data.
-    Filters out units already in unit_edits or NEW_UNITS (handled separately).
-    
+    """Build protected unit/ammo sets for blanket deployment-time disable.
+
+    The engine requires that if ANY ammo on a unit has ``HasDeploymentTime =
+    True``, the unit MUST have ``TWeaponDeploymentModuleDescriptor``, and vice
+    versa.  So the module and the ammo flag must stay in sync.
+
+    **Protected ammo** = ammo whose ``HasDeploymentTime`` will remain ``True``
+    after patching:
+      - ammo used by units with ``"WeaponDeployment"`` in unit_edits/NEW_UNITS
+      - ammo whose constants explicitly set ``HasDeploymentTime = True``
+
+    **Protected units** = units that must keep (or gain)
+    ``TWeaponDeploymentModuleDescriptor``:
+      - units with ``"WeaponDeployment"`` in unit_edits/NEW_UNITS
+      - any unit carrying at least one protected ammo
+
     Returns:
-        Dict with units_add_deployment and units_remove_deployment lists
+        Dict with ``protected_units`` and ``protected_ammo`` lists.
     """
-    ammo_needs_deployment: set = set()
-    ammo_loses_deployment: set = set()
-
-    for (weapon_name, _category, _donor, _is_new), data in {**ammunitions, **missiles}.items():
-        ammo_data = data.get("Ammunition", {})
-        parent_membr = ammo_data.get("parent_membr", {})
-        if not parent_membr:
-            continue
-
-        if "HasDeploymentTime" in parent_membr:
-            if parent_membr["HasDeploymentTime"]:
-                ammo_needs_deployment.add(weapon_name)
-            else:
-                ammo_loses_deployment.add(weapon_name)
-
-        add_entry = parent_membr.get("add")
-        if isinstance(add_entry, list) and len(add_entry) == 2 and isinstance(add_entry[1], str):
-            member_str = add_entry[1]
-            if "HasDeploymentTime" in member_str:
-                value_str = member_str.split("=", 1)[1].strip()
-                if value_str == "True":
-                    ammo_needs_deployment.add(weapon_name)
-                elif value_str == "False":
-                    ammo_loses_deployment.add(weapon_name)
-
     weapons_db = game_db.get("weapons", {})
-
-    # Regex to strip salvo variant suffixes (_xN or _salvolengthN) from ammo names
+    ammo_props = game_db.get("ammunition", {}).get("ammo_properties", {})
     _salvo_suffix_re = re.compile(r'(_x\d+|_salvolength\d+)$')
 
-    # Reverse-map: ammo name -> set of unit names
-    units_add: set = set()
-    units_remove: set = set()
+    # --- 1. Seed protected units from unit_edits / NEW_UNITS ---
+    unit_edits = load_unit_edits()
+    protected_units: set = set()
+    for unit_name_key, edits in unit_edits.items():
+        if "WeaponDeployment" in edits:
+            protected_units.add(unit_name_key)
+    for _key, new_unit_data in NEW_UNITS.items():
+        if isinstance(new_unit_data, dict) and "WeaponDeployment" in new_unit_data:
+            protected_units.add(new_unit_data.get("NewName", ""))
 
+    # --- 1b. Build per-unit ammo replacement map from unit_edits equipmentchanges ---
+    unit_replace_map: Dict[str, Dict[str, str]] = {}
+    for unit_name, edits in unit_edits.items():
+        replacements: Dict[str, str] = {}
+        replace_entries = (
+            edits.get("WeaponDescriptor", {})
+            .get("equipmentchanges", {})
+            .get("replace", [])
+        )
+        for replacement in replace_entries:
+            if (
+                not isinstance(replacement, (list, tuple))
+                or len(replacement) < 2
+                or not isinstance(replacement[0], str)
+                or not isinstance(replacement[1], str)
+            ):
+                continue
+            old_base = _salvo_suffix_re.sub("", replacement[0])
+            new_base = _salvo_suffix_re.sub("", replacement[1])
+            replacements[old_base] = new_base
+        if replacements:
+            unit_replace_map[unit_name] = replacements
+
+    # --- 2. Build protected ammo set ---
+    protected_ammo: set = set()
+
+    # 2a. All ammo on explicitly protected units keeps its vanilla value
     for weapon_descr_name, weapon_info in weapons_db.items():
         if not weapon_descr_name.startswith("WeaponDescriptor_"):
             continue
         unit_name = weapon_descr_name.replace("WeaponDescriptor_", "", 1)
-
-        unit_base_ammos: set = set()
+        if unit_name not in protected_units:
+            continue
         for turret in weapon_info.get("turrets", {}).values():
             for ammo_name in turret.get("weapons", {}).keys():
-                unit_base_ammos.add(_salvo_suffix_re.sub('', ammo_name))
+                base = _salvo_suffix_re.sub('', ammo_name)
+                # Only protect if the vanilla ammo actually has the flag
+                if ammo_props.get(f"Ammo_{base}", {}).get("HasDeploymentTime"):
+                    protected_ammo.add(base)
 
-        if unit_base_ammos & ammo_needs_deployment:
-            units_add.add(unit_name)
-        elif unit_base_ammos & ammo_loses_deployment:
-            units_remove.add(unit_name)
+    # 2b. Ammo whose constants explicitly set HasDeploymentTime = True
+    for (weapon_name, _cat, _donor, _is_new), data in {**ammunitions, **missiles}.items():
+        ammo_data = data.get("Ammunition", {})
+        parent_membr = ammo_data.get("parent_membr", {})
+        if not parent_membr:
+            continue
+        if parent_membr.get("HasDeploymentTime") is True:
+            protected_ammo.add(weapon_name)
+            continue
+        add_entry = parent_membr.get("add")
+        if isinstance(add_entry, list) and len(add_entry) == 2 and isinstance(add_entry[1], str):
+            if "HasDeploymentTime" in add_entry[1]:
+                if add_entry[1].split("=", 1)[1].strip() == "True":
+                    protected_ammo.add(weapon_name)
 
-    # Filter out units whose unit_edits already specify WeaponDeployment, or NEW_UNITS
-    unit_edits = load_unit_edits()
-    excluded_units: set = set()
-    for unit_name_key, edits in unit_edits.items():
-        if "WeaponDeployment" in edits:
-            excluded_units.add(unit_name_key)
-    for _key, new_unit_data in NEW_UNITS.items():
-        if isinstance(new_unit_data, dict) and "NewName" in new_unit_data:
-            excluded_units.add(new_unit_data["NewName"])
-
-    units_add -= excluded_units
-    units_remove -= excluded_units
+    # --- 3. Reverse-map: any unit carrying protected ammo must keep the module ---
+    for weapon_descr_name, weapon_info in weapons_db.items():
+        if not weapon_descr_name.startswith("WeaponDescriptor_"):
+            continue
+        unit_name = weapon_descr_name.replace("WeaponDescriptor_", "", 1)
+        if unit_name in protected_units:
+            continue
+        for turret in weapon_info.get("turrets", {}).values():
+            for ammo_name in turret.get("weapons", {}).keys():
+                base_name = _salvo_suffix_re.sub('', ammo_name)
+                effective_name = unit_replace_map.get(unit_name, {}).get(base_name, base_name)
+                if effective_name in protected_ammo:
+                    protected_units.add(unit_name)
+                    break
 
     logger.info(
-        f"Deployment time units: {len(units_add)} add, {len(units_remove)} remove "
-        f"(from {len(ammo_needs_deployment)} ammo needing deployment, "
-        f"{len(ammo_loses_deployment)} losing deployment)"
+        f"Deployment time: {len(protected_units)} protected units, "
+        f"{len(protected_ammo)} protected ammo base names"
     )
     return {
-        "units_add_deployment": sorted(units_add),
-        "units_remove_deployment": sorted(units_remove),
+        "protected_units": sorted(protected_units),
+        "protected_ammo": sorted(protected_ammo),
     }
 
 

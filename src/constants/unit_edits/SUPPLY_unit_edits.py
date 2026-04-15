@@ -487,7 +487,7 @@ supply_unit_edits = {
     "Bedford_TM_6x6_supply_UK": {},
     
     "Kalmar_supply_SOV": {
-        "CommandPoints": 255,
+        "CommandPoints": 220,
         "SupplyCapacity": 8400.0,
         "SupplyDescriptor": "DvisionalSupply",
         "availability": [2, 0, 0, 0],

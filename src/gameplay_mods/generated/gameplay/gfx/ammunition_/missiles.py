@@ -13,7 +13,7 @@ from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.ndf_utils import strip_quotes
 from src.utils.logging_utils import setup_logger
 
-from .ammunition import get_supply_costs
+from .ammunition import get_supply_costs, _blanket_disable_deployment_time
 from .handlers import (
     apply_bomb_damage_standards,
     apply_category_aa_missile_standards,
@@ -117,6 +117,9 @@ def edit_gen_gp_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]
             except Exception as e:
                 logger.error(f"Failed processing missile {weapon_name}: {str(e)}")
                 continue
+
+        # Blanket-disable HasDeploymentTime on missiles not used by protected units
+        _blanket_disable_deployment_time(source_path, game_db)
 
         # Write dictionary entries
         if ingame_names or calibers:

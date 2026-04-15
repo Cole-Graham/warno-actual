@@ -240,9 +240,15 @@ def build_ammo_properties(parse_ammo_source) -> Dict[str, Any]:
         if radius_membr is not None:
             radius_splash = _parse_numeric_member_value(radius_membr.v)
 
+        has_deployment_membr = ammo_descr.v.by_m("HasDeploymentTime", False)
+        has_deployment_time = (
+            has_deployment_membr is not None and has_deployment_membr.v == "True"
+        )
+
         ammo_properties[ammo_descr.n] = {
             "MinMaxCategory": min_max_category,
             "RadiusSplashPhysicalDamagesGRU": radius_splash,
+            "HasDeploymentTime": has_deployment_time,
         }
 
     return ammo_properties

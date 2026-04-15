@@ -178,7 +178,7 @@ NEW_TRAITS = {
             f"greater distance than most units."
         )),
         "extended": ("CTDRWTDBAR", (
-            f"#styleGreen{{- Approximately 7200m}}"
+            f"#styleGreen{{• Approximately 7200m}}"
         )),
         "texture": "good_airoptics.png",
     },
@@ -190,7 +190,7 @@ NEW_TRAITS = {
             f"from a greater distance than most units."
         )),
         "extended": ("SKLWZWNVQI", (
-            f"#styleTurquoise{{- Approximately 9200m}}"
+            f"#styleTurquoise{{• Approximately 9200m}}"
         )),
         "texture": "verygood_airoptics.png",
     },
@@ -211,7 +211,7 @@ NEW_TRAITS = {
             f"reposition easily on the battlefield."
         )),
         "extended": ("KNWOOZEECP", (
-            f"#styleGreen{{- Increased movement speed (26 Km/h)}}"
+            f"#styleGreen{{• Increased movement speed (26 Km/h)}}"
         )),
         "texture": "light_equipment.png",
     },
@@ -223,8 +223,8 @@ NEW_TRAITS = {
             f"struggle to maintain cohesion under fire."
         )),
         "extended": ("UQBVPVHSOX", (
-            f"#styleGreen{{- Increased movement speed (26 Km/h)}}\n"
-            f"#moral_color_bad_2{{- Increased suppression damage taken while moving (33%)}}"
+            f"#styleGreen{{• Increased movement speed (26 Km/h)}}\n"
+            f"#moral_color_bad_2{{• Increased suppression damage taken while moving (33%)}}"
         )),
         "texture": "medium_equipment.png",
     },
@@ -244,7 +244,7 @@ NEW_TRAITS = {
             f"hampering their mobility on the battlefield."
         )),
         "extended": ("ZGBDBQRXQA", (
-            f"#moral_color_bad_2{{- Increased suppression damage taken while moving (33%)}}"
+            f"#moral_color_bad_2{{• Increased suppression damage taken while moving (33%)}}"
         )),
         "texture": "heavy_equipment.png",
     },
@@ -266,8 +266,8 @@ NEW_TRAITS = {
             f"enemy artillery if their position is revealed."
         )),
         "extended": ("EFCIVTGYYW", (
-            f"#moral_color_bad_2{{- Increased suppression damage taken while moving (33%)}}\n"
-            f"#moral_color_bad_3{{- Reduced movement speed (9 - 14 Km/h)}}"
+            f"#moral_color_bad_2{{• Increased suppression damage taken while moving (33%)}}\n"
+            f"#moral_color_bad_3{{• Reduced movement speed (9 - 14 Km/h)}}"
         )),
         "texture": "veryheavy_equipment.png",
     },
@@ -328,7 +328,7 @@ NEW_TRAITS = {
             f"makes it an easier target to hit. "
         )),
         "extended": ("SMFUEOJEQG", (
-            f"#styleGreen{{- 1.75 stealth}}"
+            f"#styleGreen{{• 1.75 stealth}}"
         )),
         "texture": "terrain_radar.png",
     },
@@ -340,7 +340,7 @@ NEW_TRAITS = {
             "while marching at a faster pace."
         )),
         "extended": ("UQVBWWXIIQ", (
-            f"#styleTurquoise{{- 50% movement speed bonus while above 90% morale}}"
+            f"#styleTurquoise{{• 50% movement speed bonus while above 90% morale}}"
         )),
         "texture": "swift.png",
     },
@@ -353,22 +353,33 @@ NEW_TRAITS = {
             f"exposing itself to enemy fire, at the cost of a required deployment time."
         )),
         "extended": ("JGFNIHQPKV", (
-            f"#styleGreen{{- 0 noise malus while firing}}"
+            f"#styleGreen{{• No noise malus while firing}}"
         )),
         "texture": "remote_controlled.png",
+    },
+    
+    "_noise_stealth": {
+        "title": ("RLSAAIABIP", "Conditional Stealth"),
+        "description": ("WMHNMEYKTJ", (
+            f"This unit will become much easier to detect after firing its weapon."
+        )),
+        "extended": ("IOIJDUHROS", (
+            f"#moral_color_bad_2{{• 2.0 noise malus while firing}}"
+        )),
+        "texture": "noise_stealth.png",
     },
     
     "_supply_runner": {
         "title": ("FOQNHPUZUW", "Runner"),
         "description": ("UQVNPUWWQY", (
-            '#style1{- Supply Range: }' + f'#moral_color_bad_2{{{runner_range}m}}'
-            '\n#style1{- Fuel Supply: }' + f'#{runner_fuel_color}{{{runner_fuel}}}'
+            '#style1{• Supply Range: }' + f'#moral_color_bad_2{{{runner_range}m}}'
+            '\n#style1{• Fuel Supply: }' + f'#{runner_fuel_color}{{{runner_fuel}}}'
             + '#style1{ per second}' + f' #{runner_fuel_color}{{{runner_fuel_percentage}}}'
-            '\n#style1{- Health Supply: }' + f'#{runner_health_color}{{{runner_health}}}'
+            '\n#style1{• Health Supply: }' + f'#{runner_health_color}{{{runner_health}}}'
             + '#style1{ per second}' + f' #{runner_health_color}{{{runner_health_percentage}}}'
-            '\n#style1{- Ammunition Supply: }' + f'#{runner_ammo_color}{{{runner_ammo}}}'
+            '\n#style1{• Ammunition Supply: }' + f'#{runner_ammo_color}{{{runner_ammo}}}'
             + '#style1{ per second}' + f' #{runner_ammo_color}{{{runner_ammo_percentage}}}'
-            '\n#style1{- Crit Repair Rate:: }' + f'#{runner_critics_color}{{{runner_critics}}}'
+            '\n#style1{• Crit Repair Rate: }' + f'#{runner_critics_color}{{{runner_critics}}}'
             + '#style1{ per second}' + f' #{runner_critics_color}{{{runner_critics_percentage}}}'
         )),
         "texture": "runner_supply.png",
@@ -377,14 +388,14 @@ NEW_TRAITS = {
     "_supply_squad": {
         "title": ("JZDIXEPDQC", "Squad"),
         "description": ("NNCAFAFCWS", (
-            '#style1{- Supply Range: }' + f'#style1{{{squad_range}m}}'
-            '\n#style1{- Fuel Supply: }' + f'#{squad_fuel_color}{{{squad_fuel}}}'
+            '#style1{• Supply Range: }' + f'#style1{{{squad_range}m}}'
+            '\n#style1{• Fuel Supply: }' + f'#{squad_fuel_color}{{{squad_fuel}}}'
             + '#style1{ per second}' + f' #{squad_fuel_color}{{{squad_fuel_percentage}}}'
-            '\n#style1{- Health Supply: }' + f'#{squad_health_color}{{{squad_health}}}'
+            '\n#style1{• Health Supply: }' + f'#{squad_health_color}{{{squad_health}}}'
             + '#style1{ per second}' + f' #{squad_health_color}{{{squad_health_percentage}}}'
-            '\n#style1{- Ammunition Supply: }' + f'#{squad_ammo_color}{{{squad_ammo}}}'
+            '\n#style1{• Ammunition Supply: }' + f'#{squad_ammo_color}{{{squad_ammo}}}'
             + '#style1{ per second}' + f' #{squad_ammo_color}{{{squad_ammo_percentage}}}'
-            '\n#style1{- Crit Repair Rate:: }' + f'#{squad_critics_color}{{{squad_critics}}}'
+            '\n#style1{• Crit Repair Rate: }' + f'#{squad_critics_color}{{{squad_critics}}}'
             + '#style1{ per second}' + f' #{squad_critics_color}{{{squad_critics_percentage}}}'
         )),
         "texture": "squad_supply.png",
@@ -393,14 +404,14 @@ NEW_TRAITS = {
     "_supply_primary": {
         "title": ("VVLHQSOXCW", "Primary"),
         "description": ("ULULIILHXH", (
-            '#style1{- Supply Range: }' + f'#styleGreen{{{primary_range}m}}'
-            '\n#style1{- Fuel Supply: }' + f'#{primary_fuel_color}{{{primary_fuel}}}'
+            '#style1{• Supply Range: }' + f'#styleGreen{{{primary_range}m}}'
+            '\n#style1{• Fuel Supply: }' + f'#{primary_fuel_color}{{{primary_fuel}}}'
             + '#style1{ per second}' + f' #{primary_fuel_color}{{{primary_fuel_percentage}}}'
-            '\n#style1{- Health Supply: }' + f'#{primary_health_color}{{{primary_health}}}'
+            '\n#style1{• Health Supply: }' + f'#{primary_health_color}{{{primary_health}}}'
             + '#style1{ per second}' + f' #{primary_health_color}{{{primary_health_percentage}}}'
-            '\n#style1{- Ammunition Supply: }' + f'#{primary_ammo_color}{{{primary_ammo}}}'
+            '\n#style1{• Ammunition Supply: }' + f'#{primary_ammo_color}{{{primary_ammo}}}'
             + '#style1{ per second}' + f' #{primary_ammo_color}{{{primary_ammo_percentage}}}'
-            '\n#style1{- Crit Repair Rate:: }' + f'#{primary_critics_color}{{{primary_critics}}}'
+            '\n#style1{• Crit Repair Rate: }' + f'#{primary_critics_color}{{{primary_critics}}}'
             + '#style1{ per second}' + f' #{primary_critics_color}{{{primary_critics_percentage}}}'
         )),
         "texture": "primary_supply.png",
@@ -409,14 +420,14 @@ NEW_TRAITS = {
     "_supply_divisional": {
         "title": ("FEDLBRSWYR", "Divisional"),
         "description": ("GHPEPQIELW", (
-            '#style1{- Supply Range: }' + f'#styleTurquoise{{{divisional_range}m}}'
-            '\n#style1{- Fuel Supply: }' + f'#{divisional_fuel_color}{{{divisional_fuel}}}'
+            '#style1{• Supply Range: }' + f'#styleTurquoise{{{divisional_range}m}}'
+            '\n#style1{• Fuel Supply: }' + f'#{divisional_fuel_color}{{{divisional_fuel}}}'
             + '#style1{ per second}' + f' #{divisional_fuel_color}{{{divisional_fuel_percentage}}}'
-            '\n#style1{- Health Supply: }' + f'#{divisional_health_color}{{{divisional_health}}}'
+            '\n#style1{• Health Supply: }' + f'#{divisional_health_color}{{{divisional_health}}}'
             + '#style1{ per second}' + f' #{divisional_health_color}{{{divisional_health_percentage}}}'
-            '\n#style1{- Ammunition Supply: }' + f'#{divisional_ammo_color}{{{divisional_ammo}}}'
+            '\n#style1{• Ammunition Supply: }' + f'#{divisional_ammo_color}{{{divisional_ammo}}}'
             + '#style1{ per second}' + f' #{divisional_ammo_color}{{{divisional_ammo_percentage}}}'
-            '\n#style1{- Crit Repair Rate:: }' + f'#{divisional_critics_color}{{{divisional_critics}}}'
+            '\n#style1{• Crit Repair Rate: }' + f'#{divisional_critics_color}{{{divisional_critics}}}'
             + '#style1{ per second}' + f' #{divisional_critics_color}{{{divisional_critics_percentage}}}'
         )),
         "texture": "divisional_supply.png",
@@ -425,14 +436,14 @@ NEW_TRAITS = {
     "_supply_runner_helo": {
         "title": ("HQWRTYZXCV", "Runner (Helicopter)"),
         "description": ("BNMJKLPQRS", (
-            '#style1{- Supply Range: }' + f'#styleGreen{{{runner_helo_range}m}}'
-            '\n#style1{- Fuel Supply: }' + f'#{runner_helo_fuel_color}{{{runner_helo_fuel}}}'
+            '#style1{• Supply Range: }' + f'#styleGreen{{{runner_helo_range}m}}'
+            '\n#style1{• Fuel Supply: }' + f'#{runner_helo_fuel_color}{{{runner_helo_fuel}}}'
             + '#style1{ per second}' + f' #{runner_helo_fuel_color}{{{runner_helo_fuel_percentage}}}'
-            '\n#style1{- Health Supply: }' + f'#{runner_helo_health_color}{{{runner_helo_health}}}'
+            '\n#style1{• Health Supply: }' + f'#{runner_helo_health_color}{{{runner_helo_health}}}'
             + '#style1{ per second}' + f' #{runner_helo_health_color}{{{runner_helo_health_percentage}}}'
-            '\n#style1{- Ammunition Supply: }' + f'#{runner_helo_ammo_color}{{{runner_helo_ammo}}}'
+            '\n#style1{• Ammunition Supply: }' + f'#{runner_helo_ammo_color}{{{runner_helo_ammo}}}'
             + '#style1{ per second}' + f' #{runner_helo_ammo_color}{{{runner_helo_ammo_percentage}}}'
-            '\n#style1{- Crit Repair Rate:: }' + f'#{runner_helo_critics_color}{{{runner_helo_critics}}}'
+            '\n#style1{• Crit Repair Rate: }' + f'#{runner_helo_critics_color}{{{runner_helo_critics}}}'
             + '#style1{ per second}' + f' #{runner_helo_critics_color}{{{runner_helo_critics_percentage}}}'
         )),
         "texture": "runner_supply.png",
@@ -441,14 +452,14 @@ NEW_TRAITS = {
     "_supply_primary_helo": {
         "title": ("ANDUVIMEHT", "Primary (Helicopter)"),
         "description": ("GUISMXYQPZ", (
-            '#style1{- Supply Range: }' + f'#styleTurquoise{{{primary_helo_range}m}}'
-            '\n#style1{- Fuel Supply: }' + f'#{primary_helo_fuel_color}{{{primary_helo_fuel}}}'
+            '#style1{• Supply Range: }' + f'#styleTurquoise{{{primary_helo_range}m}}'
+            '\n#style1{• Fuel Supply: }' + f'#{primary_helo_fuel_color}{{{primary_helo_fuel}}}'
             + '#style1{ per second}' + f' #{primary_helo_fuel_color}{{{primary_helo_fuel_percentage}}}'
-            '\n#style1{- Health Supply: }' + f'#{primary_helo_health_color}{{{primary_helo_health}}}'
+            '\n#style1{• Health Supply: }' + f'#{primary_helo_health_color}{{{primary_helo_health}}}'
             + '#style1{ per second}' + f' #{primary_helo_health_color}{{{primary_helo_health_percentage}}}'
-            '\n#style1{- Ammunition Supply: }' + f'#{primary_helo_ammo_color}{{{primary_helo_ammo}}}'
+            '\n#style1{• Ammunition Supply: }' + f'#{primary_helo_ammo_color}{{{primary_helo_ammo}}}'
             + '#style1{ per second}' + f' #{primary_helo_ammo_color}{{{primary_helo_ammo_percentage}}}'
-            '\n#style1{- Crit Repair Rate:: }' + f'#{primary_helo_critics_color}{{{primary_helo_critics}}}'
+            '\n#style1{• Crit Repair Rate: }' + f'#{primary_helo_critics_color}{{{primary_helo_critics}}}'
             + '#style1{ per second}' + f' #{primary_helo_critics_color}{{{primary_helo_critics_percentage}}}'
         )),
         "texture": "primary_supply.png",
@@ -457,14 +468,14 @@ NEW_TRAITS = {
     "_supply_divisional_helo": {
         "title": ("HDNGUIMAOX", "Divisional (Helicopter)"),
         "description": ("UGJYTIVNGL", (
-            '#style1{- Supply Range: }' + f'#styleTurquoise{{{divisional_helo_range}m}}'
-            '\n#style1{- Fuel Supply: }' + f'#{divisional_helo_fuel_color}{{{divisional_helo_fuel}}}'
+            '#style1{• Supply Range: }' + f'#styleTurquoise{{{divisional_helo_range}m}}'
+            '\n#style1{• Fuel Supply: }' + f'#{divisional_helo_fuel_color}{{{divisional_helo_fuel}}}'
             + '#style1{ per second}' + f' #{divisional_helo_fuel_color}{{{divisional_helo_fuel_percentage}}}'
-            '\n#style1{- Health Supply: }' + f'#{divisional_helo_health_color}{{{divisional_helo_health}}}'
+            '\n#style1{• Health Supply: }' + f'#{divisional_helo_health_color}{{{divisional_helo_health}}}'
             + '#style1{ per second}' + f' #{divisional_helo_health_color}{{{divisional_helo_health_percentage}}}'
-            '\n#style1{- Ammunition Supply: }' + f'#{divisional_helo_ammo_color}{{{divisional_helo_ammo}}}'
+            '\n#style1{• Ammunition Supply: }' + f'#{divisional_helo_ammo_color}{{{divisional_helo_ammo}}}'
             + '#style1{ per second}' + f' #{divisional_helo_ammo_color}{{{divisional_helo_ammo_percentage}}}'
-            '\n#style1{- Crit Repair Rate:: }' + f'#{divisional_helo_critics_color}{{{divisional_helo_critics}}}'
+            '\n#style1{• Crit Repair Rate: }' + f'#{divisional_helo_critics_color}{{{divisional_helo_critics}}}'
             + '#style1{ per second}' + f' #{divisional_helo_critics_color}{{{divisional_helo_critics_percentage}}}'
         )),
         "texture": "divisional_supply.png",
@@ -478,12 +489,12 @@ TRAIT_EDITS = {
             "text": (
                 f"CQC Bonuses - While stationary, and if within "
                 f"150m of enemies, gain the following bonuses:\n"
-                f"#styleGreen{{- 15% bonus to aim time, shot reload, and salvo reload.}}\n"
-                f"#styleGreen{{- 15% bonus to physical damage.}}\n\n"
+                f"#styleGreen{{• 15% bonus to aim time, shot reload, and salvo reload.}}\n"
+                f"#styleGreen{{• 15% bonus to physical damage.}}\n\n"
                 f"Sprint - While within 875m of enemies, in combat, and above 40% cohesion, "
                 f"gain the following bonuses:\n"
-                f"#styleTurquoise{{- 70% increased movement speed.}}"
-                f"#styleTurquoise{{- Receive 50% less suppression damage.}}"
+                f"#styleTurquoise{{• 70% increased movement speed.}}"
+                f"#styleTurquoise{{• Receive 25% less suppression damage.}}"
             )
         }
     },
@@ -503,7 +514,7 @@ TRAIT_EDITS = {
         "extended": {
             "token": "CSUKPTRVAR",
             "text": (
-                f"Leader units grant +1 Veterancy level to all nearby units."
+                f"Leader units grant #styleTurquoise{{+1 Veterancy level}} to all nearby units."
             )
         }
     }

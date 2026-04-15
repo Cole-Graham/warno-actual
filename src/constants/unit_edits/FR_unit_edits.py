@@ -783,43 +783,6 @@ fr_unit_edits = {
         "remove_zone_capture": None,
     },
 
-    "AMX_10_RC_CMD_FR": {
-        "CommandPoints": 120,
-        "GameName": {
-            "display": "#LDR AMX-10RC LDR.",
-            "token": "QAQVLDFWWN",
-        },
-        "TagSet": {
-            "overwrite_all": [
-                "AllUnits",
-                "AllowedForMissileRoE",
-                "Char",
-                "GroundUnits",
-                "UNITE_AMX_10_RC_CMD_FR",
-                "Unite",
-            ],
-        },
-        "IdentifiedTextures": ["Texture_RTS_H_Armor", "Texture_Armor"],
-        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
-        "UnitRole": "armor",
-        "SpecialtiesList": {
-            "overwrite_all": [
-                '_leader',
-                '_amphibie',
-                '_smoke_launcher',
-            ],
-        },
-        "MenuIconTexture": "Texture_RTS_H_Armor",
-        "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
-        "availability": [0, 0, 4, 0],
-        "WeaponDescriptor": {
-            "Salves": {
-                "MMG_AANF1_7_62mm": 44,
-            },
-        },
-        "remove_zone_capture": None,
-    },
-
     "ERC_90_Sagaie_CMD_FR": {
         "CommandPoints": 90,
         "GameName": {
@@ -1460,7 +1423,7 @@ fr_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -1478,7 +1441,7 @@ fr_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -1497,7 +1460,7 @@ fr_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "UpgradeFromUnit": "FOB_FR",
         "WeaponDescriptor": {
@@ -1517,7 +1480,7 @@ fr_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -1536,7 +1499,7 @@ fr_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "UpgradeFromUnit": "FOB_FR",
         "WeaponDescriptor": {
@@ -1555,7 +1518,7 @@ fr_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -1573,7 +1536,7 @@ fr_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -1591,7 +1554,7 @@ fr_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {

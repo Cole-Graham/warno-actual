@@ -646,6 +646,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaxAccelerationGRU": 700,
                 "TimeBetweenTwoSalvos": 0.7,
                 "SimultaneousShotsCount": 1,
+                "NoiseDissimulationMalus": 2.0,
+                "ShotsBeforeMaxNoise": 1,
             },
         },
         "SupplyCost": 140.0,

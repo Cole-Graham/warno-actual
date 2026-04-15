@@ -22,8 +22,8 @@ from src.utils.logging_utils import setup_logger
 logger = setup_logger(__name__)
 
 # TODO: Break this down into specific functions
-def edit_gen_gp_gfx_effetssurunite(source_path) -> None:
-    """GameData/Generated/Gameplay/Gfx/EffetsSurUnite.ndf"""
+def edit_gen_gp_effects_effetssurunite(source_path) -> None:
+    """GameData/Generated/Gameplay/Effects/EffetsSurUnite.ndf"""
     logger.info("Modifying unit effects")
 
     # Add new effects
@@ -94,7 +94,7 @@ def edit_gen_gp_gfx_effetssurunite(source_path) -> None:
             
 
 def _edit_veterancy_effects(source_path) -> None:
-    """GameData/Generated/Gameplay/Gfx/EffetsSurUnite.ndf"""
+    """GameData/Generated/Gameplay/Effects/EffetsSurUnite.ndf"""
     logger.info("Modifying veterancy effects")
 
     def _add_evasion(value: int) -> str:
@@ -180,7 +180,7 @@ def _edit_veterancy_effects(source_path) -> None:
     _add_multiplicative_infantry_xp(source_path)
 
 def _add_multiplicative_infantry_xp(source_path) -> None:
-    """GameData/Generated/Gameplay/Gfx/EffetsSurUnite.ndf"""
+    """GameData/Generated/Gameplay/Effects/EffetsSurUnite.ndf"""
     logger.info("Adding multiplicative infantry XP effects")
 
     infantry_xp_objects = {
@@ -226,5 +226,3 @@ def _add_multiplicative_infantry_xp(source_path) -> None:
     )
     xp_elite_helo.v.by_m("EffectsDescriptors").v.add(new_effect)
     source_path.add(xp_elite_helo)
-    
-        

@@ -23,6 +23,7 @@ from .SOV_newdivisionrules import (
     SOV_airborne_newdivisionrules,
     SOV_armored_newdivisionrules,
     SOV_global_newdivisionrules,
+    SOV_marine_newdivisionrules,
     SOV_mechanized_newdivisionrules,
     SOV_motorized_newdivisionrules,
 )
@@ -61,6 +62,7 @@ __all__ = [
     "SOV_airborne_newdivisionrules",
     "SOV_armored_newdivisionrules",
     "SOV_global_newdivisionrules",
+    "SOV_marine_newdivisionrules",
     "SOV_mechanized_newdivisionrules",
     "SOV_motorized_newdivisionrules",
     "RDA_airborne_newdivisionrules",

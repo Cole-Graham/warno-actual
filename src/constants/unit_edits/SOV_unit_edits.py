@@ -695,6 +695,18 @@ sov_unit_edits = {
         "max_speed": 26,
         "remove_zone_capture": None,
     },
+    
+    "Naval_Rifle_CMD_SOV": {
+        "armor": "Infantry_armor_reference",
+    },
+    
+    "Naval_VDV_CMD_SOV": {
+        "armor": "Infantry_armor_reference",
+    },
+    
+    "Engineers_CMD_Naval_SOV": {
+        "armor": "Infantry_armor_reference",
+    },
 
     "Engineers_SOV": {
         "armor": "Infantry_armor_reference",
@@ -822,6 +834,34 @@ sov_unit_edits = {
             },
         },
     },
+    
+    "Engineers_Naval_SOV": {
+        "CommandPoints": 30,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 9, 7, 0],
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "animate": {
+                    "SAW_RPK_74_5_56mm": False,
+                },
+                "quantity": {
+                    "FM_AKS_74": 3,
+                    "SAW_RPK_74_5_56mm": 2,
+                },
+            },
+            "Salves": {
+                "Grenade_Satchel_Charge": 4,
+            },
+        },
+    },
 
     "Engineers_Flam_SOV": {
         "armor": "Infantry_armor_reference",
@@ -917,6 +957,15 @@ sov_unit_edits = {
             "Salves": {
                 "FM_AKS_74": 11,
             },
+        },
+    },
+    
+    "Engineers_Flam_Naval_SOV": {
+        "CommandPoints": 45,
+        "availability": [0, 9, 7, 0],
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
         },
     },
 
@@ -1604,6 +1653,118 @@ sov_unit_edits = {
         },
     },
     
+    "Naval_Rifle_Reserve_SOV": {
+        "CommandPoints": 25,
+        "availability": [12, 0, 0, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
+        },
+    },
+    
+    "Naval_Rifle_RPG22_SOV": {
+        "CommandPoints": 30,
+        "availability": [10, 7, 0, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
+        },
+    },
+    
+    "Naval_Rifle_SVD_SOV": {
+        "CommandPoints": 30,
+        "availability": [10, 7, 0, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
+        },
+        "UpgradeFromUnit": "Naval_Rifle_RPG22_SOV",
+    },
+    
+    "Naval_Rifle_SOV": { # RPG-7VR
+        "CommandPoints": 35,
+        "availability": [10, 7, 0, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "animate": {
+                    "SAW_RPK_74_5_56mm": False,
+                },
+                "quantity": {
+                    "FM_AKS_74": 7,
+                    "SAW_RPK_74_5_56mm": 2,
+                },
+            },
+            "Salves": {
+                "FM_AKS_74": 11,
+                "RocketInf_RPG7VR_64mm": 7,
+            },
+        },
+        "UpgradeFromUnit": "Naval_Rifle_SVD_SOV",
+    },
+    
+    "Naval_Rifle_Hvy_SOV": {
+        "CommandPoints": 50,
+        "availability": [10, 7, 0, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "UpgradeFromUnit": "Naval_Rifle_SOV",
+        "WeaponDescriptor": {
+            "Salves": {
+                "RocketInf_RPG7VL": 9,
+            },
+        },
+        "UpgradeFromUnit": "Naval_Rifle_SOV",
+    },
+    
+    "Naval_VDV_Reserve_SOV": {
+        "CommandPoints": 40,
+        "availability": [10, 0, 0, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "animate": {
+                    "SAW_RPK_74_5_56mm": False,
+                },
+                "quantity": {
+                    "FM_AKS_74": 9,
+                    "SAW_RPK_74_5_56mm": 2,
+                },
+            },
+        },
+    },
+    
+    "Naval_VDV_SOV": {
+        "CommandPoints": 40,
+        "availability": [0, 6, 4, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "animate": {
+                    "SAW_RPK_74_5_56mm": False,
+                },
+                "quantity": {
+                    "FM_AKS_74": 7,
+                    "SAW_RPK_74_5_56mm": 2,
+                },
+            },
+            "Salves": {
+                "RocketInf_RPG7": 7,
+            },
+        },
+    },
+    
     "HMGteam_Maxim_Reserve_SOV": {
         "CommandPoints": "HMGteam_M60_NG_US",
         "strength": "HMGteam_M60_NG_US",
@@ -1652,6 +1813,15 @@ sov_unit_edits = {
     "HMGteam_PKM_DShV_SOV": {
         "GameName": {
             "display": "DSh PKM 7.62mm",
+        },
+    },
+    
+    "HMGteam_PKM_Naval_VDV_SOV": {
+        "CommandPoints": "HMGteam_M60_AB_US",
+        "strength": "HMGteam_M60_AB_US",
+        "max_speed": "HMGteam_M60_AB_US",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_M60_AB_US",
         },
     },
 
@@ -1786,6 +1956,16 @@ sov_unit_edits = {
             "add_specs": ["'infantry_equip_veryheavy'"],
         },
     },
+    
+    "HMGteam_AGS17_Naval_SOV": {
+        "CommandPoints": "HMGteam_AGS17_SOV",
+        "strength": "HMGteam_AGS17_SOV",
+        "max_speed": "HMGteam_AGS17_SOV",
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_AGS17_SOV",
+        },
+        "availability": [10, 7, 0, 0],
+    },
 
     "ATteam_RCL_SPG9_VDV_SOV": {
         "strength": 5,
@@ -1817,6 +1997,16 @@ sov_unit_edits = {
             "add_specs": ["'infantry_equip_heavy'"],
         },
         "UpgradeFromUnit": "FireSupport_Naval_SOV",
+    },
+    
+    "ATteam_RCL_SPG9_Naval_VDV_SOV": {
+        "strength": 5,
+        "CommandPoints": 30,
+        "availability": [0, 10, 7, 0],
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
     },
 
     "ATteam_Fagot_SOV": {
@@ -1850,6 +2040,15 @@ sov_unit_edits = {
             },
         },
     },
+    
+    "Atteam_Fagot_Naval_VDV_SOV": {
+        "CommandPoints": 25,
+        "availability": [0, 9, 7, 5],
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
+    },
 
     "Atteam_Konkurs_VDV_SOV": {
         "CommandPoints": 45,
@@ -1879,6 +2078,20 @@ sov_unit_edits = {
             "add_specs": ["'infantry_equip_heavy'"],
         },
         "UpgradeFromUnit": "ATteam_Faktoriya_SOV",
+    },
+    
+    "Atteam_Konkurs_Naval_SOV": {
+        "CommandPoints": 45,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "availability": [6, 4, 0, 0],
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
     },
 
     "ATteam_KonkursM_TTsko_SOV": {
@@ -1969,6 +2182,13 @@ sov_unit_edits = {
     },
     
     "ZIL_131_Naval_SOV": {
+        "CommandPoints": 15,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+    },
+    
+    "GAZ_46_SOV": {
         "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'",],
@@ -2108,6 +2328,37 @@ sov_unit_edits = {
             },
         },
     },
+    
+    "Mortier_2B9_Vasilek_Naval_SOV": {
+        "CommandPoints": 40,
+        "orders": {
+            "add_orders": ["EOrderType/ShootOnPositionSmoke", "EOrderType/ShootOnPositionWithoutCorrectionSmoke"],
+        },
+        "availability": [4, 3, 2, 0],
+        "WeaponDescriptor": {
+            "turrets": {
+                0: {
+                    "MountedWeapons": {
+                        "add": {
+                            "Mortier_Vasilek_indirect_82mm_towed": {  # donor
+                                "Ammunition": "$/GFX/Weapon/Ammo_Mortier_Vasilek_indirect_82mm_SMOKE_towed",
+                                "DispersionRadiusOffColor": "RGBA[0,0,0,0]",
+                                "DispersionRadiusOffThickness": -0.1,
+                                "DispersionRadiusOnColor": "RGBA[0,0,0,0]",
+                                "DispersionRadiusOnThickness": -0.1,
+                                "EffectTag": "'FireEffect_Mortier_Vasilek_indirect_82mm_towed'",
+                                "HandheldEquipmentKey": "'WeaponAlternative_3'",
+                                "ShowDispersion": False,
+                                "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
+                                "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
+                                "WeaponShootDataPropertyName": ['WeaponShootData_0_3'],
+                            },
+                        },
+                    },
+                },
+            },
+        },
+    },
 
     "Mortier_2S12_120mm_SOV": {
         "CommandPoints": 45,
@@ -2120,6 +2371,11 @@ sov_unit_edits = {
     },
 
     "Mortier_2S12_120mm_VDV_SOV": {
+        "CommandPoints": 45,
+        "availability": [0, 5, 4, 3],
+    },
+    
+    "Mortier_2S12_120mm_Naval_VDV_SOV": {
         "CommandPoints": 45,
         "availability": [0, 5, 4, 3],
     },
@@ -2164,6 +2420,16 @@ sov_unit_edits = {
         "GameName": {
             "display": "2S9 NONA-S",
         },
+        "CommandPoints": 85,
+        "availability": [0, 3, 2, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "Howz_Canon_2A51_Howitzer_120mm": 6,
+            },
+        },
+    },
+    
+    "2S9_1_Sviristelka_SOV": {
         "CommandPoints": 85,
         "availability": [0, 3, 2, 0],
         "WeaponDescriptor": {
@@ -2274,6 +2540,11 @@ sov_unit_edits = {
                 "cards": 3,
             },
         },
+        "availability": [3, 2, 0, 0],
+    },
+    
+    "2S1_Gvozdika_Naval_SOV": {
+        "CommandPoints": 110,
         "availability": [3, 2, 0, 0],
     },
 
@@ -2476,6 +2747,10 @@ sov_unit_edits = {
         "MenuIconTexture": "Texture_RTS_H_Armor",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
         "availability": [0, 0, 4, 0],
+        "remove_zone_capture": None,
+    },
+    
+    "T55AM_CMD_SOV": {
         "remove_zone_capture": None,
     },
 
@@ -2912,6 +3187,16 @@ sov_unit_edits = {
             "add_specs": ["'refundable_unit'",],
         },
     },
+    
+    "PTS_M_SOV": {
+        "CommandPoints": 15,
+        "orders": {
+            "add_orders": ["EOrderType/Sell"],
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+    },
 
     "GTMU_1D_SOV": {
         "SpecialtiesList": {
@@ -2997,6 +3282,11 @@ sov_unit_edits = {
     },
 
     "BTR_80_SOV": {
+        "CommandPoints": 25,
+        "strength": 10,
+    },
+    
+    "BTR_80_Naval_SOV": {
         "CommandPoints": 25,
         "strength": 10,
     },
@@ -3132,6 +3422,13 @@ sov_unit_edits = {
         "availability": [8, 6, 0, 0],
         "UpgradeFromUnit": "BRDM_2_Falanga_P_SOV",
     },
+    
+    "BRDM_2_Konkurs_Naval_SOV": {
+        "strength": 8,
+        "CommandPoints": 50,
+        "stealth": 1.5,
+        "availability": [8, 6, 0, 0],
+    },
 
     "BRDM_2_Konkurs_M_SOV": {
         "strength": 8,
@@ -3167,6 +3464,11 @@ sov_unit_edits = {
         "GameName": {
             "display": "MT-12 RAPIRA 100mm",
         },
+        "CommandPoints": 55,
+        "availability": [6, 4, 0, 0],
+    },
+    
+    "AT_T12_Rapira_Naval_SOV": {
         "CommandPoints": 55,
         "availability": [6, 4, 0, 0],
     },
@@ -3237,6 +3539,18 @@ sov_unit_edits = {
 
     "T55AM_1_SOV": {
         "CommandPoints": 130,
+        "availability": [0, 6, 4, 0],
+    },
+    
+    "T55AM_SOV": {
+        "availability": [0, 6, 4, 0],
+    },
+    
+    "T55AMD_SOV": {
+        "availability": [0, 6, 4, 0],
+    },
+    
+    "T55AMV_SOV": {
         "availability": [0, 6, 4, 0],
     },
 
@@ -3536,6 +3850,11 @@ sov_unit_edits = {
         "CommandPoints": 35,
         "strength": 10,
     },
+    
+    "PT76B_Naval_SOV": {
+        "CommandPoints": 30,
+        "availability": [8, 6, 0, 0],
+    },
 
     "BRM_1_SOV": {
         "CommandPoints": 55,
@@ -3553,6 +3872,10 @@ sov_unit_edits = {
 
     "BMD_1_Reostat_SOV": {
         "CommandPoints": 30,
+        "availability": [0, 8, 0, 0],
+    },
+    
+    "BMD_1_Reostat_Naval_SOV": {
         "availability": [0, 8, 0, 0],
     },
 
@@ -3587,6 +3910,10 @@ sov_unit_edits = {
             "add_orders": ["EOrderType/UnloadFromTransport", "EOrderType/UnloadAtPosition", "EOrderType/Load"]
         },
     },
+    
+    "T55AMD_reco_SOV": {
+        "availability": [0, 4, 3, 0],
+    },
 
     "T64B1_reco_SOV": {
         "CommandPoints": 190,
@@ -3607,6 +3934,12 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
+        "availability": [8, 6, 0, 0],
+    },
+    
+    "BRDM_2_Naval_SOV": {
+        "strength": 8,
+        "CommandPoints": 35,
         "availability": [8, 6, 0, 0],
     },
 
@@ -3658,6 +3991,14 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
+    },
+    
+    "Scout_Naval_SOV": {
+        "armor": "Infantry_armor_reference",
+    },
+    
+    "Scout_Naval_VDV_SOV": {
+        "armor": "Infantry_armor_reference",
     },
 
     "Scout_VDV_SOV": {
@@ -3810,6 +4151,10 @@ sov_unit_edits = {
             "add_specs": ["'infantry_equip_medium'"],
         },
     },
+    
+    "Scout_Spetsnaz_Naval_SOV": {
+        "armor": "Infantry_armor_reference",
+    },
 
     "KGB_BorderGuard_LRRP_SOV": { # Spetzrazvedka (GSR)
         "CommandPoints": 55,
@@ -3918,6 +4263,11 @@ sov_unit_edits = {
         "CommandPoints": 85,
         "availability": [0, 3, 0, 0],
     },
+    
+    "Mi_14PL_recon_SOV": {
+        "CommandPoints": 50,
+        "availability": [0, 4, 0, 0],
+    },
 
     "Mi_24K_reco_SOV": {
         "CommandPoints": 150,
@@ -3978,7 +4328,27 @@ sov_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
+        },
+        "UpgradeFromUnit": "FOB_SOV",
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_ZU23_2_23mm_TOWED": 31,
+            },
+        },
+    },
+    
+    "DCA_ZU_23_2_Naval_SOV": {
+        "CommandPoints": 20,
+        "Factory": "EFactory/Logistic",
+        "availability": [10, 7, 0, 0],
+        "max_speed": 6,
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 1,
         },
         "UpgradeFromUnit": "FOB_SOV",
         "WeaponDescriptor": {
@@ -4007,7 +4377,7 @@ sov_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "UpgradeFromUnit": "FOB_SOV",
         "WeaponDescriptor": {
@@ -4017,27 +4387,7 @@ sov_unit_edits = {
         },
     },
 
-    "DCA_ZU_23_2_SOV": {
-        "CommandPoints": 20,
-        "Factory": "EFactory/Logistic",
-        "availability": [10, 7, 0, 0],
-        "max_speed": 6,
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
-        },
-        "UpgradeFromUnit": "FOB_SOV",
-        "WeaponDescriptor": {
-            "Salves": {
-                "DCA_2_canon_ZU23_2_23mm_TOWED": 31,
-            },
-        },
-    },
-
-    "DCA_ZU_23_2_SOV": {  # Airborne
+    "DCA_ZU_23_2_SOV": {  # Airborne (non-airborne is nonPara_SOV)
         "CommandPoints": 20,
         "Divisions": {
             "default": {
@@ -4052,7 +4402,7 @@ sov_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "UpgradeFromUnit": "FOB_SOV",
         "WeaponDescriptor": {
@@ -4074,7 +4424,7 @@ sov_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -4107,7 +4457,7 @@ sov_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0,
+            "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -4191,6 +4541,21 @@ sov_unit_edits = {
     },
 
     "MANPAD_Igla_VDV_SOV": {
+        "CommandPoints": 40,
+        "armor": "Infantry_armor_reference",
+        "availability": [0, 7, 5, 0],
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("FM_AKS_74", "FM_AKS_74_noreflex")],
+            },
+        },
+    },
+    
+    "MANPAD_Igla_Naval_VDV_SOV": {
         "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "availability": [0, 7, 5, 0],
@@ -4339,6 +4704,25 @@ sov_unit_edits = {
             },
         },
     },
+   
+   "ZSU_23_Shilka_Naval_SOV": {
+        "CommandPoints": 85,
+        "availability": [6, 4, 0, 0],
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 7800,
+            },
+            "TimeBetweenEachIdentifyRoll": 0.5,
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'good_airoptics'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_4_canons_AZP_23_Amur_23mm_late": 67,
+            },
+        },
+    },
 
     "Tunguska_2K22_SOV": {
         "optics": {
@@ -4401,6 +4785,25 @@ sov_unit_edits = {
     },
 
     "MTLB_Strela10_SOV": {
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 7800,
+            },
+            "TimeBetweenEachIdentifyRoll": 0.5,
+        },
+        "CommandPoints": 65,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "availability": [6, 4, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'good_airoptics'"],
+        },
+    },
+    
+    "MTLB_Strela10_Naval_SOV": {
         "optics": {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 7800,
@@ -4715,6 +5118,11 @@ sov_unit_edits = {
     },
     
     "Mi_24P_Atakax8_SOV": {
+        "CommandPoints": 230,
+        "availability": [0, 2, 0, 1],
+    },
+    
+    "Ka_29_SOV": {
         "CommandPoints": 230,
         "availability": [0, 2, 0, 1],
     },
@@ -5287,15 +5695,26 @@ sov_unit_edits = {
         "availability": [0, 2, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    (
-                        "Bomb_CLU_RBK_250kg_salvolength8",
-                        "Bomb_CLU_RBK_250kg_salvolength16",
-                        "Bomb_CLU_RBK_250kg_salvolength8",
-                        "Bomb_CLU_RBK_250kg_salvolength16"
-                    )
-                ],
+                "replace": [("Bomb_CLU_RBK_250kg_salvolength8", "Bomb_CLU_RBK_250kg_salvolength16")],
+                # "insert": [(1, "Bomb_CLU_RBK_250kg_salvolength8"),],
+                # "insert_edits": {
+                #     1: {
+                #         "turret_edits": {
+                #             "Tag": '"tourelle3"',
+                #             "YulBoneOrdinal": 3,
+                #         },
+                #         "AmmoBoxIndex": 2,
+                #         "HandheldEquipmentKey": '"WeaponAlternative_3"',
+                #         "WeaponActiveAndCanShootPropertyName": '"WeaponActiveAndCanShoot_3"',
+                #         "WeaponIgnoredPropertyName": '"WeaponIgnored_3"',
+                #         "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
+                #     },
+                # },
             },
+            # "Salves": {
+            #     "insert": [(2, 8)],
+            # },
+            # "SalvoIsMainSalvo": [False, True, True],
         },
     },
     
@@ -5332,17 +5751,6 @@ sov_unit_edits = {
     },
 
     "Su_25_SOV": {  # 4x Kh-25ML, 2x R-60M
-        "CommandPoints": 200,
-        "AirplaneMovement": {
-            "parent_membr": {
-                "SpeedInKmph": 750,
-            },
-        },
-        "max_speed": 750,
-        "availability": [0, 2, 0, 1],
-    },
-
-    "Su_25_SOV": {  # 4x Kh-25ML, 2x R-60M
         "CommandPoints": 220,
         "AirplaneMovement": {
             "parent_membr": {
@@ -5350,7 +5758,7 @@ sov_unit_edits = {
             },
         },
         "max_speed": 750,
-        "availability": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 1],
     },
 
     "Su_25_clu_SOV": {  # 6x RBK-250, 2x R-60M
@@ -5416,5 +5824,13 @@ sov_unit_edits = {
     "Su_27S_SOV": {  # 6x R-73, 4x R-27R
         "CommandPoints": 240,
         "availability": [0, 2, 0, 1],
+    },
+    
+    "Tu_22_EW_SOV": {
+        "availability": [0, 2, 0, 1],
+    },
+    
+    "Tu_22_HE_SOV": {
+        "availability": [0, 2, 0, 0],
     },
 }

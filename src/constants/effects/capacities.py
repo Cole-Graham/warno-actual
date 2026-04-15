@@ -66,14 +66,14 @@ CHOC_MOVE_EFFECT = (
     '        TUnitEffectIncreaseDamageTakenDescriptor'
     '        ('
     '            ModifierType = ~/ModifierType_Multiplicatif'
-    '            BonusDamage = 0.5'
+    '            BonusDamage = 0.75'
     '            DamageType  = ~/EDamageType/Suppress'
     '        ),'
     '        TEffectInflictDamageDescriptor'
     '        ('
     '            DamageType = ~/EDamageType/Suppress'
     '            ModifierType = ~/ModifierType_Additionnel'
-    '            DamageValue = 15' # Buffer to prevent suppression regeneration from instantly cancelling the effect
+    '            DamageValue = 30' # Buffer to prevent suppression regeneration from instantly cancelling the effect
     '        ),'
     # '        TUnitEffectIncreaseDamageTakenDescriptor'
     # '        ('

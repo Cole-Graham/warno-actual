@@ -156,11 +156,11 @@ def _create_national_division_matrices(source: Any, existing_matrix_names: list)
         
         # Get matrix specification for this division type
         if div_type not in spec_matrices:
-            logger.warning(f"No spec_matrix found for division type '{div_type}' in {div_key}, skipping")
+            logger.error(f"No spec_matrix found for division type '{div_type}' in {div_key}, skipping")
             continue
         
         spec_matrix = spec_matrices[div_type]
-        matrix_data = dict(spec_matrix)
+        matrix_data = {k: v for k, v in spec_matrix.items() if k != "total_for_valid"}
 
         # Apply division-specific matrix overrides (e.g. EFactory/Logistic)
         if "matrix_overrides" in div_data:
