@@ -17,6 +17,7 @@ rda_unit_edits = {
             "remove_specs": ["'_leader'"],
         },
         "availability": [0, 4, 0, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
     
     "PT76B_CMD_DDR": { # Too inexpensive to make a LDR., just changing to a CV
@@ -32,6 +33,7 @@ rda_unit_edits = {
             },
         },
         "availability": [0, 0, 3, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
     
     "MTLB_CMD_DDR": {
@@ -41,6 +43,7 @@ rda_unit_edits = {
             "remove_specs": ["'_leader'"],
         },
         "availability": [0, 0, 3, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "BMP_1_CMD_DDR": {
@@ -55,6 +58,7 @@ rda_unit_edits = {
             "remove_specs": ["'_leader'"],
         },
         "availability": [0, 0, 3, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "BRDM_2_CMD_DDR": {
@@ -70,6 +74,7 @@ rda_unit_edits = {
             "remove_specs": ["'_leader'"],
         },
         "availability": [0, 3, 0, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "BTR_60_CMD_DDR": {
@@ -85,6 +90,7 @@ rda_unit_edits = {
             "remove_specs": ["'_leader'"],
         },
         "availability": [0, 0, 3, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
     
     "BTR_60_CHAIKA_CMD_DDR": {
@@ -100,6 +106,7 @@ rda_unit_edits = {
             "remove_specs": ["'_leader'"],
         },
         "availability": [0, 0, 3, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "Mi_2_CMD_DDR": {  # Mi-2D
@@ -110,6 +117,7 @@ rda_unit_edits = {
             "remove_specs": ["'_leader'"],
         },
         "availability": [0, 3, 0, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "Mi_9_DDR": {  # Mi-19D
@@ -127,12 +135,13 @@ rda_unit_edits = {
         "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDRSOV MOT.-SCHUTZEN FÜR. LDR.",
+            "display": "MOT.-SCHUTZEN FÜR. LDR.",
             "token": "LJDWEYDMZI",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -193,12 +202,13 @@ rda_unit_edits = {
         "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDRSOV PIONIER LDR.",
+            "display": "PIONIER LDR.",
             "token": "KYSSUXXTDG",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -246,12 +256,13 @@ rda_unit_edits = {
         "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDRSOV MARINEPIONIER FÜR. LDR.",
+            "display": "MARINEPIONIER FÜR. LDR.",
             "token": "UPIUDWZHAI",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -298,11 +309,12 @@ rda_unit_edits = {
         "CommandPoints": 20,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDRSOV K.d.A. FÜH. LDR.",
+            "display": "K.d.A. FÜH. LDR.",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -366,11 +378,12 @@ rda_unit_edits = {
         "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDRSOV RESERVISTEN FÜH. LDR.",
+            "display": "RESERVISTEN FÜH. LDR.",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -411,12 +424,13 @@ rda_unit_edits = {
         "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDRSOV FALLSCHIRM FÜR. LDR.",
+            "display": "FALLSCHIRM FÜR. LDR.",
             "token": "BFPSSUUCFZ",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -504,12 +518,13 @@ rda_unit_edits = {
         "CommandPoints": 60,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDRSOV LUFTSTURM-JÄGER FÜR. LDR.",
+            "display": "LUFTSTURM-JÄGER FÜR. LDR.",
             "token": "IBYSOQOQYU",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -605,12 +620,13 @@ rda_unit_edits = {
         "CommandPoints": 55,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDRSOV WACHSCHÜTZEN FÜH. LDR.",
+            "display": "WACHSCHÜTZEN FÜH. LDR.",
             "token": "ZMOICNFUWP",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -656,12 +672,13 @@ rda_unit_edits = {
         "CommandPoints": 55,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDRSOV FALLSCHIRM FÜR. FF LDR.",
+            "display": "FALLSCHIRM FÜR. FF LDR.",
             "token": "AKEYFQLRBG",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -739,12 +756,13 @@ rda_unit_edits = {
         "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDRSOV VOPOS FÜH. LDR.",
+            "display": "VOPOS FÜH. LDR.",
             "token": "VXWUPWYFCP",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -1657,12 +1675,13 @@ rda_unit_edits = {
     "BTR_50_CMD_DDR": {
         "CommandPoints": 60,
         "GameName": {
-            "display": "#LDRSOV SPW-50PU(A)",
+            "display": "SPW-50PU(A)",
             "token": "MXTHDKLGFB",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "GroundUnits",
                 "UNITE_BTR_50_CMD_DDR",
@@ -1826,11 +1845,12 @@ rda_unit_edits = {
     "T54B_CMD_DDR": {
         "CommandPoints": 80,
         "GameName": {
-            "display": "#LDRSOV FüPz T-54AMK LDR.",
+            "display": "FüPz T-54AMK LDR.",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_Standard",
@@ -1862,12 +1882,13 @@ rda_unit_edits = {
     "T55A_CMD_DDR": {
         "CommandPoints": 80,
         "GameName": {
-            "display": "#LDRSOV FüPz T-55AK LDR.",
+            "display": "FüPz T-55AK LDR.",
             "token": "VKLRXNSTQE",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -1899,12 +1920,13 @@ rda_unit_edits = {
     "T55AM2_CMD_DDR": {  # T-55AM2 LDR
         "CommandPoints": 125,
         "GameName": {
-            "display": "#LDRSOV FüPz T-55AM2K3 LDR.",
+            "display": "FüPz T-55AM2K3 LDR.",
             "token": "POLT55AMLD",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -1933,12 +1955,13 @@ rda_unit_edits = {
             "top": (2, None),
         },
         "GameName": {
-            "display": "#LDRSOV FüPz. T-72K LDR.",
+            "display": "FüPz. T-72K LDR.",
             "token": "NYCDIWGOQO",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -1973,12 +1996,13 @@ rda_unit_edits = {
             "top": (2, None),
         },
         "GameName": {
-            "display": "#LDRSOV FüPz T-72M LDR.",
+            "display": "FüPz T-72M LDR.",
             "token": "XVEZUMJKLL",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -2013,12 +2037,13 @@ rda_unit_edits = {
             "top": (3, None),
         },
         "GameName": {
-            "display": "#LDRSOV FüPz T-72M1K LDR.",
+            "display": "FüPz T-72M1K LDR.",
             "token": "FUPZTSTMOL",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -2185,7 +2210,6 @@ rda_unit_edits = {
     "PT76B_tank_DDR": {
         "CommandPoints": 20,
         "availability": [14, 0, 0, 0],
-        "UpgradeFromUnit": "PT76B_CMD2_DDR",
     },
     
     "T34_85M_DDR": {

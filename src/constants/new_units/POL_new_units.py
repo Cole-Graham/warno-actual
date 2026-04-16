@@ -15,6 +15,7 @@ POL_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Commandant",
                 "Crew",
@@ -105,6 +106,7 @@ POL_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -148,6 +150,7 @@ POL_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -188,6 +191,7 @@ POL_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -243,6 +247,7 @@ POL_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -292,6 +297,7 @@ POL_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -343,6 +349,7 @@ POL_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -395,6 +402,7 @@ POL_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -403,7 +411,7 @@ POL_NEW_UNITS = {
             ],
         },
         "GameName": {
-            "display": "#LDRSOV T-54BD LDR.",
+            "display": "T-54BD LDR.",
             "token": "POLTFFBD",
         },
         "Factory": "EFactory/Tanks",
@@ -444,7 +452,7 @@ POL_NEW_UNITS = {
         },
         "NewName": "OT_64_SKOT_2_CMD_POL",
         "GameName": {
-            "display": "#LDRSOV SKOT R-2AM",
+            "display": "SKOT R-2AM",
             "token": "RTBIJFPDGK",
         },
         "TypeUnit": {
@@ -453,6 +461,7 @@ POL_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Commandant",
                 "GroundUnits",
@@ -598,7 +607,7 @@ POL_NEW_UNITS = {
                 "ATGM_9M113_Konkurs": 6,
             },
             "equipmentchanges": {
-                "replace": [("ATGM_9K111_Fagot", "ATGM_9M113_Konkurs")]
+                "replace": [("ATGM_9K111M_Faktoriya", "ATGM_9M113_Konkurs")]
             },
         },
         "CommandPoints": 45,
@@ -953,6 +962,7 @@ POL_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Commandant",
                 "GroundUnits",

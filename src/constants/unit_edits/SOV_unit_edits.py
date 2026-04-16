@@ -12,6 +12,7 @@ sov_unit_edits = {
             "add_specs": ["'leader_sov'",],
             "remove_specs": ["'_leader'"],
         },
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
     
     "UAZ_469_CMD_Naval_SOV": { # MORSKAYA BELOZOR
@@ -21,6 +22,7 @@ sov_unit_edits = {
             "add_specs": ["'leader_sov'",],
             "remove_specs": ["'_leader'"],
         },
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
     
     "BMP_1_CMD_POTOK2_SOV": {
@@ -31,6 +33,7 @@ sov_unit_edits = {
             "remove_specs": ["'_leader'"],
         },
         "UpgradeFromUnit": "MTLB_CMD2_SOV",
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
     
     "BMD_1_CMD_SOV": {
@@ -45,6 +48,7 @@ sov_unit_edits = {
             "remove_specs": ["'_leader'"],
         },
         "availability": [0, 0, 3, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
     
     "BMD_1K_CMD_SOV": {
@@ -59,6 +63,7 @@ sov_unit_edits = {
             "remove_specs": ["'_leader'"],
         },
         "availability": [0, 3, 0, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "BMP_1_CMD_SOV": {
@@ -73,6 +78,7 @@ sov_unit_edits = {
             "remove_specs": ["'_leader'"],
         },
         "availability": [0, 0, 3, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "BMD_2_CMD_SOV": {
@@ -87,6 +93,7 @@ sov_unit_edits = {
             "remove_specs": ["'_leader'"],
         },
         "availability": [0, 0, 3, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "LUAZ_967M_CMD_VDV_SOV": {
@@ -104,6 +111,7 @@ sov_unit_edits = {
         "ButtonTexture": "LUAZ_967M_SOV",
         "DeploymentShift": 0,
         "UpgradeFromUnit": "UAZ_469_CMD_SOV",
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
     
     "UAZ_469_CMD_VDV_SOV": { # Desant. Belozor
@@ -119,6 +127,7 @@ sov_unit_edits = {
             "remove_specs": ["'_leader'"],
         },
         "DeploymentShift": 0,
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "BMP_2_CMD_SOV": {
@@ -133,6 +142,7 @@ sov_unit_edits = {
             "remove_specs": ["'_leader'"],
         },
         "availability": [0, 0, 3, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
     
     "BRDM_2_CMD_SOV": {
@@ -148,6 +158,7 @@ sov_unit_edits = {
             "remove_specs": ["'_leader'"],
         },
         "availability": [0, 3, 0, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "BTR_60_CMD_SOV": {
@@ -163,6 +174,7 @@ sov_unit_edits = {
             "remove_specs": ["'_leader'"],
         },
         "availability": [0, 0, 3, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "BTR_80_CMD_SOV": {
@@ -178,6 +190,7 @@ sov_unit_edits = {
             "remove_specs": ["'_leader'"],
         },
         "availability": [0, 0, 3, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "Mi_8K_CMD_SOV": {
@@ -198,12 +211,13 @@ sov_unit_edits = {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDRSOV MOTOSTRELKI LDR.",
+            "display": "MOTOSTRELKI LDR.",
             # "token": "ZJRMUWLPVH",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -269,12 +283,13 @@ sov_unit_edits = {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDRSOV MOTOSTRELKI LDR.",
+            "display": "MOTOSTRELKI LDR.",
             # "token": "ZJRMUWLPVH",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -334,12 +349,13 @@ sov_unit_edits = {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDRSOV SAPERY LDR.",
+            "display": "SAPERY LDR.",
             # "token": "QCNBGTPZWL",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -390,12 +406,13 @@ sov_unit_edits = {
         "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDRSOV SAPERY LDR. [RPG-7]",
+            "display": "SAPERY LDR. [RPG-7]",
             # "token": "AGYMPGDUXA",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -443,12 +460,13 @@ sov_unit_edits = {
         "CommandPoints": 55,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDRSOV SPETSNAZ LDR.",
+            "display": "SPETSNAZ LDR.",
             # "token": "CKLQCEBSOY",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -490,12 +508,13 @@ sov_unit_edits = {
         "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDRSOV DESANTNIKI LDR.",
+            "display": "DESANTNIKI LDR.",
             # "token": "JSBZIJKKJJ",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -551,12 +570,13 @@ sov_unit_edits = {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDRSOV DSh. LDR.",
+            "display": "DSh. LDR.",
             # "token": "JSBZIJKKJJ",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -598,12 +618,13 @@ sov_unit_edits = {
         "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDRSOV DESANT. SAPERY LDR.",
+            "display": "DESANT. SAPERY LDR.",
             # "token": "SWFVKVIZVT",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -651,12 +672,13 @@ sov_unit_edits = {
         "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDRSOV LDR. POGRANVOISK KGB",
+            "display": "LDR. POGRANVOISK KGB",
             "token": "LLUPBPHFST",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -698,14 +720,17 @@ sov_unit_edits = {
     
     "Naval_Rifle_CMD_SOV": {
         "armor": "Infantry_armor_reference",
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
     
     "Naval_VDV_CMD_SOV": {
         "armor": "Infantry_armor_reference",
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
     
     "Engineers_CMD_Naval_SOV": {
         "armor": "Infantry_armor_reference",
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "Engineers_SOV": {
@@ -2220,12 +2245,13 @@ sov_unit_edits = {
     "MTLB_CMD_SOV": {
         "CommandPoints": 60,
         "GameName": {
-            "display": "#LDRSOV MT-LBu MASHINA",
+            "display": "MT-LBu MASHINA",
             "token": "PUEZYZBZLF",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "GroundUnits",
                 "UNITE_MTLB_CMD_SOV",
@@ -2651,6 +2677,32 @@ sov_unit_edits = {
             },
         },
         "availability": [0, 2, 0, 0],
+        "strength": 10,
+        "armor": {
+            "front": (15, None),
+        },
+        # Need to edit the model to support adding smoke, on hold for now (temporarily increased armor in the meantime)
+        # "WeaponDescriptor": {
+        #     "equipmentchanges": {
+        #         "insert": [(1, "SMOKE_Vehicle_Grenadex8")],
+        #         "insert_edits": {
+        #             1: {
+        #                 "turret_edits": {
+        #                     "Tag": "tourelle2",
+        #                     "YulBoneOrdinal": 2,
+        #                 },
+        #                 "AmmoBoxIndex": 1,
+        #                 "HandheldEquipmentKey": "'WeaponAlternative_2'",
+        #                 "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
+        #                 "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
+        #                 "WeaponShootDataPropertyName": ["WeaponShootData_0_2", "WeaponShootData_1_2", "WeaponShootData_2_2", "WeaponShootData_3_2"],
+        #             },
+        #         },
+        #     },
+        #     "Salves": {
+        #         "insert": [(1, 8)],
+        #     },
+        # },
     },
     
     "BM30_Smerch_SOV": {
@@ -2663,11 +2715,12 @@ sov_unit_edits = {
         "CommandPoints": 100,
         "GameName": {
             "token": "PFCNKRFVF",
-            "display": "#LDRSOV REZ. T-10MK LDR.",
+            "display": "REZ. T-10MK LDR.",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -2693,11 +2746,12 @@ sov_unit_edits = {
         "CommandPoints": 80,
         "GameName": {
             "token": "PFCNKJHHF",
-            "display": "#LDRSOV REZ. T-55AK LDR.",
+            "display": "REZ. T-55AK LDR.",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -2723,11 +2777,12 @@ sov_unit_edits = {
         "CommandPoints": 110,
         "GameName": {
             "token": "PFCNJZNOHF",
-            "display": "#LDRSOV T-55AM-1K LDR.",
+            "display": "T-55AM-1K LDR.",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -2761,11 +2816,12 @@ sov_unit_edits = {
         },
         "GameName": {
             "token": "LARNJZNOHF",
-            "display": "#LDRSOV T-62MDK LDR.",
+            "display": "T-62MDK LDR.",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -2795,11 +2851,12 @@ sov_unit_edits = {
         },
         "GameName": {
             "token": "LARNJZNGAB",
-            "display": "#LDRSOV T-62MK LDR.",
+            "display": "T-62MK LDR.",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -2833,12 +2890,13 @@ sov_unit_edits = {
             "top": (3, None),
         },
         "GameName": {
-            "display": "#LDRSOV T-64A Obr. 83 LDR.",
+            "display": "T-64A Obr. 83 LDR.",
             "token": "SOVTSITAK",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -2867,12 +2925,13 @@ sov_unit_edits = {
             "top": (3, None),
         },
         "GameName": {
-            "display": "#LDRSOV T-64B LDR.",
+            "display": "T-64B LDR.",
             "token": "SOVTSITBK",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -2901,12 +2960,13 @@ sov_unit_edits = {
             "top": (4, None),
         },
         "GameName": {
-            "display": "#LDRSOV T-64BVK LDR.",
+            "display": "T-64BVK LDR.",
             "token": "SOVTSITBVK",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -2936,12 +2996,13 @@ sov_unit_edits = {
             "top": (2, None),
         },
         "GameName": {
-            "display": "#LDRSOV T-72K Obr. 73 LDR.",
+            "display": "T-72K Obr. 73 LDR.",
             "token": "OALRSXERYB",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -2969,12 +3030,13 @@ sov_unit_edits = {
             "top": (2, None),
         },
         "GameName": {
-            "display": "#LDRSOV T-72AK Obr. 79 LDR.",
+            "display": "T-72AK Obr. 79 LDR.",
             "token": "SOVTSETASK",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -3003,12 +3065,13 @@ sov_unit_edits = {
             "top": (3, None),
         },
         "GameName": {
-            "display": "#LDRSOV T-72AK Obr. 81 LDR.",
+            "display": "T-72AK Obr. 81 LDR.",
             "token": "SOVTSETAEK",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -3037,12 +3100,13 @@ sov_unit_edits = {
             "top": (4, None),
         },
         "GameName": {
-            "display": "#LDRSOV T-72BK LDR.",
+            "display": "T-72BK LDR.",
             "token": "SOVTSETBK",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -3072,12 +3136,13 @@ sov_unit_edits = {
             "top": (3, None),
         },
         "GameName": {
-            "display": "#LDRSOV T-80BK LDR.",
+            "display": "T-80BK LDR.",
             "token": "SOVTEBK",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -3107,12 +3172,13 @@ sov_unit_edits = {
             "top": (4, None),
         },
         "GameName": {
-            "display": "#LDRSOV T-80BVK LDR.",
+            "display": "T-80BVK LDR.",
             "token": "YWAOJLFAFW",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",

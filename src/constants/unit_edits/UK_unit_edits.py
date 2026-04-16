@@ -13,6 +13,7 @@ uk_unit_edits = {
             },
         },
         "availability": [0, 4, 0, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
     
     "LandRover_CMD_UK": {
@@ -26,6 +27,7 @@ uk_unit_edits = {
             },
         },
         "availability": [0, 4, 0, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "Saxon_CMD_UK": {
@@ -36,11 +38,13 @@ uk_unit_edits = {
                 "MMG_L37A2_7_62mm": 56,
             },
         },
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
     
     "FV1612_Humber_CMD_UK": {
         "CommandPoints": 155,
         "availability": [0, 3, 0, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
     
     "FV105_Sultan_UK": {
@@ -56,6 +60,7 @@ uk_unit_edits = {
                 "MMG_L94A1_7_62mm": 80,
             },
         },
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "Gazelle_CMD_UK": {
@@ -68,12 +73,13 @@ uk_unit_edits = {
         "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR TERRIERS LDR.",
+            "display": "TERRIERS LDR.",
             "token": "QMPRIAZFYF",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -120,12 +126,13 @@ uk_unit_edits = {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR ASSAULT PIONEERS LDR.",
+            "display": "ASSAULT PIONEERS LDR.",
             "token": "VZOODKAGWE",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -187,12 +194,13 @@ uk_unit_edits = {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR RIFLES LDR.",
+            "display": "RIFLES LDR.",
             "token": "YGMKZKXXEV",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -234,12 +242,13 @@ uk_unit_edits = {
         "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR AIRMOBILE LDR.",
+            "display": "AIRMOBILE LDR.",
             "token": "CFLNZATSET",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -273,11 +282,12 @@ uk_unit_edits = {
         "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR PARA. LDR.",
+            "display": "PARA. LDR.",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -322,12 +332,13 @@ uk_unit_edits = {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR MOT. AIRMOBILE LDR.",
+            "display": "MOT. AIRMOBILE LDR.",
             "token": "DPDYRJPOBS",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -391,11 +402,12 @@ uk_unit_edits = {
         "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR GURKHA RIFLES LDR.",
+            "display": "GURKHA RIFLES LDR.",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -446,11 +458,12 @@ uk_unit_edits = {
         "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR GUARDS LDR.",
+            "display": "GUARDS LDR.",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -1190,12 +1203,13 @@ uk_unit_edits = {
     "FV432_CMD_UK": {
         "CommandPoints": 60,
         "GameName": {
-            "display": "#LDR FV432 BATTERY CP",
+            "display": "FV432 BATTERY CP",
             "token": "NUDZQLLWOD",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "GroundUnits",
                 "UNITE_FV432_CMD_UK",
@@ -1331,12 +1345,13 @@ uk_unit_edits = {
     "Centurion_Mk13_CMD_UK": {
         "CommandPoints": 75,
         "GameName": {
-            "display": "#LDR CENTURION Mk.13 LDR.",
+            "display": "CENTURION Mk.13 LDR.",
             "token": "DBEDJIGRRN",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -1371,12 +1386,13 @@ uk_unit_edits = {
             "top": (4, None),
         },
         "GameName": {
-            "display": "#LDR CHIEFTAIN Mk.10 LDR.",
+            "display": "CHIEFTAIN Mk.10 LDR.",
             "token": "JMOQXJZCVT",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -1411,12 +1427,13 @@ uk_unit_edits = {
             "top": (4, None),
         },
         "GameName": {
-            "display": "#LDR CHALLENGER Mk.2 LDR.",
+            "display": "CHALLENGER Mk.2 LDR.",
             "token": "LDRBLUCHAL",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",

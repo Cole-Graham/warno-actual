@@ -25,6 +25,7 @@ fr_unit_edits = {
     "M201_CMD_FR": { # CMD M201 PC
         "CommandPoints": 145,
         "availability": [0, 4, 0, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "Auverland_PC_FR": {
@@ -42,28 +43,32 @@ fr_unit_edits = {
         "CommandPoints": 155,
         "strength": 10,
         "availability": [0, 0, 3, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "AMX_13_mod56_CMD_FR": {
         "CommandPoints": 145,
         "availability": [0, 0, 3, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
     
     "AMX_10_PC_CMD_FR": {
         "CommandPoints": 175,
         "availability": [0, 0, 3, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "Alouette_II_CMD_FR": {
         "CommandPoints": 115,
         "availability": [0, 3, 0, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "Gazelle_CMD_FR": {
         "CommandPoints": 115,
         "availability": [0, 3, 0, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
-    
     "Puma_PC_FR": {
         "CommandPoints": 125,
         "availability": [0, 3, 0, 0],
@@ -74,11 +79,12 @@ fr_unit_edits = {
         "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR CHASSEURS LDR.",
+            "display": "CHASSEURS LDR.",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -151,11 +157,12 @@ fr_unit_edits = {
         "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR GREN.-VOLTIGEURS LDR.",
+            "display": "GREN.-VOLTIGEURS LDR.",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -205,11 +212,12 @@ fr_unit_edits = {
         "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR SAPEURS LDR.",
+            "display": "SAPEURS LDR.",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -267,11 +275,12 @@ fr_unit_edits = {
         "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR AEROMOBILES LDR.",
+            "display": "AEROMOBILES LDR.",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -636,12 +645,13 @@ fr_unit_edits = {
     "AMX_30_B2_CMD_FR": {
         "CommandPoints": 135,
         "GameName": {
-            "display": "#LDR AMX-30 B2 LDR.",
+            "display": "AMX-30 B2 LDR.",
             "token": "WFTGAGEENP",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -677,12 +687,13 @@ fr_unit_edits = {
     "AMX_30_B_CMD_FR": {
         "CommandPoints": 85,
         "GameName": {
-            "display": "#LDR AMX-30 B LDR.",
+            "display": "AMX-30 B LDR.",
             "token": "ZYIAQBGAXY",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -713,12 +724,13 @@ fr_unit_edits = {
     "AMX_13_75mm_CMD_FR": {
         "CommandPoints": 50,
         "GameName": {
-            "display": "#LDR AMX-13 T75 LDR.",
+            "display": "AMX-13 T75 LDR.",
             "token": "IMPLFERKOJ",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -749,12 +761,13 @@ fr_unit_edits = {
     "AMX_10_RC_CMD_FR": {
         "CommandPoints": 120,
         "GameName": {
-            "display": "#LDR AMX-10RC LDR.",
+            "display": "AMX-10RC LDR.",
             "token": "QAQVLDFWWN",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -786,12 +799,13 @@ fr_unit_edits = {
     "ERC_90_Sagaie_CMD_FR": {
         "CommandPoints": 90,
         "GameName": {
-            "display": "#LDR ERC-90 LDR.",
+            "display": "ERC-90 LDR.",
             "token": "UZQEPDQLUU",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -823,12 +837,13 @@ fr_unit_edits = {
     "AML_90_CMD_FR": {
         "CommandPoints": 50,
         "GameName": {
-            "display": "#LDR AML-90 LDR.",
+            "display": "AML-90 LDR.",
             "token": "SPARKJMVEK",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",

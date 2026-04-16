@@ -894,6 +894,8 @@ def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_
     if "replace" not in equipment_changes:
         return
 
+    renames = ammo_db.get("renames_old_new", {})
+
     for repl in equipment_changes["replace"]:
         if len(repl) == 4:
             replace_fire_effect = True
@@ -904,6 +906,9 @@ def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_
             old_fire_effect = None
             new_fire_effect = None
 
+        renamed_current = renames.get(current)
+
+        found = False
         for turret in turret_list:
             if not is_valid_turret(turret.v):
                 continue
@@ -916,7 +921,7 @@ def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_
                 if not match:
                     continue
                 ammo_name = match.group(1)
-                if ammo_name != current:
+                if ammo_name != current and ammo_name != renamed_current:
                     continue
 
                 quantity = int(weapon.v.by_m("NbWeapons").v)
@@ -951,10 +956,13 @@ def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_
                     if old_fire_effect == fire_effect_val:
                         weapon.v.by_m("EffectTag").v = "'" + f"FireEffect_{new_fire_effect}" + "'"
                         logger.debug(f"Replaced fire effect{old_fire_effect} with {new_fire_effect}")
+                found = True
                 break
             else:
                 continue
             break
+        if not found:
+            logger.warning(f"{unit_name}: weapon '{current}' not found in any turret for replacement")
 
 
 def _adjust_light_at_salvos(

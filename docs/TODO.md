@@ -8,3 +8,10 @@
 - [ ] change supply traits to be more coherent with gameplay use-cases
 - [ ] try multiple turrets for 16 bomb Su-24 and 18 bomb F111
 - [ ] remove submunition release animation from MW1 and KMGU bombers
+- [ ] Give ASFs unique stress effect without accuracy modifier, 
+or just remove stress accuracy modifier from planes entirely
+- [ ] Edit Buratino model to add turret for smoke launcher (then revert front armor buff after, probably)
+
+
+12:
+- [ ]

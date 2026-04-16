@@ -80,6 +80,7 @@ RDA_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Commandant",
                 "Crew",
@@ -166,6 +167,7 @@ RDA_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Commandant",
                 "GroundUnits",
@@ -306,6 +308,7 @@ RDA_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -358,6 +361,7 @@ RDA_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -418,6 +422,7 @@ RDA_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -463,6 +468,7 @@ RDA_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -532,6 +538,7 @@ RDA_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -907,48 +914,6 @@ RDA_NEW_UNITS = {
     # },
 
     # Tank
-
-    ("PT76B_CMD_DDR", 0): {  # PT-76B LDR
-        "GUID": "11f92429-0da5-4c32-a5fc-95292c277fda",
-        "InfantrySquadModuleGUID": "507aa56d-6875-4b05-8aa5-21464360b536",
-        "ShowroomGUID": "e65bd9bb-fd99-4316-9146-f5ec494ad462",
-        "CadavreGUID": "957a042c-fe88-4a9d-9aa3-2c4e789f03e4",
-        "NewName": "PT76B_CMD2_DDR",
-        "GameName": {
-            "display": "#LDRSOV FüPz PT-76B",
-            "token": "WTDVRSZIAP",
-        },
-        "TagSet": {
-            "overwrite_all": [    
-                "AllUnits",
-                "AllowedForMissileRoE",
-                "Char",
-                "GroundUnits",
-                "UNITE_PT76B_CMD2_DDR",
-                "Unite",
-            ],
-        },
-        "Factory": "EFactory/Tanks",
-        "UnitRole": 'armor',
-        "CommandPoints": 30,
-        "SpecialtiesList": [
-                'leader_sov',
-            ],
-        "UpgradeFromUnit": None,
-        "availability": [0, 0, 8, 0],
-        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
-                   'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
-                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
-                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
-        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
-        "is_heavy_equipment": False,
-        "is_ground_vehicle": True,
-        "is_aerial": False,
-        "is_unarmed": False,
-        "Faction": "PACT",
-        "Nation": "DDR",
-        "remove_zone_capture": None,
-    },
 
     # ("AT_D44_85mm_DDR", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
     #     "GUID": "edf2ccc0-cd21-41f3-b360-00bd6a2b535a",

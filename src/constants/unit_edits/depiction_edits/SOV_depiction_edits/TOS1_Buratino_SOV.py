@@ -1,20 +1,19 @@
-"""MTLB_Vasilek_SOV depiction edits."""
+"""TOS1_Buratino_SOV depiction edits."""
 
 from typing import Dict, Tuple, Union
 
 # fmt: off
-mtlb_vasilek_sov: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
-    "unit_name": "MTLB_Vasilek_SOV",
+tos1_buratino_sov: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
+    "unit_name": "TOS1_Buratino_SOV",
     "valid_files": ["DepictionVehicles.ndf"],
     "DepictionVehicles_ndf": {
         "new_objects": {
-            "weapon4": """
-                DepictionOperator_MTLB_Vasilek_SOV_Weapon4 is DepictionOperator_WeaponInstantFire
+            "weapon2": """
+                DepictionOperator_TOS1_Buratino_SOV_Weapon5 is DepictionOperator_WeaponInstantFire
                 (
-                    FireEffectTag = 'weapon_effet_tag4'
-                    Anchors = ["fx_tourelle1_tir_01"]
-                    WeaponShootDataPropertyName = ['WeaponShootData_0_4']
-                    NbProj = 1
+                    FireEffectTag = 'weapon_effet_tag2'
+                    WeaponShootDataPropertyName = ['WeaponShootData_0_2', 'WeaponShootData_1_2', 'WeaponShootData_2_2', 'WeaponShootData_3_2']
+                    NbProj = 4
                 )
             """,
         },
@@ -24,15 +23,15 @@ mtlb_vasilek_sov: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
                 0: {
                     "Depiction": {
                         "Operators": { 
-                            4: ("add", (
-                                "DepictionOperator_MTLB_Vasilek_SOV_Weapon4"
+                            11: ("add", (
+                                "DepictionOperator_TOS1_Buratino_SOV_Weapon2"
                             )),
                         },
                         "Actions": {
                             3: ("add", (
                                 '('
-                                '    "weapon_effet_tag4",'
-                                '    Weapon_Mortier_Vasilek_indirect_82mm'
+                                '    "weapon_effet_tag2",'
+                                '    Weapon_SMOKE_Vehicle_Grenadex8'
                                 ')'
                             )),
                         },

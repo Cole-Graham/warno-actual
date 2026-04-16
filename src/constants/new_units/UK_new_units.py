@@ -169,6 +169,7 @@ UK_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits", "AllowedForMissileRoE", "Commandant", "Crew", "GroundUnits", "Inf_quartier_ok",
+                "CMD_Unit",
                 "Infanterie", "Infanterie_CMD", "InfmapCommander", "UNITE_Rifles_CMD2_UK", "Unite",
             ],
         },
@@ -243,6 +244,7 @@ UK_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -302,6 +304,7 @@ UK_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -353,6 +356,16 @@ UK_NEW_UNITS = {
         "InfantrySquadModuleGUID": "2a3009a7-9dd4-4a3e-8f0d-f54471cbb1e2",
         "ShowroomGUID": "576ba527-ee4d-4078-b7aa-de7d5768e192",
         "CadavreGUID": "9758e636-88e4-4970-adba-ffb1b4a0813c",
+        "modules_add": [
+            "TCommanderModuleDescriptor()",
+            """TInfluenceMapModuleDescriptor
+            (
+                InfluenceStrength = 1.0
+                MinimumInfluenceStrength = 1.0
+                StrengthDecayPerSecond = 0.01
+                PreventsDecayInZone = True
+            )""",
+        ],
         "NewName": "FV4201_Chieftain_Mk9_CMD2_UK",
         "GameName": {
             "display": "CHIEFTAIN Mk.9 CMD",
@@ -361,6 +374,7 @@ UK_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -420,6 +434,7 @@ UK_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -475,12 +490,13 @@ UK_NEW_UNITS = {
         "CadavreGUID": "30a1f922-b453-4fbe-ac83-63be38aba866",
         "NewName": "FV4201_Chieftain_Mk9_CMD_UK",
         "GameName": {
-            "display": "#LDR CHIEFTAIN Mk.9 LDR.",
+            "display": "CHIEFTAIN Mk.9 LDR.",
             "token": "SHOVALSAYD",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",

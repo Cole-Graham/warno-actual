@@ -7,10 +7,16 @@ vab_t20_fr: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
     "unit_name": "VAB_T20_FR",
     "valid_files": ["DepictionVehicles.ndf"],
     "DepictionVehicles_ndf": {
-        ("DepictionOperator_AMX_10_PC_CMD_FR_Weapon1", "DepictionOperator_WeaponInstantFire"): {
-            "copy": "DepictionOperator_VAB_T20_FR_Weapon3",
-            "FireEffectTag": "'weapon_effet_tag3'",
-            "WeaponShootDataPropertyName": ["'WeaponShootData_0_3'"],
+        "new_objects": {
+            "weapon3": """
+                DepictionOperator_VAB_T20_FR_Weapon3 is DepictionOperator_WeaponInstantFire
+                (
+                    FireEffectTag = 'weapon_effet_tag3'
+                    Anchors = ["fx_tourelle1_tir_01"]
+                    WeaponShootDataPropertyName = ['WeaponShootData_0_3']
+                    NbProj = 1
+                )
+            """,
         },
         
         (None, "TacticVehicleDepictionRegistration"): {

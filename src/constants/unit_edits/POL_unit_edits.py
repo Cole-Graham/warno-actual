@@ -150,6 +150,7 @@ pol_unit_edits = {
             "add_specs": ["'leader_sov'",],
             "remove_specs": ["'_leader'"],
         },
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
     
     "UAZ_469_CMD_Para_POL": {  # Desant. WD-43
@@ -161,6 +162,7 @@ pol_unit_edits = {
             "add_specs": ["'leader_sov'",],
             "remove_specs": ["'_leader'"],
         },
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
     
     "BMP_1_CMD_POL": {  # BWP-1K3
@@ -176,6 +178,7 @@ pol_unit_edits = {
             "remove_specs": ["'_leader'"],
         },
         "UpgradeFromUnit": None,
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
     
     "BRDM_2_CMD_POL": {  # BRDM-2U
@@ -191,6 +194,7 @@ pol_unit_edits = {
             "remove_specs": ["'_leader'"],
         },
         "availability": [0, 3, 0, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
     
     "BRDM_2_CMD_R5_POL": {  # BRDM-2 R-5
@@ -206,6 +210,7 @@ pol_unit_edits = {
             "remove_specs": ["'_leader'"],
         },
         "availability": [0, 0, 3, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
     
     "OT_64_SKOT_CMD_POL": {  # SKOT R-2M
@@ -221,6 +226,7 @@ pol_unit_edits = {
             "remove_specs": ["'_leader'"],
         },
         "availability": [0, 0, 3, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
     
     "Mi_2_CMD_POL": {  # Mi-2D PRZETACZNIK
@@ -236,6 +242,7 @@ pol_unit_edits = {
             "remove_specs": ["'_leader'"],
         },
         "availability": [0, 3, 0, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
     
     # POL INFANTRY
@@ -243,11 +250,12 @@ pol_unit_edits = {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDRSOV SAPERZY LDR.",
+            "display": "SAPERZY LDR.",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -300,11 +308,12 @@ pol_unit_edits = {
         "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDRSOV PIECHOTA LDR.",
+            "display": "PIECHOTA LDR.",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -351,11 +360,12 @@ pol_unit_edits = {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDRSOV PIECHOTA ZMECH. LDR.",
+            "display": "PIECHOTA ZMECH. LDR.",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -408,11 +418,12 @@ pol_unit_edits = {
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
          "GameName": {
-             "display": "#LDRSOV KOMANDOSI LDR.",
+             "display": "KOMANDOSI LDR.",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -453,11 +464,12 @@ pol_unit_edits = {
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
          "GameName": {
-             "display": "#LDRSOV SPADO. KOMANDOSI LDR.",
+             "display": "SPADO. KOMANDOSI LDR.",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -511,11 +523,12 @@ pol_unit_edits = {
         "max_speed": 26,
         "strength": 8,
         "GameName": {
-            "display": "#LDRSOV SPADO. SAPERZY LDR.",
+            "display": "SPADO. SAPERZY LDR.",
         },
          "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -565,11 +578,12 @@ pol_unit_edits = {
         "max_speed": 26,
         "strength": 7,
         "GameName": {
-            "display": "#LDRSOV SPADOCHRONIARZE LDR.",
+            "display": "SPADOCHRONIARZE LDR.",
         },
          "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -612,11 +626,12 @@ pol_unit_edits = {
         "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
          "GameName": {
-            "display": "#LDRSOV REZERWIŚCI DOW."
+            "display": "REZERWIŚCI DOW."
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -1361,12 +1376,13 @@ pol_unit_edits = {
     "OT_62_TOPAS_R3M_CMD_POL": {  # TOPAS R-2M
         "CommandPoints": 60,
         "GameName": {
-            "display": "#LDRSOV TOPAS R-2M",
+            "display": "TOPAS R-2M",
             "token": "TOPASARTLD",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "GroundUnits",
                 "UNITE_OT_62_TOPAS_R3M_CMD_POL",
@@ -1693,12 +1709,13 @@ pol_unit_edits = {
     "T55A_CMD_POL": {  # T-55AD LDR
         "CommandPoints": 80,
         "GameName": {
-            "display": "#LDRSOV T-55AD LDR.",
+            "display": "T-55AD LDR.",
             "token": "POLTFFAD",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -1728,12 +1745,13 @@ pol_unit_edits = {
     "T55AM_Merida_CMD_POL": {  # T-55AM Merida LDR
         "CommandPoints": 125,
         "GameName": {
-            "display": "#LDRSOV T-55AD-1M Merida LDR.",
+            "display": "T-55AD-1M Merida LDR.",
             "token": "POLT55AMLD",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -1767,12 +1785,13 @@ pol_unit_edits = {
             "top": (2, None),
         },
         "GameName": {
-            "display": "#LDRSOV T-72MD LDR.",
+            "display": "T-72MD LDR.",
             "token": "POLTSTMLDR",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -1805,12 +1824,13 @@ pol_unit_edits = {
             "top": (3, None),
         },
         "GameName": {
-            "display": "#LDRSOV T-72M1D LDR.",
+            "display": "T-72M1D LDR.",
             "token": "POLTSTMOLD",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -1841,12 +1861,13 @@ pol_unit_edits = {
     "ASU_85_CMD_POL": {  # ASU-85 LDR
         "CommandPoints": 70,
         "GameName": {
-            "display": "#LDRSOV ASU-85D LDR.",
+            "display": "ASU-85D LDR.",
             "token": "POLASUEFD",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -1871,12 +1892,13 @@ pol_unit_edits = {
     "PT76B_CMD_POL": {  # PT-76BD LDR
         "CommandPoints": 30,
         "GameName": {
-            "display": "#LDRSOV PT-76BD LDR.",
+            "display": "PT-76BD LDR.",
             "token": "POLPTSSBD",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -1901,12 +1923,13 @@ pol_unit_edits = {
     "PT76B_CMD_Naval_POL": {  #  NIEB.BERETY PT-76BD LDR
         "CommandPoints": 30,
         "GameName": {
-            "display": "#LDRSOV NIEB.BERETY PT-76BD LDR.",
+            "display": "NIEB.BERETY PT-76BD LDR.",
             "token": "POLPTSSBDN",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",

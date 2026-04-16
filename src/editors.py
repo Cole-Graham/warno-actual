@@ -89,6 +89,7 @@ from src.ui_mods.style import (
     edit_orderdisplay,
     edit_textstyles,
     edit_uicommonbeaconlabelresources,
+    edit_uicommonunitnameresources,
     edit_uiingamebuckcubeaction,
     edit_uiingamebuckengagementrules,
     edit_uiingamedefaultcontainer,
@@ -622,6 +623,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         # Common UI templates and components
         "GameData/UserInterface/Use/Common/UICommonBeaconLabelResources.ndf": [
             (edit_uicommonbeaconlabelresources, "ui"),
+        ],
+        "GameData/UserInterface/Use/Common/UICommonUnitNameResources.ndf": [
+            (edit_uicommonunitnameresources, "gameplay"),
         ],
         # Generated UI files
         "GameData/Generated/UserInterface/Textures/WeaponTextures.ndf": [

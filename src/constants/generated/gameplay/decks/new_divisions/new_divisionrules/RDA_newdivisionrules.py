@@ -52,7 +52,6 @@ RDA_airborne_newdivisionrules = {
     "tank": [
         ("T55AM2_CMD_DDR", 1, [0, 0, 4, 0]),
         ("T55A_CMD_DDR", 1, [0, 0, 5, 0]),
-        ("PT76B_CMD2_DDR", 1, [0, 0, 6, 0]),
         ("T55AM2B_DDR", 1, [0, 6, 4, 0]),
         ("T55AM2_DDR", 2, [0, 8, 6, 0]),
         ("T55A_DDR", 2, [10, 7, 0, 0]),

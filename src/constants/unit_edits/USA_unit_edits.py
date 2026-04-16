@@ -23,6 +23,7 @@ usa_unit_edits = {
             },
         },
         "availability": [0, 3, 0, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "UH60A_CO_US": {
@@ -44,6 +45,7 @@ usa_unit_edits = {
             },
         },
         "availability": [0, 4, 0, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "M1025_Humvee_CMD_para_US": {
@@ -62,6 +64,7 @@ usa_unit_edits = {
         },
         "ButtonTexture": "M1025_Humvee_CMD_US",
         "DeploymentShift": 0,
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "M1025_Humvee_CMD_US": {
@@ -75,6 +78,7 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "M2A1_Bradley_Leader_US": {
@@ -122,11 +126,12 @@ usa_unit_edits = {
         "armor": "Infantry_armor_reference",
         "GameName": {
             "token": "CPCIJQLHML",
-            "display": "#LDR FIRETEAM LDR.",
+            "display": "FIRETEAM LDR.",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -176,11 +181,12 @@ usa_unit_edits = {
         "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR CAV. TROOPERS LDR.",
+            "display": "CAV. TROOPERS LDR.",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -228,11 +234,12 @@ usa_unit_edits = {
         "armor": "Infantry_armor_reference",
         "GameName": {
             "token": "SVWNZUYPNE",
-            "display": "#LDR MECH. RIFLES LDR.",
+            "display": "MECH. RIFLES LDR.",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -279,18 +286,20 @@ usa_unit_edits = {
                 "replace": [("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm")],
             },
         },
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "Engineer_CMD_US": {
         "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR ENGINEERS LDR.",
+            "display": "ENGINEERS LDR.",
             "token": "DBEBRUEYSP",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -351,12 +360,13 @@ usa_unit_edits = {
         "CommandPoints": 70,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR RANGERS LDR.",
+            "display": "RANGERS LDR.",
             "token": "WPUCULQQND",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -439,12 +449,13 @@ usa_unit_edits = {
         "CommandPoints": 55,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR AB ENGINEERS LDR.",
+            "display": "AB ENGINEERS LDR.",
             "token": "LRTQFDCCCB",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -489,12 +500,13 @@ usa_unit_edits = {
         "CommandPoints": 60,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR AIRBORNE LDR.",
+            "display": "AIRBORNE LDR.",
             "token": "BHVJUDTEVR",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -542,12 +554,13 @@ usa_unit_edits = {
         "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR AERO-RIFLES LDR.",
+            "display": "AERO-RIFLES LDR.",
             "token": "TVWIKAOSVP",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -583,12 +596,13 @@ usa_unit_edits = {
         "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR AERO-FIRETEAM LDR.",
+            "display": "AERO-FIRETEAM LDR.",
             "token": "MHGSSCNBFO",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -629,12 +643,13 @@ usa_unit_edits = {
         "CommandPoints": 55,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR AERO-ENGINEERS LDR.",
+            "display": "AERO-ENGINEERS LDR.",
             "token": "OWQFQTLBJN",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -671,12 +686,13 @@ usa_unit_edits = {
         "CommandPoints": 70,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR GREEN BERETS LDR.",
+            "display": "GREEN BERETS LDR.",
             "token": "KFNXNJOXZS",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -719,12 +735,13 @@ usa_unit_edits = {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR MP LEADER",
+            "display": "MP LEADER",
             "token": "LLUPBPNLWT",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -2293,12 +2310,13 @@ usa_unit_edits = {
     "M577_US": {
         "CommandPoints": 60,
         "GameName": {
-            "display": "#LDR M577 TACFIRE FCV",
+            "display": "M577 TACFIRE FCV",
             "token": "ZTSGIUUUVJ",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "GroundUnits",
                 "UNITE_M577_US",
@@ -2455,12 +2473,13 @@ usa_unit_edits = {
     "M1A1HA_Abrams_CMD_US": {
         "CommandPoints": 330,
         "GameName": {
-            "display": "#LDR M1A1(HA) ABRAMS LDR.",
+            "display": "M1A1(HA) ABRAMS LDR.",
             "token": "CIOEKZVEAY",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -2497,12 +2516,13 @@ usa_unit_edits = {
     "M1A1_Abrams_CMD_US": {
         "CommandPoints": 255,
         "GameName": {
-            "display": "#LDR M1A1 ABRAMS LDR.",
+            "display": "M1A1 ABRAMS LDR.",
             "token": "JARUASHKDH",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -2542,12 +2562,13 @@ usa_unit_edits = {
     "M1IP_Abrams_CMD_US": {
         "CommandPoints": 215,
         "GameName": {
-            "display": "#LDR M1IP ABRAMS LDR.",
+            "display": "M1IP ABRAMS LDR.",
             "token": "TSLINICZXV",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -2576,12 +2597,13 @@ usa_unit_edits = {
     "M1_Abrams_CMD_US": {
         "CommandPoints": 185,
         "GameName": {
-            "display": "#LDR M1 ABRAMS LDR.",
+            "display": "M1 ABRAMS LDR.",
             "token": "JMIRJBBLPW",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -2610,12 +2632,13 @@ usa_unit_edits = {
     "M60A3_CMD_US": {
         "CommandPoints": 120,
         "GameName": {
-            "display": "#LDR M60A3 (TTS) LDR.",
+            "display": "M60A3 (TTS) LDR.",
             "token": "OZPDFIGTWN",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -2644,12 +2667,13 @@ usa_unit_edits = {
     "M60A1_RISE_Passive_CMD_US": {
         "CommandPoints": 95,
         "GameName": {
-            "display": "#LDR M60A1 RISE LDR.",
+            "display": "M60A1 RISE LDR.",
             "token": "ETJTTJZGYR",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -2678,12 +2702,13 @@ usa_unit_edits = {
     "M551A1_TTS_Sheridan_CMD_US": {
         "CommandPoints": 65,
         "GameName": {
-            "display": "#LDR M551 TTS SHERIDAN LDR.",
+            "display": "M551 TTS SHERIDAN LDR.",
             "token": "NBZRAJWZXD",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",

@@ -17,26 +17,31 @@ rfa_unit_edits = {
             "remove_specs": ["'_para'"],
         },
         
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "Faun_Kraka_CMD_RFA": {
         "CommandPoints": 145,
         "availability": [0, 4, 0, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "TPZ_Fuchs_CMD_RFA": {
         "CommandPoints": 155,
         "availability": [0, 3, 0, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "Bo_105_CMD_RFA": {
         "CommandPoints": 115,
         "availability": [0, 3, 0, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "Alouette_II_CMD_RFA": {
         "CommandPoints": 115,
         "availability": [0, 3, 0, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
     
     "DCA_FK20_2_20mm_RFA": {
@@ -88,11 +93,12 @@ rfa_unit_edits = {
         "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR PZ.GRENADIER LDR.",
+            "display": "PZ.GRENADIER LDR.",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -135,10 +141,11 @@ rfa_unit_edits = {
     "Fallschirmjager_CMD_RFA": {  # #CMD Fs-JÄGER FÜH.
         "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
-        "GameName": {"display": "#LDR FALLSCHIRMJÄGER LDR."},
+        "GameName": {"display": "FALLSCHIRMJÄGER LDR."},
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -175,11 +182,12 @@ rfa_unit_edits = {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR JÄGER LDR."
+            "display": "JÄGER LDR."
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -214,11 +222,12 @@ rfa_unit_edits = {
         "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR PIONIER LDR."
+            "display": "PIONIER LDR."
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -255,11 +264,12 @@ rfa_unit_edits = {
         "CommandPoints": 60,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR GEBIRGSJÄGER LDR."
+            "display": "GEBIRGSJÄGER LDR."
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -908,12 +918,13 @@ rfa_unit_edits = {
     "M577_RFA": {
         "CommandPoints": 60,
         "GameName": {
-            "display": "#LDR M577GA2 TACFIRE",
+            "display": "M577GA2 TACFIRE",
             "token": "M577GA2LDR",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "GroundUnits",
                 "UNITE_M577_RFA",
@@ -1027,12 +1038,13 @@ rfa_unit_edits = {
     "M48A2GA2_CMD_RFA": {
         "CommandPoints": 75,
         "GameName": {
-            "display": "#LDR PZ.BEF. M48A2GA2",
+            "display": "PZ.BEF. M48A2GA2",
             "token": "VLNKYMRDNH",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -1059,12 +1071,13 @@ rfa_unit_edits = {
     "Leopard_1A1_CMD_RFA": {
         "CommandPoints": 80,
         "GameName": {
-            "display": "#LDR PZ.BEF. LEOPARD 1A1A1",
+            "display": "PZ.BEF. LEOPARD 1A1A1",
             "token": "XCPWTQSWXH",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -1090,12 +1103,13 @@ rfa_unit_edits = {
     "Leopard_1A4_CMD_RFA": {
         "CommandPoints": 90,
         "GameName": {
-            "display": "#LDR PZ.BEF. LEOPARD 1A4",
+            "display": "PZ.BEF. LEOPARD 1A4",
             "token": "ELPLTKBAYX",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -1121,12 +1135,13 @@ rfa_unit_edits = {
     "Leopard_1A5_CMD_RFA": {
         "CommandPoints": 110,
         "GameName": {
-            "display": "#LDR PZ.BEF. LEOPARD 1A5",
+            "display": "PZ.BEF. LEOPARD 1A5",
             "token": "GLAVEMFHKO",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -1155,12 +1170,13 @@ rfa_unit_edits = {
             "top": (4, None),
         },
         "GameName": {
-            "display": "#LDR PZ.BEF. LEOPARD 2A3",
+            "display": "PZ.BEF. LEOPARD 2A3",
             "token": "IKKNOBNJOQ",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -1186,12 +1202,13 @@ rfa_unit_edits = {
     "Leopard_2A1_CMD_RFA": {
         "CommandPoints": 175,
         "GameName": {
-            "display": "#LDR PZ.BEF. LEOPARD 2A1",
+            "display": "PZ.BEF. LEOPARD 2A1",
             "token": "LWSMADUUPS",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -1220,12 +1237,13 @@ rfa_unit_edits = {
             "top": (4, None),
         },
         "GameName": {
-            "display": "#LDR PZ.BEF. LEOPARD 2A4(C)",
+            "display": "PZ.BEF. LEOPARD 2A4(C)",
             "token": "PBLIFBOOCD",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
