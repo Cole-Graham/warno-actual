@@ -4028,6 +4028,11 @@ sov_unit_edits = {
         "CommandPoints": 20,
         "availability": [6, 0, 0, 0],
     },
+
+    "SNAR_10_SOV": { # SNAR-10 (Counter Battery Radar)
+        "CommandPoints": 30,
+        "availability": [6, 0, 0, 0],
+    },
     
     "Scout_SOV": {
         "CommandPoints": 20,

@@ -559,6 +559,27 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+
+    ("SAM_3M9M1", "SAM", None, False): { # 178
+        "Ammunition": {
+            "parent_membr": {
+                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeAirplaneGRU": 5250,
+                "TimeBetweenTwoShots": 2.5,
+                "TimeBetweenTwoFx": 2.5,
+            },
+            "hit_roll": {
+                "Idling": 45,
+            },
+        },
+        "SupplyCost": 110.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [3],
+            "units": {
+                3: ["2K12_KUB_M1_DDR"],
+            },
+        },
+    },
     
     ("SAM_9M33M2", "SAM", None, False): {
         "Ammunition": {

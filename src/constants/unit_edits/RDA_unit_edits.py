@@ -833,6 +833,55 @@ rda_unit_edits = {
         "remove_zone_capture": None,
     },
 
+    "MotRifles_Naval_CMD_DDR": {
+        "CommandPoints": 30,
+        "armor": "Infantry_armor_reference",
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "LDR_SOV_Unit",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "UNITE_MotRifles_Naval_CMD_DDR",
+                "Unite",
+            ],
+        },
+        "strength": 6,
+        "TransportedTexture": "UseInGame_Transport_REGINF",
+        "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "UnitRole": "infantry",
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'leader_sov',
+                '_resolute',
+                'infantry_equip_medium',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Infantry",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 0, 7, 5],
+        "max_speed": 26,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_Mpi_AK_74N": 6,
+                },
+            },
+        },
+        "selector_tactic": "(2, 5)",
+        "selector_tactic_obj": "02_05",
+        "remove_zone_capture": None,
+    },
+
     "Reserve_DDR": {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
@@ -879,6 +928,16 @@ rda_unit_edits = {
         },
     },
 
+    "Security_VPB_DDR": {
+        "CommandPoints": 30,
+        "armor": "Infantry_armor_reference",
+        "availability": [10, 0, 0, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+    },
+
     "MP_DDR": {
         "CommandPoints": 15,
         "armor": "Infantry_armor_reference",
@@ -892,6 +951,16 @@ rda_unit_edits = {
                 },
             },
         },
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
+        },
+    },
+
+    "MP_Combat_DDR": {
+        "CommandPoints": 25,
+        "armor": "Infantry_armor_reference",
+        "availability": [0, 8, 6, 0],
+        "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
@@ -1384,6 +1453,16 @@ rda_unit_edits = {
         },
     },
 
+    "MotRifles_Naval_DDR": {
+        "CommandPoints": 45,
+        "armor": "Infantry_armor_reference",
+        "availability": [10, 7, 0, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+    },
+
     "Engineers_DDR": {
         "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
@@ -1540,6 +1619,28 @@ rda_unit_edits = {
         "UpgradeFromUnit": "HMGteam_NSV_DDR",
     },
 
+    "HMGteam_AGS17_VPB_DDR": {
+        "CommandPoints": "HMGteam_AGS17_SOV",
+        "GameName": {
+            "display": "VPB Gr-MG 30mm",
+        },
+        "strength": "HMGteam_AGS17_SOV",
+        "max_speed": "HMGteam_AGS17_SOV",
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+            "RDA_KdA_Bezirk_Erfurt": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 9, 7, 0],
+        "SpecialtiesList": {
+            "add_specs": "HMGteam_AGS17_SOV",
+        },
+        "UpgradeFromUnit": "HMGteam_AGS17_DDR",
+    },
+
     "UAZ_469_SPG9_DDR": {
         "CommandPoints": 25,
         "Divisions": {
@@ -1637,6 +1738,13 @@ rda_unit_edits = {
     },
 
     "W50_LA_A_DDR": {
+        "CommandPoints": 15,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+    },
+
+    "LO_1800_trans_DDR": {
         "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'",],
@@ -1822,6 +1930,14 @@ rda_unit_edits = {
         # },
     },
     
+    "BM21_Grad_HE_DDR": { # BM-21 [HE]
+        "CommandPoints": "BM21_Grad_SOV",
+        "GameName": {
+            "display": "MFRW BM-21 [HE]",
+        },
+        "availability": "BM21_Grad_SOV",
+    },
+
     "BM21_Grad_DDR": { # BM-21 [NPLM]
         "CommandPoints": 110,
         "GameName": {
@@ -2086,11 +2202,16 @@ rda_unit_edits = {
         "CommandPoints": 35,
         "availability": [9, 7, 5, 0],
     },
+
+    "AT_T12_100mm_DDR": {  # T-12 AT 100mm
+        "CommandPoints": 45,
+        "availability": [8, 6, 0, 0],
+    },
     
     "AT_T12_Rapira_DDR": { 
         "CommandPoints": "AT_T12_Rapira_SOV",
         "availability": "AT_T12_Rapira_SOV",
-        "UpgradeFromUnit": "AT_D44_85mm_DDR",
+        "UpgradeFromUnit": "AT_T12_100mm_DDR",
     },
 
     "MTLB_trans_DDR": {
@@ -2138,6 +2259,11 @@ rda_unit_edits = {
     
     "BMP_2_DDR": {
         "CommandPoints": 55,
+    },
+
+    "BTR_60PA_Reserve_DDR": {
+        "CommandPoints": 20,
+        "strength": 10,
     },
 
     "BTR_60_DDR": {
@@ -2337,7 +2463,7 @@ rda_unit_edits = {
         "strength": 10,
     },
 
-     "BMP_1P_reco_DDR": { # is named BMP-1P in descriptor but lacks the smoke and fagot missle, so its basically a BMP-1 basic
+    "BMP_1P_reco_DDR": { # is named BMP-1P in descriptor but lacks the smoke and fagot missle, so its basically a BMP-1 basic
         "GameName": {
             "display": "AufKl BMP-1",
         },
@@ -2391,6 +2517,10 @@ rda_unit_edits = {
     "Mi_8TB_reco_Marine_DDR": { # #RECO2 AUFKL. Mi-8TB
         "CommandPoints": 110,
         "availability": [0, 4, 3, 0],
+    },
+
+    "Mi_24D_s5_AT_reco_DDR": { # #RECO2 DHS Mi-24D Transport
+        "CommandPoints": 135,
     },
 
     "Mi_14PL_recon_DDR": {  # #RECO3 AUFKL. Mi-14PL
@@ -2472,6 +2602,16 @@ rda_unit_edits = {
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
+        },
+    },
+
+    "Scout_SIGINT_DDR": {
+        "CommandPoints": 30,
+        "armor": "Infantry_armor_reference",
+        "availability": [6, 4, 0, 0],
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
         },
     },
 
@@ -2729,7 +2869,7 @@ rda_unit_edits = {
         },
     },
 
-     "MANPAD_Strela_2M_FJ_DDR": {
+    "MANPAD_Strela_2M_FJ_DDR": {
         "GameName": {
             "display": "Fs-FLA-RAK. STRELA-2M",
         },
@@ -2920,6 +3060,16 @@ rda_unit_edits = {
         "availability": [8, 6, 0, 0],
     },
 
+    "LO_1800_ZPU_2_DDR": {
+        "CommandPoints": "LO_1800_ZPU_2_POL",
+        "availability": "LO_1800_ZPU_2_POL",
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_ZPU4_14_5mm": 192,
+            },
+        },
+    },
+
     "W50_LA_A_25mm_DDR": {
         "CommandPoints": 40,
         "availability": [7, 5, 0, 0],
@@ -3014,6 +3164,20 @@ rda_unit_edits = {
                 "cards": 2,
             },
         },
+        "SpecialtiesList": {
+            "add_specs": ["'verygood_airoptics'"],
+        },
+    },
+
+    "2K12_KUB_M1_DDR": {
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 10600.0,
+            },
+            "TimeBetweenEachIdentifyRoll": 0.5,
+        },
+        "CommandPoints": 80,
+        "availability": [4, 3, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },

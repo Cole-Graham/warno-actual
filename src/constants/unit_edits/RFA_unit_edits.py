@@ -1763,10 +1763,7 @@ rfa_unit_edits = {
     
     "M113_GreenArcher_RFA": {
         "CommandPoints": 30,
-        "optics": {
-            "OpticalStrength": 8834.0
-        },
-        "availability": [8, 0, 0, 0],
+        "availability": [6, 0, 0, 0],
     },
 
     "TPZ_Fuchs_RASIT_RFA": {

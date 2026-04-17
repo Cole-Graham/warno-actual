@@ -724,7 +724,7 @@ pol_unit_edits = {
     },
     
     "Engineers_Reserve_POL": {
-        "CommandPoints": 30,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "availability": [10, 0, 0, 0],
         "max_speed": 26,
@@ -930,7 +930,7 @@ pol_unit_edits = {
         # RPG-7VL x6
     },
     
-     "Para_Metis_POL": {  # Spadochroniarze [Metis]
+    "Para_Metis_POL": {  # Spadochroniarze [Metis]
         "CommandPoints": 45,
         "availability": [0, 6, 4, 0],
         "armor": "Infantry_armor_reference",
@@ -952,7 +952,7 @@ pol_unit_edits = {
         # Metis x6
      },
     
-     "Para_HMG_POL": {  # Spadochroniarze [PKM]
+    "Para_HMG_POL": {  # Spadochroniarze [PKM]
         "CommandPoints": 40,
         "availability": [0, 6, 4, 0],
         "armor": "Infantry_armor_reference",
@@ -1532,20 +1532,16 @@ pol_unit_edits = {
                 "cards": 2,
             },
         },
-        # "UpgradeFromUnit": "Howz_D1_152mm_POL",
+        "UpgradeFromUnit": "Howz_D1_152mm_POL",
     },
 
-    # "Howz_D1_152mm_POL": {  # H wz. 1943 152mm (D-1 152mm)
-    #     "CommandPoints": 85,
-    #     "availability": [3, 2, 0, 0],
-    #     "UpgradeFromUnit": "Howz_M46_130mm_POL",
-    #     "GameName": {
-    #         "display": "H wz. 1943 152mm",
-    #     },
-    #     "ButtonTexture": "Howz_D1_152mm_SOV",
-    # },
+    "Howz_D1_152mm_POL": {  # H wz. 1943 152mm (D-1 152mm)
+        "CommandPoints": 85,
+        "availability": [3, 2, 0, 0],
+        "UpgradeFromUnit": "Howz_M46_130mm_POL",
+    },
 
-     "MLRS_WP_8z_POL": {  # WP-8z
+    "MLRS_WP_8z_POL": {  # WP-8z
         "CommandPoints": 60,
         "GameName": {
             "display": "WP-8z 140mm",
@@ -1966,6 +1962,12 @@ pol_unit_edits = {
         "UpgradeFromUnit": "T54B_CMDactual_POL",
     },
 
+    "T55U_POL": {  # T-55A
+        "CommandPoints": 65,
+        "availability": [10, 7, 0, 0],
+        "UpgradeFromUnit": "T55A_CMD_POL",
+    },
+
     "T55A_POL": {  # T-55A
         "CommandPoints": 70,
         "availability": [10, 7, 0, 0],
@@ -2265,6 +2267,16 @@ pol_unit_edits = {
         },
     },
     
+     "Scout_Reserve_POL": {  # Rez. Zwiadowcy
+        "armor": "Infantry_armor_reference",
+        "CommandPoints": 20,
+        "availability": [10, 0, 0, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'", "'_swift'"],
+        },
+    },
+    
     "Scout_para_POL": {  # Desant. Zwiadowcy
         "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
@@ -2414,6 +2426,16 @@ pol_unit_edits = {
         },
     },
 
+    "Commandos_Marine_POL": {  # Formoza, this maybe should be 70? Based the Price off of the Spetz Gru Stinger. Formza is better in CQC, and has worse ATGM
+        "CommandPoints": 65,
+        "armor": "Infantry_armor_reference",
+        "max_speed": 20,
+        "availability": [0, 0, 0, 3],
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
+    },
+
     # TODO: Find out what happened to this unit
     # "Scout_SF_Para_POL": {  # Desant. Rozp. Specjalne
     #     "GameName": {
@@ -2455,6 +2477,16 @@ pol_unit_edits = {
             },
         },
         "UpgradeFromUnit": "OT_65_POL",
+    },
+
+    "MTLB_Taran_SIGINT_POL": {  # R-330T Taran
+        "CommandPoints": "MTLB_Taran_SIGINT_SOV",
+        "availability": "MTLB_Taran_SIGINT_SOV",
+    },
+
+    "SNAR_10_POL": {  # SNAR-10 (Counter Battery Radar)
+        "CommandPoints": "SNAR_10_SOV",
+        "availability": "SNAR_10_SOV",
     },
 
     "PT76B_POL": {  # PT-76B
@@ -2624,6 +2656,16 @@ pol_unit_edits = {
         },
     },
     
+    "LO_1800_ZPU_2_POL": {  # Lo-1800 ZPU-2
+        "CommandPoints": 30,
+        "availability": [12, 9, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canon_ZPU4_14_5mm": 192,
+            },
+        },
+    },
+
     "Hibneryt_POL": {  # Hibneryt
         "CommandPoints": 40,
         "availability": [7, 5, 0, 0],
@@ -2988,6 +3030,22 @@ pol_unit_edits = {
     
     "Su_7BKL_RKT_POL": {
         "CommandPoints": 115,
+        "availability": [0, 3, 0, 0],
+    },
+
+    "Su_7BKL_EW_POL": {
+        "CommandPoints": 100,
+        "availability": [0, 4, 0, 0],
+    },
+
+    "Su_7BKL_HE_POL": {
+        "CommandPoints": 175,
+        "availability": [0, 3, 0, 0],
+    },
+
+    "Su_7BKL_NPLM_POL": {
+        "CommandPoints": 175,
+        "availability": [0, 3, 0, 0],
     },
     
     "Su_17_cluster_POL": { # Su-20 [CLU] - 6x RBK-500

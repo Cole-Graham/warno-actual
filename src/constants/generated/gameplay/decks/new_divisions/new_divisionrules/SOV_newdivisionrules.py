@@ -346,7 +346,6 @@ SOV_marine_newdivisionrules = {
         ("Atteam_Fagot_Naval_VDV_SOV", 1, [0, 9, 7, 5], ["UAZ_469_SOV"]),
         ("ATteam_Faktoriya_Naval_VDV_SOV", 1, [0, 7, 5, 4], ["UAZ_469_SOV"]),
         ("Atteam_Konkurs_Naval_SOV", 1, [6, 4, 0, 0], ["UAZ_469_SOV"]),
-        ("AT_T12_Rapira_Naval_SOV", 2, [6, 4, 0, 0], ["MTLB_transp_SOV"]),
         ("FireSupport_Naval_SOV", 1, [12, 9, 0, 0], ["ZIL_131_Naval_SOV", "BTR_60_Naval_SOV"]),
         ("HMGteam_AGS17_Naval_SOV", 1, [8, 6, 0, 0], ["UAZ_469_SOV"]),
         ("HMGteam_PKM_Naval_VDV_SOV", 1, [0, 10, 7, 0], ["UAZ_469_SOV"]),
@@ -368,10 +367,11 @@ SOV_marine_newdivisionrules = {
     ],
     "tank": [
         ("T55AM_CMD_SOV", 1, [0, 0, 4, 0]),
-        ("BRDM_2_Konkurs_Naval_SOV", 2, [8, 6, 0, 0]),
         ("T55AM_SOV", 2, [0, 6, 4, 0]),
         ("T55AMD_SOV", 1, [0, 6, 4, 0]),
         ("T55AMV_SOV", 2, [0, 6, 4, 0]),
+        ("BRDM_2_Konkurs_Naval_SOV", 2, [8, 6, 0, 0]),
+        ("AT_T12_Rapira_Naval_SOV", 2, [6, 4, 0, 0], ["MTLB_transp_SOV"]),
     ],
     "recon": [
         ("BMD_1_Reostat_Naval_SOV", 1, [0, 8, 6, 0]),
