@@ -156,7 +156,7 @@ def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_nam
         "InfantryApparenceModuleDescriptor": { "handler": _handle_infantryapparence_module, "args": [] },
         "VehicleApparenceModuleDescriptor": { "handler": _handle_vehicleapparence_module, "args": [] },
         "TAutoCoverModuleDescriptor": { "handler": _handle_autocover_module, "args": [] },
-        "TBaseDamageModuleDescriptor": { "handler": _handle_basedamage_module, "args": [] },
+        "TBaseDamageModuleDescriptor": { "handler": _handle_basedamage_module, "args": [donor] },
         "TDamageModuleDescriptor": { "handler": _handle_damage_module, "args": [] },
         "TDangerousnessModuleDescriptor": { "handler": _handle_dangerousness_module, "args": [] },
         # "TRoutModuleDescriptor": { "handler": handle_rout_module, "args": [] },
@@ -618,6 +618,29 @@ def _handle_autocover_module(logger, game_db, unit_data, edit_type, unit_name,
 def _handle_basedamage_module(logger, game_db, unit_data, edit_type, unit_name,
                               edits, module, *args) -> None:
     """Handle TBaseDamageModuleDescriptor for existing and new units"""
+    donor = args[0]
+    tagset = None
+    menu_icon = None
+    if unit_data is None:
+        donor_data = game_db["unit_data"].get(donor, None)
+        if donor_data is None:
+            logger.warning(f"No donor data found for {donor}")
+        else:
+            tagset = donor_data.get("tags", None)
+            menu_icon = donor_data.get("menu_icon", None)
+    else:
+        tagset = unit_data.get("tags", None)
+        menu_icon = unit_data.get("menu_icon", None)
+        
+    if not tagset:
+        logger.warning(f"No tagset found for {unit_name}")
+    elif not menu_icon:
+        logger.warning(f"No menu icon found for {unit_name}")
+    else:
+        is_airplane = "Avion" in tagset
+        is_not_uav = menu_icon is not "Texture_RTS_H_uav"
+        if is_airplane and is_not_uav:
+            module.v.by_m("StunDamageLevelsPack").v = "~/DamageLevelsPackDescriptor_Unit_packStun_Airplanes"
     
     if "strength" in edits:
         module.v.by_m("MaxPhysicalDamages").v = str(edits["strength"])
@@ -627,7 +650,7 @@ def _handle_basedamage_module(logger, game_db, unit_data, edit_type, unit_name,
 def _handle_damage_module(logger, game_db, unit_data, edit_type, unit_name,
                                 edits, module, *args) -> None:
     """Handle TDamageModuleDescriptor for existing and new units"""
-    
+
     if "ECM" in edits:
         module.v.by_m("HitRollECM").v = str(edits["ECM"])
     

@@ -26,6 +26,8 @@ from src.constants.weapons import (
     SA_INF_ARMOR_DAMAGE_RATIOS,
     INFANTRY_ARMOR_EDITS,
     SNIPER_DAMAGE,
+    SNIPER_DOUBLE_DAMAGE,
+    SNIPER_TRIPLE_DAMAGE,
     NPLM_BOMB_DAMAGE,
     NPLM_BOMB_FLAMME_DAMAGE,
     PGB_BOMB_DAMAGE,
@@ -67,18 +69,20 @@ def edit_gen_gp_gfx_damageresistancefamilylist(source_path) -> None:
     
     # Add new damage families
     sniper_family = f"DamageFamily_sniper is {i + 1}"
-    clu_sol_hefrag_family = f"DamageFamily_clu_sol_hefrag is {i + 2}"
-    nplm_bomb_family = f"DamageFamily_nplm_bomb is {i + 3}"
-    nplm_bomb_flamme_family = f"DamageFamily_nplm_bomb_flamme is {i + 4}"
-    pgb_bomb_family = f"DamageFamily_pgb_bomb is {i + 5}"
-    manpad_hagru_family = f"DamageFamily_manpad_hagru is {i + 6}"
-    manpad_tbagru_family = f"DamageFamily_manpad_tbagru is {i + 7}"
-    sa_intermediate_family = f"DamageFamily_sa_intermediate is {i + 8}"
-    sa_full_family = f"DamageFamily_sa_full is {i + 9}"
-    twelve_seven_mm_family = f"DamageFamily_12_7 is {i + 10}"
-    fourteen_five_mm_family = f"DamageFamily_14_5 is {i + 11}"
-    missile_he_bigly_family = f"DamageFamily_missile_he_bigly is {i + 12}"
-    sead_missile_wa_family = f"DamageFamily_sead_missile_wa is {i + 13}"
+    sniper_double_family = f"DamageFamily_sniper_double is {i + 2}"
+    sniper_triple_family = f"DamageFamily_sniper_triple is {i + 3}"
+    clu_sol_hefrag_family = f"DamageFamily_clu_sol_hefrag is {i + 4}"
+    nplm_bomb_family = f"DamageFamily_nplm_bomb is {i + 5}"
+    nplm_bomb_flamme_family = f"DamageFamily_nplm_bomb_flamme is {i + 6}"
+    pgb_bomb_family = f"DamageFamily_pgb_bomb is {i + 7}"
+    manpad_hagru_family = f"DamageFamily_manpad_hagru is {i + 8}"
+    manpad_tbagru_family = f"DamageFamily_manpad_tbagru is {i + 9}"
+    sa_intermediate_family = f"DamageFamily_sa_intermediate is {i + 10}"
+    sa_full_family = f"DamageFamily_sa_full is {i + 11}"
+    twelve_seven_mm_family = f"DamageFamily_12_7 is {i + 12}"
+    fourteen_five_mm_family = f"DamageFamily_14_5 is {i + 13}"
+    missile_he_bigly_family = f"DamageFamily_missile_he_bigly is {i + 14}"
+    sead_missile_wa_family = f"DamageFamily_sead_missile_wa is {i + 15}"
 
     source_path.insert(j + 1, infanterie_wa_family)
     source_path.add(sniper_family)
@@ -94,6 +98,8 @@ def edit_gen_gp_gfx_damageresistancefamilylist(source_path) -> None:
     source_path.add(fourteen_five_mm_family)
     source_path.add(missile_he_bigly_family)
     source_path.add(sead_missile_wa_family)
+    source_path.add(sniper_double_family)
+    source_path.add(sniper_triple_family)
     logger.info(
         f"Added families: \n"
         f"{infanterie_wa_family}\n"
@@ -110,6 +116,8 @@ def edit_gen_gp_gfx_damageresistancefamilylist(source_path) -> None:
         f"{fourteen_five_mm_family}\n"
         f"{missile_he_bigly_family}\n"
         f"{sead_missile_wa_family}\n"
+        f"{sniper_double_family}\n"
+        f"{sniper_triple_family}\n"
     )
 
 
@@ -122,6 +130,8 @@ def edit_gen_gp_gfx_damageresistancefamilylistimpl(source_path) -> None:
         "resistance": ['"ResistanceFamily_infanterieWA"'],
         "damage": [
             '"DamageFamily_sniper"',
+            '"DamageFamily_sniper_double"',
+            '"DamageFamily_sniper_triple"',
             '"DamageFamily_clu_sol_hefrag"',
             '"DamageFamily_nplm_bomb"',
             '"DamageFamily_nplm_bomb_flamme"',
@@ -161,6 +171,8 @@ def _add_damage_resistance_values(source_path) -> None:
     damage_family_list = resist_params_obj.by_m("DamageFamilyCounts").v
     families = {
         "sniper": ("(DamageFamily_sniper, 2)"),
+        "sniper_double": ("(DamageFamily_sniper_double, 2)"),
+        "sniper_triple": ("(DamageFamily_sniper_triple, 2)"),
         "clu_sol_hefrag": ("(DamageFamily_clu_sol_hefrag, 16)"),
         "nplm_bomb": ("(DamageFamily_nplm_bomb, 1)"),
         "nplm_bomb_flamme": ("(DamageFamily_nplm_bomb_flamme, 1)"),
@@ -209,6 +221,8 @@ def _add_damage_resistance_values(source_path) -> None:
 
     values_list.add(
         *[str(sniper) for sniper in SNIPER_DAMAGE],
+        *[str(sniper) for sniper in SNIPER_DOUBLE_DAMAGE],
+        *[str(sniper) for sniper in SNIPER_TRIPLE_DAMAGE],
         *hefrag_rows,
         str(NPLM_BOMB_DAMAGE),
         str(NPLM_BOMB_FLAMME_DAMAGE),

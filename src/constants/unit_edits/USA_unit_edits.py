@@ -4034,7 +4034,7 @@ usa_unit_edits = {
     },
     
     "DCA_XM85_Chaparral_US": {
-        "CommandPoints": 130,
+        "CommandPoints": 80,
         "availability": [4, 3, 0, 0],
         "optics": {
             "OpticalStrengths": {

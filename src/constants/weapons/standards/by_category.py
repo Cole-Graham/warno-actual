@@ -29,6 +29,25 @@ MANPAD_STANDARDS: dict = {
     },
 }
 
+# AdditionalSuppressDamagePerLostPhysicalDamage = 25 // c'est un multiplicateur des degats physiques qu'on va appliquer en stress.
+# GDConstants.ndf value. The engine adds this * PhysicalDamages to the written
+# ``SuppressDamages`` at runtime, so the handler must subtract the same product
+# from the intended total below before writing the descriptor.
+AA_ADDITIONAL_SUPPRESS_PER_LOST_PHYSICAL: int = 25
+
+# Intended total suppress damage (written value + engine bonus) by PhysicalDamages.
+# Targets stunned at 350 damage.
+AA_SUPPRESS_BY_PHYSICAL_DAMAGE: dict[int, int] = {
+    9: 450, # Target at vet 2 with 20% suppression resistance, will still stun
+    8: 450,
+    7: 360, # Target at vet 2 with 20% suppression resistance, will NOT stun
+    6: 300, # Target at vet 3 with 40% suppression resistance, 2 shots will still stun
+    5: 240,
+    4: 180,
+}
+
+AA_CATEGORIES: frozenset[str] = frozenset({"A2A", "SAM", "MANPAD"})
+
 # -- DCA autocannon --------------------------------------------------------
 
 DCA_STANDARDS: dict = {

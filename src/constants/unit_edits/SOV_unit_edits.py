@@ -4249,11 +4249,12 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "animate": {
-                    "Sniper_VSS_Vintorez": False,
+                    "Sniper_VSS_Vintorez_double": False,
                 },
                 "quantity": {
-                    "Sniper_VSS_Vintorez": 2,
+                    "Sniper_VSS_Vintorez_double": 2,
                 },
+                "replace": [("Sniper_VSS_Vintorez", "Sniper_VSS_Vintorez_double")],
                 "insert": [(2, "RocketInf_RPG26_72_5mm")],
                 "insert_edits": {
                     2: {
@@ -4270,7 +4271,7 @@ sov_unit_edits = {
                 },
             },
             "Salves": {
-                "Sniper_VSS_Vintorez": 20,
+                "Sniper_VSS_Vintorez_double": 20,
                 "insert": [(2, 4)],
             },
         },

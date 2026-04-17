@@ -79,7 +79,8 @@ def edit_gen_gp_effects_effetssurunite(source_path) -> None:
                 break
             
     _edit_veterancy_effects(source_path)
-            
+    _edit_airunit_effects(source_path)
+    
     # Write experience hint texts to dictionary file.
     entries: List[Tuple[str, str]] = []
     for xp_type, data in VETERANCY_BONUSES.items():
@@ -131,8 +132,14 @@ def _edit_veterancy_effects(source_path) -> None:
         # Helo
         "UnitEffect_xp_rookie_helo": {"TUnitEffectHealOverTimeDescriptor": 3.0},
         "UnitEffect_xp_trained_helo": {"TUnitEffectHealOverTimeDescriptor": 4.2},
-        "UnitEffect_xp_veteran_helo": {"TUnitEffectHealOverTimeDescriptor": 6.2},
-        "UnitEffect_xp_elite_helo": {"TUnitEffectHealOverTimeDescriptor": 8.4, "add": [(_add_evasion, (-5,))]},
+        "UnitEffect_xp_veteran_helo": {
+            "TUnitEffectIncreaseDamageTakenDescriptor": -20,
+            "TUnitEffectHealOverTimeDescriptor": 6.2
+        },
+        "UnitEffect_xp_elite_helo": {
+            "TUnitEffectIncreaseDamageTakenDescriptor": -20,
+            "TUnitEffectHealOverTimeDescriptor": 8.4, "add": [(_add_evasion, (-5,))]
+        },
         # Avion
         "UnitEffect_xp_trained_avion": {"TUnitEffectHealOverTimeDescriptor": 2},
         "UnitEffect_xp_veteran_avion": {
@@ -146,31 +153,43 @@ def _edit_veterancy_effects(source_path) -> None:
     }
 
     # Apply specifically defined veterancy changes
-    for row in source_path:
-        if row.namespace not in vet_changes:
+    for effect_pack_ns, changes in vet_changes.items():
+        row = source_path.find_by_cond(
+            lambda r, ns=effect_pack_ns: r.namespace == ns,
+            strict=False,
+        )
+        if not row:
+            logger.warning(
+                f"Effect pack {effect_pack_ns!r} not found in EffetsSurUnite.ndf; "
+                f"skipping veterancy changes for this pack",
+            )
             continue
 
         effects_list = row.v.by_m("EffectsDescriptors")
-        changes = vet_changes[row.namespace]
 
-        for effect in effects_list.v:
-            if not hasattr(effect.v, "type"):
+        for effect_type, new_value in changes.items():
+            if effect_type == "add":
                 continue
 
-            effect_type = effect.v.type
-            if effect_type not in changes:
-                continue
-
-            if effect_type == "TUnitEffectBonusPrecisionWhenTargetedDescriptor":
-                effect.v.by_m("BonusPrecisionWhenTargeted").v = str(changes[effect_type])
-
-            elif effect_type == "TUnitEffectHealOverTimeDescriptor":
-                effect.v.by_m("HealUnitsPerSecond").v = str(changes[effect_type])
-
+            effect = effects_list.v.find_by_cond(
+                lambda o, et=effect_type: hasattr(o.v, "type") and o.v.type == et,
+                strict=False,
+            )
+            if effect:
+                if effect_type == "TUnitEffectIncreaseDamageTakenDescriptor":
+                    effect.v.by_m("BonusDamage").v = str(new_value)
+                elif effect_type == "TUnitEffectBonusPrecisionWhenTargetedDescriptor":
+                    effect.v.by_m("BonusPrecisionWhenTargeted").v = str(new_value)
+                elif effect_type == "TUnitEffectHealOverTimeDescriptor":
+                    effect.v.by_m("HealUnitsPerSecond").v = str(new_value)
+                elif effect.v.by_m("ModifierValue", False):
+                    effect.v.by_m("ModifierValue").v = str(new_value)
+                logger.info(f"Updated {effect_type} for {effect_pack_ns}")
             else:
-                effect.v.by_m("ModifierValue").v = str(changes[effect_type])
-
-            logger.info(f"Updated {effect_type} for {row.namespace}")
+                logger.warning(
+                    f"{effect_type} not found in EffectsDescriptors for {effect_pack_ns}; "
+                    f"expected to apply veterancy change {new_value!r}",
+                )
 
         if "add" in changes:
             for effect_fn, args in changes["add"]:  # noqa
@@ -213,10 +232,18 @@ def _add_multiplicative_infantry_xp(source_path) -> None:
         source_path.add(new_effect)
         logger.info(f"Added new effect: {new_effect.namespace}")
         
-    xp_elite_helo = source_path.by_n("UnitEffect_xp_elite_helo").copy()
-    xp_elite_helo.namespace = "UnitEffect_xp_elite_helo_SF"
-    xp_elite_helo.v.by_m("DescriptorId").v = f"GUID:{{2967b45d-5b50-48ab-87f7-7ddeeb17f5f4}}"
-    xp_elite_helo.v.by_m("NameForDebug").v = f"'UnitEffect_xp_elite_helo_SF'"
+    xp_elite_helo_sf = source_path.by_n("UnitEffect_xp_elite_helo").copy()
+    xp_elite_helo_sf.namespace = "UnitEffect_xp_elite_helo_SF"
+    # modify stress resistance from 45% to 40%
+    effects_list = xp_elite_helo_sf.v.by_m("EffectsDescriptors")
+    damage_taken = find_obj_by_type(effects_list.v, "TUnitEffectIncreaseDamageTakenDescriptor")
+    if damage_taken:
+        damage_taken.v.by_m("BonusDamage").v = str(-40)
+        logger.info(f"Updated stress resistance from 45% to 40% for {xp_elite_helo_sf.namespace}")
+    else:
+        logger.warning(f"No TUnitEffectIncreaseDamageTakenDescriptor effect found for {xp_elite_helo_sf.namespace}")
+    xp_elite_helo_sf.v.by_m("DescriptorId").v = f"GUID:{{2967b45d-5b50-48ab-87f7-7ddeeb17f5f4}}"
+    xp_elite_helo_sf.v.by_m("NameForDebug").v = f"'UnitEffect_xp_elite_helo_SF'"
     new_effect = (
         f"TUnitEffectBonusPrecisionWhenTargetedDescriptor"
         f"("
@@ -224,5 +251,44 @@ def _add_multiplicative_infantry_xp(source_path) -> None:
         f"    BonusPrecisionWhenTargeted = -5"
         f")"
     )
-    xp_elite_helo.v.by_m("EffectsDescriptors").v.add(new_effect)
-    source_path.add(xp_elite_helo)
+    xp_elite_helo_sf.v.by_m("EffectsDescriptors").v.add(new_effect)
+    source_path.add(xp_elite_helo_sf)
+    
+def _edit_airunit_effects(source_path) -> None:
+    """GameData/Generated/Gameplay/Effects/EffetsSurUnite.ndf"""
+    logger.info("Modifying air unit effects")
+    
+    # Edit air unit cohesion effects
+    cohesion_namespaces = [
+        "AirUnit_Cohesion_Low",
+        "AirUnit_Cohesion_Mediocre",
+        "AirUnit_Cohesion_Normal",
+    ]
+    
+    for namespace in cohesion_namespaces:
+        effect_descr = source_path.by_n(f"UnitEffect_{namespace}")
+        effects_list = effect_descr.v.by_m("EffectsDescriptors")
+        
+        # IncreaseWeaponPrecision
+        precision_modifier_type = "TUnitEffectIncreaseWeaponPrecisionArretDescriptor"
+        precision_modifier = find_obj_by_type(
+            effects_list.v,
+            precision_modifier_type,
+        )
+        if precision_modifier:
+            effects_list.v.remove(precision_modifier)
+            logger.info(f"Removed {precision_modifier_type} effect for {namespace}")
+        else:
+            logger.warning(f"No {precision_modifier_type} effect found for {namespace}")
+        
+        # IncreaseWeaponPrecisionMouvement
+        precision_movement_modifier_type = "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor"
+        precision_movement_modifier = find_obj_by_type(
+            effects_list.v,
+            precision_movement_modifier_type,
+        )
+        if precision_movement_modifier:
+            effects_list.v.remove(precision_movement_modifier)
+            logger.info(f"Removed {precision_movement_modifier_type} effect for {namespace}")
+        else:
+            logger.warning(f"No {precision_movement_modifier_type} effect found for {namespace}")

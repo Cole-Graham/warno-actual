@@ -260,7 +260,7 @@ VETERANCY_BONUSES = {
             "body": (
                 '#style1{- Precision:} #styleGreen{+8%}'
                 '\n#style1{- Aiming time:} #styleGreen{-40%}'
-                '\n#style1{- Stress resistance:} #styleGreen{+25%}'
+                '\n#style1{- Stress resistance:} #styleGreen{+20%}'
                 '\n#style1{- Stress recovery:} #styleGreen{6.2} #style1{per second}'
                 # '\n(flat, multiplicative, percentage)'
             ),
@@ -270,7 +270,7 @@ VETERANCY_BONUSES = {
             "body": (
                 '#style1{- Precision:} #styleTurquoise{+16%}'
                 '\n#style1{- Aiming time:} #styleTurquoise{-60%}'
-                '\n#style1{- Stress resistance:} #styleTurquoise{+45%}'
+                '\n#style1{- Stress resistance:} #styleTurquoise{+40%}'
                 '\n#style1{- Stress recovery:} #styleTurquoise{8.4} #style1{per second}'
                 '\n#style1{- Evasion:} #styleTurquoise{+5%}'
                 # '\n(flat, multiplicative, percentage)'

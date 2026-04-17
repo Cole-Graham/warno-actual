@@ -179,6 +179,10 @@ if __name__ == "__main__":
 		config.config_data['game_db']['deployment_time_units'] = constants_data.get(
 			'deployment_time_units', {},
 		)
+		ammo_db_precomp = config.config_data['game_db'].get('ammunition', {})
+		ammo_db_precomp['aa_suppress_damages'] = constants_data.get(
+			'aa_suppress_damages', {},
+		)
 
 		# Merge salvo_weapons (from base game database) with constants renames (from constants precomputation)
 		# and add to ammo_db so handlers can access them the same way

@@ -80,7 +80,7 @@ NEW_WEAPON_TRAITS = {
     "biglyHE": {
         "title": "Devastating",
         "description": (
-            "Ignores armor"
+            "Ignores armor, always stuns."
         ),
         "trait_texture_name": "Texture_Trait_Icon_biglyHE",
         "trait_hint_title_token": "QETCXGYBML",

@@ -17,6 +17,8 @@ def edit_gen_gp_gfx_missiledescriptors(source: Any, game_db: Dict[str, Any]) -> 
 
     for missile_decr in source:
         
+        missile_namespace = missile_decr.namespace
+        
         # remove stress on miss
         modules_list = missile_decr.v.by_m("ModulesDescriptors")
         capacite_module = find_obj_by_type(modules_list.v, "TCapaciteModuleDescriptor")
@@ -24,9 +26,9 @@ def edit_gen_gp_gfx_missiledescriptors(source: Any, game_db: Dict[str, Any]) -> 
             default_skill_list = capacite_module.v.by_m("DefaultSkillList")
             skill_list_length = len(default_skill_list.v)
             stress_on_miss_skills = [
-                "$/GFX/EffectCapacity/StressOnMiss_high",
-                "$/GFX/EffectCapacity/StressOnMiss_mid",
-                "$/GFX/EffectCapacity/StressOnMiss_low",
+                "$/GFX/EffectCapacity/Capacite_StressOnMiss_high",
+                "$/GFX/EffectCapacity/Capacite_StressOnMiss_mid",
+                "$/GFX/EffectCapacity/Capacite_StressOnMiss_low",
             ]
             stress_on_miss_skill = default_skill_list.v.find_by_cond(
                 lambda x: x.v in stress_on_miss_skills, strict=False
@@ -35,6 +37,9 @@ def edit_gen_gp_gfx_missiledescriptors(source: Any, game_db: Dict[str, Any]) -> 
                 modules_list.v.remove(capacite_module)
             elif stress_on_miss_skill:
                 default_skill_list.v.remove(stress_on_miss_skill)
+            elif missile_namespace.startswith(
+                "Descriptor_Missile_SAM") or missile_namespace.startswith("Descriptor_Missile_MANPAD"):
+                logger.warning(f"No stress on miss skill found for {missile_decr.namespace}")
         
         # Strip Descriptor_Missile_ prefix for comparison
         stripped_namespace = missile_decr.namespace.replace("Descriptor_Missile_", "")
