@@ -305,6 +305,26 @@ rfa_unit_edits = {
         "remove_zone_capture": None,
     },
     
+    "Deckungsgruppe_RFA": {
+        "armor": "Infantry_armor_reference",
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "strength": 6,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "animate": {
+                    "Sniper_G3A3ZF_double": False,
+                },
+                "quantity": {
+                    "Sniper_G3A3ZF_double": 2,
+                },
+                "replace": [("Sniper_G3A3ZF", "Sniper_G3A3ZF_double")],
+            },
+        },
+    },
+    
     "HeimatschutzJager_RFA": {  # HEIMAT-JAGER
         "armor": "Infantry_armor_reference",
         "GameName": {

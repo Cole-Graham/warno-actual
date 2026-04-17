@@ -2347,12 +2347,6 @@ pol_unit_edits = {
         "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "strength": 4,
-        "WeaponAssignment": [
-            (0, [0,]),
-            (1, [0,]),
-            (2, [0,]),
-            (3, [0, 1,]),
-        ],
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "quantity": {

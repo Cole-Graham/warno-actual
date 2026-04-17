@@ -6,7 +6,7 @@ from typing import Any, Dict
 from src import ndf
 from src.constants.new_units import NEW_UNITS
 # from src.constants.weapons.ammunition.small_arms import weapons as small_arms_weapons
-from src.constants.weapons import ammunitions
+from src.constants.weapons import ammunitions, SNIPER_DAMAGE_FAMILIES
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import is_valid_turret, strip_quotes, is_obj_type
 
@@ -822,14 +822,19 @@ def _should_use_strength_variant(weapon_name: str, game_db: Dict[str, Any]) -> b
 
 
 def _uses_sniper_damage_family(weapon_name: str, game_db: Dict[str, Any]) -> bool:
-    """Sniper rifles use DamageFamily_sniper; vanilla keeps a single Ammo_* path even when NbWeapons > 1."""
+    """Check for any sniper-style damage family (plain / double / triple).
+
+    All three variants encode multi-shot damage at the family level (extra
+    rows in ``DamageResistance.Values``) rather than through ``_x{N}`` ammo
+    clones, so vanilla keeps a single ``Ammo_*`` path even when ``NbWeapons > 1``.
+    """
     ammo_properties = game_db["ammunition"]["ammo_properties"].get(f"Ammo_{weapon_name}", {})
     if ammo_properties.get("MinMaxCategory", None) == "MinMax_MMG_HMG":
         return False
     for (ammo_name, category, _, _), data in small_arms_weapons.items():
         if ammo_name == weapon_name and category == "small_arms":
             damage_family = data.get("Ammunition", {}).get("Arme", {}).get("Family")
-            return damage_family == "DamageFamily_sniper"
+            return damage_family in SNIPER_DAMAGE_FAMILIES
     return False
 
 

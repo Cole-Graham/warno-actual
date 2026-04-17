@@ -22,6 +22,7 @@ from .handlers import (
     remove_vanilla_instances,
     vanilla_renames_ammunition,
 )
+from .handlers.aa_missile_category_standards import apply_aa_suppress_standard
 
 logger = setup_logger(__name__)
 
@@ -79,10 +80,11 @@ def edit_gen_gp_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]
                     logger.error(f"Failed getting descriptor for {weapon_name}: {str(e)}")
                     continue
 
-                # SEAD / AA (SAM, MANPAD) category standards first, then ``missiles`` dict edits
+                # Category standards first, then ``missiles`` dict edits
                 try:
                     apply_category_sead_standards(base_descr, category)
                     apply_category_aa_missile_standards(base_descr, category)
+                    apply_aa_suppress_standard(base_descr, weapon_name, game_db, logger)
                     if ammo_data:
                         _apply_missile_edits(base_descr, data, ammo_data, is_new)
                     logger.debug(f"Applied edits to {weapon_name}")
@@ -94,7 +96,7 @@ def edit_gen_gp_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]
                 try:
                     if "WeaponDescriptor" in data and "SalvoLengths" in data["WeaponDescriptor"]:
                         _handle_salvo_variants(
-                            source_path, base_descr, weapon_name, data, is_new, category,
+                            source_path, base_descr, weapon_name, data, is_new, category, game_db,
                         )
                     elif is_new:
                         # Only add base descriptor if no salvo variants
@@ -229,6 +231,7 @@ def _handle_salvo_variants(
     data: Dict,
     is_new: bool,
     category: str,
+    game_db: Dict[str, Any] = None,
 ) -> None:
     """Handle salvo variants for missile."""
     logger.info(f"{'Creating' if is_new else 'Editing'} salvo variants for {weapon_name}")
@@ -273,10 +276,12 @@ def _handle_salvo_variants(
                 if existing:
                     logger.debug(f"Found existing variant {namespace}")
 
-                    # Category standards first, then constants (same order as base)
+                    # Category standards first, then dict edits (same order as base)
+                    apply_category_sead_standards(existing, category)
+                    apply_category_aa_missile_standards(existing, category)
+                    if game_db is not None:
+                        apply_aa_suppress_standard(existing, weapon_name, game_db, logger)
                     if "Ammunition" in data:
-                        apply_category_sead_standards(existing, category)
-                        apply_category_aa_missile_standards(existing, category)
                         _apply_missile_edits(existing, data, data["Ammunition"], is_new)
 
                     # Then update salvo-specific values
@@ -292,10 +297,12 @@ def _handle_salvo_variants(
                     variant.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
                     variant.namespace = namespace
 
-                    # Category standards first, then constants (same order as base)
+                    # Category standards first, then dict edits (same order as base)
+                    apply_category_sead_standards(variant, category)
+                    apply_category_aa_missile_standards(variant, category)
+                    if game_db is not None:
+                        apply_aa_suppress_standard(variant, weapon_name, game_db, logger)
                     if "Ammunition" in data:
-                        apply_category_sead_standards(variant, category)
-                        apply_category_aa_missile_standards(variant, category)
                         _apply_missile_edits(variant, data, data["Ammunition"], is_new)
 
                     # Then apply salvo-specific values

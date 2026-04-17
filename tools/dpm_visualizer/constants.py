@@ -14,6 +14,8 @@ RANGE_MODIFIERS_TABLE = [
 # Small arms damage families
 SMALL_ARMS_DAMAGE_FAMILIES = {
     "DamageFamily_sniper",
+    "DamageFamily_sniper_double",
+    "DamageFamily_sniper_triple",
     "DamageFamily_sa_intermediate",
     "DamageFamily_sa_full",
     "DamageFamily_12_7",

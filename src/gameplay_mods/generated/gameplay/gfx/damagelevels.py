@@ -9,7 +9,7 @@ def edit_gen_gp_gfx_damagelevels(source_path) -> None:
 
     # edit GroundUnits_packSupp
     ground_units_pack_supp = source_path.by_n("DamageLevelsPackDescriptor_GroundUnits_packSupp")
-    damage_levels = ground_units_pack_supp.v.by_m("DamageLevelsDescriptors")
+    ground_damage_levels = ground_units_pack_supp.v.by_m("DamageLevelsDescriptors")
     new_guids = [
         "GUID:{bbac0511-7b05-4e67-b98c-10bf88155513}",
         "GUID:{1762d8ea-dff5-4a67-95aa-79da6ebe6f60}",
@@ -19,7 +19,7 @@ def edit_gen_gp_gfx_damagelevels(source_path) -> None:
         "GUID:{e9acc10d-bf26-4ba7-ab16-a43b2904e6db}",
     ]
     guid_index = 0
-    for level in damage_levels.v:
+    for level in ground_damage_levels.v:
 
         value = level.v.by_m("Value")
         effects_packs = level.v.by_m("EffectsPacks")
@@ -44,7 +44,7 @@ def edit_gen_gp_gfx_damagelevels(source_path) -> None:
             effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_Ajoute_Tag_no_Choc_Move_Morale")
 
     # Insert new damage level to trigger shock sprint at 99% cohesion and prevent at < 40%
-    new_damage_level1 = (
+    new_ground_damage_level1 = (
         f'TDamageLevelDescriptor'
         f'('
         f'    DescriptorId = GUID:{{932c70e6-e41f-45ad-bd94-866aec4efeed}}'
@@ -60,9 +60,9 @@ def edit_gen_gp_gfx_damagelevels(source_path) -> None:
         f'    ]'
         f')'
     )
-    damage_levels.v.insert(1, new_damage_level1)
+    ground_damage_levels.v.insert(1, new_ground_damage_level1)
     
-    new_damage_level2 = (
+    new_ground_damage_level2 = (
         f'TDamageLevelDescriptor'
         f'('
         f'    DescriptorId = GUID:{{e21510c8-e8e8-42dc-bd79-6770b8dc298a}}'
@@ -78,4 +78,71 @@ def edit_gen_gp_gfx_damagelevels(source_path) -> None:
         f'    ]'
         f')'
     )
-    damage_levels.v.insert(5, new_damage_level2)
+    ground_damage_levels.v.insert(5, new_ground_damage_level2)
+    
+    # Edit airplanes damage levels
+    airplanes_pack_supp = source_path.by_n("DamageLevelsPackDescriptor_Airplanes_packSupp")
+    airplanes_damage_levels = airplanes_pack_supp.v.by_m("DamageLevelsDescriptors")
+    
+    # Remove stress damage from damage to airplanes
+    for damage_level in airplanes_damage_levels.v:
+        moral_modifier = damage_level.v.by_m("MoralModifier", False)
+        if moral_modifier:
+            damage_level.v.by_m("MoralModifier").v = "0"
+        else:
+            logger.warning(f"No moral modifier found for {damage_level.namespace}")
+    
+    
+    airplanes_damage_level6 = airplanes_damage_levels.v[5]
+    effects_packs6 = airplanes_damage_level6.v.by_m("EffectsPacks")
+    # Remove forced evac (airplanes can be stunned instead)
+    evac_effect = effects_packs6.v.find_by_cond(
+        lambda row: row.v == "$/GFX/EffectCapacity/UnitEffect_evac_avion",
+        strict=False,
+    )
+    if evac_effect:
+        effects_packs6.v.remove(evac_effect)
+    
+    # Raise "Stunned" Tag at 30% cohesion (150/500 max suppression, i.e. after 350 suppression damage)
+    new_airplanes_damage_level1 = (
+        f'TDamageLevelDescriptor'
+        f'('
+        f'    DescriptorId = GUID:{{f69de711-c415-4304-91d9-e55af409bca3}}'
+        f'    Value = 0.70'
+        f'    LocalizationToken = "mrl_1"'
+        f'    MoralModifier = 0'
+        f'    AnimationType = ESoldierSuppressStatus/Pinned'
+        f'    EffectsPacks = '
+        f'    ['
+        f'        $/GFX/EffectCapacity/UnitEffect_AirUnit_Cohesion_Low,'
+        f'        $/GFX/EffectCapacity/UnitEffect_Unit_Stunned,'
+        f'    ]'
+        f')'
+    )
+    airplanes_damage_levels.v.insert(5, new_airplanes_damage_level1)
+    
+    # Add new packStun_Airplanes
+    new_airplanes_pack_stun = (
+        f'export DamageLevelsPackDescriptor_Unit_packStun_Airplanes is TDamageLevelsPackDescriptor'
+        f'('
+        f'    DescriptorId = GUID:{{300f1721-8477-44f5-bab9-5b33f70f32df}}'
+        f'    DamageLevelsDescriptors = ['
+        f'        TDamageLevelDescriptor'
+        f'        ('
+        f'            DescriptorId = GUID:{{c9aa8a1f-266f-4fb4-a147-33d9a78b69e9}}'
+        f'            Value = 0'
+        f'            EffectsPacks = ['
+        f'            ]'
+        f'        ),'
+        f'        TDamageLevelDescriptor'
+        f'        ('
+        f'            DescriptorId = GUID:{{47c82f3c-2ecb-49f2-b3e2-8cb686328f0d}}'
+        f'            Value = 0.70'
+        f'            EffectsPacks = ['
+        f'                $/GFX/EffectCapacity/UnitEffect_Unit_Stunned,'
+        f'            ]'
+        f'        ),'
+        f'    ]'
+        f')'
+    )
+    source_path.add(new_airplanes_pack_stun)

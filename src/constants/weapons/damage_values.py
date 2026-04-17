@@ -28,6 +28,32 @@ SNIPER_DAMAGE = [
      1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], # 13 WA armor levels
 ]
 
+# divide damage ratios by 2, to get intended damage of 1 HE per shot, but still only show 1 HE on unit card
+SNIPER_DOUBLE_DAMAGE = [
+    # sniper double 1
+    [round(i / 2, 3) for i in SNIPER_DAMAGE[0]],
+    # sniper double 2
+    [round(i / 2, 3) for i in SNIPER_DAMAGE[1]],
+]
+
+# divide damage ratios by 3, to get intended damage of 1 HE per shot, but still only show 1 HE on unit card
+SNIPER_TRIPLE_DAMAGE = [
+    # sniper triple 1
+    [round(i / 3, 3) for i in SNIPER_DAMAGE[0]],
+    # sniper triple 2
+    [min(round(i / 3, 3), 0.334) for i in SNIPER_DAMAGE[1]], # limit to 0.334 to avoid rounding errors
+]
+
+# All damage families whose multi-shot behavior is encoded at the damage family
+# level (via extra rows in DamageResistance.Values) rather than through ``_x{N}``
+# ammo clones or ``_strength{S}`` variants. Weapons in these families keep a
+# single ``Ammo_*`` namespace regardless of per-unit quantity or strength.
+SNIPER_DAMAGE_FAMILIES = frozenset({
+    "DamageFamily_sniper",
+    "DamageFamily_sniper_double",
+    "DamageFamily_sniper_triple",
+})
+
 SA_INTERMEDIATE_DAMAGE_RATIOS = [ # DON'T ADD 13 WA armor levels, the code combines SA_INF_ARMOR_DAMAGE_RATIOS and SA_INTERMEDIATE_DAMAGE_RATIOS
     0.8, 0.4, 0.2, 0.01, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
     0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,

@@ -10,7 +10,7 @@ from typing import Any, Dict, Set, Tuple
 
 from src.constants.new_units import NEW_UNITS
 from src.constants.unit_edits import load_unit_edits
-from src.constants.weapons import ammunitions
+from src.constants.weapons import ammunitions, SNIPER_DAMAGE_FAMILIES
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
@@ -72,6 +72,15 @@ def build_valid_small_arms_quantity_variants(
 
     for (weapon_name, category, _donor, _is_new), data in ammunitions.items():
         if category != "small_arms":
+            continue
+
+        # Sniper-family weapons encode multi-shot behavior at the damage family
+        # level and always resolve to a plain ``Ammo_{weapon}`` namespace, so
+        # no ``_xN`` / ``_strength{S}`` variants are created by the ammunition
+        # editor. Validating their unit-edit quantities against NbWeapons would
+        # produce false positives (see run_patcher.log ``Sniper_*_double`` errors).
+        damage_family = data.get("Ammunition", {}).get("Arme", {}).get("Family")
+        if damage_family in SNIPER_DAMAGE_FAMILIES:
             continue
 
         nb_weapons = _get_weapon_nb_weapons(weapon_name)

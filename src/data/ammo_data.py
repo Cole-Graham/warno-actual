@@ -245,10 +245,16 @@ def build_ammo_properties(parse_ammo_source) -> Dict[str, Any]:
             has_deployment_membr is not None and has_deployment_membr.v == "True"
         )
 
+        phys_dmg_membr = ammo_descr.v.by_m("PhysicalDamages", False)
+        physical_damages: Any = None
+        if phys_dmg_membr is not None:
+            physical_damages = _parse_numeric_member_value(phys_dmg_membr.v)
+
         ammo_properties[ammo_descr.n] = {
             "MinMaxCategory": min_max_category,
             "RadiusSplashPhysicalDamagesGRU": radius_splash,
             "HasDeploymentTime": has_deployment_time,
+            "PhysicalDamages": physical_damages,
         }
 
     return ammo_properties

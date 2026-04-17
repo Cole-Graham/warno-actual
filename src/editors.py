@@ -15,6 +15,7 @@ from .gameplay_mods import (
     edit_gameplay_constantes_terrainspeedfactors,
     edit_gameplay_terrains,
     edit_gameplay_unit_airplanecritical,
+    edit_gameplay_unit_damagemodules,
     edit_gameplay_unit_groundunitcritical,
     edit_gameplay_unit_helicocritical,
     edit_gameplay_unit_infanteriecritical,
@@ -139,6 +140,7 @@ __all__ = [
     'edit_gameplay_constantes_terrainspeedfactors',
     'edit_gameplay_terrains',
     'edit_gameplay_unit_airplanecritical',
+    'edit_gameplay_unit_damagemodules',
     'edit_gameplay_unit_groundunitcritical',
     'edit_gameplay_unit_helicocritical',
     'edit_gameplay_unit_infanteriecritical',
@@ -294,6 +296,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         # Critical effect modules
         "GameData/Gameplay/Unit/CriticalModules/CriticalEffectModule_Airplane.ndf": [
             (edit_gameplay_unit_airplanecritical, "gameplay"),
+        ],
+        "GameData/Gameplay/Unit/DamageModules.ndf": [
+            (edit_gameplay_unit_damagemodules, "gameplay"),
         ],
         "GameData/Gameplay/Unit/CriticalModules/CriticalEffectModule_GroundUnit.ndf": [
             (edit_gameplay_unit_groundunitcritical, "gameplay"),
