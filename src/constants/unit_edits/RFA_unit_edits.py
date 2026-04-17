@@ -305,26 +305,6 @@ rfa_unit_edits = {
         "remove_zone_capture": None,
     },
     
-    "Deckungsgruppe_RFA": {
-        "armor": "Infantry_armor_reference",
-        "max_speed": 26,
-        "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_medium'"],
-        },
-        "strength": 6,
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                "animate": {
-                    "Sniper_G3A3ZF_double": False,
-                },
-                "quantity": {
-                    "Sniper_G3A3ZF_double": 2,
-                },
-                "replace": [("Sniper_G3A3ZF", "Sniper_G3A3ZF_double")],
-            },
-        },
-    },
-    
     "HeimatschutzJager_RFA": {  # HEIMAT-JAGER
         "armor": "Infantry_armor_reference",
         "GameName": {
@@ -489,6 +469,21 @@ rfa_unit_edits = {
             },
         },
     },
+
+    "Strandmeister_RFA": {
+        "CommandPoints": 40,
+        "armor": "Infantry_armor_reference",
+        "availability": [0, 6, 4, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "Grenade_Satchel_Charge": 6,
+            },
+        },
+    },
     
     "Feldgendarmerie_RFA": {
         "CommandPoints": 15,
@@ -524,6 +519,16 @@ rfa_unit_edits = {
                 },
             },
         },
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+    },
+
+    "Security_Marine_RFA": {
+        "CommandPoints": 40,
+        "armor": "Infantry_armor_reference",
+        "availability": [10, 7, 0, 0],
+        "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
@@ -819,6 +824,44 @@ rfa_unit_edits = {
             "add_specs": ["'infantry_equip_medium'"],
         },
     },
+
+    "Deckungsgruppe_RFA": {
+        "armor": "Infantry_armor_reference",
+        "CommandPoints": 40, 
+        "max_speed": 26,
+        "availability": [12, 9, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "strength": 6,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "animate": {
+                    "Sniper_G3A3ZF_double": False,
+                },
+                "quantity": {
+                    "Sniper_G3A3ZF_double": 2,
+                },
+                "replace": [("Sniper_G3A3ZF", "Sniper_G3A3ZF_double")],
+            },
+        },
+    },
+
+    "Groupe_AT_RFA": {
+        "armor": "Infantry_armor_reference",
+        "CommandPoints": 30, # This could maybe be 25 points... maybe
+        "max_speed": 26,
+        "availability": [12, 9, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "strength": 6,
+        "WeaponDescriptor": {
+            "Salves": {
+                "RocketInf_PzF_44": 4,
+            },
+        },
+    },
     
     "ATteam_RCL_M40A1_RFA": {
         "CommandPoints": 35,
@@ -926,6 +969,13 @@ rfa_unit_edits = {
             "add_specs": ["'refundable_unit'",],
         },
     },
+
+    "MAN_630_L2AE_trans_RFA": {
+        "CommandPoints": 15,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+    },
     
     "VW_T2b_MP_RFA": { # MP
         "CommandPoints": 15,
@@ -934,6 +984,13 @@ rfa_unit_edits = {
         },
     },
     
+    "Kubelwagen_181_MP_RFA": { # MP
+        "CommandPoints": 15,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+    },
+
     # RFA ARTY
     "M577_RFA": {
         "CommandPoints": 60,
@@ -1037,6 +1094,11 @@ rfa_unit_edits = {
     "M109A3G_HOWZ_RFA": {
         "CommandPoints": 190,
         "availability": [3, 2, 0, 0],
+    },
+
+    "M107A2_175mm_RFA": {
+        "CommandPoints": 185,
+        "availability": [2, 0, 1, 0],
     },
 
     "M110A2_Howz_RFA": {
@@ -1348,6 +1410,17 @@ rfa_unit_edits = {
         "CommandPoints": 70,
         "availability": [10, 7, 0, 0],
     },
+
+    "Leopard_1A2A1_RFA": {
+        "CommandPoints": 70,
+        "availability": [10, 7, 0, 0],
+        # "WeaponDescriptor": {
+        #     "Salves": {
+        #         "MMG_AANF1_7_62mm": 44,
+        #     },
+        # },
+        "UpgradeFromUnit": "Leopard_1A1_CMD_RFA",
+    },
     
     "Leopard_1A1_RFA": {
         "CommandPoints": 75,
@@ -1357,7 +1430,7 @@ rfa_unit_edits = {
         #         "MMG_AANF1_7_62mm": 44,
         #     },
         # },
-        "UpgradeFromUnit": "Leopard_1A1_CMD_RFA",
+        "UpgradeFromUnit": "Leopard_1A2A1_RFA",
     },
 
     "Leopard_1A1A2_RFA": {
@@ -1718,6 +1791,15 @@ rfa_unit_edits = {
         },
     },
 
+    "Scout_Heimat_RFA": {  # HIEMAT-AUFKL.
+        "armor": "Infantry_armor_reference",
+        "CommandPoints": 35,
+        "availability": [8, 0, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+    },
+
     "Sniper_Fern_RFA": {  # #RECO2 FERN. SCHARFSCHÜTZE.
         "armor": "Infantry_armor_reference",
         "CommandPoints": 35,
@@ -1780,6 +1862,15 @@ rfa_unit_edits = {
             "add_capacities": ["Choc", "Choc_feedback"],
         },
     },
+
+    "KSM_RFA": {  # #RECO2 KAMPFSCHWIMMER
+        "armor": "Infantry_armor_reference",
+        "CommandPoints": 60,
+        "availability": [0, 0, 4, 3],
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
+        },
+    },
     
     "M113_GreenArcher_RFA": {
         "CommandPoints": 30,
@@ -1794,6 +1885,11 @@ rfa_unit_edits = {
     "Luchs_A1_RFA": {
         "CommandPoints": 50,
         "availability": [0, 6, 4, 0],
+    },
+
+    "Iltis_MILAN_KSK_RFA": {
+        "CommandPoints": 65,
+        "availability": [0, 0, 4, 3],
     },
 
     "Leopard_1A5_reco_RFA": {
