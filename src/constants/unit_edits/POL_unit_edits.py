@@ -250,7 +250,7 @@ pol_unit_edits = {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "SAPERZY LDR.",
+            "display": "SAPERZY",
         },
         "TagSet": {
             "overwrite_all": [
@@ -308,7 +308,7 @@ pol_unit_edits = {
         "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "PIECHOTA LDR.",
+            "display": "PIECHOTA",
         },
         "TagSet": {
             "overwrite_all": [
@@ -360,7 +360,7 @@ pol_unit_edits = {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "PIECHOTA ZMECH. LDR.",
+            "display": "PIECHOTA ZMECH.",
         },
         "TagSet": {
             "overwrite_all": [
@@ -418,7 +418,7 @@ pol_unit_edits = {
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
          "GameName": {
-             "display": "KOMANDOSI LDR.",
+             "display": "KOMANDOSI",
         },
         "TagSet": {
             "overwrite_all": [
@@ -464,7 +464,7 @@ pol_unit_edits = {
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
          "GameName": {
-             "display": "SPADO. KOMANDOSI LDR.",
+             "display": "SPADO. KOMANDOSI",
         },
         "TagSet": {
             "overwrite_all": [
@@ -523,7 +523,7 @@ pol_unit_edits = {
         "max_speed": 26,
         "strength": 8,
         "GameName": {
-            "display": "SPADO. SAPERZY LDR.",
+            "display": "SPADO. SAPERZY",
         },
          "TagSet": {
             "overwrite_all": [
@@ -578,7 +578,7 @@ pol_unit_edits = {
         "max_speed": 26,
         "strength": 7,
         "GameName": {
-            "display": "SPADOCHRONIARZE LDR.",
+            "display": "SPADOCHRONIARZE",
         },
          "TagSet": {
             "overwrite_all": [
@@ -963,7 +963,8 @@ pol_unit_edits = {
          "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [
-                    ("FM_kbk_AKM", "FM_Tantal"), ("RocketInf_RPG76_Komar", "RocketInf_RPG7", "RocketInf_RPG76_Komar", "RocketInf_RPG7")
+                    ("FM_kbk_AKM", "FM_Tantal", "FM_kbk_AKM", "FM_Tantal"),
+                    ("RocketInf_RPG76_Komar", "RocketInf_RPG7", "RocketInf_RPG76_Komar", "RocketInf_RPG7")
                 ],
             },
             "Salves": {
@@ -1643,7 +1644,7 @@ pol_unit_edits = {
     #    "T34_85M_CMD_POL": {  # T-34/85MD LDR
     #   "CommandPoints": 40,
     #   "GameName": {
-    #        "display": "#LDRSOV T-34/85MD LDR.",
+    #        "display": "#LDRSOV T-34/85MD",
     #        "token": "POLTFFAD",
     #    },
     #    "TagSet": {
@@ -1674,7 +1675,7 @@ pol_unit_edits = {
     # "T54B_CMD_POL": {  # T-54BD LDR (now a new unit for the model)
     #     "CommandPoints": 75,
     #     "GameName": {
-    #         "display": "#LDRSOV T-54BD LDR.",
+    #         "display": "#LDRSOV T-54BD",
     #         "token": "POLTFFBD",
     #     },
     #     "TagSet": {
@@ -1705,7 +1706,7 @@ pol_unit_edits = {
     "T55A_CMD_POL": {  # T-55AD LDR
         "CommandPoints": 80,
         "GameName": {
-            "display": "T-55AD LDR.",
+            "display": "T-55AD",
             "token": "POLTFFAD",
         },
         "TagSet": {
@@ -1741,7 +1742,7 @@ pol_unit_edits = {
     "T55AM_Merida_CMD_POL": {  # T-55AM Merida LDR
         "CommandPoints": 125,
         "GameName": {
-            "display": "T-55AD-1M Merida LDR.",
+            "display": "T-55AD-1M Merida",
             "token": "POLT55AMLD",
         },
         "TagSet": {
@@ -1781,7 +1782,7 @@ pol_unit_edits = {
             "top": (2, None),
         },
         "GameName": {
-            "display": "T-72MD LDR.",
+            "display": "T-72MD",
             "token": "POLTSTMLDR",
         },
         "TagSet": {
@@ -1820,7 +1821,7 @@ pol_unit_edits = {
             "top": (3, None),
         },
         "GameName": {
-            "display": "T-72M1D LDR.",
+            "display": "T-72M1D",
             "token": "POLTSTMOLD",
         },
         "TagSet": {
@@ -1857,7 +1858,7 @@ pol_unit_edits = {
     "ASU_85_CMD_POL": {  # ASU-85 LDR
         "CommandPoints": 70,
         "GameName": {
-            "display": "ASU-85D LDR.",
+            "display": "ASU-85D",
             "token": "POLASUEFD",
         },
         "TagSet": {
@@ -1888,7 +1889,7 @@ pol_unit_edits = {
     "PT76B_CMD_POL": {  # PT-76BD LDR
         "CommandPoints": 30,
         "GameName": {
-            "display": "PT-76BD LDR.",
+            "display": "PT-76BD",
             "token": "POLPTSSBD",
         },
         "TagSet": {
@@ -1919,7 +1920,7 @@ pol_unit_edits = {
     "PT76B_CMD_Naval_POL": {  #  NIEB.BERETY PT-76BD LDR
         "CommandPoints": 30,
         "GameName": {
-            "display": "NIEB.BERETY PT-76BD LDR.",
+            "display": "NIEB.BERETY PT-76BD",
             "token": "POLPTSSBDN",
         },
         "TagSet": {
@@ -2341,9 +2342,13 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "quantity": {
-                    "Sniper_SVD_Dragunov": 2,
+                "animate": {
+                    "Sniper_SVD_Dragunov_double": False,
                 },
+                "quantity": {
+                    "Sniper_SVD_Dragunov_double": 2,
+                },
+                "replace": [("Sniper_SVD_Dragunov", "Sniper_SVD_Dragunov_double")],
             },
             "Salves": {
                 "PM_PM63_RAK": 22,
@@ -2448,7 +2453,7 @@ pol_unit_edits = {
     },
     
     "BRDM_1_PSNR1_POL": {  # BRDM-1 PSNR-1
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "availability": [8, 0, 0, 0],
     },
     

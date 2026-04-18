@@ -8,9 +8,16 @@ from .FR_depiction_edits import (
     vab_t20_fr,
 )
 from .POL_depiction_edits import (
-    # commandos_para_cmd_pol,
+    commandos_para_cmd_pol,
     engineers_cmd_pol,
+    engineers_paras_cmd_pol,
+    engineers_paras_pol,
+    gaz_66b_supply_pol,
     mortier_2b9_vasilek_para_pol,
+    para_hmg_pol,
+    reserve_cmd_pol,
+    scout_para_pol,
+    sniper_paras_pol,
 )
 from .RDA_depiction_edits import (
     fallschirmjager_cmd_ddr,
@@ -36,12 +43,15 @@ from .RFA_depiction_edits import (
     unimog_s_404_rfa,
 )
 from .SOV_depiction_edits import (
+    engineers_cmd_naval_sov,
     mi_8tv_gunship_sov,
     mi_24p_sov,
+    mortier_2b9_vasilek_naval_sov,
     mortier_2b9_vasilek_nonpara_sov,
     mortier_2b9_vasilek_sov,
     motrifles_btr_ttsko_sov,
     mtlb_vasilek_sov,
+    naval_rifle_cmd_sov,
     sniper_spetsnaz_sov,
     su_24m_clu_sov,
     # Need to edit the model to support adding smoke, on hold for now (temporarily increased armor in the meantime)
@@ -91,9 +101,16 @@ __all__ = [
     "vab_t20_fr",
     
     # POL
-    # "commandos_para_cmd_pol",
+    "commandos_para_cmd_pol",
     "engineers_cmd_pol",
+    "engineers_paras_cmd_pol",
+    "engineers_paras_pol",
+    "gaz_66b_supply_pol",
     "mortier_2b9_vasilek_para_pol",
+    "para_hmg_pol",
+    "reserve_cmd_pol",
+    "scout_para_pol",
+    "sniper_paras_pol",
     
     # RDA
     "fallschirmjager_cmd_ddr",
@@ -119,12 +136,15 @@ __all__ = [
     "unimog_s_404_rfa",
     
     # SOV
+    "engineers_cmd_naval_sov",
     "mi_8tv_gunship_sov",
     "mi_24p_sov",
+    "mortier_2b9_vasilek_naval_sov",
     "mortier_2b9_vasilek_nonpara_sov",
     "mortier_2b9_vasilek_sov",
     "motrifles_btr_ttsko_sov",
     "mtlb_vasilek_sov",
+    "naval_rifle_cmd_sov",
     "sniper_spetsnaz_sov",
     "su_24m_clu_sov",
     # "tos1_buratino_sov",

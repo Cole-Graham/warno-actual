@@ -9,7 +9,7 @@ engineers_paras_cmd_pol: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
     "DepictionInfantry_ndf": {
         
         ("AllWeaponAlternatives_Engineers_paras_CMD_POL", None): { # (namespace, object type)
-            # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "add", "remove", "replace")
+            # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "insert", "remove", "replace")
             1: ("edit", [("MeshDescriptor", "RPG7V")]), # (selector_id or mesh)
             2: ("edit", [("ReferenceMeshForSkeleton", "RPG7V")]),
         },

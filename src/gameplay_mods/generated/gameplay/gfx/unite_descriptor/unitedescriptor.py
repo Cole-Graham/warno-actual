@@ -414,7 +414,7 @@ def _handle_landmovement_module(logger, game_db, unit_data, edit_type, unit_name
 def _handle_airplanemovement_module(logger, game_db, unit_data, edit_type, unit_name,
                                     edits, module, *args) -> None:
     """Handle AirplaneMovementDescriptor for existing and new units"""
-
+    
     if "max_speed" in edits:
         old_value = module.v.by_m("SpeedInKmph").v
         module.v.by_m("SpeedInKmph").v = str(edits["max_speed"])

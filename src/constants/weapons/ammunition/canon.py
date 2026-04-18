@@ -84,6 +84,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "token": "KXRZMEFESV",
         },
     },
+    
+    ("Canon_AP_100mm_D10T_mid", "canon", None, False): { # MOR. T-55AM D-10T2S (3BM-25)
+        "Ammunition": {
+            "display": "D-10T2S (3BM-25)",
+            "token": "KADMWTFNND",
+        },
+    },
 
     ("Canon_AP_100mm_D10T_late", "canon", None, False): { # T-55AM2 D-10T2S (3BM-25)
         "Ammunition": {
@@ -108,6 +115,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "display": "D-10T2S (3BM-25)",
             "token": "HLIZNSNRIV",
+        },
+    },
+    
+    ("Canon_HE_100mm_D10T_mid", "canon", None, False): { # MOR. T-55AM D-10T2S (HE)
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 1.15,
+            },
         },
     },
 

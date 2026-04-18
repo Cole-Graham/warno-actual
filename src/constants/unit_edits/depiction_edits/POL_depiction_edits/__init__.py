@@ -9,6 +9,7 @@ from .Mortier_2B9_Vasilek_Para_POL import mortier_2b9_vasilek_para_pol
 from .Para_HMG_POL import para_hmg_pol
 from .Reserve_CMD_POL import reserve_cmd_pol
 from .Scout_para_POL import scout_para_pol
+from .Sniper_paras_POL import sniper_paras_pol
 
 __all__ = [
     "commandos_para_cmd_pol",
@@ -20,5 +21,6 @@ __all__ = [
     "para_hmg_pol",
     "reserve_cmd_pol",
     "scout_para_pol",
+    "sniper_paras_pol",
 ]
     

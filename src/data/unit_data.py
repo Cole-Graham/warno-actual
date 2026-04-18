@@ -112,7 +112,10 @@ def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
                 unit_info["is_supply_unit"] = True
 
             elif module_type == "AirplaneMovementDescriptor":
-                unit_info["attack_strategies"] = _gather_attack_strategies(module)
+                airplane_movement = _extract_airplane_movement_data(module)
+                unit_info["airplane_movement"] = airplane_movement
+                if "AttackStrategiesDescriptorsSortedByPriority" in airplane_movement:
+                    unit_info["attack_strategies"] = airplane_movement["AttackStrategiesDescriptorsSortedByPriority"]
 
             elif module_type == "TVisibilityModuleDescriptor":
                 unit_info["visibility"] = _extract_stealth_data(module)
@@ -546,14 +549,43 @@ def _gather_weapon_locations(weapon_descr: Any) -> Dict[Any, Any]:
     return weapon_locations
 
 
-def _gather_attack_strategies(module: Any) -> List:
-    """Gather attack strategies from a unit descriptor."""
-    attack_strategies = []
+def _extract_airplane_movement_data(module: Any) -> Dict[str, Any]:
+    """Extract all values from an AirplaneMovementDescriptor module.
 
-    for strategy in module.v.by_m("AttackStrategiesDescriptorsSortedByPriority").v:
-        attack_strategies.append(strategy.v)
+    Keys are the raw NDF member names so the data is directly comparable
+    to airplane_movement edit specs (see unite_descriptor/unitedescriptor.py).
+    """
+    data: Dict[str, Any] = {}
 
-    return attack_strategies
+    scalar_members = (
+        "AltitudeGRU",
+        "AltitudeMinGRU",
+        "SpeedInKmph",
+        "AgilityRadiusGRU",
+        "PitchAngleDegree",
+        "RollAngleDegree",
+        "RollSpeedDegreePerSecond",
+        "EvacAngleDegree",
+    )
+    for member in scalar_members:
+        row = module.v.by_m(member, False)
+        if row is None:
+            continue
+        raw = row.v
+        try:
+            data[member] = int(raw)
+        except (TypeError, ValueError):
+            try:
+                data[member] = float(raw)
+            except (TypeError, ValueError):
+                logger.warning(f"AirplaneMovementDescriptor.{member} has non-numeric value: {raw!r}")
+                data[member] = raw
+
+    strategies_row = module.v.by_m("AttackStrategiesDescriptorsSortedByPriority", False)
+    if strategies_row is not None:
+        data["AttackStrategiesDescriptorsSortedByPriority"] = [strategy.v for strategy in strategies_row.v]
+
+    return data
 
 
 def _detect_circular_chains(forward_mapping: Dict[str, str]) -> List[List[str]]:

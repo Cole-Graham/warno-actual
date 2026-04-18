@@ -411,7 +411,7 @@ POL_NEW_UNITS = {
             ],
         },
         "GameName": {
-            "display": "T-54BD LDR.",
+            "display": "T-54BD",
             "token": "POLTFFBD",
         },
         "Factory": "EFactory/Tanks",

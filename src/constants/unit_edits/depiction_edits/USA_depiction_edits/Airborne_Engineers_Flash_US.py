@@ -9,7 +9,7 @@ airborne_engineers_flash_us: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] 
     "DepictionInfantry_ndf": {
         
         ("AllWeaponAlternatives_Airborne_Engineers_Flash_US", None): { # (namespace, object type)
-            # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "add", "remove", "replace")
+            # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "insert", "remove", "replace")
             1: ("edit", [("MeshDescriptor", "M249")]), # (selector_id or mesh)
         },
 

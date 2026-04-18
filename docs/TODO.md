@@ -4,7 +4,9 @@
 - [ ] Recon helos are insanely cheap in wargame terms, not sure if they should be,
 depends on performance of planes hunting helos. Might turn off range scaling for plane
 guns.
-- [ ] Buff towed Chap price
+- [x] Buff towed Chap price
+- [ ] Change SPW PSH security transport to Normal optics
+- [ ] LDR infantry should probably be lowered to same price as equivalent infantry, or 5 points higher
 - [x] Make sure Nighthawk noise value and stealth is balanced (add trait that explains firing breaks stealth)
 - [ ] Rebalance air prices around 350 point ceiling (maybe introduce second more powerful strike eagle variant)
 - [x] remove stress on miss entirely

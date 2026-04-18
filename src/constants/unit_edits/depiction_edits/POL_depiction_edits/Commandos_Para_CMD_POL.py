@@ -8,7 +8,7 @@ commandos_para_cmd_pol: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
     "valid_files": ["DepictionInfantry.ndf", "WeaponDescriptor.ndf"],
     "DepictionInfantry_ndf": {
         ("AllWeaponAlternatives_Commandos_Para_CMD_POL", None): { # (namespace, object type)
-            # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "add", "remove", "replace")
+            # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "insert", "remove", "replace")
             0: ("edit", [("MeshDescriptor", "PM63_RAK")]), # (selector_id or mesh)
             1: ("edit", [("MeshDescriptor", "MainNue")]), # (selector_id or mesh)
             2: ("edit", [("MeshDescriptor", "RPG76Komar")]),

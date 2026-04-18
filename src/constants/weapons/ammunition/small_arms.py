@@ -155,6 +155,36 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "Salves": 10,
         },
     },
+    
+    ("Sniper_SVD_Dragunov_double", "small_arms", "Sniper_SVD_Dragunov", True): {  #735
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_sniper",
+            },
+            "hit_roll": {
+                "Idling": 80,
+                "DistanceToTarget": True,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 4.5,
+                "TimeBetweenTwoFx": 4.5,
+                "PhysicalDamages": 0.5,
+                "SuppressDamages": 30.0,
+                "MaximumRangeGRU": 1050,
+                "MaximumRangeHelicopterGRU": 875,
+                "DisplaySalveAccuracy": False,
+                "TimeBetweenTwoSalvos": 9.0,
+                "AimingTime": 6.0,
+                "ShotsCountPerSalvo": 20,
+                "AffichageMunitionParSalve": 20
+            },
+        },
+        "SupplyCost": 4.0,
+        "NbWeapons": [1],
+        "WeaponDescriptor": {
+            "Salves": 10,
+        },
+    },
 
     ("Sniper_G3A3ZF", "small_arms", None, False): {  #735
         "Ammunition": {
@@ -353,11 +383,11 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "DisplaySalveAccuracy": False,
                 "TimeBetweenTwoSalvos": 3.5,
                 "AimingTime": 2.0,
-                "ShotsCountPerSalvo": 10,
+                "ShotsCountPerSalvo": 20,
                 "AffichageMunitionParSalve": 20,
             },
         },
-        "SupplyCost": 1.0,
+        "SupplyCost": 2.0,
         "NbWeapons": [2, 1],
         "WeaponDescriptor": {
             "Salves": 10,
@@ -1122,7 +1152,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "SupplyCost": 1.0,
-        "NbWeapons": [5, 4],
+        "NbWeapons": [6, 5, 4, 3, 2],
         "WeaponDescriptor": {
             "Salves": 18,               
         },

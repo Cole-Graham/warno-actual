@@ -1042,6 +1042,8 @@ SOV_NEW_UNITS = {
         },
         "CommandPoints": 35,
         "SpecialtiesList": [
+                '_resolute',
+                '_para',
                 'infantry_equip_heavy',
             ],
         "ButtonTexture": "Atteam_Fagot_Naval_VDV_SOV",

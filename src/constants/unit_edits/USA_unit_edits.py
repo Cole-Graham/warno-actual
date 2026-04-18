@@ -126,7 +126,7 @@ usa_unit_edits = {
         "armor": "Infantry_armor_reference",
         "GameName": {
             "token": "CPCIJQLHML",
-            "display": "FIRETEAM LDR.",
+            "display": "FIRETEAM",
         },
         "TagSet": {
             "overwrite_all": [
@@ -181,7 +181,7 @@ usa_unit_edits = {
         "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "CAV. TROOPERS LDR.",
+            "display": "CAV. TROOPERS",
         },
         "TagSet": {
             "overwrite_all": [
@@ -234,7 +234,7 @@ usa_unit_edits = {
         "armor": "Infantry_armor_reference",
         "GameName": {
             "token": "SVWNZUYPNE",
-            "display": "MECH. RIFLES LDR.",
+            "display": "MECH. RIFLES",
         },
         "TagSet": {
             "overwrite_all": [
@@ -293,7 +293,7 @@ usa_unit_edits = {
         "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "ENGINEERS LDR.",
+            "display": "ENGINEERS",
             "token": "DBEBRUEYSP",
         },
         "TagSet": {
@@ -360,7 +360,7 @@ usa_unit_edits = {
         "CommandPoints": 70,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "RANGERS LDR.",
+            "display": "RANGERS",
             "token": "WPUCULQQND",
         },
         "TagSet": {
@@ -449,7 +449,7 @@ usa_unit_edits = {
         "CommandPoints": 55,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "AB ENGINEERS LDR.",
+            "display": "AB ENGINEERS",
             "token": "LRTQFDCCCB",
         },
         "TagSet": {
@@ -500,7 +500,7 @@ usa_unit_edits = {
         "CommandPoints": 60,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "AIRBORNE LDR.",
+            "display": "AIRBORNE",
             "token": "BHVJUDTEVR",
         },
         "TagSet": {
@@ -554,7 +554,7 @@ usa_unit_edits = {
         "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "AERO-RIFLES LDR.",
+            "display": "AERO-RIFLES",
             "token": "TVWIKAOSVP",
         },
         "TagSet": {
@@ -596,7 +596,7 @@ usa_unit_edits = {
         "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "AERO-FIRETEAM LDR.",
+            "display": "AERO-FIRETEAM",
             "token": "MHGSSCNBFO",
         },
         "TagSet": {
@@ -643,7 +643,7 @@ usa_unit_edits = {
         "CommandPoints": 55,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "AERO-ENGINEERS LDR.",
+            "display": "AERO-ENGINEERS",
             "token": "OWQFQTLBJN",
         },
         "TagSet": {
@@ -686,7 +686,7 @@ usa_unit_edits = {
         "CommandPoints": 70,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "GREEN BERETS LDR.",
+            "display": "GREEN BERETS",
             "token": "KFNXNJOXZS",
         },
         "TagSet": {
@@ -2473,7 +2473,7 @@ usa_unit_edits = {
     "M1A1HA_Abrams_CMD_US": {
         "CommandPoints": 330,
         "GameName": {
-            "display": "M1A1(HA) ABRAMS LDR.",
+            "display": "M1A1(HA) ABRAMS",
             "token": "CIOEKZVEAY",
         },
         "TagSet": {
@@ -2516,7 +2516,7 @@ usa_unit_edits = {
     "M1A1_Abrams_CMD_US": {
         "CommandPoints": 255,
         "GameName": {
-            "display": "M1A1 ABRAMS LDR.",
+            "display": "M1A1 ABRAMS",
             "token": "JARUASHKDH",
         },
         "TagSet": {
@@ -2562,7 +2562,7 @@ usa_unit_edits = {
     "M1IP_Abrams_CMD_US": {
         "CommandPoints": 215,
         "GameName": {
-            "display": "M1IP ABRAMS LDR.",
+            "display": "M1IP ABRAMS",
             "token": "TSLINICZXV",
         },
         "TagSet": {
@@ -2597,7 +2597,7 @@ usa_unit_edits = {
     "M1_Abrams_CMD_US": {
         "CommandPoints": 185,
         "GameName": {
-            "display": "M1 ABRAMS LDR.",
+            "display": "M1 ABRAMS",
             "token": "JMIRJBBLPW",
         },
         "TagSet": {
@@ -2632,7 +2632,7 @@ usa_unit_edits = {
     "M60A3_CMD_US": {
         "CommandPoints": 120,
         "GameName": {
-            "display": "M60A3 (TTS) LDR.",
+            "display": "M60A3 (TTS)",
             "token": "OZPDFIGTWN",
         },
         "TagSet": {
@@ -2667,7 +2667,7 @@ usa_unit_edits = {
     "M60A1_RISE_Passive_CMD_US": {
         "CommandPoints": 95,
         "GameName": {
-            "display": "M60A1 RISE LDR.",
+            "display": "M60A1 RISE",
             "token": "ETJTTJZGYR",
         },
         "TagSet": {
@@ -2702,7 +2702,7 @@ usa_unit_edits = {
     "M551A1_TTS_Sheridan_CMD_US": {
         "CommandPoints": 65,
         "GameName": {
-            "display": "M551 TTS SHERIDAN LDR.",
+            "display": "M551 TTS SHERIDAN",
             "token": "NBZRAJWZXD",
         },
         "TagSet": {
@@ -2733,7 +2733,7 @@ usa_unit_edits = {
     },
 
     "M113A3_US": {
-        "CommandPoints": 15,
+        "CommandPoints": 20,
         "orders": {
             "add_orders": ["EOrderType/Sell"],
         },
@@ -3160,7 +3160,7 @@ usa_unit_edits = {
     },
     
     "M1025_Humvee_GVLLD_US": {
-        "CommandPoints": 30,
+        "CommandPoints": 35,
         "availability": [8, 0, 0, 0],
         "UpgradeFromUnit": "M981_FISTV_US",
     },

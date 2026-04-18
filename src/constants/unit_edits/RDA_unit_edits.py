@@ -135,7 +135,7 @@ rda_unit_edits = {
         "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "MOT.-SCHUTZEN FÜR. LDR.",
+            "display": "MOT.-SCHUTZEN FÜR.",
             "token": "LJDWEYDMZI",
         },
         "TagSet": {
@@ -202,7 +202,7 @@ rda_unit_edits = {
         "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "PIONIER LDR.",
+            "display": "PIONIER",
             "token": "KYSSUXXTDG",
         },
         "TagSet": {
@@ -256,7 +256,7 @@ rda_unit_edits = {
         "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "MARINEPIONIER FÜR. LDR.",
+            "display": "MARINEPIONIER FÜR.",
             "token": "UPIUDWZHAI",
         },
         "TagSet": {
@@ -309,7 +309,7 @@ rda_unit_edits = {
         "CommandPoints": 20,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "K.d.A. FÜH. LDR.",
+            "display": "K.d.A. FÜH.",
         },
         "TagSet": {
             "overwrite_all": [
@@ -378,7 +378,7 @@ rda_unit_edits = {
         "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "RESERVISTEN FÜH. LDR.",
+            "display": "RESERVISTEN FÜH.",
         },
         "TagSet": {
             "overwrite_all": [
@@ -424,7 +424,7 @@ rda_unit_edits = {
         "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "FALLSCHIRM FÜR. LDR.",
+            "display": "FALLSCHIRM FÜR.",
             "token": "BFPSSUUCFZ",
         },
         "TagSet": {
@@ -518,7 +518,7 @@ rda_unit_edits = {
         "CommandPoints": 60,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "LUFTSTURM-JÄGER FÜR. LDR.",
+            "display": "LUFTSTURM-JÄGER FÜR.",
             "token": "IBYSOQOQYU",
         },
         "TagSet": {
@@ -620,7 +620,7 @@ rda_unit_edits = {
         "CommandPoints": 55,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "WACHSCHÜTZEN FÜH. LDR.",
+            "display": "WACHSCHÜTZEN FÜH.",
             "token": "ZMOICNFUWP",
         },
         "TagSet": {
@@ -672,7 +672,7 @@ rda_unit_edits = {
         "CommandPoints": 55,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "FALLSCHIRM FÜR. FF LDR.",
+            "display": "FALLSCHIRM FÜR. FF",
             "token": "AKEYFQLRBG",
         },
         "TagSet": {
@@ -756,7 +756,7 @@ rda_unit_edits = {
         "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "VOPOS FÜH. LDR.",
+            "display": "VOPOS FÜH.",
             "token": "VXWUPWYFCP",
         },
         "TagSet": {
@@ -1961,7 +1961,7 @@ rda_unit_edits = {
     "T54B_CMD_DDR": {
         "CommandPoints": 80,
         "GameName": {
-            "display": "FüPz T-54AMK LDR.",
+            "display": "FüPz T-54AMK",
         },
         "TagSet": {
             "overwrite_all": [
@@ -1998,7 +1998,7 @@ rda_unit_edits = {
     "T55A_CMD_DDR": {
         "CommandPoints": 80,
         "GameName": {
-            "display": "FüPz T-55AK LDR.",
+            "display": "FüPz T-55AK",
             "token": "VKLRXNSTQE",
         },
         "TagSet": {
@@ -2036,7 +2036,7 @@ rda_unit_edits = {
     "T55AM2_CMD_DDR": {  # T-55AM2 LDR
         "CommandPoints": 125,
         "GameName": {
-            "display": "FüPz T-55AM2K3 LDR.",
+            "display": "FüPz T-55AM2K3",
             "token": "POLT55AMLD",
         },
         "TagSet": {
@@ -2071,7 +2071,7 @@ rda_unit_edits = {
             "top": (2, None),
         },
         "GameName": {
-            "display": "FüPz. T-72K LDR.",
+            "display": "FüPz. T-72K",
             "token": "NYCDIWGOQO",
         },
         "TagSet": {
@@ -2112,7 +2112,7 @@ rda_unit_edits = {
             "top": (2, None),
         },
         "GameName": {
-            "display": "FüPz T-72M LDR.",
+            "display": "FüPz T-72M",
             "token": "XVEZUMJKLL",
         },
         "TagSet": {
@@ -2153,7 +2153,7 @@ rda_unit_edits = {
             "top": (3, None),
         },
         "GameName": {
-            "display": "FüPz T-72M1K LDR.",
+            "display": "FüPz T-72M1K",
             "token": "FUPZTSTMOL",
         },
         "TagSet": {

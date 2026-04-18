@@ -368,7 +368,7 @@ SOV_marine_newdivisionrules = {
     "tank": [
         ("T55AM_CMD_SOV", 1, [0, 0, 4, 0]),
         ("T55AM_SOV", 2, [0, 6, 4, 0]),
-        ("T55AMD_SOV", 1, [0, 6, 4, 0]),
+        ("T55AMD_SOV", 1, [0, 0, 4, 3]),
         ("T55AMV_SOV", 2, [0, 6, 4, 0]),
         ("BRDM_2_Konkurs_Naval_SOV", 2, [8, 6, 0, 0]),
         ("AT_T12_Rapira_Naval_SOV", 2, [6, 4, 0, 0], ["MTLB_transp_SOV"]),
@@ -379,7 +379,7 @@ SOV_marine_newdivisionrules = {
         ("Mi_14PL_recon_SOV", 1, [0, 4, 0, 0]),
         ("PT76B_Naval_SOV", 2, [8, 6, 0, 0]),
         ("Scout_Naval_SOV", 2, [0, 8, 6, 0], ["GAZ_46_SOV", "Mi_2_trans_SOV"]),
-        ("Scout_Naval_VDV_SOV", 2, [0, 8, 6, 0], ["UAZ_469_SOV"]),
+        ("Scout_Naval_VDV_SOV", 2, [0, 6, 4, 0], ["ZIL_131_Naval_SOV", "Mi_8MTV_SOV"]),
         ("Scout_Spetsnaz_Naval_SOV", 2, [0, 0, 4, 3], ["ZIL_131_Naval_SOV", "Mi_2_trans_SOV", "Mi_8MTV_SOV"]),
         ("T55AMD_reco_SOV", 1, [0, 4, 3, 0]),
     ],

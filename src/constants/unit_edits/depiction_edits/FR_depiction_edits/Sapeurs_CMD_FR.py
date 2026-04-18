@@ -8,7 +8,7 @@ sapeurs_cmd_fr: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
     "valid_files": ["DepictionInfantry.ndf", "WeaponDescriptor.ndf"],
     "DepictionInfantry_ndf": {
         ("AllWeaponAlternatives_Sapeurs_CMD_FR", None): { # (namespace, object type)
-            # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "add", "remove", "replace")
+            # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "insert", "remove", "replace")
             2: ("insert", [("SelectorId", "WeaponAlternative_3"), ("MeshDescriptor", "LRAC_F1")]),
             3: ("edit", [("ReferenceMeshForSkeleton", "LRAC_F1")]),
         },

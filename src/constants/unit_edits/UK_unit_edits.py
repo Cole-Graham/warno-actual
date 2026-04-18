@@ -73,7 +73,7 @@ uk_unit_edits = {
         "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "TERRIERS LDR.",
+            "display": "TERRIERS",
             "token": "QMPRIAZFYF",
         },
         "TagSet": {
@@ -126,7 +126,7 @@ uk_unit_edits = {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "ASSAULT PIONEERS LDR.",
+            "display": "ASSAULT PIONEERS",
             "token": "VZOODKAGWE",
         },
         "TagSet": {
@@ -194,7 +194,7 @@ uk_unit_edits = {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "RIFLES LDR.",
+            "display": "RIFLES",
             "token": "YGMKZKXXEV",
         },
         "TagSet": {
@@ -242,7 +242,7 @@ uk_unit_edits = {
         "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "AIRMOBILE LDR.",
+            "display": "AIRMOBILE",
             "token": "CFLNZATSET",
         },
         "TagSet": {
@@ -282,7 +282,7 @@ uk_unit_edits = {
         "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "PARA. LDR.",
+            "display": "PARA.",
         },
         "TagSet": {
             "overwrite_all": [
@@ -332,7 +332,7 @@ uk_unit_edits = {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "MOT. AIRMOBILE LDR.",
+            "display": "MOT. AIRMOBILE",
             "token": "DPDYRJPOBS",
         },
         "TagSet": {
@@ -402,7 +402,7 @@ uk_unit_edits = {
         "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "GURKHA RIFLES LDR.",
+            "display": "GURKHA RIFLES",
         },
         "TagSet": {
             "overwrite_all": [
@@ -458,7 +458,7 @@ uk_unit_edits = {
         "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "GUARDS LDR.",
+            "display": "GUARDS",
         },
         "TagSet": {
             "overwrite_all": [
@@ -1345,7 +1345,7 @@ uk_unit_edits = {
     "Centurion_Mk13_CMD_UK": {
         "CommandPoints": 75,
         "GameName": {
-            "display": "CENTURION Mk.13 LDR.",
+            "display": "CENTURION Mk.13",
             "token": "DBEDJIGRRN",
         },
         "TagSet": {
@@ -1386,7 +1386,7 @@ uk_unit_edits = {
             "top": (4, None),
         },
         "GameName": {
-            "display": "CHIEFTAIN Mk.10 LDR.",
+            "display": "CHIEFTAIN Mk.10",
             "token": "JMOQXJZCVT",
         },
         "TagSet": {
@@ -1427,7 +1427,7 @@ uk_unit_edits = {
             "top": (4, None),
         },
         "GameName": {
-            "display": "CHALLENGER Mk.2 LDR.",
+            "display": "CHALLENGER Mk.2",
             "token": "LDRBLUCHAL",
         },
         "TagSet": {
@@ -1842,7 +1842,7 @@ uk_unit_edits = {
     },
     
     "FV103_Spartan_GSR_UK": {
-        "CommandPoints": 30,
+        "CommandPoints": 35,
         "availability": [0, 8, 0, 0],
     },
 

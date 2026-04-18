@@ -9,7 +9,7 @@ airborne_half_dragon_us: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
     "DepictionInfantry_ndf": {
         
         ("AllWeaponAlternatives_Airborne_half_Dragon_US", None): { # (namespace, object type)
-            # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "add", "remove", "replace")
+            # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "insert", "remove", "replace")
             1: ("edit", [("MeshDescriptor", "M240B")]), # (selector_id or mesh)
         },
     }

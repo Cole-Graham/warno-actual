@@ -79,7 +79,7 @@ fr_unit_edits = {
         "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "CHASSEURS LDR.",
+            "display": "CHASSEURS",
         },
         "TagSet": {
             "overwrite_all": [
@@ -157,7 +157,7 @@ fr_unit_edits = {
         "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "GREN.-VOLTIGEURS LDR.",
+            "display": "GREN.-VOLTIGEURS",
         },
         "TagSet": {
             "overwrite_all": [
@@ -212,7 +212,7 @@ fr_unit_edits = {
         "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "SAPEURS LDR.",
+            "display": "SAPEURS",
         },
         "TagSet": {
             "overwrite_all": [
@@ -275,7 +275,7 @@ fr_unit_edits = {
         "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "AEROMOBILES LDR.",
+            "display": "AEROMOBILES",
         },
         "TagSet": {
             "overwrite_all": [
@@ -645,7 +645,7 @@ fr_unit_edits = {
     "AMX_30_B2_CMD_FR": {
         "CommandPoints": 135,
         "GameName": {
-            "display": "AMX-30 B2 LDR.",
+            "display": "AMX-30 B2",
             "token": "WFTGAGEENP",
         },
         "TagSet": {
@@ -687,7 +687,7 @@ fr_unit_edits = {
     "AMX_30_B_CMD_FR": {
         "CommandPoints": 85,
         "GameName": {
-            "display": "AMX-30 B LDR.",
+            "display": "AMX-30 B",
             "token": "ZYIAQBGAXY",
         },
         "TagSet": {
@@ -724,7 +724,7 @@ fr_unit_edits = {
     "AMX_13_75mm_CMD_FR": {
         "CommandPoints": 50,
         "GameName": {
-            "display": "AMX-13 T75 LDR.",
+            "display": "AMX-13 T75",
             "token": "IMPLFERKOJ",
         },
         "TagSet": {
@@ -761,7 +761,7 @@ fr_unit_edits = {
     "AMX_10_RC_CMD_FR": {
         "CommandPoints": 120,
         "GameName": {
-            "display": "AMX-10RC LDR.",
+            "display": "AMX-10RC",
             "token": "QAQVLDFWWN",
         },
         "TagSet": {
@@ -799,7 +799,7 @@ fr_unit_edits = {
     "ERC_90_Sagaie_CMD_FR": {
         "CommandPoints": 90,
         "GameName": {
-            "display": "ERC-90 LDR.",
+            "display": "ERC-90",
             "token": "UZQEPDQLUU",
         },
         "TagSet": {
@@ -837,7 +837,7 @@ fr_unit_edits = {
     "AML_90_CMD_FR": {
         "CommandPoints": 50,
         "GameName": {
-            "display": "AML-90 LDR.",
+            "display": "AML-90",
             "token": "SPARKJMVEK",
         },
         "TagSet": {

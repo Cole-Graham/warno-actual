@@ -490,7 +490,7 @@ UK_NEW_UNITS = {
         "CadavreGUID": "30a1f922-b453-4fbe-ac83-63be38aba866",
         "NewName": "FV4201_Chieftain_Mk9_CMD_UK",
         "GameName": {
-            "display": "CHIEFTAIN Mk.9 LDR.",
+            "display": "CHIEFTAIN Mk.9",
             "token": "SHOVALSAYD",
         },
         "TagSet": {

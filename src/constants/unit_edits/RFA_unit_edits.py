@@ -90,10 +90,10 @@ rfa_unit_edits = {
     
     # RFA INF
     "Panzergrenadier_CMD_RFA": {  # #CMD Fs-JÄGER FÜH.
-        "CommandPoints": 45,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "PZ.GRENADIER LDR.",
+            "display": "PZ.GRENADIER",
         },
         "TagSet": {
             "overwrite_all": [
@@ -141,7 +141,7 @@ rfa_unit_edits = {
     "Fallschirmjager_CMD_RFA": {  # #CMD Fs-JÄGER FÜH.
         "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
-        "GameName": {"display": "FALLSCHIRMJÄGER LDR."},
+        "GameName": {"display": "FALLSCHIRMJÄGER"},
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
@@ -182,7 +182,7 @@ rfa_unit_edits = {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "JÄGER LDR."
+            "display": "JÄGER"
         },
         "TagSet": {
             "overwrite_all": [
@@ -222,7 +222,7 @@ rfa_unit_edits = {
         "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "PIONIER LDR."
+            "display": "PIONIER"
         },
         "TagSet": {
             "overwrite_all": [
@@ -264,7 +264,7 @@ rfa_unit_edits = {
         "CommandPoints": 60,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "GEBIRGSJÄGER LDR."
+            "display": "GEBIRGSJÄGER"
         },
         "TagSet": {
             "overwrite_all": [
@@ -1878,7 +1878,7 @@ rfa_unit_edits = {
     },
 
     "TPZ_Fuchs_RASIT_RFA": {
-        "CommandPoints": 30,
+        "CommandPoints": 35,
         "availability": [8, 0, 0, 0],
     },
 
