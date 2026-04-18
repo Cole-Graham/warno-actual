@@ -234,6 +234,29 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
 
+    ("AA_R27ER_Vympel", "A2A", None, False): { # Experimental
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 60,
+                "Moving": 60,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 1.4,
+                "TimeBetweenTwoFx": 1.4,
+                "MaximumRangeAirplaneGRU": 10150,
+                "ProjectileSpeedGRU": 4946,
+                "MaxAccelerationGRU": 2826,
+                "TimeBetweenTwoSalvos": 1.4,
+                "AimingTime": 0.3,
+                "SupplyCost": 50.0,
+            },
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 4946,
+            "MaxAccelerationGRU": 2826,
+        },
+    },
+
     ("AA_R27R_Vympel", "A2A", None, False): { # 18
         "Ammunition": {
             "hit_roll": {

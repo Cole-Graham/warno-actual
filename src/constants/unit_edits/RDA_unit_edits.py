@@ -3567,7 +3567,7 @@ rda_unit_edits = {
                 "EOpticalStrength/AntiRadar": 175000.0,
             },
         },
-        "availability": [0, 2, 0, 1],
+        "availability": [0, 3, 0, 2],
         "Divisions": {
             "add": ["RDA_9_Panzer"],
             "is_transported": False,

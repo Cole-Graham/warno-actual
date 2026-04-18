@@ -1961,6 +1961,39 @@ rfa_unit_edits = {
         },
     },
 
+    "DCA_Bofors_autoloader_RFA": {
+        "CommandPoints": 60,
+        "TagSet": {
+            "add_tags": ['"AA_radar"'],
+        },
+        "availability": [10, 7, 0, 0],
+        "max_speed": 6,
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 1,
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_1_canon_Bofors_upgrade_40mm_autoloader_radar": 1,
+            },
+            "equipmentchanges": {
+                "replace": [("DCA_1_canon_Bofors_upgrade_40mm_autoloader", "DCA_1_canon_Bofors_upgrade_40mm_autoloader_radar")],
+            },
+        },
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 10600.0,
+            },
+            "TimeBetweenEachIdentifyRoll": 0.5,
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'verygood_airoptics'"],
+        },
+    },
+
     "DCA_FK20_2_20mm_FJ_RFA": {
         "CommandPoints": 20,
         "availability": [0, 9, 7, 0],
@@ -2069,6 +2102,29 @@ rfa_unit_edits = {
         },
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
+        },
+    },
+
+    "MAN_Kat_8x8_Roland_RFA": { # Roland 3
+        "GameName": {
+            "display": "FFR ROLAND",
+            "token": "HVHJFPKNKB",
+        },
+        "CommandPoints": 150,
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 10600.0,
+            },
+            "TimeBetweenEachIdentifyRoll": 0.5,
+        },
+        "availability": [0, 3, 2, 0],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                "verygood_airoptics"
+            ],
+        },
+        "capacities": {
+            "remove_capacities": ["resolute"],
         },
     },
     
@@ -2214,6 +2270,11 @@ rfa_unit_edits = {
         },
     },
 
+    "RF4E_Phantom_HE_RFA": { # 6x Mk82, no Gun or Sidewinders or Radar, its a photo recon pushed into a bombing role
+        "CommandPoints": 175,
+        "availability": [0, 3, 0, 0],
+    },
+
     "F4F_Phantom_II_HE1_RFA": { # 12x Mk82
         "CommandPoints": 205,
         "availability": [0, 2, 0, 0],
@@ -2340,6 +2401,14 @@ rfa_unit_edits = {
 
     "Tornado_IDS_CLUS_RFA": { # 5x Rockeye, 2x AIM-9L
         "CommandPoints": 200,
+        "availability": [0, 2, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'terrain_radar'"],
+        },
+    },
+
+    "Tornado_Marine_CLU_RFA": { # 4x BL.755, 2x AIM-9L
+        "CommandPoints": 220,
         "availability": [0, 2, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],

@@ -3129,7 +3129,7 @@ pol_unit_edits = {
                 },
             },
         },
-        "availability": [0, 2, 0, 1],
+        "availability": [0, 3, 0, 2],
         "Divisions": {
             "add": ["POL_20_Pancerna", "POL_4_Zmechanizowana"],
             "is_transported": False,

@@ -609,6 +609,48 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
+    ("DCA_1_canon_Bofors_upgrade_40mm_autoloader", "DCA", None, False): { # Single 40mm L70+ Bofors, Autoloaded 240 RPM, Salvo length is the total ammo
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 30,
+            },
+            "parent_membr": {
+                "HasDeploymentTime": True,
+                "TimeBetweenTwoShots": 0.3,
+                "TimeBetweenTwoFx": 0.3,
+                "MaximumRangeGRU": 1575,
+                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 1925,
+                "ShotsCountPerSalvo": 144,
+                "AffichageMunitionParSalve": 144,
+                "TimeBetweenTwoSalvos": 10.0,
+                "SupplyCost": 108.0,
+            },
+        },
+    },
+
+    ("DCA_1_canon_Bofors_upgrade_40mm_autoloader_radar", "DCA", "DCA_1_canon_Bofors_upgrade_40mm_autoloader", True): { # Single 40mm L70+ Bofors, Autoloaded 240 RPM, Salvo length is the total ammo
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 40,
+            },
+            "parent_membr": {
+                "HasDeploymentTime": True,
+                "add": [41, "Guidance = Guidance_Radar"],
+                "TraitsToken": ['STAT', 'RADAR'],
+                "TimeBetweenTwoShots": 0.3,
+                "TimeBetweenTwoFx": 0.3,
+                "MaximumRangeGRU": 1575,
+                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 2450,
+                "ShotsCountPerSalvo": 144,
+                "AffichageMunitionParSalve": 144,
+                "TimeBetweenTwoSalvos": 10.0,
+                "SupplyCost": 108.0,
+            },
+        },
+    },
+
     ("DCA_1_canon_Bofors_40mm_L60", "DCA", None, False): { # Single 40mm L60 Bofors, 140 RPM, Salvo length is the total ammo
         "Ammunition": {
             "hit_roll": {

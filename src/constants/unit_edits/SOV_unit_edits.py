@@ -2838,6 +2838,13 @@ sov_unit_edits = {
         #     },
         # },
     },
+
+    "UR67_SOV": { # 2 Shot Mineclearer
+        "CommandPoints": "BTR_50_MRF_DDR",
+        "availability": "BTR_50_MRF_DDR",
+        # "CommandPoints": 50,
+        # "availability": [3, 2, 0, 0],
+    },
     
     "BM30_Smerch_SOV": {
         "CommandPoints": 290,
@@ -4415,6 +4422,17 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
+        "UpgradeFromUnit": "Engineers_Scout_Jouk_SOV",
+    },
+
+    "Engineers_Scout_Jouk_SOV": {  # INZH. RAZVEDKA (GSR)
+        "CommandPoints": 70,
+        "armor": "Infantry_armor_reference",
+        "availability": [0, 4, 3, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
         "UpgradeFromUnit": "KGB_BorderGuard_LRRP_SOV",
     },
 
@@ -5834,6 +5852,43 @@ sov_unit_edits = {
         },
     },
 
+    "Su_17M4_AT2_SOV": {  # 4x S-25LD guided AT rockets, 2x R-60M
+        "CommandPoints": 145,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 2, 0, 1],
+    },
+
+    "Su_17M4_SEAD_SOV": {  # KH-25
+        "CommandPoints": 180,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 10000.0,
+            },
+            "OpticalStrengths": {
+                "EOpticalStrength/AntiRadar": 175000.0,
+            },
+        },
+        "WeaponDescriptor": {
+            "turrets": {
+                1: {
+                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMaxPitch": 0.8726646,
+                    "AngleRotationMinPitch": -0.8726646,
+                },
+            },
+        },
+        "availability": [0, 3, 0, 2],
+    },
+
     "Su_24MP_EW_SOV": { # EW
         "CommandPoints": 145,
         "Divisions": {
@@ -6106,6 +6161,11 @@ sov_unit_edits = {
 
     "Su_27S_SOV": {  # 6x R-73, 4x R-27R
         "CommandPoints": 240,
+        "availability": [0, 2, 0, 1],
+    },
+
+    "Su_27S_jammers_SOV": {  # 4x R-27ER, 2x R-27T, 40% ECM
+        "CommandPoints": 285,
         "availability": [0, 2, 0, 1],
     },
     

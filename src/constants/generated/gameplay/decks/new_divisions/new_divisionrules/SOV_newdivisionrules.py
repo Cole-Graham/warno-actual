@@ -128,6 +128,7 @@ SOV_airborne_newdivisionrules = {
         ("Mi_8TB_SOV", 2, [0, 4, 3, 0]),
     ],
     "planes": [
+        ("Su_27S_jammers_SOV", 1, [0, 2, 0, 1]),
         ("MiG_31_AA1_SOV", 1, [0, 2, 0, 0]),
         ("MiG_31_AA2_SOV", 1, [0, 2, 0, 0]),
         ("Su_24M_LGB2_SOV", 2, [0, 0, 0, 1]),
@@ -306,6 +307,8 @@ SOV_global_newdivisionrules = {
         ("Su_17M4_RKT2_SOV", 1, [0, 3, 2, 0]),
         ("Su_17M4_thermo_SOV", 1, [0, 2, 0, 0]),
         ("Su_22_AT_SOV", 1, [0, 2, 0, 1]),
+        ("Su_17M4_AT2_SOV", 1, [0, 2, 0, 1]),
+        ("Su_17M4_SEAD_SOV", 1, [0, 3, 0, 2]),
         ("Su_24MP_EW_SOV", 1, [0, 0, 2, 0]),
         ("Su_24MP_SOV", 1, [0, 2, 0, 1]),
         ("Su_24M_AT1_SOV", 1, [0, 2, 1, 0]),
@@ -392,6 +395,8 @@ SOV_marine_newdivisionrules = {
         ("Ka_29_SOV", 1, [0, 2, 0, 1]),
     ],
     "planes": [
+        ("MiG_31M_SOV", 1, [0, 2, 0, 0]),
+        ("Su_27K_SOV", 1, [0, 2, 0, 1]),
         ("Tu_22_EW_SOV", 1, [0, 2, 0, 0]),
         ("Tu_22_HE_SOV", 1, [0, 2, 0, 0]),
     ],
@@ -468,6 +473,7 @@ SOV_mechanized_newdivisionrules = {
         ("Mortier_2B9_Vasilek_nonPara_SOV", 2, [4, 3, 0, 0], ["MTLB_transp_SOV"]),
         ("Mortier_2S12_120mm_TTsko_SOV", 2, [5, 4, 3, 0], ["MTLB_transp_SOV"]),
         ("Mortier_M43_82mm_SOV", 1, [6, 4, 0, 0], ["MTLB_transp_SOV"]),
+        ("UR67_SOV", 1, [3, 2, 0, 0]),
     ],
     "tank": [
         ("T72M1_CMD_SOV", 1, [0, 0, 3, 0]),
@@ -506,7 +512,7 @@ SOV_mechanized_newdivisionrules = {
         ("HvyScout_Reserve_SOV", 2, [8, 0, 0, 0], ["GAZ_66_SOV", "BTR_40_SOV"]),
         ("Sniper_Spetsnaz_SOV", 1, [0, 0, 4, 3], ["UAZ_469_SOV", "UAZ_469_Reco_SOV"]),
         ("Scout_SIGINT_SOV", 1, [0, 6, 4, 0], ["UAZ_469_SOV", "UAZ_469_Reco_SOV"]),
-        ("Scout_LRRP_SOV", 1, [0, 0, 4, 3], ["GAZ_66_SOV"]),
+        ("Engineers_Scout_Jouk_SOV", 1, [0, 4, 3, 0], ["GAZ_66_SOV"]),
         ("MTLB_BMAN_SOV", 1, [6, 4, 0, 0]),
         ("BRDM_2_SOV", 2, [8, 6, 0, 0]),
         ("BTR_40A_SOV", 2, [8, 6, 0, 0]),
