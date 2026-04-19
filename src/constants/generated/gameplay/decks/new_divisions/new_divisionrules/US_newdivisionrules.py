@@ -281,7 +281,7 @@ US_marine_newdivisionrules = {
         ("M1025_Humvee_CMD_USMC_US", 2, [0, 3, 0, 0]),
         ("LAV_C_US", 1, [0, 3, 0, 0]),
         ("AAVC_7A1_CMD_USMC_US", 1, [0, 3, 0, 0]),
-        ("M60A1_RISE_Passive_USMC_CMD_US", 1, [0, 2, 0, 0]),
+        ("M60A1_RISE_Passive_USMC_CMD2_US", 1, [0, 2, 0, 0]),
         ("LAV_L_US", 2, [6, 0, 0, 0]),
         ("M35_supply_US", 2, [3, 0, 0, 0]),
         ("LARC_60_supply_US", 2, [1, 0, 0, 0]),
@@ -305,10 +305,18 @@ US_marine_newdivisionrules = {
         ("ATteam_TOW2_USMC_US", 2, [4, 3, 0, 0], ["M998_Humvee_US"]),
     ],
     "artillery": [
+        ("M110A2_HOWZ_US", 1, [2, 0, 1, 0]),
+        ("M109A2_USMC_US", 1, [3, 2, 0, 0]),
+        ("Howz_M198_155mm_USMC_US", 2, [3, 2, 0, 0], ["M35_trans_US"]),
+        ("LAV_M_81mm_US", 2, [4, 3, 0, 0]),
         ("81mm_mortar_USMC_US", 2, [6, 5, 4, 0], ["M998_Humvee_US"]),
     ],
     "tank": [
-        ("M60A1_RISE_Passive_USMC_US", 2, [0, 6, 4, 0]),
+        ("M60A1_RISE_Passive_USMC_CMD_US", 1, [0, 0, 5, 0]),
+        ("M60A1_RISE_Passive_USMC_US", 2, [10, 7, 0, 0]),
+        ("M60A1_RISE_Passive_USMC_ERA_US", 1, [0, 8, 6, 0]),
+        ("M1025_Humvee_TOW_USMC_US", 2, [0, 6, 4, 0]),
+        ("LAV_AT_US", 1, [0, 6, 4, 0]),
     ],
     "recon": [
         ("Sniper_USMC_US", 2, [0, 4, 3, 0], ["M998_Humvee_US", "M1025_Humvee_scout_USMC_US", "M1025_Humvee_AGL_USMC_US", "UH1N_TwinHuey_US", "UH1N_TwinHuey_RKT_US"]),

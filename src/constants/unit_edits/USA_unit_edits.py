@@ -1456,7 +1456,7 @@ usa_unit_edits = {
         "GameName": {
             "display": "USMC GUNNERS",
         },
-        "CommandPoints": 25,
+        "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
@@ -2643,6 +2643,11 @@ usa_unit_edits = {
         "availability": [0, 6, 5, 4],
     },
 
+    "81mm_mortar_USMC_US": {
+        "CommandPoints": 35,
+        "availability": [6, 5, 4, 0],
+    },
+
     "Mortier_107mm_US": {
         "CommandPoints": 40,
         "availability": [5, 4, 3, 0],
@@ -2662,6 +2667,11 @@ usa_unit_edits = {
             },
         },
     },
+
+    "LAV_M_81mm_US": {  # LAV-M mortar carrier, M252 81mm Mortar
+        "CommandPoints": 60,
+        "availability": [4, 3, 0, 0],
+    },
     
     "Howz_M102_105mm_US": {
         "CommandPoints": 60,
@@ -2674,6 +2684,11 @@ usa_unit_edits = {
     },
     
     "Howz_M198_155mm_US": {
+        "CommandPoints": 110,
+        "availability": [3, 2, 0, 0],
+    },
+
+    "Howz_M198_155mm_USMC_US": {
         "CommandPoints": 110,
         "availability": [3, 2, 0, 0],
     },
@@ -2702,6 +2717,16 @@ usa_unit_edits = {
             },
         },
     },
+
+    "M109A2_USMC_US": {
+        "CommandPoints": 180,
+        "availability": [3, 2, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "HMG_12_7_mm_M2HB": 35,
+            },
+        },
+    },
     
     "M109A2_Copperhead_US": {
         "CommandPoints": 210,
@@ -2714,6 +2739,11 @@ usa_unit_edits = {
     },
 
     "M110A2_HOWZ_US": {
+        "CommandPoints": 220,
+        "availability": [2, 0, 1, 0]
+    },
+
+    "M110A2_USMC_US": {
         "CommandPoints": 220,
         "availability": [2, 0, 1, 0]
     },
@@ -2986,7 +3016,43 @@ usa_unit_edits = {
         },
         "MenuIconTexture": "Texture_RTS_H_Armor",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
-        "availability": [0, 0, 4, 0],
+        "availability": [0, 0, 5, 0],
+        "remove_zone_capture": None,
+    },
+
+    "M60A1_RISE_Passive_USMC_CMD_US": {
+        "CommandPoints": 95,
+        "GameName": {
+            "display": "USMC M60A1",
+            "token": "CBDJCYPIXI",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "LDR_Unit",
+                "AllowedForMissileRoE",
+                "Char",
+                "GroundUnits",
+                "UNITE_M60A1_RISE_Passive_USMC_CMD_US",
+                "Unite"
+            ],
+        },
+        "armor": {
+            "top": (3, None),
+        },
+        "IdentifiedTextures": ["Texture_RTS_H_Armor", "Texture_Armor"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "UnitRole": "armor",
+        "SpecialtiesList": {
+            "overwrite_all": [
+                '_leader',
+                '_resolute',
+                '_smoke_launcher',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Armor",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
+        "availability": [0, 0, 5, 0],
         "remove_zone_capture": None,
     },
 
@@ -3051,6 +3117,10 @@ usa_unit_edits = {
             },
         },
     },
+
+    "AAVP_7A1_USMC_US": {
+        "CommandPoints": 25,
+    },
     
     "M151A2_TOW_NG_US": { # N.G. M151A2 I-TOW
         "CommandPoints": 40,
@@ -3074,10 +3144,24 @@ usa_unit_edits = {
         "stealth": 1.5,
         "availability": [0, 6, 4, 0],
     },
+
+    "M1025_Humvee_TOW_USMC_US": {
+        "GameName": {
+            "display": "USMC M1025 HUMVEE TOW-2",
+        },
+        "CommandPoints": 65,
+        "stealth": 1.5,
+        "availability": [0, 6, 4, 0],
+    },
     
     "CUCV_Hellfire_US": {
         "CommandPoints": 120,
         "availability": [0, 4, 3, 0],
+    },
+
+    "LAV_AT_US": {  # TOW 2
+        "CommandPoints": 75,
+        "availability": [0, 6, 4, 0],
     },
 
     "M901A1_ITW_US": {  # TOW 2
@@ -3365,6 +3449,32 @@ usa_unit_edits = {
             },
         },
         "availability": [10, 7, 0, 0],
+        "armor": {
+            "top": (3, None),
+        },
+    },
+
+    "M60A1_RISE_Passive_USMC_US": {
+        "CommandPoints": 85,
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "availability": [10, 7, 0, 0],
+        "armor": {
+            "top": (3, None),
+        },
+    },
+
+    "M60A1_RISE_Passive_USMC_ERA_US": {
+        "CommandPoints": 150,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 8, 6, 0],
         "armor": {
             "top": (3, None),
         },
