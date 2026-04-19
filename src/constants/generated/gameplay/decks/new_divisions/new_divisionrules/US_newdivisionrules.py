@@ -268,8 +268,6 @@ US_global_newdivisionrules = {
         ("A10_Thunderbolt_II_Rkt_US", 1, [0, 2, 0, 0]),
         ("A37B_Dragonfly_HE_US", 1, [0, 4, 0, 0]),
         ("A37B_Dragonfly_NPLM_US", 1, [0, 6, 0, 0]),
-        ("A6E_Intruder_SEAD_US", 1, [0, 3, 0, 2]),
-        ("A6E_Intruder_US", 1, [0, 3, 0, 0]),
         ("A7D_Corsair_II_AT_US", 1, [0, 2, 0, 1]),
         ("A7D_Corsair_II_CLU_US", 1, [0, 2, 0, 0]),
         ("A7D_Corsair_II_RKT_US", 1, [0, 3, 2, 0]),
@@ -313,10 +311,14 @@ US_marine_newdivisionrules = {
         ("M60A1_RISE_Passive_USMC_US", 2, [0, 6, 4, 0]),
     ],
     "recon": [
-        ("ForceRecon_USMC_US", 2, [0, 0, 4, 3], ["M998_Humvee_US", "UH1N_TwinHuey_US", "UH1N_TwinHuey_RKT_US"]),
+        ("Sniper_USMC_US", 2, [0, 4, 3, 0], ["M998_Humvee_US", "M1025_Humvee_scout_USMC_US", "M1025_Humvee_AGL_USMC_US", "UH1N_TwinHuey_US", "UH1N_TwinHuey_RKT_US"]),
+        ("Scout_LAI_USMC_US", 2, [8, 6, 0, 0], ["LAV_25_US"]),
+        ("Scout_USMC_US", 2, [8, 6, 0, 0], ["M998_Humvee_US", "M1025_Humvee_scout_USMC_US", "M1025_Humvee_AGL_USMC_US", "UH1N_TwinHuey_US", "UH1N_TwinHuey_RKT_US"]),
+        ("ForceRecon_USMC_US", 2, [0, 0, 4, 3], ["M998_Humvee_US", "M1025_Humvee_scout_USMC_US", "M1025_Humvee_AGL_USMC_US", "UH1N_TwinHuey_US", "UH1N_TwinHuey_RKT_US"]),
     ],
     "aa": [
-        ("DCA_I_Hawk_USMC_US", 2, [4, 3, 0, 0]),
+        ("DCA_I_Hawk_USMC_US", 2, [5, 4, 0, 0]),
+        ("MANPAD_Stinger_C_USMC_US", 2, [7, 5, 0, 0]),
     ],
     "heli": [
         ("AH1W_SuperCobra_Hydra_US", 2, [0, 3, 2, 0]),
@@ -325,7 +327,16 @@ US_marine_newdivisionrules = {
         ("AH1W_SuperCobra_SEAD_US", 1, [0, 3, 2, 0]),
     ],
     "planes": [
-        ("Harrier_AV8B_RKT_US", 1, [0, 4, 3, 0]),
+        ("Harrier_AV8B_RKT_US", 2, [0, 4, 0, 0]),
+        ("Harrier_AV8B_thermo_US", 2, [0, 4, 0, 0]),
+        ("Harrier_AV8B_TER_US", 2, [0, 4, 0, 0]),
+        ("Harrier_AV8B_US", 2, [0, 4, 0, 0]),
+        ("A6E_Intruder_US", 1, [0, 4, 0, 0]),
+        ("A6E_Intruder_SWIP_AT_US", 1, [0, 3, 0, 0]),
+        ("A6E_Intruder_SEAD_US", 1, [0, 3, 0, 2]),
+        ("EA6B_Prowler_US", 1, [0, 2, 0, 1]),
+        ("F14A_Tomcat_AA_US", 2, [0, 2, 0, 1]),
+        ("F14A_Tomcat_AA2_US", 1, [0, 2, 0, 0]),
     ],
 }
 
@@ -456,7 +467,6 @@ US_mechanized_newdivisionrules = {
     ],
     "planes": [
         ("F117_Nighthawk_US", 2, [0, 0, 0, 1]),
-        ("EA6B_Prowler_US", 1, [0, 2, 0, 1]),
     ],
 }
 

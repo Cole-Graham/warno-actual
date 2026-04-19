@@ -167,6 +167,18 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    # In vanilla the name of this ends with _x8, but the ammo is actually 6
+    # I renamed it in vanilla_inst_modifications to match the actual ammo count
+    ("Bomb_BLU95_500lb_230kg_Thermobaric_salvolength6", "thermo_bomb", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "ImpactHappening": "'BombeODABRPO'",
+                "PhysicalDamages": 10.0,
+                "SupplyCost": 280.0,
+            },
+        },
+    },
+    
     # ("Bomb_ODAB_500PM_500kg_Thermobaric_salvolength2", "thermo_bomb", None, False): {
     #     "Ammunition": {
     #         "parent_membr": {

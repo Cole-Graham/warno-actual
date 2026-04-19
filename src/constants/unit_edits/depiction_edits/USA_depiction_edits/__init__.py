@@ -13,6 +13,7 @@ from .F16E_napalm_US import f16e_napalm_us
 from .F111E_Aardvark_napalm_US import f111e_aardvark_napalm_us
 from .F111F_Aardvark_CBU_US import f111f_aardvark_cbu_us
 from .F111F_Aardvark_napalm_US import f111f_aardvark_napalm_us
+from .ForceRecon_USMC_US import forcerecon_usmc_us
 from .Groupe_AT_US import groupe_at_us
 from .M2_Bradley_BSV_US import m2_bradley_bsv_us
 from .M3A1_Bradley_CFV_US import m3a1_bradley_cfv_us
@@ -25,6 +26,7 @@ from .Rifles_half_AT4_US import rifles_half_at4_us
 from .Rifles_half_Cav_CMD_US import rifles_half_cav_cmd_us
 from .Scout_Cav_US import scout_cav_us
 from .Scout_US import scout_us
+from .Scout_USMC_US import scout_usmc_us
 
 
 __all__ = [
@@ -42,6 +44,7 @@ __all__ = [
     "f111e_aardvark_napalm_us",
     "f111f_aardvark_cbu_us",
     "f111f_aardvark_napalm_us",
+    "forcerecon_usmc_us",
     "groupe_at_us",
     "m2_bradley_bsv_us",
     "m3a1_bradley_cfv_us",
@@ -54,4 +57,5 @@ __all__ = [
     "rifles_half_cav_cmd_us",
     "scout_cav_us",
     "scout_us", 
+    "scout_usmc_us",
 ]
