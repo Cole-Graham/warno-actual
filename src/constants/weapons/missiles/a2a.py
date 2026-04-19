@@ -10,8 +10,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_Skyflash", "A2A", None, False): {
         "Ammunition": {
             "hit_roll": {
-                "Idling": 60,
-                "Moving": 60,
+                "Idling": 55,
+                "Moving": 55,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 1.4,
@@ -33,8 +33,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_Skyflash_SuperTEMP", "A2A", None, False): {
         "Ammunition": {
             "hit_roll": {
-                "Idling": 65,
-                "Moving": 65,
+                "Idling": 60,
+                "Moving": 60,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 1.4,
@@ -56,8 +56,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_R73_Vympel", "A2A", None, False): { # 27
         "Ammunition": {
             "hit_roll": {
-                "Idling": 75,
-                "Moving": 75,
+                "Idling": 70,
+                "Moving": 70,
             },
             "parent_membr": {
                 "AimingTime": 0.3,
@@ -69,8 +69,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_R60M_Vympel", "A2A", None, False): {
         "Ammunition": {
             "hit_roll": {
-                "Idling": 65,
-                "Moving": 65,
+                "Idling": 60,
+                "Moving": 60,
             },
             "parent_membr": {
                 "AimingTime": 0.3,
@@ -82,8 +82,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_R60M_Vympel_Helo", "A2A", "AA_R60M_Vympel", True): {
         "Ammunition": {
             "hit_roll": {
-                "Idling": 65,
-                "Moving": 65,
+                "Idling": 60,
+                "Moving": 60,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2625,
@@ -96,8 +96,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_R40RD1", "A2A", None, False): { # 24
         "Ammunition": {
             "hit_roll": {
-                "Idling": 60,
-                "Moving": 60,
+                "Idling": 55,
+                "Moving": 55,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 1.4,
@@ -119,8 +119,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_R40TD1", "A2A", None, False): { # 24
         "Ammunition": {
             "hit_roll": {
-                "Idling": 60,
-                "Moving": 60,
+                "Idling": 50,
+                "Moving": 50,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 1.4,
@@ -140,29 +140,6 @@ missiles: Dict[WeaponKey, WeaponData] = {
     },
 
     ("AA_R98MR", "A2A", None, False): { # 24
-        "Ammunition": {
-            "hit_roll": {
-                "Idling": 60,
-                "Moving": 60,
-            },
-            "parent_membr": {
-                "TimeBetweenTwoShots": 1.4,
-                "TimeBetweenTwoFx": 1.4,
-                "MaximumRangeAirplaneGRU": 6300,
-                "ProjectileSpeedGRU": 4946,
-                "MaxAccelerationGRU": 2826,
-                "TimeBetweenTwoSalvos": 1.4,
-                "AimingTime": 0.3,
-                "SupplyCost": 60.0,
-            },
-        },
-        "MissileDescriptor": {
-            "MaxSpeedGRU": 4946,
-            "MaxAccelerationGRU": 2826,
-        },
-    },
-
-    ("AA_R98MT", "A2A", None, False): { # 24
         "Ammunition": {
             "hit_roll": {
                 "Idling": 55,
@@ -185,11 +162,34 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
 
+    ("AA_R98MT", "A2A", None, False): { # 24
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 50,
+                "Moving": 50,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 1.4,
+                "TimeBetweenTwoFx": 1.4,
+                "MaximumRangeAirplaneGRU": 6300,
+                "ProjectileSpeedGRU": 4946,
+                "MaxAccelerationGRU": 2826,
+                "TimeBetweenTwoSalvos": 1.4,
+                "AimingTime": 0.3,
+                "SupplyCost": 60.0,
+            },
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 4946,
+            "MaxAccelerationGRU": 2826,
+        },
+    },
+
     ("AA_R37_Vympel", "A2A", None, False): { # 21
         "Ammunition": {
             "hit_roll": {
-                "Idling": 45,
-                "Moving": 45,
+                "Idling": 40,
+                "Moving": 40,
             },
             "parent_membr": {
                 "MaximumRangeAirplaneGRU": 13300,
@@ -210,8 +210,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_R33_Vympel", "A2A", None, False): { # 19
         "Ammunition": {
             "hit_roll": {
-                "Idling": 45,
-                "Moving": 45,
+                "Idling": 40,
+                "Moving": 40,
             },
             "parent_membr": {
                 "add": [34, "IsFireAndForget = True"],
@@ -260,8 +260,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_R27R_Vympel", "A2A", None, False): { # 18
         "Ammunition": {
             "hit_roll": {
-                "Idling": 65,
-                "Moving": 65,
+                "Idling": 60,
+                "Moving": 60,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 1.4,
@@ -283,8 +283,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_R27T_Vympel", "A2A", None, False): { # IR Vympel
         "Ammunition": {
             "hit_roll": {
-                "Idling": 65,
-                "Moving": 65,
+                "Idling": 60,
+                "Moving": 60,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 1.4,
@@ -306,8 +306,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_R24R_Vympel", "A2A", None, False): { # 15
         "Ammunition": {
             "hit_roll": {
-                "Idling": 50,
-                "Moving": 50,
+                "Idling": 45,
+                "Moving": 45,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 1.4,
@@ -329,8 +329,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_R24MR_Vympel", "A2A", None, False): { # 15
         "Ammunition": {
             "hit_roll": {
-                "Idling": 60,
-                "Moving": 60,
+                "Idling": 55,
+                "Moving": 55,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 1.4,
@@ -352,8 +352,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_R23R_Vympel", "A2A", None, False): {
         "Ammunition": {
             "hit_roll": {
-                "Idling": 50,
-                "Moving": 50,
+                "Idling": 45,
+                "Moving": 45,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 1.4,
@@ -369,8 +369,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_R13M", "A2A", None, False): {
         "Ammunition": {
             "hit_roll": {
-                "Idling": 55,
-                "Moving": 55,
+                "Idling": 50,
+                "Moving": 50,
             },
             "parent_membr": {
                 "PhysicalDamages": 4.0,
@@ -383,8 +383,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_R3R", "A2A", None, False): {
         "Ammunition": {
             "hit_roll": {
-                "Idling": 55,
-                "Moving": 55,
+                "Idling": 50,
+                "Moving": 50,
             },
             "parent_membr": {
                 "AimingTime": 0.3,
@@ -395,8 +395,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_AIM9M_Sidewinder", "A2A", None, False): { # 7
         "Ammunition": {
             "hit_roll": {
-                "Idling": 75,
-                "Moving": 75,
+                "Idling": 70,
+                "Moving": 70,
             },
             "parent_membr": {
                 "AimingTime": 0.3,
@@ -408,8 +408,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_AIM9L_Sidewinder_upgrade", "A2A", None, False): { # 7
         "Ammunition": {
             "hit_roll": {
-                "Idling": 75,
-                "Moving": 75,
+                "Idling": 65,
+                "Moving": 65,
             },
             "parent_membr": {
                 "AimingTime": 0.3,
@@ -421,8 +421,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_AIM9L_Sidewinder", "A2A", None, False): { # 6
         "Ammunition": {
             "hit_roll": {
-                "Idling": 70,
-                "Moving": 70,
+                "Idling": 60,
+                "Moving": 60,
             },
             "parent_membr": {
                 "AimingTime": 0.3,
@@ -434,8 +434,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_AIM9L_Sidewinder_Helo", "A2A", "AA_AIM9L_Sidewinder", True): {
         "Ammunition": {
             "hit_roll": {
-                "Idling": 70,
-                "Moving": 70,
+                "Idling": 60,
+                "Moving": 60,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2625,
@@ -446,8 +446,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_AIM9J_Sidewinder", "A2A", None, False): { # 5
         "Ammunition": {
             "hit_roll": {
-                "Idling": 55,
-                "Moving": 55,
+                "Idling": 50,
+                "Moving": 50,
             },
             "parent_membr": {
                 "AimingTime": 0.3,
@@ -459,8 +459,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_AIM7F_Sparrow", "A2A", None, False): {
         "Ammunition": {
             "hit_roll": {
-                "Idling": 60,
-                "Moving": 60,
+                "Idling": 55,
+                "Moving": 55,
             },
             "parent_membr": {
                 "MaximumRangeAirplaneGRU": 7700,
@@ -476,8 +476,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_AIM7M_Sparrow", "A2A", None, False): { # 4
         "Ammunition": {
             "hit_roll": {
-                "Idling": 60,
-                "Moving": 60,
+                "Idling": 55,
+                "Moving": 55,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 1.4,
@@ -499,8 +499,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AA_AIM120A_AMRAAM", "A2A", None, False): { # 1
         "Ammunition": {
             "hit_roll": {
-                "Idling": 75,
-                "Moving": 75,
+                "Idling": 70,
+                "Moving": 70,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 1.4,

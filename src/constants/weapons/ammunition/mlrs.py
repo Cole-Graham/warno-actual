@@ -165,6 +165,19 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("RocketArt_M21OF_122mm_salvolength36", "MLRS", None, False): { # MOR. 9k55 Grad 1
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 4.8,
+                "SuppressDamages": 400,
+                "RadiusSplashPhysicalDamagesGRU": 122,
+                "RadiusSplashSuppressDamagesGRU": 163,
+                "TimeBetweenTwoSalvos": 220.0,
+                "SupplyCost": 522.0,
+            },
+        },
+    },
 
     ("RocketArt_M21OF_122mm_RM70", "MLRS", "RocketArt_M21OF_122mm", True): { # 646
         "Ammunition": {

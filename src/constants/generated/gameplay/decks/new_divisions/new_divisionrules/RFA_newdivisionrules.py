@@ -79,8 +79,8 @@ RFA_airborne_newdivisionrules = {
         ("MAN_Kat_8x8_Roland_RFA", 1, [4, 3, 0, 0]),
     ],
     "heli": [
-        ("Bo_105_PAH_1A1_RFA", 3, [0, 0, 4, 3]),
-        ("Bo_105_PAH_1_RFA", 3, [0, 6, 0, 0]),
+        ("Bo_105_PAH_1A1_RFA", 2, [0, 0, 4, 3]),
+        ("Bo_105_PAH_1_RFA", 2, [0, 6, 0, 0]),
     ],
     "planes": [
         ("F4F_KWS_AA_RFA", 2, [0, 2, 0, 1]),

@@ -15,7 +15,7 @@ RDA_airborne_newdivisionrules = {
         ("Mi_9_DDR", 2, [0, 3, 0, 0]),
         ("MTLB_supply_DDR", 3, [6, 0, 0, 0]),
         ("Ural_4320_DDR", 1, [3, 0, 0, 0]),
-        ("PTS_M_supply_DDR", 1, [2, 0, 0, 0]),
+        ("PTS_M_supply_DDR", 2, [3, 0, 0, 0]),
         ("Mi_8_supply_DDR", 3, [3, 0, 0, 0]),
         ("DCA_ZU_23_2_DDR", 1, [9, 7, 0, 0], ["MTLB_trans_DDR"]),
     ],

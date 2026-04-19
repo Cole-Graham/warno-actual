@@ -2207,6 +2207,11 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [("ATGM_9K111M_Faktoriya", "ATGM_9K111_Fagot")],
+            },
+        },
     },
 
     "Atteam_Konkurs_VDV_SOV": {

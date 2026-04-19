@@ -105,7 +105,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "display": "Mk.1 BLINDFIRE",
             "hit_roll": {
-                "Idling": 55,
+                "Idling": 50,
             },
             "parent_membr": {
                 "Caliber": ("existing", "CCYZVFZIEZ"), # "Radar"
@@ -132,7 +132,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "display": "Mk.1E",
             "hit_roll": {
-                "Idling": 65,
+                "Idling": 60,
             },
             "parent_membr": {
                 "Caliber": ("SACLOS LiDAR", "THGDKSIWAY"),
@@ -159,7 +159,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "display": "Mk.1E BLINDFIRE",
             "hit_roll": {
-                "Idling": 70,
+                "Idling": 65,
             },
             "parent_membr": {
                 "Caliber": ("existing", "CCYZVFZIEZ"), # "Radar"
@@ -253,7 +253,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("SAM_I_Hawk", "SAM", None, False): { # 193
         "Ammunition": {
             "hit_roll": {
-                "Idling": 60,
+                "Idling": 55,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 3325,
@@ -282,7 +282,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_missile_he_bigly",
             },
             "hit_roll": {
-                "Idling": 65,
+                "Idling": 60,
             },
             "parent_membr": {
                 "TraitsToken": ['STAT', 'RADAR', 'biglyHE'],
@@ -300,7 +300,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_missile_he_bigly",
             },
             "hit_roll": {
-                "Idling": 65,
+                "Idling": 60,
             },
             "parent_membr": {
                 "TraitsToken": ['STAT', 'RADAR', 'biglyHE'],
@@ -328,7 +328,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("SAM_9M38M1", "SAM", None, False): {
         "Ammunition": {
             "hit_roll": {
-                "Idling": 60,
+                "Idling": 55,
             },
             "parent_membr": {
                 "MaximumRangeAirplaneGRU": 5950,
@@ -489,7 +489,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("SAM_9M330_Tor", "SAM", None, False): { # 179
         "Ammunition": {
             "hit_roll": {
-                "Idling": 70,
+                "Idling": 65,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 3325,
@@ -511,7 +511,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("SAM_ROLAND_2", "SAM", None, False): {
         "Ammunition": {
             "hit_roll": {
-                "Idling": 65,
+                "Idling": 60,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 3325,
@@ -534,7 +534,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("SAM_ROLAND_3", "SAM", None, False): {
         "Ammunition": {
             "hit_roll": {
-                "Idling": 70,
+                "Idling": 65,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 3150,
@@ -556,7 +556,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("SAM_9M336", "SAM", None, False): { # 178
         "Ammunition": {
             "hit_roll": {
-                "Idling": 50,
+                "Idling": 45,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2800,
@@ -576,14 +576,14 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("SAM_3M9M1", "SAM", None, False): { # 178
         "Ammunition": {
+            "hit_roll": {
+                "Idling": 45,
+            },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 5250,
                 "TimeBetweenTwoShots": 2.5,
                 "TimeBetweenTwoFx": 2.5,
-            },
-            "hit_roll": {
-                "Idling": 45,
             },
         },
         "SupplyCost": 110.0,
@@ -598,7 +598,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("SAM_9M33M2", "SAM", None, False): {
         "Ammunition": {
             "hit_roll": {
-                "Idling": 60,
+                "Idling": 55,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2975,
@@ -619,7 +619,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("SAM_9M311_Tunguska", "SAM", None, False): { # 177
         "Ammunition": {
             "hit_roll": {
-                "Idling": 60,
+                "Idling": 55,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 3150,

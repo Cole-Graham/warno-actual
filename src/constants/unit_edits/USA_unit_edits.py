@@ -4535,6 +4535,11 @@ usa_unit_edits = {
             },
         },
         "availability": [0, 2, 0, 1],
+        "WeaponDescriptor": {
+            "Salves": {
+                "AA_AIM9M_Sidewinder": 4,
+            },
+        },
     },
     
     "F15E_StrikeEagle_US": {

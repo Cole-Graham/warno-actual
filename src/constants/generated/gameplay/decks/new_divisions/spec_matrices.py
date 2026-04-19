@@ -42,6 +42,18 @@ spec_matrices = {
         "EFactory/Recons": [2, 2, 2, 3, 3, 3, 3],
         "EFactory/Tanks": [2, 2, 3, 3],
     },
+    "airborne_2": { # West Germany, France, anyone who doesn't have a lot of helos
+        "total_for_valid": 146,
+        "EFactory/Art": [2, 3, 4, 4, 6],
+        "EFactory/DCA": [2, 2, 3, 4, 4],
+        "EFactory/Defense": [],
+        "EFactory/Helis": [2, 2, 3],
+        "EFactory/Infantry": [2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4],
+        "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 2, 3, 3],
+        "EFactory/Planes": [2, 2, 3, 3, 4, 6, 8],
+        "EFactory/Recons": [2, 2, 2, 3, 3, 3, 3],
+        "EFactory/Tanks": [2, 2, 2, 3, 3],
+    },
     "airborne_armored": {
         "total_for_valid": 156,
         "EFactory/Art": [2, 3, 4, 5, 6],

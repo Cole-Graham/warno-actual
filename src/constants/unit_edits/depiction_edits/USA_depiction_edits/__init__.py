@@ -6,6 +6,7 @@ from .Airborne_half_Dragon_US import airborne_half_dragon_us
 from .Engineer_CMD_US import engineer_cmd_us
 from .F4E_Phantom_II_CBU_US import f4e_phantom_ii_cbu_us
 from .F4E_Phantom_II_napalm_US import f4e_phantom_ii_napalm_us
+from .F15C_Eagle_AA_US import f15c_eagle_aa_us
 from .F15E_StrikeEagle_US import f15e_strikeeagle_us
 from .F16E_CBU_US import f16e_cbu_us
 from .F16E_napalm_US import f16e_napalm_us
@@ -34,6 +35,7 @@ __all__ = [
     "engineer_cmd_us",
     "f4e_phantom_ii_cbu_us",
     "f4e_phantom_ii_napalm_us",
+    "f15c_eagle_aa_us",
     "f15e_strikeeagle_us",
     "f16e_cbu_us",
     "f16e_napalm_us",

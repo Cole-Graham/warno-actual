@@ -200,7 +200,7 @@ POL_marines_newdivisionrules = {
         ("T55AM_Merida_CMD2_POL", 1, [0, 0, 2, 0]),
         ("Mi_2_CMD_POL", 1, [0, 3, 0, 0]),
         ("BAV_485_Supply_POL", 2, [5, 0, 0, 0]),
-        ("PTS_M_supply_POL", 1, [2, 0, 0, 0]),
+        ("PTS_M_supply_POL", 2, [3, 0, 0, 0]),
         ("Mi_8_supply_POL", 2, [3, 0, 0, 0]),
         ("DCA_ZU_23_2_POL", 1, [9, 7, 0, 0], ["MTLB_trans_POL"]),
     ],
