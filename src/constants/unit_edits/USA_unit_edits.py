@@ -58,7 +58,7 @@ usa_unit_edits = {
             # airborne humvee becomes redundant with regular after FWD deploy changes, just give regular one to 82ab
             # but not in the same patch as changing tacom transports, to avoid potential deckwipes
         },
-        "availability": [0, 4, 0, 0],
+        "availability": [0, 3, 0, 0],
         "SpecialtiesList": {
             "remove_specs": ["'_para'"],
         },
@@ -69,13 +69,46 @@ usa_unit_edits = {
 
     "M1025_Humvee_CMD_US": {
         "CommandPoints": 145,
-        "availability": [0, 4, 0, 0],
+        "availability": [0, 3, 0, 0],
         "Divisions": {
             # "add": ['US_82nd_Airborne'],
             # airborne humvee redundant with regular after FWD deploy changes, just give regular one to 82ab imo
             # but not in the same patch as changing tacom transports, to avoid potential deckwipes
             "US_82nd_Airborne": {
                 "cards": 2,
+            },
+        },
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
+    },
+
+    "M1025_Humvee_CMD_USMC_US": {
+        "CommandPoints": 145,
+        "availability": [0, 3, 0, 0],
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
+    },
+
+    "LAV_C_US": {
+        "CommandPoints": 165,
+        "availability": [0, 3, 0, 0],
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
+    },
+
+    "AAVC_7A1_CMD_USMC_US": {
+        "CommandPoints": 150,
+        "availability": [0, 3, 0, 0],
+        "Divisions": {
+            "default": {
+                "cards": 1,
             },
         },
         "TagSet": {"add_tags": ['"CMD_Unit"']},
@@ -770,6 +803,108 @@ usa_unit_edits = {
         "remove_zone_capture": None,
     },
 
+    "Rifles_USMC_CMD_US": {
+        "CommandPoints": 30,
+        "armor": "Infantry_armor_reference",
+        "GameName": {
+            "token": "MLEKXIJBWL",
+            "display": "USMC Riflemen",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "LDR_Unit",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "UNITE_Rifles_USMC_CMD_US",
+                "Unite",
+            ],
+        },
+        "strength": 6,
+        "TransportedTexture": "UseInGame_Transport_REGINF",
+        # "SortingOrder": 20075,
+        # "UnitAttackValue": 1,
+        # "UnitDefenseValue": 16,
+        "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "UnitRole": "infantry",
+        "SpecialtiesList": {
+            "overwrite_all": [
+                '_leader',
+                '_resolute',
+                'infantry_equip_light',
+            ],
+        },
+        "MenuIconTexture": "Texture_RTS_H_Infantry",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
+        "availability": [0, 0, 7, 5],
+        "max_speed": 26,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_M16": 6,
+                },
+            },
+            "Salves": {
+                "RocketInf_M72A3_LAW_66mm": 6,
+            },
+        },
+        "selector_tactic": "(2, 5)",
+        "selector_tactic_obj": "02_05",
+        "remove_zone_capture": None,
+    },
+
+    "Engineer_USMC_CMD_US": {
+        "CommandPoints": 55,
+        "armor": "Infantry_armor_reference",
+        "GameName": {
+            "display": "USMC ENGINEERS",
+            "token": "HTVVEUGFKE",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "LDR_Unit",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_Spec_Attaque",
+                "UNITE_Engineer_USMC_CMD_US",
+                "Unite"
+            ],
+        },
+        "TransportedTexture": "UseInGame_Transport_assault",
+        # "SortingOrder": 20040,
+        # "UnitAttackValue": 1,
+        # "UnitDefenseValue": 16,
+        "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "UnitRole": "engineer",
+        "SpecialtiesList": {
+            "overwrite_all": [
+                '_leader',
+                '_resolute',
+                '_choc',
+                'infantry_equip_light',
+            ],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "RocketInf_M72A3_LAW_66mm": 6,
+            },
+        },
+        "MenuIconTexture": "Texture_RTS_H_assault",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Engineer",
+        "availability": [0, 0, 4, 3],
+        "max_speed": 26,
+        "remove_zone_capture": None,
+    },
+
     "Engineers_US": {
         "CommandPoints": 50,
         "GameName": {
@@ -1020,6 +1155,41 @@ usa_unit_edits = {
         },
     },
 
+    "Engineers_USMC_US": {
+        "CommandPoints": 50,
+        "GameName": {
+            "display": "USMC ENGINEERS",
+        },
+        "armor": "Infantry_armor_reference",
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 6, 4, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [
+                    ("MMG_M60E3_7_62mm", "MMG_WA_M60E3_7_62mm")
+                ],
+                "animate": {
+                    "MMG_WA_M60E3_7_62mm": False,
+                },
+                "quantity": {
+                    "FM_M16": 8,
+                    "MMG_WA_M60E3_7_62mm": 2,
+                },
+            },
+            "Salves": {
+                "Grenade_Satchel_Charge": 6,
+            },
+        },
+    },
+
     "Airborne_Dragon_US": {
         "GameName": {
             "display": "AIRBORNE [DRAGON]",
@@ -1216,6 +1386,49 @@ usa_unit_edits = {
         },
     },
 
+    "Rifles_USMC_LAW_US": {
+        "CommandPoints": 45,
+        "armor": "Infantry_armor_reference",
+        "availability": [10, 7, 0, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_M16": 11,
+                    "SAW_M249_5_56mm": 2,
+                },
+            },
+        },
+    },
+
+    "Rifles_USMC_AT4_US": {
+        "CommandPoints": 55,
+        "armor": "Infantry_armor_reference",
+        "availability": [10, 7, 0, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "RocketInf_AT4_83mm": 9,
+            },
+        },
+    },
+
+    "Rifles_USMC_Dragon_US": {
+        "CommandPoints": 60,
+        "armor": "Infantry_armor_reference",
+        "availability": [10, 7, 0, 0],
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
+    },
+
     "Rifles_HMG_US": { # GUNNERS
         "GameName": {
             "display": "GUNNERS",
@@ -1239,10 +1452,44 @@ usa_unit_edits = {
         },
     },
 
+    "Rifles_USMC_HMG_US": { # USMC GUNNERS
+        "GameName": {
+            "display": "USMC GUNNERS",
+        },
+        "CommandPoints": 25,
+        "armor": "Infantry_armor_reference",
+        "availability": [10, 7, 0, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": [
+                    ("MMG_M60E3_7_62mm", "MMG_WA_M60E3_7_62mm")
+                ],
+                "quantity": {
+                    "FM_M16": 4,
+                    "MMG_M60E3_7_62mm": 3,
+                },
+            },
+        },
+    },
+
     "AeroRifles_US": {  # AIR CAV TROOPERS
         "GameName": {
             "display": "AIR CAV TROOPERS",
         },
+        "CommandPoints": 35,
+        "armor": "Infantry_armor_reference",
+        "availability": [10, 7, 0, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
+        },
+    },
+
+    "AeroRifles_USMC_US": {  # AERO-RIFLES USMC
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
@@ -1898,6 +2145,29 @@ usa_unit_edits = {
             },
         },
     },
+
+    "Groupe_AT_USMC_US": { # This unit needs an overveiw, im not sure about it
+        "CommandPoints": 35,
+        "armor": "Infantry_armor_reference",
+        "strength": 6,
+        "max_speed": 20,
+        "availability": [0, 8, 6, 0],
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
+         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_M16": 6,
+                },
+            },
+        },
+    },
     
     "Navy_SEAL_US": {
         "CommandPoints": 70,
@@ -2077,6 +2347,19 @@ usa_unit_edits = {
             "add_specs": ["'infantry_equip_veryheavy'"],
         },
     },
+
+    "HMGteam_M2HB_M63_USMC_US": {
+        "is_standard": (True, "12_7mm_HMG_Team"), 
+        "CommandPoints": 25,
+        "GameName": {
+            "display": "USMC M2HB 12.7mm",
+        },
+        "strength": 5,
+        "max_speed": 14, 
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_veryheavy'"],
+        },
+    },
     
     "HMGteam_Mk19_US": {
         "GameName": {
@@ -2104,6 +2387,19 @@ usa_unit_edits = {
             "add_specs": ["'infantry_equip_veryheavy'"],
         },
         "UpgradeFromUnit": "HMGteam_M2HB_AB_US",
+    },
+
+    "HMGteam_Mk19_USMC_US": {
+        "GameName": {
+            "display": "USMC Mk.19 40mm",
+        },
+        "is_standard": (True, "40mm_Mk19_Team"), 
+        "CommandPoints": 35,
+        "strength": 5,
+        "max_speed": 14, 
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_veryheavy'"],
+        },
     },
     
     "ATteam_RCL_M40A1_NG_US": {
@@ -2192,6 +2488,18 @@ usa_unit_edits = {
             },
         },
         "availability": [0, 4, 3, 0],
+        "max_speed": 14,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_veryheavy'"],
+        },
+    },
+
+    "ATteam_TOW2_USMC_US": {
+        "GameName": {
+            "display": "USMC TOW-2",
+        },
+        "CommandPoints": 65,
+        "availability": [4, 3, 0, 0],
         "max_speed": 14,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_veryheavy'"],

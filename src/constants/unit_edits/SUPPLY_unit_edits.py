@@ -232,6 +232,7 @@ SUPPLY_UNITS_BY_TIER = {
         ("Gama_Goat_supply_US", "tier_2"),
         ("CUCV_US", "tier_2"),
         ("Rover_101FC_supply_UK", "tier_2"),
+        ("LAV_L_US", "tier_2"),
         
         # tier 3
         ("Unimog_S_404_RFA", "tier_3"),
@@ -309,7 +310,8 @@ SUPPLY_UNITS_BY_TIER = {
         # tier 3
         ("Puma_UK", "tier_3"),
         ("Puma_FR", "tier_3"),
-        
+        ("CH46E_SeaKnight_supply_US", "tier_3"),
+
         # tier 4
         ("Mi_8TZ_SOV", "tier_4"),
         ("Mi_14PS_supply_SOV", "tier_4"),
@@ -319,6 +321,7 @@ SUPPLY_UNITS_BY_TIER = {
         # tier 5
         ("CH47D_Chinook_supply_UK", "tier_5"),
         ("CH47_Super_Chinook_US", "tier_5"),
+        ("CH53_Sea_Stallion_supply_US", "tier_5"),
         ("CH53G_RFA", "tier_5"),
         
         # tier 6
@@ -490,13 +493,25 @@ supply_unit_edits = {
         "CommandPoints": 220,
         "SupplyCapacity": 8400.0,
         "SupplyDescriptor": "DvisionalSupply",
-        "availability": [2, 0, 0, 0],
+        "availability": [1, 0, 0, 0],
          "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
-    },  
+    },
+
+    "LARC_60_supply_US": {
+        "CommandPoints": 220,
+        "SupplyCapacity": 8400.0,
+        "SupplyDescriptor": "DvisionalSupply",
+        "availability": [1, 0, 0, 0],
+         "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+    }, 
     
     # mechanized supply
     "M113A1G_supply_RFA": {},

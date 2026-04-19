@@ -802,6 +802,50 @@ USA_NEW_UNITS = {
         "Nation": "US",
     },
 
+    ("M60A1_RISE_Passive_USMC_CMD_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "44bb3b34-8e01-4853-b3fa-25236205623b",
+        "InfantrySquadModuleGUID": "ee96f8ea-148e-41d3-b8a7-3c8956caff1e",
+        "ShowroomGUID": "5c1d049f-5a5c-40c4-8ab4-dddc944ea472",
+        "CadavreGUID": "418c15b6-aa3b-40d0-a941-aa3b4f997986",
+        "NewName": "M60A1_RISE_Passive_USMC_CMD2_US",
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "CMD_Unit",
+                "AllowedForMissileRoE",
+                "Char",
+                "Char_CMD",
+                "Commandant",
+                "GroundUnits",
+                "InfmapCommander",
+                "M60A1_RISE_Passive_USMC_CMD2_US",
+                "Unite",
+            ],
+        },
+        "Factory": "EFactory/Logistic",
+        "CommandPoints": 225,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 3, 0, 0],
+        "armor": {
+            "top": (3, None),
+        },
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
+                   'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
+                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply',
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "NATO",
+        "Nation": "US",
+    },
+
     ("M551A1_TTS_Sheridan_CMD_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "7df5c2e6-7313-4de6-bc0c-3f98df60ad0b",
         "InfantrySquadModuleGUID": "c841f8d3-9015-41d8-b072-5ce130a20f24",

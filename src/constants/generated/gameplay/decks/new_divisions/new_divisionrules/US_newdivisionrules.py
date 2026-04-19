@@ -279,9 +279,31 @@ US_global_newdivisionrules = {
 
 US_marine_newdivisionrules = {
     "logistic": [
+        ("Rifles_half_CMD2_US", 2, [0, 2, 0, 0], ["M998_Humvee_US", "AAVP_7A1_USMC_US", "UH1N_TwinHuey_US", "UH1N_TwinHuey_RKT_US", "CH46E_SeaKnight_trans_US"]),
         ("M1025_Humvee_CMD_USMC_US", 2, [0, 3, 0, 0]),
+        ("LAV_C_US", 1, [0, 3, 0, 0]),
+        ("AAVC_7A1_CMD_USMC_US", 1, [0, 3, 0, 0]),
+        ("M60A1_RISE_Passive_USMC_CMD_US", 1, [0, 2, 0, 0]),
+        ("LAV_L_US", 2, [6, 0, 0, 0]),
+        ("M35_supply_US", 2, [3, 0, 0, 0]),
+        ("LARC_60_supply_US", 2, [1, 0, 0, 0]),
+        ("CH46E_SeaKnight_supply_US", 2, [4, 0, 0, 0]),
+        ("CH53_Sea_Stallion_supply_US", 2, [2, 0, 0, 0]),
     ],
     "infantry": [
+        ("Rifles_USMC_CMD_US", 1, [0, 0, 7, 5], ["M998_Humvee_US", "AAVP_7A1_USMC_US", "UH1N_TwinHuey_US", "UH1N_TwinHuey_RKT_US"]),
+        ("Engineer_USMC_CMD_US", 1, [0, 0, 4, 3], ["M35_trans_US"]),
+        ("Navy_SEAL_US", 2, [0, 0, 0, 3], ["M1038_Humvee_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US", "UH1N_TwinHuey_US"]),
+        ("AeroRifles_USMC_US", 2, [10, 7, 0, 0], ["M998_Humvee_US", "UH1N_TwinHuey_US", "UH1N_TwinHuey_RKT_US", "CH46E_SeaKnight_trans_US"]), # I gave these guys a humvee for now, could see that being changed
+        ("Rifles_USMC_LAW_US", 3, [10, 7, 0, 0], ["M35_trans_US", "AAVP_7A1_USMC_US"]),
+        ("Rifles_USMC_AT4_US", 2, [10, 7, 0, 0], ["M35_trans_US", "AAVP_7A1_USMC_US"]),
+        ("Rifles_USMC_Dragon_US", 2, [10, 7, 0, 0], ["M35_trans_US", "AAVP_7A1_USMC_US"]),
+        ("Rifles_USMC_HMG_US", 2, [10, 7, 0, 0], ["M998_Humvee_US", "AAVP_7A1_USMC_US"]),
+        ("Groupe_AT_USMC_US", 2, [0, 8, 6, 0], ["M1038_Humvee_US", "AAVP_7A1_USMC_US"]),
+        ("Engineers_USMC_US", 2, [0, 6, 4, 0], ["M35_trans_US"]),
+        ("Security_USMC_US", 1, [0, 8, 6, 0], ["M1038_Humvee_US", "Dragoon_300_US"]),
+        ("HMGteam_Mk19_USMC_US", 1, [8, 6, 0, 0], ["M998_Humvee_US"]),
+        ("HMGteam_M2HB_M63_USMC_US", 1, [10, 7, 0, 0], ["M998_Humvee_US"]),
         ("ATteam_TOW2_USMC_US", 2, [4, 3, 0, 0], ["M998_Humvee_US"]),
     ],
     "artillery": [
@@ -478,7 +500,6 @@ US_motorized_newdivisionrules = {
         ("Rifles_half_Dragon_US", 2, [12, 9, 0, 0], ["CUCV_trans_US", "CUCV_HMG_US", "CUCV_AGL_US"]),
         ("Rifles_half_AT4_US", 2, [12, 9, 0, 0], ["CUCV_trans_US", "CUCV_HMG_US", "CUCV_AGL_US"]),
         ("Rifles_half_LAW_US", 2, [12, 9, 0, 0], ["CUCV_trans_US", "CUCV_HMG_US", "CUCV_AGL_US"]),
-        ("Security_USMC_US", 1, [0, 8, 6, 0], ["M1038_Humvee_US", "Dragoon_300_US"]),
         ("MP_Combat_USAF_US", 1, [0, 8, 6, 0], ["M35_trans_US"]),
         ("MP_Patrol_USAF_US", 1, [0, 7, 5, 0], ["CUCV_trans_US", "CUCV_MP_US", "CUCV_HMG_US", "CUCV_AGL_US", "CGage_Peacekeeper_US"]),
         ("MP_US", 1, [0, 12, 9, 0], ["CUCV_MP_US", "CUCV_HMG_US", "CUCV_AGL_US", "M1025_Humvee_MP_US"]),
