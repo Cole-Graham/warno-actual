@@ -245,6 +245,34 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "Salves": 10,
         },
     },
+    
+    ("Sniper_M40A1", "small_arms", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_sniper",
+            },
+            "hit_roll": {
+                "Idling": 75,
+                "DistanceToTarget": True,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 9.0,
+                "TimeBetweenTwoFx": 9.0,
+                "PhysicalDamages": 1.0,
+                "SuppressDamages": 60.0,
+                "DisplaySalveAccuracy": False,
+                "AimingTime": 6.0,
+                "TimeBetweenTwoSalvos": 9.0,
+                "ShotsCountPerSalvo": 5,
+                "AffichageMunitionParSalve": 5,
+            },
+        },
+        "SupplyCost": 1.0,
+        "NbWeapons": [1],
+        "WeaponDescriptor": {
+            "Salves": 12,
+        },
+    },
 
     ("Sniper_M24", "small_arms", None, False): {  # 732
         "Ammunition": {

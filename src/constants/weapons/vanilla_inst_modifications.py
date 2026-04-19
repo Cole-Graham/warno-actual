@@ -11,7 +11,9 @@ AMMUNITION_RENAMES = [
     ("MMG_M60_7_62mm", "MMG_WA_M60E3_7_62mm"),
     ("RocketAir_S13_122mm_x10_avion", "RocketAir_S13_122mm_avion_salvolength10"),
     ("RocketAir_B8_80mm_x10_Avion", "RocketAir_B8_80mm_avion_salvolength10"),
-    ("RocketAir_S24_240mm_x2", "RocketAir_S24_240mm_salvolength2")
+    ("RocketAir_S24_240mm_x2", "RocketAir_S24_240mm_salvolength2"),
+    # Eugen has this named wrong in the ndf
+    ("Bomb_BLU95_500lb_230kg_Thermobaric_x8", "Bomb_BLU95_500lb_230kg_Thermobaric_salvolength6")
 ]
 
 AMMUNITION_MISSILES_RENAMES = [

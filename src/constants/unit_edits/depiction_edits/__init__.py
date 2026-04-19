@@ -79,6 +79,7 @@ from .USA_depiction_edits import (
     f111e_aardvark_napalm_us,
     f111f_aardvark_cbu_us,
     f111f_aardvark_napalm_us,
+    forcerecon_usmc_us,
     groupe_at_us,
     m3a1_bradley_cfv_us,
     m3a2_bradley_cfv_us,
@@ -90,6 +91,7 @@ from .USA_depiction_edits import (
     rifles_half_cav_cmd_us,
     scout_cav_us,
     scout_us,
+    scout_usmc_us,
 )
 
 __all__ = [
@@ -172,6 +174,7 @@ __all__ = [
     "f111e_aardvark_napalm_us",
     "f111f_aardvark_cbu_us",
     "f111f_aardvark_napalm_us",
+    "forcerecon_usmc_us",
     "groupe_at_us",
     "m3a1_bradley_cfv_us",
     "m3a2_bradley_cfv_us",
@@ -183,4 +186,5 @@ __all__ = [
     "rifles_half_cav_cmd_us",
     "scout_cav_us",
     "scout_us",
+    "scout_usmc_us",
 ]

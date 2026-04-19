@@ -209,15 +209,18 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("AA_R33_Vympel", "A2A", None, False): { # 19
         "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_missile_he_bigly",
+            },
             "hit_roll": {
                 "Idling": 40,
                 "Moving": 40,
             },
             "parent_membr": {
                 "add": [34, "IsFireAndForget = True"],
-                "TraitsToken": ['MOTION', 'F&F'],
+                "TraitsToken": ['MOTION', 'F&F', 'biglyHE'],
                 "MaximumRangeAirplaneGRU": 13300,
-                "PhysicalDamages": 9.0,
+                "PhysicalDamages": 8.0,
                 "TirReflexe": True,
                 "ReflexShotDisabledIfPriorityTarget": True,
                 "ProjectileSpeedGRU": 6600,
@@ -493,6 +496,35 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "MissileDescriptor": {
             "MaxSpeedGRU": 4946,
             "MaxAccelerationGRU": 2826,
+        },
+    },
+    
+    ("AA_AIM54_Phoenix", "A2A", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_missile_he_bigly",
+            },
+            "hit_roll": {
+                "Idling": 40,
+                "Moving": 40,
+            },
+            "parent_membr": {
+                "TraitsToken": ['MOTION', 'F&F', 'biglyHE'],
+                "MaximumRangeAirplaneGRU": 13300,
+                "PhysicalDamages": 8.0,
+                "TirReflexe": True,
+                "ReflexShotDisabledIfPriorityTarget": True,
+                "ProjectileSpeedGRU": 7200,
+                "TimeBetweenTwoShots": 0.7,
+                "AimingTime": 1.6,
+                "TimeBetweenTwoSalvos": 1.5,
+                "ShotsCountPerSalvo": 2,
+                "SupplyCost": 160.0,
+                "AffichageMunitionParSalve": 2,
+            },
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 7200,
         },
     },
 
