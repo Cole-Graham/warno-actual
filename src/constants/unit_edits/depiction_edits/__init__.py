@@ -53,8 +53,7 @@ from .SOV_depiction_edits import (
     mtlb_vasilek_sov,
     naval_rifle_cmd_sov,
     sniper_spetsnaz_sov,
-    su_24m_clu_sov,
-    # Need to edit the model to support adding smoke, on hold for now (temporarily increased armor in the meantime)
+    # su_24m_clu_sov,
     # tos1_buratino_sov,
 )
 from .UK_depiction_edits import (
@@ -147,7 +146,7 @@ __all__ = [
     "mtlb_vasilek_sov",
     "naval_rifle_cmd_sov",
     "sniper_spetsnaz_sov",
-    "su_24m_clu_sov",
+    # "su_24m_clu_sov",
     # "tos1_buratino_sov",
     
     # UK

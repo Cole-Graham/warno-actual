@@ -278,6 +278,24 @@ US_global_newdivisionrules = {
 }
 
 US_marine_newdivisionrules = {
+    "logistic": [
+        ("M1025_Humvee_CMD_USMC_US", 2, [0, 3, 0, 0]),
+    ],
+    "infantry": [
+        ("ATteam_TOW2_USMC_US", 2, [4, 3, 0, 0], ["M998_Humvee_US"]),
+    ],
+    "artillery": [
+        ("81mm_mortar_USMC_US", 2, [6, 5, 4, 0], ["M998_Humvee_US"]),
+    ],
+    "tank": [
+        ("M60A1_RISE_Passive_USMC_US", 2, [0, 6, 4, 0]),
+    ],
+    "recon": [
+        ("ForceRecon_USMC_US", 2, [0, 0, 4, 3], ["M998_Humvee_US", "UH1N_TwinHuey_US", "UH1N_TwinHuey_RKT_US"]),
+    ],
+    "aa": [
+        ("DCA_I_Hawk_USMC_US", 2, [4, 3, 0, 0]),
+    ],
     "heli": [
         ("AH1W_SuperCobra_Hydra_US", 2, [0, 3, 2, 0]),
         ("AH1W_SuperCobra_AA_US", 1, [0, 3, 2, 0]),

@@ -2460,11 +2460,11 @@ uk_unit_edits = {
     },
     
     "Buccaneer_S2B_GBU_UK": { # 2x GBU-16
-        "CommandPoints": 210,
+        "CommandPoints": 220,
         "GameName": {
             "display": "BUCCANEER S.2B [PGB]",
         },
-        "availability": [0, 1, 0, 0],
+        "availability": [0, 0, 0, 1],
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [("Bomb_CPU_123", "Bomb_CPU_123_salvolength2")],

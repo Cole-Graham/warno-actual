@@ -243,7 +243,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "TimeBetweenTwoShots": 1.4,
                 "TimeBetweenTwoFx": 1.4,
-                "MaximumRangeAirplaneGRU": 10150,
+                "MaximumRangeAirplaneGRU": 10125,
                 "ProjectileSpeedGRU": 4946,
                 "MaxAccelerationGRU": 2826,
                 "TimeBetweenTwoSalvos": 1.4,
@@ -271,7 +271,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaxAccelerationGRU": 2826,
                 "TimeBetweenTwoSalvos": 1.4,
                 "AimingTime": 0.3,
-                "SupplyCost": 50.0,
+                "SupplyCost": 65.0,
             },
         },
         "MissileDescriptor": {

@@ -84,10 +84,11 @@ CLU_BOMB_STANDARDS: dict = {
             "PhysicalDamages": 1,
         },
     },
+    # Ratio-based values, e.g. DispersionAtMaxRangeGRU = 1.4 * RadiusSplashPhysicalDamagesGRU
     "ratios": {
         "ammunition": {
-            "DispersionAtMaxRangeGRU": (1.4, "RadiusSplashPhysicalDamagesGRU"),
-            "DispersionAtMinRangeGRU": (1.4, "RadiusSplashPhysicalDamagesGRU"),
+            "DispersionAtMaxRangeGRU": (1.3, "RadiusSplashPhysicalDamagesGRU"),
+            "DispersionAtMinRangeGRU": (1.3, "RadiusSplashPhysicalDamagesGRU"),
         },
     },
 }

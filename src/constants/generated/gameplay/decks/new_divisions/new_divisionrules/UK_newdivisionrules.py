@@ -189,7 +189,7 @@ UK_armored_newdivisionrules = {
 UK_global_newdivisionrules = {
     "planes": [
         ("Buccaneer_S2B_ATGM_UK", 1, [0, 3, 0, 0]),
-        ("Buccaneer_S2B_GBU_UK", 2, [0, 1, 0, 0]),
+        ("Buccaneer_S2B_GBU_UK", 1, [0, 0, 0, 2]),
         ("Buccaneer_S2B_HE_UK", 1, [0, 2, 0, 0]),
         ("Buccaneer_S2B_SEAD_UK", 1, [0, 3, 0, 2]),
         ("Canberra_B2_UK", 1, [0, 3, 0, 0]),

@@ -1,6 +1,7 @@
 from .US_newdivisionrules import (
     US_airborne_newdivisionrules,
     US_armored_newdivisionrules,
+    US_marine_newdivisionrules,
     US_mechanized_newdivisionrules,
     US_motorized_newdivisionrules,
     US_global_newdivisionrules,
@@ -52,6 +53,7 @@ __all__ = [
     "US_airborne_newdivisionrules",
     "US_armored_newdivisionrules",
     "US_global_newdivisionrules",
+    "US_marine_newdivisionrules",
     "US_mechanized_newdivisionrules",
     "US_motorized_newdivisionrules",
     "POL_airborne_newdivisionrules",

@@ -2296,7 +2296,7 @@ rfa_unit_edits = {
     },
 
     "F4F_Phantom_II_LGB_RFA": { # 2x GBU-16
-        "CommandPoints": 190,
+        "CommandPoints": 200,
         "GameName": {
             "display": "F-4F [PGB]",
         },
@@ -2342,7 +2342,7 @@ rfa_unit_edits = {
     },
 
     "HFB_320_ECM_RFA": { # EW
-        "CommandPoints": 180,
+        "CommandPoints": 145,
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 12500.0,

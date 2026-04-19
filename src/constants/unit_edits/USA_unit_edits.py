@@ -4470,7 +4470,7 @@ usa_unit_edits = {
     },
     
     "EA6B_Prowler_US": {
-        "CommandPoints": 260,
+        "CommandPoints": 280,
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 12500.0,
@@ -4527,7 +4527,7 @@ usa_unit_edits = {
     },
 
     "F15C_Eagle_AA_US": {
-        "CommandPoints": 290,
+        "CommandPoints": 310,
         "ECM": -0.45,
         "AirplaneMovement": {
             "parent_membr": {
@@ -4543,10 +4543,11 @@ usa_unit_edits = {
     },
     
     "F15E_StrikeEagle_US": {
-        "CommandPoints": 290,
+        "CommandPoints": 310,
         "GameName": {
             "display": "F-15E STRIKE EAGLE [PGB]",
         },
+        "max_speed": 1325,
         "ECM": -0.45,
         "AirplaneMovement": {
             "parent_membr": {
@@ -4653,7 +4654,7 @@ usa_unit_edits = {
     },
 
     "F111F_Aardvark_LGB_US": {  # 4x GBU-12
-        "CommandPoints": 210,
+        "CommandPoints": 220,
         "GameName": {
             "display": "F-111F AARDVARK [PGB]",
         },
@@ -4668,7 +4669,7 @@ usa_unit_edits = {
     },
     
     "F111F_Aardvark_LGB2_US": { # 4x GBU-10
-        "CommandPoints": 260,
+        "CommandPoints": 270,
         "GameName": {
             "display": "F-111F AARDVARK [PGB2]",
         },
@@ -4698,7 +4699,7 @@ usa_unit_edits = {
     },
 
     "F111F_Aardvark_CBU_US": {  # 8x Mk-20 Rockeye, 82nd Airborne
-        "CommandPoints": 190,
+        "CommandPoints": 220,
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
@@ -4799,7 +4800,7 @@ usa_unit_edits = {
     },
 
     "F16C_LGB_US": {
-        "CommandPoints": 225,
+        "CommandPoints": 235,
         "GameName": {
             "display": "F-16CG [PGB]",
         },
@@ -5013,7 +5014,7 @@ usa_unit_edits = {
     },
 
     "A10_Thunderbolt_II_ATGM_US": {  # 4x AGM-65D, 2x AIM-9M
-        "CommandPoints": 240,
+        "CommandPoints": 250,
         "max_speed": 500,
         "availability": [0, 2, 0, 0],
         "WeaponDescriptor": {

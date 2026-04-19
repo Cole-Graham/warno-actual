@@ -3033,7 +3033,7 @@ pol_unit_edits = {
     },
 
     "Su_7BKL_EW_POL": {
-        "CommandPoints": 100,
+        "CommandPoints": 130,
         "availability": [0, 4, 0, 0],
     },
 

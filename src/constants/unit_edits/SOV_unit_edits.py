@@ -5585,7 +5585,7 @@ sov_unit_edits = {
     },
 
     "MiG_27K_LGB_SOV": {
-        "CommandPoints": 225,
+        "CommandPoints": 235,
         "GameName": {
             "display": "MiG-27K [PGB]",
         },
@@ -5765,7 +5765,7 @@ sov_unit_edits = {
                 "AgilityRadiusGRU": 1800,
             },
         },
-        "CommandPoints": 280,
+        "CommandPoints": 290,
         "availability": [0, 2, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
@@ -5985,7 +5985,7 @@ sov_unit_edits = {
         "GameName": {
             "display": "Su-24M [PGB]",
         },
-        "CommandPoints": 245,
+        "CommandPoints": 255,
         "UpgradeFromUnit": None,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -5999,7 +5999,7 @@ sov_unit_edits = {
     },
 
     "Su_24M_LGB2_SOV": {
-        "CommandPoints": 260,
+        "CommandPoints": 270,
         "GameName": {
             "display": "Su-24M [PGB2]",
         },
@@ -6036,9 +6036,8 @@ sov_unit_edits = {
             "add_specs": ["'terrain_radar'"],
         },
         "availability": [0, 2, 0, 0],
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                "replace": [("Bomb_CLU_RBK_250kg_salvolength8", "Bomb_CLU_RBK_250kg_salvolength16")],
+        # "WeaponDescriptor": {
+        #     "equipmentchanges": {
                 # "insert": [(1, "Bomb_CLU_RBK_250kg_salvolength8"),],
                 # "insert_edits": {
                 #     1: {
@@ -6053,12 +6052,12 @@ sov_unit_edits = {
                 #         "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
                 #     },
                 # },
-            },
+            # },
             # "Salves": {
             #     "insert": [(2, 8)],
             # },
             # "SalvoIsMainSalvo": [False, True, True],
-        },
+        # },
     },
     
     "Su_24M_nplm_SOV": {
