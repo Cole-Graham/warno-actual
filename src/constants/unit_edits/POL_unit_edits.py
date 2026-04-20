@@ -928,7 +928,7 @@ pol_unit_edits = {
     },
 
     "Naval_Engineers_POL": {  # Nieb. Berety Saperzy
-        "CommandPoints": 40,
+        "CommandPoints": 50,
         "availability": [0, 6, 4, 0],
         "armor": "Infantry_armor_reference",
         "max_speed": 26,
@@ -1172,12 +1172,18 @@ pol_unit_edits = {
     },
     
     "Naval_Rifle_POL": {  # Nibesky Bertey
-        "CommandPoints": 45,
+        "CommandPoints": 40,
         "availability": [10, 7, 0, 0],
         "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_medium'"],
+            "overwrite_all": [
+                "_resolute",
+                "infantry_equip_medium"
+            ],
+        },
+        "capacities": {
+            "remove_capacities": ["choc"],
         },
         # 10x kbk AKM
         # 2x PKM

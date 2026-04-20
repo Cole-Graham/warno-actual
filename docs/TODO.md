@@ -32,7 +32,6 @@ guns.
 
 # ------------------------------------ 12 ------------------------------------
 - [ ] Add non-USSR/US LANDJUT units
-- [ ] Fix G3 Geb sniper
 - [ ] US/USSR/POL marine
 
 IDK who: 
