@@ -299,9 +299,9 @@ US_marine_newdivisionrules = {
         ("Rifles_USMC_AT4_US", 2, [10, 7, 0, 0], ["M35_trans_US", "AAVP_7A1_USMC_US"]),
         ("Rifles_USMC_Dragon_US", 2, [10, 7, 0, 0], ["M35_trans_US", "AAVP_7A1_USMC_US"]),
         ("Rifles_USMC_HMG_US", 2, [10, 7, 0, 0], ["M1038_Humvee_US", "AAVP_7A1_USMC_US"]),
-        ("Groupe_AT_USMC_US", 2, [8, 6, 0, 0], ["M998_Humvee_US", "AAVP_7A1_USMC_US"]),
-        ("Engineers_USMC_US", 2, [6, 4, 0, 0], ["M35_trans_US"]),
-        ("Security_USMC_US", 1, [8, 6, 0, 0], ["M1038_Humvee_US", "Dragoon_300_US"]),
+        ("Groupe_AT_USMC_US", 2, [0, 8, 6, 0], ["M998_Humvee_US", "AAVP_7A1_USMC_US"]), # These guys are shock, so they should be upvetted
+        ("Engineers_USMC_US", 2, [0, 6, 4, 0], ["M35_trans_US"]), # These guys are shock, so they should be upvetted
+        ("Security_USMC_US", 1, [0, 6, 4, 0], ["M1038_Humvee_US", "Dragoon_300_US"]), # These guys are shock, so they should be upvetted. These are the guys who guard the navies nukes from the alaska div
         ("HMGteam_Mk19_USMC_US", 1, [8, 6, 0, 0], ["M998_Humvee_US"]),
         ("HMGteam_M2HB_M63_USMC_US", 1, [10, 7, 0, 0], ["M998_Humvee_US"]),
         ("ATteam_TOW2_USMC_US", 2, [4, 3, 0, 0], ["M998_Humvee_US"]),
@@ -351,7 +351,7 @@ US_marine_newdivisionrules = {
         ("EA6B_Prowler_US", 1, [0, 2, 0, 1]),
         ("F14A_Tomcat_AA_US", 2, [0, 2, 0, 1]),
         ("F14A_Tomcat_AA2_US", 1, [0, 2, 0, 0]),
-        ("F18_Hornet_SEAD_US", 1, [0, 2, 0, 0]),
+        ("F18_Hornet_SEAD_US", 1, [0, 2, 0, 1]), # I swear I made this 0/2/0/1, did you swap that Lat?
     ],
 }
 

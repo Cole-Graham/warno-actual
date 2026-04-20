@@ -609,7 +609,7 @@ pol_unit_edits = {
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "quantity": {
-                    "FM_kbk_AK": 7,
+                    "FM_Tantal": 7,
                 },
                 "replace": [("FM_kbk_AKM", "FM_Tantal")]
             },
@@ -687,6 +687,103 @@ pol_unit_edits = {
         "remove_zone_capture": None,
     },
 
+    "Naval_Rifle_CMD_POL": {  # Dow. Nieb Berety
+        "CommandPoints": 50,
+        "armor": "Infantry_armor_reference",
+        "availability": [0, 0, 4, 3],
+        "max_speed": 26,
+        "strength": 12,
+         "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "LDR_SOV_Unit",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_Standard",
+                "UNITE_Naval_Rifle_CMD_POL",
+                "Unite",
+            ],
+        },
+        "GameName": {
+            "display": "NIEBIESKIE BERETY",
+        },
+        "TransportedTexture": "UseInGame_Transport_REGINF",
+        "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "UnitRole": "infantry",
+        "SpecialtiesList": {
+            "overwrite_all": [
+                'leader_sov',
+                '_resolute',
+                'infantry_equip_medium',
+            ],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_kbk_AK": 12,
+                },
+                "replace": [("RocketInf_RPG76_Komar", "RocketInf_RPG7VL", "RocketInf_RPG76_Komar", "RocketInf_RPG7VL")]
+            },
+            "Salves": {
+                "RocketInf_RPG76_Komar": 9,
+            },
+        },
+        "selector_tactic": "(3, 5)",
+        "selector_tactic_obj": "03_05",
+        "remove_zone_capture": None,
+    },
+
+    "Naval_Engineers_CMD_POL": {  # NIEB. BERETY SAPERZY Dow.
+        "CommandPoints": 25,
+        "armor": "Infantry_armor_reference",
+        "availability": [0, 0, 7, 5],
+        "max_speed": 26,
+        "strength": 6,
+        "GameName": {
+            "display": "NIEB. BERETY SAPERZY",
+        },
+         "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "LDR_SOV_Unit",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_Spec_Attaque",
+                "UNITE_Naval_Engineers_CMD_POL",
+                "Unite",
+            ],
+        },
+        "TransportedTexture": "UseInGame_Transport_assault",
+        "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
+        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+        "UnitRole": "engineer",
+        "SpecialtiesList": {
+            "overwrite_all": [
+                "leader_sov",
+                "_choc",
+                "_resolute",
+                "infantry_equip_light",
+            ],
+        },
+       "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_kbk_AK": 6,
+                },
+            },
+        },
+        "selector_tactic": "(3, 3)",
+        "selector_tactic_obj": "03_03",
+        "remove_zone_capture": None,
+    },
+
     "Engineers_POL": {  # Saperzy
         "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
@@ -759,6 +856,103 @@ pol_unit_edits = {
         # 1x PKM
         # RPO Rys x6
     },
+
+    "Engineers_paras_POL": {  # Desant. Saperzy
+        "CommandPoints": 40,
+        "availability": [0, 6, 4, 0],
+        "armor": "Infantry_armor_reference",
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                 "replace": [
+                    ("FM_kbk_AKM", "FM_kbk_AK"),
+                ],
+                "insert": [(3, "RocketInf_RPG7")],
+                "insert_edits": {
+                    3: {
+                        "turret_edits": {
+                            "YulBoneOrdinal": 4,
+                        },
+                        "AmmoBoxIndex": 3,
+                        "HandheldEquipmentKey": "'WeaponAlternative_4'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_4'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_4'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_4"],
+                    },
+                },
+            },
+            "Salves": {
+                "insert": [(3, 6)],
+                "FM_kbk_AK": 9,
+                "Grenade_Satchel_Charge": 6,
+            },
+        },
+        "GameName": {
+            "display": "SPADO. SAPERZY",
+        },
+    },
+    
+    "Engineers_paras_Flam_POL": {  # Desant. Saperzy (LPO-50)
+        "CommandPoints": 50,
+        "availability": [0, 6, 4, 0],
+        "armor": "Infantry_armor_reference",
+        "max_speed": 20,
+        "strength": 9,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "animate": {
+                    "flamethrower_LPO": False,
+                },
+                "replace": [
+                    ("FM_kbk_AKM", "FM_kbk_AK")
+                ],
+                "quantity": {
+                    "FM_kbk_AK": 7,
+                    "flamethrower_LPO": 2,
+                },
+            },
+            "Salves": {
+                "FM_kbk_AK": 9,
+                "flamethrower_LPO": 30,
+            },
+        },
+        "GameName": {
+            "display": "SPADO. SAPERZY [FLAM]",
+        },
+    },
+
+    "Naval_Engineers_POL": {  # Nieb. Berety Saperzy
+        "CommandPoints": 40,
+        "availability": [0, 6, 4, 0],
+        "armor": "Infantry_armor_reference",
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+    },
+
+    "Naval_Engineers_Flam_POL": {  # Nieb. Berety Saperzy (LPO-50)
+        "CommandPoints": 55,
+        "availability": [0, 6, 4, 0],
+        "armor": "Infantry_armor_reference",
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "FM_kbk_AK": 9,
+                "flamethrower_LPO": 30,
+            },
+        },
+        "UpgradeFromUnit": "Naval_Engineers_POL",
+    },
     
     "Groupe_AT_POL": {  # Druzyna PPanc
         "CommandPoints": 30,
@@ -786,6 +980,7 @@ pol_unit_edits = {
                 "RocketInf_RPG7VL": 5,
             },
         },
+        "UpgradeFromUnit": "MotRifles_SVD_POL",
         # 7x kbk AKM
         # 2x RPG-7VL x6 (panzerjager with VL instead of VR)
     },
@@ -905,7 +1100,7 @@ pol_unit_edits = {
         # RPG-7VM x6
     },
     
-     "Para_POL": {  # Spadochroniarze
+    "Para_POL": {  # Spadochroniarze
         "CommandPoints": 40,
         "availability": [0, 6, 4, 0],
         "armor": "Infantry_armor_reference",
@@ -976,74 +1171,17 @@ pol_unit_edits = {
         # RPG-7VM x6
     },
     
-    "Engineers_paras_POL": {  # Desant. Saperzy
-        "CommandPoints": 40,
-        "availability": [0, 6, 4, 0],
+    "Naval_Rifle_POL": {  # Nibesky Bertey
+        "CommandPoints": 45,
+        "availability": [10, 7, 0, 0],
         "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                 "replace": [
-                    ("FM_kbk_AKM", "FM_kbk_AK"),
-                ],
-                "insert": [(3, "RocketInf_RPG7")],
-                "insert_edits": {
-                    3: {
-                        "turret_edits": {
-                            "YulBoneOrdinal": 4,
-                        },
-                        "AmmoBoxIndex": 3,
-                        "HandheldEquipmentKey": "'WeaponAlternative_4'",
-                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_4'",
-                        "WeaponIgnoredPropertyName": "'WeaponIgnored_4'",
-                        "WeaponShootDataPropertyName": ["WeaponShootData_0_4"],
-                    },
-                },
-            },
-            "Salves": {
-                "insert": [(3, 6)],
-                "FM_kbk_AK": 9,
-                "Grenade_Satchel_Charge": 6,
-            },
-        },
-        "GameName": {
-            "display": "SPADO. SAPERZY",
-        },
-    },
-    
-    "Engineers_paras_Flam_POL": {  # Desant. Saperzy (LPO-50)
-        "CommandPoints": 50,
-        "availability": [0, 6, 4, 0],
-        "armor": "Infantry_armor_reference",
-        "max_speed": 20,
-        "strength": 9,
-        "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_heavy'"],
-        },
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                "animate": {
-                    "flamethrower_LPO": False,
-                },
-                "replace": [
-                    ("FM_kbk_AKM", "FM_kbk_AK")
-                ],
-                "quantity": {
-                    "FM_kbk_AK": 7,
-                    "flamethrower_LPO": 2,
-                },
-            },
-            "Salves": {
-                "FM_kbk_AK": 9,
-                "flamethrower_LPO": 30,
-            },
-        },
-        "GameName": {
-            "display": "SPADO. SAPERZY [FLAM]",
-        },
+        # 10x kbk AKM
+        # 2x PKM
+        # RPG-7VM x6
     },
     
     "Commandos_POL": {  # Komandosi

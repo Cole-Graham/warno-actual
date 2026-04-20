@@ -5172,13 +5172,18 @@ usa_unit_edits = {
                 "AgilityRadiusGRU": 1200,
             },
         },
-        "availability": [0, 2, 0, 0],
+        "availability": [0, 2, 0, 1],
     },
     
     "F14A_Tomcat_AA2_US": {
         "CommandPoints": 340,
         "ECM": -0.35,
         "availability": [0, 2, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "AA_AIM54_Phoenix": 2,
+            },
+        },
     },
     
     "F15C_Eagle_AA2_US": {
