@@ -752,7 +752,7 @@ USA_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "NATO",
         "Nation": "US",
-        "UpgradeFromUnit": "M60A1_RISE_Passive_CMD2_US",
+        "UpgradeFromUnit": "M60A1_RISE_Passive_USMC_CMD2_US",
     },
 
     ("M60A1_RISE_Passive_CMD_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -844,6 +844,7 @@ USA_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "NATO",
         "Nation": "US",
+        "UpgradeFromUnit": "M60A1_RISE_Passive_CMD2_US",
     },
 
     ("M551A1_TTS_Sheridan_CMD_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys

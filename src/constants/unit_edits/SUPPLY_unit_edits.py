@@ -368,6 +368,8 @@ supply_unit_edits = {
             "add_specs": ["'_transport2'"],
         },
     },
+
+    "LAV_L_US": {},
     
     "Unimog_S_404_RFA": {
         "tow_only": True,
@@ -511,10 +513,11 @@ supply_unit_edits = {
                 "cards": 1,
             },
         },
+        "UpgradeFromUnit": "LAV_L_US",
     }, 
     
     # mechanized supply
-    "M113A1G_supply_RFA": {},
+    "M113A1G_supply_RFA": {},  
     
     "M113A2_supply_US": {
         "UpgradeFromUnit": "M1038_Humvee_supply_US",

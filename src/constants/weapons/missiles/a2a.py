@@ -498,6 +498,29 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "MaxAccelerationGRU": 2826,
         },
     },
+
+    ("AA_AIM7P_Sparrow", "A2A", None, False): { # Stat clone of AIM-7M for now
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 55,
+                "Moving": 55,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 1.4,
+                "TimeBetweenTwoFx": 1.4,
+                "MaximumRangeAirplaneGRU": 8400,
+                "ProjectileSpeedGRU": 4946,
+                "MaxAccelerationGRU": 2826,
+                "TimeBetweenTwoSalvos": 1.4,
+                "AimingTime": 0.3,
+                "SupplyCost": 50.0,
+            },
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 4946,
+            "MaxAccelerationGRU": 2826,
+        },
+    },
     
     ("AA_AIM54_Phoenix", "A2A", None, False): {
         "Ammunition": {

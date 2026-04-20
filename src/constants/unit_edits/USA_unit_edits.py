@@ -5629,6 +5629,21 @@ usa_unit_edits = {
         "UpgradeFromUnit": "F16E_AA_US",
     },
 
+    "F18_Hornet_AA_US": {  # 4x AIM-7P, 2x AIM-9M
+        "CommandPoints": 245,
+        "availability": [0, 2, 0, 1],
+    },
+
+    "F18_Hornet_AA2_US": {  # 2x AIM-7M, 6x AIM-9M 
+        "CommandPoints": 240,
+        "availability": [0, 2, 0, 1],
+    },
+
+    "F18_Hornet_SEAD_US": {  # 2x AIM-7M, 2x AIM-9M, 2x AGM-88 HARM
+        "CommandPoints": 260,
+        "availability": [0, 2, 0, 1],
+    },
+
     "A10_Thunderbolt_II_US": {  # 8x mk.82, 2x AIM-9M
         "CommandPoints": 220,
         "max_speed": 500,
