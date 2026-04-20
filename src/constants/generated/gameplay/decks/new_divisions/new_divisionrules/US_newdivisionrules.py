@@ -66,7 +66,7 @@ US_airborne_newdivisionrules = {
         ("M274_Mule_ITOW_US", 1, [0, 8, 6, 0], [None, "CH47_Chinook_US"]),
     ],
     "recon": [
-        ("DeltaForce_US", 2, [0, 0, 4, 3], ["M998_Humvee_Delta_US", "UH60A_Black_Hawk_US"]),
+        ("DeltaForce_US", 2, [0, 0, 4, 3], ["M998_Humvee_Delta_US", "UH60A_Black_Hawk_US"]),  # I'd either cut these guys from this or Moto
         ("LRRP_US", 1, [0, 0, 4, 3], ["M998_Humvee_US", "M1025_Humvee_scout_US", "UH60A_Black_Hawk_US"]),
         ("Pathfinder_NG_US", 1, [0, 0, 5, 4], ["M998_Humvee_US", "M1025_Humvee_scout_US", "M1025_Humvee_AGL_US", "UH1H_Huey_US", "UH60A_Black_Hawk_US"]),
         ("Scout_Aero_US", 2, [0, 4, 3, 0], ["M998_Humvee_US", "UH60A_Black_Hawk_US", "CH47_Chinook_US"]),
@@ -325,6 +325,10 @@ US_marine_newdivisionrules = {
         ("Scout_LAI_USMC_US", 2, [8, 6, 0, 0], ["LAV_25_US"]),
         ("Scout_USMC_US", 2, [8, 6, 0, 0], ["M998_Humvee_US", "M1025_Humvee_scout_USMC_US", "M1025_Humvee_AGL_USMC_US", "UH1N_TwinHuey_US", "UH1N_TwinHuey_RKT_US"]),
         ("ForceRecon_USMC_US", 2, [0, 0, 4, 3], ["M998_Humvee_US", "M1025_Humvee_scout_USMC_US", "M1025_Humvee_AGL_USMC_US", "UH1N_TwinHuey_US", "UH1N_TwinHuey_RKT_US"]),
+        ("M151A2_FAV_USMC_US", 1, [0, 0, 10, 7], [None, "CH53_Sea_Stallion_US"]),
+        ("LAV_MEWSS_US", 1, [0, 6, 0, 0]),
+        ("UH1N_TwinHuey_reco_US", 1, [0, 4, 3, 0]),
+        ("OV10_Bronco_US", 1, [0, 3, 2, 0]),
     ],
     "aa": [
         ("DCA_I_Hawk_USMC_US", 2, [5, 4, 0, 0], ["M35_trans_US"]),
@@ -566,7 +570,7 @@ US_motorized_newdivisionrules = {
         ("M901_TOW_US", 1, [10, 7, 0, 0]),
     ],
     "recon": [
-        ("DeltaForce_US", 2, [0, 0, 4, 3], ["M998_Humvee_Delta_US", "UH60A_Black_Hawk_US"]),
+        ("DeltaForce_US", 2, [0, 0, 4, 3], ["M998_Humvee_Delta_US", "UH60A_Black_Hawk_US"]), # I'd either cut these guys from this or Airborne
         ("LRRP_US", 1, [0, 0, 4, 3], ["M998_Humvee_US", "M1025_Humvee_scout_US", "M1025_Humvee_AGL_nonPara_US", "UH60A_Black_Hawk_US"]),
         ("Scout_US", 2, [8, 6, 0, 0], ["M151_MUTT_trans_US", "M151A2_scout_US", "CUCV_AGL_US", "M113_ACAV_US"]),
         ("LRRP_FOLT_US", 1, [0, 6, 4, 0], ["M151_MUTT_trans_US", "M151A2_scout_US", "FAV_trans_US"]),

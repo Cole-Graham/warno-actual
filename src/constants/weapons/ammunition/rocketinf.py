@@ -462,7 +462,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketInf_SMAW_RCL_83mm_HE", "recoilless", None, False): {
         "Ammunition": {
             "hit_roll": {
-                "Idling": 55,
+                "Idling": 60,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 875,
@@ -481,7 +481,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 60,
             },
             "parent_membr": {
-                "MaximumRangeGRU": 700,
+                "MaximumRangeGRU": 875,
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 10.0,
             },

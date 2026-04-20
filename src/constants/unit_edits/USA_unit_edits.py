@@ -3613,6 +3613,16 @@ usa_unit_edits = {
         "availability": [8, 6, 0, 0],
     },
 
+    "M151A2_FAV_USMC_US": {
+        "CommandPoints": 35,
+        "availability": [0, 0, 10, 7],
+    },
+
+    "LAV_MEWSS_US": { # Jammer + Sigint + VG optics + Smoke
+        "CommandPoints": 25,
+        "availability": [0, 6, 0, 0],
+    },
+
     "LAV_25_M1047_US_US": {
         "CommandPoints": 70,
         "availability": [0, 4, 3, 0],
@@ -3627,7 +3637,7 @@ usa_unit_edits = {
         },
     },
     
-    "LAV_25_US": { # Transport
+    "LAV_25_US": { # Transport (Marines)
         "CommandPoints": 65,
         "WeaponDescriptor": {
             "Salves": {
@@ -3810,6 +3820,11 @@ usa_unit_edits = {
         "ECM": -0.1,
     },
 
+    "UH1N_TwinHuey_reco_US": {
+        "CommandPoints": 85,
+        "availability": [0, 4, 3, 0], # Maybe this should be 0/3/2/0?
+    },
+
     "EH60A_EW_US": {
         "Divisions": {
             "add": ["US_3rd_Arm"],
@@ -3841,6 +3856,22 @@ usa_unit_edits = {
         "CommandPoints": 220,
         "availability": [0, 2, 0, 0],
         "UpgradeFromUnit": "A37B_Dragonfly_US",
+    },
+
+    "OV10_Bronco_US": {
+        "CommandPoints": 130,
+        "availability": [0, 3, 2, 0],
+        "UpgradeFromUnit": "OA10A_US",
+        "WeaponDescriptor": {
+            "Salves": {
+                "RocketAir_Zuni_1272mm_avion_salvolength8": 2,
+            },
+            "equipmentchanges": {
+                "replace": [
+                    ("RocketAir_Zuni_1272mm_salvolength4", "RocketAir_Zuni_1272mm_avion_salvolength8")
+                ],
+            },
+        },
     },
 
     "Airborne_Scout_US": {
