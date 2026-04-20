@@ -25,6 +25,7 @@ us_new_divs = {
             US_airborne_newdivisionrules,
             US_armored_newdivisionrules,
             US_global_newdivisionrules,
+            US_marine_newdivisionrules,
             US_mechanized_newdivisionrules,
             US_motorized_newdivisionrules,
         ],

@@ -55,6 +55,25 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("AA_R73_Vympel", "A2A", None, False): { # 27
         "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_a2a_tbagru",
+            },
+            "hit_roll": {
+                "Idling": 70,
+                "Moving": 70,
+            },
+            "parent_membr": {
+                "AimingTime": 0.3,
+                "SupplyCost": 40.0,
+            },
+        },
+    },
+
+    ("AA_R73_Vympel_HAGRU", "A2A", "AA_R73_Vympel", True): { # 27
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_a2a_hagru",
+            },
             "hit_roll": {
                 "Idling": 70,
                 "Moving": 70,
@@ -68,6 +87,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("AA_R60M_Vympel", "A2A", None, False): {
         "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_a2a_tbagru",
+            },
             "hit_roll": {
                 "Idling": 60,
                 "Moving": 60,
@@ -77,10 +99,52 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "SupplyCost": 30.0,
             },
         },
+        "WeaponDescriptor": {
+            "SalvoLengths": [2, 1],
+        },
+    },
+
+    ("AA_R60M_Vympel_HAGRU", "A2A", "AA_R60M_Vympel", True): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_a2a_hagru",
+            },
+            "hit_roll": {
+                "Idling": 60,
+                "Moving": 60,
+            },
+            "parent_membr": {
+                "AimingTime": 0.3,
+                "SupplyCost": 30.0,
+            },
+        },
+        "WeaponDescriptor": {
+            "SalvoLengths": [2, 1],
+        },
     },
     
-    ("AA_R60M_Vympel_Helo", "A2A", "AA_R60M_Vympel", True): {
+    ("AA_R60M_Vympel_helo", "A2A", None, False): {
         "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_a2a_tbagru",
+            },
+            "hit_roll": {
+                "Idling": 60,
+                "Moving": 60,
+            },
+            "parent_membr": {
+                "MaximumRangeHelicopterGRU": 2625,
+                "AimingTime": 0.3,
+                "SupplyCost": 30.0,
+            },
+        },
+    },
+    
+    ("AA_R60M_Vympel_helo_HAGRU", "A2A", "AA_R60M_Vympel_helo", True): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_a2a_hagru",
+            },
             "hit_roll": {
                 "Idling": 60,
                 "Moving": 60,
@@ -371,6 +435,26 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("AA_R13M", "A2A", None, False): {
         "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_a2a_tbagru",
+            },
+            "hit_roll": {
+                "Idling": 50,
+                "Moving": 50,
+            },
+            "parent_membr": {
+                "PhysicalDamages": 4.0,
+                "AimingTime": 0.3,
+                "SupplyCost": 25.0,
+            },
+        },
+    },
+
+    ("AA_R13M_HAGRU", "A2A", "AA_R13M", True): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_a2a_hagru",
+            },
             "hit_roll": {
                 "Idling": 50,
                 "Moving": 50,
@@ -397,6 +481,25 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("AA_AIM9M_Sidewinder", "A2A", None, False): { # 7
         "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_a2a_tbagru",
+            },
+            "hit_roll": {
+                "Idling": 70,
+                "Moving": 70,
+            },
+            "parent_membr": {
+                "AimingTime": 0.3,
+                "SupplyCost": 40.0,
+            },
+        },
+    },
+
+    ("AA_AIM9M_Sidewinder_HAGRU", "A2A", "AA_AIM9M_Sidewinder", True): { # 7
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_a2a_hagru",
+            },
             "hit_roll": {
                 "Idling": 70,
                 "Moving": 70,
@@ -410,6 +513,25 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("AA_AIM9L_Sidewinder_upgrade", "A2A", None, False): { # 7
         "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_a2a_tbagru",
+            },
+            "hit_roll": {
+                "Idling": 65,
+                "Moving": 65,
+            },
+            "parent_membr": {
+                "AimingTime": 0.3,
+                "SupplyCost": 40.0,
+            },
+        },
+    },
+
+    ("AA_AIM9L_Sidewinder_upgrade_HAGRU", "A2A", "AA_AIM9L_Sidewinder_upgrade", True): { # 7
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_a2a_hagru",
+            },
             "hit_roll": {
                 "Idling": 65,
                 "Moving": 65,
@@ -423,6 +545,25 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("AA_AIM9L_Sidewinder", "A2A", None, False): { # 6
         "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_a2a_tbagru",
+            },
+            "hit_roll": {
+                "Idling": 60,
+                "Moving": 60,
+            },
+            "parent_membr": {
+                "AimingTime": 0.3,
+                "SupplyCost": 30.0,
+            },
+        },
+    },
+
+    ("AA_AIM9L_Sidewinder_HAGRU", "A2A", "AA_AIM9L_Sidewinder", True): { # 6
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_a2a_hagru",
+            },
             "hit_roll": {
                 "Idling": 60,
                 "Moving": 60,
@@ -436,6 +577,24 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("AA_AIM9L_Sidewinder_Helo", "A2A", "AA_AIM9L_Sidewinder", True): {
         "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_a2a_tbagru",
+            },
+            "hit_roll": {
+                "Idling": 60,
+                "Moving": 60,
+            },
+            "parent_membr": {
+                "MaximumRangeHelicopterGRU": 2625,
+            },
+        },
+    },
+    
+    ("AA_AIM9L_Sidewinder_Helo_HAGRU", "A2A", "AA_AIM9L_Sidewinder", True): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_a2a_hagru",
+            },
             "hit_roll": {
                 "Idling": 60,
                 "Moving": 60,
@@ -448,6 +607,25 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("AA_AIM9J_Sidewinder", "A2A", None, False): { # 5
         "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_a2a_tbagru",
+            },
+            "hit_roll": {
+                "Idling": 50,
+                "Moving": 50,
+            },
+            "parent_membr": {
+                "AimingTime": 0.3,
+                "SupplyCost": 25.0,
+            },
+        },
+    },
+
+    ("AA_AIM9J_Sidewinder_HAGRU", "A2A", "AA_AIM9J_Sidewinder", True): { # 5
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_a2a_hagru",
+            },
             "hit_roll": {
                 "Idling": 50,
                 "Moving": 50,
@@ -621,6 +799,24 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("AA_R550_Magic_II", "A2A", None, False): {
         "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_a2a_tbagru",
+            },
+            "hit_roll": {
+                "Idling": 60,
+                "Moving": 60,
+            },
+            "parent_membr": {
+                "AimingTime": 0.3,
+            },
+        },
+    },
+
+    ("AA_R550_Magic_II_HAGRU", "A2A", "AA_R550_Magic_II", True): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_a2a_hagru",
+            },
             "hit_roll": {
                 "Idling": 60,
                 "Moving": 60,

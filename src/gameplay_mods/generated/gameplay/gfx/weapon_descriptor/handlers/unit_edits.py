@@ -5,7 +5,50 @@ from src import ndf
 from src.constants.unit_edits import load_unit_edits
 from src.constants.weapons import LIGHT_AT_AMMO
 from src.constants.weapons import ammunitions as ammos
-from src.constants.weapons.missiles.aa import missiles
+from src.constants.weapons import missiles
+
+# Damage families that mark a missile as the "anti-helo" half of a HAGRU pair.
+# Any ammo declaring one of these families gets a paired ``_HAGRU`` variant
+# attached when the parent weapon is mounted on a unit.
+TBAGRU_FAMILIES = frozenset({
+    "DamageFamily_manpad_tbagru",
+    "DamageFamily_sam_tbagru",
+    "DamageFamily_a2a_tbagru",
+})
+
+
+def _effective_helo_range(base_ammo_name: str, ammo_name: str, ammo_db: Dict[str, Any]) -> int | None:
+    """Return effective MaximumRangeHelicopterGRU for ``base_ammo_name``.
+
+    Prefers the ``missiles`` dict override (``Ammunition.parent_membr``), then
+    falls back to the vanilla value in ``ammo_db['ammo_properties']``. Tries
+    both the bare ammo namespace and the salvo-suffixed namespace because
+    vanilla often only exposes the salvo variant (e.g. ``Ammo_SAM_Strela10_x4``).
+    Returns ``None`` if no value can be resolved.
+    """
+    for (name, _, _, _), data in missiles.items():
+        if name != base_ammo_name or not isinstance(data, dict):
+            continue
+        ammunition = data.get("Ammunition") if isinstance(data, dict) else None
+        if not isinstance(ammunition, dict):
+            break
+        parent = ammunition.get("parent_membr") or {}
+        if "MaximumRangeHelicopterGRU" in parent:
+            try:
+                return int(parent["MaximumRangeHelicopterGRU"])
+            except (TypeError, ValueError):
+                break
+        break
+
+    ammo_props = ammo_db.get("ammo_properties", {})
+    for key in (f"Ammo_{base_ammo_name}", f"Ammo_{ammo_name}"):
+        entry = ammo_props.get(key)
+        if entry and entry.get("MaximumRangeHelicopterGRU") is not None:
+            try:
+                return int(entry["MaximumRangeHelicopterGRU"])
+            except (TypeError, ValueError):
+                continue
+    return None
 
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import (
@@ -24,6 +67,13 @@ def unit_edits_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> No
     unit_db = game_db["unit_data"]
     weapon_db = game_db["weapons"]
 
+    # Load early so the HAGRU attachment loop can see ``equipmentchanges.replace``
+    # before any per-unit edits have been applied. Without this, the HAGRU
+    # clone would point at the vanilla ammo's HAGRU pair while the original
+    # mount gets rewritten to a different ammo (e.g. ``AA_R60M_Vympel`` ->
+    # ``AA_R60M_Vympel_helo``) later in the same function.
+    unit_edits = load_unit_edits()
+
     # Add HAGRU missiles to MANPAD turrets
     for weapon_descr in source_path:
         if not weapon_descr.namespace.startswith("WeaponDescriptor_"):
@@ -33,6 +83,23 @@ def unit_edits_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> No
             continue
 
         weapon_data = weapon_db[weapon_descr.namespace]
+
+        # Build per-unit ``equipmentchanges.replace`` map so the HAGRU clone
+        # can be retargeted to the replacement ammo's HAGRU pair when the
+        # original mount will be swapped out. Only ``replace`` (2-tuple or
+        # 4-tuple form) is consulted; other equipment-change kinds don't
+        # rewrite an existing mount's ``Ammunition`` reference.
+        unit_short_name = weapon_descr.namespace.removeprefix("WeaponDescriptor_")
+        unit_replace_map: Dict[str, str] = {}
+        unit_edit_entry = unit_edits.get(unit_short_name, {})
+        wd_block = unit_edit_entry.get("WeaponDescriptor", {}) if isinstance(unit_edit_entry, dict) else {}
+        equip_changes = wd_block.get("equipmentchanges", {}) if isinstance(wd_block, dict) else {}
+        for entry in equip_changes.get("replace", []):
+            if not isinstance(entry, (list, tuple)) or len(entry) < 2:
+                continue
+            old_w, new_w = entry[0], entry[1]
+            if isinstance(old_w, str) and isinstance(new_w, str):
+                unit_replace_map[old_w] = new_w
 
         # Process each turret
         for turret_idx, turret_data in weapon_data["turrets"].items():
@@ -49,6 +116,14 @@ def unit_edits_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> No
                 base_ammo_name = re.sub(r"_x\d+$", "", ammo_name)
                 base_ammo_name = re.sub(r"_salvolength\d+$", "", base_ammo_name)
 
+                # If this unit replaces the vanilla ammo with a different one,
+                # follow the replacement so the HAGRU pair we attach matches
+                # the post-edit original mount. The TBAGRU family check below
+                # then naturally skips attachment when the replacement isn't
+                # part of a HAGRU pair.
+                if base_ammo_name in unit_replace_map:
+                    base_ammo_name = unit_replace_map[base_ammo_name]
+
                 # Extract salvo length from ammo name: _salvolength{N} or _x{N}
                 salvo_match = re.search(r"_salvolength(\d+)$", ammo_name)
                 if salvo_match:
@@ -56,13 +131,24 @@ def unit_edits_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> No
                 else:
                     salvo_length = weapon_info.get("regex_quantity", 1)
 
-                # Check if this is a TBAGRU missile
+                # Check if this is a TBAGRU missile (manpad / SAM / A2A all use the same HAGRU split)
                 for (missile_name, _, _, _), missile_data in missiles.items():
                     if (
                         missile_name == base_ammo_name
                         and "Ammunition" in missile_data
-                        and missile_data["Ammunition"].get("Arme", {}).get("Family") == "DamageFamily_manpad_tbagru"
+                        and missile_data["Ammunition"].get("Arme", {}).get("Family") in TBAGRU_FAMILIES
                     ):
+                        # Skip attachment when the base ammo can't engage helicopters
+                        # (effective MaximumRangeHelicopterGRU == 0). In that case the
+                        # ``_HAGRU`` descriptor was never created in the ammunition
+                        # source and the original is already plane-only.
+                        helo_range = _effective_helo_range(base_ammo_name, ammo_name, ammo_db)
+                        if helo_range == 0:
+                            logger.debug(
+                                f"Skipping HAGRU attachment for {base_ammo_name} on "
+                                f"{weapon_descr.namespace}: helo range is 0",
+                            )
+                            break
 
                         # Find the corresponding HAGRU missile to check its SalvoLengths
                         hagru_name = f"{base_ammo_name}_HAGRU"
@@ -72,9 +158,24 @@ def unit_edits_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> No
                                 hagru_salvo_lengths = hagru_data["WeaponDescriptor"].get("SalvoLengths")
                                 break
 
-                        # Use salvo variant when: (salvo_length > 1) OR (HAGRU only has salvo variants, no base)
-                        use_salvo_variant = salvo_length > 1
-                        if not use_salvo_variant and hagru_salvo_lengths and 1 not in hagru_salvo_lengths:
+                        # Decide which HAGRU descriptor to reference based on what
+                        # actually exists in the ammunition source:
+                        #   * If HAGRU declares no SalvoLengths, only the base
+                        #     descriptor was created -> always use base.
+                        #   * If HAGRU declares SalvoLengths and the requested
+                        #     length matches, use that variant (or base when 1).
+                        #   * If HAGRU has SalvoLengths but the requested length
+                        #     isn't in them, fall back to the smallest declared
+                        #     salvo (preserves existing MANPAD HAGRU behaviour
+                        #     where the base mount is salvo_length=1 and HAGRU
+                        #     only ships salvo variants).
+                        if hagru_salvo_lengths is None:
+                            use_salvo_variant = False
+                        elif salvo_length in hagru_salvo_lengths:
+                            use_salvo_variant = salvo_length > 1
+                        elif 1 in hagru_salvo_lengths:
+                            use_salvo_variant = False
+                        else:
                             salvo_length = hagru_salvo_lengths[0]
                             use_salvo_variant = True
 
@@ -108,9 +209,8 @@ def unit_edits_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> No
 
     # vanilla_renames_weapondescriptor(source_path, ammo_db, weapon_db)
 
-    # Get edits and weapon data
-    unit_edits = load_unit_edits()
-
+    # ``unit_edits`` was loaded above so the HAGRU loop can see
+    # ``equipmentchanges.replace`` before per-unit edits run.
     for unit, edits in unit_edits.items():
         weapon_descr_name = f"WeaponDescriptor_{unit}"
         weapon_descr = source_path.by_namespace(weapon_descr_name, strict=False)

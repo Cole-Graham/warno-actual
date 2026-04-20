@@ -33,6 +33,10 @@ from src.constants.weapons import (
     PGB_BOMB_DAMAGE,
     MANPAD_HAGRU_DAMAGE,
     MANPAD_TBAGRU_DAMAGE,
+    SAM_HAGRU_DAMAGE,
+    SAM_TBAGRU_DAMAGE,
+    A2A_HAGRU_DAMAGE,
+    A2A_TBAGRU_DAMAGE,
     MISSILE_HE_BIGLY_DAMAGE,
     TWELVE_SEVEN_MM_DAMAGE,
     FOURTEEN_FIVE_MM_DAMAGE,
@@ -77,12 +81,16 @@ def edit_gen_gp_gfx_damageresistancefamilylist(source_path) -> None:
     pgb_bomb_family = f"DamageFamily_pgb_bomb is {i + 7}"
     manpad_hagru_family = f"DamageFamily_manpad_hagru is {i + 8}"
     manpad_tbagru_family = f"DamageFamily_manpad_tbagru is {i + 9}"
-    sa_intermediate_family = f"DamageFamily_sa_intermediate is {i + 10}"
-    sa_full_family = f"DamageFamily_sa_full is {i + 11}"
-    twelve_seven_mm_family = f"DamageFamily_12_7 is {i + 12}"
-    fourteen_five_mm_family = f"DamageFamily_14_5 is {i + 13}"
-    missile_he_bigly_family = f"DamageFamily_missile_he_bigly is {i + 14}"
-    sead_missile_wa_family = f"DamageFamily_sead_missile_wa is {i + 15}"
+    sam_hagru_family = f"DamageFamily_sam_hagru is {i + 10}"
+    sam_tbagru_family = f"DamageFamily_sam_tbagru is {i + 11}"
+    a2a_hagru_family = f"DamageFamily_a2a_hagru is {i + 12}"
+    a2a_tbagru_family = f"DamageFamily_a2a_tbagru is {i + 13}"
+    sa_intermediate_family = f"DamageFamily_sa_intermediate is {i + 14}"
+    sa_full_family = f"DamageFamily_sa_full is {i + 15}"
+    twelve_seven_mm_family = f"DamageFamily_12_7 is {i + 16}"
+    fourteen_five_mm_family = f"DamageFamily_14_5 is {i + 17}"
+    missile_he_bigly_family = f"DamageFamily_missile_he_bigly is {i + 18}"
+    sead_missile_wa_family = f"DamageFamily_sead_missile_wa is {i + 19}"
 
     source_path.insert(j + 1, infanterie_wa_family)
     source_path.add(sniper_family)
@@ -92,6 +100,10 @@ def edit_gen_gp_gfx_damageresistancefamilylist(source_path) -> None:
     source_path.add(pgb_bomb_family)
     source_path.add(manpad_hagru_family)
     source_path.add(manpad_tbagru_family)
+    source_path.add(sam_hagru_family)
+    source_path.add(sam_tbagru_family)
+    source_path.add(a2a_hagru_family)
+    source_path.add(a2a_tbagru_family)
     source_path.add(sa_intermediate_family)
     source_path.add(sa_full_family)
     source_path.add(twelve_seven_mm_family)
@@ -110,6 +122,10 @@ def edit_gen_gp_gfx_damageresistancefamilylist(source_path) -> None:
         f"{pgb_bomb_family}\n"
         f"{manpad_hagru_family}\n"
         f"{manpad_tbagru_family}\n"
+        f"{sam_hagru_family}\n"
+        f"{sam_tbagru_family}\n"
+        f"{a2a_hagru_family}\n"
+        f"{a2a_tbagru_family}\n"
         f"{sa_intermediate_family}\n"
         f"{sa_full_family}\n"
         f"{twelve_seven_mm_family}\n"
@@ -138,6 +154,10 @@ def edit_gen_gp_gfx_damageresistancefamilylistimpl(source_path) -> None:
             '"DamageFamily_pgb_bomb"',
             '"DamageFamily_manpad_hagru"',
             '"DamageFamily_manpad_tbagru"',
+            '"DamageFamily_sam_hagru"',
+            '"DamageFamily_sam_tbagru"',
+            '"DamageFamily_a2a_hagru"',
+            '"DamageFamily_a2a_tbagru"',
             '"DamageFamily_sa_intermediate"',
             '"DamageFamily_sa_full"',
             '"DamageFamily_12_7"',
@@ -179,6 +199,10 @@ def _add_damage_resistance_values(source_path) -> None:
         "pgb_bomb": ("(DamageFamily_pgb_bomb, 1)"),
         "manpad_hagru": ("(DamageFamily_manpad_hagru, 1)"),
         "manpad_tbagru": ("(DamageFamily_manpad_tbagru, 1)"),
+        "sam_hagru": ("(DamageFamily_sam_hagru, 1)"),
+        "sam_tbagru": ("(DamageFamily_sam_tbagru, 1)"),
+        "a2a_hagru": ("(DamageFamily_a2a_hagru, 1)"),
+        "a2a_tbagru": ("(DamageFamily_a2a_tbagru, 1)"),
         "sa_intermediate": ("(DamageFamily_sa_intermediate, 13)"),
         "sa_full": ("(DamageFamily_sa_full, 13)"),
         "12_7": ("(DamageFamily_12_7, 1)"),
@@ -229,6 +253,10 @@ def _add_damage_resistance_values(source_path) -> None:
         str(PGB_BOMB_DAMAGE),
         str(MANPAD_HAGRU_DAMAGE),
         str(MANPAD_TBAGRU_DAMAGE),
+        str(SAM_HAGRU_DAMAGE),
+        str(SAM_TBAGRU_DAMAGE),
+        str(A2A_HAGRU_DAMAGE),
+        str(A2A_TBAGRU_DAMAGE),
         *[str(SA_INTERMEDIATE_DAMAGE_RATIOS + list(sa_damage)) for sa_damage in SA_INF_ARMOR_DAMAGE_RATIOS],
         *[str(SA_FULL_DAMAGE_RATIOS + list(sa_damage)) for sa_damage in SA_INF_ARMOR_DAMAGE_RATIOS],
         str(TWELVE_SEVEN_MM_DAMAGE),

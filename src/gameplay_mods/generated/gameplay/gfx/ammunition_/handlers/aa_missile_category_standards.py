@@ -3,24 +3,57 @@
 from typing import Any, Dict
 
 from src.constants.weapons.standards import (
-    A2A_STANDARDS,
     AA_ADDITIONAL_SUPPRESS_PER_LOST_PHYSICAL,
-    MANPAD_STANDARDS,
-    SAM_STANDARDS,
+    AA_CATEGORIES,
+    AA_HAGRU_STANDARDS,
 )
 
+# Categories whose non-HAGRU originals can degenerate into "anti-plane only"
+# when their ``MaximumRangeHelicopterGRU`` is 0 (e.g. AA_R98MT, AA_Skyflash).
+# MANPAD is excluded because every MANPAD original engages helicopters.
+_AA_PLANE_ONLY_CHECK_CATEGORIES = frozenset({"A2A", "SAM"})
 
-def apply_category_aa_missile_standards(descr: Any, category: str) -> None:
-    """Set ``DistanceToTarget`` on ``HitRollRuleDescriptor`` for categories ``A2A``, ``SAM`` and ``MANPAD``."""
-    if category == "A2A":
-        hit_roll = A2A_STANDARDS["hit_roll"]
-    elif category == "SAM":
-        hit_roll = SAM_STANDARDS["hit_roll"]
-    elif category == "MANPAD":
-        hit_roll = MANPAD_STANDARDS["hit_roll"]
-    else:
+
+def _read_max_range_helicopter_gru(descr: Any) -> int | None:
+    """Return ``MaximumRangeHelicopterGRU`` as int, or ``None`` if absent/unparseable."""
+    membr = descr.v.by_m("MaximumRangeHelicopterGRU", False)
+    if membr is None:
+        return None
+    try:
+        return int(str(membr.v))
+    except (TypeError, ValueError):
+        return None
+
+
+def apply_category_aa_missile_standards(descr: Any, category: str, weapon_name: str) -> None:
+    """Apply AA missile category standards to ``HitRollRuleDescriptor``.
+
+    ``DistanceToTarget = False`` (no accuracy range scaling) is applied to
+    descriptors that only ever engage planes:
+      * ``_HAGRU`` variants (restricted to planes by damage family).
+      * Non-HAGRU SAM/A2A originals whose ``MaximumRangeHelicopterGRU`` is 0
+        (helicopter-incapable by range envelope, e.g. AA_R98MT).
+
+    All other AA missiles keep the vanilla default so range-scaled accuracy
+    still applies when engaging helicopters.
+
+    Note: this should be called *after* the per-missile dict edits have been
+    applied to the descriptor, so that any dict overrides of
+    ``MaximumRangeHelicopterGRU`` are reflected in the check.
+    """
+    if category not in AA_CATEGORIES:
         return
 
+    is_hagru = weapon_name.endswith("_HAGRU")
+
+    if not is_hagru:
+        if category not in _AA_PLANE_ONLY_CHECK_CATEGORIES:
+            return
+        helo_range = _read_max_range_helicopter_gru(descr)
+        if helo_range is None or helo_range > 0:
+            return
+
+    hit_roll = AA_HAGRU_STANDARDS.get("hit_roll", {})
     if "DistanceToTarget" not in hit_roll:
         return
 

@@ -47,3 +47,10 @@ def edit_gameplay_constantes_weaponconstantes(source_path) -> None:
     # Add manpad_tbagru damage to blindages to ignore
     blindages_to_ignore.add("(DamageFamily_manpad_tbagru, [ResistanceFamily_avion])")
     logger.info("Added manpad_tbagru to blindages to ignore")
+
+    # SAM and A2A hagru/tbagru variants follow the same plane/helo split as MANPADs
+    blindages_to_ignore.add("(DamageFamily_sam_hagru, [ResistanceFamily_helico])")
+    blindages_to_ignore.add("(DamageFamily_sam_tbagru, [ResistanceFamily_avion])")
+    blindages_to_ignore.add("(DamageFamily_a2a_hagru, [ResistanceFamily_helico])")
+    blindages_to_ignore.add("(DamageFamily_a2a_tbagru, [ResistanceFamily_avion])")
+    logger.info("Added sam/a2a hagru and tbagru to blindages to ignore")

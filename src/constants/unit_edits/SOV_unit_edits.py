@@ -5227,7 +5227,7 @@ sov_unit_edits = {
                 "AA_R60M_Vympel": 4,
             },
             "equipmentchanges": {
-                "replace": [("AA_R60M_Vympel", "AA_R60M_Vympel_Helo")],
+                "replace": [("AA_R60M_Vympel", "AA_R60M_Vympel_helo")],
             },
             "turrets": {
                 1: {

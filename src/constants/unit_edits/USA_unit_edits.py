@@ -158,7 +158,6 @@ usa_unit_edits = {
         "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "token": "CPCIJQLHML",
             "display": "FIRETEAM",
         },
         "TagSet": {
@@ -394,7 +393,6 @@ usa_unit_edits = {
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "RANGERS",
-            "token": "WPUCULQQND",
         },
         "TagSet": {
             "overwrite_all": [
@@ -483,7 +481,6 @@ usa_unit_edits = {
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "AB ENGINEERS",
-            "token": "LRTQFDCCCB",
         },
         "TagSet": {
             "overwrite_all": [
@@ -534,7 +531,6 @@ usa_unit_edits = {
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "AIRBORNE",
-            "token": "BHVJUDTEVR",
         },
         "TagSet": {
             "overwrite_all": [
@@ -588,7 +584,6 @@ usa_unit_edits = {
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "AERO-RIFLES",
-            "token": "TVWIKAOSVP",
         },
         "TagSet": {
             "overwrite_all": [
@@ -630,7 +625,6 @@ usa_unit_edits = {
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "AERO-FIRETEAM",
-            "token": "MHGSSCNBFO",
         },
         "TagSet": {
             "overwrite_all": [
@@ -677,7 +671,6 @@ usa_unit_edits = {
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "AERO-ENGINEERS",
-            "token": "OWQFQTLBJN",
         },
         "TagSet": {
             "overwrite_all": [
@@ -720,7 +713,6 @@ usa_unit_edits = {
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "GREEN BERETS",
-            "token": "KFNXNJOXZS",
         },
         "TagSet": {
             "overwrite_all": [
@@ -769,7 +761,6 @@ usa_unit_edits = {
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "MP LEADER",
-            "token": "LLUPBPNLWT",
         },
         "TagSet": {
             "overwrite_all": [
@@ -807,8 +798,7 @@ usa_unit_edits = {
         "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "token": "MLEKXIJBWL",
-            "display": "USMC Riflemen",
+            "display": "USMC RIFLEMEN",
         },
         "TagSet": {
             "overwrite_all": [
@@ -825,9 +815,6 @@ usa_unit_edits = {
         },
         "strength": 6,
         "TransportedTexture": "UseInGame_Transport_REGINF",
-        # "SortingOrder": 20075,
-        # "UnitAttackValue": 1,
-        # "UnitDefenseValue": 16,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
         "UnitRole": "infantry",
@@ -852,8 +839,6 @@ usa_unit_edits = {
                 "RocketInf_M72A3_LAW_66mm": 6,
             },
         },
-        "selector_tactic": "(2, 5)",
-        "selector_tactic_obj": "02_05",
         "remove_zone_capture": None,
     },
 
@@ -862,7 +847,6 @@ usa_unit_edits = {
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "USMC ENGINEERS",
-            "token": "HTVVEUGFKE",
         },
         "TagSet": {
             "overwrite_all": [
@@ -879,9 +863,6 @@ usa_unit_edits = {
             ],
         },
         "TransportedTexture": "UseInGame_Transport_assault",
-        # "SortingOrder": 20040,
-        # "UnitAttackValue": 1,
-        # "UnitDefenseValue": 16,
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
         "UnitRole": "engineer",
@@ -894,8 +875,15 @@ usa_unit_edits = {
             ],
         },
         "WeaponDescriptor": {
-            "Salves": {
-                "RocketInf_M72A3_LAW_66mm": 6,
+            "equipmentchanges": {
+                "replace": [("MMG_M60E3_7_62mm", "MMG_WA_M60E3_7_62mm")],
+                "quantity": {
+                    "FM_M16": 9,
+                    "MMG_WA_M60E3_7_62mm": 3,
+                },
+                "animate": {
+                    "MMG_WA_M60E3_7_62mm": False,
+                },
             },
         },
         "MenuIconTexture": "Texture_RTS_H_assault",
@@ -1388,6 +1376,9 @@ usa_unit_edits = {
 
     "Rifles_USMC_LAW_US": {
         "CommandPoints": 45,
+        "GameName": {
+            "display": "USMC RIFLEMEN [LAW]",
+        },
         "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
@@ -1406,6 +1397,9 @@ usa_unit_edits = {
 
     "Rifles_USMC_AT4_US": {
         "CommandPoints": 55,
+        "GameName": {
+            "display": "USMC RIFLEMEN [AT4]",
+        },
         "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
@@ -1421,6 +1415,9 @@ usa_unit_edits = {
 
     "Rifles_USMC_Dragon_US": {
         "CommandPoints": 60,
+        "GameName": {
+            "display": "USMC RIFLEMEN [DRAGON]",
+        },
         "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 20,
@@ -1470,7 +1467,7 @@ usa_unit_edits = {
                 ],
                 "quantity": {
                     "FM_M16": 4,
-                    "MMG_M60E3_7_62mm": 3,
+                    "MMG_WA_M60E3_7_62mm": 3,
                 },
             },
         },
@@ -1489,14 +1486,23 @@ usa_unit_edits = {
         },
     },
 
-    "AeroRifles_USMC_US": {  # AERO-RIFLES USMC
-        "CommandPoints": 35,
+    "AeroRifles_USMC_US": {  # USMC AERO-RIFLEMEN
+        "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
+        "strength": 6,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_M16": 4,
+                },
+            },
+        },
+        
     },
 
     "Rifles_Cavalry_US": {  # DISMOUNT TROOPERS WIP
@@ -2174,7 +2180,8 @@ usa_unit_edits = {
             },
             "Salves": {
                 "M16A2_Carbine": 11,
-                "Grenade_Satchel_Charge": 5,
+                "RocketInf_AT4_83mm": 5,
+                "Grenade_Satchel_Charge": 4,
             },
         },
     },

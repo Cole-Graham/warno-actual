@@ -250,11 +250,23 @@ def build_ammo_properties(parse_ammo_source) -> Dict[str, Any]:
         if phys_dmg_membr is not None:
             physical_damages = _parse_numeric_member_value(phys_dmg_membr.v)
 
+        helo_range_membr = ammo_descr.v.by_m("MaximumRangeHelicopterGRU", False)
+        max_range_helicopter_gru: Any = None
+        if helo_range_membr is not None:
+            max_range_helicopter_gru = _parse_numeric_member_value(helo_range_membr.v)
+
+        plane_range_membr = ammo_descr.v.by_m("MaximumRangeAirplaneGRU", False)
+        max_range_airplane_gru: Any = None
+        if plane_range_membr is not None:
+            max_range_airplane_gru = _parse_numeric_member_value(plane_range_membr.v)
+
         ammo_properties[ammo_descr.n] = {
             "MinMaxCategory": min_max_category,
             "RadiusSplashPhysicalDamagesGRU": radius_splash,
             "HasDeploymentTime": has_deployment_time,
             "PhysicalDamages": physical_damages,
+            "MaximumRangeHelicopterGRU": max_range_helicopter_gru,
+            "MaximumRangeAirplaneGRU": max_range_airplane_gru,
         }
 
     return ammo_properties

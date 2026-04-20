@@ -60,6 +60,26 @@ def edit_gen_gp_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]
             if data is None:
                 continue
 
+            # Skip _HAGRU is_new entries when their donor (the base ammo) has
+            # no helicopter engagement range. The HAGRU split is meaningful only
+            # when the original *can* engage helicopters; when helo range is 0
+            # the original is already plane-only and no anti-plane variant is
+            # needed (the original itself gets DistanceToTarget=False via the
+            # category standard).
+            if (
+                is_new
+                and weapon_name.endswith("_HAGRU")
+                and donor
+                and category in ("A2A", "SAM", "MANPAD")
+            ):
+                donor_helo_range = _lookup_donor_helo_range(source_path, donor, data)
+                if donor_helo_range == 0:
+                    logger.info(
+                        f"Skipping {weapon_name}: donor {donor} has "
+                        f"MaximumRangeHelicopterGRU=0 (plane-only base)",
+                    )
+                    continue
+
             logger.info(f"Processing missile {weapon_name} (is_new={is_new})")
             try:
                 ammo_data = data.get("Ammunition", None)
@@ -80,13 +100,16 @@ def edit_gen_gp_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]
                     logger.error(f"Failed getting descriptor for {weapon_name}: {str(e)}")
                     continue
 
-                # Category standards first, then ``missiles`` dict edits
+                # Category standards first, then ``missiles`` dict edits.
+                # The AA standard runs *after* dict edits so it can read the
+                # final ``MaximumRangeHelicopterGRU`` (incl. dict overrides) to
+                # decide whether to disable range-scaled accuracy.
                 try:
                     apply_category_sead_standards(base_descr, category)
-                    apply_category_aa_missile_standards(base_descr, category)
                     apply_aa_suppress_standard(base_descr, weapon_name, game_db, logger)
                     if ammo_data:
                         _apply_missile_edits(base_descr, data, ammo_data, is_new)
+                    apply_category_aa_missile_standards(base_descr, category, weapon_name)
                     logger.debug(f"Applied edits to {weapon_name}")
                 except Exception as e:
                     logger.error(f"Failed applying edits to {weapon_name}: {str(e)}")
@@ -134,6 +157,46 @@ def edit_gen_gp_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]
     except Exception as e:
         logger.error(f"Fatal error in edit_missiles: {str(e)}")
         raise
+
+
+def _lookup_donor_helo_range(source_path: Any, donor: str, data: Dict) -> int | None:
+    """Return the donor descriptor's ``MaximumRangeHelicopterGRU`` as int.
+
+    Tries the same namespace resolution as ``_create_new_descriptor``: looks
+    for salvo-length variants when configured, then falls back to the bare
+    ``Ammo_{donor}`` namespace, then plain ``donor``. Returns ``None`` if the
+    donor descriptor or its member can't be resolved.
+    """
+    donor_descr = None
+    if "WeaponDescriptor" in data and "SalvoLengths" in data["WeaponDescriptor"]:
+        for (name, _, _, _), missile_data in missiles.items():
+            if name == donor and "WeaponDescriptor" in missile_data:
+                if "SalvoLengths" in missile_data["WeaponDescriptor"]:
+                    for salvo_length in missile_data["WeaponDescriptor"]["SalvoLengths"]:
+                        if salvo_length == 1:
+                            donor_descr = source_path.by_n(f"Ammo_{donor}")
+                        else:
+                            donor_descr = source_path.by_n(
+                                f"Ammo_{donor}_salvolength{salvo_length}",
+                            )
+                        if donor_descr:
+                            break
+                break
+
+    if not donor_descr:
+        donor_descr = source_path.by_n(f"Ammo_{donor}")
+        if not donor_descr:
+            donor_descr = source_path.by_n(donor)
+    if not donor_descr:
+        return None
+
+    membr = donor_descr.v.by_m("MaximumRangeHelicopterGRU", False)
+    if membr is None:
+        return None
+    try:
+        return int(str(membr.v))
+    except (TypeError, ValueError):
+        return None
 
 
 def _create_new_descriptor(source_path, weapon_name, donor, data):
@@ -276,13 +339,14 @@ def _handle_salvo_variants(
                 if existing:
                     logger.debug(f"Found existing variant {namespace}")
 
-                    # Category standards first, then dict edits (same order as base)
+                    # Category standards first, then dict edits (same order as base);
+                    # AA standard runs after edits to see final MaximumRangeHelicopterGRU.
                     apply_category_sead_standards(existing, category)
-                    apply_category_aa_missile_standards(existing, category)
                     if game_db is not None:
                         apply_aa_suppress_standard(existing, weapon_name, game_db, logger)
                     if "Ammunition" in data:
                         _apply_missile_edits(existing, data, data["Ammunition"], is_new)
+                    apply_category_aa_missile_standards(existing, category, weapon_name)
 
                     # Then update salvo-specific values
                     if base_cost is not None:
@@ -297,13 +361,14 @@ def _handle_salvo_variants(
                     variant.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
                     variant.namespace = namespace
 
-                    # Category standards first, then dict edits (same order as base)
+                    # Category standards first, then dict edits (same order as base);
+                    # AA standard runs after edits to see final MaximumRangeHelicopterGRU.
                     apply_category_sead_standards(variant, category)
-                    apply_category_aa_missile_standards(variant, category)
                     if game_db is not None:
                         apply_aa_suppress_standard(variant, weapon_name, game_db, logger)
                     if "Ammunition" in data:
                         _apply_missile_edits(variant, data, data["Ammunition"], is_new)
+                    apply_category_aa_missile_standards(variant, category, weapon_name)
 
                     # Then apply salvo-specific values
                     if base_cost is not None:
