@@ -1,7 +1,9 @@
 """RDA depiction edits."""
 
 from .Fallschirmjager_CMD_DDR import fallschirmjager_cmd_ddr
+from .Fallschirmjager_DDR import fallschirmjager_ddr
 from .Fallschirmjager_FalseFlag_CMD_DDR import fallschirmjager_falseflag_cmd_ddr
+from .Fallschirmjager_Metys_DDR import fallschirmjager_metys_ddr
 from .Grenzer_Flam_DDR import grenzer_flam_ddr
 from .Grenzer_Mot_DDR import grenzer_mot_ddr
 from .KdA_CMD_DDR import kda_cmd_ddr
@@ -17,7 +19,9 @@ from .Volkspolizei_DDR import volkspolizei_ddr
 
 __all__ = [
     "fallschirmjager_cmd_ddr",
+    "fallschirmjager_ddr",
     "fallschirmjager_falseflag_cmd_ddr",
+    "fallschirmjager_metys_ddr",
     "grenzer_flam_ddr",
     "grenzer_mot_ddr",
     "kda_cmd_ddr",
@@ -31,4 +35,3 @@ __all__ = [
     "volkspolizei_cmd_ddr",
     "volkspolizei_ddr",
 ]
-    

@@ -395,9 +395,13 @@ rfa_unit_edits = {
                 "quantity": {
                     "PM_uzi": 10,
                 },
-                "replace": [
-                    ("FM_G3KA4", "PM_uzi", "FM_G3KA4", "PM_uzi"),
-                ],
+                "replace": {
+                    "FM_G3KA4": {
+                        "new_weapon": "PM_uzi",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "turrets": {
                 2: {
@@ -772,11 +776,14 @@ rfa_unit_edits = {
                 "animate": {
                     "MMG_inf__MG3_7_62mm": False,
                 },
-                "replace": [
-                    (
-                        "RocketInf_PzF_44", "RocketInf_PzF_3",
-                    ),
-                ],
+                "replace": {
+                    "RocketInf_PzF_44": {
+                        "new_weapon": "RocketInf_PzF_3",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                        "old_new_effect": ("RocketInf_PzF_44", "RocketInf_PzF_3"),
+                    },
+                },
                 "quantity": {
                     "FM_G3KA4": 7,
                     "MMG_inf__MG3_7_62mm": 2,
@@ -842,7 +849,13 @@ rfa_unit_edits = {
                 "quantity": {
                     "Sniper_G3A3ZF_double": 2,
                 },
-                "replace": [("Sniper_G3A3ZF", "Sniper_G3A3ZF_double")],
+                "replace": {
+                    "Sniper_G3A3ZF": {
+                        "new_weapon": "Sniper_G3A3ZF_double",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -1599,12 +1612,13 @@ rfa_unit_edits = {
         "CommandPoints": 60,
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    (
-                        "ATGM_MILAN_IFV", "ATGM_MILAN_2_IFV",
-                        "ATGM_MILAN_2_IFV", "ATGM_MILAN_2_IFV"
-                    ),
-                ],
+                "replace": {
+                    "ATGM_MILAN_IFV": {
+                        "new_weapon": "ATGM_MILAN_2_IFV",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
             "Salves": {
                 "AutoCanon_AP_20mm_MK_20_Rh_202": 48,
@@ -1701,11 +1715,13 @@ rfa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    (
-                        "RocketInf_PzF_3", "RocketInf_PzF_3T",
-                    ),
-                ],
+                "replace": {
+                    "RocketInf_PzF_3": {
+                        "new_weapon": "RocketInf_PzF_3T",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "RocketInf_PzF_3T": 6,
@@ -1923,41 +1939,29 @@ rfa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("PM_uzi", "PM_uzi_noreflex")],
+                "replace": {
+                    "PM_uzi": {
+                        "new_weapon": "PM_uzi_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
     
     "Bofors_40mm_RFA": {
-        "CommandPoints": 60,
-        "TagSet": {
-            "add_tags": ['"AA_radar"'],
-        },
+        "CommandPoints": 30,
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_1_canon_Bofors_40mm_radar": 1,
+                "DCA_1_canon_Bofors_40mm": 1,
             },
-            "equipmentchanges": {
-                "replace": [("DCA_1_canon_Bofors_40mm", "DCA_1_canon_Bofors_40mm_radar")],
-            },
-        },
-        "optics": {
-            "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 10600.0,
-            },
-            "TimeBetweenEachIdentifyRoll": 0.5,
-        },
-        "SpecialtiesList": {
-            "add_specs": ["'verygood_airoptics'"],
         },
     },
 
@@ -1980,7 +1984,13 @@ rfa_unit_edits = {
                 "DCA_1_canon_Bofors_upgrade_40mm_autoloader_radar": 1,
             },
             "equipmentchanges": {
-                "replace": [("DCA_1_canon_Bofors_upgrade_40mm_autoloader", "DCA_1_canon_Bofors_upgrade_40mm_autoloader_radar")],
+                "replace": {
+                    "DCA_1_canon_Bofors_upgrade_40mm_autoloader": {
+                        "new_weapon": "DCA_1_canon_Bofors_upgrade_40mm_autoloader_radar",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
         "optics": {
@@ -2199,10 +2209,18 @@ rfa_unit_edits = {
         "availability": [0, 5, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    ("RocketAir_SNEB_68mm_salvolength18", "RocketAir_SNEB_68mm_salvolength36"),
-                    ("RocketAir_SNEB_68mm_salvolength18", "RocketAir_SNEB_68mm_salvolength36"),
-                ],
+                "replace": {
+                    "RocketAir_SNEB_68mm_salvolength18": {
+                        "new_weapon": "RocketAir_SNEB_68mm_salvolength36",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                    "RocketAir_SNEB_68mm_salvolength18": {
+                        "new_weapon": "RocketAir_SNEB_68mm_salvolength36",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "RocketAir_SNEB_68mm_salvolength36": (1, True),
@@ -2306,7 +2324,13 @@ rfa_unit_edits = {
                 "Bomb_GBU_12_salvolength2": 1,
             },
             "equipmentchanges": {
-                "replace": [("Bomb_GBU_12", "Bomb_GBU_12_salvolength2")],
+                "replace": {
+                    "Bomb_GBU_12": {
+                        "new_weapon": "Bomb_GBU_12_salvolength2",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "optics": {
@@ -2336,7 +2360,13 @@ rfa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("RocketAir_Zuni_1272mm_salvolength8", "RocketAir_Zuni_1272mm_avion_salvolength8")],
+                "replace": {
+                    "RocketAir_Zuni_1272mm_salvolength8": {
+                        "new_weapon": "RocketAir_Zuni_1272mm_avion_salvolength8",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -2370,7 +2400,13 @@ rfa_unit_edits = {
         "availability": [0, 5, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("RocketAir_SNEB_68mm_salvolength18", "RocketAir_SNEB_68mm_avion_salvolength18")],
+                "replace": {
+                    "RocketAir_SNEB_68mm_salvolength18": {
+                        "new_weapon": "RocketAir_SNEB_68mm_avion_salvolength18",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "RocketAir_SNEB_68mm_avion_salvolength18": (2, True),

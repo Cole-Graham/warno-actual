@@ -1,60 +1,32 @@
 """Functions for modifying DepictionInfantry.ndf"""
 
-from typing import Any, Dict, Optional
+from typing import Any
 
 from src import ndf
 from src.constants.new_units import NEW_DEPICTIONS, NEW_UNITS
-from src.constants.unit_edits import load_depiction_edits, load_unit_edits
+from src.constants.unit_edits import load_depiction_edits
+from src.gameplay_mods.generated.gameplay.gfx.depictions._apply import (
+    apply_infantry_section,
+    overwrite_skeleton_conditional_tags,
+)
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import is_obj_type, strip_quotes
+from src.utils.ndf_utils import is_obj_type
 
 logger = setup_logger(__name__)
 
-
-def _overwrite_skeleton_conditional_tags(
-    soldier_depiction_obj: Any,
-    tags_list: list[tuple[str, str]],
-) -> None:
-    """
-    Overwrite ConditionalTags on the skeletal animation operator with the given list.
-    Always replaces the full list; never insert or replace by index.
-    """
-    operators_member = soldier_depiction_obj.by_m("Operators")
-    skeletal_animation_operator = None
-    for obj in operators_member.v:
-        if is_obj_type(obj.v, "DepictionOperator_SkeletalAnimation2_Default"):
-            skeletal_animation_operator = obj.v
-            break
-    if skeletal_animation_operator is None:
-        logger.warning(
-            "Could not find DepictionOperator_SkeletalAnimation2_Default in Operators; "
-            "skeleton_tags not applied"
-        )
-        return
-    conditional_tags = skeletal_animation_operator.by_m("ConditionalTags", False)
-    if conditional_tags is None:
-        skeletal_animation_operator.add(ndf.convert("ConditionalTags = []"))
-        conditional_tags = skeletal_animation_operator.by_m("ConditionalTags")
-    # Overwrite: remove all existing, then add each from tags_list
-    for i in range(len(conditional_tags.v) - 1, -1, -1):
-        conditional_tags.v.remove(i)
-    for tag, mesh_alternative in tags_list:
-        conditional_tags.v.add(f"('{tag}', '{mesh_alternative}')")
+_NDF_FILE = "DepictionInfantry.ndf"
+_MESH_PREFIX = "$/GFX/DepictionResources/Modele_"
 
 
 def edit_gen_gp_gfx_depictioninfantry(source_path: Any, game_db: Any) -> None:
     """GameData/Generated/Gameplay/Gfx/Depictions/DepictionInfantry.ndf"""
-    
-    # TODO: Hastily written (albeit functional) code that needs rewriting and refactoring
-    _handle_new_units(source_path, game_db)
-    _handle_unit_edits(source_path, game_db)
-    _handle_complex_unit_edits(source_path)
-    
-def _handle_new_units(source_path: Any, game_db: Any) -> None:
-    """Handle new units for DepictionInfantry.ndf"""
-    
-    depiction_db = game_db["depiction_data"]
-    
+    _create_new_units(source_path)
+    _apply_depiction_edits(source_path)
+
+
+def _create_new_units(source_path: Any) -> None:
+    """Clone donor depiction objects for new infantry units and apply NEW_DEPICTIONS overrides."""
+
     for donor, edits in NEW_UNITS.items():
         donor_name = donor[0]
         if not edits.get("is_infantry", False) or edits.get("is_ground_vehicle", False):
@@ -62,171 +34,41 @@ def _handle_new_units(source_path: Any, game_db: Any) -> None:
 
         unit_name = edits["NewName"]
         depiction_key = unit_name.lower()
+        infantry_depiction_edits = (
+            NEW_DEPICTIONS.get(depiction_key, {}).get("DepictionInfantry_ndf", {}) or {}
+        )
 
-        # Clone all required objects
+        cloned_targets: dict[str, Any] = {}
 
-        # AllWeaponAlternatives_
+        # AllWeaponAlternatives_<unit>
         weaponalternatives_obj = source_path.by_namespace(f"AllWeaponAlternatives_{donor_name}").copy()
         weaponalternatives_obj.namespace = f"AllWeaponAlternatives_{unit_name}"
-        if depiction_key in NEW_DEPICTIONS:
-            infantry_depiction_edits = NEW_DEPICTIONS[depiction_key].get("DepictionInfantry_ndf", {})
-            if not infantry_depiction_edits:
-                continue
-            for (namespace, obj_type), depiction_edits in infantry_depiction_edits.items():
-                if namespace is None:
-                    continue
-                if namespace.startswith("AllWeaponAlternatives_"):
-                    weaponalternatives_obj.v = depiction_edits
-                    
-                    # rows_to_insert = []
-                    # for row_index, (edit_type, edit_list) in depiction_edits.items():
-                    #     if edit_type == "edit":
-                    #         for member, value in edit_list:
-                    #             if member == "SelectorId":
-                    #                 weaponalternatives_obj.v[row_index].v.by_m(member).v = f"['{value}']"
-                    #             if member == "MeshDescriptor" or member == "ReferenceMeshForSkeleton":
-                    #                 new_mesh = f"$/GFX/DepictionResources/Modele_{value}"
-                    #                 weaponalternatives_obj.v[row_index].v.by_m(member).v = new_mesh
-                    #                 logger.info(f"Changed {member} for {unit_name} to {new_mesh}")
-                    #     elif edit_type == "add":
-                    #         for member, value in edit_list:
-                    #             if member == "SelectorId":
-                    #                 selector_id = "['" + f"{value}" + "']"
-                    #             elif member == "MeshDescriptor":
-                    #                 mesh_member = "MeshDescriptor"
-                    #                 mesh_descriptor = f"$/GFX/DepictionResources/Modele_{value}"
-                    #             elif member == "ReferenceMeshForSkeleton":
-                    #                 mesh_member = "ReferenceMeshForSkeleton"
-                    #                 mesh_descriptor = f"$/GFX/DepictionResources/Modele_{value}"
-                    #         new_entry = (
-                    #             f"TDepictionVisual"
-                    #             f"("
-                    #             f"    SelectorId = {selector_id}"
-                    #             f"    {mesh_member} = {mesh_descriptor}"
-                    #             f")"
-                    #         )
-                    #         weaponalternatives_obj.v.insert(row_index, new_entry)
-                    #     elif edit_type == "insert":
-                    #         for member, value in edit_list:
-                    #             if member == "SelectorId":
-                    #                 selector_id = "['" + f"{value}" + "']"
-                    #             elif member == "MeshDescriptor":
-                    #                 mesh_member = "MeshDescriptor"
-                    #                 mesh_descriptor = f"$/GFX/DepictionResources/Modele_{value}"
-                    #             elif member == "ReferenceMeshForSkeleton":
-                    #                 mesh_member = "ReferenceMeshForSkeleton"
-                    #                 mesh_descriptor = f"$/GFX/DepictionResources/Modele_{value}"
-                    #         new_entry = (
-                    #             f"TDepictionVisual"
-                    #             f"("
-                    #             f"    SelectorId = {selector_id}"
-                    #             f"    {mesh_member} = {mesh_descriptor}"
-                    #             f")"
-                    #         )
-                    #         rows_to_insert.append((row_index, new_entry))
-                    # for row_index, new_entry in reversed(rows_to_insert):
-                    #     weaponalternatives_obj.v.insert(row_index, new_entry)
+        cloned_targets[weaponalternatives_obj.namespace] = weaponalternatives_obj
 
-        # AllWeaponSubDepiction_
+        # AllWeaponSubDepiction_<unit>
         weaponsubdepictions_obj = source_path.by_namespace(f"AllWeaponSubDepiction_{donor_name}").copy()
         weaponsubdepictions_obj.namespace = f"AllWeaponSubDepiction_{unit_name}"
         weaponsubdepictions_obj.v.by_member("Alternatives").v = f"AllWeaponAlternatives_{unit_name}"
-        operators = weaponsubdepictions_obj.v.by_member("Operators")
-        weapon_replacements = edits.get("WeaponDescriptor", {}).get("equipmentchanges", {}).get("replace", [])
-        for replacement in weapon_replacements:
-            # tuples with 4 values: old_ammo, new_ammo, old_fire_effect, new_fire_effect
-            if len(replacement) == 4:
-                old_fire_effect = replacement[2]
-                new_fire_effect = replacement[3]
-                for operator in operators.v:
-                    fire_effect_val = operator.v.by_m("FireEffectTag")
-                    fire_effect = fire_effect_val.v
-                    current_fire_effect = strip_quotes(fire_effect).replace("FireEffect_", "")
-                    if current_fire_effect == old_fire_effect:
-                        operator.v.by_m("FireEffectTag").v = f'"FireEffect_{new_fire_effect}"'
-                        logger.debug(f"Replaced fire effect {old_fire_effect} with {new_fire_effect}")
-        if depiction_key in NEW_DEPICTIONS:
-            infantry_depiction_edits = NEW_DEPICTIONS[depiction_key].get("DepictionInfantry_ndf", {})
-            if not infantry_depiction_edits:
-                continue
-            
-            # prevent variable shadowing from weapon_replacements loop
-            if "operator" in locals():
-                del operator
-            
-            for (namespace, obj_type), depiction_edits in infantry_depiction_edits.items():
-                if namespace is None:
-                    continue
-                if namespace.startswith("AllWeaponSubDepiction_"):
-                    operator_edits = depiction_edits.get("Operators", {})
-                    operators.v = operator_edits
-                    
-                    # rows_to_remove = []
-                    # rows_to_insert = []
-                    # operator_edits = depiction_edits.get("Operators", {})
-                    # for operator_index, (edit_type, edit_list) in operator_edits.items():
-                    #     if edit_type == "edit":
-                    #         for member, value in edit_list:
-                    #             if member == "FireEffectTag":
-                    #                 operator = operators.v[operator_index]
-                    #                 operator.v.by_m(member).v = f'"FireEffect_{value}"'
-                    #     elif edit_type == "remove":
-                    #         rows_to_remove.append(operator_index)
-                    #     elif edit_type == "add":
-                    #         for member, value in edit_list:
-                    #             if member == "FireEffectTag":
-                    #                 effect_tag = f'"FireEffect_{value}"'
-                    #             elif member == "WeaponShootDataPropertyName":
-                    #                 shoot_data_property = f'"WeaponShootData_{value}"'
-                    #         new_entry = (
-                    #             f"DepictionOperator_WeaponInstantFireInfantry"
-                    #             f"("
-                    #             f"    FireEffectTag = {effect_tag}"
-                    #             f"    WeaponShootDataPropertyName = {shoot_data_property}"
-                    #             f")"
-                    #         )
-                    #         operators.v.insert(operator_index, new_entry)
-                    # for row_index in reversed(rows_to_remove):
-                    #     operators.v.remove(row_index)
+        cloned_targets[weaponsubdepictions_obj.namespace] = weaponsubdepictions_obj
 
-        # AllWeaponSubDepictionBackpack_
+        # AllWeaponSubDepictionBackpack_<unit>
         weaponbackpack_obj = source_path.by_namespace(f"AllWeaponSubDepictionBackpack_{donor_name}").copy()
         weaponbackpack_obj.namespace = f"AllWeaponSubDepictionBackpack_{unit_name}"
         weaponbackpack_obj.v.by_member("Alternatives").v = f"AllWeaponAlternatives_{unit_name}"
+        cloned_targets[weaponbackpack_obj.namespace] = weaponbackpack_obj
 
-        # TacticDepiction_unit_Alternatives
+        # TacticDepiction_<unit>_Alternatives
         depictionalternatives_list = source_path.by_namespace(f"TacticDepiction_{donor_name}_Alternatives").copy()
         depictionalternatives_list.namespace = f"TacticDepiction_{unit_name}_Alternatives"
         mesh_name = depictionalternatives_list.v[0].v.by_m("MeshDescriptor").v.split("Modele_")[-1]
         if mesh_name != donor_name:
-            logger.debug(f"Mesh name for {donor_name} is not the same as the unit descriptor name, using "
-                         f"{mesh_name} instead.")
-        else:
-            mesh_name = donor_name
-        if depiction_key in NEW_DEPICTIONS:
-            infantry_depiction_edits = NEW_DEPICTIONS[depiction_key].get("DepictionInfantry_ndf", {})
-            if not infantry_depiction_edits:
-                continue
-            for (namespace, obj_type), depiction_edits in infantry_depiction_edits.items():
-                if namespace is None:
-                    continue
-                if namespace == f"TacticDepiction_{unit_name}_Alternatives":
-                    depictionalternatives_list.v = depiction_edits
-                    
-                    # rows_to_remove = []
-                    # for row_index, (edit_type, edit_list) in depiction_edits.items():
-                    #     if edit_type == "edit":
-                    #         for member, value in edit_list:
-                    #             if member == "MeshDescriptor" or member == "ReferenceMeshForSkeleton":
-                    #                 new_mesh = f"$/GFX/DepictionResources/Modele_{value}"
-                    #                 depictionalternatives_list.v[row_index].v.by_m(member).v = new_mesh
-                    #                 logger.info(f"Changed {member} for {unit_name} to {new_mesh}")
-                    #     elif edit_type == "remove":
-                    #         rows_to_remove.append(row_index)
-                    # for row_index in reversed(rows_to_remove):
-                    #     depictionalternatives_list.v.remove(row_index)
+            logger.debug(
+                f"Mesh name for {donor_name} is not the same as the unit descriptor name, "
+                f"using {mesh_name} instead."
+            )
+        cloned_targets[depictionalternatives_list.namespace] = depictionalternatives_list
 
-        # TacticDepiction_unit_Soldier
+        # TacticDepiction_<unit>_Soldier
         soldierdepiction_obj = source_path.by_namespace(f"TacticDepiction_{donor_name}_Soldier").copy()
         soldierdepiction_obj.namespace = f"TacticDepiction_{unit_name}_Soldier"
         soldierdepiction_obj.v.by_member("Selector").v = f"InfantrySelectorTactic_{edits['selector_tactic']}"
@@ -234,57 +76,53 @@ def _handle_new_units(source_path: Any, game_db: Any) -> None:
         soldierdepiction_obj.v.by_member("SubDepictions").v = (
             f"[AllWeaponSubDepiction_{unit_name}, AllWeaponSubDepictionBackpack_{unit_name}]"
         )
-        if depiction_key in NEW_DEPICTIONS:
-            infantry_depiction_edits = NEW_DEPICTIONS[depiction_key].get("DepictionInfantry_ndf", {})
-            if not infantry_depiction_edits:
-                continue
-            for (namespace, obj_type), depiction_edits in infantry_depiction_edits.items():
-                if namespace is None:
-                    continue
-                if namespace == f"TacticDepiction_{unit_name}_Soldier":
-                    operators_list = soldierdepiction_obj.v.by_member("Operators")
-                    rows_to_remove = []
-                    operator_edits = depiction_edits.get("Operators", {})
-                    for obj in operators_list.v:
-                        if is_obj_type(obj.v, "DepictionOperator_SkeletalAnimation2_Default"):
-                            if obj.v.by_m("ConditionalTags", False) is not None:
-                                conditional_tags = obj.v.by_m("ConditionalTags")
-                            else:
-                                obj.v.add(ndf.convert("ConditionalTags = []"))
-                                conditional_tags = obj.v.by_m("ConditionalTags")
-                    for operator_index, (edit_type, edit_list) in operator_edits.items():
-                        if edit_type == "edit":
-                            for conditional_tag, mesh_alternative in edit_list:
-                                conditional_tags.v.replace(
-                                    operator_index, f"('{conditional_tag}', '{mesh_alternative}')"
-                                )
-                        elif edit_type == "add":
-                            for conditional_tag, mesh_alternative in edit_list:
-                                conditional_tags.v.add(f"('{conditional_tag}', '{mesh_alternative}')")
-                        elif edit_type == "remove":
-                            rows_to_remove.append(operator_index)
-                    for operator_index in reversed(rows_to_remove):
-                        conditional_tags.v.remove(operator_index)
+        cloned_targets[soldierdepiction_obj.namespace] = soldierdepiction_obj
 
-        skeleton_tags = edits.get("WeaponDescriptor", {}).get("equipmentchanges", {}).get("skeleton_tags")
-        if skeleton_tags:
-            _overwrite_skeleton_conditional_tags(soldierdepiction_obj.v, skeleton_tags)
-            logger.info(f"Overwrote ConditionalTags for new unit {unit_name} with skeleton_tags")
-
-        # TacticDepiction_unit_Ghost
+        # TacticDepiction_<unit>_Ghost
         ghostdepiction_obj = source_path.by_namespace(f"TacticDepiction_{donor_name}_Ghost").copy()
         ghostdepiction_obj.namespace = f"TacticDepiction_{unit_name}_Ghost"
         ghostdepiction_obj.v.by_member("Selector").v = f"InfantrySelectorTactic_{edits['selector_tactic']}"
         ghostdepiction_obj.v.by_member("Alternatives").v = f"TacticDepiction_{unit_name}_Alternatives"
+        cloned_targets[ghostdepiction_obj.namespace] = ghostdepiction_obj
 
-        # Find insertion point
+        # Apply NEW_DEPICTIONS overrides for any keyed-by-namespace section.
+        for (namespace, obj_type), value in infantry_depiction_edits.items():
+            if obj_type == "TTransportedInfantryEntry":
+                continue
+            if not namespace:
+                logger.warning(
+                    f"NEW_DEPICTIONS for {unit_name}: section with empty namespace and "
+                    f"obj_type={obj_type} skipped"
+                )
+                continue
+            target = cloned_targets.get(namespace)
+            if target is None:
+                logger.warning(
+                    f"NEW_DEPICTIONS for {unit_name}: namespace '{namespace}' does not match any "
+                    f"cloned object; skipped"
+                )
+                continue
+            handled = apply_infantry_section(
+                source_path,
+                target,
+                namespace,
+                obj_type,
+                value,
+                unit_name=unit_name,
+            )
+            if not handled:
+                logger.warning(
+                    f"NEW_DEPICTIONS for {unit_name}: section "
+                    f"(namespace='{namespace}', obj_type={obj_type}) not handled"
+                )
+
+        # Find insertion point and add the cloned block.
         append_row = None
         for row_count, row in enumerate(source_path, start=0):
             if row.namespace == "InfantrySelectorTactic_00_01":
                 append_row = row_count
                 break
 
-        # Create comment and new entries
         comment_title = f"// *****************************[ {unit_name} ]*****************************\n"
         new_entries = (
             comment_title,
@@ -295,588 +133,162 @@ def _handle_new_units(source_path: Any, game_db: Any) -> None:
             soldierdepiction_obj,
             ghostdepiction_obj,
         )
-
-        # Insert new entries
         source_path.insert(append_row, new_entries)
         logger.info(f"Added depiction entries for {unit_name}")
 
-        # Update AllWeaponAlternatives mesh for weapon replacements (use donor's layout).
-        # Skip when unit has NEW_DEPICTIONS - mesh is already defined there; replace is for simple changes.
-        has_allweaponalternatives_override = False
-        if depiction_key in NEW_DEPICTIONS:
-            infantry_edits = NEW_DEPICTIONS[depiction_key].get("DepictionInfantry_ndf", {})
-            has_allweaponalternatives_override = any(
-                ns and ns.startswith("AllWeaponAlternatives_") for (ns, _) in infantry_edits
+        # Synthesize the transported infantry catalog entry from the donor's row.
+        _add_transported_infantry_entry(
+            source_path,
+            unit_name=unit_name,
+            donor_name=donor_name,
+            mesh_name=mesh_name,
+            edits=edits,
+            infantry_depiction_edits=infantry_depiction_edits,
+        )
+
+
+def _add_transported_infantry_entry(
+    source_path: Any,
+    *,
+    unit_name: str,
+    donor_name: str,
+    mesh_name: str,
+    edits: dict,
+    infantry_depiction_edits: dict,
+) -> None:
+    """Clone the donor's TTransportedInfantryEntry catalog row and customize it for ``unit_name``."""
+
+    transported_overrides = None
+    for (_namespace, obj_type), depiction_edits in infantry_depiction_edits.items():
+        if obj_type == "TTransportedInfantryEntry":
+            transported_overrides = depiction_edits
+            break
+
+    for row in source_path:
+        if not isinstance(row.v, ndf.model.Object) or row.v.type != "TTransportedInfantryCatalogEntries":
+            continue
+
+        entry_list = row.v.by_member("Entries").v
+        new_catalog_entry = None
+        for entry in entry_list:
+            if entry.v.by_member("Identifier").v == f'"{donor_name}"':
+                new_catalog_entry = entry.copy()
+                break
+
+        if new_catalog_entry is None:
+            logger.error(
+                f"Could not find donor TTransportedInfantryEntry for {donor_name} ({unit_name})"
             )
-        if not has_allweaponalternatives_override:
-            weapon_replacements = edits.get("WeaponDescriptor", {}).get("equipmentchanges", {}).get("replace", [])
-            for replacement in weapon_replacements:
-                if len(replacement) >= 2:
-                    old_weapon, new_weapon = replacement[0], replacement[1]
-                    _update_weapon_alt_mesh_on_replace(
-                        source_path,
-                        unit_name,
-                        old_weapon,
-                        new_weapon,
-                        depiction_db,
-                        depiction_lookup_unit=donor_name,
-                    )
+            return
 
-        # Add mimetic map entries
-        # source_path.by_n("InfantryMimetic").v.add((f"'{unit_name}'", f"TacticDepiction_{unit_name}_Soldier"))
-        # source_path.by_n("InfantryMimeticGhost").v.add((f"'{unit_name}'", f"TacticDepiction_{unit_name}_Ghost"))
+        if transported_overrides is not None and "Meshes" in transported_overrides:
+            new_meshes = ndf.model.List()
+            for mesh in transported_overrides["Meshes"]:
+                new_meshes.add(f"{_MESH_PREFIX}{mesh}")
+            new_catalog_entry.v.by_member("Meshes").v = new_meshes
+        else:
+            model_name = mesh_name if not edits.get("model", False) else edits["model"]
+            mesh_paths = [f"{_MESH_PREFIX}{model_name}"]
+            for i in range(2, edits.get("alternatives_count", 1) + 1):
+                mesh_paths.append(f"{_MESH_PREFIX}{model_name}_{i:02}")
+            new_meshes = ndf.model.List()
+            for mesh in mesh_paths:
+                new_meshes.add(mesh)
+            new_catalog_entry.v.by_member("Meshes").v = new_meshes
 
-        # Add transported infantry catalog entry
-        for row in source_path:
-            if not isinstance(row.v, ndf.model.Object) or row.v.type != "TTransportedInfantryCatalogEntries":
-                continue
+        unique_count = edits.get("unique_count", 0)
+        new_catalog_entry.v.by_member("Count").v = str(edits.get("alternatives_count", 1))
+        new_catalog_entry.v.by_member("Identifier").v = f'"{unit_name}"'
+        new_catalog_entry.v.by_member("UniqueCount").v = str(unique_count)
+        new_catalog_entry.v.by_m("UnitMimetic").v = f"TacticDepiction_{unit_name}_Soldier"
+        new_catalog_entry.v.by_m("UnitMimeticGhost").v = f"TacticDepiction_{unit_name}_Ghost"
 
-            entry_list = row.v.by_member("Entries").v
-            new_catalog_entry = None
-            for entry in entry_list:
-                if entry.v.by_member("Identifier").v == f'"{donor_name}"':
-                    new_catalog_entry = entry.copy()
-                    break
+        entry_list.add(new_catalog_entry)
+        logger.info(f"Added transported infantry catalog entry for {unit_name}")
+        return
 
-            # Update meshes list
-            if depiction_key in NEW_DEPICTIONS:
-                infantry_depiction_edits = NEW_DEPICTIONS[depiction_key].get("DepictionInfantry_ndf", {})
-                if not infantry_depiction_edits:
-                    continue
-                for (namespace, obj_type), depiction_edits in infantry_depiction_edits.items():
-                    if obj_type is None:
-                        continue
-                    if obj_type == "TTransportedInfantryEntry":
-                        new_mesh_list = []
-                        for mesh in depiction_edits["Meshes"]:
-                            new_mesh_list.append(f"$/GFX/DepictionResources/Modele_{mesh}")
-                        new_meshes = ndf.model.List()
-                        for mesh in new_mesh_list:
-                            new_meshes.add(mesh)
-                        new_catalog_entry.v.by_member("Meshes").v = new_meshes
-            else:
-                model_name = mesh_name if not edits.get("model", False) else edits["model"]
-                new_mesh_list = [f"$/GFX/DepictionResources/Modele_{model_name}"]
-                for i in range(2, edits.get("alternatives_count", 1) + 1):
-                    new_mesh_list.append(f"$/GFX/DepictionResources/Modele_{model_name}_{i:02}")
 
-                new_meshes = ndf.model.List()
-                for mesh in new_mesh_list:
-                    new_meshes.add(mesh)
-                new_catalog_entry.v.by_member("Meshes").v = new_meshes
+def _apply_depiction_edits(source_path: Any) -> None:
+    """Apply hand-authored depiction_edits to existing infantry units."""
 
-            unique_count = edits.get("unique_count", 0)
-            new_catalog_entry.v.by_member("Count").v = str(edits.get("alternatives_count", 1))
-            new_catalog_entry.v.by_member("Identifier").v = f'"{unit_name}"'
-            new_catalog_entry.v.by_member("UniqueCount").v = str(unique_count)
-            new_catalog_entry.v.by_m("UnitMimetic").v = f"TacticDepiction_{unit_name}_Soldier"
-            new_catalog_entry.v.by_m("UnitMimeticGhost").v = f"TacticDepiction_{unit_name}_Ghost"
-
-            entry_list.add(new_catalog_entry)
-            logger.info(f"Added transported infantry catalog entry for {unit_name}")
-            
-def _handle_complex_unit_edits(source_path: Any) -> None:
-    """Edit unit depictions in DepictionInfantry.ndf"""
-    ndf_file = "DepictionInfantry.ndf"
-
-    # Load all depiction edits
     depiction_edits = load_depiction_edits()
-
-    # Process each unit's edits
     for unit_name, unit_data in depiction_edits.items():
-        # Skip if this file isn't relevant for this unit
-        if ndf_file not in unit_data["valid_files"]:
+        if _NDF_FILE not in unit_data["valid_files"]:
             continue
 
         if "DepictionInfantry_ndf" not in unit_data:
-            logger.error(f"{ndf_file} is valid for {unit_name} but no edits found")
+            logger.error(f"{_NDF_FILE} is valid for {unit_name} but no edits found")
             continue
 
         unit_edits = unit_data["DepictionInfantry_ndf"]
-        logger.debug(f"Processing infantry edits for {unit_name}")
-        logger.debug(f"  Found {len(unit_edits)} edit groups for {unit_name}")
+        logger.debug(f"Processing infantry edits for {unit_name} ({len(unit_edits)} sections)")
 
-        for (namespace, obj_type), edits in unit_edits.items():
-            logger.debug(f"  Processing namespace: {namespace}, obj_type: {obj_type}")
-            if namespace and namespace.startswith("AllWeaponAlternatives_"):
-                weapon_alternatives = source_path.by_n(namespace)
-                if not weapon_alternatives:
-                    logger.error(f"Could not find weapon alternatives {namespace} for {unit_name}")
-                    continue
-
-                for row_index, (edit_type, edit_list) in edits.items():
-                    if edit_type == "edit":
-                        for member, value in edit_list:
-                            if member == "SelectorId":
-                                weapon_alternatives.v[row_index].v.by_m(member).v = f"['{value}']"
-                                logger.info(f"Changed SelectorId for {unit_name} to {value}")
-                            elif member == "MeshDescriptor" or member == "ReferenceMeshForSkeleton":
-                                new_mesh = f"$/GFX/DepictionResources/Modele_{value}"
-                                weapon_alternatives.v[row_index].v.by_m(member).v = new_mesh
-                                logger.info(f"Changed {member} for {unit_name} to {new_mesh}")
-                    elif edit_type == "insert":
-                        selector_id = None
-                        new_mesh = None
-                        for member, value in edit_list:
-                            if member == "SelectorId":
-                                selector_id = f"['{value}']"
-                            elif member == "MeshDescriptor" or member == "ReferenceMeshForSkeleton":
-                                new_mesh = f"$/GFX/DepictionResources/Modele_{value}"
-                        if selector_id and new_mesh:
-                            new_entry = (
-                                f"TDepictionVisual"
-                                f"("
-                                f"    SelectorId = {selector_id}"
-                                f"    MeshDescriptor = {new_mesh}"
-                                f")"
-                            )
-                            weapon_alternatives.v.insert(row_index, new_entry)
-                            logger.info(f"Inserted {member} for {unit_name} at index {row_index}")
-                        else:
-                            logger.error(f"Could not insert {member} for {unit_name} at index {row_index}")
-                    elif edit_type == "remove":
-                        weapon_alternatives.v.remove(row_index)
-                        logger.info(f"Removed {member} for {unit_name} at index {row_index}")
-
-            elif namespace and namespace.startswith("AllWeaponSubDepiction_"):
-                weapon_subdepictions = source_path.by_n(namespace)
-                if not weapon_subdepictions:
-                    logger.error(f"Could not find weapon subdepictions {namespace} for {unit_name}")
-                    continue
-
-                for member, member_edits in edits.items():
-                    if member == "Operators":
-                        operators_member = weapon_subdepictions.v.by_m(member)
-                        for index, (edit_type, edit_list) in member_edits.items():
-                            
-                            if edit_type == "edit":
-                                for submember, value in edit_list:
-                                    if submember == "FireEffectTag":
-                                        # Remove quotes if present
-                                        value = value.strip('"').strip("'")
-                                        new_value = f'"FireEffect_{value}"'
-                                        operators_member.v[index].v.by_m(submember).v = new_value
-                                    elif submember == "WeaponShootDataPropertyName":
-                                        operators_member.v[index].v.by_m(submember).v = '"' + value + '"'
-                            
-                            elif edit_type == "insert":
-                                effect_tag = None
-                                shoot_property = None
-                                for submember, value in edit_list:
-                                    if submember == "FireEffectTag":
-                                        # Remove quotes if present
-                                        value = value.strip('"').strip("'")
-                                        effect_tag = f'"FireEffect_{value}"'
-                                    elif submember == "WeaponShootDataPropertyName":
-                                        shoot_property = f'"{value}"'
-                                if effect_tag and shoot_property:
-                                    new_entry = (
-                                        f"DepictionOperator_WeaponInstantFireInfantry"
-                                        f"("
-                                        f"    FireEffectTag = {effect_tag}"
-                                        f"    WeaponShootDataPropertyName = {shoot_property}"
-                                        f")"
-                                    )
-                                    operators_member.v.insert(index, new_entry)
-                            
-                            elif edit_type == "remove":
-                                operators_member.v.remove(index)
-                                
-                            else:
-                                logger.warning(f"Unknown edit type {edit_type} for {unit_name} at index {index}")
-            
-            elif namespace and namespace.startswith("TacticDepiction_") and namespace.endswith("_Alternatives"):
-                tacticdepiction_alternatives = source_path.by_n(namespace)
-                if not tacticdepiction_alternatives:
-                    logger.error(f"Unit Edits: Could not find tactic depiction {namespace} for {unit_name}")
-                    continue
-                    
-                tacticdepiction_alternatives.v = edits
-
-            elif namespace and namespace.startswith("TacticDepiction_") and namespace.endswith("_Soldier"):
-                logger.debug(f"  Found TacticDepiction_*_Soldier match for {namespace}")
-                tacticdepiction_soldier = source_path.by_n(namespace)
-                if not tacticdepiction_soldier:
-                    logger.error(f"Could not find tactic depiction {namespace} for {unit_name}")
-                    continue
-                logger.debug(f"  Found tactic depiction object for {namespace}")
-
-                if "skeleton_tags" in edits:
-                    _overwrite_skeleton_conditional_tags(tacticdepiction_soldier.v, edits["skeleton_tags"])
-                    logger.info(f"Overwrote ConditionalTags for {unit_name} with skeleton_tags from depiction edits")
-                    continue
-
-                for member, member_edits in edits.items():
-                    if member == "Selector":
-                        
-                        # check if appropriate InfantrySelectorTactic exists, else create it
-                        template_infantry_selector_tactic = source_path.by_n(f"InfantrySelectorTactic_{member_edits}", False)
-                        if not template_infantry_selector_tactic:
-                            # member_edits = "{new_count}_{new_unique_count}"
-                            new_unique_count = f"{int(member_edits.split('_')[0]):02d}"
-                            new_count = int(member_edits.split("_")[1])
-                            new_template = (
-                                f"InfantrySelectorTactic_{member_edits} is TemplateInfantrySelectorTactic"
-                                f"("
-                                f"    Surrogates = TacticDepiction_{new_unique_count}_Surrogates"
-                                f"    UniqueCount = {new_count}"
-                                f")"
-                            )
-                            source_path.add(new_template)
-                        
-                        # update selector tactic
-                        tacticdepiction_soldier.v.by_m(member).v = f"InfantrySelectorTactic_{member_edits}"
-                        
-                    if member == "Operators":
-                        operators_member = tacticdepiction_soldier.v.by_m(member)
-                        
-                        # Find the DepictionOperator_SkeletalAnimation2_Default operator
-                        skeletal_animation_operator = None
-                        for obj in operators_member.v:
-                            if is_obj_type(obj.v, "DepictionOperator_SkeletalAnimation2_Default"):
-                                skeletal_animation_operator = obj.v
-                                break
-                        
-                        if skeletal_animation_operator is None:
-                            logger.error(f"Could not find DepictionOperator_SkeletalAnimation2_Default in Operators for {namespace}")
-                            continue
-                        
-                        # Need to check if ConditionalTags member exists, else create it
-                        conditional_tags = skeletal_animation_operator.by_m("ConditionalTags", False)
-                        if conditional_tags is None:
-                            logger.debug(f"Creating ConditionalTags for {namespace}")
-                            skeletal_animation_operator.add("ConditionalTags = []")
-                            conditional_tags = skeletal_animation_operator.by_m("ConditionalTags")
-                        
-                        logger.debug(f"  Processing {len(member_edits)} operator edits for {namespace}")
-                        for index, (edit_type, edit_list) in member_edits.items():
-                            logger.debug(f"    Edit at ConditionalTags index {index}: type={edit_type}, list={edit_list}")
-                            if edit_type == "edit":
-                                # Index refers to the position in ConditionalTags list
-                                if index < len(conditional_tags.v):
-                                    for new_tag, mesh_alternative in edit_list:
-                                        tag_tuple = conditional_tags.v[index]
-                                        tag_tuple.v = f"('{new_tag}', '{mesh_alternative}')"
-                                        logger.info(
-                                            f"Updated ConditionalTags[{index}] to ('{new_tag}', '{mesh_alternative}') for {unit_name}"
-                                        )
-                                else:
-                                    logger.warning(
-                                        f"Index {index} out of range for ConditionalTags (length {len(conditional_tags.v)}) "
-                                        f"for {unit_name}. Edit operation skipped."
-                                    )
-                            elif edit_type == "insert":
-                                logger.debug(f"    Processing insert operation at ConditionalTags index {index}")
-                                for new_tag, mesh_alternative in edit_list:
-                                    new_entry = (
-                                        f"('{new_tag}', '{mesh_alternative}')"
-                                    )
-                                    conditional_tags.v.insert(index, new_entry)
-                                    logger.info(f"Inserted tag {new_tag} for mesh {mesh_alternative} at ConditionalTags index {index} for {unit_name}")
-                            elif edit_type == "remove":
-                                conditional_tags.v.remove(index)
-                                logger.info(f"Removed tag at ConditionalTags index {index} for {unit_name}")
-                            else:
-                                logger.warning(f"    Unknown edit_type '{edit_type}' for {unit_name} at index {index}")
-                                            
-            elif namespace and namespace.startswith("TacticDepiction_") and namespace.endswith("_Ghost"):
-                tacticdepiction_ghost = source_path.by_n(namespace)
-                if not tacticdepiction_ghost:
-                    logger.error(f"Unit Edits: Could not find tactic depiction {namespace} for {unit_name}")
-                    continue
-                    
-                for member, member_edits in edits.items():
-                    if member == "Selector":
-                        tacticdepiction_ghost.v.by_m(member).v = f"InfantrySelectorTactic_{member_edits}"
-                        
-            elif obj_type == "TTransportedInfantryEntry":
-                transport_catalog = source_path.find_by_cond(
-                    lambda x: is_obj_type(x.v, "TTransportedInfantryCatalogEntries"))
-                if not transport_catalog:
-                    logger.error(f"Unit Edits: Could not find transport catalog")
-                    continue
-                
-                catalog_entries = transport_catalog.v.by_member("Entries").v
-                    
-                transportedinfantryentry = catalog_entries.find_by_cond(
-                    lambda x: x.v.by_member("Identifier").v == f'"{unit_name}"')
-                if not transportedinfantryentry:
-                    logger.error(f"Unit Edits: Could not find transported infantry entry {unit_name}")
-                    continue
-                    
-                for member, member_edits in edits.items():
-                    if member == "Count":
-                        transportedinfantryentry.v.by_m(member).v = str(member_edits)
-                    elif member == "Meshes":
-                        new_mesh_list = []
-                        for mesh in member_edits:
-                            new_mesh_list.append(f"$/GFX/DepictionResources/Modele_{mesh}")
-                        new_meshes = ndf.model.List()
-                        for mesh in new_mesh_list:
-                            new_meshes.add(mesh)
-                        transportedinfantryentry.v.by_member("Meshes").v = new_meshes
-                    elif member == "UniqueCount":
-                        transportedinfantryentry.v.by_member("UniqueCount").v = str(member_edits)
-                    else:
-                        logger.error(f"Unit Edits: Unknown member {member} for {unit_name}")
-                                            
-def _update_weapon_alt_mesh_on_replace(
-    source_path: Any,
-    unit_name: str,
-    old_weapon: str,
-    new_weapon: str,
-    depiction_data: Dict[str, Any],
-    *,
-    depiction_lookup_unit: Optional[str] = None,
-) -> None:
-    """Update AllWeaponAlternatives mesh when a weapon is replaced.
-
-    Uses depiction_data to find which WeaponAlternative index the old weapon uses,
-    and all_weapon_meshes to get the correct mesh for the new weapon.
-
-    For new units cloned from a donor, pass depiction_lookup_unit=donor_name to use
-    the donor's weapon layout for the index lookup.
-    """
-    lookup_unit = depiction_lookup_unit or unit_name
-    unit_data = depiction_data.get(lookup_unit)
-    if not unit_data:
-        logger.debug(f"Unit {lookup_unit} not in depiction_data; skipping weapon mesh update")
-        return
-
-    weapon_subdepictions = unit_data.get("weapon_subdepictions", {})
-    old_weapon_data = weapon_subdepictions.get(old_weapon)
-    if not old_weapon_data:
-        logger.debug(
-            f"Old weapon {old_weapon} not in depiction_data for {lookup_unit}; skipping mesh update"
-        )
-        return
-
-    weapon_shoot_data = old_weapon_data.get("weapon_shoot_data", "")
-    try:
-        weapon_alt_index = int(weapon_shoot_data.split("_")[-1])
-    except (ValueError, IndexError):
-        logger.debug(f"Could not parse weapon_shoot_data '{weapon_shoot_data}' for {unit_name}")
-        return
-
-    all_weapon_meshes = depiction_data.get("all_weapon_meshes", {})
-    if new_weapon not in all_weapon_meshes:
-        logger.debug(
-            f"New weapon {new_weapon} not in all_weapon_meshes; skipping mesh update for {unit_name}"
-        )
-        return
-
-    new_mesh = all_weapon_meshes[new_weapon]
-    weapon_alt_selector = f"WeaponAlternative_{weapon_alt_index}"
-
-    weapon_alternatives = source_path.find_by_cond(
-        lambda x: x.namespace == f"AllWeaponAlternatives_{unit_name}", False
-    )
-    if not weapon_alternatives:
-        logger.debug(f"No AllWeaponAlternatives found for {unit_name}")
-        return
-
-    for i, alt in enumerate(weapon_alternatives.v):
-        if is_obj_type(alt.v, "TDepictionVisual"):
-            try:
-                selector_val = alt.v.by_m("SelectorId").v
-                selector_str = strip_quotes(selector_val[0].v) if selector_val else ""
-            except (AttributeError, IndexError, TypeError):
+        for (namespace, obj_type), value in unit_edits.items():
+            target = _resolve_target(source_path, namespace, obj_type, unit_name=unit_name)
+            if target is None:
                 continue
-            if selector_str == weapon_alt_selector:
-                new_mesh_descriptor = f"$/GFX/DepictionResources/Modele_{new_mesh}"
-                alt.v.by_m("MeshDescriptor").v = new_mesh_descriptor
-                logger.info(
-                    f"Updated {unit_name} {weapon_alt_selector} mesh: {old_weapon} -> {new_mesh}"
-                )
-                return
 
-    logger.debug(f"Could not find {weapon_alt_selector} in AllWeaponAlternatives for {unit_name}")
-
-
-def _handle_unit_edits(source_path: Any, game_db: Dict[str, Any]) -> None:
-    # this function is so limited and could easily break if the unit edits are not formatted correctly
-    """Edit DepictionInfantry.ndf.
-    
-    Args:
-        source_path: NDF file containing infantry depictions
-        game_db: Game database
-    """
-    logger.info("Editing DepictionInfantry.ndf")
-    
-    unit_edits = load_unit_edits()
-    ammo_db = game_db["ammunition"]
-    depiction_data = game_db["depiction_data"]
-    
-    for unit_name, edits in unit_edits.items():
-        if "WeaponDescriptor" not in edits:
-            continue
-        
-        if "replace" in edits["WeaponDescriptor"].get("equipmentchanges", {}):
-            weapon_replacements = edits["WeaponDescriptor"].get("equipmentchanges", {}).get("replace", [])
-            for replacement in weapon_replacements:
-                if len(replacement) == 2:
-                    old_weapon, new_weapon = replacement
-                    # 2-tuple: only update mesh, fire effect stays unchanged
-                    _update_weapon_alt_mesh_on_replace(
-                        source_path,
-                        unit_name,
-                        old_weapon,
-                        new_weapon,
-                        depiction_data,
-                    )
-                elif len(replacement) == 4:
-                    old_weapon = replacement[0]
-                    new_weapon = replacement[1]
-                    old_fire_effect = replacement[2]
-                    new_fire_effect = replacement[3]
-
-                    # AllWeaponSubDepiction - update FireEffectTag
-                    weapon_subdepictions = source_path.find_by_cond(
-                        lambda x: x.namespace == f"AllWeaponSubDepiction_{unit_name}", False)
-                    if not weapon_subdepictions:
-                        logger.debug(f"No infantry weapon subdepictions found for {unit_name}")
-                        continue
-                    operators_list = weapon_subdepictions.v.by_m("Operators").v
-                    logger.debug(f"Finding operator with FireEffectTag {old_fire_effect} for {unit_name}")
-                    target_operator = operators_list.find_by_cond(
-                        lambda x: x.v.by_m("FireEffectTag").v == f'"FireEffect_{old_fire_effect}"')
-                    if target_operator:
-                        target_operator.v.by_m("FireEffectTag").v = f'"FireEffect_{new_fire_effect}"'
-                        logger.info(f"Replaced fire effect {old_fire_effect} with {new_fire_effect} for {unit_name}")
-
-                    # AllWeaponAlternatives - update mesh for replacement weapon
-                    _update_weapon_alt_mesh_on_replace(
-                        source_path,
-                        unit_name,
-                        old_weapon,
-                        new_weapon,
-                        depiction_data,
-                    )
-
-        skeleton_tags = edits["WeaponDescriptor"].get("equipmentchanges", {}).get("skeleton_tags")
-        if skeleton_tags:
-            soldier_row = source_path.find_by_cond(
-                lambda x: x.namespace == f"TacticDepiction_{unit_name}_Soldier",
-                False,
+            handled = apply_infantry_section(
+                source_path,
+                target,
+                namespace,
+                obj_type,
+                value,
+                unit_name=unit_name,
             )
-            if soldier_row:
-                _overwrite_skeleton_conditional_tags(soldier_row.v, skeleton_tags)
-                logger.info(f"Overwrote ConditionalTags for {unit_name} with skeleton_tags")
-            else:
-                logger.debug(f"No TacticDepiction_{unit_name}_Soldier found; skeleton_tags not applied")
-            
-        weapon_changes = edits["WeaponDescriptor"].get("equipmentchanges", {})
-        
-        # Old depiction edit code
-        if "add" in weapon_changes:
-            
-            
-            # Get weapon info (salvo_index, weapon_name), e.g:
-            # "add": [
-            #     (2, "MMG_inf_M240B_7_62mm"),
-            #     (3, "RocketInf_M72A3_LAW_66mm"),
-            # ]
-            # todo: handle multiple changes for a single unit (example dosn't work right now xD trolololol)
-            turret_index = weapon_changes["add"][0][0] # [change_1][salvo_index] turret index?? not sure trololol
-            weapon_name = weapon_changes["add"][0][1] # [change_1][weapon_name]
-            
-            # Get depiction data for weapon
-            if weapon_name in ammo_db["renames_new_old"]:
-                old_name = ammo_db["renames_new_old"][weapon_name] 
-                if old_name in depiction_data["animation_weapon_map"]:
-                    weapon_data = {
-                        "weapon_alt_mesh": depiction_data["all_weapon_meshes"][old_name],
-                        "fire_effect": depiction_data["all_fire_effects"][old_name],
-                        "animation_tag": depiction_data["animation_weapon_map"].get(old_name, None)
-                    }
-                else:
-                    weapon_data = {}
-                    logger.warning(f"No animation tag found for {old_name}")
-            else:
-                weapon_data = {
-                    "weapon_alt_mesh": depiction_data["all_weapon_meshes"][weapon_name],
-                    "fire_effect": depiction_data["all_fire_effects"][weapon_name],
-                    "animation_tag": depiction_data["animation_weapon_map"].get(weapon_name, None)
-                }
-            
-            try:
-                # Add weapon mesh alternative
-                _add_weapon_mesh(source_path, unit_name, turret_index, weapon_data["weapon_alt_mesh"])
-                
-                # Add weapon fire effect
-                _add_fire_effect(source_path, unit_name, turret_index, weapon_data["fire_effect"])
-                
-                # Add conditional animation tag if it exists
-                if "animation_tag" in weapon_data and weapon_data["animation_tag"] is not None:
-                    _add_animation_tag(source_path, unit_name, turret_index, weapon_data["animation_tag"])
-                
-            except Exception as e:
-                logger.error(f"Failed to edit depictions for {unit_name}: {str(e)}")
-
-
-def _add_weapon_mesh(source_path: Any, unit_name: str, turret_index: int, mesh: str) -> None:
-    """Add weapon mesh alternative to unit."""
-    try:
-        weapon_alts = source_path.by_n(f"AllWeaponAlternatives_{unit_name}").v
-        new_entry = (
-            f"TDepictionVisual("
-            f"    SelectorId = ['WeaponAlternative_{turret_index + 1}']"
-            f"    MeshDescriptor = $/GFX/DepictionResources/Modele_{mesh}"
-            f")"
-        )
-        
-        for i, obj in enumerate(weapon_alts):
-            if is_obj_type(obj.v, "TMeshlessDepictionDescriptor"):
-                weapon_alts.insert(i, new_entry)
-                obj.v.by_m("ReferenceMeshForSkeleton").v = f"$/GFX/DepictionResources/Modele_{mesh}"
-                logger.info(f"Added mesh alternative {mesh} to {unit_name}")
-                break
-                
-    except Exception as e:
-        logger.error(f"Failed to add weapon mesh for {unit_name}: {str(e)}")
-
-
-def _add_fire_effect(source_path: Any, unit_name: str, turret_index: int, fire_effect: str) -> None:
-    """Add weapon fire effect to unit."""
-    try:
-        weapon_subdepictions = source_path.by_n(f"AllWeaponSubDepiction_{unit_name}").v
-        operators_list = weapon_subdepictions.by_m("Operators").v
-        
-        new_entry = (
-            f'DepictionOperator_WeaponInstantFireInfantry('
-            f'    FireEffectTag = "{fire_effect}"'
-            f'    WeaponShootDataPropertyName = "WeaponShootData_0_{turret_index + 1}"'
-            f')'
-        )
-        operators_list.add(new_entry)
-        logger.info(f"Added fire effect for {unit_name} turret {turret_index}")
-        
-    except Exception as e:
-        logger.error(f"Failed to add fire effect for {unit_name}: {str(e)}")
-
-
-def _add_animation_tag(source_path: Any, unit_name: str, turret_index: int, tag: str) -> None:
-    """Add conditional animation tag to unit."""
-    try:
-        soldier_depiction = source_path.by_n(f"TacticDepiction_{unit_name}_Soldier").v
-        operators_list = soldier_depiction.by_m("Operators").v
-        
-        for obj in operators_list:
-            if is_obj_type(obj.v, "DepictionOperator_SkeletalAnimation2_Default"):
-                # Check if ConditionalTags exists
-                if obj.v.by_m("ConditionalTags", False) is not None:
-                    conditional_tags = obj.v.by_m("ConditionalTags")
-                else:
-                    # Create ConditionalTags if it doesn't exist using ndf.convert
-                    obj.v.add(ndf.convert("ConditionalTags = []"))
-                    conditional_tags = obj.v.by_m("ConditionalTags")
-                
-                # Add the new tag
-                conditional_tags.v.add(
-                    f"('{tag}', 'WeaponAlternative_{turret_index + 1}')"
+            if not handled:
+                logger.warning(
+                    f"depiction_edits for {unit_name}: section "
+                    f"(namespace='{namespace}', obj_type={obj_type}) not handled"
                 )
-                logger.info(f"Added animation tag for {unit_name} turret {turret_index}")
-                break
-                
-    except Exception as e:
-        logger.error(f"Failed to add animation tag for {unit_name}: {str(e)}")
+
+
+def _resolve_target(
+    source_path: Any,
+    namespace: str,
+    obj_type: str,
+    *,
+    unit_name: str,
+) -> Any:
+    """Locate the target object/row in ``source_path`` for this section.
+
+    For TTransportedInfantryEntry sections we resolve the matching catalog row;
+    otherwise we use the section's namespace.
+    """
+    if obj_type == "TTransportedInfantryEntry":
+        transport_catalog = source_path.find_by_cond(
+            lambda x: is_obj_type(x.v, "TTransportedInfantryCatalogEntries")
+        )
+        if not transport_catalog:
+            logger.error(f"depiction_edits for {unit_name}: could not find transport catalog")
+            return None
+        catalog_entries = transport_catalog.v.by_member("Entries").v
+        entry = catalog_entries.find_by_cond(
+            lambda x: x.v.by_member("Identifier").v == f'"{unit_name}"'
+        )
+        if not entry:
+            logger.error(
+                f"depiction_edits for {unit_name}: could not find TTransportedInfantryEntry"
+            )
+            return None
+        return entry
+
+    if not namespace:
+        logger.error(
+            f"depiction_edits for {unit_name}: section with empty namespace and "
+            f"obj_type={obj_type} cannot be resolved"
+        )
+        return None
+
+    target = source_path.by_n(namespace, False)
+    if not target:
+        logger.error(f"depiction_edits for {unit_name}: could not find {namespace}")
+        return None
+    return target
+
+
+# Re-export for backwards compatibility with any external callers.
+__all__ = [
+    "edit_gen_gp_gfx_depictioninfantry",
+    "overwrite_skeleton_conditional_tags",
+]

@@ -193,8 +193,6 @@ rda_unit_edits = {
                 "RocketInf_RPG18_64mm": 6,
             },
         },
-        "selector_tactic": "(0, 6)",
-        "selector_tactic_obj": "00_06",
         "remove_zone_capture": None,
     },
 
@@ -247,8 +245,6 @@ rda_unit_edits = {
                 "RocketInf_RPG7VL": 6,
             },
         },
-        "selector_tactic": "(0, 8)",
-        "selector_tactic_obj": "00_08",
         "remove_zone_capture": None,
     },
 
@@ -300,8 +296,6 @@ rda_unit_edits = {
                 "RocketInf_RPG7": 6,
             },
         },
-        "selector_tactic": "(0, 1)",
-        "selector_tactic_obj": "00_01",
         "remove_zone_capture": None,
     },
     
@@ -509,8 +503,6 @@ rda_unit_edits = {
                 "FM_Mpi_AKS_74NK": 11,
             },
         },
-        "selector_tactic": "(2, 4)",
-        "selector_tactic_obj": "02_04",
         "remove_zone_capture": None,
     },
 
@@ -563,14 +555,13 @@ rda_unit_edits = {
                     "FM_Mpi_AKS_74NK": 7,
                     "MMG_PKM_7_62mm": 2,
                 },
-                "replace": [
-                    (
-                        "RocketInf_RPG18_64mm",
-                        "RocketInf_RPG27_105mm",
-                        "RocketInf_RPG18_64mm",
-                        "RocketInf_RPG27_105mm",
-                    )
-                ],
+                "replace": {
+                    "RocketInf_RPG18_64mm": {
+                        "new_weapon": "RocketInf_RPG27_105mm",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
                 "insert": [(1, "MMG_PKM_7_62mm")],
                 "insert_edits": {
                     1: {
@@ -611,8 +602,6 @@ rda_unit_edits = {
                 "FM_Mpi_AKS_74NK": 11,
             },
         },
-        "selector_tactic": "(2, 4)",
-        "selector_tactic_obj": "02_04",
         "remove_zone_capture": None,
     },
 
@@ -663,8 +652,6 @@ rda_unit_edits = {
                 },
             },
         },
-        "selector_tactic": "(1, 3)",
-        "selector_tactic_obj": "01_03",
         "remove_zone_capture": None,
     },
 
@@ -747,8 +734,6 @@ rda_unit_edits = {
                 "RocketInf_M72A3_LAW_66mm": 7,
             },
         },
-        "selector_tactic": "(0, 6)",
-        "selector_tactic_obj": "00_06",
         "remove_zone_capture": None,
     },
 
@@ -828,8 +813,6 @@ rda_unit_edits = {
                 "insert": [(1, 4), (2, 3)],
             },
         },
-        "selector_tactic": "(0, 6)",
-        "selector_tactic_obj": "00_06",
         "remove_zone_capture": None,
     },
 
@@ -877,8 +860,6 @@ rda_unit_edits = {
                 },
             },
         },
-        "selector_tactic": "(2, 5)",
-        "selector_tactic_obj": "02_05",
         "remove_zone_capture": None,
     },
 
@@ -1230,7 +1211,13 @@ rda_unit_edits = {
                     "FM_Mpi_AKS_74NK": 7,
                     "SAW_lMG_K_7_62mm": 2,
                 },
-                "replace": [("FM_Mpi_AKS_74NK", "PM_MPi_AKSU_74NK")],
+                "replace": {
+                    "FM_Mpi_AKS_74NK": {
+                        "new_weapon": "PM_MPi_AKSU_74NK",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "FM_Mpi_AKS_74NK": 11,
@@ -1285,7 +1272,13 @@ rda_unit_edits = {
                     "FM_Mpi_AKS_74NK": 7,
                     "SAW_lMG_K_7_62mm": 2,
                 },
-                "replace": [("FM_Mpi_AKS_74NK", "PM_MPi_AKSU_74NK")],
+                "replace": {
+                    "FM_Mpi_AKS_74NK": {
+                        "new_weapon": "PM_MPi_AKSU_74NK",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "FM_Mpi_AKS_74NK": 11,
@@ -1693,7 +1686,13 @@ rda_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("ATGM_9K111M_Faktoriya", "ATGM_9K111_Fagot")],
+                "replace": {
+                    "ATGM_9K111M_Faktoriya": {
+                        "new_weapon": "ATGM_9K111_Fagot",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
     },
@@ -1717,7 +1716,13 @@ rda_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("ATGM_9K111M_Faktoriya", "ATGM_9K111_Fagot")],
+                "replace": {
+                    "ATGM_9K111M_Faktoriya": {
+                        "new_weapon": "ATGM_9K111_Fagot",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
         "DeploymentShift": 1750,
@@ -1899,7 +1904,13 @@ rda_unit_edits = {
         "availability": [2, 0, 1, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("RocketArt_M21OF_122mm", "RocketArt_M21OF_122mm_RM70")],
+                "replace": {
+                    "RocketArt_M21OF_122mm": {
+                        "new_weapon": "RocketArt_M21OF_122mm_RM70",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
     },
@@ -1912,7 +1923,13 @@ rda_unit_edits = {
         "availability": [2, 0, 1, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("RocketArt_M21OF_122mm_napalm", "RocketArt_M21OF_122mm_RM70_napalm")],
+                "replace": {
+                    "RocketArt_M21OF_122mm_napalm": {
+                        "new_weapon": "RocketArt_M21OF_122mm_RM70_napalm",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
     },
@@ -2236,24 +2253,22 @@ rda_unit_edits = {
         "CommandPoints": 15,
     },
 
-    "BMP_1_SP1_DDR": {
+    "BMP_1_SP1_DDR": { # (Resolute, smoke)
         "CommandPoints": 20,
     },
 
-    "BMP_1_SP2_DDR": {
-        "CommandPoints": 25,
+    "BMP_1_SP2_DDR": { # (Malyutka, resolute, smoke)
+        "CommandPoints": 30,
     },
 
-    "BMP_1P_DDR": {
-        "CommandPoints": 35,
+    "BMP_1P_DDR": { # BMP-1P(C) (Faktoriya, resolute, smoke)
+        "CommandPoints": "BMP_1P_SOV",
     },
     
-    "BMP_1P_Konkurs_DDR": {
-        "CommandPoints": 45,
+    "BMP_1P_Konkurs_DDR": { # BMP-1P(D) (Konkurs, resolute, smoke)
+        "CommandPoints": "BMP_1P_Konkurs_SOV",
         "WeaponDescriptor": {
-            "Salves": {
-                "ATGM_9M113_Konkurs_BMP2": 6,
-            },
+            "Salves": "BMP_1P_Konkurs_SOV"
         },      
     },
     
@@ -2347,7 +2362,13 @@ rda_unit_edits = {
         "availability": [12, 0, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("Canon_AP_85mm_S53", "Canon_HEAT2_85mm_S53")],
+                "replace": {
+                    "Canon_AP_85mm_S53": {
+                        "new_weapon": "Canon_HEAT2_85mm_S53",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
     },
@@ -2467,7 +2488,7 @@ rda_unit_edits = {
         "GameName": {
             "display": "AufKl BMP-1",
         },
-        "CommandPoints": 35,
+        "CommandPoints": 40,
     },
 
     "BRDM_2_DDR": {
@@ -2521,6 +2542,7 @@ rda_unit_edits = {
 
     "Mi_24D_s5_AT_reco_DDR": { # #RECO2 DHS Mi-24D Transport
         "CommandPoints": 135,
+        "strength": "Mi_24P_SOV",
     },
 
     "Mi_14PL_recon_DDR": {  # #RECO3 AUFKL. Mi-14PL
@@ -2778,14 +2800,15 @@ rda_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                "replace": [("RocketInf_M72_LAW_66mm", "RocketInf_M72A3_LAW_66mm")],
-            },
-            "Salves": {
-                "RocketInf_M72A3_LAW_66mm": 7,
-            },
-        },
+        # This unit doesn't have a LAW???
+        # "WeaponDescriptor": {
+        #     "equipmentchanges": {
+        #         "replace": [("RocketInf_M72_LAW_66mm", "RocketInf_M72A3_LAW_66mm")],
+        #     },
+        #     "Salves": {
+        #         "RocketInf_M72A3_LAW_66mm": 7,
+        #     },
+        # },
     },
 
     "Scout_FJ_DDR": {
@@ -2798,14 +2821,13 @@ rda_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    (
-                        "RocketInf_RPG18_64mm",
-                        "RocketInf_RPG7VL",
-                        "RocketInf_RPG18_64mm",
-                        "RocketInf_RPG7VL",
-                    ),
-                ],
+                "replace": {
+                    "RocketInf_RPG18_64mm": {
+                        "new_weapon": "RocketInf_RPG7VL",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "RocketInf_RPG7VL": 4,
@@ -2861,7 +2883,13 @@ rda_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_Mpi_AK_74N", "FM_Mpi_AK_74N_noreflex")],
+                "replace": {
+                    "FM_Mpi_AK_74N": {
+                        "new_weapon": "FM_Mpi_AK_74N_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "FM_Mpi_AK_74N_noreflex": 11,
@@ -2882,7 +2910,13 @@ rda_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_Mpi_AK_74N", "FM_Mpi_AK_74N_noreflex")],
+                "replace": {
+                    "FM_Mpi_AKS_74NK": {
+                        "new_weapon": "FM_Mpi_AKS_74NK_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "FM_Mpi_AK_74N_noreflex": 11,
@@ -2903,7 +2937,13 @@ rda_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_AK_74", "FM_AK_74_noreflex")],
+                "replace": {
+                    "FM_Mpi_AK_74N": {
+                        "new_weapon": "FM_Mpi_AK_74N_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -2998,7 +3038,13 @@ rda_unit_edits = {
                 "DCA_1_canon_S60_57mm_radar": 1,
             },
             "equipmentchanges": {
-                "replace": [("DCA_1_canon_S60_57mm", "DCA_1_canon_S60_57mm_radar")],
+                "replace": {
+                    "DCA_1_canon_S60_57mm": {
+                        "new_weapon": "DCA_1_canon_S60_57mm_radar",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
         "optics": {
@@ -3034,7 +3080,13 @@ rda_unit_edits = {
                 "DCA_1_canon_KS19_100mm_radar": 1,
             },
             "equipmentchanges": {
-                "replace": [("DCA_1_canon_KS19_100mm", "DCA_1_canon_KS19_100mm_radar")],
+                "replace": {
+                    "DCA_1_canon_KS19_100mm": {
+                        "new_weapon": "DCA_1_canon_KS19_100mm_radar",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
         "optics": {
@@ -3301,15 +3353,18 @@ rda_unit_edits = {
 
     "Mi_24D_s5_AT_DDR": {
         "CommandPoints": 130,
+        "strength": "Mi_24P_SOV",
         "availability": [0, 4, 3, 0],
     },
     
     "Mi_24D_s8_AT_DDR": { # Mi-24D [AT2]
         "CommandPoints": 145, # vanilla 130
+        "strength": "Mi_24P_SOV",
     },
 
     "Mi_24D_AA_DDR": {
         "CommandPoints": 130,
+        "strength": "Mi_24P_SOV",
         "availability": [0, 3, 2, 0],
     },
 
@@ -3318,6 +3373,7 @@ rda_unit_edits = {
             "display": "Mi-24P [AT]",
         },
         "CommandPoints": 160,
+        "strength": "Mi_24P_SOV",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -3350,6 +3406,7 @@ rda_unit_edits = {
     
     "Mi_24P_s8_AT2_DDR": {
         "CommandPoints": 160,
+        "strength": "Mi_24P_SOV",
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -3394,10 +3451,18 @@ rda_unit_edits = {
         "availability": [0, 5, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    ("RocketAir_S5_57mm_salvolength32", "RocketAir_S5_57mm_avion_salvolength32"),
-                    ("RocketAir_S5_57mm_salvolength32", "RocketAir_S5_57mm_avion_salvolength32"),
-                ],
+                "replace": {
+                    "RocketAir_S5_57mm_salvolength32": {
+                        "new_weapon": "RocketAir_S5_57mm_avion_salvolength32",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                    "RocketAir_S5_57mm_salvolength32": {
+                        "new_weapon": "RocketAir_S5_57mm_avion_salvolength32",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -3429,7 +3494,13 @@ rda_unit_edits = {
         "CommandPoints": 100,
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("RocketAir_S5_57mm_salvolength32", "RocketAir_S5_57mm_avion_salvolength32")],
+                "replace": {
+                    "RocketAir_S5_57mm_salvolength32": {
+                        "new_weapon": "RocketAir_S5_57mm_avion_salvolength32",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "availability": [0, 4, 0, 0],
@@ -3458,7 +3529,13 @@ rda_unit_edits = {
                 "RocketAir_S24_240mm_avion_salvolength4": (1, True),
             },
             "equipmentchanges": {
-                "replace": [("RocketAir_S24_240mm_salvolength2", "RocketAir_S24_240mm_avion_salvolength4")],
+                "replace": {
+                    "RocketAir_S24_240mm_salvolength2": {
+                        "new_weapon": "RocketAir_S24_240mm_avion_salvolength4",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -3496,7 +3573,7 @@ rda_unit_edits = {
                 "RocketAir_S24_240mm_avion_salvolength4": 1,
             },
             "equipmentchanges": {
-                "replace": [("RocketAir_S24_240mm_salvolength2", "RocketAir_S24_240mm_avion_salvolength4")],
+                "replace": {"RocketAir_S24_240mm_salvolength2": {"new_weapon": "RocketAir_S24_240mm_avion_salvolength4", "swap_fire_effect": False, "depiction_baked_in": False}},
             },
         },
     },
@@ -3611,7 +3688,13 @@ rda_unit_edits = {
                 "RocketAir_S24_240mm_avion_salvolength4": 1,
             },
             "equipmentchanges": {
-                "replace": [("RocketAir_S24_240mm_salvolength2", "RocketAir_S24_240mm_avion_salvolength4")],
+                "replace": {
+                    "RocketAir_S24_240mm_salvolength2": {
+                        "new_weapon": "RocketAir_S24_240mm_avion_salvolength4",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },

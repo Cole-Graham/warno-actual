@@ -4,7 +4,7 @@
 
 POL_airborne_newdivisionrules = {
     "logistic": [
-        ("Rifles_CMD2_POL", 2, [0, 2, 0, 0], ["UAZ_469_trans_POL", "W3_Sokol_POL", "Mi_8T_non_arme_POL", "Mi_8T_POL"]),
+        ("Rifles_CMD2_POL", 2, [0, 2, 0, 0], ["UAZ_469_trans_POL", "W3_Sokol_POL", "Mi_8T_non_arme_POL", "Mi_8T_POL", "Mi_24D_POL"]),
         ("UAZ_469_CMD_POL", 2, [0, 4, 0, 0]),
         ("BRDM_2_CMD_POL", 1, [0, 3, 0, 0]),
         ("ASU_85_CMD2_POL", 1, [0, 0, 3, 0]),
@@ -66,11 +66,11 @@ POL_airborne_newdivisionrules = {
         ("AT_D48_85mm_Para_POL", 2, [0, 9, 7, 5], ["GAZ_66B_POL"]),
     ],
     "recon": [
-        ("Scout_LRRP_Para_POL", 1, [0, 0, 4, 3], ["Honker_4011_POL", "Honker_RYS_POL"]),
-        ("Commandos_Marine_POL", 2, [0, 0, 0, 3], ["Honker_4011_POL", "Honker_RYS_POL"]),
+        ("Scout_LRRP_Para_POL", 1, [0, 0, 4, 3], ["Honker_4011_POL", "Honker_RYS_POL", "Mi_24D_POL"]),
+        ("Commandos_Marine_POL", 2, [0, 0, 0, 3], ["Honker_4011_POL", "Honker_RYS_POL", "Mi_24D_POL"]),
         ("Scout_para_POL", 2, [0, 8, 6, 0], ["UAZ_469_trans_POL", "UAZ_469_Reco_POL"]),
         ("Engineers_Scout_Para_POL", 1, [0, 4, 3, 0], ["GAZ_66B_POL"]),
-        ("Sniper_paras_POL", 2, [0, 0, 4, 3], ["Honker_4011_POL", "Honker_RYS_POL"]),
+        ("Sniper_paras_POL", 2, [0, 0, 4, 3], ["Honker_4011_POL", "Honker_RYS_POL", "Mi_24D_POL"]),
         ("BRDM_2_POL", 2, [8, 6, 0, 0]),
         ("BRDM_1_PSNR1_POL", 1, [8, 0, 0, 0]),
         ("PT76B_POL", 2, [8, 6, 0, 0]),
@@ -185,7 +185,6 @@ POL_armored_newdivisionrules = {
     ],
     "heli": [
         ("Mi_24V_POL", 2, [0, 3, 2, 0]),
-        ("Mi_24D_POL", 2, [0, 4, 3, 0]),
         ("Mi_24D_s8_AT_POL", 2, [0, 4, 3, 0]),
         ("Mi_2_rocket_POL", 1, [8, 6, 0, 0]),
         ("Mi_2_ATGM_POL", 1, [7, 5, 0, 0]),
@@ -278,7 +277,6 @@ POL_marines_newdivisionrules = {
     ],
     "heli": [
         ("Mi_24V_POL", 2, [0, 3, 2, 0]),
-        ("Mi_24D_POL", 2, [0, 4, 3, 0]),
         ("Mi_24D_s8_AT_POL", 2, [0, 4, 3, 0]),
         ("W3W_Sokol_AA_POL", 2, [0, 3, 2, 0]),
         ("W3W_Sokol_RKT_POL", 2, [0, 4, 3, 0]),
@@ -310,18 +308,16 @@ POL_mechanized_newdivisionrules = {
     "infantry": [
         ("MotRifles_CMD_POL", 1, [0, 0, 7, 5], ["OT_62_TOPAS_POL", "OT_62_TOPAS_2AP_POL", "BMP_1_SP2_POL", "BMP_2_POL"]),
         ("Engineers_CMD_POL", 1, [0, 0, 5, 4], ["OT_62_TOPAS_POL"]),
-        ("Rifles_CMD_POL", 1, [0, 7, 5, 0], ["OT_62_TOPAS_POL", "OT_62_TOPAS_2AP_POL"]),
-        #("Naval_Engineers_CMD_POL", 1, [0, 0, 7, 5], ["OT_62_TOPAS_POL"]), # Something is causing this unit to crash without a crash log when selected in the armory
+        ("Naval_Engineers_CMD_POL", 1, [0, 0, 7, 5], ["OT_62_TOPAS_POL"]), # Something is causing this unit to crash without a crash log when selected in the armory
         ("Reserve_CMD_POL", 1, [0, 7, 5, 0], ["OT_62_TOPAS_POL"]),
         ("MotRifles_POL", 3, [10, 7, 0, 0], ["OT_62_TOPAS_POL", "OT_62_TOPAS_2AP_POL", "BMP_1_SP2_POL", "BMP_2_POL"]),
         ("MotRifles_SVD_POL", 2, [10, 7, 0, 0], ["OT_62_TOPAS_POL", "OT_62_TOPAS_2AP_POL", "BMP_1_SP2_POL", "BMP_2_POL"]),
+        ("Naval_Rifle_POL", 2, [10, 7, 0, 0], ["OT_62_TOPAS_POL", "OT_62_TOPAS_2AP_POL"]),
         ("Engineers_Reserve_POL", 1, [10, 0, 0, 0], ["OT_62_TOPAS_POL"]),
         ("Engineers_POL", 2, [0, 6, 4, 0], ["OT_62_TOPAS_POL"]),
         ("Engineers_Flam_POL", 1, [0, 6, 4, 0], ["OT_62_TOPAS_POL"]),
-        ("Rifles_POL", 2, [10, 7, 0, 0], ["OT_62_TOPAS_POL", "OT_62_TOPAS_2AP_POL"]),
-        ("Rifles_HMG_POL", 2, [10, 7, 0, 0], ["OT_62_TOPAS_POL", "OT_62_TOPAS_2AP_POL"]),
-        #("Naval_Engineers_POL", 1, [0, 6, 4, 0], ["OT_62_TOPAS_POL"]),
-        #("Naval_Engineers_Flam_POL", 1, [0, 6, 4, 0], ["OT_62_TOPAS_POL"]),
+        ("Naval_Engineers_POL", 1, [0, 6, 4, 0], ["OT_62_TOPAS_POL"]),
+        ("Engineers_paras_Flam_POL", 1, [0, 6, 4, 0], ["OT_62_TOPAS_POL"]),
         ("Groupe_AT_POL", 2, [10, 7, 0, 0], ["OT_62_TOPAS_POL", "OT_62_TOPAS_SPG9_POL", "BMP_1_SP2_POL", "BMP_2_POL"]),
         ("Reserve_POL", 1, [12, 0, 0, 0], ["OT_62_TOPAS_POL"]),
         ("Reserve_SVD_POL", 2, [12, 0, 0, 0], ["OT_62_TOPAS_POL"]),
@@ -336,6 +332,7 @@ POL_mechanized_newdivisionrules = {
         ("HMGteam_AGS17_POL", 1, [8, 6, 0, 0], ["OT_62_TOPAS_POL", "OT_62_TOPAS_2AP_POL", "BMP_1_SP2_POL"]),
     ],
     "artillery": [
+        ("RM70_85_POL", 2, [2, 0, 1, 0]), # From POL Armored
         ("BM24M_POL", 2, [2, 0, 1, 0]),
         ("BM14M_POL", 2, [3, 2, 0, 0]),
         ("2S7_Pion_POL", 2, [2, 0, 1, 0]),
@@ -356,6 +353,7 @@ POL_mechanized_newdivisionrules = {
         ("T55AM_Merida_CMD_POL", 1, [0, 0, 4, 0]),
         ("T55A_CMD_POL", 1, [0, 0, 5, 0]),
         ("T54B_CMDactual_POL", 1, [0, 0, 5, 0]),
+        ("T72M1_Wilk_POL", 2, [0, 0, 4, 3]), # From POL Armored
         ("T72M1_POL", 2, [0, 6, 4, 0]),
         ("T72M_POL", 3, [8, 6, 0, 0]),
         ("T55AM_Merida_POL", 2, [0, 8, 6, 0]),
@@ -393,7 +391,7 @@ POL_mechanized_newdivisionrules = {
         ("2K11_KRUG_POL", 1, [3, 2, 0, 0]),
     ],
     "heli": [
-        ("Mi_24D_POL", 2, [0, 4, 3, 0]),
+        ("Mi_24V_POL", 2, [0, 3, 2, 0]), # From POL Armored
         ("Mi_24D_s8_AT_POL", 2, [0, 4, 3, 0]),
         ("Mi_2_rocket_POL", 2, [8, 6, 0, 0]),
         ("Mi_2_ATGM_POL", 2, [7, 5, 0, 0]),
@@ -503,7 +501,6 @@ POL_motorized_newdivisionrules = {
     ],
     "heli": [
         ("Mi_24V_POL", 2, [0, 3, 2, 0]),
-        ("Mi_24D_POL", 2, [0, 4, 3, 0]),
         ("Mi_24D_s8_AT_POL", 2, [0, 4, 3, 0]),
         ("W3W_Sokol_AA_POL", 2, [0, 3, 2, 0]),
         ("W3W_Sokol_RKT_POL", 2, [0, 4, 3, 0]),

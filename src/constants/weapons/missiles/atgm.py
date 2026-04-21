@@ -116,7 +116,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Index": 22,
             },
             "hit_roll": {
-                "Idling": 45,
+                "Idling": 50,
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 350,
@@ -137,7 +137,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Index": 16,
             },
             "hit_roll": {
-                "Idling": 45,
+                "Idling": 50,
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 350,
@@ -158,7 +158,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Index": 22,
             },
             "hit_roll": {
-                "Idling": 45,
+                "Idling": 50,
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 350,
@@ -179,7 +179,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Index": 16,
             },
             "hit_roll": {
-                "Idling": 45,
+                "Idling": 50,
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 350,
@@ -200,7 +200,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Index": 18,
             },
             "hit_roll": {
-                "Idling": 45,
+                "Idling": 50,
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 466,
@@ -262,7 +262,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Index": 20,
             },
             "hit_roll": {
-                "Idling": 45,
+                "Idling": 50,
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 350,
@@ -421,7 +421,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "display": "9K111M Faktoriya",
             "token": "TDLAGLBIVE",
             "hit_roll": {
-                "Idling": 45,
+                "Idling": 50,
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 311,
@@ -444,7 +444,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "display": "9K111M Faktoriya",
             "token": "TDLAGLBIVE",
             "hit_roll": {
-                "Idling": 45,
+                "Idling": 50,
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 311,
@@ -467,7 +467,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "display": "9K111 Fagot",
             "token": "LNPKSXACVZ",
             "hit_roll": {
-                "Idling": 45,
+                "Idling": 50,
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 311,
@@ -488,7 +488,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Index": 17,
             },
             "hit_roll": {
-                "Idling": 40,
+                "Idling": 50,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 2450,
@@ -510,7 +510,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Index": 17,
             },
             "hit_roll": {
-                "Idling": 40,
+                "Idling": 50,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 2450,
@@ -684,6 +684,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "TimeBetweenTwoSalvos": 8.0,
                 "MaximumRangeGRU": 2450,
+                "ProjectileSpeedGRU": 389,
             },
         },
         "SupplyCost": 95.0,

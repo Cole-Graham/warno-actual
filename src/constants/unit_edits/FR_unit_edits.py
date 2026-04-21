@@ -1002,10 +1002,18 @@ fr_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    ("AutoCanon_AP_M693_F1_20mm", "AutoCanon_AP_M693_F1_20mm_15acc"),
-                    ("AutoCanon_HE_M693_F1_20mm", "AutoCanon_HE_M693_F1_20mm_15acc"),
-                ],
+                "replace": {
+                    "AutoCanon_AP_M693_F1_20mm": {
+                        "new_weapon": "AutoCanon_AP_M693_F1_20mm_15acc",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                    "AutoCanon_HE_M693_F1_20mm": {
+                        "new_weapon": "AutoCanon_HE_M693_F1_20mm_15acc",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
     },
@@ -1402,7 +1410,13 @@ fr_unit_edits = {
         "availability": [6, 4, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_FAMAS", "FM_FAMAS_noreflex")],
+                "replace": {
+                    "FM_FAMAS": {
+                        "new_weapon": "FM_FAMAS_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -1413,7 +1427,13 @@ fr_unit_edits = {
         "availability": [0, 6, 4, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_FAMAS", "FM_FAMAS_noreflex")],
+                "replace": {
+                    "FM_FAMAS": {
+                        "new_weapon": "FM_FAMAS_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -1424,7 +1444,13 @@ fr_unit_edits = {
         "availability": [0, 6, 4, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_FAMAS", "FM_FAMAS_noreflex")],
+                "replace": {
+                    "FM_FAMAS": {
+                        "new_weapon": "FM_FAMAS_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },

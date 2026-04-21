@@ -238,7 +238,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Index": 20,
             },
             "hit_roll": {
-                "Idling": 45,
+                "Idling": 50,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 2625,
@@ -255,6 +255,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "Arme": {
                 "Index": 17,
+            },
+            "hit_roll": {
+                "Idling": 50,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 2450,

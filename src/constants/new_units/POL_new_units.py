@@ -530,7 +530,13 @@ POL_NEW_UNITS = {
                 "ATGM_9K111M_Faktoriya": 6,
             },
             "equipmentchanges": {
-                "replace": [("ATGM_9K111_Fagot", "ATGM_9K111M_Faktoriya")]
+                "replace": {
+                    "ATGM_9K111_Fagot": {
+                        "new_weapon": "ATGM_9K111M_Faktoriya",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
         "CommandPoints": 35,
@@ -607,7 +613,13 @@ POL_NEW_UNITS = {
                 "ATGM_9M113_Konkurs": 6,
             },
             "equipmentchanges": {
-                "replace": [("ATGM_9K111M_Faktoriya", "ATGM_9M113_Konkurs")]
+                "replace": {
+                    "ATGM_9K111M_Faktoriya": {
+                        "new_weapon": "ATGM_9M113_Konkurs",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
         "CommandPoints": 45,
@@ -679,7 +691,13 @@ POL_NEW_UNITS = {
                 "HMG_12_7_mm_NSVT": 48,
             },
             "equipmentchanges": {
-                "replace": [("MMG_team_7_62mm_PKM", "HMG_team_12_7_mm_NSV", "MMG_team_7_62mm_PKM", "HMG_team_12_7_mm_NSV")]
+                "replace": {
+                    "MMG_team_7_62mm_PKM": {
+                        "new_weapon": "HMG_team_12_7_mm_NSV",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
         "CommandPoints": 25,
@@ -751,7 +769,13 @@ POL_NEW_UNITS = {
                 "Lance_grenade_AGS17": 30,
             },
             "equipmentchanges": {
-                "replace": [("MMG_team_7_62mm_PKM", "Lance_grenade_AGS17", "MMG_team_7_62mm_PKM", "Lance_grenade_AGS17")]
+                "replace": {
+                    "MMG_team_7_62mm_PKM": {
+                        "new_weapon": "Lance_grenade_AGS17",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
         "CommandPoints": 30,
@@ -1099,7 +1123,18 @@ POL_NEW_UNITS = {
                 "MANPAD_Strela2M": 6,
             },
             "equipmentchanges": {
-                "replace": [("FM_kbk_AK", "FM_kbk_AK_noreflex"), ("MANPAD_Strela2M", "MANPAD_igla", "MANPAD_Strela2M", "MANPAD_igla")]
+                "replace": {
+                    "FM_kbk_AK": {
+                        "new_weapon": "FM_kbk_AK_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                    "MANPAD_Strela2M": {
+                        "new_weapon": "MANPAD_igla",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "SpecialtiesList": [
@@ -1157,7 +1192,18 @@ POL_NEW_UNITS = {
                 "MANPAD_Strela2M": 6,
             },
             "equipmentchanges": {
-                "replace": [("FM_kbk_AKM", "FM_kbk_AK"), ("MANPAD_Strela2M", "MANPAD_igla", "MANPAD_Strela2M", "MANPAD_igla")]
+                "replace": {
+                    "FM_kbk_AKM": {
+                        "new_weapon": "FM_kbk_AK",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                    "MANPAD_Strela2M": {
+                        "new_weapon": "MANPAD_igla",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "SpecialtiesList": [

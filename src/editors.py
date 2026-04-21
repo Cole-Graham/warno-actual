@@ -261,6 +261,24 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
     game_db = config.get("game_db", {})
     build_target = config["build_config"]["target"]
 
+    # Run the depiction audit once on patcher startup so that authors get a
+    # warning (or, with strict_depictions enabled, a hard failure) when a unit
+    # has equipment changes but no matching depiction edit file. Failures here
+    # do not block startup unless strict mode is requested.
+    try:
+        from .data.depiction_audit import run_depiction_audit
+        run_depiction_audit(
+            strict=config.get("build_config", {}).get("strict_depictions", False),
+            depiction_data=game_db.get("depiction_data") if isinstance(game_db, dict) else None,
+        )
+    except RuntimeError:
+        raise
+    except Exception as audit_exc:
+        from .utils.logging_utils import setup_logger as _audit_logger_setup
+        _audit_logger_setup(__name__).warning(
+            f"Depiction audit could not be run: {audit_exc}"
+        )
+
     editors = {
         # Core gameplay mechanics
         "GameData/Gameplay/Constantes/GDConstants.ndf": [

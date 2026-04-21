@@ -1,6 +1,7 @@
 from typing import Any, Dict
 import re
 
+from src.constants.unit_edits.replace_schema import normalize_replace
 from src.constants.weapons import ammunitions
 
 def apply_default_salves(source_path: Any, logger, game_db: Dict[str, Any], unit_edits: Dict[str, Any]) -> None:
@@ -29,26 +30,22 @@ def apply_default_salves(source_path: Any, logger, game_db: Dict[str, Any], unit
             # Track replacements for this unit to match against salves_map entries
             unit_replacements = {}
             if unit_name in unit_edits and "WeaponDescriptor" in unit_edits[unit_name]:
-                replacements = unit_edits[unit_name]["WeaponDescriptor"].get("equipmentchanges", {}).get("replace", [])
-                for replacement in replacements:
-                    if len(replacement) == 4:
-                        current, new, old_fire_effect, new_fire_effect = replacement
-                    else:
-                        current, new = replacement
-                    unit_replacements[new] = current  # Map new -> old for lookup
+                replacements = normalize_replace(
+                    unit_edits[unit_name]["WeaponDescriptor"].get("equipmentchanges", {}).get("replace")
+                )
+                for spec in replacements:
+                    unit_replacements[spec.new_weapon] = spec.old_weapon
 
             # Check if this weapon should be skipped due to unit edits
             for unit, edits in unit_edits.items():
                 if unit == unit_name and "WeaponDescriptor" in edits:
-                    replacements = edits["WeaponDescriptor"].get("equipmentchanges", {}).get("replace", [])
+                    replacements = normalize_replace(
+                        edits["WeaponDescriptor"].get("equipmentchanges", {}).get("replace")
+                    )
                     salve_changes = edits["WeaponDescriptor"].get("Salves", {})
                     if replacements:
-                        for replacement in replacements:
-                            if len(replacement) == 4:
-                                current, new, old_fire_effect, new_fire_effect = replacement
-                            else:
-                                current, new = replacement
-                            if current == ammo_name:
+                        for spec in replacements:
+                            if spec.old_weapon == ammo_name:
                                 skip_weapon_descr_ammo_name = True
                                 
                     if salve_changes:

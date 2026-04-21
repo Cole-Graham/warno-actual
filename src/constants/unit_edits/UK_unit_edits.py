@@ -437,11 +437,17 @@ uk_unit_edits = {
         "strength": 9,
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("MMG_inf_L7A2_7_62mm", "SAW_L86A1_5_56mm", "MMG_inf_L7A2_7_62mm", "SAW_L86A1_5_56mm")],
-                "skeleton_tags": [
-                    ("bazooka", "WeaponAlternative_3"),
-                    ("grenade", "WeaponAlternative_4")
-                ],
+                "replace": {
+                    "MMG_inf_L7A2_7_62mm": {
+                        "new_weapon": "SAW_L86A1_5_56mm",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
+                # "skeleton_tags": [
+                #     ("bazooka", "WeaponAlternative_3"),
+                #     ("grenade", "WeaponAlternative_4")
+                # ],
                 "quantity": {
                     "FM_L85A1": 6,
                     "SAW_L86A1_5_56mm": 3,
@@ -494,7 +500,14 @@ uk_unit_edits = {
                 "quantity": {
                     "FM_L85A1": 6,
                 },
-                "replace": [("RocketInf_M72A3_LAW_66mm", "RocketInf_LAW_80", "RocketInf_M72_LAW_66mm", "RocketInf_LAW_80")],
+                "replace": {
+                    "RocketInf_M72A3_LAW_66mm": {
+                        "new_weapon": "RocketInf_LAW_80",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                        "old_new_effect": ("RocketInf_M72_LAW_66mm", "RocketInf_LAW_80"),
+                    },
+                },
             },
             "Salves": {
                 "RocketInf_LAW_80": 4,
@@ -1573,7 +1586,13 @@ uk_unit_edits = {
         "availability": [8, 6, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("ATGM_Swingfire_salvolength2", "ATGM_Swingfire_noisy_salvolength2")],
+                "replace": {
+                    "ATGM_Swingfire_salvolength2": {
+                        "new_weapon": "ATGM_Swingfire_noisy_salvolength2",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
     },
@@ -1803,11 +1822,12 @@ uk_unit_edits = {
     "LandRover_Yeoman_UK": {
         "CommandPoints": 25,
         "WeaponDescriptor": {
-             "equipmentchanges": {
-                "replace": [("MMG_inf_MAG_7_62mm", "MMG_FN_MAG_7_62mm")],
-            },
+            # "equipmentchanges": {
+            #     "replace": [("MMG_inf_MAG_7_62mm", "MMG_FN_MAG_7_62mm")],
+            # },
             "Salves": {
-                "MMG_inf_MAG_7_62mm": 36,
+                "MMG_L37A2_7_62mm": 36,
+                "MMG_L37A2_7_62mm": 36,
             },
         },
     },
@@ -2087,7 +2107,14 @@ uk_unit_edits = {
         "availability": [0, 0, 4, 3],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("RocketInf_M72A3_LAW_66mm", "RocketInf_Carl_Gustav", "RocketInf_M72_LAW_66mm", "RocketInf_Carl_Gustav")],
+                "replace": {
+                    "RocketInf_M72A3_LAW_66mm": {
+                        "new_weapon": "RocketInf_Carl_Gustav",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                        "old_new_effect": ("RocketInf_M72_LAW_66mm", "RocketInf_Carl_Gustav"),
+                    },
+                },
             },
             "Salves": {
                 "RocketInf_Carl_Gustav": 6,
@@ -2163,7 +2190,13 @@ uk_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("PM_Sterling", "PM_Sterling_noreflex")],
+                "replace": {
+                    "PM_Sterling": {
+                        "new_weapon": "PM_Sterling_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "availability": [12, 9, 0, 0],
@@ -2192,7 +2225,13 @@ uk_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_L85A1", "FM_L85A1_noreflex")],
+                "replace": {
+                    "FM_L85A1": {
+                        "new_weapon": "FM_L85A1_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "availability": [7, 5, 0, 0],
@@ -2212,7 +2251,13 @@ uk_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_L85A1", "FM_L85A1_noreflex")],
+                "replace": {
+                    "FM_L85A1": {
+                        "new_weapon": "FM_L85A1_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "availability": [0, 7, 5, 0],
@@ -2420,7 +2465,7 @@ uk_unit_edits = {
     },
     
     "A109A_RKT_UK": {
-        "CommandPoints": 75,
+        "CommandPoints": 50,
         "availability": [0, 0, 0, 4],
     },
 
@@ -2467,7 +2512,13 @@ uk_unit_edits = {
         "availability": [0, 0, 0, 1],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("Bomb_CPU_123", "Bomb_CPU_123_salvolength2")],
+                "replace": {
+                    "Bomb_CPU_123": {
+                        "new_weapon": "Bomb_CPU_123_salvolength2",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "Bomb_CPU_123_salvolength2": 1,
@@ -2507,14 +2558,6 @@ uk_unit_edits = {
         },
         "CommandPoints": 110,
         "availability": [0, 3, 2, 0],
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                "replace": [("RocketAir_SNEB_68mm_salvolength18", "RocketAir_SNEB_68mm_salvolength36")],
-            },
-            "Salves": {
-                "RocketAir_SNEB_68mm": 1,
-            },
-        },
         "UpgradeFromUnit": None,
     },
 
@@ -2638,7 +2681,13 @@ uk_unit_edits = {
         "availability": [0, 2, 0, 1],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("AA_AIM9L_Sidewinder", "AA_AIM9M_Sidewinder")],
+                "replace": {
+                    "AA_AIM9L_Sidewinder": {
+                        "new_weapon": "AA_AIM9M_Sidewinder",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -2666,7 +2715,13 @@ uk_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("AA_AIM9L_Sidewinder", "AA_AIM9M_Sidewinder")],
+                "replace": {
+                    "AA_AIM9L_Sidewinder": {
+                        "new_weapon": "AA_AIM9M_Sidewinder",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "availability": [0, 3, 2, 0],
@@ -2681,7 +2736,13 @@ uk_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("AA_AIM9L_Sidewinder", "AA_AIM9M_Sidewinder")],
+                "replace": {
+                    "AA_AIM9L_Sidewinder": {
+                        "new_weapon": "AA_AIM9M_Sidewinder",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "availability": [0, 2, 0, 1],

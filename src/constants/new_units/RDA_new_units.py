@@ -244,7 +244,13 @@ RDA_NEW_UNITS = {
                 "ATGM_9K111M_Faktoriya": 6,
             },
             "equipmentchanges": {
-                "replace": [("ATGM_9K111_Fagot", "ATGM_9K111M_Faktoriya")]
+                "replace": {
+                    "ATGM_9K111_Fagot": {
+                        "new_weapon": "ATGM_9K111M_Faktoriya",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
         "CommandPoints": 35,
@@ -664,7 +670,13 @@ RDA_NEW_UNITS = {
                 "ATGM_9K111M_Faktoriya": 6,
             },
             "equipmentchanges": {
-                "replace": [("ATGM_9K111M_Faktoriya", "ATGM_9K111M_Faktoriya")]
+                "replace": {
+                    "ATGM_9K111M_Faktoriya": {
+                        "new_weapon": "ATGM_9K111M_Faktoriya",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
         "CommandPoints": 35,
@@ -730,7 +742,13 @@ RDA_NEW_UNITS = {
                 "ATGM_9M113_Konkurs": 6,
             },
             "equipmentchanges": {
-                "replace": [("ATGM_9K111M_Faktoriya", "ATGM_9M113_Konkurs")]
+                "replace": {
+                    "ATGM_9K111M_Faktoriya": {
+                        "new_weapon": "ATGM_9M113_Konkurs",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
         "CommandPoints": 45,
@@ -1064,9 +1082,13 @@ RDA_NEW_UNITS = {
                     "FM_Mpi_AK_74N": 5,
                     "SAW_lMG_K_7_62mm": 2,
                 },
-                "replace": [
-                    ("RocketInf_RPG18_64mm", "RocketInf_RPG7VL", "RocketInf_RPG18_64mm", "RocketInf_RPG7VL"),
-                ],
+                "replace": {
+                    "RocketInf_RPG18_64mm": {
+                        "new_weapon": "RocketInf_RPG7VL",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "TransportedSoldier": "HvyScout_RPG7VL_DDR",

@@ -94,6 +94,7 @@ sov_unit_edits = {
         },
         "availability": [0, 0, 3, 0],
         "TagSet": {"add_tags": ['"CMD_Unit"']},
+        
     },
 
     "LUAZ_967M_CMD_VDV_SOV": {
@@ -1236,9 +1237,13 @@ sov_unit_edits = {
         "UpgradeFromUnit": "MotRifles_CMD_TTsko_SOV",
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    ("SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm", "SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm"),
-                ],
+                "replace": {
+                    "SAW_RPK_74_5_56mm": {
+                        "new_weapon": "MMG_PKM_7_62mm",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "FM_AK_74": 11,
@@ -1269,9 +1274,13 @@ sov_unit_edits = {
                     "FM_AK_74": 6,
                     "MMG_PKM_7_62mm": 2,
                 },
-                "replace": [
-                    ("SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm", "SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm"),
-                ],
+                "replace": {
+                    "SAW_RPK_74_5_56mm": {
+                        "new_weapon": "MMG_PKM_7_62mm",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "FM_AK_74": 11,
@@ -1445,7 +1454,13 @@ sov_unit_edits = {
         "armor": "Infantry_armor_reference",
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm", "SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm")],
+                "replace": {
+                    "SAW_RPK_74_5_56mm": {
+                        "new_weapon": "MMG_PKM_7_62mm",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "MMG_PKM_7_62mm": 36,
@@ -2172,7 +2187,13 @@ sov_unit_edits = {
         "CommandPoints": 25,
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("ATGM_9K111M_Faktoriya", "ATGM_9K111_Fagot")],
+                "replace": {
+                    "ATGM_9K111M_Faktoriya": {
+                        "new_weapon": "ATGM_9K111_Fagot",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
     },
@@ -2181,7 +2202,13 @@ sov_unit_edits = {
         "CommandPoints": 25,
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("ATGM_9K111M_Faktoriya", "ATGM_9K111_Fagot")],
+                "replace": {
+                    "ATGM_9K111M_Faktoriya": {
+                        "new_weapon": "ATGM_9K111_Fagot",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
     },
@@ -2195,7 +2222,13 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("ATGM_9K111M_Faktoriya", "ATGM_9K111_Fagot")],
+                "replace": {
+                    "ATGM_9K111M_Faktoriya": {
+                        "new_weapon": "ATGM_9K111_Fagot",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
     },
@@ -2209,7 +2242,13 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("ATGM_9K111M_Faktoriya", "ATGM_9K111_Fagot")],
+                "replace": {
+                    "ATGM_9K111M_Faktoriya": {
+                        "new_weapon": "ATGM_9K111_Fagot",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
     },
@@ -2272,7 +2311,13 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("ATGM_9M113M_KonkursM", "ATGM_inf_9M113M_KonkursM")],
+                "replace": {
+                    "ATGM_9M113M_KonkursM": {
+                        "new_weapon": "ATGM_inf_9M113M_KonkursM",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
     },
@@ -3531,25 +3576,33 @@ sov_unit_edits = {
         "strength": 10,
     },
 
-    "BMP_1_SP2_SOV": {
+    "BMP_1_SP2_SOV": { # (Malyutka, no smoke)
         "CommandPoints": 25,
     },
 
-    "BMP_1P_SOV": {
-        "CommandPoints": 35,
+    "BMP_1P_SOV": { # (Faktoriya, smoke)
+        "CommandPoints": 40,
         "GameName": {
             "display": "BMP-1P [FAKTORIYA]",
-            # "token": "CVRIKDQELZ",
         },
+    },
+    
+    "BMP_1PG_SOV": { # (Faktoriya, AGS-17, no smoke)
+        "CommandPoints": 40,
         "WeaponDescriptor": {
-            "equipmentchanges": {
-                "replace": [("ATGM_9K111_Fagot", "ATGM_9K111M_Faktoriya")],
+            "Salves": {
+                "ATGM_9K111M_Faktoriya_IFV": 6,
             },
         },
     },
     
-    "BMP_1PG_SOV": {
-        "CommandPoints": 30,
+    "BMP_1P_Konkurs_SOV": { # (Konkurs, Faktoriya, smoke)
+        "CommandPoints": 50,
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_9M113_Konkurs_BMP2": 6,
+            },
+        },
     },
     
     "BMD_1_SOV": {
@@ -3561,7 +3614,7 @@ sov_unit_edits = {
     },
 
     "BMD_2_SOV": {
-        "CommandPoints": 35,
+        "CommandPoints": 40,
     },
 
     "BMP_2_SOV": {
@@ -4005,7 +4058,13 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("ATGM_9M112_Kobra", "ATGM_9M112M2_Kobra")],
+                "replace": {
+                    "ATGM_9M112_Kobra": {
+                        "new_weapon": "ATGM_9M112M2_Kobra",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
         "availability": [0, 4, 3, 0],
@@ -4076,7 +4135,7 @@ sov_unit_edits = {
     },
     
     "BMP_1P_reco_SOV": {
-        "CommandPoints": 45,
+        "CommandPoints": 50,
     },
 
     "BMP_2_reco_SOV": {
@@ -4284,7 +4343,13 @@ sov_unit_edits = {
                     "PM_AS_Val": 6,
                     "Sniper_VSS_Vintorez_double": 2,
                 },
-                "replace": [("Sniper_VSS_Vintorez", "Sniper_VSS_Vintorez_double")],
+                "replace": {
+                    "Sniper_VSS_Vintorez": {
+                        "new_weapon": "Sniper_VSS_Vintorez_double",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -4353,7 +4418,13 @@ sov_unit_edits = {
         "strength": 8,
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm", "SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm")],
+                "replace": {
+                    "SAW_RPK_74_5_56mm": {
+                        "new_weapon": "MMG_PKM_7_62mm",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
                 "quantity": {
                     "FM_AK_74": 7
                 },
@@ -4374,7 +4445,13 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm", "SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm")],
+                "replace": {
+                    "SAW_RPK_74_5_56mm": {
+                        "new_weapon": "MMG_PKM_7_62mm",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "MMG_PKM_7_62mm": 36,
@@ -4488,7 +4565,13 @@ sov_unit_edits = {
                 "quantity": {
                     "Sniper_VSS_Vintorez_double": 2,
                 },
-                "replace": [("Sniper_VSS_Vintorez", "Sniper_VSS_Vintorez_double")],
+                "replace": {
+                    "Sniper_VSS_Vintorez": {
+                        "new_weapon": "Sniper_VSS_Vintorez_double",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
                 "insert": [(2, "RocketInf_RPG26_72_5mm")],
                 "insert_edits": {
                     2: {
@@ -4577,6 +4660,7 @@ sov_unit_edits = {
 
     "Mi_24K_reco_SOV": {
         "CommandPoints": 150,
+        "strength": "Mi_24P_SOV",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -4737,7 +4821,13 @@ sov_unit_edits = {
                 "DCA_1_canon_S60_57mm_radar": 1,
             },
             "equipmentchanges": {
-                "replace": [("DCA_1_canon_S60_57mm", "DCA_1_canon_S60_57mm_radar")],
+                "replace": {
+                    "DCA_1_canon_S60_57mm": {
+                        "new_weapon": "DCA_1_canon_S60_57mm_radar",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
         "optics": {
@@ -4770,7 +4860,13 @@ sov_unit_edits = {
                 "DCA_1_canon_KS30_130mm_radar": 1,
             },
             "equipmentchanges": {
-                "replace": [("DCA_1_canon_KS30_130mm", "DCA_1_canon_KS30_130mm_radar")],
+                "replace": {
+                    "DCA_1_canon_KS30_130mm": {
+                        "new_weapon": "DCA_1_canon_KS30_130mm_radar",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
         "optics": {
@@ -4810,7 +4906,13 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_AK_74", "FM_AK_74_noreflex")],
+                "replace": {
+                    "FM_AK_74": {
+                        "new_weapon": "FM_AK_74_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "availability": [7, 5, 0, 0],
@@ -4826,7 +4928,13 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_AK_74", "FM_AK_74_noreflex")],
+                "replace": {
+                    "FM_AK_74": {
+                        "new_weapon": "FM_AK_74_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -4841,7 +4949,13 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_AK_74", "FM_AK_74_noreflex")],
+                "replace": {
+                    "FM_AK_74": {
+                        "new_weapon": "FM_AK_74_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -4856,7 +4970,13 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_AKS_74", "FM_AKS_74_noreflex")],
+                "replace": {
+                    "FM_AKS_74": {
+                        "new_weapon": "FM_AKS_74_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -4871,7 +4991,13 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_AKS_74", "FM_AKS_74_noreflex")],
+                "replace": {
+                    "FM_AKS_74": {
+                        "new_weapon": "FM_AKS_74_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -4886,7 +5012,13 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_AKS_74", "FM_AKS_74_noreflex")],
+                "replace": {
+                    "FM_AKS_74": {
+                        "new_weapon": "FM_AKS_74_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -4900,7 +5032,13 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_AK_74", "FM_AK_74_noreflex")],
+                "replace": {
+                    "FM_AK_74": {
+                        "new_weapon": "FM_AK_74_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "availability": [12, 0, 0, 0],
@@ -5227,7 +5365,13 @@ sov_unit_edits = {
                 "AA_R60M_Vympel": 4,
             },
             "equipmentchanges": {
-                "replace": [("AA_R60M_Vympel", "AA_R60M_Vympel_helo")],
+                "replace": {
+                    "AA_R60M_Vympel": {
+                        "new_weapon": "AA_R60M_Vympel_helo",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "turrets": {
                 1: {
@@ -5291,10 +5435,12 @@ sov_unit_edits = {
     
     "Mi_24D_Desant_SOV": {
         "CommandPoints": 85,
+        "strength": "Mi_24P_SOV",
     },
 
     "Mi_24V_AA_SOV": {
         "CommandPoints": 160,
+        "strength": "Mi_24P_SOV",
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -5308,6 +5454,7 @@ sov_unit_edits = {
 
     "Mi_24V_RKT_SOV": {  # 4x Kokon, 20x S-13
         "CommandPoints": 160,
+        "strength": "Mi_24P_SOV",
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -5321,11 +5468,13 @@ sov_unit_edits = {
 
     "Mi_24V_RKT2_SOV": {  # 4x Kokon, 80x S-8KOM
         "CommandPoints": 160,
+        "strength": "Mi_24P_SOV",
         "availability": [0, 4, 3, 0],
     },
 
     "Mi_24V_AT_SOV": {  # 8x Kokon, 40x S-80
         "CommandPoints": 160,
+        "strength": "Mi_24P_SOV",
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -5345,6 +5494,7 @@ sov_unit_edits = {
             "display": "Mi-24P [AT]",
         },
         "CommandPoints": 185,
+        "strength": 10,
         "WeaponDescriptor": {
             "Salves": {
                 "AutoCanon_AP_30mm_Bitube_Gsh30k": 5,
@@ -5353,12 +5503,10 @@ sov_unit_edits = {
                 0: {
                     "MountedWeapons": {
                         "AutoCanon_AP_30mm_Bitube_Gsh30k": {
-                            # "add_members": [("TirContinu", True), ],
                             "Ammunition": "AutoCanon_AP_30mm_Bitube_Gsh30k_burst",
                             "EffectTag": "'FireEffect_GatlingAir_Gsh_30_2_30mm_x2'",
                         },
                         "AutoCanon_HE_30mm_Bitube_Gsh30k": {
-                            # "add_members": [("TirContinu", True), ],
                             "Ammunition": "AutoCanon_HE_30mm_Bitube_Gsh30k_burst",
                             "EffectTag": "'FireEffect_GatlingAir_Gsh_30_2_30mm_x2'",
                         },
@@ -5374,23 +5522,19 @@ sov_unit_edits = {
             "display": "Mi-24P [AA]",
         },
         "CommandPoints": 185,
+        "strength": "Mi_24P_SOV",
         "WeaponDescriptor": {
             "Salves": {
                 "AutoCanon_AP_30mm_Bitube_Gsh30k": 5,
-            },
-            "equipmentchanges": {
-                "replace": [("AA_R60M_Vympel", "AA_R60M_Vympel_Helo")],
             },
             "turrets": {
                 0: {
                     "MountedWeapons": {
                         "AutoCanon_AP_30mm_Bitube_Gsh30k": {
-                            # "add_members": [("TirContinu", True), ],
                             "Ammunition": "AutoCanon_AP_30mm_Bitube_Gsh30k_burst",
                             "EffectTag": "'FireEffect_GatlingAir_Gsh_30_2_30mm_x2'",
                         },
                         "AutoCanon_HE_30mm_Bitube_Gsh30k": {
-                            # "add_members": [("TirContinu", True), ],
                             "Ammunition": "AutoCanon_HE_30mm_Bitube_Gsh30k_burst",
                             "EffectTag": "'FireEffect_GatlingAir_Gsh_30_2_30mm_x2'",
                         },
@@ -5403,6 +5547,7 @@ sov_unit_edits = {
 
     "Mi_24VP_SOV": {
         "CommandPoints": 200,
+        "strength": "Mi_24P_SOV",
         "WeaponDescriptor": {
             "Salves": {
                 "AutoCanon_AP_23mm_Bitube_Gsh23L": 28,
@@ -5420,16 +5565,19 @@ sov_unit_edits = {
     
     "Mi_24P_Atakax4_SOV": {
         "CommandPoints": 200,
+        "strength": "Mi_24P_SOV",
         "availability": [0, 2, 0, 1],
     },
     
     "Mi_24P_Atakax8_SOV": {
         "CommandPoints": 230,
+        "strength": "Mi_24P_SOV",
         "availability": [0, 2, 0, 1],
     },
     
     "Ka_29_SOV": {
         "CommandPoints": 230,
+        "strength": 10,
         "availability": [0, 2, 0, 1],
     },
     
@@ -5483,7 +5631,13 @@ sov_unit_edits = {
         "availability": [0, 5, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("RocketAir_S5_57mm_salvolength32", "RocketAir_S5_57mm_avion_salvolength32")],
+                "replace": {
+                    "RocketAir_S5_57mm_salvolength32": {
+                        "new_weapon": "RocketAir_S5_57mm_avion_salvolength32",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -5597,9 +5751,13 @@ sov_unit_edits = {
         "availability": [0, 0, 0, 1],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    ("GatlingAir_Gsh_30_6_30mm", "GatlingAir_Gsh_30_6_30mm_NoShootPos"),
-                ],
+                "replace": {
+                    "GatlingAir_Gsh_30_6_30mm": {
+                        "new_weapon": "GatlingAir_Gsh_30_6_30mm_NoShootPos",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
             "SalvoIsMainSalvo": [False, True, False],
         },
@@ -5666,10 +5824,18 @@ sov_unit_edits = {
                 "RocketAir_B8_80mm_salvolength40": 1,
             },
             "equipmentchanges": {
-                "replace": [
-                    ("RocketAir_B8_80mm_avion_salvolength10", "RocketAir_B8_80mm_salvolength40"),
-                    ("RocketAir_B8_80mm_avion_salvolength10", "RocketAir_B8_80mm_salvolength40"),
-                ],
+                "replace": {
+                    "RocketAir_B8_80mm_avion_salvolength10": {
+                        "new_weapon": "RocketAir_B8_80mm_salvolength40",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                    "RocketAir_B8_80mm_avion_salvolength10": {
+                        "new_weapon": "RocketAir_B8_80mm_salvolength40",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -5832,7 +5998,13 @@ sov_unit_edits = {
                 "RocketAir_B8_80mm_salvolength40": 2,
             },
             "equipmentchanges": {
-                "replace": [("RocketAir_B8_80mm_salvolength80", "RocketAir_B8_80mm_salvolength40")],
+                "replace": {
+                    "RocketAir_B8_80mm_salvolength80": {
+                        "new_weapon": "RocketAir_B8_80mm_salvolength40",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -5989,7 +6161,13 @@ sov_unit_edits = {
         "UpgradeFromUnit": None,
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("Bomb_KAB_1500Kr", "Bomb_KAB_1500L_salvolength2")],
+                "replace": {
+                    "Bomb_KAB_1500Kr": {
+                        "new_weapon": "Bomb_KAB_1500L_salvolength2",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "Bomb_KAB_1500L_salvolength2": 1,
@@ -6005,10 +6183,18 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    ("GatlingAir_Gsh_23_6_23mm", "GatlingAir_Gsh_23_6_23mm_NoShootPos"),
-                    ("Bomb_KAB_1500L", "Bomb_KAB_1500Kr"),
-                ],
+                "replace": {
+                    "GatlingAir_Gsh_23_6_23mm": {
+                        "new_weapon": "GatlingAir_Gsh_23_6_23mm_NoShootPos",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                    "Bomb_KAB_1500L": {
+                        "new_weapon": "Bomb_KAB_1500Kr",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "availability": [0, 0, 0, 1],

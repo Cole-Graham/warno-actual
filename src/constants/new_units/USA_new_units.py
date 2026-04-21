@@ -205,9 +205,13 @@ USA_NEW_UNITS = {
             "equipmentchanges": {
                 "insert": [(1, "Sniper_M21", "Sniper_M14")],
                 "update": [2],
-                "replace": [
-                    ("MMG_inf_M240B_7_62mm", "M47_DRAGON_II", "MMG_inf_M240B_7_62mm", "M47_DRAGON_II"),
-                ],
+                "replace": {
+                    "MMG_inf_M240B_7_62mm": {
+                        "new_weapon": "M47_DRAGON_II",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
                 "quantity": {
                     "FM_M16": 1,
                     "Sniper_M21": 1,
@@ -291,9 +295,13 @@ USA_NEW_UNITS = {
             "equipmentchanges": {
                 "insert": [(1, "Sniper_M21", "Sniper_M14")],
                 "update": [2],
-                "replace": [
-                    ("MMG_inf_M240B_7_62mm", "M47_DRAGON_II", "MMG_inf_M240B_7_62mm", "M47_DRAGON_II"),
-                ],
+                "replace": {
+                    "MMG_inf_M240B_7_62mm": {
+                        "new_weapon": "M47_DRAGON_II",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
                 "quantity": {
                     "FM_M16": 1,
                     "Sniper_M21": 1,
@@ -403,7 +411,13 @@ USA_NEW_UNITS = {
                 "HAGRU_MANPADS": [(2, 0, "MANPAD_FIM92_HAGRU")], # turret_index, donor_weapon_index, ammo_name
                 "insert": [(1, "Sniper_M21", "Sniper_M14")],
                 "update": [2],
-                "replace": [("FM_M16_noreflex", "FM_M16_x5")],
+                "replace": {
+                    "FM_M16_noreflex": {
+                        "new_weapon": "FM_M16_x5",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
                 "quantity": {
                     "FM_M16": 5,
                     "Sniper_M21": 1,
@@ -995,9 +1009,13 @@ USA_NEW_UNITS = {
                     (0, "AA_AIM7M_Sparrow", "AA_AIM7M_Sparrow", 2),
                 ],
                 "update": [1, 2],
-                "replace": [
-                    ("AGM_AGM45_Shrike", "AGM_AGM88_HARM_ReflexPriorityFalse", "AGM_AGM45_Shrike", "AGM_AGM88_HARM_ReflexPriorityFalse"),
-                ],
+                "replace": {
+                    "AGM_AGM45_Shrike": {
+                        "new_weapon": "AGM_AGM88_HARM_ReflexPriorityFalse",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
                 "replace_with_turret": [
                     ("AA_AIM9J_Sidewinder", "AGM_AGM65D_Maverick", "AA_AIM9J_Sidewinder", "AGM_AGM65D_Maverick"),
                 ]

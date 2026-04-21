@@ -6,6 +6,7 @@ import traceback
 from src import ndf
 from src.constants.new_units import NEW_DEPICTIONS, NEW_UNITS
 from src.constants.unit_edits import load_depiction_edits
+from src.gameplay_mods.generated.gameplay.gfx.depictions._apply import apply_indexed_list_ops
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import find_obj_by_blackhole_key
 
@@ -201,18 +202,21 @@ def _handle_weapon_operator(unit_name, weapon_operator, edits, is_new_entry=Fals
     return weapon_operator
 
 
+def _vehicle_op_add(list_member: Any, op_index: int, payload: Any) -> None:
+    """Insert a vehicle operator at ``op_index`` (used by the ``add`` op)."""
+    list_member.v.insert(op_index, payload)
+
+
 def _handle_vehicle_depiction(unit_name, vehicle_depiction, edits, is_new_entry=False):  # noqa
     for row_name_or_type, value in edits.items():
         member_access = vehicle_depiction.v.by_m(row_name_or_type, False)
         if row_name_or_type == "Operators":
-            operators = member_access
-
-            for op_index, op_edits in value.items():
-                if isinstance(op_edits, tuple) and op_edits[0] == "add":
-                    operators.v.insert(op_index, op_edits[1])
-                else:
-                    logger.error(f"Unknown operator edit: {op_edits}")
-                    pass
+            apply_indexed_list_ops(
+                member_access,
+                value,
+                label=f"Vehicle Operators ({unit_name})",
+                op_handlers={"add": _vehicle_op_add},
+            )
 
         elif row_name_or_type == "Actions":
             try:
@@ -235,22 +239,20 @@ def _handle_vehicle_depiction(unit_name, vehicle_depiction, edits, is_new_entry=
                             for dep_name_or_type, dep_edits in member_edits.items():
 
                                 if dep_name_or_type == "Operators":
-                                    operator_member = depiction_member.v.by_m(dep_name_or_type)
-                                    for op_index, op_edits in dep_edits.items():
-                                        if isinstance(op_edits, tuple) and op_edits[0] == "add":
-                                            operator_member.v.insert(op_index, op_edits[1])
-                                        else:
-                                            logger.error(f"Unknown operator edit: {op_edits}")
-                                            pass
+                                    apply_indexed_list_ops(
+                                        depiction_member.v.by_m(dep_name_or_type),
+                                        dep_edits,
+                                        label=f"SubDepictions[{sub_depict_index}].Operators ({unit_name})",
+                                        op_handlers={"add": _vehicle_op_add},
+                                    )
 
                                 elif dep_name_or_type == "Actions":
-                                    action_member = depiction_member.v.by_m(dep_name_or_type)
-                                    for action_index, action_edits in dep_edits.items():
-                                        if isinstance(action_edits, tuple) and action_edits[0] == "add":
-                                            action_member.v.insert(action_index, action_edits[1])
-                                        else:
-                                            logger.error(f"Unknown action edit: {action_edits}")
-                                            pass
+                                    apply_indexed_list_ops(
+                                        depiction_member.v.by_m(dep_name_or_type),
+                                        dep_edits,
+                                        label=f"SubDepictions[{sub_depict_index}].Actions ({unit_name})",
+                                        op_handlers={"add": _vehicle_op_add},
+                                    )
             except Exception as e:
                 logger.error(f"Unknown subdepiction edit: {row_name_or_type}")
                 logger.error(f"Exception: {str(e)}")

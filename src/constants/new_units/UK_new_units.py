@@ -132,10 +132,18 @@ UK_NEW_UNITS = {
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "HAGRU_MANPADS": [(1, 0, "MANPAD_Starstreak_HAGRU")], # turret_index, donor_weapon_index, ammo_name
-                "replace": [
-                    ("FM_L85A1", "FM_L85A1_noreflex"),
-                    ("Javelin", "MANPAD_Starstreak"),
-                ],
+                "replace": {
+                    "FM_L85A1": {
+                        "new_weapon": "FM_L85A1_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                    "Javelin": {
+                        "new_weapon": "MANPAD_Starstreak",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "FM_L85A1_noreflex": 11,
@@ -776,7 +784,13 @@ UK_NEW_UNITS = {
         "UpgradeFromUnit": "DCA_Rapier_FSA_UK",
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("SAM_RAPIER_salvolength8", "SAM_RAPIER_FSA_salvolength8")],
+                "replace": {
+                    "SAM_RAPIER_salvolength8": {
+                        "new_weapon": "SAM_RAPIER_FSA_salvolength8",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
 
         },
@@ -837,7 +851,13 @@ UK_NEW_UNITS = {
         "UpgradeFromUnit": "Tracked_Rapier_UK",
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("SAM_RAPIER_salvolength8", "SAM_RAPIER_DARKFIRE_salvolength8")],
+                "replace": {
+                    "SAM_RAPIER_salvolength8": {
+                        "new_weapon": "SAM_RAPIER_DARKFIRE_salvolength8",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
 
         },

@@ -1,10 +1,12 @@
 """Functions for modifying DepictionAerialUnits.ndf"""
 
 from typing import Any
+
 from src.constants.unit_edits import load_depiction_edits
-from src.constants.new_units import NEW_UNITS, NEW_DEPICTIONS
+from src.constants.new_units import NEW_DEPICTIONS
+from src.gameplay_mods.generated.gameplay.gfx.depictions._apply import apply_indexed_list_ops
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import ndf, find_obj_by_type, is_obj_type
+from src.utils.ndf_utils import ndf, is_obj_type
 
 logger = setup_logger(__name__)
 
@@ -120,25 +122,12 @@ def _edit_depictions(source_path: Any, ndf_file: str) -> None:
                 possible_rows = ["Operators", "Actions", "SubDepictions", "SubDepictionGenerators"]
                 for row_name_or_type, value in edits.items():
                     if row_name_or_type == "Operators" and isinstance(value, dict):
-                        operators_list = aerial_template.v.by_m("Operators")
-                        rows_to_insert = []
-                        rows_to_remove = []
-                        for row_index, (edit_op, *edit_data) in value.items():
-                            if edit_op == "insert":
-                                rows_to_insert.append((row_index, edit_data[0]))
-                            elif edit_op == "remove":
-                                rows_to_remove.append(row_index)
-                            elif edit_op == "replace":
-                                operators_list.v.replace(row_index, edit_data[0])
-                                logger.info(f"Replaced Operators[{row_index}] for {unit_name}")
-
-                        for row_index in sorted(rows_to_remove, reverse=True):
-                            operators_list.v.remove(row_index)
-                            logger.info(f"Removed Operators[{row_index}] for {unit_name}")
-                        for row_index, ndf_str in sorted(rows_to_insert, reverse=True):
-                            operators_list.v.insert(row_index, ndf_str)
-                            logger.info(f"Inserted Operators[{row_index}] for {unit_name}")
-
+                        apply_indexed_list_ops(
+                            aerial_template.v.by_m("Operators"),
+                            value,
+                            label=f"Aerial Operators ({unit_name})",
+                            op_handlers={},
+                        )
                     elif row_name_or_type in possible_rows:
                         aerial_template.v.by_m(row_name_or_type).v = value
                         logger.info(f"Edited {row_name_or_type} for {unit_name}")
