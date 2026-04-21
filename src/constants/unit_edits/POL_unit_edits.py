@@ -3065,7 +3065,10 @@ pol_unit_edits = {
     
     # POL HELI
     "Mi_24D_POL": {  # 64x S-5, 4x Falanga - Mi-24D [AT] -> transport
-        "CommandPoints": 145,
+        "GameName": {
+            "display": "Mi-24D SPADO."
+        },
+        "CommandPoints": 120,
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
@@ -3089,9 +3092,6 @@ pol_unit_edits = {
             "remove": ["POL_20_Pancerna"],
         },
         "availability": [0, 4, 3, 0],
-        "GameName": {
-            "display": "Mi-24D SPADO."
-        },
     },
     
     "Mi_24D_s8_AT_POL": {  # 80x S-8, 4x Falanga - Mi-24D [AT2]

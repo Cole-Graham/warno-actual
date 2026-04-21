@@ -3228,7 +3228,7 @@ rda_unit_edits = {
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
-        "CommandPoints": 80,
+        "CommandPoints": 85,
         "availability": [4, 3, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
@@ -3242,7 +3242,7 @@ rda_unit_edits = {
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
-        "CommandPoints": 90,
+        "CommandPoints": "2K12_KUB_SOV",
         "availability": [4, 3, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],

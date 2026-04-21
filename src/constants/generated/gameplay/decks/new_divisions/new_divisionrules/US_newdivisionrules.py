@@ -84,8 +84,8 @@ US_airborne_newdivisionrules = {
     "aa": [
         ("MANPAD_Stinger_C_Rifles_US", 2, [0, 7, 5, 0], ["UH60A_Black_Hawk_US"]),
         ("MANPAD_Stinger_C_para_US", 3, [0, 7, 5, 0], ["M1038_Humvee_US", "M274_Mule_M2HB_US"]),
-        ("M48_Chaparral_MIM72F_US", 1, [0, 3, 2, 0]),
-        ("M998_Avenger_US", 2, [0, 5, 3, 0]),
+        ("M48_Chaparral_MIM72F_US", 1, [4, 3, 0, 0]),
+        ("M998_Avenger_US", 2, [6, 4, 0, 0]),
         ("OH58_CS_US", 1, [0, 4, 3, 0]),
         ("DCA_M167A2_Vulcan_20mm_Aero_US", 1, [0, 10, 7, 0], ["Gama_Goat_trans_US"]),
     ],
@@ -215,8 +215,8 @@ US_armored_newdivisionrules = {
         ("OH58A_reco_NG_US", 2, [6, 0, 0, 0]),
     ],
     "aa": [
-        ("DCA_I_Hawk_US", 2, [4, 3, 0, 0], ["M35_supply_US"]),
-        ("M48_Chaparral_MIM72F_US", 2, [0, 3, 2, 0]),
+        ("DCA_I_Hawk_US", 2, [6, 4, 0, 0], ["M35_supply_US"]),
+        ("M48_Chaparral_MIM72F_US", 2, [4, 3, 0, 0]),
         ("M163_PIVADS_US", 2, [8, 6, 0, 0]),
         ("M163_CS_US", 2, [8, 6, 0, 0]),
         ("DCA_M167A2_Vulcan_20mm_US", 1, [10, 7, 0, 0], ["M1038_Humvee_US"]),
@@ -331,7 +331,7 @@ US_marine_newdivisionrules = {
         ("OV10_Bronco_US", 1, [0, 3, 2, 0]),
     ],
     "aa": [
-        ("DCA_I_Hawk_USMC_US", 2, [5, 4, 0, 0], ["M35_trans_US"]),
+        ("DCA_I_Hawk_USMC_US", 2, [6, 4, 0, 0], ["M35_trans_US"]),
         ("MANPAD_Stinger_C_USMC_US", 2, [7, 5, 0, 0], ["M998_Humvee_US"]),
     ],
     "heli": [
@@ -463,8 +463,8 @@ US_mechanized_newdivisionrules = {
         ("OH58A_reco_NG_US", 2, [6, 0, 0, 0]),
     ],
     "aa": [
-        ("DCA_I_Hawk_US", 2, [4, 3, 0, 0], ["M35_supply_US"]),
-        ("M48_Chaparral_MIM72F_US", 2, [0, 3, 2, 0]),
+        ("DCA_I_Hawk_US", 2, [6, 4, 0, 0], ["M35_supply_US"]),
+        ("M48_Chaparral_MIM72F_US", 2, [4, 3, 0, 0]),
         ("M163_PIVADS_US", 2, [8, 6, 0, 0]),
         ("DCA_M167A2_Vulcan_20mm_US", 1, [10, 7, 0, 0], ["M1038_Humvee_US"]),
         ("M163_CS_US", 2, [8, 6, 0, 0]),
@@ -594,9 +594,9 @@ US_motorized_newdivisionrules = {
         ("OH58A_reco_NG_US", 2, [6, 0, 0, 0]),
     ],
     "aa": [
-        ("DCA_XMIM_115A_Roland_US", 2, [0, 4, 3, 0]),
+        ("DCA_XMIM_115A_Roland_US", 1, [6, 4, 0, 0]),
         ("DCA_XM85_Chaparral_US", 1, [4, 3, 0, 0], ["M35_supply_US"]),
-        ("M998_Avenger_nonPara_US", 2, [5, 3, 0, 0]),
+        ("M998_Avenger_nonPara_US", 2, [6, 4, 0, 0]),
         ("DCA_M167A2_Vulcan_20mm_US", 1, [10, 7, 0, 0], ["M1038_Humvee_US"]),
         ("OH58_CS_US", 1, [0, 4, 3, 0]),
         ("MANPAD_Stinger_C_US", 2, [7, 5, 0, 0], ["M151_MUTT_trans_US"]),

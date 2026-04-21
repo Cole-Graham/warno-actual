@@ -76,8 +76,7 @@ def _spec_from_dict_entry(old_weapon: str, payload: Mapping[str, Any]) -> Option
     if "depiction_baked_in" not in payload:
         logger.warning(
             f"equipmentchanges.replace[{old_weapon!r}] is missing the required "
-            f"'depiction_baked_in' key; defaulting to False. "
-            f"Run scripts/add_depiction_baked_in.py to migrate legacy entries."
+            f"'depiction_baked_in' key; defaulting to False."
         )
     depiction_baked_in = bool(payload.get("depiction_baked_in", False))
     old_new_effect = payload.get("old_new_effect")
@@ -117,8 +116,7 @@ def normalize_replace(replace_block: Any) -> List[ReplaceSpec]:
     if not isinstance(replace_block, dict):
         logger.warning(
             "equipmentchanges.replace must be a dict {old_weapon: {...}}; "
-            f"got {type(replace_block).__name__}. Run scripts/migrate_replace_schema.py "
-            f"to convert legacy list-of-tuples literals."
+            f"got {type(replace_block).__name__}."
         )
         return []
     specs: List[ReplaceSpec] = []

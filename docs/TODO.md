@@ -1,8 +1,5 @@
  checkboxes for completed items: - [x], - [ ]
 
-> Tooling note: see `docs/depiction_codegen.md` for the depiction-edit
-> codegen + audit + promotion workflow.
- 
  # ------------------------------------ Lat ------------------------------------
  # v27
 - [ ] Regenerate maps/scenarios (could have complications, Eugen broke them again)
@@ -16,6 +13,7 @@
 - [ ] Create new weapon trait to explain SEAD missiles that have reflex fire on even when you right click a target, in order to enable the SEAD missiles to still fire when you right click a tank.
 - [ ] Consolidate 4-5 strength police infantry into bigger mixed squads of MPs + 2-3 common reservists with AT
 - [ ] Fix M60E1 MMG ammo on reservists
+- [x] Remodel Kub M3 and M1
 - [ ] Polish Mi-24D Desant is transport but is in helo tab and not used as a transport?
 - [x] Buff all Mi-24 helicopters to 10 HP
 - [ ] Fix all inconsistencies of ( ) and [ ] in unit names. [ ] is to specify equipment
@@ -32,15 +30,16 @@ or just remove stress accuracy modifier from planes entirely
 - [ ] Recon helos are insanely cheap in wargame terms, not sure if they should be,
 depends on performance of planes hunting helos. Might turn off range scaling for plane
 guns.
-- [ ] Edit Buratino model to add turret for smoke launcher (then revert front armor buff after, probably)
 - [ ] create custom model with more turrets for Su-24M bomber
-- [ ] remove submunition release animation from MW1 and KMGU bombers
 - [ ] (NOT THIS PATCH) Rebalance air prices around 350 point ceiling (maybe introduce second more powerful strike eagle variant)
 - [ ] See if it is possible to remove smart order from auto-cover toggle
 - [ ] Might need seperate weaker version of EW trait for Pave Tiger drone
+
+# Low priority/maybe:
+- [ ] Edit Buratino model to add turret for smoke launcher (then revert front armor buff after, probably)
+- [ ] remove submunition release animation from MW1 and KMGU bombers
 - [ ] Come up with rationale for which towed units have deploy/packup time, and explore possibility
 of adding it to all of them.
-
 
 
 # ------------------------------------ 12 ------------------------------------

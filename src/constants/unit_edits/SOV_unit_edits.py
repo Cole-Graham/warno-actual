@@ -5292,7 +5292,7 @@ sov_unit_edits = {
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
-        "CommandPoints": 90,
+        "CommandPoints": 115,
         "availability": [4, 3, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
