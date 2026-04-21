@@ -143,81 +143,46 @@ def _handle_unit_edits(source_path: Any) -> None:
         unit_edits = unit_data["DepictionVehicles_ndf"]
 
         for key, edits in unit_edits.items():
+            if key == "new_objects":
+                registration = find_obj_by_blackhole_key(
+                    source_path, unit_name, "TacticVehicleDepictionRegistration")
+                if registration is None:
+                    logger.error(f"Could not find TacticVehicleDepictionRegistration for {unit_name}, appending new objects to end")
+                    for obj_key, ndf_str in edits.items():
+                        source_path.add(ndf.convert(ndf_str))
+                        logger.info(f"Added new operator {obj_key} for {unit_name}")
+                else:
+                    insert_index = registration.index
+                    for obj_key, ndf_str in edits.items():
+                        source_path.insert(insert_index, ndf.convert(ndf_str))
+                        logger.info(f"Inserted new operator {obj_key} for {unit_name}")
+                        insert_index += 1
+                continue
+
             if not isinstance(key, tuple):
                 logger.error(f"Key is not a tuple: {key}")
                 continue
 
             namespace, obj_type = key
-            if "copy" in edits:
-                if namespace and namespace.startswith("DepictionOperator_"):
-                    # Handle weapon operator copy
-                    donor = source_path.by_n(namespace)
-                    if not donor:
-                        logger.error(f"Could not find donor {namespace} for {unit_name}")
-                        continue
 
-                    new_entry = donor.copy()
-                    new_entry.namespace = edits["copy"]
-                    new_entry.type = obj_type
-                    new_entry = _handle_weapon_operator(unit_name, new_entry, edits)
+            if namespace and namespace.startswith("DepictionOperator_"):
+                weapon_operator = source_path.by_n(namespace)
+                if weapon_operator:
+                    _handle_weapon_operator(unit_name, weapon_operator, edits)
+                    logger.info(f"Updated weapon operator for {unit_name}")
 
-                    # Calculate insertion index - find vehicle depiction by BlackHoleKey
-                    vehicle_depiction = find_obj_by_blackhole_key(
-                        source_path, unit_name, "TacticVehicleDepictionRegistration")
-                    if vehicle_depiction:
-                        source_path.insert(vehicle_depiction.index, new_entry)
-                    else:
-                        source_path.add(new_entry)
-                    logger.info(f"Inserted new weapon operator for {unit_name}")
-
-                    # Optionally apply edits to the donor (e.g. when shifting weapon slots)
-                    if "modify_donor" in edits:
-                        _handle_weapon_operator(unit_name, donor, edits["modify_donor"])
-                        logger.info(f"Updated donor weapon operator {namespace} for {unit_name}")
-
-                elif obj_type == "TacticVehicleDepictionRegistration":
-                    # Handle vehicle depiction copy - unit model objects are unnamed, find by BlackHoleKey
-                    # Extract donor name from copy target or use unit_name
-                    donor_name = edits.get("copy", "").replace("TacticDepiction_", "").replace("_", "")
-                    if not donor_name:
-                        # If no copy target specified, use the unit_name as donor
-                        donor_name = unit_name
-                    donor = find_obj_by_blackhole_key(source_path, donor_name, "TacticVehicleDepictionRegistration")
-                    
-                    if not donor:
-                        logger.error(f"Could not find donor TacticVehicleDepictionRegistration with BlackHoleKey='{donor_name}' for {unit_name}")
-                        continue
-
-                    new_entry = donor.copy()
-                    new_entry.namespace = None  # Unit model objects are always unnamed
-                    new_entry = _handle_vehicle_depiction(unit_name, new_entry, edits)
-                    source_path.insert(donor.index + 1, new_entry)
-                    logger.info(f"Inserted new vehicle depiction for {unit_name}")
-
-            else:
-                # Handle direct edits
-                if namespace and namespace.startswith("DepictionOperator_"):
-                    weapon_operator = source_path.by_n(namespace)
-                    if weapon_operator:
-                        _handle_weapon_operator(unit_name, weapon_operator, edits)
-                        logger.info(f"Updated weapon operator for {unit_name}")
-
-                elif obj_type == "TacticVehicleDepictionRegistration":
-                    # Find vehicle depiction by BlackHoleKey instead of namespace
-                    vehicle_depiction = find_obj_by_blackhole_key(
-                        source_path, unit_name, "TacticVehicleDepictionRegistration")
-                    if vehicle_depiction:
-                        _handle_vehicle_depiction(unit_name, vehicle_depiction, edits)
-                        logger.info(f"Updated vehicle depiction for {unit_name}")
-                    else:
-                        logger.error(f"Could not find TacticVehicleDepictionRegistration with BlackHoleKey='{unit_name}'")
+            elif obj_type == "TacticVehicleDepictionRegistration":
+                vehicle_depiction = find_obj_by_blackhole_key(
+                    source_path, unit_name, "TacticVehicleDepictionRegistration")
+                if vehicle_depiction:
+                    _handle_vehicle_depiction(unit_name, vehicle_depiction, edits)
+                    logger.info(f"Updated vehicle depiction for {unit_name}")
+                else:
+                    logger.error(f"Could not find TacticVehicleDepictionRegistration with BlackHoleKey='{unit_name}'")
 
 
 def _handle_weapon_operator(unit_name, weapon_operator, edits, is_new_entry=False):  # noqa
     for row_name_or_type, value in edits.items():
-        if row_name_or_type in ("copy", "modify_donor"):
-            continue
-
         member_access = weapon_operator.v.by_m(row_name_or_type, False)
         if member_access is None:
             continue
@@ -238,9 +203,6 @@ def _handle_weapon_operator(unit_name, weapon_operator, edits, is_new_entry=Fals
 
 def _handle_vehicle_depiction(unit_name, vehicle_depiction, edits, is_new_entry=False):  # noqa
     for row_name_or_type, value in edits.items():
-        if row_name_or_type == "copy":
-            continue
-
         member_access = vehicle_depiction.v.by_m(row_name_or_type, False)
         if row_name_or_type == "Operators":
             operators = member_access

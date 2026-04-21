@@ -2,6 +2,7 @@
 
 from .colors import edit_colors
 from .beacons import edit_uicommonbeaconlabelresources
+from .unit_name_resources import edit_uicommonunitnameresources
 from .templates import edit_buckspecificbuttons
 from .textstyles import edit_textstyles
 from .textures import edit_commontextures
@@ -17,6 +18,7 @@ __all__ = [
     'edit_commontextures',
     'edit_textstyles',
     'edit_uicommonbeaconlabelresources',
+    'edit_uicommonunitnameresources',
     'edit_buckspecificbuttons',
     'edit_uispecificchatview',
     'edit_buckspecifichint',

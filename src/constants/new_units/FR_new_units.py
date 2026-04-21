@@ -19,12 +19,13 @@ FR_NEW_UNITS = {
         "CadavreGUID": "578e09f3-9959-410e-8615-1f90103762c3",
         "NewName": "Chasseurs_CMD2_FR",
         "GameName": {
-            "display": "#CMD GROUPE DE CMDT",
+            "display": "GROUPE DE CMDT",
             "token": "HLYMDCAYOT",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits", "AllowedForMissileRoE", "Commandant", "Crew", "GroundUnits", "Inf_quartier_ok", 
+                "CMD_Unit",
                 "Infanterie", "Infanterie_CMD", "InfmapCommander", "UNITE_Chasseurs_CMD2_FR", "Unite"
             ],
         },
@@ -110,6 +111,7 @@ FR_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -153,6 +155,7 @@ FR_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -166,7 +169,7 @@ FR_NEW_UNITS = {
         "Factory": "EFactory/Logistic",
         "CommandPoints": 205,
         "GameName": {
-            "display": "#CMD AMX-30 B PC",
+            "display": "AMX-30 B PC",
             "token": "PYJVWFJQEC",
         },
         "availability": [0, 0, 2, 0],
@@ -192,6 +195,7 @@ FR_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -227,6 +231,7 @@ FR_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -262,6 +267,7 @@ FR_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -297,6 +303,7 @@ FR_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",

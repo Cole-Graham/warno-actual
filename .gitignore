@@ -18,6 +18,7 @@ python_version_check.py
 tools/dpm_visualizer/user_data.json
 tools/dpm_visualizer/dpm_visualizer_cache.json
 tools/artillery_arc_preview/user_state.json
+tools/fxeditor/out
 # PyInstaller portable build (artillery arc preview)
 build/arc_preview/
 dist/ArtilleryArcPreview/

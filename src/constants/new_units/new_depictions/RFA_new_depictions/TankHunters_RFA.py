@@ -9,7 +9,7 @@ tankhunters_rfa: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
     "valid_files": ["DepictionInfantry.ndf"],
     "DepictionInfantry_ndf": {
         ("AllWeaponAlternatives_TankHunters_RFA", None): ( # (namespace, object type)
-            # # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "add", "remove", "replace")
+            # # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "insert", "remove", "replace")
             # 1: ("edit", [("MeshDescriptor", "Panzerfaust_3"), ("SelectorId", "WeaponAlternative_2")]),
             # 2: ("edit", [("MeshDescriptor", "Panzerfaust_3"), ("SelectorId", "WeaponAlternative_3")]),
             # 3: ("edit", [("ReferenceMeshForSkeleton", "Panzerfaust_3")]),

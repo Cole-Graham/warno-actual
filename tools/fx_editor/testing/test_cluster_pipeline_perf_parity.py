@@ -21,9 +21,14 @@ def _has_ndf_parse() -> bool:
 
 
 def _vanilla_cluster_path() -> Path:
-    p = ROOT / 'fx_impact_sol_HE_M270_227mm_Cluster_1.ndf'
-    if p.exists():
-        return p
+    """Prefer game vanilla M270 cluster NDF; mlrs ``*_35m_*`` is generated fixture fallback only."""
+    for rel in (
+        'fx_impact_sol_HE_M270_227mm_Cluster_1.ndf',
+        'src/constants/fx/generated/fx_impact_sol_HE_M270_227mm_Cluster_1.ndf',
+    ):
+        p = ROOT / rel
+        if p.exists():
+            return p
     return ROOT / 'src' / 'constants' / 'fx' / 'generated' / 'fx_impact_mlrs_cluster_ap_35m_1.ndf'
 
 
@@ -161,6 +166,7 @@ class ClusterPipelinePerfParityTests(unittest.TestCase):
             'effect_call_batch_scale_max': None,
             'param_radius_falloff_by_vfx': None,
             'call_radius_falloff_by_vfx': None,
+            'consistent_call_density': False,
             'pre_emit_roundtrip': False,
             'post_emit_roundtrip': False,
         }

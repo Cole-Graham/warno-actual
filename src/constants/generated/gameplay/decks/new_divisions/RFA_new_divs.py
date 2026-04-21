@@ -51,6 +51,7 @@ rfa_new_divs = {
         "summary_text": ("West German airborne division.", "SUMWGAIR"),
         "history_text": ("West German Airborne division.", "HISWGAIR"),
         "activation_points": 100,
+        "matrix_override": "airborne_2",
         "type_texture": "infantryReg",
         "division_rules": [
             RFA_airborne_newdivisionrules,

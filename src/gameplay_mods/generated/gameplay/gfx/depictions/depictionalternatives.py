@@ -2,14 +2,18 @@
 
 from typing import Any
 from src.constants.new_units import NEW_UNITS
+from src.constants.unit_edits import load_unit_edits
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
+
+UNIT_EDITS = load_unit_edits()
 
 def edit_gen_gp_gfx_depictionalternatives(source_path: Any) -> None:
     """GameData/Generated/Gameplay/Gfx/Depictions/DepictionAlternatives.ndf"""
     
     _handle_new_units(source_path)
+    _handle_unit_edits(source_path)
     
     
 def _handle_new_units(source_path: Any) -> None:
@@ -59,3 +63,24 @@ def _handle_new_units(source_path: Any) -> None:
             continue
         source_path.add(entry)
         logger.info(f"Added alternatives depiction for {unit_name}")
+        
+        
+def _handle_unit_edits(source_path: Any) -> None:
+    """Handle unit edits for DepictionAlternatives.ndf"""
+    
+    logger.info("Updating alternatives depiction entries")
+    
+    for unit_name, edits in UNIT_EDITS.items():
+        if "Alternatives" in edits and "mesh" in edits["Alternatives"]:
+            alternatives_list = source_path.by_namespace(f"Alternatives_{unit_name}", False)
+            if alternatives_list:
+                prefix = "$/GFX/DepictionResources/Modele_"
+                # High
+                alternatives_list.v[0].v.by_m("MeshDescriptor").v = f"{prefix}{edits["Alternatives"]["mesh"]}"
+                # Mid
+                alternatives_list.v[1].v.by_m("MeshDescriptor").v = f"{prefix}{edits["Alternatives"]["mesh"]}_MID"
+                # Low
+                alternatives_list.v[2].v.by_m("MeshDescriptor").v = f"{prefix}{edits["Alternatives"]["mesh"]}_LOW"
+                logger.info(f"Updated alternatives depiction for {unit_name}")
+            else:
+                logger.error(f"No alternatives list found for {unit_name}")

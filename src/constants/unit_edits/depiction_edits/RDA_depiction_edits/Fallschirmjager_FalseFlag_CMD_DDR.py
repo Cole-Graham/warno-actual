@@ -8,7 +8,7 @@ fallschirmjager_falseflag_cmd_ddr: Dict[str, Dict[Union[str, Tuple[str, str]], d
     "valid_files": ["DepictionInfantry.ndf", "WeaponDescriptor.ndf"],
     "DepictionInfantry_ndf": {
         ("AllWeaponAlternatives_Fallschirmjager_FalseFlag_CMD_DDR", None): { # (namespace, object type)
-            # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "add", "remove", "replace")
+            # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "insert", "remove", "replace")
             1: ("insert", [("SelectorId", "WeaponAlternative_2"),("MeshDescriptor", "M249")]),
             2: ("edit", [("SelectorId", "WeaponAlternative_3"),("MeshDescriptor", "M72A4")]), # (selector_id or mesh)
             3: ("insert", [("SelectorId", "WeaponAlternative_4"),("MeshDescriptor", "MainNue")]),

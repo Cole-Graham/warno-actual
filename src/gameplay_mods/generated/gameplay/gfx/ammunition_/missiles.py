@@ -13,14 +13,16 @@ from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.ndf_utils import strip_quotes
 from src.utils.logging_utils import setup_logger
 
-from .ammunition import get_supply_costs
+from .ammunition import get_supply_costs, _blanket_disable_deployment_time
 from .handlers import (
     apply_bomb_damage_standards,
+    apply_category_aa_missile_standards,
     apply_category_sead_standards,
     apply_clu_sol_trait_standards,
     remove_vanilla_instances,
     vanilla_renames_ammunition,
 )
+from .handlers.aa_missile_category_standards import apply_aa_suppress_standard
 
 logger = setup_logger(__name__)
 
@@ -58,6 +60,26 @@ def edit_gen_gp_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]
             if data is None:
                 continue
 
+            # Skip _HAGRU is_new entries when their donor (the base ammo) has
+            # no helicopter engagement range. The HAGRU split is meaningful only
+            # when the original *can* engage helicopters; when helo range is 0
+            # the original is already plane-only and no anti-plane variant is
+            # needed (the original itself gets DistanceToTarget=False via the
+            # category standard).
+            if (
+                is_new
+                and weapon_name.endswith("_HAGRU")
+                and donor
+                and category in ("A2A", "SAM", "MANPAD")
+            ):
+                donor_helo_range = _lookup_donor_helo_range(source_path, donor, data)
+                if donor_helo_range == 0:
+                    logger.info(
+                        f"Skipping {weapon_name}: donor {donor} has "
+                        f"MaximumRangeHelicopterGRU=0 (plane-only base)",
+                    )
+                    continue
+
             logger.info(f"Processing missile {weapon_name} (is_new={is_new})")
             try:
                 ammo_data = data.get("Ammunition", None)
@@ -78,11 +100,16 @@ def edit_gen_gp_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]
                     logger.error(f"Failed getting descriptor for {weapon_name}: {str(e)}")
                     continue
 
-                # SEAD category standards first, then ``missiles`` dict edits (constants override)
+                # Category standards first, then ``missiles`` dict edits.
+                # The AA standard runs *after* dict edits so it can read the
+                # final ``MaximumRangeHelicopterGRU`` (incl. dict overrides) to
+                # decide whether to disable range-scaled accuracy.
                 try:
                     apply_category_sead_standards(base_descr, category)
+                    apply_aa_suppress_standard(base_descr, weapon_name, game_db, logger)
                     if ammo_data:
                         _apply_missile_edits(base_descr, data, ammo_data, is_new)
+                    apply_category_aa_missile_standards(base_descr, category, weapon_name)
                     logger.debug(f"Applied edits to {weapon_name}")
                 except Exception as e:
                     logger.error(f"Failed applying edits to {weapon_name}: {str(e)}")
@@ -92,7 +119,7 @@ def edit_gen_gp_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]
                 try:
                     if "WeaponDescriptor" in data and "SalvoLengths" in data["WeaponDescriptor"]:
                         _handle_salvo_variants(
-                            source_path, base_descr, weapon_name, data, is_new, category,
+                            source_path, base_descr, weapon_name, data, is_new, category, game_db,
                         )
                     elif is_new:
                         # Only add base descriptor if no salvo variants
@@ -116,6 +143,9 @@ def edit_gen_gp_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]
                 logger.error(f"Failed processing missile {weapon_name}: {str(e)}")
                 continue
 
+        # Blanket-disable HasDeploymentTime on missiles not used by protected units
+        _blanket_disable_deployment_time(source_path, game_db)
+
         # Write dictionary entries
         if ingame_names or calibers:
             try:
@@ -127,6 +157,46 @@ def edit_gen_gp_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]
     except Exception as e:
         logger.error(f"Fatal error in edit_missiles: {str(e)}")
         raise
+
+
+def _lookup_donor_helo_range(source_path: Any, donor: str, data: Dict) -> int | None:
+    """Return the donor descriptor's ``MaximumRangeHelicopterGRU`` as int.
+
+    Tries the same namespace resolution as ``_create_new_descriptor``: looks
+    for salvo-length variants when configured, then falls back to the bare
+    ``Ammo_{donor}`` namespace, then plain ``donor``. Returns ``None`` if the
+    donor descriptor or its member can't be resolved.
+    """
+    donor_descr = None
+    if "WeaponDescriptor" in data and "SalvoLengths" in data["WeaponDescriptor"]:
+        for (name, _, _, _), missile_data in missiles.items():
+            if name == donor and "WeaponDescriptor" in missile_data:
+                if "SalvoLengths" in missile_data["WeaponDescriptor"]:
+                    for salvo_length in missile_data["WeaponDescriptor"]["SalvoLengths"]:
+                        if salvo_length == 1:
+                            donor_descr = source_path.by_n(f"Ammo_{donor}")
+                        else:
+                            donor_descr = source_path.by_n(
+                                f"Ammo_{donor}_salvolength{salvo_length}",
+                            )
+                        if donor_descr:
+                            break
+                break
+
+    if not donor_descr:
+        donor_descr = source_path.by_n(f"Ammo_{donor}")
+        if not donor_descr:
+            donor_descr = source_path.by_n(donor)
+    if not donor_descr:
+        return None
+
+    membr = donor_descr.v.by_m("MaximumRangeHelicopterGRU", False)
+    if membr is None:
+        return None
+    try:
+        return int(str(membr.v))
+    except (TypeError, ValueError):
+        return None
 
 
 def _create_new_descriptor(source_path, weapon_name, donor, data):
@@ -161,10 +231,8 @@ def _create_new_descriptor(source_path, weapon_name, donor, data):
     # Create base descriptor
     base_descr = donor_descr.copy()
 
-    # Generate new GUIDs
+    # Generate new GUID for missile ammunition descriptor
     base_descr.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
-    hitroll_obj = base_descr.v.by_m("HitRollRuleDescriptor").v
-    hitroll_obj.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
 
     # Set namespace
     base_descr.namespace = f"Ammo_{weapon_name}"
@@ -226,6 +294,7 @@ def _handle_salvo_variants(
     data: Dict,
     is_new: bool,
     category: str,
+    game_db: Dict[str, Any] = None,
 ) -> None:
     """Handle salvo variants for missile."""
     logger.info(f"{'Creating' if is_new else 'Editing'} salvo variants for {weapon_name}")
@@ -253,7 +322,6 @@ def _handle_salvo_variants(
                 # For new missiles, copy the already-edited base descriptor
                 variant = base_descr.copy()
                 variant.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
-                variant.v.by_m("HitRollRuleDescriptor").v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
                 variant.namespace = namespace
 
                 # Only apply salvo-specific values
@@ -271,10 +339,14 @@ def _handle_salvo_variants(
                 if existing:
                     logger.debug(f"Found existing variant {namespace}")
 
-                    # Category standards first, then constants (same order as base)
+                    # Category standards first, then dict edits (same order as base);
+                    # AA standard runs after edits to see final MaximumRangeHelicopterGRU.
+                    apply_category_sead_standards(existing, category)
+                    if game_db is not None:
+                        apply_aa_suppress_standard(existing, weapon_name, game_db, logger)
                     if "Ammunition" in data:
-                        apply_category_sead_standards(existing, category)
                         _apply_missile_edits(existing, data, data["Ammunition"], is_new)
+                    apply_category_aa_missile_standards(existing, category, weapon_name)
 
                     # Then update salvo-specific values
                     if base_cost is not None:
@@ -287,13 +359,16 @@ def _handle_salvo_variants(
                     logger.info(f"Creating missing salvo variant {namespace}")
                     variant = base_descr.copy()
                     variant.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
-                    variant.v.by_m("HitRollRuleDescriptor").v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
                     variant.namespace = namespace
 
-                    # Category standards first, then constants (same order as base)
+                    # Category standards first, then dict edits (same order as base);
+                    # AA standard runs after edits to see final MaximumRangeHelicopterGRU.
+                    apply_category_sead_standards(variant, category)
+                    if game_db is not None:
+                        apply_aa_suppress_standard(variant, weapon_name, game_db, logger)
                     if "Ammunition" in data:
-                        apply_category_sead_standards(variant, category)
                         _apply_missile_edits(variant, data, data["Ammunition"], is_new)
+                    apply_category_aa_missile_standards(variant, category, weapon_name)
 
                     # Then apply salvo-specific values
                     if base_cost is not None:
@@ -315,9 +390,6 @@ def _apply_missile_edits(descr: Any, data: Dict, ammo_data: Dict, is_new: bool) 
 
     # Apply Arme edits
     if "Ammunition" in data:
-
-        if "arme" in data["Ammunition"] and "DamageFamily" in data["Ammunition"]["arme"]:
-            descr.v.by_m("Arme").v.by_m("Family").v = data["Ammunition"]["arme"]["DamageFamily"]
 
         if "token" in data["Ammunition"]:
             descr.v.by_m("Name").v = "'" + data["Ammunition"]["token"] + "'"

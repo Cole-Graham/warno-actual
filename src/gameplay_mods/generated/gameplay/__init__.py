@@ -8,6 +8,7 @@ from .decks import (
     edit_gen_gp_decks_strategicdecks,
     edit_gen_gp_decks_strategicpacks,
 )
+from .effects import edit_gen_gp_effects_effetssurunite
 from .gfx import (
     edit_gen_gp_gfx_ammunition,
     edit_gen_gp_gfx_ammunitionmissiles,
@@ -28,7 +29,6 @@ from .gfx import (
     edit_gen_gp_gfx_depictioninfantry,
     edit_gen_gp_gfx_depictionvehicles,
     edit_gen_gp_gfx_depictionvehiclesshowroom,
-    edit_gen_gp_gfx_effetssurunite,
     edit_gen_gp_gfx_experiencelevels,
     edit_gen_gp_gfx_firedescriptor,
     edit_gen_gp_gfx_ndfdepictionlist,
@@ -71,7 +71,7 @@ __all__ = [
     'edit_gen_gp_gfx_depictioninfantry',
     'edit_gen_gp_gfx_depictionvehicles',
     'edit_gen_gp_gfx_depictionvehiclesshowroom',
-    'edit_gen_gp_gfx_effetssurunite',
+    'edit_gen_gp_effects_effetssurunite',
     'edit_gen_gp_gfx_experiencelevels',
     'edit_gen_gp_gfx_firedescriptor',
     'edit_gen_gp_gfx_ndfdepictionlist',

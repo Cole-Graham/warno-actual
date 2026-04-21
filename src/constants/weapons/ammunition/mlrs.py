@@ -87,8 +87,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "RadiusSplashSuppressDamagesGRU": 293,
                 "TimeBetweenTwoSalvos": 240.0,
                 "SupplyCost": 2100.0,
-                "FlightTimeForSpeed": 7.0,
-                "DistanceForSpeedGRU": 3063,
+                # "FlightTimeForSpeed": 7.0,
+                # "DistanceForSpeedGRU": 3063,
             },
         },
     },
@@ -110,12 +110,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "SuppressDamages": 250,
                 "DispersionAtMaxRangeGRU": 1500,
                 "DispersionAtMinRangeGRU": 500,
+                "ProjectileSpeedGRU": 750.0,
                 "AimingTime": 18.0,
                 "TimeBetweenTwoSalvos": 70.0, # Experimental, realistic short reload balanced with supply cost (130s -> 70s)
                 "ShotsCountPerSalvo": 12,
                 "SupplyCost": 1800.0, # 960 -> 1800 (same was Wargame SMERCH)
                 "SimultaneousShotsCount": 1,
                 "AffichageMunitionParSalve": 12,
+                "PitchForParabolic": 0.52,
             },
         },
     },
@@ -163,6 +165,19 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("RocketArt_M21OF_122mm_salvolength36", "MLRS", None, False): { # MOR. 9k55 Grad 1
+        "Ammunition": {
+            "parent_membr": {
+                "PhysicalDamages": 4.8,
+                "SuppressDamages": 400,
+                "RadiusSplashPhysicalDamagesGRU": 122,
+                "RadiusSplashSuppressDamagesGRU": 163,
+                "TimeBetweenTwoSalvos": 220.0,
+                "SupplyCost": 522.0,
+            },
+        },
+    },
 
     ("RocketArt_M21OF_122mm_RM70", "MLRS", "RocketArt_M21OF_122mm", True): { # 646
         "Ammunition": {
@@ -185,10 +200,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Index": 7,
             },
             "parent_membr": {
-                "ImpactHappening": "'MLRSClusterAP100m'",   
+                "ImpactHappening": "'MLRSClusterAP125m'",   
                 "PhysicalDamages": 1.0,
-                "RadiusSplashPhysicalDamagesGRU": 100,
-                "RadiusSplashSuppressDamagesGRU": 133,
+                "RadiusSplashPhysicalDamagesGRU": 125,
+                "RadiusSplashSuppressDamagesGRU": 167,
                 "DispersionAtMaxRangeGRU": 600,
                 "DispersionAtMinRangeGRU": 250,
             },
@@ -232,10 +247,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Index": 6,
             },
             "parent_membr": {
-                "ImpactHappening": "'MLRSClusterAP100m'",
+                "ImpactHappening": "'MLRSClusterAP125m'",
                 "PhysicalDamages": 1,
-                "RadiusSplashPhysicalDamagesGRU": 100,
-                "RadiusSplashSuppressDamagesGRU": 133,
+                "RadiusSplashPhysicalDamagesGRU": 125,
+                "RadiusSplashSuppressDamagesGRU": 167,
                 "DispersionAtMaxRangeGRU": 600,
                 "DispersionAtMinRangeGRU": 250,
             },

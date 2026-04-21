@@ -59,8 +59,11 @@ def _handle_unit_edits(source_path, game_db, unit_edits, unit_edits_dic_entries)
     for unit, edits in unit_edits.items():
         
         unit_name = unit
-        descr_n = f"Descriptor_Unit_{unit_name}"
-        modules_list = source_path.by_n(descr_n).v.by_m("ModulesDescriptors")
+        unit_descr = source_path.by_n(f"Descriptor_Unit_{unit_name}", strict=False)
+        if not unit_descr:
+            logger.warning(f"Unit descriptor not found for {unit_name}")
+            continue
+        modules_list = unit_descr.v.by_m("ModulesDescriptors")
         _handle_modules_list(game_db, unit_edits_dic_entries, "unit_edits", None, unit_name, edits, modules_list)
         logger.info(f"- Processed unit edits for {unit_name}")
     
@@ -98,18 +101,43 @@ def _handle_new_units(source_path, game_db, new_units_dic_entries, unit_edits) -
 def _handle_batch_changes(source_path, game_db) -> None:
     """Handle batch changes for UniteDescriptor.ndf"""
     logger.info("Processing batch changes for UniteDescriptor.ndf")
-    
+
+    deployment_data = game_db.get("deployment_time_units", {})
+    protected_units = set(deployment_data.get("protected_units", []))
+
+    removed_count = 0
+    added_count = 0
     for unit_descr in source_path:
         modules_list = unit_descr.v.by_m("ModulesDescriptors")
-        
+
         # Remove frontline visual mechanic from CVs (they can still capture zones)
         frontline_module = find_obj_by_type(modules_list.v, "TInfluenceScoutModuleDescriptor")
         if frontline_module:
             modules_list.v.remove(frontline_module.index)
+
+        unit_name = unit_descr.n.replace("Descriptor_Unit_", "")
+        dep_module = find_obj_by_type(modules_list.v, "TWeaponDeploymentModuleDescriptor")
+
+        if unit_name in protected_units:
+            # Protected units MUST have the module — add it if vanilla didn't have one
+            if dep_module is None:
+                modules_list.v.add(
+                    "TWeaponDeploymentModuleDescriptor("
+                    "    TimeForWeaponDeployment = 15"
+                    "    TimeForWeaponPacking = 1"
+                    ")",
+                )
+                added_count += 1
         else:
-            continue
-            
-    logger.info("Batch changes processed")
+            # Non-protected units MUST NOT have the module
+            if dep_module is not None:
+                modules_list.v.remove(dep_module.index)
+                removed_count += 1
+
+    logger.info(
+        f"Batch WeaponDeployment: removed from {removed_count} units, "
+        f"added to {added_count} units",
+    )
 
 def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_name, edits, modules_list) -> None:
     """Handle modules list edits for new and existing units"""
@@ -117,6 +145,7 @@ def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_nam
     unit_data = game_db["unit_data"].get(unit_name, None)
 
     found_capacite_module = find_obj_by_type(modules_list.v, "TCapaciteModuleDescriptor") is not None
+    found_weapondeployment_module = find_obj_by_type(modules_list.v, "TWeaponDeploymentModuleDescriptor") is not None
 
     module_handlers = {
         "TTypeUnitModuleDescriptor": { "handler": _handle_typeunit_module, "args": [] },
@@ -127,7 +156,7 @@ def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_nam
         "InfantryApparenceModuleDescriptor": { "handler": _handle_infantryapparence_module, "args": [] },
         "VehicleApparenceModuleDescriptor": { "handler": _handle_vehicleapparence_module, "args": [] },
         "TAutoCoverModuleDescriptor": { "handler": _handle_autocover_module, "args": [] },
-        "TBaseDamageModuleDescriptor": { "handler": _handle_basedamage_module, "args": [] },
+        "TBaseDamageModuleDescriptor": { "handler": _handle_basedamage_module, "args": [donor] },
         "TDamageModuleDescriptor": { "handler": _handle_damage_module, "args": [] },
         "TDangerousnessModuleDescriptor": { "handler": _handle_dangerousness_module, "args": [] },
         # "TRoutModuleDescriptor": { "handler": handle_rout_module, "args": [] },
@@ -159,6 +188,7 @@ def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_nam
         # "TUnitUpkeepModuleDescriptor": { "handler": handle_unitupkeep_module, "args": [] },
         "TDeploymentShiftModuleDescriptor": { "handler": _handle_deploymentshift_module, "args": [] },
         "TCameraShowroomModuleDescriptor": { "handler": _handle_camerashowroom_module, "args": [] },
+        "TWeaponDeploymentModuleDescriptor": { "handler": _handle_weapondeployment_module, "args": [] },
     }
     # Iterate over module handlers
     for module_type, handling_data in module_handlers.items():
@@ -195,9 +225,21 @@ def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_nam
 # Add modules
 def _add_modules(game_db, edit_type, unit_name, edits, modules_list) -> None:
     """Add modules to new and existing units"""
-    deployment_shift = edits.get("DeploymentShift")
-    found_deploymentshift_module = find_obj_by_type(
-        modules_list.v, "TDeploymentShiftModuleDescriptor") is not None
+    deployment_shift = edits.get("DeploymentShift", None)
+    found_deploymentshift_module = find_obj_by_type(modules_list.v, "TDeploymentShiftModuleDescriptor") is not None
+    
+    weapon_deployment = edits.get("WeaponDeployment", None)
+    found_weapondeployment_module = find_obj_by_type(modules_list.v, "TWeaponDeploymentModuleDescriptor") is not None
+    
+    if not found_weapondeployment_module and weapon_deployment is not None:
+        weapon_deployment_module = (
+            f"TWeaponDeploymentModuleDescriptor("
+            f"    TimeForWeaponDeployment = {weapon_deployment['TimeForWeaponDeployment']}"
+            f"    TimeForWeaponPacking = {weapon_deployment['TimeForWeaponPacking']}"
+            f")"
+        )
+        modules_list.v.add(weapon_deployment_module)
+        logger.info(f"Added TWeaponDeploymentModuleDescriptor to {unit_name}")
 
     if edit_type == "new_units":
         for module in edits.get("modules_add", []):
@@ -254,7 +296,14 @@ def _add_modules(game_db, edit_type, unit_name, edits, modules_list) -> None:
         for module in edits.get("modules_add", []):
             modules_list.v.add(module)
 
-        if "EOrderType/Sell" in edits.get("orders", {}).get("add_orders", []):
+        existing_orders = set()
+        for entry in game_db.get("order_types", {}).get("order_sets_to_units", []):
+            if unit_name in entry.get("units", []):
+                existing_orders = set(entry.get("orders", []))
+                break
+        if "EOrderType/Sell" in existing_orders:
+            logger.debug(f"Order EOrderType/Sell already present on {unit_name}, skipping")
+        elif "EOrderType/Sell" in edits.get("orders", {}).get("add_orders", []):
             sell_module = "~/SellModuleDescriptor"
             modules_list.v.add(sell_module)  # noqa
 
@@ -262,7 +311,7 @@ def _add_modules(game_db, edit_type, unit_name, edits, modules_list) -> None:
 # Remove modules
 def _remove_modules(game_db, edit_type, unit_name, edits, modules_list) -> None:
     """Remove modules from new and existing units"""
-    
+
     for module_to_remove in edits.get("modules_remove", []):
         if module_to_remove.startswith("~/"):
             for module in modules_list.v:
@@ -344,6 +393,12 @@ def _handle_landmovement_module(logger, game_db, unit_data, edit_type, unit_name
                                 edits, module, *args) -> None:
     """Handle TLandMovementModuleDescriptor for existing and new units"""
     
+    if "LandMovement" in edits:
+        if "TerrainSpeedFactors" in edits["LandMovement"]:
+            new_value = f"$/GFX/Terrains/{edits['LandMovement']['TerrainSpeedFactors']}TerrainSpeedFactors"
+            module.v.by_m("TerrainSpeedFactors").v = new_value
+            logger.info(f"Updated {unit_name} terrain speed factors to {new_value}")
+    
     if "factor" in edits.get("road_speed", {}):
         factor = edits["road_speed"]["factor"]
         module.v.by_m("SpeedBonusFactorOnRoad").v = "{:0.2f}".format(factor)
@@ -359,7 +414,7 @@ def _handle_landmovement_module(logger, game_db, unit_data, edit_type, unit_name
 def _handle_airplanemovement_module(logger, game_db, unit_data, edit_type, unit_name,
                                     edits, module, *args) -> None:
     """Handle AirplaneMovementDescriptor for existing and new units"""
-
+    
     if "max_speed" in edits:
         old_value = module.v.by_m("SpeedInKmph").v
         module.v.by_m("SpeedInKmph").v = str(edits["max_speed"])
@@ -546,8 +601,9 @@ def _handle_vehicleapparence_module(logger, game_db, unit_data, edit_type, unit_
         else:
             module.v.by_m("MimeticName").v = f'"{unit_name}"'
     
-    if edit_type == "unit_edits":
-        pass
+    if edit_type == "unit_edits" and "VehicleApparence" in edits:
+        if "ReferenceMesh" in edits["VehicleApparence"]:
+            module.v.by_m("ReferenceMesh").v = f'$/GFX/DepictionResources/Modele_{edits["VehicleApparence"]["ReferenceMesh"]}'
 
 
 # TAutoCoverModuleDescriptor
@@ -562,6 +618,29 @@ def _handle_autocover_module(logger, game_db, unit_data, edit_type, unit_name,
 def _handle_basedamage_module(logger, game_db, unit_data, edit_type, unit_name,
                               edits, module, *args) -> None:
     """Handle TBaseDamageModuleDescriptor for existing and new units"""
+    donor = args[0]
+    tagset = None
+    menu_icon = None
+    if unit_data is None:
+        donor_data = game_db["unit_data"].get(donor, None)
+        if donor_data is None:
+            logger.warning(f"No donor data found for {donor}")
+        else:
+            tagset = donor_data.get("tags", None)
+            menu_icon = donor_data.get("menu_icon", None)
+    else:
+        tagset = unit_data.get("tags", None)
+        menu_icon = unit_data.get("menu_icon", None)
+        
+    if not tagset:
+        logger.warning(f"No tagset found for {unit_name}")
+    elif not menu_icon:
+        logger.warning(f"No menu icon found for {unit_name}")
+    else:
+        is_airplane = "Avion" in tagset
+        is_not_uav = menu_icon is not "Texture_RTS_H_uav"
+        if is_airplane and is_not_uav:
+            module.v.by_m("StunDamageLevelsPack").v = "~/DamageLevelsPackDescriptor_Unit_packStun_Airplanes"
     
     if "strength" in edits:
         module.v.by_m("MaxPhysicalDamages").v = str(edits["strength"])
@@ -571,7 +650,7 @@ def _handle_basedamage_module(logger, game_db, unit_data, edit_type, unit_name,
 def _handle_damage_module(logger, game_db, unit_data, edit_type, unit_name,
                                 edits, module, *args) -> None:
     """Handle TDamageModuleDescriptor for existing and new units"""
-    
+
     if "ECM" in edits:
         module.v.by_m("HitRollECM").v = str(edits["ECM"])
     
@@ -828,4 +907,12 @@ def _handle_camerashowroom_module(logger, game_db, unit_data, edit_type, unit_na
     
     if edit_type == "unit_edits":
         pass
-    
+
+def _handle_weapondeployment_module(logger, game_db, unit_data, edit_type, unit_name,
+                                    edits, module, *args) -> None:
+    """Handle TWeaponDeploymentModuleDescriptor for existing and new units"""
+    weapon_deployment = edits.get("WeaponDeployment", None)
+    if weapon_deployment:
+        module.v.by_m("TimeForWeaponDeployment").v = str(weapon_deployment["TimeForWeaponDeployment"])
+        module.v.by_m("TimeForWeaponPacking").v = str(weapon_deployment["TimeForWeaponPacking"])
+        logger.info(f"Updated TWeaponDeploymentModuleDescriptor for {unit_name}")

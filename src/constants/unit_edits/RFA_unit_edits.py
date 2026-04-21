@@ -17,26 +17,31 @@ rfa_unit_edits = {
             "remove_specs": ["'_para'"],
         },
         
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "Faun_Kraka_CMD_RFA": {
         "CommandPoints": 145,
         "availability": [0, 4, 0, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "TPZ_Fuchs_CMD_RFA": {
         "CommandPoints": 155,
         "availability": [0, 3, 0, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "Bo_105_CMD_RFA": {
         "CommandPoints": 115,
         "availability": [0, 3, 0, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "Alouette_II_CMD_RFA": {
         "CommandPoints": 115,
         "availability": [0, 3, 0, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
     
     "DCA_FK20_2_20mm_RFA": {
@@ -49,8 +54,12 @@ rfa_unit_edits = {
         },
         "availability": [9, 7, 0, 0],
         "max_speed": 6,
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 1,
         },
         "UpgradeFromUnit": "FOB_RFA",
     },
@@ -69,22 +78,27 @@ rfa_unit_edits = {
         },
         "availability": [9, 7, 0, 0],
         "max_speed": 6,
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 1,
         },
         "UpgradeFromUnit": "FOB_RFA",
     },
     
     # RFA INF
     "Panzergrenadier_CMD_RFA": {  # #CMD Fs-JÄGER FÜH.
-        "CommandPoints": 45,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR PZ.GRENADIER LDR.",
+            "display": "PZ.GRENADIER",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -127,10 +141,11 @@ rfa_unit_edits = {
     "Fallschirmjager_CMD_RFA": {  # #CMD Fs-JÄGER FÜH.
         "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
-        "GameName": {"display": "#LDR FALLSCHIRMJÄGER LDR."},
+        "GameName": {"display": "FALLSCHIRMJÄGER"},
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -167,11 +182,12 @@ rfa_unit_edits = {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR JÄGER LDR."
+            "display": "JÄGER"
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -206,11 +222,12 @@ rfa_unit_edits = {
         "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR PIONIER LDR."
+            "display": "PIONIER"
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -247,11 +264,12 @@ rfa_unit_edits = {
         "CommandPoints": 60,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR GEBIRGSJÄGER LDR."
+            "display": "GEBIRGSJÄGER"
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -451,6 +469,21 @@ rfa_unit_edits = {
             },
         },
     },
+
+    "Strandmeister_RFA": {
+        "CommandPoints": 40,
+        "armor": "Infantry_armor_reference",
+        "availability": [0, 6, 4, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "Grenade_Satchel_Charge": 6,
+            },
+        },
+    },
     
     "Feldgendarmerie_RFA": {
         "CommandPoints": 15,
@@ -486,6 +519,16 @@ rfa_unit_edits = {
                 },
             },
         },
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+    },
+
+    "Security_Marine_RFA": {
+        "CommandPoints": 40,
+        "armor": "Infantry_armor_reference",
+        "availability": [10, 7, 0, 0],
+        "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
@@ -781,6 +824,44 @@ rfa_unit_edits = {
             "add_specs": ["'infantry_equip_medium'"],
         },
     },
+
+    "Deckungsgruppe_RFA": {
+        "armor": "Infantry_armor_reference",
+        "CommandPoints": 40, 
+        "max_speed": 26,
+        "availability": [12, 9, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "strength": 6,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "animate": {
+                    "Sniper_G3A3ZF_double": False,
+                },
+                "quantity": {
+                    "Sniper_G3A3ZF_double": 2,
+                },
+                "replace": [("Sniper_G3A3ZF", "Sniper_G3A3ZF_double")],
+            },
+        },
+    },
+
+    "Groupe_AT_RFA": {
+        "armor": "Infantry_armor_reference",
+        "CommandPoints": 30, # This could maybe be 25 points... maybe
+        "max_speed": 26,
+        "availability": [12, 9, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "strength": 6,
+        "WeaponDescriptor": {
+            "Salves": {
+                "RocketInf_PzF_44": 4,
+            },
+        },
+    },
     
     "ATteam_RCL_M40A1_RFA": {
         "CommandPoints": 35,
@@ -888,24 +969,39 @@ rfa_unit_edits = {
             "add_specs": ["'refundable_unit'",],
         },
     },
-    
-    "VW_T2b_MP_RFA": { # MP
-        "CommandPoints": 20,
+
+    "MAN_630_L2AE_trans_RFA": {
+        "CommandPoints": 15,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'",],
         },
     },
     
+    "VW_T2b_MP_RFA": { # MP
+        "CommandPoints": 15,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+    },
+    
+    "Kubelwagen_181_MP_RFA": { # MP
+        "CommandPoints": 15,
+        "SpecialtiesList": {
+            "add_specs": ["'refundable_unit'",],
+        },
+    },
+
     # RFA ARTY
     "M577_RFA": {
         "CommandPoints": 60,
         "GameName": {
-            "display": "#LDR M577GA2 TACFIRE",
+            "display": "M577GA2 TACFIRE",
             "token": "M577GA2LDR",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "GroundUnits",
                 "UNITE_M577_RFA",
@@ -1000,6 +1096,11 @@ rfa_unit_edits = {
         "availability": [3, 2, 0, 0],
     },
 
+    "M107A2_175mm_RFA": {
+        "CommandPoints": 185,
+        "availability": [2, 0, 1, 0],
+    },
+
     "M110A2_Howz_RFA": {
         "CommandPoints": 220,
         "availability": [2, 0, 1, 0]
@@ -1019,12 +1120,13 @@ rfa_unit_edits = {
     "M48A2GA2_CMD_RFA": {
         "CommandPoints": 75,
         "GameName": {
-            "display": "#LDR PZ.BEF. M48A2GA2",
+            "display": "PZ.BEF. M48A2GA2",
             "token": "VLNKYMRDNH",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -1051,12 +1153,13 @@ rfa_unit_edits = {
     "Leopard_1A1_CMD_RFA": {
         "CommandPoints": 80,
         "GameName": {
-            "display": "#LDR PZ.BEF. LEOPARD 1A1A1",
+            "display": "PZ.BEF. LEOPARD 1A1A1",
             "token": "XCPWTQSWXH",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -1082,12 +1185,13 @@ rfa_unit_edits = {
     "Leopard_1A4_CMD_RFA": {
         "CommandPoints": 90,
         "GameName": {
-            "display": "#LDR PZ.BEF. LEOPARD 1A4",
+            "display": "PZ.BEF. LEOPARD 1A4",
             "token": "ELPLTKBAYX",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -1113,12 +1217,13 @@ rfa_unit_edits = {
     "Leopard_1A5_CMD_RFA": {
         "CommandPoints": 110,
         "GameName": {
-            "display": "#LDR PZ.BEF. LEOPARD 1A5",
+            "display": "PZ.BEF. LEOPARD 1A5",
             "token": "GLAVEMFHKO",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -1147,12 +1252,13 @@ rfa_unit_edits = {
             "top": (4, None),
         },
         "GameName": {
-            "display": "#LDR PZ.BEF. LEOPARD 2A3",
+            "display": "PZ.BEF. LEOPARD 2A3",
             "token": "IKKNOBNJOQ",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -1178,12 +1284,13 @@ rfa_unit_edits = {
     "Leopard_2A1_CMD_RFA": {
         "CommandPoints": 175,
         "GameName": {
-            "display": "#LDR PZ.BEF. LEOPARD 2A1",
+            "display": "PZ.BEF. LEOPARD 2A1",
             "token": "LWSMADUUPS",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -1212,12 +1319,13 @@ rfa_unit_edits = {
             "top": (4, None),
         },
         "GameName": {
-            "display": "#LDR PZ.BEF. LEOPARD 2A4(C)",
+            "display": "PZ.BEF. LEOPARD 2A4(C)",
             "token": "PBLIFBOOCD",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -1302,6 +1410,17 @@ rfa_unit_edits = {
         "CommandPoints": 70,
         "availability": [10, 7, 0, 0],
     },
+
+    "Leopard_1A2A1_RFA": {
+        "CommandPoints": 70,
+        "availability": [10, 7, 0, 0],
+        # "WeaponDescriptor": {
+        #     "Salves": {
+        #         "MMG_AANF1_7_62mm": 44,
+        #     },
+        # },
+        "UpgradeFromUnit": "Leopard_1A1_CMD_RFA",
+    },
     
     "Leopard_1A1_RFA": {
         "CommandPoints": 75,
@@ -1311,7 +1430,7 @@ rfa_unit_edits = {
         #         "MMG_AANF1_7_62mm": 44,
         #     },
         # },
-        "UpgradeFromUnit": "Leopard_1A1_CMD_RFA",
+        "UpgradeFromUnit": "Leopard_1A2A1_RFA",
     },
 
     "Leopard_1A1A2_RFA": {
@@ -1357,9 +1476,9 @@ rfa_unit_edits = {
                 "EVisionRange/Standard": 3500.0,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/Standard": 70.0,
-                "EOpticalStrength/LowAltitude": 70.0,
-                "EOpticalStrength/HighAltitude": 20.0,
+                "EOpticalStrength/Standard": 2500.0,
+                "EOpticalStrength/LowAltitude": 2500.0,
+                "EOpticalStrength/HighAltitude": 700.0,
             },
         },
     },
@@ -1499,6 +1618,10 @@ rfa_unit_edits = {
         "CommandPoints": 25,
     },
     
+    "Sonderwagen_4_recon_RFA": {
+        "CommandPoints": 30,
+    },
+    
     "Iltis_reco_RFA": {
         "CommandPoints": 25,
     },
@@ -1509,7 +1632,7 @@ rfa_unit_edits = {
 
     "M113A1G_reco_RFA": {  # M113A1G AUFKL.
         "GameName": {
-            "display": "#RECO1 M113A1G AufKl"
+            "display": "M113A1G AufKl"
         },
         "CommandPoints": 20,
     },
@@ -1531,7 +1654,7 @@ rfa_unit_edits = {
     "BGS_RFA": {
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#RECO2 BGS STREIFE"
+            "display": "BGS STREIFE"
         },
         "CommandPoints": 15,
         "armor": "Infantry_armor_reference",
@@ -1596,7 +1719,7 @@ rfa_unit_edits = {
         "CommandPoints": 25,
         "availability": [0, 7, 5, 0],
         "GameName": {
-            "display": "#RECO2 FJ AUFKLÄRER"
+            "display": "FJ AUFKLÄRER"
         },
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1608,7 +1731,7 @@ rfa_unit_edits = {
         "CommandPoints": 55,
         "availability": [0, 4, 3, 0],
         "GameName": {
-            "display": "#RECO2 GEB. JAGDKOMMANDO"
+            "display": "GEB. JAGDKOMMANDO"
         },
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -1649,7 +1772,7 @@ rfa_unit_edits = {
         "CommandPoints": 55,
         "availability": [0, 7, 5, 0],
         "GameName": {
-            "display": "#RECO2 GEB. AUFKLÄRER"
+            "display": "GEB. AUFKLÄRER"
         },
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -1661,8 +1784,17 @@ rfa_unit_edits = {
         "CommandPoints": 40,
         "availability": [6, 4, 0, 0],
         "GameName": {
-            "display": "#RECO2 JÄGER AUFKLÄRER"
+            "display": "JÄGER AUFKLÄRER"
         },
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+    },
+
+    "Scout_Heimat_RFA": {  # HIEMAT-AUFKL.
+        "armor": "Infantry_armor_reference",
+        "CommandPoints": 35,
+        "availability": [8, 0, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
@@ -1674,7 +1806,7 @@ rfa_unit_edits = {
         "availability": [0, 0, 4, 3],
         "strength": 3,
         "GameName": {
-            "display": "#RECO2 FERN. SCHARFSCHÜTZE"
+            "display": "FERN. SCHARFSCHÜTZE"
         },
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
@@ -1709,7 +1841,7 @@ rfa_unit_edits = {
         "CommandPoints": 30,
         "availability": [0, 4, 3, 0],
         "GameName": {
-            "display": "#RECO2 GEB. SCHARFSCHÜTZE"
+            "display": "GEB. SCHARFSCHÜTZE"
         },
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
@@ -1721,7 +1853,7 @@ rfa_unit_edits = {
         "CommandPoints": 25,
         "availability": [0, 0, 8, 6],
         "GameName": {
-            "display": "#RECO2 SEK"
+            "display": "SEK"
         },
         "SpecialtiesList": {
             "add_specs": ["'_choc'", "'infantry_equip_light'", "'_swift'"],
@@ -1730,23 +1862,34 @@ rfa_unit_edits = {
             "add_capacities": ["Choc", "Choc_feedback"],
         },
     },
+
+    "KSM_RFA": {  # #RECO2 KAMPFSCHWIMMER
+        "armor": "Infantry_armor_reference",
+        "CommandPoints": 60,
+        "availability": [0, 0, 4, 3],
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_light'"],
+        },
+    },
     
     "M113_GreenArcher_RFA": {
         "CommandPoints": 30,
-        # "optics": {
-        #     "OpticalStrength": 233.475
-        # },
-        "availability": [8, 0, 0, 0],
+        "availability": [6, 0, 0, 0],
     },
 
     "TPZ_Fuchs_RASIT_RFA": {
-        "CommandPoints": 30,
+        "CommandPoints": 35,
         "availability": [8, 0, 0, 0],
     },
 
     "Luchs_A1_RFA": {
         "CommandPoints": 50,
         "availability": [0, 6, 4, 0],
+    },
+
+    "Iltis_MILAN_KSK_RFA": {
+        "CommandPoints": 65,
+        "availability": [0, 0, 4, 3],
     },
 
     "Leopard_1A5_reco_RFA": {
@@ -1792,8 +1935,12 @@ rfa_unit_edits = {
         },
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -1805,7 +1952,40 @@ rfa_unit_edits = {
         },
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
+            },
+            "TimeBetweenEachIdentifyRoll": 0.5,
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'verygood_airoptics'"],
+        },
+    },
+
+    "DCA_Bofors_autoloader_RFA": {
+        "CommandPoints": 60,
+        "TagSet": {
+            "add_tags": ['"AA_radar"'],
+        },
+        "availability": [10, 7, 0, 0],
+        "max_speed": 6,
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 1,
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_1_canon_Bofors_upgrade_40mm_autoloader_radar": 1,
+            },
+            "equipmentchanges": {
+                "replace": [("DCA_1_canon_Bofors_upgrade_40mm_autoloader", "DCA_1_canon_Bofors_upgrade_40mm_autoloader_radar")],
+            },
+        },
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -1818,8 +1998,12 @@ rfa_unit_edits = {
         "CommandPoints": 20,
         "availability": [0, 9, 7, 0],
         "max_speed": 6,
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -1828,19 +2012,23 @@ rfa_unit_edits = {
         },
     },
 
-    "DCA_FK20_2_20mm_RFA": {
-        "CommandPoints": 25,
-        "availability": [9, 7, 0, 0],
-        "max_speed": 6,
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
-        },
-        "WeaponDescriptor": {
-            "Salves": {
-                "DCA_1_canon_FK20_20mm_TOWED": 29,
-            },
-        },
-    },
+    # "DCA_FK20_2_20mm_RFA": {
+    #     "CommandPoints": 25,
+    #     "availability": [9, 7, 0, 0],
+    #     "max_speed": 6,
+    #     # "capacities": {
+    #     #    "add_capacities": ["Deploy", "Deploy_ok"],
+    #     # },
+    #     "WeaponDeployment": {
+    #         "TimeForWeaponDeployment": 15,
+    #         "TimeForWeaponPacking": 1,
+    #     },
+    #     "WeaponDescriptor": {
+    #         "Salves": {
+    #             "DCA_1_canon_FK20_20mm_TOWED": 29,
+    #         },
+    #     },
+    # },
 
     "Faun_Kraka_20mm_RFA": {
         "CommandPoints": 35,
@@ -1866,7 +2054,7 @@ rfa_unit_edits = {
         "CommandPoints": 95,
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -1885,7 +2073,7 @@ rfa_unit_edits = {
         "CommandPoints": 120,
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 220,
+                "EOpticalStrength/HighAltitude": 7800,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -1899,7 +2087,7 @@ rfa_unit_edits = {
         "CommandPoints": 150,
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -1916,12 +2104,35 @@ rfa_unit_edits = {
             "add_specs": ["'verygood_airoptics'"],
         },
     },
+
+    "MAN_Kat_8x8_Roland_RFA": { # Roland 3
+        "GameName": {
+            "display": "FFR ROLAND",
+            "token": "HVHJFPKNKB",
+        },
+        "CommandPoints": 150,
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 10600.0,
+            },
+            "TimeBetweenEachIdentifyRoll": 0.5,
+        },
+        "availability": [0, 3, 2, 0],
+        "SpecialtiesList": {
+            "overwrite_all": [
+                "verygood_airoptics"
+            ],
+        },
+        "capacities": {
+            "remove_capacities": ["resolute"],
+        },
+    },
     
     "DCA_I_Hawk_RFA": {
         "CommandPoints": 90,
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -1988,7 +2199,10 @@ rfa_unit_edits = {
         "availability": [0, 5, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("RocketAir_SNEB_68mm_salvolength18", "RocketAir_SNEB_68mm_salvolength36")],
+                "replace": [
+                    ("RocketAir_SNEB_68mm_salvolength18", "RocketAir_SNEB_68mm_salvolength36"),
+                    ("RocketAir_SNEB_68mm_salvolength18", "RocketAir_SNEB_68mm_salvolength36"),
+                ],
             },
             "Salves": {
                 "RocketAir_SNEB_68mm_salvolength36": (1, True),
@@ -2026,7 +2240,7 @@ rfa_unit_edits = {
         "availability": [0, 3, 2, 0],
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
     },
@@ -2036,7 +2250,7 @@ rfa_unit_edits = {
         "availability": [0, 3, 2, 0],
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
     },
@@ -2051,9 +2265,14 @@ rfa_unit_edits = {
         },
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
+    },
+
+    "RF4E_Phantom_HE_RFA": { # 6x Mk82, no Gun or Sidewinders or Radar, its a photo recon pushed into a bombing role
+        "CommandPoints": 175,
+        "availability": [0, 3, 0, 0],
     },
 
     "F4F_Phantom_II_HE1_RFA": { # 12x Mk82
@@ -2061,7 +2280,7 @@ rfa_unit_edits = {
         "availability": [0, 2, 0, 0],
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
     },
@@ -2071,13 +2290,13 @@ rfa_unit_edits = {
         "availability": [0, 2, 0, 0],
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
     },
 
     "F4F_Phantom_II_LGB_RFA": { # 2x GBU-16
-        "CommandPoints": 190,
+        "CommandPoints": 200,
         "GameName": {
             "display": "F-4F [PGB]",
         },
@@ -2092,7 +2311,7 @@ rfa_unit_edits = {
         },
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
     },
@@ -2102,7 +2321,7 @@ rfa_unit_edits = {
         "availability": [0, 3, 2, 0],
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
     },
@@ -2112,24 +2331,24 @@ rfa_unit_edits = {
         "availability": [0, 3, 2, 0],
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("RocketAir_Zuni_1272mm_salvolength8", "RocketAir_Zuni_127mm_F4F_salvolength8")],
+                "replace": [("RocketAir_Zuni_1272mm_salvolength8", "RocketAir_Zuni_1272mm_avion_salvolength8")],
             },
         },
     },
 
     "HFB_320_ECM_RFA": { # EW
-        "CommandPoints": 180,
+        "CommandPoints": 145,
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 12500.0,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/AntiRadar": 5000.0,
+                "EOpticalStrength/AntiRadar": 175000.0,
             },
         },
         "availability": [0, 0, 2, 0],
@@ -2188,6 +2407,14 @@ rfa_unit_edits = {
         },
     },
 
+    "Tornado_Marine_CLU_RFA": { # 4x BL.755, 2x AIM-9L
+        "CommandPoints": 220,
+        "availability": [0, 2, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'terrain_radar'"],
+        },
+    },
+
     "Tornado_IDS_SEAD_RFA": { # AGM-88 5950m
         "CommandPoints": 300,
         "optics": {
@@ -2195,8 +2422,8 @@ rfa_unit_edits = {
                 "EVisionRange/Standard": 10000.0,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/AntiRadar": 5000.0,
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/AntiRadar": 175000.0,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
         "WeaponDescriptor": {

@@ -40,9 +40,16 @@ rda_new_divs = {
             "ATteam_FagotM_DDR",
             "ATteam_Konkurs_DDR",
             "MANPAD_Strela_2M_DDR",
+            "AT_vz52_85mm_DDR",
         ],
         "transport_overrides": {
+            "MP_DDR": ["Trabant_601_MP_DDR", "BTR_50_DDR", "PSzH_IV_DDR"],
             "MotRifles_CMD2_DDR": ["GAZ_46_DDR", "BTR_50_DDR", "BTR_60_DDR", "BTR_70_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
+            "MotRifles_CMD_DDR": ["W50_LA_A_DDR", "BTR_70_DDR", "BMP_1_SP2_DDR", "BMP_1P_DDR", "BMP_1P_Konkurs_DDR", "BMP_2_DDR"],
+            "MotRifles_DDR": ["W50_LA_A_DDR", "BMP_1_SP1_DDR", "BMP_1_SP2_DDR", "BMP_1P_DDR", "BMP_1P_Konkurs_DDR", "BMP_2_DDR"],
+            "MotRifles_HMG_DDR": ["W50_LA_A_DDR", "BMP_1_SP1_DDR", "BMP_1_SP2_DDR", "BMP_1P_DDR", "BMP_1P_Konkurs_DDR", "BMP_2_DDR"],
+            "MotRifles_RPG27_DDR": ["W50_LA_A_DDR", "BMP_1_SP1_DDR", "BMP_1_SP2_DDR", "BMP_1P_DDR", "BMP_1P_Konkurs_DDR", "BMP_2_DDR"],
+            "MotSchutzen_DDR": ["W50_LA_A_DDR", "BMP_1_SP1_DDR", "BMP_1_SP2_DDR", "BMP_1P_DDR", "BMP_1P_Konkurs_DDR", "BMP_2_DDR"],
         },
     },
     "RDA_airborne": {
@@ -130,6 +137,7 @@ rda_new_divs = {
             "ATteam_FagotM_DDR",
             "ATteam_Konkurs_DDR",
             "MANPAD_Strela_2M_DDR",
+            "AT_vz52_85mm_DDR"
         ],
         "transport_overrides": {
             "MotRifles_CMD2_DDR": ["GAZ_46_DDR", "BTR_50_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
@@ -272,6 +280,7 @@ rda_new_divs = {
         ],
         "transport_overrides": {
             "MotRifles_CMD2_DDR": ["GAZ_46_DDR", "BTR_50_DDR", "BTR_60_DDR", "BTR_70_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
+            "MotSchutzen_DDR": ["W50_LA_A_DDR", "BMP_1_SP1_DDR", "BMP_1_SP2_DDR", "BMP_1P_DDR", "BMP_1P_Konkurs_DDR", "BMP_2_DDR"],
         },
     },
     "RDA_motorized": {

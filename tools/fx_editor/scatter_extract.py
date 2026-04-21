@@ -18,6 +18,11 @@ FLOAT3_PLUS_PAR = re.compile(
     r'float3\s*\[\s*([^,]+)\s*,\s*([^,]+)\s*,\s*([^\]]+)\s*\]\s*\+\s*parPosition',
     re.IGNORECASE,
 )
+# Mobile ``Position = float3[x,y,z]`` without ``+ parPosition`` (absolute anchor in file space).
+FLOAT3_LITERAL_XY = re.compile(
+    r'^float3\s*\[\s*([^,]+)\s*,\s*([^,]+)\s*,\s*([^\]]+)\s*\]\s*$',
+    re.IGNORECASE,
+)
 
 
 @dataclass
@@ -54,6 +59,23 @@ def _parse_float3_plus_par(text: str) -> Optional[Tuple[float, float]]:
         return float(m.group(1)), float(m.group(2))
     except ValueError:
         return None
+
+
+def _parse_mobile_position_xy(text: str) -> Optional[Tuple[float, float]]:
+    """``float3[…]+parPosition``, bare ``float3[…]``, or ``parPosition`` for Mobile.Position."""
+    text = text.strip()
+    p = _parse_float3_plus_par(text)
+    if p is not None:
+        return p
+    m = FLOAT3_LITERAL_XY.match(text)
+    if m:
+        try:
+            return float(m.group(1)), float(m.group(2))
+        except ValueError:
+            return None
+    if text.replace(' ', '').lower() == 'parposition':
+        return (0.0, 0.0)
+    return None
 
 
 def _stringify_position_expr(dx: float, dy: float) -> str:
@@ -135,8 +157,8 @@ def _mobile_position_from_simultaneous(sim: ndf.model.Object) -> Optional[Tuple[
         for mm in mob:
             if mm.member == 'Position':
                 s = ndf.printer.string(mm.v).strip()
-                p = _parse_float3_plus_par(s)
-                if p:
+                p = _parse_mobile_position_xy(s)
+                if p is not None:
                     return p
     return None
 

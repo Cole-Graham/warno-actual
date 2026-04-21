@@ -259,6 +259,26 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
         "SupplyCost": 2.0,
     },
+    
+    ("Pod_UPK_23_250_HE_23mm_x2", "autocannon", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 15,
+                "Moving": 10,
+            },
+            "parent_membr": {
+                "Caliber": ("Dual 23mm", "LNXURRBEMR"),
+                "PhysicalDamages": 0.8,
+                "SuppressDamages": 50,
+                "DisplaySalveAccuracy": False,
+                "TimeBetweenTwoSalvos": 1.2,
+                "ShotsCountPerSalvo": 8,
+                "SupplyCost": 8.0,
+                "AffichageMunitionParSalve": 32,
+            },
+        },
+        
+    },
 
     ("AutoCanon_HE_23mm_Bitube_Gsh23L", "autocannon", None, False): { # 19
         "Ammunition": {
@@ -677,6 +697,28 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "Salves": 48,
         },
     },
+    
+    ("Pod_UPK_23_250_AP_23mm_x2", "autocannon", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 6,
+            },
+            "hit_roll": {
+                "Idling": 15,
+                "Moving": 10,
+            },
+            "parent_membr": {
+                "Caliber": ("Dual 23mm", "LNXURRBEMR"),
+                "PhysicalDamages": 1.336,
+                "SuppressDamages": 40,
+                "DisplaySalveAccuracy": False,
+                "TimeBetweenTwoSalvos": 1.2,
+                "ShotsCountPerSalvo": 8,
+                "SupplyCost": 8.0,
+                "AffichageMunitionParSalve": 32,
+            },
+        },
+    },
 
     ("AutoCanon_AP_23mm_Bitube_Gsh23L", "autocannon", None, False): { # 4
         "Ammunition": {
@@ -924,6 +966,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 30,
             },
             "parent_membr": {
+                "HasDeploymentTime": True,
                 "add": [41, "Guidance = Guidance_Radar"],
                 "TraitsToken": ['STAT', 'RADAR'],
                 "MaximumRangeGRU": 1575,
@@ -978,6 +1021,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 20,
             },
             "parent_membr": {
+                "HasDeploymentTime": True,
                 "add": [41, "Guidance = Guidance_Radar"],
                 "TraitsToken": ['STAT', 'RADAR'],
                 "MaximumRangeGRU": 1575,

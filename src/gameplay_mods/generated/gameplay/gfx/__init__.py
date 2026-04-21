@@ -25,7 +25,6 @@ from .depictions import (
     edit_gen_gp_gfx_missilecarriage,
     edit_gen_gp_gfx_missilecarriagedepiction,
 )
-from .effetssurunite import edit_gen_gp_gfx_effetssurunite
 from .experiencelevels import edit_gen_gp_gfx_experiencelevels
 from .firedescriptor import edit_gen_gp_gfx_firedescriptor
 from .mimeticimpactmapping import edit_gen_gp_gfx_mimeticimpactmapping
@@ -55,7 +54,6 @@ __all__ = [
     'edit_gen_gp_gfx_depictioninfantry',
     'edit_gen_gp_gfx_depictionvehicles',
     'edit_gen_gp_gfx_depictionvehiclesshowroom',
-    'edit_gen_gp_gfx_effetssurunite',
     'edit_gen_gp_gfx_experiencelevels',
     'edit_gen_gp_gfx_firedescriptor',
     'edit_gen_gp_gfx_mimeticimpactmapping',

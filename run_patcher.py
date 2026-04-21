@@ -6,8 +6,9 @@ from src import ModConfig
 from src.data import build_database, load_database_from_disk
 from src.utils.database_utils import verify_database
 from src.utils.dictionary_utils import initialize_dictionary_files
-from src.utils.logging_utils import setup_logger, get_counting_handler
+from src.utils.logging_utils import configure_logging, setup_logger, get_counting_handler
 
+configure_logging()
 logger = setup_logger('patcher')
 
 
@@ -156,6 +157,13 @@ if __name__ == "__main__":
         config.config_data['game_db']['insert_turret_templates'] = constants_data.get(
             'insert_turret_templates', {},
         )
+        config.config_data['game_db']['deployment_time_units'] = constants_data.get(
+            'deployment_time_units', {},
+        )
+        ammo_db_precomp = config.config_data['game_db'].get('ammunition', {})
+        ammo_db_precomp['aa_suppress_damages'] = constants_data.get(
+            'aa_suppress_damages', {},
+        )
         
         # Merge salvo_weapons (from base game database) with constants renames (from constants precomputation)
         # and add to ammo_db so handlers can access them the same way
@@ -173,6 +181,10 @@ if __name__ == "__main__":
         # Add merged renames to ammo_db
         ammo_db['renames_old_new'] = renames_old_new
         ammo_db['renames_new_old'] = renames_new_old
+
+        if config.config_data["build_config"]["target"] == "gameplay":
+            from src.utils.new_divisionrules_unit_validation import validate_new_divisionrules_units
+            validate_new_divisionrules_units(log=logger)
         
         # Import and run main after database is loaded
         from src.main import main

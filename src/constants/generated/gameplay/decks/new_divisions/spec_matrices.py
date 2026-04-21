@@ -1,5 +1,7 @@
 """Activation Point matrices for National divisions."""
 
+from src.utils.logging_utils import setup_logger
+
 # TypeToken mapping for TDeckDivisionDescriptor
 DIV_TYPE_TO_TOKEN = {
     "general": "ARMORED",
@@ -16,7 +18,8 @@ DIV_TYPE_TO_TOKEN = {
 }
 
 spec_matrices = {
-    "general": {  # sum: 156
+    "general": {
+        "total_for_valid": 156,
         "EFactory/Art": [2, 3, 4, 5, 7],
         "EFactory/DCA": [2, 2, 3, 4, 6],
         "EFactory/Defense": [],
@@ -27,7 +30,8 @@ spec_matrices = {
         "EFactory/Recons": [2, 2, 2, 2, 2, 2, 4],
         "EFactory/Tanks": [2, 2, 2, 2, 2, 2, 3],
     },
-    "airborne": {  # sum: 156
+    "airborne": {
+        "total_for_valid": 156,
         "EFactory/Art": [2, 3, 4, 4, 6],
         "EFactory/DCA": [2, 2, 3, 4, 4],
         "EFactory/Defense": [],
@@ -38,7 +42,20 @@ spec_matrices = {
         "EFactory/Recons": [2, 2, 2, 3, 3, 3, 3],
         "EFactory/Tanks": [2, 2, 3, 3],
     },
-    "airborne_armored": {  # sum: 156
+    "airborne_2": { # West Germany, France, anyone who doesn't have a lot of helos
+        "total_for_valid": 146,
+        "EFactory/Art": [2, 3, 4, 4, 6],
+        "EFactory/DCA": [2, 2, 3, 4, 4],
+        "EFactory/Defense": [],
+        "EFactory/Helis": [2, 2, 3],
+        "EFactory/Infantry": [2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4],
+        "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 2, 3, 3],
+        "EFactory/Planes": [2, 2, 3, 3, 4, 6, 8],
+        "EFactory/Recons": [2, 2, 2, 3, 3, 3, 3],
+        "EFactory/Tanks": [2, 2, 2, 3, 3],
+    },
+    "airborne_armored": {
+        "total_for_valid": 156,
         "EFactory/Art": [2, 3, 4, 5, 6],
         "EFactory/DCA": [2, 2, 3, 4, 5],
         "EFactory/Defense": [],
@@ -49,7 +66,20 @@ spec_matrices = {
         "EFactory/Recons": [2, 2, 2, 3, 3, 3, 3],
         "EFactory/Tanks": [2, 2, 2, 2, 2, 4],
     },
-    "airborne_mechanized": {  # sum: 148
+    "airborne_marine": {
+        "total_for_valid": 156,
+        "EFactory/Art": [2, 3, 4, 4, 6],
+        "EFactory/DCA": [2, 2, 3, 4, 4],
+        "EFactory/Defense": [],
+        "EFactory/Helis": [2, 2, 3, 3, 3, 4, 4],
+        "EFactory/Infantry": [2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 4],
+        "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 3, 3],
+        "EFactory/Planes": [2, 2, 3, 4, 4, 6, 8],
+        "EFactory/Recons": [2, 2, 2, 3, 3, 3, 3],
+        "EFactory/Tanks": [2, 2, 3, 3],
+    },
+    "airborne_mechanized": {
+        "total_for_valid": 148,
         "EFactory/Art": [2, 3, 4, 4, 6],
         "EFactory/DCA": [2, 2, 3, 4, 5],
         "EFactory/Defense": [],
@@ -60,7 +90,8 @@ spec_matrices = {
         "EFactory/Recons": [2, 2, 2, 2, 2, 2, 2],
         "EFactory/Tanks": [2, 2, 2, 2, 2, 2],
     },
-    "airborne_motorized": {  # sum: 148
+    "airborne_motorized": {
+        "total_for_valid": 148,
         "EFactory/Art": [2, 3, 3, 4, 5],
         "EFactory/DCA": [2, 2, 3, 4, 4],
         "EFactory/Defense": [],
@@ -71,7 +102,8 @@ spec_matrices = {
         "EFactory/Recons": [2, 2, 2, 2, 2, 2, 2, 2],
         "EFactory/Tanks": [2, 2, 2, 2, 2, 2],
     },
-    "armored": {  # sum: 156
+    "armored": {
+        "total_for_valid": 156,
         "EFactory/Art": [2, 3, 4, 5, 6],
         "EFactory/DCA": [2, 2, 3, 4, 6],
         "EFactory/Defense": [],
@@ -82,7 +114,20 @@ spec_matrices = {
         "EFactory/Recons": [2, 2, 2, 2, 2, 3, 4],
         "EFactory/Tanks": [2, 2, 2, 2, 2, 2, 3, 3],
     },
-    "armored_mechanized": {  # sum: 152
+    "armored_marine": {
+        "total_for_valid": 156,
+        "EFactory/Art": [2, 3, 4, 4, 6],
+        "EFactory/DCA": [2, 2, 3, 4, 4],
+        "EFactory/Defense": [],
+        "EFactory/Helis": [2, 2, 3, 3, 3, 4, 4],
+        "EFactory/Infantry": [2, 2, 2, 2, 2, 3, 3, 4, 4],
+        "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 3, 3],
+        "EFactory/Planes": [2, 2, 3, 4, 5, 7, 8],
+        "EFactory/Recons": [2, 2, 2, 3, 3, 3, 3],
+        "EFactory/Tanks": [2, 2, 3, 3],
+    },
+    "armored_mechanized": {
+        "total_for_valid": 152,
         "EFactory/Art": [2, 3, 4, 4, 6],
         "EFactory/DCA": [2, 2, 3, 4, 6],
         "EFactory/Defense": [],
@@ -93,7 +138,8 @@ spec_matrices = {
         "EFactory/Recons": [2, 2, 2, 2, 2, 2, 3],
         "EFactory/Tanks": [2, 2, 2, 2, 2, 2, 2, 2],
     },
-    "armored_motorized": {  # sum: 152
+    "armored_motorized": {
+        "total_for_valid": 152,
         "EFactory/Art": [2, 2, 3, 4, 4, 5],
         "EFactory/DCA": [2, 3, 3, 4, 6],
         "EFactory/Defense": [],
@@ -104,7 +150,44 @@ spec_matrices = {
         "EFactory/Recons": [2, 2, 2, 2, 2, 2, 2, 3],
         "EFactory/Tanks": [2, 2, 2, 2, 2, 2, 2, 3],
     },
-    "mechanized": {  # sum: 146
+    "marine": {
+        "total_for_valid": 156,
+        "EFactory/Art": [2, 3, 4, 4, 6],
+        "EFactory/DCA": [2, 2, 3, 4, 4],
+        "EFactory/Defense": [],
+        "EFactory/Helis": [2, 2, 3, 3, 3, 4, 4],
+        "EFactory/Infantry": [2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3],
+        "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 3, 3],
+        "EFactory/Planes": [2, 2, 3, 4, 5, 6, 8],
+        "EFactory/Recons": [2, 2, 2, 3, 3, 3, 3],
+        "EFactory/Tanks": [2, 2, 3, 3],
+    },
+    "marine_mechanized": {
+        "total_for_valid": 152,
+        "EFactory/Art": [2, 3, 4, 4, 5],
+        "EFactory/DCA": [2, 2, 3, 4, 4],
+        "EFactory/Defense": [],
+        "EFactory/Helis": [2, 2, 3, 3, 3, 4, 4],
+        "EFactory/Infantry": [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+        "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 3, 3],
+        "EFactory/Planes": [2, 2, 3, 4, 6, 6, 8],
+        "EFactory/Recons": [2, 2, 2, 2, 2, 2, 3],
+        "EFactory/Tanks": [2, 2, 2, 2, 2, 2],
+    },
+    "marine_motorized": {
+        "total_for_valid": 152,
+        "EFactory/Art": [2, 3, 4, 4, 5],
+        "EFactory/DCA": [2, 2, 3, 4, 4],
+        "EFactory/Defense": [],
+        "EFactory/Helis": [2, 2, 3, 4, 4],
+        "EFactory/Infantry": [2, 2, 2, 2, 2, 2, 2, 2, 3, 3],
+        "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 3, 3],
+        "EFactory/Planes": [2, 2, 3, 4, 5, 7, 8],
+        "EFactory/Recons": [2, 2, 2, 2, 2, 2, 3, 3],
+        "EFactory/Tanks": [2, 2, 2, 2, 2, 2, 3],
+    },
+    "mechanized": {
+        "total_for_valid": 146,
         "EFactory/Art": [2, 3, 4, 4, 5, 5],
         "EFactory/DCA": [2, 2, 4, 4, 6],
         "EFactory/Defense": [],
@@ -115,7 +198,8 @@ spec_matrices = {
         "EFactory/Recons": [2, 2, 2, 2, 2, 2, 2],
         "EFactory/Tanks": [2, 2, 2, 2, 2, 2, 2, 2],
     },
-    "mechanized_motorized": {  # sum: 148
+    "mechanized_motorized": {
+        "total_for_valid": 148,
         "EFactory/Art": [2, 2, 3, 4, 4, 5],
         "EFactory/DCA": [2, 2, 4, 4, 6],
         "EFactory/Defense": [],
@@ -126,7 +210,8 @@ spec_matrices = {
         "EFactory/Recons": [2, 2, 2, 2, 2, 2, 2],
         "EFactory/Tanks": [2, 2, 2, 2, 2, 2, 2, 3],
     },
-    "motorized": {  # sum: 146
+    "motorized": {
+        "total_for_valid": 146,
         "EFactory/Art": [2, 3, 3, 4, 5, 5],
         "EFactory/DCA": [2, 3, 3, 4, 5],
         "EFactory/Defense": [],
@@ -138,6 +223,21 @@ spec_matrices = {
         "EFactory/Tanks": [2, 2, 2, 2, 2, 2, 2, 2],
     },
 }
+
+_logger = setup_logger(__name__)
+
+for _name, _matrix in spec_matrices.items():
+    _expected = _matrix.get("total_for_valid")
+    if _expected is None:
+        _logger.warning(f"spec_matrices['{_name}']: missing 'total_for_valid' key")
+        continue
+    _actual = sum(v for k, vals in _matrix.items() if k != "total_for_valid" for v in vals)
+    if _actual != _expected:
+        _logger.warning(
+            f"spec_matrices['{_name}']: total {_actual} != expected {_expected}"
+        )
+
+del _name, _matrix, _expected, _actual
 
 
 # original matrices... do not delete...

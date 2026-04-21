@@ -13,7 +13,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 from src import ndf
 
 from .fx_logging import get_fx_logger
-from .scatter_emit import find_actions_list, list_tsimultaneous_action_rows
+from .scatter_emit import (
+    find_actions_list,
+    list_tsimultaneous_action_rows,
+    set_simultaneous_burst_gameplay_position_m,
+)
 from .scatter_extract import extract_ndf_xy_from_simultaneous_for_scatter, ndf_xy_to_gameplay_m
 from .size_batch import _action_short_from_taction, _iter_taction_call_objects
 
@@ -518,3 +522,103 @@ def taction_radius_falloff_multipliers(
             use_burst_xy,
         )
     return out
+
+
+_BIAS_MIX_SEED64 = int.from_bytes(
+    hashlib.sha256(b'fx_editor_call_falloff_position_bias_v1').digest()[:8],
+    'big',
+)
+
+
+def _det_uniform01_for_bias_slot(slot: int) -> float:
+    x = (_BIAS_MIX_SEED64 ^ (int(slot) * 0xC6BC279692B5C323)) & 0xFFFFFFFFFFFFFFFF
+    return _mix64_to_u01(_splitmix64_mix(x))
+
+
+def _sample_r_norm_from_falloff_marginal(
+    aligned_by_vfx: Dict[str, List[float]],
+    restrict_to_vfx: Optional[Sequence[str]],
+    u: float,
+    *,
+    n_steps: int = 129,
+) -> float:
+    """Inverse-CDF sample of ``r_norm`` in ``[0, 1]`` with marginal density ``∝ w(r) * r`` on the disk."""
+    n = max(8, int(n_steps))
+    r_grid = [j / (n - 1) for j in range(n)]
+    seg_mass: List[float] = []
+    for j in range(n - 1):
+        r0, r1 = r_grid[j], r_grid[j + 1]
+        dr = r1 - r0
+        w0 = _min_spatial_falloff_mult_from_aligned(aligned_by_vfx, r0, restrict_to_vfx)
+        w1 = _min_spatial_falloff_mult_from_aligned(aligned_by_vfx, r1, restrict_to_vfx)
+        w0 = max(1e-15, float(w0))
+        w1 = max(1e-15, float(w1))
+        seg_mass.append(0.5 * (r0 * w0 + r1 * w1) * dr)
+    z = sum(seg_mass)
+    if z < 1e-30:
+        return max(0.0, min(1.0, float(u)))
+    uu = max(0.0, min(1.0, float(u))) * z
+    acc = 0.0
+    for j, m in enumerate(seg_mass):
+        if acc + m >= uu - 1e-15:
+            if m < 1e-30:
+                return r_grid[j]
+            t = (uu - acc) / m
+            return r_grid[j] + t * (r_grid[j + 1] - r_grid[j])
+        acc += m
+    return 1.0
+
+
+def apply_call_falloff_burst_position_bias(
+    parsed_root: ndf.model.List,
+    falloff_by_vfx: Dict[str, List[float]],
+    target_radius_m: float,
+    ref_m: float,
+    anchor_r: float,
+    *,
+    dry_run: bool = False,
+) -> int:
+    """Reposition every ``TSimultaneousAction`` burst so radial distribution follows Call falloff curves.
+
+    Does **not** remove bursts or ``TActionCall`` rows. For each burst, samples a new radius using the
+    same per-burst VFX restriction as Call spatial trim (minimum curve at ``r_norm``), with marginal
+    density ``∝ w(r) * r`` on the effect disk, and uniform angle. Deterministic per burst index.
+
+    Returns the number of bursts whose anchor was successfully updated (0 if ``dry_run``).
+    """
+    if not falloff_by_vfx:
+        return 0
+    actions = find_actions_list(parsed_root)
+    if actions is None:
+        return 0
+    burst_rows = list_tsimultaneous_action_rows(actions)
+    if not burst_rows:
+        return 0
+    aligned_by_vfx = {k: align_radius_falloff_curve(v) for k, v in falloff_by_vfx.items()}
+    burst_vfx = burst_row_vfx_short_names_for_spatial_falloff(parsed_root)
+    tr = max(float(target_radius_m), 1e-9)
+    n_ok = 0
+    for i, burst_row in enumerate(burst_rows):
+        sim = burst_row.v
+        if not isinstance(sim, ndf.model.Object) or sim.type != 'TSimultaneousAction':
+            continue
+        names = burst_vfx[i] if i < len(burst_vfx) else []
+        restrict: Optional[List[str]] = names if names else None
+        u_r = _det_uniform01_for_bias_slot(i * 2 + 11)
+        u_th = _det_uniform01_for_bias_slot(i * 2 + 104729)
+        r_norm = _sample_r_norm_from_falloff_marginal(aligned_by_vfx, restrict, u_r)
+        r_game = r_norm * tr
+        theta = 2.0 * math.pi * u_th
+        gx = float(r_game * math.cos(theta))
+        gy = float(r_game * math.sin(theta))
+        gx = float(int(round(gx)))
+        gy = float(int(round(gy)))
+        h = math.hypot(gx, gy)
+        if h > tr and h > 1e-9:
+            gx = float(int(round(gx * tr / h)))
+            gy = float(int(round(gy * tr / h)))
+        if dry_run:
+            continue
+        if set_simultaneous_burst_gameplay_position_m(sim, gx, gy, ref_m, anchor_r):
+            n_ok += 1
+    return n_ok

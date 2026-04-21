@@ -10,7 +10,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Reload time: normal}'
                 '\n#style1{- Stress resistance: normal}'
                 '\n#style1{- Stress recovery: 3.0 per second}'
-                '\n(flat, multiplicative, multiplicative, percentage)'
+                # '\n(flat, multiplicative, multiplicative, percentage)'
             ),
         },
         "simple_v3_1": {
@@ -21,7 +21,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Reload time:} #moral_color_bad_2{-10%}'
                 '\n#style1{- Stress resistance:} #moral_color_bad_2{+14%}'
                 '\n#style1{- Stress recovery:} #moral_color_bad_2{4.0} #style1{per second}'
-                '\n(flat, multiplicative, multiplicative, percentage)'
+                # '\n(flat, multiplicative, multiplicative, percentage)'
             ),
         },
         "simple_v3_2": {
@@ -32,7 +32,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Reload time:} #styleGreen{-17%}'
                 '\n#style1{- Stress resistance:} #styleGreen{+22%}'
                 '\n#style1{- Stress recovery:} #styleGreen{4.8} #style1{per second}'
-                '\n(flat, multiplicative, multiplicative, percentage)'
+                # '\n(flat, multiplicative, multiplicative, percentage)'
             ),
         },
         "simple_v3_3": {
@@ -43,7 +43,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Reload time:} #styleTurquoise{-24%}'
                 '\n#style1{- Stress resistance:} #styleTurquoise{+32%}'
                 '\n#style1{- Stress recovery:} #styleTurquoise{5.4} #style1{per second}'
-                '\n(flat, multiplicative, multiplicative, percentage)'
+                # '\n(flat, multiplicative, multiplicative, percentage)'
             ),
         },
     },
@@ -66,7 +66,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Reload time:} #moral_color_bad_2{-10%}'
                 '\n#style1{- Stress resistance:} #moral_color_bad_2{+14%}'
                 '\n#style1{- Stress recovery:} #moral_color_bad_2{4.0} #style1{per second}'
-                '\n(multiplicative, multiplicative, multiplicative, percentage)'
+                # '\n(multiplicative, multiplicative, multiplicative, percentage)'
             ),
         },
         "simple_v3_multiplicative_2": {
@@ -77,7 +77,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Reload time:} #styleGreen{-17%}'
                 '\n#style1{- Stress resistance:} #styleGreen{+22%}'
                 '\n#style1{- Stress recovery:} #styleGreen{4.8} #style1{per second}'
-                '\n(multiplicative, multiplicative, multiplicative, percentage)'
+                # '\n(multiplicative, multiplicative, multiplicative, percentage)'
             ),
         },
         "simple_v3_multiplicative_3": {
@@ -88,7 +88,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Reload time:} #styleTurquoise{-24%}'
                 '\n#style1{- Stress resistance:} #styleTurquoise{+32%}'
                 '\n#style1{- Stress recovery:} #styleTurquoise{5.4} #style1{per second}'
-                '\n(multiplicative, multiplicative, multiplicative, percentage)'
+                # '\n(multiplicative, multiplicative, multiplicative, percentage)'
             ),
         },
     },
@@ -113,7 +113,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Reload time:} #moral_color_bad_2{-10%}'
                 '\n#style1{- Stress resistance:} #moral_color_bad_2{+20%}'
                 '\n#style1{- Stress recovery:} #moral_color_bad_2{4.8} #style1{per second}'
-                '\n(percentage, flat, multiplicative, multiplicative, percentage)'
+                # '\n(percentage, flat, multiplicative, multiplicative, percentage)'
             ),
         },
         "SF_v2_2": {
@@ -125,7 +125,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Reload time:} #styleGreen{-20%}'
                 '\n#style1{- Stress resistance:} #styleGreen{+30%}'
                 '\n#style1{- Stress recovery:} #styleGreen{6.0} #style1{per second}'
-                '\n(percentage, flat, multiplicative, multiplicative, percentage)'
+                # '\n(percentage, flat, multiplicative, multiplicative, percentage)'
             ),
         },
         "SF_v2_3": {
@@ -137,7 +137,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Reload time:} #styleTurquoise{-30%}'
                 '\n#style1{- Stress resistance:} #styleTurquoise{+40%}'
                 '\n#style1{- Stress recovery:} #styleTurquoise{7.8} #style1{per second}'
-                '\n(percentage, flat, multiplicative, multiplicative, percentage)'
+                # '\n(percentage, flat, multiplicative, multiplicative, percentage)'
             ),
         },
     },
@@ -162,7 +162,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Reload time:} #moral_color_bad_2{-10%}'
                 '\n#style1{- Stress resistance:} #moral_color_bad_2{+20%}'
                 '\n#style1{- Stress recovery:} #moral_color_bad_2{4.8} #style1{per second}'
-                '\n(percentage, multiplicative, multiplicative, multiplicative, percentage)'
+                # '\n(percentage, multiplicative, multiplicative, multiplicative, percentage)'
             ),
         },
         "SF_v2_multiplicative_2": {
@@ -174,7 +174,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Reload time:} #styleGreen{-20%}'
                 '\n#style1{- Stress resistance:} #styleGreen{+30%}'
                 '\n#style1{- Stress recovery:} #styleGreen{6.0} #style1{per second}'
-                '\n(percentage, multiplicative, multiplicative, multiplicative, percentage)'
+                # '\n(percentage, multiplicative, multiplicative, multiplicative, percentage)'
             ),
         },
         "SF_v2_multiplicative_3": {
@@ -186,7 +186,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Reload time:} #styleTurquoise{-30%}'
                 '\n#style1{- Stress resistance:} #styleTurquoise{+40%}'
                 '\n#style1{- Stress recovery:} #styleTurquoise{7.8} #style1{per second}'
-                '\n(percentage, multiplicative, multiplicative, multiplicative, percentage)'
+                # '\n(percentage, multiplicative, multiplicative, multiplicative, percentage)'
             ),
         },
     },
@@ -209,7 +209,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Reload time:} #moral_color_bad_2{-20%}'
                 '\n#style1{- Stress resistance:} #moral_color_bad_2{+6%}'
                 '\n#style1{- Stress recovery:} #moral_color_bad_2{3.0} #style1{per second}'
-                '\n(flat, multiplicative, multiplicative, percentage)'
+                # '\n(flat, multiplicative, multiplicative, percentage)'
             ),
         },
         "artillery_2": {
@@ -220,7 +220,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Reload time:} #styleGreen{-40%}'
                 '\n#style1{- Stress resistance:} #styleGreen{+12%}'
                 '\n#style1{- Stress recovery:} #styleGreen{3.8} #style1{per second}'
-                '\n(flat, multiplicative, multiplicative, percentage)'
+                # '\n(flat, multiplicative, multiplicative, percentage)'
             ),
         },
         "artillery_3": {
@@ -231,7 +231,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Reload time:} #styleTurquoise{-60%}'
                 '\n#style1{- Stress resistance:} #styleTurquoise{+24%}'
                 '\n#style1{- Stress recovery:} #styleTurquoise{4.6} #style1{per second}'
-                '\n(flat, multiplicative, multiplicative, percentage)'
+                # '\n(flat, multiplicative, multiplicative, percentage)'
             ),
         },
     },
@@ -252,7 +252,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Aiming time:} #moral_color_bad_2{-20%}'
                 '\n#style1{- Stress resistance: normal}'
                 '\n#style1{- Stress recovery:} #moral_color_bad_2{4.2} #style1{per second}'
-                '\n(multiplicative)'
+                # '\n(multiplicative)'
             ),
         },
         "helico_2": {
@@ -260,9 +260,9 @@ VETERANCY_BONUSES = {
             "body": (
                 '#style1{- Precision:} #styleGreen{+8%}'
                 '\n#style1{- Aiming time:} #styleGreen{-40%}'
-                '\n#style1{- Stress resistance:} #styleGreen{+25%}'
+                '\n#style1{- Stress resistance:} #styleGreen{+20%}'
                 '\n#style1{- Stress recovery:} #styleGreen{6.2} #style1{per second}'
-                '\n(flat, multiplicative, percentage)'
+                # '\n(flat, multiplicative, percentage)'
             ),
         },
         "helico_3": {
@@ -270,10 +270,10 @@ VETERANCY_BONUSES = {
             "body": (
                 '#style1{- Precision:} #styleTurquoise{+16%}'
                 '\n#style1{- Aiming time:} #styleTurquoise{-60%}'
-                '\n#style1{- Stress resistance:} #styleTurquoise{+45%}'
+                '\n#style1{- Stress resistance:} #styleTurquoise{+40%}'
                 '\n#style1{- Stress recovery:} #styleTurquoise{8.4} #style1{per second}'
                 '\n#style1{- Evasion:} #styleTurquoise{+5%}'
-                '\n(flat, multiplicative, percentage)'
+                # '\n(flat, multiplicative, percentage)'
             ),
         },
         "helico_SF_3": {
@@ -286,7 +286,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Stress resistance:} #styleTurquoise{+40%}'
                 '\n#style1{- Stress recovery:} #styleTurquoise{7.8} #style1{per second}'
                 '\n#style1{- Evasion:} #styleTurquoise{+5%}'
-                '\n(percentage, multiplicative, multiplicative, multiplicative, percentage, percentage)'
+                # '\n(percentage, multiplicative, multiplicative, multiplicative, percentage, percentage)'
             ),
         },
     },
@@ -319,7 +319,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Stress resistance:} #styleGreen{+20%}'
                 '\n#style1{- Stress recovery:} #styleGreen{4.2} #style1{per second}'
                 '\n#style1{- Evasive maneuvers:} #styleGreen{+4%}'
-                '\n(flat, multiplicative, percentage, flat)'
+                # '\n(flat, multiplicative, percentage, flat)'
             ),
         },
         "avion_3": {
@@ -330,7 +330,7 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Stress resistance:} #styleTurquoise{+40%}'
                 '\n#style1{- Stress recovery:} #styleTurquoise{6.2} #style1{per second}'
                 '\n#style1{- Evasive maneuvers:} #styleTurquoise{+8%}'
-                '\n(flat, multiplicative, percentage, flat)'
+                # '\n(flat, multiplicative, percentage, flat)'
             ),
         },
     },

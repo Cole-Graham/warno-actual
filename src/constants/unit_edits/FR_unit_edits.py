@@ -25,6 +25,7 @@ fr_unit_edits = {
     "M201_CMD_FR": { # CMD M201 PC
         "CommandPoints": 145,
         "availability": [0, 4, 0, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "Auverland_PC_FR": {
@@ -42,28 +43,32 @@ fr_unit_edits = {
         "CommandPoints": 155,
         "strength": 10,
         "availability": [0, 0, 3, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "AMX_13_mod56_CMD_FR": {
         "CommandPoints": 145,
         "availability": [0, 0, 3, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
     
     "AMX_10_PC_CMD_FR": {
         "CommandPoints": 175,
         "availability": [0, 0, 3, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "Alouette_II_CMD_FR": {
         "CommandPoints": 115,
         "availability": [0, 3, 0, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "Gazelle_CMD_FR": {
         "CommandPoints": 115,
         "availability": [0, 3, 0, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
-    
     "Puma_PC_FR": {
         "CommandPoints": 125,
         "availability": [0, 3, 0, 0],
@@ -74,11 +79,12 @@ fr_unit_edits = {
         "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR CHASSEURS LDR.",
+            "display": "CHASSEURS",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -151,11 +157,12 @@ fr_unit_edits = {
         "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR GREN.-VOLTIGEURS LDR.",
+            "display": "GREN.-VOLTIGEURS",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -205,11 +212,12 @@ fr_unit_edits = {
         "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR SAPEURS LDR.",
+            "display": "SAPEURS",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -267,11 +275,12 @@ fr_unit_edits = {
         "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR AEROMOBILES LDR.",
+            "display": "AEROMOBILES",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -636,12 +645,13 @@ fr_unit_edits = {
     "AMX_30_B2_CMD_FR": {
         "CommandPoints": 135,
         "GameName": {
-            "display": "#LDR AMX-30 B2 LDR.",
+            "display": "AMX-30 B2",
             "token": "WFTGAGEENP",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -677,12 +687,13 @@ fr_unit_edits = {
     "AMX_30_B_CMD_FR": {
         "CommandPoints": 85,
         "GameName": {
-            "display": "#LDR AMX-30 B LDR.",
+            "display": "AMX-30 B",
             "token": "ZYIAQBGAXY",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -713,12 +724,13 @@ fr_unit_edits = {
     "AMX_13_75mm_CMD_FR": {
         "CommandPoints": 50,
         "GameName": {
-            "display": "#LDR AMX-13 T75 LDR.",
+            "display": "AMX-13 T75",
             "token": "IMPLFERKOJ",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -749,49 +761,13 @@ fr_unit_edits = {
     "AMX_10_RC_CMD_FR": {
         "CommandPoints": 120,
         "GameName": {
-            "display": "#LDR AMX-10RC LDR.",
+            "display": "AMX-10RC",
             "token": "QAQVLDFWWN",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
-                "AllowedForMissileRoE",
-                "Char",
-                "GroundUnits",
-                "UNITE_AMX_10_RC_CMD_FR",
-                "Unite",
-            ],
-        },
-        "IdentifiedTextures": ["Texture_RTS_H_Armor", "Texture_Armor"],
-        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
-        "UnitRole": "armor",
-        "SpecialtiesList": {
-            "overwrite_all": [
-                '_leader',
-                '_amphibie',
-                '_smoke_launcher',
-            ],
-        },
-        "MenuIconTexture": "Texture_RTS_H_Armor",
-        "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
-        "availability": [0, 0, 4, 0],
-        "WeaponDescriptor": {
-            "Salves": {
-                "MMG_AANF1_7_62mm": 44,
-            },
-        },
-        "remove_zone_capture": None,
-    },
-
-    "AMX_10_RC_CMD_FR": {
-        "CommandPoints": 120,
-        "GameName": {
-            "display": "#LDR AMX-10RC LDR.",
-            "token": "QAQVLDFWWN",
-        },
-        "TagSet": {
-            "overwrite_all": [
-                "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -823,12 +799,13 @@ fr_unit_edits = {
     "ERC_90_Sagaie_CMD_FR": {
         "CommandPoints": 90,
         "GameName": {
-            "display": "#LDR ERC-90 LDR.",
+            "display": "ERC-90",
             "token": "UZQEPDQLUU",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -860,12 +837,13 @@ fr_unit_edits = {
     "AML_90_CMD_FR": {
         "CommandPoints": 50,
         "GameName": {
-            "display": "#LDR AML-90 LDR.",
+            "display": "AML-90",
             "token": "SPARKJMVEK",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -1455,8 +1433,12 @@ fr_unit_edits = {
         "CommandPoints": 15,
         "availability": [12, 9, 0, 0],
         "max_speed": 6,
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -1469,8 +1451,12 @@ fr_unit_edits = {
         "CommandPoints": 15,
         "availability": [12, 0, 0, 0],
         "max_speed": 6,
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -1484,8 +1470,12 @@ fr_unit_edits = {
         "availability": [9, 7, 0, 0],
         "max_speed": 6,
         "Factory": "EFactory/Logistic",
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 1,
         },
         "UpgradeFromUnit": "FOB_FR",
         "WeaponDescriptor": {
@@ -1500,8 +1490,12 @@ fr_unit_edits = {
         "availability": [0, 9, 7, 0],
         "max_speed": 6,
         "Factory": "EFactory/Logistic",
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -1515,8 +1509,12 @@ fr_unit_edits = {
         "availability": [0, 9, 7, 0],
         "max_speed": 6,
         "Factory": "EFactory/Logistic",
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 1,
         },
         "UpgradeFromUnit": "FOB_FR",
         "WeaponDescriptor": {
@@ -1530,8 +1528,12 @@ fr_unit_edits = {
         "CommandPoints": 30,
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -1544,8 +1546,12 @@ fr_unit_edits = {
         "CommandPoints": 30,
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -1558,8 +1564,12 @@ fr_unit_edits = {
         "CommandPoints": 30,
         "availability": [0, 0, 6, 4],
         "max_speed": 6,
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -1632,7 +1642,7 @@ fr_unit_edits = {
         "CommandPoints": 100,
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 220,
+                "EOpticalStrength/HighAltitude": 7800,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -1646,7 +1656,7 @@ fr_unit_edits = {
         "CommandPoints": 120,
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 220,
+                "EOpticalStrength/HighAltitude": 7800,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -1660,7 +1670,7 @@ fr_unit_edits = {
         "CommandPoints": 150,
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -1682,7 +1692,7 @@ fr_unit_edits = {
         "CommandPoints": 90,
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -1831,7 +1841,7 @@ fr_unit_edits = {
                 "EVisionRange/Standard": 10000.0,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/AntiRadar": 5000.0,
+                "EOpticalStrength/AntiRadar": 175000.0,
             },
         },
         "availability": [0, 2, 0, 1],
@@ -1843,7 +1853,7 @@ fr_unit_edits = {
                 "EVisionRange/Standard": 10000.0,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/AntiRadar": 5000.0,
+                "EOpticalStrength/AntiRadar": 175000.0,
             },
         },
     },
@@ -1896,7 +1906,7 @@ fr_unit_edits = {
                 "EVisionRange/Standard": 10000.0,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/AntiRadar": 5000.0,
+                "EOpticalStrength/AntiRadar": 175000.0,
             },
         },
     },
@@ -1927,7 +1937,7 @@ fr_unit_edits = {
                 "EVisionRange/Standard": 10000.0,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/AntiRadar": 5000.0,
+                "EOpticalStrength/AntiRadar": 175000.0,
             },
         },
     },

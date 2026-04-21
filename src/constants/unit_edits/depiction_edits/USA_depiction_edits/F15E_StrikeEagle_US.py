@@ -9,9 +9,9 @@ f15e_strikeeagle_us: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
     "MissileCarriage_ndf": {
         ("MissileCarriage_F15E_StrikeEagle_US", "TMissileCarriageConnoisseur"): { # (Namespace, Object type)
             "WeaponInfos": {
-                0: {
+                0: ("edit", {
                     "MissileCount": 2,
-                },
+                }),
             },
         },
     },

@@ -153,14 +153,24 @@ def _create_national_division_matrices(source: Any, existing_matrix_names: list)
             div_type = div_key.split("_", 1)[1]
         else:
             div_type = "general"
-        
-        # Get matrix specification for this division type
-        if div_type not in spec_matrices:
-            logger.warning(f"No spec_matrix found for division type '{div_type}' in {div_key}, skipping")
+
+        matrix_override = div_data.get("matrix_override")
+        spec_key = matrix_override if matrix_override else div_type
+
+        # Get matrix specification (optional matrix_override picks a named spec_matrices entry)
+        if spec_key not in spec_matrices:
+            if matrix_override:
+                logger.error(
+                    f"No spec_matrix found for matrix_override '{matrix_override}' in {div_key}, skipping",
+                )
+            else:
+                logger.error(
+                    f"No spec_matrix found for division type '{div_type}' in {div_key}, skipping",
+                )
             continue
-        
-        spec_matrix = spec_matrices[div_type]
-        matrix_data = dict(spec_matrix)
+
+        spec_matrix = spec_matrices[spec_key]
+        matrix_data = {k: v for k, v in spec_matrix.items() if k != "total_for_valid"}
 
         # Apply division-specific matrix overrides (e.g. EFactory/Logistic)
         if "matrix_overrides" in div_data:
@@ -234,7 +244,10 @@ def _create_national_division_matrices(source: Any, existing_matrix_names: list)
             
             # Add the new matrix to source
             source.add(new_matrix)
-            logger.info(f"Created matrix {matrix_name} for division type '{div_type}'")
+            logger.info(
+                f"Created matrix {matrix_name} using spec_matrices['{spec_key}']"
+                + (f" (key suffix '{div_type}')" if matrix_override else ""),
+            )
         except Exception as e:
             logger.error(f"Failed to create matrix {matrix_name}: {str(e)}")
             import traceback

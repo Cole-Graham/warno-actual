@@ -8,9 +8,16 @@ from .FR_depiction_edits import (
     vab_t20_fr,
 )
 from .POL_depiction_edits import (
-    # commandos_para_cmd_pol,
+    commandos_para_cmd_pol,
     engineers_cmd_pol,
+    engineers_paras_cmd_pol,
+    engineers_paras_pol,
+    gaz_66b_supply_pol,
     mortier_2b9_vasilek_para_pol,
+    para_hmg_pol,
+    reserve_cmd_pol,
+    scout_para_pol,
+    sniper_paras_pol,
 )
 from .RDA_depiction_edits import (
     fallschirmjager_cmd_ddr,
@@ -36,14 +43,18 @@ from .RFA_depiction_edits import (
     unimog_s_404_rfa,
 )
 from .SOV_depiction_edits import (
+    engineers_cmd_naval_sov,
     mi_8tv_gunship_sov,
     mi_24p_sov,
+    mortier_2b9_vasilek_naval_sov,
     mortier_2b9_vasilek_nonpara_sov,
     mortier_2b9_vasilek_sov,
     motrifles_btr_ttsko_sov,
     mtlb_vasilek_sov,
+    naval_rifle_cmd_sov,
     sniper_spetsnaz_sov,
-    su_24m_clu_sov,
+    # su_24m_clu_sov,
+    # tos1_buratino_sov,
 )
 from .UK_depiction_edits import (
     airmobile_mot_cmd_uk,
@@ -61,22 +72,26 @@ from .USA_depiction_edits import (
     engineer_cmd_us,
     f4e_phantom_ii_cbu_us,
     f4e_phantom_ii_napalm_us,
+    f15c_eagle_aa_us,
     f15e_strikeeagle_us,
     f16e_cbu_us,
     f16e_napalm_us,
     f111e_aardvark_napalm_us,
     f111f_aardvark_cbu_us,
     f111f_aardvark_napalm_us,
+    forcerecon_usmc_us,
     groupe_at_us,
     m3a1_bradley_cfv_us,
     m3a2_bradley_cfv_us,
     m35_supply_us,
     pathfinder_ng_us,
     ranger_us,
+    rangers_cmd_us,
     rifles_half_at4_us,
     rifles_half_cav_cmd_us,
     scout_cav_us,
     scout_us,
+    scout_usmc_us,
 )
 
 __all__ = [
@@ -88,9 +103,16 @@ __all__ = [
     "vab_t20_fr",
     
     # POL
-    # "commandos_para_cmd_pol",
+    "commandos_para_cmd_pol",
     "engineers_cmd_pol",
+    "engineers_paras_cmd_pol",
+    "engineers_paras_pol",
+    "gaz_66b_supply_pol",
     "mortier_2b9_vasilek_para_pol",
+    "para_hmg_pol",
+    "reserve_cmd_pol",
+    "scout_para_pol",
+    "sniper_paras_pol",
     
     # RDA
     "fallschirmjager_cmd_ddr",
@@ -116,14 +138,18 @@ __all__ = [
     "unimog_s_404_rfa",
     
     # SOV
+    "engineers_cmd_naval_sov",
     "mi_8tv_gunship_sov",
     "mi_24p_sov",
+    "mortier_2b9_vasilek_naval_sov",
     "mortier_2b9_vasilek_nonpara_sov",
     "mortier_2b9_vasilek_sov",
     "motrifles_btr_ttsko_sov",
     "mtlb_vasilek_sov",
+    "naval_rifle_cmd_sov",
     "sniper_spetsnaz_sov",
-    "su_24m_clu_sov",
+    # "su_24m_clu_sov",
+    # "tos1_buratino_sov",
     
     # UK
     "airmobile_mot_cmd_uk",
@@ -141,20 +167,24 @@ __all__ = [
     "engineer_cmd_us",
     "f4e_phantom_ii_cbu_us",
     "f4e_phantom_ii_napalm_us",
+    "f15c_eagle_aa_us",
     "f15e_strikeeagle_us",
     "f16e_cbu_us",
     "f16e_napalm_us",
     "f111e_aardvark_napalm_us",
     "f111f_aardvark_cbu_us",
     "f111f_aardvark_napalm_us",
+    "forcerecon_usmc_us",
     "groupe_at_us",
     "m3a1_bradley_cfv_us",
     "m3a2_bradley_cfv_us",
     "m35_supply_us",
     "pathfinder_ng_us",
     "ranger_us",
+    "rangers_cmd_us",
     "rifles_half_at4_us",
     "rifles_half_cav_cmd_us",
     "scout_cav_us",
     "scout_us",
+    "scout_usmc_us",
 ]

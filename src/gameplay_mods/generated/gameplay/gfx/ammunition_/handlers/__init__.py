@@ -10,6 +10,9 @@ from .mortars import (
 from .bomb_category_standards import (
     apply_category_bomb_standards,
 )
+from .aa_missile_category_standards import (
+    apply_category_aa_missile_standards,
+)
 from .sead_category_standards import (
     apply_category_sead_standards,
 )
@@ -28,6 +31,7 @@ from .vanilla_renames import (
 
 __all__ = [
     'add_corrected_shot_dispersion',
+    'apply_category_aa_missile_standards',
     'apply_category_bomb_standards',
     'apply_category_sead_standards',
     'apply_aim_time_standards',

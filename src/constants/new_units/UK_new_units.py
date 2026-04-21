@@ -47,13 +47,17 @@ UK_NEW_UNITS = {
         "availability": [6, 4, 0, 0],
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 220,
+                "EOpticalStrength/HighAltitude": 7800,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "max_speed": 6,
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -66,7 +70,7 @@ UK_NEW_UNITS = {
         "UpgradeFromUnit": "FOB_UK",
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
-                   'EOrderType/Load', 'EOrderType/UseCapacite', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+                   'EOrderType/Load', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": True,
         "is_ground_vehicle": True,
@@ -159,12 +163,13 @@ UK_NEW_UNITS = {
         "CadavreGUID": "b1352738-64fe-4c41-8505-7fdb44402f6d",
         "NewName": "Rifles_CMD2_UK",
         "GameName": {
-            "display": "#CMD HQ SECTION",
+            "display": "HQ SECTION",
             "token": "UEBNKKQYYZ",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits", "AllowedForMissileRoE", "Commandant", "Crew", "GroundUnits", "Inf_quartier_ok",
+                "CMD_Unit",
                 "Infanterie", "Infanterie_CMD", "InfmapCommander", "UNITE_Rifles_CMD2_UK", "Unite",
             ],
         },
@@ -233,12 +238,13 @@ UK_NEW_UNITS = {
         "CadavreGUID": "e8f48e53-2ad0-4d41-ac9f-f6d24a3f2e77",
         "NewName": "Challenger_1_Mk1_CMD2_UK",
         "GameName": {
-            "display": "#CMD CHALLENGER Mk.2 CMD",
+            "display": "CHALLENGER Mk.2 CMD",
             "token": "RLYOMURBXH",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -292,12 +298,13 @@ UK_NEW_UNITS = {
         "CadavreGUID": "dcf2f600-fa63-4760-bb8a-334e57fccc84",
         "NewName": "FV4201_Chieftain_CMD2_UK",
         "GameName": {
-            "display": "#CMD CHIEFTAIN Mk.10 CMD",
+            "display": "CHIEFTAIN Mk.10 CMD",
             "token": "VBMOZKDIQO",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -349,14 +356,25 @@ UK_NEW_UNITS = {
         "InfantrySquadModuleGUID": "2a3009a7-9dd4-4a3e-8f0d-f54471cbb1e2",
         "ShowroomGUID": "576ba527-ee4d-4078-b7aa-de7d5768e192",
         "CadavreGUID": "9758e636-88e4-4970-adba-ffb1b4a0813c",
+        "modules_add": [
+            "TCommanderModuleDescriptor()",
+            """TInfluenceMapModuleDescriptor
+            (
+                InfluenceStrength = 1.0
+                MinimumInfluenceStrength = 1.0
+                StrengthDecayPerSecond = 0.01
+                PreventsDecayInZone = True
+            )""",
+        ],
         "NewName": "FV4201_Chieftain_Mk9_CMD2_UK",
         "GameName": {
-            "display": "#CMD CHIEFTAIN Mk.9 CMD",
+            "display": "CHIEFTAIN Mk.9 CMD",
             "token": "ITZWHDGBHC",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -410,12 +428,13 @@ UK_NEW_UNITS = {
         "CadavreGUID": "f5920656-c32e-4094-9264-b4682fdfd05e",
         "NewName": "Centurion_Mk13_CMD2_UK",
         "GameName": {
-            "display": "#CMD CENTURION Mk.13 CMD",
+            "display": "CENTURION Mk.13 CMD",
             "token": "BYGMCHPETR",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -471,12 +490,13 @@ UK_NEW_UNITS = {
         "CadavreGUID": "30a1f922-b453-4fbe-ac83-63be38aba866",
         "NewName": "FV4201_Chieftain_Mk9_CMD_UK",
         "GameName": {
-            "display": "#LDR CHIEFTAIN Mk.9 LDR.",
+            "display": "CHIEFTAIN Mk.9",
             "token": "SHOVALSAYD",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -556,9 +576,9 @@ UK_NEW_UNITS = {
                 "EVisionRange/Standard": 3500.0,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/Standard": 70.0,
-                "EOpticalStrength/LowAltitude": 70.0,
-                "EOpticalStrength/HighAltitude": 20.0,
+                "EOpticalStrength/Standard": 2500.0,
+                "EOpticalStrength/LowAltitude": 2500.0,
+                "EOpticalStrength/HighAltitude": 700.0,
             },
         },
         "stealth": 1.5,
@@ -621,9 +641,9 @@ UK_NEW_UNITS = {
                 "EVisionRange/Standard": 3500.0,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/Standard": 70.0,
-                "EOpticalStrength/LowAltitude": 70.0,
-                "EOpticalStrength/HighAltitude": 20.0,
+                "EOpticalStrength/Standard": 2500.0,
+                "EOpticalStrength/LowAltitude": 2500.0,
+                "EOpticalStrength/HighAltitude": 700.0,
             },
         },
         "stealth": 1.5,
@@ -748,7 +768,7 @@ UK_NEW_UNITS = {
         "availability": [4, 3, 0, 0],
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 220,
+                "EOpticalStrength/HighAltitude": 7800,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -809,7 +829,7 @@ UK_NEW_UNITS = {
         "availability": [0, 3, 2, 0],
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },

@@ -60,6 +60,20 @@ def _edit_depictions(source_path: Any, ndf_file: str) -> None:
         logger.debug(f"Processing aerial edits for {unit_name}")
 
         for key, edits in unit_edits.items():
+            if key == "new_objects":
+                registration = _find_aerial_depiction_by_blackhole_key(source_path, unit_name)
+                if registration is None:
+                    logger.error(f"Could not find TacticAerialDepictionRegistration for {unit_name}, appending new objects to end")
+                    for obj_key, ndf_str in edits.items():
+                        source_path.add(ndf.convert(ndf_str))
+                        logger.info(f"Added new operator {obj_key} for {unit_name}")
+                else:
+                    insert_index = registration.index
+                    for obj_key, ndf_str in edits.items():
+                        source_path.insert(insert_index, ndf.convert(ndf_str))
+                        logger.info(f"Inserted new operator {obj_key} for {unit_name}")
+                        insert_index += 1
+                continue
             if not isinstance(key, tuple):
                 logger.error(f"Key is not a tuple: {key}")
                 continue
@@ -103,11 +117,29 @@ def _edit_depictions(source_path: Any, ndf_file: str) -> None:
                     logger.error(f"Could not find TacticAerialDepictionRegistration with BlackHoleKey='{unit_name}' for {unit_name}")
                     continue
 
+                possible_rows = ["Operators", "Actions", "SubDepictions", "SubDepictionGenerators"]
                 for row_name_or_type, value in edits.items():
-                    # SubDepictions and SubDepictionGenerators are not modified, but
-                    # ndf parse screws them up, so I just fix them by replacing the values
-                    possible_rows = ["Operators", "Actions", "SubDepictions", "SubDepictionGenerators"]
-                    if row_name_or_type in possible_rows:
+                    if row_name_or_type == "Operators" and isinstance(value, dict):
+                        operators_list = aerial_template.v.by_m("Operators")
+                        rows_to_insert = []
+                        rows_to_remove = []
+                        for row_index, (edit_op, *edit_data) in value.items():
+                            if edit_op == "insert":
+                                rows_to_insert.append((row_index, edit_data[0]))
+                            elif edit_op == "remove":
+                                rows_to_remove.append(row_index)
+                            elif edit_op == "replace":
+                                operators_list.v.replace(row_index, edit_data[0])
+                                logger.info(f"Replaced Operators[{row_index}] for {unit_name}")
+
+                        for row_index in sorted(rows_to_remove, reverse=True):
+                            operators_list.v.remove(row_index)
+                            logger.info(f"Removed Operators[{row_index}] for {unit_name}")
+                        for row_index, ndf_str in sorted(rows_to_insert, reverse=True):
+                            operators_list.v.insert(row_index, ndf_str)
+                            logger.info(f"Inserted Operators[{row_index}] for {unit_name}")
+
+                    elif row_name_or_type in possible_rows:
                         aerial_template.v.by_m(row_name_or_type).v = value
                         logger.info(f"Edited {row_name_or_type} for {unit_name}")
                         

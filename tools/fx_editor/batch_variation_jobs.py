@@ -15,7 +15,7 @@ from .call_scale import format_call_qty_report_line
 from .radius_falloff import taction_radius_falloff_multipliers
 from .scatter_analyze import merge_effect_qty_pct_for_target_radius, merge_effect_radius_falloff_curves
 from .scatter_variation import build_cluster_scatter_project, preview_cluster_variation, write_cluster_variation_file
-from .size_batch import process_file, render_variation_filename, write_scaled_copy
+from .size_batch import process_file, render_variation_filename, resolve_effect_call_geom_scale, write_scaled_copy
 
 
 def _param_change_line(changes: List[Any]) -> str:
@@ -27,12 +27,21 @@ def _call_change_line(
     *,
     effect_call_scale_pct: Optional[Dict[str, float]] = None,
     scale_factor: float = 1.0,
+    consistent_call_density: bool = False,
+    cluster_layout: bool = False,
     vfx_burst_denoms: Optional[Dict[str, int]] = None,
 ) -> str:
+    g = resolve_effect_call_geom_scale(
+        scale_factor,
+        consistent_call_density=consistent_call_density,
+        cluster_layout=cluster_layout,
+    )
     s = format_call_qty_report_line(
         call_changes,
         effect_call_scale_pct=effect_call_scale_pct,
         scale_factor=scale_factor,
+        effect_call_geom_scale=g,
+        ignore_call_qty_curves=consistent_call_density,
         vfx_burst_denoms=vfx_burst_denoms,
     )
     return f'  |  {s}' if s else ''
@@ -98,6 +107,7 @@ def _cluster_preview_job(job: Dict[str, Any]) -> Dict[str, Any]:
             effect_call_batch_scale_max=job.get('effect_call_batch_scale_max'),
             param_radius_falloff_by_vfx=job.get('param_radius_falloff_by_vfx'),
             call_radius_falloff_by_vfx=job.get('call_radius_falloff_by_vfx'),
+            consistent_call_density=bool(job.get('consistent_call_density', False)),
             pre_emit_roundtrip=bool(job.get('pre_emit_roundtrip', False)),
             post_emit_roundtrip=bool(job.get('post_emit_roundtrip', False)),
         )
@@ -132,6 +142,7 @@ def preview_variations_worker(snapshot: Dict[str, Any], q: queue.Queue) -> None:
         step = 0
         pw = _preview_parallel_workers_cap(snapshot)
         use_parallel_cluster = geom == 'cluster' and pw > 1 and len(selected_files) * len(targets) > 1
+        ccd = bool(bkw.get('consistent_call_density', False))
 
         if use_parallel_cluster:
             jobs: List[Dict[str, Any]] = []
@@ -168,6 +179,7 @@ def preview_variations_worker(snapshot: Dict[str, Any], q: queue.Queue) -> None:
                             'effect_call_batch_scale_max': bkw.get('effect_call_batch_scale_max'),
                             'param_radius_falloff_by_vfx': param_rf,
                             'call_radius_falloff_by_vfx': call_rf,
+                            'consistent_call_density': ccd,
                             'pre_emit_roundtrip': False,
                             'post_emit_roundtrip': False,
                         },
@@ -203,7 +215,7 @@ def preview_variations_worker(snapshot: Dict[str, Any], q: queue.Queue) -> None:
                             f'✓ cluster {file_path.name}  ->  {name}  |  {target_m:g} m  |  '
                             f'N0={n0} N_target={n_tgt}  |  {scale_factor:.4f}x  |  '
                             f'{_param_change_line(changes)}'
-                            f'{_call_change_line(call_changes, effect_call_scale_pct=ecall, scale_factor=scale_factor, vfx_burst_denoms=stats.get("vfx_burst_denoms"))}'
+                            f'{_call_change_line(call_changes, effect_call_scale_pct=ecall, scale_factor=scale_factor, consistent_call_density=ccd, cluster_layout=True, vfx_burst_denoms=stats.get("vfx_burst_denoms"))}'
                             f'{exists_note}',
                         ),
                     )
@@ -262,6 +274,7 @@ def preview_variations_worker(snapshot: Dict[str, Any], q: queue.Queue) -> None:
                             effect_call_batch_scale_max=bkw.get('effect_call_batch_scale_max'),
                             param_radius_falloff_by_vfx=param_rf,
                             call_radius_falloff_by_vfx=call_rf,
+                            consistent_call_density=ccd,
                         )
                         if stats.get('error'):
                             q.put(('log', f'✗ {file_path.name} @ {target_m:g} m: {stats["error"]}'))
@@ -277,7 +290,7 @@ def preview_variations_worker(snapshot: Dict[str, Any], q: queue.Queue) -> None:
                                 f'✓ cluster {file_path.name}  ->  {name}  |  {target_m:g} m  |  '
                                 f'N0={n0} N_target={n_tgt}  |  {scale_factor:.4f}x  |  '
                                 f'{_param_change_line(changes)}'
-                                f'{_call_change_line(call_changes, effect_call_scale_pct=ecall, scale_factor=scale_factor, vfx_burst_denoms=stats.get("vfx_burst_denoms"))}'
+                                f'{_call_change_line(call_changes, effect_call_scale_pct=ecall, scale_factor=scale_factor, consistent_call_density=ccd, cluster_layout=True, vfx_burst_denoms=stats.get("vfx_burst_denoms"))}'
                                 f'{exists_note}',
                             ),
                         )
@@ -314,7 +327,7 @@ def preview_variations_worker(snapshot: Dict[str, Any], q: queue.Queue) -> None:
                                     f'✓ {file_path.name}  ->  {name}  |  {target_m:g} m  |  '
                                     f'{pct:.2f}% of source ({scale_factor:.4f}x)  |  '
                                     f'{_param_change_line(changes)}'
-                                    f'{_call_change_line(call_changes, effect_call_scale_pct=ecall, scale_factor=scale_factor, vfx_burst_denoms=stats.get("vfx_burst_denoms"))}'
+                                    f'{_call_change_line(call_changes, effect_call_scale_pct=ecall, scale_factor=scale_factor, consistent_call_density=ccd, cluster_layout=False, vfx_burst_denoms=stats.get("vfx_burst_denoms"))}'
                                     f'{exists_note}',
                                 ),
                             )
@@ -391,6 +404,7 @@ def apply_variations_worker(snapshot: Dict[str, Any], q: queue.Queue) -> None:
         anchor_r = snapshot['anchor_r']
         wait_max = snapshot['wait_max']
         geom = snapshot['geom']
+        ccd_apply = bool(bkw.get('consistent_call_density', False))
         total_steps = max(len(planned), 1)
         step = 0
         ok = 0
@@ -439,6 +453,7 @@ def apply_variations_worker(snapshot: Dict[str, Any], q: queue.Queue) -> None:
                             effect_call_batch_scale_max=bkw.get('effect_call_batch_scale_max'),
                             param_radius_falloff_by_vfx=param_rf,
                             call_radius_falloff_by_vfx=call_rf,
+                            consistent_call_density=ccd_apply,
                             target_radius_m=target_m,
                             ref_m=ref_m,
                             anchor_r=anchor_r,
@@ -460,7 +475,7 @@ def apply_variations_worker(snapshot: Dict[str, Any], q: queue.Queue) -> None:
                             'log',
                             f'✓ {dest.name}  cluster N0={n0} N_target={n_target}  '
                             f'({scale_factor:.4f}x, {_param_change_line(changes)}'
-                            f'{_call_change_line(call_changes, effect_call_scale_pct=ecall, scale_factor=scale_factor, vfx_burst_denoms=stats.get("vfx_burst_denoms"))})',
+                            f'{_call_change_line(call_changes, effect_call_scale_pct=ecall, scale_factor=scale_factor, consistent_call_density=ccd_apply, cluster_layout=True, vfx_burst_denoms=stats.get("vfx_burst_denoms"))})',
                         ),
                     )
                     pending_scatter = {'file_path': file_path, 'dest': dest, 'project': project}
@@ -491,7 +506,7 @@ def apply_variations_worker(snapshot: Dict[str, Any], q: queue.Queue) -> None:
                         (
                             'log',
                             f'✓ {dest.name}  ({scale_factor:.4f}x, {_param_change_line(changes)}'
-                            f'{_call_change_line(call_changes, effect_call_scale_pct=ecall, scale_factor=scale_factor, vfx_burst_denoms=stats.get("vfx_burst_denoms"))})',
+                            f'{_call_change_line(call_changes, effect_call_scale_pct=ecall, scale_factor=scale_factor, consistent_call_density=ccd_apply, cluster_layout=False, vfx_burst_denoms=stats.get("vfx_burst_denoms"))})',
                         ),
                     )
                     ok += 1

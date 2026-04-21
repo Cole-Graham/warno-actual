@@ -13,8 +13,11 @@ from src import ndf
 from src.utils.ndf_utils import strip_quotes
 
 from .scatter_extract import (
+    _mobile_position_from_simultaneous,
+    _parse_float3_plus_par,
     _stringify_position_expr,
     gameplay_m_to_ndf_xy,
+    ndf_xy_to_gameplay_m,
 )
 from .scatter_model import ScatterProject
 
@@ -100,6 +103,221 @@ def _replace_all_scatter_named_position_params(root: Any, dx_ndf: float, dy_ndf:
 
     walk(root)
     return n
+
+
+def _collect_ordered_distinct_relative_float3_ndf(sim: ndf.model.Object) -> List[Tuple[float, float]]:
+    """Distinct ``float3[…] + parPosition`` anchors under one ``TSimultaneousAction`` (source order)."""
+    seen: Set[Tuple[int, int]] = set()
+    out: List[Tuple[float, float]] = []
+
+    def from_taction(tac: ndf.model.Object) -> None:
+        if tac.type != 'TActionCall':
+            return
+        for member in tac:
+            if member.member != 'NamedParams' or not isinstance(member.v, ndf.model.Map):
+                continue
+            for map_row in member.v:
+                key = strip_quotes(str(map_row.k)) if map_row.k is not None else ''
+                if key not in _SCATTER_NAMED_POSITION_KEYS:
+                    continue
+                s = ndf.printer.string(map_row.v).strip()
+                p = _parse_float3_plus_par(s)
+                if p:
+                    k = (int(round(p[0])), int(round(p[1])))
+                    if k not in seen:
+                        seen.add(k)
+                        out.append((float(p[0]), float(p[1])))
+
+    def walk(node: Any) -> None:
+        if isinstance(node, ndf.model.Object):
+            if node.type == 'TActionCall':
+                from_taction(node)
+            for member in node:
+                walk(member.v)
+        elif isinstance(node, ndf.model.List):
+            for row in node:
+                walk(row.v)
+        elif isinstance(node, ndf.model.MemberRow):
+            walk(node.v)
+        elif isinstance(node, ndf.model.Map):
+            for mr in node:
+                walk(mr.v)
+        elif isinstance(node, ndf.model.ListRow):
+            walk(node.v)
+
+    if sim.type != 'TSimultaneousAction':
+        return out
+    for m in sim:
+        if m.member != 'Actions' or not isinstance(m.v, ndf.model.List):
+            continue
+        for row in m.v:
+            walk(row.v)
+    return out
+
+
+def _replace_scatter_named_position_params_multi_anchor(
+    root: Any,
+    bx_ndf: float,
+    by_ndf: float,
+    ref_ndf_x: float,
+    ref_ndf_y: float,
+    scale: float,
+) -> int:
+    """Map each ``float3[lx,ly,0]+parPosition`` to burst-centered layout preserving scaled deltas from ref."""
+    n = 0
+    sc = float(scale)
+
+    def walk(node: Any) -> None:
+        nonlocal n
+        if isinstance(node, ndf.model.Object):
+            if node.type == 'TActionCall':
+                for member in node:
+                    if member.member != 'NamedParams' or not isinstance(member.v, ndf.model.Map):
+                        continue
+                    for map_row in member.v:
+                        key = strip_quotes(str(map_row.k)) if map_row.k is not None else ''
+                        if key not in _SCATTER_NAMED_POSITION_KEYS:
+                            continue
+                        s = ndf.printer.string(map_row.v).strip()
+                        p = _parse_float3_plus_par(s)
+                        if p:
+                            lx, ly = float(p[0]), float(p[1])
+                            nx = bx_ndf + (lx - ref_ndf_x) * sc
+                            ny = by_ndf + (ly - ref_ndf_y) * sc
+                            map_row.v = _stringify_position_expr(nx, ny)
+                            n += 1
+                            continue
+                        s_compact = s.replace(' ', '').lower()
+                        if s_compact == 'parposition':
+                            map_row.v = _stringify_position_expr(bx_ndf, by_ndf)
+                            n += 1
+            for member in node:
+                walk(member.v)
+        elif isinstance(node, ndf.model.List):
+            for row in node:
+                walk(row.v)
+        elif isinstance(node, ndf.model.MemberRow):
+            walk(node.v)
+        elif isinstance(node, ndf.model.Map):
+            for mr in node:
+                walk(mr.v)
+        elif isinstance(node, ndf.model.ListRow):
+            walk(node.v)
+
+    walk(root)
+    return n
+
+
+def apply_scatter_burst_positions_to_simultaneous(
+    sim: ndf.model.Object,
+    burst_x_gameplay_m: float,
+    burst_y_gameplay_m: float,
+    ref_m: float,
+    anchor_r: float,
+    *,
+    cluster_radius_scale: Optional[float] = None,
+) -> Tuple[bool, int]:
+    """Place one burst: Mobile and/or named scatter params.
+
+    * **Mobile** templates: same anchor for every nested call (vanilla paired rows).
+    * **Nil Mobile** with multiple distinct ``float3 + parPosition`` anchors: map each call to
+      ``burst + scale * (original - ref)`` so sub-impacts stay grouped when the effect radius grows.
+    """
+    if sim.type != 'TSimultaneousAction':
+        return False, 0
+    bx_ndf, by_ndf = gameplay_m_to_ndf_xy(
+        float(burst_x_gameplay_m),
+        float(burst_y_gameplay_m),
+        float(ref_m),
+        float(anchor_r),
+    )
+    bx_ndf = float(int(round(bx_ndf)))
+    by_ndf = float(int(round(by_ndf)))
+
+    mob = _mobile_position_from_simultaneous(sim)
+    if mob is not None:
+        mobile_ok = _set_mobile_position_on_simultaneous(sim, bx_ndf, by_ndf)
+        n_named = _replace_all_scatter_named_position_params(sim, bx_ndf, by_ndf)
+        return mobile_ok, n_named
+
+    distinct = _collect_ordered_distinct_relative_float3_ndf(sim)
+    scale = float(cluster_radius_scale) if cluster_radius_scale is not None else 1.0
+
+    if len(distinct) <= 1:
+        n_named = _replace_all_scatter_named_position_params(sim, bx_ndf, by_ndf)
+        return False, n_named
+
+    ref_x, ref_y = float(distinct[0][0]), float(distinct[0][1])
+    n_named = _replace_scatter_named_position_params_multi_anchor(
+        sim,
+        bx_ndf,
+        by_ndf,
+        ref_x,
+        ref_y,
+        scale,
+    )
+    if n_named == 0:
+        n_named = _replace_all_scatter_named_position_params(sim, bx_ndf, by_ndf)
+    return False, n_named
+
+
+def set_simultaneous_burst_gameplay_position_m(
+    sim: ndf.model.Object,
+    x_gameplay_m: float,
+    y_gameplay_m: float,
+    ref_m: float,
+    anchor_r: float,
+) -> bool:
+    """Write burst anchor in gameplay meters (rounded NDF ints), matching :func:`emit_scatter_into_actions`.
+
+    Nil-Mobile templates with several ``float3 + parPosition`` anchors are **translated** so relative
+    sub-impact layout is preserved (used by Call falloff repositioning).
+    """
+    if sim.type != 'TSimultaneousAction':
+        return False
+    rm = float(ref_m)
+    ar = float(anchor_r)
+    tgx = float(int(round(float(x_gameplay_m))))
+    tgy = float(int(round(float(y_gameplay_m))))
+
+    mob = _mobile_position_from_simultaneous(sim)
+    if mob is not None:
+        dx_ndf, dy_ndf = gameplay_m_to_ndf_xy(tgx, tgy, rm, ar)
+        dx_ndf = float(int(round(dx_ndf)))
+        dy_ndf = float(int(round(dy_ndf)))
+        mobile_ok = _set_mobile_position_on_simultaneous(sim, dx_ndf, dy_ndf)
+        n_named = _replace_all_scatter_named_position_params(sim, dx_ndf, dy_ndf)
+        return mobile_ok or n_named > 0
+
+    distinct = _collect_ordered_distinct_relative_float3_ndf(sim)
+    if len(distinct) <= 1:
+        dx_ndf, dy_ndf = gameplay_m_to_ndf_xy(tgx, tgy, rm, ar)
+        dx_ndf = float(int(round(dx_ndf)))
+        dy_ndf = float(int(round(dy_ndf)))
+        n_named = _replace_all_scatter_named_position_params(sim, dx_ndf, dy_ndf)
+        return n_named > 0
+
+    ref_lx, ref_ly = float(distinct[0][0]), float(distinct[0][1])
+    ogx, ogy = ndf_xy_to_gameplay_m(ref_lx, ref_ly, rm, ar)
+    ogx = float(int(round(ogx)))
+    ogy = float(int(round(ogy)))
+    dgx, dgy = tgx - ogx, tgy - ogy
+    if rm <= 0 or ar <= 0:
+        dndx, dndy = dgx, dgy
+    else:
+        dndx = dgx * (ar / rm)
+        dndy = dgy * (ar / rm)
+    new_bx = float(int(round(ref_lx + dndx)))
+    new_by = float(int(round(ref_ly + dndy)))
+    n_named = _replace_scatter_named_position_params_multi_anchor(
+        sim,
+        new_bx,
+        new_by,
+        ref_lx,
+        ref_ly,
+        1.0,
+    )
+    return n_named > 0
 
 
 def _has_any_scatter_named_position_param(root: Any) -> bool:
@@ -280,16 +498,15 @@ def emit_scatter_into_actions(project: ScatterProject, parsed_root: ndf.model.Li
         sim = row.v
         if not isinstance(sim, ndf.model.Object) or sim.type != 'TSimultaneousAction':
             continue
-        dx_ndf, dy_ndf = gameplay_m_to_ndf_xy(
+        crs = getattr(project, 'cluster_radius_scale', None)
+        mobile_ok, n_named = apply_scatter_burst_positions_to_simultaneous(
+            sim,
             burst.x_gameplay_m,
             burst.y_gameplay_m,
             ref_m,
             anchor_r,
+            cluster_radius_scale=crs,
         )
-        dx_ndf = float(int(round(dx_ndf)))
-        dy_ndf = float(int(round(dy_ndf)))
-        mobile_ok = _set_mobile_position_on_simultaneous(sim, dx_ndf, dy_ndf)
-        n_named = _replace_all_scatter_named_position_params(sim, dx_ndf, dy_ndf)
         if not mobile_ok and n_named == 0:
             raise ValueError(
                 'emit: template has no Mobile Position (TMobileWithLocalRepereMatrixFactory) '

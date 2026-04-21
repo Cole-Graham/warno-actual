@@ -1,5 +1,6 @@
 """Unit edit constants."""
 
+import ast
 import importlib
 import json
 import os
@@ -167,12 +168,14 @@ _REFERENCE_PATH_EXCEPTIONS = frozenset({
     "UnitRole",
     "Factory",
     "SupplyDescriptor",
+    "Tag",
     "TypeUnitFormation",
     "display",
     "token",
     "selector_tactic",
     "selector_tactic_obj",
     "HandheldEquipmentKey",
+    "mesh",
     "WeaponActiveAndCanShootPropertyName",
     "WeaponIgnoredPropertyName",
     "WeaponShootDataPropertyName",
@@ -282,12 +285,52 @@ def resolve_unit_edit_references_optimized(unit_edits_dict: Dict) -> Dict:
     return resolved_dict
 
 
+_cached_unit_edits = None
+
+
+def _check_intra_file_duplicate_keys(dics_path: Path) -> None:
+    """Detect duplicate keys within a single *_unit_edits.py dict literal via AST."""
+    for file in sorted(dics_path.glob("*_unit_edits.py")):
+        try:
+            tree = ast.parse(file.read_text(encoding="utf-8"), filename=str(file))
+        except SyntaxError as e:
+            logger.error(f"Syntax error in {file.stem}, skipping duplicate check: {e}")
+            continue
+
+        for node in tree.body:
+            if not isinstance(node, ast.Assign):
+                continue
+            if not isinstance(node.value, ast.Dict):
+                continue
+            seen: dict[str, int] = {}
+            for key_node in node.value.keys:
+                if not isinstance(key_node, ast.Constant) or not isinstance(key_node.value, str):
+                    continue
+                key_str = key_node.value
+                if key_str in seen:
+                    logger.error(
+                        f"Intra-file duplicate key '{key_str}' in {file.stem} "
+                        f"(lines {seen[key_str]} and {key_node.lineno}). "
+                        f"Python silently drops the first entry."
+                    )
+                else:
+                    seen[key_str] = key_node.lineno
+
+
 def load_unit_edits() -> Dict:
     """Load and merge all unit edit dictionaries."""
+    global _cached_unit_edits
+    if _cached_unit_edits is not None:
+        return _cached_unit_edits
+
     merged_edits = {}
     
     logger.info("Loading unit edit dictionaries...")
     
+    # Check for intra-file duplicate keys before importing modules
+    dics_path = Path(__file__).parent
+    _check_intra_file_duplicate_keys(dics_path)
+
     # Dictionary name mapping
     dict_names = {
         'BEL_unit_edits': 'bel_unit_edits',
@@ -302,7 +345,6 @@ def load_unit_edits() -> Dict:
     }
     
     # Load dictionaries
-    dics_path = Path(__file__).parent
     unit_source_map = {}  # Track which file each unit comes from
     for file in dics_path.glob("*unit_edits.py"):
         module_name = f"src.constants.unit_edits.{file.stem}"
@@ -328,10 +370,10 @@ def load_unit_edits() -> Dict:
                     if unit_name in merged_edits:
                         duplicates.append(unit_name)
                 
-                # Log warnings for duplicates
+                # Log errors for duplicates
                 if duplicates:
                     for unit_name in duplicates:
-                        logger.warning(
+                        logger.error(
                             f"Duplicate unit entry '{unit_name}' found in {file.stem}. "
                             f"Previously loaded from {unit_source_map.get(unit_name, 'unknown')}. "
                             f"Entry from {file.stem} will overwrite the previous one."
@@ -358,6 +400,7 @@ def load_unit_edits() -> Dict:
     with open(logs_dir / "merged_edits.json", "w") as f:
         json.dump(merged_edits, f, indent=4)
 
+    _cached_unit_edits = merged_edits
     return merged_edits
 
 

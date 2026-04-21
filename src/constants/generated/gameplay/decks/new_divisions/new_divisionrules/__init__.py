@@ -1,6 +1,7 @@
 from .US_newdivisionrules import (
     US_airborne_newdivisionrules,
     US_armored_newdivisionrules,
+    US_marine_newdivisionrules,
     US_mechanized_newdivisionrules,
     US_motorized_newdivisionrules,
     US_global_newdivisionrules,
@@ -23,6 +24,7 @@ from .SOV_newdivisionrules import (
     SOV_airborne_newdivisionrules,
     SOV_armored_newdivisionrules,
     SOV_global_newdivisionrules,
+    SOV_marine_newdivisionrules,
     SOV_mechanized_newdivisionrules,
     SOV_motorized_newdivisionrules,
 )
@@ -51,6 +53,7 @@ __all__ = [
     "US_airborne_newdivisionrules",
     "US_armored_newdivisionrules",
     "US_global_newdivisionrules",
+    "US_marine_newdivisionrules",
     "US_mechanized_newdivisionrules",
     "US_motorized_newdivisionrules",
     "POL_airborne_newdivisionrules",
@@ -61,6 +64,7 @@ __all__ = [
     "SOV_airborne_newdivisionrules",
     "SOV_armored_newdivisionrules",
     "SOV_global_newdivisionrules",
+    "SOV_marine_newdivisionrules",
     "SOV_mechanized_newdivisionrules",
     "SOV_motorized_newdivisionrules",
     "RDA_airborne_newdivisionrules",

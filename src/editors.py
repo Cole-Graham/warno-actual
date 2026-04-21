@@ -12,8 +12,10 @@ from .gameplay_mods import (
     edit_gameplay_constantes_ravitaillement,
     edit_gameplay_constantes_weaponconstantes,
     edit_gameplay_constantes_weapontypepriorities,
+    edit_gameplay_constantes_terrainspeedfactors,
     edit_gameplay_terrains,
     edit_gameplay_unit_airplanecritical,
+    edit_gameplay_unit_damagemodules,
     edit_gameplay_unit_groundunitcritical,
     edit_gameplay_unit_helicocritical,
     edit_gameplay_unit_infanteriecritical,
@@ -48,7 +50,7 @@ from .gameplay_mods import (
     edit_gen_gp_gfx_depictioninfantry,
     edit_gen_gp_gfx_depictionvehicles,
     edit_gen_gp_gfx_depictionvehiclesshowroom,
-    edit_gen_gp_gfx_effetssurunite,
+    edit_gen_gp_effects_effetssurunite,
     edit_gen_gp_gfx_experiencelevels,
     edit_gen_gp_gfx_firedescriptor,
     edit_gen_gp_gfx_ndfdepictionlist,
@@ -88,6 +90,7 @@ from src.ui_mods.style import (
     edit_orderdisplay,
     edit_textstyles,
     edit_uicommonbeaconlabelresources,
+    edit_uicommonunitnameresources,
     edit_uiingamebuckcubeaction,
     edit_uiingamebuckengagementrules,
     edit_uiingamedefaultcontainer,
@@ -134,8 +137,10 @@ __all__ = [
     'edit_gameplay_constantes_iastratweaponconstantes',
     'edit_gameplay_constantes_ravitaillement',
     'edit_gameplay_constantes_weaponconstantes',
+    'edit_gameplay_constantes_terrainspeedfactors',
     'edit_gameplay_terrains',
     'edit_gameplay_unit_airplanecritical',
+    'edit_gameplay_unit_damagemodules',
     'edit_gameplay_unit_groundunitcritical',
     'edit_gameplay_unit_helicocritical',
     'edit_gameplay_unit_infanteriecritical',
@@ -170,7 +175,7 @@ __all__ = [
     'edit_gen_gp_gfx_depictioninfantry',
     'edit_gen_gp_gfx_depictionvehicles',
     'edit_gen_gp_gfx_depictionvehiclesshowroom',
-    'edit_gen_gp_gfx_effetssurunite',
+    'edit_gen_gp_effects_effetssurunite',
     'edit_gen_gp_gfx_experiencelevels',
     'edit_gen_gp_gfx_firedescriptor',
     'edit_gen_gp_gfx_mimeticimpactmapping',
@@ -279,6 +284,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/Gameplay/Constantes/WeaponTypePriorities.ndf": [
             (edit_gameplay_constantes_weapontypepriorities, "gameplay"),
         ],
+        "GameData/Gameplay/Constantes/TerrainSpeedFactors.ndf": [
+            (edit_gameplay_constantes_terrainspeedfactors, "gameplay"),
+        ],
         "GameData/Gameplay/Terrains/Terrains.ndf": [
             (edit_gameplay_terrains, "gameplay"),
         ],
@@ -288,6 +296,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         # Critical effect modules
         "GameData/Gameplay/Unit/CriticalModules/CriticalEffectModule_Airplane.ndf": [
             (edit_gameplay_unit_airplanecritical, "gameplay"),
+        ],
+        "GameData/Gameplay/Unit/DamageModules.ndf": [
+            (edit_gameplay_unit_damagemodules, "gameplay"),
         ],
         "GameData/Gameplay/Unit/CriticalModules/CriticalEffectModule_GroundUnit.ndf": [
             (edit_gameplay_unit_groundunitcritical, "gameplay"),
@@ -386,8 +397,8 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/Generated/Gameplay/Gfx/CapaciteList.ndf": [
             (edit_gen_gp_gfx_capacitelist, "gameplay"),
         ],
-        "GameData/Generated/Gameplay/Gfx/EffetsSurUnite.ndf": [
-            (edit_gen_gp_gfx_effetssurunite, "gameplay"),
+        "GameData/Generated/Gameplay/Effects/EffetsSurUnite.ndf": [
+            (edit_gen_gp_effects_effetssurunite, "gameplay"),
         ],
         "GameData/Generated/Gameplay/Gfx/ConditionsDescriptor.ndf": [
             (edit_gen_gp_gfx_conditionsdescriptor, "gameplay"),
@@ -565,9 +576,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/UserInterface/Use/InGame/UISpecificUnitInfoPanelView.ndf": [
             (edit_ui_ingame_uispecificunitinfopanelview, "gameplay"),
         ],
-        # "GameData/UserInterface/Use/InGame/UISpecificUnitInfoSingleWeaponPanelView.ndf": [
-        #     (edit_ui_ingame_uispecificunitinfosingleweaponpanelview, "gameplay"),
-        # ],
+        "GameData/UserInterface/Use/InGame/UISpecificUnitInfoSingleWeaponPanelView.ndf": [
+            (edit_ui_ingame_uispecificunitinfosingleweaponpanelview, "gameplay"),
+        ],
         "GameData/UserInterface/Use/InGame/UISpecificUnitLabelAggregationView.ndf": [
             (edit_uispecificunitlabelaggregationview, "ui"),
         ],
@@ -617,6 +628,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         # Common UI templates and components
         "GameData/UserInterface/Use/Common/UICommonBeaconLabelResources.ndf": [
             (edit_uicommonbeaconlabelresources, "ui"),
+        ],
+        "GameData/UserInterface/Use/Common/UICommonUnitNameResources.ndf": [
+            (edit_uicommonunitnameresources, "gameplay"),
         ],
         # Generated UI files
         "GameData/Generated/UserInterface/Textures/WeaponTextures.ndf": [

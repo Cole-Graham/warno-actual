@@ -247,6 +247,7 @@ class FXEditorApp:
         self.batch_param_status_label.pack(side=tk.LEFT, fill=tk.X, expand=True)
         self.batch_include_declaration_var = tk.BooleanVar(value=True)
         self.variation_geom_var = tk.StringVar(value='param')
+        self.variation_consistent_call_density_var = tk.BooleanVar(value=False)
         self._batch_preview_scale_factor = 1.0
         self._cached_effect_groups: List[Any] = []
         self._variation_group_toggle_vars: Dict[str, Tuple[tk.BooleanVar, tk.BooleanVar]] = {}
@@ -406,6 +407,15 @@ class FXEditorApp:
             text='Overwrite existing destination files',
             variable=self.variation_overwrite_var,
         ).pack(anchor=tk.W, pady=(4, 0))
+        ttk.Checkbutton(
+            variation_frame,
+            text=(
+                'Consistent areal call density (optional): TActionCall counts track footprint area; '
+                'ignore Call Qty %%; Call radius falloff repositions bursts instead of removing them'
+            ),
+            variable=self.variation_consistent_call_density_var,
+            command=self._schedule_state_save,
+        ).pack(anchor=tk.W, pady=(4, 0))
 
         ttk.Label(
             variation_frame,
@@ -451,8 +461,9 @@ class FXEditorApp:
         ttk.Label(
             variation_frame,
             text=(
-                'Reshape scatter: hex gameplay layout uses each target radius (m) as the disk radius for that file; '
-                'burst count still scales with (target/source)².'
+                'Reshape scatter: hex layout uses each target radius (m) as the disk; burst count ∝ (target/source)². '
+                'With “Consistent areal call density”, cluster TActionCall counts are not multiplied by '
+                'target/source (replication already scales area). Without it, linear target/source applies.'
             ),
             font=('TkDefaultFont', 8),
             wraplength=880,
@@ -995,6 +1006,8 @@ class FXEditorApp:
             wm = var.get('wait_max_s')
             if isinstance(wm, (int, float)):
                 self.variation_wait_max_var.set(float(wm))
+            if 'consistent_call_density' in var:
+                self.variation_consistent_call_density_var.set(bool(var['consistent_call_density']))
         self._update_batch_param_status_label()
         self._sync_variation_geom_widgets()
         self._rebuild_scatter_file_tabs()
@@ -1079,6 +1092,7 @@ class FXEditorApp:
                 'overwrite': self.variation_overwrite_var.get(),
                 'variation_geom': self.variation_geom_var.get(),
                 'wait_max_s': self.variation_wait_max_var.get(),
+                'consistent_call_density': self.variation_consistent_call_density_var.get(),
             },
             'variation_curves': self._serialize_variation_curves(),
             'variation_group_ui': self._serialize_variation_group_ui(),
@@ -1467,6 +1481,7 @@ class FXEditorApp:
             'effect_named_flags': named,
             'effect_call_batch_scale_min': call_smin,
             'effect_call_batch_scale_max': call_smax,
+            'consistent_call_density': bool(self.variation_consistent_call_density_var.get()),
         }
 
     def _parsed_target_radii_m(self) -> List[float]:
@@ -2253,6 +2268,8 @@ class FXEditorApp:
         *,
         effect_call_scale_pct: Optional[Dict[str, float]] = None,
         scale_factor: float = 1.0,
+        effect_call_geom_scale: Optional[float] = None,
+        ignore_call_qty_curves: bool = False,
         vfx_burst_denoms: Optional[Dict[str, int]] = None,
     ) -> str:
         """Delegates to :func:`~.call_scale.format_call_qty_report_line` (Scatter tab uses the same)."""
@@ -2260,6 +2277,8 @@ class FXEditorApp:
             call_changes,
             effect_call_scale_pct=effect_call_scale_pct,
             scale_factor=scale_factor,
+            effect_call_geom_scale=effect_call_geom_scale,
+            ignore_call_qty_curves=ignore_call_qty_curves,
             vfx_burst_denoms=vfx_burst_denoms,
         )
         return f'  |  {s}' if s else ''

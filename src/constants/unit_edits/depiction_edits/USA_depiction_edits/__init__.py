@@ -6,12 +6,14 @@ from .Airborne_half_Dragon_US import airborne_half_dragon_us
 from .Engineer_CMD_US import engineer_cmd_us
 from .F4E_Phantom_II_CBU_US import f4e_phantom_ii_cbu_us
 from .F4E_Phantom_II_napalm_US import f4e_phantom_ii_napalm_us
+from .F15C_Eagle_AA_US import f15c_eagle_aa_us
 from .F15E_StrikeEagle_US import f15e_strikeeagle_us
 from .F16E_CBU_US import f16e_cbu_us
 from .F16E_napalm_US import f16e_napalm_us
 from .F111E_Aardvark_napalm_US import f111e_aardvark_napalm_us
 from .F111F_Aardvark_CBU_US import f111f_aardvark_cbu_us
 from .F111F_Aardvark_napalm_US import f111f_aardvark_napalm_us
+from .ForceRecon_USMC_US import forcerecon_usmc_us
 from .Groupe_AT_US import groupe_at_us
 from .M2_Bradley_BSV_US import m2_bradley_bsv_us
 from .M3A1_Bradley_CFV_US import m3a1_bradley_cfv_us
@@ -19,10 +21,12 @@ from .M3A2_Bradley_CFV_US import m3a2_bradley_cfv_us
 from .M35_supply_US import m35_supply_us
 from .Pathfinder_NG_US import pathfinder_ng_us
 from .Ranger_US import ranger_us
+from .Rangers_CMD_US import rangers_cmd_us
 from .Rifles_half_AT4_US import rifles_half_at4_us
 from .Rifles_half_Cav_CMD_US import rifles_half_cav_cmd_us
 from .Scout_Cav_US import scout_cav_us
 from .Scout_US import scout_us
+from .Scout_USMC_US import scout_usmc_us
 
 
 __all__ = [
@@ -33,12 +37,14 @@ __all__ = [
     "engineer_cmd_us",
     "f4e_phantom_ii_cbu_us",
     "f4e_phantom_ii_napalm_us",
+    "f15c_eagle_aa_us",
     "f15e_strikeeagle_us",
     "f16e_cbu_us",
     "f16e_napalm_us",
     "f111e_aardvark_napalm_us",
     "f111f_aardvark_cbu_us",
     "f111f_aardvark_napalm_us",
+    "forcerecon_usmc_us",
     "groupe_at_us",
     "m2_bradley_bsv_us",
     "m3a1_bradley_cfv_us",
@@ -46,8 +52,10 @@ __all__ = [
     "m35_supply_us",
     "pathfinder_ng_us",
     "ranger_us",
+    "rangers_cmd_us",
     "rifles_half_at4_us",
     "rifles_half_cav_cmd_us",
     "scout_cav_us",
     "scout_us", 
+    "scout_usmc_us",
 ]

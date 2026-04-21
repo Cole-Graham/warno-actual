@@ -6,6 +6,7 @@ with Satchel Charge).
 """
 
 import json
+import re
 from pathlib import Path
 from typing import Any, Dict, List
 
@@ -102,9 +103,15 @@ def _serialize_mounted_weapon(weapon_obj: Any, override_ammo_name: str | None = 
 
 
 def _serialize_turret(turret_obj: Any, mounted_index: int, override_ammo_name: str | None = None) -> str | None:
-    """Serialize a TTurretInfanterieDescriptor containing one weapon to NDF string."""
+    """Serialize a turret descriptor containing one weapon to NDF string.
+
+    Iterates all members of the donor turret so every field (Tag,
+    AngleRotation*, VitesseRotation, etc.) is preserved regardless of
+    turret type.
+    """
     if not is_valid_turret(turret_obj.v):
         return None
+    turret_type = turret_obj.v.type
     mounted_wpns = turret_obj.v.by_m("MountedWeaponDescriptorList")
     weapons = [w for w in mounted_wpns.v if is_obj_type(w.v, "TMountedWeaponDescriptor")]
     if not weapons:
@@ -112,18 +119,27 @@ def _serialize_turret(turret_obj: Any, mounted_index: int, override_ammo_name: s
     weapon = weapons[mounted_index] if mounted_index < len(weapons) else weapons[0]
     weapon_str = _serialize_mounted_weapon(weapon, override_ammo_name)
     weapon_indented = "\n".join(f"    {line}" for line in weapon_str.split("\n"))
-    yul_bone = _serialize_ndf_value(turret_obj.v.by_m("YulBoneOrdinal").v, "YulBoneOrdinal")
-    lines = [
-        "TTurretInfanterieDescriptor",
-        "(",
-        "    MountedWeaponDescriptorList = ",
-        "    [",
-        weapon_indented,
-        "    ]",
-        f"    YulBoneOrdinal = {yul_bone}",
-        ")",
-    ]
+
+    lines = [turret_type, "("]
+    for member_row in turret_obj.v:
+        name = member_row.m
+        if name == "MountedWeaponDescriptorList":
+            lines.append("    MountedWeaponDescriptorList = ")
+            lines.append("    [")
+            lines.append(weapon_indented)
+            lines.append("    ]")
+        else:
+            lines.append(f"    {name} = {_serialize_ndf_value(member_row.v, name)}")
+    lines.append(")")
     return "\n".join(lines)
+
+
+def _extract_base_ammo_name(weapon_name: str) -> str:
+    """Strip variant suffixes (_salvolengthN, _xN, _strengthN) to get the base ammo name."""
+    base = re.sub(r'_salvolength\d+$', '', weapon_name)
+    base = re.sub(r'_x\d+$', '', base)
+    base = re.sub(r'_strength\d+$', '', base)
+    return base
 
 
 def _collect_insert_weapons() -> List[str]:
@@ -211,6 +227,22 @@ def build_insert_turret_templates(
                         break
             if donor_name:
                 break
+
+        if not donor_name or not location:
+            base_name = _extract_base_ammo_name(weapon_name)
+            if base_name != weapon_name:
+                for descr_name, descr_data in weapon_db.items():
+                    for loc_name, locs in descr_data.get("weapon_locations", {}).items():
+                        if locs and _extract_base_ammo_name(loc_name) == base_name:
+                            donor_name = descr_name
+                            location = locs[0]
+                            logger.debug(
+                                f"Found base-ammo fallback donor for {weapon_name} "
+                                f"via {loc_name} in {descr_name}",
+                            )
+                            break
+                    if donor_name:
+                        break
 
         if not donor_name or not location:
             logger.debug(f"No donor found for insert template: {weapon_name}")

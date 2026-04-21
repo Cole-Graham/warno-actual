@@ -9,12 +9,13 @@ RFA_NEW_UNITS = {
         "CadavreGUID": "c95f3f05-66f0-4a2a-b66f-1396d103d186",
         "NewName": "Engineers_CMD2_RFA",
         "GameName": {
-            "display": "#CMD FÜHRUNGSGRUPPE",
+            "display": "FÜHRUNGSGRUPPE",
             "token": "WGERCMDINF",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Commandant",
                 "Crew",
@@ -89,6 +90,7 @@ RFA_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Commandant",
                 "GroundUnits",
@@ -136,6 +138,7 @@ RFA_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -180,6 +183,7 @@ RFA_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -216,6 +220,7 @@ RFA_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -252,6 +257,7 @@ RFA_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -291,6 +297,7 @@ RFA_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -567,14 +574,14 @@ RFA_NEW_UNITS = {
                 '_mountaineer',
                 'infantry_equip_heavy',
         ],
-        "capacities": {
-            "add_capacities": ["mountaineer"],
+        "LandMovement": {
+            "TerrainSpeedFactors": "Mountaineer",
         },
         "availability": [9, 7, 0, 0],
         "max_speed": 20,
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
-                   'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/UseCapacite', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+                   'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,
         "is_ground_vehicle": False,
@@ -741,7 +748,7 @@ RFA_NEW_UNITS = {
         "ECM": -0.4,
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
         "WeaponDescriptor": {

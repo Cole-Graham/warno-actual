@@ -35,12 +35,13 @@ HE_BOMB_DAMAGE_BY_WEIGHT: Dict[str, Dict[str, int]] = {
 # TraitsToken: For matching HE bombs in Ammunition.ndf (and AmmunitionMissiles.ndf for PGBs)
 HE_BOMB_TRAIT_TOKENS: List[str] = [
     "'HE'",
+    "'thermobaric'",
 ]
 
 # Weight class key -> substrings matched against ammo namespace (see apply_bomb_damage_standards)
 HE_BOMB_NAME_MATCH: Dict[str, List[str]] = {
     "100": ["119kg"],
-    "250": ["250kg", "GBU_12"],
+    "250": ["250kg", "230kg", "GBU_12"],
     "500": ["_500Kr", "_500L", "400kg", "450kg", "500kg", "513kg", "CPU_123"],
     "1000": ["920kg", "1000kg", "GBU_10", "GBU_27"],
     "1250": ["KAB_1500"],

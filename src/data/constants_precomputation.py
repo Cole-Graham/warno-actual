@@ -6,11 +6,17 @@ build_database is false. The "database" is just the collection of JSON files on 
 """
 
 import json
+import re
 from pathlib import Path
 from typing import Any, Dict, List
 
 from src.constants.new_units import NEW_UNITS
 from src.constants.unit_edits import load_unit_edits
+from src.constants.weapons import ammunitions, missiles
+from src.constants.weapons.standards.by_category import (
+    AA_CATEGORIES,
+    AA_SUPPRESS_BY_PHYSICAL_DAMAGE,
+)
 from src.constants.weapons.vanilla_inst_modifications import (
     AMMUNITION_MISSILES_RENAMES,
     AMMUNITION_RENAMES,
@@ -155,9 +161,21 @@ def build_constants_precomputation_data(config: Dict[str, Any], game_db: Dict[st
                     "Fix unit edits or add quantities to NbWeapons in small_arms.py"
                 )
 
+        # Build protected ammo set for blanket deployment-time disable
+        deployment_time_units = build_deployment_time_units(game_db) if game_db else {
+            "protected_ammo": [],
+        }
+        save_deployment_time_units(deployment_time_units, config)
+
+        # Build AA suppress damages mapping (PhysicalDamages -> SuppressDamages)
+        aa_suppress_damages = build_aa_suppress_damages(game_db) if game_db else {}
+        save_aa_suppress_damages(aa_suppress_damages, config)
+
         # Add ammunition_renames and insert_turret_templates to return dict for convenience
         mappings["ammunition_renames"] = ammunition_renames
         mappings["insert_turret_templates"] = insert_templates
+        mappings["deployment_time_units"] = deployment_time_units
+        mappings["aa_suppress_damages"] = aa_suppress_damages
 
         logger.info(
             f"Constants precomputation data built and saved: "
@@ -165,7 +183,9 @@ def build_constants_precomputation_data(config: Dict[str, Any], game_db: Dict[st
             f"{len(mappings.get('reference_mappings', {}))} references, "
             f"{len(mappings.get('new_command_unit_deck_packs', {}))} new command unit deck packs, "
             f"{len(ammunition_renames.get('renames_old_new', {}))} ammunition renames, "
-            f"{len(insert_templates)} insert turret templates"
+            f"{len(insert_templates)} insert turret templates, "
+            f"{len(deployment_time_units.get('protected_ammo', []))} protected ammo, "
+            f"{len(aa_suppress_damages)} AA suppress damages"
         )
         return mappings
     except Exception as e:
@@ -290,6 +310,259 @@ def save_ammunition_renames(renames: Dict[str, Dict[str, str]], config: Dict[str
         logger.debug(f"Saved ammunition_renames to {renames_file}")
     except Exception as e:
         logger.error(f"Failed to save ammunition_renames: {e}")
+        raise
+
+
+def build_deployment_time_units(game_db: Dict[str, Any]) -> Dict[str, List[str]]:
+    """Build protected unit/ammo sets for blanket deployment-time disable.
+
+    The engine requires that if ANY ammo on a unit has ``HasDeploymentTime =
+    True``, the unit MUST have ``TWeaponDeploymentModuleDescriptor``, and vice
+    versa.  So the module and the ammo flag must stay in sync.
+
+    **Protected ammo** = ammo whose ``HasDeploymentTime`` will remain ``True``
+    after patching:
+      - ammo used by units with ``"WeaponDeployment"`` in unit_edits/NEW_UNITS
+      - ammo whose constants explicitly set ``HasDeploymentTime = True``
+
+    **Protected units** = units that must keep (or gain)
+    ``TWeaponDeploymentModuleDescriptor``:
+      - units with ``"WeaponDeployment"`` in unit_edits/NEW_UNITS
+      - any unit carrying at least one protected ammo
+
+    Returns:
+        Dict with ``protected_units`` and ``protected_ammo`` lists.
+    """
+    weapons_db = game_db.get("weapons", {})
+    ammo_props = game_db.get("ammunition", {}).get("ammo_properties", {})
+    _salvo_suffix_re = re.compile(r'(_x\d+|_salvolength\d+)$')
+
+    # --- 1. Seed protected units from unit_edits / NEW_UNITS ---
+    unit_edits = load_unit_edits()
+    protected_units: set = set()
+    for unit_name_key, edits in unit_edits.items():
+        if "WeaponDeployment" in edits:
+            protected_units.add(unit_name_key)
+    for _key, new_unit_data in NEW_UNITS.items():
+        if isinstance(new_unit_data, dict) and "WeaponDeployment" in new_unit_data:
+            protected_units.add(new_unit_data.get("NewName", ""))
+
+    # --- 1b. Build per-unit ammo replacement map from unit_edits equipmentchanges ---
+    unit_replace_map: Dict[str, Dict[str, str]] = {}
+    for unit_name, edits in unit_edits.items():
+        replacements: Dict[str, str] = {}
+        replace_entries = (
+            edits.get("WeaponDescriptor", {})
+            .get("equipmentchanges", {})
+            .get("replace", [])
+        )
+        for replacement in replace_entries:
+            if (
+                not isinstance(replacement, (list, tuple))
+                or len(replacement) < 2
+                or not isinstance(replacement[0], str)
+                or not isinstance(replacement[1], str)
+            ):
+                continue
+            old_base = _salvo_suffix_re.sub("", replacement[0])
+            new_base = _salvo_suffix_re.sub("", replacement[1])
+            replacements[old_base] = new_base
+        if replacements:
+            unit_replace_map[unit_name] = replacements
+
+    # --- 2. Build protected ammo set ---
+    protected_ammo: set = set()
+
+    # 2a. All ammo on explicitly protected units keeps its vanilla value
+    for weapon_descr_name, weapon_info in weapons_db.items():
+        if not weapon_descr_name.startswith("WeaponDescriptor_"):
+            continue
+        unit_name = weapon_descr_name.replace("WeaponDescriptor_", "", 1)
+        if unit_name not in protected_units:
+            continue
+        for turret in weapon_info.get("turrets", {}).values():
+            for ammo_name in turret.get("weapons", {}).keys():
+                base = _salvo_suffix_re.sub('', ammo_name)
+                # Only protect if the vanilla ammo actually has the flag
+                if ammo_props.get(f"Ammo_{base}", {}).get("HasDeploymentTime"):
+                    protected_ammo.add(base)
+
+    # 2b. Ammo whose constants explicitly set HasDeploymentTime = True
+    for (weapon_name, _cat, _donor, _is_new), data in {**ammunitions, **missiles}.items():
+        ammo_data = data.get("Ammunition", {})
+        parent_membr = ammo_data.get("parent_membr", {})
+        if not parent_membr:
+            continue
+        if parent_membr.get("HasDeploymentTime") is True:
+            protected_ammo.add(weapon_name)
+            continue
+        add_entry = parent_membr.get("add")
+        if isinstance(add_entry, list) and len(add_entry) == 2 and isinstance(add_entry[1], str):
+            if "HasDeploymentTime" in add_entry[1]:
+                if add_entry[1].split("=", 1)[1].strip() == "True":
+                    protected_ammo.add(weapon_name)
+
+    # --- 3. Reverse-map: any unit carrying protected ammo must keep the module ---
+    for weapon_descr_name, weapon_info in weapons_db.items():
+        if not weapon_descr_name.startswith("WeaponDescriptor_"):
+            continue
+        unit_name = weapon_descr_name.replace("WeaponDescriptor_", "", 1)
+        if unit_name in protected_units:
+            continue
+        for turret in weapon_info.get("turrets", {}).values():
+            for ammo_name in turret.get("weapons", {}).keys():
+                base_name = _salvo_suffix_re.sub('', ammo_name)
+                effective_name = unit_replace_map.get(unit_name, {}).get(base_name, base_name)
+                if effective_name in protected_ammo:
+                    protected_units.add(unit_name)
+                    break
+
+    logger.info(
+        f"Deployment time: {len(protected_units)} protected units, "
+        f"{len(protected_ammo)} protected ammo base names"
+    )
+    return {
+        "protected_units": sorted(protected_units),
+        "protected_ammo": sorted(protected_ammo),
+    }
+
+
+def save_deployment_time_units(data: Dict[str, List[str]], config: Dict[str, Any]) -> None:
+    """Save deployment time units data as JSON file to disk."""
+    db_path = Path(config["data_config"]["database_path"])
+    constants_dir = db_path / "constants_precomputation"
+    ensure_db_directory(str(constants_dir))
+
+    out_file = constants_dir / "deployment_time_units.json"
+    try:
+        with open(out_file, "w") as f:
+            json.dump(data, f, indent=2, sort_keys=True)
+        logger.debug(f"Saved deployment_time_units to {out_file}")
+    except Exception as e:
+        logger.error(f"Failed to save deployment_time_units: {e}")
+        raise
+
+
+def _lookup_vanilla_physical_damages(
+    weapon_name: str,
+    ammo_props: Dict[str, Any],
+) -> Any:
+    """Look up vanilla PhysicalDamages from ammo_properties.
+
+    Tries exact ``Ammo_{weapon_name}`` first, then falls back to any
+    ``Ammo_{weapon_name}_*`` entry (vanilla salvo variants use ``_x{N}``
+    suffixes and may not have a bare base namespace).
+    """
+    exact = ammo_props.get(f"Ammo_{weapon_name}", {})
+    pd = exact.get("PhysicalDamages")
+    if pd is not None:
+        return pd
+
+    prefix = f"Ammo_{weapon_name}_"
+    for key, props in ammo_props.items():
+        if key.startswith(prefix):
+            pd = props.get("PhysicalDamages")
+            if pd is not None:
+                return pd
+
+    return None
+
+
+def build_aa_suppress_damages(game_db: Dict[str, Any]) -> Dict[str, Dict[str, int]]:
+    """Build weapon_name -> {physical_damage, suppress_damage} for AA missiles.
+
+    For each AA missile (A2A / SAM / MANPAD) in the ``missiles`` dict,
+    determine the final PhysicalDamages (constants override > vanilla game_db)
+    and look up the corresponding *intended* total suppress damage via
+    ``AA_SUPPRESS_BY_PHYSICAL_DAMAGE``.
+
+    Both values are persisted so the handler can derive the final
+    ``SuppressDamages`` to write to NDF, subtracting
+    ``AA_ADDITIONAL_SUPPRESS_PER_LOST_PHYSICAL * physical_damage`` from the
+    intended total (the engine adds that product back at runtime).
+
+    Fallback order for PhysicalDamages:
+      1. Constants ``parent_membr`` on this weapon
+      2. Vanilla ``ammo_properties`` for this weapon (exact or ``_x{N}`` match)
+      3. Donor weapon's constants ``parent_membr`` (for ``is_new`` missiles)
+      4. Donor weapon's vanilla ``ammo_properties`` (exact or ``_x{N}`` match)
+    """
+    ammo_props = game_db.get("ammunition", {}).get("ammo_properties", {})
+
+    # Pre-build donor lookup: weapon_name -> (donor, data)
+    missile_index: Dict[str, Dict] = {}
+    for (wn, cat, _d, _n), d in missiles.items():
+        if cat in AA_CATEGORIES:
+            missile_index[wn] = d
+
+    result: Dict[str, Dict[str, int]] = {}
+
+    for (weapon_name, category, donor, is_new), data in missiles.items():
+        if category not in AA_CATEGORIES:
+            continue
+
+        # 1. Constants override on this weapon
+        phys_dmg = (
+            data.get("Ammunition", {})
+            .get("parent_membr", {})
+            .get("PhysicalDamages")
+        )
+
+        # 2. Vanilla ammo_properties (exact or _x{N} salvo variant match)
+        if phys_dmg is None:
+            phys_dmg = _lookup_vanilla_physical_damages(weapon_name, ammo_props)
+
+        # 3-4. Donor fallback for new missiles (e.g. HAGRU variants)
+        if phys_dmg is None and is_new and donor:
+            donor_data = missile_index.get(donor, {})
+            phys_dmg = (
+                donor_data.get("Ammunition", {})
+                .get("parent_membr", {})
+                .get("PhysicalDamages")
+            )
+            if phys_dmg is None:
+                phys_dmg = _lookup_vanilla_physical_damages(donor, ammo_props)
+
+        if phys_dmg is None:
+            logger.warning(
+                f"(aa_suppress) {weapon_name}: no PhysicalDamages found "
+                f"in constants, game_db, or donor, skipping",
+            )
+            continue
+
+        phys_key = int(phys_dmg)
+        suppress = AA_SUPPRESS_BY_PHYSICAL_DAMAGE.get(phys_key)
+        if suppress is None:
+            logger.warning(
+                f"(aa_suppress) {weapon_name}: PhysicalDamages={phys_key} "
+                f"has no entry in AA_SUPPRESS_BY_PHYSICAL_DAMAGE, skipping",
+            )
+            continue
+
+        result[weapon_name] = {
+            "physical_damage": phys_key,
+            "suppress_damage": suppress,
+        }
+
+    logger.info(
+        f"Built AA suppress damages mapping: {len(result)} missiles",
+    )
+    return result
+
+
+def save_aa_suppress_damages(data: Dict[str, Dict[str, int]], config: Dict[str, Any]) -> None:
+    """Save AA suppress damages mapping as JSON file to disk."""
+    db_path = Path(config["data_config"]["database_path"])
+    constants_dir = db_path / "constants_precomputation"
+    ensure_db_directory(str(constants_dir))
+
+    out_file = constants_dir / "aa_suppress_damages.json"
+    try:
+        with open(out_file, "w") as f:
+            json.dump(data, f, indent=2, sort_keys=True)
+        logger.debug(f"Saved aa_suppress_damages to {out_file}")
+    except Exception as e:
+        logger.error(f"Failed to save aa_suppress_damages: {e}")
         raise
 
 

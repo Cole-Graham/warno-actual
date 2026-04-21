@@ -14,6 +14,7 @@ from src import ndf
 
 from .fx_logging import get_fx_logger
 from .radius_falloff import (
+    apply_call_falloff_burst_position_bias,
     burst_indices_kept_by_spatial_independent_thinning,
     burst_indices_removed_by_spatial_trim,
     compute_call_spatial_burst_mults,
@@ -153,6 +154,8 @@ def scale_effect_calls(
     *,
     dry_run: bool = False,
     scale_factor: float = 1.0,
+    effect_call_geom_scale: Optional[float] = None,
+    consistent_call_density: bool = False,
     effect_call_batch_scale_min: Optional[float] = None,
     effect_call_batch_scale_max: Optional[float] = None,
     call_radius_falloff_by_vfx: Optional[Dict[str, List[float]]] = None,
@@ -164,27 +167,23 @@ def scale_effect_calls(
 ) -> List[EffectCallChange]:
     """Set ``TActionCall`` row counts from source ``n``, radius scale, and Call Qty %%.
 
-    Target count is ``max(1, round(n * scale_factor * effective_p))`` when ``n >= 1`` (each VFX
-    keeps at least one row). ``effective_p`` applies the
-    slider on the largest batch radius; smaller radii in the same batch ease toward keeping the
-    natural ``n * scale_factor`` count.
+    ``effect_call_geom_scale`` is the per-VFX row multiplier ``geom`` (from
+    :func:`~tools.fx_editor.size_batch.resolve_effect_call_geom_scale` when using batch UI).
 
-    When ``call_radius_falloff_by_vfx`` and calibration args are set, **whole**
-    ``TSimultaneousAction`` rows are removed from ``Actions``. Each burst gets a spatial weight
-    (minimum of its VFX Call curves at ``r_norm`` = distance / target radius). Bursts are kept
-    **independently** with that probability (deterministic per index) so radial density follows the
-    curve in expectation; kept count is about ``sum(weights)`` but not forced to ``round(sum)``.
-    After thinning, removed bursts are softened so **each VFX short name still appears in at least
-    one kept burst** when possible. Remaining bursts are then scaled like the non-falloff path.
-    Per-VFX ``TActionCall`` row targets are at least **1** whenever the source had rows (avoids
-    dropping entire pattern groups when scaling down). Pass ``burst_gameplay_xy_m``
-    (one point per emitted burst, same order) so ``r_norm`` does not depend on NDF string round-trip.
+    With ``consistent_call_density`` and Call radius falloff curves, **no** burst thinning is
+    applied; falloff **repositions** burst anchors via
+    :func:`~tools.fx_editor.radius_falloff.apply_call_falloff_burst_position_bias` after row counts
+    are fixed. Call Qty %% curves are **ignored** when ``consistent_call_density`` is true.
+
+    Legacy falloff (``consistent_call_density`` false): whole ``TSimultaneousAction`` rows may be
+    removed using independent thinning, then per-VFX row scaling runs.
 
     Pass ``spatial_burst_mults`` when spatial weights were already computed for this tree (e.g.
-    cluster pipeline) to avoid recomputing them.
+    cluster pipeline) to avoid recomputing them (trim path only).
     """
     smin = effect_call_batch_scale_min if effect_call_batch_scale_min is not None else scale_factor
     smax = effect_call_batch_scale_max if effect_call_batch_scale_max is not None else scale_factor
+    geom = float(effect_call_geom_scale) if effect_call_geom_scale is not None else float(scale_factor)
 
     use_call_radius_falloff = (
         call_radius_falloff_by_vfx is not None
@@ -193,13 +192,17 @@ def scale_effect_calls(
         and ref_m is not None
         and anchor_r is not None
     )
+    falloff_trims_bursts = use_call_radius_falloff and not consistent_call_density
 
-    if scale_factor == 1.0 and effect_call_scale_pct is None and not use_call_radius_falloff:
-        return []
+    if not use_call_radius_falloff:
+        if consistent_call_density and abs(geom - 1.0) < 1e-12:
+            return []
+        if not consistent_call_density and abs(geom - 1.0) < 1e-12 and effect_call_scale_pct is None:
+            return []
 
     changes: List[EffectCallChange] = []
 
-    if use_call_radius_falloff:
+    if falloff_trims_bursts:
         from .scatter_emit import find_actions_list, list_tsimultaneous_action_rows
 
         mults: List[float]
@@ -266,17 +269,20 @@ def scale_effect_calls(
         variant_t_by_id, rows_by_vfx = compute_variant_t_and_collect_taction_rows(parsed_root)
 
     for vfx, rows in rows_by_vfx.items():
-        pct = 100.0
-        if effect_call_scale_pct is not None:
-            pct = float(effect_call_scale_pct.get(vfx, 100.0))
-        pct = max(0.0, min(100.0, pct))
-        p = pct / 100.0
-        w = _call_qty_weight_along_batch(scale_factor, smin, smax)
-        effective_p = 1.0 + (p - 1.0) * w
+        if consistent_call_density:
+            effective_p = 1.0
+        else:
+            pct = 100.0
+            if effect_call_scale_pct is not None:
+                pct = float(effect_call_scale_pct.get(vfx, 100.0))
+            pct = max(0.0, min(100.0, pct))
+            p = pct / 100.0
+            w = _call_qty_weight_along_batch(scale_factor, smin, smax)
+            effective_p = 1.0 + (p - 1.0) * w
         n = len(rows)
         if n == 0:
             continue
-        k_target = max(0, int(round(n * scale_factor * effective_p + 1e-9)))
+        k_target = max(0, int(round(n * geom * effective_p + 1e-9)))
         k_target = max(k_target, 1)
         if k_target == n:
             continue
@@ -311,6 +317,22 @@ def scale_effect_calls(
                 idx = _index_in_list(parent, row)
                 parent.insert(idx + 1, new_row)
 
+    if consistent_call_density and use_call_radius_falloff:
+        # Reposition even when ``dry_run`` (row add/remove stay dry) so cluster preview matches output.
+        n_moved = apply_call_falloff_burst_position_bias(
+            parsed_root,
+            call_radius_falloff_by_vfx,
+            float(target_radius_m),
+            float(ref_m),
+            float(anchor_r),
+            dry_run=False,
+        )
+        if n_moved:
+            _log.info(
+                'scale_effect_calls: consistent density + Call falloff — repositioned %d burst anchor(s)',
+                n_moved,
+            )
+
     return changes
 
 
@@ -319,9 +341,16 @@ def format_call_qty_report_line(
     *,
     effect_call_scale_pct: Optional[EffectCallScalePctMap] = None,
     scale_factor: float = 1.0,
+    effect_call_geom_scale: Optional[float] = None,
+    ignore_call_qty_curves: bool = False,
     vfx_burst_denoms: Optional[Dict[str, int]] = None,
 ) -> str:
     """One-line summary of call-qty scaling (curve vs 100%); same math as FX Editor General preview.
+
+    ``effect_call_geom_scale`` should match the multiplier passed to :func:`scale_effect_calls`
+    (e.g. ``1.0`` for cluster after area-scaled emit, ``scale_factor ** 2`` for keep-layout).
+
+    When ``ignore_call_qty_curves`` (consistent density mode), omit Call Qty %% curve wording.
 
     ``vfx_burst_denoms`` comes from :func:`~.scatter_analyze.vfx_effect_group_burst_counts` on the
     emitted tree **before** :func:`scale_effect_calls` (dry-run). Empty string if no changes.
@@ -330,7 +359,7 @@ def format_call_qty_report_line(
         return ''
     pct_map = effect_call_scale_pct or {}
     bd = vfx_burst_denoms or {}
-    sf = float(scale_factor)
+    g = float(effect_call_geom_scale) if effect_call_geom_scale is not None else float(scale_factor)
 
     spatial = [c for c in call_changes if c.vfx == SPATIAL_BURST_TRIM_VFX]
     call_changes = [c for c in call_changes if c.vfx != SPATIAL_BURST_TRIM_VFX]
@@ -346,7 +375,7 @@ def format_call_qty_report_line(
 
     def _baseline_rows_at_100_qty(n_src_rows: int) -> int:
         n = int(n_src_rows)
-        return max(0, int(round(float(n) * sf + 1e-9)))
+        return max(0, int(round(float(n) * g + 1e-9)))
 
     def _all_have_burst_denoms(changes: List[EffectCallChange]) -> bool:
         if not bd or not changes:
@@ -372,8 +401,12 @@ def format_call_qty_report_line(
             t += int(row_qty_fn(c))
         return t
 
-    curve_changes = [c for c in call_changes if _call_pct(c.vfx) < 100.0 - 1e-6]
-    rest = [c for c in call_changes if _call_pct(c.vfx) >= 100.0 - 1e-6]
+    if ignore_call_qty_curves:
+        curve_changes: List[EffectCallChange] = []
+        rest = list(call_changes)
+    else:
+        curve_changes = [c for c in call_changes if _call_pct(c.vfx) < 100.0 - 1e-6]
+        rest = [c for c in call_changes if _call_pct(c.vfx) >= 100.0 - 1e-6]
 
     if curve_changes:
         u = _report_unit(curve_changes)

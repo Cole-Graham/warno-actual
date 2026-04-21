@@ -10,7 +10,7 @@ RDA_NEW_UNITS = {
         "NewName": "KdA_DDR_TargetDummy",
         "GameName": {
             "display": "KdA 100",
-            # "display": "#CMD MOT.-SCHÜTZEN FÜH.",
+            # "display": MOT.-SCHÜTZEN FÜH.",
             "token": "VQYWUZFQCE",
         },
         "TagSet": {
@@ -73,13 +73,14 @@ RDA_NEW_UNITS = {
         "CadavreGUID": "79abc88c-d5be-4615-9ed2-4cb87bde9f4b",
         "NewName": "MotRifles_CMD2_DDR",
         "GameName": {
-            "display": "#CMD FÜHRUNGSTRUPP",
-            # "display": "#CMD MOT.-SCHÜTZEN FÜH.",
+            "display": "FÜHRUNGSTRUPP",
+            # "display": "MOT.-SCHÜTZEN FÜH.",
             "token": "DGZBQXLAYD",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Commandant",
                 "Crew",
@@ -166,6 +167,7 @@ RDA_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Commandant",
                 "GroundUnits",
@@ -301,11 +303,12 @@ RDA_NEW_UNITS = {
         "NewName": "T54B_CMD2_DDR",
         "GameName": {
             "token": "CRMEBWSIWS",
-            "display": "#CMD FüPz T-54AMK",
+            "display": "FüPz T-54AMK",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -352,12 +355,13 @@ RDA_NEW_UNITS = {
         "CadavreGUID": "96ae475b-77da-4775-bb65-6cc436c23015",
         "NewName": "T55A_CMD2_DDR",
         "GameName": {
-            "display": "#CMD FüPz T-55AK",
+            "display": "FüPz T-55AK",
             "token": "LSXHWRLFEM",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -418,6 +422,7 @@ RDA_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -457,12 +462,13 @@ RDA_NEW_UNITS = {
         "CadavreGUID": "3f275f69-0fdf-4e49-9f14-a3bfc4e0b471",
         "NewName": "T72M_CMD2_DDR",
         "GameName": {
-            "display": "#CMD FüPz T-72MK",
+            "display": "FüPz T-72MK",
             "token": "DBXQVRQECV",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -525,13 +531,14 @@ RDA_NEW_UNITS = {
         "ShowroomGUID": "6ff34493-d566-430c-a501-2b1fb7c980fd",
         "CadavreGUID": "63454739-09a9-4377-bddd-4125e18c2425",
         "GameName": {
-            "display": "#CMD FüPz T-72M1K",
+            "display": "FüPz T-72M1K",
             "token": "FUPZTSTMOK",
         },
         "NewName": "T72M1_CMD2_DDR",
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -908,48 +915,6 @@ RDA_NEW_UNITS = {
 
     # Tank
 
-    ("PT76B_CMD_DDR", 0): {  # PT-76B LDR
-        "GUID": "11f92429-0da5-4c32-a5fc-95292c277fda",
-        "InfantrySquadModuleGUID": "507aa56d-6875-4b05-8aa5-21464360b536",
-        "ShowroomGUID": "e65bd9bb-fd99-4316-9146-f5ec494ad462",
-        "CadavreGUID": "957a042c-fe88-4a9d-9aa3-2c4e789f03e4",
-        "NewName": "PT76B_CMD2_DDR",
-        "GameName": {
-            "display": "#LDRSOV FüPz PT-76B",
-            "token": "WTDVRSZIAP",
-        },
-        "TagSet": {
-            "overwrite_all": [    
-                "AllUnits",
-                "AllowedForMissileRoE",
-                "Char",
-                "GroundUnits",
-                "UNITE_PT76B_CMD2_DDR",
-                "Unite",
-            ],
-        },
-        "Factory": "EFactory/Tanks",
-        "UnitRole": 'armor',
-        "CommandPoints": 30,
-        "SpecialtiesList": [
-                'leader_sov',
-            ],
-        "UpgradeFromUnit": None,
-        "availability": [0, 0, 8, 0],
-        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
-                   'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
-                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
-                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
-        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
-        "is_heavy_equipment": False,
-        "is_ground_vehicle": True,
-        "is_aerial": False,
-        "is_unarmed": False,
-        "Faction": "PACT",
-        "Nation": "DDR",
-        "remove_zone_capture": None,
-    },
-
     # ("AT_D44_85mm_DDR", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
     #     "GUID": "edf2ccc0-cd21-41f3-b360-00bd6a2b535a",
     #     "InfantrySquadModuleGUID": "de11395f-bb79-4c1f-94da-3ac8fe8180c0",
@@ -1065,7 +1030,7 @@ RDA_NEW_UNITS = {
         "CadavreGUID": "4401b9de-c033-4e9d-9a24-5c935b3600bc",
         "NewName": "HvyScout_RPG7VL_DDR",
         "GameName": {
-            "display": "#RECO2 MOT. AUFKLÄRER [RPG-7]",
+            "display": "MOT. AUFKLÄRER [RPG-7]",
             "token": "LFBKZAMOMO",
         },
         "TagSet": {

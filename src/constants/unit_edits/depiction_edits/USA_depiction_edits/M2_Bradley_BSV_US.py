@@ -12,15 +12,23 @@ m2_bradley_bsv_us: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
     "unit_name": "M2_Bradley_BSV_US",
     "valid_files": ["DepictionVehicles.ndf"],
     "DepictionVehicles_ndf": {
-        # Copy Weapon1 (HE) to create new operator for AP autocannon; modify donor to be HE at slot 2
+        "new_objects": {
+            "weapon1_ap": """
+                DepictionOperator_M2_Bradley_BSV_US_Weapon1_AP is DepictionOperator_WeaponInstantFire
+                (
+                    FireEffectTag = 'weapon_effet_tag1'
+                    Anchors = ["fx_tourelle1_tir_01"]
+                    WeaponShootDataPropertyName = ['WeaponShootData_0_1']
+                    NbProj = 1
+                )
+            """,
+        },
+        # Shift original Weapon1 (HE) to slot 2
         ("DepictionOperator_M2_Bradley_BSV_US_Weapon1", "DepictionOperator_WeaponInstantFire"): {
-            "copy": "DepictionOperator_M2_Bradley_BSV_US_Weapon1_AP",
-            "FireEffectTag": "'weapon_effet_tag1'",
-            "WeaponShootDataPropertyName": ["'WeaponShootData_0_1'"],
-            "modify_donor": {
-                "FireEffectTag": "'weapon_effet_tag2'",
-                "WeaponShootDataPropertyName": ["'WeaponShootData_0_2'"],
-            },
+            "FireEffectTag": "'weapon_effet_tag2'",
+            "Anchors": ["fx_tourelle1_tir_01"],
+            "WeaponShootDataPropertyName": ["'WeaponShootData_0_2'"],
+            "NbProj": 1,
         },
         # Modify Weapon2 (ATGM) to use slot 3
         ("DepictionOperator_M2_Bradley_BSV_US_Weapon2", "DepictionOperator_WeaponMissileCarriageFire"): {

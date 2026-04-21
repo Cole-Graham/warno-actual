@@ -11,6 +11,7 @@ from typing import Any, List, Tuple
 # Add project root to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
+from config.config_loader import load_config
 from src import ndf
 from src.utils.logging_utils import setup_logger
 
@@ -196,13 +197,12 @@ def main() -> None:
     try:
         parse_vanilla = False
         
-        # Define paths
-        if parse_vanilla:
-            MOD_SRC = Path(r"C:/Program Files (x86)/Steam/steamapps/common/WARNO/Mods/sourcemod")
-            MOD_DST = Path(r"C:/Program Files (x86)/Steam/steamapps/common/WARNO/Mods/sourcemod")
-        else:   
-            MOD_SRC = Path(r"C:/Program Files (x86)/Steam/steamapps/common/WARNO/Mods/WARNO ACTUAL dev")
-            MOD_DST = Path(r"C:/Program Files (x86)/Steam/steamapps/common/WARNO/Mods/WARNO ACTUAL dev")
+        config = load_config()
+        dirs = config["directories"]
+        warno_mods = Path(dirs["warno_mods"])
+        mod_folder = dirs["base_game"] if parse_vanilla else dirs["gameplay_dev"]
+        MOD_SRC = warno_mods / mod_folder
+        MOD_DST = warno_mods / mod_folder
         
         # Initialize mod
         mod = ndf.Mod(str(MOD_SRC), str(MOD_DST))

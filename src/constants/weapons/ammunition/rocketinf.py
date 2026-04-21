@@ -261,7 +261,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeGRU": 1050,
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 10.0,
-                "SpeedGRU": 900,
+                "ProjectileSpeedGRU": 900,
             },
         },
     },
@@ -453,6 +453,35 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MaximumRangeGRU": 525,
+                "DisplaySalveAccuracy": False,
+                "SupplyCost": 10.0,
+            },
+        },
+    },
+
+    ("RocketInf_SMAW_RCL_83mm_HE", "recoilless", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 60,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 875,
+                "DisplaySalveAccuracy": False,
+                "SupplyCost": 10.0,
+            },
+        },
+    },
+
+    ("RocketInf_SMAW_RCL_83mm", "recoilless", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 20,
+            },
+            "hit_roll": {
+                "Idling": 60,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 875,
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 10.0,
             },

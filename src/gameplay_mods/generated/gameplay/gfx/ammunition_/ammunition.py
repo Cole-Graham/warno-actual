@@ -1,5 +1,6 @@
 """Editor for Ammunition.ndf."""
 
+import re
 from typing import Any, Dict, List, Tuple
 from uuid import uuid4
 
@@ -141,10 +142,8 @@ def edit_gen_gp_gfx_ammunition(source_path, game_db: Dict[str, Any]) -> None:
                                     arme_index = min(strength - 1, 13)
                                     strength_descr.v.by_m("Arme").v.by_m("Index").v = str(arme_index)
 
-                                    # Generate unique GUIDs for descriptor IDs
+                                    # Generate unique GUID for ammunition descriptor
                                     strength_descr.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
-                                    hitroll_obj = strength_descr.v.by_m("HitRollRuleDescriptor")
-                                    hitroll_obj.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
 
                                     source_path.add(strength_descr)
                                     logger.debug(f"Added strength {strength} variant for {weapon_name}")
@@ -159,10 +158,8 @@ def edit_gen_gp_gfx_ammunition(source_path, game_db: Dict[str, Any]) -> None:
                                     arme_index = min(strength - 1, 13)
                                     strength_descr.v.by_m("Arme").v.by_m("Index").v = str(arme_index)
 
-                                    # Generate unique GUIDs for descriptor IDs
+                                    # Generate unique GUID for ammunition descriptor
                                     strength_descr.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
-                                    hitroll_obj = strength_descr.v.by_m("HitRollRuleDescriptor")
-                                    hitroll_obj.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
 
                                     source_path.add(strength_descr)
                                     logger.debug(f"Added strength {strength} variant for {weapon_name}")
@@ -187,6 +184,9 @@ def edit_gen_gp_gfx_ammunition(source_path, game_db: Dict[str, Any]) -> None:
             except Exception as e:
                 logger.error(f"Failed processing weapon {weapon_name}: {str(e)}")
                 continue
+
+        # Blanket-disable HasDeploymentTime on ammo not used by protected units
+        _blanket_disable_deployment_time(source_path, game_db)
 
         # Write dictionary entries
         if ingame_names or calibers:
@@ -259,7 +259,6 @@ def _create_quantity_variants(
                     # Create new variant
                     variant = base_descr.copy()
                     variant.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
-                    variant.v.by_m("HitRollRuleDescriptor").v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
                     variant.namespace = namespace
 
                     # Set Arme Index based on strength
@@ -309,7 +308,6 @@ def _create_quantity_variants(
             if is_new or (existing is None):
                 variant = base_descr.copy()
                 variant.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
-                variant.v.by_m("HitRollRuleDescriptor").v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
                 variant.namespace = namespace
 
                 if base_cost is not None:
@@ -501,10 +499,8 @@ def _create_new_descriptor(source_path, data, weapon_name, donor):
     # Create base descriptor
     base_descr = donor_descr.copy()
 
-    # Generate new GUIDs
+    # Generate new GUID for ammunition descriptor
     base_descr.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
-    hitroll_obj = base_descr.v.by_m("HitRollRuleDescriptor").v
-    hitroll_obj.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
 
     # Set namespace
     if "NbWeapons" in data and len(data["NbWeapons"]) == 1:
@@ -554,3 +550,24 @@ def write_ammo_dictionary_entries(ingame_names: List[Tuple[str, str, str]],
         
     if entries:
         write_dictionary_entries(entries, dictionary_type="units")
+
+
+_SALVO_SUFFIX_RE = re.compile(r'(_x\d+|_salvolength\d+)$')
+
+
+def _blanket_disable_deployment_time(source_path, game_db: Dict[str, Any]) -> None:
+    """Set HasDeploymentTime = False on all ammo not used by protected units."""
+    protected_ammo = set(
+        game_db.get("deployment_time_units", {}).get("protected_ammo", []),
+    )
+    count = 0
+    for descr in source_path:
+        membr = descr.v.by_m("HasDeploymentTime", False)
+        if membr is None or membr.v != "True":
+            continue
+        base_name = descr.n.removeprefix("Ammo_").removeprefix("Missile_")
+        base_name = _SALVO_SUFFIX_RE.sub('', base_name)
+        if base_name not in protected_ammo:
+            membr.v = "False"
+            count += 1
+    logger.info(f"Blanket disabled HasDeploymentTime on {count} ammo descriptors")

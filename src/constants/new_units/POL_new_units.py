@@ -9,12 +9,13 @@ POL_NEW_UNITS = {
         "CadavreGUID": "39caafd5-cb26-4aaf-8d9c-d3a0db6c23ec",
         "NewName": "Rifles_CMD2_POL",
         "GameName": {
-            "display": "#CMD SZTAB DOWODZENIA",
+            "display": "SZTAB DOWODZENIA",
             "token": "SZTABDOWPL",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Commandant",
                 "Crew",
@@ -105,6 +106,7 @@ POL_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -134,7 +136,7 @@ POL_NEW_UNITS = {
         "Faction": "PACT",
         "Nation": "POL",
         "GameName": {
-            "display": "#CMD ASU-85D",
+            "display": "ASU-85D",
             "token": "POLTASUEFC",
         },
     },
@@ -148,6 +150,7 @@ POL_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -156,7 +159,7 @@ POL_NEW_UNITS = {
             ],
         },
         "GameName": {
-            "display": "#CMD T-54BD",
+            "display": "T-54BD",
             "token": "POLTFFBC",
         },
         "Factory": "EFactory/Logistic",
@@ -188,6 +191,7 @@ POL_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -243,6 +247,7 @@ POL_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -292,6 +297,7 @@ POL_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -343,6 +349,7 @@ POL_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -395,6 +402,7 @@ POL_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -403,7 +411,7 @@ POL_NEW_UNITS = {
             ],
         },
         "GameName": {
-            "display": "#LDRSOV T-54BD LDR.",
+            "display": "T-54BD",
             "token": "POLTFFBD",
         },
         "Factory": "EFactory/Tanks",
@@ -444,7 +452,7 @@ POL_NEW_UNITS = {
         },
         "NewName": "OT_64_SKOT_2_CMD_POL",
         "GameName": {
-            "display": "#LDRSOV SKOT R-2AM",
+            "display": "SKOT R-2AM",
             "token": "RTBIJFPDGK",
         },
         "TypeUnit": {
@@ -453,6 +461,7 @@ POL_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Commandant",
                 "GroundUnits",
@@ -598,7 +607,7 @@ POL_NEW_UNITS = {
                 "ATGM_9M113_Konkurs": 6,
             },
             "equipmentchanges": {
-                "replace": [("ATGM_9K111_Fagot", "ATGM_9M113_Konkurs")]
+                "replace": [("ATGM_9K111M_Faktoriya", "ATGM_9M113_Konkurs")]
             },
         },
         "CommandPoints": 45,
@@ -813,9 +822,9 @@ POL_NEW_UNITS = {
                 "EVisionRange/Standard": 3500.0,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/Standard": 45.0,
-                "EOpticalStrength/LowAltitude": 45.0,
-                "EOpticalStrength/HighAltitude": 10.0,
+                "EOpticalStrength/Standard": 1600.0,
+                "EOpticalStrength/LowAltitude": 1600.0,
+                "EOpticalStrength/HighAltitude": 350.0,
             },
         },
         "stealth": 1.5,
@@ -942,7 +951,7 @@ POL_NEW_UNITS = {
 
     ("OT_62_TOPAS_R3M_CMD_POL", 0): {  # NIEB. BERETY TOPAS R-3M
         "GameName": {
-            "display": "#CMD TOPAS R-3M",
+            "display": "TOPAS R-3M",
             "token": "MUGMPUTSYS",
         },
         "GUID": "a40a0809-44e9-4f2d-a85b-c2927c736712",
@@ -953,6 +962,7 @@ POL_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Commandant",
                 "GroundUnits",
@@ -999,7 +1009,7 @@ POL_NEW_UNITS = {
         "CadavreGUID": "8283ce2a-bf6a-40ea-9af8-81c0565226c0",
         "NewName": "Engineers_Scout_Para_POL",
         "GameName": {
-            "display": "#RECO2 SPADO. ZWIAD. SAPERZY",
+            "display": "SPADO. ZWIAD. SAPERZY",
             "token": "YPBVPYJQXC",
         },
         "TagSet": {

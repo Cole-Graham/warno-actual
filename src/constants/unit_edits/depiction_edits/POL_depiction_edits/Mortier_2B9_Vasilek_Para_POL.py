@@ -7,10 +7,16 @@ mortier_2b9_vasilek_para_pol: Dict[str, Dict[Union[str, Tuple[str, str]], dict]]
     "unit_name": "Mortier_2B9_Vasilek_Para_POL",
     "valid_files": ["DepictionVehicles.ndf"],
     "DepictionVehicles_ndf": {
-        ("DepictionOperator_Mortier_2B9_Vasilek_Para_POL_Weapon1", "DepictionOperator_WeaponInstantFire"): {
-            "copy": "DepictionOperator_Mortier_2B9_Vasilek_Para_POL_Weapon3",
-            "FireEffectTag": "'weapon_effet_tag3'",
-            "WeaponShootDataPropertyName": ["'WeaponShootData_0_3'"],
+        "new_objects": {
+            "weapon3": """
+                DepictionOperator_Mortier_2B9_Vasilek_Para_POL_Weapon3 is DepictionOperator_WeaponInstantFire
+                (
+                    FireEffectTag = 'weapon_effet_tag3'
+                    Anchors = ["fx_tourelle1_tir_01"]
+                    WeaponShootDataPropertyName = ['WeaponShootData_0_3']
+                    NbProj = 1
+                )
+            """,
         },
         
         (None, "TacticVehicleDepictionRegistration"): {

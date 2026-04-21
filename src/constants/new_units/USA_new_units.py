@@ -9,12 +9,13 @@ USA_NEW_UNITS = {
         "CadavreGUID": "2b771f4e-f0e0-464e-bafb-caee6bb82079",
         "NewName": "Rifles_half_CMD2_US",
         "GameName": {
-            "display": "#CMD TACOM",
+            "display": "TACOM",
             "token": "ZVQUJZFLND",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits", "AllowedForMissileRoE", "Commandant", "Crew", "GroundUnits", "Inf_quartier_ok", 
+                "CMD_Unit",
                 "Infanterie", "Infanterie_CMD", "InfmapCommander", "UNITE_Rifles_half_CMD2_US", "Unite"
             ],
         },
@@ -173,7 +174,7 @@ USA_NEW_UNITS = {
         "CadavreGUID": "eab4f242-c8fd-4868-b009-a6a86f934dd8",
         "NewName": "Cav_Scout_Dragon_M3A1_US",
         "GameName": {
-            "display": "#RECO2 CAV. SCOUTS [M3A1]",
+            "display": "CAV. SCOUTS [M3A1]",
             "token": "VKPPUUNVBK",
         },
         "TagSet": {
@@ -259,7 +260,7 @@ USA_NEW_UNITS = {
         "CadavreGUID": "b47e0795-709b-4377-9f5c-f42df25e7aac",
         "NewName": "Cav_Scout_Dragon_M3A2_US",
         "GameName": {
-            "display": "#RECO2 CAV. SCOUTS [M3A2]",
+            "display": "CAV. SCOUTS [M3A2]",
             "token": "VKPPUUNVBJ",
         },
         "TagSet": {
@@ -455,6 +456,7 @@ USA_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -503,6 +505,7 @@ USA_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -605,6 +608,7 @@ USA_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -658,6 +662,7 @@ USA_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -708,6 +713,7 @@ USA_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -746,7 +752,7 @@ USA_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "NATO",
         "Nation": "US",
-        "UpgradeFromUnit": "M60A1_RISE_Passive_CMD2_US",
+        "UpgradeFromUnit": "M60A1_RISE_Passive_USMC_CMD2_US",
     },
 
     ("M60A1_RISE_Passive_CMD_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -758,6 +764,7 @@ USA_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -795,6 +802,51 @@ USA_NEW_UNITS = {
         "Nation": "US",
     },
 
+    ("M60A1_RISE_Passive_USMC_CMD_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "44bb3b34-8e01-4853-b3fa-25236205623b",
+        "InfantrySquadModuleGUID": "ee96f8ea-148e-41d3-b8a7-3c8956caff1e",
+        "ShowroomGUID": "5c1d049f-5a5c-40c4-8ab4-dddc944ea472",
+        "CadavreGUID": "418c15b6-aa3b-40d0-a941-aa3b4f997986",
+        "NewName": "M60A1_RISE_Passive_USMC_CMD2_US",
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "CMD_Unit",
+                "AllowedForMissileRoE",
+                "Char",
+                "Char_CMD",
+                "Commandant",
+                "GroundUnits",
+                "InfmapCommander",
+                "M60A1_RISE_Passive_USMC_CMD2_US",
+                "Unite",
+            ],
+        },
+        "Factory": "EFactory/Logistic",
+        "CommandPoints": 225,
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 3, 0, 0],
+        "armor": {
+            "top": (3, None),
+        },
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
+                   'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
+                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply',
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": False, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "NATO",
+        "Nation": "US",
+        "UpgradeFromUnit": "M60A1_RISE_Passive_CMD2_US",
+    },
+
     ("M551A1_TTS_Sheridan_CMD_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "7df5c2e6-7313-4de6-bc0c-3f98df60ad0b",
         "InfantrySquadModuleGUID": "c841f8d3-9015-41d8-b072-5ce130a20f24",
@@ -804,6 +856,7 @@ USA_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -847,6 +900,7 @@ USA_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Commandant",
                 "GroundUnits",
@@ -924,7 +978,9 @@ USA_NEW_UNITS = {
                 "EVisionRange/Standard": 10000.0,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/AntiRadar": 5000.0,
+                # Eugen changed these values to in-game meters, so we convert by dividing by 0.0283
+                # e.g. old value 5000 / 0.0283 = 176680.56537102472 (we'll just round to 175,000)
+                "EOpticalStrength/AntiRadar": 175000.0,
             },
         },
         "WeaponDescriptor": {

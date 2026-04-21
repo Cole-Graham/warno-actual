@@ -1,6 +1,10 @@
 """Functions for modifying game constants."""
 
 from typing import List, Tuple, Union
+from src.constants.weapons.standards import (
+    AA_ADDITIONAL_SUPPRESS_PER_LOST_PHYSICAL,
+)
+
 
 # from src.utils.logging_utils import setup_logger
 
@@ -17,8 +21,8 @@ def edit_gameplay_constantes_gdconstants(source_path) -> None:
 
     for row in source_path:
         if row.namespace == "Constantes":
-            row.v.by_m("StunEffectDuration").v = "2.5"
-            # logger.info("Set stun effect duration to 2.5")
+            row.v.by_m("StunEffectDuration").v = "3.0"
+            # logger.info("Set stun effect duration to 3.0")
 
         elif row.namespace == "WargameConstantes":
             edits: List[Tuple[str, str, Union[str, int], Union[str, None]]] = [
@@ -39,6 +43,11 @@ def edit_gameplay_constantes_gdconstants(source_path) -> None:
                     # logger.info(f"Set {var} to {edit}")
 
         elif row.namespace == "ModernWarfareConstantes":
+            
+            # 25 is default value for AdditionalSuppressDamagePerLostPhysicalDamage
+            # Re-applying it here in case Eugen decided to change it without me realizing it
+            row.v.by_m("AdditionalSuppressDamagePerLostPhysicalDamage").v = str(AA_ADDITIONAL_SUPPRESS_PER_LOST_PHYSICAL)
+            
             row.v.by_m("FrontSideAngleInDeg").v = "75"
             # logger.info("Set FrontSideAngleInDeg to 75")
             

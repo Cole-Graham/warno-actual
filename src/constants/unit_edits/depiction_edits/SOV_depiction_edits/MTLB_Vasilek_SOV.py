@@ -7,10 +7,16 @@ mtlb_vasilek_sov: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
     "unit_name": "MTLB_Vasilek_SOV",
     "valid_files": ["DepictionVehicles.ndf"],
     "DepictionVehicles_ndf": {
-        ("DepictionOperator_MTLB_Vasilek_SOV_Weapon1", "DepictionOperator_WeaponInstantFire"): { # (Namespace (can be None), Object type)
-            "copy": "DepictionOperator_MTLB_Vasilek_SOV_Weapon4", # new namespace, this entry is a donor for a new entry
-            "FireEffectTag": "'weapon_effet_tag4'",
-            "WeaponShootDataPropertyName": ["'WeaponShootData_0_4'"]
+        "new_objects": {
+            "weapon4": """
+                DepictionOperator_MTLB_Vasilek_SOV_Weapon4 is DepictionOperator_WeaponInstantFire
+                (
+                    FireEffectTag = 'weapon_effet_tag4'
+                    Anchors = ["fx_tourelle1_tir_01"]
+                    WeaponShootDataPropertyName = ['WeaponShootData_0_4']
+                    NbProj = 1
+                )
+            """,
         },
         
         (None, "TacticVehicleDepictionRegistration"): {

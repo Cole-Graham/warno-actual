@@ -5,16 +5,6 @@
 # fmt: off
 uk_unit_edits = {
     # UK LOG
-    "LandRover_CMD_UK": {
-        "CommandPoints": 145,
-        "Divisions": {
-            "default": {
-                "cards": 1,
-            },
-        },
-        "availability": [0, 4, 0, 0],
-    },
-    
     "LandRover_CMD_nonBerlin_UK": {
         "CommandPoints": 145,
         "Divisions": {
@@ -23,12 +13,13 @@ uk_unit_edits = {
             },
         },
         "availability": [0, 4, 0, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
     
     "LandRover_CMD_UK": {
         "CommandPoints": 145,
         "GameName": {
-            "display": "#CMD ROVER CP"
+            "display": "ROVER CP"
         },
         "Divisions": {
             "default": {
@@ -36,6 +27,7 @@ uk_unit_edits = {
             },
         },
         "availability": [0, 4, 0, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "Saxon_CMD_UK": {
@@ -46,11 +38,13 @@ uk_unit_edits = {
                 "MMG_L37A2_7_62mm": 56,
             },
         },
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
     
     "FV1612_Humber_CMD_UK": {
         "CommandPoints": 155,
         "availability": [0, 3, 0, 0],
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
     
     "FV105_Sultan_UK": {
@@ -66,6 +60,7 @@ uk_unit_edits = {
                 "MMG_L94A1_7_62mm": 80,
             },
         },
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "Gazelle_CMD_UK": {
@@ -78,12 +73,13 @@ uk_unit_edits = {
         "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR TERRIERS LDR.",
+            "display": "TERRIERS",
             "token": "QMPRIAZFYF",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -130,12 +126,13 @@ uk_unit_edits = {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR ASSAULT PIONEERS LDR.",
+            "display": "ASSAULT PIONEERS",
             "token": "VZOODKAGWE",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -197,12 +194,13 @@ uk_unit_edits = {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR RIFLES LDR.",
+            "display": "RIFLES",
             "token": "YGMKZKXXEV",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -244,12 +242,13 @@ uk_unit_edits = {
         "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR AIRMOBILE LDR.",
+            "display": "AIRMOBILE",
             "token": "CFLNZATSET",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -283,11 +282,12 @@ uk_unit_edits = {
         "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR PARA. LDR.",
+            "display": "PARA.",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -332,12 +332,13 @@ uk_unit_edits = {
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR MOT. AIRMOBILE LDR.",
+            "display": "MOT. AIRMOBILE",
             "token": "DPDYRJPOBS",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -401,11 +402,12 @@ uk_unit_edits = {
         "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR GURKHA RIFLES LDR.",
+            "display": "GURKHA RIFLES",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -456,11 +458,12 @@ uk_unit_edits = {
         "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "#LDR GUARDS LDR.",
+            "display": "GUARDS",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Crew",
                 "GroundUnits",
@@ -1200,12 +1203,13 @@ uk_unit_edits = {
     "FV432_CMD_UK": {
         "CommandPoints": 60,
         "GameName": {
-            "display": "#LDR FV432 BATTERY CP",
+            "display": "FV432 BATTERY CP",
             "token": "NUDZQLLWOD",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "GroundUnits",
                 "UNITE_FV432_CMD_UK",
@@ -1341,12 +1345,13 @@ uk_unit_edits = {
     "Centurion_Mk13_CMD_UK": {
         "CommandPoints": 75,
         "GameName": {
-            "display": "#LDR CENTURION Mk.13 LDR.",
+            "display": "CENTURION Mk.13",
             "token": "DBEDJIGRRN",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -1381,12 +1386,13 @@ uk_unit_edits = {
             "top": (4, None),
         },
         "GameName": {
-            "display": "#LDR CHIEFTAIN Mk.10 LDR.",
+            "display": "CHIEFTAIN Mk.10",
             "token": "JMOQXJZCVT",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -1421,12 +1427,13 @@ uk_unit_edits = {
             "top": (4, None),
         },
         "GameName": {
-            "display": "#LDR CHALLENGER Mk.2 LDR.",
+            "display": "CHALLENGER Mk.2",
             "token": "LDRBLUCHAL",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "LDR_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
@@ -1573,8 +1580,12 @@ uk_unit_edits = {
     
     "FV102_Striker_UK": {
         "CommandPoints": 60,
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 1,
         },
         "SpecialtiesList": {
             "add_specs": ["'_remote_controlled'"],
@@ -1584,13 +1595,29 @@ uk_unit_edits = {
     
     "FV102_Striker_para_UK": {
         "CommandPoints": 60,
-        "capacities": {
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        # "capacities": {
+        #    "add_capacities": ["Deploy", "Deploy_ok"],
+        # },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 1,
         },
         "SpecialtiesList": {
             "add_specs": ["'_remote_controlled'"],
         },
         "availability": [0, 8, 6, 0],
+    },
+    
+    "FV120_Spartan_MCT_UK": {
+        "CommandPoints": 25,
+    },
+    
+    "FV432_MILAN_UK": {
+        "CommandPoints": 20,
+    },
+    
+    "FV432_Rarden_UK": {
+        "CommandPoints": 30,
     },
 
     "MCV_80_Warrior_UK": {
@@ -1815,7 +1842,7 @@ uk_unit_edits = {
     },
     
     "FV103_Spartan_GSR_UK": {
-        "CommandPoints": 30,
+        "CommandPoints": 35,
         "availability": [0, 8, 0, 0],
     },
 
@@ -1853,7 +1880,7 @@ uk_unit_edits = {
             "TypeUnitFormation": "Reconnaissance",
         },
         "GameName": {
-            "display": "#RECO1 FERRET SWINGFIRE",
+            "display": "FERRET SWINGFIRE",
         },
         "Factory": "EFactory/Recons",
         "stealth": 1.5,
@@ -1862,9 +1889,9 @@ uk_unit_edits = {
                 "EVisionRange/Standard": 3500.0,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/Standard": 150.0,
-                "EOpticalStrength/LowAltitude": 150.0,
-                "EOpticalStrength/HighAltitude": 40.0,
+                "EOpticalStrength/Standard": 5300.0,
+                "EOpticalStrength/LowAltitude": 5300.0,
+                "EOpticalStrength/HighAltitude": 1400.0,
             },
         },
         "UpgradeFromUnit": "Ferret_Mk2_UK",
@@ -1892,7 +1919,7 @@ uk_unit_edits = {
             "TypeUnitFormation": "Reconnaissance",
         },
         "GameName": {
-            "display": "#RECO1 CHIEFTAIN MK.11",
+            "display": "CHIEFTAIN MK.11",
         },
         "TagSet": {
             "overwrite_all": [
@@ -1912,9 +1939,9 @@ uk_unit_edits = {
                 "EVisionRange/Standard": 3500.0,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/Standard": 150.0,
-                "EOpticalStrength/LowAltitude": 150.0,
-                "EOpticalStrength/HighAltitude": 40.0,
+                "EOpticalStrength/Standard": 5300.0,
+                "EOpticalStrength/LowAltitude": 5300.0,
+                "EOpticalStrength/HighAltitude": 1400.0,
             },
         },
         "UnitRole": "reco",
@@ -2080,7 +2107,7 @@ uk_unit_edits = {
 
     "Sniper_UK": {
         "GameName": {
-            "display": "#RECO2 SNIPERS",
+            "display": "SNIPERS",
         },
         "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
@@ -2223,7 +2250,7 @@ uk_unit_edits = {
         "availability": [8, 6, 0, 0],
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -2244,7 +2271,7 @@ uk_unit_edits = {
         },
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -2271,7 +2298,7 @@ uk_unit_edits = {
         },
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -2289,7 +2316,7 @@ uk_unit_edits = {
         },
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 220,
+                "EOpticalStrength/HighAltitude": 7800,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -2316,7 +2343,7 @@ uk_unit_edits = {
         },
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -2331,7 +2358,7 @@ uk_unit_edits = {
         "CommandPoints": 90,
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 300,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
@@ -2411,6 +2438,10 @@ uk_unit_edits = {
         "CommandPoints": 130,
         "availability": [0, 4, 3, 0],
     },
+    
+    "Lynx_AH_Mk7_SNEB_UK": {
+        "CommandPoints": 60,
+    },
 
     # UK AIR
     "Canberra_T17A_UK": {
@@ -2429,11 +2460,11 @@ uk_unit_edits = {
     },
     
     "Buccaneer_S2B_GBU_UK": { # 2x GBU-16
-        "CommandPoints": 210,
+        "CommandPoints": 220,
         "GameName": {
             "display": "BUCCANEER S.2B [PGB]",
         },
-        "availability": [0, 1, 0, 0],
+        "availability": [0, 0, 0, 1],
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": [("Bomb_CPU_123", "Bomb_CPU_123_salvolength2")],
@@ -2455,7 +2486,7 @@ uk_unit_edits = {
                 "EVisionRange/Standard": 10000,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/AntiRadar": 5000,
+                "EOpticalStrength/AntiRadar": 175000.0,
             },
         },
     },
@@ -2586,7 +2617,7 @@ uk_unit_edits = {
                 "EVisionRange/Standard": 10000.0,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/AntiRadar": 5000.0,
+                "EOpticalStrength/AntiRadar": 175000.0,
             },
         },
         "Divisions": {
@@ -2630,7 +2661,7 @@ uk_unit_edits = {
         },
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
         "WeaponDescriptor": {
@@ -2645,7 +2676,7 @@ uk_unit_edits = {
         "CommandPoints": 210,
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 375,
+                "EOpticalStrength/HighAltitude": 13250,
             },
         },
         "WeaponDescriptor": {

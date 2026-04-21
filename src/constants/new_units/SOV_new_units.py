@@ -9,13 +9,14 @@ SOV_NEW_UNITS = {
         "CadavreGUID": "4a793ae9-5f90-41e1-b8a2-b9203e527de5",
         "NewName": "MotRifles_CMD2_SOV",
         "GameName": {
-            # "display": "#CMD KOMANDNOE OTDELENIE",
-            "display": "#CMD KOM. OTDELENIE",
+            # "display": "KOMANDNOE OTDELENIE",
+            "display": "KOM. OTDELENIE",
             "token": "FFFKSMMRGR",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Commandant",
                 "Crew",
@@ -99,13 +100,14 @@ SOV_NEW_UNITS = {
         "CadavreGUID": "b852d941-cba8-42e6-867a-7ecf24be522b",
         "NewName": "MotRifles_CMD2_TTsko_SOV",
         "GameName": {
-            # "display": "#CMD KOMANDNOE OTDELENIE",
-            "display": "#CMD KOM. OTDELENIE",
+            # "display": "KOMANDNOE OTDELENIE",
+            "display": "KOM. OTDELENIE",
             "token": "PKHNVEPCJL",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Commandant",
                 "Crew",
@@ -182,6 +184,7 @@ SOV_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -221,6 +224,7 @@ SOV_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -273,6 +277,7 @@ SOV_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -317,6 +322,7 @@ SOV_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -361,6 +367,7 @@ SOV_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -405,6 +412,7 @@ SOV_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -450,6 +458,7 @@ SOV_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
                 "Char_CMD",
@@ -514,6 +523,7 @@ SOV_NEW_UNITS = {
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
+                "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Commandant",
                 "GroundUnits",
@@ -667,7 +677,7 @@ SOV_NEW_UNITS = {
             "Salves": {
                 "FM_AKS_74": 11,
                 "SAW_RPK_74_5_56mm": 18,
-                "RocketInf_RPG7VL": 7,
+                "RocketInf_RPG7VL": 6,
             },
             "equipmentchanges": {
                 "replace": [
@@ -715,7 +725,7 @@ SOV_NEW_UNITS = {
         "CadavreGUID": "f13dca39-59f4-40eb-8305-4857a8608b55",
         "NewName": "HvyScout_RPG7VL_SOV",
         "GameName": {
-            "display": "#RECO2 MOT. RAZVEDKA [RPG-7]",
+            "display": "MOT. RAZVEDKA [RPG-7]",
             "token": "XVGJOLTMAO",
         },
         "TagSet": {
@@ -786,7 +796,7 @@ SOV_NEW_UNITS = {
         "CadavreGUID": "d114ae64-034f-4464-8706-334311805dd8",
         "NewName": "HvyScout_TTsko_RPG7VL_SOV",
         "GameName": {
-            "display": "#RECO2 MOT. RAZVEDKA [RPG-7]",
+            "display": "MOT. RAZVEDKA [RPG-7]",
             "token": "XJCCGMJPPP",
         },
         "TagSet": {
@@ -994,6 +1004,77 @@ SOV_NEW_UNITS = {
             "subdepictions": {
                 "G_VDV": ["ATGMServantLeft"],
                 "Spe_D_VDV": ["ATGMServantRight"]
+            },
+        }
+    },
+    
+    ("Atteam_Fagot_Naval_VDV_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "6745d568-c67c-4f66-b225-52c5d8676af7",
+        "InfantrySquadModuleGUID": "7402469c-cab8-42b4-91f1-f5df692e8b7c",
+        "ShowroomGUID": "37d2361b-b0a9-4af9-8bc1-3031a5ea55db",
+        "CadavreGUID": "f04b5ae7-0169-4201-944a-17b72aa25a24",
+        "NewName": "ATteam_Faktoriya_Naval_VDV_SOV",
+        "GameName": {
+            "display": "DESANT. MOR. FAKTORIYA",
+            "token": "EENCKCRHVQ",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_AT",
+                "Infanterie_Spec_Defense",
+                "UNITE_ATteam_Faktoriya_Naval_VDV_SOV",
+                "Unite"
+            ],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_9K111M_Faktoriya": 6,
+            },
+            "equipmentchanges": {
+                "replace": [("ATGM_9K111_Fagot", "ATGM_9K111M_Faktoriya")]
+            },
+        },
+        "CommandPoints": 35,
+        "SpecialtiesList": [
+                '_resolute',
+                '_para',
+                'infantry_equip_heavy',
+            ],
+        "ButtonTexture": "Atteam_Fagot_Naval_VDV_SOV",
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [7, 5, 4, 0],
+        "max_speed": 20,
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/Attack', 'EOrderType/MoveAndAttack',
+                   'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load',
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": True, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": True,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "SOV",
+        "depiction_type": "Towed",
+        "alternatives_count": 2,
+        "servants": ("G_Morskaya", "D_Morskaya"),
+        "servant_types": {
+            "showroom": {
+                "G_Morskaya": ["ATGMServantLeft"],
+                "D_Morskaya": ["ATGMServantRight"]
+            },
+            "subdepictions": {
+                "G_Morskaya": ["ATGMServantLeft"],
+                "D_Morskaya": ["ATGMServantRight"]
             },
         }
     },

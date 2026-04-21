@@ -21,9 +21,14 @@ from tools.fx_editor.scatter_timeline import build_timeline_events, timeline_end
 
 
 def _vanilla_cluster_path() -> Path:
-    p = ROOT / 'fx_impact_sol_HE_M270_227mm_Cluster_1.ndf'
-    if p.exists():
-        return p
+    """Prefer game vanilla M270 cluster NDF; mlrs ``*_35m_*`` is generated fixture fallback only."""
+    for rel in (
+        'fx_impact_sol_HE_M270_227mm_Cluster_1.ndf',
+        'src/constants/fx/generated/fx_impact_sol_HE_M270_227mm_Cluster_1.ndf',
+    ):
+        p = ROOT / rel
+        if p.exists():
+            return p
     return ROOT / 'src' / 'constants' / 'fx' / 'generated' / 'fx_impact_mlrs_cluster_ap_35m_1.ndf'
 
 

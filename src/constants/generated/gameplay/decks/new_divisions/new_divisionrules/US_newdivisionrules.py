@@ -66,7 +66,7 @@ US_airborne_newdivisionrules = {
         ("M274_Mule_ITOW_US", 1, [0, 8, 6, 0], [None, "CH47_Chinook_US"]),
     ],
     "recon": [
-        ("DeltaForce_US", 2, [0, 0, 4, 3], ["M998_Humvee_Delta_US", "UH60A_Black_Hawk_US"]),
+        ("DeltaForce_US", 2, [0, 0, 4, 3], ["M998_Humvee_Delta_US", "UH60A_Black_Hawk_US"]),  # I'd either cut these guys from this or Moto
         ("LRRP_US", 1, [0, 0, 4, 3], ["M998_Humvee_US", "M1025_Humvee_scout_US", "UH60A_Black_Hawk_US"]),
         ("Pathfinder_NG_US", 1, [0, 0, 5, 4], ["M998_Humvee_US", "M1025_Humvee_scout_US", "M1025_Humvee_AGL_US", "UH1H_Huey_US", "UH60A_Black_Hawk_US"]),
         ("Scout_Aero_US", 2, [0, 4, 3, 0], ["M998_Humvee_US", "UH60A_Black_Hawk_US", "CH47_Chinook_US"]),
@@ -96,7 +96,7 @@ US_airborne_newdivisionrules = {
         ("AH64_Apache_emp2_US", 2, [0, 4, 0, 2]),
         ("AH1F_Cobra_US", 2, [0, 4, 3, 0]),
         ("AH1F_ATAS_US", 2, [0, 3, 2, 0]),
-        ("AH1F_HeavyHog_US", 2, [0, 4, 3, 0]),
+        ("AH1F_HeavyHog_US", 2, [0, 4, 3, 0]), # I'd add this to Moto
         ("AH1F_Hog_US", 2, [0, 4, 3, 0]),
         ("AH1F_CNITE_US", 2, [0, 0, 3, 2]),
         ("MH_60A_DAP_US", 1, [0, 0, 0, 3]),
@@ -104,9 +104,9 @@ US_airborne_newdivisionrules = {
         ("AH6C_Little_Bird_US", 1, [0, 0, 0, 6]),
     ],
     "planes": [
-        ("FA16_CAS_US", 1, [0, 2, 0, 1]),
+        ("FA16_CAS_US", 1, [0, 2, 0, 1]), # Maybe cut this so its unique to Moto?
         ("F15C_Eagle_AA_US", 2, [0, 2, 0, 1]),
-        ("F15E_StrikeEagle_US", 2, [0, 0, 0, 1]),
+        ("F15E_StrikeEagle_US", 2, [0, 0, 0, 1]), # Swap with the Nighthawk?
         ("F4_Wild_Weasel_2_US", 1, [0, 2, 0, 1]),
     ]
 }
@@ -252,6 +252,8 @@ US_global_newdivisionrules = {
         ("F16E_HE_US", 1, [0, 2, 0, 0]),
         ("F16E_TER_HE_US", 1, [0, 2, 0, 0]),
         ("F16E_napalm_US", 1, [0, 3, 2, 0]),
+        ("F18_Hornet_AA_US", 1, [0, 2, 0, 1]),
+        ("F18_Hornet_AA2_US", 1, [0, 2, 0, 1]),
         ("EF111_Raven_US", 1, [0, 2, 0, 0]),
         ("F111F_Aardvark_LGB_US", 1, [0, 0, 0, 2]),
         ("F111F_Aardvark_LGB2_US", 2, [0, 0, 0, 1]),
@@ -268,13 +270,89 @@ US_global_newdivisionrules = {
         ("A10_Thunderbolt_II_Rkt_US", 1, [0, 2, 0, 0]),
         ("A37B_Dragonfly_HE_US", 1, [0, 4, 0, 0]),
         ("A37B_Dragonfly_NPLM_US", 1, [0, 6, 0, 0]),
-        ("A6E_Intruder_SEAD_US", 1, [0, 3, 0, 2]),
-        ("A6E_Intruder_US", 1, [0, 3, 0, 0]),
         ("A7D_Corsair_II_AT_US", 1, [0, 2, 0, 1]),
         ("A7D_Corsair_II_CLU_US", 1, [0, 2, 0, 0]),
         ("A7D_Corsair_II_RKT_US", 1, [0, 3, 2, 0]),
         ("A7D_Corsair_II_US", 1, [0, 2, 0, 0]),
     ]
+}
+
+US_marine_newdivisionrules = {
+    "logistic": [
+        ("Rifles_half_CMD2_US", 2, [0, 2, 0, 0], ["M998_Humvee_US", "AAVP_7A1_USMC_US", "UH1N_TwinHuey_US", "UH1N_TwinHuey_RKT_US", "CH46E_SeaKnight_trans_US"]),
+        ("M1025_Humvee_CMD_USMC_US", 2, [0, 3, 0, 0]),
+        ("LAV_C_US", 1, [0, 3, 0, 0]),
+        ("AAVC_7A1_CMD_USMC_US", 1, [0, 3, 0, 0]),
+        ("M60A1_RISE_Passive_USMC_CMD2_US", 1, [0, 2, 0, 0]),
+        ("LAV_L_US", 2, [6, 0, 0, 0]),
+        ("M35_supply_US", 2, [3, 0, 0, 0]),
+        ("LARC_60_supply_US", 2, [1, 0, 0, 0]),
+        ("CH46E_SeaKnight_supply_US", 2, [4, 0, 0, 0]),
+        ("CH53_Sea_Stallion_supply_US", 2, [2, 0, 0, 0]),
+    ],
+    "infantry": [
+        ("Rifles_USMC_CMD_US", 1, [0, 0, 7, 5], ["M998_Humvee_US", "AAVP_7A1_USMC_US", "UH1N_TwinHuey_US", "UH1N_TwinHuey_RKT_US"]),
+        ("Engineer_USMC_CMD_US", 1, [0, 0, 4, 3], ["M35_trans_US"]),
+        ("Navy_SEAL_US", 2, [0, 0, 0, 3], ["M1038_Humvee_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US", "UH1N_TwinHuey_US"]),
+        ("AeroRifles_USMC_US", 2, [10, 7, 0, 0], ["UH1N_TwinHuey_US", "UH1N_TwinHuey_RKT_US"]), # I gave these guys a humvee for now, could see that being changed
+        ("Rifles_USMC_LAW_US", 3, [10, 7, 0, 0], ["M35_trans_US", "AAVP_7A1_USMC_US"]),
+        ("Rifles_USMC_AT4_US", 2, [10, 7, 0, 0], ["M35_trans_US", "AAVP_7A1_USMC_US"]),
+        ("Rifles_USMC_Dragon_US", 2, [10, 7, 0, 0], ["M35_trans_US", "AAVP_7A1_USMC_US"]),
+        ("Rifles_USMC_HMG_US", 2, [10, 7, 0, 0], ["M1038_Humvee_US", "AAVP_7A1_USMC_US"]),
+        ("Groupe_AT_USMC_US", 2, [0, 8, 6, 0], ["M998_Humvee_US", "AAVP_7A1_USMC_US"]), # These guys are shock, so they should be upvetted
+        ("Engineers_USMC_US", 2, [0, 6, 4, 0], ["M35_trans_US"]), # These guys are shock, so they should be upvetted
+        ("Security_USMC_US", 1, [0, 6, 4, 0], ["M1038_Humvee_US", "Dragoon_300_US"]), # These guys are shock, so they should be upvetted. These are the guys who guard the navies nukes from the alaska div
+        ("HMGteam_Mk19_USMC_US", 1, [8, 6, 0, 0], ["M998_Humvee_US"]),
+        ("HMGteam_M2HB_M63_USMC_US", 1, [10, 7, 0, 0], ["M998_Humvee_US"]),
+        ("ATteam_TOW2_USMC_US", 2, [4, 3, 0, 0], ["M998_Humvee_US"]),
+    ],
+    "artillery": [
+        ("M110A2_USMC_US", 1, [2, 0, 1, 0]),
+        ("M109A2_USMC_US", 1, [3, 2, 0, 0]),
+        ("Howz_M198_155mm_USMC_US", 2, [3, 2, 0, 0], ["M35_trans_US"]),
+        ("LAV_M_81mm_US", 2, [4, 3, 0, 0]),
+        ("81mm_mortar_USMC_US", 2, [6, 5, 4, 0], ["M998_Humvee_US"]),
+    ],
+    "tank": [
+        ("M60A1_RISE_Passive_USMC_CMD_US", 1, [0, 0, 5, 0]),
+        ("M60A1_RISE_Passive_USMC_US", 2, [10, 7, 0, 0]),
+        ("M60A1_RISE_Passive_USMC_ERA_US", 1, [0, 8, 6, 0]),
+        ("M1025_Humvee_TOW_USMC_US", 2, [0, 6, 4, 0]),
+        ("LAV_AT_US", 1, [0, 6, 4, 0]),
+    ],
+    "recon": [
+        ("Sniper_USMC_US", 2, [0, 4, 3, 0], ["M998_Humvee_US", "M1025_Humvee_scout_USMC_US", "M1025_Humvee_AGL_USMC_US", "UH1N_TwinHuey_US", "UH1N_TwinHuey_RKT_US"]),
+        ("Scout_LAI_USMC_US", 2, [8, 6, 0, 0], ["LAV_25_US"]),
+        ("Scout_USMC_US", 2, [8, 6, 0, 0], ["M998_Humvee_US", "M1025_Humvee_scout_USMC_US", "M1025_Humvee_AGL_USMC_US", "UH1N_TwinHuey_US", "UH1N_TwinHuey_RKT_US"]),
+        ("ForceRecon_USMC_US", 2, [0, 0, 4, 3], ["M998_Humvee_US", "M1025_Humvee_scout_USMC_US", "M1025_Humvee_AGL_USMC_US", "UH1N_TwinHuey_US", "UH1N_TwinHuey_RKT_US"]),
+        ("M151A2_FAV_USMC_US", 1, [0, 0, 10, 7], [None, "CH53_Sea_Stallion_US"]),
+        ("LAV_MEWSS_US", 1, [0, 6, 0, 0]),
+        ("UH1N_TwinHuey_reco_US", 1, [0, 4, 3, 0]),
+        ("OV10_Bronco_US", 1, [0, 3, 2, 0]),
+    ],
+    "aa": [
+        ("DCA_I_Hawk_USMC_US", 2, [5, 4, 0, 0], ["M35_trans_US"]),
+        ("MANPAD_Stinger_C_USMC_US", 2, [7, 5, 0, 0], ["M998_Humvee_US"]),
+    ],
+    "heli": [
+        ("AH1W_SuperCobra_Hydra_US", 2, [0, 3, 2, 0]),
+        ("AH1W_SuperCobra_AA_US", 1, [0, 3, 2, 0]),
+        ("AH1W_SuperCobra_AT_US", 2, [0, 2, 0, 1]),
+        ("AH1W_SuperCobra_SEAD_US", 1, [0, 3, 2, 0]),
+    ],
+    "planes": [
+        ("Harrier_AV8B_RKT_US", 2, [0, 4, 0, 0]),
+        ("Harrier_AV8B_thermo_US", 2, [0, 4, 0, 0]),
+        ("Harrier_AV8B_TER_US", 2, [0, 4, 0, 0]),
+        ("Harrier_AV8B_US", 2, [0, 4, 0, 0]),
+        ("A6E_Intruder_US", 1, [0, 4, 0, 0]),
+        ("A6E_Intruder_SWIP_AT_US", 1, [0, 3, 0, 0]),
+        ("A6E_Intruder_SEAD_US", 1, [0, 3, 0, 2]),
+        ("EA6B_Prowler_US", 1, [0, 2, 0, 1]),
+        ("F14A_Tomcat_AA_US", 2, [0, 2, 0, 1]),
+        ("F14A_Tomcat_AA2_US", 1, [0, 2, 0, 0]),
+        ("F18_Hornet_SEAD_US", 1, [0, 2, 0, 1]), # I swear I made this 0/2/0/1, did you swap that Lat?
+    ],
 }
 
 US_mechanized_newdivisionrules = {
@@ -314,18 +392,18 @@ US_mechanized_newdivisionrules = {
         ("Engineers_Dragon_US", 1, [0, 6, 4, 0], ["M113A3_US"]),
         ("Engineers_Flash_US", 1, [0, 8, 6, 0], ["M113A3_US"]),
         ("NatGuard_Engineers_Flam_US", 1, [8, 0, 0, 0], ["M35_trans_US"]),
-        ("NatGuard_Engineers_M67_US", 1, [8, 0, 0, 0], ["M113A3_US"]),
+        ("NatGuard_Engineers_M67_US", 1, [8, 0, 0, 0], ["M113A1_NG_US"]),
         ("Rifles_US", 2, [10, 7, 0, 0], ["M113A3_US", "M113_Dragon_US"]),
         ("Rifles_LAW_US", 2, [10, 7, 0, 0], ["M113A3_US", "M113_Dragon_US"]),
-        ("NatGuard_Dragon_US", 1, [12, 0, 0, 0], ["M113A3_US", "M113_Dragon_US"]),
-        ("NatGuard_M67_US", 1, [12, 0, 0, 0], ["M113A3_US", "M113_Dragon_US"]),
-        ("NatGuard_LAW_US", 1, [12, 0, 0, 0], ["M113A3_US", "M113_Dragon_US"]),
+        ("NatGuard_Dragon_US", 1, [12, 0, 0, 0], ["M113A1_NG_US", "M113_Dragon_US"]),
+        ("NatGuard_M67_US", 1, [12, 0, 0, 0], ["M113A1_NG_US", "M113_Dragon_US"]),
+        ("NatGuard_LAW_US", 1, [12, 0, 0, 0], ["M113A1_NG_US", "M113_Dragon_US"]),
         ("Rifles_half_Cav_AT4_US", 2, [12, 9, 0, 0], ["M113A3_US", "M2A1_Bradley_IFV_US", "M2A2_BRAT_US"]),
         ("Rifles_half_Cav_Dragon_US", 2, [12, 9, 0, 0], ["M113A3_US", "M2A1_Bradley_IFV_US", "M2A2_BRAT_US"]),
         ("Rifles_half_Dragon_US", 2, [12, 9, 0, 0], ["M113A3_US", "M113_Dragon_US", "M2A1_Bradley_IFV_US", "M2A2_Bradley_IFV_US"]),
         ("Rifles_half_AT4_US", 2, [12, 9, 0, 0], ["M113A3_US", "M113_Dragon_US", "M2A1_Bradley_IFV_US", "M2A2_Bradley_IFV_US"]),
         ("Rifles_half_LAW_US", 2, [12, 9, 0, 0], ["M113A3_US", "M113_Dragon_US", "M2A1_Bradley_IFV_US", "M2A2_Bradley_IFV_US"]),
-        ("Rifles_half_Dragon_NG_US", 2, [12, 0, 0, 0], ["M113A3_US", "M113_Dragon_US", "M2_Bradley_IFV_NG_US"]),
+        ("Rifles_half_Dragon_NG_US", 2, [12, 0, 0, 0], ["M113A1_NG_US", "M113_Dragon_US", "M2_Bradley_IFV_NG_US"]),
         ("Rifles_Cavalry_US", 1, [12, 9, 0, 0], ["M113A3_US"]),
         ("AeroRifles_US", 1, [10, 7, 0, 0], ["UH1H_Huey_US", "UH60A_Black_Hawk_US"]),
         ("Rifles_HMG_US", 1, [10, 7, 0, 0], ["M113A3_US"]),
@@ -334,7 +412,7 @@ US_mechanized_newdivisionrules = {
         ("ATteam_TOW2_US", 2, [4, 3, 0, 0], ["M113A3_US"]),
         ("ATteam_ITOW_US", 1, [6, 4, 0, 0], ["M113A3_US"]),
         ("ATteam_TOW_US", 1, [8, 0, 0, 0], ["M113A3_US"]),
-        ("ATteam_RCL_M40A1_NG_US", 1, [10, 0, 0, 0], ["M113A3_US"]),
+        ("ATteam_RCL_M40A1_NG_US", 1, [10, 0, 0, 0], ["M113A1_NG_US"]),
         ("HMGteam_Mk19_US", 1, [8, 6, 0, 0], ["M113A3_US"]),
         ("HMGteam_M2HB_US", 1, [10, 7, 0, 0], ["M113A3_US"]),
         ("HMGteam_M60_US", 1, [12, 9, 0, 0], ["M113A3_US"]),
@@ -358,7 +436,7 @@ US_mechanized_newdivisionrules = {
         ("M1_Abrams_US", 2, [6, 4, 0, 0]),
         ("M60A3_ERA_Patton_US", 1, [0, 8, 6, 0]),
         ("M60A3_Patton_US", 2, [8, 6, 0, 0]),
-        ("M60A1_RISE_Passive_US", 2, [10, 7, 0, 0]),
+        ("M60A1_RISE_Passive_US", 2, [10, 0, 0, 0]),
         ("M728_CEV_US", 1, [8, 6, 0, 0]),
         ("M901A1_ITW_US", 1, [8, 6, 0, 0]),
         ("M901_TOW_US", 1, [10, 7, 0, 0]),
@@ -370,7 +448,7 @@ US_mechanized_newdivisionrules = {
         ("Scout_US", 2, [8, 6, 0, 0], ["M151_MUTT_trans_US", "M151A2_scout_US", "M113_ACAV_US", "UH1H_Huey_US"]),
         ("Cav_Scout_Dragon_M3A2_US", 1, [3, 2, 0, 0], ["M3A2_Bradley_CFV_US"]),
         ("Cav_Scout_Dragon_M3A1_US", 1, [4, 3, 0, 0], ["M3A1_Bradley_CFV_US"]),
-        ("HvyScout_NG_Dragon_US", 2, [8, 0, 0, 0], ["M35_trans_US", "M113A3_US", "M113A1_ACAV_NG_US", "M113_ACAV_US", "UH1H_Huey_US"]),
+        ("HvyScout_NG_Dragon_US", 2, [8, 0, 0, 0], ["M35_trans_US", "M113A1_NG_US", "M113A1_ACAV_NG_US", "M113_ACAV_US", "UH1H_Huey_US"]),
         ("Sniper_US", 2, [0, 4, 3, 0], ["M151_MUTT_trans_US", "M151A2_scout_US"]),
         ("Sniper_M82_US", 2, [0, 4, 3, 0], ["M151_MUTT_trans_US", "M151A2_scout_US"]),
         ("A37B_Dragonfly_US", 1, [0, 3, 2, 0]),
@@ -403,8 +481,7 @@ US_mechanized_newdivisionrules = {
         ("UH1M_gunship_US", 1, [6, 0, 0, 0]),
     ],
     "planes": [
-        ("F117_Nighthawk_US", 2, [0, 0, 0, 1]),
-        ("EA6B_Prowler_US", 1, [0, 2, 0, 1]),
+        ("F117_Nighthawk_US", 2, [0, 0, 0, 1]), # Swap with the Strike Eagle?
     ],
 }
 
@@ -435,7 +512,7 @@ US_motorized_newdivisionrules = {
         ("Engineer_CMD_US", 1, [0, 0, 4, 3], ["M35_trans_US"]),
         ("Rifles_half_CMD_US", 1, [0, 0, 7, 5], ["M1038_Humvee_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US", "UH1H_Huey_US", "UH60A_Black_Hawk_US"]),
         ("MP_CMD_US", 1, [0, 0, 5, 4], ["M35_trans_US"]),
-        ("Navy_SEAL_US", 1, [0, 0, 0, 3], ["M35_trans_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US", "UH60A_Black_Hawk_US"]),
+        ("Navy_SEAL_US", 1, [0, 0, 0, 3], ["M35_trans_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US", "UH60A_Black_Hawk_US"]), # I'd like to cut this so it unique for Marine
         ("Ranger_US", 1, [0, 0, 4, 3], ["M1038_Humvee_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US", "UH1H_Huey_US", "UH60A_Black_Hawk_US"]),
         ("Ranger_Dragon_US", 1, [0, 0, 4, 3], ["M1038_Humvee_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US", "UH1H_Huey_US", "UH60A_Black_Hawk_US"]),
         ("Engineers_US", 1, [0, 6, 4, 0], ["M35_trans_US"]),
@@ -448,11 +525,10 @@ US_motorized_newdivisionrules = {
         ("Rifles_half_Dragon_US", 2, [12, 9, 0, 0], ["CUCV_trans_US", "CUCV_HMG_US", "CUCV_AGL_US"]),
         ("Rifles_half_AT4_US", 2, [12, 9, 0, 0], ["CUCV_trans_US", "CUCV_HMG_US", "CUCV_AGL_US"]),
         ("Rifles_half_LAW_US", 2, [12, 9, 0, 0], ["CUCV_trans_US", "CUCV_HMG_US", "CUCV_AGL_US"]),
-        ("Security_USMC_US", 1, [0, 8, 6, 0], ["M1038_Humvee_US", "Dragoon_300_US"]),
-        ("MP_Combat_USAF_US", 1, [0, 8, 6, 0], ["M35_trans_US"]),
-        ("MP_Patrol_USAF_US", 1, [0, 7, 5, 0], ["CUCV_trans_US", "CUCV_MP_US", "CUCV_HMG_US", "CUCV_AGL_US", "CGage_Peacekeeper_US"]),
-        ("MP_US", 1, [0, 12, 9, 0], ["CUCV_MP_US", "M1025_Humvee_MP_US", "CUCV_HMG_US", "CUCV_AGL_US"]),
-        ("MP_RCL_US", 1, [0, 10, 7, 0], ["CUCV_MP_US", "M1025_Humvee_MP_US", "CUCV_HMG_US", "CUCV_AGL_US"]),
+        ("MP_Combat_USAF_US", 1, [0, 8, 6, 0], ["M35_trans_US"]), # I'd cut this so its unique to Airborne
+        ("MP_Patrol_USAF_US", 1, [0, 7, 5, 0], ["CUCV_trans_US", "CUCV_MP_US", "CUCV_HMG_US", "CUCV_AGL_US", "CGage_Peacekeeper_US"]), # I'd cut this so its unique to Airborne
+        ("MP_US", 1, [0, 12, 9, 0], ["CUCV_MP_US", "CUCV_HMG_US", "CUCV_AGL_US", "M1025_Humvee_MP_US"]),
+        ("MP_RCL_US", 1, [0, 10, 7, 0], ["CUCV_MP_US", "CUCV_HMG_US", "CUCV_AGL_US", "M1025_Humvee_MP_US"]),
         ("NatGuard_Dragon_US", 1, [12, 0, 0, 0], ["M35_trans_US"]),
         ("NatGuard_M67_US", 1, [12, 0, 0, 0], ["M35_trans_US"]),
         ("NatGuard_LAW_US", 1, [12, 0, 0, 0], ["M35_trans_US"]),
@@ -494,7 +570,7 @@ US_motorized_newdivisionrules = {
         ("M901_TOW_US", 1, [10, 7, 0, 0]),
     ],
     "recon": [
-        ("DeltaForce_US", 2, [0, 0, 4, 3], ["M998_Humvee_Delta_US", "UH60A_Black_Hawk_US"]),
+        ("DeltaForce_US", 2, [0, 0, 4, 3], ["M998_Humvee_Delta_US", "UH60A_Black_Hawk_US"]), # I'd either cut these guys from this or Airborne
         ("LRRP_US", 1, [0, 0, 4, 3], ["M998_Humvee_US", "M1025_Humvee_scout_US", "M1025_Humvee_AGL_nonPara_US", "UH60A_Black_Hawk_US"]),
         ("Scout_US", 2, [8, 6, 0, 0], ["M151_MUTT_trans_US", "M151A2_scout_US", "CUCV_AGL_US", "M113_ACAV_US"]),
         ("LRRP_FOLT_US", 1, [0, 6, 4, 0], ["M151_MUTT_trans_US", "M151A2_scout_US", "FAV_trans_US"]),
@@ -531,6 +607,7 @@ US_motorized_newdivisionrules = {
         ("AH64_Apache_ATAS_US", 2, [0, 2, 0, 1]),
         ("AH1F_Cobra_US", 2, [0, 4, 3, 0]),
         ("AH1F_Hog_US", 2, [0, 4, 3, 0]),
+        # ("AH1F_HeavyHog_US", 2, [0, 4, 3, 0]), # I want to add this to Moto
         ("AH1S_Cobra_US", 2, [0, 4, 3, 0]),
     ],
     "planes": [

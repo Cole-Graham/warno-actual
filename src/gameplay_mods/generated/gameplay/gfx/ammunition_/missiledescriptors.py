@@ -3,6 +3,7 @@ from typing import Any, Dict
 from src import ndf
 from src.constants.weapons import missiles
 from src.utils.logging_utils import setup_logger
+from src.utils.ndf_utils import find_obj_by_type
 
 logger = setup_logger(__name__)
 
@@ -15,6 +16,31 @@ def edit_gen_gp_gfx_missiledescriptors(source: Any, game_db: Dict[str, Any]) -> 
     missile_inst_renames_old_new = ammo_db.get("renames_old_new", {})
 
     for missile_decr in source:
+        
+        missile_namespace = missile_decr.namespace
+        
+        # remove stress on miss
+        modules_list = missile_decr.v.by_m("ModulesDescriptors")
+        capacite_module = find_obj_by_type(modules_list.v, "TCapaciteModuleDescriptor")
+        if capacite_module:
+            default_skill_list = capacite_module.v.by_m("DefaultSkillList")
+            skill_list_length = len(default_skill_list.v)
+            stress_on_miss_skills = [
+                "$/GFX/EffectCapacity/Capacite_StressOnMiss_high",
+                "$/GFX/EffectCapacity/Capacite_StressOnMiss_mid",
+                "$/GFX/EffectCapacity/Capacite_StressOnMiss_low",
+            ]
+            stress_on_miss_skill = default_skill_list.v.find_by_cond(
+                lambda x: x.v in stress_on_miss_skills, strict=False
+            )
+            if stress_on_miss_skill and skill_list_length == 1:
+                modules_list.v.remove(capacite_module)
+            elif stress_on_miss_skill:
+                default_skill_list.v.remove(stress_on_miss_skill)
+            elif missile_namespace.startswith(
+                "Descriptor_Missile_SAM") or missile_namespace.startswith("Descriptor_Missile_MANPAD"):
+                logger.warning(f"No stress on miss skill found for {missile_decr.namespace}")
+        
         # Strip Descriptor_Missile_ prefix for comparison
         stripped_namespace = missile_decr.namespace.replace("Descriptor_Missile_", "")
 
@@ -76,7 +102,6 @@ def edit_gen_gp_gfx_missiledescriptors(source: Any, game_db: Dict[str, Any]) -> 
             continue
 
         # Apply speed/acceleration changes to the matched descriptor
-        modules_list = missile_decr.v.by_m("ModulesDescriptors")
         for module in modules_list.v:
             if not isinstance(module.v, ndf.model.Object):
                 continue

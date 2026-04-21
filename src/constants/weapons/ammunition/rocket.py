@@ -32,7 +32,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     #     },
     # },
 
-    ("RocketAir_Zuni_127mm_F4F_salvolength8", "rocket", "RocketAir_Zuni_1272mm_salvolength8", True): { # Zuni's on the German F4F
+    ("RocketAir_Zuni_1272mm_avion_salvolength8", "rocket", "RocketAir_Zuni_1272mm_salvolength8", True): { # Zuni's on the German F4F
         "Ammunition": {
             "hit_roll": {
                 "Idling": 20,
@@ -184,6 +184,19 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+     
+    ("RocketAir_S25O_420mm_salvolength2", "rocket", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "MaximumRangeGRU": 2625,
+                "RadiusSplashPhysicalDamagesGRU": 90,
+                "RadiusSplashSuppressDamagesGRU": 120,
+                "PhysicalDamages": 7.2,
+                "SuppressDamages": 420,
+                "SupplyCost": 80.0,
+            },
+        },
+    },
     
     ("RocketAir_S24_240mm_salvolength2", "rocket", None, False): { # 619
         "Ammunition": {
@@ -209,6 +222,19 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "ShotsCountPerSalvo": 4,
                 "NbSalvosShootOnPosition": 1,
                 "AffichageMunitionParSalve": 4,
+            },
+        },
+    },
+    
+    ("RocketAir_S24_240mm_salvolength3", "rocket", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "MaximumRangeGRU": 2625,
+                "RadiusSplashPhysicalDamagesGRU": 60,
+                "RadiusSplashSuppressDamagesGRU": 80,
+                "PhysicalDamages": 6.0,
+                "SuppressDamages": 390,
+                "SupplyCost": 96.0,
             },
         },
     },

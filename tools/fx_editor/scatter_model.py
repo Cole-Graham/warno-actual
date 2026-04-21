@@ -7,6 +7,10 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
+# Must match tools/fx_editor/scatter_calibration.yaml when YAML is missing or partial.
+_DEFAULT_REFERENCE_GAMEPLAY_RADIUS_M = 60.0
+_DEFAULT_ANCHOR_MAX_NDF_RADIUS = 4240.282686
+
 
 @dataclass
 class ScatterBurst:
@@ -23,8 +27,8 @@ class ScatterProject:
     """Layout in gameplay meters; conversion to NDF uses calibration."""
 
     version: int = 1
-    reference_gameplay_radius_m: float = 120.0
-    anchor_max_ndf_radius: float = 4272.522908071997
+    reference_gameplay_radius_m: float = _DEFAULT_REFERENCE_GAMEPLAY_RADIUS_M
+    anchor_max_ndf_radius: float = _DEFAULT_ANCHOR_MAX_NDF_RADIUS
     emit_mode: str = 'mobile_position'
     template_list_row_index: int = 0
     bursts: List[ScatterBurst] = field(default_factory=list)
@@ -33,6 +37,8 @@ class ScatterProject:
     inferred_anchor_min_s: Optional[float] = None
     #: Gameplay disk radius (m) for hex / reference circle; cluster uses target radius.
     layout_disk_radius_m: Optional[float] = None
+    #: Cluster emit: ``target_m / source_m`` for scaling sub-impact offsets inside nil-Mobile composites.
+    cluster_radius_scale: Optional[float] = None
 
     def to_json_dict(self) -> Dict[str, Any]:
         d = asdict(self)
@@ -56,8 +62,12 @@ class ScatterProject:
         ]
         return cls(
             version=int(d.get('version', 1)),
-            reference_gameplay_radius_m=float(d.get('reference_gameplay_radius_m', 120.0)),
-            anchor_max_ndf_radius=float(d.get('anchor_max_ndf_radius', 4272.522908071997)),
+            reference_gameplay_radius_m=float(
+                d.get('reference_gameplay_radius_m', _DEFAULT_REFERENCE_GAMEPLAY_RADIUS_M),
+            ),
+            anchor_max_ndf_radius=float(
+                d.get('anchor_max_ndf_radius', _DEFAULT_ANCHOR_MAX_NDF_RADIUS),
+            ),
             emit_mode=str(d.get('emit_mode', 'mobile_position')),
             template_list_row_index=int(d.get('template_list_row_index', 0)),
             bursts=bursts,
@@ -70,6 +80,11 @@ class ScatterProject:
             ),
             layout_disk_radius_m=(
                 None if d.get('layout_disk_radius_m') is None else float(d['layout_disk_radius_m'])
+            ),
+            cluster_radius_scale=(
+                None
+                if d.get('cluster_radius_scale') is None
+                else float(d['cluster_radius_scale'])
             ),
         )
 
@@ -93,9 +108,9 @@ def load_scatter_calibration_yaml(path: Optional[Path] = None) -> Tuple[float, f
         with open(path, 'r', encoding='utf-8') as handle:
             d = y.load(handle)
     except Exception:
-        return 120.0, 4272.522908071997
+        return _DEFAULT_REFERENCE_GAMEPLAY_RADIUS_M, _DEFAULT_ANCHOR_MAX_NDF_RADIUS
     if not isinstance(d, dict):
-        return 120.0, 4272.522908071997
-    return float(d.get('reference_gameplay_radius_m', 120.0)), float(
-        d.get('anchor_max_ndf_radius', 4272.522908071997),
+        return _DEFAULT_REFERENCE_GAMEPLAY_RADIUS_M, _DEFAULT_ANCHOR_MAX_NDF_RADIUS
+    return float(d.get('reference_gameplay_radius_m', _DEFAULT_REFERENCE_GAMEPLAY_RADIUS_M)), float(
+        d.get('anchor_max_ndf_radius', _DEFAULT_ANCHOR_MAX_NDF_RADIUS),
     )

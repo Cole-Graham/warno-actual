@@ -32,6 +32,11 @@ def handle_unitui_module(
         module.v.by_m("UnitRole").v = "'" + edits["UnitRole"] + "'"
     
     specialties_list = module.v.by_m("SpecialtiesList")
+    
+    for spec_tag in specialties_list.v:
+        if spec_tag.v == "'_cbr'":
+            specialties_list.v.remove(spec_tag)
+    
     if "SpecialtiesList" in edits:
         if edit_type == "unit_edits":
             if "overwrite_all" in edits["SpecialtiesList"]:
@@ -83,6 +88,10 @@ def handle_unitui_module(
         # check if token was provided
         token = edits.get("GameName", {}).get("token")
         rename = edits["GameName"]["display"]
+        
+        # if rename.startswith("#LDR"):
+        #     module.v.by_m("EnableAutomaticTFSInUnitName").v = "False"
+            
         if token:  # if new token provided, replace unit token with the new one
             module.v.by_m("NameToken").v = f"'{token}'"
             logger.debug(f"Updated name token for {unit_name}")

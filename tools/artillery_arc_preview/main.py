@@ -47,7 +47,7 @@ STATE_PATH = _app_state_dir() / "user_state.json"
 PRESETS: Dict[str, Dict[str, Any]] = {
     "Custom": {},
     "Example MLRS (illustrative)": {
-        "SpeedGRU": 420.0,
+        "ProjectileSpeedGRU": 420.0,
         "PitchForParabolic": 0.52,
         "TargetRangeGRU": 20000.0,
         "MinRangeGRU": 2000.0,
@@ -378,8 +378,8 @@ class ArtilleryArcApp:
     def _apply_preset(self) -> None:
         name = self._preset.get()
         data = PRESETS.get(name) or {}
-        if "SpeedGRU" in data:
-            self._speed_gru.set(float(data["SpeedGRU"]))
+        if "ProjectileSpeedGRU" in data:
+            self._speed_gru.set(float(data["ProjectileSpeedGRU"]))
         if "PitchForParabolic" in data:
             self._design_pitch_slider_rad.set(float(data["PitchForParabolic"]))
         if "TargetRangeGRU" in data:

@@ -8,7 +8,7 @@ pathfinder_ng_us: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
     "valid_files": ["DepictionInfantry.ndf", "WeaponDescriptor.ndf"],
     "DepictionInfantry_ndf": {
         ("AllWeaponAlternatives_Pathfinder_NG_US", None): { # (namespace, object type)
-            # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "add", "remove", "replace")
+            # row: (edit type, [(property, value), (property, value), ...]) (edit types: "edit", "insert", "remove", "replace")
             1: ("insert", [("SelectorId", "WeaponAlternative_2"), ("MeshDescriptor", "M249")]),
             2: ("edit", [("SelectorId", "WeaponAlternative_3")]),
             3: ("edit", [("SelectorId", "WeaponAlternative_4")]),
