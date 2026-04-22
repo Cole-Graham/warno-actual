@@ -30,8 +30,6 @@ SOV_NEW_UNITS = {
             ],
         },
         "strength": 5,
-        # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
-        "Dangerousness": 12,
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 11,
@@ -50,8 +48,6 @@ SOV_NEW_UNITS = {
         "armor": "Infantry_armor_reference",
         "Factory": "EFactory/Logistic",
         "CommandPoints": 145,
-        "UnitAttackValue": 1,
-        "UnitDefenseValue": 16,
         "UnitRole": 'hq_inf',
         "SpecialtiesList": [
             'leader_sov',
@@ -121,8 +117,6 @@ SOV_NEW_UNITS = {
             ],
         },
         "strength": 5,
-        # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
-        "Dangerousness": 12,
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 11,
@@ -140,8 +134,6 @@ SOV_NEW_UNITS = {
         "armor": "Infantry_armor_reference",
         "Factory": "EFactory/Logistic",
         "CommandPoints": 145,
-        "UnitAttackValue": 1,
-        "UnitDefenseValue": 16,
         "UnitRole": 'hq_inf',
         "SpecialtiesList": [
             'leader_sov',

@@ -270,8 +270,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "PhysicalDamages": 0.85,
                 "RadiusSplashSuppressDamagesGRU": 66,
                 "SuppressDamages": 115,
-                # Eugen removed this and replaced it with SpeedGRU
-                # "FlightTimeForSpeed": 3.3,
                 "SupplyCost": 300.0,
             },
         },

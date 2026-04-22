@@ -1,1 +1,1 @@
-"""Artillery trajectory preview: SpeedGRU + PitchForParabolic (parabolic model)."""
+"""Artillery trajectory preview: ProjectileSpeedGRU + PitchForParabolic (parabolic model)."""

@@ -22,7 +22,7 @@ def edit_gen_gp_gfx_capacitelist(source_path) -> None:
     # Edit capacities
     for capacite_descr in source_path:
         if capacite_descr.n == "Capacite_Choc":
-            new_value = "100"
+            new_value = "150"
             capacite_descr.v.by_m("RangeGRU").v = new_value
             logger.info(f"Updated Capacite_Choc range to {new_value}m")
 

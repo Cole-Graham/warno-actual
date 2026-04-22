@@ -26,15 +26,11 @@ RDA_NEW_UNITS = {
             ],
         },
         "strength": 40,
-        # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
-        "Dangerousness": 12,
         "TransportedTexture": "UseInGame_Transport_REGINF",
         "TransportedSoldier": "KdA_DDR_TargetDummy",
         "armor": "Infantry_armor_reference",
         "Factory": "EFactory/Logistic",
         "CommandPoints": 5,
-        "UnitAttackValue": 1,
-        "UnitDefenseValue": 16,
         "UnitRole": 'infantry',
         "SpecialtiesList": [
             '_reservist',
@@ -94,8 +90,6 @@ RDA_NEW_UNITS = {
             ],
         },
         "strength": 5,
-        # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
-        "Dangerousness": 12,
         "WeaponDescriptor": {
             "Salves": {
                 "FM_Mpi_AK_74N": 11,
@@ -113,8 +107,6 @@ RDA_NEW_UNITS = {
         "armor": "Infantry_armor_reference",
         "Factory": "EFactory/Logistic",
         "CommandPoints": 145,
-        "UnitAttackValue": 1,
-        "UnitDefenseValue": 16,
         "UnitRole": 'hq_inf',
         "SpecialtiesList": [
             'leader_sov',

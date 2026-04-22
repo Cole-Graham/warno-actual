@@ -60,6 +60,14 @@ def _edit_showroom_top_filters_bar(source_path) -> None:
     showroom_top_filters_bar = source_path.by_namespace("ShowroomTopFiltersBarContainer")
     elements = showroom_top_filters_bar.v.by_m("Elements")
     
+    first_margin =  "FirstMargin = TRTTILength(Magnifiable = 5.0)"
+    inter_item_margin = "InterItemMargin = TRTTILength(Magnifiable = 1.0)"
+    last_margin = "LastMargin = TRTTILength(Magnifiable = 5.0)"
+    
+    showroom_top_filters_bar.v.insert(2, last_margin)
+    showroom_top_filters_bar.v.insert(2, inter_item_margin)
+    showroom_top_filters_bar.v.insert(2, first_margin)
+    
     new_value = """[
     BUCKListElementDescriptor
     (
@@ -72,22 +80,20 @@ def _edit_showroom_top_filters_bar(source_path) -> None:
             ElementName = "UnitDivisionScrollingContainer222"
             ComponentFrame = TUIFramePropertyRTTI
             (
-                MagnifiableWidthHeight = [1500.0, 60.0]
-                AlignementToFather = [0.5, 0.0]
+                MagnifiableWidthHeight = [1500.0, 62.0]
+                AlignementToFather = [0.5, 0.025]
                 AlignementToAnchor = [0.5, 0.0]
             )
-
             ExternalScrollbar = true
-            ScrollStepSize = [0.0, 60.0]
+            ScrollStepSize = [18.34, 0.0]
             HasHorizontalScrollbar = true
             ScrollBarBackgroundToken = "AmroryButtonTxt"
             ScrollBarElevatorBackgroundToken = "AmroryButtonBkg"
             HorizontalScrollbarComponentFrame = TUIFramePropertyRTTI
             (
-                MagnifiableWidthHeight = [0.0, 2.0]
-                MagnifiableOffset = [0.0, 55.0]
+                MagnifiableWidthHeight = [0.0, 3.5]
+                MagnifiableOffset = [0.0, 54.9]
             )
-
             Components = [AllegianceDivisionFilter(ElementName = "NATODivisionFilterRack")]
         )
     ),
@@ -98,22 +104,21 @@ def _edit_showroom_top_filters_bar(source_path) -> None:
             ElementName = "UnitDivisionScrollingContainer223"
             ComponentFrame = TUIFramePropertyRTTI
             (
-                MagnifiableWidthHeight = [1500.0, 60.0]
-                AlignementToFather = [0.5, 0.0]
+                MagnifiableWidthHeight = [1500.0, 62.0]
+                AlignementToFather = [0.5, 0.12]
                 AlignementToAnchor = [0.5, 0.0]
             )
 
             ExternalScrollbar = true
-            ScrollStepSize = [0.0, 60.0]
+            ScrollStepSize = [18.34, 0.0]
             HasHorizontalScrollbar = true
             ScrollBarBackgroundToken = "AmroryButtonTxt"
             ScrollBarElevatorBackgroundToken = "AmroryButtonBkg"
             HorizontalScrollbarComponentFrame = TUIFramePropertyRTTI
             (
-                MagnifiableWidthHeight = [0.0, 2.0]
-                MagnifiableOffset = [0.0, -1.0]
+                MagnifiableWidthHeight = [0.0, 3.5]
+                MagnifiableOffset = [0.0, -6.2]
             )
-
             Components = [AllegianceDivisionFilter(ElementName = "PACTDivisionFilterRack")]
         )
     ),

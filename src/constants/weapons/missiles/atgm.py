@@ -15,6 +15,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MinimumRangeGRU": 60,
                 "ProjectileSpeedGRU": 233,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_dragon_wa'",
             }
         },
         "SupplyCost": 60.0,
@@ -35,6 +36,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MinimumRangeGRU": 60,
                 "ProjectileSpeedGRU": 233,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_dragon_wa'",
             }
         },
         "SupplyCost": 50.0,
@@ -55,6 +57,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeGRU": 1575,
                 "MinimumRangeGRU": 60,
                 "ProjectileSpeedGRU": 350,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_metis_wa'",
             }
         },
         "SupplyCost": 80.0,
@@ -77,7 +80,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "add": [65, "HasDeploymentTime = True"],
                 "ProjectileSpeedGRU": 350,
-                "NoiseDissimulationMalus": 1.0
+                "NoiseDissimulationMalus": 1.0,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_swingfire_wa'",
             },
         },
         "SupplyCost": 95.0,
@@ -99,6 +103,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 350,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_swingfire_wa'",
             },
         },
         "SupplyCost": 95.0,
@@ -120,6 +125,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 350,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_milan_wa'",
             },
         },
         "SupplyCost": 90.0,
@@ -141,6 +147,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 350,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_milan_wa'",
             },
         },
         "SupplyCost": 60.0,
@@ -162,6 +169,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 350,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_milan_wa'",
             },
         },
         "SupplyCost": 90.0,
@@ -183,6 +191,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 350,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_milan_wa'",
             },
         },
         "SupplyCost": 60.0,
@@ -205,6 +214,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "ProjectileSpeedGRU": 466,
                 "AimingTime": 6.0,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_shillelagh_wa'",
             },
         },
         "SupplyCost": 75.0,
@@ -226,6 +236,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 739,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_hot_wa'",
             },
         },
         "SupplyCost": 115.0,
@@ -244,6 +255,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 739,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_hot_wa'",
             },
         },
         "SupplyCost": 90.0,
@@ -266,6 +278,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 350,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_as11_wa'",
             },
         },
         "SupplyCost": 70.0,
@@ -296,6 +309,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 466,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_tow2a_wa'",
             }
         },
         "SupplyCost": 115.0,
@@ -315,6 +329,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 # "Caliber": ("6.1kg HYBRID", "SVJNWQPYKO"),
                 "ProjectileSpeedGRU": 466,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_tow2a_wa'",
             }
         },
         "SupplyCost": 100.0,
@@ -333,6 +348,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 466,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_tow2a_wa'",
             }
         },
         "SupplyCost": 115.0,
@@ -353,6 +369,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 # "Caliber": ("6.1kg HYBRID", "SVJNWQPYKO"),
                 "ProjectileSpeedGRU": 466,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_tow2a_wa'",
             }
         },
         "SupplyCost": 100.0,
@@ -368,6 +385,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "ProjectileSpeedGRU": 466,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_tow_wa'",
             }
         },
         "SupplyCost": 80.0,
@@ -384,6 +402,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "ProjectileSpeedGRU": 466,
                 "TimeBetweenTwoSalvos": 30.0,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_tow_wa'",
             },
         },
         "SupplyCost": 80.0,
@@ -402,6 +421,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 466,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_tow_wa'",
             }
         },
         "SupplyCost": 60.0,
@@ -425,6 +445,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 311,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_fagot_wa'",
             },
         },
         "SupplyCost": 60.0,
@@ -448,6 +469,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 311,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_fagot_wa'",
             },
         },
         "SupplyCost": 60.0,
@@ -471,6 +493,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 311,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_fagot_wa'",
             }
         },
         "SupplyCost": 50.0,
@@ -493,6 +516,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeGRU": 2450,
                 "ProjectileSpeedGRU": 233,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_malyutka_wa'",
             },
         },
         "SupplyCost": 60.0,
@@ -515,6 +539,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeGRU": 2450,
                 "ProjectileSpeedGRU": 233,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_malyutka_wa'",
             },
         },
         "SupplyCost": 60.0,
@@ -533,6 +558,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 544,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_agona_wa'",
             },
         },
         "SupplyCost": 115.0,
@@ -551,6 +577,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeGRU": 2625,
                 "ProjectileSpeedGRU": 622,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_svir_wa'",
             },
         },
         "SupplyCost": 80.0,
@@ -566,6 +593,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "ProjectileSpeedGRU": 622,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_kokon_wa'",
             },
         },
         "SupplyCost": 80.0,
@@ -584,6 +612,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 800,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_ataka_wa'",
             },
         },
         "SupplyCost": 80.0,
@@ -602,6 +631,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeGRU": 2800,
                 "ProjectileSpeedGRU": 622,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_refleks_wa'",
             },
         },
         "SupplyCost": 85.0,
@@ -625,6 +655,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeGRU": 2800,
                 "ProjectileSpeedGRU": 622,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_invar_wa'",
             },
         },
         "SupplyCost": 120.0,
@@ -645,6 +676,28 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "token": "DIHEGBLZRU",
             "parent_membr": {
                 "ProjectileSpeedGRU": 739,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_bastion_wa'",
+            },
+        },
+        "SupplyCost": 95.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [1],
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 739,
+        },
+    },
+    
+    ("ATGM_9M117_Bastion_IFV", "ATGM", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 19,
+            },
+            "display": "9M117 Bastion",
+            "token": "DIHEGBLZRU",
+            "parent_membr": {
+                "ProjectileSpeedGRU": 739,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_bastion_wa'",
             },
         },
         "SupplyCost": 95.0,
@@ -664,6 +717,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 # "Caliber": ("2.7kg TANDEM", "JDLKNWTJOR"),
                 "ProjectileSpeedGRU": 389,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_konkursM_wa'",
             },
         },
         "SupplyCost": 95.0,
@@ -685,6 +739,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoSalvos": 8.0,
                 "MaximumRangeGRU": 2450,
                 "ProjectileSpeedGRU": 389,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_konkursM_wa'",
             },
         },
         "SupplyCost": 95.0,
@@ -698,6 +753,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 # "Caliber": ("2.7kg HEAT", "HNXYVDFTUM"),
                 "ProjectileSpeedGRU": 389,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_konkurs_wa'",
             },
         },
         "SupplyCost": 75.0,
@@ -714,6 +770,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 # "Caliber": ("2.7kg HEAT", "HNXYVDFTUM"),
                 "ProjectileSpeedGRU": 389,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_konkurs_wa'",
             },
         },
         "SupplyCost": 75.0,
@@ -737,6 +794,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 739,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_kobra_wa'",
             },
         },
         "SupplyCost": 80.0,
@@ -760,6 +818,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 739,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_kobra_wa'",
             },
         },
         "SupplyCost": 105.0,

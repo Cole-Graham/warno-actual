@@ -20,8 +20,6 @@ USA_NEW_UNITS = {
             ],
         },
         "strength": 5,
-        # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
-        # "Dangerousness": 12,
         "WeaponDescriptor": {
             "Salves": {
                 "FM_M16": 11,
@@ -40,8 +38,6 @@ USA_NEW_UNITS = {
         "Factory": "EFactory/Logistic",
         "armor": "Infantry_armor_reference",
         "CommandPoints": 145,
-        "UnitAttackValue": 1,
-        "UnitDefenseValue": 16,
         "UnitRole": 'hq_inf',
         "SpecialtiesList": [
             '_leader',
@@ -193,8 +189,6 @@ USA_NEW_UNITS = {
             ],
         },
         "strength": 2,
-        # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
-        # "Dangerousness": 12,
         "WeaponDescriptor": {
             "Salves": {
                 "insert": [(1, 10), ],
@@ -283,8 +277,6 @@ USA_NEW_UNITS = {
             ],
         },
         "strength": 2,
-        # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
-        # "Dangerousness": 12,
         "WeaponDescriptor": {
             "Salves": {
                 "insert": [(1, 10), ],
@@ -400,7 +392,6 @@ USA_NEW_UNITS = {
         },
         "strength": 6,
         "stealth": 2.0,
-        # "Dangerousness": 12,
         "WeaponDescriptor": {
             "Salves": {
                 "insert": [(1, 10), ],
@@ -429,8 +420,6 @@ USA_NEW_UNITS = {
         "Factory": "EFactory/DCA",
         "armor": "Infantry_armor_reference",
         "CommandPoints": 60,
-        # "UnitAttackValue": 1,
-        # "UnitDefenseValue": 16,
         "SpecialtiesList": [
                 'infantry_equip_heavy',
             ],

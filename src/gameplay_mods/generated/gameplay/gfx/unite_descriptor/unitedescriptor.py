@@ -711,8 +711,7 @@ def _handle_damage_module(logger, game_db, unit_data, edit_type, unit_name,
 def _handle_dangerousness_module(logger, game_db, unit_data, edit_type, unit_name,
                                  edits, module, *args) -> None:
     """Handle TDangerousnessModuleDescriptor for existing and new units"""
-    if "Dangerousness" in edits:
-        module.v.by_m("Dangerousness").v = str(edits["Dangerousness"])
+    pass
 
 
 # TScannerConfigurationDescriptor
@@ -809,10 +808,7 @@ def _handle_tacticallabel_module(logger, game_db, unit_data, edit_type, unit_nam
 def _handle_strategicdata_module(logger, game_db, unit_data, edit_type, unit_name,
                                  edits, module, *args) -> None:
     """Handle TStrategicDataModuleDescriptor for existing and new units"""
-    if "UnitAttackValue" in edits:
-        module.v.by_m("UnitAttackValue").v = str(edits["UnitAttackValue"])
-    if "UnitDefenseValue" in edits:
-        module.v.by_m("UnitDefenseValue").v = str(edits["UnitDefenseValue"])
+    pass
         
 
 # TDeploymentShiftModuleDescriptor

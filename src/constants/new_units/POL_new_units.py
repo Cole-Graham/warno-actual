@@ -29,7 +29,6 @@ POL_NEW_UNITS = {
             ],
         },
         "strength": 5,
-        # "Dangerousness": 12,
         "WeaponDescriptor": {
             "Salves": {
                 "FM_kbk_AK": 9,
@@ -46,8 +45,6 @@ POL_NEW_UNITS = {
         "armor": "Infantry_armor_reference",
         "Factory": "EFactory/Logistic",
         "CommandPoints": 145,
-        # "UnitAttackValue": 1,
-        # "UnitDefenseValue": 16,
         "UnitRole": 'hq_inf',
         "SpecialtiesList": [
             'leader_sov',
@@ -841,6 +838,7 @@ POL_NEW_UNITS = {
             '_transport1',
             '_sf',
         ],
+        "MenuIconTexture": "Texture_RTS_H_appui",
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 3500.0,

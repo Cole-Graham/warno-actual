@@ -19,6 +19,7 @@ from .gameplay_mods import (
     edit_gameplay_unit_groundunitcritical,
     edit_gameplay_unit_helicocritical,
     edit_gameplay_unit_infanteriecritical,
+    edit_gameplay_unit_districtdescriptor,
     edit_gameplay_unit_team,
     edit_gameplay_unit_templatecritical,
     edit_gameplay_unit_testunitscritical,
@@ -144,6 +145,7 @@ __all__ = [
     'edit_gameplay_unit_groundunitcritical',
     'edit_gameplay_unit_helicocritical',
     'edit_gameplay_unit_infanteriecritical',
+    'edit_gameplay_unit_districtdescriptor',
     'edit_gameplay_unit_team',
     'edit_gameplay_unit_templatecritical',
     'edit_gameplay_unit_testunitscritical',
@@ -310,6 +312,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         ],
         "GameData/Gameplay/Unit/Tactic/Team.ndf": [
             (edit_gameplay_unit_team, "gameplay"),
+        ],
+        "GameData/Gameplay/Unit/Tactic/DistrictDescriptor.ndf": [
+            (edit_gameplay_unit_districtdescriptor, "gameplay"),
         ],
         # Critical effect modules
         "GameData/Gameplay/Unit/CriticalModules/CriticalEffectModule_Airplane.ndf": [

@@ -2304,6 +2304,13 @@ rda_unit_edits = {
     "PSzH_IV_DDR": {
         "CommandPoints": 20,
         "strength": 10,
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/Standard": 3180.0,
+                "EOpticalStrength/LowAltitude": 3180.0,
+                "EOpticalStrength/HighAltitude": 706.0,
+            },
+        },
     },
 
     "UAZ_469_Fagot_DDR": {

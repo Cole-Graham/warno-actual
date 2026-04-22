@@ -182,8 +182,6 @@ UK_NEW_UNITS = {
             ],
         },
         "strength": 5,
-        # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
-        "Dangerousness": 12,
         "WeaponDescriptor": {
             "Salves": {
                 "FM_L85A1": 11,
@@ -201,8 +199,6 @@ UK_NEW_UNITS = {
         "Factory": "EFactory/Logistic",
         "armor": "Infantry_armor_reference",
         "CommandPoints": 145,
-        "UnitAttackValue": 1,
-        "UnitDefenseValue": 16,
         "UnitRole": 'hq_inf',
         "SpecialtiesList": [
             '_leader',
