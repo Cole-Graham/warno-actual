@@ -1,4 +1,4 @@
-# VFX editor tooling — versioned config (see vfx_editor_design.md §8)
+# tools/fxeditor — versioned calibration (see fxeditor_design.md §8)
 version: 1
 
 # Gameplay meters vs NDF layout units (calibration for layout ↔ gameplay mapping)

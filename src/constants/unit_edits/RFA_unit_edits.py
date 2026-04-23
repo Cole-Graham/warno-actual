@@ -475,16 +475,74 @@ rfa_unit_edits = {
     },
     
     "Feldgendarmerie_RFA": {
-        "CommandPoints": 15,
+        "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "availability": [0, 12, 9, 0],
         "max_speed": 26,
-        "strength": 5,
+        "strength": 8,
         "WeaponDescriptor": {
+            # Mixed-model loadout: 5 Feldgendarmerie_RFA + 3 HeimatschutzJager_RFA
+            # Vanilla turrets: T0=PM_MP_5A3 (qty=4)
+            # Target turrets:  T0=PM_MP_5A3(x5), T1=FM_G3KA4(x2),
+            #                  T2=MMG_inf__MG3_7_62mm(x1, animate=True from donor),
+            #                  T3=RocketInf_PzF_44(x1, animate=True from donor)
             "equipmentchanges": {
                 "quantity": {
                     "PM_MP_5A3": 5,
+                    "FM_G3KA4": 2,
+                    "MMG_inf__MG3_7_62mm": 1,
                 },
+                "insert": [
+                    (1, "FM_G3KA4"),
+                    (2, "MMG_inf__MG3_7_62mm"),
+                    (3, "RocketInf_PzF_44"),
+                ],
+                "insert_edits": {
+                    1: {  # FM_G3KA4 (newly inserted)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 2,
+                        },
+                        "AmmoBoxIndex": 1,
+                        "HandheldEquipmentKey": "'WeaponAlternative_2'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_2"],
+                    },
+                    2: {  # MG3 (newly inserted)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 3,
+                        },
+                        "AmmoBoxIndex": 2,
+                        "HandheldEquipmentKey": "'WeaponAlternative_3'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
+                    },
+                    3: {  # PzF_44 (newly inserted)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 4,
+                        },
+                        "AmmoBoxIndex": 3,
+                        "HandheldEquipmentKey": "'WeaponAlternative_4'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_4'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_4'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_4"],
+                    },
+                },
+            },
+            # Vanilla Salves: [PM_MP_5A3=80]. Target: [14, 11, 45, 4].
+            # Explicit PM_MP_5A3 trips the apply_default_salves skip guard so it
+            # writes 14 (the default) at vanilla index 0 explicitly via _apply_salvo_changes.
+            "Salves": {
+                "PM_MP_5A3": 14,
+                "FM_G3KA4": 11,
+                "MMG_inf__MG3_7_62mm": 45,
+                "RocketInf_PzF_44": 4,
+                "insert": [
+                    (1, 11),
+                    (2, 45),
+                    (3, 4),
+                ],
             },
         },
         "SpecialtiesList": {

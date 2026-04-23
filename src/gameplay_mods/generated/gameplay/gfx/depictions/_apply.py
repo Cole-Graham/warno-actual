@@ -338,13 +338,17 @@ def apply_tactic_depiction_soldier(
             template_namespace = f"InfantrySelectorTactic_{member_value}"
             template = source_path.by_n(template_namespace, False)
             if not template:
-                new_unique_count = f"{int(member_value.split('_')[0]):02d}"
-                new_count = int(member_value.split("_")[1])
+                # member_value is "UU_SS" where UU is UniqueCount and SS is the
+                # surrogates count; the Surrogates member references
+                # TacticDepiction_{SS:02}_Surrogates (NOT the UniqueCount).
+                uu_str, ss_str = member_value.split("_")
+                unique_count = int(uu_str)
+                surrogates_count = int(ss_str)
                 source_path.add(
                     f"InfantrySelectorTactic_{member_value} is TemplateInfantrySelectorTactic"
                     f"("
-                    f"    Surrogates = TacticDepiction_{new_unique_count}_Surrogates"
-                    f"    UniqueCount = {new_count}"
+                    f"    Surrogates = TacticDepiction_{surrogates_count:02}_Surrogates"
+                    f"    UniqueCount = {unique_count}"
                     f")"
                 )
             target.v.by_m(member).v = template_namespace

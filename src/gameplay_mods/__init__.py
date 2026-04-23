@@ -9,6 +9,7 @@ from .commondata import (
 )
 from .gameplay import (
     add_unit_meshes,
+    edit_gameplay_gfx_templates_templatedepiction,
     edit_gameplay_constantes_gdconstants,
     edit_gameplay_constantes_hitrollconstants,
     edit_gameplay_constantes_iastratweaponconstantes,
@@ -91,6 +92,7 @@ __all__ = [
     'edit_cd_gameplay_constantes_helicoptermovementweights',
     # .gameplay
     'add_unit_meshes',
+    'edit_gameplay_gfx_templates_templatedepiction',
     'edit_gameplay_constantes_gdconstants',
     'edit_gameplay_constantes_hitrollconstants',
     'edit_gameplay_constantes_iastratweaponconstantes',

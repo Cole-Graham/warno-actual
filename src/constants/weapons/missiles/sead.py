@@ -166,6 +166,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Moving": 65,
             },
             "parent_membr": {
+                "TraitsToken": ['MOTION', 'sead', 'reflexpriorityoff'],
                 "MaximumRangeGRU": 6125,
                 "ReflexShotDisabledIfPriorityTarget": False,
                 "ProjectileSpeedGRU": 4947,

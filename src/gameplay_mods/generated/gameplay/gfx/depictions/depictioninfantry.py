@@ -1,10 +1,14 @@
 """Functions for modifying DepictionInfantry.ndf"""
 
+import re
 from typing import Any
 
 from src import ndf
 from src.constants.new_units import NEW_DEPICTIONS, NEW_UNITS
 from src.constants.unit_edits import load_depiction_edits
+from src.constants.unit_edits.depiction_edits.selector_tactic import (
+    NEW_SELECTOR_TACTIC_OBJECTS,
+)
 from src.gameplay_mods.generated.gameplay.gfx.depictions._apply import (
     apply_infantry_section,
     overwrite_skeleton_conditional_tags,
@@ -16,12 +20,78 @@ logger = setup_logger(__name__)
 
 _NDF_FILE = "DepictionInfantry.ndf"
 _MESH_PREFIX = "$/GFX/DepictionResources/Modele_"
+_SELECTOR_TACTIC_NAMESPACE_RE = re.compile(r"^InfantrySelectorTactic_(\d+)_(\d+)$")
 
 
 def edit_gen_gp_gfx_depictioninfantry(source_path: Any, game_db: Any) -> None:
     """GameData/Generated/Gameplay/Gfx/Depictions/DepictionInfantry.ndf"""
+    _create_new_selector_tactic_objects(source_path)
     _create_new_units(source_path)
     _apply_depiction_edits(source_path)
+
+
+def _create_new_selector_tactic_objects(source_path: Any) -> None:
+    """Insert new ``InfantrySelectorTactic_UU_SS`` rows declared in
+    :data:`NEW_SELECTOR_TACTIC_OBJECTS` amongst the existing numbered rows.
+
+    The ``existing`` index is built from the live parsed ``source_path`` so any
+    upstream-authored rows (e.g. new ones shipped in a future game patch) are
+    detected as duplicates and skipped with a debug log.
+    """
+    if not NEW_SELECTOR_TACTIC_OBJECTS:
+        logger.debug("NEW_SELECTOR_TACTIC_OBJECTS is empty; no selector rows to add")
+        return
+
+    existing: dict[tuple[int, int], int] = {}
+    for row_index, row in enumerate(source_path):
+        namespace = getattr(row, "namespace", None)
+        if not namespace:
+            continue
+        match = _SELECTOR_TACTIC_NAMESPACE_RE.match(namespace)
+        if match:
+            uu, ss = int(match.group(1)), int(match.group(2))
+            existing[(uu, ss)] = row_index
+
+    for uu, ss in NEW_SELECTOR_TACTIC_OBJECTS:
+        name = f"InfantrySelectorTactic_{uu:02}_{ss:02}"
+        if (uu, ss) in existing or source_path.by_n(name, False):
+            logger.debug(f"{name} already present; skipping")
+            continue
+
+        higher_keys = sorted(k for k in existing if k > (uu, ss))
+        if higher_keys:
+            insert_idx = existing[higher_keys[0]]
+        else:
+            anchor = source_path.by_n("InfantrySelectorTactic_00_01", False)
+            if anchor is None:
+                logger.error(
+                    f"Cannot place {name}: neither a higher-numbered selector row nor "
+                    f"the InfantrySelectorTactic_00_01 anchor exists; skipping."
+                )
+                continue
+            insert_idx = None
+            for row_index, row in enumerate(source_path):
+                if getattr(row, "namespace", None) == "InfantrySelectorTactic_00_01":
+                    insert_idx = row_index
+                    break
+            if insert_idx is None:
+                logger.error(f"Lost InfantrySelectorTactic_00_01 anchor while placing {name}")
+                continue
+
+        new_row = (
+            f"{name} is TemplateInfantrySelectorTactic"
+            f"("
+            f"    Surrogates = TacticDepiction_{ss:02}_Surrogates"
+            f"    UniqueCount = {uu}"
+            f")"
+        )
+        source_path.insert(insert_idx, new_row)
+        logger.info(f"Inserted {name} at row {insert_idx}")
+
+        existing[(uu, ss)] = insert_idx
+        for key, idx in list(existing.items()):
+            if key != (uu, ss) and idx >= insert_idx:
+                existing[key] = idx + 1
 
 
 def _create_new_units(source_path: Any) -> None:

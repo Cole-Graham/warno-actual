@@ -1033,6 +1033,130 @@ RDA_NEW_UNITS = {
         "UpgradeFromUnit": "UAZ_469_Fagot_DDR",
     },
     
+    ("MP_DDR", 0): {  # mechanized MP cloned from MP_DDR with Reserve_DDR donor weapons + meshes
+        "GUID": "8d2f3c4a-7b65-49e8-9c1d-5f4a3b2e6d80",
+        "InfantrySquadModuleGUID": "1a9b8c7d-6e5f-4a3b-8c2d-9e0f1a2b3c4d",
+        "ShowroomGUID": "2b3c4d5e-6f78-49a0-b1c2-d3e4f5a6b7c8",
+        "CadavreGUID": "3c4d5e6f-7a89-4b0c-9d1e-2f3a4b5c6d7e",
+        "NewName": "MP_mech_DDR",
+        "GameName": {
+            "display": "MILITÄRSTREIFEIN",
+            "token": "RKRHIEKUES",
+        },
+        "CommandPoints": 35,
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_instructed",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Steelman_infanterie_autoresolve",
+                "UNITE_MP_mech_DDR",
+                "Unite",
+            ],
+        },
+        "strength": 8,
+        "WeaponDescriptor": {
+            # Mixed-model strength-8 squad: 5 MP_DDR + 3 Reserve_DDR
+            # Donor turrets (cloned from MP_DDR vanilla): T0=PM_Skorpion (qty=4)
+            # Target turrets:  T0=PM_Skorpion(x5), T1=FM_KMS_72(x1 animate=True),
+            #                  T2=SAW_lMG_K_7_62mm(x1 animate=True), T3=RocketInf_RPG7(x1 animate=True)
+            "equipmentchanges": {
+                "quantity": {
+                    "PM_Skorpion": 5,
+                    "FM_KMS_72": 2,
+                    "SAW_lMG_K_7_62mm": 1,
+                    "RocketInf_RPG7": 1,
+                },
+                # NEW_UNITS pipeline requires (turret_index, weapon_name, fire_effect) tuples
+                "insert": [
+                    (1, "FM_KMS_72", "FM_KMS_72"),
+                    (2, "SAW_lMG_K_7_62mm", "SAW_lMG_K_7_62mm"),
+                    (3, "RocketInf_RPG7", "RocketInf_RPG7"),
+                ],
+                "insert_edits": {
+                    1: {  # FM_KMS_72 (newly inserted, donor Reserve_DDR)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 2,
+                        },
+                        "AmmoBoxIndex": 1,
+                        "HandheldEquipmentKey": "'WeaponAlternative_2'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_2"],
+                    },
+                    2: {  # SAW_lMG_K (newly inserted, donor Reserve_DDR)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 3,
+                        },
+                        "AmmoBoxIndex": 2,
+                        "HandheldEquipmentKey": "'WeaponAlternative_3'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
+                    },
+                    3: {  # RocketInf_RPG7 (newly inserted, donor Reserve_DDR)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 4,
+                        },
+                        "AmmoBoxIndex": 3,
+                        "HandheldEquipmentKey": "'WeaponAlternative_4'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_4'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_4'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_4"],
+                    },
+                },
+            },
+            # Donor Salves (MP_DDR vanilla): [PM_Skorpion=80]. Target: [22, 11, 18, 6].
+            "Salves": {
+                "PM_Skorpion": 22,
+                "FM_KMS_72": 11,
+                "SAW_lMG_K_7_62mm": 18,
+                "RocketInf_RPG7": 4,
+                "insert": [
+                    (1, 11),
+                    (2, 18),
+                    (3, 6),
+                ],
+            },
+        },
+        "TransportedSoldier": "MP_mech_DDR",
+        "armor": "Infantry_armor_reference",
+        "UnitRole": "infantry",
+        "SpecialtiesList": [
+            "_mp",
+            "_security",
+            "infantry_equip_medium",
+        ],
+        "MenuIconTexture": "Texture_RTS_H_Infantry",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Inf",
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [0, 9, 7, 0],
+        "max_speed": 26,
+        "UpgradeFromUnit": "MP_Combat_DDR",
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
+                   'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection',
+                   'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/UseCapacite',
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": True,
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": False,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "is_transport": False,
+        "Faction": "PACT",
+        "Nation": "DDR",
+        "alternatives_count": 8,
+        "selector_tactic": "08_08",
+    },
+
     ("HvyScout_DDR", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "6719c924-baf9-4504-8e50-a4b08ab7c70c",
         "InfantrySquadModuleGUID": "4bc13e62-8ad3-4663-971d-0a16ce03251b",

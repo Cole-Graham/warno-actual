@@ -599,16 +599,88 @@ uk_unit_edits = {
     },
 
     "RMP_UK": {
-        "CommandPoints": 15,
+        "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
-        "strength": 5,
+        "strength": 8,
         "availability": [0, 12, 9, 0],
         "max_speed": 26,
         "WeaponDescriptor": {
+            # Mixed-model loadout: 5 RMP_UK + 3 Territorial_UK
+            # Vanilla turrets: T0=PM_Sterling, T1=FM_L1A1_SLR, T2=MMG_inf_L7A2_7_62mm
+            # Target turrets:  T0=FM_L1A1_SLR(x3), T1=PM_Sterling(x3), T2=MMG_inf_L7A2_7_62mm(x2 animate=False), T3=RocketInf_M72A3_LAW_66mm
+            "turrets": {
+                # Drop the vanilla SLR turret so we can re-insert it at index 0
+                "remove": [1],
+            },
             "equipmentchanges": {
                 "quantity": {
-                    "PM_Sterling": 2,
+                    "FM_L1A1_SLR": 3,
+                    "PM_Sterling": 3,
+                    "MMG_inf_L7A2_7_62mm": 2,
                 },
+                "animate": {
+                    "MMG_inf_L7A2_7_62mm": False,
+                },
+                "insert": [
+                    (0, "FM_L1A1_SLR"),
+                    (3, "RocketInf_M72A3_LAW_66mm"),
+                ],
+                "insert_edits": {
+                    0: {  # SLR (newly inserted)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 1,
+                        },
+                        "AmmoBoxIndex": 0,
+                        "HandheldEquipmentKey": "'WeaponAlternative_1'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_1'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_1'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_1"],
+                    },
+                    1: {  # Sterling (was vanilla T0, now bumped to T1 after insert at 0)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 2,
+                        },
+                        "AmmoBoxIndex": 1,
+                        "HandheldEquipmentKey": "'WeaponAlternative_2'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_2"],
+                    },
+                    2: {  # MMG (was vanilla T2, became T1 after remove, became T2 after insert at 0)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 3,
+                        },
+                        "AmmoBoxIndex": 2,
+                        "HandheldEquipmentKey": "'WeaponAlternative_3'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
+                    },
+                    3: {  # LAW (newly inserted)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 4,
+                        },
+                        "AmmoBoxIndex": 3,
+                        "HandheldEquipmentKey": "'WeaponAlternative_4'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_4'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_4'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_4"],
+                    },
+                },
+            },
+            # Vanilla Salves: [Sterling=20, SLR=90, MMG=92]. Target: [SLR=11, Sterling=22, MMG=36, LAW=4].
+            # Per-ammo entries write to vanilla positions and trip the apply_default_salves skip
+            # guard so it doesn't re-apply Sterling/MMG defaults at the now-stale vanilla indices.
+            # ``remove`` drops the vanilla SLR salve before the inserts repopulate the slots.
+            "Salves": {
+                "PM_Sterling": 22,
+                "FM_L1A1_SLR": 11,
+                "MMG_inf_L7A2_7_62mm": 36,
+                "insert": [
+                    (0, 11),
+                    (3, 4),
+                ],
+                "remove": ["FM_L1A1_SLR"],
             },
         },
         "SpecialtiesList": {
@@ -1716,7 +1788,7 @@ uk_unit_edits = {
             "Salves": {
                 "MMG_L37A2_7_62mm": 96,
                 "MMG_L8A2_7_62mm": 96,
-                "HMG_12_7_mm_M2HB_CTRL": 55,
+                "HMG_12_7_mm_M2HB": 55,
             },
         },
     },

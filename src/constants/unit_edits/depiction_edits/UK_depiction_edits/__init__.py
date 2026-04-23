@@ -7,6 +7,7 @@ from .Guards_CMD_UK import guards_cmd_uk
 from .Pathfinders_UK import pathfinders_uk
 from .Rifles_Berlin_UK import rifles_berlin_uk
 from .Rifles_Gurkhas_CMD_UK import rifles_gurkhas_cmd_uk
+from .RMP_UK import rmp_uk
 from .Rover_101FC_supply_UK import rover_101fc_supply_uk
 from .Sniper_Guards_UK import sniper_guards_uk
 
@@ -19,6 +20,7 @@ __all__ = [
     "pathfinders_uk",
     "rifles_berlin_uk",
     "rifles_gurkhas_cmd_uk",
+    "rmp_uk",
     "rover_101fc_supply_uk",
     "sniper_guards_uk",
 ]

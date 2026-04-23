@@ -231,7 +231,7 @@ uk_new_divs = {
         "summary_text": ("UK mechanized and motorized division.", "SUMUKMECT"),
         "history_text": ("UK Mechanized / Motorized division.", "HISUKMECT"),
         "activation_points": 85,
-        "standout_units": ["Airmobile_MILAN_UK", "Security_UK", "FV4201_Chieftain_Mk6_UK"],
+        "standout_units": ["Airmobile_MILAN_UK", "Ferret_Swingfire_UK", "Jaguar_overwing_UK"],
         "division_rules": [
             UK_global_newdivisionrules,
             UK_mechanized_newdivisionrules,

@@ -22,6 +22,7 @@ from .M2_Bradley_BSV_US import m2_bradley_bsv_us
 from .M3A1_Bradley_CFV_US import m3a1_bradley_cfv_us
 from .M3A2_Bradley_CFV_US import m3a2_bradley_cfv_us
 from .M35_supply_US import m35_supply_us
+from .MP_US import mp_us
 from .NatGuard_Dragon_US import natguard_dragon_us
 from .Navy_SEAL_US import navy_seal_us
 from .Pathfinder_NG_US import pathfinder_ng_us
@@ -58,6 +59,7 @@ __all__ = [
     "m3a1_bradley_cfv_us",
     "m3a2_bradley_cfv_us",
     "m35_supply_us",
+    "mp_us",
     "natguard_dragon_us",
     "navy_seal_us",
     "pathfinder_ng_us",

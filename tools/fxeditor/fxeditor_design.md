@@ -2,6 +2,8 @@
 
 This document describes the architecture, spatial taxonomy, and scaling pipeline of the **fxeditor** (`tools/fxeditor`). It is the canonical reference for how the tool analyses, classifies, and scales WARNO VFX NDF files.
 
+**Dependencies:** this tool uses **PySide6** (Qt). It is not part of the default `pip install -r requirements.txt` install; add the repo’s **`optional`** extra from the project root: `python -m pip install -e ".[optional]"` (see `pyproject.toml`). **dpm_visualizer** does not need that extra.
+
 For the raw NDF file structure, see [warno_vfx_file_structure.md](./warno_vfx_file_structure.md).
 
 ---
@@ -23,7 +25,7 @@ The fxeditor generates **scaled variants** of cluster/impact VFX NDF files for W
 ```
 tools/fxeditor/
 ├── __main__.py              Entry point (python -m tools.fxeditor)
-├── vfx_editor.yaml          Calibration config
+├── fxeditor.yaml            Calibration config
 ├── fxeditor_design.md       This document
 ├── warno_vfx_file_structure.md  NDF structure reference
 │
@@ -333,7 +335,7 @@ gameplay_xy = ndf_xy × (reference_gameplay_radius_m / anchor_max_ndf_radius)
 
 ### 9.1 Configuration
 
-Stored in `vfx_editor.yaml`:
+Stored in `fxeditor.yaml`:
 
 ```yaml
 reference_gameplay_radius_m: 60.0
@@ -364,7 +366,7 @@ Default template: `{rootname}_{radiusinmeters}m_{n}.ndf`
 
 ## 11. State Persistence
 
-All UI fields and settings are saved to `%LOCALAPPDATA%/warno_vfx_editor/state.json`:
+All UI fields and settings are saved to `%LOCALAPPDATA%/warno_fxeditor/state.json`:
 
 - Window geometry and splitter positions
 - Source file paths, source radius, root name, target radii text

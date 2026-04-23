@@ -336,7 +336,7 @@ sov_new_divs = {
         "summary_text": ("Soviet armored and mechanized division.", "YUNOCKBRKB"),
         "history_text": ("USSR Armored / Mechanized division.", "CBRPILOMXM"),
         "activation_points": 85,
-        "standout_units": ["T80U_CMD_SOV", "BMP_2AG_SOV", "2S7M_Malka_SOV"],
+        "standout_units": ["MTLB_Shturm_Ataka_SOV", "BMP_2AG_SOV", "2S7M_Malka_SOV"],
         "division_rules": [
             SOV_armored_newdivisionrules,
             SOV_global_newdivisionrules,

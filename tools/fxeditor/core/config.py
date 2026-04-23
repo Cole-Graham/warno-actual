@@ -1,4 +1,4 @@
-"""Load calibration values from vfx_editor.yaml."""
+"""Load calibration values from tools/fxeditor/fxeditor.yaml."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ from typing import Optional
 
 import re
 
-_DEFAULT_YAML = Path(__file__).resolve().parent.parent / "vfx_editor.yaml"
+_DEFAULT_YAML = Path(__file__).resolve().parent.parent / "fxeditor.yaml"
 
 
 @dataclass

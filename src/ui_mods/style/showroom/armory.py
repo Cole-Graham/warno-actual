@@ -60,9 +60,9 @@ def _edit_showroom_top_filters_bar(source_path) -> None:
     showroom_top_filters_bar = source_path.by_namespace("ShowroomTopFiltersBarContainer")
     elements = showroom_top_filters_bar.v.by_m("Elements")
     
-    first_margin =  "FirstMargin = TRTTILength(Magnifiable = 5.0)"
+    first_margin =  "FirstMargin = TRTTILength(Magnifiable = 1.0)"
     inter_item_margin = "InterItemMargin = TRTTILength(Magnifiable = 1.0)"
-    last_margin = "LastMargin = TRTTILength(Magnifiable = 5.0)"
+    last_margin = "LastMargin = TRTTILength(Magnifiable = 1.0)"
     
     showroom_top_filters_bar.v.insert(2, last_margin)
     showroom_top_filters_bar.v.insert(2, inter_item_margin)

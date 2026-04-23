@@ -295,6 +295,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "Arme": {
                 "Index": 26,
             },
+            "parent_membr": {
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_hellfire_wa'",
+            },
         },
         "SupplyCost": 115.0,
         "WeaponDescriptor": {
@@ -385,7 +388,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "ProjectileSpeedGRU": 466,
-                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_tow_wa'",
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_tow2a_wa'",
             }
         },
         "SupplyCost": 80.0,
@@ -402,7 +405,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "ProjectileSpeedGRU": 466,
                 "TimeBetweenTwoSalvos": 30.0,
-                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_tow_wa'",
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_tow2a_wa'",
             },
         },
         "SupplyCost": 80.0,

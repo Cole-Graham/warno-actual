@@ -5,6 +5,7 @@ build_config:
   gameplay_version: "?"
   ui_version: "?"
   author: "?"
+  co-developers: "?"
 
 # Data configuration
 data_config:

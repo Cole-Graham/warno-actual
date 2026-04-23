@@ -9,6 +9,7 @@ from .constantes import (
 )
 from .gfx import (
     add_unit_meshes,
+    edit_gameplay_gfx_templates_templatedepiction,
 )
 from .terrains import (
     edit_gameplay_terrains,
@@ -27,6 +28,7 @@ from .unit import (
 
 __all__ = [
     'add_unit_meshes',
+    'edit_gameplay_gfx_templates_templatedepiction',
     'edit_gameplay_constantes_gdconstants',
     'edit_gameplay_constantes_hitrollconstants',
     'edit_gameplay_constantes_iastratweaponconstantes',

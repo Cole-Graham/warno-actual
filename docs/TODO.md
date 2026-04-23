@@ -1,6 +1,9 @@
  checkboxes for completed items: - [x], - [ ]
+ Note: don't remove complete items until patch is released, can be helpful for writing patch notes
 
  # ------------------------------------ Lat ------------------------------------
+ # v27.x
+ - [ ]
  # v27
 - [x] Regenerate maps/scenarios (could have complications, Eugen broke them again)
 - [x] Validate that when laser guided bombs miss, they miss by a lot
@@ -10,10 +13,9 @@
 - [x] Revert vanilla shock range buff
 - [x] Add relative speed indicators to ATGMs
 - [ ] Complete quality-check on availability/vet/transport overrides/rule exceptions for all nations/specs
-- [ ] ECM pass (+5% on other western nations, and possibly some later-generation redfor planes)
-- [ ] Create new weapon trait to explain SEAD missiles that have reflex fire on even when you right click a target, in order to enable the SEAD missiles to still fire when you right click a tank.
-- [ ] Consolidate 4-5 strength police infantry into bigger mixed squads of MPs + 2-3 common reservists with AT
-- [ ] Fix M60E1 MMG ammo on reservists
+- [x] Create new weapon trait to explain SEAD missiles that have reflex fire on even when you right click a target, in order to enable the SEAD missiles to still fire when you right click a tank.
+- [x] Consolidate 4-5 strength police infantry wihout anti-tank into bigger mixed squads of MPs + 2-3 common reservists with AT
+- [x] Fix M60E1 MMG ammo on reservists
 - [x] Remodel Kub M3 and M1
 - [x] Polish Mi-24D Desant is transport but is in helo tab and not used as a transport?
 - [x] Buff all Mi-24 helicopters to 10 HP
@@ -24,6 +26,7 @@ at lower availability
 - [ ] change supply traits to be more coherent with gameplay use-cases
 - [x] Give ASFs unique stress effect without accuracy modifier, 
 or just remove stress accuracy modifier from planes entirely
+- [ ] quick test of 3 second salvo reload on tomcat/mig-31
 - [ ] write patch notes
 
 # Future patch:
@@ -46,10 +49,17 @@ of adding it to all of them.
 
 
 # ------------------------------------ 12 ------------------------------------
+# v27.x
+- [ ]
+
+# Future patch:
 this unit doesn't have a LAW??? 
 - [ ] WARNING - Fallschirmjager_FlaseFlag_Demo_DDR: weapon 'RocketInf_M72_LAW_66mm' not found in any turret for replacement
 - [ ] Add non-USSR/US LANDJUT units
 - [ ] US/USSR/POL marine
 
 IDK who: 
-- [ ] Rework Black Tulip?
+- [ ] Rework Black Tulip? 
+
+# Low priority/maybe:
+- [ ]

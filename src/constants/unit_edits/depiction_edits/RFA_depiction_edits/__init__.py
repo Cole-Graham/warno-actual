@@ -1,6 +1,7 @@
 """RFA depiction edits."""
 
 from .Engineers_Geb_RFA_RFA import engineers_geb_rfa_rfa
+from .Feldgendarmerie_RFA import feldgendarmerie_rfa
 from .Gebirgsjager_JagdKdo_RFA import gebirgsjager_jagdkdo_rfa
 from .Gebirgsjager_PzF3_RFA import gebirgsjager_pzf3_rfa
 from .Panzergrenadier_APC_RFA import panzergrenadier_apc_rfa
@@ -9,6 +10,7 @@ from .Unimog_S_404_RFA import unimog_s_404_rfa
 
 __all__ = [
     "engineers_geb_rfa_rfa",
+    "feldgendarmerie_rfa",
     "gebirgsjager_jagdkdo_rfa",
     "gebirgsjager_pzf3_rfa",
     "panzergrenadier_apc_rfa",

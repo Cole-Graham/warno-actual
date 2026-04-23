@@ -17,6 +17,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 739,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_hot_wa'",
             },
         },
         "SupplyCost": 115.0,
@@ -35,6 +36,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 739,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_hot_wa'",
             },
         },
         "SupplyCost": 90.0,
@@ -128,6 +130,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 # "Caliber": ("6.1kg HYBRID", "SVJNWQPYKO"),
                 "ProjectileSpeedGRU": 466,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_tow2a_wa'",
             }
         },
         "SupplyCost": 100.0,
@@ -143,6 +146,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "ProjectileSpeedGRU": 466,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_tow2a_wa'",
             }
         },
         "SupplyCost": 80.0,
@@ -158,6 +162,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "ProjectileSpeedGRU": 466,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_tow2a_wa'",
             }
         },
         "SupplyCost": 90.0,
@@ -176,6 +181,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 466,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_tow_wa'",
             }
         },
         "SupplyCost": 60.0,
@@ -224,6 +230,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TypeCategoryName": "'" + "JTOYRAARTS" + "'",
                 "WeaponDescriptionToken": "'" + "CRYXRQVTBJ" + "'",
                 "MinMaxCategory": "MinMax_ATGM",
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_hellfire_wa'",
             },
         },
         "SupplyCost": 115.0,
@@ -243,6 +250,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeGRU": 2625,
                 "ProjectileSpeedGRU": 350,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_falanga_wa'",
             },
         },
         "SupplyCost": 75.0,
@@ -262,6 +270,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeGRU": 2450,
                 "ProjectileSpeedGRU": 311,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_malyutka_wa'",
             },
         },
         "SupplyCost": 60.0,
@@ -277,6 +286,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "ProjectileSpeedGRU": 622,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_kokon_wa'",
             },
         },
         "SupplyCost": 80.0,
@@ -295,6 +305,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 800,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_ataka_wa'",
             },
         },
         "SupplyCost": 80.0,
@@ -317,6 +328,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "ProjectileSpeedGRU": 2800,
                 "MaxAccelerationGRU": 1400,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_vikhr_wa'",
             },
         },
         "SupplyCost": 100.0,

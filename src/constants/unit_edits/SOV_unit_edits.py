@@ -1590,7 +1590,7 @@ sov_unit_edits = {
 
     "MP_SOV": {
         "armor": "Infantry_armor_reference",
-        "CommandPoints": 15,
+        "CommandPoints": 35,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -1598,12 +1598,53 @@ sov_unit_edits = {
         },
         "availability": [0, 12, 9, 0],
         "max_speed": 26,
+        "strength": 8,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
         "WeaponDescriptor": {
+            # Mixed-model loadout: 5 MP_SOV + 3 Reserve_SOV
+            # Vanilla turrets: T0=FM_AK_74 (qty=4)
+            # Target turrets:  T0=FM_AK_74(x5), T1=SAW_RPK_74_5_56mm(x2 animate=True),
+            #                  T2=RocketInf_RPG7(x1 animate=True)
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_AK_74": 6,
+                },
+                "insert": [
+                    (1, "SAW_RPK_74_5_56mm"),
+                    (2, "RocketInf_RPG7"),
+                ],
+                "insert_edits": {
+                    1: {  # SAW_RPK (newly inserted, donor Reserve_SOV)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 2,
+                        },
+                        "AmmoBoxIndex": 1,
+                        "HandheldEquipmentKey": "'WeaponAlternative_2'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_2"],
+                    },
+                    2: {  # RocketInf_RPG7 (newly inserted, donor Reserve_SOV)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 3,
+                        },
+                        "AmmoBoxIndex": 2,
+                        "HandheldEquipmentKey": "'WeaponAlternative_3'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
+                    },
+                },
+            },
+            # Vanilla Salves: [FM_AK_74=104]. Target: [11, 18, 4].
             "Salves": {
                 "FM_AK_74": 11,
+                "insert": [
+                    (1, 18),
+                    (2, 4),
+                ],
             },
         },
     },

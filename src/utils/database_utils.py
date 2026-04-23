@@ -86,7 +86,8 @@ def verify_database(config: Dict) -> bool:
         # First check master metadata (source of truth)
         master_meta_path = db_path / "master_db_metadata.json"
         if not master_meta_path.exists():
-            logger.error("Master database metadata not found")
+            # .info because we don't want these included in the error/warning counts
+            logger.info("ERROR: Master database metadata not found")
             return False
             
         with open(master_meta_path) as f:
@@ -95,7 +96,8 @@ def verify_database(config: Dict) -> bool:
         # Check local metadata
         local_meta_path = db_path / "db_metadata.json"
         if not local_meta_path.exists():
-            logger.warning("Local database metadata not found - rebuild recommended")
+            # .info because we don't want these included in the error/warning counts
+            logger.info("WARNING: Local database metadata not found - rebuild recommended")
             return False
             
         with open(local_meta_path) as f:
@@ -103,7 +105,8 @@ def verify_database(config: Dict) -> bool:
             
         # Just compare the checksums from the metadata files
         if local_metadata.get("checksum") != master_metadata.get("checksum"):
-            logger.warning("Database checksum mismatch with master - rebuild recommended")
+            # .info because we don't want these included in the error/warning counts
+            logger.info("WARNING: Database checksum mismatch with master - rebuild recommended")
             return False
             
         return True

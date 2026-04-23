@@ -103,7 +103,7 @@ us_new_divs = {
         "summary_text": ("USA airborne and marine division.", "SFQQRMONEK"),
         "history_text": ("USA Airborne / Marine division.", "MHNXKTJJJR"),
         "activation_points": 85,
-        "standout_units": ["Airborne_US", "M2A1_Bradley_IFV_US", "F4_Wild_Weasel_2_US"],
+        "standout_units": ["Airborne_US", "Navy_SEAL_US", "F14A_Tomcat_AA2_US"],
         "division_rules": [
             US_airborne_newdivisionrules,
             US_global_newdivisionrules,
@@ -151,7 +151,7 @@ us_new_divs = {
         "summary_text": ("USA airborne and motorized division.", "SUMUSAMOT"),
         "history_text": ("USA Airborne / Motorized division.", "HISUSAMOT"),
         "activation_points": 85,
-        "standout_units": ["LightRifles_RCL_US", "LAV_25_M1047_US_US", "FA16_CAS_US"],
+        "standout_units": ["LightRifles_AT4_US", "LAV_25_M1047_US_US", "FA16_CAS_US"],
         "division_rules": [
             US_airborne_newdivisionrules,
             US_global_newdivisionrules,
@@ -201,7 +201,7 @@ us_new_divs = {
         "summary_text": ("USA armored and marine division.", "XKWVDSXOPO"),
         "history_text": ("USA Armored / Marine division.", "KCHFBUOXGG"),
         "activation_points": 85,
-        "standout_units": ["M1A1_Abrams_CMD_US", "M2A1_Bradley_IFV_US", "F117_Nighthawk_US"],
+        "standout_units": ["M1A1HA_Abrams_US", "Navy_SEAL_US", "F14A_Tomcat_AA2_US"],
         "division_rules": [
             US_armored_newdivisionrules,
             US_global_newdivisionrules,
@@ -276,7 +276,7 @@ us_new_divs = {
         "summary_text": ("USA marine and mechanized division.", "FTBPOZFUME"),
         "history_text": ("USA Marine / Mechanized division.", "BTFBHXCGFY"),
         "activation_points": 85,
-        "standout_units": ["M1A1_Abrams_CMD_US", "M2A1_Bradley_IFV_US", "F117_Nighthawk_US"],
+        "standout_units": ["Rifles_half_Cav_CMD_US", "M2A2_BRAT_US", "F14A_Tomcat_AA2_US"],
         "division_rules": [
             US_marine_newdivisionrules,
             US_global_newdivisionrules,
@@ -295,7 +295,7 @@ us_new_divs = {
         "summary_text": ("USA marine and motorized division.", "ZRMTDDSGCC"),
         "history_text": ("USA Marine / Motorized division.", "BQFFOTDNFF"),
         "activation_points": 85,
-        "standout_units": ["M1A1_Abrams_CMD_US", "M2A1_Bradley_IFV_US", "F117_Nighthawk_US"],
+        "standout_units": ["DeltaForce_US", "CUCV_Hellfire_US", "FA16_CAS_US", "F14A_Tomcat_AA2_US"],
         "division_rules": [
             US_marine_newdivisionrules,
             US_global_newdivisionrules,

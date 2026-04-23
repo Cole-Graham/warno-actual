@@ -103,16 +103,17 @@ usa_unit_edits = {
         "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
-    "AAVC_7A1_CMD_USMC_US": {
-        "CommandPoints": 150,
-        "availability": [0, 3, 0, 0],
-        "Divisions": {
-            "default": {
-                "cards": 1,
-            },
-        },
-        "TagSet": {"add_tags": ['"CMD_Unit"']},
-    },
+    # doesn't exist anymore?
+    # "AAVC_7A1_CMD_USMC_US": {
+    #     "CommandPoints": 150,
+    #     "availability": [0, 3, 0, 0],
+    #     "Divisions": {
+    #         "default": {
+    #             "cards": 1,
+    #         },
+    #     },
+    #     "TagSet": {"add_tags": ['"CMD_Unit"']},
+    # },
 
     "M2A1_Bradley_Leader_US": {
         "CommandPoints": 195,
@@ -326,6 +327,9 @@ usa_unit_edits = {
                         "depiction_baked_in": False,
                     },
                 },
+            },
+            "Salves": {
+                "MMG_M60E1_7_62mm": 45,
             },
         },
         "TagSet": {"add_tags": ['"CMD_Unit"']},
@@ -954,6 +958,9 @@ usa_unit_edits = {
                     },
                 },
             },
+            "Salves": {
+                "MMG_M60E1_7_62mm": 45,
+            },
         },
     },
 
@@ -1099,6 +1106,7 @@ usa_unit_edits = {
                 },
             },
             "Salves": {
+                "MMG_M60E1_7_62mm": 45,
                 "flamethrower_M2": 15,
             },
         },
@@ -1235,22 +1243,76 @@ usa_unit_edits = {
         "GameName": {
             "display": "MP PATROL",
         },
-        "CommandPoints": 20,
+        "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "availability": [0, 12, 9, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
+        "strength": 8,
+        "UpgradeFromUnit": "MP_RCL_US",
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "quantity": {
-                    "FM_M16": 3,
-                    "MMG_WA_M60E3_7_62mm": 2,
+                    "FM_M16": 4,
+                    "FM_M16A1": 3,
+                    "MMG_WA_M60E3_7_62mm": 1,
+                },
+                "insert": [
+                    (0, "FM_M16A1"),
+                    (3, "RocketInf_M72A3_LAW_66mm"),
+                ],
+                "insert_edits": {
+                    0: {  # M16A1 (newly inserted)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 1,
+                        },
+                        "AmmoBoxIndex": 0,
+                        "HandheldEquipmentKey": "'WeaponAlternative_1'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_1'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_1'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_1"],
+                    },
+                    1: {  # M16 (bumped from vanilla 0)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 2,
+                        },
+                        "AmmoBoxIndex": 1,
+                        "HandheldEquipmentKey": "'WeaponAlternative_2'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_2"],
+                    },
+                    2: {  # MMG (bumped from vanilla 1)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 3,
+                        },
+                        "AmmoBoxIndex": 2,
+                        "HandheldEquipmentKey": "'WeaponAlternative_3'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
+                    },
+                    3: {  # LAW (newly inserted)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 4,
+                        },
+                        "AmmoBoxIndex": 3,
+                        "HandheldEquipmentKey": "'WeaponAlternative_4'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_4'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_4'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_4"],
+                    },
                 },
             },
             "Salves": {
                 "FM_M16": 11,
+                "MMG_WA_M60E3_7_62mm": 45,
+                "insert": [
+                    (0, 11),
+                    (3, 4),
+                ],
             },
         },
     },
@@ -1290,6 +1352,7 @@ usa_unit_edits = {
                 "RocketInf_M67_RCL_90mm": 8,
             },
         },
+        "UpgradeFromUnit": "MP_CMD_US",
     },
     
     "MP_Combat_USAF_US": { # USAF SECURITY
@@ -2011,6 +2074,9 @@ usa_unit_edits = {
                     },
                 },
             },
+            "Salves": {
+                "MMG_M60E1_7_62mm": 45,
+            },
         },
     },
 
@@ -2036,6 +2102,7 @@ usa_unit_edits = {
                 },
             },
             "Salves": {
+                "MMG_M60E1_7_62mm": 45,
                 "M47_DRAGON": 4,
             },
         }
@@ -2061,6 +2128,9 @@ usa_unit_edits = {
                         "depiction_baked_in": False,
                     },
                 },
+            },
+            "Salves": {
+                "MMG_M60E1_7_62mm": 45,
             },
         },
     },
@@ -2092,6 +2162,9 @@ usa_unit_edits = {
                     "FM_M16A1": 7,
                     "MMG_M60E1_7_62mm": 2,
                 },
+            },
+            "Salves": {
+                "MMG_M60E1_7_62mm": 45,
             },
         },
     },
@@ -2133,6 +2206,9 @@ usa_unit_edits = {
                     "FM_M16A1": 7,
                     "MMG_M60E1_7_62mm": 2,
                 },
+            },
+            "Salves": {
+                "MMG_M60E1_7_62mm": 45,
             },
         },
     },
@@ -4300,6 +4376,9 @@ usa_unit_edits = {
                     },
                 },
             },
+            "Salves": {
+                "MMG_M60E1_7_62mm": 45,
+            },
         },
     },
 
@@ -4327,6 +4406,9 @@ usa_unit_edits = {
             "quantity": {
                 "FM_M16": 6,
                 "MMG_M60E1_7_62mm": 2,
+            },
+            "Salves": {
+                "MMG_M60E1_7_62mm": 45,
             },
         },
         "UpgradeFromUnit": "Airborne_Scout_US",

@@ -31,17 +31,45 @@
         "black-formatter.importStrategy": "fromEnvironment",
         "isort.importStrategy": "fromEnvironment",
         "isort.check": true,
-        "aicursor.model": "gpt-3.5-turbo",
         "explorer.compactFolders": true,
         "files.autoSave": "afterDelay",
-        // Disable Black formatter
-        "black-formatter.enabled": false,
-        "python.formatting.provider": "none",
         "[yaml]": {
             "editor.autoIndent": "full"
         },
         "[dockercompose]": {
             "editor.autoIndent": "full"
         },
+        "python.terminal.activateEnvironment": true,
+        "terminal.integrated.persistentSessionReviveProcess": "never",
+        // Shell-specific venv profiles: pick one as default below, or set terminal.integrated.defaultProfile.windows in User settings to the shell you use most.
+        "terminal.integrated.profiles.windows": {
+            "PowerShell (project .venv)": {
+                "source": "PowerShell",
+                "icon": "terminal-powershell",
+                "args": [
+                    "-NoExit",
+                    "-Command",
+                    "Set-Location -LiteralPath '${workspaceFolder}'; if (Test-Path -LiteralPath '.\\.venv\\Scripts\\Activate.ps1') { . '.\\.venv\\Scripts\\Activate.ps1' }",
+                ],
+            },
+            "Command Prompt (project .venv)": {
+                "path": "C:\\Windows\\System32\\cmd.exe",
+                "icon": "terminal-cmd",
+                "args": [
+                    "/K",
+                    "cd /d \"${workspaceFolder}\" & if exist .venv\\Scripts\\activate.bat call .venv\\Scripts\\activate.bat",
+                ],
+            },
+            "Git Bash (project .venv)": {
+                "path": "${env:ProgramFiles}\\Git\\bin\\bash.exe",
+                "icon": "terminal-bash",
+                "args": [
+                    "-l",
+                    "-c",
+                    "cd \"${workspaceFolder}\" && [ -f .venv/Scripts/activate ] && . .venv/Scripts/activate; exec bash -l -i",
+                ],
+            },
+        },
+        "terminal.integrated.defaultProfile.windows": "PowerShell (project .venv)",
     },
 }

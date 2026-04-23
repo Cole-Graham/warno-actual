@@ -907,6 +907,7 @@ rda_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
+        "UpgradeFromUnit": "MP_mech_DDR",
     },
 
     "Security_VPB_DDR": {
@@ -920,16 +921,44 @@ rda_unit_edits = {
     },
 
     "MP_DDR": {
-        "CommandPoints": 15,
+        "GameName": {
+            "display": "MILITÄRSTREIFEIN (K.d.A.)",
+        },
+        "CommandPoints": 20,
         "armor": "Infantry_armor_reference",
         "availability": [0, 12, 9, 0],
         "max_speed": 26,
         "strength": 5,
         "WeaponDescriptor": {
+            # Mixed-model strength-5 squad: 4 MP_DDR + 1 KdA_DDR (RPG-2 gunner).
+            # Vanilla turrets: T0=PM_Skorpion (qty=4)
+            # Target turrets:  T0=PM_Skorpion(x4), T1=RocketInf_RPG2(x1 animate=True)
             "equipmentchanges": {
                 "quantity": {
                     "PM_Skorpion": 5,
                 },
+                "insert": [
+                    (1, "RocketInf_RPG2"),
+                ],
+                "insert_edits": {
+                    1: {  # RocketInf_RPG2 (newly inserted, donor KdA_DDR)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 2,
+                        },
+                        "AmmoBoxIndex": 1,
+                        "HandheldEquipmentKey": "'WeaponAlternative_2'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_2"],
+                    },
+                },
+            },
+            # Vanilla Salves: [PM_Skorpion=80]. Target: [22, 6].
+            "Salves": {
+                "PM_Skorpion": 22,
+                "insert": [
+                    (1, 6),
+                ],
             },
         },
         "SpecialtiesList": {

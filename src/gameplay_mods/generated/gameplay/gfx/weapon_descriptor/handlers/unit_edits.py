@@ -841,21 +841,9 @@ def _apply_salvo_changes(weapon_descr: Any, wd_edits: Dict, weapon_descr_data: D
         else:
             logger.error(f"{weapon} ammo not found in {wd_name}")
 
-    # Insert new salvos at specific indices (in reverse order to maintain correct positions)
-    if "insert" in salve_edits:
-        insert_list = salve_edits["insert"]
-        # Sort by index in descending order to insert highest indices first
-        sorted_insert_list = sorted(insert_list, key=lambda x: x[0], reverse=True)
-        for addition in sorted_insert_list:
-            index, salvo = addition[0], addition[1]
-            winchester = "False" if len(addition) < 3 else addition[2]
-            logger.debug(f"Inserting salvo {salvo} at index {index}")
-            salves_list.v.insert(index, str(salvo))
-            if salves_winchester:
-                logger.debug(f"Inserting salvo {salvo} at index {index}")
-                salves_winchester.v.insert(index, winchester)
-
-    # Remove salvos for specific weapons
+    # Remove salvos BEFORE inserting so the weapon_indices lookup still resolves
+    # against vanilla positions (inserts would otherwise shift the slot we're trying
+    # to drop and the remove would target the wrong entry).
     if "remove" in salve_edits:
         for weapon in salve_edits["remove"]:
             if weapon in weapon_indices:
@@ -865,6 +853,24 @@ def _apply_salvo_changes(weapon_descr: Any, wd_edits: Dict, weapon_descr_data: D
                     if salves_winchester:
                         logger.debug(f"Removing index {index} of SalvoIsMainSalvo")
                         salves_winchester.v.remove(index)
+
+    # Insert new salvos at the user-specified final positions. We sort ASCENDING so
+    # each insert lands at the exact index the user wrote: earlier inserts naturally
+    # shift later ones into place. Descending order is broken when the vanilla Salves
+    # list is shorter than the target indices (e.g. Feldgendarmerie_RFA: vanilla [80],
+    # target [14, 11, 45, 4]) because ``list.insert`` clamps past-end indices to the
+    # tail, which then scrambles the relative order of subsequent past-end inserts.
+    if "insert" in salve_edits:
+        insert_list = salve_edits["insert"]
+        sorted_insert_list = sorted(insert_list, key=lambda x: x[0])
+        for addition in sorted_insert_list:
+            index, salvo = addition[0], addition[1]
+            winchester = "False" if len(addition) < 3 else addition[2]
+            logger.debug(f"Inserting salvo {salvo} at index {index}")
+            salves_list.v.insert(index, str(salvo))
+            if salves_winchester:
+                logger.debug(f"Inserting salvo {salvo} at index {index}")
+                salves_winchester.v.insert(index, winchester)
 
 
 def _apply_equipment_changes(

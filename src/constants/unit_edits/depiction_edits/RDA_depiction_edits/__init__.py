@@ -12,6 +12,7 @@ from .Luftsturmjager_DDR import luftsturmjager_ddr
 from .Luftsturmjager_Metis_DDR import luftsturmjager_metis_ddr
 from .Mi_24P_s8_AT_DDR import mi_24p_s8_at_ddr
 from .Mi_24P_s8_AT2_DDR import mi_24p_s8_at2_ddr
+from .MP_DDR import mp_ddr
 from .Scout_FJ_DDR import scout_fj_ddr
 from .Sniper_FJ_DDR import sniper_fj_ddr
 from .Volkspolizei_CMD_DDR import volkspolizei_cmd_ddr
@@ -30,6 +31,7 @@ __all__ = [
     "luftsturmjager_metis_ddr",
     "mi_24p_s8_at_ddr",
     "mi_24p_s8_at2_ddr",
+    "mp_ddr",
     "scout_fj_ddr",
     "sniper_fj_ddr",
     "volkspolizei_cmd_ddr",

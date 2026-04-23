@@ -42,6 +42,7 @@ from .RDA_depiction_edits import (
     luftsturmjager_metis_ddr,
     mi_24p_s8_at_ddr,
     mi_24p_s8_at2_ddr,
+    mp_ddr,
     scout_fj_ddr,
     sniper_fj_ddr,
     volkspolizei_cmd_ddr,
@@ -49,6 +50,7 @@ from .RDA_depiction_edits import (
 )
 from .RFA_depiction_edits import (
     engineers_geb_rfa_rfa,
+    feldgendarmerie_rfa,
     gebirgsjager_jagdkdo_rfa,
     gebirgsjager_pzf3_rfa,
     panzergrenadier_apc_rfa,
@@ -66,6 +68,7 @@ from .SOV_depiction_edits import (
     mortier_2b9_vasilek_sov,
     motrifles_btr_sov,
     motrifles_btr_ttsko_sov,
+    mp_sov,
     mtlb_vasilek_sov,
     naval_rifle_cmd_sov,
     sniper_spetsnaz_sov,
@@ -81,6 +84,7 @@ from .UK_depiction_edits import (
     pathfinders_uk,
     rifles_berlin_uk,
     rifles_gurkhas_cmd_uk,
+    rmp_uk,
     rover_101fc_supply_uk,
     sniper_guards_uk,
 )
@@ -106,6 +110,7 @@ from .USA_depiction_edits import (
     m3a1_bradley_cfv_us,
     m3a2_bradley_cfv_us,
     m35_supply_us,
+    mp_us,
     natguard_dragon_us,
     navy_seal_us,
     pathfinder_ng_us,
@@ -162,6 +167,7 @@ __all__ = [
     "luftsturmjager_metis_ddr",
     "mi_24p_s8_at_ddr",
     "mi_24p_s8_at2_ddr",
+    "mp_ddr",
     "scout_fj_ddr",
     "sniper_fj_ddr",
     "volkspolizei_cmd_ddr",
@@ -169,6 +175,7 @@ __all__ = [
     
     # RFA
     "engineers_geb_rfa_rfa",
+    "feldgendarmerie_rfa",
     "gebirgsjager_jagdkdo_rfa",
     "gebirgsjager_pzf3_rfa",
     "panzergrenadier_apc_rfa",
@@ -186,6 +193,7 @@ __all__ = [
     "mortier_2b9_vasilek_sov",
     "motrifles_btr_sov",
     "motrifles_btr_ttsko_sov",
+    "mp_sov",
     "mtlb_vasilek_sov",
     "naval_rifle_cmd_sov",
     "sniper_spetsnaz_sov",
@@ -201,6 +209,7 @@ __all__ = [
     "pathfinders_uk",
     "rifles_berlin_uk",
     "rifles_gurkhas_cmd_uk",
+    "rmp_uk",
     "rover_101fc_supply_uk",
     "sniper_guards_uk",
     
@@ -226,6 +235,7 @@ __all__ = [
     "m3a1_bradley_cfv_us",
     "m3a2_bradley_cfv_us",
     "m35_supply_us",
+    "mp_us",
     "natguard_dragon_us",
     "navy_seal_us",
     "pathfinder_ng_us",
