@@ -643,6 +643,10 @@ fr_unit_edits = {
     
     # FR TANK
     "AMX_30_B2_CMD_FR": {
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 135,
         "GameName": {
             "display": "AMX-30 B2",
@@ -685,6 +689,10 @@ fr_unit_edits = {
     },
 
     "AMX_30_B_CMD_FR": {
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 85,
         "GameName": {
             "display": "AMX-30 B",
@@ -722,6 +730,10 @@ fr_unit_edits = {
     },
 
     "AMX_13_75mm_CMD_FR": {
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 50,
         "GameName": {
             "display": "AMX-13 T75",
@@ -759,6 +771,10 @@ fr_unit_edits = {
     },
 
     "AMX_10_RC_CMD_FR": {
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 120,
         "GameName": {
             "display": "AMX-10RC",
@@ -797,6 +813,10 @@ fr_unit_edits = {
     },
 
     "ERC_90_Sagaie_CMD_FR": {
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 90,
         "GameName": {
             "display": "ERC-90",
@@ -835,6 +855,10 @@ fr_unit_edits = {
     },
 
     "AML_90_CMD_FR": {
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 50,
         "GameName": {
             "display": "AML-90",

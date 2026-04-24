@@ -132,11 +132,10 @@ rda_unit_edits = {
 
     # RDA INF
     "MotRifles_CMD_DDR": {
-        "CommandPoints": 30,
+        "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "MOT.-SCHUTZEN FÜR.",
-            "token": "LJDWEYDMZI",
         },
         "TagSet": {
             "overwrite_all": [
@@ -197,11 +196,10 @@ rda_unit_edits = {
     },
 
     "Engineers_CMD_DDR": {
-        "CommandPoints": 45,
+        "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "PIONIER",
-            "token": "KYSSUXXTDG",
         },
         "TagSet": {
             "overwrite_all": [
@@ -249,11 +247,10 @@ rda_unit_edits = {
     },
 
     "Engineers_Naval_CMD_DDR": {
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "MARINEPIONIER FÜR.",
-            "token": "UPIUDWZHAI",
         },
         "TagSet": {
             "overwrite_all": [
@@ -292,8 +289,7 @@ rda_unit_edits = {
                 },
             },
             "Salves": {
-                "FM_KMS_72": 9,
-                "RocketInf_RPG7": 6,
+                "RocketInf_RPG7": 9,
             },
         },
         "remove_zone_capture": None,
@@ -415,11 +411,10 @@ rda_unit_edits = {
     },
     
     "Fallschirmjager_CMD_DDR": {
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "FALLSCHIRM FÜR.",
-            "token": "BFPSSUUCFZ",
         },
         "TagSet": {
             "overwrite_all": [
@@ -507,11 +502,10 @@ rda_unit_edits = {
     },
 
     "Luftsturmjager_CMD_DDR": {
-        "CommandPoints": 60,
+        "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "LUFTSTURM-JÄGER FÜR.",
-            "token": "IBYSOQOQYU",
         },
         "TagSet": {
             "overwrite_all": [
@@ -606,11 +600,10 @@ rda_unit_edits = {
     },
 
     "Wachregiment_CMD_DDR": {
-        "CommandPoints": 55,
+        "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "WACHSCHÜTZEN FÜH.",
-            "token": "ZMOICNFUWP",
         },
         "TagSet": {
             "overwrite_all": [
@@ -656,11 +649,10 @@ rda_unit_edits = {
     },
 
     "Fallschirmjager_FalseFlag_CMD_DDR": {
-        "CommandPoints": 55,
+        "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "FALLSCHIRM FÜR. FF",
-            "token": "AKEYFQLRBG",
         },
         "TagSet": {
             "overwrite_all": [
@@ -737,12 +729,11 @@ rda_unit_edits = {
         "remove_zone_capture": None,
     },
 
-    "Volkspolizei_CMD_DDR": {
+    "Volkspolizei_CMD_DDR": { # Not used, DLC slop
         "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "VOPOS FÜH.",
-            "token": "VXWUPWYFCP",
         },
         "TagSet": {
             "overwrite_all": [
@@ -816,6 +807,7 @@ rda_unit_edits = {
         "remove_zone_capture": None,
     },
 
+    # Not sure if we will ever need these
     "MotRifles_Naval_CMD_DDR": {
         "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
@@ -1815,10 +1807,14 @@ rda_unit_edits = {
     
     # RDA ARTILLERY
     "BTR_50_CMD_DDR": {
+        "capacities": {
+            "add_capacities": ["LDR_ARTY"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 60,
         "GameName": {
             "display": "SPW-50PU(A)",
-            "token": "MXTHDKLGFB",
+            "token": "MXTHDKLGFB", # Don't remove or logistic tab version will get renamed as well
         },
         "TagSet": {
             "overwrite_all": [
@@ -2005,7 +2001,11 @@ rda_unit_edits = {
     # RDA TANK
     
     "T54B_CMD_DDR": {
-        "CommandPoints": 80,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 70,
         "GameName": {
             "display": "FüPz T-54AMK",
         },
@@ -2042,10 +2042,13 @@ rda_unit_edits = {
     },
     
     "T55A_CMD_DDR": {
-        "CommandPoints": 80,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 70,
         "GameName": {
             "display": "FüPz T-55AK",
-            "token": "VKLRXNSTQE",
         },
         "TagSet": {
             "overwrite_all": [
@@ -2080,10 +2083,13 @@ rda_unit_edits = {
     },
 
     "T55AM2_CMD_DDR": {  # T-55AM2 LDR
-        "CommandPoints": 125,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 110,
         "GameName": {
             "display": "FüPz T-55AM2K3",
-            "token": "POLT55AMLD",
         },
         "TagSet": {
             "overwrite_all": [
@@ -2112,13 +2118,16 @@ rda_unit_edits = {
     },
 
     "T72_CMD_DDR": {
-        "CommandPoints": 115,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 110,
         "armor": {
             "top": (2, None),
         },
         "GameName": {
             "display": "FüPz. T-72K",
-            "token": "NYCDIWGOQO",
         },
         "TagSet": {
             "overwrite_all": [
@@ -2153,13 +2162,16 @@ rda_unit_edits = {
     },
 
     "T72M_CMD_DDR": {
-        "CommandPoints": 170,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 160,
         "armor": {
             "top": (2, None),
         },
         "GameName": {
             "display": "FüPz T-72M",
-            "token": "XVEZUMJKLL",
         },
         "TagSet": {
             "overwrite_all": [
@@ -2194,13 +2206,16 @@ rda_unit_edits = {
     },
 
     "T72M1_CMD_DDR": {  # FüPz T-72M1K LDR
-        "CommandPoints": 195,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 185,
         "armor": {
             "top": (3, None),
         },
         "GameName": {
             "display": "FüPz T-72M1K",
-            "token": "FUPZTSTMOL",
         },
         "TagSet": {
             "overwrite_all": [

@@ -745,6 +745,24 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("Canon_HE_KS19_100mm", "canon", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "HasDeploymentTime": True,
+                "AimingTime": 2.0,
+                "MaximumRangeGRU": 1750,
+                "MaximumRangeHelicopterGRU": 2800,
+                "MaximumRangeAirplaneGRU": 2625,
+                "PhysicalDamages": 5.0,
+                "ShotsCountPerSalvo": 60,
+                "AffichageMunitionParSalve": 60,
+                "TimeBetweenTwoSalvos": 10.0,
+                "SupplyCost": 8.0,
+                "SupplyCost": 240.0,
+            },
+        },
+    },
 
     ("DCA_1_canon_KS19_100mm_radar", "DCA", "DCA_1_canon_KS19_100mm", True): { # Single 100mm, 120 RPM, PUAZO fire director and SON-9 fire-control radar
         "Ammunition": {
@@ -756,7 +774,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "add": [41, "Guidance = Guidance_Radar"],
                 "TraitsToken": ['STAT', 'RADAR'],
                 "AimingTime": 2.0,
-                "MaximumRangeGRU": 1750,
                 "MaximumRangeHelicopterGRU": 2800,
                 "MaximumRangeAirplaneGRU": 2625,
                 "PhysicalDamages": 5.0,
@@ -776,6 +793,21 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("Canon_HE_KS30_130mm", "canon", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "HasDeploymentTime": True,
+                "AimingTime": 2.0,
+                "MaximumRangeGRU": 1750,
+                "PhysicalDamages": 7.0,
+                "ShotsCountPerSalvo": 60,
+                "AffichageMunitionParSalve": 60,
+                "TimeBetweenTwoSalvos": 10.0,
+                "SupplyCost": 360.0,
+            },
+        },
+    },
 
     ("DCA_1_canon_KS30_130mm_radar", "DCA", "DCA_1_canon_KS30_130mm", True): { # Single 130mm, 120 RPM, PUAZO fire director and SON-9 fire-control radar
         "Ammunition": {
@@ -787,7 +819,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "add": [41, "Guidance = Guidance_Radar"],
                 "TraitsToken": ['STAT', 'RADAR'],
                 "AimingTime": 2.0,
-                "MaximumRangeGRU": 1750,
                 "MaximumRangeHelicopterGRU": 2800,
                 "MaximumRangeAirplaneGRU": 2625,
                 "PhysicalDamages": 7.0,

@@ -89,8 +89,8 @@ rfa_unit_edits = {
     },
     
     # RFA INF
-    "Panzergrenadier_CMD_RFA": {  # #CMD Fs-JÄGER FÜH.
-        "CommandPoints": 40,
+    "Panzergrenadier_CMD_RFA": {
+        "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "PZ.GRENADIER",
@@ -132,13 +132,22 @@ rfa_unit_edits = {
         },
         "availability": [0, 0, 5, 4],
         "max_speed": 20,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_G3KA4": 5,
+                },
+            },
+        },
         "remove_zone_capture": None,
     },
     
-    "Fallschirmjager_CMD_RFA": {  # #CMD Fs-JÄGER FÜH.
-        "CommandPoints": 40,
+    "Fallschirmjager_CMD_RFA": {
+        "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
-        "GameName": {"display": "FALLSCHIRMJÄGER"},
+        "GameName": {
+            "display": "FALLSCHIRMJÄGER",
+        },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
@@ -205,10 +214,21 @@ rfa_unit_edits = {
         "availability": [0, 0, 7, 5],
         "max_speed": 26,
         "remove_zone_capture": None,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "animate": {
+                    "MMG_inf__MG3_7_62mm": False,
+                },
+                "quantity": {
+                    "FM_G3KA4": 7,
+                    "MMG_inf__MG3_7_62mm": 2,
+                },
+            },
+        },
     },
     
-    "Engineers_CMD_RFA": {  # #CMD PIONIER FÜH.
-        "CommandPoints": 40,
+    "Engineers_CMD_RFA": {
+        "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "PIONIER"
@@ -246,7 +266,7 @@ rfa_unit_edits = {
     },
 
     "Gebirgsjager_CMD_RFA": {  # #LDR GEBIRGSJÄGER FÜH.
-        "CommandPoints": 60,
+        "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "GEBIRGSJÄGER"
@@ -455,6 +475,9 @@ rfa_unit_edits = {
                     "FM_G3KA4": 8,
                     "MMG_inf__MG3_7_62mm": 2,
                 },
+            },
+            "Salves": {
+                "RocketInf_Carl_Gustav": 8,
             },
         },
     },
@@ -1049,10 +1072,14 @@ rfa_unit_edits = {
 
     # RFA ARTY
     "M577_RFA": {
+        "capacities": {
+            "add_capacities": ["LDR_ARTY"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 60,
         "GameName": {
             "display": "M577GA2 TACFIRE",
-            "token": "M577GA2LDR",
+            "token": "M577GA2LDR", # Don't remove or logistic tab version will get renamed as well
         },
         "TagSet": {
             "overwrite_all": [
@@ -1174,10 +1201,13 @@ rfa_unit_edits = {
     
     # RFA TANK
     "M48A2GA2_CMD_RFA": {
-        "CommandPoints": 75,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 65,
         "GameName": {
             "display": "PZ.BEF. M48A2GA2",
-            "token": "VLNKYMRDNH",
         },
         "TagSet": {
             "overwrite_all": [
@@ -1207,10 +1237,13 @@ rfa_unit_edits = {
     },
 
     "Leopard_1A1_CMD_RFA": {
-        "CommandPoints": 80,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 75,
         "GameName": {
             "display": "PZ.BEF. LEOPARD 1A1A1",
-            "token": "XCPWTQSWXH",
         },
         "TagSet": {
             "overwrite_all": [
@@ -1239,10 +1272,13 @@ rfa_unit_edits = {
     },
 
     "Leopard_1A4_CMD_RFA": {
-        "CommandPoints": 90,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 85,
         "GameName": {
             "display": "PZ.BEF. LEOPARD 1A4",
-            "token": "ELPLTKBAYX",
         },
         "TagSet": {
             "overwrite_all": [
@@ -1271,10 +1307,13 @@ rfa_unit_edits = {
     },
 
     "Leopard_1A5_CMD_RFA": {
-        "CommandPoints": 110,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 100,
         "GameName": {
             "display": "PZ.BEF. LEOPARD 1A5",
-            "token": "GLAVEMFHKO",
         },
         "TagSet": {
             "overwrite_all": [
@@ -1303,13 +1342,16 @@ rfa_unit_edits = {
     },
 
     "Leopard_2A3_CMD_RFA": {
-        "CommandPoints": 205,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 190,
         "armor": {
             "top": (4, None),
         },
         "GameName": {
             "display": "PZ.BEF. LEOPARD 2A3",
-            "token": "IKKNOBNJOQ",
         },
         "TagSet": {
             "overwrite_all": [
@@ -1338,10 +1380,13 @@ rfa_unit_edits = {
     },
 
     "Leopard_2A1_CMD_RFA": {
-        "CommandPoints": 175,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 165,
         "GameName": {
             "display": "PZ.BEF. LEOPARD 2A1",
-            "token": "LWSMADUUPS",
         },
         "TagSet": {
             "overwrite_all": [
@@ -1370,13 +1415,16 @@ rfa_unit_edits = {
     },
 
     "Leopard_2A4_CMD_RFA": {
-        "CommandPoints": 270,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 250,
         "armor": {
             "top": (4, None),
         },
         "GameName": {
             "display": "PZ.BEF. LEOPARD 2A4(C)",
-            "token": "PBLIFBOOCD",
         },
         "TagSet": {
             "overwrite_all": [

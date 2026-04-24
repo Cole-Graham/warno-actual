@@ -70,7 +70,7 @@ uk_unit_edits = {
 
     # UK INF
     "Territorial_CMD_UK": {
-        "CommandPoints": 25,
+        "CommandPoints": 20,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "TERRIERS",
@@ -120,11 +120,10 @@ uk_unit_edits = {
     },
 
     "Engineers_CMD_UK": {
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "ASSAULT PIONEERS",
-            "token": "VZOODKAGWE",
         },
         "TagSet": {
             "overwrite_all": [
@@ -185,11 +184,10 @@ uk_unit_edits = {
     },
 
     "Rifles_CMD_UK": {
-        "CommandPoints": 35,
+        "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "RIFLES",
-            "token": "YGMKZKXXEV",
         },
         "TagSet": {
             "overwrite_all": [
@@ -270,10 +268,10 @@ uk_unit_edits = {
     },
     
     "Paratroopers_CMD_UK": {
-        "CommandPoints": 45,
+        "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "PARA.",
+            "display": "PARAS",
         },
         "TagSet": {
             "overwrite_all": [
@@ -320,7 +318,7 @@ uk_unit_edits = {
     },
 
     "Airmobile_Mot_CMD_UK": {
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "MOT. AIRMOBILE",
@@ -387,7 +385,7 @@ uk_unit_edits = {
     },
     
     "Rifles_Gurkhas_CMD_UK": {
-        "CommandPoints": 50,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "GURKHA RIFLES",
@@ -449,7 +447,7 @@ uk_unit_edits = {
     },
     
     "Guards_CMD_UK": {
-        "CommandPoints": 45,
+        "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "GUARDS",
@@ -872,7 +870,7 @@ uk_unit_edits = {
         },
     },
 
-    "Airmobile_UK": {  # 3x FN Mag
+    "Airmobile_UK": {  # AIRMOBILE GUN GROUP - 3x FN Mag
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "max_speed": 26,
@@ -1004,7 +1002,7 @@ uk_unit_edits = {
     },
 
     "Airmobile_Mot_UK": {
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1274,10 +1272,14 @@ uk_unit_edits = {
 
     # UK ARTILLERY
     "FV432_CMD_UK": {
+        "capacities": {
+            "add_capacities": ["LDR_ARTY"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 60,
         "GameName": {
             "display": "FV432 BATTERY CP",
-            "token": "NUDZQLLWOD",
+            "token": "NUDZQLLWOD", # Don't remove or logistic tab version will get renamed as well
         },
         "TagSet": {
             "overwrite_all": [
@@ -1416,7 +1418,11 @@ uk_unit_edits = {
 
     # UK TANK
     "Centurion_Mk13_CMD_UK": {
-        "CommandPoints": 75,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 65,
         "GameName": {
             "display": "CENTURION Mk.13",
             "token": "DBEDJIGRRN",
@@ -1454,7 +1460,11 @@ uk_unit_edits = {
     },
     
     "FV4201_Chieftain_CMD_UK": {
-        "CommandPoints": 150,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 135,
         "armor": {
             "top": (4, None),
         },
@@ -1495,7 +1505,11 @@ uk_unit_edits = {
     },
     
     "Challenger_1_Mk1_CMD_UK": {
-        "CommandPoints": 205,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 195,
         "armor": {
             "top": (4, None),
         },

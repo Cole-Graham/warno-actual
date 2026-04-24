@@ -209,7 +209,7 @@ sov_unit_edits = {
 
     # SOV INF
     "MotRifles_CMD_SOV": {
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "MOTOSTRELKI",
@@ -281,7 +281,7 @@ sov_unit_edits = {
     },
     
     "MotRifles_CMD_TTsko_SOV": {
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "MOTOSTRELKI",
@@ -347,7 +347,7 @@ sov_unit_edits = {
     },
 
     "Engineers_CMD_TTsko_SOV": {
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "SAPERY",
@@ -404,7 +404,7 @@ sov_unit_edits = {
     },
 
     "Engineers_CMD_SOV": {
-        "CommandPoints": 45,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "SAPERY [RPG-7]",
@@ -458,7 +458,7 @@ sov_unit_edits = {
     },
 
     "Spetsnaz_CMD_SOV": {
-        "CommandPoints": 55,
+        "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "SPETSNAZ",
@@ -616,7 +616,7 @@ sov_unit_edits = {
     },
 
     "Engineers_CMD_VDV_SOV": {
-        "CommandPoints": 45,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "DESANT. SAPERY",
@@ -670,7 +670,7 @@ sov_unit_edits = {
     },
 
     "KGB_BorderGuard_CMD_SOV": {
-        "CommandPoints": 30,
+        "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "POGRANVOISK KGB",
@@ -772,7 +772,7 @@ sov_unit_edits = {
     },
     
     "Naval_VDV_CMD_SOV": {
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "DESANT. MOR. KOMROTI",
@@ -2468,10 +2468,14 @@ sov_unit_edits = {
 
     # SOV ARTILLERY
     "MTLB_CMD_SOV": {
+        "capacities": {
+            "add_capacities": ["LDR_ARTY"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 60,
         "GameName": {
             "display": "MT-LBu MASHINA",
-            "token": "PUEZYZBZLF",
+            "token": "PUEZYZBZLF", # Don't remove or logistic tab version will get renamed as well
         },
         "TagSet": {
             "overwrite_all": [
@@ -2944,7 +2948,11 @@ sov_unit_edits = {
 
     # SOV TANK
     "T10M_CMD_SOV": {
-        "CommandPoints": 100,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 90,
         "GameName": {
             "token": "PFCNKRFVF",
             "display": "REZ. T-10MK",
@@ -2975,6 +2983,10 @@ sov_unit_edits = {
     },
 
     "T55A_CMD_SOV": {
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 80,
         "GameName": {
             "token": "PFCNKJHHF",
@@ -3006,6 +3018,10 @@ sov_unit_edits = {
     },
 
     "T55AM_1_CMD_SOV": {
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 110,
         "GameName": {
             "token": "PFCNJZNOHF",
@@ -3038,6 +3054,10 @@ sov_unit_edits = {
     },
     
     "T55AM_CMD_SOV": { # MOR. T-55AMK
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 110,
         "GameName": {
             "display": "MOR. T-55AMK",
@@ -3070,7 +3090,11 @@ sov_unit_edits = {
     },
 
     "T62MD_CMD_SOV": {
-        "CommandPoints": 130,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 115,
         "armor": {
             "top": (3, None),
         },
@@ -3105,7 +3129,11 @@ sov_unit_edits = {
     },
 
     "T62M_CMD_SOV": {
-        "CommandPoints": 130,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 115,
         "armor": {
             "top": (3, None),
         },
@@ -3145,7 +3173,11 @@ sov_unit_edits = {
     },
     
     "T64A_CMD_SOV": {
-        "CommandPoints": 135,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 130,
         "armor": {
             "top": (3, None),
         },
@@ -3180,7 +3212,11 @@ sov_unit_edits = {
     },
 
     "T64B_CMD_SOV": {
-        "CommandPoints": 185,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 175,
         "armor": {
             "top": (3, None),
         },
@@ -3215,7 +3251,11 @@ sov_unit_edits = {
     },
 
     "T64BV_CMD_SOV": {
-        "CommandPoints": 200,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 190,
         "armor": {
             "top": (4, None),
         },
@@ -3251,7 +3291,11 @@ sov_unit_edits = {
     },
 
     "T72_CMD_SOV": {
-        "CommandPoints": 120,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 110,
         "armor": {
             "top": (2, None),
         },
@@ -3285,7 +3329,11 @@ sov_unit_edits = {
     },
     
     "T72M_CMD_SOV": {
-        "CommandPoints": 170,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 160,
         "armor": {
             "top": (2, None),
         },
@@ -3320,7 +3368,11 @@ sov_unit_edits = {
     },
 
     "T72M1_CMD_SOV": {
-        "CommandPoints": 195,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 185,
         "armor": {
             "top": (3, None),
         },
@@ -3355,7 +3407,11 @@ sov_unit_edits = {
     },
 
     "T72B_CMD_SOV": {
-        "CommandPoints": 225,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 205,
         "armor": {
             "top": (4, None),
         },
@@ -3391,7 +3447,11 @@ sov_unit_edits = {
     },
 
     "T80B_CMD_SOV": {
-        "CommandPoints": 210,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 200,
         "armor": {
             "top": (3, None),
         },
@@ -3426,7 +3486,11 @@ sov_unit_edits = {
     },
 
     "T80BV_CMD_SOV": {
-        "CommandPoints": 230,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 215,
         "armor": {
             "front": (18, None),
             "top": (4, None),
@@ -4088,7 +4152,7 @@ sov_unit_edits = {
             "front": (18, None),
             "top": (4, None),
         },
-        "CommandPoints": 220,
+        "CommandPoints": 225,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -6391,12 +6455,12 @@ sov_unit_edits = {
     },
 
     "Su_27S_SOV": {  # 6x R-73, 4x R-27R
-        "CommandPoints": 240,
+        "CommandPoints": 250,
         "availability": [0, 2, 0, 1],
     },
 
     "Su_27S_jammers_SOV": {  # 4x R-27ER, 2x R-27T, 40% ECM
-        "CommandPoints": 285,
+        "CommandPoints": 290,
         "availability": [0, 2, 0, 1],
     },
     

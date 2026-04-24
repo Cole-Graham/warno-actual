@@ -1593,10 +1593,14 @@ pol_unit_edits = {
     
     # POL ARTILLERY
     "OT_62_TOPAS_R3M_CMD_POL": {  # TOPAS R-2M
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 60,
         "GameName": {
             "display": "TOPAS R-2M",
-            "token": "TOPASARTLD",
+            "token": "TOPASARTLD", # Don't remove or logistic tab version will get renamed as well
         },
         "TagSet": {
             "overwrite_all": [
@@ -1928,10 +1932,13 @@ pol_unit_edits = {
     # },
     
     "T55A_CMD_POL": {  # T-55AD LDR
-        "CommandPoints": 80,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 70,
         "GameName": {
             "display": "T-55AD",
-            "token": "POLTFFAD",
         },
         "TagSet": {
             "overwrite_all": [
@@ -1964,10 +1971,13 @@ pol_unit_edits = {
     },
     
     "T55AM_Merida_CMD_POL": {  # T-55AM Merida LDR
-        "CommandPoints": 125,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 110,
         "GameName": {
             "display": "T-55AD-1M Merida",
-            "token": "POLT55AMLD",
         },
         "TagSet": {
             "overwrite_all": [
@@ -2001,13 +2011,16 @@ pol_unit_edits = {
     },
     
     "T72M_CMD_POL": {  # T-72MD LDR
-        "CommandPoints": 165,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 140,
         "armor": {
             "top": (2, None),
         },
         "GameName": {
             "display": "T-72MD",
-            "token": "POLTSTMLDR",
         },
         "TagSet": {
             "overwrite_all": [
@@ -2040,13 +2053,16 @@ pol_unit_edits = {
     },
     
     "T72M1_CMD_POL": {  # T-72M1D LDR
-        "CommandPoints": 195,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 185,
         "armor": {
             "top": (3, None),
         },
         "GameName": {
             "display": "T-72M1D",
-            "token": "POLTSTMOLD",
         },
         "TagSet": {
             "overwrite_all": [
@@ -2080,10 +2096,13 @@ pol_unit_edits = {
     },
     
     "ASU_85_CMD_POL": {  # ASU-85 LDR
-        "CommandPoints": 70,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 60,
         "GameName": {
             "display": "ASU-85D",
-            "token": "POLASUEFD",
         },
         "TagSet": {
             "overwrite_all": [
@@ -2111,6 +2130,10 @@ pol_unit_edits = {
     },
 
     "PT76B_CMD_POL": {  # PT-76BD LDR
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 30,
         "GameName": {
             "display": "PT-76BD",
@@ -2142,6 +2165,10 @@ pol_unit_edits = {
     },
 
     "PT76B_CMD_Naval_POL": {  #  NIEB.BERETY PT-76BD LDR
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 30,
         "GameName": {
             "display": "NIEB.BERETY PT-76BD",

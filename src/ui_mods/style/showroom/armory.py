@@ -2,9 +2,12 @@
 # from src import ndf
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import find_obj_by_type
+from src import ModConfig
 
 logger = setup_logger(__name__)
 
+config = ModConfig.get_instance()
+target = config.config_data['build_config']['target']
 
 def edit_uispecificshowroomarmorycomponent(source_path) -> None:
     """Edit UISpecificShowroomArmoryComponent.ndf.
@@ -18,14 +21,15 @@ def edit_uispecificshowroomarmorycomponent(source_path) -> None:
     source_path.by_namespace("MaxUnitsInDeckPerCategory").v = "11"
     logger.debug("Updated max units in deck per category")
     
-    _edit_armory_component(source_path)
-    _edit_category_button_descr(source_path)
-    _edit_togglable_filter_button(source_path)
-    _edit_division_filter_button(source_path)
-    _edit_showroom_top_filters_bar(source_path)
-    _edit_allnationsfilter(source_path)
-    _edit_allegiancedivisionfilter(source_path)
-    _edit_unitgridnamefilter(source_path)
+    if target == "gameplay":
+        _edit_armory_component(source_path)
+        _edit_category_button_descr(source_path)
+        _edit_togglable_filter_button(source_path)
+        _edit_division_filter_button(source_path)
+        _edit_showroom_top_filters_bar(source_path)
+        _edit_allnationsfilter(source_path)
+        _edit_allegiancedivisionfilter(source_path)
+        _edit_unitgridnamefilter(source_path)
 
 def _edit_armory_component(source_path) -> None:
     """edit ArmoryComponentDescriptor"""
@@ -80,7 +84,7 @@ def _edit_showroom_top_filters_bar(source_path) -> None:
             ElementName = "UnitDivisionScrollingContainer222"
             ComponentFrame = TUIFramePropertyRTTI
             (
-                MagnifiableWidthHeight = [1500.0, 62.0]
+                MagnifiableWidthHeight = [1700.0, 62.0]
                 AlignementToFather = [0.5, 0.025]
                 AlignementToAnchor = [0.5, 0.0]
             )
@@ -104,7 +108,7 @@ def _edit_showroom_top_filters_bar(source_path) -> None:
             ElementName = "UnitDivisionScrollingContainer223"
             ComponentFrame = TUIFramePropertyRTTI
             (
-                MagnifiableWidthHeight = [1500.0, 62.0]
+                MagnifiableWidthHeight = [1700.0, 62.0]
                 AlignementToFather = [0.5, 0.12]
                 AlignementToAnchor = [0.5, 0.0]
             )

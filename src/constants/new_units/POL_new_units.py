@@ -395,6 +395,10 @@ POL_NEW_UNITS = {
         "InfantrySquadModuleGUID": "9ab3d76b-e841-4944-96e8-b6be76bdde98",
         "ShowroomGUID": "e07a7e81-164b-43b1-98a6-5ecf33509420",
         "CadavreGUID": "cbd9c1a8-134c-4521-b84e-605ed4d7af99",
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "NewName": "T54B_CMDactual_POL",
         "TagSet": {
             "overwrite_all": [
@@ -412,7 +416,7 @@ POL_NEW_UNITS = {
             "token": "POLTFFBD",
         },
         "Factory": "EFactory/Tanks",
-        "CommandPoints": 80,
+        "CommandPoints": 70,
         "UnitRole": 'armor',
         "SpecialtiesList": [
             'leader_sov',
@@ -421,7 +425,7 @@ POL_NEW_UNITS = {
         "remove_zone_capture": None,
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
-                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
+                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply', 'EOrderType/UseCapacite',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": False,  # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,
@@ -437,7 +441,6 @@ POL_NEW_UNITS = {
         "InfantrySquadModuleGUID": "fb1db3c4-ed80-4a3a-b8f8-1eab529da04e",
         "ShowroomGUID": "6211126c-6458-4edc-8e7e-a7d17338c60a",
         "CadavreGUID": "8f3685da-a277-41c1-8870-3d60c6acc84f",
-        "modules_add": ["TCommanderModuleDescriptor()"],
         "modules_remove": ["WeaponDescriptor", "WeaponManager", "Transporter", "~/TargetManagerModuleDescriptor"],
         "depictions": {
             "custom": {
@@ -448,6 +451,9 @@ POL_NEW_UNITS = {
             },
         },
         "NewName": "OT_64_SKOT_2_CMD_POL",
+        "capacities": {
+            "add_capacities": ["LDR_ARTY"],
+        },
         "GameName": {
             "display": "SKOT R-2AM",
             "token": "RTBIJFPDGK",
@@ -488,7 +494,7 @@ POL_NEW_UNITS = {
         },
         "availability": [0, 2, 0, 0],
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Reverse',
-                   'EOrderType/AskForSupply', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+                   'EOrderType/AskForSupply', 'EOrderType/UseCapacite', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": False, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,
         "is_ground_vehicle": True,

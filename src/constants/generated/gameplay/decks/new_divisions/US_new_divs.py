@@ -41,7 +41,7 @@ us_new_divs = {
         #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
         # },
         "transport_overrides": {
-            "MP_US": ["CUCV_MP_US", "CUCV_HMG_US", "CUCV_AGL_US", "M1025_Humvee_MP_US"],
+            "MP_US": ["M1038_Humvee_US"],
             "MP_RCL_US": ["CUCV_MP_US", "CUCV_HMG_US", "CUCV_AGL_US", "M1025_Humvee_MP_US"],
             "Rifles_half_CMD2_US": ["M998_Humvee_US", "M998_Humvee_HMG_US", "M2A1_Bradley_IFV_US", "M2A2_Bradley_IFV_US", "UH60A_Black_Hawk_US", "CH47_Chinook_US"],
             "Rifles_half_CMD_US": ["M998_Humvee_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US","M113A3_US", "M2A1_Bradley_IFV_US", "M2A2_Bradley_IFV_US"],
@@ -167,7 +167,7 @@ us_new_divs = {
         ],
         "transport_overrides": {
             "Rifles_half_CMD2_US": ["M998_Humvee_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US", "UH60A_Black_Hawk_US", "CH47_Chinook_US"],
-            "MP_US": ["CUCV_MP_US", "CUCV_HMG_US", "CUCV_AGL_US", "M1025_Humvee_MP_US"],
+            "MP_US": ["M1038_Humvee_US"],
             "MP_RCL_US": ["CUCV_MP_US", "CUCV_HMG_US", "CUCV_AGL_US", "M1025_Humvee_MP_US"],
             "MP_Patrol_USAF_US": ["M998_Humvee_US", "CUCV_MP_US", "CGage_Peacekeeper_US", "CUCV_HMG_US", "CUCV_AGL_US"],
             "LRRP_US": ["M998_Humvee_US", "M1025_Humvee_scout_US", "M1025_Humvee_AGL_nonPara_US", "UH60A_Black_Hawk_US"],
@@ -250,7 +250,7 @@ us_new_divs = {
             US_motorized_newdivisionrules,
         ],
         "transport_overrides": {
-            "MP_US": ["CUCV_MP_US", "CUCV_HMG_US", "CUCV_AGL_US", "M1025_Humvee_MP_US"],
+            "MP_US": ["M1038_Humvee_US"],
             "MP_RCL_US": ["CUCV_MP_US", "CUCV_HMG_US", "CUCV_AGL_US", "M1025_Humvee_MP_US"],
             "Rifles_half_CMD2_US": ["M998_Humvee_US", "M998_Humvee_HMG_US", "M2A1_Bradley_IFV_US", "M2A2_Bradley_IFV_US", "UH60A_Black_Hawk_US", "CH47_Chinook_US"],
             "Rifles_half_CMD_US": ["M998_Humvee_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US","M113A3_US", "M2A1_Bradley_IFV_US", "M2A2_Bradley_IFV_US"],
@@ -343,7 +343,7 @@ us_new_divs = {
         #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
         # },
         "transport_overrides": {
-            "MP_US": ["CUCV_MP_US", "CUCV_HMG_US", "CUCV_AGL_US", "M1025_Humvee_MP_US"],
+            "MP_US": ["M1038_Humvee_US"],
             "MP_RCL_US": ["CUCV_MP_US", "CUCV_HMG_US", "CUCV_AGL_US", "M1025_Humvee_MP_US"],
             "Rifles_half_CMD2_US": ["M998_Humvee_US", "M998_Humvee_HMG_US", "M2A1_Bradley_IFV_US", "M2A2_Bradley_IFV_US", "UH60A_Black_Hawk_US", "CH47_Chinook_US"],
             "Rifles_half_CMD_US": ["M998_Humvee_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US", "M113A3_US", "M2A2_Bradley_IFV_US", "UH1H_Huey_US"],

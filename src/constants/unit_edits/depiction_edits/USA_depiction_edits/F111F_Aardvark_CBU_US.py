@@ -5,7 +5,12 @@ from typing import Dict, Tuple, Union
 # fmt: off
 f111f_aardvark_cbu_us: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
     "unit_name": "F111F_Aardvark_CBU_US",
-    "valid_files": ["DepictionAerialUnits.ndf", "DepictionAerialUnitsShowRoom.ndf", "MissileCarriage.ndf", "MissileCarriageDepiction.ndf"],
+    "valid_files": [
+        "DepictionAerialUnits.ndf",
+        "DepictionAerialUnitsShowRoom.ndf",
+        "MissileCarriage.ndf",
+        "MissileCarriageDepiction.ndf",
+    ],
     
     "DepictionAerialUnits_ndf": {
         
@@ -37,7 +42,7 @@ f111f_aardvark_cbu_us: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
                 '+ DepictionAction_Flare_Double\n'
             ),
             "Operators": {
-                4: ("insert", "Op_F111F_Aardvark_CBU_US_Weapon3,"),
+                3: ("insert", "Op_F111F_Aardvark_CBU_US_Weapon3,"),
             },
         },
     },

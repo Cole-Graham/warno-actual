@@ -3,7 +3,7 @@
 from typing import Any
 
 from src.constants.new_units import NEW_UNITS
-from src.constants.unit_edits import load_depiction_edits
+from src.constants.unit_edits import load_depiction_edits, load_unit_edits
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
@@ -79,33 +79,17 @@ def _apply_depiction_edits(source_path: Any) -> None:
     logger.info("Updating alternatives depiction entries from depiction_edits")
 
     depiction_edits = load_depiction_edits()
-    for unit_name, unit_data in depiction_edits.items():
-        if _NDF_FILE not in unit_data.get("valid_files", []):
-            continue
+    unit_edits = load_unit_edits()
 
-        if "DepictionAlternatives_ndf" not in unit_data:
-            logger.error(f"{_NDF_FILE} is valid for {unit_name} but no edits found")
-            continue
+    for unit_name, edits in unit_edits.items():
 
-        unit_edits = unit_data["DepictionAlternatives_ndf"]
-        for key, edits in unit_edits.items():
-            if not isinstance(key, tuple):
-                logger.error(f"Key is not a tuple: {key}")
-                continue
-
-            namespace, _obj_type = key
-            if not namespace:
-                logger.error(f"Empty namespace in DepictionAlternatives edits for {unit_name}")
-                continue
-
-            alternatives_list = source_path.by_namespace(namespace, False)
+        mesh_stem = edits.get("alternatives", {}).get("mesh", False)
+        if mesh_stem:
+            alternatives_list = source_path.by_namespace(f"Alternatives_{unit_name}", False)
             if not alternatives_list:
-                logger.error(f"No alternatives list found for {namespace} ({unit_name})")
+                logger.error(f"No alternatives list found for {unit_name}")
                 continue
-
-            mesh_stem = edits.get("mesh") if isinstance(edits, dict) else None
-            if mesh_stem:
-                alternatives_list.v[0].v.by_m("MeshDescriptor").v = f"{_MESH_PREFIX}{mesh_stem}"
-                alternatives_list.v[1].v.by_m("MeshDescriptor").v = f"{_MESH_PREFIX}{mesh_stem}_MID"
-                alternatives_list.v[2].v.by_m("MeshDescriptor").v = f"{_MESH_PREFIX}{mesh_stem}_LOW"
-                logger.info(f"Updated alternatives mesh for {unit_name} -> {mesh_stem}")
+            alternatives_list.v[0].v.by_m("MeshDescriptor").v = f"{_MESH_PREFIX}{mesh_stem}"
+            alternatives_list.v[1].v.by_m("MeshDescriptor").v = f"{_MESH_PREFIX}{mesh_stem}_MID"
+            alternatives_list.v[2].v.by_m("MeshDescriptor").v = f"{_MESH_PREFIX}{mesh_stem}_LOW"
+            logger.info(f"Updated alternatives mesh for {unit_name} -> {mesh_stem}")

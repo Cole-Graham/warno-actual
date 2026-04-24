@@ -164,7 +164,7 @@ usa_unit_edits = {
 
     # US INF
     "Rifles_half_CMD_US": {
-        "CommandPoints": 30,
+        "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "FIRETEAM",
@@ -214,7 +214,7 @@ usa_unit_edits = {
     },
     
     "Rifles_half_Cav_CMD_US": {
-        "CommandPoints": 30,
+        "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "CAV. TROOPERS",
@@ -336,7 +336,7 @@ usa_unit_edits = {
     },
 
     "Engineer_CMD_US": {
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "ENGINEERS",
@@ -481,7 +481,7 @@ usa_unit_edits = {
     },
 
     "Airborne_Engineer_CMD_US": {
-        "CommandPoints": 55,
+        "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "AB ENGINEERS",
@@ -528,7 +528,7 @@ usa_unit_edits = {
     },
 
     "Airborne_CMD_US": {
-        "CommandPoints": 60,
+        "CommandPoints": 55,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "AIRBORNE",
@@ -578,7 +578,7 @@ usa_unit_edits = {
     },
 
     "AeroRifles_CMD_US": {
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "AERO-RIFLES",
@@ -754,7 +754,7 @@ usa_unit_edits = {
     },
     
     "MP_CMD_US": {
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "MP LEADER",
@@ -792,7 +792,7 @@ usa_unit_edits = {
     },
 
     "Rifles_USMC_CMD_US": {
-        "CommandPoints": 30,
+        "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "USMC RIFLEMEN",
@@ -840,7 +840,7 @@ usa_unit_edits = {
     },
 
     "Engineer_USMC_CMD_US": {
-        "CommandPoints": 55,
+        "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "USMC ENGINEERS",
@@ -1465,7 +1465,7 @@ usa_unit_edits = {
     },
 
     "Rifles_USMC_LAW_US": {
-        "CommandPoints": 45,
+        "CommandPoints": 40,
         "GameName": {
             "display": "USMC RIFLEMEN [LAW]",
         },
@@ -1486,7 +1486,7 @@ usa_unit_edits = {
     },
 
     "Rifles_USMC_AT4_US": {
-        "CommandPoints": 55,
+        "CommandPoints": 50,
         "GameName": {
             "display": "USMC RIFLEMEN [AT4]",
         },
@@ -1504,7 +1504,7 @@ usa_unit_edits = {
     },
 
     "Rifles_USMC_Dragon_US": {
-        "CommandPoints": 60,
+        "CommandPoints": 50,
         "GameName": {
             "display": "USMC RIFLEMEN [DRAGON]",
         },
@@ -2789,10 +2789,14 @@ usa_unit_edits = {
 
     # US ARTILLERY
     "M577_US": {
+        "capacities": {
+            "add_capacities": ["LDR_ARTY"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 60,
         "GameName": {
             "display": "M577 TACFIRE FCV",
-            "token": "ZTSGIUUUVJ",
+            "token": "ZTSGIUUUVJ", # Don't remove or logistic tab version will get renamed as well
         },
         "TagSet": {
             "overwrite_all": [
@@ -2982,7 +2986,11 @@ usa_unit_edits = {
 
     # US TANK
     "M1A1HA_Abrams_CMD_US": {
-        "CommandPoints": 330,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 325,
         "GameName": {
             "display": "M1A1(HA) ABRAMS",
             "token": "CIOEKZVEAY",
@@ -3022,7 +3030,11 @@ usa_unit_edits = {
     },
 
     "M1A1_Abrams_CMD_US": {
-        "CommandPoints": 255,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 225,
         "GameName": {
             "display": "M1A1 ABRAMS",
             "token": "JARUASHKDH",
@@ -3065,7 +3077,11 @@ usa_unit_edits = {
     },
 
     "M1IP_Abrams_CMD_US": {
-        "CommandPoints": 215,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 200,
         "GameName": {
             "display": "M1IP ABRAMS",
             "token": "TSLINICZXV",
@@ -3100,7 +3116,11 @@ usa_unit_edits = {
     },
 
     "M1_Abrams_CMD_US": {
-        "CommandPoints": 185,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 170,
         "GameName": {
             "display": "M1 ABRAMS",
             "token": "JMIRJBBLPW",
@@ -3135,7 +3155,11 @@ usa_unit_edits = {
     },
 
     "M60A3_CMD_US": {
-        "CommandPoints": 120,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 105,
         "GameName": {
             "display": "M60A3 (TTS)",
             "token": "OZPDFIGTWN",
@@ -3170,7 +3194,11 @@ usa_unit_edits = {
     },
     
     "M60A1_RISE_Passive_CMD_US": {
-        "CommandPoints": 95,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 90,
         "GameName": {
             "display": "M60A1 RISE",
             "token": "ETJTTJZGYR",
@@ -3205,7 +3233,11 @@ usa_unit_edits = {
     },
 
     "M60A1_RISE_Passive_USMC_CMD_US": {
-        "CommandPoints": 95,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 90,
         "GameName": {
             "display": "USMC M60A1",
             "token": "CBDJCYPIXI",
@@ -3241,7 +3273,11 @@ usa_unit_edits = {
     },
 
     "M551A1_TTS_Sheridan_CMD_US": {
-        "CommandPoints": 65,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 50,
         "GameName": {
             "display": "M551 TTS SHERIDAN",
             "token": "NBZRAJWZXD",
@@ -3661,7 +3697,7 @@ usa_unit_edits = {
     },
 
     "M60A1_RISE_Passive_USMC_US": {
-        "CommandPoints": 85,
+        "CommandPoints": 90,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -5711,7 +5747,7 @@ usa_unit_edits = {
             "add_specs": ["'terrain_radar'"],
         },
         "availability": [0, 2, 0, 0],
-        "Alternatives": {
+        "alternatives": {
             "mesh": "F111F_Sweep40_US",
         },
         "WeaponDescriptor": {
@@ -6028,12 +6064,12 @@ usa_unit_edits = {
     },
 
     "F18_Hornet_AA_US": {  # 4x AIM-7P, 2x AIM-9M
-        "CommandPoints": 245,
+        "CommandPoints": 250,
         "availability": [0, 2, 0, 1],
     },
 
     "F18_Hornet_AA2_US": {  # 2x AIM-7M, 6x AIM-9M 
-        "CommandPoints": 240,
+        "CommandPoints": 235,
         "availability": [0, 2, 0, 1],
     },
 

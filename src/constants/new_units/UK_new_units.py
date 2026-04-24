@@ -492,6 +492,10 @@ UK_NEW_UNITS = {
         "InfantrySquadModuleGUID": "c6bae323-a820-4eb3-b45f-c617e3162a3d",
         "ShowroomGUID": "f26a6c58-4680-4fb2-9540-179ac933400a",
         "CadavreGUID": "30a1f922-b453-4fbe-ac83-63be38aba866",
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "NewName": "FV4201_Chieftain_Mk9_CMD_UK",
         "GameName": {
             "display": "CHIEFTAIN Mk.9",
@@ -531,7 +535,7 @@ UK_NEW_UNITS = {
         },
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack', 
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 
-                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply', 
+                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply', 'EOrderType/UseCapacite',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": False, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,

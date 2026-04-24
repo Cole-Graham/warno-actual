@@ -58,8 +58,8 @@ US_airborne_newdivisionrules = {
         ("81mm_mortar_Aero_US", 2, [0, 7, 5, 4], ["Gama_Goat_trans_US"])
     ],
     "tank": [
-        ("M60A3_CMD_US", 1, [0, 0, 4, 0]),
-        ("M551A1_TTS_Sheridan_CMD_US", 2, [0, 0, 0, 5]),
+        ("M60A3_CMD_US", 1, [0, 0, 3, 0]),
+        ("M551A1_TTS_Sheridan_CMD_US", 2, [0, 0, 0, 4]),
         ("M60A3_ERA_Patton_US", 1, [0, 8, 6, 0]),
         ("M60A3_Patton_US", 2, [8, 6, 0, 0]),
         ("M551A1_TTS_Sheridan_US", 2, [0, 10, 7, 0]),
@@ -175,12 +175,12 @@ US_armored_newdivisionrules = {
         ("Mortier_M29_81mm_US", 2, [6, 5, 4, 0], ["M998_Humvee_US"]),
     ],
     "tank": [
-        ("M1A1HA_Abrams_CMD_US", 1, [0, 0, 0, 2]),
+        ("M1A1HA_Abrams_CMD_US", 1, [0, 0, 2, 0]),
         ("M1A1_Abrams_CMD_US", 1, [0, 0, 2, 0]),
         ("M1IP_Abrams_CMD_US", 1, [0, 0, 3, 0]),
         ("M1_Abrams_CMD_US", 1, [0, 0, 3, 0]),
-        ("M60A3_CMD_US", 1, [0, 0, 4, 0]),
-        ("M60A1_RISE_Passive_CMD_US", 1, [0, 0, 5, 0]),
+        ("M60A3_CMD_US", 1, [0, 0, 3, 0]),
+        ("M60A1_RISE_Passive_CMD_US", 1, [0, 0, 4, 0]),
         ("M1A1HA_Abrams_US", 3, [0, 0, 3, 2]),
         ("M1A1_Abrams_US", 3, [0, 4, 3, 0]),
         ("M1_Abrams_MOD_US", 2, [0, 4, 3, 0]),
@@ -316,7 +316,7 @@ US_marine_newdivisionrules = {
         ("81mm_mortar_USMC_US", 2, [6, 5, 4, 0], ["M998_Humvee_US"]),
     ],
     "tank": [
-        ("M60A1_RISE_Passive_USMC_CMD_US", 1, [0, 0, 5, 0]),
+        ("M60A1_RISE_Passive_USMC_CMD_US", 1, [0, 0, 4, 0]),
         ("M60A1_RISE_Passive_USMC_US", 2, [10, 7, 0, 0]),
         ("M60A1_RISE_Passive_USMC_ERA_US", 1, [0, 8, 6, 0]),
         ("M1025_Humvee_TOW_USMC_US", 2, [0, 6, 4, 0]),
@@ -432,8 +432,8 @@ US_mechanized_newdivisionrules = {
     "tank": [
         ("M1IP_Abrams_CMD_US", 1, [0, 0, 3, 0]),
         ("M1_Abrams_CMD_US", 1, [0, 0, 3, 0]),
-        ("M60A3_CMD_US", 1, [0, 0, 4, 0]),
-        ("M60A1_RISE_Passive_CMD_US", 1, [0, 0, 5, 0]),
+        ("M60A3_CMD_US", 1, [0, 0, 3, 0]),
+        ("M60A1_RISE_Passive_CMD_US", 1, [0, 0, 4, 0]),
         ("M1IP_Abrams_US", 3, [0, 6, 4, 0]),
         ("M1_Abrams_US", 2, [6, 4, 0, 0]),
         ("M60A3_ERA_Patton_US", 1, [0, 8, 6, 0]),
@@ -558,8 +558,8 @@ US_motorized_newdivisionrules = {
     ],
     "tank": [
         ("M1_Abrams_CMD_US", 1, [0, 0, 3, 0]),
-        ("M60A3_CMD_US", 1, [0, 0, 4, 0]),
-        ("M60A1_RISE_Passive_CMD_US", 1, [0, 0, 5, 0]),
+        ("M60A3_CMD_US", 1, [0, 0, 3, 0]),
+        ("M60A1_RISE_Passive_CMD_US", 1, [0, 0, 4, 0]),
         ("M1_Abrams_US", 2, [6, 4, 0, 0]),
         ("M60A3_ERA_Patton_US", 1, [0, 8, 6, 0]),
         ("M60A3_Patton_US", 2, [8, 6, 0, 0]),
