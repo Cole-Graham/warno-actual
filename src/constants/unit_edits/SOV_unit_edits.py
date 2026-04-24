@@ -94,6 +94,7 @@ sov_unit_edits = {
         },
         "availability": [0, 0, 3, 0],
         "TagSet": {"add_tags": ['"CMD_Unit"']},
+        
     },
 
     "LUAZ_967M_CMD_VDV_SOV": {
@@ -208,7 +209,7 @@ sov_unit_edits = {
 
     # SOV INF
     "MotRifles_CMD_SOV": {
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "MOTOSTRELKI",
@@ -280,7 +281,7 @@ sov_unit_edits = {
     },
     
     "MotRifles_CMD_TTsko_SOV": {
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "MOTOSTRELKI",
@@ -346,7 +347,7 @@ sov_unit_edits = {
     },
 
     "Engineers_CMD_TTsko_SOV": {
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "SAPERY",
@@ -403,7 +404,7 @@ sov_unit_edits = {
     },
 
     "Engineers_CMD_SOV": {
-        "CommandPoints": 45,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "SAPERY [RPG-7]",
@@ -457,7 +458,7 @@ sov_unit_edits = {
     },
 
     "Spetsnaz_CMD_SOV": {
-        "CommandPoints": 55,
+        "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "SPETSNAZ",
@@ -615,7 +616,7 @@ sov_unit_edits = {
     },
 
     "Engineers_CMD_VDV_SOV": {
-        "CommandPoints": 45,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "DESANT. SAPERY",
@@ -669,7 +670,7 @@ sov_unit_edits = {
     },
 
     "KGB_BorderGuard_CMD_SOV": {
-        "CommandPoints": 30,
+        "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "POGRANVOISK KGB",
@@ -771,7 +772,7 @@ sov_unit_edits = {
     },
     
     "Naval_VDV_CMD_SOV": {
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "DESANT. MOR. KOMROTI",
@@ -1236,9 +1237,13 @@ sov_unit_edits = {
         "UpgradeFromUnit": "MotRifles_CMD_TTsko_SOV",
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    ("SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm", "SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm"),
-                ],
+                "replace": {
+                    "SAW_RPK_74_5_56mm": {
+                        "new_weapon": "MMG_PKM_7_62mm",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "FM_AK_74": 11,
@@ -1269,9 +1274,13 @@ sov_unit_edits = {
                     "FM_AK_74": 6,
                     "MMG_PKM_7_62mm": 2,
                 },
-                "replace": [
-                    ("SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm", "SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm"),
-                ],
+                "replace": {
+                    "SAW_RPK_74_5_56mm": {
+                        "new_weapon": "MMG_PKM_7_62mm",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "FM_AK_74": 11,
@@ -1445,7 +1454,13 @@ sov_unit_edits = {
         "armor": "Infantry_armor_reference",
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm", "SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm")],
+                "replace": {
+                    "SAW_RPK_74_5_56mm": {
+                        "new_weapon": "MMG_PKM_7_62mm",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "MMG_PKM_7_62mm": 36,
@@ -1575,7 +1590,7 @@ sov_unit_edits = {
 
     "MP_SOV": {
         "armor": "Infantry_armor_reference",
-        "CommandPoints": 15,
+        "CommandPoints": 35,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -1583,12 +1598,53 @@ sov_unit_edits = {
         },
         "availability": [0, 12, 9, 0],
         "max_speed": 26,
+        "strength": 8,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
         "WeaponDescriptor": {
+            # Mixed-model loadout: 5 MP_SOV + 3 Reserve_SOV
+            # Vanilla turrets: T0=FM_AK_74 (qty=4)
+            # Target turrets:  T0=FM_AK_74(x5), T1=SAW_RPK_74_5_56mm(x2 animate=True),
+            #                  T2=RocketInf_RPG7(x1 animate=True)
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_AK_74": 6,
+                },
+                "insert": [
+                    (1, "SAW_RPK_74_5_56mm"),
+                    (2, "RocketInf_RPG7"),
+                ],
+                "insert_edits": {
+                    1: {  # SAW_RPK (newly inserted, donor Reserve_SOV)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 2,
+                        },
+                        "AmmoBoxIndex": 1,
+                        "HandheldEquipmentKey": "'WeaponAlternative_2'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_2"],
+                    },
+                    2: {  # RocketInf_RPG7 (newly inserted, donor Reserve_SOV)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 3,
+                        },
+                        "AmmoBoxIndex": 2,
+                        "HandheldEquipmentKey": "'WeaponAlternative_3'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
+                    },
+                },
+            },
+            # Vanilla Salves: [FM_AK_74=104]. Target: [11, 18, 4].
             "Salves": {
                 "FM_AK_74": 11,
+                "insert": [
+                    (1, 18),
+                    (2, 4),
+                ],
             },
         },
     },
@@ -2172,7 +2228,13 @@ sov_unit_edits = {
         "CommandPoints": 25,
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("ATGM_9K111M_Faktoriya", "ATGM_9K111_Fagot")],
+                "replace": {
+                    "ATGM_9K111M_Faktoriya": {
+                        "new_weapon": "ATGM_9K111_Fagot",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
     },
@@ -2181,7 +2243,13 @@ sov_unit_edits = {
         "CommandPoints": 25,
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("ATGM_9K111M_Faktoriya", "ATGM_9K111_Fagot")],
+                "replace": {
+                    "ATGM_9K111M_Faktoriya": {
+                        "new_weapon": "ATGM_9K111_Fagot",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
     },
@@ -2195,7 +2263,13 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("ATGM_9K111M_Faktoriya", "ATGM_9K111_Fagot")],
+                "replace": {
+                    "ATGM_9K111M_Faktoriya": {
+                        "new_weapon": "ATGM_9K111_Fagot",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
     },
@@ -2209,7 +2283,13 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("ATGM_9K111M_Faktoriya", "ATGM_9K111_Fagot")],
+                "replace": {
+                    "ATGM_9K111M_Faktoriya": {
+                        "new_weapon": "ATGM_9K111_Fagot",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
     },
@@ -2272,7 +2352,13 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("ATGM_9M113M_KonkursM", "ATGM_inf_9M113M_KonkursM")],
+                "replace": {
+                    "ATGM_9M113M_KonkursM": {
+                        "new_weapon": "ATGM_inf_9M113M_KonkursM",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
     },
@@ -2382,10 +2468,14 @@ sov_unit_edits = {
 
     # SOV ARTILLERY
     "MTLB_CMD_SOV": {
+        "capacities": {
+            "add_capacities": ["LDR_ARTY"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 60,
         "GameName": {
             "display": "MT-LBu MASHINA",
-            "token": "PUEZYZBZLF",
+            "token": "PUEZYZBZLF", # Don't remove or logistic tab version will get renamed as well
         },
         "TagSet": {
             "overwrite_all": [
@@ -2858,7 +2948,11 @@ sov_unit_edits = {
 
     # SOV TANK
     "T10M_CMD_SOV": {
-        "CommandPoints": 100,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 90,
         "GameName": {
             "token": "PFCNKRFVF",
             "display": "REZ. T-10MK",
@@ -2889,6 +2983,10 @@ sov_unit_edits = {
     },
 
     "T55A_CMD_SOV": {
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 80,
         "GameName": {
             "token": "PFCNKJHHF",
@@ -2920,6 +3018,10 @@ sov_unit_edits = {
     },
 
     "T55AM_1_CMD_SOV": {
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 110,
         "GameName": {
             "token": "PFCNJZNOHF",
@@ -2952,6 +3054,10 @@ sov_unit_edits = {
     },
     
     "T55AM_CMD_SOV": { # MOR. T-55AMK
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 110,
         "GameName": {
             "display": "MOR. T-55AMK",
@@ -2984,7 +3090,11 @@ sov_unit_edits = {
     },
 
     "T62MD_CMD_SOV": {
-        "CommandPoints": 130,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 115,
         "armor": {
             "top": (3, None),
         },
@@ -3019,7 +3129,11 @@ sov_unit_edits = {
     },
 
     "T62M_CMD_SOV": {
-        "CommandPoints": 130,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 115,
         "armor": {
             "top": (3, None),
         },
@@ -3059,7 +3173,11 @@ sov_unit_edits = {
     },
     
     "T64A_CMD_SOV": {
-        "CommandPoints": 135,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 130,
         "armor": {
             "top": (3, None),
         },
@@ -3094,7 +3212,11 @@ sov_unit_edits = {
     },
 
     "T64B_CMD_SOV": {
-        "CommandPoints": 185,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 175,
         "armor": {
             "top": (3, None),
         },
@@ -3129,7 +3251,11 @@ sov_unit_edits = {
     },
 
     "T64BV_CMD_SOV": {
-        "CommandPoints": 200,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 190,
         "armor": {
             "top": (4, None),
         },
@@ -3165,7 +3291,11 @@ sov_unit_edits = {
     },
 
     "T72_CMD_SOV": {
-        "CommandPoints": 120,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 110,
         "armor": {
             "top": (2, None),
         },
@@ -3199,7 +3329,11 @@ sov_unit_edits = {
     },
     
     "T72M_CMD_SOV": {
-        "CommandPoints": 170,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 160,
         "armor": {
             "top": (2, None),
         },
@@ -3234,7 +3368,11 @@ sov_unit_edits = {
     },
 
     "T72M1_CMD_SOV": {
-        "CommandPoints": 195,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 185,
         "armor": {
             "top": (3, None),
         },
@@ -3269,7 +3407,11 @@ sov_unit_edits = {
     },
 
     "T72B_CMD_SOV": {
-        "CommandPoints": 225,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 205,
         "armor": {
             "top": (4, None),
         },
@@ -3305,7 +3447,11 @@ sov_unit_edits = {
     },
 
     "T80B_CMD_SOV": {
-        "CommandPoints": 210,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 200,
         "armor": {
             "top": (3, None),
         },
@@ -3340,7 +3486,11 @@ sov_unit_edits = {
     },
 
     "T80BV_CMD_SOV": {
-        "CommandPoints": 230,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 215,
         "armor": {
             "front": (18, None),
             "top": (4, None),
@@ -3531,25 +3681,33 @@ sov_unit_edits = {
         "strength": 10,
     },
 
-    "BMP_1_SP2_SOV": {
+    "BMP_1_SP2_SOV": { # (Malyutka, no smoke)
         "CommandPoints": 25,
     },
 
-    "BMP_1P_SOV": {
-        "CommandPoints": 35,
+    "BMP_1P_SOV": { # (Faktoriya, smoke)
+        "CommandPoints": 40,
         "GameName": {
             "display": "BMP-1P [FAKTORIYA]",
-            # "token": "CVRIKDQELZ",
         },
+    },
+    
+    "BMP_1PG_SOV": { # (Faktoriya, AGS-17, no smoke)
+        "CommandPoints": 40,
         "WeaponDescriptor": {
-            "equipmentchanges": {
-                "replace": [("ATGM_9K111_Fagot", "ATGM_9K111M_Faktoriya")],
+            "Salves": {
+                "ATGM_9K111M_Faktoriya_IFV": 6,
             },
         },
     },
     
-    "BMP_1PG_SOV": {
-        "CommandPoints": 30,
+    "BMP_1P_Konkurs_SOV": { # (Konkurs, Faktoriya, smoke)
+        "CommandPoints": 50,
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_9M113_Konkurs_BMP2": 6,
+            },
+        },
     },
     
     "BMD_1_SOV": {
@@ -3561,7 +3719,7 @@ sov_unit_edits = {
     },
 
     "BMD_2_SOV": {
-        "CommandPoints": 35,
+        "CommandPoints": 40,
     },
 
     "BMP_2_SOV": {
@@ -3994,7 +4152,7 @@ sov_unit_edits = {
             "front": (18, None),
             "top": (4, None),
         },
-        "CommandPoints": 220,
+        "CommandPoints": 225,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -4005,7 +4163,13 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("ATGM_9M112_Kobra", "ATGM_9M112M2_Kobra")],
+                "replace": {
+                    "ATGM_9M112_Kobra": {
+                        "new_weapon": "ATGM_9M112M2_Kobra",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
         "availability": [0, 4, 3, 0],
@@ -4076,7 +4240,7 @@ sov_unit_edits = {
     },
     
     "BMP_1P_reco_SOV": {
-        "CommandPoints": 45,
+        "CommandPoints": 50,
     },
 
     "BMP_2_reco_SOV": {
@@ -4284,7 +4448,13 @@ sov_unit_edits = {
                     "PM_AS_Val": 6,
                     "Sniper_VSS_Vintorez_double": 2,
                 },
-                "replace": [("Sniper_VSS_Vintorez", "Sniper_VSS_Vintorez_double")],
+                "replace": {
+                    "Sniper_VSS_Vintorez": {
+                        "new_weapon": "Sniper_VSS_Vintorez_double",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -4353,7 +4523,13 @@ sov_unit_edits = {
         "strength": 8,
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm", "SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm")],
+                "replace": {
+                    "SAW_RPK_74_5_56mm": {
+                        "new_weapon": "MMG_PKM_7_62mm",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
                 "quantity": {
                     "FM_AK_74": 7
                 },
@@ -4374,7 +4550,13 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm", "SAW_RPK_74_5_56mm", "MMG_PKM_7_62mm")],
+                "replace": {
+                    "SAW_RPK_74_5_56mm": {
+                        "new_weapon": "MMG_PKM_7_62mm",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "MMG_PKM_7_62mm": 36,
@@ -4488,7 +4670,13 @@ sov_unit_edits = {
                 "quantity": {
                     "Sniper_VSS_Vintorez_double": 2,
                 },
-                "replace": [("Sniper_VSS_Vintorez", "Sniper_VSS_Vintorez_double")],
+                "replace": {
+                    "Sniper_VSS_Vintorez": {
+                        "new_weapon": "Sniper_VSS_Vintorez_double",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
                 "insert": [(2, "RocketInf_RPG26_72_5mm")],
                 "insert_edits": {
                     2: {
@@ -4577,6 +4765,7 @@ sov_unit_edits = {
 
     "Mi_24K_reco_SOV": {
         "CommandPoints": 150,
+        "strength": "Mi_24P_SOV",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -4737,7 +4926,13 @@ sov_unit_edits = {
                 "DCA_1_canon_S60_57mm_radar": 1,
             },
             "equipmentchanges": {
-                "replace": [("DCA_1_canon_S60_57mm", "DCA_1_canon_S60_57mm_radar")],
+                "replace": {
+                    "DCA_1_canon_S60_57mm": {
+                        "new_weapon": "DCA_1_canon_S60_57mm_radar",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
         "optics": {
@@ -4770,7 +4965,13 @@ sov_unit_edits = {
                 "DCA_1_canon_KS30_130mm_radar": 1,
             },
             "equipmentchanges": {
-                "replace": [("DCA_1_canon_KS30_130mm", "DCA_1_canon_KS30_130mm_radar")],
+                "replace": {
+                    "DCA_1_canon_KS30_130mm": {
+                        "new_weapon": "DCA_1_canon_KS30_130mm_radar",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
         "optics": {
@@ -4810,7 +5011,13 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_AK_74", "FM_AK_74_noreflex")],
+                "replace": {
+                    "FM_AK_74": {
+                        "new_weapon": "FM_AK_74_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "availability": [7, 5, 0, 0],
@@ -4826,7 +5033,13 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_AK_74", "FM_AK_74_noreflex")],
+                "replace": {
+                    "FM_AK_74": {
+                        "new_weapon": "FM_AK_74_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -4841,7 +5054,13 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_AK_74", "FM_AK_74_noreflex")],
+                "replace": {
+                    "FM_AK_74": {
+                        "new_weapon": "FM_AK_74_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -4856,7 +5075,13 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_AKS_74", "FM_AKS_74_noreflex")],
+                "replace": {
+                    "FM_AKS_74": {
+                        "new_weapon": "FM_AKS_74_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -4871,7 +5096,13 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_AKS_74", "FM_AKS_74_noreflex")],
+                "replace": {
+                    "FM_AKS_74": {
+                        "new_weapon": "FM_AKS_74_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -4886,7 +5117,13 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_AKS_74", "FM_AKS_74_noreflex")],
+                "replace": {
+                    "FM_AKS_74": {
+                        "new_weapon": "FM_AKS_74_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -4900,7 +5137,13 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_AK_74", "FM_AK_74_noreflex")],
+                "replace": {
+                    "FM_AK_74": {
+                        "new_weapon": "FM_AK_74_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "availability": [12, 0, 0, 0],
@@ -5154,7 +5397,7 @@ sov_unit_edits = {
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
-        "CommandPoints": 90,
+        "CommandPoints": 115,
         "availability": [4, 3, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
@@ -5227,7 +5470,13 @@ sov_unit_edits = {
                 "AA_R60M_Vympel": 4,
             },
             "equipmentchanges": {
-                "replace": [("AA_R60M_Vympel", "AA_R60M_Vympel_helo")],
+                "replace": {
+                    "AA_R60M_Vympel": {
+                        "new_weapon": "AA_R60M_Vympel_helo",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "turrets": {
                 1: {
@@ -5291,10 +5540,12 @@ sov_unit_edits = {
     
     "Mi_24D_Desant_SOV": {
         "CommandPoints": 85,
+        "strength": "Mi_24P_SOV",
     },
 
     "Mi_24V_AA_SOV": {
         "CommandPoints": 160,
+        "strength": "Mi_24P_SOV",
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -5308,6 +5559,7 @@ sov_unit_edits = {
 
     "Mi_24V_RKT_SOV": {  # 4x Kokon, 20x S-13
         "CommandPoints": 160,
+        "strength": "Mi_24P_SOV",
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -5321,11 +5573,13 @@ sov_unit_edits = {
 
     "Mi_24V_RKT2_SOV": {  # 4x Kokon, 80x S-8KOM
         "CommandPoints": 160,
+        "strength": "Mi_24P_SOV",
         "availability": [0, 4, 3, 0],
     },
 
     "Mi_24V_AT_SOV": {  # 8x Kokon, 40x S-80
         "CommandPoints": 160,
+        "strength": "Mi_24P_SOV",
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -5345,6 +5599,7 @@ sov_unit_edits = {
             "display": "Mi-24P [AT]",
         },
         "CommandPoints": 185,
+        "strength": 10,
         "WeaponDescriptor": {
             "Salves": {
                 "AutoCanon_AP_30mm_Bitube_Gsh30k": 5,
@@ -5353,12 +5608,10 @@ sov_unit_edits = {
                 0: {
                     "MountedWeapons": {
                         "AutoCanon_AP_30mm_Bitube_Gsh30k": {
-                            # "add_members": [("TirContinu", True), ],
                             "Ammunition": "AutoCanon_AP_30mm_Bitube_Gsh30k_burst",
                             "EffectTag": "'FireEffect_GatlingAir_Gsh_30_2_30mm_x2'",
                         },
                         "AutoCanon_HE_30mm_Bitube_Gsh30k": {
-                            # "add_members": [("TirContinu", True), ],
                             "Ammunition": "AutoCanon_HE_30mm_Bitube_Gsh30k_burst",
                             "EffectTag": "'FireEffect_GatlingAir_Gsh_30_2_30mm_x2'",
                         },
@@ -5374,23 +5627,19 @@ sov_unit_edits = {
             "display": "Mi-24P [AA]",
         },
         "CommandPoints": 185,
+        "strength": "Mi_24P_SOV",
         "WeaponDescriptor": {
             "Salves": {
                 "AutoCanon_AP_30mm_Bitube_Gsh30k": 5,
-            },
-            "equipmentchanges": {
-                "replace": [("AA_R60M_Vympel", "AA_R60M_Vympel_Helo")],
             },
             "turrets": {
                 0: {
                     "MountedWeapons": {
                         "AutoCanon_AP_30mm_Bitube_Gsh30k": {
-                            # "add_members": [("TirContinu", True), ],
                             "Ammunition": "AutoCanon_AP_30mm_Bitube_Gsh30k_burst",
                             "EffectTag": "'FireEffect_GatlingAir_Gsh_30_2_30mm_x2'",
                         },
                         "AutoCanon_HE_30mm_Bitube_Gsh30k": {
-                            # "add_members": [("TirContinu", True), ],
                             "Ammunition": "AutoCanon_HE_30mm_Bitube_Gsh30k_burst",
                             "EffectTag": "'FireEffect_GatlingAir_Gsh_30_2_30mm_x2'",
                         },
@@ -5403,6 +5652,7 @@ sov_unit_edits = {
 
     "Mi_24VP_SOV": {
         "CommandPoints": 200,
+        "strength": "Mi_24P_SOV",
         "WeaponDescriptor": {
             "Salves": {
                 "AutoCanon_AP_23mm_Bitube_Gsh23L": 28,
@@ -5420,16 +5670,19 @@ sov_unit_edits = {
     
     "Mi_24P_Atakax4_SOV": {
         "CommandPoints": 200,
+        "strength": "Mi_24P_SOV",
         "availability": [0, 2, 0, 1],
     },
     
     "Mi_24P_Atakax8_SOV": {
         "CommandPoints": 230,
+        "strength": "Mi_24P_SOV",
         "availability": [0, 2, 0, 1],
     },
     
     "Ka_29_SOV": {
         "CommandPoints": 230,
+        "strength": 10,
         "availability": [0, 2, 0, 1],
     },
     
@@ -5483,7 +5736,13 @@ sov_unit_edits = {
         "availability": [0, 5, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("RocketAir_S5_57mm_salvolength32", "RocketAir_S5_57mm_avion_salvolength32")],
+                "replace": {
+                    "RocketAir_S5_57mm_salvolength32": {
+                        "new_weapon": "RocketAir_S5_57mm_avion_salvolength32",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -5597,9 +5856,13 @@ sov_unit_edits = {
         "availability": [0, 0, 0, 1],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    ("GatlingAir_Gsh_30_6_30mm", "GatlingAir_Gsh_30_6_30mm_NoShootPos"),
-                ],
+                "replace": {
+                    "GatlingAir_Gsh_30_6_30mm": {
+                        "new_weapon": "GatlingAir_Gsh_30_6_30mm_NoShootPos",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
             "SalvoIsMainSalvo": [False, True, False],
         },
@@ -5666,10 +5929,18 @@ sov_unit_edits = {
                 "RocketAir_B8_80mm_salvolength40": 1,
             },
             "equipmentchanges": {
-                "replace": [
-                    ("RocketAir_B8_80mm_avion_salvolength10", "RocketAir_B8_80mm_salvolength40"),
-                    ("RocketAir_B8_80mm_avion_salvolength10", "RocketAir_B8_80mm_salvolength40"),
-                ],
+                "replace": {
+                    "RocketAir_B8_80mm_avion_salvolength10": {
+                        "new_weapon": "RocketAir_B8_80mm_salvolength40",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                    "RocketAir_B8_80mm_avion_salvolength10": {
+                        "new_weapon": "RocketAir_B8_80mm_salvolength40",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -5832,7 +6103,13 @@ sov_unit_edits = {
                 "RocketAir_B8_80mm_salvolength40": 2,
             },
             "equipmentchanges": {
-                "replace": [("RocketAir_B8_80mm_salvolength80", "RocketAir_B8_80mm_salvolength40")],
+                "replace": {
+                    "RocketAir_B8_80mm_salvolength80": {
+                        "new_weapon": "RocketAir_B8_80mm_salvolength40",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -5989,7 +6266,13 @@ sov_unit_edits = {
         "UpgradeFromUnit": None,
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("Bomb_KAB_1500Kr", "Bomb_KAB_1500L_salvolength2")],
+                "replace": {
+                    "Bomb_KAB_1500Kr": {
+                        "new_weapon": "Bomb_KAB_1500L_salvolength2",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "Bomb_KAB_1500L_salvolength2": 1,
@@ -6005,10 +6288,18 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    ("GatlingAir_Gsh_23_6_23mm", "GatlingAir_Gsh_23_6_23mm_NoShootPos"),
-                    ("Bomb_KAB_1500L", "Bomb_KAB_1500Kr"),
-                ],
+                "replace": {
+                    "GatlingAir_Gsh_23_6_23mm": {
+                        "new_weapon": "GatlingAir_Gsh_23_6_23mm_NoShootPos",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                    "Bomb_KAB_1500L": {
+                        "new_weapon": "Bomb_KAB_1500Kr",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "availability": [0, 0, 0, 1],
@@ -6164,12 +6455,12 @@ sov_unit_edits = {
     },
 
     "Su_27S_SOV": {  # 6x R-73, 4x R-27R
-        "CommandPoints": 240,
+        "CommandPoints": 250,
         "availability": [0, 2, 0, 1],
     },
 
     "Su_27S_jammers_SOV": {  # 4x R-27ER, 2x R-27T, 40% ECM
-        "CommandPoints": 285,
+        "CommandPoints": 290,
         "availability": [0, 2, 0, 1],
     },
     

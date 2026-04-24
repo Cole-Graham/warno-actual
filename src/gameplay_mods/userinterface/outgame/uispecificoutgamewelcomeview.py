@@ -62,13 +62,14 @@ def _welcome_descriptor(source_path) -> None:
     
     game_version = ModConfig.get_instance().config_data['build_config']['gameplay_version']
     author = ModConfig.get_instance().config_data['build_config']['author']
+    coauthors = ModConfig.get_instance().config_data['build_config']['co-developers']  
     # Build date in format YY-MM-DD (ISO 8601)
     build_date = datetime.now().strftime("%Y-%m-%d")
     
     entries = [
         ("menuLabel", "WARNO ACTUAL"),
         ("menuVers", f"Version {game_version} ({build_date})"),
-        ("menuAuth", f"Developed by {author}"),
+        ("menuAuth", f"Lead developer: {author}\nCo-developed by: {coauthors}"),
     ]
 
     write_dictionary_entries(entries, dictionary_type="outgame")

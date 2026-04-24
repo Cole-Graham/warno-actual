@@ -1,0 +1,17 @@
+---
+description: When adding or changing Cursor rules, update AGENTS.md so the repo stays the source of truth for all devs.
+globs: .cursor/rules/*.mdc
+alwaysApply: false
+---
+
+# Keep [AGENTS.md](../AGENTS.md) in sync with `.cursor/rules`
+
+**This** `.mdc` is the only rule file committed; other `*.mdc` under `.cursor/rules/` are **not** in git. **[AGENTS.md](../AGENTS.md)** is the **versioned** copy every developer and non-Cursor tool should read; private rules need to be reflected there for the team.
+
+Whenever you **add** a new file under `.cursor/rules/` or **materially change** an existing `.mdc` rule (new policy, new section, important edits):
+
+1. **Update [AGENTS.md](../AGENTS.md)** in the **same task** (or immediately after, before considering the work done): fold the substance of the rule into the matching section in `AGENTS.md`, or add a new section if it is a new topic.
+2. Do **not** leave `AGENTS.md` missing guidance that exists only in `.mdc` files.
+3. If a rule is **file-scoped** (globs) or **optional** for the agent, say so briefly in `AGENTS.md` so humans know when it applies.
+
+If you only fix typos or front matter in an `.mdc` with **no** semantic change, updating `AGENTS.md` is optional.

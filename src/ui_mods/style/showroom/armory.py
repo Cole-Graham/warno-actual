@@ -2,9 +2,12 @@
 # from src import ndf
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import find_obj_by_type
+from src import ModConfig
 
 logger = setup_logger(__name__)
 
+config = ModConfig.get_instance()
+target = config.config_data['build_config']['target']
 
 def edit_uispecificshowroomarmorycomponent(source_path) -> None:
     """Edit UISpecificShowroomArmoryComponent.ndf.
@@ -18,14 +21,15 @@ def edit_uispecificshowroomarmorycomponent(source_path) -> None:
     source_path.by_namespace("MaxUnitsInDeckPerCategory").v = "11"
     logger.debug("Updated max units in deck per category")
     
-    _edit_armory_component(source_path)
-    _edit_category_button_descr(source_path)
-    _edit_togglable_filter_button(source_path)
-    _edit_division_filter_button(source_path)
-    _edit_showroom_top_filters_bar(source_path)
-    _edit_allnationsfilter(source_path)
-    _edit_allegiancedivisionfilter(source_path)
-    _edit_unitgridnamefilter(source_path)
+    if target == "gameplay":
+        _edit_armory_component(source_path)
+        _edit_category_button_descr(source_path)
+        _edit_togglable_filter_button(source_path)
+        _edit_division_filter_button(source_path)
+        _edit_showroom_top_filters_bar(source_path)
+        _edit_allnationsfilter(source_path)
+        _edit_allegiancedivisionfilter(source_path)
+        _edit_unitgridnamefilter(source_path)
 
 def _edit_armory_component(source_path) -> None:
     """edit ArmoryComponentDescriptor"""
@@ -60,6 +64,14 @@ def _edit_showroom_top_filters_bar(source_path) -> None:
     showroom_top_filters_bar = source_path.by_namespace("ShowroomTopFiltersBarContainer")
     elements = showroom_top_filters_bar.v.by_m("Elements")
     
+    first_margin =  "FirstMargin = TRTTILength(Magnifiable = 1.0)"
+    inter_item_margin = "InterItemMargin = TRTTILength(Magnifiable = 1.0)"
+    last_margin = "LastMargin = TRTTILength(Magnifiable = 1.0)"
+    
+    showroom_top_filters_bar.v.insert(2, last_margin)
+    showroom_top_filters_bar.v.insert(2, inter_item_margin)
+    showroom_top_filters_bar.v.insert(2, first_margin)
+    
     new_value = """[
     BUCKListElementDescriptor
     (
@@ -72,22 +84,20 @@ def _edit_showroom_top_filters_bar(source_path) -> None:
             ElementName = "UnitDivisionScrollingContainer222"
             ComponentFrame = TUIFramePropertyRTTI
             (
-                MagnifiableWidthHeight = [1500.0, 60.0]
-                AlignementToFather = [0.5, 0.0]
+                MagnifiableWidthHeight = [1700.0, 62.0]
+                AlignementToFather = [0.5, 0.025]
                 AlignementToAnchor = [0.5, 0.0]
             )
-
             ExternalScrollbar = true
-            ScrollStepSize = [0.0, 60.0]
+            ScrollStepSize = [18.34, 0.0]
             HasHorizontalScrollbar = true
             ScrollBarBackgroundToken = "AmroryButtonTxt"
             ScrollBarElevatorBackgroundToken = "AmroryButtonBkg"
             HorizontalScrollbarComponentFrame = TUIFramePropertyRTTI
             (
-                MagnifiableWidthHeight = [0.0, 2.0]
-                MagnifiableOffset = [0.0, 55.0]
+                MagnifiableWidthHeight = [0.0, 3.5]
+                MagnifiableOffset = [0.0, 54.9]
             )
-
             Components = [AllegianceDivisionFilter(ElementName = "NATODivisionFilterRack")]
         )
     ),
@@ -98,22 +108,21 @@ def _edit_showroom_top_filters_bar(source_path) -> None:
             ElementName = "UnitDivisionScrollingContainer223"
             ComponentFrame = TUIFramePropertyRTTI
             (
-                MagnifiableWidthHeight = [1500.0, 60.0]
-                AlignementToFather = [0.5, 0.0]
+                MagnifiableWidthHeight = [1700.0, 62.0]
+                AlignementToFather = [0.5, 0.12]
                 AlignementToAnchor = [0.5, 0.0]
             )
 
             ExternalScrollbar = true
-            ScrollStepSize = [0.0, 60.0]
+            ScrollStepSize = [18.34, 0.0]
             HasHorizontalScrollbar = true
             ScrollBarBackgroundToken = "AmroryButtonTxt"
             ScrollBarElevatorBackgroundToken = "AmroryButtonBkg"
             HorizontalScrollbarComponentFrame = TUIFramePropertyRTTI
             (
-                MagnifiableWidthHeight = [0.0, 2.0]
-                MagnifiableOffset = [0.0, -1.0]
+                MagnifiableWidthHeight = [0.0, 3.5]
+                MagnifiableOffset = [0.0, -6.2]
             )
-
             Components = [AllegianceDivisionFilter(ElementName = "PACTDivisionFilterRack")]
         )
     ),

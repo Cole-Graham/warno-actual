@@ -132,10 +132,18 @@ UK_NEW_UNITS = {
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "HAGRU_MANPADS": [(1, 0, "MANPAD_Starstreak_HAGRU")], # turret_index, donor_weapon_index, ammo_name
-                "replace": [
-                    ("FM_L85A1", "FM_L85A1_noreflex"),
-                    ("Javelin", "MANPAD_Starstreak"),
-                ],
+                "replace": {
+                    "FM_L85A1": {
+                        "new_weapon": "FM_L85A1_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                    "Javelin": {
+                        "new_weapon": "MANPAD_Starstreak",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "FM_L85A1_noreflex": 11,
@@ -174,8 +182,6 @@ UK_NEW_UNITS = {
             ],
         },
         "strength": 5,
-        # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
-        "Dangerousness": 12,
         "WeaponDescriptor": {
             "Salves": {
                 "FM_L85A1": 11,
@@ -193,8 +199,6 @@ UK_NEW_UNITS = {
         "Factory": "EFactory/Logistic",
         "armor": "Infantry_armor_reference",
         "CommandPoints": 145,
-        "UnitAttackValue": 1,
-        "UnitDefenseValue": 16,
         "UnitRole": 'hq_inf',
         "SpecialtiesList": [
             '_leader',
@@ -488,6 +492,10 @@ UK_NEW_UNITS = {
         "InfantrySquadModuleGUID": "c6bae323-a820-4eb3-b45f-c617e3162a3d",
         "ShowroomGUID": "f26a6c58-4680-4fb2-9540-179ac933400a",
         "CadavreGUID": "30a1f922-b453-4fbe-ac83-63be38aba866",
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "NewName": "FV4201_Chieftain_Mk9_CMD_UK",
         "GameName": {
             "display": "CHIEFTAIN Mk.9",
@@ -527,7 +535,7 @@ UK_NEW_UNITS = {
         },
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack', 
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 
-                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply', 
+                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/ShootDefensiveSmoke', 'EOrderType/AskForSupply', 'EOrderType/UseCapacite',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": False, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": False,
@@ -776,7 +784,13 @@ UK_NEW_UNITS = {
         "UpgradeFromUnit": "DCA_Rapier_FSA_UK",
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("SAM_RAPIER_salvolength8", "SAM_RAPIER_FSA_salvolength8")],
+                "replace": {
+                    "SAM_RAPIER_salvolength8": {
+                        "new_weapon": "SAM_RAPIER_FSA_salvolength8",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
 
         },
@@ -837,7 +851,13 @@ UK_NEW_UNITS = {
         "UpgradeFromUnit": "Tracked_Rapier_UK",
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("SAM_RAPIER_salvolength8", "SAM_RAPIER_DARKFIRE_salvolength8")],
+                "replace": {
+                    "SAM_RAPIER_salvolength8": {
+                        "new_weapon": "SAM_RAPIER_DARKFIRE_salvolength8",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
 
         },

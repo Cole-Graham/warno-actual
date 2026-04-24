@@ -70,7 +70,7 @@ uk_unit_edits = {
 
     # UK INF
     "Territorial_CMD_UK": {
-        "CommandPoints": 25,
+        "CommandPoints": 20,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "TERRIERS",
@@ -91,9 +91,6 @@ uk_unit_edits = {
         },
         "strength": 7,
         "TransportedTexture": "UseInGame_Transport_REGINF",
-        # "SortingOrder": 20075,
-        # "UnitAttackValue": 1,
-        # "UnitDefenseValue": 16,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
         "UnitRole": "infantry",
@@ -123,11 +120,10 @@ uk_unit_edits = {
     },
 
     "Engineers_CMD_UK": {
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "ASSAULT PIONEERS",
-            "token": "VZOODKAGWE",
         },
         "TagSet": {
             "overwrite_all": [
@@ -144,9 +140,6 @@ uk_unit_edits = {
         },
         "strength": 8,
         "TransportedTexture": "UseInGame_Transport_assault",
-        # "SortingOrder": 20075,
-        # "UnitAttackValue": 1,
-        # "UnitDefenseValue": 16,
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
         "UnitRole": "engineer",
@@ -191,11 +184,10 @@ uk_unit_edits = {
     },
 
     "Rifles_CMD_UK": {
-        "CommandPoints": 35,
+        "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "RIFLES",
-            "token": "YGMKZKXXEV",
         },
         "TagSet": {
             "overwrite_all": [
@@ -259,9 +251,6 @@ uk_unit_edits = {
             ],
         },
         "TransportedTexture": "UseInGame_Transport_REGINF",
-        # "SortingOrder": 20075,
-        # "UnitAttackValue": 1,
-        # "UnitDefenseValue": 16,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
         "UnitRole": "infantry",
@@ -279,10 +268,10 @@ uk_unit_edits = {
     },
     
     "Paratroopers_CMD_UK": {
-        "CommandPoints": 45,
+        "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "display": "PARA.",
+            "display": "PARAS",
         },
         "TagSet": {
             "overwrite_all": [
@@ -329,7 +318,7 @@ uk_unit_edits = {
     },
 
     "Airmobile_Mot_CMD_UK": {
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "MOT. AIRMOBILE",
@@ -349,9 +338,6 @@ uk_unit_edits = {
             ],
         },
         "TransportedTexture": "UseInGame_Transport_REGINF",
-        # "SortingOrder": 20075,
-        # "UnitAttackValue": 1,
-        # "UnitDefenseValue": 16,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
         "UnitRole": "infantry",
@@ -399,7 +385,7 @@ uk_unit_edits = {
     },
     
     "Rifles_Gurkhas_CMD_UK": {
-        "CommandPoints": 50,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "GURKHA RIFLES",
@@ -437,11 +423,17 @@ uk_unit_edits = {
         "strength": 9,
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("MMG_inf_L7A2_7_62mm", "SAW_L86A1_5_56mm", "MMG_inf_L7A2_7_62mm", "SAW_L86A1_5_56mm")],
-                "skeleton_tags": [
-                    ("bazooka", "WeaponAlternative_3"),
-                    ("grenade", "WeaponAlternative_4")
-                ],
+                "replace": {
+                    "MMG_inf_L7A2_7_62mm": {
+                        "new_weapon": "SAW_L86A1_5_56mm",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
+                # "skeleton_tags": [
+                #     ("bazooka", "WeaponAlternative_3"),
+                #     ("grenade", "WeaponAlternative_4")
+                # ],
                 "quantity": {
                     "FM_L85A1": 6,
                     "SAW_L86A1_5_56mm": 3,
@@ -455,7 +447,7 @@ uk_unit_edits = {
     },
     
     "Guards_CMD_UK": {
-        "CommandPoints": 45,
+        "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "GUARDS",
@@ -494,7 +486,14 @@ uk_unit_edits = {
                 "quantity": {
                     "FM_L85A1": 6,
                 },
-                "replace": [("RocketInf_M72A3_LAW_66mm", "RocketInf_LAW_80", "RocketInf_M72_LAW_66mm", "RocketInf_LAW_80")],
+                "replace": {
+                    "RocketInf_M72A3_LAW_66mm": {
+                        "new_weapon": "RocketInf_LAW_80",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                        "old_new_effect": ("RocketInf_M72_LAW_66mm", "RocketInf_LAW_80"),
+                    },
+                },
             },
             "Salves": {
                 "RocketInf_LAW_80": 4,
@@ -598,16 +597,88 @@ uk_unit_edits = {
     },
 
     "RMP_UK": {
-        "CommandPoints": 15,
+        "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
-        "strength": 5,
+        "strength": 8,
         "availability": [0, 12, 9, 0],
         "max_speed": 26,
         "WeaponDescriptor": {
+            # Mixed-model loadout: 5 RMP_UK + 3 Territorial_UK
+            # Vanilla turrets: T0=PM_Sterling, T1=FM_L1A1_SLR, T2=MMG_inf_L7A2_7_62mm
+            # Target turrets:  T0=FM_L1A1_SLR(x3), T1=PM_Sterling(x3), T2=MMG_inf_L7A2_7_62mm(x2 animate=False), T3=RocketInf_M72A3_LAW_66mm
+            "turrets": {
+                # Drop the vanilla SLR turret so we can re-insert it at index 0
+                "remove": [1],
+            },
             "equipmentchanges": {
                 "quantity": {
-                    "PM_Sterling": 2,
+                    "FM_L1A1_SLR": 3,
+                    "PM_Sterling": 3,
+                    "MMG_inf_L7A2_7_62mm": 2,
                 },
+                "animate": {
+                    "MMG_inf_L7A2_7_62mm": False,
+                },
+                "insert": [
+                    (0, "FM_L1A1_SLR"),
+                    (3, "RocketInf_M72A3_LAW_66mm"),
+                ],
+                "insert_edits": {
+                    0: {  # SLR (newly inserted)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 1,
+                        },
+                        "AmmoBoxIndex": 0,
+                        "HandheldEquipmentKey": "'WeaponAlternative_1'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_1'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_1'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_1"],
+                    },
+                    1: {  # Sterling (was vanilla T0, now bumped to T1 after insert at 0)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 2,
+                        },
+                        "AmmoBoxIndex": 1,
+                        "HandheldEquipmentKey": "'WeaponAlternative_2'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_2"],
+                    },
+                    2: {  # MMG (was vanilla T2, became T1 after remove, became T2 after insert at 0)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 3,
+                        },
+                        "AmmoBoxIndex": 2,
+                        "HandheldEquipmentKey": "'WeaponAlternative_3'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
+                    },
+                    3: {  # LAW (newly inserted)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 4,
+                        },
+                        "AmmoBoxIndex": 3,
+                        "HandheldEquipmentKey": "'WeaponAlternative_4'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_4'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_4'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_4"],
+                    },
+                },
+            },
+            # Vanilla Salves: [Sterling=20, SLR=90, MMG=92]. Target: [SLR=11, Sterling=22, MMG=36, LAW=4].
+            # Per-ammo entries write to vanilla positions and trip the apply_default_salves skip
+            # guard so it doesn't re-apply Sterling/MMG defaults at the now-stale vanilla indices.
+            # ``remove`` drops the vanilla SLR salve before the inserts repopulate the slots.
+            "Salves": {
+                "PM_Sterling": 22,
+                "FM_L1A1_SLR": 11,
+                "MMG_inf_L7A2_7_62mm": 36,
+                "insert": [
+                    (0, 11),
+                    (3, 4),
+                ],
+                "remove": ["FM_L1A1_SLR"],
             },
         },
         "SpecialtiesList": {
@@ -799,7 +870,7 @@ uk_unit_edits = {
         },
     },
 
-    "Airmobile_UK": {  # 3x FN Mag
+    "Airmobile_UK": {  # AIRMOBILE GUN GROUP - 3x FN Mag
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "max_speed": 26,
@@ -931,7 +1002,7 @@ uk_unit_edits = {
     },
 
     "Airmobile_Mot_UK": {
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1201,10 +1272,14 @@ uk_unit_edits = {
 
     # UK ARTILLERY
     "FV432_CMD_UK": {
+        "capacities": {
+            "add_capacities": ["LDR_ARTY"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 60,
         "GameName": {
             "display": "FV432 BATTERY CP",
-            "token": "NUDZQLLWOD",
+            "token": "NUDZQLLWOD", # Don't remove or logistic tab version will get renamed as well
         },
         "TagSet": {
             "overwrite_all": [
@@ -1343,7 +1418,11 @@ uk_unit_edits = {
 
     # UK TANK
     "Centurion_Mk13_CMD_UK": {
-        "CommandPoints": 75,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 65,
         "GameName": {
             "display": "CENTURION Mk.13",
             "token": "DBEDJIGRRN",
@@ -1381,7 +1460,11 @@ uk_unit_edits = {
     },
     
     "FV4201_Chieftain_CMD_UK": {
-        "CommandPoints": 150,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 135,
         "armor": {
             "top": (4, None),
         },
@@ -1422,7 +1505,11 @@ uk_unit_edits = {
     },
     
     "Challenger_1_Mk1_CMD_UK": {
-        "CommandPoints": 205,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 195,
         "armor": {
             "top": (4, None),
         },
@@ -1573,7 +1660,13 @@ uk_unit_edits = {
         "availability": [8, 6, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("ATGM_Swingfire_salvolength2", "ATGM_Swingfire_noisy_salvolength2")],
+                "replace": {
+                    "ATGM_Swingfire_salvolength2": {
+                        "new_weapon": "ATGM_Swingfire_noisy_salvolength2",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
     },
@@ -1709,7 +1802,7 @@ uk_unit_edits = {
             "Salves": {
                 "MMG_L37A2_7_62mm": 96,
                 "MMG_L8A2_7_62mm": 96,
-                "HMG_12_7_mm_M2HB_CTRL": 55,
+                "HMG_12_7_mm_M2HB": 55,
             },
         },
     },
@@ -1803,11 +1896,12 @@ uk_unit_edits = {
     "LandRover_Yeoman_UK": {
         "CommandPoints": 25,
         "WeaponDescriptor": {
-             "equipmentchanges": {
-                "replace": [("MMG_inf_MAG_7_62mm", "MMG_FN_MAG_7_62mm")],
-            },
+            # "equipmentchanges": {
+            #     "replace": [("MMG_inf_MAG_7_62mm", "MMG_FN_MAG_7_62mm")],
+            # },
             "Salves": {
-                "MMG_inf_MAG_7_62mm": 36,
+                "MMG_L37A2_7_62mm": 36,
+                "MMG_L37A2_7_62mm": 36,
             },
         },
     },
@@ -2087,7 +2181,14 @@ uk_unit_edits = {
         "availability": [0, 0, 4, 3],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("RocketInf_M72A3_LAW_66mm", "RocketInf_Carl_Gustav", "RocketInf_M72_LAW_66mm", "RocketInf_Carl_Gustav")],
+                "replace": {
+                    "RocketInf_M72A3_LAW_66mm": {
+                        "new_weapon": "RocketInf_Carl_Gustav",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                        "old_new_effect": ("RocketInf_M72_LAW_66mm", "RocketInf_Carl_Gustav"),
+                    },
+                },
             },
             "Salves": {
                 "RocketInf_Carl_Gustav": 6,
@@ -2163,7 +2264,13 @@ uk_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("PM_Sterling", "PM_Sterling_noreflex")],
+                "replace": {
+                    "PM_Sterling": {
+                        "new_weapon": "PM_Sterling_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "availability": [12, 9, 0, 0],
@@ -2192,7 +2299,13 @@ uk_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_L85A1", "FM_L85A1_noreflex")],
+                "replace": {
+                    "FM_L85A1": {
+                        "new_weapon": "FM_L85A1_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "availability": [7, 5, 0, 0],
@@ -2212,7 +2325,13 @@ uk_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_L85A1", "FM_L85A1_noreflex")],
+                "replace": {
+                    "FM_L85A1": {
+                        "new_weapon": "FM_L85A1_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "availability": [0, 7, 5, 0],
@@ -2420,7 +2539,7 @@ uk_unit_edits = {
     },
     
     "A109A_RKT_UK": {
-        "CommandPoints": 75,
+        "CommandPoints": 50,
         "availability": [0, 0, 0, 4],
     },
 
@@ -2467,7 +2586,13 @@ uk_unit_edits = {
         "availability": [0, 0, 0, 1],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("Bomb_CPU_123", "Bomb_CPU_123_salvolength2")],
+                "replace": {
+                    "Bomb_CPU_123": {
+                        "new_weapon": "Bomb_CPU_123_salvolength2",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "Bomb_CPU_123_salvolength2": 1,
@@ -2507,14 +2632,6 @@ uk_unit_edits = {
         },
         "CommandPoints": 110,
         "availability": [0, 3, 2, 0],
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                "replace": [("RocketAir_SNEB_68mm_salvolength18", "RocketAir_SNEB_68mm_salvolength36")],
-            },
-            "Salves": {
-                "RocketAir_SNEB_68mm": 1,
-            },
-        },
         "UpgradeFromUnit": None,
     },
 
@@ -2638,7 +2755,13 @@ uk_unit_edits = {
         "availability": [0, 2, 0, 1],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("AA_AIM9L_Sidewinder", "AA_AIM9M_Sidewinder")],
+                "replace": {
+                    "AA_AIM9L_Sidewinder": {
+                        "new_weapon": "AA_AIM9M_Sidewinder",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -2666,7 +2789,13 @@ uk_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("AA_AIM9L_Sidewinder", "AA_AIM9M_Sidewinder")],
+                "replace": {
+                    "AA_AIM9L_Sidewinder": {
+                        "new_weapon": "AA_AIM9M_Sidewinder",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "availability": [0, 3, 2, 0],
@@ -2681,7 +2810,13 @@ uk_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("AA_AIM9L_Sidewinder", "AA_AIM9M_Sidewinder")],
+                "replace": {
+                    "AA_AIM9L_Sidewinder": {
+                        "new_weapon": "AA_AIM9M_Sidewinder",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "availability": [0, 2, 0, 1],

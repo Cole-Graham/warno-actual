@@ -132,11 +132,10 @@ rda_unit_edits = {
 
     # RDA INF
     "MotRifles_CMD_DDR": {
-        "CommandPoints": 30,
+        "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "MOT.-SCHUTZEN FÜR.",
-            "token": "LJDWEYDMZI",
         },
         "TagSet": {
             "overwrite_all": [
@@ -193,17 +192,14 @@ rda_unit_edits = {
                 "RocketInf_RPG18_64mm": 6,
             },
         },
-        "selector_tactic": "(0, 6)",
-        "selector_tactic_obj": "00_06",
         "remove_zone_capture": None,
     },
 
     "Engineers_CMD_DDR": {
-        "CommandPoints": 45,
+        "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "PIONIER",
-            "token": "KYSSUXXTDG",
         },
         "TagSet": {
             "overwrite_all": [
@@ -247,17 +243,14 @@ rda_unit_edits = {
                 "RocketInf_RPG7VL": 6,
             },
         },
-        "selector_tactic": "(0, 8)",
-        "selector_tactic_obj": "00_08",
         "remove_zone_capture": None,
     },
 
     "Engineers_Naval_CMD_DDR": {
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "MARINEPIONIER FÜR.",
-            "token": "UPIUDWZHAI",
         },
         "TagSet": {
             "overwrite_all": [
@@ -296,12 +289,9 @@ rda_unit_edits = {
                 },
             },
             "Salves": {
-                "FM_KMS_72": 9,
-                "RocketInf_RPG7": 6,
+                "RocketInf_RPG7": 9,
             },
         },
-        "selector_tactic": "(0, 1)",
-        "selector_tactic_obj": "00_01",
         "remove_zone_capture": None,
     },
     
@@ -421,11 +411,10 @@ rda_unit_edits = {
     },
     
     "Fallschirmjager_CMD_DDR": {
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "FALLSCHIRM FÜR.",
-            "token": "BFPSSUUCFZ",
         },
         "TagSet": {
             "overwrite_all": [
@@ -509,17 +498,14 @@ rda_unit_edits = {
                 "FM_Mpi_AKS_74NK": 11,
             },
         },
-        "selector_tactic": "(2, 4)",
-        "selector_tactic_obj": "02_04",
         "remove_zone_capture": None,
     },
 
     "Luftsturmjager_CMD_DDR": {
-        "CommandPoints": 60,
+        "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "LUFTSTURM-JÄGER FÜR.",
-            "token": "IBYSOQOQYU",
         },
         "TagSet": {
             "overwrite_all": [
@@ -563,14 +549,13 @@ rda_unit_edits = {
                     "FM_Mpi_AKS_74NK": 7,
                     "MMG_PKM_7_62mm": 2,
                 },
-                "replace": [
-                    (
-                        "RocketInf_RPG18_64mm",
-                        "RocketInf_RPG27_105mm",
-                        "RocketInf_RPG18_64mm",
-                        "RocketInf_RPG27_105mm",
-                    )
-                ],
+                "replace": {
+                    "RocketInf_RPG18_64mm": {
+                        "new_weapon": "RocketInf_RPG27_105mm",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
                 "insert": [(1, "MMG_PKM_7_62mm")],
                 "insert_edits": {
                     1: {
@@ -611,17 +596,14 @@ rda_unit_edits = {
                 "FM_Mpi_AKS_74NK": 11,
             },
         },
-        "selector_tactic": "(2, 4)",
-        "selector_tactic_obj": "02_04",
         "remove_zone_capture": None,
     },
 
     "Wachregiment_CMD_DDR": {
-        "CommandPoints": 55,
+        "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "WACHSCHÜTZEN FÜH.",
-            "token": "ZMOICNFUWP",
         },
         "TagSet": {
             "overwrite_all": [
@@ -663,17 +645,14 @@ rda_unit_edits = {
                 },
             },
         },
-        "selector_tactic": "(1, 3)",
-        "selector_tactic_obj": "01_03",
         "remove_zone_capture": None,
     },
 
     "Fallschirmjager_FalseFlag_CMD_DDR": {
-        "CommandPoints": 55,
+        "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "FALLSCHIRM FÜR. FF",
-            "token": "AKEYFQLRBG",
         },
         "TagSet": {
             "overwrite_all": [
@@ -747,17 +726,14 @@ rda_unit_edits = {
                 "RocketInf_M72A3_LAW_66mm": 7,
             },
         },
-        "selector_tactic": "(0, 6)",
-        "selector_tactic_obj": "00_06",
         "remove_zone_capture": None,
     },
 
-    "Volkspolizei_CMD_DDR": {
+    "Volkspolizei_CMD_DDR": { # Not used, DLC slop
         "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "VOPOS FÜH.",
-            "token": "VXWUPWYFCP",
         },
         "TagSet": {
             "overwrite_all": [
@@ -828,11 +804,10 @@ rda_unit_edits = {
                 "insert": [(1, 4), (2, 3)],
             },
         },
-        "selector_tactic": "(0, 6)",
-        "selector_tactic_obj": "00_06",
         "remove_zone_capture": None,
     },
 
+    # Not sure if we will ever need these
     "MotRifles_Naval_CMD_DDR": {
         "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
@@ -877,8 +852,6 @@ rda_unit_edits = {
                 },
             },
         },
-        "selector_tactic": "(2, 5)",
-        "selector_tactic_obj": "02_05",
         "remove_zone_capture": None,
     },
 
@@ -926,6 +899,7 @@ rda_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
+        "UpgradeFromUnit": "MP_mech_DDR",
     },
 
     "Security_VPB_DDR": {
@@ -939,16 +913,44 @@ rda_unit_edits = {
     },
 
     "MP_DDR": {
-        "CommandPoints": 15,
+        "GameName": {
+            "display": "MILITÄRSTREIFEIN (K.d.A.)",
+        },
+        "CommandPoints": 20,
         "armor": "Infantry_armor_reference",
         "availability": [0, 12, 9, 0],
         "max_speed": 26,
         "strength": 5,
         "WeaponDescriptor": {
+            # Mixed-model strength-5 squad: 4 MP_DDR + 1 KdA_DDR (RPG-2 gunner).
+            # Vanilla turrets: T0=PM_Skorpion (qty=4)
+            # Target turrets:  T0=PM_Skorpion(x4), T1=RocketInf_RPG2(x1 animate=True)
             "equipmentchanges": {
                 "quantity": {
                     "PM_Skorpion": 5,
                 },
+                "insert": [
+                    (1, "RocketInf_RPG2"),
+                ],
+                "insert_edits": {
+                    1: {  # RocketInf_RPG2 (newly inserted, donor KdA_DDR)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 2,
+                        },
+                        "AmmoBoxIndex": 1,
+                        "HandheldEquipmentKey": "'WeaponAlternative_2'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_2"],
+                    },
+                },
+            },
+            # Vanilla Salves: [PM_Skorpion=80]. Target: [22, 6].
+            "Salves": {
+                "PM_Skorpion": 22,
+                "insert": [
+                    (1, 6),
+                ],
             },
         },
         "SpecialtiesList": {
@@ -1230,7 +1232,13 @@ rda_unit_edits = {
                     "FM_Mpi_AKS_74NK": 7,
                     "SAW_lMG_K_7_62mm": 2,
                 },
-                "replace": [("FM_Mpi_AKS_74NK", "PM_MPi_AKSU_74NK")],
+                "replace": {
+                    "FM_Mpi_AKS_74NK": {
+                        "new_weapon": "PM_MPi_AKSU_74NK",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "FM_Mpi_AKS_74NK": 11,
@@ -1285,7 +1293,13 @@ rda_unit_edits = {
                     "FM_Mpi_AKS_74NK": 7,
                     "SAW_lMG_K_7_62mm": 2,
                 },
-                "replace": [("FM_Mpi_AKS_74NK", "PM_MPi_AKSU_74NK")],
+                "replace": {
+                    "FM_Mpi_AKS_74NK": {
+                        "new_weapon": "PM_MPi_AKSU_74NK",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "FM_Mpi_AKS_74NK": 11,
@@ -1693,7 +1707,13 @@ rda_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("ATGM_9K111M_Faktoriya", "ATGM_9K111_Fagot")],
+                "replace": {
+                    "ATGM_9K111M_Faktoriya": {
+                        "new_weapon": "ATGM_9K111_Fagot",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
     },
@@ -1717,7 +1737,13 @@ rda_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("ATGM_9K111M_Faktoriya", "ATGM_9K111_Fagot")],
+                "replace": {
+                    "ATGM_9K111M_Faktoriya": {
+                        "new_weapon": "ATGM_9K111_Fagot",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
         "DeploymentShift": 1750,
@@ -1781,10 +1807,14 @@ rda_unit_edits = {
     
     # RDA ARTILLERY
     "BTR_50_CMD_DDR": {
+        "capacities": {
+            "add_capacities": ["LDR_ARTY"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 60,
         "GameName": {
             "display": "SPW-50PU(A)",
-            "token": "MXTHDKLGFB",
+            "token": "MXTHDKLGFB", # Don't remove or logistic tab version will get renamed as well
         },
         "TagSet": {
             "overwrite_all": [
@@ -1899,7 +1929,13 @@ rda_unit_edits = {
         "availability": [2, 0, 1, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("RocketArt_M21OF_122mm", "RocketArt_M21OF_122mm_RM70")],
+                "replace": {
+                    "RocketArt_M21OF_122mm": {
+                        "new_weapon": "RocketArt_M21OF_122mm_RM70",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
     },
@@ -1912,7 +1948,13 @@ rda_unit_edits = {
         "availability": [2, 0, 1, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("RocketArt_M21OF_122mm_napalm", "RocketArt_M21OF_122mm_RM70_napalm")],
+                "replace": {
+                    "RocketArt_M21OF_122mm_napalm": {
+                        "new_weapon": "RocketArt_M21OF_122mm_RM70_napalm",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
     },
@@ -1959,7 +2001,11 @@ rda_unit_edits = {
     # RDA TANK
     
     "T54B_CMD_DDR": {
-        "CommandPoints": 80,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 70,
         "GameName": {
             "display": "FüPz T-54AMK",
         },
@@ -1996,10 +2042,13 @@ rda_unit_edits = {
     },
     
     "T55A_CMD_DDR": {
-        "CommandPoints": 80,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 70,
         "GameName": {
             "display": "FüPz T-55AK",
-            "token": "VKLRXNSTQE",
         },
         "TagSet": {
             "overwrite_all": [
@@ -2034,10 +2083,13 @@ rda_unit_edits = {
     },
 
     "T55AM2_CMD_DDR": {  # T-55AM2 LDR
-        "CommandPoints": 125,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 110,
         "GameName": {
             "display": "FüPz T-55AM2K3",
-            "token": "POLT55AMLD",
         },
         "TagSet": {
             "overwrite_all": [
@@ -2066,13 +2118,16 @@ rda_unit_edits = {
     },
 
     "T72_CMD_DDR": {
-        "CommandPoints": 115,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 110,
         "armor": {
             "top": (2, None),
         },
         "GameName": {
             "display": "FüPz. T-72K",
-            "token": "NYCDIWGOQO",
         },
         "TagSet": {
             "overwrite_all": [
@@ -2107,13 +2162,16 @@ rda_unit_edits = {
     },
 
     "T72M_CMD_DDR": {
-        "CommandPoints": 170,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 160,
         "armor": {
             "top": (2, None),
         },
         "GameName": {
             "display": "FüPz T-72M",
-            "token": "XVEZUMJKLL",
         },
         "TagSet": {
             "overwrite_all": [
@@ -2148,13 +2206,16 @@ rda_unit_edits = {
     },
 
     "T72M1_CMD_DDR": {  # FüPz T-72M1K LDR
-        "CommandPoints": 195,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 185,
         "armor": {
             "top": (3, None),
         },
         "GameName": {
             "display": "FüPz T-72M1K",
-            "token": "FUPZTSTMOL",
         },
         "TagSet": {
             "overwrite_all": [
@@ -2236,24 +2297,22 @@ rda_unit_edits = {
         "CommandPoints": 15,
     },
 
-    "BMP_1_SP1_DDR": {
+    "BMP_1_SP1_DDR": { # (Resolute, smoke)
         "CommandPoints": 20,
     },
 
-    "BMP_1_SP2_DDR": {
-        "CommandPoints": 25,
+    "BMP_1_SP2_DDR": { # (Malyutka, resolute, smoke)
+        "CommandPoints": 30,
     },
 
-    "BMP_1P_DDR": {
-        "CommandPoints": 35,
+    "BMP_1P_DDR": { # BMP-1P(C) (Faktoriya, resolute, smoke)
+        "CommandPoints": "BMP_1P_SOV",
     },
     
-    "BMP_1P_Konkurs_DDR": {
-        "CommandPoints": 45,
+    "BMP_1P_Konkurs_DDR": { # BMP-1P(D) (Konkurs, resolute, smoke)
+        "CommandPoints": "BMP_1P_Konkurs_SOV",
         "WeaponDescriptor": {
-            "Salves": {
-                "ATGM_9M113_Konkurs_BMP2": 6,
-            },
+            "Salves": "BMP_1P_Konkurs_SOV"
         },      
     },
     
@@ -2289,6 +2348,13 @@ rda_unit_edits = {
     "PSzH_IV_DDR": {
         "CommandPoints": 20,
         "strength": 10,
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/Standard": 3180.0,
+                "EOpticalStrength/LowAltitude": 3180.0,
+                "EOpticalStrength/HighAltitude": 706.0,
+            },
+        },
     },
 
     "UAZ_469_Fagot_DDR": {
@@ -2347,7 +2413,13 @@ rda_unit_edits = {
         "availability": [12, 0, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("Canon_AP_85mm_S53", "Canon_HEAT2_85mm_S53")],
+                "replace": {
+                    "Canon_AP_85mm_S53": {
+                        "new_weapon": "Canon_HEAT2_85mm_S53",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
     },
@@ -2467,7 +2539,7 @@ rda_unit_edits = {
         "GameName": {
             "display": "AufKl BMP-1",
         },
-        "CommandPoints": 35,
+        "CommandPoints": 40,
     },
 
     "BRDM_2_DDR": {
@@ -2521,6 +2593,7 @@ rda_unit_edits = {
 
     "Mi_24D_s5_AT_reco_DDR": { # #RECO2 DHS Mi-24D Transport
         "CommandPoints": 135,
+        "strength": "Mi_24P_SOV",
     },
 
     "Mi_14PL_recon_DDR": {  # #RECO3 AUFKL. Mi-14PL
@@ -2778,14 +2851,15 @@ rda_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                "replace": [("RocketInf_M72_LAW_66mm", "RocketInf_M72A3_LAW_66mm")],
-            },
-            "Salves": {
-                "RocketInf_M72A3_LAW_66mm": 7,
-            },
-        },
+        # This unit doesn't have a LAW???
+        # "WeaponDescriptor": {
+        #     "equipmentchanges": {
+        #         "replace": [("RocketInf_M72_LAW_66mm", "RocketInf_M72A3_LAW_66mm")],
+        #     },
+        #     "Salves": {
+        #         "RocketInf_M72A3_LAW_66mm": 7,
+        #     },
+        # },
     },
 
     "Scout_FJ_DDR": {
@@ -2798,14 +2872,13 @@ rda_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    (
-                        "RocketInf_RPG18_64mm",
-                        "RocketInf_RPG7VL",
-                        "RocketInf_RPG18_64mm",
-                        "RocketInf_RPG7VL",
-                    ),
-                ],
+                "replace": {
+                    "RocketInf_RPG18_64mm": {
+                        "new_weapon": "RocketInf_RPG7VL",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "RocketInf_RPG7VL": 4,
@@ -2861,7 +2934,13 @@ rda_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_Mpi_AK_74N", "FM_Mpi_AK_74N_noreflex")],
+                "replace": {
+                    "FM_Mpi_AK_74N": {
+                        "new_weapon": "FM_Mpi_AK_74N_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "FM_Mpi_AK_74N_noreflex": 11,
@@ -2882,7 +2961,13 @@ rda_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_Mpi_AK_74N", "FM_Mpi_AK_74N_noreflex")],
+                "replace": {
+                    "FM_Mpi_AKS_74NK": {
+                        "new_weapon": "FM_Mpi_AKS_74NK_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "FM_Mpi_AK_74N_noreflex": 11,
@@ -2903,7 +2988,13 @@ rda_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_AK_74", "FM_AK_74_noreflex")],
+                "replace": {
+                    "FM_Mpi_AK_74N": {
+                        "new_weapon": "FM_Mpi_AK_74N_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -2998,7 +3089,13 @@ rda_unit_edits = {
                 "DCA_1_canon_S60_57mm_radar": 1,
             },
             "equipmentchanges": {
-                "replace": [("DCA_1_canon_S60_57mm", "DCA_1_canon_S60_57mm_radar")],
+                "replace": {
+                    "DCA_1_canon_S60_57mm": {
+                        "new_weapon": "DCA_1_canon_S60_57mm_radar",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
         "optics": {
@@ -3034,7 +3131,13 @@ rda_unit_edits = {
                 "DCA_1_canon_KS19_100mm_radar": 1,
             },
             "equipmentchanges": {
-                "replace": [("DCA_1_canon_KS19_100mm", "DCA_1_canon_KS19_100mm_radar")],
+                "replace": {
+                    "DCA_1_canon_KS19_100mm": {
+                        "new_weapon": "DCA_1_canon_KS19_100mm_radar",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
         "optics": {
@@ -3176,7 +3279,7 @@ rda_unit_edits = {
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
-        "CommandPoints": 80,
+        "CommandPoints": 85,
         "availability": [4, 3, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
@@ -3190,7 +3293,7 @@ rda_unit_edits = {
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
-        "CommandPoints": 90,
+        "CommandPoints": "2K12_KUB_SOV",
         "availability": [4, 3, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
@@ -3301,15 +3404,18 @@ rda_unit_edits = {
 
     "Mi_24D_s5_AT_DDR": {
         "CommandPoints": 130,
+        "strength": "Mi_24P_SOV",
         "availability": [0, 4, 3, 0],
     },
     
     "Mi_24D_s8_AT_DDR": { # Mi-24D [AT2]
         "CommandPoints": 145, # vanilla 130
+        "strength": "Mi_24P_SOV",
     },
 
     "Mi_24D_AA_DDR": {
         "CommandPoints": 130,
+        "strength": "Mi_24P_SOV",
         "availability": [0, 3, 2, 0],
     },
 
@@ -3318,6 +3424,7 @@ rda_unit_edits = {
             "display": "Mi-24P [AT]",
         },
         "CommandPoints": 160,
+        "strength": "Mi_24P_SOV",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -3350,6 +3457,7 @@ rda_unit_edits = {
     
     "Mi_24P_s8_AT2_DDR": {
         "CommandPoints": 160,
+        "strength": "Mi_24P_SOV",
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -3394,10 +3502,18 @@ rda_unit_edits = {
         "availability": [0, 5, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    ("RocketAir_S5_57mm_salvolength32", "RocketAir_S5_57mm_avion_salvolength32"),
-                    ("RocketAir_S5_57mm_salvolength32", "RocketAir_S5_57mm_avion_salvolength32"),
-                ],
+                "replace": {
+                    "RocketAir_S5_57mm_salvolength32": {
+                        "new_weapon": "RocketAir_S5_57mm_avion_salvolength32",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                    "RocketAir_S5_57mm_salvolength32": {
+                        "new_weapon": "RocketAir_S5_57mm_avion_salvolength32",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -3429,7 +3545,13 @@ rda_unit_edits = {
         "CommandPoints": 100,
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("RocketAir_S5_57mm_salvolength32", "RocketAir_S5_57mm_avion_salvolength32")],
+                "replace": {
+                    "RocketAir_S5_57mm_salvolength32": {
+                        "new_weapon": "RocketAir_S5_57mm_avion_salvolength32",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "availability": [0, 4, 0, 0],
@@ -3458,7 +3580,13 @@ rda_unit_edits = {
                 "RocketAir_S24_240mm_avion_salvolength4": (1, True),
             },
             "equipmentchanges": {
-                "replace": [("RocketAir_S24_240mm_salvolength2", "RocketAir_S24_240mm_avion_salvolength4")],
+                "replace": {
+                    "RocketAir_S24_240mm_salvolength2": {
+                        "new_weapon": "RocketAir_S24_240mm_avion_salvolength4",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -3496,7 +3624,7 @@ rda_unit_edits = {
                 "RocketAir_S24_240mm_avion_salvolength4": 1,
             },
             "equipmentchanges": {
-                "replace": [("RocketAir_S24_240mm_salvolength2", "RocketAir_S24_240mm_avion_salvolength4")],
+                "replace": {"RocketAir_S24_240mm_salvolength2": {"new_weapon": "RocketAir_S24_240mm_avion_salvolength4", "swap_fire_effect": False, "depiction_baked_in": False}},
             },
         },
     },
@@ -3611,7 +3739,13 @@ rda_unit_edits = {
                 "RocketAir_S24_240mm_avion_salvolength4": 1,
             },
             "equipmentchanges": {
-                "replace": [("RocketAir_S24_240mm_salvolength2", "RocketAir_S24_240mm_avion_salvolength4")],
+                "replace": {
+                    "RocketAir_S24_240mm_salvolength2": {
+                        "new_weapon": "RocketAir_S24_240mm_avion_salvolength4",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },

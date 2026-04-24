@@ -41,7 +41,7 @@ us_new_divs = {
         #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
         # },
         "transport_overrides": {
-            "MP_US": ["CUCV_MP_US", "CUCV_HMG_US", "CUCV_AGL_US", "M1025_Humvee_MP_US"],
+            "MP_US": ["M1038_Humvee_US"],
             "MP_RCL_US": ["CUCV_MP_US", "CUCV_HMG_US", "CUCV_AGL_US", "M1025_Humvee_MP_US"],
             "Rifles_half_CMD2_US": ["M998_Humvee_US", "M998_Humvee_HMG_US", "M2A1_Bradley_IFV_US", "M2A2_Bradley_IFV_US", "UH60A_Black_Hawk_US", "CH47_Chinook_US"],
             "Rifles_half_CMD_US": ["M998_Humvee_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US","M113A3_US", "M2A1_Bradley_IFV_US", "M2A2_Bradley_IFV_US"],
@@ -103,7 +103,7 @@ us_new_divs = {
         "summary_text": ("USA airborne and marine division.", "SFQQRMONEK"),
         "history_text": ("USA Airborne / Marine division.", "MHNXKTJJJR"),
         "activation_points": 85,
-        "standout_units": ["Airborne_US", "M2A1_Bradley_IFV_US", "F4_Wild_Weasel_2_US"],
+        "standout_units": ["Airborne_US", "Navy_SEAL_US", "F14A_Tomcat_AA2_US"],
         "division_rules": [
             US_airborne_newdivisionrules,
             US_global_newdivisionrules,
@@ -151,7 +151,7 @@ us_new_divs = {
         "summary_text": ("USA airborne and motorized division.", "SUMUSAMOT"),
         "history_text": ("USA Airborne / Motorized division.", "HISUSAMOT"),
         "activation_points": 85,
-        "standout_units": ["LightRifles_RCL_US", "LAV_25_M1047_US_US", "FA16_CAS_US"],
+        "standout_units": ["LightRifles_AT4_US", "LAV_25_M1047_US_US", "FA16_CAS_US"],
         "division_rules": [
             US_airborne_newdivisionrules,
             US_global_newdivisionrules,
@@ -167,7 +167,7 @@ us_new_divs = {
         ],
         "transport_overrides": {
             "Rifles_half_CMD2_US": ["M998_Humvee_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US", "UH60A_Black_Hawk_US", "CH47_Chinook_US"],
-            "MP_US": ["CUCV_MP_US", "CUCV_HMG_US", "CUCV_AGL_US", "M1025_Humvee_MP_US"],
+            "MP_US": ["M1038_Humvee_US"],
             "MP_RCL_US": ["CUCV_MP_US", "CUCV_HMG_US", "CUCV_AGL_US", "M1025_Humvee_MP_US"],
             "MP_Patrol_USAF_US": ["M998_Humvee_US", "CUCV_MP_US", "CGage_Peacekeeper_US", "CUCV_HMG_US", "CUCV_AGL_US"],
             "LRRP_US": ["M998_Humvee_US", "M1025_Humvee_scout_US", "M1025_Humvee_AGL_nonPara_US", "UH60A_Black_Hawk_US"],
@@ -201,7 +201,7 @@ us_new_divs = {
         "summary_text": ("USA armored and marine division.", "XKWVDSXOPO"),
         "history_text": ("USA Armored / Marine division.", "KCHFBUOXGG"),
         "activation_points": 85,
-        "standout_units": ["M1A1_Abrams_CMD_US", "M2A1_Bradley_IFV_US", "F117_Nighthawk_US"],
+        "standout_units": ["M1A1HA_Abrams_US", "Navy_SEAL_US", "F14A_Tomcat_AA2_US"],
         "division_rules": [
             US_armored_newdivisionrules,
             US_global_newdivisionrules,
@@ -250,7 +250,7 @@ us_new_divs = {
             US_motorized_newdivisionrules,
         ],
         "transport_overrides": {
-            "MP_US": ["CUCV_MP_US", "CUCV_HMG_US", "CUCV_AGL_US", "M1025_Humvee_MP_US"],
+            "MP_US": ["M1038_Humvee_US"],
             "MP_RCL_US": ["CUCV_MP_US", "CUCV_HMG_US", "CUCV_AGL_US", "M1025_Humvee_MP_US"],
             "Rifles_half_CMD2_US": ["M998_Humvee_US", "M998_Humvee_HMG_US", "M2A1_Bradley_IFV_US", "M2A2_Bradley_IFV_US", "UH60A_Black_Hawk_US", "CH47_Chinook_US"],
             "Rifles_half_CMD_US": ["M998_Humvee_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US","M113A3_US", "M2A1_Bradley_IFV_US", "M2A2_Bradley_IFV_US"],
@@ -276,7 +276,7 @@ us_new_divs = {
         "summary_text": ("USA marine and mechanized division.", "FTBPOZFUME"),
         "history_text": ("USA Marine / Mechanized division.", "BTFBHXCGFY"),
         "activation_points": 85,
-        "standout_units": ["M1A1_Abrams_CMD_US", "M2A1_Bradley_IFV_US", "F117_Nighthawk_US"],
+        "standout_units": ["Rifles_half_Cav_CMD_US", "M2A2_BRAT_US", "F14A_Tomcat_AA2_US"],
         "division_rules": [
             US_marine_newdivisionrules,
             US_global_newdivisionrules,
@@ -295,7 +295,7 @@ us_new_divs = {
         "summary_text": ("USA marine and motorized division.", "ZRMTDDSGCC"),
         "history_text": ("USA Marine / Motorized division.", "BQFFOTDNFF"),
         "activation_points": 85,
-        "standout_units": ["M1A1_Abrams_CMD_US", "M2A1_Bradley_IFV_US", "F117_Nighthawk_US"],
+        "standout_units": ["DeltaForce_US", "CUCV_Hellfire_US", "FA16_CAS_US", "F14A_Tomcat_AA2_US"],
         "division_rules": [
             US_marine_newdivisionrules,
             US_global_newdivisionrules,
@@ -343,7 +343,7 @@ us_new_divs = {
         #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
         # },
         "transport_overrides": {
-            "MP_US": ["CUCV_MP_US", "CUCV_HMG_US", "CUCV_AGL_US", "M1025_Humvee_MP_US"],
+            "MP_US": ["M1038_Humvee_US"],
             "MP_RCL_US": ["CUCV_MP_US", "CUCV_HMG_US", "CUCV_AGL_US", "M1025_Humvee_MP_US"],
             "Rifles_half_CMD2_US": ["M998_Humvee_US", "M998_Humvee_HMG_US", "M2A1_Bradley_IFV_US", "M2A2_Bradley_IFV_US", "UH60A_Black_Hawk_US", "CH47_Chinook_US"],
             "Rifles_half_CMD_US": ["M998_Humvee_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US", "M113A3_US", "M2A2_Bradley_IFV_US", "UH1H_Huey_US"],

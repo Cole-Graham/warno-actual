@@ -1,4 +1,4 @@
-"""Visual preview of parabolic artillery: fixed target range + pitch; derived horizontal SpeedGRU for impact at R."""
+"""Visual preview of parabolic artillery: fixed target range + pitch; derived horizontal ProjectileSpeedGRU for impact at R."""
 
 from __future__ import annotations
 
@@ -138,7 +138,7 @@ def save_state(data: Dict[str, Any]) -> None:
 class ArtilleryArcApp:
     def __init__(self, root: tk.Tk) -> None:
         self.root = root
-        self.root.title("Artillery arc preview (target range + pitch → derived SpeedGRU)")
+        self.root.title("Artillery arc preview (target range + pitch → derived ProjectileSpeedGRU)")
         self.root.geometry("1060x880")
 
         st = load_state()
@@ -171,7 +171,7 @@ class ArtilleryArcApp:
             text=(
                 "Fixed same-elevation target range R (GRU): pitch sets loft; horizontal speed is derived so impact "
                 "stays at R — v_x = √(R·g/(2·tan(pitch))). The pitch slider sweeps arc shape (apex/flight time) for "
-                "that R. Reference SpeedGRU + design min/max range only bracket the slider (optional)."
+                "that R. Reference ProjectileSpeedGRU + design min/max range only bracket the slider (optional)."
             ),
             font=("Segoe UI", 8),
             foreground="#444",
@@ -226,7 +226,7 @@ class ArtilleryArcApp:
 
         dg = ttk.Frame(design)
         dg.pack(fill=tk.X)
-        ttk.Label(dg, text="Reference SpeedGRU (band only)").grid(row=0, column=0, sticky=tk.W, pady=2)
+        ttk.Label(dg, text="Reference ProjectileSpeedGRU (band only)").grid(row=0, column=0, sticky=tk.W, pady=2)
         ttk.Entry(dg, textvariable=self._speed_gru, width=14).grid(row=0, column=1, padx=6)
         ttk.Label(
             dg,
@@ -244,7 +244,7 @@ class ArtilleryArcApp:
             design,
             text=(
                 "Preview target range fixes impact distance. Slider pitch changes loft; derived horizontal speed "
-                "keeps impact at that R. Reference SpeedGRU + weapon R_min/R_max define the pitch slider interval "
+                "keeps impact at that R. Reference ProjectileSpeedGRU + weapon R_min/R_max define the pitch slider interval "
                 "(or use fallback band if min/max are invalid). Dispersion uses preview target for cluster height."
             ),
             font=("Segoe UI", 8),
@@ -399,7 +399,7 @@ class ArtilleryArcApp:
     def _draw_config_annotation(self, vx: float, pitch_rad: float, r_target: float) -> None:
         txt = (
             f"Target range (impact) = {r_target:.1f} GRU\n"
-            f"Derived SpeedGRU (horizontal) = {vx:g} GRU/s\n"
+            f"Derived ProjectileSpeedGRU (horizontal) = {vx:g} GRU/s\n"
             f"PitchForParabolic = {pitch_rad:.6f} rad ({math.degrees(pitch_rad):.2f}°)\n"
             f"Same-elevation range at this pitch/speed = {r_target:.1f} GRU"
         )
@@ -446,7 +446,7 @@ class ArtilleryArcApp:
                 lo, hi = _fallback_pitch_band_for_target(t_target, g)
             elif vx_ref <= 0:
                 self._band_bounds_label.config(
-                    text="Reference SpeedGRU must be positive for weapon band — using fallback pitch band.",
+                    text="Reference ProjectileSpeedGRU must be positive for weapon band — using fallback pitch band.",
                 )
                 lo, hi = _fallback_pitch_band_for_target(t_target, g)
             else:
@@ -520,7 +520,7 @@ class ArtilleryArcApp:
             lines = [
                 f"Preview target range (impact) = {t_target:.1f} GRU",
                 f"PitchForParabolic = {pr:.6f} rad  ({math.degrees(pr):.2f}°)",
-                f"Derived SpeedGRU (horizontal) = {vx:g} GRU/s",
+                f"Derived ProjectileSpeedGRU (horizontal) = {vx:g} GRU/s",
                 f"Check: R = 2·SpeedGRU²·tan(pitch)/g = {r_check:.2f} GRU",
                 "",
             ]
@@ -607,7 +607,7 @@ class ArtilleryArcApp:
 
         lines = [
             f"Target range (impact) = {target_r:.2f} GRU",
-            f"Derived SpeedGRU = {vx:g} GRU/s (horizontal)",
+            f"Derived ProjectileSpeedGRU = {vx:g} GRU/s (horizontal)",
             f"PitchForParabolic = {pr:.6f} rad ({math.degrees(pr):.2f}°)",
             f"Ballistic flight time = {t_flight:.3f} s",
             f"Apex height = {apex_y:.2f} GRU",

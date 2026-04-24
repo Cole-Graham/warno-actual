@@ -9,6 +9,7 @@ from .constantes import (
 )
 from .gfx import (
     add_unit_meshes,
+    edit_gameplay_gfx_templates_templatedepiction,
 )
 from .terrains import (
     edit_gameplay_terrains,
@@ -16,6 +17,7 @@ from .terrains import (
 from .unit import (
     edit_gameplay_unit_airplanecritical,
     edit_gameplay_unit_damagemodules,
+    edit_gameplay_unit_districtdescriptor,
     edit_gameplay_unit_groundunitcritical,
     edit_gameplay_unit_helicocritical,
     edit_gameplay_unit_infanteriecritical,
@@ -26,6 +28,7 @@ from .unit import (
 
 __all__ = [
     'add_unit_meshes',
+    'edit_gameplay_gfx_templates_templatedepiction',
     'edit_gameplay_constantes_gdconstants',
     'edit_gameplay_constantes_hitrollconstants',
     'edit_gameplay_constantes_iastratweaponconstantes',
@@ -36,6 +39,7 @@ __all__ = [
     'edit_gameplay_terrains',
     'edit_gameplay_unit_airplanecritical',
     'edit_gameplay_unit_damagemodules',
+    'edit_gameplay_unit_districtdescriptor',
     'edit_gameplay_unit_groundunitcritical',
     'edit_gameplay_unit_helicocritical',
     'edit_gameplay_unit_infanteriecritical',

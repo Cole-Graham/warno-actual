@@ -89,8 +89,8 @@ rfa_unit_edits = {
     },
     
     # RFA INF
-    "Panzergrenadier_CMD_RFA": {  # #CMD Fs-JÄGER FÜH.
-        "CommandPoints": 40,
+    "Panzergrenadier_CMD_RFA": {
+        "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "PZ.GRENADIER",
@@ -110,9 +110,6 @@ rfa_unit_edits = {
         },
         "strength": 6,
         "TransportedTexture": "UseInGame_Transport_REGINF",
-        # "SortingOrder": 20075,
-        # "UnitAttackValue": 1,
-        # "UnitDefenseValue": 16,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
         "UnitRole": "infantry",
@@ -135,13 +132,22 @@ rfa_unit_edits = {
         },
         "availability": [0, 0, 5, 4],
         "max_speed": 20,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_G3KA4": 5,
+                },
+            },
+        },
         "remove_zone_capture": None,
     },
     
-    "Fallschirmjager_CMD_RFA": {  # #CMD Fs-JÄGER FÜH.
-        "CommandPoints": 40,
+    "Fallschirmjager_CMD_RFA": {
+        "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
-        "GameName": {"display": "FALLSCHIRMJÄGER"},
+        "GameName": {
+            "display": "FALLSCHIRMJÄGER",
+        },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
@@ -157,10 +163,6 @@ rfa_unit_edits = {
             ],
         },
         "TransportedTexture": "UseInGame_Transport_assault",
-        # "SortingOrder": 20085,
-        # "UnitAttackValue": 1,
-        # "UnitDefenseValue": 31,
-        # "UnitDefenseValue": 31,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
         "UnitRole": "infantry",
@@ -198,10 +200,6 @@ rfa_unit_edits = {
             ],
         },
         "TransportedTexture": "UseInGame_Transport_assault",
-        # "SortingOrder": 20085,
-        # "UnitAttackValue": 1,
-        # "UnitDefenseValue": 31,
-        # "UnitDefenseValue": 31,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
         "UnitRole": "infantry",
@@ -216,10 +214,21 @@ rfa_unit_edits = {
         "availability": [0, 0, 7, 5],
         "max_speed": 26,
         "remove_zone_capture": None,
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "animate": {
+                    "MMG_inf__MG3_7_62mm": False,
+                },
+                "quantity": {
+                    "FM_G3KA4": 7,
+                    "MMG_inf__MG3_7_62mm": 2,
+                },
+            },
+        },
     },
     
-    "Engineers_CMD_RFA": {  # #CMD PIONIER FÜH.
-        "CommandPoints": 40,
+    "Engineers_CMD_RFA": {
+        "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "PIONIER"
@@ -239,10 +248,6 @@ rfa_unit_edits = {
             ],
         },
         "TransportedTexture": "UseInGame_Transport_assault",
-        # "SortingOrder": 20085,
-        # "UnitAttackValue": 1,
-        # "UnitDefenseValue": 31,
-        # "UnitDefenseValue": 31,
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
         "UnitRole": "engineer",
@@ -261,7 +266,7 @@ rfa_unit_edits = {
     },
 
     "Gebirgsjager_CMD_RFA": {  # #LDR GEBIRGSJÄGER FÜH.
-        "CommandPoints": 60,
+        "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "GEBIRGSJÄGER"
@@ -395,9 +400,13 @@ rfa_unit_edits = {
                 "quantity": {
                     "PM_uzi": 10,
                 },
-                "replace": [
-                    ("FM_G3KA4", "PM_uzi", "FM_G3KA4", "PM_uzi"),
-                ],
+                "replace": {
+                    "FM_G3KA4": {
+                        "new_weapon": "PM_uzi",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "turrets": {
                 2: {
@@ -467,6 +476,9 @@ rfa_unit_edits = {
                     "MMG_inf__MG3_7_62mm": 2,
                 },
             },
+            "Salves": {
+                "RocketInf_Carl_Gustav": 8,
+            },
         },
     },
 
@@ -486,16 +498,74 @@ rfa_unit_edits = {
     },
     
     "Feldgendarmerie_RFA": {
-        "CommandPoints": 15,
+        "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "availability": [0, 12, 9, 0],
         "max_speed": 26,
-        "strength": 5,
+        "strength": 8,
         "WeaponDescriptor": {
+            # Mixed-model loadout: 5 Feldgendarmerie_RFA + 3 HeimatschutzJager_RFA
+            # Vanilla turrets: T0=PM_MP_5A3 (qty=4)
+            # Target turrets:  T0=PM_MP_5A3(x5), T1=FM_G3KA4(x2),
+            #                  T2=MMG_inf__MG3_7_62mm(x1, animate=True from donor),
+            #                  T3=RocketInf_PzF_44(x1, animate=True from donor)
             "equipmentchanges": {
                 "quantity": {
                     "PM_MP_5A3": 5,
+                    "FM_G3KA4": 2,
+                    "MMG_inf__MG3_7_62mm": 1,
                 },
+                "insert": [
+                    (1, "FM_G3KA4"),
+                    (2, "MMG_inf__MG3_7_62mm"),
+                    (3, "RocketInf_PzF_44"),
+                ],
+                "insert_edits": {
+                    1: {  # FM_G3KA4 (newly inserted)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 2,
+                        },
+                        "AmmoBoxIndex": 1,
+                        "HandheldEquipmentKey": "'WeaponAlternative_2'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_2"],
+                    },
+                    2: {  # MG3 (newly inserted)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 3,
+                        },
+                        "AmmoBoxIndex": 2,
+                        "HandheldEquipmentKey": "'WeaponAlternative_3'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
+                    },
+                    3: {  # PzF_44 (newly inserted)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 4,
+                        },
+                        "AmmoBoxIndex": 3,
+                        "HandheldEquipmentKey": "'WeaponAlternative_4'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_4'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_4'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_4"],
+                    },
+                },
+            },
+            # Vanilla Salves: [PM_MP_5A3=80]. Target: [14, 11, 45, 4].
+            # Explicit PM_MP_5A3 trips the apply_default_salves skip guard so it
+            # writes 14 (the default) at vanilla index 0 explicitly via _apply_salvo_changes.
+            "Salves": {
+                "PM_MP_5A3": 14,
+                "FM_G3KA4": 11,
+                "MMG_inf__MG3_7_62mm": 45,
+                "RocketInf_PzF_44": 4,
+                "insert": [
+                    (1, 11),
+                    (2, 45),
+                    (3, 4),
+                ],
             },
         },
         "SpecialtiesList": {
@@ -772,11 +842,14 @@ rfa_unit_edits = {
                 "animate": {
                     "MMG_inf__MG3_7_62mm": False,
                 },
-                "replace": [
-                    (
-                        "RocketInf_PzF_44", "RocketInf_PzF_3",
-                    ),
-                ],
+                "replace": {
+                    "RocketInf_PzF_44": {
+                        "new_weapon": "RocketInf_PzF_3",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                        "old_new_effect": ("RocketInf_PzF_44", "RocketInf_PzF_3"),
+                    },
+                },
                 "quantity": {
                     "FM_G3KA4": 7,
                     "MMG_inf__MG3_7_62mm": 2,
@@ -842,7 +915,13 @@ rfa_unit_edits = {
                 "quantity": {
                     "Sniper_G3A3ZF_double": 2,
                 },
-                "replace": [("Sniper_G3A3ZF", "Sniper_G3A3ZF_double")],
+                "replace": {
+                    "Sniper_G3A3ZF": {
+                        "new_weapon": "Sniper_G3A3ZF_double",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -993,10 +1072,14 @@ rfa_unit_edits = {
 
     # RFA ARTY
     "M577_RFA": {
+        "capacities": {
+            "add_capacities": ["LDR_ARTY"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 60,
         "GameName": {
             "display": "M577GA2 TACFIRE",
-            "token": "M577GA2LDR",
+            "token": "M577GA2LDR", # Don't remove or logistic tab version will get renamed as well
         },
         "TagSet": {
             "overwrite_all": [
@@ -1118,10 +1201,13 @@ rfa_unit_edits = {
     
     # RFA TANK
     "M48A2GA2_CMD_RFA": {
-        "CommandPoints": 75,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 65,
         "GameName": {
             "display": "PZ.BEF. M48A2GA2",
-            "token": "VLNKYMRDNH",
         },
         "TagSet": {
             "overwrite_all": [
@@ -1151,10 +1237,13 @@ rfa_unit_edits = {
     },
 
     "Leopard_1A1_CMD_RFA": {
-        "CommandPoints": 80,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 75,
         "GameName": {
             "display": "PZ.BEF. LEOPARD 1A1A1",
-            "token": "XCPWTQSWXH",
         },
         "TagSet": {
             "overwrite_all": [
@@ -1183,10 +1272,13 @@ rfa_unit_edits = {
     },
 
     "Leopard_1A4_CMD_RFA": {
-        "CommandPoints": 90,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 85,
         "GameName": {
             "display": "PZ.BEF. LEOPARD 1A4",
-            "token": "ELPLTKBAYX",
         },
         "TagSet": {
             "overwrite_all": [
@@ -1215,10 +1307,13 @@ rfa_unit_edits = {
     },
 
     "Leopard_1A5_CMD_RFA": {
-        "CommandPoints": 110,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 100,
         "GameName": {
             "display": "PZ.BEF. LEOPARD 1A5",
-            "token": "GLAVEMFHKO",
         },
         "TagSet": {
             "overwrite_all": [
@@ -1247,13 +1342,16 @@ rfa_unit_edits = {
     },
 
     "Leopard_2A3_CMD_RFA": {
-        "CommandPoints": 205,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 190,
         "armor": {
             "top": (4, None),
         },
         "GameName": {
             "display": "PZ.BEF. LEOPARD 2A3",
-            "token": "IKKNOBNJOQ",
         },
         "TagSet": {
             "overwrite_all": [
@@ -1282,10 +1380,13 @@ rfa_unit_edits = {
     },
 
     "Leopard_2A1_CMD_RFA": {
-        "CommandPoints": 175,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 165,
         "GameName": {
             "display": "PZ.BEF. LEOPARD 2A1",
-            "token": "LWSMADUUPS",
         },
         "TagSet": {
             "overwrite_all": [
@@ -1314,13 +1415,16 @@ rfa_unit_edits = {
     },
 
     "Leopard_2A4_CMD_RFA": {
-        "CommandPoints": 270,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 250,
         "armor": {
             "top": (4, None),
         },
         "GameName": {
             "display": "PZ.BEF. LEOPARD 2A4(C)",
-            "token": "PBLIFBOOCD",
         },
         "TagSet": {
             "overwrite_all": [
@@ -1599,12 +1703,13 @@ rfa_unit_edits = {
         "CommandPoints": 60,
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    (
-                        "ATGM_MILAN_IFV", "ATGM_MILAN_2_IFV",
-                        "ATGM_MILAN_2_IFV", "ATGM_MILAN_2_IFV"
-                    ),
-                ],
+                "replace": {
+                    "ATGM_MILAN_IFV": {
+                        "new_weapon": "ATGM_MILAN_2_IFV",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
             "Salves": {
                 "AutoCanon_AP_20mm_MK_20_Rh_202": 48,
@@ -1701,11 +1806,13 @@ rfa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    (
-                        "RocketInf_PzF_3", "RocketInf_PzF_3T",
-                    ),
-                ],
+                "replace": {
+                    "RocketInf_PzF_3": {
+                        "new_weapon": "RocketInf_PzF_3T",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "RocketInf_PzF_3T": 6,
@@ -1923,41 +2030,29 @@ rfa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("PM_uzi", "PM_uzi_noreflex")],
+                "replace": {
+                    "PM_uzi": {
+                        "new_weapon": "PM_uzi_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
     
     "Bofors_40mm_RFA": {
-        "CommandPoints": 60,
-        "TagSet": {
-            "add_tags": ['"AA_radar"'],
-        },
+        "CommandPoints": 30,
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 1,
         },
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_1_canon_Bofors_40mm_radar": 1,
+                "DCA_1_canon_Bofors_40mm": 1,
             },
-            "equipmentchanges": {
-                "replace": [("DCA_1_canon_Bofors_40mm", "DCA_1_canon_Bofors_40mm_radar")],
-            },
-        },
-        "optics": {
-            "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 10600.0,
-            },
-            "TimeBetweenEachIdentifyRoll": 0.5,
-        },
-        "SpecialtiesList": {
-            "add_specs": ["'verygood_airoptics'"],
         },
     },
 
@@ -1980,7 +2075,13 @@ rfa_unit_edits = {
                 "DCA_1_canon_Bofors_upgrade_40mm_autoloader_radar": 1,
             },
             "equipmentchanges": {
-                "replace": [("DCA_1_canon_Bofors_upgrade_40mm_autoloader", "DCA_1_canon_Bofors_upgrade_40mm_autoloader_radar")],
+                "replace": {
+                    "DCA_1_canon_Bofors_upgrade_40mm_autoloader": {
+                        "new_weapon": "DCA_1_canon_Bofors_upgrade_40mm_autoloader_radar",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
         "optics": {
@@ -2199,10 +2300,18 @@ rfa_unit_edits = {
         "availability": [0, 5, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    ("RocketAir_SNEB_68mm_salvolength18", "RocketAir_SNEB_68mm_salvolength36"),
-                    ("RocketAir_SNEB_68mm_salvolength18", "RocketAir_SNEB_68mm_salvolength36"),
-                ],
+                "replace": {
+                    "RocketAir_SNEB_68mm_salvolength18": {
+                        "new_weapon": "RocketAir_SNEB_68mm_salvolength36",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                    "RocketAir_SNEB_68mm_salvolength18": {
+                        "new_weapon": "RocketAir_SNEB_68mm_salvolength36",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "RocketAir_SNEB_68mm_salvolength36": (1, True),
@@ -2306,7 +2415,13 @@ rfa_unit_edits = {
                 "Bomb_GBU_12_salvolength2": 1,
             },
             "equipmentchanges": {
-                "replace": [("Bomb_GBU_12", "Bomb_GBU_12_salvolength2")],
+                "replace": {
+                    "Bomb_GBU_12": {
+                        "new_weapon": "Bomb_GBU_12_salvolength2",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "optics": {
@@ -2336,7 +2451,13 @@ rfa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("RocketAir_Zuni_1272mm_salvolength8", "RocketAir_Zuni_1272mm_avion_salvolength8")],
+                "replace": {
+                    "RocketAir_Zuni_1272mm_salvolength8": {
+                        "new_weapon": "RocketAir_Zuni_1272mm_avion_salvolength8",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -2370,7 +2491,13 @@ rfa_unit_edits = {
         "availability": [0, 5, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("RocketAir_SNEB_68mm_salvolength18", "RocketAir_SNEB_68mm_avion_salvolength18")],
+                "replace": {
+                    "RocketAir_SNEB_68mm_salvolength18": {
+                        "new_weapon": "RocketAir_SNEB_68mm_avion_salvolength18",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "RocketAir_SNEB_68mm_avion_salvolength18": (2, True),

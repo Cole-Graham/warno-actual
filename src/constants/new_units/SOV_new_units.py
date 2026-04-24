@@ -30,8 +30,6 @@ SOV_NEW_UNITS = {
             ],
         },
         "strength": 5,
-        # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
-        "Dangerousness": 12,
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 11,
@@ -50,8 +48,6 @@ SOV_NEW_UNITS = {
         "armor": "Infantry_armor_reference",
         "Factory": "EFactory/Logistic",
         "CommandPoints": 145,
-        "UnitAttackValue": 1,
-        "UnitDefenseValue": 16,
         "UnitRole": 'hq_inf',
         "SpecialtiesList": [
             'leader_sov',
@@ -121,8 +117,6 @@ SOV_NEW_UNITS = {
             ],
         },
         "strength": 5,
-        # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
-        "Dangerousness": 12,
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AK_74": 11,
@@ -140,8 +134,6 @@ SOV_NEW_UNITS = {
         "armor": "Infantry_armor_reference",
         "Factory": "EFactory/Logistic",
         "CommandPoints": 145,
-        "UnitAttackValue": 1,
-        "UnitDefenseValue": 16,
         "UnitRole": 'hq_inf',
         "SpecialtiesList": [
             'leader_sov',
@@ -610,9 +602,13 @@ SOV_NEW_UNITS = {
                     "FM_AK_74": 6,
                     "SAW_RPK_74_5_56mm": 1,
                 },
-                "replace": [
-                    ("RocketInf_RPG27_105mm", "RocketInf_RPG7VL", "RocketInf_RPG27_105mm", "RocketInf_RPG7VL"),
-                ],
+                "replace": {
+                    "RocketInf_RPG27_105mm": {
+                        "new_weapon": "RocketInf_RPG7VL",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "TransportedSoldier": "MotRifles_RPG7VL_TTsko_SOV",
@@ -680,9 +676,13 @@ SOV_NEW_UNITS = {
                 "RocketInf_RPG7VL": 6,
             },
             "equipmentchanges": {
-                "replace": [
-                    ("RocketInf_RPG22_72_5mm", "RocketInf_RPG7VL", "RocketInf_RPG22_72_5mm", "RocketInf_RPG7VL"),
-                ],
+                "replace": {
+                    "RocketInf_RPG22_72_5mm": {
+                        "new_weapon": "RocketInf_RPG7VL",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "TransportedSoldier": "VDV_Afgantsy_RPG7VL_SOV",
@@ -755,9 +755,13 @@ SOV_NEW_UNITS = {
                 "quantity": {
                     "FM_AK_74": 7,
                 },
-                "replace": [
-                    ("RocketInf_RPG22_72_5mm", "RocketInf_RPG7VL", "RocketInf_RPG22_72_5mm", "RocketInf_RPG7VL"),
-                ],
+                "replace": {
+                    "RocketInf_RPG22_72_5mm": {
+                        "new_weapon": "RocketInf_RPG7VL",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "TransportedSoldier": "HvyScout_RPG7VL_SOV",
@@ -823,9 +827,13 @@ SOV_NEW_UNITS = {
                 "RocketInf_RPG7VL": 6,
             },
             "equipmentchanges": {
-                "replace": [
-                    ("RocketInf_RPG22_72_5mm", "RocketInf_RPG7VL", "RocketInf_RPG22_72_5mm", "RocketInf_RPG7VL"),
-                ],
+                "replace": {
+                    "RocketInf_RPG22_72_5mm": {
+                        "new_weapon": "RocketInf_RPG7VL",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "TransportedSoldier": "HvyScout_TTsko_RPG7VL_SOV",
@@ -886,7 +894,13 @@ SOV_NEW_UNITS = {
                 "ATGM_9K111M_Faktoriya": 6,
             },
             "equipmentchanges": {
-                "replace": [("ATGM_9K111_Fagot", "ATGM_9K111M_Faktoriya")]
+                "replace": {
+                    "ATGM_9K111_Fagot": {
+                        "new_weapon": "ATGM_9K111M_Faktoriya",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
         "CommandPoints": 35,
@@ -964,7 +978,13 @@ SOV_NEW_UNITS = {
                 "ATGM_9K111M_Faktoriya": 6,
             },
             "equipmentchanges": {
-                "replace": [("ATGM_9K111_Fagot", "ATGM_9K111M_Faktoriya")]
+                "replace": {
+                    "ATGM_9K111_Fagot": {
+                        "new_weapon": "ATGM_9K111M_Faktoriya",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
         "CommandPoints": 35,
@@ -1037,7 +1057,13 @@ SOV_NEW_UNITS = {
                 "ATGM_9K111M_Faktoriya": 6,
             },
             "equipmentchanges": {
-                "replace": [("ATGM_9K111_Fagot", "ATGM_9K111M_Faktoriya")]
+                "replace": {
+                    "ATGM_9K111_Fagot": {
+                        "new_weapon": "ATGM_9K111M_Faktoriya",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
         "CommandPoints": 35,

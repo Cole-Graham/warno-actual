@@ -9,6 +9,7 @@ from .commondata import (
 )
 from .gameplay import (
     add_unit_meshes,
+    edit_gameplay_gfx_templates_templatedepiction,
     edit_gameplay_constantes_gdconstants,
     edit_gameplay_constantes_hitrollconstants,
     edit_gameplay_constantes_iastratweaponconstantes,
@@ -22,6 +23,7 @@ from .gameplay import (
     edit_gameplay_unit_groundunitcritical,
     edit_gameplay_unit_helicocritical,
     edit_gameplay_unit_infanteriecritical,
+    edit_gameplay_unit_districtdescriptor,
     edit_gameplay_unit_team,
     edit_gameplay_unit_templatecritical,
     edit_gameplay_unit_testunitscritical,
@@ -90,6 +92,7 @@ __all__ = [
     'edit_cd_gameplay_constantes_helicoptermovementweights',
     # .gameplay
     'add_unit_meshes',
+    'edit_gameplay_gfx_templates_templatedepiction',
     'edit_gameplay_constantes_gdconstants',
     'edit_gameplay_constantes_hitrollconstants',
     'edit_gameplay_constantes_iastratweaponconstantes',
@@ -103,6 +106,7 @@ __all__ = [
     'edit_gameplay_unit_groundunitcritical',
     'edit_gameplay_unit_helicocritical',
     'edit_gameplay_unit_infanteriecritical',
+    'edit_gameplay_unit_districtdescriptor',
     'edit_gameplay_unit_team',
     'edit_gameplay_unit_templatecritical',
     'edit_gameplay_unit_testunitscritical',

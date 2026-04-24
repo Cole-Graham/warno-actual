@@ -287,11 +287,16 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_kbk_AK": 9,
                 "MMG_PKM_7_62mm": 36,
             },
             "equipmentchanges": {
-                "replace": [("RocketInf_RPG76_Komar", "MMG_PKM_7_62mm", "RocketInf_RPG76_Komar", "MMG_PKM_7_62mm")],
+                "replace": {
+                    "RocketInf_RPG76_Komar": {
+                        "new_weapon": "MMG_PKM_7_62mm",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
                 "quantity": {
                     "FM_kbk_AK": 8,
                 },
@@ -299,8 +304,6 @@ pol_unit_edits = {
         },
         "availability": [0, 0, 5, 4],
         "max_speed": 26,
-        "selector_tactic": "(2, 4)",
-        "selector_tactic_obj": "02_04",
         "remove_zone_capture": None,
     },
     
@@ -347,12 +350,9 @@ pol_unit_edits = {
         "max_speed": 26,
         "WeaponDescriptor": {
             "Salves": {
-                "FM_kbk_AK": 9,
                 "RocketInf_RPG76_Komar": 7,
             },
         },
-        "selector_tactic": "(2, 4)",
-        "selector_tactic_obj": "02_04",
         "remove_zone_capture": None,
     },
     
@@ -402,12 +402,9 @@ pol_unit_edits = {
         "max_speed": 26,
         "WeaponDescriptor": {
             "Salves": {
-                "FM_kbk_AK": 9,
                 "RocketInf_RPG76_Komar": 7,
             },
         },
-        "selector_tactic": "(2, 4)",
-        "selector_tactic_obj": "02_04",
         "remove_zone_capture": None,
     },
 
@@ -502,9 +499,23 @@ pol_unit_edits = {
                     "PM_PM63_RAK": 8,
                     "Grenade_Satchel_Charge": 1,
                 },
-                "replace": [("FM_Tantal", "PM_PM63_RAK", "FM_Tantal", "PM_PM63_RAK"),
-                        ("MMG_PKM_7_62mm", "Grenade_Satchel_Charge", "MMG_PKM_7_62mm", "Grenade_Satchel_Charge"),
-                        ("RocketInf_RPG7", "RocketInf_RPG76_Komar", "RocketInf_RPG7", "RocketInf_RPG76_Komar")],
+                "replace": {
+                    "FM_Tantal": {
+                        "new_weapon": "PM_PM63_RAK",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                    "MMG_PKM_7_62mm": {
+                        "new_weapon": "Grenade_Satchel_Charge",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                    "RocketInf_RPG7": {
+                        "new_weapon": "RocketInf_RPG76_Komar",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "PM_PM63_RAK": 22,
@@ -556,18 +567,23 @@ pol_unit_edits = {
                 "quantity": {
                     "FM_kbk_AK": 8,
                 },
-                "replace": [
-                    ("FM_kbk_AKM", "FM_kbk_AK"),
-                    ("RocketInf_RPG76_Komar", "RocketInf_RPG7", "RocketInf_RPG76_Komar", "RocketInf_RPG7"),
-                ],
+                "replace": {
+                    "FM_kbk_AKM": {
+                        "new_weapon": "FM_kbk_AK",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                    "RocketInf_RPG76_Komar": {
+                        "new_weapon": "RocketInf_RPG7",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "RocketInf_RPG7": 6,
-                "FM_kbk_AK": 9,
             },
         },
-        "selector_tactic": "(2, 4)",
-        "selector_tactic_obj": "02_04",
         "remove_zone_capture": None,
     },
 
@@ -611,14 +627,18 @@ pol_unit_edits = {
                 "quantity": {
                     "FM_Tantal": 7,
                 },
-                "replace": [("FM_kbk_AKM", "FM_Tantal")]
+                "replace": {
+                    "FM_kbk_AKM": {
+                        "new_weapon": "FM_Tantal",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "RocketInf_RPG7": 6,
             },
         },
-        "selector_tactic": "(2, 4)",
-        "selector_tactic_obj": "02_04",
         "remove_zone_capture": None,
     },
     
@@ -679,11 +699,8 @@ pol_unit_edits = {
             },
             "Salves": {
                 "insert": [(2, 6)],
-                "FM_kbk_AK": 9,
             },
         },
-        "selector_tactic": "(2, 4)",
-        "selector_tactic_obj": "02_04",
         "remove_zone_capture": None,
     },
 
@@ -726,14 +743,18 @@ pol_unit_edits = {
                 "quantity": {
                     "FM_kbk_AK": 12,
                 },
-                "replace": [("RocketInf_RPG76_Komar", "RocketInf_RPG7VL", "RocketInf_RPG76_Komar", "RocketInf_RPG7VL")]
+                "replace": {
+                    "RocketInf_RPG76_Komar": {
+                        "new_weapon": "RocketInf_RPG7VL",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "RocketInf_RPG76_Komar": 9,
             },
         },
-        "selector_tactic": "(3, 5)",
-        "selector_tactic_obj": "03_05",
         "remove_zone_capture": None,
     },
 
@@ -779,8 +800,6 @@ pol_unit_edits = {
                 },
             },
         },
-        "selector_tactic": "(3, 3)",
-        "selector_tactic_obj": "03_03",
         "remove_zone_capture": None,
     },
 
@@ -802,7 +821,6 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_kbk_AK": 9,
                 "Grenade_Satchel_Charge": 6,
             },
         },
@@ -848,7 +866,6 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_kbk_AK": 9,  # 7 mags per soldier bc heavy
                 "MMG_PKM_7_62mm": 36,
             },
         },
@@ -867,9 +884,13 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                 "replace": [
-                    ("FM_kbk_AKM", "FM_kbk_AK"),
-                ],
+                "replace": {
+                    "FM_kbk_AKM": {
+                        "new_weapon": "FM_kbk_AK",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
                 "insert": [(3, "RocketInf_RPG7")],
                 "insert_edits": {
                     3: {
@@ -886,7 +907,6 @@ pol_unit_edits = {
             },
             "Salves": {
                 "insert": [(3, 6)],
-                "FM_kbk_AK": 9,
                 "Grenade_Satchel_Charge": 6,
             },
         },
@@ -909,16 +929,19 @@ pol_unit_edits = {
                 "animate": {
                     "flamethrower_LPO": False,
                 },
-                "replace": [
-                    ("FM_kbk_AKM", "FM_kbk_AK")
-                ],
+                "replace": {
+                    "FM_kbk_AKM": {
+                        "new_weapon": "FM_kbk_AK",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
                 "quantity": {
                     "FM_kbk_AK": 7,
                     "flamethrower_LPO": 2,
                 },
             },
             "Salves": {
-                "FM_kbk_AK": 9,
                 "flamethrower_LPO": 30,
             },
         },
@@ -947,7 +970,6 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_kbk_AK": 9,
                 "flamethrower_LPO": 30,
             },
         },
@@ -976,7 +998,6 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_kbk_AK": 9,
                 "RocketInf_RPG7VL": 5,
             },
         },
@@ -998,7 +1019,6 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_kbk_AK": 9,
                 "RocketInf_RPG7VL": 5,
             },
         },
@@ -1019,11 +1039,6 @@ pol_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
-        "WeaponDescriptor": {
-            "Salves": {
-                "FM_kbk_AK": 9,
-            },
-        },
     },
     
     "Rifles_HMG_POL": {  # Piechota (SVD)
@@ -1038,8 +1053,14 @@ pol_unit_edits = {
             "add_specs": ["'infantry_equip_medium'"],
         },
         "WeaponDescriptor": {
-            "Salves": {
-                "FM_kbk_AK": 9,
+            "equipmentchanges": {
+                "replace": {
+                    "RocketInf_RPG7": {
+                        "new_weapon": "RocketInf_RPG7VL",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -1064,9 +1085,6 @@ pol_unit_edits = {
                     "FM_kbk_AK": 7,
                 },
             },
-            "Salves": {
-                "FM_kbk_AK": 9,
-            },
         },
         # 6x kbk AK(M?)
         # 1x PKM
@@ -1090,8 +1108,14 @@ pol_unit_edits = {
             "add_specs": ["'infantry_equip_medium'"],
         },
         "WeaponDescriptor": {
-            "Salves": {
-                "FM_kbk_AK": 9,
+            "equipmentchanges": {
+                "replace": {
+                    "RocketInf_RPG7": {
+                        "new_weapon": "RocketInf_RPG7VL",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         # 4x kbk AKM
@@ -1110,9 +1134,23 @@ pol_unit_edits = {
         },
          "WeaponDescriptor": {
              "equipmentchanges": {
-                "replace": [
-                    ("FM_kbk_AKM", "FM_Tantal"), ("SAW_RPK_7_62mm", "SAW_RPK_74_5_56mm", "SAW_RPK_7_62mm", "SAW_RPK_74_5_56mm"), ("RocketInf_RPG7", "RocketInf_RPG7VL", "RocketInf_RPG7", "RocketInf_RPG7VL")
-                ],
+                "replace": {
+                    "FM_kbk_AKM": {
+                        "new_weapon": "FM_Tantal",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                    "SAW_RPK_7_62mm": {
+                        "new_weapon": "SAW_RPK_74_5_56mm",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                    "RocketInf_RPG7": {
+                        "new_weapon": "RocketInf_RPG7VL",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "FM_kbk_AKM": 11,
@@ -1135,11 +1173,22 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_kbk_AKM", "FM_Tantal"), ("SAW_RPK_7_62mm", "SAW_RPK_74_5_56mm", "SAW_RPK_7_62mm", "SAW_RPK_74_5_56mm")],
+                "replace": {
+                    "FM_kbk_AKM": {
+                        "new_weapon": "FM_Tantal",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                    "SAW_RPK_7_62mm": {
+                        "new_weapon": "SAW_RPK_74_5_56mm",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
-                "FM_kbk_AKM": 11,
-                "SAW_RPK_7_62mm": 24,
+                "FM_Tantal": 11,
+                "SAW_RPK_74_5_56mm": 24,
             },
         },
         # 8x kbk AKM
@@ -1157,10 +1206,18 @@ pol_unit_edits = {
         },
          "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    ("FM_kbk_AKM", "FM_Tantal", "FM_kbk_AKM", "FM_Tantal"),
-                    ("RocketInf_RPG76_Komar", "RocketInf_RPG7", "RocketInf_RPG76_Komar", "RocketInf_RPG7")
-                ],
+                "replace": {
+                    "FM_kbk_AKM": {
+                        "new_weapon": "FM_Tantal",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                    "RocketInf_RPG76_Komar": {
+                        "new_weapon": "RocketInf_RPG7",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "RocketInf_RPG7": 6,
@@ -1229,9 +1286,7 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_kbk_AK": 9,
                 "PM_PM63_RAK": 22,
-                "SAW_RPK_7_62mm": 24,
             },
         },
     },
@@ -1246,11 +1301,18 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_kbk_AKM", "FM_kbk_AK"), ("SAW_RPK_74_5_56mm","SAW_RPK_7_62mm", "SAW_RPK_74_5_56mm","SAW_RPK_7_62mm")],
-            },
-            "Salves": {
-                "FM_kbk_AK": 9,
-                "SAW_RPK_74_5_56mm": 29,
+                "replace": {
+                    "FM_kbk_AKM": {
+                        "new_weapon": "FM_kbk_AK",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False
+                    },
+                    "SAW_RPK_74_5_56mm": {
+                        "new_weapon": "SAW_RPK_7_62mm",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "GameName": {
@@ -1307,7 +1369,13 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("Canon_HEAT_73_mm_SPG9_TOWED", "Canon_HEAT_73_mm_SPG9D_TOWED")],
+                "replace": {
+                    "Canon_HEAT_73_mm_SPG9_TOWED": {
+                        "new_weapon": "Canon_HEAT_73_mm_SPG9D_TOWED",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
     },
@@ -1404,7 +1472,13 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("ATGM_9K111M_Faktoriya", "ATGM_9K111_Fagot")],
+                "replace": {
+                    "ATGM_9K111M_Faktoriya": {
+                        "new_weapon": "ATGM_9K111_Fagot",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
         "UpgradeFromUnit": "ATteam_RCL_SPG9_POL",
@@ -1519,10 +1593,14 @@ pol_unit_edits = {
     
     # POL ARTILLERY
     "OT_62_TOPAS_R3M_CMD_POL": {  # TOPAS R-2M
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 60,
         "GameName": {
             "display": "TOPAS R-2M",
-            "token": "TOPASARTLD",
+            "token": "TOPASARTLD", # Don't remove or logistic tab version will get renamed as well
         },
         "TagSet": {
             "overwrite_all": [
@@ -1719,7 +1797,13 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("RocketArt_M21OF_122mm", "RocketArt_M21OF_122mm_RM70")],
+                "replace": {
+                    "RocketArt_M21OF_122mm": {
+                        "new_weapon": "RocketArt_M21OF_122mm_RM70",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
         "availability": [0, 2, 0, 1],
@@ -1848,10 +1932,13 @@ pol_unit_edits = {
     # },
     
     "T55A_CMD_POL": {  # T-55AD LDR
-        "CommandPoints": 80,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 70,
         "GameName": {
             "display": "T-55AD",
-            "token": "POLTFFAD",
         },
         "TagSet": {
             "overwrite_all": [
@@ -1884,10 +1971,13 @@ pol_unit_edits = {
     },
     
     "T55AM_Merida_CMD_POL": {  # T-55AM Merida LDR
-        "CommandPoints": 125,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 110,
         "GameName": {
             "display": "T-55AD-1M Merida",
-            "token": "POLT55AMLD",
         },
         "TagSet": {
             "overwrite_all": [
@@ -1921,13 +2011,16 @@ pol_unit_edits = {
     },
     
     "T72M_CMD_POL": {  # T-72MD LDR
-        "CommandPoints": 165,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 140,
         "armor": {
             "top": (2, None),
         },
         "GameName": {
             "display": "T-72MD",
-            "token": "POLTSTMLDR",
         },
         "TagSet": {
             "overwrite_all": [
@@ -1960,13 +2053,16 @@ pol_unit_edits = {
     },
     
     "T72M1_CMD_POL": {  # T-72M1D LDR
-        "CommandPoints": 195,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 185,
         "armor": {
             "top": (3, None),
         },
         "GameName": {
             "display": "T-72M1D",
-            "token": "POLTSTMOLD",
         },
         "TagSet": {
             "overwrite_all": [
@@ -2000,10 +2096,13 @@ pol_unit_edits = {
     },
     
     "ASU_85_CMD_POL": {  # ASU-85 LDR
-        "CommandPoints": 70,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 60,
         "GameName": {
             "display": "ASU-85D",
-            "token": "POLASUEFD",
         },
         "TagSet": {
             "overwrite_all": [
@@ -2031,6 +2130,10 @@ pol_unit_edits = {
     },
 
     "PT76B_CMD_POL": {  # PT-76BD LDR
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 30,
         "GameName": {
             "display": "PT-76BD",
@@ -2062,6 +2165,10 @@ pol_unit_edits = {
     },
 
     "PT76B_CMD_Naval_POL": {  #  NIEB.BERETY PT-76BD LDR
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 30,
         "GameName": {
             "display": "NIEB.BERETY PT-76BD",
@@ -2327,8 +2434,8 @@ pol_unit_edits = {
         },
     },
     
-    "BMP_1_SP2_POL": {  # BWP-1
-        "CommandPoints": 20,
+    "BMP_1_SP2_POL": {  # BWP-1 (Malyutka, no smoke)
+        "CommandPoints": "BMP_1_SP2_SOV",
         "UpgradeFromUnit": "MTLB_trans_POL",
     },
     
@@ -2352,9 +2459,6 @@ pol_unit_edits = {
                     "FM_kbk_AK": 7,
                 },
             },
-            "Salves": {
-                "FM_kbk_AK": 9,
-            },
         },
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -2376,11 +2480,6 @@ pol_unit_edits = {
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
-        },
-        "WeaponDescriptor": {
-            "Salves": {
-                "FM_kbk_AK": 9,
-            },
         },
     },
     
@@ -2405,7 +2504,6 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_kbk_AK": 9,
                 "PM_PM63_RAK": 22,
                 "RocketInf_RPG7": 4,
             },
@@ -2435,12 +2533,22 @@ pol_unit_edits = {
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "quantity": {
-                    "FM_kbk_AK": 5,
+                    "FM_Tantal": 5,
                 },
-                "replace": [
-                    ("FM_kbk_AKM", "FM_Tantal"),
-                    ("RocketInf_RPG76_Komar", "Sniper_SVD_Dragunov", "RocketInf_RPG76_Komar", "Sniper_SVD_Dragunov")
-                ],
+                "replace": {
+                    "FM_kbk_AKM": {
+                        "new_weapon": "FM_Tantal",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                        "old_new_effect": ("FM_kbk_AKM", "FM_Tantal"),
+                    },
+                    "RocketInf_RPG76_Komar": {
+                        "new_weapon": "Sniper_SVD_Dragunov",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                        "old_new_effect": ("RocketInf_RPG76_Komar", "Sniper_SVD_Dragunov"),
+                    }
+                },
                 "insert": [(2, "RocketInf_RPG76_Komar")], # (turret, weapon)
                 "insert_edits": {
                     2: {
@@ -2456,7 +2564,6 @@ pol_unit_edits = {
                 },
             },
             "Salves": {
-                "FM_kbk_AK": 11,
                 "Sniper_SVD_Dragunov": 10,
                 "insert": [(2, 6)],
             },
@@ -2492,7 +2599,13 @@ pol_unit_edits = {
                 "quantity": {
                     "Sniper_SVD_Dragunov_double": 2,
                 },
-                "replace": [("Sniper_SVD_Dragunov", "Sniper_SVD_Dragunov_double")],
+                "replace": {
+                    "Sniper_SVD_Dragunov": {
+                        "new_weapon": "Sniper_SVD_Dragunov_double",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "PM_PM63_RAK": 22,
@@ -2562,7 +2675,6 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "FM_Tantal": 11,
                 "PM_PM63_RAK": 22,
                 "RocketInf_RPG7VL": 4,
             },
@@ -2658,7 +2770,7 @@ pol_unit_edits = {
     
     #   recon tab transports
     "BMP_1_SP2_reco_POL": {  # Rozp. BWP-1
-        "CommandPoints": 35,
+        "CommandPoints": "BMP_1P_reco_DDR",
     },
     
     "BRDM_1_POL": {  # BRDM-1
@@ -2700,7 +2812,13 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_kbk_AK", "FM_kbk_AK_noreflex")]
+                "replace": {
+                    "FM_kbk_AK": {
+                        "new_weapon": "FM_kbk_AK_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "FM_kbk_AK_noreflex": 9,
@@ -2717,7 +2835,13 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_kbk_AK", "FM_kbk_AK_noreflex")],
+                "replace": {
+                    "FM_kbk_AK": {
+                        "new_weapon": "FM_kbk_AK_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "FM_kbk_AK": 9,
@@ -2737,7 +2861,13 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_kbk_AKM", "FM_kbk_AK")],
+                "replace": {
+                    "FM_kbk_AKM": {
+                        "new_weapon": "FM_kbk_AK",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "FM_kbk_AK": 9,
@@ -2785,7 +2915,13 @@ pol_unit_edits = {
                 "DCA_1_canon_S60_57mm_radar": 1,
             },
             "equipmentchanges": {
-                "replace": [("DCA_1_canon_S60_57mm", "DCA_1_canon_S60_57mm_radar")],
+                "replace": {
+                    "DCA_1_canon_S60_57mm": {
+                        "new_weapon": "DCA_1_canon_S60_57mm_radar",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
         "optics": {
@@ -2886,10 +3022,13 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    ("DCA_4_canons_APZ23_23mm", "DCA_4_canons_AZP_23_Amur_23mm_late"),
-                    ("DCA_4_canons_APZ23_23mm", "DCA_4_canons_AZP_23_Amur_23mm_late"),
-                ],
+                "replace": {
+                    "DCA_4_canons_APZ23_23mm": {
+                        "new_weapon": "DCA_4_canons_AZP_23_Amur_23mm_late",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
             "Salves": {
                 "DCA_4_canons_AZP_23_Amur_23mm_late": 67,
@@ -2953,7 +3092,10 @@ pol_unit_edits = {
     
     # POL HELI
     "Mi_24D_POL": {  # 64x S-5, 4x Falanga - Mi-24D [AT] -> transport
-        "CommandPoints": 145,
+        "GameName": {
+            "display": "Mi-24D SPADO."
+        },
+        "CommandPoints": 120,
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
@@ -2965,6 +3107,7 @@ pol_unit_edits = {
                 "Unite",
             ],
         },
+        "strength": "Mi_24P_SOV",
         "SpecialtiesList": {
             "overwrite_all": [
                 "_transport1",
@@ -2976,13 +3119,11 @@ pol_unit_edits = {
             "remove": ["POL_20_Pancerna"],
         },
         "availability": [0, 4, 3, 0],
-        "GameName": {
-            "display": "Mi-24D DESANT"
-        },
     },
     
     "Mi_24D_s8_AT_POL": {  # 80x S-8, 4x Falanga - Mi-24D [AT2]
         "CommandPoints": 150,
+        "strength": "Mi_24P_SOV",
         "availability": [0, 4, 3, 0],
         "GameName": {
             "display": "Mi-24D [AT]"
@@ -2991,6 +3132,7 @@ pol_unit_edits = {
     
     "Mi_24V_POL": {
         "CommandPoints": "Mi_24V_AT_SOV",
+        "strength": "Mi_24P_SOV",
         "availability": "Mi_24V_AT_SOV",
     },
     
@@ -3119,7 +3261,13 @@ pol_unit_edits = {
                 # set salvo count to 1 and corresponding SalvoIsMainSalvo to True
             },
             "equipmentchanges": {
-                "replace": [("RocketAir_S24_240mm_salvolength2", "RocketAir_S24_240mm_avion_salvolength4")],
+                "replace": {
+                    "RocketAir_S24_240mm_salvolength2": {
+                        "new_weapon": "RocketAir_S24_240mm_avion_salvolength4",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "GameName": {
@@ -3234,7 +3382,13 @@ pol_unit_edits = {
                 "RocketAir_S24_240mm_avion_salvolength4": 1,
             },
             "equipmentchanges": {
-                "replace": [("RocketAir_S24_240mm_salvolength2", "RocketAir_S24_240mm_avion_salvolength4")],
+                "replace": {
+                    "RocketAir_S24_240mm_salvolength2": {
+                        "new_weapon": "RocketAir_S24_240mm_avion_salvolength4",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "GameName": {
@@ -3253,7 +3407,13 @@ pol_unit_edits = {
                 "RocketAir_B8_80mm_salvolength40": 2,
             },
             "equipmentchanges": {
-                "replace": [("RocketAir_B8_80mm_salvolength80", "RocketAir_B8_80mm_salvolength40")],
+                "replace": {
+                    "RocketAir_B8_80mm_salvolength80": {
+                        "new_weapon": "RocketAir_B8_80mm_salvolength40",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },

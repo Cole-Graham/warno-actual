@@ -183,8 +183,15 @@ if __name__ == "__main__":
         ammo_db['renames_new_old'] = renames_new_old
 
         if config.config_data["build_config"]["target"] == "gameplay":
-            from src.utils.new_divisionrules_unit_validation import validate_new_divisionrules_units
+            from src.utils.new_divisionrules_unit_validation import (
+                validate_new_divisionrules_units,
+                validate_standout_units_in_division_rules,
+            )
             validate_new_divisionrules_units(log=logger)
+            validate_standout_units_in_division_rules(
+                log=logger,
+                game_db=config.config_data.get("game_db"),
+            )
         
         # Import and run main after database is loaded
         from src.main import main

@@ -1,12 +1,26 @@
 [project]
 name = "warno-actual"
 version = "0.1.0"
-requires-python = ">=3.11"
-
+# ndf-parse 0.2.x documents testing through 3.12 only; 3.13+ is unsupported until upstream and wheels catch up.
+requires-python = ">=3.12,<3.13"
+description = "WARNO ACTUAL mod patcher"
 dependencies = [
-    "ndf-parse==0.3.1",
-    "tree-sitter==0.20.4",
-    "requests==2.32.4",
+    "ndf-parse @ file:./ndf_parse-0.2.1-py3-none-any.whl",
+    "ruamel.yaml==0.18.10",
+    "tree-sitter==0.21.3",
+    "requests==2.33.0",
+    "matplotlib>=3.5.0",
+]
+[project.optional-dependencies]
+dev = [
+    "black==24.10.0",
+    "isort==5.13.2",
+    "ipython==8.12.3",
+]
+# Not needed for the patcher or dpm_visualizer: Qt UI (tools/fxeditor), Excel, and similar.
+optional = [
+    "openpyxl==3.1.5",
+    "PySide6>=6.5.0",
 ]
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -16,7 +30,7 @@ build-backend = "setuptools.build_meta"
 
 [tool.black]
 line-length = 120
-target-version = ["py310"]
+target-version = ["py312"]
 
 [tool.isort]
 profile = "black"

@@ -1,6 +1,6 @@
-"""Parabolic artillery preview for constant horizontal speed + launch pitch (PitchForParabolic, SpeedGRU).
+"""Parabolic artillery preview for constant horizontal speed + launch pitch (PitchForParabolic, ProjectileSpeedGRU).
 
-Engine model (upcoming): horizontal speed v_x = SpeedGRU (GRU/s), launch pitch from horizontal =
+Engine model (upcoming): horizontal speed v_x = ProjectileSpeedGRU (GRU/s), launch pitch from horizontal =
 PitchForParabolic (rad), strictly in (0, pi/2). Vertical component v_y0 = v_x * tan(pitch).
 
 Same launch and landing height:
@@ -143,7 +143,7 @@ def trajectory_arc_xy(
 ) -> Tuple[List[float], List[float], float, float, float]:
     """Return (xs, ys, r_max, t_flight, apex_y). If x_max_gru is set, clip plot to [0, min(R, x_max)]."""
     if speed_horizontal_gru <= 0:
-        raise ValueError("SpeedGRU must be positive")
+        raise ValueError("ProjectileSpeedGRU must be positive")
     if pitch_rad <= PITCH_MIN_RAD or pitch_rad >= PITCH_MAX_RAD:
         raise ValueError("PitchForParabolic must be in (0, pi/2) radians")
     r_full = max_range_horizontal_pitch(speed_horizontal_gru, pitch_rad, g)

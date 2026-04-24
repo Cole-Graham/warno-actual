@@ -30,8 +30,6 @@ FR_NEW_UNITS = {
             ],
         },
         "strength": 5,
-        # "BoundingBoxSize": str(determine_BoundingBox(5)) + " * Metre",
-        # "Dangerousness": 12,
         "WeaponDescriptor": {
             "Salves": {
                 "insert": [(1, 4)],

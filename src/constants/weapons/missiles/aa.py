@@ -885,7 +885,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_sam_tbagru",
             },
             "hit_roll": {
-                "Idling": 45,
+                "Idling": 55,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2800,
@@ -909,7 +909,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_sam_hagru",
             },
             "hit_roll": {
-                "Idling": 45,
+                "Idling": 55,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2800,

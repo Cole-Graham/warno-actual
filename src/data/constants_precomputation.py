@@ -12,6 +12,7 @@ from typing import Any, Dict, List
 
 from src.constants.new_units import NEW_UNITS
 from src.constants.unit_edits import load_unit_edits
+from src.constants.unit_edits.replace_schema import normalize_replace
 from src.constants.weapons import ammunitions, missiles
 from src.constants.weapons.standards.by_category import (
     AA_CATEGORIES,
@@ -351,21 +352,14 @@ def build_deployment_time_units(game_db: Dict[str, Any]) -> Dict[str, List[str]]
     unit_replace_map: Dict[str, Dict[str, str]] = {}
     for unit_name, edits in unit_edits.items():
         replacements: Dict[str, str] = {}
-        replace_entries = (
+        replace_block = (
             edits.get("WeaponDescriptor", {})
             .get("equipmentchanges", {})
-            .get("replace", [])
+            .get("replace")
         )
-        for replacement in replace_entries:
-            if (
-                not isinstance(replacement, (list, tuple))
-                or len(replacement) < 2
-                or not isinstance(replacement[0], str)
-                or not isinstance(replacement[1], str)
-            ):
-                continue
-            old_base = _salvo_suffix_re.sub("", replacement[0])
-            new_base = _salvo_suffix_re.sub("", replacement[1])
+        for spec in normalize_replace(replace_block):
+            old_base = _salvo_suffix_re.sub("", spec.old_weapon)
+            new_base = _salvo_suffix_re.sub("", spec.new_weapon)
             replacements[old_base] = new_base
         if replacements:
             unit_replace_map[unit_name] = replacements

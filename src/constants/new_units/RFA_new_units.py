@@ -373,9 +373,14 @@ RFA_NEW_UNITS = {
                 "animate": {
                     "MMG_inf__MG3_7_62mm": False,
                 },
-                "replace": [
-                    ("RocketInf_PzF_44", "RocketInf_PzF_3", "RocketInf_PzF_44", "RocketInf_PzF_3"),
-                ],
+                "replace": {
+                    "RocketInf_PzF_44": {
+                        "new_weapon": "RocketInf_PzF_3",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                        "old_new_effect": ("RocketInf_PzF_44", "RocketInf_PzF_3"),
+                    },
+                },
                 "quantity": {
                     "FM_G3KA4": 7,
                     "MMG_inf__MG3_7_62mm": 2,
@@ -442,10 +447,20 @@ RFA_NEW_UNITS = {
                 "quantity": {
                     "FM_G3KA4": 9,
                 },
-                "replace": [
-                    ("MMG_inf__MG3_7_62mm", "RocketInf_PzF_3T", "MMG_inf__MG3_7_62mm", "RocketInf_PzF_3"),
-                    ("RocketInf_PzF_44", "RocketInf_PzF_3T", "RocketInf_PzF_44", "RocketInf_PzF_3"),
-                ],
+                "replace": {
+                    "MMG_inf__MG3_7_62mm": {
+                        "new_weapon": "RocketInf_PzF_3T",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                        "old_new_effect": ("MMG_inf__MG3_7_62mm", "RocketInf_PzF_3"),
+                    },
+                    "RocketInf_PzF_44": {
+                        "new_weapon": "RocketInf_PzF_3T",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                        "old_new_effect": ("RocketInf_PzF_44", "RocketInf_PzF_3"),
+                    },
+                },
             },
         },
         "TransportedSoldier": "TankHunters_RFA",
@@ -501,7 +516,13 @@ RFA_NEW_UNITS = {
                 "ATGM_MILAN_2": 5,
             },
             "equipmentchanges": {
-                "replace": [("ATGM_MILAN", "ATGM_MILAN_2")]
+                "replace": {
+                    "ATGM_MILAN": {
+                        "new_weapon": "ATGM_MILAN_2",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
         "UpgradeFromUnit": "TPZ_Fuchs_MILAN_RFA",
@@ -563,7 +584,13 @@ RFA_NEW_UNITS = {
                     "PM_Uzi_noreflex": 2,
                     "MANPAD_FIM43": 1,
                 },
-                "replace": [("PM_Uzi", "PM_Uzi_noreflex")],
+                "replace": {
+                    "PM_Uzi": {
+                        "new_weapon": "PM_Uzi_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "PM_Uzi_noreflex": 22,
@@ -629,7 +656,18 @@ RFA_NEW_UNITS = {
             ],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("MANPAD_FIM43", "MANPAD_FIM92_A"), ("PM_Uzi", "PM_Uzi_noreflex")],
+                "replace": {
+                    "MANPAD_FIM43": {
+                        "new_weapon": "MANPAD_FIM92_A",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                    "PM_Uzi": {
+                        "new_weapon": "PM_Uzi_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
                 "quantity": {
                     "PM_Uzi_noreflex": 2,
                     "MANPAD_FIM92_A": 1,
@@ -692,7 +730,18 @@ RFA_NEW_UNITS = {
             ],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("MANPAD_FIM43", "MANPAD_FIM92_A"), ("PM_Uzi", "PM_Uzi_noreflex")],
+                "replace": {
+                    "MANPAD_FIM43": {
+                        "new_weapon": "MANPAD_FIM92_A",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                    "PM_Uzi": {
+                        "new_weapon": "PM_Uzi_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
                 "quantity": {
                     "PM_Uzi_noreflex": 2,
                     "MANPAD_FIM92_A": 1,
@@ -753,25 +802,18 @@ RFA_NEW_UNITS = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "AA_AIM9M_Sidewinder": 2,
+                "AA_AIM9L_Sidewinder_upgrade": 2,
                 "AA_AIM120A_AMRAAM": 3,
             },
             "equipmentchanges": {
-                "replace": [
-                    # First Sidewinder rail (tourelle2 / weapon 2) → AMRAAM; second rail → AIM-9M
-                    (
-                        "AA_AIM9L_Sidewinder_upgrade",
-                        "AA_AIM120A_AMRAAM",
-                        "AA_AIM9L_Sidewinder_upgrade",
-                        "AA_AIM120A_AMRAAM",
-                    ),
-                    (
-                        "AA_AIM9L_Sidewinder_upgrade",
-                        "AA_AIM9M_Sidewinder",
-                        "AA_AIM9L_Sidewinder_upgrade",
-                        "AA_AIM9M_Sidewinder",
-                    ),
-                ],
+                "replace": {
+                    "AA_AIM9L_Sidewinder_upgrade": {
+                        "new_weapon": "AA_AIM120A_AMRAAM",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                        "old_new_effect": ("AA_AIM9L_Sidewinder_upgrade", "AA_AIM120A_AMRAAM"),
+                    },
+                },
             },
         },
         "Divisions": {

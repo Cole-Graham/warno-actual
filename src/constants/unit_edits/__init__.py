@@ -192,6 +192,9 @@ def _resolve_unit_with_cache(unit_data: Any, unit_name: str, field_cache: Dict[s
         # WeaponDescriptor.turrets.* and MountedWeapons.* hold weapon config (RGBA, EffectTag, etc.)
         if "turrets" in path or "MountedWeapons" in path:
             return True
+        # equipmentchanges.* holds ammo / weapon / fire-effect game IDs, never unit references
+        if "equipmentchanges" in path:
+            return True
         key = path.split(".")[-1] if path else path
         return key in _REFERENCE_PATH_EXCEPTIONS
 
@@ -404,25 +407,32 @@ def load_unit_edits() -> Dict:
     return merged_edits
 
 
+_cached_depiction_edits = None
+
+# Per-faction depiction edit modules. Adding a new faction is a single-line change.
+_DEPICTION_EDIT_FACTION_MODULES = {
+    'POL': 'src.constants.unit_edits.depiction_edits.POL_depiction_edits',
+    'SOV': 'src.constants.unit_edits.depiction_edits.SOV_depiction_edits',
+    'UK': 'src.constants.unit_edits.depiction_edits.UK_depiction_edits',
+    'USA': 'src.constants.unit_edits.depiction_edits.USA_depiction_edits',
+    'FR': 'src.constants.unit_edits.depiction_edits.FR_depiction_edits',
+    'RDA': 'src.constants.unit_edits.depiction_edits.RDA_depiction_edits',
+    'RFA': 'src.constants.unit_edits.depiction_edits.RFA_depiction_edits',
+}
+
+
 def load_depiction_edits() -> Dict:
     """Load and merge all depiction edit dictionaries."""
+    global _cached_depiction_edits
+    if _cached_depiction_edits is not None:
+        return _cached_depiction_edits
+
     merged_edits = {}
-    
+
     logger.info("Loading depiction edit dictionaries...")
 
-    # Dictionary of faction modules to import
-    faction_modules = {
-        'POL': 'src.constants.unit_edits.depiction_edits.POL_depiction_edits',
-        'SOV': 'src.constants.unit_edits.depiction_edits.SOV_depiction_edits',
-        'UK': 'src.constants.unit_edits.depiction_edits.UK_depiction_edits',
-        'USA': 'src.constants.unit_edits.depiction_edits.USA_depiction_edits',
-        'FR': 'src.constants.unit_edits.depiction_edits.FR_depiction_edits',
-        'RDA': 'src.constants.unit_edits.depiction_edits.RDA_depiction_edits',
-        'RFA': 'src.constants.unit_edits.depiction_edits.RFA_depiction_edits',
-    }
-    
     # Import each faction's edits
-    for faction, module_path in faction_modules.items():
+    for faction, module_path in _DEPICTION_EDIT_FACTION_MODULES.items():
         failed_imports = []
         try:
             module = importlib.import_module(module_path)
@@ -478,6 +488,29 @@ def load_depiction_edits() -> Dict:
             )
     
     logger.info(f"Loaded depiction edits for {len(merged_edits)} units total")
+
+    # Mirror load_unit_edits' behavior: write a merged log for batch review.
+    try:
+        logs_dir = Path(__file__).parents[3] / "logs"
+        logs_dir.mkdir(exist_ok=True)
+
+        def _json_safe(value):
+            if isinstance(value, dict):
+                return {str(k): _json_safe(v) for k, v in value.items()}
+            if isinstance(value, (list, tuple)):
+                return [_json_safe(item) for item in value]
+            try:
+                json.dumps(value)
+                return value
+            except TypeError:
+                return repr(value)
+
+        with open(logs_dir / "merged_depiction_edits.json", "w") as f:
+            json.dump(_json_safe(merged_edits), f, indent=4)
+    except Exception as exc:  # never fail the loader for log writing
+        logger.warning(f"Could not write merged_depiction_edits.json: {exc}")
+
+    _cached_depiction_edits = merged_edits
     return merged_edits
 
 # # parse dictionary for shared/borrowed values in specific fields

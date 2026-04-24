@@ -53,11 +53,13 @@ from .missiles import raw_missiles
 from .mounted_weapons import mounted_weapons
 from .salvo_standards import LIGHT_AT_AMMO
 from .weapon_descriptions import (
+    ADDITIONAL_WEAPON_TRAIT_ICON_TEXTURES,
     WEAPON_DESCRIPTIONS,
     WEAPON_DESCRIPTION_EDITS,
     NEW_WEAPON_TRAITS,
     SHOW_AS_FILTER,
     WEAPON_TRAIT_EDITS,
+    _WEAPON_TRAIT_ICON_DIR,
 )
 from .vanilla_inst_modifications import (
     AMMUNITION_MISSILES_REMOVALS,
@@ -133,6 +135,8 @@ __all__ = [
     'NEW_WEAPON_TRAITS',
     'SHOW_AS_FILTER',
     'WEAPON_TRAIT_EDITS',
+    'ADDITIONAL_WEAPON_TRAIT_ICON_TEXTURES',
+    '_WEAPON_TRAIT_ICON_DIR',
     'ammunitions',
     'PGB_BOMB_DAMAGE',
     'MANPAD_HAGRU_DAMAGE',

@@ -1,7 +1,17 @@
 Metadata-Version: 2.4
 Name: warno-actual
 Version: 0.1.0
-Requires-Python: >=3.11
-Requires-Dist: ndf-parse==0.3.1
-Requires-Dist: tree-sitter==0.20.4
-Requires-Dist: requests==2.32.4
+Summary: WARNO ACTUAL mod patcher
+Requires-Python: <3.13,>=3.12
+Requires-Dist: ndf-parse @ file:./ndf_parse-0.2.1-py3-none-any.whl
+Requires-Dist: ruamel.yaml==0.18.10
+Requires-Dist: tree-sitter==0.21.3
+Requires-Dist: requests==2.33.0
+Requires-Dist: matplotlib>=3.5.0
+Provides-Extra: dev
+Requires-Dist: black==24.10.0; extra == "dev"
+Requires-Dist: isort==5.13.2; extra == "dev"
+Requires-Dist: ipython==8.12.3; extra == "dev"
+Provides-Extra: optional
+Requires-Dist: openpyxl==3.1.5; extra == "optional"
+Requires-Dist: PySide6>=6.5.0; extra == "optional"

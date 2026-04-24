@@ -9,6 +9,10 @@
     },
     "search.exclude": {
         "**/src/data/database/**/*.json": true,
-        "!**/src/data/database/master_db_metadata.json": false
-    }
+        "!**/src/data/database/master_db_metadata.json": false,
+        "**/src/constants/fx/**/*.ndf": true,
+        "**/tools/fxeditor/sample_source_vfx/**/*.ndf": true,
+        "**/tools/fxeditor/sample_source_vfx/*.ndf": true,
+    },
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
 }

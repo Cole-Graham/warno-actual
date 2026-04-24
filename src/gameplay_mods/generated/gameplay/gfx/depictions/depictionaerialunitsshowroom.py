@@ -2,9 +2,9 @@
 
 from typing import Any
 from src.constants.unit_edits import load_depiction_edits
-from src.constants.new_units import NEW_UNITS, NEW_DEPICTIONS
+from src.constants.new_units import NEW_DEPICTIONS
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import ndf, find_obj_by_type, find_obj_by_blackhole_key
+from src.utils.ndf_utils import ndf, find_obj_by_blackhole_key
 
 logger = setup_logger(__name__)
 

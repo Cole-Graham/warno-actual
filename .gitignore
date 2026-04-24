@@ -13,12 +13,17 @@ src/data/database/*.json
 *.lnk
 LDR_unit_edits_old.py
 notes
-.cursor
+# Cursor: ignore local IDE state; only the AGENTS.md sync policy rule is committed (other .mdc stay local)
+.cursor/*
+!.cursor/rules/
+.cursor/rules/*
+!.cursor/rules/sync-agents-md-with-cursor-rules.mdc
 python_version_check.py
 tools/dpm_visualizer/user_data.json
 tools/dpm_visualizer/dpm_visualizer_cache.json
 tools/artillery_arc_preview/user_state.json
 tools/fxeditor/out
+tools/fx_editor/
 # PyInstaller portable build (artillery arc preview)
 build/arc_preview/
 dist/ArtilleryArcPreview/
@@ -26,7 +31,6 @@ dist/ArtilleryArcPreview.exe
 build/arc_preview_onefile/
 tools/infantry_dpm_visualizer.py
 tools/extract_infantry_tab.py
-tools/fx_editor/out/
 agent
 generate_new_divs.py
 generate_divisionrules.py

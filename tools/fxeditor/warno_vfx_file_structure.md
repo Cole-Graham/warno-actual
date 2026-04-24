@@ -106,7 +106,7 @@ The declaration’s **`parPosition`** is the **world anchor** for the whole effe
 
 ### 5.2 Per-call relative placement (`NamedParams`)
 
-Tools and the legacy FX editor care especially about:
+VFX tools care especially about:
 
 | Key | Meaning |
 |-----|--------|
@@ -158,9 +158,9 @@ where `anchor_max_ndf_radius` is the **maximum** planar distance of relevant `Mo
 
 Observed in practice:
 
-- The **older FX editor defaults** used **`reference_gameplay_radius_m = 120`** with **`anchor_max_ndf_radius ≈ 4272.52`**, and that pairing **looked roughly correct in-game** for cluster VFX.
+- **Earlier default calibration** used **`reference_gameplay_radius_m = 120`** with **`anchor_max_ndf_radius ≈ 4272.52`**, and that pairing **looked roughly correct in-game** for cluster VFX.
 - A recomputed anchor for the same M270 reference file gives **`anchor_max_ndf_radius ≈ 4240.282686`**. It is plausible the “right” row is **`120` ↔ `4240.282686`** (same spirit as the old scale, updated anchor) rather than **`60` ↔ `4240.282686`** (which is a **steeper** NDF→gameplay slope and shrinks layout in gameplay space relative to 120/4272).
-- **`tools/vfx_editor/vfx_cluster/scatter_calibration.yaml`** (and **`tools/vfx_editor/vfx_editor.yaml`**) may carry one concrete pair for tooling; treat as **config**, not as proven ground truth until validated side-by-side in-game.
+- **`tools/fxeditor/fxeditor.yaml`** carries the current calibration pair for **fxeditor**; treat as **config**, not as proven ground truth until validated side-by-side in-game.
 
 **Working assumption for this document (until re-validated in-game):** use **`reference_gameplay_radius_m = 120`** with **`anchor_max_ndf_radius = 4240.282686`** when you need a single stated pair for mental math or new tooling docs. Revisit once in-game checks agree on one row.
 
@@ -191,7 +191,6 @@ This mapping is **linear** in XY; it does not model terrain or Z warping.
 ## 10. References in this repo
 
 - Parsed / emitted with **`src.ndf`** (`ndf_parse`).
-- **New editor (no import of `tools/fx_editor`):** layout sites and timeline: `tools/vfx_editor/vfx_core/ndf_extract/`, `tools/vfx_editor/vfx_core/ndf_timeline/`. Cluster batch (emit, scaling, writes): `tools/vfx_editor/vfx_cluster/` (ported from the legacy editor; keep behavior aligned via tests).
-- **Legacy reference** (optional comparison): `tools/fx_editor/scatter_extract.py`, `scatter_emit.py`, `size_batch.py`, `call_scale.py`.
+- **New FX editor (PySide6)** lives under **`tools/fxeditor/`**: **`core/`** (NDF I/O, extract, layout, classification, scaling pipeline) and **`ui/`** (main window, canvas, settings). Versioned calibration: **`tools/fxeditor/fxeditor.yaml`**.
 
-This document should stay **synchronized** with the **vfx_editor** implementations when behavior is intentionally changed.
+This document should stay **synchronized** with **`tools/fxeditor`** when behavior is intentionally changed.

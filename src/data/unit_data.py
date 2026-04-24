@@ -347,9 +347,10 @@ def gather_weapon_data(mod_src_path: Path) -> Dict[str, Any]:
                 mapping_data = _gather_salvo_mapping(weapon_descr)
 
                 if any([turret_data, salvo_data, location_data, index_data, mapping_data]):
+                    salves_list = _gather_salves_list(weapon_descr)
                     weapon_data[weapon_name] = {
                         "turrets": turret_data,
-                        # 'salvos': salvo_data,
+                        "salves_list": salves_list,
                         "weapon_locations": location_data,
                         "weapon_indices": index_data,
                         "salvo_mapping": mapping_data,
@@ -431,11 +432,46 @@ def _gather_mounted_weapons(turret: Any, salvo_data: Dict[str, int]) -> Dict[str
             ammo_name = ammo_val.split("$/GFX/Weapon/Ammo_", 1)[1]
             salvo_index = int(weapon.v.by_m("AmmoBoxIndex").v)
             weapon_quantity = int(weapon.v.by_m("NbWeapons").v)
+
+            shoot_data_row = weapon.v.by_m("WeaponShootDataPropertyName", False)
+            if shoot_data_row is None:
+                shoot_data = []
+            else:
+                raw = shoot_data_row.v
+                if isinstance(raw, str):
+                    shoot_data = [strip_quotes(raw)]
+                else:
+                    shoot_data = [strip_quotes(item.v) for item in raw]
+
+            handheld_row = weapon.v.by_m("HandheldEquipmentKey", False)
+            handheld = strip_quotes(handheld_row.v) if handheld_row is not None else None
+
+            active_row = weapon.v.by_m("WeaponActiveAndCanShootPropertyName", False)
+            active = strip_quotes(active_row.v) if active_row is not None else None
+
+            ignored_row = weapon.v.by_m("WeaponIgnoredPropertyName", False)
+            ignored = strip_quotes(ignored_row.v) if ignored_row is not None else None
+
+            animate_row = weapon.v.by_m("AnimateOnlyOneSoldier", False)
+            animate_value = animate_row.v if animate_row is not None else None
+            if isinstance(animate_value, str):
+                animate_value = animate_value.strip().lower() in ("true", "'true'", '"true"')
+            elif animate_value is None:
+                pass
+            else:
+                animate_value = bool(animate_value)
+
             weapon_data[ammo_name] = {
                 "salvo_index": salvo_index,
                 "salves": salvo_data[str(salvo_index)],
                 "quantity": weapon_quantity,
                 "regex_quantity": _get_regex_weapon_quantity(ammo_name),
+                "mounted_index": int(weapon.index),
+                "handheld_equipment_key": handheld,
+                "weapon_shoot_data_property_name": shoot_data,
+                "weapon_active_and_can_shoot_property_name": active,
+                "weapon_ignored_property_name": ignored,
+                "animate_only_one_soldier": animate_value,
             }
         except Exception as e:
             logger.warning(f"Failed to gather data for weapon: {str(e)}")
@@ -451,6 +487,16 @@ def _gather_salvo_data(weapon_descr: Any) -> Dict[str, int]:
     except Exception:  # noqa
         logger.warning(f"Failed to gather salvo data for {weapon_descr.namespace}")
         return {}
+
+
+def _gather_salves_list(weapon_descr: Any) -> List[int]:
+    """Return the Salves list as a flat ordered list of ints (index = list position)."""
+    try:
+        salves_list = weapon_descr.v.by_m("Salves").v
+        return [int(salvo.v) for salvo in salves_list]
+    except Exception:  # noqa
+        logger.warning(f"Failed to gather salves list for {weapon_descr.namespace}")
+        return []
 
 
 def _get_regex_weapon_quantity(ammo_name: str) -> int:

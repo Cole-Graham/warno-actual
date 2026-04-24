@@ -36,6 +36,7 @@ SHOW_AS_FILTER = {
     "clusterHEAT": True,
     "clusterHEFrag": True,
     "biglyHE": True,
+    "reflexpriorityoff": True,
 }
 
 WEAPON_TRAIT_EDITS = {
@@ -86,4 +87,28 @@ NEW_WEAPON_TRAITS = {
         "trait_hint_title_token": "QETCXGYBML",
         "trait_hint_body_token": "MILSGYGXLP",
     },
+    "reflexpriorityoff": {
+        "title": "Priority targeting disabled",
+        "description": (
+            "This weapon will not disable automatic firing when prioritizing a target "
+            "with right click. This is necessary for the functionality of strike planes with "
+            "particular kinds of mixed weapon loadouts.\n\nIf the prioritized target is out of range "
+            "and there is another compatible target in range, the weapon will ignore the priority "
+            "target order and fire at the target that is already in range."
+        ),
+        "trait_texture_name": "Texture_Trait_Icon_reflexpriorityoff",
+        "trait_hint_title_token": "NBIXHLYGDV",
+        "trait_hint_body_token": "QYOLCIOFMH",
+    },
 }
+
+# BUCKTextureBank.ndf: ``Texture_Trait_Icon_*`` for mod weapon traits (see traits section; same
+# directory as vanilla ``Texture_Trait_Icon_*`` entries).
+_WEAPON_TRAIT_ICON_DIR = "GameData:/Assets/2D/Interface/Common/traits"
+
+ADDITIONAL_WEAPON_TRAIT_ICON_TEXTURES = (
+    ("Texture_Trait_Icon_clusterHEAT", "cluster-heat.png"),
+    ("Texture_Trait_Icon_clusterHEFrag", "cluster-hefrag.png"),
+    ("Texture_Trait_Icon_biglyHE", "bigly-he.png"),
+    ("Texture_Trait_Icon_reflexpriorityoff", "reflexpriorityoff.png"),
+)

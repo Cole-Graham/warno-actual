@@ -5,6 +5,7 @@ from typing import Any, Dict
 
 from src import ndf
 from src.constants.new_units import NEW_UNITS
+from src.constants.unit_edits.replace_schema import normalize_replace
 # from src.constants.weapons.ammunition.small_arms import weapons as small_arms_weapons
 from src.constants.weapons import ammunitions, SNIPER_DAMAGE_FAMILIES
 from src.utils.logging_utils import setup_logger
@@ -88,26 +89,19 @@ def new_units_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> Non
                             old_weapon_name, new_weapon_name = replacement
                             _replace_weapon_with_turret(source_path, new_weap_row, changes, edits, game_db, old_weapon_name, new_weapon_name, new_weapon_name)
                         
-                # Each tuple replaces the *next* matching mount in turret order (then mount order).
+                # Each spec replaces the *next* matching mount in turret order (then mount order).
                 if "replace" in changes:
-                    for replacement in changes["replace"]:
-                        if len(replacement) == 4:
-                            old_ammo, new_ammo, old_fire_effect, new_fire_effect = replacement
-                            _replace_weapon(
-                                source_path,
-                                changes,
-                                new_weap_row,
-                                old_ammo,
-                                new_ammo,
-                                old_fire_effect,
-                                new_fire_effect,
-                                game_db,
-                            )
-                        else:
-                            old_ammo, new_ammo = replacement
-                            _replace_weapon(
-                                source_path, changes, new_weap_row, old_ammo, new_ammo, None, None, game_db,
-                            )
+                    for spec in normalize_replace(changes["replace"]):
+                        _replace_weapon(
+                            source_path,
+                            changes,
+                            new_weap_row,
+                            spec.old_weapon,
+                            spec.new_weapon,
+                            spec.old_fire_effect,
+                            spec.new_fire_effect,
+                            game_db,
+                        )
 
                 # Handle HAGRU MANPADS
                 if "HAGRU_MANPADS" in changes:

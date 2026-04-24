@@ -103,25 +103,34 @@ usa_unit_edits = {
         "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
-    "AAVC_7A1_CMD_USMC_US": {
-        "CommandPoints": 150,
-        "availability": [0, 3, 0, 0],
-        "Divisions": {
-            "default": {
-                "cards": 1,
-            },
-        },
-        "TagSet": {"add_tags": ['"CMD_Unit"']},
-    },
+    # doesn't exist anymore?
+    # "AAVC_7A1_CMD_USMC_US": {
+    #     "CommandPoints": 150,
+    #     "availability": [0, 3, 0, 0],
+    #     "Divisions": {
+    #         "default": {
+    #             "cards": 1,
+    #         },
+    #     },
+    #     "TagSet": {"add_tags": ['"CMD_Unit"']},
+    # },
 
     "M2A1_Bradley_Leader_US": {
         "CommandPoints": 195,
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    ("AutoCanon_AP_25mm_M242_Bushmaster_Late", "AutoCanon_AP_25mm_M242_Bushmaster_APDS"),
-                    ("AutoCanon_HE_25mm_M242_Bushmaster_Late", "AutoCanon_HE_25mm_M242_Bushmaster_APDS"),
-                ],
+                "replace": {
+                    "AutoCanon_AP_25mm_M242_Bushmaster_Late": {
+                        "new_weapon": "AutoCanon_AP_25mm_M242_Bushmaster_APDS",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                    "AutoCanon_HE_25mm_M242_Bushmaster_Late": {
+                        "new_weapon": "AutoCanon_HE_25mm_M242_Bushmaster_APDS",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
         "Divisions": {
@@ -155,7 +164,7 @@ usa_unit_edits = {
 
     # US INF
     "Rifles_half_CMD_US": {
-        "CommandPoints": 30,
+        "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "FIRETEAM",
@@ -176,9 +185,6 @@ usa_unit_edits = {
         },
         "strength": 6,
         "TransportedTexture": "UseInGame_Transport_REGINF",
-        # "SortingOrder": 20075,
-        # "UnitAttackValue": 1,
-        # "UnitDefenseValue": 16,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
         "UnitRole": "infantry",
@@ -204,13 +210,11 @@ usa_unit_edits = {
                 "RocketInf_M72A3_LAW_66mm": 6,
             },
         },
-        "selector_tactic": "(0, 6)",
-        "selector_tactic_obj": "00_06",
         "remove_zone_capture": None,
     },
     
     "Rifles_half_Cav_CMD_US": {
-        "CommandPoints": 30,
+        "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "CAV. TROOPERS",
@@ -247,7 +251,14 @@ usa_unit_edits = {
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("RocketInf_M72A3_LAW_66mm", "RocketInf_AT4_83mm", "RocketInf_M72_LAW_66mm", "RocketInf_AT4_83mm")],
+                "replace": {
+                    "RocketInf_M72A3_LAW_66mm": {
+                        "new_weapon": "RocketInf_AT4_83mm",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                        "old_new_effect": ("RocketInf_M72_LAW_66mm", "RocketInf_AT4_83mm"),
+                    },
+                },
                 "quantity": {
                     "FM_M16": 6,
                 },
@@ -256,8 +267,6 @@ usa_unit_edits = {
                 "RocketInf_AT4_83mm": 4,
             },
         },
-        "selector_tactic": "(2, 4)",
-        "selector_tactic_obj": "02_04",
         "remove_zone_capture": None,
     },
 
@@ -265,7 +274,6 @@ usa_unit_edits = {
         "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
-            "token": "SVWNZUYPNE",
             "display": "MECH. RIFLES",
         },
         "TagSet": {
@@ -282,9 +290,6 @@ usa_unit_edits = {
             ],
         },
         "TransportedTexture": "UseInGame_Transport_REGINF",
-        # "SortingOrder": 20075,
-        # "UnitAttackValue": 1,
-        # "UnitDefenseValue": 16,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
         "UnitRole": "infantry",
@@ -315,18 +320,26 @@ usa_unit_edits = {
         "armor": "Infantry_armor_reference",
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm")],
+                "replace": {
+                    "MMG_WA_M60E3_7_62mm": {
+                        "new_weapon": "MMG_M60E1_7_62mm",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
+            },
+            "Salves": {
+                "MMG_M60E1_7_62mm": 45,
             },
         },
         "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "Engineer_CMD_US": {
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "ENGINEERS",
-            "token": "DBEBRUEYSP",
         },
         "TagSet": {
             "overwrite_all": [
@@ -343,9 +356,6 @@ usa_unit_edits = {
             ],
         },
         "TransportedTexture": "UseInGame_Transport_assault",
-        # "SortingOrder": 20040,
-        # "UnitAttackValue": 1,
-        # "UnitDefenseValue": 16,
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
         "UnitRole": "engineer",
@@ -410,9 +420,6 @@ usa_unit_edits = {
         },
         "strength": 9,
         "TransportedTexture": "UseInGame_Transport_REGINF",
-        # "SortingOrder": 20075,
-        # "UnitAttackValue": 1,
-        # "UnitDefenseValue": 16,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry_sf", "Texture_sf"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
         "UnitRole": "infantry",
@@ -438,12 +445,13 @@ usa_unit_edits = {
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    (
-                        "Commando_733",
-                        "M16A1_Carbine"
-                    ),
-                ],
+                "replace": {
+                    "Commando_733": {
+                        "new_weapon": "M16A1_Carbine",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
                 "quantity": {
                     "M16A1_Carbine": 8,
                 },
@@ -469,15 +477,11 @@ usa_unit_edits = {
                 "RocketInf_Carl_Gustav": 7,
             },
         },
-        "unique_count": 2,
-        "surrogates": 9,
-        "selector_tactic": "(2, 9)",
-        "selector_tactic_obj": "02_09",
         "remove_zone_capture": None,
     },
 
     "Airborne_Engineer_CMD_US": {
-        "CommandPoints": 55,
+        "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "AB ENGINEERS",
@@ -497,9 +501,6 @@ usa_unit_edits = {
             ],
         },
         "TransportedTexture": "UseInGame_Transport_assault",
-        # "SortingOrder": 20040,
-        # "UnitAttackValue": 1,
-        # "UnitDefenseValue": 16,
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
         "UnitRole": "engineer",
@@ -527,7 +528,7 @@ usa_unit_edits = {
     },
 
     "Airborne_CMD_US": {
-        "CommandPoints": 60,
+        "CommandPoints": 55,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "AIRBORNE",
@@ -547,9 +548,6 @@ usa_unit_edits = {
             ],
         },
         "TransportedTexture": "UseInGame_Transport_REGINF",
-        # "SortingOrder": 20060,
-        # "UnitAttackValue": 1,
-        # "UnitDefenseValue": 16,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
         "UnitRole": "infantry",
@@ -580,7 +578,7 @@ usa_unit_edits = {
     },
 
     "AeroRifles_CMD_US": {
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "AERO-RIFLES",
@@ -600,9 +598,6 @@ usa_unit_edits = {
             ],
         },
         "TransportedTexture": "UseInGame_Transport_REGINF",
-        # "SortingOrder": 20060,
-        # "UnitAttackValue": 1,
-        # "UnitDefenseValue": 16,
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
         "UnitRole": "infantry",
@@ -687,10 +682,6 @@ usa_unit_edits = {
             ],
         },
         "TransportedTexture": "UseInGame_Transport_assault",
-        # "SortingOrder": 20085,
-        # "UnitAttackValue": 1,
-        # "UnitDefenseValue": 31,
-        # "UnitDefenseValue": 31,
         "IdentifiedTextures": ["Texture_RTS_H_assault", "Texture_assault"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
         "UnitRole": "engineer",
@@ -743,7 +734,13 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("Commando_733", "M16A1_Carbine")],
+                "replace": {
+                    "Commando_733": {
+                        "new_weapon": "M16A1_Carbine",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "M16A1_Carbine": 11,
@@ -757,7 +754,7 @@ usa_unit_edits = {
     },
     
     "MP_CMD_US": {
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "MP LEADER",
@@ -795,7 +792,7 @@ usa_unit_edits = {
     },
 
     "Rifles_USMC_CMD_US": {
-        "CommandPoints": 30,
+        "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "USMC RIFLEMEN",
@@ -843,7 +840,7 @@ usa_unit_edits = {
     },
 
     "Engineer_USMC_CMD_US": {
-        "CommandPoints": 55,
+        "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "USMC ENGINEERS",
@@ -876,7 +873,13 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("MMG_M60E3_7_62mm", "MMG_WA_M60E3_7_62mm")],
+                "replace": {
+                    "MMG_M60E3_7_62mm": {
+                        "new_weapon": "MMG_WA_M60E3_7_62mm",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
                 "quantity": {
                     "FM_M16": 9,
                     "MMG_WA_M60E3_7_62mm": 3,
@@ -947,7 +950,16 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm")],
+                "replace": {
+                    "MMG_WA_M60E3_7_62mm": {
+                        "new_weapon": "MMG_M60E1_7_62mm",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
+            },
+            "Salves": {
+                "MMG_M60E1_7_62mm": 45,
             },
         },
     },
@@ -1050,7 +1062,13 @@ usa_unit_edits = {
                 "animate": {
                     "SAW_M249_5_56mm": False,
                 },
-                "replace": [("MMG_inf_M240B_7_62mm", "SAW_M249_5_56mm")],
+                "replace": {
+                    "MMG_inf_M240B_7_62mm": {
+                        "new_weapon": "SAW_M249_5_56mm",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
                 "quantity": {
                     "SAW_M249_5_56mm": 2,
                 },
@@ -1079,9 +1097,16 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm")],
+                "replace": {
+                    "MMG_WA_M60E3_7_62mm": {
+                        "new_weapon": "MMG_M60E1_7_62mm",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
+                "MMG_M60E1_7_62mm": 45,
                 "flamethrower_M2": 15,
             },
         },
@@ -1138,7 +1163,13 @@ usa_unit_edits = {
                 "M47_DRAGON": 8,
             },
             "equipmentchanges": {
-                "replace": [("M47_DRAGON", "M47_DRAGON_II")],
+                "replace": {
+                    "M47_DRAGON": {
+                        "new_weapon": "M47_DRAGON_II",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -1161,9 +1192,13 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    ("MMG_M60E3_7_62mm", "MMG_WA_M60E3_7_62mm")
-                ],
+                "replace": {
+                    "MMG_M60E3_7_62mm": {
+                        "new_weapon": "MMG_WA_M60E3_7_62mm",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
                 "animate": {
                     "MMG_WA_M60E3_7_62mm": False,
                 },
@@ -1208,22 +1243,76 @@ usa_unit_edits = {
         "GameName": {
             "display": "MP PATROL",
         },
-        "CommandPoints": 20,
+        "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "availability": [0, 12, 9, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
+        "strength": 8,
+        "UpgradeFromUnit": "MP_RCL_US",
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "quantity": {
-                    "FM_M16": 3,
-                    "MMG_WA_M60E3_7_62mm": 2,
+                    "FM_M16": 4,
+                    "FM_M16A1": 3,
+                    "MMG_WA_M60E3_7_62mm": 1,
+                },
+                "insert": [
+                    (0, "FM_M16A1"),
+                    (3, "RocketInf_M72A3_LAW_66mm"),
+                ],
+                "insert_edits": {
+                    0: {  # M16A1 (newly inserted)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 1,
+                        },
+                        "AmmoBoxIndex": 0,
+                        "HandheldEquipmentKey": "'WeaponAlternative_1'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_1'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_1'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_1"],
+                    },
+                    1: {  # M16 (bumped from vanilla 0)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 2,
+                        },
+                        "AmmoBoxIndex": 1,
+                        "HandheldEquipmentKey": "'WeaponAlternative_2'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_2'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_2'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_2"],
+                    },
+                    2: {  # MMG (bumped from vanilla 1)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 3,
+                        },
+                        "AmmoBoxIndex": 2,
+                        "HandheldEquipmentKey": "'WeaponAlternative_3'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
+                    },
+                    3: {  # LAW (newly inserted)
+                        "turret_edits": {
+                            "YulBoneOrdinal": 4,
+                        },
+                        "AmmoBoxIndex": 3,
+                        "HandheldEquipmentKey": "'WeaponAlternative_4'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_4'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_4'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_4"],
+                    },
                 },
             },
             "Salves": {
                 "FM_M16": 11,
+                "MMG_WA_M60E3_7_62mm": 45,
+                "insert": [
+                    (0, 11),
+                    (3, 4),
+                ],
             },
         },
     },
@@ -1263,6 +1352,7 @@ usa_unit_edits = {
                 "RocketInf_M67_RCL_90mm": 8,
             },
         },
+        "UpgradeFromUnit": "MP_CMD_US",
     },
     
     "MP_Combat_USAF_US": { # USAF SECURITY
@@ -1375,7 +1465,7 @@ usa_unit_edits = {
     },
 
     "Rifles_USMC_LAW_US": {
-        "CommandPoints": 45,
+        "CommandPoints": 40,
         "GameName": {
             "display": "USMC RIFLEMEN [LAW]",
         },
@@ -1396,7 +1486,7 @@ usa_unit_edits = {
     },
 
     "Rifles_USMC_AT4_US": {
-        "CommandPoints": 55,
+        "CommandPoints": 50,
         "GameName": {
             "display": "USMC RIFLEMEN [AT4]",
         },
@@ -1414,7 +1504,7 @@ usa_unit_edits = {
     },
 
     "Rifles_USMC_Dragon_US": {
-        "CommandPoints": 60,
+        "CommandPoints": 50,
         "GameName": {
             "display": "USMC RIFLEMEN [DRAGON]",
         },
@@ -1462,9 +1552,13 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    ("MMG_M60E3_7_62mm", "MMG_WA_M60E3_7_62mm")
-                ],
+                "replace": {
+                    "MMG_M60E3_7_62mm": {
+                        "new_weapon": "MMG_WA_M60E3_7_62mm",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
                 "quantity": {
                     "FM_M16": 4,
                     "MMG_WA_M60E3_7_62mm": 3,
@@ -1618,9 +1712,14 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    ("MMG_WA_M60E3_7_62mm", "MMG_inf_M240B_7_62mm", "MMG_M60_7_62mm", "MMG_inf_M240B_7_62mm"),
-                ]
+                "replace": {
+                    "MMG_WA_M60E3_7_62mm": {
+                        "new_weapon": "MMG_inf_M240B_7_62mm",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                        "old_new_effect": ("MMG_M60_7_62mm", "MMG_inf_M240B_7_62mm"),
+                    },
+                },
             },
             "Salves": {
                 "FM_M16": 11,
@@ -1680,10 +1779,19 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    ("Commando_733", "M16A1_Carbine"),
-                    ("RocketInf_M72A3_LAW_66mm", "RocketInf_AT4_83mm", "RocketInf_M72_LAW_66mm", "RocketInf_AT4_83mm"),
-                ],
+                "replace": {
+                    "Commando_733": {
+                        "new_weapon": "M16A1_Carbine",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                    "RocketInf_M72A3_LAW_66mm": {
+                        "new_weapon": "RocketInf_AT4_83mm",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                        "old_new_effect": ("RocketInf_M72_LAW_66mm", "RocketInf_AT4_83mm"),
+                    },
+                },
             },
             "Salves": {
                 "M16A1_Carbine": 11,
@@ -1705,7 +1813,13 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("Commando_733", "M16A1_Carbine")],
+                "replace": {
+                    "Commando_733": {
+                        "new_weapon": "M16A1_Carbine",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "M16A1_Carbine": 11,
@@ -1795,9 +1909,13 @@ usa_unit_edits = {
                 "animate": {
                     "MMG_inf_M240B_7_62mm": False,
                 },
-                "replace": [
-                    ("SAW_M249_5_56mm", "MMG_inf_M240B_7_62mm", "SAW_M249_5_56mm", "MMG_inf_M240B_7_62mm")
-                ],
+                "replace": {
+                    "SAW_M249_5_56mm": {
+                        "new_weapon": "MMG_inf_M240B_7_62mm",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
                 "quantity": {
                     "MMG_inf_M240B_7_62mm": 2,
                 },
@@ -1948,7 +2066,16 @@ usa_unit_edits = {
         "availability": [12, 0, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm")],
+                "replace": {
+                    "MMG_WA_M60E3_7_62mm": {
+                        "new_weapon": "MMG_M60E1_7_62mm",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
+            },
+            "Salves": {
+                "MMG_M60E1_7_62mm": 45,
             },
         },
     },
@@ -1966,9 +2093,16 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm")],
+                "replace": {
+                    "MMG_WA_M60E3_7_62mm": {
+                        "new_weapon": "MMG_M60E1_7_62mm",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
+                "MMG_M60E1_7_62mm": 45,
                 "M47_DRAGON": 4,
             },
         }
@@ -1987,7 +2121,16 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm")],
+                "replace": {
+                    "MMG_WA_M60E3_7_62mm": {
+                        "new_weapon": "MMG_M60E1_7_62mm",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
+            },
+            "Salves": {
+                "MMG_M60E1_7_62mm": 45,
             },
         },
     },
@@ -2008,11 +2151,20 @@ usa_unit_edits = {
                 "animate": {
                     "MMG_M60E1_7_62mm": False,
                 },
-                "replace": [("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm")],
+                "replace": {
+                    "MMG_WA_M60E3_7_62mm": {
+                        "new_weapon": "MMG_M60E1_7_62mm",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
                 "quantity": {
                     "FM_M16A1": 7,
                     "MMG_M60E1_7_62mm": 2,
                 },
+            },
+            "Salves": {
+                "MMG_M60E1_7_62mm": 45,
             },
         },
     },
@@ -2035,10 +2187,18 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    ("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm"),
-                    ("M47_DRAGON_II", "M47_DRAGON")
-                ],
+                "replace": {
+                    "MMG_WA_M60E3_7_62mm": {
+                        "new_weapon": "MMG_M60E1_7_62mm",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                    "M47_DRAGON_II": {
+                        "new_weapon": "M47_DRAGON",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
                 "animate": {
                     "MMG_M60E1_7_62mm": False,
                 },
@@ -2046,6 +2206,9 @@ usa_unit_edits = {
                     "FM_M16A1": 7,
                     "MMG_M60E1_7_62mm": 2,
                 },
+            },
+            "Salves": {
+                "MMG_M60E1_7_62mm": 45,
             },
         },
     },
@@ -2173,10 +2336,18 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    ("Commando_733", "M16A2_Carbine"),
-                    ("MMG_M60E3_7_62mm", "MMG_WA_M60E3_7_62mm")
-                ],
+                "replace": {
+                    "Commando_733": {
+                        "new_weapon": "M16A2_Carbine",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                    "MMG_M60E3_7_62mm": {
+                        "new_weapon": "MMG_WA_M60E3_7_62mm",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "M16A2_Carbine": 11,
@@ -2201,7 +2372,13 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("Commando_733", "M16A1_Carbine")],
+                "replace": {
+                    "Commando_733": {
+                        "new_weapon": "M16A1_Carbine",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "M16A1_Carbine": 11,
@@ -2228,7 +2405,13 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_M16", "M16A1_Carbine")],
+                "replace": {
+                    "FM_M16": {
+                        "new_weapon": "M16A1_Carbine",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "M16A1_Carbine": 11,
@@ -2606,10 +2789,14 @@ usa_unit_edits = {
 
     # US ARTILLERY
     "M577_US": {
+        "capacities": {
+            "add_capacities": ["LDR_ARTY"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 60,
         "GameName": {
             "display": "M577 TACFIRE FCV",
-            "token": "ZTSGIUUUVJ",
+            "token": "ZTSGIUUUVJ", # Don't remove or logistic tab version will get renamed as well
         },
         "TagSet": {
             "overwrite_all": [
@@ -2799,7 +2986,11 @@ usa_unit_edits = {
 
     # US TANK
     "M1A1HA_Abrams_CMD_US": {
-        "CommandPoints": 330,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 325,
         "GameName": {
             "display": "M1A1(HA) ABRAMS",
             "token": "CIOEKZVEAY",
@@ -2818,9 +3009,6 @@ usa_unit_edits = {
         "armor": {
             "top": (5, None),
         },
-        # "SortingOrder": 20340,
-        # "UnitAttackValue": 561,
-        # "UnitDefenseValue": 561,
         "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "UnitRole": "armor",
@@ -2842,7 +3030,11 @@ usa_unit_edits = {
     },
 
     "M1A1_Abrams_CMD_US": {
-        "CommandPoints": 255,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 225,
         "GameName": {
             "display": "M1A1 ABRAMS",
             "token": "JARUASHKDH",
@@ -2861,9 +3053,6 @@ usa_unit_edits = {
         "armor": {
             "top": (5, None),
         },
-        # "SortingOrder": 20290,
-        # "UnitAttackValue": 461,
-        # "UnitDefenseValue": 461,
         "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "UnitRole": "armor",
@@ -2888,7 +3077,11 @@ usa_unit_edits = {
     },
 
     "M1IP_Abrams_CMD_US": {
-        "CommandPoints": 215,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 200,
         "GameName": {
             "display": "M1IP ABRAMS",
             "token": "TSLINICZXV",
@@ -2923,7 +3116,11 @@ usa_unit_edits = {
     },
 
     "M1_Abrams_CMD_US": {
-        "CommandPoints": 185,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 170,
         "GameName": {
             "display": "M1 ABRAMS",
             "token": "JMIRJBBLPW",
@@ -2958,7 +3155,11 @@ usa_unit_edits = {
     },
 
     "M60A3_CMD_US": {
-        "CommandPoints": 120,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 105,
         "GameName": {
             "display": "M60A3 (TTS)",
             "token": "OZPDFIGTWN",
@@ -2993,7 +3194,11 @@ usa_unit_edits = {
     },
     
     "M60A1_RISE_Passive_CMD_US": {
-        "CommandPoints": 95,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 90,
         "GameName": {
             "display": "M60A1 RISE",
             "token": "ETJTTJZGYR",
@@ -3028,7 +3233,11 @@ usa_unit_edits = {
     },
 
     "M60A1_RISE_Passive_USMC_CMD_US": {
-        "CommandPoints": 95,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 90,
         "GameName": {
             "display": "USMC M60A1",
             "token": "CBDJCYPIXI",
@@ -3064,7 +3273,11 @@ usa_unit_edits = {
     },
 
     "M551A1_TTS_Sheridan_CMD_US": {
-        "CommandPoints": 65,
+        "capacities": {
+            "add_capacities": ["LDR_TNK"],
+        },
+        "modules_remove": ["TCommanderModuleDescriptor"],
+        "CommandPoints": 50,
         "GameName": {
             "display": "M551 TTS SHERIDAN",
             "token": "NBZRAJWZXD",
@@ -3120,7 +3333,13 @@ usa_unit_edits = {
         "CommandPoints": 15,
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("M47_DRAGON_Bipied", "M47_DRAGON_II")],
+                "replace": {
+                    "M47_DRAGON_Bipied": {
+                        "new_weapon": "M47_DRAGON_II",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
     },
@@ -3212,10 +3431,18 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    ("AutoCanon_AP_25mm_M242_Bushmaster_Late", "AutoCanon_AP_25mm_M242_Bushmaster_APDS"),
-                    ("AutoCanon_HE_25mm_M242_Bushmaster_Late", "AutoCanon_HE_25mm_M242_Bushmaster_APDS"),
-                ],
+                "replace": {
+                    "AutoCanon_AP_25mm_M242_Bushmaster_Late": {
+                        "new_weapon": "AutoCanon_AP_25mm_M242_Bushmaster_APDS",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                    "AutoCanon_HE_25mm_M242_Bushmaster_Late": {
+                        "new_weapon": "AutoCanon_HE_25mm_M242_Bushmaster_APDS",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
     },
@@ -3224,10 +3451,18 @@ usa_unit_edits = {
         "CommandPoints": 65,
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    ("AutoCanon_AP_25mm_M242_Bushmaster_Late", "AutoCanon_AP_25mm_M242_Bushmaster_APDS"),
-                    ("AutoCanon_HE_25mm_M242_Bushmaster_Late", "AutoCanon_HE_25mm_M242_Bushmaster_APDS"),
-                ],
+                "replace": {
+                    "AutoCanon_AP_25mm_M242_Bushmaster_Late": {
+                        "new_weapon": "AutoCanon_AP_25mm_M242_Bushmaster_APDS",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                    "AutoCanon_HE_25mm_M242_Bushmaster_Late": {
+                        "new_weapon": "AutoCanon_HE_25mm_M242_Bushmaster_APDS",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
             "Salves": {
                 "MMG_M240_7_62mm": 48,
@@ -3462,7 +3697,7 @@ usa_unit_edits = {
     },
 
     "M60A1_RISE_Passive_USMC_US": {
-        "CommandPoints": 85,
+        "CommandPoints": 90,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -3639,7 +3874,13 @@ usa_unit_edits = {
                 "MMG_M240_7_62mm": 48,
             },
             "equipmentchanges": {
-                "replace": [("MMG_team_7_62mm_M60", "MMG_turret_7_62mm_M60")],
+                "replace": {
+                    "MMG_team_7_62mm_M60": {
+                        "new_weapon": "MMG_turret_7_62mm_M60",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
     },
@@ -3652,7 +3893,13 @@ usa_unit_edits = {
                 "MMG_M240_7_62mm": 48,
             },
             "equipmentchanges": {
-                "replace": [("MMG_team_7_62mm_M60", "MMG_turret_7_62mm_M60")],
+                "replace": {
+                    "MMG_team_7_62mm_M60": {
+                        "new_weapon": "MMG_turret_7_62mm_M60",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
     },
@@ -3662,10 +3909,18 @@ usa_unit_edits = {
         "availability": [6, 4, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    ("AutoCanon_AP_25mm_M242_Bushmaster_Late", "AutoCanon_AP_25mm_M242_Bushmaster_APDS"),
-                    ("AutoCanon_HE_25mm_M242_Bushmaster_Late", "AutoCanon_HE_25mm_M242_Bushmaster_APDS"),
-                ],
+                "replace": {
+                    "AutoCanon_AP_25mm_M242_Bushmaster_Late": {
+                        "new_weapon": "AutoCanon_AP_25mm_M242_Bushmaster_APDS",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                    "AutoCanon_HE_25mm_M242_Bushmaster_Late": {
+                        "new_weapon": "AutoCanon_HE_25mm_M242_Bushmaster_APDS",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
             "Salves": {
                 "MMG_M240_7_62mm": 48,
@@ -3681,10 +3936,18 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    ("AutoCanon_AP_25mm_M242_Bushmaster_Late", "AutoCanon_AP_25mm_M242_Bushmaster_APDS"),
-                    ("AutoCanon_HE_25mm_M242_Bushmaster_Late", "AutoCanon_HE_25mm_M242_Bushmaster_APDS"),
-                ],
+                "replace": {
+                    "AutoCanon_AP_25mm_M242_Bushmaster_Late": {
+                        "new_weapon": "AutoCanon_AP_25mm_M242_Bushmaster_APDS",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                    "AutoCanon_HE_25mm_M242_Bushmaster_Late": {
+                        "new_weapon": "AutoCanon_HE_25mm_M242_Bushmaster_APDS",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
             "Salves": {
                 "MMG_M240_7_62mm": 48,
@@ -3748,11 +4011,23 @@ usa_unit_edits = {
         "availability": [4, 3, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    ("AutoCanon_AP_25mm_M242_Bushmaster_Late", "AutoCanon_AP_25mm_M242_Bushmaster_APDS"),
-                    ("AutoCanon_HE_25mm_M242_Bushmaster_Late", "AutoCanon_HE_25mm_M242_Bushmaster_APDS"),
-                    ("ATGM_BGM71C_ITOW_salvolength2", "ATGM_BGM71C_ITOW_ETAS_IFV_salvolength2"),
-                ],
+                "replace": {
+                    "AutoCanon_AP_25mm_M242_Bushmaster_Late": {
+                        "new_weapon": "AutoCanon_AP_25mm_M242_Bushmaster_APDS",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                    "AutoCanon_HE_25mm_M242_Bushmaster_Late": {
+                        "new_weapon": "AutoCanon_HE_25mm_M242_Bushmaster_APDS",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                    "ATGM_BGM71C_ITOW_salvolength2": {
+                        "new_weapon": "ATGM_BGM71C_ITOW_ETAS_IFV_salvolength2",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
             "Salves": {
                 "ATGM_BGM71C_ITOW_ETAS_IFV_salvolength2": 3,
@@ -3874,9 +4149,13 @@ usa_unit_edits = {
                 "RocketAir_Zuni_1272mm_avion_salvolength8": 2,
             },
             "equipmentchanges": {
-                "replace": [
-                    ("RocketAir_Zuni_1272mm_salvolength4", "RocketAir_Zuni_1272mm_avion_salvolength8")
-                ],
+                "replace": {
+                    "RocketAir_Zuni_1272mm_salvolength4": {
+                        "new_weapon": "RocketAir_Zuni_1272mm_avion_salvolength8",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -3953,9 +4232,13 @@ usa_unit_edits = {
                         "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
                     },
                 },
-                "replace": [
-                    ("MMG_inf_M240B_7_62mm", "SAW_M249_5_56mm", "MMG_inf_M240B_7_62mm", "SAW_M249_5_56mm")
-                ],
+                "replace": {
+                    "MMG_inf_M240B_7_62mm": {
+                        "new_weapon": "SAW_M249_5_56mm",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -4121,7 +4404,16 @@ usa_unit_edits = {
         "armor": "Infantry_armor_reference",
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm")],
+                "replace": {
+                    "MMG_WA_M60E3_7_62mm": {
+                        "new_weapon": "MMG_M60E1_7_62mm",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
+            },
+            "Salves": {
+                "MMG_M60E1_7_62mm": 45,
             },
         },
     },
@@ -4136,7 +4428,13 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("MMG_WA_M60E3_7_62mm", "MMG_M60E1_7_62mm")],
+                "replace": {
+                    "MMG_WA_M60E3_7_62mm": {
+                        "new_weapon": "MMG_M60E1_7_62mm",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "animate": {
                 "MMG_M60E1_7_62mm": False,
@@ -4144,6 +4442,9 @@ usa_unit_edits = {
             "quantity": {
                 "FM_M16": 6,
                 "MMG_M60E1_7_62mm": 2,
+            },
+            "Salves": {
+                "MMG_M60E1_7_62mm": 45,
             },
         },
         "UpgradeFromUnit": "Airborne_Scout_US",
@@ -4195,10 +4496,13 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    ("Commando_733", "M16A1_Carbine"),
-                    ("RocketInf_M72A1_LAW_66mm", "RocketInf_M72A3_LAW_66mm"),
-                ],
+                "replace": {
+                    "Commando_733": {
+                        "new_weapon": "M16A1_Carbine",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "M16A1_Carbine": 11,
@@ -4236,12 +4540,14 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    (
-                        "RocketInf_M72A3_LAW_66mm", "RocketInf_AT4_83mm", 
-                        "RocketInf_M72_LAW_66mm", "RocketInf_AT4_83mm"
-                    )
-                ],
+                "replace": {
+                    "RocketInf_M72A3_LAW_66mm": {
+                        "new_weapon": "RocketInf_AT4_83mm",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                        "old_new_effect": ("RocketInf_M72_LAW_66mm", "RocketInf_AT4_83mm"),
+                    },
+                },
             },
         },
     },
@@ -4255,7 +4561,13 @@ usa_unit_edits = {
         "max_speed": 26,
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("Commando_733", "M16A2_Carbine")],
+                "replace": {
+                    "Commando_733": {
+                        "new_weapon": "M16A2_Carbine",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "M16A2_Carbine": 11,
@@ -4336,7 +4648,13 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_M16", "FM_M16_noreflex")],
+                "replace": {
+                    "FM_M16": {
+                        "new_weapon": "FM_M16_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "FM_M16": 11,
@@ -4349,7 +4667,13 @@ usa_unit_edits = {
         "armor": "Infantry_armor_reference",
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_M16", "FM_M16_noreflex")],
+                "replace": {
+                    "FM_M16": {
+                        "new_weapon": "FM_M16_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -4368,7 +4692,13 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_M16", "FM_M16_noreflex")],
+                "replace": {
+                    "FM_M16": {
+                        "new_weapon": "FM_M16_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "FM_M16": 11,
@@ -4390,7 +4720,13 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_M16", "FM_M16_noreflex")],
+                "replace": {
+                    "FM_M16": {
+                        "new_weapon": "FM_M16_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "FM_M16": 11,
@@ -4409,7 +4745,13 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_M16A1", "FM_M16A1_noreflex")],
+                "replace": {
+                    "FM_M16A1": {
+                        "new_weapon": "FM_M16A1_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -4424,7 +4766,13 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("FM_M16A1", "FM_M16A1_noreflex")],
+                "replace": {
+                    "FM_M16A1": {
+                        "new_weapon": "FM_M16A1_noreflex",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -4921,9 +5269,13 @@ usa_unit_edits = {
         "CommandPoints": 140,
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    ("AA_AIM9L_Sidewinder", "AA_AIM9L_Sidewinder_Helo"),
-                ],
+                "replace": {
+                    "AA_AIM9L_Sidewinder": {
+                        "new_weapon": "AA_AIM9L_Sidewinder_Helo",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -5010,12 +5362,13 @@ usa_unit_edits = {
         "CommandPoints": 115,
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    (
-                        "RocketAir_Zuni_1272mm_salvolength8",
-                        "RocketAir_Zuni_1272mm_avion_salvolength8"
-                    )
-                ],
+                "replace": {
+                    "RocketAir_Zuni_1272mm_salvolength8": {
+                        "new_weapon": "RocketAir_Zuni_1272mm_avion_salvolength8",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -5078,7 +5431,13 @@ usa_unit_edits = {
         "availability": [0, 3, 2, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("RocketAir_Hydra_70mm_x38_avion", "RocketAir_Hydra_70mm_x114_avion")],
+                "replace": {
+                    "RocketAir_Hydra_70mm_x38_avion": {
+                        "new_weapon": "RocketAir_Hydra_70mm_x114_avion",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "turrets": {
                 2: {
@@ -5276,14 +5635,13 @@ usa_unit_edits = {
         "availability": [0, 2, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    (
-                        "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength2",
-                        "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength5",
-                        "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength2",
-                        "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength5"
-                    ),
-                ],
+                "replace": {
+                    "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength2": {
+                        "new_weapon": "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength5",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -5298,12 +5656,14 @@ usa_unit_edits = {
         "availability": [0, 3, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    (
-                        "Bomb_Mk77_340kg_Napalm_salvolength2", "Bomb_Mk77_340kg_Napalm_salvolength5",
-                        "Bomb_Mk77_340kg_Napalm_x2", "Bomb_Mk77_340kg_Napalm_x4"
-                    ),
-                ],
+                "replace": {
+                    "Bomb_Mk77_340kg_Napalm_salvolength2": {
+                        "new_weapon": "Bomb_Mk77_340kg_Napalm_salvolength5",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                        "old_new_effect": ("Bomb_Mk77_340kg_Napalm_x2", "Bomb_Mk77_340kg_Napalm_x4"),
+                    },
+                },
             },
         },
     },
@@ -5334,7 +5694,13 @@ usa_unit_edits = {
                 "Bomb_GBU_12_salvolength4": 1,
             },
             "equipmentchanges": {
-                "replace": [("Bomb_GBU_12_salvolength2", "Bomb_GBU_12_salvolength4")],
+                "replace": {
+                    "Bomb_GBU_12_salvolength2": {
+                        "new_weapon": "Bomb_GBU_12_salvolength4",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -5350,7 +5716,13 @@ usa_unit_edits = {
                 "Bomb_GBU_10_salvolength4": 1,
             },
             "equipmentchanges": {
-                "replace": [("Bomb_GBU_10_salvolength2", "Bomb_GBU_10_salvolength4")],
+                "replace": {
+                    "Bomb_GBU_10_salvolength2": {
+                        "new_weapon": "Bomb_GBU_10_salvolength4",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },
@@ -5375,7 +5747,7 @@ usa_unit_edits = {
             "add_specs": ["'terrain_radar'"],
         },
         "availability": [0, 2, 0, 0],
-        "Alternatives": {
+        "alternatives": {
             "mesh": "F111F_Sweep40_US",
         },
         "WeaponDescriptor": {
@@ -5390,12 +5762,13 @@ usa_unit_edits = {
                 },
             },
             "equipmentchanges": {
-                "replace": [
-                    (
-                        "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength8",
-                        "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength12",
-                    ),
-                ],
+                "replace": {
+                    "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength8": {
+                        "new_weapon": "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength12",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
                 "insert": [(1, "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength12")],
                 "insert_edits": {
                     1: {
@@ -5428,12 +5801,14 @@ usa_unit_edits = {
         "availability": [0, 3, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    (
-                        "Bomb_Mk77_340kg_Napalm_salvolength4", "Bomb_Mk77_340kg_Napalm_salvolength8",
-                        "Bomb_Mk77_340kg_Napalm_x4", "Bomb_Mk77_340kg_Napalm_x6"
-                    ),
-                ],
+                "replace": {
+                    "Bomb_Mk77_340kg_Napalm_salvolength4": {
+                        "new_weapon": "Bomb_Mk77_340kg_Napalm_salvolength8",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                        "old_new_effect": ("Bomb_Mk77_340kg_Napalm_x4", "Bomb_Mk77_340kg_Napalm_x6"),
+                    },
+                },
             },
         },
     },
@@ -5446,12 +5821,14 @@ usa_unit_edits = {
         "availability": [0, 3, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    (
-                        "Bomb_Mk77_340kg_Napalm_salvolength4", "Bomb_Mk77_340kg_Napalm_salvolength8",
-                        "Bomb_Mk77_340kg_Napalm_x4", "Bomb_Mk77_340kg_Napalm_x6"
-                    ),
-                ],
+                "replace": {
+                    "Bomb_Mk77_340kg_Napalm_salvolength4": {
+                        "new_weapon": "Bomb_Mk77_340kg_Napalm_salvolength8",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                        "old_new_effect": ("Bomb_Mk77_340kg_Napalm_x4", "Bomb_Mk77_340kg_Napalm_x6"),
+                    },
+                },
             },
         },
     },
@@ -5481,7 +5858,13 @@ usa_unit_edits = {
                 "Bomb_GBU_12_salvolength2": 1,
             },
             "equipmentchanges": {
-                "replace": [("Bomb_GBU_12", "Bomb_GBU_12_salvolength2")],
+                "replace": {
+                    "Bomb_GBU_12": {
+                        "new_weapon": "Bomb_GBU_12_salvolength2",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
         "optics": {
@@ -5520,7 +5903,13 @@ usa_unit_edits = {
         "availability": [0, 2, 0, 1],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [("AA_AIM9L_Sidewinder", "AA_AIM9M_Sidewinder")],
+                "replace": {
+                    "AA_AIM9L_Sidewinder": {
+                        "new_weapon": "AA_AIM9M_Sidewinder",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
             "Salves": {
                 "AGM_AGM65D_Maverick": 2,
@@ -5561,12 +5950,14 @@ usa_unit_edits = {
         "availability": [0, 3, 2, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "replace": [
-                    (
-                        "Bomb_Mk77_340kg_Napalm_salvolength2", "Bomb_Mk77_340kg_Napalm_salvolength4",
-                        "Bomb_Mk77_340kg_Napalm_x2", "Bomb_Mk77_340kg_Napalm_x4"
-                    ),
-                ],
+                "replace": {
+                    "Bomb_Mk77_340kg_Napalm_salvolength2": {
+                        "new_weapon": "Bomb_Mk77_340kg_Napalm_salvolength4",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                        "old_new_effect": ("Bomb_Mk77_340kg_Napalm_x2", "Bomb_Mk77_340kg_Napalm_x4"),
+                    },
+                },
             },
         },
     },
@@ -5673,12 +6064,12 @@ usa_unit_edits = {
     },
 
     "F18_Hornet_AA_US": {  # 4x AIM-7P, 2x AIM-9M
-        "CommandPoints": 245,
+        "CommandPoints": 250,
         "availability": [0, 2, 0, 1],
     },
 
     "F18_Hornet_AA2_US": {  # 2x AIM-7M, 6x AIM-9M 
-        "CommandPoints": 240,
+        "CommandPoints": 235,
         "availability": [0, 2, 0, 1],
     },
 

@@ -5,6 +5,7 @@ from typing import Callable, Dict, List
 # New import structure
 from .gameplay_mods import (
     # .gameplay
+    edit_gameplay_gfx_templates_templatedepiction,
     edit_gameplay_constantes_gdconstants,
     edit_cd_gameplay_constantes_helicoptermovementweights,
     edit_gameplay_constantes_hitrollconstants,
@@ -19,6 +20,7 @@ from .gameplay_mods import (
     edit_gameplay_unit_groundunitcritical,
     edit_gameplay_unit_helicocritical,
     edit_gameplay_unit_infanteriecritical,
+    edit_gameplay_unit_districtdescriptor,
     edit_gameplay_unit_team,
     edit_gameplay_unit_templatecritical,
     edit_gameplay_unit_testunitscritical,
@@ -132,6 +134,7 @@ from src.ui_mods.style import (
 )
 __all__ = [
     # gameplay_mods.gameplay
+    'edit_gameplay_gfx_templates_templatedepiction',
     'edit_gameplay_constantes_gdconstants',
     'edit_gameplay_constantes_hitrollconstants',
     'edit_gameplay_constantes_iastratweaponconstantes',
@@ -144,6 +147,7 @@ __all__ = [
     'edit_gameplay_unit_groundunitcritical',
     'edit_gameplay_unit_helicocritical',
     'edit_gameplay_unit_infanteriecritical',
+    'edit_gameplay_unit_districtdescriptor',
     'edit_gameplay_unit_team',
     'edit_gameplay_unit_templatecritical',
     'edit_gameplay_unit_testunitscritical',
@@ -261,6 +265,24 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
     game_db = config.get("game_db", {})
     build_target = config["build_config"]["target"]
 
+    # Run the depiction audit once on patcher startup so that authors get a
+    # warning (or, with strict_depictions enabled, a hard failure) when a unit
+    # has equipment changes but no matching depiction edit file. Failures here
+    # do not block startup unless strict mode is requested.
+    try:
+        from .data.depiction_audit import run_depiction_audit
+        run_depiction_audit(
+            strict=config.get("build_config", {}).get("strict_depictions", False),
+            depiction_data=game_db.get("depiction_data") if isinstance(game_db, dict) else None,
+        )
+    except RuntimeError:
+        raise
+    except Exception as audit_exc:
+        from .utils.logging_utils import setup_logger as _audit_logger_setup
+        _audit_logger_setup(__name__).warning(
+            f"Depiction audit could not be run: {audit_exc}"
+        )
+
     editors = {
         # Core gameplay mechanics
         "GameData/Gameplay/Constantes/GDConstants.ndf": [
@@ -290,8 +312,14 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/Gameplay/Terrains/Terrains.ndf": [
             (edit_gameplay_terrains, "gameplay"),
         ],
+        "GameData/Gameplay/Gfx/Templates/TemplateDepiction.ndf": [
+            (edit_gameplay_gfx_templates_templatedepiction, "gameplay"),
+        ],
         "GameData/Gameplay/Unit/Tactic/Team.ndf": [
             (edit_gameplay_unit_team, "gameplay"),
+        ],
+        "GameData/Gameplay/Unit/Tactic/DistrictDescriptor.ndf": [
+            (edit_gameplay_unit_districtdescriptor, "gameplay"),
         ],
         # Critical effect modules
         "GameData/Gameplay/Unit/CriticalModules/CriticalEffectModule_Airplane.ndf": [

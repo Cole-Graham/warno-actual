@@ -9,6 +9,8 @@ from src.constants.effects.capacities import (
     NO_SWIFT_CAPACITY,
     DEPLOY_OK_CAPACITY,
     DEPLOY_CAPACITY,
+    LDR_TNK_CAPACITY,
+    LDR_ARTY_CAPACITY,
 )
 from src.utils.logging_utils import setup_logger
 
@@ -22,7 +24,7 @@ def edit_gen_gp_gfx_capacitelist(source_path) -> None:
     # Edit capacities
     for capacite_descr in source_path:
         if capacite_descr.n == "Capacite_Choc":
-            new_value = "100"
+            new_value = "150"
             capacite_descr.v.by_m("RangeGRU").v = new_value
             logger.info(f"Updated Capacite_Choc range to {new_value}m")
 
@@ -42,4 +44,6 @@ def edit_gen_gp_gfx_capacitelist(source_path) -> None:
             source_path.insert(i, DEPLOY_OK_CAPACITY)
             source_path.insert(i, DEPLOY_CAPACITY)
             source_path.insert(i, MEDIUM_COHESION_LOSS_CAPACITY)
+            source_path.insert(i, LDR_TNK_CAPACITY)
+            source_path.insert(i, LDR_ARTY_CAPACITY)
             break

@@ -3,6 +3,7 @@ from typing import Any, Dict, List, Tuple
 
 from src import ndf
 from src.constants.unit_edits import load_unit_edits
+from src.constants.unit_edits.replace_schema import normalize_replace
 from src.constants.weapons import LIGHT_AT_AMMO
 from src.constants.weapons import ammunitions as ammos
 from src.constants.weapons import missiles
@@ -94,12 +95,8 @@ def unit_edits_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> No
         unit_edit_entry = unit_edits.get(unit_short_name, {})
         wd_block = unit_edit_entry.get("WeaponDescriptor", {}) if isinstance(unit_edit_entry, dict) else {}
         equip_changes = wd_block.get("equipmentchanges", {}) if isinstance(wd_block, dict) else {}
-        for entry in equip_changes.get("replace", []):
-            if not isinstance(entry, (list, tuple)) or len(entry) < 2:
-                continue
-            old_w, new_w = entry[0], entry[1]
-            if isinstance(old_w, str) and isinstance(new_w, str):
-                unit_replace_map[old_w] = new_w
+        for spec in normalize_replace(equip_changes.get("replace")):
+            unit_replace_map[spec.old_weapon] = spec.new_weapon
 
         # Process each turret
         for turret_idx, turret_data in weapon_data["turrets"].items():
@@ -641,13 +638,8 @@ def _apply_turret_changes(
     replacement_map = {}
     if wd_edits and "equipmentchanges" in wd_edits:
         equipment_changes = wd_edits["equipmentchanges"]
-        if "replace" in equipment_changes:
-            for replacement in equipment_changes["replace"]:
-                if len(replacement) == 4:
-                    old_weapon, new_weapon, old_fire_effect, new_fire_effect = replacement
-                else:
-                    old_weapon, new_weapon = replacement
-                replacement_map[new_weapon] = old_weapon
+        for spec in normalize_replace(equipment_changes.get("replace")):
+            replacement_map[spec.new_weapon] = spec.old_weapon
 
     for turret_index, turret_edits in turrets_edits.items():
         if not isinstance(turret_index, int):
@@ -825,18 +817,14 @@ def _apply_salvo_changes(weapon_descr: Any, wd_edits: Dict, weapon_descr_data: D
 
         elif "equipmentchanges" in wd_edits:
             if "replace" in wd_edits["equipmentchanges"]:
-                for replacement in wd_edits["equipmentchanges"]["replace"]:
-                    if len(replacement) == 4:
-                        old_weapon, new_weapon, old_fire_effect, new_fire_effect = replacement
-                    else:
-                        old_weapon, new_weapon = replacement
+                for spec in normalize_replace(wd_edits["equipmentchanges"]["replace"]):
                     # check if the new weapon is the same as the one in salve_edits
-                    if new_weapon != weapon:
-                        logger.debug(f"New weapon {new_weapon} is not the same as {weapon}")
+                    if spec.new_weapon != weapon:
+                        logger.debug(f"New weapon {spec.new_weapon} is not the same as {weapon}")
                         continue
                     # check if the old weapon is a renamed version of the weapon in salvo_mapping
-                    old_weapon_old_name = renames_new_old.get(old_weapon, None)
-                    weapon_key = old_weapon_old_name if old_weapon_old_name else old_weapon
+                    old_weapon_old_name = renames_new_old.get(spec.old_weapon, None)
+                    weapon_key = old_weapon_old_name if old_weapon_old_name else spec.old_weapon
                     if weapon_key in salvo_mapping:
                         indices = salvo_mapping[weapon_key]
                         for index in indices:
@@ -853,21 +841,9 @@ def _apply_salvo_changes(weapon_descr: Any, wd_edits: Dict, weapon_descr_data: D
         else:
             logger.error(f"{weapon} ammo not found in {wd_name}")
 
-    # Insert new salvos at specific indices (in reverse order to maintain correct positions)
-    if "insert" in salve_edits:
-        insert_list = salve_edits["insert"]
-        # Sort by index in descending order to insert highest indices first
-        sorted_insert_list = sorted(insert_list, key=lambda x: x[0], reverse=True)
-        for addition in sorted_insert_list:
-            index, salvo = addition[0], addition[1]
-            winchester = "False" if len(addition) < 3 else addition[2]
-            logger.debug(f"Inserting salvo {salvo} at index {index}")
-            salves_list.v.insert(index, str(salvo))
-            if salves_winchester:
-                logger.debug(f"Inserting salvo {salvo} at index {index}")
-                salves_winchester.v.insert(index, winchester)
-
-    # Remove salvos for specific weapons
+    # Remove salvos BEFORE inserting so the weapon_indices lookup still resolves
+    # against vanilla positions (inserts would otherwise shift the slot we're trying
+    # to drop and the remove would target the wrong entry).
     if "remove" in salve_edits:
         for weapon in salve_edits["remove"]:
             if weapon in weapon_indices:
@@ -877,6 +853,24 @@ def _apply_salvo_changes(weapon_descr: Any, wd_edits: Dict, weapon_descr_data: D
                     if salves_winchester:
                         logger.debug(f"Removing index {index} of SalvoIsMainSalvo")
                         salves_winchester.v.remove(index)
+
+    # Insert new salvos at the user-specified final positions. We sort ASCENDING so
+    # each insert lands at the exact index the user wrote: earlier inserts naturally
+    # shift later ones into place. Descending order is broken when the vanilla Salves
+    # list is shorter than the target indices (e.g. Feldgendarmerie_RFA: vanilla [80],
+    # target [14, 11, 45, 4]) because ``list.insert`` clamps past-end indices to the
+    # tail, which then scrambles the relative order of subsequent past-end inserts.
+    if "insert" in salve_edits:
+        insert_list = salve_edits["insert"]
+        sorted_insert_list = sorted(insert_list, key=lambda x: x[0])
+        for addition in sorted_insert_list:
+            index, salvo = addition[0], addition[1]
+            winchester = "False" if len(addition) < 3 else addition[2]
+            logger.debug(f"Inserting salvo {salvo} at index {index}")
+            salves_list.v.insert(index, str(salvo))
+            if salves_winchester:
+                logger.debug(f"Inserting salvo {salvo} at index {index}")
+                salves_winchester.v.insert(index, winchester)
 
 
 def _apply_equipment_changes(
@@ -996,15 +990,12 @@ def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_
 
     renames = ammo_db.get("renames_old_new", {})
 
-    for repl in equipment_changes["replace"]:
-        if len(repl) == 4:
-            replace_fire_effect = True
-            current, new_weapon, old_fire_effect, new_fire_effect = repl
-        else:
-            replace_fire_effect = False
-            current, new_weapon = repl
-            old_fire_effect = None
-            new_fire_effect = None
+    for spec in normalize_replace(equipment_changes["replace"]):
+        replace_fire_effect = spec.swap_fire_effect
+        current = spec.old_weapon
+        new_weapon = spec.new_weapon
+        old_fire_effect = spec.old_fire_effect
+        new_fire_effect = spec.new_fire_effect
 
         renamed_current = renames.get(current)
 
