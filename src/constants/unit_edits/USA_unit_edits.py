@@ -4828,7 +4828,7 @@ usa_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -4862,7 +4862,7 @@ usa_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         "UpgradeFromUnit": None,
         "WeaponDescriptor": {
@@ -4897,7 +4897,7 @@ usa_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -4931,7 +4931,7 @@ usa_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         "WeaponDescriptor": {
             "Salves": {

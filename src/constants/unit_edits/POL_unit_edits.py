@@ -26,12 +26,12 @@ pol_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         "UpgradeFromUnit": "FOB_POL",
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_2_canon_ZU23_2_23mm_TOWED": 31,
+                "DCA_2_canon_ZU23_2_23mm_TOWED": 20,
             },
         },
     },
@@ -61,12 +61,12 @@ pol_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         # "UpgradeFromUnit": "FOB_POL",  # no fob in korpus
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_2_canon_ZU23_2_23mm_TOWED": 31,
+                "DCA_2_canon_ZU23_2_23mm_TOWED": 20,
             },
         },
     },
@@ -92,11 +92,11 @@ pol_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_2_canon_Jod_towed_23mm": 31,
+                "DCA_2_canon_Jod_towed_23mm": 20,
             },
         },
     },
@@ -106,31 +106,15 @@ pol_unit_edits = {
         "GameName": {
             "display": "SPADO. ZUR-23-2S JOD",
         },
-        "Factory": "EFactory/Logistic",
-        # "Divisions": {
-        #     "default": {
-        #         "cards": 69,
-        #     },
-        #     "POL_4_Zmechanizowana": {
-        #         "cards": 2,
-        #     },
-        #     "POL_20_Pancerna": {
-        #         "cards": 1,
-        #     },
-        # },
-        "availability": [6, 4, 0, 0],
         "max_speed": 6,
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         "UpgradeFromUnit": "DCA_ZU_23_2_Para_POL",
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_2_canon_Jod_towed_23mm": 31,
+                "DCA_2_canon_Jod_towed_23mm": 20,
             },
         },
     },
@@ -198,7 +182,7 @@ pol_unit_edits = {
     },
     
     "BRDM_2_CMD_R5_POL": {  # BRDM-2 R-5
-        "CommandPoints": 175,
+        "CommandPoints": 170,
         "strength": 8,
         "Divisions": {
             "default": {
@@ -2129,39 +2113,55 @@ pol_unit_edits = {
         "remove_zone_capture": None,
     },
 
-    "PT76B_CMD_POL": {  # PT-76BD LDR
-        "capacities": {
-            "add_capacities": ["LDR_TNK"],
-        },
+    "PT76B_CMD_POL": {  # Turned into reco PT-76
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 30,
         "GameName": {
-            "display": "PT-76BD",
-            "token": "POLPTSSBD",
+            "display": "PT-76B",
         },
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
-                "LDR_SOV_Unit",
                 "AllowedForMissileRoE",
                 "Char",
+                "Char_Reco",
                 "GroundUnits",
+                "Radio",
+                "Reco",
                 "UNITE_PT76B_CMD_POL",
                 "Unite",
             ],
         },
-        "IdentifiedTextures": ["Texture_RTS_H_Armor", "Texture_Armor"],
+        "stealth": 1.5,
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 3500,
+                "EVisionRange/LowAltitude": 4947,
+                "EVisionRange/HighAltitude": 5654,
+            },
+            "OpticalStrengths": {
+                "EOpticalStrength/Standard": 5300,
+                "EOpticalStrength/LowAltitude": 5300,
+                "EOpticalStrength/HighAltitude": 1413,
+            },
+        },
+        "Factory": "EFactory/Recons",
+        "IdentifiedTextures": ["Texture_RTS_H_reco", "Texture_reco"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
-        "UnitRole": "armor",
+        "MenuIconTexture": "Texture_RTS_H_reco",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Reco",
+        "ButtonTexture": "PT76B_POL",
+        "UnitRole": "reco",
         "SpecialtiesList": {
             "overwrite_all": [
-                "leader_sov",
+                "_amphibie",
             ],
         },
-        "MenuIconTexture": "Texture_RTS_H_Armor",
-        "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
-        "availability": [0, 0, 8, 0],
+        "MenuIconTexture": "Texture_RTS_H_reco",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Reco",
+        "availability": [0, 8, 6, 0],
         "remove_zone_capture": None,
+        "DeploymentShift": 750,
     },
 
     "PT76B_CMD_Naval_POL": {  #  NIEB.BERETY PT-76BD LDR
@@ -2305,7 +2305,7 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "ATGM_9K111M_Faktoriya": 6,
+                "ATGM_9K111M_Faktoriya": "LUAZ_967M_Fagot_SOV",
             },
         },
         "availability": [10, 7, 0, 0],
@@ -2319,7 +2319,7 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "ATGM_9K111M_Faktoriya": 6,
+                "ATGM_9K111M_Faktoriya": "LUAZ_967M_Fagot_SOV",
             },
         },
     },
@@ -2751,6 +2751,7 @@ pol_unit_edits = {
     
     "Mi_2_gunship_POL": {  # Mi-2US
         "availability": [0, 6, 4, 0],
+        "UpgradeFromUnit": None,
     },
     
     "Mi_2Ro_reco_POL": {  # Mi-2Ro
@@ -2761,16 +2762,57 @@ pol_unit_edits = {
                 "AutoCanon_AP_23mm_NS23": 25,
             },
         },
+        "UpgradeFromUnit": "Mi_2_gunship_POL",
     },
 
     "W3RR_Procjon_POL": {  # W-3RR PROCJON
-        "CommandPoints": 45,
+        "CommandPoints": 50,
         "availability": [0, 6, 0, 0],
+        "UpgradeFromUnit": "Mi_2Ro_reco_POL",
+    },
+    
+    "W3W_Sokol_RKT_POL": {  # W-3 Sokol
+        "CommandPoints": 80,
+        "GameName": {
+            "display": "W-3 SOKÓŁ"
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Helo",
+                "Helo_Reco",
+                "Radio",
+                "Reco",
+                "UNITE_W3W_Sokol_RKT_POL",
+                "Unite",
+            ],
+        },
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 3500,
+                "EVisionRange/LowAltitude": 4947,
+                "EVisionRange/HighAltitude": 8481,
+            },
+            "OpticalStrengths": {
+                "EOpticalStrength/Standard": 5300,
+                "EOpticalStrength/LowAltitude": 5300,
+                "EOpticalStrength/HighAltitude": 2826,
+            },
+        },
+        "IdentifiedTextures": ["Texture_RTS_H_RECO_hel", "Texture_RECO_hel"],
+        "UnidentifiedTextures": ["Texture_RTS_H_hel_nonIdentifie", "Texture_hel_nonIdentifie"],
+        "Factory": "EFactory/Recons",
+        "UpgradeFromUnit": "W3RR_Procjon_POL",
+        "UnitRole": "reco",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Reco_Hel",
+        "DeploymentShift": 750,
     },
     
     #   recon tab transports
     "BMP_1_SP2_reco_POL": {  # Rozp. BWP-1
         "CommandPoints": "BMP_1P_reco_DDR",
+        "UpgradeFromUnit": "PT76B_CMD_POL", # PT76B_CMD is reco PT76 now
     },
     
     "BRDM_1_POL": {  # BRDM-1
@@ -2887,7 +2929,7 @@ pol_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -2908,7 +2950,7 @@ pol_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -2950,7 +2992,7 @@ pol_unit_edits = {
         "availability": [7, 5, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_2_canon_ZU23_2_23mm": 20,
+                "DCA_2_canon_ZU23_2_23mm": 25,
             },
         },
     },
@@ -2960,7 +3002,7 @@ pol_unit_edits = {
         "availability": [6, 4, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_2_canon_Jod_SP_23mm": 20,
+                "DCA_2_canon_Jod_SP_23mm": 25,
             },
         },
     },
@@ -3134,13 +3176,6 @@ pol_unit_edits = {
         "CommandPoints": "Mi_24V_AT_SOV",
         "strength": "Mi_24P_SOV",
         "availability": "Mi_24V_AT_SOV",
-    },
-    
-    "W3W_Sokol_RKT_POL": {  # W-3 Sokol [RKT]
-        "CommandPoints": 80,
-        "GameName": {
-            "display": "W-3 SOKÓŁ [RKT]"
-        }
     },
     
     "W3W_Sokol_AA_POL": {  # W-3 Sokol [AA]

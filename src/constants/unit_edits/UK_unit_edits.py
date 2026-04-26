@@ -1678,7 +1678,7 @@ uk_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         "SpecialtiesList": {
             "add_specs": ["'_remote_controlled'"],
@@ -1693,7 +1693,7 @@ uk_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         "SpecialtiesList": {
             "add_specs": ["'_remote_controlled'"],

@@ -3770,7 +3770,7 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "ATGM_9K111M_Faktoriya": 6,
+                "ATGM_9K111M_Faktoriya": 4,
             },
         },
         "UpgradeFromUnit": None,
@@ -3781,7 +3781,7 @@ sov_unit_edits = {
         "availability": [10, 7, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "ATGM_9K111M_Faktoriya": 6,
+                "ATGM_9K111M_Faktoriya": "LUAZ_967M_Fagot_SOV",
             },
         },
          "GameName": {
@@ -4823,7 +4823,7 @@ sov_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         "UpgradeFromUnit": "FOB_SOV",
         "WeaponDescriptor": {
@@ -4843,7 +4843,7 @@ sov_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         "UpgradeFromUnit": "FOB_SOV",
         "WeaponDescriptor": {
@@ -4872,7 +4872,7 @@ sov_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         "UpgradeFromUnit": "FOB_SOV",
         "WeaponDescriptor": {
@@ -4897,7 +4897,7 @@ sov_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         "UpgradeFromUnit": "FOB_SOV",
         "WeaponDescriptor": {
@@ -4919,7 +4919,7 @@ sov_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -4958,7 +4958,7 @@ sov_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         "WeaponDescriptor": {
             "Salves": {

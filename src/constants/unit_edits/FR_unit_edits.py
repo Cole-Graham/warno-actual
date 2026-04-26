@@ -1488,7 +1488,7 @@ fr_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -1506,7 +1506,7 @@ fr_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -1525,7 +1525,7 @@ fr_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         "UpgradeFromUnit": "FOB_FR",
         "WeaponDescriptor": {
@@ -1545,7 +1545,7 @@ fr_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -1564,7 +1564,7 @@ fr_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         "UpgradeFromUnit": "FOB_FR",
         "WeaponDescriptor": {
@@ -1583,7 +1583,7 @@ fr_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -1601,7 +1601,7 @@ fr_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -1619,7 +1619,7 @@ fr_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         "WeaponDescriptor": {
             "Salves": {

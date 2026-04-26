@@ -252,8 +252,8 @@ us_new_divs = {
         "transport_overrides": {
             "MP_US": ["M1038_Humvee_US"],
             "MP_RCL_US": ["CUCV_MP_US", "CUCV_HMG_US", "CUCV_AGL_US", "M1025_Humvee_MP_US"],
-            "Rifles_half_CMD2_US": ["M998_Humvee_US", "M998_Humvee_HMG_US", "M2A1_Bradley_IFV_US", "M2A2_Bradley_IFV_US", "UH60A_Black_Hawk_US", "CH47_Chinook_US"],
-            "Rifles_half_CMD_US": ["M998_Humvee_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US","M113A3_US", "M2A1_Bradley_IFV_US", "M2A2_Bradley_IFV_US"],
+            "Rifles_half_CMD2_US": ["M998_Humvee_US", "M998_Humvee_HMG_US", "M2A1_Bradley_IFV_US", "UH60A_Black_Hawk_US", "CH47_Chinook_US"],
+            "Rifles_half_CMD_US": ["M998_Humvee_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US","M113A3_US", "M2A1_Bradley_IFV_US"],
             "Rifles_half_LAW_US": ["M998_Humvee_US", "CUCV_HMG_US", "CUCV_AGL_US", "M113A3_US", "M2A1_Bradley_IFV_US"],
             "Rifles_half_AT4_US": ["M998_Humvee_US", "CUCV_HMG_US", "CUCV_AGL_US", "M113A3_US", "M2A1_Bradley_IFV_US"],
             "Rifles_half_Dragon_US": ["M998_Humvee_US", "CUCV_HMG_US", "CUCV_AGL_US", "M113A3_US", "M2A1_Bradley_IFV_US"],

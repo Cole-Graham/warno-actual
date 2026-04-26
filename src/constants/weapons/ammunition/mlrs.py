@@ -273,10 +273,12 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("MLRS_140mm_towed", "MLRS", None, False): {
         "Ammunition": {
             "parent_membr": {
+                # These rockets appear half the length of the 140mm rockets on BM-14M, so
+                # they either need to be dropped to 122mm Grad HE, or lowered range.
+                #Going with the latter for now.
+                "MaximumRangeGRU": 7500,
                 "PhysicalDamages": 5.1,
                 "SuppressDamages": 400,
-                # "RadiusSplashPhysicalDamagesGRU": 180,
-                # "RadiusSplashSuppressDamagesGRU": 240,
                 "RadiusSplashPhysicalDamagesGRU": 140,
                 "RadiusSplashSuppressDamagesGRU": 187,
             },

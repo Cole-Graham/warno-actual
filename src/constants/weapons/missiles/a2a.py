@@ -677,11 +677,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("AA_AIM7P_Sparrow", "A2A", None, False): { # Stat clone of AIM-7M for now
+    ("AA_AIM7P_Sparrow", "A2A", None, False): {
         "Ammunition": {
             "hit_roll": {
-                "Idling": 55,
-                "Moving": 55,
+                "Idling": 60,
+                "Moving": 60,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 1.4,

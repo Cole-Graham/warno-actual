@@ -186,8 +186,10 @@ if __name__ == "__main__":
             from src.utils.new_divisionrules_unit_validation import (
                 validate_new_divisionrules_units,
                 validate_standout_units_in_division_rules,
+                validate_transport_overrides_against_division_rule_transports,
             )
             validate_new_divisionrules_units(log=logger)
+            validate_transport_overrides_against_division_rule_transports(log=logger)
             validate_standout_units_in_division_rules(
                 log=logger,
                 game_db=config.config_data.get("game_db"),

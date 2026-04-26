@@ -3,6 +3,7 @@ from .depictionaerialunits import edit_gen_gp_gfx_depictionaerialunits
 from .depictionaerialunitsshowroom import edit_gen_gp_gfx_depictionaerialunitsshowroom
 from .depictionalternatives import edit_gen_gp_gfx_depictionalternatives
 from .depictionghosts import edit_gen_gp_gfx_depictionghosts
+from .towable import edit_gen_gp_gfx_towable
 from .depictionhumans import edit_gen_gp_gfx_depictionhumans
 from .depictioninfantry import edit_gen_gp_gfx_depictioninfantry
 from .depictionvehicles import edit_gen_gp_gfx_depictionvehicles
@@ -16,6 +17,7 @@ __all__ = [
     "edit_gen_gp_gfx_depictionaerialunitsshowroom",
     "edit_gen_gp_gfx_depictionalternatives",
     "edit_gen_gp_gfx_depictionghosts",
+    "edit_gen_gp_gfx_towable",
     "edit_gen_gp_gfx_depictionhumans",
     "edit_gen_gp_gfx_depictioninfantry",
     "edit_gen_gp_gfx_depictionvehicles",

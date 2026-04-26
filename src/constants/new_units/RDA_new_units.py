@@ -278,7 +278,6 @@ RDA_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "PACT",
         "Nation": "DDR",
-        "depiction_type": "Towed",
         "alternatives_count": 2,
         "servants": ("G_DDR", "D_DDR"),
         "servant_types": {
@@ -690,7 +689,6 @@ RDA_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "PACT",
         "Nation": "DDR",
-        "depiction_type": "Towed",
         "alternatives_count": 2,
         "servants": ("G_FJ_DDRL", "D_FJ_DDR"),
         "servant_types": {
@@ -762,7 +760,6 @@ RDA_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "PACT",
         "Nation": "DDR",
-        "depiction_type": "Towed",
         "alternatives_count": 2,
         "servants": ("G_FJ_DDRL", "D_FJ_DDR"),
         "servant_types": {
@@ -835,7 +832,6 @@ RDA_NEW_UNITS = {
     #     "is_unarmed": False,
     #     "Faction": "PACT",
     #     "Nation": "DDR",
-    #     "depiction_type": "Towed",
     #     "alternatives_count": 2,
     #     "servants": ("G_FJ_DDRL", "D_FJ_DDR"),
     #     "servant_types": {
@@ -908,7 +904,6 @@ RDA_NEW_UNITS = {
     #     "is_unarmed": False,
     #     "Faction": "PACT",
     #     "Nation": "DDR",
-    #     "depiction_type": "Towed",
     #     "alternatives_count": 2,
     #     "servants": ("G_FJ_DDRL", "D_FJ_DDR"),
     #     "servant_types": {
@@ -970,7 +965,6 @@ RDA_NEW_UNITS = {
     #     "is_unarmed": False,
     #     "Faction": "PACT",
     #     "Nation": "DDR",
-    #     "depiction_type": "Towed",
     #     "alternatives_count": 2,
     #     "servants": ("G_FJ_DDRL", "D_FJ_DDR"),
     #     "servant_types": {
@@ -1015,7 +1009,7 @@ RDA_NEW_UNITS = {
         ],
         "WeaponDescriptor": {
             "Salves": {
-                "ATGM_9K111M_Faktoriya": 6,
+                "ATGM_9K111M_Faktoriya": 4,
             },
         },
         "DeploymentShift": 1750,

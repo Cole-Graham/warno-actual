@@ -16,7 +16,7 @@ RFA_airborne_newdivisionrules = {
         ("DaimlerBenz_Typ1017_supply_RFA", 1, [2, 0, 0, 0]),
         ("UH1D_Supply_RFA", 2, [7, 0, 0, 0]),
         ("CH53G_RFA", 2, [2, 0, 0, 0]),
-        ("DCA_FK20_2_20mm_Zwillinge_RFA", 1, [9, 7, 0, 0], ["Iltis_trans_RFA"]),
+        ("DCA_FK20_2_20mm_Zwillinge_RFA", 1, [10, 7, 0, 0], ["Iltis_trans_RFA"]),
     ],
     "infantry": [
         ("Fallschirmjager_CMD_RFA", 1, [0, 0, 5, 4], ["Unimog_trans_RFA"]),
@@ -107,7 +107,7 @@ RFA_armored_newdivisionrules = {
         ("UH1D_Supply_RFA", 1, [7, 0, 0, 0]),
         ("CH53G_RFA", 1, [2, 0, 0, 0]),
         ("FOB_RFA", 1, [2, 0, 0, 0]),
-        ("DCA_FK20_2_20mm_Zwillinge_RFA", 1, [9, 7, 0, 0], ["Iltis_trans_RFA"]),
+        ("DCA_FK20_2_20mm_Zwillinge_RFA", 1, [10, 7, 0, 0], ["Iltis_trans_RFA"]),
     ],
     "infantry": [
         ("Panzergrenadier_CMD_RFA", 1, [0, 0, 5, 4], ["Unimog_trans_RFA", "M113A1G_RFA", "Marder_1A2_RFA"]),
@@ -225,7 +225,7 @@ RFA_mechanized_newdivisionrules = {
         ("UH1D_Supply_RFA", 1, [7, 0, 0, 0]),
         ("CH53G_RFA", 1, [2, 0, 0, 0]),
         ("FOB_RFA", 1, [2, 0, 0, 0]),
-        ("DCA_FK20_2_20mm_Zwillinge_RFA", 1, [9, 7, 0, 0], ["Iltis_trans_RFA"]),
+        ("DCA_FK20_2_20mm_Zwillinge_RFA", 1, [10, 7, 0, 0], ["Iltis_trans_RFA"]),
     ],
     "infantry": [
         ("Panzergrenadier_CMD_RFA", 1, [0, 0, 5, 4], ["M113A1G_RFA", "Marder_1A1_RFA", "Marder_1A3_RFA"]),
@@ -331,7 +331,7 @@ RFA_motorized_newdivisionrules = {
         ("UH1D_Supply_RFA", 2, [7, 0, 0, 0]),
         ("CH53G_RFA", 2, [2, 0, 0, 0]),
         ("FOB_RFA", 1, [2, 0, 0, 0]),
-        ("DCA_FK20_2_20mm_Zwillinge_RFA", 1, [9, 7, 0, 0], ["Iltis_trans_RFA"]),
+        ("DCA_FK20_2_20mm_Zwillinge_RFA", 1, [10, 7, 0, 0], ["Iltis_trans_RFA"]),
     ],
     "infantry": [
         ("Jager_CMD_RFA", 1, [0, 0, 7, 5], ["Unimog_trans_RFA", "TPZ_Fuchs_1_RFA", "TPZ_Fuchs_MILAN_RFA", "TPZ_Fuchs_MILAN_2_RFA"]),

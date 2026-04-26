@@ -2,6 +2,10 @@
 
 Also validates that each division's ``standout_units`` appear in the merged division rules
 (primary unit or transport), matching WARNO's Division.ndf checks.
+
+``transport_overrides`` transport names are checked against the union of transports in 4th
+tuple fields across that division's merged ``division_rules``; overrides and
+``rule_exclusions`` are not applied when building that union.
 """
 
 import importlib
@@ -223,4 +227,79 @@ def validate_new_divisionrules_units(log: logging.Logger | None = None) -> None:
                     "unit_edits or NEW_UNITS",
                     attr_name,
                     name,
+                )
+
+
+def _collect_transport_names_from_division_rules(division_rules: Any) -> Set[str]:
+    """All transport unit names in 4-tuple rows across one division's rule dict(s).
+
+    ``division_rules`` is a single category->rules dict or a list of such dicts, matching
+    ``_create_national_division_rules``. Does not apply ``transport_overrides`` or
+    ``rule_exclusions``; the set is the pool declared in the newdivisionrules data.
+    """
+    names: set[str] = set()
+    if isinstance(division_rules, dict):
+        rules_dicts: List[dict[str, Any]] = [division_rules]
+    elif isinstance(division_rules, list):
+        rules_dicts = division_rules
+    else:
+        return names
+
+    for rules_dict in rules_dicts:
+        if not isinstance(rules_dict, dict):
+            continue
+        for _category, unit_rules in rules_dict.items():
+            if not isinstance(unit_rules, list):
+                continue
+            for rule_tuple in unit_rules:
+                if (
+                    not isinstance(rule_tuple, tuple)
+                    or len(rule_tuple) < 4
+                    or not isinstance(rule_tuple[3], list)
+                ):
+                    continue
+                for transport in rule_tuple[3]:
+                    if isinstance(transport, str) and transport:
+                        names.add(transport)
+    return names
+
+
+def validate_transport_overrides_against_division_rule_transports(
+    log: logging.Logger | None = None,
+) -> None:
+    """Emit a warning when ``transport_overrides`` lists a transport not in any 4-tuple in merged rules.
+
+    Allowed transports are the union of all transport names from 4th tuple fields across
+    this division's ``division_rules`` dicts (same as national newdivisionrules merged for
+    that deck entry).
+    """
+    log = log or logger
+    new_divisions_merged = load_new_divisions()
+    for div_key, div_data in new_divisions_merged.items():
+        if not isinstance(div_data, dict):
+            continue
+        transport_overrides = div_data.get("transport_overrides") or {}
+        if not transport_overrides:
+            continue
+        allowed = _collect_transport_names_from_division_rules(
+            div_data.get("division_rules"),
+        )
+        cfg_name = div_data.get("cfg_name", div_key)
+        for unit_name, transport_list in transport_overrides.items():
+            if not isinstance(transport_list, list):
+                continue
+            for t in transport_list:
+                if not isinstance(t, str) or not t:
+                    continue
+                if t in allowed:
+                    continue
+                log.warning(
+                    "transport_overrides for division %r (cfg_name=%s) lists transport %r for "
+                    "unit %r, but that transport does not appear in any 4-tuple transport list "
+                    "in this division's division_rules; add it to a rule row or remove it from "
+                    "the override.",
+                    div_key,
+                    cfg_name,
+                    t,
+                    unit_name,
                 )

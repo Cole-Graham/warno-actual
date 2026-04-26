@@ -2,8 +2,8 @@
  Note: don't remove complete items until patch is released, can be helpful for writing patch notes
 
  # ------------------------------------ Lat ------------------------------------
- # v27.x
- - [ ]
+ # v27.1
+ - [ ] Fix cards counts across the board, e.g. too many 1 cards in poland for atgms, mg teams, etc. 
  # v27
 - [x] Regenerate maps/scenarios (could have complications, Eugen broke them again)
 - [x] Validate that when laser guided bombs miss, they miss by a lot

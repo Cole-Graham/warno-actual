@@ -246,7 +246,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 10,
             },
             "parent_membr": {
-                "TimeBetweenTwoShots": 0.1, # was 0.12 but Eugen said it has to be multiple of game tick rate (10hz)
+                "TimeBetweenTwoShots": 0.1, 
                 "TimeBetweenTwoFx": 0.1,
                 "PhysicalDamages": 0.20,
                 "SuppressDamages": 25,
@@ -674,13 +674,16 @@ weapons: Dict[WeaponKey, WeaponData] = {
 
     ("AutoCanon_AP_23mm_NS23", "autocannon", None, False): { # 5
         "Ammunition": {
+            "Arme": {
+                "Index": 6,
+            },
             "hit_roll": {
                 "BaseCriticModifier": 68,
                 "Idling": 20,
                 "Moving": 10,
             },
             "parent_membr": {
-                "TimeBetweenTwoShots": 0.1, # was 0.12 but Eugen said it has to be multiple of game tick rate (10hz)
+                "TimeBetweenTwoShots": 0.1,
                 "TimeBetweenTwoFx": 0.1,
                 "PhysicalDamages": 0.334,
                 "SuppressDamages": 25,
@@ -709,7 +712,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "Caliber": ("Dual 23mm", "LNXURRBEMR"),
-                "PhysicalDamages": 1.336,
+                "PhysicalDamages": 1.334, # 4x 0.334 because 2 pods each with dual 23mm (4 guns total)
                 "SuppressDamages": 40,
                 "DisplaySalveAccuracy": False,
                 "TimeBetweenTwoSalvos": 1.2,
@@ -731,7 +734,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "Caliber": ("Dual 23mm", "LNXURRBEMR"),
-                "PhysicalDamages": 0.667,
+                "PhysicalDamages": 0.667, # 2x 0.334 because dual 23mm
                 "SuppressDamages": 20,
                 "DisplaySalveAccuracy": False,
                 "TimeBetweenTwoSalvos": 0.6,

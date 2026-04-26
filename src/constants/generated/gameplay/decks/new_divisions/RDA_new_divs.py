@@ -214,7 +214,7 @@ rda_new_divs = {
             RDA_mechanized_newdivisionrules,
         ],
         "transport_overrides": {
-            "MotRifles_CMD2_DDR": ["GAZ_46_DDR", "BTR_50_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
+            "MotRifles_CMD2_DDR": ["W50_LA_A_DDR", "BTR_50_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
         },
     },
     "RDA_armored_motorized": {
@@ -236,7 +236,7 @@ rda_new_divs = {
             RDA_motorized_newdivisionrules,
         ],
         "transport_overrides": {
-            "MotRifles_CMD2_DDR": ["GAZ_46_DDR", "BTR_50_DDR", "BTR_60_DDR", "BTR_70_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
+            "MotRifles_CMD2_DDR": ["W50_LA_A_DDR", "BTR_50_DDR", "BTR_60_DDR", "BTR_70_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
         },
     },
     # marine 6043, 2110
@@ -279,7 +279,7 @@ rda_new_divs = {
             RDA_motorized_newdivisionrules,
         ],
         "transport_overrides": {
-            "MotRifles_CMD2_DDR": ["GAZ_46_DDR", "BTR_50_DDR", "BTR_60_DDR", "BTR_70_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
+            "MotRifles_CMD2_DDR": ["W50_LA_A_DDR", "BTR_50_DDR", "BTR_60_DDR", "BTR_70_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
             "MotSchutzen_DDR": ["W50_LA_A_DDR", "BMP_1_SP1_DDR", "BMP_1_SP2_DDR", "BMP_1P_DDR", "BMP_1P_Konkurs_DDR", "BMP_2_DDR"],
         },
     },

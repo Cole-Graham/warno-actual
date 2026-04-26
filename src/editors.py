@@ -47,6 +47,7 @@ from .gameplay_mods import (
     edit_gen_gp_gfx_depictionaerialunits,
     edit_gen_gp_gfx_depictionaerialunitsshowroom,
     edit_gen_gp_gfx_depictionalternatives,
+    edit_gen_gp_gfx_towable,
     edit_gen_gp_gfx_depictionghosts,
     edit_gen_gp_gfx_depictionhumans,
     edit_gen_gp_gfx_depictioninfantry,
@@ -174,6 +175,7 @@ __all__ = [
     'edit_gen_gp_gfx_depictionaerialunits',
     'edit_gen_gp_gfx_depictionaerialunitsshowroom',
     'edit_gen_gp_gfx_depictionalternatives',
+    'edit_gen_gp_gfx_towable',
     'edit_gen_gp_gfx_depictionghosts',
     'edit_gen_gp_gfx_depictionhumans',
     'edit_gen_gp_gfx_depictioninfantry',
@@ -459,6 +461,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         # ],
         "GameData/Generated/Gameplay/Gfx/Depictions/DepictionAlternatives.ndf": [
             (edit_gen_gp_gfx_depictionalternatives, "gameplay"),
+        ],
+        "GameData/Generated/Gameplay/Gfx/Depictions/Towable.ndf": [
+            (edit_gen_gp_gfx_towable, "gameplay"),
         ],
         "GameData/Generated/Gameplay/Gfx/Depictions/DepictionGhosts.ndf": [
             (edit_gen_gp_gfx_depictionghosts, "gameplay"),

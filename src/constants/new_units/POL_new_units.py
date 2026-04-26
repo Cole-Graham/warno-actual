@@ -150,6 +150,8 @@ POL_NEW_UNITS = {
                 "CMD_Unit",
                 "AllowedForMissileRoE",
                 "Char",
+                "Char_CMD",
+                "Commandant",
                 "GroundUnits",
                 "UNITE_T54B_CMD2_POL",
                 "Unite",
@@ -161,10 +163,24 @@ POL_NEW_UNITS = {
         },
         "Factory": "EFactory/Logistic",
         "CommandPoints": 205,
-        "UnitRole": 'armor',
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": {
+                    "Canon_AP_100mm_D10T_early": {
+                        "new_weapon": "Canon_AP_100mm_D10T_early_HEAT",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
+            },
+        },
         "SpecialtiesList": [
             'leader_sov',
         ],
+        "IdentifiedTextures": ["Texture_RTS_H_CMD_tank", "Texture_CMD_tank"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "MenuIconTexture": "Texture_RTS_H_CMD_tank",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Tank",
         "availability": [0, 0, 2, 0],
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
@@ -199,27 +215,16 @@ POL_NEW_UNITS = {
                 "Unite",
             ],
         },
+        "IdentifiedTextures": ["Texture_RTS_H_CMD_tank", "Texture_CMD_tank"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "MenuIconTexture": "Texture_RTS_H_CMD_tank",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Tank",
         "Factory": "EFactory/Logistic",
         "CommandPoints": 205,
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
             'leader_sov',
         ],
-        "Divisions": {
-            "default": {
-                "cards": 1,
-            },
-            "POL_20_Pancerna_multi": {
-                "Transports": None,
-            },
-            "POL_4_Zmechanizowana_multi": {
-                "Transports": None,
-                "cards": 2,
-            },
-            "POL_Korpus_Desantowy_multi": {
-                "Transports": None,
-            },
-        },
         "availability": [0, 0, 2, 0],
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
                    'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
@@ -415,6 +420,21 @@ POL_NEW_UNITS = {
             "display": "T-54BD",
             "token": "POLTFFBD",
         },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": {
+                    "Canon_AP_100mm_D10T_early": {
+                        "new_weapon": "Canon_AP_100mm_D10T_early_HEAT",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
+            },
+        },
+        "IdentifiedTextures": ["Texture_RTS_H_Armor", "Texture_Armor"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "MenuIconTexture": "Texture_RTS_H_Armor",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Armor",
         "Factory": "EFactory/Tanks",
         "CommandPoints": 70,
         "UnitRole": 'armor',
@@ -572,7 +592,6 @@ POL_NEW_UNITS = {
         "needs_transport": True,
         "Faction": "PACT",
         "Nation": "POL",
-        "depiction_type": "Towed",
         "alternatives_count": 2,
         "servants": ("G_POL", "D_POL"),
         "servant_types": {
@@ -643,7 +662,6 @@ POL_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "PACT",
         "Nation": "POL",
-        "depiction_type": "Towed",
         "alternatives_count": 2,
         "servants": ("G_Para_POL", "D_Para_POL"),
         "servant_types": {
@@ -722,7 +740,6 @@ POL_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "PACT",
         "Nation": "POL",
-        "depiction_type": "Towed",
         "alternatives_count": 2,
         "servants": ("G_Para_POL", "D_Para_POL"),
         "servant_types": {
@@ -800,7 +817,6 @@ POL_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "PACT",
         "Nation": "POL",
-        "depiction_type": "Towed",
         "alternatives_count": 2,
         "servants": ("G_Para_POL", "D_Para_POL"),
         "servant_types": {
@@ -912,6 +928,62 @@ POL_NEW_UNITS = {
     },
 
     # Tanks
+     ("T55A_POL", 0): {  # T-55A Reco
+        "GUID": "ee1e751b-f138-4448-a701-8e6aeb29d670",
+        "InfantrySquadModuleGUID": "5e63ade3-1dfd-4399-a1d7-ae3e9a875d1f",
+        "ShowroomGUID": "181367c7-616a-4a17-8504-13ccb8b264e6",
+        "CadavreGUID": "67b84fad-ce97-4a8f-8ef6-3315f9b05202",
+        "NewName": "T55A_reco_POL",
+        "GameName": {
+            "display": "T-55A",
+            "token": "XNEVXFFJKM",
+        },
+        "CommandPoints": 80,
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "Char_Reco",
+                "GroundUnits",
+                "Radio",
+                "Reco",
+                "UNITE_T55A_Reco_POL",
+                "Unite",
+            ],
+        },
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 3500,
+                "EVisionRange/LowAltitude": 4947,
+                "EVisionRange/HighAltitude": 5654,
+            },
+            "OpticalStrengths": {
+                "EOpticalStrength/Standard": 5300,
+                "EOpticalStrength/LowAltitude": 5300,
+                "EOpticalStrength/HighAltitude": 1413,
+            },
+        },
+        "Factory": "EFactory/Recons",
+        "IdentifiedTextures": ["Texture_RTS_H_Reco", "Texture_Reco"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "MenuIconTexture": "Texture_RTS_H_Reco",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Reco",
+        "UnitRole": 'reco',
+        "availability": [7, 5, 0, 0],
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
+                   'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
+                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": False,  # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "POL",
+        "UpgradeFromUnit": "BMP_1_SP2_reco_POL",
+    },
 
     ("AT_D48_85mm_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "0de44fc4-1a87-4146-8e24-0dd8ee7c2d52",
@@ -960,7 +1032,6 @@ POL_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "PACT",
         "Nation": "POL",
-        "depiction_type": "Towed",
         "alternatives_count": 2,
         "servants": ("G_Para_POL", "D_Para_POL"),
         "servant_types": {
@@ -1231,6 +1302,7 @@ POL_NEW_UNITS = {
         "selector_tactic": "02_02",
     },
 
+    # I don't remember making this unit, and we don't use it??? - Lat
     ("OT_62_TOPAS_JOD_POL", 0): {  # TOPAS JOD (Transport)
         "GameName": {
             "display": "TOPAS JOD",

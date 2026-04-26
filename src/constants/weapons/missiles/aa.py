@@ -1184,13 +1184,50 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("SAM_Strela2", "MANPAD", None, False): { #
+    ("SAM_Strela2M_x2_Static", "MANPAD", None, False): {
         "Ammunition": {
             "Arme": {
                 "Family": "DamageFamily_manpad_tbagru",
             },
             "hit_roll": {
                 "Idling": 50,
+            },
+            "parent_membr": {
+                "MaximumRangeHelicopterGRU": 2275,
+                "MaximumRangeAirplaneGRU": 1750,
+                "TimeBetweenTwoSalvos": 7.0,
+                "AimingTime": 1.2,
+                "SupplyCost": 50.0,
+            }
+        },
+    },
+    
+    ("SAM_Strela2M_x2_Static_HAGRU", "MANPAD", "SAM_Strela2M_x2_Static", True): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_manpad_hagru",
+            },
+            "hit_roll": {
+                "Idling": 50,
+            },
+            "parent_membr": {
+                "MaximumRangeHelicopterGRU": 2275,
+                "MaximumRangeAirplaneGRU": 1750,
+                "TimeBetweenTwoSalvos": 7.0,
+                "AimingTime": 3.0,
+                "SupplyCost": 50.0,
+            }
+        },
+    },
+    
+    ("SAM_Strela2", "MANPAD", None, False): { # Sokol, Mi-2URPG GNIEWOSZ
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_manpad_tbagru",
+            },
+            "hit_roll": {
+                "Idling": 50,
+                "Moving": 50,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2275,
@@ -1215,6 +1252,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "hit_roll": {
                 "Idling": 50,
+                "Moving": 50,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2275,
@@ -1239,7 +1277,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "hit_roll": {
                 "Idling": 50,
-                "Moving": 40,
+                "Moving": 50,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2275,
@@ -1257,6 +1295,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                     "DCA_ZUR_23_2S_JOD_Para_POL",
                     "Hibneryt_KG_POL",
                     "OT_62_TOPAS_JOD_POL",
+                    "OT_62_TOPAS_JOD2_POL", # why did we make this new unit?? - Lat
                 ],
             },
         },
@@ -1269,6 +1308,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "hit_roll": {
                 "Idling": 50,
+                "Moving": 50,
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2275,
@@ -1286,6 +1326,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                     "DCA_ZUR_23_2S_JOD_Para_POL",
                     "Hibneryt_KG_POL",
                     "OT_62_TOPAS_JOD_POL",
+                    "OT_62_TOPAS_JOD2_POL", # why did we make this new unit?? - Lat
                 ],
             },
         },

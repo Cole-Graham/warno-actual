@@ -11,7 +11,8 @@ US_airborne_newdivisionrules = {
         ("UH60A_CO_US", 2, [0, 3, 0, 0]),
         ("M274_Mule_supply_US", 1, [8, 0, 0, 0]),
         ("Gama_Goat_supply_US", 2, [6, 0, 0, 0]),
-        ("M1038_Humvee_supply_US", 2, [6, 0, 0, 0]),
+        # Humvee cargo was originally for 82nd airborne, but doesn't fit anywhere now
+        # ("M1038_Humvee_supply_US", 2, [6, 0, 0, 0]),
         ("M35_supply_US", 1, [3, 0, 0, 0]),
         ("UH1H_supply_US", 2, [7, 0, 0, 0]),
         ("UH60A_Supply_US", 2, [5, 0, 0, 0]),

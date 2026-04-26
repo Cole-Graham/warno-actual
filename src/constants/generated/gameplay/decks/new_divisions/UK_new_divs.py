@@ -196,7 +196,7 @@ uk_new_divs = {
         #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
         # },
         "transport_overrides": {
-            "Rifles_CMD2_UK": ["LandRover_UK", "FV432_UK", "MCV_80_Warrior_UK", "MCV_80_Warrior_MILAN_UK", "Lynx_AH_Mk1_UK", "Westland_Wessex_trans_UK"],
+            "Rifles_CMD2_UK": ["LandRover_UK", "FV432_UK", "MCV_80_Warrior_UK", "MCV_80_Warrior_MILAN_UK", "Lynx_AH_Mk1_UK"],
         },
     },
     # marine 5027, 1060

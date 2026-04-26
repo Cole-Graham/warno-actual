@@ -59,7 +59,7 @@ rfa_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         "UpgradeFromUnit": "FOB_RFA",
     },
@@ -83,7 +83,7 @@ rfa_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         "UpgradeFromUnit": "FOB_RFA",
     },
@@ -2047,7 +2047,7 @@ rfa_unit_edits = {
         "max_speed": 6,
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -2068,7 +2068,7 @@ rfa_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -2104,7 +2104,7 @@ rfa_unit_edits = {
         # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 1,
+            "TimeForWeaponPacking": 0.1,
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -2122,7 +2122,7 @@ rfa_unit_edits = {
     #     # },
     #     "WeaponDeployment": {
     #         "TimeForWeaponDeployment": 15,
-    #         "TimeForWeaponPacking": 1,
+    #         "TimeForWeaponPacking": 0.1,
     #     },
     #     "WeaponDescriptor": {
     #         "Salves": {

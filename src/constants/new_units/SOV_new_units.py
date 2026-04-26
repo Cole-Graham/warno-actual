@@ -934,7 +934,6 @@ SOV_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "PACT",
         "Nation": "SOV",
-        "depiction_type": "Towed",
         "alternatives_count": 2,
         "servants": ("G_SOV", "D_SOV"),
         "servant_types": {
@@ -1013,7 +1012,6 @@ SOV_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "PACT",
         "Nation": "SOV",
-        "depiction_type": "Towed",
         "alternatives_count": 2,
         "servants": ("G_VDV", "Spe_D_VDV"),
         "servant_types": {
@@ -1090,7 +1088,6 @@ SOV_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "PACT",
         "Nation": "SOV",
-        "depiction_type": "Towed",
         "alternatives_count": 2,
         "servants": ("G_Morskaya", "D_Morskaya"),
         "servant_types": {
