@@ -4809,7 +4809,7 @@ sov_unit_edits = {
     },
 
     "LuAZ_967M_AA_VDV_SOV": {
-        "CommandPoints": 36,
+        "CommandPoints": 35,
         "Stealth": 2.0,
     },
     

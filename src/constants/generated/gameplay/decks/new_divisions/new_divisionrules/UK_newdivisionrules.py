@@ -113,7 +113,7 @@ UK_armored_newdivisionrules = {
         ("Puma_UK", 1, [4, 0, 0, 0]),
         ("CH47D_Chinook_supply_UK", 1, [2, 0, 0, 0]),
         ("DCA_M167A2_Vulcan_20mm_UK", 1, [6, 4, 0, 0], ["Bedford_MJ_4t_trans_UK"]),
-        ("FOB_UK", 1, [0, 2, 0, 0]),
+        ("FOB_UK", 1, [2, 0, 0, 0]),
     ],
     "infantry": [
         ("Rifles_CMD_UK", 1, [0, 0, 7, 5], ["FV432_UK", "Bedford_MJ_4t_trans_UK", "MCV_80_Warrior_UK"]),
@@ -232,7 +232,7 @@ UK_mechanized_newdivisionrules = {
         ("Westland_Wessex_supply_UK", 1, [5, 0, 0, 0]),
         ("CH47D_Chinook_supply_UK", 1, [2, 0, 0, 0]),
         ("DCA_M167A2_Vulcan_20mm_UK", 1, [6, 4, 0, 0], ["Bedford_MJ_4t_trans_UK"]),
-        ("FOB_UK", 1, [0, 2, 0, 0]),
+        ("FOB_UK", 1, [2, 0, 0, 0]),
     ],
     "infantry": [
         ("Rifles_CMD_UK", 2, [0, 0, 7, 5], ["FV432_UK", "MCV_80_Warrior_UK"]),
@@ -339,7 +339,7 @@ UK_motorized_newdivisionrules = {
         ("Puma_UK", 1, [4, 0, 0, 0]),
         ("CH47D_Chinook_supply_UK", 1, [2, 0, 0, 0]),
         ("DCA_M167A2_Vulcan_20mm_UK", 1, [6, 4, 0, 0], ["Bedford_MJ_4t_trans_UK"]),
-        ("FOB_UK", 1, [0, 2, 0, 0]),
+        ("FOB_UK", 1, [2, 0, 0, 0]),
     ],
     "infantry": [
         ("Airmobile_CMD_UK", 1, [0, 0, 6, 4], ["Lynx_AH_Mk1_UK", "Lynx_AH_Mk7_SNEB_UK"]),

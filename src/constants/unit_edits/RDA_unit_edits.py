@@ -2510,6 +2510,7 @@ rda_unit_edits = {
     # RDA RECON
     "UAZ_469_Reco_DDR": {
         "CommandPoints": 25,
+        "UpgradeFromUnit": "BRDM_1_DDR",
     },
 
     "UAZ_469_AGL_Grenzer_DDR": {
@@ -2524,6 +2525,7 @@ rda_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'",],
         },
+        "UpgradeFromUnit": None,
     },
 
     "BRDM_1_DDR": {
@@ -2533,6 +2535,7 @@ rda_unit_edits = {
     "BTR_60_reco_DDR": {
         "CommandPoints": 30,
         "strength": 10,
+        "UpgradeFromUnit": "UAZ_469_AGL_Grenzer_DDR",
     },
 
     "BMP_1P_reco_DDR": { # is named BMP-1P in descriptor but lacks the smoke and fagot missle, so its basically a BMP-1 basic
@@ -2551,6 +2554,7 @@ rda_unit_edits = {
             },
         },
         "availability": [8, 6, 0, 0],
+        "UpgradeFromUnit": "PT76B_DDR",
     },
 
     "BRM_1_DDR": {
@@ -2570,6 +2574,7 @@ rda_unit_edits = {
             },
         },
         "availability": [6, 4, 0, 0],
+        "UpgradeFromUnit": "BRDM_2_DDR",
     },
     
     "PT76B_DDR": {
@@ -2589,6 +2594,7 @@ rda_unit_edits = {
     "Mi_8TB_reco_Marine_DDR": { # #RECO2 AUFKL. Mi-8TB
         "CommandPoints": 110,
         "availability": [0, 4, 3, 0],
+        "UpgradeFromUnit": "Mi_14PL_recon_DDR",
     },
 
     "Mi_24D_s5_AT_reco_DDR": { # #RECO2 DHS Mi-24D Transport
@@ -2599,6 +2605,7 @@ rda_unit_edits = {
     "Mi_14PL_recon_DDR": {  # #RECO3 AUFKL. Mi-14PL
         "CommandPoints": "Mi_14PL_recon_SOV",
         "availability": [0, 4, 0, 0],
+        "UpgradeFromUnit": "Mi_2_gunship_DDR",
     },
 
     "Scout_DDR": {
@@ -2617,6 +2624,7 @@ rda_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
+        "UpgradeFromUnit": "Scout_KdA_DDR",
     },
 
     "Scout_Reserve_DDR": {
@@ -2641,6 +2649,7 @@ rda_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'_reservist'", "'infantry_equip_light'", "'_swift'"],
         },
+        "UpgradeFromUnit": None,
     },
     
     "Scout_KdA_DDR": {
@@ -2666,6 +2675,7 @@ rda_unit_edits = {
                 "SAW_lMG_K_7_62mm": 24,
             },
         },
+        "UpgradeFromUnit": "Scout_Reserve_DDR",
     },
 
     "HvyScout_DDR": {
@@ -2679,7 +2689,7 @@ rda_unit_edits = {
     },
 
     "Scout_SIGINT_DDR": {
-        "CommandPoints": 30,
+        "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "availability": [6, 4, 0, 0],
         "max_speed": 20,
@@ -2739,7 +2749,7 @@ rda_unit_edits = {
     },
 
     "Grenzer_Flam_DDR": {
-        "CommandPoints": 40,
+        "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "availability": [6, 0, 0, 0],
         "max_speed": 20,
@@ -2771,10 +2781,11 @@ rda_unit_edits = {
                 "FM_KMS_72": 9,
             },
         },
+        "UpgradeFromUnit": "Engineers_Naval_Scout_DDR",
     },
 
     "Scout_Wach_DDR": {
-        "CommandPoints": 55,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "strength": 7,
         "availability": [0, 0, 4, 3],
@@ -2789,16 +2800,18 @@ rda_unit_edits = {
                 },
             },
         },
+        "UpgradeFromUnit": None,
     },
 
     "Engineers_Naval_Scout_DDR": {
-        "CommandPoints": 45,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "availability": [0, 4, 3, 0],
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
+        "UpgradeFromUnit": "Grenzer_DDR",
     },
 
     "Scout_LRRP_DDR": {
@@ -2809,6 +2822,7 @@ rda_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
+        "UpgradeFromUnit": "KSK18_DDR",
     },
 
     "KSK18_DDR": {
@@ -2831,6 +2845,7 @@ rda_unit_edits = {
                 "Grenade_Satchel_Charge": 6,
             },
         },
+        "UpgradeFromUnit": "Scout_FJ_DDR",
     },
 
     "Fallschirmjager_FalseFlag_DDR": {
@@ -2841,6 +2856,7 @@ rda_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
+        "UpgradeFromUnit": "Scout_Wach_DDR",
     },
 
     "Fallschirmjager_FlaseFlag_Demo_DDR": {
@@ -2868,7 +2884,7 @@ rda_unit_edits = {
         "availability": [0, 0, 8, 6],
         "max_speed": 26,
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_light'", "'_swift'"],
+            "add_specs": ["'infantry_equip_medium'"],
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -2887,7 +2903,7 @@ rda_unit_edits = {
     },
 
     "Sniper_FJ_DDR": {
-        "CommandPoints": 45,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "strength": 3,
         "availability": [0, 0, 4, 3],

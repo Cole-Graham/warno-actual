@@ -115,7 +115,7 @@ US_airborne_newdivisionrules = {
 
 US_armored_newdivisionrules = {
     "logistic": [
-        ("FOB_US", 1, [0, 2, 0, 0]),
+        ("FOB_US", 1, [2, 0, 0, 0]),
         ("Rifles_half_CMD2_US", 2, [0, 2, 0, 0], ["M998_Humvee_US", "M113_Dragon_US", "M2A1_Bradley_IFV_US", "UH60A_Black_Hawk_US", "CH47_Chinook_US"]),
         ("M1A1HA_Abrams_CMD2_US", 2, [0, 0, 0, 1]),
         ("M1A1_Abrams_CMD2_US", 1, [0, 0, 2, 0]),
@@ -360,7 +360,7 @@ US_marine_newdivisionrules = {
 
 US_mechanized_newdivisionrules = {
     "logistic": [
-        ("FOB_US", 1, [0, 2, 0, 0]),
+        ("FOB_US", 1, [2, 0, 0, 0]),
         ("Rifles_half_CMD2_US", 2, [0, 2, 0, 0], ["M998_Humvee_US", "M113_Dragon_US", "M2A1_Bradley_IFV_US", "M2A2_Bradley_IFV_US", "UH60A_Black_Hawk_US", "CH47_Chinook_US"]),
         ("M1A1_Abrams_CMD2_US", 1, [0, 0, 2, 0]),
         ("M1IP_Abrams_CMD2_US", 1, [0, 0, 2, 0]),
@@ -490,7 +490,7 @@ US_mechanized_newdivisionrules = {
 
 US_motorized_newdivisionrules = {
     "logistic": [
-        ("FOB_US", 1, [0, 2, 0, 0]),
+        ("FOB_US", 1, [2, 0, 0, 0]),
         ("Rifles_half_CMD2_US", 2, [0, 2, 0, 0], ["M998_Humvee_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US", "UH60A_Black_Hawk_US", "CH47_Chinook_US"]),
         ("M1_Abrams_CMD2_US", 1, [0, 0, 2, 0]),
         ("M60A3_CMD2_US", 1, [0, 0, 2, 0]),

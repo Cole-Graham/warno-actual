@@ -488,12 +488,12 @@ TRAIT_EDITS = {
             "token": "NKHDAPIZBR",
             "text": (
                 f"CQC Bonuses - While stationary, and if within "
-                f"150m of enemies, gain the following bonuses:\n"
+                f"#moral_color_bad_2{{150m}} of enemies, gain the following bonuses:\n"
                 f"#styleGreen{{• 15% bonus to aim time, shot reload, and salvo reload.}}\n"
                 f"#styleGreen{{• 15% bonus to physical damage.}}\n\n"
-                f"Sprint - While within 875m of enemies, in combat, and above 40% cohesion, "
+                f"Sprint - While within #styleTurquoise{{875m}} of enemies, in combat, and above 40% cohesion, "
                 f"gain the following bonuses:\n"
-                f"#styleTurquoise{{• 70% increased movement speed.}}"
+                f"#styleTurquoise{{• 70% increased movement speed.\n}}"
                 f"#styleTurquoise{{• Receive 25% less suppression damage.}}"
             )
         }

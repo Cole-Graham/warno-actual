@@ -404,7 +404,7 @@ supply_unit_edits = {
     },
     
     "BAV_485_Supply_POL": {
-        "UpgradeFromUnit": None,
+        "UpgradeFromUnit": "GAZ_66B_supply_POL",
     },
 
     "VLRA_supply_FR": {},
@@ -438,7 +438,7 @@ supply_unit_edits = {
     "ZIL_131_supply_Naval_SOV": {},
     
     "Star_266_supply_POL": {
-        "UpgradeFromUnit": "GAZ_66B_supply_POL",
+        "UpgradeFromUnit": "BAV_485_Supply_POL",
     },
 
     "Berliet_GBC_8KT_supply_FR": {},

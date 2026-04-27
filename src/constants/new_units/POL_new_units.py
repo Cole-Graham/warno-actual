@@ -928,7 +928,7 @@ POL_NEW_UNITS = {
     },
 
     # Tanks
-     ("T55A_POL", 0): {  # T-55A Reco
+    ("T55A_POL", 0): {  # T-55A Reco
         "GUID": "ee1e751b-f138-4448-a701-8e6aeb29d670",
         "InfantrySquadModuleGUID": "5e63ade3-1dfd-4399-a1d7-ae3e9a875d1f",
         "ShowroomGUID": "181367c7-616a-4a17-8504-13ccb8b264e6",

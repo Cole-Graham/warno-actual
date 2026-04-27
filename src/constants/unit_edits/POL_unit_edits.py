@@ -55,41 +55,23 @@ pol_unit_edits = {
             },
         },
         "availability": [9, 7, 0, 0],
-        "max_speed": 6,
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
+        "max_speed": 9,
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 0.1,
         },
-        # "UpgradeFromUnit": "FOB_POL",  # no fob in korpus
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_2_canon_ZU23_2_23mm_TOWED": 20,
             },
         },
+        "UpgradeFromUnit": "DCA_ZU_23_2_POL",
     },
     
     "DCA_ZUR_23_2S_JOD_POL": {  # ZUR-23-2S Jod
         "CommandPoints": 30,
-        # "Factory": "EFactory/Logistic",  # keep in AA tab
-        # "Divisions": {
-        #     "default": {
-        #         "cards": 69,
-        #     },
-        #     "POL_4_Zmechanizowana": {
-        #         "cards": 2,
-        #     },
-        #     "POL_20_Pancerna": {
-        #         "cards": 1,
-        #     },
-        # },
-        "max_speed": 6,
+        "max_speed": 9,
         "availability": [9, 7, 0, 0],
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 0.1,
@@ -99,6 +81,7 @@ pol_unit_edits = {
                 "DCA_2_canon_Jod_towed_23mm": 20,
             },
         },
+        "UpgradeFromUnit": "DCA_ZPU4_POL",
     },
     
     "DCA_ZUR_23_2S_JOD_Para_POL": {  # Desant. ZUR-23-2S Jod
@@ -106,7 +89,7 @@ pol_unit_edits = {
         "GameName": {
             "display": "SPADO. ZUR-23-2S JOD",
         },
-        "max_speed": 6,
+        "max_speed": 9,
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 0.1,
@@ -117,6 +100,7 @@ pol_unit_edits = {
                 "DCA_2_canon_Jod_towed_23mm": 20,
             },
         },
+        "UpgradeFromUnit": "DCA_ZUR_23_2S_JOD_POL",
     },
     
     "UAZ_469_CMD_POL": {  # WD-43
@@ -292,7 +276,7 @@ pol_unit_edits = {
     },
     
     "Rifles_CMD_POL": {
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "PIECHOTA",
@@ -1315,6 +1299,17 @@ pol_unit_edits = {
         "GameName": {
             "display": "REZERWIŚCI"
         },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "animate": {
+                    "MMG_PKM_7_62mm": False,
+                },
+                "quantity": {
+                    "FM_kbk_AK": 10,
+                    "MMG_PKM_7_62mm": 2,
+                },
+            },
+        },
     },
     
     "Reserve_SVD_POL": {
@@ -2162,6 +2157,7 @@ pol_unit_edits = {
         "availability": [0, 8, 6, 0],
         "remove_zone_capture": None,
         "DeploymentShift": 750,
+        "UpgradeFromUnit": "MTLB_TRI_Hors_POL",
     },
 
     "PT76B_CMD_Naval_POL": {  #  NIEB.BERETY PT-76BD LDR
@@ -2463,6 +2459,7 @@ pol_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
+        "UpgradeFromUnit": "Scout_POL",
     },
     
     "Engineers_Scout_POL": {  # Saperzy Zwiadowcy
@@ -2481,6 +2478,7 @@ pol_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
+        "UpgradeFromUnit": "HvyScout_POL",
     },
     
     "Scout_POL": {  # Zwiadowcy
@@ -2508,6 +2506,7 @@ pol_unit_edits = {
                 "RocketInf_RPG7": 4,
             },
         },
+        "UpgradeFromUnit": "Scout_Reserve_POL",
     },
     
      "Scout_Reserve_POL": {  # Rez. Zwiadowcy
@@ -2584,7 +2583,7 @@ pol_unit_edits = {
         },
     },
 
-    "Sniper_paras_POL": {  # Desant. Snajper
+    "Sniper_paras_POL": {  # Spado. Snajper
         "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "strength": 3,
@@ -2615,6 +2614,7 @@ pol_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
+        "UpgradeFromUnit": "Sniper_POL",
     },
     
     "Scout_LRRP_POL": {  # Rozp. Specjalne [GSR]
@@ -2689,6 +2689,7 @@ pol_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
+        "UpgradeFromUnit": "Scout_LRRP_Para_POL",
     },
 
     # TODO: Find out what happened to this unit
@@ -2705,33 +2706,30 @@ pol_unit_edits = {
     "BRDM_1_DShK_POL": {
         "CommandPoints": 30,
         "availability": [12, 9, 0, 0],
-        "UpgradeFromUnit": "BRDM_2_POL",
+        "UpgradeFromUnit": "OT_65_POL",
     },
     
     "BRDM_1_PSNR1_POL": {  # BRDM-1 PSNR-1
         "CommandPoints": 35,
         "availability": [8, 0, 0, 0],
+        "UpgradeFromUnit": "MTLB_Taran_SIGINT_POL",
     },
     
     "BRM_1_POL": {  # BWR-1D
         "CommandPoints": "BRM_1_SOV",
         "availability": "BRM_1_SOV",
-        # "CommandPoints": 55,
-        # "availability": [6, 4, 0, 0],
     },
     
     "BRDM_2_POL": {  # BRDM-2
         "CommandPoints": "BRDM_2_SOV",
         "availability": "BRDM_2_SOV",
-        # "CommandPoints": 35,
-        # "availability": [8, 6, 0, 0],
         "strength": 8,
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "UpgradeFromUnit": "OT_65_POL",
+        "UpgradeFromUnit": "BRDM_1_DShK_POL",
     },
 
     "MTLB_Taran_SIGINT_POL": {  # R-330T Taran
@@ -2817,21 +2815,15 @@ pol_unit_edits = {
     
     "BRDM_1_POL": {  # BRDM-1
         "CommandPoints": 20,
-        "UpgradeFromUnit": None,
+        "UpgradeFromUnit": "OT_65_POL",
     },
     
     "OT_65_POL": {  # OT-65
+        "CommandPoints": 15,
         "GameName": {
             "display": "OT-65",
         },
-        "UpgradeFromUnit": "BRDM_1_POL",
-        "CommandPoints": 15,
-        "orders": {
-            "add_orders": ["EOrderType/Sell"],
-        },
-        "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'",],
-        },
+        "UpgradeFromUnit": None,
     },
     
     "MTLB_TRI_Hors_POL": {  # TRI Hors
@@ -2975,6 +2967,7 @@ pol_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
+        "UpgradeFromUnit": "DCA_ZUR_23_2S_JOD_Para_POL",
     },
     
     "LO_1800_ZPU_2_POL": {  # Lo-1800 ZPU-2
@@ -2985,6 +2978,10 @@ pol_unit_edits = {
                 "DCA_2_canon_ZPU4_14_5mm": 192,
             },
         },
+    },
+    
+    "OT_62_TOPAS_JOD_POL": { # TOPAS JOD (Transport)
+        "CommandPoints": 40,
     },
 
     "Hibneryt_POL": {  # Hibneryt

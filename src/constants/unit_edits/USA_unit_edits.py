@@ -3843,6 +3843,7 @@ usa_unit_edits = {
     "FAV_HMG_US": {
         "CommandPoints": 30,
         "availability": [12, 9, 0, 0],
+        "UpgradeFromUnit": "M151A2_FAV_USMC_US",
     },
     
     "FAV_AGL_US": {
@@ -3856,7 +3857,7 @@ usa_unit_edits = {
     },
 
     "M151A2_FAV_USMC_US": {
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "availability": [0, 0, 10, 7],
     },
 
@@ -4103,7 +4104,7 @@ usa_unit_edits = {
     },
 
     "UH1N_TwinHuey_reco_US": {
-        "CommandPoints": 85,
+        "CommandPoints": 70,
         "availability": [0, 4, 3, 0], # Maybe this should be 0/3/2/0?
     },
 
@@ -4117,6 +4118,7 @@ usa_unit_edits = {
             },
         },
         "availability": [0, 3, 0, 0],
+        "UpgradeFromUnit": "UH1N_TwinHuey_reco_US",
     },
     
     "MQM_105_Aquila_US": {
@@ -4132,12 +4134,6 @@ usa_unit_edits = {
         "CommandPoints": 70,
         "availability": [0, 3, 2, 0],
         "UpgradeFromUnit": "MQM_105_Aquila_US",
-    },
-    
-    "OA10A_US": {
-        "CommandPoints": 220,
-        "availability": [0, 2, 0, 0],
-        "UpgradeFromUnit": "A37B_Dragonfly_US",
     },
 
     "OV10_Bronco_US": {
@@ -4158,6 +4154,13 @@ usa_unit_edits = {
                 },
             },
         },
+        "UpgradeFromUnit": "A37B_Dragonfly_US",
+    },
+    
+    "OA10A_US": {
+        "CommandPoints": 220,
+        "availability": [0, 2, 0, 0],
+        "UpgradeFromUnit": "OV10_Bronco_US",
     },
 
     "Airborne_Scout_US": {
@@ -4251,6 +4254,7 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
+        "UpgradeFromUnit": None,
     },
     
     "Scout_USMC_US": {
@@ -4292,6 +4296,7 @@ usa_unit_edits = {
                 "insert": [(1, 30)],
             },
         },
+        "UpgradeFromUnit": "Scout_LAI_USMC_US",
     },
     
     "Scout_Cav_US": { # CAVALRY SCOUTS
@@ -4550,6 +4555,7 @@ usa_unit_edits = {
                 },
             },
         },
+        "UpgradeFromUnit": "Sniper_USMC_US",
     },
     
     "DeltaForce_US": {
@@ -4573,6 +4579,7 @@ usa_unit_edits = {
                 "M16A2_Carbine": 11,
             },
         },
+        "UpgradeFromUnit": "LRRP_US",
     },
 
     "Sniper_US": {
@@ -4598,6 +4605,7 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
+        "UpgradeFromUnit": "Scout_USMC_US",
     },
     
     "Sniper_M82_US": {

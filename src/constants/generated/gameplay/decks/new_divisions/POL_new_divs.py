@@ -41,6 +41,8 @@ pol_new_divs = {
             "AT_D44_85mm_POL",
             "ATteam_FagotM_POL",
             "Atteam_Konkurs_POL",
+            "MANPAD_Strela_2M_POL",
+            "MANPAD_Igla_POL",
         ],
         "transport_overrides": {
             "Rifles_CMD2_POL": ["UAZ_469_trans_POL", "W3_Sokol_POL", "Mi_8T_non_arme_POL", "Mi_8T_POL",  "BMP_1_SP2_POL",  "OT_64_SKOT_2_POL"],
@@ -130,9 +132,11 @@ pol_new_divs = {
             "UAZ_469_SPG9_POL",
             "UAZ_469_Fagot_POL",
             "AT_D44_85mm_POL",
+            "MANPAD_Strela_2M_POL",
+            "MANPAD_Igla_POL",
         ],
         "transport_overrides": {
-            "Rifles_CMD2_POL": ["UAZ_469_trans_POL", "W3_Sokol_POL", "Mi_8T_non_arme_POL", "Mi_8T_POL",  "BMP_1_SP2_POL"],
+            "Rifles_CMD2_POL": ["UAZ_469_trans_POL", "BMP_1_SP2_POL", "W3_Sokol_POL", "Mi_8T_POL", "Mi_24D_POL"],
         },
     },
     "POL_airborne_motorized": {
@@ -162,9 +166,11 @@ pol_new_divs = {
             "UAZ_469_SPG9_POL",
             "UAZ_469_Fagot_POL",
             "AT_D44_85mm_POL",
+            "MANPAD_Strela_2M_POL",
+            "MANPAD_Igla_POL",
         ],
         "transport_overrides": {
-            "Rifles_CMD2_POL": ["UAZ_469_trans_POL", "W3_Sokol_POL", "Mi_8T_non_arme_POL", "Mi_8T_POL", "OT_64_SKOT_2_POL"],
+            "Rifles_CMD2_POL": ["UAZ_469_trans_POL", "OT_64_SKOT_2_POL", "W3_Sokol_POL", "Mi_8T_POL", "Mi_24D_POL"],
         },
     },
     # "POL_armored": {

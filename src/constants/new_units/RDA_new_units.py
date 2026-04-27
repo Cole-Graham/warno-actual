@@ -1230,5 +1230,63 @@ RDA_NEW_UNITS = {
         "alternatives_count": 6,
         "selector_tactic": "00_06",
     },
+    
+    # Tanks
+    ("T54B_DDR", 0): {  # T-55A Reco
+        "GUID": "cdbbbcd3-28b6-457a-9aab-6aaa7273f9d8",
+        "InfantrySquadModuleGUID": "6c3d04e7-f606-40d7-88a6-a9b3e339c230",
+        "ShowroomGUID": "ef58695b-b6f1-4ea6-9fbd-330aaf99fa76",
+        "CadavreGUID": "37460926-d4b5-4c20-aab5-0e4fe8cfee87",
+        "NewName": "T54B_reco_DDR",
+        "GameName": {
+            "display": "T-54B",
+            "token": "GEMTRTCIHR",
+        },
+        "CommandPoints": 80,
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "Char_Reco",
+                "GroundUnits",
+                "Radio",
+                "Reco",
+                "UNITE_T54B_Reco_DDR",
+                "Unite",
+            ],
+        },
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 3500,
+                "EVisionRange/LowAltitude": 4947,
+                "EVisionRange/HighAltitude": 5654,
+            },
+            "OpticalStrengths": {
+                "EOpticalStrength/Standard": 5300,
+                "EOpticalStrength/LowAltitude": 5300,
+                "EOpticalStrength/HighAltitude": 1413,
+            },
+        },
+        "Factory": "EFactory/Recons",
+        "IdentifiedTextures": ["Texture_RTS_H_Reco", "Texture_Reco"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "MenuIconTexture": "Texture_RTS_H_Reco",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Reco",
+        "UnitRole": 'reco',
+        "availability": [7, 5, 0, 0],
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
+                   'EOrderType/MoveAndAttack', 'EOrderType/Reverse', 'EOrderType/Shoot', 'EOrderType/ShootOnPosition',
+                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": False,  # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "DDR",
+        "UpgradeFromUnit": "BRM_1_DDR",
+    },
 }
 # fmt: on
