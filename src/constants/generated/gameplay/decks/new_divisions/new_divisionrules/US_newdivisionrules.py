@@ -38,18 +38,18 @@ US_airborne_newdivisionrules = {
         ("AeroRifles_AB_US", 1, [0, 6, 4, 0], ["M1038_Humvee_US", "UH60A_Black_Hawk_US", "CH47_Chinook_US"]),
         ("AeroRifles_Dragon_US", 1, [0, 6, 4, 0], ["M1038_Humvee_US", "UH60A_Black_Hawk_US", "CH47_Chinook_US"]),
         ("AeroRifles_AT4_US", 1, [0, 6, 4, 0], ["CH47_Chinook_US"]),
-        ("Airborne_HMG_US", 2, [0, 7, 5, 0], ["M1038_Humvee_US"]),
+        ("Airborne_HMG_US", 2, [0, 7, 5, 0], ["M998_Humvee_US"]),
         ("MP_Combat_USAF_US", 1, [0, 8, 6, 0], ["M35_trans_US"]),
         ("MP_Patrol_USAF_US", 1, [0, 7, 5, 0], ["M998_Humvee_US", "CGage_Peacekeeper_US"]),
         # Removing these because there are no reservists in airborne
         # ("Airborne_MP_RCL_US", 1, [0, 10, 7, 0], ["M998_Humvee_US"]),
         # ("Airborne_MP_US", 1, [0, 12, 9, 0], ["M998_Humvee_US"]),
         ("ATteam_TOW2_Aero_US", 2, [0, 4, 3, 0], ["Gama_Goat_trans_US", "UH60A_Black_Hawk_US"]),
-        ("ATteam_TOW2_para_US", 2, [0, 4, 3, 0], ["M1038_Humvee_US"]),
+        ("ATteam_TOW2_para_US", 2, [0, 4, 3, 0], ["M998_Humvee_US"]),
         ("M274_Mule_RCL_US", 1, [0, 12, 9, 0], [None]),
         ("HMGteam_Mk19_AB_US", 1, [0, 8, 6, 0], ["M1038_Humvee_US"]),
-        ("HMGteam_M2HB_AB_US", 1, [0, 10, 7, 0], ["M1038_Humvee_US"]),
-        ("HMGteam_M60_AB_US", 1, [0, 12, 9, 0], ["M1038_Humvee_US"]),
+        ("HMGteam_M2HB_AB_US", 1, [0, 10, 7, 0], ["M998_Humvee_US"]),
+        ("HMGteam_M60_AB_US", 1, [0, 12, 9, 0], ["M998_Humvee_US"]),
     ],
     "artillery": [
         ("MLRS_XM477_Slammer_US", 1, [0, 4, 3, 0], ["Gama_Goat_trans_US", "CH47_Chinook_US"]),
@@ -70,11 +70,11 @@ US_airborne_newdivisionrules = {
     "recon": [
         ("DeltaForce_US", 2, [0, 0, 4, 3], ["M998_Humvee_Delta_US", "UH60A_Black_Hawk_US"]),  # I'd either cut these guys from this or Moto
         ("LRRP_US", 1, [0, 0, 4, 3], ["M998_Humvee_US", "M1025_Humvee_scout_US", "UH60A_Black_Hawk_US"]),
-        ("Pathfinder_NG_US", 1, [0, 0, 5, 4], ["M998_Humvee_US", "M1025_Humvee_scout_US", "M1025_Humvee_AGL_US", "UH1H_Huey_US", "UH60A_Black_Hawk_US"]),
+        ("Pathfinder_NG_US", 1, [0, 6, 4, 0], ["M998_Humvee_US", "M1025_Humvee_scout_US", "M1025_Humvee_AGL_nonPara_US", "UH1H_Huey_US", "UH60A_Black_Hawk_US"]),
         ("Scout_Aero_US", 2, [0, 4, 3, 0], ["M998_Humvee_US", "UH60A_Black_Hawk_US", "CH47_Chinook_US"]),
-        ("Airborne_Scout_US", 2, [0, 8, 6, 0], ["M998_Humvee_US", "M1025_Humvee_scout_US", "M1025_Humvee_AGL_US"]),
-        ("Sniper_US", 1, [0, 4, 3, 0], ["M998_Humvee_US", "M1025_Humvee_scout_US", "M1025_Humvee_AGL_US"]),
-        ("Sniper_M82_US", 1, [0, 4, 3, 0], ["M998_Humvee_US", "M1025_Humvee_scout_US", "M1025_Humvee_AGL_US"]),
+        ("Airborne_Scout_US", 2, [0, 8, 6, 0], ["M998_Humvee_US", "M1025_Humvee_scout_US", "M1025_Humvee_AGL_nonPara_US"]),
+        ("Sniper_US", 1, [0, 4, 3, 0], ["M998_Humvee_US", "M1025_Humvee_scout_US", "M1025_Humvee_AGL_nonPara_US"]),
+        ("Sniper_M82_US", 1, [0, 4, 3, 0], ["M998_Humvee_US", "M1025_Humvee_scout_US", "M1025_Humvee_AGL_nonPara_US"]),
         ("OA10A_US", 1, [0, 2, 0, 1], []),
         ("LAV_25_M1047_US_US", 2, [0, 6, 4, 0]),
         ("M551A1_ACAV_Sheridan_US", 2, [0, 6, 4, 0]),
@@ -85,7 +85,7 @@ US_airborne_newdivisionrules = {
     ],
     "aa": [
         ("MANPAD_Stinger_C_Rifles_US", 2, [0, 7, 5, 0], ["UH60A_Black_Hawk_US"]),
-        ("MANPAD_Stinger_C_para_US", 3, [0, 7, 5, 0], ["M1038_Humvee_US", "M274_Mule_M2HB_US"]),
+        ("MANPAD_Stinger_C_para_US", 3, [0, 7, 5, 0], ["M998_Humvee_US", "M274_Mule_M2HB_US"]),
         ("M48_Chaparral_MIM72F_US", 1, [4, 3, 0, 0]),
         ("M998_Avenger_US", 2, [6, 4, 0, 0]),
         ("OH58_CS_US", 1, [0, 4, 3, 0]),
@@ -157,8 +157,9 @@ US_armored_newdivisionrules = {
         ("Rifles_half_Cav_Dragon_US", 2, [12, 9, 0, 0], ["M1038_Humvee_US", "M2A1_Bradley_IFV_US"]),
         ("AeroRifles_US", 1, [10, 7, 0, 0], ["UH1H_Huey_US", "UH60A_Black_Hawk_US"]),
         ("Rifles_HMG_US", 1, [10, 7, 0, 0], ["M35_trans_US", "M113A3_US"]),
-        ("MP_US", 1, [0, 8, 6, 0], ["M1038_Humvee_US"]),
-        ("MP_RCL_US", 1, [0, 10, 7, 0], ["M151_MUTT_trans_US", "M1025_Humvee_MP_US"]),
+        # Removing these because there are no reservists in armored
+        # ("Airborne_MP_RCL_US", 1, [0, 10, 7, 0], ["M998_Humvee_US"]),
+        # ("Airborne_MP_US", 1, [0, 12, 9, 0], ["M998_Humvee_US"]),
         ("ATteam_TOW2_US", 2, [4, 3, 0, 0], ["M151_MUTT_trans_US"]),
         ("ATteam_ITOW_US", 1, [6, 4, 0, 0], ["M151_MUTT_trans_US"]),
         ("HMGteam_Mk19_US", 1, [8, 6, 0, 0], ["M151_MUTT_trans_US"]),
@@ -513,7 +514,7 @@ US_motorized_newdivisionrules = {
     "infantry": [
         ("Rangers_CMD_US", 1, [0, 0, 0, 3], ["M1038_Humvee_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US", "UH1H_Huey_US", "UH60A_Black_Hawk_US"]),
         ("Engineer_CMD_US", 1, [0, 0, 4, 3], ["M35_trans_US"]),
-        ("Rifles_half_CMD_US", 1, [0, 0, 7, 5], ["M1038_Humvee_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US", "UH1H_Huey_US", "UH60A_Black_Hawk_US"]),
+        ("Rifles_half_CMD_US", 1, [0, 0, 7, 5], ["M998_Humvee_US", "CUCV_HMG_US", "CUCV_AGL_US", "UH1H_Huey_US", "UH60A_Black_Hawk_US"]),
         ("MP_CMD_US", 1, [0, 0, 5, 4], ["M35_trans_US"]),
         ("Navy_SEAL_US", 1, [0, 0, 0, 3], ["M35_trans_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US", "UH60A_Black_Hawk_US"]), # I'd like to cut this so it unique for Marine
         ("Ranger_US", 1, [0, 0, 4, 3], ["M1038_Humvee_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US", "UH1H_Huey_US", "UH60A_Black_Hawk_US"]),

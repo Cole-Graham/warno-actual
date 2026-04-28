@@ -1982,6 +1982,15 @@ rfa_unit_edits = {
     "M113_GreenArcher_RFA": {
         "CommandPoints": 30,
         "availability": [6, 0, 0, 0],
+        "TagSet": {
+            "add_tags": ['"reco_radar"'],
+        },
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/Standard": 8834.0,
+                "EOpticalStrength/LowAltitude": 8834.0,
+            },
+        },
     },
 
     "TPZ_Fuchs_RASIT_RFA": {

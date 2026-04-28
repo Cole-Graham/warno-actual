@@ -12,6 +12,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "Arme": {
                 "Index": 19,
             },
+            "hit_roll": {
+                "Idling": 55,
+            },
             "parent_membr": {
                 "MinimumRangeGRU": 60,
                 "ProjectileSpeedGRU": 233,
@@ -23,7 +26,6 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "SalvoLengths": [1],
         },
         "MissileDescriptor": {
-            # TODO: Create indicator for missile speed on unit card
             "MaxSpeedGRU": 233,
         },
     },
@@ -32,6 +34,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "Arme": {
                 "Index": 16,
+            },
+            "hit_roll": {
+                "Idling": 55,
             },
             "parent_membr": {
                 "MinimumRangeGRU": 60,

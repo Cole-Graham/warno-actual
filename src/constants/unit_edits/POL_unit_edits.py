@@ -2157,7 +2157,7 @@ pol_unit_edits = {
         "availability": [0, 8, 6, 0],
         "remove_zone_capture": None,
         "DeploymentShift": 750,
-        "UpgradeFromUnit": "MTLB_TRI_Hors_POL",
+        "UpgradeFromUnit": None,
     },
 
     "PT76B_CMD_Naval_POL": {  #  NIEB.BERETY PT-76BD LDR
@@ -2701,12 +2701,13 @@ pol_unit_edits = {
     
     "UAZ_469_Reco_POL": {
         "CommandPoints": 25,
+        "UpgradeFromUnit": "Honker_RYS_POL",
     },
     
     "BRDM_1_DShK_POL": {
         "CommandPoints": 30,
         "availability": [12, 9, 0, 0],
-        "UpgradeFromUnit": "OT_65_POL",
+        "UpgradeFromUnit": None,
     },
     
     "BRDM_1_PSNR1_POL": {  # BRDM-1 PSNR-1
@@ -2810,7 +2811,7 @@ pol_unit_edits = {
     #   recon tab transports
     "BMP_1_SP2_reco_POL": {  # Rozp. BWP-1
         "CommandPoints": "BMP_1P_reco_DDR",
-        "UpgradeFromUnit": "PT76B_CMD_POL", # PT76B_CMD is reco PT76 now
+        "UpgradeFromUnit": "MTLB_TRI_Hors_POL", # PT76B_CMD is reco PT76 now
     },
     
     "BRDM_1_POL": {  # BRDM-1

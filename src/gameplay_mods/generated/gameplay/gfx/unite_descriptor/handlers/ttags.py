@@ -52,6 +52,9 @@ def handle_tags_module(
         tagset.v = ndf.convert(str(edits["TagSet"]["overwrite_all"]))
     elif "add_tags" in edits["TagSet"]:
         for tag in edits["TagSet"]["add_tags"]:
+            if any(existing.v == tag for existing in tagset.v):
+                logger.debug(f"TagSet already contains {tag} for {unit_name}; skipping add_tags")
+                continue
             tagset.v.add(tag)
             logger.info(f"Added tag {tag} to {unit_name}")
             

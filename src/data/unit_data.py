@@ -1,6 +1,6 @@
 import re
 from pathlib import Path
-from typing import Any, Dict, List, Set
+from typing import Any, Dict, List, Optional, Set
 
 from src import ndf
 from src.data.ammo_data import get_vanilla_renames
@@ -13,6 +13,9 @@ from src.utils.ndf_utils import (
 )
 
 logger = setup_logger("unit_data")
+
+# Engine walks UpgradeFrom ancestry; chains longer than this trigger "Infinite hierarchy" errors in-game.
+UPGRADE_FROM_MAX_CHAIN_UNIT_COUNT = 10
 
 
 def gather_unit_data(mod_src_path: Path) -> Dict[str, Any]:
@@ -697,6 +700,81 @@ def _detect_circular_chains(forward_mapping: Dict[str, str]) -> List[List[str]]:
     return circular_chains
 
 
+def _upgrade_parent_chain(
+    unit: str,
+    forward_mapping: Dict[str, str],
+) -> List[str]:
+    """Follow UpgradeFrom pointers (child -> immediate parent tier) until a base tier or repeated node.
+
+    Uses forward_mapping: unit_with_upgrade_parent -> immediate_parent_name.
+    """
+    chain = []
+    seen = set()
+    cur: Optional[str] = unit
+    while cur is not None:
+        if cur in seen:
+            break
+        seen.add(cur)
+        chain.append(cur)
+        cur = forward_mapping.get(cur)
+        if len(chain) > 800:
+            logger.warning("_upgrade_parent_chain aborted at depth 800 (possible bug or cycle)")
+            break
+    return chain
+
+
+def _detect_upgrade_chains_exceeding_max_length(
+    forward_mapping: Dict[str, str],
+    max_units: int,
+) -> List[List[str]]:
+    """Return offending ancestries (`child -> … -> oldest tier`), pruning strict suffix overlaps.
+
+    When linear upgrade lines share one ancestry, only the deepest start produces the maximal path;
+    shorter starts on the same line report suffix paths which would duplicate errors.
+    """
+    candidates: List[List[str]] = []
+    seen_tuples: Set[tuple[str, ...]] = set()
+    for start in sorted(forward_mapping.keys()):
+        chain = _upgrade_parent_chain(start, forward_mapping)
+        if len(chain) <= max_units:
+            continue
+        tup = tuple(chain)
+        if tup in seen_tuples:
+            continue
+        seen_tuples.add(tup)
+        candidates.append(chain)
+    candidates.sort(key=len, reverse=True)
+    pruned: List[List[str]] = []
+    for ch in candidates:
+        superset_exists = False
+        for longer in pruned:
+            if len(longer) > len(ch) and longer[len(longer) - len(ch) :] == ch:
+                superset_exists = True
+                break
+        if not superset_exists:
+            pruned.append(ch)
+    return sorted(pruned, key=len, reverse=True)
+
+
+def validate_upgrade_forward_mapping_chain_lengths(
+    forward_mapping: Dict[str, str],
+    *,
+    max_units: int = UPGRADE_FROM_MAX_CHAIN_UNIT_COUNT,
+) -> None:
+    """Raise ValueError if any upgrade ancestry exceeds the engine limit."""
+    offending = _detect_upgrade_chains_exceeding_max_length(forward_mapping, max_units)
+    if not offending:
+        return
+    lines = []
+    for chain in offending:
+        lines.append(f"  ({len(chain)} units) {' -> '.join(chain)}")
+    raise ValueError(
+        f"UpgradeFrom hierarchy exceeds WARNO engine limit ({max_units} units per ancestry path).\n"
+        + f"Found {len(offending)} path(s):\n"
+        + "\n".join(lines),
+    )
+
+
 def _build_upgrade_chains(forward_mapping: Dict[str, str]) -> Dict[str, Any]:
     """Build upgrade chains from a forward mapping (unit -> upgrade_from).
     
@@ -794,6 +872,8 @@ def build_upgrade_from_mapping(unit_data: Dict[str, Any]) -> Dict[str, List[str]
                 forward_mapping[unit_name] = upgrade_from
                 logger.debug(f"Found UpgradeFrom relationship: {unit_name} -> {upgrade_from}")
     
+    validate_upgrade_forward_mapping_chain_lengths(forward_mapping)
+
     # Validate for circular chains before building
     circular_chains = _detect_circular_chains(forward_mapping)
     if circular_chains:

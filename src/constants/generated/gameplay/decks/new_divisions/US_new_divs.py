@@ -109,7 +109,11 @@ us_new_divs = {
             US_global_newdivisionrules,
             US_marine_newdivisionrules,
         ],
-        "rule_exclusions": [],
+        "rule_exclusions": [
+            "HMGteam_Mk19_USMC_US",
+            "ATteam_TOW2_USMC_US",
+            "MANPAD_Stinger_C_US",
+        ],
         "transport_overrides": {},
     },
     "US_airborne_mechanized": {
@@ -137,8 +141,8 @@ us_new_divs = {
         ],
         "transport_overrides": {
             "Rifles_half_CMD2_US": ["M998_Humvee_US", "M998_Humvee_HMG_US", "M2A1_Bradley_IFV_US", "M2A2_Bradley_IFV_US", "UH60A_Black_Hawk_US", "CH47_Chinook_US"],
-            "Sniper_US": ["M998_Humvee_US", "M1025_Humvee_scout_US", "M1025_Humvee_AGL_US"],
-            "Sniper_M82_US": ["M998_Humvee_US", "M1025_Humvee_scout_US", "M1025_Humvee_AGL_US"],
+            "Sniper_US": ["M998_Humvee_US", "M1025_Humvee_scout_US", "M1025_Humvee_AGL_nonPara_US"],
+            "Sniper_M82_US": ["M998_Humvee_US", "M1025_Humvee_scout_US", "M1025_Humvee_AGL_nonPara_US"],
         },
     },
     "US_airborne_motorized": {
@@ -171,8 +175,8 @@ us_new_divs = {
             "MP_RCL_US": ["CUCV_MP_US", "CUCV_HMG_US", "CUCV_AGL_US", "M1025_Humvee_MP_US"],
             "MP_Patrol_USAF_US": ["M998_Humvee_US", "CUCV_MP_US", "CGage_Peacekeeper_US", "CUCV_HMG_US", "CUCV_AGL_US"],
             "LRRP_US": ["M998_Humvee_US", "M1025_Humvee_scout_US", "M1025_Humvee_AGL_nonPara_US", "UH60A_Black_Hawk_US"],
-            "Sniper_US": ["M998_Humvee_US", "M1025_Humvee_scout_US", "M1025_Humvee_AGL_US"],
-            "Sniper_M82_US": ["M998_Humvee_US", "FAV_trans_US","M1025_Humvee_scout_US", "M1025_Humvee_AGL_US"],
+            "Sniper_US": ["M998_Humvee_US", "M1025_Humvee_scout_US", "M1025_Humvee_AGL_nonPara_US"],
+            "Sniper_M82_US": ["M998_Humvee_US", "FAV_trans_US","M1025_Humvee_scout_US", "M1025_Humvee_AGL_nonPara_US"],
         },
     },
     "US_armored": {
@@ -207,7 +211,13 @@ us_new_divs = {
             US_global_newdivisionrules,
             US_marine_newdivisionrules,
         ],
-        "rule_exclusions": [],
+        "rule_exclusions": [
+            "M1025_Humvee_CMD_US",
+            "HMGteam_Mk19_US",
+            "ATteam_TOW2_US",
+            "MANPAD_Stinger_C_US",
+            "DCA_I_Hawk_US",
+        ],
         "transport_overrides": {},
     },
     "US_armored_mechanized": {
@@ -282,7 +292,14 @@ us_new_divs = {
             US_global_newdivisionrules,
             US_mechanized_newdivisionrules,
         ],
-        "rule_exclusions": [],
+        "rule_exclusions": [
+            "M1025_Humvee_CMD_US",
+            "HMGteam_M2HB_US",
+            "HMGteam_Mk19_US",
+            "ATteam_TOW2_US",
+            "MANPAD_Stinger_C_US",
+            "DCA_I_Hawk_US",
+        ],
         "transport_overrides": {},
     },
     "US_marine_motorized": {
@@ -301,7 +318,13 @@ us_new_divs = {
             US_global_newdivisionrules,
             US_motorized_newdivisionrules,
         ],
-        "rule_exclusions": [],
+        "rule_exclusions": [
+            "M1025_Humvee_CMD_US",
+            "HMGteam_M2HB_US",
+            "HMGteam_Mk19_US",
+            "ATteam_TOW2_US",
+            "MANPAD_Stinger_C_US",
+        ],
         "transport_overrides": {},
     },
     "US_mechanized": {

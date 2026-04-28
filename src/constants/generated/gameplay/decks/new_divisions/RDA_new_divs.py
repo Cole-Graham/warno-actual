@@ -31,6 +31,8 @@ rda_new_divs = {
             RDA_motorized_newdivisionrules,
         ],
         "rule_exclusions": [
+            "BTR_50_CMD2_DDR",
+            "BRDM_2_CMD_DDR",
             "UAZ_469_SPG9_DDR",
             "Mortier_M43_82mm_DDR",
             "UAZ_469_Fagot_DDR",
@@ -100,6 +102,8 @@ rda_new_divs = {
             "MotRifles_CMD2_DDR": ["GAZ_46_DDR", "BTR_50_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
         },
         "rule_exclusions": [
+            "BRDM_2_CMD_DDR",
+            "BTR_50_CMD2_DDR",
             "HMGteam_PKM_DDR",
             "ATteam_RCL_SPG9_DDR",
             "ATteam_Fagot_DDR", 
@@ -128,6 +132,8 @@ rda_new_divs = {
             RDA_mechanized_newdivisionrules,
         ],
         "rule_exclusions": [
+            "BRDM_2_CMD_DDR",
+            "BTR_50_CMD2_DDR",
             "UAZ_469_SPG9_DDR",
             "Mortier_M43_82mm_DDR",
             "UAZ_469_Fagot_DDR",
@@ -162,6 +168,8 @@ rda_new_divs = {
             RDA_motorized_newdivisionrules,
         ],
         "rule_exclusions": [
+            "BRDM_2_CMD_DDR",
+            "BTR_50_CMD2_DDR",
             "UAZ_469_SPG9_DDR",
             "Mortier_M43_82mm_DDR",
             "UAZ_469_Fagot_DDR",
@@ -215,6 +223,10 @@ rda_new_divs = {
         ],
         "transport_overrides": {
             "MotRifles_CMD2_DDR": ["W50_LA_A_DDR", "BTR_50_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
+            "MotRifles_DDR": ["W50_LA_A_DDR", "BMP_1_SP1_DDR", "BMP_1_SP2_DDR", "BMP_1P_DDR", "BMP_1P_Konkurs_DDR", "BMP_2_DDR"],
+            "MotRifles_HMG_DDR": ["W50_LA_A_DDR", "BMP_1_SP1_DDR", "BMP_1_SP2_DDR", "BMP_1P_DDR", "BMP_1P_Konkurs_DDR", "BMP_2_DDR"],
+            "MotRifles_RPG27_DDR": ["W50_LA_A_DDR", "BMP_1_SP1_DDR", "BMP_1_SP2_DDR", "BMP_1P_DDR", "BMP_1P_Konkurs_DDR", "BMP_2_DDR"],
+            "MotSchutzen_DDR": ["W50_LA_A_DDR", "BMP_1_SP1_DDR", "BMP_1_SP2_DDR", "BMP_1P_DDR", "BMP_1P_Konkurs_DDR", "BMP_2_DDR"],
         },
     },
     "RDA_armored_motorized": {

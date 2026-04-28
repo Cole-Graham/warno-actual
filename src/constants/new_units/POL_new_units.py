@@ -982,7 +982,7 @@ POL_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "PACT",
         "Nation": "POL",
-        "UpgradeFromUnit": "BMP_1_SP2_reco_POL",
+        "UpgradeFromUnit": "PT76B_CMD_POL",
     },
 
     ("AT_D48_85mm_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys

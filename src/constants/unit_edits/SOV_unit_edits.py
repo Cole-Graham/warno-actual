@@ -4283,6 +4283,7 @@ sov_unit_edits = {
     "BMD_1_Reostat_SOV": {
         "CommandPoints": 30,
         "availability": [0, 8, 0, 0],
+        "UpgradeFromUnit": "MTLB_Taran_SIGINT_SOV",
     },
     
     "BMD_1_Reostat_Naval_SOV": {
@@ -4320,6 +4321,7 @@ sov_unit_edits = {
         "orders": {
             "add_orders": ["EOrderType/UnloadFromTransport", "EOrderType/UnloadAtPosition", "EOrderType/Load"]
         },
+        "UpgradeFromUnit": "Scout_VDV_SOV",
     },
     
     "T55AMD_reco_SOV": {
@@ -4353,6 +4355,7 @@ sov_unit_edits = {
         "strength": 8,
         "CommandPoints": 35,
         "availability": [8, 6, 0, 0],
+        "UpgradeFromUnit": "BRDM_2_SOV",
     },
 
     "BTR_40A_SOV": {
@@ -4460,7 +4463,7 @@ sov_unit_edits = {
     },
 
     "Scout_VDV_SOV": {
-        "CommandPoints": 20,
+        "CommandPoints": 25,
         "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
@@ -4491,6 +4494,7 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
+        "UpgradeFromUnit": "HvyScout_RPG7VL_SOV",
     },
 
     "Engineers_Scout_TTsko_SOV": {
@@ -4510,6 +4514,7 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
+        "UpgradeFromUnit": "HvyScout_TTsko_SOV",
     },
 
     "HvyScout_SOV": {
@@ -4538,6 +4543,7 @@ sov_unit_edits = {
                 "MMG_PKM_7_62mm": 36,
             },
         },
+        "UpgradeFromUnit": "Scout_SOV",
     },
 
     "HvyScout_TTsko_SOV": {
@@ -4562,6 +4568,7 @@ sov_unit_edits = {
                 "MMG_PKM_7_62mm": 36,
             },
         },
+        "UpgradeFromUnit": "Scout_TTsko_SOV",
     },
     
     "HvyScout_Reserve_SOV": {
@@ -4590,6 +4597,7 @@ sov_unit_edits = {
                 },
             },
         },
+        "UpgradeFromUnit": None,
     },
 
     "Scout_SIGINT_SOV": {
@@ -4738,13 +4746,19 @@ sov_unit_edits = {
             },
         },
     },
+
+    "Alouette_III_SOV": {
+        "availability": [0, 6, 0, 0],
+    },
     
     "Mi_2_reco_SOV": {
         "availability": [0, 6, 0, 0],
     },
-
-    "Alouette_III_SOV": {
-        "availability": [0, 6, 0, 0],
+    
+    "Mi_8R_SOV": { # Mi-8MTA, Exceptional Optics, 8 HP
+        "CommandPoints": 50,
+        "availability": [0, 4, 0, 0],
+        "UpgradeFromUnit": "Mi_2_reco_SOV",
     },
 
     "Mi_8PPA_SOV": { # VG optics, 8 HP, 30% ECM, Jammer
@@ -4752,15 +4766,23 @@ sov_unit_edits = {
         "availability": [0, 3, 0, 0],
         "UpgradeFromUnit": "Mi_8R_SOV",
     },
+    
+    "Mi_8TARK_reco_SOV": { # x64 S-5M 57mm rocket, VG Optics
+        "CommandPoints": 80,
+        "availability": [0, 6, 0, 0],
+        "UpgradeFromUnit": "Mi_8PPA_SOV",
+    },
 
     "Mi_8MTPI_SOV": { # VG optics, 8 HP, 40% ECM, Jammer, Sigint
         "CommandPoints": 85,
         "availability": [0, 3, 0, 0],
+        "UpgradeFromUnit": "Mi_8TARK_reco_SOV",
     },
     
     "Mi_14PL_recon_SOV": {
         "CommandPoints": 50,
         "availability": [0, 4, 0, 0],
+        "UpgradeFromUnit": "Mi_2_reco_SOV",
     },
 
     "Mi_24K_reco_SOV": {
@@ -4772,11 +4794,6 @@ sov_unit_edits = {
             },
         },
         "availability": [0, 3, 2, 0],
-    },
-
-    "Mi_8R_SOV": { # Exceptional Optics, 8 HP
-        "CommandPoints": 50,
-        "availability": [0, 4, 0, 0],
     },
 
     "Pchela_1T_SOV": { # Recon Drone (Slow)
