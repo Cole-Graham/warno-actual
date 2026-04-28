@@ -52,6 +52,7 @@ rda_new_divs = {
             "MotRifles_HMG_DDR": ["W50_LA_A_DDR", "BMP_1_SP1_DDR", "BMP_1_SP2_DDR", "BMP_1P_DDR", "BMP_1P_Konkurs_DDR", "BMP_2_DDR"],
             "MotRifles_RPG27_DDR": ["W50_LA_A_DDR", "BMP_1_SP1_DDR", "BMP_1_SP2_DDR", "BMP_1P_DDR", "BMP_1P_Konkurs_DDR", "BMP_2_DDR"],
             "MotSchutzen_DDR": ["W50_LA_A_DDR", "BMP_1_SP1_DDR", "BMP_1_SP2_DDR", "BMP_1P_DDR", "BMP_1P_Konkurs_DDR", "BMP_2_DDR"],
+            "MotSchutzen_RPG29_DDR": ["W50_LA_A_DDR", "BMP_1_SP1_DDR", "BMP_1_SP2_DDR", "BMP_1P_DDR", "BMP_1P_Konkurs_DDR", "BMP_2_DDR"],
         },
     },
     "RDA_airborne": {
@@ -227,6 +228,7 @@ rda_new_divs = {
             "MotRifles_HMG_DDR": ["W50_LA_A_DDR", "BMP_1_SP1_DDR", "BMP_1_SP2_DDR", "BMP_1P_DDR", "BMP_1P_Konkurs_DDR", "BMP_2_DDR"],
             "MotRifles_RPG27_DDR": ["W50_LA_A_DDR", "BMP_1_SP1_DDR", "BMP_1_SP2_DDR", "BMP_1P_DDR", "BMP_1P_Konkurs_DDR", "BMP_2_DDR"],
             "MotSchutzen_DDR": ["W50_LA_A_DDR", "BMP_1_SP1_DDR", "BMP_1_SP2_DDR", "BMP_1P_DDR", "BMP_1P_Konkurs_DDR", "BMP_2_DDR"],
+            "MotSchutzen_RPG29_DDR": ["W50_LA_A_DDR", "BMP_1_SP1_DDR", "BMP_1_SP2_DDR", "BMP_1P_DDR", "BMP_1P_Konkurs_DDR", "BMP_2_DDR"],
         },
     },
     "RDA_armored_motorized": {
@@ -249,6 +251,8 @@ rda_new_divs = {
         ],
         "transport_overrides": {
             "MotRifles_CMD2_DDR": ["W50_LA_A_DDR", "BTR_50_DDR", "BTR_60_DDR", "BTR_70_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
+            "MotRifles_DDR": ["W50_LA_A_DDR", "BTR_70_DDR", "BMP_1P_DDR", "BMP_1P_Konkurs_DDR", "BMP_2_DDR"],
+            "MotSchutzen_RPG29_DDR": ["W50_LA_A_DDR", "BTR_70_DDR", "BMP_1P_DDR", "BMP_1P_Konkurs_DDR", "BMP_2_DDR"],
         },
     },
     # marine 6043, 2110
@@ -293,6 +297,7 @@ rda_new_divs = {
         "transport_overrides": {
             "MotRifles_CMD2_DDR": ["W50_LA_A_DDR", "BTR_50_DDR", "BTR_60_DDR", "BTR_70_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
             "MotSchutzen_DDR": ["W50_LA_A_DDR", "BMP_1_SP1_DDR", "BMP_1_SP2_DDR", "BMP_1P_DDR", "BMP_1P_Konkurs_DDR", "BMP_2_DDR"],
+            "MotSchutzen_RPG29_DDR": ["W50_LA_A_DDR", "BMP_1_SP1_DDR", "BMP_1_SP2_DDR", "BMP_1P_DDR", "BMP_1P_Konkurs_DDR", "BMP_2_DDR"],
         },
     },
     "RDA_motorized": {

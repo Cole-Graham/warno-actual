@@ -2438,8 +2438,40 @@ rda_unit_edits = {
     },
 
     "T55AM2_DDR": {  # T-55AM2
-        "CommandPoints": 110,
-        "availability": [0, 8, 6, 0],
+        "CommandPoints": 125,
+        "availability": [0, 4, 3, 0],
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "Char_Reco",
+                "GroundUnits",
+                "Radio",
+                "Reco",
+                "UNITE_T55AM2_DDR",
+                "Unite",
+            ],
+        },
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 3500,
+                "EVisionRange/LowAltitude": 4947,
+                "EVisionRange/HighAltitude": 5654,
+            },
+            "OpticalStrengths": {
+                "EOpticalStrength/Standard": 5300,
+                "EOpticalStrength/LowAltitude": 5300,
+                "EOpticalStrength/HighAltitude": 1413,
+            },
+        },
+        "Factory": "EFactory/Recons",
+        "IdentifiedTextures": ["Texture_RTS_H_reco", "Texture_reco"],
+        "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
+        "MenuIconTexture": "Texture_RTS_H_reco",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/Reco",
+        "UnitRole": 'reco',
+        "UpgradeFromUnit": "T54B_reco_DDR",
     },
 
     "T55AM2B_DDR": {  # T-55AM2B
@@ -3640,7 +3672,13 @@ rda_unit_edits = {
                 "RocketAir_S24_240mm_avion_salvolength4": 1,
             },
             "equipmentchanges": {
-                "replace": {"RocketAir_S24_240mm_salvolength2": {"new_weapon": "RocketAir_S24_240mm_avion_salvolength4", "swap_fire_effect": False, "depiction_baked_in": False}},
+                "replace": {
+                    "RocketAir_S24_240mm_salvolength2": {
+                        "new_weapon": "RocketAir_S24_240mm_avion_salvolength4",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
             },
         },
     },

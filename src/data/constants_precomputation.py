@@ -36,6 +36,7 @@ from .small_arms_quantity_validation import (
     save_valid_small_arms_variants,
     validate_small_arms_quantity_variants,
 )
+from .ui_texture_validation import validate_ui_texture_constants
 from .unit_data import (
     _build_upgrade_chains,
     _detect_circular_chains,
@@ -165,6 +166,13 @@ def build_constants_precomputation_data(config: Dict[str, Any], game_db: Dict[st
                 logger.warning(
                     "Small arms quantity validation found errors - see above. "
                     "Fix unit edits or add quantities to NbWeapons in small_arms.py"
+                )
+
+            ui_texture_failed = validate_ui_texture_constants(game_db)
+            if ui_texture_failed:
+                logger.warning(
+                    "UI texture validation found errors - see above. "
+                    "Fix textures in unit_edits / NEW_UNITS or rebuild ui_texture_reference from vanilla.",
                 )
 
         # Build protected ammo set for blanket deployment-time disable

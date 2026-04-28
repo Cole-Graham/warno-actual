@@ -1,6 +1,6 @@
 """Normalization helpers for ``WeaponDescriptor.equipmentchanges.replace`` blocks.
 
-The authored schema is a dict keyed by the old weapon's ammo name. Every
+The authored schema is usually a dict keyed by the old weapon's ammo name. Every
 entry **must** declare ``new_weapon``, ``swap_fire_effect``, and
 ``depiction_baked_in``; ``old_new_effect`` is optional.
 
@@ -12,6 +12,29 @@ entry **must** declare ``new_weapon``, ``swap_fire_effect``, and
             # Optional - defaults to ("FM_kbk_AKM", "FM_Tantal") when omitted/None
             "old_new_effect": ("FM_kbk_AKM", "FM_Tantal"),
         },
+    }
+
+When the donor unit carries the **same** ammo on **multiple** mounts (e.g. two
+RPG-7VR turrets) and each mount should become a **different** weapon, keep the
+**same dict shape** as unit_edits: the old ammo stays the key, but the value is
+an **ordered list** of per-row payloads (same keys as a single mapping). Each
+replacement still consumes the next matching mount in turret order:
+
+    "replace": {
+        "RocketInf_RPG7VR_64mm": [
+            {
+                "new_weapon": "SAW_RPK_74_5_56mm",
+                "swap_fire_effect": True,
+                "depiction_baked_in": False,
+                "old_new_effect": ("RocketInf_RPG7VR_64mm", "SAW_RPK_74_5_56mm"),
+            },
+            {
+                "new_weapon": "RocketInf_RPG29_105mm",
+                "swap_fire_effect": True,
+                "depiction_baked_in": False,
+                "old_new_effect": ("RocketInf_RPG7VR_64mm", "RocketInf_RPG29_105mm"),
+            },
+        ],
     }
 
 ``swap_fire_effect`` controls runtime EffectTag rewriting on the matching
@@ -30,7 +53,7 @@ whether a depiction edit is needed for each replacement.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any, List, Mapping, Optional
+from typing import Any, List, Mapping, Optional, cast
 
 from src.utils.logging_utils import setup_logger
 
@@ -107,25 +130,47 @@ def _spec_from_dict_entry(old_weapon: str, payload: Mapping[str, Any]) -> Option
 def normalize_replace(replace_block: Any) -> List[ReplaceSpec]:
     """Return a uniform ``List[ReplaceSpec]`` from a ``replace`` block.
 
-    Accepts the dict form ``{old_weapon: {"new_weapon": ..., ...}}``. ``None``
-    or empty input yields ``[]``. Anything else logs a warning and yields
-    ``[]`` so the build can surface stale legacy data.
+    Accepts dict form only:
+
+    * ``{old_weapon: {"new_weapon": ..., ...}}`` — one replacement for that
+      donor ammo.
+    * ``{old_weapon: [{...}, {...}, ...]}`` — same donor ammo on multiple
+      mounts; list order is the order of ``ReplaceSpec``s (next mount per row).
+
+    ``None`` or empty input yields ``[]``. Unsupported types log a warning and
+    yield ``[]``.
     """
     if not replace_block:
         return []
     if not isinstance(replace_block, dict):
         logger.warning(
-            "equipmentchanges.replace must be a dict {old_weapon: {...}}; "
-            f"got {type(replace_block).__name__}."
+            "equipmentchanges.replace must be a dict {old_weapon: payload | [payloads]}; "
+            f"got {type(replace_block).__name__}.",
         )
         return []
+
     specs: List[ReplaceSpec] = []
     for old_weapon, payload in replace_block.items():
         if not isinstance(old_weapon, str):
             continue
-        if not isinstance(payload, Mapping):
-            continue
-        spec = _spec_from_dict_entry(old_weapon, payload)
-        if spec is not None:
-            specs.append(spec)
+        if isinstance(payload, list):
+            for index, item in enumerate(payload):
+                if not isinstance(item, Mapping):
+                    logger.warning(
+                        f"equipmentchanges.replace[{old_weapon!r}] list entry {index} "
+                        f"must be a mapping; got {type(item).__name__}.",
+                    )
+                    continue
+                spec = _spec_from_dict_entry(old_weapon, cast(Mapping[str, Any], item))
+                if spec is not None:
+                    specs.append(spec)
+        elif isinstance(payload, Mapping):
+            spec = _spec_from_dict_entry(old_weapon, payload)
+            if spec is not None:
+                specs.append(spec)
+        else:
+            logger.warning(
+                f"equipmentchanges.replace[{old_weapon!r}] must be a mapping or list "
+                f"of mappings; got {type(payload).__name__}.",
+            )
     return specs

@@ -1150,6 +1150,101 @@ RDA_NEW_UNITS = {
         "alternatives_count": 8,
         "selector_tactic": "08_08",
     },
+    
+    ("MotSchutzen_DDR", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "GUID": "74ec0099-89a8-4877-9a2c-806e9899310f",
+        "InfantrySquadModuleGUID": "af388616-8618-43b5-91c2-8b443b3aad9f",
+        "ShowroomGUID": "de5a1d0b-b4a8-4134-95fc-e32d44b355cd",
+        "CadavreGUID": "7bc99e93-fb08-4eb8-9109-aab49424a568",
+        "NewName": "MotSchutzen_RPG29_DDR",
+        "GameName": {
+            "display": "PANZERJÄGER [RPG-29]",
+            "token": "JCBFZRWTQR",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_IFV",
+                "Infanterie_Standard",
+                "UNITE_MotSchutzen_RPG29_DDR",
+                "Unite",
+            ],
+        },
+        "strength": 7,
+        "WeaponDescriptor": {
+            # Donor turrets: T0=FM_Mpi_AK_74N, T1/T2=RocketInf_RPG7VR_64mm (same ammo, two mounts).
+            # First RPG mount -> 2x SAW_RPK_74; second -> RocketInf_RPG29 (ordered list replace).
+            "Salves": {
+                "FM_Mpi_AK_74N": 11,
+                "SAW_RPK_74_5_56mm": 18,
+                "RocketInf_RPG29_105mm": 6,
+            },
+            "equipmentchanges": {
+                "animate": {
+                    "SAW_RPK_74_5_56mm": False,
+                    "RocketInf_RPG29_105mm": True,
+                },
+                "quantity": {
+                    "FM_Mpi_AK_74N": 5,
+                    "SAW_RPK_74_5_56mm": 2,
+                },
+                "replace": {
+                    "RocketInf_RPG7VR_64mm": [
+                        {
+                            "new_weapon": "SAW_RPK_74_5_56mm",
+                            "swap_fire_effect": True,
+                            "depiction_baked_in": False,
+                            "old_new_effect": ("RocketInf_RPG7VR_64mm", "SAW_RPK_74_5_56mm"),
+                        },
+                        {
+                            "new_weapon": "RocketInf_RPG29_105mm",
+                            "swap_fire_effect": True,
+                            "depiction_baked_in": False,
+                            "old_new_effect": ("RocketInf_RPG7VR_64mm", "RocketInf_RPG29_105mm"),
+                        },
+                    ],
+                },
+            },
+        },
+        "TransportedSoldier": "MotSchutzen_RPG29_DDR",
+        "armor": "Infantry_armor_reference",
+        "CommandPoints": 40,
+        "UnitRole": "infantry",
+        "SpecialtiesList": [
+            "_resolute",
+            "_ifv",
+            "infantry_equip_medium",
+        ],
+        "MenuIconTexture": "Texture_RTS_H_Infantry",
+        "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Inf",
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [10, 7, 0, 0],
+        "max_speed": 26,
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
+                   'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection',
+                   'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/UseCapacite',
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": True,
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": False,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "is_transport": False,
+        "Faction": "PACT",
+        "Nation": "DDR",
+        "UpgradeFromUnit": "MotSchutzen_DDR",
+        "alternatives_count": 6,
+        "selector_tactic": "00_06",
+    },
 
     ("HvyScout_DDR", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "GUID": "6719c924-baf9-4504-8e50-a4b08ab7c70c",
@@ -1269,9 +1364,9 @@ RDA_NEW_UNITS = {
             },
         },
         "Factory": "EFactory/Recons",
-        "IdentifiedTextures": ["Texture_RTS_H_Reco", "Texture_Reco"],
+        "IdentifiedTextures": ["Texture_RTS_H_reco", "Texture_reco"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
-        "MenuIconTexture": "Texture_RTS_H_Reco",
+        "MenuIconTexture": "Texture_RTS_H_reco",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Reco",
         "UnitRole": 'reco',
         "availability": [7, 5, 0, 0],

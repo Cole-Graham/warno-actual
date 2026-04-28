@@ -1,6 +1,7 @@
 """New depictions for RDA units"""
 
 from .HvyScout_RPG7VL_DDR import hvyscout_rpg7vl_ddr
+from .MotSchutzen_RPG29_DDR import mot_schutzen_rpg29_ddr
 from .MP_mech_DDR import mp_mech_ddr
 
 #from .AT_D44_85mm_FJ_DDR import at_d44_85mm_fj_ddr
@@ -9,6 +10,8 @@ from .MP_mech_DDR import mp_mech_ddr
 
 RDA_NEW_DEPICTIONS = {
     "hvyscout_rpg7vl_ddr": hvyscout_rpg7vl_ddr,
+    # Key must match ``NewName.lower()`` (e.g. MotSchutzen -> motschutzen, not mot_schutzen).
+    "motschutzen_rpg29_ddr": mot_schutzen_rpg29_ddr,
     "mp_mech_ddr": mp_mech_ddr,
     #"at_d44_85mm_fj_ddr": at_d44_85mm_fj_ddr,
     #"hmgteam_ags17_fj_ddr": hmgteam_ags17_fj_ddr,

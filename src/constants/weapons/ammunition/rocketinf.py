@@ -608,6 +608,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("RocketInf_AGI_3X40_40mm", "napalm", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "TimeBetweenTwoSalvos": 10.0,
+            },
+        },
+    },
+    
     ("RocketInf_LAW_80", "medium_at", None, False): { # 669
         "Ammunition": {
             "Arme": {

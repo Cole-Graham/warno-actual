@@ -712,10 +712,12 @@ def _update_weapon_quantity(new_weap_row: Any, ammo: str, quantity: int, game_db
                 continue
 
             current_ammo = weapon_descr_row.v.by_member("Ammunition").v
-            current_base_ammo = current_ammo.split("_", 1)[1]  # Just get the base name after $/GFX/Weapon/Ammo_
+            ammo_name = current_ammo.split("_", 1)[1]
+            # Match unit_edits._update_weapon_quantities: strip _strengthN / _xN so keys match
+            # authored quantity dict (e.g. ..._SAW_RPK_74_5_56mm_strength7 vs SAW_RPK_74_5_56mm).
+            base_ammo = re.sub(r"(?:_strength\d+)?(?:_x\d{1,2})?$", "", ammo_name)
 
-            # Check both current name and old name
-            if current_base_ammo == ammo or (old_ammo and current_base_ammo == old_ammo):
+            if base_ammo == ammo or (old_ammo and base_ammo == old_ammo):
                 # Update NbWeapons
                 weapon_descr_row.v.by_m("NbWeapons").v = str(quantity)
 

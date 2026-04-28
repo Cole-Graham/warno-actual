@@ -22,6 +22,7 @@ from .unit_data import (
     build_all_tags,
     build_upgrade_from_mapping,
     compare_tags_with_previous,
+    gather_ui_texture_reference,
     gather_unit_data,
     gather_weapon_data,
 )
@@ -61,6 +62,7 @@ def build_database(config: Dict[str, Any]) -> Dict[str, Any]:
         # Build database components
         # Note: deck_pack_mappings moved to constants_precomputation (generated separately)
         unit_data = gather_unit_data(mod_source_path)
+        ui_texture_reference = gather_ui_texture_reference(mod_source_path)
         order_types_data = gather_order_types(mod_source_path)
         all_tags_list = build_all_tags(unit_data)["all_tags"]
         unit_data["all_tags"] = all_tags_list
@@ -68,6 +70,7 @@ def build_database(config: Dict[str, Any]) -> Dict[str, Any]:
             "source_files": source_files,
             "ammunition": build_ammo_data(mod_source_path),
             "unit_data": unit_data,
+            "ui_texture_reference": ui_texture_reference,
             "weapons": gather_weapon_data(mod_source_path),
             "depiction_data": gather_depiction_data(mod_source_path),
             "decks": gather_deck_data(mod_source_path),
@@ -119,6 +122,13 @@ def build_database(config: Dict[str, Any]) -> Dict[str, Any]:
         )
         logger.info(
             f"Built database with {len(_database_cache['unit_data']['all_tags'])} tags (excluding UNITE_*)"
+        )
+        utr = _database_cache["ui_texture_reference"]
+        logger.info(
+            "Built ui_texture_reference: menu_icon=%s tactical_identified=%s tactical_unidentified=%s",
+            len(utr["menu_icon_textures"]),
+            len(utr["tactical_label_identified_textures"]),
+            len(utr["tactical_label_unidentified_textures"]),
         )
 
         # Save to disk for future use

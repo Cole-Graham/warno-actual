@@ -1831,8 +1831,17 @@ sov_unit_edits = {
             "add_specs": ["'infantry_equip_heavy'"],
         },
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": {
+                    "RocketInf_RPO_A_93mm": {
+                        "new_weapon": "RocketInf_RPO_RYS",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
+            },
             "Salves": {
-                "RocketInf_RPO_A_93mm": 6,
+                "RocketInf_RPO_RYS": 6,
             },
         },
     },

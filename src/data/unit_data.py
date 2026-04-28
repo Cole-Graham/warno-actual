@@ -58,6 +58,82 @@ def gather_unit_data(mod_src_path: Path) -> Dict[str, Any]:
     return unit_data
 
 
+def gather_ui_texture_reference(mod_src_path: Path) -> Dict[str, List[str]]:
+    """Collect distinct UI / tactical-label texture strings from vanilla UniteDescriptor.ndf.
+
+    Returns JSON-serializable dict with sorted unique lists per field (case-sensitive strings).
+    """
+    menu_icons: Set[str] = set()
+    tactical_identified: Set[str] = set()
+    tactical_unidentified: Set[str] = set()
+
+    ndf_path = "GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf"
+    logger.info("Gathering UI texture reference from UniteDescriptor.ndf")
+
+    try:
+        mod = ndf.Mod(str(mod_src_path), "None")
+        parse_source = mod.parse_src(ndf_path)
+
+        for unit_row in parse_source:
+            if not hasattr(unit_row, "namespace"):
+                continue
+
+            modules_list = unit_row.v.by_m("ModulesDescriptors").v
+
+            for module in modules_list:
+                if not isinstance(module.v, ndf.model.Object):
+                    continue
+
+                module_type = module.v.type
+
+                if module_type == "TTacticalLabelModuleDescriptor":
+                    id_tex = module.v.by_m("IdentifiedTexture", False)
+                    _accumulate_buck_texture_values(tactical_identified, id_tex)
+                    unid_tex = module.v.by_m("UnidentifiedTexture", False)
+                    _accumulate_buck_texture_values(tactical_unidentified, unid_tex)
+
+                elif module_type == "TUnitUIModuleDescriptor":
+                    menu = module.v.by_m("MenuIconTexture", False)
+                    if menu is not None and menu.v:
+                        s = strip_quotes(menu.v)
+                        if s:
+                            menu_icons.add(s)
+
+        logger.info(
+            "UI texture reference: menu=%s tactical_id=%s tactical_unid=%s",
+            len(menu_icons),
+            len(tactical_identified),
+            len(tactical_unidentified),
+        )
+
+        return {
+            "menu_icon_textures": sorted(menu_icons),
+            "tactical_label_identified_textures": sorted(tactical_identified),
+            "tactical_label_unidentified_textures": sorted(tactical_unidentified),
+        }
+
+    except Exception as e:
+        logger.error("Error gathering UI texture reference: %s", e)
+        raise
+
+
+def _accumulate_buck_texture_values(target: Set[str], buck_member_row: Any) -> None:
+    """Read string entries from IdentifiedTexture/UnidentifiedTexture TBUCK *Values* list."""
+    if buck_member_row is None:
+        return
+    try:
+        vals_wrap = buck_member_row.v.by_m("Values", False)
+        if vals_wrap is None or not vals_wrap.v:
+            return
+        for entry in vals_wrap.v:
+            raw = entry.v if hasattr(entry, "v") else entry
+            s = strip_quotes(raw)
+            if s:
+                target.add(s)
+    except Exception as ex:
+        logger.debug("Could not parse buck texture Values: %s", ex)
+
+
 def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
     """Extract relevant information from a unit row."""
     try:

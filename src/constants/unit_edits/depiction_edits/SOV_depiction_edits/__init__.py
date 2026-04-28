@@ -14,6 +14,7 @@ from .MP_SOV import mp_sov
 from .MTLB_Vasilek_SOV import mtlb_vasilek_sov
 from .Naval_Rifle_CMD_SOV import naval_rifle_cmd_sov
 from .Sniper_Spetsnaz_SOV import sniper_spetsnaz_sov
+from .Spetsnaz_Naval_SOV import spetsnaz_naval_sov
 from .VDV_Afgantsy_SOV import vdv_afgantsy_sov
 # Needs custom model with two turrets
 # from .Su_24M_clu_SOV import su_24m_clu_sov
@@ -35,6 +36,7 @@ __all__ = [
     "mtlb_vasilek_sov",
     "naval_rifle_cmd_sov",
     "sniper_spetsnaz_sov",
+    "spetsnaz_naval_sov",
     "vdv_afgantsy_sov",
     # "su_24m_clu_sov",
     # "tos1_buratino_sov",
