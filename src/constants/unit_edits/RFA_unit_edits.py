@@ -2355,6 +2355,7 @@ rfa_unit_edits = {
     
     "F4F_Phantom_II_AA2_RFA": { # 2x 2x AIM-9L(Improved)
         "CommandPoints": 160,
+        "ECM": -0.25,
         "availability": [0, 3, 2, 0],
         "optics": {
             "OpticalStrengths": {
@@ -2365,6 +2366,7 @@ rfa_unit_edits = {
 
     "F4F_Phantom_II_AA_RFA": { # 2x 2x AIM-9L
         "CommandPoints": 150,
+        "ECM": -0.25,
         "availability": [0, 3, 2, 0],
         "optics": {
             "OpticalStrengths": {
@@ -2375,6 +2377,7 @@ rfa_unit_edits = {
 
     "F4F_Phantom_II_AT_RFA": { # 4x Maverick
         "CommandPoints": 220,
+        "ECM": -0.25,
         "availability": [0, 2, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
@@ -2390,11 +2393,13 @@ rfa_unit_edits = {
 
     "RF4E_Phantom_HE_RFA": { # 6x Mk82, no Gun or Sidewinders or Radar, its a photo recon pushed into a bombing role
         "CommandPoints": 175,
+        "ECM": -0.25,
         "availability": [0, 3, 0, 0],
     },
 
     "F4F_Phantom_II_HE1_RFA": { # 12x Mk82
         "CommandPoints": 205,
+        "ECM": -0.25,
         "availability": [0, 2, 0, 0],
         "optics": {
             "OpticalStrengths": {
@@ -2405,6 +2410,7 @@ rfa_unit_edits = {
 
     "F4F_Phantom_II_HE2_RFA": { # 5x Mk83
         "CommandPoints": 210,
+        "ECM": -0.25,
         "availability": [0, 2, 0, 0],
         "optics": {
             "OpticalStrengths": {
@@ -2418,6 +2424,7 @@ rfa_unit_edits = {
         "GameName": {
             "display": "F-4F [PGB]",
         },
+        "ECM": -0.25,
         "availability": [0, 1, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
@@ -2442,6 +2449,7 @@ rfa_unit_edits = {
 
     "F4F_Phantom_II_RKT1_RFA": { # 76x Hydra 70mm Rockets (RKT2)
         "CommandPoints": 125,
+        "ECM": -0.25,
         "availability": [0, 3, 2, 0],
         "optics": {
             "OpticalStrengths": {
@@ -2452,6 +2460,7 @@ rfa_unit_edits = {
 
     "F4F_Phantom_II_RKT2_RFA": { # 2x 8x Zuni 127mm Rockets (RKT)
         "CommandPoints": 125,
+        "ECM": -0.25,
         "availability": [0, 3, 2, 0],
         "optics": {
             "OpticalStrengths": {
