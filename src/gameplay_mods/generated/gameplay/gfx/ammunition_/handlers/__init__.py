@@ -4,6 +4,9 @@ from .damage_families import (
 from .fire_descriptors import (
     apply_fire_descriptors,
 )
+from .he_dca_air_clones import (
+    apply_he_dca_air_ammo_clones,
+)
 from .mortars import (
     add_corrected_shot_dispersion,
 )
@@ -39,6 +42,7 @@ __all__ = [
     'apply_clu_sol_trait_standards',
     'apply_damage_families',
     'apply_fire_descriptors',
+    'apply_he_dca_air_ammo_clones',
     'apply_infantry_mmg_cac_trait',
     'apply_he_damage_standards',
     'apply_weapon_range_standards',

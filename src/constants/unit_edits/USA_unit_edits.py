@@ -4202,7 +4202,7 @@ usa_unit_edits = {
     
     "OA10A_US": {
         "CommandPoints": 220,
-        "ECM": "A10_Thunderbolt_II_US",
+        # "ECM": "A10_Thunderbolt_II_US", # ECM rework reverted (commit 06a6fafe)
         "availability": [0, 2, 0, 0],
         "UpgradeFromUnit": "OV10_Bronco_US",
     },
@@ -5421,7 +5421,7 @@ usa_unit_edits = {
     
     "Harrier_AV8B_RKT_US": {
         "CommandPoints": 115,
-        "ECM": -0.25,
+        # "ECM": -0.25, # ECM rework reverted (commit 06a6fafe)
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": {
@@ -5437,37 +5437,37 @@ usa_unit_edits = {
     
     "Harrier_AV8B_thermo_US": {
         "CommandPoints": 130,
-        "ECM": -0.35,
+        # "ECM": -0.35, # ECM rework reverted (commit 06a6fafe)
         "availability": [0, 4, 0, 0],
     },
     
     "Harrier_AV8B_US": { # 4x Mk 83
         "CommandPoints": 140,
-        "ECM": -0.35,
+        # "ECM": -0.35, # ECM rework reverted (commit 06a6fafe)
         "availability": [0, 4, 0, 0],
     },
     
     "Harrier_AV8B_TER_US": { # 12x Mk 82
         "CommandPoints": 140,
-        "ECM": -0.35,
+        # "ECM": -0.35, # ECM rework reverted (commit 06a6fafe)
         "availability": [0, 4, 0, 0],
     },
     
     "A6E_Intruder_US": { # Napalm
         "CommandPoints": 150,
-        "ECM": -0.25, # No room for Jammer, could make room if we wanted
+        # "ECM": -0.25, # ECM rework reverted (commit 06a6fafe) -- No room for Jammer, could make room if we wanted
         "availability": [0, 4, 0, 0],
     },
     
     "A6E_Intruder_SWIP_AT_US": {
         "CommandPoints": 150,
-        "ECM": -0.35,
+        # "ECM": -0.35, # ECM rework reverted (commit 06a6fafe)
         "availability": [0, 3, 0, 0],
     },
     
     "A6E_Intruder_SEAD_US": {
         "CommandPoints": 165,
-        "ECM": -0.45,
+        # "ECM": -0.45, # ECM rework reverted (commit 06a6fafe)
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 10000.0,
@@ -5491,13 +5491,13 @@ usa_unit_edits = {
     
     "A7D_Corsair_II_US": { # A-7D CORSAIR II [HE] (4x Mk 84)
         "CommandPoints": 200,
-        "ECM": -0.35,
+        # "ECM": -0.35, # ECM rework reverted (commit 06a6fafe)
         "availability": [0, 2, 0, 0],
     },
     
     "A7D_Corsair_II_RKT_US": { # A-7D CORSAIR II [RKT] (114x Hydra)
         "CommandPoints": 160,
-        "ECM": -0.25,
+        # "ECM": -0.25, # ECM rework reverted (commit 06a6fafe)
         "availability": [0, 3, 2, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -5533,13 +5533,13 @@ usa_unit_edits = {
     
     "A7D_Corsair_II_CLU_US": { # A-7D CORSAIR II [CLU] (12x Mk-20 Rockeye II)
         "CommandPoints": 190,
-        "ECM": -0.35,
+        # "ECM": -0.35, # ECM rework reverted (commit 06a6fafe)
         "availability": [0, 2, 0, 0],
     },
     
     "A7D_Corsair_II_AT_US": { # A-7D CORSAIR II [AT] (4x AGM-65B)
         "CommandPoints": 210,
-        "ECM": -0.35,
+        # "ECM": -0.35, # ECM rework reverted (commit 06a6fafe)
         "availability": [0, 2, 0, 1],
         "WeaponDescriptor": {
             "Salves": {
@@ -5550,7 +5550,7 @@ usa_unit_edits = {
     
     "EA6B_Prowler_US": {
         "CommandPoints": 280,
-        "ECM": -0.60,
+        # "ECM": -0.60, # ECM rework reverted (commit 06a6fafe)
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 12500.0,
@@ -5587,7 +5587,7 @@ usa_unit_edits = {
     
     "F4E_Phantom_II_AA_US": {
         "CommandPoints": 165,
-        "ECM": -0.25,
+        # "ECM": -0.25, # ECM rework reverted (commit 06a6fafe)
         "optics": {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 13250,
@@ -5668,7 +5668,7 @@ usa_unit_edits = {
 
     "F4_Wild_Weasel_US": { # AGM-45 5250m (should be 5000m missile range probably)
         "CommandPoints": 190,
-        "ECM": -0.35,
+        # "ECM": -0.35, # ECM rework reverted (commit 06a6fafe)
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 10000.0,
@@ -5691,7 +5691,7 @@ usa_unit_edits = {
 
     "F4E_Phantom_II_HE_US": {
         "CommandPoints": 165,
-        "ECM": -0.25,
+        # "ECM": -0.25, # ECM rework reverted (commit 06a6fafe)
         "optics": {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 13250,
@@ -5703,7 +5703,7 @@ usa_unit_edits = {
 
     "F4E_Phantom_II_CBU_US": {
         "CommandPoints": 190,
-        "ECM": -0.35,
+        # "ECM": -0.35, # ECM rework reverted (commit 06a6fafe)
         "optics": {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 13250,
@@ -5725,7 +5725,7 @@ usa_unit_edits = {
 
     "F4E_Phantom_II_napalm_US": {
         "CommandPoints": 165,
-        "ECM": -0.25,
+        # "ECM": -0.25, # ECM rework reverted (commit 06a6fafe)
         "optics": {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 13250,
@@ -5997,7 +5997,8 @@ usa_unit_edits = {
 
     "F16E_HE_US": {
         "CommandPoints": 200,
-        "ECM": -0.25,
+        # "ECM": -0.25, # ECM rework reverted (commit 06a6fafe)
+        "ECM": -0.35,
         "optics": {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 13250,
@@ -6019,7 +6020,8 @@ usa_unit_edits = {
 
     "F16E_napalm_US": {
         "CommandPoints": 200,
-        "ECM": -0.25,
+        # "ECM": -0.25, # ECM rework reverted (commit 06a6fafe)
+        "ECM": -0.35,
         "optics": {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 13250,
@@ -6042,7 +6044,7 @@ usa_unit_edits = {
 
     "F16E_SEAD_US": { # AGM-88 5950m
         "CommandPoints": 220,
-        "ECM": -0.45,
+        # "ECM": -0.45, # ECM rework reverted (commit 06a6fafe)
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 10000.0,
@@ -6066,7 +6068,7 @@ usa_unit_edits = {
 
     "F16E_CBU_US": {
         "CommandPoints": 200,
-        "ECM": -0.25,
+        # "ECM": -0.25, # ECM rework reverted (commit 06a6fafe)
         "Divisions": {
             "remove": ["US_11ACR"],
             "default": {
@@ -6103,7 +6105,8 @@ usa_unit_edits = {
 
     "F16E_AA_US": {
         "CommandPoints": 220,
-        "ECM": -0.25,
+        # "ECM": -0.25, # ECM rework reverted (commit 06a6fafe)
+        "ECM": -0.35,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -6126,7 +6129,7 @@ usa_unit_edits = {
 
     "F16E_AA2_US": {  # 3x + 3x AIM-9M
         "CommandPoints": 180,
-        "ECM": -0.25,
+        # "ECM": -0.25, # ECM rework reverted (commit 06a6fafe)
         "Divisions": {
             "remove": ["US_11ACR"],
             "add": ["US_8th_Inf"],
@@ -6149,7 +6152,7 @@ usa_unit_edits = {
             "display": "F/A-18A HORNET [AA2]", # Intentionally reversed
         },
         "CommandPoints": 250,
-        "ECM": -0.45,
+        # "ECM": -0.45, # ECM rework reverted (commit 06a6fafe)
         "availability": [0, 2, 0, 1],
         "UpgradeFromUnit": "F18_Hornet_AA2_US", # Intentionally reversed
     },
@@ -6159,14 +6162,14 @@ usa_unit_edits = {
             "display": "F/A-18A HORNET [AA]", # Intentionally reversed
         },
         "CommandPoints": 235,
-        "ECM": -0.45,
+        # "ECM": -0.45, # ECM rework reverted (commit 06a6fafe)
         "availability": [0, 2, 0, 1],
         "UpgradeFromUnit": None, # Intentionally reversed
     },
 
     "F18_Hornet_SEAD_US": {  # 2x AIM-7M, 2x AIM-9M, 2x AGM-88 HARM
         "CommandPoints": 260,
-        "ECM": -0.55,
+        # "ECM": -0.55, # ECM rework reverted (commit 06a6fafe)
         "availability": [0, 2, 0, 1],
         "UpgradeFromUnit": "F18_Hornet_AA_US", # Intentionally reversed
     },
@@ -6174,21 +6177,21 @@ usa_unit_edits = {
     "A10_Thunderbolt_II_US": {  # 8x mk.82, 2x AIM-9M
         "CommandPoints": 220,
         "max_speed": 500,
-        "ECM": -0.25,
+        # "ECM": -0.25, # ECM rework reverted (commit 06a6fafe)
         "availability": [0, 2, 0, 0],
     },
 
     "A10_Thunderbolt_II_Rkt_US": {  # 76x Hydra, 2x AIM-9M
         "CommandPoints": 220,
         "max_speed": 500,
-        "ECM": "A10_Thunderbolt_II_US",
+        # "ECM": "A10_Thunderbolt_II_US", # ECM rework reverted (commit 06a6fafe)
         "availability": [0, 2, 0, 0],
     },
 
     "A10_Thunderbolt_II_ATGM_US": {  # 4x AGM-65D, 2x AIM-9M
         "CommandPoints": 250,
         "max_speed": 500,
-        "ECM": "A10_Thunderbolt_II_US",
+        # "ECM": "A10_Thunderbolt_II_US", # ECM rework reverted (commit 06a6fafe)
         "availability": [0, 2, 0, 0],
         "WeaponDescriptor": {
             "Salves": {

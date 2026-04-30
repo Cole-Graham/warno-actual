@@ -3,6 +3,26 @@ from src.utils.logging_utils import setup_logger
 logger = setup_logger(__name__)
 
 
+# Vanilla ResistanceFamily values (DamageResistanceFamilyList.ndf) plus families
+# we add elsewhere in the mod. Used to build the air-only ignore list for the new
+# DamageFamily_he_dca_airtargets: enumerate everything except the aerial pair so
+# the family deals no damage to ground units. If we ever add another resistance
+# family, append its name here so the SPAAG air ammo continues to ignore it.
+_ALL_RESISTANCE_FAMILIES: tuple[str, ...] = (
+    "ResistanceFamily_blindage",
+    "ResistanceFamily_avion",
+    "ResistanceFamily_helico",
+    "ResistanceFamily_infanterie",
+    "ResistanceFamily_vehicule",
+    "ResistanceFamily_batiment",
+    "ResistanceFamily_infanterieWA",  # added by edit_gen_gp_gfx_damageresistancefamilylist*
+)
+_AERIAL_RESISTANCE_FAMILIES: frozenset[str] = frozenset({
+    "ResistanceFamily_avion",
+    "ResistanceFamily_helico",
+})
+
+
 def edit_gameplay_constantes_weaponconstantes(source_path) -> None:
     """GameData/Gameplay/Constantes/WeaponConstantes.ndf"""
     logger.info("Editing WeaponConstantes.ndf")
@@ -54,3 +74,24 @@ def edit_gameplay_constantes_weaponconstantes(source_path) -> None:
     blindages_to_ignore.add("(DamageFamily_a2a_hagru, [ResistanceFamily_helico])")
     blindages_to_ignore.add("(DamageFamily_a2a_tbagru, [ResistanceFamily_avion])")
     logger.info("Added sam/a2a hagru and tbagru to blindages to ignore")
+
+    # SPAAG ammo split: existing he_dca becomes ground-only, the new
+    # he_dca_airtargets family becomes air-only. The air ammo carries a reduced
+    # SuppressDamages so the airplane stun pack threshold (175 written suppress)
+    # matches each SPAAG's vanilla suppress-stun timing (see B3 in the airplane
+    # stun alignment plan). Ground performance of the existing ammo is untouched.
+    blindages_to_ignore.add(
+        "(DamageFamily_he_dca, [ResistanceFamily_avion, ResistanceFamily_helico])"
+    )
+    air_targets_ignored = [
+        family for family in _ALL_RESISTANCE_FAMILIES
+        if family not in _AERIAL_RESISTANCE_FAMILIES
+    ]
+    air_targets_list = ", ".join(air_targets_ignored)
+    blindages_to_ignore.add(
+        f"(DamageFamily_he_dca_airtargets, [{air_targets_list}])"
+    )
+    logger.info(
+        f"Added he_dca/he_dca_airtargets split to blindages to ignore "
+        f"(air ammo ignores: {air_targets_list})"
+    )

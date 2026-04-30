@@ -36,15 +36,37 @@ AA_HAGRU_STANDARDS: dict = {
 # GDConstants.ndf value. The engine adds this * PhysicalDamages to the written
 # ``SuppressDamages`` at runtime, so the handler must subtract the same product
 # from the intended total below before writing the descriptor.
+#
+# Stun alignment note: the engine deals stun damage equal to the *written*
+# ``SuppressDamages`` (the ``- 25*P`` value below), not the intended total --
+# the engine bonus only applies to suppress, not stun. With
+# ``Airplane_MaxStunDamages = 255`` and the airplane stun pack threshold at
+# 0.70, the stun pack fires when cumulative written suppress reaches 178.5.
+# The intended I values are tuned so every "must stun" case clears that
+# threshold by >= 11 written suppress (>= 11 sec of stun-regen tolerance, since
+# Airplane_StunDamagesRegen = 1/sec) and every "must NOT stun" case stays
+# below it by >= 18. Suppress-side intent (350 on Ms = 500) is preserved by
+# the original I values in the comments. Phys 4 multi-missile salvos
+# suppress-stun but never stun-pack-stun (acceptable low-tier edge). SPAAGs
+# use a separate ``DamageFamily_he_dca_airtargets`` air ammo whose written
+# suppress is reduced (default 2/3 of vanilla) so the same stun pack
+# threshold also matches each SPAAG's vanilla suppress-stun timing without
+# affecting its ground performance.
 AA_ADDITIONAL_SUPPRESS_PER_LOST_PHYSICAL: int = 25
 
 # Intended total suppress damage (written value + engine bonus) by PhysicalDamages.
-# Targets stunned at 350 damage.
+# Targets suppress-stunned at 350 damage (suppress pack threshold = 0.70 * 500).
+# Stun pack also fires (Airplane_MaxStunDamages=255, threshold = 178.5 written W).
+# I values are tuned so the binding "must stun" cases (phys 7 fresh, phys 9 vet 2,
+# phys 6 vet 3 two-shot) all clear the stun threshold by >= 11 W with the
+# 25*P engine bonus accounted for, while preserving the original suppress-side
+# design (e.g. phys 7 vet 2 still does NOT suppress-stun, phys 6 vet 3 two-shot
+# still does).
 AA_SUPPRESS_BY_PHYSICAL_DAMAGE: dict[int, int] = {
-    9: 450, # Target at vet 2 with 20% suppression resistance, will still stun
-    8: 450,
-    7: 360, # Target at vet 2 with 20% suppression resistance, will NOT stun
-    6: 300, # Target at vet 3 with 40% suppression resistance, 2 shots will still stun
+    9: 465, # Target at vet 2 with 20% suppression resistance, will still stun
+    8: 465,
+    7: 365, # Target at vet 2 with 20% suppression resistance, will NOT stun
+    6: 310, # Target at vet 3 with 40% suppression resistance, 2 shots will still stun
     5: 240,
     4: 180,
 }

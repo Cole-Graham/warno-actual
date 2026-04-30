@@ -197,6 +197,81 @@ def _edit_veterancy_effects(source_path) -> None:
                 effects_list.v.add(effect_str)
     
     _add_multiplicative_infantry_xp(source_path)
+    _mirror_avion_suppress_resist_as_stun_resist(source_path)
+
+
+_AVION_VET_PACKS: tuple = (
+    "UnitEffect_xp_rookie_avion",
+    "UnitEffect_xp_trained_avion",
+    "UnitEffect_xp_veteran_avion",
+    "UnitEffect_xp_elite_avion",
+)
+
+
+def _mirror_avion_suppress_resist_as_stun_resist(source_path) -> None:
+    """Mirror EDamageType/Suppress damage-taken bonuses with EDamageType/Stun on
+    each ``UnitEffect_xp_*_avion`` pack so vet protection scales the stun pack
+    threshold equivalently to the suppress pack threshold (see Mt=250 alignment
+    in DamageModules.ndf editor).
+    """
+    logger.info("Mirroring avion vet suppress resistance as stun resistance")
+
+    for pack_ns in _AVION_VET_PACKS:
+        row = source_path.find_by_cond(
+            lambda r, ns=pack_ns: r.namespace == ns,
+            strict=False,
+        )
+        if not row:
+            logger.debug(f"{pack_ns} not present; skipping stun-resist mirror")
+            continue
+
+        effects_list = row.v.by_m("EffectsDescriptors")
+        suppress_effects = []
+        has_stun_effect = False
+        for effect in effects_list.v:
+            if not hasattr(effect.v, "type"):
+                continue
+            if effect.v.type != "TUnitEffectIncreaseDamageTakenDescriptor":
+                continue
+            damage_type_membr = effect.v.by_m("DamageType", False)
+            if damage_type_membr is None:
+                continue
+            # Strip any leading "~/" so we accept both qualified and bare forms
+            # (vanilla EffetsSurUnite.ndf writes "EDamageType/Suppress" without
+            # the "~/" prefix).
+            damage_type = str(damage_type_membr.v).strip()
+            if damage_type.startswith("~/"):
+                damage_type = damage_type[2:]
+            if damage_type == "EDamageType/Suppress":
+                suppress_effects.append(effect)
+            elif damage_type == "EDamageType/Stun":
+                has_stun_effect = True
+
+        if has_stun_effect:
+            logger.debug(f"{pack_ns} already has Stun damage-taken descriptor; skipping")
+            continue
+        if not suppress_effects:
+            logger.debug(f"{pack_ns} has no Suppress damage-taken descriptor; nothing to mirror")
+            continue
+
+        for effect in suppress_effects:
+            modifier_type = str(effect.v.by_m("ModifierType").v)
+            bonus_damage = str(effect.v.by_m("BonusDamage").v)
+            # Match the vanilla format used by the existing Suppress entry
+            # (no "~/" prefix on DamageType in EffetsSurUnite.ndf).
+            mirror = (
+                f"TUnitEffectIncreaseDamageTakenDescriptor"
+                f"("
+                f"    ModifierType = {modifier_type}"
+                f"    BonusDamage = {bonus_damage}"
+                f"    DamageType = EDamageType/Stun"
+                f")"
+            )
+            effects_list.v.add(mirror)
+            logger.info(
+                f"Added Stun damage-taken descriptor to {pack_ns} "
+                f"(ModifierType={modifier_type}, BonusDamage={bonus_damage})"
+            )
 
 def _add_multiplicative_infantry_xp(source_path) -> None:
     """GameData/Generated/Gameplay/Effects/EffetsSurUnite.ndf"""

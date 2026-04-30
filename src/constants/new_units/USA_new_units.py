@@ -976,7 +976,7 @@ USA_NEW_UNITS = {
             "new_mesh": True,
         },
         "CommandPoints": 260,
-        "ECM": -0.45,
+        # "ECM": -0.45, # ECM rework reverted (commit 06a6fafe)
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 10000.0,

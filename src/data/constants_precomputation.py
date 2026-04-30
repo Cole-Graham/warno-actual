@@ -185,11 +185,16 @@ def build_constants_precomputation_data(config: Dict[str, Any], game_db: Dict[st
         aa_suppress_damages = build_aa_suppress_damages(game_db) if game_db else {}
         save_aa_suppress_damages(aa_suppress_damages, config)
 
+        # Build he_dca weapons map (weapon_name -> final damage family)
+        he_dca_weapons = build_he_dca_weapons(game_db) if game_db else {}
+        save_he_dca_weapons(he_dca_weapons, config)
+
         # Add ammunition_renames and insert_turret_templates to return dict for convenience
         mappings["ammunition_renames"] = ammunition_renames
         mappings["insert_turret_templates"] = insert_templates
         mappings["deployment_time_units"] = deployment_time_units
         mappings["aa_suppress_damages"] = aa_suppress_damages
+        mappings["he_dca_weapons"] = he_dca_weapons
 
         logger.info(
             f"Constants precomputation data built and saved: "
@@ -199,7 +204,8 @@ def build_constants_precomputation_data(config: Dict[str, Any], game_db: Dict[st
             f"{len(ammunition_renames.get('renames_old_new', {}))} ammunition renames, "
             f"{len(insert_templates)} insert turret templates, "
             f"{len(deployment_time_units.get('protected_ammo', []))} protected ammo, "
-            f"{len(aa_suppress_damages)} AA suppress damages"
+            f"{len(aa_suppress_damages)} AA suppress damages, "
+            f"{len(he_dca_weapons)} he_dca weapons"
         )
         return mappings
     except Exception as e:
@@ -570,6 +576,99 @@ def save_aa_suppress_damages(data: Dict[str, Dict[str, int]], config: Dict[str, 
         logger.debug(f"Saved aa_suppress_damages to {out_file}")
     except Exception as e:
         logger.error(f"Failed to save aa_suppress_damages: {e}")
+        raise
+
+
+_HE_DCA_FAMILY = "DamageFamily_he_dca"
+_SALVO_SUFFIX_RE = re.compile(r"(_x\d+|_salvolength\d+)$")
+
+
+def _constants_arme_family(data: Dict[str, Any]) -> Any:
+    """Return constants override for ``Arme.Family`` (None if not set)."""
+    if not isinstance(data, dict):
+        return None
+    arme = data.get("Ammunition", {}).get("Arme", {})
+    if not isinstance(arme, dict):
+        return None
+    return arme.get("Family")
+
+
+def build_he_dca_weapons(game_db: Dict[str, Any]) -> Dict[str, str]:
+    """Build ``weapon_name -> final_damage_family`` for ``DamageFamily_he_dca`` weapons.
+
+    Walks ``ammunitions``/``missiles`` constants (constants overrides on
+    ``Arme.Family`` win) and the vanilla ``ammo_properties`` map (for weapons
+    with no constants entry). Returns only weapons whose **final** family is
+    ``DamageFamily_he_dca``, keyed by base ``weapon_name`` (no ``Ammo_``
+    prefix, no salvo suffix). Downstream consumers (B3/B4) use this map to
+    auto-clone ``_AIR`` ammo and auto-wire air mounts.
+    """
+    ammo_props = game_db.get("ammunition", {}).get("ammo_properties", {})
+
+    constants_override: Dict[str, Any] = {}
+    for (weapon_name, _cat, _donor, _is_new), data in {**ammunitions, **missiles}.items():
+        family_override = _constants_arme_family(data)
+        if family_override is not None:
+            constants_override[weapon_name] = family_override
+
+    final_family: Dict[str, str] = {}
+
+    # Vanilla pass: derive base name from Ammo_<weapon>(_x{N}) keys.
+    for ammo_ns, props in ammo_props.items():
+        if not ammo_ns.startswith("Ammo_"):
+            continue
+        family = props.get("Family")
+        if not family:
+            continue
+        base = _SALVO_SUFFIX_RE.sub("", ammo_ns[len("Ammo_"):])
+        if base in constants_override:
+            family = constants_override[base]
+        if family == _HE_DCA_FAMILY:
+            final_family[base] = family
+
+    # Constants-only pass: weapons that may not exist in vanilla yet
+    # (is_new) or whose constants override sets the family directly.
+    for (weapon_name, _cat, donor, is_new), data in {**ammunitions, **missiles}.items():
+        family_override = _constants_arme_family(data)
+        if family_override is None:
+            if not is_new:
+                continue
+            donor_family: Any = None
+            if donor:
+                exact = ammo_props.get(f"Ammo_{donor}", {})
+                donor_family = exact.get("Family")
+                if donor_family is None:
+                    prefix = f"Ammo_{donor}_"
+                    for key, p in ammo_props.items():
+                        if key.startswith(prefix) and p.get("Family"):
+                            donor_family = p["Family"]
+                            break
+            if donor_family is None:
+                continue
+            family_override = donor_family
+
+        if family_override == _HE_DCA_FAMILY:
+            final_family[weapon_name] = family_override
+
+    logger.info(
+        f"Built he_dca weapons mapping: {len(final_family)} ammo descriptors"
+    )
+    return final_family
+
+
+def save_he_dca_weapons(data: Dict[str, str], config: Dict[str, Any]) -> None:
+    """Save he_dca weapons mapping as JSON file to disk."""
+    db_path = Path(config["data_config"]["database_path"])
+    constants_dir = db_path / "constants_precomputation"
+    ensure_db_directory(str(constants_dir))
+
+    out_file = constants_dir / "he_dca_weapons.json"
+    try:
+        with open(out_file, "w") as f:
+            json.dump(data, f, indent=2, sort_keys=True)
+        logger.debug(f"Saved he_dca_weapons to {out_file}")
+    except Exception as e:
+        logger.error(f"Failed to save he_dca_weapons: {e}")
         raise
 
 

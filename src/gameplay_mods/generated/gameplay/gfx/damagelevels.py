@@ -102,25 +102,12 @@ def edit_gen_gp_gfx_damagelevels(source_path) -> None:
     )
     if evac_effect:
         effects_packs6.v.remove(evac_effect)
-    
-    # Raise "Stunned" Tag at 30% cohesion (150/500 max suppression, i.e. after 350 suppression damage)
-    new_airplanes_damage_level1 = (
-        f'TDamageLevelDescriptor'
-        f'('
-        f'    DescriptorId = GUID:{{f69de711-c415-4304-91d9-e55af409bca3}}'
-        f'    Value = 0.70'
-        f'    LocalizationToken = "mrl_1"'
-        f'    MoralModifier = 0'
-        f'    AnimationType = ESoldierSuppressStatus/Pinned'
-        f'    EffectsPacks = '
-        f'    ['
-        f'        $/GFX/EffectCapacity/UnitEffect_AirUnit_Cohesion_Low,'
-        f'        $/GFX/EffectCapacity/UnitEffect_Unit_Stunned,'
-        f'    ]'
-        f')'
-    )
-    airplanes_damage_levels.v.insert(5, new_airplanes_damage_level1)
-    
+
+    # Stunned tag for airplanes is raised exclusively by the new
+    # DamageLevelsPackDescriptor_Unit_packStun_Airplanes (below). Triggering it
+    # from the suppress pack drove the engine into a permanent-stun state because
+    # stun-recovery only operates on the stun damage track.
+
     # Add new packStun_Airplanes
     new_airplanes_pack_stun = (
         f'export DamageLevelsPackDescriptor_Unit_packStun_Airplanes is TDamageLevelsPackDescriptor'

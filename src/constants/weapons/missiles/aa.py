@@ -502,7 +502,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TraitsToken": ['STAT', 'RADAR', 'biglyHE'],
                 "MaximumRangeAirplaneGRU": 6125,
                 "PhysicalDamages": 9.0,
-                "SuppressDamages": 600, # 360 against vet 3 targets, will still stun in 1 hit
+                "SuppressDamages": 350, # 210 against vet 3 targets, will still stun in 1 hit
                 "SupplyCost": 180.0,
             },
         },
@@ -522,7 +522,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoShots": 3.5,
                 "TimeBetweenTwoFx": 3.5,
                 "PhysicalDamages": 9.0,
-                "SuppressDamages": 600, # 360 against vet 3 targets, will still stun in 1 hit
+                "SuppressDamages": 350, # 210 against vet 3 targets, will still stun in 1 hit
             },
         },
         "SupplyCost": 210.0,
