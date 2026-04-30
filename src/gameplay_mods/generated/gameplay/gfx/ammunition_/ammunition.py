@@ -21,6 +21,7 @@ from .handlers import (
     apply_damage_families,
     apply_fire_descriptors,
     apply_he_damage_standards,
+    apply_he_dca_air_ammo_clones,
     apply_infantry_mmg_cac_trait,
     apply_weapon_range_standards,
     remove_vanilla_instances,
@@ -187,6 +188,14 @@ def edit_gen_gp_gfx_ammunition(source_path, game_db: Dict[str, Any]) -> None:
 
         # Blanket-disable HasDeploymentTime on ammo not used by protected units
         _blanket_disable_deployment_time(source_path, game_db)
+
+        # Auto-clone _AIR variants for every DamageFamily_he_dca ammo
+        # (must run after all per-weapon edits so the clone inherits final values).
+        try:
+            apply_he_dca_air_ammo_clones(source_path, logger, game_db)
+        except Exception as e:
+            logger.error(f"Failed applying he_dca air ammo clones: {str(e)}")
+            raise
 
         # Write dictionary entries
         if ingame_names or calibers:

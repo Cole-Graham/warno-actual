@@ -46,6 +46,25 @@ from src.utils.logging_utils import setup_logger
 logger = setup_logger(__name__)
 
 
+# Vanilla DamageFamily_he_dca single-level row index in DamageResistanceParams.Values.
+# Matches the "he_dca 1" entry in DAMAGE_EDITS in damage_values.py. Cloning this
+# row at edit time keeps DamageFamily_he_dca_airtargets in lockstep with any
+# tweaks we apply to he_dca (e.g. air armor 0/1/2 reductions in DAMAGE_EDITS).
+_HE_DCA_ROW_INDEX = 119
+
+
+def _clone_existing_damage_row(values_list, row_index: int) -> str:
+    """Return the row at ``row_index`` formatted as a Python list literal string.
+
+    Reads each cell directly from the live NDF array so the clone reflects
+    every edit applied earlier in the run (column extension, family-specific
+    edits). The returned string is suitable to pass to ``values_list.add(...)``.
+    """
+    src_row = values_list[row_index].v
+    cells = [str(cell.v) for cell in src_row]
+    return "[" + ", ".join(cells) + "]"
+
+
 def edit_gen_gp_gfx_damageresistance(source_path) -> None:
     """GameData/Generated/Gameplay/Gfx/DamageResistance.ndf"""
     logger.info("Editing DamageResistance.ndf")
@@ -91,6 +110,7 @@ def edit_gen_gp_gfx_damageresistancefamilylist(source_path) -> None:
     fourteen_five_mm_family = f"DamageFamily_14_5 is {i + 17}"
     missile_he_bigly_family = f"DamageFamily_missile_he_bigly is {i + 18}"
     sead_missile_wa_family = f"DamageFamily_sead_missile_wa is {i + 19}"
+    he_dca_airtargets_family = f"DamageFamily_he_dca_airtargets is {i + 20}"
 
     source_path.insert(j + 1, infanterie_wa_family)
     source_path.add(sniper_family)
@@ -112,6 +132,7 @@ def edit_gen_gp_gfx_damageresistancefamilylist(source_path) -> None:
     source_path.add(sead_missile_wa_family)
     source_path.add(sniper_double_family)
     source_path.add(sniper_triple_family)
+    source_path.add(he_dca_airtargets_family)
     logger.info(
         f"Added families: \n"
         f"{infanterie_wa_family}\n"
@@ -134,6 +155,7 @@ def edit_gen_gp_gfx_damageresistancefamilylist(source_path) -> None:
         f"{sead_missile_wa_family}\n"
         f"{sniper_double_family}\n"
         f"{sniper_triple_family}\n"
+        f"{he_dca_airtargets_family}\n"
     )
 
 
@@ -164,6 +186,7 @@ def edit_gen_gp_gfx_damageresistancefamilylistimpl(source_path) -> None:
             '"DamageFamily_14_5"',
             '"DamageFamily_missile_he_bigly"',
             '"DamageFamily_sead_missile_wa"',
+            '"DamageFamily_he_dca_airtargets"',
         ],
     }
 
@@ -209,6 +232,7 @@ def _add_damage_resistance_values(source_path) -> None:
         "14_5": ("(DamageFamily_14_5, 1)"),
         "missile_he_bigly": ("(DamageFamily_missile_he_bigly, 1)"),
         "sead_missile_wa": (f"(DamageFamily_sead_missile_wa, {SEAD_MISSILE_WA_LEVEL_COUNT})"),
+        "he_dca_airtargets": ("(DamageFamily_he_dca_airtargets, 1)"),
     }
 
     for family_name, family_def in families.items():
@@ -216,6 +240,8 @@ def _add_damage_resistance_values(source_path) -> None:
         logger.info(f"Added {family_name} family definition")
 
     values_list = resist_params_obj.by_m("Values").v
+
+    he_dca_row_clone = _clone_existing_damage_row(values_list, _HE_DCA_ROW_INDEX)
 
     # Check array dimensions match expected constants
     last_row_index = len(values_list) - 1
@@ -263,10 +289,12 @@ def _add_damage_resistance_values(source_path) -> None:
         str(FOURTEEN_FIVE_MM_DAMAGE),
         str(MISSILE_HE_BIGLY_DAMAGE),
         *[str(row) for row in sead_missile_wa_rows],
+        he_dca_row_clone,
     )
     logger.info(
         "Added damage values "
-        f"(including DamageFamily_sead_missile_wa rows: {len(sead_missile_wa_rows)})"
+        f"(including DamageFamily_sead_missile_wa rows: {len(sead_missile_wa_rows)}, "
+        f"DamageFamily_he_dca_airtargets cloned from row {_HE_DCA_ROW_INDEX})"
     )
     
     

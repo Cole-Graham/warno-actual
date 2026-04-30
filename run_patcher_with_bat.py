@@ -183,6 +183,9 @@ if __name__ == "__main__":
 		ammo_db_precomp['aa_suppress_damages'] = constants_data.get(
 			'aa_suppress_damages', {},
 		)
+		ammo_db_precomp['he_dca_weapons'] = constants_data.get(
+			'he_dca_weapons', {},
+		)
 
 		# Merge salvo_weapons (from base game database) with constants renames (from constants precomputation)
 		# and add to ammo_db so handlers can access them the same way

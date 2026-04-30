@@ -285,6 +285,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TraitsToken": ['MOTION', 'F&F', 'biglyHE'],
                 "MaximumRangeAirplaneGRU": 13300,
                 "PhysicalDamages": 8.0,
+                "SuppressDamages": 350, # 210 against vet 3 targets, will still stun in 1 hit
                 "TirReflexe": True,
                 "ReflexShotDisabledIfPriorityTarget": True,
                 "ProjectileSpeedGRU": 6600,
@@ -713,6 +714,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TraitsToken": ['MOTION', 'F&F', 'biglyHE'],
                 "MaximumRangeAirplaneGRU": 13300,
                 "PhysicalDamages": 8.0,
+                "SuppressDamages": 350, # 210 against vet 3 targets, will still stun in 1 hit
                 "TirReflexe": True,
                 "ReflexShotDisabledIfPriorityTarget": True,
                 "ProjectileSpeedGRU": 7200,
