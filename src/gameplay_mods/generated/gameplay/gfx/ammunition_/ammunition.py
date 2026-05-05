@@ -23,6 +23,7 @@ from .handlers import (
     apply_he_damage_standards,
     apply_he_dca_air_ammo_clones,
     apply_infantry_mmg_cac_trait,
+    apply_tandem_charge_inversion,
     apply_weapon_range_standards,
     remove_vanilla_instances,
     vanilla_renames_ammunition,
@@ -54,6 +55,7 @@ def edit_gen_gp_gfx_ammunition(source_path, game_db: Dict[str, Any]) -> None:
             apply_weapon_range_standards(source_path, logger)
             apply_bomb_damage_standards(source_path, logger)
             apply_he_damage_standards(source_path, logger)
+            apply_tandem_charge_inversion(source_path, logger)
             apply_fire_descriptors(source_path, logger)
             apply_infantry_mmg_cac_trait(source_path, logger)
             apply_clu_sol_trait_standards(source_path, logger, game_db)
@@ -356,6 +358,8 @@ def _apply_weapon_category_standards(
     """Apply by-category weapon standards before ``ammunitions`` dict edits (constants override)."""
     if category == "DCA":
         _apply_hit_roll_edits(descr, DCA_STANDARDS["hit_roll"])
+    if category in ("canon", "autocannon"):
+        _apply_canon_he_inherited_accuracy(descr, weapon_name, game_db, logger)
     apply_category_bomb_standards(descr, category, weapon_name, game_db, logger)
 
 
@@ -371,7 +375,16 @@ def _apply_weapon_edits(
     membr = descr.v.by_m
 
     logger.debug(f"Applying edits to {descr.n}")
+    
+    # tandem inversion (apply first so manual edits take precedence)
+    traits_tokens = [t.v for t in descr.v.by_m("TraitsToken").v]
+    family = descr.v.by_m("Arme").v.by_m("Family")
+    if "'TANDEM'" in traits_tokens:
+        membr("TandemCharge").v = "False"
+    elif "'HEAT'" in traits_tokens and family.v == "DamageFamily_ap_missile":
+        membr("TandemCharge").v = "True"
 
+    # Apply localization token edits
     if "token" in ammo_data:
         descr.v.by_m("Name").v = "'" + ammo_data["token"] + "'"
 
@@ -379,6 +392,11 @@ def _apply_weapon_edits(
     if "Arme" in ammo_data:
         arme_data = ammo_data["Arme"]
         arme_obj = descr.v.by_m("Arme").v
+
+        # tandem inversion (apply first so manual edits take precedence)
+        family_edit = arme_data.get("Family", None)
+        if family_edit == "DamageFamily_ap_missile":
+            membr("TandemCharge").v = "True"
 
         for arme_membr, arme_v in arme_data.items():
             if isinstance(arme_v, (float, int, bool)):
@@ -450,6 +468,23 @@ def _apply_hit_roll_edits(descr: Any, hit_roll_data: Dict) -> None:
             distance_to_target_membr.v = str(hit_roll_data["DistanceToTarget"])
         else:
             hitroll_obj.add(f"DistanceToTarget = {str(hit_roll_data["DistanceToTarget"])}")
+
+
+def _apply_canon_he_inherited_accuracy(
+    descr: Any, weapon_name: str, game_db: Dict[str, Any], logger: Any
+) -> None:
+    """If this HE canon/autocannon has no manual hit_roll, apply the one inherited from its AP pair on the same turret.
+
+    The mapping is precomputed from game_db turret data + ammunitions constants and stored under
+    game_db["ammunition"]["canon_he_accuracy_inheritance"]. Only AP->HE pairs within "canon" and
+    "autocannon" categories are considered.
+    """
+    if not game_db:
+        return
+    inh = game_db.get("ammunition", {}).get("canon_he_accuracy_inheritance", {})
+    if weapon_name in inh:
+        _apply_hit_roll_edits(descr, inh[weapon_name])
+        logger.debug(f"Applied inherited accuracy to {weapon_name}")
 
 
 def _track_dictionary_entries(

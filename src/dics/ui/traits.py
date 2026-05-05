@@ -1,6 +1,6 @@
 """Unit trait and specialty constants."""
 
-from src.constants import NEW_SUPPLY_CONSTANTS
+from src.constants import NEW_SUPPLY_CONSTANTS, TANDEM_MODIFIER
 
 
 def get_ratio_color(ratio: float) -> str:
@@ -495,6 +495,17 @@ TRAIT_EDITS = {
                 f"gain the following bonuses:\n"
                 f"#styleTurquoise{{• 70% increased movement speed.\n}}"
                 f"#styleTurquoise{{• Receive 25% less suppression damage.}}"
+            )
+        }
+    },
+    
+    "_era": {
+        "extended": {
+            "token": "ZZQSIOADSB",
+            "text": (
+                f"Non-tandem HEAT warheads have {int(TANDEM_MODIFIER)} penetration against vehicles with ERA.\n"
+                f"This does not apply to cluster munitions."
+                
             )
         }
     },

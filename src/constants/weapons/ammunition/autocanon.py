@@ -528,8 +528,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Index": 12,
             },
             "hit_roll": {
-                "Idling": 55,
-                "Moving": 30,
+                "Idling": 50,
+                "Moving": 25,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 0.2,

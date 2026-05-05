@@ -1,6 +1,7 @@
 """Functions for modifying game constants."""
 
 from typing import List, Tuple, Union
+from src.constants import TANDEM_MODIFIER
 from src.constants.weapons.standards import (
     AA_ADDITIONAL_SUPPRESS_PER_LOST_PHYSICAL,
 )
@@ -26,7 +27,8 @@ def edit_gameplay_constantes_gdconstants(source_path) -> None:
 
         elif row.namespace == "WargameConstantes":
             edits: List[Tuple[str, str, Union[str, int], Union[str, None]]] = [
-                ("value", "ConquestPossibleScores", "[2000, 3000, 4000]", None),
+                ("value", "ConquestPointsDefaultIndex", 0, None),
+                ("value", "ConquestPossibleScores", "[3500, 4000]", None),
                 ("map", "BaseIncome", 21, "ECombatRule/Conquest"),
                 ("map", "TimeBeforeEarningCommandPointsSkirmish", 6, "ECombatRule/Conquest"),
                 ("value", "DefaultArgentInitial", 2000, None),
@@ -43,6 +45,8 @@ def edit_gameplay_constantes_gdconstants(source_path) -> None:
                     # logger.info(f"Set {var} to {edit}")
 
         elif row.namespace == "ModernWarfareConstantes":
+            
+            row.v.by_m("TandemModifierValue").v = str(TANDEM_MODIFIER)
             
             # 25 is default value for AdditionalSuppressDamagePerLostPhysicalDamage
             # Re-applying it here in case Eugen decided to change it without me realizing it

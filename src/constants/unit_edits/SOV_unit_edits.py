@@ -2235,6 +2235,10 @@ sov_unit_edits = {
 
     "ATteam_Fagot_SOV": {
         "CommandPoints": 25,
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": {
@@ -2250,6 +2254,10 @@ sov_unit_edits = {
 
     "Atteam_Fagot_DShV_SOV": {
         "CommandPoints": 25,
+        "max_speed": 20,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": {
@@ -3816,7 +3824,7 @@ sov_unit_edits = {
 
     "BRDM_2_Falanga_P_SOV": {
         "strength": 8,
-        "CommandPoints": 45,
+        "CommandPoints": 50,
         "stealth": 1.5,
         "availability": [8, 6, 0, 0],
         "UpgradeFromUnit": "BRDM_2_Malyu_P_SOV",
@@ -3965,6 +3973,7 @@ sov_unit_edits = {
         "armor": {
             "front": (12, None),
         },
+        "max_speed": 50,
     },
 
     "T62M1_SOV": {
@@ -4005,6 +4014,7 @@ sov_unit_edits = {
             "front": (12, None),
             "top": (3, None),
         },
+        "max_speed": 50,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -4020,32 +4030,50 @@ sov_unit_edits = {
         },
         "availability": [8, 6, 0, 0],
     },
-
-    "T64A_SOV": {
-        "CommandPoints": 125,
+    
+    "T64A_Obr81_SOV": {
+        "CommandPoints": 110,
         "armor": {
-            "top": (3, None),
+            "top": (2, None),
         },
         "availability": [6, 4, 0, 0],
         "UpgradeFromUnit": "T64R_SOV",
     },
 
-    "T64AM_SOV": { 
-        "CommandPoints": 140,
+    "T64A_SOV": { # T-64A Obr. 83
+        "CommandPoints": 125,
         "armor": {
-            "top": (3, None),
+            "top": (3, None), # Minor top armor and internal layout improvements came with Obr. 83
         },
-        "availability": [0, 6, 4, 0],
-        "UpgradeFromUnit": "T64AV_SOV",
+        "availability": [6, 4, 0, 0],
+        "UpgradeFromUnit": "T64A_Obr81_SOV",
     },
-
-    "T64AV_SOV": {
-        "CommandPoints": 130,
+    
+    "T64A_Obr84_SOV": {
+        "CommandPoints": 140,
         "armor": {
             "top": (3, None),
         },
         "availability": [6, 4, 0, 0],
         "UpgradeFromUnit": "T64A_SOV",
+    },
+
+    "T64AV_SOV": {
+        "CommandPoints": 150,
+        "armor": {
+            "top": (4, None),
+        },
+        "availability": [6, 4, 0, 0],
+        "UpgradeFromUnit": "T64A_SOV",
+    },
+    
+    "T64AM_SOV": {  # Not a real tank, removed from vanilla
+        "CommandPoints": 140,
+        "armor": {
+            "top": (3, None),
+        },
+        "availability": [0, 6, 4, 0],
+        # "UpgradeFromUnit": "T64AV_SOV",
     },
 
     "T64B1_SOV": {
@@ -4335,6 +4363,7 @@ sov_unit_edits = {
     
     "T55AMD_reco_SOV": {
         "CommandPoints": 160,
+        "max_speed": 50,
         "availability": [0, 4, 3, 0],
     },
 

@@ -8,7 +8,7 @@ build_database is false. The "database" is just the collection of JSON files on 
 import json
 import re
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 
 from src.constants.new_units import NEW_UNITS
 from src.constants.unit_edits import load_unit_edits
@@ -189,12 +189,17 @@ def build_constants_precomputation_data(config: Dict[str, Any], game_db: Dict[st
         he_dca_weapons = build_he_dca_weapons(game_db) if game_db else {}
         save_he_dca_weapons(he_dca_weapons, config)
 
+        # Build canon HE accuracy inheritance (AP hit_roll -> paired HE on same turret)
+        canon_he_acc = build_canon_he_accuracy_inheritance(game_db) if game_db else {}
+        save_canon_he_accuracy_inheritance(canon_he_acc, config)
+
         # Add ammunition_renames and insert_turret_templates to return dict for convenience
         mappings["ammunition_renames"] = ammunition_renames
         mappings["insert_turret_templates"] = insert_templates
         mappings["deployment_time_units"] = deployment_time_units
         mappings["aa_suppress_damages"] = aa_suppress_damages
         mappings["he_dca_weapons"] = he_dca_weapons
+        mappings["canon_he_accuracy_inheritance"] = canon_he_acc
 
         logger.info(
             f"Constants precomputation data built and saved: "
@@ -205,7 +210,8 @@ def build_constants_precomputation_data(config: Dict[str, Any], game_db: Dict[st
             f"{len(insert_templates)} insert turret templates, "
             f"{len(deployment_time_units.get('protected_ammo', []))} protected ammo, "
             f"{len(aa_suppress_damages)} AA suppress damages, "
-            f"{len(he_dca_weapons)} he_dca weapons"
+            f"{len(he_dca_weapons)} he_dca weapons, "
+            f"{len(canon_he_acc)} canon HE accuracy inheritances"
         )
         return mappings
     except Exception as e:
@@ -215,6 +221,7 @@ def build_constants_precomputation_data(config: Dict[str, Any], game_db: Dict[st
             "reference_mappings": {},
             "new_command_unit_deck_packs": {},
             "ammunition_renames": {"renames_old_new": {}, "renames_new_old": {}},
+            "canon_he_accuracy_inheritance": {},
         }
 
 
@@ -669,6 +676,101 @@ def save_he_dca_weapons(data: Dict[str, str], config: Dict[str, Any]) -> None:
         logger.debug(f"Saved he_dca_weapons to {out_file}")
     except Exception as e:
         logger.error(f"Failed to save he_dca_weapons: {e}")
+        raise
+
+
+def build_canon_he_accuracy_inheritance(game_db: Dict[str, Any]) -> Dict[str, Dict[str, Any]]:
+    """Build HE canon/autocannon weapon_name -> inherited hit_roll dict from its AP pair on the same turret.
+
+    Uses game_db["weapons"] turret/mounted-weapon data to discover co-located AP/HE pairs
+    (names starting with Canon_ or AutoCanon_ and containing _AP_ / _HE_).
+    Pairs are formed by name substitution (_AP_ -> _HE_) or, as fallback, when a turret
+    has exactly one AP and one HE entry.
+
+    For each pair the ammunitions constants are consulted:
+    - both define hit_roll but accuracy values (Idling/Moving/DistanceToTarget) differ -> warning
+      (BaseCriticModifier may legitimately differ between AP and HE and is ignored for this check)
+    - HE defines hit_roll but AP does not -> warning
+    - only AP defines hit_roll -> record for later application to the HE descriptor
+
+    The resulting map is consumed by the ammunition handler during NDF patching.
+    """
+    weapons_db = game_db.get("weapons", {})
+    canon_autocanon_by_name: Dict[str, Dict] = {}
+    for (weapon_name, category, _donor, _is_new), data in ammunitions.items():
+        if category in ("canon", "autocannon"):
+            canon_autocanon_by_name[weapon_name] = data
+
+    result: Dict[str, Dict[str, Any]] = {}
+    warned_pairs: set[Tuple[str, str]] = set()
+
+    for _wdescr_name, weapon_info in weapons_db.items():
+        turrets = weapon_info.get("turrets", {})
+        for _turret_idx, turret_data in turrets.items():
+            turret_weapons = turret_data.get("weapons", {})
+            ap_names = [w for w in turret_weapons if (w.startswith("Canon_") or w.startswith("AutoCanon_")) and "_AP_" in w]
+            he_names = [w for w in turret_weapons if (w.startswith("Canon_") or w.startswith("AutoCanon_")) and "_HE_" in w]
+
+            if not ap_names or not he_names:
+                continue
+
+            pairs: List[Tuple[str, str]] = []
+            for ap in ap_names:
+                he_cand = ap.replace("_AP_", "_HE_")
+                if he_cand in he_names:
+                    pairs.append((ap, he_cand))
+
+            if not pairs and len(ap_names) == 1 and len(he_names) == 1:
+                pairs.append((ap_names[0], he_names[0]))
+
+            for ap_name, he_name in pairs:
+                ap_data = canon_autocanon_by_name.get(ap_name, {})
+                he_data = canon_autocanon_by_name.get(he_name, {})
+                ap_hit = ap_data.get("Ammunition", {}).get("hit_roll") if ap_data else None
+                he_hit = he_data.get("Ammunition", {}).get("hit_roll") if he_data else None
+
+                if ap_hit and he_hit:
+                    # Compare only accuracy values; BaseCriticModifier is allowed to differ
+                    acc_keys = ("Idling", "Moving", "DistanceToTarget")
+                    ap_acc = {k: ap_hit[k] for k in acc_keys if k in ap_hit}
+                    he_acc = {k: he_hit[k] for k in acc_keys if k in he_hit}
+                    if ap_acc != he_acc:
+                        pair_key = (ap_name, he_name)
+                        if pair_key not in warned_pairs:
+                            warned_pairs.add(pair_key)
+                            logger.warning(
+                                f"Both AP ({ap_name}) and HE ({he_name}) define hit_roll but accuracy values differ: AP={ap_acc} HE={he_acc}"
+                            )
+                elif he_hit and not ap_hit:
+                    pair_key = (ap_name, he_name)
+                    if pair_key not in warned_pairs:
+                        warned_pairs.add(pair_key)
+                        logger.warning(
+                            f"HE canon {he_name} has manual hit_roll but corresponding AP canon {ap_name} does not"
+                        )
+                elif ap_hit and not he_hit:
+                    if he_name not in result:
+                        result[he_name] = ap_hit
+                    elif result[he_name] != ap_hit:
+                        logger.warning(f"Conflicting inherited hit_roll for {he_name} from multiple AP pairs")
+
+    logger.info(f"Built canon HE accuracy inheritance mapping: {len(result)} HE weapons")
+    return result
+
+
+def save_canon_he_accuracy_inheritance(data: Dict[str, Dict[str, Any]], config: Dict[str, Any]) -> None:
+    """Save canon HE accuracy inheritance mapping as JSON file to disk."""
+    db_path = Path(config["data_config"]["database_path"])
+    constants_dir = db_path / "constants_precomputation"
+    ensure_db_directory(str(constants_dir))
+
+    out_file = constants_dir / "canon_he_accuracy_inheritance.json"
+    try:
+        with open(out_file, "w") as f:
+            json.dump(data, f, indent=2, sort_keys=True)
+        logger.debug(f"Saved canon_he_accuracy_inheritance to {out_file}")
+    except Exception as e:
+        logger.error(f"Failed to save canon_he_accuracy_inheritance: {e}")
         raise
 
 

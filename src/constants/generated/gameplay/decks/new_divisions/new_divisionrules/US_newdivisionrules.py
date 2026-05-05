@@ -271,7 +271,7 @@ US_global_newdivisionrules = {
         ("A10_Thunderbolt_II_ATGM_US", 1, [0, 2, 0, 0]),
         ("A10_Thunderbolt_II_US", 1, [0, 2, 0, 0]),
         ("A10_Thunderbolt_II_Rkt_US", 1, [0, 2, 0, 0]),
-        ("A37B_Dragonfly_HE_US", 1, [0, 4, 0, 0]),
+        ("A37B_Dragonfly_HE_US", 1, [0, 6, 0, 0]),
         ("A37B_Dragonfly_NPLM_US", 1, [0, 6, 0, 0]),
         ("A7D_Corsair_II_AT_US", 1, [0, 2, 0, 1]),
         ("A7D_Corsair_II_CLU_US", 1, [0, 2, 0, 0]),
@@ -596,7 +596,7 @@ US_motorized_newdivisionrules = {
         ("OH58A_reco_NG_US", 2, [6, 0, 0, 0]),
     ],
     "aa": [
-        ("DCA_XMIM_115A_Roland_US", 1, [6, 4, 0, 0]),
+        ("DCA_XMIM_115A_Roland_US", 1, [4, 3, 0, 0]),
         ("DCA_XM85_Chaparral_US", 1, [4, 3, 0, 0], ["M35_supply_US"]),
         ("M998_Avenger_nonPara_US", 2, [6, 4, 0, 0]),
         ("DCA_M167A2_Vulcan_20mm_US", 1, [10, 7, 0, 0], ["M1038_Humvee_US"]),

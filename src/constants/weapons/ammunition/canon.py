@@ -41,9 +41,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
     
     ("Canon_AP_125_mm_2A46_T72M2", "canon", None, False): { # T-72M2 WILK 2A46-1 (3BM-26) (Could be swapped to 3BM-32?)
         "Ammunition": {
-            #"Arme": {
-            #    "Index": 31,
-            #},
+            "hit_roll": {
+                "Idling": 55,
+                "Moving": 45,
+            },
             "display": "2A46-1 (3BM-26)",
             "token": "OTYHZNLLMR",
         },
@@ -51,9 +52,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
 
     ("Canon_AP_125_mm_2A46_T72M", "canon", None, False): { # T-72M/M1/A'79/A'81/M-2/M-3 2A46-1 (3BM-26)
         "Ammunition": {
-            # "Arme": {
-            #     "Index": 29,
-            # },
             "hit_roll": {
                 "Idling": 50,
                 "Moving": 40,
@@ -82,6 +80,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "display": "2A46 (3BM-22)",
             "token": "KXRZMEFESV",
+            "hit_roll": {
+                "Idling": 50,
+                "Moving": 40,
+            },
         },
     },
     
@@ -162,6 +164,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("Canon_AP_85mm_S53", "canon", None, False): { # T-34 S-53 (3BK-2)
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 45,
+            },
+        },
+    },
 
     ("Canon_HEAT_85mm_S53", "canon", "Canon_AP_85mm_S53", True): { # T-34 S-53 (3BK-2)
         "Ammunition": {
@@ -176,7 +186,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Caliber": ("85mm HEAT", "IWLOKTOKDR"),
                 "TraitsToken": ['HE', 'HEAT'],
                 "MaximumRangeGRU": 1750,
-                "DamageTypeEvolutionOverRangeDescriptor": "nil"
+                "DamageTypeEvolutionOverRangeDescriptor": "nil",
+                "TandemCharge": True, # For inverted tandem logic
             },
             "display": "S-53 (3BK-2)",
             "token": "QGKCOHDYWC",
@@ -196,7 +207,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Caliber": ("85mm HEAT", "IWLOKTOKDR"),
                 "TraitsToken": ['HE', 'HEAT'],
                 "MaximumRangeGRU": 1750,
-                "DamageTypeEvolutionOverRangeDescriptor": "nil"
+                "DamageTypeEvolutionOverRangeDescriptor": "nil",
             },
             "display": "S-53 (3BK-2M)",
             "token": "AABTCOGEZB",
@@ -313,6 +324,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 8.0,
+                "TandemCharge": True, # For inverted tandem logic
             },
         },
     },
@@ -464,13 +476,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
 
     ("Canon_AP_125_mm_2A46_T64A_late", "canon", None, False): { # T-64AV 2A46 (3BM-26)
         "Ammunition": {
-            "Arme": {
-                "Index": 30, # KE
+            "hit_roll": {
+                "Idling": 50,
+                "Moving": 40,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 6.6,
                 "TimeBetweenTwoSalvos": 6.6,
-                "MaximumRangeGRU": 1925,  
             },
             "display": "2A46 (3BM-26)",
             "token": "SURTPIJIWC",
@@ -479,10 +491,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
 
     ("Canon_HE_125_mm_2A46_T64A_late", "canon", None, False): { # T-64AV (HE)
         "Ammunition": {
+            "hit_roll": {
+                "Idling": 50,
+                "Moving": 40,
+            },
             "parent_membr": {
                 "TimeBetweenTwoShots": 6.6,
                 "TimeBetweenTwoSalvos": 6.6,
-                "MaximumRangeGRU": 1925,
             },
         },
     },
@@ -646,6 +661,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "display": "L11A5 (L26A1)",
             "token": "SVUWSIWOMZ",
+            "hit_roll": {
+                "Idling": 65,
+                "Moving": 55,
+            },
         },
     },
 
@@ -653,6 +672,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "display": "L11A5 (L23A1)",
             "token": "AQXRAAHWKX",
+            "hit_roll": {
+                "Idling": 65,
+                "Moving": 55,
+            },
         },
     },
 
@@ -660,6 +683,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "display": "L11A5 (L23A1)",
             "token": "XOHWOBENKZ",
+            "hit_roll": {
+                "Idling": 65,
+                "Moving": 55,
+            },
         },
     },
 
@@ -667,6 +694,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "display": "L11A5 (L23A1)",
             "token": "LSJITDGNSW",
+            "hit_roll": {
+                "Idling": 65,
+                "Moving": 55,
+            },
         },
     },
 
@@ -674,6 +705,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "display": "L11A5 (L15A5)",
             "token": "TJBDCIUPVY",
+            "hit_roll": {
+                "Idling": 65,
+                "Moving": 55,
+            },
         },
     },
 
@@ -682,6 +717,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "Arme": {
                 "Family": "DamageFamily_ap_missile",
                 "Index": 17, # HEAT (I don't know how to swap KE to HEAT, is still KE)
+            },
+            "hit_roll": {
+                "Idling": 65,
+                "Moving": 55,
             },
             "parent_membr": {
                 "SuppressDamages": 243,
@@ -791,6 +830,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "display": "M256 (M829A1)",
             "token": "ZHOKJRHTGG",
+            "hit_roll": {
+                "Idling": 70,
+                "Moving": 65,
+            },
         },
     },
 
@@ -798,6 +841,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "display": "M256 (M829)",
             "token": "LONFWANPHJ",
+            "hit_roll": {
+                "Idling": 70,
+                "Moving": 65,
+            },
         },
     },
 
@@ -805,6 +852,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "display": "M68A1 (XM900E1)",
             "token": "ZBSIXJNGSM",
+            "hit_roll": {
+                "Idling": 70,
+                "Moving": 65,
+            },
         },
     },
 
@@ -812,6 +863,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "display": "M68A1 (M833)",
             "token": "FLWXGHUNDQ",
+            "hit_roll": {
+                "Idling": 70,
+                "Moving": 65,
+            },
         },
     },
 
@@ -881,6 +936,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "display": "L44 (DM33)",
             "token": "UGOZPAHBEW",
+            "hit_roll": {
+                "Idling": 70,
+                "Moving": 65,
+            },
         },
     },
 
@@ -888,6 +947,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "display": "L44 (DM23)",
             "token": "XEBVLAROMY",
+            "hit_roll": {
+                "Idling": 70,
+                "Moving": 65,
+            },
         },
     },
 
@@ -898,6 +961,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "Arme": {
                 "Index": 29, # KE
             },
+            "hit_roll": {
+                "Idling": 65,
+                "Moving": 60,
+            },
         },
     },
 
@@ -905,6 +972,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "display": "L7A3 (DM33)",
             "token": "PGWOXXQUEX",
+            "hit_roll": {
+                "Idling": 70,
+                "Moving": 65,
+            },
         },
     },
 
@@ -972,6 +1043,9 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "display": "F2 (OFL 105 G2)",
             "token": "LRKFKOQNUF",
+            "hit_roll": {
+                "Idling": 70,
+            },
         },
     },
 
@@ -986,6 +1060,9 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "display": "F2 (OFL 105 F3)",
             "token": "YVFYEHYSSD",
+            "hit_roll": {
+                "Idling": 70,
+            },
         },
     },
     
@@ -1002,6 +1079,9 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "token": "DJWERULJYY",
             "Arme": {
                 "Index": 17, # HEAT
+            },
+            "hit_roll": {
+                "Idling": 70,
             },
         },
     },

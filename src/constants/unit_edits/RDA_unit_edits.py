@@ -17,7 +17,9 @@ rda_unit_edits = {
             "remove_specs": ["'_leader'"],
         },
         "availability": [0, 4, 0, 0],
-        "TagSet": {"add_tags": ['"CMD_Unit"']},
+        "TagSet": {
+            "add_tags": ['"CMD_Unit"'],
+        },
     },
     
     "PT76B_CMD_DDR": { # Too inexpensive to make a LDR., just changing to a CV
@@ -33,7 +35,9 @@ rda_unit_edits = {
             },
         },
         "availability": [0, 0, 3, 0],
-        "TagSet": {"add_tags": ['"CMD_Unit"']},
+        "TagSet": {
+            "add_tags": ['"CMD_Unit"'],
+        },
     },
     
     "MTLB_CMD_DDR": {
@@ -43,7 +47,9 @@ rda_unit_edits = {
             "remove_specs": ["'_leader'"],
         },
         "availability": [0, 0, 3, 0],
-        "TagSet": {"add_tags": ['"CMD_Unit"']},
+        "TagSet": {
+            "add_tags": ['"CMD_Unit"'],
+        },
     },
 
     "BMP_1_CMD_DDR": {
@@ -58,7 +64,9 @@ rda_unit_edits = {
             "remove_specs": ["'_leader'"],
         },
         "availability": [0, 0, 3, 0],
-        "TagSet": {"add_tags": ['"CMD_Unit"']},
+        "TagSet": {
+            "add_tags": ['"CMD_Unit"'],
+        },
     },
 
     "BRDM_2_CMD_DDR": {
@@ -74,7 +82,9 @@ rda_unit_edits = {
             "remove_specs": ["'_leader'"],
         },
         "availability": [0, 3, 0, 0],
-        "TagSet": {"add_tags": ['"CMD_Unit"']},
+        "TagSet": {
+            "add_tags": ['"CMD_Unit"'],
+        },
     },
 
     "BTR_60_CMD_DDR": {
@@ -90,7 +100,9 @@ rda_unit_edits = {
             "remove_specs": ["'_leader'"],
         },
         "availability": [0, 0, 3, 0],
-        "TagSet": {"add_tags": ['"CMD_Unit"']},
+        "TagSet": {
+            "add_tags": ['"CMD_Unit"'],
+        },
     },
     
     "BTR_60_CHAIKA_CMD_DDR": {
@@ -106,7 +118,9 @@ rda_unit_edits = {
             "remove_specs": ["'_leader'"],
         },
         "availability": [0, 0, 3, 0],
-        "TagSet": {"add_tags": ['"CMD_Unit"']},
+        "TagSet": {
+            "add_tags": ['"CMD_Unit"'],
+        },
     },
 
     "Mi_2_CMD_DDR": {  # Mi-2D
@@ -117,15 +131,22 @@ rda_unit_edits = {
             "remove_specs": ["'_leader'"],
         },
         "availability": [0, 3, 0, 0],
-        "TagSet": {"add_tags": ['"CMD_Unit"']},
+        "TagSet": {
+            "add_tags": ['"CMD_Unit"'],
+        },
     },
 
     "Mi_9_DDR": {  # Mi-19D
-        "GameName": {"display": "Mi-19"},
+        "GameName": {
+            "display": "Mi-19"
+        },
         "CommandPoints": 145,
         "SpecialtiesList": {
             "add_specs": ["'leader_sov'",],
             "remove_specs": ["'_leader'"],
+        },
+        "TagSet": {
+            "add_tags": ['"CMD_Unit"'],
         },
         "availability": [0, 3, 0, 0],
     },

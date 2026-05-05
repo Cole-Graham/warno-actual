@@ -3,6 +3,7 @@
 from typing import Any, Dict, List, Union
 
 from src import ndf
+from src.constants import TANDEM_MODIFIER
 from src.constants.weapons.standards import (
     AIM_TIME_STANDARDS,
     CANON_HE_DAMAGE_BY_CALIBER,
@@ -229,3 +230,44 @@ def apply_infantry_mmg_cac_trait(source_path, logger) -> None:
 
         traits_list.v.add("'CAC'")
         logger.info(f"Added CAC trait to {ammo_descr.namespace} (MinimumRangeGRU = 0)")
+
+
+def apply_tandem_charge_inversion(source_path, logger):
+    """Change all Tandem HEAT weapons so TandemCharge = False, and vice-versa."""
+    for ammo_descr in source_path:
+
+        # Determine Arme.Family once (used for both exclusion and qualification)
+        family = None
+        arme_membr = ammo_descr.v.by_m("Arme", False)
+        if arme_membr is not None:
+            fam_membr = arme_membr.v.by_m("Family", False)
+            if fam_membr is not None:
+                family = fam_membr.v
+
+        # Check if it is a HEAT weapon
+        if family is None or family != "DamageFamily_ap_missile":
+            continue
+
+        traits_membr = ammo_descr.v.by_m("TraitsToken", False)
+        if traits_membr is None:
+            continue
+        
+        tokens = [t.v for t in traits_membr.v]
+        if "'TANDEM'" in tokens:
+            is_tandem = True
+        else:
+            is_tandem = False
+            
+        tandem_membr = ammo_descr.v.by_m("TandemCharge", False)
+        if tandem_membr is None:
+            try:
+                ammo_descr.v.add(f"TandemCharge = {False if is_tandem else True}")
+                logger.info(f"(Ammunition) Added TandemCharge=True (late inversion) on {ammo_descr.namespace}")
+            except Exception as e:
+                logger.warning(f"Failed to add TandemCharge to {ammo_descr.namespace}: {e}")
+        elif is_tandem:
+            tandem_membr.v = "False"
+            logger.info(f"(Ammunition) Inverted TandemCharge for {ammo_descr.namespace} ({is_tandem} -> {False})")
+        elif not is_tandem:
+            tandem_membr.v = "True"
+            logger.info(f"(Ammunition) Inverted TandemCharge for {ammo_descr.namespace} ({is_tandem} -> {True})")

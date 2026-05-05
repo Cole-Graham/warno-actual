@@ -1767,6 +1767,7 @@ uk_unit_edits = {
         "armor": {
             "top": (3, None),
         },
+        "max_speed": 35,
         "availability": [0, 8, 6, 0],
         "WeaponDescriptor": {
             "Salves": {
@@ -1884,6 +1885,7 @@ uk_unit_edits = {
         "armor": {
             "top": (4, None),
         },
+        "max_speed": 50,
         "availability": [0, 0, 4, 3],
         "WeaponDescriptor": {
             "Salves": {

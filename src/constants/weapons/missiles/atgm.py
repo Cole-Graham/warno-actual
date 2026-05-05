@@ -77,7 +77,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("ATGM_Swingfire", "ATGM", None, False): {
         "Ammunition": {
             "Arme": {
-                "Index": 22,
+                "Index": 23,
             },
             "hit_roll": {
                 "Idling": 60,
@@ -101,7 +101,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("ATGM_Swingfire_noisy", "ATGM", "ATGM_Swingfire", True): {
         "Ammunition": {
             "Arme": {
-                "Index": 22,
+                "Index": 23,
             },
             "hit_roll": {
                 "Idling": 60,
@@ -109,6 +109,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "ProjectileSpeedGRU": 350,
                 "InterfaceWeaponTexture": "'Texture_Interface_Weapon_swingfire_wa'",
+                "TandemCharge": True, # For inverted tandem logic
             },
         },
         "SupplyCost": 95.0,
@@ -123,7 +124,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("ATGM_MILAN_2_IFV", "ATGM", None, False): {
         "Ammunition": {
             "Arme": {
-                "Index": 22,
+                "Index": 23,
             },
             "hit_roll": {
                 "Idling": 50,
@@ -167,7 +168,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("ATGM_MILAN_2", "ATGM", None, False): {
         "Ammunition": {
             "Arme": {
-                "Index": 22,
+                "Index": 23,
             },
             "hit_roll": {
                 "Idling": 50,
@@ -234,7 +235,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("ATGM_HOT2", "ATGM", None, False): {
         "Ammunition": {
             "Arme": {
-                "Index": 24,
+                "Index": 25,
             },
             "hit_roll": {
                 "Idling": 70,
@@ -255,6 +256,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("ATGM_HOT1", "ATGM", None, False): {
         "Ammunition": {
+            "Arme": {
+                "Index": 23,
+            },
             "hit_roll": {
                 "Idling": 65,
             },
@@ -313,7 +317,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("ATGM_BGM71D_TOW_2A_IFV", "ATGM", None, False): {
         "Ammunition": {
             "Arme": {
-                "Index": 24,
+                "Index": 25,
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 466,
@@ -332,7 +336,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("ATGM_BGM71D_TOW_2_IFV", "ATGM", None, False): {
         "Ammunition": {
             "Arme": {
-                "Index": 23,
+                "Index": 24,
             },
             "parent_membr": {
                 # "Caliber": ("6.1kg HYBRID", "SVJNWQPYKO"),
@@ -352,7 +356,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("ATGM_BGM71D_TOW_2A", "ATGM", None, False): {
         "Ammunition": {
             "Arme": {
-                "Index": 24,
+                "Index": 25,
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 466,
@@ -372,7 +376,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("ATGM_BGM71D_TOW_2", "ATGM", None, False): {
         "Ammunition": {
             "Arme": {
-                "Index": 23,
+                "Index": 24,
             },
             "parent_membr": {
                 # "Caliber": ("6.1kg HYBRID", "SVJNWQPYKO"),
@@ -411,6 +415,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "ProjectileSpeedGRU": 466,
                 "TimeBetweenTwoSalvos": 30.0,
                 "InterfaceWeaponTexture": "'Texture_Interface_Weapon_tow2a_wa'",
+                "TandemCharge": True, # For inverted tandem logic
             },
         },
         "SupplyCost": 80.0,
@@ -502,6 +507,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "ProjectileSpeedGRU": 311,
                 "InterfaceWeaponTexture": "'Texture_Interface_Weapon_fagot_wa'",
+                "TandemCharge": True, # For inverted tandem logic
             }
         },
         "SupplyCost": 50.0,
@@ -562,7 +568,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("ATGM_9M128_Agona", "ATGM", None, False): {
         "Ammunition": {
             "Arme": {
-                "Index": 24
+                "Index": 25
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 544,
@@ -582,6 +588,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "display": "9K120 Svir",
             "token": "WMOWZEXCQJ",
+            "Arme": {
+                "Index": 22,
+            },
             "parent_membr": {
                 "MaximumRangeGRU": 2625,
                 "ProjectileSpeedGRU": 622,
@@ -616,7 +625,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("ATGM_9M114M_Ataka", "ATGM", None, False): {
         "Ammunition": {
             "Arme": {
-                "Index": 24,
+                "Index": 25,
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 800,
@@ -636,6 +645,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "display": "9M119 Refleks",
             "token": "ZIAPPNOKJO",
+            "Arme": {
+                "Index": 22,
+            },
             "parent_membr": {
                 "MaximumRangeGRU": 2800,
                 "ProjectileSpeedGRU": 622,
@@ -656,7 +668,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("ATGM_9M119M_Invar", "ATGM", None, False): {
         "Ammunition": {
             "Arme": {
-                "Index": 24,
+                "Index": 25,
             },
             "display": "9M119M Invar",
             "token": "YUXMIRHNPX",
@@ -664,6 +676,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeGRU": 2800,
                 "ProjectileSpeedGRU": 622,
                 "InterfaceWeaponTexture": "'Texture_Interface_Weapon_invar_wa'",
+                "TandemCharge": False, # For inverted tandem logic
             },
         },
         "SupplyCost": 120.0,
@@ -720,7 +733,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("ATGM_9M113M_KonkursM", "ATGM", None, False): {
         "Ammunition": {
             "Arme": {
-                "Index": 23,
+                "Index": 24,
             },
             "parent_membr": {
                 # "Caliber": ("2.7kg TANDEM", "JDLKNWTJOR"),
@@ -740,6 +753,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
     # TODO: Find out why this is sourcing ATGM_9M113M_KonkursM_salvolength5 for the donor
     ("ATGM_inf_9M113M_KonkursM", "ATGM", "ATGM_9M113M_KonkursM", True): {
         "Ammunition": {
+            "Arme": {
+                "Index": 24,
+            },
             "hit_roll": {
                 "Idling": 60,
             },
@@ -748,6 +764,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeGRU": 2450,
                 "ProjectileSpeedGRU": 389,
                 "InterfaceWeaponTexture": "'Texture_Interface_Weapon_konkursM_wa'",
+                "TandemCharge": False, # For inverted tandem logic
             },
         },
         "SupplyCost": 95.0,
@@ -817,7 +834,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("ATGM_9M112M2_Kobra", "ATGM", "ATGM_9M112_Kobra", True): {
         "Ammunition": {
             "Arme": {
-                "Index": 22,
+                "Index": 23,
             },
             "display": "9M112M2 Kobra",
             "token": "CUZYCCVUIO",
@@ -827,6 +844,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "ProjectileSpeedGRU": 739,
                 "InterfaceWeaponTexture": "'Texture_Interface_Weapon_kobra_wa'",
+                "TandemCharge": False, # For inverted tandem logic
             },
         },
         "SupplyCost": 105.0,

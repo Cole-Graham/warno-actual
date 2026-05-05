@@ -124,7 +124,7 @@ def _handle_batch_changes(source_path, game_db) -> None:
                 modules_list.v.add(
                     "TWeaponDeploymentModuleDescriptor("
                     "    TimeForWeaponDeployment = 15"
-                    "    TimeForWeaponPacking = 1"
+                    "    TimeForWeaponPacking = 0.1"
                     ")",
                 )
                 added_count += 1
@@ -133,6 +133,32 @@ def _handle_batch_changes(source_path, game_db) -> None:
             if dep_module is not None:
                 modules_list.v.remove(dep_module.index)
                 removed_count += 1
+
+        # Downgrade all vanilla units with strength 11 to 10 (ERA no longer provides the extra HP)
+        unit_data = game_db.get("unit_data", {}).get(unit_name, {})
+        if unit_data.get("strength") == 11:
+            damage_module = find_obj_by_type(modules_list.v, "TBaseDamageModuleDescriptor")
+            if damage_module:
+                try:
+                    damage_module.v.by_m("MaxPhysicalDamages").v = "10"
+                    logger.info(f"Batch strength: reduced {unit_name} from 11 to 10")
+                except Exception as e:
+                    logger.debug(f"Could not reduce strength for {unit_name}: {e}")
+            else:
+                logger.warning(f"No damage module found for {unit_name}")
+
+            # Apply ERA speed penalty (-5 km/h) to vehicles; manual max_speed edits and NEW_UNITS entries override later.
+            generic_movement_module = find_obj_by_type(modules_list.v, "TGenericMovementModuleDescriptor")
+            if generic_movement_module:
+                try:
+                    current_speed_str = generic_movement_module.v.by_m("MaxSpeedInKmph").v
+                    current_speed = int(current_speed_str)
+                    new_speed = max(0, current_speed - 5)
+                    generic_movement_module.v.by_m("MaxSpeedInKmph").v = str(new_speed)
+                    logger.info(f"Batch ERA speed nerf: reduced {unit_name} max speed from {current_speed} to {new_speed} km/h")
+                except Exception as e:
+                    logger.debug(f"Could not apply ERA speed nerf for {unit_name}: {e}")
+            # (no else: not all strength-11 units are vehicles, e.g. some infantry squads)
 
     logger.info(
         f"Batch WeaponDeployment: removed from {removed_count} units, "

@@ -10,7 +10,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AGM_HOT2", "ATGM", None, False): { # 74
         "Ammunition": {
             "Arme": {
-                "Index": 24,
+                "Index": 25,
             },
             "hit_roll": {
                 "Idling": 70,
@@ -31,6 +31,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("AGM_HOT1", "ATGM", None, False): {
         "Ammunition": {
+            "Arme": {
+                "Index": 23,
+            },
             "hit_roll": {
                 "Idling": 65,
             },
@@ -125,7 +128,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AGM_BGM71D_TOW_2", "ATGM", None, False): {
         "Ammunition": {
             "Arme": {
-                "Index": 23,
+                "Index": 24,
             },
             "parent_membr": {
                 # "Caliber": ("6.1kg HYBRID", "SVJNWQPYKO"),
@@ -242,7 +245,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AGM_9M17P_FalangaP", "ATGM", None, False): {
         "Ammunition": {
             "Arme": {
-                "Index": 20,
+                "Index": 21,
             },
             "hit_roll": {
                 "Idling": 50,
@@ -301,7 +304,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AGM_9M114M_Ataka", "ATGM", None, False): {
         "Ammunition": {
             "Arme": {
-                "Index": 24,
+                "Index": 25,
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 800,
@@ -320,7 +323,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AGM_9K121_Vikhr", "ATGM", None, False): {
         "Ammunition": {
             "Arme": {
-                "Index": 24,
+                "Index": 25,
             },
             "hit_roll": {
                 "Moving": 50,
@@ -344,7 +347,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AGM_9K121_Vikhr_avion_ripple2", "ATGM", None, False): { # 36
         "Ammunition": {
             "Arme": {
-                "Index": 24,
+                "Index": 25,
             },
             "hit_roll": {
                 "Moving": 50,

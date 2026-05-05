@@ -49,8 +49,7 @@ WEAPON_TRAIT_EDITS = {
         f"The tandem-charged HEAT round is specifically designed to "
         f"penetrate explosive reactive armor (ERA) using dual-charge "
         f"warheads.\n\n"
-        f"#styleGreen{{- Penetration is increased by +2 against ERA-equipped "
-        f"units.}}"
+        f"#styleGreen{{- Penetration is unaffected by ERA-equipped units.}}"
     ),
 }
 

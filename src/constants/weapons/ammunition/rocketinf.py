@@ -103,7 +103,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketInf_RPG7VR_64mm", "medium_at", None, False): { # 698
         "Ammunition": {
             "Arme": {
-                "Index": 22,
+                "Index": 23,
             },
             "hit_roll": {
                 "Idling": 45,
@@ -173,7 +173,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketInf_RPG29_105mm", "heavy_at", None, False): { # 690
         "Ammunition": {
             "Arme": {
-                "Index": 22,
+                "Index": 23,
             },
             "hit_roll": {
                 "Idling": 60,
@@ -188,7 +188,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketInf_RPG27_105mm", "medium_at", None, False): { # 689
         "Ammunition": {
             "Arme": {
-                "Index": 22,
+                "Index": 23,
             },
             "hit_roll": {
                 "Idling": 45,
@@ -329,6 +329,9 @@ weapons: Dict[WeaponKey, WeaponData] = {
     
     ("RocketInf_APILAS", "heavy_at", None, False): {
         "Ammunition": {
+            "Arme": {
+                "Index": 22,
+            },
             "hit_roll": {
                 "Idling": 50,
             },
@@ -343,7 +346,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketInf_PzF_3", "heavy_at", None, False): {
         "Ammunition": {
             "Arme": {
-                "Index": 21,
+                "Index": 22,
             },
             "hit_roll": {
                 "Idling": 60,
@@ -353,7 +356,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "DisplaySalveAccuracy": False,
                 "TimeBetweenTwoSalvos": 6.0,
                 "SupplyCost": 20.0,
-                "TandemCharge": False,
+                "TandemCharge": True,
             },
         },
     },
@@ -363,7 +366,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "display": "PANZERFAUST 3-T",
             "token": "LGJSOHJWCY",
             "Arme": {
-                "Index": 23,
+                "Index": 24,
             },
             "hit_roll": {
                 "Idling": 60,
@@ -374,7 +377,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "DisplaySalveAccuracy": False,
                 "TimeBetweenTwoSalvos": 6.0,
                 "SupplyCost": 20.0,
-                "TandemCharge": True, # 1995 lmao xD
+                "TandemCharge": False, # For inverted tandem logic
             },
         },
     },
@@ -619,7 +622,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketInf_LAW_80", "medium_at", None, False): { # 669
         "Ammunition": {
             "Arme": {
-                "Index": 21,
+                "Index": 22,
             },
             "hit_roll": {
                 "Idling": 60,

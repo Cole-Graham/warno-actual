@@ -19,6 +19,7 @@ from .handlers import (
     apply_category_aa_missile_standards,
     apply_category_sead_standards,
     apply_clu_sol_trait_standards,
+    apply_tandem_charge_inversion,
     remove_vanilla_instances,
     vanilla_renames_ammunition,
 )
@@ -44,6 +45,7 @@ def edit_gen_gp_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]
         # Apply global modifications
         try:
             apply_bomb_damage_standards(source_path, logger)
+            apply_tandem_charge_inversion(source_path, logger)
             edit_missile_speed(source_path, game_db)
             apply_clu_sol_trait_standards(source_path, logger, game_db)
             logger.debug("Applied global modifications")
@@ -387,6 +389,14 @@ def _handle_salvo_variants(
 def _apply_missile_edits(descr: Any, data: Dict, ammo_data: Dict, is_new: bool) -> None:  # noqa
     """Apply edits to missile descriptor."""
     membr = descr.v.by_m
+    
+    # tandem inversion (apply first so manual edits take precedence)
+    traits_tokens = [t.v for t in descr.v.by_m("TraitsToken").v]
+    family = descr.v.by_m("Arme").v.by_m("Family")
+    if "'TANDEM'" in traits_tokens:
+        membr("TandemCharge").v = "False"
+    elif "'HEAT'" in traits_tokens and family.v == "DamageFamily_ap_missile":
+        membr("TandemCharge").v = "True"
 
     # Apply Arme edits
     if "Ammunition" in data:
@@ -396,8 +406,13 @@ def _apply_missile_edits(descr: Any, data: Dict, ammo_data: Dict, is_new: bool) 
 
         arme_data = data["Ammunition"].get("Arme", None)
         if arme_data:
+            
+            # tandem inversion (apply first so manual edits take precedence)
+            family_edit = arme_data.get("Family", None)
+            if family_edit == "DamageFamily_ap_missile":
+                membr("TandemCharge").v = "True"
+                
             arme_obj = descr.v.by_m("Arme").v
-
             for arme_membr, arme_v in arme_data.items():
                 if isinstance(arme_v, (float, int, bool)):
                     arme_obj.by_m(arme_membr).v = str(arme_v)

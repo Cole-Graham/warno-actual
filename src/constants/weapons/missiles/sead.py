@@ -173,6 +173,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "MaxAccelerationGRU": 2827,
                 "TimeBetweenTwoSalvos": 2.3,
                 "SupplyCost": 150.0,
+                "TandemCharge": True, # For inverted tandem logic
             },
         },
         "MissileDescriptor": {

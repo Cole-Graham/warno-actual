@@ -321,7 +321,6 @@ POL_mechanized_newdivisionrules = {
         ("Engineers_POL", 2, [0, 6, 4, 0], ["OT_62_TOPAS_POL"]),
         ("Engineers_Flam_POL", 1, [0, 6, 4, 0], ["OT_62_TOPAS_POL"]),
         ("Naval_Engineers_POL", 1, [0, 6, 4, 0], ["OT_62_TOPAS_POL"]),
-        ("Engineers_paras_Flam_POL", 1, [0, 6, 4, 0], ["OT_62_TOPAS_POL"]),
         ("Groupe_AT_POL", 2, [10, 7, 0, 0], ["OT_62_TOPAS_POL", "OT_62_TOPAS_SPG9_POL", "BMP_1_SP2_POL", "BMP_2_POL"]),
         ("Reserve_POL", 1, [12, 0, 0, 0], ["OT_62_TOPAS_POL"]),
         ("Reserve_SVD_POL", 2, [12, 0, 0, 0], ["OT_62_TOPAS_POL"]),

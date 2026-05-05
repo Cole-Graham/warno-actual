@@ -276,7 +276,7 @@ sov_new_divs = {
         "summary_text": ("Soviet armored division.", "SUMSOVARM"),
         "history_text": ("USSR Armored division.", "HISOVARM"),
         "activation_points": 100,
-        "standout_units": ["T80U_Obr89_SOV", "T72B_SOV", "T64AM_SOV"],
+        "standout_units": ["T80U_Obr89_SOV", "T72B_SOV", "T64AV_SOV"],
         "division_rules": [
             SOV_armored_newdivisionrules,
             SOV_global_newdivisionrules,

@@ -26,6 +26,7 @@ from .standards import (
     apply_bomb_damage_standards,
     apply_clu_sol_trait_standards,
     apply_infantry_mmg_cac_trait,
+    apply_tandem_charge_inversion,
 )
 from .vanilla_renames import (
     remove_vanilla_instances,
@@ -46,6 +47,7 @@ __all__ = [
     'apply_infantry_mmg_cac_trait',
     'apply_he_damage_standards',
     'apply_weapon_range_standards',
+    'apply_tandem_charge_inversion',
     'remove_vanilla_instances',
     'vanilla_renames_ammunition',
 ]

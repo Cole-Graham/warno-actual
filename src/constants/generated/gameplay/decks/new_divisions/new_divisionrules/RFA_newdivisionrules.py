@@ -170,7 +170,7 @@ RFA_armored_newdivisionrules = {
         ("Gepard_1A2_RFA", 2, [6, 4, 0, 0]),
         ("Marder_Roland_2_RFA", 2, [6, 4, 0, 0]),
         ("Marder_Roland_RFA", 2, [4, 3, 0, 0]),
-        ("DCA_I_Hawk_RFA", 1, [4, 3, 0, 0], ["Unimog_S_404_RFA"]),
+        ("DCA_I_Hawk_RFA", 1, [6, 4, 0, 0], ["Unimog_S_404_RFA"]),
     ],
     "heli": [
         ("Bo_105_PAH_1A1_RFA", 2, [0, 0, 4, 3]),
@@ -186,7 +186,7 @@ RFA_global_newdivisionrules = {
         ("F104G_Starfighter_AT_RFA", 2, [0, 4, 3, 0]),
         ("F104G_Starfighter_HE_RFA", 1, [0, 4, 0, 0]),
         ("F104G_Starfighter_RFA", 2, [0, 4, 3, 0]),
-        ("F4F_Phantom_II_AA2_RFA", 2, [0, 3, 2, 0]),
+        ("F4F_Phantom_II_AA2_RFA", 2, [0, 0, 3, 2]),
         ("F4F_Phantom_II_AA_RFA", 2, [0, 3, 2, 0]),
         ("F4F_Phantom_II_AT_RFA", 1, [0, 2, 0, 0]),
         ("RF4E_Phantom_HE_RFA", 1, [0, 3, 0, 0]),
