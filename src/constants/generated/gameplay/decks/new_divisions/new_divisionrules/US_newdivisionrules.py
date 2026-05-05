@@ -95,7 +95,7 @@ US_airborne_newdivisionrules = {
         ("AH64_Apache_emp1_US", 2, [0, 2, 0, 1]),
         ("AH64_Apache_ATAS_US", 2, [0, 2, 0, 1]),
         ("AH64_Apache_US", 2, [0, 2, 0, 1]),
-        ("AH64_Apache_emp2_US", 2, [0, 4, 0, 2]),
+        ("AH64_Apache_emp2_US", 2, [0, 0, 3, 2]),
         ("AH1F_Cobra_US", 2, [0, 4, 3, 0]),
         ("AH1F_ATAS_US", 2, [0, 3, 2, 0]),
         ("AH1F_HeavyHog_US", 2, [0, 4, 3, 0]), # I'd add this to Moto
@@ -231,7 +231,7 @@ US_armored_newdivisionrules = {
     "heli": [
         ("AH64_Apache_emp1_US", 2, [0, 2, 0, 1]),
         ("AH64_Apache_US", 2, [0, 2, 0, 1]),
-        ("AH64_Apache_emp2_US", 2, [0, 4, 0, 2]),
+        ("AH64_Apache_emp2_US", 2, [0, 0, 3, 2]),
         ("AH1F_Cobra_US", 2, [0, 4, 3, 0]),
         ("AH1F_HeavyHog_US", 2, [0, 4, 3, 0]),
         ("AH1F_Hog_US", 2, [0, 4, 3, 0]),
@@ -255,8 +255,6 @@ US_global_newdivisionrules = {
         ("F16E_HE_US", 1, [0, 2, 0, 0]),
         ("F16E_TER_HE_US", 1, [0, 2, 0, 0]),
         ("F16E_napalm_US", 1, [0, 3, 2, 0]),
-        ("F18_Hornet_AA_US", 1, [0, 2, 0, 1]),
-        ("F18_Hornet_AA2_US", 1, [0, 2, 0, 1]),
         ("EF111_Raven_US", 1, [0, 2, 0, 0]),
         ("F111F_Aardvark_LGB_US", 1, [0, 0, 0, 2]),
         ("F111F_Aardvark_LGB2_US", 2, [0, 0, 0, 1]),
@@ -287,7 +285,7 @@ US_marine_newdivisionrules = {
         ("LAV_C_US", 1, [0, 3, 0, 0]),
         # doesn't exist anymore ???
         # ("AAVC_7A1_CMD_USMC_US", 1, [0, 3, 0, 0]),
-        ("M60A1_RISE_Passive_USMC_CMD2_US", 1, [0, 2, 0, 0]),
+        ("M60A1_RISE_Passive_USMC_CMD2_US", 1, [0, 0, 2, 0]),
         ("LAV_L_US", 2, [6, 0, 0, 0]),
         ("M35_supply_US", 2, [3, 0, 0, 0]),
         ("LARC_60_supply_US", 2, [1, 0, 0, 0]),
@@ -311,15 +309,15 @@ US_marine_newdivisionrules = {
         ("ATteam_TOW2_USMC_US", 2, [4, 3, 0, 0], ["M998_Humvee_US"]),
     ],
     "artillery": [
-        ("M110A2_USMC_US", 1, [2, 0, 1, 0]),
-        ("M109A2_USMC_US", 1, [3, 2, 0, 0]),
+        ("M110A2_USMC_US", 2, [2, 0, 1, 0]),
+        ("M109A2_USMC_US", 2, [3, 2, 0, 0]),
         ("Howz_M198_155mm_USMC_US", 2, [3, 2, 0, 0], ["M35_trans_US"]),
         ("LAV_M_81mm_US", 2, [4, 3, 0, 0]),
         ("81mm_mortar_USMC_US", 2, [6, 5, 4, 0], ["M998_Humvee_US"]),
     ],
     "tank": [
         ("M60A1_RISE_Passive_USMC_CMD_US", 1, [0, 0, 4, 0]),
-        ("M60A1_RISE_Passive_USMC_US", 2, [10, 7, 0, 0]),
+        ("M60A1_RISE_Passive_USMC_US", 2, [8, 6, 0, 0]),
         ("M60A1_RISE_Passive_USMC_ERA_US", 1, [0, 8, 6, 0]),
         ("M1025_Humvee_TOW_USMC_US", 2, [0, 6, 4, 0]),
         ("LAV_AT_US", 1, [0, 6, 4, 0]),
@@ -335,11 +333,11 @@ US_marine_newdivisionrules = {
         ("OV10_Bronco_US", 1, [0, 3, 2, 0]),
     ],
     "aa": [
-        ("DCA_I_Hawk_USMC_US", 2, [6, 4, 0, 0], ["M35_trans_US"]),
+        ("DCA_I_Hawk_USMC_US", 2, [6, 4, 0, 0], ["M35_supply_US"]),
         ("MANPAD_Stinger_C_USMC_US", 2, [7, 5, 0, 0], ["M998_Humvee_US"]),
     ],
     "heli": [
-        ("AH1W_SuperCobra_Hydra_US", 2, [0, 3, 2, 0]),
+        ("AH1W_SuperCobra_Hydra_US", 2, [0, 0, 3, 2]),
         ("AH1W_SuperCobra_AA_US", 1, [0, 3, 2, 0]),
         ("AH1W_SuperCobra_AT_US", 2, [0, 2, 0, 1]),
         ("AH1W_SuperCobra_SEAD_US", 1, [0, 3, 2, 0]),
@@ -355,7 +353,9 @@ US_marine_newdivisionrules = {
         ("EA6B_Prowler_US", 1, [0, 2, 0, 1]),
         ("F14A_Tomcat_AA_US", 2, [0, 2, 0, 1]),
         ("F14A_Tomcat_AA2_US", 1, [0, 2, 0, 0]),
-        ("F18_Hornet_SEAD_US", 1, [0, 2, 0, 1]), # I swear I made this 0/2/0/1, did you swap that Lat?
+        ("F18_Hornet_AA_US", 2, [0, 2, 0, 1]),
+        ("F18_Hornet_AA2_US", 2, [0, 2, 0, 1]),
+        ("F18_Hornet_SEAD_US", 1, [0, 2, 0, 1]),
     ],
 }
 
@@ -547,7 +547,7 @@ US_motorized_newdivisionrules = {
         ("M151C_RCL_NG_US", 1, [12, 0, 0, 0]),
     ],
     "artillery": [
-        ("M109A2_HOWZ_US", 1, [3, 2, 0, 0]),
+        ("M109A2_HOWZ_US", 2, [3, 2, 0, 0]),
         ("M60A1_AVLM_US", 1, [3, 2, 0, 0]),
         ("M106A2_HOWZ_US", 2, [4, 3, 0, 0]),
         ("M125_HOWZ_US", 2, [4, 3, 0, 0]),

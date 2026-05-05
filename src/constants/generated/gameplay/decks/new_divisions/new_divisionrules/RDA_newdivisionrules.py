@@ -413,7 +413,7 @@ RDA_motorized_newdivisionrules = {
         ("Scout_KdA_DDR", 1, [10, 0, 0, 0], ["W50_LA_A_DDR", "SPW_152K_DDR"]),
         ("Grenzer_Mot_DDR", 2, [8, 6, 0, 0], ["UAZ_469_trans_DDR", "BRDM_1_DDR", "UAZ_469_Reco_DDR", "UAZ_469_AGL_Grenzer_DDR"]),
         ("Grenzer_DDR", 1, [8, 6, 0, 0], ["W50_LA_A_DDR", "BTR_60_reco_DDR"]),
-        ("Grenzer_Flam_DDR", 1, [6, 0, 0, 0], ["W50_LA_A_DDR", "BTR_60_reco_DDR"]),
+        ("Grenzer_Flam_DDR", 1, [0, 4, 3, 0], ["W50_LA_A_DDR", "BTR_60_reco_DDR"]),
         ("HvyScout_RPG7VL_DDR", 2, [6, 4, 0, 0], ["W50_LA_A_DDR", "BTR_60_reco_DDR", "Mi_2_trans_DDR"]),
         ("Scout_SIGINT_DDR", 1, [6, 4, 0, 0], ["UAZ_469_trans_DDR", "BRDM_1_DDR", "Mi_24D_s5_AT_reco_DDR"]),
         ("BRDM_2_DDR", 3, [8, 6, 0, 0]),

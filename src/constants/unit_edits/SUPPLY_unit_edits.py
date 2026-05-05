@@ -310,9 +310,9 @@ SUPPLY_UNITS_BY_TIER = {
         # tier 3
         ("Puma_UK", "tier_3"),
         ("Puma_FR", "tier_3"),
-        ("CH46E_SeaKnight_supply_US", "tier_3"),
 
         # tier 4
+        ("CH46E_SeaKnight_supply_US", "tier_4"),
         ("Mi_8TZ_SOV", "tier_4"),
         ("Mi_14PS_supply_SOV", "tier_4"),
         ("Mi_8_supply_DDR", "tier_4"),

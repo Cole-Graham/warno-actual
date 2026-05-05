@@ -3702,9 +3702,8 @@ usa_unit_edits = {
         "availability": [0, 8, 6, 0],
         "UpgradeFromUnit": "M60A3_Patton_US",
         "armor": {
-            "top": (4, None),
+            "top": (3, None),
         },
-        "max_speed": 45,
     },
 
     "M60A3_Patton_NG_US": {
@@ -3755,9 +3754,8 @@ usa_unit_edits = {
         },
         "availability": [0, 8, 6, 0],
         "armor": {
-            "top": (4, None),
+            "top": (3, None),
         },
-        "max_speed": 45,
     },
 
     "M551A1_TTS_Sheridan_US": {
@@ -5596,6 +5594,20 @@ usa_unit_edits = {
         "UpgradeFromUnit": "F15E_StrikeEagle_US",
         "SpecialtiesList": {
             "add_specs": ["'_noise_stealth'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": {
+                    "Bomb_GBU_27": {
+                        "new_weapon": "Bomb_GBU_27_salvolength2",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True, # No need to swap depiction
+                    },
+                },
+            },
+            "Salves": {
+                "Bomb_GBU_10_salvolength2": 1,
+            },
         },
     },
     

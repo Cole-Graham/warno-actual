@@ -20,7 +20,7 @@ mot_schutzen_rpg29_ddr: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
 
         ("AllWeaponSubDepiction_MotSchutzen_RPG29_DDR", "TemplateAllSubWeaponDepiction"): {
             "Operators": {
-                1: ("edit", [("FireEffectTag", "SAW_RPK_74_5_56mm")]),
+                1: ("edit", [("FireEffectTag", "SAW_lMG_K_7_62mm")]),
                 2: ("edit", [("FireEffectTag", "RocketInf_RPG29_105mm")]),
             },
         },

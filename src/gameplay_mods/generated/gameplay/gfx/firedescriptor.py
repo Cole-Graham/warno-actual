@@ -41,6 +41,7 @@ def edit_gen_gp_gfx_firedescriptor(source_path) -> None:
                 "TimeToLive": 90,
                 "RadiusGRU": 53,
                 "AmmunitionForBurn": "$/GFX/Weapon/Ammo_incendiary_magnesium_53m",
+                "TimeBetweenBurns": 1.5,
             },
         },
     }

@@ -1178,28 +1178,28 @@ RDA_NEW_UNITS = {
         "strength": 7,
         "WeaponDescriptor": {
             # Donor turrets: T0=FM_Mpi_AK_74N, T1/T2=RocketInf_RPG7VR_64mm (same ammo, two mounts).
-            # First RPG mount -> 2x SAW_RPK_74; second -> RocketInf_RPG29 (ordered list replace).
+            # First RPG mount -> 2x SAW_lMG_K_7_62mm; second -> RocketInf_RPG29 (ordered list replace).
             "Salves": {
                 "FM_Mpi_AK_74N": 11,
-                "SAW_RPK_74_5_56mm": 18,
+                "SAW_lMG_K_7_62mm": 18,
                 "RocketInf_RPG29_105mm": 6,
             },
             "equipmentchanges": {
                 "animate": {
-                    "SAW_RPK_74_5_56mm": False,
+                    "SAW_lMG_K_7_62mm": False,
                     "RocketInf_RPG29_105mm": True,
                 },
                 "quantity": {
                     "FM_Mpi_AK_74N": 5,
-                    "SAW_RPK_74_5_56mm": 2,
+                    "SAW_lMG_K_7_62mm": 2,
                 },
                 "replace": {
                     "RocketInf_RPG7VR_64mm": [
                         {
-                            "new_weapon": "SAW_RPK_74_5_56mm",
+                            "new_weapon": "SAW_lMG_K_7_62mm",
                             "swap_fire_effect": True,
                             "depiction_baked_in": False,
-                            "old_new_effect": ("RocketInf_RPG7VR_64mm", "SAW_RPK_74_5_56mm"),
+                            "old_new_effect": ("RocketInf_RPG7VR_64mm", "SAW_lMG_K_7_62mm"),
                         },
                         {
                             "new_weapon": "RocketInf_RPG29_105mm",
