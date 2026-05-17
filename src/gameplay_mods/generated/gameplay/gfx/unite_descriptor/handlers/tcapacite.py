@@ -59,9 +59,11 @@ def _add_capacite_module(
     skills_to_add = {
         "skills": {
             "Choc": [
-                "Choc_Move",
-                "Choc_Move_ok",
-                "no_Choc_Move",
+                "Sprint",
+                "Sprint_Activated",
+                "Sprint_BeginCooldown",
+                "Sprint_Cooldown",
+                "NoSprint",
             ],
         },
         "specialties": {
@@ -70,10 +72,10 @@ def _add_capacite_module(
                 "no_Swift",
             ],
             "'infantry_equip_medium'": [
-                "Medium_Cohesion_Loss",
+                "Medium_Equip_Penalty",
             ],
             "'infantry_equip_heavy'": [
-                "Medium_Cohesion_Loss",
+                "Medium_Equip_Penalty",
             ],
             
         },

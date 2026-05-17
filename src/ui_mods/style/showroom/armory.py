@@ -10,7 +10,7 @@ config = ModConfig.get_instance()
 target = config.config_data['build_config']['target']
 
 def edit_uispecificshowroomarmorycomponent(source_path) -> None:
-    """Edit UISpecificShowroomArmoryComponent.ndf.
+    """Edit GameData/UserInterface/Use/ShowRoom/Views/UISpecificShowroomArmoryComponent.ndf.
     
     Args:
         source_path: NDF file containing showroom armory component definitions
@@ -27,6 +27,7 @@ def edit_uispecificshowroomarmorycomponent(source_path) -> None:
         _edit_togglable_filter_button(source_path)
         _edit_division_filter_button(source_path)
         _edit_showroom_top_filters_bar(source_path)
+        _edit_filterspanellist(source_path)
         _edit_allnationsfilter(source_path)
         _edit_allegiancedivisionfilter(source_path)
         _edit_unitgridnamefilter(source_path)
@@ -61,16 +62,21 @@ def _edit_division_filter_button(source_path) -> None:
 def _edit_showroom_top_filters_bar(source_path) -> None:
     """edit ShowroomTopFiltersBarContainer"""
     
-    showroom_top_filters_bar = source_path.by_namespace("ShowroomTopFiltersBarContainer")
-    elements = showroom_top_filters_bar.v.by_m("Elements")
+    # showroom_top_filters_bar = source_path.by_namespace("ShowroomTopFiltersBarContainer")
     
-    first_margin =  "FirstMargin = TRTTILength(Magnifiable = 1.0)"
-    inter_item_margin = "InterItemMargin = TRTTILength(Magnifiable = 1.0)"
-    last_margin = "LastMargin = TRTTILength(Magnifiable = 1.0)"
+    # first_margin =  "FirstMargin = TRTTILength(Magnifiable = 1.0)"
+    # inter_item_margin = "InterItemMargin = TRTTILength(Magnifiable = 1.0)"
+    # last_margin = "LastMargin = TRTTILength(Magnifiable = 1.0)"
     
-    showroom_top_filters_bar.v.insert(2, last_margin)
-    showroom_top_filters_bar.v.insert(2, inter_item_margin)
-    showroom_top_filters_bar.v.insert(2, first_margin)
+    # showroom_top_filters_bar.v.insert(2, last_margin)
+    # showroom_top_filters_bar.v.insert(2, inter_item_margin)
+    # showroom_top_filters_bar.v.insert(2, first_margin)
+    
+def _edit_filterspanellist(source_path) -> None:
+    """edit FilterPanelList"""
+    
+    filterspanelist = source_path.by_namespace("FiltersPanelList")
+    elements = filterspanelist.v.by_m("Elements")
     
     new_value = """[
     BUCKListElementDescriptor

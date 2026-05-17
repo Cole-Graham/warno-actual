@@ -37,6 +37,18 @@ directories:
 
 # divisions to hide (base list used in release builds)
 hide_divs:
+  # Topic Storm
+  - "BRZ_3a_Divisao_multi"
+  - "CUB_1a_Division_Tankes_multi"
+  - "US_4th_Marine_multi"
+  - "US_7th_Light_multi"
+  - "VEN_1a_Division_multi"
+  - "VEN_4a_Division_multi"
+  
+  # Nemesis 7
+  - "FR_ZdD_Paris_multi"
+  - "SOV_DON_100_multi"
+
   # landjut
   - "DK_Jyske_multi"
   - "DK_Ostre_Landkommando_multi"
@@ -110,12 +122,24 @@ hide_divs:
 # divisions to show in dev builds even if they're in hide_divs
 # (useful for testing divisions being prepared for release)
 dev_show_divs:
+  # Topic Storm
+  - "BRZ_3a_Divisao_multi"
+  - "CUB_1a_Division_Tankes_multi"
+  - "US_4th_Marine_multi"
+  - "US_7th_Light_multi"
+  - "VEN_1a_Division_multi"
+  - "VEN_4a_Division_multi"
+  
+  # Nemesis 7
+  - "FR_ZdD_Paris_multi"
+  - "SOV_DON_100_multi"
+
   # landjut
-  - "DK_Jyske_multi"
-  - "DK_Ostre_Landkommando_multi"
-  - "POL_15_Zmechanizowana_multi"
-  - "RDA_20_MSD_multi"
-  - "RFA_6_PzGrenadier_multi"
-  - "SOV_94_Gds_Rifle_multi"
-  - "SOV_336_Naval_Brigade_multi"
-  - "US_2nd_Marine_multi"
+  # - "DK_Jyske_multi"
+  # - "DK_Ostre_Landkommando_multi"
+  # - "POL_15_Zmechanizowana_multi"
+  # - "RDA_20_MSD_multi"
+  # - "RFA_6_PzGrenadier_multi"
+  # - "SOV_94_Gds_Rifle_multi"
+  # - "SOV_336_Naval_Brigade_multi"
+  # - "US_2nd_Marine_multi"

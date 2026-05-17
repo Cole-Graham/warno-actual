@@ -1,6 +1,6 @@
 """Functions for modifying ConditionsDescriptor.ndf"""
 
-from src.constants.effects.capacities import CONDITIONS
+from src.constants.capacities import CONDITIONS
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)

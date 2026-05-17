@@ -4,18 +4,18 @@ from src import ndf
 from src.dics.veterancy.vet_bonuses import VETERANCY_BONUSES
 from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.ndf_utils import find_obj_by_type, strip_quotes
-from src.constants.effects.capacities import (
-    CHOC_MOVE_EFFECT,
-    CHOC_MOVE_OK_EFFECT,
-    NO_CHOC_MOVE_EFFECT,
-    NO_CHOC_MOVE_MORALE_EFFECT,
+from src.constants.effects import (
+    SPRINT_EFFECT,
+    SPRINT_OK_EFFECT,
+    SPRINT_ACTIVATED_EFFECT,
+    DEPLOY_EFFECT,
+    DEPLOY_OK_EFFECT,
+    MEDIUM_EQUIP_PENALTY_EFFECT,
+    NO_SPRINT_EFFECT,
+    NO_SPRINT_MORALE_EFFECT,
     NO_SWIFT_EFFECT,
     SWIFT_EFFECT,
     SWIFT_OK_EFFECT,
-    DEPLOY_EFFECT,
-    DEPLOY_OK_EFFECT,
-    MEDIUM_COHESION_LOSS_EFFECT,
-    COHESION_LOSS_OK_EFFECT,
 )
 from src.utils.logging_utils import setup_logger
 
@@ -29,17 +29,17 @@ def edit_gen_gp_effects_effetssurunite(source_path) -> None:
     # Add new effects
     for i, row in enumerate(source_path, start=1):
         if row.namespace == "UnitEffect_Choc":
-            source_path.insert(i, CHOC_MOVE_EFFECT)
-            source_path.insert(i, NO_CHOC_MOVE_EFFECT)
-            source_path.insert(i, NO_CHOC_MOVE_MORALE_EFFECT)
+            source_path.insert(i, SPRINT_EFFECT)
+            source_path.insert(i, SPRINT_ACTIVATED_EFFECT)
+            source_path.insert(i, NO_SPRINT_EFFECT)
+            source_path.insert(i, NO_SPRINT_MORALE_EFFECT)
+            source_path.insert(i, SPRINT_OK_EFFECT)
             source_path.insert(i, SWIFT_EFFECT)
             source_path.insert(i, NO_SWIFT_EFFECT)
-            source_path.insert(i, CHOC_MOVE_OK_EFFECT)
             source_path.insert(i, SWIFT_OK_EFFECT)
             source_path.insert(i, DEPLOY_OK_EFFECT)
             source_path.insert(i, DEPLOY_EFFECT)
-            source_path.insert(i, MEDIUM_COHESION_LOSS_EFFECT)
-            source_path.insert(i, COHESION_LOSS_OK_EFFECT)
+            source_path.insert(i, MEDIUM_EQUIP_PENALTY_EFFECT)
             break
 
     # Modify sniper effects
