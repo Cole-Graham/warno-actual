@@ -584,6 +584,7 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
+        "UpgradeFromUnit": "Rifles_CMD_UK",
     },
     
     "Gun_Group_Paras_UK": {
@@ -594,6 +595,7 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
+        "UpgradeFromUnit": "Paratroopers_TA_UK",
     },
 
     "RMP_UK": {
@@ -768,6 +770,7 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'_reservist'", "'infantry_equip_light'"],
         },
+        "UpgradeFromUnit": "Paratroopers_CMD_UK",
     },
     
     "Paratroopers_MILAN_TA_UK": {
@@ -795,6 +798,7 @@ uk_unit_edits = {
                 },
             },
         },
+        "UpgradeFromUnit": "Gun_Group_Paras_UK",
     },
     
     "Paratroopers_UK": {
@@ -921,10 +925,14 @@ uk_unit_edits = {
                 "Grenade_Satchel_Charge": 6,
             },
         },
+        "UpgradeFromUnit": "Engineers_AT_UK",
     },
     
     "Engineers_AT_UK": {
         "CommandPoints": 40,
+        "GameName": {
+            "display": "ASSAULT PIONEERS [CG]",
+        },
         "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "SpecialtiesList": {
@@ -938,6 +946,7 @@ uk_unit_edits = {
                 },
             },
         },
+        "UpgradeFromUnit": "Engineers_TA_UK",
     },
 
     "Engineers_Airmobile_UK": {
@@ -1045,6 +1054,7 @@ uk_unit_edits = {
                 "RocketInf_LAW_80": 6,
             },
         },
+        "UpgradeFromUnit": "Rifles_Patrol_UK",
     },
     
     "Rifles_Patrol_UK": {
@@ -1055,6 +1065,7 @@ uk_unit_edits = {
             "add_specs": ["'infantry_equip_light'"],
         },
         "availability": [10, 7, 0, 0],
+        "UpgradeFromUnit": "Rifles_UK",
     },
     
     "Rifles_Berlin_UK": {
@@ -1226,6 +1237,7 @@ uk_unit_edits = {
             "add_specs": ["'infantry_equip_heavy'"],
         },
         "availability": [9, 7, 5, 0],
+        "UpgradeFromUnit": "RCL_L6_Wombat_para_UK",
     },
 
     "ATteam_Milan_2_UK": {
@@ -1673,9 +1685,7 @@ uk_unit_edits = {
     
     "FV102_Striker_UK": {
         "CommandPoints": 60,
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
+        
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 0.1,
@@ -1688,9 +1698,7 @@ uk_unit_edits = {
     
     "FV102_Striker_para_UK": {
         "CommandPoints": 60,
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
+        
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 0.1,
@@ -1950,7 +1958,7 @@ uk_unit_edits = {
                 "MMG_M1919": 40,
             },
         },
-        "UpgradeFromUnit": "Ferret_Swingfire_UK",
+        "UpgradeFromUnit": "Ferret_Mk2_UK",
     },
 
     "FV721_Fox_UK": {
@@ -1978,23 +1986,38 @@ uk_unit_edits = {
         "GameName": {
             "display": "FERRET SWINGFIRE",
         },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE"
+                "GroundUnits",
+                "Radio",
+                "Reco",
+                "UNITE_Ferret_Swingfire_UK",
+                "Unite",
+                "Vehicule",
+                "Vehicule_Reco",
+            ],
+        },
         "Factory": "EFactory/Recons",
         "stealth": 1.5,
         "optics": {
             "VisionRangesGRU": {
-                "EVisionRange/Standard": 3500.0,
+                "EVisionRange/Standard": 3500,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/Standard": 5300.0,
-                "EOpticalStrength/LowAltitude": 5300.0,
-                "EOpticalStrength/HighAltitude": 1400.0,
+                "EOpticalStrength/Standard": 5300,
+                "EOpticalStrength/LowAltitude": 5300,
+                "EOpticalStrength/HighAltitude": 1413,
             },
         },
-        "UpgradeFromUnit": "Ferret_Mk2_UK",
         "availability": [6, 4, 0, 0],
         "capacities": {
             "remove_capacities": ["reserviste"],
-            "add_capacities": ["Deploy", "Deploy_ok"],
+        },
+        "WeaponDeployment": {
+            "TimeForWeaponDeployment": 15,
+            "TimeForWeaponPacking": 0.1,
         },
         "UnitRole": "reco",
         "SpecialtiesList": {
@@ -2003,6 +2026,7 @@ uk_unit_edits = {
                 '_smoke_launcher',
             ],
         },
+        "UpgradeFromUnit": "FV721_Fox_UK",
     },
     
     "FV4201_Chieftain_Mk11_UK": {
@@ -2022,9 +2046,10 @@ uk_unit_edits = {
                 "AllUnits",
                 "AllowedForMissileRoE",
                 "Char",
-                "Char_Standard",
+                "Char_Reco",
                 "GroundUnits",
-                "SM_charLourd",
+                "Radio",
+                "Reco",
                 "UNITE_FV4201_Chieftain_Mk11_UK",
                 "Unite",
             ],
@@ -2032,21 +2057,21 @@ uk_unit_edits = {
         "Factory": "EFactory/Recons",
         "optics": {
             "VisionRangesGRU": {
-                "EVisionRange/Standard": 3500.0,
+                "EVisionRange/Standard": 3500,
             },
             "OpticalStrengths": {
-                "EOpticalStrength/Standard": 5300.0,
-                "EOpticalStrength/LowAltitude": 5300.0,
-                "EOpticalStrength/HighAltitude": 1400.0,
+                "EOpticalStrength/Standard": 5300,
+                "EOpticalStrength/LowAltitude": 5300,
+                "EOpticalStrength/HighAltitude": 1413,
             },
         },
         "UnitRole": "reco",
         "availability": [0, 4, 3, 0],
-        "UpgradeFromUnit": None,
+        "UpgradeFromUnit":  "FV107_Scimitar_UK",
         "DeploymentShift": 750,
     },
     
-    "FV101_Scorpion_UK": {
+    "FV101_Scorpion_UK": { # Recon
         "CommandPoints": 45,
         "availability": [10, 7, 0, 0],
         "WeaponDescriptor": {
@@ -2056,7 +2081,7 @@ uk_unit_edits = {
         },
     },
     
-    "FV107_Scimitar_UK": {
+    "FV107_Scimitar_UK": { # Recon
         "CommandPoints": 50,
         "availability": [10, 7, 0, 0],
         "WeaponDescriptor": {
@@ -2076,14 +2101,16 @@ uk_unit_edits = {
         "availability": [0, 6, 4, 0],
     },
     
-    "Westland_Scout_SS11_UK": {
-        "CommandPoints": 60,
-        "availability": [0, 4, 3, 0],
-    },
-    
     "Lynx_AH_Mk7_Chancellor_UK": {
         "CommandPoints": 50,
         "availability": [0, 4, 0, 0],
+        "UpgradeFromUnit": "Gazelle_SNEB_reco_UK",
+    },
+    
+    "Westland_Scout_SS11_UK": {
+        "CommandPoints": 60,
+        "availability": [0, 4, 3, 0],
+        "UpgradeFromUnit": "Lynx_AH_Mk7_Chancellor_UK",
     },
 
     "Scout_TA_UK": {
@@ -2196,6 +2223,7 @@ uk_unit_edits = {
                 "RocketInf_Carl_Gustav": 6,
             },
         },
+        "UpgradeFromUnit": "Scout_Para_UK",
     },
     
     "LRRP_UK": { # SAS PATROL
@@ -2206,6 +2234,7 @@ uk_unit_edits = {
             "add_specs": ["'infantry_equip_light'"],
         },
         "availability": [0, 0, 4, 3],
+        "UpgradeFromUnit": "Pathfinders_UK",
     },
 
     "Sniper_UK": {

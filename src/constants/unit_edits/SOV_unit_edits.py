@@ -4873,9 +4873,7 @@ sov_unit_edits = {
         "Factory": "EFactory/Logistic",
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
+        
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 0.1,
@@ -4893,9 +4891,7 @@ sov_unit_edits = {
         "Factory": "EFactory/Logistic",
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
+        
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 0.1,
@@ -4922,9 +4918,7 @@ sov_unit_edits = {
         },
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
+        
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 0.1,
@@ -4947,9 +4941,7 @@ sov_unit_edits = {
         "Factory": "EFactory/Logistic",
         "availability": [0, 10, 7, 0],
         "max_speed": 6,
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
+        
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 0.1,
@@ -4969,9 +4961,7 @@ sov_unit_edits = {
         },
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
+        
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 0.1,
@@ -5008,9 +4998,7 @@ sov_unit_edits = {
         },
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
+        
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 0.1,
@@ -6073,7 +6061,8 @@ sov_unit_edits = {
                 "AgilityRadiusGRU": 1800,
             },
         },
-        "CommandPoints": 250,
+        "ECM": -0.3,
+        "CommandPoints": 270,
         "availability": [0, 2, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
@@ -6091,7 +6080,8 @@ sov_unit_edits = {
                 "AgilityRadiusGRU": 1800,
             },
         },
-        "CommandPoints": 290,
+        "ECM": -0.2,
+        "CommandPoints": 270,
         "availability": [0, 2, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
@@ -6106,7 +6096,8 @@ sov_unit_edits = {
                 "AgilityRadiusGRU": 1800,
             },
         },
-        "CommandPoints": 260,
+        "ECM": -0.2,
+        "CommandPoints": 240,
         "availability": [0, 2, 0, 0],
         "WeaponDescriptor": {
             "Salves": {

@@ -4891,9 +4891,7 @@ usa_unit_edits = {
         "Factory": "EFactory/Logistic",
         "availability": [12, 9, 0, 0],
         "max_speed": 6,
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
+        
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 0.1,
@@ -4925,9 +4923,7 @@ usa_unit_edits = {
         },
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
+        
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 0.1,
@@ -4960,9 +4956,7 @@ usa_unit_edits = {
         },
         "availability": [0, 12, 9, 0],
         "max_speed": 6,
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
+        
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 0.1,
@@ -4994,9 +4988,7 @@ usa_unit_edits = {
         },
         "availability": [0, 10, 7, 0],
         "max_speed": 6,
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
+        
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 0.1,

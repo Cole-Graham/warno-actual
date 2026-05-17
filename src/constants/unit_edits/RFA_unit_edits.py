@@ -28,6 +28,7 @@ rfa_unit_edits = {
 
     "TPZ_Fuchs_CMD_RFA": {
         "CommandPoints": 155,
+        "strength": "TPZ_Fuchs_1_RFA",
         "availability": [0, 3, 0, 0],
         "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
@@ -54,9 +55,7 @@ rfa_unit_edits = {
         },
         "availability": [9, 7, 0, 0],
         "max_speed": 6,
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
+        
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 0.1,
@@ -78,9 +77,7 @@ rfa_unit_edits = {
         },
         "availability": [9, 7, 0, 0],
         "max_speed": 6,
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
+        
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 0.1,
@@ -361,6 +358,7 @@ rfa_unit_edits = {
                 "Grenade_Satchel_Charge": 6,
             },
         },
+        "UpgradeFromUnit": "Strandmeister_RFA",
     },
 
     "Fallschirm_Engineers_RFA": {
@@ -382,6 +380,7 @@ rfa_unit_edits = {
                 "Grenade_Satchel_Charge": 6,
             },
         },
+        "UpgradeFromUnit": "Fallschirm_RFA",
     },
 
     "Engineers_Geb_RFA_RFA": {  # GEBIRGSPIONERE
@@ -423,6 +422,7 @@ rfa_unit_edits = {
                 "remove": ["MMG_inf__MG3_7_62mm"],
             },
         },
+        "UpgradeFromUnit": "Gebirgsjager_RFA",
     },
     
     "Engineers_Reserve_RFA": {
@@ -483,7 +483,7 @@ rfa_unit_edits = {
     },
 
     "Strandmeister_RFA": {
-        "CommandPoints": 40,
+        "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "availability": [0, 6, 4, 0],
         "max_speed": 26,
@@ -495,6 +495,7 @@ rfa_unit_edits = {
                 "Grenade_Satchel_Charge": 6,
             },
         },
+        "UpgradeFromUnit": "Engineers_Reserve_RFA",
     },
     
     "Feldgendarmerie_RFA": {
@@ -571,6 +572,7 @@ rfa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
+        "UpgradeFromUnit": "Security_RFA",
     },
     
     "Security_RFA": {
@@ -592,6 +594,7 @@ rfa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
+        "UpgradeFromUnit": "Reserve_Polizei_RFA",
     },
 
     "Security_Marine_RFA": {
@@ -602,6 +605,7 @@ rfa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
+        "UpgradeFromUnit": "Feldgendarmerie_RFA",
     },
 
     "Reserve_Polizei_RFA": {
@@ -612,6 +616,7 @@ rfa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
+        "UpgradeFromUnit": None,
     },
     
     "Hochgebirgjager_RFA": {  # HOCHGEBIRGSJÄGER
@@ -629,7 +634,7 @@ rfa_unit_edits = {
         },
     },
 
-    "Fallschirm_RFA": {  # Fs-JÄGER
+    "Fallschirm_RFA": {
         "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "GameName": {
@@ -654,7 +659,7 @@ rfa_unit_edits = {
                 "RocketInf_PzF_3": 6,
             },
         },
-        "UpgradeFromUnit": "Fallschirmjager_CMD_RFA",
+        # "UpgradeFromUnit": "Fallschirm_Engineers_RFA",
     },
 
     "Fallschirm_Reserve_RFA": {
@@ -675,6 +680,7 @@ rfa_unit_edits = {
                 "'infantry_equip_medium'",
             ],
         },
+        "UpgradeFromUnit": "Fallschirmjager_CMD_RFA",
     },
     
     "Gebirgsjager_RFA": {  # GEBIRGSJÄGER
@@ -693,6 +699,7 @@ rfa_unit_edits = {
                 "RocketInf_PzF_44": 8,
             },
         },
+        "UpgradeFromUnit": "Gebirgsjager_CMD_RFA",
     },
 
     "Gebirgsjager_PzF3_RFA": {  # GEBIRGSJÄGER [PzF3]
@@ -737,6 +744,7 @@ rfa_unit_edits = {
                 "remove": ["Sniper_G3A3ZF"],
             },
         },
+        "UpgradeFromUnit": "Engineers_Geb_RFA_RFA",
     },
 
     "Gebirgsjager_Hvy_RFA": {  # GEBIRGSJÄGER
@@ -762,7 +770,17 @@ rfa_unit_edits = {
             },
         },
     },
-
+    
+    "Jager_noAT_RFA": { # JÄGER (G3A3ZF)
+        "CommandPoints": 30,
+        "armor": "Infantry_armor_reference",
+        "max_speed": 26,
+        "availability": [10, 7, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+    },
+    
     "Jager_RFA": {  # JÄGER (PzF44)
         "CommandPoints": 35,
         "GameName": {
@@ -774,16 +792,7 @@ rfa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
-    },
-    
-    "Jager_noAT_RFA": { # JÄGER (G3A3ZF)
-        "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
-        "max_speed": 26,
-        "availability": [10, 7, 0, 0],
-        "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_medium'"],
-        },
+        "UpgradeFromUnit": "Jager_noAT_RFA",
     },
 
     "Jager_Carl_RFA": {  # JÄGER (Carl Gustav)
@@ -811,6 +820,63 @@ rfa_unit_edits = {
                 "RocketInf_Carl_Gustav": 7,
             },
         },
+        "UpgradeFromUnit": "Jager_RFA",
+    },
+
+    "Groupe_AT_RFA": { # PZ.VERNICHTUNGSGRUPPE
+        "CommandPoints": 30, # This could maybe be 25 points... maybe
+        "armor": "Infantry_armor_reference",
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "strength": 6,
+        "availability": [12, 9, 0, 0],
+        "WeaponDescriptor": {
+            "Salves": {
+                "RocketInf_PzF_44": 4,
+            },
+        },
+        "UpgradeFromUnit": "Panzergrenadier_CMD_RFA",
+    },
+    
+    "Panzergrenadier_IFV_RFA": { # PZ.GRENADIER (G3A3ZF)
+        "CommandPoints": 30,
+        "GameName": {
+            "display": "PZ.GRENADIER"
+        },
+        "armor": "Infantry_armor_reference",
+        "max_speed": 26,
+        "availability": [12, 9, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "UpgradeFromUnit": "Groupe_AT_RFA",
+    },
+    
+    "Panzergrenadier_PzF3_RFA": { # PZ.GRENADIER [PzF3]
+        "CommandPoints": 30,
+        "GameName": {
+            "display": "PZ.GRENADIER [PzF3]"
+        },
+        "armor": "Infantry_armor_reference",
+        "strength": 6,
+        "max_speed": 20,
+        "availability": [12, 9, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_heavy'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "quantity": {
+                    "FM_G3KA4": 5,
+                },
+            },
+            "Salves": {
+                "RocketInf_PzF_3": 4,
+            },
+        },
+        "UpgradeFromUnit": "Panzergrenadier_IFV_RFA",
     },
     
     "PzGrenadier_RFA": {  # PZ.GRENADIER (CarlG)
@@ -824,6 +890,7 @@ rfa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
+        "UpgradeFromUnit": "Panzergrenadier_PzF3_RFA",
     },
     
     "Panzergrenadier_APC_RFA": { # PZ.GRENADIER (M113)
@@ -859,45 +926,9 @@ rfa_unit_edits = {
                 "RocketInf_PzF_3": 6,
             },
         },
-    },
-
-    "Panzergrenadier_PzF3_RFA": { # PZ.GRENADIER [PzF3]
-        "CommandPoints": 30,
-        "GameName": {
-            "display": "PZ.GRENADIER [PzF3]"
-        },
-        "armor": "Infantry_armor_reference",
-        "strength": 6,
-        "max_speed": 20,
-        "availability": [12, 9, 0, 0],
-        "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_heavy'"],
-        },
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                "quantity": {
-                    "FM_G3KA4": 5,
-                },
-            },
-            "Salves": {
-                "RocketInf_PzF_3": 4,
-            },
-        },
+        "UpgradeFromUnit": "PzGrenadier_RFA",
     },
     
-    "Panzergrenadier_IFV_RFA": { # PZ.GRENADIER (G3A3ZF)
-        "CommandPoints": 30,
-        "GameName": {
-            "display": "PZ.GRENADIER"
-        },
-        "armor": "Infantry_armor_reference",
-        "max_speed": 26,
-        "availability": [12, 9, 0, 0],
-        "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_medium'"],
-        },
-    },
-
     "Deckungsgruppe_RFA": {
         "armor": "Infantry_armor_reference",
         "CommandPoints": 40, 
@@ -924,22 +955,7 @@ rfa_unit_edits = {
                 },
             },
         },
-    },
-
-    "Groupe_AT_RFA": {
-        "armor": "Infantry_armor_reference",
-        "CommandPoints": 30, # This could maybe be 25 points... maybe
-        "max_speed": 26,
-        "availability": [12, 9, 0, 0],
-        "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_medium'"],
-        },
-        "strength": 6,
-        "WeaponDescriptor": {
-            "Salves": {
-                "RocketInf_PzF_44": 4,
-            },
-        },
+        "UpgradeFromUnit": "Panzergrenadier_APC_RFA",
     },
     
     "ATteam_RCL_M40A1_RFA": {
@@ -1577,7 +1593,7 @@ rfa_unit_edits = {
         # },
         "optics": {
             "VisionRangesGRU": {
-                "EVisionRange/Standard": 3500.0,
+                "EVisionRange/Standard": 3500,
             },
             "OpticalStrengths": {
                 "EOpticalStrength/Standard": 2500.0,
@@ -1617,6 +1633,7 @@ rfa_unit_edits = {
     # trsp
     "TPZ_Fuchs_1_RFA": {
         "CommandPoints": 15,
+        "strength": 10,
         "WeaponDescriptor": {
             "Salves": {
                 "MMG_MG3_7_62mm": 48,
@@ -1626,6 +1643,7 @@ rfa_unit_edits = {
     
     "TPZ_Fuchs_MILAN_RFA": {
         "CommandPoints": 30,
+        "strength": "TPZ_Fuchs_1_RFA",
         "WeaponDescriptor": {
             "Salves": {
                 "MMG_MG3_7_62mm": 48,
@@ -1744,6 +1762,7 @@ rfa_unit_edits = {
 
     "TPZ_Fuchs_1_reco_RFA": {
         "CommandPoints": 25,
+        "strength": "TPZ_Fuchs_1_RFA",
     },
 
     "Scout_RFA": {
@@ -1754,6 +1773,7 @@ rfa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
+        "UpgradeFromUnit": None,
     },
     
     "BGS_RFA": {
@@ -1778,22 +1798,7 @@ rfa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
-    },
-
-    "Fernspaher_RFA": {
-        "CommandPoints": 70,
-        "armor": "Infantry_armor_reference",
-        "availability": [0, 0, 4, 3],
-        "max_speed": 26,
-        "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_medium'"],
-        },
-        "WeaponDescriptor": {
-            "Salves": {
-                "RocketInf_M72A3_LAW_66mm": 6,
-            },
-        },
-        "UpgradeFromUnit": "Sniper_Fern_RFA",
+        "UpgradeFromUnit": "SEK_RFA",
     },
     
     "Fallschirm_B1_RFA": { # Fallschirmjäger B1 (Satchel, Panzerfaust 3T)
@@ -1819,6 +1824,23 @@ rfa_unit_edits = {
                 "Grenade_Satchel_Charge": 6,
             },
         },
+        "UpgradeFromUnit": "Sniper_Fern_RFA",
+    },
+    
+    "Fernspaher_RFA": {
+        "CommandPoints": 70,
+        "armor": "Infantry_armor_reference",
+        "availability": [0, 0, 4, 3],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "RocketInf_M72A3_LAW_66mm": 6,
+            },
+        },
+        "UpgradeFromUnit": "Fallschirm_B1_RFA",
     },
     
     "Fallschirmjager_Scout_RFA": {  # Fs-Jager aufk
@@ -1885,6 +1907,16 @@ rfa_unit_edits = {
             "add_specs": ["'infantry_equip_medium'"],
         },
     },
+    
+    "Scout_Heimat_RFA": {  # HIEMAT-AUFKL.
+        "armor": "Infantry_armor_reference",
+        "CommandPoints": 35,
+        "availability": [8, 0, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "UpgradeFromUnit": "Scout_RFA",
+    },
 
     "Jager_Aufk_RFA": {  # JAGER AUFKL.
         "armor": "Infantry_armor_reference",
@@ -1896,15 +1928,7 @@ rfa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
-    },
-
-    "Scout_Heimat_RFA": {  # HIEMAT-AUFKL.
-        "armor": "Infantry_armor_reference",
-        "CommandPoints": 35,
-        "availability": [8, 0, 0, 0],
-        "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_medium'"],
-        },
+        "UpgradeFromUnit": "Scout_Heimat_RFA",
     },
 
     "Sniper_Fern_RFA": {  # #RECO2 FERN. SCHARFSCHÜTZE.
@@ -1941,6 +1965,7 @@ rfa_unit_edits = {
                 "insert": [(2, 4)],
             },
         },
+        "UpgradeFromUnit": "Fallschirmjager_Scout_RFA",
     },
 
     "Sniper_Geb_RFA": {  # GEB. SCHARFSCHÜTZE
@@ -1968,6 +1993,7 @@ rfa_unit_edits = {
         "capacities": {
             "add_capacities": ["Choc", "Choc_feedback"],
         },
+        "UpgradeFromUnit": "BGS_RFA",
     },
 
     "KSM_RFA": {  # #RECO2 KAMPFSCHWIMMER
@@ -1995,11 +2021,13 @@ rfa_unit_edits = {
 
     "TPZ_Fuchs_RASIT_RFA": {
         "CommandPoints": 35,
+        "strength": "TPZ_Fuchs_1_RFA",
         "availability": [8, 0, 0, 0],
     },
 
     "Luchs_A1_RFA": {
         "CommandPoints": 50,
+        "strength": 10,
         "availability": [0, 6, 4, 0],
     },
 
@@ -2011,6 +2039,7 @@ rfa_unit_edits = {
     "Leopard_1A5_reco_RFA": {
         "CommandPoints": 115,
         "availability": [0, 6, 4, 0],
+        "UpgradeFromUnit": "Iltis_MILAN_KSK_RFA",
     },
     
     "Bo_105_reco_RFA": {
@@ -2024,6 +2053,11 @@ rfa_unit_edits = {
     },
 
     "CL_289_RFA": {
+        "CommandPoints": 60,
+        "availability": [0, 3, 0, 0],
+    },
+    
+    "Do_28D2_RFA": {
         "CommandPoints": 60,
         "availability": [0, 3, 0, 0],
     },
@@ -2072,9 +2106,7 @@ rfa_unit_edits = {
         },
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
+        
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 0.1,
@@ -2108,9 +2140,7 @@ rfa_unit_edits = {
         "CommandPoints": 20,
         "availability": [0, 9, 7, 0],
         "max_speed": 6,
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
+        
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 0.1,
@@ -2126,9 +2156,6 @@ rfa_unit_edits = {
     #     "CommandPoints": 25,
     #     "availability": [9, 7, 0, 0],
     #     "max_speed": 6,
-    #     # "capacities": {
-    #     #    "add_capacities": ["Deploy", "Deploy_ok"],
-    #     # },
     #     "WeaponDeployment": {
     #         "TimeForWeaponDeployment": 15,
     #         "TimeForWeaponPacking": 0.1,
@@ -2268,7 +2295,7 @@ rfa_unit_edits = {
     },
 
     "Bo_105_PAH_1A1_RFA": {
-        "CommandPoints": 100,
+        "CommandPoints": 110,
         "availability": [0, 0, 4, 3],
     },
 

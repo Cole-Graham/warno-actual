@@ -1019,3 +1019,45 @@ def compare_tags_with_previous(
             "Tags removed from game data (no longer present): %s",
             sorted(removed),
         )
+
+
+def validate_no_multiple_ancestors(chain_mapping: Dict[str, Any]) -> None:
+    """Log a warning if any unit appears as a key under multiple parents in the chain mapping.
+
+    This detects UpgradeFrom hierarchies where a unit has more than one ancestor
+    (multiple parents), which indicates conflicting UpgradeFromUnit values.
+
+    Args:
+        chain_mapping: Nested dict from _build_upgrade_chains (base_unit -> {child: ...})
+    """
+    seen: Dict[str, List[str]] = {}
+
+    def walk(node: Any, parent_path: str = "") -> None:
+        if not isinstance(node, dict):
+            return
+        for key, value in node.items():
+            if key in seen:
+                seen[key].append(parent_path or "<root>")
+            else:
+                seen[key] = [parent_path or "<root>"]
+            walk(value, key)
+
+    for base, branch in chain_mapping.items():
+        # Record the base itself
+        if base in seen:
+            seen[base].append("<root>")
+        else:
+            seen[base] = ["<root>"]
+        walk(branch, base)
+
+    duplicates = {unit: parents for unit, parents in seen.items() if len(parents) > 1}
+    if duplicates:
+        details = []
+        for unit, parents in sorted(duplicates.items()):
+            details.append(f"  {unit} appears under: {', '.join(parents)}")
+        logger.warning(
+            "Found %d unit(s) with multiple ancestors in UpgradeFrom hierarchy:\n%s\n"
+            "Check conflicting UpgradeFromUnit values in unit_edits or new_units.",
+            len(duplicates),
+            "\n".join(details),
+        )

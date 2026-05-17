@@ -292,6 +292,7 @@ RFA_mechanized_newdivisionrules = {
         ("Sonderwagen_4_recon_RFA", 1, [10, 0, 0, 0]),
         ("Luchs_A1_RFA", 1, [6, 4, 0, 0]),
         ("Alouette_II_reco_RFA", 1, [0, 6, 0, 0]),
+        ("Do_28D2_RFA", 1, [0, 3, 0, 0]),
     ],
     "aa": [
         ("MANPAD_Redeye_RFA", 2, [12, 9, 0, 0], ["Iltis_trans_RFA"]),

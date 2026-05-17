@@ -863,7 +863,7 @@ POL_NEW_UNITS = {
         "MenuIconTexture": "Texture_RTS_H_appui",
         "optics": {
             "VisionRangesGRU": {
-                "EVisionRange/Standard": 3500.0,
+                "EVisionRange/Standard": 3500,
             },
             "OpticalStrengths": {
                 "EOpticalStrength/Standard": 1600.0,

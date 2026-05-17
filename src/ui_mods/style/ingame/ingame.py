@@ -8,7 +8,7 @@ logger = setup_logger(__name__)
 
 
 def edit_uiingameresources(source_path: Any) -> None:
-    """Edit UIInGameResources.ndf to modify UI layout and styling."""
+    """Edit GameData/UserInterface/Use/InGame/UIInGameResources.ndf to modify UI layout and styling."""
     logger.info("Editing in-game UI resources")
     
     # Update chat view style

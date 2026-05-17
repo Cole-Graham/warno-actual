@@ -41,6 +41,7 @@ from .unit_data import (
     _build_upgrade_chains,
     _detect_circular_chains,
     gather_unit_data,
+    validate_no_multiple_ancestors,
     validate_upgrade_forward_mapping_chain_lengths,
 )
 
@@ -919,7 +920,10 @@ def build_extended_upgrade_from_mapping(config: Dict[str, Any]) -> Dict[str, Any
     
     # Build chains from combined forward mapping
     chain_mapping = _build_upgrade_chains(forward_mapping)
-    
+
+    # Validate for multi-ancestor units (runs on every patcher execution)
+    validate_no_multiple_ancestors(chain_mapping)
+
     # Save extended mapping to constants_precomputation
     constants_dir = db_path / "constants_precomputation"
     ensure_db_directory(str(constants_dir))

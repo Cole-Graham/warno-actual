@@ -251,11 +251,15 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("AA_R37_Vympel", "A2A", None, False): { # 21
         "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_missile_he_bigly",
+            },
             "hit_roll": {
-                "Idling": 40,
-                "Moving": 40,
+                "Idling": 50,
+                "Moving": 50,
             },
             "parent_membr": {
+                "TraitsToken": ['MOTION', 'F&F', 'biglyHE'],
                 "MaximumRangeAirplaneGRU": 13300,
                 "ProjectileSpeedGRU": 6600,
                 "TimeBetweenTwoShots": 0.7,

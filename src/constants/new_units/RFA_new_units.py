@@ -355,6 +355,7 @@ RFA_NEW_UNITS = {
             ],
         },
         "strength": 9,
+        "max_speed": 20,
         "ButtonTexture": "Gebirgsjager_PzF3_RFA",
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -395,7 +396,7 @@ RFA_NEW_UNITS = {
                 'infantry_equip_heavy',
             ],
         "availability": [10, 7, 0, 0],
-        "max_speed": 20,
+        "UpgradeFromUnit": "Jager_Carl_RFA",
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply',
                    'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
@@ -406,7 +407,6 @@ RFA_NEW_UNITS = {
         "is_unarmed": False,
         "Faction": "PACT",
         "Nation": "SOV",
-        "UpgradeFromUnit": "Jager_RFA",
         "alternatives_count": 3,
         "selector_tactic": "02_03",
     },

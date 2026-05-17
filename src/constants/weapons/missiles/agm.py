@@ -10,7 +10,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AGM_HOT2", "ATGM", None, False): { # 74
         "Ammunition": {
             "Arme": {
-                "Index": 25,
+                "Index": 26,
             },
             "hit_roll": {
                 "Idling": 70,

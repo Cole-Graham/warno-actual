@@ -1073,12 +1073,12 @@ fr_unit_edits = {
     },
     
     "VAB_HOT_FR": {
-        "CommandPoints": 75,
+        "CommandPoints": 80,
         "availability": [6, 4, 0, 0]
     },
 
     "VAB_HOT_Legion_FR": {
-        "CommandPoints": 75,
+        "CommandPoints": 80,
         "availability": [0, 6, 4, 0]
     },
     
@@ -1483,9 +1483,7 @@ fr_unit_edits = {
         "CommandPoints": 15,
         "availability": [12, 9, 0, 0],
         "max_speed": 6,
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
+        
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 0.1,
@@ -1501,9 +1499,7 @@ fr_unit_edits = {
         "CommandPoints": 15,
         "availability": [12, 0, 0, 0],
         "max_speed": 6,
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
+        
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 0.1,
@@ -1520,9 +1516,7 @@ fr_unit_edits = {
         "availability": [9, 7, 0, 0],
         "max_speed": 6,
         "Factory": "EFactory/Logistic",
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
+        
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 0.1,
@@ -1540,9 +1534,7 @@ fr_unit_edits = {
         "availability": [0, 9, 7, 0],
         "max_speed": 6,
         "Factory": "EFactory/Logistic",
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
+        
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 0.1,
@@ -1559,9 +1551,7 @@ fr_unit_edits = {
         "availability": [0, 9, 7, 0],
         "max_speed": 6,
         "Factory": "EFactory/Logistic",
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
+        
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 0.1,
@@ -1578,9 +1568,7 @@ fr_unit_edits = {
         "CommandPoints": 30,
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
+        
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 0.1,
@@ -1596,9 +1584,7 @@ fr_unit_edits = {
         "CommandPoints": 30,
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
+        
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 0.1,
@@ -1614,9 +1600,7 @@ fr_unit_edits = {
         "CommandPoints": 30,
         "availability": [0, 0, 6, 4],
         "max_speed": 6,
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
+        
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 0.1,
@@ -1809,12 +1793,12 @@ fr_unit_edits = {
     },
 
     "Gazelle_HOT_FR": {
-        "CommandPoints": 70,   
+        "CommandPoints": 80,   
         "availability": [0, 6, 0, 0],
     },
     
     "Gazelle_HOT_2_FR": {
-        "CommandPoints": 90,
+        "CommandPoints": 110,
         "availability": [0, 0, 4, 3],
     },
 

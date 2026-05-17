@@ -52,9 +52,7 @@ UK_NEW_UNITS = {
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "max_speed": 6,
-        # "capacities": {
-        #    "add_capacities": ["Deploy", "Deploy_ok"],
-        # },
+        
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 0.1,
@@ -581,7 +579,7 @@ UK_NEW_UNITS = {
         "availability": [0, 12, 9, 0],
         "optics": {
             "VisionRangesGRU": {
-                "EVisionRange/Standard": 3500.0,
+                "EVisionRange/Standard": 3500,
             },
             "OpticalStrengths": {
                 "EOpticalStrength/Standard": 2500.0,
@@ -646,7 +644,7 @@ UK_NEW_UNITS = {
         "availability": [0, 12, 9, 0],
         "optics": {
             "VisionRangesGRU": {
-                "EVisionRange/Standard": 3500.0,
+                "EVisionRange/Standard": 3500,
             },
             "OpticalStrengths": {
                 "EOpticalStrength/Standard": 2500.0,
@@ -701,7 +699,7 @@ UK_NEW_UNITS = {
             ],
         },
         "strength": 5,
-        "CommandPoints": 30,
+        "CommandPoints": 35,
         "SpecialtiesList": [
             '_para',
             'infantry_equip_veryheavy',
@@ -717,6 +715,7 @@ UK_NEW_UNITS = {
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/AssaultDistrict', 'EOrderType/Load',
                    'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "UpgradeFromUnit": "RCL_L6_Wombat_UK",
         "is_infantry": True, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": True,
         "is_ground_vehicle": True,
