@@ -422,7 +422,16 @@ def _apply_missile_edits(descr: Any, data: Dict, ammo_data: Dict, is_new: bool) 
         # Apply member edits
         parent_data = data["Ammunition"].get("parent_membr", None)
         if parent_data:
+            if remove_list := parent_data.get("remove"):
+                for member_name in remove_list:
+                    if descr.v.by_m(member_name, False) is not None:
+                        descr.v.remove_by_member(member_name)
+                        logger.debug(f"Removed member {member_name} from {descr.n}")
+                    else:
+                        logger.debug(f"Member {member_name} not present in {descr.n}, skipping remove")
             for key, value in parent_data.items():
+                if key == "remove":
+                    continue
                 if key == "add":
                     index = value[0]
                     value = value[1]

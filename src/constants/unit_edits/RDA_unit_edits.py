@@ -2328,6 +2328,9 @@ rda_unit_edits = {
 
     "BMP_1P_DDR": { # BMP-1P(C) (Faktoriya, resolute, smoke)
         "CommandPoints": "BMP_1P_SOV",
+        "WeaponDescriptor": {
+            "Salves": "BMP_1P_SOV",
+        },
     },
     
     "BMP_1P_Konkurs_DDR": { # BMP-1P(D) (Konkurs, resolute, smoke)

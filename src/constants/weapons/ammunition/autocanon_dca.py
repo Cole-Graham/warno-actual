@@ -742,6 +742,16 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "HasDeploymentTime": True,
+                "AimingTime": 2.0,
+            },
+        },
+    },
+    
+    ("Canon_AP_KS19_100mm", "canon", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "HasDeploymentTime": True,
+                "AimingTime": 2.0,
             },
         },
     },
@@ -751,15 +761,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "HasDeploymentTime": True,
                 "AimingTime": 2.0,
-                "MaximumRangeGRU": 1750,
-                "MaximumRangeHelicopterGRU": 2800,
-                "MaximumRangeAirplaneGRU": 2625,
-                "PhysicalDamages": 5.0,
-                "ShotsCountPerSalvo": 60,
-                "AffichageMunitionParSalve": 60,
-                "TimeBetweenTwoSalvos": 10.0,
-                "SupplyCost": 8.0,
-                "SupplyCost": 240.0,
+                "PhysicalDamages": 1.15,
             },
         },
     },
