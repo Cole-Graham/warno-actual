@@ -2242,6 +2242,31 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("HMG_14_5_mm_KPVT_coax", "small_arms", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_14_5",
+            },
+            "hit_roll": {
+                "Idling": 70,
+                "Moving": 30,
+            },
+            "parent_membr": {
+                "PhysicalDamages": 0.24,
+                "SuppressDamages": 48,
+                "DisplaySalveAccuracy": False,
+                "AimingTime": 1.0,
+                "TimeBetweenTwoSalvos": 4.3,
+                "SupplyCost": 2.0,
+                "ShotsCountPerSalvo": 5,
+                "AffichageMunitionParSalve": 50,
+            },
+        },
+        "WeaponDescriptor": { 
+            "Salves": 48,
+        },
+    },
+    
     ("HMG_12_7_mm_avenger_M3P", "small_arms", None, False): {
         "Ammunition": {
             "Arme": {

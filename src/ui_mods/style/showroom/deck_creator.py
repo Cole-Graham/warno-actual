@@ -171,25 +171,68 @@ def _update_deck_list(source_path) -> None:
 
 
 def _update_deck_name_display(source_path) -> None:
-    """Update deck name display properties."""
+    """Update deck name display and VIP-safe top bar list slot wrapper."""
     affichagenomdudeck = source_path.by_namespace("AffichageNomDuDeck").v
-    
-    # Update frame alignment
+
     componentframe = affichagenomdudeck.by_member("ComponentFrame").v
     componentframe.by_member("AlignementToFather").v = "[-0.10, 0.5]"
-    
-    # Update elements
+
     for element in affichagenomdudeck.by_member("Elements").v:
         if not isinstance(element.v, ndf.model.Object) or not is_obj_type(element.v, "BUCKListElementDescriptor"):
             continue
-            
+
         component_descr = element.v.by_member("ComponentDescriptor").v
         if component_descr.type == "BUCKTextDescriptor":  # noqa
             _update_text_alignment(component_descr)
         elif component_descr.type == "BUCKEditableTextDescriptor":  # noqa
             _update_editable_text(component_descr)
-    
+
+    _wrap_affichage_nom_du_deck_in_top_bar(source_path)
     logger.debug("Updated deck name display properties")
+
+
+def _wrap_affichage_nom_du_deck_in_top_bar(source_path) -> None:
+    """Wrap ~/AffichageNomDuDeck so horizontal list slot has no X-axis alignment."""
+    element = source_path.find_by_cond(_is_direct_affichage_nom_du_deck_list_element, strict=False)
+    if element is None:
+        logger.debug("AffichageNomDuDeck top bar wrapper already applied or not found")
+        return
+    element.replace(0, _get_affichage_nom_du_deck_top_bar_list_element())
+    logger.debug("Wrapped AffichageNomDuDeck in DeckEditorTopBar horizontal list")
+
+
+def _is_direct_affichage_nom_du_deck_list_element(row: Any) -> bool:
+    """True when list element references ~/AffichageNomDuDeck without a container wrapper."""
+    if not is_obj_type(row.v, "BUCKListElementDescriptor"):
+        return False
+    component_descriptor = row.v.by_m("ComponentDescriptor", False)
+    if component_descriptor is None:
+        return False
+    if is_obj_type(component_descriptor.v, "BUCKContainerDescriptor"):
+        return False
+    return "AffichageNomDuDeck" in str(component_descriptor.v)
+
+
+def _get_affichage_nom_du_deck_top_bar_list_element() -> str:
+    """Horizontal list slot: neutral X; inner ~/AffichageNomDuDeck keeps mod alignment."""
+    return '''\
+BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKContainerDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [0.0, 1.0]
+            AlignementToFather = [0.0, 1.0]
+            AlignementToAnchor = [0.0, 1.0]
+        )
+        FitStyle = ~/ContainerFitStyle/FitToContent
+        Components =
+        [
+            ~/AffichageNomDuDeck,
+        ]
+    )
+)'''
 
 
 def _update_text_alignment(component: Any) -> None:

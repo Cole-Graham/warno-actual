@@ -49,6 +49,9 @@ uk_unit_edits = {
     
     "FV105_Sultan_UK": {
         "CommandPoints": 155,
+        "TagSet": {
+            "add_tags": ['"CMD_Unit"'],
+        },
         "availability": [0, 3, 0, 0],
     },
     
@@ -65,6 +68,9 @@ uk_unit_edits = {
 
     "Gazelle_CMD_UK": {
         "CommandPoints": 115,
+        "TagSet": {
+            "add_tags": ['"CMD_Unit"'],
+        },
         "availability": [0, 3, 0, 0],
     },
 

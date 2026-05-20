@@ -2328,6 +2328,9 @@ rda_unit_edits = {
 
     "BMP_1P_DDR": { # BMP-1P(C) (Faktoriya, resolute, smoke)
         "CommandPoints": "BMP_1P_SOV",
+        "WeaponDescriptor": {
+            "Salves": "BMP_1P_SOV",
+        },
     },
     
     "BMP_1P_Konkurs_DDR": { # BMP-1P(D) (Konkurs, resolute, smoke)
@@ -2563,7 +2566,6 @@ rda_unit_edits = {
     # RDA RECON
     "UAZ_469_Reco_DDR": {
         "CommandPoints": 25,
-        "UpgradeFromUnit": "BRDM_1_DDR",
     },
 
     "UAZ_469_AGL_Grenzer_DDR": {

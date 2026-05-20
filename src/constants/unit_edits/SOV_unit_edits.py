@@ -196,6 +196,9 @@ sov_unit_edits = {
 
     "Mi_8K_CMD_SOV": {
         "CommandPoints": 145,
+        "TagSet": {
+            "add_tags": ['"CMD_Unit"'],
+        },
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -3707,15 +3710,15 @@ sov_unit_edits = {
         "GameName": {
             "display": "BMP-1P [FAKTORIYA]",
         },
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_9K111M_Faktoriya": 6,
+            }
+        },
     },
     
     "BMP_1PG_SOV": { # (Faktoriya, AGS-17, no smoke)
         "CommandPoints": 40,
-        "WeaponDescriptor": {
-            "Salves": {
-                "ATGM_9K111M_Faktoriya_IFV": 6,
-            },
-        },
     },
     
     "BMP_1P_Konkurs_SOV": { # (Konkurs, Faktoriya, smoke)

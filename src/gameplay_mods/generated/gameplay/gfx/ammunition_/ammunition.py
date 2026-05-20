@@ -406,7 +406,17 @@ def _apply_weapon_edits(
 
     # Apply parent member edits
     if "parent_membr" in ammo_data:
-        for key, value in ammo_data["parent_membr"].items():
+        parent_membr = ammo_data["parent_membr"]
+        if remove_list := parent_membr.get("remove"):
+            for member_name in remove_list:
+                if descr.v.by_m(member_name, False) is not None:
+                    descr.v.remove_by_member(member_name)
+                    logger.debug(f"Removed member {member_name} from {descr.n}")
+                else:
+                    logger.debug(f"Member {member_name} not present in {descr.n}, skipping remove")
+        for key, value in parent_membr.items():
+            if key == "remove":
+                continue
             logger.debug(f"Setting {key} = {value}")
             if key == "add":  # adding new member, e.g. [16, "MaximumRangeHelicopterGRU = 875"]
                 index = value[0]

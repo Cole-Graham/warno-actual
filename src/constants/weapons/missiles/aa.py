@@ -226,6 +226,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 60,
             },
             "parent_membr": {
+                "remove": ["Guidance"],
                 "Caliber": ("SACLOS LiDAR", "THGDKSIWAY"),
                 "TraitsToken": ['STAT', 'manual'],
                 "TimeBetweenTwoShots": 2.5,
@@ -256,6 +257,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Idling": 60,
             },
             "parent_membr": {
+                "remove": ["Guidance"],
                 "Caliber": ("SACLOS LiDAR", "THGDKSIWAY"),
                 "TraitsToken": ['STAT', 'manual'],
                 "TimeBetweenTwoShots": 2.5,

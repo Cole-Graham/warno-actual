@@ -28,6 +28,9 @@ usa_unit_edits = {
 
     "UH60A_CO_US": {
         "CommandPoints": 145,
+        "TagSet": {
+            "add_tags": ['"CMD_Unit"'],
+        },
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -119,6 +122,9 @@ usa_unit_edits = {
 
     "M2A1_Bradley_Leader_US": {
         "CommandPoints": 195,
+        "TagSet": {
+            "add_tags": ['"CMD_Unit"'],
+        },
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": {
@@ -151,6 +157,9 @@ usa_unit_edits = {
 
     "M2A2_Bradley_Leader_US": {
         "CommandPoints": 195,
+        "TagSet": {
+            "add_tags": ['"CMD_Unit"'],
+        },
         "Divisions": {
             "default": {
                 "cards": 1,

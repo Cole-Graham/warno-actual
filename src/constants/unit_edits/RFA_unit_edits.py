@@ -2,6 +2,9 @@ rfa_unit_edits = {
     # RFA LOG
     "Iltis_RFA": {
         "CommandPoints": 145,
+        "TagSet": {
+            "add_tags": ['"CMD_Unit"'],
+        },
         "availability": [0, 4, 0, 0],
         "Divisions": {
             "default": {
@@ -12,12 +15,13 @@ rfa_unit_edits = {
 
     "Iltis_para_CMD_RFA": {
         "CommandPoints": 145,
+        "TagSet": {
+            "add_tags": ['"CMD_Unit"'],
+        },
         "availability": [0, 4, 0, 0],
         "SpecialtiesList": {
             "remove_specs": ["'_para'"],
         },
-        
-        "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
     "Faun_Kraka_CMD_RFA": {
