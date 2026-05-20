@@ -2566,7 +2566,6 @@ rda_unit_edits = {
     # RDA RECON
     "UAZ_469_Reco_DDR": {
         "CommandPoints": 25,
-        "UpgradeFromUnit": "BRDM_1_DDR",
     },
 
     "UAZ_469_AGL_Grenzer_DDR": {
