@@ -172,9 +172,8 @@ def _update_deck_list(source_path) -> None:
 
 def _update_deck_name_display(source_path) -> None:
     """Update deck name display and VIP-safe top bar list slot wrapper."""
-    _wrap_affichage_nom_du_deck_in_top_bar(source_path)
-
     affichagenomdudeck = source_path.by_namespace("AffichageNomDuDeck").v
+
     componentframe = affichagenomdudeck.by_member("ComponentFrame").v
     componentframe.by_member("AlignementToFather").v = "[-0.10, 0.5]"
 
@@ -188,68 +187,30 @@ def _update_deck_name_display(source_path) -> None:
         elif component_descr.type == "BUCKEditableTextDescriptor":  # noqa
             _update_editable_text(component_descr)
 
+    _wrap_affichage_nom_du_deck_in_top_bar(source_path)
     logger.debug("Updated deck name display properties")
 
 
 def _wrap_affichage_nom_du_deck_in_top_bar(source_path) -> None:
-    """Wrap ~/AffichageNomDuDeck in DeckEditorTopBar (VIP horizontal list X-axis rule)."""
-    element = _find_affichage_nom_du_deck_top_bar_list_element(source_path)
+    """Wrap ~/AffichageNomDuDeck so horizontal list slot has no X-axis alignment."""
+    element = source_path.find_by_cond(_is_direct_affichage_nom_du_deck_list_element, strict=False)
     if element is None:
-        logger.debug("AffichageNomDuDeck top bar wrapper already applied or slot not found")
+        logger.debug("AffichageNomDuDeck top bar wrapper already applied or not found")
         return
-    element.parent.replace(element.index, _get_affichage_nom_du_deck_top_bar_list_element())
+    element.replace(0, _get_affichage_nom_du_deck_top_bar_list_element())
     logger.debug("Wrapped AffichageNomDuDeck in DeckEditorTopBar horizontal list")
 
 
-def _find_affichage_nom_du_deck_top_bar_list_element(source_path) -> Any | None:
-    """Find center slot in DeckEditorTopBar's nested horizontal BUCKListDescriptor."""
-    deck_editor_top_bar = source_path.by_namespace("DeckEditorTopBar", False)
-    if deck_editor_top_bar is not None:
-        components = deck_editor_top_bar.v.by_m("Components", False)
-        if components is not None:
-            for component in components.v:
-                if not isinstance(component.v, ndf.model.Object):
-                    continue
-                if not is_obj_type(component.v, "BUCKListDescriptor"):
-                    continue
-                axis = component.v.by_m("Axis", False)
-                if axis is None or "Horizontal" not in str(axis.v):
-                    continue
-                for element in component.v.by_m("Elements").v:
-                    if _list_element_needs_affichage_nom_du_deck_wrapper(element):
-                        return element
-
-    return source_path.find_by_cond(_is_affichage_nom_du_deck_list_slot_row, strict=False)
-
-
-def _is_affichage_nom_du_deck_list_slot_row(row: Any) -> bool:
+def _is_direct_affichage_nom_du_deck_list_element(row: Any) -> bool:
+    """True when list element references ~/AffichageNomDuDeck without a container wrapper."""
     if not is_obj_type(row.v, "BUCKListElementDescriptor"):
         return False
-    return _list_element_needs_affichage_nom_du_deck_wrapper(row)
-
-
-def _list_element_needs_affichage_nom_du_deck_wrapper(element: Any) -> bool:
-    """True when this horizontal list slot is still the bare AffichageNomDuDeck child."""
-    element_name = element.v.by_m("ElementName", False)
-    if element_name is not None and "AffichageNomDuDeck" in element_name.v:
-        return True
-
-    component_descriptor = element.v.by_m("ComponentDescriptor", False)
+    component_descriptor = row.v.by_m("ComponentDescriptor", False)
     if component_descriptor is None:
         return False
     if is_obj_type(component_descriptor.v, "BUCKContainerDescriptor"):
         return False
-
-    component_v = component_descriptor.v
-    if isinstance(component_v, ndf.model.Object):
-        nested_name = component_v.by_m("ElementName", False)
-        if nested_name is not None and "AffichageNomDuDeck" in nested_name.v:
-            return True
-
-    ref_key = getattr(component_v, "k", None)
-    if ref_key is not None and "AffichageNomDuDeck" in str(ref_key):
-        return True
-    return "AffichageNomDuDeck" in str(component_v)
+    return "AffichageNomDuDeck" in str(component_descriptor.v)
 
 
 def _get_affichage_nom_du_deck_top_bar_list_element() -> str:
