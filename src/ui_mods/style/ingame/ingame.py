@@ -47,7 +47,7 @@ def edit_uiingameresources(source_path: Any) -> None:
 
 def _replace_vertical_hud_elements(vertical_list: Any) -> None:
     """Replace right HUD list elements (no time row; nested containers for VIP axis rules)."""
-    elements = vertical_list.by_m("Elements")
+    elements = vertical_list.by_m("Elements").v
     while len(elements.v) > 0:
         elements.v.remove(elements.v[0])
     for element_ndf in _get_vertical_hud_element_blocks():
