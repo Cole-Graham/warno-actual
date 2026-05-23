@@ -31,8 +31,6 @@ dist/ArtilleryArcPreview.exe
 build/arc_preview_onefile/
 tools/infantry_dpm_visualizer.py
 tools/extract_infantry_tab.py
-sourcemod/
-sourcemod vip/
 agent
 generate_new_divs.py
 generate_divisionrules.py
@@ -47,7 +45,6 @@ uk-div-rules.csv
 
 # don't ignore
 !logs/.gitkeep
-!logs/permanent_logs.txt
 !src/data/database/.gitkeep
 !src/data/database/master_db_metadata.json
 *.txt
