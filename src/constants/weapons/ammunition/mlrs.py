@@ -71,7 +71,25 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("RocketArt_thermobaric_220mm_salvolength30", "MLRS", None, False): { # 657
+    ("RocketArt_thermobaric_127mm_salvolength21", "MLRS", None, False): { # CATFAE
+        "Ammunition": {
+            "parent_membr": {
+                "Caliber": ("150kg", "ITCUAAMSWN"),
+                "ImpactHappening": "'BombeODABRPO'",
+                "TimeBetweenTwoShots": 2.5,
+                "TimeBetweenTwoFx": 2.5,
+                "MaximumRangeGRU": 1050,
+                "DispersionAtMaxRangeGRU": 250,
+                "DispersionAtMinRangeGRU": 175,
+                "PhysicalDamages": 5.0,
+                "RadiusSplashPhysicalDamagesGRU": 110,
+                "RadiusSplashSuppressDamagesGRU": 147,
+                "SimultaneousShotsCount": 1,
+            },
+        },
+    },
+    
+    ("RocketArt_thermobaric_220mm_salvolength30", "MLRS", None, False): { # Buratino
         "Ammunition": {
             "Arme": {
                 "Family": "DamageFamily_thermobarique",
@@ -79,8 +97,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "TraitsToken": ['STAT', 'thermobaric'],
                 "MaximumRangeGRU": 3000,
-                "DispersionAtMaxRangeGRU": 700,
-                "DispersionAtMinRangeGRU": 350,
+                "DispersionAtMaxRangeGRU": 500,
+                "DispersionAtMinRangeGRU": 250,
                 "PhysicalDamages": 10.0,
                 "SuppressDamages": 467,
                 "RadiusSplashPhysicalDamagesGRU": 220,

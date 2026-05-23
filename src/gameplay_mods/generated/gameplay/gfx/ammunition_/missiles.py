@@ -21,6 +21,7 @@ from .handlers import (
     apply_clu_sol_trait_standards,
     apply_tandem_charge_inversion,
     remove_vanilla_instances,
+    validate_ammunition_consumption,
     vanilla_renames_ammunition,
 )
 from .handlers.aa_missile_category_standards import apply_aa_suppress_standard
@@ -147,6 +148,8 @@ def edit_gen_gp_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]
 
         # Blanket-disable HasDeploymentTime on missiles not used by protected units
         _blanket_disable_deployment_time(source_path, game_db)
+
+        validate_ammunition_consumption(source_path, logger)
 
         # Write dictionary entries
         if ingame_names or calibers:

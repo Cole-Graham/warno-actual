@@ -120,6 +120,17 @@ def parse_config_ini_version(config_ini_path: Path) -> str:
 	return ""
 
 
+def play_failure_sound():
+	"""Play a sound notification to indicate patcher failure."""
+	try:
+		winsound.PlaySound("SystemHand", winsound.SND_ALIAS)
+	except Exception:
+		try:
+			winsound.Beep(500, 400)
+		except Exception:
+			pass
+
+
 def play_completion_sound():
 	"""Play a sound notification to indicate completion."""
 	try:
@@ -254,6 +265,7 @@ if __name__ == "__main__":
 	except Exception as e:
 		run_bat = False
 		logger.error(f"Patcher failed: {str(e)}")
+		play_failure_sound()
 		# Still show counts even if there was an exception
 		counting_handler = get_counting_handler()
 		if counting_handler:

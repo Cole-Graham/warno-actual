@@ -191,7 +191,7 @@ def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_nam
         # THelicopterMovementModuleDescriptor: batch-edited in apply_helicopter_movement_pattern_standard
         "TLandMovementModuleDescriptor": { "handler": _handle_landmovement_module, "args": [] },
         "AirplaneMovementDescriptor": { "handler": _handle_airplanemovement_module, "args": [donor] },
-        # "TFuelModuleDescriptor": { "handler": handle_fuel_module, "args": [] },
+        "TFuelModuleDescriptor": { "handler": _handle_fuel_module, "args": [] },
         "TSupplyModuleDescriptor": { "handler": handle_supply_module, "args": [] },
         "TScannerConfigurationDescriptor": { "handler": _handle_scannerconfiguration_module, "args": [] },
         "TReverseScannerWithIdentificationDescriptor": { "handler": _handle_reversescanner_module, "args": [] },
@@ -209,6 +209,7 @@ def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_nam
         "TOrderConfigModuleDescriptor": { "handler": _handle_orderconfig_module, "args": [] },
         "TOrderableModuleDescriptor": { "handler": _handle_orderable_module, "args": [] },
         "TTacticalLabelModuleDescriptor": { "handler": _handle_tacticallabel_module, "args": [] },
+        "TAirplaneModuleDescriptor": { "handler": _handle_airplanemodule_module, "args": [] },
         "TStrategicDataModuleDescriptor": { "handler": _handle_strategicdata_module, "args": [] },
         "TUnitUIModuleDescriptor": { "handler": handle_unitui_module, "args": [dictionary_entries, donor] },
         # "TUnitUpkeepModuleDescriptor": { "handler": handle_unitupkeep_module, "args": [] },
@@ -524,6 +525,20 @@ def _handle_airplanemovement_module(logger, game_db, unit_data, edit_type, unit_
         logger.info(f"Updated {unit_name} altitude to {new_value}")
 
 
+# TFuelModuleDescriptor
+def _handle_fuel_module(logger, game_db, unit_data, edit_type, unit_name,
+                        edits, module, *args) -> None:
+    """Handle TFuelModuleDescriptor for existing and new units"""
+    fuel_capacity = edits.get("FuelModule", {}).get("FuelCapacity", None)
+    fuel_move_duration = edits.get("FuelModule", {}).get("FuelMoveDuration", None)
+    if fuel_capacity:
+        module.v.by_m("FuelCapacity").v = str(fuel_capacity)
+        logger.info(f"Updated {unit_name} fuel capacity to {fuel_capacity}")
+    if fuel_move_duration:
+        module.v.by_m("FuelMoveDuration").v = str(fuel_move_duration)
+        logger.info(f"Updated {unit_name} fuel move duration to {fuel_move_duration}")
+
+
 # TTransportableModuleDescriptor
 def _handle_transportable_module(logger, game_db, unit_data, edit_type, unit_name,
                                  edits, module, *args) -> None:
@@ -828,6 +843,20 @@ def _handle_tacticallabel_module(logger, game_db, unit_data, edit_type, unit_nam
     if "UnidentifiedTextures" in edits:
         unid_textures_member = module.v.by_m("UnidentifiedTexture")
         unid_textures_member.v.by_m("Values").v = str(edits["UnidentifiedTextures"])
+
+
+# TAirplaneModuleDescriptor
+def _handle_airplanemodule_module(logger, game_db, unit_data, edit_type, unit_name,
+                                  edits, module, *args) -> None:
+    """Handle TAirplaneModuleDescriptor for existing and new units"""
+    evacuation_time = edits.get("AirplaneModule", {}).get("EvacuationTime", None)
+    travel_duration = edits.get("AirplaneModule", {}).get("TravelDuration", None)
+    if evacuation_time:
+        module.v.by_m("EvacuationTime").v = str(evacuation_time)
+        logger.info(f"Updated {unit_name} evacuation time to {evacuation_time}")
+    if travel_duration:
+        module.v.by_m("TravelDuration").v = str(travel_duration)
+        logger.info(f"Updated {unit_name} travel duration to {travel_duration}")
             
 
 # TStrategicDataModuleDescriptor

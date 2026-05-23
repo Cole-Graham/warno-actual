@@ -26,6 +26,7 @@ from .handlers import (
     apply_tandem_charge_inversion,
     apply_weapon_range_standards,
     remove_vanilla_instances,
+    validate_ammunition_consumption,
     vanilla_renames_ammunition,
 )
 
@@ -198,6 +199,8 @@ def edit_gen_gp_gfx_ammunition(source_path, game_db: Dict[str, Any]) -> None:
         except Exception as e:
             logger.error(f"Failed applying he_dca air ammo clones: {str(e)}")
             raise
+
+        validate_ammunition_consumption(source_path, logger)
 
         # Write dictionary entries
         if ingame_names or calibers:

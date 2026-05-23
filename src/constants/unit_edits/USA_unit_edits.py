@@ -2900,6 +2900,11 @@ usa_unit_edits = {
         "strength": "LAV_25_M1047_US_US",
     },
     
+    "CATFAE_US": {
+        "CommandPoints": 125,
+        "availability": [3, 2, 0, 0],
+    },
+    
     "Howz_M102_105mm_US": {
         "CommandPoints": 60,
         "availability": [0, 4, 3, 0],

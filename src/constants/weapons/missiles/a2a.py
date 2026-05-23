@@ -261,9 +261,13 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "TraitsToken": ['MOTION', 'F&F', 'biglyHE'],
                 "MaximumRangeAirplaneGRU": 13300,
+                "PhysicalDamages": 8.0,
+                "SuppressDamages": 350, # 210 against vet 3 targets, will still stun in 1 hit
+                "TirReflexe": True,
+                "ReflexShotDisabledIfPriorityTarget": True,
                 "ProjectileSpeedGRU": 6600,
                 "TimeBetweenTwoShots": 0.7,
-                "TimeBetweenTwoSalvos": 3.2,
+                "TimeBetweenTwoSalvos": 3.0,
                 "AimingTime": 1.6,
                 "ShotsCountPerSalvo": 2,
                 "SupplyCost": 160.0,
@@ -448,6 +452,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Moving": 50,
             },
             "parent_membr": {
+                "MaximumRangeAirplaneGRU": 3850,
                 "PhysicalDamages": 4.0,
                 "AimingTime": 0.3,
                 "SupplyCost": 25.0,
@@ -465,6 +470,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Moving": 50,
             },
             "parent_membr": {
+                "MaximumRangeAirplaneGRU": 3850,
                 "PhysicalDamages": 4.0,
                 "AimingTime": 0.3,
                 "SupplyCost": 25.0,
@@ -620,6 +626,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Moving": 50,
             },
             "parent_membr": {
+                "MaximumRangeAirplaneGRU": 3850,
                 "AimingTime": 0.3,
                 "SupplyCost": 25.0,
             },
@@ -636,6 +643,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Moving": 50,
             },
             "parent_membr": {
+                "MaximumRangeAirplaneGRU": 3850,
                 "AimingTime": 0.3,
                 "SupplyCost": 25.0,
             },

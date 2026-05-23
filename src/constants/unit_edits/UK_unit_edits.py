@@ -2667,7 +2667,8 @@ uk_unit_edits = {
         "GameName": {
             "display": "HARRIER GR.3 [RKT]",
         },
-        "CommandPoints": 110,
+        "CommandPoints": 120,
+        "ECM": -0.3,
         "availability": [0, 3, 2, 0],
         "UpgradeFromUnit": None,
     },
@@ -2690,7 +2691,8 @@ uk_unit_edits = {
         "GameName": {
             "display": "HARRIER GR.3 [HE]",
         },
-        "CommandPoints": 130,
+        "CommandPoints": 140,
+        "ECM": -0.3,
         "availability": [0, 4, 0, 0],
     },
     
@@ -2705,7 +2707,8 @@ uk_unit_edits = {
     },
 
     "Harrier_CLU_UK": {
-        "CommandPoints": 170,
+        "CommandPoints": 180,
+        "ECM": -0.3,
         "availability": [0, 3, 0, 0],
     },
     
@@ -2743,12 +2746,14 @@ uk_unit_edits = {
     },
     
     "Jaguar_overwing_UK": {  # 6x Mk18 513kg, 2x AIM-9L
-        "CommandPoints": 215,
+        "CommandPoints": 225,
+        "ECM": -0.35,
         "availability": [0, 0, 2, 0],
     },
 
     "Tornado_ADV_HE_UK": {
-        "CommandPoints": 220,
+        "CommandPoints": 250,
+        "ECM": -0.40,
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
@@ -2756,7 +2761,8 @@ uk_unit_edits = {
     },
     
     "Tornado_ADV_clu_UK": {
-        "CommandPoints": 240,
+        "CommandPoints": 270,
+        "ECM": -0.40,
         "availability": [0, 2, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
@@ -2766,6 +2772,7 @@ uk_unit_edits = {
     "Tornado_ADV_SEAD_UK" : { # 3x ALARM 5600m
         "availability": [0, 2, 0, 1],
         "CommandPoints": 300,
+        "ECM": -0.50,
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 10000.0,
@@ -2788,7 +2795,8 @@ uk_unit_edits = {
     },
 
     "Tornado_ADV_UK": { # 4x Skyflash SuperTEMP, 4x AIM-9L
-        "CommandPoints": 230,
+        "CommandPoints": 220,
+        "ECM": -0.25,
         "availability": [0, 2, 0, 1],
         "WeaponDescriptor": {
             "equipmentchanges": {

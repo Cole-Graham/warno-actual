@@ -3585,17 +3585,20 @@ rda_unit_edits = {
     },
 
     "MiG_21PFM_AA_DDR": {
-        "CommandPoints": 95,
+        "CommandPoints": 105,
+        "ECM": -0.15,
         "availability": [0, 4, 3, 2],
     },
 
     "MiG_21bis_AA2_DDR": {
-        "CommandPoints": 110,
+        "CommandPoints": 125,
+        "ECM": -0.15,
         "availability": [0, 4, 3, 2],
     },
 
     "MiG_21bis_AA3_DDR": {
-        "CommandPoints": 110,
+        "CommandPoints": 125,
+        "ECM": -0.15,
         "availability": [0, 4, 3, 2],
     },
 
@@ -3603,7 +3606,8 @@ rda_unit_edits = {
         "GameName": {
             "display": "MiG-21bis [RKT]",
         },
-        "CommandPoints": 100,
+        "CommandPoints": 110,
+        "ECM": -0.15,
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": {
@@ -3619,22 +3623,26 @@ rda_unit_edits = {
     },
 
     "MiG_21bis_NPLM_DDR": {
-        "CommandPoints": 135,
+        "CommandPoints": 145,
+        "ECM": -0.15,
         "availability": [0, 4, 0, 0],
     },
 
     "MiG_21bis_HE_DDR": {
-        "CommandPoints": 135,
+        "CommandPoints": 145,
+        "ECM": -0.15,
         "availability": [0, 4, 0, 0],
     },
 
     "MiG_21bis_CLU_DDR": {
-        "CommandPoints": 180,
+        "CommandPoints": 190,
+        "ECM": -0.15,
         "availability": [0, 2, 0, 0],
     },
 
     "MiG_21bis_RKT2_DDR": {  # 4x S-24 [RKT2]
-        "CommandPoints": 100,
+        "CommandPoints": 110,
+        "ECM": -0.15,
         "availability": [0, 4, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
@@ -3652,33 +3660,33 @@ rda_unit_edits = {
         },
     },
 
-    "MiG_23BN_AT_DDR": {  # MiG-23MF [AT]
-        "CommandPoints": 125,
-        "availability": [0, 3, 0, 0],
-    },
-
     "MiG_23BN_AT2_DDR": {  # MiG-23BN [AT2]
-        "CommandPoints": 135,
+        "CommandPoints": 145,
+        "ECM": -0.15,
         "availability": [0, 3, 2, 0],
     },
 
     "MiG_23BN_CLU_DDR": {  # MiG-23BN [CLU]
-        "CommandPoints": 185,
+        "CommandPoints": 195,
+        "ECM": -0.15,
         "availability": [0, 3, 0, 0],
     },
 
     "MiG_23BN_DDR": {  # MiG-23BN [HE]
-        "CommandPoints": 140,
+        "CommandPoints": 150,
+        "ECM": -0.15,
         "availability": [0, 3, 0, 0],
     },
 
     "MiG_23BN_nplm_DDR": {  # MiG-23BN [HE]
-        "CommandPoints": 145,
+        "CommandPoints": 155,
+        "ECM": -0.15,
         "availability": [0, 3, 0, 0],
     },
 
     "MiG_23BN_RKT_DDR": {  # MiG-23BN 240mm rocket
-        "CommandPoints": 140,
+        "CommandPoints": 150,
+        "ECM": -0.15,
         "availability": [0, 3, 2, 0],
         "WeaponDescriptor": {
             "Salves": {
@@ -3697,25 +3705,33 @@ rda_unit_edits = {
     },
 
     "MiG_23BN_KMGU_DDR": {  # MiG-23BN HE cluster bomblets thing?
-        "CommandPoints": 200,
+        "CommandPoints": 210,
+        "ECM": -0.15,
         "availability": [0, 2, 0, 0],
     },
 
     "MiG_23MF_DDR": {  # [HE]
-        "CommandPoints": 220,
+        "CommandPoints": 230,
+        "ECM": -0.15,
+        "availability": [0, 3, 0, 0],
+    },
+    
+    "MiG_23BN_AT_DDR": {  # MiG-23MF [AT]
+        "CommandPoints": 120,
+        "ECM": -0.15,
         "availability": [0, 3, 0, 0],
     },
     
     "MiG_23MF_AA_DDR": {
-        "CommandPoints": 115,
+        "CommandPoints": 125,
         "availability": [0, 4, 3, 2],
-        "ECM": -0.1,
+        "ECM": -0.15,
     },
 
     "MiG_23ML_DDR": {  # [AA]
-        "CommandPoints": 145,
+        "CommandPoints": 135,
+        "ECM": -0.15,
         "availability": [0, 3, 2, 0],
-        "ECM": -0.2,
     },
 
     "MiG_29_AA_DDR": {  # 4x R-73, 2x R-27R [AA1]

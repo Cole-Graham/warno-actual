@@ -2370,23 +2370,26 @@ rfa_unit_edits = {
     },
 
     "F104G_Starfighter_RFA": { # F-104G [AA]
-        "CommandPoints": 95,
+        "CommandPoints": 105,
+        "ECM": -0.15,
         "availability": [0, 4, 3, 0],
     },
     
     "F104G_Starfighter_HE_RFA": { # F-104G [HE]
-        "CommandPoints": 145,
+        "CommandPoints": 155,
+        "ECM": -0.15,
         "availability": [0, 4, 0, 0],
     },
     
     "F104G_Starfighter_AT_RFA": { # F-104G [AT]
-        "CommandPoints": 95,
+        "CommandPoints": 105,
+        "ECM": -0.15,
         "availability": [0, 4, 0, 0],
     },
     
-    "F4F_Phantom_II_AA2_RFA": { # 2x 2x AIM-9L(Improved)
-        "CommandPoints": 190,
-        "ECM": -0.25,
+    "F4F_Phantom_II_AA2_RFA": { # 2x2 AIM-9L(Improved)
+        "CommandPoints": 200,
+        "ECM": -0.35,
         "availability": [0, 0, 3, 2],
         "optics": {
             "OpticalStrengths": {
@@ -2395,7 +2398,7 @@ rfa_unit_edits = {
         },
     },
 
-    "F4F_Phantom_II_AA_RFA": { # 2x 2x AIM-9L
+    "F4F_Phantom_II_AA_RFA": { # 2x2 AIM-9L
         "CommandPoints": 160,
         "ECM": -0.25,
         "availability": [0, 3, 2, 0],
@@ -2513,6 +2516,7 @@ rfa_unit_edits = {
 
     "HFB_320_ECM_RFA": { # EW
         "CommandPoints": 145,
+        "ECM": -0.55,
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 12500.0,
@@ -2555,7 +2559,8 @@ rfa_unit_edits = {
     },
     
     "Tornado_IDS_AT1_RFA": { # 4x AGM-65B, 2x AIM-9L
-        "CommandPoints": 245,
+        "CommandPoints": 260,
+        "ECM": -0.40,
         "availability": [0, 2, 0, 1],
         "WeaponDescriptor": {
             "Salves": {
@@ -2568,7 +2573,8 @@ rfa_unit_edits = {
     },
 
     "Tornado_IDS_HE1_RFA": { # 3x Mk 83, 2x AIM-9L
-        "CommandPoints": 220,
+        "CommandPoints": 230,
+        "ECM": -0.40,
         "availability": [0, 2, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
@@ -2576,7 +2582,8 @@ rfa_unit_edits = {
     },
 
     "Tornado_IDS_CLUS_RFA": { # 5x Rockeye, 2x AIM-9L
-        "CommandPoints": 200,
+        "CommandPoints": 210,
+        "ECM": -0.40,
         "availability": [0, 2, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
@@ -2584,7 +2591,8 @@ rfa_unit_edits = {
     },
 
     "Tornado_Marine_CLU_RFA": { # 4x BL.755, 2x AIM-9L
-        "CommandPoints": 220,
+        "CommandPoints": 250,
+        "ECM": -0.50,
         "availability": [0, 2, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
@@ -2593,6 +2601,7 @@ rfa_unit_edits = {
 
     "Tornado_IDS_SEAD_RFA": { # AGM-88 5950m
         "CommandPoints": 300,
+        "ECM": -0.50,
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 10000.0,
@@ -2619,6 +2628,7 @@ rfa_unit_edits = {
 
     "Tornado_IDS_MW1_RFA": { # MW-1 KB44 (Anti Airfield HE Cluster Munitions), 2x AIM-9L
         "CommandPoints": 350,
+        "ECM": -0.40,
         "max_speed": 1300,
         "availability": [0, 2, 0, 0],
         "SpecialtiesList": {

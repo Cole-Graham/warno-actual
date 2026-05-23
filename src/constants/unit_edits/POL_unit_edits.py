@@ -3259,7 +3259,8 @@ pol_unit_edits = {
         "Divisions": {
             "remove": ["POL_20_Pancerna"],
         },
-        "CommandPoints": 120,
+        "CommandPoints": 130,
+        "ECM": -0.15,
         "availability": [0, 4, 3, 2],
         "GameName": {
             "display": "MiG-21bis [AA2]"
@@ -3267,7 +3268,8 @@ pol_unit_edits = {
     },
     
     "MiG_21bis_POL": {  # 4x R-60M, 2x R-13M - MiG-21bis [AA2]
-        "CommandPoints": 110,
+        "CommandPoints": 120,
+        "ECM": -0.15,
         "availability": [0, 4, 3, 2],
         "GameName": {
             "display": "MiG-21bis [AA]"
@@ -3275,12 +3277,14 @@ pol_unit_edits = {
     },
     
     "MiG_21bis_HE_POL": {  # MiG-21bis [HE]
-        "CommandPoints": 135,
+        "CommandPoints": 145,
+        "ECM": -0.15,
         "availability": [0, 4, 0, 0],
     },
     
     "MiG_21bis_RKT2_POL": {  # 4x S-24 [RKT2]
-        "CommandPoints": 100,
+        "CommandPoints": 110,
+        "ECM": -0.15,
         "availability": [0, 4, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
@@ -3303,7 +3307,8 @@ pol_unit_edits = {
     },
     
     "MiG_21bis_AT_POL": {  # 2x Kh-66, 2x R-13M
-        "CommandPoints": 115,
+        "CommandPoints": 150,
+        "ECM": -0.25,
         "availability": [0, 3, 0, 0],
         "UpgradeFromUnit": "MiG_21bis_HE_POL",
     },
@@ -3311,11 +3316,12 @@ pol_unit_edits = {
     "MiG_23MF_AA_POL": {  # MiG-23MF [AA], 2x R-23R, 4x R-60M
         "CommandPoints": 115,
         "availability": [0, 4, 3, 2],
-        "ECM": -0.20,
+        "ECM": -0.15,
     },
     
     "MiG_23MF_AA2_POL": {  # MiG-23MF [AA2], 2x R-3R, 2x R-13M
         "CommandPoints": 110,
+        "ECM": -0.15,
         "availability": [0, 4, 3, 2],
         "Divisions": {
             "add": ["POL_20_Pancerna"],
@@ -3347,27 +3353,32 @@ pol_unit_edits = {
     },
     
     "Su_7BKL_RKT_POL": {
-        "CommandPoints": 115,
+        "CommandPoints": 110,
+        "ECM": -0.05,
         "availability": [0, 3, 0, 0],
     },
 
     "Su_7BKL_EW_POL": {
         "CommandPoints": 130,
+        "ECM": -0.25,
         "availability": [0, 4, 0, 0],
     },
 
     "Su_7BKL_HE_POL": {
         "CommandPoints": 175,
+        "ECM": -0.15,
         "availability": [0, 3, 0, 0],
     },
 
     "Su_7BKL_NPLM_POL": {
-        "CommandPoints": 175,
-        "availability": [0, 3, 0, 0],
+        "CommandPoints": 165,
+        "ECM": -0.05,
+        "availability": [0, 4, 0, 0],
     },
     
     "Su_17_cluster_POL": { # Su-20 [CLU] - 6x RBK-500
-        "CommandPoints": 180,
+        "CommandPoints": 190,
+        "ECM": -0.15,
         "availability": [0, 2, 0, 0],
     },
     

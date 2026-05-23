@@ -314,6 +314,7 @@ US_marine_newdivisionrules = {
         ("Howz_M198_155mm_USMC_US", 2, [3, 2, 0, 0], ["M35_trans_US"]),
         ("LAV_M_81mm_US", 2, [4, 3, 0, 0]),
         ("81mm_mortar_USMC_US", 2, [6, 5, 4, 0], ["M998_Humvee_US"]),
+        ("CATFAE_US", 1, [3, 2, 0, 0]),
     ],
     "tank": [
         ("M60A1_RISE_Passive_USMC_CMD_US", 1, [0, 0, 4, 0]),

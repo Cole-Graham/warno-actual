@@ -3712,7 +3712,7 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "ATGM_9K111M_Faktoriya": 6,
+                "ATGM_9K111M_Faktoriya_IFV": 6,
             }
         },
     },
@@ -5795,6 +5795,7 @@ sov_unit_edits = {
 
     "MiG_21bis_CLU_SOV": {  # 2x RBK-500, 2x RBK-250
         "CommandPoints": 190,
+        "ECM": -0.25,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -5804,7 +5805,8 @@ sov_unit_edits = {
     },
 
     "MiG_21bis_HE_SOV": {  # 2x RBK-500, 2x RBK-250
-        "CommandPoints": 135,
+        "CommandPoints": 145,
+        "ECM": -0.15,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -5814,22 +5816,36 @@ sov_unit_edits = {
     },
     
     "MiG_21SMT_AA_SOV": {  # 2x R-3R, 2x R-13M1
-        "CommandPoints": 110,
+        "CommandPoints": 120,
+        "ECM": -0.15,
+        "FuelModule": {
+            "FuelCapacity": 3600,
+            "FuelMoveDuration": 360,
+        },
+        "availability": [0, 4, 3, 2],
+    },
+    
+    "MiG_23ML_SOV": { # 3x R-60M, 3x R-60M
+        "CommandPoints": 130,
+        "ECM": -0.15,
         "availability": [0, 4, 3, 2],
     },
 
     "MiG_23MLA_AA_SOV": {  # 2x R-24R, 4x R-60M
-        "CommandPoints": 130,
+        "CommandPoints": 140,
+        "ECM": -0.15,
         "availability": [0, 3, 2, 0],
     },
 
     "MiG_23MLD_AA1_SOV": {  # 2x R-24R, 4x R-60M
         "CommandPoints": 145,
+        "ECM": -0.2,
         "availability": [0, 3, 2, 0],
     },
 
     "MiG_23MLD_SOV": {  # 2x R-24MR, 2x R-73
         "CommandPoints": 175,
+        "ECM": -0.2,
         "Divisions": {
             "add": ["SOV_76_VDV"],
             "is_transported": False,
@@ -5841,11 +5857,6 @@ sov_unit_edits = {
         "availability": [0, 3, 2, 0],
     },
 
-    "MiG_23ML_SOV": { # 3x R-60M, 3x R-60M
-        "CommandPoints": 120,
-        "availability": [0, 4, 3, 2],
-    },
-
     "MiG_23P_SOV": {  # 2x R-24MR, 2x R-13M1
         "CommandPoints": 160,
         "availability": [0, 3, 2, 0],
@@ -5853,11 +5864,21 @@ sov_unit_edits = {
 
      "MiG_25RBF_SOV": { # 8x FAB-500
         "CommandPoints": 175,
+        "AirplaneMovement": {
+            "parent_membr": {
+                "AgilityRadiusGRU": 1800,
+            },
+        },
         "availability": [0, 2, 0, 0],
     },
     
     "MiG_25BM_SOV": {  # Kh-58U 6300m
         "CommandPoints": 270,
+        "AirplaneMovement": {
+            "parent_membr": {
+                "AgilityRadiusGRU": 1800,
+            },
+        },
         "availability": [0, 2, 0, 1],
         "optics": {
             "VisionRangesGRU": {
@@ -5870,17 +5891,25 @@ sov_unit_edits = {
     },
     
     "MiG_25PD_SOV": {
-        "CommandPoints": 180,
+        "CommandPoints": 220,
+        "ECM": -0.15,
+        "AirplaneMovement": {
+            "parent_membr": {
+                "AgilityRadiusGRU": 1800,
+            },
+        },
         "availability": [0, 2, 0, 1],
     },
     
     "MiG_27K_AT1_SOV": { # GSh-6-30, 2x Kh-29L, 40x S-8KOM
-        "CommandPoints": 185,
+        "CommandPoints": 170,
+        "ECM": -0.2,
         "availability": [0, 2, 0, 1],
     },
 
     "MiG_27K_AT2_SOV": { # GSh-6-30, 2x Kh-29T, 4x R-60M
-        "CommandPoints": 210,
+        "CommandPoints": 195,
+        "ECM": -0.2,
         "availability": [0, 2, 0, 1],
         "WeaponDescriptor": {
             "Salves": {
@@ -5891,6 +5920,7 @@ sov_unit_edits = {
 
     "MiG_27K_LGB_SOV": {
         "CommandPoints": 235,
+        "ECM": -0.3,
         "GameName": {
             "display": "MiG-27K [PGB]",
         },
@@ -5915,7 +5945,8 @@ sov_unit_edits = {
     },
 
     "MiG_27K_SEAD_SOV": {  # MiG-27K [SEAD2] - Kh-25MP 5250m
-        "CommandPoints": 190,
+        "CommandPoints": 180,
+        "ECM": -0.4,
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 10000.0,
@@ -5925,6 +5956,28 @@ sov_unit_edits = {
             },
         },
         "availability": [0, 2, 0, 0],
+    },
+    
+    "MiG_27M_sead_SOV": {  # MiG-27K [SEAD] - Kh-28 5600m
+        "CommandPoints": 195,
+        "ECM": -0.4,
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 10000.0,
+            },
+            "OpticalStrengths": {
+                "EOpticalStrength/AntiRadar": 175000.0,
+            },
+        },
+        "availability": [0, 2, 0, 0],
+        "Divisions": {
+            "add": ["SOV_27_Gds_Rifle"],
+            "is_transported": False,
+            "needs_transport": False,
+            "default": {
+                "cards": 1,
+            },
+        },
     },
 
     "MiG_27M_bombe_SOV": {  # 4x FAB-500
@@ -5948,7 +6001,8 @@ sov_unit_edits = {
     },
 
     "MiG_27M_SOV": { # GSh-6-30, 2x Kh-29T
-        "CommandPoints": 175,
+        "CommandPoints": 195,
+        "ECM": -0.3,
         "availability": [0, 2, 0, 1],
         "WeaponDescriptor": {
             "Salves": {
@@ -5987,27 +6041,6 @@ sov_unit_edits = {
                         "depiction_baked_in": False,
                     },
                 },
-            },
-        },
-    },
-
-    "MiG_27M_sead_SOV": {  # MiG-27K [SEAD] - Kh-28 5600m
-        "CommandPoints": 205,
-        "optics": {
-            "VisionRangesGRU": {
-                "EVisionRange/Standard": 10000.0,
-            },
-            "OpticalStrengths": {
-                "EOpticalStrength/AntiRadar": 175000.0,
-            },
-        },
-        "availability": [0, 2, 0, 0],
-        "Divisions": {
-            "add": ["SOV_27_Gds_Rifle"],
-            "is_transported": False,
-            "needs_transport": False,
-            "default": {
-                "cards": 1,
             },
         },
     },
@@ -6064,7 +6097,7 @@ sov_unit_edits = {
                 "AgilityRadiusGRU": 1800,
             },
         },
-        "ECM": -0.3,
+        "ECM": -0.2,
         "CommandPoints": 270,
         "availability": [0, 2, 0, 0],
         "WeaponDescriptor": {
@@ -6110,12 +6143,14 @@ sov_unit_edits = {
     },
 
     "Su_15TM_AA_SOV": {  # 1x R-98MT, 1x R-98MR, 2x R-60M
-        "CommandPoints": 130,
+        "CommandPoints": 125,
+        "ECM": -0.05,
         "availability": [0, 3, 2, 0],
     },
 
     "Su_15TM_AA2_SOV": {  # 2x R-98MT, 2x R-60M, 2x UPK-23-250
-        "CommandPoints": 140,
+        "CommandPoints": 135,
+        "ECM": -0.05,
         "availability": [0, 3, 2, 0],
     },
 
