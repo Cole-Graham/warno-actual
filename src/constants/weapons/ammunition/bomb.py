@@ -174,6 +174,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "ImpactHappening": "'BombeODABRPO'",
                 "PhysicalDamages": 10.0,
+                "SuppressDamages": 375,
                 "SupplyCost": 280.0,
             },
         },
@@ -227,6 +228,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "SupplyCost": 315.0,
+            },
+        },
+    },
+    
+    ("Bomb_FAB_500kg_salvolength9", "he_bomb", None, False): { # 58
+        "Ammunition": {
+            "parent_membr": {
+                "SupplyCost": 600.0,
             },
         },
     },

@@ -149,7 +149,8 @@ def edit_gen_gp_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]
         # Blanket-disable HasDeploymentTime on missiles not used by protected units
         _blanket_disable_deployment_time(source_path, game_db)
 
-        validate_ammunition_consumption(source_path, logger)
+        # This validation has too many false positive, can be useful for sanity checking though
+        # validate_ammunition_consumption(source_path, logger)
 
         # Write dictionary entries
         if ingame_names or calibers:

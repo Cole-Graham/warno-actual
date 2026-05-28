@@ -314,7 +314,7 @@ us_new_divs = {
             "HMGteam_M2HB_US",
             "HMGteam_Mk19_US",
             "ATteam_TOW2_US",
-            "M110A2_USMC_US",
+            "M110A2_HOWZ_US",
             "M60A1_RISE_Passive_CMD_US",
             "MANPAD_Stinger_C_US",
             "DCA_I_Hawk_US",

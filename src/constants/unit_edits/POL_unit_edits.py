@@ -3382,38 +3382,41 @@ pol_unit_edits = {
         "availability": [0, 2, 0, 0],
     },
     
-    "Su_22_POL": {
+    "Su_22_POL": { # Su-22M4 [HE]
         "CommandPoints": 215,
+        "ECM": -0.30,
         "availability": [0, 2, 0, 0],
     },
 
     "Su_22_nplm_POL": {  # 4x ZB-500, 2x R-60M
-        "CommandPoints": 215,
+        "CommandPoints": 200,
+        "ECM": -0.20,
         "availability": [0, 3, 0, 0],
     },
     
     "Su_22_clu_POL": {  # 4x RBK-250, 2x R-60M
-        "CommandPoints": 205,
+        "CommandPoints": 200,
+        "ECM": -0.20,
         "availability": [0, 2, 0, 0],
     },
     
     "Su_22_AT_POL": {  # Su-22M4 Seria 30
         "CommandPoints": "Su_22_AT_SOV",
+        "ECM": "Su_22_AT_SOV",
         "availability": [0, 2, 0, 1],
         "WeaponDescriptor": {
-            "Salves": {
-                "AGM_Kh29T": 1,
-            },
+            "Salves": "Su_22_AT_SOV",
         },
     },
     
     "Su_22_RKT_POL": {  # 4x S-24, 2x R-60M
-        "CommandPoints": 125,
+        "CommandPoints": 115,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
+        "ECM": -0.20,
         "availability": [0, 3, 2, 0],
         "WeaponDescriptor": {
             "Salves": {
@@ -3435,11 +3438,12 @@ pol_unit_edits = {
     },
 
     "Su_22_RKT2_POL": {  # 80x S-8, 2x R-60M
-        "CommandPoints": 125,
-        "availability": [0, 3, 2, 0],
+        "CommandPoints": 115,
         "GameName": {
             "display": "SU-22M4 [RKT2]",
         },
+        "ECM": -0.20,
+        "availability": [0, 3, 2, 0],
         "WeaponDescriptor": {
             "Salves": {
                 "RocketAir_B8_80mm_salvolength40": 2,
@@ -3458,10 +3462,12 @@ pol_unit_edits = {
     
     "Su_22_RKT3_POL": {  # 4x S-25O
         "CommandPoints": 140,
+        "ECM": -0.30,
     },
     
     "Su_22_SEAD_POL": {  # Su-22M4P [SEAD]
         "CommandPoints": 180,
+        "ECM": -0.40,
         "WeaponDescriptor": {
             "turrets": {
                 1: {

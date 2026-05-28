@@ -188,6 +188,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketAir_S25O_420mm_salvolength2", "rocket", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "Caliber": ("60kg TNTe", "IFSVBUYZTU"),
                 "MaximumRangeGRU": 2625,
                 "RadiusSplashPhysicalDamagesGRU": 90,
                 "RadiusSplashSuppressDamagesGRU": 120,
@@ -201,6 +202,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketAir_S24_240mm_salvolength2", "rocket", None, False): { # 619
         "Ammunition": {
             "parent_membr": {
+                "Caliber": ("30kg TNTe", "YCGKZDIBDZ"),
                 "RadiusSplashPhysicalDamagesGRU": 60,
                 "RadiusSplashSuppressDamagesGRU": 80,
                 "PhysicalDamages": 6.0,
@@ -213,6 +215,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketAir_S24_240mm_avion_salvolength4", "rocket", "RocketAir_S24_240mm_salvolength2", True): { # 619
         "Ammunition": {
             "parent_membr": {
+                "Caliber": ("30kg TNTe", "YCGKZDIBDZ"),
                 "MaximumRangeGRU": 2625,
                 "RadiusSplashPhysicalDamagesGRU": 60,
                 "RadiusSplashSuppressDamagesGRU": 80,
@@ -229,6 +232,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketAir_S24_240mm_salvolength3", "rocket", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "Caliber": ("30kg TNTe", "YCGKZDIBDZ"),
                 "MaximumRangeGRU": 2625,
                 "RadiusSplashPhysicalDamagesGRU": 60,
                 "RadiusSplashSuppressDamagesGRU": 80,

@@ -42,6 +42,13 @@ def edit_gameplay_terrains(source_path) -> None:
             "Batiment": 0.5,
             "Ruin": 0.55,
         },
+        "thermobarique": {
+            "ForetDense": 1.0,
+            "ForetLegere": 1.0,
+            "PetitBatiment": 1.0,
+            "Batiment": 1.0,
+            "Ruin": 1.0,
+        },
         "pgb_bomb": {
             "ForetDense": 0.5,
             "ForetLegere": 0.65,

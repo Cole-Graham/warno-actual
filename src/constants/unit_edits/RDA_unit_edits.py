@@ -3747,6 +3747,7 @@ rda_unit_edits = {
 
     "Su_22_AT_DDR": {
         "CommandPoints": 195,
+        "ECM": -0.30,
         "availability": [0, 2, 0, 1],
         "WeaponDescriptor": {
             "Salves": {
@@ -3757,6 +3758,7 @@ rda_unit_edits = {
 
     "Su_22_AT2_DDR": {
         "CommandPoints": 160,
+        "ECM": -0.30,
         "availability": [0, 2, 0, 1],
     },
 
@@ -3779,6 +3781,7 @@ rda_unit_edits = {
                 "EOpticalStrength/AntiRadar": 175000.0,
             },
         },
+        "ECM": -0.40,
         "availability": [0, 3, 0, 2],
         "Divisions": {
             "add": ["RDA_9_Panzer"],
@@ -3791,27 +3794,32 @@ rda_unit_edits = {
     },
 
     "Su_22_clu_DDR": {
-        "CommandPoints": 215,
+        "CommandPoints": 200,
+        "ECM": -0.20,
         "availability": [0, 2, 0, 0],
     },
 
     "Su_22_nplm_DDR": {
-        "CommandPoints": 215,
+        "CommandPoints": 200,
+        "ECM": -0.20,
         "availability": [0, 3, 0, 0],
     },
 
     "Su_22_DDR": {  # [HE]
-        "CommandPoints": 215,
+        "CommandPoints": 220,
+        "ECM": -0.30,
         "availability": [0, 2, 0, 0],
     },
 
     "Su_22_HE2_DDR": {  # [HE2]
-        "CommandPoints": 230,
+        "CommandPoints": 220,
+        "ECM": -0.30,
         "availability": [0, 2, 0, 0],
     },
 
     "Su_22_RKT_DDR": {  # 4x S-24
-        "CommandPoints": 125,
+        "CommandPoints": 105,
+        "ECM": -0.20,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -3835,7 +3843,8 @@ rda_unit_edits = {
     },
 
     "Su_22_UPK_DDR": {  # [HE2]
-        "CommandPoints": 125,
+        "CommandPoints": 115,
+        "ECM": -0.20,
         "availability": [0, 3, 2, 0],
     },
 }

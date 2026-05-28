@@ -5612,7 +5612,7 @@ usa_unit_edits = {
                 },
             },
             "Salves": {
-                "Bomb_GBU_10_salvolength2": 1,
+                "Bomb_GBU_27_salvolength2": 1,
             },
         },
     },
@@ -6115,6 +6115,7 @@ usa_unit_edits = {
             },
         },
         "WeaponDescriptor": {
+            "SalvoIsMainSalvo": [False, False, False],
             "Salves": {
                 "AA_AIM9M_Sidewinder": 4,
             },

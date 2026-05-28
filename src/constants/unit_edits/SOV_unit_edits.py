@@ -6155,22 +6155,26 @@ sov_unit_edits = {
     },
 
     "Su_17M4_HE1_SOV": {  # 6x FAB-500, 2x R-60M
-        "CommandPoints": 175,
+        "CommandPoints": 165,
+        "ECM": -0.2,
         "availability": [0, 2, 0, 0],
     },
 
     "Su_17M4_HE2_SOV": {  # 4x FAB-500, 2x RBK-500, 2x R-60M
         "CommandPoints": 240,
+        "ECM": -0.3,
         "availability": [0, 2, 0, 0],
     },
 
     "Su_17M4_CLU_SOV": {  # 4x FAB-500, 2x RBK-500, 2x R-60M
         "CommandPoints": 240,
+        "ECM": -0.3,
         "availability": [0, 2, 0, 0],
     },
 
     "Su_17M4_SOV": {  # 20x S-13, 2x R-60M
-        "CommandPoints": 125,
+        "CommandPoints": 120,
+        "ECM": -0.2,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -6180,7 +6184,8 @@ sov_unit_edits = {
     },
 
     "Su_17M4_RKT2_SOV": { # 2x 40x SK-80s, 2x R-60M
-        "CommandPoints": 125,
+        "CommandPoints": 120,
+        "ECM": -0.20,
         "availability": [0, 3, 2, 0],
         "WeaponDescriptor": {
             "Salves": {
@@ -6200,11 +6205,13 @@ sov_unit_edits = {
 
     "Su_17M4_thermo_SOV": {  # 6x ODAB-500PM, 2x R-60M
         "CommandPoints": 220,
+        "ECM": -0.3,
         "availability": [0, 2, 0, 0],
     },
 
     "Su_22_AT_SOV": {  # 2x Kh-29T, 2x R-60M
         "CommandPoints": 195,
+        "ECM": -0.3,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -6219,7 +6226,8 @@ sov_unit_edits = {
     },
 
     "Su_17M4_AT2_SOV": {  # 4x S-25LD guided AT rockets, 2x R-60M
-        "CommandPoints": 145,
+        "CommandPoints": 140,
+        "ECM": -0.2,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -6235,6 +6243,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
+        "ECM": -0.4,
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 10000.0,
@@ -6256,7 +6265,8 @@ sov_unit_edits = {
     },
 
     "Su_24MP_EW_SOV": { # EW
-        "CommandPoints": 145,
+        "CommandPoints": 135,
+        "ECM": -0.45,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -6267,6 +6277,7 @@ sov_unit_edits = {
 
     "Su_24MP_SEAD2_SOV": {  # SEAD2
         "CommandPoints": 300,
+        "ECM": -0.45,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -6296,7 +6307,8 @@ sov_unit_edits = {
     },
 
     "Su_24MP_SOV": {  # Kh-28 5425m
-        "CommandPoints": 270,
+        "CommandPoints": 255,
+        "ECM": -0.45,
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 10000.0,
@@ -6324,7 +6336,8 @@ sov_unit_edits = {
         "GameName": {
             "display": "Su-24M [AT]",
         },
-        "CommandPoints": 190,
+        "CommandPoints": 200,
+        "ECM": -0.35,
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
@@ -6336,7 +6349,8 @@ sov_unit_edits = {
     },
 
     "Su_24M_AT2_SOV": {
-        "CommandPoints": 190,
+        "CommandPoints": 200,
+        "ECM": -0.35,
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
@@ -6346,7 +6360,8 @@ sov_unit_edits = {
         "GameName": {
             "display": "Su-24M [PGB]",
         },
-        "CommandPoints": 255,
+        "CommandPoints": 265,
+        "ECM": -0.35,
         "UpgradeFromUnit": None,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -6366,7 +6381,8 @@ sov_unit_edits = {
     },
 
     "Su_24M_LGB2_SOV": {
-        "CommandPoints": 270,
+        "CommandPoints": 280,
+        "ECM": -0.35,
         "GameName": {
             "display": "Su-24M [PGB2]",
         },
@@ -6390,7 +6406,8 @@ sov_unit_edits = {
     },
 
     "Su_24M_SOV": {
-        "CommandPoints": 190,
+        "CommandPoints": 210,
+        "ECM": -0.35,
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
@@ -6398,7 +6415,8 @@ sov_unit_edits = {
     },
 
     "Su_24M_clu2_SOV": {
-        "CommandPoints": 230,
+        "CommandPoints": 240,
+        "ECM": -0.35,
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
@@ -6406,7 +6424,8 @@ sov_unit_edits = {
     },
 
     "Su_24M_clu_SOV": {
-        "CommandPoints": 190,
+        "CommandPoints": 200,
+        "ECM": -0.35,
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
@@ -6436,7 +6455,8 @@ sov_unit_edits = {
     },
     
     "Su_24M_nplm_SOV": {
-        "CommandPoints": 190,
+        "CommandPoints": 200,
+        "ECM": -0.35,
         "availability": [0, 3, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
@@ -6444,7 +6464,8 @@ sov_unit_edits = {
     },
 
     "Su_24M_thermo_SOV": {
-        "CommandPoints": 225,
+        "CommandPoints": 235,
+        "ECM": -0.35,
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
@@ -6452,7 +6473,8 @@ sov_unit_edits = {
     },
     
     "Su_25T_SOV": {  # 16x Vikhr, 2x R-73
-        "CommandPoints": 260,
+        "CommandPoints": 280,
+        "ECM": -0.40,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -6469,6 +6491,7 @@ sov_unit_edits = {
 
     "Su_25_SOV": {  # 4x Kh-25ML, 2x R-60M
         "CommandPoints": 220,
+        "ECM": -0.20,
         "AirplaneMovement": {
             "parent_membr": {
                 "SpeedInKmph": 750,
@@ -6480,6 +6503,7 @@ sov_unit_edits = {
 
     "Su_25_clu_SOV": {  # 6x RBK-250, 2x R-60M
         "CommandPoints": 220,
+        "ECM": -0.20,
         "AirplaneMovement": {
             "parent_membr": {
                 "SpeedInKmph": 750,
@@ -6491,6 +6515,7 @@ sov_unit_edits = {
 
     "Su_25_he_SOV": {  # 6x FAB-500, 2x R-60M
         "CommandPoints": 220,
+        "ECM": -0.20,
         "AirplaneMovement": {
             "parent_membr": {
                 "SpeedInKmph": 750,
@@ -6502,6 +6527,7 @@ sov_unit_edits = {
 
     "Su_25_nplm_SOV": {  # 4x ZB-500, 2x R-60M
         "CommandPoints": 180,
+        "ECM": -0.20,
         "AirplaneMovement": {
             "parent_membr": {
                 "SpeedInKmph": 750,
@@ -6513,6 +6539,7 @@ sov_unit_edits = {
 
     "Su_25_rkt2_SOV": {  # x10 S-13, x2 x40 S-8KOM
         "CommandPoints": 220,
+        "ECM": -0.20,
         "AirplaneMovement": {
             "parent_membr": {
                 "SpeedInKmph": 750,
@@ -6524,6 +6551,7 @@ sov_unit_edits = {
 
      "Su_25_rkt_SOV": {  # x2 x40 S-8KOM
         "CommandPoints": 220,
+        "ECM": -0.20,
         "AirplaneMovement": {
             "parent_membr": {
                 "SpeedInKmph": 750,
@@ -6534,27 +6562,37 @@ sov_unit_edits = {
     },
 
     "Su_27K_SOV": {  # 2x R-73, 4x R-27R, 2x R-24T
-        "CommandPoints": 260,
+        "CommandPoints": 235,
+        "ECM": -0.20,
         "availability": [0, 2, 0, 1],
     },
 
     "Su_27S_SOV": {  # 6x R-73, 4x R-27R
-        "CommandPoints": 250,
+        "CommandPoints": 225,
+        "ECM": -0.20,
         "availability": [0, 2, 0, 1],
     },
 
     "Su_27S_jammers_SOV": {  # 4x R-27ER, 2x R-27T, 40% ECM
-        "CommandPoints": 290,
+        "CommandPoints": 270,
+        "ECM": -0.30,
         "availability": [0, 2, 0, 1],
     },
     
     "Tu_22_EW_SOV": {
         "CommandPoints": 145,
+        "ECM": -0.55,
         "availability": [0, 2, 0, 1],
     },
     
     "Tu_22_HE_SOV": {
-        "CommandPoints": 215,
+        "CommandPoints": 290,
+        "ECM": -0.40,
         "availability": [0, 2, 0, 0],
+    },
+    
+    "Yak28_PP_EW_SOV": {
+        "CommandPoints": 145,
+        "ECM": -0.55,
     },
 }

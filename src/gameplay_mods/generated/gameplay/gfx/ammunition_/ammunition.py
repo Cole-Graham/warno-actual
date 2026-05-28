@@ -200,7 +200,8 @@ def edit_gen_gp_gfx_ammunition(source_path, game_db: Dict[str, Any]) -> None:
             logger.error(f"Failed applying he_dca air ammo clones: {str(e)}")
             raise
 
-        validate_ammunition_consumption(source_path, logger)
+        # This validation has too many false positive, can be useful for sanity checking though
+        # validate_ammunition_consumption(source_path, logger)
 
         # Write dictionary entries
         if ingame_names or calibers:

@@ -51,6 +51,22 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("AGM_S25LD", "ATGM", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "MaximumRangeGRU": 3500,
+                "AimingTime": 0.3,
+                "SupplyCost": 60.0,
+                "ProjectileSpeedGRU": 2800,
+                "MaxAccelerationGRU": 1400,
+            },
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 2800,
+            "MaxAccelerationGRU": 1400,
+        },
+    },
+    
     ("AGM_Kh66", "ATGM", None, False): {
         "Ammunition": {
             "parent_membr": {
