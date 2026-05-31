@@ -76,7 +76,7 @@ US_airborne_newdivisionrules = {
         ("Sniper_US", 1, [0, 4, 3, 0], ["M998_Humvee_US", "M1025_Humvee_scout_US", "M1025_Humvee_AGL_nonPara_US"]),
         ("Sniper_M82_US", 1, [0, 4, 3, 0], ["M998_Humvee_US", "M1025_Humvee_scout_US", "M1025_Humvee_AGL_nonPara_US"]),
         ("OA10A_US", 1, [0, 2, 0, 1], []),
-        ("LAV_25_M1047_US_US", 2, [0, 6, 4, 0]),
+        ("LAV_25_M1047_US_US", 2, [0, 4, 3, 0]),
         ("M551A1_ACAV_Sheridan_US", 2, [0, 6, 4, 0]),
         ("EH60A_EW_US", 1, [0, 3, 0, 0]),
         ("OH58D_Kiowa_Warrior_US", 1, [0, 3, 2, 0]),
@@ -106,7 +106,6 @@ US_airborne_newdivisionrules = {
         ("AH6C_Little_Bird_US", 1, [0, 0, 0, 6]),
     ],
     "planes": [
-        ("FA16_CAS_US", 1, [0, 2, 0, 1]), # Maybe cut this so its unique to Moto?
         ("F15C_Eagle_AA_US", 2, [0, 2, 0, 1]),
         ("F15E_StrikeEagle_US", 2, [0, 0, 0, 1]), # Swap with the Nighthawk?
         ("F4_Wild_Weasel_2_US", 1, [0, 2, 0, 1]),
@@ -218,7 +217,7 @@ US_armored_newdivisionrules = {
         ("OH58A_reco_NG_US", 2, [6, 0, 0, 0]),
     ],
     "aa": [
-        ("DCA_I_Hawk_US", 2, [6, 4, 0, 0], ["M35_supply_US"]),
+        ("DCA_I_Hawk_US", 2, [6, 4, 0, 0], ["M35_supply_trans_US"]),
         ("M48_Chaparral_MIM72F_US", 2, [4, 3, 0, 0]),
         ("M163_PIVADS_US", 2, [8, 6, 0, 0]),
         ("M163_CS_US", 2, [8, 6, 0, 0]),
@@ -325,7 +324,7 @@ US_marine_newdivisionrules = {
     ],
     "recon": [
         ("Sniper_USMC_US", 2, [0, 4, 3, 0], ["M998_Humvee_US", "M1025_Humvee_scout_USMC_US", "M1025_Humvee_AGL_USMC_US", "UH1N_TwinHuey_US", "UH1N_TwinHuey_RKT_US"]),
-        ("Scout_LAI_USMC_US", 2, [8, 6, 0, 0], ["LAV_25_US"]),
+        ("Scout_LAI_USMC_US", 2, [6, 4, 0, 0], ["LAV_25_US"]),
         ("Scout_USMC_US", 2, [8, 6, 0, 0], ["M998_Humvee_US", "M1025_Humvee_scout_USMC_US", "M1025_Humvee_AGL_USMC_US", "UH1N_TwinHuey_US", "UH1N_TwinHuey_RKT_US"]),
         ("ForceRecon_USMC_US", 2, [0, 0, 4, 3], ["M998_Humvee_US", "M1025_Humvee_scout_USMC_US", "M1025_Humvee_AGL_USMC_US", "UH1N_TwinHuey_US", "UH1N_TwinHuey_RKT_US"]),
         ("M151A2_FAV_USMC_US", 1, [0, 0, 10, 7], [None, "CH53_Sea_Stallion_US"]),
@@ -334,7 +333,7 @@ US_marine_newdivisionrules = {
         ("OV10_Bronco_US", 1, [0, 3, 2, 0]),
     ],
     "aa": [
-        ("DCA_I_Hawk_USMC_US", 2, [6, 4, 0, 0], ["M35_supply_US"]),
+        ("DCA_I_Hawk_USMC_US", 2, [6, 4, 0, 0], ["M35_supply_trans_US"]),
         ("MANPAD_Stinger_C_USMC_US", 2, [7, 5, 0, 0], ["M998_Humvee_US"]),
     ],
     "heli": [
@@ -468,7 +467,7 @@ US_mechanized_newdivisionrules = {
         ("OH58A_reco_NG_US", 2, [6, 0, 0, 0]),
     ],
     "aa": [
-        ("DCA_I_Hawk_US", 2, [6, 4, 0, 0], ["M35_supply_US"]),
+        ("DCA_I_Hawk_US", 2, [6, 4, 0, 0], ["M35_supply_trans_US"]),
         ("M48_Chaparral_MIM72F_US", 2, [4, 3, 0, 0]),
         ("M163_PIVADS_US", 2, [8, 6, 0, 0]),
         ("DCA_M167A2_Vulcan_20mm_US", 1, [10, 7, 0, 0], ["M1038_Humvee_US"]),
@@ -585,7 +584,7 @@ US_motorized_newdivisionrules = {
         ("M3A1_Bradley_CFV_US", 1, [4, 3, 0, 0]),
         ("M60A1_RISE_Passive_reco_US", 2, [6, 0, 0, 0]),
         ("M48A5_reco_NG_US", 2, [8, 0, 0, 0]),
-        ("LAV_25_M1047_US_US", 2, [0, 6, 4, 0]),
+        ("LAV_25_M1047_US_US", 2, [0, 4, 3, 0]),
         ("FAV_TOW_US", 1, [4, 3, 0, 0]),
         ("FAV_AGL_US", 1, [10, 7, 0, 0]),
         ("FAV_HMG_US", 1, [12, 9, 0, 0]),
@@ -598,7 +597,7 @@ US_motorized_newdivisionrules = {
     ],
     "aa": [
         ("DCA_XMIM_115A_Roland_US", 1, [4, 3, 0, 0]),
-        ("DCA_XM85_Chaparral_US", 1, [4, 3, 0, 0], ["M35_supply_US"]),
+        ("DCA_XM85_Chaparral_US", 1, [4, 3, 0, 0], ["M35_supply_trans_US"]),
         ("M998_Avenger_nonPara_US", 2, [6, 4, 0, 0]),
         ("DCA_M167A2_Vulcan_20mm_US", 1, [10, 7, 0, 0], ["M1038_Humvee_US"]),
         ("OH58_CS_US", 1, [0, 4, 3, 0]),

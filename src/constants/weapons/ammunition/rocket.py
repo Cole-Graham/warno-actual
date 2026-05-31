@@ -74,7 +74,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 20,
             },
             "parent_membr": {
-                "MaximumRangeGRU": 2450,
+                "MaximumRangeGRU": 2625,
                 "RadiusSplashPhysicalDamagesGRU": 14,
                 "RadiusSplashSuppressDamagesGRU": 21,
                 "TimeBetweenTwoShots": 0.1,

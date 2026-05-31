@@ -42,6 +42,7 @@ def edit_gen_gp_gfx_firedescriptor(source_path) -> None:
                 "RadiusGRU": 53,
                 "AmmunitionForBurn": "$/GFX/Weapon/Ammo_incendiary_magnesium_53m",
                 "TimeBetweenBurns": 1.5,
+                "SmokeDescriptor": "$/GFX/Weapon/Descriptor_Smoke_Fumi60mm",
             },
         },
     }

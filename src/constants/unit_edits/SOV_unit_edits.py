@@ -3275,7 +3275,7 @@ sov_unit_edits = {
             "add_capacities": ["LDR_TNK"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
-        "CommandPoints": 190,
+        "CommandPoints": 200,
         "armor": {
             "top": (4, None),
         },
@@ -3290,7 +3290,7 @@ sov_unit_edits = {
                 "AllowedForMissileRoE",
                 "Char",
                 "GroundUnits",
-                "UNITE_T72B_CMD_SOV",
+                "UNITE_T64BV_CMD_SOV",
                 "Unite",
             ],
         },
@@ -3431,7 +3431,7 @@ sov_unit_edits = {
             "add_capacities": ["LDR_TNK"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
-        "CommandPoints": 205,
+        "CommandPoints": 215,
         "armor": {
             "top": (4, None),
         },
@@ -3510,7 +3510,7 @@ sov_unit_edits = {
             "add_capacities": ["LDR_TNK"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
-        "CommandPoints": 215,
+        "CommandPoints": 225,
         "armor": {
             "front": (18, None),
             "top": (4, None),
@@ -4062,7 +4062,7 @@ sov_unit_edits = {
     },
 
     "T64AV_SOV": {
-        "CommandPoints": 150,
+        "CommandPoints": 160,
         "armor": {
             "top": (4, None),
         },
@@ -4088,7 +4088,7 @@ sov_unit_edits = {
     },
 
     "T64BV1_SOV": {
-        "CommandPoints": 180,
+        "CommandPoints": 190,
         "armor": {
             "top": (4, None),
         },
@@ -4104,7 +4104,7 @@ sov_unit_edits = {
     },
 
     "T64BV_SOV": {
-        "CommandPoints": 205,
+        "CommandPoints": 215,
         "armor": {
             "top": (4, None),
         },
@@ -4147,7 +4147,7 @@ sov_unit_edits = {
     },
 
     "T72AV_SOV": {
-        "CommandPoints": 185,
+        "CommandPoints": 195,
         "armor": {
             "top": (4, None),
         },
@@ -4164,7 +4164,7 @@ sov_unit_edits = {
     },
 
     "T72B1_SOV": {
-        "CommandPoints": 205,
+        "CommandPoints": 215,
         "armor": {
             "top": (4, None),
         },
@@ -4172,7 +4172,7 @@ sov_unit_edits = {
     },
 
     "T72B_SOV": {
-        "CommandPoints": 220,
+        "CommandPoints": 230,
         "armor": {
             "top": (4, None),
         },
@@ -4192,7 +4192,7 @@ sov_unit_edits = {
             "front": (18, None),
             "top": (4, None),
         },
-        "CommandPoints": 225,
+        "CommandPoints": 235,
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -4220,12 +4220,12 @@ sov_unit_edits = {
             "front": (18, None),
             "top": (4, None),
         },
-        "CommandPoints": 245,
+        "CommandPoints": 255,
         "availability": [0, 0, 4, 3],
     },
 
     "T80U_SOV": {
-        "CommandPoints": 260,
+        "CommandPoints": 270,
         "armor": {
             "top": (4, None),
         },
@@ -4238,7 +4238,7 @@ sov_unit_edits = {
     },
 
     "T80UD_SOV": {
-        "CommandPoints": 305,
+        "CommandPoints": 315,
         "armor": {
             "top": (4, None),
         },
@@ -4251,7 +4251,7 @@ sov_unit_edits = {
     },
 
     "T80U_Obr89_SOV": {
-        "CommandPoints": 315,
+        "CommandPoints": 325,
         "armor": {
             "top": (4, None),
         },
@@ -4815,7 +4815,7 @@ sov_unit_edits = {
     },
 
     "Mi_8MTPI_SOV": { # VG optics, 8 HP, 40% ECM, Jammer, Sigint
-        "CommandPoints": 85,
+        "CommandPoints": 105,
         "availability": [0, 3, 0, 0],
         "UpgradeFromUnit": "Mi_8TARK_reco_SOV",
     },
@@ -5753,7 +5753,7 @@ sov_unit_edits = {
 
     # SOV AIR
     "L39ZO_HE1_SOV": {  # 2x FAB-500
-        "CommandPoints": 90,
+        "CommandPoints": 75,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -5796,10 +5796,8 @@ sov_unit_edits = {
     "MiG_21bis_CLU_SOV": {  # 2x RBK-500, 2x RBK-250
         "CommandPoints": 190,
         "ECM": -0.25,
-        "Divisions": {
-            "default": {
-                "cards": 1,
-            },
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
         },
         "availability": [0, 2, 0, 0],
     },
@@ -5888,6 +5886,15 @@ sov_unit_edits = {
                 "EOpticalStrength/AntiRadar": 175000.0,
             },
         },
+        "WeaponDescriptor": {
+            "turrets": {
+                0: {
+                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMaxPitch": 0.8726646,
+                    "AngleRotationMinPitch": -0.8726646,
+                },
+            },
+        },
     },
     
     "MiG_25PD_SOV": {
@@ -5904,6 +5911,24 @@ sov_unit_edits = {
     "MiG_27K_AT1_SOV": { # GSh-6-30, 2x Kh-29L, 40x S-8KOM
         "CommandPoints": 170,
         "ECM": -0.2,
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 4550.0,
+            },
+        },
+        "WeaponDescriptor": {
+            "turrets": {
+                0: {
+                    "AngleRotationMaxPitch": 1.047198, # 60 degrees
+                    "AngleRotationMinPitch": -1.047198,
+                },
+            },
+            "Salves": {
+                "GatlingAir_AP_Gsh_30_6_30mm": (4, False),
+                "AGM_Kh29L": (2, True),
+                "RocketAir_B8_80mm_salvolength40": (1, True),
+            },
+        },
         "availability": [0, 2, 0, 1],
     },
 
@@ -5919,7 +5944,7 @@ sov_unit_edits = {
     },
 
     "MiG_27K_LGB_SOV": {
-        "CommandPoints": 235,
+        "CommandPoints": 260,
         "ECM": -0.3,
         "GameName": {
             "display": "MiG-27K [PGB]",
@@ -5929,7 +5954,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "availability": [0, 0, 0, 1],
+        "availability": [0, 0, 0, 2],
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": {
@@ -5955,6 +5980,15 @@ sov_unit_edits = {
                 "EOpticalStrength/AntiRadar": 175000.0,
             },
         },
+        "WeaponDescriptor": {
+            "turrets": {
+                1: {
+                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMaxPitch": 0.8726646,
+                    "AngleRotationMinPitch": -0.8726646,
+                },
+            },
+        },
         "availability": [0, 2, 0, 0],
     },
     
@@ -5969,6 +6003,15 @@ sov_unit_edits = {
                 "EOpticalStrength/AntiRadar": 175000.0,
             },
         },
+        "WeaponDescriptor": {
+            "turrets": {
+                1: {
+                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMaxPitch": 0.8726646,
+                    "AngleRotationMinPitch": -0.8726646,
+                },
+            },
+        },
         "availability": [0, 2, 0, 0],
         "Divisions": {
             "add": ["SOV_27_Gds_Rifle"],
@@ -5981,7 +6024,7 @@ sov_unit_edits = {
     },
 
     "MiG_27M_bombe_SOV": {  # 4x FAB-500
-        "CommandPoints": 160,
+        "CommandPoints": 175,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -6012,7 +6055,7 @@ sov_unit_edits = {
     },
 
     "MiG_27M_napalm_SOV": {  # 4x ZB-500
-        "CommandPoints": 145,
+        "CommandPoints": 160,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -6022,7 +6065,7 @@ sov_unit_edits = {
     },
     
     "MiG_27M_rkt_SOV": {
-        "CommandPoints": 125,
+        "CommandPoints": 140,
         "availability": [0, 3, 2, 0],
         "WeaponDescriptor": {
             "Salves": {
@@ -6048,6 +6091,9 @@ sov_unit_edits = {
     "MiG_29_9_13_SOV": {  # 2x R-27R, 4x R-73
         "CommandPoints": 230,
         "availability": [0, 2, 0, 1],
+        "SpecialtiesList": {
+            "add_specs": ["'_hmd'"],
+        },
         "UpgradeFromUnit": "MiG_29_AA3_SOV",
     },
 
@@ -6062,11 +6108,17 @@ sov_unit_edits = {
             },
         },
         "availability": [0, 2, 0, 1],
+        "SpecialtiesList": {
+            "add_specs": ["'_hmd'"],
+        },
         "UpgradeFromUnit": "MiG_29_AA_SOV",
     },
 
     "MiG_29_AA3_SOV": {  # 4x R-73, 2x R-27T
         "CommandPoints": 185,
+        "SpecialtiesList": {
+            "add_specs": ["'_hmd'"],
+        },
         "UpgradeFromUnit": "MiG_29_AA2_SOV",
         "ButtonTexture": "MiG_29_AA_SOV",  # match icon to model (regular icon has wrong camo)
     },
@@ -6083,6 +6135,9 @@ sov_unit_edits = {
             "SOV_35_AirAslt_Brig": {
                 "cards": 1,
             },
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'_hmd'"],
         },
         "availability": [0, 2, 0, 1],
         "UpgradeFromUnit": None,
@@ -6155,20 +6210,26 @@ sov_unit_edits = {
     },
 
     "Su_17M4_HE1_SOV": {  # 6x FAB-500, 2x R-60M
-        "CommandPoints": 165,
+        "CommandPoints": 190,
         "ECM": -0.2,
         "availability": [0, 2, 0, 0],
     },
 
     "Su_17M4_HE2_SOV": {  # 4x FAB-500, 2x RBK-500, 2x R-60M
-        "CommandPoints": 240,
+        "CommandPoints": 230,
         "ECM": -0.3,
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
         "availability": [0, 2, 0, 0],
     },
 
     "Su_17M4_CLU_SOV": {  # 4x FAB-500, 2x RBK-500, 2x R-60M
         "CommandPoints": 240,
         "ECM": -0.3,
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
         "availability": [0, 2, 0, 0],
     },
 
@@ -6206,6 +6267,9 @@ sov_unit_edits = {
     "Su_17M4_thermo_SOV": {  # 6x ODAB-500PM, 2x R-60M
         "CommandPoints": 220,
         "ECM": -0.3,
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
         "availability": [0, 2, 0, 0],
     },
 
@@ -6223,14 +6287,20 @@ sov_unit_edits = {
                 "AGM_Kh29T": 1,
             },
         },
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
     },
 
     "Su_17M4_AT2_SOV": {  # 4x S-25LD guided AT rockets, 2x R-60M
-        "CommandPoints": 140,
+        "CommandPoints": 170,
         "ECM": -0.2,
-        "Divisions": {
-            "default": {
-                "cards": 1,
+        "WeaponDescriptor": {
+            "turrets": {
+                0: {
+                    "AngleRotationMaxPitch": 1.047198, # 60 degrees
+                    "AngleRotationMinPitch": -1.047198,
+                },
             },
         },
         "availability": [0, 2, 0, 1],
@@ -6260,6 +6330,9 @@ sov_unit_edits = {
                     "AngleRotationMinPitch": -0.8726646,
                 },
             },
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
         },
         "availability": [0, 3, 0, 2],
     },
@@ -6336,7 +6409,7 @@ sov_unit_edits = {
         "GameName": {
             "display": "Su-24M [AT]",
         },
-        "CommandPoints": 200,
+        "CommandPoints": 240,
         "ECM": -0.35,
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
@@ -6349,8 +6422,21 @@ sov_unit_edits = {
     },
 
     "Su_24M_AT2_SOV": {
-        "CommandPoints": 200,
+        "CommandPoints": 210,
         "ECM": -0.35,
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 4550.0,
+            },
+        },
+        "WeaponDescriptor": {
+            "turrets": {
+                0: {
+                    "AngleRotationMaxPitch": 1.047198, # 60 degrees
+                    "AngleRotationMinPitch": -1.047198,
+                },
+            },
+        },
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
@@ -6362,6 +6448,11 @@ sov_unit_edits = {
         },
         "CommandPoints": 265,
         "ECM": -0.35,
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 4550.0,
+            },
+        },
         "UpgradeFromUnit": None,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -6385,6 +6476,11 @@ sov_unit_edits = {
         "ECM": -0.35,
         "GameName": {
             "display": "Su-24M [PGB2]",
+        },
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 4550.0,
+            },
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -6486,15 +6582,31 @@ sov_unit_edits = {
             },
         },
         "max_speed": 750,
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
         "availability": [0, 2, 0, 1],
     },
 
     "Su_25_SOV": {  # 4x Kh-25ML, 2x R-60M
-        "CommandPoints": 220,
+        "CommandPoints": 260,
         "ECM": -0.20,
         "AirplaneMovement": {
             "parent_membr": {
                 "SpeedInKmph": 750,
+            },
+        },
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 4550.0,
+            },
+        },
+        "WeaponDescriptor": {
+            "turrets": {
+                0: {
+                    "AngleRotationMaxPitch": 1.047198, # 60 degrees
+                    "AngleRotationMinPitch": -1.047198,
+                },
             },
         },
         "max_speed": 750,
@@ -6564,19 +6676,30 @@ sov_unit_edits = {
     "Su_27K_SOV": {  # 2x R-73, 4x R-27R, 2x R-24T
         "CommandPoints": 235,
         "ECM": -0.20,
+        "SpecialtiesList": {
+            "add_specs": ["'_hmd'"],
+        },
         "availability": [0, 2, 0, 1],
+        "UpgradeFromUnit": "Su_27S_SOV",
     },
 
     "Su_27S_SOV": {  # 6x R-73, 4x R-27R
         "CommandPoints": 225,
         "ECM": -0.20,
+        "SpecialtiesList": {
+            "add_specs": ["'_hmd'"],
+        },
         "availability": [0, 2, 0, 1],
     },
 
     "Su_27S_jammers_SOV": {  # 4x R-27ER, 2x R-27T, 40% ECM
         "CommandPoints": 270,
         "ECM": -0.30,
+        "SpecialtiesList": {
+            "add_specs": ["'_hmd'", "'_jammer_air'"],
+        },
         "availability": [0, 2, 0, 1],
+        "UpgradeFromUnit": "Su_27K_SOV",
     },
     
     "Tu_22_EW_SOV": {

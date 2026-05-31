@@ -34,6 +34,7 @@ forward_deploy_new_values = [750.0, 1750.0]
 def edit_gen_gp_gfx_unitedescriptor(source_path, game_db) -> None:
     """GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf"""
     
+    # TODO: NEW UNITS WILL INHERIT THE CHANGES FROM THESE BATCH AND STANDARDS FUNCTIONS, BE CAREFUL ABOUT WHAT IS ADDED HERE.
     _handle_batch_changes(source_path, game_db)
 
     # Pattern standards first (baseline); unit_edits / new_units handlers run after and override.
@@ -100,6 +101,9 @@ def _handle_new_units(source_path, game_db, new_units_dic_entries, unit_edits) -
 
 def _handle_batch_changes(source_path, game_db) -> None:
     """Handle batch changes for UniteDescriptor.ndf"""
+    
+    # TODO: NEW UNITS WILL INHERIT THE CHANGES FROM THIS FUNCTION, THIS WAS NOT INTENDED BUT SO FAR
+    # ISN'T CAUSING ANY ISSUES. BE CAREFUL ABOUT WHAT IS ADDED HERE.
     logger.info("Processing batch changes for UniteDescriptor.ndf")
 
     deployment_data = game_db.get("deployment_time_units", {})
@@ -147,23 +151,79 @@ def _handle_batch_changes(source_path, game_db) -> None:
             else:
                 logger.warning(f"No damage module found for {unit_name}")
 
-            # Apply ERA speed penalty (-5 km/h) to vehicles; manual max_speed edits and NEW_UNITS entries override later.
+            # Apply ERA speed penalty (-5 to -10 km/h) to vehicles; manual max_speed edits and NEW_UNITS entries override later.
+            current_to_new_speed = {
+                75: 65,
+                70: 60,
+                65: 60,
+                60: 55,
+                55: 50,
+                50: 45,
+            }
+            speed_reduction = None
             generic_movement_module = find_obj_by_type(modules_list.v, "TGenericMovementModuleDescriptor")
             if generic_movement_module:
                 try:
                     current_speed_str = generic_movement_module.v.by_m("MaxSpeedInKmph").v
                     current_speed = int(current_speed_str)
-                    new_speed = max(0, current_speed - 5)
-                    generic_movement_module.v.by_m("MaxSpeedInKmph").v = str(new_speed)
-                    logger.info(f"Batch ERA speed nerf: reduced {unit_name} max speed from {current_speed} to {new_speed} km/h")
+                    if current_speed in current_to_new_speed:
+                        new_speed = current_to_new_speed[current_speed]
+                        speed_reduction = current_speed - new_speed
+                        generic_movement_module.v.by_m("MaxSpeedInKmph").v = str(new_speed)
+                        logger.info(f"Batch ERA speed nerf: reduced {unit_name} max speed from {current_speed} to {new_speed} km/h")
                 except Exception as e:
                     logger.debug(f"Could not apply ERA speed nerf for {unit_name}: {e}")
             # (no else: not all strength-11 units are vehicles, e.g. some infantry squads)
+            unit_ui_module = find_obj_by_type(modules_list.v, "TUnitUIModuleDescriptor")
+            if unit_ui_module and speed_reduction is not None:
+                try:
+                    current_roadspeed_str = unit_ui_module.v.by_m("DisplayRoadSpeedInKmph").v
+                    current_roadspeed = int(current_roadspeed_str)
+                    new_roadspeed = current_roadspeed - speed_reduction
+                    unit_ui_module.v.by_m("DisplayRoadSpeedInKmph").v = str(new_roadspeed)
+                    logger.info(f"Batch ERA speed nerf: reduced {unit_name} road speed from {current_roadspeed} to {new_roadspeed} km/h")
+                except Exception as e:
+                    logger.debug(f"Could not apply ERA speed nerf for {unit_name}: {e}")
 
     logger.info(
         f"Batch WeaponDeployment: removed from {removed_count} units, "
         f"added to {added_count} units",
     )
+
+
+def _ensure_supply_module(unit_name, edits, modules_list) -> None:
+    """Add TSupplyModuleDescriptor when edits define Supply but the unit lacks the module."""
+    supply_edits = edits.get("Supply")
+    if not supply_edits:
+        return
+    if find_obj_by_type(modules_list.v, "TSupplyModuleDescriptor") is not None:
+        return
+
+    descriptor = supply_edits.get("SupplyDescriptor")
+    capacity = supply_edits.get("SupplyCapacity")
+    if not descriptor or capacity is None:
+        logger.warning(
+            f"Cannot create supply module for {unit_name}: missing SupplyDescriptor or SupplyCapacity",
+        )
+        return
+
+    members = [
+        f"SupplyDescriptor = $/GFX/Weapon/{descriptor}",
+        f"SupplyCapacity = {capacity}",
+    ]
+    priority = supply_edits.get("SupplyPriority")
+    if priority is not None:
+        members.append(f"SupplyPriority = {priority}")
+
+    module_str = (
+        "TSupplyModuleDescriptor\n"
+        "(\n    "
+        + "\n    ".join(members)
+        + "\n)"
+    )
+    modules_list.v.add(module_str)
+    logger.info(f"Added TSupplyModuleDescriptor to {unit_name}")
+
 
 def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_name, edits, modules_list) -> None:
     """Handle modules list edits for new and existing units"""
@@ -172,6 +232,8 @@ def _handle_modules_list(game_db, dictionary_entries, edit_type, donor, unit_nam
 
     found_capacite_module = find_obj_by_type(modules_list.v, "TCapaciteModuleDescriptor") is not None
     found_weapondeployment_module = find_obj_by_type(modules_list.v, "TWeaponDeploymentModuleDescriptor") is not None
+
+    _ensure_supply_module(unit_name, edits, modules_list)
 
     module_handlers = {
         "TTypeUnitModuleDescriptor": { "handler": _handle_typeunit_module, "args": [] },
@@ -268,6 +330,47 @@ def _add_modules(game_db, edit_type, unit_name, edits, modules_list) -> None:
         modules_list.v.add(weapon_deployment_module)
         logger.info(f"Added TWeaponDeploymentModuleDescriptor to {unit_name}")
 
+    found_transporter_module = find_obj_by_type(
+        modules_list.v, "TTransporterModuleDescriptor") is not None
+
+    orders = edits.get("orders", [])
+    if isinstance(orders, dict):
+        has_unload_from_transport = (
+            "EOrderType/UnloadFromTransport" in orders.get("add_orders", [])
+        )
+    else:
+        has_unload_from_transport = "EOrderType/UnloadFromTransport" in orders
+
+    if not found_transporter_module and has_unload_from_transport:
+        if edit_type == "unit_edits":
+            unit_db = game_db["unit_data"]
+            wreck_type = (
+                "Default"
+                if not unit_db.get(unit_name, {}).get("is_helo_unit", False)
+                else "Chopper"
+            )
+        else:
+            wreck_type = "Chopper" if edits.get("is_aerial", False) else "Default"
+
+        if edits.get("tow_only", False):
+            transportable_tag_set = '"Unite_transportable"'
+        else:
+            transportable_tag_set = '"Crew", "Unite_transportable"'
+
+        transporter_module = (
+            f"TTransporterModuleDescriptor"
+            f"("
+            f'    TransportableTagSet = [{transportable_tag_set}]'
+            f"    NbSeatsAvailable = 1"
+            f"    WreckUnloadPhysicalDamageBonus = WreckUnloadDamageBonus_{wreck_type}_Physical"
+            f"    WreckUnloadSuppressDamageBonus = WreckUnloadDamageBonus_{wreck_type}_Suppress"
+            f"    WreckUnloadStunDamageBonus = WreckUnloadDamageBonus_{wreck_type}_Stun"
+            f"    LoadRadiusGRU = 70"
+            f")"
+        )
+        modules_list.v.add(transporter_module)
+        logger.info(f"Added TTransporterModuleDescriptor to {unit_name}")
+
     if edit_type == "new_units":
         for module in edits.get("modules_add", []):
             modules_list.v.add(module)
@@ -282,35 +385,6 @@ def _add_modules(game_db, edit_type, unit_name, edits, modules_list) -> None:
             logger.info(f"Added TDeploymentShiftModuleDescriptor to {unit_name} (DeploymentShiftGRU = {deployment_shift})")
 
     if edit_type == "unit_edits":
-        unit_db = game_db["unit_data"]
-        
-        found_transporter_module = find_obj_by_type(
-            modules_list.v, "TTransporterModuleDescriptor") is not None
-        
-        wreck_type = "Default" if not unit_db.get(
-            unit_name, {}).get("is_helo_unit", False) else "Chopper"
-        
-        if edits.get("tow_only", False):
-            transportable_tag_set = '"Unite_transportable"'
-        else:
-            transportable_tag_set = '"Crew", "Unite_transportable"'
-            
-        transporter_module = (
-            f"TTransporterModuleDescriptor"
-            f"("
-            f'    TransportableTagSet = [{transportable_tag_set}]'
-            f"    NbSeatsAvailable = 1"
-            f"    WreckUnloadPhysicalDamageBonus = WreckUnloadDamageBonus_{wreck_type}_Physical"
-            f"    WreckUnloadSuppressDamageBonus = WreckUnloadDamageBonus_{wreck_type}_Suppress"
-            f"    WreckUnloadStunDamageBonus = WreckUnloadDamageBonus_{wreck_type}_Stun"
-            f"    LoadRadiusGRU = 70"
-            f")"
-        )
-        
-        if not found_transporter_module and "EOrderType/UnloadFromTransport" in edits.get(
-            "orders", {}).get("add_orders", []):
-            modules_list.v.add(transporter_module)
-
         if not found_deploymentshift_module and deployment_shift is not None:
             deploymentshift_module = (
                 f"TDeploymentShiftModuleDescriptor("
@@ -512,14 +586,23 @@ def _handle_airplanemovement_module(logger, game_db, unit_data, edit_type, unit_
     else:
         unit_or_donor_data = unit_data
 
+    if edit_type == "unit_edits":
+        specialties_for_radar_check = edits.get("SpecialtiesList", {}).get("add_specs", [])
+    else:
+        specialties_for_radar_check = [
+            spec if spec.startswith("'") else f"'{spec}'"
+            for spec in edits.get("SpecialtiesList", [])
+        ]
+
     search_conditions = [
-        ("has_terrain_radar", "'terrain_radar'", edits.get("SpecialtiesList", {}).get("add_specs", [])),
+        ("has_terrain_radar", "'terrain_radar'", specialties_for_radar_check),
         ("is_sead", "Avion_SEAD", unit_or_donor_data.get("tags", {})),
         ("is_ew", "_electronic_warfare", unit_or_donor_data.get("specialties", {})),
     ]
     has_terrain_radar, is_sead, is_ew = determine_characteristics(search_conditions)
     
-    if has_terrain_radar and not is_sead and not is_ew:
+    # if has_terrain_radar and not is_sead and not is_ew:
+    if has_terrain_radar and not is_ew:
         new_value = "300"
         module.v.by_m("AltitudeGRU").v = new_value
         logger.info(f"Updated {unit_name} altitude to {new_value}")
@@ -555,8 +638,10 @@ def _handle_transporter_module(logger, game_db, unit_data, edit_type, unit_name,
                                edits, module, *args) -> None:
     """Handle TTransporterModuleDescriptor for existing and new units"""
     if edit_type == "new_units":
-        pass
-    
+        if edits.get("tow_only", False):
+            module.v.by_m("TransportableTagSet").v = '["Unite_transportable"]'
+            logger.info(f"Updated {unit_name} to tow-only transport")
+
     if edit_type == "unit_edits":
         if "is_prime_mover" in edits:
 
@@ -601,7 +686,8 @@ def _handle_visibility_module(logger, game_db, unit_data, edit_type, unit_name,
         ]
         has_terrain_radar, is_sead, is_ew = determine_characteristics(conditions_search)
 
-        if has_terrain_radar and not is_sead and not is_ew:
+        # if has_terrain_radar and not is_sead and not is_ew:
+        if has_terrain_radar and not is_ew:
             module.v.by_m("UnitConcealmentBonus").v = "1.75"
             logger.info(f"Updated {unit_name} stealth to 1.75")
 

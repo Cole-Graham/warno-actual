@@ -697,6 +697,12 @@ pol_unit_edits = {
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
         "UnitRole": "infantry",
+        "capacities": {
+            "remove_capacities": [
+                "Choc",
+                "Choc_feedback",
+            ],
+        },
         "SpecialtiesList": {
             "overwrite_all": [
                 'leader_sov',
@@ -721,6 +727,7 @@ pol_unit_edits = {
                 "RocketInf_RPG76_Komar": 9,
             },
         },
+        "DeploymentShift": 1750,
         "remove_zone_capture": None,
     },
 
@@ -1194,7 +1201,7 @@ pol_unit_edits = {
         # RPG-7VM x6
     },
     
-    "Naval_Rifle_POL": {  # Nibesky Bertey
+    "Naval_Rifle_POL": {  # Niebeskie Berety
         "CommandPoints": 40,
         "availability": [10, 7, 0, 0],
         "armor": "Infantry_armor_reference",
@@ -1202,12 +1209,16 @@ pol_unit_edits = {
         "SpecialtiesList": {
             "overwrite_all": [
                 "_resolute",
-                "infantry_equip_medium"
+                "infantry_equip_medium",
             ],
         },
         "capacities": {
-            "remove_capacities": ["choc"],
+            "remove_capacities": [
+                "Choc",
+                "Choc_feedback",
+            ],
         },
+        "DeploymentShift": 1750,
         # 10x kbk AKM
         # 2x PKM
         # RPG-7VM x6
@@ -2197,12 +2208,12 @@ pol_unit_edits = {
     "T54B_POL": {  # T-54B
         "CommandPoints": 70,
         "availability": [10, 7, 0, 0],
-         "SpecialtiesList": {
+        "SpecialtiesList": {
             "overwrite_all": [
             ],
         },
-         "capacities": {
-            "remove_capacities": [],
+        "capacities": {
+            "remove_capacities": ["resolute"],
         },
         "ButtonTexture": "T55A_POL", 
         "UpgradeFromUnit": "T54B_CMDactual_POL",
@@ -3307,8 +3318,24 @@ pol_unit_edits = {
     },
     
     "MiG_21bis_AT_POL": {  # 2x Kh-66, 2x R-13M
-        "CommandPoints": 150,
+        "CommandPoints": 160,
         "ECM": -0.25,
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 4550.0,
+            },
+        },
+        "WeaponDescriptor": {
+            "turrets": {
+                0: {
+                    "AngleRotationMaxPitch": 1.047198, # 60 degrees
+                    "AngleRotationMinPitch": -1.047198,
+                },
+            },
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
         "availability": [0, 3, 0, 0],
         "UpgradeFromUnit": "MiG_21bis_HE_POL",
     },
@@ -3335,13 +3362,16 @@ pol_unit_edits = {
         "GameName": {
             "display": "MiG-29A [AA1]",
         },
-        "CommandPoints": 200,
+        "CommandPoints": "MiG_29_AA_DDR",
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "availability": [0, 2, 0, 1],
+        "SpecialtiesList": {
+            "add_specs": ["'_hmd'"],
+        },
+        "availability": [0, 3, 2, 0],
     },
 
     "MiG_29_AA2_POL": {  # 6x R-73 [AA]
@@ -3349,6 +3379,9 @@ pol_unit_edits = {
             "display": "MiG-29A [AA2]",
         },
         "CommandPoints": 165,
+        "SpecialtiesList": {
+            "add_specs": ["'_hmd'"],
+        },
         "availability": [0, 3, 2, 0],
     },
     
@@ -3361,17 +3394,23 @@ pol_unit_edits = {
     "Su_7BKL_EW_POL": {
         "CommandPoints": 130,
         "ECM": -0.25,
-        "availability": [0, 4, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
+        "availability": [0, 3, 0, 0],
     },
 
     "Su_7BKL_HE_POL": {
-        "CommandPoints": 175,
+        "CommandPoints": 185,
         "ECM": -0.15,
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
         "availability": [0, 3, 0, 0],
     },
 
     "Su_7BKL_NPLM_POL": {
-        "CommandPoints": 165,
+        "CommandPoints": 175,
         "ECM": -0.05,
         "availability": [0, 4, 0, 0],
     },
@@ -3383,19 +3422,22 @@ pol_unit_edits = {
     },
     
     "Su_22_POL": { # Su-22M4 [HE]
-        "CommandPoints": 215,
+        "CommandPoints": "Su_22_DDR",
         "ECM": -0.30,
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
         "availability": [0, 2, 0, 0],
     },
 
     "Su_22_nplm_POL": {  # 4x ZB-500, 2x R-60M
-        "CommandPoints": 200,
+        "CommandPoints": 190,
         "ECM": -0.20,
         "availability": [0, 3, 0, 0],
     },
     
     "Su_22_clu_POL": {  # 4x RBK-250, 2x R-60M
-        "CommandPoints": 200,
+        "CommandPoints": "Su_22_nplm_DDR",
         "ECM": -0.20,
         "availability": [0, 2, 0, 0],
     },
@@ -3406,6 +3448,9 @@ pol_unit_edits = {
         "availability": [0, 2, 0, 1],
         "WeaponDescriptor": {
             "Salves": "Su_22_AT_SOV",
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
         },
     },
     
@@ -3463,11 +3508,22 @@ pol_unit_edits = {
     "Su_22_RKT3_POL": {  # 4x S-25O
         "CommandPoints": 140,
         "ECM": -0.30,
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
     },
     
     "Su_22_SEAD_POL": {  # Su-22M4P [SEAD]
         "CommandPoints": 180,
         "ECM": -0.40,
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 10000.0,
+            },
+            "OpticalStrengths": {
+                "EOpticalStrength/AntiRadar": 175000.0,
+            },
+        },
         "WeaponDescriptor": {
             "turrets": {
                 1: {
@@ -3476,6 +3532,9 @@ pol_unit_edits = {
                     "AngleRotationMinPitch": -0.8726646,
                 },
             },
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
         },
         "availability": [0, 3, 0, 2],
         "Divisions": {

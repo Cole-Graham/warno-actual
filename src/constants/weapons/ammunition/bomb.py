@@ -49,6 +49,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("Bomb_Mk83_450kg_salvolength3", "he_bomb", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "SupplyCost": 240.0,
+            },
+        },
+    },
+    
     ("Bomb_Mk83_450kg_salvolength2", "he_bomb", None, False): {
         "Ammunition": {
             "parent_membr": {

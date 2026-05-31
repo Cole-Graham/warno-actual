@@ -12,6 +12,7 @@ from .RFA_new_units import RFA_NEW_UNITS
 from .SOV_new_units import SOV_NEW_UNITS
 from .UK_new_units import UK_NEW_UNITS
 from .USA_new_units import USA_NEW_UNITS
+from src.constants.supply_transport_variants import build_supply_transport_new_units
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger('new_units')
@@ -487,6 +488,7 @@ def load_new_units() -> Dict:
         **UK_NEW_UNITS,
         **USA_NEW_UNITS,
         **FR_NEW_UNITS,
+        **build_supply_transport_new_units(),
     }
     
     logger.info(f"Loaded {len(merged_units)} new units total")

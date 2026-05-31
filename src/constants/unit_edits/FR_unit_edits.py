@@ -1878,6 +1878,15 @@ fr_unit_edits = {
                 "EOpticalStrength/AntiRadar": 175000.0,
             },
         },
+        "WeaponDescriptor": {
+            "turrets": {
+                1: {
+                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMaxPitch": 0.8726646,
+                    "AngleRotationMinPitch": -0.8726646,
+                },
+            },
+        },
         "availability": [0, 2, 0, 1],
     },
     
@@ -1888,6 +1897,15 @@ fr_unit_edits = {
             },
             "OpticalStrengths": {
                 "EOpticalStrength/AntiRadar": 175000.0,
+            },
+        },
+        "WeaponDescriptor": {
+            "turrets": {
+                1: {
+                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMaxPitch": 0.8726646,
+                    "AngleRotationMinPitch": -0.8726646,
+                },
             },
         },
     },

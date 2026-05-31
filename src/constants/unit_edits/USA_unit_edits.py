@@ -97,9 +97,10 @@ usa_unit_edits = {
     },
 
     "LAV_C_US": {
-        "CommandPoints": 165,
+        "CommandPoints": 160,
         "availability": [0, 3, 0, 0],
         "strength": "LAV_25_M1047_US_US",
+        "armor": "LAV_25_M1047_US_US",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -2898,6 +2899,7 @@ usa_unit_edits = {
         "CommandPoints": 60,
         "availability": [4, 3, 0, 0],
         "strength": "LAV_25_M1047_US_US",
+        "armor": "LAV_25_M1047_US_US",
     },
     
     "CATFAE_US": {
@@ -3048,6 +3050,7 @@ usa_unit_edits = {
             "top": (5, None),
         },
         "max_speed": "M1_Abrams_US",
+        "road_speed_display": "M1_Abrams_US",
         "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "UnitRole": "armor",
@@ -3093,6 +3096,7 @@ usa_unit_edits = {
             "top": (5, None),
         },
         "max_speed": "M1_Abrams_US",
+        "road_speed_display": "M1_Abrams_US",
         "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "UnitRole": "armor",
@@ -3141,6 +3145,7 @@ usa_unit_edits = {
             "top": (5, None),
         },
         "max_speed": "M1_Abrams_US",
+        "road_speed_display": "M1_Abrams_US",
         "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "UnitRole": "armor",
@@ -3181,6 +3186,7 @@ usa_unit_edits = {
             "top": (4, None),
         },
         "max_speed": "M1_Abrams_US",
+        "road_speed_display": "M1_Abrams_US",
         "IdentifiedTextures": ["Texture_RTS_H_Armor_heavy", "Texture_Armor"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "UnitRole": "armor",
@@ -3431,6 +3437,7 @@ usa_unit_edits = {
         "CommandPoints": 75,
         "availability": [0, 6, 4, 0],
         "strength": "LAV_25_M1047_US_US",
+        "armor": "LAV_25_M1047_US_US",
     },
 
     "M901A1_ITW_US": {  # TOW 2
@@ -3523,7 +3530,7 @@ usa_unit_edits = {
     },
     
     "M2A2_BRAT_US": {
-        "CommandPoints": 95,
+        "CommandPoints": 100,
         "max_speed": 55,
         "WeaponDescriptor": {
             "Salves": {
@@ -3591,6 +3598,7 @@ usa_unit_edits = {
             "top": (5, None),
         },
         "max_speed": "M1_Abrams_US",
+        "road_speed_display": "M1_Abrams_US",
     },
 
     "M1A1_Abrams_US": {
@@ -3613,6 +3621,7 @@ usa_unit_edits = {
             "top": (5, None),
         },
         "max_speed": "M1_Abrams_US",
+        "road_speed_display": "M1_Abrams_US",
     },
 
     "M1IP_Abrams_US": {
@@ -3636,6 +3645,7 @@ usa_unit_edits = {
             "top": (5, None),
         },
         "max_speed": "M1_Abrams_US",
+        "road_speed_display": "M1_Abrams_US",
     },
 
     "M1_Abrams_US": {
@@ -3650,6 +3660,7 @@ usa_unit_edits = {
             "top": (4, None),
         },
         "max_speed": 70,
+        "road_speed_display": 80,
     },
 
     "M1_Abrams_NG_US": {
@@ -3664,6 +3675,7 @@ usa_unit_edits = {
             "top": (4, None),
         },
         "max_speed": "M1_Abrams_US",
+        "road_speed_display": "M1_Abrams_US",
     },
     
     "M1_Abrams_MOD_US": {
@@ -3678,6 +3690,7 @@ usa_unit_edits = {
             "top": (4, None),
         },
         "max_speed": "M1_Abrams_US",
+        "road_speed_display": "M1_Abrams_US",
     },
 
     "M60A3_Patton_US": {
@@ -3695,7 +3708,7 @@ usa_unit_edits = {
     },
 
     "M60A3_ERA_Patton_US": {
-        "CommandPoints": 120,
+        "CommandPoints": 125,
         "GameName": {
             "display": "M60A3 (TTS) ERA",
         },
@@ -3760,7 +3773,7 @@ usa_unit_edits = {
     },
 
     "M60A1_RISE_Passive_USMC_ERA_US": {
-        "CommandPoints": 150,
+        "CommandPoints": 160,
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -3919,9 +3932,10 @@ usa_unit_edits = {
     },
 
     "LAV_MEWSS_US": { # Jammer + Sigint + VG optics + Smoke
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "availability": [0, 6, 0, 0],
         "strength": "LAV_25_M1047_US_US",
+        "armor": "LAV_25_M1047_US_US",
         "UpgradeFromUnit": "M1025_Humvee_GVLLD_US",
     },
 
@@ -3929,6 +3943,9 @@ usa_unit_edits = {
         "CommandPoints": 70,
         "availability": [0, 4, 3, 0],
         "strength": 10,
+        "armor": {
+            "front": (1, None),
+        },
         "WeaponDescriptor": {
             "Salves": {
                 "MMG_turret_7_62mm_M60": 60,
@@ -3950,6 +3967,7 @@ usa_unit_edits = {
     "LAV_25_US": { # Transport (Marines)
         "CommandPoints": 65,
         "strength": "LAV_25_M1047_US_US",
+        "armor": "LAV_25_M1047_US_US",
         "WeaponDescriptor": {
             "Salves": {
                 "MMG_turret_7_62mm_M60": 60,
@@ -4174,10 +4192,12 @@ usa_unit_edits = {
 
     "UH1N_TwinHuey_reco_US": {
         "CommandPoints": 70,
+        "strength": 6,
         "availability": [0, 4, 3, 0], # Maybe this should be 0/3/2/0?
     },
 
     "EH60A_EW_US": {
+        "CommandPoints": 105,
         "Divisions": {
             "add": ["US_3rd_Arm"],
             "is_transported": False,
@@ -4202,6 +4222,11 @@ usa_unit_edits = {
     "A37B_Dragonfly_US": {
         "CommandPoints": 70,
         "availability": [0, 3, 2, 0],
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 4550.0,
+            },
+        },
         "UpgradeFromUnit": "MQM_105_Aquila_US",
     },
 
@@ -4229,6 +4254,11 @@ usa_unit_edits = {
     "OA10A_US": {
         "CommandPoints": 220,
         "ECM": "A10_Thunderbolt_II_US",
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 2625.0,
+            },
+        },
         "availability": [0, 2, 0, 0],
         "UpgradeFromUnit": "OV10_Bronco_US",
     },
@@ -5113,10 +5143,10 @@ usa_unit_edits = {
                 "cards": 2,
             },
             "US_8th_Inf": {
-                "Transports": ["M35_supply_US"],
+                "Transports": ["M35_supply_trans_US"],
             },
             "US_11ACR": {
-                "Transports": ["M35_supply_US"],
+                "Transports": ["M35_supply_trans_US"],
             },
         },
         "SpecialtiesList": {
@@ -5182,6 +5212,7 @@ usa_unit_edits = {
     
     "CH46E_SeaKnight_trans_US": {
         "CommandPoints": 60,
+        "strength": 10,
         "SpecialtiesList": {
             "add_specs": ["'refundable_unit'",],
         },
@@ -5377,6 +5408,9 @@ usa_unit_edits = {
 
     "AH64_Apache_US": {  # 8x Hellfire / Hydra
         "CommandPoints": 200,
+        "SpecialtiesList": {
+            "add_specs": ["'_hmd'"],
+        },
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -5390,6 +5424,9 @@ usa_unit_edits = {
             "display": "AH-64A APACHE [AT]",
         },
         "CommandPoints": 215,
+        "SpecialtiesList": {
+            "add_specs": ["'_hmd'"],
+        },
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -5404,6 +5441,9 @@ usa_unit_edits = {
 
     "AH64_Apache_emp2_US": {
         "CommandPoints": 160,
+        "SpecialtiesList": {
+            "add_specs": ["'_hmd'"],
+        },
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -5417,6 +5457,9 @@ usa_unit_edits = {
 
     "AH64_Apache_ATAS_US": {
         "CommandPoints": 230,
+        "SpecialtiesList": {
+            "add_specs": ["'_hmd'"],
+        },
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -5438,7 +5481,7 @@ usa_unit_edits = {
     },
     
     "Harrier_AV8B_RKT_US": {
-        "CommandPoints": 115,
+        "CommandPoints": 120,
         "ECM": -0.25,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -5456,18 +5499,27 @@ usa_unit_edits = {
     "Harrier_AV8B_thermo_US": {
         "CommandPoints": 140,
         "ECM": -0.35,
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
         "availability": [0, 4, 0, 0],
     },
     
     "Harrier_AV8B_US": { # 4x Mk 83
         "CommandPoints": 150,
         "ECM": -0.35,
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
         "availability": [0, 4, 0, 0],
     },
     
     "Harrier_AV8B_TER_US": { # 12x Mk 82
         "CommandPoints": 150,
         "ECM": -0.35,
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
         "availability": [0, 4, 0, 0],
     },
     
@@ -5478,13 +5530,30 @@ usa_unit_edits = {
     },
     
     "A6E_Intruder_SWIP_AT_US": {
-        "CommandPoints": 150,
+        "CommandPoints": 210,
         "ECM": -0.35,
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 4550.0,
+            },
+        },
+        "max_speed": 1025,
+        "WeaponDescriptor": {
+            "turrets": {
+                0: {
+                    "AngleRotationMaxPitch": 1.047198, # 60 degrees
+                    "AngleRotationMinPitch": -1.047198,
+                },
+            },
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
         "availability": [0, 3, 0, 0],
     },
     
     "A6E_Intruder_SEAD_US": {
-        "CommandPoints": 165,
+        "CommandPoints": 180,
         "ECM": -0.45,
         "optics": {
             "VisionRangesGRU": {
@@ -5504,12 +5573,18 @@ usa_unit_edits = {
                 },
             },
         },
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
         "availability": [0, 2, 0, 1],
     },
     
     "A7D_Corsair_II_US": { # A-7D CORSAIR II [HE] (4x Mk 84)
-        "CommandPoints": 220,
+        "CommandPoints": 230,
         "ECM": -0.35,
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
         "availability": [0, 2, 0, 0],
     },
     
@@ -5550,19 +5625,25 @@ usa_unit_edits = {
     },
     
     "A7D_Corsair_II_CLU_US": { # A-7D CORSAIR II [CLU] (12x Mk-20 Rockeye II)
-        "CommandPoints": 200,
+        "CommandPoints": 210,
         "ECM": -0.35,
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
         "availability": [0, 2, 0, 0],
     },
     
     "A7D_Corsair_II_AT_US": { # A-7D CORSAIR II [AT] (4x AGM-65B)
-        "CommandPoints": 220,
+        "CommandPoints": 240,
         "ECM": -0.35,
         "availability": [0, 2, 0, 1],
         "WeaponDescriptor": {
             "Salves": {
                 "AGM_AGM65B_Maverick": 2,
             },
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
         },
     },
     
@@ -5586,6 +5667,9 @@ usa_unit_edits = {
                     "AngleRotationMinPitch": -0.8726646,
                 },
             },
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
         },
         "availability": [0, 2, 0, 1],
     },
@@ -5734,7 +5818,7 @@ usa_unit_edits = {
 
 
     "F4E_Phantom_II_CBU_US": {
-        "CommandPoints": 215,
+        "CommandPoints": 220,
         "ECM": -0.35,
         "optics": {
             "OpticalStrengths": {
@@ -5752,6 +5836,9 @@ usa_unit_edits = {
                     },
                 },
             },
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
         },
     },
 
@@ -5779,7 +5866,8 @@ usa_unit_edits = {
     },
 
     "F111E_Aardvark_US": {  # 12x mk82, 3rd Armored
-        "CommandPoints": 190,
+        "CommandPoints": 220,
+        "ECM": -0.40,
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
@@ -5787,7 +5875,8 @@ usa_unit_edits = {
     },
 
     "F111F_Aardvark_US": {
-        "CommandPoints": 190,
+        "CommandPoints": 220,
+        "ECM": -0.40,
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
@@ -5795,10 +5884,11 @@ usa_unit_edits = {
     },
 
     "F111F_Aardvark_LGB_US": {  # 4x GBU-12
-        "CommandPoints": 220,
+        "CommandPoints": 260,
         "GameName": {
             "display": "F-111F AARDVARK [PGB]",
         },
+        "ECM": -0.50,
         "WeaponDescriptor": {
             "Salves": {
                 "Bomb_GBU_12_salvolength4": 1,
@@ -5813,13 +5903,17 @@ usa_unit_edits = {
                 },
             },
         },
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
     },
     
     "F111F_Aardvark_LGB2_US": { # 4x GBU-10
-        "CommandPoints": 270,
+        "CommandPoints": 310,
         "GameName": {
             "display": "F-111F AARDVARK [PGB2]",
         },
+        "ECM": -0.50,
         "UpgradeFromUnit": "F111F_Aardvark_LGB_US",
         "WeaponDescriptor": {
             "Salves": {
@@ -5835,10 +5929,14 @@ usa_unit_edits = {
                 },
             },
         },
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
     },
 
     "F111E_Aardvark_CBU_US": {  # 8x Mk-20 Rockeye, 3rd Armored
-        "CommandPoints": 190,
+        "CommandPoints": 210,
+        "ECM": -0.40,
         "Divisions": {
             "add": ["US_11ACR"],
             "default": {
@@ -5851,8 +5949,9 @@ usa_unit_edits = {
         "availability": [0, 2, 0, 0],
     },
 
-    "F111F_Aardvark_CBU_US": {  # 8x Mk-20 Rockeye, 82nd Airborne
-        "CommandPoints": 240,
+    "F111F_Aardvark_CBU_US": {  # 24x Mk-20 Rockeye
+        "CommandPoints": 280,
+        "ECM": -0.50,
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
@@ -5895,10 +5994,14 @@ usa_unit_edits = {
                 },
             },
         },
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
     },
 
     "F111E_Aardvark_napalm_US": {  # 4x Mk-77 napalm, 3rd Armored
-        "CommandPoints": 190,
+        "CommandPoints": 220,
+        "ECM": -0.40,
         "Divisions": {
             "add": ["US_11ACR"],
             "default": {
@@ -5924,7 +6027,8 @@ usa_unit_edits = {
     },
 
     "F111F_Aardvark_napalm_US": {  # 4x Mk-77 napalm, 82nd Airborne
-        "CommandPoints": 190,
+        "CommandPoints": 220,
+        "ECM": -0.40,
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
@@ -5982,12 +6086,15 @@ usa_unit_edits = {
                 "EOpticalStrength/HighAltitude": 13250,
             },
         },
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
         "availability": [0, 0, 0, 1],
         "UpgradeFromUnit": "F16E_TER_HE_US",
     },
 
     "F16E_AGM_US": {  # 4x AGM-65D, 2x AIM-9M
-        "CommandPoints": 250,
+        "CommandPoints": 275,
         "ECM": -0.35,
         "optics": {
             "OpticalStrengths": {
@@ -5999,6 +6106,9 @@ usa_unit_edits = {
             "Salves": {
                 "AGM_AGM65D_Maverick": 2,
             },
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
         },
     },
     
@@ -6022,7 +6132,7 @@ usa_unit_edits = {
                 },
             },
             "Salves": {
-                "AGM_AGM65D_Maverick": 2,
+                "AGM_AGM65D_Maverick": (2, False),
             },
         },
     },
@@ -6047,6 +6157,9 @@ usa_unit_edits = {
             },
         },
         "availability": [0, 2, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
     },
 
     "F16E_napalm_US": {
@@ -6094,6 +6207,9 @@ usa_unit_edits = {
             },
         },
         "availability": [0, 2, 0, 1],
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
     },
 
     "F16E_CBU_US": {
@@ -6121,6 +6237,9 @@ usa_unit_edits = {
             },
         },
         "availability": [0, 2, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
     },
     
     "F16E_TER_CLU_US": {
@@ -6132,6 +6251,9 @@ usa_unit_edits = {
             },
         },
         "availability": [0, 2, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
     },
 
     "F16E_AA_US": {
@@ -6181,7 +6303,7 @@ usa_unit_edits = {
         "GameName": {
             "display": "F/A-18A HORNET [AA2]", # Intentionally reversed
         },
-        "CommandPoints": 250,
+        "CommandPoints": 265,
         "ECM": -0.45,
         "availability": [0, 2, 0, 1],
         "UpgradeFromUnit": "F18_Hornet_AA2_US", # Intentionally reversed
@@ -6191,35 +6313,52 @@ usa_unit_edits = {
         "GameName": {
             "display": "F/A-18A HORNET [AA]", # Intentionally reversed
         },
-        "CommandPoints": 235,
+        "CommandPoints": 250,
         "ECM": -0.45,
         "availability": [0, 2, 0, 1],
         "UpgradeFromUnit": None, # Intentionally reversed
     },
 
     "F18_Hornet_SEAD_US": {  # 2x AIM-7M, 2x AIM-9M, 2x AGM-88 HARM
-        "CommandPoints": 280,
+        "CommandPoints": 290,
         "ECM": -0.55,
         "availability": [0, 2, 0, 1],
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 6125.0,
+            },
+            "OpticalStrengths": {
+                "EOpticalStrength/AntiRadar": 175000.0,
+            },
+        },
+        "WeaponDescriptor": {
+            "turrets": {
+                3: {
+                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMaxPitch": 0.8726646,
+                    "AngleRotationMinPitch": -0.8726646,
+                },
+            },
+        },
         "UpgradeFromUnit": "F18_Hornet_AA_US", # Intentionally reversed
     },
 
     "A10_Thunderbolt_II_US": {  # 8x mk.82, 2x AIM-9M
-        "CommandPoints": 220,
+        "CommandPoints": 230,
         "max_speed": 500,
         "ECM": -0.25,
         "availability": [0, 2, 0, 0],
     },
 
     "A10_Thunderbolt_II_Rkt_US": {  # 76x Hydra, 2x AIM-9M
-        "CommandPoints": 230,
+        "CommandPoints": 240,
         "max_speed": 500,
         "ECM": "A10_Thunderbolt_II_US",
         "availability": [0, 2, 0, 0],
     },
 
     "A10_Thunderbolt_II_ATGM_US": {  # 4x AGM-65D, 2x AIM-9M
-        "CommandPoints": 250,
+        "CommandPoints": 260,
         "max_speed": 500,
         "ECM": "A10_Thunderbolt_II_US",
         "availability": [0, 2, 0, 0],

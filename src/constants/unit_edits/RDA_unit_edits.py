@@ -2551,7 +2551,7 @@ rda_unit_edits = {
     },
     
     "T72S_DDR": {
-        "CommandPoints": 220,
+        "CommandPoints": 230,
         "armor": {
             "top": (4, None),
         },
@@ -3581,7 +3581,7 @@ rda_unit_edits = {
     },
 
     "L39ZO_HE1_DDR": {
-        "CommandPoints": 90,
+        "CommandPoints": "L39ZO_HE1_SOV",
         "availability": [0, 5, 0, 0],
     },
 
@@ -3663,6 +3663,19 @@ rda_unit_edits = {
 
     "MiG_23BN_AT2_DDR": {  # MiG-23BN [AT2]
         "CommandPoints": 145,
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 4550.0,
+            },
+        },
+        "WeaponDescriptor": {
+            "turrets": {
+                0: {
+                    "AngleRotationMaxPitch": 1.047198, # 60 degrees
+                    "AngleRotationMinPitch": -1.047198,
+                },
+            },
+        },
         "ECM": -0.15,
         "availability": [0, 3, 2, 0],
     },
@@ -3720,6 +3733,19 @@ rda_unit_edits = {
     "MiG_23BN_AT_DDR": {  # MiG-23MF [AT]
         "CommandPoints": 120,
         "ECM": -0.15,
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 4550.0,
+            },
+        },
+        "WeaponDescriptor": {
+            "turrets": {
+                0: {
+                    "AngleRotationMaxPitch": 1.047198, # 60 degrees
+                    "AngleRotationMinPitch": -1.047198,
+                },
+            },
+        },
         "availability": [0, 3, 0, 0],
     },
     
@@ -3736,13 +3762,16 @@ rda_unit_edits = {
     },
 
     "MiG_29_AA_DDR": {  # 4x R-73, 2x R-27R [AA1]
-        "CommandPoints": 200,
+        "CommandPoints": 215, # Availability taxed
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "availability": [0, 2, 0, 1],
+        "SpecialtiesList": {
+            "add_specs": ["'_hmd'"],
+        },
+        "availability": [0, 3, 2, 0],
     },
 
     "Su_22_AT_DDR": {
@@ -3754,16 +3783,43 @@ rda_unit_edits = {
                 "AGM_Kh29T": 1,
             },
         },
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
     },
 
     "Su_22_AT2_DDR": {
-        "CommandPoints": 160,
+        "CommandPoints": 210,
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 4550.0,
+            },
+        },
+        "WeaponDescriptor": {
+            "turrets": {
+                0: {
+                    "AngleRotationMaxPitch": 1.047198, # 60 degrees
+                    "AngleRotationMinPitch": -1.047198,
+                },
+            },
+        },
         "ECM": -0.30,
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
         "availability": [0, 2, 0, 1],
     },
 
     "Su_22_SEAD_DDR": { # Kh-28 5425m
         "CommandPoints": 195,
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 10000.0,
+            },
+            "OpticalStrengths": {
+                "EOpticalStrength/AntiRadar": 175000.0,
+            },
+        },
         "WeaponDescriptor": {
             "turrets": {
                 1: {
@@ -3773,15 +3829,10 @@ rda_unit_edits = {
                 },
             },
         },
-        "optics": {
-            "VisionRangesGRU": {
-                "EVisionRange/Standard": 10000.0,
-            },
-            "OpticalStrengths": {
-                "EOpticalStrength/AntiRadar": 175000.0,
-            },
-        },
         "ECM": -0.40,
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
         "availability": [0, 3, 0, 2],
         "Divisions": {
             "add": ["RDA_9_Panzer"],
@@ -3800,20 +3851,26 @@ rda_unit_edits = {
     },
 
     "Su_22_nplm_DDR": {
-        "CommandPoints": 200,
+        "CommandPoints": 190,
         "ECM": -0.20,
         "availability": [0, 3, 0, 0],
     },
 
     "Su_22_DDR": {  # [HE]
-        "CommandPoints": 220,
+        "CommandPoints": 190,
         "ECM": -0.30,
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
         "availability": [0, 2, 0, 0],
     },
 
     "Su_22_HE2_DDR": {  # [HE2]
-        "CommandPoints": 220,
+        "CommandPoints": 210,
         "ECM": -0.30,
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
         "availability": [0, 2, 0, 0],
     },
 

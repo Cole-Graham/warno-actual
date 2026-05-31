@@ -80,7 +80,7 @@ UK_airborne_newdivisionrules = {
         ("DCA_Starstreak_LML_UK", 1, [6, 4, 0, 0], ["Rover_101FC_UK"]),
         ("Supacat_ATMP_Javelin_LML_UK", 2, [0, 6, 4, 0]),
         ("DCA_Oerlikon_GDF_002_35mm_UK", 1, [6, 4, 0, 0], ["Bedford_MJ_4t_trans_UK"]),
-        ("DCA_Rapier_FSA_UK", 1, [6, 4, 0, 0], ["Rover_101FC_supply_UK"]),
+        ("DCA_Rapier_FSA_UK", 1, [6, 4, 0, 0], ["Rover_101FC_supply_trans_UK"]),
     ],
     "heli": [
         ("Gazelle_SNEB_UK", 2, [0, 8, 6, 0]),
@@ -172,12 +172,12 @@ UK_armored_newdivisionrules = {
     "aa": [
         ("MANPAD_Javelin_UK", 2, [9, 7, 0, 0], ["LandRover_UK", "FV432_UK"]),
         ("DCA_Javelin_LML_UK", 2, [6, 4, 0, 0], ["Bedford_MJ_4t_trans_UK"]),
-        ("DCA_Rapier_UK", 2, [6, 4, 0, 0], ["Rover_101FC_supply_UK"]),
-        ("DCA_Rapier_Darkfire_UK", 2, [4, 3, 0, 0], ["Rover_101FC_supply_UK"]),
-        ("DCA_Bloodhound_UK", 1, [3, 2, 0, 0], ["Bedford_MJ_4t_UK"]),
+        ("DCA_Rapier_UK", 2, [6, 4, 0, 0], ["Rover_101FC_supply_trans_UK"]),
+        ("DCA_Rapier_Darkfire_UK", 2, [4, 3, 0, 0], ["Rover_101FC_supply_trans_UK"]),
+        ("DCA_Bloodhound_UK", 1, [3, 2, 0, 0], ["Bedford_MJ_4t_supply_trans_UK"]),
         ("Tracked_Rapier_UK", 2, [6, 4, 0, 0]),
-        ("Tracked_Rapier_FSA_UK", 2, [4, 3, 0, 0]),
-        ("Tracked_Rapier_FSB2_UK", 2, [4, 3, 0, 0]),
+        ("Tracked_Rapier_FSA_UK", 2, [6, 4, 0, 0]), # LASERFIRE
+        ("Tracked_Rapier_FSB2_UK", 2, [4, 3, 0, 0]), # DARKFIRE
     ],
     "heli": [
         ("Gazelle_SNEB_UK", 2, [0, 8, 6, 0]),
@@ -208,7 +208,7 @@ UK_global_newdivisionrules = {
         ("Jaguar_HE1_UK", 1, [0, 2, 0, 0]),
         ("Jaguar_HE2_UK", 1, [0, 2, 0, 0]),
         ("Jaguar_RKT_UK", 1, [0, 3, 2, 0]),
-        ("Tornado_ADV_UK", 2, [0, 2, 0, 1]),
+        ("Tornado_ADV_UK", 2, [0, 0, 2, 0]),
         ("Tornado_ADV_clu_UK", 1, [0, 2, 0, 0]),
         ("Tornado_ADV_HE_UK", 1, [0, 2, 0, 0]),
         ("Tornado_ADV_SEAD_UK", 1, [0, 2, 0, 1]),
@@ -306,12 +306,12 @@ UK_mechanized_newdivisionrules = {
         ("MANPAD_Blowpipe_UK", 1, [12, 9, 0, 0], ["LandRover_UK", "FV432_UK"]),
         ("MANPAD_Javelin_UK", 2, [9, 7, 0, 0], ["Bedford_MJ_4t_trans_UK"]),
         ("DCA_Javelin_LML_UK", 2, [6, 4, 0, 0], ["Bedford_MJ_4t_trans_UK"]),
-        ("DCA_Rapier_UK", 2, [8, 6, 0, 0], ["Rover_101FC_supply_UK"]),
-        ("DCA_Rapier_Darkfire_UK", 2, [6, 4, 0, 0], ["Rover_101FC_supply_UK"]),
-        ("DCA_Bloodhound_UK", 1, [3, 2, 0, 0], ["Bedford_MJ_4t_UK"]),
+        ("DCA_Rapier_UK", 2, [8, 6, 0, 0], ["Rover_101FC_supply_trans_UK"]),
+        ("DCA_Rapier_Darkfire_UK", 2, [6, 4, 0, 0], ["Rover_101FC_supply_trans_UK"]),
+        ("DCA_Bloodhound_UK", 1, [4, 3, 0, 0], ["Bedford_MJ_4t_supply_trans_UK"]),
         ("Tracked_Rapier_UK", 2, [6, 4, 0, 0]),
-        ("Tracked_Rapier_FSA_UK", 2, [4, 3, 0, 0]),
-        ("Tracked_Rapier_FSB2_UK", 2, [4, 3, 0, 0]),
+        ("Tracked_Rapier_FSA_UK", 2, [6, 4, 0, 0]), # LASERFIRE
+        ("Tracked_Rapier_FSB2_UK", 2, [4, 3, 0, 0]), # DARKFIRE
     ],
     "heli": [
         ("Gazelle_SNEB_UK", 2, [0, 8, 6, 0]),
@@ -424,11 +424,11 @@ UK_motorized_newdivisionrules = {
         ("MANPAD_Starstreak_UK", 1, [7, 5, 0, 0], ["LandRover_UK", "Gazelle_trans_UK"]),
         ("DCA_Javelin_LML_UK", 2, [6, 4, 0, 0], ["Bedford_MJ_4t_trans_UK"]),
         ("DCA_Starstreak_LML_UK", 1, [6, 4, 0, 0], ["Rover_101FC_UK"]),
-        ("DCA_Rapier_UK", 2, [8, 6, 0, 0], ["Rover_101FC_supply_UK"]),
-        ("DCA_Rapier_FSA_UK", 1, [6, 4, 0, 0], ["Rover_101FC_supply_UK"]), # Laserfire
-        ("DCA_Rapier_Darkfire_UK", 2, [6, 4, 0, 0], ["Rover_101FC_supply_UK"]),
+        ("DCA_Rapier_UK", 2, [8, 6, 0, 0], ["Rover_101FC_supply_trans_UK"]),
+        ("DCA_Rapier_FSA_UK", 1, [6, 4, 0, 0], ["Rover_101FC_supply_trans_UK"]), # Laserfire
+        ("DCA_Rapier_Darkfire_UK", 2, [6, 4, 0, 0], ["Rover_101FC_supply_trans_UK"]),
         ("Tracked_Rapier_UK", 1, [6, 4, 0, 0]),
-        ("Tracked_Rapier_FSA_UK", 1, [4, 3, 0, 0]), # Laserfire
+        ("Tracked_Rapier_FSA_UK", 1, [6, 4, 0, 0]), # Laserfire
         ("Tracked_Rapier_FSB2_UK", 1, [4, 3, 0, 0]), # Darkfire
     ],
     "heli": [
