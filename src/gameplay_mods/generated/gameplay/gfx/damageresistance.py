@@ -114,6 +114,8 @@ def edit_gen_gp_gfx_damageresistancefamilylist(source_path) -> None:
 
     source_path.insert(j + 1, infanterie_wa_family)
     source_path.add(sniper_family)
+    source_path.add(sniper_double_family)
+    source_path.add(sniper_triple_family)
     source_path.add(clu_sol_hefrag_family)
     source_path.add(nplm_bomb_family)
     source_path.add(nplm_bomb_flamme_family)
@@ -130,13 +132,13 @@ def edit_gen_gp_gfx_damageresistancefamilylist(source_path) -> None:
     source_path.add(fourteen_five_mm_family)
     source_path.add(missile_he_bigly_family)
     source_path.add(sead_missile_wa_family)
-    source_path.add(sniper_double_family)
-    source_path.add(sniper_triple_family)
     source_path.add(he_dca_airtargets_family)
     logger.info(
         f"Added families: \n"
         f"{infanterie_wa_family}\n"
         f"{sniper_family}\n"
+        f"{sniper_double_family}\n"
+        f"{sniper_triple_family}\n"
         f"{clu_sol_hefrag_family}\n"
         f"{nplm_bomb_family}\n"
         f"{nplm_bomb_flamme_family}\n"
@@ -153,8 +155,6 @@ def edit_gen_gp_gfx_damageresistancefamilylist(source_path) -> None:
         f"{fourteen_five_mm_family}\n"
         f"{missile_he_bigly_family}\n"
         f"{sead_missile_wa_family}\n"
-        f"{sniper_double_family}\n"
-        f"{sniper_triple_family}\n"
         f"{he_dca_airtargets_family}\n"
     )
 

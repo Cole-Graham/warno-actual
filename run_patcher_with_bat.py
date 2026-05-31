@@ -6,7 +6,6 @@ from pathlib import Path
 from src import ModConfig
 from src.data import build_database, load_database_from_disk
 from src.utils.database_utils import verify_database
-from src.utils.dictionary_utils import initialize_dictionary_files
 from src.utils.logging_utils import configure_logging, setup_logger, get_counting_handler
 from src.utils.config_utils import get_mod_dst_path
 from subprocess import Popen, PIPE, STDOUT
@@ -120,6 +119,17 @@ def parse_config_ini_version(config_ini_path: Path) -> str:
 	return ""
 
 
+def play_failure_sound():
+	"""Play a sound notification to indicate patcher failure."""
+	try:
+		winsound.PlaySound("SystemHand", winsound.SND_ALIAS)
+	except Exception:
+		try:
+			winsound.Beep(500, 400)
+		except Exception:
+			pass
+
+
 def play_completion_sound():
 	"""Play a sound notification to indicate completion."""
 	try:
@@ -149,9 +159,6 @@ if __name__ == "__main__":
 				logger.info("Release build cancelled by user")
 				sys.exit(0)
 			logger.info("Release build confirmed by user")
-
-		# Initialize dictionary files
-		initialize_dictionary_files()
 
 		# Verify database status
 		if not verify_database(config.config_data):
@@ -254,6 +261,7 @@ if __name__ == "__main__":
 	except Exception as e:
 		run_bat = False
 		logger.error(f"Patcher failed: {str(e)}")
+		play_failure_sound()
 		# Still show counts even if there was an exception
 		counting_handler = get_counting_handler()
 		if counting_handler:

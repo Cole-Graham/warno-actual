@@ -13,6 +13,32 @@ from src.utils.ndf_utils import find_obj_by_blackhole_key
 logger = setup_logger(__name__)
 
 
+def _mesh_stem_for_subdepiction_generator(unit_name: str, edit_value: Any = None) -> str:
+    """Resolve the Modele_ stem used by towed/transported subdepiction generators.
+
+    New units cloned from a donor reuse the donor mesh unless ``depictions.new_mesh``
+    is set. An explicit ``edit_value`` of ``{"mesh": "<stem>"}`` or a string stem
+    overrides the default.
+    """
+    if isinstance(edit_value, str) and edit_value:
+        return edit_value
+    if isinstance(edit_value, dict) and edit_value.get("mesh"):
+        return edit_value["mesh"]
+
+    for donor_key, edits in NEW_UNITS.items():
+        if edits.get("NewName") != unit_name:
+            continue
+        donor_name = donor_key[0] if isinstance(donor_key, tuple) else donor_key
+        depiction_opts = edits.get("depictions", {})
+        if depiction_opts.get("new_mesh"):
+            return unit_name
+        if depiction_opts.get("alternatives"):
+            return depiction_opts["alternatives"]
+        return donor_name
+
+    return unit_name
+
+
 def edit_gen_gp_gfx_depictionvehicles(source_path: Any) -> None:
     """GameData/Generated/Gameplay/Gfx/Depictions/DepictionVehicles.ndf"""
     
@@ -118,9 +144,46 @@ def _handle_new_units(source_path: Any) -> None:
                 obj_desc = obj.namespace if obj.namespace else f"BlackHoleKey={obj.v.by_m('BlackHoleKey').v}"
                 logger.info(f"Adding new object to DepictionVehicles.ndf: {obj_desc}")
                 source_path.add(obj)
-        
-        # TMimeticUnitRegistration no longer exists in these files
-                
+
+    _apply_new_unit_vehicle_depiction_edits(source_path)
+
+
+def _apply_new_unit_vehicle_depiction_edits(source_path: Any) -> None:
+    """Apply tuple-key NEW_DEPICTIONS patches to cloned vehicle registrations."""
+
+    for donor, edits in NEW_UNITS.items():
+        if not edits.get("is_ground_vehicle", False):
+            continue
+
+        unit_name = edits["NewName"]
+        depiction_key = unit_name.lower()
+        veh_edits = NEW_DEPICTIONS.get(depiction_key, {}).get("DepictionVehicles_ndf", {}) or {}
+
+        for key, section_edits in veh_edits.items():
+            if not isinstance(key, tuple):
+                continue
+
+            namespace, obj_type = key
+
+            if namespace and namespace.startswith("DepictionOperator_"):
+                weapon_operator = source_path.by_n(namespace)
+                if weapon_operator:
+                    _handle_weapon_operator(unit_name, weapon_operator, section_edits)
+                    logger.info(f"Updated weapon operator for {unit_name}")
+
+            elif obj_type == "TacticVehicleDepictionRegistration":
+                vehicle_depiction = find_obj_by_blackhole_key(
+                    source_path, unit_name, "TacticVehicleDepictionRegistration",
+                )
+                if vehicle_depiction:
+                    _handle_vehicle_depiction(unit_name, vehicle_depiction, section_edits)
+                    logger.info(f"Updated vehicle depiction for {unit_name}")
+                else:
+                    logger.error(
+                        f"Could not find TacticVehicleDepictionRegistration with "
+                        f"BlackHoleKey='{unit_name}' for NEW_DEPICTIONS patch",
+                    )
+
 
 def _handle_unit_edits(source_path: Any) -> None:
     """Handle unit edits for DepictionVehicles.ndf"""
@@ -268,18 +331,20 @@ def _handle_vehicle_depiction(unit_name, vehicle_depiction, edits, is_new_entry=
                 if sub_dep_type == "TransportedInfantrySubGenerator":
                     for edit_type, edit_value in sub_dep_value.items():
                         if edit_type == "add":
+                            mesh_stem = _mesh_stem_for_subdepiction_generator(unit_name, edit_value)
                             new_entry = f"""TransportedInfantrySubGenerator
                                 (
-                                    Mesh = $/GFX/DepictionResources/Modele_{unit_name}
+                                    Mesh = $/GFX/DepictionResources/Modele_{mesh_stem}
                                 )"""
                             sub_dep_generators.v.add(new_entry)
                             vehicle_depiction.v.add(sub_dep_generators)
                 elif sub_dep_type == "TowedUnitSubDepictionGenerator":
                     for edit_type, edit_value in sub_dep_value.items():
                         if edit_type == "add":
+                            mesh_stem = _mesh_stem_for_subdepiction_generator(unit_name, edit_value)
                             new_entry = f"""TowedUnitSubDepictionGenerator
                                 (
-                                    Mesh = $/GFX/DepictionResources/Modele_{unit_name}
+                                    Mesh = $/GFX/DepictionResources/Modele_{mesh_stem}
                                 )"""
                             sub_dep_generators.v.add(new_entry)
                             vehicle_depiction.v.add(sub_dep_generators)

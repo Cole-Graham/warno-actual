@@ -2286,7 +2286,7 @@ rfa_unit_edits = {
                 "cards": 2,
             },
             "RFA_TerrKdo_Sud": {
-                "Transports": ["Unimog_S_404_RFA"],
+                "Transports": ["Unimog_S_404_supply_trans_RFA"],
             },
         },
     },
@@ -2322,35 +2322,41 @@ rfa_unit_edits = {
     # RFA AIR
     "Alpha_Jet_A_he_RFA": {
         "CommandPoints": 75,
+        "max_speed": 720,
         "availability": [0, 4, 0, 0],
     },
     
     "Alpha_Jet_A_clu_RFA": {
         "CommandPoints": 75,
+        "max_speed": 720,
         "availability": [0, 4, 0, 0],
     },
     
     "Alpha_Jet_A_nplm_RFA": {
         "CommandPoints": 75,
+        "max_speed": 720,
         "availability": [0, 6, 0, 0],
     },
     
     "Alpha_Jet_A_rkt_RFA": {
-        "CommandPoints": 70,
-        "availability": [0, 5, 0, 0],
+        "CommandPoints": 75,
+        "max_speed": 720,
+        "availability": [0, 6, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": {
-                    "RocketAir_SNEB_68mm_salvolength18": {
-                        "new_weapon": "RocketAir_SNEB_68mm_salvolength36",
-                        "swap_fire_effect": False,
-                        "depiction_baked_in": False,
-                    },
-                    "RocketAir_SNEB_68mm_salvolength18": {
-                        "new_weapon": "RocketAir_SNEB_68mm_salvolength36",
-                        "swap_fire_effect": False,
-                        "depiction_baked_in": False,
-                    },
+                    "RocketAir_SNEB_68mm_salvolength18": [
+                        {
+                            "new_weapon": "RocketAir_SNEB_68mm_salvolength36",
+                            "swap_fire_effect": False,
+                            "depiction_baked_in": False,
+                        },
+                        {
+                            "new_weapon": "RocketAir_SNEB_68mm_salvolength36",
+                            "swap_fire_effect": False,
+                            "depiction_baked_in": False,
+                        },
+                    ],
                 },
             },
             "Salves": {
@@ -2360,7 +2366,8 @@ rfa_unit_edits = {
     },
 
     "Alpha_Jet_A_KWS_RFA": { # 30% ECM, 2 Mavericks
-        "CommandPoints": 100,
+        "CommandPoints": 165,
+        "max_speed": 720,
         "availability": [0, 3, 2, 0],
         "WeaponDescriptor": {
             "Salves": {
@@ -2370,23 +2377,39 @@ rfa_unit_edits = {
     },
 
     "F104G_Starfighter_RFA": { # F-104G [AA]
-        "CommandPoints": 95,
+        "CommandPoints": 110,
+        "ECM": -0.15,
         "availability": [0, 4, 3, 0],
     },
     
     "F104G_Starfighter_HE_RFA": { # F-104G [HE]
-        "CommandPoints": 145,
+        "CommandPoints": 140,
+        "ECM": -0.15,
         "availability": [0, 4, 0, 0],
     },
     
     "F104G_Starfighter_AT_RFA": { # F-104G [AT]
-        "CommandPoints": 95,
+        "CommandPoints": 150,
+        "ECM": -0.15,
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 4550.0,
+            },
+        },
+        "WeaponDescriptor": {
+            "turrets": {
+                0: {
+                    "AngleRotationMaxPitch": 1.047198, # 60 degrees
+                    "AngleRotationMinPitch": -1.047198,
+                },
+            },
+        },
         "availability": [0, 4, 0, 0],
     },
     
-    "F4F_Phantom_II_AA2_RFA": { # 2x 2x AIM-9L(Improved)
-        "CommandPoints": 190,
-        "ECM": -0.25,
+    "F4F_Phantom_II_AA2_RFA": { # 2x2 AIM-9L(Improved)
+        "CommandPoints": 200,
+        "ECM": -0.35,
         "availability": [0, 0, 3, 2],
         "optics": {
             "OpticalStrengths": {
@@ -2395,7 +2418,7 @@ rfa_unit_edits = {
         },
     },
 
-    "F4F_Phantom_II_AA_RFA": { # 2x 2x AIM-9L
+    "F4F_Phantom_II_AA_RFA": { # 2x2 AIM-9L
         "CommandPoints": 160,
         "ECM": -0.25,
         "availability": [0, 3, 2, 0],
@@ -2407,7 +2430,7 @@ rfa_unit_edits = {
     },
 
     "F4F_Phantom_II_AT_RFA": { # 4x Maverick
-        "CommandPoints": 230,
+        "CommandPoints": 225,
         "ECM": -0.25,
         "availability": [0, 2, 0, 0],
         "WeaponDescriptor": {
@@ -2423,7 +2446,7 @@ rfa_unit_edits = {
     },
 
     "RF4E_Phantom_HE_RFA": { # 6x Mk82, no Gun or Sidewinders or Radar, its a photo recon pushed into a bombing role
-        "CommandPoints": 185,
+        "CommandPoints": 175,
         "ECM": -0.25,
         "availability": [0, 3, 0, 0],
     },
@@ -2513,6 +2536,7 @@ rfa_unit_edits = {
 
     "HFB_320_ECM_RFA": { # EW
         "CommandPoints": 145,
+        "ECM": -0.55,
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 12500.0,
@@ -2525,27 +2549,34 @@ rfa_unit_edits = {
     },
     
     "G91_R3_Gina_HE_RFA": {
-        "CommandPoints": 65,
-        "availability": [0, 5, 0, 0],
+        "CommandPoints": 75,
+        "availability": [0, 6, 0, 0],
     },
 
     "G91_R3_Gina_NPL_RFA": {
-        "CommandPoints": 65,
+        "CommandPoints": 75,
         "availability": [0, 6, 0, 0],
         "UpgradeFromUnit": "G91_R3_Gina_RKT_RFA",
     },
     
     "G91_R3_Gina_RKT_RFA": {
-        "CommandPoints": 70,
-        "availability": [0, 5, 0, 0],
+        "CommandPoints": 75,
+        "availability": [0, 6, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": {
-                    "RocketAir_SNEB_68mm_salvolength18": {
-                        "new_weapon": "RocketAir_SNEB_68mm_avion_salvolength18",
-                        "swap_fire_effect": False,
-                        "depiction_baked_in": False,
-                    },
+                    "RocketAir_SNEB_68mm_salvolength18": [
+                        {
+                            "new_weapon": "RocketAir_SNEB_68mm_avion_salvolength18",
+                            "swap_fire_effect": False,
+                            "depiction_baked_in": False,
+                        },
+                        {
+                            "new_weapon": "RocketAir_SNEB_68mm_avion_salvolength18",
+                            "swap_fire_effect": False,
+                            "depiction_baked_in": False,
+                        },
+                    ],
                 },
             },
             "Salves": {
@@ -2555,7 +2586,8 @@ rfa_unit_edits = {
     },
     
     "Tornado_IDS_AT1_RFA": { # 4x AGM-65B, 2x AIM-9L
-        "CommandPoints": 245,
+        "CommandPoints": 285,
+        "ECM": -0.40,
         "availability": [0, 2, 0, 1],
         "WeaponDescriptor": {
             "Salves": {
@@ -2563,36 +2595,40 @@ rfa_unit_edits = {
             },
         },
         "SpecialtiesList": {
-            "add_specs": ["'terrain_radar'"],
+            "add_specs": ["'terrain_radar'", "'_jammer_air'"],
         },
     },
 
     "Tornado_IDS_HE1_RFA": { # 3x Mk 83, 2x AIM-9L
         "CommandPoints": 220,
+        "ECM": -0.40,
         "availability": [0, 2, 0, 0],
         "SpecialtiesList": {
-            "add_specs": ["'terrain_radar'"],
+            "add_specs": ["'terrain_radar'", "'_jammer_air'"],
         },
     },
 
     "Tornado_IDS_CLUS_RFA": { # 5x Rockeye, 2x AIM-9L
-        "CommandPoints": 200,
+        "CommandPoints": 220,
+        "ECM": -0.40,
         "availability": [0, 2, 0, 0],
         "SpecialtiesList": {
-            "add_specs": ["'terrain_radar'"],
+            "add_specs": ["'terrain_radar'", "'_jammer_air'"],
         },
     },
 
     "Tornado_Marine_CLU_RFA": { # 4x BL.755, 2x AIM-9L
-        "CommandPoints": 220,
+        "CommandPoints": 270,
+        "ECM": -0.50,
         "availability": [0, 2, 0, 0],
         "SpecialtiesList": {
-            "add_specs": ["'terrain_radar'"],
+            "add_specs": ["'terrain_radar'", "'_jammer_air'"],
         },
     },
 
     "Tornado_IDS_SEAD_RFA": { # AGM-88 5950m
         "CommandPoints": 300,
+        "ECM": -0.50,
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 10000.0,
@@ -2613,16 +2649,17 @@ rfa_unit_edits = {
         },
         "availability": [0, 2, 0, 1],
         "SpecialtiesList": {
-            "add_specs": ["'terrain_radar'"],
+            "add_specs": ["'terrain_radar'", "'_jammer_air'"],
         },
     },
 
     "Tornado_IDS_MW1_RFA": { # MW-1 KB44 (Anti Airfield HE Cluster Munitions), 2x AIM-9L
         "CommandPoints": 350,
+        "ECM": -0.40,
         "max_speed": 1300,
         "availability": [0, 2, 0, 0],
         "SpecialtiesList": {
-            "add_specs": ["'terrain_radar'"],
+            "add_specs": ["'terrain_radar'", "'_jammer_air'"],
         },
     },
 

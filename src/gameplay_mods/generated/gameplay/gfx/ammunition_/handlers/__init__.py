@@ -32,6 +32,9 @@ from .vanilla_renames import (
     remove_vanilla_instances,
     vanilla_renames_ammunition,
 )
+from .ammo_consumption_validation import (
+    validate_ammunition_consumption,
+)
 
 __all__ = [
     'add_corrected_shot_dispersion',
@@ -49,5 +52,6 @@ __all__ = [
     'apply_weapon_range_standards',
     'apply_tandem_charge_inversion',
     'remove_vanilla_instances',
+    'validate_ammunition_consumption',
     'vanilla_renames_ammunition',
 ]

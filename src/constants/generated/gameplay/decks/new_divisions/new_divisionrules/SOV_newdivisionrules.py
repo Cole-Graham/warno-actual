@@ -712,10 +712,10 @@ SOV_motorized_newdivisionrules = {
         ("Mi_24VP_SOV", 2, [0, 2, 0, 1]),
     ],
     "planes": [
-        ("MiG_21bis_CLU_SOV", 1, [0, 2, 0, 0]),
+        ("MiG_21bis_CLU_SOV", 1, [0, 3, 0, 0]),
         ("MiG_21bis_HE_SOV", 1, [0, 4, 0, 0]),
-        ("L39ZO_HE1_SOV", 1, [0, 5, 0, 0]),
+        ("L39ZO_HE1_SOV", 1, [0, 6, 0, 0]),
         ("L39ZO_NPLM_SOV", 1, [0, 6, 0, 0]),
-        ("L39ZO_SOV", 1, [0, 5, 0, 0]),
+        ("L39ZO_SOV", 1, [0, 6, 0, 0]),
     ],
 }

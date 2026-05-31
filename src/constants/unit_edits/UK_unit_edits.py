@@ -1777,7 +1777,7 @@ uk_unit_edits = {
     },
     
     "FV4003_Centurion_AVRE_ROMOR_UK": {
-        "CommandPoints": 75,
+        "CommandPoints": 80,
         "armor": {
             "top": (3, None),
         },
@@ -1895,7 +1895,7 @@ uk_unit_edits = {
     },
     
     "Challenger_1_Mk3_UK": {
-        "CommandPoints": 210,
+        "CommandPoints": 220,
         "armor": {
             "top": (4, None),
         },
@@ -2421,7 +2421,7 @@ uk_unit_edits = {
     },
 
     "DCA_Rapier_UK": {
-        "CommandPoints": 65,
+        "CommandPoints": 60,
         "GameName": {
             "display": "RAPIER",
         },
@@ -2441,7 +2441,7 @@ uk_unit_edits = {
             },
             "UK_2nd_Infantry": {
                 "cards": 1,
-                "Transports": ["Rover_101FC_supply_UK"],
+                "Transports": ["Rover_101FC_supply_trans_UK"],
             },
         },
     },
@@ -2466,7 +2466,7 @@ uk_unit_edits = {
     },
 
     "DCA_Rapier_FSA_UK": {  # towed FSB1
-        "CommandPoints": 85,
+        "CommandPoints": 80,
         "GameName": {
             "display": "RAPIER LASERFIRE",
         },
@@ -2486,7 +2486,7 @@ uk_unit_edits = {
             },
             "UK_2nd_Infantry": {
                 "cards": 2,
-                "Transports": ["Rover_101FC_supply_UK"],
+                "Transports": ["Rover_101FC_supply_trans_UK"],
             },
         },
         "UpgradeFromUnit": None,
@@ -2606,7 +2606,7 @@ uk_unit_edits = {
     },
     
     "Canberra_B2_UK": { # [HE/CLU]
-        "CommandPoints": 140,
+        "CommandPoints": 175,
         "availability": [0, 3, 0, 0],
     },
     
@@ -2635,11 +2635,30 @@ uk_unit_edits = {
                 "Bomb_CPU_123_salvolength2": 1,
             },
         },
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
     },
     
     "Buccaneer_S2B_ATGM_UK": {
         "CommandPoints": 150,
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 4550.0,
+            },
+        },
+        "WeaponDescriptor": {
+            "turrets": {
+                0: {
+                    "AngleRotationMaxPitch": 1.047198, # 60 degrees
+                    "AngleRotationMinPitch": -1.047198,
+                },
+            },
+        },
         "availability": [0, 3, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
     },
     
     "Buccaneer_S2B_SEAD_UK": { # Martel 5250m
@@ -2650,6 +2669,18 @@ uk_unit_edits = {
             "OpticalStrengths": {
                 "EOpticalStrength/AntiRadar": 175000.0,
             },
+        },
+        "WeaponDescriptor": {
+            "turrets": {
+                0: {
+                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMaxPitch": 0.8726646,
+                    "AngleRotationMinPitch": -0.8726646,
+                },
+            },
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
         },
     },
     
@@ -2667,8 +2698,12 @@ uk_unit_edits = {
         "GameName": {
             "display": "HARRIER GR.3 [RKT]",
         },
-        "CommandPoints": 110,
+        "CommandPoints": 120,
+        "ECM": -0.3,
         "availability": [0, 3, 2, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
         "UpgradeFromUnit": None,
     },
 
@@ -2690,8 +2725,12 @@ uk_unit_edits = {
         "GameName": {
             "display": "HARRIER GR.3 [HE]",
         },
-        "CommandPoints": 130,
+        "CommandPoints": 140,
+        "ECM": -0.3,
         "availability": [0, 4, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
     },
     
     "Harrier_HE2_UK": {  # 4x mk18 513kg
@@ -2705,8 +2744,12 @@ uk_unit_edits = {
     },
 
     "Harrier_CLU_UK": {
-        "CommandPoints": 170,
+        "CommandPoints": 180,
+        "ECM": -0.3,
         "availability": [0, 3, 0, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
     },
     
     "Harrier_GR5_UK": {
@@ -2743,35 +2786,51 @@ uk_unit_edits = {
     },
     
     "Jaguar_overwing_UK": {  # 6x Mk18 513kg, 2x AIM-9L
-        "CommandPoints": 215,
+        "CommandPoints": 225,
+        "ECM": -0.35,
         "availability": [0, 0, 2, 0],
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
     },
 
     "Tornado_ADV_HE_UK": {
-        "CommandPoints": 220,
+        "CommandPoints": 250,
+        "ECM": -0.40,
         "SpecialtiesList": {
-            "add_specs": ["'terrain_radar'"],
+            "add_specs": ["'terrain_radar'", "'_jammer_air'"],
         },
         "availability": [0, 2, 0, 0],
     },
     
     "Tornado_ADV_clu_UK": {
-        "CommandPoints": 240,
+        "CommandPoints": 270,
+        "ECM": -0.40,
         "availability": [0, 2, 0, 0],
         "SpecialtiesList": {
-            "add_specs": ["'terrain_radar'"],
+            "add_specs": ["'terrain_radar'", "'_jammer_air'"],
         },
     },
     
     "Tornado_ADV_SEAD_UK" : { # 3x ALARM 5600m
         "availability": [0, 2, 0, 1],
         "CommandPoints": 300,
+        "ECM": -0.50,
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 10000.0,
             },
             "OpticalStrengths": {
                 "EOpticalStrength/AntiRadar": 175000.0,
+            },
+        },
+        "WeaponDescriptor": {
+            "turrets": {
+                1: {
+                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMaxPitch": 0.8726646,
+                    "AngleRotationMinPitch": -0.8726646,
+                },
             },
         },
         "Divisions": {
@@ -2783,13 +2842,14 @@ uk_unit_edits = {
             },
         },
         "SpecialtiesList": {
-            "add_specs": ["'terrain_radar'"],
+            "add_specs": ["'terrain_radar'", "'_jammer_air'"],
         },
     },
 
     "Tornado_ADV_UK": { # 4x Skyflash SuperTEMP, 4x AIM-9L
-        "CommandPoints": 230,
-        "availability": [0, 2, 0, 1],
+        "CommandPoints": 235,
+        "ECM": -0.25,
+        "availability": [0, 0, 2, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": {
@@ -2839,7 +2899,7 @@ uk_unit_edits = {
     },
     
     "F4_Phantom_AA_GR2_UK": { 
-        "CommandPoints": 210,
+        "CommandPoints": 200,
         "optics": {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 13250,

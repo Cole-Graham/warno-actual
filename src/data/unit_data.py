@@ -365,10 +365,14 @@ def _extract_optics_data(module: Any, unit_name: str) -> Dict[str, Any]:
         logger.debug(f"Extracting optics data for unit: {unit_name}")
 
         ranges_map = module.v.by_m("VisionRangesGRU", None)
-        ground = ranges_map.v.by_k("EVisionUnitType/Standard", None)
-        if ground is not None:
-            optics_data["ground_range"] = float(ground.v)
-            logger.debug(f"Found ground range: {optics_data['ground_range']}")
+        standard = ranges_map.v.by_k("EVisionRange/Standard", None)
+        if standard is None:
+            standard = ranges_map.v.by_k("EVisionUnitType/Standard", None)
+        if standard is not None:
+            standard_range = float(standard.v)
+            optics_data["standard_range"] = standard_range
+            optics_data["ground_range"] = standard_range
+            logger.debug(f"Found standard vision range: {standard_range}")
 
         strengths_map = module.v.by_m("OpticalStrengths", None)
         optics_data["strengths"] = {}

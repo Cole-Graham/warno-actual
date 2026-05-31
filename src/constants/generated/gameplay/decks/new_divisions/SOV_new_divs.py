@@ -80,6 +80,8 @@ sov_new_divs = {
             "MANPAD_Igla_Naval_VDV_SOV",
             "ZSU_23_Shilka_SOV",
             "MTLB_Strela10_SOV",
+            # Planes
+            "MiG_31_AA2_SOV",
         ],
         "transport_overrides": {
             "MotRifles_CMD2_TTsko_SOV": ["LUAZ_967M_SOV", "BTR_80_SOV", "MTLB_transp_SOV", "Mi_8TV_non_arme_SOV", "Mi_8MTV_SOV", "Mi_24D_Desant_SOV"],
@@ -184,6 +186,7 @@ sov_new_divs = {
             "Mi_8R_SOV",
             "MANPAD_Igla_Naval_VDV_SOV",
             "MTLB_Strela10_SOV",
+            "MiG_31_AA2_SOV",
         ],
         "transport_overrides": {},
     },

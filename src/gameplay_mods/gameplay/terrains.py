@@ -10,22 +10,62 @@ def edit_gameplay_terrains(source_path) -> None:
     """GameData/Gameplay/Terrains/Terrains.ndf"""
     logger.info("Editing terrain properties")
 
-    # Add damage modifiers
-    damage_modifications = {
-        "DamageFamilies": [
-            "12_7",
-            "14_5",
-            "sa_intermediate",
-            "sa_full",
-            "thermobarique",
-            "pgb_bomb",
-        ],
-        "terrains": {
+    # New damage families: append full (DamageFamily, resistance MAP) rows to terrains.
+    # Existing families: patch resistance values on rows already present in vanilla.
+    # Kept as two dicts because the NDF operations differ (add vs in-place edit).
+    damage_family_additions = {
+        "12_7": {
             "ForetDense": 0.5,
             "ForetLegere": 0.65,
             "PetitBatiment": 0.5,
             "Batiment": 0.5,
             "Ruin": 0.55,
+        },
+        "14_5": {
+            "ForetDense": 0.5,
+            "ForetLegere": 0.65,
+            "PetitBatiment": 0.5,
+            "Batiment": 0.5,
+            "Ruin": 0.55,
+        },
+        "sa_intermediate": {
+            "ForetDense": 0.5,
+            "ForetLegere": 0.65,
+            "PetitBatiment": 0.5,
+            "Batiment": 0.5,
+            "Ruin": 0.55,
+        },
+        "sa_full": {
+            "ForetDense": 0.5,
+            "ForetLegere": 0.65,
+            "PetitBatiment": 0.5,
+            "Batiment": 0.5,
+            "Ruin": 0.55,
+        },
+        "thermobarique": {
+            "ForetDense": 1.0,
+            "ForetLegere": 1.0,
+            "PetitBatiment": 1.0,
+            "Batiment": 1.0,
+            "Ruin": 1.0,
+        },
+        "pgb_bomb": {
+            "ForetDense": 0.5,
+            "ForetLegere": 0.65,
+            "PetitBatiment": 0.5,
+            "Batiment": 0.5,
+            "Ruin": 0.55,
+        },
+    }
+
+    damage_family_edits = {
+        "howz": {
+            "PetitBatiment": 0.25,
+            "Batiment": 0.25,
+        },
+        "howz_bombe": {
+            "PetitBatiment": 0.25,
+            "Batiment": 0.25,
         },
     }
 
@@ -82,20 +122,29 @@ def edit_gameplay_terrains(source_path) -> None:
                 inf_resistance.v,
             )
 
-    for terrain_name, modifier in damage_modifications["terrains"].items():
-        terrain_obj = terrains_list.v.find_by_cond(
-            lambda o: is_obj_type(o.v, "TGameplayTerrain") and
-            strip_quotes(o.v.by_m("Name").v) == terrain_name, strict=False)
+    for damage_family, terrain_modifiers in damage_family_additions.items():
+        for terrain_name, modifier in terrain_modifiers.items():
+            terrain_obj = terrains_list.v.find_by_cond(
+                lambda o, terrain_name=terrain_name: is_obj_type(o.v, "TGameplayTerrain") and
+                strip_quotes(o.v.by_m("Name").v) == terrain_name, strict=False)
 
-        if not terrain_obj:
-            logger.warning(f"Terrain {terrain_name} not found")
-            continue
+            if not terrain_obj:
+                logger.warning(f"Terrain {terrain_name} not found")
+                continue
 
-        damage_modifier_map = terrain_obj.v.by_m("DamageModifierPerFamilyAndResistance")
+            damage_modifier_map = terrain_obj.v.by_m("DamageModifierPerFamilyAndResistance")
 
-        for damage_family in damage_modifications["DamageFamilies"]:
+            damage_family_key = f"DamageFamily_{damage_family}"
+            if damage_modifier_map.v.by_k(damage_family_key, False) is not None:
+                logger.error(
+                    "%s already has modifiers on %s; skipping addition",
+                    damage_family_key,
+                    terrain_name,
+                )
+                continue
+
             damage_modifier_map.v.add(
-                f"(DamageFamily_{damage_family}, MAP ["
+                f"({damage_family_key}, MAP ["
                 f"(ResistanceFamily_infanterie,{modifier}),"
                 f"(ResistanceFamily_infanterieWA,{modifier})])",
             )
@@ -104,9 +153,41 @@ def edit_gameplay_terrains(source_path) -> None:
                 "(infanterie + infanterieWA)",
             )
 
+    for damage_family, terrain_modifiers in damage_family_edits.items():
+        for terrain_name, modifier in terrain_modifiers.items():
+            terrain_obj = terrains_list.v.find_by_cond(
+                lambda o, terrain_name=terrain_name: is_obj_type(o.v, "TGameplayTerrain") and
+                strip_quotes(o.v.by_m("Name").v) == terrain_name, strict=False)
+
+            if not terrain_obj:
+                logger.warning(f"Terrain {terrain_name} not found")
+                continue
+
+            damage_modifier_map = terrain_obj.v.by_m("DamageModifierPerFamilyAndResistance", False)
+            if damage_modifier_map is None:
+                logger.warning(
+                    f"No DamageModifierPerFamilyAndResistance on {terrain_name}",
+                )
+                continue
+
+            damage_entry = damage_modifier_map.v.by_k(f"DamageFamily_{damage_family}", False)
+            if damage_entry is None:
+                logger.warning(
+                    f"DamageFamily_{damage_family} not found on {terrain_name}",
+                )
+                continue
+
+            res_map = damage_entry.v
+            for res_entry in res_map:
+                res_entry.v = str(modifier)
+                logger.info(
+                    f"Updated {damage_family} {res_entry.k} damage modifier to {modifier} "
+                    f"on {terrain_name}",
+                )
+
     for terrain_name, modifier in other_modifications.items():
         terrain_obj = terrains_list.v.find_by_cond(
-            lambda o: is_obj_type(o.v, "TGameplayTerrain") and
+            lambda o, terrain_name=terrain_name: is_obj_type(o.v, "TGameplayTerrain") and
             strip_quotes(o.v.by_m("Name").v) == terrain_name, strict=False)
 
         if not terrain_obj:

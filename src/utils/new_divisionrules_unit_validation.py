@@ -62,6 +62,28 @@ def _iter_rule_unit_and_transport_names(rules_dict: dict[str, Any]) -> Iterable[
                         yield transport
 
 
+def collect_newdivisionrules_unit_names() -> Set[str]:
+    """Primary units and transports from newdivisionrules dicts used in *_new_divs."""
+    used_ids = collect_used_newdivisionrules_dict_ids()
+    names: set[str] = set()
+
+    pkg = importlib.import_module(_NEW_DIVISIONRULES_PKG)
+    rules_dir = Path(next(iter(pkg.__path__)))
+    for path in sorted(rules_dir.glob("*_newdivisionrules.py")):
+        mod = importlib.import_module(f"{_NEW_DIVISIONRULES_PKG}.{path.stem}")
+        for attr_name in dir(mod):
+            if not attr_name.endswith("_newdivisionrules"):
+                continue
+            rules_dict = getattr(mod, attr_name)
+            if not isinstance(rules_dict, dict):
+                continue
+            if id(rules_dict) not in used_ids:
+                continue
+            for name in _iter_rule_unit_and_transport_names(rules_dict):
+                names.add(name)
+    return names
+
+
 def _valid_unit_and_new_unit_names() -> set[str]:
     unit_edits = load_unit_edits()
     names = set(unit_edits.keys())

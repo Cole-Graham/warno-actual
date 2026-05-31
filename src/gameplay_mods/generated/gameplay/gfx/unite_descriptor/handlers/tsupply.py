@@ -1,6 +1,5 @@
-"""Edit TTagsModuleDescriptor for existing and new units"""
+"""Edit TSupplyModuleDescriptor for existing and new units"""
 
-from src import ndf
 
 def handle_supply_module(
     logger,
@@ -14,32 +13,37 @@ def handle_supply_module(
 ) -> None:
     """Edit TSupplyModuleDescriptor for existing and new units"""
 
-    if edit_type == "new_units":
-        pass
+    supply_edits = edits.get("Supply", {})
+    if not supply_edits:
+        return
 
-    if edit_type == "unit_edits":
-        if not unit_data["is_supply_unit"]:
-            return
+    if edit_type == "unit_edits" and not unit_data["is_supply_unit"]:
+        return
 
-        is_helo = unit_data["is_helo_unit"]
+    membr = module.v.by_m
+    supply_descr = membr("SupplyDescriptor", False)
+    supply_capacity = membr("SupplyCapacity", False)
 
-        membr = module.v.by_m
-        supply_descr = membr("SupplyDescriptor")
-        supply_capacity = membr("SupplyCapacity")
+    if not supply_descr or not supply_capacity:
+        logger.warning(f"Missing supply descriptors for {unit_name}")
+        return
 
-        if not supply_descr or not supply_capacity:
-            logger.warning(f"Missing supply descriptors for {unit_name}")
-            return
+    old_capacity = supply_capacity.v
 
-        old_capacity = supply_capacity.v
+    if "SupplyDescriptor" in supply_edits:
+        supply_descr.v = f"$/GFX/Weapon/{supply_edits['SupplyDescriptor']}"
+        logger.info(f"Set {unit_name} supply descriptor to {supply_edits['SupplyDescriptor']}")
 
-        if "SupplyDescriptor" in edits:
-            supply_descr.v = f"$/GFX/Weapon/{edits['SupplyDescriptor']}"
-            logger.info(f"Set {unit_name} supply descriptor to {edits['SupplyDescriptor']}")
+    if "SupplyCapacity" in supply_edits:
+        new_capacity = str(supply_edits["SupplyCapacity"])
+        if old_capacity != new_capacity:
+            supply_capacity.v = new_capacity
+            logger.info(f"Updated {unit_name} supply capacity: {old_capacity} -> {new_capacity}")
 
-        # Update capacity if specified
-        if "SupplyCapacity" in edits:
-            new_capacity = str(edits["SupplyCapacity"])
-            if old_capacity != new_capacity:
-                supply_capacity.v = new_capacity
-                logger.info(f"Updated {unit_name} supply capacity: {old_capacity} -> {new_capacity}")
+    if "SupplyPriority" in supply_edits:
+        supply_priority = membr("SupplyPriority", False)
+        if supply_priority:
+            new_priority = str(supply_edits["SupplyPriority"])
+            if supply_priority.v != new_priority:
+                supply_priority.v = new_priority
+                logger.info(f"Updated {unit_name} supply priority to {new_priority}")

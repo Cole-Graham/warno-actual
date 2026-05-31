@@ -94,15 +94,12 @@ USA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "7941cf9e-4bb2-4fe2-a9f4-d301c3a14000",
         "ShowroomGUID": "c6fc6686-20f2-4a61-8873-c5fd90ad23d1",
         "CadavreGUID": "cd105858-c974-493d-b327-5c68849f3833",
-        "modules_add": [
-                """TSupplyModuleDescriptor
-                (
-                    SupplyDescriptor = $/GFX/Weapon/SquadSupply
-                    SupplyCapacity = 675.0
-                    SupplyPriority = -1
-                )""",
-            ],
         "modules_remove": ["TTransporterModuleDescriptor"],
+        "Supply": {
+            "SupplyDescriptor": "SquadSupply",
+            "SupplyCapacity": 675.0,
+            "SupplyPriority": -1,
+        },
         "TypeUnit": {
             "AcknowUnitTypes": ["Logistic"],
         },
@@ -1038,6 +1035,9 @@ USA_NEW_UNITS = {
             #     "Transports": None,
             # },
         },
+        "SpecialtiesList": [
+            '_jammer_air',
+        ],
         "availability": [0, 2, 0, 1],
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 
                    'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection',
