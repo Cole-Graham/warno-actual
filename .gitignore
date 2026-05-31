@@ -9,6 +9,8 @@ output.txt
 scripts/
 src/data/database/constants_precomputation/*.json
 src/data/database/*.json
+sourcemod/
+sourcemod vip/
 .VSCodeCounter/
 *.lnk
 LDR_unit_edits_old.py
@@ -45,6 +47,7 @@ uk-div-rules.csv
 
 # don't ignore
 !logs/.gitkeep
+!logs/permanent_logs.txt
 !src/data/database/.gitkeep
 !src/data/database/master_db_metadata.json
 *.txt
