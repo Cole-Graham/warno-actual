@@ -51,9 +51,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("AGM_Kh66", "ATGM", None, False): {
+    ("AGM_S25LD", "ATGM", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MaximumRangeGRU": 3500,
                 "AimingTime": 0.3,
                 "SupplyCost": 60.0,
                 "ProjectileSpeedGRU": 2800,
@@ -63,6 +64,25 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "MissileDescriptor": {
             "MaxSpeedGRU": 2800,
             "MaxAccelerationGRU": 1400,
+            "AutoGyr": 0.8726646, # 50 degrees
+        },
+    },
+    
+    ("AGM_Kh66", "ATGM", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "TimeBetweenTwoShots": 0.1,
+                "MaximumRangeGRU": 4550,
+                "ProjectileSpeedGRU": 3600,
+                "MaxAccelerationGRU": 1800,
+                "TimeBetweenTwoSalvos": 0.1,
+                "SupplyCost": 60.00
+            },
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 3600,
+            "MaxAccelerationGRU": 1800,
+            "AutoGyr": 0.8726646, # 50 degrees
         },
     },
     
@@ -89,39 +109,54 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AGM_Kh29L", "ATGM", None, False): { # 84
         "Ammunition": {
             "parent_membr": {
-                "AimingTime": 0.3,
-                "SupplyCost": 90.0,
-                "ProjectileSpeedGRU": 2800,
-                "MaxAccelerationGRU": 1400,
+                "TimeBetweenTwoShots": 0.1,
+                "MaximumRangeGRU": 4550,
+                "ProjectileSpeedGRU": 3600,
+                "MaxAccelerationGRU": 1800,
+                "TimeBetweenTwoSalvos": 0.1,
+                "SupplyCost": 60.00
             },
         },
         "MissileDescriptor": {
-            "MaxSpeedGRU": 2800,
-            "MaxAccelerationGRU": 1400,
+            "MaxSpeedGRU": 3600,
+            "MaxAccelerationGRU": 1800,
+            "AutoGyr": 0.8726646, # 50 degrees
         },
     },
 
     ("AGM_Kh23M", "ATGM", None, False): { # 77
         "Ammunition": {
             "parent_membr": {
-                "AimingTime": 0.3,
-                "SupplyCost": 60.0,
-                "ProjectileSpeedGRU": 2800,
-                "MaxAccelerationGRU": 1400,
+                "TimeBetweenTwoShots": 0.1,
+                "MaximumRangeGRU": 4550,
+                "ProjectileSpeedGRU": 3600,
+                "MaxAccelerationGRU": 1800,
+                "TimeBetweenTwoSalvos": 0.1,
+                "SupplyCost": 60.00
             },
         },
         "MissileDescriptor": {
-            "MaxSpeedGRU": 2800,
-            "MaxAccelerationGRU": 1400,
+            "MaxSpeedGRU": 3600,
+            "MaxAccelerationGRU": 1800,
+            "AutoGyr": 0.8726646, # 50 degrees
         },
     },
     
     ("AGM_Kh25ML", "ATGM", None, False): {
         "Ammunition": {
             "parent_membr": {
-                "MaximumRangeGRU": 3850,
-                "SupplyCost": 360.0,
+                "TimeBetweenTwoShots": 0.1,
+                "MaximumRangeGRU": 4550,
+                "ProjectileSpeedGRU": 3600,
+                "MaxAccelerationGRU": 1800,
+                "TimeBetweenTwoSalvos": 0.1,
+                "SupplyCost": 60.00
             },
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 3600,
+            "MaxAccelerationGRU": 1800,
+            "AutoGyr": 0.8726646, # 50 degrees
         },
     },
 
@@ -221,6 +256,24 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "AffichageMunitionParSalve": 2,
                 "SupplyCost": 160.0
             },
+        },
+    },
+    
+    ("AGM_AGM65E_Maverick", "ATGM", None, False): { # 56
+        "Ammunition": {
+            "parent_membr": {
+                "TimeBetweenTwoShots": 0.1,
+                "MaximumRangeGRU": 4550,
+                "ProjectileSpeedGRU": 3600,
+                "MaxAccelerationGRU": 1800,
+                "TimeBetweenTwoSalvos": 0.1,
+                "SupplyCost": 120.00
+            },
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 3600,
+            "MaxAccelerationGRU": 1800,
+            "AutoGyr": 0.8726646, # 50 degrees
         },
     },
     
@@ -356,8 +409,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "TypeCategoryName": "'" + "JTOYRAARTS" + "'",
                 "WeaponDescriptionToken": "'" + "CRYXRQVTBJ" + "'",
                 "MinMaxCategory": "MinMax_ATGM",
-                "ProjectileSpeedGRU": 2800,
-                "MaxAccelerationGRU": 1400,
+                "MaximumRangeGRU": 3150,
+                "ProjectileSpeedGRU": 3600,
+                "MaxAccelerationGRU": 1800,
                 "AimingTime": 0.3,
             },
         },
@@ -366,8 +420,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "SalvoLengths": [2],
         },
         "MissileDescriptor": {
-            "MaxSpeedGRU": 2800,
-            "MaxAccelerationGRU": 1400,
+            "MaxSpeedGRU": 3600,
+            "MaxAccelerationGRU": 1800,
         },
     },
     
@@ -676,6 +730,24 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "MaxSpeedGRU": 1400,
             "MaxAccelerationGRU": 700,
             "AutoGyr": 0.5235988, # 30 degrees
+        },
+    },
+    
+    ("AGM_AS30", "ATGM", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "TimeBetweenTwoShots": 0.1,
+                "MaximumRangeGRU": 4550,
+                "ProjectileSpeedGRU": 3600,
+                "MaxAccelerationGRU": 1800,
+                "TimeBetweenTwoSalvos": 0.1,
+                "SupplyCost": 120.00
+            },
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 3600,
+            "MaxAccelerationGRU": 1800,
+            "AutoGyr": 0.8726646, # 50 degrees
         },
     },
     

@@ -1,11 +1,10 @@
-import logging
 import re
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set
 
 from src import ndf
 from src.data.ammo_data import get_vanilla_renames
-from src.utils.logging_utils import log_permanent, setup_logger
+from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import (
     get_modules_list,  # noqa
     is_obj_type,
@@ -366,10 +365,14 @@ def _extract_optics_data(module: Any, unit_name: str) -> Dict[str, Any]:
         logger.debug(f"Extracting optics data for unit: {unit_name}")
 
         ranges_map = module.v.by_m("VisionRangesGRU", None)
-        ground = ranges_map.v.by_k("EVisionUnitType/Standard", None)
-        if ground is not None:
-            optics_data["ground_range"] = float(ground.v)
-            logger.debug(f"Found ground range: {optics_data['ground_range']}")
+        standard = ranges_map.v.by_k("EVisionRange/Standard", None)
+        if standard is None:
+            standard = ranges_map.v.by_k("EVisionUnitType/Standard", None)
+        if standard is not None:
+            standard_range = float(standard.v)
+            optics_data["standard_range"] = standard_range
+            optics_data["ground_range"] = standard_range
+            logger.debug(f"Found standard vision range: {standard_range}")
 
         strengths_map = module.v.by_m("OpticalStrengths", None)
         optics_data["strengths"] = {}
@@ -675,26 +678,6 @@ def _gather_weapon_locations(weapon_descr: Any) -> Dict[Any, Any]:
     return weapon_locations
 
 
-def _serialize_attack_strategy_value(value: Any) -> Any:
-    """Convert an AttackStrategiesDescriptorsSortedByPriority entry to JSON-safe data.
-
-    Most aircraft use a string descriptor name; AC-130 (and rare others) embed an inline
-    strategy object (e.g. TRotateAroundAttackStrategyDescriptor with DescriptorId + Policy).
-    """
-    if isinstance(value, str):
-        return value
-    if isinstance(value, ndf.model.Object):
-        serialized: Dict[str, Any] = {"_type": value.type}
-        for member_row in value:
-            raw = member_row.v
-            if isinstance(raw, (str, int, float, bool)) or raw is None:
-                serialized[member_row.member] = raw
-            else:
-                serialized[member_row.member] = str(raw)
-        return serialized
-    return str(value)
-
-
 def _extract_airplane_movement_data(module: Any) -> Dict[str, Any]:
     """Extract all values from an AirplaneMovementDescriptor module.
 
@@ -729,9 +712,7 @@ def _extract_airplane_movement_data(module: Any) -> Dict[str, Any]:
 
     strategies_row = module.v.by_m("AttackStrategiesDescriptorsSortedByPriority", False)
     if strategies_row is not None:
-        data["AttackStrategiesDescriptorsSortedByPriority"] = [
-            _serialize_attack_strategy_value(strategy.v) for strategy in strategies_row.v
-        ]
+        data["AttackStrategiesDescriptorsSortedByPriority"] = [strategy.v for strategy in strategies_row.v]
 
     return data
 
@@ -1033,16 +1014,12 @@ def compare_tags_with_previous(
     removed = previous_set - current_set
 
     if added:
-        log_permanent(
-            logger,
-            logging.WARNING,
+        logger.warning(
             "Tags added in game data (new tags): %s",
             sorted(added),
         )
     if removed:
-        log_permanent(
-            logger,
-            logging.WARNING,
+        logger.warning(
             "Tags removed from game data (no longer present): %s",
             sorted(removed),
         )

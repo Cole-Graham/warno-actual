@@ -11,207 +11,243 @@ from src.utils.logging_utils import setup_logger
 SUPPLY_TIERS = {
     "wheeled": {
         "tier_1": {
-            "SupplyCapacity": 500.0,
+            "Supply": {
+                "SupplyCapacity": 500.0,
+                "SupplyDescriptor": "RunnerSupply",
+            },
             "CommandPoints": 15,
             "Divisions": {
                 "default": {
                     "cards": 1,
                 },
             },
-            "SupplyDescriptor": "RunnerSupply",
             "availability": [8, 0, 0, 0],
         },
         "tier_2": {
-            "SupplyCapacity": 675.0,
+            "Supply": {
+                "SupplyCapacity": 675.0,
+                "SupplyDescriptor": "SquadSupply",
+            },
             "CommandPoints": 25,
             "Divisions": {
                 "default": {
                     "cards": 2,
                 },
             },
-            "SupplyDescriptor": "SquadSupply",
             "availability": [6, 0, 0, 0],
         },
         "tier_3": {
-            "SupplyCapacity": 850.0,
+            "Supply": {
+                "SupplyCapacity": 850.0,
+                "SupplyDescriptor": "SquadSupply",
+            },
             "CommandPoints": 35,
             "Divisions": {
                 "default": {
                     "cards": 2,
                 },
             },
-            "SupplyDescriptor": "SquadSupply",
             "availability": [5, 0, 0, 0],
         },
         "tier_4": {
-            "SupplyCapacity": 1300.0,
+            "Supply": {
+                "SupplyCapacity": 1300.0,
+                "SupplyDescriptor": "PrimarySupply",
+            },
             "CommandPoints": 40,
             "Divisions": {
                 "default": {
                     "cards": 2,
                 },
             },
-            "SupplyDescriptor": "PrimarySupply",
             "availability": [3, 0, 0, 0],
         },
         "tier_5": {
-            "SupplyCapacity": 1500.0,
+            "Supply": {
+                "SupplyCapacity": 1500.0,
+                "SupplyDescriptor": "PrimarySupply",
+            },
             "CommandPoints": 55,
             "Divisions": {
                 "default": {
                     "cards": 2,
                 },
             },
-            "SupplyDescriptor": "PrimarySupply",
             "availability": [3, 0, 0, 0],
         },
         "tier_6": {
-            "SupplyCapacity": 2000.0,
+            "Supply": {
+                "SupplyCapacity": 2000.0,
+                "SupplyDescriptor": "PrimarySupply",
+            },
             "CommandPoints": 70,
             "Divisions": {
                 "default": {
                     "cards": 2,
                 },
             },
-            "SupplyDescriptor": "PrimarySupply",
             "availability": [2, 0, 0, 0],
         },
         "tier_7": {
-            "SupplyCapacity": 2300.0,
+            "Supply": {
+                "SupplyCapacity": 2300.0,
+                "SupplyDescriptor": "DvisionalSupply",
+            },
             "CommandPoints": 80,
             "Divisions": {
                 "default": {
                     "cards": 2,
                 },
             },
-            "SupplyDescriptor": "DvisionalSupply",
             "availability": [2, 0, 0, 0],
         },
         "tier_8": {
-            "SupplyCapacity": 2750.0,
+            "Supply": {
+                "SupplyCapacity": 2750.0,
+                "SupplyDescriptor": "DvisionalSupply",
+            },
             "CommandPoints": 90,
             "Divisions": {
                 "default": {
                     "cards": 2,
                 },
             },
-            "SupplyDescriptor": "DvisionalSupply",
             "availability": [2, 0, 0, 0],
         },
     },
     
     "mechanized": {
         "tier_1": {
-            "SupplyCapacity": 925.0,
+            "Supply": {
+                "SupplyCapacity": 925.0,
+                "SupplyDescriptor": "SquadSupply",
+            },
             "CommandPoints": 30,
             "Divisions": {
                 "default": {
                     "cards": 2,
                 },
             },
-            "SupplyDescriptor": "SquadSupply",
             "availability": [6, 0, 0, 0],
         },
         "tier_2": {
-            "SupplyCapacity": 1400.0,
+            "Supply": {
+                "SupplyCapacity": 1400.0,
+                "SupplyDescriptor": "PrimarySupply",
+            },
             "CommandPoints": 45,
             "Divisions": {
                 "default": {
                     "cards": 2,
                 },
             },
-            "SupplyDescriptor": "PrimarySupply",
             "availability": [4, 0, 0, 0],
         },
         "tier_3": {
-            "SupplyCapacity": 1600.0,
+            "Supply": {
+                "SupplyCapacity": 1600.0,
+                "SupplyDescriptor": "PrimarySupply",
+            },
             "CommandPoints": 55,
             "Divisions": {
                 "default": {
                     "cards": 2,
                 },
             },
-            "SupplyDescriptor": "PrimarySupply",
             "availability": [4, 0, 0, 0],
         },
         "tier_4": {
-            "SupplyCapacity": 2300.0,
+            "Supply": {
+                "SupplyCapacity": 2300.0,
+                "SupplyDescriptor": "DvisionalSupply",
+            },
             "CommandPoints": 75,
             "Divisions": {
                 "default": {
                     "cards": 2,
                 },
             },
-            "SupplyDescriptor": "DvisionalSupply",
             "availability": [3, 0, 0, 0],
         },
     },
     
     "helicopter": {
         "tier_1": {
-            "SupplyCapacity": 500.0,
+            "Supply": {
+                "SupplyCapacity": 500.0,
+                "SupplyDescriptor": "RunnerHeloSupply",
+            },
             "CommandPoints": 25,
             "Divisions": {
                 "default": {
                     "cards": 2,
                 },
             },
-            "SupplyDescriptor": "RunnerHeloSupply",
             "availability": [7, 0, 0, 0],
         },
         "tier_2": {
-            "SupplyCapacity": 750.0,
+            "Supply": {
+                "SupplyCapacity": 750.0,
+                "SupplyDescriptor": "PrimaryHeloSupply",
+            },
             "CommandPoints": 40,
             "Divisions": {
                 "default": {
                     "cards": 2,
                 },
             },
-            "SupplyDescriptor": "PrimaryHeloSupply",
             "availability": [5, 0, 0, 0],
         },
         "tier_3": {
-            "SupplyCapacity": 850.0,
+            "Supply": {
+                "SupplyCapacity": 850.0,
+                "SupplyDescriptor": "PrimaryHeloSupply",
+            },
             "CommandPoints": 45,
             "Divisions": {
                 "default": {
                     "cards": 2,
                 },
             },
-            "SupplyDescriptor": "PrimaryHeloSupply",
             "availability": [4, 0, 0, 0],
         },
         "tier_4": {
-            "SupplyCapacity": 1100.0,
+            "Supply": {
+                "SupplyCapacity": 1100.0,
+                "SupplyDescriptor": "PrimaryHeloSupply",
+            },
             "CommandPoints": 55,
             "Divisions": {
                 "default": {
                     "cards": 2,
                 },
             },
-            "SupplyDescriptor": "PrimaryHeloSupply",
             "availability": [3, 0, 0, 0],
         },
         "tier_5": {
-            "SupplyCapacity": 2400.0,
+            "Supply": {
+                "SupplyCapacity": 2400.0,
+                "SupplyDescriptor": "DvisionalHeloSupply",
+            },
             "CommandPoints": 95,
             "Divisions": {
                 "default": {
                     "cards": 2,
                 },
             },
-            "SupplyDescriptor": "DvisionalHeloSupply",
             "availability": [2, 0, 0, 0],
         },
         "tier_6": {
-            "SupplyCapacity": 3000.0,
+            "Supply": {
+                "SupplyCapacity": 3000.0,
+                "SupplyDescriptor": "DvisionalHeloSupply",
+            },
             "CommandPoints": 130,
             "Divisions": {
                 "default": {
                     "cards": 2,
                 },
             },
-            "SupplyDescriptor": "DvisionalHeloSupply",
             "availability": [2, 0, 0, 0],
         },
     },
@@ -331,6 +367,20 @@ SUPPLY_UNITS_BY_TIER = {
     ],
 }
 
+_SUPPLY_TOW_CAPABLE_EDITS = {
+    "tow_only": True,
+    "orders": {
+        "add_orders": [
+            "EOrderType/UnloadFromTransport",
+            "EOrderType/UnloadAtPosition",
+            "EOrderType/Load",
+        ],
+    },
+    "SpecialtiesList": {
+        "add_specs": ["'_transport2'"],
+    },
+}
+
 # Units in this dictionary do not need to be defined in the SUPPLY_UNITS_BY_TIER constant or vice-versa.
 # The key will be added automatically if it is missing, you can also set completely custom values for
 # any unit here if you want (such as for unique supply units like Mi-26).
@@ -357,28 +407,32 @@ supply_unit_edits = {
     
     "Gama_Goat_supply_US": {},
     
-    "CUCV_US": {},
+    "CUCV_US": {
+        "GameName": {
+            "display": "#TRANSTWO M1008 CUCV SUPPLY",
+        },
+        **_SUPPLY_TOW_CAPABLE_EDITS,
+    },
     
     "Rover_101FC_supply_UK": {
-        "tow_only": True,
-        "orders": {
-            "add_orders": ["EOrderType/UnloadFromTransport", "EOrderType/UnloadAtPosition", "EOrderType/Load"]
+        "GameName": {
+            "display": "#TRANSTWO ROVER 101FC SUPPLY",
         },
-        "SpecialtiesList": {
-            "add_specs": ["'_transport2'"],
-        },
+        **_SUPPLY_TOW_CAPABLE_EDITS,
     },
 
-    "LAV_L_US": {},
+    "LAV_L_US": {
+        "GameName": {
+            "display": "#TRANSTWO USMC LAV-L",
+        },
+        **_SUPPLY_TOW_CAPABLE_EDITS,
+    },
     
     "Unimog_S_404_RFA": {
-        "tow_only": True,
-        "orders": {
-            "add_orders": ["EOrderType/UnloadFromTransport", "EOrderType/UnloadAtPosition", "EOrderType/Load"]
+        "GameName": {
+            "display": "#TRANSTWO UNIMOG S404 MÜN.",
         },
-        "SpecialtiesList": {
-            "add_specs": ["'_transport2'"],
-        },
+        **_SUPPLY_TOW_CAPABLE_EDITS,
     },
     
     "GAZ_66_supply_SOV": {
@@ -410,23 +464,14 @@ supply_unit_edits = {
     "VLRA_supply_FR": {},
     
     "TRM_2000_supply_FR": {
-        "tow_only": True,
-        "orders": {
-            "add_orders": ["EOrderType/UnloadFromTransport", "EOrderType/UnloadAtPosition", "EOrderType/Load"]
-        },
-        "SpecialtiesList": {
-            "add_specs": ["'_transport2'"],
-        },
+        **_SUPPLY_TOW_CAPABLE_EDITS,
     },
     
     "M35_supply_US": {
-        "tow_only": True,
-        "orders": {
-            "add_orders": ["EOrderType/UnloadFromTransport", "EOrderType/UnloadAtPosition", "EOrderType/Load"]
+        "GameName": {
+            "display": "#TRANSTWO M35 SUPPLY",
         },
-        "SpecialtiesList": {
-            "add_specs": ["'_transport2'"],
-        },
+        **_SUPPLY_TOW_CAPABLE_EDITS,
     },
     
     "Ural_4320_DDR": {},
@@ -444,22 +489,29 @@ supply_unit_edits = {
     "Berliet_GBC_8KT_supply_FR": {},
     
     "Bedford_MJ_4t_UK": {
-        "tow_only": True,
-        "orders": {
-            "add_orders": ["EOrderType/UnloadFromTransport", "EOrderType/UnloadAtPosition", "EOrderType/Load"]
+        "GameName": {
+            "display": "#TRANSTWO BEDFORD MJ SUPPLY",
         },
-        "SpecialtiesList": {
-            "add_specs": ["'_transport2'"],
-        },
+        **_SUPPLY_TOW_CAPABLE_EDITS,
     },
     
     "Alvis_Stalwart_UK": {},
 
-    "DaimlerBenz_Typ1017_supply_RFA": {},
+    "DaimlerBenz_Typ1017_supply_RFA": {
+        "GameName": {
+            "display": "#TRANSTWO MB 1017 MÜN.",
+        },
+        **_SUPPLY_TOW_CAPABLE_EDITS,
+    },
 
     "Berliet_GBU_15_supply_FR": {},
     
-    "M812_supply_US": {}, # M813A1 SUPPLY
+    "M812_supply_US": { # M813A1 SUPPLY
+        "GameName": {
+            "display": "#TRANSTWO M813A1 SUPPLY",
+        },
+        **_SUPPLY_TOW_CAPABLE_EDITS,
+    },
     
     "MAZ_535A_supply_SOV": {
         "UpgradeFromUnit": "Ural_4320_SOV",
@@ -481,20 +533,42 @@ supply_unit_edits = {
 
     "KrAZ_255B_supply_DDR": {},
     
-    "AEC_Militant_UK": {},
+    "AEC_Militant_UK": {
+        "GameName": {
+            "display": "#TRANSTWO MILITANT Mk.3",
+        },
+        **_SUPPLY_TOW_CAPABLE_EDITS,
+    },
     
-    "MAN_Kat_6x6_RFA": {},
+    "MAN_Kat_6x6_RFA": {
+        "GameName": {
+            "display": "#TRANSTWO MAN KAT 6x6 MÜN.",
+        },
+        **_SUPPLY_TOW_CAPABLE_EDITS,
+    },
     
     "T815_supply_DDR": {},
     
-    "HEMTT_US": {},
+    "HEMTT_US": {
+        "GameName": {
+            "display": "#TRANSTWO HEMTT",
+        },
+        **_SUPPLY_TOW_CAPABLE_EDITS,
+    },
     
-    "Bedford_TM_6x6_supply_UK": {},
+    "Bedford_TM_6x6_supply_UK": {
+        "GameName": {
+            "display": "#TRANSTWO BEDFORD TM SUPPLY",
+        },
+        **_SUPPLY_TOW_CAPABLE_EDITS,
+    },
     
     "Kalmar_supply_SOV": {
         "CommandPoints": 220,
-        "SupplyCapacity": 8400.0,
-        "SupplyDescriptor": "DvisionalSupply",
+        "Supply": {
+            "SupplyCapacity": 8400.0,
+            "SupplyDescriptor": "DvisionalSupply",
+        },
         "availability": [1, 0, 0, 0],
          "Divisions": {
             "default": {
@@ -505,8 +579,10 @@ supply_unit_edits = {
 
     "LARC_60_supply_US": {
         "CommandPoints": 220,
-        "SupplyCapacity": 8400.0,
-        "SupplyDescriptor": "DvisionalSupply",
+        "Supply": {
+            "SupplyCapacity": 8400.0,
+            "SupplyDescriptor": "DvisionalSupply",
+        },
         "availability": [1, 0, 0, 0],
          "Divisions": {
             "default": {
@@ -517,17 +593,28 @@ supply_unit_edits = {
     }, 
     
     # mechanized supply
-    "M113A1G_supply_RFA": {},  
+    "M113A1G_supply_RFA": {
+        "GameName": {
+            "display": "M113A1 MÜN.",
+        },
+    },
     
     "M113A2_supply_US": {
+        "GameName": {
+            "display": "M113A2 SUPPLY",
+        },
         "UpgradeFromUnit": "M1038_Humvee_supply_US",
     },
     
-    "FV432_supply_UK": {},
+    "FV432_supply_UK": {
+        "GameName": {
+            "display": "FV432 CARGO",
+        },
+    },
     
     "MTLB_supply_DDR": {
         "GameName": {
-            "display": "MT-LB MUN.",
+            "display": "MT-LB MÜN.",
         },
     },
     
@@ -535,9 +622,17 @@ supply_unit_edits = {
         "UpgradeFromUnit": "GAZ_66_supply_SOV",
     },
     
-    "M992A2_supply_US": {},
+    "M992A2_supply_US": {
+        "GameName": {
+            "display": "M992A2",
+        },
+    },
     
-    "M548A2_supply_US": {},
+    "M548A2_supply_US": {
+        "GameName": {
+            "display": "M548A2",
+        },
+    },
     
     "PTS_2_Naval_supply_SOV": {},
 
@@ -597,14 +692,16 @@ supply_unit_edits = {
         "GameName": {
             "display": "Mi-26 GRUZ.",
         },
-        "SupplyCapacity": 4200.0,
+        "Supply": {
+            "SupplyCapacity": 4200.0,
+            "SupplyDescriptor": "DvisionalHeloSupply",
+        },
         "CommandPoints": 170,
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "SupplyDescriptor": "DvisionalHeloSupply",
         "availability": [2, 0, 0, 0],
     },
 }
@@ -612,7 +709,8 @@ supply_unit_edits = {
 # --- auto-populate tier values and validate one-offs at import time ---
 
 _logger = setup_logger(__name__)
-_REQUIRED_SUPPLY_KEYS = {"SupplyCapacity", "CommandPoints", "Divisions", "SupplyDescriptor", "availability"}
+_REQUIRED_UNIT_KEYS = {"CommandPoints", "Divisions", "availability", "Supply"}
+_REQUIRED_SUPPLY_MODULE_KEYS = {"SupplyCapacity", "SupplyDescriptor"}
 
 _tiered_unit_names = set()
 for _category, _units in SUPPLY_UNITS_BY_TIER.items():
@@ -625,11 +723,22 @@ for _category, _units in SUPPLY_UNITS_BY_TIER.items():
         if _unit_name not in supply_unit_edits:
             supply_unit_edits[_unit_name] = {}
         for _key, _value in _tier_config.items():
-            if _key not in supply_unit_edits[_unit_name]:
+            if _key == "Supply":
+                supply_unit_edits[_unit_name].setdefault("Supply", {})
+                for _sk, _sv in _value.items():
+                    if _sk not in supply_unit_edits[_unit_name]["Supply"]:
+                        supply_unit_edits[_unit_name]["Supply"][_sk] = _sv
+            elif _key not in supply_unit_edits[_unit_name]:
                 supply_unit_edits[_unit_name][_key] = _value
 
 for _unit_name, _edits in supply_unit_edits.items():
     if _unit_name not in _tiered_unit_names:
-        _missing = _REQUIRED_SUPPLY_KEYS - set(_edits.keys())
+        _missing = _REQUIRED_UNIT_KEYS - set(_edits.keys())
         if _missing:
             _logger.warning(f"One-off supply unit '{_unit_name}' missing required keys: {_missing}")
+        else:
+            _supply_missing = _REQUIRED_SUPPLY_MODULE_KEYS - set(_edits.get("Supply", {}).keys())
+            if _supply_missing:
+                _logger.warning(
+                    f"One-off supply unit '{_unit_name}' missing required Supply keys: {_supply_missing}",
+                )

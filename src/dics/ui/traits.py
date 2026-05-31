@@ -369,6 +369,27 @@ NEW_TRAITS = {
         "texture": "noise_stealth.png",
     },
     
+    "_hmd": {
+        "title": ("PKLCDOMJBI", "Helmet Mounted Display"),
+        "description": ("SGGXDIJFIQ", (
+            f"Helmet Mounted Displays enable the use of High Off Boresight missiles in aircraft, and "
+            f"faster aim time in Apache Helicopters."
+        )),
+        "texture": "hmd.png",
+    },
+    
+    "_jammer_air": {
+        "title": ("PYOPJSHROH", "External Jamming Pod"),
+        "description": ("EANPBBVETL", (
+            f"This unit is equipped with an external jammer, disrupting the targeting and radar guidance "
+            f"of enemy missiles."
+        )),
+        "extended": ("HLAWKURHYZ", (
+            f"#styleGreen{{• +10% ECM Bonus}}"
+        )),
+        "texture": "jammer_air.png",
+    },
+    
     "_supply_runner": {
         "title": ("FOQNHPUZUW", "Runner"),
         "description": ("UQVNPUWWQY", (
@@ -504,7 +525,7 @@ TRAIT_EDITS = {
             "token": "ZZQSIOADSB",
             "text": (
                 f"Non-tandem HEAT warheads have {int(TANDEM_MODIFIER)} penetration against vehicles with ERA.\n"
-                f"This does not apply to cluster munitions."
+                f"This does not apply to munitions targeting top armor."
                 
             )
         }
@@ -525,7 +546,9 @@ TRAIT_EDITS = {
         "extended": {
             "token": "CSUKPTRVAR",
             "text": (
-                f"Leader units grant #styleTurquoise{{+1 Veterancy level}} to all nearby units."
+                f"Leader units grant #styleTurquoise{{+1 Veterancy level}} to all nearby units. "
+                f"Tank and IFV leaders have a larger radius, but only grant veterancy to other tanks and "
+                f"fire support vehicles."
             )
         }
     }

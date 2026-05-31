@@ -16,14 +16,22 @@ def get_mod_src_path(config: Dict) -> Path:
     return warno_mods / mod_name
 
 
+def get_mod_name(config: Dict) -> str:
+    """Return the destination mod folder name for the current build target."""
+    build_config = config['build_config']
+    dirs = config['directories']
+    target = build_config['target']
+    is_dev = build_config['write_dev']
+
+    if target == 'gameplay':
+        return dirs['gameplay_dev'] if is_dev else dirs['gameplay_release']
+    if target == 'ui_only':
+        return dirs['ui_only_dev'] if is_dev else dirs['ui_only_release']
+    raise ValueError(f"Invalid build target: {target}")
+
+
 def get_mod_dst_path(config_data: Dict) -> Path:
     """Determine the correct destination path based on build configuration"""
-    build_config = config_data['build_config']
     dirs = config_data['directories']
     warno_mods = Path(dirs['warno_mods'])
-    
-    if build_config['target'] == 'gameplay':
-        dest = dirs['gameplay_dev'] if build_config['write_dev'] else dirs['gameplay_release']
-    else:  # ui_only
-        dest = dirs['ui_only_dev'] if build_config['write_dev'] else dirs['ui_only_release']
-    return warno_mods / dest
+    return warno_mods / get_mod_name(config_data)

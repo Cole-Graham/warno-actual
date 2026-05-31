@@ -1,6 +1,7 @@
 from typing import Any, Dict
 
 from src import ndf
+from src.constants.supply_module import specialty_for_supply_descriptor
 from src.utils.ndf_utils import determine_characteristics
 
 
@@ -57,21 +58,11 @@ def handle_unitui_module(
             specialties_list.v = edited_list
     
     # Supply unit specialties
-    if "SupplyDescriptor" in edits:
-        if "RunnerSupply" in edits["SupplyDescriptor"]:
-            specialties_list.v.add("'_supply_runner'")
-        elif "RunnerHeloSupply" in edits["SupplyDescriptor"]:
-            specialties_list.v.add("'_supply_runner_helo'")
-        elif "SquadSupply" in edits["SupplyDescriptor"]:
-            specialties_list.v.add("'_supply_squad'")
-        elif "PrimarySupply" in edits["SupplyDescriptor"]:
-            specialties_list.v.add("'_supply_primary'")
-        elif "PrimaryHeloSupply" in edits["SupplyDescriptor"]:
-            specialties_list.v.add("'_supply_primary_helo'")
-        elif "DvisionalSupply" in edits["SupplyDescriptor"]:
-            specialties_list.v.add("'_supply_divisional'")
-        elif "DvisionalHeloSupply" in edits["SupplyDescriptor"]:
-            specialties_list.v.add("'_supply_divisional_helo'")
+    supply_descriptor = edits.get("Supply", {}).get("SupplyDescriptor")
+    if supply_descriptor and not (edit_type == "new_units" and "SpecialtiesList" in edits):
+        specialty = specialty_for_supply_descriptor(supply_descriptor)
+        if specialty:
+            specialties_list.v.add(f"'{specialty}'")
 
     if "InfoPanelConfig" in edits:
         module.v.by_m("InfoPanelConfigurationToken").v = f"'{edits['InfoPanelConfig']}'"
@@ -102,8 +93,8 @@ def handle_unitui_module(
         dictionary_entries.append((token, rename))
         logger.debug(f"Collected dictionary entry: {token} = {rename}")
 
-    if "road_speed" in edits and "road_speed" in edits["road_speed"]:
-        module.v.by_m("DisplayRoadSpeedInKmph").v = str(edits["road_speed"]["road_speed"])
+    if "road_speed_display" in edits:
+        module.v.by_m("DisplayRoadSpeedInKmph").v = str(edits["road_speed_display"])
 
     if "UpgradeFromUnit" in edits:
         # Check if member exists already

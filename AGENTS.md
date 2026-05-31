@@ -88,6 +88,17 @@ If a standard needs values from **both** constants dicts and **vanilla** game da
 
 ---
 
+## Depiction edits for existing vs new units
+
+| Location | Format | When to use |
+|---|---|---|
+| `src/constants/unit_edits/depiction_edits/` | Tuple-key edit dict (`(namespace, obj_type)` → member patches) | **Existing** units patched in place |
+| `src/constants/new_units/new_depictions/` | Raw NDF strings **or** the same tuple-key edit dict | **New** units: clone donor depiction, then apply patches |
+
+For ground vehicles, tuple-key `NEW_DEPICTIONS` entries (e.g. `TowedUnitSubDepictionGenerator`) are applied after clone in `depictionvehicles.py`. Full custom vehicle depictions still use raw NDF under string keys when `depictions.custom` is set on the `NEW_UNITS` entry.
+
+---
+
 ## Optional tools (not everyone installs)
 
 Core install covers the patcher and **dpm_visualizer** (including **matplotlib** for its charts). **Qt** `tools/fxeditor` and **Excel** are in the **`optional`** extra (`PySide6`, `openpyxl`). See [docs/onboarding.md](docs/onboarding.md#optional-extras-for-one-off-work).

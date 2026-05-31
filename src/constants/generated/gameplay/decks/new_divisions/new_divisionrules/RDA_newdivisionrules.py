@@ -470,7 +470,7 @@ RDA_global_newdivisionrules = {
         ("MiG_23MF_AA_DDR", 2, [0, 4, 3, 2]),
         ("MiG_23MF_DDR", 1, [0, 3, 0, 0]),
         ("MiG_23BN_AT_DDR", 1, [0, 3, 2, 0]),
-        ("MiG_29_AA_DDR", 2, [0, 2, 0, 1]),
+        ("MiG_29_AA_DDR", 2, [0, 3, 2, 0]),
         ("Su_22_AT_DDR", 1, [0, 2, 0, 1]),
         ("Su_22_AT2_DDR", 1, [0, 2, 0, 1]),
         ("Su_22_DDR", 1, [0, 2, 0, 0]),

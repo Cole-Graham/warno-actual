@@ -24,6 +24,11 @@ INGAME_ICONS = {
         "texture": "deploy.png",
         "insert_after": "icone_swift",
     },
+    "remote_controlled": {
+        "texture_dir": "/Assets/2D/Interface/UseInGame/Icones",
+        "texture": "remote_controlled.png",
+        "insert_after": "icone_deploy",
+    },
 }
 
 INGAME_ICON_EDITS = {

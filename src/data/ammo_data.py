@@ -260,6 +260,11 @@ def build_ammo_properties(parse_ammo_source) -> Dict[str, Any]:
         if plane_range_membr is not None:
             max_range_airplane_gru = _parse_numeric_member_value(plane_range_membr.v)
 
+        ground_range_membr = ammo_descr.v.by_m("MaximumRangeGRU", False)
+        max_range_gru: Any = None
+        if ground_range_membr is not None:
+            max_range_gru = _parse_numeric_member_value(ground_range_membr.v)
+
         family = _arme_family_value(ammo_descr)
 
         ammo_properties[ammo_descr.n] = {
@@ -267,6 +272,7 @@ def build_ammo_properties(parse_ammo_source) -> Dict[str, Any]:
             "RadiusSplashPhysicalDamagesGRU": radius_splash,
             "HasDeploymentTime": has_deployment_time,
             "PhysicalDamages": physical_damages,
+            "MaximumRangeGRU": max_range_gru,
             "MaximumRangeHelicopterGRU": max_range_helicopter_gru,
             "MaximumRangeAirplaneGRU": max_range_airplane_gru,
             "Family": family,

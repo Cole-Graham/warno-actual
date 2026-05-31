@@ -136,6 +136,20 @@ def edit_ui_style_defaulttextformatscript(source_path) -> None:
         f'    )\n'
         f')'
     )
+    transtwo_tag = 'TRANSTWO'
+    transtwo_entry = (
+        f'(\n'
+        f'    "{transtwo_tag}",\n'
+        f'    TTFSCommand_UISymbol\n'
+        f'    (\n'
+        f'        TextureToken = "Texture_Speciality_Icon_transport2"\n'
+        f'        BBMin=[0.0, -0.8, 0]\n'
+        f'        BBMax=[1.0, 0.2, 0]\n'
+        f'        ShaderDescriptor = $/M3D/Shader/MaterialInterface2D_Blend\n'
+        f'        UseTextColor = true\n'
+        f'    )\n'
+        f')'
+    )
     # wa_logo_tag = 'WAMAP'
     # wa_logo_entry = (
     #     f'(\n'
@@ -165,8 +179,10 @@ def edit_ui_style_defaulttextformatscript(source_path) -> None:
     logger.info(f"Appending #{third_arm_tag} entry to DefaultTextFormatScript.ndf")
     logger.info(f"Appending #{eighth_inf_tag} entry to DefaultTextFormatScript.ndf")
     logger.info(f"Appending #{ninth_panzer_tag} entry to DefaultTextFormatScript.ndf")
+    logger.info(f"Appending #{transtwo_tag} entry to DefaultTextFormatScript.ndf")
     # print(f"Appending #{wa_logo_tag} entry to DefaultTextFormatScript.ndf")
     # commands_map.v.insert(append_end, wa_logo_entry)
+    commands_map.v.insert(append_end, transtwo_entry)
     commands_map.v.insert(append_end, light_equip_entry)
     commands_map.v.insert(append_end, medium_equip_entry)
     commands_map.v.insert(append_end, heavy_equip_entry)

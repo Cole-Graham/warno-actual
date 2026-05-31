@@ -3,6 +3,7 @@
 from .A7D_Corsair_II_RKT_US import a7d_corsair_ii_rkt_us
 from .Airborne_Engineers_Flash_US import airborne_engineers_flash_us
 from .Airborne_half_Dragon_US import airborne_half_dragon_us
+from .CUCV_US import cucv_us
 from .Engineer_CMD_US import engineer_cmd_us
 from .Engineer_USMC_CMD_US import engineer_usmc_cmd_us
 from .Engineers_Dragon_US import engineers_dragon_us
@@ -18,10 +19,13 @@ from .F111F_Aardvark_CBU_US import f111f_aardvark_cbu_us
 from .F111F_Aardvark_napalm_US import f111f_aardvark_napalm_us
 from .ForceRecon_USMC_US import forcerecon_usmc_us
 from .Groupe_AT_US import groupe_at_us
+from .HEMTT_US import hemtt_us
+from .LAV_L_US import lav_l_us
 from .M2_Bradley_BSV_US import m2_bradley_bsv_us
 from .M3A1_Bradley_CFV_US import m3a1_bradley_cfv_us
 from .M3A2_Bradley_CFV_US import m3a2_bradley_cfv_us
 from .M35_supply_US import m35_supply_us
+from .M812_supply_US import m812_supply_us
 from .MP_US import mp_us
 from .NatGuard_Dragon_US import natguard_dragon_us
 from .Navy_SEAL_US import navy_seal_us
@@ -40,6 +44,7 @@ __all__ = [
     "a7d_corsair_ii_rkt_us",
     "airborne_engineers_flash_us",
     "airborne_half_dragon_us",
+    "cucv_us",
     "engineer_cmd_us",
     "engineer_usmc_cmd_us",
     "engineers_dragon_us",
@@ -55,10 +60,13 @@ __all__ = [
     "f111f_aardvark_napalm_us",
     "forcerecon_usmc_us",
     "groupe_at_us",
+    "hemtt_us",
+    "lav_l_us",
     "m2_bradley_bsv_us",
     "m3a1_bradley_cfv_us",
     "m3a2_bradley_cfv_us",
     "m35_supply_us",
+    "m812_supply_us",
     "mp_us",
     "natguard_dragon_us",
     "navy_seal_us",

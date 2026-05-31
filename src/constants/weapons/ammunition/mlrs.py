@@ -71,20 +71,42 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("RocketArt_thermobaric_220mm_salvolength30", "MLRS", None, False): { # 657
+    ("RocketArt_thermobaric_127mm_salvolength21", "MLRS", None, False): { # CATFAE
+        "Ammunition": {
+            "parent_membr": {
+                "Caliber": ("150kg TNTe", "ITCUAAMSWN"),
+                "ImpactHappening": "'BombeODABRPO'",
+                "TimeBetweenTwoShots": 2.5,
+                "TimeBetweenTwoFx": 2.5,
+                "MaximumRangeGRU": 1400,
+                "DispersionAtMaxRangeGRU": 250,
+                "DispersionAtMinRangeGRU": 175,
+                "PhysicalDamages": 5.0,
+                "SuppressDamages": 250,
+                "RadiusSplashPhysicalDamagesGRU": 110,
+                "RadiusSplashSuppressDamagesGRU": 147,
+                "AimingTime": 15.0,
+                "SimultaneousShotsCount": 1,
+                "PitchForParabolic": 0.9075712, # 52 degrees
+            },
+        },
+    },
+    
+    ("RocketArt_thermobaric_220mm_salvolength30", "MLRS", None, False): { # Buratino
         "Ammunition": {
             "Arme": {
                 "Family": "DamageFamily_thermobarique",
             },
             "parent_membr": {
+                "Caliber": ("250kg TNTe", "NDOAZJCZXQ"),
                 "TraitsToken": ['STAT', 'thermobaric'],
                 "MaximumRangeGRU": 3000,
-                "DispersionAtMaxRangeGRU": 700,
-                "DispersionAtMinRangeGRU": 350,
+                "DispersionAtMaxRangeGRU": 500,
+                "DispersionAtMinRangeGRU": 250,
                 "PhysicalDamages": 10.0,
-                "SuppressDamages": 467,
-                "RadiusSplashPhysicalDamagesGRU": 220,
-                "RadiusSplashSuppressDamagesGRU": 293,
+                "SuppressDamages": 300,
+                "RadiusSplashPhysicalDamagesGRU": 160,
+                "RadiusSplashSuppressDamagesGRU": 213,
                 "TimeBetweenTwoSalvos": 240.0,
                 "SupplyCost": 2100.0,
                 # "FlightTimeForSpeed": 7.0,
@@ -108,7 +130,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "PhysicalDamages": 1,
                 "RadiusSplashSuppressDamagesGRU": 333,
                 "SuppressDamages": 250,
-                "DispersionAtMaxRangeGRU": 1500,
+                "DispersionAtMaxRangeGRU": 1000,
                 "DispersionAtMinRangeGRU": 500,
                 "ProjectileSpeedGRU": 750.0,
                 "AimingTime": 18.0,

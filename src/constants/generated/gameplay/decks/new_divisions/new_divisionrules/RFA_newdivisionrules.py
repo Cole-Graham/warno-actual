@@ -170,7 +170,7 @@ RFA_armored_newdivisionrules = {
         ("Gepard_1A2_RFA", 2, [6, 4, 0, 0]),
         ("Marder_Roland_2_RFA", 2, [6, 4, 0, 0]),
         ("Marder_Roland_RFA", 2, [4, 3, 0, 0]),
-        ("DCA_I_Hawk_RFA", 1, [6, 4, 0, 0], ["Unimog_S_404_RFA"]),
+        ("DCA_I_Hawk_RFA", 1, [6, 4, 0, 0], ["Unimog_S_404_supply_trans_RFA"]),
     ],
     "heli": [
         ("Bo_105_PAH_1A1_RFA", 2, [0, 0, 4, 3]),
@@ -200,10 +200,10 @@ RFA_global_newdivisionrules = {
         ("Tornado_IDS_CLUS_RFA", 1, [0, 2, 0, 0]),
         ("Tornado_IDS_HE1_RFA", 1, [0, 2, 0, 0]),
         ("Tornado_IDS_SEAD_RFA", 1, [0, 2, 0, 1]),
-        ("Alpha_Jet_A_clu_RFA", 1, [0, 4, 0, 0]),
-        ("Alpha_Jet_A_he_RFA", 1, [0, 4, 0, 0]),
+        ("Alpha_Jet_A_clu_RFA", 1, [0, 6, 0, 0]),
+        ("Alpha_Jet_A_he_RFA", 1, [0, 6, 0, 0]),
         ("Alpha_Jet_A_nplm_RFA", 1, [0, 6, 0, 0]),
-        ("Alpha_Jet_A_rkt_RFA", 1, [0, 5, 0, 0]),
+        ("Alpha_Jet_A_rkt_RFA", 1, [0, 6, 0, 0]),
         ("Alpha_Jet_A_KWS_RFA", 1, [0, 3, 2, 0]),
     ],
 }
@@ -303,7 +303,7 @@ RFA_mechanized_newdivisionrules = {
         ("Gepard_1A2_RFA", 2, [6, 4, 0, 0]),
         ("Marder_Roland_2_RFA", 2, [4, 3, 0, 0]),
         ("Marder_Roland_RFA", 1, [4, 3, 0, 0]),
-        ("DCA_I_Hawk_RFA", 2, [4, 3, 0, 0], ["Unimog_S_404_RFA"]),
+        ("DCA_I_Hawk_RFA", 2, [4, 3, 0, 0], ["Unimog_S_404_supply_trans_RFA"]),
     ],
     "heli": [
         ("Bo_105_PAH_1A1_RFA", 1, [0, 0, 4, 3]),
@@ -311,9 +311,9 @@ RFA_mechanized_newdivisionrules = {
     ],
     "planes": [
         ("F4F_KWS_AA_RFA", 1, [0, 2, 0, 1]),
-        ("G91_R3_Gina_HE_RFA", 1, [0, 5, 0, 0]),
+        ("G91_R3_Gina_HE_RFA", 1, [0, 6, 0, 0]),
         ("G91_R3_Gina_NPL_RFA", 1, [0, 6, 0, 0]),
-        ("G91_R3_Gina_RKT_RFA", 1, [0, 5, 0, 0]),
+        ("G91_R3_Gina_RKT_RFA", 1, [0, 6, 0, 0]),
     ],
 }
 
@@ -400,7 +400,7 @@ RFA_motorized_newdivisionrules = {
         ("Unimog_S_404_FK20_RFA", 2, [10, 7, 0, 0]),
         ("Gepard_1A2_RFA", 2, [6, 4, 0, 0]),
         ("MAN_Kat_8x8_Roland_RFA", 2, [4, 3, 0, 0]),
-        #("DCA_I_Hawk_RFA", 2, [4, 3, 0, 0], ["Unimog_S_404_RFA"]),
+        #("DCA_I_Hawk_RFA", 2, [4, 3, 0, 0], ["Unimog_S_404_supply_trans_RFA"]),
     ],
     "heli": [
         ("Bo_105_PAH_1A1_RFA", 2, [0, 0, 4, 3]),

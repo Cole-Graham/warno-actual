@@ -697,6 +697,12 @@ pol_unit_edits = {
         "IdentifiedTextures": ["Texture_RTS_H_Infantry", "Texture_Infantry"],
         "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
         "UnitRole": "infantry",
+        "capacities": {
+            "remove_capacities": [
+                "Choc",
+                "Choc_feedback",
+            ],
+        },
         "SpecialtiesList": {
             "overwrite_all": [
                 'leader_sov',
@@ -721,6 +727,7 @@ pol_unit_edits = {
                 "RocketInf_RPG76_Komar": 9,
             },
         },
+        "DeploymentShift": 1750,
         "remove_zone_capture": None,
     },
 
@@ -1194,7 +1201,7 @@ pol_unit_edits = {
         # RPG-7VM x6
     },
     
-    "Naval_Rifle_POL": {  # Nibesky Bertey
+    "Naval_Rifle_POL": {  # Niebeskie Berety
         "CommandPoints": 40,
         "availability": [10, 7, 0, 0],
         "armor": "Infantry_armor_reference",
@@ -1202,12 +1209,16 @@ pol_unit_edits = {
         "SpecialtiesList": {
             "overwrite_all": [
                 "_resolute",
-                "infantry_equip_medium"
+                "infantry_equip_medium",
             ],
         },
         "capacities": {
-            "remove_capacities": ["choc"],
+            "remove_capacities": [
+                "Choc",
+                "Choc_feedback",
+            ],
         },
+        "DeploymentShift": 1750,
         # 10x kbk AKM
         # 2x PKM
         # RPG-7VM x6
@@ -2197,12 +2208,12 @@ pol_unit_edits = {
     "T54B_POL": {  # T-54B
         "CommandPoints": 70,
         "availability": [10, 7, 0, 0],
-         "SpecialtiesList": {
+        "SpecialtiesList": {
             "overwrite_all": [
             ],
         },
-         "capacities": {
-            "remove_capacities": [],
+        "capacities": {
+            "remove_capacities": ["resolute"],
         },
         "ButtonTexture": "T55A_POL", 
         "UpgradeFromUnit": "T54B_CMDactual_POL",
@@ -3259,7 +3270,8 @@ pol_unit_edits = {
         "Divisions": {
             "remove": ["POL_20_Pancerna"],
         },
-        "CommandPoints": 120,
+        "CommandPoints": 130,
+        "ECM": -0.15,
         "availability": [0, 4, 3, 2],
         "GameName": {
             "display": "MiG-21bis [AA2]"
@@ -3267,7 +3279,8 @@ pol_unit_edits = {
     },
     
     "MiG_21bis_POL": {  # 4x R-60M, 2x R-13M - MiG-21bis [AA2]
-        "CommandPoints": 110,
+        "CommandPoints": 120,
+        "ECM": -0.15,
         "availability": [0, 4, 3, 2],
         "GameName": {
             "display": "MiG-21bis [AA]"
@@ -3275,12 +3288,14 @@ pol_unit_edits = {
     },
     
     "MiG_21bis_HE_POL": {  # MiG-21bis [HE]
-        "CommandPoints": 135,
+        "CommandPoints": 145,
+        "ECM": -0.15,
         "availability": [0, 4, 0, 0],
     },
     
     "MiG_21bis_RKT2_POL": {  # 4x S-24 [RKT2]
-        "CommandPoints": 100,
+        "CommandPoints": 110,
+        "ECM": -0.15,
         "availability": [0, 4, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
@@ -3303,7 +3318,24 @@ pol_unit_edits = {
     },
     
     "MiG_21bis_AT_POL": {  # 2x Kh-66, 2x R-13M
-        "CommandPoints": 115,
+        "CommandPoints": 160,
+        "ECM": -0.25,
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 4550.0,
+            },
+        },
+        "WeaponDescriptor": {
+            "turrets": {
+                0: {
+                    "AngleRotationMaxPitch": 1.047198, # 60 degrees
+                    "AngleRotationMinPitch": -1.047198,
+                },
+            },
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
         "availability": [0, 3, 0, 0],
         "UpgradeFromUnit": "MiG_21bis_HE_POL",
     },
@@ -3311,11 +3343,12 @@ pol_unit_edits = {
     "MiG_23MF_AA_POL": {  # MiG-23MF [AA], 2x R-23R, 4x R-60M
         "CommandPoints": 115,
         "availability": [0, 4, 3, 2],
-        "ECM": -0.20,
+        "ECM": -0.15,
     },
     
     "MiG_23MF_AA2_POL": {  # MiG-23MF [AA2], 2x R-3R, 2x R-13M
         "CommandPoints": 110,
+        "ECM": -0.15,
         "availability": [0, 4, 3, 2],
         "Divisions": {
             "add": ["POL_20_Pancerna"],
@@ -3329,13 +3362,16 @@ pol_unit_edits = {
         "GameName": {
             "display": "MiG-29A [AA1]",
         },
-        "CommandPoints": 200,
+        "CommandPoints": "MiG_29_AA_DDR",
         "Divisions": {
             "default": {
                 "cards": 2,
             },
         },
-        "availability": [0, 2, 0, 1],
+        "SpecialtiesList": {
+            "add_specs": ["'_hmd'"],
+        },
+        "availability": [0, 3, 2, 0],
     },
 
     "MiG_29_AA2_POL": {  # 6x R-73 [AA]
@@ -3343,66 +3379,89 @@ pol_unit_edits = {
             "display": "MiG-29A [AA2]",
         },
         "CommandPoints": 165,
+        "SpecialtiesList": {
+            "add_specs": ["'_hmd'"],
+        },
         "availability": [0, 3, 2, 0],
     },
     
     "Su_7BKL_RKT_POL": {
-        "CommandPoints": 115,
+        "CommandPoints": 110,
+        "ECM": -0.05,
         "availability": [0, 3, 0, 0],
     },
 
     "Su_7BKL_EW_POL": {
         "CommandPoints": 130,
-        "availability": [0, 4, 0, 0],
+        "ECM": -0.25,
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
+        "availability": [0, 3, 0, 0],
     },
 
     "Su_7BKL_HE_POL": {
-        "CommandPoints": 175,
+        "CommandPoints": 185,
+        "ECM": -0.15,
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
         "availability": [0, 3, 0, 0],
     },
 
     "Su_7BKL_NPLM_POL": {
         "CommandPoints": 175,
-        "availability": [0, 3, 0, 0],
+        "ECM": -0.05,
+        "availability": [0, 4, 0, 0],
     },
     
     "Su_17_cluster_POL": { # Su-20 [CLU] - 6x RBK-500
-        "CommandPoints": 180,
+        "CommandPoints": 190,
+        "ECM": -0.15,
         "availability": [0, 2, 0, 0],
     },
     
-    "Su_22_POL": {
-        "CommandPoints": 215,
+    "Su_22_POL": { # Su-22M4 [HE]
+        "CommandPoints": "Su_22_DDR",
+        "ECM": -0.30,
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
         "availability": [0, 2, 0, 0],
     },
 
     "Su_22_nplm_POL": {  # 4x ZB-500, 2x R-60M
-        "CommandPoints": 215,
+        "CommandPoints": 190,
+        "ECM": -0.20,
         "availability": [0, 3, 0, 0],
     },
     
     "Su_22_clu_POL": {  # 4x RBK-250, 2x R-60M
-        "CommandPoints": 205,
+        "CommandPoints": "Su_22_nplm_DDR",
+        "ECM": -0.20,
         "availability": [0, 2, 0, 0],
     },
     
     "Su_22_AT_POL": {  # Su-22M4 Seria 30
         "CommandPoints": "Su_22_AT_SOV",
+        "ECM": "Su_22_AT_SOV",
         "availability": [0, 2, 0, 1],
         "WeaponDescriptor": {
-            "Salves": {
-                "AGM_Kh29T": 1,
-            },
+            "Salves": "Su_22_AT_SOV",
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
         },
     },
     
     "Su_22_RKT_POL": {  # 4x S-24, 2x R-60M
-        "CommandPoints": 125,
+        "CommandPoints": 115,
         "Divisions": {
             "default": {
                 "cards": 1,
             },
         },
+        "ECM": -0.20,
         "availability": [0, 3, 2, 0],
         "WeaponDescriptor": {
             "Salves": {
@@ -3424,11 +3483,12 @@ pol_unit_edits = {
     },
 
     "Su_22_RKT2_POL": {  # 80x S-8, 2x R-60M
-        "CommandPoints": 125,
-        "availability": [0, 3, 2, 0],
+        "CommandPoints": 115,
         "GameName": {
             "display": "SU-22M4 [RKT2]",
         },
+        "ECM": -0.20,
+        "availability": [0, 3, 2, 0],
         "WeaponDescriptor": {
             "Salves": {
                 "RocketAir_B8_80mm_salvolength40": 2,
@@ -3447,10 +3507,23 @@ pol_unit_edits = {
     
     "Su_22_RKT3_POL": {  # 4x S-25O
         "CommandPoints": 140,
+        "ECM": -0.30,
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
+        },
     },
     
     "Su_22_SEAD_POL": {  # Su-22M4P [SEAD]
         "CommandPoints": 180,
+        "ECM": -0.40,
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 10000.0,
+            },
+            "OpticalStrengths": {
+                "EOpticalStrength/AntiRadar": 175000.0,
+            },
+        },
         "WeaponDescriptor": {
             "turrets": {
                 1: {
@@ -3459,6 +3532,9 @@ pol_unit_edits = {
                     "AngleRotationMinPitch": -0.8726646,
                 },
             },
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'_jammer_air'"],
         },
         "availability": [0, 3, 0, 2],
         "Divisions": {

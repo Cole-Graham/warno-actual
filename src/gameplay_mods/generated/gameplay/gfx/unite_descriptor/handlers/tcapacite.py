@@ -1,5 +1,42 @@
 """Edit TCapaciteModuleDescriptor for existing and new units"""
 
+from src.utils.ndf_utils import strip_quotes
+
+
+_CHOC_RELATED_CAPACITIES = (
+    "Choc",
+    "Choc_feedback",
+    "Choc_Move",
+    "Choc_Move_ok",
+    "no_Choc_Move",
+    "Choc_Move_cooldown",
+)
+
+
+def _normalize_specialty_tag(spec: str) -> str:
+    return spec if spec.startswith("'") else f"'{spec}'"
+
+
+def _specialties_from_edits(edit_type, edits) -> list[str]:
+    """Return specialty tags from edits, normalized to quoted NDF form."""
+    if edit_type != "unit_edits":
+        raw = edits.get("SpecialtiesList", [])
+    else:
+        specialties_edits = edits.get("SpecialtiesList", {})
+        if "overwrite_all" in specialties_edits:
+            raw = specialties_edits["overwrite_all"]
+        else:
+            raw = specialties_edits.get("add_specs", [])
+    return [_normalize_specialty_tag(spec) for spec in raw]
+
+
+def _capacities_to_remove(edits) -> set[str]:
+    requested = set(edits.get("capacities", {}).get("remove_capacities", []))
+    if "Choc" in requested:
+        requested.update(_CHOC_RELATED_CAPACITIES)
+    return requested
+
+
 def handle_capacite_module(
     logger,
     game_db,
@@ -55,6 +92,7 @@ def _add_capacite_module(
     """Add a TCapaciteModuleDescriptor to a unit"""
     
     capacities_to_add = edits.get("capacities", {}).get("add_capacities", [])
+    removed_capacities = _capacities_to_remove(edits)
     
     skills_to_add = {
         "skills": {
@@ -83,26 +121,25 @@ def _add_capacite_module(
     for condition_type, condition in skills_to_add.items():
         if condition_type == "skills":
             for skill, capacities in condition.items():
+                if skill in removed_capacities:
+                    continue
                 if unit_data == None or not skill in unit_data.get("skills", []):
                     continue
                 
                 for capacity in capacities:
+                    if capacity in removed_capacities:
+                        continue
                     capacities_to_add.append(capacity)
         elif condition_type == "specialties":
             for specialty, capacities in condition.items():
                 
-                # Check if specialty is in database or being added in unit edits
-                if unit_data == None or not specialty in unit_data.get("specialties", []):
-                    specialty_in_database = False
-                else:
-                    specialty_in_database = True
-                
-                if edit_type == "unit_edits":
-                    specialties_to_add = edits.get("SpecialtiesList", {}).get("add_specs", [])
-                else:
-                    specialties_to_add = edits.get("SpecialtiesList", [])
-                
-                if not specialty_in_database and not specialty in specialties_to_add:
+                specialty_in_database = (
+                    unit_data is not None
+                    and strip_quotes(specialty) in unit_data.get("specialties", [])
+                )
+                specialties_to_add = _specialties_from_edits(edit_type, edits)
+
+                if not specialty_in_database and specialty not in specialties_to_add:
                     continue
                 
                 # If so, add relevant capacities
@@ -129,6 +166,7 @@ def _add_capacite_module(
 
 def _add_capacities(logger, unit_data, edit_type, unit_name, edits, default_skill_list) -> None:
     """Add shock sprint capacities to a unit"""
+    removed_capacities = _capacities_to_remove(edits)
     
     skills_to_add = {
         "skills": {
@@ -156,10 +194,14 @@ def _add_capacities(logger, unit_data, edit_type, unit_name, edits, default_skil
         # Skills in database condition
         if condition_type == "skills":
             for skill, capacities in condition.items():
+                if skill in removed_capacities:
+                    continue
                 if unit_data == None or not skill in unit_data.get("skills", []):
                     continue
                 
                 for capacity in capacities:
+                    if capacity in removed_capacities:
+                        continue
                     duplicate_safety = default_skill_list.v.find_by_cond(
                         lambda x: x.v == capacity, strict=False
                     )
@@ -171,18 +213,13 @@ def _add_capacities(logger, unit_data, edit_type, unit_name, edits, default_skil
         elif condition_type == "specialties":
             for specialty, capacities in condition.items():
                 
-                # Check if specialty is in database or being added in unit edits
-                if unit_data == None or not specialty in unit_data.get("specialties", []):
-                    specialty_in_database = False
-                else:
-                    specialty_in_database = True
-                
-                if edit_type == "unit_edits":
-                    specialties_to_add = edits.get("SpecialtiesList", {}).get("add_specs", [])
-                else:
-                    specialties_to_add = edits.get("SpecialtiesList", [])
-                
-                if not specialty_in_database and not specialty in specialties_to_add:
+                specialty_in_database = (
+                    unit_data is not None
+                    and strip_quotes(specialty) in unit_data.get("specialties", [])
+                )
+                specialties_to_add = _specialties_from_edits(edit_type, edits)
+
+                if not specialty_in_database and specialty not in specialties_to_add:
                     continue
                 
                 # If so, add relevant capacities
@@ -204,7 +241,7 @@ def _add_capacities(logger, unit_data, edit_type, unit_name, edits, default_skil
 def _remove_capacities(logger, unit_data, edit_type, unit_name, edits, default_skill_list) -> None:
     """Remove capacities from a unit"""
     
-    capacities_to_remove = edits.get("capacities", {}).get("remove_capacities", [])
+    capacities_to_remove = _capacities_to_remove(edits)
     indices_to_remove = []
     for capacity in default_skill_list.v:
         capacity_name = capacity.v.split("$/GFX/EffectCapacity/Capacite_")[1]

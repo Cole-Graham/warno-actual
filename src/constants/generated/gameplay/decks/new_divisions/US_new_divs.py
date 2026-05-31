@@ -126,7 +126,9 @@ us_new_divs = {
             "ATteam_TOW2_USMC_US",
             "MANPAD_Stinger_C_US",
         ],
-        "transport_overrides": {},
+        "transport_overrides": {
+            "Rifles_half_CMD2_US": ["M998_Humvee_HMG_US", "AAVP_7A1_USMC_US", "UH1N_TwinHuey_US", "UH1N_TwinHuey_RKT_US", "CH47_Chinook_US"],
+        },
     },
     "US_airborne_mechanized": {
         "division_id": 5005,
@@ -314,7 +316,7 @@ us_new_divs = {
             "HMGteam_M2HB_US",
             "HMGteam_Mk19_US",
             "ATteam_TOW2_US",
-            "M110A2_USMC_US",
+            "M110A2_HOWZ_US",
             "M60A1_RISE_Passive_CMD_US",
             "MANPAD_Stinger_C_US",
             "DCA_I_Hawk_US",

@@ -5,8 +5,8 @@ from typing import Dict, List
 HE_BOMB_DAMAGE_BY_WEIGHT: Dict[str, Dict[str, int]] = {
     "he_100kg": {
         "PhysicalDamages": 5,
-        "RadiusSplashPhysicalDamagesGRU": 58,
-        "RadiusSplashSuppressDamagesGRU": 77,
+        "RadiusSplashPhysicalDamagesGRU": 80,
+        "RadiusSplashSuppressDamagesGRU": 107,
     },
     "he_250kg": {
         "PhysicalDamages": 10,

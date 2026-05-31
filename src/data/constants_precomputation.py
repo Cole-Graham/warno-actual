@@ -26,6 +26,7 @@ from src.utils.config_utils import get_mod_src_path
 from src.utils.database_utils import ensure_db_directory
 from src.utils.logging_utils import setup_logger
 
+from .aircraft_vision_validation import validate_aircraft_vision_vs_weapon_range
 from .deck_pack_mappings import build_deck_pack_mappings
 from .insert_turret_templates import (
     build_insert_turret_templates,
@@ -174,6 +175,13 @@ def build_constants_precomputation_data(config: Dict[str, Any], game_db: Dict[st
                 logger.warning(
                     "UI texture validation found errors - see above. "
                     "Fix textures in unit_edits / NEW_UNITS or rebuild ui_texture_reference from vanilla.",
+                )
+
+            aircraft_vision_failed = validate_aircraft_vision_vs_weapon_range(game_db)
+            if aircraft_vision_failed:
+                logger.warning(
+                    "Aircraft vision validation found errors - see above. "
+                    "Raise EVisionRange/Standard or reduce weapon MaximumRangeGRU.",
                 )
 
         # Build protected ammo set for blanket deployment-time disable
