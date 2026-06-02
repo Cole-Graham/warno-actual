@@ -13,7 +13,7 @@ SPRINT_CAPACITY = (
     '    CanBeCastFromTransport  = False'
     '    TargetEffect         = nil'
     '    SelfEffect           = ~/UnitEffect_Sprint'
-    '    EffectDuration   = 15.00'
+    '    CapacityDuration   = 15.00'
     '    TargetInBuilding       = False'
     '    TargetInTransport      = False'
     '    TargetInSelf           = True'
@@ -45,7 +45,7 @@ SPRINT_ACTIVATED_CAPACITY = (
     '    CanBeCastFromTransport  = False'
     '    TargetEffect         = nil'
     '    SelfEffect       = ~/UnitEffect_Sprint_Activated'
-    '    EffectDuration   = 45.00'
+    '    CapacityDuration   = 45.00'
     '    TargetInBuilding       = False'
     '    TargetInTransport      = False'
     '    TargetInSelf           = True'
@@ -77,7 +77,7 @@ SPRINT_BEGIN_COOLDOWN_CAPACITY = (
     '    CanBeCastFromTransport  = False'
     '    TargetEffect         = nil'
     '    SelfEffect       = ~/UnitEffect_NoSprint'
-    '    EffectDuration   = 30.00'
+    '    CapacityDuration   = 30.00'
     '    TargetInBuilding       = True'
     '    TargetInTransport      = True'
     '    TargetInSelf           = True'
@@ -110,7 +110,7 @@ NO_SPRINT_CAPACITY = (
     '    CheckVisibility     = True'
     '    CanBeCastFromTransport  = True'
     '    TargetEffect         = ~/UnitEffect_NoSprint'
-    '    EffectDuration   = -1.00'
+    '    CapacityDuration   = -1.00'
     '    TargetInBuilding       = True'
     '    TargetInTransport      = True'
     '    TargetInSelf           = True'
@@ -143,7 +143,7 @@ SPRINT_OK_CAPACITY = ( # Not used currently
     '    CanBeCastFromTransport = False'
     '    TargetEffect = nil'
     '    SelfEffect = ~/UnitEffect_Sprint_ok'
-    '    EffectDuration = -1.00'
+    '    CapacityDuration = -1.00'
     '    TargetInBuilding = True'
     '    TargetInTransport = True'
     '    TargetInSelf = True'
@@ -211,7 +211,7 @@ SPRINT_CONDITIONS = [
 # Capacite_Sprint is TCapaciteDescriptor
 # {
 #     CastTime = 0.00
-#     EffectDuration = 15.00
+#     CapacityDuration = 15.00
 #     SelfEffect = ~/UnitEffect_Choc_Sprint (sprint movement buff for infantry)
 #     Conditions = [~/ConditionTagNotRaisedInUnit_NoSprint]
 # }
@@ -219,7 +219,7 @@ SPRINT_CONDITIONS = [
 # Capacite_Sprint_Activated is TCapaciteDescriptor
 # {
 #     CastTime = 0.00
-#     EffectDuration = 60.00
+#     CapacityDuration = 60.00
 #     SelfEffect = ~/UnitEffect_Sprint_Active (raises "SprintActivated" tag)
 #     Conditions = [~/ConditionTagNotRaisedInUnit_NoSprint]
 # } 
@@ -227,7 +227,7 @@ SPRINT_CONDITIONS = [
 # Capacite_Sprint_BeginCooldown is TCapaciteDescriptor
 # {
 #      CastTime = 15.00
-#      EffectDuration = 45.00
+#      CapacityDuration = 45.00
 #      SelfEffect = ~/UnitEffect_SprintBeginCooldown (raises "SprintBeginCooldown" tag)
 #      Conditions = [~/ConditionTagRaisedInUnit_SprintActivated]
 # }
@@ -235,7 +235,7 @@ SPRINT_CONDITIONS = [
 # Capacite_Sprint_Cooldown is TCapaciteDescriptor
 # {
 #     CastTime = 0.00
-#     EffectDuration = 45.00
+#     CapacityDuration = 45.00
 #     SelfEffect = ~/UnitEffect_Choc_No_Sprint (raises "NoSprint" tag to block sprint ability for 45 seconds)
 #     Conditions = [~ConditionTagRaisedInUnit_SprintBeginCoolDown]
 # }   

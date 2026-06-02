@@ -1310,7 +1310,7 @@ uk_unit_edits = {
                 "Vehicule",
             ],
         },
-        "Factory": "EFactory/Art",
+        "Factory": "Factory/Art",
         "IdentifiedTextures": ["Texture_RTS_H_appui", "Texture_appui"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "UnitRole": "_leader",
@@ -2005,7 +2005,7 @@ uk_unit_edits = {
                 "Vehicule_Reco",
             ],
         },
-        "Factory": "EFactory/Recons",
+        "Factory": "Factory/Recons",
         "stealth": 1.5,
         "optics": {
             "VisionRangesGRU": {
@@ -2060,7 +2060,7 @@ uk_unit_edits = {
                 "Unite",
             ],
         },
-        "Factory": "EFactory/Recons",
+        "Factory": "Factory/Recons",
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 3500,

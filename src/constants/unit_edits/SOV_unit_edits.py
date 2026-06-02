@@ -2508,7 +2508,7 @@ sov_unit_edits = {
                 "Vehicule",
             ],
         },
-        "Factory": "EFactory/Art",
+        "Factory": "Factory/Art",
         "IdentifiedTextures": ["Texture_RTS_H_appui", "Texture_appui"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "UnitRole": "leader_sov",
@@ -4873,7 +4873,7 @@ sov_unit_edits = {
     
     "DCA_ZU_23_2_nonPara_SOV": {
         "CommandPoints": 20,
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
         
@@ -4891,7 +4891,7 @@ sov_unit_edits = {
     
     "DCA_ZU_23_2_Naval_SOV": {
         "CommandPoints": 20,
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
         
@@ -4909,7 +4909,7 @@ sov_unit_edits = {
 
     "DCA_ZU_23_2_TTsko_SOV": {
         "CommandPoints": 20,
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "Divisions": {
             "add": ["SOV_119IndTkBrig"],
             "is_transported": True,
@@ -4941,7 +4941,7 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "availability": [0, 10, 7, 0],
         "max_speed": 6,
         
@@ -6067,25 +6067,27 @@ sov_unit_edits = {
     "MiG_27M_rkt_SOV": {
         "CommandPoints": 140,
         "availability": [0, 3, 2, 0],
-        "WeaponDescriptor": {
-            "Salves": {
-                "RocketAir_B8_80mm_salvolength40": 1,
-            },
-            "equipmentchanges": {
-                "replace": {
-                    "RocketAir_B8_80mm_avion_salvolength10": {
-                        "new_weapon": "RocketAir_B8_80mm_salvolength40",
-                        "swap_fire_effect": False,
-                        "depiction_baked_in": False,
-                    },
-                    "RocketAir_B8_80mm_avion_salvolength10": {
-                        "new_weapon": "RocketAir_B8_80mm_salvolength40",
-                        "swap_fire_effect": False,
-                        "depiction_baked_in": False,
-                    },
-                },
-            },
-        },
+        # "WeaponDescriptor": {
+        #     "Salves": {
+        #         "RocketAir_B8_80mm_salvolength40": 1,
+        #     },
+        #     "equipmentchanges": {
+        #         "replace": {
+        #             "RocketAir_B8_80mm_avion_salvolength10": [
+        #                 {
+        #                     "new_weapon": "RocketAir_B8_80mm_salvolength40",
+        #                     "swap_fire_effect": False,
+        #                     "depiction_baked_in": False,
+        #                 },
+        #                 {
+        #                     "new_weapon": "RocketAir_B8_80mm_salvolength40",
+        #                     "swap_fire_effect": False,
+        #                     "depiction_baked_in": False,
+        #                 },
+        #             ],
+        #         },
+        #     },
+        # },
     },
 
     "MiG_29_9_13_SOV": {  # 2x R-27R, 4x R-73

@@ -6,7 +6,7 @@ pol_unit_edits = {
     # POL LOG
     "DCA_ZU_23_2_POL": {  # ZU-23-2
         "CommandPoints": 20,
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "Divisions": {
             "default": {
                 "Transports": ["MTLB_trans_POL"],
@@ -39,7 +39,7 @@ pol_unit_edits = {
         "GameName": {
             "display": "SPADO. ZU-23-2",
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "Divisions": {
             "default": {
                 "Transports": ["MTLB_trans_POL"],
@@ -1601,7 +1601,7 @@ pol_unit_edits = {
                 "Vehicule",
             ],
         },
-        "Factory": "EFactory/Art",
+        "Factory": "Factory/Art",
         "IdentifiedTextures": ["Texture_RTS_H_appui", "Texture_appui"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "UnitRole": "leader_sov",
@@ -2149,7 +2149,7 @@ pol_unit_edits = {
                 "EOpticalStrength/HighAltitude": 1413,
             },
         },
-        "Factory": "EFactory/Recons",
+        "Factory": "Factory/Recons",
         "IdentifiedTextures": ["Texture_RTS_H_reco", "Texture_reco"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "MenuIconTexture": "Texture_RTS_H_reco",
@@ -2810,7 +2810,7 @@ pol_unit_edits = {
         },
         "IdentifiedTextures": ["Texture_RTS_H_RECO_hel", "Texture_RECO_hel"],
         "UnidentifiedTextures": ["Texture_RTS_H_hel_nonIdentifie", "Texture_hel_nonIdentifie"],
-        "Factory": "EFactory/Recons",
+        "Factory": "Factory/Recons",
         "UpgradeFromUnit": "W3RR_Procjon_POL",
         "UnitRole": "reco",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Reco_Hel",

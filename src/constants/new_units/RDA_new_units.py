@@ -29,7 +29,7 @@ RDA_NEW_UNITS = {
         "TransportedTexture": "UseInGame_Transport_REGINF",
         "TransportedSoldier": "KdA_DDR_TargetDummy",
         "armor": "Infantry_armor_reference",
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "CommandPoints": 5,
         "UnitRole": 'infantry',
         "SpecialtiesList": [
@@ -105,7 +105,7 @@ RDA_NEW_UNITS = {
         "TransportedTexture": "UseInGame_Transport_COMMAND",
         "TransportedSoldier": "MotRifles_CMD_DDR",
         "armor": "Infantry_armor_reference",
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "CommandPoints": 145,
         "UnitRole": 'hq_inf',
         "SpecialtiesList": [
@@ -170,7 +170,7 @@ RDA_NEW_UNITS = {
                 "Vehicule_CMD",
             ],
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "CommandPoints": 145,
         "UnitRole": 'hq_veh',
         "SpecialtiesList": [
@@ -316,7 +316,7 @@ RDA_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "CommandPoints": 205,
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
@@ -369,7 +369,7 @@ RDA_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "CommandPoints": 205,
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
@@ -430,7 +430,7 @@ RDA_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "CommandPoints": 255,
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
@@ -476,7 +476,7 @@ RDA_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "CommandPoints": 290,
         "armor": {
             "top": (2, None),
@@ -546,7 +546,7 @@ RDA_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "CommandPoints": 310,
         "armor": {
             "top": (3, None),
@@ -1000,7 +1000,7 @@ RDA_NEW_UNITS = {
                 "Vehicule_faible"
             ],
         },
-        "Factory": "EFactory/Tanks",
+        "Factory": "Factory/Tanks",
         "CommandPoints": 35,
         "UnitRole": 'AT',
         "SpecialtiesList": [
@@ -1363,7 +1363,7 @@ RDA_NEW_UNITS = {
                 "EOpticalStrength/HighAltitude": 1413,
             },
         },
-        "Factory": "EFactory/Recons",
+        "Factory": "Factory/Recons",
         "IdentifiedTextures": ["Texture_RTS_H_reco", "Texture_reco"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "MenuIconTexture": "Texture_RTS_H_reco",

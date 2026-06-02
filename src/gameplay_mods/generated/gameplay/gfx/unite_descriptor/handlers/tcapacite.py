@@ -171,9 +171,10 @@ def _add_capacities(logger, unit_data, edit_type, unit_name, edits, default_skil
     skills_to_add = {
         "skills": {
             "Choc": [
-                "$/GFX/EffectCapacity/Capacite_Choc_Move",
-                # "$/GFX/EffectCapacity/Capacite_Choc_Move_ok",
-                "$/GFX/EffectCapacity/Capacite_no_Choc_Move",
+                "$/GFX/EffectCapacity/Capacite_Sprint",
+                "$/GFX/EffectCapacity/Capacite_Sprint_Activated",
+                "$/GFX/EffectCapacity/Capacite_Sprint_BeginCooldown",
+                "$/GFX/EffectCapacity/Capacite_NoSprint",
             ],
         },
         "specialties": {
@@ -182,10 +183,10 @@ def _add_capacities(logger, unit_data, edit_type, unit_name, edits, default_skil
                 "$/GFX/EffectCapacity/Capacite_no_Swift",
             ],
             "'infantry_equip_medium'": [
-                "$/GFX/EffectCapacity/Capacite_Medium_Cohesion_Loss",
+                "$/GFX/EffectCapacity/Capacite_Medium_Equip_Penalty",
             ],
             "'infantry_equip_heavy'": [
-                "$/GFX/EffectCapacity/Capacite_Medium_Cohesion_Loss",
+                "$/GFX/EffectCapacity/Capacite_Medium_Equip_Penalty",
             ],
         },
     }

@@ -2842,7 +2842,7 @@ usa_unit_edits = {
                 "Vehicule",
             ],
         },
-        "Factory": "EFactory/Art",
+        "Factory": "Factory/Art",
         "IdentifiedTextures": ["Texture_RTS_H_appui", "Texture_appui"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "UnitRole": "_leader",
@@ -4234,20 +4234,20 @@ usa_unit_edits = {
         "CommandPoints": 130,
         "availability": [0, 3, 2, 0],
         "UpgradeFromUnit": "OA10A_US",
-        "WeaponDescriptor": {
-            "Salves": {
-                "RocketAir_Zuni_1272mm_avion_salvolength8": 2,
-            },
-            "equipmentchanges": {
-                "replace": {
-                    "RocketAir_Zuni_1272mm_salvolength4": {
-                        "new_weapon": "RocketAir_Zuni_1272mm_avion_salvolength8",
-                        "swap_fire_effect": False,
-                        "depiction_baked_in": False,
-                    },
-                },
-            },
-        },
+        # "WeaponDescriptor": {
+        #     "Salves": {
+        #         "RocketAir_Zuni_1272mm_avion_salvolength8": 2,
+        #     },
+        #     "equipmentchanges": {
+        #         "replace": {
+        #             "RocketAir_Zuni_1272mm_salvolength4": {
+        #                 "new_weapon": "RocketAir_Zuni_1272mm_avion_salvolength8",
+        #                 "swap_fire_effect": False,
+        #                 "depiction_baked_in": False,
+        #             },
+        #         },
+        #     },
+        # },
         "UpgradeFromUnit": "A37B_Dragonfly_US",
     },
     
@@ -4932,7 +4932,7 @@ usa_unit_edits = {
         "TagSet": {
             "add_tags": ['"AA_radar"'],
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "availability": [12, 9, 0, 0],
         "max_speed": 6,
         
@@ -4988,7 +4988,7 @@ usa_unit_edits = {
         "TagSet": {
             "add_tags": ['"AA_radar"'],
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "Divisions": {
             "default": {
                 "Transports": ["M113A3_US"],
@@ -5486,8 +5486,8 @@ usa_unit_edits = {
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": {
-                    "RocketAir_Zuni_1272mm_salvolength8": {
-                        "new_weapon": "RocketAir_Zuni_1272mm_avion_salvolength8",
+                    "RocketAir_Zuni_1272mm_salvolength16": {
+                        "new_weapon": "RocketAir_Zuni_1272mm_avion_salvolength16",
                         "swap_fire_effect": False,
                         "depiction_baked_in": False,
                     },
@@ -5593,15 +5593,15 @@ usa_unit_edits = {
         "ECM": -0.25,
         "availability": [0, 3, 2, 0],
         "WeaponDescriptor": {
-            "equipmentchanges": {
-                "replace": {
-                    "RocketAir_Hydra_70mm_x38_avion": {
-                        "new_weapon": "RocketAir_Hydra_70mm_x114_avion",
-                        "swap_fire_effect": False,
-                        "depiction_baked_in": False,
-                    },
-                },
-            },
+            # "equipmentchanges": {
+            #     "replace": {
+            #         "RocketAir_Hydra_70mm_x114_avion": {
+            #             "new_weapon": "RocketAir_Hydra_70mm_x114_avion",
+            #             "swap_fire_effect": False,
+            #             "depiction_baked_in": False,
+            #         },
+            #     },
+            # },
             "turrets": {
                 2: {
                     "MountedWeapons": {

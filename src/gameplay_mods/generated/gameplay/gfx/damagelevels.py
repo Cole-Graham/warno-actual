@@ -26,10 +26,11 @@ def edit_gen_gp_gfx_damagelevels(source_path) -> None:
         if value.v == "0":
             effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_NoSprint_Morale")
             effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_Ajoute_Tag_Swift_ok")
-            effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_Cohesion_Loss_ok")
+            # effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_Cohesion_Loss_ok")
 
         elif value.v == "0.1":
-            effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_Cohesion_Loss_ok")
+            pass
+            # effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_Cohesion_Loss_ok")
 
         elif value.v == "0.25":
             pass
@@ -56,7 +57,7 @@ def edit_gen_gp_gfx_damagelevels(source_path) -> None:
         f'    ['
         f'        $/GFX/EffectCapacity/UnitEffect_GroundUnit_Cohesion_High,'
         f'        $/GFX/EffectCapacity/UnitEffect_Ajoute_Tag_Swift_ok,'
-        f'        $/GFX/EffectCapacity/UnitEffect_Cohesion_Loss_ok,'
+        # f'        $/GFX/EffectCapacity/UnitEffect_Cohesion_Loss_ok,'
         f'    ]'
         f')'
     )

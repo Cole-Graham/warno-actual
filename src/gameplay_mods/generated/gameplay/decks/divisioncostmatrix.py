@@ -69,7 +69,7 @@ def _apply_default_cost_multiplier(source: Any, matrix_names: list) -> None:
                 factory_key = matrix_row.k
                 card_cost_list = matrix_row.v
                 for card_cost in card_cost_list:
-                    if factory_key == "EFactory/Logistic":
+                    if factory_key == "Factory/Logistic":
                         card_cost.v = "2"
                     else:
                         card_cost.v = str(int(card_cost.v) * 2)
@@ -88,16 +88,16 @@ def _create_matrix_string(matrix_name: str, matrix_data: dict) -> str:
     # Build the matrix entries
     entries = []
     # Always include Defense as empty list
-    if "EFactory/Defense" in matrix_data:
-        defense_costs = matrix_data["EFactory/Defense"]
+    if "Factory/Defense" in matrix_data:
+        defense_costs = matrix_data["Factory/Defense"]
         defense_str = "[" + ", ".join(str(c) for c in defense_costs) + "]"
-        entries.append(f"    (EFactory/Defense, {defense_str}),")
+        entries.append(f"    (Factory/Defense, {defense_str}),")
     else:
-        entries.append("    (EFactory/Defense, []),")
+        entries.append("    (Factory/Defense, []),")
     
     # Add entries for each factory in the matrix data
     for factory, costs in matrix_data.items():
-        if factory == "EFactory/Defense":
+        if factory == "Factory/Defense":
             continue  # Already added above
         cost_str = "[" + ", ".join(str(c) for c in costs) + "]"
         entries.append(f"    ({factory}, {cost_str}),")
@@ -172,7 +172,7 @@ def _create_national_division_matrices(source: Any, existing_matrix_names: list)
         spec_matrix = spec_matrices[spec_key]
         matrix_data = {k: v for k, v in spec_matrix.items() if k != "total_for_valid"}
 
-        # Apply division-specific matrix overrides (e.g. EFactory/Logistic)
+        # Apply division-specific matrix overrides (e.g. Factory/Logistic)
         if "matrix_overrides" in div_data:
             matrix_data.update(div_data["matrix_overrides"])
             logger.debug(f"Applied matrix_overrides for {div_key}")
@@ -223,13 +223,13 @@ def _create_national_division_matrices(source: Any, existing_matrix_names: list)
                         card_cost_list.add(str(cost_value))
                     
                     updated_factories.add(factory_key)
-                elif factory_key == "EFactory/Defense":
+                elif factory_key == "Factory/Defense":
                     # Ensure Defense is empty
                     card_cost_list = matrix_row.v
                     existing_costs = list(card_cost_list)
                     for cost_obj in reversed(existing_costs):
                         card_cost_list.remove(cost_obj.index)
-                    updated_factories.add("EFactory/Defense")
+                    updated_factories.add("Factory/Defense")
             
             # Add any missing factories (shouldn't happen if donor has all factories, but be safe)
             # Note: This assumes matrix_map has an add method - if not, we'll skip missing factories

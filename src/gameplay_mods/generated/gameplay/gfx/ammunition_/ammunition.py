@@ -427,11 +427,14 @@ def _apply_weapon_edits(
                 new_member = value[1]
                 # Extract member name from "MemberName = Value" format
                 member_name = new_member.split("=")[0].strip()
-                # Check if member already exists before inserting
-                if descr.v.by_m(member_name, False) is None:
+                existing_membr = descr.v.by_m(member_name, False)
+                if existing_membr is None:
                     descr.v.insert(index, new_member)
                 else:
-                    logger.debug(f"Member {member_name} already exists in {descr.n}, skipping insert")
+                    # Member already present (e.g. added by a newer game version):
+                    # update its value so the intended edit still applies.
+                    existing_membr.v = new_member.split("=", 1)[1].strip()
+                    logger.debug(f"Member {member_name} already exists in {descr.n}, updating value")
             elif isinstance(value, (float, int, bool)):
                 membr(key).v = str(value)
             elif isinstance(value, tuple) and key == "Caliber":

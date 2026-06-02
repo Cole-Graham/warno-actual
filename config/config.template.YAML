@@ -4,8 +4,8 @@ build_config:
   target: "gameplay"       # "gameplay" or "ui_only"
   gameplay_version: "?"
   ui_version: "?"
-  author: "?"
-  co-developers: "?"
+  author: "Lateralus"
+  co-developers: "12the12"
 
 # Data configuration
 data_config:

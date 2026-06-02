@@ -50,7 +50,7 @@ us_new_divs = {
             "DCA_M167A2_Vulcan_20mm_US",
         ],
         # "matrix_overrides": {
-        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        #     "Factory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
         # },
         "transport_overrides": {
             "MP_US": ["M1038_Humvee_US"],
@@ -372,7 +372,7 @@ us_new_divs = {
             US_mechanized_newdivisionrules,
         ],
         # "matrix_overrides": {
-        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        #     "Factory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
         # },
     },
     "US_mechanized_motorized": {
@@ -392,7 +392,7 @@ us_new_divs = {
             US_motorized_newdivisionrules,
         ],
         # "matrix_overrides": {
-        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        #     "Factory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
         # },
         "transport_overrides": {
             "MP_US": ["M1038_Humvee_US"],
@@ -423,7 +423,7 @@ us_new_divs = {
             US_global_newdivisionrules,
         ],
         # "matrix_overrides": {
-        #     "EFactory/Logistic": [2, 2, 2, 2, 2, 3, 3, 3, 3],
+        #     "Factory/Logistic": [2, 2, 2, 2, 2, 3, 3, 3, 3],
         # },
     },
 }
