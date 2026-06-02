@@ -10,6 +10,8 @@ scripts/
 src/data/database/constants_precomputation/*.json
 src/data/database/*.json
 .VSCodeCounter/
+sourcemod/
+sourcemod vip/
 *.lnk
 LDR_unit_edits_old.py
 notes
