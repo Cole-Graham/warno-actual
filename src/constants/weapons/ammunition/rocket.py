@@ -49,6 +49,23 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("RocketAir_Zuni_1272mm_avion_salvolength16", "rocket", "RocketAir_Zuni_1272mm_salvolength16", True): { # Zuni's on the German F4F
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2625,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
+                "RadiusSplashPhysicalDamagesGRU": 21,
+                "RadiusSplashSuppressDamagesGRU": 44,
+                "SupplyCost": 192.0,
+            },
+        },
+    },
+    
     ("RocketAir_SNEB_68mm_x18_helo", "rocket", None, False): {
         "Ammunition": {
             "hit_roll": {
@@ -67,7 +84,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("RocketAir_SNEB_68mm_avion_salvolength18", "rocket", "RocketAir_SNEB_68mm_salvolength18", True): {
+    ("RocketAir_SNEB_68mm_avion_salvolength18", "rocket", "RocketAir_SNEB_68mm_x18_helo", True): {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 20,
@@ -327,7 +344,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("RocketAir_Hydra_70mm_x114_avion", "rocket", "RocketAir_Hydra_70mm_x38_avion", True): {
+    ("RocketAir_Hydra_70mm_x114_avion", "rocket", None, False): {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 15,
@@ -349,6 +366,29 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    # ("RocketAir_Hydra_70mm_x114_avion", "rocket", "RocketAir_Hydra_70mm_x38_avion", True): {
+    #     "Ammunition": {
+    #         "hit_roll": {
+    #             "Idling": 15,
+    #             "Moving": 15,
+    #         },
+    #         "parent_membr": {
+    #             "MaximumRangeGRU": 2800,
+    #             "RadiusSplashPhysicalDamagesGRU": 14,
+    #             "RadiusSplashSuppressDamagesGRU": 21,
+    #             "TimeBetweenTwoShots": 0.1,
+    #             "TimeBetweenTwoFx": 0.1,
+    #             "PhysicalDamages": 0.75,
+    #             "SuppressDamages": 75,
+    #             "ShotsCountPerSalvo": 114,
+    #             "SupplyCost": 342.0,
+    #             "NbSalvosShootOnPosition": 1,
+    #             "SimultaneousShotsCount": 6,
+    #             "AffichageMunitionParSalve": 114,
+    #         },
+    #     },
+    # },
 
     ("RocketAir_Hydra_70mm_salvolength19", "rocket", None, False): { # 609
         "Ammunition": {

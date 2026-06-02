@@ -30,7 +30,7 @@ sov_new_divs = {
             SOV_motorized_newdivisionrules,
         ],
         # "matrix_overrides": {
-        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        #     "Factory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
         # },
         "rule_exclusions": [
             # Logistic

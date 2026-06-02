@@ -24,7 +24,7 @@ rda_unit_edits = {
     
     "PT76B_CMD_DDR": { # Too inexpensive to make a LDR., just changing to a CV
         "CommandPoints": 170,
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "SpecialtiesList": {
             "add_specs": ["'leader_sov'",],
             "remove_specs": ["'_leader'"],
@@ -1848,7 +1848,7 @@ rda_unit_edits = {
                 "Vehicule",
             ],
         },
-        "Factory": "EFactory/Art",
+        "Factory": "Factory/Art",
         "IdentifiedTextures": ["Texture_RTS_H_appui", "Texture_appui"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "UnitRole": "leader_sov",
@@ -2489,7 +2489,7 @@ rda_unit_edits = {
                 "EOpticalStrength/HighAltitude": 1413,
             },
         },
-        "Factory": "EFactory/Recons",
+        "Factory": "Factory/Recons",
         "IdentifiedTextures": ["Texture_RTS_H_reco", "Texture_reco"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "MenuIconTexture": "Texture_RTS_H_reco",
@@ -2566,7 +2566,6 @@ rda_unit_edits = {
     # RDA RECON
     "UAZ_469_Reco_DDR": {
         "CommandPoints": 25,
-        "UpgradeFromUnit": "BRDM_1_DDR",
     },
 
     "UAZ_469_AGL_Grenzer_DDR": {
@@ -3098,7 +3097,7 @@ rda_unit_edits = {
                 "cards": 1,
             },
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "availability": [9, 7, 0, 0],
         "max_speed": 6,
         

@@ -38,7 +38,7 @@ RFA_NEW_UNITS = {
         "TransportedTexture": "UseInGame_Transport_COMMAND",
         "TransportedSoldier": "Engineers_CMD_RFA",
         "armor": "Infantry_armor_reference",
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "CommandPoints": 145,
         "SpecialtiesList": [
             '_leader',
@@ -101,7 +101,7 @@ RFA_NEW_UNITS = {
                 "Vehicule_CMD",
             ],
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "CommandPoints": 145,
         "Divisions": {
             "default": {
@@ -149,7 +149,7 @@ RFA_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "CommandPoints": 205,
         "Divisions": {
             "default": {
@@ -194,7 +194,7 @@ RFA_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "CommandPoints": 205,
         "availability": [0, 0, 2, 0],
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
@@ -231,7 +231,7 @@ RFA_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "CommandPoints": 240,
         "availability": [0, 0, 2, 0],
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/QuickMove', 'EOrderType/Attack', 'EOrderType/FastMoveAndAttack',
@@ -268,7 +268,7 @@ RFA_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "CommandPoints": 315,
         "armor": {
             "top": (4, None),
@@ -308,7 +308,7 @@ RFA_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "CommandPoints": 360,
         "armor": {
             "top": (4, None),
@@ -526,7 +526,7 @@ RFA_NEW_UNITS = {
             },
         },
         "UpgradeFromUnit": "TPZ_Fuchs_MILAN_RFA",
-        "Factory": "EFactory/Tanks",
+        "Factory": "Factory/Tanks",
         "CommandPoints": 40,
         "UnitRole": 'transport',
         "SpecialtiesList": [

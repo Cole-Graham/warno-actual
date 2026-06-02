@@ -51,7 +51,7 @@ rfa_unit_edits = {
     
     "DCA_FK20_2_20mm_RFA": {
         "CommandPoints": 20,
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -69,7 +69,7 @@ rfa_unit_edits = {
     
     "DCA_FK20_2_20mm_Zwillinge_RFA": {  # FK-20-2 Zwillinge
         "CommandPoints": 25,
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "Divisions": {
             "default": {
                 "Transports": ["Iltis_trans_RFA"],
@@ -1112,7 +1112,7 @@ rfa_unit_edits = {
                 "Vehicule",
             ],
         },
-        "Factory": "EFactory/Art",
+        "Factory": "Factory/Art",
         "IdentifiedTextures": ["Texture_RTS_H_appui", "Texture_appui"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "UnitRole": "_leader",
@@ -2342,27 +2342,27 @@ rfa_unit_edits = {
         "CommandPoints": 75,
         "max_speed": 720,
         "availability": [0, 6, 0, 0],
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                "replace": {
-                    "RocketAir_SNEB_68mm_salvolength18": [
-                        {
-                            "new_weapon": "RocketAir_SNEB_68mm_salvolength36",
-                            "swap_fire_effect": False,
-                            "depiction_baked_in": False,
-                        },
-                        {
-                            "new_weapon": "RocketAir_SNEB_68mm_salvolength36",
-                            "swap_fire_effect": False,
-                            "depiction_baked_in": False,
-                        },
-                    ],
-                },
-            },
-            "Salves": {
-                "RocketAir_SNEB_68mm_salvolength36": (1, True),
-            },
-        },
+        # "WeaponDescriptor": {
+        #     "equipmentchanges": {
+        #         "replace": {
+        #             "RocketAir_SNEB_68mm_salvolength18": [
+        #                 {
+        #                     "new_weapon": "RocketAir_SNEB_68mm_salvolength36",
+        #                     "swap_fire_effect": False,
+        #                     "depiction_baked_in": False,
+        #                 },
+        #                 {
+        #                     "new_weapon": "RocketAir_SNEB_68mm_salvolength36",
+        #                     "swap_fire_effect": False,
+        #                     "depiction_baked_in": False,
+        #                 },
+        #             ],
+        #         },
+        #     },
+        #     "Salves": {
+        #         "RocketAir_SNEB_68mm_salvolength36": (1, True),
+        #     },
+        # },
     },
 
     "Alpha_Jet_A_KWS_RFA": { # 30% ECM, 2 Mavericks
@@ -2565,7 +2565,7 @@ rfa_unit_edits = {
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": {
-                    "RocketAir_SNEB_68mm_salvolength18": [
+                    "RocketAir_SNEB_68mm_salvolength36": [
                         {
                             "new_weapon": "RocketAir_SNEB_68mm_avion_salvolength18",
                             "swap_fire_effect": False,

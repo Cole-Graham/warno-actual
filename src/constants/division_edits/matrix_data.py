@@ -46,191 +46,191 @@ the vehicle tab for unspec decks)
 # NEW MATRICES DIC IS WIP (we need an actual python dictionary for validation purposes)
 DIVISION_MATRICES = {
     "FR_5e_Blindee_multi": {
-        "EFactory/Art": [2, 2, 4, 4, 4, 5],
-        "EFactory/DCA": [2, 2, 3, 4, 4, 5],
-        "EFactory/Defense": [],
-        "EFactory/Helis": [2, 3, 3, 3],
-        "EFactory/Infantry": [2, 2, 2, 2, 3, 4, 4, 5],
-        "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 3, 3],
-        "EFactory/Planes": [2, 2, 3, 5, 6, 6, 8],
-        "EFactory/Recons": [2, 2, 2, 2, 3, 3, 4],
-        "EFactory/Tanks": [2, 2, 2, 2, 2, 2, 3, 3],
+        "Factory/Art": [2, 2, 4, 4, 4, 5],
+        "Factory/DCA": [2, 2, 3, 4, 4, 5],
+        "Factory/Defense": [],
+        "Factory/Helis": [2, 3, 3, 3],
+        "Factory/Infantry": [2, 2, 2, 2, 3, 4, 4, 5],
+        "Factory/Logistic": [2, 2, 2, 2, 2, 2, 3, 3],
+        "Factory/Planes": [2, 2, 3, 5, 6, 6, 8],
+        "Factory/Recons": [2, 2, 2, 2, 3, 3, 4],
+        "Factory/Tanks": [2, 2, 2, 2, 2, 2, 3, 3],
     },
     "POL_4_Zmechanizowana_multi": {
-        "EFactory/Art": [2, 3, 4, 4, 6],
-        "EFactory/DCA": [2, 2, 4, 4, 4],
-        "EFactory/Defense": [],
-        "EFactory/Helis": [2, 2, 3, 4, 5, 5],
-        "EFactory/Infantry": [2, 2, 2, 2, 3, 3, 3, 4, 4, 5, 5],
-        "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 2, 3, 3, 3],
-        "EFactory/Planes": [2, 2, 3, 5, 5, 7],
-        "EFactory/Recons": [2, 2, 2, 2, 2, 2, 2],
-        "EFactory/Tanks": [2, 2, 2, 3, 3, 3],
+        "Factory/Art": [2, 3, 4, 4, 6],
+        "Factory/DCA": [2, 2, 4, 4, 4],
+        "Factory/Defense": [],
+        "Factory/Helis": [2, 2, 3, 4, 5, 5],
+        "Factory/Infantry": [2, 2, 2, 2, 3, 3, 3, 4, 4, 5, 5],
+        "Factory/Logistic": [2, 2, 2, 2, 2, 2, 2, 3, 3, 3],
+        "Factory/Planes": [2, 2, 3, 5, 5, 7],
+        "Factory/Recons": [2, 2, 2, 2, 2, 2, 2],
+        "Factory/Tanks": [2, 2, 2, 3, 3, 3],
     },
     "POL_20_Pancerna_multi": {
-        "EFactory/Art": [2, 2, 4, 4, 5, 6],
-        "EFactory/DCA": [2, 2, 4, 4, 4],
-        "EFactory/Defense": [],
-        "EFactory/Helis": [2, 4, 4],
-        "EFactory/Infantry": [2, 2, 2, 2, 2, 3, 4, 5],
-        "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 2, 2, 3, 3],
-        "EFactory/Planes": [2, 2, 4, 4, 5, 7],
-        "EFactory/Recons": [2, 2, 2, 2, 2, 2, 3],
-        "EFactory/Tanks": [2, 2, 2, 2, 2, 3, 3, 3],
+        "Factory/Art": [2, 2, 4, 4, 5, 6],
+        "Factory/DCA": [2, 2, 4, 4, 4],
+        "Factory/Defense": [],
+        "Factory/Helis": [2, 4, 4],
+        "Factory/Infantry": [2, 2, 2, 2, 2, 3, 4, 5],
+        "Factory/Logistic": [2, 2, 2, 2, 2, 2, 2, 2, 3, 3],
+        "Factory/Planes": [2, 2, 4, 4, 5, 7],
+        "Factory/Recons": [2, 2, 2, 2, 2, 2, 3],
+        "Factory/Tanks": [2, 2, 2, 2, 2, 3, 3, 3],
     },
     "RDA_7_Panzer_multi": {
-        "EFactory/Art": [2, 2, 4, 4, 5, 6],
-        "EFactory/DCA": [2, 2, 4, 4, 6],
-        "EFactory/Defense": [],
-        "EFactory/Helis": [2, 2, 3, 4],
-        "EFactory/Infantry": [2, 2, 2, 2, 2, 3, 4, 5],
-        "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 2, 3, 3],
-        "EFactory/Planes": [2, 2, 4, 4, 5, 7],
-        "EFactory/Recons": [2, 2, 2, 2, 2, 2, 2],
-        "EFactory/Tanks": [2, 2, 2, 2, 2, 2, 2, 3],
+        "Factory/Art": [2, 2, 4, 4, 5, 6],
+        "Factory/DCA": [2, 2, 4, 4, 6],
+        "Factory/Defense": [],
+        "Factory/Helis": [2, 2, 3, 4],
+        "Factory/Infantry": [2, 2, 2, 2, 2, 3, 4, 5],
+        "Factory/Logistic": [2, 2, 2, 2, 2, 2, 2, 3, 3],
+        "Factory/Planes": [2, 2, 4, 4, 5, 7],
+        "Factory/Recons": [2, 2, 2, 2, 2, 2, 2],
+        "Factory/Tanks": [2, 2, 2, 2, 2, 2, 2, 3],
     },
     "RDA_9_Panzer_multi": {
-        "EFactory/Art": [2, 2, 4, 4, 5, 6],
-        "EFactory/DCA": [2, 2, 3, 4, 4],
-        "EFactory/Defense": [],
-        "EFactory/Helis": [3, 4, 4],
-        "EFactory/Infantry": [2, 2, 2, 2, 2, 3, 4, 5],
-        "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 2, 3, 3],
-        "EFactory/Planes": [2, 2, 2, 4, 4, 5, 7],
-        "EFactory/Recons": [2, 2, 2, 3, 3, 3],
-        "EFactory/Tanks": [2, 2, 2, 2, 2, 2, 2, 2, 2],
+        "Factory/Art": [2, 2, 4, 4, 5, 6],
+        "Factory/DCA": [2, 2, 3, 4, 4],
+        "Factory/Defense": [],
+        "Factory/Helis": [3, 4, 4],
+        "Factory/Infantry": [2, 2, 2, 2, 2, 3, 4, 5],
+        "Factory/Logistic": [2, 2, 2, 2, 2, 2, 2, 3, 3],
+        "Factory/Planes": [2, 2, 2, 4, 4, 5, 7],
+        "Factory/Recons": [2, 2, 2, 3, 3, 3],
+        "Factory/Tanks": [2, 2, 2, 2, 2, 2, 2, 2, 2],
     },
     "RDA_KdA_Bezirk_Erfurt_multi": {
-        "EFactory/Art": [2, 2, 2, 4, 6, 6, 6],
-        "EFactory/DCA": [2, 2, 3, 4, 5],
-        "EFactory/Defense": [],
-        "EFactory/Helis": [2, 2, 3, 3, 4],
-        "EFactory/Infantry": [2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4],
-        "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 2, 2, 3, 3],
-        "EFactory/Planes": [2, 2, 2, 4, 4, 5, 7],
-        "EFactory/Recons": [2, 2, 2, 2, 3],
-        "EFactory/Tanks": [2, 2, 2, 2, 3, 3],
+        "Factory/Art": [2, 2, 2, 4, 6, 6, 6],
+        "Factory/DCA": [2, 2, 3, 4, 5],
+        "Factory/Defense": [],
+        "Factory/Helis": [2, 2, 3, 3, 4],
+        "Factory/Infantry": [2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4],
+        "Factory/Logistic": [2, 2, 2, 2, 2, 2, 2, 2, 3, 3],
+        "Factory/Planes": [2, 2, 2, 4, 4, 5, 7],
+        "Factory/Recons": [2, 2, 2, 2, 3],
+        "Factory/Tanks": [2, 2, 2, 2, 3, 3],
     },
     "RFA_TerrKo_Sud_multi": {
-        "EFactory/Art": [2, 2, 4, 4, 5, 6],
-        "EFactory/DCA": [2, 2, 3, 4, 5],
-        "EFactory/Defense": [],
-        "EFactory/Helis": [2, 2, 3, 3, 4],
-        "EFactory/Infantry": [2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4],
-        "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 2, 2, 3],
-        "EFactory/Planes": [2, 2, 2, 4, 4, 5, 7],
-        "EFactory/Recons": [2, 2, 2, 2, 3, 4],
-        "EFactory/Tanks": [2, 2, 2, 3, 3],
+        "Factory/Art": [2, 2, 4, 4, 5, 6],
+        "Factory/DCA": [2, 2, 3, 4, 5],
+        "Factory/Defense": [],
+        "Factory/Helis": [2, 2, 3, 3, 4],
+        "Factory/Infantry": [2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4],
+        "Factory/Logistic": [2, 2, 2, 2, 2, 2, 2, 2, 3],
+        "Factory/Planes": [2, 2, 2, 4, 4, 5, 7],
+        "Factory/Recons": [2, 2, 2, 2, 3, 4],
+        "Factory/Tanks": [2, 2, 2, 3, 3],
     },
     "SOV_119IndTkBrig_multi": {
-        "EFactory/Art": [2, 2, 4, 4, 6],
-        "EFactory/DCA": [2, 2, 4, 4],
-        "EFactory/Defense": [],
-        "EFactory/Helis": [2, 2, 3, 4, 4, 4],
-        "EFactory/Infantry": [2, 2, 2, 2, 3, 4, 4, 5],
-        "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 3, 3],
-        "EFactory/Planes": [2, 2, 3, 4, 5, 5, 7, 7],
-        "EFactory/Recons": [2, 2, 2, 2, 3, 3, 3, 3],
-        "EFactory/Tanks": [2, 2, 2, 2, 2, 3, 3, 3],
+        "Factory/Art": [2, 2, 4, 4, 6],
+        "Factory/DCA": [2, 2, 4, 4],
+        "Factory/Defense": [],
+        "Factory/Helis": [2, 2, 3, 4, 4, 4],
+        "Factory/Infantry": [2, 2, 2, 2, 3, 4, 4, 5],
+        "Factory/Logistic": [2, 2, 2, 2, 2, 2, 3, 3],
+        "Factory/Planes": [2, 2, 3, 4, 5, 5, 7, 7],
+        "Factory/Recons": [2, 2, 2, 2, 3, 3, 3, 3],
+        "Factory/Tanks": [2, 2, 2, 2, 2, 3, 3, 3],
     },
     "SOV_27_Gds_Rifle_multi": {
-        "EFactory/Art": [2, 2, 4, 4, 5, 6],
-        "EFactory/DCA": [2, 2, 3, 3, 4, 4],
-        "EFactory/Defense": [],
-        "EFactory/Helis": [2, 3, 4],
-        "EFactory/Infantry": [2, 2, 2, 2, 2, 2, 2, 3, 4, 5],
-        "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 2, 3, 3, 3],
-        "EFactory/Planes": [2, 2, 4, 5, 5, 7],
-        "EFactory/Recons": [2, 2, 2, 4, 4, 4],
-        "EFactory/Tanks": [2, 2, 3, 3, 3],
+        "Factory/Art": [2, 2, 4, 4, 5, 6],
+        "Factory/DCA": [2, 2, 3, 3, 4, 4],
+        "Factory/Defense": [],
+        "Factory/Helis": [2, 3, 4],
+        "Factory/Infantry": [2, 2, 2, 2, 2, 2, 2, 3, 4, 5],
+        "Factory/Logistic": [2, 2, 2, 2, 2, 2, 2, 3, 3, 3],
+        "Factory/Planes": [2, 2, 4, 5, 5, 7],
+        "Factory/Recons": [2, 2, 2, 4, 4, 4],
+        "Factory/Tanks": [2, 2, 3, 3, 3],
     },
     "SOV_35_AirAslt_Brig_multi": {
-        "EFactory/Art": [2, 2, 4, 4, 5, 6],
-        "EFactory/DCA": [2, 2, 3, 3, 4],
-        "EFactory/Defense": [],
-        "EFactory/Helis": [2, 2, 2, 3, 4, 4],
-        "EFactory/Infantry": [2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4],
-        "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 3, 3],
-        "EFactory/Planes": [2, 2, 2, 4, 4, 5, 7],
-        "EFactory/Recons": [2, 2, 2, 2, 2, 3, 3],
-        "EFactory/Tanks": [2, 2, 2, 2, 2],
+        "Factory/Art": [2, 2, 4, 4, 5, 6],
+        "Factory/DCA": [2, 2, 3, 3, 4],
+        "Factory/Defense": [],
+        "Factory/Helis": [2, 2, 2, 3, 4, 4],
+        "Factory/Infantry": [2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4],
+        "Factory/Logistic": [2, 2, 2, 2, 2, 2, 3, 3],
+        "Factory/Planes": [2, 2, 2, 4, 4, 5, 7],
+        "Factory/Recons": [2, 2, 2, 2, 2, 3, 3],
+        "Factory/Tanks": [2, 2, 2, 2, 2],
     },
     "SOV_76_VDV_multi": {
-        "EFactory/Art": [2, 2, 4, 4, 6],
-        "EFactory/DCA": [2, 2, 3, 4, 4],
-        "EFactory/Defense": [],
-        "EFactory/Helis": [],
-        "EFactory/Infantry": [2, 2, 2, 2, 2, 3, 3, 3, 4, 4, 4],
-        "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 3, 3],
-        "EFactory/Planes": [2, 2, 3, 3, 4, 5, 7, 8],
-        "EFactory/Recons": [2, 2, 2, 2, 2, 2, 2, 2, 2],
-        "EFactory/Tanks": [2, 2, 3, 3, 3, 3],
+        "Factory/Art": [2, 2, 4, 4, 6],
+        "Factory/DCA": [2, 2, 3, 4, 4],
+        "Factory/Defense": [],
+        "Factory/Helis": [],
+        "Factory/Infantry": [2, 2, 2, 2, 2, 3, 3, 3, 4, 4, 4],
+        "Factory/Logistic": [2, 2, 2, 2, 2, 2, 3, 3],
+        "Factory/Planes": [2, 2, 3, 3, 4, 5, 7, 8],
+        "Factory/Recons": [2, 2, 2, 2, 2, 2, 2, 2, 2],
+        "Factory/Tanks": [2, 2, 3, 3, 3, 3],
     },
     "UK_2nd_Infantry_multi": {
-        "EFactory/Art": [2, 2, 4, 4, 6],
-        "EFactory/DCA": [2, 2, 3, 4, 4],
-        "EFactory/Defense": [],
-        "EFactory/Helis": [2, 2, 3, 3, 4],
-        "EFactory/Infantry": [2, 2, 2, 2, 2, 2, 3, 3, 3, 4, 4],
-        "EFactory/Logistic": [2, 2, 2, 2, 2, 3, 3],
-        "EFactory/Planes": [2, 2, 4, 5, 6, 8],
-        "EFactory/Recons": [2, 2, 2, 2, 2, 2, 2],
-        "EFactory/Tanks": [2, 2, 3, 3, 3],
+        "Factory/Art": [2, 2, 4, 4, 6],
+        "Factory/DCA": [2, 2, 3, 4, 4],
+        "Factory/Defense": [],
+        "Factory/Helis": [2, 2, 3, 3, 4],
+        "Factory/Infantry": [2, 2, 2, 2, 2, 2, 3, 3, 3, 4, 4],
+        "Factory/Logistic": [2, 2, 2, 2, 2, 3, 3],
+        "Factory/Planes": [2, 2, 4, 5, 6, 8],
+        "Factory/Recons": [2, 2, 2, 2, 2, 2, 2],
+        "Factory/Tanks": [2, 2, 3, 3, 3],
     },
     "US_3rd_Arm_multi": {
-        "EFactory/Art": [2, 3, 4, 5, 6],
-        "EFactory/DCA": [2, 2, 4, 4, 4],
-        "EFactory/Defense": [],
-        "EFactory/Helis": [2, 2, 3, 4, 5],
-        "EFactory/Infantry": [2, 2, 2, 2, 2, 3, 4, 5],
-        "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 2, 3, 3],
-        "EFactory/Planes": [2, 2, 4, 5, 6, 8],
-        "EFactory/Recons": [2, 2, 2, 2, 3, 3, 4],
-        "EFactory/Tanks": [2, 2, 2, 2, 2, 2, 3, 3],
+        "Factory/Art": [2, 3, 4, 5, 6],
+        "Factory/DCA": [2, 2, 4, 4, 4],
+        "Factory/Defense": [],
+        "Factory/Helis": [2, 2, 3, 4, 5],
+        "Factory/Infantry": [2, 2, 2, 2, 2, 3, 4, 5],
+        "Factory/Logistic": [2, 2, 2, 2, 2, 2, 2, 3, 3],
+        "Factory/Planes": [2, 2, 4, 5, 6, 8],
+        "Factory/Recons": [2, 2, 2, 2, 3, 3, 4],
+        "Factory/Tanks": [2, 2, 2, 2, 2, 2, 3, 3],
     },
     "US_8th_Inf_multi": {
-        "EFactory/Art": [2, 2, 4, 4, 6],
-        "EFactory/DCA": [2, 2, 4, 4, 4],
-        "EFactory/Defense": [],
-        "EFactory/Helis": [2, 2, 4, 4],
-        "EFactory/Infantry": [2, 2, 2, 2, 2, 2, 3, 4, 4, 4, 5],
-        "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 3, 3, 3],
-        "EFactory/Planes": [2, 2, 4, 5, 6, 8],
-        "EFactory/Recons": [2, 2, 2, 3, 3, 3],
-        "EFactory/Tanks": [2, 2, 2, 3, 3],
+        "Factory/Art": [2, 2, 4, 4, 6],
+        "Factory/DCA": [2, 2, 4, 4, 4],
+        "Factory/Defense": [],
+        "Factory/Helis": [2, 2, 4, 4],
+        "Factory/Infantry": [2, 2, 2, 2, 2, 2, 3, 4, 4, 4, 5],
+        "Factory/Logistic": [2, 2, 2, 2, 2, 2, 3, 3, 3],
+        "Factory/Planes": [2, 2, 4, 5, 6, 8],
+        "Factory/Recons": [2, 2, 2, 3, 3, 3],
+        "Factory/Tanks": [2, 2, 2, 3, 3],
     },
     "US_11ACR_multi": {
-        "EFactory/Art": [2, 3, 4, 6, 6],
-        "EFactory/DCA": [2, 2, 3, 4, 5],
-        "EFactory/Defense": [],
-        "EFactory/Helis": [2, 2, 2, 2, 3, 4],
-        "EFactory/Infantry": [2, 2, 2, 2, 3, 4, 4, 5],
-        "EFactory/Logistic": [2, 2, 2, 2, 2, 3, 3],
-        "EFactory/Planes": [2, 2, 3, 4, 5, 6, 8],
-        "EFactory/Recons": [2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-        "EFactory/Tanks": [2, 2, 2, 2, 3, 3, 3, 3],
+        "Factory/Art": [2, 3, 4, 6, 6],
+        "Factory/DCA": [2, 2, 3, 4, 5],
+        "Factory/Defense": [],
+        "Factory/Helis": [2, 2, 2, 2, 3, 4],
+        "Factory/Infantry": [2, 2, 2, 2, 3, 4, 4, 5],
+        "Factory/Logistic": [2, 2, 2, 2, 2, 3, 3],
+        "Factory/Planes": [2, 2, 3, 4, 5, 6, 8],
+        "Factory/Recons": [2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+        "Factory/Tanks": [2, 2, 2, 2, 3, 3, 3, 3],
     },
     "US_82nd_Airborne_multi": {
-        "EFactory/Art": [2, 2, 4, 4],
-        "EFactory/DCA": [2, 2, 3, 4, 4],
-        "EFactory/Defense": [],
-        "EFactory/Helis": [2, 2, 3, 4, 4, 4],
-        "EFactory/Infantry": [2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4],
-        "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 3, 3],
-        "EFactory/Planes": [2, 2, 3, 3, 4, 6, 8],
-        "EFactory/Recons": [2, 2, 2, 3, 3, 3, 3],
-        "EFactory/Tanks": [2, 2, 3, 3],
+        "Factory/Art": [2, 2, 4, 4],
+        "Factory/DCA": [2, 2, 3, 4, 4],
+        "Factory/Defense": [],
+        "Factory/Helis": [2, 2, 3, 4, 4, 4],
+        "Factory/Infantry": [2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4],
+        "Factory/Logistic": [2, 2, 2, 2, 2, 2, 3, 3],
+        "Factory/Planes": [2, 2, 3, 3, 4, 6, 8],
+        "Factory/Recons": [2, 2, 2, 3, 3, 3, 3],
+        "Factory/Tanks": [2, 2, 3, 3],
     },
     "US_101st_Airmobile_multi": {
-        "EFactory/Art": [2, 2, 2, 2, 4, 4],
-        "EFactory/DCA": [2, 3, 5, 5, 5],
-        "EFactory/Defense": [],
-        "EFactory/Helis": [2, 2, 2, 3, 3, 4, 4, 4],
-        "EFactory/Infantry": [2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4],
-        "EFactory/Logistic": [2, 2, 2, 2, 2, 2, 3],
-        "EFactory/Planes": [2, 2, 4, 5, 6, 6],
-        "EFactory/Recons": [2, 2, 2, 3, 3, 3, 3],
-        "EFactory/Tanks": [4, 4, 6, 6],
+        "Factory/Art": [2, 2, 2, 2, 4, 4],
+        "Factory/DCA": [2, 3, 5, 5, 5],
+        "Factory/Defense": [],
+        "Factory/Helis": [2, 2, 2, 3, 3, 4, 4, 4],
+        "Factory/Infantry": [2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4],
+        "Factory/Logistic": [2, 2, 2, 2, 2, 2, 3],
+        "Factory/Planes": [2, 2, 4, 5, 6, 6],
+        "Factory/Recons": [2, 2, 2, 3, 3, 3, 3],
+        "Factory/Tanks": [4, 4, 6, 6],
     },
 }
 
@@ -238,240 +238,240 @@ DIVISION_MATRICES_LEGACY = {
     "MatrixCostName_US_3rd_Arm_multi": (
         'MatrixCostName_US_3rd_Arm_multi is MAP'
         '['
-        '    (EFactory/Art, [2, 3, 4, 5, 6]),'
-        '    (EFactory/DCA, [2, 2, 4, 4, 4]),'
-        '    (EFactory/Defense, []),'
-        '    (EFactory/Helis, [2, 2, 3, 4, 5]),'
-        '    (EFactory/Infantry, [2, 2, 2, 2, 2, 3, 4, 5]),'
-        '    (EFactory/Logistic, [2, 2, 2, 2, 2, 2, 2, 3, 3]),'
-        '    (EFactory/Planes, [2, 2, 4, 5, 6, 8]),'
-        '    (EFactory/Recons, [2, 2, 2, 2, 3, 3, 4]),'
-        '    (EFactory/Tanks, [2, 2, 2, 2, 2, 2, 3, 3]),'
+        '    (Factory/Art, [2, 3, 4, 5, 6]),'
+        '    (Factory/DCA, [2, 2, 4, 4, 4]),'
+        '    (Factory/Defense, []),'
+        '    (Factory/Helis, [2, 2, 3, 4, 5]),'
+        '    (Factory/Infantry, [2, 2, 2, 2, 2, 3, 4, 5]),'
+        '    (Factory/Logistic, [2, 2, 2, 2, 2, 2, 2, 3, 3]),'
+        '    (Factory/Planes, [2, 2, 4, 5, 6, 8]),'
+        '    (Factory/Recons, [2, 2, 2, 2, 3, 3, 4]),'
+        '    (Factory/Tanks, [2, 2, 2, 2, 2, 2, 3, 3]),'
         ']'
     ),
 
     "MatrixCostName_US_8th_Inf_multi": (
         'MatrixCostName_US_8th_Inf_multi is MAP'
         '['
-        '    (EFactory/Art, [2, 2, 4, 4, 6]),'
-        '    (EFactory/DCA, [2, 2, 4, 4, 4]),'
-        '    (EFactory/Defense, []),'
-        '    (EFactory/Helis, [2, 2, 4, 4]),'
-        '    (EFactory/Infantry, [2, 2, 2, 2, 2, 2, 3, 4, 4, 4, 5]),'
-        '    (EFactory/Logistic, [2, 2, 2, 2, 2, 2, 3, 3, 3]),'
-        '    (EFactory/Planes, [2, 2, 4, 5, 6, 8]),'
-        '    (EFactory/Recons, [2, 2, 2, 3, 3, 3]),'
-        '    (EFactory/Tanks, [2, 2, 2, 3, 3]),'
+        '    (Factory/Art, [2, 2, 4, 4, 6]),'
+        '    (Factory/DCA, [2, 2, 4, 4, 4]),'
+        '    (Factory/Defense, []),'
+        '    (Factory/Helis, [2, 2, 4, 4]),'
+        '    (Factory/Infantry, [2, 2, 2, 2, 2, 2, 3, 4, 4, 4, 5]),'
+        '    (Factory/Logistic, [2, 2, 2, 2, 2, 2, 3, 3, 3]),'
+        '    (Factory/Planes, [2, 2, 4, 5, 6, 8]),'
+        '    (Factory/Recons, [2, 2, 2, 3, 3, 3]),'
+        '    (Factory/Tanks, [2, 2, 2, 3, 3]),'
         ']'
     ),
 
     "MatrixCostName_US_82nd_Airborne_multi": (
         'MatrixCostName_US_82nd_Airborne_multi is MAP'
         '['
-        '    (EFactory/Art, [2, 2, 4, 4]),'
-        '    (EFactory/DCA, [2, 2, 3, 4, 4]),'
-        '    (EFactory/Defense, []),'
-        '    (EFactory/Helis, [2, 2, 3, 4, 4, 4]),'
-        '    (EFactory/Infantry, [2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4]),'
-        '    (EFactory/Logistic, [2, 2, 2, 2, 2, 2, 3, 3]),'
-        '    (EFactory/Planes, [2, 2, 3, 3, 4, 6, 8]),'
-        '    (EFactory/Recons, [2, 2, 2, 3, 3, 3, 3]),'
-        '    (EFactory/Tanks, [2, 2, 3, 3]),'
+        '    (Factory/Art, [2, 2, 4, 4]),'
+        '    (Factory/DCA, [2, 2, 3, 4, 4]),'
+        '    (Factory/Defense, []),'
+        '    (Factory/Helis, [2, 2, 3, 4, 4, 4]),'
+        '    (Factory/Infantry, [2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4]),'
+        '    (Factory/Logistic, [2, 2, 2, 2, 2, 2, 3, 3]),'
+        '    (Factory/Planes, [2, 2, 3, 3, 4, 6, 8]),'
+        '    (Factory/Recons, [2, 2, 2, 3, 3, 3, 3]),'
+        '    (Factory/Tanks, [2, 2, 3, 3]),'
         ']'
     ),
 
     "MatrixCostName_UK_2nd_Infantry_multi": (
         'MatrixCostName_UK_2nd_Infantry_multi is MAP'
         '['
-        '    (EFactory/Art, [2, 2, 4, 4, 6]),'
-        '    (EFactory/DCA, [2, 2, 3, 4, 4]),'
-        '    (EFactory/Defense, []),'
-        '    (EFactory/Helis, [2, 2, 3, 3, 4]),'
-        '    (EFactory/Infantry, [2, 2, 2, 2, 2, 2, 3, 3, 3, 4, 4]),'
-        '    (EFactory/Logistic, [2, 2, 2, 2, 2, 3, 3]),'
-        '    (EFactory/Planes, [2, 2, 3, 5, 5, 7]),'
-        '    (EFactory/Recons, [2, 2, 2, 2, 2, 2, 2]),'
-        '    (EFactory/Tanks, [2, 2, 3, 3, 3]),'
+        '    (Factory/Art, [2, 2, 4, 4, 6]),'
+        '    (Factory/DCA, [2, 2, 3, 4, 4]),'
+        '    (Factory/Defense, []),'
+        '    (Factory/Helis, [2, 2, 3, 3, 4]),'
+        '    (Factory/Infantry, [2, 2, 2, 2, 2, 2, 3, 3, 3, 4, 4]),'
+        '    (Factory/Logistic, [2, 2, 2, 2, 2, 3, 3]),'
+        '    (Factory/Planes, [2, 2, 3, 5, 5, 7]),'
+        '    (Factory/Recons, [2, 2, 2, 2, 2, 2, 2]),'
+        '    (Factory/Tanks, [2, 2, 3, 3, 3]),'
         ']'
     ),
 
     "MatrixCostName_US_101st_Airmobile_multi": (
         'MatrixCostName_US_101st_Airmobile_multi is MAP'
         '['
-        '    (EFactory/Art, [2, 2, 2, 2, 4, 4]),'
-        '    (EFactory/DCA, [2, 3, 5, 5, 5]),'
-        '    (EFactory/Defense, []),'
-        '    (EFactory/Helis, [2, 2, 2, 3, 3, 4, 4, 4]),'
-        '    (EFactory/Infantry, [2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4]),'
-        '    (EFactory/Logistic, [2, 2, 2, 2, 2, 2, 3]),'
-        '    (EFactory/Planes, [2, 2, 4, 5, 6, 6]),'
-        '    (EFactory/Recons, [2, 2, 2, 3, 3, 3, 3]),'
-        '    (EFactory/Tanks, [4, 4, 6, 6]),'
+        '    (Factory/Art, [2, 2, 2, 2, 4, 4]),'
+        '    (Factory/DCA, [2, 3, 5, 5, 5]),'
+        '    (Factory/Defense, []),'
+        '    (Factory/Helis, [2, 2, 2, 3, 3, 4, 4, 4]),'
+        '    (Factory/Infantry, [2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4]),'
+        '    (Factory/Logistic, [2, 2, 2, 2, 2, 2, 3]),'
+        '    (Factory/Planes, [2, 2, 4, 5, 6, 6]),'
+        '    (Factory/Recons, [2, 2, 2, 3, 3, 3, 3]),'
+        '    (Factory/Tanks, [4, 4, 6, 6]),'
         ']'
     ),
     
     "MatrixCostName_RFA_TerrKo_Sud_multi": (
         'MatrixCostName_RFA_TerrKo_Sud_multi is MAP'
         '['
-        '    (EFactory/Art, [2, 2, 4, 4, 5, 6]),'
-        '    (EFactory/DCA, [2, 2, 3, 4, 5]),'
-        '    (EFactory/Defense, []),'
-        '    (EFactory/Helis, [2, 2, 3, 3, 4]),'
-        '    (EFactory/Infantry, [2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4]),'
-        '    (EFactory/Logistic, [2, 2, 2, 2, 2, 2, 2, 2, 3]),'
-        '    (EFactory/Planes, [2, 2, 2, 4, 4, 5, 7]),'
-        '    (EFactory/Recons, [2, 2, 2, 2, 3, 4]),'
-        '    (EFactory/Tanks, [2, 2, 2, 3, 3]),'
+        '    (Factory/Art, [2, 2, 4, 4, 5, 6]),'
+        '    (Factory/DCA, [2, 2, 3, 4, 5]),'
+        '    (Factory/Defense, []),'
+        '    (Factory/Helis, [2, 2, 3, 3, 4]),'
+        '    (Factory/Infantry, [2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4]),'
+        '    (Factory/Logistic, [2, 2, 2, 2, 2, 2, 2, 2, 3]),'
+        '    (Factory/Planes, [2, 2, 2, 4, 4, 5, 7]),'
+        '    (Factory/Recons, [2, 2, 2, 2, 3, 4]),'
+        '    (Factory/Tanks, [2, 2, 2, 3, 3]),'
         ']'
     ),
 
     "MatrixCostName_SOV_119IndTkBrig_multi": (                           
         'MatrixCostName_SOV_119IndTkBrig_multi is MAP'
         '['
-        '    (EFactory/Art, [2, 2, 4, 4, 6]),'
-        '    (EFactory/DCA, [2, 2, 4, 4]),'
-        '    (EFactory/Defense, []),'
-        '    (EFactory/Helis, [2, 2, 3, 4, 4, 4]),'
-        '    (EFactory/Infantry, [2, 2, 2, 2, 3, 4, 4, 5]),'
-        '    (EFactory/Logistic, [2, 2, 2, 2, 2, 2, 3, 3]),'
-        '    (EFactory/Planes, [2, 2, 3, 4, 5, 5, 7, 7]),'
-        '    (EFactory/Recons, [2, 2, 2, 2, 3, 3, 3, 3]),'
-        '    (EFactory/Tanks, [2, 2, 2, 2, 2, 3, 3, 3]),'
+        '    (Factory/Art, [2, 2, 4, 4, 6]),'
+        '    (Factory/DCA, [2, 2, 4, 4]),'
+        '    (Factory/Defense, []),'
+        '    (Factory/Helis, [2, 2, 3, 4, 4, 4]),'
+        '    (Factory/Infantry, [2, 2, 2, 2, 3, 4, 4, 5]),'
+        '    (Factory/Logistic, [2, 2, 2, 2, 2, 2, 3, 3]),'
+        '    (Factory/Planes, [2, 2, 3, 4, 5, 5, 7, 7]),'
+        '    (Factory/Recons, [2, 2, 2, 2, 3, 3, 3, 3]),'
+        '    (Factory/Tanks, [2, 2, 2, 2, 2, 3, 3, 3]),'
         ']'
     ),
 
     "MatrixCostName_SOV_27_Gds_Rifle_multi": (
         'MatrixCostName_SOV_27_Gds_Rifle_multi is MAP'
         '['
-        '    (EFactory/Art, [2, 2, 4, 4, 5, 6]),'
-        '    (EFactory/DCA, [2, 2, 3, 3, 4, 4]),'
-        '    (EFactory/Defense, []),'
-        '    (EFactory/Helis, [2, 3, 4]),'
-        '    (EFactory/Infantry, [2, 2, 2, 2, 2, 2, 2, 3, 4, 5]),'
-        '    (EFactory/Logistic, [2, 2, 2, 2, 2, 2, 2, 3, 3, 3]),'
-        '    (EFactory/Planes, [2, 2, 4, 5, 5, 7]),'
-        '    (EFactory/Recons, [2, 2, 2, 4, 4, 4]),'
-        '    (EFactory/Tanks, [2, 2, 3, 3, 3]),'
+        '    (Factory/Art, [2, 2, 4, 4, 5, 6]),'
+        '    (Factory/DCA, [2, 2, 3, 3, 4, 4]),'
+        '    (Factory/Defense, []),'
+        '    (Factory/Helis, [2, 3, 4]),'
+        '    (Factory/Infantry, [2, 2, 2, 2, 2, 2, 2, 3, 4, 5]),'
+        '    (Factory/Logistic, [2, 2, 2, 2, 2, 2, 2, 3, 3, 3]),'
+        '    (Factory/Planes, [2, 2, 4, 5, 5, 7]),'
+        '    (Factory/Recons, [2, 2, 2, 4, 4, 4]),'
+        '    (Factory/Tanks, [2, 2, 3, 3, 3]),'
         ']'
     ),
 
     "MatrixCostName_SOV_76_VDV_multi": (
         'MatrixCostName_SOV_76_VDV_multi is MAP'
         '['
-        '    (EFactory/Art, [2, 2, 4, 4, 6]),'
-        '    (EFactory/DCA, [2, 2, 3, 4, 4]),'
-        '    (EFactory/Defense, []),'
-        '    (EFactory/Helis, []),'
-        '    (EFactory/Infantry, [2, 2, 2, 2, 2, 3, 3, 3, 4, 4, 4]),'
-        '    (EFactory/Logistic, [2, 2, 2, 2, 2, 2, 3, 3]),'
-        '    (EFactory/Planes, [2, 2, 3, 3, 4, 5, 7, 8]),'
-        '    (EFactory/Recons, [2, 2, 2, 2, 2, 2, 2, 2, 2]),'
-        '    (EFactory/Tanks, [2, 2, 3, 3, 3, 3]),'
+        '    (Factory/Art, [2, 2, 4, 4, 6]),'
+        '    (Factory/DCA, [2, 2, 3, 4, 4]),'
+        '    (Factory/Defense, []),'
+        '    (Factory/Helis, []),'
+        '    (Factory/Infantry, [2, 2, 2, 2, 2, 3, 3, 3, 4, 4, 4]),'
+        '    (Factory/Logistic, [2, 2, 2, 2, 2, 2, 3, 3]),'
+        '    (Factory/Planes, [2, 2, 3, 3, 4, 5, 7, 8]),'
+        '    (Factory/Recons, [2, 2, 2, 2, 2, 2, 2, 2, 2]),'
+        '    (Factory/Tanks, [2, 2, 3, 3, 3, 3]),'
         ']'
     ),
 
     "MatrixCostName_RDA_7_Panzer_multi": (
         'MatrixCostName_RDA_7_Panzer_multi is MAP'
         '['
-        '    (EFactory/Art, [2, 2, 4, 4, 5, 6]),'
-        '    (EFactory/DCA, [2, 2, 4, 4, 6]),'
-        '    (EFactory/Defense, []),'
-        '    (EFactory/Helis, [2, 2, 3, 4]),'
-        '    (EFactory/Infantry, [2, 2, 2, 2, 2, 3, 4, 5]),'
-        '    (EFactory/Logistic, [2, 2, 2, 2, 2, 2, 2, 3, 3]),'
-        '    (EFactory/Planes, [2, 2, 4, 4, 5, 7]),'
-        '    (EFactory/Recons, [2, 2, 2, 2, 2, 2, 2]),'
-        '    (EFactory/Tanks, [2, 2, 2, 2, 2, 2, 2, 3]),'
+        '    (Factory/Art, [2, 2, 4, 4, 5, 6]),'
+        '    (Factory/DCA, [2, 2, 4, 4, 6]),'
+        '    (Factory/Defense, []),'
+        '    (Factory/Helis, [2, 2, 3, 4]),'
+        '    (Factory/Infantry, [2, 2, 2, 2, 2, 3, 4, 5]),'
+        '    (Factory/Logistic, [2, 2, 2, 2, 2, 2, 2, 3, 3]),'
+        '    (Factory/Planes, [2, 2, 4, 4, 5, 7]),'
+        '    (Factory/Recons, [2, 2, 2, 2, 2, 2, 2]),'
+        '    (Factory/Tanks, [2, 2, 2, 2, 2, 2, 2, 3]),'
         ']'
     ),
     
     "MatrixCostName_RDA_9_Panzer_multi": (
         'MatrixCostName_RDA_9_Panzer_multi is MAP'
         '['
-        '    (EFactory/Art, [2, 2, 4, 4, 5, 6]),'
-        '    (EFactory/DCA, [2, 2, 3, 4, 4]),'
-        '    (EFactory/Defense, []),'
-        '    (EFactory/Helis, [2, 4, 4]),'
-        '    (EFactory/Infantry, [2, 2, 2, 2, 2, 3, 4, 5]),'
-        '    (EFactory/Logistic, [2, 2, 2, 2, 2, 2, 2, 3, 3]),'
-        '    (EFactory/Planes, [2, 2, 2, 4, 4, 5, 7]),'
-        '    (EFactory/Recons, [1, 1, 2, 3, 3, 3]),'
-        '    (EFactory/Tanks, [1, 1, 1, 1, 1, 1, 1, 1, 1, 2]),'
+        '    (Factory/Art, [2, 2, 4, 4, 5, 6]),'
+        '    (Factory/DCA, [2, 2, 3, 4, 4]),'
+        '    (Factory/Defense, []),'
+        '    (Factory/Helis, [2, 4, 4]),'
+        '    (Factory/Infantry, [2, 2, 2, 2, 2, 3, 4, 5]),'
+        '    (Factory/Logistic, [2, 2, 2, 2, 2, 2, 2, 3, 3]),'
+        '    (Factory/Planes, [2, 2, 2, 4, 4, 5, 7]),'
+        '    (Factory/Recons, [1, 1, 2, 3, 3, 3]),'
+        '    (Factory/Tanks, [1, 1, 1, 1, 1, 1, 1, 1, 1, 2]),'
         ']'
     ),
     
     "MatrixCostName_RDA_KdA_Bezirk_Erfurt_multi": (
         'MatrixCostName_RDA_KdA_Bezirk_Erfurt_multi is MAP'
         '['
-        '    (EFactory/Art, [2, 2, 2, 4, 6, 6, 6]),'
-        '    (EFactory/DCA, [2, 2, 3, 4, 5]),'
-        '    (EFactory/Defense, []),'
-        '    (EFactory/Helis, [2, 2, 3, 3, 4]),'
-        '    (EFactory/Infantry, [2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4]),'
-        '    (EFactory/Logistic, [2, 2, 2, 2, 2, 2, 2, 2, 3, 3]),'
-        '    (EFactory/Planes, [2, 2, 2, 4, 4, 5, 7]),'
-        '    (EFactory/Recons, [2, 2, 2, 2, 3]),'
-        '    (EFactory/Tanks, [2, 2, 2, 2, 3, 3]),'
+        '    (Factory/Art, [2, 2, 2, 4, 6, 6, 6]),'
+        '    (Factory/DCA, [2, 2, 3, 4, 5]),'
+        '    (Factory/Defense, []),'
+        '    (Factory/Helis, [2, 2, 3, 3, 4]),'
+        '    (Factory/Infantry, [2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4]),'
+        '    (Factory/Logistic, [2, 2, 2, 2, 2, 2, 2, 2, 3, 3]),'
+        '    (Factory/Planes, [2, 2, 2, 4, 4, 5, 7]),'
+        '    (Factory/Recons, [2, 2, 2, 2, 3]),'
+        '    (Factory/Tanks, [2, 2, 2, 2, 3, 3]),'
         ']'
     ),
 
     "MatrixCostName_POL_20_Pancerna_multi": (
         'MatrixCostName_POL_20_Pancerna_multi is MAP'
         '['
-        '    (EFactory/Art, [2, 2, 4, 4, 5, 6]),'
-        '    (EFactory/DCA, [2, 2, 4, 4, 4]),'
-        '    (EFactory/Defense, []),'
-        '    (EFactory/Helis, [2, 4, 4]),'
-        '    (EFactory/Infantry, [2, 2, 2, 2, 2, 3, 4, 5]),'
-        '    (EFactory/Logistic, [2, 2, 2, 2, 2, 2, 2, 2, 3, 3]),'
-        '    (EFactory/Planes, [2, 2, 4, 4, 5, 7]),'
-        '    (EFactory/Recons, [2, 2, 2, 2, 2, 2, 3]),'
-        '    (EFactory/Tanks, [2, 2, 2, 2, 2, 3, 3, 3]),'
+        '    (Factory/Art, [2, 2, 4, 4, 5, 6]),'
+        '    (Factory/DCA, [2, 2, 4, 4, 4]),'
+        '    (Factory/Defense, []),'
+        '    (Factory/Helis, [2, 4, 4]),'
+        '    (Factory/Infantry, [2, 2, 2, 2, 2, 3, 4, 5]),'
+        '    (Factory/Logistic, [2, 2, 2, 2, 2, 2, 2, 2, 3, 3]),'
+        '    (Factory/Planes, [2, 2, 4, 4, 5, 7]),'
+        '    (Factory/Recons, [2, 2, 2, 2, 2, 2, 3]),'
+        '    (Factory/Tanks, [2, 2, 2, 2, 2, 3, 3, 3]),'
         ']'
     ),
     
     "MatrixCostName_POL_4_Zmechanizowana_multi": (
         'MatrixCostName_POL_4_Zmechanizowana_multi is MAP'
         '['
-        '    (EFactory/Art, [2, 3, 4, 4, 6]),'
-        '    (EFactory/DCA, [2, 2, 4, 4, 4]),'
-        '    (EFactory/Defense, []),'
-        '    (EFactory/Helis, [2, 2, 3, 4, 5, 5]),'
-        '    (EFactory/Infantry, [2, 2, 2, 2, 3, 3, 3, 4, 4, 5, 5]),'
-        '    (EFactory/Logistic, [2, 2, 2, 2, 2, 2, 2, 3, 3, 3]),'
-        '    (EFactory/Planes, [2, 2, 3, 4, 5, 6]),'
-        '    (EFactory/Recons, [2, 2, 2, 2, 2, 2, 2]),'
-        '    (EFactory/Tanks, [2, 2, 2, 3, 3, 3]),'
+        '    (Factory/Art, [2, 3, 4, 4, 6]),'
+        '    (Factory/DCA, [2, 2, 4, 4, 4]),'
+        '    (Factory/Defense, []),'
+        '    (Factory/Helis, [2, 2, 3, 4, 5, 5]),'
+        '    (Factory/Infantry, [2, 2, 2, 2, 3, 3, 3, 4, 4, 5, 5]),'
+        '    (Factory/Logistic, [2, 2, 2, 2, 2, 2, 2, 3, 3, 3]),'
+        '    (Factory/Planes, [2, 2, 3, 4, 5, 6]),'
+        '    (Factory/Recons, [2, 2, 2, 2, 2, 2, 2]),'
+        '    (Factory/Tanks, [2, 2, 2, 3, 3, 3]),'
         ']'
     ),
     
     "MatrixCostName_US_11ACR_multi": (
         'MatrixCostName_US_11ACR_multi is MAP'
         '['
-        '    (EFactory/Art, [2, 3, 4, 6, 6]),'
-        '    (EFactory/DCA, [2, 2, 3, 4, 5]),'
-        '    (EFactory/Defense, []),'
-        '    (EFactory/Helis, [2, 2, 2, 2, 3, 4]),'
-        '    (EFactory/Infantry, [2, 2, 2, 2, 3, 4, 4, 5]),'
-        '    (EFactory/Logistic, [2, 2, 2, 2, 2, 3, 3]),'
-        '    (EFactory/Planes, [2, 2, 3, 4, 5, 6, 8]),'
-        '    (EFactory/Recons, [2, 2, 2, 2, 2, 2, 2, 2, 2, 2]),'
-        '    (EFactory/Tanks, [2, 2, 2, 2, 3, 3, 3, 3]),'
+        '    (Factory/Art, [2, 3, 4, 6, 6]),'
+        '    (Factory/DCA, [2, 2, 3, 4, 5]),'
+        '    (Factory/Defense, []),'
+        '    (Factory/Helis, [2, 2, 2, 2, 3, 4]),'
+        '    (Factory/Infantry, [2, 2, 2, 2, 3, 4, 4, 5]),'
+        '    (Factory/Logistic, [2, 2, 2, 2, 2, 3, 3]),'
+        '    (Factory/Planes, [2, 2, 3, 4, 5, 6, 8]),'
+        '    (Factory/Recons, [2, 2, 2, 2, 2, 2, 2, 2, 2, 2]),'
+        '    (Factory/Tanks, [2, 2, 2, 2, 3, 3, 3, 3]),'
         ']'
     ),
     
     "MatrixCostName_FR_5e_Blindee_multi": (
         'MatrixCostName_FR_5e_Blindee_multi is MAP'
         '['
-        '    (EFactory/Art, [2, 2, 4, 4, 4, 5]),'
-        '    (EFactory/DCA, [2, 2, 3, 4, 4, 5]),'
-        '    (EFactory/Defense, []),'
-        '    (EFactory/Helis, [2, 3, 3, 3]),'
-        '    (EFactory/Infantry, [2, 2, 2, 2, 3, 4, 4, 5]),'
-        '    (EFactory/Logistic, [2, 2, 2, 2, 2, 2, 3, 3]),'
-        '    (EFactory/Planes, [2, 2, 3, 5, 6, 6, 8]),'
-        '    (EFactory/Recons, [2, 2, 2, 2, 3, 3, 4]),'
-        '    (EFactory/Tanks, [2, 2, 2, 2, 2, 2, 3, 3]),'
+        '    (Factory/Art, [2, 2, 4, 4, 4, 5]),'
+        '    (Factory/DCA, [2, 2, 3, 4, 4, 5]),'
+        '    (Factory/Defense, []),'
+        '    (Factory/Helis, [2, 3, 3, 3]),'
+        '    (Factory/Infantry, [2, 2, 2, 2, 3, 4, 4, 5]),'
+        '    (Factory/Logistic, [2, 2, 2, 2, 2, 2, 3, 3]),'
+        '    (Factory/Planes, [2, 2, 3, 5, 6, 6, 8]),'
+        '    (Factory/Recons, [2, 2, 2, 2, 3, 3, 4]),'
+        '    (Factory/Tanks, [2, 2, 2, 2, 2, 2, 3, 3]),'
         ']'
     ),
 }

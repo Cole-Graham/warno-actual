@@ -46,7 +46,7 @@ SOV_NEW_UNITS = {
         "TransportedTexture": "UseInGame_Transport_COMMAND",
         "TransportedSoldier": "MotRifles_SOV",
         "armor": "Infantry_armor_reference",
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "CommandPoints": 145,
         "UnitRole": 'hq_inf',
         "SpecialtiesList": [
@@ -132,7 +132,7 @@ SOV_NEW_UNITS = {
         "TransportedTexture": "UseInGame_Transport_COMMAND",
         "TransportedSoldier": "MotRifles_TTsko_SOV",
         "armor": "Infantry_armor_reference",
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "CommandPoints": 145,
         "UnitRole": 'hq_inf',
         "SpecialtiesList": [
@@ -187,7 +187,7 @@ SOV_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "CommandPoints": 205,
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
@@ -227,7 +227,7 @@ SOV_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "CommandPoints": 265,
         "armor": {
             "top": (3, None),
@@ -280,7 +280,7 @@ SOV_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "CommandPoints": 265,
         "armor": {
             "top": (3, None),
@@ -325,7 +325,7 @@ SOV_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "CommandPoints": 320,
         "armor": {
             "top": (3, None),
@@ -370,7 +370,7 @@ SOV_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "CommandPoints": 310,
         "armor": {
             "top": (3, None),
@@ -415,7 +415,7 @@ SOV_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "CommandPoints": 355,
         "armor": {
             "top": (4, None),
@@ -461,7 +461,7 @@ SOV_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "armor": {
             "front": (18, None),
             "top": (4, None),
@@ -526,7 +526,7 @@ SOV_NEW_UNITS = {
                 "Vehicule_CMD",
             ],
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "CommandPoints": 145,
         "UnitRole": 'hq_veh',
         "SpecialtiesList": [

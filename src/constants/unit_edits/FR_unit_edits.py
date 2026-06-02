@@ -1515,7 +1515,7 @@ fr_unit_edits = {
         "CommandPoints": 20,
         "availability": [9, 7, 0, 0],
         "max_speed": 6,
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
@@ -1533,7 +1533,7 @@ fr_unit_edits = {
         "CommandPoints": 20,
         "availability": [0, 9, 7, 0],
         "max_speed": 6,
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,
@@ -1550,7 +1550,7 @@ fr_unit_edits = {
         "CommandPoints": 20,
         "availability": [0, 9, 7, 0],
         "max_speed": 6,
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         
         "WeaponDeployment": {
             "TimeForWeaponDeployment": 15,

@@ -11,14 +11,14 @@ __all__ = []
 logger = setup_logger('decks')
 
 category_to_factory_mapping = {
-    "artillery": "EFactory/Art",
-    "aa": "EFactory/DCA",
-    "heli": "EFactory/Helis",
-    "infantry": "EFactory/Infantry",
-    "logistic": "EFactory/Logistic",
-    "planes": "EFactory/Planes",
-    "recon": "EFactory/Recons",
-    "tank": "EFactory/Tanks",
+    "artillery": "Factory/Art",
+    "aa": "Factory/DCA",
+    "heli": "Factory/Helis",
+    "infantry": "Factory/Infantry",
+    "logistic": "Factory/Logistic",
+    "planes": "Factory/Planes",
+    "recon": "Factory/Recons",
+    "tank": "Factory/Tanks",
 }
 
 def load_deck_edits() -> Dict:

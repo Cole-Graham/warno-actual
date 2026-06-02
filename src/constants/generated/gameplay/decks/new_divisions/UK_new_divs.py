@@ -33,7 +33,7 @@ uk_new_divs = {
             "HMGteam_MAG_UK",
         ],
         # "matrix_overrides": {
-        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        #     "Factory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
         # },
         "transport_overrides": {
             "Rifles_CMD2_UK": ["LandRover_UK", "FV432_UK", "MCV_80_Warrior_UK", "MCV_80_Warrior_MILAN_UK", "Lynx_AH_Mk1_UK", "Westland_Wessex_trans_UK"],
@@ -57,7 +57,7 @@ uk_new_divs = {
             UK_global_newdivisionrules,
         ],
         # "matrix_overrides": {
-        #     "EFactory/Logistic": [2, 2, 2, 2, 2, 3, 3, 3, 3],
+        #     "Factory/Logistic": [2, 2, 2, 2, 2, 3, 3, 3, 3],
         # },
     },
     # airborne_marine 5019, 1052
@@ -82,7 +82,7 @@ uk_new_divs = {
             "HMGteam_MAG_UK",
         ],
         # "matrix_overrides": {
-        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        #     "Factory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
         # },
     },
     "UK_airborne_mechanized": {
@@ -106,7 +106,7 @@ uk_new_divs = {
             "HMGteam_MAG_UK",
         ],
         # "matrix_overrides": {
-        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        #     "Factory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
         # },
         "transport_overrides": {
             "Rifles_CMD2_UK": ["LandRover_UK", "FV432_UK", "MCV_80_Warrior_UK", "MCV_80_Warrior_MILAN_UK", "Lynx_AH_Mk1_UK", "Westland_Wessex_trans_UK"],
@@ -133,7 +133,7 @@ uk_new_divs = {
             "HMGteam_MAG_UK",
         ],
         # "matrix_overrides": {
-        #     "EFactory/Logistic": [2, 2, 2, 2, 2, 3, 3, 3, 3],
+        #     "Factory/Logistic": [2, 2, 2, 2, 2, 3, 3, 3, 3],
         # },
     },
     "UK_armored": {
@@ -152,7 +152,7 @@ uk_new_divs = {
             UK_global_newdivisionrules,
         ],
         # "matrix_overrides": {
-        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        #     "Factory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
         # },
     },
     # armored_marine 5024, 1057
@@ -173,7 +173,7 @@ uk_new_divs = {
             UK_mechanized_newdivisionrules,
         ],
         # "matrix_overrides": {
-        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        #     "Factory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
         # },
     },
     "UK_armored_motorized": {
@@ -193,7 +193,7 @@ uk_new_divs = {
             UK_motorized_newdivisionrules,
         ],
         # "matrix_overrides": {
-        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        #     "Factory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
         # },
         "transport_overrides": {
             "Rifles_CMD2_UK": ["LandRover_UK", "FV432_UK", "MCV_80_Warrior_UK", "MCV_80_Warrior_MILAN_UK", "Lynx_AH_Mk1_UK"],
@@ -218,7 +218,7 @@ uk_new_divs = {
             UK_mechanized_newdivisionrules,
         ],
         # "matrix_overrides": {
-        #     "EFactory/Logistic": [2, 2, 2, 2, 2, 3, 3, 3, 3],
+        #     "Factory/Logistic": [2, 2, 2, 2, 2, 3, 3, 3, 3],
         # },
     },
     "UK_mechanized_motorized": {
@@ -238,7 +238,7 @@ uk_new_divs = {
             UK_motorized_newdivisionrules,
         ],
         # "matrix_overrides": {
-        #     "EFactory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
+        #     "Factory/Logistic": [2, 2, 2, 2, 3, 3, 3, 3, 3],
         # },
     },
     "UK_motorized": {
@@ -257,7 +257,7 @@ uk_new_divs = {
             UK_global_newdivisionrules,
         ],
         # "matrix_overrides": {
-        #     "EFactory/Logistic": [2, 2, 2, 2, 2, 3, 3, 3, 3],
+        #     "Factory/Logistic": [2, 2, 2, 2, 2, 3, 3, 3, 3],
         # },
     },
 }

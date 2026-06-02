@@ -548,7 +548,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("DCA_2_canon_Bofors_40mm", "DCA", None, False): { # M24 Duster -Twin 40mm L60 Bofors, 280 combined RPM, Salvo length is the total ammo
+    ("DCA_2_canon_Bofors_40mm_Duster", "DCA", None, False): { # Twin 40mm L60 Bofors, 280 combined RPM, Salvo length is the total ammo
         "Ammunition": {
             "hit_roll": {
                 "Idling": 25,

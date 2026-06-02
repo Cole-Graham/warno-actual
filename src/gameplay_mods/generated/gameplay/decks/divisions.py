@@ -220,7 +220,7 @@ def _add_national_divisions(source_path: Any, donor_divisions: Dict[str, Any]) -
                 new_div_descr.v.remove_by_member("TypeTexture")
             
             # Set coalition
-            new_div_descr.v.by_m("DivisionCoalition").v = f"ECoalition/{coalition}"
+            new_div_descr.v.by_m("DivisionCoalition").v = f"TWargameCoalition/{coalition}"
             
             # Set division tags: ['DEFAULT', nation, coalition, TypeToken]
             type_token = DIV_TYPE_TO_TOKEN.get(div_type, DIV_TYPE_TO_TOKEN["general"])
