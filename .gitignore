@@ -12,8 +12,6 @@ src/data/database/*.json
 sourcemod/
 sourcemod vip/
 .VSCodeCounter/
-sourcemod/
-sourcemod vip/
 *.lnk
 LDR_unit_edits_old.py
 notes
