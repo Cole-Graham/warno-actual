@@ -1940,7 +1940,6 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
-        "UpgradeFromUnit": "Naval_Rifle_SOV",
         "WeaponDescriptor": {
             "Salves": {
                 "RocketInf_RPG7VL": 9,
@@ -6523,33 +6522,36 @@ sov_unit_edits = {
 
     "Su_24M_clu_SOV": {
         "CommandPoints": 200,
+        "alternatives": {
+            "mesh": "Su_24M_T2_SOV",
+        },
         "ECM": -0.35,
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
         "availability": [0, 2, 0, 0],
-        # "WeaponDescriptor": {
-        #     "equipmentchanges": {
-                # "insert": [(1, "Bomb_CLU_RBK_250kg_salvolength8"),],
-                # "insert_edits": {
-                #     1: {
-                #         "turret_edits": {
-                #             "Tag": '"tourelle3"',
-                #             "YulBoneOrdinal": 3,
-                #         },
-                #         "AmmoBoxIndex": 2,
-                #         "HandheldEquipmentKey": '"WeaponAlternative_3"',
-                #         "WeaponActiveAndCanShootPropertyName": '"WeaponActiveAndCanShoot_3"',
-                #         "WeaponIgnoredPropertyName": '"WeaponIgnored_3"',
-                #         "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
-                #     },
-                # },
-            # },
-            # "Salves": {
-            #     "insert": [(2, 8)],
-            # },
-            # "SalvoIsMainSalvo": [False, True, True],
-        # },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "insert": [(1, "Bomb_CLU_RBK_250kg_salvolength8"),],
+                "insert_edits": {
+                    1: {
+                        "turret_edits": {
+                            "Tag": '"tourelle3"',
+                            "YulBoneOrdinal": 3,
+                        },
+                        "AmmoBoxIndex": 2,
+                        "HandheldEquipmentKey": '"WeaponAlternative_3"',
+                        "WeaponActiveAndCanShootPropertyName": '"WeaponActiveAndCanShoot_3"',
+                        "WeaponIgnoredPropertyName": '"WeaponIgnored_3"',
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
+                    },
+                },
+            },
+            "Salves": {
+                "insert": [(2, 1)],
+            },
+            "SalvoIsMainSalvo": [False, True, True],
+        },
     },
     
     "Su_24M_nplm_SOV": {

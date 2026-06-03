@@ -14,6 +14,7 @@ from .F15C_Eagle_AA_US import f15c_eagle_aa_us
 from .F15E_StrikeEagle_US import f15e_strikeeagle_us
 from .F16E_CBU_US import f16e_cbu_us
 from .F16E_napalm_US import f16e_napalm_us
+from .F16E_TER_CLU_US import f16e_ter_clu_us
 from .F111E_Aardvark_napalm_US import f111e_aardvark_napalm_us
 from .F111F_Aardvark_CBU_US import f111f_aardvark_cbu_us
 from .F111F_Aardvark_napalm_US import f111f_aardvark_napalm_us
@@ -55,6 +56,7 @@ __all__ = [
     "f15e_strikeeagle_us",
     "f16e_cbu_us",
     "f16e_napalm_us",
+    "f16e_ter_clu_us",
     "f111e_aardvark_napalm_us",
     "f111f_aardvark_cbu_us",
     "f111f_aardvark_napalm_us",

@@ -358,13 +358,6 @@ RFA_NEW_UNITS = {
         "max_speed": 20,
         "ButtonTexture": "Gebirgsjager_PzF3_RFA",
         "WeaponDescriptor": {
-            "equipmentchanges": {
-                "quantity": {
-                    "FM_G3KA4": 8,
-                    "MMG_inf__MG3_7_62mm": 1,
-                    "RocketInf_PzF_44": 1,
-                },
-            },
             "Salves": {
                 "FM_G3KA4": 11,
                 "MMG_inf__MG3_7_62mm": 18,

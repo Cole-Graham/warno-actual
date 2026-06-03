@@ -3564,16 +3564,18 @@ rda_unit_edits = {
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": {
-                    "RocketAir_S5_57mm_salvolength32": {
-                        "new_weapon": "RocketAir_S5_57mm_avion_salvolength32",
-                        "swap_fire_effect": False,
-                        "depiction_baked_in": False,
-                    },
-                    "RocketAir_S5_57mm_salvolength32": {
-                        "new_weapon": "RocketAir_S5_57mm_avion_salvolength32",
-                        "swap_fire_effect": False,
-                        "depiction_baked_in": False,
-                    },
+                    "RocketAir_S5_57mm_salvolength32": [
+                        {
+                            "new_weapon": "RocketAir_S5_57mm_avion_salvolength32",
+                            "swap_fire_effect": False,
+                            "depiction_baked_in": False,
+                        },
+                        {
+                            "new_weapon": "RocketAir_S5_57mm_avion_salvolength32",
+                            "swap_fire_effect": False,
+                            "depiction_baked_in": False,
+                        },
+                    ],
                 },
             },
         },

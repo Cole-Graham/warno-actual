@@ -38,11 +38,22 @@ def edit_uiingameresources(source_path: Any) -> None:
 
         elif is_obj_type(component.v, "BUCKListDescriptor"):
             axis = component.v.by_m("Axis", False)
-            if axis is not None and axis.v == "~/ListAxis/Vertical":
+            if axis is not None and axis.v == "~/ListAxis/Vertical" and _is_right_hud_column(component.v):
                 _replace_vertical_hud_elements(component.v)
 
     components.v.insert(1, _get_m81_top_bar_row())
     logger.debug("Applied M81 top bar and VIP-compliant right HUD column layout")
+
+
+def _is_right_hud_column(vertical_list: Any) -> bool:
+    """True only for the right HUD column list (the one holding the score/objectives views).
+
+    ForegroundComponents now contains more than one top-level vertical list (VIP added a
+    production/unit/tactic-cube column). We must only rebuild the right HUD column; rebuilding
+    the other list drops containers like ``UISpecificTacticCubeActionViewMainContainer`` and
+    crashes the engine. Detect by a signature container unique to the right column.
+    """
+    return '"SpecificInGameHUDScoreViewMainContainer"' in str(vertical_list)
 
 
 def _replace_vertical_hud_elements(vertical_list: Any) -> None:

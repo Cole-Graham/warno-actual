@@ -190,6 +190,9 @@ if __name__ == "__main__":
 		ammo_db_precomp['aa_suppress_damages'] = constants_data.get(
 			'aa_suppress_damages', {},
 		)
+		ammo_db_precomp['clu_bomb_dispersion'] = constants_data.get(
+			'clu_bomb_dispersion', {},
+		)
 		ammo_db_precomp['he_dca_weapons'] = constants_data.get(
 			'he_dca_weapons', {},
 		)

@@ -649,7 +649,6 @@ POL_NEW_UNITS = {
                 '_para',
                 'infantry_equip_heavy'
             ],
-        "UpgradeFromUnit": "Atteam_Fagot_Para_POL",
         "availability": [0, 6, 4, 0],
         "max_speed": 20,
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/Attack', 'EOrderType/MoveAndAttack', 
@@ -1017,7 +1016,6 @@ POL_NEW_UNITS = {
                 '_para',
             ],
         "CommandPoints": 40,
-        "UpgradeFromUnit": None,
         "availability": [0, 9, 7, 5],
         "DeploymentShift": 1750,
         "ButtonTexture": "AT_D44_85mm_VDV_SOV",

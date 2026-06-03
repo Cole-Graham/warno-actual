@@ -15,6 +15,7 @@ from src.utils.logging_utils import setup_logger
 from .handlers import (
     add_corrected_shot_dispersion,
     apply_category_bomb_standards,
+    apply_clu_bomb_dispersion_standard,
     apply_aim_time_standards,
     apply_bomb_damage_standards,
     apply_clu_sol_trait_standards,
@@ -109,6 +110,9 @@ def edit_gen_gp_gfx_ammunition(source_path, game_db: Dict[str, Any]) -> None:
                         base_descr, category, weapon_name, game_db, logger,
                     )
                     _apply_weapon_edits(base_descr, category, data, ammo_data, game_db, weapon_name)
+                    apply_clu_bomb_dispersion_standard(
+                        base_descr, weapon_name, game_db, logger,
+                    )
                     logger.debug(f"Applied edits to {weapon_name}")
                 except Exception as e:
                     logger.error(f"Failed applying edits to {weapon_name}: {str(e)}")

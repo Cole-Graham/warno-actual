@@ -17,7 +17,10 @@ from src.constants.weapons import ammunitions, missiles
 from src.constants.weapons.standards.by_category import (
     AA_CATEGORIES,
     AA_SUPPRESS_BY_PHYSICAL_DAMAGE,
+    CLU_BOMB_STANDARDS,
 )
+
+CLU_BOMB_CATEGORY = "clu_bomb"
 from src.constants.weapons.vanilla_inst_modifications import (
     AMMUNITION_MISSILES_RENAMES,
     AMMUNITION_RENAMES,
@@ -194,6 +197,9 @@ def build_constants_precomputation_data(config: Dict[str, Any], game_db: Dict[st
         aa_suppress_damages = build_aa_suppress_damages(game_db) if game_db else {}
         save_aa_suppress_damages(aa_suppress_damages, config)
 
+        clu_bomb_dispersion = build_clu_bomb_dispersion(game_db) if game_db else {}
+        save_clu_bomb_dispersion(clu_bomb_dispersion, config)
+
         # Build he_dca weapons map (weapon_name -> final damage family)
         he_dca_weapons = build_he_dca_weapons(game_db) if game_db else {}
         save_he_dca_weapons(he_dca_weapons, config)
@@ -207,6 +213,7 @@ def build_constants_precomputation_data(config: Dict[str, Any], game_db: Dict[st
         mappings["insert_turret_templates"] = insert_templates
         mappings["deployment_time_units"] = deployment_time_units
         mappings["aa_suppress_damages"] = aa_suppress_damages
+        mappings["clu_bomb_dispersion"] = clu_bomb_dispersion
         mappings["he_dca_weapons"] = he_dca_weapons
         mappings["canon_he_accuracy_inheritance"] = canon_he_acc
 
@@ -219,6 +226,7 @@ def build_constants_precomputation_data(config: Dict[str, Any], game_db: Dict[st
             f"{len(insert_templates)} insert turret templates, "
             f"{len(deployment_time_units.get('protected_ammo', []))} protected ammo, "
             f"{len(aa_suppress_damages)} AA suppress damages, "
+            f"{len(clu_bomb_dispersion)} CLU bomb dispersions, "
             f"{len(he_dca_weapons)} he_dca weapons, "
             f"{len(canon_he_acc)} canon HE accuracy inheritances"
         )
@@ -592,6 +600,157 @@ def save_aa_suppress_damages(data: Dict[str, Dict[str, int]], config: Dict[str, 
         logger.debug(f"Saved aa_suppress_damages to {out_file}")
     except Exception as e:
         logger.error(f"Failed to save aa_suppress_damages: {e}")
+        raise
+
+
+def _lookup_vanilla_ammo_member(
+    weapon_name: str,
+    ammo_props: Dict[str, Any],
+    member_name: str,
+) -> Any:
+    """Look up a vanilla ammunition member from ammo_properties.
+
+    Tries exact ``Ammo_{weapon_name}`` first, then any ``Ammo_{weapon_name}_*``
+    entry (vanilla salvo variants may use ``_x{N}`` suffixes).
+    """
+    exact = ammo_props.get(f"Ammo_{weapon_name}", {})
+    val = exact.get(member_name)
+    if val is not None:
+        return val
+
+    prefix = f"Ammo_{weapon_name}_"
+    for key, props in ammo_props.items():
+        if key.startswith(prefix):
+            val = props.get(member_name)
+            if val is not None:
+                return val
+
+    return None
+
+
+def _effective_radius_splash_physical(
+    weapon_name: str,
+    data: Dict[str, Any],
+    ammo_props: Dict[str, Any],
+    ammo_index: Dict[str, Dict],
+    donor: Any,
+    is_new: bool,
+) -> Any:
+    """Resolve final RadiusSplashPhysicalDamagesGRU (constants > vanilla > donor)."""
+    radius = (
+        data.get("Ammunition", {})
+        .get("parent_membr", {})
+        .get("RadiusSplashPhysicalDamagesGRU")
+    )
+    if radius is None:
+        radius = _lookup_vanilla_ammo_member(
+            weapon_name, ammo_props, "RadiusSplashPhysicalDamagesGRU",
+        )
+    if radius is None and is_new and donor:
+        donor_data = ammo_index.get(donor, {})
+        radius = (
+            donor_data.get("Ammunition", {})
+            .get("parent_membr", {})
+            .get("RadiusSplashPhysicalDamagesGRU")
+        )
+        if radius is None:
+            radius = _lookup_vanilla_ammo_member(
+                donor, ammo_props, "RadiusSplashPhysicalDamagesGRU",
+            )
+    return radius
+
+
+def build_clu_bomb_dispersion(game_db: Dict[str, Any]) -> Dict[str, Dict[str, int]]:
+    """Build weapon_name -> dispersion members for CLU cluster bombs.
+
+    Uses ``CLU_BOMB_STANDARDS["ratios"]`` unless ``DispersionAt*`` are set
+    explicitly in constants ``parent_membr``. Effective radius follows the
+    same constants > vanilla > donor fallback as ``build_aa_suppress_damages``.
+    """
+    ammo_props = game_db.get("ammunition", {}).get("ammo_properties", {})
+    ratio_specs = CLU_BOMB_STANDARDS.get("ratios", {}).get("ammunition", {})
+
+    ammo_index: Dict[str, Dict] = {}
+    for (wn, cat, _d, _n), d in ammunitions.items():
+        if cat == CLU_BOMB_CATEGORY:
+            ammo_index[wn] = d
+
+    result: Dict[str, Dict[str, int]] = {}
+
+    for (weapon_name, category, donor, is_new), data in ammunitions.items():
+        if category != CLU_BOMB_CATEGORY:
+            continue
+
+        parent_membr = data.get("Ammunition", {}).get("parent_membr", {})
+        radius = _effective_radius_splash_physical(
+            weapon_name, data, ammo_props, ammo_index, donor, is_new,
+        )
+
+        dispersion_entry: Dict[str, int] = {}
+        for target_key, spec in ratio_specs.items():
+            if target_key in parent_membr:
+                dispersion_entry[target_key] = int(parent_membr[target_key])
+                continue
+
+            if not isinstance(spec, tuple) or len(spec) != 2:
+                logger.warning(
+                    f"(clu_bomb_dispersion) {weapon_name}: invalid ratio spec for "
+                    f"{target_key!r}: {spec!r}",
+                )
+                continue
+
+            ratio, base_member = spec[0], spec[1]
+            if not isinstance(ratio, (int, float)) or not isinstance(base_member, str):
+                logger.warning(
+                    f"(clu_bomb_dispersion) {weapon_name}: invalid ratio tuple for "
+                    f"{target_key!r}: {spec!r}",
+                )
+                continue
+
+            base_val = None
+            if base_member == "RadiusSplashPhysicalDamagesGRU":
+                base_val = radius
+            else:
+                base_val = parent_membr.get(base_member)
+                if base_val is None:
+                    base_val = _lookup_vanilla_ammo_member(
+                        weapon_name, ammo_props, base_member,
+                    )
+
+            if base_val is None:
+                logger.warning(
+                    f"(clu_bomb_dispersion) {weapon_name}: no {base_member} for "
+                    f"{target_key}, skipping",
+                )
+                continue
+
+            dispersion_entry[target_key] = int(round(float(ratio) * float(base_val)))
+
+        if dispersion_entry:
+            result[weapon_name] = dispersion_entry
+
+    logger.info(
+        f"Built CLU bomb dispersion mapping: {len(result)} weapons",
+    )
+    return result
+
+
+def save_clu_bomb_dispersion(
+    data: Dict[str, Dict[str, int]],
+    config: Dict[str, Any],
+) -> None:
+    """Save CLU bomb dispersion mapping as JSON file to disk."""
+    db_path = Path(config["data_config"]["database_path"])
+    constants_dir = db_path / "constants_precomputation"
+    ensure_db_directory(str(constants_dir))
+
+    out_file = constants_dir / "clu_bomb_dispersion.json"
+    try:
+        with open(out_file, "w") as f:
+            json.dump(data, f, indent=2, sort_keys=True)
+        logger.debug(f"Saved clu_bomb_dispersion to {out_file}")
+    except Exception as e:
+        logger.error(f"Failed to save clu_bomb_dispersion: {e}")
         raise
 
 

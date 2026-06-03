@@ -1781,11 +1781,10 @@ rfa_unit_edits = {
     },
     
     "BGS_RFA": {
-        "armor": "Infantry_armor_reference",
+        "CommandPoints": 15,
         "GameName": {
             "display": "BGS STREIFE"
         },
-        "CommandPoints": 15,
         "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "availability": [10, 0, 0, 0],

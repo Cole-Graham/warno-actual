@@ -16,8 +16,7 @@ from .Naval_Rifle_CMD_SOV import naval_rifle_cmd_sov
 from .Sniper_Spetsnaz_SOV import sniper_spetsnaz_sov
 from .Spetsnaz_Naval_SOV import spetsnaz_naval_sov
 from .VDV_Afgantsy_SOV import vdv_afgantsy_sov
-# Needs custom model with two turrets
-# from .Su_24M_clu_SOV import su_24m_clu_sov
+from .Su_24M_clu_SOV import su_24m_clu_sov
 # Need to edit the model to support adding smoke, on hold for now (temporarily increased armor in the meantime)
 # from .TOS1_Buratino_SOV import tos1_buratino_sov
 
@@ -38,6 +37,6 @@ __all__ = [
     "sniper_spetsnaz_sov",
     "spetsnaz_naval_sov",
     "vdv_afgantsy_sov",
-    # "su_24m_clu_sov",
-    # "tos1_buratino_sov",
+    "su_24m_clu_sov",
+    # "tos1_buratino_sov"lu_sov",,
 ]

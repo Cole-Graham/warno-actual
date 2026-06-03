@@ -1,12 +1,12 @@
 """Unit edit constants."""
 
-import ast
 import importlib
 import json
 import os
 from pathlib import Path
 from typing import Dict, Any, List, Tuple, Set
 
+from src.utils.dict_literal_duplicate_keys import validate_dict_literal_files
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger('dics')
@@ -291,35 +291,6 @@ def resolve_unit_edit_references_optimized(unit_edits_dict: Dict) -> Dict:
 _cached_unit_edits = None
 
 
-def _check_intra_file_duplicate_keys(dics_path: Path) -> None:
-    """Detect duplicate keys within a single *_unit_edits.py dict literal via AST."""
-    for file in sorted(dics_path.glob("*_unit_edits.py")):
-        try:
-            tree = ast.parse(file.read_text(encoding="utf-8"), filename=str(file))
-        except SyntaxError as e:
-            logger.error(f"Syntax error in {file.stem}, skipping duplicate check: {e}")
-            continue
-
-        for node in tree.body:
-            if not isinstance(node, ast.Assign):
-                continue
-            if not isinstance(node.value, ast.Dict):
-                continue
-            seen: dict[str, int] = {}
-            for key_node in node.value.keys:
-                if not isinstance(key_node, ast.Constant) or not isinstance(key_node.value, str):
-                    continue
-                key_str = key_node.value
-                if key_str in seen:
-                    logger.error(
-                        f"Intra-file duplicate key '{key_str}' in {file.stem} "
-                        f"(lines {seen[key_str]} and {key_node.lineno}). "
-                        f"Python silently drops the first entry."
-                    )
-                else:
-                    seen[key_str] = key_node.lineno
-
-
 def load_unit_edits() -> Dict:
     """Load and merge all unit edit dictionaries."""
     global _cached_unit_edits
@@ -330,9 +301,9 @@ def load_unit_edits() -> Dict:
     
     logger.info("Loading unit edit dictionaries...")
     
-    # Check for intra-file duplicate keys before importing modules
+    # Duplicate dict keys in source literals (nested keys too) before importing modules
     dics_path = Path(__file__).parent
-    _check_intra_file_duplicate_keys(dics_path)
+    validate_dict_literal_files(dics_path.glob("*_unit_edits.py"), label="unit_edits")
 
     # Dictionary name mapping
     dict_names = {
