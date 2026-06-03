@@ -6521,7 +6521,7 @@ sov_unit_edits = {
     },
 
     "Su_24M_clu_SOV": {
-        "CommandPoints": 200,
+        "CommandPoints": 240,
         "alternatives": {
             "mesh": "Su_24M_T2_SOV",
         },

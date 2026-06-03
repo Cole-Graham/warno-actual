@@ -6235,7 +6235,7 @@ usa_unit_edits = {
     },
     
     "F16E_TER_CLU_US": {
-        "CommandPoints": 230,
+        "CommandPoints": 270,
         "alternatives": {
             "mesh": "F16E_TER_2T_US",
         },

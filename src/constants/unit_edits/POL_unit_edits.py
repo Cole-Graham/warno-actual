@@ -2265,7 +2265,7 @@ pol_unit_edits = {
     },
     
     "T72M1_Wilk_POL": {  # T-72M2 Wilk
-        "CommandPoints": 195,
+        "CommandPoints": 210,
         "armor": {
             "top": (4, None),
         },
