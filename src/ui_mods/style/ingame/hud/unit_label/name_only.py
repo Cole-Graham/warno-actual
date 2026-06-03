@@ -62,61 +62,124 @@ ComponentFrame = TUIFramePropertyRTTI
 
 
 def _replace_upper_label_name_only(source_path) -> None:
-    """Replace vertical list UpperLabel with a container for VIP-compliant overlays."""
+    """Replace UpperLabelNameOnly with VIP-compliant vertical list and nested slot wrappers."""
     index = source_path.by_namespace("UpperLabelNameOnly").index
     source_path.replace(index, _get_upper_label_name_only())
-    logger.debug("Replaced UpperLabelNameOnly with BUCKContainerDescriptor layout")
+    logger.debug("Replaced UpperLabelNameOnly with wrapped vertical list layout")
 
 
 def _get_upper_label_name_only() -> str:
-    """Upper label: free-layout container (morale anchor, HP icon, carried units)."""
+    """Vertical list: y offsets on nested containers inside list slots, not on slot frames."""
     return '''\
-private UpperLabelNameOnly is BUCKContainerDescriptor
+private UpperLabelNameOnly is BUCKListDescriptor
 (
     ElementName = "UpperLabel"
     ComponentFrame = TUIFramePropertyRTTI
     (
-        MagnifiableOffset = [0.0, ~/ReticleMagnifiableSize * -5.5]
+        MagnifiableOffset = [0.0, ~/ReticleMagnifiableSize * -1.0]
         MagnifiableWidthHeight = [2000.0, 0.0]
         AlignementToFather = [0.5, 0.0]
         AlignementToAnchor = [0.5, 1.0]
     )
     ClipContent = false
     IsClippable = false
-    Components =
+
+    Axis = ~/ListAxis/Vertical
+
+    Elements =
     [
-        ~/UnitNameAndRightListNameOnly,
-        BUCKContainerDescriptor
+        BUCKListElementDescriptor
         (
-            ElementName = "MoraleGaugeAnchor"
-            ComponentFrame = TUIFramePropertyRTTI
+            ComponentDescriptor = BUCKContainerDescriptor
             (
-                MagnifiableOffset = [0.0, 0.0]
-                AlignementToFather = [0.5, 0.0]
-                AlignementToAnchor = [0.5, 0.0]
-            )
-            FitStyle = ~/ContainerFitStyle/FitToContent
-            Components =
-            [
-                TMoraleGaugeDescriptor
+                ElementName = "UnitNameSlot"
+                ComponentFrame = TUIFramePropertyRTTI
                 (
-                    ElementName = "MoraleGauge"
-                    Description = ~/MoraleAndHPGaugesDescription
-                    LocalRenderLayer = 1
-                    UniformDrawer = $/UserInterface/UIUniformDrawer
-                    AlignementToFather = [0.5, 0.0]
-                    AlignementToAnchor = [0.5, 0.0]
-                ),
-            ]
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+                FitStyle = ~/ContainerFitStyle/FitToContentVertically
+                Components =
+                [
+                    ~/UnitNameAndRightListNameOnly,
+                ]
+            )
         ),
-        ~/UnitLabelUnitIconNameOnly,
-        CarriedUnitNameList
+        BUCKListElementDescriptor
         (
-            ComponentFrame = TUIFramePropertyRTTI
+            ComponentDescriptor = BUCKContainerDescriptor
             (
-                MagnifiableOffset = [0.0, -18.5]
-                AlignementToFather = [0.5, 0.0]
-                AlignementToAnchor = [0.5, 0.0]
+                ElementName = "MoraleGaugeSlot"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+                FitStyle = ~/ContainerFitStyle/FitToContentVertically
+                Components =
+                [
+                    BUCKContainerDescriptor
+                    (
+                        ElementName = "MoraleGaugeAnchor"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [0.0, -8.0]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+                        FitStyle = ~/ContainerFitStyle/FitToContent
+                        Components =
+                        [
+                            TMoraleGaugeDescriptor
+                            (
+                                ElementName = "MoraleGauge"
+                                Description = ~/MoraleAndHPGaugesDescription
+                                LocalRenderLayer = 1
+                                UniformDrawer = $/UserInterface/UIUniformDrawer
+                                AlignementToFather = [0.5, 0.0]
+                                AlignementToAnchor = [0.5, 0.0]
+                            ),
+                        ]
+                    ),
+                ]
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ElementName = "UnitIconSlot"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+                FitStyle = ~/ContainerFitStyle/FitToContentVertically
+                Components =
+                [
+                    ~/UnitLabelUnitIconNameOnly,
+                ]
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ElementName = "CarriedUnitSlot"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+                FitStyle = ~/ContainerFitStyle/FitToContentVertically
+                Components =
+                [
+                    CarriedUnitNameList
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [0.0, -44.0]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+                    ),
+                ]
             )
         ),
     ]

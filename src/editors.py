@@ -115,6 +115,7 @@ from src.ui_mods.style import (
     edit_uispecificoffmapview,
     edit_uispecificshortcutsforselectionview,
     edit_uispecificshowroomarmorycomponent,
+    edit_uispecificshowroomcomponentbase,
     edit_uispecificshowroomdeckcreatorscreencomponent,
     edit_uispecificshowroomgroupsdeckcreatorscreenview,
     edit_uispecificskirmishproductionmenuview,
@@ -238,6 +239,7 @@ __all__ = [
     'edit_uispecificoffmapview',
     'edit_uispecificshortcutsforselectionview',
     'edit_uispecificshowroomarmorycomponent',
+    'edit_uispecificshowroomcomponentbase',
     'edit_uispecificshowroomdeckcreatorscreencomponent',
     'edit_uispecificshowroomgroupsdeckcreatorscreenview',
     'edit_uispecificskirmishproductionmenuview',
@@ -648,6 +650,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         ],
         "GameData/UserInterface/Use/OutGame/UseOutGameTextures.ndf": [
             (edit_useoutgametextures, "ui"),
+        ],
+        "GameData/UserInterface/Use/ShowRoom/UISpecificShowRoomComponentBase.ndf": [
+            (edit_uispecificshowroomcomponentbase, "ui"),
         ],
         "GameData/UserInterface/Use/ShowRoom/Views/UISpecificShowRoomArmoryComponent.ndf": [
             (edit_uispecificshowroomarmorycomponent, "ui"),

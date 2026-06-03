@@ -92,7 +92,6 @@ pol_unit_edits = {
             "TimeForWeaponDeployment": 15,
             "TimeForWeaponPacking": 0.1,
         },
-        "UpgradeFromUnit": "DCA_ZU_23_2_Para_POL",
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_2_canon_Jod_towed_23mm": 20,
@@ -2161,8 +2160,6 @@ pol_unit_edits = {
                 "_amphibie",
             ],
         },
-        "MenuIconTexture": "Texture_RTS_H_reco",
-        "TypeStrategicCount": "ETypeStrategicDetailedCount/Reco",
         "availability": [0, 8, 6, 0],
         "remove_zone_capture": None,
         "DeploymentShift": 750,
@@ -2268,7 +2265,7 @@ pol_unit_edits = {
     },
     
     "T72M1_Wilk_POL": {  # T-72M2 Wilk
-        "CommandPoints": 195,
+        "CommandPoints": 210,
         "armor": {
             "top": (4, None),
         },

@@ -58,12 +58,14 @@ Standards enforce balance rules across ammunition and missile descriptors. They 
 
 ### Edit ordering
 
-**All standards run before dict edits.** Dict edits may override any standard; standards **never** override dict edits.
+**Category fixed standards run before dict edits.** Dict edits may override those fixed values; standards **never** override dict edits.
 
-- **`ammunition.py`:** pattern passes first, then per-weapon: category standards → `_apply_weapon_edits`.
-- **`missiles.py`:** file-wide passes first, then per-missile: category standards (SEAD, AA hit-roll, AA suppress) → `_apply_missile_edits`.
+- **`ammunition.py`:** pattern passes first, then per-weapon: category standards (fixed values) → `_apply_weapon_edits` → CLU bomb dispersion (precomputed, see below).
+- **`missiles.py`:** file-wide passes first, then per-missile: category standards (SEAD, AA suppress precompute apply, …) → `_apply_missile_edits` → AA range-scaled accuracy where needed.
 
-When adding a new standard, call it **before** `_apply_weapon_edits` / `_apply_missile_edits` — **never** after dict edits.
+When adding a new **fixed** standard, call it **before** `_apply_weapon_edits` / `_apply_missile_edits`.
+
+**CLU bomb dispersion** is an exception: `CLU_BOMB_STANDARDS["ratios"]` are not applied in `apply_category_bomb_standards`. They are precomputed in `build_clu_bomb_dispersion` (constants radius + `CLU_BOMB_STANDARDS` ratios, or explicit `DispersionAt*` in `parent_membr`) and written by `apply_clu_bomb_dispersion_standard` **after** dict edits so dispersion tracks constants `RadiusSplashPhysicalDamagesGRU`.
 
 ### Constants precomputation
 
@@ -71,7 +73,7 @@ If a standard needs values from **both** constants dicts and **vanilla** game da
 
 1. Add a `build_*` in [`src/data/constants_precomputation.py`](src/data/constants_precomputation.py), call it from `build_constants_precomputation_data`, emit JSON under `src/data/database/constants_precomputation/`.
 2. Wire into `game_db` in `run_patcher.py` and `run_patcher_with_bat.py`.
-3. Read from `game_db` in the handler at NDF edit time.
+3. Read from `game_db` in the handler at NDF edit time (for CLU dispersion, apply **after** dict edits on that weapon).
 
 ### NDF namespace and salvo variants
 
@@ -96,6 +98,12 @@ If a standard needs values from **both** constants dicts and **vanilla** game da
 | `src/constants/new_units/new_depictions/` | Raw NDF strings **or** the same tuple-key edit dict | **New** units: clone donor depiction, then apply patches |
 
 For ground vehicles, tuple-key `NEW_DEPICTIONS` entries (e.g. `TowedUnitSubDepictionGenerator`) are applied after clone in `depictionvehicles.py`. Full custom vehicle depictions still use raw NDF under string keys when `depictions.custom` is set on the `NEW_UNITS` entry.
+
+---
+
+## Unit edits and new units: duplicate dict keys
+
+`load_unit_edits()` and `load_new_units()` AST-scan `*_unit_edits.py` / `*_new_units.py` for duplicate keys at every nesting level in dict literals and log **ERROR** if found (Python keeps only the last value; merged dicts cannot be checked after import). Fix duplicates in the source file. **Exception:** duplicate keys inside a `WeaponDescriptor` → `Salves` block are allowed (multiple mounts, same ammo). For multiple `replace` rows per donor ammo, use a list under one key per `replace_schema.py`, not duplicate dict keys.
 
 ---
 

@@ -141,6 +141,9 @@ usa_unit_edits = {
                     },
                 },
             },
+            "Salves": {
+                "MMG_M240_7_62mm": 48,
+            },
         },
         "Divisions": {
             "default": {
@@ -149,11 +152,6 @@ usa_unit_edits = {
         },
         "availability": [0, 0, 3, 0],
         "UpgradeFromUnit": "M577_CMD2_US",
-        "WeaponDescriptor": {
-            "Salves": {
-                "MMG_M240_7_62mm": 48,
-            },
-        },
     },
 
     "M2A2_Bradley_Leader_US": {
@@ -3827,7 +3825,6 @@ usa_unit_edits = {
     "M1025_Humvee_scout_US": {
         "CommandPoints": 25,
         "ButtonTexture": "M1025_Humvee_HMG_LUX",
-        "UpgradeFromUnit": None,
         "WeaponDescriptor": {
             "Salves": {
                 "HMG_12_7_mm_M2HB": 35,
@@ -4233,7 +4230,6 @@ usa_unit_edits = {
     "OV10_Bronco_US": {
         "CommandPoints": 130,
         "availability": [0, 3, 2, 0],
-        "UpgradeFromUnit": "OA10A_US",
         # "WeaponDescriptor": {
         #     "Salves": {
         #         "RocketAir_Zuni_1272mm_avion_salvolength8": 2,
@@ -4894,7 +4890,7 @@ usa_unit_edits = {
         "availability": [10, 0, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_2_canon_Bofors_40mm": 12,
+                "DCA_2_canon_Bofors_40mm_Duster": 12,
             },
         },
         "UpgradeFromUnit": "M274_Mule_M2HB_US",
@@ -5952,9 +5948,6 @@ usa_unit_edits = {
     "F111F_Aardvark_CBU_US": {  # 24x Mk-20 Rockeye
         "CommandPoints": 280,
         "ECM": -0.50,
-        "SpecialtiesList": {
-            "add_specs": ["'terrain_radar'"],
-        },
         "availability": [0, 2, 0, 0],
         "alternatives": {
             "mesh": "F111F_Sweep40_US",
@@ -5995,7 +5988,7 @@ usa_unit_edits = {
             },
         },
         "SpecialtiesList": {
-            "add_specs": ["'_jammer_air'"],
+            "add_specs": ["'terrain_radar'", "'_jammer_air'"],
         },
     },
 
@@ -6214,7 +6207,6 @@ usa_unit_edits = {
 
     "F16E_CBU_US": {
         "CommandPoints": 200,
-        "ECM": -0.25,
         "Divisions": {
             "remove": ["US_11ACR"],
             "default": {
@@ -6224,7 +6216,7 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "ECM": -0.35,
+        "ECM": -0.25,
         "optics": {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 13250,
@@ -6243,7 +6235,10 @@ usa_unit_edits = {
     },
     
     "F16E_TER_CLU_US": {
-        "CommandPoints": 230,
+        "CommandPoints": 270,
+        "alternatives": {
+            "mesh": "F16E_TER_2T_US",
+        },
         "ECM": -0.35,
         "optics": {
             "OpticalStrengths": {
@@ -6253,6 +6248,52 @@ usa_unit_edits = {
         "availability": [0, 2, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'_jammer_air'"],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "insert": [(2, 1)],
+            },
+            "SalvoIsMainSalvo": [False, True, True, False],
+            # "turrets": {
+            #     0: {
+            #         "Tag": '"tourelle1"',
+            #         "YulBoneOrdinal": 1,
+            #     },
+            # },
+            "equipmentchanges": {
+                "replace": {
+                    "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength8": {
+                        "new_weapon": "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength6",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
+                "insert": [(2, "Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength6")],
+                "insert_edits": {
+                    2: {
+                        "turret_edits": {
+                            "Tag": '"tourelle3"',
+                            "YulBoneOrdinal": 3,
+                        },
+                        "AmmoBoxIndex": 2,
+                        "HandheldEquipmentKey": "'WeaponAlternative_3'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_3'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
+                    },
+                    3: {
+                        "turret_edits": {
+                            "Tag": '"tourelle4"',
+                            "YulBoneOrdinal": 4,
+                        },
+                        "AmmoBoxIndex": 3,
+                        "HandheldEquipmentKey": "'WeaponAlternative_4'",
+                        "WeaponActiveAndCanShootPropertyName": "'WeaponActiveAndCanShoot_4'",
+                        "WeaponIgnoredPropertyName": "'WeaponIgnored_4'",
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_4"],
+                    },
+                },
+            },
         },
     },
 
@@ -6289,7 +6330,6 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
-        "ECM": -0.35,
         "optics": {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 13250,

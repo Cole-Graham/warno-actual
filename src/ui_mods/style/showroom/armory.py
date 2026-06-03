@@ -21,14 +21,24 @@ def edit_uispecificshowroomarmorycomponent(source_path) -> None:
     source_path.by_namespace("MaxUnitsInDeckPerCategory").v = "11"
     logger.debug("Updated max units in deck per category")
     
-    if target == "gameplay":
-        _edit_armory_component(source_path)
-        _edit_category_button_descr(source_path)
-        _edit_togglable_filter_button(source_path)
-        _edit_division_filter_button(source_path)
-        _edit_division_scroll_containers(source_path)
-        _edit_allegiancedivisionfilter(source_path)
-        _edit_unitgridnamefilter(source_path)
+    # if target == "gameplay":
+        # _edit_armory_component(source_path)
+        # _edit_category_button_descr(source_path)
+        # _edit_togglable_filter_button(source_path)
+        # _edit_division_filter_button(source_path)
+        # _edit_division_scroll_containers(source_path)
+        # _edit_allegiancedivisionfilter(source_path)
+        # _edit_unitgridnamefilter(source_path)
+    
+    _edit_armory_component(source_path)
+    _edit_category_button_descr(source_path)
+    _edit_togglable_filter_button(source_path)
+    _edit_division_filter_button(source_path)
+    _edit_division_scroll_containers(source_path)
+    _edit_flag_division_filter_row_spacing(source_path)
+    _edit_display_new_filter_bar_spacing(source_path)
+    _edit_allegiancedivisionfilter(source_path)
+    _edit_unitgridnamefilter(source_path)
 
 def _edit_armory_component(source_path) -> None:
     """edit ArmoryComponentDescriptor"""
@@ -48,19 +58,13 @@ def _edit_category_button_descr(source_path) -> None:
 def _edit_togglable_filter_button(source_path) -> None:
     """edit ShowroomTogglableFilterButton
 
-    Shrinks the national flag buttons back to the mod's smaller size and shrinks
-    the flag texture frame (added in the VIP layout) to match the smaller button
-    height so the clipped flag fills the button cleanly.
+    Shrinks the national flag buttons back to the mod's smaller size. The flag
+    texture's TextureFrame now uses RelativeWidthHeight = [1.0, 1.0], so it scales
+    with the button automatically and needs no fixed-height override.
     """
 
     togglable_filter_button = source_path.by_namespace("ShowroomTogglableFilterButton")
     togglable_filter_button.v.params.by_param("MagnifiableWidthHeight").v = "[40.0, 24.0]"
-
-    # The VIP template clips the flag texture to a [0, 40] frame; match it to the
-    # smaller [40, 24] button so the flag isn't cut off vertically.
-    components = togglable_filter_button.v.by_m("Components")
-    flag_texture = find_obj_by_type(components.v, "BUCKTextureDescriptor")
-    flag_texture.v.by_m("TextureFrame").v.by_m("MagnifiableWidthHeight").v = "[0, 24]"
     
 def _edit_division_filter_button(source_path) -> None:
     """edit ArmoryDivisionFilterButtonDescriptor"""
@@ -80,7 +84,6 @@ def _edit_division_scroll_containers(source_path) -> None:
     elements = flag_and_division_filter.v.by_m("Elements")
 
     new_value = """[
-    // NATO national flags
     BUCKListElementDescriptor
     (
         ComponentDescriptor = BUCKListElementDescriptor
@@ -100,7 +103,6 @@ def _edit_division_scroll_containers(source_path) -> None:
             )
         )
     ),
-    // NATO divisions (scrollable)
     BUCKListElementDescriptor
     (
         ComponentDescriptor = BUCKSpecificScrollingContainerDescriptor
@@ -124,7 +126,6 @@ def _edit_division_scroll_containers(source_path) -> None:
             Components = [AllegianceDivisionFilter(ElementName = "NATODivisionFilterRack")]
         )
     ),
-    // PACT national flags
     BUCKListElementDescriptor
     (
         ComponentDescriptor = BUCKListElementDescriptor
@@ -144,7 +145,6 @@ def _edit_division_scroll_containers(source_path) -> None:
             )
         )
     ),
-    // PACT divisions (scrollable)
     BUCKListElementDescriptor
     (
         ComponentDescriptor = BUCKSpecificScrollingContainerDescriptor
@@ -170,6 +170,39 @@ def _edit_division_scroll_containers(source_path) -> None:
     ),
 ]"""
     elements.v = new_value
+
+
+def _edit_flag_division_filter_row_spacing(source_path) -> None:
+    """Add 2px vertical gaps between the four flag/division filter rows."""
+
+    flag_and_division_filter = source_path.by_namespace("TopFilterDisplay_AllFlagAndDivisionFilter").v
+    margin = flag_and_division_filter.by_m("InterItemMargin", False)
+    if margin is None:
+        flag_and_division_filter.add("InterItemMargin = TRTTILength(Magnifiable = 2.0)")
+    else:
+        margin.v = "TRTTILength(Magnifiable = 2.0)"
+    logger.debug("Set TopFilterDisplay_AllFlagAndDivisionFilter InterItemMargin to 2.0")
+
+
+def _edit_display_new_filter_bar_spacing(source_path) -> None:
+    """Push DisplayNewFilterBar down 4px via FiltersPanelList InterItemMargin."""
+
+    filters_panel_list = source_path.by_namespace("FiltersPanelList").v
+    margin = filters_panel_list.by_m("InterItemMargin", False)
+    if margin is None:
+        filters_panel_list.add("InterItemMargin = TRTTILength(Magnifiable = 4.0)")
+        new_value = 4.0
+    else:
+        magnifiable = margin.v.by_m("Magnifiable", False)
+        if magnifiable is not None:
+            current = float(magnifiable.v)
+            new_value = current + 4.0
+            magnifiable.v = str(new_value)
+        else:
+            margin.v = "TRTTILength(Magnifiable = 4.0)"
+            new_value = 4.0
+    logger.debug("Set FiltersPanelList InterItemMargin to %s", new_value)
+
 
 def _edit_allegiancedivisionfilter(source_path) -> None:
     """edit AllegianceDivisionFilter"""

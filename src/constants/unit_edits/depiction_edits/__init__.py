@@ -75,7 +75,7 @@ from .SOV_depiction_edits import (
     naval_rifle_cmd_sov,
     sniper_spetsnaz_sov,
     vdv_afgantsy_sov,
-    # su_24m_clu_sov,
+    su_24m_clu_sov,
     # tos1_buratino_sov,
 )
 from .UK_depiction_edits import (
@@ -107,6 +107,7 @@ from .USA_depiction_edits import (
     f15e_strikeeagle_us,
     f16e_cbu_us,
     f16e_napalm_us,
+    f16e_ter_clu_us,
     f111e_aardvark_napalm_us,
     f111f_aardvark_cbu_us,
     f111f_aardvark_napalm_us,
@@ -208,7 +209,7 @@ __all__ = [
     "naval_rifle_cmd_sov",
     "sniper_spetsnaz_sov",
     "vdv_afgantsy_sov",
-    # "su_24m_clu_sov",
+    "su_24m_clu_sov",
     # "tos1_buratino_sov",
     
     # UK
@@ -240,6 +241,7 @@ __all__ = [
     "f15e_strikeeagle_us",
     "f16e_cbu_us",
     "f16e_napalm_us",
+    "f16e_ter_clu_us",
     "f111e_aardvark_napalm_us",
     "f111f_aardvark_cbu_us",
     "f111f_aardvark_napalm_us",

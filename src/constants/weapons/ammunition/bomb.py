@@ -505,6 +505,21 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength6", "clu_bomb", None, False): { # 43
+        "Ammunition": {
+            "Arme": {
+                "Index": 8,
+            },
+            "parent_membr": {
+                "ImpactHappening": "'MLRSClusterAP100m'",
+                "PhysicalDamages": 1,
+                "RadiusSplashPhysicalDamagesGRU": 100,
+                "RadiusSplashSuppressDamagesGRU": 133,
+                "SupplyCost": 340.0,
+            },
+        },
+    },
 
     ("Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength5", "clu_bomb", None, False): { # 43
         "Ammunition": {
