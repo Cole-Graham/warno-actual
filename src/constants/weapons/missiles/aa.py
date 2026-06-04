@@ -588,6 +588,54 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("SAM_5V27D", "SAM", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_sam_tbagru",
+            },
+            "hit_roll": {
+                "Idling": 55,
+            },
+            "parent_membr": {
+                "MaximumRangeHelicopterGRU": 2800,
+                "TimeBetweenTwoShots": 2.5,
+                "TimeBetweenTwoFx": 2.5,
+            },
+        },
+        "SupplyCost": 140.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [4, 2],
+            "units": {
+                4: ["DCA_S125_quad_Neva_SOV"],
+                2: ["DCA_S125_twin_Neva_SOV"],
+            },
+        },
+    },
+
+    ("SAM_5V27D_HAGRU", "SAM", "SAM_5V27D", True): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_sam_hagru",
+            },
+            "hit_roll": {
+                "Idling": 55,
+            },
+            "parent_membr": {
+                "MaximumRangeHelicopterGRU": 2800,
+                "TimeBetweenTwoShots": 2.5,
+                "TimeBetweenTwoFx": 2.5,
+            },
+        },
+        "SupplyCost": 140.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [4, 2],
+            "units": {
+                4: ["DCA_S125_quad_Neva_SOV"],
+                2: ["DCA_S125_twin_Neva_SOV"],
+            },
+        },
+    },
 
     ("SAM_Igla", "MANPAD", None, False): { # 192
         "Ammunition": {

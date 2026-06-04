@@ -60,10 +60,6 @@ rfa_unit_edits = {
         "availability": [9, 7, 0, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "UpgradeFromUnit": "FOB_RFA",
     },
     
@@ -82,10 +78,6 @@ rfa_unit_edits = {
         "availability": [9, 7, 0, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "UpgradeFromUnit": "FOB_RFA",
     },
     
@@ -1853,6 +1845,7 @@ rfa_unit_edits = {
         "GameName": {
             "display": "FJ AUFKLÄRER"
         },
+        "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
@@ -1865,6 +1858,7 @@ rfa_unit_edits = {
         "GameName": {
             "display": "GEB. JAGDKOMMANDO"
         },
+        "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
@@ -1906,6 +1900,7 @@ rfa_unit_edits = {
         "GameName": {
             "display": "GEB. AUFKLÄRER"
         },
+        "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
@@ -1915,6 +1910,7 @@ rfa_unit_edits = {
         "armor": "Infantry_armor_reference",
         "CommandPoints": 35,
         "availability": [8, 0, 0, 0],
+        "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
@@ -1928,6 +1924,7 @@ rfa_unit_edits = {
         "GameName": {
             "display": "JÄGER AUFKLÄRER"
         },
+        "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
@@ -1942,6 +1939,7 @@ rfa_unit_edits = {
         "GameName": {
             "display": "FERN. SCHARFSCHÜTZE"
         },
+        "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
@@ -1978,6 +1976,7 @@ rfa_unit_edits = {
         "GameName": {
             "display": "GEB. SCHARFSCHÜTZE"
         },
+        "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
@@ -1990,6 +1989,7 @@ rfa_unit_edits = {
         "GameName": {
             "display": "SEK"
         },
+        "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'_choc'", "'infantry_equip_light'", "'_swift'"],
         },
@@ -2003,6 +2003,7 @@ rfa_unit_edits = {
         "armor": "Infantry_armor_reference",
         "CommandPoints": 60,
         "availability": [0, 0, 4, 3],
+        "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
@@ -2091,10 +2092,6 @@ rfa_unit_edits = {
         "CommandPoints": 30,
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_1_canon_Bofors_40mm": 1,
@@ -2110,10 +2107,6 @@ rfa_unit_edits = {
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_1_canon_Bofors_upgrade_40mm_autoloader_radar": 1,
@@ -2144,10 +2137,6 @@ rfa_unit_edits = {
         "availability": [0, 9, 7, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_1_canon_FK20_20mm_TOWED": 29,
@@ -2161,7 +2150,7 @@ rfa_unit_edits = {
     #     "max_speed": 6,
     #     "WeaponDeployment": {
     #         "TimeForWeaponDeployment": 15,
-    #         "TimeForWeaponPacking": 0.1,
+    #         "TimeForWeaponPacking": 0,
     #     },
     #     "WeaponDescriptor": {
     #         "Salves": {

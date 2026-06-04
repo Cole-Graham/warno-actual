@@ -53,10 +53,6 @@ UK_NEW_UNITS = {
         },
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "Gatling_M61_Vulcan_20mm_late_TOWED": 8,

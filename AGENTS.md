@@ -88,6 +88,24 @@ If a standard needs values from **both** constants dicts and **vanilla** game da
 2. Re-export from `src/constants/weapons/standards/__init__.py` and `src/constants/weapons/__init__.py`.
 3. Import in the handler that applies the standard.
 
+### HOBS no-HMD (weapon descriptors)
+
+Some HOBS missiles require a helmet-mounted display (`_hmd`) for full off-boresight capability. **Existing** units that mount configured HOBS ammo **without** projected `_hmd` from `unit_edits` `SpecialtiesList` get narrowed turret arcs on turrets carrying that missile and ammo swapped to `*_NoOBS` variants.
+
+- **Constants:** [`src/constants/unit_edits/standards/pattern/hobs_no_hmd.py`](src/constants/unit_edits/standards/pattern/hobs_no_hmd.py) — `HOBS_NO_HMD_PATTERN_STANDARD` with a `missile_rules` tuple (append entries for more HOBS weapons later).
+- **Handler:** [`weapon_descriptor/handlers/hobs_no_hmd.py`](src/gameplay_mods/generated/gameplay/gfx/weapon_descriptor/handlers/hobs_no_hmd.py).
+- **Ordering:** `apply_hobs_no_hmd_pattern_standard` runs on vanilla `WeaponDescriptor.ndf` rows **after** `vanilla_renames_weapondescriptor`, **before** `new_units_weapondescriptor` and `unit_edits_weapondescriptor`, so per-unit dict edits override. **New units** are not scanned here; set turret angles and ammo in `NEW_UNITS["WeaponDescriptor"]` instead. TBAGRU HAGRU attachment in `unit_edits_weapondescriptor` still runs afterward and can add `*_NoOBS_HAGRU` clones on existing units.
+
+### Artillery deployment time
+
+Howitzers, MLRS, and mortars get deployment time via category + unit pattern standards (most units no longer need manual `"WeaponDeployment"` in `unit_edits`).
+
+- **Ammo constants:** [`standards/by_category.py`](src/constants/weapons/standards/by_category.py) — `ARTILLERY_DEPLOYMENT_CATEGORIES` (`howitzer`, `MLRS`, `mortar`) sets `HasDeploymentTime = True` in [`ammunition.py`](src/gameplay_mods/generated/gameplay/gfx/ammunition_/ammunition.py) before dict edits.
+- **Precompute:** [`build_deployment_time_units`](src/data/constants_precomputation.py) extends `protected_ammo` / `protected_units` and emits `unit_deployment_seconds` (7 s or 15 s tier). Mounted ammo names from `weapons_db` are resolved through equipment `replace` edits, [`AMMUNITION_RENAMES`](src/constants/weapons/vanilla_inst_modifications.py), and salvo suffix variants (`_x{N}` → `_salvolength{N}`) before lookup. Aircraft and helos are excluded when the protected ammo is artillery-only.
+- **Unit handler:** [`handlers/tweapondeployment.py`](src/gameplay_mods/generated/gameplay/gfx/unite_descriptor/handlers/tweapondeployment.py) — runs after batch module add/remove, before `unit_edits`, so explicit `"WeaponDeployment"` dict edits still override.
+- **Tier rule:** 15 s if `RadiusSplashPhysicalDamagesGRU >= 152` **or** `PhysicalDamages >= 4.2`; otherwise 7 s. All packup times are 0 s.
+- **Blanket disable:** unchanged — `_blanket_disable_deployment_time` strips non-protected ammo using the same name-resolution rules as precompute (`ammo_name_keeps_deployment_time`). DCA/ATGM ammo with explicit `HasDeploymentTime` in constants uses the same protection path.
+
 ---
 
 ## Depiction edits for existing vs new units

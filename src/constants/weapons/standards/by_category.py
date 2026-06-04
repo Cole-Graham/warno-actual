@@ -125,3 +125,17 @@ BOMB_STANDARDS: dict[str, dict] = {
 BOMB_CATEGORY_WEAPON_WHITELIST: dict[str, FrozenSet[str]] = {
     "clu_bomb": CLU_BOMB_WEAPON_NAMES,
 }
+
+# -- Artillery deployment (howitzer / MLRS / mortar) -----------------------
+
+ARTILLERY_DEPLOYMENT_CATEGORIES: frozenset[str] = frozenset({"howitzer", "MLRS", "mortar"})
+
+ARTILLERY_DEPLOYMENT_AMMO_STANDARD: dict = {
+    "HasDeploymentTime": True,
+}
+
+ARTILLERY_DEPLOYMENT_CALIBER_THRESHOLD_GRU: int = 152
+ARTILLERY_DEPLOYMENT_PHYSICAL_THRESHOLD: float = 4.2
+ARTILLERY_DEPLOYMENT_TIME_LARGE: int = 15
+ARTILLERY_DEPLOYMENT_TIME_SMALL: int = 7
+ARTILLERY_PACKUP_TIME: int = 0

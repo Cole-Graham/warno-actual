@@ -7,6 +7,7 @@ logger = setup_logger(__name__)
 from .handlers import (
     apply_default_salves,
     apply_he_dca_air_mounts,
+    apply_hobs_no_hmd_pattern_standard,
     new_units_weapondescriptor,
     unit_edits_weapondescriptor,
     vanilla_renames_weapondescriptor,
@@ -19,6 +20,7 @@ def edit_gen_gp_gfx_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) 
     unit_edits = load_unit_edits()
     
     vanilla_renames_weapondescriptor(source_path, logger, game_db)
+    apply_hobs_no_hmd_pattern_standard(logger, source_path, game_db)
     new_units_weapondescriptor(source_path, game_db)
     unit_edits_weapondescriptor(source_path, game_db)
     # Salves after unit edits to ensure we're working from the correct ammo names

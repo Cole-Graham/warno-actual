@@ -29,6 +29,7 @@ _FACTION_META = {
     "RFA": {"Faction": "NATO", "Nation": "RFA"},
     "FR": {"Faction": "NATO", "Nation": "FR"},
     "POL": {"Faction": "PACT", "Nation": "POL"},
+    "SOV": {"Faction": "PACT", "Nation": "SOV"},
 }
 
 # Per-donor config: index for NEW_UNITS key, GUIDs, optional stat/name overrides.
@@ -87,6 +88,16 @@ SUPPLY_TRANSPORT_VARIANT_CONFIG: Dict[str, Dict[str, Any]] = {
             "CadavreGUID": "a76bf537-47da-467a-9142-eb7d012583e6",
         },
         "game_name": {"display": "#AA BEDFORD MJ SUPPLY", "token": "BEDFTRNSUK"},
+    },
+    "KrAZ_255B_supply_SOV": {
+        "index": 0,
+        "guids": {
+            "GUID": "b0e3b005-337e-43dc-863a-bae034bb94cf",
+            "InfantrySquadModuleGUID": "dbccbb47-0892-4c88-9bd0-f554f2c44adb",
+            "ShowroomGUID": "331bccef-dcd2-483d-8eb0-5ab8b252a601",
+            "CadavreGUID": "2e0ebec6-65de-42fd-9d04-589246a90720",
+        },
+        "game_name": {"display": "#AA KrAZ-255B SNAB.", "token": "AAKRAZTRAN"},
     },
 }
 

@@ -17,6 +17,11 @@ from src.constants.weapons import ammunitions, missiles
 from src.constants.weapons.standards.by_category import (
     AA_CATEGORIES,
     AA_SUPPRESS_BY_PHYSICAL_DAMAGE,
+    ARTILLERY_DEPLOYMENT_CALIBER_THRESHOLD_GRU,
+    ARTILLERY_DEPLOYMENT_CATEGORIES,
+    ARTILLERY_DEPLOYMENT_PHYSICAL_THRESHOLD,
+    ARTILLERY_DEPLOYMENT_TIME_LARGE,
+    ARTILLERY_DEPLOYMENT_TIME_SMALL,
     CLU_BOMB_STANDARDS,
 )
 
@@ -190,6 +195,8 @@ def build_constants_precomputation_data(config: Dict[str, Any], game_db: Dict[st
         # Build protected ammo set for blanket deployment-time disable
         deployment_time_units = build_deployment_time_units(game_db) if game_db else {
             "protected_ammo": [],
+            "protected_units": [],
+            "unit_deployment_seconds": {},
         }
         save_deployment_time_units(deployment_time_units, config)
 
@@ -357,7 +364,119 @@ def save_ammunition_renames(renames: Dict[str, Dict[str, str]], config: Dict[str
         raise
 
 
-def build_deployment_time_units(game_db: Dict[str, Any]) -> Dict[str, List[str]]:
+def _unit_is_air_or_helo(unit_name: str, unit_db: Dict[str, Any]) -> bool:
+    unit_data = unit_db.get(unit_name, {})
+    if unit_data.get("is_helo_unit"):
+        return True
+    return "airplane_movement" in unit_data
+
+
+def _parse_optional_number(value: Any) -> float | None:
+    if value is None:
+        return None
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def _effective_ammo_stat(
+    weapon_name: str,
+    stat_key: str,
+    constants_data: Dict[str, Any],
+    ammo_props: Dict[str, Any],
+) -> float | None:
+    parent_membr = constants_data.get("Ammunition", {}).get("parent_membr", {})
+    if stat_key in parent_membr:
+        return _parse_optional_number(parent_membr[stat_key])
+    return _parse_optional_number(
+        ammo_props.get(f"Ammo_{weapon_name}", {}).get(stat_key),
+    )
+
+
+def _artillery_deployment_seconds(radius_gru: float | None, physical_damages: float | None) -> int:
+    if radius_gru is not None and radius_gru >= ARTILLERY_DEPLOYMENT_CALIBER_THRESHOLD_GRU:
+        return ARTILLERY_DEPLOYMENT_TIME_LARGE
+    if physical_damages is not None and physical_damages >= ARTILLERY_DEPLOYMENT_PHYSICAL_THRESHOLD:
+        return ARTILLERY_DEPLOYMENT_TIME_LARGE
+    return ARTILLERY_DEPLOYMENT_TIME_SMALL
+
+
+def _build_vanilla_ammo_rename_map() -> Dict[str, str]:
+    """Map vanilla mount names from ``weapons_db`` to constants/patched base names."""
+    return {old_name: new_name for old_name, new_name in (*AMMUNITION_RENAMES, *AMMUNITION_MISSILES_RENAMES)}
+
+
+def _effective_mounted_ammo_name(
+    base_name: str,
+    unit_name: str,
+    unit_replace_map: Dict[str, Dict[str, str]],
+    vanilla_ammo_renames: Dict[str, str],
+) -> str:
+    """Resolve equipment ``replace`` edits then vanilla ammo renames."""
+    replaced = unit_replace_map.get(unit_name, {}).get(base_name, base_name)
+    return vanilla_ammo_renames.get(replaced, replaced)
+
+
+def _mounted_ammo_base_candidates(ammo_name: str, salvo_suffix_re: re.Pattern[str]) -> List[str]:
+    """Map ``weapons_db`` mount names to candidate constants base weapon names."""
+    candidates = [salvo_suffix_re.sub("", ammo_name)]
+    x_match = re.match(r"^(.+)_x(\d+)$", ammo_name)
+    if x_match:
+        candidates.append(f"{x_match.group(1)}_salvolength{x_match.group(2)}")
+    seen: set[str] = set()
+    unique: List[str] = []
+    for name in candidates:
+        if name not in seen:
+            seen.add(name)
+            unique.append(name)
+    return unique
+
+
+def _effective_mounted_ammo_names(
+    ammo_name: str,
+    unit_name: str,
+    unit_replace_map: Dict[str, Dict[str, str]],
+    vanilla_ammo_renames: Dict[str, str],
+    salvo_suffix_re: re.Pattern[str],
+) -> List[str]:
+    """Resolve mount name variants (salvo suffixes, renames, equipment replace)."""
+    seen: set[str] = set()
+    resolved: List[str] = []
+    for base_name in _mounted_ammo_base_candidates(ammo_name, salvo_suffix_re):
+        effective = _effective_mounted_ammo_name(
+            base_name, unit_name, unit_replace_map, vanilla_ammo_renames,
+        )
+        if effective not in seen:
+            seen.add(effective)
+            resolved.append(effective)
+    return resolved
+
+
+def ammo_name_keeps_deployment_time(
+    ammo_name: str,
+    protected_ammo: set[str],
+    vanilla_ammo_renames: Dict[str, str] | None = None,
+) -> bool:
+    """Return whether an ammo base name should keep ``HasDeploymentTime = True``."""
+    if vanilla_ammo_renames is None:
+        vanilla_ammo_renames = _build_vanilla_ammo_rename_map()
+    salvo_suffix_re = re.compile(r"(_x\d+|_salvolength\d+)$")
+    lookup_names = [ammo_name, * _mounted_ammo_base_candidates(ammo_name, salvo_suffix_re)]
+    seen: set[str] = set()
+    for name in lookup_names:
+        if name in seen:
+            continue
+        seen.add(name)
+        if name in protected_ammo:
+            return True
+        renamed = vanilla_ammo_renames.get(name, name)
+        if renamed in protected_ammo:
+            return True
+    return False
+
+
+def build_deployment_time_units(game_db: Dict[str, Any]) -> Dict[str, Any]:
     """Build protected unit/ammo sets for blanket deployment-time disable.
 
     The engine requires that if ANY ammo on a unit has ``HasDeploymentTime =
@@ -368,18 +487,27 @@ def build_deployment_time_units(game_db: Dict[str, Any]) -> Dict[str, List[str]]
     after patching:
       - ammo used by units with ``"WeaponDeployment"`` in unit_edits/NEW_UNITS
       - ammo whose constants explicitly set ``HasDeploymentTime = True``
+      - howitzer / MLRS / mortar category ammo (unless explicitly disabled)
 
     **Protected units** = units that must keep (or gain)
     ``TWeaponDeploymentModuleDescriptor``:
       - units with ``"WeaponDeployment"`` in unit_edits/NEW_UNITS
-      - any unit carrying at least one protected ammo
+      - any unit carrying at least one protected ammo (aircraft/helo excluded for artillery ammo)
 
     Returns:
-        Dict with ``protected_units`` and ``protected_ammo`` lists.
+        Dict with ``protected_units``, ``protected_ammo``, and ``unit_deployment_seconds``.
     """
     weapons_db = game_db.get("weapons", {})
     ammo_props = game_db.get("ammunition", {}).get("ammo_properties", {})
+    unit_db = game_db.get("unit_data", {})
     _salvo_suffix_re = re.compile(r'(_x\d+|_salvolength\d+)$')
+    vanilla_ammo_renames = _build_vanilla_ammo_rename_map()
+
+    artillery_weapon_data: Dict[str, Dict[str, Any]] = {}
+    for (weapon_name, category, _donor, _is_new), data in ammunitions.items():
+        if category in ARTILLERY_DEPLOYMENT_CATEGORIES:
+            artillery_weapon_data[weapon_name] = data
+    artillery_weapon_names = set(artillery_weapon_data.keys())
 
     # --- 1. Seed protected units from unit_edits / NEW_UNITS ---
     unit_edits = load_unit_edits()
@@ -439,6 +567,13 @@ def build_deployment_time_units(game_db: Dict[str, Any]) -> Dict[str, List[str]]
                 if add_entry[1].split("=", 1)[1].strip() == "True":
                     protected_ammo.add(weapon_name)
 
+    # 2c. Artillery category ammo (howitzer / MLRS / mortar)
+    for weapon_name, data in artillery_weapon_data.items():
+        parent_membr = data.get("Ammunition", {}).get("parent_membr", {})
+        if parent_membr.get("HasDeploymentTime") is False:
+            continue
+        protected_ammo.add(weapon_name)
+
     # --- 3. Reverse-map: any unit carrying protected ammo must keep the module ---
     for weapon_descr_name, weapon_info in weapons_db.items():
         if not weapon_descr_name.startswith("WeaponDescriptor_"):
@@ -448,23 +583,73 @@ def build_deployment_time_units(game_db: Dict[str, Any]) -> Dict[str, List[str]]
             continue
         for turret in weapon_info.get("turrets", {}).values():
             for ammo_name in turret.get("weapons", {}).keys():
-                base_name = _salvo_suffix_re.sub('', ammo_name)
-                effective_name = unit_replace_map.get(unit_name, {}).get(base_name, base_name)
-                if effective_name in protected_ammo:
+                matched = False
+                for effective_name in _effective_mounted_ammo_names(
+                    ammo_name, unit_name, unit_replace_map, vanilla_ammo_renames, _salvo_suffix_re,
+                ):
+                    if effective_name not in protected_ammo:
+                        continue
+                    if (
+                        effective_name in artillery_weapon_names
+                        and _unit_is_air_or_helo(unit_name, unit_db)
+                    ):
+                        continue
                     protected_units.add(unit_name)
+                    matched = True
+                    break
+                if matched:
                     break
 
+    # --- 4. Per-unit deployment seconds from artillery ammo tier ---
+    unit_deployment_seconds: Dict[str, int] = {}
+    for unit_name in protected_units:
+        if _unit_is_air_or_helo(unit_name, unit_db):
+            continue
+        weapon_info = weapons_db.get(f"WeaponDescriptor_{unit_name}")
+        if not weapon_info:
+            continue
+
+        max_seconds = 0
+        has_artillery = False
+        for turret in weapon_info.get("turrets", {}).values():
+            for ammo_name in turret.get("weapons", {}).keys():
+                for effective_name in _effective_mounted_ammo_names(
+                    ammo_name, unit_name, unit_replace_map, vanilla_ammo_renames, _salvo_suffix_re,
+                ):
+                    if effective_name not in artillery_weapon_names:
+                        continue
+                    if effective_name not in protected_ammo:
+                        continue
+                    has_artillery = True
+                    data = artillery_weapon_data[effective_name]
+                    radius = _effective_ammo_stat(
+                        effective_name, "RadiusSplashPhysicalDamagesGRU", data, ammo_props,
+                    )
+                    physical = _effective_ammo_stat(
+                        effective_name, "PhysicalDamages", data, ammo_props,
+                    )
+                    max_seconds = max(max_seconds, _artillery_deployment_seconds(radius, physical))
+
+        if has_artillery:
+            unit_deployment_seconds[unit_name] = max_seconds
+
+    count_7 = sum(1 for v in unit_deployment_seconds.values() if v == ARTILLERY_DEPLOYMENT_TIME_SMALL)
+    count_15 = sum(1 for v in unit_deployment_seconds.values() if v == ARTILLERY_DEPLOYMENT_TIME_LARGE)
     logger.info(
         f"Deployment time: {len(protected_units)} protected units, "
-        f"{len(protected_ammo)} protected ammo base names"
+        f"{len(protected_ammo)} protected ammo base names, "
+        f"{len(unit_deployment_seconds)} artillery units "
+        f"({count_7} at {ARTILLERY_DEPLOYMENT_TIME_SMALL}s, "
+        f"{count_15} at {ARTILLERY_DEPLOYMENT_TIME_LARGE}s)",
     )
     return {
         "protected_units": sorted(protected_units),
         "protected_ammo": sorted(protected_ammo),
+        "unit_deployment_seconds": unit_deployment_seconds,
     }
 
 
-def save_deployment_time_units(data: Dict[str, List[str]], config: Dict[str, Any]) -> None:
+def save_deployment_time_units(data: Dict[str, Any], config: Dict[str, Any]) -> None:
     """Save deployment time units data as JSON file to disk."""
     db_path = Path(config["data_config"]["database_path"])
     constants_dir = db_path / "constants_precomputation"
