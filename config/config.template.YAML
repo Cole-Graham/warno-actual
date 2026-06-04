@@ -12,6 +12,7 @@ data_config:
   build_database: false    # Set to true to rebuild database
   database_path: "src/data/database"  # Database location
   update_master_metadata: false  # Set to true to update master metadata after build
+  # Or run once with: python run_patcher.py --rebuild-db (forces both flags above for that run)
 
 # Asset configuration  
 asset_config:

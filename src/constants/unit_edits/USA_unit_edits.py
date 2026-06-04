@@ -4932,10 +4932,6 @@ usa_unit_edits = {
         "availability": [12, 9, 0, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "Gatling_M61_Vulcan_20mm_TOWED": 8,
@@ -4964,10 +4960,6 @@ usa_unit_edits = {
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "UpgradeFromUnit": None,
         "WeaponDescriptor": {
             "Salves": {
@@ -4997,10 +4989,6 @@ usa_unit_edits = {
         "availability": [0, 12, 9, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "Gatling_M61_Vulcan_20mm_TOWED": 8,
@@ -5029,10 +5017,6 @@ usa_unit_edits = {
         "availability": [0, 10, 7, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "Gatling_M61_Vulcan_20mm_late_TOWED": 8,

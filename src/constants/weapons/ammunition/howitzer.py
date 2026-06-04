@@ -10,6 +10,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_M201A1_Howitzer_203mm_late", "howitzer", None, False): { # 433
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "TimeBetweenTwoShots": 15.0,
                 "TimeBetweenTwoFx": 16.0,
                 "PhysicalDamages": 6,
@@ -27,6 +28,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_M201A1_Howitzer_203mm_late_SMOKE", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "TimeBetweenTwoShots": 15.0,
                 "TimeBetweenTwoFx": 16.0,
                 "TimeBetweenTwoSalvos": 50.0,
@@ -39,6 +41,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_Br5M_towed_280mm", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 8.0,
                 "SuppressDamages": 600,
                 "RadiusSplashPhysicalDamagesGRU": 280,
@@ -61,6 +64,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_M240_SP_240mm", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 2000,
                 "PhysicalDamages": 6.8,
                 "SuppressDamages": 480,
                 "RadiusSplashPhysicalDamagesGRU": 240,
@@ -72,6 +76,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_2A44_Howitzer_203mm_late", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "TimeBetweenTwoShots": 10.0,
                 "TimeBetweenTwoFx": 11.0,
                 "PhysicalDamages": 6,
@@ -86,6 +91,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_2A44_Howitzer_203mm_late_SMOKE", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "TimeBetweenTwoShots": 10.0,
                 "TimeBetweenTwoFx": 11.0,
                 "TimeBetweenTwoSalvos": 50.0,
@@ -96,6 +102,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_B4M_203mm", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 6,
                 "SuppressDamages": 450,
                 "RadiusSplashPhysicalDamagesGRU": 203,
@@ -118,6 +125,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_GCT_Howitzer_155mm", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 4.2,
                 "SuppressDamages": 357,
                 "RadiusSplashPhysicalDamagesGRU": 155,
@@ -129,6 +137,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_M185_L39_Howitzer_155mm", "howitzer", None, False): { # 427
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 4.2,
                 "SuppressDamages": 357,
                 "RadiusSplashPhysicalDamagesGRU": 155,
@@ -140,6 +149,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_M185_L39_Howitzer_155mm_guided", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 4.2,
                 "SuppressDamages": 357,
                 "RadiusSplashPhysicalDamagesGRU": 155,
@@ -151,6 +161,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_FH70_SP_Howitzer_155mm", "howitzer", None, False): { # 427
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 4.2,
                 "SuppressDamages": 357,
                 "RadiusSplashPhysicalDamagesGRU": 155,
@@ -162,6 +173,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_M126_SP_Howitzer_155mm", "howitzer", None, False): { # M109G
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 4.2,
                 "SuppressDamages": 357,
                 "RadiusSplashPhysicalDamagesGRU": 155,
@@ -173,6 +185,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_QF_25pdr_87mm", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 2.1,
                 "RadiusSplashPhysicalDamagesGRU": 87,
                 "RadiusSplashSuppressDamagesGRU": 116,
@@ -183,6 +196,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
      ("Howz_Canon_ZiS3_Howitzer_76mm", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 2.1,
                 "RadiusSplashPhysicalDamagesGRU": 76,
                 "RadiusSplashSuppressDamagesGRU": 101,
@@ -193,6 +207,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_L13A1_Howitzer_105mm", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "TimeBetweenTwoShots": 5.0,
                 "PhysicalDamages": 3.0,
                 "SuppressDamages": 187,
@@ -208,6 +223,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_L13A1__Howitzer_105mm_SMOKE", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "TimeBetweenTwoShots": 5.0,
                 "ShotsCountPerSalvo": 5,
                 "AffichageMunitionParSalve": 5,
@@ -218,6 +234,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_M118_Howitzer_105mm", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "TimeBetweenTwoShots": 5.0,
                 "PhysicalDamages": 3.0,
                 "SuppressDamages": 187,
@@ -233,6 +250,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_M118_Howitzer_105mm_SMOKE", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "TimeBetweenTwoShots": 5.0,
                 "ShotsCountPerSalvo": 5,
                 "AffichageMunitionParSalve": 5,
@@ -243,6 +261,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_BS3_towed_100mm", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 2.8,
                 "RadiusSplashPhysicalDamagesGRU": 100,
                 "RadiusSplashSuppressDamagesGRU": 133,
@@ -253,6 +272,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_M113A1_Howitzer_175mm_late", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 5.4,
                 "SuppressDamages": 405,
                 "RadiusSplashPhysicalDamagesGRU": 175,
@@ -264,6 +284,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_M101_Howitzer_105mm", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "TimeBetweenTwoShots": 5.0,
                 "PhysicalDamages": 3.0,
                 "SuppressDamages": 187,
@@ -279,6 +300,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_M101_Howitzer_105mm_SMOKE", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "TimeBetweenTwoShots": 5.0,
                 "ShotsCountPerSalvo": 5,
                 "AffichageMunitionParSalve": 5,
@@ -289,6 +311,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_M102_Howitzer_105mm", "howitzer", None, False): { # 409
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "TimeBetweenTwoShots": 5.0,
                 "PhysicalDamages": 3.0,
                 "SuppressDamages": 187,
@@ -304,6 +327,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_M102_Howitzer_105mm_SMOKE", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "TimeBetweenTwoShots": 5.0,
                 "ShotsCountPerSalvo": 5,
                 "AffichageMunitionParSalve": 5,
@@ -314,6 +338,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_M119_Howitzer_105mm", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "TimeBetweenTwoShots": 4.2,
                 "PhysicalDamages": 3.0,
                 "SuppressDamages": 187,
@@ -329,6 +354,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_M119_Howitzer_105mm_SMOKE", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "TimeBetweenTwoShots": 4.2,
                 "ShotsCountPerSalvo": 6,
                 "AffichageMunitionParSalve": 6,
@@ -339,6 +365,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_M198_Howitzer_155mm", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 4.2,
                 "SuppressDamages": 357,
                 "RadiusSplashPhysicalDamagesGRU": 155,
@@ -350,6 +377,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_M198_Howitzer_155mm_guided", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 4.2,
                 "SuppressDamages": 357,
                 "RadiusSplashPhysicalDamagesGRU": 155,
@@ -361,6 +389,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_BL_5_inch", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 3.8,
                 "SuppressDamages": 280,
                 "RadiusSplashPhysicalDamagesGRU": 140,
@@ -372,6 +401,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_FH70_Howitzer_155mm", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 4.2,
                 "SuppressDamages": 357,
                 "RadiusSplashPhysicalDamagesGRU": 155,
@@ -383,6 +413,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_BAE_L39_155mm", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "TimeBetweenTwoShots": 3.4,
                 "TimeBetweenTwoFx": 3.4,
                 "PhysicalDamages": 4.2,
@@ -401,6 +432,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_BAE_L39_155mm_SMOKE", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "TimeBetweenTwoShots": 3.4,
                 "TimeBetweenTwoFx": 3.4,
                 "ShotsCountPerSalvo": 4,
@@ -412,6 +444,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_2A64_152mm", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "TimeBetweenTwoShots": 4.1,
                 "TimeBetweenTwoFx": 4.1,
                 "PhysicalDamages": 4.2,
@@ -425,6 +458,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_DANA_SP_152mm", "howitzer", None, False): { # 389
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 4.2,
                 "SuppressDamages": 350,
                 "RadiusSplashPhysicalDamagesGRU": 152,
@@ -436,6 +470,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_M30_Howitzer_122mm", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 3.3,
                 "SuppressDamages": 281,
                 "RadiusSplashPhysicalDamagesGRU": 122,
@@ -447,6 +482,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_D30_Howitzer_122mm", "howitzer", None, False): { # 393
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 3.3,
                 "SuppressDamages": 281,
                 "RadiusSplashPhysicalDamagesGRU": 122,
@@ -458,6 +494,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_M46_Howitzer_130mm", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 3.6,
                 "SuppressDamages": 300,
                 "RadiusSplashPhysicalDamagesGRU": 130,
@@ -469,6 +506,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_A222_Howitzer_130mm", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "TimeBetweenTwoShots": 3.0,
                 "TimeBetweenTwoFx": 3.0,
                 "DispersionAtMaxRangeGRU": 500,
@@ -487,6 +525,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_D22_Howitzer_152mm_late_guided", "howitzer", None, False): { # 391
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 4.2,
                 "SuppressDamages": 350,
                 "RadiusSplashPhysicalDamagesGRU": 152,
@@ -498,6 +537,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_D22_Howitzer_152mm_late", "howitzer", None, False): { # 389
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 4.2,
                 "SuppressDamages": 350,
                 "RadiusSplashPhysicalDamagesGRU": 152,
@@ -509,6 +549,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_D20_Howitzer_152mm", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 4.2,
                 "SuppressDamages": 350,
                 "RadiusSplashPhysicalDamagesGRU": 152,
@@ -520,6 +561,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_D20_towed_152mm", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 4.2,
                 "SuppressDamages": 350,
                 "RadiusSplashPhysicalDamagesGRU": 152,
@@ -531,6 +573,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_2A65_towed_152mm", "howitzer", None, False): { # 376
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 4.2,
                 "SuppressDamages": 350,
                 "RadiusSplashPhysicalDamagesGRU": 152,
@@ -542,6 +585,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_2A36_towed_152mm", "howitzer", None, False): { # 362
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 4.2,
                 "SuppressDamages": 350,
                 "RadiusSplashPhysicalDamagesGRU": 152,
@@ -553,6 +597,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_2A36_SP_152mm", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 4.2,
                 "SuppressDamages": 350,
                 "RadiusSplashPhysicalDamagesGRU": 152,
@@ -564,6 +609,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_ML20S_towed_152mm", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 4.2,
                 "SuppressDamages": 350,
                 "RadiusSplashPhysicalDamagesGRU": 152,
@@ -575,6 +621,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_2A18_Howitzer_122mm", "howitzer", None, False): { # 357
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 3.3,
                 "SuppressDamages": 281,
                 "RadiusSplashPhysicalDamagesGRU": 122,
@@ -586,6 +633,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
      ("Howz_Canon_A19_Howitzer_122mm", "howitzer", None, False): { 
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 3.3,
                 "SuppressDamages": 281,
                 "RadiusSplashPhysicalDamagesGRU": 122,
@@ -597,6 +645,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_D1_towed_152mm", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 4.2,
                 "SuppressDamages": 350,
                 "RadiusSplashPhysicalDamagesGRU": 152,
@@ -608,6 +657,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_2A44_Howitzer_203mm", "howitzer", None, False): { # 433
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "TimeBetweenTwoShots": 15.0,
                 "TimeBetweenTwoFx": 16.0,
                 "PhysicalDamages": 6,
@@ -625,6 +675,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_2A44_Howitzer_203mm_SMOKE", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "TimeBetweenTwoShots": 15.0,
                 "TimeBetweenTwoFx": 16.0,
                 "TimeBetweenTwoSalvos": 50.0,

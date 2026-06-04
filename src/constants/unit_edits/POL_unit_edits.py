@@ -22,10 +22,6 @@ pol_unit_edits = {
         "availability": [9, 7, 0, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "UpgradeFromUnit": "FOB_POL",
         "WeaponDescriptor": {
             "Salves": {
@@ -54,10 +50,6 @@ pol_unit_edits = {
         },
         "availability": [9, 7, 0, 0],
         "max_speed": 9,
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_2_canon_ZU23_2_23mm_TOWED": 20,
@@ -70,10 +62,6 @@ pol_unit_edits = {
         "CommandPoints": 30,
         "max_speed": 9,
         "availability": [9, 7, 0, 0],
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_2_canon_Jod_towed_23mm": 20,
@@ -88,10 +76,6 @@ pol_unit_edits = {
             "display": "SPADO. ZUR-23-2S JOD",
         },
         "max_speed": 9,
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_2_canon_Jod_towed_23mm": 20,
@@ -2924,10 +2908,6 @@ pol_unit_edits = {
         "availability": [12, 9, 0, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_4_canon_ZPU4_towed_14_5mm": 160,
@@ -2943,10 +2923,6 @@ pol_unit_edits = {
             "add_tags": ['"AA_radar"'],
         },
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_1_canon_S60_57mm_radar": 1,

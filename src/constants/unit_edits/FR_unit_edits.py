@@ -1484,10 +1484,6 @@ fr_unit_edits = {
         "availability": [12, 9, 0, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_4_canon_Maxson_towed_12_7mm": 3,
@@ -1500,10 +1496,6 @@ fr_unit_edits = {
         "availability": [12, 0, 0, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_1_canon_Bofors_40mm_L60": 1,
@@ -1517,10 +1509,6 @@ fr_unit_edits = {
         "max_speed": 6,
         "Factory": "Factory/Logistic",
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "UpgradeFromUnit": "FOB_FR",
         "WeaponDescriptor": {
             "Salves": {
@@ -1535,10 +1523,6 @@ fr_unit_edits = {
         "max_speed": 6,
         "Factory": "Factory/Logistic",
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_1_canon_53T2_20mm_TOWED": 60,
@@ -1552,10 +1536,6 @@ fr_unit_edits = {
         "max_speed": 6,
         "Factory": "Factory/Logistic",
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "UpgradeFromUnit": "FOB_FR",
         "WeaponDescriptor": {
             "Salves": {
@@ -1569,10 +1549,6 @@ fr_unit_edits = {
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_2_canons_HS_831_30mm_TOWED": 26,
@@ -1585,10 +1561,6 @@ fr_unit_edits = {
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_2_canon_76T2_20mm": 41,
@@ -1601,10 +1573,6 @@ fr_unit_edits = {
         "availability": [0, 0, 6, 4],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_2_canon_76T2_20mm": 41,

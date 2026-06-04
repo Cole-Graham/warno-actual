@@ -84,6 +84,40 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+    
+    ("AA_R73_Vympel_NoOBS", "A2A", "AA_R73_Vympel", True): { # 27
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_a2a_tbagru",
+            },
+            "hit_roll": {
+                "Idling": 70,
+                "Moving": 70,
+            },
+            "parent_membr": {
+                "TraitsToken": ['MOTION', 'F&F'],
+                "AimingTime": 0.3,
+                "SupplyCost": 40.0,
+            },
+        },
+    },
+
+    ("AA_R73_Vympel_NoOBS_HAGRU", "A2A", "AA_R73_Vympel", True): { # 27
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_a2a_hagru",
+            },
+            "hit_roll": {
+                "Idling": 70,
+                "Moving": 70,
+            },
+            "parent_membr": {
+                "TraitsToken": ['MOTION', 'F&F'],
+                "AimingTime": 0.3,
+                "SupplyCost": 40.0,
+            },
+        },
+    },
 
     ("AA_R60M_Vympel", "A2A", None, False): {
         "Ammunition": {
@@ -744,6 +778,23 @@ missiles: Dict[WeaponKey, WeaponData] = {
     },
 
     ("AA_AIM120A_AMRAAM", "A2A", None, False): { # 1
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 70,
+                "Moving": 70,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 1.4,
+                "TimeBetweenTwoFx": 1.4,
+                "MaximumRangeAirplaneGRU": 8400,
+                "TimeBetweenTwoSalvos": 1.4,
+                "AimingTime": 0.3,
+                "SupplyCost": 60.0,
+            },
+        },
+    },
+    
+    ("AA_R77_Vympel", "A2A", None, False): {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 70,

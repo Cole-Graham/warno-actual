@@ -7,10 +7,12 @@ from uuid import uuid4
 from src import ndf
 from src.constants.weapons import ammunitions
 from src.constants.weapons.standards import DCA_STANDARDS
+from src.constants.weapons.standards import ARTILLERY_DEPLOYMENT_CATEGORIES
 from src.constants.weapons.vanilla_inst_modifications import AMMUNITION_REMOVALS
 from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.ndf_utils import strip_quotes
 from src.utils.logging_utils import setup_logger
+from src.data.constants_precomputation import ammo_name_keeps_deployment_time
 
 from .handlers import (
     add_corrected_shot_dispersion,
@@ -369,6 +371,10 @@ def _apply_weapon_category_standards(
     if category in ("canon", "autocannon"):
         _apply_canon_he_inherited_accuracy(descr, weapon_name, game_db, logger)
     apply_category_bomb_standards(descr, category, weapon_name, game_db, logger)
+    if category in ARTILLERY_DEPLOYMENT_CATEGORIES:
+        membr = descr.v.by_m
+        if membr("HasDeploymentTime", False) is not None:
+            membr("HasDeploymentTime").v = "True"
 
 
 def _apply_weapon_edits(
@@ -617,9 +623,6 @@ def write_ammo_dictionary_entries(ingame_names: List[Tuple[str, str, str]],
         write_dictionary_entries(entries, dictionary_type="units")
 
 
-_SALVO_SUFFIX_RE = re.compile(r'(_x\d+|_salvolength\d+)$')
-
-
 def _blanket_disable_deployment_time(source_path, game_db: Dict[str, Any]) -> None:
     """Set HasDeploymentTime = False on all ammo not used by protected units."""
     protected_ammo = set(
@@ -631,8 +634,8 @@ def _blanket_disable_deployment_time(source_path, game_db: Dict[str, Any]) -> No
         if membr is None or membr.v != "True":
             continue
         base_name = descr.n.removeprefix("Ammo_").removeprefix("Missile_")
-        base_name = _SALVO_SUFFIX_RE.sub('', base_name)
-        if base_name not in protected_ammo:
-            membr.v = "False"
-            count += 1
+        if ammo_name_keeps_deployment_time(base_name, protected_ammo):
+            continue
+        membr.v = "False"
+        count += 1
     logger.info(f"Blanket disabled HasDeploymentTime on {count} ammo descriptors")

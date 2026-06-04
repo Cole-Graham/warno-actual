@@ -1692,10 +1692,6 @@ uk_unit_edits = {
     "FV102_Striker_UK": {
         "CommandPoints": 60,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "SpecialtiesList": {
             "add_specs": ["'_remote_controlled'"],
         },
@@ -1705,10 +1701,6 @@ uk_unit_edits = {
     "FV102_Striker_para_UK": {
         "CommandPoints": 60,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "SpecialtiesList": {
             "add_specs": ["'_remote_controlled'"],
         },
@@ -2020,10 +2012,6 @@ uk_unit_edits = {
         "availability": [6, 4, 0, 0],
         "capacities": {
             "remove_capacities": ["reserviste"],
-        },
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
         },
         "UnitRole": "reco",
         "SpecialtiesList": {
