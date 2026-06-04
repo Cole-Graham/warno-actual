@@ -5,6 +5,7 @@ from pathlib import Path
 from src import ModConfig
 from src.data import build_database, load_database_from_disk
 from src.utils.database_utils import verify_database
+from patcher_cli import apply_rebuild_db_override, parse_patcher_args
 from src.utils.logging_utils import configure_logging, setup_logger, get_counting_handler
 
 configure_logging()
@@ -118,11 +119,13 @@ def parse_config_ini_version(config_ini_path: Path) -> str:
 
 if __name__ == "__main__":
     try:
+        args = parse_patcher_args()
         logger.info("Starting WARNO mod patcher")
-        
+
         # Load configuration first
         config = ModConfig.get_instance()
-        
+        apply_rebuild_db_override(config.config_data, args)
+
         # Check if this is a release build
         if not config.config_data['build_config']['write_dev']:
             if not confirm_release_build():
@@ -159,6 +162,9 @@ if __name__ == "__main__":
         ammo_db_precomp = config.config_data['game_db'].get('ammunition', {})
         ammo_db_precomp['aa_suppress_damages'] = constants_data.get(
             'aa_suppress_damages', {},
+        )
+        ammo_db_precomp['clu_bomb_dispersion'] = constants_data.get(
+            'clu_bomb_dispersion', {},
         )
         ammo_db_precomp['he_dca_weapons'] = constants_data.get(
             'he_dca_weapons', {},

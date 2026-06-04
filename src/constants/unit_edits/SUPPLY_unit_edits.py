@@ -526,6 +526,10 @@ supply_unit_edits = {
     "T813_DDR": {},
     
     "KrAZ_255B_supply_SOV": {
+        "GameName": {
+            "display": "#TRANSTWO KRAS-255B GRUZ.",
+        },
+        **_SUPPLY_TOW_CAPABLE_EDITS,
         "UpgradeFromUnit": "MAZ_535A_supply_SOV",
     },
     

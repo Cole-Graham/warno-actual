@@ -52,6 +52,7 @@ from .outgame import (
 )
 from .showroom import (
     edit_uispecificshowroomarmorycomponent,
+    edit_uispecificshowroomcomponentbase,
     edit_uispecificshowroomdeckcreatorscreencomponent,
     edit_uispecificshowroomgroupsdeckcreatorscreenview,
 )
@@ -107,6 +108,7 @@ __all__ = [
     'edit_uispecificoutgamerecoverpasswordview',
     # Showroom
     'edit_uispecificshowroomarmorycomponent',
+    'edit_uispecificshowroomcomponentbase',
     'edit_uispecificshowroomdeckcreatorscreencomponent',
     'edit_uispecificshowroomgroupsdeckcreatorscreenview',
 ]

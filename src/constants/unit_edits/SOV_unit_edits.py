@@ -1255,6 +1255,19 @@ sov_unit_edits = {
             },
         },
     },
+    
+    "MotRifles_MVD_SOV": {
+        "armor": "Infantry_armor_reference",
+        "GameName": {
+            "display": "MOTOSTRELKI MVD",
+        },
+        "CommandPoints": 30,
+        "availability": [10, 7, 0, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+    },
 
     "MotRifles_BTR_SOV": {  # MOTOPEKHOTA [RPG-7VR]
         "armor": "Infantry_armor_reference",
@@ -1809,6 +1822,37 @@ sov_unit_edits = {
             },
         },
     },
+    
+    "OMON_SOV": {
+        "CommandPoints": 40,
+        "armor": "Infantry_armor_reference",
+        "availability": [0, 6, 4, 0],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "animate": {
+                    "SAW_RPK_74_5_56mm": False,
+                },
+                "quantity": {
+                    "PM_AKSU_74": 5,
+                    "SAW_RPK_74_5_56mm": 2,
+                },
+            },
+        },
+    },
+    
+    "URSN_SOV": {
+        "CommandPoints": 45,
+        "armor": "Infantry_armor_reference",
+        "availability": [0, 0, 6, 4],
+        "max_speed": 26,
+        "SpecialtiesList": {
+            "add_specs": ["'infantry_equip_medium'"],
+        },
+    },
 
     "Spetsnaz_SOV": {
         "CommandPoints": 75,
@@ -1940,7 +1984,6 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
-        "UpgradeFromUnit": "Naval_Rifle_SOV",
         "WeaponDescriptor": {
             "Salves": {
                 "RocketInf_RPG7VL": 9,
@@ -2508,7 +2551,7 @@ sov_unit_edits = {
                 "Vehicule",
             ],
         },
-        "Factory": "EFactory/Art",
+        "Factory": "Factory/Art",
         "IdentifiedTextures": ["Texture_RTS_H_appui", "Texture_appui"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "UnitRole": "leader_sov",
@@ -3741,6 +3784,10 @@ sov_unit_edits = {
     "BMD_2_SOV": {
         "CommandPoints": 40,
     },
+    
+    "BMP_2_MVD_SOV": {
+        "CommandPoints": 40,
+    },
 
     "BMP_2_SOV": {
         "CommandPoints": 55,
@@ -4022,6 +4069,15 @@ sov_unit_edits = {
             "default": {
                 "cards": 2,
             },
+        },
+        "availability": [0, 0, 0, 3],
+    },
+    
+    "T62M_APS_SOV": {
+        "CommandPoints": 170,
+        "armor": {
+            "front": (12, None),
+            "top": (3, None),
         },
         "availability": [0, 0, 0, 3],
     },
@@ -4873,14 +4929,10 @@ sov_unit_edits = {
     
     "DCA_ZU_23_2_nonPara_SOV": {
         "CommandPoints": 20,
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "UpgradeFromUnit": "FOB_SOV",
         "WeaponDescriptor": {
             "Salves": {
@@ -4891,14 +4943,10 @@ sov_unit_edits = {
     
     "DCA_ZU_23_2_Naval_SOV": {
         "CommandPoints": 20,
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "UpgradeFromUnit": "FOB_SOV",
         "WeaponDescriptor": {
             "Salves": {
@@ -4909,7 +4957,7 @@ sov_unit_edits = {
 
     "DCA_ZU_23_2_TTsko_SOV": {
         "CommandPoints": 20,
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "Divisions": {
             "add": ["SOV_119IndTkBrig"],
             "is_transported": True,
@@ -4922,10 +4970,6 @@ sov_unit_edits = {
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "UpgradeFromUnit": "FOB_SOV",
         "WeaponDescriptor": {
             "Salves": {
@@ -4941,14 +4985,10 @@ sov_unit_edits = {
                 "cards": 1,
             },
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "availability": [0, 10, 7, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "UpgradeFromUnit": "FOB_SOV",
         "WeaponDescriptor": {
             "Salves": {
@@ -4965,10 +5005,6 @@ sov_unit_edits = {
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_1_canon_S60_57mm_radar": 1,
@@ -5002,10 +5038,6 @@ sov_unit_edits = {
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_1_canon_KS30_130mm_radar": 1,
@@ -5483,6 +5515,21 @@ sov_unit_edits = {
         },
         "UpgradeFromUnit": "2K12_KUB_SOV",
     },
+    
+    "DCA_S125_quad_Neva_SOV": {
+        "CommandPoints": 90,
+        "availability": [3, 2, 0, 0],
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 10600.0,
+            },
+            "TimeBetweenEachIdentifyRoll": 0.5,
+        },
+        "SpecialtiesList": {
+            "add_specs": ["'verygood_airoptics'"],
+        },
+        "UpgradeFromUnit": "2K12_KUB_SOV",
+    },
 
     # SOV HELI
     "Mi_2_trans_SOV": {
@@ -5586,6 +5633,11 @@ sov_unit_edits = {
     
     "Mi_24D_Desant_SOV": {
         "CommandPoints": 85,
+        "strength": "Mi_24P_SOV",
+    },
+    
+    "Mi_24A_SOV": {
+        "CommandPoints": 100,
         "strength": "Mi_24P_SOV",
     },
 
@@ -6067,25 +6119,36 @@ sov_unit_edits = {
     "MiG_27M_rkt_SOV": {
         "CommandPoints": 140,
         "availability": [0, 3, 2, 0],
-        "WeaponDescriptor": {
-            "Salves": {
-                "RocketAir_B8_80mm_salvolength40": 1,
-            },
-            "equipmentchanges": {
-                "replace": {
-                    "RocketAir_B8_80mm_avion_salvolength10": {
-                        "new_weapon": "RocketAir_B8_80mm_salvolength40",
-                        "swap_fire_effect": False,
-                        "depiction_baked_in": False,
-                    },
-                    "RocketAir_B8_80mm_avion_salvolength10": {
-                        "new_weapon": "RocketAir_B8_80mm_salvolength40",
-                        "swap_fire_effect": False,
-                        "depiction_baked_in": False,
-                    },
-                },
-            },
+        # "WeaponDescriptor": {
+        #     "Salves": {
+        #         "RocketAir_B8_80mm_salvolength40": 1,
+        #     },
+        #     "equipmentchanges": {
+        #         "replace": {
+        #             "RocketAir_B8_80mm_avion_salvolength10": [
+        #                 {
+        #                     "new_weapon": "RocketAir_B8_80mm_salvolength40",
+        #                     "swap_fire_effect": False,
+        #                     "depiction_baked_in": False,
+        #                 },
+        #                 {
+        #                     "new_weapon": "RocketAir_B8_80mm_salvolength40",
+        #                     "swap_fire_effect": False,
+        #                     "depiction_baked_in": False,
+        #                 },
+        #             ],
+        #         },
+        #     },
+        # },
+    },
+    
+    "MiG_29S_SOV": {
+        "CommandPoints": 285,
+        "availability": [0, 2, 0, 1],
+        "SpecialtiesList": {
+            "add_specs": ["'_hmd'"],
         },
+        "UpgradeFromUnit": "MiG_29_AA_SOV",
     },
 
     "MiG_29_9_13_SOV": {  # 2x R-27R, 4x R-73
@@ -6094,7 +6157,7 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'_hmd'"],
         },
-        "UpgradeFromUnit": "MiG_29_AA3_SOV",
+        "UpgradeFromUnit": "MiG_29_AA_SOV",
     },
 
     "MiG_29_AA2_SOV": {  # 2x R-60M, 2x R-27R
@@ -6119,7 +6182,7 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'_hmd'"],
         },
-        "UpgradeFromUnit": "MiG_29_AA2_SOV",
+        "UpgradeFromUnit": "MiG_29_AA_SOV",
         "ButtonTexture": "MiG_29_AA_SOV",  # match icon to model (regular icon has wrong camo)
     },
 
@@ -6520,34 +6583,37 @@ sov_unit_edits = {
     },
 
     "Su_24M_clu_SOV": {
-        "CommandPoints": 200,
+        "CommandPoints": 240,
+        "alternatives": {
+            "mesh": "Su_24M_T2_SOV",
+        },
         "ECM": -0.35,
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'"],
         },
         "availability": [0, 2, 0, 0],
-        # "WeaponDescriptor": {
-        #     "equipmentchanges": {
-                # "insert": [(1, "Bomb_CLU_RBK_250kg_salvolength8"),],
-                # "insert_edits": {
-                #     1: {
-                #         "turret_edits": {
-                #             "Tag": '"tourelle3"',
-                #             "YulBoneOrdinal": 3,
-                #         },
-                #         "AmmoBoxIndex": 2,
-                #         "HandheldEquipmentKey": '"WeaponAlternative_3"',
-                #         "WeaponActiveAndCanShootPropertyName": '"WeaponActiveAndCanShoot_3"',
-                #         "WeaponIgnoredPropertyName": '"WeaponIgnored_3"',
-                #         "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
-                #     },
-                # },
-            # },
-            # "Salves": {
-            #     "insert": [(2, 8)],
-            # },
-            # "SalvoIsMainSalvo": [False, True, True],
-        # },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "insert": [(1, "Bomb_CLU_RBK_250kg_salvolength8"),],
+                "insert_edits": {
+                    1: {
+                        "turret_edits": {
+                            "Tag": '"tourelle3"',
+                            "YulBoneOrdinal": 3,
+                        },
+                        "AmmoBoxIndex": 2,
+                        "HandheldEquipmentKey": '"WeaponAlternative_3"',
+                        "WeaponActiveAndCanShootPropertyName": '"WeaponActiveAndCanShoot_3"',
+                        "WeaponIgnoredPropertyName": '"WeaponIgnored_3"',
+                        "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
+                    },
+                },
+            },
+            "Salves": {
+                "insert": [(2, 1)],
+            },
+            "SalvoIsMainSalvo": [False, True, True],
+        },
     },
     
     "Su_24M_nplm_SOV": {
@@ -6639,6 +6705,18 @@ sov_unit_edits = {
 
     "Su_25_nplm_SOV": {  # 4x ZB-500, 2x R-60M
         "CommandPoints": 180,
+        "ECM": -0.20,
+        "AirplaneMovement": {
+            "parent_membr": {
+                "SpeedInKmph": 750,
+            },
+        },
+        "max_speed": 750,
+        "availability": [0, 2, 0, 0],
+    },
+    
+    "Su_25_RKT3_SOV": {
+        "CommandPoints": 220,
         "ECM": -0.20,
         "AirplaneMovement": {
             "parent_membr": {

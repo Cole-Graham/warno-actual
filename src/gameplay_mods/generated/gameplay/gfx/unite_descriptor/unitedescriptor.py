@@ -18,10 +18,12 @@ from .handlers.texperience import (
     apply_dca_experience_unit_standard,
     apply_dca_experience_unit_standard_for_unit,
 )
+from src.constants.weapons.standards import ARTILLERY_PACKUP_TIME
 from .handlers.thelicoptermovement import (
     apply_helicopter_movement_pattern_standard,
     apply_helicopter_movement_pattern_standard_for_unit,
 )
+from .handlers.tweapondeployment import apply_artillery_deployment_pattern_standard
 
 logger = setup_logger(__name__)
 
@@ -38,6 +40,7 @@ def edit_gen_gp_gfx_unitedescriptor(source_path, game_db) -> None:
     _handle_batch_changes(source_path, game_db)
 
     # Pattern standards first (baseline); unit_edits / new_units handlers run after and override.
+    apply_artillery_deployment_pattern_standard(logger, source_path, game_db)
     apply_dca_experience_unit_standard(logger, source_path, game_db)
     apply_helicopter_movement_pattern_standard(logger, source_path, game_db)
 
@@ -108,6 +111,7 @@ def _handle_batch_changes(source_path, game_db) -> None:
 
     deployment_data = game_db.get("deployment_time_units", {})
     protected_units = set(deployment_data.get("protected_units", []))
+    unit_deployment_seconds = deployment_data.get("unit_deployment_seconds", {})
 
     removed_count = 0
     added_count = 0
@@ -125,10 +129,11 @@ def _handle_batch_changes(source_path, game_db) -> None:
         if unit_name in protected_units:
             # Protected units MUST have the module — add it if vanilla didn't have one
             if dep_module is None:
+                deploy_time = unit_deployment_seconds.get(unit_name, 15)
                 modules_list.v.add(
                     "TWeaponDeploymentModuleDescriptor("
-                    "    TimeForWeaponDeployment = 15"
-                    "    TimeForWeaponPacking = 0.1"
+                    f"    TimeForWeaponDeployment = {deploy_time}"
+                    f"    TimeForWeaponPacking = {ARTILLERY_PACKUP_TIME}"
                     ")",
                 )
                 added_count += 1

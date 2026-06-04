@@ -51,7 +51,7 @@ rfa_unit_edits = {
     
     "DCA_FK20_2_20mm_RFA": {
         "CommandPoints": 20,
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -60,16 +60,12 @@ rfa_unit_edits = {
         "availability": [9, 7, 0, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "UpgradeFromUnit": "FOB_RFA",
     },
     
     "DCA_FK20_2_20mm_Zwillinge_RFA": {  # FK-20-2 Zwillinge
         "CommandPoints": 25,
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "Divisions": {
             "default": {
                 "Transports": ["Iltis_trans_RFA"],
@@ -82,10 +78,6 @@ rfa_unit_edits = {
         "availability": [9, 7, 0, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "UpgradeFromUnit": "FOB_RFA",
     },
     
@@ -1112,7 +1104,7 @@ rfa_unit_edits = {
                 "Vehicule",
             ],
         },
-        "Factory": "EFactory/Art",
+        "Factory": "Factory/Art",
         "IdentifiedTextures": ["Texture_RTS_H_appui", "Texture_appui"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "UnitRole": "_leader",
@@ -1781,11 +1773,10 @@ rfa_unit_edits = {
     },
     
     "BGS_RFA": {
-        "armor": "Infantry_armor_reference",
+        "CommandPoints": 15,
         "GameName": {
             "display": "BGS STREIFE"
         },
-        "CommandPoints": 15,
         "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "availability": [10, 0, 0, 0],
@@ -1854,6 +1845,7 @@ rfa_unit_edits = {
         "GameName": {
             "display": "FJ AUFKLÄRER"
         },
+        "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
@@ -1866,6 +1858,7 @@ rfa_unit_edits = {
         "GameName": {
             "display": "GEB. JAGDKOMMANDO"
         },
+        "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
@@ -1907,6 +1900,7 @@ rfa_unit_edits = {
         "GameName": {
             "display": "GEB. AUFKLÄRER"
         },
+        "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
@@ -1916,6 +1910,7 @@ rfa_unit_edits = {
         "armor": "Infantry_armor_reference",
         "CommandPoints": 35,
         "availability": [8, 0, 0, 0],
+        "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
@@ -1929,6 +1924,7 @@ rfa_unit_edits = {
         "GameName": {
             "display": "JÄGER AUFKLÄRER"
         },
+        "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
@@ -1943,6 +1939,7 @@ rfa_unit_edits = {
         "GameName": {
             "display": "FERN. SCHARFSCHÜTZE"
         },
+        "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
@@ -1979,6 +1976,7 @@ rfa_unit_edits = {
         "GameName": {
             "display": "GEB. SCHARFSCHÜTZE"
         },
+        "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
@@ -1991,6 +1989,7 @@ rfa_unit_edits = {
         "GameName": {
             "display": "SEK"
         },
+        "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'_choc'", "'infantry_equip_light'", "'_swift'"],
         },
@@ -2004,6 +2003,7 @@ rfa_unit_edits = {
         "armor": "Infantry_armor_reference",
         "CommandPoints": 60,
         "availability": [0, 0, 4, 3],
+        "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
@@ -2092,10 +2092,6 @@ rfa_unit_edits = {
         "CommandPoints": 30,
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_1_canon_Bofors_40mm": 1,
@@ -2111,10 +2107,6 @@ rfa_unit_edits = {
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_1_canon_Bofors_upgrade_40mm_autoloader_radar": 1,
@@ -2145,10 +2137,6 @@ rfa_unit_edits = {
         "availability": [0, 9, 7, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_1_canon_FK20_20mm_TOWED": 29,
@@ -2162,7 +2150,7 @@ rfa_unit_edits = {
     #     "max_speed": 6,
     #     "WeaponDeployment": {
     #         "TimeForWeaponDeployment": 15,
-    #         "TimeForWeaponPacking": 0.1,
+    #         "TimeForWeaponPacking": 0,
     #     },
     #     "WeaponDescriptor": {
     #         "Salves": {
@@ -2342,27 +2330,27 @@ rfa_unit_edits = {
         "CommandPoints": 75,
         "max_speed": 720,
         "availability": [0, 6, 0, 0],
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                "replace": {
-                    "RocketAir_SNEB_68mm_salvolength18": [
-                        {
-                            "new_weapon": "RocketAir_SNEB_68mm_salvolength36",
-                            "swap_fire_effect": False,
-                            "depiction_baked_in": False,
-                        },
-                        {
-                            "new_weapon": "RocketAir_SNEB_68mm_salvolength36",
-                            "swap_fire_effect": False,
-                            "depiction_baked_in": False,
-                        },
-                    ],
-                },
-            },
-            "Salves": {
-                "RocketAir_SNEB_68mm_salvolength36": (1, True),
-            },
-        },
+        # "WeaponDescriptor": {
+        #     "equipmentchanges": {
+        #         "replace": {
+        #             "RocketAir_SNEB_68mm_salvolength18": [
+        #                 {
+        #                     "new_weapon": "RocketAir_SNEB_68mm_salvolength36",
+        #                     "swap_fire_effect": False,
+        #                     "depiction_baked_in": False,
+        #                 },
+        #                 {
+        #                     "new_weapon": "RocketAir_SNEB_68mm_salvolength36",
+        #                     "swap_fire_effect": False,
+        #                     "depiction_baked_in": False,
+        #                 },
+        #             ],
+        #         },
+        #     },
+        #     "Salves": {
+        #         "RocketAir_SNEB_68mm_salvolength36": (1, True),
+        #     },
+        # },
     },
 
     "Alpha_Jet_A_KWS_RFA": { # 30% ECM, 2 Mavericks
@@ -2565,7 +2553,7 @@ rfa_unit_edits = {
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": {
-                    "RocketAir_SNEB_68mm_salvolength18": [
+                    "RocketAir_SNEB_68mm_salvolength36": [
                         {
                             "new_weapon": "RocketAir_SNEB_68mm_avion_salvolength18",
                             "swap_fire_effect": False,

@@ -41,11 +41,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
     
     ("Canon_AP_125_mm_2A46_T72M2", "canon", None, False): { # T-72M2 WILK 2A46-1 (3BM-26) (Could be swapped to 3BM-32?)
         "Ammunition": {
+            "Arme": {
+                "Index": 31,
+            },
             "hit_roll": {
                 "Idling": 55,
                 "Moving": 45,
             },
-            "display": "2A46-1 (3BM-26)",
+            "display": "2A46-1 (3BM-32)",
             "token": "OTYHZNLLMR",
         },
     },

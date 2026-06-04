@@ -303,7 +303,7 @@ RFA_mechanized_newdivisionrules = {
         ("Gepard_1A2_RFA", 2, [6, 4, 0, 0]),
         ("Marder_Roland_2_RFA", 2, [4, 3, 0, 0]),
         ("Marder_Roland_RFA", 1, [4, 3, 0, 0]),
-        ("DCA_I_Hawk_RFA", 2, [4, 3, 0, 0], ["Unimog_S_404_supply_trans_RFA"]),
+        ("DCA_I_Hawk_RFA", 2, [6, 4, 0, 0], ["Unimog_S_404_supply_trans_RFA"]),
     ],
     "heli": [
         ("Bo_105_PAH_1A1_RFA", 1, [0, 0, 4, 3]),
@@ -400,7 +400,7 @@ RFA_motorized_newdivisionrules = {
         ("Unimog_S_404_FK20_RFA", 2, [10, 7, 0, 0]),
         ("Gepard_1A2_RFA", 2, [6, 4, 0, 0]),
         ("MAN_Kat_8x8_Roland_RFA", 2, [4, 3, 0, 0]),
-        #("DCA_I_Hawk_RFA", 2, [4, 3, 0, 0], ["Unimog_S_404_supply_trans_RFA"]),
+        #("DCA_I_Hawk_RFA", 2, [6, 4, 0, 0], ["Unimog_S_404_supply_trans_RFA"]),
     ],
     "heli": [
         ("Bo_105_PAH_1A1_RFA", 2, [0, 0, 4, 3]),

@@ -58,12 +58,14 @@ Standards enforce balance rules across ammunition and missile descriptors. They 
 
 ### Edit ordering
 
-**All standards run before dict edits.** Dict edits may override any standard; standards **never** override dict edits.
+**Category fixed standards run before dict edits.** Dict edits may override those fixed values; standards **never** override dict edits.
 
-- **`ammunition.py`:** pattern passes first, then per-weapon: category standards → `_apply_weapon_edits`.
-- **`missiles.py`:** file-wide passes first, then per-missile: category standards (SEAD, AA hit-roll, AA suppress) → `_apply_missile_edits`.
+- **`ammunition.py`:** pattern passes first, then per-weapon: category standards (fixed values) → `_apply_weapon_edits` → CLU bomb dispersion (precomputed, see below).
+- **`missiles.py`:** file-wide passes first, then per-missile: category standards (SEAD, AA suppress precompute apply, …) → `_apply_missile_edits` → AA range-scaled accuracy where needed.
 
-When adding a new standard, call it **before** `_apply_weapon_edits` / `_apply_missile_edits` — **never** after dict edits.
+When adding a new **fixed** standard, call it **before** `_apply_weapon_edits` / `_apply_missile_edits`.
+
+**CLU bomb dispersion** is an exception: `CLU_BOMB_STANDARDS["ratios"]` are not applied in `apply_category_bomb_standards`. They are precomputed in `build_clu_bomb_dispersion` (constants radius + `CLU_BOMB_STANDARDS` ratios, or explicit `DispersionAt*` in `parent_membr`) and written by `apply_clu_bomb_dispersion_standard` **after** dict edits so dispersion tracks constants `RadiusSplashPhysicalDamagesGRU`.
 
 ### Constants precomputation
 
@@ -71,7 +73,7 @@ If a standard needs values from **both** constants dicts and **vanilla** game da
 
 1. Add a `build_*` in [`src/data/constants_precomputation.py`](src/data/constants_precomputation.py), call it from `build_constants_precomputation_data`, emit JSON under `src/data/database/constants_precomputation/`.
 2. Wire into `game_db` in `run_patcher.py` and `run_patcher_with_bat.py`.
-3. Read from `game_db` in the handler at NDF edit time.
+3. Read from `game_db` in the handler at NDF edit time (for CLU dispersion, apply **after** dict edits on that weapon).
 
 ### NDF namespace and salvo variants
 
@@ -86,6 +88,24 @@ If a standard needs values from **both** constants dicts and **vanilla** game da
 2. Re-export from `src/constants/weapons/standards/__init__.py` and `src/constants/weapons/__init__.py`.
 3. Import in the handler that applies the standard.
 
+### HOBS no-HMD (weapon descriptors)
+
+Some HOBS missiles require a helmet-mounted display (`_hmd`) for full off-boresight capability. **Existing** units that mount configured HOBS ammo **without** projected `_hmd` from `unit_edits` `SpecialtiesList` get narrowed turret arcs on turrets carrying that missile and ammo swapped to `*_NoOBS` variants.
+
+- **Constants:** [`src/constants/unit_edits/standards/pattern/hobs_no_hmd.py`](src/constants/unit_edits/standards/pattern/hobs_no_hmd.py) — `HOBS_NO_HMD_PATTERN_STANDARD` with a `missile_rules` tuple (append entries for more HOBS weapons later).
+- **Handler:** [`weapon_descriptor/handlers/hobs_no_hmd.py`](src/gameplay_mods/generated/gameplay/gfx/weapon_descriptor/handlers/hobs_no_hmd.py).
+- **Ordering:** `apply_hobs_no_hmd_pattern_standard` runs on vanilla `WeaponDescriptor.ndf` rows **after** `vanilla_renames_weapondescriptor`, **before** `new_units_weapondescriptor` and `unit_edits_weapondescriptor`, so per-unit dict edits override. **New units** are not scanned here; set turret angles and ammo in `NEW_UNITS["WeaponDescriptor"]` instead. TBAGRU HAGRU attachment in `unit_edits_weapondescriptor` still runs afterward and can add `*_NoOBS_HAGRU` clones on existing units.
+
+### Artillery deployment time
+
+Howitzers, MLRS, and mortars get deployment time via category + unit pattern standards (most units no longer need manual `"WeaponDeployment"` in `unit_edits`).
+
+- **Ammo constants:** [`standards/by_category.py`](src/constants/weapons/standards/by_category.py) — `ARTILLERY_DEPLOYMENT_CATEGORIES` (`howitzer`, `MLRS`, `mortar`) sets `HasDeploymentTime = True` in [`ammunition.py`](src/gameplay_mods/generated/gameplay/gfx/ammunition_/ammunition.py) before dict edits.
+- **Precompute:** [`build_deployment_time_units`](src/data/constants_precomputation.py) extends `protected_ammo` / `protected_units` and emits `unit_deployment_seconds` (7 s or 15 s tier). Mounted ammo names from `weapons_db` are resolved through equipment `replace` edits, [`AMMUNITION_RENAMES`](src/constants/weapons/vanilla_inst_modifications.py), and salvo suffix variants (`_x{N}` → `_salvolength{N}`) before lookup. Aircraft and helos are excluded when the protected ammo is artillery-only.
+- **Unit handler:** [`handlers/tweapondeployment.py`](src/gameplay_mods/generated/gameplay/gfx/unite_descriptor/handlers/tweapondeployment.py) — runs after batch module add/remove, before `unit_edits`, so explicit `"WeaponDeployment"` dict edits still override.
+- **Tier rule:** 15 s if `RadiusSplashPhysicalDamagesGRU >= 152` **or** `PhysicalDamages >= 4.2`; otherwise 7 s. All packup times are 0 s.
+- **Blanket disable:** unchanged — `_blanket_disable_deployment_time` strips non-protected ammo using the same name-resolution rules as precompute (`ammo_name_keeps_deployment_time`). DCA/ATGM ammo with explicit `HasDeploymentTime` in constants uses the same protection path.
+
 ---
 
 ## Depiction edits for existing vs new units
@@ -96,6 +116,12 @@ If a standard needs values from **both** constants dicts and **vanilla** game da
 | `src/constants/new_units/new_depictions/` | Raw NDF strings **or** the same tuple-key edit dict | **New** units: clone donor depiction, then apply patches |
 
 For ground vehicles, tuple-key `NEW_DEPICTIONS` entries (e.g. `TowedUnitSubDepictionGenerator`) are applied after clone in `depictionvehicles.py`. Full custom vehicle depictions still use raw NDF under string keys when `depictions.custom` is set on the `NEW_UNITS` entry.
+
+---
+
+## Unit edits and new units: duplicate dict keys
+
+`load_unit_edits()` and `load_new_units()` AST-scan `*_unit_edits.py` / `*_new_units.py` for duplicate keys at every nesting level in dict literals and log **ERROR** if found (Python keeps only the last value; merged dicts cannot be checked after import). Fix duplicates in the source file. **Exception:** duplicate keys inside a `WeaponDescriptor` → `Salves` block are allowed (multiple mounts, same ammo). For multiple `replace` rows per donor ammo, use a list under one key per `replace_schema.py`, not duplicate dict keys.
 
 ---
 

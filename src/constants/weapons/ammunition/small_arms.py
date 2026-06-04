@@ -765,7 +765,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "SupplyCost": 1.0,
-        "NbWeapons": [6, 5, 4, 3, 2, 1],
+        "NbWeapons": [10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 14,               
         },
@@ -2434,7 +2434,36 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
         "SupplyCost": 1.0,
-        "NbWeapons": [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+        "NbWeapons": [13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+        "WeaponDescriptor": {
+            "Salves": 11,
+        },
+    },
+    
+    ("FM_AKMS", "small_arms", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_sa_full",
+            },
+            "hit_roll": {
+                "Idling": 55,
+                "Moving": 25,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 2.2,
+                "MaximumRangeGRU": 875,
+                "MaximumRangeHelicopterGRU": 700,
+                "PhysicalDamages": 0.06,
+                "SuppressDamages": 8,
+                "DisplaySalveAccuracy": False,
+                "AimingTime": 1.0,
+                "TimeBetweenTwoSalvos": 5.5,
+                "ShotsCountPerSalvo": 6,
+                "AffichageMunitionParSalve": 30,
+            },
+        },
+        "SupplyCost": 1.0,
+        "NbWeapons": [13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
         "WeaponDescriptor": {
             "Salves": 11,
         },
@@ -3089,7 +3118,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "Salves": 11,
         },
     },
-
+    
     ("FM_AK_74", "small_arms", None, False): {  # 287
         "Ammunition": {
             "Arme": {

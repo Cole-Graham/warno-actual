@@ -34,7 +34,7 @@ UK_NEW_UNITS = {
             ],
         },
         "TransportedSoldier": "DCA_M167A2_Vulcan_20mm_UK",
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "CommandPoints": 50,
         "Divisions": {
             "default": {
@@ -53,10 +53,6 @@ UK_NEW_UNITS = {
         },
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "Gatling_M61_Vulcan_20mm_late_TOWED": 8,
@@ -194,7 +190,7 @@ UK_NEW_UNITS = {
         },
         "TransportedTexture": "UseInGame_Transport_COMMAND",
         "TransportedSoldier": "Rifles_UK",
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "armor": "Infantry_armor_reference",
         "CommandPoints": 145,
         "UnitRole": 'hq_inf',
@@ -257,7 +253,7 @@ UK_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "CommandPoints": 315,
         "Divisions": {
             "default": {
@@ -317,7 +313,7 @@ UK_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "CommandPoints": 265,
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
@@ -387,7 +383,7 @@ UK_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "CommandPoints": 240,
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
@@ -447,7 +443,7 @@ UK_NEW_UNITS = {
                 "Unite",
             ],
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "CommandPoints": 200,
         "capacities": {
             "remove_capacities": ["reserviste"],
@@ -575,7 +571,7 @@ UK_NEW_UNITS = {
                 "cards": 1,
             },
         },
-        "Factory": "EFactory/Tanks",
+        "Factory": "Factory/Tanks",
         "availability": [0, 12, 9, 0],
         "optics": {
             "VisionRangesGRU": {
@@ -640,7 +636,7 @@ UK_NEW_UNITS = {
                 "cards": 1,
             },
         },
-        "Factory": "EFactory/Tanks",
+        "Factory": "Factory/Tanks",
         "availability": [0, 12, 9, 0],
         "optics": {
             "VisionRangesGRU": {
@@ -771,7 +767,7 @@ UK_NEW_UNITS = {
             "_smoke_launcher",
             "good_airoptics"
         ],
-        "Factory": "EFactory/DCA",
+        "Factory": "Factory/DCA",
         "availability": [4, 3, 0, 0],
         "optics": {
             "OpticalStrengths": {
@@ -838,7 +834,7 @@ UK_NEW_UNITS = {
             "_smoke_launcher",
             "verygood_airoptics"
         ],
-        "Factory": "EFactory/DCA",
+        "Factory": "Factory/DCA",
         "availability": [0, 3, 2, 0],
         "optics": {
             "OpticalStrengths": {

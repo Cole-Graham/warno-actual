@@ -24,6 +24,13 @@ def _normalize_message_for_uniqueness(message: str) -> str:
     return message
 
 
+class PermanentLogFilter(logging.Filter):
+    """Pass only records marked with ``extra={'permanent': True}``."""
+
+    def filter(self, record: logging.LogRecord) -> bool:
+        return bool(getattr(record, "permanent", False))
+
+
 class CountingHandler(logging.Handler):
     """A logging handler that counts errors and warnings, including unique message counts."""
 
@@ -125,6 +132,40 @@ def configure_logging() -> None:
     _counting_handler = CountingHandler()
     _counting_handler.setLevel(logging.WARNING)
     root.addHandler(_counting_handler)
+
+    try:
+        permanent_path = log_dir / "permanent_logs.txt"
+        permanent_handler = logging.FileHandler(
+            permanent_path,
+            encoding="utf-8",
+            mode="a",
+        )
+        permanent_handler.setLevel(logging.WARNING)
+        permanent_handler.addFilter(PermanentLogFilter())
+        permanent_handler.setFormatter(
+            logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s"),
+        )
+        root.addHandler(permanent_handler)
+    except Exception as e:
+        print(f"Warning: Could not set up permanent log file: {e}")
+
+
+def log_permanent(
+    logger: logging.Logger,
+    level: int,
+    msg: str,
+    *args: object,
+    **kwargs: object,
+) -> None:
+    """Log to normal handlers and append to ``logs/permanent_logs.txt``.
+
+  Standard library logging has no built-in "keep forever" flag. Mark records with
+  ``extra={'permanent': True}``; :class:`PermanentLogFilter` routes them to the
+  append-only permanent file (see ``configure_logging``).
+    """
+    extra = dict(kwargs.pop("extra", None) or {})
+    extra["permanent"] = True
+    logger.log(level, msg, *args, extra=extra, **kwargs)
 
 
 def setup_logger(name: str) -> logging.Logger:

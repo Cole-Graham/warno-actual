@@ -6,7 +6,7 @@ pol_unit_edits = {
     # POL LOG
     "DCA_ZU_23_2_POL": {  # ZU-23-2
         "CommandPoints": 20,
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "Divisions": {
             "default": {
                 "Transports": ["MTLB_trans_POL"],
@@ -22,10 +22,6 @@ pol_unit_edits = {
         "availability": [9, 7, 0, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "UpgradeFromUnit": "FOB_POL",
         "WeaponDescriptor": {
             "Salves": {
@@ -39,7 +35,7 @@ pol_unit_edits = {
         "GameName": {
             "display": "SPADO. ZU-23-2",
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "Divisions": {
             "default": {
                 "Transports": ["MTLB_trans_POL"],
@@ -54,10 +50,6 @@ pol_unit_edits = {
         },
         "availability": [9, 7, 0, 0],
         "max_speed": 9,
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_2_canon_ZU23_2_23mm_TOWED": 20,
@@ -70,10 +62,6 @@ pol_unit_edits = {
         "CommandPoints": 30,
         "max_speed": 9,
         "availability": [9, 7, 0, 0],
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_2_canon_Jod_towed_23mm": 20,
@@ -88,11 +76,6 @@ pol_unit_edits = {
             "display": "SPADO. ZUR-23-2S JOD",
         },
         "max_speed": 9,
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
-        "UpgradeFromUnit": "DCA_ZU_23_2_Para_POL",
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_2_canon_Jod_towed_23mm": 20,
@@ -1601,7 +1584,7 @@ pol_unit_edits = {
                 "Vehicule",
             ],
         },
-        "Factory": "EFactory/Art",
+        "Factory": "Factory/Art",
         "IdentifiedTextures": ["Texture_RTS_H_appui", "Texture_appui"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "UnitRole": "leader_sov",
@@ -2149,7 +2132,7 @@ pol_unit_edits = {
                 "EOpticalStrength/HighAltitude": 1413,
             },
         },
-        "Factory": "EFactory/Recons",
+        "Factory": "Factory/Recons",
         "IdentifiedTextures": ["Texture_RTS_H_reco", "Texture_reco"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "MenuIconTexture": "Texture_RTS_H_reco",
@@ -2161,8 +2144,6 @@ pol_unit_edits = {
                 "_amphibie",
             ],
         },
-        "MenuIconTexture": "Texture_RTS_H_reco",
-        "TypeStrategicCount": "ETypeStrategicDetailedCount/Reco",
         "availability": [0, 8, 6, 0],
         "remove_zone_capture": None,
         "DeploymentShift": 750,
@@ -2268,7 +2249,7 @@ pol_unit_edits = {
     },
     
     "T72M1_Wilk_POL": {  # T-72M2 Wilk
-        "CommandPoints": 195,
+        "CommandPoints": 210,
         "armor": {
             "top": (4, None),
         },
@@ -2810,7 +2791,7 @@ pol_unit_edits = {
         },
         "IdentifiedTextures": ["Texture_RTS_H_RECO_hel", "Texture_RECO_hel"],
         "UnidentifiedTextures": ["Texture_RTS_H_hel_nonIdentifie", "Texture_hel_nonIdentifie"],
-        "Factory": "EFactory/Recons",
+        "Factory": "Factory/Recons",
         "UpgradeFromUnit": "W3RR_Procjon_POL",
         "UnitRole": "reco",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/Reco_Hel",
@@ -2927,10 +2908,6 @@ pol_unit_edits = {
         "availability": [12, 9, 0, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_4_canon_ZPU4_towed_14_5mm": 160,
@@ -2946,10 +2923,6 @@ pol_unit_edits = {
             "add_tags": ['"AA_radar"'],
         },
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_1_canon_S60_57mm_radar": 1,

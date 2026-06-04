@@ -175,6 +175,8 @@ cp config/config.template.YAML config/config.YAML
 
 Then, edit `config/config.YAML` to customize your settings according to your preferences.
 
+To rebuild the vanilla database and refresh `master_db_metadata.json` for a single run without editing YAML, use `python run_patcher.py --rebuild-db` (same flag on `run_patcher_with_bat.py`).
+
 ### Important notes
 
 - Ensure that you have the necessary permissions to create and edit files in the project directory.

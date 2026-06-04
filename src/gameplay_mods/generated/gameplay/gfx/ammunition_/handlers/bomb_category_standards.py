@@ -1,28 +1,18 @@
-"""Apply bomb ammunition category standards (fixed values + ratio × base member).
+"""Apply bomb ammunition category standards (fixed values at edit time).
 
-Extends by adding entries to ``BOMB_STANDARDS`` and optionally ``BOMB_CATEGORY_WEAPON_WHITELIST``
-in ``constants.weapons.standards.by_category.bomb`` — see that package's docstring.
+CLU bomb dispersion ratios are precomputed in ``build_clu_bomb_dispersion`` and
+applied after dict edits via ``apply_clu_bomb_dispersion_standard``.
+
+Extends by adding entries to ``BOMB_STANDARDS`` and optionally
+``BOMB_CATEGORY_WEAPON_WHITELIST`` in ``constants.weapons.standards.by_category``.
 """
 
-from typing import Any, Dict, Optional
+from typing import Any, Dict
 
 from src.constants.weapons.standards import (
     BOMB_CATEGORY_WEAPON_WHITELIST,
     BOMB_STANDARDS,
 )
-
-
-def _parse_numeric_value(value: Any) -> Optional[float]:
-    try:
-        if isinstance(value, (int, float)):
-            return float(value)
-        if isinstance(value, str):
-            if "." in value:
-                return float(value)
-            return float(int(value))
-    except (TypeError, ValueError):
-        return None
-    return None
 
 
 def apply_category_bomb_standards(
@@ -32,7 +22,7 @@ def apply_category_bomb_standards(
     game_db: Dict[str, Any],
     logger: Any,
 ) -> None:
-    """Apply ``BOMB_STANDARDS[category]`` when the weapon is allowed for that bomb category."""
+    """Apply ``BOMB_STANDARDS[category]`` fixed values when the weapon is allowed."""
     entry = BOMB_STANDARDS.get(category)
     if not entry:
         return
@@ -54,46 +44,31 @@ def apply_category_bomb_standards(
             continue
         membr(key).v = str(value)
 
-    for key, spec in entry.get("ratios", {}).get("ammunition", {}).items():
-        if not isinstance(spec, tuple) or len(spec) != 2:
-            logger.warning(
-                f"(bomb standards) {descr.n}: invalid ratio spec for {key!r} (expected "
-                f"(multiplier, base_member_name)), got {spec!r}",
-            )
-            continue
 
-        ratio, base_member = spec[0], spec[1]
-        if not isinstance(ratio, (int, float)) or not isinstance(base_member, str):
-            logger.warning(
-                f"(bomb standards) {descr.n}: invalid ratio tuple for {key!r}: {spec!r}",
-            )
-            continue
+def apply_clu_bomb_dispersion_standard(
+    descr: Any,
+    weapon_name: str,
+    game_db: Dict[str, Any],
+    logger: Any,
+) -> None:
+    """Write precomputed CLU bomb dispersion after ``parent_membr`` dict edits.
 
+    Lookup uses base *weapon_name* (no ``Ammo_`` prefix) so the same key works
+    for base descriptors and all salvo variants.
+    """
+    dispersion_map = game_db.get("ammunition", {}).get("clu_bomb_dispersion", {})
+    entry = dispersion_map.get(weapon_name)
+    if entry is None:
+        return
+
+    membr = descr.v.by_m
+    for key, value in entry.items():
         if membr(key, False) is None:
             logger.debug(
-                f"(bomb standards) {descr.n}: skip ratio {key} (member missing)",
+                f"(clu_bomb_dispersion) {descr.n}: skip {key} (member missing)",
             )
             continue
-
-        base_val: Optional[float] = None
-        base_membr = membr(base_member, False)
-        if base_membr is not None:
-            base_val = _parse_numeric_value(base_membr.v)
-        if base_val is None:
-            props = game_db.get("ammunition", {}).get("ammo_properties", {}).get(descr.n, {})
-            raw = props.get(base_member)
-            if raw is not None:
-                base_val = float(raw)
-        if base_val is None:
-            logger.warning(
-                f"(bomb standards) {descr.n}: no {base_member} on descriptor or game_db; "
-                f"skipping ratio for {key}",
-            )
-            continue
-
-        scaled = float(ratio) * base_val
-        membr(key).v = str(int(round(scaled)))
-        logger.info(
-            f"(bomb standards) {descr.n}: set {key} = {membr(key).v} "
-            f"({ratio} * {base_member} {base_val})",
+        membr(key).v = str(int(value))
+        logger.debug(
+            f"(clu_bomb_dispersion) {descr.n}: set {key} = {value}",
         )

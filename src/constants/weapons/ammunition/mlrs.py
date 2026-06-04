@@ -14,6 +14,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Index": 10,
             },
             "parent_membr": {
+                "MinimumRangeGRU": 10601,
                 "ImpactHappening": "'MLRSClusterAP200m'",
                 "RadiusSplashPhysicalDamagesGRU": 200,
                 "RadiusSplashSuppressDamagesGRU": 267,
@@ -32,6 +33,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketArt_MD24F_240mm_salvolength12", "MLRS", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 3534,
                 "PhysicalDamages": 8.6,
                 "SuppressDamages": 540,
                 "DispersionAtMaxRangeGRU": 560,
@@ -46,6 +48,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketArt_M24F_240mm_salvolength12", "MLRS", None, False): { # BM-24M
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 2827,
                 "PhysicalDamages": 8.6,
                 "SuppressDamages": 540,
                 "DispersionAtMaxRangeGRU": 560,
@@ -60,6 +63,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketArt_9M27F_HE_220mm", "MLRS", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 7067,
                 "PhysicalDamages": 7.1,
                 "SuppressDamages": 460,
                 "DispersionAtMaxRangeGRU": 848,
@@ -98,6 +102,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_thermobarique",
             },
             "parent_membr": {
+                "MinimumRangeGRU": 707,
                 "Caliber": ("250kg TNTe", "NDOAZJCZXQ"),
                 "TraitsToken": ['STAT', 'thermobaric'],
                 "MaximumRangeGRU": 3000,
@@ -123,6 +128,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Index": 9,
             },
             "parent_membr": {
+                "MinimumRangeGRU": 7000,
                 "ImpactHappening": "'MLRSClusterAP250m'",
                 "TimeBetweenTwoShots": 1.8,
                 "TimeBetweenTwoFx": 1.8,
@@ -147,6 +153,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketArt_M26_227mm", "MLRS", None, False): { # 651
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 7000,
                 "PhysicalDamages": 7.2,
                 "SuppressDamages": 467,
                 "DispersionAtMaxRangeGRU": 848,
@@ -162,6 +169,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketArt_M21OF_122mm_salvolength12", "MLRS", None, False): { # 649
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 3534,
                 "PhysicalDamages": 4.2,
                 "SuppressDamages": 350,
                 # "RadiusSplashPhysicalDamagesGRU": 152,
@@ -176,6 +184,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketArt_M21OF_122mm", "MLRS", None, False): { # 646
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 3534,
                 "PhysicalDamages": 4.2,
                 "SuppressDamages": 350,
                 # "RadiusSplashPhysicalDamagesGRU": 152,
@@ -191,6 +200,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketArt_M21OF_122mm_salvolength36", "MLRS", None, False): { # MOR. 9k55 Grad 1
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 3534,
                 "PhysicalDamages": 4.8,
                 "SuppressDamages": 400,
                 "RadiusSplashPhysicalDamagesGRU": 122,
@@ -235,6 +245,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketArt_M21OF_122mm_napalm", "MLRS", None, False): { # BM-21 [NPLM]
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 3534,
                 "ImpactHappening": "'Roquette110Mm130MmClusterNapalm'",
                 "PhysicalDamages": 0.5,
                 "SuppressDamages": 50,
@@ -269,6 +280,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Index": 6,
             },
             "parent_membr": {
+                "MinimumRangeGRU": 5000,
                 "ImpactHappening": "'MLRSClusterAP125m'",
                 "PhysicalDamages": 1,
                 "RadiusSplashPhysicalDamagesGRU": 125,
@@ -295,7 +307,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("MLRS_140mm_towed", "MLRS", None, False): {
         "Ammunition": {
             "parent_membr": {
-                # These rockets appear half the length of the 140mm rockets on BM-14M, so
+                "MinimumRangeGRU": 1943,                # These rockets appear half the length of the 140mm rockets on BM-14M, so
                 # they either need to be dropped to 122mm Grad HE, or lowered range.
                 #Going with the latter for now.
                 "MaximumRangeGRU": 7500,
@@ -321,6 +333,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketArt_M14OF_140mm_salvolength16", "MLRS", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1000,
                 "PhysicalDamages": 5.1,
                 "SuppressDamages": 400,
                 # "RadiusSplashPhysicalDamagesGRU": 180,
@@ -334,6 +347,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketArt_LARS_110mm", "MLRS", None, False): { # 646
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 3180,
                 "PhysicalDamages": 4.2,
                 "SuppressDamages": 350,
                 "RadiusSplashPhysicalDamagesGRU": 152,

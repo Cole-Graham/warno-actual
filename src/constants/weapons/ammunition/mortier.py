@@ -10,6 +10,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Mortier_Vasilek_indirect_82mm_towed", "mortar", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1202,
                 "PhysicalDamages": 1.8,
                 "SuppressDamages": 191,
                 "RadiusSplashPhysicalDamagesGRU": 82,
@@ -41,6 +42,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Mortier_Vasilek_indirect_82mm", "mortar", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1202,
                 "PhysicalDamages": 1.8,
                 "SuppressDamages": 191,
                 "RadiusSplashPhysicalDamagesGRU": 82,
@@ -134,6 +136,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Mortier_RT61_120mm", "mortar", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1202,
                 "PhysicalDamages": 3.6,
                 "SuppressDamages": 265,
                 "RadiusSplashPhysicalDamagesGRU": 120,
@@ -145,6 +148,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Mortier_PM43_120mm", "mortar", None, False): { # 543
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1202,
                 "PhysicalDamages": 3.6,
                 "SuppressDamages": 265,
                 "RadiusSplashPhysicalDamagesGRU": 120,
@@ -178,6 +182,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Mortier_M29_81mm", "mortar", None, False): { # 532
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1202,
                 "PhysicalDamages": 1.8,
                 "SuppressDamages": 189,
                 "RadiusSplashPhysicalDamagesGRU": 81,
@@ -189,6 +194,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Mortier_81mm_TOWED", "mortar", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1202,
                 "PhysicalDamages": 1.8,
                 "SuppressDamages": 189,
                 "RadiusSplashPhysicalDamagesGRU": 81,
@@ -200,6 +206,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Mortier_81mm", "mortar", None, False): { # 532
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1202,
                 "PhysicalDamages": 1.8,
                 "SuppressDamages": 189,
                 "RadiusSplashPhysicalDamagesGRU": 81,
@@ -215,6 +222,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_clu_sol_hefrag",
             },
             "parent_membr": {
+                "MinimumRangeGRU": 1202,
                 "PhysicalDamages": 1.0,
             },
         },
@@ -223,6 +231,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Mortier_M252_81mm", "mortar", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1202,
                 "PhysicalDamages": 1.8,
                 "SuppressDamages": 189,
                 "RadiusSplashPhysicalDamagesGRU": 81,
@@ -234,6 +243,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Mortier_L16_82mm", "mortar", None, False): { # UK L16 81mm
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1202,
                 "PhysicalDamages": 1.8,
                 "SuppressDamages": 189,
                 "RadiusSplashPhysicalDamagesGRU": 81,
@@ -245,6 +255,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Mortier_2S12_120mm", "mortar", None, False): { # 510
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1202,
                 "PhysicalDamages": 3.6,
                 "SuppressDamages": 265,
                 "RadiusSplashPhysicalDamagesGRU": 120,
@@ -256,6 +267,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Mortier_Tampella_120mm", "mortar", None, False): { # 510
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1202,
                 "PhysicalDamages": 3.6,
                 "SuppressDamages": 265,
                 "RadiusSplashPhysicalDamagesGRU": 120,
@@ -267,6 +279,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Mortier_Tampella_towed_120mm", "mortar", None, False): { # 510
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1202,
                 "PhysicalDamages": 3.6,
                 "SuppressDamages": 265,
                 "RadiusSplashPhysicalDamagesGRU": 120,
@@ -278,6 +291,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Mortier_2B14_82mm_TOWED", "mortar", None, False): { # 509
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1202,
                 "PhysicalDamages": 1.8,
                 "SuppressDamages": 191,
                 "RadiusSplashPhysicalDamagesGRU": 82,
@@ -289,6 +303,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Mortier_M43_82mm_TOWED", "mortar", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1202,
                 "PhysicalDamages": 1.8,
                 "SuppressDamages": 191,
                 "RadiusSplashPhysicalDamagesGRU": 82,
@@ -300,6 +315,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_2B16_NONA_K_120mm_SMOKE", "mortar", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "AimingTime": 12,
                 "TimeBetweenTwoSalvos": 20.0,
             },
@@ -309,6 +325,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_2B16_NONA_K_120mm", "mortar", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 3.6,
                 "SuppressDamages": 265,
                 "TimeBetweenTwoSalvos": 20.0,
@@ -321,6 +338,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_2A60_Howitzer_120mm_SMOKE", "mortar", None, False): { # 371
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "AimingTime": 12,
                 "TimeBetweenTwoSalvos": 20.0,
             },
@@ -330,6 +348,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_2A60_Howitzer_120mm", "mortar", None, False): { # 370
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 3.6,
                 "SuppressDamages": 265,
                 "AimingTime": 12,
@@ -344,6 +363,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_2A51_Howitzer_120mm_SMOKE", "mortar", None, False): { # 369
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "AimingTime": 12,
                 "TimeBetweenTwoSalvos": 20.0,
             },
@@ -353,6 +373,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_2A51_Howitzer_120mm", "mortar", None, False): { # 368
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 3.6,
                 "SuppressDamages": 265,
                 "RadiusSplashPhysicalDamagesGRU": 120,
@@ -367,6 +388,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Mortier_M43_160mm_SMOKE", "mortar", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1202,
                 "AimingTime": 16,
                 "TimeBetweenTwoSalvos": 20.0,
             },
@@ -376,6 +398,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Mortier_M43_160mm", "mortar", None, False): { 
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 1202,
                 "PhysicalDamages": 4.2,
                 "SuppressDamages": 367,
                 "RadiusSplashPhysicalDamagesGRU": 160,
@@ -388,6 +411,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Mortier_M240_240mm", "mortar", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "MinimumRangeGRU": 2000,
                 "PhysicalDamages": 6.8,
                 "SuppressDamages": 480,
                 "DispersionAtMaxRangeGRU": 450,
@@ -418,6 +442,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_clu_sol_hefrag",
             },
             "parent_membr": {
+                "MinimumRangeGRU": 2000,
                 "TraitsToken": ['STAT', 'clusterHEFrag', 'IND'],
                 "ImpactHappening": "'MLRSClusterAP200m'",
                 "PhysicalDamages": 1,

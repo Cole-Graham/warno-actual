@@ -24,12 +24,13 @@ def edit_gen_gp_gfx_damagelevels(source_path) -> None:
         value = level.v.by_m("Value")
         effects_packs = level.v.by_m("EffectsPacks")
         if value.v == "0":
-            effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_Ajoute_Tag_no_Choc_Move_Morale")
+            effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_NoSprint_Morale")
             effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_Ajoute_Tag_Swift_ok")
-            effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_Cohesion_Loss_ok")
+            # effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_Cohesion_Loss_ok")
 
         elif value.v == "0.1":
-            effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_Cohesion_Loss_ok")
+            pass
+            # effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_Cohesion_Loss_ok")
 
         elif value.v == "0.25":
             pass
@@ -38,10 +39,10 @@ def edit_gen_gp_gfx_damagelevels(source_path) -> None:
             pass
 
         elif value.v == "0.75":
-            effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_Ajoute_Tag_no_Choc_Move_Morale")
+            effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_NoSprint_Morale")
 
         elif value.v == "0.8":
-            effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_Ajoute_Tag_no_Choc_Move_Morale")
+            effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_NoSprint_Morale")
 
     # Insert new damage level to trigger shock sprint at 99% cohesion and prevent at < 40%
     new_ground_damage_level1 = (
@@ -56,7 +57,7 @@ def edit_gen_gp_gfx_damagelevels(source_path) -> None:
         f'    ['
         f'        $/GFX/EffectCapacity/UnitEffect_GroundUnit_Cohesion_High,'
         f'        $/GFX/EffectCapacity/UnitEffect_Ajoute_Tag_Swift_ok,'
-        f'        $/GFX/EffectCapacity/UnitEffect_Cohesion_Loss_ok,'
+        # f'        $/GFX/EffectCapacity/UnitEffect_Cohesion_Loss_ok,'
         f'    ]'
         f')'
     )
@@ -74,7 +75,7 @@ def edit_gen_gp_gfx_damagelevels(source_path) -> None:
         f'    ['
         f'        $/GFX/EffectCapacity/UnitEffect_Precision_moins_45,'
         f'        $/GFX/EffectCapacity/UnitEffect_GroundUnit_Cohesion_Mediocre,'
-        f'        $/GFX/EffectCapacity/UnitEffect_Ajoute_Tag_no_Choc_Move_Morale'
+        f'        $/GFX/EffectCapacity/UnitEffect_NoSprint_Morale'
         f'    ]'
         f')'
     )

@@ -13,6 +13,7 @@ from .SOV_new_units import SOV_NEW_UNITS
 from .UK_new_units import UK_NEW_UNITS
 from .USA_new_units import USA_NEW_UNITS
 from src.constants.supply_transport_variants import build_supply_transport_new_units
+from src.utils.dict_literal_duplicate_keys import validate_dict_literal_files
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger('new_units')
@@ -314,60 +315,17 @@ def resolve_new_unit_references_optimized(new_units_dict: Dict) -> Dict:
     return resolved_dict
 
 
-def validate_no_duplicate_keys_in_source_files() -> None:
+def validate_no_duplicate_keys_in_source_files() -> int:
     """
-    Validate that there are no duplicate keys in the new units source files.
-    
-    This function checks the actual source files for duplicate tuple keys (donor_unit, integer_id)
-    which would cause silent overwrites and lost unit definitions during dictionary creation.
-    
-    Raises:
-        ValueError: If duplicate keys are found in source files
+    Validate new-units source files for duplicate keys in dict literals (AST).
+
+    Logs ERROR for each duplicate; does not raise. Returns finding count.
     """
-    import re
-    from pathlib import Path
-    
-    # Get the directory containing the new units files
     new_units_dir = Path(__file__).parent
-    
-    # Pattern to match tuple keys like ("UnitName", 0):
-    tuple_key_pattern = r'\(\s*"([^"]+)"\s*,\s*(\d+)\s*\)\s*:'
-    
-    all_keys = []
-    duplicate_keys = []
-    
-    # Check each new units file
-    for file_path in new_units_dir.glob("*_new_units.py"):
-        if file_path.name == "__init__.py":
-            continue
-            
-        logger.debug(f"Checking {file_path.name} for duplicate keys...")
-        
-        try:
-            with open(file_path, 'r', encoding='utf-8') as f:
-                content = f.read()
-                
-            # Find all tuple keys in this file
-            matches = re.findall(tuple_key_pattern, content)
-            for unit_name, index in matches:
-                key = (unit_name, int(index))
-                if key in all_keys:
-                    duplicate_keys.append((key, file_path.name))
-                else:
-                    all_keys.append(key)
-                    
-        except Exception as e:
-            logger.warning(f"Could not check {file_path.name}: {e}")
-    
-    if duplicate_keys:
-        error_msg = "Duplicate keys found in new units source files:\n"
-        for key, filename in duplicate_keys:
-            error_msg += f"  {key} in {filename}\n"
-        error_msg += "\nThis will cause silent overwrites and lost unit definitions!"
-        logger.error(error_msg)
-        raise ValueError(error_msg)
-    
-    logger.info(f"Validated {len(all_keys)} new unit keys across all source files - no duplicates found")
+    return validate_dict_literal_files(
+        new_units_dir.glob("*_new_units.py"),
+        label="new_units",
+    )
 
 
 def _validate_infantry_strength(new_units_dict: Dict) -> None:
@@ -388,34 +346,32 @@ def _validate_infantry_strength(new_units_dict: Dict) -> None:
             logger.warning(f"New unit '{unit_name}' has is_infantry=True and WeaponDescriptor but is missing a 'strength' key. This may cause weapon descriptor edits (e.g. replace) to be skipped.")
 
 
-def validate_no_duplicate_keys(new_units_dict: Dict) -> None:
+def validate_no_duplicate_keys(new_units_dict: Dict) -> int:
     """
-    Validate that there are no duplicate keys in the new units dictionary.
-    
-    This function checks for duplicate tuple keys (donor_unit, integer_id) which would
-    cause silent overwrites and lost unit definitions.
-    
-    Args:
-        new_units_dict: Dictionary of new units to validate
-        
-    Raises:
-        ValueError: If duplicate keys are found
+    Runtime guard for duplicate top-level keys in the merged new-units dict.
+
+    Logs ERROR for duplicates (e.g. from build_supply_transport_new_units); does not raise.
+    Returns the number of duplicate keys found.
     """
-    seen_keys = set()
-    duplicate_keys = []
-    
+    seen_keys: set[Any] = set()
+    duplicate_keys: list[Any] = []
+
     for key in new_units_dict.keys():
         if key in seen_keys:
             duplicate_keys.append(key)
         else:
             seen_keys.add(key)
-    
+
     if duplicate_keys:
-        error_msg = f"Duplicate keys found in new units dictionary: {duplicate_keys}"
-        logger.error(error_msg)
-        raise ValueError(error_msg)
-    
+        for key in duplicate_keys:
+            logger.error(f"Duplicate key {key!r} in merged new units dictionary")
+        logger.error(
+            f"{len(duplicate_keys)} duplicate key(s) in merged new units dictionary",
+        )
+        return len(duplicate_keys)
+
     logger.info(f"Validated {len(new_units_dict)} new unit keys - no duplicates found")
+    return 0
 
 
 GUID_FIELDS = ("GUID", "InfantrySquadModuleGUID", "ShowroomGUID", "CadavreGUID")
@@ -475,13 +431,13 @@ def validate_no_duplicate_guids(new_units_dict: Dict) -> None:
 
 def load_new_units() -> Dict:
     """Load and merge all new unit dictionaries with reference resolution."""
-    merged_units = {}
-    
     logger.info("Loading new unit dictionaries...")
-    
-    # Combine all new unit definitions
+
+    logger.info("Validating new units source files for duplicate keys...")
+    validate_no_duplicate_keys_in_source_files()
+
     merged_units = {
-        **SOV_NEW_UNITS, 
+        **SOV_NEW_UNITS,
         **RDA_NEW_UNITS,
         **RFA_NEW_UNITS,
         **POL_NEW_UNITS,
@@ -490,14 +446,9 @@ def load_new_units() -> Dict:
         **FR_NEW_UNITS,
         **build_supply_transport_new_units(),
     }
-    
+
     logger.info(f"Loaded {len(merged_units)} new units total")
-    
-    # Validate no duplicate keys in source files before processing
-    logger.info("Validating new units source files for duplicate keys...")
-    validate_no_duplicate_keys_in_source_files()
-    
-    # Also validate the merged dictionary (though this won't catch source-level duplicates)
+
     logger.info("Validating merged new units dictionary...")
     validate_no_duplicate_keys(merged_units)
 

@@ -1310,7 +1310,7 @@ uk_unit_edits = {
                 "Vehicule",
             ],
         },
-        "Factory": "EFactory/Art",
+        "Factory": "Factory/Art",
         "IdentifiedTextures": ["Texture_RTS_H_appui", "Texture_appui"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "UnitRole": "_leader",
@@ -1692,10 +1692,6 @@ uk_unit_edits = {
     "FV102_Striker_UK": {
         "CommandPoints": 60,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "SpecialtiesList": {
             "add_specs": ["'_remote_controlled'"],
         },
@@ -1705,10 +1701,6 @@ uk_unit_edits = {
     "FV102_Striker_para_UK": {
         "CommandPoints": 60,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "SpecialtiesList": {
             "add_specs": ["'_remote_controlled'"],
         },
@@ -2005,7 +1997,7 @@ uk_unit_edits = {
                 "Vehicule_Reco",
             ],
         },
-        "Factory": "EFactory/Recons",
+        "Factory": "Factory/Recons",
         "stealth": 1.5,
         "optics": {
             "VisionRangesGRU": {
@@ -2020,10 +2012,6 @@ uk_unit_edits = {
         "availability": [6, 4, 0, 0],
         "capacities": {
             "remove_capacities": ["reserviste"],
-        },
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
         },
         "UnitRole": "reco",
         "SpecialtiesList": {
@@ -2060,7 +2048,7 @@ uk_unit_edits = {
                 "Unite",
             ],
         },
-        "Factory": "EFactory/Recons",
+        "Factory": "Factory/Recons",
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 3500,

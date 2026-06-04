@@ -24,7 +24,7 @@ rda_unit_edits = {
     
     "PT76B_CMD_DDR": { # Too inexpensive to make a LDR., just changing to a CV
         "CommandPoints": 170,
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "SpecialtiesList": {
             "add_specs": ["'leader_sov'",],
             "remove_specs": ["'_leader'"],
@@ -1848,7 +1848,7 @@ rda_unit_edits = {
                 "Vehicule",
             ],
         },
-        "Factory": "EFactory/Art",
+        "Factory": "Factory/Art",
         "IdentifiedTextures": ["Texture_RTS_H_appui", "Texture_appui"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "UnitRole": "leader_sov",
@@ -2489,7 +2489,7 @@ rda_unit_edits = {
                 "EOpticalStrength/HighAltitude": 1413,
             },
         },
-        "Factory": "EFactory/Recons",
+        "Factory": "Factory/Recons",
         "IdentifiedTextures": ["Texture_RTS_H_reco", "Texture_reco"],
         "UnidentifiedTextures": ["Texture_RTS_H_veh_nonIdentifie", "Texture_veh_nonIdentifie"],
         "MenuIconTexture": "Texture_RTS_H_reco",
@@ -2566,7 +2566,6 @@ rda_unit_edits = {
     # RDA RECON
     "UAZ_469_Reco_DDR": {
         "CommandPoints": 25,
-        "UpgradeFromUnit": "BRDM_1_DDR",
     },
 
     "UAZ_469_AGL_Grenzer_DDR": {
@@ -3076,10 +3075,6 @@ rda_unit_edits = {
         "availability": [12, 9, 0, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_4_canon_ZPU4_towed_14_5mm": 160,
@@ -3098,14 +3093,10 @@ rda_unit_edits = {
                 "cards": 1,
             },
         },
-        "Factory": "EFactory/Logistic",
+        "Factory": "Factory/Logistic",
         "availability": [9, 7, 0, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "UpgradeFromUnit": "FOB_DDR",
         "WeaponDescriptor": {
             "Salves": {
@@ -3122,10 +3113,6 @@ rda_unit_edits = {
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_1_canon_Bofors_40mm": 1,
@@ -3144,10 +3131,6 @@ rda_unit_edits = {
         "availability": [9, 7, 0, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_1_canon_S60_57mm_radar": 1,
@@ -3184,10 +3167,6 @@ rda_unit_edits = {
         "availability": [9, 7, 0, 0],
         "max_speed": 6,
         
-        "WeaponDeployment": {
-            "TimeForWeaponDeployment": 15,
-            "TimeForWeaponPacking": 0.1,
-        },
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_1_canon_KS19_100mm_radar": 1,
@@ -3565,16 +3544,18 @@ rda_unit_edits = {
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": {
-                    "RocketAir_S5_57mm_salvolength32": {
-                        "new_weapon": "RocketAir_S5_57mm_avion_salvolength32",
-                        "swap_fire_effect": False,
-                        "depiction_baked_in": False,
-                    },
-                    "RocketAir_S5_57mm_salvolength32": {
-                        "new_weapon": "RocketAir_S5_57mm_avion_salvolength32",
-                        "swap_fire_effect": False,
-                        "depiction_baked_in": False,
-                    },
+                    "RocketAir_S5_57mm_salvolength32": [
+                        {
+                            "new_weapon": "RocketAir_S5_57mm_avion_salvolength32",
+                            "swap_fire_effect": False,
+                            "depiction_baked_in": False,
+                        },
+                        {
+                            "new_weapon": "RocketAir_S5_57mm_avion_salvolength32",
+                            "swap_fire_effect": False,
+                            "depiction_baked_in": False,
+                        },
+                    ],
                 },
             },
         },

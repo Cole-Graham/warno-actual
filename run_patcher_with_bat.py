@@ -6,6 +6,7 @@ from pathlib import Path
 from src import ModConfig
 from src.data import build_database, load_database_from_disk
 from src.utils.database_utils import verify_database
+from patcher_cli import apply_rebuild_db_override, parse_patcher_args
 from src.utils.logging_utils import configure_logging, setup_logger, get_counting_handler
 from src.utils.config_utils import get_mod_dst_path
 from subprocess import Popen, PIPE, STDOUT
@@ -144,6 +145,7 @@ def play_completion_sound():
 
 
 if __name__ == "__main__":
+	args = parse_patcher_args()
 	run_bat = input("Run GenerateMod.bat automatically after patcher? (y/n): ").lower() == "y"
 	# run_game = input("Run WARNO automatically after GenerateMod.bat? (y/n): ").lower() == "y" if run_bat else False
 
@@ -152,6 +154,7 @@ if __name__ == "__main__":
 
 		# Load configuration first
 		config = ModConfig.get_instance()
+		apply_rebuild_db_override(config.config_data, args)
 
 		# Check if this is a release build
 		if not config.config_data['build_config']['write_dev']:
@@ -189,6 +192,9 @@ if __name__ == "__main__":
 		ammo_db_precomp = config.config_data['game_db'].get('ammunition', {})
 		ammo_db_precomp['aa_suppress_damages'] = constants_data.get(
 			'aa_suppress_damages', {},
+		)
+		ammo_db_precomp['clu_bomb_dispersion'] = constants_data.get(
+			'clu_bomb_dispersion', {},
 		)
 		ammo_db_precomp['he_dca_weapons'] = constants_data.get(
 			'he_dca_weapons', {},

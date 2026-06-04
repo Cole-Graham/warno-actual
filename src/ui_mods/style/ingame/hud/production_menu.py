@@ -95,62 +95,173 @@ def _update_game_info_panel(source_path) -> None:
 
 
 def _update_command_points(source_path) -> None:
-    """Update command points display properties."""
-    pointscommandement = source_path.by_namespace("PointsCommandement").v
-    
-    # Update frame and margins
-    componentframe = pointscommandement.by_member("ComponentFrame").v
-    componentframe.add('MagnifiableOffset = [0.0, 0.0]')
-    pointscommandement.by_member("FirstMargin").v = "TRTTILength(Magnifiable = 72.0)"
-    pointscommandement.by_member("BorderLineColorToken").v = '"M81_ArtichokeVeryLight"'
-    
-    # Update elements
-    _update_command_points_elements(pointscommandement.by_member("Elements").v)
-    
-    # Add background
-    pointscommandement.add(_get_command_points_background())
-    
-    logger.debug("Updated command points display properties")
+    """Replace command points row with VIP-compliant nested list elements."""
+    index = source_path.by_namespace("PointsCommandement").index
+    source_path.replace(index, _get_points_commandement())
+    logger.debug("Updated command points display (VIP nested horizontal list slots)")
 
 
-def _update_command_points_elements(elements: Any) -> None:
-    """Update command points element properties."""
-    for element in elements:
-        if not isinstance(element.v, ndf.model.Object) or not is_obj_type(element.v, "BUCKListElementDescriptor"):
-            continue
-            
-        component_descr = element.v.by_member("ComponentDescriptor").v
-        if component_descr.type == "BUCKTextureDescriptor":  # noqa
-            _update_command_points_texture(component_descr)
-        elif component_descr.type == "BUCKTextDescriptor":  # noqa
-            _update_command_points_text(component_descr)
+def _get_points_commandement() -> str:
+    """Horizontal list: X alignment on inner widgets only (not list slots)."""
+    return '''\
+private PointsCommandement is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 1.0]
+        MagnifiableOffset = [0.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    FirstMargin = TRTTILength(Magnifiable = 72.0)
+    InterItemMargin = TRTTILength(Magnifiable = 4.0)
+    LastMargin = TRTTILength(Magnifiable = 16.0)
+
+    HasBorder = true
+    BorderThicknessToken = "1"
+    BorderLineColorToken = "M81_ArtichokeVeryLight"
+    BordersToDraw = ~/TBorderSide/Right
+
+    BackgroundComponents =
+    [
+        PanelRoundedCorner
+        (
+            BackgroundBlockColorToken = "M81_Quincy"
+            BorderLineColorToken = "M81_ArtichokeVeryLight"
+        ),
+    ]
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [16.0, 16.0]
+                    AlignementToFather = [0.0, 0.5]
+                    AlignementToAnchor = [0.0, 0.5]
+                )
+                FitStyle = ~/ContainerFitStyle/FitToContent
+                Components =
+                [
+                    BUCKTextureDescriptor
+                    (
+                        ElementName = "CommandPoints"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [16.0, 16.0]
+                            AlignementToFather = [0.0, 0.5]
+                            AlignementToAnchor = [4.0, 0.5]
+                        )
+                        TextureToken = "UseInGame_CommandPoints"
+                        Components =
+                        [
+                            BUCKSpecificHintableArea
+                            (
+                                HintBodyToken = "LR_cmd"
+                                DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                            ),
+                        ]
+                    ),
+                ]
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                UniqueName = "CommmandPointsText"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    AlignementToFather = [0.0, 0.5]
+                    AlignementToAnchor = [0.0, 0.5]
+                )
+                ParagraphStyle = TParagraphStyle
+                (
+                    Alignment = UIText_Right
+                    VerticalAlignment = UIText_VerticalCenter
+                    InterLine = 0
+                )
+                TextStyle = "Default"
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+                TypefaceToken = "Liberator"
+                BigLineAction = ~/BigLineAction/CutByDots
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextToken = "HPROD_CMDP"
+                TextColor = "Gold"
+                TextSize = "26"
+                Hint = BUCKSpecificHintableArea
+                (
+                    DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                    HintBodyToken = "LR_cmd"
+                )
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    AlignementToFather = [0.0, 0.5]
+                    AlignementToAnchor = [0.0, 0.5]
+                )
+                FitStyle = ~/ContainerFitStyle/FitToContent
+                Components =
+                [
+                    BUCKTextDescriptor
+                    (
+                        UniqueName = "CommmandPointsIncomeText"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                            AlignementToFather = [0.0, 0.5]
+                            AlignementToAnchor = [-0.25, 0.625]
+                        )
+                        ParagraphStyle = TParagraphStyle
+                        (
+                            Alignment = UIText_Right
+                            VerticalAlignment = UIText_VerticalCenter
+                            InterLine = 0
+                        )
+                        TextStyle = "Default"
+                        HorizontalFitStyle = ~/FitStyle/FitToContent
+                        TypefaceToken = "Liberator"
+                        BigLineAction = ~/BigLineAction/CutByDots
+                        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                        TextToken = "HPROD_CMDI"
+                        TextColor = "Gold"
+                        TextSize = "16"
+                        Hint = BUCKSpecificHintableArea
+                        (
+                            UniqueName = "CommmandPointsIncomeHintText"
+                            ForbiddenTags = ["StrategicScenario"]
+                            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                            HintTitleToken = "HPD_INCT"
+                            HintBodyToken = "LR_incob"
+                        )
+                    ),
+                ]
+            )
+        ),
+    ]
+)'''
 
 
-def _update_command_points_texture(component: Any) -> None:
-    """Update command points texture properties."""
-    if component.by_member("ElementName", False) is None:
-        return
-        
-    if component.by_member("ElementName").v == '"CommandPoints"':
-        componentframe = component.by_member("ComponentFrame").v
-        componentframe.by_member("AlignementToAnchor").v = "[4.0, 0.5]"
+def _update_command_points_timer(source_path) -> None:
+    """Update command points timer properties."""
+    chronopointcommandement = source_path.by_namespace("ChronoPointCommandement").v
+    chronopointcommandement.by_member("BorderLineColorToken").v = '"M81_ArtichokeVeryLight"'
+    chronopointcommandement.add(_get_chrono_command_points_background())
+    logger.debug("Updated command points timer properties")
 
 
-def _update_command_points_text(component: Any) -> None:
-    """Update command points text properties."""
-    if component.by_member("UniqueName", False) is None:
-        return
-        
-    uniquename = component.by_member("UniqueName").v
-    if uniquename == '"CommmandPointsText"':
-        component.by_member("HorizontalFitStyle").v = "~/FitStyle/UserDefined"
-    elif uniquename == '"CommmandPointsIncomeText"':
-        componentframe = component.by_member("ComponentFrame").v
-        componentframe.by_member("AlignementToAnchor").v = "[-0.25, 0.5]"
-
-
-def _get_command_points_background() -> str:
-    """Get command points background template."""
+def _get_chrono_command_points_background() -> str:
+    """Background panel for ChronoPointCommandement (same tokens as PointsCommandement)."""
     return '''\
 BackgroundComponents = [
     PanelRoundedCorner
@@ -159,14 +270,6 @@ BackgroundComponents = [
         BorderLineColorToken = "M81_ArtichokeVeryLight"
     )
 ]'''
-
-
-def _update_command_points_timer(source_path) -> None:
-    """Update command points timer properties."""
-    chronopointcommandement = source_path.by_namespace("ChronoPointCommandement").v
-    chronopointcommandement.by_member("BorderLineColorToken").v = '"M81_ArtichokeVeryLight"'
-    chronopointcommandement.add(_get_command_points_background())
-    logger.debug("Updated command points timer properties")
 
 
 def _update_sector_display(source_path) -> None:
