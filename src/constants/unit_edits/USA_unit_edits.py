@@ -4729,7 +4729,7 @@ usa_unit_edits = {
             "display": "STINGER C",
             "token": "XQYDBWCBAP",
         },
-        "CommandPoints": 50,
+        "CommandPoints": 55,
         "armor": "Infantry_armor_reference",
         "Divisions": {
             "remove": ["US_82nd_Airborne"],
@@ -4770,7 +4770,9 @@ usa_unit_edits = {
     },
 
     "MANPAD_Stinger_C_Aero_US": {
+        "CommandPoints": "MANPAD_Stinger_C_US",
         "armor": "Infantry_armor_reference",
+        "max_speed": 20,
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": {
@@ -4791,7 +4793,7 @@ usa_unit_edits = {
             "display": "AB STINGER C",
             "token": "VVEXCPXVQB",
         },
-        "CommandPoints": 50,
+        "CommandPoints": "MANPAD_Stinger_C_US",
         "availability": [0, 7, 5, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -4815,7 +4817,7 @@ usa_unit_edits = {
     },
     
     "MANPAD_Stinger_C_USMC_US": {
-        "CommandPoints": 50,
+        "CommandPoints": "MANPAD_Stinger_C_US",
         "GameName": {
             "display": "USMC STINGER C",
         },

@@ -2373,7 +2373,7 @@ uk_unit_edits = {
     },
     
     "DCA_Starstreak_LML_UK": {
-        "CommandPoints": 55,
+        "CommandPoints": 60,
         "max_speed": 14,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_veryheavy'"],

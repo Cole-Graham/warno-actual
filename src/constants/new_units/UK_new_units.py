@@ -112,7 +112,7 @@ UK_NEW_UNITS = {
             ],
         },
         "TransportedSoldier": "MANPAD_Starstreak_UK",
-        "CommandPoints": 50,
+        "CommandPoints": 55,
         "Divisions": {
             "default": {
                 "cards": 1,

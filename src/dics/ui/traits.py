@@ -551,5 +551,14 @@ TRAIT_EDITS = {
                 f"fire support vehicles."
             )
         }
-    }
+    },
+    
+    "_resolute": {
+        "extended": {
+            "token": "YSPNDCTXOL",
+            "text": (
+                f"• Resolute units take #styleGreen{{20% less suppression in combat}} "
+            )
+        }
+    },
 }

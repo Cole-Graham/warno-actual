@@ -460,7 +460,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_sa_intermediate",
             },
             "hit_roll": {
-                "Idling": 30,
+                "Idling": 35,
                 "Moving": 15,
             },
             "parent_membr": {
@@ -490,6 +490,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_sa_intermediate",
             },
             "hit_roll": {
+                "Idling": 35,
                 "Moving": 15,
             },
             "parent_membr": {
@@ -605,6 +606,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_sa_intermediate",
             },
             "hit_roll": {
+                "Idling": 35,
                 "Moving": 15,
             },
             "parent_membr": {
