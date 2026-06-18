@@ -3,7 +3,7 @@
 KINETIC_ROW_COUNT = 40
 HEAT_ROW_COUNT = 30
 KE_AND_HEAT_ROW_COUNT = KINETIC_ROW_COUNT + HEAT_ROW_COUNT
-VANILLA_LAST_ROW = 140 # used for log warning if Eugen changed the damage array
+VANILLA_LAST_ROW = 143 # used for log warning if Eugen changed the damage array
 VANILLA_LAST_COLUMN = 48 + 13 # 13 is the number of WA armor levels, we add them before this check (# TODO: yeah...not optimal)
 AP_MISSILE_ROW_FIRST = 40
 AP_MISSILE_ROW_LAST = 70
@@ -502,27 +502,30 @@ INFANTRY_ARMOR_EDITS = {
         117: (0.85, "grenades 1"),
         118: (1.0, "he 1"),
         119: (1.0, "he_dca 1"),
-        120: (1.0, "he_autocanon 1"),
-        121: (1.0, "he_autocanon 2"),
-        122: (1.0, "he_cluster 1"),
-        123: (1.0, "howz 1"),
-        124: (1.0, "howz_bombe 1"),
-        125: (1.0, "mmgballe 1"),
-        126: (1.0, "mmgballe 2"),
-        127: (1.0, "mmgballe 3"),
-        128: (1.0, "missile_he 1"),
-        129: (0.1, "pmballe 1"),
-        130: (0.5, "pmballe 2"),
-        131: (1.0, "pmballe 3"),
-        132: (1.0, "roquette"),
-        133: (1.0, "smoke"),
-        134: (1.0, "superhe 1"),
-        135: (1.0, "superhe_sol 1"),
-        136: (1.0, "suppress 1"),
-        137: (1.0, "suppressap 0.75"),
-        138: (1.0, "thermobarique 1"),
-        139: (1.0, "roquette_ap 1"),
-        140: (1.0, "suppresdca 1"),
+        120: (1.0, "he_gatling_gunship 1"),
+        121: (1.0, "he_autocanon 1"),
+        122: (1.0, "he_autocanon 2"),
+        123: (1.0, "he_autocanon_gunship 1"),
+        124: (1.0, "he_cluster 1"),
+        125: (1.0, "howz 1"),
+        126: (1.0, "howz_gunship 1"),
+        127: (1.0, "howz_bombe 1"),
+        128: (1.0, "mmgballe 1"),
+        129: (1.0, "mmgballe 2"),
+        130: (1.0, "mmgballe 3"),
+        131: (1.0, "missile_he 1"),
+        132: (0.1, "pmballe 1"),
+        133: (0.5, "pmballe 2"),
+        134: (1.0, "pmballe 3"),
+        135: (1.0, "roquette"),
+        136: (1.0, "smoke"),
+        137: (1.0, "superhe 1"),
+        138: (1.0, "superhe_sol 1"),
+        139: (1.0, "suppress 1"),
+        140: (1.0, "suppressap 0.75"),
+        141: (1.0, "thermobarique 1"),
+        142: (1.0, "roquette_ap 1"),
+        143: (1.0, "suppresdca 1"),
     }
 
 # FMballe infantry damage edits
@@ -589,7 +592,7 @@ DAMAGE_EDITS = {
     
     # need to figure out which weapons to seperate from this category or how to balance them with same family ratio
     "HE_autocanon_1": {  # 12.7mm
-        "row": 120,
+        "row": 121,
         "edits": {
             37: 3.3,    # helicopter <1 armor (vanilla value is 2.5)
             # 38: 2.4,    # helicopter 1 armor (vanilla value is 0.8)
@@ -598,8 +601,31 @@ DAMAGE_EDITS = {
             49: 1.0,    # WA Infantry 1 (14 strength, not set by other WA inf armor function)
         }
     },
-    "howz": {
+    "he_autocanon_gunship": {
         "row": 123,
+        "edits": {
+            37: 3.3,    # helicopter <1 armor (vanilla value is 2.5)
+            49: 1.0,    # WA Infantry 1 (14 strength, not set by other WA inf armor function)
+        }
+    },
+    "howz": {
+        "row": 125,
+        "edits": {
+            4: 0.66,
+            5: 0.41,
+            6: 0.31,
+            7: 0.21,
+            8: 0.17,
+            9: 0.14,
+            10: 0.11,
+            (11, 33): 0.08,
+            40: 1.0,
+            45: 1.0,
+            48: 1.0,
+        }
+    },
+    "howz_gunship": {
+        "row": 126,
         "edits": {
             4: 0.66,
             5: 0.41,
@@ -615,7 +641,7 @@ DAMAGE_EDITS = {
         }
     },
     "howz_bombe": {
-        "row": 124,
+        "row": 127,
         "edits": {
             4: 0.66,
             5: 0.41,
@@ -631,14 +657,14 @@ DAMAGE_EDITS = {
         }
     },
     "Missile_HE": {  # avion
-        "row": 128,
+        "row": 131,
         "edits": {
             1: 0.7,    # avion 1 armor (vanilla value is 0.9)
             2: 0.6,    # avion 2 armor (vanilla value is 0.8)
         }
     },
     "thermobarique": {
-        "row": 138,
+        "row": 141,
         "edits": {
             4: 0.25,
             5: 0.10,
@@ -651,7 +677,7 @@ DAMAGE_EDITS = {
         }
     },
     "Roquette_AP_1": {  # blindage
-        "row": 139,
+        "row": 142,
         "edits": {
             7: 0.7,    # blindage 4 armor (vanilla value is 0.5)
             8: 0.6,    # blindage 5 armor (vanilla value is 0.5)

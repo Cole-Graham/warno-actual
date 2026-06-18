@@ -261,7 +261,6 @@ BUCKListElementDescriptor
     (
         ComponentFrame = TUIFramePropertyRTTI
         (
-            RelativeWidthHeight = [0.0, 1.0]
             AlignementToFather = [0.0, 1.0]
             AlignementToAnchor = [0.0, 1.0]
         )

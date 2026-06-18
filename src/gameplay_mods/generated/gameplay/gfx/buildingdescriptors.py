@@ -62,7 +62,10 @@ def _handle_fob_attributes(source_path: Any) -> None:
         # rename fobs - mostly just correcting to all caps
         fobnames = {
             "FOBBEL": "MUNITIEDEPOT",
+            "FOBBRZ": "tbd",
             "FOBCAN": "FIELD SUPPLY POINT",  # canada
+            "FOBCOL": "tbd",
+            "FOBCUB": "tbd",
             "FOBCZ": "tbd",  # czechoslovakia
             "FOBDDR": "FELDDEPOT",
             "FOBDK": "FELT FORSYNINGSPUNKT",
@@ -75,6 +78,7 @@ def _handle_fob_attributes(source_path: Any) -> None:
             "FOBTCH": "tbd",
             "FOBUK": "FIELD SUPPLY POINT",
             "FOBUS": "FIELD SUPPLY POINT",
+            "FOBVEN": "tbd",
         }
         fobnames_entries = [(k, v) for k, v in fobnames.items()]
         write_dictionary_entries(fobnames_entries, dictionary_type="units")
