@@ -258,7 +258,7 @@ VETERANCY_BONUSES = {
         "helico_2": {
             "body_token": "ETUVQWYSIR",
             "body": (
-                '#style1{- Precision:} #styleGreen{+8%}'
+                '#style1{- Precision:} #styleGreen{+5%}'
                 '\n#style1{- Aiming time:} #styleGreen{-40%}'
                 '\n#style1{- Stress resistance:} #styleGreen{+20%}'
                 '\n#style1{- Stress recovery:} #styleGreen{6.2} #style1{per second}'
@@ -268,7 +268,7 @@ VETERANCY_BONUSES = {
         "helico_3": {
             "body_token": "BQBYGPLFJC",
             "body": (
-                '#style1{- Precision:} #styleTurquoise{+16%}'
+                '#style1{- Precision:} #styleTurquoise{+10%}'
                 '\n#style1{- Aiming time:} #styleTurquoise{-60%}'
                 '\n#style1{- Stress resistance:} #styleTurquoise{+40%}'
                 '\n#style1{- Stress recovery:} #styleTurquoise{8.4} #style1{per second}'
@@ -287,6 +287,45 @@ VETERANCY_BONUSES = {
                 '\n#style1{- Stress recovery:} #styleTurquoise{7.8} #style1{per second}'
                 '\n#style1{- Evasion:} #styleTurquoise{+5%}'
                 # '\n(percentage, multiplicative, multiplicative, multiplicative, percentage, percentage)'
+            ),
+        },
+    },
+    "helico_attack": {
+        "helico_attack_0": {
+            "body_token": "QJYUDDORXU",
+            "body": (
+                '#style1{- Precision: normal}'
+                '\n#style1{- Aiming time: normal}'
+                '\n#style1{- Stress resistance: normal}'
+                '\n#style1{- Stress recovery: 3.0 per second}'
+            ),
+        },
+        "helico_attack_1": {
+            "body_token": "LSCFSBJBIV",
+            "body": (
+                '#style1{- Precision: normal}'
+                '\n#style1{- Aiming time:} #moral_color_bad_2{-20%}'
+                '\n#style1{- Stress resistance: normal}'
+                '\n#style1{- Stress recovery:} #moral_color_bad_2{4.2} #style1{per second}'
+            ),
+        },
+        "helico_attack_2": {
+            "body_token": "JFVVMTZTDB",
+            "body": (
+                '#style1{- Precision:} #styleGreen{+8%}'
+                '\n#style1{- Aiming time:} #styleGreen{-40%}'
+                '\n#style1{- Stress resistance:} #styleGreen{+20%}'
+                '\n#style1{- Stress recovery:} #styleGreen{6.2} #style1{per second}'
+            ),
+        },
+        "helico_attack_3": {
+            "body_token": "MPHFFBYNXE",
+            "body": (
+                '#style1{- Precision:} #styleTurquoise{+16%}'
+                '\n#style1{- Aiming time:} #styleTurquoise{-60%}'
+                '\n#style1{- Stress resistance:} #styleTurquoise{+40%}'
+                '\n#style1{- Stress recovery:} #styleTurquoise{8.4} #style1{per second}'
+                '\n#style1{- Evasion:} #styleTurquoise{+5%}'
             ),
         },
     },

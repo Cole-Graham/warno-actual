@@ -4899,7 +4899,7 @@ usa_unit_edits = {
     },
 
     "M163_CS_US": {
-        "CommandPoints": 50,
+        "CommandPoints": 40,
         "availability": [8, 6, 0, 0],
         "UpgradeFromUnit": "M42_Duster_US",
         "WeaponDescriptor": {
@@ -5267,6 +5267,9 @@ usa_unit_edits = {
     },
 
     "AH1F_ATAS_US": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 130,
         "Divisions": {
             "default": {
@@ -5277,6 +5280,9 @@ usa_unit_edits = {
     },
     
     "AH1F_CNITE_US": { # 10% ECM, 4x TOW-2, 38x Hydra
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 150,
         "Divisions": {
             "default": {
@@ -5290,6 +5296,9 @@ usa_unit_edits = {
     },
 
     "AH1F_Cobra_US": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 120,
         "Divisions": {
             "default": {
@@ -5306,6 +5315,9 @@ usa_unit_edits = {
     },
 
     "AH1S_Cobra_US": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 100,
         "Divisions": {
             "default": {
@@ -5325,6 +5337,9 @@ usa_unit_edits = {
     },
 
     "AH1F_Hog_US": { # 76x Hydra
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 100,
         "Divisions": {
             "default": {
@@ -5344,6 +5359,9 @@ usa_unit_edits = {
     },
 
     "AH1F_HeavyHog_US": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 100,
         "Divisions": {
             "default": {
@@ -5354,10 +5372,16 @@ usa_unit_edits = {
     },
     
     "AH1W_SuperCobra_Hydra_US": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 125,  
     },
     
     "AH1W_SuperCobra_AA_US": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 140,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -5373,10 +5397,16 @@ usa_unit_edits = {
     },
     
     "AH1W_SuperCobra_AT_US": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 175,
     },
     
     "AH1W_SuperCobra_SEAD_US": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 150,
         "optics": {
             "VisionRangesGRU": {
@@ -5389,6 +5419,9 @@ usa_unit_edits = {
     },
 
     "AH64_Apache_US": {  # 8x Hellfire / Hydra
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 200,
         "SpecialtiesList": {
             "add_specs": ["'_hmd'"],
@@ -5402,6 +5435,9 @@ usa_unit_edits = {
     },
 
     "AH64_Apache_emp1_US": {  # 16x Hellfire
+        "XP": {
+            "pack": "helico_attack",
+        },
         "GameName": {
             "display": "AH-64A APACHE [AT]",
         },
@@ -5422,6 +5458,9 @@ usa_unit_edits = {
     },
 
     "AH64_Apache_emp2_US": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 160,
         "SpecialtiesList": {
             "add_specs": ["'_hmd'"],
@@ -5438,6 +5477,9 @@ usa_unit_edits = {
     },
 
     "AH64_Apache_ATAS_US": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 230,
         "SpecialtiesList": {
             "add_specs": ["'_hmd'"],
@@ -5549,7 +5591,7 @@ usa_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 0: {
-                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMax": 0.9599311,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },
@@ -5644,7 +5686,7 @@ usa_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 0: {
-                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMax": 0.9599311,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },
@@ -5778,7 +5820,7 @@ usa_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 0: {
-                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMax": 0.9599311,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },
@@ -6179,7 +6221,7 @@ usa_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 1: {
-                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMax": 0.9599311,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },
@@ -6360,7 +6402,7 @@ usa_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 3: {
-                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMax": 0.9599311,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },

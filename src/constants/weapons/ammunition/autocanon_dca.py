@@ -242,7 +242,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2275,
-                "MaximumRangeAirplaneGRU": 1952,
+                "MaximumRangeAirplaneGRU": 1925,
                 "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 0.2,
                 "TimeBetweenTwoFx": 0.2,
@@ -761,7 +761,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "HasDeploymentTime": True,
                 "AimingTime": 2.0,
-                "PhysicalDamages": 1.15,
             },
         },
     },
@@ -799,10 +798,11 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Canon_HE_KS30_130mm", "canon", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "TimeBetweenTwoShots": 5.0,
                 "HasDeploymentTime": True,
                 "AimingTime": 2.0,
                 "MaximumRangeGRU": 1750,
-                "PhysicalDamages": 7.0,
+                "PhysicalDamages": 1.7,
                 "ShotsCountPerSalvo": 60,
                 "AffichageMunitionParSalve": 60,
                 "TimeBetweenTwoSalvos": 10.0,

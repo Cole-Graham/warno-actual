@@ -2240,6 +2240,7 @@ rfa_unit_edits = {
             "token": "HVHJFPKNKB",
         },
         "CommandPoints": 150,
+        "strength": 8,
         "optics": {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 10600.0,
@@ -2629,7 +2630,7 @@ rfa_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 1: {
-                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMax": 0.9599311,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },

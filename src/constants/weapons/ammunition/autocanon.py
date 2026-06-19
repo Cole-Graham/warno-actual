@@ -945,8 +945,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
-                "MaximumRangeHelicopterGRU": 2450,
-                "MaximumRangeAirplaneGRU": 2100,
+                "MaximumRangeHelicopterGRU": 2275,
+                "MaximumRangeAirplaneGRU": 1925,
                 "TimeBetweenTwoShots": 0.2,
                 "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 1.0,

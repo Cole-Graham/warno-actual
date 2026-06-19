@@ -1864,7 +1864,7 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_RPO_A_93mm": 6,
+                "RocketInf_RPO_A_93mm": 4,
             },
         },
     },
@@ -1888,7 +1888,7 @@ sov_unit_edits = {
                 },
             },
             "Salves": {
-                "RocketInf_RPO_RYS": 6,
+                "RocketInf_RPO_RYS": 4,
             },
         },
     },
@@ -2828,7 +2828,7 @@ sov_unit_edits = {
     },
     
     "2S5_GiatsintS_SOV": {
-        "CommandPoints": 185,
+        "CommandPoints": 220,
     },
 
     "Howz_MstaB_150mm_SOV": {
@@ -4883,6 +4883,9 @@ sov_unit_edits = {
     },
 
     "Mi_24K_reco_SOV": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 150,
         "strength": "Mi_24P_SOV",
         "Divisions": {
@@ -5041,6 +5044,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_1_canon_KS30_130mm_radar": 1,
+                "Canon_HE_KS30_130mm": 1,
             },
             "equipmentchanges": {
                 "replace": {
@@ -5632,16 +5636,25 @@ sov_unit_edits = {
     },
     
     "Mi_24D_Desant_SOV": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 85,
         "strength": "Mi_24P_SOV",
     },
     
     "Mi_24A_SOV": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 100,
         "strength": "Mi_24P_SOV",
     },
 
     "Mi_24V_AA_SOV": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 160,
         "strength": "Mi_24P_SOV",
         "Divisions": {
@@ -5656,6 +5669,9 @@ sov_unit_edits = {
     },
 
     "Mi_24V_RKT_SOV": {  # 4x Kokon, 20x S-13
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 160,
         "strength": "Mi_24P_SOV",
         "Divisions": {
@@ -5670,12 +5686,18 @@ sov_unit_edits = {
     },
 
     "Mi_24V_RKT2_SOV": {  # 4x Kokon, 80x S-8KOM
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 160,
         "strength": "Mi_24P_SOV",
         "availability": [0, 4, 3, 0],
     },
 
     "Mi_24V_AT_SOV": {  # 8x Kokon, 40x S-80
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 160,
         "strength": "Mi_24P_SOV",
         "Divisions": {
@@ -5693,6 +5715,9 @@ sov_unit_edits = {
     },
 
     "Mi_24P_SOV": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "GameName": {
             "display": "Mi-24P [AT]",
         },
@@ -5721,6 +5746,9 @@ sov_unit_edits = {
     },
 
     "Mi_24P_AA_SOV": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "GameName": {
             "display": "Mi-24P [AA]",
         },
@@ -5749,6 +5777,9 @@ sov_unit_edits = {
     },
 
     "Mi_24VP_SOV": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 200,
         "strength": "Mi_24P_SOV",
         "WeaponDescriptor": {
@@ -5767,24 +5798,36 @@ sov_unit_edits = {
     },
     
     "Mi_24P_Atakax4_SOV": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 200,
         "strength": "Mi_24P_SOV",
         "availability": [0, 2, 0, 1],
     },
     
     "Mi_24P_Atakax8_SOV": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 230,
         "strength": "Mi_24P_SOV",
         "availability": [0, 2, 0, 1],
     },
     
     "Ka_29_SOV": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 230,
         "strength": 10,
         "availability": [0, 2, 0, 1],
     },
     
     "Ka_50_SOV": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 230,
         "availability": [0, 2, 0, 1],
         "Divisions": {
@@ -5795,6 +5838,9 @@ sov_unit_edits = {
     },
     
     "Ka_50_AA_SOV": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "availability": [0, 3, 2, 0],
         "Divisions": {
             "default": {
@@ -5941,7 +5987,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 0: {
-                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMax": 0.9599311,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },
@@ -6035,7 +6081,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 1: {
-                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMax": 0.9599311,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },
@@ -6058,7 +6104,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 1: {
-                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMax": 0.9599311,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },
@@ -6388,7 +6434,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 1: {
-                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMax": 0.9599311,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },
@@ -6430,7 +6476,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 1: {
-                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMax": 0.9599311,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },
@@ -6456,7 +6502,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 1: {
-                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMax": 0.9599311,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },

@@ -338,8 +338,9 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_2A60_Howitzer_120mm_SMOKE", "mortar", None, False): { # 371
         "Ammunition": {
             "parent_membr": {
+                "MaximumRangeGRU": 8400,
                 "MinimumRangeGRU": 1925,
-                "AimingTime": 12,
+                "AimingTime": 15,
                 "TimeBetweenTwoSalvos": 20.0,
             },
         },
@@ -348,10 +349,11 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_2A60_Howitzer_120mm", "mortar", None, False): { # 370
         "Ammunition": {
             "parent_membr": {
+                "MaximumRangeGRU": 8400,
                 "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 3.6,
                 "SuppressDamages": 265,
-                "AimingTime": 12,
+                "AimingTime": 15,
                 "TimeBetweenTwoSalvos": 20.0,
                 "RadiusSplashPhysicalDamagesGRU": 120,
                 "RadiusSplashSuppressDamagesGRU": 160,
@@ -363,8 +365,9 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_2A51_Howitzer_120mm_SMOKE", "mortar", None, False): { # 369
         "Ammunition": {
             "parent_membr": {
+                "MaximumRangeGRU": 8400,
                 "MinimumRangeGRU": 1925,
-                "AimingTime": 12,
+                "AimingTime": 15,
                 "TimeBetweenTwoSalvos": 20.0,
             },
         },
@@ -373,12 +376,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Howz_Canon_2A51_Howitzer_120mm", "mortar", None, False): { # 368
         "Ammunition": {
             "parent_membr": {
+                "MaximumRangeGRU": 8400,
                 "MinimumRangeGRU": 1925,
                 "PhysicalDamages": 3.6,
                 "SuppressDamages": 265,
                 "RadiusSplashPhysicalDamagesGRU": 120,
                 "RadiusSplashSuppressDamagesGRU": 160,
-                "AimingTime": 12,
+                "AimingTime": 15,
                 "TimeBetweenTwoSalvos": 20.0,
                 "SupplyCost": 90.0,
             },

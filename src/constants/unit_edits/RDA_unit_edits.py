@@ -2638,6 +2638,7 @@ rda_unit_edits = {
     },
 
     "Mi_2_reco_DDR": {
+        "CommandPoints": 30,
         "availability": [0, 6, 0, 0],
     },
     
@@ -2653,6 +2654,9 @@ rda_unit_edits = {
     },
 
     "Mi_24D_s5_AT_reco_DDR": { # #RECO2 DHS Mi-24D Transport
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 135,
         "strength": "Mi_24P_SOV",
     },
@@ -3444,23 +3448,35 @@ rda_unit_edits = {
     },
 
     "Mi_24D_s5_AT_DDR": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 130,
         "strength": "Mi_24P_SOV",
         "availability": [0, 4, 3, 0],
     },
     
     "Mi_24D_s8_AT_DDR": { # Mi-24D [AT2]
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 145, # vanilla 130
         "strength": "Mi_24P_SOV",
     },
 
     "Mi_24D_AA_DDR": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 130,
         "strength": "Mi_24P_SOV",
         "availability": [0, 3, 2, 0],
     },
 
     "Mi_24P_s8_AT_DDR": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "GameName": {
             "display": "Mi-24P [AT]",
         },
@@ -3497,6 +3513,9 @@ rda_unit_edits = {
     },
     
     "Mi_24P_s8_AT2_DDR": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 160,
         "strength": "Mi_24P_SOV",
         "Divisions": {
@@ -3527,13 +3546,16 @@ rda_unit_edits = {
     },
 
     "Mi_14PL_AT_DDR": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 100,
         "availability": [0, 2, 0, 1],
     },
 
     # RDA AIR
     "L39ZO_CLU_DDR": {
-        "CommandPoints": 90,
+        "CommandPoints": 75,
         "availability": [0, 4, 0, 0],
         "UpgradeFromUnit": "L39ZO_HE1_DDR",
     },
@@ -3804,7 +3826,7 @@ rda_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 1: {
-                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMax": 0.9599311,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },

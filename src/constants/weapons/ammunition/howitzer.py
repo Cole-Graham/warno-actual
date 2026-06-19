@@ -509,8 +509,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MinimumRangeGRU": 1925,
                 "TimeBetweenTwoShots": 3.0,
                 "TimeBetweenTwoFx": 3.0,
-                "DispersionAtMaxRangeGRU": 500,
-                "DispersionAtMinRangeGRU": 112,
                 "ShotsCountPerSalvo": 7,
                 "AffichageMunitionParSalve": 7,
                 "PhysicalDamages": 3.6,

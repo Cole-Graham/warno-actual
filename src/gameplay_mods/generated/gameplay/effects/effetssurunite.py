@@ -196,8 +196,67 @@ def _edit_veterancy_effects(source_path) -> None:
                 effect_str = effect_fn(*args)
                 effects_list.v.add(effect_str)
     
+    _add_helo_attack_xp_effects(source_path)
     _add_multiplicative_infantry_xp(source_path)
     _mirror_avion_suppress_resist_as_stun_resist(source_path)
+
+
+_HELO_ATTACK_EFFECT_GUIDS: dict[str, str] = {
+    "UnitEffect_xp_rookie_helo_attack": "30d8a0dd-0f87-429b-98e2-098aeb1a0b1e",
+    "UnitEffect_xp_trained_helo_attack": "0c48af36-5a1d-401c-9952-ae4351b5f2ac",
+    "UnitEffect_xp_veteran_helo_attack": "96e82bfe-107a-44fc-a76d-94a293e4a769",
+    "UnitEffect_xp_elite_helo_attack": "fac2b968-dcf7-4e8d-baa1-ac3b79d13976",
+}
+
+
+def _add_helo_attack_xp_effects(source_path) -> None:
+    """Clone helo XP effect packs for attack helicopters; nerf base helo precision."""
+    logger.info("Adding attack helicopter XP effect packs")
+
+    for base_ns, guid in (
+        ("UnitEffect_xp_rookie_helo", _HELO_ATTACK_EFFECT_GUIDS["UnitEffect_xp_rookie_helo_attack"]),
+        ("UnitEffect_xp_trained_helo", _HELO_ATTACK_EFFECT_GUIDS["UnitEffect_xp_trained_helo_attack"]),
+        ("UnitEffect_xp_veteran_helo", _HELO_ATTACK_EFFECT_GUIDS["UnitEffect_xp_veteran_helo_attack"]),
+        ("UnitEffect_xp_elite_helo", _HELO_ATTACK_EFFECT_GUIDS["UnitEffect_xp_elite_helo_attack"]),
+    ):
+        attack_ns = f"{base_ns}_attack"
+        new_effect = source_path.by_n(base_ns).copy()
+        new_effect.namespace = attack_ns
+        new_effect.v.by_m("DescriptorId").v = f"GUID:{{{guid}}}"
+        new_effect.v.by_m("NameForDebug").v = f"'{attack_ns}'"
+        source_path.add(new_effect)
+        logger.info(f"Added new effect: {attack_ns}")
+
+    precision_types = (
+        "TUnitEffectIncreaseWeaponPrecisionArretDescriptor",
+        "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor",
+    )
+    for pack_ns, modifier_value in (
+        ("UnitEffect_xp_veteran_helo", 5),
+        ("UnitEffect_xp_elite_helo", 10),
+    ):
+        row = source_path.find_by_cond(
+            lambda r, ns=pack_ns: r.namespace == ns,
+            strict=False,
+        )
+        if not row:
+            logger.warning(f"{pack_ns} not found; skipping precision change")
+            continue
+        effects_list = row.v.by_m("EffectsDescriptors")
+        for effect_type in precision_types:
+            precision = find_obj_by_type(effects_list.v, effect_type)
+            if not precision:
+                logger.warning(f"No {effect_type} on {pack_ns}")
+                continue
+            mod_type = str(precision.v.by_m("ModifierType").v)
+            if mod_type != "~/ModifierType_Additionnel":
+                logger.warning(
+                    f"Unexpected ModifierType {mod_type!r} on {pack_ns} {effect_type}; "
+                    f"expected ~/ModifierType_Additionnel",
+                )
+                continue
+            precision.v.by_m("ModifierValue").v = str(modifier_value)
+            logger.info(f"Set {effect_type} to {modifier_value} for {pack_ns}")
 
 
 _AVION_VET_PACKS: tuple = (

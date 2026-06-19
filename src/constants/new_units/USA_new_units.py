@@ -1010,16 +1010,15 @@ USA_NEW_UNITS = {
                 },
                 "replace_with_turret": [
                     ("AA_AIM9J_Sidewinder", "AGM_AGM65D_Maverick", "AA_AIM9J_Sidewinder", "AGM_AGM65D_Maverick"),
-                ]
+                ],
+                "turrets": {
+                    1: {
+                        "AngleRotationMax": 0.9599311,
+                        "AngleRotationMaxPitch": 0.8726646,
+                        "AngleRotationMinPitch": -0.8726646,
+                    },
+                },
             },
-            # TODO: Determine if AGM88 has the Autogyr to support being fired from this angle
-            # "turrets": {
-            #     1: {
-            #         "AngleRotationMax": 1.745329,
-            #         "AngleRotationMaxPitch": 0.8726646,
-            #         "AngleRotationMinPitch": -0.8726646,
-            #     },
-            # },
         },
         "Divisions": {
             "default": {

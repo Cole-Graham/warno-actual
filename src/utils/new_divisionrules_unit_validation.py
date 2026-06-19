@@ -6,6 +6,9 @@ Also validates that each division's ``standout_units`` appear in the merged divi
 ``transport_overrides`` transport names are checked against the union of transports in 4th
 tuple fields across that division's merged ``division_rules``; overrides and
 ``rule_exclusions`` are not applied when building that union.
+
+Availability consistency: the same primary unit must use the same 4-element availability
+list everywhere it appears across active ``*_newdivisionrules`` dicts (card counts may differ).
 """
 
 import importlib
@@ -250,6 +253,67 @@ def validate_new_divisionrules_units(log: logging.Logger | None = None) -> None:
                     attr_name,
                     name,
                 )
+
+
+def validate_new_divisionrules_availability_consistency(
+    log: logging.Logger | None = None,
+) -> None:
+    """Warn when the same unit has different availability across active newdivisionrules dicts.
+
+    Card counts may differ; the 4-element availability list (regular, trained, hardened,
+    veteran units-per-card) must be identical everywhere a unit appears.
+    """
+    log = log or logger
+    used_ids = collect_used_newdivisionrules_dict_ids()
+
+    pkg = importlib.import_module(_NEW_DIVISIONRULES_PKG)
+    rules_dir = Path(next(iter(pkg.__path__)))
+    for path in sorted(rules_dir.glob("*_newdivisionrules.py")):
+        mod = importlib.import_module(f"{_NEW_DIVISIONRULES_PKG}.{path.stem}")
+        by_unit: dict[str, list[tuple[str, str, int, tuple[int, ...]]]] = {}
+        for attr_name in dir(mod):
+            if not attr_name.endswith("_newdivisionrules"):
+                continue
+            rules_dict = getattr(mod, attr_name)
+            if not isinstance(rules_dict, dict):
+                continue
+            if id(rules_dict) not in used_ids:
+                continue
+            for category, entries in rules_dict.items():
+                if not isinstance(entries, list):
+                    continue
+                for row in entries:
+                    if not isinstance(row, tuple) or len(row) < 3:
+                        continue
+                    unit_name = row[0]
+                    cards = row[1]
+                    availability = row[2]
+                    if not isinstance(unit_name, str):
+                        continue
+                    if not isinstance(availability, list) or len(availability) != 4:
+                        continue
+                    if not all(isinstance(v, int) for v in availability):
+                        continue
+                    avail_tuple = tuple(availability)
+                    by_unit.setdefault(unit_name, []).append(
+                        (attr_name, category, cards, avail_tuple),
+                    )
+
+        for unit_name, occurrences in sorted(by_unit.items()):
+            unique_avail = {occ[3] for occ in occurrences}
+            if len(unique_avail) <= 1:
+                continue
+            parts = [
+                f"{rules_dict_name} [{category}] cards={cards} availability={list(avail)}"
+                for rules_dict_name, category, cards, avail in occurrences
+            ]
+            log.warning(
+                "Unit %r has inconsistent availability across active newdivisionrules dicts: "
+                "%s. Card counts may differ but availability must be identical everywhere a "
+                "unit appears.",
+                unit_name,
+                "; ".join(parts),
+            )
 
 
 def _collect_transport_names_from_division_rules(division_rules: Any) -> Set[str]:

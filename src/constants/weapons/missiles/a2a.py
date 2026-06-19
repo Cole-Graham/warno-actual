@@ -631,6 +631,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 3325,
             },
         },
     },
@@ -646,6 +647,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 3325,
             },
         },
     },

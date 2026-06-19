@@ -98,6 +98,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoFx": 0.1,
                 "PhysicalDamages": 0.75,
                 "SuppressDamages": 75,
+                "TimeBetweenTwoSalvos": 2.0,
                 "SupplyCost": 108.0,
             },
         },
