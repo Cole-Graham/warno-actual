@@ -109,17 +109,16 @@ usa_unit_edits = {
         "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
-    # doesn't exist anymore?
-    # "AAVC_7A1_CMD_USMC_US": {
-    #     "CommandPoints": 150,
-    #     "availability": [0, 3, 0, 0],
-    #     "Divisions": {
-    #         "default": {
-    #             "cards": 1,
-    #         },
-    #     },
-    #     "TagSet": {"add_tags": ['"CMD_Unit"']},
-    # },
+    "AAVC_7A1_CMD_USMC_US": {
+        "CommandPoints": 150,
+        "availability": [0, 3, 0, 0],
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
+    },
 
     "M2A1_Bradley_Leader_US": {
         "CommandPoints": 195,
@@ -3943,6 +3942,7 @@ usa_unit_edits = {
         "armor": {
             "front": (1, None),
         },
+        "stealth": 1.0,
         "WeaponDescriptor": {
             "Salves": {
                 "MMG_turret_7_62mm_M60": 60,
@@ -3965,6 +3965,7 @@ usa_unit_edits = {
         "CommandPoints": 65,
         "strength": "LAV_25_M1047_US_US",
         "armor": "LAV_25_M1047_US_US",
+        "stealth": "LAV_25_M1047_US_US",
         "WeaponDescriptor": {
             "Salves": {
                 "MMG_turret_7_62mm_M60": 60,

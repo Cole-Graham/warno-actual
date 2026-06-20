@@ -282,8 +282,9 @@ US_marine_newdivisionrules = {
         ("Rifles_half_CMD2_US", 2, [0, 2, 0, 0], ["M998_Humvee_US", "AAVP_7A1_USMC_US", "UH1N_TwinHuey_US", "UH1N_TwinHuey_RKT_US", "CH46E_SeaKnight_trans_US"]),
         ("M1025_Humvee_CMD_USMC_US", 2, [0, 3, 0, 0]),
         ("LAV_C_US", 1, [0, 3, 0, 0]),
+        ("FOB_US", 1, [2, 0, 0, 0]),
         # doesn't exist anymore ???
-        # ("AAVC_7A1_CMD_USMC_US", 1, [0, 3, 0, 0]),
+        ("AAVC_7A1_CMD_USMC_US", 1, [0, 3, 0, 0]),
         ("M60A1_RISE_Passive_USMC_CMD2_US", 1, [0, 0, 2, 0]),
         ("LAV_L_US", 2, [6, 0, 0, 0]),
         ("M35_supply_US", 2, [3, 0, 0, 0]),

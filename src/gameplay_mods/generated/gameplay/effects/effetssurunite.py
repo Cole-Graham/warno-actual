@@ -198,6 +198,7 @@ def _edit_veterancy_effects(source_path) -> None:
     
     _add_helo_attack_xp_effects(source_path)
     _add_multiplicative_infantry_xp(source_path)
+    _nerf_base_helo_xp_precision(source_path)
     _mirror_avion_suppress_resist_as_stun_resist(source_path)
 
 
@@ -210,7 +211,7 @@ _HELO_ATTACK_EFFECT_GUIDS: dict[str, str] = {
 
 
 def _add_helo_attack_xp_effects(source_path) -> None:
-    """Clone helo XP effect packs for attack helicopters; nerf base helo precision."""
+    """Clone helo XP effect packs for attack helicopters (before base precision nerf)."""
     logger.info("Adding attack helicopter XP effect packs")
 
     for base_ns, guid in (
@@ -226,6 +227,11 @@ def _add_helo_attack_xp_effects(source_path) -> None:
         new_effect.v.by_m("NameForDebug").v = f"'{attack_ns}'"
         source_path.add(new_effect)
         logger.info(f"Added new effect: {attack_ns}")
+
+
+def _nerf_base_helo_xp_precision(source_path) -> None:
+    """Reduce base transport helo vet precision; run after any elite_helo copies (e.g. SF)."""
+    logger.info("Nerfing base helicopter XP precision bonuses")
 
     precision_types = (
         "TUnitEffectIncreaseWeaponPrecisionArretDescriptor",
@@ -378,14 +384,18 @@ def _add_multiplicative_infantry_xp(source_path) -> None:
         logger.warning(f"No TUnitEffectIncreaseDamageTakenDescriptor effect found for {xp_elite_helo_sf.namespace}")
     xp_elite_helo_sf.v.by_m("DescriptorId").v = f"GUID:{{2967b45d-5b50-48ab-87f7-7ddeeb17f5f4}}"
     xp_elite_helo_sf.v.by_m("NameForDebug").v = f"'UnitEffect_xp_elite_helo_SF'"
-    new_effect = (
-        f"TUnitEffectBonusPrecisionWhenTargetedDescriptor"
-        f"("
-        f"    ModifierType = ~/ModifierType_Additionnel"
-        f"    BonusPrecisionWhenTargeted = -5"
-        f")"
-    )
-    xp_elite_helo_sf.v.by_m("EffectsDescriptors").v.add(new_effect)
+    if not find_obj_by_type(
+        effects_list.v,
+        "TUnitEffectBonusPrecisionWhenTargetedDescriptor",
+    ):
+        effects_list.v.add(
+            f"TUnitEffectBonusPrecisionWhenTargetedDescriptor"
+            f"("
+            f"    ModifierType = ~/ModifierType_Additionnel"
+            f"    BonusPrecisionWhenTargeted = -5"
+            f")"
+        )
+        logger.warning(f"Something changed, this effect should already be added to UnitEffect_xp_elite_helo block")
     source_path.add(xp_elite_helo_sf)
     
 def _edit_airunit_effects(source_path) -> None:

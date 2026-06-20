@@ -2513,11 +2513,18 @@ rfa_unit_edits = {
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": {
-                    "RocketAir_Zuni_1272mm_salvolength8": {
-                        "new_weapon": "RocketAir_Zuni_1272mm_avion_salvolength8",
-                        "swap_fire_effect": False,
-                        "depiction_baked_in": False,
-                    },
+                    "RocketAir_Zuni_1272mm_salvolength8": [
+                        {
+                            "new_weapon": "RocketAir_Zuni_1272mm_avion_salvolength8",
+                            "swap_fire_effect": False,
+                            "depiction_baked_in": False,
+                        },
+                        {
+                            "new_weapon": "RocketAir_Zuni_1272mm_avion_salvolength8",
+                            "swap_fire_effect": False,
+                            "depiction_baked_in": False,
+                        },
+                    ],
                 },
             },
         },

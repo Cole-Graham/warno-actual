@@ -1888,7 +1888,7 @@ sov_unit_edits = {
                 },
             },
             "Salves": {
-                "RocketInf_RPO_RYS": 4,
+                "RocketInf_RPO_RYS": 6,
             },
         },
     },
