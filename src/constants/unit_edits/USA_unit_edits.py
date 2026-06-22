@@ -5176,9 +5176,6 @@ usa_unit_edits = {
     "UH1N_TwinHuey_RKT_US": { # 10% ECM, 8 HP
         "CommandPoints": 70,
         "strength": 6,
-        "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'",],
-        },
     },
     
     "UH60A_Black_Hawk_US": {

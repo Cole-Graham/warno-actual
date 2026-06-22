@@ -5,6 +5,7 @@ from typing import Callable, Dict, List
 # New import structure
 from .gameplay_mods import (
     # .gameplay
+    edit_gameplay_gfx_gamephasedescriptortactical,
     edit_gameplay_gfx_templates_templatedepiction,
     edit_gameplay_constantes_gdconstants,
     edit_cd_gameplay_constantes_helicoptermovementweights,
@@ -136,6 +137,7 @@ from src.ui_mods.style import (
 )
 __all__ = [
     # gameplay_mods.gameplay
+    'edit_gameplay_gfx_gamephasedescriptortactical',
     'edit_gameplay_gfx_templates_templatedepiction',
     'edit_gameplay_constantes_gdconstants',
     'edit_gameplay_constantes_hitrollconstants',
@@ -315,6 +317,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         ],
         "GameData/Gameplay/Terrains/Terrains.ndf": [
             (edit_gameplay_terrains, "gameplay"),
+        ],
+        "GameData/Gameplay/Gfx/GamePhaseDescriptorTactical.ndf": [
+            (edit_gameplay_gfx_gamephasedescriptortactical, "gameplay"),
         ],
         "GameData/Gameplay/Gfx/Templates/TemplateDepiction.ndf": [
             (edit_gameplay_gfx_templates_templatedepiction, "gameplay"),
