@@ -3170,7 +3170,7 @@ rda_unit_edits = {
         },
         "availability": [9, 7, 0, 0],
         "max_speed": 6,
-        
+        "strength": 6,
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_1_canon_KS19_100mm_radar": 1,
@@ -3306,6 +3306,7 @@ rda_unit_edits = {
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
+        "strength": 10,
         "availability": [0, 3, 2, 0],
         "Divisions": {
             "default": {
@@ -3325,6 +3326,7 @@ rda_unit_edits = {
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "CommandPoints": 85,
+        "strength": 10,
         "availability": [4, 3, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
@@ -3339,6 +3341,7 @@ rda_unit_edits = {
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "CommandPoints": "2K12_KUB_SOV",
+        "strength": 10,
         "availability": [4, 3, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
@@ -3347,6 +3350,7 @@ rda_unit_edits = {
 
     "2K11_KRUG_DDR": {  # 2K11 Krug
         "CommandPoints": 130,
+        "strength": 10,
         "availability": [3, 2, 0, 0],
         # "CommandPoints": 90,
         # "availability": [4, 3, 0, 0],
@@ -3370,6 +3374,7 @@ rda_unit_edits = {
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "CommandPoints": 90,
+        "strength": 6,
         "availability": [4, 3, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],

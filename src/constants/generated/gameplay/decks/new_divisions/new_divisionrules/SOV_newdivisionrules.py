@@ -256,7 +256,7 @@ SOV_armored_newdivisionrules = {
     "aa": [
         ("2K11_KRUG_SOV", 1, [3, 2, 0, 0]),
         ("2K12_KUB_SOV", 2, [4, 3, 0, 0]),
-        ("Buk_9K37M_SOV", 1, [3, 2, 0, 0]),
+        ("Buk_9K37M_SOV", 1, [4, 3, 0, 0]),
         ("Tor_SOV", 1, [4, 3, 0, 0]),
         ("ZSU_23_Shilka_SOV", 2, [6, 4, 0, 0]),
         ("Tunguska_2K22_SOV", 2, [4, 3, 0, 0]),
@@ -533,7 +533,7 @@ SOV_mechanized_newdivisionrules = {
     "aa": [
         ("2K11_KRUG_SOV", 1, [3, 2, 0, 0]),
         ("2K12_KUB_SOV", 2, [4, 3, 0, 0]),
-        ("Buk_9K37M_SOV", 1, [3, 2, 0, 0]),
+        ("Buk_9K37M_SOV", 1, [4, 3, 0, 0]),
         ("Tor_SOV", 1, [4, 3, 0, 0]),
         ("ZSU_23_Shilka_SOV", 2, [6, 4, 0, 0]),
         ("Tunguska_2K22_SOV", 1, [4, 3, 0, 0]),

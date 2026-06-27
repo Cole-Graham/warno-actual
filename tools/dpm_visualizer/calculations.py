@@ -1,9 +1,80 @@
 """Calculation Functions for DPM Visualizer."""
 
 import re
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Callable, Dict, List, Optional, Tuple
 
-from .constants import RANGE_MODIFIERS_TABLE
+from .constants import (
+    KINETIC_AP_CLOSE_RANGE_M,
+    KINETIC_AP_PENETRATION_STEP_M,
+    RANGE_MODIFIERS_TABLE,
+)
+from .damage_table_csv import normalize_damage_family
+
+
+def is_kinetic_ap_damage_family(damage_family: Optional[str]) -> bool:
+    """True for kinetic AP ammo (DamageFamily_ap / ``ap`` in damage tables)."""
+    return normalize_damage_family(damage_family) == "ap"
+
+
+def effective_kinetic_ap_damage_level(
+    stored_close_range_level: int,
+    range_m: float,
+    max_range_m: float,
+) -> int:
+    """Convert NDF Arme index (penetration at 175m) to penetration level at ``range_m``.
+
+    Penetration steps align with ``max_range_m - N * 175m`` (closing distance), not
+    ``175m + N * 175m`` from the target, so chart samples at 25m land on the correct band.
+    """
+    if range_m <= KINETIC_AP_CLOSE_RANGE_M:
+        return stored_close_range_level
+    if max_range_m <= KINETIC_AP_CLOSE_RANGE_M:
+        return stored_close_range_level
+    steps_at_max = int(
+        (max_range_m - KINETIC_AP_CLOSE_RANGE_M) // KINETIC_AP_PENETRATION_STEP_M
+    )
+    index_at_max = max(1, stored_close_range_level - steps_at_max)
+    if range_m >= max_range_m:
+        return index_at_max
+    steps_closed = int((max_range_m - range_m) // KINETIC_AP_PENETRATION_STEP_M)
+    return max(1, index_at_max + steps_closed)
+
+
+def segment_dpm_by_kinetic_ap_level(
+    ranges: List[float],
+    dpm_values: List[float],
+    ammo_props: Dict[str, Any],
+) -> List[Tuple[List[float], List[float]]]:
+    """Split a DPM series into segments at kinetic AP penetration step boundaries."""
+    if len(ranges) != len(dpm_values) or not ranges:
+        return [(ranges, dpm_values)]
+    damage_family = ammo_props.get("damage_family")
+    stored = ammo_props.get("damage_level")
+    max_range = float(ammo_props.get("max_range") or 0.0)
+    if (
+        not is_kinetic_ap_damage_family(damage_family)
+        or stored is None
+        or max_range <= 0
+    ):
+        return [(ranges, dpm_values)]
+    stored_level = int(stored)
+    levels = [
+        effective_kinetic_ap_damage_level(stored_level, r, max_range)
+        for r in ranges
+    ]
+    segments: List[Tuple[List[float], List[float]]] = []
+    seg_r = [ranges[0]]
+    seg_d = [dpm_values[0]]
+    for i in range(1, len(ranges)):
+        if levels[i] != levels[i - 1]:
+            segments.append((seg_r, seg_d))
+            seg_r = [ranges[i]]
+            seg_d = [dpm_values[i]]
+        else:
+            seg_r.append(ranges[i])
+            seg_d.append(dpm_values[i])
+    segments.append((seg_r, seg_d))
+    return segments
 
 
 def calculate_accuracy(
@@ -186,6 +257,7 @@ def calculate_dpm(
     has_reservist_trait: bool = False,
     reservist_bonuses: Optional[Dict[str, float]] = None,
     damage_ratio_multiplier: float = 1.0,
+    damage_ratio_fn: Optional[Callable[[float], float]] = None,
     damage_type: str = "Physical",
 ) -> List[Tuple[float, float]]:
     """Calculate DPM at different ranges.
@@ -205,6 +277,8 @@ def calculate_dpm(
         militia_bonuses: Dictionary with militia bonus multipliers (reload_speed_multiplier, aim_time_multiplier)
         has_reservist_trait: Whether the unit has the Reservist trait (reservist)
         reservist_bonuses: Dictionary with reservist bonus multipliers (reload_speed_multiplier, aim_time_multiplier)
+        damage_ratio_multiplier: Fixed armor damage ratio when ``damage_ratio_fn`` is not set.
+        damage_ratio_fn: Optional ``(range_m) -> ratio`` for range-varying armor damage (kinetic AP).
         damage_type: Type of damage to use ("Physical" or "Suppression")
         
     Returns:
@@ -224,6 +298,17 @@ def calculate_dpm(
     
     if max_range <= 0 or base_accuracy <= 0 or base_damages <= 0:
         return []
+
+    def _damage_ratio_at(range_m: float) -> float:
+        if damage_type != "Physical":
+            return 1.0
+        if damage_ratio_fn is not None:
+            ratio = damage_ratio_fn(range_m)
+        else:
+            ratio = damage_ratio_multiplier
+        if ratio is None or not isinstance(ratio, (int, float)) or ratio < 0:
+            return 1.0
+        return float(ratio)
     
     # Shock bonuses (from UnitEffect_Choc, parsed from game files):
     # Default values if not provided
@@ -341,11 +426,8 @@ def calculate_dpm(
         if is_shock_range and damage_type == "Physical":
             effective_damage = base_damages * SHOCK_DAMAGE_MULTIPLIER
         
-        # Apply damage ratio multiplier (for infantry vs infantry strength differences)
-        # Ensure damage_ratio_multiplier is valid (default to 1.0 if invalid)
-        if damage_ratio_multiplier is None or not isinstance(damage_ratio_multiplier, (int, float)) or damage_ratio_multiplier < 0:
-            damage_ratio_multiplier = 1.0
-        effective_damage = effective_damage * damage_ratio_multiplier
+        # Apply damage ratio multiplier (for armor table lookup; kinetic AP may vary by range)
+        effective_damage = effective_damage * _damage_ratio_at(current_range)
         
         dpm = accuracy * effective_damage * shots_per_minute * weapon_quantity
         dpm_data.append((current_range, dpm))
@@ -409,11 +491,8 @@ def calculate_dpm(
             if is_shock_range and damage_type == "Physical":
                 effective_damage = base_damages * SHOCK_DAMAGE_MULTIPLIER
             
-            # Apply damage ratio multiplier (for infantry vs infantry strength differences)
-            # Ensure damage_ratio_multiplier is valid (default to 1.0 if invalid)
-            if damage_ratio_multiplier is None or not isinstance(damage_ratio_multiplier, (int, float)) or damage_ratio_multiplier < 0:
-                damage_ratio_multiplier = 1.0
-            effective_damage = effective_damage * damage_ratio_multiplier
+            # Apply damage ratio multiplier (for armor table lookup; kinetic AP may vary by range)
+            effective_damage = effective_damage * _damage_ratio_at(max_range)
             
             dpm = accuracy * effective_damage * shots_per_minute * weapon_quantity
             dpm_data.append((max_range, dpm))

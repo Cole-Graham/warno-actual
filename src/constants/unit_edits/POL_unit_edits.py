@@ -3066,6 +3066,7 @@ pol_unit_edits = {
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
+        "strength": 10,
         "availability": [0, 3, 2, 0],
         "Divisions": {
             "default": {
@@ -3088,6 +3089,7 @@ pol_unit_edits = {
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
+        "strength": 10,
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
@@ -3103,6 +3105,7 @@ pol_unit_edits = {
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
+        "strength": 10,
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },

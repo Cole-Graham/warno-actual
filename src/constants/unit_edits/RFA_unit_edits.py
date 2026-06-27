@@ -2206,6 +2206,7 @@ rfa_unit_edits = {
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
+        "strength": 10,
         "availability": [4, 3, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
@@ -2220,6 +2221,7 @@ rfa_unit_edits = {
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
+        "strength": 10,
         "availability": [0, 3, 2, 0],
         "Divisions": {
             "default": {
@@ -2247,6 +2249,7 @@ rfa_unit_edits = {
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
+        "strength": 10,
         "availability": [0, 3, 2, 0],
         "SpecialtiesList": {
             "overwrite_all": [
@@ -2266,6 +2269,7 @@ rfa_unit_edits = {
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
+        "strength": 6,
         "availability": [4, 3, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],

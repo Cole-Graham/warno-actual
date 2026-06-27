@@ -56,7 +56,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("AutoCanon_HE_30mm_L21A1_RARDEN", "autocannon", None, False): { # 27
         "Ammunition": {
             "hit_roll": {
-                "Idling": 65,
+                "Idling": 60,
                 "Moving": 0,
             },
             "parent_membr": {
@@ -82,7 +82,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("AutoCanon_HE_30mm_2A72_BMP3", "autocannon", None, False): { # 25
         "Ammunition": {
             "hit_roll": {
-                "Idling": 50,
+                "Idling": 45,
                 "Moving": 25,
             },
             "parent_membr": {
@@ -106,7 +106,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("AutoCanon_HE_30mm_24A2_BMP2", "autocannon", None, False): { # 24
         "Ammunition": {
             "hit_roll": {
-                "Idling": 45,
+                "Idling": 40,
                 "Moving": 25,
             },
             "parent_membr": {
@@ -130,7 +130,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("AutoCanon_HE_30mm_24A2", "autocannon", None, False): { # 23
         "Ammunition": {
             "hit_roll": {
-                "Idling": 45,
+                "Idling": 40,
                 "Moving": 25,
             },
             "parent_membr": {
@@ -155,7 +155,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("AutoCanon_HE_25mm_M242_Bushmaster_Late", "autocannon", None, False): { # 22
         "Ammunition": {
             "hit_roll": {
-                "Idling": 65,
+                "Idling": 60,
                 "Moving": 35,
             },
             "parent_membr": {
@@ -221,7 +221,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("AutoCanon_HE_25mm_KBA", "autocannon", None, False): { # 21
         "Ammunition": {
             "hit_roll": {
-                "Idling": 55,
+                "Idling": 50,
                 "Moving": 30,
             },
             "parent_membr": {
@@ -455,7 +455,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "TimeBetweenTwoShots": 0.1,
                 "TimeBetweenTwoFx": 0.1,
-                "PhysicalDamages": 0.334,
+                "PhysicalDamages": 0.25,
                 "SuppressDamages": 25,
                 "SalvoShotsSorted": False,
                 "DisplaySalveAccuracy": False,
@@ -482,7 +482,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "ImpactHappening": "'Gsh301'",
                 "TimeBetweenTwoShots": 0.1,
                 "TimeBetweenTwoFx": 0.1,
-                "PhysicalDamages": 1.337,
+                "PhysicalDamages": 1.0,
                 "SuppressDamages": 125,
                 "DisplaySalveAccuracy": False,
                 "TimeBetweenTwoSalvos": 5.0,
@@ -499,14 +499,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Index": 13,
             },
             "hit_roll": {
-                "Idling": 65,
+                "Idling": 60,
                 "Moving": 0,
             },
             "parent_membr": {
                 "TraitsToken": ['STAT', 'HE', 'KINETIC'],
                 "TimeBetweenTwoShots": 0.7,
                 "TimeBetweenTwoFx": 0.7,
-                "PhysicalDamages": 0.334,
+                "PhysicalDamages": 0.25,
                 "SuppressDamages": 30,
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.2,
@@ -528,13 +528,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Index": 12,
             },
             "hit_roll": {
-                "Idling": 50,
+                "Idling": 45,
                 "Moving": 25,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 0.2,
                 "TimeBetweenTwoFx": 0.2,
-                "PhysicalDamages": 0.334,
+                "PhysicalDamages": 0.25,
                 "SuppressDamages": 25,
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.2,
@@ -555,13 +555,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Index": 12,
             },
             "hit_roll": {
-                "Idling": 45,
+                "Idling": 40,
                 "Moving": 25,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 0.2,
                 "TimeBetweenTwoFx": 0.2,
-                "PhysicalDamages": 0.334,
+                "PhysicalDamages": 0.25,
                 "SuppressDamages": 25,
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.2,
@@ -576,19 +576,19 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "SupplyCost": 2.0,
     },
 
-    ("AutoCanon_AP_30mm_24A2", "autocannon", None, False): { # 8
+    ("AutoCanon_AP_30mm_24A2", "autocannon", None, False): { # KA-50
         "Ammunition": {
             "Arme": {
                 "Index": 7,
             },
             "hit_roll": {
-                "Idling": 45,
+                "Idling": 40,
                 "Moving": 25,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 0.2,
                 "TimeBetweenTwoFx": 0.2,
-                "PhysicalDamages": 0.334,
+                "PhysicalDamages": 0.25,
                 "SuppressDamages": 25,
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.2,
@@ -630,13 +630,16 @@ weapons: Dict[WeaponKey, WeaponData] = {
 
     ("AutoCanon_AP_25mm_M242_Bushmaster_Late", "autocannon", None, False): { # 7
         "Ammunition": {
+            "Arme": {
+                "Index": 13,
+            },
             "hit_roll": {
-                "Idling": 65,
+                "Idling": 60,
                 "Moving": 35,
             },
             "parent_membr": {
                 "Caliber": ("25mm APFSDS", "IQRYAPQHPQ"),
-                "PhysicalDamages": 0.334,
+                "PhysicalDamages": 0.25,
                 "SuppressDamages": 25,
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.2,
@@ -654,13 +657,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("AutoCanon_AP_25mm_KBA", "autocannon", None, False): { # 6
         "Ammunition": {
             "hit_roll": {
-                "Idling": 55,
+                "Idling": 50,
                 "Moving": 30,
             },
             "parent_membr": {
                 "TimeBetweenTwoShots": 0.4, # 175 cyclic = 0.35 but 10hz tickrate requires 0.3 or 0.4
                 "TimeBetweenTwoFx": 0.4,
-                "PhysicalDamages": 0.334,
+                "PhysicalDamages": 0.25,
                 "SuppressDamages": 25,
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.2,
@@ -685,7 +688,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "TimeBetweenTwoShots": 0.1,
                 "TimeBetweenTwoFx": 0.1,
-                "PhysicalDamages": 0.334,
+                "PhysicalDamages": 0.25,
                 "SuppressDamages": 25,
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.2,
@@ -712,7 +715,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "Caliber": ("Dual 23mm", "LNXURRBEMR"),
-                "PhysicalDamages": 1.334, # 4x 0.334 because 2 pods each with dual 23mm (4 guns total)
+                "PhysicalDamages": 1.0, # 4 x 0.25 because 2 pods each with dual 23mm (4 guns total)
                 "SuppressDamages": 40,
                 "DisplaySalveAccuracy": False,
                 "TimeBetweenTwoSalvos": 1.2,
@@ -734,7 +737,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "Caliber": ("Dual 23mm", "LNXURRBEMR"),
-                "PhysicalDamages": 0.667, # 2x 0.334 because dual 23mm
+                "PhysicalDamages": 0.5, # 2x 0.25 because dual 23mm
                 "SuppressDamages": 20,
                 "DisplaySalveAccuracy": False,
                 "TimeBetweenTwoSalvos": 0.6,
@@ -756,7 +759,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 15,
             },
             "parent_membr": {
-                "PhysicalDamages": 0.334,
+                "PhysicalDamages": 0.25,
                 "SuppressDamages": 20,
                 "MaximumRangeGRU": 1575,
                 "DisplaySalveAccuracy": False,
@@ -783,7 +786,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 1400,
-                "PhysicalDamages": 0.334,
+                "PhysicalDamages": 0.25,
                 "SuppressDamages": 20,
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.2,
@@ -809,7 +812,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 1400,
-                "PhysicalDamages": 0.334,
+                "PhysicalDamages": 0.25,
                 "SuppressDamages": 20,
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.2,
@@ -835,7 +838,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 1400,
-                "PhysicalDamages": 0.334,
+                "PhysicalDamages": 0.25,
                 "SuppressDamages": 20,
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.2,
@@ -859,7 +862,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 10,
             },
             "parent_membr": {
-                "PhysicalDamages": 0.334,
+                "PhysicalDamages": 0.25,
                 "SuppressDamages": 20,
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.2,
@@ -887,7 +890,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeGRU": 1575,
                 "TimeBetweenTwoShots": 0.1,
                 "TimeBetweenTwoSalvos": 1.4,
-                "PhysicalDamages": 0.334,
+                "PhysicalDamages": 0.25,
                 "SuppressDamages": 20,
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.2,

@@ -1,5 +1,9 @@
 """Constants for DPM Visualizer."""
 
+# Kinetic AP (DamageFamily_ap): NDF Arme Index is penetration at 175m; +1 per 175m closed.
+KINETIC_AP_CLOSE_RANGE_M = 175.0
+KINETIC_AP_PENETRATION_STEP_M = 175.0
+
 # Range modifiers table for accuracy calculation
 # Values are percentages as used in HitRollConstants.ndf (e.g., 300 = 300% = 3.0x multiplier)
 RANGE_MODIFIERS_TABLE = [

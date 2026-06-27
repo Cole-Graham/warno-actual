@@ -3950,6 +3950,16 @@ usa_unit_edits = {
             },
             "equipmentchanges": {
                 "replace": {
+                    "AutoCanon_AP_25mm_M242_Bushmaster_Late": {
+                        "new_weapon": "AutoCanon_AP_25mm_M242_Bushmaster_APDS",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                    "AutoCanon_HE_25mm_M242_Bushmaster_Late": {
+                        "new_weapon": "AutoCanon_HE_25mm_M242_Bushmaster_APDS",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
                     "MMG_team_7_62mm_M60": {
                         "new_weapon": "MMG_turret_7_62mm_M60",
                         "swap_fire_effect": False,
@@ -3973,6 +3983,16 @@ usa_unit_edits = {
             },
             "equipmentchanges": {
                 "replace": {
+                    "AutoCanon_AP_25mm_M242_Bushmaster_Late": {
+                        "new_weapon": "AutoCanon_AP_25mm_M242_Bushmaster_APDS",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                    "AutoCanon_HE_25mm_M242_Bushmaster_Late": {
+                        "new_weapon": "AutoCanon_HE_25mm_M242_Bushmaster_APDS",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
                     "MMG_team_7_62mm_M60": {
                         "new_weapon": "MMG_turret_7_62mm_M60",
                         "swap_fire_effect": False,
@@ -5054,6 +5074,7 @@ usa_unit_edits = {
     
     "DCA_XM85_Chaparral_US": {
         "CommandPoints": 80,
+        "strength": 6,
         "availability": [4, 3, 0, 0],
         "optics": {
             "OpticalStrengths": {
@@ -5098,6 +5119,7 @@ usa_unit_edits = {
         "capacities": {
             "remove_capacities": ["reserviste"],
         },
+        "strength": 10,
         "availability": [0, 4, 3, 0],
         "SpecialtiesList": {
             "overwrite_all": [
@@ -5120,6 +5142,7 @@ usa_unit_edits = {
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
+        "strength": 6,
         "availability": [5, 4, 0, 0],
         "Divisions": {
             "default": {
@@ -5145,6 +5168,7 @@ usa_unit_edits = {
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
+        "strength": 6,
         "availability": [6, 4, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],

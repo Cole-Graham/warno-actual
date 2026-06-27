@@ -2422,6 +2422,7 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
+        "strength": 6,
         "availability": [6, 4, 0, 0],
         "Divisions": {
             "default": {
@@ -2449,6 +2450,7 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
+        "strength": 10,
         "availability": [4, 3, 0, 0],
         "UpgradeFromUnit": "DCA_Rapier_Darkfire_UK",
     },
@@ -2467,6 +2469,7 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
         },
+        "strength": 6,
         "availability": [6, 4, 0, 0],
         "Divisions": {
             "default": {
@@ -2494,6 +2497,7 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
+        "strength": 6,
         "availability": [4, 3, 0, 0],
         "UpgradeFromUnit": "DCA_Rapier_UK",
     },
@@ -2509,6 +2513,7 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
+        "strength": 6,
         "availability": [0, 3, 0, 0],
         "UpgradeFromUnit": None,
     },

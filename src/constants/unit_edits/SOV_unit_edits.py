@@ -5040,7 +5040,7 @@ sov_unit_edits = {
         },
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
-        
+        "strength": 6,
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_1_canon_KS30_130mm_radar": 1,
@@ -5409,6 +5409,7 @@ sov_unit_edits = {
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "CommandPoints": 130,
+        "strength": 10,
         "availability": [0, 3, 2, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
@@ -5480,6 +5481,7 @@ sov_unit_edits = {
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "CommandPoints": 115,
+        "strength": 10,
         "availability": [4, 3, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
@@ -5499,6 +5501,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
+        "strength": 10,
         "availability": [0, 2, 0, 1],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
@@ -5514,6 +5517,7 @@ sov_unit_edits = {
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
+        "strength": 10,
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
@@ -5529,6 +5533,7 @@ sov_unit_edits = {
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
+        "strength": 6,
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
