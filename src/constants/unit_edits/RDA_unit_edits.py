@@ -3282,18 +3282,27 @@ rda_unit_edits = {
     "ZSU_23_Shilka_DDR": {
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 7800,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "CommandPoints": 85,
         "availability": [6, 4, 0, 0],
         "SpecialtiesList": {
-            "add_specs": ["'good_airoptics'"],
+            "add_specs": ["'verygood_airoptics'"],
         },
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_4_canons_APZ23_23mm": 67,
+                "DCA_4_canons_AZP_23_Amur_23mm_late": 67,
+            },
+            "equipmentchanges": {
+                "replace": {
+                    "DCA_4_canons_APZ23_23mm": {
+                        "new_weapon": "DCA_4_canons_AZP_23_Amur_23mm_late",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
     },

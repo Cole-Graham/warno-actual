@@ -1,13 +1,14 @@
 """Adjusting standard stats for weapons."""
 
+import re
 from typing import Any, Dict, List, Union
 
 from src import ndf
 from src.constants import TANDEM_MODIFIER
+from src.constants.weapons import ammunitions
 from src.constants.weapons.standards import (
     AIM_TIME_STANDARDS,
     CANON_HE_DAMAGE_BY_CALIBER,
-    CANON_HE_DAMAGE_EXCEPTIONS,
     HE_BOMB_DAMAGE_BY_WEIGHT,
     HE_BOMB_NAME_MATCH,
     HE_BOMB_TRAIT_TOKENS,
@@ -17,6 +18,24 @@ from src.constants.weapons.standards.pattern.clu_sol_traits import (
     CLU_SOL_TRAIT_TOKEN_CLUSTER,
     CLU_SOL_TRAIT_TOKEN_HEAT,
 )
+
+_SALVO_SUFFIX_RE = re.compile(r"(_x\d+|_salvolength\d+)$")
+
+
+def _base_weapon_name_from_ammo_namespace(namespace: str) -> str:
+    return _SALVO_SUFFIX_RE.sub("", namespace.removeprefix("Ammo_"))
+
+
+def _build_ammunition_caliber_edits() -> Dict[str, str]:
+    """Map base weapon_name to NDF Caliber member value from parent_membr edits."""
+    edits: Dict[str, str] = {}
+    for (weapon_name, _category, _donor, _is_new), data in ammunitions.items():
+        if not data or "Ammunition" not in data:
+            continue
+        caliber = data["Ammunition"].get("parent_membr", {}).get("Caliber")
+        if isinstance(caliber, tuple) and len(caliber) == 2:
+            edits[weapon_name] = f"'{caliber[1]}'"
+    return edits
 
 
 def apply_aim_time_standards(source_path, logger):
@@ -110,12 +129,10 @@ def apply_he_damage_standards(source_path, logger):
     """Apply HE (PhysicalDamages) standards in Ammunition.ndf"""
 
     damage_map = CANON_HE_DAMAGE_BY_CALIBER
-    exceptions = CANON_HE_DAMAGE_EXCEPTIONS
+    caliber_edits = _build_ammunition_caliber_edits()
 
     for ammo_descr in source_path:
         namespace = ammo_descr.namespace
-        if namespace in exceptions:
-            continue
 
         if ammo_descr.v.by_m("Name", False) is None:
             logger.debug(f"No name found for {namespace}")
@@ -133,7 +150,11 @@ def apply_he_damage_standards(source_path, logger):
         if piercing_bool == "True":
             continue
 
-        caliber_membr = ammo_descr.v.by_m("Caliber").v
+        base_weapon_name = _base_weapon_name_from_ammo_namespace(namespace)
+        if base_weapon_name in caliber_edits:
+            caliber_membr = caliber_edits[base_weapon_name]
+        else:
+            caliber_membr = ammo_descr.v.by_m("Caliber").v
         if caliber_membr in damage_map:
             ammo_descr.v.by_m("PhysicalDamages").v = str(damage_map[caliber_membr])
             logger.info(f"Changed {namespace} HE damage to {damage_map[caliber_membr]}")

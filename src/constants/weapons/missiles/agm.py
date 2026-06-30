@@ -287,11 +287,35 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "WeaponDescriptionToken": "'" + "CRYXRQVTBJ" + "'",
                 "MinMaxCategory": "MinMax_ATGM",
                 "InterfaceWeaponTexture": "'Texture_Interface_Weapon_hellfire_wa'",
+                "ProjectileSpeedGRU": 1060,
             },
         },
         "SupplyCost": 115.0,
         "WeaponDescriptor": {
             "SalvoLengths": [16, 8, 4],
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 1060,
+        },
+    },
+    
+    ("AGM_9M17P_FalangaM", "ATGM", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 20,
+            },
+            "hit_roll": {
+                "Idling": 50,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2625,
+                "ProjectileSpeedGRU": 350,
+                "InterfaceWeaponTexture": "'Texture_Interface_Weapon_falanga_wa'",
+            },
+        },
+        "SupplyCost": 70.0,
+        "WeaponDescriptor": {
+            "SalvoLengths": [4],
         },
     },
 
@@ -357,10 +381,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("AGM_9M114M_Ataka", "ATGM", None, False): {
         "Ammunition": {
             "Arme": {
-                "Index": 25,
+                "Index": 26,
             },
             "parent_membr": {
-                "ProjectileSpeedGRU": 800,
+                "ProjectileSpeedGRU": 1060,
                 "InterfaceWeaponTexture": "'Texture_Interface_Weapon_ataka_wa'",
             },
         },
@@ -369,7 +393,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "SalvoLengths": [8, 4],
         },
         "MissileDescriptor": {
-            "MaxSpeedGRU": 800,
+            "MaxSpeedGRU": 1060,
         },
     },
     
@@ -382,8 +406,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Moving": 50,
             },
             "parent_membr": {
-                "ProjectileSpeedGRU": 2800,
-                "MaxAccelerationGRU": 1400,
+                "ProjectileSpeedGRU": 1200,
                 "InterfaceWeaponTexture": "'Texture_Interface_Weapon_vikhr_wa'",
             },
         },
@@ -392,8 +415,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "SalvoLengths": [12],
         },
         "MissileDescriptor": {
-            "MaxSpeedGRU": 2800,
-            "MaxAccelerationGRU": 1400,
+            "MaxSpeedGRU": 1200,
         },
     },
     

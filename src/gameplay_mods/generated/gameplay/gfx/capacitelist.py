@@ -1,5 +1,6 @@
 """Functions for modifying CapaciteList.ndf"""
 
+from src.constants import CQC_RANGE
 from src.constants.capacities import (
     NO_SPRINT_CAPACITY,
     SPRINT_OK_CAPACITY,
@@ -26,14 +27,14 @@ def edit_gen_gp_gfx_capacitelist(source_path) -> None:
     # Edit capacities
     for capacite_descr in source_path:
         if capacite_descr.n == "Capacite_Choc":
-            new_value = "150"
-            capacite_descr.v.by_m("RangeGRU").v = new_value
-            logger.info(f"Updated Capacite_Choc range to {new_value}m")
+            new_range_value = str(CQC_RANGE)
+            capacite_descr.v.by_m("RangeGRU").v = new_range_value
+            logger.info(f"Updated Capacite_Choc range to {new_range_value}m")
 
         elif capacite_descr.n == "Capacite_electronic_warfare":
-            new_value = "5000"
-            capacite_descr.v.by_m("RangeGRU").v = new_value
-            logger.info(f"Updated Capacite_electronic_warfare range to {new_value}m")
+            new_range_value = "5000"
+            capacite_descr.v.by_m("RangeGRU").v = new_range_value
+            logger.info(f"Updated Capacite_electronic_warfare range to {new_range_value}m")
 
     # Add new capacities
     for i, row in enumerate(source_path, start=1):

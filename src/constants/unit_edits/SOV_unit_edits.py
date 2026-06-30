@@ -3910,7 +3910,7 @@ sov_unit_edits = {
     },
     
     "MTLB_Shturm_Ataka_SOV": {
-        "CommandPoints": 160,
+        "CommandPoints": 140,
         "availability": [0, 4, 3, 0],
         "UpgradeFromUnit": "MTLB_Shturm_SOV",
     },
@@ -5303,12 +5303,12 @@ sov_unit_edits = {
         "availability": [6, 4, 0, 0],
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 7800,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "SpecialtiesList": {
-            "add_specs": ["'good_airoptics'"],
+            "add_specs": ["'verygood_airoptics'"],
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -5322,12 +5322,12 @@ sov_unit_edits = {
         "availability": [6, 4, 0, 0],
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 7800,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "SpecialtiesList": {
-            "add_specs": ["'good_airoptics'"],
+            "add_specs": ["'verygood_airoptics'"],
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -5341,12 +5341,12 @@ sov_unit_edits = {
         "availability": [6, 4, 0, 0],
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 7800,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "SpecialtiesList": {
-            "add_specs": ["'good_airoptics'"],
+            "add_specs": ["'verygood_airoptics'"],
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -6687,6 +6687,10 @@ sov_unit_edits = {
     
     "Su_25T_SOV": {  # 16x Vikhr, 2x R-73
         "CommandPoints": 280,
+        "armor": {
+            "sides": (3, None),
+            "top": (3, None),
+        },
         "ECM": -0.40,
         "Divisions": {
             "default": {
@@ -6707,6 +6711,10 @@ sov_unit_edits = {
 
     "Su_25_SOV": {  # 4x Kh-25ML, 2x R-60M
         "CommandPoints": 260,
+        "armor": {
+            "sides": (3, None),
+            "top": (3, None),
+        },
         "ECM": -0.20,
         "AirplaneMovement": {
             "parent_membr": {
@@ -6732,6 +6740,10 @@ sov_unit_edits = {
 
     "Su_25_clu_SOV": {  # 6x RBK-250, 2x R-60M
         "CommandPoints": 220,
+        "armor": {
+            "sides": (3, None),
+            "top": (3, None),
+        },
         "ECM": -0.20,
         "AirplaneMovement": {
             "parent_membr": {
@@ -6744,6 +6756,10 @@ sov_unit_edits = {
 
     "Su_25_he_SOV": {  # 6x FAB-500, 2x R-60M
         "CommandPoints": 220,
+        "armor": {
+            "sides": (3, None),
+            "top": (3, None),
+        },
         "ECM": -0.20,
         "AirplaneMovement": {
             "parent_membr": {
@@ -6756,6 +6772,10 @@ sov_unit_edits = {
 
     "Su_25_nplm_SOV": {  # 4x ZB-500, 2x R-60M
         "CommandPoints": 180,
+        "armor": {
+            "sides": (3, None),
+            "top": (3, None),
+        },
         "ECM": -0.20,
         "AirplaneMovement": {
             "parent_membr": {
@@ -6768,6 +6788,10 @@ sov_unit_edits = {
     
     "Su_25_RKT3_SOV": {
         "CommandPoints": 220,
+        "armor": {
+            "sides": (3, None),
+            "top": (3, None),
+        },
         "ECM": -0.20,
         "AirplaneMovement": {
             "parent_membr": {
@@ -6780,6 +6804,10 @@ sov_unit_edits = {
 
     "Su_25_rkt2_SOV": {  # x10 S-13, x2 x40 S-8KOM
         "CommandPoints": 220,
+        "armor": {
+            "sides": (3, None),
+            "top": (3, None),
+        },
         "ECM": -0.20,
         "AirplaneMovement": {
             "parent_membr": {
@@ -6792,6 +6820,10 @@ sov_unit_edits = {
 
      "Su_25_rkt_SOV": {  # x2 x40 S-8KOM
         "CommandPoints": 220,
+        "armor": {
+            "sides": (3, None),
+            "top": (3, None),
+        },
         "ECM": -0.20,
         "AirplaneMovement": {
             "parent_membr": {

@@ -5,6 +5,8 @@ from src.constants.weapons import missiles
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import find_obj_by_type
 
+from .handlers.missile_movement_config import apply_missile_descriptor_movement_configs
+
 logger = setup_logger(__name__)
 
 def edit_gen_gp_gfx_missiledescriptors(source: Any, game_db: Dict[str, Any]) -> None:
@@ -109,26 +111,10 @@ def edit_gen_gp_gfx_missiledescriptors(source: Any, game_db: Dict[str, Any]) -> 
             if module.v.type != "TGuidedMissileMovementModuleDescriptor":
                 continue
 
-            default_cfg = module.v.by_m("DefaultConfig")
-            uncontrollable_cfg = module.v.by_m("UncontrollableConfig")
-            if "MaxSpeedGRU" in matched_data["MissileDescriptor"]:
-                max_speed = matched_data["MissileDescriptor"]["MaxSpeedGRU"]
-                default_cfg.v.by_m("MaxSpeedGRU").v = str(max_speed)  # noqa
-                logger.debug(f"Changed {missile_decr.namespace} max speed to {max_speed}")
-
-                uncontrollable_cfg.v.by_m("MaxSpeedGRU").v = str(max_speed)  # noqa
-                logger.debug(f"Changed {missile_decr.namespace} uncontrollable speed to {max_speed}")
-
-            if "MaxAccelerationGRU" in matched_data["MissileDescriptor"]:
-                max_accel = matched_data["MissileDescriptor"]["MaxAccelerationGRU"]
-                default_cfg.v.by_m("MaxAccelerationGRU").v = str(max_accel)  # noqa
-                logger.debug(f"Changed {missile_decr.namespace} max acceleration to {max_accel}")
-                
-                uncontrollable_cfg.v.by_m("MaxAccelerationGRU").v = str(max_accel)  # noqa
-                logger.debug(f"Changed {missile_decr.namespace} uncontrollable acceleration to {max_accel}")
-
-            if "AutoGyr" in matched_data["MissileDescriptor"]:
-                auto_gyr = matched_data["MissileDescriptor"]["AutoGyr"]
-                default_cfg.v.by_m("AutoGyr").v = str(auto_gyr)  # noqa
-                logger.debug(f"Changed {missile_decr.namespace} auto gyr to {auto_gyr} (90 degrees)")
+            apply_missile_descriptor_movement_configs(
+                module,
+                matched_data["MissileDescriptor"],
+                missile_decr.namespace,
+                logger,
+            )
             break

@@ -56,6 +56,13 @@ def edit_gameplay_terrains(source_path) -> None:
             "Batiment": 0.5,
             "Ruin": 0.55,
         },
+        "roquette_ap": {
+            "ForetDense": 0.5,
+            "ForetLegere": 0.65,
+            "PetitBatiment": 0.5,
+            "Batiment": 0.5,
+            "Ruin": 0.55,
+        },
     }
 
     damage_family_edits = {

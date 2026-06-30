@@ -35,3 +35,9 @@ def get_mod_dst_path(config_data: Dict) -> Path:
     dirs = config_data['directories']
     warno_mods = Path(dirs['warno_mods'])
     return warno_mods / get_mod_name(config_data)
+
+
+def get_vanilla_units_csv_path(config: Dict) -> Path:
+    """Path to vanilla UNITS.csv under ExampleAssets (warno_mods from config)."""
+    warno_mods = Path(config['directories']['warno_mods'])
+    return warno_mods / 'ExampleAssets' / 'Localisation' / 'UNITS.csv'

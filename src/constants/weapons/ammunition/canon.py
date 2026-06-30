@@ -104,13 +104,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("Canon_AP_100mm_D10T_late", "canon", None, False): { # T-55AM2 D-10T2S (HE)
-        "Ammunition": {
-            "parent_membr": {
-                "PhysicalDamages": 1.15,
-            },
-        },
-    },
+    # ("Canon_AP_100mm_D10T_late", "canon", None, False): { # T-55AM2 D-10T2S (HE)
+    #     "Ammunition": {
+    #         "parent_membr": {
+    #             "PhysicalDamages": 1.15,
+    #         },
+    #     },
+    # },
 
     ("Canon_AP_100mm_D10T_Merida", "canon", None, False): { # T-55AM Merdia D-10T2S (3BM-25)
         "Ammunition": {
@@ -123,13 +123,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("Canon_HE_100mm_D10T_mid", "canon", None, False): { # MOR. T-55AM D-10T2S (HE)
-        "Ammunition": {
-            "parent_membr": {
-                "PhysicalDamages": 1.15,
-            },
-        },
-    },
+    # ("Canon_HE_100mm_D10T_mid", "canon", None, False): { # MOR. T-55AM D-10T2S (HE)
+    #     "Ammunition": {
+    #         "parent_membr": {
+    #             "PhysicalDamages": 1.15,
+    #         },
+    #     },
+    # },
 
     ("Canon_HE_100mm_D10T_Merida", "canon", None, False): { # T-55AM Merdia (HE)
         "Ammunition": {
@@ -137,9 +137,9 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 55,
                 "Moving": 45,
             },
-            "parent_membr": {
-                "PhysicalDamages": 1.15,
-            },
+            # "parent_membr": {
+            #     "PhysicalDamages": 1.15,
+            # },
         },
     },
 
@@ -160,13 +160,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("Canon_HE_100mm_D10T_early", "canon", None, False): { # T-54B/AM, T-55A, TO-55 (HE)
-        "Ammunition": {
-            "parent_membr": {
-                "PhysicalDamages": 1.15,
-            },
-        },
-    },
+    # ("Canon_HE_100mm_D10T_early", "canon", None, False): { # T-54B/AM, T-55A, TO-55 (HE)
+    #     "Ammunition": {
+    #         "parent_membr": {
+    #             "PhysicalDamages": 1.15,
+    #         },
+    #     },
+    # },
     
     ("Canon_AP_85mm_S53", "canon", None, False): { # T-34 S-53 (3BK-2)
         "Ammunition": {
@@ -262,7 +262,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Index": 17,
             },
             "hit_roll": {
-                "Idling": 45,
+                "Idling": 50,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1400,
@@ -272,19 +272,44 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "token": "UNMNABAZNO",
         },
     },
+    
+    ("Canon_AP_73_mm_2A28_Grom_noAuto", "canon", None, False): {
+        "Ammunition": {
+            "Arme": {
+                "Index": 17,
+            },
+            "hit_roll": {
+                "Idling": 50,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 1400,
+            },
+        },
+    },
 
     ("Canon_HE_73_mm_2A28_Grom", "canon", None, False): { # BMP-1 2A28 (HE)
         "Ammunition": {
             "hit_roll": {
-                "Idling": 45,
+                "Idling": 50,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1400,
                 "RadiusSplashPhysicalDamagesGRU": 33,
-                "PhysicalDamages": 0.85,
                 "RadiusSplashSuppressDamagesGRU": 66,
-                "SuppressDamages": 115,
                 "SupplyCost": 300.0,
+            },
+        },
+    },
+    
+    ("Canon_HE_73_mm_2A28_Grom_noAuto", "canon", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 50,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 1400,
+                "RadiusSplashPhysicalDamagesGRU": 33,
+                "RadiusSplashSuppressDamagesGRU": 66,
             },
         },
     },
@@ -295,7 +320,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Index": 15,
             },
             "hit_roll": {
-                "Idling": 40,
+                "Idling": 50,
             },
             "parent_membr": {
                 "DisplaySalveAccuracy": False,
@@ -309,11 +334,9 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Canon_HE_73_mm_SPG9_TOWED", "recoilless", None, False): { # SPG-9 (HE) (Towed)
         "Ammunition": {
             "hit_roll": {
-                "Idling": 40,
+                "Idling": 50,
             },
             "parent_membr": {
-                "PhysicalDamages": 0.85,
-                "SuppressDamages": 115,
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 8.0,
             },
@@ -324,6 +347,9 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "display": "SPG-9D (PG9V)",
             "token": "SPGDPARA",
+            "hit_roll": {
+                "Idling": 50,
+            },
             "parent_membr": {
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 8.0,
@@ -338,7 +364,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Index": 15,
             },
             "hit_roll": {
-                "Idling": 40,
+                "Idling": 50,
             },
             "parent_membr": {
                 "DisplaySalveAccuracy": False,
@@ -352,11 +378,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Canon_HE_73_mm_SPG9", "recoilless", None, False): { # SPG-9 (Jeep/APC, HE)
         "Ammunition": {
             "hit_roll": {
-                "Idling": 40,
+                "Idling": 50,
             },
             "parent_membr": {
-                "PhysicalDamages": 0.85,
-                "SuppressDamages": 115,
+                "Caliber": ("existing", "BQEOKGFQRX"),
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 8.0,
             },
@@ -820,7 +845,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "MaximumRangeGRU": 1400,
-                "PhysicalDamages": 4.0,
+                "PhysicalDamages": 3.0,
             },
             "display": "L9A1 (L33A1)",
             "token": "UMAXJWHIJY",
@@ -900,7 +925,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Index": 17,
             },
             "hit_roll": {
-                "Idling": 40,
+                "Idling": 50,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
@@ -913,11 +938,11 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Canon_HE_152mm_Sheridan", "canon", None, False): { # M551 Sheridan (HE)
         "Ammunition": {
             "hit_roll": {
-                "Idling": 40,
+                "Idling": 50,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
-                "PhysicalDamages": 1.75,
+                "PhysicalDamages": 2.0,
             },
         },
     },
@@ -926,7 +951,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "MaximumRangeGRU": 1400,
-                "PhysicalDamages": 4.0,
+                "PhysicalDamages": 3.0,
             },
             "display": "M135 (M123)",
             "token": "SIYPXALDAK",
@@ -1017,13 +1042,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("Canon_HE_90mm_M48", "canon", None, False): { # M48A2CGA1 M41 (HE)
-        "Ammunition": {
-            "parent_membr": {
-                "PhysicalDamages": 1.0,
-            },
-        },
-    },
+    # ("Canon_HE_90mm_M48", "canon", None, False): { # M48A2CGA1 M41 (HE)
+    #     "Ammunition": {
+    #         "parent_membr": {
+    #             "PhysicalDamages": 1.0,
+    #         },
+    #     },
+    # },
     
     ("Canon_AP_90mm_KanJPz", "canon", None, False): { # Kanon Jagdpanzer (M332) APCR
         "Ammunition": {
@@ -1032,13 +1057,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("Canon_HE_90mm_M48_KanJPz", "canon", None, False): { # Kanon Jagdpanzer (HE)
-        "Ammunition": {
-            "parent_membr": {
-                "PhysicalDamages": 1.0,
-            },
-        },
-    },
+    # ("Canon_HE_90mm_M48_KanJPz", "canon", None, False): { # Kanon Jagdpanzer (HE)
+    #     "Ammunition": {
+    #         "parent_membr": {
+    #             "PhysicalDamages": 1.0,
+    #         },
+    #     },
+    # },
     
     # FRANCE
 
@@ -1096,13 +1121,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("Canon_HE_90mm_CN90_F4", "canon", None, False): { # ERC-90 CN 90 F4 (HE)
-        "Ammunition": {
-            "parent_membr": {
-                "PhysicalDamages": 1.0,
-            },
-        },
-    },
+    # ("Canon_HE_90mm_CN90_F4", "canon", None, False): { # ERC-90 CN 90 F4 (HE)
+    #     "Ammunition": {
+    #         "parent_membr": {
+    #             "PhysicalDamages": 1.0,
+    #         },
+    #     },
+    # },
 
     ("Canon_AP_90_mm__F3", "canon", None, False): { # AMX-13/90 CN 90 F3 (OOC 90-62) HEAT 350mm pen
         "Ammunition": {
@@ -1114,13 +1139,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("Canon_HE_90_mm__F3", "canon", None, False): { # AMX-13/90 CN 90 F3 (HE)
-        "Ammunition": {
-            "parent_membr": {
-                "PhysicalDamages": 1.0,
-            },
-        },
-    },
+    # ("Canon_HE_90_mm__F3", "canon", None, False): { # AMX-13/90 CN 90 F3 (HE)
+    #     "Ammunition": {
+    #         "parent_membr": {
+    #             "PhysicalDamages": 1.0,
+    #         },
+    #     },
+    # },
 
     ("Canon_AP_90mm_CN90_F2", "canon", None, False): { # EBR-90 CN 90 F2 (OOC 90-62) HEAT 350mm pen
         "Ammunition": {
@@ -1132,13 +1157,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("Canon_HE_90mm_CN90_F2", "canon", None, False): { # EBR-90 CN 90 F2 (HE)
-        "Ammunition": {
-            "parent_membr": {
-                "PhysicalDamages": 1.0,
-            },
-        },
-    },
+    # ("Canon_HE_90mm_CN90_F2", "canon", None, False): { # EBR-90 CN 90 F2 (HE)
+    #     "Ammunition": {
+    #         "parent_membr": {
+    #             "PhysicalDamages": 1.0,
+    #         },
+    #     },
+    # },
 
     ("Canon_AP_90_mm_GIAT_F1", "canon", None, False): { # AML-90 CN 90 F1 (OOC 90-62) HEAT 350mm pen
         "Ammunition": {
@@ -1150,13 +1175,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("Canon_HE_90_mm_GIAT_F1", "canon", None, False): { # AML-90 CN 90 F1 (HE)
-        "Ammunition": {
-            "parent_membr": {
-                "PhysicalDamages": 1.0,
-            },
-        },
-    },
+    # ("Canon_HE_90_mm_GIAT_F1", "canon", None, False): { # AML-90 CN 90 F1 (HE)
+    #     "Ammunition": {
+    #         "parent_membr": {
+    #             "PhysicalDamages": 1.0,
+    #         },
+    #     },
+    # },
 
     ("Canon_AP_90mm_M47", "canon", None, False): { # M47 - M36 (M431) HEAT 320mm pen
         "Ammunition": {
@@ -1165,13 +1190,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("Canon_HE_90mm_M47", "canon", None, False): { # M47 - M36 (HE)
-        "Ammunition": {
-            "parent_membr": {
-                "PhysicalDamages": 1.0,
-            },
-        },
-    },
+    # ("Canon_HE_90mm_M47", "canon", None, False): { # M47 - M36 (HE)
+    #     "Ammunition": {
+    #         "parent_membr": {
+    #             "PhysicalDamages": 1.0,
+    #         },
+    #     },
+    # },
 
     ("Canon_AP_75mm_SA_50", "canon", None, False): { # AMX-13 T75 - 75 SA 50 (PCOT-51P)
         "Ammunition": {
@@ -1184,7 +1209,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "MaximumRangeGRU": 875,
-                "PhysicalDamages": 3,
+                "PhysicalDamages": 2.5,
                 "AimingTime": 2.0,
             },
             "display": "M135 (???)",

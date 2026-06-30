@@ -305,12 +305,16 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Index": 26,
             },
             "parent_membr": {
+                "ProjectileSpeedGRU": 1060,
                 "InterfaceWeaponTexture": "'Texture_Interface_Weapon_hellfire_wa'",
             },
         },
         "SupplyCost": 115.0,
         "WeaponDescriptor": {
             "SalvoLengths": [2],
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 1060,
         },
     },
     
@@ -625,10 +629,14 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("ATGM_9M114M_Ataka", "ATGM", None, False): {
         "Ammunition": {
             "Arme": {
-                "Index": 25,
+                "Index": 26,
+            },
+            "hit_roll": {
+                "Idling": 60,
             },
             "parent_membr": {
-                "ProjectileSpeedGRU": 800,
+                "ProjectileSpeedGRU": 1060,
+                "TimeBetweenTwoSalvos": 8.0,
                 "InterfaceWeaponTexture": "'Texture_Interface_Weapon_ataka_wa'",
             },
         },
@@ -637,7 +645,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "SalvoLengths": [1],
         },
         "MissileDescriptor": {
-            "MaxSpeedGRU": 800,
+            "MaxSpeedGRU": 1060,
         },
     },
 

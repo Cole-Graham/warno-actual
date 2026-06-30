@@ -25,6 +25,7 @@ from .handlers import (
     vanilla_renames_ammunition,
 )
 from .handlers.aa_missile_category_standards import apply_aa_suppress_standard
+from .handlers.missile_movement_config import apply_ammunition_missile_acceleration
 
 logger = setup_logger(__name__)
 
@@ -47,7 +48,6 @@ def edit_gen_gp_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]
         try:
             apply_bomb_damage_standards(source_path, logger)
             apply_tandem_charge_inversion(source_path, logger)
-            edit_missile_speed(source_path, game_db)
             apply_clu_sol_trait_standards(source_path, logger, game_db)
             logger.debug("Applied global modifications")
         except Exception as e:
@@ -477,6 +477,8 @@ def _apply_missile_edits(descr: Any, data: Dict, ammo_data: Dict, is_new: bool) 
         membr("InterfaceWeaponTexture").v = texture_file
         logger.debug(f"Applied texture {texture_file}")
 
+    apply_ammunition_missile_acceleration(descr, data, logger)
+
 
 def _apply_hit_roll_edits(descr: Any, hit_roll_data: Dict) -> None:
     """Apply hit roll edits to descriptor."""
@@ -525,57 +527,6 @@ def _track_dictionary_entries(
             if caliber_data[0] != "existing":
                 calibers.append((weapon_name, caliber_data[1], caliber_data[0]))
 
-
-def edit_missile_speed(source: Any, game_db: Dict[str, Any]) -> None:
-    """Adjust missile speed and acceleration."""
-    logger.info("Adjusting missile speed and acceleration")
-
-    ammo_db = game_db["ammunition"]
-    missile_inst_renames = ammo_db.get("renames_new_old", {})
-
-    for missile_decr in source:
-        # Strip Ammo_ prefix for comparison
-        stripped_namespace = missile_decr.namespace.replace("Descriptor_Missile_", "")
-
-        for (missile, category, donor, is_new), data in missiles.items():
-            if data is None or "MissileDescriptor" not in data:
-                continue
-
-            # Check for renames
-            if stripped_namespace in missile_inst_renames:
-                stripped_namespace = missile_inst_renames[stripped_namespace]
-
-            if missile != stripped_namespace:
-                continue
-
-            modules_list = missile_decr.v.by_m("ModulesDescriptors")
-            for module in modules_list.v:
-                if not isinstance(module.v, ndf.model.Object):
-                    continue
-
-                if module.v.type != "TGuidedMissileMovementModuleDescriptor":
-                    continue
-
-                default_cfg = module.v.by_m("DefaultConfig")
-                uncontrollable_cfg = module.v.by_m("UncontrollableConfig")
-                if "MaxSpeedGRU" in data["MissileDescriptor"]:
-                    max_speed = data["MissileDescriptor"]["MaxSpeedGRU"]
-                    default_cfg.v.by_m("MaxSpeedGRU").v = str(max_speed)  # noqa
-                    logger.debug(f"Changed {missile_decr.namespace} max speed to {max_speed}")
-
-                    uncontrollable_cfg.v.by_m("MaxSpeedGRU").v = str(max_speed)  # noqa
-                    logger.debug(f"Changed {missile_decr.namespace} uncontrollable speed to {max_speed}")
-
-                if "MaxAccelerationGRU" in data["MissileDescriptor"]:
-                    max_accel = data["MissileDescriptor"]["MaxAccelerationGRU"]
-                    default_cfg.v.by_m("MaxAccelerationGRU").v = str(max_accel)  # noqa
-                    logger.debug(f"Changed {missile_decr.namespace} max acceleration to {max_accel}")
-
-                if "AutoGyr" in data["MissileDescriptor"]:
-                    auto_gyr = data["MissileDescriptor"]["AutoGyr"]
-                    default_cfg.v.by_m("AutoGyr").v = str(auto_gyr)  # noqa
-                    logger.debug(f"Changed {missile_decr.namespace} auto gyr to {auto_gyr} (90 degrees)")
-            break
 
 def write_missile_dictionary_entries(ingame_names: List[Tuple[str, str, str]], 
                                   calibers: List[Tuple[str, str, str]]) -> None:

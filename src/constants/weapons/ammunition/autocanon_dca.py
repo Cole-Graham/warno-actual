@@ -548,6 +548,33 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("DCA_2_canons_Oerlikon_GDF_002_35mm_radar", "DCA", "DCA_2_canons_Oerlikon_GDF_002_35mm", True): { # Skyguard, 35mm at 1200 rpm
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 30,
+            },
+            "parent_membr": {
+                "HasDeploymentTime": True,
+                "add": [41, "Guidance = Guidance_Radar"],
+                "TraitsToken": ['STAT', 'RADAR'],
+                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoFx": 0.1,
+                "MaximumRangeGRU": 1575,
+                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 2450,
+                "PhysicalDamages": 0.7,
+                "AimingTime": 1.2,
+                "TimeBetweenTwoSalvos": 1.0,
+                "ShotsCountPerSalvo": 20,
+                "AffichageMunitionParSalve": 40,
+                "SupplyCost": 18.0,
+            },
+        },
+        "WeaponDescriptor": {
+            "Salves": 7,
+        },
+    },
+    
     ("DCA_2_canon_Bofors_40mm_Duster", "DCA", None, False): { # Twin 40mm L60 Bofors, 280 combined RPM, Salvo length is the total ammo
         "Ammunition": {
             "hit_roll": {

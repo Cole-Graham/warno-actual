@@ -3942,7 +3942,7 @@ usa_unit_edits = {
         "armor": {
             "front": (1, None),
         },
-        "stealth": 1.0,
+        "stealth": 1.5,
         "WeaponDescriptor": {
             "Salves": {
                 "MMG_turret_7_62mm_M60": 60,
@@ -4271,6 +4271,10 @@ usa_unit_edits = {
     "OA10A_US": {
         "CommandPoints": 220,
         "ECM": "A10_Thunderbolt_II_US",
+        "armor": {
+            "sides": (3, None),
+            "top": (3, None),
+        },
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 2625.0,
@@ -4561,7 +4565,7 @@ usa_unit_edits = {
                     },
                 },
                 "quantity": {
-                    "FM_M16": 6,
+                    "FM_M16A1": 6,
                     "MMG_M60E1_7_62mm": 2,
                 },
             },
@@ -5638,6 +5642,11 @@ usa_unit_edits = {
         "CommandPoints": 160,
         "ECM": -0.25,
         "availability": [0, 3, 2, 0],
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 4550.0,
+            },
+        },
         "WeaponDescriptor": {
             # "equipmentchanges": {
             #     "replace": {
@@ -6435,6 +6444,10 @@ usa_unit_edits = {
 
     "A10_Thunderbolt_II_US": {  # 8x mk.82, 2x AIM-9M
         "CommandPoints": 230,
+        "armor": {
+            "sides": (3, None),
+            "top": (3, None),
+        },
         "max_speed": 500,
         "ECM": -0.25,
         "availability": [0, 2, 0, 0],
@@ -6442,6 +6455,10 @@ usa_unit_edits = {
 
     "A10_Thunderbolt_II_Rkt_US": {  # 76x Hydra, 2x AIM-9M
         "CommandPoints": 240,
+        "armor": {
+            "sides": (3, None),
+            "top": (3, None),
+        },
         "max_speed": 500,
         "ECM": "A10_Thunderbolt_II_US",
         "availability": [0, 2, 0, 0],
@@ -6449,6 +6466,10 @@ usa_unit_edits = {
 
     "A10_Thunderbolt_II_ATGM_US": {  # 4x AGM-65D, 2x AIM-9M
         "CommandPoints": 260,
+        "armor": {
+            "sides": (3, None),
+            "top": (3, None),
+        },
         "max_speed": 500,
         "ECM": "A10_Thunderbolt_II_US",
         "availability": [0, 2, 0, 0],

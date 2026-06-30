@@ -2391,6 +2391,11 @@ uk_unit_edits = {
     
     "DCA_Oerlikon_GDF_002_35mm_UK": { # Skyguard
         "CommandPoints": 65,
+        "TagSet": {
+            "add_tags": ['"AA_radar"'],
+        },
+        "max_speed": 6,
+        "strength": 6,
         "availability": [8, 6, 0, 0],
         "optics": {
             "OpticalStrengths": {
@@ -2403,7 +2408,16 @@ uk_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_2_canons_Oerlikon_GDF_002_35mm": 14,
+                "DCA_2_canons_Oerlikon_GDF_002_35mm_radar": 14,
+            },
+            "equipmentchanges": {
+                "replace": {
+                    "DCA_2_canons_Oerlikon_GDF_002_35mm": {
+                        "new_weapon": "DCA_2_canons_Oerlikon_GDF_002_35mm_radar",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
     },

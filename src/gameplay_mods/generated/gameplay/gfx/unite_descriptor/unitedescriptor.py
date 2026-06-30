@@ -1,6 +1,7 @@
 """Functions for modifying UniteDescriptor.ndf"""
 
 from src import ndf
+from src.constants import TFR_STEALTH_BONUS
 from src.constants.unit_edits import load_unit_edits
 from src.constants.new_units import NEW_UNITS
 from src.utils.dictionary_utils import write_dictionary_entries
@@ -143,9 +144,11 @@ def _handle_batch_changes(source_path, game_db) -> None:
                 modules_list.v.remove(dep_module.index)
                 removed_count += 1
 
-        # Downgrade all vanilla units with strength 11 to 10 (ERA no longer provides the extra HP)
+        # Downgrade all vanilla ERA units with strength 11 to 10 (ERA no longer provides the extra HP)
         unit_data = game_db.get("unit_data", {}).get(unit_name, {})
-        if unit_data.get("strength") == 11:
+        specialties = unit_data.get("specialties", [])
+        has_era_specialty = "_era" in specialties
+        if unit_data.get("strength") == 11 and has_era_specialty:
             damage_module = find_obj_by_type(modules_list.v, "TBaseDamageModuleDescriptor")
             if damage_module:
                 try:
@@ -693,8 +696,8 @@ def _handle_visibility_module(logger, game_db, unit_data, edit_type, unit_name,
 
         # if has_terrain_radar and not is_sead and not is_ew:
         if has_terrain_radar and not is_ew:
-            module.v.by_m("UnitConcealmentBonus").v = "1.75"
-            logger.info(f"Updated {unit_name} stealth to 1.75")
+            module.v.by_m("UnitConcealmentBonus").v = str(TFR_STEALTH_BONUS)
+            logger.info(f"Updated {unit_name} stealth to {TFR_STEALTH_BONUS}")
 
 # InfantryApparenceModuleDescriptor
 def _handle_infantryapparence_module(logger, game_db, unit_data, edit_type, unit_name,

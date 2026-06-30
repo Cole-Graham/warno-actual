@@ -10,8 +10,9 @@ from src.constants.weapons.vanilla_inst_modifications import (
     AMMUNITION_MISSILES_RENAMES,
     AMMUNITION_RENAMES,
 )
+from src.utils.dictionary_utils import load_vanilla_units_lookup
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import is_valid_turret
+from src.utils.ndf_utils import is_valid_turret, strip_quotes
 
 logger = setup_logger('ammo_data')
 
@@ -129,7 +130,7 @@ def build_clu_sol_trait_targets(parse_ammo_source, parse_ammo_missile_source) ->
     return {**from_ndf, **from_constants}
 
 
-def build_ammo_data(mod_src_path: Path) -> Dict[str, Any]:
+def build_ammo_data(mod_src_path: Path, config: Dict[str, Any]) -> Dict[str, Any]:
     """Build ammunition database from source files."""
     logger.info("Building ammunition database")
     
@@ -144,12 +145,14 @@ def build_ammo_data(mod_src_path: Path) -> Dict[str, Any]:
         ammo_missile_file = mod.parse_src(ammo_missile_path)
         weapon_descriptor_file = mod.parse_src(weapon_descriptor_path)
 
+        units_lookup = load_vanilla_units_lookup(config)
+
         # Build salvo weapons (from game files - base game data)
         salvo_weapons = build_salvo_weapons(ammo_file)
         salvo_weapons.update(build_salvo_weapons(ammo_missile_file))
         
-        ammo_props = build_ammo_properties(ammo_file)
-        ammo_props.update(build_ammo_properties(ammo_missile_file))
+        ammo_props = build_ammo_properties(ammo_file, units_lookup)
+        ammo_props.update(build_ammo_properties(ammo_missile_file, units_lookup))
 
         return {
             "mg_categories": build_mg_categories(ammo_file),
@@ -224,8 +227,26 @@ def _parse_numeric_member_value(value: Any) -> Any:
     return None
 
 
-def build_ammo_properties(parse_ammo_source) -> Dict[str, Any]:
+def _localized_token_field(
+    raw_value: Any,
+    units_lookup: Dict[str, str],
+) -> Dict[str, str] | None:
+    """Map an NDF localization token member to {Token, Value}."""
+    if raw_value is None:
+        return None
+    token = strip_quotes(str(raw_value))
+    if not token or token == "None":
+        return None
+    return {"Token": token, "Value": units_lookup.get(token, token)}
+
+
+def build_ammo_properties(
+    parse_ammo_source,
+    units_lookup: Dict[str, str] | None = None,
+) -> Dict[str, Any]:
     """Build dictionary of ammunition properties from Ammunition.ndf or AmmunitionMissiles.ndf."""
+    if units_lookup is None:
+        units_lookup = {}
     ammo_properties = {}
 
     for ammo_descr in parse_ammo_source:
@@ -267,7 +288,20 @@ def build_ammo_properties(parse_ammo_source) -> Dict[str, Any]:
 
         family = _arme_family_value(ammo_descr)
 
-        ammo_properties[ammo_descr.n] = {
+        entry: Dict[str, Any] = {}
+        for field_name, member_name in (
+            ("Name", "Name"),
+            ("TypeCategoryName", "TypeCategoryName"),
+            ("Caliber", "Caliber"),
+        ):
+            membr = ammo_descr.v.by_m(member_name, False)
+            if membr is None:
+                continue
+            localized = _localized_token_field(membr.v, units_lookup)
+            if localized is not None:
+                entry[field_name] = localized
+
+        entry.update({
             "MinMaxCategory": min_max_category,
             "RadiusSplashPhysicalDamagesGRU": radius_splash,
             "HasDeploymentTime": has_deployment_time,
@@ -276,7 +310,8 @@ def build_ammo_properties(parse_ammo_source) -> Dict[str, Any]:
             "MaximumRangeHelicopterGRU": max_range_helicopter_gru,
             "MaximumRangeAirplaneGRU": max_range_airplane_gru,
             "Family": family,
-        }
+        })
+        ammo_properties[ammo_descr.n] = entry
 
     return ammo_properties
 

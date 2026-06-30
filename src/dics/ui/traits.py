@@ -1,6 +1,6 @@
 """Unit trait and specialty constants."""
 
-from src.constants import NEW_SUPPLY_CONSTANTS, TANDEM_MODIFIER
+from src.constants import NEW_SUPPLY_CONSTANTS, TANDEM_MODIFIER, TFR_STEALTH_BONUS, CQC_RANGE
 
 
 def get_ratio_color(ratio: float) -> str:
@@ -328,7 +328,7 @@ NEW_TRAITS = {
             f"makes it an easier target to hit. "
         )),
         "extended": ("SMFUEOJEQG", (
-            f"#styleGreen{{• 1.75 stealth}}"
+            f"#styleGreen{{• {TFR_STEALTH_BONUS} stealth}}"
         )),
         "texture": "terrain_radar.png",
     },
@@ -509,7 +509,7 @@ TRAIT_EDITS = {
             "token": "NKHDAPIZBR",
             "text": (
                 f"CQC Bonuses - While stationary, and if within "
-                f"#moral_color_bad_2{{150m}} of enemies, gain the following bonuses:\n"
+                f"#moral_color_bad_2{{{CQC_RANGE}m}} of enemies, gain the following bonuses:\n"
                 f"#styleGreen{{• 15% bonus to aim time, shot reload, and salvo reload.}}\n"
                 f"#styleGreen{{• 15% bonus to physical damage.}}\n\n"
                 f"Sprint - While within #styleTurquoise{{875m}} of enemies, in combat, and above 40% cohesion, "

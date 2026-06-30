@@ -38,11 +38,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketInf_WOMBAT_RCL_120mm_HE", "recoilless", None, False): { # 705
         "Ammunition": {
             "hit_roll": {
-                "Idling": 40,
+                "Idling": 50,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1750,
-                "PhysicalDamages": 1.5,
                 "DisplaySalveAccuracy": False,
             },
         },
@@ -54,7 +53,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Index": 17,
             },
             "hit_roll": {
-                "Idling": 40,
+                "Idling": 50,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1750,
@@ -92,7 +91,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "ImpactHappening": "'BombeODABRPO'",
                 "MaximumRangeGRU": 700,
                 "RadiusSplashPhysicalDamagesGRU": 93,
-                "PhysicalDamages": 2.0,
+                "PhysicalDamages": 1.5,
                 "RadiusSplashSuppressDamagesGRU": 124,
                 "SuppressDamages": 175,
                 "DisplaySalveAccuracy": False,
@@ -495,7 +494,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketInf_M67_RCL_90mm_HE", "recoilless", None, False): { # 679
         "Ammunition": {
             "hit_roll": {
-                "Idling": 40,
+                "Idling": 50,
             },
             "parent_membr": {
                 "TimeBetweenTwoFx": 6.6,
@@ -512,7 +511,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Index": 14,
             },
             "hit_roll": {
-                "Idling": 40,
+                "Idling": 50,
             },
             "parent_membr": {
                 "TimeBetweenTwoFx": 6.6,
@@ -529,7 +528,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Index": 16,
             },
             "hit_roll": {
-                "Idling": 40,
+                "Idling": 50,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1750,
@@ -544,11 +543,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketInf_M40A1_RCL_106mm_HE_TOWED", "recoilless", None, False): { # 676
         "Ammunition": {
             "hit_roll": {
-                "Idling": 40,
+                "Idling": 50,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1750,
-                "PhysicalDamages": 1.25,
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 10.0,
             },
@@ -558,11 +556,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketInf_M40A1_RCL_106mm_HE", "recoilless", None, False): { # 675
         "Ammunition": {
             "hit_roll": {
-                "Idling": 40,
+                "Idling": 50,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1750,
-                "PhysicalDamages": 1.25,
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 10.0,
             },
@@ -575,7 +572,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Index": 16,
             },
             "hit_roll": {
-                "Idling": 40,
+                "Idling": 50,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1750,

@@ -36,6 +36,13 @@ from src.utils.logging_utils import setup_logger
 
 from .aircraft_vision_validation import validate_aircraft_vision_vs_weapon_range
 from .deck_pack_mappings import build_deck_pack_mappings
+from .infantry_small_arms_strength_validation import (
+    build_countable_small_arms_weapons,
+    build_infantry_small_arms_balance,
+    save_countable_small_arms_weapons,
+    save_infantry_small_arms_balance,
+    validate_infantry_small_arms_vs_strength,
+)
 from .insert_turret_templates import (
     build_insert_turret_templates,
     save_insert_turret_templates,
@@ -176,6 +183,23 @@ def build_constants_precomputation_data(config: Dict[str, Any], game_db: Dict[st
                 logger.warning(
                     "Small arms quantity validation found errors - see above. "
                     "Fix unit edits or add quantities to NbWeapons in small_arms.py"
+                )
+
+            countable_small_arms = build_countable_small_arms_weapons(game_db)
+            save_countable_small_arms_weapons(countable_small_arms, config)
+            infantry_sa_balance = build_infantry_small_arms_balance(
+                game_db,
+                countable=countable_small_arms,
+                insert_templates=insert_templates,
+            )
+            save_infantry_small_arms_balance(infantry_sa_balance, config)
+            infantry_sa_failed = validate_infantry_small_arms_vs_strength(
+                game_db, infantry_sa_balance,
+            )
+            if infantry_sa_failed:
+                logger.warning(
+                    "Infantry small arms vs strength validation found errors - see above. "
+                    "Fix unit edits / NEW_UNITS quantities or add skip-list entries.",
                 )
 
             ui_texture_failed = validate_ui_texture_constants(game_db)

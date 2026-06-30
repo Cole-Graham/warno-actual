@@ -333,6 +333,7 @@ SOV_global_newdivisionrules = {
 
 SOV_marine_newdivisionrules = {
     "logistic": [
+        ("FOB_SOV", 1, [0, 2, 0, 0]),
         ("UAZ_469_CMD_Naval_SOV", 1, [0, 4, 0, 0]),
         ("BRDM_2_CMD_SOV", 1, [0, 3, 0, 0]),
         ("BAV_485_Naval_supply_SOV", 2, [5, 0, 0, 0]),

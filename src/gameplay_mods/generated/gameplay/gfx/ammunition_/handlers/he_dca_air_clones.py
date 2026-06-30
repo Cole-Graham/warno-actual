@@ -107,6 +107,7 @@ def apply_he_dca_air_ammo_clones(
         air_descr.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
         air_descr.v.by_m("Arme").v.by_m("Family").v = _HE_DCA_AIR_FAMILY
         air_descr.v.by_m("SuppressDamages").v = str(w_air)
+        air_descr.v.by_m("AimingTime").v = str(0.3)
         source_path.add(air_descr)
 
         cloned += 1

@@ -2242,14 +2242,13 @@ rfa_unit_edits = {
             "token": "HVHJFPKNKB",
         },
         "CommandPoints": 150,
-        "strength": 8,
+        "strength": 10,
         "optics": {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
-        "strength": 10,
         "availability": [0, 3, 2, 0],
         "SpecialtiesList": {
             "overwrite_all": [
