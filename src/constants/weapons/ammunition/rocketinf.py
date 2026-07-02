@@ -586,9 +586,12 @@ weapons: Dict[WeaponKey, WeaponData] = {
     
     ("RocketInf_Handflammpatrone", "napalm", None, False): {
         "Ammunition": {
+            "hit_roll": {
+                "Idling": 50,
+            },
             "parent_membr": {
                 "MaximumRangeGRU": 450,
-                "PhysicalDamages": 0.45,
+                "PhysicalDamages": 0.6,
                 "DisplaySalveAccuracy": False,
                 "FireDescriptor": "$/GFX/Weapon/Descriptor_Fire_NapalmLeger_53m",
             },
@@ -602,7 +605,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MaximumRangeGRU": 450,
-                "PhysicalDamages": 0.8,
+                "PhysicalDamages": 0.6,
                 "DisplaySalveAccuracy": False,
                 "FireDescriptor": "$/GFX/Weapon/Descriptor_Fire_NapalmLeger_53m",
             },
@@ -611,7 +614,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
     
     ("RocketInf_AGI_3X40_40mm", "napalm", None, False): {
         "Ammunition": {
+            "hit_roll": {
+                "Idling": 50,
+            },
             "parent_membr": {
+                "MaximumRangeGRU": 525,
+                "PhysicalDamages": 0.6,
+                "DisplaySalveAccuracy": False,
+                "FireDescriptor": "$/GFX/Weapon/Descriptor_Fire_NapalmLeger_53m",
                 "TimeBetweenTwoSalvos": 10.0,
             },
         },

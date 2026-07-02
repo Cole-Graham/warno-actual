@@ -19,6 +19,8 @@ from .handlers import (
     apply_category_aa_missile_standards,
     apply_category_sead_standards,
     apply_clu_sol_trait_standards,
+    apply_manpad_time_between_salvos_standard,
+    apply_sam_time_between_salvos_standard,
     apply_tandem_charge_inversion,
     remove_vanilla_instances,
     validate_ammunition_consumption,
@@ -108,8 +110,14 @@ def edit_gen_gp_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]
                 # final ``MaximumRangeHelicopterGRU`` (incl. dict overrides) to
                 # decide whether to disable range-scaled accuracy.
                 try:
+                    has_salvo_lengths = (
+                        "WeaponDescriptor" in data
+                        and "SalvoLengths" in data["WeaponDescriptor"]
+                    )
                     apply_category_sead_standards(base_descr, category)
                     apply_aa_suppress_standard(base_descr, weapon_name, game_db, logger)
+                    if category in ("SAM", "MANPAD") and not has_salvo_lengths:
+                        _apply_salvo_reload_standard(base_descr, category, data)
                     if ammo_data:
                         _apply_missile_edits(base_descr, data, ammo_data, is_new)
                     apply_category_aa_missile_standards(base_descr, category, weapon_name)
@@ -293,6 +301,29 @@ def _get_existing_descriptor(source_path, weapon_name):
     return None
 
 
+def _has_explicit_time_between_salvos(data: Dict) -> bool:
+    """True when ``missiles`` dict edits set ``TimeBetweenTwoSalvos`` explicitly."""
+    ammunition = data.get("Ammunition") or {}
+    parent_membr = ammunition.get("parent_membr") or {}
+    return "TimeBetweenTwoSalvos" in parent_membr
+
+
+def _apply_salvo_reload_standard(
+    descr: Any,
+    category: str,
+    data: Dict,
+    *,
+    shots_count: int | None = None,
+) -> None:
+    """Apply SAM/MANPAD salvo-reload standards unless dict edits override reload time."""
+    if _has_explicit_time_between_salvos(data):
+        return
+    if category == "SAM":
+        apply_sam_time_between_salvos_standard(descr, category, shots_count=shots_count)
+    elif category == "MANPAD":
+        apply_manpad_time_between_salvos_standard(descr, category, shots_count=shots_count)
+
+
 def _handle_salvo_variants(
     source_path: Any,
     base_descr: Any,
@@ -330,6 +361,13 @@ def _handle_salvo_variants(
                 variant.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
                 variant.namespace = namespace
 
+                _apply_salvo_reload_standard(
+                    variant, category, data, shots_count=length,
+                )
+
+                if "Ammunition" in data:
+                    _apply_missile_edits(variant, data, data["Ammunition"], is_new)
+
                 # Only apply salvo-specific values
                 if base_cost is not None:
                     variant.v.by_m("SupplyCost").v = str(base_cost * length)
@@ -350,6 +388,9 @@ def _handle_salvo_variants(
                     apply_category_sead_standards(existing, category)
                     if game_db is not None:
                         apply_aa_suppress_standard(existing, weapon_name, game_db, logger)
+                    _apply_salvo_reload_standard(
+                        existing, category, data, shots_count=length,
+                    )
                     if "Ammunition" in data:
                         _apply_missile_edits(existing, data, data["Ammunition"], is_new)
                     apply_category_aa_missile_standards(existing, category, weapon_name)
@@ -372,6 +413,9 @@ def _handle_salvo_variants(
                     apply_category_sead_standards(variant, category)
                     if game_db is not None:
                         apply_aa_suppress_standard(variant, weapon_name, game_db, logger)
+                    _apply_salvo_reload_standard(
+                        variant, category, data, shots_count=length,
+                    )
                     if "Ammunition" in data:
                         _apply_missile_edits(variant, data, data["Ammunition"], is_new)
                     apply_category_aa_missile_standards(variant, category, weapon_name)

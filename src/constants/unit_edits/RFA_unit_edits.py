@@ -2258,6 +2258,17 @@ rfa_unit_edits = {
         "capacities": {
             "remove_capacities": ["resolute"],
         },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": {
+                    "SAM_ROLAND_3": {
+                        "new_weapon": "SAM_FFR_ROLAND_3",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
+            },
+        },
     },
     
     "DCA_I_Hawk_RFA": {
@@ -2626,7 +2637,7 @@ rfa_unit_edits = {
     },
 
     "Tornado_IDS_SEAD_RFA": { # AGM-88 5950m
-        "CommandPoints": 300,
+        "CommandPoints": 260,
         "ECM": -0.50,
         "optics": {
             "VisionRangesGRU": {

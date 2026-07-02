@@ -2,11 +2,7 @@
 
 from src.constants import CQC_RANGE
 from src.constants.capacities import (
-    NO_SPRINT_CAPACITY,
-    SPRINT_OK_CAPACITY,
     SPRINT_CAPACITY,
-    SPRINT_ACTIVATED_CAPACITY,
-    SPRINT_BEGIN_COOLDOWN_CAPACITY,
     DEPLOY_CAPACITY,
     DEPLOY_OK_CAPACITY,
     LDR_ARTY_CAPACITY,
@@ -40,10 +36,6 @@ def edit_gen_gp_gfx_capacitelist(source_path) -> None:
     for i, row in enumerate(source_path, start=1):
         if row.namespace == "Capacite_Choc":
             source_path.insert(i, SPRINT_CAPACITY)
-            source_path.insert(i, SPRINT_ACTIVATED_CAPACITY)
-            source_path.insert(i, SPRINT_BEGIN_COOLDOWN_CAPACITY)
-            source_path.insert(i, NO_SPRINT_CAPACITY)
-            source_path.insert(i, SPRINT_OK_CAPACITY)
             source_path.insert(i, SWIFT_CAPACITY)
             source_path.insert(i, NO_SWIFT_CAPACITY)
             source_path.insert(i, DEPLOY_OK_CAPACITY)

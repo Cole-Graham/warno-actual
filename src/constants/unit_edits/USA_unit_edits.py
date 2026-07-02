@@ -2018,7 +2018,7 @@ usa_unit_edits = {
         "GameName": {
             "display": "AERO-RIFLES [AT4]",
         },
-        "CommandPoints": 55,
+        "CommandPoints": 60,
         "armor": "Infantry_armor_reference",
         "availability": [0, 6, 4, 0],
         "max_speed": 26,
@@ -3426,7 +3426,7 @@ usa_unit_edits = {
     },
     
     "CUCV_Hellfire_US": {
-        "CommandPoints": 120,
+        "CommandPoints": 130,
         "availability": [0, 4, 3, 0],
     },
 
@@ -5135,6 +5135,17 @@ usa_unit_edits = {
                 "cards": 1,
             },
         },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": {
+                    "SAM_ROLAND_3": {
+                        "new_weapon": "SAM_FFR_ROLAND_3",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
+            },
+        },
         "UpgradeFromUnit": "M48_Chaparral_MIM72F_US",
     },
 
@@ -5939,7 +5950,7 @@ usa_unit_edits = {
     },
 
     "F111F_Aardvark_LGB_US": {  # 4x GBU-12
-        "CommandPoints": 260,
+        "CommandPoints": 280,
         "GameName": {
             "display": "F-111F AARDVARK [PGB]",
         },
@@ -6431,6 +6442,15 @@ usa_unit_edits = {
             },
         },
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": {
+                    "AGM_AGM88_HARM": {
+                        "new_weapon": "AGM_AGM88_HARM_ReflexPriorityFalse",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
+            },
             "turrets": {
                 3: {
                     "AngleRotationMax": 0.9599311,

@@ -1,7 +1,7 @@
 """Unit trait and specialty constants."""
 
 from src.constants import NEW_SUPPLY_CONSTANTS, TANDEM_MODIFIER, TFR_STEALTH_BONUS, CQC_RANGE
-
+from src.constants.effects import CHOC_CQC_BONUSES, CHOC_SPRINT_BONUSES
 
 def get_ratio_color(ratio: float) -> str:
     """Map supply ratio to color tag based on thresholds.
@@ -503,6 +503,15 @@ NEW_TRAITS = {
     },
 }
 
+CHOC_CQC_BONUSES_TEXT = {
+    "all": f"#styleTurquoise{{• {(1 - CHOC_CQC_BONUSES['aim_time_multiplier']) * 100:.0f}% bonus to aim time, shot reload, and salvo reload.}}\n\n",
+}
+
+CHOC_SPRINT_BONUSES_TEXT = {
+    "speed_bonus_percentage": f"{CHOC_SPRINT_BONUSES['speed_bonus_percentage']}% increased movement speed.",
+    "suppress_damage_multiplier": f"{(1 - CHOC_SPRINT_BONUSES['suppress_damage_multiplier']) * 100:.0f}% less suppression damage.",
+}
+
 TRAIT_EDITS = {
     "_choc": {
         "extended": {
@@ -510,12 +519,12 @@ TRAIT_EDITS = {
             "text": (
                 f"CQC Bonuses - While stationary, and if within "
                 f"#moral_color_bad_2{{{CQC_RANGE}m}} of enemies, gain the following bonuses:\n"
-                f"#styleGreen{{• 15% bonus to aim time, shot reload, and salvo reload.}}\n"
-                f"#styleGreen{{• 15% bonus to physical damage.}}\n\n"
+                f"{CHOC_CQC_BONUSES_TEXT['all']}"
+                # f"#styleGreen{{• 15% bonus to physical damage.}}\n\n"
                 f"Sprint - While within #styleTurquoise{{875m}} of enemies, in combat, and above 40% cohesion, "
                 f"gain the following bonuses:\n"
-                f"#styleTurquoise{{• 70% increased movement speed.\n}}"
-                f"#styleTurquoise{{• Receive 25% less suppression damage.}}"
+                f"#styleTurquoise{{• {CHOC_SPRINT_BONUSES_TEXT['speed_bonus_percentage']}\n}}"
+                f"#styleTurquoise{{• {CHOC_SPRINT_BONUSES_TEXT['suppress_damage_multiplier']}}}"
             )
         }
     },

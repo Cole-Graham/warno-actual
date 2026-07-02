@@ -98,10 +98,6 @@ def _add_capacite_module(
         "skills": {
             "Choc": [
                 "Sprint",
-                "Sprint_Activated",
-                "Sprint_BeginCooldown",
-                "Sprint_Cooldown",
-                "NoSprint",
             ],
         },
         "specialties": {
@@ -172,9 +168,6 @@ def _add_capacities(logger, unit_data, edit_type, unit_name, edits, default_skil
         "skills": {
             "Choc": [
                 "$/GFX/EffectCapacity/Capacite_Sprint",
-                "$/GFX/EffectCapacity/Capacite_Sprint_Activated",
-                "$/GFX/EffectCapacity/Capacite_Sprint_BeginCooldown",
-                "$/GFX/EffectCapacity/Capacite_NoSprint",
             ],
         },
         "specialties": {

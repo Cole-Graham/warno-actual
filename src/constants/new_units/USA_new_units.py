@@ -977,7 +977,7 @@ USA_NEW_UNITS = {
         "depictions": {
             "new_mesh": True,
         },
-        "CommandPoints": 260,
+        "CommandPoints": 280,
         "ECM": -0.45,
         "optics": {
             "VisionRangesGRU": {
@@ -1004,7 +1004,7 @@ USA_NEW_UNITS = {
                 "replace": {
                     "AGM_AGM45_Shrike": {
                         "new_weapon": "AGM_AGM88_HARM_ReflexPriorityFalse",
-                        "swap_fire_effect": True,
+                        "swap_fire_effect": False,
                         "depiction_baked_in": False,
                     },
                 },

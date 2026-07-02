@@ -90,6 +90,38 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("Canon_HE_120_mm_L11A5_Mk1_4", "canon", None, False): { # Cheiftian Mk1/4 L11A1 (L31A7) 
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_cac",
+            },
+            "hit_roll": {
+                "Idling": 65,
+                "Moving": 55,
+            },
+            "parent_membr": {
+                "TraitsToken": ['MOTION', 'HE', 'demolition'],
+                "SuppressDamages": 243,
+            },
+            "display": "L11A1 (L31A7) [HESH]",
+            "token": "ESZSAANXXP",
+        },
+    },
+    
+    ("Canon_HE_105mm_L7_Centurion_AVRE", "canon", None, False): { # Centurion Mk12 AVRE 105mm, Currently modeled with a HEAT round that wasn't actually issued
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_cac",
+            },
+            "parent_membr": {
+                "TraitsToken": ['MOTION', 'HE', 'demolition'],
+                "SuppressDamages": 213,
+            },
+            "display": "L7A3 (L35) [HESH]",
+            "token": "XOIJZEAMFO",
+        },
+    },
+    
     ("Canon_AP_100mm_D10T_mid", "canon", None, False): { # MOR. T-55AM D-10T2S (3BM-25)
         "Ammunition": {
             "display": "D-10T2S (3BM-25)",
@@ -751,6 +783,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 55,
             },
             "parent_membr": {
+                "TraitsToken": ['HE', 'HEAT', 'demolition'],
                 "SuppressDamages": 243,
                 "DamageTypeEvolutionOverRangeDescriptor": "nil"
             },
@@ -772,6 +805,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Index": 15, # HEAT
             },
             "parent_membr": {
+                "TraitsToken": ['HE', 'HEAT', 'demolition'],
                 "SuppressDamages": 213,
             },
             "display": "L7A3 (L35) [HESH]",
@@ -1207,13 +1241,15 @@ weapons: Dict[WeaponKey, WeaponData] = {
 
     ("Canon_HE_142mm_AVRE", "canon", None, False): { # French Demo Gun HESH
         "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_cac",
+            },
             "parent_membr": {
+                "TraitsToken": ['MOTION', 'HE', 'demolition'],
                 "MaximumRangeGRU": 875,
                 "PhysicalDamages": 2.5,
                 "AimingTime": 2.0,
             },
-            "display": "M135 (???)",
-            "token": "DOCLDCENLS",
         },
     },
 }

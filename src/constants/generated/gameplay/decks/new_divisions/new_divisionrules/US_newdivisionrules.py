@@ -283,7 +283,6 @@ US_marine_newdivisionrules = {
         ("M1025_Humvee_CMD_USMC_US", 2, [0, 3, 0, 0]),
         ("LAV_C_US", 1, [0, 3, 0, 0]),
         ("FOB_US", 1, [2, 0, 0, 0]),
-        # doesn't exist anymore ???
         ("AAVC_7A1_CMD_USMC_US", 1, [0, 3, 0, 0]),
         ("M60A1_RISE_Passive_USMC_CMD2_US", 1, [0, 0, 2, 0]),
         ("LAV_L_US", 2, [6, 0, 0, 0]),
@@ -291,6 +290,7 @@ US_marine_newdivisionrules = {
         ("LARC_60_supply_US", 2, [1, 0, 0, 0]),
         ("CH46E_SeaKnight_supply_US", 2, [4, 0, 0, 0]),
         ("CH53_Sea_Stallion_supply_US", 2, [2, 0, 0, 0]),
+        ("DCA_M167_Vulcan_20mm_US", 1, [0, 10, 7, 0], ["M1038_Humvee_US"]),
     ],
     "infantry": [
         ("Rifles_USMC_CMD_US", 1, [0, 0, 7, 5], ["M998_Humvee_US", "AAVP_7A1_USMC_US", "UH1N_TwinHuey_US", "UH1N_TwinHuey_RKT_US"]),

@@ -5974,7 +5974,7 @@ sov_unit_edits = {
     },
     
     "MiG_25BM_SOV": {  # Kh-58U 6300m
-        "CommandPoints": 270,
+        "CommandPoints": 250,
         "AirplaneMovement": {
             "parent_membr": {
                 "AgilityRadiusGRU": 1800,
@@ -6463,7 +6463,7 @@ sov_unit_edits = {
     },
 
     "Su_24MP_SEAD2_SOV": {  # SEAD2
-        "CommandPoints": 300,
+        "CommandPoints": 260,
         "ECM": -0.45,
         "Divisions": {
             "default": {
@@ -6494,7 +6494,7 @@ sov_unit_edits = {
     },
 
     "Su_24MP_SOV": {  # Kh-28 5425m
-        "CommandPoints": 255,
+        "CommandPoints": 220,
         "ECM": -0.45,
         "optics": {
             "VisionRangesGRU": {

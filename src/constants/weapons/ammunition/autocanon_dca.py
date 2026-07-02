@@ -266,7 +266,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 2100,
-                "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 0.2,
                 "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 1.38,
@@ -289,7 +288,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2275,
                 "MaximumRangeAirplaneGRU": 1925,
-                "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 0.2,
                 "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 1.38,
@@ -333,7 +331,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "HasDeploymentTime": True,
                 "MaximumRangeGRU": 1575,
-                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeHelicopterGRU": 2275,
                 "MaximumRangeAirplaneGRU": 1750,
                 "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 0.2,
@@ -355,7 +353,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
-                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeHelicopterGRU": 2275,
                 "MaximumRangeAirplaneGRU": 1750,
                 "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 0.2,
@@ -377,7 +375,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
-                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeHelicopterGRU": 2275,
                 "MaximumRangeAirplaneGRU": 1750,
                 "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 0.2,
@@ -400,7 +398,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "HasDeploymentTime": True,
                 "MaximumRangeGRU": 1575,
-                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeHelicopterGRU": 2275,
                 "MaximumRangeAirplaneGRU": 1750,
                 "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 0.2,
@@ -422,7 +420,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
-                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 1750,
                 "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 0.2,

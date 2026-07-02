@@ -26,6 +26,8 @@ from .by_category import (
     RatioSpec,
     SAM_STANDARDS,
     SEAD_STANDARDS,
+    manpad_time_between_salvos_seconds,
+    sam_time_between_salvos_seconds,
 )
 from .pattern import (
     AIM_TIME_STANDARDS,
@@ -60,9 +62,11 @@ __all__ = [
     "CLU_BOMB_WEAPON_NAMES",
     "DCA_STANDARDS",
     "MANPAD_STANDARDS",
+    "manpad_time_between_salvos_seconds",
     "RatioSpec",
     "SAM_STANDARDS",
     "SEAD_STANDARDS",
+    "sam_time_between_salvos_seconds",
     "CANON_HE_DAMAGE_BY_CALIBER",
     "HE_BOMB_DAMAGE_BY_WEIGHT",
     "HE_BOMB_NAME_MATCH",

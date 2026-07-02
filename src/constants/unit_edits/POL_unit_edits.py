@@ -2337,12 +2337,12 @@ pol_unit_edits = {
     
     #   tank tab transports
     "OT_64_SKOT_2_POL": {  # SKOT-2
-        "CommandPoints": 20,
+        "CommandPoints": 15,
         "strength": 10,
     },
     
     "OT_64_SKOT_2A_POL": {  # SKOT-2A
-        "CommandPoints": 25,
+        "CommandPoints": 20,
         "strength": 10,
         "SpecialtiesList": {
             "overwrite_all": [
@@ -2354,7 +2354,7 @@ pol_unit_edits = {
     },
     
     "OT_64_SKOT_2AM_POL": {  # SKOT-2AM
-        "CommandPoints": 30,
+        "CommandPoints": 25,
         "strength": 10,
         "SpecialtiesList": {
             "overwrite_all": [
@@ -2366,7 +2366,7 @@ pol_unit_edits = {
     },
     
     "OT_64_SKOT_2P_POL": {  # SKOT-2AP
-        "CommandPoints": 30,
+        "CommandPoints": 25,
         "strength": 10,
         "SpecialtiesList": {
             "overwrite_all": [

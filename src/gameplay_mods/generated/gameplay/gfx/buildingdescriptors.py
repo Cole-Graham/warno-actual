@@ -1,6 +1,7 @@
 """Functions for modifying BuildingDescriptors.ndf"""
 
 from typing import Any
+from src.constants import FOB_CONSTANTS
 
 from src import ndf
 from src.utils.logging_utils import setup_logger
@@ -40,18 +41,17 @@ def _handle_fob_attributes(source_path: Any) -> None:
 
                 if module.v.type == "TSupplyModuleDescriptor":
                     module.v.by_m("SupplyDescriptor").v = "$/GFX/Weapon/FOBSupply"
-                    module.v.by_m("SupplyCapacity").v = "6500"
-                    logger.info("Updated FOB supply capacity to 6500")
+                    module.v.by_m("SupplyCapacity").v = str(FOB_CONSTANTS["supply"])
+                    logger.info(f"Updated FOB supply capacity to {FOB_CONSTANTS['supply']}")
 
                 elif module.v.type == "TBaseDamageModuleDescriptor":
-                    module.v.by_m("MaxPhysicalDamages").v = "20"
-                    logger.info("Updated FOB health to 20")
+                    module.v.by_m("MaxPhysicalDamages").v = str(FOB_CONSTANTS["health"])
+                    logger.info(f"Updated FOB health to {FOB_CONSTANTS['health']}")
 
                 elif module.v.type == "TProductionModuleDescriptor":
                     module.v.by_m("ProductionRessourcesNeeded").v.by_k(  # noqa
-                        "$/GFX/Resources/Resource_CommandPoints"
-                    ).v = "75"
-                    logger.info("Updated FOB command point cost to 75")
+                        "$/GFX/Resources/Resource_CommandPoints").v = str(FOB_CONSTANTS["command_points"])
+                    logger.info(f"Updated FOB command point cost to {FOB_CONSTANTS['command_points']}")
 
                 elif module.v.type == "TTypeUnitModuleDescriptor":
                     mother_country = module.v.by_m("MotherCountry").v[1:-1]
@@ -60,22 +60,7 @@ def _handle_fob_attributes(source_path: Any) -> None:
                     module.v.by_m("NameToken").v = f"'FOB{mother_country}'"
 
         # rename fobs - mostly just correcting to all caps
-        fobnames = {
-            "FOBBEL": "MUNITIEDEPOT",
-            "FOBCAN": "FIELD SUPPLY POINT",  # canada
-            "FOBCZ": "tbd",  # czechoslovakia
-            "FOBDDR": "FELDDEPOT",
-            "FOBDK": "FELT FORSYNINGSPUNKT",
-            "FOBESP": "tbd",  # spain
-            "FOBFR": "DÉPÔT DE MUNITION",
-            "FOBNL": "MUNITIEDEPOT",  # supposedly preferred over munitie stoortplats
-            "FOBPOL": "PUNKT ZAOPATRZENIA",
-            "FOBRFA": "FELDDEPOT",
-            "FOBSOV": "SKLAD SNABZHENIYA",
-            "FOBTCH": "tbd",
-            "FOBUK": "FIELD SUPPLY POINT",
-            "FOBUS": "FIELD SUPPLY POINT",
-        }
+        fobnames = FOB_CONSTANTS["names"]
         fobnames_entries = [(k, v) for k, v in fobnames.items()]
         write_dictionary_entries(fobnames_entries, dictionary_type="units")
 

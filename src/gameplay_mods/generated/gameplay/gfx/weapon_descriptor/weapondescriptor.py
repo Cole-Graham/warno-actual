@@ -7,6 +7,7 @@ logger = setup_logger(__name__)
 from .handlers import (
     apply_default_salves,
     apply_he_dca_air_mounts,
+    apply_satchel_at_companion_mounts,
     apply_hobs_no_hmd_pattern_standard,
     new_units_weapondescriptor,
     unit_edits_weapondescriptor,
@@ -29,3 +30,4 @@ def edit_gen_gp_gfx_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) 
     # Auto-wire SPAAG air mounts on every turret carrying a DamageFamily_he_dca
     # ammo (must run last so vanilla, new, and edited units are all in place).
     apply_he_dca_air_mounts(source_path, logger, game_db)
+    apply_satchel_at_companion_mounts(source_path, logger, game_db)

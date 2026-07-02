@@ -93,6 +93,8 @@ from .standards import (
     RatioSpec,
     SAM_STANDARDS,
     SEAD_STANDARDS,
+    manpad_time_between_salvos_seconds,
+    sam_time_between_salvos_seconds,
     WEAPON_RANGE_MEMBERS_TO_CHECK,
 )
 
@@ -176,8 +178,10 @@ __all__ = [
     'HE_BOMB_NAME_MATCH',
     'HE_BOMB_TRAIT_TOKENS',
     'MANPAD_STANDARDS',
+    'manpad_time_between_salvos_seconds',
     'RatioSpec',
     'SAM_STANDARDS',
+    'sam_time_between_salvos_seconds',
     'SEAD_STANDARDS',
     'WEAPON_RANGE_MEMBERS_TO_CHECK',
 ]

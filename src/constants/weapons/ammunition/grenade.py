@@ -10,8 +10,25 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Grenade_Satchel_Charge", "grenade", None, False): {
         "Ammunition": {
             "parent_membr": {
-                "TraitsToken": ['STAT', 'HE', 'CAC'],
+                "TraitsToken": ['STAT', 'CAC', 'HEAT'],
                 "PhysicalDamages": 1.5,
+                "RadiusSplashSuppressDamagesGRU": 235,
+            },
+        },
+    },
+    
+    ("Grenade_Satchel_Charge_AT", "grenade", "Grenade_Satchel_Charge", True): {
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_ap_missile",
+                "Index": 8,
+            },
+            "parent_membr": {
+                "TraitsToken": ['STAT', 'CAC', 'HEAT'],
+                "RadiusSplashPhysicalDamagesGRU": 25,
+                "RadiusSplashSuppressDamagesGRU": 50,
+                "PhysicalDamages": 1.0,
+                "ShowDamageInUI": False,
             },
         },
     },

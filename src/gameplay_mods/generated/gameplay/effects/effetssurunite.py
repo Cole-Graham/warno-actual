@@ -5,13 +5,11 @@ from src.dics.veterancy.vet_bonuses import VETERANCY_BONUSES
 from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.ndf_utils import find_obj_by_type, strip_quotes
 from src.constants.effects import (
+    CHOC_CQC_BONUSES,
     SPRINT_EFFECT,
-    SPRINT_OK_EFFECT,
-    SPRINT_ACTIVATED_EFFECT,
     DEPLOY_EFFECT,
     DEPLOY_OK_EFFECT,
     MEDIUM_EQUIP_PENALTY_EFFECT,
-    NO_SPRINT_EFFECT,
     NO_SPRINT_MORALE_EFFECT,
     NO_SWIFT_EFFECT,
     SWIFT_EFFECT,
@@ -30,10 +28,7 @@ def edit_gen_gp_effects_effetssurunite(source_path) -> None:
     for i, row in enumerate(source_path, start=1):
         if row.namespace == "UnitEffect_Choc":
             source_path.insert(i, SPRINT_EFFECT)
-            source_path.insert(i, SPRINT_ACTIVATED_EFFECT)
-            source_path.insert(i, NO_SPRINT_EFFECT)
             source_path.insert(i, NO_SPRINT_MORALE_EFFECT)
-            source_path.insert(i, SPRINT_OK_EFFECT)
             source_path.insert(i, SWIFT_EFFECT)
             source_path.insert(i, NO_SWIFT_EFFECT)
             source_path.insert(i, SWIFT_OK_EFFECT)
@@ -41,6 +36,23 @@ def edit_gen_gp_effects_effetssurunite(source_path) -> None:
             source_path.insert(i, DEPLOY_EFFECT)
             source_path.insert(i, MEDIUM_EQUIP_PENALTY_EFFECT)
             break
+        
+    # Edit Choc effect
+    choc_obj = source_path.by_n("UnitEffect_Choc")
+    effects_list = choc_obj.v.by_m("EffectsDescriptors")
+    for effect in effects_list.v:
+        if not hasattr(effect.v, "type"):
+            continue
+        # Remove Physical Damage Bonus
+        if effect.v.type == "TUnitEffectIncreaseWeaponPhysicalDamagesDescriptor":
+            effects_list.v.remove(effect.index)
+            logger.info(f"Removed Choc physical damage bonus from {choc_obj.v.parent_row.namespace}")
+        elif effect.v.type == "TBonusWeaponAimtimeEffectDescriptor":
+            effect.v.by_m("ModifierValue").v = str(CHOC_CQC_BONUSES["aim_time_multiplier"])
+        elif effect.v.type == "TUnitEffectAlterWeaponTempsEntreDeuxSalvesDescriptor":
+            effect.v.by_m("ModifierValue").v = str(CHOC_CQC_BONUSES["salvo_reload_multiplier"])
+        elif effect.v.type == "TUnitEffectAlterWeaponTempsEntreDeuxTirsDescriptor":
+            effect.v.by_m("ModifierValue").v = str(CHOC_CQC_BONUSES["shot_reload_percentage"])
 
     # Modify sniper effects
     sniper_obj = source_path.by_n("UnitEffect_sniper")

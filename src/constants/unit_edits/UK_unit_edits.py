@@ -2020,6 +2020,7 @@ uk_unit_edits = {
                 '_smoke_launcher',
             ],
         },
+        "DeploymentShift": 750,
         "UpgradeFromUnit": "FV721_Fox_UK",
     },
     
@@ -2821,7 +2822,7 @@ uk_unit_edits = {
     
     "Tornado_ADV_SEAD_UK" : { # 3x ALARM 5600m
         "availability": [0, 2, 0, 1],
-        "CommandPoints": 300,
+        "CommandPoints": 260,
         "ECM": -0.50,
         "optics": {
             "VisionRangesGRU": {

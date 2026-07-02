@@ -144,8 +144,25 @@ def _handle_batch_changes(source_path, game_db) -> None:
                 modules_list.v.remove(dep_module.index)
                 removed_count += 1
 
-        # Downgrade all vanilla ERA units with strength 11 to 10 (ERA no longer provides the extra HP)
         unit_data = game_db.get("unit_data", {}).get(unit_name, {})
+
+        # Boost all fixed-wing aircraft with vanilla strength 6 to 8
+        is_fixed_wing = (
+            "airplane_movement" in unit_data
+            and not unit_data.get("is_helo_unit")
+        )
+        if is_fixed_wing and unit_data.get("strength") == 6:
+            damage_module = find_obj_by_type(modules_list.v, "TBaseDamageModuleDescriptor")
+            if damage_module:
+                try:
+                    damage_module.v.by_m("MaxPhysicalDamages").v = "7"
+                    logger.info(f"Batch strength: increased {unit_name} from 6 to 7")
+                except Exception as e:
+                    logger.debug(f"Could not increase strength for {unit_name}: {e}")
+            else:
+                logger.warning(f"No damage module found for {unit_name}")
+
+        # Downgrade all vanilla ERA units with strength 11 to 10 (ERA no longer provides the extra HP)
         specialties = unit_data.get("specialties", [])
         has_era_specialty = "_era" in specialties
         if unit_data.get("strength") == 11 and has_era_specialty:

@@ -22,9 +22,22 @@ RatioSpec = Tuple[float, str]
 
 A2A_STANDARDS: dict = {}
 
-SAM_STANDARDS: dict = {}
+SAM_STANDARDS: dict = {
+    "time_between_salvos": {
+        "base": 8,
+        "per_shot": 4,
+        "max_shots": 6,
+    },
+}
 
-MANPAD_STANDARDS: dict = {}
+MANPAD_STANDARDS: dict = {
+    "time_between_salvos": {
+        "base": 6,
+        "per_shot": 4,
+        "floor": 7,
+        "max_extra_shots": 4,
+    },
+}
 
 AA_HAGRU_STANDARDS: dict = {
     "hit_roll": {
@@ -139,3 +152,18 @@ ARTILLERY_DEPLOYMENT_PHYSICAL_THRESHOLD: float = 4.2
 ARTILLERY_DEPLOYMENT_TIME_LARGE: int = 15
 ARTILLERY_DEPLOYMENT_TIME_SMALL: int = 7
 ARTILLERY_PACKUP_TIME: int = 0
+
+
+def sam_time_between_salvos_seconds(shots_count_per_salvo: int) -> float:
+    """SAM category standard: ``base + per_shot * min(max_shots, shots)``."""
+    cfg = SAM_STANDARDS["time_between_salvos"]
+    factor = min(cfg["max_shots"], shots_count_per_salvo)
+    return cfg["base"] + cfg["per_shot"] * factor
+
+
+def manpad_time_between_salvos_seconds(shots_count_per_salvo: int) -> float:
+    """MANPAD category standard: ``max(floor, base + per_shot * min(max_extra_shots, shots - 1))``."""
+    cfg = MANPAD_STANDARDS["time_between_salvos"]
+    factor = min(cfg["max_extra_shots"], shots_count_per_salvo - 1)
+    raw = cfg["base"] + cfg["per_shot"] * factor
+    return max(cfg["floor"], raw)
