@@ -17,6 +17,7 @@ from tkinter import ttk, filedialog, messagebox
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from .constants import RANGE_MODIFIERS_TABLE, SMALL_ARMS_DAMAGE_FAMILIES, SA_INF_ARMOR_DAMAGE_RATIOS
+from .chart_axes import apply_dpm_y_axis_scale
 from .calculations import (
     calculate_dpm,
     calculate_accuracy,
@@ -187,6 +188,7 @@ class InfantryTab:
         
         # Normalize by price checkbox
         self.normalize_by_price_var = tk.BooleanVar(value=False)
+        self.log_scale_dpm_var = tk.BooleanVar(value=False)
         normalize_checkbox = ttk.Checkbutton(
             unit_button_frame,
             text="Normalize by Price",
@@ -194,6 +196,14 @@ class InfantryTab:
             command=lambda: [self.generate_chart(), self.app.auto_save_state()]
         )
         normalize_checkbox.pack(side=tk.LEFT, padx=(10, 2))
+
+        log_scale_checkbox = ttk.Checkbutton(
+            unit_button_frame,
+            text="Log DPM scale",
+            variable=self.log_scale_dpm_var,
+            command=lambda: [self.generate_chart(), self.app.auto_save_state()],
+        )
+        log_scale_checkbox.pack(side=tk.LEFT, padx=(10, 2))
         
         # Damage type dropdown
         ttk.Label(unit_button_frame, text="DPM:").pack(side=tk.LEFT, padx=(10, 2))
@@ -1062,7 +1072,7 @@ class InfantryTab:
         # Check if we have any units to plot
         if not selected_units:
             messagebox.showwarning("Warning", "Please select at least one infantry unit")
-            self.ax.set_ylim(bottom=0)
+            self._apply_chart_y_axis_scale()
             self.canvas.draw()
             return
         
@@ -1522,9 +1532,13 @@ class InfantryTab:
                     # Update info panel with all units at this range
                     self._update_info_panel_for_range(saved_selected_range)
         
-        self.ax.set_ylim(bottom=0)
+        self._apply_chart_y_axis_scale()
         self.canvas.draw()
     
+    def _apply_chart_y_axis_scale(self):
+        """Apply linear or logarithmic scaling on the DPM (Y) axis."""
+        apply_dpm_y_axis_scale(self.ax, self.log_scale_dpm_var.get())
+
     def update_custom_weapon_dropdowns(self):
         """Update custom unit weapon dropdowns with available small arms ammunition and custom weapons."""
         if not hasattr(self, 'custom_weapon_combos'):
@@ -3293,6 +3307,9 @@ class InfantryTab:
             "vanilla_range_table_states": [],
             "price_adjustments": [],
             "successive_hits": self.successive_hits,
+            "normalize_by_price": self.normalize_by_price_var.get() if hasattr(self, 'normalize_by_price_var') else False,
+            "damage_type": self.damage_type_var.get() if hasattr(self, 'damage_type_var') else "Physical",
+            "log_scale_dpm": self.log_scale_dpm_var.get() if hasattr(self, 'log_scale_dpm_var') else False,
         }
         
         for idx, dropdown in enumerate(self.unit_dropdowns):
@@ -3336,6 +3353,17 @@ class InfantryTab:
                 self.successive_hits = state["successive_hits"]
                 if hasattr(self, 'hits_label'):
                     self.hits_label.config(text=str(self.successive_hits))
+                if hasattr(self, 'hits_var'):
+                    self.hits_var.set(self.successive_hits)
+
+            if "normalize_by_price" in state and hasattr(self, 'normalize_by_price_var'):
+                self.normalize_by_price_var.set(bool(state["normalize_by_price"]))
+
+            if "damage_type" in state and hasattr(self, 'damage_type_var'):
+                self.damage_type_var.set(state["damage_type"])
+
+            if "log_scale_dpm" in state and hasattr(self, 'log_scale_dpm_var'):
+                self.log_scale_dpm_var.set(bool(state["log_scale_dpm"]))
             
             # Ensure we have enough dropdowns
             selected_units = state.get("selected_units", [])

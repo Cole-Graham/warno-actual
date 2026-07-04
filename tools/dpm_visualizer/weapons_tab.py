@@ -16,6 +16,7 @@ from tkinter import ttk, filedialog, messagebox
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from .constants import RANGE_MODIFIERS_TABLE
+from .chart_axes import apply_dpm_y_axis_scale
 from .damage_table_csv import (
     DamageTableCsv,
     default_damage_table_dir,
@@ -88,6 +89,7 @@ class WeaponsTab:
         self.resistance_level_max_var = tk.StringVar(value="")
         self.use_resistance_level_range_var = tk.BooleanVar(value=False)
         self.custom_ratio_override_var = tk.BooleanVar(value=False)
+        self.log_scale_dpm_var = tk.BooleanVar(value=False)
         self.custom_ratio_value_var = tk.StringVar(value="1.0")
         
         # Chart state
@@ -1007,6 +1009,15 @@ class WeaponsTab:
         self.custom_ratio_entry.pack(side=tk.LEFT)
         self.custom_ratio_value_var.trace_add("write", lambda *a: self.app.root.after_idle(self._on_custom_ratio_value_changed))
         
+        log_scale_frame = ttk.Frame(config_section)
+        log_scale_frame.pack(fill=tk.X, pady=2)
+        ttk.Checkbutton(
+            log_scale_frame,
+            text="Logarithmic DPM scale (Y axis)",
+            variable=self.log_scale_dpm_var,
+            command=lambda: [self.update_graph(), self.app.auto_save_state()],
+        ).pack(side=tk.LEFT)
+
         # Generate chart button
         ttk.Button(config_section, text="Generate Chart", command=self.generate_chart).pack(fill=tk.X, pady=(5, 0))
         
@@ -1445,7 +1456,7 @@ class WeaponsTab:
             self.ax.text(0.5, 0.5, 'Select weapons to compare', 
                         horizontalalignment='center', verticalalignment='center',
                         transform=self.ax.transAxes, fontsize=14)
-            self.ax.set_ylim(bottom=0)
+            self._apply_chart_y_axis_scale()
             self.canvas.draw()
             return
         
@@ -1580,12 +1591,16 @@ class WeaponsTab:
                     # Update info panel with all weapons at this range
                     self.show_weapons_at_range(saved_selected_range)
         
-        self.ax.set_ylim(bottom=0)
+        self._apply_chart_y_axis_scale()
         self.canvas.draw()
         
         # Update info text
         self.update_info_text()
     
+    def _apply_chart_y_axis_scale(self):
+        """Apply linear or logarithmic scaling on the DPM (Y) axis."""
+        apply_dpm_y_axis_scale(self.ax, self.log_scale_dpm_var.get())
+
     def update_graph(self):
         """Update the chart (alias for generate_chart for consistency)."""
         # Always regenerate the chart when called - this ensures checkbox changes trigger updates
@@ -1920,6 +1935,7 @@ class WeaponsTab:
             "use_resistance_level_range": self.use_resistance_level_range_var.get() if hasattr(self, 'use_resistance_level_range_var') else False,
             "custom_ratio_override": self.custom_ratio_override_var.get() if hasattr(self, 'custom_ratio_override_var') else False,
             "custom_ratio_value": self.custom_ratio_value_var.get() if hasattr(self, 'custom_ratio_value_var') else "1.0",
+            "log_scale_dpm": self.log_scale_dpm_var.get() if hasattr(self, 'log_scale_dpm_var') else False,
         }
         
         for idx, dropdown in enumerate(self.weapon_dropdowns):
@@ -2006,6 +2022,9 @@ class WeaponsTab:
         if "use_multiplicative_vet_bonus" in state and hasattr(self, 'use_multiplicative_vet_bonus_var'):
             self.use_multiplicative_vet_bonus_var.set(state["use_multiplicative_vet_bonus"])
         
+        if "log_scale_dpm" in state and hasattr(self, 'log_scale_dpm_var'):
+            self.log_scale_dpm_var.set(bool(state["log_scale_dpm"]))
+
         # Load range table selection
         if "range_table" in state and hasattr(self, 'range_table_var'):
             range_table = state["range_table"]

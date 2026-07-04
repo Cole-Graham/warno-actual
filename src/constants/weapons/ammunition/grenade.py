@@ -21,7 +21,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "Arme": {
                 "Family": "DamageFamily_ap_missile",
-                "Index": 8,
+                "Index": 7,
             },
             "parent_membr": {
                 "TraitsToken": ['STAT', 'CAC', 'HEAT'],

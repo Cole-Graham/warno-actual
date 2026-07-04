@@ -46,3 +46,18 @@ SA_INF_ARMOR_DAMAGE_RATIOS = [
     [1.0,  0.96, 0.92, 0.88, 0.84, 0.8,  0.76, 0.72, 0.68, 0.64, 0.6,  0.56, 0.52], # 14 strength
 ]
 
+
+def format_dpm_y_axis_tick(value: float, _pos: int) -> str:
+    """Format DPM axis ticks as plain numbers (no scientific notation)."""
+    if value <= 0:
+        return ""
+    rounded = round(value)
+    if abs(value - rounded) < max(1e-9, abs(value) * 1e-9):
+        return str(int(rounded))
+    if value >= 1:
+        return str(int(round(value)))
+    formatted = f"{value:.4g}"
+    if "e" in formatted or "E" in formatted:
+        formatted = f"{value:.4f}".rstrip("0").rstrip(".")
+    return formatted or "0"
+

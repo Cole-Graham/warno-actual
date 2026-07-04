@@ -4,9 +4,10 @@ import importlib
 from pathlib import Path
 from typing import Dict
 
+from src.constants.generated.gameplay.decks.default_multi_decks import load_default_multi_decks
 from src.utils.logging_utils import setup_logger
 
-__all__ = []
+__all__ = ["load_default_multi_decks"]
 
 logger = setup_logger('decks')
 
