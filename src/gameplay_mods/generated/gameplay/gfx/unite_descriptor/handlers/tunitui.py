@@ -1,8 +1,19 @@
-from typing import Any, Dict
+from typing import Any, Dict, Iterable
 
-from src import ndf
 from src.constants.supply_module import specialty_for_supply_descriptor
 from src.utils.ndf_utils import determine_characteristics
+
+
+def _quoted_specialty(spec: str) -> str:
+    return spec if spec.startswith("'") else f"'{spec}'"
+
+
+def _set_specialties_list(specialties_list: Any, specs: Iterable[str]) -> None:
+    """Replace SpecialtiesList with one flat quoted string per specialty."""
+    for tag in list(specialties_list.v):
+        specialties_list.v.remove(tag.index)
+    for spec in specs:
+        specialties_list.v.add(_quoted_specialty(spec))
 
 
 def handle_unitui_module(
@@ -41,7 +52,10 @@ def handle_unitui_module(
     if "SpecialtiesList" in edits:
         if edit_type == "unit_edits":
             if "overwrite_all" in edits["SpecialtiesList"]:
-                specialties_list.v = ndf.convert(str(edits["SpecialtiesList"]["overwrite_all"]))
+                _set_specialties_list(
+                    specialties_list,
+                    edits["SpecialtiesList"]["overwrite_all"],
+                )
             elif "add_specs" in edits["SpecialtiesList"]:
                 for spec in edits["SpecialtiesList"]["add_specs"]:
                     specialties_list.v.add(spec)
@@ -54,8 +68,7 @@ def handle_unitui_module(
                             logger.info(f"Removed specialty {spec} from {unit_name}")
         
         if edit_type == "new_units":
-            edited_list = ndf.convert(str(edits["SpecialtiesList"]))
-            specialties_list.v = edited_list
+            _set_specialties_list(specialties_list, edits["SpecialtiesList"])
     
     # Supply unit specialties
     supply_descriptor = edits.get("Supply", {}).get("SupplyDescriptor")

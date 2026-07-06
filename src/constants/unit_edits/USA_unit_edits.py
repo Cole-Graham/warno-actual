@@ -4659,7 +4659,7 @@ usa_unit_edits = {
     },
     
     "ForceRecon_USMC_US": {
-        "CommandPoints": 40,
+        "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
@@ -4682,7 +4682,7 @@ usa_unit_edits = {
     },
     
     "DeltaForce_US": {
-        "CommandPoints": 45,
+        "CommandPoints": 55,
         "armor": "Infantry_armor_reference",
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],

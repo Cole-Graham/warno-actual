@@ -1,3 +1,4 @@
+from src.constants.effects.medium_equip_penalty_effects import MEDIUM_EQUIP_PENALTY_FLOOR_DAMAGE_LEVEL
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
@@ -73,13 +74,23 @@ def edit_gen_gp_gfx_damagelevels(source_path) -> None:
         f'    AnimationType = ESoldierSuppressStatus/Suppressed'
         f'    EffectsPacks = '
         f'    ['
-        f'        $/GFX/EffectCapacity/UnitEffect_Precision_moins_45,'
         f'        $/GFX/EffectCapacity/UnitEffect_GroundUnit_Cohesion_Mediocre,'
         f'        $/GFX/EffectCapacity/UnitEffect_NoSprint_Morale'
         f'    ]'
         f')'
     )
     ground_damage_levels.v.insert(5, new_ground_damage_level2)
+
+    floor_insert_index = None
+    for i, level in enumerate(ground_damage_levels.v):
+        if level.v.by_m("Value").v == "0.25":
+            floor_insert_index = i + 1
+            break
+    if floor_insert_index is not None:
+        ground_damage_levels.v.insert(floor_insert_index, MEDIUM_EQUIP_PENALTY_FLOOR_DAMAGE_LEVEL)
+        logger.info("Inserted medium equip penalty cohesion floor at Value 0.33")
+    else:
+        logger.warning("Could not find Value 0.25 to insert medium equip penalty floor")
     
     # Edit airplanes damage levels
     airplanes_pack_supp = source_path.by_n("DamageLevelsPackDescriptor_Airplanes_packSupp")

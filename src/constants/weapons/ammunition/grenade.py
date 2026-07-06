@@ -11,7 +11,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "TraitsToken": ['STAT', 'CAC', 'HEAT'],
-                "PhysicalDamages": 1.5,
+                "PhysicalDamages": 2.0,
                 "RadiusSplashSuppressDamagesGRU": 235,
             },
         },

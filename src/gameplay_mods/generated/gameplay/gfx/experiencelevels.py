@@ -1,7 +1,7 @@
 """Functions for modifying ExperienceLevels.ndf"""
 
 from typing import Any
-from src.dics.veterancy.vet_bonuses import VETERANCY_BONUSES
+from src.constants.effects.veterancy import VETERANCY_BONUSES
 from src import ndf
 from src.utils.logging_utils import setup_logger
 
@@ -118,11 +118,11 @@ def _create_new_packs(source_path) -> None:
     xp_levels_list.v[3].v.by_m("HintBodyToken").v = \
         "'" + VETERANCY_BONUSES["SF_v2_multiplicative"]["SF_v2_multiplicative_3"]["body_token"] + "'"
     xp_levels_list.v[1].v.by_m("LevelEffectsPacks").v.remove(1)
-    xp_levels_list.v[1].v.by_m("LevelEffectsPacks").v.add("$/GFX/EffectCapacity/UnitEffect_xp_trained_multiplicative")
+    xp_levels_list.v[1].v.by_m("LevelEffectsPacks").v.add("$/GFX/EffectCapacity/UnitEffect_xp_trained_SF_multiplicative")
     xp_levels_list.v[2].v.by_m("LevelEffectsPacks").v.remove(1)
-    xp_levels_list.v[2].v.by_m("LevelEffectsPacks").v.add("$/GFX/EffectCapacity/UnitEffect_xp_veteran_multiplicative")
+    xp_levels_list.v[2].v.by_m("LevelEffectsPacks").v.add("$/GFX/EffectCapacity/UnitEffect_xp_veteran_SF_multiplicative")
     xp_levels_list.v[3].v.by_m("LevelEffectsPacks").v.remove(1)
-    xp_levels_list.v[3].v.by_m("LevelEffectsPacks").v.add("$/GFX/EffectCapacity/UnitEffect_xp_elite_multiplicative")
+    xp_levels_list.v[3].v.by_m("LevelEffectsPacks").v.add("$/GFX/EffectCapacity/UnitEffect_xp_elite_SF_multiplicative")
     source_path.add(sf2multi)
     
     # create XP_pack_helico_SF

@@ -61,6 +61,9 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "display": "WOMBAT (L2)",
             "token": "CYYBMKYLSS",
+            "WeaponDescriptor": {
+                "Salves": 10,
+            },
         },
     },
     
@@ -531,12 +534,15 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 50,
             },
             "parent_membr": {
-                "MaximumRangeGRU": 1750,
+                "MaximumRangeGRU": 1575,
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 10.0,
             },
             "display": "M40A1 (M344A1)",
             "token": "VJGNAWHSLH",
+            "WeaponDescriptor": {
+                "Salves": 10,
+            },
         },
     },
 
@@ -546,7 +552,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 50,
             },
             "parent_membr": {
-                "MaximumRangeGRU": 1750,
+                "MaximumRangeGRU": 1575,
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 10.0,
             },
@@ -604,10 +610,12 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 50,
             },
             "parent_membr": {
+                "TimeBetweenTwoShots": 1.5,
                 "MaximumRangeGRU": 450,
                 "PhysicalDamages": 0.6,
                 "DisplaySalveAccuracy": False,
                 "FireDescriptor": "$/GFX/Weapon/Descriptor_Fire_NapalmLeger_53m",
+                "TimeBetweenTwoSalvos": 12.0,
             },
         },
     },
@@ -618,6 +626,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 50,
             },
             "parent_membr": {
+                "TimeBetweenTwoShots": 1.5,
                 "MaximumRangeGRU": 525,
                 "PhysicalDamages": 0.6,
                 "DisplaySalveAccuracy": False,

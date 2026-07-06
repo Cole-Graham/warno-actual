@@ -695,7 +695,7 @@ UK_NEW_UNITS = {
             ],
         },
         "strength": 5,
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "SpecialtiesList": [
             '_para',
             'infantry_equip_veryheavy',

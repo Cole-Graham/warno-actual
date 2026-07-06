@@ -255,8 +255,6 @@ US_global_newdivisionrules = {
         ("F16E_TER_HE_US", 1, [0, 2, 0, 0]),
         ("F16E_napalm_US", 1, [0, 3, 2, 0]),
         ("EF111_Raven_US", 1, [0, 2, 0, 0]),
-        ("F111F_Aardvark_LGB_US", 1, [0, 0, 0, 2]),
-        ("F111F_Aardvark_LGB2_US", 2, [0, 0, 0, 1]),
         ("F111F_Aardvark_CBU_US", 1, [0, 2, 0, 0]),
         ("F111F_Aardvark_US", 1, [0, 2, 0, 0]),
         ("F111F_Aardvark_napalm_US", 1, [0, 3, 0, 0]),
@@ -486,7 +484,8 @@ US_mechanized_newdivisionrules = {
         ("UH1M_gunship_US", 1, [6, 0, 0, 0]),
     ],
     "planes": [
-        ("F117_Nighthawk_US", 2, [0, 0, 0, 1]), # Swap with the Strike Eagle?
+        ("F111F_Aardvark_LGB_US", 1, [0, 0, 0, 2]),
+        ("F111F_Aardvark_LGB2_US", 2, [0, 0, 0, 1]),
     ],
 }
 
@@ -616,5 +615,6 @@ US_motorized_newdivisionrules = {
     "planes": [
         ("FA16_CAS_US", 1, [0, 2, 0, 1]),
         ("F4_Wild_Weasel_2_US", 1, [0, 2, 0, 1]),
+        ("F117_Nighthawk_US", 2, [0, 0, 0, 1]), # Swap with the Strike Eagle?
     ],
 }

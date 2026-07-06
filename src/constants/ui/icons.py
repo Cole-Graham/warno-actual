@@ -14,6 +14,11 @@ INGAME_ICONS = {
         "texture": "shock_move_28x24.png",
         "insert_after": "icone_shock",  # Specifies where to insert in the list
     },
+    "shock_inrange": {
+        "texture_dir": "/Assets/2D/Interface/UseInGame/Icones",
+        "texture": "shock_inrange.png",
+        "insert_after": "icone_shock_off",
+    },
     "swift": {
         "texture_dir": "/Assets/2D/Interface/UseInGame/Icones",
         "texture": "swift.png",

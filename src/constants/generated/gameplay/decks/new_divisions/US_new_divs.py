@@ -248,7 +248,7 @@ us_new_divs = {
         "summary_text": ("USA armored and mechanized division.", "SUMUSARMC"),
         "history_text": ("USA Armored / Mechanized division.", "HISUSARMC"),
         "activation_points": 85,
-        "standout_units": ["M1A1_Abrams_CMD_US", "M2A1_Bradley_IFV_US", "F117_Nighthawk_US"],
+        "standout_units": ["M1A1_Abrams_CMD_US", "M2A1_Bradley_IFV_US", "F111F_Aardvark_LGB_US"],
         "division_rules": [
             US_armored_newdivisionrules,
             US_global_newdivisionrules,
@@ -381,7 +381,7 @@ us_new_divs = {
         "summary_text": ("USA mechanized division.", "SUMUSMEC"),
         "history_text": ("USA Mechanized division.", "HISUSMEC"),
         "activation_points": 100,
-        "standout_units": ["M1IP_Abrams_US", "NatGuard_M67_US", "F117_Nighthawk_US"],
+        "standout_units": ["M1IP_Abrams_US", "NatGuard_M67_US", "F111F_Aardvark_LGB_US"],
         "division_rules": [
             US_global_newdivisionrules,
             US_mechanized_newdivisionrules,
@@ -432,7 +432,7 @@ us_new_divs = {
         "summary_text": ("USA motorized division.", "SUMUSMOT"),
         "history_text": ("USA Motorized division.", "HISUSMOT"),
         "activation_points": 100,
-        "standout_units": ["M1_Abrams_US", "LightRifles_Dragon_US", "FA16_CAS_US"],
+        "standout_units": ["M1_Abrams_US", "LightRifles_Dragon_US", "FA16_CAS_US", "F117_Nighthawk_US"],
         "division_rules": [
             US_motorized_newdivisionrules,
             US_global_newdivisionrules,

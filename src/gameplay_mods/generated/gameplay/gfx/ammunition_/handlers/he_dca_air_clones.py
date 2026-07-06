@@ -2,7 +2,9 @@
 
 Runs as the final step of ``edit_gen_gp_gfx_ammunition`` (after standards,
 per-weapon edits and ``apply_damage_families``) so the cloned descriptor
-inherits every prior edit. The clone:
+inherits every prior edit. Skips weapons excluded from the precomputed
+``he_dca_weapons`` map (air-only DCA with ``MaximumRangeGRU == 0``; those get
+``_AIR``-equivalent edits in ``autocanon_dca.py`` instead). The clone:
 
 - Carries ``DamageFamily_he_dca_airtargets`` (registered in
   ``DamageResistance*.ndf``; ignored by every non-aerial resistance family via
@@ -22,12 +24,14 @@ from typing import Any, Dict
 from uuid import uuid4
 
 from src.constants.weapons.spaag_air import (
+    SPAAG_AIR_AIMING_TIME,
+    SPAAG_AIR_DAMAGE_FAMILY,
     SPAAG_AIR_W_RATIO_DEFAULT,
     SPAAG_AIR_W_RATIO_OVERRIDES,
 )
 
 
-_HE_DCA_AIR_FAMILY = "DamageFamily_he_dca_airtargets"
+_HE_DCA_AIR_FAMILY = SPAAG_AIR_DAMAGE_FAMILY
 _SALVO_SUFFIX_RE = re.compile(r"(_x\d+|_salvolength\d+)$")
 
 
@@ -107,7 +111,7 @@ def apply_he_dca_air_ammo_clones(
         air_descr.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
         air_descr.v.by_m("Arme").v.by_m("Family").v = _HE_DCA_AIR_FAMILY
         air_descr.v.by_m("SuppressDamages").v = str(w_air)
-        air_descr.v.by_m("AimingTime").v = str(0.3)
+        air_descr.v.by_m("AimingTime").v = str(SPAAG_AIR_AIMING_TIME)
         source_path.add(air_descr)
 
         cloned += 1

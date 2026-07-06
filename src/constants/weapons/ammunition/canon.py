@@ -255,7 +255,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 45,
             },
             "parent_membr": {
-                "Caliber": ("85mm HEAT", "IWLOKTOKDR"),
                 "TraitsToken": ['HE'],
                 "MaximumRangeGRU": 1750,
                 "RadiusSplashPhysicalDamagesGRU": 38,
@@ -352,11 +351,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Index": 15,
             },
             "hit_roll": {
-                "Idling": 50,
+                "Idling": 40,
             },
             "parent_membr": {
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 8.0,
+            },
+            "WeaponDescriptor": {
+                "Salves": 15,
             },
             "display": "SPG-9 (PG9V)",
             "token": "ACXVIKNDIJ",
@@ -366,7 +368,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Canon_HE_73_mm_SPG9_TOWED", "recoilless", None, False): { # SPG-9 (HE) (Towed)
         "Ammunition": {
             "hit_roll": {
-                "Idling": 50,
+                "Idling": 40,
             },
             "parent_membr": {
                 "DisplaySalveAccuracy": False,
@@ -379,8 +381,11 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "display": "SPG-9D (PG9V)",
             "token": "SPGDPARA",
+            "Arme": {
+                "Index": 15,
+            },
             "hit_roll": {
-                "Idling": 50,
+                "Idling": 40,
             },
             "parent_membr": {
                 "DisplaySalveAccuracy": False,
@@ -601,7 +606,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "TimeBetweenTwoShots": 6.6,
                 "TimeBetweenTwoSalvos": 6.6,
-                "PhysicalDamages": 1.4,
             },
         },
     },
@@ -613,20 +617,16 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("Canon_HE_115mm_U5TS_T62M", "canon", None, False): { # T-62M/MD/M1/M1D/MV (HE)
-        "Ammunition": {
-            "parent_membr": {
-                "PhysicalDamages": 1.4,
-            },
-        },
-    },
+    # ("Canon_HE_115mm_U5TS_T62M", "canon", None, False): { # T-62M/MD/M1/M1D/MV (HE)
+    #     "Ammunition": {
+    #         "parent_membr": {
+    #         },
+    #     },
+    # },
 
     ("Canon_HE_100mm_2A70", "canon", None, False): { # BMP-3 2A70 (3UOF19?)
         "Ammunition": {
             "parent_membr": {
-                "RadiusSplashPhysicalDamagesGRU": 43,
-                "PhysicalDamages": 1.15,
-                "RadiusSplashSuppressDamagesGRU": 86,
                 "SupplyCost": 100.0,
             },
             "display": "2A70 (3UOF19)",
@@ -640,9 +640,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "display": "2A29 (3BM-34)",
             "token": "YJMRACXBEZ",
-            "parent_membr": {
-                "PhysicalDamages": 1.15,
-            },
         },
     },
 
@@ -650,9 +647,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "display": "2A29 (3BM-24)",
             "token": "VLXFNDJKVP",
-            "parent_membr": {
-                "PhysicalDamages": 1.15,
-            },
         },
     },
 
@@ -682,7 +676,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "TimeBetweenTwoShots": 3.0,
                 "TimeBetweenTwoSalvos": 3.0,
-                "PhysicalDamages": 1.15,
             },
         },
     },

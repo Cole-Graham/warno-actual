@@ -1,3 +1,10 @@
+"""Sprint effect constants."""
+
+CHOC_SPRINT_BONUSES = {
+    "suppress_damage_multiplier": 0.50,
+    "speed_bonus_percentage": 70,
+}
+
 SPRINT_EFFECT = (
     'export UnitEffect_Sprint is TEffectsPackDescriptor'
     '('
@@ -7,7 +14,7 @@ SPRINT_EFFECT = (
     '        TUnitEffectIncreaseDamageTakenDescriptor'
     '        ('
     '            ModifierType = ~/ModifierType_Multiplicatif'
-    '            BonusDamage = 0.75'
+    f'            BonusDamage = {1 - CHOC_SPRINT_BONUSES["suppress_damage_multiplier"]}'
     '            DamageType  = ~/EDamageType/Suppress'
     '        ),'
     '        TEffectInflictDamageDescriptor'
@@ -19,7 +26,7 @@ SPRINT_EFFECT = (
     '        TUnitEffectIncreaseSpeedDescriptor'
     '        ('
     '            ModifierType = ~/ModifierType_Pourcentage'
-    '            BonusSpeedBaseInPercent   = 70'
+    f'            BonusSpeedBaseInPercent   = {CHOC_SPRINT_BONUSES["speed_bonus_percentage"]}'
     '        ),'
     '        TUnitEffectShowLabelIconDescriptor'
     '        ('

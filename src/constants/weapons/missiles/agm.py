@@ -453,8 +453,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_pgb_bomb",
             },
             "hit_roll": {
-                "Idling": 50,
-                "Moving": 50,
+                "Idling": 40,
+                "Moving": 40,
             },
             "parent_membr": {
                 "add": [34, "IsFireAndForget = True"],
@@ -491,8 +491,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_pgb_bomb",
             },
             "hit_roll": {
-                "Idling": 65,
-                "Moving": 65,
+                "Idling": 55,
+                "Moving": 55,
             },
             "parent_membr": {
                 "add": [34, "IsFireAndForget = True"],
@@ -529,8 +529,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_pgb_bomb",
             },
             "hit_roll": {
-                "Idling": 50,
-                "Moving": 50,
+                "Idling": 40,
+                "Moving": 40,
             },
             "parent_membr": {
                 "add": [34, "IsFireAndForget = True"],
@@ -566,8 +566,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_pgb_bomb",
             },
             "hit_roll": {
-                "Idling": 65,
-                "Moving": 65,
+                "Idling": 55,
+                "Moving": 55,
             },
             "parent_membr": {
                 "add": [34, "IsFireAndForget = True"],
@@ -642,8 +642,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_pgb_bomb",
             },
             "hit_roll": {
-                "Idling": 65,
-                "Moving": 65,
+                "Idling": 55,
+                "Moving": 55,
             },
             "parent_membr": {
                 "add": [34, "IsFireAndForget = True"],
@@ -683,8 +683,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_pgb_bomb",
             },
             "hit_roll": {
-                "Idling": 65,
-                "Moving": 65,
+                "Idling": 55,
+                "Moving": 55,
             },
             "parent_membr": {
                 "add": [34, "IsFireAndForget = True"],
@@ -721,8 +721,8 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Family": "DamageFamily_pgb_bomb",
             },
             "hit_roll": {
-                "Idling": 65,
-                "Moving": 65,
+                "Idling": 55,
+                "Moving": 55,
             },
             "parent_membr": {
                 "add": [34, "IsFireAndForget = True"],

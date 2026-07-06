@@ -9,7 +9,18 @@ from typing import Any, Dict, List
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from src import ndf
+from src.constants.generated.gameplay.decks import load_new_divisions
 from src.utils.ndf_utils import is_obj_type, is_valid_turret, strip_quotes
+
+
+def mod_division_multi_rule_names() -> set[str]:
+    """NDF descriptor names for mod division rules (excludes vanilla divisions)."""
+    names: set[str] = set()
+    for div_data in load_new_divisions().values():
+        cfg_name = div_data.get("cfg_name")
+        if cfg_name:
+            names.add(f"Descriptor_Deck_Division_{cfg_name}_multi_Rule")
+    return names
 
 
 def parse_infantry_units(mod_src_path: Path) -> Dict[str, Dict[str, Any]]:
@@ -64,25 +75,27 @@ def parse_infantry_units(mod_src_path: Path) -> Dict[str, Dict[str, Any]]:
 
 
 def parse_veterancy_from_division_rules(mod_src_path: Path, unit_data: Dict[str, Dict[str, Any]]) -> None:
-    """Parse available veterancy levels from DivisionRules.ndf multi_Rule entries.
+    """Parse available veterancy levels from mod DivisionRules.ndf multi_Rule entries.
     
     Updates unit_data with available_veterancy_levels based on NumberOfUnitInPackXPMultiplier.
+    Only mod division rules are considered; vanilla division rules are ignored.
     """
     ndf_path = "GameData/Generated/Gameplay/Decks/DivisionRules.ndf"
     
     try:
         mod = ndf.Mod(str(mod_src_path), "None")
         parse_source = mod.parse_src(ndf_path)
+        mod_division_rules = mod_division_multi_rule_names()
         
-        # Track veterancy levels for each unit across all divisions
+        # Track veterancy levels for each unit across mod divisions
         unit_veterancy_map: Dict[str, set] = {}
         
         for deck_descr in parse_source:
             if not hasattr(deck_descr, "n"):
                 continue
             
-            # Only process entries ending in multi_Rule
-            if not deck_descr.n.endswith("multi_Rule"):
+            # Only process mod multiplayer division rules
+            if deck_descr.n not in mod_division_rules:
                 continue
             
             unit_rule_list = deck_descr.v.by_m("UnitRuleList", None)

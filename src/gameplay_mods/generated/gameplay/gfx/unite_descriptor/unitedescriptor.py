@@ -25,6 +25,7 @@ from .handlers.thelicoptermovement import (
     apply_helicopter_movement_pattern_standard_for_unit,
 )
 from .handlers.tweapondeployment import apply_artillery_deployment_pattern_standard
+from .handlers.shock_no_resolute_specialty import apply_shock_no_resolute_specialty_pattern_standard
 
 logger = setup_logger(__name__)
 
@@ -52,6 +53,8 @@ def edit_gen_gp_gfx_unitedescriptor(source_path, game_db) -> None:
 
     unit_edits_dic_entries = []
     _handle_unit_edits(source_path, game_db, unit_edits, unit_edits_dic_entries)
+
+    apply_shock_no_resolute_specialty_pattern_standard(logger, source_path, game_db)
 
     merged_dic_entries = unit_edits_dic_entries + new_units_dic_entries
     write_dictionary_entries(merged_dic_entries, dictionary_type="units")

@@ -126,6 +126,8 @@ class DPMVisualizerApp:
     
     def setup_ui(self):
         """Set up the tabbed interface."""
+        self._setup_menu()
+
         # Top frame for mod path selection (shared across tabs)
         top_frame = ttk.Frame(self.root, padding="10")
         top_frame.pack(fill=tk.X)
@@ -215,6 +217,108 @@ class DPMVisualizerApp:
         
         # Update scroll region after tabs are initialized
         self.root.after_idle(self.update_scroll_region)
+
+    def _setup_menu(self):
+        """Create application menu bar."""
+        menubar = tk.Menu(self.root)
+        self.root.config(menu=menubar)
+
+        data_menu = tk.Menu(menubar, tearoff=0)
+        menubar.add_cascade(label="Data", menu=data_menu)
+        data_menu.add_command(
+            label="Wipe All Custom Units...",
+            command=self.wipe_all_custom_units,
+        )
+        data_menu.add_command(
+            label="Wipe All Custom Weapons...",
+            command=self.wipe_all_custom_weapons,
+        )
+    
+    def wipe_all_custom_units(self):
+        """Remove every custom unit from the current profile."""
+        custom_unit_names = [
+            name for name, info in self.infantry_units.items()
+            if info.get("custom_unit", False)
+        ]
+        if not custom_unit_names:
+            messagebox.showinfo(
+                "Wipe Custom Units",
+                "There are no custom units in the current profile.",
+            )
+            return
+
+        count = len(custom_unit_names)
+        if not messagebox.askyesno(
+            "Wipe All Custom Units",
+            f"Delete all {count} custom unit(s) from profile '{self.current_profile}'?\n\n"
+            "This cannot be undone.",
+        ):
+            return
+
+        removed = set(custom_unit_names)
+        for unit_name in custom_unit_names:
+            del self.infantry_units[unit_name]
+
+        self._pending_custom_units = {}
+        if self.current_profile in self.profiles:
+            self.profiles[self.current_profile]["custom_units"] = {}
+
+        if hasattr(self, "infantry_tab"):
+            self.infantry_tab.unit_display_names = sorted(self.infantry_units.keys())
+            for dropdown in self.infantry_tab.unit_dropdowns:
+                if hasattr(dropdown, "set_values"):
+                    dropdown.set_values(self.infantry_tab.unit_display_names)
+                current = dropdown.get() if hasattr(dropdown, "get") else ""
+                if current in removed:
+                    dropdown.set("")
+            if hasattr(self.infantry_tab, "load_unit_combo"):
+                self.infantry_tab.load_unit_combo.set_values(self.infantry_tab.unit_display_names)
+
+        self.save_user_data()
+        messagebox.showinfo("Wipe Custom Units", f"Removed {count} custom unit(s).")
+
+    def wipe_all_custom_weapons(self):
+        """Remove every custom weapon from the current profile."""
+        if not self.custom_weapons:
+            messagebox.showinfo(
+                "Wipe Custom Weapons",
+                "There are no custom weapons in the current profile.",
+            )
+            return
+
+        count = len(self.custom_weapons)
+        if not messagebox.askyesno(
+            "Wipe All Custom Weapons",
+            f"Delete all {count} custom weapon(s) from profile '{self.current_profile}'?\n\n"
+            "This cannot be undone.",
+        ):
+            return
+
+        removed = set(self.custom_weapons.keys())
+        self.custom_weapons = {}
+        if self.current_profile in self.profiles:
+            self.profiles[self.current_profile]["custom_weapons"] = {}
+
+        if hasattr(self, "weapons_tab") and hasattr(self.weapons_tab, "_refresh_weapon_lists"):
+            self.weapons_tab._refresh_weapon_lists()
+            if hasattr(self.weapons_tab, "custom_weapon_name_var"):
+                if self.weapons_tab.custom_weapon_name_var.get().strip() in removed:
+                    self.weapons_tab.custom_weapon_name_var.set("")
+            if hasattr(self.weapons_tab, "load_weapon_combo"):
+                current = self.weapons_tab.load_weapon_combo.get()
+                if current in removed:
+                    self.weapons_tab.load_weapon_combo.set("")
+
+        if hasattr(self, "infantry_tab") and hasattr(self.infantry_tab, "update_custom_weapon_dropdowns"):
+            self.infantry_tab.update_custom_weapon_dropdowns()
+            if hasattr(self.infantry_tab, "custom_weapon_combos"):
+                for combo in self.infantry_tab.custom_weapon_combos:
+                    current = combo.get() if hasattr(combo, "get") else ""
+                    if current in removed:
+                        combo.set("")
+
+        self.save_user_data()
+        messagebox.showinfo("Wipe Custom Weapons", f"Removed {count} custom weapon(s).")
     
     def update_scroll_region(self):
         """Update the scroll region of the main canvas."""

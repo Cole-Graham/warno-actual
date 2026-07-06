@@ -667,7 +667,7 @@ rfa_unit_edits = {
         "max_speed": 26,
         "availability": [8, 0, 0, 0],
         "capacities": {
-            "add_capacities": ["reserviste", "Choc", "Choc_feedback"],
+            "add_capacities": ["reserviste", "Choc", "Choc_feedback", "Choc_inrange", "Choc_inrange_feedback"],
         },
         "SpecialtiesList": {
             "add_specs": [
@@ -1991,10 +1991,7 @@ rfa_unit_edits = {
         },
         "max_speed": 26,
         "SpecialtiesList": {
-            "add_specs": ["'_choc'", "'infantry_equip_light'", "'_swift'"],
-        },
-        "capacities": {
-            "add_capacities": ["Choc", "Choc_feedback"],
+            "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
         "UpgradeFromUnit": "BGS_RFA",
     },

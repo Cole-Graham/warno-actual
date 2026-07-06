@@ -104,6 +104,13 @@ Some HOBS missiles require a helmet-mounted display (`_hmd`) for full off-boresi
 - **Handler:** [`weapon_descriptor/handlers/hobs_no_hmd.py`](src/gameplay_mods/generated/gameplay/gfx/weapon_descriptor/handlers/hobs_no_hmd.py).
 - **Ordering:** `apply_hobs_no_hmd_pattern_standard` runs on vanilla `WeaponDescriptor.ndf` rows **after** `vanilla_renames_weapondescriptor`, **before** `new_units_weapondescriptor` and `unit_edits_weapondescriptor`, so per-unit dict edits override. **New units** are not scanned here; set turret angles and ammo in `NEW_UNITS["WeaponDescriptor"]` instead. TBAGRU HAGRU attachment in `unit_edits_weapondescriptor` still runs afterward and can add `*_NoOBS_HAGRU` clones on existing units.
 
+### Shock no-resolute specialty (unit descriptors)
+
+Shock units receive `Capacite_resolute` via the Choc skill auto-add in `tcapacite.py`. They must **not** also carry the `_resolute` specialty tag, or the UI implies a stacked resolute bonus.
+
+- **Handler:** [`unite_descriptor/handlers/shock_no_resolute_specialty.py`](src/gameplay_mods/generated/gameplay/gfx/unite_descriptor/handlers/shock_no_resolute_specialty.py).
+- **Ordering:** `apply_shock_no_resolute_specialty_pattern_standard` runs **after** `unit_edits` and `new_units` so `SpecialtiesList` patches are applied first, then `_resolute` is stripped when the unit has the Choc skill or `_choc` specialty. `Capacite_resolute` from tcapacite is unchanged.
+
 ### Artillery deployment time
 
 Howitzers, MLRS, and mortars get deployment time via category + unit pattern standards (most units no longer need manual `"WeaponDeployment"` in `unit_edits`).

@@ -1272,7 +1272,7 @@ rda_unit_edits = {
         "GameName": {
             "display": "FALLSCHIRMJÄGER (s.MG)",
         },
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "strength": 9,
         "availability": [0, 0, 4, 3],
@@ -1295,15 +1295,15 @@ rda_unit_edits = {
 
     "Fallschirmjager_Metys_DDR": {
         "GameName": {
-            "display": "FALLSCHIRMJÄGER (Metis)",
+            "display": "FALLSCHIRMJÄGER [METIS]",
         },
         "CommandPoints": 60,
         "armor": "Infantry_armor_reference",
         "strength": 9,
         "availability": [0, 0, 4, 3],
-        "max_speed": 26,
+        "max_speed": 20,
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_medium'"],
+            "add_specs": ["'infantry_equip_heavy'"],
         },
         "WeaponDescriptor": {
              "equipmentchanges": {
@@ -2323,7 +2323,7 @@ rda_unit_edits = {
     },
 
     "BMP_1_SP2_DDR": { # (Malyutka, resolute, smoke)
-        "CommandPoints": 30,
+        "CommandPoints": 25,
     },
 
     "BMP_1P_DDR": { # BMP-1P(C) (Faktoriya, resolute, smoke)
@@ -2341,7 +2341,7 @@ rda_unit_edits = {
     },
     
     "BMP_2_DDR": {
-        "CommandPoints": 55,
+        "CommandPoints": "BMP_2_SOV",
     },
 
     "BTR_60PA_Reserve_DDR": {

@@ -1747,7 +1747,7 @@ sov_unit_edits = {
 
     "MotRifles_HMG_TTsko_SOV": {  # Pulemetchiki
         "armor": "Infantry_armor_reference",
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "strength": 8,
         "Divisions": {
             "default": {
@@ -1894,7 +1894,7 @@ sov_unit_edits = {
     },
 
     "Spetsnaz_Vympel_SOV": {  # Spetsgruppa Vympel
-        "CommandPoints": 75,
+        "CommandPoints": 70,
         "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
@@ -3745,11 +3745,11 @@ sov_unit_edits = {
     },
 
     "BMP_1_SP2_SOV": { # (Malyutka, no smoke)
-        "CommandPoints": 25,
+        "CommandPoints": 20,
     },
 
     "BMP_1P_SOV": { # (Faktoriya, smoke)
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "GameName": {
             "display": "BMP-1P [FAKTORIYA]",
         },
@@ -3761,11 +3761,11 @@ sov_unit_edits = {
     },
     
     "BMP_1PG_SOV": { # (Faktoriya, AGS-17, no smoke)
-        "CommandPoints": 40,
+        "CommandPoints": 35,
     },
     
     "BMP_1P_Konkurs_SOV": { # (Konkurs, Faktoriya, smoke)
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "WeaponDescriptor": {
             "Salves": {
                 "ATGM_9M113_Konkurs_BMP2": 6,
@@ -3779,6 +3779,11 @@ sov_unit_edits = {
     
     "BMD_1P_SOV": {
         "CommandPoints": 30,
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_9K111M_Faktoriya_IFV": 5,
+            },
+        },
     },
 
     "BMD_2_SOV": {
@@ -3790,15 +3795,15 @@ sov_unit_edits = {
     },
 
     "BMP_2_SOV": {
-        "CommandPoints": 55,
+        "CommandPoints": 50,
     },
 
     "BMP_2D_SOV": {
-        "CommandPoints": 55,
+        "CommandPoints": 50,
     },
 
     "BMP_2AG_SOV": {
-        "CommandPoints": 60,
+        "CommandPoints": 55,
     },
 
     "BMP_3_SOV": {

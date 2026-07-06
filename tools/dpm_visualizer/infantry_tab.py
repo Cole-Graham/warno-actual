@@ -180,36 +180,38 @@ class InfantryTab:
         self.unit_canvas = unit_canvas  # Store reference to canvas
         self.update_unit_scrollregion = update_scrollregion
         
-        # Add/Remove unit buttons and normalization checkbox
-        unit_button_frame = ttk.Frame(unit_section)
-        unit_button_frame.pack(fill=tk.X, pady=(5, 0))
+        # Add/Remove unit buttons and chart options (multi-row — left panel is fixed width)
+        unit_controls_frame = ttk.Frame(unit_section)
+        unit_controls_frame.pack(fill=tk.X, pady=(5, 0))
+
+        unit_button_frame = ttk.Frame(unit_controls_frame)
+        unit_button_frame.pack(fill=tk.X, pady=(0, 2))
         ttk.Button(unit_button_frame, text="+ Add Unit", command=self.add_unit_dropdown).pack(side=tk.LEFT, padx=2)
         ttk.Button(unit_button_frame, text="- Remove", command=self.remove_unit_dropdown).pack(side=tk.LEFT, padx=2)
-        
-        # Normalize by price checkbox
+
+        chart_options_frame = ttk.Frame(unit_controls_frame)
+        chart_options_frame.pack(fill=tk.X, pady=2)
         self.normalize_by_price_var = tk.BooleanVar(value=False)
         self.log_scale_dpm_var = tk.BooleanVar(value=False)
-        normalize_checkbox = ttk.Checkbutton(
-            unit_button_frame,
+        ttk.Checkbutton(
+            chart_options_frame,
             text="Normalize by Price",
             variable=self.normalize_by_price_var,
-            command=lambda: [self.generate_chart(), self.app.auto_save_state()]
-        )
-        normalize_checkbox.pack(side=tk.LEFT, padx=(10, 2))
-
-        log_scale_checkbox = ttk.Checkbutton(
-            unit_button_frame,
+            command=lambda: [self.generate_chart(), self.app.auto_save_state()],
+        ).pack(side=tk.LEFT, padx=(2, 10))
+        ttk.Checkbutton(
+            chart_options_frame,
             text="Log DPM scale",
             variable=self.log_scale_dpm_var,
             command=lambda: [self.generate_chart(), self.app.auto_save_state()],
-        )
-        log_scale_checkbox.pack(side=tk.LEFT, padx=(10, 2))
-        
-        # Damage type dropdown
-        ttk.Label(unit_button_frame, text="DPM:").pack(side=tk.LEFT, padx=(10, 2))
+        ).pack(side=tk.LEFT, padx=(0, 10))
+
+        damage_type_frame = ttk.Frame(unit_controls_frame)
+        damage_type_frame.pack(fill=tk.X, pady=2)
+        ttk.Label(damage_type_frame, text="DPM:").pack(side=tk.LEFT, padx=(2, 5))
         self.damage_type_var = tk.StringVar(value="Physical")
         damage_type_combo = ttk.Combobox(
-            unit_button_frame,
+            damage_type_frame,
             textvariable=self.damage_type_var,
             values=["Physical", "Suppression"],
             state="readonly",

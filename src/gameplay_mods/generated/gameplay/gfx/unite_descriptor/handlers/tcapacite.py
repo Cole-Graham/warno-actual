@@ -6,6 +6,8 @@ from src.utils.ndf_utils import strip_quotes
 _CHOC_RELATED_CAPACITIES = (
     "Choc",
     "Choc_feedback",
+    "Choc_inrange",
+    "Choc_inrange_feedback",
     "Choc_Move",
     "Choc_Move_ok",
     "no_Choc_Move",
@@ -28,6 +30,25 @@ def _specialties_from_edits(edit_type, edits) -> list[str]:
         else:
             raw = specialties_edits.get("add_specs", [])
     return [_normalize_specialty_tag(spec) for spec in raw]
+
+
+def _unit_has_specialty(unit_data, edit_type, edits, specialty: str) -> bool:
+    spec = strip_quotes(specialty)
+    if unit_data is not None and spec in unit_data.get("specialties", []):
+        return True
+    return _normalize_specialty_tag(spec) in _specialties_from_edits(edit_type, edits)
+
+
+def _resolve_medium_equip_penalty_capacity(capacity: str, unit_data, edit_type, edits) -> str:
+    is_standard = capacity in (
+        "Medium_Equip_Penalty",
+        "$/GFX/EffectCapacity/Capacite_Medium_Equip_Penalty",
+    )
+    if not is_standard or not _unit_has_specialty(unit_data, edit_type, edits, "_sf"):
+        return capacity
+    if capacity.startswith("$/GFX/EffectCapacity/Capacite_"):
+        return "$/GFX/EffectCapacity/Capacite_Medium_Equip_Penalty_SF"
+    return "Medium_Equip_Penalty_SF"
 
 
 def _capacities_to_remove(edits) -> set[str]:
@@ -98,6 +119,9 @@ def _add_capacite_module(
         "skills": {
             "Choc": [
                 "Sprint",
+                "Choc_inrange",
+                "Choc_inrange_feedback",
+                "resolute",
             ],
         },
         "specialties": {
@@ -140,6 +164,9 @@ def _add_capacite_module(
                 
                 # If so, add relevant capacities
                 for capacity in capacities:
+                    capacity = _resolve_medium_equip_penalty_capacity(
+                        capacity, unit_data, edit_type, edits,
+                    )
                     # This will resolve to True if 'capacity' is already in the 'capacities_to_add' list, otherwise False.
                     duplicate_safety = capacity in capacities_to_add
                     if not duplicate_safety:
@@ -168,6 +195,9 @@ def _add_capacities(logger, unit_data, edit_type, unit_name, edits, default_skil
         "skills": {
             "Choc": [
                 "$/GFX/EffectCapacity/Capacite_Sprint",
+                "$/GFX/EffectCapacity/Capacite_Choc_inrange",
+                "$/GFX/EffectCapacity/Capacite_Choc_inrange_feedback",
+                "$/GFX/EffectCapacity/Capacite_resolute",
             ],
         },
         "specialties": {
@@ -218,6 +248,9 @@ def _add_capacities(logger, unit_data, edit_type, unit_name, edits, default_skil
                 
                 # If so, add relevant capacities
                 for capacity in capacities:
+                    capacity = _resolve_medium_equip_penalty_capacity(
+                        capacity, unit_data, edit_type, edits,
+                    )
                     duplicate_safety = default_skill_list.v.find_by_cond(
                         lambda x: x.v == capacity, strict=False
                     )
