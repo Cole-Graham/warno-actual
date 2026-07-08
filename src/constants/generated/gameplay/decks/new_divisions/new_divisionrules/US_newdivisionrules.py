@@ -25,7 +25,6 @@ US_airborne_newdivisionrules = {
         ("Airborne_Engineer_CMD_US", 1, [0, 0, 4, 3], ["M1038_Humvee_US"]),
         ("AeroEngineer_CMD_US", 1, [0, 0, 4, 3], ["M1038_Humvee_US", "CH47_Chinook_US"]),
         ("AeroRifles_CMD_US", 1, [0, 0, 5, 4], ["M1038_Humvee_US", "UH60A_Black_Hawk_US", "CH47_Chinook_US"]),
-        ("Navy_SEAL_US", 1, [0, 0, 0, 3], ["M35_trans_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US"]),
         ("GreenBerets_ODA_US", 1, [0, 0, 0, 3], ["MH47D_Super_Chinook_US"]),
         ("GreenBerets_US", 1, [0, 0, 6, 4], ["M998_Humvee_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US"]),
         ("Airborne_Engineers_US", 3, [0, 6, 4, 0], ["M1038_Humvee_US"]),
@@ -516,7 +515,6 @@ US_motorized_newdivisionrules = {
         ("Engineer_CMD_US", 1, [0, 0, 4, 3], ["M35_trans_US"]),
         ("Rifles_half_CMD_US", 1, [0, 0, 7, 5], ["M998_Humvee_US", "CUCV_HMG_US", "CUCV_AGL_US", "UH1H_Huey_US", "UH60A_Black_Hawk_US"]),
         ("MP_CMD_US", 1, [0, 0, 5, 4], ["M35_trans_US"]),
-        ("Navy_SEAL_US", 1, [0, 0, 0, 3], ["M35_trans_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US", "UH60A_Black_Hawk_US"]), # I'd like to cut this so it unique for Marine
         ("Ranger_US", 1, [0, 0, 4, 3], ["M1038_Humvee_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US", "UH1H_Huey_US", "UH60A_Black_Hawk_US"]),
         ("Ranger_Dragon_US", 1, [0, 0, 4, 3], ["M1038_Humvee_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US", "UH1H_Huey_US", "UH60A_Black_Hawk_US"]),
         ("Engineers_US", 1, [0, 6, 4, 0], ["M35_trans_US"]),

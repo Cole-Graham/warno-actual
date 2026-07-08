@@ -5,11 +5,13 @@ from src.constants.effects.veterancy import (
     ELITE_HELO_SF_GUID,
     HELO_ATTACK_EFFECT_GUIDS,
     MULTIPLICATIVE_INFANTRY_GUIDS,
+    PACK_TYPES_VANILLA_LOCALIZATION,
     POST_PATCH_OVERRIDES,
     VETERANCY_BONUSES,
     VETERANCY_EFFECT_CHANGES,
     VETERANCY_HELO_ATTACK_EFFECT_CHANGES,
     VETERANCY_RUNTIME_EFFECT_CHANGES,
+    VETERANCY_SF_MULTIPLICATIVE_EFFECT_CHANGES,
 )
 from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.ndf_utils import find_obj_by_type, strip_quotes
@@ -139,6 +141,8 @@ def edit_gen_gp_effects_effetssurunite(source_path) -> None:
     # Write experience hint texts to dictionary file.
     entries: List[Tuple[str, str]] = []
     for xp_type, data in VETERANCY_BONUSES.items():
+        if xp_type in PACK_TYPES_VANILLA_LOCALIZATION:
+            continue
         for xp_level, xp_data in data.items():
             body_token = xp_data["body_token"]
             body = xp_data["body"]
@@ -289,7 +293,9 @@ def _edit_veterancy_effects(source_path) -> None:
     _apply_vet_effect_changes(source_path, VETERANCY_EFFECT_CHANGES)
     _add_helo_attack_xp_effects(source_path)
     _apply_vet_effect_changes(source_path, VETERANCY_HELO_ATTACK_EFFECT_CHANGES)
-    _add_multiplicative_infantry_xp(source_path)
+    _clone_multiplicative_infantry_xp(source_path)
+    _apply_vet_effect_changes(source_path, VETERANCY_SF_MULTIPLICATIVE_EFFECT_CHANGES)
+    _convert_multiplicative_infantry_precision(source_path)
     _apply_post_patch_overrides(source_path)
     _mirror_avion_suppress_resist_as_stun_resist(source_path)
 
@@ -477,9 +483,9 @@ def _mirror_avion_suppress_resist_as_stun_resist(source_path) -> None:
                 f"(ModifierType={modifier_type}, BonusDamage={bonus_damage})"
             )
 
-def _add_multiplicative_infantry_xp(source_path) -> None:
+def _clone_multiplicative_infantry_xp(source_path) -> None:
     """GameData/Generated/Gameplay/Effects/EffetsSurUnite.ndf"""
-    logger.info("Adding multiplicative infantry XP effects")
+    logger.info("Cloning multiplicative infantry XP effects")
 
     for namespace, guid in MULTIPLICATIVE_INFANTRY_GUIDS.items():
         new_effect = source_path.by_n(f"UnitEffect_{namespace}").copy()
@@ -487,26 +493,42 @@ def _add_multiplicative_infantry_xp(source_path) -> None:
         current_debug_name = strip_quotes(new_effect.v.by_m("NameForDebug").v)
         new_effect.v.by_m("NameForDebug").v = f"'{current_debug_name}_multiplicative'"
         new_effect.v.by_m("DescriptorId").v = f"GUID:{{{guid}}}"
-        effects_list = new_effect.v.by_m("EffectsDescriptors")
-        weapon_precision = find_obj_by_type(effects_list.v, "TUnitEffectIncreaseWeaponPrecisionArretDescriptor")
-        if weapon_precision:
-            weapon_precision.v.by_m("ModifierType").v = "~/ModifierType_Multiplicatif"
-            weapon_precision.v.by_m("ModifierValue").v = str(
-                float(weapon_precision.v.by_m("ModifierValue").v) / 100.0 + 1.0)
-        weapon_precision = find_obj_by_type(effects_list.v, "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor")
-        if weapon_precision:
-            weapon_precision.v.by_m("ModifierType").v = "~/ModifierType_Multiplicatif"
-            weapon_precision.v.by_m("ModifierValue").v = str(
-                float(weapon_precision.v.by_m("ModifierValue").v) / 100.0 + 1.0)
         source_path.add(new_effect)
         logger.info(f"Added new effect: {new_effect.namespace}")
-        
+
     xp_elite_helo_sf = source_path.by_n("UnitEffect_xp_elite_helo").copy()
     xp_elite_helo_sf.namespace = "UnitEffect_xp_elite_helo_SF"
     xp_elite_helo_sf.v.by_m("DescriptorId").v = f"GUID:{{{ELITE_HELO_SF_GUID}}}"
     xp_elite_helo_sf.v.by_m("NameForDebug").v = "'UnitEffect_xp_elite_helo_SF'"
     source_path.add(xp_elite_helo_sf)
     _apply_vet_effect_changes(source_path, VETERANCY_RUNTIME_EFFECT_CHANGES)
+
+
+def _convert_multiplicative_infantry_precision(source_path) -> None:
+    """Convert additive weapon precision on multiplicative infantry XP packs."""
+    logger.info("Converting multiplicative infantry XP precision modifiers")
+
+    for namespace in MULTIPLICATIVE_INFANTRY_GUIDS:
+        row = source_path.by_n(f"UnitEffect_{namespace}_multiplicative")
+        effects_list = row.v.by_m("EffectsDescriptors")
+        weapon_precision = find_obj_by_type(
+            effects_list.v,
+            "TUnitEffectIncreaseWeaponPrecisionArretDescriptor",
+        )
+        if weapon_precision:
+            weapon_precision.v.by_m("ModifierType").v = "~/ModifierType_Multiplicatif"
+            weapon_precision.v.by_m("ModifierValue").v = str(
+                float(weapon_precision.v.by_m("ModifierValue").v) / 100.0 + 1.0,
+            )
+        weapon_precision = find_obj_by_type(
+            effects_list.v,
+            "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor",
+        )
+        if weapon_precision:
+            weapon_precision.v.by_m("ModifierType").v = "~/ModifierType_Multiplicatif"
+            weapon_precision.v.by_m("ModifierValue").v = str(
+                float(weapon_precision.v.by_m("ModifierValue").v) / 100.0 + 1.0,
+            )
 
 def _edit_airunit_effects(source_path) -> None:
     """GameData/Generated/Gameplay/Effects/EffetsSurUnite.ndf"""

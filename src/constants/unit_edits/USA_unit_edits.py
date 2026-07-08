@@ -4913,7 +4913,7 @@ usa_unit_edits = {
     },
     
     "M42_Duster_US": {
-        "CommandPoints": 50,
+        "CommandPoints": 60,
         "availability": [10, 0, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
@@ -4924,7 +4924,7 @@ usa_unit_edits = {
     },
 
     "M163_CS_US": {
-        "CommandPoints": 40,
+        "CommandPoints": 50,
         "availability": [8, 6, 0, 0],
         "UpgradeFromUnit": "M42_Duster_US",
         "WeaponDescriptor": {
@@ -5714,7 +5714,7 @@ usa_unit_edits = {
     },
     
     "EA6B_Prowler_US": {
-        "CommandPoints": 280,
+        "CommandPoints": 300,
         "ECM": -0.60,
         "optics": {
             "VisionRangesGRU": {
@@ -6111,7 +6111,7 @@ usa_unit_edits = {
     },
 
     "EF111_Raven_US": { # EW
-        "CommandPoints": 180,
+        "CommandPoints": 200,
         "max_speed": 1400,
         "optics": {
             "VisionRangesGRU": {

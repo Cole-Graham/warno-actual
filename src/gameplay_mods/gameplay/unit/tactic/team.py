@@ -61,7 +61,7 @@ def _handle_team_airport_module(team_airport_module) -> None:
 
     """ For ammo we just use 1:1 with wargame, because I feel like fighters or 
     bombers that are undamaged after a mission are often so because they are
-    being used conservatively and/or defensively. """
+    being used conservatively and/or defensively. There are exceptions like PGB bombers..."""
     
     """ Wargame's airport ammo resupply rate is 35 per second, but the supply costs
     are also much higher. e.g. 1 Kh-58U SEAD missile costs 3250 supply in Wargame. """

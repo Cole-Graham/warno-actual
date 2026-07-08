@@ -87,7 +87,6 @@ UK_airborne_newdivisionrules = {
         ("Lynx_AH_Mk1_TOW_UK", 1, [0, 6, 4, 0]),
         ("Lynx_AH_Mk7_I_TOW_UK", 3, [0, 4, 3, 0]),
         ("Lynx_AH_Mk7_I_TOW2_UK", 2, [0, 4, 3, 0]),
-        ("A109A_RKT_UK", 1, [0, 0, 0, 6]),
     ],
     "planes": [
         ("Harrier_GR5_CLU_UK", 1, [0, 2, 0, 0]),
@@ -436,7 +435,6 @@ UK_motorized_newdivisionrules = {
         ("Lynx_AH_Mk1_TOW_UK", 1, [0, 6, 4, 0]),
         ("Lynx_AH_Mk7_I_TOW_UK", 3, [0, 4, 3, 0]),
         ("Lynx_AH_Mk7_I_TOW2_UK", 2, [0, 4, 3, 0]),
-        ("A109A_RKT_UK", 1, [0, 0, 0, 6]),
     ],
     "planes": [
         ("Harrier_GR5_CLU_UK", 1, [0, 2, 0, 0]),

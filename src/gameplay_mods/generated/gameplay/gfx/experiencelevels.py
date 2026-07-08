@@ -27,10 +27,6 @@ def _edit_veterancy_hints(source_path) -> None:
             "pack_type": "simple_v3",
             "level_format": "simple_v3_{level}",
         },
-        "ExperienceLevelsPackDescriptor_XP_pack_SF_v2": {
-            "pack_type": "SF_v2",
-            "level_format": "SF_v2_{level}",
-        },
         "ExperienceLevelsPackDescriptor_XP_pack_artillery": {
             "pack_type": "artillery",
             "level_format": "artillery_{level}",

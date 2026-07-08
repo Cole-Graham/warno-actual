@@ -565,7 +565,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 50,
             },
             "parent_membr": {
-                "MaximumRangeGRU": 1750,
+                "MaximumRangeGRU": 1575,
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 10.0,
             },
@@ -581,7 +581,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 50,
             },
             "parent_membr": {
-                "MaximumRangeGRU": 1750,
+                "MaximumRangeGRU": 1575,
                 "DisplaySalveAccuracy": False,
                 "SupplyCost": 10.0,
             },

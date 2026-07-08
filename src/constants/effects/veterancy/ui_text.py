@@ -77,6 +77,7 @@ def _body_sf_standard(level: LevelBonuses, level_index: int) -> str:
             "\n#style1{- Reload Time: normal}"
             "\n#style1{- Stress resistance: normal}"
             "\n#style1{- Physical damage resistance: normal}"
+            "\n#style1{- Stun damage resistance: normal}"
             f"\n#style1{{- Stress recovery: {recovery} per second}}"
         )
 
@@ -88,6 +89,7 @@ def _body_sf_standard(level: LevelBonuses, level_index: int) -> str:
     reload = pct_reduction(level.salvo_reload_reduction_pct)  # type: ignore[arg-type]
     stress = pct_bonus(level.stress_resistance_pct)  # type: ignore[arg-type]
     physical = pct_bonus(level.physical_damage_reduction_pct)  # type: ignore[arg-type]
+    stun = pct_bonus(level.stun_damage_reduction_pct)  # type: ignore[arg-type]
     recovery = recovery_colored(level.stress_recovery)  # type: ignore[arg-type]
     return (
         f"#style1{{- Movement speed:}} #{movement_color}{{{speed}}}"
@@ -96,6 +98,7 @@ def _body_sf_standard(level: LevelBonuses, level_index: int) -> str:
         f"\n#style1{{- Reload time:}} #{color}{{{reload}}}"
         f"\n#style1{{- Stress resistance:}} #{color}{{{stress}}}"
         f"\n#style1{{- Physical damage resistance:}} #{color}{{{physical}}}"
+        f"\n#style1{{- Stun damage resistance:}} #{color}{{{stun}}}"
         f"\n#style1{{- Stress recovery:}} #{color}{{{recovery}}} #style1{{per second}}"
     )
 

@@ -7,6 +7,9 @@ from src.constants.effects.veterancy.levels import AVION_VET_REBALANCE_ENABLED
 
 LEVEL_SUFFIXES: tuple[str, ...] = ("rookie", "trained", "veteran", "elite")
 
+# Pack types that keep vanilla HintBodyToken / ingame dictionary text (not mod-overwritten).
+PACK_TYPES_VANILLA_LOCALIZATION = frozenset({"SF_v2"})
+
 EFFECT_PACK_SUFFIX_BY_LEVEL: dict[int, str] = {
     0: "rookie",
     1: "trained",

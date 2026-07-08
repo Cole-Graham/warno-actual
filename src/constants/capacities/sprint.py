@@ -30,7 +30,7 @@ SPRINT_CAPACITY = (
     ')'
 )
 
-# UnitEffect_NoSprint_Morale is activated by DamageLevels (see DamageLevels.py)
+# UnitEffect_NoSprint_Morale: Unit_packStun value 0 (clears at 0.01+ stun); GroundUnits_packSupp 0.6/0.75/0.8
 
 SPRINT_CONDITIONS = [
     (

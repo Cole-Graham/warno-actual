@@ -737,8 +737,10 @@ def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
                     unit_info["experience_levels_pack"] = pack_name
                     
                     # Also determine pack type from name for backwards compatibility
-                    if "SF_v2" in pack_name or "_sf" in pack_name.lower():
-                        unit_info["veterancy_pack"] = "SF_v2"
+                    if "simple_v3_multiplicative" in pack_name:
+                        unit_info["veterancy_pack"] = "simple_v3_multiplicative"
+                    elif "SF_v2_multiplicative" in pack_name:
+                        unit_info["veterancy_pack"] = "SF_v2_multiplicative"
                     elif "artillery" in pack_name.lower():
                         unit_info["veterancy_pack"] = "artillery"
                     elif "helico_attack" in pack_name.lower():
@@ -747,6 +749,8 @@ def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
                         unit_info["veterancy_pack"] = "helico"
                     elif "avion" in pack_name.lower():
                         unit_info["veterancy_pack"] = "avion"
+                    elif "SF_v2" in pack_name:
+                        unit_info["veterancy_pack"] = "SF_v2"
                     else:
                         unit_info["veterancy_pack"] = "simple_v3"
             
@@ -795,9 +799,15 @@ def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
         # Determine veterancy pack from tags if not found in module
         if unit_info["veterancy_pack"] == "simple_v3":
             tags = unit_info.get("tags", [])
-            # Check if unit has SF tags
             if any("_sf" in tag.lower() or "sf" in tag.lower() for tag in tags):
-                unit_info["veterancy_pack"] = "SF_v2"
+                is_infantry_sf = (
+                    "Infanterie" in tags
+                    and "Infanterie_AA" not in tags
+                    and "Infanterie_AT" not in tags
+                )
+                unit_info["veterancy_pack"] = (
+                    "SF_v2_multiplicative" if is_infantry_sf else "SF_v2"
+                )
         
         # Set available veterancy levels based on pack type
         # All infantry packs have 4 levels (0-3)

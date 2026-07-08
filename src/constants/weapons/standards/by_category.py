@@ -93,7 +93,7 @@ DCA_STANDARDS: dict = {
         "DistanceToTarget": False,
     },
     "experience_unit": {
-        "ExperienceMultiplierBonusOnKill": 0.01,
+        "ExperienceMultiplierBonusOnKill": 0.0,
     },
 }
 

@@ -60,6 +60,7 @@ SIMPLE_V3_MULTIPLICATIVE_LEVELS: tuple[LevelBonuses, ...] = tuple(
     )
 )
 
+# Mod-intended SF bonuses; applied only to SF_v2_multiplicative (vanilla XP_pack_SF_v2 is unpatched).
 SF_V2_LEVELS: tuple[LevelBonuses, ...] = (
     LevelBonuses(
         body_token="FSDWIVSTQO",
@@ -74,8 +75,9 @@ SF_V2_LEVELS: tuple[LevelBonuses, ...] = (
         accuracy_pct=20,
         aim_time_reduction_pct=30,
         salvo_reload_reduction_pct=30,
-        stress_resistance_pct=30,
+        stress_resistance_pct=10,
         physical_damage_reduction_pct=30,
+        stun_damage_reduction_pct=20,
     ),
     LevelBonuses(
         body_token="JHQIIEVPZF",
@@ -85,8 +87,9 @@ SF_V2_LEVELS: tuple[LevelBonuses, ...] = (
         accuracy_pct=30,
         aim_time_reduction_pct=40,
         salvo_reload_reduction_pct=40,
-        stress_resistance_pct=40,
+        stress_resistance_pct=20,
         physical_damage_reduction_pct=30,
+        stun_damage_reduction_pct=30,
     ),
     LevelBonuses(
         body_token="ZIUCSNONPU",
@@ -96,8 +99,9 @@ SF_V2_LEVELS: tuple[LevelBonuses, ...] = (
         accuracy_pct=40,
         aim_time_reduction_pct=50,
         salvo_reload_reduction_pct=50,
-        stress_resistance_pct=50,
+        stress_resistance_pct=30,
         physical_damage_reduction_pct=30,
+        stun_damage_reduction_pct=40,
     ),
 )
 
@@ -112,6 +116,7 @@ SF_V2_MULTIPLICATIVE_LEVELS: tuple[LevelBonuses, ...] = tuple(
         salvo_reload_reduction_pct=level.salvo_reload_reduction_pct,
         stress_resistance_pct=level.stress_resistance_pct,
         physical_damage_reduction_pct=level.physical_damage_reduction_pct,
+        stun_damage_reduction_pct=level.stun_damage_reduction_pct,
     )
     for level, (token, key) in zip(
         SF_V2_LEVELS,

@@ -941,7 +941,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     },
 
     # M163_CS_US
-    ("Gatling_M61_Vulcan_20mm_noRadar", "autocannon", None, False): { # 319
+    ("Gatling_M61_Vulcan_20mm_noRadar", "DCA", None, False): { # 319
         "Ammunition": {
             "hit_roll": {
                 "Idling": 20,
@@ -951,7 +951,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeHelicopterGRU": 2275,
                 "MaximumRangeAirplaneGRU": 1925,
                 "TimeBetweenTwoShots": 0.2,
-                "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 1.0,
                 "TimeBetweenTwoSalvos": 1.6,
                 "AimingTime": 1.2,
@@ -979,7 +978,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 2100,
                 "TimeBetweenTwoShots": 0.2,
-                "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 1.0,
                 "TimeBetweenTwoSalvos": 1.6,
                 "AimingTime": 1.2,
@@ -1006,7 +1004,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 2100,
                 "TimeBetweenTwoShots": 0.2,
-                "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 1.0,
                 "TimeBetweenTwoSalvos": 1.6,
                 "AimingTime": 1.2,
@@ -1034,7 +1031,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 2100,
                 "TimeBetweenTwoShots": 0.2,
-                "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 1.0,
                 "TimeBetweenTwoSalvos": 1.6,
                 "AimingTime": 1.2,

@@ -1379,7 +1379,7 @@ rda_unit_edits = {
         "GameName": {
             "display": "LUFTSTURM-JÄGER (Metis)",
         },
-        "CommandPoints": 50,
+        "CommandPoints": 55,
         "armor": "Infantry_armor_reference",
         "strength": 9,
         "availability": [0, 0, 4, 3],
@@ -3229,11 +3229,11 @@ rda_unit_edits = {
     },
 
     "ZSU_57_2_DDR": {
-        "CommandPoints": 60,
+        "CommandPoints": 70,
         "availability": [7, 0, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_2_canons_S60_57mm": 1,
+                "DCA_2_canons_S60_57mm": 25,
             },
         },
     },

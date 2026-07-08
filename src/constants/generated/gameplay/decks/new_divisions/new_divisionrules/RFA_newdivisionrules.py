@@ -41,7 +41,7 @@ RFA_airborne_newdivisionrules = {
     "artillery": [
         ("FH70_155mm_RFA", 2, [3, 2, 0, 0], ["MAN_Kat_6x6_trans_RFA"]),
         ("Howz_M56_Pack_FJ_RFA", 2, [0, 4, 3, 0], ["Unimog_trans_RFA"]),
-        ("Howz_M56_Pack_Geb_RFA", 2, [4, 3, 0, 0], ["Unimog_trans_RFA", "CH53G_trans_RFA"]),
+        # ("Howz_M56_Pack_Geb_RFA", 2, [4, 3, 0, 0], ["Unimog_trans_RFA", "CH53G_trans_RFA"]), # redundant
         ("Mortier_Tampella_120mm_para_RFA", 3, [0, 5, 4, 3], ["Unimog_trans_RFA"]),
     ],
     "tank": [

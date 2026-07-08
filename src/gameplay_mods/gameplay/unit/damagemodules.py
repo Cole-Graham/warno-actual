@@ -20,5 +20,6 @@ def edit_gameplay_unit_damagemodules(source_path) -> None:
     source_path.by_n("Airplane_MaxStunDamages").v = "255" # vanilla is 9999
     
     # Helico
-    source_path.by_n("Helico_MaxStunDamages").v = "250" # vanilla is 450
+    source_path.by_n("Helico_MaxStunDamages").v = "100" # vanilla is 450
+    # source_path.by_n("Helico_MaxSuppressionDamages").v = "300" # vanilla is 500
     

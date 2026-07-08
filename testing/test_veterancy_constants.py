@@ -13,6 +13,7 @@ from src.constants.effects.veterancy.effect_packs import (
     EFFECT_PACK_BY_PACK_TYPE,
     HELO_ATTACK_EFFECT_GUIDS,
     MULTIPLICATIVE_INFANTRY_GUIDS,
+    PACK_TYPES_VANILLA_LOCALIZATION,
     POST_PATCH_OVERRIDES,
 )
 from src.constants.effects.veterancy.levels import (
@@ -27,6 +28,7 @@ from src.constants.effects.veterancy import (
     VETERANCY_EFFECT_CHANGES,
     VETERANCY_HELO_ATTACK_EFFECT_CHANGES,
     VETERANCY_RUNTIME_EFFECT_CHANGES,
+    VETERANCY_SF_MULTIPLICATIVE_EFFECT_CHANGES,
 )
 
 
@@ -41,6 +43,7 @@ class TestVeterancyConstants(unittest.TestCase):
         all_keys = (
             list(VETERANCY_EFFECT_CHANGES)
             + list(VETERANCY_HELO_ATTACK_EFFECT_CHANGES)
+            + list(VETERANCY_SF_MULTIPLICATIVE_EFFECT_CHANGES)
             + list(VETERANCY_RUNTIME_EFFECT_CHANGES)
         )
         self.assertEqual(len(all_keys), len(set(all_keys)))
@@ -64,8 +67,8 @@ class TestVeterancyConstants(unittest.TestCase):
         self.assertEqual(len(MULTIPLICATIVE_INFANTRY_GUIDS), 7)
 
     def test_semantic_fields_emit_patches(self) -> None:
-        patchable_pack_types = ("simple_v3", "SF_v2", "artillery", "helico", "avion")
-        for pack_type in patchable_pack_types:
+        main_patchable = ("simple_v3", "artillery", "helico", "avion")
+        for pack_type in main_patchable:
             pack_config = PACK_CONFIGS[pack_type]
             for level_index, level in enumerate(PACK_LEVELS[pack_type]):
                 effect_pack = _effect_pack_for_level(pack_type, level_index, level)
@@ -86,6 +89,28 @@ class TestVeterancyConstants(unittest.TestCase):
                         matched,
                         f"{effect_pack} missing patch for {field_name}",
                     )
+
+        pack_type = "SF_v2_multiplicative"
+        pack_config = PACK_CONFIGS[pack_type]
+        for level_index, level in enumerate(PACK_LEVELS[pack_type]):
+            effect_pack = _effect_pack_for_level(pack_type, level_index, level)
+            if effect_pack is None:
+                continue
+            patches = _level_patches(level, pack_config)
+            if not patches:
+                continue
+            effect_changes = VETERANCY_SF_MULTIPLICATIVE_EFFECT_CHANGES.get(effect_pack, {})
+            for field_name, patch_keys in SEMANTIC_FIELD_TO_PATCH_KEYS.items():
+                if getattr(level, field_name) is None:
+                    continue
+                if field_name == "evasion_pct" and level.add_evasion_descriptor:
+                    self.assertIn("add", effect_changes, f"{effect_pack} missing add evasion")
+                    continue
+                matched = any(key in effect_changes for key in patch_keys)
+                self.assertTrue(
+                    matched,
+                    f"{effect_pack} missing patch for {field_name}",
+                )
 
     def test_stress_recovery_matches_ui(self) -> None:
         for pack_type, levels in PACK_LEVELS.items():
@@ -110,13 +135,48 @@ class TestVeterancyConstants(unittest.TestCase):
         elite = VETERANCY_EFFECT_CHANGES["UnitEffect_xp_elite"]
         self.assertEqual(elite["TUnitEffectHealOverTimeDescriptor"], 5.4)
 
-    def test_sf_trained_matches_legacy_overrides(self) -> None:
-        trained_sf = VETERANCY_EFFECT_CHANGES["UnitEffect_xp_trained_SF"]
+    def test_sf_multiplicative_trained_patches(self) -> None:
+        trained_sf = VETERANCY_SF_MULTIPLICATIVE_EFFECT_CHANGES[
+            "UnitEffect_xp_trained_SF_multiplicative"
+        ]
         self.assertEqual(trained_sf["TUnitEffectHealOverTimeDescriptor"], 6.0)
         self.assertEqual(
             trained_sf["TUnitEffectIncreaseWeaponPrecisionArretDescriptor"],
-            10,
+            20,
         )
+
+    def test_sf_stun_damage_reduction_patches(self) -> None:
+        stun_key = ("TUnitEffectIncreaseDamageTakenDescriptor", "EDamageType/Stun")
+        trained_sf = VETERANCY_SF_MULTIPLICATIVE_EFFECT_CHANGES[
+            "UnitEffect_xp_trained_SF_multiplicative"
+        ]
+        veteran_sf = VETERANCY_SF_MULTIPLICATIVE_EFFECT_CHANGES[
+            "UnitEffect_xp_veteran_SF_multiplicative"
+        ]
+        elite_sf = VETERANCY_SF_MULTIPLICATIVE_EFFECT_CHANGES[
+            "UnitEffect_xp_elite_SF_multiplicative"
+        ]
+        self.assertEqual(trained_sf[stun_key], -20)
+        self.assertEqual(veteran_sf[stun_key], -30)
+        self.assertEqual(elite_sf[stun_key], -40)
+
+    def test_sf_stun_damage_reduction_ui(self) -> None:
+        ui_bodies = build_veterancy_ui_bodies()
+        body = ui_bodies["SF_v2_multiplicative"]["SF_v2_multiplicative_1"]
+        self.assertIn("+20%", body)
+        self.assertIn("Stun damage resistance", body)
+
+    def test_sf_vanilla_packs_not_patched(self) -> None:
+        for effect_pack in (
+            "UnitEffect_xp_trained_SF",
+            "UnitEffect_xp_veteran_SF",
+            "UnitEffect_xp_elite_SF",
+        ):
+            self.assertNotIn(effect_pack, VETERANCY_EFFECT_CHANGES)
+            self.assertNotIn(effect_pack, VETERANCY_SF_MULTIPLICATIVE_EFFECT_CHANGES)
+
+    def test_sf_vanilla_excluded_from_dictionary(self) -> None:
+        self.assertIn("SF_v2", PACK_TYPES_VANILLA_LOCALIZATION)
 
     def test_ui_bodies_cover_all_levels(self) -> None:
         ui_bodies = build_veterancy_ui_bodies()

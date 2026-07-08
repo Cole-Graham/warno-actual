@@ -2542,7 +2542,7 @@ rfa_unit_edits = {
     },
 
     "HFB_320_ECM_RFA": { # EW
-        "CommandPoints": 145,
+        "CommandPoints": 155,
         "ECM": -0.55,
         "optics": {
             "VisionRangesGRU": {

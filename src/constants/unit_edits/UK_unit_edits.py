@@ -2609,7 +2609,7 @@ uk_unit_edits = {
 
     # UK AIR
     "Canberra_T17A_UK": {
-        "CommandPoints": 160,
+        "CommandPoints": 170,
         "availability": [0, 2, 0, 0],
     },
     

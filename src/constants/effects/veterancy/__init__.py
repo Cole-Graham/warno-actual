@@ -4,6 +4,7 @@ from src.constants.effects.veterancy.build import (
     SEMANTIC_FIELD_TO_PATCH_KEYS,
     build_helo_attack_effect_changes,
     build_runtime_effect_changes,
+    build_sf_multiplicative_effect_changes,
     build_veterancy_bonuses,
     build_veterancy_effect_changes,
 )
@@ -12,6 +13,7 @@ from src.constants.effects.veterancy.effect_packs import (
     ELITE_HELO_SF_GUID,
     HELO_ATTACK_EFFECT_GUIDS,
     MULTIPLICATIVE_INFANTRY_GUIDS,
+    PACK_TYPES_VANILLA_LOCALIZATION,
     POST_PATCH_OVERRIDES,
     RUNTIME_CREATED_EFFECT_PACKS,
 )
@@ -20,6 +22,7 @@ from src.constants.effects.veterancy.levels import AVION_VET_REBALANCE_ENABLED, 
 VETERANCY_BONUSES = build_veterancy_bonuses()
 VETERANCY_EFFECT_CHANGES = build_veterancy_effect_changes()
 VETERANCY_HELO_ATTACK_EFFECT_CHANGES = build_helo_attack_effect_changes()
+VETERANCY_SF_MULTIPLICATIVE_EFFECT_CHANGES = build_sf_multiplicative_effect_changes()
 VETERANCY_RUNTIME_EFFECT_CHANGES = build_runtime_effect_changes()
 
 __all__ = [
@@ -30,11 +33,13 @@ __all__ = [
     "MULTIPLICATIVE_INFANTRY_GUIDS",
     "PACK_CONFIGS",
     "PACK_LEVELS",
+    "PACK_TYPES_VANILLA_LOCALIZATION",
     "POST_PATCH_OVERRIDES",
     "RUNTIME_CREATED_EFFECT_PACKS",
     "SEMANTIC_FIELD_TO_PATCH_KEYS",
     "VETERANCY_BONUSES",
     "VETERANCY_EFFECT_CHANGES",
     "VETERANCY_HELO_ATTACK_EFFECT_CHANGES",
+    "VETERANCY_SF_MULTIPLICATIVE_EFFECT_CHANGES",
     "VETERANCY_RUNTIME_EFFECT_CHANGES",
 ]

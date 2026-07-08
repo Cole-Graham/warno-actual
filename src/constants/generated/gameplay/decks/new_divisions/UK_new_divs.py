@@ -38,7 +38,7 @@ uk_new_divs = {
         "transport_overrides": {
             "Rifles_CMD2_UK": ["LandRover_UK", "FV432_UK", "MCV_80_Warrior_UK", "MCV_80_Warrior_MILAN_UK", "Lynx_AH_Mk1_UK", "Westland_Wessex_trans_UK"],
             "Gun_Group_UK": ["LandRover_UK", "FV432_SCAT_UK", "FV432_MILAN_UK", "MCV_80_Warrior_UK", "MCV_80_Warrior_MILAN_UK", "MCV_80_Warrior_MILAN_ERA_UK"],
-            "LRRP_UK": ["LandRover_UK", "LandRover_Yeoman_UK", "Lynx_AH_Mk1_UK", "Lynx_AH_Mk7_SNEB_UK"],
+            "LRRP_UK": ["LandRover_UK", "LandRover_Yeoman_UK", "A109A_RKT_UK", "Lynx_AH_Mk1_UK", "Lynx_AH_Mk7_SNEB_UK"],
         },
     },
     "UK_airborne": {
@@ -51,7 +51,7 @@ uk_new_divs = {
         "summary_text": ("UK airborne division.", "SUMUKAIR"),
         "history_text": ("UK Airborne division.", "HISUKAIR"),
         "activation_points": 100,
-        "standout_units": ["Rifles_Gurkhas_UK", "FV101_Scorpion_para_UK", "A109A_RKT_UK"],
+        "standout_units": ["Rifles_Gurkhas_UK", "FV101_Scorpion_para_UK", "Pathfinders_UK"],
         "division_rules": [
             UK_airborne_newdivisionrules,
             UK_global_newdivisionrules,

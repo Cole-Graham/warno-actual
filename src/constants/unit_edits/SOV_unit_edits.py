@@ -107,7 +107,7 @@ sov_unit_edits = {
         "availability": [0, 4, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'leader_sov'",],
-            "remove_specs": ["'_leader'", '_para'],
+            "remove_specs": ["'_leader'", "'_para'"],
         },
         "ButtonTexture": "LUAZ_967M_SOV",
         "DeploymentShift": 0,
@@ -5294,7 +5294,7 @@ sov_unit_edits = {
     },
     
     "ZSU_23_Shilka_Afghan_SOV": {
-        "CommandPoints": 40,
+        "CommandPoints": 50,
         "availability": [8, 6, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
@@ -6457,7 +6457,7 @@ sov_unit_edits = {
     },
 
     "Su_24MP_EW_SOV": { # EW
-        "CommandPoints": 135,
+        "CommandPoints": 170,
         "ECM": -0.45,
         "Divisions": {
             "default": {
@@ -6869,7 +6869,7 @@ sov_unit_edits = {
     },
     
     "Tu_22_EW_SOV": {
-        "CommandPoints": 145,
+        "CommandPoints": 180,
         "ECM": -0.55,
         "availability": [0, 2, 0, 1],
     },

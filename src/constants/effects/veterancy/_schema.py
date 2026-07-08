@@ -23,6 +23,7 @@ class LevelBonuses:
     precision_moving_pct: int | None = None
     stress_resistance_pct: int | None = None
     physical_damage_reduction_pct: int | None = None
+    stun_damage_reduction_pct: int | None = None
     movement_speed_pct: int | None = None
     evasion_pct: int | None = None
     add_evasion_descriptor: bool = False

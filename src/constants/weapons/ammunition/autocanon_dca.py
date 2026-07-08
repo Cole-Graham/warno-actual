@@ -281,8 +281,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_4_canons_AZP_23_Amur_23mm_PSNR", "DCA", None, False): { # PSNR (only ground radar, i.e. stat clone of afghanskii)
         "Ammunition": {
             "hit_roll": {
-                "Idling": 30,
-                "Moving": 15,
+                "Idling": 20,
+                "Moving": 10,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
@@ -730,10 +730,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeHelicopterGRU": 2625,
                 "MaximumRangeAirplaneGRU": 2275,
                 "PhysicalDamages": 1.0,
-                "ShotsCountPerSalvo": 400,
-                "AffichageMunitionParSalve": 400,
-                "TimeBetweenTwoSalvos": 10.0,
-                "SupplyCost": 400.0,
+                "ShotsCountPerSalvo": 16,
+                "AffichageMunitionParSalve": 16,
+                "TimeBetweenTwoSalvos": 2.6,
+                "SupplyCost": 16.0,
             },
         },
     },

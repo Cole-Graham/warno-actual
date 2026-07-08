@@ -453,7 +453,7 @@ class DPMVisualizerApp:
         try:
             # Serialize the data structures
             cache_data = {
-                "cache_version": "2.4",  # Version 2.4: Added reservist trait support
+                "cache_version": "2.5",  # Version 2.5: SF_v2_multiplicative veterancy_pack label
                 "mod_path": str(self.mod_path),
                 "infantry_units": self._serialize_infantry_units(),
                 "weapon_descriptors": self._serialize_weapon_descriptors(),
@@ -550,8 +550,8 @@ class DPMVisualizerApp:
             
             # Check cache version - invalidate old caches that don't have multiplicative->flat conversion
             cache_version = cache_data.get("cache_version", "1.0")
-            if cache_version < "2.4":
-                print(f"Warning: Cache version {cache_version} is outdated (needs 2.4+). Cache will be regenerated.")
+            if cache_version < "2.5":
+                print(f"Warning: Cache version {cache_version} is outdated (needs 2.5+). Cache will be regenerated.")
                 return False
             
             # Restore mod path

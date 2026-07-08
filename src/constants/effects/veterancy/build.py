@@ -14,6 +14,7 @@ from src.constants.effects.veterancy.ui_text import build_veterancy_ui_bodies
 
 SUPPRESS_DAMAGE_TYPE = "EDamageType/Suppress"
 PHYSICAL_DAMAGE_TYPE = "EDamageType/Physical"
+STUN_DAMAGE_TYPE = "EDamageType/Stun"
 DISPERSION_DESCRIPTOR = "TUnitEffectIncreaseWeaponDispersionMaxRangeDescriptor"
 
 # Effect packs referenced by multiple experience packs — only the owner may patch them.
@@ -77,7 +78,7 @@ def _level_patches(
     precision_moving = level.precision_moving_pct
     if precision_moving is not None:
         patches["TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor"] = precision_moving
-    elif accuracy_pct is not None and pack_config.pack_type == "SF_v2":
+    elif accuracy_pct is not None and pack_config.pack_type == "SF_v2_multiplicative":
         patches["TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor"] = accuracy_pct
     elif accuracy_pct is not None and pack_config.pack_type not in (
         "helico",
@@ -95,6 +96,11 @@ def _level_patches(
     if level.physical_damage_reduction_pct is not None:
         patches[("TUnitEffectIncreaseDamageTakenDescriptor", PHYSICAL_DAMAGE_TYPE)] = (
             -level.physical_damage_reduction_pct
+        )
+
+    if level.stun_damage_reduction_pct is not None:
+        patches[("TUnitEffectIncreaseDamageTakenDescriptor", STUN_DAMAGE_TYPE)] = (
+            -level.stun_damage_reduction_pct
         )
 
     if level.movement_speed_pct is not None:
@@ -138,7 +144,6 @@ def build_veterancy_effect_changes() -> dict[str, dict[Any, Any]]:
 
     patchable_pack_types = (
         "simple_v3",
-        "SF_v2",
         "artillery",
         "helico",
         "avion",
@@ -191,6 +196,31 @@ def build_runtime_effect_changes() -> dict[str, dict[Any, Any]]:
     return changes
 
 
+def build_sf_multiplicative_effect_changes() -> dict[str, dict[Any, Any]]:
+    """Patches for SF multiplicative packs created by cloning vanilla SF effects."""
+    changes: dict[str, dict[Any, Any]] = {}
+    pack_type = "SF_v2_multiplicative"
+    levels = PACK_LEVELS[pack_type]
+    pack_config = PACK_CONFIGS[pack_type]
+    for level_index, level in enumerate(levels):
+        effect_pack = _effect_pack_for_level(pack_type, level_index, level)
+        if effect_pack is None:
+            continue
+        owner = SHARED_EFFECT_PACK_OWNERS.get(effect_pack)
+        if owner is not None and owner != pack_type:
+            continue
+        patches = _level_patches(level, pack_config)
+        if not patches:
+            continue
+        entry = changes.setdefault(effect_pack, {})
+        for key, value in patches.items():
+            if key == "add_evasion":
+                entry["add"] = [("evasion", -level.evasion_pct)]
+            else:
+                entry[key] = value
+    return changes
+
+
 def build_helo_attack_effect_changes() -> dict[str, dict[Any, Any]]:
     """Patches for attack-helo packs created by cloning base helo packs."""
     changes: dict[str, dict[Any, Any]] = {}
@@ -228,6 +258,9 @@ SEMANTIC_FIELD_TO_PATCH_KEYS: dict[str, tuple[Any, ...]] = {
     ),
     "physical_damage_reduction_pct": (
         ("TUnitEffectIncreaseDamageTakenDescriptor", PHYSICAL_DAMAGE_TYPE),
+    ),
+    "stun_damage_reduction_pct": (
+        ("TUnitEffectIncreaseDamageTakenDescriptor", STUN_DAMAGE_TYPE),
     ),
     "movement_speed_pct": ("TUnitEffectIncreaseSpeedDescriptor",),
     "evasion_pct": ("TUnitEffectBonusPrecisionWhenTargetedDescriptor",),

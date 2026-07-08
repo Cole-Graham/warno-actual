@@ -1033,7 +1033,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "SupplyCost": 1.0,
         "NbWeapons": [7, 6, 5, 2, 1],
         "WeaponDescriptor": {
-            "Salves": 11,               
+            "Salves": 14,               
         },
     },
     
@@ -1062,7 +1062,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "SupplyCost": 1.0,
         "NbWeapons": [8, 6, 3, 1],
         "WeaponDescriptor": {
-            "Salves": 11,               
+            "Salves": 14,               
         },
     },
 
@@ -1092,7 +1092,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "NbWeapons": [9, 8, 7, 6, 5, 4, 3, 2],
         "NewTexture": "Commando_733",
         "WeaponDescriptor": {
-            "Salves": 11,               
+            "Salves": 14,               
         },
     },
 
@@ -1124,7 +1124,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "NbWeapons": [7, 6, 5, 4, 3],
         "NewTexture": "M16A1_Carbine",
         "WeaponDescriptor": {
-            "Salves": 11,
+            "Salves": 14,
         },
     },
 
@@ -1156,7 +1156,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "NbWeapons": [11, 9, 8, 7, 6, 5, 4, 3, 2],
         "NewTexture": "M16A1_Carbine",
         "WeaponDescriptor": {
-            "Salves": 11,
+            "Salves": 14,
         },
     },
     
@@ -1185,7 +1185,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "SupplyCost": 1.0,
         "NbWeapons": [6, 5, 2, 1],
         "WeaponDescriptor": {
-            "Salves": 11,               
+            "Salves": 14,               
         },
     },
 
@@ -1243,7 +1243,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "SupplyCost": 1.0,
         "NbWeapons": [10, 8, 6, 5, 4],
         "WeaponDescriptor": {
-            "Salves": 11,               
+            "Salves": 14,               
         },
     },
     
