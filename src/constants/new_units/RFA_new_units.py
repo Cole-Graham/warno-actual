@@ -504,6 +504,7 @@ RFA_NEW_UNITS = {
                 "Vehicule_Transport_Arme"
             ],
         },
+        "strength": 10,
         "WeaponDescriptor": {
             "Salves": {
                 "ATGM_MILAN_2": 5,

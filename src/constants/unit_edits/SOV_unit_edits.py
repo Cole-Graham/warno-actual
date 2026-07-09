@@ -107,7 +107,7 @@ sov_unit_edits = {
         "availability": [0, 4, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'leader_sov'",],
-            "remove_specs": ["'_leader'", '_para'],
+            "remove_specs": ["'_leader'", "'_para'"],
         },
         "ButtonTexture": "LUAZ_967M_SOV",
         "DeploymentShift": 0,
@@ -1747,7 +1747,7 @@ sov_unit_edits = {
 
     "MotRifles_HMG_TTsko_SOV": {  # Pulemetchiki
         "armor": "Infantry_armor_reference",
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "strength": 8,
         "Divisions": {
             "default": {
@@ -1864,7 +1864,7 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_RPO_A_93mm": 6,
+                "RocketInf_RPO_A_93mm": 4,
             },
         },
     },
@@ -1894,7 +1894,7 @@ sov_unit_edits = {
     },
 
     "Spetsnaz_Vympel_SOV": {  # Spetsgruppa Vympel
-        "CommandPoints": 75,
+        "CommandPoints": 70,
         "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
@@ -2828,7 +2828,7 @@ sov_unit_edits = {
     },
     
     "2S5_GiatsintS_SOV": {
-        "CommandPoints": 185,
+        "CommandPoints": 220,
     },
 
     "Howz_MstaB_150mm_SOV": {
@@ -3745,11 +3745,11 @@ sov_unit_edits = {
     },
 
     "BMP_1_SP2_SOV": { # (Malyutka, no smoke)
-        "CommandPoints": 25,
+        "CommandPoints": 20,
     },
 
     "BMP_1P_SOV": { # (Faktoriya, smoke)
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "GameName": {
             "display": "BMP-1P [FAKTORIYA]",
         },
@@ -3761,11 +3761,11 @@ sov_unit_edits = {
     },
     
     "BMP_1PG_SOV": { # (Faktoriya, AGS-17, no smoke)
-        "CommandPoints": 40,
+        "CommandPoints": 35,
     },
     
     "BMP_1P_Konkurs_SOV": { # (Konkurs, Faktoriya, smoke)
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "WeaponDescriptor": {
             "Salves": {
                 "ATGM_9M113_Konkurs_BMP2": 6,
@@ -3779,6 +3779,11 @@ sov_unit_edits = {
     
     "BMD_1P_SOV": {
         "CommandPoints": 30,
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_9K111M_Faktoriya_IFV": 5,
+            },
+        },
     },
 
     "BMD_2_SOV": {
@@ -3790,15 +3795,15 @@ sov_unit_edits = {
     },
 
     "BMP_2_SOV": {
-        "CommandPoints": 55,
+        "CommandPoints": 50,
     },
 
     "BMP_2D_SOV": {
-        "CommandPoints": 55,
+        "CommandPoints": 50,
     },
 
     "BMP_2AG_SOV": {
-        "CommandPoints": 60,
+        "CommandPoints": 55,
     },
 
     "BMP_3_SOV": {
@@ -3910,7 +3915,7 @@ sov_unit_edits = {
     },
     
     "MTLB_Shturm_Ataka_SOV": {
-        "CommandPoints": 160,
+        "CommandPoints": 140,
         "availability": [0, 4, 3, 0],
         "UpgradeFromUnit": "MTLB_Shturm_SOV",
     },
@@ -4883,6 +4888,9 @@ sov_unit_edits = {
     },
 
     "Mi_24K_reco_SOV": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 150,
         "strength": "Mi_24P_SOV",
         "Divisions": {
@@ -5037,10 +5045,11 @@ sov_unit_edits = {
         },
         "availability": [10, 7, 0, 0],
         "max_speed": 6,
-        
+        "strength": 6,
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_1_canon_KS30_130mm_radar": 1,
+                "Canon_HE_KS30_130mm": 1,
             },
             "equipmentchanges": {
                 "replace": {
@@ -5285,7 +5294,7 @@ sov_unit_edits = {
     },
     
     "ZSU_23_Shilka_Afghan_SOV": {
-        "CommandPoints": 40,
+        "CommandPoints": 50,
         "availability": [8, 6, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
@@ -5299,12 +5308,12 @@ sov_unit_edits = {
         "availability": [6, 4, 0, 0],
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 7800,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "SpecialtiesList": {
-            "add_specs": ["'good_airoptics'"],
+            "add_specs": ["'verygood_airoptics'"],
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -5318,12 +5327,12 @@ sov_unit_edits = {
         "availability": [6, 4, 0, 0],
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 7800,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "SpecialtiesList": {
-            "add_specs": ["'good_airoptics'"],
+            "add_specs": ["'verygood_airoptics'"],
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -5337,12 +5346,12 @@ sov_unit_edits = {
         "availability": [6, 4, 0, 0],
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 7800,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "SpecialtiesList": {
-            "add_specs": ["'good_airoptics'"],
+            "add_specs": ["'verygood_airoptics'"],
         },
         "WeaponDescriptor": {
             "Salves": {
@@ -5405,6 +5414,7 @@ sov_unit_edits = {
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "CommandPoints": 130,
+        "strength": 10,
         "availability": [0, 3, 2, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
@@ -5476,6 +5486,7 @@ sov_unit_edits = {
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "CommandPoints": 115,
+        "strength": 10,
         "availability": [4, 3, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
@@ -5495,6 +5506,7 @@ sov_unit_edits = {
                 "cards": 2,
             },
         },
+        "strength": 10,
         "availability": [0, 2, 0, 1],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
@@ -5510,6 +5522,7 @@ sov_unit_edits = {
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
+        "strength": 10,
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
@@ -5525,6 +5538,7 @@ sov_unit_edits = {
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
+        "strength": 6,
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
@@ -5632,16 +5646,25 @@ sov_unit_edits = {
     },
     
     "Mi_24D_Desant_SOV": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 85,
         "strength": "Mi_24P_SOV",
     },
     
     "Mi_24A_SOV": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 100,
         "strength": "Mi_24P_SOV",
     },
 
     "Mi_24V_AA_SOV": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 160,
         "strength": "Mi_24P_SOV",
         "Divisions": {
@@ -5656,6 +5679,9 @@ sov_unit_edits = {
     },
 
     "Mi_24V_RKT_SOV": {  # 4x Kokon, 20x S-13
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 160,
         "strength": "Mi_24P_SOV",
         "Divisions": {
@@ -5670,12 +5696,18 @@ sov_unit_edits = {
     },
 
     "Mi_24V_RKT2_SOV": {  # 4x Kokon, 80x S-8KOM
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 160,
         "strength": "Mi_24P_SOV",
         "availability": [0, 4, 3, 0],
     },
 
     "Mi_24V_AT_SOV": {  # 8x Kokon, 40x S-80
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 160,
         "strength": "Mi_24P_SOV",
         "Divisions": {
@@ -5693,6 +5725,9 @@ sov_unit_edits = {
     },
 
     "Mi_24P_SOV": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "GameName": {
             "display": "Mi-24P [AT]",
         },
@@ -5721,6 +5756,9 @@ sov_unit_edits = {
     },
 
     "Mi_24P_AA_SOV": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "GameName": {
             "display": "Mi-24P [AA]",
         },
@@ -5749,6 +5787,9 @@ sov_unit_edits = {
     },
 
     "Mi_24VP_SOV": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 200,
         "strength": "Mi_24P_SOV",
         "WeaponDescriptor": {
@@ -5767,24 +5808,36 @@ sov_unit_edits = {
     },
     
     "Mi_24P_Atakax4_SOV": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 200,
         "strength": "Mi_24P_SOV",
         "availability": [0, 2, 0, 1],
     },
     
     "Mi_24P_Atakax8_SOV": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 230,
         "strength": "Mi_24P_SOV",
         "availability": [0, 2, 0, 1],
     },
     
     "Ka_29_SOV": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 230,
         "strength": 10,
         "availability": [0, 2, 0, 1],
     },
     
     "Ka_50_SOV": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 230,
         "availability": [0, 2, 0, 1],
         "Divisions": {
@@ -5795,6 +5848,9 @@ sov_unit_edits = {
     },
     
     "Ka_50_AA_SOV": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "availability": [0, 3, 2, 0],
         "Divisions": {
             "default": {
@@ -5923,7 +5979,7 @@ sov_unit_edits = {
     },
     
     "MiG_25BM_SOV": {  # Kh-58U 6300m
-        "CommandPoints": 270,
+        "CommandPoints": 250,
         "AirplaneMovement": {
             "parent_membr": {
                 "AgilityRadiusGRU": 1800,
@@ -5941,7 +5997,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 0: {
-                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMax": 0.9599311,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },
@@ -6035,7 +6091,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 1: {
-                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMax": 0.9599311,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },
@@ -6058,7 +6114,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 1: {
-                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMax": 0.9599311,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },
@@ -6388,7 +6444,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 1: {
-                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMax": 0.9599311,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },
@@ -6401,7 +6457,7 @@ sov_unit_edits = {
     },
 
     "Su_24MP_EW_SOV": { # EW
-        "CommandPoints": 135,
+        "CommandPoints": 170,
         "ECM": -0.45,
         "Divisions": {
             "default": {
@@ -6412,7 +6468,7 @@ sov_unit_edits = {
     },
 
     "Su_24MP_SEAD2_SOV": {  # SEAD2
-        "CommandPoints": 300,
+        "CommandPoints": 260,
         "ECM": -0.45,
         "Divisions": {
             "default": {
@@ -6430,7 +6486,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 1: {
-                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMax": 0.9599311,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },
@@ -6443,7 +6499,7 @@ sov_unit_edits = {
     },
 
     "Su_24MP_SOV": {  # Kh-28 5425m
-        "CommandPoints": 255,
+        "CommandPoints": 220,
         "ECM": -0.45,
         "optics": {
             "VisionRangesGRU": {
@@ -6456,7 +6512,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 1: {
-                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMax": 0.9599311,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },
@@ -6636,6 +6692,10 @@ sov_unit_edits = {
     
     "Su_25T_SOV": {  # 16x Vikhr, 2x R-73
         "CommandPoints": 280,
+        "armor": {
+            "sides": (3, None),
+            "top": (3, None),
+        },
         "ECM": -0.40,
         "Divisions": {
             "default": {
@@ -6656,6 +6716,10 @@ sov_unit_edits = {
 
     "Su_25_SOV": {  # 4x Kh-25ML, 2x R-60M
         "CommandPoints": 260,
+        "armor": {
+            "sides": (3, None),
+            "top": (3, None),
+        },
         "ECM": -0.20,
         "AirplaneMovement": {
             "parent_membr": {
@@ -6681,6 +6745,10 @@ sov_unit_edits = {
 
     "Su_25_clu_SOV": {  # 6x RBK-250, 2x R-60M
         "CommandPoints": 220,
+        "armor": {
+            "sides": (3, None),
+            "top": (3, None),
+        },
         "ECM": -0.20,
         "AirplaneMovement": {
             "parent_membr": {
@@ -6693,6 +6761,10 @@ sov_unit_edits = {
 
     "Su_25_he_SOV": {  # 6x FAB-500, 2x R-60M
         "CommandPoints": 220,
+        "armor": {
+            "sides": (3, None),
+            "top": (3, None),
+        },
         "ECM": -0.20,
         "AirplaneMovement": {
             "parent_membr": {
@@ -6705,6 +6777,10 @@ sov_unit_edits = {
 
     "Su_25_nplm_SOV": {  # 4x ZB-500, 2x R-60M
         "CommandPoints": 180,
+        "armor": {
+            "sides": (3, None),
+            "top": (3, None),
+        },
         "ECM": -0.20,
         "AirplaneMovement": {
             "parent_membr": {
@@ -6717,6 +6793,10 @@ sov_unit_edits = {
     
     "Su_25_RKT3_SOV": {
         "CommandPoints": 220,
+        "armor": {
+            "sides": (3, None),
+            "top": (3, None),
+        },
         "ECM": -0.20,
         "AirplaneMovement": {
             "parent_membr": {
@@ -6729,6 +6809,10 @@ sov_unit_edits = {
 
     "Su_25_rkt2_SOV": {  # x10 S-13, x2 x40 S-8KOM
         "CommandPoints": 220,
+        "armor": {
+            "sides": (3, None),
+            "top": (3, None),
+        },
         "ECM": -0.20,
         "AirplaneMovement": {
             "parent_membr": {
@@ -6741,6 +6825,10 @@ sov_unit_edits = {
 
      "Su_25_rkt_SOV": {  # x2 x40 S-8KOM
         "CommandPoints": 220,
+        "armor": {
+            "sides": (3, None),
+            "top": (3, None),
+        },
         "ECM": -0.20,
         "AirplaneMovement": {
             "parent_membr": {
@@ -6781,7 +6869,7 @@ sov_unit_edits = {
     },
     
     "Tu_22_EW_SOV": {
-        "CommandPoints": 145,
+        "CommandPoints": 180,
         "ECM": -0.55,
         "availability": [0, 2, 0, 1],
     },

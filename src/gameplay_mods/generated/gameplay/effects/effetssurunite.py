@@ -1,17 +1,30 @@
 """Functions for modifying EffetsSurUnite.ndf"""
-from typing import List, Tuple
+from typing import Any, List, Tuple
 from src import ndf
-from src.dics.veterancy.vet_bonuses import VETERANCY_BONUSES
+from src.constants.effects.veterancy import (
+    ELITE_HELO_SF_GUID,
+    HELO_ATTACK_EFFECT_GUIDS,
+    MULTIPLICATIVE_INFANTRY_GUIDS,
+    PACK_TYPES_VANILLA_LOCALIZATION,
+    POST_PATCH_OVERRIDES,
+    VETERANCY_BONUSES,
+    VETERANCY_EFFECT_CHANGES,
+    VETERANCY_HELO_ATTACK_EFFECT_CHANGES,
+    VETERANCY_RUNTIME_EFFECT_CHANGES,
+    VETERANCY_SF_MULTIPLICATIVE_EFFECT_CHANGES,
+)
 from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.ndf_utils import find_obj_by_type, strip_quotes
 from src.constants.effects import (
+    CHOC_CQC_BONUSES,
+    CHOC_INRANGE_FEEDBACK_EFFECT,
+    CHOC_INRANGE_TAG_EFFECT,
     SPRINT_EFFECT,
-    SPRINT_OK_EFFECT,
-    SPRINT_ACTIVATED_EFFECT,
     DEPLOY_EFFECT,
     DEPLOY_OK_EFFECT,
     MEDIUM_EQUIP_PENALTY_EFFECT,
-    NO_SPRINT_EFFECT,
+    MEDIUM_EQUIP_PENALTY_FLOOR_TAG_EFFECT,
+    MEDIUM_EQUIP_PENALTY_SF_EFFECT,
     NO_SPRINT_MORALE_EFFECT,
     NO_SWIFT_EFFECT,
     SWIFT_EFFECT,
@@ -21,6 +34,31 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
 
+
+def _normalize_effect_damage_type(value: str) -> str:
+    damage_type = str(value).strip()
+    if damage_type.startswith("~/"):
+        damage_type = damage_type[2:]
+    return damage_type
+
+
+def _find_vet_effect(effects_list, effect_type: str, damage_type: str | None = None):
+    for effect in effects_list.v:
+        if not hasattr(effect.v, "type") or effect.v.type != effect_type:
+            continue
+        if damage_type is not None:
+            damage_type_membr = effect.v.by_m("DamageType", False)
+            if damage_type_membr is None:
+                continue
+            if (
+                _normalize_effect_damage_type(damage_type_membr.v)
+                != _normalize_effect_damage_type(damage_type)
+            ):
+                continue
+        return effect
+    return None
+
+
 # TODO: Break this down into specific functions
 def edit_gen_gp_effects_effetssurunite(source_path) -> None:
     """GameData/Generated/Gameplay/Effects/EffetsSurUnite.ndf"""
@@ -29,18 +67,37 @@ def edit_gen_gp_effects_effetssurunite(source_path) -> None:
     # Add new effects
     for i, row in enumerate(source_path, start=1):
         if row.namespace == "UnitEffect_Choc":
+            source_path.insert(i, CHOC_INRANGE_FEEDBACK_EFFECT)
+            source_path.insert(i, CHOC_INRANGE_TAG_EFFECT)
             source_path.insert(i, SPRINT_EFFECT)
-            source_path.insert(i, SPRINT_ACTIVATED_EFFECT)
-            source_path.insert(i, NO_SPRINT_EFFECT)
             source_path.insert(i, NO_SPRINT_MORALE_EFFECT)
-            source_path.insert(i, SPRINT_OK_EFFECT)
             source_path.insert(i, SWIFT_EFFECT)
             source_path.insert(i, NO_SWIFT_EFFECT)
             source_path.insert(i, SWIFT_OK_EFFECT)
             source_path.insert(i, DEPLOY_OK_EFFECT)
             source_path.insert(i, DEPLOY_EFFECT)
             source_path.insert(i, MEDIUM_EQUIP_PENALTY_EFFECT)
+            source_path.insert(i, MEDIUM_EQUIP_PENALTY_SF_EFFECT)
+            source_path.insert(i, MEDIUM_EQUIP_PENALTY_FLOOR_TAG_EFFECT)
             break
+        
+    # Edit Choc effect
+    choc_obj = source_path.by_n("UnitEffect_Choc")
+    effects_list = choc_obj.v.by_m("EffectsDescriptors")
+    for effect in effects_list.v:
+        if not hasattr(effect.v, "type"):
+            continue
+        # Remove Physical Damage Bonus
+        if effect.v.type == "TUnitEffectIncreaseWeaponPhysicalDamagesDescriptor":
+            effect.v.by_m("ModifierValue").v = str(CHOC_CQC_BONUSES["physical_damage_bonus"])
+            # effects_list.v.remove(effect.index)
+            # logger.info(f"Removed Choc physical damage bonus from {choc_obj.v.parent_row.namespace}")
+        elif effect.v.type == "TBonusWeaponAimtimeEffectDescriptor":
+            effect.v.by_m("ModifierValue").v = str(CHOC_CQC_BONUSES["aim_time_multiplier"])
+        elif effect.v.type == "TUnitEffectAlterWeaponTempsEntreDeuxSalvesDescriptor":
+            effect.v.by_m("ModifierValue").v = str(CHOC_CQC_BONUSES["salvo_reload_multiplier"])
+        elif effect.v.type == "TUnitEffectAlterWeaponTempsEntreDeuxTirsDescriptor":
+            effect.v.by_m("ModifierValue").v = str(CHOC_CQC_BONUSES["shot_reload_percentage"])
 
     # Modify sniper effects
     sniper_obj = source_path.by_n("UnitEffect_sniper")
@@ -84,6 +141,8 @@ def edit_gen_gp_effects_effetssurunite(source_path) -> None:
     # Write experience hint texts to dictionary file.
     entries: List[Tuple[str, str]] = []
     for xp_type, data in VETERANCY_BONUSES.items():
+        if xp_type in PACK_TYPES_VANILLA_LOCALIZATION:
+            continue
         for xp_level, xp_data in data.items():
             body_token = xp_data["body_token"]
             body = xp_data["body"]
@@ -94,65 +153,66 @@ def edit_gen_gp_effects_effetssurunite(source_path) -> None:
     write_dictionary_entries(entries, dictionary_type="ingame")
             
 
-def _edit_veterancy_effects(source_path) -> None:
-    """GameData/Generated/Gameplay/Effects/EffetsSurUnite.ndf"""
-    logger.info("Modifying veterancy effects")
+def _evasion_descriptor_template(value: int) -> str:
+    return (
+        f"TUnitEffectBonusPrecisionWhenTargetedDescriptor"
+        f"("
+        f"    ModifierType = ~/ModifierType_Additionnel"
+        f"    BonusPrecisionWhenTargeted = {value}"
+        f")"
+    )
 
-    def _add_evasion(value: int) -> str:
-        effect_template = (
-            f"TUnitEffectBonusPrecisionWhenTargetedDescriptor"
+
+def _vet_missing_descriptor_template(
+    effect_type: str,
+    value: Any,
+    damage_type: str | None = None,
+) -> str | None:
+    if effect_type == "TUnitEffectIncreaseDamageTakenDescriptor" and damage_type is not None:
+        return (
+            f"TUnitEffectIncreaseDamageTakenDescriptor"
             f"("
-            f"    ModifierType = ~/ModifierType_Additionnel"
-            f"    BonusPrecisionWhenTargeted = {value}"
+            f"    ModifierType = ~/ModifierType_Pourcentage"
+            f"    BonusDamage = {value}"
+            f"    DamageType = {damage_type}"
             f")"
         )
-        return effect_template
+    if effect_type == "TUnitEffectAlterWeaponTempsEntreDeuxSalvesDescriptor":
+        return (
+            f"TUnitEffectAlterWeaponTempsEntreDeuxSalvesDescriptor"
+            f"("
+            f"    ModifierType = ~/ModifierType_Multiplicatif"
+            f"    ModifierValue = {value}"
+            f")"
+        )
+    if effect_type == "TUnitEffectIncreaseSpeedDescriptor":
+        return (
+            f"TUnitEffectIncreaseSpeedDescriptor"
+            f"("
+            f"    ModifierType = ~/ModifierType_Pourcentage"
+            f"    BonusSpeedBaseInPercent = {value}"
+            f")"
+        )
+    return None
 
-    vet_changes = {
-        # Default
-        "UnitEffect_xp_rookie": {"TUnitEffectHealOverTimeDescriptor": 3.0},
-        "UnitEffect_xp_trained": {"TUnitEffectHealOverTimeDescriptor": 4},
-        "UnitEffect_xp_veteran": {
-            "TUnitEffectHealOverTimeDescriptor": 4.8,
-            "TUnitEffectAlterWeaponTempsEntreDeuxSalvesDescriptor": 0.83,
-        },
-        "UnitEffect_xp_elite": {
-            "TUnitEffectHealOverTimeDescriptor": 5.6,
-            "TUnitEffectAlterWeaponTempsEntreDeuxSalvesDescriptor": 0.76,
-        },
-        # SF
-        "UnitEffect_xp_trained_SF": {"TUnitEffectHealOverTimeDescriptor": 4.8},
-        "UnitEffect_xp_veteran_SF": {"TUnitEffectHealOverTimeDescriptor": 6.0},
-        "UnitEffect_xp_elite_SF": {"TUnitEffectHealOverTimeDescriptor": 6.8},
-        # Arty
-        "UnitEffect_xp_rookie_arty": {"TUnitEffectHealOverTimeDescriptor": 3.0},
-        "UnitEffect_xp_trained_arty": {"TUnitEffectHealOverTimeDescriptor": 3.0},
-        "UnitEffect_xp_veteran_arty": {"TUnitEffectHealOverTimeDescriptor": 3.8},
-        "UnitEffect_xp_elite_arty": {"TUnitEffectHealOverTimeDescriptor": 4.6},
-        # Helo
-        "UnitEffect_xp_rookie_helo": {"TUnitEffectHealOverTimeDescriptor": 3.0},
-        "UnitEffect_xp_trained_helo": {"TUnitEffectHealOverTimeDescriptor": 4.2},
-        "UnitEffect_xp_veteran_helo": {
-            "TUnitEffectIncreaseDamageTakenDescriptor": -20,
-            "TUnitEffectHealOverTimeDescriptor": 6.2
-        },
-        "UnitEffect_xp_elite_helo": {
-            "TUnitEffectIncreaseDamageTakenDescriptor": -20,
-            "TUnitEffectHealOverTimeDescriptor": 8.4, "add": [(_add_evasion, (-5,))]
-        },
-        # Avion
-        "UnitEffect_xp_trained_avion": {"TUnitEffectHealOverTimeDescriptor": 2},
-        "UnitEffect_xp_veteran_avion": {
-            "TUnitEffectBonusPrecisionWhenTargetedDescriptor": -4,
-            "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor": 4,
-        },
-        "UnitEffect_xp_elite_avion": {
-            "TUnitEffectBonusPrecisionWhenTargetedDescriptor": -8,
-            "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor": 8,
-        },
-    }
 
-    # Apply specifically defined veterancy changes
+def _apply_vet_member_value(effect, effect_type: str, new_value: Any) -> None:
+    if effect_type == "TUnitEffectIncreaseDamageTakenDescriptor":
+        effect.v.by_m("BonusDamage").v = str(new_value)
+    elif effect_type == "TUnitEffectBonusPrecisionWhenTargetedDescriptor":
+        effect.v.by_m("BonusPrecisionWhenTargeted").v = str(new_value)
+    elif effect_type == "TUnitEffectHealOverTimeDescriptor":
+        effect.v.by_m("HealUnitsPerSecond").v = str(new_value)
+    elif effect_type == "TUnitEffectIncreaseSpeedDescriptor":
+        effect.v.by_m("BonusSpeedBaseInPercent").v = str(new_value)
+    elif effect.v.by_m("ModifierValue", False):
+        effect.v.by_m("ModifierValue").v = str(new_value)
+
+
+def _apply_vet_effect_changes(
+    source_path,
+    vet_changes: dict[str, dict[Any, Any]],
+) -> None:
     for effect_pack_ns, changes in vet_changes.items():
         row = source_path.find_by_cond(
             lambda r, ns=effect_pack_ns: r.namespace == ns,
@@ -167,37 +227,187 @@ def _edit_veterancy_effects(source_path) -> None:
 
         effects_list = row.v.by_m("EffectsDescriptors")
 
-        for effect_type, new_value in changes.items():
-            if effect_type == "add":
+        for change_key, new_value in changes.items():
+            if change_key == "add":
                 continue
 
-            effect = effects_list.v.find_by_cond(
-                lambda o, et=effect_type: hasattr(o.v, "type") and o.v.type == et,
-                strict=False,
-            )
-            if effect:
-                if effect_type == "TUnitEffectIncreaseDamageTakenDescriptor":
-                    effect.v.by_m("BonusDamage").v = str(new_value)
-                elif effect_type == "TUnitEffectBonusPrecisionWhenTargetedDescriptor":
-                    effect.v.by_m("BonusPrecisionWhenTargeted").v = str(new_value)
-                elif effect_type == "TUnitEffectHealOverTimeDescriptor":
-                    effect.v.by_m("HealUnitsPerSecond").v = str(new_value)
-                elif effect.v.by_m("ModifierValue", False):
-                    effect.v.by_m("ModifierValue").v = str(new_value)
-                logger.info(f"Updated {effect_type} for {effect_pack_ns}")
+            if isinstance(change_key, tuple):
+                effect_type, damage_type = change_key
             else:
-                logger.warning(
-                    f"{effect_type} not found in EffectsDescriptors for {effect_pack_ns}; "
-                    f"expected to apply veterancy change {new_value!r}",
+                effect_type, damage_type = change_key, None
+
+            effect = _find_vet_effect(effects_list, effect_type, damage_type)
+            if effect:
+                _apply_vet_member_value(effect, effect_type, new_value)
+                change_label = (
+                    f"{effect_type} ({damage_type})"
+                    if damage_type is not None
+                    else effect_type
                 )
+                logger.info(f"Updated {change_label} for {effect_pack_ns}")
+            else:
+                change_label = (
+                    f"{effect_type} ({damage_type})"
+                    if damage_type is not None
+                    else effect_type
+                )
+                missing_template = _vet_missing_descriptor_template(
+                    effect_type,
+                    new_value,
+                    damage_type,
+                )
+                if missing_template is not None:
+                    effects_list.v.add(missing_template)
+                    logger.info(f"Added {change_label} for {effect_pack_ns}")
+                else:
+                    logger.warning(
+                        f"{change_label} not found in EffectsDescriptors for {effect_pack_ns}; "
+                        f"expected to apply veterancy change {new_value!r}",
+                    )
 
         if "add" in changes:
-            for effect_fn, args in changes["add"]:  # noqa
-                effect_str = effect_fn(*args)
+            for add_entry, args in changes["add"]:
+                if add_entry == "evasion":
+                    existing_evasion = find_obj_by_type(
+                        effects_list.v,
+                        "TUnitEffectBonusPrecisionWhenTargetedDescriptor",
+                    )
+                    if existing_evasion:
+                        existing_evasion.v.by_m("BonusPrecisionWhenTargeted").v = str(args)
+                        logger.info(
+                            f"Updated TUnitEffectBonusPrecisionWhenTargetedDescriptor "
+                            f"for {effect_pack_ns}",
+                        )
+                        continue
+                    effect_str = _evasion_descriptor_template(args)
+                else:
+                    effect_fn, fn_args = add_entry, args
+                    effect_str = effect_fn(*fn_args)
                 effects_list.v.add(effect_str)
-    
-    _add_multiplicative_infantry_xp(source_path)
+
+
+def _edit_veterancy_effects(source_path) -> None:
+    """GameData/Generated/Gameplay/Effects/EffetsSurUnite.ndf"""
+    logger.info("Modifying veterancy effects")
+
+    _apply_vet_effect_changes(source_path, VETERANCY_EFFECT_CHANGES)
+    _add_helo_attack_xp_effects(source_path)
+    _apply_vet_effect_changes(source_path, VETERANCY_HELO_ATTACK_EFFECT_CHANGES)
+    _clone_multiplicative_infantry_xp(source_path)
+    _apply_vet_effect_changes(source_path, VETERANCY_SF_MULTIPLICATIVE_EFFECT_CHANGES)
+    _convert_multiplicative_infantry_precision(source_path)
+    _apply_post_patch_overrides(source_path)
     _mirror_avion_suppress_resist_as_stun_resist(source_path)
+
+
+def _apply_post_patch_overrides(source_path) -> None:
+    logger.info("Applying post-patch veterancy overrides")
+
+    precision_types = (
+        "TUnitEffectIncreaseWeaponPrecisionArretDescriptor",
+        "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor",
+    )
+    for override in POST_PATCH_OVERRIDES:
+        row = source_path.find_by_cond(
+            lambda r, ns=override.effect_pack: r.namespace == ns,
+            strict=False,
+        )
+        if not row:
+            logger.warning(f"{override.effect_pack} not found; skipping post-patch override")
+            continue
+        effects_list = row.v.by_m("EffectsDescriptors")
+        if override.precision_stationary is not None:
+            for effect_type in precision_types:
+                precision = find_obj_by_type(effects_list.v, effect_type)
+                if not precision:
+                    logger.warning(f"No {effect_type} on {override.effect_pack}")
+                    continue
+                mod_type = str(precision.v.by_m("ModifierType").v)
+                if mod_type != "~/ModifierType_Additionnel":
+                    logger.warning(
+                        f"Unexpected ModifierType {mod_type!r} on "
+                        f"{override.effect_pack} {effect_type}",
+                    )
+                    continue
+                value = (
+                    override.precision_moving
+                    if effect_type == "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor"
+                    and override.precision_moving is not None
+                    else override.precision_stationary
+                )
+                precision.v.by_m("ModifierValue").v = str(value)
+                logger.info(f"Set {effect_type} to {value} for {override.effect_pack}")
+        elif override.precision_moving is not None:
+            precision = find_obj_by_type(
+                effects_list.v,
+                "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor",
+            )
+            if precision:
+                precision.v.by_m("ModifierValue").v = str(override.precision_moving)
+        if override.suppress_resist_bonus_damage is not None:
+            damage_taken = _find_vet_effect(
+                effects_list,
+                "TUnitEffectIncreaseDamageTakenDescriptor",
+                "EDamageType/Suppress",
+            )
+            if damage_taken:
+                damage_taken.v.by_m("BonusDamage").v = str(
+                    override.suppress_resist_bonus_damage,
+                )
+                logger.info(
+                    f"Set suppress resist to {override.suppress_resist_bonus_damage} "
+                    f"for {override.effect_pack}",
+                )
+        if override.remove_evasion_descriptor:
+            evasion = find_obj_by_type(
+                effects_list.v,
+                "TUnitEffectBonusPrecisionWhenTargetedDescriptor",
+            )
+            if evasion:
+                effects_list.v.remove(evasion)
+                logger.info(
+                    f"Removed TUnitEffectBonusPrecisionWhenTargetedDescriptor "
+                    f"from {override.effect_pack}",
+                )
+            else:
+                logger.debug(
+                    f"No TUnitEffectBonusPrecisionWhenTargetedDescriptor on "
+                    f"{override.effect_pack}; nothing to remove",
+                )
+        elif override.evasion_bonus_precision_when_targeted is not None:
+            evasion = find_obj_by_type(
+                effects_list.v,
+                "TUnitEffectBonusPrecisionWhenTargetedDescriptor",
+            )
+            if evasion:
+                evasion.v.by_m("BonusPrecisionWhenTargeted").v = str(
+                    override.evasion_bonus_precision_when_targeted,
+                )
+            else:
+                effects_list.v.add(
+                    _evasion_descriptor_template(
+                        override.evasion_bonus_precision_when_targeted,
+                    ),
+                )
+
+
+def _add_helo_attack_xp_effects(source_path) -> None:
+    """Clone helo XP effect packs for attack helicopters (before base precision nerf)."""
+    logger.info("Adding attack helicopter XP effect packs")
+
+    for base_ns, guid in (
+        ("UnitEffect_xp_rookie_helo", HELO_ATTACK_EFFECT_GUIDS["UnitEffect_xp_rookie_helo_attack"]),
+        ("UnitEffect_xp_trained_helo", HELO_ATTACK_EFFECT_GUIDS["UnitEffect_xp_trained_helo_attack"]),
+        ("UnitEffect_xp_veteran_helo", HELO_ATTACK_EFFECT_GUIDS["UnitEffect_xp_veteran_helo_attack"]),
+        ("UnitEffect_xp_elite_helo", HELO_ATTACK_EFFECT_GUIDS["UnitEffect_xp_elite_helo_attack"]),
+    ):
+        attack_ns = f"{base_ns}_attack"
+        new_effect = source_path.by_n(base_ns).copy()
+        new_effect.namespace = attack_ns
+        new_effect.v.by_m("DescriptorId").v = f"GUID:{{{guid}}}"
+        new_effect.v.by_m("NameForDebug").v = f"'{attack_ns}'"
+        source_path.add(new_effect)
+        logger.info(f"Added new effect: {attack_ns}")
 
 
 _AVION_VET_PACKS: tuple = (
@@ -273,62 +483,53 @@ def _mirror_avion_suppress_resist_as_stun_resist(source_path) -> None:
                 f"(ModifierType={modifier_type}, BonusDamage={bonus_damage})"
             )
 
-def _add_multiplicative_infantry_xp(source_path) -> None:
+def _clone_multiplicative_infantry_xp(source_path) -> None:
     """GameData/Generated/Gameplay/Effects/EffetsSurUnite.ndf"""
-    logger.info("Adding multiplicative infantry XP effects")
+    logger.info("Cloning multiplicative infantry XP effects")
 
-    infantry_xp_objects = {
-        "xp_rookie": "93c3832b-179f-4f71-9c3e-0aaa51ad6563",
-        "xp_trained": "38b2a348-2385-463c-8edb-722a5d9b37f3",
-        "xp_trained_SF": "2b3b11d5-f08d-4428-82a2-7307ab6055d9",
-        "xp_veteran": "d1b6e97c-24f3-4aec-a457-79c3262cc830",
-        "xp_veteran_SF": "f125886e-e9d2-4f30-92d9-700303ccd8c6",
-        "xp_elite": "b80fe588-b3b5-4f63-9587-75b254a2361e",
-        "xp_elite_SF": "7b707579-3230-4884-a91f-b10dc4df0ddb",
-    }
-    
-    for namespace, guid in infantry_xp_objects.items():
+    for namespace, guid in MULTIPLICATIVE_INFANTRY_GUIDS.items():
         new_effect = source_path.by_n(f"UnitEffect_{namespace}").copy()
         new_effect.namespace = f"UnitEffect_{namespace}_multiplicative"
         current_debug_name = strip_quotes(new_effect.v.by_m("NameForDebug").v)
         new_effect.v.by_m("NameForDebug").v = f"'{current_debug_name}_multiplicative'"
         new_effect.v.by_m("DescriptorId").v = f"GUID:{{{guid}}}"
-        effects_list = new_effect.v.by_m("EffectsDescriptors")
-        weapon_precision = find_obj_by_type(effects_list.v, "TUnitEffectIncreaseWeaponPrecisionArretDescriptor")
-        if weapon_precision:
-            weapon_precision.v.by_m("ModifierType").v = "~/ModifierType_Multiplicatif"
-            weapon_precision.v.by_m("ModifierValue").v = str(
-                float(weapon_precision.v.by_m("ModifierValue").v) / 100.0 + 1.0)
-        weapon_precision = find_obj_by_type(effects_list.v, "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor")
-        if weapon_precision:
-            weapon_precision.v.by_m("ModifierType").v = "~/ModifierType_Multiplicatif"
-            weapon_precision.v.by_m("ModifierValue").v = str(
-                float(weapon_precision.v.by_m("ModifierValue").v) / 100.0 + 1.0)
         source_path.add(new_effect)
         logger.info(f"Added new effect: {new_effect.namespace}")
-        
+
     xp_elite_helo_sf = source_path.by_n("UnitEffect_xp_elite_helo").copy()
     xp_elite_helo_sf.namespace = "UnitEffect_xp_elite_helo_SF"
-    # modify stress resistance from 45% to 40%
-    effects_list = xp_elite_helo_sf.v.by_m("EffectsDescriptors")
-    damage_taken = find_obj_by_type(effects_list.v, "TUnitEffectIncreaseDamageTakenDescriptor")
-    if damage_taken:
-        damage_taken.v.by_m("BonusDamage").v = str(-40)
-        logger.info(f"Updated stress resistance from 45% to 40% for {xp_elite_helo_sf.namespace}")
-    else:
-        logger.warning(f"No TUnitEffectIncreaseDamageTakenDescriptor effect found for {xp_elite_helo_sf.namespace}")
-    xp_elite_helo_sf.v.by_m("DescriptorId").v = f"GUID:{{2967b45d-5b50-48ab-87f7-7ddeeb17f5f4}}"
-    xp_elite_helo_sf.v.by_m("NameForDebug").v = f"'UnitEffect_xp_elite_helo_SF'"
-    new_effect = (
-        f"TUnitEffectBonusPrecisionWhenTargetedDescriptor"
-        f"("
-        f"    ModifierType = ~/ModifierType_Additionnel"
-        f"    BonusPrecisionWhenTargeted = -5"
-        f")"
-    )
-    xp_elite_helo_sf.v.by_m("EffectsDescriptors").v.add(new_effect)
+    xp_elite_helo_sf.v.by_m("DescriptorId").v = f"GUID:{{{ELITE_HELO_SF_GUID}}}"
+    xp_elite_helo_sf.v.by_m("NameForDebug").v = "'UnitEffect_xp_elite_helo_SF'"
     source_path.add(xp_elite_helo_sf)
-    
+    _apply_vet_effect_changes(source_path, VETERANCY_RUNTIME_EFFECT_CHANGES)
+
+
+def _convert_multiplicative_infantry_precision(source_path) -> None:
+    """Convert additive weapon precision on multiplicative infantry XP packs."""
+    logger.info("Converting multiplicative infantry XP precision modifiers")
+
+    for namespace in MULTIPLICATIVE_INFANTRY_GUIDS:
+        row = source_path.by_n(f"UnitEffect_{namespace}_multiplicative")
+        effects_list = row.v.by_m("EffectsDescriptors")
+        weapon_precision = find_obj_by_type(
+            effects_list.v,
+            "TUnitEffectIncreaseWeaponPrecisionArretDescriptor",
+        )
+        if weapon_precision:
+            weapon_precision.v.by_m("ModifierType").v = "~/ModifierType_Multiplicatif"
+            weapon_precision.v.by_m("ModifierValue").v = str(
+                float(weapon_precision.v.by_m("ModifierValue").v) / 100.0 + 1.0,
+            )
+        weapon_precision = find_obj_by_type(
+            effects_list.v,
+            "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor",
+        )
+        if weapon_precision:
+            weapon_precision.v.by_m("ModifierType").v = "~/ModifierType_Multiplicatif"
+            weapon_precision.v.by_m("ModifierValue").v = str(
+                float(weapon_precision.v.by_m("ModifierValue").v) / 100.0 + 1.0,
+            )
+
 def _edit_airunit_effects(source_path) -> None:
     """GameData/Generated/Gameplay/Effects/EffetsSurUnite.ndf"""
     logger.info("Modifying air unit effects")

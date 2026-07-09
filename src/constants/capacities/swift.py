@@ -1,5 +1,7 @@
 """Swift capacity descriptors and tag conditions."""
 
+# UnitEffect_Ajoute_Tag_Swift_ok: Unit_packStun value 0 (clears at 0.01+ stun); see DamageLevels.py
+
 SWIFT_CONDITIONS = [
     # no_swift_1
     (

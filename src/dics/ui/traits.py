@@ -1,7 +1,7 @@
 """Unit trait and specialty constants."""
 
-from src.constants import NEW_SUPPLY_CONSTANTS, TANDEM_MODIFIER
-
+from src.constants import NEW_SUPPLY_CONSTANTS, TANDEM_MODIFIER, TFR_STEALTH_BONUS, CQC_RANGE
+from src.constants.effects import CHOC_CQC_BONUSES, CHOC_SPRINT_BONUSES, MEDIUM_EQUIP_PENALTY_TRAIT_SUPPRESS_LINE
 
 def get_ratio_color(ratio: float) -> str:
     """Map supply ratio to color tag based on thresholds.
@@ -220,11 +220,11 @@ NEW_TRAITS = {
         "title": ("PWXOBNIDQC", "Medium Equipment"),
         "description": ("GUPAGRZAWI", (
             f"These infantry are moderately equipped, and while just as mobile, "
-            f"struggle to maintain cohesion under fire."
+            f"struggle to maintain cohesion while marching."
         )),
         "extended": ("UQBVPVHSOX", (
             f"#styleGreen{{• Increased movement speed (26 Km/h)}}\n"
-            f"#moral_color_bad_2{{• Increased suppression damage taken while moving (33%)}}"
+            f"#moral_color_bad_2{{• {MEDIUM_EQUIP_PENALTY_TRAIT_SUPPRESS_LINE}}}"
         )),
         "texture": "medium_equipment.png",
     },
@@ -244,7 +244,7 @@ NEW_TRAITS = {
             f"hampering their mobility on the battlefield."
         )),
         "extended": ("ZGBDBQRXQA", (
-            f"#moral_color_bad_2{{• Increased suppression damage taken while moving (33%)}}"
+            f"#moral_color_bad_2{{• {MEDIUM_EQUIP_PENALTY_TRAIT_SUPPRESS_LINE}}}"
         )),
         "texture": "heavy_equipment.png",
     },
@@ -328,7 +328,7 @@ NEW_TRAITS = {
             f"makes it an easier target to hit. "
         )),
         "extended": ("SMFUEOJEQG", (
-            f"#styleGreen{{• 1.75 stealth}}"
+            f"#styleGreen{{• {TFR_STEALTH_BONUS} stealth}}"
         )),
         "texture": "terrain_radar.png",
     },
@@ -503,19 +503,44 @@ NEW_TRAITS = {
     },
 }
 
+CHOC_CQC_BONUSES_TEXT = {
+    "all": (
+        f"#styleTurquoise{{• {(1 - CHOC_CQC_BONUSES['aim_time_multiplier']) * 100:.0f}% bonus to aim time, shot reload, and salvo reload.}}\n"
+        f"#styleTurquoise{{• {CHOC_CQC_BONUSES['physical_damage_bonus']}% bonus to physical damage.}}\n\n"
+    ),
+}
+
+CHOC_SPRINT_BONUSES_TEXT = {
+    "speed_bonus_percentage": f"{CHOC_SPRINT_BONUSES['speed_bonus_percentage']}% increased movement speed.",
+    "suppress_damage_multiplier": f"{(1 - CHOC_SPRINT_BONUSES['suppress_damage_multiplier']) * 100:.0f}% less suppression damage.",
+}
+
+RESOLUTE_PASSIVE = {
+    "suppress_reduction_pct": 20,
+    "stress_recovery_per_second": 0.5,
+}
+
+CHOC_RESOLUTE_PASSIVE_TEXT = (
+    f"Passive - Always active:\n"
+    f"#styleGreen{{• {RESOLUTE_PASSIVE['suppress_reduction_pct']}% less suppression damage taken.}}\n"
+    f"#moral_color_bad_2{{• {RESOLUTE_PASSIVE['stress_recovery_per_second']}}} "
+    f"#style1{{stress recovery per second.}}\n\n"
+)
+
 TRAIT_EDITS = {
     "_choc": {
         "extended": {
             "token": "NKHDAPIZBR",
             "text": (
+                f"{CHOC_RESOLUTE_PASSIVE_TEXT}"
                 f"CQC Bonuses - While stationary, and if within "
-                f"#moral_color_bad_2{{150m}} of enemies, gain the following bonuses:\n"
-                f"#styleGreen{{• 15% bonus to aim time, shot reload, and salvo reload.}}\n"
-                f"#styleGreen{{• 15% bonus to physical damage.}}\n\n"
+                f"#moral_color_bad_2{{{CQC_RANGE}m}} of enemies, gain the following bonuses:\n"
+                f"{CHOC_CQC_BONUSES_TEXT['all']}"
+                # f"#styleGreen{{• 15% bonus to physical damage.}}\n\n"
                 f"Sprint - While within #styleTurquoise{{875m}} of enemies, in combat, and above 40% cohesion, "
                 f"gain the following bonuses:\n"
-                f"#styleTurquoise{{• 70% increased movement speed.\n}}"
-                f"#styleTurquoise{{• Receive 25% less suppression damage.}}"
+                f"#styleTurquoise{{• {CHOC_SPRINT_BONUSES_TEXT['speed_bonus_percentage']}\n}}"
+                f"#styleTurquoise{{• {CHOC_SPRINT_BONUSES_TEXT['suppress_damage_multiplier']}}}"
             )
         }
     },
@@ -557,7 +582,10 @@ TRAIT_EDITS = {
         "extended": {
             "token": "YSPNDCTXOL",
             "text": (
-                f"• Resolute units take #styleGreen{{20% less suppression in combat}} "
+                f"• Resolute units take #styleGreen{{{RESOLUTE_PASSIVE['suppress_reduction_pct']}% less suppression}} "
+                f"in combat.\n"
+                f"• #moral_color_bad_2{{{RESOLUTE_PASSIVE['stress_recovery_per_second']}}} "
+                f"#style1{{stress recovery per second.}}"
             )
         }
     },

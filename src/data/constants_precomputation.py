@@ -36,6 +36,13 @@ from src.utils.logging_utils import setup_logger
 
 from .aircraft_vision_validation import validate_aircraft_vision_vs_weapon_range
 from .deck_pack_mappings import build_deck_pack_mappings
+from .infantry_small_arms_strength_validation import (
+    build_countable_small_arms_weapons,
+    build_infantry_small_arms_balance,
+    save_countable_small_arms_weapons,
+    save_infantry_small_arms_balance,
+    validate_infantry_small_arms_vs_strength,
+)
 from .insert_turret_templates import (
     build_insert_turret_templates,
     save_insert_turret_templates,
@@ -176,6 +183,23 @@ def build_constants_precomputation_data(config: Dict[str, Any], game_db: Dict[st
                 logger.warning(
                     "Small arms quantity validation found errors - see above. "
                     "Fix unit edits or add quantities to NbWeapons in small_arms.py"
+                )
+
+            countable_small_arms = build_countable_small_arms_weapons(game_db)
+            save_countable_small_arms_weapons(countable_small_arms, config)
+            infantry_sa_balance = build_infantry_small_arms_balance(
+                game_db,
+                countable=countable_small_arms,
+                insert_templates=insert_templates,
+            )
+            save_infantry_small_arms_balance(infantry_sa_balance, config)
+            infantry_sa_failed = validate_infantry_small_arms_vs_strength(
+                game_db, infantry_sa_balance,
+            )
+            if infantry_sa_failed:
+                logger.warning(
+                    "Infantry small arms vs strength validation found errors - see above. "
+                    "Fix unit edits / NEW_UNITS quantities or add skip-list entries.",
                 )
 
             ui_texture_failed = validate_ui_texture_constants(game_db)
@@ -953,20 +977,64 @@ def _constants_arme_family(data: Dict[str, Any]) -> Any:
     return arme.get("Family")
 
 
+def _ammo_constants_index() -> Dict[str, Tuple[Any, ...]]:
+    """Map base ``weapon_name`` to its constants dict key tuple."""
+    index: Dict[str, Tuple[Any, ...]] = {}
+    for key in {**ammunitions, **missiles}:
+        index[key[0]] = key
+    return index
+
+
+def _effective_maximum_range_gru(
+    weapon_name: str,
+    data: Dict[str, Any] | None,
+    ammo_props: Dict[str, Any],
+    donor: Any,
+    donor_data: Dict[str, Any] | None,
+) -> Any:
+    """Resolve final ``MaximumRangeGRU`` (constants > vanilla > donor fallback)."""
+    if data:
+        gru = data.get("Ammunition", {}).get("parent_membr", {}).get("MaximumRangeGRU")
+        if gru is not None:
+            return gru
+
+    gru = _lookup_vanilla_ammo_member(weapon_name, ammo_props, "MaximumRangeGRU")
+    if gru is not None:
+        return gru
+
+    if donor and donor_data:
+        gru = donor_data.get("Ammunition", {}).get("parent_membr", {}).get("MaximumRangeGRU")
+        if gru is not None:
+            return gru
+
+    if donor:
+        gru = _lookup_vanilla_ammo_member(donor, ammo_props, "MaximumRangeGRU")
+        if gru is not None:
+            return gru
+
+    return None
+
+
 def build_he_dca_weapons(game_db: Dict[str, Any]) -> Dict[str, str]:
-    """Build ``weapon_name -> final_damage_family`` for ``DamageFamily_he_dca`` weapons.
+    """Build ``weapon_name -> final_damage_family`` for auto ``_AIR`` cloning.
 
     Walks ``ammunitions``/``missiles`` constants (constants overrides on
     ``Arme.Family`` win) and the vanilla ``ammo_properties`` map (for weapons
     with no constants entry). Returns only weapons whose **final** family is
-    ``DamageFamily_he_dca``, keyed by base ``weapon_name`` (no ``Ammo_``
-    prefix, no salvo suffix). Downstream consumers (B3/B4) use this map to
+    ``DamageFamily_he_dca`` **and** whose effective ``MaximumRangeGRU`` is not
+    ``0``, keyed by base ``weapon_name`` (no ``Ammo_`` prefix, no salvo suffix).
+
+    Air-only DCA (``MaximumRangeGRU == 0`` with separate ground canon mounts)
+    are excluded; they receive ``_AIR``-equivalent edits directly in
+    ``autocanon_dca.py`` instead. Downstream consumers use this map to
     auto-clone ``_AIR`` ammo and auto-wire air mounts.
     """
     ammo_props = game_db.get("ammunition", {}).get("ammo_properties", {})
+    all_ammo = {**ammunitions, **missiles}
+    ammo_index = _ammo_constants_index()
 
     constants_override: Dict[str, Any] = {}
-    for (weapon_name, _cat, _donor, _is_new), data in {**ammunitions, **missiles}.items():
+    for (weapon_name, _cat, _donor, _is_new), data in all_ammo.items():
         family_override = _constants_arme_family(data)
         if family_override is not None:
             constants_override[weapon_name] = family_override
@@ -988,7 +1056,7 @@ def build_he_dca_weapons(game_db: Dict[str, Any]) -> Dict[str, str]:
 
     # Constants-only pass: weapons that may not exist in vanilla yet
     # (is_new) or whose constants override sets the family directly.
-    for (weapon_name, _cat, donor, is_new), data in {**ammunitions, **missiles}.items():
+    for (weapon_name, _cat, donor, is_new), data in all_ammo.items():
         family_override = _constants_arme_family(data)
         if family_override is None:
             if not is_new:
@@ -1010,8 +1078,29 @@ def build_he_dca_weapons(game_db: Dict[str, Any]) -> Dict[str, str]:
         if family_override == _HE_DCA_FAMILY:
             final_family[weapon_name] = family_override
 
+    excluded_air_only: List[str] = []
+    for weapon_name in list(final_family.keys()):
+        key = ammo_index.get(weapon_name)
+        data = all_ammo.get(key) if key else None
+        donor = key[2] if key else None
+        donor_data = all_ammo.get(ammo_index[donor]) if donor and donor in ammo_index else None
+        max_gru = _effective_maximum_range_gru(
+            weapon_name, data, ammo_props, donor, donor_data,
+        )
+        if max_gru == 0:
+            del final_family[weapon_name]
+            excluded_air_only.append(weapon_name)
+
+    if excluded_air_only:
+        logger.info(
+            f"Excluded {len(excluded_air_only)} air-only he_dca weapons "
+            f"(MaximumRangeGRU=0, direct _AIR edits in constants): "
+            f"{', '.join(sorted(excluded_air_only))}",
+        )
+
     logger.info(
-        f"Built he_dca weapons mapping: {len(final_family)} ammo descriptors"
+        f"Built he_dca weapons mapping: {len(final_family)} ammo descriptors "
+        f"needing auto _AIR clone"
     )
     return final_family
 

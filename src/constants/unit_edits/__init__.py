@@ -179,6 +179,7 @@ _REFERENCE_PATH_EXCEPTIONS = frozenset({
     "WeaponActiveAndCanShootPropertyName",
     "WeaponIgnoredPropertyName",
     "WeaponShootDataPropertyName",
+    "pack",
 })
 
 

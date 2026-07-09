@@ -216,8 +216,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "PhysicalDamages": 4.2,
                 "SuppressDamages": 350,
-                # "RadiusSplashPhysicalDamagesGRU": 152,
-                # "RadiusSplashSuppressDamagesGRU": 203,
                 "RadiusSplashPhysicalDamagesGRU": 122,
                 "RadiusSplashSuppressDamagesGRU": 163,
                 "TimeBetweenTwoSalvos": 130.0,
@@ -277,7 +275,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "Arme": {
                 "Family": "DamageFamily_clu_sol_hefrag",
-                "Index": 6,
+                "Index": 5,
             },
             "parent_membr": {
                 "MinimumRangeGRU": 5000,
@@ -348,11 +346,12 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "MinimumRangeGRU": 3180,
+                "DispersionAtMaxRangeGRU": 350,
                 "PhysicalDamages": 4.2,
                 "SuppressDamages": 350,
-                "RadiusSplashPhysicalDamagesGRU": 152,
-                "RadiusSplashSuppressDamagesGRU": 203,
-                "TimeBetweenTwoSalvos": 132.0,
+                "RadiusSplashPhysicalDamagesGRU": 110,
+                "RadiusSplashSuppressDamagesGRU": 146,
+                "TimeBetweenTwoSalvos": 130.0,
                 "SupplyCost": 522.0,
             },
         },

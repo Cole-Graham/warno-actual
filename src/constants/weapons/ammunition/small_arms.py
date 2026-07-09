@@ -471,8 +471,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "SuppressDamages": 18,
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.0,
-                "TimeBetweenTwoShots": 1.4,
-                "TimeBetweenTwoSalvos": 1.4,
+                "TimeBetweenTwoShots": 1.5,
+                "TimeBetweenTwoSalvos": 1.5,
                 "ShotsCountPerSalvo": 4,
                 "AffichageMunitionParSalve": 40
             },
@@ -552,14 +552,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 20,
             },
             "parent_membr": {
-                "TimeBetweenTwoShots": 1.2,
+                "TimeBetweenTwoShots": 1.4,
                 "MaximumRangeGRU": 875,
                 "MaximumRangeHelicopterGRU": 700,
                 "PhysicalDamages": 0.12,
                 "SuppressDamages": 18,
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.0,
-                "TimeBetweenTwoSalvos": 1.2,
+                "TimeBetweenTwoSalvos": 1.4,
                 "ShotsCountPerSalvo": 4,
                 "AffichageMunitionParSalve": 40
             },
@@ -581,14 +581,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 20,
             },
             "parent_membr": {
-                "TimeBetweenTwoShots": 1.2,
+                "TimeBetweenTwoShots": 1.4,
                 "MaximumRangeGRU": 875,
                 "MaximumRangeHelicopterGRU": 700,
                 "PhysicalDamages": 0.12,
                 "SuppressDamages": 18,
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.0,
-                "TimeBetweenTwoSalvos": 1.2,
+                "TimeBetweenTwoSalvos": 1.4,
                 "ShotsCountPerSalvo": 4,
                 "AffichageMunitionParSalve": 40
             },
@@ -1033,7 +1033,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "SupplyCost": 1.0,
         "NbWeapons": [7, 6, 5, 2, 1],
         "WeaponDescriptor": {
-            "Salves": 11,               
+            "Salves": 14,               
         },
     },
     
@@ -1062,7 +1062,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "SupplyCost": 1.0,
         "NbWeapons": [8, 6, 3, 1],
         "WeaponDescriptor": {
-            "Salves": 11,               
+            "Salves": 14,               
         },
     },
 
@@ -1092,7 +1092,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "NbWeapons": [9, 8, 7, 6, 5, 4, 3, 2],
         "NewTexture": "Commando_733",
         "WeaponDescriptor": {
-            "Salves": 11,               
+            "Salves": 14,               
         },
     },
 
@@ -1124,7 +1124,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "NbWeapons": [7, 6, 5, 4, 3],
         "NewTexture": "M16A1_Carbine",
         "WeaponDescriptor": {
-            "Salves": 11,
+            "Salves": 14,
         },
     },
 
@@ -1156,7 +1156,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "NbWeapons": [11, 9, 8, 7, 6, 5, 4, 3, 2],
         "NewTexture": "M16A1_Carbine",
         "WeaponDescriptor": {
-            "Salves": 11,
+            "Salves": 14,
         },
     },
     
@@ -1177,7 +1177,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "SuppressDamages": 6,
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 0.5,
-                "TimeBetweenTwoSalvos": 3.5,
+                "TimeBetweenTwoSalvos": 2.0,
                 "ShotsCountPerSalvo": 10,
                 "AffichageMunitionParSalve": 30,
             },
@@ -1185,7 +1185,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "SupplyCost": 1.0,
         "NbWeapons": [6, 5, 2, 1],
         "WeaponDescriptor": {
-            "Salves": 11,               
+            "Salves": 14,               
         },
     },
 
@@ -1243,7 +1243,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "SupplyCost": 1.0,
         "NbWeapons": [10, 8, 6, 5, 4],
         "WeaponDescriptor": {
-            "Salves": 11,               
+            "Salves": 14,               
         },
     },
     
@@ -1285,14 +1285,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 70,
             },
             "parent_membr": {
-                "TimeBetweenTwoShots": 1.9,
+                "TimeBetweenTwoShots": 1.8,
                 "MaximumRangeGRU": 875,
                 "MaximumRangeHelicopterGRU": 700,
                 "PhysicalDamages": 0.12,
                 "SuppressDamages": 24,
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.0,
-                "TimeBetweenTwoSalvos": 1.9,
+                "TimeBetweenTwoSalvos": 1.8,
                 "ShotsCountPerSalvo": 2,
                 "AffichageMunitionParSalve": 20,
             },
@@ -1315,14 +1315,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "display": "L7A2",
             "token": "VUHHSVFUFA",
             "parent_membr": {
-                "TimeBetweenTwoShots": 1.9,
+                "TimeBetweenTwoShots": 1.8,
                 "MaximumRangeGRU": 875,
                 "MaximumRangeHelicopterGRU": 700,
                 "PhysicalDamages": 0.12,
                 "SuppressDamages": 24,
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.0,
-                "TimeBetweenTwoSalvos": 1.9,
+                "TimeBetweenTwoSalvos": 1.8,
                 "ShotsCountPerSalvo": 2,
                 "AffichageMunitionParSalve": 20,
             },
@@ -1344,14 +1344,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 70,
             },
             "parent_membr": {
-                "TimeBetweenTwoShots": 1.9,
+                "TimeBetweenTwoShots": 1.8,
                 "MaximumRangeGRU": 875,
                 "MaximumRangeHelicopterGRU": 700,
                 "PhysicalDamages": 0.12,
                 "SuppressDamages": 24,
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.0,
-                "TimeBetweenTwoSalvos": 1.9,
+                "TimeBetweenTwoSalvos": 1.8,
                 "ShotsCountPerSalvo": 2,
                 "AffichageMunitionParSalve": 20,
             },
@@ -1477,7 +1477,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "TraitsToken": ['MOTION', 'CAC'],
-                "TimeBetweenTwoShots": 2.2,
+                "TimeBetweenTwoShots": 2.0,
                 "MinimumRangeGRU": 0,
                 "MaximumRangeGRU": 875,
                 "MaximumRangeHelicopterGRU": 700,
@@ -1485,7 +1485,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "SuppressDamages": 24,
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.0,
-                "TimeBetweenTwoSalvos": 2.2,
+                "TimeBetweenTwoSalvos": 2.0,
                 "ShotsCountPerSalvo": 2,
                 "CanShootWhileMoving": True,
                 "AffichageMunitionParSalve": 20,
@@ -1508,14 +1508,14 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 30,
             },
             "parent_membr": {
-                "TimeBetweenTwoShots": 2.2,
+                "TimeBetweenTwoShots": 2.0,
                 "MaximumRangeGRU": 875,
                 "MaximumRangeHelicopterGRU": 700,
                 "PhysicalDamages": 0.12,
                 "SuppressDamages": 24,
                 "DisplaySalveAccuracy": False,
                 "AimingTime": 1.0,
-                "TimeBetweenTwoSalvos": 2.2,
+                "TimeBetweenTwoSalvos": 2.0,
                 "ShotsCountPerSalvo": 2,
                 "AffichageMunitionParSalve": 20,
             },

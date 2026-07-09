@@ -16,6 +16,7 @@ from tkinter import ttk, filedialog, messagebox
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from .constants import RANGE_MODIFIERS_TABLE
+from .chart_axes import apply_dpm_y_axis_scale
 from .damage_table_csv import (
     DamageTableCsv,
     default_damage_table_dir,
@@ -39,7 +40,10 @@ from .calculations import (
     calculate_dpm,
     calculate_accuracy,
     calculate_shots_per_minute,
+    effective_kinetic_ap_damage_level,
     extract_base_weapon_name,
+    is_kinetic_ap_damage_family,
+    segment_dpm_by_kinetic_ap_level,
 )
 from .ndf_parsers import (
     parse_ammunition_properties,
@@ -85,6 +89,7 @@ class WeaponsTab:
         self.resistance_level_max_var = tk.StringVar(value="")
         self.use_resistance_level_range_var = tk.BooleanVar(value=False)
         self.custom_ratio_override_var = tk.BooleanVar(value=False)
+        self.log_scale_dpm_var = tk.BooleanVar(value=False)
         self.custom_ratio_value_var = tk.StringVar(value="1.0")
         
         # Chart state
@@ -332,6 +337,30 @@ class WeaponsTab:
             self.update_graph()
             self.app.auto_save_state()
     
+    def _custom_weapon_editor_is_kinetic_ap(self) -> bool:
+        return is_kinetic_ap_damage_family(self.custom_weapon_damage_family_var.get())
+
+    def _update_custom_weapon_kinetic_ui(self) -> None:
+        """Refresh kinetic AP labels in the custom weapon editor."""
+        if not hasattr(self, "custom_weapon_damage_level_caption"):
+            return
+        if self._custom_weapon_editor_is_kinetic_ap():
+            self.custom_weapon_damage_level_caption.config(text="AP @175m:")
+            try:
+                stored = int(float(self.custom_weapon_damage_level_var.get().strip()))
+                max_range = float(self.custom_weapon_max_range_var.get().strip())
+                at_max = effective_kinetic_ap_damage_level(stored, max_range, max_range)
+                self.custom_weapon_kinetic_hint_label.config(
+                    text=f"→ L{at_max} at max range",
+                )
+            except (ValueError, TypeError):
+                self.custom_weapon_kinetic_hint_label.config(
+                    text="(NDF index at 175m)",
+                )
+        else:
+            self.custom_weapon_damage_level_caption.config(text="Level:")
+            self.custom_weapon_kinetic_hint_label.config(text="")
+
     def _on_custom_damage_family_selected(self, event=None) -> None:
         fam = self.custom_weapon_damage_family_var.get().strip()
         if fam:
@@ -344,6 +373,7 @@ class WeaponsTab:
                     self.custom_weapon_damage_level_var.set(str_levels[0])
         else:
             self.custom_weapon_damage_level_combo["values"] = []
+        self._update_custom_weapon_kinetic_ui()
         self.update_preview()
     
     def _refresh_custom_weapon_family_level_combos(self) -> None:
@@ -374,10 +404,32 @@ class WeaponsTab:
             return float(v) if v is not None else base
         return base
     
+    def _resolve_damage_level(
+        self,
+        ammo_props: Dict[str, Any],
+        range_m: Optional[float] = None,
+        *,
+        apply_kinetic_ap_scaling: bool = True,
+    ) -> Optional[int]:
+        """Arme index for damage-table lookup; kinetic AP scales down with range."""
+        dl = ammo_props.get("damage_level")
+        if dl is None:
+            return None
+        stored = int(dl)
+        if not apply_kinetic_ap_scaling or not is_kinetic_ap_damage_family(ammo_props.get("damage_family")):
+            return stored
+        max_range = self._effective_weapon_max_range(ammo_props)
+        if range_m is None:
+            range_m = max_range
+        return effective_kinetic_ap_damage_level(stored, range_m, max_range)
+
     def _effective_damage_ratio(
         self,
         ammo_props: Dict[str, Any],
         resistance_level: Optional[int] = None,
+        range_m: Optional[float] = None,
+        *,
+        apply_kinetic_ap_scaling: bool = True,
     ) -> Tuple[float, str]:
         """Return (multiplier, short label for UI)."""
         if self.custom_ratio_override_var.get():
@@ -400,10 +452,21 @@ class WeaponsTab:
         except (ValueError, TypeError):
             return 1.0, "target invalid"
         df = ammo_props.get("damage_family")
-        dl = ammo_props.get("damage_level")
+        dl = self._resolve_damage_level(
+            ammo_props,
+            range_m,
+            apply_kinetic_ap_scaling=apply_kinetic_ap_scaling,
+        )
         r = self.damage_table_csv.lookup(df, dl, rf, rl)
         if r is None:
             return 1.0, "no row (1.0)"
+        if (
+            apply_kinetic_ap_scaling
+            and is_kinetic_ap_damage_family(df)
+            and ammo_props.get("damage_level") is not None
+            and dl != int(ammo_props["damage_level"])
+        ):
+            return r, f"table (ap L{dl} @ {int(range_m or self._effective_weapon_max_range(ammo_props))}m)"
         return r, "table"
     
     def on_load_weapon_selected(self, event=None):
@@ -553,17 +616,32 @@ class WeaponsTab:
                 preview_props = {
                     "damage_family": self.custom_weapon_damage_family_var.get().strip() or None,
                     "damage_level": None,
+                    "max_range": max_range,
                 }
                 try:
                     preview_props["damage_level"] = int(float(self.custom_weapon_damage_level_var.get().strip()))
                 except (ValueError, TypeError):
                     preview_props["damage_level"] = None
-                preview_ratio, _ = self._effective_damage_ratio(preview_props)
+                preview_ratio, _ = self._effective_damage_ratio(
+                    preview_props,
+                    range_m=max_range,
+                    apply_kinetic_ap_scaling=self._custom_weapon_editor_is_kinetic_ap(),
+                )
             # Calculate DPM (assuming 1 weapon for preview)
             dpm = preview_accuracy * effective_damage * preview_ratio * shots_per_minute * 1
+
+            self._update_custom_weapon_kinetic_ui()
             
             # Update labels with formatted values
-            self.preview_dpm_label.config(text=f"DPM: {dpm:.2f}")
+            preview_dpm_text = f"DPM @ max range: {dpm:.2f}"
+            if damage_type == "Physical" and self._custom_weapon_editor_is_kinetic_ap():
+                try:
+                    stored = int(float(self.custom_weapon_damage_level_var.get().strip()))
+                    at_max = effective_kinetic_ap_damage_level(stored, max_range, max_range)
+                    preview_dpm_text += f" (ap L{at_max})"
+                except (ValueError, TypeError):
+                    pass
+            self.preview_dpm_label.config(text=preview_dpm_text)
             self.preview_shots_label.config(text=f"Shots/min: {shots_per_minute:.1f}")
             self.preview_ammo_label.config(text=f"Ammo/min: {ammo_per_minute:.1f}")
             
@@ -931,6 +1009,15 @@ class WeaponsTab:
         self.custom_ratio_entry.pack(side=tk.LEFT)
         self.custom_ratio_value_var.trace_add("write", lambda *a: self.app.root.after_idle(self._on_custom_ratio_value_changed))
         
+        log_scale_frame = ttk.Frame(config_section)
+        log_scale_frame.pack(fill=tk.X, pady=2)
+        ttk.Checkbutton(
+            log_scale_frame,
+            text="Logarithmic DPM scale (Y axis)",
+            variable=self.log_scale_dpm_var,
+            command=lambda: [self.update_graph(), self.app.auto_save_state()],
+        ).pack(side=tk.LEFT)
+
         # Generate chart button
         ttk.Button(config_section, text="Generate Chart", command=self.generate_chart).pack(fill=tk.X, pady=(5, 0))
         
@@ -1037,13 +1124,16 @@ class WeaponsTab:
         )
         self.custom_weapon_damage_family_combo.pack(side=tk.LEFT, padx=(0, 8))
         self.custom_weapon_damage_family_combo.bind("<<ComboboxSelected>>", self._on_custom_damage_family_selected)
-        ttk.Label(row2b, text="Level:", width=6).pack(side=tk.LEFT, padx=(0, 4))
+        self.custom_weapon_damage_level_caption = ttk.Label(row2b, text="Level:", width=10)
+        self.custom_weapon_damage_level_caption.pack(side=tk.LEFT, padx=(0, 4))
         self.custom_weapon_damage_level_var = tk.StringVar(value="")
         self.custom_weapon_damage_level_combo = ttk.Combobox(
             row2b, textvariable=self.custom_weapon_damage_level_var, state="readonly", width=8,
         )
         self.custom_weapon_damage_level_combo.pack(side=tk.LEFT)
         self.custom_weapon_damage_level_combo.bind("<<ComboboxSelected>>", lambda e: self.update_preview())
+        self.custom_weapon_kinetic_hint_label = ttk.Label(row2b, text="", foreground="gray")
+        self.custom_weapon_kinetic_hint_label.pack(side=tk.LEFT, padx=(6, 0))
         
         # Row 3: Shots per salvo, Time between salvos, Time between shots
         row3 = ttk.Frame(props_frame)
@@ -1366,7 +1456,7 @@ class WeaponsTab:
             self.ax.text(0.5, 0.5, 'Select weapons to compare', 
                         horizontalalignment='center', verticalalignment='center',
                         transform=self.ax.transAxes, fontsize=14)
-            self.ax.set_ylim(bottom=0)
+            self._apply_chart_y_axis_scale()
             self.canvas.draw()
             return
         
@@ -1407,9 +1497,25 @@ class WeaponsTab:
                 bonus_label = f" [{', '.join(bonus_parts)}]"
             
             for level_idx, res_lvl in enumerate(rl_levels):
-                dmg_ratio, _ = self._effective_damage_ratio(ammo_props, resistance_level=res_lvl)
-                if damage_type != "Physical":
+                kinetic_ap = (
+                    is_kinetic_ap_damage_family(ammo_props.get("damage_family"))
+                    and damage_type == "Physical"
+                )
+                if kinetic_ap:
+                    dmg_ratio_fn = lambda r, props=ammo_props, rl=res_lvl: self._effective_damage_ratio(
+                        props,
+                        resistance_level=rl,
+                        range_m=r,
+                    )[0]
                     dmg_ratio = 1.0
+                else:
+                    dmg_ratio_fn = None
+                    dmg_ratio, _ = self._effective_damage_ratio(
+                        ammo_props,
+                        resistance_level=res_lvl,
+                    )
+                    if damage_type != "Physical":
+                        dmg_ratio = 1.0
                 dpm_data = calculate_dpm(
                     ammo_props,
                     quantity,
@@ -1422,6 +1528,7 @@ class WeaponsTab:
                     use_multiplicative_vet_bonus=use_multiplicative,
                     damage_type=damage_type,
                     damage_ratio_multiplier=dmg_ratio,
+                    damage_ratio_fn=dmg_ratio_fn,
                 )
                 
                 if not dpm_data:
@@ -1437,15 +1544,17 @@ class WeaponsTab:
                 label = f"{ammo_name} (x{quantity}){bonus_label}{vanilla_note} · {rf_label} L{res_lvl}"
                 lw = 1.8 if use_vanilla_range_table else 2.0
                 alpha = 0.82 if use_vanilla_range_table else 1.0
-                self.ax.plot(
-                    ranges,
-                    dpm_values,
-                    label=label,
-                    color=color,
-                    linewidth=lw,
-                    linestyle=ls,
-                    alpha=alpha,
-                )
+                plot_segments = segment_dpm_by_kinetic_ap_level(ranges, dpm_values, ammo_props)
+                for seg_idx, (seg_ranges, seg_dpm) in enumerate(plot_segments):
+                    self.ax.plot(
+                        seg_ranges,
+                        seg_dpm,
+                        label=label if seg_idx == 0 else "_nolegend_",
+                        color=color,
+                        linewidth=lw,
+                        linestyle=ls,
+                        alpha=alpha,
+                    )
                 
                 # Store line data for marker placement
                 self.line_data[label] = list(zip(ranges, dpm_values))
@@ -1482,12 +1591,16 @@ class WeaponsTab:
                     # Update info panel with all weapons at this range
                     self.show_weapons_at_range(saved_selected_range)
         
-        self.ax.set_ylim(bottom=0)
+        self._apply_chart_y_axis_scale()
         self.canvas.draw()
         
         # Update info text
         self.update_info_text()
     
+    def _apply_chart_y_axis_scale(self):
+        """Apply linear or logarithmic scaling on the DPM (Y) axis."""
+        apply_dpm_y_axis_scale(self.ax, self.log_scale_dpm_var.get())
+
     def update_graph(self):
         """Update the chart (alias for generate_chart for consistency)."""
         # Always regenerate the chart when called - this ensures checkbox changes trigger updates
@@ -1708,6 +1821,7 @@ class WeaponsTab:
                             dmg_ratio, ratio_src = self._effective_damage_ratio(
                                 ammo_props,
                                 resistance_level=res_lvl,
+                                range_m=range_val,
                             )
                             if damage_type != "Physical":
                                 dmg_ratio = 1.0
@@ -1736,7 +1850,7 @@ class WeaponsTab:
                             per_weapon_damage = base_damage * dmg_ratio if damage_type == "Physical" else base_damage
                             total_damage = per_weapon_damage * quantity if quantity > 0 else 0.0
                             df_raw = ammo_props.get("damage_family") or "—"
-                            dl_raw = ammo_props.get("damage_level")
+                            dl_raw = self._resolve_damage_level(ammo_props, range_val)
                             dl_str = str(dl_raw) if dl_raw is not None else "—"
                             fam_short = normalize_damage_family(df_raw) if df_raw != "—" else "—"
                             
@@ -1821,6 +1935,7 @@ class WeaponsTab:
             "use_resistance_level_range": self.use_resistance_level_range_var.get() if hasattr(self, 'use_resistance_level_range_var') else False,
             "custom_ratio_override": self.custom_ratio_override_var.get() if hasattr(self, 'custom_ratio_override_var') else False,
             "custom_ratio_value": self.custom_ratio_value_var.get() if hasattr(self, 'custom_ratio_value_var') else "1.0",
+            "log_scale_dpm": self.log_scale_dpm_var.get() if hasattr(self, 'log_scale_dpm_var') else False,
         }
         
         for idx, dropdown in enumerate(self.weapon_dropdowns):
@@ -1907,6 +2022,9 @@ class WeaponsTab:
         if "use_multiplicative_vet_bonus" in state and hasattr(self, 'use_multiplicative_vet_bonus_var'):
             self.use_multiplicative_vet_bonus_var.set(state["use_multiplicative_vet_bonus"])
         
+        if "log_scale_dpm" in state and hasattr(self, 'log_scale_dpm_var'):
+            self.log_scale_dpm_var.set(bool(state["log_scale_dpm"]))
+
         # Load range table selection
         if "range_table" in state and hasattr(self, 'range_table_var'):
             range_table = state["range_table"]

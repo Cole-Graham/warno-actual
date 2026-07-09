@@ -4,6 +4,11 @@ from typing import Any, Dict
 import re
 
 from src.constants.generated.gameplay.decks import load_deck_edits
+from src.gameplay_mods.generated.gameplay.decks.default_multi_decks import (
+    add_default_multi_decks,
+    capture_multi_deck_donor,
+    ensure_default_multi_deck_packs,
+)
 from src.constants.new_units import NEW_UNITS
 from src.constants.unit_edits import load_unit_edits
 from src.constants.unit_edits.SUPPLY_unit_edits import supply_unit_edits
@@ -46,6 +51,8 @@ def edit_gen_gp_decks_deckpacks(source_path: Any, game_db: Dict[str, Any]) -> No
 
     # Clean up any duplicate deck packs that may have been created
     _remove_duplicate_deck_packs(source_path)
+
+    ensure_default_multi_deck_packs(source_path, game_db)
     
     # TODO: Needs proper implementation
     _new_deck_packs(source_path)
@@ -346,8 +353,10 @@ def edit_gen_gp_decks(source_path: Any, game_db: Dict[str, Any]) -> None:
         if "add" in edits:
             for pack in edits["add"]:
                 pack_list.v.add(f"~/Descriptor_Deck_Pack_{pack}")
-        
+
+    donor_deck = capture_multi_deck_donor(source_path)
     _hide_divisions_decks_ndf(source_path)
+    add_default_multi_decks(source_path, donor_deck, game_db)
 
 
 def _remove_deck_packs_from_multi_decks(source_path: Any) -> None:

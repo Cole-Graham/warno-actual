@@ -17,6 +17,52 @@ TBAGRU_FAMILIES = frozenset({
     "DamageFamily_a2a_tbagru",
 })
 
+_MOUNTED_AMMO_SUFFIX_RE = re.compile(r"(_x\d+|_salvolength\d+)$")
+
+
+def _mounted_ammo_base_name(ammo_name: str) -> str:
+    """Strip mount suffixes for name lookup; does not change suffix semantics."""
+    return _MOUNTED_AMMO_SUFFIX_RE.sub("", ammo_name)
+
+
+def _ammo_dict_category(weapon_name: str) -> str | None:
+    base_name = _mounted_ammo_base_name(weapon_name)
+    for (name, category, _, _), _ in ammos.items():
+        if _mounted_ammo_base_name(name) == base_name:
+            return category
+    return None
+
+
+def _replacement_mount_suffix(
+    full_ammo_name: str,
+    new_weapon: str,
+    quantity: int,
+) -> str:
+    """Return a mount-path suffix for ``equipmentchanges.replace``.
+
+    Only preserves suffixes already present on the donor mount (or ``_x`` derived
+    from ``NbWeapons`` for ``small_arms`` when the path is bare). Never
+    synthesizes ``_salvolength`` — that suffix belongs on the donor path when
+    the mounted ammo uses salvo-length descriptors (missiles, rockets, …).
+    """
+    if re.search(r"_salvolength\d+$", new_weapon):
+        return ""
+
+    salvolength_match = re.search(r"_salvolength(\d+)$", full_ammo_name)
+    if salvolength_match:
+        return f"_salvolength{salvolength_match.group(1)}"
+
+    if _ammo_dict_category(new_weapon) != "small_arms":
+        return ""
+
+    x_match = re.search(r"_x(\d+)$", full_ammo_name)
+    if x_match:
+        return f"_x{x_match.group(1)}"
+
+    if quantity > 1:
+        return f"_x{quantity}"
+    return ""
+
 
 def _effective_helo_range(base_ammo_name: str, ammo_name: str, ammo_db: Dict[str, Any]) -> int | None:
     """Return effective MaximumRangeHelicopterGRU for ``base_ammo_name``.
@@ -133,8 +179,7 @@ def unit_edits_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> No
                 ammo_name = ammo_path[len("$/GFX/Weapon/Ammo_"):]
 
                 # Strip _x{N} / _salvolength{N} for missiles-dict lookup
-                base_ammo_name = re.sub(r"_x\d+$", "", ammo_name)
-                base_ammo_name = re.sub(r"_salvolength\d+$", "", base_ammo_name)
+                base_ammo_name = _mounted_ammo_base_name(ammo_name)
 
                 # Salvo length: prefer explicit suffix, else current NbWeapons
                 salvo_match = re.search(r"_salvolength(\d+)$", ammo_name)
@@ -892,7 +937,7 @@ def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_
     ``replace`` tuples apply in order; each tuple replaces the *next* mount matching ``current``
     in turret order (then mount order), so duplicate donor ammo can map to different weapons.
     """
-    ammo_pattern = re.compile(r"\$/GFX/Weapon/Ammo_(.*?)(?:_x\d+)?$")
+    ammo_pattern = re.compile(r"\$/GFX/Weapon/Ammo_(.+)$")
     turret_list = weapon_descr.v.by_member("TurretDescriptorList").v
     ammo_db = game_db["ammunition"]
     unit_db = game_db["unit_data"]
@@ -964,8 +1009,16 @@ def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_
                 match = ammo_pattern.match(ammo_val)
                 if not match:
                     continue
-                ammo_name = match.group(1)
-                if ammo_name != current and ammo_name != renamed_current:
+                full_ammo_name = match.group(1)
+                base_ammo_name = _mounted_ammo_base_name(full_ammo_name)
+                current_base = _mounted_ammo_base_name(current)
+                renamed_current_base = (
+                    _mounted_ammo_base_name(renamed_current) if renamed_current else None
+                )
+                if (
+                    base_ammo_name != current_base
+                    and base_ammo_name != renamed_current_base
+                ):
                     continue
 
                 quantity = int(weapon.v.by_m("NbWeapons").v)
@@ -980,18 +1033,25 @@ def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_
                         ]
                         break
 
-                if quantity > 1:
-                    if use_strength:
-                        new_ammo = f"$/GFX/Weapon/Ammo_{new_weapon}_strength{unit_strength}_x{quantity}"
-                    elif not _uses_sniper_damage_family(new_weapon, game_db):
-                        new_ammo = f"$/GFX/Weapon/Ammo_{new_weapon}_x{quantity}"
-                    else:
-                        new_ammo = f"$/GFX/Weapon/Ammo_{new_weapon}"
+                salvo_suffix = _replacement_mount_suffix(full_ammo_name, new_weapon, quantity)
+
+                if re.search(r"_salvolength\d+$", new_weapon):
+                    ammo_core = new_weapon
+                elif use_strength:
+                    ammo_core = f"{new_weapon}_strength{unit_strength}"
                 else:
-                    if use_strength:
-                        new_ammo = f"$/GFX/Weapon/Ammo_{new_weapon}_strength{unit_strength}"
-                    else:
-                        new_ammo = f"$/GFX/Weapon/Ammo_{new_weapon}"
+                    ammo_core = new_weapon
+
+                if (
+                    salvo_suffix
+                    and not (
+                        _uses_sniper_damage_family(new_weapon, game_db)
+                        and salvo_suffix.startswith("_x")
+                    )
+                ):
+                    ammo_core += salvo_suffix
+
+                new_ammo = f"$/GFX/Weapon/Ammo_{ammo_core}"
                 weapon.v.by_m("Ammunition").v = new_ammo
                 logger.debug(f"Replaced {current} with {new_weapon}")
 

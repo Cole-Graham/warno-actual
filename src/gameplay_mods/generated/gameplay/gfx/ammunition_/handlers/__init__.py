@@ -17,6 +17,12 @@ from .bomb_category_standards import (
 from .aa_missile_category_standards import (
     apply_category_aa_missile_standards,
 )
+from .manpad_category_standards import (
+    apply_manpad_time_between_salvos_standard,
+)
+from .sam_category_standards import (
+    apply_sam_time_between_salvos_standard,
+)
 from .sead_category_standards import (
     apply_category_sead_standards,
 )
@@ -43,6 +49,8 @@ __all__ = [
     'apply_category_bomb_standards',
     'apply_clu_bomb_dispersion_standard',
     'apply_category_sead_standards',
+    'apply_manpad_time_between_salvos_standard',
+    'apply_sam_time_between_salvos_standard',
     'apply_aim_time_standards',
     'apply_bomb_damage_standards',
     'apply_clu_sol_trait_standards',

@@ -42,7 +42,7 @@ POL_airborne_newdivisionrules = {
     "artillery": [
         ("BM14M_POL", 1, [3, 2, 0, 0]),
         ("MLRS_WP_8z_POL", 1, [0, 5, 0, 0], ["GAZ_66B_POL"]),
-        ("Howz_D1_152mm_POL", 1, [0, 3, 2, 0], ["GAZ_66B_POL", "MTLB_trans_POL"]),
+        ("Howz_D1_152mm_POL", 1, [3, 2, 0, 0], ["GAZ_66B_POL", "MTLB_trans_POL"]),
         ("Howz_M30_122mm_POL", 2, [5, 4, 3, 0], ["GAZ_66B_POL", "MTLB_trans_POL"]),
         ("Mortier_M43_160mm_POL", 1, [4, 3, 0, 0], ["GAZ_66B_POL", "MTLB_trans_POL"]),
         ("Mortier_2S12_120mm_Para_POL", 2, [0, 5, 4, 3], ["UAZ_469_trans_POL"]),
@@ -346,7 +346,7 @@ POL_mechanized_newdivisionrules = {
         ("Howz_M46_130mm_POL", 2, [4, 3, 2, 0], ["Star_266_POL", "OT_62_TOPAS_POL"]),
         ("OT_64_SKOT_2_CMD_POL", 1, [0, 3, 0, 0]),
         ("Mortier_240mm_M240_POL", 2, [3, 0, 0, 0], ["Star_266_POL", "OT_62_TOPAS_POL"]),
-        ("Mortier_M43_160mm_POL", 2, [4, 0, 0, 0], ["Star_266_POL", "OT_62_TOPAS_POL"]),
+        ("Mortier_M43_160mm_POL", 2, [4, 3, 0, 0], ["Star_266_POL", "OT_62_TOPAS_POL"]),
         ("Mortier_PM43_120mm_POL", 2, [5, 4, 3, 0], ["Star_266_POL", "OT_62_TOPAS_POL"]),
         ("Mortier_M43_82mm_POL", 2, [5, 4, 3, 0], ["UAZ_469_trans_POL"]),
     ],
@@ -397,8 +397,8 @@ POL_mechanized_newdivisionrules = {
     "heli": [
         ("Mi_24V_POL", 2, [0, 3, 2, 0]), # From POL Armored
         ("Mi_24D_s8_AT_POL", 2, [0, 4, 3, 0]),
-        ("Mi_2_rocket_POL", 2, [8, 6, 0, 0]),
-        ("Mi_2_ATGM_POL", 2, [7, 5, 0, 0]),
+        ("Mi_2_rocket_POL", 2, [0, 8, 6, 0]),
+        ("Mi_2_ATGM_POL", 2, [0, 7, 5, 0]),
         ("Mi_2_AA_POL", 2, [0, 4, 3, 0]),
     ],
 }
@@ -456,7 +456,7 @@ POL_motorized_newdivisionrules = {
         ("Howz_A19_122mm_POL", 2, [5, 4, 3, 0], ["KrAZ_255B_POL", "OT_64_SKOT_2A_POL"]),
         ("OT_64_SKOT_2_CMD_POL", 1, [0, 3, 0, 0]),
         ("Mortier_240mm_M240_POL", 2, [3, 0, 0, 0], ["KrAZ_255B_POL", "OT_64_SKOT_2A_POL"]),
-        ("Mortier_M43_160mm_POL", 2, [4, 0, 0, 0], ["Star_266_POL", "OT_64_SKOT_2A_POL"]),
+        ("Mortier_M43_160mm_POL", 2, [4, 3, 0, 0], ["Star_266_POL", "OT_64_SKOT_2A_POL"]),
         ("Mortier_PM43_120mm_POL", 2, [5, 4, 3, 0], ["Star_266_POL", "OT_64_SKOT_2A_POL"]),
         ("Mortier_M43_82mm_POL", 2, [5, 4, 3, 0], ["UAZ_469_trans_POL"]),
     ],
@@ -473,7 +473,7 @@ POL_motorized_newdivisionrules = {
         ("T54B_POL", 2, [10, 7, 0, 0]),
         ("BRDM_2_Konkurs_POL", 2, [8, 6, 0, 0]),
         ("BRDM_2_Malyu_P_POL", 2, [10, 7, 0, 0]),
-        ("UAZ_469_Fagot_POL", 2, [0, 12, 9, 0]),
+        ("UAZ_469_Fagot_POL", 2, [10, 7, 0, 0]),
         ("AT_D48_85mm_POL", 2, [9, 7, 5, 0], ["Star_266_POL", "OT_64_SKOT_2A_POL"]),
     ],
     "recon": [

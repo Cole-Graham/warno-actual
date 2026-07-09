@@ -109,17 +109,16 @@ usa_unit_edits = {
         "TagSet": {"add_tags": ['"CMD_Unit"']},
     },
 
-    # doesn't exist anymore?
-    # "AAVC_7A1_CMD_USMC_US": {
-    #     "CommandPoints": 150,
-    #     "availability": [0, 3, 0, 0],
-    #     "Divisions": {
-    #         "default": {
-    #             "cards": 1,
-    #         },
-    #     },
-    #     "TagSet": {"add_tags": ['"CMD_Unit"']},
-    # },
+    "AAVC_7A1_CMD_USMC_US": {
+        "CommandPoints": 150,
+        "availability": [0, 3, 0, 0],
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "TagSet": {"add_tags": ['"CMD_Unit"']},
+    },
 
     "M2A1_Bradley_Leader_US": {
         "CommandPoints": 195,
@@ -2019,7 +2018,7 @@ usa_unit_edits = {
         "GameName": {
             "display": "AERO-RIFLES [AT4]",
         },
-        "CommandPoints": 55,
+        "CommandPoints": 60,
         "armor": "Infantry_armor_reference",
         "availability": [0, 6, 4, 0],
         "max_speed": 26,
@@ -3427,7 +3426,7 @@ usa_unit_edits = {
     },
     
     "CUCV_Hellfire_US": {
-        "CommandPoints": 120,
+        "CommandPoints": 130,
         "availability": [0, 4, 3, 0],
     },
 
@@ -3943,6 +3942,7 @@ usa_unit_edits = {
         "armor": {
             "front": (1, None),
         },
+        "stealth": 1.5,
         "WeaponDescriptor": {
             "Salves": {
                 "MMG_turret_7_62mm_M60": 60,
@@ -3950,6 +3950,16 @@ usa_unit_edits = {
             },
             "equipmentchanges": {
                 "replace": {
+                    "AutoCanon_AP_25mm_M242_Bushmaster_Late": {
+                        "new_weapon": "AutoCanon_AP_25mm_M242_Bushmaster_APDS",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                    "AutoCanon_HE_25mm_M242_Bushmaster_Late": {
+                        "new_weapon": "AutoCanon_HE_25mm_M242_Bushmaster_APDS",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
                     "MMG_team_7_62mm_M60": {
                         "new_weapon": "MMG_turret_7_62mm_M60",
                         "swap_fire_effect": False,
@@ -3965,6 +3975,7 @@ usa_unit_edits = {
         "CommandPoints": 65,
         "strength": "LAV_25_M1047_US_US",
         "armor": "LAV_25_M1047_US_US",
+        "stealth": "LAV_25_M1047_US_US",
         "WeaponDescriptor": {
             "Salves": {
                 "MMG_turret_7_62mm_M60": 60,
@@ -3972,6 +3983,16 @@ usa_unit_edits = {
             },
             "equipmentchanges": {
                 "replace": {
+                    "AutoCanon_AP_25mm_M242_Bushmaster_Late": {
+                        "new_weapon": "AutoCanon_AP_25mm_M242_Bushmaster_APDS",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                    "AutoCanon_HE_25mm_M242_Bushmaster_Late": {
+                        "new_weapon": "AutoCanon_HE_25mm_M242_Bushmaster_APDS",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
                     "MMG_team_7_62mm_M60": {
                         "new_weapon": "MMG_turret_7_62mm_M60",
                         "swap_fire_effect": False,
@@ -4250,6 +4271,10 @@ usa_unit_edits = {
     "OA10A_US": {
         "CommandPoints": 220,
         "ECM": "A10_Thunderbolt_II_US",
+        "armor": {
+            "sides": (3, None),
+            "top": (3, None),
+        },
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 2625.0,
@@ -4540,7 +4565,7 @@ usa_unit_edits = {
                     },
                 },
                 "quantity": {
-                    "FM_M16": 6,
+                    "FM_M16A1": 6,
                     "MMG_M60E1_7_62mm": 2,
                 },
             },
@@ -4634,7 +4659,7 @@ usa_unit_edits = {
     },
     
     "ForceRecon_USMC_US": {
-        "CommandPoints": 40,
+        "CommandPoints": 50,
         "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
@@ -4657,7 +4682,7 @@ usa_unit_edits = {
     },
     
     "DeltaForce_US": {
-        "CommandPoints": 45,
+        "CommandPoints": 55,
         "armor": "Infantry_armor_reference",
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -4888,7 +4913,7 @@ usa_unit_edits = {
     },
     
     "M42_Duster_US": {
-        "CommandPoints": 50,
+        "CommandPoints": 60,
         "availability": [10, 0, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
@@ -5053,6 +5078,7 @@ usa_unit_edits = {
     
     "DCA_XM85_Chaparral_US": {
         "CommandPoints": 80,
+        "strength": 6,
         "availability": [4, 3, 0, 0],
         "optics": {
             "OpticalStrengths": {
@@ -5097,6 +5123,7 @@ usa_unit_edits = {
         "capacities": {
             "remove_capacities": ["reserviste"],
         },
+        "strength": 10,
         "availability": [0, 4, 3, 0],
         "SpecialtiesList": {
             "overwrite_all": [
@@ -5106,6 +5133,17 @@ usa_unit_edits = {
         "Divisions": {
             "default": {
                 "cards": 1,
+            },
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": {
+                    "SAM_ROLAND_3": {
+                        "new_weapon": "SAM_FFR_ROLAND_3",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
         "UpgradeFromUnit": "M48_Chaparral_MIM72F_US",
@@ -5119,6 +5157,7 @@ usa_unit_edits = {
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
+        "strength": 6,
         "availability": [5, 4, 0, 0],
         "Divisions": {
             "default": {
@@ -5144,6 +5183,7 @@ usa_unit_edits = {
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
+        "strength": 6,
         "availability": [6, 4, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
@@ -5175,9 +5215,6 @@ usa_unit_edits = {
     "UH1N_TwinHuey_RKT_US": { # 10% ECM, 8 HP
         "CommandPoints": 70,
         "strength": 6,
-        "SpecialtiesList": {
-            "add_specs": ["'refundable_unit'",],
-        },
     },
     
     "UH60A_Black_Hawk_US": {
@@ -5267,6 +5304,9 @@ usa_unit_edits = {
     },
 
     "AH1F_ATAS_US": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 130,
         "Divisions": {
             "default": {
@@ -5277,6 +5317,9 @@ usa_unit_edits = {
     },
     
     "AH1F_CNITE_US": { # 10% ECM, 4x TOW-2, 38x Hydra
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 150,
         "Divisions": {
             "default": {
@@ -5290,6 +5333,9 @@ usa_unit_edits = {
     },
 
     "AH1F_Cobra_US": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 120,
         "Divisions": {
             "default": {
@@ -5306,6 +5352,9 @@ usa_unit_edits = {
     },
 
     "AH1S_Cobra_US": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 100,
         "Divisions": {
             "default": {
@@ -5325,6 +5374,9 @@ usa_unit_edits = {
     },
 
     "AH1F_Hog_US": { # 76x Hydra
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 100,
         "Divisions": {
             "default": {
@@ -5344,6 +5396,9 @@ usa_unit_edits = {
     },
 
     "AH1F_HeavyHog_US": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 100,
         "Divisions": {
             "default": {
@@ -5354,10 +5409,16 @@ usa_unit_edits = {
     },
     
     "AH1W_SuperCobra_Hydra_US": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 125,  
     },
     
     "AH1W_SuperCobra_AA_US": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 140,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -5373,10 +5434,16 @@ usa_unit_edits = {
     },
     
     "AH1W_SuperCobra_AT_US": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 175,
     },
     
     "AH1W_SuperCobra_SEAD_US": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 150,
         "optics": {
             "VisionRangesGRU": {
@@ -5389,6 +5456,9 @@ usa_unit_edits = {
     },
 
     "AH64_Apache_US": {  # 8x Hellfire / Hydra
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 200,
         "SpecialtiesList": {
             "add_specs": ["'_hmd'"],
@@ -5402,6 +5472,9 @@ usa_unit_edits = {
     },
 
     "AH64_Apache_emp1_US": {  # 16x Hellfire
+        "XP": {
+            "pack": "helico_attack",
+        },
         "GameName": {
             "display": "AH-64A APACHE [AT]",
         },
@@ -5422,6 +5495,9 @@ usa_unit_edits = {
     },
 
     "AH64_Apache_emp2_US": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 160,
         "SpecialtiesList": {
             "add_specs": ["'_hmd'"],
@@ -5438,6 +5514,9 @@ usa_unit_edits = {
     },
 
     "AH64_Apache_ATAS_US": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 230,
         "SpecialtiesList": {
             "add_specs": ["'_hmd'"],
@@ -5549,7 +5628,7 @@ usa_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 0: {
-                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMax": 0.9599311,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },
@@ -5574,6 +5653,11 @@ usa_unit_edits = {
         "CommandPoints": 160,
         "ECM": -0.25,
         "availability": [0, 3, 2, 0],
+        "optics": {
+            "VisionRangesGRU": {
+                "EVisionRange/Standard": 4550.0,
+            },
+        },
         "WeaponDescriptor": {
             # "equipmentchanges": {
             #     "replace": {
@@ -5630,7 +5714,7 @@ usa_unit_edits = {
     },
     
     "EA6B_Prowler_US": {
-        "CommandPoints": 280,
+        "CommandPoints": 300,
         "ECM": -0.60,
         "optics": {
             "VisionRangesGRU": {
@@ -5644,7 +5728,7 @@ usa_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 0: {
-                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMax": 0.9599311,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },
@@ -5778,7 +5862,7 @@ usa_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 0: {
-                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMax": 0.9599311,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },
@@ -5866,7 +5950,7 @@ usa_unit_edits = {
     },
 
     "F111F_Aardvark_LGB_US": {  # 4x GBU-12
-        "CommandPoints": 260,
+        "CommandPoints": 280,
         "GameName": {
             "display": "F-111F AARDVARK [PGB]",
         },
@@ -6027,7 +6111,7 @@ usa_unit_edits = {
     },
 
     "EF111_Raven_US": { # EW
-        "CommandPoints": 180,
+        "CommandPoints": 200,
         "max_speed": 1400,
         "optics": {
             "VisionRangesGRU": {
@@ -6179,7 +6263,7 @@ usa_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 1: {
-                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMax": 0.9599311,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },
@@ -6358,9 +6442,18 @@ usa_unit_edits = {
             },
         },
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": {
+                    "AGM_AGM88_HARM": {
+                        "new_weapon": "AGM_AGM88_HARM_ReflexPriorityFalse",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
+            },
             "turrets": {
                 3: {
-                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMax": 0.9599311,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },
@@ -6371,6 +6464,10 @@ usa_unit_edits = {
 
     "A10_Thunderbolt_II_US": {  # 8x mk.82, 2x AIM-9M
         "CommandPoints": 230,
+        "armor": {
+            "sides": (3, None),
+            "top": (3, None),
+        },
         "max_speed": 500,
         "ECM": -0.25,
         "availability": [0, 2, 0, 0],
@@ -6378,6 +6475,10 @@ usa_unit_edits = {
 
     "A10_Thunderbolt_II_Rkt_US": {  # 76x Hydra, 2x AIM-9M
         "CommandPoints": 240,
+        "armor": {
+            "sides": (3, None),
+            "top": (3, None),
+        },
         "max_speed": 500,
         "ECM": "A10_Thunderbolt_II_US",
         "availability": [0, 2, 0, 0],
@@ -6385,6 +6486,10 @@ usa_unit_edits = {
 
     "A10_Thunderbolt_II_ATGM_US": {  # 4x AGM-65D, 2x AIM-9M
         "CommandPoints": 260,
+        "armor": {
+            "sides": (3, None),
+            "top": (3, None),
+        },
         "max_speed": 500,
         "ECM": "A10_Thunderbolt_II_US",
         "availability": [0, 2, 0, 0],

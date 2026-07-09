@@ -977,7 +977,7 @@ USA_NEW_UNITS = {
         "depictions": {
             "new_mesh": True,
         },
-        "CommandPoints": 260,
+        "CommandPoints": 280,
         "ECM": -0.45,
         "optics": {
             "VisionRangesGRU": {
@@ -1004,22 +1004,21 @@ USA_NEW_UNITS = {
                 "replace": {
                     "AGM_AGM45_Shrike": {
                         "new_weapon": "AGM_AGM88_HARM_ReflexPriorityFalse",
-                        "swap_fire_effect": True,
+                        "swap_fire_effect": False,
                         "depiction_baked_in": False,
                     },
                 },
                 "replace_with_turret": [
                     ("AA_AIM9J_Sidewinder", "AGM_AGM65D_Maverick", "AA_AIM9J_Sidewinder", "AGM_AGM65D_Maverick"),
-                ]
+                ],
+                "turrets": {
+                    1: {
+                        "AngleRotationMax": 0.9599311,
+                        "AngleRotationMaxPitch": 0.8726646,
+                        "AngleRotationMinPitch": -0.8726646,
+                    },
+                },
             },
-            # TODO: Determine if AGM88 has the Autogyr to support being fired from this angle
-            # "turrets": {
-            #     1: {
-            #         "AngleRotationMax": 1.745329,
-            #         "AngleRotationMaxPitch": 0.8726646,
-            #         "AngleRotationMinPitch": -0.8726646,
-            #     },
-            # },
         },
         "Divisions": {
             "default": {

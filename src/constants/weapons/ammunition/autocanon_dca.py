@@ -242,7 +242,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2275,
-                "MaximumRangeAirplaneGRU": 1952,
+                "MaximumRangeAirplaneGRU": 1925,
                 "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 0.2,
                 "TimeBetweenTwoFx": 0.2,
@@ -266,7 +266,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 2100,
-                "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 0.2,
                 "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 1.38,
@@ -282,14 +281,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("DCA_4_canons_AZP_23_Amur_23mm_PSNR", "DCA", None, False): { # PSNR (only ground radar, i.e. stat clone of afghanskii)
         "Ammunition": {
             "hit_roll": {
-                "Idling": 30,
-                "Moving": 15,
+                "Idling": 20,
+                "Moving": 10,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
                 "MaximumRangeHelicopterGRU": 2275,
                 "MaximumRangeAirplaneGRU": 1925,
-                "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 0.2,
                 "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 1.38,
@@ -333,7 +331,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "HasDeploymentTime": True,
                 "MaximumRangeGRU": 1575,
-                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeHelicopterGRU": 2275,
                 "MaximumRangeAirplaneGRU": 1750,
                 "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 0.2,
@@ -355,7 +353,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
-                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeHelicopterGRU": 2275,
                 "MaximumRangeAirplaneGRU": 1750,
                 "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 0.2,
@@ -377,7 +375,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
-                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeHelicopterGRU": 2275,
                 "MaximumRangeAirplaneGRU": 1750,
                 "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 0.2,
@@ -400,7 +398,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "HasDeploymentTime": True,
                 "MaximumRangeGRU": 1575,
-                "MaximumRangeHelicopterGRU": 2450,
+                "MaximumRangeHelicopterGRU": 2275,
                 "MaximumRangeAirplaneGRU": 1750,
                 "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 0.2,
@@ -422,7 +420,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MaximumRangeGRU": 1575,
-                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeHelicopterGRU": 2450,
                 "MaximumRangeAirplaneGRU": 1750,
                 "AimingTime": 1.2,
                 "TimeBetweenTwoShots": 0.2,
@@ -530,6 +528,33 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Idling": 30,
             },
             "parent_membr": {
+                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoFx": 0.1,
+                "MaximumRangeGRU": 1575,
+                "MaximumRangeHelicopterGRU": 2625,
+                "MaximumRangeAirplaneGRU": 2450,
+                "PhysicalDamages": 0.7,
+                "AimingTime": 1.2,
+                "TimeBetweenTwoSalvos": 1.0,
+                "ShotsCountPerSalvo": 20,
+                "AffichageMunitionParSalve": 40,
+                "SupplyCost": 18.0,
+            },
+        },
+        "WeaponDescriptor": {
+            "Salves": 7,
+        },
+    },
+    
+    ("DCA_2_canons_Oerlikon_GDF_002_35mm_radar", "DCA", "DCA_2_canons_Oerlikon_GDF_002_35mm", True): { # Skyguard, 35mm at 1200 rpm
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 30,
+            },
+            "parent_membr": {
+                "HasDeploymentTime": True,
+                "add": [41, "Guidance = Guidance_Radar"],
+                "TraitsToken": ['STAT', 'RADAR'],
                 "TimeBetweenTwoShots": 0.1,
                 "TimeBetweenTwoFx": 0.1,
                 "MaximumRangeGRU": 1575,
@@ -705,10 +730,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MaximumRangeHelicopterGRU": 2625,
                 "MaximumRangeAirplaneGRU": 2275,
                 "PhysicalDamages": 1.0,
-                "ShotsCountPerSalvo": 400,
-                "AffichageMunitionParSalve": 400,
-                "TimeBetweenTwoSalvos": 10.0,
-                "SupplyCost": 400.0,
+                "ShotsCountPerSalvo": 16,
+                "AffichageMunitionParSalve": 16,
+                "TimeBetweenTwoSalvos": 2.6,
+                "SupplyCost": 16.0,
             },
         },
     },
@@ -740,9 +765,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
     
     ("DCA_1_canon_KS19_100mm", "DCA", None, False): {
         "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_he_dca_airtargets",
+            },
             "parent_membr": {
                 "HasDeploymentTime": True,
-                "AimingTime": 2.0,
+                "AimingTime": 0.3,
+                "SuppressDamages": 80,
             },
         },
     },
@@ -761,13 +790,15 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "HasDeploymentTime": True,
                 "AimingTime": 2.0,
-                "PhysicalDamages": 1.15,
             },
         },
     },
 
     ("DCA_1_canon_KS19_100mm_radar", "DCA", "DCA_1_canon_KS19_100mm", True): { # Single 100mm, 120 RPM, PUAZO fire director and SON-9 fire-control radar
         "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_he_dca_airtargets",
+            },
             "hit_roll": {
                 "Idling": 40,
             },
@@ -775,7 +806,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "HasDeploymentTime": True,
                 "add": [41, "Guidance = Guidance_Radar"],
                 "TraitsToken": ['STAT', 'RADAR'],
-                "AimingTime": 2.0,
+                "AimingTime": 0.3,
+                "SuppressDamages": 80,
                 "MaximumRangeHelicopterGRU": 2800,
                 "MaximumRangeAirplaneGRU": 2625,
                 "PhysicalDamages": 5.0,
@@ -790,8 +822,13 @@ weapons: Dict[WeaponKey, WeaponData] = {
     
     ("DCA_1_canon_KS30_130mm", "DCA", None, False): {
         "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_he_dca_airtargets",
+            },
             "parent_membr": {
                 "HasDeploymentTime": True,
+                "AimingTime": 0.3,
+                "SuppressDamages": 103,
             },
         },
     },
@@ -799,10 +836,11 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Canon_HE_KS30_130mm", "canon", None, False): {
         "Ammunition": {
             "parent_membr": {
+                "TimeBetweenTwoShots": 5.0,
                 "HasDeploymentTime": True,
                 "AimingTime": 2.0,
                 "MaximumRangeGRU": 1750,
-                "PhysicalDamages": 7.0,
+                "PhysicalDamages": 1.7,
                 "ShotsCountPerSalvo": 60,
                 "AffichageMunitionParSalve": 60,
                 "TimeBetweenTwoSalvos": 10.0,
@@ -813,6 +851,9 @@ weapons: Dict[WeaponKey, WeaponData] = {
 
     ("DCA_1_canon_KS30_130mm_radar", "DCA", "DCA_1_canon_KS30_130mm", True): { # Single 130mm, 120 RPM, PUAZO fire director and SON-9 fire-control radar
         "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_he_dca_airtargets",
+            },
             "hit_roll": {
                 "Idling": 40
             },
@@ -820,7 +861,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "HasDeploymentTime": True,
                 "add": [41, "Guidance = Guidance_Radar"],
                 "TraitsToken": ['STAT', 'RADAR'],
-                "AimingTime": 2.0,
+                "AimingTime": 0.3,
+                "SuppressDamages": 103,
                 "MaximumRangeHelicopterGRU": 2800,
                 "MaximumRangeAirplaneGRU": 2625,
                 "PhysicalDamages": 7.0,

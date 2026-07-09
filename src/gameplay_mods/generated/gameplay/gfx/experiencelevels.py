@@ -1,7 +1,7 @@
 """Functions for modifying ExperienceLevels.ndf"""
 
 from typing import Any
-from src.dics.veterancy.vet_bonuses import VETERANCY_BONUSES
+from src.constants.effects.veterancy import VETERANCY_BONUSES
 from src import ndf
 from src.utils.logging_utils import setup_logger
 
@@ -26,10 +26,6 @@ def _edit_veterancy_hints(source_path) -> None:
         "ExperienceLevelsPackDescriptor_XP_pack_simple_v3": {
             "pack_type": "simple_v3",
             "level_format": "simple_v3_{level}",
-        },
-        "ExperienceLevelsPackDescriptor_XP_pack_SF_v2": {
-            "pack_type": "SF_v2",
-            "level_format": "SF_v2_{level}",
         },
         "ExperienceLevelsPackDescriptor_XP_pack_artillery": {
             "pack_type": "artillery",
@@ -118,11 +114,11 @@ def _create_new_packs(source_path) -> None:
     xp_levels_list.v[3].v.by_m("HintBodyToken").v = \
         "'" + VETERANCY_BONUSES["SF_v2_multiplicative"]["SF_v2_multiplicative_3"]["body_token"] + "'"
     xp_levels_list.v[1].v.by_m("LevelEffectsPacks").v.remove(1)
-    xp_levels_list.v[1].v.by_m("LevelEffectsPacks").v.add("$/GFX/EffectCapacity/UnitEffect_xp_trained_multiplicative")
+    xp_levels_list.v[1].v.by_m("LevelEffectsPacks").v.add("$/GFX/EffectCapacity/UnitEffect_xp_trained_SF_multiplicative")
     xp_levels_list.v[2].v.by_m("LevelEffectsPacks").v.remove(1)
-    xp_levels_list.v[2].v.by_m("LevelEffectsPacks").v.add("$/GFX/EffectCapacity/UnitEffect_xp_veteran_multiplicative")
+    xp_levels_list.v[2].v.by_m("LevelEffectsPacks").v.add("$/GFX/EffectCapacity/UnitEffect_xp_veteran_SF_multiplicative")
     xp_levels_list.v[3].v.by_m("LevelEffectsPacks").v.remove(1)
-    xp_levels_list.v[3].v.by_m("LevelEffectsPacks").v.add("$/GFX/EffectCapacity/UnitEffect_xp_elite_multiplicative")
+    xp_levels_list.v[3].v.by_m("LevelEffectsPacks").v.add("$/GFX/EffectCapacity/UnitEffect_xp_elite_SF_multiplicative")
     source_path.add(sf2multi)
     
     # create XP_pack_helico_SF
@@ -145,3 +141,30 @@ def _create_new_packs(source_path) -> None:
     xp_levels_list.v[3].v.by_m("LevelEffectsPacks").v.remove(0)
     xp_levels_list.v[3].v.by_m("LevelEffectsPacks").v.add("$/GFX/EffectCapacity/UnitEffect_xp_elite_helo_SF")
     source_path.add(helicoSF)
+
+    # create XP_pack_helico_attack
+    helicoAttack = source_path.by_n("ExperienceLevelsPackDescriptor_XP_pack_helico").copy()
+    helicoAttack.namespace = "ExperienceLevelsPackDescriptor_XP_pack_helico_attack"
+    helicoAttack.v.by_m("DescriptorId").v = "GUID:{d534be83-c807-421b-bf1c-76d42e54dc74}"
+    xp_levels_list = helicoAttack.v.by_m("ExperienceLevelsDescriptors")
+    xp_levels_list.v[0].v.by_m("DescriptorId").v = "GUID:{347bc32e-51b5-42af-b38b-8b9ecc466e21}"
+    xp_levels_list.v[1].v.by_m("DescriptorId").v = "GUID:{2e6602c4-4bac-4362-a5c1-dc1d9dd0310c}"
+    xp_levels_list.v[2].v.by_m("DescriptorId").v = "GUID:{8095e567-6d50-4ef4-8b0e-6e50105e9d56}"
+    xp_levels_list.v[3].v.by_m("DescriptorId").v = "GUID:{fba0ef73-bcaf-47f2-9b36-30feb23cde39}"
+    xp_levels_list.v[0].v.by_m("HintBodyToken").v = \
+        "'" + VETERANCY_BONUSES["helico_attack"]["helico_attack_0"]["body_token"] + "'"
+    xp_levels_list.v[1].v.by_m("HintBodyToken").v = \
+        "'" + VETERANCY_BONUSES["helico_attack"]["helico_attack_1"]["body_token"] + "'"
+    xp_levels_list.v[2].v.by_m("HintBodyToken").v = \
+        "'" + VETERANCY_BONUSES["helico_attack"]["helico_attack_2"]["body_token"] + "'"
+    xp_levels_list.v[3].v.by_m("HintBodyToken").v = \
+        "'" + VETERANCY_BONUSES["helico_attack"]["helico_attack_3"]["body_token"] + "'"
+    xp_levels_list.v[0].v.by_m("LevelEffectsPacks").v = \
+        "[$/GFX/EffectCapacity/UnitEffect_xp_rookie_helo_attack]"
+    xp_levels_list.v[1].v.by_m("LevelEffectsPacks").v = \
+        "[$/GFX/EffectCapacity/UnitEffect_xp_trained_helo_attack]"
+    xp_levels_list.v[2].v.by_m("LevelEffectsPacks").v = \
+        "[$/GFX/EffectCapacity/UnitEffect_xp_veteran_helo_attack]"
+    xp_levels_list.v[3].v.by_m("LevelEffectsPacks").v = \
+        "[$/GFX/EffectCapacity/UnitEffect_xp_elite_helo_attack]"
+    source_path.add(helicoAttack)

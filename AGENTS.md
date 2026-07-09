@@ -4,7 +4,7 @@ Local **Cursor** rules live in **`.cursor/rules/*.mdc`**, but **only** [`.cursor
 
 **Keep in sync:** (1) **From convention → Cursor:** when you change a project convention, update this file first, then copy into your local `.cursor/rules/*.mdc` if you use Cursor (see Cursor *Rules* docs: `description`, `globs`, `alwaysApply` in the front matter). (2) **From Cursor → this file:** when you **add or materially change** a rule in `.cursor/rules/`, update **`AGENTS.md` in the same change** so the repo stays authoritative. The checked-in **`.cursor/rules/sync-agents-md-with-cursor-rules.mdc`** nudges the agent to do (2) when it touches rule files.
 
-**Also read:** [README.md](README.md) (Python env, install, config), [docs/onboarding.md](docs/onboarding.md) (editor/venv quality-of-life), and [pyproject.toml](pyproject.toml) (dependencies and optional extras).
+**Also read:** [README.md](README.md) (Python env, install, config), [docs/onboarding.md](docs/onboarding.md) (editor/venv quality-of-life), [docs/validation/infantry_small_arms_vs_strength.md](docs/validation/infantry_small_arms_vs_strength.md) (infantry small-arms validation), and [pyproject.toml](pyproject.toml) (dependencies and optional extras).
 
 ---
 
@@ -16,6 +16,14 @@ The project uses **`ndf-parse`** (import name `ndf_parse`) and other packages fr
 - **Or call the interpreter by path** (reliable in fresh shells or scripts): Windows `.\.venv\Scripts\python.exe`, Unix `.venv/bin/python` — e.g. `.\.venv\Scripts\python.exe -m unittest ...`
 
 Do not assume bare `python` or `py` has project dependencies unless the environment is confirmed.
+
+---
+
+## Do not run the patcher to test agent changes
+
+**Never** run `run_patcher.py`, `run_patcher_with_bat.py`, or equivalent patch/build scripts to verify code changes unless the user **explicitly** asks. The patcher writes game data and is not an appropriate agent self-test loop.
+
+Use read-only checks instead: import modules, `unittest` / `pytest`, grep, or small one-off scripts (e.g. audit constants dicts). Only run the patcher when the user requests it.
 
 ---
 
@@ -96,6 +104,13 @@ Some HOBS missiles require a helmet-mounted display (`_hmd`) for full off-boresi
 - **Handler:** [`weapon_descriptor/handlers/hobs_no_hmd.py`](src/gameplay_mods/generated/gameplay/gfx/weapon_descriptor/handlers/hobs_no_hmd.py).
 - **Ordering:** `apply_hobs_no_hmd_pattern_standard` runs on vanilla `WeaponDescriptor.ndf` rows **after** `vanilla_renames_weapondescriptor`, **before** `new_units_weapondescriptor` and `unit_edits_weapondescriptor`, so per-unit dict edits override. **New units** are not scanned here; set turret angles and ammo in `NEW_UNITS["WeaponDescriptor"]` instead. TBAGRU HAGRU attachment in `unit_edits_weapondescriptor` still runs afterward and can add `*_NoOBS_HAGRU` clones on existing units.
 
+### Shock no-resolute specialty (unit descriptors)
+
+Shock units receive `Capacite_resolute` via the Choc skill auto-add in `tcapacite.py`. They must **not** also carry the `_resolute` specialty tag, or the UI implies a stacked resolute bonus.
+
+- **Handler:** [`unite_descriptor/handlers/shock_no_resolute_specialty.py`](src/gameplay_mods/generated/gameplay/gfx/unite_descriptor/handlers/shock_no_resolute_specialty.py).
+- **Ordering:** `apply_shock_no_resolute_specialty_pattern_standard` runs **after** `unit_edits` and `new_units` so `SpecialtiesList` patches are applied first, then `_resolute` is stripped when the unit has the Choc skill or `_choc` specialty. `Capacite_resolute` from tcapacite is unchanged.
+
 ### Artillery deployment time
 
 Howitzers, MLRS, and mortars get deployment time via category + unit pattern standards (most units no longer need manual `"WeaponDeployment"` in `unit_edits`).
@@ -105,6 +120,17 @@ Howitzers, MLRS, and mortars get deployment time via category + unit pattern sta
 - **Unit handler:** [`handlers/tweapondeployment.py`](src/gameplay_mods/generated/gameplay/gfx/unite_descriptor/handlers/tweapondeployment.py) — runs after batch module add/remove, before `unit_edits`, so explicit `"WeaponDeployment"` dict edits still override.
 - **Tier rule:** 15 s if `RadiusSplashPhysicalDamagesGRU >= 152` **or** `PhysicalDamages >= 4.2`; otherwise 7 s. All packup times are 0 s.
 - **Blanket disable:** unchanged — `_blanket_disable_deployment_time` strips non-protected ammo using the same name-resolution rules as precompute (`ammo_name_keeps_deployment_time`). DCA/ATGM ammo with explicit `HasDeploymentTime` in constants uses the same protection path.
+
+---
+
+## Infantry small arms vs strength validation
+
+Precompute validation in [`src/data/infantry_small_arms_strength_validation.py`](src/data/infantry_small_arms_strength_validation.py) checks that edited/new infantry squads have countable small-arms totals matching `strength - occupied_slots`. Full write-up: [docs/validation/infantry_small_arms_vs_strength.md](docs/validation/infantry_small_arms_vs_strength.md).
+
+- **Weapon teams** are skipped by **resolved loadout** (zero `countable` mounts, all mounts `team_mg` / `occupied` / `specialist`). Unit names (`ATteam`, `RCL_`) are not used.
+- **`specialist`** mounts (RPG, portable `MinMax_ATGM`, Milan on dedicated teams, etc.) are excluded from `small_arms_total` only. Infantry with rifles + portable ATGM (e.g. Metis, Dragon) **is validated**; `MinMax_ATGM` does not occupy a rifle slot.
+- **Occupied slots:** per-turret `max` for `MinMax_CanonAP` (dual AP/HE on one crew = one slot), per-turret `sum` for `MinMax_FLAME`.
+- Manual override: `INFANTRY_SMALL_ARMS_STRENGTH_SKIP_UNITS` in the validation module.
 
 ---
 

@@ -17,7 +17,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MinimumRangeGRU": 60,
-                "ProjectileSpeedGRU": 233,
+                "ProjectileSpeedGRU": 267,
                 "InterfaceWeaponTexture": "'Texture_Interface_Weapon_dragon_wa'",
             }
         },
@@ -26,7 +26,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "SalvoLengths": [1],
         },
         "MissileDescriptor": {
-            "MaxSpeedGRU": 233,
+            "MaxSpeedGRU": 267,
         },
     },
 
@@ -40,7 +40,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "MinimumRangeGRU": 60,
-                "ProjectileSpeedGRU": 233,
+                "ProjectileSpeedGRU": 267,
                 "InterfaceWeaponTexture": "'Texture_Interface_Weapon_dragon_wa'",
             }
         },
@@ -49,7 +49,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "SalvoLengths": [1],
         },
         "MissileDescriptor": {
-            "MaxSpeedGRU": 233,
+            "MaxSpeedGRU": 267,
         },
     },
     
@@ -305,12 +305,16 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Index": 26,
             },
             "parent_membr": {
+                "ProjectileSpeedGRU": 1060,
                 "InterfaceWeaponTexture": "'Texture_Interface_Weapon_hellfire_wa'",
             },
         },
         "SupplyCost": 115.0,
         "WeaponDescriptor": {
             "SalvoLengths": [2],
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 1060,
         },
     },
     
@@ -521,15 +525,17 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("ATGM_9M14_MalyutkaP_IFV", "ATGM", None, False): {
         "Ammunition": {
+            "display": "Malyutka-MP1",
+            "token": "LYNVYJTVKO",
             "Arme": {
-                "Index": 17,
+                "Index": 18,
             },
             "hit_roll": {
                 "Idling": 50,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 2450,
-                "ProjectileSpeedGRU": 233,
+                "ProjectileSpeedGRU": 267,
                 "InterfaceWeaponTexture": "'Texture_Interface_Weapon_malyutka_wa'",
             },
         },
@@ -538,21 +544,23 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "SalvoLengths": [1],
         },
         "MissileDescriptor": {
-            "MaxSpeedGRU": 233,
+            "MaxSpeedGRU": 267,
         },
     },
 
     ("ATGM_9M14_MalyutkaP", "ATGM", None, False): {
         "Ammunition": {
+            "display": "Malyutka-MP1",
+            "token": "LYNVYJTVKO",
             "Arme": {
-                "Index": 17,
+                "Index": 18,
             },
             "hit_roll": {
                 "Idling": 50,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 2450,
-                "ProjectileSpeedGRU": 233,
+                "ProjectileSpeedGRU": 267,
                 "InterfaceWeaponTexture": "'Texture_Interface_Weapon_malyutka_wa'",
             },
         },
@@ -561,7 +569,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "SalvoLengths": [6, 4, 2, 1],
         },
         "MissileDescriptor": {
-            "MaxSpeedGRU": 233,
+            "MaxSpeedGRU": 267,
         },
     },
 
@@ -625,10 +633,14 @@ missiles: Dict[WeaponKey, WeaponData] = {
     ("ATGM_9M114M_Ataka", "ATGM", None, False): {
         "Ammunition": {
             "Arme": {
-                "Index": 25,
+                "Index": 26,
+            },
+            "hit_roll": {
+                "Idling": 60,
             },
             "parent_membr": {
-                "ProjectileSpeedGRU": 800,
+                "ProjectileSpeedGRU": 1060,
+                "TimeBetweenTwoSalvos": 8.0,
                 "InterfaceWeaponTexture": "'Texture_Interface_Weapon_ataka_wa'",
             },
         },
@@ -637,7 +649,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "SalvoLengths": [1],
         },
         "MissileDescriptor": {
-            "MaxSpeedGRU": 800,
+            "MaxSpeedGRU": 1060,
         },
     },
 

@@ -1,3 +1,10 @@
+"""Sprint effect constants."""
+
+CHOC_SPRINT_BONUSES = {
+    "suppress_damage_multiplier": 0.50,
+    "speed_bonus_percentage": 70,
+}
+
 SPRINT_EFFECT = (
     'export UnitEffect_Sprint is TEffectsPackDescriptor'
     '('
@@ -7,52 +14,24 @@ SPRINT_EFFECT = (
     '        TUnitEffectIncreaseDamageTakenDescriptor'
     '        ('
     '            ModifierType = ~/ModifierType_Multiplicatif'
-    '            BonusDamage = 0.75'
+    f'            BonusDamage = {1 - CHOC_SPRINT_BONUSES["suppress_damage_multiplier"]}'
     '            DamageType  = ~/EDamageType/Suppress'
     '        ),'
     '        TEffectInflictDamageDescriptor'
     '        ('
     '            DamageType = ~/EDamageType/Suppress'
     '            ModifierType = ~/ModifierType_Additionnel'
-    '            DamageValue = 30' # Buffer to prevent suppression regeneration from instantly cancelling the effect
+    '            DamageValue = 20' # Buffer to prevent suppression regeneration from instantly cancelling the effect
     '        ),'
     '        TUnitEffectIncreaseSpeedDescriptor'
     '        ('
     '            ModifierType = ~/ModifierType_Pourcentage'
-    '            BonusSpeedBaseInPercent   = 70'
+    f'            BonusSpeedBaseInPercent   = {CHOC_SPRINT_BONUSES["speed_bonus_percentage"]}'
     '        ),'
     '        TUnitEffectShowLabelIconDescriptor'
     '        ('
     '            TextureToken = "icone_shock_move"'
     '        ),'
-    '    ]'
-    ')'
-)
-
-SPRINT_ACTIVATED_EFFECT = (
-    'export UnitEffect_Sprint_Activated is TEffectsPackDescriptor'
-    '('
-    '    DescriptorId       = GUID:{f56b73a9-652a-4c23-a048-f14d838bd021}'
-    '    NameForDebug       = "Sprint_Activated"'
-    '    EffectsDescriptors = ['
-    '        TUnitEffectRaiseTagDescriptor'
-    '        ('
-    '            TagListToRaise = ["SprintActivated"]'
-    '        )'
-    '    ]'
-    ')'
-)
-
-NO_SPRINT_EFFECT = (
-    'export UnitEffect_NoSprint is TEffectsPackDescriptor'
-    '('
-    '    DescriptorId       = GUID:{bf1daa2b-1708-4702-80ff-4c7dfd76c2d7}'
-    '    NameForDebug       = "NoSprint"'
-    '    EffectsDescriptors = ['
-    '        TUnitEffectRaiseTagDescriptor'
-    '        ('
-    '            TagListToRaise = ["NoSprint"]'
-    '        )'
     '    ]'
     ')'
 )
@@ -66,20 +45,6 @@ NO_SPRINT_MORALE_EFFECT = (
     '        TUnitEffectRaiseTagDescriptor'
     '        ('
     '            TagListToRaise = ["NoSprint_Morale"]'
-    '        )'
-    '    ]'
-    ')'
-)
-
-SPRINT_OK_EFFECT = (
-    'export UnitEffect_Sprint_ok is TEffectsPackDescriptor'
-    '('
-    '    DescriptorId       = GUID:{1748af97-f02d-4f04-8367-a5fb43f93f7c}'
-    '    NameForDebug       = "Sprint_ok"'
-    '    EffectsDescriptors = ['
-    '        TUnitEffectRaiseTagDescriptor'
-    '        ('
-    '            TagListToRaise = ["Sprint_ok"]'
     '        )'
     '    ]'
     ')'

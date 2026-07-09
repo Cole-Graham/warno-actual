@@ -281,6 +281,32 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("Howz_Canon_M56_105mm", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {   
+                "MinimumRangeGRU": 1925,
+                "PhysicalDamages": 3.0,
+                "SuppressDamages": 187,
+                "RadiusSplashPhysicalDamagesGRU": 105,
+                "RadiusSplashSuppressDamagesGRU": 140,
+                "ShotsCountPerSalvo": 5,
+                "SupplyCost": 100.0,
+                "AffichageMunitionParSalve": 5,
+            },
+        },
+    },
+    
+    ("Howz_Canon_M56_105mm_SMOKE", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "MinimumRangeGRU": 1925,
+                "TimeBetweenTwoShots": 5.0,
+                "ShotsCountPerSalvo": 5,
+                "AffichageMunitionParSalve": 5,
+            },
+        },
+    },
+    
     ("Howz_Canon_M101_Howitzer_105mm", "howitzer", None, False): {
         "Ammunition": {
             "parent_membr": {
@@ -509,8 +535,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "MinimumRangeGRU": 1925,
                 "TimeBetweenTwoShots": 3.0,
                 "TimeBetweenTwoFx": 3.0,
-                "DispersionAtMaxRangeGRU": 500,
-                "DispersionAtMinRangeGRU": 112,
                 "ShotsCountPerSalvo": 7,
                 "AffichageMunitionParSalve": 7,
                 "PhysicalDamages": 3.6,

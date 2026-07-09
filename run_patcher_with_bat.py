@@ -218,17 +218,25 @@ if __name__ == "__main__":
 		ammo_db['renames_new_old'] = renames_new_old
 
 		if config.config_data["build_config"]["target"] == "gameplay":
+			from src.data.default_multi_deck_validation import validate_default_multi_decks
 			from src.utils.new_divisionrules_unit_validation import (
+				validate_new_divisionrules_availability_consistency,
 				validate_new_divisionrules_units,
 				validate_standout_units_in_division_rules,
 				validate_transport_overrides_against_division_rule_transports,
 			)
 			validate_new_divisionrules_units(log=logger)
+			validate_new_divisionrules_availability_consistency(log=logger)
 			validate_transport_overrides_against_division_rule_transports(log=logger)
 			validate_standout_units_in_division_rules(
 				log=logger,
 				game_db=config.config_data.get("game_db"),
 			)
+			if validate_default_multi_decks(log=logger):
+				logger.warning(
+					"Default multiplayer deck validation found errors - see above. "
+					"Fix default_multi_decks constants or division_rules.",
+				)
 
 		# Import and run main after database is loaded
 		from src.main import main

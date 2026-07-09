@@ -68,7 +68,7 @@ def build_database(config: Dict[str, Any]) -> Dict[str, Any]:
         unit_data["all_tags"] = all_tags_list
         _database_cache = {
             "source_files": source_files,
-            "ammunition": build_ammo_data(mod_source_path),
+            "ammunition": build_ammo_data(mod_source_path, config),
             "unit_data": unit_data,
             "ui_texture_reference": ui_texture_reference,
             "weapons": gather_weapon_data(mod_source_path),

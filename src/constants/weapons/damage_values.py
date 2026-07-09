@@ -679,8 +679,20 @@ DAMAGE_EDITS = {
     "Roquette_AP_1": {  # blindage
         "row": 142,
         "edits": {
-            7: 0.7,    # blindage 4 armor (vanilla value is 0.5)
-            8: 0.6,    # blindage 5 armor (vanilla value is 0.5)
+            3: 1.33,   # Building
+            4: 0.66,
+            5: 0.41,
+            6: 0.31,
+            7: 0.21,
+            8: 0.17,
+            9: 0.14,
+            10: 0.11,
+            (11, 33): 0.08,
+            40: 1.0,
+            45: 1.0,
+            46: 1.0,
+            47: 1.0,
+            48: 1.0,    
         }
-    }
+    },
 }

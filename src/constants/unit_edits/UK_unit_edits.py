@@ -1222,7 +1222,7 @@ uk_unit_edits = {
     },
 
     "RCL_L6_Wombat_UK": {
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "strength": 5,
         "Divisions": {
             "default": {
@@ -2020,6 +2020,7 @@ uk_unit_edits = {
                 '_smoke_launcher',
             ],
         },
+        "DeploymentShift": 750,
         "UpgradeFromUnit": "FV721_Fox_UK",
     },
     
@@ -2391,6 +2392,11 @@ uk_unit_edits = {
     
     "DCA_Oerlikon_GDF_002_35mm_UK": { # Skyguard
         "CommandPoints": 65,
+        "TagSet": {
+            "add_tags": ['"AA_radar"'],
+        },
+        "max_speed": 6,
+        "strength": 6,
         "availability": [8, 6, 0, 0],
         "optics": {
             "OpticalStrengths": {
@@ -2403,7 +2409,16 @@ uk_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_2_canons_Oerlikon_GDF_002_35mm": 14,
+                "DCA_2_canons_Oerlikon_GDF_002_35mm_radar": 14,
+            },
+            "equipmentchanges": {
+                "replace": {
+                    "DCA_2_canons_Oerlikon_GDF_002_35mm": {
+                        "new_weapon": "DCA_2_canons_Oerlikon_GDF_002_35mm_radar",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
     },
@@ -2422,6 +2437,7 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
+        "strength": 6,
         "availability": [6, 4, 0, 0],
         "Divisions": {
             "default": {
@@ -2449,6 +2465,7 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
+        "strength": 10,
         "availability": [4, 3, 0, 0],
         "UpgradeFromUnit": "DCA_Rapier_Darkfire_UK",
     },
@@ -2467,6 +2484,7 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
         },
+        "strength": 6,
         "availability": [6, 4, 0, 0],
         "Divisions": {
             "default": {
@@ -2494,6 +2512,7 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
+        "strength": 6,
         "availability": [4, 3, 0, 0],
         "UpgradeFromUnit": "DCA_Rapier_UK",
     },
@@ -2509,6 +2528,7 @@ uk_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
+        "strength": 6,
         "availability": [0, 3, 0, 0],
         "UpgradeFromUnit": None,
     },
@@ -2589,7 +2609,7 @@ uk_unit_edits = {
 
     # UK AIR
     "Canberra_T17A_UK": {
-        "CommandPoints": 160,
+        "CommandPoints": 170,
         "availability": [0, 2, 0, 0],
     },
     
@@ -2661,7 +2681,7 @@ uk_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 0: {
-                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMax": 0.9599311,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },
@@ -2802,7 +2822,7 @@ uk_unit_edits = {
     
     "Tornado_ADV_SEAD_UK" : { # 3x ALARM 5600m
         "availability": [0, 2, 0, 1],
-        "CommandPoints": 300,
+        "CommandPoints": 260,
         "ECM": -0.50,
         "optics": {
             "VisionRangesGRU": {
@@ -2815,7 +2835,7 @@ uk_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 1: {
-                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMax": 0.9599311,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },

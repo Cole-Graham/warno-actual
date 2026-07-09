@@ -2,10 +2,10 @@
 
 import csv
 from pathlib import Path
-from typing import List, Tuple  # noqa
+from typing import Dict, List, Tuple  # noqa
 
 from src import ModConfig
-from src.utils.config_utils import get_mod_name
+from src.utils.config_utils import get_mod_name, get_vanilla_units_csv_path
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
@@ -21,6 +21,27 @@ DICT_FILES = {
 
 # Track which files have been initialized this session
 _initialized_files = set()
+
+
+def load_vanilla_units_lookup(config: Dict) -> Dict[str, str]:
+    """Load TOKEN -> REFTEXT from ExampleAssets UNITS.csv (warno_mods from config)."""
+    path = get_vanilla_units_csv_path(config)
+    lookup: Dict[str, str] = {}
+    if not path.is_file():
+        logger.warning(
+            "UNITS.csv not found at %s; localization Values will fall back to Tokens",
+            path,
+        )
+        return lookup
+
+    with path.open("r", encoding="utf-8-sig", newline="") as csvfile:
+        reader = csv.DictReader(csvfile, delimiter=";", quotechar='"')
+        for row in reader:
+            token = (row.get("TOKEN") or "").strip()
+            text = (row.get("REFTEXT") or "").strip()
+            if token:
+                lookup[token] = text
+    return lookup
 
 
 def initialize_dictionary_csv_files(force: bool = False) -> None:

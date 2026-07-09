@@ -2,6 +2,8 @@
  Note: don't remove complete items until patch is released, can be helpful for writing patch notes
 
  # ------------------------------------ Lat ------------------------------------
+  # v28.0
+ - [ ] Su-25 with S-25O 
  # v28.0
  - [ ] Buff WILK ?
  - [ ] Test F-16 [CLU2] for bomb dispersion balancing

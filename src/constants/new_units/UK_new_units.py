@@ -695,7 +695,7 @@ UK_NEW_UNITS = {
             ],
         },
         "strength": 5,
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "SpecialtiesList": [
             '_para',
             'infantry_equip_veryheavy',
@@ -762,6 +762,7 @@ UK_NEW_UNITS = {
                 "cards": 1,
             },
         },
+        "strength": 10,
         "SpecialtiesList": [
             "_amphibie",
             "_smoke_launcher",
@@ -829,6 +830,7 @@ UK_NEW_UNITS = {
                 "cards": 1,
             },
         },
+        "strength": 10,
         "SpecialtiesList": [
             "_amphibie",
             "_smoke_launcher",

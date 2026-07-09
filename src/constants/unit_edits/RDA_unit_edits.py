@@ -1272,7 +1272,7 @@ rda_unit_edits = {
         "GameName": {
             "display": "FALLSCHIRMJÄGER (s.MG)",
         },
-        "CommandPoints": 50,
+        "CommandPoints": 45,
         "armor": "Infantry_armor_reference",
         "strength": 9,
         "availability": [0, 0, 4, 3],
@@ -1295,15 +1295,15 @@ rda_unit_edits = {
 
     "Fallschirmjager_Metys_DDR": {
         "GameName": {
-            "display": "FALLSCHIRMJÄGER (Metis)",
+            "display": "FALLSCHIRMJÄGER [METIS]",
         },
         "CommandPoints": 60,
         "armor": "Infantry_armor_reference",
         "strength": 9,
         "availability": [0, 0, 4, 3],
-        "max_speed": 26,
+        "max_speed": 20,
         "SpecialtiesList": {
-            "add_specs": ["'infantry_equip_medium'"],
+            "add_specs": ["'infantry_equip_heavy'"],
         },
         "WeaponDescriptor": {
              "equipmentchanges": {
@@ -1379,7 +1379,7 @@ rda_unit_edits = {
         "GameName": {
             "display": "LUFTSTURM-JÄGER (Metis)",
         },
-        "CommandPoints": 50,
+        "CommandPoints": 55,
         "armor": "Infantry_armor_reference",
         "strength": 9,
         "availability": [0, 0, 4, 3],
@@ -2323,7 +2323,7 @@ rda_unit_edits = {
     },
 
     "BMP_1_SP2_DDR": { # (Malyutka, resolute, smoke)
-        "CommandPoints": 30,
+        "CommandPoints": 25,
     },
 
     "BMP_1P_DDR": { # BMP-1P(C) (Faktoriya, resolute, smoke)
@@ -2341,7 +2341,7 @@ rda_unit_edits = {
     },
     
     "BMP_2_DDR": {
-        "CommandPoints": 55,
+        "CommandPoints": "BMP_2_SOV",
     },
 
     "BTR_60PA_Reserve_DDR": {
@@ -2638,6 +2638,7 @@ rda_unit_edits = {
     },
 
     "Mi_2_reco_DDR": {
+        "CommandPoints": 30,
         "availability": [0, 6, 0, 0],
     },
     
@@ -2653,6 +2654,9 @@ rda_unit_edits = {
     },
 
     "Mi_24D_s5_AT_reco_DDR": { # #RECO2 DHS Mi-24D Transport
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 135,
         "strength": "Mi_24P_SOV",
     },
@@ -3166,7 +3170,7 @@ rda_unit_edits = {
         },
         "availability": [9, 7, 0, 0],
         "max_speed": 6,
-        
+        "strength": 6,
         "WeaponDescriptor": {
             "Salves": {
                 "DCA_1_canon_KS19_100mm_radar": 1,
@@ -3225,11 +3229,11 @@ rda_unit_edits = {
     },
 
     "ZSU_57_2_DDR": {
-        "CommandPoints": 60,
+        "CommandPoints": 70,
         "availability": [7, 0, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_2_canons_S60_57mm": 1,
+                "DCA_2_canons_S60_57mm": 25,
             },
         },
     },
@@ -3278,18 +3282,27 @@ rda_unit_edits = {
     "ZSU_23_Shilka_DDR": {
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 7800,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "CommandPoints": 85,
         "availability": [6, 4, 0, 0],
         "SpecialtiesList": {
-            "add_specs": ["'good_airoptics'"],
+            "add_specs": ["'verygood_airoptics'"],
         },
         "WeaponDescriptor": {
             "Salves": {
-                "DCA_4_canons_APZ23_23mm": 67,
+                "DCA_4_canons_AZP_23_Amur_23mm_late": 67,
+            },
+            "equipmentchanges": {
+                "replace": {
+                    "DCA_4_canons_APZ23_23mm": {
+                        "new_weapon": "DCA_4_canons_AZP_23_Amur_23mm_late",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
             },
         },
     },
@@ -3302,6 +3315,7 @@ rda_unit_edits = {
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
+        "strength": 10,
         "availability": [0, 3, 2, 0],
         "Divisions": {
             "default": {
@@ -3321,6 +3335,7 @@ rda_unit_edits = {
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "CommandPoints": 85,
+        "strength": 10,
         "availability": [4, 3, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
@@ -3335,6 +3350,7 @@ rda_unit_edits = {
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "CommandPoints": "2K12_KUB_SOV",
+        "strength": 10,
         "availability": [4, 3, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
@@ -3343,6 +3359,7 @@ rda_unit_edits = {
 
     "2K11_KRUG_DDR": {  # 2K11 Krug
         "CommandPoints": 130,
+        "strength": 10,
         "availability": [3, 2, 0, 0],
         # "CommandPoints": 90,
         # "availability": [4, 3, 0, 0],
@@ -3366,6 +3383,7 @@ rda_unit_edits = {
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "CommandPoints": 90,
+        "strength": 6,
         "availability": [4, 3, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
@@ -3444,23 +3462,35 @@ rda_unit_edits = {
     },
 
     "Mi_24D_s5_AT_DDR": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 130,
         "strength": "Mi_24P_SOV",
         "availability": [0, 4, 3, 0],
     },
     
     "Mi_24D_s8_AT_DDR": { # Mi-24D [AT2]
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 145, # vanilla 130
         "strength": "Mi_24P_SOV",
     },
 
     "Mi_24D_AA_DDR": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 130,
         "strength": "Mi_24P_SOV",
         "availability": [0, 3, 2, 0],
     },
 
     "Mi_24P_s8_AT_DDR": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "GameName": {
             "display": "Mi-24P [AT]",
         },
@@ -3497,6 +3527,9 @@ rda_unit_edits = {
     },
     
     "Mi_24P_s8_AT2_DDR": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 160,
         "strength": "Mi_24P_SOV",
         "Divisions": {
@@ -3527,13 +3560,16 @@ rda_unit_edits = {
     },
 
     "Mi_14PL_AT_DDR": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 100,
         "availability": [0, 2, 0, 1],
     },
 
     # RDA AIR
     "L39ZO_CLU_DDR": {
-        "CommandPoints": 90,
+        "CommandPoints": 75,
         "availability": [0, 4, 0, 0],
         "UpgradeFromUnit": "L39ZO_HE1_DDR",
     },
@@ -3804,7 +3840,7 @@ rda_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 1: {
-                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMax": 0.9599311,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },

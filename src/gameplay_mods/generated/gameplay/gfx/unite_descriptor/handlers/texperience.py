@@ -118,9 +118,12 @@ def handle_experience_module(
 def _edit_xp(logger, unit_data, edit_type, unit_name, edits, module) -> None:
     """Edit the XP pack for the unit"""
     
-    if edits.get("XP", {}).get("pack", False): 
-        module.v.by_m("ExperienceLevelsPackDescriptor").v = f"~/ExperienceLevelsPackDescriptor_XP_pack_{edits['XP']}"
-        logger.info(f"Set {unit_name} XP pack to {edits['XP']['pack']}")
+    if edits.get("XP", {}).get("pack", False):
+        pack_name = edits["XP"]["pack"]
+        module.v.by_m("ExperienceLevelsPackDescriptor").v = (
+            f"~/ExperienceLevelsPackDescriptor_XP_pack_{pack_name}"
+        )
+        logger.info(f"Set {unit_name} XP pack to {pack_name}")
         
     if edits.get("XP", {}).get("multiplier", False):
         module.v.by_m("ExperienceMultiplierBonusOnKill").v = f"{edits['XP']['multiplier']}"

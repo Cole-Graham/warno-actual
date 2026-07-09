@@ -1,3 +1,11 @@
+from src.constants.effects.medium_equip_penalty_effects import (
+    MEDIUM_EQUIP_PENALTY_COHESION_FLOOR_VALUE,
+    MEDIUM_EQUIP_PENALTY_FLOOR_DAMAGE_LEVEL,
+)
+
+MEDIUM_EQUIP_PENALTY_FLOOR_TAG_EFFECT_PATH = (
+    "$/GFX/EffectCapacity/UnitEffect_Ajoute_Tag_Medium_Equip_Penalty_floor"
+)
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
@@ -23,12 +31,7 @@ def edit_gen_gp_gfx_damagelevels(source_path) -> None:
 
         value = level.v.by_m("Value")
         effects_packs = level.v.by_m("EffectsPacks")
-        if value.v == "0":
-            effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_NoSprint_Morale")
-            effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_Ajoute_Tag_Swift_ok")
-            # effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_Cohesion_Loss_ok")
-
-        elif value.v == "0.1":
+        if value.v == "0.1":
             pass
             # effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_Cohesion_Loss_ok")
 
@@ -56,7 +59,6 @@ def edit_gen_gp_gfx_damagelevels(source_path) -> None:
         f'    EffectsPacks = '
         f'    ['
         f'        $/GFX/EffectCapacity/UnitEffect_GroundUnit_Cohesion_High,'
-        f'        $/GFX/EffectCapacity/UnitEffect_Ajoute_Tag_Swift_ok,'
         # f'        $/GFX/EffectCapacity/UnitEffect_Cohesion_Loss_ok,'
         f'    ]'
         f')'
@@ -73,14 +75,72 @@ def edit_gen_gp_gfx_damagelevels(source_path) -> None:
         f'    AnimationType = ESoldierSuppressStatus/Suppressed'
         f'    EffectsPacks = '
         f'    ['
-        f'        $/GFX/EffectCapacity/UnitEffect_Precision_moins_45,'
         f'        $/GFX/EffectCapacity/UnitEffect_GroundUnit_Cohesion_Mediocre,'
         f'        $/GFX/EffectCapacity/UnitEffect_NoSprint_Morale'
         f'    ]'
         f')'
     )
     ground_damage_levels.v.insert(5, new_ground_damage_level2)
-    
+
+    floor_insert_index = None
+    for i, level in enumerate(ground_damage_levels.v):
+        if level.v.by_m("Value").v == "0.25":
+            floor_insert_index = i + 1
+            break
+    if floor_insert_index is not None:
+        ground_damage_levels.v.insert(floor_insert_index, MEDIUM_EQUIP_PENALTY_FLOOR_DAMAGE_LEVEL)
+        logger.info(
+            "Inserted medium equip penalty cohesion floor at Value %s",
+            MEDIUM_EQUIP_PENALTY_COHESION_FLOOR_VALUE,
+        )
+    else:
+        logger.warning("Could not find Value 0.25 to insert medium equip penalty floor")
+
+    for level in ground_damage_levels.v:
+        value = float(level.v.by_m("Value").v)
+        if value > MEDIUM_EQUIP_PENALTY_COHESION_FLOOR_VALUE:
+            level.v.by_m("EffectsPacks").v.add(MEDIUM_EQUIP_PENALTY_FLOOR_TAG_EFFECT_PATH)
+
+    # Swift_ok and value-0 NoSprint_Morale live on the stun track so they clear with
+    # stun recovery (same rationale as packStun_Airplanes below). NoSprint_Morale
+    # drops at 0.01+; Swift_ok persists until 0.1+ (empty EffectsPacks at 0.1).
+    unit_pack_stun = source_path.by_n("DamageLevelsPackDescriptor_Unit_packStun")
+    stun_damage_levels = unit_pack_stun.v.by_m("DamageLevelsDescriptors")
+    stun_value_zero_found = False
+    for level in stun_damage_levels.v:
+        value = level.v.by_m("Value")
+        effects_packs = level.v.by_m("EffectsPacks")
+        if value.v == "0":
+            stun_value_zero_found = True
+            effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_Ajoute_Tag_Swift_ok")
+            effects_packs.v.add("$/GFX/EffectCapacity/UnitEffect_NoSprint_Morale")
+    if not stun_value_zero_found:
+        logger.warning("Could not find Value 0 in DamageLevelsPackDescriptor_Unit_packStun")
+    else:
+        new_stun_damage_level = (
+            f'TDamageLevelDescriptor'
+            f'('
+            f'    DescriptorId = GUID:{{7c4e9a2b-1d3f-4a5b-9c8d-6e7f0a1b2c3d}}'
+            f'    Value = 0.01'
+            f'    EffectsPacks = '
+            f'    ['
+            f'        $/GFX/EffectCapacity/UnitEffect_Ajoute_Tag_Swift_ok'
+            f'    ]'
+            f')'
+        )
+        stun_damage_levels.v.insert(1, new_stun_damage_level)
+        new_stun_damage_level_10 = (
+            f'TDamageLevelDescriptor'
+            f'('
+            f'    DescriptorId = GUID:{{a8f3c2d1-4e5b-6a7c-8d9e-0f1a2b3c4d5e}}'
+            f'    Value = 0.1'
+            f'    EffectsPacks = '
+            f'    ['
+            f'    ]'
+            f')'
+        )
+        stun_damage_levels.v.insert(2, new_stun_damage_level_10)
+
     # Edit airplanes damage levels
     airplanes_pack_supp = source_path.by_n("DamageLevelsPackDescriptor_Airplanes_packSupp")
     airplanes_damage_levels = airplanes_pack_supp.v.by_m("DamageLevelsDescriptors")

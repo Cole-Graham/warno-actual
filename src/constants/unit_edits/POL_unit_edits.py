@@ -831,7 +831,10 @@ pol_unit_edits = {
     },
 
     "Engineers_paras_POL": {  # Desant. Saperzy
-        "CommandPoints": 40,
+        "CommandPoints": 50,
+        "GameName": {
+            "display": "SPADO. SAPERZY",
+        },
         "availability": [0, 6, 4, 0],
         "armor": "Infantry_armor_reference",
         "max_speed": 26,
@@ -865,9 +868,6 @@ pol_unit_edits = {
                 "insert": [(3, 6)],
                 "Grenade_Satchel_Charge": 6,
             },
-        },
-        "GameName": {
-            "display": "SPADO. SAPERZY",
         },
     },
     
@@ -2337,12 +2337,12 @@ pol_unit_edits = {
     
     #   tank tab transports
     "OT_64_SKOT_2_POL": {  # SKOT-2
-        "CommandPoints": 20,
+        "CommandPoints": 15,
         "strength": 10,
     },
     
     "OT_64_SKOT_2A_POL": {  # SKOT-2A
-        "CommandPoints": 25,
+        "CommandPoints": 20,
         "strength": 10,
         "SpecialtiesList": {
             "overwrite_all": [
@@ -2354,7 +2354,7 @@ pol_unit_edits = {
     },
     
     "OT_64_SKOT_2AM_POL": {  # SKOT-2AM
-        "CommandPoints": 30,
+        "CommandPoints": 25,
         "strength": 10,
         "SpecialtiesList": {
             "overwrite_all": [
@@ -2366,7 +2366,7 @@ pol_unit_edits = {
     },
     
     "OT_64_SKOT_2P_POL": {  # SKOT-2AP
-        "CommandPoints": 30,
+        "CommandPoints": 25,
         "strength": 10,
         "SpecialtiesList": {
             "overwrite_all": [
@@ -2738,7 +2738,8 @@ pol_unit_edits = {
         "availability": [8, 6, 0, 0],
     },
     
-    "Mi_2_gunship_POL": {  # Mi-2US
+    "Mi_2_gunship_POL": {  # Mi-2US 4x PKT
+        "CommandPoints": "Mi_2_gunship_DDR",
         "availability": [0, 6, 4, 0],
         "UpgradeFromUnit": None,
     },
@@ -3031,12 +3032,12 @@ pol_unit_edits = {
         "availability": [6, 4, 0, 0],
         "optics": {
             "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 7800,
+                "EOpticalStrength/HighAltitude": 10600.0,
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
         "SpecialtiesList": {
-            "add_specs": ["'good_airoptics'"],
+            "add_specs": ["'verygood_airoptics'"],
         },
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -3065,6 +3066,7 @@ pol_unit_edits = {
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
+        "strength": 10,
         "availability": [0, 3, 2, 0],
         "Divisions": {
             "default": {
@@ -3087,6 +3089,7 @@ pol_unit_edits = {
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
+        "strength": 10,
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
@@ -3102,6 +3105,7 @@ pol_unit_edits = {
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
+        "strength": 10,
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
         },
@@ -3110,10 +3114,13 @@ pol_unit_edits = {
     
     # POL HELI
     "Mi_24D_POL": {  # 64x S-5, 4x Falanga - Mi-24D [AT] -> transport
+        "XP": {
+            "pack": "helico_attack",
+        },
         "GameName": {
             "display": "Mi-24D SPADO."
         },
-        "CommandPoints": 120,
+        "CommandPoints": 130,
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
@@ -3140,6 +3147,9 @@ pol_unit_edits = {
     },
     
     "Mi_24D_s8_AT_POL": {  # 80x S-8, 4x Falanga - Mi-24D [AT2]
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": 150,
         "strength": "Mi_24P_SOV",
         "availability": [0, 4, 3, 0],
@@ -3149,6 +3159,9 @@ pol_unit_edits = {
     },
     
     "Mi_24V_POL": {
+        "XP": {
+            "pack": "helico_attack",
+        },
         "CommandPoints": "Mi_24V_AT_SOV",
         "strength": "Mi_24P_SOV",
         "availability": "Mi_24V_AT_SOV",
@@ -3500,7 +3513,7 @@ pol_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 1: {
-                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMax": 0.9599311,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },

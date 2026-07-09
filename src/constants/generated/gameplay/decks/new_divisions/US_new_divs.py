@@ -248,7 +248,7 @@ us_new_divs = {
         "summary_text": ("USA armored and mechanized division.", "SUMUSARMC"),
         "history_text": ("USA Armored / Mechanized division.", "HISUSARMC"),
         "activation_points": 85,
-        "standout_units": ["M1A1_Abrams_CMD_US", "M2A1_Bradley_IFV_US", "F117_Nighthawk_US"],
+        "standout_units": ["M1A1_Abrams_CMD_US", "M2A1_Bradley_IFV_US", "F111F_Aardvark_LGB_US"],
         "division_rules": [
             US_armored_newdivisionrules,
             US_global_newdivisionrules,
@@ -293,10 +293,25 @@ us_new_divs = {
             "Ranger_Dragon_US": ["M1038_Humvee_US", "M998_Humvee_HMG_US", "M998_Humvee_AGL_US", "UH1H_Huey_US", "UH60A_Black_Hawk_US"],
         },
     },
-    # marine 5011, 1010
+    "US_marine": {
+        "division_id": 5030,
+        "interface_order": 1010,
+        "guid": "45edf1a3-f875-4965-9c2e-12f87baaa6e1",
+        "cfg_name": "US_national_marine",
+        "div_name": ("USA Marine", "BDGRNKYODG"),
+        "description_title": ("USA Marine", "FDOIXUVXQG"),
+        "summary_text": ("USA Marine division.", "MGNCPPCRAN"),
+        "history_text": ("USA Marine division.", "MYIJWFTSDD"),
+        "activation_points": 100,
+        "standout_units": ["Groupe_AT_USMC_US", "Navy_SEAL_US", "CATFAE_US", "UH1N_TwinHuey_RKT_US", "F18_Hornet_SEAD_US", "F14A_Tomcat_AA2_US"],
+        "division_rules": [
+            US_marine_newdivisionrules,
+            US_global_newdivisionrules,
+        ],
+    },
     "US_marine_mechanized": {
         "division_id": 5011,
-        "interface_order": 1010,
+        "interface_order": 1011,
         "guid": "2b87bece-da79-45e4-ba02-774b89f2f6f4",
         "cfg_name": "US_national_marine_mechanized",
         "div_name": ("USA Marine / Mechanized", "EVZOAAWXAZ"),
@@ -327,7 +342,7 @@ us_new_divs = {
     },
     "US_marine_motorized": {
         "division_id": 5012,
-        "interface_order": 1011,
+        "interface_order": 1012,
         "guid": "dd683568-227b-4f14-8a66-c604487d08c8",
         "cfg_name": "US_national_marine_motorized",
         "div_name": ("USA Marine / Motorized", "QCTQWCCRLZ"),
@@ -366,7 +381,7 @@ us_new_divs = {
         "summary_text": ("USA mechanized division.", "SUMUSMEC"),
         "history_text": ("USA Mechanized division.", "HISUSMEC"),
         "activation_points": 100,
-        "standout_units": ["M1IP_Abrams_US", "NatGuard_M67_US", "F117_Nighthawk_US"],
+        "standout_units": ["M1IP_Abrams_US", "NatGuard_M67_US", "F111F_Aardvark_LGB_US"],
         "division_rules": [
             US_global_newdivisionrules,
             US_mechanized_newdivisionrules,
@@ -417,7 +432,7 @@ us_new_divs = {
         "summary_text": ("USA motorized division.", "SUMUSMOT"),
         "history_text": ("USA Motorized division.", "HISUSMOT"),
         "activation_points": 100,
-        "standout_units": ["M1_Abrams_US", "LightRifles_Dragon_US", "FA16_CAS_US"],
+        "standout_units": ["M1_Abrams_US", "LightRifles_Dragon_US", "FA16_CAS_US", "F117_Nighthawk_US"],
         "division_rules": [
             US_motorized_newdivisionrules,
             US_global_newdivisionrules,

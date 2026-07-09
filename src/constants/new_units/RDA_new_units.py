@@ -1218,7 +1218,7 @@ RDA_NEW_UNITS = {
         "SpecialtiesList": [
             "_resolute",
             "_ifv",
-            "infantry_equip_medium",
+            "infantry_equip_heavy",
         ],
         "MenuIconTexture": "Texture_RTS_H_Infantry",
         "TypeStrategicCount": "ETypeStrategicDetailedCount/CMD_Inf",
@@ -1228,7 +1228,7 @@ RDA_NEW_UNITS = {
             },
         },
         "availability": [10, 7, 0, 0],
-        "max_speed": 26,
+        "max_speed": 20,
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/SmartMove', 'EOrderType/Attack', 'EOrderType/SmartMoveAndAttack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/ShootOnPosition', 'EOrderType/ShootOnPositionWithoutCorrection',
                    'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/UseCapacite',

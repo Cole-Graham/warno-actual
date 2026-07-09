@@ -667,7 +667,7 @@ rfa_unit_edits = {
         "max_speed": 26,
         "availability": [8, 0, 0, 0],
         "capacities": {
-            "add_capacities": ["reserviste", "Choc", "Choc_feedback"],
+            "add_capacities": ["reserviste", "Choc", "Choc_feedback", "Choc_inrange", "Choc_inrange_feedback"],
         },
         "SpecialtiesList": {
             "add_specs": [
@@ -1991,10 +1991,7 @@ rfa_unit_edits = {
         },
         "max_speed": 26,
         "SpecialtiesList": {
-            "add_specs": ["'_choc'", "'infantry_equip_light'", "'_swift'"],
-        },
-        "capacities": {
-            "add_capacities": ["Choc", "Choc_feedback"],
+            "add_specs": ["'infantry_equip_light'", "'_swift'"],
         },
         "UpgradeFromUnit": "BGS_RFA",
     },
@@ -2206,6 +2203,7 @@ rfa_unit_edits = {
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
+        "strength": 10,
         "availability": [4, 3, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'good_airoptics'"],
@@ -2220,6 +2218,7 @@ rfa_unit_edits = {
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
+        "strength": 10,
         "availability": [0, 3, 2, 0],
         "Divisions": {
             "default": {
@@ -2240,6 +2239,7 @@ rfa_unit_edits = {
             "token": "HVHJFPKNKB",
         },
         "CommandPoints": 150,
+        "strength": 10,
         "optics": {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 10600.0,
@@ -2255,6 +2255,17 @@ rfa_unit_edits = {
         "capacities": {
             "remove_capacities": ["resolute"],
         },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": {
+                    "SAM_ROLAND_3": {
+                        "new_weapon": "SAM_FFR_ROLAND_3",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
+            },
+        },
     },
     
     "DCA_I_Hawk_RFA": {
@@ -2265,6 +2276,7 @@ rfa_unit_edits = {
             },
             "TimeBetweenEachIdentifyRoll": 0.5,
         },
+        "strength": 6,
         "availability": [4, 3, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'verygood_airoptics'"],
@@ -2512,18 +2524,25 @@ rfa_unit_edits = {
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": {
-                    "RocketAir_Zuni_1272mm_salvolength8": {
-                        "new_weapon": "RocketAir_Zuni_1272mm_avion_salvolength8",
-                        "swap_fire_effect": False,
-                        "depiction_baked_in": False,
-                    },
+                    "RocketAir_Zuni_1272mm_salvolength8": [
+                        {
+                            "new_weapon": "RocketAir_Zuni_1272mm_avion_salvolength8",
+                            "swap_fire_effect": False,
+                            "depiction_baked_in": False,
+                        },
+                        {
+                            "new_weapon": "RocketAir_Zuni_1272mm_avion_salvolength8",
+                            "swap_fire_effect": False,
+                            "depiction_baked_in": False,
+                        },
+                    ],
                 },
             },
         },
     },
 
     "HFB_320_ECM_RFA": { # EW
-        "CommandPoints": 145,
+        "CommandPoints": 155,
         "ECM": -0.55,
         "optics": {
             "VisionRangesGRU": {
@@ -2615,7 +2634,7 @@ rfa_unit_edits = {
     },
 
     "Tornado_IDS_SEAD_RFA": { # AGM-88 5950m
-        "CommandPoints": 300,
+        "CommandPoints": 260,
         "ECM": -0.50,
         "optics": {
             "VisionRangesGRU": {
@@ -2629,7 +2648,7 @@ rfa_unit_edits = {
         "WeaponDescriptor": {
             "turrets": {
                 1: {
-                    "AngleRotationMax": 1.745329,
+                    "AngleRotationMax": 0.9599311,
                     "AngleRotationMaxPitch": 0.8726646,
                     "AngleRotationMinPitch": -0.8726646,
                 },

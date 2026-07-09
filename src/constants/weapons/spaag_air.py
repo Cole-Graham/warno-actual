@@ -1,11 +1,18 @@
 """Tuning knobs for the auto-generated SPAAG air-targeting ammo clones.
 
-Each weapon whose final damage family is ``DamageFamily_he_dca`` (see
-``src/data/constants_precomputation.build_he_dca_weapons``) is auto-cloned at
-``Ammunition.ndf`` edit time into a sibling ``Ammo_<base>_AIR`` descriptor that
-uses ``DamageFamily_he_dca_airtargets`` and a reduced ``SuppressDamages``
-(``W_AIR``). The new air ammo carries the air-only damage family that is
-ignored by every non-aerial resistance family (see
+Each weapon whose final damage family is ``DamageFamily_he_dca`` and has
+``MaximumRangeGRU > 0`` (see ``src/data/constants_precomputation.build_he_dca_weapons``)
+is auto-cloned at ``Ammunition.ndf`` edit time into a sibling ``Ammo_<base>_AIR``
+descriptor that uses ``SPAAG_AIR_DAMAGE_FAMILY`` and a reduced
+``SuppressDamages`` (``W_AIR``).
+
+**Air-only DCA** (``MaximumRangeGRU == 0`` with separate ``Canon_AP_*`` /
+``Canon_HE_*`` ground mounts, e.g. KS-19 / KS-30) is excluded from auto
+``_AIR`` cloning and instead receives the same three fields directly in
+``autocanon_dca.py``: ``Arme.Family``, ``SuppressDamages`` (``W_AIR``), and
+``SPAAG_AIR_AIMING_TIME``.
+
+The air damage family is ignored by every non-aerial resistance family (see
 ``BlindagesToIgnoreForDamageFamilies`` in WeaponConstantes), so it deals damage
 only to aircraft.
 
@@ -22,6 +29,13 @@ the default after in-game testing.
 """
 
 from typing import Dict
+
+
+SPAAG_AIR_DAMAGE_FAMILY: str = "DamageFamily_he_dca_airtargets"
+"""Damage family written on ``_AIR`` clones and on air-only DCA direct edits."""
+
+SPAAG_AIR_AIMING_TIME: float = 0.3
+"""``AimingTime`` on ``_AIR`` clones and on air-only DCA direct edits."""
 
 
 SPAAG_AIR_W_RATIO_DEFAULT: float = 2.0 / 3.0

@@ -9,7 +9,18 @@ from typing import Any, Dict, List
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from src import ndf
+from src.constants.generated.gameplay.decks import load_new_divisions
 from src.utils.ndf_utils import is_obj_type, is_valid_turret, strip_quotes
+
+
+def mod_division_multi_rule_names() -> set[str]:
+    """NDF descriptor names for mod division rules (excludes vanilla divisions)."""
+    names: set[str] = set()
+    for div_data in load_new_divisions().values():
+        cfg_name = div_data.get("cfg_name")
+        if cfg_name:
+            names.add(f"Descriptor_Deck_Division_{cfg_name}_multi_Rule")
+    return names
 
 
 def parse_infantry_units(mod_src_path: Path) -> Dict[str, Dict[str, Any]]:
@@ -64,25 +75,27 @@ def parse_infantry_units(mod_src_path: Path) -> Dict[str, Dict[str, Any]]:
 
 
 def parse_veterancy_from_division_rules(mod_src_path: Path, unit_data: Dict[str, Dict[str, Any]]) -> None:
-    """Parse available veterancy levels from DivisionRules.ndf multi_Rule entries.
+    """Parse available veterancy levels from mod DivisionRules.ndf multi_Rule entries.
     
     Updates unit_data with available_veterancy_levels based on NumberOfUnitInPackXPMultiplier.
+    Only mod division rules are considered; vanilla division rules are ignored.
     """
     ndf_path = "GameData/Generated/Gameplay/Decks/DivisionRules.ndf"
     
     try:
         mod = ndf.Mod(str(mod_src_path), "None")
         parse_source = mod.parse_src(ndf_path)
+        mod_division_rules = mod_division_multi_rule_names()
         
-        # Track veterancy levels for each unit across all divisions
+        # Track veterancy levels for each unit across mod divisions
         unit_veterancy_map: Dict[str, set] = {}
         
         for deck_descr in parse_source:
             if not hasattr(deck_descr, "n"):
                 continue
             
-            # Only process entries ending in multi_Rule
-            if not deck_descr.n.endswith("multi_Rule"):
+            # Only process mod multiplayer division rules
+            if deck_descr.n not in mod_division_rules:
                 continue
             
             unit_rule_list = deck_descr.v.by_m("UnitRuleList", None)
@@ -239,6 +252,35 @@ def parse_experience_levels(mod_src_path: Path) -> Dict[str, Dict[int, List[str]
     return pack_to_effects
 
 
+def _precision_effect_to_accuracy_bonus(effect: Any, effect_name: str) -> float:
+    """Convert weapon-precision veterancy descriptor to flat accuracy bonus decimal."""
+    modifier_value = effect.v.by_m("ModifierValue", None)
+    modifier_type = effect.v.by_m("ModifierType", None)
+    if not modifier_value:
+        return 0.0
+    try:
+        value = float(modifier_value.v)
+        mod_type = strip_quotes(modifier_type.v) if modifier_type else None
+        if mod_type == "~/ModifierType_Multiplicatif":
+            if value > 1.0:
+                return value - 1.0
+            if value <= 0.0:
+                return 0.0
+            return value
+        if mod_type == "~/ModifierType_Additionnel":
+            return value / 100.0
+        if mod_type is None:
+            if value > 1.0:
+                return value - 1.0
+            return value / 100.0
+        if value > 1.0:
+            return value - 1.0
+        return value / 100.0
+    except (ValueError, TypeError) as e:
+        print(f"Warning: Failed to parse accuracy bonus for {effect_name}: {e}")
+        return 0.0
+
+
 def parse_veterancy_effect_bonuses(mod_src_path: Path) -> Dict[str, Dict[str, float]]:
     """Parse veterancy bonuses from EffetsSurUnite.ndf.
     
@@ -276,6 +318,8 @@ def parse_veterancy_effect_bonuses(mod_src_path: Path) -> Dict[str, Dict[str, fl
             
             accuracy_bonus = 0.0
             reload_speed_multiplier = 1.0  # Default: no change
+            mouvement_accuracy_bonus = 0.0
+            arret_accuracy_bonus = 0.0
             
             for effect in effects_list.v:
                 if not isinstance(effect.v, ndf.model.Object):
@@ -283,65 +327,29 @@ def parse_veterancy_effect_bonuses(mod_src_path: Path) -> Dict[str, Dict[str, fl
                 
                 effect_type = effect.v.type
                 
-                # Look for TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor (accuracy bonus)
                 if effect_type == "TUnitEffectIncreaseWeaponPrecisionMouvementDescriptor":
-                    modifier_value = effect.v.by_m("ModifierValue", None)
-                    modifier_type = effect.v.by_m("ModifierType", None)
-                    if modifier_value:
-                        try:
-                            value = float(modifier_value.v)
-                            mod_type = strip_quotes(modifier_type.v) if modifier_type else None
-                            
-                            if mod_type == "~/ModifierType_Multiplicatif":
-                                # Multiplicative bonus: convert to equivalent flat bonus
-                                # When ModifierType is Multiplicatif, ModifierValue is a multiplier
-                                # Example: if ModifierValue is 1.0105, that means multiply by 1.0105 (1.05% increase)
-                                # We convert to flat: (multiplier - 1.0) = 0.0105
-                                # For storage, we store this as a decimal flat bonus (0.0105 for 1.05%)
-                                if value > 1.0:
-                                    # Multiplier > 1.0: convert to flat bonus
-                                    accuracy_bonus = value - 1.0
-                                elif value <= 0.0:
-                                    accuracy_bonus = 0.0
-                                else:
-                                    # Value between 0 and 1: this shouldn't happen for multiplicative bonuses
-                                    # But if it does, assume it's already a flat bonus (though this is unusual)
-                                    accuracy_bonus = value
-                            elif mod_type == "~/ModifierType_Additionnel":
-                                # Flat bonus: ModifierValue is a percentage (e.g., 12 means 12%)
-                                # ModifierType_Additionnel means it's added directly
-                                accuracy_bonus = value / 100.0
-                            elif mod_type is None:
-                                print(f"Warning: ModifierType is None for {effect_name}")
-                                # ModifierType is None - check if value looks like a multiplier
-                                if value > 1.0:
-                                    # Looks like a multiplier (e.g., 1.0105), convert to flat
-                                    accuracy_bonus = value - 1.0
-                                else:
-                                    # Assume it's a percentage (e.g., 1.05 means 1.05%)
-                                    accuracy_bonus = value / 100.0
-                            else:
-                                # Unknown modifier type - check if value looks like a multiplier
-                                if value > 1.0:
-                                    # Looks like a multiplier, convert to flat
-                                    accuracy_bonus = value - 1.0
-                                else:
-                                    # Assume it's a percentage
-                                    accuracy_bonus = value / 100.0
-                        except (ValueError, TypeError) as e:
-                            print(f"Warning: Failed to parse accuracy bonus for {effect_name}: {e}")
-                            pass
-                
-                # Look for TUnitEffectAlterWeaponTempsEntreDeuxSalvesDescriptor (reload speed bonus)
+                    mouvement_accuracy_bonus = _precision_effect_to_accuracy_bonus(
+                        effect, effect_name,
+                    )
+                elif effect_type == "TUnitEffectIncreaseWeaponPrecisionArretDescriptor":
+                    arret_accuracy_bonus = _precision_effect_to_accuracy_bonus(
+                        effect, effect_name,
+                    )
                 elif effect_type == "TUnitEffectAlterWeaponTempsEntreDeuxSalvesDescriptor":
                     modifier_value = effect.v.by_m("ModifierValue", None)
                     if modifier_value:
                         try:
-                            # ModifierValue is a multiplier (e.g., 0.8 means 20% faster reload)
-                            # ModifierType_Multiplicatif means it multiplies the time
                             reload_speed_multiplier = float(modifier_value.v)
                         except (ValueError, TypeError):
                             pass
+            
+            accuracy_bonus = (
+                mouvement_accuracy_bonus
+                if mouvement_accuracy_bonus > 0
+                else arret_accuracy_bonus
+            )
+            if "_helo" in effect_name and arret_accuracy_bonus > 0:
+                accuracy_bonus = arret_accuracy_bonus
             
             # Store the bonuses if there are any
             if accuracy_bonus > 0 or reload_speed_multiplier != 1.0:
@@ -729,14 +737,20 @@ def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
                     unit_info["experience_levels_pack"] = pack_name
                     
                     # Also determine pack type from name for backwards compatibility
-                    if "SF_v2" in pack_name or "_sf" in pack_name.lower():
-                        unit_info["veterancy_pack"] = "SF_v2"
+                    if "simple_v3_multiplicative" in pack_name:
+                        unit_info["veterancy_pack"] = "simple_v3_multiplicative"
+                    elif "SF_v2_multiplicative" in pack_name:
+                        unit_info["veterancy_pack"] = "SF_v2_multiplicative"
                     elif "artillery" in pack_name.lower():
                         unit_info["veterancy_pack"] = "artillery"
+                    elif "helico_attack" in pack_name.lower():
+                        unit_info["veterancy_pack"] = "helico_attack"
                     elif "helico" in pack_name.lower():
                         unit_info["veterancy_pack"] = "helico"
                     elif "avion" in pack_name.lower():
                         unit_info["veterancy_pack"] = "avion"
+                    elif "SF_v2" in pack_name:
+                        unit_info["veterancy_pack"] = "SF_v2"
                     else:
                         unit_info["veterancy_pack"] = "simple_v3"
             
@@ -785,9 +799,15 @@ def extract_unit_info(unit_row: Any) -> Dict[str, Any]:
         # Determine veterancy pack from tags if not found in module
         if unit_info["veterancy_pack"] == "simple_v3":
             tags = unit_info.get("tags", [])
-            # Check if unit has SF tags
             if any("_sf" in tag.lower() or "sf" in tag.lower() for tag in tags):
-                unit_info["veterancy_pack"] = "SF_v2"
+                is_infantry_sf = (
+                    "Infanterie" in tags
+                    and "Infanterie_AA" not in tags
+                    and "Infanterie_AT" not in tags
+                )
+                unit_info["veterancy_pack"] = (
+                    "SF_v2_multiplicative" if is_infantry_sf else "SF_v2"
+                )
         
         # Set available veterancy levels based on pack type
         # All infantry packs have 4 levels (0-3)
