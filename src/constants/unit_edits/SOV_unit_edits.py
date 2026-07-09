@@ -4744,7 +4744,7 @@ sov_unit_edits = {
     },
     
     "Scout_Spetsnaz_Naval_SOV": {
-        "CommandPoints": 55,
+        "CommandPoints": 60,
         "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
@@ -5795,7 +5795,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "AutoCanon_AP_23mm_Bitube_Gsh23L": 28,
-                "RocketAir_B8_80mm_salvolength10": 4,
+                "RocketAir_B8_80mm_salvolength20": 2,
                 "AGM_9M114M_KokonM_salvolength16": 1,
             },
         },
@@ -6034,7 +6034,7 @@ sov_unit_edits = {
             "Salves": {
                 "GatlingAir_AP_Gsh_30_6_30mm": (4, False),
                 "AGM_Kh29L": (2, True),
-                "RocketAir_B8_80mm_salvolength40": (1, True),
+                "RocketAir_B8_80mm_salvolength40_avion": (1, True),
             },
         },
         "availability": [0, 2, 0, 1],

@@ -161,6 +161,18 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("RocketAir_S5_57mm_salvolength16", "rocket", None, False): { # 627
+        "Ammunition": {
+            "parent_membr": {
+                "RadiusSplashPhysicalDamagesGRU": 9,
+                "RadiusSplashSuppressDamagesGRU": 15,  
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
+                "SupplyCost": 32.0,
+            },
+        },
+    },
+    
     ("RocketAir_S5_57mm_avion_salvolength32", "rocket", "RocketAir_S5_57mm_salvolength32", True): {
         "Ammunition": {
             "hit_roll": {
@@ -454,6 +466,25 @@ weapons: Dict[WeaponKey, WeaponData] = {
     },
 
     ("RocketAir_B8_80mm_salvolength40", "rocket", None, False): { # 594
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2450,
+                "RadiusSplashPhysicalDamagesGRU": 15,
+                "RadiusSplashSuppressDamagesGRU": 28,
+                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoFx": 0.1,
+                "PhysicalDamages": 0.9,
+                "SuppressDamages": 90,
+                "SupplyCost": 240.0,
+            },
+        },
+    },
+    
+    ("RocketAir_B8_80mm_salvolength40_avion", "rocket", None, False): { # 594
         "Ammunition": {
             "hit_roll": {
                 "Idling": 20,

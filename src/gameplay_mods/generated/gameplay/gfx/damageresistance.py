@@ -50,7 +50,7 @@ logger = setup_logger(__name__)
 # Matches the "he_dca 1" entry in DAMAGE_EDITS in damage_values.py. Cloning this
 # row at edit time keeps DamageFamily_he_dca_airtargets in lockstep with any
 # tweaks we apply to he_dca (e.g. air armor 0/1/2 reductions in DAMAGE_EDITS).
-_HE_DCA_ROW_INDEX = 119
+_HE_DCA_ROW_INDEX = 120
 
 
 def _clone_existing_damage_row(values_list, row_index: int) -> str:

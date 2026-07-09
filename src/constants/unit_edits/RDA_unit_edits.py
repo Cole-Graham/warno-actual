@@ -3404,7 +3404,7 @@ rda_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "AutoCanon_AP_23mm_NS23": 25,
-                "RocketAir_S5_57mm_salvolength32": 1,
+                "RocketAir_S5_57mm_salvolength16": 2,
             },
         },
     },
