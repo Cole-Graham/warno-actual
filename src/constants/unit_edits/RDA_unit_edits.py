@@ -210,7 +210,7 @@ rda_unit_edits = {
                 },
             },
             "Salves": {
-                "RocketInf_RPG18_64mm": 6,
+                "RocketInf_RPG18_64mm_salvolength6": 1,
             },
         },
         "remove_zone_capture": None,
@@ -261,7 +261,7 @@ rda_unit_edits = {
             },
             "Salves": {
                 "FM_Mpi_AK_74N": 11,
-                "RocketInf_RPG7VL": 6,
+                "RocketInf_RPG7VL_salvolength6": 1,
             },
         },
         "remove_zone_capture": None,
@@ -310,7 +310,7 @@ rda_unit_edits = {
                 },
             },
             "Salves": {
-                "RocketInf_RPG7": 9,
+                "RocketInf_RPG7_salvolength9": 1,
             },
         },
         "remove_zone_capture": None,
@@ -377,9 +377,8 @@ rda_unit_edits = {
                 },
             },
             "Salves": {
-                "insert": [(1, 15)],
+                "insert": [(1, 24)],
                 "FM_KMS_72": 9,
-                "SAW_lMG_K_7_62mm": 24,
             },
         },
         "remove_zone_capture": None,
@@ -515,7 +514,7 @@ rda_unit_edits = {
             },
             "Salves": {
                 "insert": [(1, 18)],
-                "RocketInf_RPG18_64mm": 7,
+                "RocketInf_RPG18_64mm_salvolength7": 1,
                 "FM_Mpi_AKS_74NK": 11,
             },
         },
@@ -572,7 +571,7 @@ rda_unit_edits = {
                 },
                 "replace": {
                     "RocketInf_RPG18_64mm": {
-                        "new_weapon": "RocketInf_RPG27_105mm",
+                        "new_weapon": "RocketInf_RPG27_105mm_salvolength6",
                         "swap_fire_effect": True,
                         "depiction_baked_in": False,
                     },
@@ -613,7 +612,7 @@ rda_unit_edits = {
             },
             "Salves": {
                 "insert": [(1, 36)],
-                "RocketInf_RPG27_105mm": 6,
+                "RocketInf_RPG27_105mm_salvolength6": 1,
                 "FM_Mpi_AKS_74NK": 11,
             },
         },
@@ -744,7 +743,7 @@ rda_unit_edits = {
             },
             "Salves": {
                 "insert": [(1, 23), (3, 3)],
-                "RocketInf_M72A3_LAW_66mm": 7,
+                "RocketInf_M72A3_LAW_66mm_salvolength7": 1,
             },
         },
         "remove_zone_capture": None,
@@ -1079,7 +1078,7 @@ rda_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_Mpi_AK_74N": 11,
-                "RocketInf_RPG7VL": 6,
+                "RocketInf_RPG7VL_salvolength6": 1,
             },
         },
     },
@@ -1115,7 +1114,7 @@ rda_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_RPG18_64mm": 7,
+                "RocketInf_RPG18_64mm_salvolength7": 1,
             },
         },
     },
@@ -1148,7 +1147,7 @@ rda_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_Mpi_AK_74N": 11,
-                "RocketInf_RPG7VL": 6,
+                "RocketInf_RPG7VL_salvolength6": 1,
             },
         },
     },
@@ -1185,7 +1184,7 @@ rda_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_Mpi_AK_74N": 11,
-                "RocketInf_RPG18_64mm": 7,
+                "RocketInf_RPG18_64mm_salvolength7": 1,
             },
         },
     },
@@ -1206,7 +1205,7 @@ rda_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_Mpi_AK_74N": 11,
-                "RocketInf_RPG7VR_64mm": 4,
+                "RocketInf_RPG7VR_64mm_salvolength4": 1,
             },
         },
     },
@@ -1227,7 +1226,7 @@ rda_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_Mpi_AK_74N": 11,
-                "RocketInf_RPG27_105mm": 4,
+                "RocketInf_RPG27_105mm_salvolength4": 1,
             },
         },
     },
@@ -1263,7 +1262,7 @@ rda_unit_edits = {
             },
             "Salves": {
                 "FM_Mpi_AKS_74NK": 11,
-                "RocketInf_RPG7VL": 6,
+                "RocketInf_RPG7VL_salvolength6": 1,
             },
         },
     },
@@ -1288,7 +1287,7 @@ rda_unit_edits = {
             },
             "Salves": {
                 "FM_Mpi_AKS_74NK": 11,
-                "RocketInf_RPG18_64mm": 7,
+                "RocketInf_RPG18_64mm_salvolength7": 1,
             },
         },
     },
@@ -1483,7 +1482,7 @@ rda_unit_edits = {
                 },
             },
             "Salves": {
-                "RocketInf_RPG7VR_64mm": 4,
+                "RocketInf_RPG7VR_64mm_salvolength4": 1,
             },
         },
     },
@@ -2900,7 +2899,7 @@ rda_unit_edits = {
                 },
             },
             "Salves": {
-                "RocketInf_RPG18_64mm": 7,
+                "RocketInf_RPG18_64mm_salvolength7": 1,
                 "Grenade_Satchel_Charge": 6,
             },
         },
@@ -2949,14 +2948,14 @@ rda_unit_edits = {
             "equipmentchanges": {
                 "replace": {
                     "RocketInf_RPG18_64mm": {
-                        "new_weapon": "RocketInf_RPG7VL",
+                        "new_weapon": "RocketInf_RPG7VL_salvolength4",
                         "swap_fire_effect": True,
                         "depiction_baked_in": False,
                     },
                 },
             },
             "Salves": {
-                "RocketInf_RPG7VL": 4,
+                "RocketInf_RPG7VL_salvolength4": 1,
             },
         },
     },
@@ -3045,7 +3044,7 @@ rda_unit_edits = {
                 },
             },
             "Salves": {
-                "FM_Mpi_AK_74N_noreflex": 11,
+                "FM_Mpi_AKS_74NK_noreflex": 11,
             },
         },
     },

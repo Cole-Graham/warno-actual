@@ -22,9 +22,11 @@ from .handlers import (
     apply_manpad_time_between_salvos_standard,
     apply_sam_time_between_salvos_standard,
     apply_tandem_charge_inversion,
+    create_infantry_magazine_variants,
     remove_vanilla_instances,
     validate_ammunition_consumption,
     vanilla_renames_ammunition,
+    variants_for_weapon,
 )
 from .handlers.aa_missile_category_standards import apply_aa_suppress_standard
 from .handlers.missile_movement_config import apply_ammunition_missile_acceleration
@@ -125,6 +127,19 @@ def edit_gen_gp_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]
                 except Exception as e:
                     logger.error(f"Failed applying edits to {weapon_name}: {str(e)}")
                     continue
+
+                # Infantry magazine variants (squad AT/AA) — separate from vehicle SalvoLengths
+                try:
+                    create_infantry_magazine_variants(
+                        source_path,
+                        base_descr,
+                        weapon_name,
+                        variants_for_weapon(game_db, weapon_name),
+                    )
+                except Exception as e:
+                    logger.error(
+                        f"Failed creating infantry magazine variants for {weapon_name}: {str(e)}"
+                    )
 
                 # Handle salvo variants - pass the fully edited base descriptor
                 try:

@@ -17,7 +17,7 @@ TBAGRU_FAMILIES = frozenset({
     "DamageFamily_a2a_tbagru",
 })
 
-_MOUNTED_AMMO_SUFFIX_RE = re.compile(r"(_x\d+|_salvolength\d+)$")
+_MOUNTED_AMMO_SUFFIX_RE = re.compile(r"(_x\d+|_salvolength\d+|_infmagazine\d+)$")
 
 
 def _mounted_ammo_base_name(ammo_name: str) -> str:
@@ -42,15 +42,19 @@ def _replacement_mount_suffix(
 
     Only preserves suffixes already present on the donor mount (or ``_x`` derived
     from ``NbWeapons`` for ``small_arms`` when the path is bare). Never
-    synthesizes ``_salvolength`` — that suffix belongs on the donor path when
-    the mounted ammo uses salvo-length descriptors (missiles, rockets, …).
+    synthesizes ``_salvolength`` / ``_infmagazine`` — those suffixes belong on
+    the donor path when the mounted ammo uses magazine/salvo-length descriptors.
+
+    Magazine suffixes from the donor are preserved for non-``small_arms`` targets
+    (vehicle SAM/ATGM, infantry AT/AA, etc.). They are never copied onto
+    ``small_arms`` / MMG mounts (those use ``_x`` / strength instead).
     """
-    if re.search(r"_salvolength\d+$", new_weapon):
+    if re.search(r"(_salvolength\d+|_infmagazine\d+)$", new_weapon):
         return ""
 
-    salvolength_match = re.search(r"_salvolength(\d+)$", full_ammo_name)
-    if salvolength_match:
-        return f"_salvolength{salvolength_match.group(1)}"
+    magazine_match = re.search(r"(_salvolength|_infmagazine)(\d+)$", full_ammo_name)
+    if magazine_match and _ammo_dict_category(new_weapon) != "small_arms":
+        return f"{magazine_match.group(1)}{magazine_match.group(2)}"
 
     if _ammo_dict_category(new_weapon) != "small_arms":
         return ""
@@ -178,14 +182,16 @@ def unit_edits_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> No
                     continue
                 ammo_name = ammo_path[len("$/GFX/Weapon/Ammo_"):]
 
-                # Strip _x{N} / _salvolength{N} for missiles-dict lookup
+                # Strip _x{N} / _salvolength{N} / _infmagazine{N} for missiles-dict lookup
                 base_ammo_name = _mounted_ammo_base_name(ammo_name)
 
                 # Salvo length: prefer explicit suffix, else current NbWeapons
-                salvo_match = re.search(r"_salvolength(\d+)$", ammo_name)
+                salvo_match = re.search(r"(_salvolength|_infmagazine)(\d+)$", ammo_name)
                 if salvo_match:
-                    salvo_length = int(salvo_match.group(1))
+                    salvo_length = int(salvo_match.group(2))
+                    salvo_kind = salvo_match.group(1)
                 else:
+                    salvo_kind = "_salvolength"
                     try:
                         salvo_length = int(weapon.v.by_m("NbWeapons").v)
                     except Exception:
@@ -207,28 +213,37 @@ def unit_edits_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> No
                             )
                             break
 
-                        # Determine whether to use a salvo variant of the HAGRU
+                        # Determine whether to use a salvo/magazine variant of the HAGRU
                         hagru_name = f"{base_ammo_name}_HAGRU"
-                        hagru_salvo_lengths = None
-                        for (hagru_missile_name, _, _, _), hagru_data in missiles.items():
-                            if hagru_missile_name == hagru_name and "WeaponDescriptor" in hagru_data:
-                                hagru_salvo_lengths = hagru_data["WeaponDescriptor"].get("SalvoLengths")
-                                break
-
-                        if hagru_salvo_lengths is None:
-                            use_salvo_variant = False
-                        elif salvo_length in hagru_salvo_lengths:
+                        # Preserve infantry magazine / existing salvolength suffix from donor mount
+                        if salvo_match:
                             use_salvo_variant = salvo_length > 1
-                        elif 1 in hagru_salvo_lengths:
-                            use_salvo_variant = False
+                            suffix_kind = salvo_kind  # "_salvolength" or "_infmagazine"
                         else:
-                            salvo_length = hagru_salvo_lengths[0]
-                            use_salvo_variant = True
+                            suffix_kind = "_salvolength"
+                            hagru_salvo_lengths = None
+                            for (hagru_missile_name, _, _, _), hagru_data in missiles.items():
+                                if hagru_missile_name == hagru_name and "WeaponDescriptor" in hagru_data:
+                                    hagru_salvo_lengths = hagru_data["WeaponDescriptor"].get("SalvoLengths")
+                                    break
+
+                            if hagru_salvo_lengths is None:
+                                use_salvo_variant = False
+                            elif salvo_length in hagru_salvo_lengths:
+                                use_salvo_variant = salvo_length > 1
+                            elif 1 in hagru_salvo_lengths:
+                                use_salvo_variant = False
+                            else:
+                                salvo_length = hagru_salvo_lengths[0]
+                                use_salvo_variant = True
 
                         # Clone the live mount (inherits final indices / keys)
                         new_wpn = weapon.copy()
                         if use_salvo_variant:
-                            new_ammo = f"$/GFX/Weapon/Ammo_{base_ammo_name}_HAGRU_salvolength{salvo_length}"
+                            new_ammo = (
+                                f"$/GFX/Weapon/Ammo_{base_ammo_name}_HAGRU"
+                                f"{suffix_kind}{salvo_length}"
+                            )
                         else:
                             new_ammo = f"$/GFX/Weapon/Ammo_{base_ammo_name}_HAGRU"
                         new_wpn.v.by_m("Ammunition").v = new_ammo
@@ -771,6 +786,8 @@ def _apply_turret_changes(
 
 def _apply_salvo_changes(weapon_descr: Any, wd_edits: Dict, weapon_descr_data: Dict, game_db: Dict) -> None:
     """Apply salvo changes using database data."""
+    from src.data.infantry_magazine_salvo import strip_magazine_suffixes
+
     wd_name = weapon_descr.namespace
     salves_list = weapon_descr.v.by_m("Salves")
     salves_winchester = weapon_descr.v.by_m("SalvoIsMainSalvo", strict=False)
@@ -779,6 +796,48 @@ def _apply_salvo_changes(weapon_descr: Any, wd_edits: Dict, weapon_descr_data: D
     salve_edits = wd_edits["Salves"]
     # Update salvos first to prevent index errors
     salvo_mapping = weapon_descr_data["salvo_mapping"]
+
+    def _indices_for_salves_key(weapon: str) -> list | None:
+        """Resolve Salves key to salvo_mapping indices (bare / rename / replace / magazine)."""
+        candidates = [weapon]
+        bare = strip_magazine_suffixes(weapon)
+        if bare != weapon:
+            candidates.append(bare)
+        old_name = renames_new_old.get(weapon)
+        if old_name:
+            candidates.append(old_name)
+        old_bare = renames_new_old.get(bare)
+        if old_bare:
+            candidates.append(old_bare)
+
+        for cand in candidates:
+            if cand in salvo_mapping:
+                return salvo_mapping[cand]
+
+        # Match salvo_mapping keys that strip to the same bare ammo
+        for map_key, indices in salvo_mapping.items():
+            if strip_magazine_suffixes(map_key) == bare:
+                return indices
+
+        # Via equipmentchanges.replace: Salves may name the magazine variant while
+        # the mount still has the donor (or bare target) until remount runs later.
+        equipment_changes = wd_edits.get("equipmentchanges") or {}
+        for spec in normalize_replace(equipment_changes.get("replace")):
+            new_bare = strip_magazine_suffixes(spec.new_weapon)
+            if spec.new_weapon != weapon and new_bare != bare:
+                continue
+            old_weapon_old_name = renames_new_old.get(spec.old_weapon)
+            weapon_key = old_weapon_old_name if old_weapon_old_name else spec.old_weapon
+            if weapon_key in salvo_mapping:
+                return salvo_mapping[weapon_key]
+            weapon_key_bare = strip_magazine_suffixes(weapon_key)
+            if weapon_key_bare in salvo_mapping:
+                return salvo_mapping[weapon_key_bare]
+            for map_key, indices in salvo_mapping.items():
+                if strip_magazine_suffixes(map_key) == weapon_key_bare:
+                    return indices
+        return None
+
     for weapon, val in salve_edits.items():
 
         # Skip special control keys
@@ -791,10 +850,8 @@ def _apply_salvo_changes(weapon_descr: Any, wd_edits: Dict, weapon_descr_data: D
             salvo = val[0]
             winchester = str(val[1])
 
-        old_weapon = renames_new_old.get(weapon, None)
-
-        if weapon in salvo_mapping:
-            indices = salvo_mapping[weapon]
+        indices = _indices_for_salves_key(weapon)
+        if indices is not None:
             for index in indices:
                 if salvo:
                     logger.debug(f"Updating salvo for {weapon} at index {index}")
@@ -802,40 +859,6 @@ def _apply_salvo_changes(weapon_descr: Any, wd_edits: Dict, weapon_descr_data: D
                 if salves_winchester and winchester:
                     logger.debug(f"Updating index {index} of SalvoIsMainSalvo to {winchester}")
                     salves_winchester.v.replace(index, winchester)
-
-        elif old_weapon and old_weapon in salvo_mapping:
-            indices = salvo_mapping[old_weapon]
-            for index in indices:
-                if salvo:
-                    logger.debug(f"Updating salvo for {weapon} at index {index}")
-                    salves_list.v.replace(index, str(salvo))
-                if salves_winchester and winchester:
-                    logger.debug(f"Updating index {index} of SalvoIsMainSalvo to {winchester}")
-                    salves_winchester.v.replace(index, winchester)
-
-        elif "equipmentchanges" in wd_edits:
-            if "replace" in wd_edits["equipmentchanges"]:
-                for spec in normalize_replace(wd_edits["equipmentchanges"]["replace"]):
-                    # check if the new weapon is the same as the one in salve_edits
-                    if spec.new_weapon != weapon:
-                        logger.debug(f"New weapon {spec.new_weapon} is not the same as {weapon}")
-                        continue
-                    # check if the old weapon is a renamed version of the weapon in salvo_mapping
-                    old_weapon_old_name = renames_new_old.get(spec.old_weapon, None)
-                    weapon_key = old_weapon_old_name if old_weapon_old_name else spec.old_weapon
-                    if weapon_key in salvo_mapping:
-                        indices = salvo_mapping[weapon_key]
-                        for index in indices:
-                            if salvo:  # is not None:
-                                logger.debug(f"Updating salvo for {weapon} at index {index}")
-                                salves_list.v.replace(index, str(salvo))
-                            if salves_winchester and winchester:
-                                logger.debug(f"Updating index {index} of SalvoIsMainSalvo to {winchester}")
-                                salves_winchester.v.replace(index, winchester)
-
-        elif weapon == "remove":
-            continue
-
         else:
             logger.error(f"{weapon} ammo not found in {wd_name}")
 
@@ -1072,40 +1095,60 @@ def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_
 def _adjust_light_at_salvos(
     weapon_descr: Any, unit_name: str, ammos_: Dict, ammo_db: Dict, unit_db: Dict, weapon_db: Dict
 ) -> None:
-    """Adjust salvo counts for light AT weapons based on squad size."""
-    # Get squad size from unit data
+    """Remount light AT to magazine salvolength variants by squad size; Salves=1."""
+    from src.data.infantry_magazine_salvo import magazine_ammo_name
+    from src.utils.ndf_utils import is_obj_type, is_valid_turret
+
     squad_size = unit_db.get(unit_name, {}).get("strength")
     if not squad_size:
         logger.warning(f"No strength data found for {unit_name}")
         return
     if squad_size not in LIGHT_AT_AMMO:
-        # this is not an error, some unit strengths are just not mapped (intentionally)
         logger.info(f"Invalid squad size {squad_size} for {unit_name}")
         return
 
-    # Get this unit's weapon data
     weapon_descr_name = f"WeaponDescriptor_{unit_name}"
     unit_weapon_data = weapon_db.get(weapon_descr_name)
     if not unit_weapon_data:
         logger.debug(f"No weapon data found for {weapon_descr_name}")
         return
 
-    # Get weapon renames mapping
     renames = ammo_db.get("renames_old_new", {})
+    new_ammo_count = LIGHT_AT_AMMO[squad_size]
+    if new_ammo_count <= 1:
+        return
 
-    # Look through turrets for light AT weapons
+    prefix = "$/GFX/Weapon/Ammo_"
     turrets = unit_weapon_data.get("turrets", {})
     for turret in turrets.values():
         for ammo_name, weapon_data in turret.get("weapons", {}).items():
-            # Check original name for possible rename, and return the original name if none found
             ammo_to_check = renames.get(ammo_name, ammo_name)
-            if any(key[0] == ammo_to_check and key[1] == "light_at" for key in ammos_.keys()):
-                salvo_index = weapon_data["salvo_index"]
-                new_ammo_count = LIGHT_AT_AMMO[squad_size]
+            base_for_cat = re.sub(r"(_salvolength\d+|_infmagazine\d+)$", "", ammo_to_check)
+            if not any(key[0] == base_for_cat and key[1] == "light_at" for key in ammos_.keys()):
+                continue
 
-                # Update the salvo count
-                salves_list = weapon_descr.v.by_m("Salves").v
-                logger.debug(
-                    f"Updating {unit_name} {ammo_name} salvo count to {new_ammo_count} " f"for {squad_size}-man squad"
-                )
-                salves_list.replace(int(salvo_index), str(new_ammo_count))
+            salvo_index = weapon_data["salvo_index"]
+            variant = magazine_ammo_name(base_for_cat, int(new_ammo_count))
+            turret_list = weapon_descr.v.by_m("TurretDescriptorList")
+            for turret_descr in turret_list.v:
+                if not is_valid_turret(turret_descr.v):
+                    continue
+                for mounted in turret_descr.v.by_m("MountedWeaponDescriptorList").v:
+                    if not is_obj_type(mounted.v, "TMountedWeaponDescriptor"):
+                        continue
+                    path = mounted.v.by_m("Ammunition").v
+                    if not isinstance(path, str) or not path.startswith(prefix):
+                        continue
+                    current = path[len(prefix):]
+                    current_base = re.sub(r"(_salvolength\d+|_infmagazine\d+)$", "", current)
+                    if current_base != base_for_cat and current != ammo_name:
+                        continue
+                    mounted.v.by_m("Ammunition").v = f"{prefix}{variant}"
+                    salves_list = weapon_descr.v.by_m("Salves").v
+                    salves_list.replace(int(salvo_index), "1")
+                    logger.debug(
+                        f"Updating {unit_name} {ammo_name} -> {variant} "
+                        f"(Salves=1) for {squad_size}-man squad"
+                    )
+                    break
+

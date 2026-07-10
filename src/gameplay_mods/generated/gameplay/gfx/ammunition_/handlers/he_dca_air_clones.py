@@ -32,7 +32,7 @@ from src.constants.weapons.spaag_air import (
 
 
 _HE_DCA_AIR_FAMILY = SPAAG_AIR_DAMAGE_FAMILY
-_SALVO_SUFFIX_RE = re.compile(r"(_x\d+|_salvolength\d+)$")
+_SALVO_SUFFIX_RE = re.compile(r"(_x\d+|_salvolength\d+|_infmagazine\d+)$")
 
 
 def _parse_int_suppress(value: Any) -> int | None:

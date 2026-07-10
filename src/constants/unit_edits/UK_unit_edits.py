@@ -494,7 +494,7 @@ uk_unit_edits = {
                 },
                 "replace": {
                     "RocketInf_M72A3_LAW_66mm": {
-                        "new_weapon": "RocketInf_LAW_80",
+                        "new_weapon": "RocketInf_LAW_80_salvolength4",
                         "swap_fire_effect": True,
                         "depiction_baked_in": False,
                         "old_new_effect": ("RocketInf_M72_LAW_66mm", "RocketInf_LAW_80"),
@@ -502,7 +502,7 @@ uk_unit_edits = {
                 },
             },
             "Salves": {
-                "RocketInf_LAW_80": 4,
+                "RocketInf_LAW_80_salvolength4": 1,
             },
         },
         "remove_zone_capture": None,
@@ -751,7 +751,7 @@ uk_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_Carl_Gustav": 8,
+                "RocketInf_Carl_Gustav_salvolength8": 1,
             },
             "equipmentchanges": {
                 "animate": {
@@ -817,7 +817,7 @@ uk_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_LAW_80": 6,
+                "RocketInf_LAW_80_salvolength6": 1,
             },
         },
     },
@@ -840,7 +840,7 @@ uk_unit_edits = {
                 },
             },
             "Salves": {
-                "RocketInf_Carl_Gustav": 6,
+                "RocketInf_Carl_Gustav_salvolength6": 1,
             },
         },
     },
@@ -875,7 +875,7 @@ uk_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_LAW_80": 8,
+                "RocketInf_LAW_80_salvolength8": 1,
             },
         },
     },
@@ -908,7 +908,7 @@ uk_unit_edits = {
         "availability": [10, 7, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_LAW_80": 6,
+                "RocketInf_LAW_80_salvolength6": 1,
             },
         },
     },
@@ -965,7 +965,7 @@ uk_unit_edits = {
         "availability": [0, 6, 4, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_Carl_Gustav": 7,
+                "RocketInf_Carl_Gustav_salvolength7": 1,
             },
         },
     },
@@ -1026,7 +1026,7 @@ uk_unit_edits = {
         "availability": [10, 7, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_Carl_Gustav": 7,
+                "RocketInf_Carl_Gustav_salvolength7": 1,
             },
         },
     },
@@ -1057,7 +1057,7 @@ uk_unit_edits = {
                 },
             },
             "Salves": {
-                "RocketInf_LAW_80": 6,
+                "RocketInf_LAW_80_salvolength6": 1,
             },
         },
         "UpgradeFromUnit": "Rifles_Patrol_UK",
@@ -1113,7 +1113,7 @@ uk_unit_edits = {
             },
             "Salves": {
                 "insert": [(2, 30)],
-                "RocketInf_LAW_80": 7,
+                "RocketInf_LAW_80_salvolength7": 1,
             },
         },
     },
@@ -1155,7 +1155,7 @@ uk_unit_edits = {
                 },
             },
             "Salves": {
-                "RocketInf_Carl_Gustav": 6,
+                "RocketInf_Carl_Gustav_salvolength6": 1,
             },
         },
     },
@@ -2207,7 +2207,7 @@ uk_unit_edits = {
             "equipmentchanges": {
                 "replace": {
                     "RocketInf_M72A3_LAW_66mm": {
-                        "new_weapon": "RocketInf_Carl_Gustav",
+                        "new_weapon": "RocketInf_Carl_Gustav_salvolength6",
                         "swap_fire_effect": True,
                         "depiction_baked_in": False,
                         "old_new_effect": ("RocketInf_M72_LAW_66mm", "RocketInf_Carl_Gustav"),
@@ -2215,7 +2215,7 @@ uk_unit_edits = {
                 },
             },
             "Salves": {
-                "RocketInf_Carl_Gustav": 6,
+                "RocketInf_Carl_Gustav_salvolength6": 1,
             },
         },
         "UpgradeFromUnit": "Scout_Para_UK",

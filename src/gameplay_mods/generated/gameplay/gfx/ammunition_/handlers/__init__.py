@@ -42,6 +42,10 @@ from .vanilla_renames import (
 from .ammo_consumption_validation import (
     validate_ammunition_consumption,
 )
+from .infantry_magazine_salvo_variants import (
+    create_infantry_magazine_variants,
+    variants_for_weapon,
+)
 
 __all__ = [
     'add_corrected_shot_dispersion',
@@ -61,7 +65,9 @@ __all__ = [
     'apply_he_damage_standards',
     'apply_weapon_range_standards',
     'apply_tandem_charge_inversion',
+    'create_infantry_magazine_variants',
     'remove_vanilla_instances',
     'validate_ammunition_consumption',
     'vanilla_renames_ammunition',
+    'variants_for_weapon',
 ]

@@ -12,6 +12,7 @@ UK_NEW_UNITS = {
                 "DepictionVehicles.ndf": ["TacticVehicleDepictionRegistration", "DepictionOperator_WeaponContinuousFire"],
             },
         },
+        "UnitId": 50063,
         "NewName": "DCA_M167A2_Vulcan_20mm_UK",
         "GameName": {
             "display": "M167A2 VADS (UK)",
@@ -91,6 +92,7 @@ UK_NEW_UNITS = {
         "InfantrySquadModuleGUID": "6654c8cb-38e3-41e9-bc29-d37e1a3fd862",
         "ShowroomGUID": "4f8f93db-5b47-4e3b-91f9-e7a63870c778",
         "CadavreGUID": "e9fecaf0-63ae-4181-beb7-a92c1e7d612a",
+        "UnitId": 50064,
         "NewName": "MANPAD_Starstreak_UK",
         "strength": 2,
         "GameName": {
@@ -163,6 +165,7 @@ UK_NEW_UNITS = {
         "InfantrySquadModuleGUID": "f89e6ee3-40ac-4ef8-a6eb-5c1373cb51d7",
         "ShowroomGUID": "b2e1d9c4-a7f8-4b53-9c6e-d5f4e3a2c1b8",
         "CadavreGUID": "b1352738-64fe-4c41-8505-7fdb44402f6d",
+        "UnitId": 50065,
         "NewName": "Rifles_CMD2_UK",
         "GameName": {
             "display": "HQ SECTION",
@@ -180,7 +183,7 @@ UK_NEW_UNITS = {
             "Salves": {
                 "FM_L85A1": 11,
                 "L7A2_7_62mm": 30,
-                "RocketInf_M72A3_LAW_66mm": 5,
+                "RocketInf_M72A3_LAW_66mm_salvolength5": 1,
             },
             "equipmentchanges": {
                 "quantity": {
@@ -234,6 +237,7 @@ UK_NEW_UNITS = {
         "InfantrySquadModuleGUID": "5d21c985-c92a-4975-b0f3-74ed1a7920b8",
         "ShowroomGUID": "c4d5e6f7-8a9b-4c5d-6e7f-8a9b0c1d2e3f",
         "CadavreGUID": "e8f48e53-2ad0-4d41-ac9f-f6d24a3f2e77",
+        "UnitId": 50066,
         "NewName": "Challenger_1_Mk1_CMD2_UK",
         "GameName": {
             "display": "CHALLENGER Mk.2 CMD",
@@ -294,6 +298,7 @@ UK_NEW_UNITS = {
         "InfantrySquadModuleGUID": "e7b02c97-0130-4ac1-bf35-1c2f3065a4de",
         "ShowroomGUID": "451549aa-d69c-47e1-8824-30f60b236bb6",
         "CadavreGUID": "dcf2f600-fa63-4760-bb8a-334e57fccc84",
+        "UnitId": 50067,
         "NewName": "FV4201_Chieftain_CMD2_UK",
         "GameName": {
             "display": "CHIEFTAIN Mk.10 CMD",
@@ -364,6 +369,7 @@ UK_NEW_UNITS = {
                 PreventsDecayInZone = True
             )""",
         ],
+        "UnitId": 50068,
         "NewName": "FV4201_Chieftain_Mk9_CMD2_UK",
         "GameName": {
             "display": "CHIEFTAIN Mk.9 CMD",
@@ -424,6 +430,7 @@ UK_NEW_UNITS = {
         "InfantrySquadModuleGUID": "f669e647-adbc-4414-99da-6f11eb06819f",
         "ShowroomGUID": "79a769f6-c8bc-4ec1-b6b6-697f2d024c72",
         "CadavreGUID": "f5920656-c32e-4094-9264-b4682fdfd05e",
+        "UnitId": 50069,
         "NewName": "Centurion_Mk13_CMD2_UK",
         "GameName": {
             "display": "CENTURION Mk.13 CMD",
@@ -490,6 +497,7 @@ UK_NEW_UNITS = {
             "add_capacities": ["LDR_TNK"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
+        "UnitId": 50109,
         "NewName": "FV4201_Chieftain_Mk9_CMD_UK",
         "GameName": {
             "display": "CHIEFTAIN Mk.9",
@@ -545,6 +553,7 @@ UK_NEW_UNITS = {
         "InfantrySquadModuleGUID": "f9ebcac8-c741-47ca-8aac-db0b97fd4a59",
         "ShowroomGUID": "f9ebcac8-c741-47ca-8aac-db0b97fd4a59",
         "CadavreGUID": "712dc0c8-8a08-407a-86de-7966c49791e2",
+        "UnitId": 50070,
         "NewName": "FV101_Scorpion_para_UK",
         "GameName": {
             "display": "PARA. FV101 SCORPION",
@@ -610,6 +619,7 @@ UK_NEW_UNITS = {
         "InfantrySquadModuleGUID": "98ce59ad-4057-4d0c-b7d4-d837a9101758",
         "ShowroomGUID": "9ff607c6-2836-4b3c-90af-06e2a1194a1a",
         "CadavreGUID": "a8a1ac35-7624-4744-b802-18c4c100f364",
+        "UnitId": 50071,
         "NewName": "FV107_Scimitar_para_UK",
         "GameName": {
             "display": "PARA. FV107 SCIMITAR",
@@ -675,6 +685,7 @@ UK_NEW_UNITS = {
         "InfantrySquadModuleGUID": "0c3c416b-12cd-42a8-bd2e-f343404a403d",
         "ShowroomGUID": "b33c7197-4360-4ebd-948e-70249481ec53",
         "CadavreGUID": "57a721f1-b874-4e45-bd51-9c5b90dd3afe",
+        "UnitId": 50072,
         "NewName": "RCL_L6_Wombat_para_UK",
         "GameName": {
             "display": "PARA. L6 WOMBAT",
@@ -740,6 +751,7 @@ UK_NEW_UNITS = {
         "InfantrySquadModuleGUID": "cd38e351-ebe0-479a-80be-7b9f02dc313f",
         "ShowroomGUID": "336f4bed-1255-4991-a845-1cd36f149b9f",
         "CadavreGUID": "d05c2709-4fc9-4011-9c6b-b1bccb216d7a",
+        "UnitId": 50073,
         "NewName": "Tracked_Rapier_FSA_UK", 
         "GameName": {
             "display": "TRACKED RAPIER LASERFIRE",
@@ -808,6 +820,7 @@ UK_NEW_UNITS = {
         "InfantrySquadModuleGUID": "764ff26e-6338-4ccb-a96c-e2e2c1028c4e",
         "ShowroomGUID": "0471c0e7-a3ef-4a6b-a903-36e2f13bc8e2",
         "CadavreGUID": "ea4dd6b3-24dc-4a75-9772-63014eb9df19",
+        "UnitId": 50110,
         "NewName": "Tracked_Rapier_FSB2_UK", 
         "GameName": {
             "display": "TRACKED RAPIER DARKFIRE",

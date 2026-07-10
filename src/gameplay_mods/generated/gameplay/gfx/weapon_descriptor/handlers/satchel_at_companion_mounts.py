@@ -15,7 +15,7 @@ from typing import Any, Dict
 from src.utils.ndf_utils import is_obj_type, is_valid_turret
 
 _AMMO_PREFIX = "$/GFX/Weapon/Ammo_"
-_SUFFIX_RE = re.compile(r"(?:_strength\d+)?(?:_x\d+|_salvolength\d+)?$")
+_SUFFIX_RE = re.compile(r"(?:_strength\d+)?(?:_x\d+|_salvolength\d+|_infmagazine\d+)?$")
 
 _SATCHEL_DONOR = "Grenade_Satchel_Charge"
 _SATCHEL_COMPANION = "Grenade_Satchel_Charge_AT"

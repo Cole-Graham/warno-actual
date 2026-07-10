@@ -19,7 +19,7 @@ from src.constants.weapons.standards.pattern.clu_sol_traits import (
     CLU_SOL_TRAIT_TOKEN_HEAT,
 )
 
-_SALVO_SUFFIX_RE = re.compile(r"(_x\d+|_salvolength\d+)$")
+_SALVO_SUFFIX_RE = re.compile(r"(_x\d+|_salvolength\d+|_infmagazine\d+)$")
 
 
 def _base_weapon_name_from_ammo_namespace(namespace: str) -> str:

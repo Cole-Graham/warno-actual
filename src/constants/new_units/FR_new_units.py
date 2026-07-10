@@ -17,6 +17,7 @@ FR_NEW_UNITS = {
         "InfantrySquadModuleGUID": "5910ff01-80de-4b1f-a203-629d3fe3cb3b",
         "ShowroomGUID": "8119e3f8-17df-4a7b-a215-5a465642f343",
         "CadavreGUID": "578e09f3-9959-410e-8615-1f90103762c3",
+        "UnitId": 50089,
         "NewName": "Chasseurs_CMD2_FR",
         "GameName": {
             "display": "GROUPE DE CMDT",
@@ -105,6 +106,7 @@ FR_NEW_UNITS = {
         "InfantrySquadModuleGUID": "21eaa0d7-8acd-4431-a7fd-47329780bb11",
         "ShowroomGUID": "dccaeb21-3a70-4fea-9f4d-bc05f53fd011",
         "CadavreGUID": "86fa429c-aa00-4a30-95e0-9deb1ab09e43",
+        "UnitId": 50090,
         "NewName": "AMX_30_B2_CMD2_FR",
         "TagSet": {
             "overwrite_all": [
@@ -149,6 +151,7 @@ FR_NEW_UNITS = {
         "InfantrySquadModuleGUID": "5faa8174-b16f-41bd-bbe3-754e1794e5d5",
         "ShowroomGUID": "091778ad-6a22-4ec3-bb86-252f5f455f05",
         "CadavreGUID": "20c080b7-1192-42d4-aa29-eb099ed281a3",
+        "UnitId": 50091,
         "NewName": "AMX_30_B_CMD2_FR",
         "TagSet": {
             "overwrite_all": [
@@ -189,6 +192,7 @@ FR_NEW_UNITS = {
         "InfantrySquadModuleGUID": "cd9eae4f-3222-4db9-a52c-ff159ed0429e",
         "ShowroomGUID": "e9940086-c0be-450a-88e2-9d667457f7c5",
         "CadavreGUID": "cc9adc74-d51e-4da5-aacf-f3074bf48bf3",
+        "UnitId": 50092,
         "NewName": "AMX_13_75mm_CMD2_FR",
         "TagSet": {
             "overwrite_all": [
@@ -225,6 +229,7 @@ FR_NEW_UNITS = {
         "InfantrySquadModuleGUID": "60fa4e8e-82c5-4e32-9468-c58ed82334e9",
         "ShowroomGUID": "e471949a-a501-4fe2-920b-71694f4a73bd",
         "CadavreGUID": "ecb717d3-eba0-4a0a-9887-12ae556d2f13",
+        "UnitId": 50093,
         "NewName": "AMX_10_RC_CMD2_FR",
         "TagSet": {
             "overwrite_all": [
@@ -261,6 +266,7 @@ FR_NEW_UNITS = {
         "InfantrySquadModuleGUID": "06b4121f-6df6-429c-99e5-b5fe17d1c607",
         "ShowroomGUID": "4647f38e-c543-4fff-9d2d-d4fbb3bca54a",
         "CadavreGUID": "3b90324f-27cc-4465-942f-99d5692c01ae",
+        "UnitId": 50094,
         "NewName": "ERC_90_Sagaie_CMD2_FR",
         "TagSet": {
             "overwrite_all": [
@@ -297,6 +303,7 @@ FR_NEW_UNITS = {
         "InfantrySquadModuleGUID": "8334fa32-6637-4228-ae11-8d584e25fe18",
         "ShowroomGUID": "fb64a265-960f-4c88-b420-759eb20e681e",
         "CadavreGUID": "1455fde7-7488-4ced-b02c-991247f6bb73",
+        "UnitId": 50095,
         "NewName": "AML_90_CMD2_FR",
         "TagSet": {
             "overwrite_all": [

@@ -419,7 +419,7 @@ fr_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_FAMAS": 11,
-                "RocketInf_LRAC_F1": 7,
+                "RocketInf_LRAC_F1_salvolength7": 1,
             },
         },
     },
@@ -435,7 +435,7 @@ fr_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_FAMAS": 11,
-                "RocketInf_LRAC_F1": 7,
+                "RocketInf_LRAC_F1_salvolength7": 1,
             },
         },
     },
@@ -451,7 +451,7 @@ fr_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_FAMAS": 11,
-                "RocketInf_APILAS": 6,
+                "RocketInf_APILAS_salvolength6": 1,
             },
         },
     },
@@ -475,7 +475,7 @@ fr_unit_edits = {
                 },
             },
             "Salves": {
-                "RocketInf_APILAS": 7,
+                "RocketInf_APILAS_salvolength7": 1,
             },
         },
     },
@@ -1265,7 +1265,7 @@ fr_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_LRAC_F1": 4,
+                "RocketInf_LRAC_F1_salvolength4": 1,
             },
         },
     },

@@ -11,7 +11,7 @@ from src.constants.unit_edits.standards import HOBS_NO_HMD_PATTERN_STANDARD, Hob
 from src.utils.ndf_utils import is_obj_type, is_valid_turret, strip_quotes
 
 _AMMO_PREFIX = "$/GFX/Weapon/Ammo_"
-_SUFFIX_RE = re.compile(r"(_x\d+|_salvolength\d+|_strength\d+)$")
+_SUFFIX_RE = re.compile(r"(_x\d+|_salvolength\d+|_infmagazine\d+|_strength\d+)$")
 _NOOBS_MARKER = "NoOBS"
 
 

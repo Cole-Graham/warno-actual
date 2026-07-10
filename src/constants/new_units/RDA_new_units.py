@@ -7,6 +7,7 @@ RDA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "ce0f6edf-7dbb-4654-a28a-5babfffc1678",
         "ShowroomGUID": "e460caeb-435d-44a8-b6e6-fcec671f4628",
         "CadavreGUID": "1416dac9-0b07-4a67-8455-fea6055d2254",
+        "UnitId": 50017,
         "NewName": "KdA_DDR_TargetDummy",
         "GameName": {
             "display": "KdA 100",
@@ -67,6 +68,7 @@ RDA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "5bed0d57-83b0-46d7-99e6-f69138e38a84",
         "ShowroomGUID": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
         "CadavreGUID": "79abc88c-d5be-4615-9ed2-4cb87bde9f4b",
+        "UnitId": 50018,
         "NewName": "MotRifles_CMD2_DDR",
         "GameName": {
             "display": "FÜHRUNGSTRUPP",
@@ -93,7 +95,7 @@ RDA_NEW_UNITS = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_Mpi_AK_74N": 11,
-                "RocketInf_RPG18_64mm": 5,
+                "RocketInf_RPG18_64mm_salvolength5": 1,
                 "Sniper_SVD_Dragunov": 10,
             },
             "equipmentchanges": {
@@ -155,6 +157,7 @@ RDA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "1d1735b6-a0e6-49be-994e-f1bf7480872b",
         "ShowroomGUID": "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b",
         "CadavreGUID": "94711356-5cd2-4d35-b3e6-a25ca820237b",
+        "UnitId": 50019,
         "NewName": "BTR_50_CMD2_DDR",
         "TagSet": {
             "overwrite_all": [
@@ -212,6 +215,7 @@ RDA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "1def4c80-26b9-47d0-b601-cfb485394ff9",
         "ShowroomGUID": "d7e8f9a0-b1c2-4d3e-4f5g-6h7i8j9k0l1m",
         "CadavreGUID": "a89772b8-0b7f-40bd-8760-edc249b9f5da",
+        "UnitId": 50020,
         "NewName": "ATteam_FagotM_DDR",
         "GameName": {
             "display": "PALR FAGOT-M",
@@ -297,6 +301,7 @@ RDA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "c0304787-17d4-4277-bc87-7bb405aa4876",
         "ShowroomGUID": "04f02987-77e8-40de-a214-b0f6abf047b2",
         "CadavreGUID": "2eb3afbb-2015-4f06-a410-a0d2e29f90eb",
+        "UnitId": 50021,
         "NewName": "T54B_CMD2_DDR",
         "GameName": {
             "token": "CRMEBWSIWS",
@@ -350,6 +355,7 @@ RDA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "e7a7acba-d937-427a-9035-7e4f957cf778",
         "ShowroomGUID": "376f5cd3-f3ef-4bd0-80c9-61ffe40e38a6",
         "CadavreGUID": "96ae475b-77da-4775-bb65-6cc436c23015",
+        "UnitId": 50022,
         "NewName": "T55A_CMD2_DDR",
         "GameName": {
             "display": "FüPz T-55AK",
@@ -415,6 +421,7 @@ RDA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "f16d2db0-0ac0-4929-bdcb-cf574be8da4f",
         "ShowroomGUID": "f29b94d3-7dd9-4c05-a31b-53fd5a9c76df",
         "CadavreGUID": "372beca7-a92e-4df4-bbe2-da4ebd0b95fa",
+        "UnitId": 50023,
         "NewName": "T55AM2_CMD2_DDR",
         "TagSet": {
             "overwrite_all": [
@@ -457,6 +464,7 @@ RDA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "da74e4f0-2b89-4ddf-8dc7-e866bf171845",
         "ShowroomGUID": "f8a9b0c1-d2e3-4f5g-6h7i-8j9k0l1m2n3o",
         "CadavreGUID": "3f275f69-0fdf-4e49-9f14-a3bfc4e0b471",
+        "UnitId": 50024,
         "NewName": "T72M_CMD2_DDR",
         "GameName": {
             "display": "FüPz T-72MK",
@@ -531,6 +539,7 @@ RDA_NEW_UNITS = {
             "display": "FüPz T-72M1K",
             "token": "FUPZTSTMOK",
         },
+        "UnitId": 50025,
         "NewName": "T72M1_CMD2_DDR",
         "TagSet": {
             "overwrite_all": [
@@ -585,6 +594,7 @@ RDA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "98f2a222-2df1-44be-b552-8c94960f4578",
         "ShowroomGUID": "e42dc1dc-4d1e-4526-bb56-15f32c1eee8a",
         "CadavreGUID": "60d5682a-895b-42b0-9ee7-0600fa8917ab",
+        "UnitId": 50026,
         "NewName": "9_Panzer_T72M1_DDR",
         "TagSet": {
             "overwrite_all": [
@@ -637,6 +647,7 @@ RDA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "81fac455-2f48-49da-9e81-e2409d6f73fb",
         "ShowroomGUID": "61bb438f-1039-4e0c-9931-82750f1e5eec",
         "CadavreGUID": "1e24d282-7acd-48eb-8968-940e2d20409b",
+        "UnitId": 50027,
         "NewName": "ATteam_FagotM_FJ_DDR",
         "GameName": {
             "display": "Fs-PALR FAGOT-M",
@@ -708,6 +719,7 @@ RDA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "ff7745cb-ea97-4e1d-ac7a-42df52791e08",
         "ShowroomGUID": "51182ac7-2b39-4f89-a694-168f023c8fd3",
         "CadavreGUID": "39eecf61-55ca-49a0-ad56-04afe0fcb541",
+        "UnitId": 50102,
         "NewName": "ATteam_Konkurs_FJ_DDR",
         "GameName": {
             "display": "Fs-PALR KONKURS",
@@ -988,6 +1000,7 @@ RDA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "0139d60a-20c3-42de-934d-443a17adb815",
         "ShowroomGUID": "94ff8fc9-e3cd-4b01-bfbe-507525503b9a",
         "CadavreGUID": "38f2aa67-4230-48a5-ae23-d00cad44d7eb",
+        "UnitId": 50028,
         "NewName": "UAZ_469_Fagot_FJ_DDR",
         "TagSet": {
             "overwrite_all": [
@@ -1032,6 +1045,7 @@ RDA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "1a9b8c7d-6e5f-4a3b-8c2d-9e0f1a2b3c4d",
         "ShowroomGUID": "2b3c4d5e-6f78-49a0-b1c2-d3e4f5a6b7c8",
         "CadavreGUID": "3c4d5e6f-7a89-4b0c-9d1e-2f3a4b5c6d7e",
+        "UnitId": 50029,
         "NewName": "MP_mech_DDR",
         "GameName": {
             "display": "MILITÄRSTREIFEIN",
@@ -1063,7 +1077,7 @@ RDA_NEW_UNITS = {
                     "PM_Skorpion": 5,
                     "FM_KMS_72": 2,
                     "SAW_lMG_K_7_62mm": 1,
-                    "RocketInf_RPG7": 1,
+                    "RocketInf_RPG7_salvolength4": 1,
                 },
                 # NEW_UNITS pipeline requires (turret_index, weapon_name, fire_effect) tuples
                 "insert": [
@@ -1109,7 +1123,7 @@ RDA_NEW_UNITS = {
                 "PM_Skorpion": 22,
                 "FM_KMS_72": 11,
                 "SAW_lMG_K_7_62mm": 18,
-                "RocketInf_RPG7": 4,
+                "RocketInf_RPG7_salvolength4": 1,
                 "insert": [
                     (1, 11),
                     (2, 18),
@@ -1156,6 +1170,7 @@ RDA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "af388616-8618-43b5-91c2-8b443b3aad9f",
         "ShowroomGUID": "de5a1d0b-b4a8-4134-95fc-e32d44b355cd",
         "CadavreGUID": "7bc99e93-fb08-4eb8-9109-aab49424a568",
+        "UnitId": 50030,
         "NewName": "MotSchutzen_RPG29_DDR",
         "GameName": {
             "display": "PANZERJÄGER [RPG-29]",
@@ -1182,7 +1197,7 @@ RDA_NEW_UNITS = {
             "Salves": {
                 "FM_Mpi_AK_74N": 11,
                 "SAW_lMG_K_7_62mm": 18,
-                "RocketInf_RPG29_105mm": 6,
+                "RocketInf_RPG29_105mm_salvolength6": 1,
             },
             "equipmentchanges": {
                 "animate": {
@@ -1200,7 +1215,17 @@ RDA_NEW_UNITS = {
                             "swap_fire_effect": True,
                             "depiction_baked_in": False,
                             "old_new_effect": ("RocketInf_RPG7VR_64mm", "SAW_lMG_K_7_62mm"),
-                        },
+                        
+                    "RocketInf_RPG29_105mm": {
+                        
+                        "new_weapon": "RocketInf_RPG29_105mm_salvolength6",
+                        
+                        "swap_fire_effect": False,
+                        
+                        "depiction_baked_in": True,
+                        
+                    },
+                },
                         {
                             "new_weapon": "RocketInf_RPG29_105mm",
                             "swap_fire_effect": True,
@@ -1251,6 +1276,7 @@ RDA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "4bc13e62-8ad3-4663-971d-0a16ce03251b",
         "ShowroomGUID": "24396c59-18b8-4cf5-97ea-71d26bef0c90",
         "CadavreGUID": "4401b9de-c033-4e9d-9a24-5c935b3600bc",
+        "UnitId": 50031,
         "NewName": "HvyScout_RPG7VL_DDR",
         "GameName": {
             "display": "MOT. AUFKLÄRER [RPG-7]",
@@ -1277,7 +1303,7 @@ RDA_NEW_UNITS = {
             "Salves": {
                 "FM_Mpi_AK_74N": 11,
                 "SAW_lMG_K_7_62mm": 18,
-                "RocketInf_RPG7VL": 6,
+                "RocketInf_RPG7VL_salvolength6": 1,
             },
             "equipmentchanges": {
                 "animate": {
@@ -1289,7 +1315,7 @@ RDA_NEW_UNITS = {
                 },
                 "replace": {
                     "RocketInf_RPG18_64mm": {
-                        "new_weapon": "RocketInf_RPG7VL",
+                        "new_weapon": "RocketInf_RPG7VL_salvolength6",
                         "swap_fire_effect": True,
                         "depiction_baked_in": False,
                     },
@@ -1332,6 +1358,7 @@ RDA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "6c3d04e7-f606-40d7-88a6-a9b3e339c230",
         "ShowroomGUID": "ef58695b-b6f1-4ea6-9fbd-330aaf99fa76",
         "CadavreGUID": "37460926-d4b5-4c20-aab5-0e4fe8cfee87",
+        "UnitId": 50032,
         "NewName": "T54B_reco_DDR",
         "GameName": {
             "display": "T-54B",

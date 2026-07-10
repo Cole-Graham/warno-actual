@@ -216,7 +216,7 @@ usa_unit_edits = {
                 },
             },
             "Salves": {
-                "RocketInf_M72A3_LAW_66mm": 6,
+                "RocketInf_M72A3_LAW_66mm_salvolength6": 1,
             },
         },
         "remove_zone_capture": None,
@@ -262,7 +262,7 @@ usa_unit_edits = {
             "equipmentchanges": {
                 "replace": {
                     "RocketInf_M72A3_LAW_66mm": {
-                        "new_weapon": "RocketInf_AT4_83mm",
+                        "new_weapon": "RocketInf_AT4_83mm_salvolength4",
                         "swap_fire_effect": True,
                         "depiction_baked_in": False,
                         "old_new_effect": ("RocketInf_M72_LAW_66mm", "RocketInf_AT4_83mm"),
@@ -273,7 +273,7 @@ usa_unit_edits = {
                 },
             },
             "Salves": {
-                "RocketInf_AT4_83mm": 4,
+                "RocketInf_AT4_83mm_salvolength4": 1,
             },
         },
         "remove_zone_capture": None,
@@ -319,7 +319,7 @@ usa_unit_edits = {
         "max_speed": 26,
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_M72A3_LAW_66mm": 6,
+                "RocketInf_M72A3_LAW_66mm_salvolength6": 1,
             },
         },
         "remove_zone_capture": None,
@@ -483,7 +483,7 @@ usa_unit_edits = {
             },
             "Salves": {
                 "M16A1_Carbine": 7,
-                "RocketInf_Carl_Gustav": 7,
+                "RocketInf_M67_RCL_90mm_salvolength7": 1,
             },
         },
         "remove_zone_capture": None,
@@ -580,7 +580,7 @@ usa_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_M16": 11,
-                "RocketInf_AT4_83mm": 8,
+                "RocketInf_AT4_83mm_salvolength8": 1,
             },
         },
         "remove_zone_capture": None,
@@ -842,7 +842,7 @@ usa_unit_edits = {
                 },
             },
             "Salves": {
-                "RocketInf_M72A3_LAW_66mm": 6,
+                "RocketInf_M72A3_LAW_66mm_salvolength6": 1,
             },
         },
         "remove_zone_capture": None,
@@ -1139,7 +1139,7 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_M67_RCL_90mm": 8,
+                "RocketInf_M67_RCL_90mm_salvolength8": 1,
             },
         },
     },
@@ -1174,7 +1174,7 @@ usa_unit_edits = {
             "equipmentchanges": {
                 "replace": {
                     "M47_DRAGON": {
-                        "new_weapon": "M47_DRAGON_II",
+                        "new_weapon": "M47_DRAGON_II_salvolength8",
                         "swap_fire_effect": False,
                         "depiction_baked_in": False,
                     },
@@ -1358,7 +1358,7 @@ usa_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_M16": 11,
-                "RocketInf_M67_RCL_90mm": 8,
+                "RocketInf_M67_RCL_90mm_salvolength8": 1,
             },
         },
         "UpgradeFromUnit": "MP_CMD_US",
@@ -1384,7 +1384,7 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "MANPAD_FIM92_A": 6,
+                "MANPAD_FIM92_A_salvolength6": 1,
             },
         },
     },
@@ -1440,7 +1440,8 @@ usa_unit_edits = {
                 },
             },
             "Salves": {
-                "RocketInf_AT4_83mm": 6,
+                "RocketInf_M67_RCL_90mm_salvolength8": 1,
+                "RocketInf_M67_RCL_90mm_HE_salvolength8": 1,
             },
         },
     },
@@ -1455,7 +1456,7 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_AT4_83mm": 6,
+                "RocketInf_AT4_83mm_salvolength6": 1,
             },
         },
     },
@@ -1507,7 +1508,7 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_AT4_83mm": 9,
+                "RocketInf_AT4_83mm_salvolength9": 1,
             },
         },
     },
@@ -1625,7 +1626,7 @@ usa_unit_edits = {
         "Salves": {
             "FM_M16": 11,
             "SAW_M249_5_56mm": 30,
-            "RocketInf_AT4_83mm": 4,
+            "RocketInf_AT4_83mm_salvolength4": 1,
         },
     },
 
@@ -1734,7 +1735,7 @@ usa_unit_edits = {
                 "FM_M16": 11,
                 "SAW_M249_5_56mm": 30,
                 "MMG_inf_M240B_7_62mm": 36,
-                "RocketInf_AT4_83mm": 4,
+                "RocketInf_AT4_83mm_salvolength4": 1,
             },
         },
     },
@@ -1752,7 +1753,7 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_AT4_83mm": 4,
+                "RocketInf_AT4_83mm_salvolength4": 1,
             },
         },
     },
@@ -1770,7 +1771,7 @@ usa_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "M47_DRAGON_II": 6,
+                "M47_DRAGON_II_salvolength6": 1,
             },
         },
     },
@@ -1795,7 +1796,7 @@ usa_unit_edits = {
                         "depiction_baked_in": False,
                     },
                     "RocketInf_M72A3_LAW_66mm": {
-                        "new_weapon": "RocketInf_AT4_83mm",
+                        "new_weapon": "RocketInf_AT4_83mm_salvolength6",
                         "swap_fire_effect": True,
                         "depiction_baked_in": False,
                         "old_new_effect": ("RocketInf_M72_LAW_66mm", "RocketInf_AT4_83mm"),
@@ -1804,7 +1805,7 @@ usa_unit_edits = {
             },
             "Salves": {
                 "M16A1_Carbine": 11,
-                "RocketInf_AT4_83mm": 6,
+                "RocketInf_AT4_83mm_salvolength6": 1,
             },
         },
     },
@@ -1856,7 +1857,7 @@ usa_unit_edits = {
             "Salves": {
                 "FM_M16": 11,
                 "MMG_inf_M240B_7_62mm": 36,
-                "RocketInf_AT4_83mm": 6,
+                "RocketInf_AT4_83mm_salvolength6": 1,
             },
         },
     },
@@ -1891,7 +1892,7 @@ usa_unit_edits = {
             "Salves": {
                 "FM_M16": 11,
                 "SAW_M249_5_56mm": 23,
-                "RocketInf_AT4_83mm": 4,
+                "RocketInf_AT4_83mm_salvolength4": 1,
             },
         },
     },
@@ -1931,7 +1932,7 @@ usa_unit_edits = {
             },
             "Salves": {
                 "MMG_inf_M240B_7_62mm": 36,
-                "M47_DRAGON_II": 4,
+                "M47_DRAGON_II_salvolength4": 1,
             },
         },
     },
@@ -1984,7 +1985,7 @@ usa_unit_edits = {
             "Salves": {
                 "FM_M16": 11,
                 "SAW_M249_5_56mm": 23,
-                "M47_DRAGON_II": 8,
+                "M47_DRAGON_II_salvolength8": 1,
             },
         },
     },
@@ -2009,7 +2010,7 @@ usa_unit_edits = {
             "Salves": {
                 "FM_M16": 11,
                 "SAW_M249_5_56mm": 30,
-                "RocketInf_AT4_83mm": 4,
+                "RocketInf_AT4_83mm_salvolength4": 1,
             },
         },
     },
@@ -2029,7 +2030,7 @@ usa_unit_edits = {
             "Salves": {
                 "FM_M16": 11,
                 "SAW_M249_5_56mm": 30,
-                "RocketInf_AT4_83mm": 9,
+                "RocketInf_AT4_83mm_salvolength9": 1,
             },
         },
     },
@@ -2061,7 +2062,7 @@ usa_unit_edits = {
                 "FM_M16": 11,
                 "SAW_M249_5_56mm": 30,
                 "MMG_WA_M60E3_7_62mm": 30,
-                "M47_DRAGON_II": 4,
+                "M47_DRAGON_II_salvolength4": 1,
             },
         }
     },
@@ -2112,7 +2113,7 @@ usa_unit_edits = {
             },
             "Salves": {
                 "MMG_M60E1_7_62mm": 45,
-                "M47_DRAGON": 4,
+                "M47_DRAGON_salvolength4": 1,
             },
         }
     },
@@ -2242,7 +2243,7 @@ usa_unit_edits = {
             "Salves": {
                 "FM_M16": 11,
                 "SAW_M249_5_56mm": 30,
-                "M47_DRAGON_II": 4,
+                "M47_DRAGON_II_salvolength4": 1,
             },
         }
     },
@@ -2360,7 +2361,7 @@ usa_unit_edits = {
             },
             "Salves": {
                 "M16A2_Carbine": 11,
-                "RocketInf_AT4_83mm": 5,
+                "RocketInf_AT4_83mm_salvolength5": 1,
                 "Grenade_Satchel_Charge": 4,
             },
         },
@@ -2427,7 +2428,7 @@ usa_unit_edits = {
                 "M16A1_Carbine": 11,
                 "SAW_M249_5_56mm": 30,
                 "Sniper_M21": 10,
-                "RocketInf_AT4_83mm": 9,
+                "RocketInf_AT4_83mm_salvolength9": 1,
             },
         }
     },

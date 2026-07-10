@@ -7,6 +7,7 @@ USA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "70931c7c-04ef-4d92-bf10-137416584504",
         "ShowroomGUID": "d4f8e3a2-b6c1-4d95-8e7a-f2c9d1b3e5a7",
         "CadavreGUID": "2b771f4e-f0e0-464e-bafb-caee6bb82079",
+        "UnitId": 50074,
         "NewName": "Rifles_half_CMD2_US",
         "GameName": {
             "display": "TACOM",
@@ -113,6 +114,7 @@ USA_NEW_UNITS = {
                 "remove_modules": ["Transporter"],
             },
         },
+        "UnitId": 50075,
         "NewName": "M1038_Humvee_supply_US",
         "GameName": {
             "display": "M1038 HUMVEE CARGO",
@@ -165,6 +167,7 @@ USA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "375817f4-441d-4030-a902-b22f0103552d",
         "ShowroomGUID": "7c0ba2f2-804f-4550-8161-e687c1305a10",
         "CadavreGUID": "eab4f242-c8fd-4868-b009-a6a86f934dd8",
+        "UnitId": 50076,
         "NewName": "Cav_Scout_Dragon_M3A1_US",
         "GameName": {
             "display": "CAV. SCOUTS [M3A1]",
@@ -191,14 +194,14 @@ USA_NEW_UNITS = {
                 "insert": [(1, 10), ],
                 "FM_M16": 11,
                 "MMG_inf_M240B_7_62mm": 30,
-                "M47_DRAGON_II": 2,
+                "M47_DRAGON_II_salvolength6": 1,
             },
             "equipmentchanges": {
                 "insert": [(1, "Sniper_M21", "Sniper_M14")],
                 "update": [2],
                 "replace": {
                     "MMG_inf_M240B_7_62mm": {
-                        "new_weapon": "M47_DRAGON_II",
+                        "new_weapon": "M47_DRAGON_II_salvolength6",
                         "swap_fire_effect": True,
                         "depiction_baked_in": False,
                     },
@@ -206,7 +209,7 @@ USA_NEW_UNITS = {
                 "quantity": {
                     "FM_M16": 1,
                     "Sniper_M21": 1,
-                    "M47_DRAGON_II": 1,
+                    "M47_DRAGON_II_salvolength6": 1,
                 },
             },
         },
@@ -253,6 +256,7 @@ USA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "0e948acc-c379-4498-946b-21b5b3b13314",
         "ShowroomGUID": "87b3d52f-1703-494c-a3ee-b25dc6095136",
         "CadavreGUID": "b47e0795-709b-4377-9f5c-f42df25e7aac",
+        "UnitId": 50111,
         "NewName": "Cav_Scout_Dragon_M3A2_US",
         "GameName": {
             "display": "CAV. SCOUTS [M3A2]",
@@ -279,14 +283,14 @@ USA_NEW_UNITS = {
                 "insert": [(1, 10), ],
                 "FM_M16": 11,
                 "MMG_inf_M240B_7_62mm": 30,
-                "M47_DRAGON_II": 2,
+                "M47_DRAGON_II_salvolength6": 1,
             },
             "equipmentchanges": {
                 "insert": [(1, "Sniper_M21", "Sniper_M14")],
                 "update": [2],
                 "replace": {
                     "MMG_inf_M240B_7_62mm": {
-                        "new_weapon": "M47_DRAGON_II",
+                        "new_weapon": "M47_DRAGON_II_salvolength6",
                         "swap_fire_effect": True,
                         "depiction_baked_in": False,
                     },
@@ -294,7 +298,7 @@ USA_NEW_UNITS = {
                 "quantity": {
                     "FM_M16": 1,
                     "Sniper_M21": 1,
-                    "M47_DRAGON_II": 1,
+                    "M47_DRAGON_II_salvolength6": 1,
                 },
             },
         },
@@ -376,6 +380,7 @@ USA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "90c692ce-e3c6-45aa-8567-3baba4eb5b18",
         "ShowroomGUID": "234345e1-ef60-4fc4-ba7c-9643521ed1dc",
         "CadavreGUID": "7e6528ba-b0b7-4276-9f62-3c7ac39c4aba",
+        "UnitId": 50077,
         "NewName": "MANPAD_Stinger_C_Rifles_US",
         "GameName": {
             "display": "FIRE TEAM [STINGER]",
@@ -393,7 +398,7 @@ USA_NEW_UNITS = {
             "Salves": {
                 "insert": [(1, 10), ],
                 "FM_M16": 11,
-                "MANPAD_FIM92": 8,
+                "MANPAD_FIM92_salvolength8": 1,
             },
             "equipmentchanges": {
                 "HAGRU_MANPADS": [(2, 0, "MANPAD_FIM92_HAGRU")], # turret_index, donor_weapon_index, ammo_name
@@ -452,6 +457,7 @@ USA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "f3b3b3b4-5b62-406d-9350-6b1765555505",
         "ShowroomGUID": "b059b7ca-be63-4407-9e15-283899bd0a51",
         "CadavreGUID": "5b05cbe1-282e-41fd-b696-18b3112f733a",
+        "UnitId": 50078,
         "NewName": "M1A1HA_Abrams_CMD2_US",
         "TagSet": {
             "overwrite_all": [
@@ -502,6 +508,7 @@ USA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "e9f5c7ac-6dd0-45f3-af98-2f0e148b660e",
         "ShowroomGUID": "l1m2n3o4-p5q6-4r7s-8t9u-0v1w2x3y4z5b",
         "CadavreGUID": "c5697d12-0538-41e3-9087-f6a3c0a3f302",
+        "UnitId": 50079,
         "NewName": "M1A1_Abrams_CMD2_US",
         "TagSet": {
             "overwrite_all": [
@@ -557,6 +564,7 @@ USA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "52e5dadb-f6cf-422a-b3d6-253f78572641",
         "ShowroomGUID": "822614ec-98c7-4078-a82d-8f1bb675920a",
         "CadavreGUID": "d00475c4-04a1-45b5-8eb5-56c7338b74cd",
+        "UnitId": 50080,
         "NewName": "8th_M1A1_Abrams_US",
         "TagSet": {
             "overwrite_all": [
@@ -607,6 +615,7 @@ USA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "5a929931-ed80-48a5-815f-db963cdee0c0",
         "ShowroomGUID": "976dd926-5c33-4c26-836d-77107a0c4fcb",
         "CadavreGUID": "8f2e58ba-c88f-4e86-82e3-149bad45e7e7",
+        "UnitId": 50081,
         "NewName": "M1IP_Abrams_CMD2_US",
         "TagSet": {
             "overwrite_all": [
@@ -662,6 +671,7 @@ USA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "c200a4e1-1ca5-4c19-aa5a-885ed917b114",
         "ShowroomGUID": "12f471a0-e473-40f3-b23c-534b44864771",
         "CadavreGUID": "5a57b6f3-4978-499d-9291-4817452df13d",
+        "UnitId": 50082,
         "NewName": "M1_Abrams_CMD2_US",
         "TagSet": {
             "overwrite_all": [
@@ -714,6 +724,7 @@ USA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "f1902a7c-9a79-4df0-aff1-28c8f0d1451c",
         "ShowroomGUID": "785b5ffe-97af-4a1f-834f-3d45c249618c",
         "CadavreGUID": "32f23257-7290-45a6-be73-7eccf571a367",
+        "UnitId": 50083,
         "NewName": "M60A3_CMD2_US",
         "TagSet": {
             "overwrite_all": [
@@ -765,6 +776,7 @@ USA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "bdf4c41e-1be4-4a30-b742-0391f4829599",
         "ShowroomGUID": "c11f7f2b-2de6-4ccd-b688-0364ca95422c",
         "CadavreGUID": "ff5fa067-210e-4e7f-8352-08e3b5bfed68",
+        "UnitId": 50084,
         "NewName": "M60A1_RISE_Passive_CMD2_US",
         "TagSet": {
             "overwrite_all": [
@@ -812,6 +824,7 @@ USA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "ee96f8ea-148e-41d3-b8a7-3c8956caff1e",
         "ShowroomGUID": "5c1d049f-5a5c-40c4-8ab4-dddc944ea472",
         "CadavreGUID": "418c15b6-aa3b-40d0-a941-aa3b4f997986",
+        "UnitId": 50085,
         "NewName": "M60A1_RISE_Passive_USMC_CMD2_US",
         "TagSet": {
             "overwrite_all": [
@@ -857,6 +870,7 @@ USA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "c841f8d3-9015-41d8-b072-5ce130a20f24",
         "ShowroomGUID": "4d9c0ca3-0791-4c83-ab22-98ba9a8bd480",
         "CadavreGUID": "66211e93-310a-4356-8eab-f97acfabc06b",
+        "UnitId": 50086,
         "NewName": "M551A1_TTS_Sheridan_CMD2_US",
         "TagSet": {
             "overwrite_all": [
@@ -901,6 +915,7 @@ USA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "d2b58f7f-12a7-437c-83c1-dd18aaf9ff9e",
         "ShowroomGUID": "n4o5p6q7-r8s9-4t0u-1v2w-3x4y5z6a7b81",
         "CadavreGUID": "a88c4ec3-d343-411e-823b-0e57d3e6e63a",
+        "UnitId": 50087,
         "NewName": "M577_CMD2_US",
         "TagSet": {
             "overwrite_all": [
@@ -958,6 +973,7 @@ USA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "d45a8be9-bae8-458b-9398-f48d27bfb723",
         "ShowroomGUID": "4bcc7b29-b120-4076-bae5-07dd48107df4",
         "CadavreGUID": "f09f33ec-7952-4621-bc70-58a4f295ab2c",
+        "UnitId": 50088,
         "NewName": "F4_Wild_Weasel_2_US",
         "GameName": {
             "display": "F-4G WILD WEASEL V [SEAD2]",

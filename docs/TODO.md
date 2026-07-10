@@ -2,8 +2,13 @@
  Note: don't remove complete items until patch is released, can be helpful for writing patch notes
 
  # ------------------------------------ Lat ------------------------------------
-  # v28.0
- - [ ] Su-25 with S-25O 
+ # v28.7
+ - [ ] MLRS HE artillery too precise (e.g. Uragan)
+ - [ ] MiG-21Bis with large bombs not dropping bombs on tanks??
+ - [ ] Tank rate of fire penalty when moving
+ - [ ] Fix angles on anti-air helos
+ - [ ] Adjust winchester evac on planes with HEAT guns (e.g. A-10)
+ - [ ] Increase drop speed of cluster bombs? (maybe all bombs?)... tanks dodging bombs is really stupid
  # v28.0
  - [ ] Buff WILK ?
  - [ ] Test F-16 [CLU2] for bomb dispersion balancing

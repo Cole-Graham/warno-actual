@@ -172,6 +172,9 @@ if __name__ == "__main__":
         ammo_db_precomp['canon_he_accuracy_inheritance'] = constants_data.get(
             'canon_he_accuracy_inheritance', {},
         )
+        ammo_db_precomp['infantry_at_aa_magazine_salvos'] = constants_data.get(
+            'infantry_at_aa_magazine_salvos', {"variants_by_weapon": {}, "remounts": []},
+        )
         
         # Merge salvo_weapons (from base game database) with constants renames (from constants precomputation)
         # and add to ammo_db so handlers can access them the same way
@@ -217,13 +220,15 @@ if __name__ == "__main__":
         
         # Get error and warning counts
         counting_handler = get_counting_handler()
+        logger.info(f"Patcher completed successfully at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        from src.constants.new_units import highest_new_unit_id
+        highest_unit_id = highest_new_unit_id()
+        if highest_unit_id is not None:
+            logger.info(f"Highest new unit UnitId: {highest_unit_id}")
         if counting_handler:
             error_count, warning_count, unique_error_count, unique_warning_count = counting_handler.get_counts()
-            logger.info(f"Patcher completed successfully at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
             logger.info(f"Summary: {error_count} error(s), {warning_count} warning(s)")
             logger.info(f"{unique_error_count} unique error(s), {unique_warning_count} unique warning(s)")
-        else:
-            logger.info(f"Patcher completed successfully at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         
         # Log version information for release builds
         if not config.config_data['build_config']['write_dev']:

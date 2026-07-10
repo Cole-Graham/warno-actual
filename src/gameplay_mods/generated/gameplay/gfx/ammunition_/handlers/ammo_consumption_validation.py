@@ -23,7 +23,7 @@ def _base_weapon_namespace(namespace: str) -> str:
     prev = None
     while name != prev:
         prev = name
-        name = re.sub(r"_salvolength\d+$", "", name)
+        name = re.sub(r"(_salvolength\d+|_infmagazine\d+)$", "", name)
         name = re.sub(r"_x\d+$", "", name)
         name = re.sub(r"_strength\d+$", "", name)
     return f"Ammo_{name}"

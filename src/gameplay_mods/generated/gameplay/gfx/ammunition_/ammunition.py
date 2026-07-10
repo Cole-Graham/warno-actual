@@ -28,9 +28,11 @@ from .handlers import (
     apply_infantry_mmg_cac_trait,
     apply_tandem_charge_inversion,
     apply_weapon_range_standards,
+    create_infantry_magazine_variants,
     remove_vanilla_instances,
     validate_ammunition_consumption,
     vanilla_renames_ammunition,
+    variants_for_weapon,
 )
 
 logger = setup_logger(__name__)
@@ -119,6 +121,18 @@ def edit_gen_gp_gfx_ammunition(source_path, game_db: Dict[str, Any]) -> None:
                 except Exception as e:
                     logger.error(f"Failed applying edits to {weapon_name}: {str(e)}")
                     continue
+
+                try:
+                    create_infantry_magazine_variants(
+                        source_path,
+                        base_descr,
+                        weapon_name,
+                        variants_for_weapon(game_db, weapon_name),
+                    )
+                except Exception as e:
+                    logger.error(
+                        f"Failed creating infantry magazine variants for {weapon_name}: {str(e)}"
+                    )
 
                 # Handle new weapons and quantities
                 try:

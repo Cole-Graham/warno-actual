@@ -36,6 +36,7 @@ _FACTION_META = {
 SUPPLY_TRANSPORT_VARIANT_CONFIG: Dict[str, Dict[str, Any]] = {
     "Rover_101FC_supply_UK": {
         "index": 0,
+        "UnitId": 50096,
         "guids": {
             "GUID": "18882db3-6aca-49ac-b93a-3401fabc9884",
             "InfantrySquadModuleGUID": "275f100b-b565-496a-9d17-d334d001bc2c",
@@ -48,6 +49,7 @@ SUPPLY_TRANSPORT_VARIANT_CONFIG: Dict[str, Dict[str, Any]] = {
     },
     "Unimog_S_404_RFA": {
         "index": 0,
+        "UnitId": 50097,
         "guids": {
             "GUID": "a3a2d5af-c506-4c2d-a71e-88a2790c9ff7",
             "InfantrySquadModuleGUID": "8005a6fd-0888-4210-896f-04205dffa085",
@@ -58,6 +60,7 @@ SUPPLY_TRANSPORT_VARIANT_CONFIG: Dict[str, Dict[str, Any]] = {
     },
     "TRM_2000_supply_FR": {
         "index": 0,
+        "UnitId": 50098,
         "guids": {
             "GUID": "df1b69cb-ca17-45c0-a065-15313a55f60e",
             "InfantrySquadModuleGUID": "53d70b92-17ce-4093-9282-458e317ee061",
@@ -68,6 +71,7 @@ SUPPLY_TRANSPORT_VARIANT_CONFIG: Dict[str, Dict[str, Any]] = {
     },
     "M35_supply_US": {
         "index": 0,
+        "UnitId": 50099,
         "guids": {
             "GUID": "d9d3d487-0d4f-4b68-b600-812f2040a81f",
             "InfantrySquadModuleGUID": "6febd635-1faf-4964-8507-c6b56cb17f11",
@@ -81,6 +85,7 @@ SUPPLY_TRANSPORT_VARIANT_CONFIG: Dict[str, Dict[str, Any]] = {
     },
     "Bedford_MJ_4t_UK": {
         "index": 0,
+        "UnitId": 50100,
         "guids": {
             "GUID": "5ebd99b9-5331-4ff6-b55b-00fd1f992a64",
             "InfantrySquadModuleGUID": "3e90e589-52b4-4917-907d-9943032a5cb1",
@@ -91,6 +96,7 @@ SUPPLY_TRANSPORT_VARIANT_CONFIG: Dict[str, Dict[str, Any]] = {
     },
     "KrAZ_255B_supply_SOV": {
         "index": 0,
+        "UnitId": 50101,
         "guids": {
             "GUID": "b0e3b005-337e-43dc-863a-bae034bb94cf",
             "InfantrySquadModuleGUID": "dbccbb47-0892-4c88-9bd0-f554f2c44adb",
@@ -167,6 +173,7 @@ def build_supply_transport_new_unit(donor_name: str) -> Dict[str, Any]:
 
     return {
         **config["guids"],
+        "UnitId": config["UnitId"],
         "NewName": new_name,
         "GameName": game_name,
         "TagSet": {

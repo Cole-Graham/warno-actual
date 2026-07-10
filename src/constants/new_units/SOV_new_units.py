@@ -7,6 +7,7 @@ SOV_NEW_UNITS = {
         "InfantrySquadModuleGUID": "e9462050-a89d-456b-915d-a68d7edafd17",
         "ShowroomGUID": "c7b5a9d8-e4f2-4c16-9d3b-8a2e4f7c6b5d",
         "CadavreGUID": "4a793ae9-5f90-41e1-b8a2-b9203e527de5",
+        "UnitId": 50000,
         "NewName": "MotRifles_CMD2_SOV",
         "GameName": {
             # "display": "KOMANDNOE OTDELENIE",
@@ -34,7 +35,7 @@ SOV_NEW_UNITS = {
             "Salves": {
                 "FM_AK_74": 11,
                 "Sniper_SVD_Dragunov": 100,
-                "RocketInf_RPG22_72_5mm": 5
+                "RocketInf_RPG22_72_5mm_salvolength5": 1
             },
             "equipmentchanges": {
                 "quantity": {
@@ -94,6 +95,7 @@ SOV_NEW_UNITS = {
         "InfantrySquadModuleGUID": "9a2f1fad-0e56-4f46-8345-b125fda7314a",
         "ShowroomGUID": "b1c2d3e4-f5g6-4h7i-8j9k-l0m1n2o3p4q5",
         "CadavreGUID": "b852d941-cba8-42e6-867a-7ecf24be522b",
+        "UnitId": 50001,
         "NewName": "MotRifles_CMD2_TTsko_SOV",
         "GameName": {
             # "display": "KOMANDNOE OTDELENIE",
@@ -121,7 +123,7 @@ SOV_NEW_UNITS = {
             "Salves": {
                 "FM_AK_74": 11,
                 "Sniper_SVD_Dragunov": 100,
-                "RocketInf_RPG22_72_5mm": 5
+                "RocketInf_RPG22_72_5mm_salvolength5": 1
             },
             "equipmentchanges": {
                 "quantity": {
@@ -172,6 +174,7 @@ SOV_NEW_UNITS = {
         "InfantrySquadModuleGUID": "d504f8c8-c90b-4e7a-a5d9-5409cc08fab9",
         "ShowroomGUID": "24505a1a-f485-46f5-b232-4c473533e889",
         "CadavreGUID": "f19ca0de-4193-499e-8467-0b5418bb9bc4",
+        "UnitId": 50002,
         "NewName": "T55A_CMD2_SOV",
         "TagSet": {
             "overwrite_all": [
@@ -212,6 +215,7 @@ SOV_NEW_UNITS = {
         "InfantrySquadModuleGUID": "0dc2bcb7-29cc-4d6c-9f71-f6db00824499",
         "ShowroomGUID": "e6094770-c5e4-425c-971e-cc579665e64d",
         "CadavreGUID": "5c2534eb-fcc8-4737-8f6f-b57d720d1313",
+        "UnitId": 50003,
         "NewName": "T62M_CMD2_SOV",
         "TagSet": {
             "overwrite_all": [
@@ -265,6 +269,7 @@ SOV_NEW_UNITS = {
         "InfantrySquadModuleGUID": "39f721e9-7bc3-4d42-ba9b-1830253380e2",
         "ShowroomGUID": "cf476f51-97c1-4944-9dcd-2df24a002933",
         "CadavreGUID": "8eb9e440-a1c8-44ae-b739-75245f48d11c",
+        "UnitId": 50004,
         "NewName": "T62MD_CMD2_SOV",
         "TagSet": {
             "overwrite_all": [
@@ -310,6 +315,7 @@ SOV_NEW_UNITS = {
         "InfantrySquadModuleGUID": "f42eacb6-8364-45fd-b58f-19c3be63b7b6",
         "ShowroomGUID": "4be95367-4a61-49e5-b23f-d871f128db58",
         "CadavreGUID": "affcaa18-b675-4261-8188-2016a025127c",
+        "UnitId": 50005,
         "NewName": "T64B_CMD2_SOV",
         "TagSet": {
             "overwrite_all": [
@@ -355,6 +361,7 @@ SOV_NEW_UNITS = {
         "InfantrySquadModuleGUID": "88605290-8a7f-4a1b-943b-9a25b761bb97",
         "ShowroomGUID": "2760c8bd-e31a-4620-8550-cc5d8b001d06",
         "CadavreGUID": "91efeb67-8d2d-4e1d-bbad-01c9f8d01a8d",
+        "UnitId": 50006,
         "NewName": "T72M1_CMD2_SOV",
         "TagSet": {
             "overwrite_all": [
@@ -400,6 +407,7 @@ SOV_NEW_UNITS = {
         "InfantrySquadModuleGUID": "77ff57b2-800b-4e39-8870-6f03868c53d8",
         "ShowroomGUID": "04f8b0aa-63f7-4989-8407-5ce7716ccecc",
         "CadavreGUID": "6133b463-f467-4eb7-86b2-1fd887bc1c1a",
+        "UnitId": 50007,
         "NewName": "T72B_CMD2_SOV",
         "TagSet": {
             "overwrite_all": [
@@ -446,6 +454,7 @@ SOV_NEW_UNITS = {
         "InfantrySquadModuleGUID": "993eaf28-65c8-4c9d-bbf0-37c296fe5466",
         "ShowroomGUID": "e6f7g8h9-i0j1-4k2l-3m4n-5o6p7q8r9s0t",
         "CadavreGUID": "ac22fe6a-7e23-49b8-823d-4f68ad83cf7c",
+        "UnitId": 50008,
         "NewName": "T80BV_CMD2_SOV",
         "TagSet": {
             "overwrite_all": [
@@ -511,6 +520,7 @@ SOV_NEW_UNITS = {
         "InfantrySquadModuleGUID": "41959c7e-e732-453f-91d5-000729d068e5",
         "ShowroomGUID": "847a7325-445a-44ba-bfcb-24c03dfaad07",
         "CadavreGUID": "fe1ea57b-0847-4688-9618-d0f814126711",
+        "UnitId": 50009,
         "NewName": "MTLB_CMD2_SOV",
         "TagSet": {
             "overwrite_all": [
@@ -570,6 +580,7 @@ SOV_NEW_UNITS = {
         "InfantrySquadModuleGUID": "f41497ec-862f-4321-b628-0b6fb0b80b27",
         "ShowroomGUID": "a4ac9eac-d74d-4da1-91d6-f2c08dd11ad3",
         "CadavreGUID": "9d790fe8-5668-4757-b532-6d70f411d232",
+        "UnitId": 50010,
         "NewName": "MotRifles_RPG7VL_TTsko_SOV",
         "GameName": {
             "display": "MOTOSTRELKI",
@@ -595,7 +606,7 @@ SOV_NEW_UNITS = {
             "Salves": {
                 "FM_AK_74": 11,
                 "SAW_RPK_74_5_56mm": 18,
-                "RocketInf_RPG7VL": 6,
+                "RocketInf_RPG7VL_salvolength6": 1,
             },
             "equipmentchanges": {
                 "quantity": {
@@ -604,7 +615,7 @@ SOV_NEW_UNITS = {
                 },
                 "replace": {
                     "RocketInf_RPG27_105mm": {
-                        "new_weapon": "RocketInf_RPG7VL",
+                        "new_weapon": "RocketInf_RPG7VL_salvolength6",
                         "swap_fire_effect": True,
                         "depiction_baked_in": False,
                     },
@@ -649,6 +660,7 @@ SOV_NEW_UNITS = {
         "InfantrySquadModuleGUID": "6d7aaa9f-c81e-46d6-b8b3-d676debc3d08",
         "ShowroomGUID": "3952e569-fc4e-4525-98dc-04ca1d949cf3",
         "CadavreGUID": "8e408f4b-f9b5-41cb-b1d3-302539803d3e",
+        "UnitId": 50011,
         "NewName": "VDV_Afgantsy_RPG7VL_SOV",
         "GameName": {
             "display": "DESANT. AFGANTSY [RPG-7VL]",
@@ -673,12 +685,12 @@ SOV_NEW_UNITS = {
             "Salves": {
                 "FM_AKS_74": 11,
                 "SAW_RPK_74_5_56mm": 18,
-                "RocketInf_RPG7VL": 6,
+                "RocketInf_RPG7VL_salvolength6": 1,
             },
             "equipmentchanges": {
                 "replace": {
                     "RocketInf_RPG22_72_5mm": {
-                        "new_weapon": "RocketInf_RPG7VL",
+                        "new_weapon": "RocketInf_RPG7VL_salvolength6",
                         "swap_fire_effect": True,
                         "depiction_baked_in": False,
                     },
@@ -723,6 +735,7 @@ SOV_NEW_UNITS = {
         "InfantrySquadModuleGUID": "9b6ca087-3704-4604-8a83-2cc0796a880d",
         "ShowroomGUID": "7bc23d6c-1689-4a57-a0d3-9794d272482e",
         "CadavreGUID": "f13dca39-59f4-40eb-8305-4857a8608b55",
+        "UnitId": 50012,
         "NewName": "HvyScout_RPG7VL_SOV",
         "GameName": {
             "display": "MOT. RAZVEDKA [RPG-7]",
@@ -749,7 +762,7 @@ SOV_NEW_UNITS = {
             "Salves": {
                 "FM_AK_74": 11,
                 "SAW_RPK_74_5_56mm": 18,
-                "RocketInf_RPG7VL": 6,
+                "RocketInf_RPG7VL_salvolength6": 1,
             },
             "equipmentchanges": {
                 "quantity": {
@@ -757,7 +770,7 @@ SOV_NEW_UNITS = {
                 },
                 "replace": {
                     "RocketInf_RPG22_72_5mm": {
-                        "new_weapon": "RocketInf_RPG7VL",
+                        "new_weapon": "RocketInf_RPG7VL_salvolength6",
                         "swap_fire_effect": True,
                         "depiction_baked_in": False,
                     },
@@ -798,6 +811,7 @@ SOV_NEW_UNITS = {
         "InfantrySquadModuleGUID": "616118a7-8af9-4ea4-bebc-6a39a8769d5d",
         "ShowroomGUID": "5744d2c2-ab01-4b2b-95dc-1b0a87caa2ab",
         "CadavreGUID": "d114ae64-034f-4464-8706-334311805dd8",
+        "UnitId": 50013,
         "NewName": "HvyScout_TTsko_RPG7VL_SOV",
         "GameName": {
             "display": "MOT. RAZVEDKA [RPG-7]",
@@ -824,12 +838,12 @@ SOV_NEW_UNITS = {
             "Salves": {
                 "FM_AK_74": 11,
                 "SAW_RPK_74_5_56mm": 18,
-                "RocketInf_RPG7VL": 6,
+                "RocketInf_RPG7VL_salvolength6": 1,
             },
             "equipmentchanges": {
                 "replace": {
                     "RocketInf_RPG22_72_5mm": {
-                        "new_weapon": "RocketInf_RPG7VL",
+                        "new_weapon": "RocketInf_RPG7VL_salvolength6",
                         "swap_fire_effect": True,
                         "depiction_baked_in": False,
                     },
@@ -870,6 +884,7 @@ SOV_NEW_UNITS = {
         "InfantrySquadModuleGUID": "674ce341-9c4a-4da2-9f3e-4b4e6f6c2358",
         "ShowroomGUID": "c419b0c4-6f4e-435b-8e1f-fb74b33cf884",
         "CadavreGUID": "d0a2edad-e8c8-4073-8b90-cdfadcd3a78e",
+        "UnitId": 50014,
         "NewName": "ATteam_Faktoriya_SOV",
         "GameName": {
             "display": "FAKTORIYA",
@@ -953,6 +968,7 @@ SOV_NEW_UNITS = {
         "InfantrySquadModuleGUID": "bcd261dd-e99e-4f6c-9f0e-4ffa0e470bb4",
         "ShowroomGUID": "d2e3f4g5-h6i7-4j8k-9l0m-n1o2p3q4r5s6",
         "CadavreGUID": "24612725-41c9-4d25-821b-d0e6e9377a11",
+        "UnitId": 50015,
         "NewName": "ATteam_Faktoriya_VDV_SOV",
         "GameName": {
             "display": "DESANT. FAKTORIYA",
@@ -1031,6 +1047,7 @@ SOV_NEW_UNITS = {
         "InfantrySquadModuleGUID": "7402469c-cab8-42b4-91f1-f5df692e8b7c",
         "ShowroomGUID": "37d2361b-b0a9-4af9-8bc1-3031a5ea55db",
         "CadavreGUID": "f04b5ae7-0169-4201-944a-17b72aa25a24",
+        "UnitId": 50016,
         "NewName": "ATteam_Faktoriya_Naval_VDV_SOV",
         "GameName": {
             "display": "DESANT. MOR. FAKTORIYA",

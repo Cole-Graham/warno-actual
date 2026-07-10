@@ -7,6 +7,7 @@ RFA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "64e00b37-e760-4493-89ab-28caa9c825d2",
         "ShowroomGUID": "410ea2b1-7671-4061-ad6d-0228d39c973c",
         "CadavreGUID": "c95f3f05-66f0-4a2a-b66f-1396d103d186",
+        "UnitId": 50033,
         "NewName": "Engineers_CMD2_RFA",
         "GameName": {
             "display": "FÜHRUNGSGRUPPE",
@@ -32,7 +33,7 @@ RFA_NEW_UNITS = {
         "WeaponDescriptor": {
             "Salves": {
                 "PM_uzi": 22,
-                "RocketInf_Carl_Gustav": 5,
+                "RocketInf_Carl_Gustav_salvolength5": 1,
             },
         },
         "TransportedTexture": "UseInGame_Transport_COMMAND",
@@ -86,6 +87,7 @@ RFA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "d1157c11-5816-4ff9-897b-fd49e0fad863",
         "ShowroomGUID": "432efe92-ddce-40da-af72-6508b094186b",
         "CadavreGUID": "ade35527-8206-4c07-a8b3-38da179b3629",
+        "UnitId": 50034,
         "NewName": "M577_CMD2_RFA",
         "TagSet": {
             "overwrite_all": [
@@ -134,6 +136,7 @@ RFA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "7c4a5580-e66f-4926-8ae4-7456553057bb",
         "ShowroomGUID": "cd4880e5-8ad9-4f4d-8454-26da9d917872",
         "CadavreGUID": "1e4053b9-33fa-4deb-84ec-adc733c06d1b",
+        "UnitId": 50035,
         "NewName": "M48A2GA2_CMD2_RFA",
         "TagSet": {
             "overwrite_all": [
@@ -179,6 +182,7 @@ RFA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "e9d1445a-742e-457f-8e5b-3bc31fb276e2",
         "ShowroomGUID": "3a99d004-e456-4073-affa-24914a292bfe",
         "CadavreGUID": "3d5abe13-6fde-4120-b5b0-b38a045c0622",
+        "UnitId": 50036,
         "NewName": "Leopard_1A1_CMD2_RFA",
         "TagSet": {
             "overwrite_all": [
@@ -216,6 +220,7 @@ RFA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "647fcc32-7d1b-497d-ae7e-e2ac6ea9057e",
         "ShowroomGUID": "9e16e901-1f3d-4e1a-b9c1-1d963b5514f7",
         "CadavreGUID": "7c4d6e70-66e2-4a61-9fdc-a84e61820c01",
+        "UnitId": 50037,
         "NewName": "Leopard_1A5_CMD2_RFA",
         "TagSet": {
             "overwrite_all": [
@@ -253,6 +258,7 @@ RFA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "c03b6e76-7441-4743-b5a7-b03528c1c20a",
         "ShowroomGUID": "9293e7f6-73c5-4440-8cc8-93d6a7f2a0f1",
         "CadavreGUID": "20a5d278-9595-4309-9470-6f316645955e",
+        "UnitId": 50038,
         "NewName": "Leopard_2A3_CMD2_RFA",
         "TagSet": {
             "overwrite_all": [
@@ -293,6 +299,7 @@ RFA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "c8fdacd7-65fe-4e60-8202-c07fca2efa32",
         "ShowroomGUID": "34cff9f0-7936-4f57-b650-fd8b236a72c9",
         "CadavreGUID": "ce0f8e58-ce73-45b4-9002-944345cb6699",
+        "UnitId": 50039,
         "NewName": "Leopard_2A4_CMD2_RFA",
         "TagSet": {
             "overwrite_all": [
@@ -335,6 +342,7 @@ RFA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "972f8933-632f-4439-a4f8-34639139c897",
         "ShowroomGUID": "63560af8-e7b3-4d2b-b044-929baeb9be05",
         "CadavreGUID": "6a7ef9df-15cf-4601-bb1f-f66f1e12d2a5",
+        "UnitId": 50040,
         "NewName": "Jager_PzF3_RFA",
         "GameName": {
             "display": "JÄGER [Pzf3]",
@@ -369,7 +377,7 @@ RFA_NEW_UNITS = {
                 },
                 "replace": {
                     "RocketInf_PzF_44": {
-                        "new_weapon": "RocketInf_PzF_3",
+                        "new_weapon": "RocketInf_PzF_3_salvolength6",
                         "swap_fire_effect": True,
                         "depiction_baked_in": False,
                         "old_new_effect": ("RocketInf_PzF_44", "RocketInf_PzF_3"),
@@ -409,6 +417,7 @@ RFA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "1fa82470-f82e-49bb-85e1-4076a6a69470",
         "ShowroomGUID": "658a4409-7a40-40db-b583-a3447815cda1",
         "CadavreGUID": "dc1c1b2a-fa0d-4278-9489-e73bbf7047b2",
+        "UnitId": 50103,
         "NewName": "TankHunters_RFA",
         "GameName": {
             "display": "PANZERJÄGER",
@@ -433,8 +442,8 @@ RFA_NEW_UNITS = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_G3KA4": 11,
-                "RocketInf_PzF_3T": 4,
-                "RocketInf_PzF_3T": 4,
+                "RocketInf_PzF_3T_salvolength4": 1,
+                "RocketInf_PzF_3T_salvolength4": 1,
             },
             "equipmentchanges": {
                 "quantity": {
@@ -442,7 +451,7 @@ RFA_NEW_UNITS = {
                 },
                 "replace": {
                     "MMG_inf__MG3_7_62mm": {
-                        "new_weapon": "RocketInf_PzF_3T",
+                        "new_weapon": "RocketInf_PzF_3T_salvolength4",
                         "swap_fire_effect": True,
                         "depiction_baked_in": False,
                         "old_new_effect": ("MMG_inf__MG3_7_62mm", "RocketInf_PzF_3"),
@@ -493,6 +502,7 @@ RFA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "1ad309dd-8834-4258-9f78-ab74e664302b",
         "ShowroomGUID": "c504338a-1c73-4103-bb29-092be80b0414",
         "CadavreGUID": "9a58c318-3a01-4dd5-8531-e45c9b004c28",
+        "UnitId": 50041,
         "NewName": "TPZ_Fuchs_MILAN_2_RFA",
         "TagSet": {
             "overwrite_all": [
@@ -548,6 +558,7 @@ RFA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "4e494534-691e-4f93-9c8d-ecfd775c64c3",
         "ShowroomGUID": "b82ab103-a205-4089-8b03-5580803b25b8",
         "CadavreGUID": "d654430c-25dd-43a8-9938-91ac4ed1d221",
+        "UnitId": 50042,
         "NewName": "MANPAD_Redeye_Geb_RFA",
         "GameName": {
             "display": "GEB. FLIEGERFAUST",
@@ -576,7 +587,7 @@ RFA_NEW_UNITS = {
             "equipmentchanges": {
                 "quantity": {
                     "PM_Uzi_noreflex": 2,
-                    "MANPAD_FIM43": 1,
+                    "MANPAD_FIM43": 6,
                 },
                 "replace": {
                     "PM_Uzi": {
@@ -620,6 +631,7 @@ RFA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "bebf9d9d-020c-43e8-9967-0e1886f9a6f7",
         "ShowroomGUID": "f2485eb3-d533-4ab9-adc6-cd8e21b14a6e",
         "CadavreGUID": "7372cb3e-4f3a-4357-89a6-ea32347c016e",
+        "UnitId": 50104,
         "NewName": "MANPAD_Stinger_FJ_RFA",
         "GameName": {
             "display": "Fs-FLIEGERFAUST-2",
@@ -664,7 +676,7 @@ RFA_NEW_UNITS = {
                 },
                 "quantity": {
                     "PM_Uzi_noreflex": 2,
-                    "MANPAD_FIM92_A": 1,
+                    "MANPAD_FIM92_A": 6,
                 },
             },
             "Salves": {
@@ -695,6 +707,7 @@ RFA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "2dbf7a69-18a1-42bd-b42c-3e480349a14a",
         "ShowroomGUID": "f7d29e6e-8d93-49cb-a30c-3d28f5b55832",
         "CadavreGUID": "3ddcf337-b586-482f-8970-5dda9a882755",
+        "UnitId": 50105,
         "NewName": "MANPAD_Stinger_RFA",
         "GameName": {
             "display": "FLIEGERFAUST-2",
@@ -738,7 +751,7 @@ RFA_NEW_UNITS = {
                 },
                 "quantity": {
                     "PM_Uzi_noreflex": 2,
-                    "MANPAD_FIM92_A": 1,
+                    "MANPAD_FIM92_A": 6,
                 },
             },
             "Salves": {
@@ -768,6 +781,7 @@ RFA_NEW_UNITS = {
         "InfantrySquadModuleGUID": "0fba431b-91bd-4c22-8bff-ba05b0cc48a0",
         "ShowroomGUID": "12d4008a-ce7f-48a1-9653-954c9461e447",
         "CadavreGUID": "e8bbf864-dcd0-4092-8d5b-988b47028dd8",
+        "UnitId": 50043,
         "NewName": "F4F_KWS_AA_RFA",
         "GameName": {
             "display": "F-4F KWS [AA]",

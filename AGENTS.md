@@ -149,6 +149,10 @@ For ground vehicles, tuple-key `NEW_DEPICTIONS` entries (e.g. `TowedUnitSubDepic
 
 `load_unit_edits()` and `load_new_units()` AST-scan `*_unit_edits.py` / `*_new_units.py` for duplicate keys at every nesting level in dict literals and log **ERROR** if found (Python keeps only the last value; merged dicts cannot be checked after import). Fix duplicates in the source file. **Exception:** duplicate keys inside a `WeaponDescriptor` → `Salves` block are allowed (multiple mounts, same ammo). For multiple `replace` rows per donor ammo, use a list under one key per `replace_schema.py`, not duplicate dict keys.
 
+## New units: static UnitId
+
+Every real `NEW_UNITS` entry (one with `"NewName"`) must define a unique integer `"UnitId"` **>= 50000**. Reference templates without `NewName` skip this. IDs are validated in `load_new_units()` (`validate_unit_ids`) and written to `DeckSerializer.ndf` by [`deck_serializer.py`](src/gameplay_mods/generated/gameplay/decks/deck_serializer.py). Do **not** renumber existing units (player decks encode these IDs). Gaps are fine. Supply-transport clones set `UnitId` in [`SUPPLY_TRANSPORT_VARIANT_CONFIG`](src/constants/supply_transport_variants.py). After a successful patcher run, the log includes `Highest new unit UnitId: …` so the next free ID is easy to see.
+
 ---
 
 ## Optional tools (not everyone installs)

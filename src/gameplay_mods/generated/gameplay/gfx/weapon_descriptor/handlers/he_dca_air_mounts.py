@@ -19,7 +19,7 @@ from typing import Any, Dict
 from src.utils.ndf_utils import is_obj_type, is_valid_turret
 
 
-_SALVO_SUFFIX_RE = re.compile(r"(_x\d+|_salvolength\d+)$")
+_SALVO_SUFFIX_RE = re.compile(r"(_x\d+|_salvolength\d+|_infmagazine\d+)$")
 _AMMO_PREFIX = "$/GFX/Weapon/Ammo_"
 
 

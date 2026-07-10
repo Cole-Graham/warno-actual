@@ -24,23 +24,20 @@ def _update_deck_serializer(source_path: Any) -> None:
     source_path.add(ndf_serializer_entries)
     logger.info("Created Warno Actual TDeckSerializerEntries object")
 
-    vanilla_serializer = source_path.find_by_cond(lambda serializer_obj: serializer_obj.index == 0)
-    unit_ids_map = vanilla_serializer.v.by_member("UnitIds")
-    last_row = unit_ids_map.v[-1]
-    last_row_str = str(last_row)
-    last_row_int = int(last_row_str.split("value='")[-1].split("'")[0])
-
-    new_unit_id = last_row_int + 1
+    # Static UnitIds from NEW_UNITS (start at 50000 so mod IDs stay clear of vanilla;
+    # player decks encode these IDs — never renumber existing units).
     for donor, edits in NEW_UNITS.items():
         if "NewName" not in edits:
             continue
 
         unit_name = edits["NewName"]
+        unit_id = edits["UnitId"]
         deckserializer_obj = source_path.by_n("wa_entries")
         unit_ids_map = deckserializer_obj.v.by_member("UnitIds")
-        logger.info(f"DeckSerializer.ndf) Adding new entry: $/GFX/Unit/Descriptor_Unit_{unit_name}")
-        unit_ids_map.v.add(("$/GFX/Unit/Descriptor_Unit_" + unit_name, str(new_unit_id)))
-        new_unit_id += 1
+        logger.info(
+            f"DeckSerializer.ndf) Adding new entry: $/GFX/Unit/Descriptor_Unit_{unit_name} -> {unit_id}",
+        )
+        unit_ids_map.v.add(("$/GFX/Unit/Descriptor_Unit_" + unit_name, str(unit_id)))
 
 
 def _add_new_divisions_to_serializer(source_path: Any) -> None:

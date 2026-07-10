@@ -299,7 +299,7 @@ pol_unit_edits = {
         "max_speed": 26,
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_RPG76_Komar": 7,
+                "RocketInf_RPG76_Komar_salvolength7": 1,
             },
         },
         "remove_zone_capture": None,
@@ -351,7 +351,7 @@ pol_unit_edits = {
         "max_speed": 26,
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_RPG76_Komar": 7,
+                "RocketInf_RPG76_Komar_salvolength7": 1,
             },
         },
         "remove_zone_capture": None,
@@ -398,7 +398,7 @@ pol_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "PM_PM63_RAK": 22,
-                "RocketInf_RPG7VL": 6,
+                "RocketInf_RPG7VL_salvolength6": 1,
             },
         },
         "remove_zone_capture": None,
@@ -460,7 +460,7 @@ pol_unit_edits = {
                         "depiction_baked_in": False,
                     },
                     "RocketInf_RPG7": {
-                        "new_weapon": "RocketInf_RPG76_Komar",
+                        "new_weapon": "RocketInf_RPG76_Komar_salvolength8",
                         "swap_fire_effect": True,
                         "depiction_baked_in": False,
                     },
@@ -469,7 +469,7 @@ pol_unit_edits = {
             "Salves": {
                 "PM_PM63_RAK": 22,
                 "Grenade_Satchel_Charge": 6,
-                "RocketInf_RPG76_Komar": 8,
+                "RocketInf_RPG76_Komar_salvolength8": 1,
             },
         },
         "remove_zone_capture": None,
@@ -523,14 +523,14 @@ pol_unit_edits = {
                         "depiction_baked_in": False,
                     },
                     "RocketInf_RPG76_Komar": {
-                        "new_weapon": "RocketInf_RPG7",
+                        "new_weapon": "RocketInf_RPG7_salvolength6",
                         "swap_fire_effect": True,
                         "depiction_baked_in": False,
                     },
                 },
             },
             "Salves": {
-                "RocketInf_RPG7": 6,
+                "RocketInf_RPG7_salvolength6": 1,
             },
         },
         "remove_zone_capture": None,
@@ -585,7 +585,7 @@ pol_unit_edits = {
                 },
             },
             "Salves": {
-                "RocketInf_RPG7": 6,
+                "RocketInf_RPG7_salvolength6": 1,
             },
         },
         "remove_zone_capture": None,
@@ -700,7 +700,7 @@ pol_unit_edits = {
                 },
                 "replace": {
                     "RocketInf_RPG76_Komar": {
-                        "new_weapon": "RocketInf_RPG7VL",
+                        "new_weapon": "RocketInf_RPG7VL_salvolength9",
                         "swap_fire_effect": True,
                         "depiction_baked_in": False,
                     },
@@ -954,7 +954,7 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_RPG7VL": 5,
+                "RocketInf_RPG7VL_salvolength5": 1,
             },
         },
         "UpgradeFromUnit": "MotRifles_SVD_POL",
@@ -975,7 +975,7 @@ pol_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_RPG7VL": 5,
+                "RocketInf_RPG7VL_salvolength5": 1,
             },
         },
         # 7x kbk AKM
@@ -1169,14 +1169,14 @@ pol_unit_edits = {
                         "depiction_baked_in": False,
                     },
                     "RocketInf_RPG76_Komar": {
-                        "new_weapon": "RocketInf_RPG7",
+                        "new_weapon": "RocketInf_RPG7_salvolength6",
                         "swap_fire_effect": True,
                         "depiction_baked_in": False,
                     },
                 },
             },
             "Salves": {
-                "RocketInf_RPG7": 6,
+                "RocketInf_RPG7_salvolength6": 1,
             },
         },
         # 6x kbk AKM
@@ -1265,7 +1265,7 @@ pol_unit_edits = {
                     "FM_kbk_AKM": {
                         "new_weapon": "FM_kbk_AK",
                         "swap_fire_effect": False,
-                        "depiction_baked_in": False
+                        "depiction_baked_in": False,
                     },
                     "SAW_RPK_74_5_56mm": {
                         "new_weapon": "SAW_RPK_7_62mm",
@@ -1273,6 +1273,9 @@ pol_unit_edits = {
                         "depiction_baked_in": False,
                     },
                 },
+            },
+            "Salves": {
+                "RocketInf_RPG76_Komar_salvolength7": 1,
             },
         },
         "GameName": {
@@ -2493,7 +2496,7 @@ pol_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "PM_PM63_RAK": 22,
-                "RocketInf_RPG7": 4,
+                "RocketInf_RPG7_salvolength4": 1,
             },
         },
         "UpgradeFromUnit": "Scout_Reserve_POL",
@@ -2536,7 +2539,7 @@ pol_unit_edits = {
                         "swap_fire_effect": True,
                         "depiction_baked_in": False,
                         "old_new_effect": ("RocketInf_RPG76_Komar", "Sniper_SVD_Dragunov"),
-                    }
+                    },
                 },
                 "insert": [(2, "RocketInf_RPG76_Komar")], # (turret, weapon)
                 "insert_edits": {
@@ -2619,7 +2622,7 @@ pol_unit_edits = {
             },
             "Salves": {
                 "PM_PM63_RAK": 22,
-                "RocketInf_RPG76_Komar": 4,
+                "RocketInf_RPG76_Komar_salvolength4": 1,
             },
         },
         "Divisions": {
@@ -2666,7 +2669,7 @@ pol_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "PM_PM63_RAK": 22,
-                "RocketInf_RPG7VL": 4,
+                "RocketInf_RPG7VL_salvolength4": 1,
             },
         },
     },

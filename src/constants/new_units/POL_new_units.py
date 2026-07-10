@@ -7,6 +7,7 @@ POL_NEW_UNITS = {
         "InfantrySquadModuleGUID": "ff07058f-392e-477f-8eea-ec8ef042d0c6",
         "ShowroomGUID": "3585f744-fa44-4b2c-99af-2a50f4220b11",
         "CadavreGUID": "39caafd5-cb26-4aaf-8d9c-d3a0db6c23ec",
+        "UnitId": 50044,
         "NewName": "Rifles_CMD2_POL",
         "GameName": {
             "display": "SZTAB DOWODZENIA",
@@ -32,7 +33,7 @@ POL_NEW_UNITS = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_kbk_AK": 9,
-                "RocketInf_RPG76_Komar": 5,
+                "RocketInf_RPG76_Komar_salvolength5": 1,
             },
             "equipmentchanges": {
                 "quantity": {
@@ -99,6 +100,7 @@ POL_NEW_UNITS = {
         "InfantrySquadModuleGUID": "6575d3ea-db2a-42bf-aff3-5bdcf3b50373",
         "ShowroomGUID": "c1ebe660-2108-429c-bf7f-24d8224510e5",
         "CadavreGUID": "8470bf3d-e203-4841-a528-ae547622908a",
+        "UnitId": 50045,
         "NewName": "ASU_85_CMD2_POL",
         "TagSet": {
             "overwrite_all": [
@@ -143,6 +145,7 @@ POL_NEW_UNITS = {
         "InfantrySquadModuleGUID": "15f04b2f-f19f-433d-a659-3801250e5ffc",
         "ShowroomGUID": "bf3555f0-d3af-4024-a8f9-980967b84cfd",
         "CadavreGUID": "8a4d7cd6-3a6b-453b-9e11-342982ac2bc3",
+        "UnitId": 50046,
         "NewName": "T54B_CMD2_POL",
         "TagSet": {
             "overwrite_all": [
@@ -200,6 +203,7 @@ POL_NEW_UNITS = {
         "InfantrySquadModuleGUID": "6773a9af-c9e6-4d3f-a41c-953be75f966e",
         "ShowroomGUID": "2cf23742-85b4-4b75-a280-133aff0a63b6",
         "CadavreGUID": "1b246f95-d334-4219-bbe2-630ed38b013b",
+        "UnitId": 50106,
         "NewName": "T55A_CMD2_POL",
         "TagSet": {
             "overwrite_all": [
@@ -245,6 +249,7 @@ POL_NEW_UNITS = {
         "InfantrySquadModuleGUID": "7c76c4fe-53a0-4508-ad01-2683a195fc34",
         "ShowroomGUID": "a9ce6acc-5f50-4994-8518-e1aa378f200b",
         "CadavreGUID": "24ee87a1-9b71-4e72-aa2d-66e5b720ea91",
+        "UnitId": 50047,
         "NewName": "T55AM_Merida_CMD2_POL",
         "TagSet": {
             "overwrite_all": [
@@ -295,6 +300,7 @@ POL_NEW_UNITS = {
         "InfantrySquadModuleGUID": "56fecca1-ce12-4cfb-9675-2ef6bb48e033",
         "ShowroomGUID": "65e63a59-27d9-4978-b3ba-93e44f91379c",
         "CadavreGUID": "a3f4a792-bdd7-48c8-a70f-dfe28ec0b129",
+        "UnitId": 50048,
         "NewName": "T72M_CMD2_POL",
         "TagSet": {
             "overwrite_all": [
@@ -347,6 +353,7 @@ POL_NEW_UNITS = {
         "InfantrySquadModuleGUID": "f71b3c68-eb90-46ec-8ac3-5c75273b0212",
         "ShowroomGUID": "217706ae-a44b-4d9a-9b89-a516bf04207b",
         "CadavreGUID": "1b9dae2d-80ce-4331-be82-311b2ed53b29",
+        "UnitId": 50049,
         "NewName": "T72M1_CMD2_POL",
         "TagSet": {
             "overwrite_all": [
@@ -404,6 +411,7 @@ POL_NEW_UNITS = {
             "add_capacities": ["LDR_TNK"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
+        "UnitId": 50107,
         "NewName": "T54B_CMDactual_POL",
         "TagSet": {
             "overwrite_all": [
@@ -470,6 +478,7 @@ POL_NEW_UNITS = {
                 "remove_modules": ["WeaponManager", "Transporter"],
             },
         },
+        "UnitId": 50050,
         "NewName": "OT_64_SKOT_2_CMD_POL",
         "capacities": {
             "add_capacities": ["LDR_ARTY"],
@@ -529,6 +538,7 @@ POL_NEW_UNITS = {
         "InfantrySquadModuleGUID": "37d0eb0b-25b4-4351-bd94-db17bfccfce5",
         "ShowroomGUID": "24fd6fc3-aaff-4f8b-b46e-63a5188edcab",
         "CadavreGUID": "2a3d92a7-1ab7-4bc1-94be-916ac8b06ab4",
+        "UnitId": 50051,
         "NewName": "ATteam_FagotM_POL",
         "GameName": {
             "display": "PPK FAKTORIA",
@@ -611,6 +621,7 @@ POL_NEW_UNITS = {
         "InfantrySquadModuleGUID": "3ec286bd-3931-4d6a-8354-89d2e1360197",
         "ShowroomGUID": "f5e0ff9b-e75d-45b7-9106-9852e53ead09",
         "CadavreGUID": "b9e1df75-08a7-4ee7-9e9a-a272763652ac",
+        "UnitId": 50052,
         "NewName": "Atteam_Konkurs_Para_POL",
         "GameName": {
             "display": "SPADO. PPK KONKURS",
@@ -681,6 +692,7 @@ POL_NEW_UNITS = {
         "InfantrySquadModuleGUID": "7a140754-7160-44fb-8233-ac9b1096abd1",
         "ShowroomGUID": "aead18dd-0321-4534-a292-e7a2b52a81f3",
         "CadavreGUID": "e1fa2afd-f15e-4d24-9981-5c482fe4cbf7",
+        "UnitId": 50053,
         "NewName": "HMGteam_NSV_para_POL",
         "depictions": {
             "custom": {
@@ -758,6 +770,7 @@ POL_NEW_UNITS = {
         "InfantrySquadModuleGUID": "dda90888-7c16-410b-bb1b-6c7576df5def",
         "ShowroomGUID": "c3a0e94a-4d8b-403b-9e69-316f977990a1",
         "CadavreGUID": "4a5322be-f90f-418d-8d20-87768d1faa05",
+        "UnitId": 50108,
         "NewName": "HMGteam_AGS17_para_POL",
         "GameName": {
             "display": "SPADO. AGS-17 30mm",
@@ -839,6 +852,7 @@ POL_NEW_UNITS = {
         "InfantrySquadModuleGUID": "da37a488-aae5-44e2-8c88-2ff19c8639e8",
         "ShowroomGUID": "faae217b-5941-4d12-a0f4-f28628527291",
         "CadavreGUID": "cc4b63e5-182c-4393-9310-7053270a2c96",
+        "UnitId": 50054,
         "NewName": "Honker_RYS_trans_POL",
         "TagSet": {
             "overwrite_all": [
@@ -895,6 +909,7 @@ POL_NEW_UNITS = {
         "InfantrySquadModuleGUID": "33190296-883c-4962-8029-c6b2c117d294",
         "ShowroomGUID": "befd547b-c68c-4519-bf87-df910c2f0a85",
         "CadavreGUID": "a48e1365-8229-4df2-a700-a3ce718cfdda",
+        "UnitId": 50055,
         "NewName": "UAZ_469_SPG9_POL",
         "TagSet": {
             "overwrite_all": [
@@ -932,6 +947,7 @@ POL_NEW_UNITS = {
         "InfantrySquadModuleGUID": "5e63ade3-1dfd-4399-a1d7-ae3e9a875d1f",
         "ShowroomGUID": "181367c7-616a-4a17-8504-13ccb8b264e6",
         "CadavreGUID": "67b84fad-ce97-4a8f-8ef6-3315f9b05202",
+        "UnitId": 50056,
         "NewName": "T55A_reco_POL",
         "GameName": {
             "display": "T-55A",
@@ -989,6 +1005,7 @@ POL_NEW_UNITS = {
         "InfantrySquadModuleGUID": "ec9269ff-531e-4d45-8bd0-9c3a0b0548cc",
         "ShowroomGUID": "116fa176-1fea-4d10-9782-794c7ba2fa30",
         "CadavreGUID": "04dc2d6f-591d-4c24-9e1e-8f6c032b2e99",
+        "UnitId": 50057,
         "NewName": "AT_D48_85mm_Para_POL",
         "GameName": {
             "display": "SPADO. D-48 85mm",
@@ -1055,6 +1072,7 @@ POL_NEW_UNITS = {
         "InfantrySquadModuleGUID": "5b78e35d-682b-47a4-b0e0-5d5059825b57",
         "ShowroomGUID": "871cf1cb-8457-4f8e-a3db-115ad7a2f8e9",
         "CadavreGUID": "aa84aa16-69c0-4145-9b88-fd27dbfc94a6",
+        "UnitId": 50058,
         "NewName": "OT_62_TOPAS_R3M_CMD2_POL",
         "TagSet": {
             "overwrite_all": [
@@ -1104,6 +1122,7 @@ POL_NEW_UNITS = {
         "InfantrySquadModuleGUID": "139beeba-bf5b-48d4-bef1-09780c53f9fc",
         "ShowroomGUID": "3c945163-0eb1-46c0-b9ea-83e4fc58efed",
         "CadavreGUID": "8283ce2a-bf6a-40ea-9af8-81c0565226c0",
+        "UnitId": 50059,
         "NewName": "Engineers_Scout_Para_POL",
         "GameName": {
             "display": "SPADO. ZWIAD. SAPERZY",
@@ -1166,6 +1185,7 @@ POL_NEW_UNITS = {
         "InfantrySquadModuleGUID": "1a7b7ac5-051a-4bda-974d-8ce427752449",
         "ShowroomGUID": "be898896-37dd-4611-8f14-802402d2b7b6",
         "CadavreGUID": "f4dd125c-5e5d-450d-a35b-59b4d4fabb2c",
+        "UnitId": 50060,
         "NewName": "MANPAD_Igla_POL",
         "GameName": {
             "display": "IGŁA",
@@ -1235,6 +1255,7 @@ POL_NEW_UNITS = {
         "InfantrySquadModuleGUID": "0ba68476-d848-4c23-a157-a4533d509bd4",
         "ShowroomGUID": "91e12fdd-9218-49de-9d5c-41ad45056dd2",
         "CadavreGUID": "d1e05bed-7d60-4aae-88cc-006a2fb6d935",
+        "UnitId": 50061,
         "NewName": "MANPAD_Igla_Para_POL",
         "GameName": {
             "display": "SPADO. IGŁA",
@@ -1310,6 +1331,7 @@ POL_NEW_UNITS = {
         "InfantrySquadModuleGUID": "058703d8-1efc-4836-89ce-fdf7a195c2d7",
         "ShowroomGUID": "b4e59d7c-5465-4c1b-bb43-217899193ab5",
         "CadavreGUID": "c24a9ca7-b29f-47d0-a041-b1e786809548",
+        "UnitId": 50062,
         "NewName": "OT_62_TOPAS_JOD2_POL",
         "TagSet": {
             "overwrite_all": [

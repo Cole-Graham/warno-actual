@@ -38,7 +38,7 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
 
-_SALVO_SUFFIX_RE = re.compile(r"(_x\d+|_salvolength\d+)$")
+_SALVO_SUFFIX_RE = re.compile(r"(_x\d+|_salvolength\d+|_infmagazine\d+)$")
 _NB_WEAPONS_RE = re.compile(r"NbWeapons\s*=\s*(\d+)")
 
 MountRole = str

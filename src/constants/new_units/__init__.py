@@ -2,7 +2,7 @@
 
 import json
 from pathlib import Path
-from typing import Dict, Any, List, Tuple, Set
+from typing import Dict, Any, List, Optional, Tuple, Set
 
 from .FR_new_units import FR_NEW_UNITS
 from .new_depictions import NEW_DEPICTIONS
@@ -429,6 +429,67 @@ def validate_no_duplicate_guids(new_units_dict: Dict) -> None:
     )
 
 
+MIN_NEW_UNIT_ID = 50000
+
+
+def validate_unit_ids(new_units_dict: Dict) -> None:
+    """
+    Validate that every real new unit has a unique static UnitId >= 50000.
+
+    Entries without NewName (reference templates) are skipped.
+    """
+    id_to_units: Dict[int, List[str]] = {}
+    errors: List[str] = []
+    validated = 0
+
+    for key, edits in new_units_dict.items():
+        if not isinstance(edits, dict) or "NewName" not in edits:
+            continue
+
+        unit_name = edits["NewName"]
+        unit_id = edits.get("UnitId")
+        if unit_id is None:
+            errors.append(f"  missing UnitId for {unit_name}")
+            continue
+        if type(unit_id) is not int:
+            errors.append(
+                f"  UnitId for {unit_name} must be an int, got {type(unit_id).__name__}: {unit_id!r}",
+            )
+            continue
+        if unit_id < MIN_NEW_UNIT_ID:
+            errors.append(
+                f"  UnitId for {unit_name} must be >= {MIN_NEW_UNIT_ID}, got {unit_id}",
+            )
+            continue
+
+        id_to_units.setdefault(unit_id, []).append(unit_name)
+        validated += 1
+
+    for unit_id, unit_names in sorted(id_to_units.items()):
+        if len(unit_names) > 1:
+            errors.append(f"  UnitId {unit_id} used by: {unit_names}")
+
+    if errors:
+        error_msg = "Invalid UnitIds in new units:\n" + "\n".join(errors)
+        logger.error(error_msg)
+        raise ValueError(error_msg)
+
+    logger.info(
+        f"Validated UnitId uniqueness for {validated} new units - no duplicates found",
+    )
+
+
+def highest_new_unit_id(new_units_dict: Optional[Dict] = None) -> Optional[int]:
+    """Return the highest UnitId among new units, or None if none are present."""
+    units = new_units_dict if new_units_dict is not None else NEW_UNITS
+    ids = [
+        edits["UnitId"]
+        for edits in units.values()
+        if isinstance(edits, dict) and "UnitId" in edits
+    ]
+    return max(ids) if ids else None
+
+
 def load_new_units() -> Dict:
     """Load and merge all new unit dictionaries with reference resolution."""
     logger.info("Loading new unit dictionaries...")
@@ -463,7 +524,11 @@ def load_new_units() -> Dict:
     # Validate no duplicate GUIDs across new units (after resolution)
     logger.info("Validating GUID uniqueness across new units...")
     validate_no_duplicate_guids(merged_units)
-    
+
+    # Validate static UnitIds (required, unique, >= 50000)
+    logger.info("Validating UnitId uniqueness across new units...")
+    validate_unit_ids(merged_units)
+
     # Save resolved units for debugging (convert tuple keys to strings for JSON serialization)
     logs_dir = Path(__file__).parents[3] / "logs"
     logs_dir.mkdir(exist_ok=True)
@@ -486,8 +551,11 @@ NEW_UNITS = load_new_units()
 __all__ = [
     "NEW_UNITS",
     "NEW_DEPICTIONS",
+    "MIN_NEW_UNIT_ID",
     "load_new_units",
+    "highest_new_unit_id",
     "validate_no_duplicate_keys_in_source_files",
     "validate_no_duplicate_keys",
     "validate_no_duplicate_guids",
+    "validate_unit_ids",
 ]

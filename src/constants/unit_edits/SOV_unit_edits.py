@@ -275,7 +275,7 @@ sov_unit_edits = {
                 },
             },
             "Salves": {
-                "RocketInf_RPG22_72_5mm": 6,
+                "RocketInf_RPG22_72_5mm_salvolength6": 1,
             },
         },
         "selector_tactic": "(0, 6)",
@@ -341,7 +341,7 @@ sov_unit_edits = {
                 },
             },
             "Salves": {
-                "RocketInf_RPG22_72_5mm": 6,
+                "RocketInf_RPG22_72_5mm_salvolength6": 1,
             },
         },
         "selector_tactic": "(0, 6)",
@@ -398,7 +398,7 @@ sov_unit_edits = {
                 },
             },
             "Salves": {
-                "RocketInf_RPG18_64mm": 7,
+                "RocketInf_RPG18_64mm_salvolength7": 1,
             },
         },
         "selector_tactic": "(0, 8)",
@@ -561,7 +561,7 @@ sov_unit_edits = {
             "Salves": {
                 "PM_AKSU_74": 7,
                 "SAW_RPK_74_5_56mm": 18,
-                "MANPAD_igla": 4,
+                "MANPAD_igla_salvolength4": 1,
                 "Grenade_SMOKE": 3,
             },
         },
@@ -664,7 +664,7 @@ sov_unit_edits = {
             },
             "Salves": {
                 "FM_AKS_74": 11,
-                "RocketInf_RPG7": 6,
+                "RocketInf_RPG7_salvolength6": 1,
             },
         },
         "selector_tactic": "(0, 8)",
@@ -1185,7 +1185,7 @@ sov_unit_edits = {
             "Salves": {
                 "FM_AK_74": 11,
                 "SAW_RPK_74_5_56mm": 18,
-                "RocketInf_RPG22_72_5mm": 6,
+                "RocketInf_RPG22_72_5mm_salvolength6": 1,
             },
         },
         "availability": [10, 7, 0, 0],
@@ -1212,7 +1212,7 @@ sov_unit_edits = {
             "Salves": {
                 "FM_AK_74": 11,
                 "SAW_RPK_74_5_56mm": 18,
-                "RocketInf_RPG27_105mm": 5,
+                "RocketInf_RPG27_105mm_salvolength5": 1,
             },
         },
     },
@@ -1251,7 +1251,7 @@ sov_unit_edits = {
             "Salves": {
                 "FM_AK_74": 11,
                 "MMG_PKM_7_62mm": 36,
-                "RocketInf_RPG26_72_5mm": 6,
+                "RocketInf_RPG26_72_5mm_salvolength6": 1,
             },
         },
     },
@@ -1326,7 +1326,7 @@ sov_unit_edits = {
             "Salves": {
                 "FM_AK_74": 11,
                 "SAW_RPK_74_5_56mm": 18,
-                "RocketInf_RPG7VS_85mm": 6,
+                "RocketInf_RPG7VS_85mm_salvolength6": 1,
             },
         },
     },
@@ -1352,7 +1352,7 @@ sov_unit_edits = {
             "Salves": {
                 "FM_AK_74": 11,
                 "SAW_RPK_74_5_56mm": 18,
-                "ATGM_9K115_Metis": 6,
+                "ATGM_9K115_Metis_salvolength6": 1,
             },
         },
         "UpgradeFromUnit": "MotRifles_TTsko_SOV",
@@ -1374,7 +1374,7 @@ sov_unit_edits = {
             "Salves": {
                 "FM_AK_74": 11,
                 "SAW_RPK_74_5_56mm": 18,
-                "ATGM_9K115_Metis": 6,
+                "ATGM_9K115_Metis_salvolength6": 1,
             },
         },
     },
@@ -1455,7 +1455,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "FM_AKS_74": 11,
-                "RocketInf_RPG22_72_5mm": 4,
+                "RocketInf_RPG22_72_5mm_salvolength4": 1,
             },
         },
     },
@@ -1518,7 +1518,7 @@ sov_unit_edits = {
             },
             "Salves": {
                 "FM_AKS_74": 11,
-                "ATGM_9K115_Metis": 6,
+                "ATGM_9K115_Metis_salvolength6": 1,
             },
         },
     },
@@ -1740,7 +1740,7 @@ sov_unit_edits = {
             "Salves": {
                 "FM_AK_74": 11,
                 "MMG_PKM_7_62mm": 36,
-                "RocketInf_RPG22_72_5mm": 6,
+                "RocketInf_RPG22_72_5mm_salvolength6": 1,
             },
         },
     },
@@ -1768,7 +1768,7 @@ sov_unit_edits = {
             "Salves": {
                 "FM_AK_74": 11,
                 "MMG_PKM_7_62mm": 36,
-                "RocketInf_RPG22_72_5mm": 6,
+                "RocketInf_RPG22_72_5mm_salvolength6": 1,
             },
         },
     },
@@ -1798,7 +1798,7 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_RPG29_105mm": 6,
+                "RocketInf_RPG29_105mm_salvolength6": 1,
             },
         },
     },
@@ -1818,7 +1818,7 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_RPG29_105mm": 6,
+                "RocketInf_RPG29_105mm_salvolength6": 1,
             },
         },
     },
@@ -1904,7 +1904,7 @@ sov_unit_edits = {
         "WeaponDescriptor": {
             "Salves": {
                 "PM_AKSU_74": 9,
-                "RocketInf_RPG27_105mm": 6,
+                "RocketInf_RPG27_105mm_salvolength6": 1,
             },
         },
     },
@@ -1919,7 +1919,7 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_RPG29_105mm": 6,
+                "RocketInf_RPG29_105mm_salvolength6": 1,
             },
         },
     },
@@ -1971,7 +1971,7 @@ sov_unit_edits = {
             },
             "Salves": {
                 "FM_AKS_74": 11,
-                "RocketInf_RPG7VR_64mm": 7,
+                "RocketInf_RPG7VR_64mm_salvolength7": 1,
             },
         },
         "UpgradeFromUnit": "Naval_Rifle_SVD_SOV",
@@ -1986,7 +1986,7 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_RPG7VL": 9,
+                "RocketInf_RPG7VL_salvolength9": 1,
             },
         },
         "UpgradeFromUnit": "Naval_Rifle_SOV",
@@ -2030,7 +2030,7 @@ sov_unit_edits = {
                 },
             },
             "Salves": {
-                "RocketInf_RPG7": 7,
+                "RocketInf_RPG7_salvolength7": 1,
             },
         },
     },
@@ -4829,7 +4829,7 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "MANPAD_FIM92_A": 4,
+                "MANPAD_FIM92_A_salvolength4": 1,
             },
         },
     },
@@ -4844,7 +4844,7 @@ sov_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_M72A3_LAW_66mm": 7,
+                "RocketInf_M72A3_LAW_66mm_salvolength7": 1,
             },
         },
     },

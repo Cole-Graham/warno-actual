@@ -159,7 +159,7 @@ def _extract_base_ammo_name(weapon_name: str) -> str:
         Base weapon name without variant suffixes
     """
     # Remove salvo length variants: _salvolength{N} or _x{N}
-    base_name = re.sub(r'_salvolength\d+$', '', weapon_name)
+    base_name = re.sub(r'(_salvolength\d+|_infmagazine\d+)$', '', weapon_name)
     base_name = re.sub(r'_x\d+$', '', base_name)
     # Remove strength variants: _strength{N}
     base_name = re.sub(r'_strength\d+$', '', base_name)

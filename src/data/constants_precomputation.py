@@ -177,6 +177,7 @@ def build_constants_precomputation_data(config: Dict[str, Any], game_db: Dict[st
         # Build and validate small arms quantity variants
         valid_small_arms_variants = build_valid_small_arms_quantity_variants(game_db)
         save_valid_small_arms_variants(valid_small_arms_variants, config)
+        countable_small_arms = None
         if game_db:
             validation_failed = validate_small_arms_quantity_variants(config, game_db)
             if validation_failed:
@@ -239,6 +240,21 @@ def build_constants_precomputation_data(config: Dict[str, Any], game_db: Dict[st
         canon_he_acc = build_canon_he_accuracy_inheritance(game_db) if game_db else {}
         save_canon_he_accuracy_inheritance(canon_he_acc, config)
 
+        from src.data.infantry_magazine_salvo import (
+            build_infantry_at_aa_magazine_salvos,
+            save_infantry_at_aa_magazine_salvos,
+        )
+        infantry_magazine_salvos = (
+            build_infantry_at_aa_magazine_salvos(
+                game_db,
+                countable=countable_small_arms,
+                insert_templates=insert_templates,
+            )
+            if game_db
+            else {"variants_by_weapon": {}, "remounts": []}
+        )
+        save_infantry_at_aa_magazine_salvos(infantry_magazine_salvos, config)
+
         # Add ammunition_renames and insert_turret_templates to return dict for convenience
         mappings["ammunition_renames"] = ammunition_renames
         mappings["insert_turret_templates"] = insert_templates
@@ -247,6 +263,7 @@ def build_constants_precomputation_data(config: Dict[str, Any], game_db: Dict[st
         mappings["clu_bomb_dispersion"] = clu_bomb_dispersion
         mappings["he_dca_weapons"] = he_dca_weapons
         mappings["canon_he_accuracy_inheritance"] = canon_he_acc
+        mappings["infantry_at_aa_magazine_salvos"] = infantry_magazine_salvos
 
         logger.info(
             f"Constants precomputation data built and saved: "
@@ -259,7 +276,8 @@ def build_constants_precomputation_data(config: Dict[str, Any], game_db: Dict[st
             f"{len(aa_suppress_damages)} AA suppress damages, "
             f"{len(clu_bomb_dispersion)} CLU bomb dispersions, "
             f"{len(he_dca_weapons)} he_dca weapons, "
-            f"{len(canon_he_acc)} canon HE accuracy inheritances"
+            f"{len(canon_he_acc)} canon HE accuracy inheritances, "
+            f"{len(infantry_magazine_salvos.get('variants_by_weapon', {}))} infantry magazine weapons"
         )
         return mappings
     except Exception as e:

@@ -473,7 +473,7 @@ rfa_unit_edits = {
                 },
             },
             "Salves": {
-                "RocketInf_Carl_Gustav": 8,
+                "RocketInf_Carl_Gustav_salvolength8": 1,
             },
         },
     },
@@ -550,18 +550,15 @@ rfa_unit_edits = {
                     },
                 },
             },
-            # Vanilla Salves: [PM_MP_5A3=80]. Target: [14, 11, 45, 4].
-            # Explicit PM_MP_5A3 trips the apply_default_salves skip guard so it
-            # writes 14 (the default) at vanilla index 0 explicitly via _apply_salvo_changes.
+            # Vanilla Salves: [PM_MP_5A3=80]. Target: [14, 11, 45, 1].
+            # Inserted turrets use Salves.insert (named keys are not in vanilla
+            # salvo_mapping yet when _apply_salvo_changes runs).
             "Salves": {
                 "PM_MP_5A3": 14,
-                "FM_G3KA4": 11,
-                "MMG_inf__MG3_7_62mm": 45,
-                "RocketInf_PzF_44": 4,
                 "insert": [
                     (1, 11),
                     (2, 45),
-                    (3, 4),
+                    (3, 1),
                 ],
             },
         },
@@ -652,7 +649,7 @@ rfa_unit_edits = {
                 },
             },
             "Salves": {
-                "RocketInf_PzF_3": 6,
+                "RocketInf_PzF_3_salvolength6": 1,
             },
         },
         # "UpgradeFromUnit": "Fallschirm_Engineers_RFA",
@@ -692,7 +689,7 @@ rfa_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_PzF_44": 8,
+                "RocketInf_PzF_44_salvolength8": 1,
             },
         },
         "UpgradeFromUnit": "Gebirgsjager_CMD_RFA",
@@ -736,7 +733,7 @@ rfa_unit_edits = {
             },
             "Salves": {
                 "MMG_inf__MG3_7_62mm": 45,
-                "RocketInf_PzF_3": 6,
+                "RocketInf_PzF_3_salvolength6": 1,
                 "remove": ["Sniper_G3A3ZF"],
             },
         },
@@ -756,7 +753,7 @@ rfa_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_Carl_Gustav": 10,
+                "RocketInf_Carl_Gustav_salvolength10": 1,
             },
             "equipmentchanges": {
                 "quantity": {
@@ -813,7 +810,7 @@ rfa_unit_edits = {
                 },
             },
             "Salves": {
-                "RocketInf_Carl_Gustav": 7,
+                "RocketInf_Carl_Gustav_salvolength7": 1,
             },
         },
         "UpgradeFromUnit": "Jager_RFA",
@@ -830,7 +827,7 @@ rfa_unit_edits = {
         "availability": [12, 9, 0, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_PzF_44": 4,
+                "RocketInf_PzF_44_salvolength4": 1,
             },
         },
         "UpgradeFromUnit": "Panzergrenadier_CMD_RFA",
@@ -869,7 +866,7 @@ rfa_unit_edits = {
                 },
             },
             "Salves": {
-                "RocketInf_PzF_3": 4,
+                "RocketInf_PzF_3_salvolength4": 1,
             },
         },
         "UpgradeFromUnit": "Panzergrenadier_IFV_RFA",
@@ -907,7 +904,7 @@ rfa_unit_edits = {
                 },
                 "replace": {
                     "RocketInf_PzF_44": {
-                        "new_weapon": "RocketInf_PzF_3",
+                        "new_weapon": "RocketInf_PzF_3_salvolength6",
                         "swap_fire_effect": True,
                         "depiction_baked_in": False,
                         "old_new_effect": ("RocketInf_PzF_44", "RocketInf_PzF_3"),
@@ -919,7 +916,7 @@ rfa_unit_edits = {
                 },
             },
             "Salves": {
-                "RocketInf_PzF_3": 6,
+                "RocketInf_PzF_3_salvolength6": 1,
             },
         },
         "UpgradeFromUnit": "PzGrenadier_RFA",
@@ -1808,14 +1805,14 @@ rfa_unit_edits = {
             "equipmentchanges": {
                 "replace": {
                     "RocketInf_PzF_3": {
-                        "new_weapon": "RocketInf_PzF_3T",
+                        "new_weapon": "RocketInf_PzF_3T_salvolength6",
                         "swap_fire_effect": False,
                         "depiction_baked_in": False,
                     },
                 },
             },
             "Salves": {
-                "RocketInf_PzF_3T": 6,
+                "RocketInf_PzF_3T_salvolength6": 1,
                 "Grenade_Satchel_Charge": 6,
             },
         },
@@ -1832,7 +1829,7 @@ rfa_unit_edits = {
         },
         "WeaponDescriptor": {
             "Salves": {
-                "RocketInf_M72A3_LAW_66mm": 6,
+                "RocketInf_M72A3_LAW_66mm_salvolength6": 1,
             },
         },
         "UpgradeFromUnit": "Fallschirm_B1_RFA",
