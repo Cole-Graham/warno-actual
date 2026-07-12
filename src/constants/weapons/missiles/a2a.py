@@ -172,6 +172,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "SupplyCost": 30.0,
             },
         },
+        "MissileDescriptor": {
+            "AutoGyr": 2.617994,
+        },
     },
     
     ("AA_R60M_Vympel_helo_HAGRU", "A2A", "AA_R60M_Vympel_helo", True): {
@@ -632,11 +635,15 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 "MaximumRangeHelicopterGRU": 2625,
                 "MaximumRangeAirplaneGRU": 3325,
+                "MissileDescriptor": "~/Descriptor_Missile_AA_AIM9L_Sidewinder_Helo",
             },
+        },
+        "MissileDescriptor": {
+            "AutoGyr": 2.617994,
         },
     },
     
-    ("AA_AIM9L_Sidewinder_Helo_HAGRU", "A2A", "AA_AIM9L_Sidewinder", True): {
+    ("AA_AIM9L_Sidewinder_Helo_HAGRU", "A2A", "AA_AIM9L_Sidewinder_Helo", True): {
         "Ammunition": {
             "Arme": {
                 "Family": "DamageFamily_a2a_hagru",

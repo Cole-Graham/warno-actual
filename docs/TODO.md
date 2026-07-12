@@ -6,11 +6,9 @@
  - [ ] MLRS HE artillery too precise (e.g. Uragan)
  - [ ] MiG-21Bis with large bombs not dropping bombs on tanks??
  - [ ] Tank rate of fire penalty when moving
- - [ ] Fix angles on anti-air helos
+ - [x] Fix angles on anti-air helos
  - [ ] Adjust winchester evac on planes with HEAT guns (e.g. A-10)
  - [ ] Increase drop speed of cluster bombs? (maybe all bombs?)... tanks dodging bombs is really stupid
- # v28.0
- - [ ] Buff WILK ?
  - [ ] Test F-16 [CLU2] for bomb dispersion balancing
  
 # Future patch:
@@ -20,8 +18,6 @@ depends on performance of planes hunting helos. Might turn off range scaling for
 guns. (needs more testing)
 - [ ] create custom model with more turrets for Su-24M bomber
 - [ ] See if it is possible to remove smart order from auto-cover toggle
-- [ ] Might need seperate weaker version of EW trait for Pave Tiger drone
-- [ ] Figure out if it is possible to move "All" filter button outside of the NATO division list
 - [ ] AcknowUnitType needs scripting for UniteDescriptors
 - [ ] See if I can fix command and control income
 - [ ] Change all dumb rockets to operate on a basis of dispersion (would require significant testing/a lot of work), but the benefit is we could then scale rockets on the same HE scale as all other high explosives.

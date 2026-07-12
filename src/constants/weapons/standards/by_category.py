@@ -11,14 +11,13 @@ RatioSpec = Tuple[float, str]
 
 # -- AA missiles (A2A / SAM / MANPAD) -------------------------------------
 #
-# Range-scaled accuracy is disabled (``DistanceToTarget = False``) only on
-# missile descriptors that exclusively engage planes:
-#   * ``_HAGRU`` variants, which use a damage family that ignores helicopters.
-#   * Non-HAGRU SAM/A2A originals whose ``MaximumRangeHelicopterGRU`` is 0
-#     (the missile has no helicopter engagement range and is plane-only by
-#     virtue of its range envelope, e.g. AA_R98MT, AA_Skyflash).
-# All other AA missiles keep the vanilla default (``True``) so accuracy still
-# degrades with range when engaging helicopters.
+# Range-scaled accuracy (``DistanceToTarget``) is set explicitly on every AA
+# missile descriptor:
+#   * ``True`` (``AA_STANDARDS``) for missiles that can engage helicopters.
+#   * ``False`` (``AA_HAGRU_STANDARDS``) for plane-only descriptors:
+#       - ``_HAGRU`` variants (damage family ignores helicopters)
+#       - Non-HAGRU SAM/A2A originals whose ``MaximumRangeHelicopterGRU`` is 0
+#         (e.g. AA_R98MT, AA_Skyflash)
 
 A2A_STANDARDS: dict = {}
 
@@ -36,6 +35,12 @@ MANPAD_STANDARDS: dict = {
         "per_shot": 4,
         "floor": 7,
         "max_extra_shots": 4,
+    },
+}
+
+AA_STANDARDS: dict = {
+    "hit_roll": {
+        "DistanceToTarget": True,
     },
 }
 

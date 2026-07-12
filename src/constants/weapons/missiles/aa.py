@@ -409,6 +409,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 4: ["Ka_50_AA_SOV", "Mi_24V_AA_SOV", "Mi_24V_SOV"],
             },
         },
+        "MissileDescriptor": {
+            "AutoGyr": 2.617994,
+        },
     },
     
     ("SAM_IglaV_HAGRU", "MANPAD", "SAM_IglaV", True): { # 196
@@ -754,6 +757,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "units": {
                 4: ["AH1F_ATAS_US", "AH64_Apache_ATAS_US", "OH58_CS_US"]
             },
+        },
+        "MissileDescriptor": {
+            "AutoGyr": 2.617994,
         },
     },
     
@@ -1351,6 +1357,9 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "units": {
                 4: ["W3W_Sokol_AA_POL", "Mi_2_AA_POL"],
             },
+        },
+        "MissileDescriptor": {
+            "AutoGyr": 2.617994,
         },
     },
     

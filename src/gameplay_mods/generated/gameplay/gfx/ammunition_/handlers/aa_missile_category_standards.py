@@ -6,6 +6,7 @@ from src.constants.weapons.standards import (
     AA_ADDITIONAL_SUPPRESS_PER_LOST_PHYSICAL,
     AA_CATEGORIES,
     AA_HAGRU_STANDARDS,
+    AA_STANDARDS,
 )
 
 # Categories whose non-HAGRU originals can degenerate into "anti-plane only"
@@ -25,17 +26,23 @@ def _read_max_range_helicopter_gru(descr: Any) -> int | None:
         return None
 
 
+def _is_plane_only_aa(descr: Any, category: str, weapon_name: str) -> bool:
+    """True when the descriptor should not use range-scaled accuracy."""
+    if weapon_name.endswith("_HAGRU"):
+        return True
+    if category not in _AA_PLANE_ONLY_CHECK_CATEGORIES:
+        return False
+    helo_range = _read_max_range_helicopter_gru(descr)
+    return helo_range is not None and helo_range == 0
+
+
 def apply_category_aa_missile_standards(descr: Any, category: str, weapon_name: str) -> None:
     """Apply AA missile category standards to ``HitRollRuleDescriptor``.
 
-    ``DistanceToTarget = False`` (no accuracy range scaling) is applied to
-    descriptors that only ever engage planes:
-      * ``_HAGRU`` variants (restricted to planes by damage family).
-      * Non-HAGRU SAM/A2A originals whose ``MaximumRangeHelicopterGRU`` is 0
-        (helicopter-incapable by range envelope, e.g. AA_R98MT).
-
-    All other AA missiles keep the vanilla default so range-scaled accuracy
-    still applies when engaging helicopters.
+    Always sets ``DistanceToTarget`` on A2A / SAM / MANPAD descriptors:
+      * ``False`` for plane-only missiles (``_HAGRU``, or SAM/A2A with
+        ``MaximumRangeHelicopterGRU == 0``).
+      * ``True`` for all other AA missiles (helo-capable).
 
     Note: this should be called *after* the per-missile dict edits have been
     applied to the descriptor, so that any dict overrides of
@@ -44,16 +51,11 @@ def apply_category_aa_missile_standards(descr: Any, category: str, weapon_name: 
     if category not in AA_CATEGORIES:
         return
 
-    is_hagru = weapon_name.endswith("_HAGRU")
+    if _is_plane_only_aa(descr, category, weapon_name):
+        hit_roll = AA_HAGRU_STANDARDS.get("hit_roll", {})
+    else:
+        hit_roll = AA_STANDARDS.get("hit_roll", {})
 
-    if not is_hagru:
-        if category not in _AA_PLANE_ONLY_CHECK_CATEGORIES:
-            return
-        helo_range = _read_max_range_helicopter_gru(descr)
-        if helo_range is None or helo_range > 0:
-            return
-
-    hit_roll = AA_HAGRU_STANDARDS.get("hit_roll", {})
     if "DistanceToTarget" not in hit_roll:
         return
 

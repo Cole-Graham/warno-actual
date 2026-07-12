@@ -748,16 +748,64 @@ def build_aa_suppress_damages(game_db: Dict[str, Any]) -> Dict[str, Dict[str, in
     Fallback order for PhysicalDamages:
       1. Constants ``parent_membr`` on this weapon
       2. Vanilla ``ammo_properties`` for this weapon (exact or ``_x{N}`` match)
-      3. Donor weapon's constants ``parent_membr`` (for ``is_new`` missiles)
-      4. Donor weapon's vanilla ``ammo_properties`` (exact or ``_x{N}`` match)
+      3. Walk donor chain (``is_new``): each donor's constants, then vanilla
+         (e.g. ``Helo_HAGRU`` -> ``Helo`` -> ``Sidewinder``)
     """
     ammo_props = game_db.get("ammunition", {}).get("ammo_properties", {})
 
-    # Pre-build donor lookup: weapon_name -> (donor, data)
-    missile_index: Dict[str, Dict] = {}
-    for (wn, cat, _d, _n), d in missiles.items():
+    # weapon_name -> (donor, is_new, data)
+    missile_index: Dict[str, tuple[Any, bool, Dict]] = {}
+    for (wn, cat, donor, is_new), d in missiles.items():
         if cat in AA_CATEGORIES:
-            missile_index[wn] = d
+            missile_index[wn] = (donor, is_new, d)
+
+    def _resolve_physical_damages(
+        weapon_name: str,
+        donor: Any,
+        is_new: bool,
+        data: Dict,
+    ) -> Any:
+        phys_dmg = (
+            data.get("Ammunition", {})
+            .get("parent_membr", {})
+            .get("PhysicalDamages")
+        )
+        if phys_dmg is not None:
+            return phys_dmg
+
+        phys_dmg = _lookup_vanilla_physical_damages(weapon_name, ammo_props)
+        if phys_dmg is not None:
+            return phys_dmg
+
+        if not is_new or not donor:
+            return None
+
+        visited: set[str] = {weapon_name}
+        current_donor = donor
+        while current_donor and current_donor not in visited:
+            visited.add(current_donor)
+            entry = missile_index.get(current_donor)
+            if entry is not None:
+                next_donor, next_is_new, donor_data = entry
+                phys_dmg = (
+                    donor_data.get("Ammunition", {})
+                    .get("parent_membr", {})
+                    .get("PhysicalDamages")
+                )
+                if phys_dmg is not None:
+                    return phys_dmg
+            else:
+                next_donor, next_is_new = None, False
+
+            phys_dmg = _lookup_vanilla_physical_damages(current_donor, ammo_props)
+            if phys_dmg is not None:
+                return phys_dmg
+
+            if not next_is_new or not next_donor:
+                break
+            current_donor = next_donor
+
+        return None
 
     result: Dict[str, Dict[str, int]] = {}
 
@@ -765,27 +813,7 @@ def build_aa_suppress_damages(game_db: Dict[str, Any]) -> Dict[str, Dict[str, in
         if category not in AA_CATEGORIES:
             continue
 
-        # 1. Constants override on this weapon
-        phys_dmg = (
-            data.get("Ammunition", {})
-            .get("parent_membr", {})
-            .get("PhysicalDamages")
-        )
-
-        # 2. Vanilla ammo_properties (exact or _x{N} salvo variant match)
-        if phys_dmg is None:
-            phys_dmg = _lookup_vanilla_physical_damages(weapon_name, ammo_props)
-
-        # 3-4. Donor fallback for new missiles (e.g. HAGRU variants)
-        if phys_dmg is None and is_new and donor:
-            donor_data = missile_index.get(donor, {})
-            phys_dmg = (
-                donor_data.get("Ammunition", {})
-                .get("parent_membr", {})
-                .get("PhysicalDamages")
-            )
-            if phys_dmg is None:
-                phys_dmg = _lookup_vanilla_physical_damages(donor, ammo_props)
+        phys_dmg = _resolve_physical_damages(weapon_name, donor, is_new, data)
 
         if phys_dmg is None:
             logger.warning(

@@ -1,17 +1,90 @@
 import re
 from typing import Any, Dict
+from uuid import uuid4
+
 from src import ndf
 from src.constants.weapons import missiles
 from src.utils.logging_utils import setup_logger
-from src.utils.ndf_utils import find_obj_by_type
+from src.utils.ndf_utils import find_obj_by_type, strip_quotes
 
 from .handlers.missile_movement_config import apply_missile_descriptor_movement_configs
 
 logger = setup_logger(__name__)
 
+
+def _create_missile_descriptor_from_donor(
+    source: Any,
+    weapon_name: str,
+    donor: str,
+) -> Any | None:
+    """Clone ``Descriptor_Missile_{donor}`` into ``Descriptor_Missile_{weapon_name}``."""
+    existing = source.by_n(f"Descriptor_Missile_{weapon_name}", False)
+    if existing is not None:
+        return existing
+
+    donor_descr = source.by_n(f"Descriptor_Missile_{donor}", False)
+    if donor_descr is None:
+        logger.error(
+            f"Could not find donor Descriptor_Missile_{donor} for {weapon_name}",
+        )
+        return None
+
+    new_descr = donor_descr.copy()
+    new_descr.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
+    new_descr.namespace = f"Descriptor_Missile_{weapon_name}"
+
+    class_name_row = new_descr.v.by_m("ClassNameForDebug", False)
+    if class_name_row is not None:
+        class_name_row.v = f"'Missile_{weapon_name}'"
+
+    modules_list = new_descr.v.by_m("ModulesDescriptors", False)
+    if modules_list is not None:
+        tags_module = find_obj_by_type(modules_list.v, "TTagsModuleDescriptor")
+        if tags_module is not None:
+            tag_set = tags_module.v.by_m("TagSet", False)
+            if tag_set is not None:
+                donor_tag = f"MISSILE_{donor}"
+                new_tag = f"MISSILE_{weapon_name}"
+                for tag_row in tag_set.v:
+                    tag_val = strip_quotes(str(tag_row.v))
+                    if tag_val == donor_tag:
+                        tag_row.v = f'"{new_tag}"'
+
+    source.add(new_descr)
+    logger.info(
+        f"Created Descriptor_Missile_{weapon_name} from Descriptor_Missile_{donor}",
+    )
+    return new_descr
+
+
+def _wants_unique_missile_descriptor(weapon_name: str, data: Dict) -> bool:
+    """True when ammo explicitly points at ``Descriptor_Missile_{weapon_name}``."""
+    parent = (data.get("Ammunition") or {}).get("parent_membr") or {}
+    ptr = parent.get("MissileDescriptor")
+    if not isinstance(ptr, str):
+        return False
+    return f"Descriptor_Missile_{weapon_name}" in ptr
+
+
+def _clone_new_missile_descriptors(source: Any) -> None:
+    """Clone missile entities only when ammo requests a unique Descriptor_Missile_*."""
+    for (weapon_name, _category, donor, is_new), data in missiles.items():
+        if data is None or not is_new or donor is None:
+            continue
+        if "MissileDescriptor" not in data:
+            continue
+        if not isinstance(data["MissileDescriptor"], dict):
+            continue
+        if not _wants_unique_missile_descriptor(weapon_name, data):
+            continue
+        _create_missile_descriptor_from_donor(source, weapon_name, donor)
+
+
 def edit_gen_gp_gfx_missiledescriptors(source: Any, game_db: Dict[str, Any]) -> None:
     """GameData/Generated/Gameplay/Gfx/MissileDescriptors.ndf"""
     logger.info("Adjusting missile speed and acceleration")
+
+    _clone_new_missile_descriptors(source)
 
     ammo_db = game_db["ammunition"]
     missile_inst_renames_new_old = ammo_db.get("renames_new_old", {})

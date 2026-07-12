@@ -109,8 +109,8 @@ BUCKContainerDescriptor
                 (
                     ComponentFrame = TUIFramePropertyRTTI
                     (
+                        RelativeWidthHeight = [1.0, 1.0]
                     )
-                    FitStyle = ~/ContainerFitStyle/FitToContent
                     HasBackground = true
                     HasBorder = true
                     BackgroundBlockColorToken = "M81_MonochromeCRT"
