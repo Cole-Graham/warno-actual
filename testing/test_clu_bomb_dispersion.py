@@ -28,6 +28,14 @@ class TestCluBombDispersion(unittest.TestCase):
         self.assertEqual(entry["DispersionAtMaxRangeGRU"], 80)
         self.assertEqual(entry["DispersionAtMinRangeGRU"], 80)
 
+    def test_rockeye_salvo2_uses_tighter_ratio(self):
+        game_db = {"ammunition": {"ammo_properties": {}}}
+        result = build_clu_bomb_dispersion(game_db)
+        entry = result["Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength2"]
+        # RadiusSplashPhysicalDamagesGRU = 100; salvolength2 ratio = 0.7
+        self.assertEqual(entry["DispersionAtMaxRangeGRU"], 70)
+        self.assertEqual(entry["DispersionAtMinRangeGRU"], 70)
+
 
 if __name__ == "__main__":
     unittest.main()

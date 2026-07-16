@@ -915,15 +915,36 @@ def _effective_radius_splash_physical(
     return radius
 
 
+_CLU_SALVO_LENGTH_RE = re.compile(r"_salvolength(\d+)$")
+
+
+def _clu_bomb_ratio_specs(weapon_name: str) -> Dict[str, Any]:
+    """Return dispersion ratio specs, with salvolengthN overrides when present."""
+    default_specs = CLU_BOMB_STANDARDS.get("ratios", {}).get("ammunition", {})
+    match = _CLU_SALVO_LENGTH_RE.search(weapon_name)
+    if not match:
+        return default_specs
+
+    by_length = CLU_BOMB_STANDARDS.get("ratios_by_salvo_length", {})
+    override = by_length.get(int(match.group(1)), {})
+    override_specs = override.get("ammunition", {})
+    if not override_specs:
+        return default_specs
+
+    merged = dict(default_specs)
+    merged.update(override_specs)
+    return merged
+
+
 def build_clu_bomb_dispersion(game_db: Dict[str, Any]) -> Dict[str, Dict[str, int]]:
     """Build weapon_name -> dispersion members for CLU cluster bombs.
 
-    Uses ``CLU_BOMB_STANDARDS["ratios"]`` unless ``DispersionAt*`` are set
-    explicitly in constants ``parent_membr``. Effective radius follows the
-    same constants > vanilla > donor fallback as ``build_aa_suppress_damages``.
+    Uses ``CLU_BOMB_STANDARDS["ratios"]`` (and ``ratios_by_salvo_length`` for
+    ``*_salvolengthN`` variants) unless ``DispersionAt*`` are set explicitly in
+    constants ``parent_membr``. Effective radius follows the same
+    constants > vanilla > donor fallback as ``build_aa_suppress_damages``.
     """
     ammo_props = game_db.get("ammunition", {}).get("ammo_properties", {})
-    ratio_specs = CLU_BOMB_STANDARDS.get("ratios", {}).get("ammunition", {})
 
     ammo_index: Dict[str, Dict] = {}
     for (wn, cat, _d, _n), d in ammunitions.items():
@@ -940,6 +961,7 @@ def build_clu_bomb_dispersion(game_db: Dict[str, Any]) -> Dict[str, Dict[str, in
         radius = _effective_radius_splash_physical(
             weapon_name, data, ammo_props, ammo_index, donor, is_new,
         )
+        ratio_specs = _clu_bomb_ratio_specs(weapon_name)
 
         dispersion_entry: Dict[str, int] = {}
         for target_key, spec in ratio_specs.items():

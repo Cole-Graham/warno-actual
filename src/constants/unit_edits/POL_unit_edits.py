@@ -998,7 +998,7 @@ pol_unit_edits = {
     },
     
     "Rifles_HMG_POL": {  # Piechota (SVD)
-        "CommandPoints": 45,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "PIECHOTA [SVD]",
@@ -1052,7 +1052,7 @@ pol_unit_edits = {
         "GameName": {
             "display": "PIECHOTA ZMECH [SVD]",
         },
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "Divisions": {
             "default": {
                 "cards": 1, # Limit BWP-2 since we added BWP-2 to ATGMs and Leaders
@@ -1907,7 +1907,7 @@ pol_unit_edits = {
     
     "T55A_CMD_POL": {  # T-55AD LDR
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 70,
@@ -1946,7 +1946,7 @@ pol_unit_edits = {
     
     "T55AM_Merida_CMD_POL": {  # T-55AM Merida LDR
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 110,
@@ -2071,7 +2071,7 @@ pol_unit_edits = {
     
     "ASU_85_CMD_POL": {  # ASU-85 LDR
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 60,
@@ -2103,7 +2103,11 @@ pol_unit_edits = {
         "remove_zone_capture": None,
     },
 
-    "PT76B_CMD_POL": {  # Turned into reco PT-76
+    "PT76B_CMD_POL": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
+  # Turned into reco PT-76
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 30,
         "GameName": {
@@ -2155,7 +2159,7 @@ pol_unit_edits = {
 
     "PT76B_CMD_Naval_POL": {  #  NIEB.BERETY PT-76BD LDR
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 30,
@@ -2197,35 +2201,56 @@ pol_unit_edits = {
             ],
         },
         "capacities": {
+            "add_capacities": ["Reload_Penalty"],
             "remove_capacities": ["resolute"],
         },
         "ButtonTexture": "T55A_POL", 
         "UpgradeFromUnit": "T54B_CMDactual_POL",
     },
 
-    "T55U_POL": {  # T-55A
+    "T55U_POL": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
+  # T-55A
         "CommandPoints": 65,
         "availability": [10, 7, 0, 0],
         "UpgradeFromUnit": "T55A_CMD_POL",
     },
 
-    "T55A_POL": {  # T-55A
+    "T55A_POL": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
+  # T-55A
         "CommandPoints": 70,
         "availability": [10, 7, 0, 0],
         "UpgradeFromUnit": "T55A_CMD_POL",
     },
     
-    "T55AS_POL": {  # T-55AS coffin launcher
+    "T55AS_POL": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
+  # T-55AS coffin launcher
         "CommandPoints": 85,
         "availability": [0, 4, 3, 0],
     },
     
-    "T55AM_Merida_POL": {  # T-55AM Merida
+    "T55AM_Merida_POL": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
+  # T-55AM Merida
         "CommandPoints": 110,
         "availability": [0, 8, 6, 0],
     },
     
-    "T55AMS_Merida_POL": {  # T-55AMS Merida coffin launcher
+    "T55AMS_Merida_POL": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
+  # T-55AMS Merida coffin launcher
         "CommandPoints": 140,
         "availability": [0, 3, 2, 0],
     },
@@ -2272,17 +2297,29 @@ pol_unit_edits = {
         },
     },
 
-    "ASU_85_POL": {  # ASU-85
+    "ASU_85_POL": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
+  # ASU-85
         "CommandPoints": 60,
         "availability": [0, 8, 6, 0],
     },
 
-    "PT76B_tank_POL": {  # PT-76B
+    "PT76B_tank_POL": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
+  # PT-76B
         "CommandPoints": 25,
         "availability": [14, 11, 0, 0],
     },
 
-    "PT76B_tank_Naval_POL": {  # NIEB.BERETY PT-76B
+    "PT76B_tank_Naval_POL": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
+  # NIEB.BERETY PT-76B
         "CommandPoints": 25,
         "availability": [0, 14, 11, 0],
     },
@@ -2736,7 +2773,11 @@ pol_unit_edits = {
         "availability": "SNAR_10_SOV",
     },
 
-    "PT76B_POL": {  # PT-76B
+    "PT76B_POL": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
+  # PT-76B
         "CommandPoints": "PT76B_Naval_SOV",
         "availability": [8, 6, 0, 0],
     },

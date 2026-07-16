@@ -14,6 +14,10 @@ from .medium_equip_penalty_effects import (
 )
 from .deploy_effects import DEPLOY_EFFECT, DEPLOY_OK_EFFECT
 from .choc_effects import CHOC_INRANGE_FEEDBACK_EFFECT, CHOC_INRANGE_TAG_EFFECT
+from .reload_penalty_effects import (
+    RELOAD_PENALTY_EFFECT,
+    RELOAD_PENALTY_SALVO_MULTIPLIER,
+)
 from .sprint_effects import CHOC_SPRINT_BONUSES, NO_SPRINT_MORALE_EFFECT, SPRINT_EFFECT
 from .swift_effects import NO_SWIFT_EFFECT, SWIFT_EFFECT, SWIFT_OK_EFFECT
 
@@ -44,6 +48,8 @@ __all__ = [
     "DEPLOY_EFFECT",
     "DEPLOY_OK_EFFECT",
     "NO_SWIFT_EFFECT",
+    "RELOAD_PENALTY_EFFECT",
+    "RELOAD_PENALTY_SALVO_MULTIPLIER",
     "SWIFT_EFFECT",
     "SWIFT_OK_EFFECT",
 ]

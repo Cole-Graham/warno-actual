@@ -23,7 +23,7 @@ mp_us: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
                 # Vanilla: [0]=FM_M16/_0_1, [1]=MMG_M60/_0_2
                 # Target:  [0]=FM_M16A1/_0_1, [1]=FM_M16/_0_2, [2]=MMG_M60/_0_3, [3]=LAW/_0_4
                 0: ("insert", [("FireEffectTag", "FM_M16A1"), ("WeaponShootDataPropertyName", "WeaponShootData_0_1")]),
-                3: ("insert", [("FireEffectTag", "RocketInf_M72A3_LAW_66mm"), ("WeaponShootDataPropertyName", "WeaponShootData_0_4")]),
+                3: ("insert", [("FireEffectTag", "RocketInf_M72_LAW_66mm"), ("WeaponShootDataPropertyName", "WeaponShootData_0_4")]),
                 1: ("edit", [("WeaponShootDataPropertyName", "WeaponShootData_0_2")]),
                 2: ("edit", [("WeaponShootDataPropertyName", "WeaponShootData_0_3")]),
             },

@@ -174,6 +174,8 @@ def _add_capacite_module(
                         logger.info(f"Added {capacity} to {unit_name}")
     
     if capacities_to_add:
+        # Preserve order while dropping duplicate short names (explicit + auto-add).
+        capacities_to_add = list(dict.fromkeys(capacities_to_add))
         skill_prefix = "$/GFX/EffectCapacity/Capacite_"
         capacities_module = (
             f"TCapaciteModuleDescriptor"
@@ -261,8 +263,13 @@ def _add_capacities(logger, unit_data, edit_type, unit_name, edits, default_skil
     # capacitie_to_add
     capacities_to_add = edits.get("capacities", {}).get("add_capacities", [])
     for capacity in capacities_to_add:
-        default_skill_list.v.add(f"$/GFX/EffectCapacity/Capacite_{capacity}")
-        logger.info(f"Added {capacity} capacities to {unit_name}")
+        capacity_path = f"$/GFX/EffectCapacity/Capacite_{capacity}"
+        duplicate_safety = default_skill_list.v.find_by_cond(
+            lambda x, path=capacity_path: x.v == path, strict=False
+        )
+        if not duplicate_safety:
+            default_skill_list.v.add(capacity_path)
+            logger.info(f"Added {capacity} capacities to {unit_name}")
         
 
 def _remove_capacities(logger, unit_data, edit_type, unit_name, edits, default_skill_list) -> None:

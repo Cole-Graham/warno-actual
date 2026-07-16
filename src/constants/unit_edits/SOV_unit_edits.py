@@ -3012,7 +3012,7 @@ sov_unit_edits = {
     # SOV TANK
     "T10M_CMD_SOV": {
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 90,
@@ -3047,7 +3047,7 @@ sov_unit_edits = {
 
     "T55A_CMD_SOV": {
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 80,
@@ -3082,7 +3082,7 @@ sov_unit_edits = {
 
     "T55AM_1_CMD_SOV": {
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 110,
@@ -3118,7 +3118,7 @@ sov_unit_edits = {
     
     "T55AM_CMD_SOV": { # MOR. T-55AMK
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 110,
@@ -3154,7 +3154,7 @@ sov_unit_edits = {
 
     "T62MD_CMD_SOV": {
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 115,
@@ -3193,7 +3193,7 @@ sov_unit_edits = {
 
     "T62M_CMD_SOV": {
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 115,
@@ -3279,7 +3279,7 @@ sov_unit_edits = {
             "add_capacities": ["LDR_TNK"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
-        "CommandPoints": 175,
+        "CommandPoints": 170,
         "armor": {
             "top": (3, None),
         },
@@ -3318,7 +3318,7 @@ sov_unit_edits = {
             "add_capacities": ["LDR_TNK"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
-        "CommandPoints": 200,
+        "CommandPoints": 185,
         "armor": {
             "top": (4, None),
         },
@@ -3811,7 +3811,7 @@ sov_unit_edits = {
     },
 
     "BMD_3_SOV": {
-        "CommandPoints": 80,
+        "CommandPoints": 70,
         "TagSet": {
             "add_tags": ['"Vehicule_Transport_Arme"'],
         },
@@ -3959,21 +3959,33 @@ sov_unit_edits = {
     },
 
     "TO_55_SOV": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 60,
         "availability": [8, 6, 0, 0],
     },
 
     "ISU_152K_SOV": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 180,
         "availability": [3, 2, 0, 0],
     },
 
     "IS2M_SOV": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 55,
         "availability": [12, 0, 0, 0],
     },
 
     "T10M_SOV": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 80,
         "availability": [10, 0, 0, 0],
         "GameName": {
@@ -3982,11 +3994,17 @@ sov_unit_edits = {
     },
 
     "T54B_SOV": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 70,
         "availability": [10, 0, 0, 0],
     },
 
     "T55A_SOV": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 70,
         "availability": [10, 0, 0, 0],
     },
@@ -4003,26 +4021,42 @@ sov_unit_edits = {
             ],
         },
         "capacities": {
+            "add_capacities": ["Reload_Penalty"],
             "remove_capacities": ["reserviste"],
         },
     },  
 
     "T55AM_1_SOV": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 130,
         "availability": [0, 6, 4, 0],
     },
     
-    "T55AM_SOV": { # MOR. T-55AM
+    "T55AM_SOV": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
+ # MOR. T-55AM
         "CommandPoints": 130,
         "availability": [0, 6, 4, 0],
     },
     
-    "T55AMD_SOV": { # MOR. T-55AMD
+    "T55AMD_SOV": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
+ # MOR. T-55AMD
         "CommandPoints": 140,
         "availability": [0, 6, 4, 0],
     },
 
-    "T55AMV_SOV": { # MOR. T-55AMV
+    "T55AMV_SOV": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
+ # MOR. T-55AMV
         "CommandPoints": 140,
         "availability": [0, 0, 4, 3],
         "armor": {
@@ -4032,6 +4066,9 @@ sov_unit_edits = {
     },
 
     "T62M1_SOV": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 115,
         "armor": {
             "top": (3, None),
@@ -4039,7 +4076,11 @@ sov_unit_edits = {
         "availability": [8, 6, 0, 0],
     },
 
-    "T62MD1_SOV": { # T62M1 with +1 side and rear armor
+    "T62MD1_SOV": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
+ # T62M1 with +1 side and rear armor
         "CommandPoints": 115,
         "armor": {
             "top": (3, None),
@@ -4048,6 +4089,9 @@ sov_unit_edits = {
     },
     
     "T62M_SOV": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 140,
         "armor": {
             "top": (3, None),
@@ -4055,7 +4099,11 @@ sov_unit_edits = {
         "availability": [0, 6, 4, 0],
     },
 
-    "T62MD_SOV": { # T62M with +1 side and rear armor
+    "T62MD_SOV": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
+ # T62M with +1 side and rear armor
         "CommandPoints": 140,
         "armor": {
             "top": (3, None),
@@ -4064,6 +4112,9 @@ sov_unit_edits = {
     },
     
     "T62MV_SOV": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 140,
         "armor": {
             "front": (12, None),
@@ -4079,6 +4130,9 @@ sov_unit_edits = {
     },
     
     "T62M_APS_SOV": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 170,
         "armor": {
             "front": (12, None),
@@ -4141,7 +4195,7 @@ sov_unit_edits = {
     },
 
     "T64B1_SOV": {
-        "CommandPoints": 165,
+        "CommandPoints": 160,
         "armor": {
             "top": (3, None),
         },
@@ -4149,7 +4203,7 @@ sov_unit_edits = {
     },
 
     "T64BV1_SOV": {
-        "CommandPoints": 190,
+        "CommandPoints": 175,
         "armor": {
             "top": (4, None),
         },
@@ -4157,7 +4211,7 @@ sov_unit_edits = {
     },
 
     "T64B_SOV": {
-        "CommandPoints": 175,
+        "CommandPoints": 170,
         "armor": {
             "top": (3, None),
         },
@@ -4165,7 +4219,7 @@ sov_unit_edits = {
     },
 
     "T64BV_SOV": {
-        "CommandPoints": 215,
+        "CommandPoints": 210,
         "armor": {
             "top": (4, None),
         },
@@ -4225,7 +4279,7 @@ sov_unit_edits = {
     },
 
     "T72B1_SOV": {
-        "CommandPoints": 215,
+        "CommandPoints": 210,
         "armor": {
             "top": (4, None),
         },
@@ -4233,11 +4287,12 @@ sov_unit_edits = {
     },
 
     "T72B_SOV": {
-        "CommandPoints": 230,
+        "CommandPoints": 210,
         "armor": {
             "top": (4, None),
         },
-        "availability": [0, 0, 3, 2],
+        "availability": [0, 0, 4, 3],
+        "UpgradeFromUnit": "T72B1_SOV",
     },
 
     "T80B_SOV": {
@@ -4363,6 +4418,9 @@ sov_unit_edits = {
     },
     
     "PT76B_Naval_SOV": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 30,
         "availability": [8, 6, 0, 0],
     },
@@ -4403,7 +4461,7 @@ sov_unit_edits = {
     },
 
     "BMD_3_reco_SOV": {
-        "CommandPoints": 105,
+        "CommandPoints": 95,
         "availability": [0, 4, 3, 0],
         "TagSet": {
             "add_tags": ['"Vehicule_Transport_Arme"'],
@@ -4426,6 +4484,9 @@ sov_unit_edits = {
     },
     
     "T55AMD_reco_SOV": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 160,
         "max_speed": 50,
         "availability": [0, 4, 3, 0],
@@ -5814,6 +5875,25 @@ sov_unit_edits = {
         "CommandPoints": 200,
         "strength": "Mi_24P_SOV",
         "availability": [0, 2, 0, 1],
+        "WeaponDescriptor": {
+            "Salves": {
+                "AutoCanon_AP_30mm_Bitube_Gsh30k": 5,
+            },
+            "turrets": {
+                0: {
+                    "MountedWeapons": {
+                        "AutoCanon_AP_30mm_Bitube_Gsh30k": {
+                            "Ammunition": "AutoCanon_AP_30mm_Bitube_Gsh30k_burst",
+                            "EffectTag": "'FireEffect_GatlingAir_Gsh_30_2_30mm_x2'",
+                        },
+                        "AutoCanon_HE_30mm_Bitube_Gsh30k": {
+                            "Ammunition": "AutoCanon_HE_30mm_Bitube_Gsh30k_burst",
+                            "EffectTag": "'FireEffect_GatlingAir_Gsh_30_2_30mm_x2'",
+                        },
+                    },
+                },
+            },
+        },
     },
     
     "Mi_24P_Atakax8_SOV": {
@@ -5823,6 +5903,25 @@ sov_unit_edits = {
         "CommandPoints": 230,
         "strength": "Mi_24P_SOV",
         "availability": [0, 2, 0, 1],
+        "WeaponDescriptor": {
+            "Salves": {
+                "AutoCanon_AP_30mm_Bitube_Gsh30k": 5,
+            },
+            "turrets": {
+                0: {
+                    "MountedWeapons": {
+                        "AutoCanon_AP_30mm_Bitube_Gsh30k": {
+                            "Ammunition": "AutoCanon_AP_30mm_Bitube_Gsh30k_burst",
+                            "EffectTag": "'FireEffect_GatlingAir_Gsh_30_2_30mm_x2'",
+                        },
+                        "AutoCanon_HE_30mm_Bitube_Gsh30k": {
+                            "Ammunition": "AutoCanon_HE_30mm_Bitube_Gsh30k_burst",
+                            "EffectTag": "'FireEffect_GatlingAir_Gsh_30_2_30mm_x2'",
+                        },
+                    },
+                },
+            },
+        },
     },
     
     "Ka_29_SOV": {
@@ -5888,17 +5987,6 @@ sov_unit_edits = {
             },
         },
         "availability": [0, 5, 0, 0],
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                "replace": {
-                    "RocketAir_S5_57mm_salvolength32": {
-                        "new_weapon": "RocketAir_S5_57mm_avion_salvolength32",
-                        "swap_fire_effect": False,
-                        "depiction_baked_in": False,
-                    },
-                },
-            },
-        },
     },
 
     "MiG_21bis_CLU_SOV": {  # 2x RBK-500, 2x RBK-250
@@ -6017,7 +6105,7 @@ sov_unit_edits = {
     },
     
     "MiG_27K_AT1_SOV": { # GSh-6-30, 2x Kh-29L, 40x S-8KOM
-        "CommandPoints": 170,
+        "CommandPoints": 195,
         "ECM": -0.2,
         "optics": {
             "VisionRangesGRU": {
@@ -6034,7 +6122,7 @@ sov_unit_edits = {
             "Salves": {
                 "GatlingAir_AP_Gsh_30_6_30mm": (4, False),
                 "AGM_Kh29L": (2, True),
-                "RocketAir_B8_80mm_salvolength40_avion": (1, True),
+                "RocketAir_B8_80mm_avion_salvolength40": (1, True),
             },
         },
         "availability": [0, 2, 0, 1],
@@ -6149,6 +6237,9 @@ sov_unit_edits = {
             },
         },
         "availability": [0, 2, 0, 0],
+        "WeaponDescriptor": {
+            "SalvoIsMainSalvo": [False, False],
+        },
     },
 
     "MiG_27M_SOV": { # GSh-6-30, 2x Kh-29T
@@ -6175,6 +6266,9 @@ sov_unit_edits = {
     "MiG_27M_rkt_SOV": {
         "CommandPoints": 140,
         "availability": [0, 3, 2, 0],
+        "WeaponDescriptor": {
+            "SalvoIsMainSalvo": [False, False, False],
+        },
         # "WeaponDescriptor": {
         #     "Salves": {
         #         "RocketAir_B8_80mm_salvolength40": 1,
@@ -6712,6 +6806,9 @@ sov_unit_edits = {
             "add_specs": ["'_jammer_air'"],
         },
         "availability": [0, 2, 0, 1],
+        "WeaponDescriptor": {
+            "SalvoIsMainSalvo": [False, False, False],
+        },
     },
 
     "Su_25_SOV": {  # 4x Kh-25ML, 2x R-60M
@@ -6732,6 +6829,7 @@ sov_unit_edits = {
             },
         },
         "WeaponDescriptor": {
+            "SalvoIsMainSalvo": [False, False, False],
             "turrets": {
                 0: {
                     "AngleRotationMaxPitch": 1.047198, # 60 degrees
@@ -6757,6 +6855,9 @@ sov_unit_edits = {
         },
         "max_speed": 750,
         "availability": [0, 2, 0, 0],
+        "WeaponDescriptor": {
+            "SalvoIsMainSalvo": [False, False, False],
+        },
     },
 
     "Su_25_he_SOV": {  # 6x FAB-500, 2x R-60M
@@ -6773,6 +6874,9 @@ sov_unit_edits = {
         },
         "max_speed": 750,
         "availability": [0, 2, 0, 0],
+        "WeaponDescriptor": {
+            "SalvoIsMainSalvo": [False, False, False],
+        },
     },
 
     "Su_25_nplm_SOV": {  # 4x ZB-500, 2x R-60M
@@ -6789,6 +6893,9 @@ sov_unit_edits = {
         },
         "max_speed": 750,
         "availability": [0, 2, 0, 0],
+        "WeaponDescriptor": {
+            "SalvoIsMainSalvo": [False, False, False],
+        },
     },
     
     "Su_25_RKT3_SOV": {
@@ -6805,6 +6912,9 @@ sov_unit_edits = {
         },
         "max_speed": 750,
         "availability": [0, 2, 0, 0],
+        "WeaponDescriptor": {
+            "SalvoIsMainSalvo": [False, False],
+        },
     },
 
     "Su_25_rkt2_SOV": {  # x10 S-13, x2 x40 S-8KOM
@@ -6821,6 +6931,9 @@ sov_unit_edits = {
         },
         "max_speed": 750,
         "availability": [0, 2, 0, 0],
+        "WeaponDescriptor": {
+            "SalvoIsMainSalvo": [False, False, False, False],
+        },
     },
 
      "Su_25_rkt_SOV": {  # x2 x40 S-8KOM
@@ -6837,6 +6950,9 @@ sov_unit_edits = {
         },
         "max_speed": 750,
         "availability": [0, 2, 0, 0],
+        "WeaponDescriptor": {
+            "SalvoIsMainSalvo": [False, False, False],
+        },
     },
 
     "Su_27K_SOV": {  # 2x R-73, 4x R-27R, 2x R-24T

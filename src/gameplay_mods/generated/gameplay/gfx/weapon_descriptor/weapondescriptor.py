@@ -6,6 +6,7 @@ logger = setup_logger(__name__)
 
 from .handlers import (
     apply_default_salves,
+    apply_air_rocket_platform_standard,
     apply_he_dca_air_mounts,
     apply_helo_aa_turret_angles_pattern_standard,
     apply_satchel_at_companion_mounts,
@@ -26,6 +27,8 @@ def edit_gen_gp_gfx_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) 
     apply_hobs_no_hmd_pattern_standard(logger, source_path, game_db)
     new_units_weapondescriptor(source_path, game_db)
     unit_edits_weapondescriptor(source_path, game_db)
+    # After replaces: correct plane/helo dumbfire rocket platform ammo
+    apply_air_rocket_platform_standard(logger, source_path, game_db)
     # After replaces + HAGRU attach so helo AA mounts are final
     apply_helo_aa_turret_angles_pattern_standard(logger, source_path, game_db)
     # Salves after unit edits to ensure we're working from the correct ammo names

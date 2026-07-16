@@ -98,7 +98,7 @@ DCA_STANDARDS: dict = {
         "DistanceToTarget": False,
     },
     "experience_unit": {
-        "ExperienceMultiplierBonusOnKill": 0.0,
+        "ExperienceMultiplierBonusOnKill": 0.001,
     },
 }
 
@@ -125,13 +125,29 @@ CLU_BOMB_STANDARDS: dict = {
     "fixed_values": {
         "ammunition": {
             "PhysicalDamages": 1,
+            "DisplaySalveAccuracy": False,
         },
     },
-    # Ratio-based values, e.g. DispersionAtMaxRangeGRU = 1.4 * RadiusSplashPhysicalDamagesGRU
+    # Ratio-based values, e.g. DispersionAtMaxRangeGRU = 1.3 * RadiusSplashPhysicalDamagesGRU
     "ratios": {
         "ammunition": {
             "DispersionAtMaxRangeGRU": (1.3, "RadiusSplashPhysicalDamagesGRU"),
             "DispersionAtMinRangeGRU": (1.3, "RadiusSplashPhysicalDamagesGRU"),
+        },
+    },
+    # Override default ratios for specific salvolengthN variants (N = ShotsCountPerSalvo).
+    "ratios_by_salvo_length": {
+        2: {
+            "ammunition": {
+                "DispersionAtMaxRangeGRU": (0.7, "RadiusSplashPhysicalDamagesGRU"),
+                "DispersionAtMinRangeGRU": (0.7, "RadiusSplashPhysicalDamagesGRU"),
+            },
+        },
+        4: {
+            "ammunition": {
+                "DispersionAtMaxRangeGRU": (1.0, "RadiusSplashPhysicalDamagesGRU"),
+                "DispersionAtMinRangeGRU": (1.0, "RadiusSplashPhysicalDamagesGRU"),
+            },
         },
     },
 }

@@ -1,4 +1,5 @@
 from .constantes import (
+    edit_gameplay_constantes_bombtrajectoryconfigs,
     edit_gameplay_constantes_gdconstants,
     edit_gameplay_constantes_hitrollconstants,
     edit_gameplay_constantes_iastratweaponconstantes,
@@ -31,6 +32,7 @@ __all__ = [
     'add_unit_meshes',
     'edit_gameplay_gfx_gamephasedescriptortactical',
     'edit_gameplay_gfx_templates_templatedepiction',
+    'edit_gameplay_constantes_bombtrajectoryconfigs',
     'edit_gameplay_constantes_gdconstants',
     'edit_gameplay_constantes_hitrollconstants',
     'edit_gameplay_constantes_iastratweaponconstantes',

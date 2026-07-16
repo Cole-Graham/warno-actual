@@ -465,6 +465,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "Caliber": ("existing", "XUTVWWNOTF"),
+                "TraitsToken": ['MOTION', 'CAC'],
+                "MinimumRangeGRU": 0,
                 "MaximumRangeGRU": 875,
                 "MaximumRangeHelicopterGRU": 700,
                 "PhysicalDamages": 0.12,
@@ -552,7 +554,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 20,
             },
             "parent_membr": {
-                "TimeBetweenTwoShots": 1.4,
+                "TimeBetweenTwoShots": 1.2,
                 "MaximumRangeGRU": 875,
                 "MaximumRangeHelicopterGRU": 700,
                 "PhysicalDamages": 0.12,
@@ -581,7 +583,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 20,
             },
             "parent_membr": {
-                "TimeBetweenTwoShots": 1.4,
+                "TimeBetweenTwoShots": 1.2,
                 "MaximumRangeGRU": 875,
                 "MaximumRangeHelicopterGRU": 700,
                 "PhysicalDamages": 0.12,

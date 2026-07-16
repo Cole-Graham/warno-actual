@@ -33,7 +33,7 @@ rmp_uk: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
                 # Vanilla: [0]=PM_Sterling/_0_1, [1]=FM_L1A1_SLR/_0_2, [2]=MMG_inf_L7A2_7_62mm/_0_3
                 # Target:  [0]=FM_L1A1_SLR/_0_1, [1]=PM_Sterling/_0_2,
                 #          [2]=MMG_inf_L7A2_7_62mm/_0_3, [3]=RocketInf_M72A3_LAW_66mm/_0_4
-                3: ("insert", [("FireEffectTag", "RocketInf_M72A3_LAW_66mm"), ("WeaponShootDataPropertyName", "WeaponShootData_0_4")]),
+                3: ("insert", [("FireEffectTag", "RocketInf_M72_LAW_66mm"), ("WeaponShootDataPropertyName", "WeaponShootData_0_4")]),
                 0: ("edit", [("FireEffectTag", "FM_L1A1_SLR")]),
                 1: ("edit", [("FireEffectTag", "PM_Sterling")]),
             },

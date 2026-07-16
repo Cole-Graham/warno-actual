@@ -39,6 +39,7 @@ def edit_uispecificshowroomarmorycomponent(source_path) -> None:
     _edit_display_new_filter_bar_spacing(source_path)
     _edit_allegiancedivisionfilter(source_path)
     _edit_unitgridnamefilter(source_path)
+    _edit_battlegroupsbutton(source_path)
 
 def _edit_armory_component(source_path) -> None:
     """edit ArmoryComponentDescriptor"""
@@ -215,3 +216,21 @@ def _edit_unitgridnamefilter(source_path) -> None:
     
     # unitgridnamefilter = source_path.by_namespace("UnitGridNameFilter")
     pass
+
+def _edit_battlegroupsbutton(source_path) -> None:
+    """edit BattlegroupsButton"""
+    
+    battlegroupsbutton = source_path.by_namespace("BattlegroupsButton")
+    componentframe = battlegroupsbutton.v.by_m("ComponentFrame")
+    componentframe.v.by_m("MagnifiableOffset").v = "[DeckListHorizontalOffset, -40.0]"
+    
+    components = battlegroupsbutton.v.by_m("Components")
+    deck_fond = components.v[0] # Pop-up deck menu
+    deck_fond_components = deck_fond.v.by_m("Components")
+    deck_fond_text = deck_fond_components.v[0]
+    deck_fond_text_cf = deck_fond_text.v.by_m("ComponentFrame")
+    deck_fond_text_cf.v.by_m("MagnifiableOffset").v = "[0.0, 50.0]"
+    
+    deck_fond_texture = deck_fond_components.v[1]
+    deck_fond_texture_cf = deck_fond_texture.v.by_m("ComponentFrame")
+    deck_fond_texture_cf.v.by_m("MagnifiableOffset").v = "[-65.0, 63.0]"

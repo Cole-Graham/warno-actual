@@ -1167,7 +1167,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "WeaponDescriptor": {
             "SalvoLengths": [8],
             "units": {
-                8: ["SAM_9M311_Tunguska_SOV"],
+                8: ["SAM_9M311_Tunguska_SOV", "Tunguska_2K22_DDR"],
             },
         },
     },
@@ -1192,7 +1192,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
         "WeaponDescriptor": {
             "SalvoLengths": [8],
             "units": {
-                8: ["SAM_9M311_Tunguska_SOV"],
+                8: ["SAM_9M311_Tunguska_SOV", "Tunguska_2K22_DDR"],
             },
         },
     },

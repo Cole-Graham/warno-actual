@@ -195,7 +195,7 @@ def write_csv_data(damage_levels: List, armor_levels: List, damage_array: Any, o
 def main() -> None:
     """Main entry point for damage resistance parser."""
     try:
-        parse_vanilla = True
+        parse_vanilla = False
         
         config = load_config()
         dirs = config["directories"]

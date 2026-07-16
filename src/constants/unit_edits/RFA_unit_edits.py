@@ -1211,7 +1211,7 @@ rfa_unit_edits = {
     # RFA TANK
     "M48A2GA2_CMD_RFA": {
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 65,
@@ -1247,7 +1247,7 @@ rfa_unit_edits = {
 
     "Leopard_1A1_CMD_RFA": {
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 75,
@@ -1282,7 +1282,7 @@ rfa_unit_edits = {
 
     "Leopard_1A4_CMD_RFA": {
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 85,
@@ -1317,7 +1317,7 @@ rfa_unit_edits = {
 
     "Leopard_1A5_CMD_RFA": {
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 100,
@@ -1352,7 +1352,7 @@ rfa_unit_edits = {
 
     "Leopard_2A3_CMD_RFA": {
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 190,
@@ -1390,7 +1390,7 @@ rfa_unit_edits = {
 
     "Leopard_2A1_CMD_RFA": {
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 165,
@@ -1425,7 +1425,7 @@ rfa_unit_edits = {
 
     "Leopard_2A4_CMD_RFA": {
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 250,
@@ -1502,6 +1502,9 @@ rfa_unit_edits = {
     },
     
     "KanJagdPanzer_RFA": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 35,
         "availability": [14, 0, 0, 0],
         "armor": {
@@ -1510,21 +1513,33 @@ rfa_unit_edits = {
     },
     
     "M48A2C_RFA": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 55,
         "availability": [12, 0, 0, 0],
     },
     
     "M48A2GA2_RFA": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 65,
         "availability": [10, 0, 0, 0],
     },
 
     "M48A2GA2_nonHeimat_RFA": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 70,
         "availability": [10, 7, 0, 0],
     },
 
     "Leopard_1A2A1_RFA": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 70,
         "availability": [10, 7, 0, 0],
         # "WeaponDescriptor": {
@@ -1536,6 +1551,9 @@ rfa_unit_edits = {
     },
     
     "Leopard_1A1_RFA": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 75,
         "availability": [10, 7, 0, 0],
         # "WeaponDescriptor": {
@@ -1547,6 +1565,9 @@ rfa_unit_edits = {
     },
 
     "Leopard_1A1A2_RFA": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 75,
         "availability": [10, 7, 0, 0],
         # "WeaponDescriptor": {
@@ -1557,6 +1578,9 @@ rfa_unit_edits = {
     },
 
     "Leopard_1A4_RFA": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 80,
         "availability": [10, 7, 0, 0],
         # "WeaponDescriptor": {
@@ -1567,6 +1591,9 @@ rfa_unit_edits = {
     },
     
     "Leopard_1A5_RFA": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 95,
         "availability": [0, 8, 6, 0],
         # "WeaponDescriptor": {
@@ -1576,7 +1603,11 @@ rfa_unit_edits = {
         # },
     },
 
-    "Leopard_2A1_RFA": { # Gun reduced to 17 AP (DM23)
+    "Leopard_2A1_RFA": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
+ # Gun reduced to 17 AP (DM23)
         "CommandPoints": 155,
         "availability": [6, 4, 0, 0],
         # "WeaponDescriptor": {
@@ -1597,6 +1628,9 @@ rfa_unit_edits = {
     },
 
     "Leopard_2A3_RFA": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 180,
         "armor": {
             "top": (4, None),
@@ -1610,6 +1644,9 @@ rfa_unit_edits = {
     },
 
     "Leopard_2A4_RFA": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 235,
         "armor": {
             "top": (4, None),
@@ -2035,6 +2072,9 @@ rfa_unit_edits = {
     },
 
     "Leopard_1A5_reco_RFA": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 115,
         "availability": [0, 6, 4, 0],
         "UpgradeFromUnit": "Iltis_MILAN_KSK_RFA",
@@ -2386,7 +2426,7 @@ rfa_unit_edits = {
     },
     
     "F104G_Starfighter_AT_RFA": { # F-104G [AT]
-        "CommandPoints": 150,
+        "CommandPoints": 120,
         "ECM": -0.15,
         "optics": {
             "VisionRangesGRU": {
@@ -2518,24 +2558,6 @@ rfa_unit_edits = {
                 "EOpticalStrength/HighAltitude": 13250,
             },
         },
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                "replace": {
-                    "RocketAir_Zuni_1272mm_salvolength8": [
-                        {
-                            "new_weapon": "RocketAir_Zuni_1272mm_avion_salvolength8",
-                            "swap_fire_effect": False,
-                            "depiction_baked_in": False,
-                        },
-                        {
-                            "new_weapon": "RocketAir_Zuni_1272mm_avion_salvolength8",
-                            "swap_fire_effect": False,
-                            "depiction_baked_in": False,
-                        },
-                    ],
-                },
-            },
-        },
     },
 
     "HFB_320_ECM_RFA": { # EW
@@ -2627,6 +2649,21 @@ rfa_unit_edits = {
         "availability": [0, 2, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'terrain_radar'", "'_jammer_air'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": {
+                    "AA_AIM9L_Sidewinder": {
+                        "new_weapon": "AA_AIM9L_Sidewinder_upgrade",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
+            },
+            "SalvoIsMainSalvo": [False, False, False],
+            "Salves": {
+                "AA_AIM9L_Sidewinder_upgrade": 4,
+            },
         },
     },
 

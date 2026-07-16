@@ -29,6 +29,31 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "MaxAccelerationGRU": 2826,
         },
     },
+    
+    ("AA_Skyflash_ReflexPriorityFalse", "A2A", "AA_Skyflash", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 55,
+                "Moving": 55,
+            },
+            "parent_membr": {
+                "TraitsToken": ['MOTION', 'semiAuto','reflexpriorityoff'],
+                "TimeBetweenTwoShots": 1.4,
+                "TimeBetweenTwoFx": 1.4,
+                "MaximumRangeAirplaneGRU": 8400,
+                "ProjectileSpeedGRU": 4946,
+                "MaxAccelerationGRU": 2826,
+                "AimingTime": 0.3,
+                "TimeBetweenTwoSalvos": 1.4,
+                "SupplyCost": 50.0,
+                "ReflexShotDisabledIfPriorityTarget": False,
+            },
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 4946,
+            "MaxAccelerationGRU": 2826,
+        },
+    },
 
     ("AA_Skyflash_SuperTEMP", "A2A", None, False): {
         "Ammunition": {

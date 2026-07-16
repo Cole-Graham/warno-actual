@@ -453,6 +453,9 @@ USA_NEW_UNITS = {
     },
 
     ("M1A1HA_Abrams_CMD_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GUID": "74eb3b04-5b62-406d-9350-6b1765555505",
         "InfantrySquadModuleGUID": "f3b3b3b4-5b62-406d-9350-6b1765555505",
         "ShowroomGUID": "b059b7ca-be63-4407-9e15-283899bd0a51",
@@ -504,6 +507,9 @@ USA_NEW_UNITS = {
     },
 
     ("M1A1_Abrams_CMD_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GUID": "2b1fcb11-8a07-401e-b7a8-bbaa38a4881e",
         "InfantrySquadModuleGUID": "e9f5c7ac-6dd0-45f3-af98-2f0e148b660e",
         "ShowroomGUID": "l1m2n3o4-p5q6-4r7s-8t9u-0v1w2x3y4z5b",
@@ -560,6 +566,9 @@ USA_NEW_UNITS = {
     },
 
     ("M1A1_Abrams_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GUID": "d2ec00df-1542-4e0c-b00b-6a406453c071",
         "InfantrySquadModuleGUID": "52e5dadb-f6cf-422a-b3d6-253f78572641",
         "ShowroomGUID": "822614ec-98c7-4078-a82d-8f1bb675920a",
@@ -611,6 +620,9 @@ USA_NEW_UNITS = {
     },
 
     ("M1IP_Abrams_CMD_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GUID": "cc7fc0a1-1e81-4b68-b25f-51dfbbb09f85",
         "InfantrySquadModuleGUID": "5a929931-ed80-48a5-815f-db963cdee0c0",
         "ShowroomGUID": "976dd926-5c33-4c26-836d-77107a0c4fcb",
@@ -667,6 +679,9 @@ USA_NEW_UNITS = {
     },
 
     ("M1_Abrams_CMD_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GUID": "0a337b4d-3fe2-4b88-9bdf-a73bc6733296",
         "InfantrySquadModuleGUID": "c200a4e1-1ca5-4c19-aa5a-885ed917b114",
         "ShowroomGUID": "12f471a0-e473-40f3-b23c-534b44864771",
@@ -720,6 +735,9 @@ USA_NEW_UNITS = {
     },
 
     ("M60A3_CMD_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GUID": "31082f44-67be-4428-8df2-13d9159a911c",
         "InfantrySquadModuleGUID": "f1902a7c-9a79-4df0-aff1-28c8f0d1451c",
         "ShowroomGUID": "785b5ffe-97af-4a1f-834f-3d45c249618c",
@@ -772,6 +790,9 @@ USA_NEW_UNITS = {
     },
 
     ("M60A1_RISE_Passive_CMD_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GUID": "d8a1ca26-594b-4ec9-962c-b3403b4ab8e3",
         "InfantrySquadModuleGUID": "bdf4c41e-1be4-4a30-b742-0391f4829599",
         "ShowroomGUID": "c11f7f2b-2de6-4ccd-b688-0364ca95422c",
@@ -820,6 +841,9 @@ USA_NEW_UNITS = {
     },
 
     ("M60A1_RISE_Passive_USMC_CMD_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GUID": "44bb3b34-8e01-4853-b3fa-25236205623b",
         "InfantrySquadModuleGUID": "ee96f8ea-148e-41d3-b8a7-3c8956caff1e",
         "ShowroomGUID": "5c1d049f-5a5c-40c4-8ab4-dddc944ea472",
@@ -866,6 +890,9 @@ USA_NEW_UNITS = {
     },
 
     ("M551A1_TTS_Sheridan_CMD_US", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GUID": "7df5c2e6-7313-4de6-bc0c-3f98df60ad0b",
         "InfantrySquadModuleGUID": "c841f8d3-9015-41d8-b072-5ce130a20f24",
         "ShowroomGUID": "4d9c0ca3-0791-4c83-ab22-98ba9a8bd480",
@@ -993,7 +1020,7 @@ USA_NEW_UNITS = {
         "depictions": {
             "new_mesh": True,
         },
-        "CommandPoints": 280,
+        "CommandPoints": 310,
         "ECM": -0.45,
         "optics": {
             "VisionRangesGRU": {

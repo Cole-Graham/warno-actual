@@ -34,6 +34,11 @@ INGAME_ICONS = {
         "texture": "remote_controlled.png",
         "insert_after": "icone_deploy",  # Specifies where to insert in the list
     },
+    "reload_penalty": {
+        "texture_dir": "/Assets/2D/Interface/UseInGame/Icones",
+        "texture": "reload_penalty.png",
+        "insert_after": "icone_remote_controlled",
+    },
 }
 
 INGAME_ICON_EDITS = {

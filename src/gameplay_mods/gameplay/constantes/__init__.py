@@ -1,3 +1,4 @@
+from .bombtrajectoryconfigs import edit_gameplay_constantes_bombtrajectoryconfigs
 from .gdconstants import edit_gameplay_constantes_gdconstants
 from .hitrollconstants import edit_gameplay_constantes_hitrollconstants
 from .iastratweaponconstantes import edit_gameplay_constantes_iastratweaponconstantes
@@ -7,6 +8,7 @@ from .weaponconstantes import edit_gameplay_constantes_weaponconstantes
 from .weapontypepriorities import edit_gameplay_constantes_weapontypepriorities
 
 __all__ = [
+    'edit_gameplay_constantes_bombtrajectoryconfigs',
     'edit_gameplay_constantes_gdconstants',
     'edit_gameplay_constantes_hitrollconstants',
     'edit_gameplay_constantes_iastratweaponconstantes',

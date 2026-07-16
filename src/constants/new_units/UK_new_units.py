@@ -233,6 +233,9 @@ UK_NEW_UNITS = {
     },
 
     ("Challenger_1_Mk1_CMD_UK", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GUID": "d8a0de03-ee46-49c5-ba51-24320c053d55",
         "InfantrySquadModuleGUID": "5d21c985-c92a-4975-b0f3-74ed1a7920b8",
         "ShowroomGUID": "c4d5e6f7-8a9b-4c5d-6e7f-8a9b0c1d2e3f",
@@ -294,6 +297,9 @@ UK_NEW_UNITS = {
     },
     
     ("FV4201_Chieftain_CMD_UK", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GUID": "c37302a6-8480-497d-8733-6e5d0e70ae3b",
         "InfantrySquadModuleGUID": "e7b02c97-0130-4ac1-bf35-1c2f3065a4de",
         "ShowroomGUID": "451549aa-d69c-47e1-8824-30f60b236bb6",
@@ -355,6 +361,9 @@ UK_NEW_UNITS = {
     },
     
     ("FV4201_Chieftain_Mk9_UK", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GUID": "42c8aa7b-7dec-406c-9806-876e01d5eff6",
         "InfantrySquadModuleGUID": "2a3009a7-9dd4-4a3e-8f0d-f54471cbb1e2",
         "ShowroomGUID": "576ba527-ee4d-4078-b7aa-de7d5768e192",
@@ -453,6 +462,7 @@ UK_NEW_UNITS = {
         "Factory": "Factory/Logistic",
         "CommandPoints": 200,
         "capacities": {
+            "add_capacities": ["Reload_Penalty"],
             "remove_capacities": ["reserviste"],
         },
         "UnitRole": 'hq_tank',
@@ -494,7 +504,7 @@ UK_NEW_UNITS = {
         "ShowroomGUID": "f26a6c58-4680-4fb2-9540-179ac933400a",
         "CadavreGUID": "30a1f922-b453-4fbe-ac83-63be38aba866",
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "UnitId": 50109,

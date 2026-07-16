@@ -7,6 +7,9 @@ from src import ndf
 from src.constants.new_units import NEW_DEPICTIONS, NEW_UNITS
 from src.constants.unit_edits import load_depiction_edits
 from src.gameplay_mods.generated.gameplay.gfx.depictions._apply import apply_indexed_list_ops
+from src.gameplay_mods.generated.gameplay.gfx.depictions.he_dca_air_depiction import (
+    apply_he_dca_air_depiction_weapons,
+)
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import find_obj_by_blackhole_key
 
@@ -39,12 +42,14 @@ def _mesh_stem_for_subdepiction_generator(unit_name: str, edit_value: Any = None
     return unit_name
 
 
-def edit_gen_gp_gfx_depictionvehicles(source_path: Any) -> None:
+def edit_gen_gp_gfx_depictionvehicles(source_path: Any, game_db: Any = None) -> None:
     """GameData/Generated/Gameplay/Gfx/Depictions/DepictionVehicles.ndf"""
     
     # TODO: Hastily written (albeit functional) code that needs rewriting and refactoring
     _handle_new_units(source_path)
     _handle_unit_edits(source_path)
+    # After new-unit clones and hand-authored depiction_edits so AIR operators append.
+    apply_he_dca_air_depiction_weapons(source_path, game_db or {}, logger)
  
     
 def _handle_new_units(source_path: Any) -> None:
@@ -254,6 +259,8 @@ def _handle_weapon_operator(unit_name, weapon_operator, edits, is_new_entry=Fals
         if row_name_or_type == "FireEffectTag":
             member_access.v = value
         elif row_name_or_type == "WeaponActiveAndCanShootPropertyName":
+            member_access.v = value
+        elif row_name_or_type == "Connoisseur":
             member_access.v = value
         elif row_name_or_type == "WeaponShootDataPropertyName":
             # ContinuousFire uses scalar; InstantFire/MissileCarriage use list

@@ -1765,7 +1765,7 @@ usa_unit_edits = {
         "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "availability": [12, 9, 0, 0],
-        "max_speed": 26,
+        "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
         },
@@ -2566,7 +2566,7 @@ usa_unit_edits = {
             "display": "Mk.19 40mm",
         },
         "is_standard": (True, "40mm_Mk19_Team"), 
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "strength": 5,
         "max_speed": 14, 
         "SpecialtiesList": {
@@ -2581,7 +2581,7 @@ usa_unit_edits = {
             "display": "USMC Mk.19 40mm",
         },
         "is_standard": (True, "40mm_Mk19_Team"), 
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "strength": 5,
         "max_speed": 14, 
         "SpecialtiesList": {
@@ -2595,7 +2595,7 @@ usa_unit_edits = {
             "display": "AB Mk.19 40mm",
         },
         "is_standard": (True, "Para_40mm_Mk19_Team"), 
-        "CommandPoints": 35,
+        "CommandPoints": 40,
         "strength": 5,
         "max_speed": 14, 
         "SpecialtiesList": {
@@ -2981,6 +2981,9 @@ usa_unit_edits = {
     },
     
     "M60A1_AVLM_US": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 70,
         "availability": [3, 2, 0, 0],
     },
@@ -3025,7 +3028,7 @@ usa_unit_edits = {
     # US TANK
     "M1A1HA_Abrams_CMD_US": {
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 325,
@@ -3071,7 +3074,7 @@ usa_unit_edits = {
 
     "M1A1_Abrams_CMD_US": {
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 225,
@@ -3120,7 +3123,7 @@ usa_unit_edits = {
 
     "M1IP_Abrams_CMD_US": {
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 200,
@@ -3161,7 +3164,7 @@ usa_unit_edits = {
 
     "M1_Abrams_CMD_US": {
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 170,
@@ -3202,7 +3205,7 @@ usa_unit_edits = {
 
     "M60A3_CMD_US": {
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 105,
@@ -3241,7 +3244,7 @@ usa_unit_edits = {
     
     "M60A1_RISE_Passive_CMD_US": {
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 90,
@@ -3280,7 +3283,7 @@ usa_unit_edits = {
 
     "M60A1_RISE_Passive_USMC_CMD_US": {
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 90,
@@ -3320,7 +3323,7 @@ usa_unit_edits = {
 
     "M551A1_TTS_Sheridan_CMD_US": {
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 50,
@@ -3455,6 +3458,9 @@ usa_unit_edits = {
     },
 
     "M728_CEV_US": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 65,
         "availability": [8, 6, 0, 0],
         "armor": {
@@ -3463,6 +3469,9 @@ usa_unit_edits = {
     },
 
     "M728A1_CEV_US": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 75,
         "availability": [0, 8, 6, 0],
         "armor": {
@@ -3585,6 +3594,9 @@ usa_unit_edits = {
     },
 
     "M1A1HA_Abrams_US": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 310,
         "Divisions": {
             "default": {
@@ -3600,6 +3612,9 @@ usa_unit_edits = {
     },
 
     "M1A1_Abrams_US": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         # "GameName": {
         #     "display": "#3RDARM M1A1 ABRAMS",
         #     "token": "YEMPBPBTNZ",
@@ -3623,6 +3638,9 @@ usa_unit_edits = {
     },
 
     "M1IP_Abrams_US": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 190,
         "Divisions": {
             "default": {
@@ -3647,6 +3665,9 @@ usa_unit_edits = {
     },
 
     "M1_Abrams_US": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 160,
         "Divisions": {
             "default": {
@@ -3662,6 +3683,9 @@ usa_unit_edits = {
     },
 
     "M1_Abrams_NG_US": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 150,
         "Divisions": {
             "default": {
@@ -3677,6 +3701,9 @@ usa_unit_edits = {
     },
     
     "M1_Abrams_MOD_US": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 225,
         "Divisions": {
             "default": {
@@ -3692,6 +3719,9 @@ usa_unit_edits = {
     },
 
     "M60A3_Patton_US": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 105,
         "Divisions": {
             "default": {
@@ -3722,6 +3752,7 @@ usa_unit_edits = {
             ],
         },
         "capacities": {
+            "add_capacities": ["Reload_Penalty"],
             "remove_capacities": ["reserviste"],
         },
         "availability": [0, 8, 6, 0],
@@ -3732,6 +3763,9 @@ usa_unit_edits = {
     },
 
     "M60A3_Patton_NG_US": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 110,
         "Divisions": {
             "default": {
@@ -3745,6 +3779,9 @@ usa_unit_edits = {
     },
 
     "M60A1_RISE_Passive_US": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 80,
         "Divisions": {
             "default": {
@@ -3758,6 +3795,9 @@ usa_unit_edits = {
     },
 
     "M60A1_RISE_Passive_USMC_US": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 90,
         "Divisions": {
             "default": {
@@ -3771,6 +3811,9 @@ usa_unit_edits = {
     },
 
     "M60A1_RISE_Passive_USMC_ERA_US": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 160,
         "Divisions": {
             "default": {
@@ -3784,6 +3827,9 @@ usa_unit_edits = {
     },
 
     "M551A1_TTS_Sheridan_US": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 50,
         "Divisions": {
             "default": {
@@ -4140,12 +4186,18 @@ usa_unit_edits = {
     },
     
     "M48A5_reco_NG_US": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 90,
         "availability": [8, 0, 0, 0],
         "UpgradeFromUnit": "M3_Bradley_CFV_US",
     },
     
     "M60A1_RISE_Passive_reco_US": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 90,
         "availability": [6, 0, 0, 0],
         "armor": {
@@ -4154,12 +4206,18 @@ usa_unit_edits = {
     },
 
     "M551A1_ACAV_Sheridan_US": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 50,
         "availability": [0, 6, 4, 0],
         "UpgradeFromUnit": "M113A1_TOW_US",
     },
 
     "M1A1_Abrams_reco_US": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "availability": [0, 3, 2, 0],
         "CommandPoints": 245,
         "armor": {
@@ -4251,21 +4309,9 @@ usa_unit_edits = {
 
     "OV10_Bronco_US": {
         "CommandPoints": 130,
-        "availability": [0, 3, 2, 0],
-        # "WeaponDescriptor": {
-        #     "Salves": {
-        #         "RocketAir_Zuni_1272mm_avion_salvolength8": 2,
-        #     },
-        #     "equipmentchanges": {
-        #         "replace": {
-        #             "RocketAir_Zuni_1272mm_salvolength4": {
-        #                 "new_weapon": "RocketAir_Zuni_1272mm_avion_salvolength8",
-        #                 "swap_fire_effect": False,
-        #                 "depiction_baked_in": False,
-        #             },
-        #         },
-        #     },
-        # },
+        "WeaponDescriptor": {
+            "SalvoIsMainSalvo": [False, False, False],
+        },
         "UpgradeFromUnit": "A37B_Dragonfly_US",
     },
     
@@ -4282,6 +4328,9 @@ usa_unit_edits = {
             },
         },
         "availability": [0, 2, 0, 0],
+        "WeaponDescriptor": {
+            "SalvoIsMainSalvo": [False, False, False],
+        },
         "UpgradeFromUnit": "OV10_Bronco_US",
     },
 
@@ -5545,17 +5594,6 @@ usa_unit_edits = {
     "Harrier_AV8B_RKT_US": {
         "CommandPoints": 120,
         "ECM": -0.25,
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                "replace": {
-                    "RocketAir_Zuni_1272mm_salvolength16": {
-                        "new_weapon": "RocketAir_Zuni_1272mm_avion_salvolength16",
-                        "swap_fire_effect": False,
-                        "depiction_baked_in": False,
-                    },
-                },
-            },
-        },
     },
     
     "Harrier_AV8B_thermo_US": {
@@ -6277,7 +6315,7 @@ usa_unit_edits = {
     },
 
     "F16E_CBU_US": {
-        "CommandPoints": 200,
+        "CommandPoints": 220,
         "Divisions": {
             "remove": ["US_11ACR"],
             "default": {
@@ -6287,7 +6325,7 @@ usa_unit_edits = {
                 "cards": 2,
             },
         },
-        "ECM": -0.25,
+        "ECM": -0.35,
         "optics": {
             "OpticalStrengths": {
                 "EOpticalStrength/HighAltitude": 13250,
@@ -6472,6 +6510,9 @@ usa_unit_edits = {
         "max_speed": 500,
         "ECM": -0.25,
         "availability": [0, 2, 0, 0],
+        "WeaponDescriptor": {
+            "SalvoIsMainSalvo": [False, False, False],
+        },
     },
 
     "A10_Thunderbolt_II_Rkt_US": {  # 76x Hydra, 2x AIM-9M
@@ -6483,6 +6524,9 @@ usa_unit_edits = {
         "max_speed": 500,
         "ECM": "A10_Thunderbolt_II_US",
         "availability": [0, 2, 0, 0],
+        "WeaponDescriptor": {
+            "SalvoIsMainSalvo": [False, False, False],
+        },
     },
 
     "A10_Thunderbolt_II_ATGM_US": {  # 4x AGM-65D, 2x AIM-9M
@@ -6495,6 +6539,7 @@ usa_unit_edits = {
         "ECM": "A10_Thunderbolt_II_US",
         "availability": [0, 2, 0, 0],
         "WeaponDescriptor": {
+            "SalvoIsMainSalvo": [False, False, False],
             "Salves": {
                 "AGM_AGM65D_Maverick": 2,
             },

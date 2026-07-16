@@ -3,13 +3,8 @@
 
  # ------------------------------------ Lat ------------------------------------
  # v28.7
- - [ ] MLRS HE artillery too precise (e.g. Uragan)
- - [ ] MiG-21Bis with large bombs not dropping bombs on tanks??
- - [ ] Tank rate of fire penalty when moving
- - [x] Fix angles on anti-air helos
- - [ ] Adjust winchester evac on planes with HEAT guns (e.g. A-10)
- - [ ] Increase drop speed of cluster bombs? (maybe all bombs?)... tanks dodging bombs is really stupid
- - [ ] Test F-16 [CLU2] for bomb dispersion balancing
+ - [ ] Fix armor on Soviet marine infantry, and maybe automate this if possible
+ - [ ] Check if Tulipan is broken by a batch script (strange range scaling after 9000m?)
  
 # Future patch:
 - [ ] change supply traits to be more coherent with gameplay use-cases

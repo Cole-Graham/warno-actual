@@ -8,6 +8,7 @@ from .Gebirgsjager_PzF3_RFA import gebirgsjager_pzf3_rfa
 from .MAN_Kat_6x6_RFA import man_kat_6x6_rfa
 from .Panzergrenadier_APC_RFA import panzergrenadier_apc_rfa
 from .Sniper_Fern_RFA import sniper_fern_rfa
+from .Tornado_Marine_CLU_RFA import tornado_marine_clu_rfa
 from .Unimog_S_404_RFA import unimog_s_404_rfa
 
 __all__ = [
@@ -19,5 +20,6 @@ __all__ = [
     "man_kat_6x6_rfa",
     "panzergrenadier_apc_rfa",
     "sniper_fern_rfa",
+    "tornado_marine_clu_rfa",
     "unimog_s_404_rfa",
 ]

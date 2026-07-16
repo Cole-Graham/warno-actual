@@ -7,6 +7,7 @@ from .gameplay_mods import (
     # .gameplay
     edit_gameplay_gfx_gamephasedescriptortactical,
     edit_gameplay_gfx_templates_templatedepiction,
+    edit_gameplay_constantes_bombtrajectoryconfigs,
     edit_gameplay_constantes_gdconstants,
     edit_cd_gameplay_constantes_helicoptermovementweights,
     edit_gameplay_constantes_hitrollconstants,
@@ -139,6 +140,7 @@ __all__ = [
     # gameplay_mods.gameplay
     'edit_gameplay_gfx_gamephasedescriptortactical',
     'edit_gameplay_gfx_templates_templatedepiction',
+    'edit_gameplay_constantes_bombtrajectoryconfigs',
     'edit_gameplay_constantes_gdconstants',
     'edit_gameplay_constantes_hitrollconstants',
     'edit_gameplay_constantes_iastratweaponconstantes',
@@ -291,6 +293,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
 
     editors = {
         # Core gameplay mechanics
+        "GameData/Gameplay/Constantes/BombTrajectoryConfigs.ndf": [
+            (edit_gameplay_constantes_bombtrajectoryconfigs, "gameplay"),
+        ],
         "GameData/Gameplay/Constantes/GDConstants.ndf": [
             (edit_gameplay_constantes_gdconstants, "gameplay"),
         ],
@@ -482,7 +487,7 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
             (edit_gen_gp_gfx_depictionhumans, "gameplay"),
         ],
         "GameData/Generated/Gameplay/Gfx/Depictions/DepictionVehicles.ndf": [
-            (edit_gen_gp_gfx_depictionvehicles, "gameplay"),
+            (lambda source_path: edit_gen_gp_gfx_depictionvehicles(source_path, game_db), "gameplay"),
         ],
         "GameData/Generated/Gameplay/Gfx/Infanterie/DepictionInfantry.ndf": [
             (lambda source_path: edit_gen_gp_gfx_depictioninfantry(source_path, game_db), "gameplay"),

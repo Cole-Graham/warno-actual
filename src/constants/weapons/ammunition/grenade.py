@@ -20,7 +20,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("Grenade_Satchel_Charge_AT", "grenade", "Grenade_Satchel_Charge", True): {
         "Ammunition": {
             "Arme": {
-                "Family": "DamageFamily_ap_missile",
+                "Family": "DamageFamily_clu_sol_ap",
                 "Index": 7,
             },
             "parent_membr": {

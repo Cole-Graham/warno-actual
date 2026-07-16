@@ -57,6 +57,7 @@ from .RFA_depiction_edits import (
     man_kat_6x6_rfa,
     panzergrenadier_apc_rfa,
     sniper_fern_rfa,
+    tornado_marine_clu_rfa,
     unimog_s_404_rfa,
 )
 from .SOV_depiction_edits import (
@@ -81,6 +82,7 @@ from .SOV_depiction_edits import (
 from .UK_depiction_edits import (
     aec_militant_uk,
     airmobile_mot_cmd_uk,
+    airmobile_mot_uk,
     bedford_mj_4t_uk,
     bedford_tm_6x6_supply_uk,
     engineers_cmd_uk,
@@ -191,6 +193,7 @@ __all__ = [
     "man_kat_6x6_rfa",
     "panzergrenadier_apc_rfa",
     "sniper_fern_rfa",
+    "tornado_marine_clu_rfa",
     "unimog_s_404_rfa",
     
     # SOV
@@ -215,6 +218,7 @@ __all__ = [
     # UK
     "aec_militant_uk",
     "airmobile_mot_cmd_uk",
+    "airmobile_mot_uk",
     "bedford_mj_4t_uk",
     "bedford_tm_6x6_supply_uk",
     "engineers_cmd_uk",

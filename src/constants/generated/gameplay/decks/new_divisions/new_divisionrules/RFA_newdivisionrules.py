@@ -204,7 +204,7 @@ RFA_global_newdivisionrules = {
         ("Alpha_Jet_A_he_RFA", 1, [0, 6, 0, 0]),
         ("Alpha_Jet_A_nplm_RFA", 1, [0, 6, 0, 0]),
         ("Alpha_Jet_A_rkt_RFA", 1, [0, 6, 0, 0]),
-        ("Alpha_Jet_A_KWS_RFA", 1, [0, 3, 2, 0]),
+        ("Alpha_Jet_A_KWS_RFA", 1, [0, 4, 3, 0]),
     ],
 }
 

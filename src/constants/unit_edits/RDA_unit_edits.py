@@ -22,7 +22,11 @@ rda_unit_edits = {
         },
     },
     
-    "PT76B_CMD_DDR": { # Too inexpensive to make a LDR., just changing to a CV
+    "PT76B_CMD_DDR": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
+ # Too inexpensive to make a LDR., just changing to a CV
         "CommandPoints": 170,
         "Factory": "Factory/Logistic",
         "SpecialtiesList": {
@@ -1105,7 +1109,7 @@ rda_unit_edits = {
         "GameName": {
             "display": "MOT.-SCHÜTZEN [s.MG]",
         },
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
@@ -1123,7 +1127,7 @@ rda_unit_edits = {
         "GameName": {
             "display": "MOT.-SCHÜTZEN [BTR]",
         },
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
@@ -1156,7 +1160,7 @@ rda_unit_edits = {
         "GameName": {
             "display": "MOT.-SCHÜTZEN [METIS]",
         },
-        "CommandPoints": 45,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 20,
@@ -1271,7 +1275,7 @@ rda_unit_edits = {
         "GameName": {
             "display": "FALLSCHIRMJÄGER (s.MG)",
         },
-        "CommandPoints": 45,
+        "CommandPoints": 40,
         "armor": "Infantry_armor_reference",
         "strength": 9,
         "availability": [0, 0, 4, 3],
@@ -2022,7 +2026,7 @@ rda_unit_edits = {
     
     "T54B_CMD_DDR": {
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 70,
@@ -2063,7 +2067,7 @@ rda_unit_edits = {
     
     "T55A_CMD_DDR": {
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 70,
@@ -2104,7 +2108,7 @@ rda_unit_edits = {
 
     "T55AM2_CMD_DDR": {  # T-55AM2 LDR
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 110,
@@ -2415,6 +2419,9 @@ rda_unit_edits = {
     },
     
     "TO_55_DDR": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GameName": {
             "display": "FlamPz. TO-55",
         },
@@ -2423,11 +2430,17 @@ rda_unit_edits = {
     },
 
     "PT76B_tank_DDR": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 20,
         "availability": [14, 0, 0, 0],
     },
     
     "T34_85M_DDR": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "armor": {
             "front": (4, None),
             "sides": (2, None),
@@ -2448,11 +2461,17 @@ rda_unit_edits = {
     },
     
     "T54B_DDR": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 70,
         "availability": [10, 7, 0, 0],
     },
 
     "T55A_DDR": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GameName": {
             "display": "KPz T-55A",
         },
@@ -2460,7 +2479,11 @@ rda_unit_edits = {
         "availability": [10, 7, 0, 0],
     },
 
-    "T55AM2_DDR": {  # T-55AM2
+    "T55AM2_DDR": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
+  # T-55AM2
         "CommandPoints": 125,
         "availability": [0, 4, 3, 0],
         "TagSet": {
@@ -2497,7 +2520,11 @@ rda_unit_edits = {
         "UpgradeFromUnit": "T54B_reco_DDR",
     },
 
-    "T55AM2B_DDR": {  # T-55AM2B
+    "T55AM2B_DDR": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
+  # T-55AM2B
         "CommandPoints": 140,
         "availability": [0, 6, 4, 0],
     },
@@ -2632,6 +2659,9 @@ rda_unit_edits = {
     },
     
     "PT76B_DDR": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": "PT76B_Naval_SOV",
         "availability": [8, 6, 0, 0],
     },
@@ -3576,24 +3606,6 @@ rda_unit_edits = {
     "L39ZO_DDR": {
         "CommandPoints": 60,
         "availability": [0, 5, 0, 0],
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                "replace": {
-                    "RocketAir_S5_57mm_salvolength32": [
-                        {
-                            "new_weapon": "RocketAir_S5_57mm_avion_salvolength32",
-                            "swap_fire_effect": False,
-                            "depiction_baked_in": False,
-                        },
-                        {
-                            "new_weapon": "RocketAir_S5_57mm_avion_salvolength32",
-                            "swap_fire_effect": False,
-                            "depiction_baked_in": False,
-                        },
-                    ],
-                },
-            },
-        },
     },
 
     "L39ZO_HE1_DDR": {
@@ -3625,17 +3637,6 @@ rda_unit_edits = {
         },
         "CommandPoints": 110,
         "ECM": -0.15,
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                "replace": {
-                    "RocketAir_S5_57mm_salvolength32": {
-                        "new_weapon": "RocketAir_S5_57mm_avion_salvolength32",
-                        "swap_fire_effect": False,
-                        "depiction_baked_in": False,
-                    },
-                },
-            },
-        },
         "availability": [0, 4, 0, 0],
     },
 
@@ -3678,7 +3679,7 @@ rda_unit_edits = {
     },
 
     "MiG_23BN_AT2_DDR": {  # MiG-23BN [AT2]
-        "CommandPoints": 145,
+        "CommandPoints": 160,
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 4550.0,
@@ -3747,7 +3748,7 @@ rda_unit_edits = {
     },
     
     "MiG_23BN_AT_DDR": {  # MiG-23MF [AT]
-        "CommandPoints": 120,
+        "CommandPoints": 140,
         "ECM": -0.15,
         "optics": {
             "VisionRangesGRU": {

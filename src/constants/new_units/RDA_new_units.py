@@ -295,8 +295,88 @@ RDA_NEW_UNITS = {
             },
         }
     },
+
+    ("ATteam_Konkurs_DDR", 0): {
+        "GUID": "c267d393-4bed-4ab4-bded-491a605823b7",
+        "InfantrySquadModuleGUID": "648665d1-f98a-45e4-a5dd-94a35ab52a84",
+        "ShowroomGUID": "60500773-653a-4eac-a36b-14e53d529a03",
+        "CadavreGUID": "323dbd38-8e0b-4efe-9e1f-b203f235d9d5",
+        "UnitId": 50113,
+        "NewName": "ATteam_KonkursM_DDR",
+        "GameName": {
+            "display": "PALR KONKURS-M",
+            "token": "PALRKONKRM",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_AT",
+                "Infanterie_Spec_Defense",
+                "UNITE_ATteam_KonkursM_DDR",
+                "Unite"
+            ],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_inf_9M113M_KonkursM": 6,
+            },
+            "equipmentchanges": {
+                "replace": {
+                    "ATGM_9M113_Konkurs": {
+                        "new_weapon": "ATGM_inf_9M113M_KonkursM",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
+            },
+        },
+        "CommandPoints": 60,
+        "SpecialtiesList": [
+            '_resolute',
+            'infantry_equip_heavy',
+        ],
+        "UpgradeFromUnit": "ATteam_Konkurs_DDR",
+        "ButtonTexture": "ATteam_Konkurs_DDR",
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "availability": [4, 3, 0, 0],
+        "max_speed": 20,
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/Attack', 'EOrderType/MoveAndAttack',
+                   'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/UseCapacite',
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": True, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": True,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "DDR",
+        "alternatives_count": 2,
+        "servants": ("G_DDR", "D_DDR"),
+        "servant_types": {
+            "showroom": {
+                "G_DDR": ["ATGMServantLeft"],
+                "D_DDR": ["ATGMServantRight"]
+            },
+            "subdepictions": {
+                "G_DDR": ["ATGMServantLeft"],
+                "D_DDR": ["ATGMServantRight"]
+            },
+        }
+    },
     
     ("T54B_CMD_DDR", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GUID": "f7652424-a88a-41c5-837d-a0e25713c036",
         "InfantrySquadModuleGUID": "c0304787-17d4-4277-bc87-7bb405aa4876",
         "ShowroomGUID": "04f02987-77e8-40de-a214-b0f6abf047b2",
@@ -351,6 +431,9 @@ RDA_NEW_UNITS = {
     },
 
     ("T55A_CMD_DDR", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GUID": "257bde27-dc1e-4899-ab2f-c6edf9c4af76",
         "InfantrySquadModuleGUID": "e7a7acba-d937-427a-9035-7e4f957cf778",
         "ShowroomGUID": "376f5cd3-f3ef-4bd0-80c9-61ffe40e38a6",
@@ -417,6 +500,9 @@ RDA_NEW_UNITS = {
     },
 
     ("T55AM2_CMD_DDR", 0): {  # T-55AM Merida CV
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GUID": "45a64f6d-3512-4d15-9307-10022d6ad4e4",
         "InfantrySquadModuleGUID": "f16d2db0-0ac0-4929-bdcb-cf574be8da4f",
         "ShowroomGUID": "f29b94d3-7dd9-4c05-a31b-53fd5a9c76df",
@@ -761,6 +847,84 @@ RDA_NEW_UNITS = {
             ],
         "UpgradeFromUnit": "ATteam_FagotM_FJ_DDR",
         "availability": [0, 0, 7, 5],
+        "max_speed": 20,
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/Attack', 'EOrderType/MoveAndAttack', 
+                   'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/UseCapacite', 
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": True, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": True,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "DDR",
+        "alternatives_count": 2,
+        "servants": ("G_FJ_DDRL", "D_FJ_DDR"),
+        "servant_types": {
+            "showroom": {
+                "G_FJ_DDR": ["ATGMServantLeft"],
+                "D_FJ_DDR": ["ATGMServantRight"]
+            },
+            "subdepictions": {
+                "G_FJ_DDR": ["ATGMServantLeft"],
+                "D_FJ_DDR": ["ATGMServantRight"]
+            },
+        },
+    },
+
+    ("ATteam_Fagot_FJ_DDR", 2): {
+        "GUID": "a941447d-315c-4ad8-b329-30d91b78807e",
+        "InfantrySquadModuleGUID": "0beeed74-ae3d-4aa2-a1b0-eafe4d3e05d1",
+        "ShowroomGUID": "52b3bcc0-72f9-4410-846e-ca4729bcbdf6",
+        "CadavreGUID": "180e008b-4cd0-4640-9ed5-66392ab71215",
+        "UnitId": 50115,
+        "NewName": "ATteam_KonkursM_FJ_DDR",
+        "GameName": {
+            "display": "Fs-PALR KONKURS-M",
+            "token": "FSPALRKONM",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_AT",
+                "Infanterie_Spec_Defense",
+                "UNITE_ATteam_KonkursM_FJ_DDR",
+                "Unite"
+            ],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_inf_9M113M_KonkursM": 6,
+            },
+            "equipmentchanges": {
+                "replace": {
+                    "ATGM_9K111M_Faktoriya": {
+                        "new_weapon": "ATGM_inf_9M113M_KonkursM",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
+            },
+        },
+        "CommandPoints": 60,
+        "SpecialtiesList": [
+                '_para',
+                '_resolute',
+                'infantry_equip_heavy'
+            ],
+        "UpgradeFromUnit": "ATteam_Konkurs_FJ_DDR",
+        "ButtonTexture": "ATteam_Fagot_FJ_DDR",
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "availability": [0, 0, 4, 3],
         "max_speed": 20,
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/Attack', 'EOrderType/MoveAndAttack', 
                    'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/UseCapacite', 
@@ -1354,6 +1518,9 @@ RDA_NEW_UNITS = {
     
     # Tanks
     ("T54B_DDR", 0): {  # T-55A Reco
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GUID": "cdbbbcd3-28b6-457a-9aab-6aaa7273f9d8",
         "InfantrySquadModuleGUID": "6c3d04e7-f606-40d7-88a6-a9b3e339c230",
         "ShowroomGUID": "ef58695b-b6f1-4ea6-9fbd-330aaf99fa76",
@@ -1409,6 +1576,86 @@ RDA_NEW_UNITS = {
         "Faction": "PACT",
         "Nation": "DDR",
         "UpgradeFromUnit": "BRM_1_DDR",
+    },
+
+    # AA
+    ("Tunguska_2K22_SOV", 0): {
+        "GUID": "754cb6d1-5589-4057-814c-9a127959151e",
+        "InfantrySquadModuleGUID": "e3378a4d-6a58-4592-9e2b-b290b7a7f587",
+        "ShowroomGUID": "3ed5650e-94e8-481d-bd6f-493f3ad3c9d1",
+        "CadavreGUID": "970e011a-0e63-40e7-8fb0-65f26e8fd611",
+        "UnitId": 50112,
+        "NewName": "Tunguska_2K22_DDR",
+        "GameName": {
+            "display": "Fla-SFL 2S6",
+            "token": "KFYYRAVGBA",
+        },
+        "TypeUnit": {
+            "MotherCountry": "DDR",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AA_radar",
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Canon_AA",
+                "Canon_AA_Standard",
+                "GroundUnits",
+                "UNITE_Tunguska_2K22_DDR",
+                "Unite",
+            ],
+        },
+        "depictions": {
+            "new_mesh": True,
+        },
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 10600.0,
+            },
+            "TimeBetweenEachIdentifyRoll": 0.5,
+        },
+        "CommandPoints": 135,
+        "SpecialtiesList": [
+            "verygood_airoptics",
+        ],
+        "WeaponDescriptor": {
+            "Salves": {
+                "DCA_2_canons_2A38M_30mm": 21,
+            },
+        },
+        "ButtonTexture": "Tunguska_2K22_SOV",
+        "Divisions": {
+            "default": {
+                "cards": 1,
+            },
+        },
+        "availability": [4, 3, 0, 0],
+        "orders": [
+            "EOrderType/Stop",
+            "EOrderType/Move",
+            "EOrderType/FollowFormation",
+            "EOrderType/FollowUnit",
+            "EOrderType/QuickMove",
+            "EOrderType/Attack",
+            "EOrderType/FastMoveAndAttack",
+            "EOrderType/MoveAndAttack",
+            "EOrderType/Reverse",
+            "EOrderType/Shoot",
+            "EOrderType/ShootOnPosition",
+            "EOrderType/ShootOnPositionWithoutCorrection",
+            "EOrderType/AskForSupply",
+            "EOrderType/AIDefend",
+            "EOrderType/AIAttack",
+            "EOrderType/AIStop",
+        ],
+        "is_infantry": False,
+        "is_heavy_equipment": False,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "DDR",
+        "UpgradeFromUnit": "ZSU_57_2_DDR",
     },
 }
 # fmt: on

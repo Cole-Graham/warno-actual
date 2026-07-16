@@ -53,12 +53,16 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("AGM_S25LD", "ATGM", None, False): {
         "Ammunition": {
+            "hit_roll": {
+                "Idling": 60,
+                "Moving": 60,
+            },
             "parent_membr": {
                 "MaximumRangeGRU": 3500,
                 "AimingTime": 0.3,
                 "SupplyCost": 60.0,
-                "ProjectileSpeedGRU": 2800,
-                "MaxAccelerationGRU": 1400,
+                "ProjectileSpeedGRU": 3600,
+                "MaxAccelerationGRU": 1800,
             },
         },
         "MissileDescriptor": {
@@ -70,6 +74,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("AGM_Kh66", "ATGM", None, False): {
         "Ammunition": {
+            "hit_roll": {
+                "Idling": 45,
+                "Moving": 45,
+            },
             "parent_membr": {
                 "TimeBetweenTwoShots": 0.1,
                 "MaximumRangeGRU": 4550,
@@ -88,6 +96,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("AGM_Kh29T", "ATGM", None, False): { # 85
         "Ammunition": {
+            "hit_roll": {
+                "Idling": 60,
+                "Moving": 60,
+            },
             "parent_membr": {
                 "TimeBetweenTwoShots": 0.4,
                 "MaximumRangeGRU": 3500,
@@ -108,6 +120,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("AGM_Kh29L", "ATGM", None, False): { # 84
         "Ammunition": {
+            "hit_roll": {
+                "Idling": 60,
+                "Moving": 60,
+            },
             "parent_membr": {
                 "TimeBetweenTwoShots": 0.1,
                 "MaximumRangeGRU": 4550,
@@ -126,6 +142,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
 
     ("AGM_Kh23M", "ATGM", None, False): { # 77
         "Ammunition": {
+            "hit_roll": {
+                "Idling": 45,
+                "Moving": 45,
+            },
             "parent_membr": {
                 "TimeBetweenTwoShots": 0.1,
                 "MaximumRangeGRU": 4550,
@@ -144,6 +164,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("AGM_Kh25ML", "ATGM", None, False): {
         "Ammunition": {
+            "hit_roll": {
+                "Idling": 60,
+                "Moving": 60,
+            },
             "parent_membr": {
                 "TimeBetweenTwoShots": 0.1,
                 "MaximumRangeGRU": 4550,
@@ -233,6 +257,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("AGM_AGM65B_Maverick", "ATGM", None, False): { # 56
         "Ammunition": {
+            "hit_roll": {
+                "Idling": 60,
+                "Moving": 60,
+            },
             "parent_membr": {
                 "TimeBetweenTwoShots": 0.4,
                 "MaximumRangeGRU": 3500,
@@ -247,6 +275,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("AGM_AGM65D_Maverick", "ATGM", None, False): { # 56
         "Ammunition": {
+            "hit_roll": {
+                "Idling": 65,
+                "Moving": 65,
+            },
             "parent_membr": {
                 "TimeBetweenTwoShots": 0.4,
                 "MaximumRangeGRU": 3500,
@@ -261,6 +293,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
     
     ("AGM_AGM65E_Maverick", "ATGM", None, False): { # 56
         "Ammunition": {
+            "hit_roll": {
+                "Idling": 60,
+                "Moving": 60,
+            },
             "parent_membr": {
                 "TimeBetweenTwoShots": 0.1,
                 "MaximumRangeGRU": 4550,
@@ -425,7 +461,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Index": 25,
             },
             "hit_roll": {
-                "Moving": 50,
+                "Moving": 60,
             },
             "parent_membr": {
                 "TypeCategoryName": "'" + "JTOYRAARTS" + "'",
@@ -755,8 +791,37 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    ("AGM_AJ_168", "ATGM", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 45,
+                "Moving": 45,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 0.1,
+                "MaximumRangeGRU": 4550,
+                "ProjectileSpeedGRU": 3600,
+                "MaxAccelerationGRU": 1800,
+                "TimeBetweenTwoSalvos": 0.1,
+                "SupplyCost": 120.00
+            },
+        },
+        "WeaponDescriptor": {
+            "SalvoLengths": [2],
+        },
+        "MissileDescriptor": {
+            "MaxSpeedGRU": 3600,
+            "MaxAccelerationGRU": 1800,
+            "AutoGyr": 0.8726646, # 50 degrees
+        },
+    },
+    
     ("AGM_AS30", "ATGM", None, False): {
         "Ammunition": {
+            "hit_roll": {
+                "Idling": 45,
+                "Moving": 45,
+            },
             "parent_membr": {
                 "TimeBetweenTwoShots": 0.1,
                 "MaximumRangeGRU": 4550,

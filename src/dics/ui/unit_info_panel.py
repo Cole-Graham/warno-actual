@@ -17,9 +17,9 @@ UNIT_INFO_PANEL_DATA = {
                 "size, up to a maximum of 48%."
                 "\n\nLosing a soldier does NOT dynamically increase the level of damage reduction, "
                 "In other words, a 12 strength squad at half health is still treated as if it "
-                "had full health. This means sending in severely damaged squads in to help fight "
+                "had full health. This means sending severely damaged squads into a fight "
                 "can be very inefficient, as opposed to pulling them back and reinforcing them "
-                "supply."
+                "with supply."
             ),
         },
     },

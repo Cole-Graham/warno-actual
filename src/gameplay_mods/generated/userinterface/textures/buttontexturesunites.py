@@ -1,17 +1,35 @@
 """Functions for modifying ButtonTexturesUnites.ndf"""
 
+import re
 from typing import Any
+
 from src.constants.new_units import NEW_UNITS
 from src.utils.logging_utils import setup_logger
 
 
 logger = setup_logger(__name__)
 
+_FILENAME_FROM_MAP_STR = re.compile(
+    r"FileName\s*=\s*(\"[^\"]+\"|'[^']+')",
+)
+
+
 def edit_gen_ui_buttontexturesunites(source_path: Any) -> None:
     """GameData/Generated/UserInterface/Textures/ButtonTexturesUnites.ndf"""
-    
+
     _handle_new_units(source_path)
-    
+
+
+def _texture_filename_from_entry(texture_entry: Any) -> str:
+    """Resolve FileName from a vanilla MAP row or a newly-added MAP string."""
+    if isinstance(texture_entry, str):
+        match = _FILENAME_FROM_MAP_STR.search(texture_entry)
+        if not match:
+            raise ValueError(f"Could not parse FileName from texture entry: {texture_entry!r}")
+        return match.group(1)
+    return texture_entry.by_key("~/ComponentState/Normal").v.by_member("FileName").v
+
+
 def _handle_new_units(source_path: Any) -> None:
     """Handle new units for ButtonTexturesUnites.ndf"""
 
@@ -29,12 +47,12 @@ def _handle_new_units(source_path: Any) -> None:
 
         # Get the texture filename either from ButtonTexture override or donor unit
         if "ButtonTexture" in edits:
-            # Use specified texture from another unit
+            # Use specified texture from another unit (may be a new unit added earlier this pass)
             specific_texture_map = textures_map.by_key(f'"Texture_Button_Unit_{edits["ButtonTexture"]}"').v
-            button_texture = specific_texture_map.by_key("~/ComponentState/Normal").v.by_member("FileName").v
+            button_texture = _texture_filename_from_entry(specific_texture_map)
         else:
             # Use donor unit's texture
-            button_texture = donor_texture_map.by_key("~/ComponentState/Normal").v.by_member("FileName").v
+            button_texture = _texture_filename_from_entry(donor_texture_map)
 
         # Create new texture entry
         new_entry_key = f'"Texture_Button_Unit_{unit_name}"'

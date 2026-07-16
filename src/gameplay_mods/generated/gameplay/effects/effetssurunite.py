@@ -27,6 +27,7 @@ from src.constants.effects import (
     MEDIUM_EQUIP_PENALTY_SF_EFFECT,
     NO_SPRINT_MORALE_EFFECT,
     NO_SWIFT_EFFECT,
+    RELOAD_PENALTY_EFFECT,
     SWIFT_EFFECT,
     SWIFT_OK_EFFECT,
 )
@@ -79,6 +80,7 @@ def edit_gen_gp_effects_effetssurunite(source_path) -> None:
             source_path.insert(i, MEDIUM_EQUIP_PENALTY_EFFECT)
             source_path.insert(i, MEDIUM_EQUIP_PENALTY_SF_EFFECT)
             source_path.insert(i, MEDIUM_EQUIP_PENALTY_FLOOR_TAG_EFFECT)
+            source_path.insert(i, RELOAD_PENALTY_EFFECT)
             break
         
     # Edit Choc effect

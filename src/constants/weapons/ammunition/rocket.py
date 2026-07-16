@@ -17,7 +17,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "RadiusSplashSuppressDamagesGRU": 44,
                 # "TimeBetweenTwoShots": 0.5,
                 # "TimeBetweenTwoFx": 0.5,
-                "SupplyCost": 96.0,
             },
         },
     },
@@ -44,7 +43,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoFx": 0.2,
                 "RadiusSplashPhysicalDamagesGRU": 21,
                 "RadiusSplashSuppressDamagesGRU": 44,
-                "SupplyCost": 128.0,
+                "SupplyCost": 60.0,
             },
         },
     },
@@ -61,7 +60,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoFx": 0.2,
                 "RadiusSplashPhysicalDamagesGRU": 21,
                 "RadiusSplashSuppressDamagesGRU": 44,
-                "SupplyCost": 192.0,
+                "SupplyCost": 90.0,
             },
         },
     },
@@ -79,7 +78,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 0.75,
                 "SuppressDamages": 75,
-                "SupplyCost": 108.0,
             },
         },
     },
@@ -99,12 +97,31 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "PhysicalDamages": 0.75,
                 "SuppressDamages": 75,
                 "TimeBetweenTwoSalvos": 2.0,
-                "SupplyCost": 108.0,
+                "SupplyCost": 30.0,
             },
         },
     },
     
     ("RocketAir_SNEB_68mm_salvolength36", "rocket", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 15,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2275,
+                "RadiusSplashPhysicalDamagesGRU": 14,
+                "RadiusSplashSuppressDamagesGRU": 21,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
+                "PhysicalDamages": 0.75,
+                "SuppressDamages": 75,
+                "NbSalvosShootOnPosition": 1,
+            },
+        },
+    },
+
+    ("RocketAir_SNEB_68mm_avion_salvolength36", "rocket", "RocketAir_SNEB_68mm_salvolength36", True): {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 20,
@@ -118,7 +135,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoFx": 0.1,
                 "PhysicalDamages": 0.75,
                 "SuppressDamages": 75,
-                "SupplyCost": 114.0,
+                "SupplyCost": 60.0,
                 "NbSalvosShootOnPosition": 1,
             },
         },
@@ -149,6 +166,44 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
+    ("RocketAir_SNEB_68mm_avion_salvolength12", "rocket", "RocketAir_SNEB_68mm_salvolength12", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2625,
+                "RadiusSplashPhysicalDamagesGRU": 14,
+                "RadiusSplashSuppressDamagesGRU": 21,
+                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoFx": 0.1,
+                "PhysicalDamages": 0.75,
+                "SuppressDamages": 75,
+                "SupplyCost": 20.0,
+            },
+        },
+    },
+
+    ("RocketAir_SNEB_68mm_avion_salvolength38", "rocket", "RocketAir_SNEB_68mm_salvolength38", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2625,
+                "RadiusSplashPhysicalDamagesGRU": 14,
+                "RadiusSplashSuppressDamagesGRU": 21,
+                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoFx": 0.1,
+                "PhysicalDamages": 0.75,
+                "SuppressDamages": 75,
+                "SupplyCost": 60.0,
+            },
+        },
+    },
+
     ("RocketAir_S5_57mm_salvolength8", "rocket", None, False): { # 627
         "Ammunition": {
             "parent_membr": {
@@ -156,7 +211,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "RadiusSplashSuppressDamagesGRU": 15,  
                 "TimeBetweenTwoShots": 0.2,
                 "TimeBetweenTwoFx": 0.2,
-                "SupplyCost": 16.0,
             },
         },
     },
@@ -168,7 +222,74 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "RadiusSplashSuppressDamagesGRU": 15,  
                 "TimeBetweenTwoShots": 0.2,
                 "TimeBetweenTwoFx": 0.2,
-                "SupplyCost": 32.0,
+            },
+        },
+    },
+
+    ("RocketAir_S5_57mm_avion_salvolength8", "rocket", "RocketAir_S5_57mm_salvolength8", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2450,
+                "RadiusSplashPhysicalDamagesGRU": 9,
+                "RadiusSplashSuppressDamagesGRU": 15,
+                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoFx": 0.1,
+                "SupplyCost": 15.0,
+            },
+        },
+    },
+
+    ("RocketAir_S5_57mm_avion_salvolength16", "rocket", "RocketAir_S5_57mm_salvolength16", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2450,
+                "RadiusSplashPhysicalDamagesGRU": 9,
+                "RadiusSplashSuppressDamagesGRU": 15,
+                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoFx": 0.1,
+                "SupplyCost": 25.0,
+            },
+        },
+    },
+
+    ("RocketAir_S5_57mm_avion_salvolength64", "rocket", "RocketAir_S5_57mm_salvolength64", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2450,
+                "RadiusSplashPhysicalDamagesGRU": 9,
+                "RadiusSplashSuppressDamagesGRU": 15,
+                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoFx": 0.1,
+                "SupplyCost": 50.0,
+            },
+        },
+    },
+
+    ("RocketAir_S5_57mm_avion_salvolength96", "rocket", "RocketAir_S5_57mm_salvolength96", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2450,
+                "RadiusSplashPhysicalDamagesGRU": 9,
+                "RadiusSplashSuppressDamagesGRU": 15,
+                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoFx": 0.1,
+                "SupplyCost": 70.0,
             },
         },
     },
@@ -186,7 +307,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoShots": 0.1,
                 "TimeBetweenTwoFx": 0.1,
                 "ShotsCountPerSalvo": 32,
-                "SupplyCost": 128.0,
+                "SupplyCost": 35.0,
                 "NbSalvosShootOnPosition": 2,
                 "SimultaneousShotsCount": 2,
                 "AffichageMunitionParSalve": 32,
@@ -195,6 +316,23 @@ weapons: Dict[WeaponKey, WeaponData] = {
     },
 
      ("RocketAir_Grom_57mm_salvolength16", "rocket", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 15,
+            },                
+            "parent_membr": {
+                "MaximumRangeGRU": 2275,
+                "RadiusSplashPhysicalDamagesGRU": 9,
+                "RadiusSplashSuppressDamagesGRU": 15,  
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
+                "AffichageMunitionParSalve": 16,
+            },
+        },
+    },
+
+    ("RocketAir_Grom_57mm_avion_salvolength16", "rocket", "RocketAir_Grom_57mm_salvolength16", True): {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 20,
@@ -207,10 +345,84 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoShots": 0.1,
                 "TimeBetweenTwoFx": 0.1,
                 "ShotsCountPerSalvo": 32,
-                "SupplyCost": 64.0,
+                "SupplyCost": 25.0,
                 "NbSalvosShootOnPosition": 2,
                 "SimultaneousShotsCount": 2,
                 "AffichageMunitionParSalve": 16,
+            },
+        },
+    },
+
+    ("RocketAir_122_JROF_L_122mm_avion_salvolength4", "rocket", "RocketAir_122_JROF_L_122mm_salvolength4", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2625,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
+                "SupplyCost": 40.0,
+            },
+        },
+    },
+
+    ("RocketAir_CRV7_70mm_avion_salvolength38", "rocket", "RocketAir_CRV7_70mm_salvolength38", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2625,
+                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoFx": 0.1,
+                "SupplyCost": 60.0,
+            },
+        },
+    },
+
+    ("RocketAir_HVAR_127mm_avion_salvolength8", "rocket", "RocketAir_HVAR_127mm_salvolength8", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2625,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
+                "SupplyCost": 50.0,
+            },
+        },
+    },
+
+    ("RocketAir_TBrandt_100mm_avion_salvolength8", "rocket", "RocketAir_TBrandt_100mm_salvolength8", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2625,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
+                "SupplyCost": 40.0,
+            },
+        },
+    },
+
+    ("RocketAir_122_JROF_L_122mm_salvolength54", "rocket", "RocketAir_122_JROF_L_122mm_x54_avion", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 15,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2275,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
             },
         },
     },
@@ -219,12 +431,30 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "Caliber": ("60kg TNTe", "IFSVBUYZTU"),
-                "MaximumRangeGRU": 2625,
+                "MaximumRangeGRU": 2275,
                 "RadiusSplashPhysicalDamagesGRU": 90,
                 "RadiusSplashSuppressDamagesGRU": 120,
                 "PhysicalDamages": 7.2,
                 "SuppressDamages": 420,
                 "SupplyCost": 80.0,
+            },
+        },
+    },
+
+    ("RocketAir_S25O_420mm_avion_salvolength2", "rocket", "RocketAir_S25O_420mm_salvolength2", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "Caliber": ("60kg TNTe", "IFSVBUYZTU"),
+                "MaximumRangeGRU": 2625,
+                "RadiusSplashPhysicalDamagesGRU": 90,
+                "RadiusSplashSuppressDamagesGRU": 120,
+                "PhysicalDamages": 7.2,
+                "SuppressDamages": 420,
+                "SupplyCost": 60.0,
             },
         },
     },
@@ -237,7 +467,42 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "RadiusSplashSuppressDamagesGRU": 80,
                 "PhysicalDamages": 6.0,
                 "SuppressDamages": 390, 
-                "SupplyCost": 64.0,
+                "SupplyCost": 80.0,
+            },
+        },
+    },
+
+    ("RocketAir_S24_240mm_avion_salvolength2", "rocket", "RocketAir_S24_240mm_salvolength2", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "Caliber": ("30kg TNTe", "YCGKZDIBDZ"),
+                "MaximumRangeGRU": 2625,
+                "RadiusSplashPhysicalDamagesGRU": 60,
+                "RadiusSplashSuppressDamagesGRU": 80,
+                "PhysicalDamages": 6.0,
+                "SuppressDamages": 390,
+                "SupplyCost": 60.0,
+            },
+        },
+    },
+
+    ("RocketAir_S24_240mm_salvolength4", "rocket", "RocketAir_S24_240mm_salvolength2", True): {
+        "Ammunition": {
+            "parent_membr": {
+                "Caliber": ("30kg TNTe", "YCGKZDIBDZ"),
+                "MaximumRangeGRU": 2275,
+                "RadiusSplashPhysicalDamagesGRU": 60,
+                "RadiusSplashSuppressDamagesGRU": 80,
+                "PhysicalDamages": 6.0,
+                "SuppressDamages": 390,
+                "SupplyCost": 120.0,
+                "ShotsCountPerSalvo": 4,
+                "NbSalvosShootOnPosition": 1,
+                "AffichageMunitionParSalve": 4,
             },
         },
     },
@@ -251,7 +516,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "RadiusSplashSuppressDamagesGRU": 80,
                 "PhysicalDamages": 6.0,
                 "SuppressDamages": 390,
-                "SupplyCost": 128.0,
+                "SupplyCost": 80.0,
                 "ShotsCountPerSalvo": 4,
                 "NbSalvosShootOnPosition": 1,
                 "AffichageMunitionParSalve": 4,
@@ -263,12 +528,47 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "parent_membr": {
                 "Caliber": ("30kg TNTe", "YCGKZDIBDZ"),
+                "MaximumRangeGRU": 2275,
+                "RadiusSplashPhysicalDamagesGRU": 60,
+                "RadiusSplashSuppressDamagesGRU": 80,
+                "PhysicalDamages": 6.0,
+                "SuppressDamages": 390,
+                "SupplyCost": 100.0,
+            },
+        },
+    },
+
+    ("RocketAir_S24_240mm_avion_salvolength3", "rocket", "RocketAir_S24_240mm_salvolength3", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "Caliber": ("30kg TNTe", "YCGKZDIBDZ"),
                 "MaximumRangeGRU": 2625,
                 "RadiusSplashPhysicalDamagesGRU": 60,
                 "RadiusSplashSuppressDamagesGRU": 80,
                 "PhysicalDamages": 6.0,
                 "SuppressDamages": 390,
-                "SupplyCost": 96.0,
+                "SupplyCost": 70.0,
+            },
+        },
+    },
+
+    ("RocketAir_S13_122mm_avion_salvolength20", "rocket", "RocketAir_S13_122mm_salvolength20", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 30,
+                "Moving": 30,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2625,
+                "RadiusSplashPhysicalDamagesGRU": 18,
+                "RadiusSplashSuppressDamagesGRU": 36,
+                "PhysicalDamages": 1.25,
+                "SuppressDamages": 125,
+                "SupplyCost": 120.0,
             },
         },
     },
@@ -313,12 +613,31 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "RadiusSplashSuppressDamagesGRU": 36,
                 "PhysicalDamages": 1.25,
                 "SuppressDamages": 125, 
-                "SupplyCost": 80.0,
+                "SupplyCost": 100.0,
             },
         },
     },
     
-    ("RocketAir_Hydra_70mm_salvolength76", "rocket", None, False): { # avion
+    ("RocketAir_Hydra_70mm_salvolength76", "rocket", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 15,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2275,
+                "RadiusSplashPhysicalDamagesGRU": 14,
+                "RadiusSplashSuppressDamagesGRU": 21,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
+                "PhysicalDamages": 0.75,
+                "SuppressDamages": 75,
+                "SupplyCost": 228.0,
+            },
+        },
+    },
+
+    ("RocketAir_Hydra_70mm_avion_salvolength76", "rocket", "RocketAir_Hydra_70mm_salvolength76", True): {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 20,
@@ -332,11 +651,31 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoFx": 0.1,
                 "PhysicalDamages": 0.75,
                 "SuppressDamages": 75,
-                "SupplyCost": 228.0,
+                "SupplyCost": 140.0,
             },
         },
     },
     
+    ("RocketAir_Hydra_70mm_salvolength38", "rocket", "RocketAir_Hydra_70mm_x38_avion", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 15,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2275,
+                "RadiusSplashPhysicalDamagesGRU": 14,
+                "RadiusSplashSuppressDamagesGRU": 21,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
+                "PhysicalDamages": 0.75,
+                "SuppressDamages": 75,
+                "SupplyCost": 114.0,
+                "SimultaneousShotsCount": 1,
+            },
+        },
+    },
+
     ("RocketAir_Hydra_70mm_x38_avion", "rocket", None, False): {
         "Ammunition": {
             "hit_roll": {
@@ -351,8 +690,31 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoFx": 0.1,
                 "PhysicalDamages": 0.75,
                 "SuppressDamages": 75,
-                "SupplyCost": 114.0,
+                "SupplyCost": 60.0,
                 "SimultaneousShotsCount": 6,
+            },
+        },
+    },
+
+    ("RocketAir_Hydra_70mm_salvolength114", "rocket", "RocketAir_Hydra_70mm_x114_avion", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 15,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2275,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
+                "RadiusSplashPhysicalDamagesGRU": 70,
+                "RadiusSplashSuppressDamagesGRU": 105,
+                "PhysicalDamages": 1.8,
+                "SuppressDamages": 189,
+                "ShotsCountPerSalvo": 114,
+                "SupplyCost": 342.0,
+                "NbSalvosShootOnPosition": 1,
+                "SimultaneousShotsCount": 1,
+                "AffichageMunitionParSalve": 114,
             },
         },
     },
@@ -376,7 +738,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "SuppressDamages": 189,
                 "TargetOnlyOneUnitInDistrict": False,
                 "ShotsCountPerSalvo": 114,
-                "SupplyCost": 342.0,
+                "SupplyCost": 180.0,
                 "NbSalvosShootOnPosition": 1,
                 "SimultaneousShotsCount": 6,
                 "AffichageMunitionParSalve": 114,
@@ -421,6 +783,81 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
+    ("RocketAir_Hydra_70mm_avion_salvolength19", "rocket", "RocketAir_Hydra_70mm_salvolength19", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2625,
+                "RadiusSplashPhysicalDamagesGRU": 14,
+                "RadiusSplashSuppressDamagesGRU": 21,
+                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoFx": 0.1,
+                "PhysicalDamages": 0.75,
+                "SuppressDamages": 75,
+                "SupplyCost": 30.0,
+            },
+        },
+    },
+
+    ("RocketAir_Hydra_70mm_x31_M229", "rocket", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 15,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2275,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
+            },
+        },
+    },
+
+    ("RocketAir_Hydra_70mm_x31_M229_avion", "rocket", "RocketAir_Hydra_70mm_x31_M229", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2625,
+                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoFx": 0.1,
+            },
+        },
+    },
+
+    ("RocketAir_JRRO_130_130mm_salvolength8", "rocket", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 15,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2275,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
+            },
+        },
+    },
+
+    ("RocketAir_JRRO_130_130mm_avion_salvolength8", "rocket", "RocketAir_JRRO_130_130mm_salvolength8", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2625,
+                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoFx": 0.1,
+            },
+        },
+    },
+
     ("RocketAir_Hydra_70mm_salvolength14", "rocket", None, False): { # 608
         "Ammunition": {
             "hit_roll": {
@@ -460,7 +897,25 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoFx": 0.1,
                 "PhysicalDamages": 0.9,
                 "SuppressDamages": 90,
-                "SupplyCost": 480.0,
+            },
+        },
+    },
+
+    ("RocketAir_B8_80mm_avion_salvolength80", "rocket", "RocketAir_B8_80mm_salvolength80", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2450,
+                "RadiusSplashPhysicalDamagesGRU": 15,
+                "RadiusSplashSuppressDamagesGRU": 28,
+                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoFx": 0.1,
+                "PhysicalDamages": 0.9,
+                "SuppressDamages": 90,
+                "SupplyCost": 120.0,
             },
         },
     },
@@ -472,19 +927,18 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Moving": 20,
             },
             "parent_membr": {
-                "MaximumRangeGRU": 2450,
+                "MaximumRangeGRU": 2275,
                 "RadiusSplashPhysicalDamagesGRU": 15,
                 "RadiusSplashSuppressDamagesGRU": 28,
                 "TimeBetweenTwoShots": 0.1,
                 "TimeBetweenTwoFx": 0.1,
                 "PhysicalDamages": 0.9,
                 "SuppressDamages": 90,
-                "SupplyCost": 240.0,
             },
         },
     },
     
-    ("RocketAir_B8_80mm_salvolength40_avion", "rocket", None, False): { # 594
+    ("RocketAir_B8_80mm_avion_salvolength40", "rocket", None, False): { # 594
         "Ammunition": {
             "hit_roll": {
                 "Idling": 20,
@@ -498,7 +952,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoFx": 0.1,
                 "PhysicalDamages": 0.9,
                 "SuppressDamages": 90,
-                "SupplyCost": 240.0,
+                "SupplyCost": 80.0,
             },
         },
     },
@@ -517,7 +971,25 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 0.9,
                 "SuppressDamages": 90,
-                "SupplyCost": 120.0,
+            },
+        },
+    },
+
+    ("RocketAir_B8_80mm_avion_salvolength20", "rocket", "RocketAir_B8_80mm_salvolength20", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2450,
+                "RadiusSplashPhysicalDamagesGRU": 15,
+                "RadiusSplashSuppressDamagesGRU": 28,
+                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoFx": 0.1,
+                "PhysicalDamages": 0.9,
+                "SuppressDamages": 90,
+                "SupplyCost": 50.0,
             },
         },
     },
@@ -532,7 +1004,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoFx": 0.2,
                 "PhysicalDamages": 0.9,
                 "SuppressDamages": 90,
-                "SupplyCost": 60.0,
             },
         },
     },
@@ -551,7 +1022,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "TimeBetweenTwoFx": 0.1,
                 "PhysicalDamages": 0.9,
                 "SuppressDamages": 90,
-                "SupplyCost": 60.0,
+                "SupplyCost": 35.0,
             },
         },
     },

@@ -108,7 +108,7 @@ rfa_new_divs = {
         "standout_units": ["Leopard_2A1_RFA", "Fernspaher_RFA", "F4F_Phantom_II_LGB_RFA"],
         "summary_text": ("West German airborne and motorized division.", "SUMWGAMOT"),
         "history_text": ("West German Airborne / Motorized division.", "HISWGAMOT"),
-        "activation_points": 85,
+        "activation_points": 90,
         "type_texture": "infantryReg",
         "division_rules": [
             RFA_airborne_newdivisionrules,
@@ -176,7 +176,7 @@ rfa_new_divs = {
         "standout_units": ["Leopard_2A1_CMD_RFA", "Jager_PzF3_RFA", "Tornado_IDS_CLUS_RFA"],
         "summary_text": ("West German armored and motorized division.", "SUMWGARMT"),
         "history_text": ("West German Armored / Motorized division.", "HISWGARMT"),
-        "activation_points": 85,
+        "activation_points": 90,
         "type_texture": "armored",
         "division_rules": [
             RFA_armored_newdivisionrules,
@@ -217,7 +217,7 @@ rfa_new_divs = {
         "standout_units": ["TPZ_Fuchs_MILAN_RFA", "Jager_Carl_RFA", "G91_R3_Gina_NPL_RFA"],
         "summary_text": ("West German mechanized and motorized division.", "SUMWGMECT"),
         "history_text": ("West German Mechanized / Motorized division.", "HISWGMECT"),
-        "activation_points": 85,
+        "activation_points": 90,
         "type_texture": "infantryReg",
         "division_rules": [
             RFA_global_newdivisionrules,
@@ -236,7 +236,7 @@ rfa_new_divs = {
         "standout_units": ["TPZ_Fuchs_MILAN_2_RFA", "TankHunters_RFA", "Lars_2_RFA"],
         "summary_text": ("West German motorized division.", "SUMWGMOT"),
         "history_text": ("West German Motorized division.", "HISWGMOT"),
-        "activation_points": 100,
+        "activation_points": 105,
         "type_texture": "infantryReg",
         "division_rules": [
             RFA_motorized_newdivisionrules,

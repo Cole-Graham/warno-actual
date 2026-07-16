@@ -104,12 +104,28 @@ Some HOBS missiles require a helmet-mounted display (`_hmd`) for full off-boresi
 - **Handler:** [`weapon_descriptor/handlers/hobs_no_hmd.py`](src/gameplay_mods/generated/gameplay/gfx/weapon_descriptor/handlers/hobs_no_hmd.py).
 - **Ordering:** `apply_hobs_no_hmd_pattern_standard` runs on vanilla `WeaponDescriptor.ndf` rows **after** `vanilla_renames_weapondescriptor`, **before** `new_units_weapondescriptor` and `unit_edits_weapondescriptor`, so per-unit dict edits override. **New units** are not scanned here; set turret angles and ammo in `NEW_UNITS["WeaponDescriptor"]` instead. TBAGRU HAGRU attachment in `unit_edits_weapondescriptor` still runs afterward and can add `*_NoOBS_HAGRU` clones on existing units.
 
+### Air rocket platform (weapon descriptors)
+
+Dumbfire rockets (`Arme.Family == DamageFamily_roquette_ap`) must use **avion** ammo on planes and **non-avion** ammo on helicopters. Mixed vanilla loadouts (e.g. one B8 pod `_avion`, one not) are corrected in batch.
+
+- **Constants:** [`src/constants/unit_edits/standards/pattern/air_rocket_platform.py`](src/constants/unit_edits/standards/pattern/air_rocket_platform.py) — `AIR_ROCKET_PLATFORM_PAIRS` (`helo_ammo` ↔ `avion_ammo`, **same salvo length only**, distinct descriptors). A `_helo` suffix is just the non-avion name (same treatment as any other helo-side rocket). Missing siblings are authored in [`rocket.py`](src/constants/weapons/ammunition/rocket.py) (`is_new` donor clones), never auto-created at patch time and never self-paired. Intentional different-salvo remounts stay in `unit_edits`.
+- **Handler:** [`weapon_descriptor/handlers/air_rocket_platform.py`](src/gameplay_mods/generated/gameplay/gfx/weapon_descriptor/handlers/air_rocket_platform.py).
+- **Ordering:** `apply_air_rocket_platform_standard` runs **after** `unit_edits_weapondescriptor`, **before** `apply_helo_aa_turret_angles_pattern_standard`. Unpaired mounts log a warning. EffectTag is not rewritten. Ground RocketAir vehicles are skipped. **New units** are not scanned; set ammo in `NEW_UNITS` / constants.
+
 ### Shock no-resolute specialty (unit descriptors)
 
 Shock units receive `Capacite_resolute` via the Choc skill auto-add in `tcapacite.py`. They must **not** also carry the `_resolute` specialty tag, or the UI implies a stacked resolute bonus.
 
 - **Handler:** [`unite_descriptor/handlers/shock_no_resolute_specialty.py`](src/gameplay_mods/generated/gameplay/gfx/unite_descriptor/handlers/shock_no_resolute_specialty.py).
 - **Ordering:** `apply_shock_no_resolute_specialty_pattern_standard` runs **after** `unit_edits` and `new_units` so `SpecialtiesList` patches are applied first, then `_resolute` is stripped when the unit has the Choc skill or `_choc` specialty. `Capacite_resolute` from tcapacite is unchanged.
+
+### ATGM infantry team strength (unit descriptors)
+
+Dedicated ATGM infantry teams (`is_at_team` / `ATteam_` name) whose mounts include ammo with `TypeCategoryName` token `JTOYRAARTS` (`ANTI-TANK MISSILE`) get strength **4** with `infantry_equip_veryheavy`, otherwise **3**. Recoilless AT teams (rocket-launch / tank-gun TypeCategory) are excluded. Units with an explicit `"strength"` in `unit_edits` / `NEW_UNITS` are skipped.
+
+- **Constants:** [`src/constants/unit_edits/standards/pattern/atgm_infantry_team_strength.py`](src/constants/unit_edits/standards/pattern/atgm_infantry_team_strength.py).
+- **Handler:** [`unite_descriptor/handlers/atgm_infantry_team_strength.py`](src/gameplay_mods/generated/gameplay/gfx/unite_descriptor/handlers/atgm_infantry_team_strength.py).
+- **Ordering:** `apply_atgm_infantry_team_strength_pattern_standard` runs **after** `unit_edits` and `new_units` (so specialty adds are visible), **before** shock no-resolute. Writes `MaxPhysicalDamages` on `TBaseDamageModuleDescriptor` (weapon teams often have no `TInfantrySquadModuleDescriptor` / `SoldierCount`); updates `SoldierCount` and infantryWA armor Index when those modules exist.
 
 ### Artillery deployment time
 

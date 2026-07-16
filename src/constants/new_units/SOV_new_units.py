@@ -170,6 +170,9 @@ SOV_NEW_UNITS = {
     },
     
     ("T55A_CMD_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GUID": "ce816c42-84bd-4dd1-bdb1-2ac7ef346eed",
         "InfantrySquadModuleGUID": "d504f8c8-c90b-4e7a-a5d9-5409cc08fab9",
         "ShowroomGUID": "24505a1a-f485-46f5-b232-4c473533e889",
@@ -211,6 +214,9 @@ SOV_NEW_UNITS = {
     },
 
     ("T62M_CMD_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GUID": "c2ac3a2f-1057-4ec9-9899-7f393b33ac82",
         "InfantrySquadModuleGUID": "0dc2bcb7-29cc-4d6c-9f71-f6db00824499",
         "ShowroomGUID": "e6094770-c5e4-425c-971e-cc579665e64d",
@@ -265,6 +271,9 @@ SOV_NEW_UNITS = {
     },
 
     ("T62MD_CMD_SOV", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GUID": "81f3dffc-6d6b-4ae8-bd1d-71a93e7da2d6",
         "InfantrySquadModuleGUID": "39f721e9-7bc3-4d42-ba9b-1830253380e2",
         "ShowroomGUID": "cf476f51-97c1-4944-9dcd-2df24a002933",

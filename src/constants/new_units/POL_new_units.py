@@ -96,6 +96,9 @@ POL_NEW_UNITS = {
     },
 
     ("ASU_85_CMD_POL", 0): {  # ASU-85 CMD
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GUID": "c0194429-3a64-4e52-a9a7-67cec54592e2",
         "InfantrySquadModuleGUID": "6575d3ea-db2a-42bf-aff3-5bdcf3b50373",
         "ShowroomGUID": "c1ebe660-2108-429c-bf7f-24d8224510e5",
@@ -141,6 +144,9 @@ POL_NEW_UNITS = {
     },
 
     ("T55A_CMD_POL", 2): {  # T-54B CMD
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GUID": "23dd9821-54ed-4320-bd58-dce59331d9fc",
         "InfantrySquadModuleGUID": "15f04b2f-f19f-433d-a659-3801250e5ffc",
         "ShowroomGUID": "bf3555f0-d3af-4024-a8f9-980967b84cfd",
@@ -199,6 +205,9 @@ POL_NEW_UNITS = {
     },
 
     ("T55A_CMD_POL", 0): {  # T-55AD CV
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GUID": "f85c67f5-5738-43ff-bae2-a92bfa88d83d",
         "InfantrySquadModuleGUID": "6773a9af-c9e6-4d3f-a41c-953be75f966e",
         "ShowroomGUID": "2cf23742-85b4-4b75-a280-133aff0a63b6",
@@ -245,6 +254,9 @@ POL_NEW_UNITS = {
     },
 
     ("T55AM_Merida_CMD_POL", 0): {  # T-55AM Merida CV
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GUID": "0ed06908-888a-4535-881f-5e714b21a1e4",
         "InfantrySquadModuleGUID": "7c76c4fe-53a0-4508-ad01-2683a195fc34",
         "ShowroomGUID": "a9ce6acc-5f50-4994-8518-e1aa378f200b",
@@ -408,7 +420,7 @@ POL_NEW_UNITS = {
         "ShowroomGUID": "e07a7e81-164b-43b1-98a6-5ecf33509420",
         "CadavreGUID": "cbd9c1a8-134c-4521-b84e-605ed4d7af99",
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "UnitId": 50107,
@@ -554,7 +566,7 @@ POL_NEW_UNITS = {
                 "Infanterie",
                 "Infanterie_AT",
                 "Infanterie_Spec_Defense",
-                "UNITE_ATteam_FagotM_DDR",
+                "UNITE_ATteam_FagotM_POL",
                 "Unite"
             ],
         },
@@ -590,6 +602,83 @@ POL_NEW_UNITS = {
             },
         },
         "availability": [7, 5, 4, 0],
+        "max_speed": 20,
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/Attack', 'EOrderType/MoveAndAttack',
+                   'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load',
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": True,  # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": True,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "needs_transport": True,
+        "Faction": "PACT",
+        "Nation": "POL",
+        "alternatives_count": 2,
+        "servants": ("G_POL", "D_POL"),
+        "servant_types": {
+            "showroom": {
+                "G_POL": ["ATGMServantLeft"],
+                "D_POL": ["ATGMServantRight"]
+            },
+            "subdepictions": {
+                "G_POL": ["ATGMServantLeft"],
+                "D_POL": ["ATGMServantRight"]
+            },
+        }
+    },
+
+    ("Atteam_Konkurs_POL", 0): {
+        "GUID": "f86a4462-ade6-4339-945b-55563e0b4e0b",
+        "InfantrySquadModuleGUID": "e9cce533-8a65-4c2d-b518-047648a8dc89",
+        "ShowroomGUID": "cbee59ee-c3c2-453c-9272-c35726ed5d12",
+        "CadavreGUID": "9923c042-90f5-4711-9b3d-9661699f3cc9",
+        "UnitId": 50114,
+        "NewName": "ATteam_KonkursM_POL",
+        "GameName": {
+            "display": "PPK KONKURS-M",
+            "token": "PPKKONKURM",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_AT",
+                "Infanterie_Spec_Defense",
+                "UNITE_ATteam_KonkursM_POL",
+                "Unite"
+            ],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_inf_9M113M_KonkursM": 6,
+            },
+            "equipmentchanges": {
+                "replace": {
+                    "ATGM_9M113_Konkurs": {
+                        "new_weapon": "ATGM_inf_9M113M_KonkursM",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
+            },
+        },
+        "CommandPoints": 60,
+        "SpecialtiesList": [
+            'infantry_equip_heavy',
+        ],
+        "UpgradeFromUnit": "Atteam_Konkurs_POL",
+        "ButtonTexture": "Atteam_Konkurs_POL",
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
+        "availability": [4, 3, 0, 0],
         "max_speed": 20,
         "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/Attack', 'EOrderType/MoveAndAttack',
                    'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load',
@@ -685,6 +774,83 @@ POL_NEW_UNITS = {
             },
         },
         "UpgradeFromUnit": "Atteam_Fagot_Para_POL",
+    },
+
+    ("Atteam_Fagot_Para_POL", 1): {
+        "GUID": "f07d9cd4-4797-4bc2-a8a8-4d383bb225cf",
+        "InfantrySquadModuleGUID": "ddde78dd-c4aa-42cb-8d1a-63c3a6e95532",
+        "ShowroomGUID": "c59a9c79-ff8d-43c1-935c-622250309a34",
+        "CadavreGUID": "5296025d-b402-4709-88ce-a4e6bd2684ef",
+        "UnitId": 50116,
+        "NewName": "Atteam_KonkursM_Para_POL",
+        "GameName": {
+            "display": "SPADO. PPK KONKURS-M",
+            "token": "SPADOKONKM",
+        },
+        "TagSet": {
+            "overwrite_all": [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_AT",
+                "Infanterie_Spec_Defense",
+                "UNITE_Atteam_KonkursM_Para_POL",
+                "Unite"
+            ],
+        },
+        "WeaponDescriptor": {
+            "Salves": {
+                "ATGM_inf_9M113M_KonkursM": 6,
+            },
+            "equipmentchanges": {
+                "replace": {
+                    "ATGM_9K111M_Faktoriya": {
+                        "new_weapon": "ATGM_inf_9M113M_KonkursM",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": True,
+                    },
+                },
+            },
+        },
+        "CommandPoints": 60,
+        "SpecialtiesList": [
+                '_para',
+                'infantry_equip_heavy'
+            ],
+        "availability": [0, 4, 3, 0],
+        "max_speed": 20,
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/Attack', 'EOrderType/MoveAndAttack', 
+                   'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 
+                   'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "is_infantry": True, # False for Javelin LML (unique exception), towed units.
+        "is_heavy_equipment": True,
+        "is_ground_vehicle": True,
+        "is_aerial": False,
+        "is_unarmed": False,
+        "Faction": "PACT",
+        "Nation": "POL",
+        "alternatives_count": 2,
+        "servants": ("G_Para_POL", "D_Para_POL"),
+        "servant_types": {
+            "showroom": {
+                "G_Para_POL": ["ATGMServantLeft"],
+                "D_Para_POL": ["ATGMServantRight"]
+            },
+            "subdepictions": {
+                "G_Para_POL": ["ATGMServantLeft"],
+                "D_Para_POL": ["ATGMServantRight"]
+            },
+        },
+        "UpgradeFromUnit": "Atteam_Konkurs_Para_POL",
+        "ButtonTexture": "Atteam_Fagot_Para_POL",
+        "Divisions": {
+            "default": {
+                "cards": 2,
+            },
+        },
     },
 
     ("HMGteam_PKM_para_POL", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
@@ -943,6 +1109,9 @@ POL_NEW_UNITS = {
 
     # Tanks
     ("T55A_POL", 0): {  # T-55A Reco
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GUID": "ee1e751b-f138-4448-a701-8e6aeb29d670",
         "InfantrySquadModuleGUID": "5e63ade3-1dfd-4399-a1d7-ae3e9a875d1f",
         "ShowroomGUID": "181367c7-616a-4a17-8504-13ccb8b264e6",

@@ -489,8 +489,12 @@ uk_unit_edits = {
         "strength": 7,
         "WeaponDescriptor": {
             "equipmentchanges": {
+                "animate": {
+                    "MMG_inf_L7A2_7_62mm": False,
+                },
                 "quantity": {
-                    "FM_L85A1": 6,
+                    "FM_L85A1": 5,
+                    "MMG_inf_L7A2_7_62mm": 2,
                 },
                 "replace": {
                     "RocketInf_M72A3_LAW_66mm": {
@@ -1025,6 +1029,18 @@ uk_unit_edits = {
         },
         "availability": [10, 7, 0, 0],
         "WeaponDescriptor": {
+            "equipmentchanges": {
+                "animate": {
+                    "MMG_inf_L7A2_7_62mm": False,
+                },
+                "replace": {
+                    "SAW_L86A1_5_56mm": {
+                        "new_weapon": "MMG_inf_L7A2_7_62mm",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
+                },
+            },
             "Salves": {
                 "RocketInf_Carl_Gustav_salvolength7": 1,
             },
@@ -1119,7 +1135,7 @@ uk_unit_edits = {
     },
     
     "Guards_UK": {
-        "CommandPoints": 35,
+        "CommandPoints": 30,
         "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1137,7 +1153,7 @@ uk_unit_edits = {
     },
     
     "Guards_CarlG_UK": {
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "GameName": {
             "display": "GUARDS [CG]",
         },
@@ -1437,7 +1453,7 @@ uk_unit_edits = {
     # UK TANK
     "Centurion_Mk13_CMD_UK": {
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 65,
@@ -1479,7 +1495,7 @@ uk_unit_edits = {
     
     "FV4201_Chieftain_CMD_UK": {
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 135,
@@ -1524,7 +1540,7 @@ uk_unit_edits = {
     
     "Challenger_1_Mk1_CMD_UK": {
         "capacities": {
-            "add_capacities": ["LDR_TNK"],
+            "add_capacities": ["LDR_TNK", "Reload_Penalty"],
         },
         "modules_remove": ["TCommanderModuleDescriptor"],
         "CommandPoints": 195,
@@ -1749,6 +1765,9 @@ uk_unit_edits = {
     },
     
     "Centurion_AVRE_105_UK": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 60,
         "availability": [8, 6, 0, 0],
         "WeaponDescriptor": {
@@ -1759,6 +1778,9 @@ uk_unit_edits = {
     },
     
     "FV4003_Centurion_AVRE_UK": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 65,
         "availability": [8, 6, 0, 0],
         "WeaponDescriptor": {
@@ -1769,6 +1791,9 @@ uk_unit_edits = {
     },
     
     "FV4003_Centurion_AVRE_ROMOR_UK": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 80,
         "armor": {
             "top": (3, None),
@@ -1783,6 +1808,9 @@ uk_unit_edits = {
     },
     
     "Centurion_Mk13_UK": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 65,
         "availability": [10, 0, 0, 0],
         "WeaponDescriptor": {
@@ -1799,6 +1827,7 @@ uk_unit_edits = {
         },
         "availability": [10, 7, 0, 0],
         "capacities": {
+            "add_capacities": ["Reload_Penalty"],
             "remove_capacities": ["Instructor_TNK"],
         },
         "SpecialtiesList": {
@@ -1815,6 +1844,9 @@ uk_unit_edits = {
     },
     
     "FV4201_Chieftain_Mk6_UK": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 85,
         "armor": {
             "top": (4, None),
@@ -1830,6 +1862,9 @@ uk_unit_edits = {
     },
     
     "FV4201_Chieftain_Mk9_UK": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 115,
         "armor": {
             "top": (4, None),
@@ -1844,7 +1879,11 @@ uk_unit_edits = {
         },
     },
     
-    "FV4201_Chieftain_UK": { # Mk10 
+    "FV4201_Chieftain_UK": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
+ # Mk10 
         "CommandPoints": 135,
         "armor": {
             "top": (4, None),
@@ -1859,6 +1898,9 @@ uk_unit_edits = {
     },
 
     "Challenger_1_Mk1_UK": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GameName": {
             "display": "CHALLENGER Mk.2",
         },
@@ -1887,6 +1929,9 @@ uk_unit_edits = {
     },
     
     "Challenger_1_Mk3_UK": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 220,
         "armor": {
             "top": (4, None),
@@ -2025,6 +2070,9 @@ uk_unit_edits = {
     },
     
     "FV4201_Chieftain_Mk11_UK": {
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "CommandPoints": 150,
         "armor": {
             "top": (4, None),
@@ -2649,7 +2697,7 @@ uk_unit_edits = {
     },
     
     "Buccaneer_S2B_ATGM_UK": {
-        "CommandPoints": 150,
+        "CommandPoints": 170,
         "optics": {
             "VisionRangesGRU": {
                 "EVisionRange/Standard": 4550.0,
@@ -2776,7 +2824,7 @@ uk_unit_edits = {
     },
 
     "Jaguar_CLU_UK": {  # 4x BL755 CLU
-        "CommandPoints": 205,
+        "CommandPoints": 245,
         "availability": [0, 2, 0, 0],
     },
 
@@ -2872,13 +2920,45 @@ uk_unit_edits = {
     },
     
     "F4_Phantom_GR2_UK": {
-        "CommandPoints": 245,
+        "CommandPoints": 265,
         "availability": [0, 0, 2, 0],
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 13250,
+            },
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": {
+                    "AA_Skyflash": {
+                        "new_weapon": "AA_Skyflash_ReflexPriorityFalse",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
+            },
+        },
     },
     
     "F4_Phantom_GR2_HE_UK": { # 6x mk18 513kg, 2x Skyflash
         "CommandPoints": 230,
         "availability": [0, 0, 2, 0],
+        "optics": {
+            "OpticalStrengths": {
+                "EOpticalStrength/HighAltitude": 13250,
+            },
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "replace": {
+                    "AA_Skyflash": {
+                        "new_weapon": "AA_Skyflash_ReflexPriorityFalse",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
+            },
+        },
     },
 
     "F4_Phantom_AA_F3_UK": { # 4x Skyflash, 4x AIM-9M

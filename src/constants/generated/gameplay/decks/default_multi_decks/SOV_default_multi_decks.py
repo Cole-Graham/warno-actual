@@ -26,7 +26,7 @@ sov_default_multi_decks = {
         ],
         "Tanks": [
             {"Descriptor_Unit_T80U_Obr89_SOV": {"vet": 2}},
-            {"Descriptor_Unit_T80U_Obr89_SOV": {"vet": 3}},
+            {"Descriptor_Unit_T80UD_SOV": {"vet": 3}},
             {"Descriptor_Unit_T72B1_SOV": {"vet": 1}},
         ],
         "Recon": [

@@ -132,6 +132,9 @@ RFA_NEW_UNITS = {
     },
     
     ("M48A2GA2_CMD_RFA", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GUID": "e4443ed2-614d-4eaf-99ca-8ce9bf486283",
         "InfantrySquadModuleGUID": "7c4a5580-e66f-4926-8ae4-7456553057bb",
         "ShowroomGUID": "cd4880e5-8ad9-4f4d-8454-26da9d917872",
@@ -178,6 +181,9 @@ RFA_NEW_UNITS = {
     },
 
     ("Leopard_1A1_CMD_RFA", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GUID": "3cee73a7-234b-4b47-84d3-a35e3f52891f",
         "InfantrySquadModuleGUID": "e9d1445a-742e-457f-8e5b-3bc31fb276e2",
         "ShowroomGUID": "3a99d004-e456-4073-affa-24914a292bfe",
@@ -216,6 +222,9 @@ RFA_NEW_UNITS = {
     },
 
     ("Leopard_1A5_CMD_RFA", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GUID": "37216cad-18db-44aa-ba1c-c8fcf1a05def",
         "InfantrySquadModuleGUID": "647fcc32-7d1b-497d-ae7e-e2ac6ea9057e",
         "ShowroomGUID": "9e16e901-1f3d-4e1a-b9c1-1d963b5514f7",
@@ -254,6 +263,9 @@ RFA_NEW_UNITS = {
     },
 
     ("Leopard_2A3_CMD_RFA", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GUID": "2f9e285d-8ccc-4aab-9878-66c6750749ba",
         "InfantrySquadModuleGUID": "c03b6e76-7441-4743-b5a7-b03528c1c20a",
         "ShowroomGUID": "9293e7f6-73c5-4440-8cc8-93d6a7f2a0f1",
@@ -295,6 +307,9 @@ RFA_NEW_UNITS = {
     },
 
     ("Leopard_2A4_CMD_RFA", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
+        "capacities": {
+            "add_capacities": ["Reload_Penalty"],
+        },
         "GUID": "0ed0ddc0-8e0e-432e-9330-b44cd5dd2403",
         "InfantrySquadModuleGUID": "c8fdacd7-65fe-4e60-8202-c07fca2efa32",
         "ShowroomGUID": "34cff9f0-7936-4f57-b650-fd8b236a72c9",

@@ -131,6 +131,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 350,
+                "TimeBetweenTwoSalvos": 8.0,
                 "InterfaceWeaponTexture": "'Texture_Interface_Weapon_milan_wa'",
             },
         },
@@ -153,6 +154,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 350,
+                "TimeBetweenTwoSalvos": 8.0,
                 "InterfaceWeaponTexture": "'Texture_Interface_Weapon_milan_wa'",
             },
         },
@@ -462,6 +464,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 311,
+                "TimeBetweenTwoSalvos": 8.0,
                 "InterfaceWeaponTexture": "'Texture_Interface_Weapon_fagot_wa'",
             },
         },
@@ -578,8 +581,14 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "Arme": {
                 "Index": 25
             },
+            "hit_roll": {
+                "Idling": 55,
+                "Moving": 45,
+            },
             "parent_membr": {
+                "TraitsToken": ['MOTION', 'manual', 'HEAT'],
                 "ProjectileSpeedGRU": 544,
+                "CanShootWhileMoving": True,
                 "InterfaceWeaponTexture": "'Texture_Interface_Weapon_agona_wa'",
             },
         },
@@ -660,7 +669,13 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "Arme": {
                 "Index": 22,
             },
+            "hit_roll": {
+                "Idling": 60,
+                "Moving": 50,
+            },
             "parent_membr": {
+                "TraitsToken": ['MOTION', 'manual', 'HEAT'],
+                "CanShootWhileMoving": True,
                 "MaximumRangeGRU": 2800,
                 "ProjectileSpeedGRU": 622,
                 "InterfaceWeaponTexture": "'Texture_Interface_Weapon_refleks_wa'",
@@ -684,7 +699,13 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
             "display": "9M119M Invar",
             "token": "YUXMIRHNPX",
+            "hit_roll": {
+                "Idling": 60,
+                "Moving": 50,
+            },
             "parent_membr": {
+                "TraitsToken": ['MOTION', 'manual', 'TANDEM'],
+                "CanShootWhileMoving": True,
                 "MaximumRangeGRU": 2800,
                 "ProjectileSpeedGRU": 622,
                 "InterfaceWeaponTexture": "'Texture_Interface_Weapon_invar_wa'",
@@ -807,6 +828,7 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "parent_membr": {
                 # "Caliber": ("2.7kg HEAT", "HNXYVDFTUM"),
                 "ProjectileSpeedGRU": 389,
+                "TimeBetweenTwoSalvos": 8.0,
                 "InterfaceWeaponTexture": "'Texture_Interface_Weapon_konkurs_wa'",
             },
         },
@@ -828,9 +850,12 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "token": "ILNHEHTSQR",
             "hit_roll": {
                 "Idling": 50,
+                "Moving": 40,
             },
             "parent_membr": {
+                "TraitsToken": ['MOTION', 'manual', 'HEAT'],
                 "ProjectileSpeedGRU": 739,
+                "CanShootWhileMoving": True,
                 "InterfaceWeaponTexture": "'Texture_Interface_Weapon_kobra_wa'",
             },
         },
@@ -852,9 +877,12 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "token": "CUZYCCVUIO",
             "hit_roll": {
                 "Idling": 50,
+                "Moving": 40,
             },
             "parent_membr": {
                 "ProjectileSpeedGRU": 739,
+                "CanShootWhileMoving": True,
+                "TraitsToken": ['MOTION', 'manual', 'HEAT'],
                 "InterfaceWeaponTexture": "'Texture_Interface_Weapon_kobra_wa'",
                 "TandemCharge": False, # For inverted tandem logic
             },
