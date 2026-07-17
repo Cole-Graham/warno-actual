@@ -104,8 +104,11 @@ def _is_replace_spec_noop(
     if not meshes_known:
         return False
 
-    old_fe = _dd_lookup(all_fire_effects, spec.old_weapon)
-    new_fe = _dd_lookup(all_fire_effects, spec.new_weapon)
+    # Prefer bare fire-effect stems from ReplaceSpec (magazine suffixes stripped).
+    old_fe_key = spec.old_fire_effect or spec.old_weapon
+    new_fe_key = spec.new_fire_effect or spec.new_weapon
+    old_fe = _dd_lookup(all_fire_effects, old_fe_key)
+    new_fe = _dd_lookup(all_fire_effects, new_fe_key)
     if old_fe is None or new_fe is None:
         return False
     return old_fe == new_fe

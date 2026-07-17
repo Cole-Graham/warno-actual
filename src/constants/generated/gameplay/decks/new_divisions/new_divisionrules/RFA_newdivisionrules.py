@@ -228,6 +228,7 @@ RFA_mechanized_newdivisionrules = {
         ("DCA_FK20_2_20mm_Zwillinge_RFA", 1, [10, 7, 0, 0], ["Iltis_trans_RFA"]),
     ],
     "infantry": [
+        ("Hochgebirgjager_RFA", 1, [0, 0, 4, 3], ["UH1D_RFA"]),
         ("Panzergrenadier_CMD_RFA", 1, [0, 0, 5, 4], ["M113A1G_RFA", "Marder_1A1_RFA", "Marder_1A3_RFA"]),
         ("Jager_CMD_RFA", 1, [0, 0, 7, 5], ["M113A1G_RFA", "M113A1G_MILAN_RFA"]),
         ("Engineers_CMD_RFA", 1, [0, 0, 7, 5], ["M113A1G_RFA"]),
@@ -282,6 +283,7 @@ RFA_mechanized_newdivisionrules = {
         ("Iltis_MILAN_RFA", 1, [12, 9, 0, 0]),
     ],
     "recon": [
+        ("Fernspaher_RFA", 1, [0, 0, 4, 3], ["UH1D_RFA"]),
         ("Scout_RFA", 2, [8, 6, 0, 0], ["Iltis_trans_RFA", "Iltis_reco_RFA"]),
         ("Scout_Heimat_RFA", 1, [8, 0, 0, 0], ["Unimog_trans_RFA", "M113A1G_reco_RFA"]),
         ("BGS_hvy_RFA", 1, [8, 0, 0, 0], ["Unimog_trans_RFA", "M113A1G_reco_RFA"]),

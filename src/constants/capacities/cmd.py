@@ -1,0 +1,28 @@
+"""CMD capacity descriptors."""
+
+CMD_UNIT_CAPACITY = (
+    'export Capacite_CMD_UNIT is TCapaciteDescriptor'
+    '('
+    '    DescriptorId = GUID:{5e7079e4-6cb9-468e-b0b4-b45b13652325}'
+    '    Name = "CMD_UNIT"'
+    '    StackPolicy = ~/CapacityStackPolicy_never'
+    '    Trigger = ~/CapacityTriggerType_automatic'
+    '    TargetTeamFilter = ~/CapaciteTargetFilter_joueur'
+    '    InfluenceMapAlliance = ~/AllianceRelation/vide'
+    '    RangeGRU = 900'
+    '    CastTime = 0.00'
+    '    CheckVisibility = True'
+    '    CanBeCastFromTransport = False'
+    '    TargetEffect = ~/UnitEffect_Instructor'
+    '    CapacityDuration = -1.00'
+    '    TargetInBuilding = True'
+    '    TargetInTransport = False'
+    '    TargetInSelf = False'
+    '    TargetMySelf = False'
+    '    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_soloselected | ~/CapaciteFeedbackActivationMask_allied'
+    '    DisplayRangeColor = RGBA[248, 248, 248, 85]'
+    '    DisplayRangeThickness = 0.20'
+    '    AllowedTargetTags = []'
+    '    ForbiddenTargetTags = ["Canon_AA", "CMD_Unit", "Avion"]'
+    ')'
+)

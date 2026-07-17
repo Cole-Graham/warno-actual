@@ -102,6 +102,29 @@ class InfantryMagazineSalvoTests(unittest.TestCase):
             8,
         )
 
+    def test_salves_override_via_replace_donor_for_carl_gustav(self) -> None:
+        """Salves may name Carl Gustav while replace donor is still M67."""
+        edits = {
+            "WeaponDescriptor": {
+                "Salves": {
+                    "RocketInf_Carl_Gustav_salvolength7": 1,
+                },
+                "equipmentchanges": {
+                    "replace": {
+                        "RocketInf_M67_RCL_90mm": {
+                            "new_weapon": "RocketInf_Carl_Gustav",
+                            "swap_fire_effect": True,
+                            "depiction_baked_in": False,
+                        },
+                    },
+                },
+            },
+        }
+        self.assertEqual(
+            _salves_override_for_ammo(edits, "RocketInf_Carl_Gustav"),
+            7,
+        )
+
     def test_unify_shared_pool_magazine_length(self) -> None:
         self.assertEqual(unify_shared_pool_magazine_length([6, 8]), 8)
         self.assertEqual(unify_shared_pool_magazine_length([8, None]), 8)  # type: ignore[list-item]

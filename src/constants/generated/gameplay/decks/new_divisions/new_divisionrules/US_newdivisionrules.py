@@ -138,12 +138,12 @@ US_armored_newdivisionrules = {
         ("DCA_M167_Vulcan_20mm_nonPara_US", 1, [10, 7, 0, 0], ["M1038_Humvee_US"]),
     ],
     "infantry": [
-        ("Rangers_CMD_US", 1, [0, 0, 0, 3], ["M1038_Humvee_US", "UH1H_Huey_US", "UH60A_Black_Hawk_US"]),
+        # ("Rangers_CMD_US", 1, [0, 0, 0, 3], ["M1038_Humvee_US", "UH1H_Huey_US", "UH60A_Black_Hawk_US"]),
         ("Engineer_CMD_US", 1, [0, 0, 4, 3], ["M35_trans_US", "M113A3_US"]),
         ("Rifles_half_CMD_US", 1, [0, 0, 7, 5], ["M998_Humvee_US", "M113A3_US", "M2A1_Bradley_IFV_US"]),
         ("Rifles_half_Cav_CMD_US", 1, [0, 0, 7, 5], ["M1038_Humvee_US", "M2A1_Bradley_IFV_US"]),
-        ("Ranger_US", 1, [0, 0, 4, 3], ["M1038_Humvee_US", "UH1H_Huey_US", "UH60A_Black_Hawk_US"]),
-        ("Ranger_Dragon_US", 1, [0, 0, 4, 3], ["M1038_Humvee_US", "UH1H_Huey_US", "UH60A_Black_Hawk_US"]),
+        # ("Ranger_US", 1, [0, 0, 4, 3], ["M1038_Humvee_US", "UH1H_Huey_US", "UH60A_Black_Hawk_US"]),
+        # ("Ranger_Dragon_US", 1, [0, 0, 4, 3], ["M1038_Humvee_US", "UH1H_Huey_US", "UH60A_Black_Hawk_US"]),
         ("Engineers_US", 1, [0, 6, 4, 0], ["M35_trans_US", "M113A3_US"]),
         ("Engineers_Dragon_US", 1, [0, 6, 4, 0], ["M35_trans_US", "M113A3_US"]),
         ("Engineers_Flash_US", 1, [0, 8, 6, 0], ["M998_Humvee_US", "M113A3_US"]),
@@ -194,7 +194,7 @@ US_armored_newdivisionrules = {
         ("M901_TOW_US", 1, [10, 7, 0, 0]),
     ],
     "recon": [
-        ("LRRP_US", 1, [0, 0, 4, 3], ["M998_Humvee_US", "M1025_Humvee_scout_US", "M1025_Humvee_AGL_nonPara_US", "UH60A_Black_Hawk_US"]),
+        # ("LRRP_US", 1, [0, 0, 4, 3], ["M998_Humvee_US", "M1025_Humvee_scout_US", "M1025_Humvee_AGL_nonPara_US", "UH60A_Black_Hawk_US"]),
         ("Scout_US", 2, [8, 6, 0, 0], ["M151_MUTT_trans_US", "M151A2_scout_US", "M113_ACAV_US"]),
         ("Scout_Cav_US", 1, [7, 5, 0, 0], ["M998_Humvee_US", "M1025_Humvee_scout_US", "M1025_Humvee_AGL_nonPara_US", "UH60A_Black_Hawk_US"]),
         ("Cav_Scout_Dragon_M3A2_US", 1, [3, 2, 0, 0], ["M3A2_Bradley_CFV_US"]),
@@ -446,7 +446,7 @@ US_mechanized_newdivisionrules = {
         ("M151A2_TOW_NG_US", 1, [10, 0, 0, 0]),
     ],
     "recon": [
-        ("LRRP_US", 1, [0, 0, 4, 3], ["M998_Humvee_US", "M1025_Humvee_scout_US", "UH60A_Black_Hawk_US"]),
+        ("LRRP_US", 1, [0, 0, 4, 3], ["UH60A_Black_Hawk_US"]),
         ("Scout_US", 2, [8, 6, 0, 0], ["M151_MUTT_trans_US", "M151A2_scout_US", "M113_ACAV_US", "UH1H_Huey_US"]),
         ("Cav_Scout_Dragon_M3A2_US", 1, [3, 2, 0, 0], ["M3A2_Bradley_CFV_US"]),
         ("Cav_Scout_Dragon_M3A1_US", 1, [4, 3, 0, 0], ["M3A1_Bradley_CFV_US"]),

@@ -7,9 +7,10 @@ countable small arms, all mounts specialist / occupied / team_mg).
 
 See ``docs/validation/infantry_small_arms_vs_strength.md``.
 
-Known limitation: deep ``WeaponDescriptor.turrets.MountedWeapons`` insert/replace
-edits that add ammo not present in vanilla ``game_db["weapons"]`` may be missed.
-``equipmentchanges.replace``, ``quantity``, and ``insert`` are applied.
+``WeaponDescriptor.turrets.MountedWeapons`` ``remove`` and ``Ammunition`` member
+patches are applied (same order as the weapon-descriptor handler: before
+``equipmentchanges.replace``). ``MountedWeapons.insert`` that adds ammo absent
+from vanilla ``game_db["weapons"]`` may still be missed.
 
 A rifle squad stripped of all small arms but retaining only AT mounts (all
 ``specialist``, zero ``countable``) is skipped as a weapon-team-shaped loadout.
@@ -330,9 +331,47 @@ def resolve_infantry_mounts_by_turret(
         equipment_changes = wd.get("equipmentchanges", {})
         turrets_edits = wd.get("turrets", {})
 
-    if isinstance(turrets_edits, dict) and "remove" in turrets_edits:
-        for raw_idx in turrets_edits["remove"]:
-            mounts_by_turret.pop(int(raw_idx), None)
+    if isinstance(turrets_edits, dict):
+        # Per-turret MountedWeapons edits run before whole-turret remove and
+        # equipmentchanges.replace (matches unit_edits_weapondescriptor order).
+        for turret_key, turret_edits in turrets_edits.items():
+            if turret_key == "remove" or not isinstance(turret_edits, dict):
+                continue
+            try:
+                turret_idx = int(turret_key)
+            except (TypeError, ValueError):
+                continue
+            turret_mounts = mounts_by_turret.get(turret_idx)
+            if turret_mounts is None:
+                continue
+            mw_edits = turret_edits.get("MountedWeapons")
+            if not isinstance(mw_edits, dict):
+                continue
+            if "remove" in mw_edits:
+                for weapon_index in sorted(
+                    (int(i) for i in mw_edits["remove"]),
+                    reverse=True,
+                ):
+                    if 0 <= weapon_index < len(turret_mounts):
+                        turret_mounts.pop(weapon_index)
+            for ammo_name, ammo_edits in mw_edits.items():
+                if ammo_name in ("insert", "remove") or not isinstance(ammo_edits, dict):
+                    continue
+                new_ammo_raw = ammo_edits.get("Ammunition")
+                if not isinstance(new_ammo_raw, str):
+                    continue
+                new_ammo = new_ammo_raw
+                if new_ammo.startswith("$/GFX/Weapon/Ammo_"):
+                    new_ammo = new_ammo[len("$/GFX/Weapon/Ammo_"):]
+                new_ammo = _strip_ammo_suffixes(new_ammo)
+                target = _strip_ammo_suffixes(str(ammo_name))
+                for i, (base, qty) in enumerate(turret_mounts):
+                    if base == target or renames_old_new.get(base, base) == target:
+                        turret_mounts[i] = [new_ammo, qty]
+                        break
+        if "remove" in turrets_edits:
+            for raw_idx in turrets_edits["remove"]:
+                mounts_by_turret.pop(int(raw_idx), None)
 
     replace_specs = normalize_replace(equipment_changes.get("replace"))
     for spec in replace_specs:

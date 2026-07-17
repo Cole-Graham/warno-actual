@@ -3,10 +3,14 @@ from typing import Any, Dict, List, Tuple
 
 from src import ndf
 from src.constants.unit_edits import load_unit_edits
-from src.constants.unit_edits.replace_schema import normalize_replace
+from src.constants.unit_edits.replace_schema import fire_effect_stem_from_ammo, normalize_replace
 from src.constants.weapons import LIGHT_AT_AMMO
 from src.constants.weapons import ammunitions as ammos
 from src.constants.weapons import missiles
+from src.data.fire_effect_validation import (
+    ensure_fire_effect_exists,
+    unit_skips_infantry_fire_registry,
+)
 
 # Damage families that mark a missile as the "anti-helo" half of a HAGRU pair.
 # Any ammo declaring one of these families gets a paired ``_HAGRU`` variant
@@ -1081,8 +1085,17 @@ def _apply_weapon_replacements(weapon_descr: Any, equipment_changes: Dict, game_
                 if replace_fire_effect:
                     fire_effect_val = strip_quotes(weapon.v.by_m("EffectTag").v).replace("FireEffect_", "")
                     if old_fire_effect == fire_effect_val:
-                        weapon.v.by_m("EffectTag").v = "'" + f"FireEffect_{new_fire_effect}" + "'"
-                        logger.debug(f"Replaced fire effect{old_fire_effect} with {new_fire_effect}")
+                        fe_stem = fire_effect_stem_from_ammo(new_fire_effect or new_weapon)
+                        ensure_fire_effect_exists(
+                            new_fire_effect or new_weapon,
+                            game_db=game_db,
+                            context=f"{unit_name} replace {current} -> {new_weapon}",
+                            require_infantry_registry=not unit_skips_infantry_fire_registry(
+                                unit_name, None, game_db,
+                            ),
+                        )
+                        weapon.v.by_m("EffectTag").v = "'" + f"FireEffect_{fe_stem}" + "'"
+                        logger.debug(f"Replaced fire effect{old_fire_effect} with {fe_stem}")
                 found = True
                 break
             else:

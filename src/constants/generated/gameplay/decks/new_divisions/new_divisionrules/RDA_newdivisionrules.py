@@ -64,6 +64,7 @@ RDA_airborne_newdivisionrules = {
         ("AT_D44_85mm_DDR", 1, [9, 7, 5, 0], ["W50_LA_A_DDR"]),
     ],
     "recon": [
+        ("Scout_LRRP_DDR", 2, [0, 0, 4, 3], ["W50_LA_A_DDR", "BTR_60_reco_DDR"]),
         ("KSK18_DDR", 1, [0, 0, 4, 3], ["W50_LA_A_DDR"]),
         ("Fallschirmjager_FalseFlag_DDR", 1, [0, 0, 4, 3], ["M35_trans_DDR"]),
         ("Fallschirmjager_FlaseFlag_Demo_DDR", 1, [0, 0, 4, 3], ["M35_trans_DDR"]),
@@ -225,6 +226,9 @@ RDA_mechanized_newdivisionrules = {
         ("DCA_ZU_23_2_DDR", 1, [10, 7, 0, 0], ["MTLB_trans_DDR"]),
     ],
     "infantry": [
+        ("Luftsturmjager_CMD_DDR", 1, [0, 0, 4, 3], ["Mi_2_trans_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"]),
+        ("Luftsturmjager_DDR", 1, [0, 0, 4, 3], ["Mi_2_trans_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"]),
+        ("Luftsturmjager_Metis_DDR", 1, [0, 0, 4, 3], ["Mi_2_trans_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"]),
         ("MotRifles_CMD_DDR", 1, [0, 0, 7, 5], ["BMP_1_SP1_DDR", "BMP_1_SP2_DDR", "BMP_1P_DDR", "BMP_1P_Konkurs_DDR", "BMP_2_DDR"]),
         ("Engineers_CMD_DDR", 1, [0, 0, 5, 4], ["BTR_50_DDR"]),
         ("Reserve_CMD_DDR", 1, [0, 7, 5, 0], ["BTR_50_DDR"]),
@@ -292,6 +296,7 @@ RDA_mechanized_newdivisionrules = {
         ("AT_ZiS2_57mm_DDR", 1, [14, 0, 0, 0], ["W50_LA_A_DDR"]),
     ],
     "recon": [
+        ("Scout_Wach_DDR", 2, [0, 0, 4, 3], ["Mi_2_trans_DDR"]),
         ("HvyScout_DDR", 1, [6, 4, 0, 0], ["W50_LA_A_DDR", "BMP_1P_reco_DDR", "Mi_2_trans_DDR"]),
         ("HvyScout_RPG7VL_DDR", 2, [6, 4, 0, 0], ["W50_LA_A_DDR", "BMP_1P_reco_DDR", "Mi_2_trans_DDR"]),
         ("Scout_DDR", 1, [8, 6, 0, 0], ["UAZ_469_trans_DDR", "UAZ_469_Reco_DDR", "UAZ_469_AGL_Grenzer_DDR"]),

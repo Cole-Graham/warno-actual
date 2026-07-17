@@ -4,16 +4,6 @@
 
 # fmt: off
 usa_unit_edits = {
-    # Infantry armor reference
-    "Infantry_armor_reference": {
-        "armor": {
-            "front": (None, "ResistanceFamily_infanterieWA"),
-            "sides": (None, "ResistanceFamily_infanterieWA"),
-            "rear": (None, "ResistanceFamily_infanterieWA"),
-            "top": (None, "ResistanceFamily_infanterieWA"),
-        },
-    },
-    
     # US LOG
     "OH58C_CMD_US": {
         "CommandPoints": 115,
@@ -174,7 +164,6 @@ usa_unit_edits = {
     # US INF
     "Rifles_half_CMD_US": {
         "CommandPoints": 25,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "FIRETEAM",
         },
@@ -224,7 +213,6 @@ usa_unit_edits = {
     
     "Rifles_half_Cav_CMD_US": {
         "CommandPoints": 25,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "CAV. TROOPERS",
         },
@@ -281,7 +269,6 @@ usa_unit_edits = {
 
     "Rifles_CMD_US": {
         "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "MECH. RIFLES",
         },
@@ -326,7 +313,6 @@ usa_unit_edits = {
     },
 
     "NatGuard_CMD_US": {
-        "armor": "Infantry_armor_reference",
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": {
@@ -346,7 +332,6 @@ usa_unit_edits = {
 
     "Engineer_CMD_US": {
         "CommandPoints": 45,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "ENGINEERS",
         },
@@ -409,7 +394,6 @@ usa_unit_edits = {
 
     "Rangers_CMD_US": {
         "CommandPoints": 70,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "RANGERS",
         },
@@ -460,6 +444,13 @@ usa_unit_edits = {
                         "swap_fire_effect": False,
                         "depiction_baked_in": False,
                     },
+                    # Vanilla turret 2 mounts M67 HEAT + HE on one AmmoBoxIndex.
+                    # Swap HEAT to Carl Gustav (single ammo); drop HE companion below.
+                    "RocketInf_M67_RCL_90mm": {
+                        "new_weapon": "RocketInf_Carl_Gustav",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
                 },
                 "quantity": {
                     "M16A1_Carbine": 8,
@@ -468,22 +459,15 @@ usa_unit_edits = {
             "turrets": {
                 2: {
                     "MountedWeapons": {
-                        "RocketInf_M67_RCL_90mm": {
-                            # For some reason I have the prefix hardcoded into the script when changing ammunition
-                            # ($/GFX/Weapon/Ammo_)
-                            "Ammunition": "RocketInf_Carl_Gustav",
-                            "EffectTag": '"FireEffect_RocketInf_Carl_Gustav"',
-                        },
-                        # Insertions are handled first so factor that into the indices, and keep in mind
-                        # that the list is sorted in reverse order to prevent index-shifting issues when
-                        # removing multiple weapons
+                        # Drop M67 HE (index 1) so Carl Gustav is alone on the ammo box.
+                        # Remove runs before equipmentchanges.replace in the handler.
                         "remove": [1],
                     },
                 },
             },
             "Salves": {
                 "M16A1_Carbine": 7,
-                "RocketInf_M67_RCL_90mm_salvolength7": 1,
+                "RocketInf_Carl_Gustav_salvolength7": 1,
             },
         },
         "remove_zone_capture": None,
@@ -491,7 +475,6 @@ usa_unit_edits = {
 
     "Airborne_Engineer_CMD_US": {
         "CommandPoints": 50,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "AB ENGINEERS",
         },
@@ -538,7 +521,6 @@ usa_unit_edits = {
 
     "Airborne_CMD_US": {
         "CommandPoints": 55,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "AIRBORNE",
         },
@@ -588,7 +570,6 @@ usa_unit_edits = {
 
     "AeroRifles_CMD_US": {
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "AERO-RIFLES",
         },
@@ -626,7 +607,6 @@ usa_unit_edits = {
 
     "Aero_half_CMD_US": { # Not in use (redundant with AB FIRETEAM units)
         "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "AERO-FIRETEAM",
         },
@@ -672,7 +652,6 @@ usa_unit_edits = {
 
     "AeroEngineer_CMD_US": {
         "CommandPoints": 55,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "AERO-ENGINEERS",
         },
@@ -710,7 +689,6 @@ usa_unit_edits = {
 
     "GreenBerets_CMD_US": {
         "CommandPoints": 70,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "GREEN BERETS",
         },
@@ -764,7 +742,6 @@ usa_unit_edits = {
     
     "MP_CMD_US": {
         "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "MP LEADER",
         },
@@ -802,7 +779,6 @@ usa_unit_edits = {
 
     "Rifles_USMC_CMD_US": {
         "CommandPoints": 25,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "USMC RIFLEMEN",
         },
@@ -850,7 +826,6 @@ usa_unit_edits = {
 
     "Engineer_USMC_CMD_US": {
         "CommandPoints": 50,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "USMC ENGINEERS",
         },
@@ -910,7 +885,6 @@ usa_unit_edits = {
         "GameName": {
             "display": "ENGINEERS",
         },
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -946,7 +920,6 @@ usa_unit_edits = {
 
     "NatGuard_Engineers_US": {
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -975,7 +948,6 @@ usa_unit_edits = {
 
     "AeroEngineers_US": {
         "CommandPoints": 50,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -999,7 +971,6 @@ usa_unit_edits = {
         "GameName": {
             "display": "AIRBORNE ENGINEERS",
         },
-        "armor": "Infantry_armor_reference",
         "availability": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1023,7 +994,6 @@ usa_unit_edits = {
             "display": "ENGINEERS [FLASH]",
         },
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -1053,7 +1023,6 @@ usa_unit_edits = {
             "display": "AB ENGINEERS [FLASH]",
         },
         "CommandPoints": 45,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1093,7 +1062,6 @@ usa_unit_edits = {
             "display": "N.G. ENGINEERS [FLAM]",
         },
         "CommandPoints": 50,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1126,7 +1094,6 @@ usa_unit_edits = {
             "display": "N.G. ENGINEERS [M67]",
         },
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1149,7 +1116,6 @@ usa_unit_edits = {
             "display": "ENGINEERS [DRAGON]",
         },
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -1188,7 +1154,6 @@ usa_unit_edits = {
         "GameName": {
             "display": "USMC ENGINEERS",
         },
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -1227,7 +1192,6 @@ usa_unit_edits = {
             "display": "AIRBORNE [DRAGON]",
         },
         "CommandPoints": 45,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 6, 4, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -1240,7 +1204,6 @@ usa_unit_edits = {
             "display": "AIRBORNE MP PATROL",
         },
         "CommandPoints": 20,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 12, 9, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1253,7 +1216,6 @@ usa_unit_edits = {
             "display": "MP PATROL",
         },
         "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 12, 9, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1331,7 +1293,6 @@ usa_unit_edits = {
             "display": "AB MP PATROL [M67]",
         },
         "CommandPoints": 25,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 9, 7, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -1349,7 +1310,6 @@ usa_unit_edits = {
             "display": "MP PATROL [M67]",
         },
         "CommandPoints": 25,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 9, 7, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -1366,7 +1326,6 @@ usa_unit_edits = {
     
     "MP_Combat_USAF_US": { # USAF SECURITY
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 8, 6, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1376,7 +1335,6 @@ usa_unit_edits = {
     
     "MP_Patrol_USAF_US": { # USAF SECURITY PATROL
         "CommandPoints": 60,
-        "armor": "Infantry_armor_reference",
         "max_speed": 20,
         "availability": [0, 7, 5, 0],
         "SpecialtiesList": {
@@ -1391,7 +1349,6 @@ usa_unit_edits = {
     
     "Security_USMC_US": {
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "availability": [0, 8, 6, 0],
         "SpecialtiesList": {
@@ -1406,7 +1363,6 @@ usa_unit_edits = {
     
     "LightRifles_LAW_US": {
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1416,7 +1372,6 @@ usa_unit_edits = {
     
     "LightRifles_Viper_US": {
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1426,7 +1381,6 @@ usa_unit_edits = {
     
     "LightRifles_RCL_US": {
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -1448,7 +1402,6 @@ usa_unit_edits = {
     
     "LightRifles_AT4_US": {
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1466,7 +1419,6 @@ usa_unit_edits = {
         "GameName": {
             "display": "LIGHT RIFLES [DRAGON]",
         },
-        "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -1479,7 +1431,6 @@ usa_unit_edits = {
         "GameName": {
             "display": "USMC RIFLEMEN [LAW]",
         },
-        "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1500,7 +1451,6 @@ usa_unit_edits = {
         "GameName": {
             "display": "USMC RIFLEMEN [AT4]",
         },
-        "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1518,7 +1468,6 @@ usa_unit_edits = {
         "GameName": {
             "display": "USMC RIFLEMEN [DRAGON]",
         },
-        "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -1531,7 +1480,6 @@ usa_unit_edits = {
             "display": "GUNNERS",
         },
         "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1541,7 +1489,6 @@ usa_unit_edits = {
 
     "Airborne_HMG_US": {  # AIRBORNE GUNNERS
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 7, 5, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1554,7 +1501,6 @@ usa_unit_edits = {
             "display": "USMC GUNNERS",
         },
         "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1582,7 +1528,6 @@ usa_unit_edits = {
             "display": "AIR CAV TROOPERS",
         },
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1592,7 +1537,6 @@ usa_unit_edits = {
 
     "AeroRifles_USMC_US": {  # USMC AERO-RIFLEMEN
         "CommandPoints": 25,
-        "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "strength": 6,
@@ -1614,7 +1558,6 @@ usa_unit_edits = {
             "display": "DISMOUNT. TROOPERS",
         },
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "availability": [12, 9, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1635,7 +1578,6 @@ usa_unit_edits = {
             "display": "MECH. RIFLES [DRAGON]",
         },
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -1653,7 +1595,6 @@ usa_unit_edits = {
             "display": "MECH. RIFLES [LAW]",
         },
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1677,7 +1618,6 @@ usa_unit_edits = {
             "display": "FIRETEAM [LAW]",
         },
         "CommandPoints": 25,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 69,
@@ -1705,7 +1645,6 @@ usa_unit_edits = {
             "display": "FIRETEAM [AT4]",
         },
         "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -1745,7 +1684,6 @@ usa_unit_edits = {
             "display": "CAV. TROOPERS [AT4]",
         },
         "CommandPoints": 25,
-        "armor": "Infantry_armor_reference",
         "availability": [12, 9, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1763,7 +1701,6 @@ usa_unit_edits = {
             "display": "CAV. TROOPERS [DRAGON]",
         },
         "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
         "availability": [12, 9, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -1781,7 +1718,6 @@ usa_unit_edits = {
             "display": "RANGERS",
         },
         "CommandPoints": 60,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1815,7 +1751,6 @@ usa_unit_edits = {
             "display": "RANGERS [DRAGON]",
         },
         "CommandPoints": 65,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -1842,7 +1777,6 @@ usa_unit_edits = {
             "display": "AIRBORNE",
         },
         "CommandPoints": 45,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 3,
@@ -1867,7 +1801,6 @@ usa_unit_edits = {
             "display": "AB FIRETEAM [AT4]",
         },
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 3,
@@ -1902,7 +1835,6 @@ usa_unit_edits = {
             "display": "AB FIRETEAM [DRAGON]",
         },
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1942,7 +1874,6 @@ usa_unit_edits = {
             "display": "AERO-RIFLES",
         },
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1960,7 +1891,6 @@ usa_unit_edits = {
             "display": "AERO-RIFLES [DRAGON]",
         },
         "CommandPoints": 50,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "add": ["US_82nd_Airborne"],
             "is_transported": True,
@@ -1995,7 +1925,6 @@ usa_unit_edits = {
             "display": "AERO-FIRETEAM [AT4]",
         },
         "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 3,
@@ -2020,7 +1949,6 @@ usa_unit_edits = {
             "display": "AERO-RIFLES [AT4]",
         },
         "CommandPoints": 60,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -2040,7 +1968,6 @@ usa_unit_edits = {
             "display": "FIRETEAM [DRAGON]",
         },
         "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 69,
@@ -2072,7 +1999,6 @@ usa_unit_edits = {
         "GameName": {
             "display": "N.G. FIRETEAM [LAW]",
         },
-        "armor": "Infantry_armor_reference",
         "availability": [12, 0, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -2095,7 +2021,6 @@ usa_unit_edits = {
         "GameName": {
             "display": "N.G. FIRETEAM [DRAGON]",
         },
-        "armor": "Infantry_armor_reference",
         "availability": [12, 0, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -2123,7 +2048,6 @@ usa_unit_edits = {
         "GameName": {
             "display": "N.G. RIFLES [LAW]",
         },
-        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "availability": [12, 0, 0, 0],
         "SpecialtiesList": {
@@ -2150,7 +2074,6 @@ usa_unit_edits = {
         "GameName": {
             "display": "N.G. RIFLES [M67]",
         },
-        "armor": "Infantry_armor_reference",
         "max_speed": 20,
         "availability": [12, 0, 0, 0],
         "SpecialtiesList": {
@@ -2184,7 +2107,6 @@ usa_unit_edits = {
         "GameName": {
             "display": "N.G. RIFLES [DRAGON]",
         },
-        "armor": "Infantry_armor_reference",
         "max_speed": 20,
         "availability": [12, 0, 0, 0],
         "SpecialtiesList": {
@@ -2228,7 +2150,6 @@ usa_unit_edits = {
             "display": "AERO-FIRETEAM [DRAGON]",
         },
         "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -2250,7 +2171,6 @@ usa_unit_edits = {
     
     "Groupe_AT_US": {
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "availability": [10, 7, 0, 0],
         "Divisions": {
@@ -2310,7 +2230,6 @@ usa_unit_edits = {
 
     "Groupe_AT_USMC_US": { # This unit needs an overveiw, im not sure about it
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "strength": 6,
         "max_speed": 20,
         "availability": [0, 8, 6, 0],
@@ -2333,7 +2252,6 @@ usa_unit_edits = {
     
     "Navy_SEAL_US": {
         "CommandPoints": 70,
-        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "availability": [0, 0, 8, 6],
         "Divisions": {
@@ -2370,7 +2288,6 @@ usa_unit_edits = {
     
     "GreenBerets_US": {
         "CommandPoints": 45,
-        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "availability": [0, 0, 8, 6],
         "Divisions": {
@@ -2410,7 +2327,6 @@ usa_unit_edits = {
         },
         "availability": [0, 0, 0, 3],
         "max_speed": 26,
-        "armor": "Infantry_armor_reference",
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
@@ -4339,7 +4255,6 @@ usa_unit_edits = {
             "display": "AIRBORNE SCOUTS",
         },
         "CommandPoints": 25,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 7, 5, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -4357,7 +4272,6 @@ usa_unit_edits = {
             "display": "SCOUTS",
         },
         "CommandPoints": 20,
-        "armor": "Infantry_armor_reference",
         "availability": [8, 6, 0, 0],
         "Divisions": {
             "is_transported": True,
@@ -4419,7 +4333,6 @@ usa_unit_edits = {
     
     "Scout_LAI_USMC_US": {
         "CommandPoints": 25,
-        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "availability": [8, 6, 0, 0],
         "SpecialtiesList": {
@@ -4430,7 +4343,6 @@ usa_unit_edits = {
     
     "Scout_USMC_US": {
         "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "strength": 6,
         "availability": [8, 6, 0, 0],
@@ -4473,7 +4385,6 @@ usa_unit_edits = {
     "Scout_Cav_US": { # CAVALRY SCOUTS
         "CommandPoints": 30,
         "availability": [12, 9, 0, 0],
-        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -4518,7 +4429,6 @@ usa_unit_edits = {
     
     "Pathfinder_NG_US": {
         "CommandPoints": 25,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 0, 5, 4],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -4577,7 +4487,6 @@ usa_unit_edits = {
     },
 
     "HvyScout_NG_US": {
-        "armor": "Infantry_armor_reference",
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": {
@@ -4596,7 +4505,6 @@ usa_unit_edits = {
 
     "HvyScout_NG_Dragon_US": {
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "availability": [8, 0, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -4629,7 +4537,6 @@ usa_unit_edits = {
     "Scout_Aero_US": {
         "CommandPoints": 40,
         "availability": [0, 4, 3, 0],
-        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
@@ -4653,7 +4560,6 @@ usa_unit_edits = {
             "display": "LRS",
         },
         "CommandPoints": 70,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "Divisions": {
             "default": {
@@ -4690,7 +4596,6 @@ usa_unit_edits = {
     
     "LRRP_Aero_US": {
         "CommandPoints": 70,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 4, 3, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -4700,7 +4605,6 @@ usa_unit_edits = {
     
     "LRRP_FOLT_US": {
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -4710,7 +4614,6 @@ usa_unit_edits = {
     
     "ForceRecon_USMC_US": {
         "CommandPoints": 50,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -4733,7 +4636,6 @@ usa_unit_edits = {
     
     "DeltaForce_US": {
         "CommandPoints": 55,
-        "armor": "Infantry_armor_reference",
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
@@ -4759,7 +4661,6 @@ usa_unit_edits = {
         "GameName": {
             "display": "SNIPERS",
         },
-        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
@@ -4773,7 +4674,6 @@ usa_unit_edits = {
     
     "Sniper_USMC_US": {
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
@@ -4786,7 +4686,6 @@ usa_unit_edits = {
             "display": "SNIPERS [M82]",
         },
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -4805,7 +4704,6 @@ usa_unit_edits = {
             "token": "XQYDBWCBAP",
         },
         "CommandPoints": 55,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "remove": ["US_82nd_Airborne"],
             "default": {
@@ -4846,7 +4744,6 @@ usa_unit_edits = {
 
     "MANPAD_Stinger_C_Aero_US": {
         "CommandPoints": "MANPAD_Stinger_C_US",
-        "armor": "Infantry_armor_reference",
         "max_speed": 20,
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -4863,7 +4760,6 @@ usa_unit_edits = {
     },
 
     "MANPAD_Stinger_C_para_US": {
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "AB STINGER C",
             "token": "VVEXCPXVQB",
@@ -4896,7 +4792,6 @@ usa_unit_edits = {
         "GameName": {
             "display": "USMC STINGER C",
         },
-        "armor": "Infantry_armor_reference",
         "availability": [7, 5, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -4922,7 +4817,6 @@ usa_unit_edits = {
     
     "MANPAD_Stinger_NG_US": {
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "availability": [9, 0, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -4943,7 +4837,6 @@ usa_unit_edits = {
     
     "MANPAD_Redeye_US": {
         "CommandPoints": 20,
-        "armor": "Infantry_armor_reference",
         "availability": [12, 0, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {

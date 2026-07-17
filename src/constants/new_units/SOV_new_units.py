@@ -46,7 +46,6 @@ SOV_NEW_UNITS = {
         "Salves": [7, 100, 5, 3],
         "TransportedTexture": "UseInGame_Transport_COMMAND",
         "TransportedSoldier": "MotRifles_SOV",
-        "armor": "Infantry_armor_reference",
         "Factory": "Factory/Logistic",
         "CommandPoints": 145,
         "UnitRole": 'hq_inf',
@@ -133,7 +132,6 @@ SOV_NEW_UNITS = {
         },
         "TransportedTexture": "UseInGame_Transport_COMMAND",
         "TransportedSoldier": "MotRifles_TTsko_SOV",
-        "armor": "Infantry_armor_reference",
         "Factory": "Factory/Logistic",
         "CommandPoints": 145,
         "UnitRole": 'hq_inf',
@@ -632,7 +630,6 @@ SOV_NEW_UNITS = {
             },
         },
         "TransportedSoldier": "MotRifles_RPG7VL_TTsko_SOV",
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 30,
         "UnitRole": 'infantry',
         "SpecialtiesList": [
@@ -707,7 +704,6 @@ SOV_NEW_UNITS = {
             },
         },
         "TransportedSoldier": "VDV_Afgantsy_RPG7VL_SOV",
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 40,
         "UnitRole": 'infantry',
         "SpecialtiesList": [
@@ -787,7 +783,6 @@ SOV_NEW_UNITS = {
             },
         },
         "TransportedSoldier": "HvyScout_RPG7VL_SOV",
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 35,
         "SpecialtiesList": [
                 '_ifv',
@@ -860,7 +855,6 @@ SOV_NEW_UNITS = {
             },
         },
         "TransportedSoldier": "HvyScout_TTsko_RPG7VL_SOV",
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 35,
         "SpecialtiesList": [
                 '_ifv',

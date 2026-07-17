@@ -273,6 +273,54 @@ class TestResolveInfantryMounts(unittest.TestCase):
             [("SAW_M249_5_56mm", 2), ("FM_M16", 4)],
         )
 
+    def test_mounted_weapons_remove_he_then_replace_heat(self):
+        """Dual HEAT/HE recoilless: drop HE companion, then replace HEAT."""
+        game_db = _minimal_game_db(
+            weapons={
+                "WeaponDescriptor_Rangers_CMD_US": {
+                    "turrets": {
+                        "0": {"weapons": {"PM_M4_Carbine": {"quantity": 5}}},
+                        "1": {"weapons": {"Sniper_M24": {"quantity": 1}}},
+                        "2": {
+                            "weapons": {
+                                "RocketInf_M67_RCL_90mm": {"quantity": 1},
+                                "RocketInf_M67_RCL_90mm_HE": {"quantity": 1},
+                            },
+                        },
+                        "3": {"weapons": {"Grenade_SMOKE": {"quantity": 1}}},
+                    },
+                },
+            },
+        )
+        edits = {
+            "WeaponDescriptor": {
+                "equipmentchanges": {
+                    "replace": {
+                        "RocketInf_M67_RCL_90mm": {
+                            "new_weapon": "RocketInf_Carl_Gustav",
+                            "swap_fire_effect": True,
+                            "depiction_baked_in": False,
+                        },
+                    },
+                },
+                "turrets": {
+                    2: {
+                        "MountedWeapons": {
+                            "remove": [1],
+                        },
+                    },
+                },
+            },
+        }
+        by_turret = resolve_infantry_mounts_by_turret(
+            "Rangers_CMD_US", edits, None, game_db,
+        )
+        self.assertEqual(by_turret[2], [("RocketInf_Carl_Gustav", 1)])
+        self.assertNotIn(
+            "RocketInf_M67_RCL_90mm_HE",
+            [name for name, _ in by_turret[2]],
+        )
+
     def test_ordered_replace_list_one_mount_per_spec(self):
         """Same old_weapon on two turrets: each list entry replaces one mount."""
         game_db = _minimal_game_db(

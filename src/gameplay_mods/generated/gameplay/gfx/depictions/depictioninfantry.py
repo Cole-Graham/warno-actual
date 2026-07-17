@@ -26,8 +26,8 @@ _SELECTOR_TACTIC_NAMESPACE_RE = re.compile(r"^InfantrySelectorTactic_(\d+)_(\d+)
 def edit_gen_gp_gfx_depictioninfantry(source_path: Any, game_db: Any) -> None:
     """GameData/Generated/Gameplay/Gfx/Depictions/DepictionInfantry.ndf"""
     _create_new_selector_tactic_objects(source_path)
-    _create_new_units(source_path)
-    _apply_depiction_edits(source_path)
+    _create_new_units(source_path, game_db)
+    _apply_depiction_edits(source_path, game_db)
 
 
 def _create_new_selector_tactic_objects(source_path: Any) -> None:
@@ -94,7 +94,7 @@ def _create_new_selector_tactic_objects(source_path: Any) -> None:
                 existing[key] = idx + 1
 
 
-def _create_new_units(source_path: Any) -> None:
+def _create_new_units(source_path: Any, game_db: Any = None) -> None:
     """Clone donor depiction objects for new infantry units and apply NEW_DEPICTIONS overrides."""
 
     for donor, edits in NEW_UNITS.items():
@@ -179,6 +179,7 @@ def _create_new_units(source_path: Any) -> None:
                 obj_type,
                 value,
                 unit_name=unit_name,
+                game_db=game_db,
             )
             if not handled:
                 logger.warning(
@@ -278,7 +279,7 @@ def _add_transported_infantry_entry(
         return
 
 
-def _apply_depiction_edits(source_path: Any) -> None:
+def _apply_depiction_edits(source_path: Any, game_db: Any = None) -> None:
     """Apply hand-authored depiction_edits to existing infantry units."""
 
     depiction_edits = load_depiction_edits()
@@ -305,6 +306,7 @@ def _apply_depiction_edits(source_path: Any) -> None:
                 obj_type,
                 value,
                 unit_name=unit_name,
+                game_db=game_db,
             )
             if not handled:
                 logger.warning(

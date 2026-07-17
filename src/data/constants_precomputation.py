@@ -53,6 +53,7 @@ from .small_arms_quantity_validation import (
     validate_small_arms_quantity_variants,
 )
 from .ui_texture_validation import validate_ui_texture_constants
+from .fire_effect_validation import validate_fire_effect_constants
 from .unit_data import (
     _build_upgrade_chains,
     _detect_circular_chains,
@@ -208,6 +209,14 @@ def build_constants_precomputation_data(config: Dict[str, Any], game_db: Dict[st
                 logger.warning(
                     "UI texture validation found errors - see above. "
                     "Fix textures in unit_edits / NEW_UNITS or rebuild ui_texture_reference from vanilla.",
+                )
+
+            fire_effect_failed = validate_fire_effect_constants(game_db)
+            if fire_effect_failed:
+                logger.warning(
+                    "Fire-effect validation found errors - see above. "
+                    "Use bare FireEffect stems from depiction_data.all_fire_effects "
+                    "(no _salvolength / _infmagazine suffixes).",
                 )
 
             aircraft_vision_failed = validate_aircraft_vision_vs_weapon_range(game_db)

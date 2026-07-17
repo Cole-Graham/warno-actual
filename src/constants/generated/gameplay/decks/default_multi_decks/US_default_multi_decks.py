@@ -11,10 +11,10 @@ us_default_multi_decks = {
         ],
         "Infantry": [
             {"Descriptor_Unit_ATteam_TOW2_para_US": {"vet": 1, "transport": "Descriptor_Unit_M998_Humvee_US"}},
+            {"GreenBerets_CMD_US": {"vet": 3, "transport": "Descriptor_Unit_MH47D_Super_Chinook_US"}},
             {"Descriptor_Unit_GreenBerets_ODA_US": {"vet": 3, "transport": "Descriptor_Unit_MH47D_Super_Chinook_US"}},
             {"Descriptor_Unit_Rifles_half_Cav_CMD_US": {"vet": 2, "transport": "Descriptor_Unit_M2A1_Bradley_IFV_US"}},
             {"Descriptor_Unit_Rifles_half_Cav_AT4_US": {"vet": 1, "transport": "Descriptor_Unit_M2A1_Bradley_IFV_US"}},
-            {"Descriptor_Unit_Rangers_CMD_US": {"vet": 3, "transport": "Descriptor_Unit_M1038_Humvee_US"}},
             {"Descriptor_Unit_Airborne_Engineers_US": {"vet": 1, "transport": "Descriptor_Unit_M1038_Humvee_US"}},
             {"Descriptor_Unit_Airborne_US": {"vet": 1, "transport": "Descriptor_Unit_M1038_Humvee_US"}},
             {"Descriptor_Unit_Airborne_half_Dragon_US": {"vet": 2, "transport": "Descriptor_Unit_M998_Humvee_US"}},
@@ -31,7 +31,7 @@ us_default_multi_decks = {
         "Recon": [
             {"Descriptor_Unit_OA10A_US": {"vet": 1}},
             {"Descriptor_Unit_LAV_25_M1047_US_US": {"vet": 1}},
-            {"Descriptor_Unit_LRRP_US": {"vet": 2, "transport": "Descriptor_Unit_M1025_Humvee_AGL_nonPara_US"}},
+            {"Descriptor_Unit_LRRP_US": {"vet": 2, "transport": "M1025_Humvee_scout_US"}},
             {"Descriptor_Unit_DeltaForce_US": {"vet": 3, "transport": "Descriptor_Unit_UH60A_Black_Hawk_US"}},
             {"Descriptor_Unit_DeltaForce_US": {"vet": 2, "transport": "Descriptor_Unit_M998_Humvee_Delta_US"}},
         ],

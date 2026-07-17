@@ -29,7 +29,6 @@ RDA_NEW_UNITS = {
         "strength": 40,
         "TransportedTexture": "UseInGame_Transport_REGINF",
         "TransportedSoldier": "KdA_DDR_TargetDummy",
-        "armor": "Infantry_armor_reference",
         "Factory": "Factory/Logistic",
         "CommandPoints": 5,
         "UnitRole": 'infantry',
@@ -106,7 +105,6 @@ RDA_NEW_UNITS = {
         },
         "TransportedTexture": "UseInGame_Transport_COMMAND",
         "TransportedSoldier": "MotRifles_CMD_DDR",
-        "armor": "Infantry_armor_reference",
         "Factory": "Factory/Logistic",
         "CommandPoints": 145,
         "UnitRole": 'hq_inf',
@@ -1296,7 +1294,6 @@ RDA_NEW_UNITS = {
             },
         },
         "TransportedSoldier": "MP_mech_DDR",
-        "armor": "Infantry_armor_reference",
         "UnitRole": "infantry",
         "SpecialtiesList": [
             "_mp",
@@ -1379,19 +1376,9 @@ RDA_NEW_UNITS = {
                             "swap_fire_effect": True,
                             "depiction_baked_in": False,
                             "old_new_effect": ("RocketInf_RPG7VR_64mm", "SAW_lMG_K_7_62mm"),
-                        
-                    "RocketInf_RPG29_105mm": {
-                        
-                        "new_weapon": "RocketInf_RPG29_105mm_salvolength6",
-                        
-                        "swap_fire_effect": False,
-                        
-                        "depiction_baked_in": True,
-                        
-                    },
-                },
+                        },
                         {
-                            "new_weapon": "RocketInf_RPG29_105mm",
+                            "new_weapon": "RocketInf_RPG29_105mm_salvolength6",
                             "swap_fire_effect": True,
                             "depiction_baked_in": False,
                             "old_new_effect": ("RocketInf_RPG7VR_64mm", "RocketInf_RPG29_105mm"),
@@ -1399,9 +1386,9 @@ RDA_NEW_UNITS = {
                     ],
                 },
             },
+       
         },
         "TransportedSoldier": "MotSchutzen_RPG29_DDR",
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 40,
         "UnitRole": "infantry",
         "SpecialtiesList": [
@@ -1487,7 +1474,6 @@ RDA_NEW_UNITS = {
             },
         },
         "TransportedSoldier": "HvyScout_RPG7VL_DDR",
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 40,
         "SpecialtiesList": [
                 '_resolute',

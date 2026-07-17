@@ -158,7 +158,6 @@ rda_unit_edits = {
     # RDA INF
     "MotRifles_CMD_DDR": {
         "CommandPoints": 25,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "MOT.-SCHUTZEN FÜR.",
         },
@@ -222,7 +221,6 @@ rda_unit_edits = {
 
     "Engineers_CMD_DDR": {
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "PIONIER",
         },
@@ -273,7 +271,6 @@ rda_unit_edits = {
 
     "Engineers_Naval_CMD_DDR": {
         "CommandPoints": 45,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "MARINEPIONIER FÜR.",
         },
@@ -322,7 +319,6 @@ rda_unit_edits = {
     
     "KdA_CMD_DDR": {
         "CommandPoints": 20,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "K.d.A. FÜH.",
         },
@@ -390,7 +386,6 @@ rda_unit_edits = {
     
     "Reserve_CMD_DDR": {
         "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "RESERVISTEN FÜH.",
         },
@@ -436,7 +431,6 @@ rda_unit_edits = {
     
     "Fallschirmjager_CMD_DDR": {
         "CommandPoints": 45,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "FALLSCHIRM FÜR.",
         },
@@ -527,7 +521,6 @@ rda_unit_edits = {
 
     "Luftsturmjager_CMD_DDR": {
         "CommandPoints": 50,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "LUFTSTURM-JÄGER FÜR.",
         },
@@ -625,7 +618,6 @@ rda_unit_edits = {
 
     "Wachregiment_CMD_DDR": {
         "CommandPoints": 45,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "WACHSCHÜTZEN FÜH.",
         },
@@ -674,7 +666,6 @@ rda_unit_edits = {
 
     "Fallschirmjager_FalseFlag_CMD_DDR": {
         "CommandPoints": 45,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "FALLSCHIRM FÜR. FF",
         },
@@ -755,7 +746,6 @@ rda_unit_edits = {
 
     "Volkspolizei_CMD_DDR": { # Not used, DLC slop
         "CommandPoints": 25,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "VOPOS FÜH.",
         },
@@ -834,7 +824,6 @@ rda_unit_edits = {
     # Not sure if we will ever need these
     "MotRifles_Naval_CMD_DDR": {
         "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
         "TagSet": {
             "overwrite_all": [
                 "AllUnits",
@@ -881,7 +870,6 @@ rda_unit_edits = {
 
     "Reserve_DDR": {
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "availability": [12, 0, 0, 0],
         "max_speed": 26,
         "capacities": {
@@ -899,7 +887,6 @@ rda_unit_edits = {
     
     "Reserve_HMG_DDR": {
         "CommandPoints": 20,
-        "armor": "Infantry_armor_reference",
         "availability": [12, 0, 0, 0],
         "max_speed": 26,
         "capacities": {
@@ -917,7 +904,6 @@ rda_unit_edits = {
 
     "Security_DDR": {
         "CommandPoints": 25,
-        "armor": "Infantry_armor_reference",
         "availability": [10, 0, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -928,7 +914,6 @@ rda_unit_edits = {
 
     "Security_VPB_DDR": {
         "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
         "availability": [10, 0, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -941,7 +926,6 @@ rda_unit_edits = {
             "display": "MILITÄRSTREIFEIN (K.d.A.)",
         },
         "CommandPoints": 20,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 12, 9, 0],
         "max_speed": 26,
         "strength": 5,
@@ -984,7 +968,6 @@ rda_unit_edits = {
 
     "MP_Combat_DDR": {
         "CommandPoints": 25,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 8, 6, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -994,7 +977,6 @@ rda_unit_edits = {
 
     "Volkspolizei_DDR": {
         "CommandPoints": 15,
-        "armor": "Infantry_armor_reference",
         "availability": [12, 0, 0, 0],
         "max_speed": 26,
         "WeaponDescriptor": {
@@ -1026,7 +1008,6 @@ rda_unit_edits = {
     
     "KdA_DDR": {
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -1056,7 +1037,6 @@ rda_unit_edits = {
 
     "MotRifles_DDR": {
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 69,
@@ -1092,7 +1072,6 @@ rda_unit_edits = {
             "display": "MOT.-SCHÜTZEN [SVD]",
         },
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -1110,7 +1089,6 @@ rda_unit_edits = {
             "display": "MOT.-SCHÜTZEN [s.MG]",
         },
         "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1128,7 +1106,6 @@ rda_unit_edits = {
             "display": "MOT.-SCHÜTZEN [BTR]",
         },
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -1161,7 +1138,6 @@ rda_unit_edits = {
             "display": "MOT.-SCHÜTZEN [METIS]",
         },
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -1179,7 +1155,6 @@ rda_unit_edits = {
             "display": "MOT.-SCHÜTZEN [STRELA]",
         },
         "CommandPoints": 45,
-        "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -1195,7 +1170,6 @@ rda_unit_edits = {
 
     "MotSchutzen_DDR": {  # Panzerjager 2x RPG-7VR
         "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -1216,7 +1190,6 @@ rda_unit_edits = {
     
     "MotRifles_RPG27_DDR": {
         "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -1240,7 +1213,6 @@ rda_unit_edits = {
             "display": "FALLSCHIRMJÄGER",
         },
         "CommandPoints": 55,
-        "armor": "Infantry_armor_reference",
         "strength": 9,
         "availability": [0, 0, 4, 4],
         "max_speed": 26,
@@ -1276,7 +1248,6 @@ rda_unit_edits = {
             "display": "FALLSCHIRMJÄGER (s.MG)",
         },
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "strength": 9,
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
@@ -1301,7 +1272,6 @@ rda_unit_edits = {
             "display": "FALLSCHIRMJÄGER [METIS]",
         },
         "CommandPoints": 60,
-        "armor": "Infantry_armor_reference",
         "strength": 9,
         "availability": [0, 0, 4, 3],
         "max_speed": 20,
@@ -1336,7 +1306,6 @@ rda_unit_edits = {
             "display": "LUFTSTURM-JÄGER",
         },
         "CommandPoints": 50,
-        "armor": "Infantry_armor_reference",
         "strength": 9,
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
@@ -1383,7 +1352,6 @@ rda_unit_edits = {
             "display": "LUFTSTURM-JÄGER (Metis)",
         },
         "CommandPoints": 55,
-        "armor": "Infantry_armor_reference",
         "strength": 9,
         "availability": [0, 0, 4, 3],
         "max_speed": 20,
@@ -1433,7 +1401,6 @@ rda_unit_edits = {
             "display": "WACHSCHÜTZEN",
         },
         "CommandPoints": 50,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1446,7 +1413,6 @@ rda_unit_edits = {
             "display": "WACHSCHÜTZEN [RPO]",
         },
         "CommandPoints": 65,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 6, 4, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -1459,7 +1425,6 @@ rda_unit_edits = {
             "display": "WACHSCHÜTZEN [STOSS]",
         },
         "CommandPoints": 55,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1472,7 +1437,6 @@ rda_unit_edits = {
             "display": "WACH. PANZERJÄGER",
         },
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 6, 4, 0],
         "strength": 8,
         "max_speed": 26,
@@ -1493,7 +1457,6 @@ rda_unit_edits = {
 
     "MotRifles_Naval_DDR": {
         "CommandPoints": 45,
-        "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1503,7 +1466,6 @@ rda_unit_edits = {
 
     "Engineers_DDR": {
         "CommandPoints": 45,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -1532,7 +1494,6 @@ rda_unit_edits = {
 
     "Engineers_Naval_DDR": {
         "CommandPoints": 55,
-        "armor": "Infantry_armor_reference",
         "availability": [8, 0, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1558,7 +1519,6 @@ rda_unit_edits = {
             "display": "PIONIER [FLAM]",
         },
         "CommandPoints": 50,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -1578,7 +1538,6 @@ rda_unit_edits = {
 
     "Engineers_Naval_Flam_DDR": {
         "CommandPoints": 60,
-        "armor": "Infantry_armor_reference",
         "availability": [8, 0, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -1594,7 +1553,6 @@ rda_unit_edits = {
 
     "Engineers_AGI_DDR": {
         "CommandPoints": 50,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -2698,7 +2656,6 @@ rda_unit_edits = {
 
     "Scout_DDR": {
         "CommandPoints": 20,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 2,
@@ -2717,7 +2674,6 @@ rda_unit_edits = {
 
     "Scout_Reserve_DDR": {
         "CommandPoints": 15,
-        "armor": "Infantry_armor_reference",
         "availability": [10, 0, 0, 0],
         "max_speed": 26,
         "strength": 4,
@@ -2742,7 +2698,6 @@ rda_unit_edits = {
     
     "Scout_KdA_DDR": {
         "CommandPoints": 20,
-        "armor": "Infantry_armor_reference",
         "availability": [8, 0, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -2768,7 +2723,6 @@ rda_unit_edits = {
 
     "HvyScout_DDR": {
         "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
         "availability": [6, 4, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -2778,7 +2732,6 @@ rda_unit_edits = {
 
     "Scout_SIGINT_DDR": {
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "availability": [6, 4, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -2788,7 +2741,6 @@ rda_unit_edits = {
 
     "Grenzer_Mot_DDR": {
         "CommandPoints": 15,
-        "armor": "Infantry_armor_reference",
         "availability": [8, 0, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -2823,7 +2775,6 @@ rda_unit_edits = {
 
     "Grenzer_DDR": {
         "CommandPoints": 20,
-        "armor": "Infantry_armor_reference",
         "availability": [8, 0, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -2838,7 +2789,6 @@ rda_unit_edits = {
 
     "Grenzer_Flam_DDR": {
         "CommandPoints": 45,
-        "armor": "Infantry_armor_reference",
         "availability": [6, 0, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -2874,7 +2824,6 @@ rda_unit_edits = {
 
     "Scout_Wach_DDR": {
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "strength": 7,
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
@@ -2893,7 +2842,6 @@ rda_unit_edits = {
 
     "Engineers_Naval_Scout_DDR": {
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 4, 3, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -2904,7 +2852,6 @@ rda_unit_edits = {
 
     "Scout_LRRP_DDR": {
         "CommandPoints": 60,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -2915,7 +2862,6 @@ rda_unit_edits = {
 
     "KSK18_DDR": {
         "CommandPoints": 50,
-        "armor": "Infantry_armor_reference",
         "strength": 8,
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
@@ -2938,7 +2884,6 @@ rda_unit_edits = {
 
     "Fallschirmjager_FalseFlag_DDR": {
         "CommandPoints": 55,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -2949,7 +2894,6 @@ rda_unit_edits = {
 
     "Fallschirmjager_FlaseFlag_Demo_DDR": {
         "CommandPoints": 55,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -2968,7 +2912,6 @@ rda_unit_edits = {
 
     "Scout_FJ_DDR": {
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 0, 8, 6],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -2992,7 +2935,6 @@ rda_unit_edits = {
 
     "Sniper_FJ_DDR": {
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "strength": 3,
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
@@ -3030,7 +2972,6 @@ rda_unit_edits = {
             "display": "Fla-RAK STRELA-2M",
         },
         "CommandPoints": 25,
-        "armor": "Infantry_armor_reference",
         "availability": [12, 9, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -3057,7 +2998,6 @@ rda_unit_edits = {
             "display": "Fs-FLA-RAK. STRELA-2M",
         },
         "CommandPoints": 25,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 0, 12, 9],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -3084,7 +3024,6 @@ rda_unit_edits = {
             "display": "Fla-RAK IGLA",
         },
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "availability": [7, 5, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {

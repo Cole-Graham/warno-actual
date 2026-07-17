@@ -43,7 +43,6 @@ POL_NEW_UNITS = {
         },
         "TransportedTexture": "UseInGame_Transport_COMMAND",
         "TransportedSoldier": "Rifles_CMD_POL",
-        "armor": "Infantry_armor_reference",
         "Factory": "Factory/Logistic",
         "CommandPoints": 145,
         "UnitRole": 'hq_inf',
@@ -1321,7 +1320,6 @@ POL_NEW_UNITS = {
         "DeploymentShift": 1750,
         "strength": 8,
         "TransportedSoldier": "Engineers_Scout_Para_POL",
-        "armor": "Infantry_armor_reference",
         "ButtonTexture": "Scout_para_POL",
         "availability": [0, 6, 4, 0],
         "max_speed": 26,
@@ -1376,7 +1374,6 @@ POL_NEW_UNITS = {
         },
         "strength": 2,
         "TransportedSoldier": "MANPAD_Igla_POL",
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 35,
         "UnitRole": 'infantry',
         "WeaponDescriptor": {
@@ -1446,7 +1443,6 @@ POL_NEW_UNITS = {
         },
         "strength": 2,
         "TransportedSoldier": "MANPAD_Igla_Para_POL",
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 35,
         "UnitRole": 'infantry',
         "WeaponDescriptor": {

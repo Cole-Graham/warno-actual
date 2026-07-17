@@ -291,6 +291,21 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
             f"Depiction audit could not be run: {audit_exc}"
         )
 
+    # Validate authored FireEffect stems against depiction_data.all_fire_effects.
+    try:
+        from .data.fire_effect_validation import validate_fire_effect_constants
+        validate_fire_effect_constants(
+            game_db if isinstance(game_db, dict) else None,
+            strict=config.get("build_config", {}).get("strict_depictions", False),
+        )
+    except RuntimeError:
+        raise
+    except Exception as fe_exc:
+        from .utils.logging_utils import setup_logger as _fe_logger_setup
+        _fe_logger_setup(__name__).warning(
+            f"Fire-effect validation could not be run: {fe_exc}"
+        )
+
     editors = {
         # Core gameplay mechanics
         "GameData/Gameplay/Constantes/BombTrajectoryConfigs.ndf": [

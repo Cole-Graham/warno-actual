@@ -5,9 +5,11 @@ from src.constants.capacities import (
     SPRINT_CAPACITY,
     CHOC_INRANGE_CAPACITY,
     CHOC_INRANGE_FEEDBACK_CAPACITY,
+    CMD_UNIT_CAPACITY,
     DEPLOY_CAPACITY,
     DEPLOY_OK_CAPACITY,
     LDR_ARTY_CAPACITY,
+    LDR_INF_CAPACITY,
     LDR_TNK_CAPACITY,
     MEDIUM_EQUIP_PENALTY_CAPACITY,
     MEDIUM_EQUIP_PENALTY_SF_CAPACITY,
@@ -83,5 +85,7 @@ def edit_gen_gp_gfx_capacitelist(source_path) -> None:
             source_path.insert(i, MEDIUM_EQUIP_PENALTY_SF_CAPACITY)
             source_path.insert(i, LDR_TNK_CAPACITY)
             source_path.insert(i, LDR_ARTY_CAPACITY)
+            source_path.insert(i, LDR_INF_CAPACITY)
+            source_path.insert(i, CMD_UNIT_CAPACITY)
             source_path.insert(i, RELOAD_PENALTY_CAPACITY)
             break

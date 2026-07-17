@@ -3,7 +3,14 @@
 
  # ------------------------------------ Lat ------------------------------------
  # v28.7
- - [ ] Fix armor on Soviet marine infantry, and maybe automate this if possible
+ - [x] Fix armor on Soviet marine infantry, and maybe automate this if possible
+ - [ ] Move artillery commander to logistics tab, add 2nd FOB card
+ - [x] Prevent infantry leaders from buffing artillery (`Capacite_LDR_INF` ForbiddenTargetTags includes Artillerie)
+ - [ ] Prevent commanders from buffing artillery (`Capacite_CMD_UNIT` ForbiddenTargetTags)
+ - [ ]
+ - [ ]
+ - [ ]
+ - [ ]
  - [ ] Check if Tulipan is broken by a batch script (strange range scaling after 9000m?)
  
 # Future patch:

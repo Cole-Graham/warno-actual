@@ -4,7 +4,7 @@ Local **Cursor** rules live in **`.cursor/rules/*.mdc`**, but **only** [`.cursor
 
 **Keep in sync:** (1) **From convention → Cursor:** when you change a project convention, update this file first, then copy into your local `.cursor/rules/*.mdc` if you use Cursor (see Cursor *Rules* docs: `description`, `globs`, `alwaysApply` in the front matter). (2) **From Cursor → this file:** when you **add or materially change** a rule in `.cursor/rules/`, update **`AGENTS.md` in the same change** so the repo stays authoritative. The checked-in **`.cursor/rules/sync-agents-md-with-cursor-rules.mdc`** nudges the agent to do (2) when it touches rule files.
 
-**Also read:** [README.md](README.md) (Python env, install, config), [docs/onboarding.md](docs/onboarding.md) (editor/venv quality-of-life), [docs/validation/infantry_small_arms_vs_strength.md](docs/validation/infantry_small_arms_vs_strength.md) (infantry small-arms validation), and [pyproject.toml](pyproject.toml) (dependencies and optional extras).
+**Also read:** [README.md](README.md) (Python env, install, config), [docs/onboarding.md](docs/onboarding.md) (editor/venv quality-of-life), [docs/validation/infantry_small_arms_vs_strength.md](docs/validation/infantry_small_arms_vs_strength.md) (infantry small-arms validation), the **Depiction edits** section below, and [pyproject.toml](pyproject.toml) (dependencies and optional extras).
 
 ---
 
@@ -125,7 +125,25 @@ Dedicated ATGM infantry teams (`is_at_team` / `ATteam_` name) whose mounts inclu
 
 - **Constants:** [`src/constants/unit_edits/standards/pattern/atgm_infantry_team_strength.py`](src/constants/unit_edits/standards/pattern/atgm_infantry_team_strength.py).
 - **Handler:** [`unite_descriptor/handlers/atgm_infantry_team_strength.py`](src/gameplay_mods/generated/gameplay/gfx/unite_descriptor/handlers/atgm_infantry_team_strength.py).
-- **Ordering:** `apply_atgm_infantry_team_strength_pattern_standard` runs **after** `unit_edits` and `new_units` (so specialty adds are visible), **before** shock no-resolute. Writes `MaxPhysicalDamages` on `TBaseDamageModuleDescriptor` (weapon teams often have no `TInfantrySquadModuleDescriptor` / `SoldierCount`); updates `SoldierCount` and infantryWA armor Index when those modules exist.
+- **Ordering:** `apply_atgm_infantry_team_strength_pattern_standard` runs **after** `unit_edits` and `new_units` (so specialty adds are visible), **before** infantry WA armor and shock no-resolute. Writes `MaxPhysicalDamages` on `TBaseDamageModuleDescriptor` (weapon teams often have no `TInfantrySquadModuleDescriptor` / `SoldierCount`); updates `SoldierCount` and infantryWA armor Index when those modules exist.
+
+### Infantry WA armor (unit descriptors)
+
+Infantry squads (live `Infanterie` tag) automatically get `ResistanceFamily_infanterieWA` Blindage with `Index = max(15 - strength, 1)` from live `MaxPhysicalDamages`. Dedicated AT weapon teams are excluded via live `Infanterie_AT` (covers `ATteam_*` and non-prefix names like `RCL_L6_Wombat_UK`). Dedicated HMG/MMG teams (`HMGteam_` / `MMGteam_`) are excluded by name and keep vanilla `ResistanceFamily_infanterie`. MANPADs (`Infanterie_AA`), snipers, and line squads are included. Do **not** add manual `"armor": "Infantry_armor_reference"` in `unit_edits` / `NEW_UNITS`.
+
+- **Constants:** [`src/constants/unit_edits/standards/pattern/infantry_armor.py`](src/constants/unit_edits/standards/pattern/infantry_armor.py).
+- **Handler:** [`unite_descriptor/handlers/infantry_armor.py`](src/gameplay_mods/generated/gameplay/gfx/unite_descriptor/handlers/infantry_armor.py).
+- **Ordering:** `apply_infantry_armor_pattern_standard` runs **after** ATGM team strength (so Index tracks final HP), **before** shock no-resolute. Units with an explicit `"armor"` **dict** in `unit_edits` / `NEW_UNITS` are skipped (vehicle / custom Blindage overrides).
+
+### Commander / infantry leader Capacite (unit descriptors)
+
+Vanilla `TCommanderModuleDescriptor` cannot be edited, so remaining commander modules are replaced with custom Instructor Capacites after `unit_edits` / `new_units`. Tank/arty leaders already strip the module and use `LDR_TNK` / `LDR_ARTY` via per-unit edits; this pass only hits units that still have the commander module.
+
+- **Capacites:** [`src/constants/capacities/cmd.py`](src/constants/capacities/cmd.py) (`Capacite_CMD_UNIT`, range 900) and [`src/constants/capacities/ldr.py`](src/constants/capacities/ldr.py) (`Capacite_LDR_INF`, range 550). Both use `~/UnitEffect_Instructor`. Registered in [`capacitelist.py`](src/gameplay_mods/generated/gameplay/gfx/capacitelist.py).
+- **ForbiddenTargetTags:** `CMD_UNIT` — `Canon_AA`, `CMD_Unit`, `Avion`, `Instructor_immune`. `LDR_INF` — same plus `LDR_Unit`, `LDR_SOV_Unit`, and `Artillerie` (infantry leaders do not buff artillery).
+- **Constants:** [`src/constants/unit_edits/standards/pattern/commander_capacite.py`](src/constants/unit_edits/standards/pattern/commander_capacite.py) — classify by live TagSet (flatten nested lists from `overwrite_all` convert): `Infanterie` + (`LDR_Unit` / `LDR_SOV_Unit` or `_leader` / `leader_sov` specialty) and not `CMD_Unit` → `LDR_INF`; otherwise → `CMD_UNIT`. Do not key off `_CMD_` / `CMD2` names.
+- **Handler:** [`unite_descriptor/handlers/commander_capacite.py`](src/gameplay_mods/generated/gameplay/gfx/unite_descriptor/handlers/commander_capacite.py).
+- **Ordering:** `apply_commander_capacite_pattern_standard` runs **after** `unit_edits` and `new_units`, **before** ATGM team strength / infantry WA armor / shock no-resolute. Do **not** `modules_add` `TCommanderModuleDescriptor()` on new units. If a CMD clone’s donor lacks the commander module, add `"CMD_UNIT"` via `capacities.add_capacities` instead.
 
 ### Artillery deployment time
 
@@ -150,14 +168,55 @@ Precompute validation in [`src/data/infantry_small_arms_strength_validation.py`]
 
 ---
 
-## Depiction edits for existing vs new units
+## Depiction edits
 
-| Location | Format | When to use |
+**Cursor:** private rule [`.cursor/rules/depiction-edits.mdc`](.cursor/rules/depiction-edits.mdc) (file-scoped to depiction / unit-edit paths). Substance below is the versioned copy.
+
+Shared apply logic: [`_apply.py`](src/gameplay_mods/generated/gameplay/gfx/depictions/_apply.py). Do **not** run the patcher to test depiction edits unless asked.
+
+### Which path?
+
+| Goal | Where |
+|---|---|
+| Patch an **existing** unit | `src/constants/unit_edits/depiction_edits/<FACTION>_depiction_edits/<Unit>.py` — tuple-key patches |
+| Override a **new** unit after donor clone | `src/constants/new_units/new_depictions/<FACTION>_new_depictions/<Unit>.py` — same tuple-key schema **or** raw NDF |
+| Full custom vehicle/aerial registration | `NEW_UNITS["depictions"]["custom"]` **plus** raw NDF string keys in `NEW_DEPICTIONS` |
+| Vehicle High/Mid/Low mesh (existing) | `unit_edits[unit]["alternatives"]["mesh"]` — **not** depiction_edits |
+| New vehicle/aircraft mesh LODs | `NEW_UNITS["depictions"]["new_mesh"]` and/or `"alternatives"` |
+| Heavy-equipment crew meshes | `NEW_UNITS`: `servants` + `servant_types` → `depictionhumans` (no depiction file) |
+| Supply-transport tow hook | Add donor to [`SUPPLY_TRANSPORT_VARIANT_CONFIG`](src/constants/supply_transport_variants.py) — depiction auto-built via [`_supply_transport.py`](src/constants/new_units/new_depictions/_supply_transport.py) |
+| New `InfantrySelectorTactic_UU_SS` | Append `(uu, ss)` to `NEW_SELECTOR_TACTIC_OBJECTS` in [`selector_tactic.py`](src/constants/unit_edits/depiction_edits/selector_tactic.py) |
+| SPAAG `he_dca` AIR fire FX | Automatic ([`he_dca_air_depiction`](src/gameplay_mods/generated/gameplay/gfx/depictions/he_dca_air_depiction.py)) — do not hand-author |
+
+### Envelope and value shapes
+
+Every edit dict needs `"unit_name"`, `"valid_files"`, and one or more `<FileStem>_ndf` sections (`.` → `_`). `load_depiction_edits()` merges by `unit_name`; `NEW_DEPICTIONS` keys must be `unit_name.lower()`.
+
+| Shape | Detection | Use |
 |---|---|---|
-| `src/constants/unit_edits/depiction_edits/` | Tuple-key edit dict (`(namespace, obj_type)` → member patches) | **Existing** units patched in place |
-| `src/constants/new_units/new_depictions/` | Raw NDF strings **or** the same tuple-key edit dict | **New** units: clone donor depiction, then apply patches |
+| Indexed ops | all-`int` keys | `{ i: ("edit"\|"insert"\|"remove"\|"replace"\|"add", payload) }` |
+| Member map | all-`str` keys | `{ "MemberName": value }` |
+| Wholesale list | string starting `[`, or list/tuple | Replace entire list (1-tuple of NDF string OK) |
 
-For ground vehicles, tuple-key `NEW_DEPICTIONS` entries (e.g. `TowedUnitSubDepictionGenerator`) are applied after clone in `depictionvehicles.py`. Full custom vehicle depictions still use raw NDF under string keys when `depictions.custom` is set on the `NEW_UNITS` entry.
+Common tuple keys: `AllWeaponAlternatives_*`, `AllWeaponSubDepiction_*`, `TacticDepiction_*_{Soldier\|Ghost\|Alternatives}`, `(None, "TTransportedInfantryEntry")`, `(None, "TacticVehicleDepictionRegistration")`, aerial/missile carriage namespaces, `"new_objects"`. Infantry mesh/`FireEffectTag`/`Selector` values are auto-prefixed in `_apply.py`. Selector `UU_SS`: UniqueCount=`UU`, Surrogates use **SS**. Soldier `skeleton_tags` early-returns (skips Selector/Operators).
+
+### By unit type (short)
+
+- **Infantry existing:** indexed/member patches under `DepictionInfantry_ndf` (e.g. [`Ranger_US.py`](src/constants/unit_edits/depiction_edits/USA_depiction_edits/Ranger_US.py), [`Scout_US.py`](src/constants/unit_edits/depiction_edits/USA_depiction_edits/Scout_US.py)). Plan insert/remove before edit when indices shift.
+- **Infantry new:** six blocks clone from donor automatically; optional `NEW_DEPICTIONS` uses the **new** unit name; set `selector_tactic` / counts on `NEW_UNITS` (e.g. [`MANPAD_Stinger_FJ_RFA.py`](src/constants/new_units/new_depictions/RFA_new_depictions/MANPAD_Stinger_FJ_RFA.py)).
+- **Vehicles existing:** patch registration by `BlackHoleKey`; tow hook via `TowedUnitSubDepictionGenerator` `{"add": None}` (e.g. [`HEMTT_US.py`](src/constants/unit_edits/depiction_edits/USA_depiction_edits/HEMTT_US.py)).
+- **Vehicles new:** auto-clone unless `depictions.custom` + matching raw NDF keys (e.g. [`DCA_M167A2_Vulcan_20mm_UK.py`](src/constants/new_units/new_depictions/UK_new_depictions/DCA_M167A2_Vulcan_20mm_UK.py)); tuple-key patches apply after clone.
+- **Aerial / pylons:** existing = Op_ edits + indexed carriages; new = usually full raw NDF. Showroom aerial section key: `DepictionAerialUnitsShowroom_ndf`.
+- **Towed / heavy equipment:** catalog clone in `towable.py`; crews via `servants` / `servant_types`.
+
+### Registration
+
+- **Existing:** country `__init__.py` import + `__all__` (loader uses `_DEPICTION_EDIT_FACTION_MODULES`); optional re-export from `depiction_edits/__init__.py`.
+- **New:** country `*_NEW_DEPICTIONS` dict keyed by lowercase name; root [`new_depictions/__init__.py`](src/constants/new_units/new_depictions/__init__.py) merges factions.
+
+### Pitfalls
+
+`equipmentchanges` does not auto-update infantry depictions (`depiction_audit` warns). Vehicle/aerial registrations have no namespace (use `BlackHoleKey`). Custom vehicles need **both** `NEW_UNITS.depictions.custom` and `NEW_DEPICTIONS` keys. Missing `unit_name` → edit never loads. Prefer plain NDF strings or `(string,)` over `{f'...'}` set wrappers.
 
 ---
 

@@ -84,7 +84,6 @@ rfa_unit_edits = {
     # RFA INF
     "Panzergrenadier_CMD_RFA": {
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "PZ.GRENADIER",
         },
@@ -137,7 +136,6 @@ rfa_unit_edits = {
     
     "Fallschirmjager_CMD_RFA": {
         "CommandPoints": 25,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "FALLSCHIRMJÄGER",
         },
@@ -175,7 +173,6 @@ rfa_unit_edits = {
     
     "Jager_CMD_RFA": {  # #CMD JÄGER FÜH.
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "JÄGER"
         },
@@ -222,7 +219,6 @@ rfa_unit_edits = {
     
     "Engineers_CMD_RFA": {
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "PIONIER"
         },
@@ -260,7 +256,6 @@ rfa_unit_edits = {
 
     "Gebirgsjager_CMD_RFA": {  # #LDR GEBIRGSJÄGER FÜH.
         "CommandPoints": 45,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "GEBIRGSJÄGER"
         },
@@ -304,7 +299,6 @@ rfa_unit_edits = {
     },
     
     "HeimatschutzJager_RFA": {  # HEIMAT-JAGER
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "HEIMATJÄGER"
         },
@@ -337,7 +331,6 @@ rfa_unit_edits = {
     
     "Engineers_RFA": {
         "CommandPoints": 50,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -359,7 +352,6 @@ rfa_unit_edits = {
 
     "Fallschirm_Engineers_RFA": {
         "CommandPoints": 50,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -384,7 +376,6 @@ rfa_unit_edits = {
         "GameName": {
             "display": "GEBIRGSPIONERE"
         },
-        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "availability": [8, 6, 0, 0],
         "SpecialtiesList": {
@@ -425,7 +416,6 @@ rfa_unit_edits = {
         "CommandPoints": 25,
         "availability": [12, 0, 0, 0],
         "max_speed": 26,
-        "armor": "Infantry_armor_reference",
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
@@ -438,7 +428,6 @@ rfa_unit_edits = {
     
     "Engineers_Flam_RFA": {
         "CommandPoints": 50,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -453,7 +442,6 @@ rfa_unit_edits = {
     
     "Engineers_AT_RFA": {  # PIONIER (CarlG)
         "CommandPoints": 50,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "PIONIER [CG]"
         },
@@ -480,7 +468,6 @@ rfa_unit_edits = {
 
     "Strandmeister_RFA": {
         "CommandPoints": 50,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -496,7 +483,6 @@ rfa_unit_edits = {
     
     "Feldgendarmerie_RFA": {
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 12, 9, 0],
         "max_speed": 26,
         "strength": 8,
@@ -570,7 +556,6 @@ rfa_unit_edits = {
     
     "Security_RFA": {
         "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
         "availability": [10, 0, 0, 0],
         "max_speed": 26,
         "WeaponDescriptor": {
@@ -592,7 +577,6 @@ rfa_unit_edits = {
 
     "Security_Marine_RFA": {
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -603,7 +587,6 @@ rfa_unit_edits = {
 
     "Reserve_Polizei_RFA": {
         "CommandPoints": 25,
-        "armor": "Infantry_armor_reference",
         "availability": [12, 0, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -614,7 +597,6 @@ rfa_unit_edits = {
     
     "Hochgebirgjager_RFA": {  # HOCHGEBIRGSJÄGER
         "CommandPoints": 65,
-        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "availability": [0, 0, 4, 3],
         "SpecialtiesList": {
@@ -629,7 +611,6 @@ rfa_unit_edits = {
 
     "Fallschirm_RFA": {
         "CommandPoints": 45,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "FALLSCHIRMJÄGER"
         },
@@ -660,7 +641,6 @@ rfa_unit_edits = {
         "GameName": {
             "display": "FALLSCHIRM.-RESERVISTEN"
         },
-        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "availability": [8, 0, 0, 0],
         "capacities": {
@@ -681,7 +661,6 @@ rfa_unit_edits = {
         "GameName": {
             "display": "GEBIRGSJÄGER"
         },
-        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "availability": [10, 7, 0, 0],
         "SpecialtiesList": {
@@ -700,7 +679,6 @@ rfa_unit_edits = {
         "GameName": {
             "display": "GEBIRGSJÄGER [PzF3]"
         },
-        "armor": "Infantry_armor_reference",
         "max_speed": 20,
         "availability": [10, 7, 0, 0],
         "SpecialtiesList": {
@@ -745,7 +723,6 @@ rfa_unit_edits = {
         "GameName": {
             "display": "LUFT.-GEBIRGSJÄGER"
         },
-        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "availability": [6, 4, 0, 0],
         "SpecialtiesList": {
@@ -766,7 +743,6 @@ rfa_unit_edits = {
     
     "Jager_noAT_RFA": { # JÄGER (G3A3ZF)
         "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "availability": [10, 7, 0, 0],
         "SpecialtiesList": {
@@ -779,7 +755,6 @@ rfa_unit_edits = {
         "GameName": {
             "display": "JÄGER [PzF44]"
         },
-        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "availability": [10, 7, 0, 0],
         "SpecialtiesList": {
@@ -793,7 +768,6 @@ rfa_unit_edits = {
         "GameName": {
             "display": "JÄGER [CG]"
         },
-        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "availability": [10, 7, 0, 0],
         "SpecialtiesList": {
@@ -818,7 +792,6 @@ rfa_unit_edits = {
 
     "Groupe_AT_RFA": { # PZ.VERNICHTUNGSGRUPPE
         "CommandPoints": 30, # This could maybe be 25 points... maybe
-        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -838,7 +811,6 @@ rfa_unit_edits = {
         "GameName": {
             "display": "PZ.GRENADIER"
         },
-        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "availability": [12, 9, 0, 0],
         "SpecialtiesList": {
@@ -852,7 +824,6 @@ rfa_unit_edits = {
         "GameName": {
             "display": "PZ.GRENADIER [PzF3]"
         },
-        "armor": "Infantry_armor_reference",
         "strength": 6,
         "max_speed": 20,
         "availability": [12, 9, 0, 0],
@@ -873,7 +844,6 @@ rfa_unit_edits = {
     },
     
     "PzGrenadier_RFA": {  # PZ.GRENADIER (CarlG)
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 30,
         "GameName": {
             "display": "PZ.GRENADIER [CG]"
@@ -891,7 +861,6 @@ rfa_unit_edits = {
         "GameName": {
             "display": "PZ.GRENADIER [M113]"
         },
-        "armor": "Infantry_armor_reference",
         "max_speed": 20,
         "availability": [10, 7, 0, 0],
         "SpecialtiesList": {
@@ -923,7 +892,6 @@ rfa_unit_edits = {
     },
     
     "Deckungsgruppe_RFA": {
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 40, 
         "max_speed": 26,
         "availability": [12, 9, 0, 0],
@@ -1797,7 +1765,6 @@ rfa_unit_edits = {
 
     "Scout_RFA": {
         "CommandPoints": 20,
-        "armor": "Infantry_armor_reference",
         "availability": [8, 6, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1811,7 +1778,6 @@ rfa_unit_edits = {
         "GameName": {
             "display": "BGS STREIFE"
         },
-        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "availability": [10, 0, 0, 0],
         "SpecialtiesList": {
@@ -1822,7 +1788,6 @@ rfa_unit_edits = {
     "BGS_hvy_RFA": {
         "CommandPoints": 35,
         "availability": [8, 0, 0, 0],
-        "armor": "Infantry_armor_reference",
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1833,7 +1798,6 @@ rfa_unit_edits = {
     "Fallschirm_B1_RFA": { # Fallschirmjäger B1 (Satchel, Panzerfaust 3T)
         "CommandPoints": 65,
         "availability": [0, 0, 4, 3],
-        "armor": "Infantry_armor_reference",
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -1858,7 +1822,6 @@ rfa_unit_edits = {
     
     "Fernspaher_RFA": {
         "CommandPoints": 70,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1873,7 +1836,6 @@ rfa_unit_edits = {
     },
     
     "Fallschirmjager_Scout_RFA": {  # Fs-Jager aufk
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 25,
         "availability": [0, 7, 5, 0],
         "GameName": {
@@ -1886,7 +1848,6 @@ rfa_unit_edits = {
     },
 
     "Gebirgsjager_JagdKdo_RFA": {  # Geb JagKdo
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 55,
         "availability": [0, 4, 3, 0],
         "GameName": {
@@ -1928,7 +1889,6 @@ rfa_unit_edits = {
     },
     
     "Gebirgsjager_Scout_RFA": {  # GEB AUFKL.
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 55,
         "availability": [0, 7, 5, 0],
         "GameName": {
@@ -1941,7 +1901,6 @@ rfa_unit_edits = {
     },
     
     "Scout_Heimat_RFA": {  # HIEMAT-AUFKL.
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 35,
         "availability": [8, 0, 0, 0],
         "max_speed": 26,
@@ -1952,7 +1911,6 @@ rfa_unit_edits = {
     },
 
     "Jager_Aufk_RFA": {  # JAGER AUFKL.
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 40,
         "availability": [6, 4, 0, 0],
         "GameName": {
@@ -1966,7 +1924,6 @@ rfa_unit_edits = {
     },
 
     "Sniper_Fern_RFA": {  # #RECO2 FERN. SCHARFSCHÜTZE.
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 35,
         "availability": [0, 0, 4, 3],
         "strength": 3,
@@ -2004,7 +1961,6 @@ rfa_unit_edits = {
     },
 
     "Sniper_Geb_RFA": {  # GEB. SCHARFSCHÜTZE
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 30,
         "availability": [0, 4, 3, 0],
         "GameName": {
@@ -2017,7 +1973,6 @@ rfa_unit_edits = {
     },
 
     "SEK_RFA": {  # #RECO2 SEK
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 25,
         "availability": [0, 0, 8, 6],
         "GameName": {
@@ -2031,7 +1986,6 @@ rfa_unit_edits = {
     },
 
     "KSM_RFA": {  # #RECO2 KAMPFSCHWIMMER
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 60,
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
@@ -2103,7 +2057,6 @@ rfa_unit_edits = {
     # RFA AA
     "MANPAD_Redeye_RFA": {  # Fliegerfaust
         "CommandPoints": 20,
-        "armor": "Infantry_armor_reference",
         "availability": [12, 9, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {

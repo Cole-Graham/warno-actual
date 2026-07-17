@@ -84,17 +84,23 @@ any `countable` mount exists.
 ## Mount resolution
 
 `resolve_infantry_mounts_by_turret()` builds post-edit loadouts from `game_db["weapons"]`,
-applying:
+applying (in handler order):
 
-- `WeaponDescriptor.turrets.remove`
+- Per-turret `MountedWeapons.remove` and `MountedWeapons` `Ammunition` member patches
+- `WeaponDescriptor.turrets.remove` (whole turrets)
 - `equipmentchanges.replace`, `quantity`, `insert`
 
 For `replace`, a **list** under one `old_weapon` applies **one entry per matching mount**
 (in turret order), not once per turret — e.g. donor with two `RocketInf_RPG7VR_64mm`
 turrets and `[SAW replace, RPG29 replace]` yields one SAW mount and one RPG29 mount.
 
-Known gap: deep `turrets.MountedWeapons` insert/replace not in `equipmentchanges` may be
-missed if the ammo is absent from vanilla `weapons_db`.
+Dual-ammo recoilless mounts (HEAT + HE on one `AmmoBoxIndex`) are an important edge
+case: dropping the HE companion via `MountedWeapons.remove` must be visible here so
+infantry magazine remounts target the post-edit ammo (e.g. Carl Gustav) rather than
+vanilla M67 + M67_HE.
+
+Known gap: `MountedWeapons.insert` that adds ammo absent from vanilla `weapons_db`
+may still be missed.
 
 ## Escape hatches
 

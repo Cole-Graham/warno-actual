@@ -5,9 +5,13 @@ from typing import Any, Dict
 
 from src import ndf
 from src.constants.new_units import NEW_UNITS
-from src.constants.unit_edits.replace_schema import normalize_replace
+from src.constants.unit_edits.replace_schema import fire_effect_stem_from_ammo, normalize_replace
 # from src.constants.weapons.ammunition.small_arms import weapons as small_arms_weapons
 from src.constants.weapons import ammunitions, SNIPER_DAMAGE_FAMILIES
+from src.data.fire_effect_validation import (
+    ensure_fire_effect_exists,
+    unit_skips_infantry_fire_registry,
+)
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import is_valid_turret, strip_quotes, is_obj_type
 
@@ -17,6 +21,16 @@ logger = setup_logger(__name__)
 
 # Units that should skip strength variant generation
 UNITS_SKIP_STRENGTH_VARIANTS = {"KdA_DDR_TargetDummy"}
+
+
+def _require_infantry_fire_registry(
+    new_weap_row: Any,
+    edits: Dict[str, Any],
+    game_db: Dict[str, Any],
+) -> bool:
+    """False for vehicle-style teams / aerial / heavy equipment FX."""
+    unit_name = new_weap_row.namespace.replace("WeaponDescriptor_", "")
+    return not unit_skips_infantry_fire_registry(unit_name, edits, game_db)
 
 
 def new_units_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> None:
@@ -310,7 +324,16 @@ def _insert_weapon(
         # Update weapon indices and add strength to ammo path
         mounted_wpns = new_turret.v.by_m("MountedWeaponDescriptorList")
         for weapon in mounted_wpns.v:
-            weapon.v.by_m("EffectTag").v = f"'FireEffect_{fire_effect}'"
+            fe_stem = fire_effect_stem_from_ammo(fire_effect)
+            ensure_fire_effect_exists(
+                fire_effect,
+                game_db=game_db,
+                context=f"{new_weap_row.namespace} insert {weapon_name}",
+                require_infantry_registry=_require_infantry_fire_registry(
+                    new_weap_row, edits, game_db,
+                ),
+            )
+            weapon.v.by_m("EffectTag").v = f"'FireEffect_{fe_stem}'"
             weapon.v.by_m("AmmoBoxIndex").v = str(turret_index)
             weapon.v.by_m("HandheldEquipmentKey").v = f"'WeaponAlternative_{new_yul_bone}'"
             weapon.v.by_m("WeaponActiveAndCanShootPropertyName").v = f"'WeaponActiveAndCanShoot_{new_yul_bone}'"
@@ -512,7 +535,16 @@ def _replace_weapon_with_turret(
         # Update weapon indices and add strength to ammo path
         mounted_wpns = new_turret.v.by_m("MountedWeaponDescriptorList")
         for weapon in mounted_wpns.v:
-            weapon.v.by_m("EffectTag").v = f"'FireEffect_{fire_effect}'"
+            fe_stem = fire_effect_stem_from_ammo(fire_effect)
+            ensure_fire_effect_exists(
+                fire_effect,
+                game_db=game_db,
+                context=f"{new_weap_row.namespace} replace_with_turret {new_weapon_name}",
+                require_infantry_registry=_require_infantry_fire_registry(
+                    new_weap_row, edits, game_db,
+                ),
+            )
+            weapon.v.by_m("EffectTag").v = f"'FireEffect_{fe_stem}'"
             weapon.v.by_m("AmmoBoxIndex").v = str(turret_index)
             weapon.v.by_m("HandheldEquipmentKey").v = f"'WeaponAlternative_{new_yul_bone}'"
             weapon.v.by_m("WeaponActiveAndCanShootPropertyName").v = f"'WeaponActiveAndCanShoot_{new_yul_bone}'"
@@ -679,8 +711,22 @@ def _replace_weapon(
                 if old_fire_effect and new_fire_effect:
                     fire_effect_val = strip_quotes(weapon_descr_row.v.by_m("EffectTag").v)
                     current_fire_effect = fire_effect_val.replace("FireEffect_", "")
-                    weapon_descr_row.v.by_m("EffectTag").v = f"'FireEffect_{new_fire_effect}'"
-                    logger.debug(f"Replaced fire effect {current_fire_effect} with {new_fire_effect}")
+                    fe_stem = fire_effect_stem_from_ammo(new_fire_effect)
+                    unit_edits_for_fx = None
+                    for _donor, candidate in NEW_UNITS.items():
+                        if candidate.get("NewName") == unit_name:
+                            unit_edits_for_fx = candidate
+                            break
+                    ensure_fire_effect_exists(
+                        new_fire_effect,
+                        game_db=game_db,
+                        context=f"{new_weap_row.namespace} replace {old_ammo} -> {new_ammo}",
+                        require_infantry_registry=not unit_skips_infantry_fire_registry(
+                            unit_name, unit_edits_for_fx, game_db,
+                        ),
+                    )
+                    weapon_descr_row.v.by_m("EffectTag").v = f"'FireEffect_{fe_stem}'"
+                    logger.debug(f"Replaced fire effect {current_fire_effect} with {fe_stem}")
                 return
 
 

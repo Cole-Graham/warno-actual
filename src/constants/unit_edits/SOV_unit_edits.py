@@ -213,7 +213,6 @@ sov_unit_edits = {
     # SOV INF
     "MotRifles_CMD_SOV": {
         "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "MOTOSTRELKI",
             # "token": "ZJRMUWLPVH",
@@ -285,7 +284,6 @@ sov_unit_edits = {
     
     "MotRifles_CMD_TTsko_SOV": {
         "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "MOTOSTRELKI",
             # "token": "ZJRMUWLPVH",
@@ -351,7 +349,6 @@ sov_unit_edits = {
 
     "Engineers_CMD_TTsko_SOV": {
         "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "SAPERY",
             # "token": "QCNBGTPZWL",
@@ -408,7 +405,6 @@ sov_unit_edits = {
 
     "Engineers_CMD_SOV": {
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "SAPERY [RPG-7]",
             # "token": "AGYMPGDUXA",
@@ -462,7 +458,6 @@ sov_unit_edits = {
 
     "Spetsnaz_CMD_SOV": {
         "CommandPoints": 50,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "SPETSNAZ",
             # "token": "CKLQCEBSOY",
@@ -510,7 +505,6 @@ sov_unit_edits = {
 
     "VDV_CMD_SOV": {
         "CommandPoints": 50,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "DESANTNIKI",
             # "token": "JSBZIJKKJJ",
@@ -572,7 +566,6 @@ sov_unit_edits = {
     
     "DShV_CMD_SOV": {
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "DSh.",
             # "token": "JSBZIJKKJJ",
@@ -620,7 +613,6 @@ sov_unit_edits = {
 
     "Engineers_CMD_VDV_SOV": {
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "DESANT. SAPERY",
             # "token": "SWFVKVIZVT",
@@ -674,7 +666,6 @@ sov_unit_edits = {
 
     "KGB_BorderGuard_CMD_SOV": {
         "CommandPoints": 25,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "POGRANVOISK KGB",
             "token": "LLUPBPHFST",
@@ -724,7 +715,6 @@ sov_unit_edits = {
     
     "Naval_Rifle_CMD_SOV": {
         "CommandPoints": 45,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "MOR. PEKHOTA KOM.",
         },
@@ -776,7 +766,6 @@ sov_unit_edits = {
     
     "Naval_VDV_CMD_SOV": {
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "DESANT. MOR. KOMROTI",
         },
@@ -820,7 +809,6 @@ sov_unit_edits = {
     
     "Engineers_CMD_Naval_SOV": {
         "CommandPoints": 45,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "MOR. SAPERI KOMROTI",
         },
@@ -872,7 +860,6 @@ sov_unit_edits = {
     },
 
     "Engineers_SOV": {
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "SAPERY",
         },
@@ -901,7 +888,6 @@ sov_unit_edits = {
     },
 
     "Engineers_TTsko_SOV": {
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "SAPERY",
         },
@@ -926,7 +912,6 @@ sov_unit_edits = {
     },
 
     "Engineers_Reserve_SOV": {
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 35,
         "availability": [10, 0, 0, 0],
         "max_speed": 26,
@@ -938,7 +923,6 @@ sov_unit_edits = {
 
 
     "Engineers_VDV_SOV": {
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "DESANT. SAPERY",
         },
@@ -970,7 +954,6 @@ sov_unit_edits = {
     },
     
     "Engineers_DShV_SOV": {
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 30,
         "Divisions": {
             "default": {
@@ -1027,7 +1010,6 @@ sov_unit_edits = {
     },
 
     "Engineers_Flam_SOV": {
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "SAPERY [RPO]",
         },
@@ -1055,7 +1037,6 @@ sov_unit_edits = {
     },
 
     "Engineers_Flam_TTsko_SOV": {
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "SAPERY [RPO]",
         },
@@ -1080,7 +1061,6 @@ sov_unit_edits = {
     },
 
     "Engineers_Flam_Reserve_SOV": {
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 35,
         "availability": [8, 0, 0, 0],
         "max_speed": 20,
@@ -1091,7 +1071,6 @@ sov_unit_edits = {
     },
 
     "Engineers_Flam_VDV_SOV": {
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "DESANT. SAPERY [RPO]",
         },
@@ -1109,7 +1088,6 @@ sov_unit_edits = {
     },
     
     "Engineers_Flam_DShV_SOV": {
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 45,
         "availability": [0, 9, 7, 0],
         "max_speed": 20,
@@ -1133,7 +1111,6 @@ sov_unit_edits = {
     },
 
     "MotRifles_SOV": { # MOTOPEKHOTA
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "MOTOPEKHOTA",
         },
@@ -1166,7 +1143,6 @@ sov_unit_edits = {
     },
 
     "MotRifles_RPG22_SOV": { # MOTOPEKHOTA [RPG-22]
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "MOTOPEKHOTA [RPG-22]",
         },
@@ -1192,7 +1168,6 @@ sov_unit_edits = {
     },
 
     "MotRifles_TTsko_SOV": {  # MOTOSTRELKI [RPG-27]
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "MOTOSTRELKI [RPG-27]",
         },
@@ -1218,7 +1193,6 @@ sov_unit_edits = {
     },
 
     "MotRifles_BTR_TTsko_SOV": {  # MOTOSTRELKI [RPG-26]
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "MOTOSTRELKI [RPG-26]",
         },
@@ -1257,7 +1231,6 @@ sov_unit_edits = {
     },
     
     "MotRifles_MVD_SOV": {
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "MOTOSTRELKI MVD",
         },
@@ -1270,7 +1243,6 @@ sov_unit_edits = {
     },
 
     "MotRifles_BTR_SOV": {  # MOTOPEKHOTA [RPG-7VR]
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "MOTOPEKHOTA [RPG-7VR]",
         },
@@ -1306,7 +1278,6 @@ sov_unit_edits = {
     },
     
     "MotRifles_RPG7VS_SOV": { # MOTOPEKHOTA [RPG-7VS]
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "MOTOPEKHOTA [RPG-7VS]",
         },
@@ -1332,7 +1303,6 @@ sov_unit_edits = {
     },
 
     "MotRifles_Metis_TTsko_SOV": { # MOTOSTRELKI [METIS]
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "MOTOSTRELKI [METIS]",
         },
@@ -1359,7 +1329,6 @@ sov_unit_edits = {
     },
 
     "MotRifles_Metis_SOV": { # MOTOPEKHOTA [METIS]
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "MOTOPEKHOTA [METIS]",
         },
@@ -1380,7 +1349,6 @@ sov_unit_edits = {
     },
 
     "VDV_Mech_SOV": {  # RPK, SVD, RPG-7VL
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "DESANTNIKI [SVD]",
         },
@@ -1409,7 +1377,6 @@ sov_unit_edits = {
     },
 
     "VDV_SOV": {  # 2x RPK, SVD, RPG-7VR
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 35,
         "Divisions": {
             "default": {
@@ -1445,7 +1412,6 @@ sov_unit_edits = {
     },
 
     "VDV_Combine_SOV": {  # RPK, RPG-22, RPG-7VL
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 45,
         "availability": [0, 6, 4, 0],
         "max_speed": 26,
@@ -1467,7 +1433,6 @@ sov_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'"],
         },
-        "armor": "Infantry_armor_reference",
         "WeaponDescriptor": {
             "equipmentchanges": {
                 "replace": {
@@ -1485,7 +1450,6 @@ sov_unit_edits = {
     },
     
     "DShV_Afgantsy_SOV": {
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 60,
         "availability": [0, 6, 4, 0],
         "max_speed": 20,
@@ -1495,7 +1459,6 @@ sov_unit_edits = {
     },
 
     "VDV_Metis_SOV": {
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "DESANTNIKI [METIS]",
         },
@@ -1524,7 +1487,6 @@ sov_unit_edits = {
     },
     
     "DShV_Metis_SOV": {
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 45,
         "availability": [0, 7, 5, 0],
         "max_speed": 20,
@@ -1551,7 +1513,6 @@ sov_unit_edits = {
     },
     
     "DShV_RPG16_SOV": {
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 35,
         "availability": [0, 6, 4, 0],
         "max_speed": 26,
@@ -1561,7 +1522,6 @@ sov_unit_edits = {
     },
     
     "DShV_Hvy_SOV": {
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 55,
         "availability": [0, 6, 4, 0],
         "max_speed": 26,
@@ -1605,7 +1565,6 @@ sov_unit_edits = {
     },
 
     "MP_SOV": {
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 35,
         "Divisions": {
             "default": {
@@ -1667,7 +1626,6 @@ sov_unit_edits = {
     
     "MP_Combat_SOV": {
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 8, 6, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1677,7 +1635,6 @@ sov_unit_edits = {
     
     "KGB_BorderGuard_SOV": {
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1687,7 +1644,6 @@ sov_unit_edits = {
 
     "KGB_BorderGuard_Aero_SOV": {
         "CommandPoints": 70,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 6, 4, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -1696,7 +1652,6 @@ sov_unit_edits = {
     },
 
     "VDV_HMG_SOV": {  # Desant.Pulemetchiki
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 35,
         "Divisions": {
             "default": {
@@ -1711,7 +1666,6 @@ sov_unit_edits = {
     },
     
     "DShV_HMG_SOV": { # DSh. Pulemetchiki
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 35,
         "availability": [0, 6, 4, 0],
         "max_speed": 26,
@@ -1724,7 +1678,6 @@ sov_unit_edits = {
         "GameName": {
             "display": "PULEMETCHIKI [BTR]",
         },
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 30,
         "Divisions": {
             "default": {
@@ -1746,7 +1699,6 @@ sov_unit_edits = {
     },
 
     "MotRifles_HMG_TTsko_SOV": {  # Pulemetchiki
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 30,
         "strength": 8,
         "Divisions": {
@@ -1774,7 +1726,6 @@ sov_unit_edits = {
     },
 
     "Reserve_HMG_SOV": {  # Rez. Pulemetchiki
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 25,
         "availability": [12, 0, 0, 0],
         "max_speed": 26,
@@ -1784,7 +1735,6 @@ sov_unit_edits = {
     },
 
     "FireSupport_TTsko_SOV": {
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 25,
         "Divisions": {
             "default": {
@@ -1804,7 +1754,6 @@ sov_unit_edits = {
     },
     
     "FireSupport_Naval_SOV": {
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 25,
         "Divisions": {
             "default": {
@@ -1825,7 +1774,6 @@ sov_unit_edits = {
     
     "OMON_SOV": {
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 6, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1846,7 +1794,6 @@ sov_unit_edits = {
     
     "URSN_SOV": {
         "CommandPoints": 45,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 0, 6, 4],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1856,7 +1803,6 @@ sov_unit_edits = {
 
     "Spetsnaz_SOV": {
         "CommandPoints": 75,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -1871,7 +1817,6 @@ sov_unit_edits = {
     
     "Spetsnaz_Naval_SOV": {
         "CommandPoints": 75,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -1895,7 +1840,6 @@ sov_unit_edits = {
 
     "Spetsnaz_Vympel_SOV": {  # Spetsgruppa Vympel
         "CommandPoints": 70,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1911,7 +1855,6 @@ sov_unit_edits = {
 
     "Spetsnaz_FireSupport_SOV": {
         "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 0, 8, 6],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -4548,7 +4491,6 @@ sov_unit_edits = {
     
     "Scout_SOV": {
         "CommandPoints": 20,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 3,
@@ -4563,7 +4505,6 @@ sov_unit_edits = {
 
     "Scout_TTsko_SOV": {
         "CommandPoints": 20,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 3,
@@ -4578,7 +4519,6 @@ sov_unit_edits = {
     
     "Scout_Naval_SOV": {
         "CommandPoints": 20,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 3,
@@ -4593,7 +4533,6 @@ sov_unit_edits = {
     
     "Scout_Naval_VDV_SOV": {
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -4627,7 +4566,6 @@ sov_unit_edits = {
 
     "Scout_VDV_SOV": {
         "CommandPoints": 25,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 3,
@@ -4641,7 +4579,6 @@ sov_unit_edits = {
     },
 
     "Engineers_Scout_SOV": {
-        "armor": "Infantry_armor_reference",
         "GameName": {
             # "display": "RAZVEDKA SAPERY",
             "display": "RAZV. SAPERY",
@@ -4661,7 +4598,6 @@ sov_unit_edits = {
     },
 
     "Engineers_Scout_TTsko_SOV": {
-        "armor": "Infantry_armor_reference",
         "GameName": {
             # "display": "RAZVEDKA SAPERY",
             "display": "RAZV. SAPERY",
@@ -4681,7 +4617,6 @@ sov_unit_edits = {
     },
 
     "HvyScout_SOV": {
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 30,
         "availability": [7, 5, 0, 0],
         "max_speed": 26,
@@ -4711,7 +4646,6 @@ sov_unit_edits = {
 
     "HvyScout_TTsko_SOV": {
         "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
         "availability": [7, 5, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -4735,7 +4669,6 @@ sov_unit_edits = {
     },
     
     "HvyScout_Reserve_SOV": {
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 30,
         "availability": [7, 0, 0, 0],
         "max_speed": 26,
@@ -4746,7 +4679,6 @@ sov_unit_edits = {
 
     "HvyScout_DShV_SOV": {
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 5, 4, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -4765,7 +4697,6 @@ sov_unit_edits = {
 
     "Scout_SIGINT_SOV": {
         "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
@@ -4774,7 +4705,6 @@ sov_unit_edits = {
 
     "Scout_LRRP_SOV": {  # Spetsnaz GRU (GSR)
         "CommandPoints": 65,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -4785,7 +4715,6 @@ sov_unit_edits = {
 
     "Engineers_Scout_Jouk_SOV": {  # INZH. RAZVEDKA (GSR)
         "CommandPoints": 70,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 4, 3, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -4796,7 +4725,6 @@ sov_unit_edits = {
 
     "Scout_Spetsnaz_SOV": { # Spetzrazvedka (GSR)
         "CommandPoints": 65,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 4, 3, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -4806,7 +4734,6 @@ sov_unit_edits = {
     
     "Scout_Spetsnaz_Naval_SOV": {
         "CommandPoints": 60,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -4816,7 +4743,6 @@ sov_unit_edits = {
 
     "KGB_BorderGuard_LRRP_SOV": { # Spetzrazvedka (GSR)
         "CommandPoints": 55,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 4, 3, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -4826,7 +4752,6 @@ sov_unit_edits = {
     
     "Sniper_Spetsnaz_SOV": {
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "strength": 3,
@@ -4872,7 +4797,6 @@ sov_unit_edits = {
 
     "Scout_Spetsnaz_VDV_SOV": { # Desant Spetzrazvedka
         "CommandPoints": 65,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 4, 3, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -4882,7 +4806,6 @@ sov_unit_edits = {
 
     "Scout_SpetsnazGRU_Stinger_SOV": { # SpetzGRU with Stinger
         "CommandPoints": 50,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -4897,7 +4820,6 @@ sov_unit_edits = {
 
     "Alfa_Group_SOV": {
         "CommandPoints": 60,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -5135,7 +5057,6 @@ sov_unit_edits = {
 
     "MANPAD_Igla_SOV": {
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "Divisions": {
             "default": {
                 "cards": 1,
@@ -5173,7 +5094,6 @@ sov_unit_edits = {
 
     "MANPAD_Igla_TTsko_SOV": {
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "availability": [7, 5, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -5194,7 +5114,6 @@ sov_unit_edits = {
 
     "MANPAD_Igla_Gvardeitsy_SOV": {
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "availability": [7, 5, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -5215,7 +5134,6 @@ sov_unit_edits = {
 
     "MANPAD_Igla_VDV_SOV": {
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 7, 5, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -5236,7 +5154,6 @@ sov_unit_edits = {
     
     "MANPAD_Igla_Naval_VDV_SOV": {
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 7, 5, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -5257,7 +5174,6 @@ sov_unit_edits = {
 
     "MANPAD_Igla_DShV_SOV": {
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 7, 5, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -5278,7 +5194,6 @@ sov_unit_edits = {
 
     "MANPAD_Strela_3_SOV": {
         "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
         "max_speed": 20,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],

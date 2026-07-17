@@ -38,7 +38,6 @@ RFA_NEW_UNITS = {
         },
         "TransportedTexture": "UseInGame_Transport_COMMAND",
         "TransportedSoldier": "Engineers_CMD_RFA",
-        "armor": "Infantry_armor_reference",
         "Factory": "Factory/Logistic",
         "CommandPoints": 145,
         "SpecialtiesList": [
@@ -405,7 +404,6 @@ RFA_NEW_UNITS = {
             },
         },
         "TransportedSoldier": "Jager_PzF3_RFA",
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 40,
         "UnitRole": 'infantry',
         "SpecialtiesList": [
@@ -481,7 +479,6 @@ RFA_NEW_UNITS = {
             },
         },
         "TransportedSoldier": "TankHunters_RFA",
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 45 ,
         "UnitRole": 'infantry',
         "SpecialtiesList": [
@@ -595,15 +592,10 @@ RFA_NEW_UNITS = {
         },
         "strength": 2,
         "TransportedSoldier": "MANPAD_Redeye_Geb_RFA",
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 20,
         "UnitRole": 'infantry',
         "WeaponDescriptor": {
             "equipmentchanges": {
-                "quantity": {
-                    "PM_Uzi_noreflex": 2,
-                    "MANPAD_FIM43": 6,
-                },
                 "replace": {
                     "PM_Uzi": {
                         "new_weapon": "PM_Uzi_noreflex",
@@ -668,7 +660,6 @@ RFA_NEW_UNITS = {
         },
         "strength": 2,
         "TransportedSoldier": "MANPAD_Stinger_FJ_RFA",
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 40,
         "UnitRole": 'infantry',
         "SpecialtiesList": [
@@ -688,10 +679,6 @@ RFA_NEW_UNITS = {
                         "swap_fire_effect": False,
                         "depiction_baked_in": False,
                     },
-                },
-                "quantity": {
-                    "PM_Uzi_noreflex": 2,
-                    "MANPAD_FIM92_A": 6,
                 },
             },
             "Salves": {
@@ -744,7 +731,6 @@ RFA_NEW_UNITS = {
         },
         "strength": 2,
         "TransportedSoldier": "MANPAD_Stinger_RFA",
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 40,
         "UnitRole": 'infantry',
         "SpecialtiesList": [
@@ -763,10 +749,6 @@ RFA_NEW_UNITS = {
                         "swap_fire_effect": False,
                         "depiction_baked_in": False,
                     },
-                },
-                "quantity": {
-                    "PM_Uzi_noreflex": 2,
-                    "MANPAD_FIM92_A": 6,
                 },
             },
             "Salves": {

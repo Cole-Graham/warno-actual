@@ -194,7 +194,6 @@ UK_NEW_UNITS = {
         "TransportedTexture": "UseInGame_Transport_COMMAND",
         "TransportedSoldier": "Rifles_UK",
         "Factory": "Factory/Logistic",
-        "armor": "Infantry_armor_reference",
         "CommandPoints": 145,
         "UnitRole": 'hq_inf',
         "SpecialtiesList": [
@@ -362,14 +361,13 @@ UK_NEW_UNITS = {
     
     ("FV4201_Chieftain_Mk9_UK", 0): {  # donor unit - increment integer as needed to avoid duplicate keys
         "capacities": {
-            "add_capacities": ["Reload_Penalty"],
+            "add_capacities": ["CMD_UNIT", "Reload_Penalty"],
         },
         "GUID": "42c8aa7b-7dec-406c-9806-876e01d5eff6",
         "InfantrySquadModuleGUID": "2a3009a7-9dd4-4a3e-8f0d-f54471cbb1e2",
         "ShowroomGUID": "576ba527-ee4d-4078-b7aa-de7d5768e192",
         "CadavreGUID": "9758e636-88e4-4970-adba-ffb1b4a0813c",
         "modules_add": [
-            "TCommanderModuleDescriptor()",
             """TInfluenceMapModuleDescriptor
             (
                 InfluenceStrength = 1.0

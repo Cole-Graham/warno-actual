@@ -29,6 +29,8 @@ from .handlers.shock_no_resolute_specialty import apply_shock_no_resolute_specia
 from .handlers.atgm_infantry_team_strength import (
     apply_atgm_infantry_team_strength_pattern_standard,
 )
+from .handlers.commander_capacite import apply_commander_capacite_pattern_standard
+from .handlers.infantry_armor import apply_infantry_armor_pattern_standard
 
 logger = setup_logger(__name__)
 
@@ -57,7 +59,9 @@ def edit_gen_gp_gfx_unitedescriptor(source_path, game_db) -> None:
     unit_edits_dic_entries = []
     _handle_unit_edits(source_path, game_db, unit_edits, unit_edits_dic_entries)
 
+    apply_commander_capacite_pattern_standard(logger, source_path, game_db)
     apply_atgm_infantry_team_strength_pattern_standard(logger, source_path, game_db)
+    apply_infantry_armor_pattern_standard(logger, source_path, game_db)
     apply_shock_no_resolute_specialty_pattern_standard(logger, source_path, game_db)
 
     merged_dic_entries = unit_edits_dic_entries + new_units_dic_entries

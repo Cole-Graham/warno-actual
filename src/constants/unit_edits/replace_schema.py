@@ -41,6 +41,12 @@ replacement still consumes the next matching mount in turret order:
 mounted weapon's turret salvo. When ``False`` the row is also treated as
 a no-op by the depiction audit.
 
+Fire-effect IDs are always the **bare** ammo stem shared by all magazine
+variants. ``_salvolength{N}`` / ``_infmagazine{N}`` belong only on
+``new_weapon`` / Salves keys — they are stripped when deriving
+``old_fire_effect`` / ``new_fire_effect`` (defaults and explicit
+``old_new_effect``). Do not strip ``_x{N}``; some vehicle FX include it.
+
 ``depiction_baked_in`` is an orthogonal per-row opt-out used for vehicles
 / aircraft whose weapon mesh is part of the hull/turret model rather
 than a separate WeaponAlternative. When ``True`` the runtime EffectTag
@@ -52,12 +58,25 @@ whether a depiction edit is needed for each replacement.
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from typing import Any, List, Mapping, Optional, cast
 
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
+
+# Magazine suffixes only — do not strip _x{N} (vehicle FX may include it).
+_FIRE_EFFECT_MAGAZINE_SUFFIX_RE = re.compile(r"(_salvolength\d+|_infmagazine\d+)$")
+
+
+def fire_effect_stem_from_ammo(ammo_or_effect: str) -> str:
+    """Return the bare fire-effect stem shared by all magazine variants.
+
+    Strips trailing ``_salvolength{N}`` / ``_infmagazine{N}``. Leaves
+    ``_x{N}`` and ``_strength{N}`` alone.
+    """
+    return _FIRE_EFFECT_MAGAZINE_SUFFIX_RE.sub("", ammo_or_effect)
 
 
 @dataclass(frozen=True)
@@ -72,9 +91,10 @@ class ReplaceSpec:
             depiction audit considers this row as requiring a depiction edit
             (unless ``depiction_baked_in`` is also True).
         old_fire_effect: Fire-effect identifier currently on the mount.
-            Defaults to ``old_weapon`` when omitted.
+            Defaults to the bare stem of ``old_weapon`` when omitted.
         new_fire_effect: Fire-effect identifier to install. Defaults to
-            ``new_weapon`` when omitted.
+            the bare stem of ``new_weapon`` when omitted (magazine suffixes
+            stripped).
         depiction_baked_in: When ``True``, this row is exempt from the
             depiction audit because the weapon mesh is part of the
             unit's hull / turret model (no separate WeaponAlternative
@@ -117,6 +137,8 @@ def _spec_from_dict_entry(old_weapon: str, payload: Mapping[str, Any]) -> Option
             old_fe = old_weapon
         if new_fe is None:
             new_fe = new_weapon
+        old_fe = fire_effect_stem_from_ammo(old_fe)
+        new_fe = fire_effect_stem_from_ammo(new_fe)
     return ReplaceSpec(
         old_weapon=old_weapon,
         new_weapon=new_weapon,

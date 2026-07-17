@@ -16,9 +16,11 @@ detects which of three shapes is in play:
   the target list value.
 """
 
-from typing import Any, Iterable
+from typing import Any, Iterable, Mapping, Optional
 
 from src import ndf
+from src.constants.unit_edits.replace_schema import fire_effect_stem_from_ammo
+from src.data.fire_effect_validation import ensure_fire_effect_exists
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import is_obj_type
 
@@ -164,6 +166,7 @@ def apply_all_weapon_sub_depiction(
     value: Any,
     *,
     unit_name: str,
+    game_db: Optional[Mapping[str, Any]] = None,
 ) -> None:
     """Apply edits to an ``AllWeaponSubDepiction_<unit>`` object.
 
@@ -184,7 +187,12 @@ def apply_all_weapon_sub_depiction(
     for member, member_value in value.items():
         if member == "Operators":
             operators_member = target.v.by_m("Operators")
-            _apply_subdepiction_operators(operators_member, member_value, unit_name=unit_name)
+            _apply_subdepiction_operators(
+                operators_member,
+                member_value,
+                unit_name=unit_name,
+                game_db=game_db,
+            )
         else:
             logger.warning(
                 f"AllWeaponSubDepiction member '{member}' for {unit_name} not handled by shared apply layer"
@@ -196,6 +204,7 @@ def _apply_subdepiction_operators(
     value: Any,
     *,
     unit_name: str,
+    game_db: Optional[Mapping[str, Any]] = None,
 ) -> None:
     """Apply edits to ``AllWeaponSubDepiction_<unit>.Operators`` list."""
     if is_wholesale_list(value):
@@ -225,7 +234,13 @@ def _apply_subdepiction_operators(
             shoot_property = None
             for submember, mv in edit_list:
                 if submember == "FireEffectTag":
-                    effect_tag = f'"FireEffect_{_coerce_quoted(mv)}"'
+                    fe_stem = fire_effect_stem_from_ammo(_coerce_quoted(mv))
+                    ensure_fire_effect_exists(
+                        mv,
+                        game_db=game_db,
+                        context=f"{unit_name} Operators[{index}] insert",
+                    )
+                    effect_tag = f'"FireEffect_{fe_stem}"'
                 elif submember == "WeaponShootDataPropertyName":
                     shoot_property = f'"{mv}"'
             if effect_tag and shoot_property:
@@ -263,7 +278,13 @@ def _apply_subdepiction_operators(
             continue
         for submember, mv in edit_list:
             if submember == "FireEffectTag":
-                new_value = f'"FireEffect_{_coerce_quoted(mv)}"'
+                fe_stem = fire_effect_stem_from_ammo(_coerce_quoted(mv))
+                ensure_fire_effect_exists(
+                    mv,
+                    game_db=game_db,
+                    context=f"{unit_name} Operators[{index}] edit",
+                )
+                new_value = f'"FireEffect_{fe_stem}"'
                 member_row = operators_member.v[index].v.by_m(submember, False)
                 if member_row is None:
                     logger.error(f"{submember} for {unit_name} Operators[{index}] not found")
@@ -527,6 +548,7 @@ def apply_infantry_section(
     value: Any,
     *,
     unit_name: str,
+    game_db: Optional[Mapping[str, Any]] = None,
 ) -> bool:
     """Dispatch a single ``(namespace, obj_type) -> value`` infantry edit.
 
@@ -550,7 +572,9 @@ def apply_infantry_section(
             )
         return True
     if namespace and namespace.startswith("AllWeaponSubDepiction_"):
-        apply_all_weapon_sub_depiction(target, value, unit_name=unit_name)
+        apply_all_weapon_sub_depiction(
+            target, value, unit_name=unit_name, game_db=game_db,
+        )
         return True
     if namespace and namespace.startswith("TacticDepiction_") and namespace.endswith("_Alternatives"):
         apply_tactic_depiction_alternatives(target, value, unit_name=unit_name)

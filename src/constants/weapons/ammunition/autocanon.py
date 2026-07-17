@@ -901,6 +901,60 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "SupplyCost": 5.0,
     },
     
+    ("GatlingAir_AP_Gsh_30_6_30mm", "autocannon", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 30,
+                "Moving": 30,
+            },
+        },
+    },
+    
+    ("GatlingAir_Gsh_30_6_30mm", "autocannon", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 30,
+                "Moving": 30,
+            },
+        },
+    },
+    
+    ("GatlingAir_AP_Gsh_30_2_30mm_x2", "autocannon", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
+        },
+    },
+    
+    ("GatlingAir_Gsh_30_2_30mm_x2", "autocannon", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
+        },
+    },
+    
+    ("GatlingAir_AP_GAU8_30mm", "autocannon", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
+        },
+    },
+    
+    ("GatlingAir_GAU8_30mm", "autocannon", None, False): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
+        },
+    },
+    
     ("GatlingAir_M61_Vulcan_20mm", "autocannon", None, False): { # 338
         "Ammunition": {
             "parent_membr": {

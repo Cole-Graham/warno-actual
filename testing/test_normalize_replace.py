@@ -46,6 +46,46 @@ class NormalizeReplaceTests(unittest.TestCase):
         self.assertFalse(specs[0].swap_fire_effect)
         self.assertTrue(specs[0].depiction_baked_in)
 
+    def test_salvolength_stripped_from_default_fire_effects(self) -> None:
+        specs = normalize_replace({
+            "RocketInf_RPG27_105mm": {
+                "new_weapon": "RocketInf_RPG7VL_salvolength6",
+                "swap_fire_effect": True,
+                "depiction_baked_in": False,
+            },
+        })
+        self.assertEqual(len(specs), 1)
+        self.assertEqual(specs[0].new_weapon, "RocketInf_RPG7VL_salvolength6")
+        self.assertEqual(specs[0].old_fire_effect, "RocketInf_RPG27_105mm")
+        self.assertEqual(specs[0].new_fire_effect, "RocketInf_RPG7VL")
+
+    def test_infmagazine_stripped_from_default_fire_effects(self) -> None:
+        specs = normalize_replace({
+            "MANPAD_igla": {
+                "new_weapon": "MANPAD_igla_infmagazine4",
+                "swap_fire_effect": True,
+                "depiction_baked_in": False,
+            },
+        })
+        self.assertEqual(len(specs), 1)
+        self.assertEqual(specs[0].new_fire_effect, "MANPAD_igla")
+
+    def test_old_new_effect_magazine_suffixes_stripped(self) -> None:
+        specs = normalize_replace({
+            "RocketInf_PzF_44": {
+                "new_weapon": "RocketInf_PzF_3_salvolength6",
+                "swap_fire_effect": True,
+                "depiction_baked_in": False,
+                "old_new_effect": (
+                    "RocketInf_PzF_44_salvolength4",
+                    "RocketInf_PzF_3_salvolength6",
+                ),
+            },
+        })
+        self.assertEqual(len(specs), 1)
+        self.assertEqual(specs[0].old_fire_effect, "RocketInf_PzF_44")
+        self.assertEqual(specs[0].new_fire_effect, "RocketInf_PzF_3")
+
 
 if __name__ == "__main__":
     unittest.main()

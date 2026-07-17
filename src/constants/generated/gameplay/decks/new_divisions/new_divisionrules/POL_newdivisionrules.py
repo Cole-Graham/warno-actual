@@ -312,6 +312,8 @@ POL_mechanized_newdivisionrules = {
         ("DCA_ZU_23_2_POL", 1, [10, 7, 0, 0], ["UAZ_469_trans_POL"]),
     ],
     "infantry": [
+        ("Commandos_CMD_POL", 1, [0, 0, 4, 3], ["W3_Sokol_POL", "Mi_8T_non_arme_POL", "Mi_8T_POL"]),
+        ("Commandos_POL", 1, [0, 0, 8, 6], ["W3_Sokol_POL", "Mi_8T_non_arme_POL", "Mi_8T_POL"]),
         ("MotRifles_CMD_POL", 1, [0, 0, 7, 5], ["OT_62_TOPAS_POL", "OT_62_TOPAS_2AP_POL", "BMP_1_SP2_POL", "BMP_2_POL"]),
         ("Engineers_CMD_POL", 1, [0, 0, 5, 4], ["OT_62_TOPAS_POL"]),
         ("Naval_Engineers_CMD_POL", 1, [0, 0, 7, 5], ["OT_62_TOPAS_POL"]), # Something is causing this unit to crash without a crash log when selected in the armory

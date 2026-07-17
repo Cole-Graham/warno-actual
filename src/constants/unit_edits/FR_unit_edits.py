@@ -77,7 +77,6 @@ fr_unit_edits = {
     # FR INF
     "Chasseurs_CMD_FR": {
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "CHASSEURS",
         },
@@ -155,7 +154,6 @@ fr_unit_edits = {
     
     "Rifles_CMD_FR": {
         "CommandPoints": 25,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "GREN.-VOLTIGEURS",
         },
@@ -210,7 +208,6 @@ fr_unit_edits = {
     
     "Sapeurs_CMD_FR": {
         "CommandPoints": 50,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "SAPEURS",
         },
@@ -273,7 +270,6 @@ fr_unit_edits = {
     
     "Rifles_Aero_CMD_FR": {
         "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
         "GameName": {
             "display": "AEROMOBILES",
         },
@@ -392,7 +388,6 @@ fr_unit_edits = {
     
     "Gendarmerie_FR": { # Prevote
         "CommandPoints": 15,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 12, 9, 0],
         "strength": 5,
         "SpecialtiesList": {
@@ -410,7 +405,6 @@ fr_unit_edits = {
     
     "Rifles_FR": { # Gren.-Voltigeurs
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -426,7 +420,6 @@ fr_unit_edits = {
     
     "Rifles_DMR_FR": { # Gren.-Voltigeurs [FR-F1]
         "CommandPoints": 40,
-        "armor": "Infantry_armor_reference",
         "availability": [8, 6, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -442,7 +435,6 @@ fr_unit_edits = {
     
     "Rifles_APILAS_FR": { # Gren.-Voltigeurs [APILAS]
         "CommandPoints": 45,
-        "armor": "Infantry_armor_reference",
         "availability": [8, 6, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -458,7 +450,6 @@ fr_unit_edits = {
     
     "Rifles_Aero_FR": { # AEROMOBILES
         "CommandPoints": 50,
-        "armor": "Infantry_armor_reference",
         "strength": 11,
         "availability": [8, 6, 0, 0],
         "max_speed": 20,
@@ -482,7 +473,6 @@ fr_unit_edits = {
     
     "Escorte_FR": { # Escorte PC
         "CommandPoints": 15,
-        "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -492,7 +482,6 @@ fr_unit_edits = {
     
     "Chasseurs_FR": { # Chasseurs
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -502,7 +491,6 @@ fr_unit_edits = {
     
     "Reserviste_FR": {
         "CommandPoints": 30,
-        "armor": "Infantry_armor_reference",
         "availability": [14, 0, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -512,7 +500,6 @@ fr_unit_edits = {
     
     "Sapeurs_FR": {
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 7, 5, 0],
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -523,7 +510,6 @@ fr_unit_edits = {
     
     "Sapeurs_Flam_FR": {
         "CommandPoints": 45,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 7, 5, 0],
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_heavy'"],
@@ -534,7 +520,6 @@ fr_unit_edits = {
     
     "Groupe_AT_FR": {
         "CommandPoints": 35,
-        "armor": "Infantry_armor_reference",
         "availability": [10, 7, 0, 0],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -549,7 +534,6 @@ fr_unit_edits = {
     
     "Commandos_FR": {
         "CommandPoints": 60,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "max_speed": 20,
         "SpecialtiesList": {
@@ -1257,7 +1241,6 @@ fr_unit_edits = {
     
     "Scout_FR": {
         "CommandPoints": 25,
-        "armor": "Infantry_armor_reference",
         "availability": [8, 6, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1273,7 +1256,6 @@ fr_unit_edits = {
     "Scout_Aero_FR": {
         "CommandPoints": 45,
         "max_speed": 26,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 6, 0, 0],
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
@@ -1303,7 +1285,6 @@ fr_unit_edits = {
     
     "LRRP_FR": { # Dragon-Paras
         "CommandPoints": 60,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 0, 4, 3],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -1430,7 +1411,6 @@ fr_unit_edits = {
     # FR AA
     "MANPAD_Mistral_FR": {
         "CommandPoints": 55,
-        "armor": "Infantry_armor_reference",
         "availability": [6, 4, 0, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -1447,7 +1427,6 @@ fr_unit_edits = {
 
     "MANPAD_Mistral_para_FR": {
         "CommandPoints": 55,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 6, 4, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
@@ -1464,7 +1443,6 @@ fr_unit_edits = {
 
     "MANPAD_Mistral_Legion_FR": {
         "CommandPoints": 55,
-        "armor": "Infantry_armor_reference",
         "availability": [0, 6, 4, 0],
         "WeaponDescriptor": {
             "equipmentchanges": {
