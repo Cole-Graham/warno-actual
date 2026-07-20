@@ -10,8 +10,11 @@ FOB_CONSTANTS = {
     "command_points": 75,
     "names": {
         "FOBBEL": "MUNITIEDEPOT",
+        "FOBBRZ": "tbd",
         "FOBCAN": "FIELD SUPPLY POINT",  # canada
         "FOBCZ": "tbd",  # czechoslovakia
+        "FOBCOL": "tbd",
+        "FOBCUB": "tbd",
         "FOBDDR": "FELDDEPOT",
         "FOBDK": "FELT FORSYNINGSPUNKT",
         "FOBESP": "tbd",  # spain
@@ -23,6 +26,7 @@ FOB_CONSTANTS = {
         "FOBTCH": "tbd",
         "FOBUK": "FIELD SUPPLY POINT",
         "FOBUS": "FIELD SUPPLY POINT",
+        "FOBVEN": "tbd",
     },
 }
 TFR_STEALTH_BONUS = 1.5

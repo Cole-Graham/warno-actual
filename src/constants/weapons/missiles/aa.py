@@ -753,9 +753,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
         "SupplyCost": 35.0,
         "WeaponDescriptor": {
-            "SalvoLengths": [4],
+            "SalvoLengths": [4, 2],
             "units": {
-                4: ["AH1F_ATAS_US", "AH64_Apache_ATAS_US", "OH58_CS_US"]
+                4: ["AH1F_ATAS_US", "AH64_Apache_ATAS_US", "OH58_CS_US"],
+                2: ["Bo_105_BSH1_RFA"],
             },
         },
         "MissileDescriptor": {
@@ -782,9 +783,10 @@ missiles: Dict[WeaponKey, WeaponData] = {
         },
         "SupplyCost": 35.0,
         "WeaponDescriptor": {
-            "SalvoLengths": [4],
+            "SalvoLengths": [4, 2],
             "units": {
-                4: ["AH1F_ATAS_US", "AH64_Apache_ATAS_US", "OH58_CS_US"]
+                4: ["AH1F_ATAS_US", "AH64_Apache_ATAS_US", "OH58_CS_US"],
+                2: ["Bo_105_BSH1_RFA"],
             },
         },
     },

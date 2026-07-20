@@ -46,6 +46,10 @@ hide_divs:
   - "VEN_1a_Division_multi"
   - "VEN_4a_Division_multi"
   
+  # Nemesis 8
+  - "SOV_71_Tank_multi"
+  - "RFA_VTK_42_multi"
+
   # Nemesis 7
   - "FR_ZdD_Paris_multi"
   - "SOV_DON_100_multi"
@@ -131,9 +135,13 @@ dev_show_divs:
   - "VEN_1a_Division_multi"
   - "VEN_4a_Division_multi"
   
-  # Nemesis 7
-  - "FR_ZdD_Paris_multi"
-  - "SOV_DON_100_multi"
+  # Nemesis 8
+  - "SOV_71_Tank_multi"
+  - "RFA_VTK_42_multi"
+
+  # # Nemesis 7
+  # - "FR_ZdD_Paris_multi"
+  # - "SOV_DON_100_multi"
 
   # landjut
   # - "DK_Jyske_multi"
