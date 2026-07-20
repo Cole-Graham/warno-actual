@@ -3,15 +3,20 @@
 
  # ------------------------------------ Lat ------------------------------------
  # v28.7
- - [x] Fix armor on Soviet marine infantry, and maybe automate this if possible
- - [ ] Move artillery commander to logistics tab, add 2nd FOB card
- - [x] Prevent infantry leaders from buffing artillery (`Capacite_LDR_INF` ForbiddenTargetTags includes Artillerie)
- - [ ] Prevent commanders from buffing artillery (`Capacite_CMD_UNIT` ForbiddenTargetTags)
- - [ ]
- - [ ]
- - [ ]
- - [ ]
+ - [ ] Move artillery commander to logistics tab? add 2nd FOB card?
+ - [ ] Fix sprint bug (need seperate tags for suppression and stun damage packs)
+ - [ ] Improve suppression damage relative to physical damage (some autocannons, some artillery, e.g. buratino)
+ - [ ] Set 2.5x caliber standard for HEAT suppression, and adjust stress on miss for ATGMs
+ - [ ] Add the Soviet dudes with no AT the guy asked for
+ - [ ] Check all ammo counts after salvo variant change for infantry AT and MANPADS
+       M202 Flash, Dragon II on 2-man Cavalary Scouts, PzF 44 Feldjager
  - [ ] Check if Tulipan is broken by a batch script (strange range scaling after 9000m?)
+ - [ ] Check rocket damage against light vehicle targets (Roland, etc.)
+ - [ ] Fine tune howitzers damage (and lower supply costs, come up with new standard by caliber)
+ - [ ] Update tooltip for sellable unit, to explain that armed units will not auto-sell.
+ - [ ] Improve Mi-14PL missile
+ - [ ] Check DPM of Machine gun teams
+ - [ ] Add recon jeep transports to Command infantry?
  
 # Future patch:
 - [ ] change supply traits to be more coherent with gameplay use-cases
