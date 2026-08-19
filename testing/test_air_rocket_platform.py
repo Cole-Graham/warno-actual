@@ -40,6 +40,31 @@ class TestAirRocketPlatformMaps(unittest.TestCase):
         self.assertIn(avion, avion_names)
         self.assertNotIn(avion, helo_names)
 
+    def test_s25o6_has_distinct_helo_and_avion(self):
+        helo_to_avion, _, helo_names, avion_names = build_air_rocket_platform_maps()
+        helo = "RocketAir_S25O_420mm_salvolength6"
+        avion = "RocketAir_S25O_420mm_avion_salvolength6"
+        self.assertEqual(helo_to_avion[helo], avion)
+        self.assertIn(helo, helo_names)
+        self.assertNotIn(helo, avion_names)
+        self.assertIn(avion, avion_names)
+        self.assertNotIn(avion, helo_names)
+
+    def test_removed_vanilla_rockets_are_unregistered(self):
+        _, _, helo_names, avion_names = build_air_rocket_platform_maps()
+        registered = helo_names | avion_names
+        for name in (
+            "RocketAir_FFAR_70mm_salvolength24",
+            "RocketAir_FFAR_70mm_x24_avion",
+            "RocketAir_SBAT_70mm_salvolength7",
+            "RocketAir_SBAT_70mm_avion_salvolength7",
+            "RocketAir_SBAT_127mm_salvolength8",
+            "RocketAir_SBAT_127mm_x8_avion",
+            "RocketAir_Zuni_1272mm_salvolength24",
+            "RocketAir_Zuni_1272mm_x24_avion",
+        ):
+            self.assertNotIn(name, registered)
+
     def test_sneb_helo_suffix_is_same_salvo_helo_side(self):
         helo_to_avion, avion_to_helo, helo_names, avion_names = (
             build_air_rocket_platform_maps()

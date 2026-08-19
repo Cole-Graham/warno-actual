@@ -1857,15 +1857,25 @@ rfa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_medium'"],
         },
+        # Vanilla: T0 G3, T1 sniper, T2 MG3, T3 MANPAD_FIM43 (Salves 0..3).
+        # Drop sniper turret + its Salves slot, compact AmmoBoxIndex (MANPAD → 2),
+        # then replace Redeye with Stinger. Turret AmmoBox edits run before
+        # equipmentchanges.replace, so they still key on MANPAD_FIM43.
         "WeaponDescriptor": {
             "Salves": {
-                "Grenade_Satchel_Charge": 6,
                 "MMG_inf__MG3_7_62mm": 45,
                 "remove": ["Sniper_G3A3ZF"],
             },
             "equipmentchanges": {
                 "quantity": {
                     "FM_G3KA4": 10,
+                },
+                "replace": {
+                    "MANPAD_FIM43": {
+                        "new_weapon": "MANPAD_FIM92_A",
+                        "swap_fire_effect": True,
+                        "depiction_baked_in": False,
+                    },
                 },
             },
             "turrets": {
@@ -1878,7 +1888,7 @@ rfa_unit_edits = {
                 },
                 3: {
                     "MountedWeapons": {
-                        "Grenade_Satchel_Charge": {
+                        "MANPAD_FIM43": {
                             "AmmoBoxIndex": 2,
                         },
                     },

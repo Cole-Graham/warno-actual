@@ -33,7 +33,14 @@ def _category_for_ammo(ammo_name: str) -> Optional[str]:
 
 def _set_salves_at_index(weapon_descr: Any, salvo_index: int, value: int) -> None:
     salves_list = weapon_descr.v.by_m("Salves").v
-    salves_list.replace(int(salvo_index), str(value))
+    idx = int(salvo_index)
+    if idx < 0 or idx >= len(salves_list):
+        raise IndexError(
+            f"{weapon_descr.namespace}: AmmoBoxIndex {idx} out of range for "
+            f"Salves (len={len(salves_list)}); compact AmmoBoxIndex after "
+            f"Salves.remove / turret remove"
+        )
+    salves_list.replace(idx, str(value))
 
 
 def _remount_weapon(

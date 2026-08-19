@@ -114,6 +114,10 @@ AIR_ROCKET_PLATFORM_PAIRS: tuple[AirRocketPlatformPair, ...] = (
         "avion_ammo": "RocketAir_S25O_420mm_avion_salvolength2",
     },
     {
+        "helo_ammo": "RocketAir_S25O_420mm_salvolength6",
+        "avion_ammo": "RocketAir_S25O_420mm_avion_salvolength6",
+    },
+    {
         "helo_ammo": "RocketAir_SNEB_68mm_salvolength36",
         "avion_ammo": "RocketAir_SNEB_68mm_avion_salvolength36",
     },
@@ -159,24 +163,8 @@ AIR_ROCKET_PLATFORM_PAIRS: tuple[AirRocketPlatformPair, ...] = (
     },
     # Vanilla siblings that lacked registry pairs / clones
     {
-        "helo_ammo": "RocketAir_FFAR_70mm_salvolength24",
-        "avion_ammo": "RocketAir_FFAR_70mm_x24_avion",
-    },
-    {
-        "helo_ammo": "RocketAir_SBAT_70mm_salvolength7",
-        "avion_ammo": "RocketAir_SBAT_70mm_avion_salvolength7",
-    },
-    {
-        "helo_ammo": "RocketAir_SBAT_127mm_salvolength8",
-        "avion_ammo": "RocketAir_SBAT_127mm_x8_avion",
-    },
-    {
         "helo_ammo": "RocketAir_CRV7_70mm_salvolength19",
         "avion_ammo": "RocketAir_CRV7_70mm_avion_salvolength19",
-    },
-    {
-        "helo_ammo": "RocketAir_Zuni_1272mm_salvolength24",
-        "avion_ammo": "RocketAir_Zuni_1272mm_x24_avion",
     },
 )
 
