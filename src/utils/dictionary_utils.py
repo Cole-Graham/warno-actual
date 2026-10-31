@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Dict, List, Tuple  # noqa
 
 from src import ModConfig
-from src.utils.config_utils import get_mod_name, get_vanilla_units_csv_path
+from src.utils.config_utils import get_base_mod_name, get_mod_name, get_vanilla_units_csv_path
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
@@ -68,7 +68,7 @@ def get_dictionary_path(filename: str = "INTERFACE_INGAME.csv") -> Path:
     config = ModConfig.get_instance().config_data
     warno_mods = Path(config['directories']['warno_mods'])
     mod_name = get_mod_name(config)
-    base_game = config['directories']['base_game']
+    base_game = get_base_mod_name(config)
 
     if mod_name == base_game:
         raise ValueError(

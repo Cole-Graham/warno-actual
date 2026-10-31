@@ -193,14 +193,14 @@ USA_NEW_UNITS = {
                 "insert": [(1, 10), ],
                 "FM_M16": 11,
                 "MMG_inf_M240B_7_62mm": 30,
-                "M47_DRAGON_II_salvolength6": 1,
+                "M47_DRAGON_II_salvolength2": 1,
             },
             "equipmentchanges": {
                 "insert": [(1, "Sniper_M21", "Sniper_M14")],
                 "update": [2],
                 "replace": {
                     "MMG_inf_M240B_7_62mm": {
-                        "new_weapon": "M47_DRAGON_II_salvolength6",
+                        "new_weapon": "M47_DRAGON_II_salvolength2",
                         "swap_fire_effect": True,
                         "depiction_baked_in": False,
                     },
@@ -208,7 +208,7 @@ USA_NEW_UNITS = {
                 "quantity": {
                     "FM_M16": 1,
                     "Sniper_M21": 1,
-                    "M47_DRAGON_II_salvolength6": 1,
+                    "M47_DRAGON_II_salvolength2": 1,
                 },
             },
         },
@@ -281,14 +281,14 @@ USA_NEW_UNITS = {
                 "insert": [(1, 10), ],
                 "FM_M16": 11,
                 "MMG_inf_M240B_7_62mm": 30,
-                "M47_DRAGON_II_salvolength6": 1,
+                "M47_DRAGON_II_salvolength2": 1,
             },
             "equipmentchanges": {
                 "insert": [(1, "Sniper_M21", "Sniper_M14")],
                 "update": [2],
                 "replace": {
                     "MMG_inf_M240B_7_62mm": {
-                        "new_weapon": "M47_DRAGON_II_salvolength6",
+                        "new_weapon": "M47_DRAGON_II_salvolength2",
                         "swap_fire_effect": True,
                         "depiction_baked_in": False,
                     },
@@ -296,7 +296,7 @@ USA_NEW_UNITS = {
                 "quantity": {
                     "FM_M16": 1,
                     "Sniper_M21": 1,
-                    "M47_DRAGON_II_salvolength6": 1,
+                    "M47_DRAGON_II_salvolength2": 1,
                 },
             },
         },

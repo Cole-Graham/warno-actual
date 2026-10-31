@@ -491,7 +491,7 @@ rfa_unit_edits = {
             # Vanilla turrets: T0=PM_MP_5A3 (qty=4)
             # Target turrets:  T0=PM_MP_5A3(x5), T1=FM_G3KA4(x2),
             #                  T2=MMG_inf__MG3_7_62mm(x1, animate=True from donor),
-            #                  T3=RocketInf_PzF_44(x1, animate=True from donor)
+            #                  T3=RocketInf_PzF_44_salvolength4(x1, animate=True from donor)
             "equipmentchanges": {
                 "quantity": {
                     "PM_MP_5A3": 5,
@@ -501,7 +501,7 @@ rfa_unit_edits = {
                 "insert": [
                     (1, "FM_G3KA4"),
                     (2, "MMG_inf__MG3_7_62mm"),
-                    (3, "RocketInf_PzF_44"),
+                    (3, "RocketInf_PzF_44_salvolength4"),
                 ],
                 "insert_edits": {
                     1: {  # FM_G3KA4 (newly inserted)
@@ -524,7 +524,7 @@ rfa_unit_edits = {
                         "WeaponIgnoredPropertyName": "'WeaponIgnored_3'",
                         "WeaponShootDataPropertyName": ["WeaponShootData_0_3"],
                     },
-                    3: {  # PzF_44 (newly inserted)
+                    3: {  # PzF_44 salvolength4 (newly inserted)
                         "turret_edits": {
                             "YulBoneOrdinal": 4,
                         },
@@ -1445,7 +1445,7 @@ rfa_unit_edits = {
     },
 
     "Faun_Kraka_TOW_RFA": {
-        "CommandPoints": 55,
+        "CommandPoints": 45,
         "availability": [8, 6, 0, 0],
     },
 
@@ -1979,6 +1979,36 @@ rfa_unit_edits = {
         "max_speed": 26,
         "SpecialtiesList": {
             "add_specs": ["'infantry_equip_light'", "'_swift'"],
+        },
+        # Vanilla: Sniper_G3A3ZF on turret 0 and turret 1 (Salves indices 0 and 1).
+        # One turret of Sniper_G3A3ZF_double, NbWeapons 2, Salves 10 — same layout
+        # as Sniper_paras_POL. Both vanilla indices share that ammo name, so
+        # Salves.remove drops both; insert restores the single remaining slot.
+        # The explicit Salves key also keeps default salves off the dropped index.
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "animate": {
+                    "Sniper_G3A3ZF_double": False,
+                },
+                "quantity": {
+                    "Sniper_G3A3ZF_double": 2,
+                },
+                "replace": {
+                    "Sniper_G3A3ZF": {
+                        "new_weapon": "Sniper_G3A3ZF_double",
+                        "swap_fire_effect": False,
+                        "depiction_baked_in": False,
+                    },
+                },
+            },
+            "turrets": {
+                "remove": [1],
+            },
+            "Salves": {
+                "Sniper_G3A3ZF_double": 10,
+                "remove": ["Sniper_G3A3ZF"],
+                "insert": [(0, 10)],
+            },
         },
     },
 

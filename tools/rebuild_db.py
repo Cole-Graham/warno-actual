@@ -16,6 +16,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
 from src.data import build_database  # noqa: E402
+from src.utils.config_utils import get_mod_src_path  # noqa: E402
 
 
 def main() -> None:
@@ -25,8 +26,7 @@ def main() -> None:
 
     config.setdefault("data_config", {})["build_database"] = True
 
-    print(f"Rebuilding DB using sources at: "
-          f"{config['directories']['warno_mods']}/{config['directories']['base_game']}")
+    print(f"Rebuilding DB using sources at: {get_mod_src_path(config)}")
     db = build_database(config)
     print(f"Done. Top-level keys: {sorted(db.keys())}")
 

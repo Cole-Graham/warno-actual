@@ -3271,7 +3271,7 @@ pol_unit_edits = {
     },
     
     "MiG_21bis_HE_POL": {  # MiG-21bis [HE]
-        "CommandPoints": 145,
+        "CommandPoints": 130,
         "ECM": -0.15,
         "availability": [0, 4, 0, 0],
     },
@@ -3301,7 +3301,7 @@ pol_unit_edits = {
     },
     
     "MiG_21bis_AT_POL": {  # 2x Kh-66, 2x R-13M
-        "CommandPoints": 160,
+        "CommandPoints": 140,
         "ECM": -0.25,
         "optics": {
             "VisionRangesGRU": {

@@ -4,6 +4,7 @@ import shutil
 from pathlib import Path
 from typing import Dict
 
+from src.utils.config_utils import get_mod_name
 from src.utils.logging_utils import log_time, setup_logger
 
 logger = setup_logger(__name__)
@@ -25,17 +26,8 @@ def copy_assets(config: Dict) -> None:
     build_config = config['build_config']
     build_target = build_config['target']
     
-    # Determine mod type and target directory name
-    if build_target == 'ui_only':
-        target_mod = (config['directories']['ui_only_dev'] 
-                     if build_config['write_dev'] 
-                     else config['directories']['ui_only_release'])
-        mod_type = 'ui_only'
-    else:
-        target_mod = (config['directories']['gameplay_dev']
-                     if build_config['write_dev']
-                     else config['directories']['gameplay_release'])
-        mod_type = 'gameplay'
+    target_mod = get_mod_name(config)
+    mod_type = 'ui_only' if build_target == 'ui_only' else 'gameplay'
     
     # Target is GameData/assets/
     target_dir = warno_mods / target_mod / config['asset_config']['target_dir'] / source_dir.name
@@ -131,10 +123,7 @@ def copy_fx_files(config: Dict) -> None:
     if build_target != 'gameplay':
         return
     
-    # Determine target mod directory
-    target_mod = (config['directories']['gameplay_dev']
-                 if build_config['write_dev']
-                 else config['directories']['gameplay_release'])
+    target_mod = get_mod_name(config)
     
     # Target is GameData/Fx/Generated/
     target_dir = warno_mods / target_mod / config['asset_config']['target_dir'] / "Fx" / "Generated"

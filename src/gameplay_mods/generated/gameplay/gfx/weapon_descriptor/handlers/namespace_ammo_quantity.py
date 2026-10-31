@@ -87,7 +87,20 @@ def update_weapondescr_ammoname_quantity(source_path, logger, game_db):
 
                 weapon_descr = source_path.by_n(weapon_descr_name)
                 turret_list = weapon_descr.v.by_m("TurretDescriptorList")
-                turret = turret_list.v[int(turret_index)]
+                # weapons.json is vanilla. Unit edits may have removed this turret
+                # (Sniper_Geb_RFA drops the second Sniper_G3A3ZF turret).
+                live_index = int(turret_index)
+                if live_index < 0 or live_index >= len(turret_list.v):
+                    logger.debug(
+                        "Skipping %s turret %s on %s: live TurretDescriptorList "
+                        "len=%s",
+                        weapon_name,
+                        live_index,
+                        weapon_descr_name,
+                        len(turret_list.v),
+                    )
+                    continue
+                turret = turret_list.v[live_index]
 
                 for mounted_wpn in turret.v.by_m("MountedWeaponDescriptorList").v:
                     ammo = mounted_wpn.v.by_m("Ammunition").v

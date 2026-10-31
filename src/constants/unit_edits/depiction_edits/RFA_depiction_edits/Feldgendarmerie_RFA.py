@@ -4,7 +4,7 @@ Mixed-model strength-8 squad: 3 HeimatschutzJager_RFA + 5 Feldgendarmerie_RFA.
 
 WeaponDescriptor target (set in RFA_unit_edits.py):
     T0=PM_MP_5A3(x5), T1=FM_G3KA4(x2),
-    T2=MMG_inf__MG3_7_62mm(x1 animate=True), T3=RocketInf_PzF_44(x1 animate=True)
+    T2=MMG_inf__MG3_7_62mm(x1 animate=True), T3=RocketInf_PzF_44_salvolength4(x1 animate=True)
 
 Mesh layout (3 Heimat up front so the engine pins the donor MG3/G3KA4/PzF
 weapons onto the Heimat front models, leaving the rear Feldgen models on
@@ -34,7 +34,7 @@ feldgendarmerie_rfa: Dict[str, Dict[Union[str, Tuple[str, str]], dict]] = {
             "Operators": {
                 # Vanilla: [0]=PM_MP_5A3/_0_1
                 # Target:  [0]=PM_MP_5A3/_0_1, [1]=FM_G3KA4/_0_2,
-                #          [2]=MMG_inf__MG3_7_62mm/_0_3, [3]=RocketInf_PzF_44/_0_4
+                #          [2]=MMG_inf__MG3_7_62mm/_0_3, [3]=RocketInf_PzF_44_salvolength4/_0_4
                 1: ("insert", [("FireEffectTag", "FM_G3KA4"), ("WeaponShootDataPropertyName", "WeaponShootData_0_2")]),
                 2: ("insert", [("FireEffectTag", "MMG_inf__MG3_7_62mm"), ("WeaponShootDataPropertyName", "WeaponShootData_0_3")]),
                 3: ("insert", [("FireEffectTag", "RocketInf_PzF_44"), ("WeaponShootDataPropertyName", "WeaponShootData_0_4")]),

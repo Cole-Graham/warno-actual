@@ -60,6 +60,7 @@ us_new_divs = {
             "Rifles_half_LAW_US": ["M998_Humvee_US", "CUCV_HMG_US", "CUCV_AGL_US", "M113A3_US", "M2A1_Bradley_IFV_US", "M2A2_Bradley_IFV_US"],
             "Rifles_half_AT4_US": ["M998_Humvee_US", "CUCV_HMG_US", "CUCV_AGL_US", "M113A3_US", "M2A1_Bradley_IFV_US", "M2A2_Bradley_IFV_US"],
             "Rifles_half_Dragon_US": ["M998_Humvee_US", "CUCV_HMG_US", "CUCV_AGL_US", "M113A3_US", "M2A1_Bradley_IFV_US", "M2A2_Bradley_IFV_US"],
+            "MANPAD_Stinger_C_USMC_US": ["M998_Humvee_US", "M2_Bradley_BSV_US"],
         },
     },
     "US_airborne": {
@@ -236,7 +237,9 @@ us_new_divs = {
             "MANPAD_Stinger_C_US",
             "DCA_I_Hawk_US",
         ],
-        "transport_overrides": {},
+        "transport_overrides": {
+            "MANPAD_Stinger_C_USMC_US": ["M998_Humvee_US", "M2_Bradley_BSV_US"],    
+        },
     },
     "US_armored_mechanized": {
         "division_id": 5009,

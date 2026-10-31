@@ -6,6 +6,7 @@ from src import ModConfig
 from src.data import build_database, load_database_from_disk
 from src.utils.database_utils import verify_database
 from patcher_cli import apply_rebuild_db_override, parse_patcher_args
+from src.utils.config_utils import get_mod_name, is_dev_build
 from src.utils.logging_utils import configure_logging, setup_logger, get_counting_handler
 
 configure_logging()
@@ -54,14 +55,8 @@ def get_config_ini_path(config_data: dict) -> Path:
     Returns:
         Path to the Config.ini file
     """
-    build_config = config_data['build_config']
     dirs = config_data['directories']
-    
-    # Determine mod name based on build target and write_dev setting
-    if build_config['target'] == 'gameplay':
-        mod_name = dirs['gameplay_release'] if not build_config['write_dev'] else dirs['gameplay_dev']
-    else:  # ui_only
-        mod_name = dirs['ui_only_release'] if not build_config['write_dev'] else dirs['ui_only_dev']
+    mod_name = get_mod_name(config_data)
     
     # Check if user has provided a custom base path override
     config_ini_base_path = dirs.get('config_ini_base_path', 'default')
@@ -127,7 +122,7 @@ if __name__ == "__main__":
         apply_rebuild_db_override(config.config_data, args)
 
         # Check if this is a release build
-        if not config.config_data['build_config']['write_dev']:
+        if not is_dev_build(config.config_data):
             if not confirm_release_build():
                 logger.info("Release build cancelled by user")
                 sys.exit(0)
@@ -231,7 +226,7 @@ if __name__ == "__main__":
             logger.info(f"{unique_error_count} unique error(s), {unique_warning_count} unique warning(s)")
         
         # Log version information for release builds
-        if not config.config_data['build_config']['write_dev']:
+        if not is_dev_build(config.config_data):
             build_config = config.config_data['build_config']
             # Get version from config.YAML
             if build_config['target'] == 'gameplay':
@@ -260,7 +255,7 @@ if __name__ == "__main__":
         # Log version information for release builds even on failure
         try:
             config = ModConfig.get_instance()
-            if not config.config_data['build_config']['write_dev']:
+            if not is_dev_build(config.config_data):
                 build_config = config.config_data['build_config']
                 # Get version from config.YAML
                 if build_config['target'] == 'gameplay':

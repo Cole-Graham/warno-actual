@@ -4,7 +4,7 @@ import shutil
 from pathlib import Path
 from typing import Dict, Iterable, Optional, Tuple
 
-from src.utils.config_utils import get_mod_dst_path, get_mod_name, get_mod_src_path
+from src.utils.config_utils import get_base_mod_name, get_mod_dst_path, get_mod_name, get_mod_src_path
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
@@ -21,7 +21,7 @@ def ensure_mod_folder_layout(config: Dict) -> None:
 def ensure_localisation_layout(config: Dict) -> None:
     """Ensure LocalisationDicos.ndf and CSV directory use mod_name, not base_game."""
     mod_name = get_mod_name(config)
-    base_game = config['directories']['base_game']
+    base_game = get_base_mod_name(config)
     mod_dst_path = get_mod_dst_path(config)
     localisation_dir = mod_dst_path / "GameData" / "Localisation"
     base_game_subdir = localisation_dir / base_game
@@ -62,7 +62,7 @@ def ensure_localisation_layout(config: Dict) -> None:
 def ensure_resource_packs_layout(config: Dict) -> None:
     """Ensure ResourcePacks.ndf and pack directories use mod_name, not base_game."""
     mod_name = get_mod_name(config)
-    base_game = config['directories']['base_game']
+    base_game = get_base_mod_name(config)
     mod_dst_path = get_mod_dst_path(config)
     resource_packs_dir = mod_dst_path / "GameData" / "ResourcePacks"
     base_game_subdir = resource_packs_dir / base_game

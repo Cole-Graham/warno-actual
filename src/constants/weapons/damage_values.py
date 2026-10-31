@@ -28,6 +28,10 @@ SNIPER_DAMAGE = [
      1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], # 13 WA armor levels
 ]
 
+# WARNING: this is not used anywhere, it's actually unnecessary because the game engine already applies the stacked damage with each shot.
+# e.g. _double sniper ammo descriptors have 0.5 HE but that already combines to 1 HE per shot, and we increase the rate of fire of _double
+# snipers by 2 so the total damage output is actually double.
+
 # divide damage ratios by 2, to get intended damage of 1 HE per shot, but still only show 1 HE on unit card
 SNIPER_DOUBLE_DAMAGE = [
     # sniper double 1
@@ -612,9 +616,9 @@ DAMAGE_EDITS = {
     "howz": {
         "row": 126,
         "edits": {
-            4: 0.66,
-            5: 0.41,
-            6: 0.31,
+            4: 0.75,
+            5: 0.45,
+            6: 0.33,
             7: 0.21,
             8: 0.17,
             9: 0.14,
@@ -628,9 +632,9 @@ DAMAGE_EDITS = {
     "howz_gunship": {
         "row": 127,
         "edits": {
-            4: 0.66,
-            5: 0.41,
-            6: 0.31,
+            4: 0.75,
+            5: 0.45,
+            6: 0.33,
             7: 0.21,
             8: 0.17,
             9: 0.14,

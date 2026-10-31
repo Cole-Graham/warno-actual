@@ -349,10 +349,10 @@ weapons: Dict[WeaponKey, WeaponData] = {
     ("RocketInf_PzF_3", "heavy_at", None, False): {
         "Ammunition": {
             "Arme": {
-                "Index": 22,
+                "Index": 23,
             },
             "hit_roll": {
-                "Idling": 60,
+                "Idling": 65,
             },
             "parent_membr": {
                 "MaximumRangeGRU": 700,
@@ -372,7 +372,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "Index": 24,
             },
             "hit_roll": {
-                "Idling": 60,
+                "Idling": 65,
             },
             "parent_membr": {
                 "TraitsToken": ['STAT', 'HE', 'TANDEM'],

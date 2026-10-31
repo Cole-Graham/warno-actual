@@ -6,14 +6,26 @@ from src.utils.logging_utils import setup_logger
 logger = setup_logger(__name__)
 
 
+def is_dev_build(config: Dict) -> bool:
+    """VIP builds are development builds. write_dev applies only when write_vip is false."""
+    build_config = config['build_config']
+    if build_config.get('write_vip'):
+        return True
+    return bool(build_config['write_dev'])
+
+
+def get_base_mod_name(config: Dict) -> str:
+    """Source mod folder name. VIP builds read base_vip."""
+    dirs = config['directories']
+    if config['build_config'].get('write_vip'):
+        return dirs['base_vip']
+    return dirs['base_game']
+
+
 def get_mod_src_path(config: Dict) -> Path:
     """Get mod source directory path based on config."""
     warno_mods = Path(config['directories']['warno_mods'])
-
-    # Use base game as source
-    mod_name = config['directories']['base_game']
-    
-    return warno_mods / mod_name
+    return warno_mods / get_base_mod_name(config)
 
 
 def get_mod_name(config: Dict) -> str:
@@ -21,12 +33,16 @@ def get_mod_name(config: Dict) -> str:
     build_config = config['build_config']
     dirs = config['directories']
     target = build_config['target']
-    is_dev = build_config['write_dev']
+    write_vip = bool(build_config.get('write_vip'))
 
     if target == 'gameplay':
-        return dirs['gameplay_dev'] if is_dev else dirs['gameplay_release']
+        if write_vip:
+            return dirs['vip_dev']
+        return dirs['gameplay_dev'] if build_config['write_dev'] else dirs['gameplay_release']
     if target == 'ui_only':
-        return dirs['ui_only_dev'] if is_dev else dirs['ui_only_release']
+        if write_vip or build_config['write_dev']:
+            return dirs['ui_only_dev']
+        return dirs['ui_only_release']
     raise ValueError(f"Invalid build target: {target}")
 
 

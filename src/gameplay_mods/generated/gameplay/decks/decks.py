@@ -12,6 +12,7 @@ from src.gameplay_mods.generated.gameplay.decks.default_multi_decks import (
 from src.constants.new_units import NEW_UNITS
 from src.constants.unit_edits import load_unit_edits
 from src.constants.unit_edits.SUPPLY_unit_edits import supply_unit_edits
+from src.utils.config_utils import is_dev_build
 from src.utils.logging_utils import setup_logger
 from src import ModConfig
 
@@ -333,7 +334,7 @@ def edit_gen_gp_decks(source_path: Any, game_db: Dict[str, Any]) -> None:
         # Skip deck modifications for divsions that are removed from the game
         config = ModConfig.get_instance()
         hide_divs = config.config_data.get("hide_divs", [])
-        write_dev = config.config_data["build_config"]["write_dev"]
+        write_dev = is_dev_build(config.config_data)
         dev_show_divs = config.config_data.get("dev_show_divs") or []
         if not write_dev and f"{division}_multi" in hide_divs:
             continue

@@ -586,10 +586,11 @@ missiles: Dict[WeaponKey, WeaponData] = {
                 "Moving": 45,
             },
             "parent_membr": {
-                "TraitsToken": ['MOTION', 'manual', 'HEAT'],
+                "TraitsToken": ['MOTION', 'manual', 'TANDEM'],
                 "ProjectileSpeedGRU": 544,
                 "CanShootWhileMoving": True,
                 "InterfaceWeaponTexture": "'Texture_Interface_Weapon_agona_wa'",
+                "TandemCharge": False, # For inverted tandem logic
             },
         },
         "SupplyCost": 115.0,

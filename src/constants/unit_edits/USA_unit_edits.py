@@ -6085,7 +6085,7 @@ usa_unit_edits = {
             "add_specs": ["'_jammer_air'"],
         },
         "availability": [0, 0, 0, 1],
-        "UpgradeFromUnit": "F16E_TER_HE_US",
+        "UpgradeFromUnit": "F16E_HE_US",
     },
 
     "F16E_AGM_US": {  # 4x AGM-65D, 2x AIM-9M
@@ -6105,6 +6105,7 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'_jammer_air'"],
         },
+        "UpgradeFromUnit": "F16E_HE_US",
     },
     
     "FA16_CAS_US": {
@@ -6141,6 +6142,7 @@ usa_unit_edits = {
             },
         },
         "availability": [0, 2, 0, 0],
+        "UpgradeFromUnit": None,
     },
 
     "F16E_TER_HE_US": {  # 12x mk82 + 2x AIM-9M
@@ -6155,6 +6157,7 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'_jammer_air'"],
         },
+        "UpgradeFromUnit": "F16E_HE_US",
     },
 
     "F16E_napalm_US": {
@@ -6178,6 +6181,7 @@ usa_unit_edits = {
                 },
             },
         },
+        "UpgradeFromUnit": "F16E_HE_US",
     },
 
     "F16E_SEAD_US": { # AGM-88 5950m
@@ -6205,6 +6209,7 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'_jammer_air'"],
         },
+        "UpgradeFromUnit": "F16E_HE_US",
     },
 
     "F16E_CBU_US": {
@@ -6234,6 +6239,7 @@ usa_unit_edits = {
         "SpecialtiesList": {
             "add_specs": ["'_jammer_air'"],
         },
+        "UpgradeFromUnit": "F16E_HE_US",
     },
     
     "F16E_TER_CLU_US": {
@@ -6297,6 +6303,7 @@ usa_unit_edits = {
                 },
             },
         },
+        "UpgradeFromUnit": "F16E_HE_US",
     },
 
     "F16E_AA_US": {

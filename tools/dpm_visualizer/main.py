@@ -347,10 +347,8 @@ class DPMVisualizerApp:
                 config_loader = ConfigLoader(str(config_path))
                 config_data = config_loader.load()
                 if config_data and "directories" in config_data:
-                    warno_mods = config_data["directories"].get("warno_mods", "")
-                    gameplay_dev = config_data["directories"].get("gameplay_dev", "")
-                    if warno_mods and gameplay_dev:
-                        initial_dir = str(Path(warno_mods) / gameplay_dev)
+                    from src.utils.config_utils import get_mod_dst_path
+                    initial_dir = str(get_mod_dst_path(config_data))
         except Exception:
             pass  # Ignore config errors
         

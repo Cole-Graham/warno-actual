@@ -13,6 +13,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from config.config_loader import load_config
 from src import ndf
+from src.utils.config_utils import get_mod_dst_path, get_mod_src_path
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger('damage_parser')
@@ -198,11 +199,9 @@ def main() -> None:
         parse_vanilla = False
         
         config = load_config()
-        dirs = config["directories"]
-        warno_mods = Path(dirs["warno_mods"])
-        mod_folder = dirs["base_game"] if parse_vanilla else dirs["gameplay_dev"]
-        MOD_SRC = warno_mods / mod_folder
-        MOD_DST = warno_mods / mod_folder
+        mod_path = get_mod_src_path(config) if parse_vanilla else get_mod_dst_path(config)
+        MOD_SRC = mod_path
+        MOD_DST = mod_path
         
         # Initialize mod
         mod = ndf.Mod(str(MOD_SRC), str(MOD_DST))

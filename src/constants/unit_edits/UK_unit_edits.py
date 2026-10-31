@@ -707,7 +707,7 @@ uk_unit_edits = {
     },
 
     "Territorial_UK": {
-        "CommandPoints": 20,
+        "CommandPoints": 25,
         "max_speed": 26,
         "capacities": {
             "add_capacities": ["reserviste"],
@@ -721,8 +721,8 @@ uk_unit_edits = {
                     "SAW_Bren_L4A4": False,
                 },
                 "quantity": {
-                    "FM_L1A1_SLR": 4,
-                    "SAW_Bren_L4A4": 3,
+                    "FM_L1A1_SLR": 5,
+                    "SAW_Bren_L4A4": 2,
                 },
             },
         },
@@ -762,7 +762,18 @@ uk_unit_edits = {
             "add_capacities": ["reserviste"],
         },
         "SpecialtiesList": {
-            "add_specs": ["'_reservist'", "'infantry_equip_light'"],
+            "add_specs": ["'_reservist'", "'infantry_equip_medium'"],
+        },
+        "WeaponDescriptor": {
+            "equipmentchanges": {
+                "animate": {
+                    "MMG_inf_L7A2_7_62mm": False,
+                },
+                "quantity": {
+                    "FM_L1A1_SLR": 6,
+                    "MMG_inf_L7A2_7_62mm": 2,
+                },
+            },
         },
         "UpgradeFromUnit": "Paratroopers_CMD_UK",
     },

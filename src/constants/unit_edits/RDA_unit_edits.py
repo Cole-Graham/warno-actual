@@ -1456,7 +1456,7 @@ rda_unit_edits = {
     },
 
     "MotRifles_Naval_DDR": {
-        "CommandPoints": 45,
+        "CommandPoints": 40,
         "availability": [10, 7, 0, 0],
         "max_speed": 26,
         "SpecialtiesList": {
@@ -2911,7 +2911,7 @@ rda_unit_edits = {
     },
 
     "Scout_FJ_DDR": {
-        "CommandPoints": 40,
+        "CommandPoints": 35,
         "availability": [0, 0, 8, 6],
         "max_speed": 26,
         "SpecialtiesList": {

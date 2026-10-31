@@ -1,9 +1,14 @@
-"""Infantry squad AT/AA magazine-style salvolength precompute and helpers.
+"""Infantry squad AT/AA SalvoLength precompute and helpers.
 
-Organic rifle squads mount AT/AA as 1-shot salvos with stock in ``Salves``.
+Organic rifle squads mount AT/AA as 1 Shot per salvo, with stock in ``Salves``.
 Veterancy multiplies ``TimeBetweenTwoSalvos``, which speeds those weapons.
-Magazine variants put all ammo in one salvo (``ShotsCountPerSalvo = N``) so RoF
-is governed by ``TimeBetweenTwoShots`` instead.
+``SalvoLength`` variants put those Shots in one salvo (``ShotsCountPerSalvo = N``)
+so rate of fire is governed by ``TimeBetweenTwoShots`` instead.
+
+Weapons whose vanilla ``ShotsCountPerSalvo`` is already greater than 1 keep
+those Shots. Their ``Salves`` stay as authored (AGI 3X40 keeps 3 Salves of
+3 Shots; M202 FLASH keeps 2 Salves of 4 Shots) and are not turned into a
+``SalvoLength``.
 
 Dedicated weapon teams (no countable small arms) are excluded.
 """
@@ -98,6 +103,31 @@ def _ammo_category(weapon_name: str) -> Optional[str]:
 def is_infantry_magazine_category(weapon_name: str) -> bool:
     category = _ammo_category(weapon_name)
     return category in INFANTRY_MAGAZINE_CATEGORIES
+
+
+def native_shots_per_salvo(weapon_name: str, game_db: Dict[str, Any]) -> int:
+    """Vanilla ``ShotsCountPerSalvo`` for this ammo. Missing data counts as 1.
+
+    A value above 1 means Shots are already set on the descriptor, so unit
+    ``Salves`` must not be rewritten into a ``SalvoLength``.
+    """
+    ammo_db = game_db.get("ammunition") or {}
+    props = ammo_db.get("ammo_properties") or {}
+    renames_new_old = ammo_db.get("renames_new_old") or {}
+    bare, _ = split_hagru_base(strip_magazine_suffixes(weapon_name))
+    lookup_names = [bare, renames_new_old.get(bare, bare)]
+    for name in lookup_names:
+        entry = props.get(f"Ammo_{name}")
+        if not isinstance(entry, dict):
+            continue
+        raw = entry.get("ShotsCountPerSalvo")
+        if raw is None:
+            continue
+        try:
+            return int(raw)
+        except (TypeError, ValueError):
+            continue
+    return 1
 
 
 def shared_salvo_index_companions(
@@ -635,6 +665,13 @@ def build_infantry_at_aa_magazine_salvos(
                 bare, is_hagru = split_hagru_base(base_no_suffix)
                 category = categories.get(bare) or categories.get(base_no_suffix)
                 if category not in INFANTRY_MAGAZINE_CATEGORIES:
+                    continue
+                # Shots are already on the ammo. Turning Salves into a SalvoLength
+                # and resetting Salves to 1 drops the extra Salves (AGI 3 -> 1).
+                if (
+                    parse_magazine_length(ammo_name) is None
+                    and native_shots_per_salvo(bare, game_db) > 1
+                ):
                     continue
                 companions = shared_salvo_index_companions(
                     unit_name, bare, game_db, donor_name,

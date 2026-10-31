@@ -51,6 +51,7 @@ class ConfigLoader:
         # Check required fields in build_config
         build_config_fields = [
             'write_dev',
+            'write_vip',
             'target',
         ]
         
@@ -66,10 +67,12 @@ class ConfigLoader:
         required_dirs = [
             'warno_mods',
             'base_game',
+            'base_vip',
             'gameplay_dev',
             'ui_only_dev',
             'gameplay_release',
-            'ui_only_release'
+            'ui_only_release',
+            'vip_dev',
         ]
         
         for dir_field in required_dirs:
@@ -94,8 +97,10 @@ class ConfigLoader:
         return self.get("directories", {})
 
     def get_write_dev(self):
-        """Get the write_dev setting."""
+        """Effective development-build flag. write_vip forces this on."""
         build_config = self.get("build_config", {})
+        if build_config.get("write_vip"):
+            return True
         return build_config.get("write_dev", False)
 
 

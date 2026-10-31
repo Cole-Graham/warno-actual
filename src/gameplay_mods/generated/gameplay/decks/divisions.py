@@ -3,6 +3,7 @@
 from collections import defaultdict
 from typing import Any, Dict
 
+from src.utils.config_utils import is_dev_build
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import strip_quotes
 from src.utils.dictionary_utils import write_dictionary_entries
@@ -32,7 +33,7 @@ def edit_gen_gp_decks_divisions(source_path) -> None:
     config = ModConfig.get_instance()
 
     hide_divs = config.config_data.get("hide_divs", [])
-    write_dev = config.config_data["build_config"]["write_dev"]
+    write_dev = is_dev_build(config.config_data)
     dev_show_divs = config.config_data.get("dev_show_divs") or []
     if write_dev and len(dev_show_divs) > 0:
         # In dev mode, remove divisions that should be shown for testing

@@ -1,6 +1,7 @@
 # Build configuration
 build_config:
-  write_dev: true          # Set to false for release builds
+  write_dev: true          # Set to false for release builds. Ignored when write_vip is true.
+  write_vip: false         # VIP builds always write the dev mod (vip_dev / ui_only_dev).
   target: "gameplay"       # "gameplay" or "ui_only"
   gameplay_version: "?"
   ui_version: "?"
@@ -22,10 +23,12 @@ directories:
   # Base game and output paths
   warno_mods: "C:/Program Files (x86)/Steam/steamapps/common/WARNO/Mods"
   base_game: "sourcemod"
+  base_vip: "sourcemod vip"
   
   # Development builds
   gameplay_dev: "WARNO ACTUAL dev"
   ui_only_dev: "WARNO ACTUAL UI dev"
+  vip_dev: "WARNO ACTUAL vip"
   
   # Release builds
   gameplay_release: "WARNO ACTUAL"
@@ -38,6 +41,20 @@ directories:
 
 # divisions to hide (base list used in release builds)
 hide_divs:
+  # Black Birds
+  - "SWI_4_Mechanisierte_multi"
+  - "SWI_6_Felddivision_multi"
+  - "OST_1_PzGrenadier_multi"
+  - "OST_Alpenkorps_multi"
+  - "HON_1_Gepesitett_multi"
+  - "HON_62_Mechanized_multi"
+  - "ALB_1_Kembesoriee_multi"
+  - "CYP_NationalGuard_multi"
+
+  # Nemesis 9
+  - "US_26th_Inf_multi"
+  - "CUB_MTT_multi"
+  
   # Topic Storm
   - "BRZ_3a_Divisao_multi"
   - "CUB_1a_Division_Tankes_multi"
@@ -139,7 +156,7 @@ dev_show_divs:
   - "SOV_71_Tank_multi"
   - "RFA_VTK_42_multi"
 
-  # # Nemesis 7
+  # Nemesis 7
   # - "FR_ZdD_Paris_multi"
   # - "SOV_DON_100_multi"
 

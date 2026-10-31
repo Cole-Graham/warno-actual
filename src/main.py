@@ -8,7 +8,7 @@ from . import ModConfig, ndf
 from .gameplay_mods import add_unit_meshes
 from .editors import get_all_editors
 from .utils.asset_utils import copy_assets, copy_fx_files
-from .utils.config_utils import get_mod_dst_path, get_mod_src_path
+from .utils.config_utils import get_base_mod_name, get_mod_dst_path, get_mod_src_path
 from .utils.dictionary_utils import initialize_dictionary_csv_files
 from .utils.mod_layout_utils import ensure_mod_folder_layout
 from .utils.logging_utils import setup_logger
@@ -69,7 +69,7 @@ def main() -> None:
         mod_src_path = get_mod_src_path(config)
         mod_dst_path = get_mod_dst_path(config)
         mod = ndf.Mod(str(mod_src_path), str(mod_dst_path))
-        base_game = config['directories']['base_game']
+        base_game = get_base_mod_name(config)
         rebuilt = mod.check_if_src_is_newer()
         if rebuilt:
             logger.info(

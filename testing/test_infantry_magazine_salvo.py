@@ -11,6 +11,7 @@ from src.data.infantry_magazine_salvo import (
     is_dedicated_weapon_team_unit,
     is_infantry_magazine_category,
     magazine_ammo_name,
+    native_shots_per_salvo,
     magazine_suffix_kind,
     parse_magazine_length,
     shared_salvo_index_companions,
@@ -151,6 +152,20 @@ class InfantryMagazineSalvoTests(unittest.TestCase):
         self.assertIn("napalm", INFANTRY_MAGAZINE_CATEGORIES)
         self.assertTrue(is_infantry_magazine_category("RocketInf_RPO_RYS"))
         self.assertTrue(is_infantry_magazine_category("RocketInf_RPO_A_93mm"))
+
+    def test_native_shots_are_not_rewritten_as_salvo_length(self) -> None:
+        """AGI keeps 3 Salves. The ammo already has 3 Shots per salvo."""
+        game_db = {
+            "ammunition": {
+                "ammo_properties": {
+                    "Ammo_RocketInf_AGI_3X40_40mm": {"ShotsCountPerSalvo": 3},
+                    "Ammo_RocketInf_RPG7": {"ShotsCountPerSalvo": 1},
+                },
+            },
+        }
+        self.assertEqual(native_shots_per_salvo("RocketInf_AGI_3X40_40mm", game_db), 3)
+        self.assertEqual(native_shots_per_salvo("RocketInf_RPG7", game_db), 1)
+        self.assertEqual(native_shots_per_salvo("RocketInf_Unknown", game_db), 1)
 
     def test_vanilla_salves_resolves_metis_rename(self) -> None:
         """Vanilla mounts keep Metis_M; constants use renamed Metis."""

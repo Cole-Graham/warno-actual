@@ -271,6 +271,11 @@ def build_ammo_properties(
         if phys_dmg_membr is not None:
             physical_damages = _parse_numeric_member_value(phys_dmg_membr.v)
 
+        shots_membr = ammo_descr.v.by_m("ShotsCountPerSalvo", False)
+        shots_per_salvo: Any = None
+        if shots_membr is not None:
+            shots_per_salvo = _parse_numeric_member_value(shots_membr.v)
+
         helo_range_membr = ammo_descr.v.by_m("MaximumRangeHelicopterGRU", False)
         max_range_helicopter_gru: Any = None
         if helo_range_membr is not None:
@@ -306,6 +311,7 @@ def build_ammo_properties(
             "RadiusSplashPhysicalDamagesGRU": radius_splash,
             "HasDeploymentTime": has_deployment_time,
             "PhysicalDamages": physical_damages,
+            "ShotsCountPerSalvo": shots_per_salvo,
             "MaximumRangeGRU": max_range_gru,
             "MaximumRangeHelicopterGRU": max_range_helicopter_gru,
             "MaximumRangeAirplaneGRU": max_range_airplane_gru,
