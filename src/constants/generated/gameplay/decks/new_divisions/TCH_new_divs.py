@@ -1,0 +1,196 @@
+"""New divisions for Czechoslovakia (TCH).
+
+Same division shape as RDA/POL. Not registered in ``load_new_divisions``:
+NSWP is the playable faction and reads ``TCH_*_newdivisionrules`` through
+``coalition``. Add ``'TCH_new_divs': 'tch_new_divs'`` to that mapping only if
+these should also be emitted as a standalone faction.
+
+Vanilla division identifiers (base game, still hidden by ``hide_divs``):
+``TCH_1_Tank_multi``, ``TCH_2_MSD_multi``, ``TCH_19_MSD_multi``,
+``TCH_303_Tank_multi``. Country id in those descriptors is ``TCH``.
+"""
+
+from .new_divisionrules import (
+    TCH_airborne_newdivisionrules,
+    TCH_armored_newdivisionrules,
+    TCH_global_newdivisionrules,
+    TCH_mechanized_newdivisionrules,
+    TCH_motorized_newdivisionrules,
+)
+
+tch_new_divs = {
+    "TCH_general": {
+        "division_id": 6200,
+        "interface_order": 2300,
+        "guid": "f3a8c1d2-6b47-4e91-9a05-2c7d8e1f4b60",
+        "cfg_name": "TCH_national_general",
+        "div_name": ("Czechoslovakia", "TCHGENNAME"),
+        "description_title": ("Czechoslovakia", "TCHGENTITL"),
+        "summary_text": ("Czechoslovak combined arms division.", "TCHSUMGEN"),
+        "history_text": ("Czechoslovak national division.", "TCHHISGEN"),
+        "activation_points": 80,
+        "division_rules": [
+            TCH_airborne_newdivisionrules,
+            TCH_armored_newdivisionrules,
+            TCH_global_newdivisionrules,
+            TCH_mechanized_newdivisionrules,
+            TCH_motorized_newdivisionrules,
+        ],
+    },
+    "TCH_airborne": {
+        "division_id": 6201,
+        "interface_order": 2301,
+        "guid": "6d2e9b14-8c53-4f70-a1b8-3e5c7a9d2f41",
+        "cfg_name": "TCH_national_airborne",
+        "div_name": ("Czechoslovakia Airborne", "TCHAIRNAME"),
+        "description_title": ("Czechoslovakia Airborne", "TCHAIRTITL"),
+        "summary_text": ("Czechoslovak airborne division.", "TCHSUMAIR"),
+        "history_text": ("Czechoslovak airborne division.", "TCHHISAIR"),
+        "activation_points": 105,
+        "division_rules": [
+            TCH_airborne_newdivisionrules,
+            TCH_global_newdivisionrules,
+        ],
+    },
+    "TCH_airborne_armored": {
+        "division_id": 6202,
+        "interface_order": 2302,
+        "guid": "9b4f7c28-1d6a-4e83-b5c2-7a0e3f8d1c94",
+        "cfg_name": "TCH_national_airborne_armored",
+        "div_name": ("Czechoslovakia Airborne / Armored", "TCHAARNAME"),
+        "description_title": ("Czechoslovakia Airborne / Armored", "TCHAARTITL"),
+        "summary_text": ("Czechoslovak airborne and armored division.", "TCHSUMAAR"),
+        "history_text": ("Czechoslovak airborne and armored division.", "TCHHISAAR"),
+        "activation_points": 85,
+        "division_rules": [
+            TCH_airborne_newdivisionrules,
+            TCH_armored_newdivisionrules,
+            TCH_global_newdivisionrules,
+        ],
+    },
+    "TCH_airborne_mechanized": {
+        "division_id": 6203,
+        "interface_order": 2303,
+        "guid": "2e8a5d71-c4b9-4f16-8d3a-6c1b9e0f7a52",
+        "cfg_name": "TCH_national_airborne_mechanized",
+        "div_name": ("Czechoslovakia Airborne / Mechanized", "TCHAEMNAME"),
+        "description_title": ("Czechoslovakia Airborne / Mechanized", "TCHAEMTITL"),
+        "summary_text": ("Czechoslovak airborne and mechanized division.", "TCHSUMAEM"),
+        "history_text": ("Czechoslovak airborne and mechanized division.", "TCHHISAEM"),
+        "activation_points": 90,
+        "division_rules": [
+            TCH_airborne_newdivisionrules,
+            TCH_global_newdivisionrules,
+            TCH_mechanized_newdivisionrules,
+        ],
+    },
+    "TCH_airborne_motorized": {
+        "division_id": 6204,
+        "interface_order": 2304,
+        "guid": "7c1d4e90-a2b8-4c65-9f3e-1d8a6b5c0e73",
+        "cfg_name": "TCH_national_airborne_motorized",
+        "div_name": ("Czechoslovakia Airborne / Motorized", "TCHAOMNAME"),
+        "description_title": ("Czechoslovakia Airborne / Motorized", "TCHAOMTITL"),
+        "summary_text": ("Czechoslovak airborne and motorized division.", "TCHSUMAOM"),
+        "history_text": ("Czechoslovak airborne and motorized division.", "TCHHISAOM"),
+        "activation_points": 90,
+        "division_rules": [
+            TCH_airborne_newdivisionrules,
+            TCH_global_newdivisionrules,
+            TCH_motorized_newdivisionrules,
+        ],
+    },
+    "TCH_armored": {
+        "division_id": 6205,
+        "interface_order": 2305,
+        "guid": "4a9e2f15-7b6c-4d80-a3e1-8f2c5b7d9a04",
+        "cfg_name": "TCH_national_armored",
+        "div_name": ("Czechoslovakia Armored", "TCHARMNAME"),
+        "description_title": ("Czechoslovakia Armored", "TCHARMTITL"),
+        "summary_text": ("Czechoslovak armored division.", "TCHSUMARM"),
+        "history_text": ("Czechoslovak armored division.", "TCHHISARM"),
+        "activation_points": 105,
+        "division_rules": [
+            TCH_armored_newdivisionrules,
+            TCH_global_newdivisionrules,
+        ],
+    },
+    "TCH_armored_mechanized": {
+        "division_id": 6206,
+        "interface_order": 2306,
+        "guid": "1f6b8c37-5e2a-4b94-8d70-c3a9e1f5b286",
+        "cfg_name": "TCH_national_armored_mechanized",
+        "div_name": ("Czechoslovakia Armored / Mechanized", "TCHAMCNAME"),
+        "description_title": ("Czechoslovakia Armored / Mechanized", "TCHAMCTITL"),
+        "summary_text": ("Czechoslovak armored and mechanized division.", "TCHSUMAMC"),
+        "history_text": ("Czechoslovak armored and mechanized division.", "TCHHISAMC"),
+        "activation_points": 90,
+        "division_rules": [
+            TCH_armored_newdivisionrules,
+            TCH_global_newdivisionrules,
+            TCH_mechanized_newdivisionrules,
+        ],
+    },
+    "TCH_armored_motorized": {
+        "division_id": 6207,
+        "interface_order": 2307,
+        "guid": "8e3c7a52-9d14-4f6b-a0c8-2b5e7d1f4a93",
+        "cfg_name": "TCH_national_armored_motorized",
+        "div_name": ("Czechoslovakia Armored / Motorized", "TCHAMTNAME"),
+        "description_title": ("Czechoslovakia Armored / Motorized", "TCHAMTTITL"),
+        "summary_text": ("Czechoslovak armored and motorized division.", "TCHSUMAMT"),
+        "history_text": ("Czechoslovak armored and motorized division.", "TCHHISAMT"),
+        "activation_points": 90,
+        "division_rules": [
+            TCH_armored_newdivisionrules,
+            TCH_global_newdivisionrules,
+            TCH_motorized_newdivisionrules,
+        ],
+    },
+    "TCH_mechanized": {
+        "division_id": 6208,
+        "interface_order": 2308,
+        "guid": "5b0d9e64-3c8a-4e17-b2f5-7a1c6d8e0b49",
+        "cfg_name": "TCH_national_mechanized",
+        "div_name": ("Czechoslovakia Mechanized", "TCHMECNAME"),
+        "description_title": ("Czechoslovakia Mechanized", "TCHMECTITL"),
+        "summary_text": ("Czechoslovak mechanized division.", "TCHSUMMEC"),
+        "history_text": ("Czechoslovak mechanized division.", "TCHHISMEC"),
+        "activation_points": 105,
+        "division_rules": [
+            TCH_global_newdivisionrules,
+            TCH_mechanized_newdivisionrules,
+        ],
+    },
+    "TCH_mechanized_motorized": {
+        "division_id": 6209,
+        "interface_order": 2309,
+        "guid": "c7e2a183-4f9b-4d56-8a30-1e6b9c5d7f28",
+        "cfg_name": "TCH_national_mechanized_motorized",
+        "div_name": ("Czechoslovakia Mechanized / Motorized", "TCHMCMNAME"),
+        "description_title": ("Czechoslovakia Mechanized / Motorized", "TCHMCMTITL"),
+        "summary_text": ("Czechoslovak mechanized and motorized division.", "TCHSUMMCM"),
+        "history_text": ("Czechoslovak mechanized and motorized division.", "TCHHISMCM"),
+        "activation_points": 90,
+        "division_rules": [
+            TCH_global_newdivisionrules,
+            TCH_mechanized_newdivisionrules,
+            TCH_motorized_newdivisionrules,
+        ],
+    },
+    "TCH_motorized": {
+        "division_id": 6210,
+        "interface_order": 2310,
+        "guid": "0d5f8a29-6c3e-4b71-9e84-a2f7c1d6b053",
+        "cfg_name": "TCH_national_motorized",
+        "div_name": ("Czechoslovakia Motorized", "TCHMOTNAME"),
+        "description_title": ("Czechoslovakia Motorized", "TCHMOTTITL"),
+        "summary_text": ("Czechoslovak motorized division.", "TCHSUMMOT"),
+        "history_text": ("Czechoslovak motorized division.", "TCHHISMOT"),
+        "activation_points": 105,
+        "division_rules": [
+            TCH_motorized_newdivisionrules,
+            TCH_global_newdivisionrules,
+        ],
+    },
+}

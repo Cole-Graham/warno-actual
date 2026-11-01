@@ -90,14 +90,87 @@ def load_strategic_deck_edits() -> Dict:
     
     return merged_edits
 
+_NEW_DIVISIONRULES_PKG = (
+    "src.constants.generated.gameplay.decks.new_divisions.new_divisionrules"
+)
+_COALITION_GENERAL_KINDS = (
+    "airborne",
+    "armored",
+    "mechanized",
+    "motorized",
+    "global",
+)
+
+
+def _resolve_coalition_division(div_key: str, div_data: Dict) -> Dict:
+    """Fill ``division_rules`` from each coalition member's rule module.
+
+    ``coalition`` is a tuple of nation prefixes (``RDA``, ``POL``, ``TCH``).
+    Kinds come from ``coalition_rule_kinds`` when set. Otherwise ``general``
+    uses every standard kind, and any other division key is split on ``_``
+    with ``global`` always included. Missing ``{MEMBER}_{kind}_newdivisionrules``
+    attributes are skipped. The source division dict is not mutated.
+    """
+    members = div_data.get("coalition")
+    if not members:
+        return div_data
+
+    explicit_kinds = div_data.get("coalition_rule_kinds")
+    if explicit_kinds:
+        kinds = tuple(explicit_kinds)
+    else:
+        div_type = div_key.split("_", 1)[1] if "_" in div_key else "general"
+        if div_type == "general":
+            kinds = _COALITION_GENERAL_KINDS
+        else:
+            kinds_list = []
+            for part in div_type.split("_"):
+                if part and part not in kinds_list:
+                    kinds_list.append(part)
+            if "global" not in kinds_list:
+                kinds_list.append("global")
+            kinds = tuple(kinds_list)
+
+    combined = []
+    seen = set()
+    for member in members:
+        module_name = f"{_NEW_DIVISIONRULES_PKG}.{member}_newdivisionrules"
+        try:
+            module = importlib.import_module(module_name)
+        except ModuleNotFoundError:
+            logger.warning(f"No division rules module for coalition member {member}")
+            continue
+        for kind in kinds:
+            attr = f"{member}_{kind}_newdivisionrules"
+            rules = getattr(module, attr, None)
+            if not isinstance(rules, dict):
+                logger.warning(
+                    f"Coalition member {member} has no {attr} for division {div_key}"
+                )
+                continue
+            if id(rules) in seen:
+                continue
+            seen.add(id(rules))
+            combined.append(rules)
+
+    resolved = dict(div_data)
+    resolved["division_rules"] = combined
+    logger.info(
+        f"Combined {len(combined)} division rule tables for coalition division {div_key}"
+    )
+    return resolved
+
+
 def load_new_divisions() -> Dict:
     """Load and merge all new division dictionaries."""
     merged_divisions = {}
     
-    # Dictionary name mapping
+    # Dictionary name mapping.
+    # RDA, POL, and TCH *_new_divs stay importable, but they are not emitted.
+    # NSWP divisions declare ``coalition`` and this loader concatenates each
+    # member's *_newdivisionrules tables.
     dict_names = {
-        'POL_new_divs': 'pol_new_divs',
-        'RDA_new_divs': 'rda_new_divs',
+        'NSWP_new_divs': 'nswp_new_divs',
         'RFA_new_divs': 'rfa_new_divs',
         'SOV_new_divs': 'sov_new_divs',
         'US_new_divs': 'us_new_divs',
@@ -115,7 +188,11 @@ def load_new_divisions() -> Dict:
             module = importlib.import_module(module_name)
             dict_name = dict_names.get(file.stem)
             if dict_name and hasattr(module, dict_name):
-                merged_divisions.update(getattr(module, dict_name))
+                for div_key, div_data in getattr(module, dict_name).items():
+                    if not isinstance(div_data, dict):
+                        logger.warning(f"Skipping non-division entry {div_key} in {file.stem}")
+                        continue
+                    merged_divisions[div_key] = _resolve_coalition_division(div_key, div_data)
                 logger.info(f"Loaded new divisions from {file.stem}")
             elif str(file.stem) in dict_names:
                 logger.warning(f"No dictionary mapping found for {file.stem} or dictionary {dict_name} not found in module")

@@ -38,6 +38,35 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+
+    ("Canon_AP_125_mm_2A46MS_Moderna", "canon", "Canon_AP_125_mm_2A46M", True): { # T-72M2 Moderna 2A46MS (3BM-42)
+        "Ammunition": {
+            "Arme": {
+                "Index": 33,
+            },
+            "hit_roll": {
+                "Idling": 60,
+                "Moving": 50,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2275,
+            },
+            "display": "2A46MS (3BM-42)",
+            "token": "TCHMOD2A46",
+        },
+    },
+
+    ("Canon_HE_125_mm_2A46MS_Moderna", "canon", "Canon_HE_125_mm_2A46M", True): { # T-72M2 Moderna (HE)
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 60,
+                "Moving": 50,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2275,
+            },
+        },
+    },
     
     ("Canon_AP_125_mm_2A46_T72M2", "canon", None, False): { # T-72M2 WILK 2A46-1 (3BM-26) (Could be swapped to 3BM-32?)
         "Ammunition": {

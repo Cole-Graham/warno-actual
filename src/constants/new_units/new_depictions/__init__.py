@@ -5,6 +5,7 @@ from .POL_new_depictions import POL_NEW_DEPICTIONS
 from .RDA_new_depictions import RDA_NEW_DEPICTIONS
 from .RFA_new_depictions import RFA_NEW_DEPICTIONS
 from .SOV_new_depictions import SOV_NEW_DEPICTIONS
+from .TCH_new_depictions import TCH_NEW_DEPICTIONS
 from .UK_new_depictions import UK_NEW_DEPICTIONS
 from .US_new_depictions import US_NEW_DEPICTIONS
 from ._supply_transport import towed_supply_vehicle_depiction
@@ -25,6 +26,7 @@ NEW_DEPICTIONS = {
     **RFA_NEW_DEPICTIONS,
     **UK_NEW_DEPICTIONS,
     **SOV_NEW_DEPICTIONS,
+    **TCH_NEW_DEPICTIONS,
     **US_NEW_DEPICTIONS,
     **SUPPLY_TRANSPORT_DEPICTIONS,
 }

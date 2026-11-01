@@ -49,6 +49,15 @@ def _handle_new_units(source_path: Any) -> None:
                 alternatives_member = new_depiction_obj.v.by_m("Alternatives")
                 alternatives_member.v = f"Alternatives_{unit_name}"
 
+                showroom_remove = (
+                    edits.get("depictions", {})
+                    .get("remove", {})
+                    .get("DepictionVehiclesShowroom_ndf", {})
+                )
+                for member in showroom_remove.get("remove_members", []):
+                    if new_depiction_obj.v.by_m(member, False) is not None:
+                        new_depiction_obj.v.remove_by_member(member)
+
                 if edits.get("is_infantry", False):
                     subdep_member = new_depiction_obj.v.by_m("SubDepictions", False)
                     if subdep_member:

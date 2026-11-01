@@ -1053,18 +1053,26 @@ def _update_turret(new_weap_row: Any, turret_index: int, turret_edits: Dict[str,
         else:
             prefix = "$/GFX/Weapon/Ammo_"
             mounted_wpns = turret.v.by_m("MountedWeaponDescriptorList")
-            
-            for weapon in mounted_wpns.v:
-                if not is_obj_type(weapon.v, "TMountedWeaponDescriptor"):
-                    continue
-                
+            # Snapshot first. Copies are appended, and a live walk would see them.
+            existing_weapons = [
+                weapon
+                for weapon in mounted_wpns.v
+                if is_obj_type(weapon.v, "TMountedWeaponDescriptor")
+            ]
+
+            for weapon in existing_weapons:
                 ammunition = weapon.v.by_m("Ammunition").v.split(prefix)[1]
-                
-                for donor, donor_edits in turret_edits["MountedWeapons"]["insert"].items():
+
+                for donor_key, donor_edits in turret_edits["MountedWeapons"]["insert"].items():
+                    # "N:AmmoName" clones that mount once. The prefix only
+                    # disambiguates two clones of the same donor; copies append.
+                    if isinstance(donor_key, str) and ":" in donor_key:
+                        donor = donor_key.split(":", 1)[1]
+                    else:
+                        donor = donor_key
                     if ammunition != donor:
                         continue
-                    
-                    # Copy the weapon and apply edits
+
                     new_wpn = weapon.copy()
                     for membr, value in donor_edits.items():
                         if isinstance(value, list):
@@ -1074,7 +1082,7 @@ def _update_turret(new_weap_row: Any, turret_index: int, turret_edits: Dict[str,
                             new_wpn.v.by_m(membr).v = new_list
                         else:
                             new_wpn.v.by_m(membr).v = str(value)
-                    
+
                     mounted_wpns.v.add(new_wpn)
                     logger.debug(f"Inserted mounted weapon {donor} to turret {turret_index}")
                     
@@ -1087,12 +1095,17 @@ def _update_turret(new_weap_row: Any, turret_index: int, turret_edits: Dict[str,
                 mounted_wpns.v.remove(weapon_index)
                 logger.debug(f"Removed mounted weapon at index {weapon_index} from turret {turret_index}")
 
-    # turret property edits
+    # turret property edits. Some two-axis members (MasterTurretYulBoneOrdinal)
+    # exist only on turrets that already have a master, so add when absent.
     for membr, value in turret_edits.items():
         if membr == "MountedWeapons":
             continue
+        turret_obj = turret_list.v[turret_index].v
+        member = turret_obj.by_member(membr, False)
+        if member:
+            member.v = str(value)
         else:
-            turret_list.v[turret_index].v.by_m(membr).v = str(value)
+            turret_obj.add(f"{membr} = {value}")
     
     if "remove" in turret_edits:
         turret_list = new_weap_row.v.by_member("TurretDescriptorList")

@@ -78,6 +78,14 @@ def _handle_new_units(source_path: Any) -> None:
             new_obj.namespace = None
             blackhole_key_member = new_obj.v.by_m("BlackHoleKey")
             blackhole_key_member.v = f"'{unit_name_}'"
+            # The clone copies Alternatives_<donor>. Own-mesh units use the
+            # Alternatives_<unit> list from DepictionAlternatives. Donor-mesh
+            # units keep the donor list, including its LOD flags.
+            depiction_opts = (edits or {}).get("depictions", {})
+            if depiction_opts.get("new_mesh") or depiction_opts.get("alternatives"):
+                alternatives_member = new_obj.v.by_m("Alternatives", False)
+                if alternatives_member is not None:
+                    alternatives_member.v = f"Alternatives_{unit_name_}"
             depiction_veh_edits = edits.get("depictions", {}).get("remove", {}).get("DepictionVehicles_ndf", {})
             if "remove_members" in depiction_veh_edits:
                 for member in depiction_veh_edits["remove_members"]:
@@ -154,7 +162,11 @@ def _handle_new_units(source_path: Any) -> None:
 
 
 def _apply_new_unit_vehicle_depiction_edits(source_path: Any) -> None:
-    """Apply tuple-key NEW_DEPICTIONS patches to cloned vehicle registrations."""
+    """Apply NEW_DEPICTIONS patches to cloned vehicle registrations.
+
+    Tuple keys edit cloned operators and the registration. ``new_objects``
+    inserts extra operators in front of that registration, same as unit edits.
+    """
 
     for donor, edits in NEW_UNITS.items():
         if not edits.get("is_ground_vehicle", False):
@@ -165,6 +177,26 @@ def _apply_new_unit_vehicle_depiction_edits(source_path: Any) -> None:
         veh_edits = NEW_DEPICTIONS.get(depiction_key, {}).get("DepictionVehicles_ndf", {}) or {}
 
         for key, section_edits in veh_edits.items():
+            if key == "new_objects":
+                registration = find_obj_by_blackhole_key(
+                    source_path, unit_name, "TacticVehicleDepictionRegistration",
+                )
+                if registration is None:
+                    logger.error(
+                        f"Could not find TacticVehicleDepictionRegistration for {unit_name}, "
+                        "appending new objects to end",
+                    )
+                    for obj_key, ndf_str in section_edits.items():
+                        source_path.add(ndf.convert(ndf_str))
+                        logger.info(f"Added new operator {obj_key} for {unit_name}")
+                else:
+                    insert_index = registration.index
+                    for obj_key, ndf_str in section_edits.items():
+                        source_path.insert(insert_index, ndf.convert(ndf_str))
+                        logger.info(f"Inserted new operator {obj_key} for {unit_name}")
+                        insert_index += 1
+                continue
+
             if not isinstance(key, tuple):
                 continue
 

@@ -71,6 +71,7 @@ from .gameplay_mods import (
     edit_gen_ui_minimapicons,
     edit_gen_ui_specialityicontextures,
     edit_gen_ui_unitspecialties,
+    edit_gen_ui_uispecificcountriesinfos,
     edit_gen_ui_weapontextures,
     edit_gen_ui_weapontraits,
     edit_gen_ui_weaponsminmax,
@@ -202,6 +203,7 @@ __all__ = [
     'edit_gen_ui_minimapicons',
     'edit_gen_ui_specialityicontextures',
     'edit_gen_ui_unitspecialties',
+    'edit_gen_ui_uispecificcountriesinfos',
     'edit_gen_ui_weapontextures',
     'edit_gen_ui_weapontraits',
     'edit_gen_ui_weaponsminmax',
@@ -530,6 +532,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         ],
         "GameData/Generated/UserInterface/Textures/DivisionTextures.ndf": [
             (edit_gen_ui_divisiontextures, "gameplay"),
+        ],
+        "GameData/Generated/UserInterface/UISpecificCountriesInfos.ndf": [
+            (edit_gen_ui_uispecificcountriesinfos, "gameplay"),
         ],
         "GameData/UserInterface/Use/Common/BUCKTextureBank.ndf": [
             (edit_ui_common_bucktexturebank, "gameplay"),

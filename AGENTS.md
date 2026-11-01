@@ -230,6 +230,18 @@ Every real `NEW_UNITS` entry (one with `"NewName"`) must define a unique integer
 
 ---
 
+## NSWP coalition divisions
+
+East Germany (`RDA`), Poland (`POL`), and Czechoslovakia (`TCH`) are not standalone playable factions. Unit tables stay in separate `*_newdivisionrules.py` files under `src/constants/generated/gameplay/decks/new_divisions/new_divisionrules/`. Do not merge those files.
+
+`NSWP_new_divs.py` sets `coalition` on each division to a tuple of member prefixes, currently `("RDA", "POL", "TCH")`. `load_new_divisions()` concatenates `{MEMBER}_{kind}_newdivisionrules` and does not copy the tables into the NSWP file. Kinds come from optional `coalition_rule_kinds`. Otherwise `general` uses airborne, armored, mechanized, motorized, and global; any other key is split on `_` and always includes global. `RDA_new_divs.py` and `POL_new_divs.py` remain the nation division tables and are omitted from the playable `dict_names` mapping in `load_new_divisions()`.
+
+`emblem`, when set, is the emblem filename stem and the texture identifier. The combined-arms emblem is `NSWP_all`. Without `emblem`, the division key is the stem.
+
+`TCH_new_divs.py` and `TCH_newdivisionrules.py` follow the RDA/POL schema. The TCH rule lists are empty until unit rows are authored. TCH is imported for that schema and for coalition lookup, and is not in the playable mapping.
+
+---
+
 ## Optional tools (not everyone installs)
 
 Core install covers the patcher and **dpm_visualizer** (including **matplotlib** for its charts). **Qt** `tools/fxeditor` and **Excel** are in the **`optional`** extra (`PySide6`, `openpyxl`). See [docs/onboarding.md](docs/onboarding.md#optional-extras-for-one-off-work).

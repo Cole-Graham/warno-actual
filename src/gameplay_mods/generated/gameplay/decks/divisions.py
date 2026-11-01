@@ -24,6 +24,8 @@ NATION_TO_COALITION = {
     "SOV": "PACT",
     "RDA": "PACT",
     "DDR": "PACT",
+    "TCH": "PACT",
+    "NSWP": "PACT",
 }
 
 
@@ -273,8 +275,10 @@ def _add_national_divisions(source_path: Any, donor_divisions: Dict[str, Any]) -
                 ) + ",\n    ]"
                 _set_or_add_member(new_div_descr.v, "StandoutUnits", standout_str)
             
-            # Set emblem texture - uses the division key (e.g., "US_general" -> "Texture_Division_Emblem_US_general")
-            emblem_texture = f"Texture_Division_Emblem_{div_key}"
+            # Emblem stem defaults to the division key. ``emblem`` overrides it when the
+            # file stem differs (combined arms is NSWP_all).
+            emblem_stem = div_data.get("emblem", div_key)
+            emblem_texture = f"Texture_Division_Emblem_{emblem_stem}"
             new_div_descr.v.by_m("EmblemTexture").v = f'"{emblem_texture}"'
             
             # Add to source_path

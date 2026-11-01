@@ -52,7 +52,8 @@ def _add_existing_division_emblems(source_path: Any) -> None:
 def _add_new_division_emblems(source_path: Any) -> None:
     """Create division emblem textures for new national divisions.
     
-    Texture file names are based on the keys in new divisions dictionaries (e.g., 'US_general' -> 'US_general.png').
+    Texture file names default to the division key (e.g., 'US_general' -> 'US_general.png').
+    A division ``emblem`` value replaces that stem when the file name differs.
     """
     new_divisions = load_new_divisions()
     
@@ -67,9 +68,9 @@ def _add_new_division_emblems(source_path: Any) -> None:
     textures_map = texturebank_obj.v.by_m("Textures")
     
     for div_key, div_data in new_divisions.items():
-        # Texture file name is the same as the division key with .png extension
-        texture_filename = f"{div_key}.png"
-        emblem_namespace = div_key
+        emblem_stem = div_data.get("emblem", div_key)
+        texture_filename = f"{emblem_stem}.png"
+        emblem_namespace = emblem_stem
         
         # Check if texture already exists
         texture_namespace = f"{NAMESPACE_PREFIX}{emblem_namespace}"
