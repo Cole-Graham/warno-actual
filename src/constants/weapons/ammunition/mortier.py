@@ -479,5 +479,12 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+
+    # DENMARK - Brandt MO-120-AM50 120mm towed mortar -> same WA balance as Tampella 120mm.
+    ("Mortier_MO120_AM50_120mm", "mortar", None, False): {
+        "Ammunition": {
+            "parent_membr": "Mortier_Tampella_120mm",
+        },
+    },
 }
 # fmt: on

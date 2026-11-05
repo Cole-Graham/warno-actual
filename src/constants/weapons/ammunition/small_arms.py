@@ -3298,6 +3298,98 @@ weapons: Dict[WeaponKey, WeaponData] = {
             "Salves": 11,
         },
     },
+
+    # DENMARK - Danish-only small arms. Each copies the WA balance of the closest weapon the
+    # mod already tunes (field-by-field string references, resolved in constants/weapons/
+    # __init__.py), so Danish squads fight like their West German / British / US analogs.
+    ("FM_M75", "small_arms", None, False): {  # Danish G3 (Gevaer M/75) -> G3KA4
+        "Ammunition": {
+            "Arme": "FM_G3KA4",
+            "hit_roll": "FM_G3KA4",
+            "parent_membr": "FM_G3KA4",
+        },
+        "SupplyCost": 1.0,
+        "NbWeapons": [13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+        "WeaponDescriptor": {'Salves': 11},
+    },
+    ("MMG_inf__MG62_7_62mm", "small_arms", None, False): {  # Danish MG3 (LMG M/62), squad -> MG3
+        "Ammunition": {
+            "Arme": "MMG_inf__MG3_7_62mm",
+            "hit_roll": "MMG_inf__MG3_7_62mm",
+            "parent_membr": "MMG_inf__MG3_7_62mm",
+        },
+        "SupplyCost": 1.0,
+        "NbWeapons": [4, 3, 2, 1],
+        "WeaponDescriptor": {'Salves': 45},
+    },
+    ("MMG_MG62_7_62mm", "small_arms", None, False): {  # M/62 on M41 DK-1 -> same as vehicle MG3 (which refs M240 Abrams)
+        "Ammunition": {
+            "hit_roll": "MMG_M240_abrams_7_62mm",
+            "parent_membr": "MMG_M240_abrams_7_62mm",
+        },
+        "SupplyCost": 1.0,
+        "NbWeapons": [1],
+    },
+    ("PM_Hovea", "small_arms", None, False): {  # Hovea M/49 9mm SMG -> Sterling
+        "Ammunition": {
+            "Arme": "PM_Sterling",
+            "hit_roll": "PM_Sterling",
+            "parent_membr": "PM_Sterling",
+        },
+        "SupplyCost": 1.0,
+        "NbWeapons": [8, 7, 6, 5, 4, 3, 2, 1],
+        "WeaponDescriptor": {'Salves': 22},
+    },
+    ("PM_Husqvarna_M37", "small_arms", None, False): {  # Husqvarna M/37 -> Sterling
+        "Ammunition": {
+            "Arme": "PM_Sterling",
+            "hit_roll": "PM_Sterling",
+            "parent_membr": "PM_Sterling",
+        },
+        "SupplyCost": 1.0,
+        "NbWeapons": [8, 7, 6, 5, 4, 3, 2, 1],
+        "WeaponDescriptor": {'Salves': 22},
+    },
+    ("PM_HK53A3_DK", "small_arms", None, False): {  # HK53 5.56 carbine (Jaeger) -> MP5A3
+        "Ammunition": {
+            "Arme": "PM_MP_5A3",
+            "hit_roll": "PM_MP_5A3",
+            "parent_membr": "PM_MP_5A3",
+        },
+        "SupplyCost": 1.0,
+        "NbWeapons": [10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+        "WeaponDescriptor": {'Salves': 14},
+    },
+    ("SAW_MG85_5_56mm", "small_arms", None, False): {  # 5.56 LMG (Jaeger) -> Minimi
+        "Ammunition": {
+            "Arme": "SAW_Minimi_5_56mm",
+            "hit_roll": "SAW_Minimi_5_56mm",
+            "parent_membr": "SAW_Minimi_5_56mm",
+        },
+        "SupplyCost": 1.0,
+        "NbWeapons": [3, 2, 1],
+        "WeaponDescriptor": {'Salves': 23},
+    },
+    ("Sniper_M66", "small_arms", None, False): {  # DMR/sniper M/66 -> M21
+        "Ammunition": {
+            "Arme": "Sniper_M21",
+            "hit_roll": "Sniper_M21",
+            "parent_membr": "Sniper_M21",
+        },
+        "SupplyCost": 2.0,
+        "NbWeapons": [2, 1],
+        "WeaponDescriptor": {'Salves': 10},
+    },
+    ("Sniper_MSG90", "small_arms", None, False): {  # HK MSG90 -> PSG1 (same family)
+        "Ammunition": {
+            "Arme": "Sniper_PSG1",
+            "hit_roll": "Sniper_PSG1",
+            "parent_membr": "Sniper_PSG1",
+        },
+        "SupplyCost": 1.0,
+        "NbWeapons": [1],
+        "WeaponDescriptor": {'Salves': 12},
+    },
 }
 
 # fmt: on

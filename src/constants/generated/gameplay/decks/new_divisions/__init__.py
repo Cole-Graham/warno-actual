@@ -1,4 +1,5 @@
 # from .FR_new_divs import fr_new_divs
+from .DK_new_divs import dk_new_divs
 from .NSWP_new_divs import nswp_new_divs
 from .POL_new_divs import pol_new_divs
 from .RDA_new_divs import rda_new_divs
@@ -11,6 +12,7 @@ from .US_new_divs import us_new_divs
 
 __all__ = [
     #"fr_new_divs",
+    "dk_new_divs",
     "nswp_new_divs",
     "pol_new_divs",
     "rda_new_divs",

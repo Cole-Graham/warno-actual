@@ -1,5 +1,6 @@
 """New depictions for new units"""
 
+from .DK_new_depictions import DK_NEW_DEPICTIONS
 from .FR_new_depictions import FR_NEW_DEPICTIONS
 from .POL_new_depictions import POL_NEW_DEPICTIONS
 from .RDA_new_depictions import RDA_NEW_DEPICTIONS
@@ -20,6 +21,7 @@ SUPPLY_TRANSPORT_DEPICTIONS = {
 
 # Combine all faction depictions
 NEW_DEPICTIONS = {
+    **DK_NEW_DEPICTIONS,
     **FR_NEW_DEPICTIONS,
     **POL_NEW_DEPICTIONS,
     **RDA_NEW_DEPICTIONS,

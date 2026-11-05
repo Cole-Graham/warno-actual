@@ -50,8 +50,20 @@ from .TCH_newdivisionrules import (
     TCH_mechanized_newdivisionrules,
     TCH_motorized_newdivisionrules,
 )
+from .DK_newdivisionrules import (
+    LANDJUT_RFA_mechanized_newdivisionrules,
+    LANDJUT_RFA_motorized_newdivisionrules,
+    DK_global_newdivisionrules,
+    DK_mechanized_newdivisionrules,
+    DK_motorized_newdivisionrules,
+)
 
 __all__ = [
+    "LANDJUT_RFA_mechanized_newdivisionrules",
+    "LANDJUT_RFA_motorized_newdivisionrules",
+    "DK_global_newdivisionrules",
+    "DK_mechanized_newdivisionrules",
+    "DK_motorized_newdivisionrules",
     "UK_airborne_newdivisionrules",
     "UK_armored_newdivisionrules",
     "UK_global_newdivisionrules",

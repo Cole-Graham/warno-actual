@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 from typing import Dict, Any, List, Optional, Tuple, Set
 
+from .DK_new_units import DK_NEW_UNITS
 from .FR_new_units import FR_NEW_UNITS
 from .new_depictions import NEW_DEPICTIONS
 from .POL_new_units import POL_NEW_UNITS
@@ -507,6 +508,7 @@ def load_new_units() -> Dict:
         **USA_NEW_UNITS,
         **FR_NEW_UNITS,
         **TCH_NEW_UNITS,
+        **DK_NEW_UNITS,
         **build_supply_transport_new_units(),
     }
 

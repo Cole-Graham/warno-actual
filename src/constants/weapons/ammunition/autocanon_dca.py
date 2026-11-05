@@ -820,6 +820,90 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    # --- Denmark: Otomatic_DK (Leopard 1 chassis + OTO Melara 76/62 single gun, AA+AT) ---
+    # Ported 1:1 from WACE's Otomatic_ITA (Ammo_DCA_Otomatic_76mm_ITA / _ITA_AIR /
+    # Ammo_Canon_AP_Otomatic_76mm_ITA). WACE's separate anti-aircraft round (_ITA_AIR) is
+    # NOT hand-authored here: WA auto-clones every he_dca ammo into an _AIR sibling and mounts
+    # it (spaag_air.py / he_dca_air_mounts.py) - same family, 0.3s aim, 2/3 suppress.
+    ("DCA_Otomatic_76mm_DK", "DCA", "DCA_1_canon_S60_57mm_radar", True): {
+        "Texture": "gdf_35",  # weapon icon, as WACE (Gepard 35mm icon)
+        "Ammunition": {
+            "display": "OTO MELARA 76/62",
+            "token": "AMZSWIPJOF",
+            "Arme": {
+                "Family": "DamageFamily_he_dca",
+                "Index": 1,
+            },
+            "hit_roll": {
+                "Idling": 50,
+                "Moving": 15,
+            },
+            "parent_membr": {
+                "Caliber": ("76mm", "FZVYZYCCJH"),
+                "HasDeploymentTime": False,
+                "CanShootWhileMoving": True,
+                "TimeBetweenTwoShots": 0.5,
+                "TimeBetweenTwoFx": 0.2,
+                "AimingTime": 1.5,
+                "MinimumRangeGRU": 0,
+                "MaximumRangeGRU": 1575,
+                "MinimumRangeHelicopterGRU": 35,
+                "MaximumRangeHelicopterGRU": 2800,
+                "MinimumRangeAirplaneGRU": 35,
+                "MaximumRangeAirplaneGRU": 3000,
+                "DispersionAtMaxRangeGRU": 88,
+                "DispersionAtMinRangeGRU": 18,
+                "RadiusSplashPhysicalDamagesGRU": 9,
+                "PhysicalDamages": 2.5,
+                "RadiusSplashSuppressDamagesGRU": 30,
+                "SuppressDamages": 70.0,
+                "ProjectileSpeedGRU": 2079,
+                "ShotsCountPerSalvo": 13,  # 52 ready rounds = 4 bursts of 13
+                "AffichageMunitionParSalve": 13,
+                "TimeBetweenTwoSalvos": 2.0,
+                "SupplyCost": 16.0,
+            },
+        },
+    },
+
+    ("Canon_AP_Otomatic_76mm_DK", "canon", "Canon_AP_KS19_100mm", True): {
+        "Texture": "gdf_35",  # weapon icon, as WACE (Gepard 35mm icon)
+        "Ammunition": {
+            "display": "OTO 76/62 (APFSDS)",
+            "token": "RNLBRNAYEF",
+            "Arme": {
+                "Family": "DamageFamily_ap",
+                "Index": 26,
+            },
+            "hit_roll": {
+                "Idling": 50,
+                "Moving": 15,
+            },
+            "parent_membr": {
+                "Caliber": ("76mm", "FZVYZYCCJH"),
+                "TraitsToken": ["MOTION", "HE", "KINETIC"],
+                "CanShootWhileMoving": True,
+                "HasDeploymentTime": False,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
+                "MinimumRangeGRU": 250,
+                "MaximumRangeGRU": 2100,
+                "DispersionAtMaxRangeGRU": 88,
+                "DispersionAtMinRangeGRU": 18,
+                "RadiusSplashPhysicalDamagesGRU": 5,
+                "PhysicalDamages": 1.0,
+                "RadiusSplashSuppressDamagesGRU": 25,
+                "SuppressDamages": 52.0,
+                "ProjectileSpeedGRU": 2079,
+                "AimingTime": 1.5,
+                "TimeBetweenTwoSalvos": 4.0,
+                "ShotsCountPerSalvo": 1,
+                "AffichageMunitionParSalve": 1,
+                "SupplyCost": 16.0,
+            },
+        },
+    },
+
     ("DCA_1_canon_KS30_130mm", "DCA", None, False): {
         "Ammunition": {
             "Arme": {

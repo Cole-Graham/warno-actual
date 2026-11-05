@@ -1274,5 +1274,43 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+
+    # DENMARK - AP round named in brackets, same as the rest of the mod. Leopard 1A3/1A5 (DK)
+    # share the West German L7A3 rounds above, which are already named.
+
+    ("Canon_QF_20pounder_84mm_AP", "canon", None, False): { # Centurion Mk3 (DK) OQF 20pdr APDS
+        "Ammunition": {
+            "display": "OQF 20pdr (APDS)",
+            "token": "SAPFYTUHMX",
+        },
+    },
+
+    ("Canon_AP_105mm_L7_Centurion_5_2_HEAT", "canon", None, False): { # Centurion Mk5/2 (DK) L7, vanilla models it as HEAT (ap_missile family, pen 17); exact Danish designation unverified
+        "Ammunition": {
+            "display": "L7 (HEAT)",
+            "token": "ZVURLZFXLG",
+        },
+    },
+
+    ("Canon_AP_105mm_L7_Centurion_5_2_LateDK", "canon", None, False): { # Centurion Mk5/2 upgraded (DK) L7 APFSDS (kinetic, pen 27); DM33 = assumed, same round as Danish Leopards
+        "Ammunition": {
+            "display": "L7 (DM33)",
+            "token": "MIHNFUXBNE",
+        },
+    },
+
+    ("Canon_AP_76mm_M32A1_Walker_late_APFSDS", "canon", None, False): { # M41 DK-1 76mm M32 APFSDS
+        "Ammunition": {
+            "display": "M32 (APFSDS-T)",
+            "token": "WUPAMPMOJE",
+        },
+    },
+
+    ("Canon_AP_QF_17pounder_76mm", "canon", None, False): { # M10 Achilles (DK) OQF 17pdr APDS
+        "Ammunition": {
+            "display": "OQF 17pdr (APDS)",
+            "token": "RFMTBVRSFK",
+        },
+    },
 }
 # fmt: on

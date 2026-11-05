@@ -175,6 +175,9 @@ def load_new_divisions() -> Dict:
         'SOV_new_divs': 'sov_new_divs',
         'US_new_divs': 'us_new_divs',
         'UK_new_divs': 'uk_new_divs',
+        # LANDJUT Mechanized / Motorized (Danish + hand-picked West German units).
+        # No standalone Danish division - see DK_new_divs.py.
+        'DK_new_divs': 'dk_new_divs',
     }
     
     logger.info("Loading new division dictionaries...")
