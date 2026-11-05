@@ -57,8 +57,8 @@ dk_unit_edits = {
         "CommandPoints": 15,
         "SpecialtiesList": {"add_specs": ["'refundable_unit'",]},
     },
-    "Lynx_Mk80_trans_DK": {  # Frogmen transport; analog Lynx_AH_Mk1_UK 50
-        "CommandPoints": 50,
+    "Lynx_Mk80_trans_DK": {  # Frogmen transport; analog Lynx_AH_Mk1_UK 50, set to 45 by hand
+        "CommandPoints": 45,
         "SpecialtiesList": {"add_specs": ["'refundable_unit'",]},
     },
 
@@ -388,11 +388,12 @@ dk_unit_edits = {
         "CommandPoints": 70,
         "WeaponDescriptor": {"Salves": {"HMG_12_7_mm_M2HB": 35}},  # as WA's US M113/M125/M109 family
     },
-    "LandRover_ITOW_DK": {  # analog LandRover_MILAN_UK 45 / M151A2_TOW_NG_US 40
-        "CommandPoints": 50,
+    "LandRover_ITOW_DK": {  # "Laro M/87"; analog LandRover_MILAN_UK 45 / M151A2_TOW_NG_US 40
+        "CommandPoints": 45,
     },
-    "M38A1_RCL_DK": {  # analog M151C_RCL_NG_US 25
+    "M38A1_RCL_DK": {  # analog M151C_RCL_NG_US 25 (16 rounds)
         "CommandPoints": 25,
+        "WeaponDescriptor": {"Salves": {"RocketInf_M40A1_RCL_106mm": 16}},
     },
 
     # ------------------------------------------------------------------ ARTILLERY
@@ -408,6 +409,7 @@ dk_unit_edits = {
     },
     "M106A1_HOWZ_DK": {  # analog M106A2_HOWZ_US 70
         "CommandPoints": 70,
+        "ButtonTexture": "M106A2_HOWZ_US",  # vanilla DK icon is still Eugen's default.png placeholder
         "WeaponDescriptor": {"Salves": {"HMG_12_7_mm_M2HB": 35}},  # as WA's US M113/M125/M109 family
     },
     "Howz_M101_105mm_DK": {  # analog Howz_M101_105mm_RFA 55
@@ -431,20 +433,24 @@ dk_unit_edits = {
     },
 
     # ------------------------------------------------------------------ AA
-    "DCA_M55_DK": {  # towed quad .50
-        "CommandPoints": 25,
+    "DCA_M55_DK": {  # towed quad .50; same as WA DCA_M55_FR (15, 3 salvos)
+        "CommandPoints": 15,
         "max_speed": 6,
+        "WeaponDescriptor": {"Salves": {"DCA_4_canon_Maxson_towed_12_7mm": 3}},
     },
-    "DCA_Bofors_L60_DK": {  # analog Bofors_40mm_RFA 30, older L60
-        "CommandPoints": 25,
+    "DCA_Bofors_L60_DK": {  # same as WA DCA_Bofors_L60_FR (15, 1 salvo)
+        "CommandPoints": 15,
         "max_speed": 6,
+        "WeaponDescriptor": {"Salves": {"DCA_1_canon_Bofors_40mm_L60": 1}},
     },
-    "DCA_Bofors_upgrade_DK": {  # analog Bofors_40mm_RFA 30
+    "DCA_Bofors_upgrade_DK": {  # same as WA Bofors_40mm_RFA (30, 1 salvo)
         "CommandPoints": 30,
         "max_speed": 6,
+        "WeaponDescriptor": {"Salves": {"DCA_1_canon_Bofors_40mm": 1}},
     },
-    "Bedford_MJ_4t_AA_DK": {  # truck quad .50
-        "CommandPoints": 30,
+    "Bedford_MJ_4t_AA_DK": {  # truck quad .50; same as WA M16_MGMC_FR (25, 3 salvos)
+        "CommandPoints": 25,
+        "WeaponDescriptor": {"Salves": {"DCA_4_canon_Maxson_SP_12_7mm": 3}},
     },
     "DCA_I_Hawk_DK": {  # analog DCA_I_Hawk_RFA 90
         "CommandPoints": 90,
@@ -452,8 +458,8 @@ dk_unit_edits = {
     },
 
     # ------------------------------------------------------------------ HELICOPTERS
-    "Ecureuil_TOW_DK": {  # 4x TOW-2; analog Bo_105_PAH_1_RFA 80 (6x HOT)
-        "CommandPoints": 90,
+    "Ecureuil_TOW_DK": {  # "PVH Fennec", 4x TOW-2; analog Bo_105_PAH_1_RFA 80 (6x HOT): 6 HP vs 4, faster, but 2 missiles fewer
+        "CommandPoints": 85,
     },
 
     # ------------------------------------------------------------------ AIR

@@ -708,5 +708,80 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+
+    # DENMARK - towed guns the mod didn't cover yet, given the WA calibre standard:
+    # 155mm like Howz_Canon_M198/M185 (4.2 dmg), 203mm like Howz_Canon_M201A1 (6 dmg).
+    ("Howz_Canon_M114_Howitzer_155mm", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "MinimumRangeGRU": 1925,
+                "PhysicalDamages": 4.2,
+                "SuppressDamages": 357,
+                "RadiusSplashPhysicalDamagesGRU": 155,
+                "RadiusSplashSuppressDamagesGRU": 259,
+            },
+        },
+    },
+    ("Howz_Canon_M114_Howitzer_155mm_SMOKE", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "MinimumRangeGRU": 1925,
+            },
+        },
+    },
+    ("Howz_Canon_M114_39_Howitzer_155mm", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "MinimumRangeGRU": 1925,
+                "PhysicalDamages": 4.2,
+                "SuppressDamages": 357,
+                "RadiusSplashPhysicalDamagesGRU": 155,
+                "RadiusSplashSuppressDamagesGRU": 259,
+            },
+        },
+    },
+    ("Howz_Canon_M114_39_Howitzer_155mm_SMOKE", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "MinimumRangeGRU": 1925,
+            },
+        },
+    },
+    ("Howz_Canon_LongTom_155mm", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "MinimumRangeGRU": 1925,
+                "PhysicalDamages": 4.2,
+                "SuppressDamages": 357,
+                "RadiusSplashPhysicalDamagesGRU": 155,
+                "RadiusSplashSuppressDamagesGRU": 259,
+            },
+        },
+    },
+    ("Howz_Canon_LongTom_155mm_SMOKE", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "MinimumRangeGRU": 1925,
+            },
+        },
+    },
+    ("Howz_Canon_M115_towed_203mm", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "MinimumRangeGRU": 1925,
+                "PhysicalDamages": 6,
+                "SuppressDamages": 450,
+                "RadiusSplashPhysicalDamagesGRU": 203,
+                "RadiusSplashSuppressDamagesGRU": 339,
+            },
+        },
+    },
+    ("Howz_Canon_M115_towed_203mm_SMOKE", "howitzer", None, False): {
+        "Ammunition": {
+            "parent_membr": {
+                "MinimumRangeGRU": 1925,
+            },
+        },
+    },
 }
 # fmt: on

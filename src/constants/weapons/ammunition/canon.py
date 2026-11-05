@@ -1296,6 +1296,9 @@ weapons: Dict[WeaponKey, WeaponData] = {
         "Ammunition": {
             "display": "L7 (DM33)",
             "token": "MIHNFUXBNE",
+            "Arme": {
+                "Index": 28,  # same DM33 + L7 as the Leopard 1A3/1A5 rounds (vanilla had 27)
+            },
         },
     },
 
