@@ -135,6 +135,18 @@ def new_units_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) -> Non
             # Handle salvos
             if "Salves" in weapon_edits:
                 salve_edits = weapon_edits["Salves"]
+                # Drop whole ammo boxes by box index (e.g. after removing donor turrets),
+                # before inserts so the indices refer to the donor list. Keeps
+                # SalvoIsMainSalvo (if the donor has it) the same length. Mounts that point
+                # at a later box are NOT renumbered: re-box them via turret MountedWeapons
+                # insert/remove (see Otomatic_DK in DK_new_units.py).
+                if "remove" in salve_edits:
+                    salves_list = new_weap_row.v.by_member("Salves").v
+                    main_salvo = new_weap_row.v.by_member("SalvoIsMainSalvo", False)
+                    for index in sorted(salve_edits["remove"], reverse=True):
+                        salves_list.remove(index)
+                        if main_salvo is not None and index < len(main_salvo.v):
+                            main_salvo.v.remove(index)
                 # Handle insertions first to prevent index errors
                 if "insert" in salve_edits:
                     salves_list = new_weap_row.v.by_member("Salves").v
@@ -1098,7 +1110,7 @@ def _update_turret(new_weap_row: Any, turret_index: int, turret_edits: Dict[str,
     # turret property edits. Some two-axis members (MasterTurretYulBoneOrdinal)
     # exist only on turrets that already have a master, so add when absent.
     for membr, value in turret_edits.items():
-        if membr == "MountedWeapons":
+        if membr in ("MountedWeapons", "remove"):
             continue
         turret_obj = turret_list.v[turret_index].v
         member = turret_obj.by_member(membr, False)

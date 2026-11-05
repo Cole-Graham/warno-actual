@@ -911,8 +911,14 @@ def _handle_reversescanner_module(logger, game_db, unit_data, edit_type, unit_na
     """Handle TReverseScannerWithIdentificationDescriptor for existing and new units"""
 
     current_base_prob = float(module.v.by_m("IdentifyBaseProbability").v)
-    new_base_prob = min(current_base_prob * 2.0, 1.0)
-        
+    # Optional explicit final value (e.g. a new recon clone of a non-recon donor that should
+    # identify like the vanilla recon variant does after this doubling).
+    custom_base_prob = edits.get("optics", {}).get("IdentifyBaseProbability", None)
+    if custom_base_prob is not None:
+        new_base_prob = float(custom_base_prob)
+    else:
+        new_base_prob = min(current_base_prob * 2.0, 1.0)
+
     module.v.by_m("IdentifyBaseProbability").v = str(new_base_prob)
     logger.info(f"Updated {unit_name} identify base probability from {current_base_prob} to {new_base_prob}")
 

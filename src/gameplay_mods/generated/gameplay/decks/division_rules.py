@@ -694,7 +694,7 @@ def _get_fob_unit_names() -> set:
         Set of FOB unit names (e.g., {"FOB_US", "FOB_SOV", "FOB_UK", ...})
     """
     fob_names = {
-        "FOB_BEL", "FOB_CAN", "FOB_CZ", "FOB_DDR", "FOB_ESP", 
+        "FOB_BEL", "FOB_CAN", "FOB_CZ", "FOB_DDR", "FOB_DK", "FOB_ESP",
         "FOB_FR", "FOB_NL", "FOB_POL", "FOB_RFA", "FOB_SOV", 
         "FOB_TCH", "FOB_UK", "FOB_US",
     }
