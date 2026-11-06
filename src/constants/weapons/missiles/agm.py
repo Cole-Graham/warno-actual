@@ -852,5 +852,22 @@ missiles: Dict[WeaponKey, WeaponData] = {
             "MaxAccelerationGRU": 1400,
         },
     },
+
+    # DENMARK (also F18_Hornet_AT_ESP) - AGM-65G, same WA treatment as AGM-65D (hit 65, 3500 m,
+    # 0.3 s aim). Stays 1 missile per salvo: the Danish F-16A carries only 2.
+    ("AGM_AGM65G_Maverick", "ATGM", None, False): { # 56
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 65,
+                "Moving": 65,
+            },
+            "parent_membr": {
+                "TimeBetweenTwoShots": 0.4,
+                "MaximumRangeGRU": 3500,
+                "AimingTime": 0.3,
+                "SupplyCost": 80.0,  # AGM-65D: 160 per 2-missile salvo
+            },
+        },
+    },
 }
 # fmt: on

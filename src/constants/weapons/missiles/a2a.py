@@ -925,5 +925,42 @@ missiles: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+
+    # DENMARK - AIM-9N (improved AIM-9J), Danish F-16A / Draken only; between WA's AIM-9J
+    # (hit 50) and AIM-9L (hit 60). The _HAGRU twin is attached automatically like the others.
+    ("AA_AIM9N_Sidewinder", "A2A", None, False): { # 5
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_a2a_tbagru",
+            },
+            "hit_roll": {
+                "Idling": 55,
+                "Moving": 55,
+            },
+            "parent_membr": {
+                "MaximumRangeAirplaneGRU": 3850,
+                "AimingTime": 0.3,
+                "SupplyCost": 25.0,
+            },
+        },
+    },
+
+    ("AA_AIM9N_Sidewinder_HAGRU", "A2A", "AA_AIM9N_Sidewinder", True): { # 5
+        "Ammunition": {
+            "Arme": {
+                "Family": "DamageFamily_a2a_hagru",
+            },
+            "hit_roll": {
+                "Idling": 55,
+                "Moving": 55,
+            },
+            "parent_membr": {
+                "MaximumRangeAirplaneGRU": 3850,
+                "AimingTime": 0.3,
+                "SupplyCost": 25.0,
+            },
+        },
+    },
+
 }
 # fmt: on

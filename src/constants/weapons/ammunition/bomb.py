@@ -663,5 +663,25 @@ weapons: Dict[WeaponKey, WeaponData] = {
             },
         },
     },
+
+    # DENMARK - F16A_CLU_DK carries 10x Rockeye (vanilla _x10, auto-renamed to _salvolength10),
+    # a length the mod had no entry for, so it kept vanilla stats. Same as the other lengths.
+    ("Bomb_CBU_Mk20_Rockeye_II_250kg_salvolength10", "clu_bomb", None, False): { # 44
+        "Ammunition": {
+            "Arme": {
+                "Index": 8,
+            },
+            "parent_membr": {
+                "ImpactHappening": "'MLRSClusterAP100m'",
+                "PhysicalDamages": 1,
+                "RadiusSplashPhysicalDamagesGRU": 100,
+                "RadiusSplashSuppressDamagesGRU": 133,
+                "ShotsCountPerSalvo": 10,
+                "SimultaneousShotsCount": 1,
+                "AffichageMunitionParSalve": 10,
+                "SupplyCost": 460.0,  # between salvolength8 (420) and salvolength12 (500)
+            },
+        },
+    },
 }
 # fmt: on

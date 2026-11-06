@@ -472,7 +472,7 @@ dk_unit_edits = {
     "F16A_AGM_DK": {"CommandPoints": 220, "ECM": -0.25, "optics": {"OpticalStrengths": {"EOpticalStrength/HighAltitude": 13250}}},
     "F16A_HE_DK": {"CommandPoints": 210, "ECM": -0.25, "optics": {"OpticalStrengths": {"EOpticalStrength/HighAltitude": 13250}}},
     "F16A_HE_CLU_DK": {"CommandPoints": 220, "ECM": -0.25, "optics": {"OpticalStrengths": {"EOpticalStrength/HighAltitude": 13250}}},
-    "F16A_CLU_DK": {"CommandPoints": 210, "ECM": -0.25, "optics": {"OpticalStrengths": {"EOpticalStrength/HighAltitude": 13250}}},
+    "F16A_CLU_DK": {"CommandPoints": 220, "ECM": -0.25, "optics": {"OpticalStrengths": {"EOpticalStrength/HighAltitude": 13250}}},
     # Draken: priced vs F104G_Starfighter_RFA 110 (AA) / _HE 140. ECM: vanilla Draken has
     # -0.3 like the F-16 (F-104G only -0.1), and WA turns vanilla -0.3 into -0.25 -> -0.25.
     # The fighter gets the WA F-16/F-4F HighAltitude optics 13250 (vanilla 10600 like them);
