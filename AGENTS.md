@@ -112,6 +112,10 @@ Dumbfire rockets (`Arme.Family == DamageFamily_roquette_ap`) must use **avion** 
 - **Handler:** [`weapon_descriptor/handlers/air_rocket_platform.py`](src/gameplay_mods/generated/gameplay/gfx/weapon_descriptor/handlers/air_rocket_platform.py).
 - **Ordering:** `apply_air_rocket_platform_standard` runs **after** `unit_edits_weapondescriptor`, **before** `apply_helo_aa_turret_angles_pattern_standard`. Unpaired mounts log a warning. EffectTag is not rewritten. Ground RocketAir vehicles are skipped. **New units** are not scanned; set ammo in `NEW_UNITS` / constants.
 
+### Unit and critical-effect files
+
+Unit descriptors are `GameData/Generated/Gameplay/TacticalUnits.ndf`. Object names stay `Descriptor_Unit_*`, and references stay `$/GFX/Unit/Descriptor_Unit_*`. Critical effect modules are `GameData/Gameplay/Unit/CriticalEffects.ndf`. The BailedOut strip runs on that file. Live unit modules reference `$/GFX/CriticalEffects/...`.
+
 ### Shock no-resolute specialty (unit descriptors)
 
 Shock units receive `Capacite_resolute` via the Choc skill auto-add in `tcapacite.py`. They must **not** also carry the `_resolute` specialty tag, or the UI implies a stacked resolute bonus.

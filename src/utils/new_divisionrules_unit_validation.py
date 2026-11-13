@@ -119,6 +119,7 @@ def _collect_units_emitted_for_new_division(
 
     rule_exclusions = div_data.get("rule_exclusions", []) or []
     transport_overrides = div_data.get("transport_overrides", {}) or {}
+    redundant_units = set(div_data.get("redundant_units") or ())
 
     if isinstance(custom_rules, dict):
         rules_dicts = [custom_rules]
@@ -149,6 +150,8 @@ def _collect_units_emitted_for_new_division(
                     transports = transport_overrides[unit_name]
 
                 if rule_exclusions and unit_name in rule_exclusions:
+                    continue
+                if unit_name in redundant_units:
                     continue
 
                 if not isinstance(availability, list) or len(availability) != 4:

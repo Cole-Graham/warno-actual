@@ -27,7 +27,7 @@ def _serialize_ndf_value(val: Any, member_name: str = "") -> str:
     if val is None:
         return "None"
     if isinstance(val, bool):
-        return "True" if val else "False"
+        return "true" if val else "false"
     if isinstance(val, (int, float)):
         return str(val)
     if isinstance(val, str):
@@ -37,8 +37,9 @@ def _serialize_ndf_value(val: Any, member_name: str = "") -> str:
             stripped = val[1:-1]
         if stripped.startswith("$") or stripped.startswith("RGBA"):
             return stripped
-        if stripped in ("True", "False"):
-            return stripped
+        # NDF bools are bare true/false. ndf_parse returns them as strings.
+        if stripped.lower() in ("true", "false"):
+            return stripped.lower()
         if stripped.lstrip("-").replace(".", "", 1).isdigit():
             return stripped
         return f"'{stripped}'"
@@ -57,8 +58,8 @@ def _serialize_ndf_value(val: Any, member_name: str = "") -> str:
     s = str(val)
     if s.startswith("$") or s.startswith("RGBA"):
         return s
-    if s in ("True", "False"):
-        return s
+    if s.lower() in ("true", "false"):
+        return s.lower()
     if s.lstrip("-").replace(".", "", 1).isdigit():
         return s
     return f"'{s}'"

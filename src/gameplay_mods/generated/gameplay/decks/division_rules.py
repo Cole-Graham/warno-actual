@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Optional, Tuple
+import math
+from typing import Any, Dict, List, Optional, Sequence, Tuple
 
 from src import ndf
 from src.constants.unit_edits import load_unit_edits
@@ -9,6 +10,49 @@ from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import is_obj_type, strip_quotes  # noqa
 
 logger = setup_logger(__name__)
+
+
+def _format_pack_multiplier(pack_size: int, value: float) -> str:
+    """Write a multiplier whose decimal text still floors to at least one unit."""
+    places = 6
+    step = 10 ** -places
+    written = float(f"{value:.{places}f}")
+    if math.floor(pack_size * written + 1e-9) < 1:
+        units = math.ceil((1.0 / pack_size) / step)
+        written = units * step
+    text = f"{written:.{places}f}".rstrip("0").rstrip(".")
+    if "." not in text:
+        text += ".0"
+    return text
+
+
+def _multiplier_that_fills_a_pack(pack_size: int, multiplier: float) -> float:
+    """Raise a positive multiplier until floor(pack * multiplier) is at least 1."""
+    if math.floor(pack_size * multiplier + 1e-9) >= 1:
+        return multiplier
+    return math.nextafter(1.0 / pack_size, 2.0)
+
+
+def xp_multipliers_for_counts(pack_size: int, counts: Sequence[float]) -> str:
+    """NDF multiplier list. A zero count is 0.0. A positive count yields at least one unit."""
+    values = []
+    for count in counts:
+        if count <= 0 or pack_size <= 0:
+            values.append("0.0")
+            continue
+        values.append(_format_pack_multiplier(pack_size, _multiplier_that_fills_a_pack(pack_size, count / pack_size)))
+    return "[" + ", ".join(values) + "]"
+
+
+def normalize_xp_multipliers(pack_size: int, multipliers: Sequence[float]) -> str:
+    """Keep authored multipliers, rewriting any positive value that would pack zero units."""
+    values = []
+    for multiplier in multipliers:
+        if multiplier <= 0 or pack_size <= 0:
+            values.append("0.0")
+            continue
+        values.append(_format_pack_multiplier(pack_size, _multiplier_that_fills_a_pack(pack_size, multiplier)))
+    return "[" + ", ".join(values) + "]"
 
 
 def edit_gen_gp_decks_divisionrules(source_path: Any, game_db: Dict[str, Any]) -> None:
@@ -112,7 +156,7 @@ def _create_rule_entry(unit: str, edits: Dict, transport_str: str = "", cards: i
         base_entry += f"\n    AvailableTransportList = {transport_str}"
 
     base_avail = max(edits["availability"])
-    xp_multi_str = str([i / base_avail for i in edits["availability"]])
+    xp_multi_str = xp_multipliers_for_counts(base_avail, edits["availability"])
 
     base_entry += (
         f"\n    MaxPackNumber = {cards}"
@@ -159,8 +203,7 @@ def _apply_unit_updates(rule: Any, unit: str, div_name: str, edits: Dict) -> Non
 
     if "availability" in edits:
         base_avail = max(edits["availability"])
-        # Format each value to the hundredth decimal place
-        xp_multi = str([round(i / base_avail, 2) for i in edits["availability"]])
+        xp_multi = xp_multipliers_for_counts(base_avail, edits["availability"])
         logger.debug(f"Setting {unit} availability to {base_avail}")
         rule.by_m("NumberOfUnitInPack").v = base_avail
         logger.debug(f"Setting {unit} XP multiplier to {xp_multi}")
@@ -224,7 +267,7 @@ def _new_unit_division_rules(source_path: Any) -> None:
                 transport_str = f"[{', '.join(transport_list)}]"
 
             base_avail = max(edits["availability"])
-            xp_multi = str([round(i / base_avail, 2) for i in edits["availability"]])
+            xp_multi = xp_multipliers_for_counts(base_avail, edits["availability"])
 
             default_cards = edits["Divisions"]["default"]["cards"]
             cards = div_data.get("cards", default_cards)
@@ -323,8 +366,13 @@ def _mg_team_division_rules(source_path: Any, game_db: Dict[str, Any]) -> None:
                 is_para = _is_para_unit(unit_name, unit_db)
                 
                 # apply availability settings
-                xp_multi = str([0.0, 1.0, 0.75, 0.0] if is_para else [1.0, 0.75, 0.0, 0.0])
-                hmg_xp_multi = str([0.0, 1.0, 0.7, 0.0] if is_para else [1.0, 0.7, 0.0, 0.0])
+                pack_size = 10 if mg_type == "HMG" else 12
+                xp_multi = normalize_xp_multipliers(
+                    pack_size, [0.0, 1.0, 0.75, 0.0] if is_para else [1.0, 0.75, 0.0, 0.0],
+                )
+                hmg_xp_multi = normalize_xp_multipliers(
+                    10, [0.0, 1.0, 0.7, 0.0] if is_para else [1.0, 0.7, 0.0, 0.0],
+                )
 
                 rule_obj.v.by_m("NumberOfUnitInPack").v = '10' if mg_type == "HMG" else '12'
                 rule_obj.v.by_m("NumberOfUnitInPackXPMultiplier").v = hmg_xp_multi if mg_type == "HMG" else xp_multi
@@ -631,11 +679,7 @@ def _convert_custom_division_rule_to_string(unit_name: str, cards: int, availabi
     base_avail = max(availability) if availability else 0
     
     # Calculate XP multiplier (each value divided by base, rounded to 2 decimals)
-    if base_avail > 0:
-        xp_multi = [round(val / base_avail, 2) for val in availability]
-    else:
-        xp_multi = [0.0, 0.0, 0.0, 0.0]
-    xp_multi_str = str(xp_multi)
+    xp_multi_str = xp_multipliers_for_counts(base_avail, availability)
     
     # Determine if unit needs transport
     # If None is in the transport list, the unit can be deployed without transport
@@ -770,6 +814,11 @@ def _create_national_division_rules(source_path: Any, game_db: Dict[str, Any]) -
             rule_exclusions = div_data.get("rule_exclusions", [])
             if rule_exclusions:
                 logger.debug(f"Rule exclusions for {div_key}: {rule_exclusions}")
+
+            # Faction-wide list from {faction}_redundant_units. A listed unit is
+            # omitted from every division of that faction. Transport names are
+            # not in these lists.
+            redundant_units = set(div_data.get("redundant_units") or ())
             
             # Handle division_rules as either a single dict or a list of dicts
             rules_dicts = []
@@ -809,10 +858,13 @@ def _create_national_division_rules(source_path: Any, game_db: Dict[str, Any]) -
                         if unit_name in transport_overrides:
                             transports = transport_overrides[unit_name]
                             logger.debug(f"Applied transport_overrides for {unit_name} in {div_key}")
-                        
+
                         # Check if this unit is excluded
                         if rule_exclusions and unit_name in rule_exclusions:
                             logger.debug(f"Skipping excluded unit {unit_name} in {div_key}")
+                            continue
+                        if unit_name in redundant_units:
+                            logger.debug(f"Skipping redundant unit {unit_name} in {div_key}")
                             continue
                         
                         # Validate availability list has 4 elements (for 4 XP levels)

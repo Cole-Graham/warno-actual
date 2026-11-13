@@ -161,6 +161,20 @@ def _resolve_coalition_division(div_key: str, div_data: Dict) -> Dict:
     return resolved
 
 
+def _redundant_unit_names(table: object) -> set:
+    """Flatten a ``{faction}_redundant_units`` category dict to unit names."""
+    names = set()
+    if not isinstance(table, dict):
+        return names
+    for rows in table.values():
+        if not isinstance(rows, list):
+            continue
+        for unit in rows:
+            if isinstance(unit, str) and unit:
+                names.add(unit)
+    return names
+
+
 def load_new_divisions() -> Dict:
     """Load and merge all new division dictionaries."""
     merged_divisions = {}
@@ -188,11 +202,24 @@ def load_new_divisions() -> Dict:
             module = importlib.import_module(module_name)
             dict_name = dict_names.get(file.stem)
             if dict_name and hasattr(module, dict_name):
+                faction = file.stem.removesuffix("_new_divs")
+                redundant_units = _redundant_unit_names(
+                    getattr(module, f"{faction.lower()}_redundant_units", None)
+                )
                 for div_key, div_data in getattr(module, dict_name).items():
                     if not isinstance(div_data, dict):
                         logger.warning(f"Skipping non-division entry {div_key} in {file.stem}")
                         continue
-                    merged_divisions[div_key] = _resolve_coalition_division(div_key, div_data)
+                    resolved = _resolve_coalition_division(div_key, div_data)
+                    if redundant_units:
+                        if resolved is div_data:
+                            resolved = dict(div_data)
+                        resolved["redundant_units"] = redundant_units
+                    merged_divisions[div_key] = resolved
+                if redundant_units:
+                    logger.info(
+                        f"Loaded {len(redundant_units)} redundant units for {faction}"
+                    )
                 logger.info(f"Loaded new divisions from {file.stem}")
             elif str(file.stem) in dict_names:
                 logger.warning(f"No dictionary mapping found for {file.stem} or dictionary {dict_name} not found in module")

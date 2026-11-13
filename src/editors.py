@@ -9,6 +9,7 @@ from .gameplay_mods import (
     edit_gameplay_gfx_templates_templatedepiction,
     edit_gameplay_constantes_bombtrajectoryconfigs,
     edit_gameplay_constantes_gdconstants,
+    edit_gameplay_constantes_wargamematchsetup,
     edit_cd_gameplay_constantes_helicoptermovementweights,
     edit_gameplay_constantes_hitrollconstants,
     edit_gameplay_constantes_iastratweaponconstantes,
@@ -17,15 +18,10 @@ from .gameplay_mods import (
     edit_gameplay_constantes_weapontypepriorities,
     edit_gameplay_constantes_terrainspeedfactors,
     edit_gameplay_terrains,
-    edit_gameplay_unit_airplanecritical,
     edit_gameplay_unit_damagemodules,
-    edit_gameplay_unit_groundunitcritical,
-    edit_gameplay_unit_helicocritical,
-    edit_gameplay_unit_infanteriecritical,
     edit_gameplay_unit_districtdescriptor,
     edit_gameplay_unit_team,
     edit_gameplay_unit_templatecritical,
-    edit_gameplay_unit_testunitscritical,
     # .generated
     edit_gen_gp_decks,
     edit_gen_gp_decks_deckpacks,
@@ -143,21 +139,17 @@ __all__ = [
     'edit_gameplay_gfx_templates_templatedepiction',
     'edit_gameplay_constantes_bombtrajectoryconfigs',
     'edit_gameplay_constantes_gdconstants',
+    'edit_gameplay_constantes_wargamematchsetup',
     'edit_gameplay_constantes_hitrollconstants',
     'edit_gameplay_constantes_iastratweaponconstantes',
     'edit_gameplay_constantes_ravitaillement',
     'edit_gameplay_constantes_weaponconstantes',
     'edit_gameplay_constantes_terrainspeedfactors',
     'edit_gameplay_terrains',
-    'edit_gameplay_unit_airplanecritical',
     'edit_gameplay_unit_damagemodules',
-    'edit_gameplay_unit_groundunitcritical',
-    'edit_gameplay_unit_helicocritical',
-    'edit_gameplay_unit_infanteriecritical',
     'edit_gameplay_unit_districtdescriptor',
     'edit_gameplay_unit_team',
     'edit_gameplay_unit_templatecritical',
-    'edit_gameplay_unit_testunitscritical',
     # gameplay_mods.generated
     'edit_gen_gp_decks',
     'edit_gen_gp_decks_deckpacks',
@@ -316,6 +308,9 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/Gameplay/Constantes/GDConstants.ndf": [
             (edit_gameplay_constantes_gdconstants, "gameplay"),
         ],
+        "GameData/Gameplay/Constantes/WargameMatchSetupConstantes.ndf": [
+            (edit_gameplay_constantes_wargamematchsetup, "gameplay"),
+        ],
         "CommonData/Gameplay/Constantes/HelicopterMovementWeights.ndf": [
             (edit_cd_gameplay_constantes_helicoptermovementweights, "gameplay"),
         ],
@@ -343,36 +338,20 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
         "GameData/Gameplay/Gfx/GamePhaseDescriptorTactical.ndf": [
             (edit_gameplay_gfx_gamephasedescriptortactical, "gameplay"),
         ],
-        "GameData/Gameplay/Gfx/Templates/TemplateDepiction.ndf": [
-            (edit_gameplay_gfx_templates_templatedepiction, "gameplay"),
-        ],
+        # "GameData/Gameplay/Gfx/Templates/TemplateDepiction.ndf": [
+        #     (edit_gameplay_gfx_templates_templatedepiction, "gameplay"),
+        # ],
         "GameData/Gameplay/Unit/Tactic/Team.ndf": [
             (edit_gameplay_unit_team, "gameplay"),
         ],
         "GameData/Gameplay/Unit/Tactic/DistrictDescriptor.ndf": [
             (edit_gameplay_unit_districtdescriptor, "gameplay"),
         ],
-        # Critical effect modules
-        "GameData/Gameplay/Unit/CriticalModules/CriticalEffectModule_Airplane.ndf": [
-            (edit_gameplay_unit_airplanecritical, "gameplay"),
-        ],
         "GameData/Gameplay/Unit/DamageModules.ndf": [
             (edit_gameplay_unit_damagemodules, "gameplay"),
         ],
-        "GameData/Gameplay/Unit/CriticalModules/CriticalEffectModule_GroundUnit.ndf": [
-            (edit_gameplay_unit_groundunitcritical, "gameplay"),
-        ],
-        "GameData/Gameplay/Unit/CriticalModules/CriticalEffectModule_Helico.ndf": [
-            (edit_gameplay_unit_helicocritical, "gameplay"),
-        ],
-        "GameData/Gameplay/Unit/CriticalModules/CriticalEffectModule_Infanterie.ndf": [
-            (edit_gameplay_unit_infanteriecritical, "gameplay"),
-        ],
-        "GameData/Gameplay/Unit/CriticalModules/TemplateCriticalEffectModules.ndf": [
+        "GameData/Gameplay/Unit/CriticalEffects.ndf": [
             (edit_gameplay_unit_templatecritical, "gameplay"),
-        ],
-        "GameData/Gameplay/Unit/CriticalModules/CriticalEffectModule_TestUnits.ndf": [
-            (edit_gameplay_unit_testunitscritical, "gameplay"),
         ],
         # Division and deck files
         "GameData/Generated/Gameplay/Decks/DeckSerializer.ndf": [
@@ -413,7 +392,7 @@ def get_all_editors(config: Dict) -> Dict[str, List[Callable]]:
             (edit_gen_gp_gfx_damageresistancefamilylistimpl, "gameplay"),
         ],
         # Unit and weapon files
-        "GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf": [
+        "GameData/Generated/Gameplay/TacticalUnits.ndf": [
             # Create new units first, before editing donors used to create them.
             # TODO: Confirm Eugen properly fixed this
             # lambda source_path: temp_fix_reco_radar(source_path, game_db),

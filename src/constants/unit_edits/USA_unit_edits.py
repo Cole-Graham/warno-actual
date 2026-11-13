@@ -5593,8 +5593,8 @@ usa_unit_edits = {
         "WeaponDescriptor": {
             # "equipmentchanges": {
             #     "replace": {
-            #         "RocketAir_Hydra_70mm_x114_avion": {
-            #             "new_weapon": "RocketAir_Hydra_70mm_x114_avion",
+            #         "RocketAir_Hydra_70mm_avion_salvolength114": {
+            #             "new_weapon": "RocketAir_Hydra_70mm_avion_salvolength114",
             #             "swap_fire_effect": False,
             #             "depiction_baked_in": False,
             #         },
@@ -5603,7 +5603,7 @@ usa_unit_edits = {
             "turrets": {
                 2: {
                     "MountedWeapons": {
-                        "RocketAir_Hydra_70mm_x114_avion": {
+                        "RocketAir_Hydra_70mm_avion_salvolength114": {
                             "WeaponShootDataPropertyName": [
                                 "WeaponShootData_0_3",
                                 "WeaponShootData_1_3",
@@ -5617,7 +5617,7 @@ usa_unit_edits = {
                 },
             },
             "Salves": {
-                "RocketAir_Hydra_70mm_x114_avion": 1,
+                "RocketAir_Hydra_70mm_avion_salvolength114": 1,
             },
         },
     },

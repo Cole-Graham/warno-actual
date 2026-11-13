@@ -24,7 +24,7 @@ def edit_ui_ingame_useingametextures(source) -> None:
         # Create texture entry
         icon_entry = (
             f'("icone_{icon_id}", MAP ['
-            f'    (~/ComponentState/Normal, TUIResourceTexture_Common(FileName = "{path}" ))]'
+            f'    (~/ComponentState/Normal, TUIResourceTexture(FileName = "{path}" ))]'
             f')'
         )
 

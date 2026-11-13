@@ -1,7 +1,7 @@
 """RFA depiction edits."""
 
 from .DaimlerBenz_Typ1017_supply_RFA import daimlerbenz_typ1017_supply_rfa
-from .Engineers_Geb_RFA_RFA import engineers_geb_rfa_rfa
+from .Engineers_Geb_RFA import Engineers_Geb_RFA
 from .Feldgendarmerie_RFA import feldgendarmerie_rfa
 from .Gebirgsjager_JagdKdo_RFA import gebirgsjager_jagdkdo_rfa
 from .Gebirgsjager_PzF3_RFA import gebirgsjager_pzf3_rfa
@@ -14,7 +14,7 @@ from .Unimog_S_404_RFA import unimog_s_404_rfa
 
 __all__ = [
     "daimlerbenz_typ1017_supply_rfa",
-    "engineers_geb_rfa_rfa",
+    "Engineers_Geb_RFA",
     "feldgendarmerie_rfa",
     "gebirgsjager_jagdkdo_rfa",
     "gebirgsjager_pzf3_rfa",

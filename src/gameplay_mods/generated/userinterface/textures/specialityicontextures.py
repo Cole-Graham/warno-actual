@@ -15,7 +15,7 @@ def edit_gen_ui_specialityicontextures(source_path) -> None:
         texture_dir = data.get("texture_dir", "/Assets/2D/Interface/Common/UnitsIcons/Specialties")
 
         obj_entry = (
-            f"Texture_Speciality_Icon_{trait} is TUIResourceTexture_Common"
+            f"Texture_Speciality_Icon_{trait} is TUIResourceTexture"
             f"("
             f'    FileName = "GameData:{texture_dir}/{texture}"'
             f")"

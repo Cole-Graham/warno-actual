@@ -2,7 +2,7 @@
 
 import re
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, Iterable, List
 
 from src import ndf
 from src.constants.weapons.standards.pattern.clu_sol_traits import CLU_SOL_DAMAGE_FAMILY_TO_TRAIT
@@ -12,9 +12,33 @@ from src.constants.weapons.vanilla_inst_modifications import (
 )
 from src.utils.dictionary_utils import load_vanilla_units_lookup
 from src.utils.logging_utils import setup_logger
+from src.data.mounted_weapon_identity import build_mounted_identity
 from src.utils.ndf_utils import is_valid_turret, strip_quotes
 
 logger = setup_logger('ammo_data')
+
+# Gatling, MMG, and Pod names use _xN for something other than a rocket salvo.
+_EXCLUDED_SALVO_PREFIXES = ('Gatling', 'MMG', 'Pod')
+_AVION_SALVO_RE = re.compile(r'^(.+)_x(\d+)_avion$')
+
+
+def avion_salvo_renames(names: Iterable[str]) -> Dict[str, str]:
+    """Map vanilla Name_xN_avion descriptors to Name_avion_salvolengthN.
+
+    An explicit AMMUNITION_RENAMES entry overrides this (Vikhr x16_avion).
+    """
+    renames: Dict[str, str] = {}
+    for name in names:
+        if not isinstance(name, str) or not name:
+            continue
+        bare = name.removeprefix('Ammo_')
+        if any(bare.startswith(prefix) for prefix in _EXCLUDED_SALVO_PREFIXES):
+            continue
+        match = _AVION_SALVO_RE.match(bare)
+        if match:
+            base_name, salvo_num = match.group(1), match.group(2)
+            renames[bare] = f"{base_name}_avion_salvolength{salvo_num}"
+    return renames
 
 
 def get_vanilla_renames(mod: Any, ndf_path: Any) -> Dict[str, str]:
@@ -46,8 +70,6 @@ def get_vanilla_renames(mod: Any, ndf_path: Any) -> Dict[str, str]:
 def _process_renames(mod: Any, ndf_path: Any, renames: Dict[str, str]) -> None:
     """Process renames from parsed NDF data."""
     # Build data for salvo weapon renames using same logic as build_salvo_weapons
-    EXCLUDED_PREFIXES = ('Gatling', 'MMG', 'Pod')
-    
     parse_source = mod.parse_src(ndf_path)
 
     for ammo_descr in parse_source:
@@ -57,7 +79,7 @@ def _process_renames(mod: Any, ndf_path: Any, renames: Dict[str, str]) -> None:
         name = ammo_descr.namespace.removeprefix('Ammo_')
         
         # Skip if name starts with any excluded prefix
-        if any(name.startswith(prefix) for prefix in EXCLUDED_PREFIXES):
+        if any(name.startswith(prefix) for prefix in _EXCLUDED_SALVO_PREFIXES):
             continue
                 
         match = re.match(r'^(.+)_x(\d+)$', name)
@@ -66,6 +88,10 @@ def _process_renames(mod: Any, ndf_path: Any, renames: Dict[str, str]) -> None:
             salvo_num = match.group(2)
             new_name = f"{base_name}_salvolength{salvo_num}"
             renames[name] = new_name
+            continue
+
+        # Vanilla plane rockets are Name_xN_avion. Mod order is Name_avion_salvolengthN.
+        renames.update(avion_salvo_renames([name]))
 
 
 def _arme_family_value(ammo_descr: Any) -> Any:
@@ -151,19 +177,21 @@ def build_ammo_data(mod_src_path: Path, config: Dict[str, Any]) -> Dict[str, Any
         salvo_weapons = build_salvo_weapons(ammo_file)
         salvo_weapons.update(build_salvo_weapons(ammo_missile_file))
         
-        ammo_props = build_ammo_properties(ammo_file, units_lookup)
-        ammo_props.update(build_ammo_properties(ammo_missile_file, units_lookup))
+        mounted_identity = build_mounted_identity(weapon_descriptor_file)
+        ammo_props = build_ammo_properties(ammo_file, units_lookup, mounted_identity)
+        ammo_props.update(build_ammo_properties(ammo_missile_file, units_lookup, mounted_identity))
 
         return {
-            "mg_categories": build_mg_categories(ammo_file),
-            "full_ball_weapons": build_full_ball_weapons(ammo_file),
-            "sniper_weapons": build_sniper_weapons(ammo_file),
-            "radar_weapons": build_radar_weapons(ammo_file, ammo_missile_file),
+            "mg_categories": build_mg_categories(ammo_file, mounted_identity),
+            "full_ball_weapons": build_full_ball_weapons(ammo_file, mounted_identity),
+            "sniper_weapons": build_sniper_weapons(ammo_file, mounted_identity),
+            "radar_weapons": build_radar_weapons(ammo_file, ammo_missile_file, mounted_identity),
             "salvo_weapons": salvo_weapons,
             "salves_map": build_ammo_salves_map(weapon_descriptor_file),
             "mortar_weapons": build_mortar_weapons(ammo_file),
             "ammo_properties": ammo_props,
-            "missing_cac_tag": build_missing_cac_tag(ammo_file),
+            "mounted_identity": mounted_identity,
+            "missing_cac_tag": build_missing_cac_tag(ammo_file, mounted_identity),
             "all_ammunition_and_missile": build_all_ammunition_and_missile_names(ammo_file, ammo_missile_file),
             "clu_sol_trait_targets": build_clu_sol_trait_targets(ammo_file, ammo_missile_file),
         }
@@ -179,6 +207,7 @@ def build_ammo_data(mod_src_path: Path, config: Dict[str, Any]) -> Dict[str, Any
             "salves_map": {},
             "mortar_weapons": {},
             "ammo_properties": {},
+            "mounted_identity": {},
             "missing_cac_tag": [],
             "all_ammunition_and_missile": [],
             "clu_sol_trait_targets": {},
@@ -240,13 +269,24 @@ def _localized_token_field(
     return {"Token": token, "Value": units_lookup.get(token, token)}
 
 
+def _identity_record(identity: Dict[str, Dict[str, Any]], ammo_descr: Any) -> Dict[str, Any]:
+    for attr in ("namespace", "n"):
+        key = getattr(ammo_descr, attr, None)
+        if isinstance(key, str) and key in identity:
+            return identity[key]
+    return {}
+
+
 def build_ammo_properties(
     parse_ammo_source,
     units_lookup: Dict[str, str] | None = None,
+    mounted_identity: Dict[str, Dict[str, Any]] | None = None,
 ) -> Dict[str, Any]:
     """Build dictionary of ammunition properties from Ammunition.ndf or AmmunitionMissiles.ndf."""
     if units_lookup is None:
         units_lookup = {}
+    if mounted_identity is None:
+        mounted_identity = {}
     ammo_properties = {}
 
     for ammo_descr in parse_ammo_source:
@@ -294,15 +334,12 @@ def build_ammo_properties(
         family = _arme_family_value(ammo_descr)
 
         entry: Dict[str, Any] = {}
-        for field_name, member_name in (
-            ("Name", "Name"),
-            ("TypeCategoryName", "TypeCategoryName"),
-            ("Caliber", "Caliber"),
-        ):
-            membr = ammo_descr.v.by_m(member_name, False)
-            if membr is None:
+        ident = _identity_record(mounted_identity, ammo_descr)
+        for field_name in ("Name", "TypeCategoryName", "Caliber"):
+            raw_value = ident.get(field_name)
+            if raw_value is None:
                 continue
-            localized = _localized_token_field(membr.v, units_lookup)
+            localized = _localized_token_field(raw_value, units_lookup)
             if localized is not None:
                 entry[field_name] = localized
 
@@ -322,7 +359,10 @@ def build_ammo_properties(
     return ammo_properties
 
 
-def build_missing_cac_tag(parse_ammo_source) -> List[str]:
+def build_missing_cac_tag(
+    parse_ammo_source,
+    mounted_identity: Dict[str, Dict[str, Any]] | None = None,
+) -> List[str]:
     """Build list of ammunition descriptors missing CAC for infantry MMGs."""
     missing_cac_tag = []
     
@@ -349,12 +389,10 @@ def build_missing_cac_tag(parse_ammo_source) -> List[str]:
         if min_range_value != 0:
             continue
         
-        traits_list = ammo_descr.v.by_m("TraitsToken", False)
-        if traits_list is None:
+        existing_traits = _identity_record(mounted_identity or {}, ammo_descr).get("TraitsToken")
+        if not existing_traits:
             missing_cac_tag.append(ammo_descr.n)
             continue
-        
-        existing_traits = [trait.v for trait in traits_list.v]
         if "'CAC'" in existing_traits:
             continue
         
@@ -362,18 +400,18 @@ def build_missing_cac_tag(parse_ammo_source) -> List[str]:
     
     return missing_cac_tag
 
-def build_radar_weapons(parse_ammo_source, parse_ammo_missile_source) -> List[str]:
-    """Build list of radar weapons from Ammunition.ndf and AmmunitionMissiles.ndf"""
+def build_radar_weapons(
+    parse_ammo_source,
+    parse_ammo_missile_source,
+    mounted_identity: Dict[str, Dict[str, Any]] | None = None,
+) -> List[str]:
+    """Build list of radar weapons from mounted-weapon TraitsToken."""
     radar_weapons = []
-    
-    for ammo_descr in parse_ammo_source:
-        traits_list = ammo_descr.v.by_m("TraitsToken")
-        if "'RADAR'" in [t.v for t in traits_list.v]:
-            radar_weapons.append(ammo_descr.n)
-            
-    for ammo_descr in parse_ammo_missile_source:
-        traits_list = ammo_descr.v.by_m("TraitsToken")
-        if "'RADAR'" in [t.v for t in traits_list.v]:
+    identity = mounted_identity or {}
+
+    for ammo_descr in list(parse_ammo_source) + list(parse_ammo_missile_source):
+        traits = _identity_record(identity, ammo_descr).get("TraitsToken") or []
+        if "'RADAR'" in traits:
             radar_weapons.append(ammo_descr.n)
 
     return radar_weapons
@@ -412,7 +450,7 @@ def build_ammo_salves_map(parse_source) -> dict:
     return salves_map
 
 
-def build_mg_categories(parse_source) -> dict:
+def build_mg_categories(parse_source, mounted_identity: Dict[str, Dict[str, Any]] | None = None) -> dict:
     """Build MG weapon categories from ammunition data.
     
     Args:
@@ -427,21 +465,24 @@ def build_mg_categories(parse_source) -> dict:
     mmg_turrets = []
     coax_mmgs = []
     
+    identity = mounted_identity or {}
     for weapon_descr in parse_source:
         membr = weapon_descr.v.by_m
-        
-        # Get weapon characteristics
-        is_rotary_cannon = membr("TypeCategoryName").v == "'ZJQCIJREVP'"
-        is_rifle = membr("TypeCategoryName").v == "'MPRVLPMVZK'"
-        is_inf_mmg = membr("TypeCategoryName").v == "'YSLEYULPVD'"
-        is_battle_rifle = membr("TypeCategoryName").v == "'THRUBJLEUJ'"
-        
-        caliber = membr("Caliber").v
-        traits_list = membr("TraitsToken").v
+        ident = _identity_record(identity, weapon_descr)
+        type_category = ident.get("TypeCategoryName")
+        caliber = ident.get("Caliber")
+        traits_list = ident.get("TraitsToken") or []
+        if type_category is None or caliber is None:
+            continue
+
+        is_rotary_cannon = type_category == "'ZJQCIJREVP'"
+        is_rifle = type_category == "'MPRVLPMVZK'"
+        is_inf_mmg = type_category == "'YSLEYULPVD'"
+        is_battle_rifle = type_category == "'THRUBJLEUJ'"
         
         # Check traits
-        is_tripod = "'tripod'" in [t.v for t in traits_list]
-        is_coax = "'coax'" in [t.v for t in traits_list]
+        is_tripod = "'tripod'" in traits_list
+        is_coax = "'coax'" in traits_list
         is_stabilized = membr("CanShootWhileMoving").v == "True"
         
         # Categorize weapon
@@ -471,24 +512,31 @@ def build_mg_categories(parse_source) -> dict:
     } 
 
 
-def build_full_ball_weapons(parse_source) -> list:
+def build_full_ball_weapons(parse_source, mounted_identity: Dict[str, Dict[str, Any]] | None = None) -> list:
     """Build list of weapons that should use full ball damage."""
     full_ball = []
     
+    identity = mounted_identity or {}
     for weapon in parse_source:
-        if weapon.v.by_m("TypeCategoryName").v != "'GGSLNBFHEX'":
-            if weapon.v.by_m("Caliber").v in ["'ARZDNMYCBF'", "'UZKJUPNFLB'"]:
+        ident = _identity_record(identity, weapon)
+        type_category = ident.get("TypeCategoryName")
+        caliber = ident.get("Caliber")
+        if type_category is None or caliber is None:
+            continue
+        if type_category != "'GGSLNBFHEX'":
+            if caliber in ["'ARZDNMYCBF'", "'UZKJUPNFLB'"]:
                 full_ball.append(weapon.n)
     
     return full_ball
 
 
-def build_sniper_weapons(parse_source) -> list:
+def build_sniper_weapons(parse_source, mounted_identity: Dict[str, Dict[str, Any]] | None = None) -> list:
     """Build list of sniper weapons."""
     snipers = []
     
+    identity = mounted_identity or {}
     for weapon in parse_source:
-        if weapon.v.by_m("TypeCategoryName").v == "'GGSLNBFHEX'":
+        if _identity_record(identity, weapon).get("TypeCategoryName") == "'GGSLNBFHEX'":
             snipers.append(weapon.n)
     
     return snipers 
@@ -502,9 +550,6 @@ def build_salvo_weapons(parse_source) -> Dict[str, str]:
     """
     salvo_weapons = {}
     
-    # Prefixes to exclude from salvo renaming
-    EXCLUDED_PREFIXES = ('Gatling', 'MMG', 'Pod')
-    
     for weapon_descr in parse_source:
         if not hasattr(weapon_descr, 'namespace'):
             continue
@@ -512,7 +557,7 @@ def build_salvo_weapons(parse_source) -> Dict[str, str]:
         name = weapon_descr.namespace.removeprefix('Ammo_')
         
         # Skip if name starts with any excluded prefix
-        if any(name.startswith(prefix) for prefix in EXCLUDED_PREFIXES):
+        if any(name.startswith(prefix) for prefix in _EXCLUDED_SALVO_PREFIXES):
             continue
             
         match = re.match(r'^(.+)_x(\d+)$', name)
@@ -521,6 +566,11 @@ def build_salvo_weapons(parse_source) -> Dict[str, str]:
             salvo_num = match.group(2)
             new_name = f"{base_name}_salvolength{salvo_num}"
             salvo_weapons[name] = new_name
+            continue
+
+        # Vanilla plane rockets are Name_xN_avion. Mod order is Name_avion_salvolengthN.
+        # An explicit AMMUNITION_RENAMES entry overrides this (Vikhr x16_avion).
+        salvo_weapons.update(avion_salvo_renames([name]))
             
     logger.info(f"Found {len(salvo_weapons)} vanilla salvo weapons to rename")
     return salvo_weapons

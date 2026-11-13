@@ -1,6 +1,7 @@
 from typing import Any, Dict
 
 from src.constants.weapons import WEAPON_DESCRIPTIONS, WEAPON_DESCRIPTION_EDITS
+from src.data.mounted_weapon_identity import identity_map
 from src.utils.dictionary_utils import write_dictionary_entries
 
 def apply_damage_families(source_path: Any, logger, game_db: Dict[str, Any]) -> None:
@@ -25,10 +26,13 @@ def apply_damage_families(source_path: Any, logger, game_db: Dict[str, Any]) -> 
             logger.info(f"Changed {weapon_descr.n} to DamageFamily_sniper")
 
             # Update description token
-            type_cat = weapon_descr.v.by_m("TypeCategoryName").v
+            record = identity_map(ammo_db).get(weapon_name)
+            if not record or "TypeCategoryName" not in record:
+                continue
+            type_cat = record["TypeCategoryName"]
             for weapon_type, ((cat_hash, desc_hash), dic_string) in WEAPON_DESCRIPTIONS.items():
                 if type_cat == cat_hash:
-                    weapon_descr.v.by_m("WeaponDescriptionToken").v = f"'{desc_hash}'"
+                    record["WeaponDescriptionToken"] = f"'{desc_hash}'"
                     logger.info(f"Changed {weapon_descr.n} description to {weapon_type} ({desc_hash})")
                     new_dic_entry = (desc_hash, dic_string)
                     if new_dic_entry not in dictionary_entries:

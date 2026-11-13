@@ -35,6 +35,7 @@ def _mock_ammo_descr(
 ) -> MagicMock:
     descr = MagicMock()
     descr.n = namespace
+    descr.namespace = namespace
 
     def by_m(member_name: str, strict: bool = True):
         values = {
@@ -74,7 +75,13 @@ class TestBuildAmmoProperties(unittest.TestCase):
             "IQVKWJHLNK": "25mm",
         }
 
-        props = build_ammo_properties([descr], lookup)
+        props = build_ammo_properties([descr], lookup, {
+            "Ammo_AutoCanon_HE_25mm_M242_Bushmaster_Late": {
+                "Name": "'SHBINZZBDX'",
+                "TypeCategoryName": "'YSSCMQVTWR'",
+                "Caliber": "'IQVKWJHLNK'",
+            },
+        })
         entry = props["Ammo_AutoCanon_HE_25mm_M242_Bushmaster_Late"]
 
         self.assertEqual(entry["Name"], {"Token": "SHBINZZBDX", "Value": "M242 Bushmaster"})

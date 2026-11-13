@@ -48,6 +48,23 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
+    # Eugen ships the 24-rocket Zuni as _x24_avion only. Helo sibling for the platform pair.
+    ("RocketAir_Zuni_1272mm_salvolength24", "rocket", "RocketAir_Zuni_1272mm_avion_salvolength24", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 15,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2275,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
+                "RadiusSplashPhysicalDamagesGRU": 21,
+                "RadiusSplashSuppressDamagesGRU": 44,
+            },
+        },
+    },
+
     ("RocketAir_Zuni_1272mm_avion_salvolength16", "rocket", "RocketAir_Zuni_1272mm_salvolength16", True): { # Zuni's on the German F4F
         "Ammunition": {
             "hit_roll": {
@@ -181,25 +198,6 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "PhysicalDamages": 0.75,
                 "SuppressDamages": 75,
                 "SupplyCost": 20.0,
-            },
-        },
-    },
-
-    ("RocketAir_SNEB_68mm_avion_salvolength38", "rocket", "RocketAir_SNEB_68mm_salvolength38", True): {
-        "Ammunition": {
-            "hit_roll": {
-                "Idling": 20,
-                "Moving": 20,
-            },
-            "parent_membr": {
-                "MaximumRangeGRU": 2625,
-                "RadiusSplashPhysicalDamagesGRU": 14,
-                "RadiusSplashSuppressDamagesGRU": 21,
-                "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoFx": 0.1,
-                "PhysicalDamages": 0.75,
-                "SuppressDamages": 75,
-                "SupplyCost": 60.0,
             },
         },
     },
@@ -428,7 +426,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketAir_122_JROF_L_122mm_salvolength54", "rocket", "RocketAir_122_JROF_L_122mm_x54_avion", True): {
+    ("RocketAir_122_JROF_L_122mm_salvolength54", "rocket", "RocketAir_122_JROF_L_122mm_avion_salvolength54", True): {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 20,
@@ -474,7 +472,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketAir_S25O_420mm_salvolength6", "rocket", None, False): {
+    # Vanilla only ships x2. Clone that (after its edit above) and raise the shot count.
+    ("RocketAir_S25O_420mm_salvolength6", "rocket", "RocketAir_S25O_420mm_salvolength2", True): {
         "Ammunition": {
             "parent_membr": {
                 "Caliber": ("60kg TNTe", "IFSVBUYZTU"),
@@ -483,6 +482,8 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "RadiusSplashSuppressDamagesGRU": 120,
                 "PhysicalDamages": 7.2,
                 "SuppressDamages": 420,
+                "ShotsCountPerSalvo": 6,
+                "AffichageMunitionParSalve": 6,
                 "SupplyCost": 240.0,
             },
         },
@@ -703,7 +704,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("RocketAir_Hydra_70mm_salvolength38", "rocket", "RocketAir_Hydra_70mm_x38_avion", True): {
+    ("RocketAir_Hydra_70mm_salvolength38", "rocket", "RocketAir_Hydra_70mm_avion_salvolength38", True): {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 20,
@@ -723,7 +724,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketAir_Hydra_70mm_x38_avion", "rocket", None, False): {
+    ("RocketAir_Hydra_70mm_avion_salvolength38", "rocket", None, False): {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 20,
@@ -743,7 +744,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketAir_Hydra_70mm_salvolength114", "rocket", "RocketAir_Hydra_70mm_x114_avion", True): {
+    ("RocketAir_Hydra_70mm_salvolength114", "rocket", "RocketAir_Hydra_70mm_avion_salvolength114", True): {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 20,
@@ -766,7 +767,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("RocketAir_Hydra_70mm_x114_avion", "rocket", None, False): {
+    ("RocketAir_Hydra_70mm_avion_salvolength114", "rocket", None, False): {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 0,
@@ -793,7 +794,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    # ("RocketAir_Hydra_70mm_x114_avion", "rocket", "RocketAir_Hydra_70mm_x38_avion", True): {
+    # ("RocketAir_Hydra_70mm_avion_salvolength114", "rocket", "RocketAir_Hydra_70mm_avion_salvolength38", True): {
     #     "Ammunition": {
     #         "hit_roll": {
     #             "Idling": 15,
@@ -849,7 +850,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketAir_Hydra_70mm_x31_M229", "rocket", None, False): {
+    ("RocketAir_Hydra_70mm_M229_salvolength31", "rocket", None, False): {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 20,
@@ -863,7 +864,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketAir_Hydra_70mm_x31_M229_avion", "rocket", "RocketAir_Hydra_70mm_x31_M229", True): {
+    ("RocketAir_Hydra_70mm_M229_avion_salvolength31", "rocket", "RocketAir_Hydra_70mm_M229_salvolength31", True): {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 20,
@@ -930,25 +931,9 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
 
-    ("RocketAir_B8_80mm_salvolength80", "rocket", None, False): { # 594
-        "Ammunition": {
-            "hit_roll": {
-                "Idling": 20,
-                "Moving": 20,
-            },
-            "parent_membr": {
-                "MaximumRangeGRU": 2450,
-                "RadiusSplashPhysicalDamagesGRU": 15,
-                "RadiusSplashSuppressDamagesGRU": 28,
-                "TimeBetweenTwoShots": 0.1,
-                "TimeBetweenTwoFx": 0.1,
-                "PhysicalDamages": 0.9,
-                "SuppressDamages": 90,
-            },
-        },
-    },
-
-    ("RocketAir_B8_80mm_avion_salvolength80", "rocket", "RocketAir_B8_80mm_salvolength80", True): {
+    # Eugen replaced RocketAir_B8_80mm_x80 with RocketAir_B8_80mm_x80_avion.
+    # Renamed to avion_salvolength80; this edits that vanilla descriptor.
+    ("RocketAir_B8_80mm_avion_salvolength80", "rocket", None, False): {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 20,
@@ -963,6 +948,24 @@ weapons: Dict[WeaponKey, WeaponData] = {
                 "PhysicalDamages": 0.9,
                 "SuppressDamages": 90,
                 "SupplyCost": 120.0,
+            },
+        },
+    },
+
+    ("RocketAir_B8_80mm_salvolength80", "rocket", "RocketAir_B8_80mm_avion_salvolength80", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 20,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2450,
+                "RadiusSplashPhysicalDamagesGRU": 15,
+                "RadiusSplashSuppressDamagesGRU": 28,
+                "TimeBetweenTwoShots": 0.1,
+                "TimeBetweenTwoFx": 0.1,
+                "PhysicalDamages": 0.9,
+                "SuppressDamages": 90,
             },
         },
     },
@@ -1041,35 +1044,32 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("RocketAir_B8_80mm_salvolength10", "rocket", None, False): { # 594
-        "Ammunition": {
-            "parent_membr": {
-                "MaximumRangeGRU": 2275,
-                "RadiusSplashPhysicalDamagesGRU": 15,
-                "RadiusSplashSuppressDamagesGRU": 28,
-                "TimeBetweenTwoShots": 0.2,
-                "TimeBetweenTwoFx": 0.2,
-                "PhysicalDamages": 0.9,
-                "SuppressDamages": 90,
-            },
-        },
-    },
-
-    ("RocketAir_B8_80mm_Avion_salvolength10", "rocket", "RocketAir_B8_80mm_salvolength10", True): { # 593
+    # Eugen restored SBAT-70 on helos only (x7 -> salvolength7). Plane sibling is ours.
+    ("RocketAir_SBAT_70mm_avion_salvolength7", "rocket", "RocketAir_SBAT_70mm_salvolength7", True): {
         "Ammunition": {
             "hit_roll": {
                 "Idling": 20,
                 "Moving": 20,
             },
             "parent_membr": {
-                "MaximumRangeGRU": 2450,
-                "RadiusSplashPhysicalDamagesGRU": 15,
-                "RadiusSplashSuppressDamagesGRU": 28,
+                "MaximumRangeGRU": 2625,
                 "TimeBetweenTwoShots": 0.1,
                 "TimeBetweenTwoFx": 0.1,
-                "PhysicalDamages": 0.9,
-                "SuppressDamages": 90,
-                "SupplyCost": 35.0,
+            },
+        },
+    },
+
+    # Eugen restored SBAT-127 as _x8_avion only.
+    ("RocketAir_SBAT_127mm_salvolength8", "rocket", "RocketAir_SBAT_127mm_avion_salvolength8", True): {
+        "Ammunition": {
+            "hit_roll": {
+                "Idling": 20,
+                "Moving": 15,
+            },
+            "parent_membr": {
+                "MaximumRangeGRU": 2275,
+                "TimeBetweenTwoShots": 0.2,
+                "TimeBetweenTwoFx": 0.2,
             },
         },
     },

@@ -9,7 +9,7 @@ from src.utils.ndf_utils import strip_quotes
 from src.utils.dictionary_utils import write_dictionary_entries
 from src import ModConfig
 from src.constants.generated.gameplay.decks import load_new_divisions
-from src.constants.generated.gameplay.decks.new_divisions import DIV_TYPE_TO_TOKEN
+import src.constants.generated.gameplay.decks.new_divisions as new_divs_pkg
 
 logger = setup_logger(__name__)
 
@@ -148,6 +148,19 @@ def _add_national_divisions(source_path: Any, donor_divisions: Dict[str, Any]) -
         is_general = div_key.endswith("_general")
         return (not is_general, div_key)  # False sorts before True, so general comes first
     
+    # Highest activation_points across every new_divs table, including nations
+    # that are not emitted (RDA, POL, TCH). Shown as the specialization budget.
+    max_specialization_budget = 0
+    for name in new_divs_pkg.__all__:
+        divs = getattr(new_divs_pkg, name, None)
+        if not isinstance(divs, dict):
+            continue
+        for div_data in divs.values():
+            if isinstance(div_data, dict) and "activation_points" in div_data:
+                max_specialization_budget = max(
+                    max_specialization_budget, int(div_data["activation_points"])
+                )
+
     # Collect dictionary entries for all new divisions
     dictionary_entries = []
 
@@ -226,7 +239,7 @@ def _add_national_divisions(source_path: Any, donor_divisions: Dict[str, Any]) -
             new_div_descr.v.by_m("DivisionCoalition").v = f"TWargameCoalition/{coalition}"
             
             # Set division tags: ['DEFAULT', nation, coalition, TypeToken]
-            type_token = DIV_TYPE_TO_TOKEN.get(div_type, DIV_TYPE_TO_TOKEN["general"])
+            type_token = new_divs_pkg.DIV_TYPE_TO_TOKEN.get(div_type, new_divs_pkg.DIV_TYPE_TO_TOKEN["general"])
             tags = ["DEFAULT", nation, coalition, type_token]
             tags_str = "[" + ", ".join([f"'{tag}'" for tag in tags]) + "]"
             new_div_descr.v.by_m("DivisionTags").v = tags_str
@@ -261,7 +274,8 @@ def _add_national_divisions(source_path: Any, donor_divisions: Dict[str, Any]) -
             summary_tokens = div_data.get("summary_text", ("", ""))
             if isinstance(summary_tokens, tuple) and len(summary_tokens) >= 2 and summary_tokens[1]:
                 _set_or_add_member(new_div_descr.v, "SummaryTextToken", f"'{summary_tokens[1]}'")
-                dictionary_entries.append((summary_tokens[1], summary_tokens[0]))
+                summary_text = f"{summary_tokens[0]} \n({max_activation}/{max_specialization_budget})"
+                dictionary_entries.append((summary_tokens[1], summary_text))
             history_tokens = div_data.get("history_text", ("", ""))
             if isinstance(history_tokens, tuple) and len(history_tokens) >= 2 and history_tokens[1]:
                 _set_or_add_member(new_div_descr.v, "HistoryTextToken", f"'{history_tokens[1]}'")

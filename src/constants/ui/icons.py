@@ -1,9 +1,9 @@
 """In-game UI icon constants for UseInGameTextures.ndf edits.
 
 - **INGAME_ICONS**: new ``AdditionalTextureBank`` keys ``icone_<id>`` with inline
-  ``TUIResourceTexture_Common`` (MAP-only; no top-level object unless another
+  ``TUIResourceTexture`` (MAP-only; no top-level object unless another
   NDF file must reference it by name).
-- **INGAME_ICON_EDITS**: patch **existing** vanilla ``TUIResourceTexture_Common``
+- **INGAME_ICON_EDITS**: patch **existing** vanilla ``TUIResourceTexture``
   objects (e.g. cursors) by namespace; the bank MAP already references ``~/Name``
   and does not need duplicating.
 """

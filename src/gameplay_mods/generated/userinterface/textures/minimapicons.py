@@ -19,7 +19,7 @@ def edit_gen_ui_minimapicons(source_path: Any) -> None:
     textures_list = ["fob"]
     for texture in textures_list:
         new_texture = (
-            f'Texture_Minimap_Unit_{texture} is TUIResourceTexture_Common'
+            f'Texture_Minimap_Unit_{texture} is TUIResourceTexture'
             f'('
             f'    FileName = "GameData:/Assets/2D/Interface/UseInGame/Minimap/{texture}.png"'
             f')'

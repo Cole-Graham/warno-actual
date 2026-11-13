@@ -23,6 +23,7 @@ import re
 from typing import Any, Dict
 from uuid import uuid4
 
+from src.data.mounted_weapon_identity import copy_identity
 from src.constants.weapons.spaag_air import (
     SPAAG_AIR_AIMING_TIME,
     SPAAG_AIR_DAMAGE_FAMILY,
@@ -108,6 +109,7 @@ def apply_he_dca_air_ammo_clones(
 
         air_descr = descr.copy()
         air_descr.namespace = air_namespace
+        copy_identity(game_db.get("ammunition") or {}, ns, air_namespace)
         air_descr.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
         air_descr.v.by_m("Arme").v.by_m("Family").v = _HE_DCA_AIR_FAMILY
         air_descr.v.by_m("SuppressDamages").v = str(w_air)

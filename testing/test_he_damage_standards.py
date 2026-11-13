@@ -47,9 +47,19 @@ class TestHeDamageCaliberResolution(unittest.TestCase):
 
         descr.v.by_m = by_m
 
-        apply_he_damage_standards([descr], MagicMock())
+        apply_he_damage_standards([descr], MagicMock(), {
+            "ammunition": {
+                "mounted_identity": {
+                    "Ammo_Canon_HE_73_mm_SPG9": {
+                        "Name": "'SOME_TOKEN'",
+                        "Caliber": "'DYWXTLDKWR'",
+                    },
+                },
+            },
+        })
 
-        self.assertEqual(physical_damages.v, "0.85")
+        self.assertEqual(physical_damages.v, str(CANON_HE_DAMAGE_BY_CALIBER["'BQEOKGFQRX'"]))
+        self.assertNotEqual(physical_damages.v, str(CANON_HE_DAMAGE_BY_CALIBER["'DYWXTLDKWR'"]))
 
     def test_apply_he_damage_uses_vanilla_caliber_when_no_edit(self):
         descr = MagicMock()
@@ -76,7 +86,16 @@ class TestHeDamageCaliberResolution(unittest.TestCase):
 
         descr.v.by_m = by_m
 
-        apply_he_damage_standards([descr], MagicMock())
+        apply_he_damage_standards([descr], MagicMock(), {
+            "ammunition": {
+                "mounted_identity": {
+                    "Ammo_Canon_HE_120_mm_2A46": {
+                        "Name": "'SOME_TOKEN'",
+                        "Caliber": "'DYWXTLDKWR'",
+                    },
+                },
+            },
+        })
 
         self.assertEqual(
             physical_damages.v,

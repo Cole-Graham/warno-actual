@@ -34,6 +34,7 @@ POL_NEW_UNITS = {
             "Salves": {
                 "FM_kbk_AK": 9,
                 "RocketInf_RPG76_Komar_salvolength5": 1,
+                "Sniper_SVD_Dragunov": 10,
             },
             "equipmentchanges": {
                 "quantity": {
@@ -930,83 +931,83 @@ POL_NEW_UNITS = {
         },
     },
 
-    ("HMGteam_PKM_para_POL", 1): {  # donor unit - increment integer as needed to avoid duplicate keys
-        "GUID": "4734c29a-2afe-4c03-baca-964c750825fc",
-        "InfantrySquadModuleGUID": "dda90888-7c16-410b-bb1b-6c7576df5def",
-        "ShowroomGUID": "c3a0e94a-4d8b-403b-9e69-316f977990a1",
-        "CadavreGUID": "4a5322be-f90f-418d-8d20-87768d1faa05",
-        "UnitId": 50108,
-        "NewName": "HMGteam_AGS17_para_POL",
-        "GameName": {
-            "display": "SPADO. AGS-17 30mm",
-            "token": "LEAGOMIHPJ",
-        },
-        "depictions": {
-            "custom": {
-                "DepictionVehicles.ndf": ["TacticVehicleDepictionRegistration", "DepictionOperator_WeaponInstantFire"],
-            },
-            "alternatives": "HMGteam_AGS17_POL",
-        },
-        "TagSet": {
-            "overwrite_all": [    
-                "AllUnits",
-                "AllowedForMissileRoE",
-                "Crew",
-                "GroundUnits",
-                "Inf_quartier_ok",
-                "Infanterie",
-                "Infanterie_Spec_Defense",
-                "UNITE_HMGteam_AGS17_para_POL",
-                "Unite"
-            ],
-        },
-        "TransportedSoldier": "HMGteam_AGS17_para_POL",
-        "WeaponDescriptor": {
-            "Salves": {
-                "Lance_grenade_AGS17": 30,
-            },
-            "equipmentchanges": {
-                "replace": {
-                    "MMG_team_7_62mm_PKM": {
-                        "new_weapon": "Lance_grenade_AGS17",
-                        "swap_fire_effect": True,
-                        "depiction_baked_in": True,
-                    },
-                },
-            },
-        },
-        "CommandPoints": 30,
-        "SpecialtiesList": [
-                '_para',
-                'infantry_equip_veryheavy'
-            ],
-        "UpgradeFromUnit": "HMGteam_NSV_para_POL",
-        "availability": [0, 8, 6, 0],
-        "max_speed": 14,
-        "strength": 5,
-        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/Attack', 'EOrderType/MoveAndAttack', 
-                   'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/ShootOnPosition',
-                   'EOrderType/ShootOnPositionWithoutCorrection','EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
-        "is_infantry": True, # False for Javelin LML (unique exception), towed units.
-        "is_heavy_equipment": True,
-        "is_ground_vehicle": True,
-        "is_aerial": False,
-        "is_unarmed": False,
-        "Faction": "PACT",
-        "Nation": "POL",
-        "alternatives_count": 2,
-        "servants": ("G_Para_POL", "D_Para_POL"),
-        "servant_types": {
-            "showroom": {
-                "G_Para_POL": ["ATGMServantLeft"],
-                "D_Para_POL": ["ATGMServantRight"]
-            },
-            "subdepictions": {
-                "G_Para_POL": ["ATGMServantLeft"],
-                "D_Para_POL": ["ATGMServantRight"]
-            },
-        },
-    },
+    # ("HMGteam_PKM_para_POL", 1): {  # donor unit - increment integer as needed to avoid duplicate keys
+    #     "GUID": "4734c29a-2afe-4c03-baca-964c750825fc",
+    #     "InfantrySquadModuleGUID": "dda90888-7c16-410b-bb1b-6c7576df5def",
+    #     "ShowroomGUID": "c3a0e94a-4d8b-403b-9e69-316f977990a1",
+    #     "CadavreGUID": "4a5322be-f90f-418d-8d20-87768d1faa05",
+    #     "UnitId": 50108,
+    #     "NewName": "HMGteam_AGS17_para_POL",
+    #     "GameName": {
+    #         "display": "SPADO. AGS-17 30mm",
+    #         "token": "LEAGOMIHPJ",
+    #     },
+    #     "depictions": {
+    #         "custom": {
+    #             "DepictionVehicles.ndf": ["TacticVehicleDepictionRegistration", "DepictionOperator_WeaponInstantFire"],
+    #         },
+    #         "alternatives": "HMGteam_AGS17_POL",
+    #     },
+    #     "TagSet": {
+    #         "overwrite_all": [    
+    #             "AllUnits",
+    #             "AllowedForMissileRoE",
+    #             "Crew",
+    #             "GroundUnits",
+    #             "Inf_quartier_ok",
+    #             "Infanterie",
+    #             "Infanterie_Spec_Defense",
+    #             "UNITE_HMGteam_AGS17_para_POL",
+    #             "Unite"
+    #         ],
+    #     },
+    #     "TransportedSoldier": "HMGteam_AGS17_para_POL",
+    #     "WeaponDescriptor": {
+    #         "Salves": {
+    #             "Lance_grenade_AGS17": 30,
+    #         },
+    #         "equipmentchanges": {
+    #             "replace": {
+    #                 "MMG_team_7_62mm_PKM": {
+    #                     "new_weapon": "Lance_grenade_AGS17",
+    #                     "swap_fire_effect": True,
+    #                     "depiction_baked_in": True,
+    #                 },
+    #             },
+    #         },
+    #     },
+    #     "CommandPoints": 30,
+    #     "SpecialtiesList": [
+    #             '_para',
+    #             'infantry_equip_veryheavy'
+    #         ],
+    #     "UpgradeFromUnit": "HMGteam_NSV_para_POL",
+    #     "availability": [0, 8, 6, 0],
+    #     "max_speed": 14,
+    #     "strength": 5,
+    #     "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/Attack', 'EOrderType/MoveAndAttack', 
+    #                'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/ShootOnPosition',
+    #                'EOrderType/ShootOnPositionWithoutCorrection','EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+    #     "is_infantry": True, # False for Javelin LML (unique exception), towed units.
+    #     "is_heavy_equipment": True,
+    #     "is_ground_vehicle": True,
+    #     "is_aerial": False,
+    #     "is_unarmed": False,
+    #     "Faction": "PACT",
+    #     "Nation": "POL",
+    #     "alternatives_count": 2,
+    #     "servants": ("G_Para_POL", "D_Para_POL"),
+    #     "servant_types": {
+    #         "showroom": {
+    #             "G_Para_POL": ["ATGMServantLeft"],
+    #             "D_Para_POL": ["ATGMServantRight"]
+    #         },
+    #         "subdepictions": {
+    #             "G_Para_POL": ["ATGMServantLeft"],
+    #             "D_Para_POL": ["ATGMServantRight"]
+    #         },
+    #     },
+    # },
 
     ("Honker_RYS_POL", 0): {  # HONKERS RYS (Transport)
         "GameName": {
@@ -1205,9 +1206,9 @@ POL_NEW_UNITS = {
         "DeploymentShift": 1750,
         "ButtonTexture": "AT_D44_85mm_VDV_SOV",
         "UpgradeFromUnit": "AT_D48_85mm_POL",
-        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/Attack', 'EOrderType/MoveAndAttack', 
-                   'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/EnterDistrict', 'EOrderType/Load', 'EOrderType/ShootOnPosition',
-                   'EOrderType/ShootOnPositionWithoutCorrection','EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
+        "orders": ['EOrderType/Stop', 'EOrderType/Move', 'EOrderType/FollowFormation', 'EOrderType/FollowUnit', 'EOrderType/Attack', 'EOrderType/MoveAndAttack',
+                   'EOrderType/Shoot', 'EOrderType/AskForSupply', 'EOrderType/Load', 'EOrderType/ShootOnPosition',
+                   'EOrderType/ShootOnPositionWithoutCorrection', 'EOrderType/AIDefend', 'EOrderType/AIAttack', 'EOrderType/AIStop'],
         "is_infantry": False, # False for Javelin LML (unique exception), towed units.
         "is_heavy_equipment": True,
         "is_ground_vehicle": True,

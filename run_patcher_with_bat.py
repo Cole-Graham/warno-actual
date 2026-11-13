@@ -5,6 +5,7 @@ from datetime import datetime
 from pathlib import Path
 from src import ModConfig
 from src.data import build_database, load_database_from_disk
+from src.data.ammo_data import avion_salvo_renames
 from src.utils.database_utils import verify_database
 from patcher_cli import apply_rebuild_db_override, parse_patcher_args
 from src.utils.logging_utils import configure_logging, setup_logger, get_counting_handler
@@ -203,6 +204,13 @@ if __name__ == "__main__":
 		salvo_weapons = ammo_db.get('salvo_weapons', {})
 		constants_renames = constants_data.get('ammunition_renames', {})
 		constants_renames_old_new = constants_renames.get('renames_old_new', {})
+
+		# Cached salvo_weapons predates the _xN_avion rule. Scan the loaded
+		# name list every run; constants renames still override (Vikhr).
+		salvo_weapons = {
+			**avion_salvo_renames(ammo_db.get('all_ammunition_and_missile', [])),
+			**salvo_weapons,
+		}
 		
 		# Combine salvo weapons and constants renames
 		renames_old_new = {**salvo_weapons, **constants_renames_old_new}

@@ -13,6 +13,13 @@ from src.utils.dictionary_utils import write_dictionary_entries
 from src.utils.ndf_utils import strip_quotes
 from src.utils.logging_utils import setup_logger
 from src.data.constants_precomputation import ammo_name_keeps_deployment_time
+from src.data.mounted_weapon_identity import (
+    IDENTITY_FIELDS,
+    copy_identity,
+    record_for,
+    rekey_identity,
+    store_identity_value,
+)
 
 from .handlers import (
     add_corrected_shot_dispersion,
@@ -57,13 +64,13 @@ def edit_gen_gp_gfx_ammunition(source_path, game_db: Dict[str, Any]) -> None:
             add_corrected_shot_dispersion(source_path, logger, game_db)
             # edit_mg_team_weapons(source_path, game_db)
             apply_damage_families(source_path, logger, game_db)
-            apply_aim_time_standards(source_path, logger)
+            apply_aim_time_standards(source_path, logger, game_db)
             apply_weapon_range_standards(source_path, logger)
-            apply_bomb_damage_standards(source_path, logger)
-            apply_he_damage_standards(source_path, logger)
-            apply_tandem_charge_inversion(source_path, logger)
-            apply_fire_descriptors(source_path, logger)
-            apply_infantry_mmg_cac_trait(source_path, logger)
+            apply_bomb_damage_standards(source_path, logger, game_db)
+            apply_he_damage_standards(source_path, logger, game_db)
+            apply_tandem_charge_inversion(source_path, logger, game_db)
+            apply_fire_descriptors(source_path, logger, game_db)
+            apply_infantry_mmg_cac_trait(source_path, logger, game_db)
             apply_clu_sol_trait_standards(source_path, logger, game_db)
             logger.debug("Applied global modifications")
         except Exception as e:
@@ -95,7 +102,9 @@ def edit_gen_gp_gfx_ammunition(source_path, game_db: Dict[str, Any]) -> None:
                 # Get or create base descriptor
                 try:
                     if is_new:
-                        base_descr = _create_new_descriptor(source_path, data, weapon_name, donor)
+                        base_descr = _create_new_descriptor(
+                            source_path, data, weapon_name, donor, game_db,
+                        )
                     else:
                         base_descr = _get_existing_descriptor(source_path, weapon_name)
 
@@ -128,6 +137,7 @@ def edit_gen_gp_gfx_ammunition(source_path, game_db: Dict[str, Any]) -> None:
                         base_descr,
                         weapon_name,
                         variants_for_weapon(game_db, weapon_name),
+                        game_db,
                     )
                 except Exception as e:
                     logger.error(
@@ -140,7 +150,9 @@ def edit_gen_gp_gfx_ammunition(source_path, game_db: Dict[str, Any]) -> None:
                         if "NbWeapons" not in data or len(data["NbWeapons"]) == 1:
                             # Add strength to base namespace if needed
                             if use_strength:
+                                old_namespace = base_descr.namespace
                                 base_descr.namespace = f"Ammo_{weapon_name}_strength2"  # Start at strength2
+                                rekey_identity(game_db["ammunition"], old_namespace, base_descr.namespace)
                                 base_descr.v.by_m("Arme").v.by_m("Index").v = "1"  # Index starts at 1
                             source_path.add(base_descr)
                             logger.debug(
@@ -153,7 +165,7 @@ def edit_gen_gp_gfx_ammunition(source_path, game_db: Dict[str, Any]) -> None:
                         if len(data["NbWeapons"]) > 1:
                             _create_quantity_variants(
                                 source_path, base_descr, weapon_name, data["NbWeapons"], base_cost,
-                                is_new, use_strength, category
+                                is_new, use_strength, category, game_db,
                             )
                         elif category == "small_arms" and data["NbWeapons"][0] > 1:
                             # Set base namespace first with strength if needed
@@ -162,6 +174,11 @@ def edit_gen_gp_gfx_ammunition(source_path, game_db: Dict[str, Any]) -> None:
                                     strength_descr = base_descr.copy()
                                     strength_descr.namespace = (
                                         f"Ammo_{weapon_name}_strength{strength}_x{data['NbWeapons'][0]}"
+                                    )
+                                    copy_identity(
+                                        game_db["ammunition"],
+                                        base_descr.namespace,
+                                        strength_descr.namespace,
                                     )
                                     arme_index = min(strength - 1, 13)
                                     strength_descr.v.by_m("Arme").v.by_m("Index").v = str(arme_index)
@@ -172,13 +189,20 @@ def edit_gen_gp_gfx_ammunition(source_path, game_db: Dict[str, Any]) -> None:
                                     source_path.add(strength_descr)
                                     logger.debug(f"Added strength {strength} variant for {weapon_name}")
                             else:
+                                old_namespace = base_descr.namespace
                                 base_descr.namespace = f"Ammo_{weapon_name}_x{data['NbWeapons'][0]}"
+                                rekey_identity(game_db["ammunition"], old_namespace, base_descr.namespace)
 
                         elif category == "small_arms" and data["NbWeapons"][0] == 1:
                             if use_strength and not is_new:
                                 for strength in range(2, 17):
                                     strength_descr = base_descr.copy()
                                     strength_descr.namespace = f"Ammo_{weapon_name}_strength{strength}"
+                                    copy_identity(
+                                        game_db["ammunition"],
+                                        base_descr.namespace,
+                                        strength_descr.namespace,
+                                    )
                                     arme_index = min(strength - 1, 13)
                                     strength_descr.v.by_m("Arme").v.by_m("Index").v = str(arme_index)
 
@@ -197,7 +221,7 @@ def edit_gen_gp_gfx_ammunition(source_path, game_db: Dict[str, Any]) -> None:
                 # Track dictionary entries
                 try:
                     _track_dictionary_entries(
-                        weapon_name, ammo_data, ingame_names, calibers, base_descr,
+                        weapon_name, ammo_data, ingame_names, calibers, base_descr, game_db,
                     )
                 except Exception as e:
                     logger.error(f"Failed tracking dictionary entries for {weapon_name}: {str(e)}")
@@ -261,6 +285,7 @@ def _create_quantity_variants(
     is_new,
     use_strength,
     category,
+    game_db,
 ):
     """Create quantity and strength variants from base ammunition descriptor."""
     logger.info(f"Creating quantity and strength variants for {weapon_name} (is_new={is_new})")
@@ -295,6 +320,7 @@ def _create_quantity_variants(
                     variant = base_descr.copy()
                     variant.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
                     variant.namespace = namespace
+                    copy_identity(game_db["ammunition"], base_descr.namespace, namespace)
 
                     # Set Arme Index based on strength
                     arme_obj = variant.v.by_m("Arme").v
@@ -344,6 +370,7 @@ def _create_quantity_variants(
                 variant = base_descr.copy()
                 variant.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
                 variant.namespace = namespace
+                copy_identity(game_db["ammunition"], base_descr.namespace, namespace)
 
                 if base_cost is not None:
                     # Scale supply cost by quantity
@@ -405,7 +432,7 @@ def _apply_weapon_edits(
     logger.debug(f"Applying edits to {descr.n}")
     
     # tandem inversion (apply first so manual edits take precedence)
-    traits_tokens = [t.v for t in descr.v.by_m("TraitsToken").v]
+    traits_tokens = list(record_for(game_db["ammunition"], descr.namespace).get("TraitsToken") or [])
     family = descr.v.by_m("Arme").v.by_m("Family")
     if "'TANDEM'" in traits_tokens:
         membr("TandemCharge").v = "False"
@@ -413,8 +440,9 @@ def _apply_weapon_edits(
         membr("TandemCharge").v = "True"
 
     # Apply localization token edits
+    identity = record_for(game_db["ammunition"], descr.namespace)
     if "token" in ammo_data:
-        descr.v.by_m("Name").v = "'" + ammo_data["token"] + "'"
+        store_identity_value(identity, "Name", ammo_data["token"])
 
     # Apply Arme edits
     if "Arme" in ammo_data:
@@ -437,6 +465,9 @@ def _apply_weapon_edits(
         parent_membr = ammo_data["parent_membr"]
         if remove_list := parent_membr.get("remove"):
             for member_name in remove_list:
+                if member_name in IDENTITY_FIELDS:
+                    identity.pop(member_name, None)
+                    continue
                 if descr.v.by_m(member_name, False) is not None:
                     descr.v.remove_by_member(member_name)
                     logger.debug(f"Removed member {member_name} from {descr.n}")
@@ -445,12 +476,18 @@ def _apply_weapon_edits(
         for key, value in parent_membr.items():
             if key == "remove":
                 continue
+            if key in IDENTITY_FIELDS:
+                store_identity_value(identity, key, value)
+                continue
             logger.debug(f"Setting {key} = {value}")
             if key == "add":  # adding new member, e.g. [16, "MaximumRangeHelicopterGRU = 875"]
                 index = value[0]
                 new_member = value[1]
                 # Extract member name from "MemberName = Value" format
                 member_name = new_member.split("=")[0].strip()
+                if member_name in IDENTITY_FIELDS:
+                    store_identity_value(identity, member_name, new_member.split("=", 1)[1].strip())
+                    continue
                 existing_membr = descr.v.by_m(member_name, False)
                 if existing_membr is None:
                     descr.v.insert(index, new_member)
@@ -461,8 +498,6 @@ def _apply_weapon_edits(
                     logger.debug(f"Member {member_name} already exists in {descr.n}, updating value")
             elif isinstance(value, (float, int, bool)):
                 membr(key).v = str(value)
-            elif isinstance(value, tuple) and key == "Caliber":
-                membr(key).v = f"'{value[1]}'"
             elif isinstance(value, list):
                 # Convert list to NDF format
                 list_str = "[" + ", ".join(f"'{item}'" for item in value) + "]"
@@ -479,14 +514,16 @@ def _apply_weapon_edits(
 
     # Apply texture
     if "NewTexture" in data:
-        texture_file = '"' + f"Texture_Interface_Weapon_{data['NewTexture']}" + '"'
-        membr("InterfaceWeaponTexture").v = texture_file
-        logger.debug(f"Applied texture {texture_file}")
+        store_identity_value(
+            identity, "InterfaceWeaponTexture", f"Texture_Interface_Weapon_{data['NewTexture']}",
+        )
+        logger.debug(f"Applied texture {data['NewTexture']}")
 
     if "Texture" in data:
-        texture_file = '"' + f"Texture_Interface_Weapon_{data['Texture']}" + '"'
-        membr("InterfaceWeaponTexture").v = texture_file
-        logger.debug(f"Applied texture {texture_file}")
+        store_identity_value(
+            identity, "InterfaceWeaponTexture", f"Texture_Interface_Weapon_{data['Texture']}",
+        )
+        logger.debug(f"Applied texture {data['Texture']}")
 
 
 def _apply_hit_roll_edits(descr: Any, hit_roll_data: Dict) -> None:
@@ -529,7 +566,7 @@ def _apply_canon_he_inherited_accuracy(
 
 
 def _track_dictionary_entries(
-    weapon_name, ammo_data, ingame_names, calibers, base_descr: Any = None,
+    weapon_name, ammo_data, ingame_names, calibers, base_descr: Any = None, game_db: Dict = None,
 ):
     """Track dictionary entries for ammunition.
 
@@ -538,10 +575,10 @@ def _track_dictionary_entries(
     """
     if "display" in ammo_data:
         token = ammo_data.get("token")
-        if token is None and base_descr is not None:
-            name_membr = base_descr.v.by_m("Name", False)
-            if name_membr is not None and name_membr.v:
-                token = strip_quotes(name_membr.v)
+        if token is None and base_descr is not None and game_db is not None:
+            name_value = record_for(game_db["ammunition"], base_descr.namespace).get("Name")
+            if name_value:
+                token = strip_quotes(name_value)
         if token is not None:
             ingame_names.append((weapon_name, token, ammo_data["display"]))
 
@@ -571,7 +608,7 @@ def _get_base_supply_cost(weapon_name):
     return None
 
 
-def _create_new_descriptor(source_path, data, weapon_name, donor):
+def _create_new_descriptor(source_path, data, weapon_name, donor, game_db=None):
     """Create a new descriptor for ammunition."""
     donor_descr = source_path.by_n(f"Ammo_{donor}")
     if not donor_descr:
@@ -605,6 +642,8 @@ def _create_new_descriptor(source_path, data, weapon_name, donor):
         else:
             base_descr.namespace = f"Ammo_{weapon_name}"
 
+    if game_db is not None:
+        copy_identity(game_db["ammunition"], donor_descr.namespace, base_descr.namespace)
     logger.debug(f"Created new base descriptor for {weapon_name} from {donor}")
     return base_descr
 

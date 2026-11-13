@@ -8,7 +8,7 @@ from .FR_depiction_edits import (
     vab_t20_fr,
 )
 from .POL_depiction_edits import (
-    commandos_para_cmd_pol,
+    # commandos_para_cmd_pol,
     engineers_cmd_pol,
     engineers_paras_cmd_pol,
     engineers_paras_flam_pol,
@@ -50,7 +50,7 @@ from .RDA_depiction_edits import (
 )
 from .RFA_depiction_edits import (
     daimlerbenz_typ1017_supply_rfa,
-    engineers_geb_rfa_rfa,
+    Engineers_Geb_RFA,
     feldgendarmerie_rfa,
     gebirgsjager_jagdkdo_rfa,
     gebirgsjager_pzf3_rfa,
@@ -144,7 +144,7 @@ __all__ = [
     "vab_t20_fr",
     
     # POL
-    "commandos_para_cmd_pol",
+    # "commandos_para_cmd_pol",
     "engineers_cmd_pol",
     "engineers_paras_cmd_pol",
     "engineers_paras_flam_pol",
@@ -186,7 +186,7 @@ __all__ = [
     
     # RFA
     "daimlerbenz_typ1017_supply_rfa",
-    "engineers_geb_rfa_rfa",
+    "Engineers_Geb_RFA",
     "feldgendarmerie_rfa",
     "gebirgsjager_jagdkdo_rfa",
     "gebirgsjager_pzf3_rfa",

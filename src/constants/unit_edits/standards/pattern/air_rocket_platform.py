@@ -28,11 +28,7 @@ AIR_ROCKET_PLATFORM_PAIRS: tuple[AirRocketPlatformPair, ...] = (
     },
     {
         "helo_ammo": "RocketAir_Hydra_70mm_salvolength14",
-        "avion_ammo": "RocketAir_Hydra_70mm_x14_avion",
-    },
-    {
-        "helo_ammo": "RocketAir_B8_80mm_salvolength10",
-        "avion_ammo": "RocketAir_B8_80mm_Avion_salvolength10",
+        "avion_ammo": "RocketAir_Hydra_70mm_avion_salvolength14",
     },
     # Mod clones (same salvo)
     {
@@ -58,10 +54,6 @@ AIR_ROCKET_PLATFORM_PAIRS: tuple[AirRocketPlatformPair, ...] = (
     {
         "helo_ammo": "RocketAir_SNEB_68mm_salvolength12",
         "avion_ammo": "RocketAir_SNEB_68mm_avion_salvolength12",
-    },
-    {
-        "helo_ammo": "RocketAir_SNEB_68mm_salvolength38",
-        "avion_ammo": "RocketAir_SNEB_68mm_avion_salvolength38",
     },
     {
         "helo_ammo": "RocketAir_122_JROF_L_122mm_salvolength4",
@@ -91,15 +83,15 @@ AIR_ROCKET_PLATFORM_PAIRS: tuple[AirRocketPlatformPair, ...] = (
     },
     {
         "helo_ammo": "RocketAir_Hydra_70mm_salvolength38",
-        "avion_ammo": "RocketAir_Hydra_70mm_x38_avion",
+        "avion_ammo": "RocketAir_Hydra_70mm_avion_salvolength38",
     },
     {
         "helo_ammo": "RocketAir_Hydra_70mm_salvolength114",
-        "avion_ammo": "RocketAir_Hydra_70mm_x114_avion",
+        "avion_ammo": "RocketAir_Hydra_70mm_avion_salvolength114",
     },
     {
         "helo_ammo": "RocketAir_122_JROF_L_122mm_salvolength54",
-        "avion_ammo": "RocketAir_122_JROF_L_122mm_x54_avion",
+        "avion_ammo": "RocketAir_122_JROF_L_122mm_avion_salvolength54",
     },
     {
         "helo_ammo": "RocketAir_Grom_57mm_salvolength16",
@@ -134,8 +126,8 @@ AIR_ROCKET_PLATFORM_PAIRS: tuple[AirRocketPlatformPair, ...] = (
         "avion_ammo": "RocketAir_Hydra_70mm_avion_salvolength19",
     },
     {
-        "helo_ammo": "RocketAir_Hydra_70mm_x31_M229",
-        "avion_ammo": "RocketAir_Hydra_70mm_x31_M229_avion",
+        "helo_ammo": "RocketAir_Hydra_70mm_M229_salvolength31",
+        "avion_ammo": "RocketAir_Hydra_70mm_M229_avion_salvolength31",
     },
     {
         "helo_ammo": "RocketAir_B8_80mm_salvolength20",
@@ -165,6 +157,23 @@ AIR_ROCKET_PLATFORM_PAIRS: tuple[AirRocketPlatformPair, ...] = (
     {
         "helo_ammo": "RocketAir_CRV7_70mm_salvolength19",
         "avion_ammo": "RocketAir_CRV7_70mm_avion_salvolength19",
+    },
+    # Eugen's _xN_avion names are renamed to _avion_salvolengthN with the other salvo weapons.
+    {
+        "helo_ammo": "RocketAir_FFAR_70mm_salvolength24",
+        "avion_ammo": "RocketAir_FFAR_70mm_avion_salvolength24",
+    },
+    {
+        "helo_ammo": "RocketAir_SBAT_70mm_salvolength7",
+        "avion_ammo": "RocketAir_SBAT_70mm_avion_salvolength7",
+    },
+    {
+        "helo_ammo": "RocketAir_SBAT_127mm_salvolength8",
+        "avion_ammo": "RocketAir_SBAT_127mm_avion_salvolength8",
+    },
+    {
+        "helo_ammo": "RocketAir_Zuni_1272mm_salvolength24",
+        "avion_ammo": "RocketAir_Zuni_1272mm_avion_salvolength24",
     },
 )
 

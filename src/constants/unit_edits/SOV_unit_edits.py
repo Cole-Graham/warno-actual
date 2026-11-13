@@ -6378,12 +6378,12 @@ sov_unit_edits = {
         "availability": [0, 3, 2, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "RocketAir_B8_80mm_salvolength40": 2,
+                "RocketAir_B8_80mm_avion_salvolength40": 2,
             },
             "equipmentchanges": {
                 "replace": {
-                    "RocketAir_B8_80mm_salvolength80": {
-                        "new_weapon": "RocketAir_B8_80mm_salvolength40",
+                    "RocketAir_B8_80mm_avion_salvolength80": {
+                        "new_weapon": "RocketAir_B8_80mm_avion_salvolength40",
                         "swap_fire_effect": False,
                         "depiction_baked_in": False,
                     },

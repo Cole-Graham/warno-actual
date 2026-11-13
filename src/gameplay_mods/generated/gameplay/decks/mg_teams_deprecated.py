@@ -1,6 +1,7 @@
 # import re
 from typing import Any, Dict, List, Tuple
 
+from src.gameplay_mods.generated.gameplay.decks.division_rules import normalize_xp_multipliers
 from src.utils.logging_utils import setup_logger
 from src.utils.ndf_utils import get_modules_list, is_obj_type  # noqa
 
@@ -50,9 +51,12 @@ def mg_team_division_rules(source_path: Any, game_db: Dict[str, Any]) -> None:
                 is_para = is_para_unit(unit_name, unit_db)
                 
                 # apply availability settings
-                xp_multi = str([0.0, 1.0, 0.75, 0.0] if is_para else [1.0, 0.75, 0.0, 0.0])
+                pack_size = 9 if mg_type == "HMG" else 12
+                xp_multi = normalize_xp_multipliers(
+                    pack_size, [0.0, 1.0, 0.75, 0.0] if is_para else [1.0, 0.75, 0.0, 0.0],
+                )
 
-                rule_obj.v.by_m("NumberOfUnitInPack").v = '9' if mg_type == "HMG" else '12'
+                rule_obj.v.by_m("NumberOfUnitInPack").v = str(pack_size)
                 rule_obj.v.by_m("NumberOfUnitInPackXPMultiplier").v = xp_multi
                 
                 logger.debug(f"Updated {unit_name} in {div_name} (Para: {is_para}, Type: {mg_type})")

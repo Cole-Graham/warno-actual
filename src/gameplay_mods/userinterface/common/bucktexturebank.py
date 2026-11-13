@@ -26,7 +26,7 @@ def edit_ui_common_bucktexturebank(source) -> None:
         path = f"{_WEAPON_TRAIT_ICON_DIR}/{filename}"
         entry = (
             f'        ("{trait_key}",                          MAP [(~/ComponentState/Normal, '
-            f"TUIResourceTexture_Common( FileName='{path}' )), ] ),"
+            f"TUIResourceTexture( FileName='{path}' )), ] ),"
         )
         textures_map.insert(insert_index, entry)
         insert_index += 1

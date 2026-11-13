@@ -1,6 +1,6 @@
 """Poland depiction edits."""
 
-from .Commandos_Para_CMD_POL import commandos_para_cmd_pol
+# from .Commandos_Para_CMD_POL import commandos_para_cmd_pol
 from .Engineers_CMD_POL import engineers_cmd_pol
 from .Engineers_paras_CMD_POL import engineers_paras_cmd_pol
 from .Engineers_paras_Flam_POL import engineers_paras_flam_pol
@@ -22,7 +22,7 @@ from .Scout_para_POL import scout_para_pol
 from .Sniper_paras_POL import sniper_paras_pol
 
 __all__ = [
-    "commandos_para_cmd_pol",
+    # "commandos_para_cmd_pol",
     "engineers_cmd_pol",
     "engineers_paras_cmd_pol",
     "engineers_paras_flam_pol",

@@ -39,7 +39,7 @@ weapons: Dict[WeaponKey, WeaponData] = {
         },
     },
     
-    ("Bomb_Mk84_920kg_salvolength2", "he_bomb", "Bomb_Mk84_920kg_salvolength4", True): {
+    ("Bomb_Mk84_920kg_salvolength2", "he_bomb", None, False): {
         "Ammunition": {
             "parent_membr": {
                 "ShotsCountPerSalvo": 2,

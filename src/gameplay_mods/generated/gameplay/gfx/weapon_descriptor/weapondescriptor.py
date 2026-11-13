@@ -4,6 +4,10 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
 
+from src.data.mounted_weapon_identity import (
+    apply_mounted_weapon_identity,
+    warn_invalid_salves,
+)
 from .handlers import (
     apply_default_salves,
     apply_air_rocket_platform_standard,
@@ -40,3 +44,7 @@ def edit_gen_gp_gfx_weapondescriptor(source_path: Any, game_db: Dict[str, Any]) 
     # ammo (must run last so vanilla, new, and edited units are all in place).
     apply_he_dca_air_mounts(source_path, logger, game_db)
     apply_satchel_at_companion_mounts(source_path, logger, game_db)
+    # Identity fields live on each mount. Apply after every remount so the
+    # final Ammunition pointer picks up that ammo's name, caliber, traits, and icon.
+    apply_mounted_weapon_identity(source_path, game_db.get("ammunition") or {}, logger)
+    warn_invalid_salves(source_path, logger)

@@ -27,7 +27,7 @@ RFA_airborne_newdivisionrules = {
         ("Fallschirm_Engineers_RFA", 2, [0, 6, 4, 0], ["Unimog_trans_RFA"]),
         ("Gebirgsjager_RFA", 2, [10, 7, 0, 0], ["DaimlerBenz_Typ1017_trans_RFA", "UH1D_RFA"]),
         ("Gebirgsjager_PzF3_RFA", 2, [10, 7, 0, 0], ["DaimlerBenz_Typ1017_trans_RFA", "UH1D_RFA"]),
-        ("Engineers_Geb_RFA_RFA", 2, [0, 6, 4, 0], ["DaimlerBenz_Typ1017_trans_RFA", "UH1D_RFA"]),
+        ("Engineers_Geb_RFA", 2, [0, 6, 4, 0], ["DaimlerBenz_Typ1017_trans_RFA", "UH1D_RFA"]),
         ("Gebirgsjager_Hvy_RFA", 1, [6, 4, 0, 0], ["CH53G_trans_RFA"]),
         ("Security_RFA", 1, [10, 7, 0, 0], ["Unimog_trans_RFA"]),
         ("Feldgendarmerie_RFA", 2, [0, 8, 6, 0], ["VW_T2b_MP_RFA"]),

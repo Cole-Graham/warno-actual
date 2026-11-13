@@ -21,11 +21,11 @@ UPGRADE_FROM_MAX_CHAIN_UNIT_COUNT = 10
 
 def gather_unit_data(mod_src_path: Path) -> Dict[str, Any]:
     """Gather unit data from source files."""
-    logger.info("Gathering unit data from UniteDescriptor.ndf")
+    logger.info("Gathering unit data from TacticalUnits.ndf")
     logger.info(f"Source path: {mod_src_path}")
 
     unit_data = {}
-    ndf_path = "GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf"
+    ndf_path = "GameData/Generated/Gameplay/TacticalUnits.ndf"
 
     try:
         # Just parsing input, no output needed
@@ -60,7 +60,7 @@ def gather_unit_data(mod_src_path: Path) -> Dict[str, Any]:
 
 
 def gather_ui_texture_reference(mod_src_path: Path) -> Dict[str, List[str]]:
-    """Collect distinct UI / tactical-label texture strings from vanilla UniteDescriptor.ndf.
+    """Collect distinct UI / tactical-label texture strings from vanilla TacticalUnits.ndf.
 
     Returns JSON-serializable dict with sorted unique lists per field (case-sensitive strings).
     """
@@ -68,8 +68,8 @@ def gather_ui_texture_reference(mod_src_path: Path) -> Dict[str, List[str]]:
     tactical_identified: Set[str] = set()
     tactical_unidentified: Set[str] = set()
 
-    ndf_path = "GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf"
-    logger.info("Gathering UI texture reference from UniteDescriptor.ndf")
+    ndf_path = "GameData/Generated/Gameplay/TacticalUnits.ndf"
+    logger.info("Gathering UI texture reference from TacticalUnits.ndf")
 
     try:
         mod = ndf.Mod(str(mod_src_path), "None")

@@ -3,8 +3,8 @@
 import re
 from typing import Any, Dict, List, Union
 
-from src import ndf
 from src.constants import TANDEM_MODIFIER
+from src.data.mounted_weapon_identity import identity_map
 from src.constants.weapons import ammunitions
 from src.constants.weapons.standards import (
     AIM_TIME_STANDARDS,
@@ -38,16 +38,24 @@ def _build_ammunition_caliber_edits() -> Dict[str, str]:
     return edits
 
 
-def apply_aim_time_standards(source_path, logger):
+def _ammo_db(game_db):
+    if not game_db:
+        return {}
+    return game_db.get("ammunition") or {}
+
+
+def _identity(game_db, namespace: str):
+    return identity_map(_ammo_db(game_db)).get(namespace) or {}
+
+
+def apply_aim_time_standards(source_path, logger, game_db=None):
     """Edit aim times for weapons."""
     for ammo_descr in source_path:
-        has_category = ammo_descr.v.by_m("TypeCategoryName", False) is not None
+        ammo_type = _identity(game_db, ammo_descr.namespace).get("TypeCategoryName")
         has_aim_time = ammo_descr.v.by_m("AimingTime", False) is not None
 
-        if not (has_aim_time and has_category):
+        if not (has_aim_time and ammo_type):
             continue
-
-        ammo_type = ammo_descr.v.by_m("TypeCategoryName").v
         aim_time = ammo_descr.v.by_m("AimingTime").v
 
         for rule in AIM_TIME_STANDARDS:
@@ -87,7 +95,7 @@ def apply_weapon_range_standards(source_path, logger):
                     continue
 
 
-def apply_bomb_damage_standards(source_path, logger):
+def apply_bomb_damage_standards(source_path, logger, game_db=None):
     """Edit bomb damage standards in Ammunition.ndf and AmmunitionMissiles.ndf"""
 
     bombs = HE_BOMB_DAMAGE_BY_WEIGHT
@@ -96,10 +104,10 @@ def apply_bomb_damage_standards(source_path, logger):
     # TODO: String matching is not reliable long term, we should set this in ammo edits instead
     for ammo_descr in source_path:
         ammo_name = ammo_descr.namespace
-        traits_list = ammo_descr.v.by_m("TraitsToken")
+        traits_list = _identity(game_db, ammo_name).get("TraitsToken") or []
         if not any(
-            any(token in trait.v for token in HE_BOMB_TRAIT_TOKENS)
-            for trait in traits_list.v
+            any(token in trait for token in HE_BOMB_TRAIT_TOKENS)
+            for trait in traits_list
         ):
             continue
 
@@ -125,7 +133,7 @@ def apply_bomb_damage_standards(source_path, logger):
                 logger.info(f"(Ammunition.ndf) Changed {ammo_descr.namespace} {key} to {value}")
 
 
-def apply_he_damage_standards(source_path, logger):
+def apply_he_damage_standards(source_path, logger, game_db=None):
     """Apply HE (PhysicalDamages) standards in Ammunition.ndf"""
 
     damage_map = CANON_HE_DAMAGE_BY_CALIBER
@@ -134,11 +142,10 @@ def apply_he_damage_standards(source_path, logger):
     for ammo_descr in source_path:
         namespace = ammo_descr.namespace
 
-        if ammo_descr.v.by_m("Name", False) is None:
+        name_membr = _identity(game_db, namespace).get("Name")
+        if name_membr is None:
             logger.debug(f"No name found for {namespace}")
             continue
-
-        name_membr = ammo_descr.v.by_m("Name").v
         if name_membr == "'None'":
             continue
 
@@ -154,7 +161,9 @@ def apply_he_damage_standards(source_path, logger):
         if base_weapon_name in caliber_edits:
             caliber_membr = caliber_edits[base_weapon_name]
         else:
-            caliber_membr = ammo_descr.v.by_m("Caliber").v
+            caliber_membr = _identity(game_db, namespace).get("Caliber")
+        if caliber_membr is None:
+            continue
         if caliber_membr in damage_map:
             ammo_descr.v.by_m("PhysicalDamages").v = str(damage_map[caliber_membr])
             logger.info(f"Changed {namespace} HE damage to {damage_map[caliber_membr]}")
@@ -203,12 +212,12 @@ def apply_clu_sol_trait_standards(source_path, logger, game_db: Dict[str, Any]) 
         if target_trait is None:
             continue
 
-        traits_list = ammo_descr.v.by_m("TraitsToken", False)
-        if traits_list is None:
+        record = identity_map(ammo_db).get(ammo_descr.namespace)
+        if record is None or "TraitsToken" not in record:
             logger.debug("(Ammo) No TraitsToken for %s", ammo_descr.namespace)
             continue
 
-        old_tokens = [trait.v for trait in traits_list.v]
+        old_tokens = list(record["TraitsToken"])
         new_trait_ndf = f"'{target_trait}'"
         out: List[str] = [
             t for t in old_tokens
@@ -220,12 +229,11 @@ def apply_clu_sol_trait_standards(source_path, logger, game_db: Dict[str, Any]) 
         if out == old_tokens:
             continue
 
-        list_str = "[" + ", ".join(out) + "]"
-        ammo_descr.v.by_m("TraitsToken").v = ndf.convert(list_str.encode("utf-8"))[0].v
+        record["TraitsToken"] = out
         logger.info("(Ammo) CLU SOL TraitsToken %s -> %s", ammo_descr.namespace, target_trait)
 
 
-def apply_infantry_mmg_cac_trait(source_path, logger) -> None:
+def apply_infantry_mmg_cac_trait(source_path, logger, game_db=None) -> None:
     """Add CAC trait to infantry MMGs with MinimumRangeGRU = 0."""
     for ammo_descr in source_path:
         minmax_category = ammo_descr.v.by_m("MinMaxCategory", False)
@@ -240,20 +248,20 @@ def apply_infantry_mmg_cac_trait(source_path, logger) -> None:
         if min_range_value != 0:
             continue
 
-        traits_list = ammo_descr.v.by_m("TraitsToken", False)
-        if traits_list is None:
+        record = identity_map(_ammo_db(game_db)).get(ammo_descr.namespace)
+        if record is None or "TraitsToken" not in record:
             logger.debug(f"No TraitsToken list found for {ammo_descr.namespace}")
             continue
 
-        existing_traits = [trait.v for trait in traits_list.v]
+        existing_traits = record["TraitsToken"]
         if "'CAC'" in existing_traits:
             continue
 
-        traits_list.v.add("'CAC'")
+        existing_traits.append("'CAC'")
         logger.info(f"Added CAC trait to {ammo_descr.namespace} (MinimumRangeGRU = 0)")
 
 
-def apply_tandem_charge_inversion(source_path, logger):
+def apply_tandem_charge_inversion(source_path, logger, game_db=None):
     """Change all Tandem HEAT weapons so TandemCharge = False, and vice-versa."""
     for ammo_descr in source_path:
 
@@ -269,11 +277,9 @@ def apply_tandem_charge_inversion(source_path, logger):
         if family is None or family != "DamageFamily_ap_missile":
             continue
 
-        traits_membr = ammo_descr.v.by_m("TraitsToken", False)
-        if traits_membr is None:
+        tokens = _identity(game_db, ammo_descr.namespace).get("TraitsToken")
+        if not tokens:
             continue
-        
-        tokens = [t.v for t in traits_membr.v]
         if "'TANDEM'" in tokens:
             is_tandem = True
         else:

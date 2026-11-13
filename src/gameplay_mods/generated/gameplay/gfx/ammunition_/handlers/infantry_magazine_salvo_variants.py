@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional
 from uuid import uuid4
 
+from src.data.mounted_weapon_identity import copy_identity
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__)
@@ -49,6 +50,7 @@ def create_infantry_magazine_variants(
     base_descr: Any,
     weapon_name: str,
     variant_entries: List[Dict[str, Any]],
+    game_db: Optional[Dict[str, Any]] = None,
 ) -> None:
     """Create or update ``Ammo_{weapon}_salvolength{N}`` / ``_infmagazine{N}`` clones.
 
@@ -77,6 +79,8 @@ def create_infantry_magazine_variants(
         variant = base_descr.copy()
         variant.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
         variant.namespace = namespace
+        if game_db is not None:
+            copy_identity(game_db["ammunition"], base_descr.namespace, namespace)
         apply_infantry_magazine_timing(variant, base_descr, length)
         source_path.add(variant)
         logger.info("Created infantry magazine variant %s", namespace)

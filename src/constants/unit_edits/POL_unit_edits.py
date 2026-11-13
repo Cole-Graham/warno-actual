@@ -400,76 +400,76 @@ pol_unit_edits = {
         "remove_zone_capture": None,
     },
 
-    "Commandos_Para_CMD_POL": {  # Desant. Komandosi Dow. (sp only)
-        "CommandPoints": 55,
-        "availability": [0, 0, 4, 3],
-        "max_speed": 26,
-         "GameName": {
-             "display": "SPADO. KOMANDOSI",
-        },
-        "TagSet": {
-            "overwrite_all": [
-                "AllUnits",
-                "LDR_SOV_Unit",
-                "AllowedForMissileRoE",
-                "Crew",
-                "GroundUnits",
-                "Inf_quartier_ok",
-                "Infanterie",
-                "Infanterie_Standard",
-                "UNITE_Commandos_Para_CMD_POL",
-                "Unite",
-                "noSIGINT",
-            ],
-        },
-        "TransportedTexture": "UseInGame_Transport_REGINF",
-        "IdentifiedTextures": ["Texture_RTS_H_Infantry_sf", "Texture_sf"],
-        "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
-        "UnitRole": "infantry",
-        "SpecialtiesList": {
-            "overwrite_all": [
-                'leader_sov',
-                '_sf',
-                '_choc',
-                '_para',
-                'infantry_equip_light',
-            ],
-        },
-        "MenuIconTexture": "Texture_RTS_H_Infantry_sf",
-        "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
-        "WeaponDescriptor": {
-            "equipmentchanges": {
-                "quantity": {
-                    "PM_PM63_RAK": 8,
-                    "Grenade_Satchel_Charge": 1,
-                },
-                "replace": {
-                    "FM_Tantal": {
-                        "new_weapon": "PM_PM63_RAK",
-                        "swap_fire_effect": True,
-                        "depiction_baked_in": False,
-                    },
-                    "MMG_PKM_7_62mm": {
-                        "new_weapon": "Grenade_Satchel_Charge",
-                        "swap_fire_effect": True,
-                        "depiction_baked_in": False,
-                    },
-                    "RocketInf_RPG7": {
-                        "new_weapon": "RocketInf_RPG76_Komar_salvolength8",
-                        "swap_fire_effect": True,
-                        "depiction_baked_in": False,
-                    },
-                },
-            },
-            "Salves": {
-                "PM_PM63_RAK": 22,
-                "Grenade_Satchel_Charge": 6,
-                "RocketInf_RPG76_Komar_salvolength8": 1,
-            },
-        },
-        "remove_zone_capture": None,
-        "ButtonTexture": "Commandos_CMD_POL",
-    },
+    # "Commandos_Para_POL": {  # Desant. Komandosi Dow. (sp only)
+    #     "CommandPoints": 55,
+    #     "availability": [0, 0, 4, 3],
+    #     "max_speed": 26,
+    #      "GameName": {
+    #          "display": "SPADO. KOMANDOSI",
+    #     },
+    #     "TagSet": {
+    #         "overwrite_all": [
+    #             "AllUnits",
+    #             "LDR_SOV_Unit",
+    #             "AllowedForMissileRoE",
+    #             "Crew",
+    #             "GroundUnits",
+    #             "Inf_quartier_ok",
+    #             "Infanterie",
+    #             "Infanterie_Standard",
+    #             "UNITE_Commandos_Para_CMD_POL",
+    #             "Unite",
+    #             "noSIGINT",
+    #         ],
+    #     },
+    #     "TransportedTexture": "UseInGame_Transport_REGINF",
+    #     "IdentifiedTextures": ["Texture_RTS_H_Infantry_sf", "Texture_sf"],
+    #     "UnidentifiedTextures": ["Texture_RTS_H_infantry_nonIdentifie", "Texture_infantry_nonIdentifie"],
+    #     "UnitRole": "infantry",
+    #     "SpecialtiesList": {
+    #         "overwrite_all": [
+    #             'leader_sov',
+    #             '_sf',
+    #             '_choc',
+    #             '_para',
+    #             'infantry_equip_light',
+    #         ],
+    #     },
+    #     "MenuIconTexture": "Texture_RTS_H_Infantry_sf",
+    #     "TypeStrategicCount": "ETypeStrategicDetailedCount/Infantry",
+    #     "WeaponDescriptor": {
+    #         "equipmentchanges": {
+    #             "quantity": {
+    #                 "PM_PM63_RAK": 8,
+    #                 "Grenade_Satchel_Charge": 1,
+    #             },
+    #             "replace": {
+    #                 "FM_Tantal": {
+    #                     "new_weapon": "PM_PM63_RAK",
+    #                     "swap_fire_effect": True,
+    #                     "depiction_baked_in": False,
+    #                 },
+    #                 "MMG_PKM_7_62mm": {
+    #                     "new_weapon": "Grenade_Satchel_Charge",
+    #                     "swap_fire_effect": True,
+    #                     "depiction_baked_in": False,
+    #                 },
+    #                 "RocketInf_RPG7": {
+    #                     "new_weapon": "RocketInf_RPG76_Komar_salvolength8",
+    #                     "swap_fire_effect": True,
+    #                     "depiction_baked_in": False,
+    #                 },
+    #             },
+    #         },
+    #         "Salves": {
+    #             "PM_PM63_RAK": 22,
+    #             "Grenade_Satchel_Charge": 6,
+    #             "RocketInf_RPG76_Komar_salvolength8": 1,
+    #         },
+    #     },
+    #     "remove_zone_capture": None,
+    #     "ButtonTexture": "Commandos_CMD_POL",
+    # },
 
     "Engineers_paras_CMD_POL": {  # Desant. Saperzy Dow.
         "CommandPoints": 45,
@@ -1199,7 +1199,7 @@ pol_unit_edits = {
         "GameName": {
             "display": "SPADO. KOMANDOSI",
         },
-        "UpgradeFromUnit": "Commandos_Para_CMD_POL",
+        # "UpgradeFromUnit": "Commandos_Para_CMD_POL",
     },
         
     "WSW_POL": {  # WSW
@@ -1388,16 +1388,16 @@ pol_unit_edits = {
         "UpgradeFromUnit": "HMGteam_PKM_POL",
     },
     
-    "HMGteam_AGS17_POL": {
-        "CommandPoints": "HMGteam_AGS17_SOV",
-        "strength": "HMGteam_AGS17_SOV",
-        "max_speed": "HMGteam_AGS17_SOV",
-        "SpecialtiesList": {
-            "add_specs": "HMGteam_AGS17_SOV",
-        },
-        "UpgradeFromUnit": "HMGteam_NSV_POL",
-        "ButtonTexture": "HMGteam_PKM_POL",
-    },
+    # "HMGteam_AGS17_POL": {
+    #     "CommandPoints": "HMGteam_AGS17_SOV",
+    #     "strength": "HMGteam_AGS17_SOV",
+    #     "max_speed": "HMGteam_AGS17_SOV",
+    #     "SpecialtiesList": {
+    #         "add_specs": "HMGteam_AGS17_SOV",
+    #     },
+    #     "UpgradeFromUnit": "HMGteam_NSV_POL",
+    #     "ButtonTexture": "HMGteam_PKM_POL",
+    # },
     
     "Atteam_Fagot_POL": {  # PPK Fagot
         "CommandPoints": 25,
@@ -1609,6 +1609,7 @@ pol_unit_edits = {
         "GameName": {
             "display": "SPADO. M wz. 43 82mm",
         },
+        "ButtonTexture": "Mortier_M43_82mm_POL", # Eugen had these textures backwards
     },
     
     "Mortier_M43_82mm_POL": {  # Desant. M43 82mm
@@ -1617,6 +1618,7 @@ pol_unit_edits = {
         "GameName": {
             "display": "M wz. 43 82mm",
         },
+        "ButtonTexture": "Mortier_M43_82mm_Para_POL", # Eugen had these textures backwards
         "SpecialtiesList": {
             "overwrite_all": [
                 "_canBeAirlifted",
@@ -1678,15 +1680,15 @@ pol_unit_edits = {
          "UpgradeFromUnit": "Howz_M30_122mm_POL",
     },
 
-    "Howz_M46_130mm_POL": {  # AHP wz. 1954 130mm (M-46 132mm)
-        "CommandPoints": 100,
-        "availability": [4, 3, 2, 0],
-        "GameName": {
-            "display": "AHP wz. 1954 130mm",
-        },
-        "UpgradeFromUnit": "Howz_A19_122mm_POL",
-        "ButtonTexture": "Howz_M46_130mm_TCH",
-    },
+    # "Howz_M46_130mm_POL": {  # AHP wz. 1954 130mm (M-46 132mm)
+    #     "CommandPoints": 100,
+    #     "availability": [4, 3, 2, 0],
+    #     "GameName": {
+    #         "display": "AHP wz. 1954 130mm",
+    #     },
+    #     "UpgradeFromUnit": "Howz_A19_122mm_POL",
+    #     "ButtonTexture": "Howz_M46_130mm_TCH",
+    # },
     
     "Howz_ML20_152mm_POL": {  # AH wz. 1937/85 152mm
         "CommandPoints": 100,
@@ -1702,7 +1704,7 @@ pol_unit_edits = {
     "Howz_D1_152mm_POL": {  # H wz. 1943 152mm (D-1 152mm)
         "CommandPoints": 85,
         "availability": [3, 2, 0, 0],
-        "UpgradeFromUnit": "Howz_M46_130mm_POL",
+        # "UpgradeFromUnit": "Howz_M46_130mm_POL",
     },
 
     "MLRS_WP_8z_POL": {  # WP-8z
@@ -3235,10 +3237,10 @@ pol_unit_edits = {
         "CommandPoints": "Mi_8TV_SOV",
     },
     
-    "Mi_8MT_POL": {  # THIS IS A EAST GERMAN MODEL... POL might not even have procured the Mi-17
-        "CommandPoints": 50,
-        "ButtonTexture": "Mi_8T_DDR",
-    },
+    # "Mi_8MT_POL": {  # THIS IS A EAST GERMAN MODEL... POL might not even have procured the Mi-17
+    #     "CommandPoints": 50,
+    #     "ButtonTexture": "Mi_8T_DDR",
+    # },
     
     # POL AIR
     "MiG_17PF_POL": {  # Lim-6M [RKT]
@@ -3257,7 +3259,7 @@ pol_unit_edits = {
         "ECM": -0.15,
         "availability": [0, 4, 3, 2],
         "GameName": {
-            "display": "MiG-21bis [AA2]"
+            "display": "MiG-21bis [AA]"
         },
     },
     
@@ -3266,7 +3268,7 @@ pol_unit_edits = {
         "ECM": -0.15,
         "availability": [0, 4, 3, 2],
         "GameName": {
-            "display": "MiG-21bis [AA]"
+            "display": "MiG-21bis [AA2]"
         },
     },
     
@@ -3343,7 +3345,7 @@ pol_unit_edits = {
     
     "MiG_29_AA_POL": {  # 4x R-73, 2x R-27R [AA]
         "GameName": {
-            "display": "MiG-29A [AA1]",
+            "display": "MiG-29A [AA]",
         },
         "CommandPoints": "MiG_29_AA_DDR",
         "Divisions": {
@@ -3359,7 +3361,7 @@ pol_unit_edits = {
 
     "MiG_29_AA2_POL": {  # 6x R-73 [AA]
         "GameName": {
-            "display": "MiG-29A [AA2]",
+            "display": "MiG-29A [AA]",
         },
         "CommandPoints": 165,
         "SpecialtiesList": {
@@ -3474,12 +3476,12 @@ pol_unit_edits = {
         "availability": [0, 3, 2, 0],
         "WeaponDescriptor": {
             "Salves": {
-                "RocketAir_B8_80mm_salvolength40": 2,
+                "RocketAir_B8_80mm_avion_salvolength40": 2,
             },
             "equipmentchanges": {
                 "replace": {
-                    "RocketAir_B8_80mm_salvolength80": {
-                        "new_weapon": "RocketAir_B8_80mm_salvolength40",
+                    "RocketAir_B8_80mm_avion_salvolength80": {
+                        "new_weapon": "RocketAir_B8_80mm_avion_salvolength40",
                         "swap_fire_effect": False,
                         "depiction_baked_in": False,
                     },

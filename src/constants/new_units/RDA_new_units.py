@@ -526,6 +526,7 @@ RDA_NEW_UNITS = {
         "UnitRole": 'hq_tank',
         "SpecialtiesList": [
             'leader_sov',
+            '_resolute',
             '_smoke_launcher',
         ],
         "availability": [0, 0, 2, 0],

@@ -32,7 +32,7 @@ def _add_texture_resource_and_map(
         f'"GameData:/Assets/2D/Interface/Common/UnitsIcons/Armes/Panel_Info/{stem}.png"'
     )
     new_entry = (
-        f"Texture_Interface_Weapon_{stem} is TUIResourceTexture_Common"
+        f"Texture_Interface_Weapon_{stem} is TUIResourceTexture"
         f"("
         f"    FileName = {texture_file}"
         f")"

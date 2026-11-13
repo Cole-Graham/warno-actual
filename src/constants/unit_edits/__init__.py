@@ -74,6 +74,8 @@ def precompute_dependency_graph(unit_edits_dict: Dict) -> Dict[str, Set[str]]:
         # Find all unit references in this unit's data
         for field_path, field_value in _flatten_dict(unit_data):
             if isinstance(field_value, str) and field_value in unit_names:
+                if _is_non_reference_path(field_path) or field_value.startswith("$/"):
+                    continue
                 dependencies[unit_name].add(field_value)
     
     return dependencies
@@ -183,21 +185,22 @@ _REFERENCE_PATH_EXCEPTIONS = frozenset({
 })
 
 
+def _is_non_reference_path(path: str) -> bool:
+    """True if this path holds non-reference strings (pass through as-is)."""
+    if "[" in path:  # List elements (Transports, IdentifiedTextures, etc.)
+        return True
+    # WeaponDescriptor.turrets.* and MountedWeapons.* hold weapon config (RGBA, EffectTag, etc.)
+    if "turrets" in path or "MountedWeapons" in path:
+        return True
+    # equipmentchanges.* holds ammo / weapon / fire-effect game IDs, never unit references
+    if "equipmentchanges" in path:
+        return True
+    key = path.split(".")[-1] if path else path
+    return key in _REFERENCE_PATH_EXCEPTIONS
+
+
 def _resolve_unit_with_cache(unit_data: Any, unit_name: str, field_cache: Dict[str, Dict[str, Any]], unit_edits_dict: Dict[str, Any]) -> Any:
     """Resolve a single unit using precomputed field cache."""
-
-    def _is_excepted_path(path: str) -> bool:
-        """True if this path holds non-reference strings (pass through as-is)."""
-        if "[" in path:  # List elements (Transports, IdentifiedTextures, etc.)
-            return True
-        # WeaponDescriptor.turrets.* and MountedWeapons.* hold weapon config (RGBA, EffectTag, etc.)
-        if "turrets" in path or "MountedWeapons" in path:
-            return True
-        # equipmentchanges.* holds ammo / weapon / fire-effect game IDs, never unit references
-        if "equipmentchanges" in path:
-            return True
-        key = path.split(".")[-1] if path else path
-        return key in _REFERENCE_PATH_EXCEPTIONS
 
     def resolve_value(value: Any, current_path: str = "") -> Any:
         """Recursively resolve a value, handling nested dictionaries and lists."""
@@ -211,7 +214,7 @@ def _resolve_unit_with_cache(unit_data: Any, unit_name: str, field_cache: Dict[s
             # Recursively resolve lists
             return [resolve_value(item, f"{current_path}[{i}]") for i, item in enumerate(value)]
         elif isinstance(value, str):
-            if _is_excepted_path(current_path):
+            if _is_non_reference_path(current_path):
                 return value
             # Game asset paths (e.g. $/GFX/Weapon/Ammo_...) are never unit references
             if value.startswith("$/"):

@@ -66,7 +66,7 @@ def _add_new_textures(source_path, index: int, textures_map: Any, new_textures: 
         
         # Add texture object
         obj_entry = f'''\
-OutgameTexture_Mod_{texture} is TUIResourceTexture_Common
+OutgameTexture_Mod_{texture} is TUIResourceTexture
 (
     FileName = "GameData:{data["texture_dir"]}/{file_name}"
 )'''

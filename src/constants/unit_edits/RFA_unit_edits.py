@@ -371,7 +371,7 @@ rfa_unit_edits = {
         "UpgradeFromUnit": "Fallschirm_RFA",
     },
 
-    "Engineers_Geb_RFA_RFA": {  # GEBIRGSPIONERE
+    "Engineers_Geb_RFA": {  # GEBIRGSPIONERE
         "CommandPoints": 50,
         "GameName": {
             "display": "GEBIRGSPIONERE"
@@ -397,7 +397,7 @@ rfa_unit_edits = {
             "turrets": {
                 2: {
                     "MountedWeapons": {
-                        "Grenade_Satchel_Charge": {
+                        "RocketInf_Handflammpatrone": {
                             "AmmoBoxIndex": 1,
                         },
                     },
@@ -405,7 +405,6 @@ rfa_unit_edits = {
                 "remove": [1],
             },
             "Salves": {
-                "Grenade_Satchel_Charge": 6,
                 "remove": ["MMG_inf__MG3_7_62mm"],
             },
         },
@@ -715,7 +714,7 @@ rfa_unit_edits = {
                 "remove": ["Sniper_G3A3ZF"],
             },
         },
-        "UpgradeFromUnit": "Engineers_Geb_RFA_RFA",
+        "UpgradeFromUnit": "Engineers_Geb_RFA",
     },
 
     "Gebirgsjager_Hvy_RFA": {  # GEBIRGSJÄGER
@@ -2531,16 +2530,16 @@ rfa_unit_edits = {
         },
     },
 
-    "F4F_Phantom_II_RKT1_RFA": { # 76x Hydra 70mm Rockets (RKT2)
-        "CommandPoints": 130,
-        "ECM": -0.25,
-        "availability": [0, 3, 2, 0],
-        "optics": {
-            "OpticalStrengths": {
-                "EOpticalStrength/HighAltitude": 13250,
-            },
-        },
-    },
+    # "F4F_Phantom_II_RKT1_RFA": { # 76x Hydra 70mm Rockets (RKT2)
+    #     "CommandPoints": 130,
+    #     "ECM": -0.25,
+    #     "availability": [0, 3, 2, 0],
+    #     "optics": {
+    #         "OpticalStrengths": {
+    #             "EOpticalStrength/HighAltitude": 13250,
+    #         },
+    #     },
+    # },
 
     "F4F_Phantom_II_RKT2_RFA": { # 2x 8x Zuni 127mm Rockets (RKT)
         "CommandPoints": 130,

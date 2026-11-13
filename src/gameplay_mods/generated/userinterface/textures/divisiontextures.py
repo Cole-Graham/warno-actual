@@ -28,7 +28,7 @@ def _add_existing_division_emblems(source_path: Any) -> None:
         _dir = data["texture_dir"]
         texture = data["texture"]
         new_entry = (
-            f'{NAMESPACE_PREFIX}{emblem_namespace} is TUIResourceTexture_Common'
+            f'{NAMESPACE_PREFIX}{emblem_namespace} is TUIResourceTexture'
             f'('
             f'    FileName = "GameData:{_dir}/{texture}"'
             f')'
@@ -84,7 +84,7 @@ def _add_new_division_emblems(source_path: Any) -> None:
         
         # Create texture entry
         new_entry = (
-            f'{texture_namespace} is TUIResourceTexture_Common'
+            f'{texture_namespace} is TUIResourceTexture'
             f'('
             f'    FileName = "GameData:{NEW_DIVISION_EMBLEM_DIR}/{texture_filename}"'
             f')'

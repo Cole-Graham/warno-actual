@@ -1,4 +1,4 @@
-"""Functions for modifying UniteDescriptor.ndf"""
+"""Functions for modifying TacticalUnits.ndf"""
 
 from src import ndf
 from src.constants import TFR_STEALTH_BONUS
@@ -41,7 +41,7 @@ forward_deploy_old_values = []
 forward_deploy_new_values = [750.0, 1750.0]
 
 def edit_gen_gp_gfx_unitedescriptor(source_path, game_db) -> None:
-    """GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf"""
+    """GameData/Generated/Gameplay/TacticalUnits.ndf"""
     
     # TODO: NEW UNITS WILL INHERIT THE CHANGES FROM THESE BATCH AND STANDARDS FUNCTIONS, BE CAREFUL ABOUT WHAT IS ADDED HERE.
     _handle_batch_changes(source_path, game_db)
@@ -69,7 +69,7 @@ def edit_gen_gp_gfx_unitedescriptor(source_path, game_db) -> None:
 
 
 def _handle_unit_edits(source_path, game_db, unit_edits, unit_edits_dic_entries) -> None:
-    """Handle unit edits for existing units in UniteDescriptor.ndf"""
+    """Handle unit edits for existing units in TacticalUnits.ndf"""
     logger.info("Processing unit edits for existing units:")
     
     for unit, edits in unit_edits.items():
@@ -88,7 +88,7 @@ def _handle_unit_edits(source_path, game_db, unit_edits, unit_edits_dic_entries)
 
 
 def _handle_new_units(source_path, game_db, new_units_dic_entries, unit_edits) -> None:
-    """Handle new unit creation in UniteDescriptor.ndf"""
+    """Handle new unit creation in TacticalUnits.ndf"""
     logger.info("Processing new unit creation:")
     
     for donor, edits in NEW_UNITS.items():
@@ -115,11 +115,11 @@ def _handle_new_units(source_path, game_db, new_units_dic_entries, unit_edits) -
         logger.info(f"- Processed new unit {unit_name}")
 
 def _handle_batch_changes(source_path, game_db) -> None:
-    """Handle batch changes for UniteDescriptor.ndf"""
+    """Handle batch changes for TacticalUnits.ndf"""
     
     # TODO: NEW UNITS WILL INHERIT THE CHANGES FROM THIS FUNCTION, THIS WAS NOT INTENDED BUT SO FAR
     # ISN'T CAUSING ANY ISSUES. BE CAREFUL ABOUT WHAT IS ADDED HERE.
-    logger.info("Processing batch changes for UniteDescriptor.ndf")
+    logger.info("Processing batch changes for TacticalUnits.ndf")
 
     deployment_data = game_db.get("deployment_time_units", {})
     protected_units = set(deployment_data.get("protected_units", []))

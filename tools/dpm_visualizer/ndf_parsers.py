@@ -24,13 +24,13 @@ def mod_division_multi_rule_names() -> set[str]:
 
 
 def parse_infantry_units(mod_src_path: Path) -> Dict[str, Dict[str, Any]]:
-    """Parse infantry units from UniteDescriptor.ndf.
+    """Parse infantry units from TacticalUnits.ndf.
     
     Returns:
         Dictionary mapping unit names to unit info
     """
     unit_data = {}
-    ndf_path = "GameData/Generated/Gameplay/Gfx/UniteDescriptor.ndf"
+    ndf_path = "GameData/Generated/Gameplay/TacticalUnits.ndf"
     
     try:
         mod = ndf.Mod(str(mod_src_path), "None")

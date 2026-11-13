@@ -3718,6 +3718,9 @@ rda_unit_edits = {
     },
 
     "MiG_29_AA_DDR": {  # 4x R-73, 2x R-27R [AA1]
+        "GameName": {
+            "display": "MiG-29A [AA]",
+        },
         "CommandPoints": 215, # Availability taxed
         "Divisions": {
             "default": {
@@ -3745,6 +3748,9 @@ rda_unit_edits = {
     },
 
     "Su_22_AT2_DDR": {
+        "GameName": {
+            "display": "Su-22M4K [AT]",
+        },
         "CommandPoints": 210,
         "optics": {
             "VisionRangesGRU": {

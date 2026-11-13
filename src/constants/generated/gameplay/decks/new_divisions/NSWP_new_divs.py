@@ -20,7 +20,7 @@ nswp_new_divs = {
         "summary_text": ("Non-Soviet Warsaw Pact combined arms division.", "NSWPSUMALL"),
         "history_text": ("East Germany, Poland, and Czechoslovakia.", "NSWPHISALL"),
         "activation_points": 80,
-        "standout_units": ["T72M1_DDR", "Commandos_Para_POL", "MiG_29_AA_DDR"],
+        "standout_units": ["T72M2_Moderna_TCH", "Commandos_Para_POL", "MiG_29_AA_DDR"],
         "rule_exclusions": [
             # DDR
             "BTR_50_CMD2_DDR",
@@ -38,7 +38,7 @@ nswp_new_divs = {
             # POL
             "HMGteam_PKM_POL",
             "HMGteam_NSV_POL",
-            "HMGteam_AGS17_POL",
+            # "HMGteam_AGS17_POL",
             "DCA_ZU_23_2_POL",
             "UAZ_469_SPG9_POL",
             "UAZ_469_Fagot_POL",
@@ -81,7 +81,7 @@ nswp_new_divs = {
         "description_title": ("NSWP Airborne", "NSWPAIRTTL"),
         "summary_text": ("NSWP airborne division.", "NSWPSUMAIR"),
         "history_text": ("NSWP airborne division.", "NSWPHISAIR"),
-        "activation_points": 105,
+        "activation_points": 100,
         "standout_units": ["Fallschirmjager_DDR", "Commandos_Para_POL", "MiG_29_AA_DDR"],
         "rule_exclusions": [
             # DDR
@@ -105,7 +105,7 @@ nswp_new_divs = {
         "summary_text": ("NSWP airborne and armored division.", "NSWPSUMAAR"),
         "history_text": ("NSWP airborne and armored division.", "NSWPHISAAR"),
         "activation_points": 85,
-        "standout_units": ["T72M1_DDR", "Fallschirmjager_DDR", "MiG_29_AA_DDR"],
+        "standout_units": ["T72M2_Moderna_TCH", "Fallschirmjager_DDR", "MiG_29_AA_DDR"],
         "rule_exclusions": [
             # DDR
             "BRDM_2_CMD_DDR",
@@ -119,7 +119,7 @@ nswp_new_divs = {
             # POL
             "HMGteam_PKM_POL",
             "HMGteam_NSV_POL",
-            "HMGteam_AGS17_POL",
+            # "HMGteam_AGS17_POL",
             "DCA_ZU_23_2_POL",
         ],
         "transport_overrides": {
@@ -140,7 +140,7 @@ nswp_new_divs = {
         "description_title": ("NSWP Airborne / Mechanized", "NSWPAEMTTL"),
         "summary_text": ("NSWP airborne and mechanized division.", "NSWPSUMAEM"),
         "history_text": ("NSWP airborne and mechanized division.", "NSWPHISAEM"),
-        "activation_points": 90,
+        "activation_points": 85,
         "standout_units": ["Fallschirmjager_DDR", "T72S_DDR", "MiG_29_AA_DDR"],
         "rule_exclusions": [
             # DDR
@@ -159,7 +159,7 @@ nswp_new_divs = {
             # POL
             "HMGteam_PKM_POL",
             "HMGteam_NSV_POL",
-            "HMGteam_AGS17_POL",
+            # "HMGteam_AGS17_POL",
             "DCA_ZU_23_2_POL",
             "UAZ_469_SPG9_POL",
             "UAZ_469_Fagot_POL",
@@ -203,7 +203,7 @@ nswp_new_divs = {
             # POL
             "HMGteam_PKM_POL",
             "HMGteam_NSV_POL",
-            "HMGteam_AGS17_POL",
+            # "HMGteam_AGS17_POL",
             "DCA_ZU_23_2_POL",
             "UAZ_469_SPG9_POL",
             "UAZ_469_Fagot_POL",
@@ -229,8 +229,8 @@ nswp_new_divs = {
         "description_title": ("NSWP Armored", "NSWPARMTTL"),
         "summary_text": ("NSWP armored division.", "NSWPSUMARM"),
         "history_text": ("NSWP armored division.", "NSWPHISARM"),
-        "activation_points": 105,
-        "standout_units": ["T72M1_DDR", "T72M1_Wilk_POL", "MiG_29_AA_DDR"],
+        "activation_points": 100,
+        "standout_units": ["T72M2_Moderna_TCH", "T72M1_Wilk_POL", "MiG_29_AA_DDR"],
         "coalition": NSWP_COALITION,
         "emblem": "NSWP_armored",
     },
@@ -243,8 +243,8 @@ nswp_new_divs = {
         "description_title": ("NSWP Armored / Mechanized", "NSWPAMCTTL"),
         "summary_text": ("NSWP armored and mechanized division.", "NSWPSUMAMC"),
         "history_text": ("NSWP armored and mechanized division.", "NSWPHISAMC"),
-        "activation_points": 90,
-        "standout_units": ["T72M1_DDR", "DANA_POL", "MiG_29_AA_DDR"],
+        "activation_points": 85,
+        "standout_units": ["T72M2_Moderna_TCH", "DANA_POL", "MiG_29_AA_DDR"],
         "transport_overrides": {
             # DDR
             "MotRifles_CMD2_DDR": ["W50_LA_A_DDR", "BTR_50_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
@@ -269,7 +269,7 @@ nswp_new_divs = {
         "summary_text": ("NSWP armored and motorized division.", "NSWPSUMAMT"),
         "history_text": ("NSWP armored and motorized division.", "NSWPHISAMT"),
         "activation_points": 90,
-        "standout_units": ["T72M1_DDR", "T55AM2_DDR", "MiG_29_AA_DDR"],
+        "standout_units": ["T72M2_Moderna_TCH", "T55AM2_DDR", "MiG_29_AA_DDR"],
         "transport_overrides": {
             # DDR
             "MotRifles_CMD2_DDR": ["W50_LA_A_DDR", "BTR_50_DDR", "BTR_60_DDR", "BTR_70_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
@@ -295,7 +295,7 @@ nswp_new_divs = {
         "description_title": ("NSWP Mechanized", "NSWPMECTTL"),
         "summary_text": ("NSWP mechanized division.", "NSWPSUMMEC"),
         "history_text": ("NSWP mechanized division.", "NSWPHISMEC"),
-        "activation_points": 105,
+        "activation_points": 100,
         "standout_units": ["T72S_DDR", "T72M1_Wilk_POL", "MiG_29_AA_DDR"],
         "coalition": NSWP_COALITION,
         "emblem": "NSWP_mechanized",
@@ -310,7 +310,7 @@ nswp_new_divs = {
         "summary_text": ("NSWP mechanized and motorized division.", "NSWPSUMMCM"),
         "history_text": ("NSWP mechanized and motorized division.", "NSWPHISMCM"),
         "activation_points": 90,
-        "standout_units": ["T72S_DDR", "T55A_POL", "MiG_29_AA_DDR"],
+        "standout_units": ["T72S_DDR", "T55A_DDR", "MiG_29_AA_DDR"],
         "transport_overrides": {
             # DDR
             "MotRifles_CMD2_DDR": ["W50_LA_A_DDR", "BTR_50_DDR", "BTR_60_DDR", "BTR_70_DDR", "Mi_8T_non_arme_DDR", "Mi_8T_DDR"],
@@ -328,4 +328,80 @@ nswp_new_divs = {
         "coalition": NSWP_COALITION,
         "emblem": "NSWP_mechanized_motorized",
     },
+}
+
+nswp_redundant_units = {
+    "logistic": [
+        # DDR
+        "BTR_60_CMD_DDR",
+        "BTR_60_CHAIKA_CMD_DDR",
+        "KrAZ_255B_supply_DDR",
+        # POL
+        "UAZ_469_CMD_POL",
+        "BMP_1_CMD_POL",
+        "T54B_CMD2_POL",
+        "T55A_CMD2_POL",
+        "T72M1_CMD2_POL",
+        "Mi_2_CMD_POL",
+        "GAZ_66_POL",
+        "Star_266_supply_POL",
+        "KrAZ_255B_supply_POL",
+        "Mi_8_supply_POL",
+        "DCA_ZU_23_2_Para_POL",
+    ],
+    "infantry": [
+        # DDR
+        "HMGteam_AGS17_VPB_DDR",
+        # POL
+        "HMGteam_PKM_POL",
+        "HMGteam_PKM_para_POL",
+        "HMGteam_NSV_POL",
+        # "HMGteam_AGS17_POL",
+        "UAZ_469_SPG9_POL",
+    ],
+    "artillery": [
+        # DDR
+        # POL
+        "Mortier_M43_82mm_Para_POL",
+    ],
+    "tank": [
+        # POL
+        "T55A_CMD_POL",
+        "T55AM_Merida_CMD_POL",
+        "T55A_POL",
+        "UAZ_469_Fagot_Para_POL",
+        "BRDM_2_Konkurs_POL",
+    ],
+    "recon": [
+        # DDR
+        "PT76B_DDR",
+        # POL
+        "BRDM_2_POL",
+        "Mi_2_gunship_POL",
+    ],
+    "aa": [
+        # POL
+        "MANPAD_Strela_2M_Para_POL",
+        "MANPAD_Strela_2M_POL",
+        "MANPAD_Igla_POL",
+        "BRDM_Strela_1_POL",
+        "MTLB_Strela10_POL",
+    ],
+    "heli": [
+        # DDR
+        "Mi_24D_s8_AT_DDR",
+        # POL
+        "Mi_2_rocket_POL",
+    ],
+    "planes": [
+        # DDR
+        "MiG_21bis_RKT2_DDR",
+        "Su_22_AT_DDR",
+        # POL
+        "MiG_21bis_POL",
+        "MiG_21bis_HE_POL",
+        "MiG_29_AA_POL",
+        "Su_22_POL", # [HE]
+        "Su_22_nplm_POL",
+    ],
 }

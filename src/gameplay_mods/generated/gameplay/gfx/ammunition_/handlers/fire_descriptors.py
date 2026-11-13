@@ -1,14 +1,18 @@
 
-def apply_fire_descriptors(source_path, logger) -> None:
+def apply_fire_descriptors(source_path, logger, game_db=None) -> None:
     """Change fire descriptors in Ammunition.ndf"""
+    from src.data.mounted_weapon_identity import identity_map
+
+    ammo_db = (game_db or {}).get("ammunition") or {}
+    identity = identity_map(ammo_db)
 
     for ammo_descr in source_path:
 
         is_napalm = False
         is_bomb = False
 
-        traits_list = ammo_descr.v.by_m("TraitsToken")
-        if any("'napalm'" in trait.v for trait in traits_list.v):
+        traits_list = identity.get(ammo_descr.namespace, {}).get("TraitsToken") or []
+        if any("'napalm'" in trait for trait in traits_list):
             is_napalm = True
 
         minmax_category = ammo_descr.v.by_m("MinMaxCategory", None)

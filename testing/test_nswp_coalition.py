@@ -150,7 +150,7 @@ class TestNswpCoalition(unittest.TestCase):
                 "MANPAD_Strela_2M_DDR",
                 "HMGteam_PKM_POL",
                 "HMGteam_NSV_POL",
-                "HMGteam_AGS17_POL",
+                # "HMGteam_AGS17_POL",
                 "DCA_ZU_23_2_POL",
             ],
         )

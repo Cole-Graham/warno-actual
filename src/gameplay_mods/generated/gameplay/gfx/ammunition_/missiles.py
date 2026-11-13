@@ -10,6 +10,12 @@ from src.constants.weapons.vanilla_inst_modifications import (
     AMMUNITION_MISSILES_REMOVALS,
 )
 from src.utils.dictionary_utils import write_dictionary_entries
+from src.data.mounted_weapon_identity import (
+    IDENTITY_FIELDS,
+    copy_identity,
+    record_for,
+    store_identity_value,
+)
 from src.utils.ndf_utils import strip_quotes
 from src.utils.logging_utils import setup_logger
 
@@ -50,8 +56,8 @@ def edit_gen_gp_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]
         
         # Apply global modifications
         try:
-            apply_bomb_damage_standards(source_path, logger)
-            apply_tandem_charge_inversion(source_path, logger)
+            apply_bomb_damage_standards(source_path, logger, game_db)
+            apply_tandem_charge_inversion(source_path, logger, game_db)
             apply_clu_sol_trait_standards(source_path, logger, game_db)
             logger.debug("Applied global modifications")
         except Exception as e:
@@ -94,7 +100,9 @@ def edit_gen_gp_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]
                 # Get or create base descriptor
                 try:
                     if is_new:
-                        base_descr = _create_new_descriptor(source_path, weapon_name, donor, data)
+                        base_descr = _create_new_descriptor(
+                            source_path, weapon_name, donor, data, game_db,
+                        )
                     else:
                         base_descr = _get_existing_descriptor(source_path, weapon_name)
 
@@ -121,7 +129,7 @@ def edit_gen_gp_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]
                     if category in ("SAM", "MANPAD") and not has_salvo_lengths:
                         _apply_salvo_reload_standard(base_descr, category, data)
                     if ammo_data:
-                        _apply_missile_edits(base_descr, data, ammo_data, is_new)
+                        _apply_missile_edits(base_descr, data, ammo_data, is_new, game_db)
                     apply_category_aa_missile_standards(base_descr, category, weapon_name)
                     logger.debug(f"Applied edits to {weapon_name}")
                 except Exception as e:
@@ -135,6 +143,7 @@ def edit_gen_gp_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]
                         base_descr,
                         weapon_name,
                         variants_for_weapon(game_db, weapon_name),
+                        game_db,
                     )
                 except Exception as e:
                     logger.error(
@@ -157,7 +166,7 @@ def edit_gen_gp_gfx_ammunitionmissiles(source_path: Any, game_db: Dict[str, Any]
                 # Track dictionary entries
                 try:
                     _track_dictionary_entries(
-                        weapon_name, data, ingame_names, calibers, base_descr,
+                        weapon_name, data, ingame_names, calibers, base_descr, game_db,
                     )
                 except Exception as e:
                     logger.error(f"Failed tracking dictionary entries for {weapon_name}: {str(e)}")
@@ -228,7 +237,7 @@ def _lookup_donor_helo_range(source_path: Any, donor: str, data: Dict) -> int | 
         return None
 
 
-def _create_new_descriptor(source_path, weapon_name, donor, data):
+def _create_new_descriptor(source_path, weapon_name, donor, data, game_db=None):
     """Create a new descriptor for a missile."""
     # For missiles with salvo variants, find any salvo length variant of donor
     donor_descr = None
@@ -265,6 +274,8 @@ def _create_new_descriptor(source_path, weapon_name, donor, data):
 
     # Set namespace
     base_descr.namespace = f"Ammo_{weapon_name}"
+    if game_db is not None:
+        copy_identity(game_db["ammunition"], donor_descr.namespace, base_descr.namespace)
 
     logger.debug(f"Created new base descriptor for {weapon_name} from {donor}")
     return base_descr
@@ -375,13 +386,15 @@ def _handle_salvo_variants(
                 variant = base_descr.copy()
                 variant.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
                 variant.namespace = namespace
+                if game_db is not None:
+                    copy_identity(game_db["ammunition"], base_descr.namespace, namespace)
 
                 _apply_salvo_reload_standard(
                     variant, category, data, shots_count=length,
                 )
 
                 if "Ammunition" in data:
-                    _apply_missile_edits(variant, data, data["Ammunition"], is_new)
+                    _apply_missile_edits(variant, data, data["Ammunition"], is_new, game_db)
 
                 # Only apply salvo-specific values
                 if base_cost is not None:
@@ -407,7 +420,7 @@ def _handle_salvo_variants(
                         existing, category, data, shots_count=length,
                     )
                     if "Ammunition" in data:
-                        _apply_missile_edits(existing, data, data["Ammunition"], is_new)
+                        _apply_missile_edits(existing, data, data["Ammunition"], is_new, game_db)
                     apply_category_aa_missile_standards(existing, category, weapon_name)
 
                     # Then update salvo-specific values
@@ -422,6 +435,8 @@ def _handle_salvo_variants(
                     variant = base_descr.copy()
                     variant.v.by_m("DescriptorId").v = f"GUID:{{{uuid4()}}}"
                     variant.namespace = namespace
+                    if game_db is not None:
+                        copy_identity(game_db["ammunition"], base_descr.namespace, namespace)
 
                     # Category standards first, then dict edits (same order as base);
                     # AA standard runs after edits to see final MaximumRangeHelicopterGRU.
@@ -432,7 +447,7 @@ def _handle_salvo_variants(
                         variant, category, data, shots_count=length,
                     )
                     if "Ammunition" in data:
-                        _apply_missile_edits(variant, data, data["Ammunition"], is_new)
+                        _apply_missile_edits(variant, data, data["Ammunition"], is_new, game_db)
                     apply_category_aa_missile_standards(variant, category, weapon_name)
 
                     # Then apply salvo-specific values
@@ -449,12 +464,13 @@ def _handle_salvo_variants(
             continue
 
 
-def _apply_missile_edits(descr: Any, data: Dict, ammo_data: Dict, is_new: bool) -> None:  # noqa
+def _apply_missile_edits(descr: Any, data: Dict, ammo_data: Dict, is_new: bool, game_db: Dict = None) -> None:  # noqa
     """Apply edits to missile descriptor."""
     membr = descr.v.by_m
+    identity = record_for(game_db["ammunition"], descr.namespace) if game_db else {}
     
     # tandem inversion (apply first so manual edits take precedence)
-    traits_tokens = [t.v for t in descr.v.by_m("TraitsToken").v]
+    traits_tokens = list(identity.get("TraitsToken") or [])
     family = descr.v.by_m("Arme").v.by_m("Family")
     if "'TANDEM'" in traits_tokens:
         membr("TandemCharge").v = "False"
@@ -465,7 +481,7 @@ def _apply_missile_edits(descr: Any, data: Dict, ammo_data: Dict, is_new: bool) 
     if "Ammunition" in data:
 
         if "token" in data["Ammunition"]:
-            descr.v.by_m("Name").v = "'" + data["Ammunition"]["token"] + "'"
+            store_identity_value(identity, "Name", data["Ammunition"]["token"])
 
         arme_data = data["Ammunition"].get("Arme", None)
         if arme_data:
@@ -487,6 +503,9 @@ def _apply_missile_edits(descr: Any, data: Dict, ammo_data: Dict, is_new: bool) 
         if parent_data:
             if remove_list := parent_data.get("remove"):
                 for member_name in remove_list:
+                    if member_name in IDENTITY_FIELDS:
+                        identity.pop(member_name, None)
+                        continue
                     if descr.v.by_m(member_name, False) is not None:
                         descr.v.remove_by_member(member_name)
                         logger.debug(f"Removed member {member_name} from {descr.n}")
@@ -495,11 +514,17 @@ def _apply_missile_edits(descr: Any, data: Dict, ammo_data: Dict, is_new: bool) 
             for key, value in parent_data.items():
                 if key == "remove":
                     continue
+                if key in IDENTITY_FIELDS:
+                    store_identity_value(identity, key, value)
+                    continue
                 if key == "add":
                     index = value[0]
                     value = value[1]
                     # Extract member name from "MemberName = Value" format
                     member_name = value.split("=")[0].strip()
+                    if member_name in IDENTITY_FIELDS:
+                        store_identity_value(identity, member_name, value.split("=", 1)[1].strip())
+                        continue
                     existing_membr = descr.v.by_m(member_name, False)
                     if existing_membr is None:
                         descr.v.insert(index, value)
@@ -510,8 +535,6 @@ def _apply_missile_edits(descr: Any, data: Dict, ammo_data: Dict, is_new: bool) 
                         logger.debug(f"Member {member_name} already exists in {descr.n}, updating value")
                 elif isinstance(value, (float, int, bool)):
                     membr(key).v = str(value)
-                elif isinstance(value, tuple) and key == "Caliber":
-                    membr(key).v = f"'{value[1]}'"
                 elif isinstance(value, list):
                     # Convert list to NDF format
                     list_str = "[" + ", ".join(f"'{item}'" for item in value) + "]"
@@ -527,14 +550,14 @@ def _apply_missile_edits(descr: Any, data: Dict, ammo_data: Dict, is_new: bool) 
 
     # Apply texture
     if "NewTexture" in data:
-        texture_file = '"' + f"Texture_Interface_Weapon_{data['NewTexture']}" + '"'
-        membr("InterfaceWeaponTexture").v = texture_file
-        logger.debug(f"Applied texture {texture_file}")
+        store_identity_value(
+            identity, "InterfaceWeaponTexture", f"Texture_Interface_Weapon_{data['NewTexture']}",
+        )
 
     if "Texture" in data:
-        texture_file = '"' + f"Texture_Interface_Weapon_{data['Texture']}" + '"'
-        membr("InterfaceWeaponTexture").v = texture_file
-        logger.debug(f"Applied texture {texture_file}")
+        store_identity_value(
+            identity, "InterfaceWeaponTexture", f"Texture_Interface_Weapon_{data['Texture']}",
+        )
 
     apply_ammunition_missile_acceleration(descr, data, logger)
 
@@ -563,21 +586,21 @@ def _apply_hit_roll_edits(descr: Any, hit_roll_data: Dict) -> None:
 
 
 def _track_dictionary_entries(
-    weapon_name, data, ingame_names, calibers, base_descr: Any = None,
+    weapon_name, data, ingame_names, calibers, base_descr: Any = None, game_db: Dict = None,
 ):
     """Track dictionary entries for a missile.
 
     When display is provided but token is not, uses the vanilla token from the
-    descriptor (same pattern as unit edits GameName).
+    mounted-weapon identity (same pattern as unit edits GameName).
     """
     if "Ammunition" in data:
         ammo_data = data["Ammunition"]
         if "display" in ammo_data:
             token = ammo_data.get("token")
-            if token is None and base_descr is not None:
-                name_membr = base_descr.v.by_m("Name", False)
-                if name_membr is not None and name_membr.v:
-                    token = strip_quotes(name_membr.v)
+            if token is None and base_descr is not None and game_db is not None:
+                name_value = record_for(game_db["ammunition"], base_descr.namespace).get("Name")
+                if name_value:
+                    token = strip_quotes(name_value)
             if token is not None:
                 ingame_names.append((weapon_name, token, ammo_data["display"]))
 
