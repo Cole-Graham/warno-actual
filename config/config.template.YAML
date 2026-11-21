@@ -3,6 +3,7 @@ build_config:
   write_dev: true          # Set to false for release builds. Ignored when write_vip is true.
   write_vip: false         # VIP builds always write the dev mod (vip_dev / ui_only_dev).
   target: "gameplay"       # "gameplay" or "ui_only"
+  copy_maps: false         # Copy allowlisted map packs from Saved Games during a gameplay build
   gameplay_version: "?"
   ui_version: "?"
   author: "Lateralus"
@@ -38,6 +39,55 @@ directories:
   # Most users will not need to change this. Defaults to {Path.home()}/Saved Games/EugenSystems/WARNO/mod/{mod_name}/Config.ini
   # Only set this if your WARNO mod Config.ini files are stored in a different location
   config_ini_base_path: "default"  # Use "default" to use Path.home() based path, or provide custom path
+
+# Map, scenario, and decor packs copied from Saved Games into the mod on each gameplay build.
+# List stems only. A stem expands to the .dat files for that pack:
+#   maps: Datapacks/Maps (*.dat, *_Shooting, *_Stickers, *_Assets, *_Definition, *_Details)
+#   scenarios: Datapacks/Scenarios (*_Assets, *_Definition, *_Details, *_GameData, *_ScenariosData)
+#   decor_sets: Datapacks/DecorsSets (*_Assets, *_Definition, *_Editor)
+# Append a stem to include a pack. Names omitted here are not copied.
+active_map_packs:
+  maps:
+    - "_3x3_HighwayToSeoul"
+    - "NuclearWinter"
+    - "Potato_field"
+    - "WA_3x3_Punchvalley"
+  scenarios:
+    - "Paddy_field_1x1_wgrd"
+    - "Paddy_field_2vs2"
+    - "WA_2x2Hesse1v1_CQ"
+    - "WA_2x2Hesse2v2_CQ"
+    - "WA_2x3Vertigo1v1_CQ"
+    - "WA_3x2NuclearWinter1v1_CQ"
+    - "WA_3x3Airport1v1_CQ"
+    - "WA_3x3Cyrus2v2_CQ"
+    - "WA_3x3Cyrus3v3_CQ"
+    - "WA_3x3Cyrus4v4_CQ"
+    - "WA_3x3Eiche2v2_CQ"
+    - "WA_3x3Factory2v2_CQ"
+    - "WA_3x3Highway1v1_CQ"
+    - "WA_3x3Highway2v2_CQ"
+    - "WA_3x3Highway3v3_CQ"
+    - "WA_3x3IronWaters2v2_CQ"
+    - "WA_3x3Punchvalley1v1_CQ"
+    - "WA_3x3Punchvalley1v1_CQ2"
+    - "WA_3x3Railway1v1_CQ"
+    - "WA_3x3Railway3v3_CQ"
+    - "WA_3x3Stoneware2v2_CQ"
+    - "WA_3x3TwinCities2v2_CQ"
+    - "WA_3x3UrbanFrontlines1v1_CQ"
+    - "WA_3x3UrbanFrontlines3v3_CQ"
+    - "WA_3x3Valley2v2_CQ"
+    - "WA_3x3Volcano3vs3_CQ"
+    - "WA_4x2Isura2v2_CQ"
+    - "WA_4x2Isura3v3_CQ"
+    - "WA_4x2Taler3v3_CQ"
+    - "WA_4x2Taler3v3_CQ2"
+    - "WA_4x3Cliff1v1_CQ"
+    - "WA_4x3Cliff2v2_CQ"
+  decor_sets:
+    - "Environmentals"
+    - "EnvModels"
 
 # divisions to hide (base list used in release builds)
 hide_divs:

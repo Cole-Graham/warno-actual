@@ -7,7 +7,7 @@ from src.data import build_database, load_database_from_disk
 from src.data.ammo_data import avion_salvo_renames
 from src.utils.database_utils import verify_database
 from patcher_cli import apply_rebuild_db_override, parse_patcher_args
-from src.utils.config_utils import get_mod_name, is_dev_build
+from src.utils.config_utils import get_config_ini_path, is_dev_build
 from src.utils.logging_utils import configure_logging, setup_logger, get_counting_handler
 
 configure_logging()
@@ -45,30 +45,6 @@ def confirm_database_rebuild() -> bool:
         elif response == 'n':
             return False
         print("Please enter 'y' or 'n'")
-
-
-def get_config_ini_path(config_data: dict) -> Path:
-    """Get the path to the mod's Config.ini file.
-    
-    Args:
-        config_data: The configuration data dictionary
-        
-    Returns:
-        Path to the Config.ini file
-    """
-    dirs = config_data['directories']
-    mod_name = get_mod_name(config_data)
-    
-    # Check if user has provided a custom base path override
-    config_ini_base_path = dirs.get('config_ini_base_path', 'default')
-    if config_ini_base_path and config_ini_base_path.strip() and config_ini_base_path.lower() != 'default':
-        # User provided override, use it
-        config_ini_path = Path(config_ini_base_path) / mod_name / "Config.ini"
-    else:
-        # Default path: {home}/Saved Games/EugenSystems/WARNO/mod/{mod_name}/Config.ini
-        config_ini_path = Path.home() / "Saved Games" / "EugenSystems" / "WARNO" / "mod" / mod_name / "Config.ini"
-    
-    return config_ini_path
 
 
 def parse_config_ini_version(config_ini_path: Path) -> str:

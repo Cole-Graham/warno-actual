@@ -53,6 +53,24 @@ def get_mod_dst_path(config_data: Dict) -> Path:
     return warno_mods / get_mod_name(config_data)
 
 
+def get_saved_games_warno_root(config: Dict) -> Path:
+    """Saved Games WARNO folder that holds Datapacks and mod/.
+
+    ``directories.config_ini_base_path`` overrides the ``mod`` directory
+    (the folder joined with ``{mod_name}/Config.ini``). ``default`` uses
+    ``{home}/Saved Games/EugenSystems/WARNO``.
+    """
+    raw = config['directories'].get('config_ini_base_path', 'default')
+    if raw and str(raw).strip() and str(raw).strip().lower() != 'default':
+        return Path(str(raw)).parent
+    return Path.home() / 'Saved Games' / 'EugenSystems' / 'WARNO'
+
+
+def get_config_ini_path(config_data: Dict) -> Path:
+    """Path to the mod Config.ini for the current build target."""
+    return get_saved_games_warno_root(config_data) / 'mod' / get_mod_name(config_data) / 'Config.ini'
+
+
 def get_vanilla_units_csv_path(config: Dict) -> Path:
     """Path to vanilla UNITS.csv under ExampleAssets (warno_mods from config)."""
     warno_mods = Path(config['directories']['warno_mods'])

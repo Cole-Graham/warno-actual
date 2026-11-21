@@ -8,6 +8,7 @@ from . import ModConfig, ndf
 from .gameplay_mods import add_unit_meshes
 from .editors import get_all_editors
 from .utils.asset_utils import copy_assets, copy_fx_files
+from .utils.map_pack_copy import copy_active_map_packs
 from .utils.config_utils import get_base_mod_name, get_mod_dst_path, get_mod_src_path
 from .utils.dictionary_utils import initialize_dictionary_csv_files
 from .utils.mod_layout_utils import ensure_mod_folder_layout
@@ -140,6 +141,7 @@ def main() -> None:
         if build_target_cfg == "gameplay":
             add_unit_meshes(config)
             copy_fx_files(config)
+            copy_active_map_packs(config)
 
         logger.info("Build completed successfully")
 
