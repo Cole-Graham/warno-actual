@@ -1,0 +1,26 @@
+unnamed template_SurfaceWithBorder
+(
+   RegistrationName = "EE_SurfaceWithBorder_Field_DarkGreen"
+   ColorCode = RGBA[50,200,50,128]
+
+   FillerName = "RND_EE_DarkGreen_Fields"
+   BorderName = "RND_Field_Fence"
+)
+
+unnamed template_SurfaceWithBorder
+(
+   RegistrationName = "EE_SurfaceWithBorder_Field_LightGreen"
+   ColorCode = RGBA[50,200,50,128]
+
+   FillerName = "RND_EE_LightGreen_Fields"
+   BorderName = "RND_Field_Fence"
+)
+
+unnamed template_SurfaceWithBorder
+(
+   RegistrationName = "EE_SurfaceWithBorder_Field_Brown"
+   ColorCode = RGBA[50,200,50,128]
+
+   FillerName = "RND_EE_Brown_Fields"
+   BorderName = "RND_Field_Fence"
+)

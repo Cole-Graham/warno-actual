@@ -1,0 +1,14 @@
+//unnamed template_SurfaceSticker
+//(
+//    RegistrationName = 'EE_Green_Field_A'
+//
+//    TextureDiffuse = 'DecorSetData:/Environmentals/Textures/Champ_Culture_02_Div.tgv'
+//    TextureNormalMap = 'DecorSetData:/Environmentals/Textures/Champ_Culture_02_NM.tgv'
+//    TextureORSMap = 'DecorSetData:/Environmentals/Textures/Champ_Culture_02_ORS.tgv'
+//
+//    TextureTileInMeters = 100 
+//    RenderLayerIndex = ~/StickerRenderLayerLevelList/Debris
+//    MaterialID = ~/TerrainMaterialID/Default
+//    FadingLengthInMeters = 0
+//    UseDiversityMap = false
+//)

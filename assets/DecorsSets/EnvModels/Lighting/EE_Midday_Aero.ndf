@@ -1,0 +1,46 @@
+export EE_Midday_Aero is TLightingEnvironmentPreset
+(
+    SunLight = TDirectionalLight
+    (
+        Color = float3[1,0.9372549,0.8823529]
+        Power = 6369.709
+        VegetationShadowColor = float3[0.02450979,0.02080927,0.01393694]
+        Azimut = 195.2599
+        Site = 56.45218
+    )
+    Haze = THaze
+    (
+        Density = 0.082
+        FloorOffset = 3800
+        Thickness = 2000
+    )
+    Fog = TFog
+    (
+        End = 1200000
+    )
+    SkyLight = TSkyLight
+    (
+        SkyMap = TResourceTextureFromFile
+        (
+            FileName = 'GameData:/Assets/2D/SkyDDS/sky_cloudy.dds'
+        )
+        MinDensity = 0.125
+        DensityDistanceSwitch = 284500
+        Diffusion = 1
+        Intensity = 25000
+        SkyMapLowerHemisphereColor = float3[0.03812571,0.04192213,0.04537207]
+        SkyMapLowerHemisphereTransitionAngle = 0.03490658
+        Orientation = 0.1047198
+        SkylightGroundColor = float3[0.6764676,0.6764706,0.6764638]
+        SkylightGroundPower = 10
+    )
+    Weather = TWeather
+    (
+        WindAngle = 26
+        WindAmount = 0.85
+        CloudOpacity = 0.935
+        CloudScale = 0.887
+    )
+    HazeAndFogColor = float3[0.3385858,0.3789148,0.4192377]
+    EV100 = 12
+)

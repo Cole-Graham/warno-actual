@@ -1,0 +1,23 @@
+unnamed SceneryDescriptor_Model
+(
+RegistrationName = 'EE_Vesta_WindTurbine'
+Tags = [ "Europe" ]
+ ModelHigh = TResourceMesh
+ (
+    Mesh = 'DecorSetData:/EnvModels/Models/WindTurbine.fbx'
+ )
+ ModelMid = TResourceMesh
+ (
+     Mesh = 'DecorSetData:/EnvModels/Models/WindTurbine.fbx'
+ )
+ ModelLow = TResourceMesh
+ (
+    Mesh = 'DecorSetData:/EnvModels/Models/WindTurbine.fbx'
+ )
+ Destroyable = false
+ BuildingType = BuildingType/Big
+ IsForDistrict = false
+ TangentFloor = false
+ LodConfig = $/SceneryDB/LodConfig_Colossus
+ InfiniteLodRange = true
+)

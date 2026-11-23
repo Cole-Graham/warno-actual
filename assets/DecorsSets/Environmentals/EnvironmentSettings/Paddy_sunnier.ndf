@@ -1,0 +1,7 @@
+export Paddy_sunnier is TEnvironmentGraphicSettings
+(
+    LightingEnvironment = $/GraphicSettings/Lighting/Totally_Sunny_6
+    ColorGrading = $/GraphicSettings/ColorGrading/FULDA_Realistic_Death_Row_2
+    PostProcess = $/GraphicSettings/PostProcess/Death_Row
+    Token = "AMB_AFNOON"
+)

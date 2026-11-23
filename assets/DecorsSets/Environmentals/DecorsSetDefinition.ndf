@@ -1,0 +1,12 @@
+unnamed Template_LevelBuildDecorSetDefinition
+(
+    DecorSetName = 'Environmentals'
+    IncludedDecorSets = [
+        'CommonSet',
+        'Fulda',
+    ]
+    PatternFileExtension = 'sav'
+    PatternBinarySave = true
+    TransactionDirectory = 'DecorSetData:/Environmentals/Definitions/'
+    TransactionDirectoryForEditor = 'DecorSetData:/Environmentals/DefinitionsEditor/'
+)

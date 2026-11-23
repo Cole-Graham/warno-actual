@@ -1,0 +1,7 @@
+export Paddy_Sunrise_1 is TEnvironmentGraphicSettings
+(
+    LightingEnvironment = $/GraphicSettings/Lighting/Cloud_Sunset_Sunrise_Red_3
+    ColorGrading = $/GraphicSettings/ColorGrading/FULDA_Realistic_Chemical_3
+    PostProcess = $/GraphicSettings/PostProcess/Chemical
+    Token = "AMB_NOON"
+)

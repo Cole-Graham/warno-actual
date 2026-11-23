@@ -1,0 +1,65 @@
+unnamed template_MultiFiller
+(
+    RegistrationName = 'EE_Multifiller_DarkGreen_Fields_A_1'
+
+   Entries = 
+   [
+       template_MultiFillerEntry_Proxy( SceneryDescriptorName = "Filler_Scatter_Potato"),
+       template_MultiFillerEntry_Proxy( SceneryDescriptorName = "Filler_Field_Potato"),
+   ]
+)
+
+unnamed template_MultiFiller
+(
+    RegistrationName = 'EE_Multifiller_DarkGreen_Fields_A_2'
+
+   Entries = 
+   [
+       template_MultiFillerEntry_Proxy( SceneryDescriptorName = "Filler_Scatter_Beet"),
+       template_MultiFillerEntry_Proxy( SceneryDescriptorName = "Filler_Field_Potato"),
+   ]
+)
+
+unnamed template_MultiFiller
+(
+    RegistrationName = 'EE_Multifiller_DarkGreen_Fields_A_3'
+
+   Entries = 
+   [
+       template_MultiFillerEntry_Proxy( SceneryDescriptorName = "Filler_Scatter_Rye"),
+       template_MultiFillerEntry_Proxy( SceneryDescriptorName = "Filler_Field_Potato"),
+   ]
+)
+
+unnamed template_MultiFiller
+(
+    RegistrationName = 'EE_Multifiller_DarkGreen_Fields_B_1'
+
+   Entries = 
+   [
+       template_MultiFillerEntry_Proxy( SceneryDescriptorName = "Filler_Scatter_Potato"),
+       template_MultiFillerEntry_Proxy( SceneryDescriptorName = "Filler_Field_Beet"),
+   ]
+)
+
+unnamed template_MultiFiller
+(
+    RegistrationName = 'EE_Multifiller_DarkGreen_Fields_B_2'
+
+   Entries = 
+   [
+       template_MultiFillerEntry_Proxy( SceneryDescriptorName = "Filler_Scatter_Beet"),
+       template_MultiFillerEntry_Proxy( SceneryDescriptorName = "Filler_Field_Beet"),
+   ]
+)
+
+unnamed template_MultiFiller
+(
+    RegistrationName = 'EE_Multifiller_DarkGreen_Fields_B_3'
+
+   Entries = 
+   [
+       template_MultiFillerEntry_Proxy( SceneryDescriptorName = "Filler_Scatter_Rye"),
+       template_MultiFillerEntry_Proxy( SceneryDescriptorName = "Filler_Field_Beet"),
+   ]
+)

@@ -1,0 +1,43 @@
+export EE_Night_Aero is TLightingEnvironmentPreset
+(
+    SunLight = TDirectionalLight
+    (
+        Color = float3[1,0.9843137,0.9568627]
+        Power = 7999.974
+        VegetationShadowColor = float3[0.02450979,0.02080927,0.01393694]
+        Azimut = 195.2599
+        Site = 56.45218
+    )
+    Haze = THaze
+    (
+    )
+    Fog = TFog
+    (
+        End = 100000
+    )
+    SkyLight = TSkyLight
+    (
+        SkyMap = TResourceTextureFromFile
+        (
+            FileName = 'GameData:/Assets/2D/SkyDDS/sky_cloudy.dds'
+        )
+        MinDensity = 0.121
+        DensityDistanceSwitch = 284500
+        Diffusion = 0.5
+        Intensity = 13051.54
+        SkyMapLowerHemisphereColor = float3[0.03812571,0.04192213,0.04537207]
+        SkyMapLowerHemisphereTransitionAngle = 0.06981317
+        Orientation = 5.340707
+        SkylightGroundColor = float3[0.6666666,0.6666666,0.6666666]
+        SkylightGroundPower = 5.052
+    )
+    Weather = TWeather
+    (
+        WindAngle = -64
+        WindAmount = 0.85
+        CloudOpacity = 0.885
+        CloudScale = 0.888
+    )
+    HazeAndFogColor = float3[0.3385858,0.3789148,0.4192377]
+    EV100 = 11.944
+)
