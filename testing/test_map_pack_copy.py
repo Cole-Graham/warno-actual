@@ -90,22 +90,22 @@ class TestCopyActiveMapPacks(unittest.TestCase):
 
             config = _config(config_ini_base_path=str(root / "mod"))
             mod = root / "mod" / "WARNO ACTUAL"
-            _write(mod / "Datapacks" / "Maps" / "Highway_to_Seoul_Assets.dat", b"old")
-            _write(mod / "Datapacks" / "Maps" / "notes.txt", b"old")
+            _write(mod / "Maps" / "Highway_to_Seoul_Assets.dat", b"old")
+            _write(mod / "Maps" / "notes.txt", b"old")
             _write(mod / "Scenarios" / "Retired_Assets.dat", b"old")
             _write(mod / "DecorsSets" / "Retired_Assets.dat", b"old")
             copy_active_map_packs(config)
 
-            map_names = sorted(path.name for path in (mod / "Datapacks" / "Maps").iterdir())
+            map_names = sorted(path.name for path in (mod / "Maps").iterdir())
             scenario_names = sorted(path.name for path in (mod / "Scenarios").iterdir())
             decor_names = sorted(path.name for path in (mod / "DecorsSets").iterdir())
             self.assertEqual(map_names, sorted(f"Listed{suffix}.dat" for suffix in _MAP_SUFFIXES))
             self.assertEqual(scenario_names, [f"ScenarioOne{suffix}.dat" for suffix in _SCENARIO_SUFFIXES])
             self.assertEqual(decor_names, [f"Environmentals{suffix}.dat" for suffix in _DECOR_SUFFIXES])
-            self.assertEqual((mod / "Datapacks" / "Maps" / "Listed.dat").read_bytes(), b"listed")
-            self.assertEqual((mod / "Datapacks" / "Maps" / "Listed_Assets.dat").read_bytes(), b"listed")
-            self.assertFalse((mod / "Maps").exists())
+            self.assertEqual((mod / "Maps" / "Listed.dat").read_bytes(), b"listed")
+            self.assertEqual((mod / "Maps" / "Listed_Assets.dat").read_bytes(), b"listed")
             self.assertFalse((mod / "DatasMap").exists())
+            self.assertFalse((mod / "Datapacks" / "Maps").exists())
 
     def test_skips_unchanged_and_replaces_newer_or_different_size(self):
         with TemporaryDirectory() as tmp:
@@ -118,11 +118,11 @@ class TestCopyActiveMapPacks(unittest.TestCase):
             config["active_map_packs"]["decor_sets"] = []
 
             mod = root / "mod" / "WARNO ACTUAL"
-            unchanged = mod / "Datapacks" / "Maps" / "Listed_Assets.dat"
+            unchanged = mod / "Maps" / "Listed_Assets.dat"
             _write(unchanged, b"same")
-            replaced = mod / "Datapacks" / "Maps" / "Listed.dat"
+            replaced = mod / "Maps" / "Listed.dat"
             _write(replaced, b"old")
-            sized = mod / "Datapacks" / "Maps" / "Sized_Assets.dat"
+            sized = mod / "Maps" / "Sized_Assets.dat"
             _write(sized, b"short")
 
             os.utime(root / "Datapacks" / "Maps" / "Listed_Assets.dat", (1000, 1000))
@@ -147,20 +147,20 @@ class TestCopyActiveMapPacks(unittest.TestCase):
             config["active_map_packs"]["scenarios"] = []
             config["active_map_packs"]["decor_sets"] = []
             mod = root / "mod" / "WARNO ACTUAL"
-            kept = mod / "Datapacks" / "Maps" / "MissingMap_Assets.dat"
+            kept = mod / "Maps" / "MissingMap_Assets.dat"
             _write(kept, b"keep")
-            _write(mod / "Datapacks" / "Maps" / "Other_Assets.dat", b"drop")
+            _write(mod / "Maps" / "Other_Assets.dat", b"drop")
             with self.assertLogs("src.utils.map_pack_copy", level="WARNING") as logs:
                 copy_active_map_packs(config)
             self.assertTrue(any("MissingMap_Assets.dat" in message for message in logs.output))
             self.assertEqual(kept.read_bytes(), b"keep")
-            self.assertFalse((mod / "Datapacks" / "Maps" / "Other_Assets.dat").exists())
+            self.assertFalse((mod / "Maps" / "Other_Assets.dat").exists())
 
     def test_ui_only_copies_nothing(self):
         with TemporaryDirectory() as tmp:
             root = Path(tmp)
             _touch_pack(root, "Listed", b"listed")
-            extra = root / "mod" / "WARNO ACTUAL" / "Datapacks" / "Maps" / "extra.dat"
+            extra = root / "mod" / "WARNO ACTUAL" / "Maps" / "extra.dat"
             _write(extra, b"stay")
             config = _config(target="ui_only", config_ini_base_path=str(root / "mod"))
             copy_active_map_packs(config)
@@ -172,7 +172,7 @@ class TestCopyActiveMapPacks(unittest.TestCase):
             root = Path(tmp)
             config = _config(config_ini_base_path=str(root / "mod"))
             config["active_map_packs"]["maps"] = "Listed"
-            kept = root / "mod" / "WARNO ACTUAL" / "Datapacks" / "Maps" / "Highway_to_Seoul_Assets.dat"
+            kept = root / "mod" / "WARNO ACTUAL" / "Maps" / "Highway_to_Seoul_Assets.dat"
             _write(kept, b"stay")
             copy_active_map_packs(config)
             self.assertEqual(kept.read_bytes(), b"stay")
@@ -183,11 +183,11 @@ class TestCopyActiveMapPacks(unittest.TestCase):
             _touch_pack(root, "Listed", b"listed")
             config = _config(config_ini_base_path=str(root / "mod"))
             config["build_config"]["copy_maps"] = False
-            extra = root / "mod" / "WARNO ACTUAL" / "Datapacks" / "Maps" / "extra.dat"
+            extra = root / "mod" / "WARNO ACTUAL" / "Maps" / "extra.dat"
             _write(extra, b"stay")
             copy_active_map_packs(config)
             self.assertEqual(extra.read_bytes(), b"stay")
-            self.assertFalse((root / "mod" / "WARNO ACTUAL" / "Datapacks" / "Maps" / "Listed.dat").exists())
+            self.assertFalse((root / "mod" / "WARNO ACTUAL" / "Maps" / "Listed.dat").exists())
 
 
 if __name__ == "__main__":

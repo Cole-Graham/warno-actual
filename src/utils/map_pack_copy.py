@@ -10,7 +10,7 @@ from src.utils.logging_utils import setup_logger
 logger = setup_logger(__name__)
 
 # Suffixes are the filename tail before ``.dat``. An empty string is the bare ``{stem}.dat``.
-# Map files (pack, shooting, and stickers) all live in Datapacks/Maps.
+# Map files are read from Saved Games Datapacks/Maps and written to mod/Maps.
 _MAP_FILE_SUFFIXES = ("", "_Shooting", "_Stickers", "_Assets", "_Definition", "_Details")
 _SCENARIO_SUFFIXES = ("_Assets", "_Definition", "_Details", "_GameData", "_ScenariosData")
 _DECOR_SUFFIXES = ("_Assets", "_Definition", "_Editor")
@@ -21,7 +21,7 @@ def copy_active_map_packs(config: Dict) -> None:
 
     Runs when ``build_config.copy_maps`` is true, on gameplay builds only. A missing
     or false ``copy_maps`` skips the copy. A file is copied when the destination is missing, the
-    size differs, or the source is newer. Files already in the mod Datapacks/Maps,
+    size differs, or the source is newer. Files already in the mod Maps,
     Scenarios, or DecorsSets folders that are not part of the allowlist are removed.
     A missing or invalid list is left untouched.
     """
@@ -44,7 +44,7 @@ def copy_active_map_packs(config: Dict) -> None:
 
     map_dir = root / "Datapacks" / "Maps"
     jobs = (
-        (map_stems, map_dir, mod_root / "Datapacks" / "Maps", _MAP_FILE_SUFFIXES),
+        (map_stems, map_dir, mod_root / "Maps", _MAP_FILE_SUFFIXES),
         (scenario_stems, root / "Datapacks" / "Scenarios", mod_root / "Scenarios", _SCENARIO_SUFFIXES),
         (decor_stems, root / "Datapacks" / "DecorsSets", mod_root / "DecorsSets", _DECOR_SUFFIXES),
     )

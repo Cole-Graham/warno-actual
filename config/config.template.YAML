@@ -42,7 +42,7 @@ directories:
 
 # Map, scenario, and decor packs copied from Saved Games into the mod on each gameplay build.
 # List stems only. A stem expands to the .dat files for that pack:
-#   maps: Datapacks/Maps (*.dat, *_Shooting, *_Stickers, *_Assets, *_Definition, *_Details)
+#   maps: Datapacks/Maps -> mod/Maps (*.dat, *_Shooting, *_Stickers, *_Assets, *_Definition, *_Details)
 #   scenarios: Datapacks/Scenarios (*_Assets, *_Definition, *_Details, *_GameData, *_ScenariosData)
 #   decor_sets: Datapacks/DecorsSets (*_Assets, *_Definition, *_Editor)
 # Append a stem to include a pack. Names omitted here are not copied.
@@ -53,36 +53,75 @@ active_map_packs:
     - "Potato_field"
     - "WA_3x3_Punchvalley"
   scenarios:
+    # Potato_field
     - "Paddy_field_1x1_wgrd"
     - "Paddy_field_2vs2"
+
+    # _2x2_Hesse
     - "WA_2x2Hesse1v1_CQ"
     - "WA_2x2Hesse2v2_CQ"
+
+    # _2x3_Vertigo
     - "WA_2x3Vertigo1v1_CQ"
+
+    # NuclearWinter
     - "WA_3x2NuclearWinter1v1_CQ"
+
+    # _3x3_Airport
     - "WA_3x3Airport1v1_CQ"
+
+    # _3x3_Cyrus
     - "WA_3x3Cyrus2v2_CQ"
     - "WA_3x3Cyrus3v3_CQ"
     - "WA_3x3Cyrus4v4_CQ"
+
+    # _3x3_Eiche
     - "WA_3x3Eiche2v2_CQ"
+
+    # _3x3_Factory
     - "WA_3x3Factory2v2_CQ"
+
+    # _3x3_HighwayToSeoul
     - "WA_3x3Highway1v1_CQ"
     - "WA_3x3Highway2v2_CQ"
     - "WA_3x3Highway3v3_CQ"
+
+    # _3x3_IronWaters
     - "WA_3x3IronWaters2v2_CQ"
+
+    # _3x3_Punchvalley
     - "WA_3x3Punchvalley1v1_CQ"
     - "WA_3x3Punchvalley1v1_CQ2"
+
+    # _3x3_Railway
     - "WA_3x3Railway1v1_CQ"
     - "WA_3x3Railway3v3_CQ"
+
+    # _3x3_Stoneware
     - "WA_3x3Stoneware2v2_CQ"
+
+    # _3x3_TwinCities
     - "WA_3x3TwinCities2v2_CQ"
+
+    # _3x3_UrbanFrontlines
     - "WA_3x3UrbanFrontlines1v1_CQ"
     - "WA_3x3UrbanFrontlines3v3_CQ"
+
+    # _3x3_Valley
     - "WA_3x3Valley2v2_CQ"
+
+    # _3x3_Volcano
     - "WA_3x3Volcano3vs3_CQ"
+
+    # _4x2_Isura
     - "WA_4x2Isura2v2_CQ"
     - "WA_4x2Isura3v3_CQ"
+
+    # _4x2_Taler
     - "WA_4x2Taler3v3_CQ"
     - "WA_4x2Taler3v3_CQ2"
+
+    # _4x3_Cliff
     - "WA_4x3Cliff1v1_CQ"
     - "WA_4x3Cliff2v2_CQ"
   decor_sets:
@@ -92,18 +131,18 @@ active_map_packs:
 # divisions to hide (base list used in release builds)
 hide_divs:
   # Black Birds
-  - "SWI_4_Mechanisierte_multi"
-  - "SWI_6_Felddivision_multi"
-  - "OST_1_PzGrenadier_multi"
-  - "OST_Alpenkorps_multi"
-  - "HON_1_Gepesitett_multi"
-  - "HON_62_Mechanized_multi"
-  - "ALB_1_Kembesoriee_multi"
-  - "CYP_NationalGuard_multi"
+  # - "SWI_4_Mechanisierte_multi"
+  # - "SWI_6_Felddivision_multi"
+  # - "OST_1_PzGrenadier_multi"
+  # - "OST_Alpenkorps_multi"
+  # - "HON_1_Gepesitett_multi"
+  # - "HON_62_Mechanized_multi"
+  # - "ALB_1_Kembesoriee_multi"
+  # - "CYP_NationalGuard_multi"
 
   # Nemesis 9
-  - "US_26th_Inf_multi"
-  - "CUB_MTT_multi"
+  # - "US_26th_Inf_multi"
+  # - "CUB_MTT_multi"
   
   # Topic Storm
   - "BRZ_3a_Divisao_multi"
