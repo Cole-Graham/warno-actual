@@ -1,0 +1,7 @@
+export WA_3x2NuclearWinter1v1_CQ is Scenario
+(
+    GUID =                GUID:{FC73D5AC-00FB-179C-C3D8-1C630B7C6463}
+    ScenarioDirectory =   'WA_3x2NuclearWinter1v1_CQ'
+    LevelBuildDirectory = 'NuclearWinter'
+    Category =            'WARNO Actual'
+)

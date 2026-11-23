@@ -1,0 +1,23 @@
+unnamed TemplateMultiMapInfo
+(
+    ScenarioName = "WA_3x3Airport1v1_CQ"
+    Description = "AIRPORTWA"
+    DefaultNbSlotsOpened = 2
+    GameMode = EDeploymentMode/Skirmish
+    CombatRule = ECombatRule/Conquest
+    EnvironmentSettings = [
+        $/M3D/GraphicSettings/EnvironmentSettings/Airport,
+        $/M3D/GraphicSettings/EnvironmentSettings/Airport_Afternoon,
+        $/M3D/GraphicSettings/EnvironmentSettings/Airport_Evening,
+        $/M3D/GraphicSettings/EnvironmentSettings/Airport_Night,
+        $/M3D/GraphicSettings/EnvironmentSettings/Airport_Noon,
+    ]
+    MapSize = "SIZEMED"
+    Density = "DENSMED"
+    HasRivers = false
+)
+unnamed TLocalisationDicoResource
+(
+    DicoToken = LocalisationConstantes/dico_maps
+    FileName = "ScenariosData:/WA_3x3Airport1v1_CQ/SCENARIO_DEFINITION.csv"
+)

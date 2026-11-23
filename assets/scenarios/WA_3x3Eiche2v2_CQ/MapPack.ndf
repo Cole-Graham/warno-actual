@@ -1,0 +1,24 @@
+unnamed TemplateMultiMapInfo
+(
+   ScenarioName = "WA_3x3Eiche2v2_CQ"
+   Description = "EICHEWA"
+   DefaultNbSlotsOpened = 4
+   GameMode = EDeploymentMode/Skirmish
+   CombatRule = ECombatRule/Conquest
+   EnvironmentSettings = [
+	$/M3D/GraphicSettings/EnvironmentSettings/Eiche_Night,
+        $/M3D/GraphicSettings/EnvironmentSettings/Eiche,
+        $/M3D/GraphicSettings/EnvironmentSettings/Eiche_Morning,
+        $/M3D/GraphicSettings/EnvironmentSettings/Eiche_Afternoon,
+        $/M3D/GraphicSettings/EnvironmentSettings/Eiche_Evening,
+   ]
+   MapSize = "SIZEMED"
+   Density = "DENSMED"
+   HasRivers = false
+)
+
+unnamed TLocalisationDicoResource
+(
+   DicoToken = LocalisationConstantes/dico_maps
+   FileName = "ScenariosData:/WA_3x3Eiche2v2_CQ/SCENARIO_DEFINITION.csv"
+)

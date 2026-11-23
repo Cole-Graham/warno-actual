@@ -1,0 +1,24 @@
+unnamed TemplateMultiMapInfo
+(
+   ScenarioName = "WA_4x2Taler3v3_CQ2"
+   Description = "TALERB"
+   DefaultNbSlotsOpened = 6
+   GameMode = EDeploymentMode/Skirmish
+   CombatRule = ECombatRule/Conquest
+   EnvironmentSettings = [
+       $/M3D/GraphicSettings/EnvironmentSettings/Taler_Noon,
+        $/M3D/GraphicSettings/EnvironmentSettings/Taler_Afternoon,
+        $/M3D/GraphicSettings/EnvironmentSettings/Taler_Evening,
+        $/M3D/GraphicSettings/EnvironmentSettings/Taler_Morning,
+        $/M3D/GraphicSettings/EnvironmentSettings/Taler_Night,
+   ]
+   MapSize = "SIZEMED"
+   Density = "DENSMED"
+   HasRivers = false
+)
+
+unnamed TLocalisationDicoResource
+(
+   DicoToken = LocalisationConstantes/dico_maps
+   FileName = "ScenariosData:/WA_4x2Taler3v3_CQ2/SCENARIO_DEFINITION.csv"
+)

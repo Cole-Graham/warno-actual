@@ -1,0 +1,23 @@
+unnamed TemplateMultiMapInfo
+(
+    ScenarioName =   'WA_3x3Punchvalley1v1_CQ2'
+    Description =   'WABOWL'
+    DefaultNbSlotsOpened = 2
+    GameMode = EDeploymentMode/Skirmish
+    CombatRule = ECombatRule/Conquest
+    EnvironmentSettings = [
+        $/M3D/GraphicSettings/EnvironmentSettings/Chemical,
+	$/M3D/GraphicSettings/EnvironmentSettings/Chemical_Evening,
+	$/M3D/GraphicSettings/EnvironmentSettings/Chemical_Morning,
+	$/M3D/GraphicSettings/EnvironmentSettings/Chemical_Night,
+    ]
+    MapSize = 'SIZEMED'
+    Density = 'DENSLOW'
+    HasRivers = false
+)
+
+unnamed TLocalisationDicoResource
+(
+DicoToken = LocalisationConstantes/dico_maps
+FileName = "ScenariosData:/WA_3x3Punchvalley1v1_CQ2/SCENARIO_DEFINITION.csv"
+)

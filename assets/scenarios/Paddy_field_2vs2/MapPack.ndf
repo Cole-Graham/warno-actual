@@ -1,0 +1,22 @@
+unnamed TemplateMultiMapInfo
+(
+    ScenarioName = "Paddy_field_2vs2"
+    Description = "PADDYTWA"
+    DefaultNbSlotsOpened = 4
+    GameMode = EDeploymentMode/Skirmish
+    CombatRule = ECombatRule/Conquest
+    EnvironmentSettings = [
+        $/M3D/GraphicSettings/EnvironmentSettings/Chemical,
+        $/M3D/GraphicSettings/EnvironmentSettings/Chemical_Evening,
+        $/M3D/GraphicSettings/EnvironmentSettings/Chemical_Morning,
+        $/M3D/GraphicSettings/EnvironmentSettings/Chemical_Night,
+    ]
+    MapSize = "SIZEMED"
+    Density = "DENSLOW"
+    HasRivers = true
+)
+unnamed TLocalisationDicoResource
+(
+DicoToken = LocalisationConstantes/dico_maps
+FileName = "ScenariosData:/Paddy_field_2vs2/SCENARIO_DEFINITION.csv"
+)

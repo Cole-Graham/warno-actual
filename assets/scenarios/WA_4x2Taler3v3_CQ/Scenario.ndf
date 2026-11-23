@@ -1,0 +1,7 @@
+export WA_4x2Taler3v3_CQ is Scenario
+(
+    GUID =                GUID:{2A0F08F0-8FB2-2C69-5C24-78AA588623B8}
+    ScenarioDirectory =   'WA_4x2Taler3v3_CQ'
+    LevelBuildDirectory = '_4x2_Taler'
+    Category =            'WARNO Actual'
+)

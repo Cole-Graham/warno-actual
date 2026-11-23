@@ -1,0 +1,7 @@
+export WA_3x3Eiche2v2_CQ is Scenario
+(
+    GUID =                GUID:{21DE6F1D-5984-D337-4B39-E5517B757192}
+    ScenarioDirectory =   'WA_3x3Eiche2v2_CQ'
+    LevelBuildDirectory = '_3x3_Eiche'
+    Category =            'WARNO Actual'
+)

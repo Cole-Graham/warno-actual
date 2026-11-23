@@ -1,0 +1,7 @@
+export WA_2x3Vertigo1v1_CQ is Scenario
+(
+    GUID =                GUID:{2F2D872C-CF56-5A37-A7C6-544BC4E99103}
+    ScenarioDirectory =   'WA_2x3Vertigo1v1_CQ'
+    LevelBuildDirectory = '_2x3_Vertigo'
+    Category =            'WARNO Actual'
+)

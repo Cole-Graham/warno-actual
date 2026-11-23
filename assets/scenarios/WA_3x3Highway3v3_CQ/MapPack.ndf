@@ -1,0 +1,19 @@
+unnamed TemplateMultiMapInfo
+(
+ScenarioName = "WA_3x3Highway3v3_CQ"
+Description = "HIGHWTHREE"
+DefaultNbSlotsOpened = 6
+GameMode = EDeploymentMode/Skirmish
+CombatRule = ECombatRule/Conquest
+EnvironmentSettings = [
+$/GraphicSettings/EnvironmentSettings/Chemical,
+]
+MapSize = "SIZEMED"
+Density = "DENSLOW"
+HasRivers = false
+)
+unnamed TLocalisationDicoResource
+(
+DicoToken = LocalisationConstantes/dico_maps
+FileName = "ScenariosData:/WA_3x3Highway3v3_CQ/SCENARIO_DEFINITION.csv"
+)

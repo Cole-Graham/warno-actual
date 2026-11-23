@@ -1,0 +1,23 @@
+unnamed TemplateMultiMapInfo
+(
+ScenarioName = "WA_4x2Isura3v3_CQ"
+Description = "ISURATHREE"
+DefaultNbSlotsOpened = 6
+GameMode = EDeploymentMode/Skirmish
+CombatRule = ECombatRule/Conquest
+EnvironmentSettings = [
+$/GraphicSettings/EnvironmentSettings/Isura,
+$/GraphicSettings/EnvironmentSettings/Isura_Afternoon,
+$/GraphicSettings/EnvironmentSettings/Isura_Evening,
+$/GraphicSettings/EnvironmentSettings/Isura_Night,
+$/GraphicSettings/EnvironmentSettings/Isura_Noon,
+]
+MapSize = "SIZEMED"
+Density = "DENSLOW"
+HasRivers = false
+)
+unnamed TLocalisationDicoResource
+(
+DicoToken = LocalisationConstantes/dico_maps
+FileName = "ScenariosData:/WA_4x2Isura3v3_CQ/SCENARIO_DEFINITION.csv"
+)

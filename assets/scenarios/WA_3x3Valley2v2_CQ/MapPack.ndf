@@ -1,0 +1,24 @@
+unnamed TemplateMultiMapInfo
+(
+    ScenarioName =   'WA_3x3Valley2v2_CQ'
+    Description =   'WAVALLEY'
+    DefaultNbSlotsOpened = 4
+    GameMode = EDeploymentMode/Skirmish
+    CombatRule = ECombatRule/Conquest
+    EnvironmentSettings = [
+        $/M3D/GraphicSettings/EnvironmentSettings/Valley,
+	$/M3D/GraphicSettings/EnvironmentSettings/Valley_Afternoon,
+	$/M3D/GraphicSettings/EnvironmentSettings/Valley_Evening,
+	$/M3D/GraphicSettings/EnvironmentSettings/Valley_Morning,
+    $/M3D/GraphicSettings/EnvironmentSettings/Valley_Night
+    ]
+    MapSize = 'SIZEMED'
+    Density = 'DENSLOW'
+    HasRivers = false
+)
+
+unnamed TLocalisationDicoResource
+(
+DicoToken = LocalisationConstantes/dico_maps
+FileName = "ScenariosData:/WA_3x3Valley2v2_CQ/SCENARIO_DEFINITION.csv"
+)

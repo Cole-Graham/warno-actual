@@ -1,0 +1,13 @@
+MapName is 'NuclearWinter'
+NbCaseX is 3
+NbCaseY is 2
+
+WaterHeightInLBU is 0
+MaxAltitudeInLBU is 686
+
+MapJuncture is Juncture/Tactic
+MapDecorSets is [
+    'CommonSet',
+    'Fulda',
+    'Northag'
+]

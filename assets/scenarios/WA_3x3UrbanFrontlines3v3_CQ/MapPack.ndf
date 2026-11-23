@@ -1,0 +1,23 @@
+unnamed TemplateMultiMapInfo
+(
+    ScenarioName = "WA_3x3UrbanFrontlines3v3_CQ"
+    Description = "MURDERCAP"
+    DefaultNbSlotsOpened = 6
+    GameMode = EDeploymentMode/Skirmish
+    CombatRule = ECombatRule/Conquest
+    EnvironmentSettings = [
+        $/M3D/GraphicSettings/EnvironmentSettings/Urban_Frontlines_Night,
+        $/M3D/GraphicSettings/EnvironmentSettings/UrbanFrontlines,
+        $/M3D/GraphicSettings/EnvironmentSettings/Urban_Frontlines_Afternoon,
+        $/M3D/GraphicSettings/EnvironmentSettings/Urban_Frontlines_Morning,
+        $/M3D/GraphicSettings/EnvironmentSettings/Urban_Frontlines_Noon,
+    ]
+    MapSize = "SIZEMED"
+    Density = "DENSMED"
+    HasRivers = false
+)
+unnamed TLocalisationDicoResource
+(
+    DicoToken = LocalisationConstantes/dico_maps
+    FileName = "ScenariosData:/WA_3x3UrbanFrontlines3v3_CQ/SCENARIO_DEFINITION.csv"
+)

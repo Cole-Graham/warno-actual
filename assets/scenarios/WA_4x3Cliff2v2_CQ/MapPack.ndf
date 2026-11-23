@@ -1,0 +1,23 @@
+unnamed TemplateMultiMapInfo
+(
+    ScenarioName = "WA_4x3Cliff2v2_CQ"
+    Description = "CLIFFTWO"
+    DefaultNbSlotsOpened = 4
+    GameMode = EDeploymentMode/Skirmish
+    CombatRule = ECombatRule/Conquest
+    EnvironmentSettings = [
+        $/M3D/GraphicSettings/EnvironmentSettings/Cliff_Evening,
+        $/M3D/GraphicSettings/EnvironmentSettings/Cliff,
+        $/M3D/GraphicSettings/EnvironmentSettings/Cliff_Afternoon,
+        $/M3D/GraphicSettings/EnvironmentSettings/Cliff_Night,
+        $/M3D/GraphicSettings/EnvironmentSettings/Cliff_Noon,
+    ]
+    MapSize = "SIZEMED"
+    Density = "DENSMED"
+    HasRivers = false
+)
+unnamed TLocalisationDicoResource
+(
+    DicoToken = LocalisationConstantes/dico_maps
+    FileName = "ScenariosData:/WA_4x3Cliff2v2_CQ/SCENARIO_DEFINITION.csv"
+)

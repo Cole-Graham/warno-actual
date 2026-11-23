@@ -1,0 +1,7 @@
+export WA_3x3IronWaters2v2_CQ is Scenario
+(
+    GUID =                GUID:{B918A86C-26CA-7530-E7BB-953844332DA8}
+    ScenarioDirectory =   'WA_3x3IronWaters2v2_CQ'
+    LevelBuildDirectory = '_3x3_IronWaters'
+    Category =            'WARNO Actual'
+)

@@ -1,0 +1,7 @@
+export WA_3x3Stoneware2v2_CQ is Scenario
+(
+    GUID =                GUID:{B4ECC964-62F2-2634-8BB5-6C07F2F420D2}
+    ScenarioDirectory =   'WA_3x3Stoneware2v2_CQ'
+    LevelBuildDirectory = '_3x3_Stoneware'
+    Category =            'WARNO Actual'
+)

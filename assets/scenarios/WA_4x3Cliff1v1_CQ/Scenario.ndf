@@ -1,0 +1,7 @@
+export WA_4x3Cliff1v1_CQ is Scenario
+(
+    GUID =                GUID:{350B412D-658D-003C-DB73-DE43CB9BBE51}
+    ScenarioDirectory =   'WA_4x3Cliff1v1_CQ'
+    LevelBuildDirectory = '_4x3_Cliff'
+    Category =            'WARNO Actual'
+)

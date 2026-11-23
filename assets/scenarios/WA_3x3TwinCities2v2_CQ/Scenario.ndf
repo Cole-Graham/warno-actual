@@ -1,0 +1,7 @@
+export WA_3x3TwinCities2v2_CQ is Scenario
+(
+    GUID =                GUID:{0C703EEE-AA83-CDA9-E80B-45DF3F0F6184}
+    ScenarioDirectory =   'WA_3x3TwinCities2v2_CQ'
+    LevelBuildDirectory = '_3x3_TwinCities'
+    Category =            'WARNO Actual'
+)

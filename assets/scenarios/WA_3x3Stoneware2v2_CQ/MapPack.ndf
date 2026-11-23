@@ -1,0 +1,24 @@
+unnamed TemplateMultiMapInfo
+(
+   ScenarioName = "WA_3x3Stoneware2v2_CQ"
+   Description = "STONEWARE"
+   DefaultNbSlotsOpened = 4
+   GameMode = EDeploymentMode/Skirmish
+   CombatRule = ECombatRule/Conquest
+   EnvironmentSettings = [
+       $/M3D/GraphicSettings/EnvironmentSettings/Stoneware,
+        $/M3D/GraphicSettings/EnvironmentSettings/Stoneware_Afternoon,
+        $/M3D/GraphicSettings/EnvironmentSettings/Stoneware_Evening,
+        $/M3D/GraphicSettings/EnvironmentSettings/Stoneware_Morning,
+        $/M3D/GraphicSettings/EnvironmentSettings/Stoneware_Night,
+   ]
+   MapSize = "SIZEMED"
+   Density = "DENSMED"
+   HasRivers = false
+)
+
+unnamed TLocalisationDicoResource
+(
+   DicoToken = LocalisationConstantes/dico_maps
+   FileName = "ScenariosData:/WA_3x3Stoneware2v2_CQ/SCENARIO_DEFINITION.csv"
+)

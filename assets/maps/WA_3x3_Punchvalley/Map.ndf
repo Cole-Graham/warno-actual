@@ -1,0 +1,15 @@
+MapName is 'WA_3x3_Punchvalley'
+NbCaseX is 3
+NbCaseY is 3
+
+WaterHeightInLBU is 100
+MaxAltitudeInLBU is 686
+
+MapJuncture is Juncture/Tactic
+MapDecorSets is [
+    'CommonSet',
+    'Fulda',
+    'NorthTag'
+]
+
+BackgroundSound_MultiTrack is ''

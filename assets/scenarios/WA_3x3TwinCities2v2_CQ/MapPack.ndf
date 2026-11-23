@@ -1,0 +1,24 @@
+unnamed TemplateMultiMapInfo
+(
+   ScenarioName = "WA_3x3TwinCities2v2_CQ"
+   Description = "TWCT2WA"
+   DefaultNbSlotsOpened = 4
+   GameMode = EDeploymentMode/Skirmish
+   CombatRule = ECombatRule/Conquest
+   EnvironmentSettings = [
+       $/M3D/GraphicSettings/EnvironmentSettings/TwinCities,
+        $/M3D/GraphicSettings/EnvironmentSettings/TwinCities_Morning,
+        $/M3D/GraphicSettings/EnvironmentSettings/TwinCities_Noon,
+        $/M3D/GraphicSettings/EnvironmentSettings/TwinCities_Afternoon,
+        $/M3D/GraphicSettings/EnvironmentSettings/TwinCities_Night,
+   ]
+   MapSize = "SIZEMED"
+   Density = "DENSMED"
+   HasRivers = false
+)
+
+unnamed TLocalisationDicoResource
+(
+   DicoToken = LocalisationConstantes/dico_maps
+   FileName = "ScenariosData:/WA_3x3TwinCities2v2_CQ/SCENARIO_DEFINITION.csv"
+)

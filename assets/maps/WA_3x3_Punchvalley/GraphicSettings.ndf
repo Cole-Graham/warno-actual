@@ -1,0 +1,10 @@
+export GraphicSettings is TPerMapGraphicSettings
+(
+    GrassParameters = $/GraphicSettings/Grass/GrassParameters_Fulda
+    BricoGrass = $/GraphicSettings/Grass/Fulda_Vegetation
+    SplattingConfig = $/GraphicSettings/Splatting/FuldaWithoutGrass
+    WaterParameters = $/GraphicSettings/Water/mer
+    RockParameters = $/GraphicSettings/Rock/RockFulda
+    SoundMapConfig = $/SoundMapConfig/SoundMapConfig_HQ
+    DefaultEnvironmentSettings = $/GraphicSettings/EnvironmentSettings/Chemical
+)

@@ -1,0 +1,7 @@
+export WA_3x3Cyrus4v4_CQ is Scenario
+(
+    GUID =                GUID:{ED267FBF-A7D4-7516-EB69-84713B323B9C}
+    ScenarioDirectory =   'WA_3x3Cyrus4v4_CQ'
+    LevelBuildDirectory = '_3x3_Cyrus'
+    Category =            'WARNO Actual'
+)

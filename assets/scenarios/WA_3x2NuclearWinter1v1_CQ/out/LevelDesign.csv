@@ -1,0 +1,16 @@
+Type,Name,Category,GUID
+ModernWarfareSpawnAirplane,AutoName_14,AerialCorridors,{598684D5-42B3-F473-6F0F-07F93E3650B6}
+ModernWarfareSpawnAirplane,AutoName_15,AerialCorridors,{B0EFBDB2-8A34-FD46-FC63-FE827955E60B}
+ModernWarfareCommandPoints,AutoName_1,CommandPoints,{1B5A4FEC-8013-E753-D679-8154E3E5920C}
+ModernWarfareCommandPoints,AutoName_2,CommandPoints,{E16A64D8-5351-5523-73B2-7A139C306994}
+ModernWarfareCommandPoints,AutoName_3,CommandPoints,{D30A542E-7714-8E9D-D618-E66A5C5C5123}
+ModernWarfareCommandPoints,AutoName_4,CommandPoints,{E5EF6C92-6B08-C5F0-3CED-B337DEBFA5D2}
+ModernWarfareCommandPoints,AutoName_6,CommandPoints,{68590CBA-9A94-689C-B907-51DF51B6A043}
+ModernWarfareCommandPoints,AutoName_7,CommandPoints,{34013501-6B52-B2FB-A2E7-34B38AFD0E1A}
+ModernWarfareCommandPoints,AutoName_9,CommandPoints,{2A9B2ECC-70F1-8A34-89CA-493BC9C91D22}
+ModernWarfareStartingPoint,AutoName_10,DeploymentZone,{8B191423-BD43-F64C-FCE7-5FF59898069D}
+ModernWarfareStartingPoint,AutoName_11,DeploymentZone,{FD851F09-85D5-A3BE-E269-92F4E92A8500}
+ModernWarfareSpawn,AutoName_11,ReinforcementLocations,{A532CB3F-91F3-C824-C664-38100596B558}
+ModernWarfareSpawn,AutoName_12,ReinforcementLocations,{13EAF308-8017-6798-4D98-EF97B2511135}
+ModernWarfareSpawn,AutoName_13,ReinforcementLocations,{1DFEF53D-3C35-7395-7644-EACB605130C9}
+ModernWarfareSpawn,AutoName_8,ReinforcementLocations,{7C1B232F-57E3-4A21-7B26-604EB4AB83A7}

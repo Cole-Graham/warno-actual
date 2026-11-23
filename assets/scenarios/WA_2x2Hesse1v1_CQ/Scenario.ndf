@@ -1,0 +1,7 @@
+export WA_2x2Hesse1v1_CQ is Scenario
+(
+    GUID =                GUID:{216469BA-4C95-ED23-7960-96E04FD0398E}
+    ScenarioDirectory =   'WA_2x2Hesse1v1_CQ'
+    LevelBuildDirectory = '_2x2_Hesse'
+    Category =            'WARNO Actual'
+)

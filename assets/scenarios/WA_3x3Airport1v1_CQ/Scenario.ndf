@@ -1,0 +1,7 @@
+export WA_3x3Airport1v1_CQ is Scenario
+(
+    GUID =                GUID:{AC83CCEE-1975-B794-7706-797C50F9A8D7}
+    ScenarioDirectory =   'WA_3x3Airport1v1_CQ'
+    LevelBuildDirectory = '_3x3_Airport'
+    Category =            'WARNO Actual'
+)

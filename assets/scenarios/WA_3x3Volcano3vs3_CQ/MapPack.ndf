@@ -1,0 +1,24 @@
+unnamed TemplateMultiMapInfo
+(
+    ScenarioName = "WA_3x3Volcano3vs3_CQ"
+    Description = "VOLATILITY"
+    DefaultNbSlotsOpened = 6
+    GameMode = EDeploymentMode/Skirmish
+    CombatRule = ECombatRule/Conquest
+    EnvironmentSettings = [
+        $/M3D/GraphicSettings/EnvironmentSettings/Volcano_1,
+        $/M3D/GraphicSettings/EnvironmentSettings/Volcano_2,
+        $/M3D/GraphicSettings/EnvironmentSettings/Volcano_Afternoon,
+        $/M3D/GraphicSettings/EnvironmentSettings/Volcano_Evening,
+        $/M3D/GraphicSettings/EnvironmentSettings/Volcano_Morning,
+        $/M3D/GraphicSettings/EnvironmentSettings/Volcano_Night,
+    ]
+    MapSize = "SIZEMED"
+    Density = "DENSLOW"
+    HasRivers = false
+)
+unnamed TLocalisationDicoResource
+(
+    DicoToken = LocalisationConstantes/dico_maps
+    FileName = "ScenariosData:/WA_3x3Volcano3vs3_CQ/SCENARIO_DEFINITION.csv"
+)

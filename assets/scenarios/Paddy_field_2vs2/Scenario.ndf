@@ -1,0 +1,7 @@
+export Paddy_field_2vs2 is Scenario
+(
+    GUID =                GUID:{5FCF218C-65D5-6A9B-7BB0-601EDE37E171}
+    ScenarioDirectory =   'Paddy_field_2vs2'
+    LevelBuildDirectory = 'Potato_field'
+    Category =            'Wargame'
+)

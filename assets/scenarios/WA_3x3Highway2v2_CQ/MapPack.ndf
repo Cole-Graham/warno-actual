@@ -1,0 +1,19 @@
+unnamed TemplateMultiMapInfo
+(
+ScenarioName = "WA_3x3Highway2v2_CQ"
+Description = "HIGHWTWO"
+DefaultNbSlotsOpened = 4
+GameMode = EDeploymentMode/Skirmish
+CombatRule = ECombatRule/Conquest
+EnvironmentSettings = [
+$/GraphicSettings/EnvironmentSettings/Chemical,
+]
+MapSize = "SIZEMED"
+Density = "DENSLOW"
+HasRivers = false
+)
+unnamed TLocalisationDicoResource
+(
+DicoToken = LocalisationConstantes/dico_maps
+FileName = "ScenariosData:/WA_3x3Highway2v2_CQ/SCENARIO_DEFINITION.csv"
+)

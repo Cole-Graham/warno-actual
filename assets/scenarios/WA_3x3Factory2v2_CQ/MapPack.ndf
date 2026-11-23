@@ -1,0 +1,23 @@
+unnamed TemplateMultiMapInfo
+(
+    ScenarioName = "WA_3x3Factory2v2_CQ"
+    Description = "FACTORYONE"
+    DefaultNbSlotsOpened = 4
+    GameMode = EDeploymentMode/Skirmish
+    CombatRule = ECombatRule/Conquest
+    EnvironmentSettings = [
+        $/M3D/GraphicSettings/EnvironmentSettings/Factory,
+        $/M3D/GraphicSettings/EnvironmentSettings/Factory_Afternoon,
+        $/M3D/GraphicSettings/EnvironmentSettings/Factory_Evening,
+        $/M3D/GraphicSettings/EnvironmentSettings/Factory_Morning,
+        $/M3D/GraphicSettings/EnvironmentSettings/Factory_Night,
+    ]
+    MapSize = "SIZEMED"
+    Density = "DENSLOW"
+    HasRivers = false
+)
+unnamed TLocalisationDicoResource
+(
+    DicoToken = LocalisationConstantes/dico_maps
+    FileName = "ScenariosData:/WA_3x3Factory2v2_CQ/SCENARIO_DEFINITION.csv"
+)

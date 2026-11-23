@@ -1,0 +1,23 @@
+unnamed TemplateMultiMapInfo
+(
+    ScenarioName = "WA_2x2Hesse2v2_CQ"
+    Description = "HESSETWA"
+    DefaultNbSlotsOpened = 4
+    GameMode = EDeploymentMode/Skirmish
+    CombatRule = ECombatRule/Conquest
+    EnvironmentSettings = [
+        $/M3D/GraphicSettings/EnvironmentSettings/Hesse,
+        $/M3D/GraphicSettings/EnvironmentSettings/Hesse_Afternoon,
+        $/M3D/GraphicSettings/EnvironmentSettings/Hesse_Morning,
+        $/M3D/GraphicSettings/EnvironmentSettings/Hesse_Night,
+        $/M3D/GraphicSettings/EnvironmentSettings/Hesse_Noon
+    ]
+    MapSize = "SIZEMED"
+    Density = "DENSMED"
+    HasRivers = false
+)
+unnamed TLocalisationDicoResource
+(
+    DicoToken = LocalisationConstantes/dico_maps
+    FileName = "ScenariosData:/WA_2x2Hesse2v2_CQ/SCENARIO_DEFINITION.csv"
+)

@@ -1,0 +1,24 @@
+unnamed TemplateMultiMapInfo
+(
+   ScenarioName = "WA_3x3Cyrus3v3_CQ"
+   Description = "CYRUSWA"
+   DefaultNbSlotsOpened = 6
+   GameMode = EDeploymentMode/Skirmish
+   CombatRule = ECombatRule/Conquest
+   EnvironmentSettings = [
+       $/M3D/GraphicSettings/EnvironmentSettings/Cyrus,
+        $/M3D/GraphicSettings/EnvironmentSettings/Cyrus_Morning,
+        $/M3D/GraphicSettings/EnvironmentSettings/Cyrus_Noon,
+        $/M3D/GraphicSettings/EnvironmentSettings/Cyrus_Afternoon,
+        $/M3D/GraphicSettings/EnvironmentSettings/Cyrus_Night,
+   ]
+   MapSize = "SIZEMED"
+   Density = "DENSMED"
+   HasRivers = false
+)
+
+unnamed TLocalisationDicoResource
+(
+   DicoToken = LocalisationConstantes/dico_maps
+   FileName = "ScenariosData:/WA_3x3Cyrus3v3_CQ/SCENARIO_DEFINITION.csv"
+)

@@ -1,0 +1,9 @@
+export GraphicSettings is TPerMapGraphicSettings
+(
+    GrassParameters = $/GraphicSettings/Grass/GrassParameters_Fulda
+    BricoGrass = $/GraphicSettings/Grass/Fulda_Vegetation
+    SplattingConfig = $/GraphicSettings/Splatting/Outgame
+    WaterParameters = $/GraphicSettings/Water/mer
+    RockParameters = $/GraphicSettings/Rock/RockFulda
+    DefaultEnvironmentSettings = $/GraphicSettings/EnvironmentSettings/Chemical
+)

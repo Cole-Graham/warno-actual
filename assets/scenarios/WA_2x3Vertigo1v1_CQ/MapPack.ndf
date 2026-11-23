@@ -1,0 +1,23 @@
+unnamed TemplateMultiMapInfo
+(
+    ScenarioName = "WA_2x3Vertigo1v1_CQ"
+    Description = "VERTWA"
+    DefaultNbSlotsOpened = 2
+    GameMode = EDeploymentMode/Skirmish
+    CombatRule = ECombatRule/Conquest
+    EnvironmentSettings = [
+        $/M3D/GraphicSettings/EnvironmentSettings/Vertigo_1,
+        $/M3D/GraphicSettings/EnvironmentSettings/Vertigo_Afternoon,
+        $/M3D/GraphicSettings/EnvironmentSettings/Vertigo_Morning,
+        $/M3D/GraphicSettings/EnvironmentSettings/Vertigo_Night,
+        $/M3D/GraphicSettings/EnvironmentSettings/Vertigo_Noon
+    ]
+    MapSize = "SIZEMED"
+    Density = "DENSLOW"
+    HasRivers = false
+)
+unnamed TLocalisationDicoResource
+(
+    DicoToken = LocalisationConstantes/dico_maps
+    FileName = "ScenariosData:/WA_2x3Vertigo1v1_CQ/SCENARIO_DEFINITION.csv"
+)

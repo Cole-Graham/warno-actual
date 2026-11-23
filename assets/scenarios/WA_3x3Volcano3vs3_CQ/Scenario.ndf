@@ -1,0 +1,7 @@
+export WA_3x3Volcano3vs3_CQ is Scenario
+(
+    GUID =                GUID:{F6DBC6F4-A872-56C0-F976-0AA630B5C01A}
+    ScenarioDirectory =   'WA_3x3Volcano3vs3_CQ'
+    LevelBuildDirectory = '_3x3_Volcano'
+    Category =            'WARNO Actual'
+)

@@ -1,0 +1,252 @@
+export GameDesignDatabase is TGameDesignDatabase
+(
+    GameDesignItemList = [
+        TGameDesignItem
+        (
+            Position = float2[1111550.5,120849]
+            Rotation = 1.476574
+            AddOn = TGameDesignAddOn_AerialCorridor
+            (
+                Name = 'AutoName_18'
+                Ranking = 'AerialCorridors'
+                GUID = GUID:{8246F506-0B4F-F313-927F-946B03DBE614}
+                NumAlliance = -1
+                StartPosition = float3[1102748,27659,0]
+                EndPosition = float3[1120353,214039,0]
+            )
+        ),
+        TGameDesignItem
+        (
+            Position = float2[1129973.5,1859020]
+            Rotation = -1.518838
+            AddOn = TGameDesignAddOn_AerialCorridor
+            (
+                Name = 'AutoName_19'
+                Ranking = 'AerialCorridors'
+                GUID = GUID:{8F29A1B5-79B8-68A6-B182-DD71A3CE7C4D}
+                NumAlliance = -1
+                StartPosition = float3[1125293,1949034,0]
+                EndPosition = float3[1134654,1769006,0]
+            )
+        ),
+        TGameDesignItem
+        (
+            Position = float2[537610,956085]
+            AddOn = TGameDesignAddOn_CommandPoints
+            (
+                Name = 'AutoName_1'
+                Ranking = 'CommandPoints'
+                GUID = GUID:{63C8FDFC-D2D1-E1AE-41BE-25D8BEB33A41}
+                Points = 2
+            )
+        ),
+        TGameDesignItem
+        (
+            Position = float2[1196347,557055]
+            AddOn = TGameDesignAddOn_CommandPoints
+            (
+                Name = 'AutoName_10'
+                Ranking = 'CommandPoints'
+                GUID = GUID:{31F7CD6E-E337-D9A0-380E-A93D0A96E097}
+                Points = 7
+            )
+        ),
+        TGameDesignItem
+        (
+            Position = float2[942035,883270]
+            AddOn = TGameDesignAddOn_CommandPoints
+            (
+                Name = 'AutoName_2'
+                Ranking = 'CommandPoints'
+                GUID = GUID:{02C07BD8-348C-C701-8F78-8ECF7979A968}
+                Points = 3
+            )
+        ),
+        TGameDesignItem
+        (
+            Position = float2[889044,1131211]
+            AddOn = TGameDesignAddOn_CommandPoints
+            (
+                Name = 'AutoName_3'
+                Ranking = 'CommandPoints'
+                GUID = GUID:{031D9D50-BE8A-A957-7B12-47A570EAD0B8}
+                Points = 3
+            )
+        ),
+        TGameDesignItem
+        (
+            Position = float2[1398493,1206060]
+            AddOn = TGameDesignAddOn_CommandPoints
+            (
+                Name = 'AutoName_4'
+                Ranking = 'CommandPoints'
+                GUID = GUID:{CA6D0238-15EA-3E26-0CD2-E7582281E6A2}
+                Points = 3
+            )
+        ),
+        TGameDesignItem
+        (
+            Position = float2[1433717,792668]
+            AddOn = TGameDesignAddOn_CommandPoints
+            (
+                Name = 'AutoName_5'
+                Ranking = 'CommandPoints'
+                GUID = GUID:{84E90985-BCAB-0BE1-9330-3719B6AB8538}
+                Points = 3
+            )
+        ),
+        TGameDesignItem
+        (
+            Position = float2[1542602,995068]
+            AddOn = TGameDesignAddOn_CommandPoints
+            (
+                Name = 'AutoName_6'
+                Ranking = 'CommandPoints'
+                GUID = GUID:{E5BF3414-2FF6-E37C-2B13-2E80D425DE8A}
+                Points = 2
+            )
+        ),
+        TGameDesignItem
+        (
+            Position = float2[516744,1359595]
+            AddOn = TGameDesignAddOn_CommandPoints
+            (
+                Name = 'AutoName_7'
+                Ranking = 'CommandPoints'
+                GUID = GUID:{8A55D6B8-C369-2C16-31D8-2C3A53FBCB7C}
+                Points = 6
+            )
+        ),
+        TGameDesignItem
+        (
+            Position = float2[641292,523180]
+            AddOn = TGameDesignAddOn_CommandPoints
+            (
+                Name = 'AutoName_8'
+                Ranking = 'CommandPoints'
+                GUID = GUID:{6F504811-1087-ED18-65C4-A7E24D4BFE14}
+                Points = 6
+            )
+        ),
+        TGameDesignItem
+        (
+            Position = float2[1038144,1465124]
+            AddOn = TGameDesignAddOn_CommandPoints
+            (
+                Name = 'AutoName_9'
+                Ranking = 'CommandPoints'
+                GUID = GUID:{9C8A32F9-5500-936F-483D-0E60747245A1}
+                Points = 7
+            )
+        ),
+        TGameDesignItem
+        (
+            Position = float2[931392,201384]
+            Rotation = 1.539699
+            AddOn = TGameDesignAddOn_DeploymentZone
+            (
+                Name = 'AutoName_11'
+                Ranking = 'DeploymentZone'
+                GUID = GUID:{DC12202F-73B3-94CA-EF38-E2FB80ED0F17}
+                WarmupCamPath = '0'
+            )
+        ),
+        TGameDesignItem
+        (
+            Position = float2[924789,1729952]
+            Rotation = -1.576022
+            AddOn = TGameDesignAddOn_DeploymentZone
+            (
+                Name = 'AutoName_12'
+                Ranking = 'DeploymentZone'
+                GUID = GUID:{34064EFB-681E-CEDA-80A0-423258FD023A}
+                AllianceNum = 1
+                WarmupCamPath = '1'
+            )
+        ),
+        TGameDesignItem
+        (
+            Position = float2[1251491,187873.5]
+            Rotation = 0.8499847
+            AddOn = TGameDesignAddOn_ReinforcementLocation
+            (
+                Name = 'AutoName_14'
+                Ranking = 'ReinforcementLocations'
+                GUID = GUID:{A5F4B746-FDE1-4BC9-C392-992DF7A78ED6}
+                NumAlliance = -1
+                StartPosition = float3[1225858,158596,0]
+                EndPosition = float3[1277124,217151,0]
+            )
+        ),
+        TGameDesignItem
+        (
+            Position = float2[1004381.5,185591]
+            Rotation = 1.285094
+            AddOn = TGameDesignAddOn_ReinforcementLocation
+            (
+                Name = 'AutoName_16'
+                Ranking = 'ReinforcementLocations'
+                GUID = GUID:{2E90B56B-B115-6653-FE09-7A23C7693E9E}
+                NumAlliance = -1
+                StartPosition = float3[995751,156090,0]
+                EndPosition = float3[1013012,215092,0]
+            )
+        ),
+        TGameDesignItem
+        (
+            Position = float2[690234.5,177040]
+            Rotation = 1.583919
+            AddOn = TGameDesignAddOn_ReinforcementLocation
+            (
+                Name = 'AutoName_17'
+                Ranking = 'ReinforcementLocations'
+                GUID = GUID:{32B7E1E6-8B0A-BA2B-B947-9A98ABBE175E}
+                NumAlliance = -1
+                StartPosition = float3[690637,146370,0]
+                EndPosition = float3[689832,207710,0]
+            )
+        ),
+        TGameDesignItem
+        (
+            Position = float2[512884,1785521]
+            Rotation = -1.58631
+            AddOn = TGameDesignAddOn_ReinforcementLocation
+            (
+                Name = 'AutoName_20'
+                Ranking = 'ReinforcementLocations'
+                GUID = GUID:{55959E10-81D8-A25C-F8E9-7A90D0407ECD}
+                NumAlliance = -1
+                StartPosition = float3[513369,1816782,0]
+                EndPosition = float3[512399,1754260,0]
+            )
+        ),
+        TGameDesignItem
+        (
+            Position = float2[907761,1787029.5]
+            Rotation = -1.590073
+            AddOn = TGameDesignAddOn_ReinforcementLocation
+            (
+                Name = 'AutoName_22'
+                Ranking = 'ReinforcementLocations'
+                GUID = GUID:{8B587287-18D5-75F9-F909-873A1E86235D}
+                NumAlliance = -1
+                StartPosition = float3[908341,1817114,0]
+                EndPosition = float3[907181,1756945,0]
+            )
+        ),
+        TGameDesignItem
+        (
+            Position = float2[1291413,1786023.5]
+            Rotation = -1.214972
+            AddOn = TGameDesignAddOn_ReinforcementLocation
+            (
+                Name = 'AutoName_24'
+                Ranking = 'ReinforcementLocations'
+                GUID = GUID:{EEC5E030-7D78-0C41-94FA-A2D172236DD7}
+                NumAlliance = -1
+                StartPosition = float3[1280598,1815299,0]
+                EndPosition = float3[1302228,1756748,0]
+            )
+        )
+    ]
+)

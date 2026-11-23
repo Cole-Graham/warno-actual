@@ -1,0 +1,7 @@
+export WA_3x3Factory2v2_CQ is Scenario
+(
+    GUID =                GUID:{F2A6CC37-1CDE-9D9D-30C8-4D18BF316C90}
+    ScenarioDirectory =   'WA_3x3Factory2v2_CQ'
+    LevelBuildDirectory = '_3x3_Factory'
+    Category =            'WARNO Actual'
+)

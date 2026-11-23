@@ -1,0 +1,7 @@
+export WA_4x2Isura3v3_CQ is Scenario
+(
+    GUID =                GUID:{B137A67C-799F-1544-8793-453A123BE398}
+    ScenarioDirectory =   'WA_4x2Isura3v3_CQ'
+    LevelBuildDirectory = '_4x2_Isura'
+    Category =            'WARNO Actual'
+)

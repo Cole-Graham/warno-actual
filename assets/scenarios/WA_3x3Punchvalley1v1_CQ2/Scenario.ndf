@@ -1,0 +1,7 @@
+export WA_3x3Punchvalley1v1_CQ2 is Scenario
+(
+    GUID =                GUID:{6B37C25F-030F-B893-943E-C7A1E8155241}
+    ScenarioDirectory =   'WA_3x3Punchvalley1v1_CQ2'
+    LevelBuildDirectory = 'WA_3x3_Punchvalley'
+    Category =            'WARNO Actual'
+)

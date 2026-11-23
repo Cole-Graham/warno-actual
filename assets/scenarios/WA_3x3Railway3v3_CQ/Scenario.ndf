@@ -1,0 +1,7 @@
+export WA_3x3Railway3v3_CQ is Scenario
+(
+    GUID =                GUID:{9F6A69D4-F7EA-C49C-87F0-850A63A98AA7}
+    ScenarioDirectory =   'WA_3x3Railway3v3_CQ'
+    LevelBuildDirectory = '_3x3_Railway'
+    Category =            'WARNO Actual'
+)

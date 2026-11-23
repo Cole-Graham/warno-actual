@@ -1,0 +1,7 @@
+export WA_3x3Highway2v2_CQ is Scenario
+(
+    GUID =                GUID:{50142ead-266e-4d68-959f-f2d6a69078f6}
+    ScenarioDirectory =   'WA_3x3Highway2v2_CQ'
+    LevelBuildDirectory = '_3x3_HighwayToSeoul'
+    Category =            'WARNO Actual'
+)

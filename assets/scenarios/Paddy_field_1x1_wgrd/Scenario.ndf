@@ -1,0 +1,7 @@
+export Paddy_field_1x1_wgrd is Scenario
+(
+    GUID =                GUID:{6FE3DF12-BD2A-9744-1C22-2C1E690A259D}
+    ScenarioDirectory =   'Paddy_field_1x1_wgrd'
+    LevelBuildDirectory = 'Potato_field'
+    Category =            'Outgame'
+)

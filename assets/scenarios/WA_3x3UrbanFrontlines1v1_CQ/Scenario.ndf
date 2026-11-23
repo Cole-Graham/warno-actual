@@ -1,0 +1,7 @@
+export WA_3x3UrbanFrontlines1v1_CQ is Scenario
+(
+    GUID =                GUID:{DFD546A5-904A-66C5-86C6-B768647CAF2E}
+    ScenarioDirectory =   'WA_3x3UrbanFrontlines1v1_CQ'
+    LevelBuildDirectory = '_3x3_UrbanFrontlines'
+    Category =            'WARNO Actual'
+)
