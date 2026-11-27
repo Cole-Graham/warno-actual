@@ -248,4 +248,4 @@ East Germany (`RDA`), Poland (`POL`), and Czechoslovakia (`TCH`) are not standal
 
 ## Optional tools (not everyone installs)
 
-Core install covers the patcher and **dpm_visualizer** (including **matplotlib** for its charts). **Qt** `tools/fxeditor` and **Excel** are in the **`optional`** extra (`PySide6`, `openpyxl`). See [docs/onboarding.md](docs/onboarding.md#optional-extras-for-one-off-work).
+Core install covers the patcher and **dpm_visualizer** (including **matplotlib** for its charts). **Qt** `tools/fxeditor`, **Excel**, and the Markdown-to-PDF report tool `tools/md_to_pdf.py` are in the **`optional`** extra (`PySide6`, `openpyxl`, `reportlab`, `mistune`). See [docs/onboarding.md](docs/onboarding.md#optional-extras-for-one-off-work).

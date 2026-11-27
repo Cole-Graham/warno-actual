@@ -41,7 +41,7 @@ The workspace file can include extension-related editor settings (for example **
 
 ### Optional extras for one-off work
 
-**Core** `pyproject.toml` dependencies include everything the patcher and **`dpm_visualizer`** need (notably **matplotlib** for charts). Not everyone needs the **Qt**-based `tools/fxeditor`, **Excel** I/O, or similar, so those live in a single extra named **`optional`**.
+**Core** `pyproject.toml` dependencies include everything the patcher and **`dpm_visualizer`** need (notably **matplotlib** for charts). Not everyone needs the **Qt**-based `tools/fxeditor`, **Excel** I/O, the Markdown-to-PDF report tool (`tools/md_to_pdf.py`), or similar, so those live in a single extra named **`optional`**.
 
 Install when you use those workflows:
 
